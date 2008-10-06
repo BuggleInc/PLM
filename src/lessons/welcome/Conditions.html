@@ -1,0 +1,81 @@
+<html>
+
+<head>
+  <meta content="text/html; charset=UTF-8" />
+  <style>
+   body { font-family: tahoma, "Times New Roman", serif; font-size:10px; margin:10px; }
+   code { background:#EEEEEE; }
+   pre { background: #EEEEEE; 
+         margin: 5px; 
+         padding: 6px; 
+         border: 1px inset; 
+         width: 640px; 
+         overflow: auto; 
+         text-align: left;
+         font-family: "Courrier New", "Courrier", monospace; }
+   .comment { background:#EEEEEE; 
+              font-family: "Times New Roman", serif; 
+              color:#00AA00; 
+              font-style: italic; }
+  </style>
+</head>
+
+<body>
+
+<h2>Instructions conditionnelles</h2>
+
+Les programmes faits d'une simple suite d'instructions comme celui de l'exercice précédent sont bien ennuyeux. Ils font toujours la même chose, et ne peuvent pas réagir aux conditions extérieurs. Une <b>instruction conditionnelle</b> permet au programme de s'adapter en disant quelque chose comme <i>S'il pleut, prend un parapluie</i>. 
+
+<p>La syntaxe Java est la suivante :
+ <pre>if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>
+}</pre>
+Si la condition est vraie, tout le code compris entre le { et le } correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est possible d'écrire plusieurs instructions entre les deux accolades (voire un autre test).</p>
+
+<p>Une condition peut être une variable de type <tt>boolean</tt>. Le code entre accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et il sera ignoré si elle vaut <tt>false</tt> (faux).</p>
+
+<p>La condition peut aussi être un test arithmétique, comme <tt>x</tt>
+   <b>==</b> <tt>5</tt>, qui vérifie si la valeur actuelle de
+   <tt>x</tt> est 5, ou bien comme <b>!=</b> (teste l'inégalité),
+   <b>&lt;</b> (inférieur à), <b>&gt;</b> (supérieur à), <b>&lt;=</b>
+   (inférieur ou égal à), <b>&gt;=</b> (supérieur ou égal à).</p>
+
+<p>Attention au piège classique, qui consiste à tester l'égalité d'une
+   variable avec = au lieu de ==. Heureusement, le compilateur Java
+   vous indique le plus souvent ce problème, mais pas tout le
+   temps. Si la variable est de type booléen, il peut se faire prendre
+   au piège, et il convient donc d'être attentif...
+
+<p>La condition peut également être un appel à certaines méthodes
+   particulières, dont le résultat est un booléen. Par exemple, la
+   méthode <tt>isFacingWall()</tt> de la buggle renvoie vrai si la
+   buggle est face à un mur, et faux sinon.
+
+<p>Enfin, il est possible de construire une condition composée de plusieurs sous-conditions reliées par des opérations booléennes.
+<ul>
+  <li><tt>cond1 && cond2</tt> est vraie quand <tt>cond1</tt> <b>et</b> <tt>cond2</tt> sont toutes deux vraies.</li>
+  <li><tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée).</li>
+  <li><tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas.</li>
+  <li>On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever les ambiguïtés sur l'ordre d'évaluation.</li>
+</ul> 
+
+<p>Pour finir, il est possible de spécifier ce qu'il faut faire quand la condition est fausse, en utilisant la syntaxe suivante :
+ <pre>if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>
+} else {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>
+}</pre>
+
+
+<h3>Objectif de cet exercice</h3><a name="Objectifs">
+Si la buggle est face à un mur (prédicat <tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer d'un pas.
+
+<p>Cet exercice est un peu particulier : il faut que votre programme
+   fonctionne pour plusieurs buggles, chacune étant dans une situation
+   initiale différente. Le même code sera utilisé pour chacune d'entre
+   elles.</p>
+
+<p>Quand votre programme fonctionne, passez à l'exercice suivant.</p>
+
+</body>
+</html>	

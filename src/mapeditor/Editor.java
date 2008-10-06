@@ -1,0 +1,102 @@
+package mapeditor;
+
+import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+
+import bugglequest.core.IWorldView;
+import bugglequest.core.World;
+import bugglequest.io.Utils;
+
+public class Editor {
+
+	private World world;
+	private ArrayList<MapView> mapViews = new ArrayList<MapView>();
+	private String command = "topwall";
+	private Color selectedColor = Color.blue;
+	private int selectedColorNumber = 1;
+	
+	public Editor() {
+		createNewMap(10, 10);
+	}
+
+	public void createNewMap(int width, int height) {
+		this.world = new World("edited world",width, height);
+		
+		for (MapView v : this.mapViews) {
+			v.setWorld(this.world);
+		}
+				
+		this.world.addWorldUpdatesListener(new IWorldView() {
+			@Override
+			public void worldHasChanged() {
+				notifyMapViews();
+			}
+
+			@Override
+			public void worldHasMoved() {
+				notifyMapViews();
+			}
+		});
+		notifyMapViews();
+	}
+
+	public void saveMap(File file) {
+		try {
+			Utils.writeWorldIntoFile(this.world, file);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void loadMap(File file) {
+		try {
+			Utils.readWorldFromFile(this.world, file);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		notifyMapViews();
+	}
+
+	public World getWorld() {
+		return this.world;
+	}
+	
+	public void addMapView(MapView v) {
+		this.mapViews.add(v);
+	}
+
+	public void removeMapView(MapView v) {
+		this.mapViews.remove(v);
+	}
+
+	public void notifyMapViews() {
+		for (MapView v : this.mapViews) {
+			v.worldHasMoved();
+		}
+	}
+
+	public void setCommand(String cmd) {
+		command = cmd;
+	}
+	public String getCommand() {
+		return command;
+	}
+
+	public void setSelectedColor(Color c) {
+		selectedColor = c;
+	}
+	public Color getSelectedColor() {
+		return selectedColor;
+	}
+
+	public int getSelectedColorNumber() {
+		return selectedColorNumber ;
+	}
+
+	public void setSelectedColorNumber(int i) {
+		selectedColorNumber = i;		
+	}
+
+}

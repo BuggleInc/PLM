@@ -1,0 +1,72 @@
+<html>
+
+<head>
+  <meta content="text/html; charset=UTF-8" />
+  <style>
+   body { font-family: tahoma, "Times New Roman", serif; font-size:10px; margin:10px; }
+   code { background:#EEEEEE; }
+   pre { background: #EEEEEE; 
+         margin: 5px; 
+         padding: 6px; 
+         border: 1px inset; 
+         width: 640px; 
+         overflow: auto; 
+         text-align: left;
+         font-family: "Courrier New", "Courrier", monospace; }
+   .comment { background:#EEEEEE; 
+              font-family: "Times New Roman", serif; 
+              color:#00AA00; 
+              font-style: italic; }
+  </style>
+</head>
+
+<body>
+  <h2>Bienvenue dans le monde des buggles</h2>
+  
+  <p>Vous venez de lancer le programme des buggles. Il s'agit d'une plate-forme pédagogique destinée à simplifier l'apprentissage du Java. Il est constitué d'un ensemble d'exercice groupés par lessons, que vous pouvez faire pas à pas.</p>
+  
+  <h3>Les <i>buggles</i> ? Qu'est ce que c'est ??</h3>
+  <p>Les buggles sont de petites b&ecirc;tes qui obéissent aux ordres que vous leur donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles pour faire en sorte que le monde ressemble à l'objectif de l'exercice.</p>
+  
+  <h3>L'environnement de travail</h3>
+  <p>Avant d'aller plus loin, familiarisez vous avec l'environnement de travail. La fen&ecirc;tre principale (celle que vous voyez) est composée de 5 éléments principaux:
+  <ul>
+    <li><b>Le menu :</b>
+		Placé en haut de la fen&ecirc;tre, il vous permet de quitter le programme, de changer de le&ccedil;on ou de passer à l'exercice suivant quand vous le souhaitez. Notez que certaines le&ccedil;ons vous imposent de finir un exercice avant de pouvoir commencer le suivant.</li>
+	<li><b>Les onglets de consigne et d'édition :</b>
+		C'est ici que vous lisez le texte actuel. Cette zone contient plusieurs onglets, auquels on peut accéder en cliquant sur leur nom en haut à gauche. Le premier onglet (qui est toujours intitulé "Mission") contient une présentation de l'exercice en cours. Pour résoudre un exercice, vous devez écrire votre code dans les autres onglets.<br>
+	    Par exemple, vous pouvez maintenant cliquer sur l'onglet "Program" pour voir le code actuel. Il est vide, car il n'y a rien à faire pour cet exercice de prise en main de l'environnement.
+	<li><b>La console :</b>
+		Placée sous les onglets, c'est ici que s'afficheront tous les messages de l'application. Cette zone est initialement vide et blanche.
+	<li><b>La vue actuelle du monde :</b>
+		Placée à droite des onglets, elle est constituée d'une grille représentant les différentes cases du monde, ainsi que d'une <i>buggle</i> qui attend vos ordres.
+	<li><b>Les controles interactifs</b>
+		Placés sous la vue du monde, ces boutons vous permettent de contr&ocirc;ler interactivement les buggles. Vous pouvez ainsi essayer d'amener la buggle à l'objectif du scénario <i>à la main</i> avant d'écrire le code nécessaire dans l'éditeur.
+        <ul>
+		  <li>Le bouton <b>Forward</b> fait avancer votre buggle d'un pas.</li>
+		  <li>Le bouton <b>Backward</b> fait reculer votre buggle d'un pas.</li>
+		  <li>Le bouton <b>Turn left</b> demande à votre buggle de tourner vers la gauche.</li>
+		  <li>Le bouton <b>Turn right</b> demande à votre buggle de tourner vers la droite.</li>
+		  <li>Le bouton <b>Mark</b> demande à votre buggle de faire un trait au sol quand elle avance.</li>
+	    </ul>
+		En plus de ces controles interactifs, trois boutons vous permettent de contr&ocirc;ler l'exécution du code que vous avez tapé dans l'éditeur :
+	    <ul>
+		  <li>Le bouton <b>Objective</b> ouvre une fen&ecirc;tre représentant une vue du monde tel qu'il doit &ecirc;tre à la fin de l'exercice.</li>
+		  <li>Le bouton <b>Run</b> lance l'exécution du code que vous aurez écrit dans l'éditeur, et vérifie que vous arrivez bien à la situation finale de l'exercice. Si c'est le cas, vous pouvez passer à l'exercice suivant par le menu. Sinon, il vous faudra corriger votre code.<br>
+	      <li>Le bouton <b>Stop</b> permet d'intérompre l'exécution de votre code, ce qui est pratique si vous avez une <i>boucle infinie</i>.
+		</ul>
+  </ul>
+
+  <h3>Que dois-je faire ?</h3>
+  <p>L'objectif de chaque exercice est donc de taper du code dans l'onglet de l'éditeur afin de donner les ordres à la buggle nécessaire pour atteindre l'objectif de la buggle.</p>
+  <p>Ce code doit naturellement &ecirc;tre écrit en Java. S'il contient des erreurs, un message sera affiché dans la console par le compilateur, et il vous faudra corriger avant de tenter de l'exécuter.</p>
+  <p>Essayez par exemple d'écrire quelque chose dans l'éditeur (onglet Environment) comme "bonjour", puis de cliquer sur <b>Run</b>. Les messages qui s'affichent peuvent vous sembler obscures au premier abord, mais ne vous inquiétez pas : nous verrons leur signification au fur et à mesure. Effacez maintenant le contenu de l'onglet <i>Environment</i> avant de continuer.</p>
+
+  <h3>Et maintenant ?</h3>
+  <p>Pour ce premier exercice, vous n'avez rien à faire : le monde initial est l'objectif à atteindre. Vous n'avez donc pas de code à écrire. Après avoir visité l'interface et joué un peu avec les contrôles interactifs, appuyez sur le bouton "run". Une fen&ecirc;tre apparait pour vous informez que vous avez remplit le contrat de l'exercice.
+	 Vous pouvez alors passez à l'exercice suivant en utilisant le menu adéquat (Lesson/Change exercice).</p>
+
+</body>
+</html>	 
+	 
+	 

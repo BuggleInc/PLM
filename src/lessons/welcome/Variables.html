@@ -1,0 +1,104 @@
+<html>
+
+<head>
+  <meta content="text/html; charset=UTF-8" />
+  <style>
+   body { font-family: tahoma, "Times New Roman", serif; font-size:10px; margin:10px; }
+   code { background:#EEEEEE; }
+   pre { background: #EEEEEE; 
+         margin: 5px; 
+         padding: 6px; 
+         border: 1px inset; 
+         width: 640px; 
+         overflow: auto; 
+         text-align: left;
+         font-family: "Courrier New", "Courrier", monospace; }
+   .comment { background:#EEEEEE; 
+              font-family: "Times New Roman", serif; 
+              color:#00AA00; 
+              font-style: italic; }
+  </style>
+</head>
+
+<body>
+
+<h2>Variables</h2>
+
+Nous avons vu que les variables étaient des cases mémoire de
+l'ordinateur dans lequel on peut stocker une valeur. En Java, chaque
+variable a un type particulier, qui peut être par exemple
+<code>int</code> pour stocker des nombres entiers,
+<code>boolean</code> pour des booléens, <code>double</code> pour des
+nombres à virgule ou encore <code>String</code> pour des chaînes de
+caractères.
+
+<p>La syntaxe pour créer une variable entière <code>x</code> de valeur
+   initiale 4 est la suivante : 
+<pre>int x = 4;</pre>
+<p>Un autre exemple avec des chaînes de caractères :
+<pre>String hello = "Bonjour";</pre>
+
+<p>Pour affecter une nouvelle valeur à une variable, il suffit
+   d'utiliser le symbole = : <pre>x = 3;</pre>
+
+<p>À droite du signe égal, on peut mettre une opération arithmétique
+   quelconque, qui peut contenir des constantes ou des variables :
+
+<pre>x = 3 + 2;
+x = 3 * x;
+hello = "Salut "+"à "+"tous !";
+</pre> 
+
+<h3>Les baggles</h3> 
+
+Le monde des buggles contient parfois des <i>baggles</i>, sorte de
+petits biscuits que les buggles peuvent déplacer d'un endroit à un
+autre. Pour cela, elles peuvent utiliser les fonctions suivantes :
+
+<pre>isOverBaggle() <span class="comment">/* test booléen pour savoir si la buggle marche sur un baggle */</span>
+isCarryingBaggle() <span class="comment">/* test booléen pour savoir si la buggle porte un baggle */</span>
+pickUpBaggle() <span class="comment">/* ramasse le baggle au sol (attention, s'il n'y a pas de baggle, ça pose problème) */</span>
+dropBaggle() <span class="comment">/* pose le baggle transporté (attention, ça pose problème si on ne porte pas de 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baggle, ou s'il y en a déjà un par terre) */</span></pre>
+
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> 
+
+Il est temps de faire un exercice un peu plus dur, n'est ce pas ?
+L'objectif cette fois est d'avancer jusqu'au baggle qui se trouve
+devant la buggle, le ramasser, revenir à la position initiale, puis de
+poser le baggle.
+
+<h3>Indications</h3><a name="Indications"> 
+<p>Pour résoudre ce problème, il faut le décomposer en parties que
+   vous savez résoudre. Par exemple, on peut vouloir faire les étapes
+   suivantes :
+<ol>
+  <li>Avancer jusqu'à se trouver sur un baggle</li>
+  <li>Ramasser le baggel au sol</li>
+  <li>Reculer du même nombre de cases que ce qu'on a avancé</li>
+</ol></p>
+
+<p>Bien entendu, il est impossible de reculer du bon nombre de case à
+   l'étape 3 si l'on a pas compté le nombre de pas faits à la première
+   étape. On va pour cela utiliser une variable, que l'on peut nommer
+   <code>nbPas</code>.</p>
+
+<p>On crée cette variable (de type <code>int</code>) avant l'étape 1,
+   on l'initialise à 0, et chaque fois qu'on avance d'un pas, on
+   l'incrémente de 1 (<code>nbPas = nbPas + 1;</code> ou
+   <code>nbPas++;</code>, les deux écritures sont équivalentes).</p>
+
+<p>Ensuite, l'étape 3 consiste simplement à créer une nouvelle
+   variable entière <code>dejaFait</code> initialisée à zéro, et
+   reculer d'un pas tant que <code>dejaFait</code> n'est pas égal à
+   <code>nbPas</code>, en incrémentant <code>dejaFait</code> à chaque
+   fois.</p>
+
+<p>Attention, il est interdit d'utiliser des caractères accentués dans
+   les noms de variables Java. Vous pouvez donc nommer votre variable
+   <code>dejaFait</code>, mais <code>déjaFait</code> n'est pas un nom
+   valide.</p>
+
+<p>À vous de jouer !</p>
+</body>
+</html>	

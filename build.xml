@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="dist" name="BuggleQuest">
+
+	<property name="base.dir" value="."/>
+    <property name="dist.dir" value="${base.dir}/dist"/>
+    <property name="lib.dir" value="${base.dir}/lib"/>
+    <property name="classes.dir" value="${base.dir}/bin"/>
+    <property name="src.dir" value="${base.dir}/src"/>
+
+    <path id="project.class.path">
+            <pathelement path="${classes.dir}"/>    
+            <fileset dir="${lib.dir}">
+                    <include name="**/*.jar"/>                      
+            </fileset>      
+    </path>
+
+	<target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />        
+         <copy todir="${classes.dir}">
+                 <fileset dir="${src.dir}">
+                         <include name="**/*.java"/>
+                         <include name="**/*.html"/>
+                 	     <include name="**/*.css"/>
+                 </fileset>
+         </copy> 		
+	</target>
+	
+	<target name="dist" depends="compile">
+	    <mkdir dir="${dist.dir}"/>
+		<jar destfile="${dist.dir}/BuggleQuest.jar" filesetmanifest="mergewithoutmain">
+			<manifest>
+				<attribute name="Built-By" value="M. Quinson and G. Oster" />
+				<attribute name="Main-Class" value="bugglequest.ui.BuggleQuestApp" />
+				<attribute name="Class-Path" value="." />
+			</manifest>
+			<fileset dir="${classes.dir}" excludes="**/.gitignore"/>
+			<fileset dir="${src.dir}" excludes="**/.gitignore"/>
+			<fileset dir="${lib.dir}" excludes="*.jar"/>
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.0.jar" />
+		</jar>
+	</target>
+</project>

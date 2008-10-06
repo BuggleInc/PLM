@@ -1,0 +1,44 @@
+***************** BASE
+
+Assez urgent :
+ * Quand un exo est fait, il faut passer au suivant de la lesson
+ * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse
+   
+   
+D'autres points moins urgents :
+  
+ * Un autre truc sympa serait d'avoir un log sur un compte prof du
+   style "[date] untel a passé tel exo".
+ * Exécution pas à pas des programmes (à grands renforts de threads et
+   sémaphores, je pense).
+ * La classe façade au compilateur n'est pas de moi non plus, il
+   faudrait la mettre dans un package à part comme l'EditorKit.
+ * pas moyen de changer la couleur d'une buggle interactivement
+ * Il faudrait internationaliser le tout
+
+Une série d'idées bêtes :
+ * J'aimerais ajouter une sorte de diff entre le monde attendu et le
+   monde créé s'il y a un problème, avec des ronds rouges autour des
+   cases de la mauvaise couleur, des croix sur les buggles mal
+   placées, etc. Je n'ai aucune idée de comment faire, techniquement.
+ * les localisations de fichier dans la console devrait être des liens
+   qui déplacent l'éditeur.
+ * lors d'exécution pas à pas, j'aimerais afficher le contenu des
+   variables, mais ça semble très très dur. Si c'est des champs
+   d'objets, on peut tenter l'introspection. Sinon, je sais pas.
+   Peut-être qu'en convertissant le tout en plugin eclipse on pourrait
+   y arriver, mais pas cette année.
+
+***************** LEÇONS
+          
+ * On peut aussi faire tous les classiques du logo: un carré, une
+   maison, etc.
+	   
+Il y a aussi pleins d'idées d'exo sur les pages des gens qui ont
+inventé le concept. Par exemple:
+
+http://cs.wellesley.edu/~cs111/fall98/assignments.html
+
+***************** MONDES
+Un peu d'assembleur like dans ce monde de brutes
+http://www.kongregate.com/games/Coolio_Niato/light-bot
