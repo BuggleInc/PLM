@@ -5,9 +5,10 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import bugglequest.core.IWorldView;
-import bugglequest.core.World;
-import bugglequest.io.Utils;
+import jlm.bugglequest.IWorldView;
+import jlm.bugglequest.World;
+import jlm.io.Utils;
+
 
 public class Editor {
 

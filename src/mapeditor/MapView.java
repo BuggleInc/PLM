@@ -7,9 +7,10 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
-import bugglequest.core.WorldCell;
-import bugglequest.exception.AlreadyHaveBaggleException;
-import bugglequest.ui.WorldView;
+import jlm.bugglequest.WorldCell;
+import jlm.exception.AlreadyHaveBaggleException;
+import jlm.ui.WorldView;
+
 
 public class MapView extends WorldView {
 

@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-public class LoopDoWhileBuggle extends bugglequest.core.SimpleBuggle {
+public class LoopDoWhileBuggle extends jlm.bugglequest.SimpleBuggle {
 	boolean isGroundWhite() { 
 		return getGroundColor().equals(Color.white)?true:false;
 	}

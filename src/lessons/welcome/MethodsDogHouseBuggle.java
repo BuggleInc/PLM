@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-public class MethodsDogHouseBuggle extends bugglequest.core.SimpleBuggle {
+public class MethodsDogHouseBuggle extends jlm.bugglequest.SimpleBuggle {
 
 	private int line = -1;
 	

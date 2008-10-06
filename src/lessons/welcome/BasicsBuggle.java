@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-import bugglequest.core.SimpleBuggle;
+import jlm.bugglequest.SimpleBuggle;
 
 public class BasicsBuggle extends SimpleBuggle {
 

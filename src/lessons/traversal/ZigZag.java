@@ -2,11 +2,12 @@ package lessons.traversal;
 
 import java.awt.Color;
 
+import jlm.bugglequest.Buggle;
+import jlm.bugglequest.Direction;
+import jlm.bugglequest.World;
+
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
-import bugglequest.core.Buggle;
-import bugglequest.core.Direction;
-import bugglequest.core.World;
 
 public class ZigZag extends ExerciseTemplated {
 

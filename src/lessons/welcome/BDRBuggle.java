@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-public class BDRBuggle extends bugglequest.core.SimpleBuggle {
+public class BDRBuggle extends jlm.bugglequest.SimpleBuggle {
 	public char getIndication() { 
 		if (isOverMessage()) { 
 			return readMessage().charAt(0); 

@@ -2,12 +2,13 @@ package lessons.welcome;
 
 import java.awt.Color;
 
+import jlm.bugglequest.Buggle;
+import jlm.bugglequest.Direction;
+import jlm.bugglequest.World;
+import jlm.exception.AlreadyHaveBaggleException;
+
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
-import bugglequest.core.Buggle;
-import bugglequest.core.Direction;
-import bugglequest.core.World;
-import bugglequest.exception.AlreadyHaveBaggleException;
 
 public class Variables extends ExerciseTemplated {
 

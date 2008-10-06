@@ -10,12 +10,13 @@ import java.util.Vector;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-import bugglequest.core.AbstractBuggle;
-import bugglequest.core.BuggleCompiler;
-import bugglequest.core.LogWriter;
-import bugglequest.core.World;
-import bugglequest.exception.BrokenLessonException;
-import bugglequest.exception.BuggleCompilerException;
+import jlm.bugglequest.AbstractBuggle;
+import jlm.bugglequest.BuggleCompiler;
+import jlm.bugglequest.LogWriter;
+import jlm.bugglequest.World;
+import jlm.exception.BrokenLessonException;
+import jlm.exception.BuggleCompilerException;
+
 
 public abstract class Exercise {
 	//public static final boolean debug = false; /** well behaved exercises use a working solution as initial body when this is true */

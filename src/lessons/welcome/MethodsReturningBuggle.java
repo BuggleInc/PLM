@@ -1,7 +1,7 @@
 package lessons.welcome;
 
 
-public class MethodsReturningBuggle extends bugglequest.core.SimpleBuggle {
+public class MethodsReturningBuggle extends jlm.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("Pas le droit d'utiliser forward(int) dans cet exercice");

@@ -1,6 +1,6 @@
 package lessons.traversal;
 
-import bugglequest.core.SimpleBuggle;
+import jlm.bugglequest.SimpleBuggle;
 
 public class DiagonalBuggle extends SimpleBuggle {
 	/* BEGIN TEMPLATE */

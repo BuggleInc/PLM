@@ -1,7 +1,7 @@
 package lessons.welcome;
 
-import bugglequest.core.Direction;
-import bugglequest.core.SimpleBuggle;
+import jlm.bugglequest.Direction;
+import jlm.bugglequest.SimpleBuggle;
 
 public class SnakeBuggle extends SimpleBuggle {
 	/* BEGIN TEMPLATE */

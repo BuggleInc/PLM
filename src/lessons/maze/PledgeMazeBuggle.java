@@ -1,8 +1,8 @@
 package lessons.maze;
 
-import bugglequest.core.Direction;
+import jlm.bugglequest.Direction;
 
-public class PledgeMazeBuggle extends bugglequest.core.SimpleBuggle {
+public class PledgeMazeBuggle extends jlm.bugglequest.SimpleBuggle {
 
 	/* BEGIN SOLUTION */
 	public void run() {

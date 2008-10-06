@@ -2,9 +2,10 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import bugglequest.core.Direction;
-import bugglequest.core.SimpleBuggle;
-import bugglequest.core.World;
+import jlm.bugglequest.Direction;
+import jlm.bugglequest.SimpleBuggle;
+import jlm.bugglequest.World;
+
 
 public class BuggleDancing extends SimpleBuggle {
 

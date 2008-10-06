@@ -1,6 +1,6 @@
 package lessons.maze;
 
-public class WallFollowerMazeBuggle extends bugglequest.core.SimpleBuggle {
+public class WallFollowerMazeBuggle extends jlm.bugglequest.SimpleBuggle {
 
 	/* BEGIN SOLUTION */
 	public void run() {

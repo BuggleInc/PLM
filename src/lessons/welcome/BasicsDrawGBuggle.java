@@ -1,7 +1,7 @@
 package lessons.welcome;
 
 
-public class BasicsDrawGBuggle extends bugglequest.core.SimpleBuggle {
+public class BasicsDrawGBuggle extends jlm.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {

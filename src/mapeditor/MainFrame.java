@@ -18,7 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
-import bugglequest.ui.ResourcesCache;
+import jlm.ui.ResourcesCache;
+
 
 public class MainFrame extends JFrame {
 

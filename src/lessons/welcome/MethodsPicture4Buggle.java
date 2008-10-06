@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-public class MethodsPicture4Buggle extends bugglequest.core.SimpleBuggle {
+public class MethodsPicture4Buggle extends jlm.bugglequest.SimpleBuggle {
 
 	/* BEGIN SOLUTION */
 	void mark() {
