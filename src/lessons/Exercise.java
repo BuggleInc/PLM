@@ -10,12 +10,14 @@ import java.util.Vector;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-import jlm.bugglequest.AbstractBuggle;
-import jlm.bugglequest.BuggleCompiler;
-import jlm.bugglequest.LogWriter;
-import jlm.bugglequest.World;
+import universe.Entity;
+import universe.World;
+import universe.bugglequest.AbstractBuggle;
+import universe.bugglequest.BuggleCompiler;
+
+import jlm.core.LogWriter;
 import jlm.exception.BrokenLessonException;
-import jlm.exception.BuggleCompilerException;
+import jlm.exception.JLMCompilerException;
 
 
 public abstract class Exercise {
@@ -86,9 +88,9 @@ public abstract class Exercise {
 		initialWorld = new World[w.length];
 		answerWorld  = new World[w.length];
 		for (int i=0; i<w.length; i++) {
-			currentWorld[i] = new World(w[i]);
-			initialWorld[i] = new World(w[i]);
-			answerWorld[i]  = new World(w[i]);
+			currentWorld[i] = w[i].copy();
+			initialWorld[i] = w[i].copy();
+			answerWorld[i]  = w[i].copy();
 		}
 	}
 	
@@ -115,9 +117,9 @@ public abstract class Exercise {
 
 	/**
 	 * Generate Java source from the user function
-	 * @throws BuggleCompilerException 
+	 * @throws JLMCompilerException 
 	 */
-	public void compileAll(LogWriter out) throws BuggleCompilerException {
+	public void compileAll(LogWriter out) throws JLMCompilerException {
 		compiledBuggleClasses = new TreeMap<String, Class<AbstractBuggle>>();
 
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
@@ -138,7 +140,7 @@ public abstract class Exercise {
 			compiledBuggleClasses = compiler.compile(sources, errs);
 
 			out.log(errs);
-		} catch (BuggleCompilerException e) {
+		} catch (JLMCompilerException e) {
 			out.log(e.getDiagnostics());
 			throw e;
 		}
@@ -181,13 +183,13 @@ public abstract class Exercise {
 
 	protected void mutateBuggles(World[] worlds, ArrayList<String> newClasseNames){
 		for (World current:worlds) {
-			ArrayList<AbstractBuggle> newBuggles = new ArrayList<AbstractBuggle>();
-			Iterator<AbstractBuggle> it = current.buggles();
+			ArrayList<Entity> newBuggles = new ArrayList<Entity>();
+			Iterator<Entity> it = current.entities();
 			for (String name : newClasseNames) {
 				/* Get the next existing buggle */
 				if (!it.hasNext()) 
 					throw new BrokenLessonException("Too much arguments provided to mutateBuggle");
-				AbstractBuggle old = it.next();
+				AbstractBuggle old = (AbstractBuggle) it.next();
 
 				/* Instanciate a new buggle of the new type */
 				AbstractBuggle b;
@@ -221,12 +223,12 @@ public abstract class Exercise {
 			}
 			if (it.hasNext())
 				throw new BrokenLessonException("Not enough arguments provided to mutateBuggle");
-			current.setBuggles(newBuggles);
+			current.setEntities(newBuggles);
 		}
 	}
 	protected void mutateBuggle(World[] worlds, String newClasseName){
 		ArrayList<String> names= new ArrayList<String>();
-		for (int i=0; i<currentWorld[0].bugglesCount(); i++)
+		for (int i=0; i<currentWorld[0].entityCount(); i++)
 			names.add(newClasseName);
 		mutateBuggles(worlds, names);
 	}

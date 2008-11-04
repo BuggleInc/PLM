@@ -2,9 +2,10 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.SimpleBuggle;
-import jlm.bugglequest.World;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.SimpleBuggle;
+
 
 
 public class BuggleDancing extends SimpleBuggle {
@@ -15,7 +16,7 @@ public class BuggleDancing extends SimpleBuggle {
 		super();
 	}
 
-	public BuggleDancing(World w, String name, int i, int j, Direction dir, Color c, Color bc) {
+	public BuggleDancing(BuggleWorld w, String name, int i, int j, Direction dir, Color c, Color bc) {
 		super(w, name, i, j,dir, c, bc);
 	}
 

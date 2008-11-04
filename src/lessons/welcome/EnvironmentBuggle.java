@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-import jlm.bugglequest.SimpleBuggle;
+import universe.bugglequest.SimpleBuggle;
 
 public class EnvironmentBuggle extends SimpleBuggle {
 	@Override

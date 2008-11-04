@@ -1,33 +1,44 @@
-package jlm.bugglequest;
+package universe.bugglequest;
 
 import java.awt.Color;
 import java.awt.Point;
 
-import jlm.exception.AlreadyHaveBaggleException;
-import jlm.exception.BuggleWallException;
-import jlm.exception.NoBaggleUnderBuggleException;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Element;
+
+import universe.Entity;
+import universe.World;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.exception.BuggleWallException;
+import universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 
-public abstract class AbstractBuggle {
+
+public abstract class AbstractBuggle extends Entity {
+	@Attribute
 	Color color;
+	
+	@Attribute
 	Color brushColor;
 
+	@Attribute
 	private int x;
+	@Attribute
 	private int y;
 
+	@Attribute
 	Direction direction;
 
-	World world;
-
+	@Attribute
 	boolean brushDown;
 
+	@Element
 	private Baggle baggle;
-
-	protected String name;
 
 	/* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
 	 * candidate for exercise completion.
 	 */
+	@Attribute
 	private boolean seenError = false;
 	public void seenError() {
 		this.seenError = true;
@@ -51,41 +62,31 @@ public abstract class AbstractBuggle {
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
 	 * constructor. But it should not be used as most methods assert on world
-	 * being not null. After using it, {@link #setWorld(World)} must be used
+	 * being not null. After using it, {@link #setWorld(BuggleWorld)} must be used
 	 * ASAP.
 	 */
 	public AbstractBuggle() {
 		this(null, "John Doe", 0, 0, Direction.NORTH, Color.red, Color.red);
 	}
 
-	public AbstractBuggle(World w) {
+	public AbstractBuggle(BuggleWorld w) {
 		this(w, "John Doe", 0, 0, Direction.NORTH, Color.red, Color.red);
 	}
 
-	public AbstractBuggle(World world, String name, int x, int y, Direction direction, Color c) {
+	public AbstractBuggle(BuggleWorld world, String name, int x, int y, Direction direction, Color c) {
 		this(world, name, 0, 0, Direction.NORTH, c, c);
 	}
 
 	public AbstractBuggle(World world, String name, int x, int y, Direction direction, Color color, Color brushColor) {
-		super();
-		this.name = name;
+		super(name,world);
 		this.color = color;
 		this.brushColor = brushColor;
 		this.x = x;
 		this.y = y;
 		this.direction = direction;
-		if (world != null) {
-			this.world = world;
-			world.addBuggle(this);
-		}
 	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public Entity copy() {
+		return new Buggle(this);
 	}
 
 	public boolean isBrushDown() {
@@ -93,20 +94,18 @@ public abstract class AbstractBuggle {
 	}
 
 	public void brushDown() {
-		assert (world != null);
 		this.brushDown = true;
-		WorldCell cell = world.getCell(x, y);
+		WorldCell cell = ((BuggleWorld)world).getCell(x, y);
 		cell.setColor(brushColor);
 		world.notifyWorldUpdatesListeners();
 	}
 
 	public void brushUp() {
-		assert (world != null);
 		this.brushDown = false;
 	}
 
 	public Color getGroundColor() {
-		return this.world.getCell(this.x, this.y).getColor();
+		return getCell().getColor();
 	}
 
 	public Color getBrushColor() {
@@ -122,7 +121,6 @@ public abstract class AbstractBuggle {
 	}
 
 	public void setColor(Color c) {
-		assert (world != null);
 		this.color = c;
 		world.notifyWorldUpdatesListeners();
 	}
@@ -148,21 +146,19 @@ public abstract class AbstractBuggle {
 	public void turnBack() {
 		setDirection(direction.opposite());
 	}
-
-	public World getWorld() {
-		return world;
-	}
-
-	public void setWorld(World world) {
-		this.world = world;
-	}
 	
 	public int getWorldHeight() {
-		return this.getWorld().getHeight();
+		return ((BuggleWorld)world).getHeight();
 	}
 	
 	public int getWorldWidth() {
-		return this.getWorld().getWidth();
+		return ((BuggleWorld)world).getWidth();
+	}
+	protected WorldCell getCell(){
+		return ((BuggleWorld)world).getCell(x, y);
+	}
+	protected WorldCell getCell(int u, int v){
+		return ((BuggleWorld)world).getCell(u, v);
 	}
 
 	public int getX() {
@@ -204,8 +200,7 @@ public abstract class AbstractBuggle {
 	}
 
 	public void backward() throws BuggleWallException {
-		Direction back = direction.opposite();
-		move(back.toPoint());
+		move(direction.opposite().toPoint());
 	}
 
 	public void backward(int count) throws BuggleWallException {
@@ -223,19 +218,19 @@ public abstract class AbstractBuggle {
 		WorldCell cell;
 		switch (delta.intValue()) {
 		case Direction.NORTH_VALUE: /* looking up is easy */
-			cell = world.getCell(x,y);
+			cell = getCell();
 			return cell.hasTopWall();
 
 		case Direction.WEST_VALUE: /* looking to the left also */
-			cell = world.getCell(x,y);
+			cell = getCell();
 			return cell.hasLeftWall();
 
 		case Direction.SOUTH_VALUE: /* if looking down, look to the top of one cell lower */
-			cell = world.getCell(getX(),                        (getY()+1) % world.getHeight());
+			cell = getCell(getX(),                        (getY()+1) % getWorldHeight());
 			return cell.hasTopWall();
 
 		case Direction.EAST_VALUE: /* if looking right, look to the left of one next cell */
-			cell = world.getCell((getX()+1) % world.getWidth(), getY());
+			cell = getCell((getX()+1) % getWorldWidth(), getY());
 			return cell.hasLeftWall();
 
 		default: throw new RuntimeException("Invalid direction: "+delta);
@@ -249,13 +244,12 @@ public abstract class AbstractBuggle {
 	}
 
 	private void move(Point delta) throws BuggleWallException {
-		assert (world != null);
-		int newx = (x + delta.x) % world.getWidth();
+		int newx = (x + delta.x) % getWorldWidth();
 		if (newx < 0)
-			newx += world.getWidth();
-		int newy = (y + delta.y) % world.getHeight();
+			newx += getWorldWidth();
+		int newy = (y + delta.y) % getWorldHeight();
 		if (newy < 0)
-			newy += world.getHeight();
+			newy += getWorldHeight();
 
 		if (delta.equals(direction.toPoint())            && isFacingWall() ||
 				delta.equals(direction.opposite().toPoint()) && isBackingWall())	
@@ -266,8 +260,7 @@ public abstract class AbstractBuggle {
 		y = newy;
 
 		if (brushDown) {
-			WorldCell cell = world.getCell(x, y);
-			cell.setColor(brushColor);
+			getCell().setColor(brushColor);
 		}
 
 		world.notifyWorldUpdatesListeners();
@@ -287,7 +280,7 @@ public abstract class AbstractBuggle {
 	}
 
 	public boolean isOverBaggle() {
-		return this.world.getCell(this.x, this.y).hasBaggle();
+		return ((BuggleWorld)world).getCell(this.x, this.y).hasBaggle();
 	}
 
 	public boolean isCarryingBaggle() {
@@ -299,31 +292,31 @@ public abstract class AbstractBuggle {
 			throw new NoBaggleUnderBuggleException("There is no baggle to pick up");
 		if (isCarryingBaggle())
 			throw new AlreadyHaveBaggleException("Your buggle is already carrying a baggle");
-		this.baggle = this.world.getCell(this.x, this.y).pickUpBaggle();
+		baggle = ((BuggleWorld)world).getCell(this.x, this.y).pickUpBaggle();
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException {
-		this.world.getCell(this.x, this.y).setBaggle(this.baggle);
-		this.baggle = null;
+		((BuggleWorld)world).getCell(this.x, this.y).setBaggle(this.baggle);
+		baggle = null;
 	}
 
 	public boolean isOverMessage() {
-		return this.world.getCell(this.x, this.y).hasContent();
+		return getCell().hasContent();
 	}
 
 	public void writeMessage(String msg) {
-		this.world.getCell(this.x, this.y).addContent(msg);
+		getCell().addContent(msg);
 	}
 	public void writeMessage(int nb) {
 		writeMessage(""+nb);
 	}
 
 	public String readMessage() {
-		return this.world.getCell(this.x, this.y).getContent();
+		return getCell().getContent();
 	}
 
 	public void clearMessage() {
-		this.world.getCell(this.x, this.y).emptyContent();
+		getCell().emptyContent();
 	}
 
 
@@ -333,8 +326,6 @@ public abstract class AbstractBuggle {
 		return "Buggle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Direction:" + direction + " Color:"
 		+ color;
 	}
-
-	public abstract void run();
 
 	@Override
 	public int hashCode() {

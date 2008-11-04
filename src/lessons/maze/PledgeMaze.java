@@ -2,12 +2,13 @@ package lessons.maze;
 
 import java.awt.Color;
 
-import jlm.bugglequest.AbstractBuggle;
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
-import jlm.exception.AlreadyHaveBaggleException;
-import jlm.exception.NoBaggleUnderBuggleException;
+import universe.bugglequest.AbstractBuggle;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.exception.NoBaggleUnderBuggleException;
+
 
 import lessons.Lesson;
 import lessons.ExerciseTemplated;
@@ -20,7 +21,7 @@ public class PledgeMaze extends ExerciseTemplated {
 		tabName = "PledgeMaze";
 				
 		/* Create initial situation */
-		World myWorld = new World("Labyrinth",1,1);
+		BuggleWorld myWorld = new BuggleWorld("Labyrinth",1,1);
 
 		new Buggle(myWorld, "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		setup(myWorld);
@@ -29,7 +30,7 @@ public class PledgeMaze extends ExerciseTemplated {
 	// to shorten loading time	
 	@Override
 	protected void computeAnswer(){
-		AbstractBuggle b = answerWorld[0].buggles().next();
+		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
 		b.setPos(11, 5);
 		try {
 			b.pickUpBaggle();

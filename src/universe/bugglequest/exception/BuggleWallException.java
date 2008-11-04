@@ -1,7 +1,9 @@
-package jlm.exception;
+package universe.bugglequest.exception;
+
+import jlm.exception.JLMException;
 
 
-public class BuggleWallException extends BuggleException {
+public class BuggleWallException extends JLMException {
 
 	public BuggleWallException(String msg) {
 		super(msg);

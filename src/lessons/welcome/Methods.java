@@ -2,10 +2,11 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
-import jlm.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -15,7 +16,7 @@ public class Methods extends ExerciseTemplated {
 	public Methods(Lesson lesson) {
 		super(lesson);
 		name = "Méthodes";
-		World myWorld =  new World("Donut World",7,7);
+		BuggleWorld myWorld =  new BuggleWorld("Donut World",7,7);
 		new Buggle(myWorld, "Homer", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 
 		try {

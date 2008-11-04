@@ -3,17 +3,17 @@ package lessons.welcome;
 import java.awt.Color;
 import java.util.Iterator;
 
-import jlm.bugglequest.AbstractBuggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
-import jlm.bugglequest.WorldCell;
+import universe.Entity;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.WorldCell;
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
 
 public class BDR2 extends ExerciseTemplated {
 
-	World myWorld ;
+	BuggleWorld myWorld ;
 	void set(int x, int y, String clue) {
 		WorldCell c = myWorld.getCell(x, y);
 		if (!c.hasContent())
@@ -46,7 +46,7 @@ public class BDR2 extends ExerciseTemplated {
 		tabName = "BDR2";
 		// TODO: May we have to precise that run() method is provided ? and that 'I' is not backward()
 
-		myWorld = new World("Dance Floor",11,11);
+		myWorld = new BuggleWorld("Dance Floor",11,11);
 		/* please applause the dancers*/
 		new BuggleDancingChecker(myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
 		new BuggleDancingChecker(myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);
@@ -88,8 +88,8 @@ public class BDR2 extends ExerciseTemplated {
 		/* Change the answer dancers to choregraphy checkers */
 		mutateBuggle(answerWorld, "lessons.welcome.BuggleDancingChecker");
 
-		Iterator<AbstractBuggle> it;
-		for (it = answerWorld[0].buggles(); it.hasNext();) {
+		Iterator<Entity> it;
+		for (it = answerWorld[0].entities(); it.hasNext();) {
 			BuggleDancingChecker bd = (BuggleDancingChecker)it.next();
 			bd.addTODO("ERRLRLRBLLCRLILRRWLULVVLR");
 			bd.run();

@@ -2,16 +2,17 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
-import jlm.bugglequest.WorldCell;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.WorldCell;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
 
 public class BDR extends ExerciseTemplated {
 
-	World myWorld;
+	BuggleWorld myWorld;
 	void set(int x, int y, String clue) {
 		WorldCell c = myWorld.getCell(x, y);
 		if (!c.hasContent())
@@ -45,7 +46,7 @@ public class BDR extends ExerciseTemplated {
 		 * very pedagogical...
 		 */
 		
-		myWorld = new World("Dance Floor",7,7);
+		myWorld = new BuggleWorld("Dance Floor",7,7);
 		/* first dancer, plus its steps */
 		new BuggleDancing(myWorld, "John Travolta", 0, 6, Direction.EAST, Color.red, Color.lightGray);
 		plus1(0,6);

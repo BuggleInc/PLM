@@ -7,12 +7,13 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
-import jlm.bugglequest.WorldCell;
-import jlm.exception.AlreadyHaveBaggleException;
-import jlm.ui.WorldView;
+import universe.bugglequest.WorldCell;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.ui.BuggleWorldView;
 
 
-public class MapView extends WorldView {
+
+public class MapView extends BuggleWorldView {
 
 	private static final long serialVersionUID = -8303474674104829723L;
 	private Editor editor;

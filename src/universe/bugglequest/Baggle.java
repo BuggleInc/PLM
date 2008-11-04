@@ -1,4 +1,4 @@
-package jlm.bugglequest;
+package universe.bugglequest;
 
 import java.awt.Color;
 

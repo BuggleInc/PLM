@@ -11,8 +11,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Vector;
 
-import jlm.bugglequest.AbstractBuggle;
-import jlm.bugglequest.World;
+import universe.Entity;
+import universe.World;
+import universe.bugglequest.AbstractBuggle;
+import universe.bugglequest.BuggleWorld;
+
 import jlm.io.Utils;
 
 
@@ -77,7 +80,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 	}
 
-	protected void loadMap(World intoWorld) {
+	protected void loadMap(BuggleWorld intoWorld) {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar)+".map";
 
 		BufferedReader br = null;
@@ -233,9 +236,9 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 	}
 
-	protected final void setup(World w) {
+	protected final void setup(BuggleWorld w) {
 		loadMap(w);
-		World[] ws = new World[1];
+		BuggleWorld[] ws = new BuggleWorld[1];
 		ws[0] = w;
 		setup(ws);
 	}
@@ -243,13 +246,13 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void computeAnswer() {
 		mutateBuggle(answerWorld,buggleName);
 		for (World aw : answerWorld) {
-			Iterator<AbstractBuggle> it = aw.buggles();
+			Iterator<Entity> it = aw.entities();
 			while (it.hasNext())
 				it.next().run();
 		}		
 	}
 
-	protected void setup(World[] ws) {		
+	protected void setup(BuggleWorld[] ws) {		
 		worldDuplicate(ws);
 
 		newSourceFromFile(tabName, buggleName.replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
@@ -272,7 +275,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		mutateBuggle(tabName);
 		for (int i=0; i<currentWorld.length; i++)
-			currentWorld[i].runBuggles(runnerVect);
+			currentWorld[i].runEntities(runnerVect);
 
 	}
 
@@ -284,6 +287,6 @@ public abstract class ExerciseTemplated extends Exercise {
 		}		
 		mutateBuggle(answerWorld, buggleName);
 		for (int i=0; i<answerWorld.length; i++)
-			answerWorld[i].runBuggles(runnerVect);
+			answerWorld[i].runEntities(runnerVect);
 	}
 }

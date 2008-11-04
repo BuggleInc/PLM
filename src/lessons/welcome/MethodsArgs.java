@@ -2,9 +2,10 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -16,7 +17,7 @@ public class MethodsArgs extends ExerciseTemplated {
 		name = "Méthodes avec des paramètres";
 		tabName = "Program";
 
-		World myWorld = new World("Buggles Party",7,7);
+		BuggleWorld myWorld = new BuggleWorld("Buggles Party",7,7);
 		new Buggle(myWorld, "Homer", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 		new Buggle(myWorld, "Bart", 1, 2, Direction.SOUTH, Color.black, Color.lightGray);
 		new Buggle(myWorld, "Lisa", 2, 4, Direction.SOUTH, Color.black, Color.lightGray);

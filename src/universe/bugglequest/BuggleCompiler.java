@@ -1,4 +1,4 @@
-package jlm.bugglequest;
+package universe.bugglequest;
 /* See also "Create dynamic applications with javax.tools", David J. Biesack.
 	http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR
 */
@@ -31,7 +31,7 @@ import javax.tools.ToolProvider;
 import javax.tools.JavaCompiler.CompilationTask;
 import javax.tools.JavaFileObject.Kind;
 
-import jlm.exception.BuggleCompilerException;
+import jlm.exception.JLMCompilerException;
 
 
 /** This class provides a facade to the javax.tools compiler, to ease its use in our case */ 
@@ -116,7 +116,7 @@ public class BuggleCompiler {
 	   public synchronized Class<AbstractBuggle> compile(final String qualifiedClassName,
 		         final CharSequence javaSource,
 		         final DiagnosticCollector<JavaFileObject> diagnosticsList,
-		         final Class<?>... types) throws BuggleCompilerException,
+		         final Class<?>... types) throws JLMCompilerException,
 		         ClassCastException {
 		      if (diagnosticsList != null)
 		         diagnostics = diagnosticsList;
@@ -153,7 +153,7 @@ public class BuggleCompiler {
 	   public synchronized Map<String, Class<AbstractBuggle>> compile(
 		         final Map<String, CharSequence> classes,
 		         final DiagnosticCollector<JavaFileObject> diagnosticsList)
-		         throws BuggleCompilerException {
+		         throws JLMCompilerException {
 
 		   if (diagnosticsList != null)
 			  diagnostics = diagnosticsList;
@@ -185,7 +185,7 @@ public class BuggleCompiler {
 		            options, null, sources);
 		      final Boolean result = task.call();
 		      if (result == null || !result.booleanValue()) {
-		         throw new BuggleCompilerException("Compilation failed.", classes.keySet(), diagnostics);
+		         throw new JLMCompilerException("Compilation failed.", classes.keySet(), diagnostics);
 		      }
 		      try {
 		         // For each class name in the input map, get its compiled
@@ -197,11 +197,11 @@ public class BuggleCompiler {
 		         }
 		         return compiled;
 		      } catch (ClassNotFoundException e) {
-		         throw new BuggleCompilerException(classes.keySet(), e, diagnostics);
+		         throw new JLMCompilerException(classes.keySet(), e, diagnostics);
 		      } catch (IllegalArgumentException e) {
-		         throw new BuggleCompilerException(classes.keySet(), e, diagnostics);
+		         throw new JLMCompilerException(classes.keySet(), e, diagnostics);
 		      } catch (SecurityException e) {
-		         throw new BuggleCompilerException(classes.keySet(), e, diagnostics);
+		         throw new JLMCompilerException(classes.keySet(), e, diagnostics);
 		      }
 		   }
 	   /**

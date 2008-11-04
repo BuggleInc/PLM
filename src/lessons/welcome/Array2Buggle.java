@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-public class Array2Buggle extends jlm.bugglequest.SimpleBuggle {
+public class Array2Buggle extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

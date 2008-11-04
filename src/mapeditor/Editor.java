@@ -5,14 +5,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import jlm.bugglequest.IWorldView;
-import jlm.bugglequest.World;
+import universe.IWorldView;
+import universe.bugglequest.BuggleWorld;
+
 import jlm.io.Utils;
 
 
 public class Editor {
 
-	private World world;
+	private BuggleWorld world;
 	private ArrayList<MapView> mapViews = new ArrayList<MapView>();
 	private String command = "topwall";
 	private Color selectedColor = Color.blue;
@@ -23,7 +24,7 @@ public class Editor {
 	}
 
 	public void createNewMap(int width, int height) {
-		this.world = new World("edited world",width, height);
+		this.world = new BuggleWorld("edited world",width, height);
 		
 		for (MapView v : this.mapViews) {
 			v.setWorld(this.world);
@@ -60,7 +61,7 @@ public class Editor {
 		notifyMapViews();
 	}
 
-	public World getWorld() {
+	public BuggleWorld getWorld() {
 		return this.world;
 	}
 	

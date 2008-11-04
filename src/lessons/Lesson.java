@@ -3,7 +3,7 @@ package lessons;
 import java.util.ArrayList;
 import java.util.List;
 
-import jlm.bugglequest.Game;
+import jlm.core.Game;
 
 
 public class Lesson {

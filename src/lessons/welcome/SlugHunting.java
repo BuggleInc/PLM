@@ -2,10 +2,11 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
-import jlm.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -17,9 +18,9 @@ public class SlugHunting extends ExerciseTemplated {
 		name = "Chasse à la limace";
 		tabName = "Program";
 
-		World[] myWorlds = new World[2];
+		BuggleWorld[] myWorlds = new BuggleWorld[2];
 
-		World myWorld = new World("Forrest", 7, 7);
+		BuggleWorld myWorld = new BuggleWorld("Forrest", 7, 7);
 		for (int i = 5; i >= 2; i--)
 			myWorld.getCell(6, i).setColor(Color.green);
 		myWorld.getCell(5, 2).setColor(Color.green);
@@ -37,7 +38,7 @@ public class SlugHunting extends ExerciseTemplated {
 		}
 		myWorlds[0] = myWorld;
 
-		myWorld = new World("Desert", 7, 7);
+		myWorld = new BuggleWorld("Desert", 7, 7);
 		for (int i = 5; i >= 2; i--)
 			myWorld.getCell(6, i).setColor(Color.green);
 		myWorld.getCell(6, 2).putTopWall();

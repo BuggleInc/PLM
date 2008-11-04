@@ -3,7 +3,7 @@ package lessons.welcome;
 import java.awt.Color;
 
 
-public class SlugHuntingBuggle extends jlm.bugglequest.SimpleBuggle {
+public class SlugHuntingBuggle extends universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {

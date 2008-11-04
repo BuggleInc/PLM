@@ -1,12 +1,13 @@
-package jlm.ui;
+package universe.bugglequest.ui;
 
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
-import jlm.bugglequest.AbstractBuggle;
-import jlm.bugglequest.Game;
-import jlm.bugglequest.Logger;
-import jlm.bugglequest.World;
+import universe.World;
+import universe.bugglequest.AbstractBuggle;
+
+import jlm.core.Game;
+import jlm.core.Logger;
 import jlm.event.GameListener;
 
 
@@ -24,24 +25,24 @@ public class BuggleComboListAdapter extends AbstractListModel implements ComboBo
 
 	@Override
 	public Object getElementAt(int index) {
-		return this.world.getBuggle(index);
+		return this.world.getEntity(index);
 	}
 
 	@Override
 	public int getSize() {
-		return this.world.bugglesCount();
+		return this.world.entityCount();
 	}
 
 	@Override
 	public Object getSelectedItem() {
-		return this.game.getSelectedBuggle();
+		return this.game.getSelectedEntity();
 	}
 
 	@Override
 	public void setSelectedItem(Object anItem) {
 		if (anItem instanceof AbstractBuggle) {
 			AbstractBuggle b = (AbstractBuggle) anItem;
-			this.game.setSelectedBuggle(b);
+			this.game.setSelectedEntity(b);
 		} else {
 			Logger.log("buggleComboListAdapter:setSelectedItem", "parameter is not a buggle");
 		}
@@ -65,17 +66,17 @@ public class BuggleComboListAdapter extends AbstractListModel implements ComboBo
 	@Override
 	public void selectedWorldHasChanged() {
 		this.world = this.game.getSelectedWorld();
-		fireContentsChanged(this, 0, this.world.bugglesCount() - 1);
+		fireContentsChanged(this, 0, this.world.entityCount() - 1);
 	}
 
 	@Override
-	public void selectedBuggleHasChanged() {
-		fireContentsChanged(this, 0, this.world.bugglesCount() - 1);
+	public void selectedEntityHasChanged() {
+		fireContentsChanged(this, 0, this.world.entityCount() - 1);
 	}
 	
 	@Override
 	public void selectedWorldWasUpdated() {
-		fireContentsChanged(this, 0, this.world.bugglesCount() - 1);
+		fireContentsChanged(this, 0, this.world.entityCount() - 1);
 	}
 
 }

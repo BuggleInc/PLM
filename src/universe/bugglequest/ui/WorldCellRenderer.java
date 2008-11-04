@@ -1,4 +1,4 @@
-package jlm.ui;
+package universe.bugglequest.ui;
 
 import java.awt.Component;
 
@@ -6,14 +6,15 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import jlm.bugglequest.AbstractBuggle;
+import universe.bugglequest.BuggleWorld;
 
 
-public class BuggleCellRenderer extends JLabel implements ListCellRenderer {
 
-	private static final long serialVersionUID = 5274134398293975047L;
+public class WorldCellRenderer extends JLabel implements ListCellRenderer {
 
-	public BuggleCellRenderer() {
+ 	private static final long serialVersionUID = -8332490521368971733L;
+
+	public WorldCellRenderer() {
 		//setOpaque(true);
 	}
 
@@ -21,12 +22,12 @@ public class BuggleCellRenderer extends JLabel implements ListCellRenderer {
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 
-		if (value instanceof AbstractBuggle) {
-			AbstractBuggle b = (AbstractBuggle) value;
-			setText(b.getName());
+		if (value instanceof BuggleWorld) {
+			BuggleWorld w = (BuggleWorld) value;
+			setText(w.getName());
 		} else {
 			setText(value!=null?value.toString():"");
-		}     
+		}
        
         if (isSelected) {
             setBackground(list.getSelectionBackground());
@@ -35,7 +36,7 @@ public class BuggleCellRenderer extends JLabel implements ListCellRenderer {
             setBackground(list.getBackground());
             setForeground(list.getForeground());
         }
-        
+                     
         setFont(list.getFont());
         setOpaque(true);
         return this;

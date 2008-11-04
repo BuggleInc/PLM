@@ -2,10 +2,11 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
-import jlm.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -17,9 +18,9 @@ public class MethodsReturning extends ExerciseTemplated {
 		name = "Méthodes retournant un résultat";
 		tabName = "Program";
 
-		World[] myWorld = new World[2];
+		BuggleWorld[] myWorld = new BuggleWorld[2];
 		for (int i=0; i<2;i++) {
-			myWorld[i] = new World("World "+(i+1),7,7);
+			myWorld[i] = new BuggleWorld("World "+(i+1),7,7);
 			new Buggle(myWorld[i], "Searcher", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 		}
 

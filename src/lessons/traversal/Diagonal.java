@@ -2,9 +2,10 @@ package lessons.traversal;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -16,7 +17,7 @@ public class Diagonal extends ExerciseTemplated {
 		name = "Parcours en diagonale";
 		tabName = "Diagonal";
 
-		World myWorld = new World("Grid",7,7);
+		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);
 		for (int i=0; i<7;i++) {
 			myWorld.getCell(i, 0).putTopWall();
 			myWorld.getCell(0, i).putLeftWall();

@@ -2,9 +2,10 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -16,7 +17,7 @@ public class LoopWhile extends ExerciseTemplated {
 		name = "Boucles tant que";
 		tabName = "Program";
 
-		World myWorld = new World("Closed world",7,7);
+		BuggleWorld myWorld = new BuggleWorld("Closed world",7,7);
 		for (int i=0;i<7;i++) {
 			new Buggle(myWorld, "Joker "+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 			myWorld.getCell(i, 6-i).putTopWall();

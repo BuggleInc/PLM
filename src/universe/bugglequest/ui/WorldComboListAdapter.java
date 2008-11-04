@@ -1,11 +1,13 @@
-package jlm.ui;
+package universe.bugglequest.ui;
 
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
-import jlm.bugglequest.Game;
-import jlm.bugglequest.Logger;
-import jlm.bugglequest.World;
+import universe.World;
+import universe.bugglequest.BuggleWorld;
+
+import jlm.core.Game;
+import jlm.core.Logger;
 import jlm.event.GameListener;
 
 import lessons.Exercise;
@@ -41,8 +43,8 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 
 	@Override
 	public void setSelectedItem(Object anItem) {
-		if (anItem instanceof World) {
-			World w = (World) anItem;
+		if (anItem instanceof BuggleWorld) {
+			BuggleWorld w = (BuggleWorld) anItem;
 			this.selectedWorld = w;
 			this.game.setSelectedWorld(w);
 		} else {
@@ -75,7 +77,7 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 	}
 	
 	@Override
-	public void selectedBuggleHasChanged() {
+	public void selectedEntityHasChanged() {
 		// don't care
 	}
 	

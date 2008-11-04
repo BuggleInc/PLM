@@ -3,9 +3,10 @@ package lessons.welcome;
 import java.awt.Color;
 import java.util.Stack;
 
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.SimpleBuggle;
-import jlm.bugglequest.World;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+import universe.bugglequest.SimpleBuggle;
+
 
 
 public class BuggleDancingChecker extends SimpleBuggle {
@@ -14,7 +15,7 @@ public class BuggleDancingChecker extends SimpleBuggle {
 		super();
 	}
 
-	public BuggleDancingChecker(World w, String name, int i, int j, Direction dir, Color c, Color bc) {
+	public BuggleDancingChecker(BuggleWorld w, String name, int i, int j, Direction dir, Color c, Color bc) {
 		super(w,name,i,j,dir, c, bc);
 	}
 

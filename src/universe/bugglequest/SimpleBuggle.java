@@ -1,14 +1,15 @@
-package jlm.bugglequest;
+package universe.bugglequest;
 
 import java.awt.Color;
 
-import jlm.exception.AlreadyHaveBaggleException;
-import jlm.exception.BuggleWallException;
-import jlm.exception.NoBaggleUnderBuggleException;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.exception.BuggleWallException;
+import universe.bugglequest.exception.NoBaggleUnderBuggleException;
+
 
 
 public abstract class SimpleBuggle extends AbstractBuggle  {
-	public SimpleBuggle(World w, String name, int i, int j, Direction dir, Color c, Color bc) {
+	public SimpleBuggle(BuggleWorld w, String name, int i, int j, Direction dir, Color c, Color bc) {
 		super(w,name,i,j,dir,c,bc);
 	}
 

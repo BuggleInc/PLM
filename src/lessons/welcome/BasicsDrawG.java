@@ -2,9 +2,10 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -16,7 +17,7 @@ public class BasicsDrawG extends ExerciseTemplated {
 		name = "Rudiments du Java (3)";
 		tabName = "Program";
 
-		World myWorld = new World("Training World", 7, 7);
+		BuggleWorld myWorld = new BuggleWorld("Training World", 7, 7);
 		new Buggle(myWorld, "Rookie", 5, 1, Direction.NORTH, Color.black, Color.blue);
 
 		setup(myWorld);

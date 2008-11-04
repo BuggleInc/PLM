@@ -1,8 +1,9 @@
-package jlm.bugglequest;
+package universe.bugglequest;
 
 import java.awt.Color;
 
-import jlm.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+
 
 
 public class WorldCell {
@@ -21,13 +22,13 @@ public class WorldCell {
 
 	private boolean topWall;
 
-	private World world;
+	private BuggleWorld world;
 
 	private int x;
 
 	private int y;
 
-	public WorldCell(World w, int x, int y) {
+	public WorldCell(BuggleWorld w, int x, int y) {
 		this(w, x, y, DEFAULT_COLOR, false, false, null, "");
 	}
 
@@ -41,11 +42,11 @@ public class WorldCell {
 		this.content = c.content;
 	}
 
-	public WorldCell(World w, int x, int y, Color color, boolean leftWall, boolean topWall) {
+	public WorldCell(BuggleWorld w, int x, int y, Color color, boolean leftWall, boolean topWall) {
 		this(w, x, y, color, leftWall, topWall, null, "");
 	}
 
-	public WorldCell(World w, int x, int y, Color c, boolean leftWall, boolean topWall, Baggle baggle, String content) {
+	public WorldCell(BuggleWorld w, int x, int y, Color c, boolean leftWall, boolean topWall, Baggle baggle, String content) {
 		this.world = w;
 		this.x = x;
 		this.y = y;
@@ -179,7 +180,7 @@ public class WorldCell {
 		return this.y;
 	}
 
-	public void setWorld(World w) {
+	public void setWorld(BuggleWorld w) {
 		this.world = w;
 	}
 	

@@ -2,9 +2,10 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import jlm.bugglequest.Buggle;
-import jlm.bugglequest.Direction;
-import jlm.bugglequest.World;
+import universe.bugglequest.Buggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.Direction;
+
 
 import lessons.ExerciseTemplated;
 import lessons.Lesson;
@@ -14,9 +15,9 @@ public class Array2 extends ExerciseTemplated {
 	public Array2(Lesson lesson) {
 		super(lesson);
 		name = "Tricot, tableaux et modulos";
-		World[] myWorlds = new World[3];
+		BuggleWorld[] myWorlds = new BuggleWorld[3];
 
-		myWorlds[0] = new World("Pattern 1",6,6);
+		myWorlds[0] = new BuggleWorld("Pattern 1",6,6);
 		myWorlds[0].getCell(0,0).setColor(Color.red);
 		myWorlds[0].getCell(0,1).setColor(Color.cyan);
 		myWorlds[0].getCell(0,2).setColor(Color.green);
@@ -29,7 +30,7 @@ public class Array2 extends ExerciseTemplated {
 		myWorlds[0].getCell(4,0).addContent("4");
 		myWorlds[0].getCell(5,0).addContent("5");
 
-		myWorlds[1] = new World("Pattern 2",7,7);
+		myWorlds[1] = new BuggleWorld("Pattern 2",7,7);
 		myWorlds[1].getCell(0,2).setColor(Color.red);
 		myWorlds[1].getCell(0,6).setColor(Color.cyan);
 		myWorlds[1].getCell(0,5).setColor(Color.green);
@@ -44,7 +45,7 @@ public class Array2 extends ExerciseTemplated {
 		myWorlds[1].getCell(5,0).addContent("2");
 		myWorlds[1].getCell(6,0).addContent("1");
 
-		myWorlds[2] = new World("Pattern 3",8,8);
+		myWorlds[2] = new BuggleWorld("Pattern 3",8,8);
 		myWorlds[2].getCell(0,0).setColor(Color.red);
 		myWorlds[2].getCell(0,7).setColor(Color.cyan);
 		myWorlds[2].getCell(0,1).setColor(Color.green);
