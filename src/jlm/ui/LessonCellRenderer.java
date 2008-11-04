@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import jlm.bugglequest.Game;
+import jlm.core.Game;
 
 import lessons.Lesson;
 

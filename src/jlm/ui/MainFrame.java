@@ -25,8 +25,8 @@ import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
 
-import jlm.bugglequest.Game;
-import jlm.bugglequest.GameState;
+import jlm.core.Game;
+import jlm.core.GameState;
 import jlm.event.GameStateListener;
 import jlm.ui.action.About;
 import jlm.ui.action.CleanUpSession;

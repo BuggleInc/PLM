@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.ImageIcon;
 
-import jlm.bugglequest.Game;
+import jlm.core.Game;
 
 
 public class CleanUpSession extends AbstractGameAction {

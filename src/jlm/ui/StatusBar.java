@@ -11,8 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
-import jlm.bugglequest.Game;
-import jlm.bugglequest.GameState;
+import jlm.core.Game;
+import jlm.core.GameState;
 import jlm.event.GameStateListener;
 
 

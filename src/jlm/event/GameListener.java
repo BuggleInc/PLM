@@ -14,9 +14,9 @@ public interface GameListener {
 	// when a world is selected as the current world
 	public void selectedWorldHasChanged(); 
 	
-	// when a buggle is selected as the current buggle in a world
-	public void selectedBuggleHasChanged();
+	// when an entity is selected as the current entity in a world
+	public void selectedEntityHasChanged();
 
-	// when buggles are replaced in the current 
+	// when entities are replaced in the current 
 	public void selectedWorldWasUpdated();
 }

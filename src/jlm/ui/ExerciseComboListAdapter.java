@@ -3,8 +3,8 @@ package jlm.ui;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
-import jlm.bugglequest.Game;
-import jlm.bugglequest.Logger;
+import jlm.core.Game;
+import jlm.core.Logger;
 import jlm.event.GameListener;
 
 import lessons.Exercise;
@@ -72,7 +72,7 @@ public class ExerciseComboListAdapter extends AbstractListModel implements Combo
 	}
 	
 	@Override
-	public void selectedBuggleHasChanged() {
+	public void selectedEntityHasChanged() {
 		// don't care
 	}
 	

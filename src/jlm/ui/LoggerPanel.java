@@ -5,8 +5,9 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-import jlm.bugglequest.Game;
-import jlm.bugglequest.LogWriter;
+
+import jlm.core.Game;
+import jlm.core.LogWriter;
 
 
 public class LoggerPanel extends JTextArea implements LogWriter {
@@ -18,8 +19,6 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 		setEditable(false);
 		game.setOutputWriter(this);
 	}
-
-	// TODO: System.out.printXXX are not redirected to this panel
 	
 	public void clear() {
 		setText(null);

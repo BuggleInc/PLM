@@ -7,12 +7,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import jlm.bugglequest.World;
+import universe.bugglequest.BuggleWorld;
+
 
 
 public class Utils {
 
-	public static void writeWorldIntoFile(World world, File outputFile) throws IOException {
+	public static void writeWorldIntoFile(BuggleWorld world, File outputFile) throws IOException {
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 		MapWriter mw = null;
@@ -29,7 +30,7 @@ public class Utils {
 		}
 	}
 
-	public static void readWorldFromFile(World world, File inputFile) throws IOException {
+	public static void readWorldFromFile(BuggleWorld world, File inputFile) throws IOException {
 		BufferedReader br = null;
 		FileReader fr = null;
 		try {
@@ -43,7 +44,7 @@ public class Utils {
 		}
 	}
 
-	public static void readWorldFromFile(World world, BufferedReader reader) throws IOException {
+	public static void readWorldFromFile(BuggleWorld world, BufferedReader reader) throws IOException {
 		MapReader mr = new MapReader(reader);
 		mr.read(world);
 	}

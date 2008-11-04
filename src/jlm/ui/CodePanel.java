@@ -13,7 +13,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 import javax.swing.text.EditorKit;
 
-import jlm.bugglequest.Game;
+import jlm.core.Game;
 import jlm.event.GameListener;
 import jsyntaxpane.SyntaxKitFactory;
 import jsyntaxpane.SyntaxStyle;
@@ -116,7 +116,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 	}
 
 	@Override
-	public void selectedBuggleHasChanged() {
+	public void selectedEntityHasChanged() {
 		// don't care
 	}
 	

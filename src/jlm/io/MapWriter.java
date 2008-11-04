@@ -5,8 +5,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-import jlm.bugglequest.World;
-import jlm.bugglequest.WorldCell;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.WorldCell;
+
 
 
 public class MapWriter extends Writer {
@@ -32,7 +33,7 @@ public class MapWriter extends Writer {
 		writer.write(cbuf, off, len);
 	}
 
-	public void write(World world) throws IOException {
+	public void write(BuggleWorld world) throws IOException {
 		writer.write(world.getWidth() + "; width");
 		writer.write("\n");
 		writer.write(world.getHeight() + "; height");

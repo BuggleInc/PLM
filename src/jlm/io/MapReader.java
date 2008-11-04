@@ -5,10 +5,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import jlm.bugglequest.Baggle;
-import jlm.bugglequest.World;
-import jlm.bugglequest.WorldCell;
-import jlm.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.Baggle;
+import universe.bugglequest.BuggleWorld;
+import universe.bugglequest.WorldCell;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
+
 
 
 public class MapReader extends Reader {
@@ -34,7 +35,7 @@ public class MapReader extends Reader {
 		return s.replaceAll(";.*", "");
 	}
 
-	public void read(World world) throws IOException {
+	public void read(BuggleWorld world) throws IOException {
 		String line = reader.readLine();
 		int width = 0;
 		if (line != null)

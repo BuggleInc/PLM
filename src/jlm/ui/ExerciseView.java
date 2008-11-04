@@ -1,25 +1,21 @@
 package jlm.ui;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
-import jlm.bugglequest.AbstractBuggle;
-import jlm.bugglequest.Game;
+import universe.bugglequest.ui.BuggleButtonPanel;
+import universe.bugglequest.ui.BuggleCellRenderer;
+import universe.bugglequest.ui.BuggleComboListAdapter;
+import universe.bugglequest.ui.WorldCellRenderer;
+import universe.bugglequest.ui.WorldComboListAdapter;
+
+import jlm.core.Game;
 import jlm.event.GameListener;
-import jlm.exception.BuggleWallException;
 
 
 public class ExerciseView extends JPanel implements GameListener {
@@ -32,11 +28,7 @@ public class ExerciseView extends JPanel implements GameListener {
 	private JComboBox buggleComboBox; 
 	private JToolBar buttonsPanel;
 	private JComboBox worldComboBox;
-	private JButton fButton;
-	private JButton bButton;
-	private JButton rButton;
-	private JButton lButton;
-	private JToggleButton brushButton;
+	private BuggleButtonPanel buttonPanel;
 	private JTabbedPane tabPane;
 	
 	public ExerciseView(Game game) {
@@ -50,11 +42,11 @@ public class ExerciseView extends JPanel implements GameListener {
 	public void setEnabledControl(boolean enabled) {
 		worldComboBox.setEnabled(enabled);
 		buggleComboBox.setEnabled(enabled);
-		fButton.setEnabled(enabled);
-		bButton.setEnabled(enabled);
-		lButton.setEnabled(enabled);
-		rButton.setEnabled(enabled);
-		brushButton.setEnabled(enabled);
+		if (buttonPanel == null) {
+			System.out.println("button panel is null");
+			Thread.currentThread().getStackTrace().toString();
+		}
+		buttonPanel.setEnabledControl(enabled);
 	}
 	
 	public void initComponents() {
@@ -71,10 +63,10 @@ public class ExerciseView extends JPanel implements GameListener {
 		mapsPanel.add(worldComboBox, BorderLayout.NORTH);
 
 		tabPane = new JTabbedPane();
-		worldView = new WorldView(Game.getInstance().getSelectedWorld());
+		worldView = Game.getInstance().getSelectedWorld().getView();
 		tabPane.add("World", worldView);
 
-		objectivesView = new WorldView(Game.getInstance().getAnswerOfSelectedWorld());
+		objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
 		tabPane.add("Objective", objectivesView);
 		mapsPanel.add(tabPane, BorderLayout.CENTER);
 
@@ -91,104 +83,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		 * Even if the editable property is set to false
 		 */
 
-		buttonsPanel = new JToolBar(); // for the nice jbutton style
-		buttonsPanel.setFloatable(false);
-
-		fButton = new JButton("forward");
-		fButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				try {
-					game.getSelectedBuggle().forward();
-				} catch (BuggleWallException e) {
-					// e.printStackTrace();
-					game.getOutputWriter().log(e);
-				}
-			}
-		});
-		fButton.setMnemonic(KeyEvent.VK_UP);
-
-		bButton = new JButton("backward");
-		bButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				try {
-					game.getSelectedBuggle().backward();
-				} catch (BuggleWallException e) {
-					// e.printStackTrace();
-					game.getOutputWriter().log(e);
-				}
-			}
-		});
-		bButton.setMnemonic(KeyEvent.VK_DOWN);
-
-		lButton = new JButton("turn left");
-		lButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				game.getSelectedBuggle().turnLeft();
-			}
-		});
-		lButton.setMnemonic(KeyEvent.VK_LEFT);
-
-		rButton = new JButton("turn right");
-		rButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				game.getSelectedBuggle().turnRight();
-			}
-		});
-		rButton.setMnemonic(KeyEvent.VK_RIGHT);
-
-		brushButton = new JToggleButton("mark");
-		brushButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				AbstractBuggle b = game.getSelectedBuggle();
-				if (b.isBrushDown()) {
-					b.brushUp();
-				} else {
-					b.brushDown();
-				}
-			}
-		});
-		brushButton.setMnemonic(KeyEvent.VK_SPACE);
-		brushButton.setSelected(game.getSelectedBuggle().isBrushDown());
-		
-		
-		GridBagLayout gdLayout = new GridBagLayout();
-		buttonsPanel.setLayout(gdLayout);
-
-		GridBagConstraints c = new GridBagConstraints();
-		c.insets = new Insets(3, 3, 3, 3);
-
-		c.gridy = 0;
-		c.gridx = 0;
-		c.gridwidth = 3;
-		gdLayout.setConstraints(buggleComboBox, c);
-		buttonsPanel.add(buggleComboBox);
-
-		c.gridy = 1;
-		c.gridx = 1;
-		c.gridwidth = 1;
-		gdLayout.setConstraints(fButton, c);
-		buttonsPanel.add(fButton);
-
-		c.gridy = 2;
-		c.gridx = 0;
-		gdLayout.setConstraints(lButton, c);
-		buttonsPanel.add(lButton);
-
-		c.gridy = 2;
-		c.gridx = 1;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		gdLayout.setConstraints(brushButton, c);
-		buttonsPanel.add(brushButton);
-
-		c.gridy = 2;
-		c.gridx = 2;
-		gdLayout.setConstraints(rButton, c);
-		buttonsPanel.add(rButton);
-
-		c.gridy = 3;
-		c.gridx = 1;
-		gdLayout.setConstraints(bButton, c);
-		buttonsPanel.add(bButton);
+		buttonsPanel = new BuggleButtonPanel(buggleComboBox, this.game);
 		controlPanel.add(buttonsPanel, BorderLayout.CENTER);
 
 		add(mapsPanel, BorderLayout.CENTER);
@@ -221,13 +116,13 @@ public class ExerciseView extends JPanel implements GameListener {
 	public void selectedWorldHasChanged() {
 		worldView.setWorld(this.game.getSelectedWorld());
 		objectivesView.setWorld(this.game.getAnswerOfSelectedWorld());
-		brushButton.setSelected(game.getSelectedBuggle().isBrushDown());
+		//TODO KILLME brushButton.setSelected(game.getSelectedBuggle().isBrushDown());
 	}
 
 	@Override
-	public void selectedBuggleHasChanged() {
+	public void selectedEntityHasChanged() {
 		// don't care
-		brushButton.setSelected(game.getSelectedBuggle().isBrushDown());
+		//TODO KILLME brushButton.setSelected(game.getSelectedBuggle().isBrushDown());
 	}
 
 	@Override

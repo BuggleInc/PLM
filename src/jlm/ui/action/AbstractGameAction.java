@@ -3,7 +3,7 @@ package jlm.ui.action;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 
-import jlm.bugglequest.Game;
+import jlm.core.Game;
 
 
 public abstract class AbstractGameAction extends AbstractAction {

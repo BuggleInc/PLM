@@ -1,6 +1,6 @@
 package jlm.event;
 
-import jlm.bugglequest.GameState;
+import jlm.core.GameState;
 
 public interface GameStateListener {
 

@@ -4,7 +4,7 @@ import javax.swing.JEditorPane;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.StyleSheet;
 
-import jlm.bugglequest.Game;
+import jlm.core.Game;
 import jlm.event.GameListener;
 
 import lessons.Exercise;
@@ -56,7 +56,7 @@ public class MissionPanel extends JEditorPane implements GameListener {
 	}
 	
 	@Override
-	public void selectedBuggleHasChanged() {
+	public void selectedEntityHasChanged() {
 		// don't care
 	}
 	
