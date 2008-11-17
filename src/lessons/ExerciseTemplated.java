@@ -11,12 +11,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Vector;
 
+import jlm.io.Utils;
 import universe.Entity;
 import universe.World;
-import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.BuggleWorld;
-
-import jlm.io.Utils;
 
 
 public abstract class ExerciseTemplated extends Exercise {

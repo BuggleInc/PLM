@@ -5,7 +5,6 @@ import javax.swing.SwingUtilities;
 
 import universe.IWorldView;
 import universe.World;
-import universe.bugglequest.BuggleWorld;
 
 
 public abstract class WorldView extends JComponent  implements IWorldView {
