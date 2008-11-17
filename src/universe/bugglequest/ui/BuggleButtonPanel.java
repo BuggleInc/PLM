@@ -8,14 +8,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
+import jlm.core.Game;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.exception.BuggleWallException;
-
-import jlm.core.Game;
 
 public class BuggleButtonPanel extends JToolBar {
 
@@ -28,7 +26,7 @@ public class BuggleButtonPanel extends JToolBar {
 
 	/* TODO: having the combox passed as arg is not clean, but this is generic, not buggle specific */
 	
-	public BuggleButtonPanel(JComboBox entityComboBox, final Game game) {
+	public BuggleButtonPanel(final Game game) {
 
 		setFloatable(false);
 
@@ -94,12 +92,6 @@ public class BuggleButtonPanel extends JToolBar {
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.insets = new Insets(3, 3, 3, 3);
-
-		c.gridy = 0;
-		c.gridx = 0;
-		c.gridwidth = 3;
-		gdLayout.setConstraints(entityComboBox, c);
-		add(entityComboBox);
 
 		c.gridy = 1;
 		c.gridx = 1;

@@ -1,14 +1,12 @@
 package jlm.ui;
 
-import java.awt.BorderLayout;
-
-import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 import jlm.core.Game;
 import jlm.event.GameListener;
+import net.miginfocom.swing.MigLayout;
 import universe.bugglequest.ui.BuggleButtonPanel;
 
 
@@ -44,16 +42,13 @@ public class ExerciseView extends JPanel implements GameListener {
 	
 	public void initComponents() {
 		// TODO: add key shortcuts
-		setLayout(new BorderLayout());
-
-		JPanel mapsPanel = new JPanel();
-		mapsPanel.setBorder(BorderFactory.createEtchedBorder());
-		mapsPanel.setLayout(new BorderLayout());
+		setLayout(new MigLayout("fill"));
+		//setLayout(new BorderLayout());
 
 		worldComboBox = new JComboBox(new WorldComboListAdapter(Game.getInstance()));
 		worldComboBox.setRenderer(new WorldCellRenderer());
 		worldComboBox.setEditable(false);
-		mapsPanel.add(worldComboBox, BorderLayout.NORTH);
+		add(worldComboBox, "span,growx,wrap");
 
 		tabPane = new JTabbedPane();
 		worldView = Game.getInstance().getSelectedWorld().getView();
@@ -61,26 +56,21 @@ public class ExerciseView extends JPanel implements GameListener {
 
 		objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
 		tabPane.add("Objective", objectivesView);
-		mapsPanel.add(tabPane, BorderLayout.CENTER);
-
-		JPanel controlPanel = new JPanel();
-		controlPanel.setLayout(new BorderLayout());
-		controlPanel.setBorder(BorderFactory.createEtchedBorder());
+		add(tabPane, "span,grow,wrap");
 
 		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
 		entityComboBox.setRenderer(new EntityCellRenderer());
 		entityComboBox.setEditable(false);
+		add(entityComboBox,"span,alignx center,wrap");
+		
 		/*
 		 * FIXME: strange behavior on OSX, if you click on long time on the
 		 * selected buggle item then it tries to edit it and throw an exception.
 		 * Even if the editable property is set to false
 		 */
 
-		buttonPanel = new BuggleButtonPanel(entityComboBox, this.game);
-		controlPanel.add(buttonPanel, BorderLayout.CENTER);
-
-		add(mapsPanel, BorderLayout.CENTER);
-		add(controlPanel, BorderLayout.SOUTH);
+		buttonPanel = new BuggleButtonPanel(this.game);
+		add(buttonPanel, "span,growx,wrap");
 	}
 
 	public void selectObjectivePane() {
