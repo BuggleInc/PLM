@@ -181,12 +181,12 @@ public class Game implements IWorldView {
 	}
 
 	public void setOutputWriter(LogWriter writer) {
-		if (!getProperties().getProperty("output.capture","false").equals("false")) {
-			this.outputWriter = writer;
+		this.outputWriter = writer;
+		if (!getProperties().getProperty("output.capture","false").equals("true")) {
 			Logger l  = new Logger(outputWriter);
 			System.setOut(l);
 			System.setErr(l);
-		}
+		} 
 	}
 
 	public LogWriter getOutputWriter() {
