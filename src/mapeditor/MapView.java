@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
-import universe.bugglequest.WorldCell;
+import universe.bugglequest.BuggleWorldCell;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.ui.BuggleWorldView;
 
@@ -35,7 +35,7 @@ public class MapView extends BuggleWorldView {
 				int x = (int) ((e.getX() - getPadX()) / getCellWidth());
 				int y = (int) ((e.getY() - getPadY()) / getCellWidth());
 
-				WorldCell cell = editor.getWorld().getCell(x, y);
+				BuggleWorldCell cell = editor.getWorld().getCell(x, y);
 				String cmd = editor.getCommand();
 
 				if (cmd.equals("topwall")) {

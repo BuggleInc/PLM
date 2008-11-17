@@ -6,7 +6,7 @@ import universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 
 
-public class WorldCell {
+public class BuggleWorldCell {
 	private Color color;
 
 	private Color msgColor = DEFAULT_MSG_COLOR; 
@@ -28,11 +28,11 @@ public class WorldCell {
 
 	private int y;
 
-	public WorldCell(BuggleWorld w, int x, int y) {
+	public BuggleWorldCell(BuggleWorld w, int x, int y) {
 		this(w, x, y, DEFAULT_COLOR, false, false, null, "");
 	}
 
-	public WorldCell(WorldCell c) {
+	public BuggleWorldCell(BuggleWorldCell c) {
 		this(c.world, c.x, c.y, c.color, c.leftWall, c.topWall, null, null);
 		if (c.hasBaggle()) {
 			Baggle b = new Baggle(c.getBaggle());
@@ -42,11 +42,11 @@ public class WorldCell {
 		this.content = c.content;
 	}
 
-	public WorldCell(BuggleWorld w, int x, int y, Color color, boolean leftWall, boolean topWall) {
+	public BuggleWorldCell(BuggleWorld w, int x, int y, Color color, boolean leftWall, boolean topWall) {
 		this(w, x, y, color, leftWall, topWall, null, "");
 	}
 
-	public WorldCell(BuggleWorld w, int x, int y, Color c, boolean leftWall, boolean topWall, Baggle baggle, String content) {
+	public BuggleWorldCell(BuggleWorld w, int x, int y, Color c, boolean leftWall, boolean topWall, Baggle baggle, String content) {
 		this.world = w;
 		this.x = x;
 		this.y = y;
@@ -207,7 +207,7 @@ public class WorldCell {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		WorldCell other = (WorldCell) obj;
+		BuggleWorldCell other = (BuggleWorldCell) obj;
 		//if (hasBaggle() != other.hasBaggle())
 		//	return false;
 		if (baggle == null) {

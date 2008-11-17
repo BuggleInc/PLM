@@ -8,13 +8,13 @@ import lessons.Lesson;
 import universe.Entity;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;
-import universe.bugglequest.WorldCell;
+import universe.bugglequest.BuggleWorldCell;
 
 public class BDR2 extends ExerciseTemplated {
 
 	BuggleWorld myWorld ;
 	void set(int x, int y, String clue) {
-		WorldCell c = myWorld.getCell(x, y);
+		BuggleWorldCell c = myWorld.getCell(x, y);
 		if (!c.hasContent())
 			c.addContent(clue);
 

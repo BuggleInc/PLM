@@ -14,7 +14,7 @@ import universe.World;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.Baggle;
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.WorldCell;
+import universe.bugglequest.BuggleWorldCell;
 
 
 
@@ -63,9 +63,9 @@ public class BuggleWorldView extends jlm.ui.WorldView {
 	
 	// return the color of the cell located at position (x,y)
 	private Color getCellColor(int x, int y) {
-		WorldCell cell = ((BuggleWorld)world).getCell(x, y);
+		BuggleWorldCell cell = ((BuggleWorld)world).getCell(x, y);
 
-		if (WorldCell.DEFAULT_COLOR.equals(cell.getColor())) {
+		if (BuggleWorldCell.DEFAULT_COLOR.equals(cell.getColor())) {
 			if ((x+y)%2==0)
 				return DARK_CELL_COLOR;	
 			else
@@ -85,7 +85,7 @@ public class BuggleWorldView extends jlm.ui.WorldView {
 			for (int y=0; y<w.getHeight(); y++) {
 				g.setColor(getCellColor(x, y));
 				
-				WorldCell cell = w.getCell(x, y);
+				BuggleWorldCell cell = w.getCell(x, y);
 
 				g.fill(new Rectangle2D.Double(padx+x*cellW, pady+y*cellW, cellW, cellW));	
 				
@@ -118,7 +118,7 @@ public class BuggleWorldView extends jlm.ui.WorldView {
 		
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				WorldCell cell = w.getCell(x, y);
+				BuggleWorldCell cell = w.getCell(x, y);
 
 				if (cell.hasTopWall()) {
 					g.draw(new Line2D.Double(padx+x*cellW, pady+y*cellW-1, padx+(x+1)*cellW, pady+y*cellW-1));						
@@ -180,7 +180,7 @@ public class BuggleWorldView extends jlm.ui.WorldView {
 		}
 	}
 	
-	private void drawBaggle(Graphics2D g, WorldCell cell, Baggle b) {
+	private void drawBaggle(Graphics2D g, BuggleWorldCell cell, Baggle b) {
 		double padx = getPadX();
 		double pady = getPadY();
 	
@@ -208,7 +208,7 @@ public class BuggleWorldView extends jlm.ui.WorldView {
 		g.draw(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
 	}
 	
-	private void drawMessage(Graphics2D g, WorldCell cell, String msg) {
+	private void drawMessage(Graphics2D g, BuggleWorldCell cell, String msg) {
 		double padx = getPadX();
 		double pady = getPadY();
 		double ox = cell.getX()*getCellWidth(); // x-offset of the cell

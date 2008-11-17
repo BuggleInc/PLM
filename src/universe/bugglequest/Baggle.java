@@ -5,16 +5,16 @@ import java.awt.Color;
 public class Baggle {
 
 	private Color color;
-	private WorldCell cell;
+	private BuggleWorldCell cell;
 
 	public static final Color DEFAULT_COLOR = new Color(0.82f,0.41f,0.12f);
 	
 	
-	public Baggle(WorldCell c) {
+	public Baggle(BuggleWorldCell c) {
 		this(c, DEFAULT_COLOR);
 	}
 
-	public Baggle(WorldCell cell, Color c) {
+	public Baggle(BuggleWorldCell cell, Color c) {
 		this.cell = cell;
 		this.color = c;
 	}
@@ -24,7 +24,7 @@ public class Baggle {
 		this.cell = b.cell;
 	}
 	
-	public void setCell(WorldCell c) {
+	public void setCell(BuggleWorldCell c) {
 		this.cell = c;
 	}
 		

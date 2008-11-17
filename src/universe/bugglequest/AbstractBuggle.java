@@ -95,7 +95,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void brushDown() {
 		this.brushDown = true;
-		WorldCell cell = ((BuggleWorld)world).getCell(x, y);
+		BuggleWorldCell cell = ((BuggleWorld)world).getCell(x, y);
 		cell.setColor(brushColor);
 		world.notifyWorldUpdatesListeners();
 	}
@@ -154,10 +154,10 @@ public abstract class AbstractBuggle extends Entity {
 	public int getWorldWidth() {
 		return ((BuggleWorld)world).getWidth();
 	}
-	protected WorldCell getCell(){
+	protected BuggleWorldCell getCell(){
 		return ((BuggleWorld)world).getCell(x, y);
 	}
-	protected WorldCell getCell(int u, int v){
+	protected BuggleWorldCell getCell(int u, int v){
 		return ((BuggleWorld)world).getCell(u, v);
 	}
 
@@ -215,7 +215,7 @@ public abstract class AbstractBuggle extends Entity {
 		else
 			delta = getDirection().opposite();
 
-		WorldCell cell;
+		BuggleWorldCell cell;
 		switch (delta.intValue()) {
 		case Direction.NORTH_VALUE: /* looking up is easy */
 			cell = getCell();

@@ -13,7 +13,7 @@ import universe.bugglequest.ui.BuggleWorldView;
 
 public class BuggleWorld extends universe.World {
  
-	private WorldCell[][] world;
+	private BuggleWorldCell[][] world;
 
 	private int sizeX;
 	private int sizeY;
@@ -27,10 +27,10 @@ public class BuggleWorld extends universe.World {
 	public void create(int width, int height) {
 		this.sizeX = width;
 		this.sizeY = height;
-		this.world = new WorldCell[sizeX][sizeY];
+		this.world = new BuggleWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++)
-				world[i][j] = new WorldCell(this,i,j);		
+				world[i][j] = new BuggleWorldCell(this,i,j);		
 	}
 
 	/** 
@@ -42,10 +42,10 @@ public class BuggleWorld extends universe.World {
 		setName(world2.getName());
 		sizeX = world2.getWidth();
 		sizeY = world2.getHeight();
-		this.world = new WorldCell[sizeX][sizeY];
+		this.world = new BuggleWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
-				world[i][j] = new WorldCell(world2.getCell(i, j));
+				world[i][j] = new BuggleWorldCell(world2.getCell(i, j));
 				world[i][j].setWorld(this);
 			}
 	}
@@ -63,20 +63,20 @@ public class BuggleWorld extends universe.World {
 		BuggleWorld initialWorld = (BuggleWorld)iw;
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
-				WorldCell c = initialWorld.getCell(i, j);
+				BuggleWorldCell c = initialWorld.getCell(i, j);
 				//world[i][j] = new BuggleWorldCell(this, i, j, c.getColor(), c.hasLeftWall(), c.hasTopWall());
-				world[i][j] = new WorldCell(c);
+				world[i][j] = new BuggleWorldCell(c);
 			}
 
 		
 		super.reset(initialWorld);
 	}	
 
-	public WorldCell getCell(int x, int y) {
+	public BuggleWorldCell getCell(int x, int y) {
 		return this.world[x][y];
 	}
 
-	public void setCell(WorldCell c, int x, int y) {
+	public void setCell(BuggleWorldCell c, int x, int y) {
 		this.world[x][y] = c;
 		notifyWorldUpdatesListeners();
 	}
@@ -114,7 +114,7 @@ public class BuggleWorld extends universe.World {
 		/* read each cell, one after the other */
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
-				WorldCell cell = new WorldCell(this, x, y);
+				BuggleWorldCell cell = new BuggleWorldCell(this, x, y);
 				line = reader.readLine();
 				if (line == null) 
 					throw new IOException("File ending before the map was read completely");
@@ -168,7 +168,7 @@ public class BuggleWorld extends universe.World {
 
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
-				WorldCell cell = getCell(x, y);
+				BuggleWorldCell cell = getCell(x, y);
 
 				writer.write("[");
 				Color c = cell.getColor();
