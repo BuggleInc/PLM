@@ -9,13 +9,13 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
 
 import jlm.core.Game;
+import universe.EntityControlPanel;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.exception.BuggleWallException;
 
-public class BuggleButtonPanel extends JToolBar {
+public class BuggleButtonPanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton fButton;
@@ -23,18 +23,15 @@ public class BuggleButtonPanel extends JToolBar {
 	private JButton rButton;
 	private JButton lButton;
 	private JToggleButton brushButton;
-
-	/* TODO: having the combox passed as arg is not clean, but this is generic, not buggle specific */
 	
-	public BuggleButtonPanel(final Game game) {
-
-		setFloatable(false);
+	public BuggleButtonPanel() {
+		//setFloatable(false);
 
 		fButton = new JButton("forward");
 		fButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
-					((AbstractBuggle)game.getSelectedEntity()).forward();
+					((AbstractBuggle)Game.getInstance().getSelectedEntity()).forward();
 				} catch (BuggleWallException e) {
 					 e.printStackTrace();
 					//game.getOutputWriter().log(e);
@@ -47,10 +44,10 @@ public class BuggleButtonPanel extends JToolBar {
 		bButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
-					((AbstractBuggle)game.getSelectedEntity()).backward();
+					((AbstractBuggle)Game.getInstance().getSelectedEntity()).backward();
 				} catch (BuggleWallException e) {
 					// e.printStackTrace();
-					game.getOutputWriter().log(e);
+					Game.getInstance().getOutputWriter().log(e);
 				}
 			}
 		});
@@ -59,7 +56,7 @@ public class BuggleButtonPanel extends JToolBar {
 		lButton = new JButton("turn left");
 		lButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				((AbstractBuggle)game.getSelectedEntity()).turnLeft();
+				((AbstractBuggle)Game.getInstance().getSelectedEntity()).turnLeft();
 			}
 		});
 		lButton.setMnemonic(KeyEvent.VK_LEFT);
@@ -67,7 +64,7 @@ public class BuggleButtonPanel extends JToolBar {
 		rButton = new JButton("turn right");
 		rButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				((AbstractBuggle)game.getSelectedEntity()).turnRight();
+				((AbstractBuggle)Game.getInstance().getSelectedEntity()).turnRight();
 			}
 		});
 		rButton.setMnemonic(KeyEvent.VK_RIGHT);
@@ -75,7 +72,7 @@ public class BuggleButtonPanel extends JToolBar {
 		brushButton = new JToggleButton("mark");
 		brushButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				AbstractBuggle b = (AbstractBuggle)game.getSelectedEntity();
+				AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
 				if (b.isBrushDown()) {
 					b.brushUp();
 				} else {
@@ -84,7 +81,7 @@ public class BuggleButtonPanel extends JToolBar {
 			}
 		});
 		brushButton.setMnemonic(KeyEvent.VK_SPACE);
-		brushButton.setSelected(((AbstractBuggle)(game.getSelectedEntity())).isBrushDown());
+		brushButton.setSelected(((AbstractBuggle)(Game.getInstance().getSelectedEntity())).isBrushDown());
 		
 		
 		GridBagLayout gdLayout = new GridBagLayout();
@@ -122,6 +119,7 @@ public class BuggleButtonPanel extends JToolBar {
 	}
 	
 
+	@Override
 	public void setEnabledControl(boolean enabled) {
 		fButton.setEnabled(enabled);
 		bButton.setEnabled(enabled);

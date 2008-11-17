@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
+import jlm.ui.WorldView;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
+
 
 @Root
 public abstract class World {
@@ -183,7 +186,8 @@ public abstract class World {
 	}
 
 	/* Find my UI */
-	public abstract jlm.ui.WorldView getView();
+	public abstract WorldView getView();
+	public abstract EntityControlPanel getEntityControlPanel();
 
 	@Override
 	public boolean equals(Object obj) {

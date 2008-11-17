@@ -6,8 +6,10 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
+import universe.EntityControlPanel;
 import universe.World;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
+import universe.bugglequest.ui.BuggleButtonPanel;
 import universe.bugglequest.ui.BuggleWorldView;
 
 
@@ -89,8 +91,13 @@ public class BuggleWorld extends universe.World {
 		return this.sizeY;
 	}
 
+	@Override
 	public BuggleWorldView getView() {
 		return new BuggleWorldView(this);
+	}
+	@Override
+	public EntityControlPanel getEntityControlPanel() {
+		return new BuggleButtonPanel();
 	}
 
 	/* IO related */

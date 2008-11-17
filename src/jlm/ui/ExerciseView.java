@@ -7,7 +7,7 @@ import javax.swing.JTabbedPane;
 import jlm.core.Game;
 import jlm.event.GameListener;
 import net.miginfocom.swing.MigLayout;
-import universe.bugglequest.ui.BuggleButtonPanel;
+import universe.EntityControlPanel;
 
 
 public class ExerciseView extends JPanel implements GameListener {
@@ -19,7 +19,7 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	private JComboBox entityComboBox; 
 	private JComboBox worldComboBox;
-	private BuggleButtonPanel buttonPanel;
+	private EntityControlPanel buttonPanel;
 	private JTabbedPane tabPane;
 	
 	public ExerciseView(Game game) {
@@ -65,11 +65,11 @@ public class ExerciseView extends JPanel implements GameListener {
 		
 		/*
 		 * FIXME: strange behavior on OSX, if you click on long time on the
-		 * selected buggle item then it tries to edit it and throw an exception.
+		 * selected entity item then it tries to edit it and throw an exception.
 		 * Even if the editable property is set to false
 		 */
 
-		buttonPanel = new BuggleButtonPanel(this.game);
+		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 		add(buttonPanel, "span,growx,wrap");
 	}
 
@@ -99,13 +99,11 @@ public class ExerciseView extends JPanel implements GameListener {
 	public void selectedWorldHasChanged() {
 		worldView.setWorld(this.game.getSelectedWorld());
 		objectivesView.setWorld(this.game.getAnswerOfSelectedWorld());
-		//TODO KILLME brushButton.setSelected(game.getSelectedBuggle().isBrushDown());
 	}
 
 	@Override
 	public void selectedEntityHasChanged() {
 		// don't care
-		//TODO KILLME brushButton.setSelected(game.getSelectedBuggle().isBrushDown());
 	}
 
 	@Override
