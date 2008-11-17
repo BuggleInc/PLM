@@ -2,13 +2,11 @@ package lessons.welcome;
 
 import java.awt.Color;
 
+import lessons.ExerciseTemplated;
+import lessons.Lesson;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;
 import universe.bugglequest.WorldCell;
-
-
-import lessons.ExerciseTemplated;
-import lessons.Lesson;
 
 public class BDR extends ExerciseTemplated {
 

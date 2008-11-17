@@ -10,14 +10,13 @@ import java.util.Vector;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import jlm.core.LogWriter;
+import jlm.exception.BrokenLessonException;
+import jlm.exception.JLMCompilerException;
 import universe.Entity;
 import universe.World;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.BuggleCompiler;
-
-import jlm.core.LogWriter;
-import jlm.exception.BrokenLessonException;
-import jlm.exception.JLMCompilerException;
 
 
 public abstract class Exercise {

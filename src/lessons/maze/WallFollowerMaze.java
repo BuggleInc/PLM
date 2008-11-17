@@ -2,16 +2,14 @@ package lessons.maze;
 
 import java.awt.Color;
 
+import lessons.ExerciseTemplated;
+import lessons.Lesson;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.exception.NoBaggleUnderBuggleException;
-
-
-import lessons.Lesson;
-import lessons.ExerciseTemplated;
 
 public class WallFollowerMaze extends ExerciseTemplated {
 

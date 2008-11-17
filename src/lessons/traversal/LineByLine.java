@@ -2,13 +2,11 @@ package lessons.traversal;
 
 import java.awt.Color;
 
+import lessons.ExerciseTemplated;
+import lessons.Lesson;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;
-
-
-import lessons.ExerciseTemplated;
-import lessons.Lesson;
 
 public class LineByLine extends ExerciseTemplated {
 
