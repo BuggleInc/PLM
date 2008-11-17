@@ -7,7 +7,6 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 import universe.World;
-import universe.bugglequest.BuggleWorld;
 
 
 

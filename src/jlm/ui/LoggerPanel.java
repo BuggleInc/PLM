@@ -5,7 +5,6 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-
 import jlm.core.Game;
 import jlm.core.LogWriter;
 

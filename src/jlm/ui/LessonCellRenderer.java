@@ -7,7 +7,6 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
 import jlm.core.Game;
-
 import lessons.Lesson;
 
 public class LessonCellRenderer extends JLabel implements ListCellRenderer {

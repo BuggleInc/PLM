@@ -3,13 +3,11 @@ package jlm.ui;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
-import universe.World;
-
 import jlm.core.Game;
 import jlm.core.Logger;
 import jlm.event.GameListener;
-
 import lessons.Exercise;
+import universe.World;
 
 public class WorldComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
 

@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 import jlm.core.Game;
-
 import lessons.Exercise;
 import lessons.RevertableSourceFile;
 

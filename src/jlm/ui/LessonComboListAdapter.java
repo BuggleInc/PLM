@@ -6,7 +6,6 @@ import javax.swing.ComboBoxModel;
 import jlm.core.Game;
 import jlm.core.Logger;
 import jlm.event.GameListener;
-
 import lessons.Lesson;
 
 public class LessonComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
