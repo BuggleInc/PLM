@@ -6,16 +6,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JToolBar;
 
+import jlm.core.Game;
+import jlm.event.GameListener;
 import universe.bugglequest.ui.BuggleButtonPanel;
 import universe.bugglequest.ui.BuggleCellRenderer;
 import universe.bugglequest.ui.BuggleComboListAdapter;
 import universe.bugglequest.ui.WorldCellRenderer;
 import universe.bugglequest.ui.WorldComboListAdapter;
-
-import jlm.core.Game;
-import jlm.event.GameListener;
 
 
 public class ExerciseView extends JPanel implements GameListener {
@@ -26,7 +24,6 @@ public class ExerciseView extends JPanel implements GameListener {
 	private WorldView objectivesView;
 
 	private JComboBox buggleComboBox; 
-	private JToolBar buttonsPanel;
 	private JComboBox worldComboBox;
 	private BuggleButtonPanel buttonPanel;
 	private JTabbedPane tabPane;
@@ -83,8 +80,8 @@ public class ExerciseView extends JPanel implements GameListener {
 		 * Even if the editable property is set to false
 		 */
 
-		buttonsPanel = new BuggleButtonPanel(buggleComboBox, this.game);
-		controlPanel.add(buttonsPanel, BorderLayout.CENTER);
+		buttonPanel = new BuggleButtonPanel(buggleComboBox, this.game);
+		controlPanel.add(buttonPanel, BorderLayout.CENTER);
 
 		add(mapsPanel, BorderLayout.CENTER);
 		add(controlPanel, BorderLayout.SOUTH);
