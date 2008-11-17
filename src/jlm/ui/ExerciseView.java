@@ -12,7 +12,6 @@ import jlm.event.GameListener;
 import universe.bugglequest.ui.BuggleButtonPanel;
 import universe.bugglequest.ui.BuggleCellRenderer;
 import universe.bugglequest.ui.WorldCellRenderer;
-import universe.bugglequest.ui.WorldComboListAdapter;
 
 
 public class ExerciseView extends JPanel implements GameListener {
