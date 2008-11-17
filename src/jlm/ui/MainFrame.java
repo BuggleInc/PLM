@@ -52,7 +52,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 	private LoggerPanel outputArea;
 
 	private MainFrame() {
-		super("BuggleQuest");
+		super("Java Learning Machine");
 		initComponents();
 	}
 
