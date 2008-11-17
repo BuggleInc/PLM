@@ -11,7 +11,6 @@ import jlm.core.Game;
 import jlm.event.GameListener;
 import universe.bugglequest.ui.BuggleButtonPanel;
 import universe.bugglequest.ui.BuggleCellRenderer;
-import universe.bugglequest.ui.BuggleComboListAdapter;
 import universe.bugglequest.ui.WorldCellRenderer;
 import universe.bugglequest.ui.WorldComboListAdapter;
 
@@ -71,7 +70,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		controlPanel.setLayout(new BorderLayout());
 		controlPanel.setBorder(BorderFactory.createEtchedBorder());
 
-		buggleComboBox = new JComboBox(new BuggleComboListAdapter(Game.getInstance()));
+		buggleComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
 		buggleComboBox.setRenderer(new BuggleCellRenderer());
 		buggleComboBox.setEditable(false);
 		/*

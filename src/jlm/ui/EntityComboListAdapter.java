@@ -1,23 +1,22 @@
-package universe.bugglequest.ui;
+package jlm.ui;
 
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
 
-import universe.World;
-import universe.bugglequest.AbstractBuggle;
-
 import jlm.core.Game;
 import jlm.core.Logger;
 import jlm.event.GameListener;
+import universe.Entity;
+import universe.World;
 
 
-public class BuggleComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
+public class EntityComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
 
 	private static final long serialVersionUID = -4602618861291726344L;
 	private Game game;
 	private World world;
 
-	public BuggleComboListAdapter(Game game) {
+	public EntityComboListAdapter(Game game) {
 		this.game = game;
 		this.game.addGameListener(this);
 		this.world = this.game.getSelectedWorld();
@@ -40,11 +39,11 @@ public class BuggleComboListAdapter extends AbstractListModel implements ComboBo
 
 	@Override
 	public void setSelectedItem(Object anItem) {
-		if (anItem instanceof AbstractBuggle) {
-			AbstractBuggle b = (AbstractBuggle) anItem;
-			this.game.setSelectedEntity(b);
+		if (anItem instanceof Entity) {
+			Entity e = (Entity) anItem;
+			this.game.setSelectedEntity(e);
 		} else {
-			Logger.log("buggleComboListAdapter:setSelectedItem", "parameter is not a buggle");
+			Logger.log("entityComboListAdapter:setSelectedItem", "parameter is not an entity");
 		}
 	}
 
