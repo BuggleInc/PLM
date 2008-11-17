@@ -11,15 +11,13 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
+import jlm.event.GameListener;
+import jlm.event.GameStateListener;
+import lessons.Exercise;
+import lessons.Lesson;
 import universe.Entity;
 import universe.IWorldView;
 import universe.World;
-
-import jlm.event.GameListener;
-import jlm.event.GameStateListener;
-
-import lessons.Exercise;
-import lessons.Lesson;
 
 /*
  *  core model which contains all known exercises.
