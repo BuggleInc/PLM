@@ -21,8 +21,12 @@ public abstract class World {
 
 	@ElementList
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
+	
+	private String name;
 
-	public World(){}
+	public World(String name){
+		this.name = name;
+	}
 
 	public World(World w2) {
 		for (Entity e : w2.entities) {
@@ -50,7 +54,13 @@ public abstract class World {
 		notifyEntityUpdateListeners();
 		notifyWorldUpdatesListeners();
 	}			
-
+	public String getName() {
+		return this.name;
+	}
+	protected void setName(String n) {
+		name = n;
+	}
+	
 	public int getDelay() {
 		return this.delay;
 	}

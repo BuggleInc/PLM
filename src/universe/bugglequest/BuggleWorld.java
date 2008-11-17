@@ -18,10 +18,9 @@ public class BuggleWorld extends universe.World {
 	private int sizeX;
 	private int sizeY;
 
-	private String name;
 	
 	public BuggleWorld(String name, int x, int y) {
-		this.name = name;
+		super(name);
 		create(x, y);
 	}
 
@@ -40,7 +39,7 @@ public class BuggleWorld extends universe.World {
 	 */
 	public BuggleWorld(BuggleWorld world2) {
 		super(world2);
-		this.name = world2.name;
+		setName(world2.getName());
 		sizeX = world2.getWidth();
 		sizeY = world2.getHeight();
 		this.world = new WorldCell[sizeX][sizeY];
@@ -71,12 +70,7 @@ public class BuggleWorld extends universe.World {
 
 		
 		super.reset(initialWorld);
-	}
-
-	public String getName() {
-		return this.name;
-	}
-	
+	}	
 
 	public WorldCell getCell(int x, int y) {
 		return this.world[x][y];
