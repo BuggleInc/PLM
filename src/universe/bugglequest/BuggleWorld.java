@@ -1,8 +1,13 @@
 package universe.bugglequest;
 
+import java.awt.Color;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 import universe.World;
+import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.ui.BuggleWorldView;
 
 
@@ -94,6 +99,97 @@ public class BuggleWorld extends universe.World {
 		return new BuggleWorldView(this);
 	}
 
+	/* IO related */
+	private String strip(String s) {
+		return s.replaceAll(";.*", "");
+	}
+
+	@Override
+	public void readFromFile(BufferedReader reader) throws IOException {
+		String line = reader.readLine();
+		int width = 0;
+		if (line != null)
+			width = Integer.parseInt(strip(line));
+		line = reader.readLine();
+		int height = 0;
+		if (line != null)
+			height = Integer.parseInt(strip(line));
+
+		create(width, height);
+
+		/* read each cell, one after the other */
+		for (int x = 0; x < getWidth(); x++) {
+			for (int y = 0; y < getHeight(); y++) {
+				WorldCell cell = new WorldCell(this, x, y);
+				line = reader.readLine();
+				if (line == null) 
+					throw new IOException("File ending before the map was read completely");
+
+				line = strip(line); // strip '; comment'
+
+				int index1 = line.indexOf("),");
+				int index2 = line.indexOf(',', index1+2);
+				int index3 = line.indexOf(',', index2+1);
+				int index4 = line.length()-2;
+
+				boolean baggleFlag = Boolean.parseBoolean(line.substring(index1+2, index2));
+				boolean topWallFlag = Boolean.parseBoolean(line.substring(index2+1, index3));
+				boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, index4));
+				if (baggleFlag)
+					try {
+						cell.setBaggle(new Baggle(cell));
+					} catch (AlreadyHaveBaggleException e) {
+						e.printStackTrace();
+					}
+					if (topWallFlag)
+						cell.putTopWall();
+					if (leftWallFlag)
+						cell.putLeftWall();		
+
+					/* parse color */
+					String s =line.substring(1, index1+1); 
+					index1 = s.indexOf(",");
+					index2 = s.indexOf(',', index1+1);
+					index3 = s.length()-1;
+
+					int r = Integer.parseInt(s.substring(1, index1));
+					int g = Integer.parseInt(s.substring(index1+1, index2));
+					int b = Integer.parseInt(s.substring(index2+1, index3));
+
+					cell.setColor(new Color(r,g,b));
+
+					setCell(cell, x, y);
+			}
+		}
+	}
+
+	@Override
+	public void writeToFile(BufferedWriter writer) throws IOException {
+
+		writer.write(getName() + "; name");
+		writer.write(getWidth() + "; width");
+		writer.write("\n");
+		writer.write(getHeight() + "; height");
+		writer.write("\n");
+
+		for (int x = 0; x < getWidth(); x++) {
+			for (int y = 0; y < getHeight(); y++) {
+				WorldCell cell = getCell(x, y);
+
+				writer.write("[");
+				Color c = cell.getColor();
+				writer.write("(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue() + ")");
+				writer.write(",");
+				writer.write(Boolean.toString(cell.hasBaggle()));
+				writer.write(",");
+				writer.write(Boolean.toString(cell.hasTopWall()));
+				writer.write(",");
+				writer.write(Boolean.toString(cell.hasLeftWall()));
+				writer.write("] ; cell");
+				writer.write("\n");
+			}
+		}
+	}
 	
 	@Override
 	public String toString() {

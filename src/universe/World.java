@@ -1,20 +1,29 @@
 package universe;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
-import org.simpleframework.xml.*;
+
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.ElementList;
+import org.simpleframework.xml.Root;
 
 @Root
 public abstract class World {
 	@Attribute
 	private int delay = 0; // delay between two instruction executions of an entity.
-	
+
 	@ElementList
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
 
 	public World(){}
-	
+
 	public World(World w2) {
 		for (Entity e : w2.entities) {
 			Entity e2 = e.copy();
@@ -41,7 +50,7 @@ public abstract class World {
 		notifyEntityUpdateListeners();
 		notifyWorldUpdatesListeners();
 	}			
-	
+
 	public int getDelay() {
 		return this.delay;
 	}
@@ -49,7 +58,7 @@ public abstract class World {
 	public void setDelay(int d) {
 		this.delay = d;
 	}
-	
+
 	public void addEntity(Entity b) {
 		entities.add(b);
 		notifyEntityUpdateListeners();
@@ -81,10 +90,10 @@ public abstract class World {
 						b.run();
 					}
 				});
-				
+
 				// in order to be able to stop it from the AWT Thread in case of an infinite loop
 				runner.setPriority(Thread.MIN_PRIORITY);
-				
+
 				runner.start();
 				runnerVect.add(runner);
 			} else {
@@ -98,7 +107,7 @@ public abstract class World {
 		return entities.iterator();
 	}	
 
-	
+
 	/* who's interested in every details of the world changes */
 	private ArrayList<IWorldView> worldUpdatesListeners = new ArrayList<IWorldView>();
 
@@ -118,7 +127,7 @@ public abstract class World {
 			v.worldHasMoved();
 		}
 	}
-	
+
 	public void addEntityUpdateListener(IWorldView v) {
 		this.entitiesUpdateListeners.add(v);
 	}
@@ -132,10 +141,40 @@ public abstract class World {
 			v.worldHasChanged();
 		}
 	}
-	
+	/* IO related */
+	public abstract void readFromFile(BufferedReader br) throws IOException;
+	public abstract void writeToFile(BufferedWriter f) throws IOException;
+	public void writeToFile(File outputFile) throws IOException {
+		BufferedWriter bw = null;
+		FileWriter fw = null;
+		try {
+			fw = new FileWriter(outputFile);
+			bw = new BufferedWriter(fw);
+			this.writeToFile(bw);
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			if (bw != null)  bw.close();
+		}
+	}
+	public void readFromFile(File inputFile) throws IOException {
+		BufferedReader br = null;
+		FileReader fr = null;
+		try {
+			fr = new FileReader(inputFile);
+			br = new BufferedReader(fr);
+			readFromFile(br);
+		} catch (IOException e) {
+			throw e;
+		} finally {
+			if (br != null) br.close();
+		}
+
+	}
+
 	/* Find my UI */
 	public abstract jlm.ui.WorldView getView();
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

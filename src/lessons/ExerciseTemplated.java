@@ -11,7 +11,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Vector;
 
-import jlm.io.Utils;
 import universe.Entity;
 import universe.World;
 import universe.bugglequest.BuggleWorld;
@@ -102,7 +101,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		
 		/* read it */
 		try {
-			Utils.readWorldFromFile(intoWorld, br);
+			intoWorld.readFromFile(br);
 		}catch (IOException e) {
 			e.printStackTrace();
 		}

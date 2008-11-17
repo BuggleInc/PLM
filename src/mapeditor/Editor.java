@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import universe.IWorldView;
 import universe.bugglequest.BuggleWorld;
 
-import jlm.io.Utils;
-
-
 public class Editor {
 
 	private BuggleWorld world;
@@ -46,7 +43,7 @@ public class Editor {
 
 	public void saveMap(File file) {
 		try {
-			Utils.writeWorldIntoFile(this.world, file);
+			this.world.writeToFile(file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -54,7 +51,7 @@ public class Editor {
 
 	public void loadMap(File file) {
 		try {
-			Utils.readWorldFromFile(this.world, file);
+			this.world.readFromFile(file);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
