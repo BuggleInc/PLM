@@ -10,8 +10,6 @@ import javax.swing.JTabbedPane;
 import jlm.core.Game;
 import jlm.event.GameListener;
 import universe.bugglequest.ui.BuggleButtonPanel;
-import universe.bugglequest.ui.BuggleCellRenderer;
-import universe.bugglequest.ui.WorldCellRenderer;
 
 
 public class ExerciseView extends JPanel implements GameListener {
@@ -21,7 +19,7 @@ public class ExerciseView extends JPanel implements GameListener {
 	private WorldView worldView;
 	private WorldView objectivesView;
 
-	private JComboBox buggleComboBox; 
+	private JComboBox entityComboBox; 
 	private JComboBox worldComboBox;
 	private BuggleButtonPanel buttonPanel;
 	private JTabbedPane tabPane;
@@ -36,7 +34,7 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	public void setEnabledControl(boolean enabled) {
 		worldComboBox.setEnabled(enabled);
-		buggleComboBox.setEnabled(enabled);
+		entityComboBox.setEnabled(enabled);
 		if (buttonPanel == null) {
 			System.out.println("button panel is null");
 			Thread.currentThread().getStackTrace().toString();
@@ -69,16 +67,16 @@ public class ExerciseView extends JPanel implements GameListener {
 		controlPanel.setLayout(new BorderLayout());
 		controlPanel.setBorder(BorderFactory.createEtchedBorder());
 
-		buggleComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
-		buggleComboBox.setRenderer(new BuggleCellRenderer());
-		buggleComboBox.setEditable(false);
+		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
+		entityComboBox.setRenderer(new EntityCellRenderer());
+		entityComboBox.setEditable(false);
 		/*
 		 * FIXME: strange behavior on OSX, if you click on long time on the
 		 * selected buggle item then it tries to edit it and throw an exception.
 		 * Even if the editable property is set to false
 		 */
 
-		buttonPanel = new BuggleButtonPanel(buggleComboBox, this.game);
+		buttonPanel = new BuggleButtonPanel(entityComboBox, this.game);
 		controlPanel.add(buttonPanel, BorderLayout.CENTER);
 
 		add(mapsPanel, BorderLayout.CENTER);

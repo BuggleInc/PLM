@@ -1,4 +1,4 @@
-package universe.bugglequest.ui;
+package jlm.ui;
 
 import java.awt.Component;
 
@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
+import universe.World;
 import universe.bugglequest.BuggleWorld;
 
 
@@ -22,8 +23,8 @@ public class WorldCellRenderer extends JLabel implements ListCellRenderer {
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 
-		if (value instanceof BuggleWorld) {
-			BuggleWorld w = (BuggleWorld) value;
+		if (value instanceof World) {
+			World w = (World) value;
 			setText(w.getName());
 		} else {
 			setText(value!=null?value.toString():"");

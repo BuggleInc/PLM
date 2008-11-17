@@ -1,4 +1,4 @@
-package universe.bugglequest.ui;
+package jlm.ui;
 
 import java.awt.Component;
 
@@ -6,15 +6,13 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import universe.bugglequest.AbstractBuggle;
+import universe.Entity;
 
-
-
-public class BuggleCellRenderer extends JLabel implements ListCellRenderer {
+public class EntityCellRenderer extends JLabel implements ListCellRenderer {
 
 	private static final long serialVersionUID = 5274134398293975047L;
 
-	public BuggleCellRenderer() {
+	public EntityCellRenderer() {
 		//setOpaque(true);
 	}
 
@@ -22,8 +20,8 @@ public class BuggleCellRenderer extends JLabel implements ListCellRenderer {
 	public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected,
 			boolean cellHasFocus) {
 
-		if (value instanceof AbstractBuggle) {
-			AbstractBuggle b = (AbstractBuggle) value;
+		if (value instanceof Entity) {
+			Entity b = (Entity) value;
 			setText(b.getName());
 		} else {
 			setText(value!=null?value.toString():"");
