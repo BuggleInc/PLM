@@ -1,4 +1,4 @@
-package mapeditor;
+package universe.bugglequest.mapeditor;
 
 import java.awt.Color;
 import java.awt.event.MouseAdapter;

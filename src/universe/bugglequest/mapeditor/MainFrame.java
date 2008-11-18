@@ -1,4 +1,4 @@
-package mapeditor;
+package universe.bugglequest.mapeditor;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -17,6 +17,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
+
+
 
 import jlm.ui.ResourcesCache;
 

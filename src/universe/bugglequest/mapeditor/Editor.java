@@ -1,9 +1,10 @@
-package mapeditor;
+package universe.bugglequest.mapeditor;
 
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 import universe.IWorldView;
 import universe.bugglequest.BuggleWorld;

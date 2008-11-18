@@ -1,4 +1,5 @@
-package mapeditor;
+package universe.bugglequest.mapeditor;
+
 
 public class MapEditorApp {
 
