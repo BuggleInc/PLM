@@ -24,7 +24,6 @@ public class Lesson {
 
 	public boolean isSequential() {		
 		String seq = Game.getProperties().getProperty(getClass().getCanonicalName()+".sequential");
-		System.out.println(getClass().getCanonicalName()+".sequential");
 		if (seq != null) {
 			return ! seq.equals("false"); // sequential by default
 		} else {
