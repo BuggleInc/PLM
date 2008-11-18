@@ -40,20 +40,16 @@ public class TurtleWorld extends World {
 		super(world2);
 		this.height = world2.height;
 		this.width = world2.width;
-		System.out.println("Copy "+world2);
 		for (ShapeAbstract s:world2.shapes)
 			shapes.add(s.copy());
 	}
 
 	@Override
 	public World copy() {
-		TurtleWorld res = new TurtleWorld(this);
-		System.out.println("TurtleWorld.copy("+this+")="+res);
-		return res;
+		return new TurtleWorld(this);
 	}
 	@Override
 	public void reset(World w) {
-		System.out.println("Reset to "+(TurtleWorld)w);
 		TurtleWorld initialWorld = (TurtleWorld)w;
 		shapes.clear();
 		Iterator<ShapeAbstract> it = initialWorld.shapes();
@@ -66,7 +62,8 @@ public class TurtleWorld extends World {
 
 	
 	public void addLine(double x, double y, double newX, double newY, Color color) {
-		shapes.add(new ShapeLine(x,y,newX,newY,color));
+		ShapeLine line =new ShapeLine(width/2+x,height/2+y,width/2+newX,height/2+newY,color); 
+		shapes.add(line);
 	}
 	public Iterator<ShapeAbstract> shapes() {
 		return shapes.iterator();
@@ -87,7 +84,6 @@ public class TurtleWorld extends World {
 
 	@Override
 	public WorldView getView() {
-		System.out.println("Asked for the view "+this);
 		return new TurtleWorldView(this);
 	}
 	
