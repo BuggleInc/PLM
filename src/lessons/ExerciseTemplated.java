@@ -26,6 +26,27 @@ public abstract class ExerciseTemplated extends Exercise {
 		loadHTMLMission();
 	}
 	
+	final static String HTMLMissionHeader = 
+		"<head>\n"+
+		"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
+		"  <style>\n"+
+        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+        "    code { background:#EEEEEE; }\n"+
+        "    pre { background: #EEEEEE;\n"+
+        "          margin: 5px;\n"+
+        "          padding: 6px;\n"+
+        "          border: 1px inset;\n"+
+        "          width: 640px;\n"+
+        "          overflow: auto;\n"+
+        "          text-align: left;\n"+
+        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+        "   .comment { background:#EEEEEE;\n"+
+        "              font-family: \"Times New Roman\", serif;\n"+
+        "              color:#00AA00;\n"+
+        "              font-style: italic; }\n"+
+        "  </style>\n"+
+        "</head>\n";
+
 	protected void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar)+".html";
 
@@ -64,7 +85,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				sb.append(newLine);
 				s = br.readLine();
 			}
-			mission = sb.toString();
+			mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+sb.toString()+"</body>\n</html>\n";
 		} catch (IOException e) {
 			e.printStackTrace();			
 		} finally {
