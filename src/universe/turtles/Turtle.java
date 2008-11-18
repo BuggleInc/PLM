@@ -14,15 +14,15 @@ public  class Turtle extends Entity {
 	private Color color;
 
 	@Attribute
-	private double x;
+	private double x=0.;
 	@Attribute
-	private double y;
+	private double y=0.;
 
 	@Attribute
-	private double heading;
+	private double heading=0.;
 
 	@Attribute
-	boolean penDown;
+	boolean penDown=true;
 	
 	final static int AngularUnitDegree = 1;
 	final static int AngularUnitRadian = 2;
