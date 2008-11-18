@@ -8,7 +8,7 @@ import java.util.Iterator;
 import jlm.ui.WorldView;
 import universe.Entity;
 import universe.World;
-import universe.turtles.AbstractTurtle;
+import universe.turtles.Turtle;
 import universe.turtles.ShapeAbstract;
 import universe.turtles.TurtleWorld;
 
@@ -27,12 +27,14 @@ public class TurtleWorldView extends WorldView {
 
 		Iterator<Entity> it = world.entities();
 		while (it.hasNext())
-			drawTurtle(g2, (AbstractTurtle)it.next());
+			drawTurtle(g2, (Turtle)it.next());
 		Iterator<ShapeAbstract> it2 = ((TurtleWorld) world).shapes();
+		while (it2.hasNext())
 			it2.next().draw(g2);
+		System.out.println("painted World: "+world);
 	}
 
-	private void drawTurtle(Graphics2D g, AbstractTurtle b) {
+	private void drawTurtle(Graphics2D g, Turtle b) {
 		/* TODO	
   		double scaleFactor = 0.6; // to scale the sprite
 		double pixW = scaleFactor * 400 / (Math.min(((TurtleWorld) world).getHeight(),((TurtleWorld) world).getWidth()));  // fake pixel width

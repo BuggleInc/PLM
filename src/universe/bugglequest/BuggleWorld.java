@@ -66,7 +66,6 @@ public class BuggleWorld extends universe.World {
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
 				BuggleWorldCell c = initialWorld.getCell(i, j);
-				//world[i][j] = new BuggleWorldCell(this, i, j, c.getColor(), c.hasLeftWall(), c.hasTopWall());
 				world[i][j] = new BuggleWorldCell(c);
 			}
 

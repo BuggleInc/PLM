@@ -81,6 +81,7 @@ public abstract class Exercise {
 	}
 
 	public void worldDuplicate(World[] w) {
+		System.out.println("Dupplicate "+w[0]+" len:"+w.length);
 		currentWorld = new World[w.length];
 		initialWorld = new World[w.length];
 		answerWorld  = new World[w.length];
@@ -89,6 +90,7 @@ public abstract class Exercise {
 			initialWorld[i] = w[i].copy();
 			answerWorld[i]  = w[i].copy();
 		}
+		System.out.println("worldDuplicate done. initialWorld[0]="+initialWorld[0]);
 	}
 	
 	public abstract void run(Vector<Thread> runnerVect);	
@@ -284,7 +286,7 @@ public abstract class Exercise {
 			index++;
 		} while (index < this.currentWorld.length);
 		
-		throw new RuntimeException("WTF ?"); // FIXME: not nice ;)
+		throw new RuntimeException("World not found (please report this bug)");
 	}
 	
 	public World getAnswerOfWorld(int index) {

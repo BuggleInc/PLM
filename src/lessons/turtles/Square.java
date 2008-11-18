@@ -9,11 +9,11 @@ public class Square extends ExerciseTemplated {
 
 	public Square(Lesson lesson) {
 		super(lesson);
-		name = "Whiteboard";
+		name = "Square";
 		tabName = "Square";
 				
 		/* Create initial situation */
-		TurtleWorld myWorld = new TurtleWorld("Labyrinth",400,400);
+		TurtleWorld myWorld = new TurtleWorld("WhiteBoard",400,400);
 
 		new Turtle(myWorld, "Thésée");
 		setup(myWorld);

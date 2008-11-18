@@ -25,4 +25,9 @@ public class ShapeLine extends ShapeAbstract {
 		g.setColor(color);
 		g.draw(new Line2D.Double(x1,y1,x2,y2));
 	}
+
+	@Override
+	public ShapeAbstract copy() {
+		return new ShapeLine(x1,y1,x2,y2,color);
+	}
 }

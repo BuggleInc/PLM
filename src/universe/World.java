@@ -25,6 +25,7 @@ public abstract class World {
 	@ElementList
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
 	
+	@Attribute
 	private String name;
 
 	public World(String name){
@@ -32,6 +33,7 @@ public abstract class World {
 	}
 
 	public World(World w2) {
+		this(w2.getName());
 		for (Entity e : w2.entities) {
 			Entity e2 = e.copy();
 			e2.setWorld(this);
@@ -74,6 +76,7 @@ public abstract class World {
 
 	public void addEntity(Entity b) {
 		entities.add(b);
+		System.out.println("Add entity "+b.getName()+" to world "+getName()+". Length: "+entities.size());
 		notifyEntityUpdateListeners();
 	}
 

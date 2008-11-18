@@ -9,6 +9,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
+import jlm.ui.WorldView;
 import universe.Entity;
 import universe.World;
 import universe.bugglequest.AbstractBuggle;
@@ -18,7 +19,7 @@ import universe.bugglequest.BuggleWorldCell;
 
 
 
-public class BuggleWorldView extends jlm.ui.WorldView {
+public class BuggleWorldView extends WorldView {
 
 	private static final long serialVersionUID = -7164642270965762239L;
 

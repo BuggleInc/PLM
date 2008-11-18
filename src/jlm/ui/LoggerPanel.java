@@ -25,7 +25,7 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 	
 	@Override
 	public void log(String msg) {
-		append(msg+"\n");
+		append(msg);
 	}
 
 	@Override

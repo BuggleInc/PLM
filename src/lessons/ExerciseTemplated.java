@@ -249,17 +249,21 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	protected void setup(World[] ws) {		
+		System.out.println("setup worlds");
 		worldDuplicate(ws);
 
 		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
 
 		computeAnswer();
+		System.out.println("setup worlds done. initialWorld[0]="+initialWorld[0]);
 	}
 
 	@Override
 	public void reset(){
+		System.out.println("reset worlds");
 		for (int i=0; i<initialWorld.length; i++) 
 			currentWorld[i].reset(initialWorld[i]);
+		System.out.println("reset worlds done");
 	}
 
 	@Override

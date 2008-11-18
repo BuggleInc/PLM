@@ -36,18 +36,32 @@ public class TurtleWorld extends World {
 		this.width = width;
 		this.height = height;
 	}
+	public TurtleWorld(TurtleWorld world2) {
+		super(world2);
+		this.height = world2.height;
+		this.width = world2.width;
+		System.out.println("Copy "+world2);
+		for (ShapeAbstract s:world2.shapes)
+			shapes.add(s.copy());
+	}
 
 	@Override
 	public World copy() {
-		TurtleWorld res = new TurtleWorld(this.getName());
-		for (ShapeAbstract s:shapes) {
-			if (s instanceof ShapeLine) {
-				ShapeLine l = (ShapeLine)s;
-				res.addLine(l.x1, l.y1, l.x2, l.y2, l.color);
-			}
-			throw new RuntimeException("Unknown shape:"+s);
-		}
+		TurtleWorld res = new TurtleWorld(this);
+		System.out.println("TurtleWorld.copy("+this+")="+res);
 		return res;
+	}
+	@Override
+	public void reset(World w) {
+		System.out.println("Reset to "+(TurtleWorld)w);
+		TurtleWorld initialWorld = (TurtleWorld)w;
+		shapes.clear();
+		Iterator<ShapeAbstract> it = initialWorld.shapes();
+		while (it.hasNext()) 
+			shapes.add(it.next().copy());
+		
+		super.reset(w);
+		
 	}
 
 	
@@ -73,8 +87,10 @@ public class TurtleWorld extends World {
 
 	@Override
 	public WorldView getView() {
+		System.out.println("Asked for the view "+this);
 		return new TurtleWorldView(this);
 	}
+	
 
 	@Override
 	public void readFromFile(BufferedReader br) throws IOException {
@@ -85,5 +101,14 @@ public class TurtleWorld extends World {
 	public void writeToFile(BufferedWriter f) throws IOException {
 		// TODO Raccord de méthode auto-généré
 
+	}
+	@Override
+	public String toString(){
+		String res = "TurtleWorld: name="+getName()+", size="+width+"x"+height+", shapes=[";
+		Iterator<ShapeAbstract> it = shapes();
+		while (it.hasNext()) 
+			res += it.next().toString();
+		res += "]";
+		return res;
 	}
 }

@@ -59,9 +59,9 @@ public class Game implements IWorldView {
 
 	public void initLessons() {
 		/* Add all the lessons we know */
-		addLesson(new lessons.welcome.Main());
-		addLesson(new lessons.maze.Main());
 		addLesson(new lessons.turtles.Main());
+//		addLesson(new lessons.welcome.Main());
+//		addLesson(new lessons.maze.Main());
 	}
 
 	public void addLesson(Lesson lesson) {
