@@ -30,4 +30,9 @@ public class ShapeLine extends ShapeAbstract {
 	public ShapeAbstract copy() {
 		return new ShapeLine(x1,y1,x2,y2,color);
 	}
+	
+	@Override
+	public String toString(){
+		return "Line ("+x1+","+y1+";"+x2+","+y2+";"+color+")";
+	}
 }
