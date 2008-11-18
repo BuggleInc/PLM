@@ -3,7 +3,7 @@ package lessons.welcome;
 import universe.bugglequest.Direction;
 import universe.bugglequest.SimpleBuggle;
 
-public class SnakeBuggle extends SimpleBuggle {
+public class SnakeEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	boolean endingPosition() {

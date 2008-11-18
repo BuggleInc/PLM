@@ -1,7 +1,7 @@
 package lessons.welcome;
 
 
-public class BasicsDrawGBuggle extends universe.bugglequest.SimpleBuggle {
+public class BasicsDrawGEntity extends universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {

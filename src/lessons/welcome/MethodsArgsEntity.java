@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import universe.bugglequest.Direction;
 
-public class MethodsArgsBuggle extends universe.bugglequest.SimpleBuggle {
+public class MethodsArgsEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("Pas le droit d'utiliser forward(int) dans cet exercice");

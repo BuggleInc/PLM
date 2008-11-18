@@ -1,6 +1,6 @@
 package lessons.maze;
 
-public class RandomMouseMazeBuggle extends universe.bugglequest.SimpleBuggle {
+public class RandomMouseMazeEntity extends universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */ 
 	public void run() {

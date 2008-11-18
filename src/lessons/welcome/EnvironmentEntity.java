@@ -2,14 +2,10 @@ package lessons.welcome;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class BasicsBuggle extends SimpleBuggle {
-
+public class EnvironmentEntity extends SimpleBuggle {
 	@Override
-	public void run() {
-		/* BEGIN TEMPLATE */
+	public void run() { 
 		/* BEGIN SOLUTION */
-		forward();
-		/* END SOLUTION */
 		/* END TEMPLATE */
 	}
 

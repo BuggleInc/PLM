@@ -13,13 +13,12 @@ import java.util.Vector;
 
 import universe.Entity;
 import universe.World;
-import universe.bugglequest.BuggleWorld;
 
 
 public abstract class ExerciseTemplated extends Exercise {
 
 	protected String tabName = getClass().getSimpleName(); /* Name of the tab in editor */
-	protected String buggleName = getClass().getCanonicalName()+"Buggle"; /* name of the class of buggles being solution of this exercise */
+	protected String entityName = getClass().getCanonicalName()+"Entity"; /* name of the class of entities being solution of this exercise */
 	protected int UIDelay = 100;
 
 	public ExerciseTemplated(Lesson lesson) {
@@ -77,7 +76,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 	}
 
-	protected void loadMap(BuggleWorld intoWorld) {
+	protected void loadMap(World intoWorld) {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar)+".map";
 
 		BufferedReader br = null;
@@ -233,15 +232,15 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 	}
 
-	protected final void setup(BuggleWorld w) {
+	protected final void setup(World w) {
 		loadMap(w);
-		BuggleWorld[] ws = new BuggleWorld[1];
+		World[] ws = new World[1];
 		ws[0] = w;
 		setup(ws);
 	}
 
 	protected void computeAnswer() {
-		mutateEntity(answerWorld,buggleName);
+		mutateEntity(answerWorld,entityName);
 		for (World aw : answerWorld) {
 			Iterator<Entity> it = aw.entities();
 			while (it.hasNext())
@@ -249,10 +248,10 @@ public abstract class ExerciseTemplated extends Exercise {
 		}		
 	}
 
-	protected void setup(BuggleWorld[] ws) {		
+	protected void setup(World[] ws) {		
 		worldDuplicate(ws);
 
-		newSourceFromFile(tabName, buggleName.replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
+		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
 
 		computeAnswer();
 	}
@@ -282,7 +281,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].setDelay(this.UIDelay);
 		}		
-		mutateEntity(answerWorld, buggleName);
+		mutateEntity(answerWorld, entityName);
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
 	}

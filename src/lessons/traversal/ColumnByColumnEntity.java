@@ -2,7 +2,7 @@ package lessons.traversal;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class ColumnByColumnBuggle extends SimpleBuggle {
+public class ColumnByColumnEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */	
 	public void nextStep() {	

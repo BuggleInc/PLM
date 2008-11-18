@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class Basics3PasBuggle extends SimpleBuggle {
+public class Basics3PasEntity extends SimpleBuggle {
 
 	@Override
 	public void run() {

@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class ConditionsBuggle extends SimpleBuggle {
+public class ConditionsEntity extends SimpleBuggle {
 	@Override
 	public void run() { 
 		/* BEGIN TEMPLATE */

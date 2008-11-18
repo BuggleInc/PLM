@@ -2,7 +2,7 @@ package lessons.traversal;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class DiagonalBuggle extends SimpleBuggle {
+public class DiagonalEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int diag = 0;

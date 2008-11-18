@@ -2,7 +2,7 @@ package lessons.traversal;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class ZigZagBuggle extends SimpleBuggle {
+public class ZigZagEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */		
 	/* BEGIN SOLUTION */
 	

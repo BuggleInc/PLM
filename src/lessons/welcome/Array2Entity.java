@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-public class ArrayBuggle extends universe.bugglequest.SimpleBuggle {
+public class Array2Entity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
@@ -30,26 +30,30 @@ public class ArrayBuggle extends universe.bugglequest.SimpleBuggle {
 		Color[] colors = new Color[getWorldHeight()];
 		
 		/* read the colors */
-		for (int i=0;i<getWorldHeight();i++) {
-			colors[i]=getGroundColor();
+		colors[0]=getGroundColor();
+		for (int i=1;i<getWorldHeight();i++) {
 			forward();
+			colors[i]=getGroundColor();
 		}
+		backward(getWorldHeight()-1);
 		
-		/* duplicate the pattern */
+		/* Duplicate the pattern */
 		for (int i=1; i<getWorldWidth();i++) {
 			turnLeft();
 			forward();
 			turnRight();
-			forward();
 			makeLine(colors);
 		}
 	}
 	
 	void makeLine(Color[] colors) {
-		for (int i=0;i<getWorldWidth();i++) {
-			mark(colors[i]);
+		int offset = Integer.parseInt(readMessage());
+		mark(colors[(0+offset)%colors.length]);
+		for (int i=1;i<getWorldWidth();i++) {
 			forward();
+			mark(colors[(i+offset)%colors.length]);
 		}
+		backward(getWorldHeight()-1);
 	}
 	/* END TEMPLATE */
 }

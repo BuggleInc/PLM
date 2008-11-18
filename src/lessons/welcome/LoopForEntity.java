@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-public class VariablesBuggle extends universe.bugglequest.SimpleBuggle {
+public class LoopForEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("Pas le droit d'utiliser forward(int) dans cet exercice");
@@ -17,13 +17,12 @@ public class VariablesBuggle extends universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */
 		int cpt = 0;
 		while (!isOverBaggle()) {
-		  cpt++;
-		  forward();
+			cpt++;
+			forward();
 		}
 		pickUpBaggle();
-		while (cpt>0) {
-		  backward();
-		  cpt--;
+		for (int cpt2=0 ; cpt2<cpt ; cpt2++) {
+			backward();
 		}
 		dropBaggle();
 		/* END TEMPLATE */

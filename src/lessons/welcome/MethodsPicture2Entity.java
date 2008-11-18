@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-public class MethodsPicture3Buggle extends universe.bugglequest.SimpleBuggle {
+public class MethodsPicture2Entity extends universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN SOLUTION */
 	void mark() {
@@ -50,8 +50,8 @@ public class MethodsPicture3Buggle extends universe.bugglequest.SimpleBuggle {
 	}
 	
 	public void run() {
-		for (int i=0; i<9; i++) {
-			makeLine(9);
+		for (int i=0; i<3;i++) {
+			makeLine(3);
 			nextLine();
 		}
 	}
