@@ -43,7 +43,6 @@ public class ExerciseView extends JPanel implements GameListener {
 	public void initComponents() {
 		// TODO: add key shortcuts
 		setLayout(new MigLayout("fill"));
-		//setLayout(new BorderLayout());
 
 		worldComboBox = new JComboBox(new WorldComboListAdapter(Game.getInstance()));
 		worldComboBox.setRenderer(new WorldCellRenderer());
@@ -97,8 +96,17 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	@Override
 	public void selectedWorldHasChanged() {
-		worldView.setWorld(this.game.getSelectedWorld());
-		objectivesView.setWorld(this.game.getAnswerOfSelectedWorld());
+		if (worldView.isWorldCompatible(this.game.getSelectedWorld())) {
+			worldView.setWorld(this.game.getSelectedWorld());	
+			objectivesView.setWorld(this.game.getAnswerOfSelectedWorld());
+		} else {
+			tabPane.removeAll();
+			worldView = Game.getInstance().getSelectedWorld().getView();
+			tabPane.add("World", worldView);
+
+			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
+			tabPane.add("Objective", objectivesView);
+		}
 	}
 
 	@Override

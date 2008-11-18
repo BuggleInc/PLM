@@ -74,4 +74,9 @@ public class TurtleWorldView extends WorldView {
 		{ 0,0,0,0,0,0,0,0,0,0,0 },
 	};
 	 */
+
+	@Override
+	public boolean isWorldCompatible(World world) {
+		return world instanceof TurtleWorld;
+	}
 }

@@ -276,5 +276,10 @@ public class BuggleWorldView extends WorldView {
 		{ 0,1,0,1,1,1,1,1,0,0,0 },
 		{ 0,0,0,0,1,1,0,0,0,0,0 },
 		{ 0,0,0,0,0,1,1,1,0,0,0 }
-	}};	
+	}};
+
+	@Override
+	public boolean isWorldCompatible(World world) {
+		return world instanceof BuggleWorld;
+	}	
 }

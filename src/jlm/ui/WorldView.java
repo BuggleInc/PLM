@@ -41,4 +41,6 @@ public abstract class WorldView extends JComponent  implements IWorldView {
 		/* nothing specific to do here since we already react to HasMoved */
 	}
 
+	public abstract boolean isWorldCompatible(World world);
+
 }
