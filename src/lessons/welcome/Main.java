@@ -31,5 +31,9 @@ public class Main extends Lesson {
 		addExercise(new MethodsPicture4(this));
 		addExercise(new Array(this));
 		addExercise(new Array2(this));
+		addExercise(new TraversalByColumn(this));
+		addExercise(new TraversalByLine(this));
+		addExercise(new TraversalZigZag(this));
+		addExercise(new TraversalDiagonal(this));
 	}
 }

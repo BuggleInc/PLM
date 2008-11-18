@@ -1,8 +1,8 @@
-package lessons.traversal;
+package lessons.welcome;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class DiagonalEntity extends SimpleBuggle {
+public class TraversalDiagonalEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int diag = 0;

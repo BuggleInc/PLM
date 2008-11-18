@@ -1,4 +1,4 @@
-package lessons.traversal;
+package lessons.welcome;
 
 import java.awt.Color;
 
@@ -8,12 +8,12 @@ import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;
 
-public class ColumnByColumn extends ExerciseTemplated {
+public class TraversalZigZag extends ExerciseTemplated {
 
-	public ColumnByColumn(Lesson lesson) {
+	public TraversalZigZag(Lesson lesson) {
 		super(lesson);
-		name = "Parcours colonne par colonne";
-		tabName = "ColumnByColumn";
+		name = "Parcours en zigzag";
+		tabName = "ZigZag";
 
 		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);
 		for (int i=0; i<7;i++) {

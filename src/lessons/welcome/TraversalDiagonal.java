@@ -1,4 +1,4 @@
-package lessons.traversal;
+package lessons.welcome;
 
 import java.awt.Color;
 
@@ -8,12 +8,12 @@ import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;
 
-public class LineByLine extends ExerciseTemplated {
+public class TraversalDiagonal extends ExerciseTemplated {
 
-	public LineByLine(Lesson lesson) {
+	public TraversalDiagonal(Lesson lesson) {
 		super(lesson);
-		name = "Parcours ligne par ligne";
-		tabName = "LineByLine";
+		name = "Parcours en diagonale";
+		tabName = "Diagonal";
 
 		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);
 		for (int i=0; i<7;i++) {

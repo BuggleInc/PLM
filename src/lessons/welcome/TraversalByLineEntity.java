@@ -1,8 +1,8 @@
-package lessons.traversal;
+package lessons.welcome;
 
 import universe.bugglequest.SimpleBuggle;
 
-public class LineByLineEntity extends SimpleBuggle {
+public class TraversalByLineEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	
