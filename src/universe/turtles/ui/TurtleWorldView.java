@@ -1,15 +1,17 @@
 package universe.turtles.ui;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
 import jlm.ui.WorldView;
 import universe.Entity;
 import universe.World;
-import universe.turtles.Turtle;
 import universe.turtles.ShapeAbstract;
+import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
 public class TurtleWorldView extends WorldView {
@@ -24,14 +26,15 @@ public class TurtleWorldView extends WorldView {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
+		g2.setColor(Color.white);
+		g2.fill(new Rectangle2D.Double(0.,0.,(double)getWidth(),(double)getHeight()));
+		
 		Iterator<Entity> it = world.entities();
 		while (it.hasNext())
 			drawTurtle(g2, (Turtle)it.next());
 		Iterator<ShapeAbstract> it2 = ((TurtleWorld) world).shapes();
 		while (it2.hasNext())
 			it2.next().draw(g2);
-		System.out.println("painted World: "+world);
 	}
 
 	private void drawTurtle(Graphics2D g, Turtle b) {
