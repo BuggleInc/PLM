@@ -76,7 +76,6 @@ public abstract class World {
 
 	public void addEntity(Entity b) {
 		entities.add(b);
-		System.out.println("Add entity "+b.getName()+" to world "+getName()+". Length: "+entities.size());
 		notifyEntityUpdateListeners();
 	}
 
