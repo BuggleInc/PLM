@@ -16,7 +16,6 @@ import jlm.exception.BrokenLessonException;
 import jlm.exception.JLMCompilerException;
 import universe.Entity;
 import universe.World;
-import universe.bugglequest.AbstractBuggle;
 
 
 public abstract class Exercise {
@@ -28,11 +27,11 @@ public abstract class Exercise {
 	public String mission = "";  /** The text to display to present the lesson */
 	protected Vector<RevertableSourceFile> sourceFiles; /** All the editable source files */
 	protected Vector<SourceFile> hiddenSourceFiles; /** Other source files, that the compiler should use, but the user shouldn't see */
-	Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of buggle classes defined in the lesson */
+	Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
 	protected Vector<String> fileNames;
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
-	private static final String packageNamePrefix = "bugglequest.runtime";
+	private static final String packageNamePrefix = "jlm.runtime";
 	private int packageNameSuffix = 0;
 
 	protected World [] currentWorld; /* the one displayed */
@@ -109,7 +108,7 @@ public abstract class Exercise {
 	 * +++++++++++++++++++++++++
 	 * 
 	 */
-	// Create a compiler of Buggle classes (using java 1.6)
+	// Create a compiler of classes (using java 1.6)
 	private final InMemoryCompiler compiler = new InMemoryCompiler(
 			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
 
@@ -179,64 +178,59 @@ public abstract class Exercise {
 		fileNames.add(name);
 	}
 
-	protected void mutateBuggles(World[] worlds, ArrayList<String> newClasseNames){
+	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames){
 		for (World current:worlds) {
-			ArrayList<Entity> newBuggles = new ArrayList<Entity>();
+			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			Iterator<Entity> it = current.entities();
 			for (String name : newClasseNames) {
-				/* Get the next existing buggle */
+				/* Get the next existing entity */
 				if (!it.hasNext()) 
-					throw new BrokenLessonException("Too much arguments provided to mutateBuggle");
-				AbstractBuggle old = (AbstractBuggle) it.next();
+					throw new BrokenLessonException("Too much arguments provided to mutateEntities");
+				Entity old = it.next();
 
-				/* Instanciate a new buggle of the new type */
-				AbstractBuggle b;
+				/* Instanciate a new entity of the new type */
+				Entity ent;
 				try {
-					b = (AbstractBuggle)compiledClasses.get(className(name)).newInstance();
-					//Logger.log("Exercise:mutateBuggles to "+className(name), b.toString());
+					ent = (Entity)compiledClasses.get(className(name)).newInstance();
+					//Logger.log("Exercise:mutateEntities to "+className(name), b.toString());
 				} catch (InstantiationException e) {
-					throw new RuntimeException("Cannot instanciate buggle of type "+className(name), e);
+					throw new RuntimeException("Cannot instanciate entity of type "+className(name), e);
 				} catch (IllegalAccessException e) {
-					throw new RuntimeException("Illegal access while instanciating buggle of type "+className(name), e);
+					throw new RuntimeException("Illegal access while instanciating entity of type "+className(name), e);
 				} catch (NullPointerException e) {
-					/* this kind of buggle was not written by student. try to get it from default class loader, or complain if it also fails */
+					/* this kind of entity was not written by student. try to get it from default class loader, or complain if it also fails */
 					try {
-						b = (AbstractBuggle)compiler.loadClass(name).newInstance(); 
+						ent = (Entity)compiler.loadClass(name).newInstance(); 
 					} catch (Exception e2) {
-						throw new RuntimeException("Cannot find a buggle of name "+className(name)+" or "+name+". Broken lesson.", e2);
+						throw new RuntimeException("Cannot find an entity of name "+className(name)+" or "+name+". Broken lesson.", e2);
 					}
 				}
 
-				/* change fields of new buggle to copy old one */
-				b.setWorld(old.getWorld());
-				b.setPos(old.getX(), old.getY());
-				b.setDirection(old.getDirection());
-				b.setColor(old.getColor());
-				b.setBrushColor(old.getBrushColor());
-				b.setName(old.getName());
-				b.initDone();
+				/* change fields of new entity to copy old one */
+				ent.copy(old);
+				ent.initDone();
 
-				/* Add new buggle to the to be returned buggles set */
-				newBuggles.add(b);
+				/* Add new entity to the to be returned entities set */
+				newEntities.add(ent);
 			}
 			if (it.hasNext())
-				throw new BrokenLessonException("Not enough arguments provided to mutateBuggle");
-			current.setEntities(newBuggles);
+				throw new BrokenLessonException("Not enough arguments provided to mutateEntities");
+			current.setEntities(newEntities);
 		}
 	}
-	protected void mutateBuggle(World[] worlds, String newClasseName){
+	protected void mutateEntity(World[] worlds, String newClasseName){
 		ArrayList<String> names= new ArrayList<String>();
 		for (int i=0; i<currentWorld[0].entityCount(); i++)
 			names.add(newClasseName);
-		mutateBuggles(worlds, names);
+		mutateEntities(worlds, names);
 	}
 
-	protected void mutateBuggles(ArrayList<String> newClasseNames){
-		mutateBuggles(currentWorld, newClasseNames);
+	protected void mutateEntities(ArrayList<String> newClasseNames){
+		mutateEntities(currentWorld, newClasseNames);
 	}
 
-	protected void mutateBuggle(String newClasseName){		
-		mutateBuggle(currentWorld, newClasseName);
+	protected void mutateEntity(String newClasseName){		
+		mutateEntity(currentWorld, newClasseName);
 	}
 
 	public Exercise(Lesson lesson) {
@@ -290,7 +284,7 @@ public abstract class Exercise {
 			index++;
 		} while (index < this.currentWorld.length);
 		
-		throw new RuntimeException("WTF ?"); // FIXEM: not nice ;)
+		throw new RuntimeException("WTF ?"); // FIXME: not nice ;)
 	}
 	
 	public World getAnswerOfWorld(int index) {

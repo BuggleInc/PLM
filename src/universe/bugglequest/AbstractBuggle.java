@@ -45,19 +45,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 	public boolean haveSeenError() {
 		return seenError;
-	}
-
-	/* This is to allow exercise buggles to forbid the use by students of some functions 
-	 * which are mandatory for core mechanism. See welcome.ArrayBuggle to see how it forbids setPos(int,int)  
-	 */
-	private boolean inited = false;
-	public boolean isInited() {
-		return inited;
-	}
-	public void initDone() {
-		inited = true;		
-	}
-	
+	}	
 	
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
@@ -85,6 +73,17 @@ public abstract class AbstractBuggle extends Entity {
 		this.y = y;
 		this.direction = direction;
 	}
+	@Override
+	public void copy(Entity e) {
+		super.copy(e);
+		AbstractBuggle other = (AbstractBuggle)e;
+		this.color = other.color;
+		this.brushColor = other.brushColor;
+		this.x = other.x;
+		this.y = other.y;
+		this.direction = other.direction;
+	}
+	@Override
 	public Entity copy() {
 		return new Buggle(this);
 	}

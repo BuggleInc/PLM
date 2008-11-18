@@ -85,7 +85,7 @@ public class BDR2 extends ExerciseTemplated {
 	@Override
 	protected void computeAnswer(){
 		/* Change the answer dancers to choregraphy checkers */
-		mutateBuggle(answerWorld, "lessons.welcome.BuggleDancingChecker");
+		mutateEntity(answerWorld, "lessons.welcome.BuggleDancingChecker");
 
 		Iterator<Entity> it;
 		for (it = answerWorld[0].entities(); it.hasNext();) {

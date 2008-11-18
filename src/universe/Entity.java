@@ -8,7 +8,6 @@ import universe.bugglequest.BuggleWorld;
 
 public abstract class Entity {
 	protected String name;
-	
 	protected World world;
 	
 	public Entity() {
@@ -44,6 +43,24 @@ public abstract class Entity {
 		this.world = (BuggleWorld)world;
 	}
 
+	/* This is to allow exercise to forbid the use by students of some functions 
+	 * which are mandatory for core mechanism. See welcome.ArrayBuggle to see how it forbids setPos(int,int)  
+	 */
+	private boolean inited = false;
+	public boolean isInited() {
+		return inited;
+	}
+	public void initDone() {
+		inited = true;		
+	}
+
+	
+	/** Copy fields of the entity passed in argument */
+	public void copy(Entity other) {
+		this.name=other.getName();
+		this.world=other.getWorld();
+	}
+	/** Copy constructor */
 	public abstract Entity copy();
 	public abstract void run();
 

@@ -241,7 +241,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	protected void computeAnswer() {
-		mutateBuggle(answerWorld,buggleName);
+		mutateEntity(answerWorld,buggleName);
 		for (World aw : answerWorld) {
 			Iterator<Entity> it = aw.entities();
 			while (it.hasNext())
@@ -270,7 +270,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (int i=0; i<currentWorld.length; i++) 
 			currentWorld[i].setDelay(this.UIDelay );
 
-		mutateBuggle(tabName);
+		mutateEntity(tabName);
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].runEntities(runnerVect);
 
@@ -282,7 +282,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].setDelay(this.UIDelay);
 		}		
-		mutateBuggle(answerWorld, buggleName);
+		mutateEntity(answerWorld, buggleName);
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
 	}
