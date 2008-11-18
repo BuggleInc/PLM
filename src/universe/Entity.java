@@ -3,8 +3,6 @@ package universe;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
-import universe.bugglequest.BuggleWorld;
-
 
 public abstract class Entity {
 	protected String name;
@@ -40,7 +38,7 @@ public abstract class Entity {
 
 	@Element
 	public void setWorld(World world) {
-		this.world = (BuggleWorld)world;
+		this.world = world;
 	}
 
 	/* This is to allow exercise to forbid the use by students of some functions 
