@@ -10,17 +10,16 @@ import java.util.Vector;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import jlm.core.InMemoryCompiler;
 import jlm.core.LogWriter;
 import jlm.exception.BrokenLessonException;
 import jlm.exception.JLMCompilerException;
 import universe.Entity;
 import universe.World;
 import universe.bugglequest.AbstractBuggle;
-import universe.bugglequest.BuggleCompiler;
 
 
 public abstract class Exercise {
-	//public static final boolean debug = false; /** well behaved exercises use a working solution as initial body when this is true */
 	public boolean debugThis = false; /* whether to debug this particular exo */
 
 	protected boolean done = false; /** indicate whether this Exercise was successfully done or not */
@@ -29,7 +28,7 @@ public abstract class Exercise {
 	public String mission = "";  /** The text to display to present the lesson */
 	protected Vector<RevertableSourceFile> sourceFiles; /** All the editable source files */
 	protected Vector<SourceFile> hiddenSourceFiles; /** Other source files, that the compiler should use, but the user shouldn't see */
-	Map<String, Class<AbstractBuggle>> compiledBuggleClasses = new TreeMap<String, Class<AbstractBuggle>>(); /* list of buggle classes defined in the lesson */
+	Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of buggle classes defined in the lesson */
 	protected Vector<String> fileNames;
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
@@ -111,7 +110,7 @@ public abstract class Exercise {
 	 * 
 	 */
 	// Create a compiler of Buggle classes (using java 1.6)
-	private final BuggleCompiler compiler = new BuggleCompiler(
+	private final InMemoryCompiler compiler = new InMemoryCompiler(
 			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
 
 	/**
@@ -119,7 +118,7 @@ public abstract class Exercise {
 	 * @throws JLMCompilerException 
 	 */
 	public void compileAll(LogWriter out) throws JLMCompilerException {
-		compiledBuggleClasses = new TreeMap<String, Class<AbstractBuggle>>();
+		compiledClasses = new TreeMap<String, Class<Object>>();
 
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
@@ -136,7 +135,7 @@ public abstract class Exercise {
 		/* Do the compile */
 		try {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();
-			compiledBuggleClasses = compiler.compile(sources, errs);
+			compiledClasses = compiler.compile(sources, errs);
 
 			out.log(errs);
 		} catch (JLMCompilerException e) {
@@ -193,7 +192,7 @@ public abstract class Exercise {
 				/* Instanciate a new buggle of the new type */
 				AbstractBuggle b;
 				try {
-					b = compiledBuggleClasses.get(className(name)).newInstance();
+					b = (AbstractBuggle)compiledClasses.get(className(name)).newInstance();
 					//Logger.log("Exercise:mutateBuggles to "+className(name), b.toString());
 				} catch (InstantiationException e) {
 					throw new RuntimeException("Cannot instanciate buggle of type "+className(name), e);
@@ -202,7 +201,7 @@ public abstract class Exercise {
 				} catch (NullPointerException e) {
 					/* this kind of buggle was not written by student. try to get it from default class loader, or complain if it also fails */
 					try {
-						b = compiler.loadClass(name).newInstance(); 
+						b = (AbstractBuggle)compiler.loadClass(name).newInstance(); 
 					} catch (Exception e2) {
 						throw new RuntimeException("Cannot find a buggle of name "+className(name)+" or "+name+". Broken lesson.", e2);
 					}

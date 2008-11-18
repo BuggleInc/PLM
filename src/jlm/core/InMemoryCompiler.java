@@ -1,4 +1,4 @@
-package universe.bugglequest;
+package jlm.core;
 /* See also "Create dynamic applications with javax.tools", David J. Biesack.
 	http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR
 */
@@ -36,7 +36,7 @@ import jlm.exception.JLMCompilerException;
 
 /** This class provides a facade to the javax.tools compiler, to ease its use in our case */ 
 
-public class BuggleCompiler {
+public class InMemoryCompiler {
 	   // Compiler requires source files with a ".java" extension:
 	   static final String JAVA_EXTENSION = ".java";
 
@@ -66,7 +66,7 @@ public class BuggleCompiler {
 	    * @throws IllegalStateException
 	    *            if the Java compiler cannot be loaded.
 	    */
-	   public BuggleCompiler(ClassLoader loader, Iterable<String> options) {
+	   public InMemoryCompiler(ClassLoader loader, Iterable<String> options) {
 	      compiler = ToolProvider.getSystemJavaCompiler();
 	      if (compiler == null) {
 	         throw new IllegalStateException("Cannot find the system Java compiler. "
@@ -113,7 +113,7 @@ public class BuggleCompiler {
 	    *            if the generated class is not assignable to all the optional
 	    *            <var>types</var>.
 	    */
-	   public synchronized Class<AbstractBuggle> compile(final String qualifiedClassName,
+	   public synchronized Class<Object> compile(final String qualifiedClassName,
 		         final CharSequence javaSource,
 		         final DiagnosticCollector<JavaFileObject> diagnosticsList,
 		         final Class<?>... types) throws JLMCompilerException,
@@ -124,8 +124,8 @@ public class BuggleCompiler {
 		         diagnostics = new DiagnosticCollector<JavaFileObject>();
 		      Map<String, CharSequence> classes = new HashMap<String, CharSequence>(1);
 		      classes.put(qualifiedClassName, javaSource);
-		      Map<String, Class<AbstractBuggle>> compiled = compile(classes, diagnosticsList);
-		      Class<AbstractBuggle> newClass = compiled.get(qualifiedClassName);
+		      Map<String, Class<Object>> compiled = compile(classes, diagnosticsList);
+		      Class<Object> newClass = compiled.get(qualifiedClassName);
 		      return castable(newClass, types);
 		   }
 	   /**
@@ -150,7 +150,7 @@ public class BuggleCompiler {
 	    * @throws CharSequenceCompilerException
 	    *            if the source cannot be compiled
 	    */
-	   public synchronized Map<String, Class<AbstractBuggle>> compile(
+	   public synchronized Map<String, Class<Object>> compile(
 		         final Map<String, CharSequence> classes,
 		         final DiagnosticCollector<JavaFileObject> diagnosticsList)
 		         throws JLMCompilerException {
@@ -190,9 +190,9 @@ public class BuggleCompiler {
 		      try {
 		         // For each class name in the input map, get its compiled
 		         // class and put it in the output map
-		         Map<String, Class<AbstractBuggle>> compiled = new HashMap<String, Class<AbstractBuggle>>();
+		         Map<String, Class<Object>> compiled = new HashMap<String, Class<Object>>();
 		         for (String qualifiedClassName : classes.keySet()) {
-		            final Class<AbstractBuggle> newClass = loadClass(qualifiedClassName);
+		            final Class<Object> newClass = loadClass(qualifiedClassName);
 		            compiled.put(qualifiedClassName, newClass);
 		         }
 		         return compiled;
@@ -219,9 +219,9 @@ public class BuggleCompiler {
 	    *            if no such class is found.
 	    */
 	   @SuppressWarnings("unchecked")
-	   public Class<AbstractBuggle> loadClass(final String qualifiedClassName)
+	   public Class<Object> loadClass(final String qualifiedClassName)
 	         throws ClassNotFoundException {
-	      return (Class<AbstractBuggle>) classLoader.loadClass(qualifiedClassName);
+	      return (Class<Object>) classLoader.loadClass(qualifiedClassName);
 	   }
 
 	   /**
@@ -235,7 +235,7 @@ public class BuggleCompiler {
 	    * @throws ClassCastException
 	    *            if <var>newClass</var> is not castable to all the types.
 	    */
-	   private Class<AbstractBuggle> castable(Class<AbstractBuggle> newClass, Class<?>... types)
+	   private Class<Object> castable(Class<Object> newClass, Class<?>... types)
 	         throws ClassCastException {
 	      for (Class<?> type : types)
 	         if (!type.isAssignableFrom(newClass)) {
@@ -347,7 +347,7 @@ final class FileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
     * Convert a location and class name to a URI
     */
    private URI uri(Location location, String packageName, String relativeName) {
-      return BuggleCompiler.toURI(location.getName() + '/' + packageName + '/'
+      return InMemoryCompiler.toURI(location.getName() + '/' + packageName + '/'
             + relativeName);
    }
 
@@ -444,7 +444,7 @@ final class JavaFileObjectImpl extends SimpleJavaFileObject {
     *           the source code
     */
    JavaFileObjectImpl(final String baseName, final CharSequence source) {
-      super(BuggleCompiler.toURI(baseName + BuggleCompiler.JAVA_EXTENSION),
+      super(InMemoryCompiler.toURI(baseName + InMemoryCompiler.JAVA_EXTENSION),
             Kind.SOURCE);
       this.source = source;
    }
@@ -458,7 +458,7 @@ final class JavaFileObjectImpl extends SimpleJavaFileObject {
     *           the kind of file
     */
    JavaFileObjectImpl(final String name, final Kind kind) {
-      super(BuggleCompiler.toURI(name), kind);
+      super(InMemoryCompiler.toURI(name), kind);
       source = null;
    }
 
