@@ -10,18 +10,18 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class AboutDialog extends JDialog {
+public class AboutJLMDialog extends JDialog {
 
 	private static final long serialVersionUID = -1800747039420103759L;
-	private static AboutDialog instance = null;
+	private static AboutJLMDialog instance = null;
 	
-	public static AboutDialog getInstance() {
-		if (AboutDialog.instance == null)
-			AboutDialog.instance = new AboutDialog();
-		return AboutDialog.instance;
+	public static AboutJLMDialog getInstance() {
+		if (AboutJLMDialog.instance == null)
+			AboutJLMDialog.instance = new AboutJLMDialog();
+		return AboutJLMDialog.instance;
 	}
 	
-	private AboutDialog() {
+	private AboutJLMDialog() {
 		super(MainFrame.getInstance(), "About BuggleQuest", true);
 		initComponent();
 	}

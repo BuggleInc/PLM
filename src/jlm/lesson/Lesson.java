@@ -8,6 +8,7 @@ import jlm.core.Game;
 
 public class Lesson {
 	public String name;
+	protected String about = "(no information provided by the lesson)";
 	private ArrayList<Exercise> exercises = new ArrayList<Exercise>();
 	
 	private Exercise currentExercise;
@@ -21,6 +22,9 @@ public class Lesson {
 	public String getName() {
 		return this.name;
 	}
+	public String getAbout(){
+		return about;
+	}
 
 	public boolean isSequential() {		
 		String seq = Game.getProperties().getProperty(getClass().getCanonicalName()+".sequential");
@@ -32,7 +36,6 @@ public class Lesson {
 	}
 	
 	public void setSequential(boolean enabled) {
-		//Game.getProperties().setProperty(getClass().getCanonicalName()+".sequential", Boolean.toString(enabled));
 		this.sequential = enabled;
 	}
 	

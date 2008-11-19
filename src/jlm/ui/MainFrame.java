@@ -28,7 +28,7 @@ import javax.swing.SwingConstants;
 import jlm.core.Game;
 import jlm.core.GameState;
 import jlm.event.GameStateListener;
-import jlm.ui.action.About;
+import jlm.ui.action.AbstractGameAction;
 import jlm.ui.action.CleanUpSession;
 import jlm.ui.action.PlayDemo;
 import jlm.ui.action.QuitGame;
@@ -158,15 +158,23 @@ public class MainFrame extends JFrame implements GameStateListener {
 				null));
 		menu.add(cleanUpSessionMenuItem);
 
-		// menu.add(lessonSubmenu);
-		// menu.add(exerciceSubmenu);
-
 		if (!System.getProperty("os.name").startsWith("Mac")) {
 			menu = new JMenu("Help");
 			menuBar.add(menu);
 
-			JMenuItem about = new JMenuItem(new About(Game.getInstance(), "About", null));
-			menu.add(about);
+			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this lesson", null){
+				private static final long serialVersionUID = 1L;
+				public void actionPerformed(ActionEvent arg0) {
+					AboutLessonDialog.getInstance().setVisible(true);
+				}				
+			}));
+			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About JLM", null){
+				private static final long serialVersionUID = 1L;
+				public void actionPerformed(ActionEvent e) {
+					AboutJLMDialog.getInstance().setVisible(true);
+				}				
+			}));
+			
 		} else {
 
 			if (System.getProperty("os.name").startsWith("Mac")) {								
@@ -314,7 +322,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			public void run() {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
-						AboutDialog.getInstance().setVisible(true);
+						AboutJLMDialog.getInstance().setVisible(true);
 					}
 				});
 				//event.setHandled(true);
