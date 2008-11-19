@@ -3,7 +3,8 @@ package jlm.core;
 import java.util.Iterator;
 import java.util.Vector;
 
-import lessons.Exercise;
+import jlm.lesson.Exercise;
+
 
 public class DemoRunner extends Thread {
 

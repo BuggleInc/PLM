@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-import lessons.Lesson;
+import jlm.lesson.Lesson;
 
 public class Main extends Lesson {
 

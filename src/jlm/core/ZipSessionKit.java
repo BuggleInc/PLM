@@ -13,10 +13,11 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
-import lessons.Exercise;
-import lessons.Lesson;
-import lessons.RevertableSourceFile;
-import lessons.SourceFile;
+import jlm.lesson.Exercise;
+import jlm.lesson.Lesson;
+import jlm.lesson.RevertableSourceFile;
+import jlm.lesson.SourceFile;
+
 
 public class ZipSessionKit implements ISessionKit {
 

@@ -1,4 +1,4 @@
-package lessons;
+package jlm.lesson;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,8 +11,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.Iterator;
 import java.util.Vector;
 
-import universe.Entity;
-import universe.World;
+import jlm.universe.Entity;
+import jlm.universe.World;
+
 
 
 public abstract class ExerciseTemplated extends Exercise {

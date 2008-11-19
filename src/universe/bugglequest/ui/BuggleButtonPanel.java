@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
 import jlm.core.Game;
-import universe.EntityControlPanel;
+import jlm.universe.EntityControlPanel;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.exception.BuggleWallException;
 

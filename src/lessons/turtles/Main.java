@@ -1,6 +1,6 @@
 package lessons.turtles;
 
-import lessons.Lesson;
+import jlm.lesson.Lesson;
 
 public class Main extends Lesson {
 

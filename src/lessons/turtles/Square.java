@@ -1,7 +1,7 @@
 package lessons.turtles;
 
-import lessons.ExerciseTemplated;
-import lessons.Lesson;
+import jlm.lesson.ExerciseTemplated;
+import jlm.lesson.Lesson;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 

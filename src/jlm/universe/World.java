@@ -1,4 +1,4 @@
-package universe;
+package jlm.universe;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

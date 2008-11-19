@@ -3,8 +3,9 @@ package universe.turtles.ui;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+import jlm.universe.EntityControlPanel;
+
 import net.miginfocom.swing.MigLayout;
-import universe.EntityControlPanel;
 
 public class TurtleButtonPanel extends EntityControlPanel {
 

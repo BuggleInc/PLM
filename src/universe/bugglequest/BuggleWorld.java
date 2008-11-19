@@ -6,14 +6,15 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import universe.EntityControlPanel;
-import universe.World;
+import jlm.universe.EntityControlPanel;
+import jlm.universe.World;
+
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.ui.BuggleButtonPanel;
 import universe.bugglequest.ui.BuggleWorldView;
 
 
-public class BuggleWorld extends universe.World {
+public class BuggleWorld extends jlm.universe.World {
  
 	private BuggleWorldCell[][] world;
 

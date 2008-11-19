@@ -3,11 +3,12 @@ package universe.bugglequest;
 import java.awt.Color;
 import java.awt.Point;
 
+import jlm.universe.Entity;
+import jlm.universe.World;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
-import universe.Entity;
-import universe.World;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.exception.BuggleWallException;
 import universe.bugglequest.exception.NoBaggleUnderBuggleException;

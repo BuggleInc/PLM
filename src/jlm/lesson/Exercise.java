@@ -1,4 +1,4 @@
-package lessons;
+package jlm.lesson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,8 +14,8 @@ import jlm.core.InMemoryCompiler;
 import jlm.core.LogWriter;
 import jlm.exception.BrokenLessonException;
 import jlm.exception.JLMCompilerException;
-import universe.Entity;
-import universe.World;
+import jlm.universe.Entity;
+import jlm.universe.World;
 
 
 public abstract class Exercise {

@@ -13,11 +13,11 @@ import java.util.Vector;
 
 import jlm.event.GameListener;
 import jlm.event.GameStateListener;
-import lessons.Exercise;
-import lessons.Lesson;
-import universe.Entity;
-import universe.IWorldView;
-import universe.World;
+import jlm.lesson.Exercise;
+import jlm.lesson.Lesson;
+import jlm.universe.Entity;
+import jlm.universe.IWorldView;
+import jlm.universe.World;
 
 /*
  *  core model which contains all known exercises.

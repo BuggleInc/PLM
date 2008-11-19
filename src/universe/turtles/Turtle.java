@@ -2,9 +2,10 @@ package universe.turtles;
 
 import java.awt.Color;
 
+import jlm.universe.Entity;
+
 import org.simpleframework.xml.Attribute;
 
-import universe.Entity;
 import universe.bugglequest.BuggleWorld;
 
 

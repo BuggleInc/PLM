@@ -2,8 +2,9 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-import lessons.ExerciseTemplated;
-import lessons.Lesson;
+import jlm.lesson.ExerciseTemplated;
+import jlm.lesson.Lesson;
+
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;

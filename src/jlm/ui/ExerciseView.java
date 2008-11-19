@@ -6,8 +6,8 @@ import javax.swing.JTabbedPane;
 
 import jlm.core.Game;
 import jlm.event.GameListener;
+import jlm.universe.EntityControlPanel;
 import net.miginfocom.swing.MigLayout;
-import universe.EntityControlPanel;
 
 
 public class ExerciseView extends JPanel implements GameListener {

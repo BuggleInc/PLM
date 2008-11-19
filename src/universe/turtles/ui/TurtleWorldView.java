@@ -8,8 +8,8 @@ import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
 import jlm.ui.WorldView;
-import universe.Entity;
-import universe.World;
+import jlm.universe.Entity;
+import jlm.universe.World;
 import universe.turtles.ShapeAbstract;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;

@@ -15,12 +15,12 @@ import javax.swing.text.EditorKit;
 
 import jlm.core.Game;
 import jlm.event.GameListener;
+import jlm.lesson.Exercise;
+import jlm.lesson.SourceFile;
 import jsyntaxpane.SyntaxKitFactory;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
-import lessons.Exercise;
-import lessons.SourceFile;
 
 public class CodePanel extends JTabbedPane implements GameListener {
 

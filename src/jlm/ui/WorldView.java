@@ -3,8 +3,9 @@ package jlm.ui;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 
-import universe.IWorldView;
-import universe.World;
+import jlm.universe.IWorldView;
+import jlm.universe.World;
+
 
 
 public abstract class WorldView extends JComponent  implements IWorldView {

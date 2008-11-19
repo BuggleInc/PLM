@@ -6,8 +6,8 @@ import javax.swing.ComboBoxModel;
 import jlm.core.Game;
 import jlm.core.Logger;
 import jlm.event.GameListener;
-import lessons.Exercise;
-import universe.World;
+import jlm.lesson.Exercise;
+import jlm.universe.World;
 
 public class WorldComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
 

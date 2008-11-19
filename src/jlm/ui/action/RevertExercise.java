@@ -5,8 +5,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 import jlm.core.Game;
-import lessons.Exercise;
-import lessons.RevertableSourceFile;
+import jlm.lesson.Exercise;
+import jlm.lesson.RevertableSourceFile;
 
 public class RevertExercise extends AbstractGameAction {
 

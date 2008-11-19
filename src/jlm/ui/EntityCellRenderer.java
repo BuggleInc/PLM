@@ -6,7 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import universe.Entity;
+import jlm.universe.Entity;
+
 
 public class EntityCellRenderer extends JLabel implements ListCellRenderer {
 

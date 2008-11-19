@@ -1,4 +1,4 @@
-package universe;
+package jlm.universe;
 
 public interface IWorldView {
 

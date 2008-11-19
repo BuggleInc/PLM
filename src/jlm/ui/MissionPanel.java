@@ -6,7 +6,7 @@ import javax.swing.text.html.StyleSheet;
 
 import jlm.core.Game;
 import jlm.event.GameListener;
-import lessons.Exercise;
+import jlm.lesson.Exercise;
 
 public class MissionPanel extends JEditorPane implements GameListener {
 

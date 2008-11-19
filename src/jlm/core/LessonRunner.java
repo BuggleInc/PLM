@@ -5,8 +5,8 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import jlm.lesson.Exercise;
 import jlm.ui.ResourcesCache;
-import lessons.Exercise;
 
 public class LessonRunner extends Thread {
 

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import jlm.ui.WorldView;
+import jlm.universe.EntityControlPanel;
+import jlm.universe.World;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 
-import universe.EntityControlPanel;
-import universe.World;
 import universe.turtles.ui.TurtleButtonPanel;
 import universe.turtles.ui.TurtleWorldView;
 

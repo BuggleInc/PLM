@@ -1,7 +1,8 @@
-package universe;
+package jlm.universe;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+
 
 
 public abstract class Entity {

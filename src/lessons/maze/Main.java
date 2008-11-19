@@ -1,6 +1,6 @@
 package lessons.maze;
 
-import lessons.Lesson;
+import jlm.lesson.Lesson;
 
 public class Main extends Lesson {
 

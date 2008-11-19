@@ -6,7 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import lessons.Exercise;
+import jlm.lesson.Exercise;
+
 
 public class ExerciseCellRenderer extends JLabel implements ListCellRenderer {
 

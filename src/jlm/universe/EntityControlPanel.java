@@ -1,4 +1,4 @@
-package universe;
+package jlm.universe;
 
 import javax.swing.JPanel;
 

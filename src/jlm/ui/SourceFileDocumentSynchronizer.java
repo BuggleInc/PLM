@@ -10,8 +10,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 
-import lessons.ISourceFileListener;
-import lessons.SourceFile;
+import jlm.lesson.ISourceFileListener;
+import jlm.lesson.SourceFile;
+
 
 /*
  * Responsibility: synchronize content between Document instance

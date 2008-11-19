@@ -3,9 +3,10 @@ package lessons.welcome;
 import java.awt.Color;
 import java.util.Iterator;
 
-import lessons.ExerciseTemplated;
-import lessons.Lesson;
-import universe.Entity;
+import jlm.lesson.ExerciseTemplated;
+import jlm.lesson.Lesson;
+import jlm.universe.Entity;
+
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.Direction;
 import universe.bugglequest.BuggleWorldCell;
