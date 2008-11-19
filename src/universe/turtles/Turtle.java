@@ -101,11 +101,12 @@ public  class Turtle extends Entity {
 		if (penDown) 
 			((TurtleWorld) world).addLine(x,y,newX,newY,color);
 		
+		double ratio = Math.sqrt((newX-x)*(newX-x) + (newY-y)*(newY-y))/50;
 		x = newX;
 		y = newY;
 
 		world.notifyWorldUpdatesListeners();
-		stepUI();
+		stepUI(ratio);
 	}
 	
 	public void turnLeft(double angle) {
@@ -207,15 +208,18 @@ public  class Turtle extends Entity {
 		return ((TurtleWorld)world).getWidth();
 	}
 
-	protected void stepUI() {
+	protected void stepUI(double ratio) {
 		// only a trial to see moving steps
 		if (world.getDelay() > 0) {
 			try {
-				Thread.sleep(world.getDelay());
+				Thread.sleep((int)(world.getDelay()*ratio));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-		}		
+		}				
+	}
+	protected void stepUI() {
+		stepUI(1.);
 	}
 
 	@Override
