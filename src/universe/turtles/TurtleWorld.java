@@ -14,13 +14,10 @@ import jlm.universe.World;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;
 
-import universe.turtles.ui.TurtleButtonPanel;
-import universe.turtles.ui.TurtleWorldView;
 
 public class TurtleWorld extends World {
 
-	@ElementList
-	private ArrayList<ShapeAbstract> shapes = new ArrayList<ShapeAbstract>(); 
+	@ElementList ArrayList<ShapeAbstract> shapes = new ArrayList<ShapeAbstract>(); 
 
 	@Attribute
 	private double width;
@@ -62,8 +59,10 @@ public class TurtleWorld extends World {
 
 	
 	public void addLine(double x, double y, double newX, double newY, Color color) {
-		ShapeLine line =new ShapeLine(width/2+x,height/2+y,width/2+newX,height/2+newY,color); 
-		shapes.add(line);
+		synchronized (shapes) {
+			ShapeLine line =new ShapeLine(width/2+x,height/2+y,width/2+newX,height/2+newY,color); 
+			shapes.add(line);			
+		}
 	}
 	public Iterator<ShapeAbstract> shapes() {
 		return shapes.iterator();

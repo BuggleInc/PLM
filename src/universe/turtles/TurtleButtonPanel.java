@@ -1,4 +1,4 @@
-package universe.turtles.ui;
+package universe.turtles;
 
 import javax.swing.JLabel;
 import javax.swing.JTextArea;

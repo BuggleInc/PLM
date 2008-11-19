@@ -1,4 +1,4 @@
-package universe.turtles.ui;
+package universe.turtles;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,9 +10,6 @@ import java.util.Iterator;
 import jlm.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
-import universe.turtles.ShapeAbstract;
-import universe.turtles.Turtle;
-import universe.turtles.TurtleWorld;
 
 public class TurtleWorldView extends WorldView {
 	private static final long serialVersionUID = 1674820378395646693L;
@@ -32,9 +29,11 @@ public class TurtleWorldView extends WorldView {
 		Iterator<Entity> it = world.entities();
 		while (it.hasNext())
 			drawTurtle(g2, (Turtle)it.next());
-		Iterator<ShapeAbstract> it2 = ((TurtleWorld) world).shapes();
-		while (it2.hasNext())
-			it2.next().draw(g2);
+		synchronized (((TurtleWorld) world).shapes) {
+			Iterator<ShapeAbstract> it2 = ((TurtleWorld) world).shapes();
+			while (it2.hasNext())
+				it2.next().draw(g2);			
+		}
 	}
 
 	private void drawTurtle(Graphics2D g, Turtle b) {
