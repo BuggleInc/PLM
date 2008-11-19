@@ -89,6 +89,32 @@ public  class Turtle extends Entity {
 		return new Turtle(this);
 	}
 
+	public void forward(double dist) {
+		moveTo(x + dist*Math.cos(heading), y + dist*Math.sin(heading));
+	}
+
+	public void backward(double dist) {
+		moveTo(x + dist*Math.cos(heading+Math.PI), y + dist*Math.sin(heading+Math.PI));
+	}
+
+	private void moveTo(double newX, double newY) {
+		if (penDown) 
+			((TurtleWorld) world).addLine(x,y,newX,newY,color);
+		
+		x = newX;
+		y = newY;
+
+		world.notifyWorldUpdatesListeners();
+		stepUI();
+	}
+	
+	public void turnLeft(double angle) {
+		setHeadingRadian(heading-fromAngularUnit(angle));
+	}
+	public void turnRight(double angle) {
+		setHeadingRadian(heading+fromAngularUnit(angle));
+	}
+
 	public boolean isPenDown() {
 		return penDown;
 	}
@@ -97,23 +123,9 @@ public  class Turtle extends Entity {
 		this.penDown = true;
 	}
 
-	public void brushUp() {
+	public void penUp() {
 		this.penDown = false;
 	}
-
-	/* TODO
-	public Color getGroundColor() {
-		return getCell().getColor();
-	}*/
-
-	public Color getPenColor() {
-		return color;
-	}
-
-	public void setPenColor(Color c) {
-		color = c;
-	}
-
 	private double fromAngularUnit(double a){
 		switch (angularUnit) {
 		case AngularUnitDegree:
@@ -137,7 +149,7 @@ public  class Turtle extends Entity {
 		return toAngularUnit(heading);
 	}
 
-	final public void setHeading(double heading) {
+	public void setHeading(double heading) {
 		setHeadingRadian(fromAngularUnit(heading));
 	}
 	protected void setHeadingRadian(double heading) {
@@ -145,71 +157,54 @@ public  class Turtle extends Entity {
 		world.notifyWorldUpdatesListeners();
 	}
 
-	public void turnLeft(double angle) {
-		setHeadingRadian(heading-fromAngularUnit(angle));
+	public Color getColor() {
+		return color;
 	}
-
-	public void turnRight(double angle) {
-		setHeadingRadian(heading+fromAngularUnit(angle));
-	}
-
-	public void turnBack() {
-		setHeadingRadian(heading+Math.PI);
-	}
-	
-	public double getWorldHeight() {
-		return ((TurtleWorld)world).getHeight();
-	}
-	
-	public double getWorldWidth() {
-		return ((TurtleWorld)world).getWidth();
+	public void setColor(Color c) {
+		color = c;
 	}
 
 	public double getX() {
 		return x;
 	}
-
 	public void setX(double x) {
 		this.x = x;
 		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
-
 	public double getY() {
 		return y;
 	}
-
 	public void setY(double y) {
 		this.y = y;
 		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
-
 	public void setPos(double x, double y) {
 		this.x = x;
 		this.y = y;
 		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
+	
+	/* let's accept integers as arguments, too */
+	public void forward(int steps) { forward((double) steps); }
+	public void backward(int steps) { backward((double) steps); }
+	public void turnLeft(int a)  { turnLeft((double) a); }
+	public void turnRight(int a) { turnRight((double) a); }
+	public void setHeading(int heading) { setHeading((double)heading); }
+	public void setX(int x) {setX((double) x);}	
+	public void setY(int y) {setY((double) y);}	
+	public void setPos(int x,int y){   setPos((double)x, (double)y);}
+	public void setPos(double x,int y){setPos((double)x, (double)y);}
+	public void setPos(int x,double y){setPos((double)x, (double)y);}
 
-	public void forward(double dist) {
-		moveTo(x + dist*Math.cos(heading), y + dist*Math.sin(heading));
+	public double getWorldHeight() {
+		return ((TurtleWorld)world).getHeight();
 	}
-
-	public void backward(double dist) {
-		moveTo(x + dist*Math.cos(heading+Math.PI), y + dist*Math.sin(heading+Math.PI));
-	}
-
-	private void moveTo(double newX, double newY) {
-
-		if (penDown) 
-			((TurtleWorld) world).addLine(x,y,newX,newY,color);
-		
-		x = newX;
-		y = newY;
-
-		world.notifyWorldUpdatesListeners();
-		stepUI();
+	
+	public double getWorldWidth() {
+		return ((TurtleWorld)world).getWidth();
 	}
 
 	protected void stepUI() {
