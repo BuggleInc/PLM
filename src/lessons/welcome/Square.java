@@ -1,4 +1,4 @@
-package lessons.turtles;
+package lessons.welcome;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
@@ -9,13 +9,12 @@ public class Square extends ExerciseTemplated {
 
 	public Square(Lesson lesson) {
 		super(lesson);
-		name = "Square";
-		tabName = "Square";
+		name = "Hello, tortues";
 				
 		/* Create initial situation */
 		TurtleWorld myWorld = new TurtleWorld("WhiteBoard",400,400);
 
-		new Turtle(myWorld, "Thésée");
+		new Turtle(myWorld, "Hawksbill");
 		setup(myWorld);
 	}
 }
