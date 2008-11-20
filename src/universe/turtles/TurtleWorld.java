@@ -53,8 +53,7 @@ public class TurtleWorld extends World {
 		while (it.hasNext()) 
 			shapes.add(it.next().copy());
 		
-		super.reset(w);
-		
+		super.reset(w);		
 	}
 
 	
@@ -87,16 +86,13 @@ public class TurtleWorld extends World {
 	}
 	
 
+	// TODO implement world IO
 	@Override
-	public void readFromFile(BufferedReader br) throws IOException {
-		// TODO Raccord de méthode auto-généré
-	}
-
+	public void readFromFile(BufferedReader br) throws IOException {}
 	@Override
-	public void writeToFile(BufferedWriter f) throws IOException {
-		// TODO Raccord de méthode auto-généré
-
-	}
+	public void writeToFile(BufferedWriter f) throws IOException {}
+	
+	
 	@Override
 	public String toString(){
 		String res = "TurtleWorld: name="+getName()+", size="+width+"x"+height+", shapes=[";
