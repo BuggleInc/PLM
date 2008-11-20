@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -19,7 +20,9 @@ import jlm.universe.World;
 public abstract class ExerciseTemplated extends Exercise {
 
 	protected String tabName = getClass().getSimpleName(); /* Name of the tab in editor */
+	protected ArrayList<String> tabsNames = null;
 	protected String entityName = getClass().getCanonicalName()+"Entity"; /* name of the class of entities being solution of this exercise */
+	protected ArrayList<String> entitiesNames = null;
 	protected int UIDelay = 100;
 
 	public ExerciseTemplated(Lesson lesson) {
@@ -200,7 +203,9 @@ public abstract class ExerciseTemplated extends Exercise {
 					}
 					break;
 				case 1: /* template head */
-					if (line.contains("END TEMPLATE")) {
+					if (line.contains("public class "))
+						templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
+					else if (line.contains("END TEMPLATE")) {
 						state = 4;
 					} else if (line.contains("BEGIN SOLUTION")) {
 						state = 2; 
@@ -262,7 +267,10 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	protected void computeAnswer() {
-		mutateEntity(answerWorld,entityName);
+		if (entitiesNames != null)
+			mutateEntities(answerWorld,entitiesNames);
+		else 
+			mutateEntity(answerWorld,entityName);
 		for (World aw : answerWorld) {
 			Iterator<Entity> it = aw.entities();
 			while (it.hasNext())
@@ -291,7 +299,11 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (int i=0; i<currentWorld.length; i++) 
 			currentWorld[i].setDelay(this.UIDelay );
 
-		mutateEntity(tabName);
+		if (tabsNames == null)
+			mutateEntity(tabName);
+		else
+			mutateEntities(tabsNames);
+		
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].runEntities(runnerVect);
 
@@ -302,8 +314,13 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (int i=0; i<initialWorld.length; i++) { 
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].setDelay(this.UIDelay);
-		}		
-		mutateEntity(answerWorld, entityName);
+		}
+		
+		if (entitiesNames == null)
+			mutateEntity(answerWorld, entityName);
+		else
+			mutateEntities(answerWorld, entitiesNames);
+		
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
 	}
