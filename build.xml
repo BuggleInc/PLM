@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="dist" name="BuggleQuest">
+<project default="dist" name="JLM">
 
 	<property name="base.dir" value="."/>
     <property name="dist.dir" value="${base.dir}/dist"/>
@@ -28,16 +28,18 @@
 	
 	<target name="dist" depends="compile">
 	    <mkdir dir="${dist.dir}"/>
-		<jar destfile="${dist.dir}/BuggleQuest.jar" filesetmanifest="mergewithoutmain">
+		<jar destfile="${dist.dir}/jlm.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
 				<attribute name="Built-By" value="M. Quinson and G. Oster" />
-				<attribute name="Main-Class" value="bugglequest.ui.BuggleQuestApp" />
+				<attribute name="Main-Class" value="jlm.ui.JavaLearningMachine" />
 				<attribute name="Class-Path" value="." />
 			</manifest>
 			<fileset dir="${classes.dir}" excludes="**/.gitignore"/>
 			<fileset dir="${src.dir}" excludes="**/.gitignore"/>
 			<fileset dir="${lib.dir}" excludes="*.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.0.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.6-swing.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
 		</jar>
 	</target>
 </project>
