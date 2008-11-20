@@ -89,7 +89,7 @@ public abstract class World {
 		notifyEntityUpdateListeners();
 	}
 
-	public int entityCount() {
+	public int getEntityCount() {
 		return entities.size();
 	}
 	public Entity getEntity(int i) {

@@ -29,7 +29,7 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 
 	@Override
 	public int getSize() {
-		return this.world.entityCount();
+		return this.world.getEntityCount();
 	}
 
 	@Override
@@ -65,17 +65,17 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 	@Override
 	public void selectedWorldHasChanged() {
 		this.world = this.game.getSelectedWorld();
-		fireContentsChanged(this, 0, this.world.entityCount() - 1);
+		fireContentsChanged(this, 0, this.world.getEntityCount() - 1);
 	}
 
 	@Override
 	public void selectedEntityHasChanged() {
-		fireContentsChanged(this, 0, this.world.entityCount() - 1);
+		fireContentsChanged(this, 0, this.world.getEntityCount() - 1);
 	}
 	
 	@Override
 	public void selectedWorldWasUpdated() {
-		fireContentsChanged(this, 0, this.world.entityCount() - 1);
+		fireContentsChanged(this, 0, this.world.getEntityCount() - 1);
 	}
 
 }
