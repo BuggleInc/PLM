@@ -220,7 +220,7 @@ public abstract class Exercise {
 	}
 	protected void mutateEntity(World[] worlds, String newClasseName){
 		ArrayList<String> names= new ArrayList<String>();
-		for (int i=0; i<currentWorld[0].entityCount(); i++)
+		for (int i=0; i<currentWorld[0].getEntityCount(); i++)
 			names.add(newClasseName);
 		mutateEntities(worlds, names);
 	}
