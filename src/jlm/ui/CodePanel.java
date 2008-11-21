@@ -49,7 +49,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		int publicSrcFileCount = this.currentExercise.publicSourceFileCount();
 		
 		// if we have to remove few tabs
-		for (int i = this.getTabCount(); i > publicSrcFileCount; i--) {
+		for (int i = this.getTabCount()-1; i >= publicSrcFileCount; i--) {
 			this.removeTabAt(i);
 			JEditorPane codeEditor = this.codeEditors.remove(i);
 			SourceFileDocumentSynchronizer sync = this.synchronizers.remove(i);

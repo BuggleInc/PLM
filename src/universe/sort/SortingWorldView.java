@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
@@ -53,8 +54,12 @@ public class SortingWorldView extends WorldView {
 					g2.setColor(Color.blue);
 				else
 					g2.setColor(Color.black);
-				g2.drawLine((int)(scale*i),offset+maxSize,  
-						(int)(scale*i), offset+(maxSize- (int)(((double)ent.values[i])*maxSize/ ent.maxValue)));
+				
+				g2.draw(new Line2D.Double(scale*i, offset+maxSize, scale*i, offset+(((double)maxSize)- ((double)ent.values[i])*((double)maxSize)/ ((double)ent.maxValue))));						
+
+				
+				//g2.drawLine((int)(scale*i),offset+maxSize,  
+				//		(int)(scale*i), offset+(maxSize- (int)(((double)ent.values[i])*maxSize/ ent.maxValue)));
 			}
 		}
 		g2.setColor(Color.black);
