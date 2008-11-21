@@ -22,8 +22,8 @@ public class SortExercise extends ExerciseTemplated {
 		se.setWorld(w);
 		se.setName(name);
 		entitiesNames.add(se.getClass().getName());
-		tabsNames.add("my"+name);
-		newSourceFromFile("my"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
+		tabsNames.add("My"+name);
+		newSourceFromFile("My"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
 	}
 	
 	protected void setup(World[] ws) {		
