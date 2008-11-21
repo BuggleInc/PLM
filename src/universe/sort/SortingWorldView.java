@@ -41,7 +41,7 @@ public class SortingWorldView extends WorldView {
 		while (it.hasNext()) {
 			drawAlgo(g2, (SortingEntity)it.next(), offset, maxSize);
 			offset+=maxSize;
-			g2.drawLine(0, maxSize, getWidth(), maxSize);
+			g2.drawLine(0, offset, getWidth(), offset);
 		}
 	}
 
