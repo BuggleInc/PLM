@@ -56,8 +56,8 @@ public abstract class Entity {
 	
 	/** Copy fields of the entity passed in argument */
 	public void copy(Entity other) {
-		this.name=other.getName();
-		this.world=other.getWorld();
+		setName(other.getName());
+		setWorld(other.getWorld());
 	}
 	/** Copy constructor */
 	public abstract Entity copy();

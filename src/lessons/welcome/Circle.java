@@ -1,21 +1,20 @@
-package lessons.turtles;
+package lessons.welcome;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
-public class Square extends ExerciseTemplated {
+public class Circle extends ExerciseTemplated {
 
-	public Square(Lesson lesson) {
+	public Circle(Lesson lesson) {
 		super(lesson);
-		name = "Square";
-		tabName = "Square";
+		name = "Trois petits tours";
 				
 		/* Create initial situation */
 		TurtleWorld myWorld = new TurtleWorld("WhiteBoard",400,400);
 
-		new Turtle(myWorld, "Thésée");
+		new Turtle(myWorld, "Caretta");
 		setup(myWorld);
 	}
 }

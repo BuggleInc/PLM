@@ -21,6 +21,7 @@ public class ExerciseView extends JPanel implements GameListener {
 	private JComboBox worldComboBox;
 	private EntityControlPanel buttonPanel;
 	private JTabbedPane tabPane;
+	private JPanel controlPane;
 	
 	public ExerciseView(Game game) {
 		super();
@@ -69,7 +70,10 @@ public class ExerciseView extends JPanel implements GameListener {
 		 */
 
 		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
-		add(buttonPanel, "span,growx,wrap");
+		controlPane = new JPanel();
+		controlPane.setLayout(new MigLayout("fill"));
+		controlPane.add(buttonPanel,"grow");
+		add(controlPane, "span,growx,wrap");
 	}
 
 	public void selectObjectivePane() {
@@ -106,6 +110,10 @@ public class ExerciseView extends JPanel implements GameListener {
 
 			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
 			tabPane.add("Objective", objectivesView);
+			
+			controlPane.removeAll();
+			buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+			controlPane.add(buttonPanel, "grow");
 		}
 	}
 
