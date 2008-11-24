@@ -23,11 +23,21 @@ public class SortingWorld extends World {
 	}
 	public SortingWorld(String name, int nbValues) {
 		super(name);
+		boolean[] used = new boolean[nbValues];
+		for (int i=0;i<nbValues;i++) 
+			used[i] = false;
+		
 		values = new int[nbValues];
 		sorted = new boolean[nbValues];
 		for (int i=0;i<values.length;i++) {
 			sorted[i] = false;
-			values[i]=(int)(values.length * Math.random());
+			
+			int value = (int)(values.length * Math.random());
+			while (used[value])
+				value = (value+1)%values.length;
+			values[i]=value;
+			used[value] = true;
+			
 			if (values[i]>maxValue)
 				maxValue = values[i];
 		} 
