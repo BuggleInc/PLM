@@ -9,12 +9,15 @@ public class SimpleSort extends SortExercise {
 	public SimpleSort(Lesson lesson) {
 		super(lesson);
 		name = "Algorithmes de tri simples";
-		SortingWorld myWorld = new SortingWorld();
+		SortingWorld[] myWorlds = new SortingWorld[2];
+		myWorlds[0] = new SortingWorld("Functional test",10);
+		myWorlds[1] = new SortingWorld("Performance test");
 
-		addAlgo(myWorld, new BubbleSort(), "BubbleSort");  
-		addAlgo(myWorld, new SelectionSort(), "SelectionSort");  
-		addAlgo(myWorld, new InsertionSort(), "InsertionSort");  
-		addAlgo(myWorld, new ShellSort(), "ShellSort");  
-		setup(myWorld);
+		addAlgo(myWorlds, new BubbleSort(), "BubbleSort");  
+		addAlgo(myWorlds, new SelectionSort(), "SelectionSort");  
+		addAlgo(myWorlds, new InsertionSort(), "InsertionSort");  
+		addAlgo(myWorlds, new ShellSort(), "ShellSort");
+		
+		setup(myWorlds);
 	}
 }
