@@ -1,7 +1,5 @@
 package universe.sort;
 
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import jlm.lesson.ExerciseTemplated;
@@ -13,30 +11,8 @@ public class SortExercise extends ExerciseTemplated {
 
 	public SortExercise(Lesson lesson) {
 		super(lesson);
-		entitiesNames = new ArrayList<String>();
-		tabsNames = new ArrayList<String>();
 	}
 
-	protected void addAlgo(SortingWorld w, SortingEntity se, String name) {
-		w.addEntity(se);
-		se.setWorld(w);
-		se.setName(name);
-		entitiesNames.add(se.getClass().getName());
-		tabsNames.add("My"+name);
-		newSourceFromFile("My"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
-	}
-	protected void addAlgo(SortingWorld[] ws, SortingEntity se, String name) {
-		for (int i=0;i<ws.length;i++) {
-			ws[i].addEntity(se);
-			se.setWorld(ws[i]);
-			se.setName(name);
-			if (i==0) {
-				entitiesNames.add(se.getClass().getName());
-				tabsNames.add("My"+name);
-				newSourceFromFile("My"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
-			}
-		}
-	}
 
 	protected void setup(World[] ws) {		
 		worldDuplicate(ws);

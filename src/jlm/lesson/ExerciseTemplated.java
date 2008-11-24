@@ -258,6 +258,35 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		}
 	}
+	protected void addEntityKind(World w, Entity se, String name) {
+		if (entitiesNames == null)  {
+			entitiesNames = new ArrayList<String>();
+			tabsNames = new ArrayList<String>();
+		}
+
+		w.addEntity(se);
+		se.setWorld(w);
+		se.setName(name);
+		entitiesNames.add(se.getClass().getName());
+		tabsNames.add("My"+name);
+		newSourceFromFile("My"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); 
+	}
+	protected void addEntityKind(World[] ws, Entity se, String name) {
+		if (entitiesNames == null)  {
+			entitiesNames = new ArrayList<String>();
+			tabsNames = new ArrayList<String>();
+		}
+		for (int i=0;i<ws.length;i++) {
+			ws[i].addEntity(se);
+			se.setWorld(ws[i]);
+			se.setName(name);
+			if (i==0) {
+				entitiesNames.add(se.getClass().getName());
+				tabsNames.add("My"+name);
+				newSourceFromFile("My"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); 
+			}
+		}
+	}
 
 	protected final void setup(World w) {
 		loadMap(w);
@@ -281,7 +310,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void setup(World[] ws) {		
 		worldDuplicate(ws);
 
-		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); //FIXME: potential bug under windows
+		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); 
 
 		computeAnswer();
 	}

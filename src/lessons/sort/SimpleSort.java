@@ -13,10 +13,10 @@ public class SimpleSort extends SortExercise {
 		myWorlds[0] = new SortingWorld("Functional test",10);
 		myWorlds[1] = new SortingWorld("Performance test");
 
-		addAlgo(myWorlds, new BubbleSort(), "BubbleSort");  
-		addAlgo(myWorlds, new SelectionSort(), "SelectionSort");  
-		addAlgo(myWorlds, new InsertionSort(), "InsertionSort");  
-		addAlgo(myWorlds, new ShellSort(), "ShellSort");
+		addEntityKind(myWorlds, new BubbleSort(), "BubbleSort");  
+		addEntityKind(myWorlds, new SelectionSort(), "SelectionSort");  
+		addEntityKind(myWorlds, new InsertionSort(), "InsertionSort");  
+		addEntityKind(myWorlds, new ShellSort(), "ShellSort");
 		
 		setup(myWorlds);
 	}
