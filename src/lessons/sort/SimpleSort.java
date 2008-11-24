@@ -1,10 +1,10 @@
 package lessons.sort;
 
 import jlm.lesson.Lesson;
-import universe.sort.SortExercise;
+import universe.sort.SortingExercise;
 import universe.sort.SortingWorld;
 
-public class SimpleSort extends SortExercise {
+public class SimpleSort extends SortingExercise {
 
 	public SimpleSort(Lesson lesson) {
 		super(lesson);

@@ -7,12 +7,11 @@ import jlm.lesson.Lesson;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
-public class SortExercise extends ExerciseTemplated {
+public class SortingExercise extends ExerciseTemplated {
 
-	public SortExercise(Lesson lesson) {
+	public SortingExercise(Lesson lesson) {
 		super(lesson);
 	}
-
 
 	protected void setup(World[] ws) {		
 		worldDuplicate(ws);
