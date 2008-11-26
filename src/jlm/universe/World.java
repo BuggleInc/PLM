@@ -3,9 +3,13 @@ package jlm.universe;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
@@ -211,5 +215,78 @@ public abstract class World {
 		return true;
 	}
 
-	public abstract String getAbout();
+	final static String HTMLMissionHeader = 
+		"<head>\n"+
+		"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
+		"  <style>\n"+
+        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+        "    code { background:#EEEEEE; }\n"+
+        "    pre { background: #EEEEEE;\n"+
+        "          margin: 5px;\n"+
+        "          padding: 6px;\n"+
+        "          border: 1px inset;\n"+
+        "          width: 640px;\n"+
+        "          overflow: auto;\n"+
+        "          text-align: left;\n"+
+        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+        "   .comment { background:#EEEEEE;\n"+
+        "              font-family: \"Times New Roman\", serif;\n"+
+        "              color:#00AA00;\n"+
+        "              font-style: italic; }\n"+
+        "  </style>\n"+
+        "</head>\n";
+	String about = null;
+	public String getAbout() {
+		if (about == null) {
+			String filename = getClass().getCanonicalName().replace('.',File.separatorChar)+".html";
+
+			String newLine = System.getProperty("line.separator");
+
+			BufferedReader br = null;
+			/* try to find the file */
+			try {
+				br = new BufferedReader(new FileReader(new File(filename)));
+			} catch (FileNotFoundException e) {
+				// external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
+				String resourceName = "/"+getClass().getCanonicalName().replace('.','/')+".html";
+
+				InputStream s = getClass().getResourceAsStream(resourceName);
+				if (s == null) {
+					about = "File "+filename+" and resource "+resourceName+" not found.";
+					return about;	/* file not found, give up */
+				}
+
+				try {
+					br = new BufferedReader(new InputStreamReader(s,"UTF-8"));
+				} catch (UnsupportedEncodingException e1) {
+					e1.printStackTrace();
+					about = "About world file encoding is not supported on this platform (please report this bug)";
+					return about;
+				}
+			}
+
+			/* read it */
+			try {
+				StringBuffer sb = new StringBuffer();
+				String s;
+				s = br.readLine();
+				while (s != null) {
+					sb.append(s);
+					sb.append(newLine);
+					s = br.readLine();
+				}
+				about = "<html>\n"+HTMLMissionHeader+"<body>\n"+sb.toString()+"</body>\n</html>\n";
+			} catch (IOException e) {
+				e.printStackTrace();			
+			} finally {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return about;
+	}
 }

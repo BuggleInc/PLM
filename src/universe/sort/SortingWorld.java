@@ -57,26 +57,6 @@ public class SortingWorld extends World {
 			se.maxValue = maxValue;
 		}
 	}
-
-	@Override
-	public String getAbout(){
-		return "<h1>Méthodes disponibles pour les algorithmes de tri</h1>" +
-			   "<table border=1>" +
-			   "<tr><td>int getValueCount()<td>Retourne le nombre de valeurs dans le tableau</tr>" +
-			   
-			   "<tr><td>boolean compare(int i, int j)<td>Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j</tr>" +
-			   "<tr><td>boolean compareTo(int i, int val)<td>Retourne vrai ssi le contenu de la case i est inférieur à la valeur val</tr>" +
-			   
-			   "<tr><td>void swap(int i, int j)<td>Inverse le contenu de la case i et celui de la case j</tr>" +
-			   "<tr><td>void copy(int from, int to)<td>Recopie le contenu de la case from dans la case to</tr>" +
-			   
-			   "<tr><td>int getValue(int idx)<td>Retourne la valeur de la case idx</tr>" +
-			   "<tr><td>void setValue(int idx,int val)<td>Affecte la valeur val à la case idx</tr>" +
-			   
-			   "<tr><td>void sorted(int idx)<td>Indique que la case idx est triée (pour l'affichage)</tr>"+
-			   "</table>";
-				 
-	}
 	
 	@Override
 	public World copy() {
