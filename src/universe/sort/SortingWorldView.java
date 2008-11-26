@@ -5,7 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.Line2D;
+import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
@@ -50,16 +50,20 @@ public class SortingWorldView extends WorldView {
 			double scale = ((double)getWidth())/ent.values.length;
 
 			for (int i=0;i<ent.values.length;i++) {
+				
+				double height = ((double)ent.values[i])*((double)maxSize)/ ((double)ent.maxValue);
+				Shape rect = new Rectangle2D.Double(scale*i, offset+((double)maxSize)- height,scale, height);
+				
 				if (ent.sorted[i]) 
 					g2.setColor(Color.blue);
 				else
-					g2.setColor(Color.black);
+					g2.setColor(Color.yellow);
+				g2.fill(rect);
 				
-				g2.draw(new Line2D.Double(scale*i, offset+maxSize, scale*i, offset+(((double)maxSize)- ((double)ent.values[i])*((double)maxSize)/ ((double)ent.maxValue))));						
-
-				
-				//g2.drawLine((int)(scale*i),offset+maxSize,  
-				//		(int)(scale*i), offset+(maxSize- (int)(((double)ent.values[i])*maxSize/ ent.maxValue)));
+				g2.setColor(Color.black);
+				g2.draw(rect);
+				if (scale > 20) 
+					g2.drawString(""+ent.values[i], (int)scale*i+(int)scale/2, offset+maxSize-2);
 			}
 		}
 		g2.setColor(Color.black);
