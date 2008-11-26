@@ -22,9 +22,20 @@ public class TurtleWorldView extends WorldView {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
+		
+		TurtleWorld tw = (TurtleWorld) this.world;
+		
+		//FIXME: dirty code.
+		double ratio = Math.min(((double) getWidth())/tw.getWidth(), ((double)getHeight())/tw.getHeight());
+		g2.scale(ratio, ratio);
+
+		g2.translate(Math.abs((getWidth()-ratio*tw.getWidth())/2.), Math.abs((getHeight()-ratio*tw.getHeight())/2.));
+		
+		
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setColor(Color.white);
-		g2.fill(new Rectangle2D.Double(0.,0.,(double)getWidth(),(double)getHeight()));
+		//g2.fill(new Rectangle2D.Double(0.,0.,(double)getWidth(),(double)getHeight()));
+		g2.fill(new Rectangle2D.Double(0.,0.,(double)tw.getWidth(),(double)tw.getHeight()));
 		
 		Iterator<Entity> it = world.entities();
 		while (it.hasNext())
@@ -34,6 +45,8 @@ public class TurtleWorldView extends WorldView {
 			while (it2.hasNext())
 				it2.next().draw(g2);			
 		}
+		
+		
 	}
 
 	private void drawTurtle(Graphics2D g, Turtle b) {
