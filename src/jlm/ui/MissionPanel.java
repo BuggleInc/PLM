@@ -6,19 +6,19 @@ import javax.swing.text.html.StyleSheet;
 
 import jlm.core.Game;
 import jlm.event.GameListener;
-import jlm.lesson.Exercise;
 
 public class MissionPanel extends JEditorPane implements GameListener {
 
 	private static final long serialVersionUID = 3891198543319748064L;
 	private Game game;
-	private Exercise currentExercise = null;
-	
+
 	public MissionPanel(Game game) {
 		super("text/html", "");
 		setEditable(false);
+		this.setEditorKit(new JlmHtmlEditorKit());
+
 		// setPreferredSize(new Dimension(600,600));
-		
+
 		// load default css
 		StyleSheet styles = ((HTMLDocument) getDocument()).getStyleSheet();
 		try {
@@ -34,8 +34,7 @@ public class MissionPanel extends JEditorPane implements GameListener {
 
 	@Override
 	public void currentExerciseHasChanged() {
-		this.currentExercise = this.game.getCurrentLesson().getCurrentExercise();
-		setText(this.currentExercise.getMission());
+		setText(this.game.getCurrentLesson().getCurrentExercise().getMission());
 		setCaretPosition(0);
 	}
 
@@ -48,19 +47,20 @@ public class MissionPanel extends JEditorPane implements GameListener {
 	public void lessonsChanged() {
 		// don't care
 	}
-	
+
 	@Override
 	public void selectedWorldHasChanged() {
 		// don't care
 	}
-	
+
 	@Override
 	public void selectedEntityHasChanged() {
 		// don't care
 	}
-	
+
 	@Override
 	public void selectedWorldWasUpdated() {
 		// don't care
 	}
 }
+
