@@ -55,7 +55,29 @@ public class TurtleWorld extends World {
 		
 		super.reset(w);		
 	}
-
+	@Override
+	public String getAbout(){
+		return  "Voici les méthodes comprises par les tortues:<br>" +
+				"<ul>"+
+				" <li><b>Avancer</b> <code>public void forward(double nbPas);</code><br>"+
+				"   <b>Reculer</b> <code>public void backward(double nbPas);</code></li>"+
+				" <li><b>Tourner à gauche</b> <code>public void turnLeft(double angle);</code> (en degrés)<br>"+
+				"   <b>Tourner à droite</b> <code>public void turnRight(double angle);</code></li>"+
+				" <li><b>Lever stylo</b> <code>public void penUp();</code><br>"+
+				"   <b>Baisser stylo</b> <code>public void penDown();</code><br>"+
+				"   <b>Obtenir position stylo</b> <code>public boolean isPenDown();</code><br>"+
+				"   (les tortues ont des stylos, pas des brosses comme les buggles)</li>"+
+				" <li><b>Obtenir direction</b> <code>public double getHeading();</code><br>"+
+				"   <b>Changer direction</b> <code>public void setHeading(double angle);</code></li>"+
+				" <li><b>Obtenir couleur</b> <code>public Color getColor();</code><br>"+
+				"   <b>Changer couleur</b> <code>public void setColor(Color color);</code></li>"+
+				" <li><b>Obtenir position</b> <code>public double getX();</code>"+ 
+                "                             <code>public double getY();</code><br>"+
+                "     <b>Changer position</b> <code>public void setX(double x);</code>"+ 	
+                "                             <code>public void setY(double y);</code>"+
+                "                             <code>public void setPos(double x, double y);</code></li>"+
+                "</ul>";
+	}
 	
 	public void addLine(double x, double y, double newX, double newY, Color color) {
 		synchronized (shapes) {

@@ -210,4 +210,6 @@ public abstract class World {
 
 		return true;
 	}
+
+	public abstract String getAbout();
 }

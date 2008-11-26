@@ -59,6 +59,11 @@ public class SortingWorld extends World {
 	}
 
 	@Override
+	public String getAbout(){
+		return "SortingWorld";
+	}
+	
+	@Override
 	public World copy() {
 		return new SortingWorld(this);
 	}

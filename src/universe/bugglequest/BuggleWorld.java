@@ -73,7 +73,11 @@ public class BuggleWorld extends jlm.universe.World {
 		
 		super.reset(initialWorld);
 	}	
-
+	@Override
+	public String getAbout() {
+		return "TODO"; //FIXME
+	}
+	
 	public BuggleWorldCell getCell(int x, int y) {
 		return this.world[x][y];
 	}
