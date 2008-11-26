@@ -4,7 +4,6 @@ import java.awt.Dimension;
 
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
 import jlm.core.Game;
