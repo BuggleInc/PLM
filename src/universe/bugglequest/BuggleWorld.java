@@ -75,7 +75,51 @@ public class BuggleWorld extends jlm.universe.World {
 	}	
 	@Override
 	public String getAbout() {
-		return "TODO"; //FIXME
+		return "<h1>Méthodes comprises par les buggles</h1>" +
+				"<table border=1>" +
+				"<tr><td colspan=2 align=center><b>Bouger</b></td></tr>" +
+				"  <tr><td><b>Tourner à gauche<br>Tourner à droite<br>Se retourner<br>Avancer<br>Reculer</td>" +
+				"      <td>void turnLeft() (note 1);<br>void turnRight() (note 1)<br>void turnBack() (note 1)<br>" +
+				"          void forward() ou void forward(int) (note 1)<br>void backward() ou void backward(int) (note 1)<br></td></tr>" +
+				"  <tr><td><b>Obtenir l'abcisse<br>Obtenir l'ordonnée<br>Changer l'abcisse<br>Changer l'ordonnée<br>Changer la position</td>" +
+				"      <td>int getX();<br>int getY()<br>void setX(int)<br>void setY(int)<br>void setPos(int,int)</td></tr>" +
+				
+				"<tr><td colspan=2 align=center><b>Informations sur la buggle</b></td></tr>" +
+				"  <tr><td><b>Obtenir la couleur<br>Changer la couleur</td>" +
+				"      <td>Color getColor();<br>void setColor(Color)</td></tr>" +				
+				"  <tr><td><b>Chercher un mur devant<br>Chercher un mur derriere</td>" +
+				"      <td>boolean isFacingWall();<br>boolean isBackingWall()</td></tr>" +				
+				"  <tr><td><b>Obtenir la direction<br>Changer la direction</td>" +
+				"      <td>Direction getDirection();<br>void setDirection(Direction)</td></tr>" +
+				
+				"<tr><td colspan=2 align=center><b>À propos de la brosse</b></td></tr>" +
+				"  <tr><td><b>Baisser la brosse<br>Lever la brosse<br>Obtenir la position de la brosse" +
+				"      <td>void brushUp();<br>void brushDown();<br>boolean isBrushDown();</td></tr>"+
+				"  <tr><td><b>Modifier la couleur de la brosse<br>Obtenir la couleur de la brosse" +
+				"      <td>void setBrushColor(Color);<br>Color getBrushColor();</td></tr>"+
+				
+				"<tr><td colspan=2 align=center><b>Interagir avec le monde</b></td></tr>" +
+				"  <tr><td><b>Obtenir la couleur du sol</b></td><td>Color getGroundColor();</td></tr>" +
+				
+				"  <tr><td><b>Chercher un baggle par terre<br>Chercher un baggle dans ses poches<br>Prendre un baggle<br>Poser un baggle" +
+				"      <td>boolean isOverBaggle();<br>boolean isCarryingBaggle();<br>void pickupBaggle() (note 2)<br>void dropBaggle() (note 2)</td></tr>"+
+				
+				"  <tr><td><b>Chercher un message<br>Ajouter un message<br>Lire le message<br>Effacer le message" +
+				"      <td>boolean isOverMessage();<br>void writeMessage(String);<br>String readMessage()<br>void clearMessage()</td></tr>"+
+				"</table>"+
+				
+				"<h2>Note 1</h2>" +
+				"Les buggles normales lèvent une exception BuggleWallException si on cherche à leur faire traverser un mur. " +
+				"Les SimpleBuggles (ie, celles utilisées dans les premiers exercices) affiche un message d'erreur sans que vous " +
+				"ayez à vous soucier de ce qu'est une exception"+
+				
+				"<h2>Note 2</h2>" +
+				"Les buggles normales lèvent une exception NoBaggleUnderBuggleException si vous cherchez à prendre un baggle dans une case qui n'en contient pas, " +
+				"ou une exception AlreadyHaveBaggleException si vous portez déjà un baggle." +
+				"<p>Tenter de déposer un baggle sur une case qui en contient déjà lève une exception AlreadyHaveBaggleException.</p>" +
+				"<p>Les SimpleBuggles ne lèvent jamais d'exception et ouvre des fenêtres d'erreur à la place.";
+				
+				
 	}
 	
 	public BuggleWorldCell getCell(int x, int y) {
