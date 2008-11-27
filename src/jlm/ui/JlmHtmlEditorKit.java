@@ -60,7 +60,6 @@ class MyIconView extends View {
 		resourceName = resourceName.replaceAll("/png$", ".png").replaceAll("/jpg$", ".jpg");
 		resourceName = resourceName.replaceAll("/jpeg$", ".jpeg").replaceAll("/gif$", ".gif");
 
-		System.out.println("Load "+resourceName);
 		InputStream s = getClass().getResourceAsStream(resourceName);
 		
 		
