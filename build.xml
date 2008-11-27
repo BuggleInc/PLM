@@ -27,8 +27,7 @@
 	</target>
 	
 	<target name="dist" depends="compile">
-	    <mkdir dir="${dist.dir}"/>
-		<jar destfile="${dist.dir}/jlm.jar" filesetmanifest="mergewithoutmain">
+		<jar destfile="jlm.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
 				<attribute name="Built-By" value="M. Quinson and G. Oster" />
 				<attribute name="Main-Class" value="jlm.ui.JavaLearningMachine" />
