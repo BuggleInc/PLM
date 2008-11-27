@@ -9,7 +9,7 @@ public class Main extends Lesson {
 	
 	public Main() {
 		super();
-		setSequential(true);
+		setSequential(false);
 		name = "Labyrinthes";
 		addExercise(new RandomMouseMaze(this));
 		addExercise(new WallFollowerMaze(this));

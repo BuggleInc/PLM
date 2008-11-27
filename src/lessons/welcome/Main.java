@@ -19,7 +19,7 @@ public class Main extends Lesson {
 				" <li>Méthodes (avec ou sans arguments, avec ou sans retour)</li>" +
 				" <li>Tableaux</li>" +
 				"</ul></p>";
-		setSequential(true);
+		setSequential(false);
 		addExercise(new Environment(this));
 		addExercise(new Basics(this));
 		addExercise(new Basics3Pas(this));
