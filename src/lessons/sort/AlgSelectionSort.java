@@ -3,7 +3,7 @@ package lessons.sort;
 import universe.sort.SortingEntity;
 
 /* BEGIN TEMPLATE */
-public class SelectionSort extends SortingEntity {
+public class AlgSelectionSort extends SortingEntity {
 	public void run() {
 		/* BEGIN SOLUTION */
 		for (int i = 0; i < getValueCount(); i++) {

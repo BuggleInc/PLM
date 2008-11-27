@@ -8,6 +8,6 @@ public class Main extends Lesson {
 	public Main() {
 		super();	
 		name = "Algorithmes de tri";
-		addExercise(new SimpleSort(this));
+		addExercise(new ExExchangeSort(this));
 	}
 }

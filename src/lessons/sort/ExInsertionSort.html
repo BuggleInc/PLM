@@ -1,0 +1,39 @@
+<h1>Quelques algorithmes de tri simples</h1>
+
+Vous voici dans le monde des tris. Il vous permet d'expérimenter avec les différents algorithmes de tri existant.
+Consultez l'aide du monde ("Help->About this world") pour une aide sur les primitives utilisables par vos algorithmes.
+
+<p>Dans ce premier exercice, nous allons voir les plus simples d'entre eux. L'onglet "Source code" est composé de 
+plusieurs sous-onglets, correspondant aux différents algorithmes à écrire. Pour réussir l'exercice, il faut que
+votre solution réalise le même nombre de lectures et écritures que la solution codée dans l'objectif. 
+Attention donc à suivre le pseudo-code de chaque algorithme à la lettre!
+
+<h2>SelectionSort</h2>
+<h2>InsertionSort</h2>
+Ce tri est relativement simple à comprendre et à écrire, même s'il n'offre pas les meilleures performances possibles. 
+Il s'agit d'un algorithme quadratique (complexité asymptotique en O(n2)), mais il est plus efficace en pratique (linéaire dans le meilleur des cas, ie quand le tableau déjà trié et N2/4 en moyenne).
+  
+<p>L'idée est de parcourir tous les éléments du tableau, et d'insérer chacun à sa place dans la partie du tableau déjà trié.
+Lorsque l'on regarde un élément x du tableau, on est dans la situation suivante : tous les éléments à gauche du tableau 
+sont déjà triés, et il faut insérer x à sa place dans le tableau.</p>
+<p align=center><img src="lessons/sort/Insertionsort-before.png">
+
+<p>Une fois ceci fait, on se retrouve dans la situation suivante:
+<p align=center><img src="lessons/sort/Insertionsort-after.png">
+
+<p>Le pseudo-code de cet algorithme est donc le suivant :
+<pre>Pour tout i dans [1,lgr]
+  stoquer la valeur de la case i dans une variable val
+  recopier la case i-1 dans i, si i-1 contient une valeur plus grande que val
+  recopier la case i-2 dans i-1, si i-2 contient une valeur plus grande que val  
+  recopier la case i-3 dans i-2, si i-3 contient une valeur plus grande que val  
+  recopier la case i-4 dans i-3, si i-4 contient une valeur plus grande que val
+  ...
+  recopier val dans la dernière case recopiée plus haut
+</pre>
+
+Bien entendu, il faut utiliser une boucle pour écrire la grosse permutation circulaire au coeur de la boucle. 
+L'écrire explicitement de la sorte serait vraiment ... contre-productif.
+
+<h2>ShellSort</h2>
+ 

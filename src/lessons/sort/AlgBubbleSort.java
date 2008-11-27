@@ -1,0 +1,21 @@
+package lessons.sort;
+
+import universe.sort.SortingEntity;
+
+/* BEGIN TEMPLATE */
+public class AlgBubbleSort extends SortingEntity {
+	public void run() {
+		/* BEGIN SOLUTION */
+		boolean swapped;
+		do {
+			swapped = false;
+			for (int i=0; i<getValueCount()-1; i++)
+				if (!compare(i,i+1)) {
+					swap(i,i+1);
+					swapped =true;
+				}
+		} while (swapped);
+		/* END SOLUTION */
+	}
+}
+/* END TEMPLATE */
