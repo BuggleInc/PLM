@@ -186,7 +186,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			StringBuffer tail = new StringBuffer(); /* after the template (state 4) */
 
 			for (String line : sbFullContent.toString().split("\n")) {
-				if (debugThis)
+				if (this.debug)
 					System.out.println(state+"->"+line);
 				switch (state) {
 				case 0: /* initial content */
@@ -244,18 +244,12 @@ public abstract class ExerciseTemplated extends Exercise {
 			for (String s: (head+"$body"+tail).split("\n")) 
 				template.append(s);			
 
-			if (debugThis) {
+			if (this.debug) {
 				System.out.println("<<<<<<<<template:"+template);
 				System.out.println("<<<<<<<<debugCtn:"+debugContent);
 				System.out.println("<<<<<<<<initialContent:"+initialContent);
 			}
-			//newSource(name, (Exercise.debug?debugContent:initialContent), template.toString());
-			if (getLesson().solutionShown()) {
-				newSource(name, debugContent, template.toString());
-			} else {
-				newSource(name, initialContent, template.toString());				
-			}
-
+			newSource(name, this.debug?debugContent:initialContent, template.toString());
 		}
 	}
 	protected void addEntityKind(World w, Entity se, String name) {

@@ -19,7 +19,7 @@ import jlm.universe.World;
 
 
 public abstract class Exercise {
-	public boolean debugThis = false; /* whether to debug this particular exo */
+	public boolean debug = false; /* whether to debug this particular exo */
 
 	protected boolean done = false; /** indicate whether this Exercise was successfully done or not */
 

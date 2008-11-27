@@ -37,13 +37,7 @@ public class Lesson {
 	
 	public void setSequential(boolean enabled) {
 		this.sequential = enabled;
-	}
-	
-	public boolean solutionShown() {
-		String val = Game.getProperties().getProperty("solution.show","false");
-		return val.equals("true");		
-	}
-	
+	}	
 	
 	public void addExercise(Exercise exo) {
 		exercises.add(exo);
