@@ -13,6 +13,8 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
+import javax.swing.JOptionPane;
+
 import jlm.lesson.Exercise;
 import jlm.lesson.Lesson;
 import jlm.lesson.RevertableSourceFile;
@@ -81,13 +83,18 @@ public class ZipSessionKit implements ISessionKit {
 				} // end-for exercise
 			} // end-for lesson
 
-		} catch (FileNotFoundException fnfe) {
-			fnfe.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
+		} catch (Exception ex) { // FileNotFoundException or IOException
+			JOptionPane.showMessageDialog(null,
+					"JLM were unable to save your session file:\n" +
+					ex.getClass().getSimpleName()+": "+ex.getMessage(),
+					"Your changes are NOT saved.",
+					JOptionPane.ERROR_MESSAGE);
+
+
 		} finally {
 			try {
-				zos.close();
+				if (zos != null)
+					zos.close();
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
@@ -146,13 +153,26 @@ public class ZipSessionKit implements ISessionKit {
 				} // end-for exercise
 			} // end-for lesson
 
-		} catch (ZipException zex) {
-			zex.printStackTrace();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
+		} catch (Exception ex) { // ZipExecption or IOException
+			ex.printStackTrace();
+			Object[] options = {"Proceed","Abort"};
+			int n = JOptionPane.showOptionDialog(null,
+					"JLM were unable to load your session file ("+ex.getClass().getSimpleName()+":"+ex.getMessage()+").\n\n" +
+					" Would you like proceed anyway (and loose any solution typed so far)?",
+					"Error while loading your session",
+					JOptionPane.YES_NO_CANCEL_OPTION,
+					JOptionPane.ERROR_MESSAGE,
+					null,
+					options,
+					options[1]);
+			if (n==1) {
+				System.err.println("Abording on user request");
+				System.exit(1);
+			}
 		} finally {
 			try {
-				zf.close();
+				if (zf != null)
+					zf.close();
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
