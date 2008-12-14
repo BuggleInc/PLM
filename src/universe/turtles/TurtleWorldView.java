@@ -4,9 +4,13 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
+import javax.swing.ImageIcon;
+
+import jlm.ui.ResourcesCache;
 import jlm.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -37,19 +41,25 @@ public class TurtleWorldView extends WorldView {
 		//g2.fill(new Rectangle2D.Double(0.,0.,(double)getWidth(),(double)getHeight()));
 		g2.fill(new Rectangle2D.Double(0.,0.,(double)tw.getWidth(),(double)tw.getHeight()));
 		
-		Iterator<Entity> it = world.entities();
-		while (it.hasNext())
-			drawTurtle(g2, (Turtle)it.next());
 		synchronized (((TurtleWorld) world).shapes) {
 			Iterator<ShapeAbstract> it2 = ((TurtleWorld) world).shapes();
 			while (it2.hasNext())
 				it2.next().draw(g2);			
 		}
+		Iterator<Entity> it = world.entities();
+		while (it.hasNext())
+			drawTurtle(g2, (Turtle)it.next());
 		
 		
 	}
 
 	private void drawTurtle(Graphics2D g, Turtle b) {
+		ImageIcon ic = ResourcesCache.getIcon("resources/kturtle.png");
+		AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, b.getX()-ic.getIconWidth()/2, b.getY()-ic.getIconHeight()/2);
+		t.rotate(Math.PI*b.getHeading()/180, ic.getIconWidth()/2, ic.getIconHeight()/2);
+		g.drawImage(ic.getImage(), t, null);
+		
+			
 		/* TODO	
   		double scaleFactor = 0.6; // to scale the sprite
 		double pixW = scaleFactor * 400 / (Math.min(((TurtleWorld) world).getHeight(),((TurtleWorld) world).getWidth()));  // fake pixel width

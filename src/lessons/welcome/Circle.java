@@ -10,11 +10,11 @@ public class Circle extends ExerciseTemplated {
 	public Circle(Lesson lesson) {
 		super(lesson);
 		name = "Trois petits tours";
-				
-		/* Create initial situation */
-		TurtleWorld myWorld = new TurtleWorld("WhiteBoard",400,400);
 
-		new Turtle(myWorld, "Caretta");
+		/* Create initial situation */
+		TurtleWorld myWorld = new TurtleWorld("WhiteBoard", 400, 400);
+
+		new Turtle(myWorld, "Caretta", 200, 200);
 		setup(myWorld);
 	}
 }

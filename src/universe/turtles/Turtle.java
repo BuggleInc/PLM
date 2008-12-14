@@ -59,6 +59,10 @@ public  class Turtle extends Entity {
 		this(w, name, 0., 0., 0., Color.red);
 	}
 
+	public Turtle(TurtleWorld w, String name, double x, double y) {
+		this(w, name, x, y, 0., Color.red);
+	}
+	
 	public Turtle(TurtleWorld world, String name, double x, double y, double heading, Color c) {
 		super(name,world);
 		this.color = c;
@@ -66,6 +70,7 @@ public  class Turtle extends Entity {
 		this.y = y;
 		this.heading = heading;
 	}
+	
 	public Turtle(Turtle t) {
 		super();
 		setName(t.getName());
