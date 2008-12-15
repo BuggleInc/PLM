@@ -54,10 +54,7 @@ public class SortingWorldView extends WorldView {
 				double height = ((double)ent.values[i])*((double)maxSize)/ ((double)ent.maxValue);
 				Shape rect = new Rectangle2D.Double(scale*i, offset+((double)maxSize)- height,scale, height);
 				
-				if (ent.sorted[i]) 
-					g2.setColor(Color.blue);
-				else
-					g2.setColor(Color.yellow);
+				g2.setColor(ent.color[i]);
 				g2.fill(rect);
 				
 				g2.setColor(Color.black);

@@ -1,5 +1,6 @@
 package universe.sort;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -13,7 +14,7 @@ import jlm.universe.World;
 public class SortingWorld extends World {
 	int[] values;
 	public int maxValue=-1;
-	boolean[] sorted;
+	Color[] color;
 	
 	public SortingWorld() {
 		this("Sorting world");
@@ -28,9 +29,9 @@ public class SortingWorld extends World {
 			used[i] = false;
 		
 		values = new int[nbValues];
-		sorted = new boolean[nbValues];
+		color = new Color[nbValues];
 		for (int i=0;i<values.length;i++) {
-			sorted[i] = false;
+			color[i] = Color.yellow;
 			
 			int value = (int)(values.length * Math.random());
 			while (used[value])
@@ -46,14 +47,14 @@ public class SortingWorld extends World {
 	public SortingWorld(SortingWorld world2) {
 		super(world2);
 		values = world2.values.clone();
-		sorted = world2.sorted.clone();
+		color = world2.color.clone();
 		maxValue = world2.maxValue;
 		
 		Iterator<Entity> it = entities();
 		while (it.hasNext()) {
 			SortingEntity se = (SortingEntity) it.next();
 			se.values = values.clone();
-			se.sorted = sorted.clone();
+			se.color = color.clone();
 			se.maxValue = maxValue;
 		}
 	}
@@ -66,7 +67,7 @@ public class SortingWorld extends World {
 	public void reset(World w) {
 		SortingWorld world2 = (SortingWorld)w;
 		values = world2.values.clone();
-		sorted = world2.sorted.clone();
+		color = world2.color.clone();
 		maxValue = world2.maxValue;
 				
 		super.reset(w);		
@@ -82,9 +83,10 @@ public class SortingWorld extends World {
 		}; 
 	}
 
+	SortingWorldView worldView = new SortingWorldView(this); 
 	@Override
 	public WorldView getView() {
-		return new SortingWorldView(this);
+		return worldView;
 	}
 
 	// TODO Implement world IO

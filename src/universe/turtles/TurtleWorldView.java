@@ -29,7 +29,6 @@ public class TurtleWorldView extends WorldView {
 		
 		TurtleWorld tw = (TurtleWorld) this.world;
 		
-		//FIXME: dirty code.
 		double ratio = Math.min(((double) getWidth())/tw.getWidth(), ((double)getHeight())/tw.getHeight());
 		g2.scale(ratio, ratio);
 
@@ -58,44 +57,7 @@ public class TurtleWorldView extends WorldView {
 		AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, b.getX()-ic.getIconWidth()/2, b.getY()-ic.getIconHeight()/2);
 		t.rotate(Math.PI*b.getHeading()/180, ic.getIconWidth()/2, ic.getIconHeight()/2);
 		g.drawImage(ic.getImage(), t, null);
-		
-			
-		/* TODO	
-  		double scaleFactor = 0.6; // to scale the sprite
-		double pixW = scaleFactor * 400 / (Math.min(((TurtleWorld) world).getHeight(),((TurtleWorld) world).getWidth()));  // fake pixel width
-		double padx = 1;//getPadX();
-		double pady = 1;//getPadY();
-		double pad = 1;
-	
-		double ox = 1;//b.getX()*getCellWidth(); // x-offset of the cell
-		double oy = 1;//b.getY()*getCellWidth(); // y-offset of the cell
-		
-		for (int dy=0; dy<INVADER_SPRITE_SIZE; dy++) {
-			for (int dx=0; dx<INVADER_SPRITE_SIZE; dx++) {
-				if (INVADER_SPRITE[dy][dx] == 1) {
-						g.fill(new Rectangle2D.Double(padx+pad+ox+dx*pixW, pady+pad+oy+dy*pixW, pixW, pixW));
-				}
-			}				
-		}
-		*/
 	}
-	// old style ;b
-	/*
-	private static int INVADER_SPRITE_SIZE = 11;
-	private static int[][] INVADER_SPRITE = {
-		{ 0,0,0,0,0,0,0,0,0,0,0 },
-		{ 0,0,1,0,0,0,0,0,1,0,0 },
-		{ 0,0,0,1,0,0,0,1,0,0,0 },
-		{ 0,0,1,1,1,1,1,1,1,0,0 },
-		{ 0,1,1,0,1,1,1,0,1,1,0 },
-		{ 1,1,1,1,1,1,1,1,1,1,1 },
-		{ 1,0,1,1,1,1,1,1,1,0,1 },
-		{ 1,0,1,0,0,0,0,0,1,0,1 },
-		{ 0,0,0,1,1,0,1,1,0,0,0 },
-		{ 0,0,0,0,0,0,0,0,0,0,0 },
-		{ 0,0,0,0,0,0,0,0,0,0,0 },
-	};
-	 */
 
 	@Override
 	public boolean isWorldCompatible(World world) {

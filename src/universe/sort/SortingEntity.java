@@ -1,10 +1,12 @@
 package universe.sort;
 
+import java.awt.Color;
+
 import jlm.universe.Entity;
 import jlm.universe.World;
 
 public class SortingEntity extends Entity {
-	boolean[] sorted;	
+	Color[] color;	
 	int[] values;
 	int maxValue;
 	private int readCount = 0;
@@ -26,7 +28,7 @@ public class SortingEntity extends Entity {
 		if (w!=null && ((SortingWorld)w).values != null) {
 			values = ((SortingWorld)w).values.clone();
 			maxValue=((SortingWorld)w).maxValue;
-			sorted = ((SortingWorld)w).sorted.clone();
+			color = ((SortingWorld)w).color.clone();
 		}	
 	}
 	@Override
@@ -39,10 +41,10 @@ public class SortingEntity extends Entity {
 		SortingEntity other = (SortingEntity) o;
 		if (other.values!=null) {
 			values = other.values.clone();
-			sorted = other.sorted.clone();
+			color = other.color.clone();
 			maxValue = other.maxValue;
 		} else if (other.world !=null && ((SortingWorld)other.world).values != null) {
-			sorted = ((SortingWorld)other.world).sorted.clone();
+			color = ((SortingWorld)other.world).color.clone();
 			values = ((SortingWorld)other.world).values.clone();
 			maxValue = ((SortingWorld)other.world).maxValue;
 		}
@@ -90,7 +92,7 @@ public class SortingEntity extends Entity {
 		stepUI();
 	}
 	public final void sorted(int i){
-		sorted[i] = true;
+		color[i] = Color.blue;
 	}
 
 	private void stepUI() {
