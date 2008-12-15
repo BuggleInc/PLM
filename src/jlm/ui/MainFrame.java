@@ -37,7 +37,6 @@ import jlm.ui.action.RevertExercise;
 import jlm.ui.action.StartExecution;
 import jlm.ui.action.StopExecution;
 
-
 public class MainFrame extends JFrame implements GameStateListener {
 
 	private static final long serialVersionUID = -5022279647890315264L;
@@ -158,40 +157,41 @@ public class MainFrame extends JFrame implements GameStateListener {
 				null));
 		menu.add(cleanUpSessionMenuItem);
 
-		if (!System.getProperty("os.name").startsWith("Mac")) {
-			menu = new JMenu("Help");
-			menuBar.add(menu);
+		menu = new JMenu("Help");
+		menuBar.add(menu);
 
-			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this lesson", null){
+		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this lesson", null) {
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent arg0) {
+				AboutLessonDialog.getInstance().setVisible(true);
+			}
+		}));
+		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this world", null) {
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent arg0) {
+				AboutWorldDialog.getInstance().setVisible(true);
+			}
+		}));
+		
+		if (!System.getProperty("os.name").startsWith("Mac")) {
+			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About JLM", null) {
 				private static final long serialVersionUID = 1L;
-				public void actionPerformed(ActionEvent arg0) {
-					AboutLessonDialog.getInstance().setVisible(true);
-				}				
-			}));
-			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this world", null){
-				private static final long serialVersionUID = 1L;
-				public void actionPerformed(ActionEvent arg0) {
-					AboutWorldDialog.getInstance().setVisible(true);
-				}				
-			}));
-			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About JLM", null){
-				private static final long serialVersionUID = 1L;
+
 				public void actionPerformed(ActionEvent e) {
 					AboutJLMDialog.getInstance().setVisible(true);
-				}				
-			}));
-			
-		} else {
-
-			if (System.getProperty("os.name").startsWith("Mac")) {								
-                try {
-					OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quit", (Class[])null));
-					OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("about", (Class[])null));
-                } catch (SecurityException e) {
-					e.printStackTrace();
-				} catch (NoSuchMethodException e) {
-					e.printStackTrace();
 				}
+			}));
+
+		} else {
+			try {
+				OSXAdapter.setQuitHandler(this, getClass().getDeclaredMethod("quit", (Class[]) null));
+				OSXAdapter.setAboutHandler(this, getClass().getDeclaredMethod("about", (Class[]) null));
+			} catch (SecurityException e) {
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				e.printStackTrace();
 			}
 		}
 
@@ -316,13 +316,12 @@ public class MainFrame extends JFrame implements GameStateListener {
 
 	}
 
-	
 	public void quit() {
 		MainFrame.getInstance().dispose();
 		Game.getInstance().quit();
-		//event.setHandled(true);
+		// event.setHandled(true);
 	}
-	
+
 	public void about() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -331,8 +330,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 						AboutJLMDialog.getInstance().setVisible(true);
 					}
 				});
-				//event.setHandled(true);
+				// event.setHandled(true);
 			}
 		});
-	}	
+	}
 }
