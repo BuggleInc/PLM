@@ -22,24 +22,26 @@ public class SortingExercise extends ExerciseTemplated {
 	@Override
 	public boolean check() {
 		boolean result = true;
-		Iterator<Entity> itAnswer = answerWorld[0].entities();
-		Iterator<Entity> itCurrent = currentWorld[0].entities();
-		while (itAnswer.hasNext()) {
-			SortingEntity ans = (SortingEntity) itAnswer.next();
-			SortingEntity cur = (SortingEntity) itCurrent.next();
-			if (ans.getWriteCount() != cur.getWriteCount())
-				result=false;
-			if (ans.getReadCount() != cur.getReadCount())
-				result=false;
-			for (int i=1;i<cur.values.length;i++)  
-				if (cur.values[i-1]>cur.values[i]) 
+		for (int w=0;w<answerWorld.length;w++) {
+			Iterator<Entity> itAnswer = answerWorld[w].entities();
+			Iterator<Entity> itCurrent = currentWorld[w].entities();
+			while (itAnswer.hasNext()) {
+				SortingEntity ans = (SortingEntity) itAnswer.next();
+				SortingEntity cur = (SortingEntity) itCurrent.next();
+				if (ans.getWriteCount() != cur.getWriteCount())
 					result=false;
-			for (int i=0;i<cur.values.length;i++)  
-				if (cur.values[i]!=i) 
-					cur.color[i] = Color.red;
-				else
-					cur.color[i] = Color.blue;
-			cur.getWorld().getView().repaint();
+				if (ans.getReadCount() != cur.getReadCount())
+					result=false;
+				for (int i=1;i<cur.values.length;i++)  
+					if (cur.values[i-1]>cur.values[i]) 
+						result=false;
+				for (int i=0;i<cur.values.length;i++)  
+					if (cur.values[i]!=i) 
+						cur.color[i] = Color.red;
+					else
+						cur.color[i] = Color.blue;
+				cur.getWorld().getView().repaint();
+			}
 		}
 		return result;	
 	}
