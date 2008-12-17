@@ -21,7 +21,8 @@ public class AlgCombSort11 extends SortingEntity {
 					swapped =true;
 				}	
 		} while (gap>1 || swapped);
-		/* END SOLUTION */
+		checkme(); /* color everything in blue */
+	/* END SOLUTION */
 	}
 }
 /* END TEMPLATE */

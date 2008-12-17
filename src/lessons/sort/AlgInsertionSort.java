@@ -17,7 +17,8 @@ public class AlgInsertionSort extends SortingEntity {
 		}
 		for (int i = 0; i < getValueCount(); i++) 
 			sorted(i);
+		checkme(); /* color everything in blue */
 	}
-	/* END SOLUTION */
+/* END SOLUTION */
 }
 /* END TEMPLATE */

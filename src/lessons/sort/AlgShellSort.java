@@ -36,7 +36,8 @@ public class AlgShellSort extends SortingEntity {
 		}
 		for (int i = 0; i < getValueCount(); i++) 
 			sorted(i);
+		checkme();
+		/* END SOLUTION */
 	}
-	/* END SOLUTION */
 }
 /* END TEMPLATE */

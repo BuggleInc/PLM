@@ -17,7 +17,8 @@ public class AlgGnomeSort extends SortingEntity {
 			if (i==-1)
 				i=0;
 		}
-		/* END SOLUTION */
+		checkme(); /* color everything in blue */
+	/* END SOLUTION */
 	}
 }
 /* END TEMPLATE */

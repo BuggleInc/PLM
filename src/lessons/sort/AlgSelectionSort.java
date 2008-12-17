@@ -20,7 +20,8 @@ public class AlgSelectionSort extends SortingEntity {
 			swap(min,i);
 			sorted(i);
 		}
+		checkme(); /* color everything in blue */
+		/* END SOLUTION */
 	}
-	/* END SOLUTION */
 }
 /* END TEMPLATE */

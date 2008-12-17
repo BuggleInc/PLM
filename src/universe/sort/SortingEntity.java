@@ -54,6 +54,14 @@ public class SortingEntity extends Entity {
 	public void run() {
 		// Child implement this
 	}
+	public void checkme() {
+		for (int i=0;i<values.length;i++) {
+			if (values[i] == i)
+				color[i] = Color.blue;
+			else
+				color[i] = Color.red;
+		}
+	}
 
 	public final boolean compare(int i, int j) {
 		readCount+=2;

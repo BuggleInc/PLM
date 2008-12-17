@@ -15,6 +15,7 @@ public class AlgBubbleSort extends SortingEntity {
 					swapped =true;
 				}
 		} while (swapped);
+		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 }

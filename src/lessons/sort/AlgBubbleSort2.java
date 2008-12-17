@@ -12,6 +12,7 @@ public class AlgBubbleSort2 extends SortingEntity {
 					swap(j,j+1);
 			sorted(i);
 		}
+		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 }

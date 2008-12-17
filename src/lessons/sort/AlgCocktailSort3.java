@@ -17,8 +17,10 @@ public class AlgCocktailSort3 extends SortingEntity {
 					swapped =true;
 				}	
 			sorted(end+1);
-			if (!swapped)
+			if (!swapped) {
+				checkme();
 				return;
+			}
 			swapped=false;
 			end--;
 			for (int i=end; i>=begin; i--)
@@ -29,6 +31,7 @@ public class AlgCocktailSort3 extends SortingEntity {
 			sorted(begin);
 			begin++;
 		} while (swapped && end-begin>1);
+		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 }

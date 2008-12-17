@@ -15,8 +15,10 @@ public class AlgBubbleSort3 extends SortingEntity {
 				}
 			}
 			sorted(i);
-			if (!swapped)
-				  return;
+			if (!swapped) {
+				checkme(); /* color everything in blue */
+				return;	
+			}
 		}
 		/* END SOLUTION */
 	}
