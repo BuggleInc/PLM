@@ -11,7 +11,7 @@ public class ExExchangeSort extends SortingExercise {
 		name = "Tri à bulle et variantes";
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld("Functional test",10);
-		myWorlds[1] = new SortingWorld("Performance test",200);
+		myWorlds[1] = new SortingWorld("Performance test (200 elms)",200);
 
 		addEntityKind(myWorlds, new AlgBubbleSort(), "BubbleSort");  
 		addEntityKind(myWorlds, new AlgBubbleSort2(), "BubbleSort2");  
