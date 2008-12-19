@@ -20,11 +20,9 @@ public class ExExchangeSort extends SortingExercise {
 		addEntityKind(myWorlds, new AlgCocktailSort2(), "CocktailSort2");  
 		addEntityKind(myWorlds, new AlgCocktailSort3(), "CocktailSort3");  
 		addEntityKind(myWorlds, new AlgCombSort(), "CombSort");  
-		addEntityKind(myWorlds, new AlgCombSort11(), "CombSort11");  
-//		addEntityKind(myWorlds, new AlgSelectionSort(), "SelectionSort");  
-//		addEntityKind(myWorlds, new AlgInsertionSort(), "InsertionSort");  
-//		addEntityKind(myWorlds, new AlgShellSort(), "ShellSort");
-		
+		addEntityKind(myWorlds, new AlgCombSort11(), "CombSort11"); 
+		addEntityKind(myWorlds, new AlgGnomeSort(), "GnomeSort");  
+
 		setup(myWorlds);
 	}
 }
