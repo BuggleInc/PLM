@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/lessons/sort/Insertionsort-after.png</name>
+			<type>1</type>
+			<location>/home/mquinson/Code/JLM/src/lessons/sort/Insertionsort-after.png</location>
+		</link>
+		<link>
+			<name>src/lessons/sort/Insertionsort-before.png</name>
+			<type>1</type>
+			<location>/home/mquinson/Code/JLM/src/lessons/sort/Insertionsort-before.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>

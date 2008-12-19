@@ -8,13 +8,11 @@ public class ExInsertionSort extends SortingExercise {
 
 	public ExInsertionSort(Lesson lesson) {
 		super(lesson);
-		name = "Tris itératifs";
+		name = "Tris par insertion";
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld("Functional test",10);
-		myWorlds[1] = new SortingWorld("Performance test",100);
+		myWorlds[1] = new SortingWorld("Performance test",200);
 
-		addEntityKind(myWorlds, new AlgGnomeSort(), "GnomeSort");  
-		addEntityKind(myWorlds, new AlgSelectionSort(), "SelectionSort");  
 		addEntityKind(myWorlds, new AlgInsertionSort(), "InsertionSort");  
 		addEntityKind(myWorlds, new AlgShellSort(), "ShellSort");
 		
