@@ -2,14 +2,12 @@ package jlm.core;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
@@ -19,7 +17,6 @@ import jlm.lesson.Exercise;
 import jlm.lesson.Lesson;
 import jlm.lesson.RevertableSourceFile;
 import jlm.lesson.SourceFile;
-
 
 public class ZipSessionKit implements ISessionKit {
 
@@ -31,22 +28,38 @@ public class ZipSessionKit implements ISessionKit {
 
 	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".jlm");
 
-	private static File SAVE_FILE = new File(SAVE_DIR, "jlm.zip");
+	private static String SAVE_FILENAME = "jlm.zip";
+	private static File SAVE_FILE = new File(SAVE_DIR, SAVE_FILENAME);
 
 	public ZipSessionKit(Game game) {
 		this.game = game;
 	}
-
+	
 	public void store() {
-		if (!SAVE_DIR.exists()) {
-			if (! SAVE_DIR.mkdir()) {
-				Logger.log("ZipSessionKit:store", "cannot create session store directory");
-			};
+		this.store(SAVE_FILE);
+	}
+
+	public void load() {
+		this.load(SAVE_FILE);
+	}
+
+	public void cleanUp() {
+		this.cleanUp(SAVE_FILE);
+	}
+
+	public void store(File saveFile) {
+		if (!saveFile.exists()) {
+			File parentDirectory = saveFile.getParentFile().getAbsoluteFile();
+			if (!parentDirectory.exists()) {
+				if (!parentDirectory.mkdir()) {
+					Logger.log("ZipSessionKit:store", "cannot create session store directory '" + parentDirectory + "'");
+				}
+			}
 		}
 
 		ZipOutputStream zos = null;
 		try {
-			zos = new ZipOutputStream(new FileOutputStream(SAVE_FILE));
+			zos = new ZipOutputStream(new FileOutputStream(saveFile));
 			zos.setMethod(ZipOutputStream.DEFLATED);
 			zos.setLevel(Deflater.BEST_COMPRESSION);
 
@@ -84,12 +97,11 @@ public class ZipSessionKit implements ISessionKit {
 			} // end-for lesson
 
 		} catch (Exception ex) { // FileNotFoundException or IOException
-			JOptionPane.showMessageDialog(null,
-					"JLM were unable to save your session file:\n" +
-					ex.getClass().getSimpleName()+": "+ex.getMessage(),
-					"Your changes are NOT saved.",
+			// FIXME: should raise an exception and not show a dialog (it is not
+			// a UI class)
+			JOptionPane.showMessageDialog(null, "JLM were unable to save your session file:\n"
+					+ ex.getClass().getSimpleName() + ": " + ex.getMessage(), "Your changes are NOT saved.",
 					JOptionPane.ERROR_MESSAGE);
-
 
 		} finally {
 			try {
@@ -102,13 +114,13 @@ public class ZipSessionKit implements ISessionKit {
 
 	}
 
-	public void load() {
-		if (!SAVE_FILE.exists())
+	public void load(File saveFile) {
+		if (!saveFile.exists())
 			return;
 
 		ZipFile zf = null;
 		try {
-			zf = new ZipFile(SAVE_FILE);
+			zf = new ZipFile(saveFile);
 
 			for (Lesson lesson : this.game.getLessons()) {
 				for (Exercise exercise : lesson.exercises()) {
@@ -155,17 +167,13 @@ public class ZipSessionKit implements ISessionKit {
 
 		} catch (Exception ex) { // ZipExecption or IOException
 			ex.printStackTrace();
-			Object[] options = {"Proceed","Abort"};
-			int n = JOptionPane.showOptionDialog(null,
-					"JLM were unable to load your session file ("+ex.getClass().getSimpleName()+":"+ex.getMessage()+").\n\n" +
-					" Would you like proceed anyway (and loose any solution typed so far)?",
-					"Error while loading your session",
-					JOptionPane.YES_NO_CANCEL_OPTION,
-					JOptionPane.ERROR_MESSAGE,
-					null,
-					options,
-					options[1]);
-			if (n==1) {
+			Object[] options = { "Proceed", "Abort" };
+			int n = JOptionPane.showOptionDialog(null, "JLM were unable to load your session file ("
+					+ ex.getClass().getSimpleName() + ":" + ex.getMessage() + ").\n\n"
+					+ " Would you like proceed anyway (and loose any solution typed so far)?",
+					"Error while loading your session", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
+					null, options, options[1]);
+			if (n == 1) {
 				System.err.println("Abording on user request");
 				System.exit(1);
 			}
@@ -179,14 +187,15 @@ public class ZipSessionKit implements ISessionKit {
 		}
 	}
 
-	public void cleanUp() {
-		if (!SAVE_FILE.exists())
+	public void cleanUp(File saveFile) {
+		if (!saveFile.exists())
 			return;
 		else {
-			if (SAVE_FILE.delete()) {
+			if (saveFile.delete()) {
 				Logger.log("ZipSessionKit:cleanup", "cannot remove session store directory");
-			};
+			}
+			;
 		}
-
 	}
+
 }

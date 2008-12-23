@@ -30,6 +30,8 @@ import jlm.core.GameState;
 import jlm.event.GameStateListener;
 import jlm.ui.action.AbstractGameAction;
 import jlm.ui.action.CleanUpSession;
+import jlm.ui.action.ExportSession;
+import jlm.ui.action.ImportSession;
 import jlm.ui.action.PlayDemo;
 import jlm.ui.action.QuitGame;
 import jlm.ui.action.Reset;
@@ -157,6 +159,15 @@ public class MainFrame extends JFrame implements GameStateListener {
 				null));
 		menu.add(cleanUpSessionMenuItem);
 
+		JMenuItem exportSessionMenuItem = new JMenuItem(new ExportSession(Game.getInstance(), "Export Session Cache",
+				null, this));
+		menu.add(exportSessionMenuItem);
+
+		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(Game.getInstance(), "Import Session Cache",
+				null, this));
+		menu.add(importSessionMenuItem);
+		
+		
 		menu = new JMenu("Help");
 		menuBar.add(menu);
 
