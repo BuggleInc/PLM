@@ -155,7 +155,10 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		Font f = null;
 		InputStream is = null;
 		try {
-			is = getClass().getResourceAsStream("/resources/Monaco.ttf");
+			//is = getClass().getResourceAsStream("/resources/Monaco.ttf");
+			// FIXME: must try this font on neptune/linux/windows ? it works well on osx
+			is = getClass().getResourceAsStream("/resources/Envy.Code.R.ttf");
+			
 			if (is == null) {
 				throw new IOException("font file not found");
 			}
