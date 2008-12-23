@@ -24,6 +24,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	private static final long serialVersionUID = 1L;
 
 	public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
+		@Override
 		public View create(Element element) {
 			Object object = element.getAttributes().getAttribute(StyleConstants.NameAttribute);
 			if (object instanceof HTML.Tag) {
@@ -35,6 +36,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 		}
 	}
 
+	@Override
 	public ViewFactory getViewFactory() {
 		return new HTMLFactoryX();
 	}
@@ -89,6 +91,7 @@ class MyIconView extends View {
 	 * @param a the allocated region to render into
 	 * @see View#paint
 	 */
+	@Override
 	public void paint(Graphics g, Shape a) {
 		Rectangle alloc = a.getBounds();
 		c.paintIcon(getContainer(), g, alloc.x, alloc.y);
@@ -105,6 +108,7 @@ class MyIconView extends View {
 	 *           The parent may choose to resize or break the view.
 	 * @exception IllegalArgumentException for an invalid axis
 	 */
+	@Override
 	public float getPreferredSpan(int axis) {
 		switch (axis) {
 		case View.X_AXIS:
@@ -129,6 +133,7 @@ class MyIconView extends View {
 	 *   away from the origin.  An alignment of 0.5 would be the
 	 *   center of the view.
 	 */
+	@Override
 	public float getAlignment(int axis) {
 		switch (axis) {
 		case View.Y_AXIS:
@@ -149,6 +154,7 @@ class MyIconView extends View {
 	 *   represent a valid location in the associated document
 	 * @see View#modelToView
 	 */
+	@Override
 	public Shape modelToView(int pos, Shape a, Position.Bias b) throws BadLocationException {
 		int p0 = getStartOffset();
 		int p1 = getEndOffset();
@@ -174,6 +180,7 @@ class MyIconView extends View {
 	 *  given point of view >= 0
 	 * @see View#viewToModel
 	 */
+	@Override
 	public int viewToModel(float x, float y, Shape a, Position.Bias[] bias) {
 		Rectangle alloc = (Rectangle) a;
 		if (x < alloc.x + (alloc.width / 2)) {

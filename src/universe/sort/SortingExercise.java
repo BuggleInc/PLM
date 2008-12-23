@@ -14,6 +14,7 @@ public class SortingExercise extends ExerciseTemplated {
 		super(lesson);
 	}
 
+	@Override
 	protected void setup(World[] ws) {		
 		worldDuplicate(ws);
 		computeAnswer();

@@ -53,6 +53,7 @@ public class BuggleWorld extends jlm.universe.World {
 			}
 	}
 	
+	@Override
 	public World copy(){
 		return new BuggleWorld(this);
 	}
