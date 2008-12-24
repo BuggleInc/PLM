@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.KeyStroke;
 
 import jlm.core.Game;
 import jlm.event.GameListener;
@@ -137,6 +136,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 	}
 
 	private void configureSyntaxStyles() {
+		//TODO: can be configured through a property file in the new version of jsyntaxpane
 		SyntaxStyles st = SyntaxStyles.getInstance();
 		st.put(TokenType.OPERATOR, new SyntaxStyle(Color.BLACK, false, false)); // black
 		st.put(TokenType.KEYWORD, new SyntaxStyle(new Color(0x8d0056), true, false)); // violet,
