@@ -54,8 +54,8 @@ public class TurtleWorldView extends WorldView {
 
 	private void drawTurtle(Graphics2D g, Turtle b) {
 		ImageIcon ic = ResourcesCache.getIcon("resources/kturtle.png");
-		AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, b.getX()-ic.getIconWidth()/2, b.getY()-ic.getIconHeight()/2);
-		t.rotate(Math.PI*b.getHeading()/180, ic.getIconWidth()/2, ic.getIconHeight()/2);
+		AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, b.getX()-ic.getIconWidth()/2., b.getY()-ic.getIconHeight()/2.);
+		t.rotate(Math.PI*b.getHeading()/180., ic.getIconWidth()/2., ic.getIconHeight()/2.);
 		g.drawImage(ic.getImage(), t, null);
 	}
 

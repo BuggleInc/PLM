@@ -96,7 +96,7 @@ public class ZipSessionKit implements ISessionKit {
 				} // end-for exercise
 			} // end-for lesson
 
-		} catch (Exception ex) { // FileNotFoundException or IOException
+		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not
 			// a UI class)
 			JOptionPane.showMessageDialog(null, "JLM were unable to save your session file:\n"
@@ -165,7 +165,7 @@ public class ZipSessionKit implements ISessionKit {
 				} // end-for exercise
 			} // end-for lesson
 
-		} catch (Exception ex) { // ZipExecption or IOException
+		} catch (IOException ex) { // ZipExecption or IOException
 			ex.printStackTrace();
 			Object[] options = { "Proceed", "Abort" };
 			int n = JOptionPane.showOptionDialog(null, "JLM were unable to load your session file ("

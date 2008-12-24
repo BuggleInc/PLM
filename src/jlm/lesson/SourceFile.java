@@ -1,6 +1,7 @@
 package jlm.lesson;
 
 import java.util.Map;
+import java.util.Map.Entry;
 
 
 public class SourceFile {
@@ -49,9 +50,10 @@ public class SourceFile {
 		if (template != null) {
 			res = template.replaceAll("\\$body", " "+this.body+" ");
 			if (runtimePatterns != null)
-				for (String pattern : runtimePatterns.keySet())
-					res = res.replaceAll(pattern, runtimePatterns.get(pattern));
-
+				for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
+					res = res.replaceAll(pattern.getKey(), pattern.getValue());
+				}
+				
 			if (patterns != null)
 				for (String pattern : patterns.keySet())
 					res = res.replaceAll(pattern, patterns.get(pattern));

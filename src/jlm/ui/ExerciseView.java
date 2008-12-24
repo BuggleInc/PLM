@@ -34,11 +34,8 @@ public class ExerciseView extends JPanel implements GameListener {
 	public void setEnabledControl(boolean enabled) {
 		//worldComboBox.setEnabled(enabled);
 		entityComboBox.setEnabled(enabled);
-		if (buttonPanel == null) {
-			System.out.println("button panel is null");
-			Thread.currentThread().getStackTrace().toString();
-		}
-		buttonPanel.setEnabledControl(enabled);
+		if (buttonPanel != null) 
+			buttonPanel.setEnabledControl(enabled);
 	}
 	
 	public void initComponents() {

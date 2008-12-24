@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Random;
 
 import jlm.ui.WorldView;
 import jlm.universe.Entity;
@@ -30,10 +31,10 @@ public class SortingWorld extends World {
 		
 		values = new int[nbValues];
 		color = new Color[nbValues];
+		Random randomizer = new Random();
 		for (int i=0;i<values.length;i++) {
 			color[i] = Color.yellow;
-			
-			int value = (int)(values.length * Math.random());
+			int value = randomizer.nextInt(values.length); 
 			while (used[value])
 				value = (value+1)%values.length;
 			values[i]=value;
