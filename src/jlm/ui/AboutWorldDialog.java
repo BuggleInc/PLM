@@ -42,8 +42,8 @@ public class AboutWorldDialog extends JDialog implements GameListener {
 	
 	
 	public void currentExerciseHasChanged() {
-		setTitle("About world "+Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld()[0].getClass().getSimpleName());
-		area.setText(Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld()[0].getAbout());
+		setTitle("About world "+Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld().get(0).getClass().getSimpleName());
+		area.setText(Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld().get(0).getAbout());
 		area.setCaretPosition(0);
 	}
 

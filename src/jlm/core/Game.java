@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
-import java.util.Vector;
 
 import jlm.event.GameListener;
 import jlm.event.GameStateListener;
@@ -42,7 +41,7 @@ public class Game implements IWorldView {
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
 	private Entity selectedEntity;
-	private Vector<Thread> lessonRunners = new Vector<Thread>();
+	private List<Thread> lessonRunners = new ArrayList<Thread>();
 	private boolean sequential = false;
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -164,7 +163,7 @@ public class Game implements IWorldView {
 	}
 
 	public void startExerciseDemoExecution() {
-		DemoRunner runner = new DemoRunner(Game.getInstance(), new Vector<Thread>());
+		DemoRunner runner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
 		runner.start();
 	}
 

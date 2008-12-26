@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -66,13 +68,20 @@ public class InMemoryCompiler {
 	    * @throws IllegalStateException
 	    *            if the Java compiler cannot be loaded.
 	    */
-	   public InMemoryCompiler(ClassLoader loader, Iterable<String> options) {
+	   public InMemoryCompiler(final ClassLoader loader, Iterable<String> options) {
 	      compiler = ToolProvider.getSystemJavaCompiler();
 	      if (compiler == null) {
 	         throw new IllegalStateException("Cannot find the system Java compiler. "
 	               + "Check that your class path includes tools.jar");
 	      }
-	      classLoader = new ClassLoaderImpl(loader);
+	      
+	        classLoader = (ClassLoaderImpl) AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
+	            public ClassLoader run() {
+	                return new ClassLoaderImpl(loader); // nothing to return
+	            }
+	        });
+
+	      //classLoader = new ClassLoaderImpl(loader);
 	      diagnostics = new DiagnosticCollector<JavaFileObject>();
 	      final JavaFileManager fileManager = compiler.getStandardFileManager(diagnostics,
 	            null, null);

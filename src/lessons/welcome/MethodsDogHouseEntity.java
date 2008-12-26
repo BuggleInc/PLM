@@ -4,10 +4,12 @@ public class MethodsDogHouseEntity extends universe.bugglequest.SimpleBuggle {
 
 	private int line = -1;
 	
+	@Override
 	public void turnRight() {
 		throw new RuntimeException("Pas le droit d'utiliser turnRight dans cet exercice.");
 	}
 	
+	@Override
 	public void turnLeft() {
 		for (StackTraceElement s : Thread.currentThread().getStackTrace()) {
 			if (s.getMethodName().contains("turnLeft")) {

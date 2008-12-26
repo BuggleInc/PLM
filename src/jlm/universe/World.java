@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 import jlm.ui.WorldView;
 
@@ -105,7 +105,7 @@ public abstract class World {
 		return entities.get(i);
 	}
 
-	public void runEntities(Vector<Thread> runnerVect) {
+	public void runEntities(List<Thread> runnerVect) {
 		// Logger.log("World:runEntities","");
 		for (final Entity b : entities) {
 			if (runnerVect != null) {
@@ -276,7 +276,7 @@ public abstract class World {
 				// Give as resource, in case we are in a jar file
 				String resourceName = "/" + getClass().getCanonicalName().replace('.', '/') + ".html";
 
-				InputStream s = getClass().getResourceAsStream(resourceName);
+				InputStream s = World.class.getResourceAsStream(resourceName);
 				if (s == null) {
 					about = "File " + filename + " and resource " + resourceName + " not found.";
 					return about; /* file not found, give up */
