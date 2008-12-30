@@ -13,6 +13,18 @@ public class Lesson {
 	
 	private Exercise currentExercise;
 	
+	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
+	+ "  <style>\n"
+	+ "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"
+	+ "    code { background:#EEEEEE; }\n" + "    pre { background: #EEEEEE;\n" + "          margin: 5px;\n"
+	+ "          padding: 6px;\n" + "          border: 1px inset;\n" + "          width: 640px;\n"
+	+ "          overflow: auto;\n" + "          text-align: left;\n"
+	+ "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"
+	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
+	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
+
+	
+	
 	protected boolean sequential = true;
 	/** if true, one must succeed in first exercise before trying next ones */
 
@@ -23,7 +35,7 @@ public class Lesson {
 		return this.name;
 	}
 	public String getAbout(){
-		return about;
+		return "<html>"+LessonHeader+"<body><h1>"+getName()+"</h1>"+about+"</body></html>";
 	}
 
 	public boolean isSequential() {		

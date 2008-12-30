@@ -174,15 +174,25 @@ public class MainFrame extends JFrame implements GameStateListener {
 		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this lesson", null) {
 			private static final long serialVersionUID = 1L;
 
+			private AbstractAboutDialog dialog = null;
+			
 			public void actionPerformed(ActionEvent arg0) {
-				AboutLessonDialog.getInstance().setVisible(true);
+				if (this.dialog == null) {
+					this.dialog = new AboutLessonDialog(MainFrame.getInstance());
+				}
+				this.dialog.setVisible(true);
 			}
 		}));
 		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this world", null) {
 			private static final long serialVersionUID = 1L;
 
+			private AbstractAboutDialog dialog = null;
+			
 			public void actionPerformed(ActionEvent arg0) {
-				AboutWorldDialog.getInstance().setVisible(true);
+				if (this.dialog == null) {
+					this.dialog = new AboutWorldDialog(MainFrame.getInstance());
+				}
+				this.dialog.setVisible(true);
 			}
 		}));
 		
