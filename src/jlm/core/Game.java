@@ -63,9 +63,24 @@ public class Game implements IWorldView {
 
 	public void initLessons() {
 		/* Add all the lessons we know */
-		addLesson(new lessons.welcome.Main());
-		addLesson(new lessons.maze.Main());
-		addLesson(new lessons.sort.Main());
+		//addLesson(new lessons.welcome.Main());
+		//addLesson(new lessons.maze.Main());
+		//addLesson(new lessons.sort.Main());
+		
+		String[] lessonNames = getProperty("jlm.lessons","").split(",");
+		for (String name : lessonNames) {
+			Lesson lesson = null;
+			try {
+				lesson = (Lesson) Class.forName(name+".Main").newInstance();
+				addLesson(lesson);
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public void addLesson(Lesson lesson) {
