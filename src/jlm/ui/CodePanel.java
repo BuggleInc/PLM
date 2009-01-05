@@ -21,7 +21,9 @@ import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
 
 public class CodePanel extends JTabbedPane implements GameListener {
-
+// TODO: clean up this class. It's a mess!
+	
+	
 	private static final long serialVersionUID = 3242655852676336111L;
 	private Game game;
 	private Exercise currentExercise;
@@ -42,6 +44,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 
 		DefaultSyntaxKit.initKit();
 
+		loadFont();
 		configureSyntaxStyles();
 		currentExerciseHasChanged();
 	}
@@ -61,20 +64,28 @@ public class CodePanel extends JTabbedPane implements GameListener {
 			srcFile.setListener(null);
 		}
 		// if we have to add few tabs
-		for (int i = this.getTabCount(); i < publicSrcFileCount; i++) {
+		for (int i = this.getTabCount(); i < publicSrcFileCount; i++) {			
 			JEditorPane codeEditor = createJavaEditorPane();
+			JScrollPane scrPane = new JScrollPane(codeEditor);
+			codeEditor.setContentType("text/java");
+
+			if (f != null) {
+				codeEditor.setFont(f);
+			}
+
+			
+			
 			this.codeEditors.add(i, codeEditor);
 			// this.synchronizers.add(i, new
 			// SourceFileDocumentSynchronizer(this.editorKit));
 			this.synchronizers.add(i, new SourceFileDocumentSynchronizer(codeEditor.getEditorKit()));
-			JScrollPane scrPane = new JScrollPane(codeEditor);
-			codeEditor.setContentType("text/java");
+			//codeEditor.setContentType("text/java");
 			// remove auto-indent when return is pressed
 			//codeEditor.getKeymap().removeKeyStrokeBinding(KeyStroke.getKeyStroke("ENTER"));
 			//codeEditor.setEditable(true);
 
 			// TODO: to be remove when reported issue 47 in JSyntaxPane is resolved.
-			scrPane.setRowHeaderView(new LineNumberMarginPanel(codeEditor));
+			//scrPane.setRowHeaderView(new LineNumberMarginPanel(codeEditor));
 
 			this.addTab("tmp" + i, scrPane);
 		}
@@ -83,6 +94,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 			srcFile.setListener(null);
 		}
 		this.sourceFiles.clear();
+				
 		for (int i = 0; i < publicSrcFileCount; i++) {
 			SourceFile srcFile = this.currentExercise.getPublicSourceFile(i);
 			this.sourceFiles.add(i, srcFile);
@@ -97,17 +109,21 @@ public class CodePanel extends JTabbedPane implements GameListener {
 			codeEditor.getDocument().addDocumentListener(sync);
 
 			//codeEditor.setContentType("text/plain");
-			codeEditor.setText(srcFile.getBody());
+			codeEditor.setText(srcFile.getBody());			
 			//codeEditor.setContentType("text/java");
 		}
+		
+		//this.doLayout();
+		//for (int i = 0; i < publicSrcFileCount; i++) {
+		//	this.codeEditors.get(i).setContentType("text/java");
+		//}
 
 	}
 
 	@Override
 	public void currentExerciseHasChanged() {
-		this.currentExercise = this.game.getCurrentLesson().getCurrentExercise();
+		this.currentExercise = this.game.getCurrentLesson().getCurrentExercise();		
 		updateComponents();
-		System.currentTimeMillis();
 	}
 
 	@Override
@@ -155,17 +171,17 @@ public class CodePanel extends JTabbedPane implements GameListener {
 
 	}
 
-	private JEditorPane createJavaEditorPane() {
-		JEditorPane editor = new JEditorPane();
-		// FIXME: does not work well on neptune ;-(
-		// editor.setEditorKit(editorKit);
-		// editor.setContentType("text/java");
+	
+	Font f = null;
+	private void loadFont() {
 		/*
-		 * Font f = new Font("Monaco", Font.PLAIN, 12); if (f != null) {
-		 * editor.setFont(f); }
+		 * Font f = new Font("Monaco", Font.PLAIN, 12); 
+		 * if (f != null) {
+		 * editor.setFont(f); 
+		 * }
 		 */
 
-		Font f = null;
+		//Font f = null;
 		InputStream is = null;
 		try {
 			// is = getClass().getResourceAsStream("/resources/Monaco.ttf");
@@ -191,7 +207,14 @@ public class CodePanel extends JTabbedPane implements GameListener {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-		}
+		}		
+	}
+	
+	private JEditorPane createJavaEditorPane() {
+		JEditorPane editor = new JEditorPane();
+		// FIXME: does not work well on neptune ;-(
+		// editor.setEditorKit(editorKit);
+		// editor.setContentType("text/java");
 		if (f != null) {
 			editor.setFont(f);
 		}
@@ -200,6 +223,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		// editor.getKeymap().removeKeyStrokeBinding(KeyStroke.getKeyStroke("ENTER"));
 		// editor.setEditable(true);
 
+		
 		return editor;
 	}
 

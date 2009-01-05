@@ -38,6 +38,7 @@ import javax.swing.text.JTextComponent;
  * @author Edwin Dankert <edankert@gmail.com>
  */
 
+@Deprecated // Since a equivalent component is now included in JSyntaxPane
 public class LineNumberMarginPanel extends JComponent {
 
 	private static final long serialVersionUID = -8735565514263020503L;

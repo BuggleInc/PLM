@@ -9,9 +9,9 @@ import jlm.core.Game;
 public class Lesson {
 	public String name;
 	protected String about = "(no information provided by the lesson)";
-	private ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+	protected ArrayList<Exercise> exercises = new ArrayList<Exercise>();
 	
-	private Exercise currentExercise;
+	protected Exercise currentExercise;
 	
 	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
 	+ "  <style>\n"
