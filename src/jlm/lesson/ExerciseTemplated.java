@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -64,7 +64,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			// external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
 			String resourceName = "/"+getClass().getCanonicalName().replace('.','/')+".html";
 
-			InputStream s = getClass().getResourceAsStream(resourceName);
+			InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
 			if (s == null) {
 				mission = "File "+filename+" and resource "+resourceName+" not found.";
 				return;	/* file not found, give up */
@@ -111,7 +111,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		} catch (FileNotFoundException e) {
 			// external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
 			String resourceName = "/"+getClass().getCanonicalName().replace('.','/')+".map";
-			InputStream s = getClass().getResourceAsStream(resourceName);
+			InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
 			if (s == null) {
 				return;	/* file not found, give up */
 			}
@@ -145,7 +145,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			// file not found on file system. Give as resource, in case we are in a jar file
 			String resourceName = File.separator+filename;
 			resourceName = resourceName.replace('\\', '/'); // dirty hack
-			InputStream is = getClass().getResourceAsStream(resourceName);
+			InputStream is = ExerciseTemplated.class.getResourceAsStream(resourceName);
 			if (is == null) {
 				/* Really not found. Give up, the exercise may have other ways to define its answer source */
 				return;
@@ -316,7 +316,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	@Override
-	public void run(Vector<Thread> runnerVect){
+	public void run(List<Thread> runnerVect){
 		reset();
 
 		for (int i=0; i<currentWorld.length; i++) 
@@ -333,7 +333,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	@Override
-	public void runDemo(Vector<Thread> runnerVect){
+	public void runDemo(List<Thread> runnerVect){
 		for (int i=0; i<initialWorld.length; i++) { 
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].setDelay(this.UIDelay);

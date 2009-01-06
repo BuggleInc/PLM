@@ -36,7 +36,7 @@
 			<fileset dir="${classes.dir}" excludes="**/.gitignore"/>
 			<fileset dir="${src.dir}" excludes="**/.gitignore"/>
 			<fileset dir="${lib.dir}" excludes="*.jar"/>
-			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.0.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.4.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.6-swing.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
 		</jar>

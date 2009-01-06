@@ -96,9 +96,8 @@ public class ZipSessionKit implements ISessionKit {
 				} // end-for exercise
 			} // end-for lesson
 
-		} catch (Exception ex) { // FileNotFoundException or IOException
-			// FIXME: should raise an exception and not show a dialog (it is not
-			// a UI class)
+		} catch (IOException ex) { // FileNotFoundException or IOException
+			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			JOptionPane.showMessageDialog(null, "JLM were unable to save your session file:\n"
 					+ ex.getClass().getSimpleName() + ": " + ex.getMessage(), "Your changes are NOT saved.",
 					JOptionPane.ERROR_MESSAGE);
@@ -165,7 +164,8 @@ public class ZipSessionKit implements ISessionKit {
 				} // end-for exercise
 			} // end-for lesson
 
-		} catch (Exception ex) { // ZipExecption or IOException
+		} catch (IOException ex) { // ZipExecption or IOException
+			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
 			Object[] options = { "Proceed", "Abort" };
 			int n = JOptionPane.showOptionDialog(null, "JLM were unable to load your session file ("
@@ -175,6 +175,7 @@ public class ZipSessionKit implements ISessionKit {
 					null, options, options[1]);
 			if (n == 1) {
 				System.err.println("Abording on user request");
+				// should throw exception to calling method, no System.exit() here !!!
 				System.exit(1);
 			}
 		} finally {
@@ -194,7 +195,6 @@ public class ZipSessionKit implements ISessionKit {
 			if (saveFile.delete()) {
 				Logger.log("ZipSessionKit:cleanup", "cannot remove session store directory");
 			}
-			;
 		}
 	}
 

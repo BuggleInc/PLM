@@ -1,7 +1,7 @@
 package jlm.core;
 
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 import jlm.lesson.Exercise;
 
@@ -9,9 +9,9 @@ import jlm.lesson.Exercise;
 public class DemoRunner extends Thread {
 
 	private Game game;
-	private Vector<Thread> runners = null; // threads who run entities from lesson
+	private List<Thread> runners = null; // threads who run entities from lesson
 
-	public DemoRunner(Game game, Vector<Thread> list) {
+	public DemoRunner(Game game, List<Thread> list) {
 		super();
 		this.game = game;
 		this.runners = list;

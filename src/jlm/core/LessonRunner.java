@@ -1,7 +1,7 @@
 package jlm.core;
 
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -11,9 +11,9 @@ import jlm.ui.ResourcesCache;
 public class LessonRunner extends Thread {
 
 	private Game game;
-	private Vector<Thread> runners = null; // threads who run entities from lesson
+	private List<Thread> runners = null; // threads who run entities from lesson
 
-	public LessonRunner(Game game, Vector<Thread> list) {
+	public LessonRunner(Game game, List<Thread> list) {
 		super();
 		this.game = game;
 		this.runners = list;

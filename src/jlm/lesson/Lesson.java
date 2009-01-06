@@ -9,9 +9,21 @@ import jlm.core.Game;
 public class Lesson {
 	public String name;
 	protected String about = "(no information provided by the lesson)";
-	private ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+	protected ArrayList<Exercise> exercises = new ArrayList<Exercise>();
 	
-	private Exercise currentExercise;
+	protected Exercise currentExercise;
+	
+	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
+	+ "  <style>\n"
+	+ "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"
+	+ "    code { background:#EEEEEE; }\n" + "    pre { background: #EEEEEE;\n" + "          margin: 5px;\n"
+	+ "          padding: 6px;\n" + "          border: 1px inset;\n" + "          width: 640px;\n"
+	+ "          overflow: auto;\n" + "          text-align: left;\n"
+	+ "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"
+	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
+	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
+
+	
 	
 	protected boolean sequential = true;
 	/** if true, one must succeed in first exercise before trying next ones */
@@ -23,11 +35,11 @@ public class Lesson {
 		return this.name;
 	}
 	public String getAbout(){
-		return about;
+		return "<html>"+LessonHeader+"<body><h1>"+getName()+"</h1>"+about+"</body></html>";
 	}
 
 	public boolean isSequential() {		
-		String seq = Game.getProperties().getProperty(getClass().getCanonicalName()+".sequential");
+		String seq = Game.getProperty(getClass().getCanonicalName()+".sequential");
 		if (seq != null) {
 			return ! seq.equals("false"); // sequential by default
 		} else {

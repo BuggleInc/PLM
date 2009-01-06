@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Vector;
+import java.util.List;
 
 import jlm.ui.WorldView;
 
@@ -105,7 +105,7 @@ public abstract class World {
 		return entities.get(i);
 	}
 
-	public void runEntities(Vector<Thread> runnerVect) {
+	public void runEntities(List<Thread> runnerVect) {
 		// Logger.log("World:runEntities","");
 		for (final Entity b : entities) {
 			if (runnerVect != null) {
@@ -218,6 +218,15 @@ public abstract class World {
 	public abstract WorldView getView();
 
 	public abstract EntityControlPanel getEntityControlPanel();
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((entities == null) ? 0 : entities.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -227,15 +236,17 @@ public abstract class World {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final World other = (World) obj;
-
+		World other = (World) obj;
 		if (entities == null) {
 			if (other.entities != null)
 				return false;
-		} else if (!entities.equals(other.entities)) {
+		} else if (!entities.equals(other.entities))
 			return false;
-		}
-
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
 		return true;
 	}
 
@@ -265,7 +276,7 @@ public abstract class World {
 				// Give as resource, in case we are in a jar file
 				String resourceName = "/" + getClass().getCanonicalName().replace('.', '/') + ".html";
 
-				InputStream s = getClass().getResourceAsStream(resourceName);
+				InputStream s = World.class.getResourceAsStream(resourceName);
 				if (s == null) {
 					about = "File " + filename + " and resource " + resourceName + " not found.";
 					return about; /* file not found, give up */

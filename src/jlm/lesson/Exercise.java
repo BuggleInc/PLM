@@ -3,9 +3,9 @@ package jlm.lesson;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.Vector;
 
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
@@ -25,10 +25,10 @@ public abstract class Exercise {
 
 	public String name = "<no name>"; 
 	public String mission = "";  /** The text to display to present the lesson */
-	protected Vector<RevertableSourceFile> sourceFiles; /** All the editable source files */
-	protected Vector<SourceFile> hiddenSourceFiles; /** Other source files, that the compiler should use, but the user shouldn't see */
+	protected List<RevertableSourceFile> sourceFiles; /** All the editable source files */
+	protected List<SourceFile> hiddenSourceFiles; /** Other source files, that the compiler should use, but the user shouldn't see */
 	Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
-	protected Vector<String> fileNames;
+	protected List<String> fileNames;
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
 	private static final String packageNamePrefix = "jlm.runtime";
@@ -69,9 +69,16 @@ public abstract class Exercise {
 
 	public abstract void reset();
 	
+	/*
 	public World[] getCurrentWorld(){
 		return currentWorld;
 	}
+	*/
+	
+	public List<World> getCurrentWorld() {
+		return Arrays.asList(currentWorld);
+	}
+	
 	@Deprecated
 	public void worldDuplicate(World w) {
 		World[] ws = new World[1];
@@ -91,8 +98,8 @@ public abstract class Exercise {
 		}
 	}
 	
-	public abstract void run(Vector<Thread> runnerVect);	
-	public abstract void runDemo(Vector<Thread> runnerVect);	
+	public abstract void run(List<Thread> runnerVect);	
+	public abstract void runDemo(List<Thread> runnerVect);	
 	
 	public boolean check() throws Exception {
 		for (int i=0; i<currentWorld.length; i++) {
@@ -236,10 +243,10 @@ public abstract class Exercise {
 	public Exercise(Lesson lesson) {
 		super();
 		this.lesson = lesson;
-		sourceFiles = new Vector<RevertableSourceFile>();
-		hiddenSourceFiles = new Vector<SourceFile>();
+		sourceFiles = new ArrayList<RevertableSourceFile>();
+		hiddenSourceFiles = new ArrayList<SourceFile>();
 		runtimePatterns = new TreeMap<String, String>();
-		fileNames = new Vector<String>();
+		fileNames = new ArrayList<String>();
 	}
 
 	public String[] getSourceFilesNames() {
@@ -252,12 +259,25 @@ public abstract class Exercise {
 		return res;
 	}
 		
+	/*
 	public World[] getAnswerWorld() {
 		return answerWorld;
 	}
+	*/
 	
+	public List<World> getAnswerWorld() {
+		return Arrays.asList(answerWorld);
+	}
+	
+	
+	/*
 	public World[] getInitialWorld() {
 		return initialWorld;
+	}
+	*/
+	
+	public List<World> getInitialWorld() {
+		return Arrays.asList(this.initialWorld);
 	}
 
 	public int publicSourceFileCount() {
