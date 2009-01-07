@@ -5,8 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
@@ -29,7 +29,7 @@ public class Game implements IWorldView {
 
 	private final static String LOCAL_PROPERTIES_FILENAME = "jlm.properties";
 	private final static String LOCAL_PROPERTIES_SUBDIRECTORY = ".jlm";
-	
+
 	private static Properties defaultGameProperties = new Properties();
 	private static Properties localGameProperties = new Properties();
 	private static File localGamePropertiesLoadedFile;
@@ -63,15 +63,14 @@ public class Game implements IWorldView {
 
 	public void initLessons() {
 		/* Add all the lessons we know */
-		//addLesson(new lessons.welcome.Main());
-		//addLesson(new lessons.maze.Main());
-		//addLesson(new lessons.sort.Main());
-		
-		String[] lessonNames = getProperty("jlm.lessons","").split(",");
+		// addLesson(new lessons.welcome.Main());
+		// addLesson(new lessons.maze.Main());
+		// addLesson(new lessons.sort.Main());
+		String[] lessonNames = getProperty("jlm.lessons", "").split(",");
 		for (String name : lessonNames) {
 			Lesson lesson = null;
 			try {
-				lesson = (Lesson) Class.forName(name+".Main").newInstance();
+				lesson = (Lesson) Class.forName(name + ".Main").newInstance();
 				addLesson(lesson);
 			} catch (InstantiationException e) {
 				e.printStackTrace();
@@ -241,27 +240,18 @@ public class Game implements IWorldView {
 	}
 
 	public static void loadProperties() {
-		URL defaultPropertiesURL = Game.class.getClassLoader().getResource("resources/jlm.configuration.properties");
-		if (defaultPropertiesURL == null)
-			return;
-
-		FileInputStream fis = null;
+		InputStream is = null;
 		try {
-			File propertiesFile = new File(defaultPropertiesURL.toURI());
-			fis = new FileInputStream(propertiesFile);
-			Game.defaultGameProperties.load(fis);
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
+			is = Game.class.getClassLoader().getResourceAsStream("resources/jlm.configuration.properties");
+			Game.defaultGameProperties.load(is);
 		} catch (InvalidPropertiesFormatException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			if (fis != null)
+			if (is != null)
 				try {
-					fis.close();
+					is.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -273,7 +263,8 @@ public class Game implements IWorldView {
 
 			for (String localPath : paths) {
 				localPath = localPath.replace("$HOME$", System.getProperty("user.home"));
-				File localPropertiesFile = new File(localPath + File.separator + Game.LOCAL_PROPERTIES_SUBDIRECTORY, Game.LOCAL_PROPERTIES_FILENAME);
+				File localPropertiesFile = new File(localPath + File.separator + Game.LOCAL_PROPERTIES_SUBDIRECTORY,
+						Game.LOCAL_PROPERTIES_FILENAME);
 				if (localPropertiesFile.exists()) {
 					FileInputStream fi = null;
 					try {
@@ -305,34 +296,33 @@ public class Game implements IWorldView {
 		FileOutputStream fo = null;
 		try {
 
-			//if (Game.localGamePropertiesLoadedFile == null) {
+			// if (Game.localGamePropertiesLoadedFile == null) {
 
-				String value = Game.getProperty("jlm.configuration.file.path");
-				if (value != null) {
-					String paths[] = value.split(",");
+			String value = Game.getProperty("jlm.configuration.file.path");
+			if (value != null) {
+				String paths[] = value.split(",");
 
-					for (String localPath : paths) {
-						localPath = localPath.replace("$HOME$", System.getProperty("user.home"));
-						File localPropertiesFileParentDirectory = new File(localPath);
-						File localPropertiesFileDirectory = new File(localPath, Game.LOCAL_PROPERTIES_SUBDIRECTORY);
-						
-						if (! localPropertiesFileParentDirectory.exists()) {
-							continue;
-						} else if (localPropertiesFileDirectory.exists() || localPropertiesFileDirectory.mkdir()) {
-							Game.localGamePropertiesLoadedFile = new File(localPropertiesFileDirectory,
-									Game.LOCAL_PROPERTIES_FILENAME);
-							break;
-						} else {
-							Logger.log("Game:storeProperties", "cannot create local properties store directory ("
-									+ localPropertiesFileDirectory + ")");
-						}
-						
-						
+				for (String localPath : paths) {
+					localPath = localPath.replace("$HOME$", System.getProperty("user.home"));
+					File localPropertiesFileParentDirectory = new File(localPath);
+					File localPropertiesFileDirectory = new File(localPath, Game.LOCAL_PROPERTIES_SUBDIRECTORY);
+
+					if (!localPropertiesFileParentDirectory.exists()) {
+						continue;
+					} else if (localPropertiesFileDirectory.exists() || localPropertiesFileDirectory.mkdir()) {
+						Game.localGamePropertiesLoadedFile = new File(localPropertiesFileDirectory,
+								Game.LOCAL_PROPERTIES_FILENAME);
+						break;
+					} else {
+						Logger.log("Game:storeProperties", "cannot create local properties store directory ("
+								+ localPropertiesFileDirectory + ")");
 					}
-				} else {
-					Logger.log("Game:storeProperties", "cannot store local properties, not path provided");
+
 				}
-			//}
+			} else {
+				Logger.log("Game:storeProperties", "cannot store local properties, not path provided");
+			}
+			// }
 			fo = new FileOutputStream(Game.localGamePropertiesLoadedFile);
 			Game.localGameProperties.store(fo, "Java Learning Machine properties");
 			System.out.println("Game:storeProperties: properties stored in " + localGamePropertiesLoadedFile);
