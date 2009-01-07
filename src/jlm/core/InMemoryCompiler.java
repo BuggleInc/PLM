@@ -72,7 +72,7 @@ public class InMemoryCompiler {
 	      compiler = ToolProvider.getSystemJavaCompiler();
 	      if (compiler == null) {
 	         throw new IllegalStateException("Cannot find the system Java compiler. "
-	               + "Check that your class path includes tools.jar");
+	               + "Please use a java SDK instead of a java runtime (and check that your class path includes tools.jar if problem persists).");
 	      }
 	      
 	        classLoader = (ClassLoaderImpl) AccessController.doPrivileged(new PrivilegedAction<ClassLoader>() {
