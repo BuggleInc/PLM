@@ -138,10 +138,13 @@ public class Turtle extends Entity {
 		final double w = this.getWorld().getWidth();
 		final double h = this.getWorld().getHeight();
 
-		if (newX < 0 || newX >= w || newY < 0 || newY >= h) { // need to clip			
+		double nX = newX;
+		double nY = newY;
+		
+		while (nX < 0 || nX >= w || nY < 0 || nY >= h) { // need to clip			
 			// line equation y = y1+m(x-x1)
 			// where m=(y2-y1)/(x2-x1)
-			final double m = (newY - y) / (newX - x);
+			final double m = (nY - y) / (nX - x);
 	
 			switch (this.getHeadingDirection()) {
 			case EAST:
@@ -155,7 +158,7 @@ public class Turtle extends Entity {
 						this.getWorld().addLine(x, y, xc, yc, color);
 					}
 					setPos(0., yc);
-					moveTo(newX - w, newY);				
+					nX = nX - w;
 				}
 				break;
 			case NORTH:
@@ -169,7 +172,7 @@ public class Turtle extends Entity {
 						this.getWorld().addLine(x, y, xc, yc, color);
 					}
 					setPos(xc, h);
-					moveTo(newX, newY + h);
+					nY = nY + h;
 				}
 				break;
 			case WEST:
@@ -183,7 +186,7 @@ public class Turtle extends Entity {
 						this.getWorld().addLine(x, y, xc, yc, color);
 					}
 					setPos(w, yc);
-					moveTo(newX + w, newY);
+					nX = nX + w;
 				}
 				break;
 			case SOUTH:
@@ -197,17 +200,17 @@ public class Turtle extends Entity {
 						this.getWorld().addLine(x, y, xc, yc, color);
 					}
 					setPos(xc, 0.);
-					moveTo(newX, newY - h);
+					nY = nY - h;
 				}
 				break;			
 			}	
-		} else { 
-			if (this.penDown) {
-				this.getWorld().addLine(x, y, newX, newY, color);
-			}			
-			this.x = newX;
-			this.y = newY;
-		}
+		} 
+		
+		if (this.penDown) {
+			this.getWorld().addLine(x, y, nX, nY, color);
+		}			
+		this.x = nX;
+		this.y = nY;		
 		
 		stepUI(1.0);
 		world.notifyWorldUpdatesListeners();
