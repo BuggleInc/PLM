@@ -38,6 +38,8 @@ public class Main extends Lesson {
 		addExercise(new MethodsPicture3(this));
 		addExercise(new Square(this));
 		addExercise(new Circle(this));
+		addExercise(new Star(this));
+		addExercise(new Spiral(this));
 		addExercise(new BDR(this));
 		addExercise(new BDR2(this));
 		addExercise(new SlugHunting(this));
