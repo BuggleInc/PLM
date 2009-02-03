@@ -61,7 +61,9 @@ public class TurtleWorld extends World {
 		synchronized (shapes) {
 			//ShapeLine line =new ShapeLine(width/2+x,height/2+y,width/2+newX,height/2+newY,color); 
 			ShapeLine line =new ShapeLine(x,y,newX,newY,color); 
-			shapes.add(line);			
+			shapes.add(line);
+			notifyWorldUpdatesListeners();
+
 		}
 	}
 	public Iterator<ShapeAbstract> shapes() {
