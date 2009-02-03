@@ -18,7 +18,6 @@ public class QuitGame extends AbstractGameAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		game.quit();
-		System.exit(0);		
 	}
 
 }

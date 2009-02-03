@@ -68,13 +68,11 @@ public class MainFrame extends JFrame implements GameStateListener {
 			@Override
 			public void windowClosing(WindowEvent e) {
 				Game.getInstance().quit();
-				System.exit(0);
 			}
 
 			@Override
 			public void windowClosed(WindowEvent e) {
 				Game.getInstance().quit();
-				System.exit(0);
 			}
 		});
 

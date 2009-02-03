@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
@@ -212,6 +211,7 @@ public class Game implements IWorldView {
 		// FIXME: this method is not called when pressing APPLE+Q on OSX
 		saveSession();
 		storeProperties();
+		System.exit(0);
 	}
 
 	public void clearSession() {
