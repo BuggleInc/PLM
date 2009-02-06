@@ -61,12 +61,14 @@ public class Game implements IWorldView {
 	}
 
 	public void initLessons() {
-		/* Add all the lessons we know */
-		// addLesson(new lessons.welcome.Main());
-		// addLesson(new lessons.maze.Main());
-		// addLesson(new lessons.sort.Main());
-		String[] lessonNames = getProperty("jlm.lessons", "").split(",");
+		String lessons = getProperty("jlm.lessons", "");
+		if (lessons.equals("")) {
+			System.err.println("Error: the property file does not contain any lesson to start. Default to lessons.welcome");
+			lessons = "lessons.welcome";
+		}
+		String[] lessonNames = lessons.split(",");
 		for (String name : lessonNames) {
+			System.err.println("Load lesson "+name);
 			Lesson lesson = null;
 			try {
 				lesson = (Lesson) Class.forName(name + ".Main").newInstance();
@@ -248,6 +250,8 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (NullPointerException e) {
+			// resources/jlm.configuration.properties not found. Try jlm.configuration.properties afterward
 		} finally {
 			if (is != null)
 				try {

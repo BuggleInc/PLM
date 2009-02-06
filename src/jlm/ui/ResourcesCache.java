@@ -1,5 +1,6 @@
 package jlm.ui;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Hashtable;
 
@@ -20,10 +21,13 @@ public class ResourcesCache {
 	}
 	
 	
-	public static ImageIcon getIcon(String path) {
+	public static ImageIcon getIcon(String path) throws FileNotFoundException {
 		if (!iconsCache.containsKey(path)) {
 			//iconsCache.put(path, new ImageIcon(path));
 			URL url = ResourcesCache.class.getClassLoader().getResource(path);
+			if (url == null) {
+				throw new FileNotFoundException("Cannot find path "+path+": classloader returned null.");
+			}
 			ImageIcon img = new ImageIcon(url);
 			iconsCache.put(path, img);
 		}

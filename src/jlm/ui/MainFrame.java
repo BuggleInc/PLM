@@ -6,9 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
@@ -164,8 +166,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(Game.getInstance(), "Import Session Cache",
 				null, this));
 		menu.add(importSessionMenuItem);
-		
-		
+
+
 		menu = new JMenu("Help");
 		menuBar.add(menu);
 
@@ -173,7 +175,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			private static final long serialVersionUID = 1L;
 
 			private AbstractAboutDialog dialog = null;
-			
+
 			public void actionPerformed(ActionEvent arg0) {
 				if (this.dialog == null) {
 					this.dialog = new AboutLessonDialog(MainFrame.getInstance());
@@ -185,7 +187,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			private static final long serialVersionUID = 1L;
 
 			private AbstractAboutDialog dialog = null;
-			
+
 			public void actionPerformed(ActionEvent arg0) {
 				if (this.dialog == null) {
 					this.dialog = new AboutWorldDialog(MainFrame.getInstance());
@@ -193,7 +195,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 				this.dialog.setVisible(true);
 			}
 		}));
-		
+
 		if (!System.getProperty("os.name").startsWith("Mac")) {
 			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About JLM", null) {
 				private static final long serialVersionUID = 1L;
@@ -223,23 +225,26 @@ public class MainFrame extends JFrame implements GameStateListener {
 		toolBar.setFloatable(true);
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
-		startButton = new JButton(new StartExecution(Game.getInstance(), "Start", ResourcesCache
-				.getIcon("resources/start.png")));
-		startButton.setBorderPainted(false);
+		try {
+			ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
+			startButton = new JButton(new StartExecution(Game.getInstance(), "Start", ii));
+			startButton.setBorderPainted(false);
 
-		stopButton = new JButton(new StopExecution(Game.getInstance(), "Stop", ResourcesCache
-				.getIcon("resources/stop.png")));
-		stopButton.setBorderPainted(false);
-		stopButton.setEnabled(false);
+			stopButton = new JButton(new StopExecution(Game.getInstance(), "Stop", ResourcesCache
+					.getIcon("resources/stop.png")));
+			stopButton.setBorderPainted(false);
+			stopButton.setEnabled(false);
 
-		resetButton = new JButton(new Reset(Game.getInstance(), "Reset", ResourcesCache.getIcon("resources/reset.png")));
-		resetButton.setBorderPainted(false);
-		resetButton.setEnabled(true);
+			resetButton = new JButton(new Reset(Game.getInstance(), "Reset", ResourcesCache.getIcon("resources/reset.png")));
+			resetButton.setBorderPainted(false);
+			resetButton.setEnabled(true);
 
-		demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
-		demoButton.setBorderPainted(false);
-		demoButton.setEnabled(true);
-
+			demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
+			demoButton.setBorderPainted(false);
+			demoButton.setEnabled(true);
+		} catch (FileNotFoundException e) {
+			System.err.println("Cannot load resource:"+e);
+		}
 		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
 		JComboBox lessonComboBox = new JComboBox(lessonAdapter);
 		lessonComboBox.setRenderer(new LessonCellRenderer());

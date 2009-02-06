@@ -189,9 +189,11 @@ public class CodePanel extends JTabbedPane implements GameListener {
 			// well on osx
 			is = getClass().getResourceAsStream("/resources/Envy.Code.R.ttf");
 
-			if (is == null) {
+			if (is == null) // give it another try 
+				is = getClass().getResourceAsStream("/Envy.Code.R.ttf");
+			if (is == null)	// really not found	
 				throw new IOException("font file not found");
-			}
+			
 			f = Font.createFont(Font.TRUETYPE_FONT, is);
 			f = f.deriveFont((float) 12);
 		} catch (FontFormatException ffe) {
