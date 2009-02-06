@@ -1,4 +1,4 @@
-package lessons.welcome;
+package lessons.recursion;
 
 import java.awt.Color;
 

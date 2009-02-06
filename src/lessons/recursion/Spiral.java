@@ -1,20 +1,20 @@
-package lessons.welcome;
+package lessons.recursion;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
-public class Star extends ExerciseTemplated {
+public class Spiral extends ExerciseTemplated {
 
-	public Star(Lesson lesson) {
+	public Spiral(Lesson lesson) {
 		super(lesson);
-		name = "Turtles are super-stars";
+		name = "Spiral";
 
 		/* Create initial situation */
 		TurtleWorld myWorld = new TurtleWorld("WhiteBoard", 400, 400);
 
-		new Turtle(myWorld, "Hawksbill", 100, 200);
+		new Turtle(myWorld, "Caretta", 200, 200);
 		setup(myWorld);
 	}
 }

@@ -1,4 +1,4 @@
-package lessons.welcome;
+package lessons.recursion;
 
 public class SquareEntity extends universe.turtles.Turtle {
 

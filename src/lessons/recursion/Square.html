@@ -12,17 +12,17 @@ Comme les buggles, vous pouvez leur demander d'avancer, de tourner, de
 reculer, etc. Comme les buggles, elles laissent une trace sur leur
 passage quand elles avancent (simplement, le trait est bien plus fin).
 
-<p>La principale différence est que là où les buggles ne peuvent tourner
-que de quarts de tour, les tortues peuvent tourner d'un angle
-quelconque. Cela leur donne bien plus de liberté dans leur mouvement.
-Les buggles savent faire plusieurs trucs qui échappent aux tortues,
-comme écrire par terre ou ramasser des objets, et il y a parfois des
+<p>La principale différence est que là où les buggles ne peuvent tourner que de
+quarts de tour, les tortues peuvent tourner d'un angle quelconque précisé par
+un nombre double. Cela leur donne bien plus de liberté dans leur mouvement. Les
+buggles savent faire plusieurs trucs qui échappent aux tortues, comme lire et
+écrire des messages par terre ou ramasser des objets, et il y a parfois des
 murs dans leur univers, mais tout cela dépasse complétement les tortues.
 
 <p>D'un point de vue pratique, la plupart les méthodes que vous connaissez
 à propos des buggles fonctionnent également avec les tortues, à
 quelques variantes près. En particulier, la méthode <code>forward</code> 
-prend en argument le nombre de pas donné comme un nombre entier
+prend en argument le nombre de pas donné comme un nombre double
 (voir "About this world" dans le menu pour plus de détails).
 
 <h3>Des doubles? Mais qu'est ce que c'est ?</h3>
@@ -43,8 +43,17 @@ Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)
 </pre>
 
 <h3>Objectif de l'exercice</h3>
-Il s'agit de reproduire une forme géométrique simple, faite de quatre
-carrés de longueur 100 de coté (voir le monde objectif pour plus de
-détails). C'est sans doute une bonne idée d'écrire une méthode pour
-faire un carré, et de la réutiliser lors de l'écriture de la méthode
-<code>run()</code> qui fait le travail.
+Bien que ce soit le premier exercice de la leçon sur la récursivité, le code
+que vous devez écrire n'est pas récursif. L'objectif est de se familiariser
+avec le monde des tortues avant d'attaquer les choses sérieuses.
+
+<p>Vous devez reproduire une forme géométrique simple, faite de quatre carrés de
+longueur 100 de coté (voir le monde objectif pour plus de détails). C'est sans
+doute une bonne idée d'écrire une méthode pour faire un carré, et de la
+réutiliser lors de l'écriture de la méthode
+<code>run()</code> qui fait le travail. Il est indispensable d'écrire au moins
+la méthode run, dont le prototype est le suivant:
+<pre>
+public void run() {
+  // ecrivez ici ce que doit faire votre tortue
+}</pre>
