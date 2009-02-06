@@ -1,6 +1,5 @@
 package jlm.ui;
 
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.Hashtable;
 
