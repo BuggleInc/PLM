@@ -29,8 +29,8 @@ public class ResourcesCache {
 	
 	/**
 	 * Lazy loading of ImageIcon resources.
-	 * @param path of the resources to be loaded. 
-	 * @return the image or null when resource is not found.
+	 * @param path of the image resource to be loaded. 
+	 * @return the ImageIcon or a blank ImageIcon when resource is not found.
 	 */
 	public static ImageIcon getIcon(String path) {
 		if (!iconsCache.containsKey(path)) {
