@@ -225,7 +225,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 		toolBar.setFloatable(true);
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
-		try {
+		//try {
 			ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
 			startButton = new JButton(new StartExecution(Game.getInstance(), "Start", ii));
 			startButton.setBorderPainted(false);
@@ -242,9 +242,9 @@ public class MainFrame extends JFrame implements GameStateListener {
 			demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
 			demoButton.setBorderPainted(false);
 			demoButton.setEnabled(true);
-		} catch (FileNotFoundException e) {
-			System.err.println("Cannot load resource:"+e);
-		}
+		//} catch (FileNotFoundException e) {
+		//	System.err.println("Cannot load resource:"+e);
+		//}
 		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
 		JComboBox lessonComboBox = new JComboBox(lessonAdapter);
 		lessonComboBox.setRenderer(new LessonCellRenderer());

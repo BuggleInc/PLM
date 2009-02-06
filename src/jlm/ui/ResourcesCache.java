@@ -7,6 +7,8 @@ import java.util.Hashtable;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
+import jlm.core.Logger;
+
 public class ResourcesCache {
 	private static Hashtable<String, ImageIcon> iconsCache = new Hashtable<String, ImageIcon>();
 
@@ -15,21 +17,31 @@ public class ResourcesCache {
 	public static void loadBusyIconAnimation() {
 		busyIcons = new ImageIcon[15];
 		for (int i=0 ; i<15; i++) {
-			//busyIcons[i] = new ImageIcon("resources/busyicons/busy-icon"+i+".png");
-			busyIcons[i] = new ImageIcon(ResourcesCache.class.getClassLoader().getResource("resources/busyicons/busy-icon"+i+".png"));
+			URL url = ResourcesCache.class.getClassLoader().getResource("resources/busyicons/busy-icon"+i+".png");
+			if (url == null) {
+				busyIcons[i] =  new ImageIcon();
+			} else {
+				busyIcons[i] = new ImageIcon(url);
+			}
 		}
 	}
 	
 	
-	public static ImageIcon getIcon(String path) throws FileNotFoundException {
+	/**
+	 * Lazy loading of ImageIcon resources.
+	 * @param path of the resources to be loaded. 
+	 * @return the image or null when resource is not found.
+	 */
+	public static ImageIcon getIcon(String path) {
 		if (!iconsCache.containsKey(path)) {
-			//iconsCache.put(path, new ImageIcon(path));
 			URL url = ResourcesCache.class.getClassLoader().getResource(path);
 			if (url == null) {
-				throw new FileNotFoundException("Cannot find path "+path+": classloader returned null.");
+				Logger.log("jlm.ui.ResourcesCache.getIcon()", "Cannot find path "+path+": classloader returned null.");
+				iconsCache.put(path, new ImageIcon());
+			} else {
+				ImageIcon img = new ImageIcon(url);
+				iconsCache.put(path, img);
 			}
-			ImageIcon img = new ImageIcon(url);
-			iconsCache.put(path, img);
 		}
 		return iconsCache.get(path);
 	}
