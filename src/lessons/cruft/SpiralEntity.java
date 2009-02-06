@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.cruft;
 
 public class SpiralEntity extends universe.turtles.Turtle {
 

@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.cruft;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
