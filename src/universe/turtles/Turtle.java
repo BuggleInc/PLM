@@ -368,6 +368,11 @@ public class Turtle extends Entity {
 	protected void stepUI() {
 		stepUI(1.);
 	}
+	
+	/** @brief retrieve one parameter from the world */
+	protected Object getParam(int i) {
+		return getWorld().parameters[i];
+	}	
 
 	@Override
 	public String toString() {
