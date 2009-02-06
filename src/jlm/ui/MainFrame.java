@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.FileNotFoundException;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -225,26 +224,23 @@ public class MainFrame extends JFrame implements GameStateListener {
 		toolBar.setFloatable(true);
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
-		//try {
-			ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
-			startButton = new JButton(new StartExecution(Game.getInstance(), "Start", ii));
-			startButton.setBorderPainted(false);
+		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
+		startButton = new JButton(new StartExecution(Game.getInstance(), "Start", ii));
+		startButton.setBorderPainted(false);
 
-			stopButton = new JButton(new StopExecution(Game.getInstance(), "Stop", ResourcesCache
-					.getIcon("resources/stop.png")));
-			stopButton.setBorderPainted(false);
-			stopButton.setEnabled(false);
+		stopButton = new JButton(new StopExecution(Game.getInstance(), "Stop", ResourcesCache
+				.getIcon("resources/stop.png")));
+		stopButton.setBorderPainted(false);
+		stopButton.setEnabled(false);
 
-			resetButton = new JButton(new Reset(Game.getInstance(), "Reset", ResourcesCache.getIcon("resources/reset.png")));
-			resetButton.setBorderPainted(false);
-			resetButton.setEnabled(true);
+		resetButton = new JButton(new Reset(Game.getInstance(), "Reset", ResourcesCache.getIcon("resources/reset.png")));
+		resetButton.setBorderPainted(false);
+		resetButton.setEnabled(true);
 
-			demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
-			demoButton.setBorderPainted(false);
-			demoButton.setEnabled(true);
-		//} catch (FileNotFoundException e) {
-		//	System.err.println("Cannot load resource:"+e);
-		//}
+		demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
+		demoButton.setBorderPainted(false);
+		demoButton.setEnabled(true);
+
 		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
 		JComboBox lessonComboBox = new JComboBox(lessonAdapter);
 		lessonComboBox.setRenderer(new LessonCellRenderer());
