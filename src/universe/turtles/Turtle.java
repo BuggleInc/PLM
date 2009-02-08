@@ -212,7 +212,7 @@ public class Turtle extends Entity {
 		this.x = nX;
 		this.y = nY;		
 		
-		stepUI(1.0);
+		stepUI(1);
 		world.notifyWorldUpdatesListeners();
 	}
 
@@ -407,11 +407,11 @@ public class Turtle extends Entity {
 				return false;
 		} else if (!color.equals(other.color))
 			return false;
-		if (Math.abs(heading-other.heading) < Turtle.EPSILON)
+		if (Math.abs(heading-other.heading) > Turtle.EPSILON)
 			return false;
-		if (Math.abs(x-other.x) < Turtle.EPSILON)
+		if (Math.abs(x-other.x) > Turtle.EPSILON)
 			return false;
-		if (Math.abs(y-other.y) < Turtle.EPSILON)
+		if (Math.abs(y-other.y) > Turtle.EPSILON)
 			return false;
 		return true;
 	}
