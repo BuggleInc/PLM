@@ -217,7 +217,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					if (line.contains("END TEMPLATE")) {
 						state = 4;
 					} else if (line.contains("END SOLUTION")) {
-						state = 3; 
+						state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of severable solutions, is it wrong? 
 					} else {
 						solution.append(line+"\n");
 					}
