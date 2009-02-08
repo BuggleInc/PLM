@@ -18,6 +18,7 @@ public class Main extends Lesson {
 		addExercise(new SpiralUse(this));
 		addExercise(new Tree(this));
 		addExercise(new Koch(this));
+		addExercise(new Sierpinski(this));
 		addExercise(new PolygonFractal(this));
 	}
 }
