@@ -15,15 +15,15 @@ public class TurtleButtonPanel extends EntityControlPanel {
 	
 	public TurtleButtonPanel() {
 		setLayout(new MigLayout());
-		lForward = new JLabel("Forward");
-		taForward = new JTextArea();
-		add(lForward);
-		add(taForward,"wrap");	
+		//lForward = new JLabel("Forward");
+		//taForward = new JTextArea();
+		//add(lForward);
+		//add(taForward,"wrap");	
 	}
 
 	@Override
 	public void setEnabledControl(boolean enabled) {
-		lForward.setEnabled(enabled);
-		taForward.setEnabled(enabled);
+		//lForward.setEnabled(enabled);
+		//taForward.setEnabled(enabled);
 	}
 }

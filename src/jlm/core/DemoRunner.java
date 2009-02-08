@@ -38,6 +38,9 @@ public class DemoRunner extends Thread {
 		} catch (InterruptedException e) {
 			game.getOutputWriter().log(e);
 			game.setState(GameState.DEMO_ENDED);
+		} catch (Exception e) {
+			e.printStackTrace();
+			game.setState(GameState.DEMO_ENDED);
 		}
 
 		runners.remove(this);

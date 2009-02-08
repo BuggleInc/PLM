@@ -320,7 +320,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			startButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
-			stopButton.setEnabled(false);
+			stopButton.setEnabled(true);
 
 			// exerciseView.setEnabledControl(false);
 			break;

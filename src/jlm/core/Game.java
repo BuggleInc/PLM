@@ -41,6 +41,7 @@ public class Game implements IWorldView {
 	private World answerOfSelectedWorld;
 	private Entity selectedEntity;
 	private List<Thread> lessonRunners = new ArrayList<Thread>();
+	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private boolean sequential = false;
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -174,11 +175,18 @@ public class Game implements IWorldView {
 			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
 			t.stop(); // harmful but who cares ?
 		}
+		/*
+		while (this.demoRunners.size() > 0) {
+			Thread t = demoRunners.remove(demoRunners.size() - 1);
+			t.stop(); // harmful but who cares ?
+			// FIXME: stop demo execution but do not restore answer world, so it breaks everything !!!
+		}
+		*/
 		setState(GameState.EXECUTION_ENDED);
 	}
 
 	public void startExerciseDemoExecution() {
-		DemoRunner runner = new DemoRunner(Game.getInstance(), new ArrayList<Thread>());
+		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
 		runner.start();
 	}
 

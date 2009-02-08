@@ -1,10 +1,18 @@
+
+***************** BUGS
+ * dans le parser qui strip les parties cachées dans un template de leçon,
+   utiliser // pose des problèmes car il semble que les \n  soient supprimés 
+   et du coup tout un tas d'instructions se retrouve commenté  bien qu'elles
+   soient pas sur la même ligne
+ * stopper l'exécution du mode démo et restaurer les answers worlds (précédement sauvegardés)
+
 ***************** BASE
 
 
 Assez urgent :
  * Quand un exo est fait, il faut passer au suivant de la lesson
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
-   
+ 
 D'autres points moins urgents :
   
  * Un autre truc sympa serait d'avoir un log sur un compte prof du
