@@ -59,6 +59,7 @@ public class Turtle extends Entity {
 		this.x = x;
 		this.y = y;
 		this.heading = heading;
+		setHeading(heading);
 	}
 
 	public Turtle(Turtle t) {
@@ -266,7 +267,8 @@ public class Turtle extends Entity {
 
 	protected void setHeadingRadian(double heading) {
 		this.heading = ((2. * Math.PI) + heading) % (2. * Math.PI);
-		world.notifyWorldUpdatesListeners();
+		if (world != null)
+			world.notifyWorldUpdatesListeners();
 	}
 	
 	protected double getHeadingRadian() {
