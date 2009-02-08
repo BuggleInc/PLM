@@ -4,10 +4,9 @@ public class TreeEntity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 	public void tree(int steps, double length, double angle, double shrink)	{
-		//System.out.println("tree("+steps+","+length+","+angle+","+shrink+")");
 		/* BEGIN SOLUTION */
 	     if (steps <= 0) {
-	          // do nothing
+	          /* do nothing */
 	     } else {
 	          forward(length);
 	          turnRight(angle);	         
