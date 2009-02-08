@@ -7,11 +7,11 @@ import jlm.lesson.Lesson;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
-public class DragonCurve1 extends ExerciseTemplated {
+public class DragonCurve2 extends ExerciseTemplated {
 
-	public DragonCurve1(Lesson lesson) {
+	public DragonCurve2(Lesson lesson) {
 		super(lesson);
-		name = "Courbe du Dragon (1)";
+		name = "Courbe du Dragon (2)";
 
 		/* Create initial situation */
 		TurtleWorld[] myWorlds = new TurtleWorld[7];

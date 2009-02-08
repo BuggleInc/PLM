@@ -21,5 +21,6 @@ public class Main extends Lesson {
 		addExercise(new Sierpinski(this));
 		addExercise(new PolygonFractal(this));
 		addExercise(new DragonCurve1(this));
+		addExercise(new DragonCurve2(this));
 	}
 }

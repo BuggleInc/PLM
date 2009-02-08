@@ -2,10 +2,10 @@ package lessons.recursion;
 
 import java.awt.Color;
 
-import universe.turtles.Turtle;
-import universe.turtles.TurtleWorld;
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import universe.turtles.Turtle;
+import universe.turtles.TurtleWorld;
 
 public class Sierpinski extends ExerciseTemplated {
 

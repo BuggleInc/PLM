@@ -22,7 +22,7 @@ public class DragonCurve1Entity extends universe.turtles.Turtle {
 
 	public void run() {
 		dragon((Integer) getParam(0), (Double) getParam(1), (Double) getParam(2), (Double) getParam(3),
-				(Double) getParam(4));		
+				(Double) getParam(4));
 	}
 
 }
