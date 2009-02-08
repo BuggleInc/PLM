@@ -20,5 +20,6 @@ public class Main extends Lesson {
 		addExercise(new Koch(this));
 		addExercise(new Sierpinski(this));
 		addExercise(new PolygonFractal(this));
+		addExercise(new DragonCurve1(this));
 	}
 }
