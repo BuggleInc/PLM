@@ -17,5 +17,6 @@ public class Main extends Lesson {
 		addExercise(new Spiral(this));
 		addExercise(new SpiralUse(this));
 		addExercise(new Tree(this));
+		addExercise(new Koch(this));
 	}
 }
