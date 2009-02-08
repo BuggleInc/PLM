@@ -16,5 +16,6 @@ public class Main extends Lesson {
 		addExercise(new Star(this));
 		addExercise(new Spiral(this));
 		addExercise(new SpiralUse(this));
+		addExercise(new Tree(this));
 	}
 }
