@@ -16,7 +16,6 @@ public class RandomMouseMaze extends ExerciseTemplated {
 
 	public RandomMouseMaze(Lesson lesson) {
 		super(lesson);
-		name = "La souris folle";
 		tabName = "RandomMouseMaze";
 				
 		/* Create initial situation */

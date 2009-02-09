@@ -13,7 +13,6 @@ public class Array2 extends ExerciseTemplated {
 
 	public Array2(Lesson lesson) {
 		super(lesson);
-		name = "Tricot, tableaux et modulos";
 		BuggleWorld[] myWorlds = new BuggleWorld[3];
 
 		myWorlds[0] = new BuggleWorld("Pattern 1",6,6);

@@ -13,7 +13,6 @@ public class MethodsArgs extends ExerciseTemplated {
 
 	public MethodsArgs(Lesson lesson) {
 		super(lesson);
-		name = "Méthodes avec des paramètres";
 		tabName = "Program";
 
 		BuggleWorld myWorld = new BuggleWorld("Buggles Party",7,7);

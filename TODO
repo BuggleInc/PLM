@@ -4,7 +4,6 @@
    utiliser // pose des problèmes car il semble que les \n  soient supprimés 
    et du coup tout un tas d'instructions se retrouve commenté  bien qu'elles
    soient pas sur la même ligne
- * stopper l'exécution du mode démo et restaurer les answers worlds (précédement sauvegardés)
 
 ***************** BASE
 
@@ -39,9 +38,6 @@ Une série d'idées bêtes :
 
 ***************** LEÇONS
           
- * On peut aussi faire tous les classiques du logo: un carré, une
-   maison, etc.
-	   
 Il y a aussi pleins d'idées d'exo sur les pages des gens qui ont
 inventé le concept. Par exemple:
 

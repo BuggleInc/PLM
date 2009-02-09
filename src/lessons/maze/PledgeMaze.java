@@ -16,7 +16,6 @@ public class PledgeMaze extends ExerciseTemplated {
 
 	public PledgeMaze(Lesson lesson) {
 		super(lesson);
-		name = "Perdu au milieu des îlots";
 		tabName = "PledgeMaze";
 				
 		/* Create initial situation */

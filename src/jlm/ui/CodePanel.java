@@ -2,9 +2,6 @@ package jlm.ui;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import javax.swing.JEditorPane;
@@ -35,7 +32,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 	private ArrayList<SourceFileDocumentSynchronizer> synchronizers = new ArrayList<SourceFileDocumentSynchronizer>();
 
 	public CodePanel(Game game) {
-		super(JTabbedPane.BOTTOM, JTabbedPane.SCROLL_TAB_LAYOUT);
+		super(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
 		this.game = game;
 		this.game.addGameListener(this);
 
@@ -83,9 +80,6 @@ public class CodePanel extends JTabbedPane implements GameListener {
 			// remove auto-indent when return is pressed
 			//codeEditor.getKeymap().removeKeyStrokeBinding(KeyStroke.getKeyStroke("ENTER"));
 			//codeEditor.setEditable(true);
-
-			// TODO: to be remove when reported issue 47 in JSyntaxPane is resolved.
-			//scrPane.setRowHeaderView(new LineNumberMarginPanel(codeEditor));
 
 			this.addTab("tmp" + i, scrPane);
 		}

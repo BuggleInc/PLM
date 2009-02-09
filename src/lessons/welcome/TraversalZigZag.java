@@ -13,7 +13,6 @@ public class TraversalZigZag extends ExerciseTemplated {
 
 	public TraversalZigZag(Lesson lesson) {
 		super(lesson);
-		name = "Parcours en zigzag";
 		tabName = "ZigZag";
 
 		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);

@@ -14,7 +14,6 @@ public class Variables extends ExerciseTemplated {
 
 	public Variables(Lesson lesson) {
 		super(lesson);
-		name = "Variables";
 		tabName = "Program";
 
 		BuggleWorld myWorld = new BuggleWorld("Kitchen",7,7);

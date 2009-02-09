@@ -9,7 +9,6 @@ public class SpiralUse extends ExerciseTemplated {
 
 	public SpiralUse(Lesson lesson) {
 		super(lesson);
-		name = "Faire des Spirales";
 
 		/* Create initial situation */
 		TurtleWorld[] myWorlds = new TurtleWorld[5];

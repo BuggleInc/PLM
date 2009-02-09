@@ -11,6 +11,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -50,37 +52,45 @@ public abstract class ExerciseTemplated extends Exercise {
         "  </style>\n"+
         "</head>\n";
 
-	protected void loadHTMLMission() {
-		String filename = getClass().getCanonicalName().replace('.',File.separatorChar)+".html";
-
-		String newLine = System.getProperty("line.separator");
+	protected BufferedReader fileReader(String filename,String extension) {
 
 		BufferedReader br = null;
 		/* try to find the file */
 		try {
-			br = new BufferedReader(new FileReader(new File(filename)));
+			br = new BufferedReader(new FileReader(new File(filename+(extension!=null?"."+extension:""))));
 		} catch (FileNotFoundException e) {
 			// external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
-			String resourceName = "/"+getClass().getCanonicalName().replace('.','/')+".html";
+			String resourceName = "/"+filename.replace('.','/')+(extension!=null?"."+extension:"");
+			resourceName = resourceName.replace('\\', '/'); /* just in case we're passed a windows path */
 
 			InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
 			if (s == null) {
-				mission = "File "+filename+" and resource "+resourceName+" not found.";
-				return;	/* file not found, give up */
+				return null;	/* file not found, give up */
 			}
 
 			try {
 				br = new BufferedReader(new InputStreamReader(s,"UTF-8"));
 			} catch (UnsupportedEncodingException e1) {
 				e1.printStackTrace();
-				mission = "Mission file encoding is not supported on this platform (please report this bug)";
-				return;
+				System.err.println("File encoding of "+filename+(extension!=null?"."+extension:"")+
+						" is not supported on this platform (please report this bug)");
+				return null;
 			}
+		}
+		return br;
+	}	
+	protected void loadHTMLMission() {
+		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+		String newLine = System.getProperty("line.separator");
+		BufferedReader br = fileReader(filename,"html");
+		if (br==null) {
+			mission = "File "+filename+" not found.";
+			return;
 		}
 
 		/* read it */
+		StringBuffer sb = new StringBuffer();
 		try {
-			StringBuffer sb = new StringBuffer();
 			String s;
 			s = br.readLine();
 			while (s != null) {
@@ -88,7 +98,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				sb.append(newLine);
 				s = br.readLine();
 			}
-			mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+sb.toString()+"</body>\n</html>\n";
+			
 		} catch (IOException e) {
 			e.printStackTrace();			
 		} finally {
@@ -98,31 +108,25 @@ public abstract class ExerciseTemplated extends Exercise {
 				e.printStackTrace();
 			}
 		}
+		String str = sb.toString();
+		
+		/* search the mission name */
+		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
+		Matcher m = p.matcher(str);
+		if (!m.find())
+			System.out.println("Cannot find the name of mission in "+filename+".html");
+		if (!name.equals("<no name>"))
+			System.out.print(" "+filename+".java ");
+		name = m.group(1);
+		
+		/* get the mission explanation */
+		mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+str+"</body>\n</html>\n";
 	}
 
 	protected void loadMap(World intoWorld) {
-		String filename = getClass().getCanonicalName().replace('.',File.separatorChar)+".map";
-
-		BufferedReader br = null;
-		/* try to find the file */
-		try {
-			br = new BufferedReader(new FileReader(new File(filename)));
-		} catch (FileNotFoundException e) {
-			// external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
-			String resourceName = "/"+getClass().getCanonicalName().replace('.','/')+".map";
-			InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
-			if (s == null) {
-				return;	/* file not found, give up */
-			}
-
-			try {
-				br = new BufferedReader(new InputStreamReader(s,"UTF-8"));
-			} catch (UnsupportedEncodingException e1) {
-				e1.printStackTrace();
-			}
-		}
-		
-		/* read it */
+		BufferedReader br = fileReader( getClass().getCanonicalName(),"map");
+		if (br==null)
+			return;
 		try {
 			intoWorld.readFromFile(br);
 		}catch (IOException e) {
@@ -132,29 +136,12 @@ public abstract class ExerciseTemplated extends Exercise {
 
 
 	public void newSourceFromFile(String name, String filename) {		
-		String fullfilename = "src"+File.separator+filename;
+		BufferedReader br = fileReader( "src"+File.separator+filename,null);
+		if (br==null)
+			return;
+
 		String newLine = System.getProperty("line.separator");
 
-		BufferedReader br = null;
-		/* try to find the file */
-
-		try {
-			br = new BufferedReader(new FileReader(new File(fullfilename)));
-		} catch (FileNotFoundException e) {
-			// file not found on file system. Give as resource, in case we are in a jar file
-			String resourceName = File.separator+filename;
-			resourceName = resourceName.replace('\\', '/'); // dirty hack
-			InputStream is = ExerciseTemplated.class.getResourceAsStream(resourceName);
-			if (is == null) {
-				/* Really not found. Give up, the exercise may have other ways to define its answer source */
-				return;
-			}
-
-			br = new BufferedReader(new InputStreamReader(is));
-		}
-
-
-		/* read it */
 		StringBuffer sbFullContent=null;
 		try {
 			sbFullContent = new StringBuffer();
@@ -216,7 +203,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					if (line.contains("END TEMPLATE")) {
 						state = 4;
 					} else if (line.contains("END SOLUTION")) {
-						state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of severable solutions, is it wrong? 
+						state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of several solutions, is it wrong? 
 					} else {
 						solution.append(line+"\n");
 					}
@@ -238,6 +225,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 			String initialContent = templateHead.toString() + templateTail.toString();
 			String debugContent = templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ templateTail.toString();
+			/* TODO: remove "//.*\n" before putting everything on one line only */
 			/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
 			StringBuffer template = new StringBuffer();
 			for (String s: (head+"$body"+tail).split("\n")) 
@@ -287,7 +275,13 @@ public abstract class ExerciseTemplated extends Exercise {
 		ws[0] = w;
 		setup(ws);
 	}
+	protected void setup(World[] ws) {
+		worldDuplicate(ws);
 
+		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); 
+
+		computeAnswer();
+	}
 	protected void computeAnswer() {
 		if (entitiesNames != null)
 			mutateEntities(answerWorld,entitiesNames);
@@ -300,13 +294,6 @@ public abstract class ExerciseTemplated extends Exercise {
 		}		
 	}
 
-	protected void setup(World[] ws) {		
-		worldDuplicate(ws);
-
-		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); 
-
-		computeAnswer();
-	}
 
 	@Override
 	public void reset(){

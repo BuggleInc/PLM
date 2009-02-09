@@ -13,7 +13,6 @@ public class MethodsPicture2 extends ExerciseTemplated {
 
 	public MethodsPicture2(Lesson lesson) {
 		super(lesson);
-		name = "Dessiner avec méthode (2)";
 		BuggleWorld myWorld =  new BuggleWorld("World",15,15);
 		myWorld.setDelayUI(20);
 		new Buggle(myWorld, "Picasso", 0, 14, Direction.EAST, Color.black, Color.lightGray);

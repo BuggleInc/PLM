@@ -13,7 +13,6 @@ public class MethodsDogHouse extends ExerciseTemplated {
 
 	public MethodsDogHouse(Lesson lesson) {
 		super(lesson);
-		name = "Construire avec méthode";
 		BuggleWorld myWorld =  new BuggleWorld("World",7,7);
 		new Buggle(myWorld, "Puppy", 0, 6, Direction.EAST, Color.red, Color.red);
 		

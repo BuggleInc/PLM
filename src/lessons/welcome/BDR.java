@@ -34,7 +34,6 @@ public class BDR extends ExerciseTemplated {
 
 	public BDR(Lesson lesson) {
 		super(lesson);
-		name = "Buggle Dance Revolution";
 		tabName = "BDRBuggle";			
 
 		/*FIXME: well if I'm right some statements in mission are wrong

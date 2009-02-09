@@ -14,7 +14,6 @@ public class MethodsReturning extends ExerciseTemplated {
 
 	public MethodsReturning(Lesson lesson) {
 		super(lesson);
-		name = "Méthodes retournant un résultat";
 		tabName = "Program";
 
 		BuggleWorld[] myWorld = new BuggleWorld[2];

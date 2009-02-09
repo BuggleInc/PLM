@@ -13,7 +13,6 @@ public class TraversalDiagonal extends ExerciseTemplated {
 
 	public TraversalDiagonal(Lesson lesson) {
 		super(lesson);
-		name = "Parcours en diagonale";
 		tabName = "Diagonal";
 
 		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);

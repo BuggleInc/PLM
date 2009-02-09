@@ -13,7 +13,6 @@ public class MethodsPicture4 extends ExerciseTemplated {
 
 	public MethodsPicture4(Lesson lesson) {
 		super(lesson);
-		name = "Encore des motifs à dessiner";
 		BuggleWorld myWorld =  new BuggleWorld("World",8,8);
 		
 		for (int i=0;i<8;i++) {

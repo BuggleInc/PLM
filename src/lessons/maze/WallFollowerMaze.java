@@ -16,7 +16,6 @@ public class WallFollowerMaze extends ExerciseTemplated {
 
 	public WallFollowerMaze(Lesson lesson) {
 		super(lesson);
-		name = "Longer les murs";
 		tabName = "WallFollowerMaze";
 				
 		/* Create initial situation */

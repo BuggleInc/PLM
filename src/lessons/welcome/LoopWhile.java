@@ -13,7 +13,6 @@ public class LoopWhile extends ExerciseTemplated {
 
 	public LoopWhile(Lesson lesson) {
 		super(lesson);
-		name = "Boucles tant que";
 		tabName = "Program";
 
 		BuggleWorld myWorld = new BuggleWorld("Closed world",7,7);
