@@ -14,7 +14,7 @@ public class SpiralUseEntity extends universe.turtles.Turtle {
 	}
 	
 	/* BEGIN TEMPLATE */
-	void doit(int page) {
+void doit(int page) {
 		/* BEGIN SOLUTION */
 		switch (page) {
 		case 0:	spiral(100,90+1,1,2);  break;
@@ -24,7 +24,7 @@ public class SpiralUseEntity extends universe.turtles.Turtle {
 		case 4: spiral(360,1,1,0);   break;	
 		}
 		/* END SOLUTION */
-	}
+}
 	/* END TEMPLATE */
 	
 	public void run() {

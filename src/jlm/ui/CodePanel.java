@@ -181,6 +181,8 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		 * }
 		 */
 
+		
+	/*	
 		//Font f = null;
 		InputStream is = null;
 		try {
@@ -209,7 +211,8 @@ public class CodePanel extends JTabbedPane implements GameListener {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-		}		
+		}	
+	*/	
 	}
 	
 	private JEditorPane createJavaEditorPane() {

@@ -71,7 +71,7 @@ public class Game implements IWorldView {
 		}
 		String[] lessonNames = lessons.split(",");
 		for (String name : lessonNames) {
-			System.err.println("Load lesson "+name);
+			System.out.println("Load lesson "+name);
 			Lesson lesson = null;
 			try {
 				lesson = (Lesson) Class.forName(name + ".Main").newInstance();
@@ -295,7 +295,7 @@ public class Game implements IWorldView {
 								e.printStackTrace();
 							}
 					}
-
+					System.out.println(String.format("Loading properties [%s]", localPropertiesFile));
 					break;
 				}
 			}

@@ -3,7 +3,7 @@ package lessons.recursion;
 public class TreeEntity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void tree(int steps, double length, double angle, double shrink)	{
+public void tree(int steps, double length, double angle, double shrink)	{
 		/* BEGIN SOLUTION */
 	     if (steps <= 0) {
 	          /* do nothing */
@@ -17,7 +17,7 @@ public class TreeEntity extends universe.turtles.Turtle {
 	          backward(length);
 	     }
 	     /* END SOLUTION */	
-	}
+}
 	/* END TEMPLATE */
 
 	public void run() {
