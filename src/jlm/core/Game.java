@@ -175,13 +175,9 @@ public class Game implements IWorldView {
 			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
 			t.stop(); // harmful but who cares ?
 		}
-		/*
-		while (this.demoRunners.size() > 0) {
-			Thread t = demoRunners.remove(demoRunners.size() - 1);
-			t.stop(); // harmful but who cares ?
-			// FIXME: stop demo execution but do not restore answer world, so it breaks everything !!!
+		for (World w : this.currentLesson.getCurrentExercise().getAnswerWorld()) {
+			w.setDelay(0);
 		}
-		*/
 		setState(GameState.EXECUTION_ENDED);
 	}
 
