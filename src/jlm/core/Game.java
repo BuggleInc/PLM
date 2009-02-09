@@ -444,16 +444,22 @@ public class Game implements IWorldView {
 		stateTxt = txt;
 	}
 	public void statusArgAdd(String txt) {
-		statusArgs.add(txt);
-		statusChanged();
+		synchronized (statusArgs) {
+			statusArgs.add(txt);
+			statusChanged();			
+		}
 	}
 	public void statusArgRemove(String txt) {
-		statusArgs.remove(txt);
-		statusChanged();
+		synchronized (statusArgs) {
+			statusArgs.remove(txt);
+			statusChanged();
+		}
 	}
 	public void statusArgEmpty(){
-		statusArgs.clear();
-		statusChanged();
+		synchronized (statusArgs) {
+			statusArgs.clear();
+			statusChanged();
+		}
 	}
 	private void statusChanged() {
 		String str = stateTxt;
