@@ -14,7 +14,6 @@ public class LoopFor extends ExerciseTemplated {
 
 	public LoopFor(Lesson lesson) {
 		super(lesson);
-		name = "Boucles pour";
 		tabName = "Program";
 		
 		BuggleWorld myWorld = new BuggleWorld("Kitchen",7,7);

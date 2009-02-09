@@ -11,7 +11,6 @@ public class Tree extends ExerciseTemplated {
 
 	public Tree(Lesson lesson) {
 		super(lesson);
-		name = "Arbres";
 
 		/* Create initial situation */
 		TurtleWorld[] myWorlds = new TurtleWorld[4];

@@ -13,7 +13,6 @@ public class BasicsDrawG extends ExerciseTemplated {
 
 	public BasicsDrawG(Lesson lesson) {
 		super(lesson);
-		name = "Rudiments du Java (3)";
 		tabName = "Program";
 
 		BuggleWorld myWorld = new BuggleWorld("Training World", 7, 7);

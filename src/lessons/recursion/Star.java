@@ -9,7 +9,6 @@ public class Star extends ExerciseTemplated {
 
 	public Star(Lesson lesson) {
 		super(lesson);
-		name = "Turtles are super-stars";
 
 		/* Create initial situation */
 		TurtleWorld myWorld = new TurtleWorld("WhiteBoard", 400, 400);

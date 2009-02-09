@@ -13,7 +13,6 @@ public class Conditions extends ExerciseTemplated {
 
 	public Conditions(Lesson lesson) {
 		super(lesson);
-		name = "Instructions conditionnelles";
 		tabName = "Program";
 				
 		BuggleWorld myWorld = new BuggleWorld("Closed World",7,7);

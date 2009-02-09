@@ -13,7 +13,6 @@ public class TraversalByLine extends ExerciseTemplated {
 
 	public TraversalByLine(Lesson lesson) {
 		super(lesson);
-		name = "Parcours ligne par ligne";
 		tabName = "LineByLine";
 
 		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);

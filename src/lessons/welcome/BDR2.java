@@ -42,7 +42,6 @@ public class BDR2 extends ExerciseTemplated {
 
 	public BDR2(Lesson lesson) {
 		super(lesson);
-		name = "Buggle Dance Revolution 2";
 		tabName = "BDR2";
 		// TODO: May we have to precise that run() method is provided ? and that 'I' is not backward()
 

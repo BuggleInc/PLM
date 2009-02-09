@@ -13,7 +13,6 @@ public class TraversalByColumn extends ExerciseTemplated {
 
 	public TraversalByColumn(Lesson lesson) {
 		super(lesson);
-		name = "Parcours colonne par colonne";
 		tabName = "ColumnByColumn";
 
 		BuggleWorld myWorld = new BuggleWorld("Grid",7,7);

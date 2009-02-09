@@ -11,7 +11,6 @@ public class Sierpinski extends ExerciseTemplated {
 
 	public Sierpinski(Lesson lesson) {
 		super(lesson);
-		name = "Triangle de Sierpinski";
 
 		/* Create initial situation */
 		TurtleWorld[] myWorlds = new TurtleWorld[5];

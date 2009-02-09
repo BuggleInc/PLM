@@ -13,14 +13,8 @@ public class Array extends ExerciseTemplated {
 
 	public Array(Lesson lesson) {
 		super(lesson);
-		name = "Tricot (et tableaux)";
 		BuggleWorld[] myWorlds = new BuggleWorld[3];
-		
-		/*for (int i=0;i<8;i++) {
-			myWorld.getCell(i, 0).putTopWall();
-			myWorld.getCell(0, i).putLeftWall();
-		}*/
-		
+				
 		myWorlds[0] = new BuggleWorld("Pattern 1",6,6);
 		myWorlds[0].getCell(0,0).setColor(Color.red);
 		myWorlds[0].getCell(0,1).setColor(Color.cyan);
@@ -28,7 +22,6 @@ public class Array extends ExerciseTemplated {
 		myWorlds[0].getCell(0,3).setColor(Color.magenta);
 		myWorlds[0].getCell(0,4).setColor(Color.orange);
 		myWorlds[0].getCell(0,5).setColor(Color.pink);
-//		myWorlds[0].getCell(0,6).setColor(Color.yellow);
 
 		myWorlds[1] = new BuggleWorld("Pattern 2",7,7);
 		myWorlds[1].getCell(0,2).setColor(Color.red);

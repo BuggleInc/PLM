@@ -13,7 +13,6 @@ public class Snake extends ExerciseTemplated {
 
 	public Snake(Lesson lesson) {
 		super(lesson);
-		name = "Monde de serpents";
 		tabName = "SnakeBuggle";
 
 		BuggleWorld myWorld = new BuggleWorld("Desert",7,7);

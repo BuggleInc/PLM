@@ -14,7 +14,7 @@ public class Methods extends ExerciseTemplated {
 
 	public Methods(Lesson lesson) {
 		super(lesson);
-		name = "Méthodes";
+
 		BuggleWorld myWorld =  new BuggleWorld("Donut World",7,7);
 		new Buggle(myWorld, "Homer", 0, 6, Direction.NORTH, Color.black, Color.lightGray);
 

@@ -14,7 +14,6 @@ public class SlugHunting extends ExerciseTemplated {
 
 	public SlugHunting(Lesson lesson) {
 		super(lesson);
-		name = "Chasse à la limace";
 		tabName = "Program";
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];

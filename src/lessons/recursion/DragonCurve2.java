@@ -11,7 +11,6 @@ public class DragonCurve2 extends ExerciseTemplated {
 
 	public DragonCurve2(Lesson lesson) {
 		super(lesson);
-		name = "Courbe du Dragon (2)";
 
 		/* Create initial situation */
 		TurtleWorld[] myWorlds = new TurtleWorld[7];

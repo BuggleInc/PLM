@@ -11,7 +11,6 @@ public class PolygonFractal extends ExerciseTemplated {
 
 	public PolygonFractal(Lesson lesson) {
 		super(lesson);
-		name = "Fractales de polygones";
 
 		/* Create initial situation */
 		TurtleWorld[] myWorlds = new TurtleWorld[7];

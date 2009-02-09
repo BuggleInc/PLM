@@ -12,8 +12,6 @@ import universe.bugglequest.Direction;
 public class Environment extends ExerciseTemplated {
 	public Environment(Lesson lesson) {
 		super(lesson);
-
-		name = "Prise en main de l'environnement";
 		tabName = "Program";
 		
 		BuggleWorld myWorld = new BuggleWorld("Training Camp",7,7);

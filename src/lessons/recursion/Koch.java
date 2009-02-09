@@ -11,7 +11,6 @@ public class Koch extends ExerciseTemplated {
 
 	public Koch(Lesson lesson) {
 		super(lesson);
-		name = "Flocons de neige";
 
 		/* Create initial situation */
 		TurtleWorld[] myWorlds = new TurtleWorld[6];

@@ -13,7 +13,6 @@ public class Basics3Pas extends ExerciseTemplated {
 
 	public Basics3Pas(Lesson lesson) {
 		super(lesson);
-		name = "Rudiments du Java (2)";
 		tabName="Program";
 		
 		BuggleWorld myWorld = new BuggleWorld("Training World", 7,7);

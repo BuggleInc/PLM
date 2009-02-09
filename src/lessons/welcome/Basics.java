@@ -13,7 +13,6 @@ public class Basics extends ExerciseTemplated {
 
 	public Basics(Lesson lesson) {
 		super(lesson);
-		name = "Rudiments du Java";
 		tabName="Program";
 
 		BuggleWorld myWorld = new BuggleWorld("Training World", 7,7);
