@@ -249,7 +249,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				System.out.println("<<<<<<<<debugCtn:"+debugContent);
 				System.out.println("<<<<<<<<initialContent:"+initialContent);
 			}
-			newSource(name, this.debug?debugContent:initialContent, template.toString());
+			newSource(name, initialContent, template.toString());
 		}
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
