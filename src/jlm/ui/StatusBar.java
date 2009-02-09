@@ -14,9 +14,9 @@ import javax.swing.Timer;
 import jlm.core.Game;
 import jlm.core.GameState;
 import jlm.event.GameStateListener;
+import jlm.event.StatusStateListener;
 
-
-public class StatusBar extends JPanel implements GameStateListener {
+public class StatusBar extends JPanel implements GameStateListener,StatusStateListener {
 
 	private static final long serialVersionUID = 8443305863958273495L;
 	private Game game;
@@ -31,6 +31,7 @@ public class StatusBar extends JPanel implements GameStateListener {
 		super();
 		this.game = game;
 		this.game.addGameStateListener(this);
+		game.addStatusStateListener(this);
 		initComponents();
 	}
 
@@ -44,11 +45,9 @@ public class StatusBar extends JPanel implements GameStateListener {
 		statusAnimationLabel.setIcon(ResourcesCache.getIcon("resources/busyicons/idle-icon.png"));
 
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-		this.add(Box.createHorizontalGlue());
-		// statusPanel.add(separator);
-		// statusPanel.add(Box.createHorizontalStrut(10));
-		this.add(statusMessageLabel);
 		this.add(Box.createHorizontalStrut(10));
+		this.add(statusMessageLabel);
+		this.add(Box.createHorizontalGlue());
 		this.add(statusAnimationLabel);
 		this.add(Box.createHorizontalStrut(20));
 
@@ -83,22 +82,27 @@ public class StatusBar extends JPanel implements GameStateListener {
 		case COMPILATION_ENDED:
 		case DEMO_ENDED:
 		case EXECUTION_ENDED:
-			statusMessageLabel.setText("");
+			game.statusRootSet("");
+			game.statusArgEmpty();
 			busyIconTimer.stop();
 			statusAnimationLabel.setIcon(ResourcesCache.getIcon("resources/busyicons/idle-icon.png"));
 			break;
 		case EXECUTION_STARTED:
-			statusMessageLabel.setText("Running");
+			game.statusRootSet("Running ");
 			busyIconTimer.start();
 			break;
 		case DEMO_STARTED:
-			statusMessageLabel.setText("Playing demo");
+			game.statusRootSet("Playing demo ");
 			busyIconTimer.start();
 			break;		
 		default:
 			statusMessageLabel.setText("");
 			statusAnimationLabel.setIcon(ResourcesCache.getIcon("resources/busyicons/idle-icon.png"));
 		}
-
 	}
+
+	@Override
+	public void stateChanged(String txt) {
+		statusMessageLabel.setText(txt);		
+	}	
 }

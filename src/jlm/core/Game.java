@@ -13,8 +13,10 @@ import java.util.Properties;
 
 import jlm.event.GameListener;
 import jlm.event.GameStateListener;
+import jlm.event.StatusStateListener;
 import jlm.lesson.Exercise;
 import jlm.lesson.Lesson;
+import jlm.ui.StatusBar;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
@@ -175,9 +177,8 @@ public class Game implements IWorldView {
 			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
 			t.stop(); // harmful but who cares ?
 		}
-		for (World w : this.currentLesson.getCurrentExercise().getAnswerWorld()) {
+		for (World w : this.currentLesson.getCurrentExercise().getAnswerWorld()) 
 			w.setDelay(0);
-		}
 		setState(GameState.EXECUTION_ENDED);
 	}
 
@@ -429,4 +430,43 @@ public class Game implements IWorldView {
 		// don't really care that something moved within the current world
 	}
 
+	/* Status bar label changing logic */
+	ArrayList<StatusStateListener> statusStateListeners = new ArrayList<StatusStateListener>();
+	public void addStatusStateListener(StatusStateListener l) {
+		this.statusStateListeners.add(l);
+	}
+	public void removeStatusStateListener(StatusStateListener l) {
+		this.statusStateListeners.remove(l);
+	}
+	ArrayList<String> statusArgs = new ArrayList<String>();
+	String stateTxt = "";
+	public void statusRootSet(String txt) {
+		stateTxt = txt;
+	}
+	public void statusArgAdd(String txt) {
+		statusArgs.add(txt);
+		statusChanged();
+	}
+	public void statusArgRemove(String txt) {
+		statusArgs.remove(txt);
+		statusChanged();
+	}
+	public void statusArgEmpty(){
+		statusArgs.clear();
+		statusChanged();
+	}
+	private void statusChanged() {
+		String str = stateTxt;
+		boolean first = true;
+		for (String s:statusArgs) {
+			if (first)
+				first = false;
+			else
+				str += ", ";
+			str+= s;
+		}
+		for (StatusStateListener l : this.statusStateListeners) {
+			l.stateChanged(str);
+		}
+	}
 }

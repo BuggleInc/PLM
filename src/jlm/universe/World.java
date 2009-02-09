@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import jlm.core.Game;
 import jlm.ui.WorldView;
 
 import org.simpleframework.xml.Attribute;
@@ -111,7 +112,9 @@ public abstract class World {
 			if (runnerVect != null) {
 				Thread runner = new Thread(new Runnable() {
 					public void run() {
+						Game.getInstance().statusArgAdd(getName());
 						b.run();
+						Game.getInstance().statusArgRemove(getName());
 					}
 				});
 
