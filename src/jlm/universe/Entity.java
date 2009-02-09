@@ -53,6 +53,17 @@ public abstract class Entity {
 		inited = true;		
 	}
 
+	protected void stepUI() {
+		// only a trial to see moving steps
+		if (world.getDelayCurrent() > 0) {
+			try {
+				Thread.sleep(world.getDelayCurrent());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			world.notifyWorldUpdatesListeners();
+		}		
+	}
 	
 	/** Copy fields of the entity passed in argument */
 	public void copy(Entity other) {

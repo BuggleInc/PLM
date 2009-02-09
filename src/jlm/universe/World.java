@@ -24,8 +24,8 @@ import org.simpleframework.xml.Root;
 @Root
 public abstract class World {
 	@Attribute
-	private int delay = 0; // delay between two instruction executions of an
-	// entity.
+	private int delay = 0; // delay between two instruction executions of an entity.
+	private int delaySlow = 100; // delay to use when displaying stuf to user
 
 	@ElementList
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
@@ -45,6 +45,7 @@ public abstract class World {
 			entities.add(e2);
 		}
 		this.delay = w2.delay;
+		this.delaySlow = w2.delaySlow;
 	}
 
 	public abstract World copy();
@@ -63,6 +64,7 @@ public abstract class World {
 			entities.add(br);
 		}
 		this.delay = initialWorld.delay;
+		this.delaySlow = initialWorld.delaySlow;
 		notifyEntityUpdateListeners();
 		notifyWorldUpdatesListeners();
 	}
@@ -75,12 +77,21 @@ public abstract class World {
 		name = n;
 	}
 
-	public int getDelay() {
+	/** @brief returns the delay to apply */
+	public int getDelayCurrent() {
 		return this.delay;
 	}
-
-	public void setDelay(int d) {
-		this.delay = d;
+	/** @brief set the value of the UI delay which will be used on doDelay() */
+	public void setDelayUI(int d) {
+		this.delaySlow = d;
+	}
+	/** @brief set current UI delay to what was defined as max UI delay with setDelayUI() */
+	public void doDelay() {
+		this.delay = this.delaySlow;
+	}
+	/** @brief set current UI delay to 0 */
+	public void doneDelay() {
+		this.delay = 0;
 	}
 
 	public void addEntity(Entity b) {

@@ -177,8 +177,9 @@ public class Game implements IWorldView {
 			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
 			t.stop(); // harmful but who cares ?
 		}
-		for (World w : this.currentLesson.getCurrentExercise().getAnswerWorld()) 
-			w.setDelay(0);
+		for (World w : this.currentLesson.getCurrentExercise().getAnswerWorld()) { 
+			w.doneDelay();
+		}
 		setState(GameState.EXECUTION_ENDED);
 	}
 

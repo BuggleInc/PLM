@@ -102,15 +102,6 @@ public class SortingEntity extends Entity {
 	public final void sorted(int i){
 		color[i] = Color.blue;
 	}
-
-	private void stepUI() {
-		try {
-			if (world.getDelay()>0) {
-				world.notifyWorldUpdatesListeners();
-				Thread.sleep(1);
-			}
-		} catch (InterruptedException e) {}
-	}
 	
 	public int getWriteCount() {
 		return writeCount ;

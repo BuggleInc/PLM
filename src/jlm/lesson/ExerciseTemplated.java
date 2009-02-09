@@ -23,7 +23,6 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected ArrayList<String> tabsNames = null;
 	protected String entityName = getClass().getCanonicalName()+"Entity"; /* name of the class of entities being solution of this exercise */
 	protected ArrayList<String> entitiesNames = null;
-	protected int UIDelay = 100;
 
 	public ExerciseTemplated(Lesson lesson) {
 		super(lesson);
@@ -319,8 +318,8 @@ public abstract class ExerciseTemplated extends Exercise {
 	public void run(List<Thread> runnerVect){
 		reset();
 
-		for (int i=0; i<currentWorld.length; i++) 
-			currentWorld[i].setDelay(this.UIDelay );
+		for (int i=0; i<currentWorld.length; i++)
+			currentWorld[i].doDelay();
 
 		if (tabsNames == null)
 			mutateEntity(tabName);
@@ -336,7 +335,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	public void runDemo(List<Thread> runnerVect){
 		for (int i=0; i<initialWorld.length; i++) { 
 			answerWorld[i].reset(initialWorld[i]);
-			answerWorld[i].setDelay(this.UIDelay);
+			answerWorld[i].doDelay();
 		}
 		
 		if (entitiesNames == null)

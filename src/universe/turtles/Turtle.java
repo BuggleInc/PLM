@@ -213,8 +213,7 @@ public class Turtle extends Entity {
 		this.x = nX;
 		this.y = nY;		
 		
-		stepUI(1);
-		world.notifyWorldUpdatesListeners();
+		stepUI();
 	}
 
 	public void turnLeft(double angle) {
@@ -294,7 +293,6 @@ public class Turtle extends Entity {
 
 	public void setX(double x) {
 		this.x = x;
-		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
 
@@ -304,14 +302,12 @@ public class Turtle extends Entity {
 
 	public void setY(double y) {
 		this.y = y;
-		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
 
 	public void setPos(double x, double y) {
 		this.x = x;
 		this.y = y;
-		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
 
@@ -354,21 +350,6 @@ public class Turtle extends Entity {
 
 	public void setPos(int x, double y) {
 		setPos((double) x, (double) y);
-	}
-
-	protected void stepUI(double ratio) {
-		// only a trial to see moving steps
-		if (world.getDelay() > 0) {
-			try {
-				Thread.sleep((int) (world.getDelay() * ratio));
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	protected void stepUI() {
-		stepUI(1.);
 	}
 	
 	/** @brief retrieve one parameter from the world */

@@ -168,7 +168,6 @@ public abstract class AbstractBuggle extends Entity {
 	public void setX(int x) {
 		assert (world != null);
 		this.x = x;
-		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
 
@@ -179,14 +178,12 @@ public abstract class AbstractBuggle extends Entity {
 	public void setY(int y) {
 		assert (world != null);
 		this.y = y;
-		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
 
 	public void setPos(int x, int y) {
 		this.x = x;
 		this.y = y;
-		world.notifyWorldUpdatesListeners();
 		stepUI();
 	}
 
@@ -263,20 +260,7 @@ public abstract class AbstractBuggle extends Entity {
 			getCell().setColor(brushColor);
 		}
 
-		world.notifyWorldUpdatesListeners();
-
 		stepUI();
-	}
-
-	protected void stepUI() {
-		// only a trial to see moving steps
-		if (world.getDelay() > 0) {
-			try {
-				Thread.sleep(world.getDelay());
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}		
 	}
 
 	public boolean isOverBaggle() {

@@ -25,6 +25,7 @@ public class SortingWorld extends World {
 	}
 	public SortingWorld(String name, int nbValues) {
 		super(name);
+		setDelayUI(1);
 		boolean[] used = new boolean[nbValues];
 		for (int i=0;i<nbValues;i++) 
 			used[i] = false;

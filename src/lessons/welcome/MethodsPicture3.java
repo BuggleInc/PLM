@@ -15,10 +15,9 @@ public class MethodsPicture3 extends ExerciseTemplated {
 		super(lesson);
 		name = "Dessiner avec méthode (3)";
 		BuggleWorld myWorld =  new BuggleWorld("World",45,45);
+	        myWorld.setDelayUI(5);
 		new Buggle(myWorld, "Picasso", 0, 44, Direction.EAST, Color.black, Color.lightGray);
-		
-		UIDelay = 5;
-		
+				
 		setup(myWorld);
 	}
 }
