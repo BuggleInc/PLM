@@ -69,24 +69,11 @@ public abstract class Exercise {
 
 	public abstract void reset();
 	
-	/*
-	public World[] getCurrentWorld(){
-		return currentWorld;
-	}
-	*/
 	
 	public List<World> getCurrentWorld() {
 		return Arrays.asList(currentWorld);
 	}
 	
-	@Deprecated
-	public void worldDuplicate(World w) {
-		World[] ws = new World[1];
-		ws[0] = w;
-		
-		worldDuplicate(ws);
-	}
-
 	public void worldDuplicate(World[] w) {
 		currentWorld = new World[w.length];
 		initialWorld = new World[w.length];
@@ -164,10 +151,6 @@ public abstract class Exercise {
 		hiddenSourceFiles.add(sf);
 	}
 	
-	@Deprecated
-	public void newSource(String name, String initialContent) {
-		newSource(name, initialContent, null, "");
-	}
 	public void newSource(String name, String initialContent, String template) {
 		newSource(name, initialContent, template, "");
 	}
@@ -258,23 +241,10 @@ public abstract class Exercise {
 		}
 		return res;
 	}
-		
-	/*
-	public World[] getAnswerWorld() {
-		return answerWorld;
-	}
-	*/
-	
+			
 	public List<World> getAnswerWorld() {
 		return Arrays.asList(answerWorld);
 	}
-	
-	
-	/*
-	public World[] getInitialWorld() {
-		return initialWorld;
-	}
-	*/
 	
 	public List<World> getInitialWorld() {
 		return Arrays.asList(this.initialWorld);
@@ -310,6 +280,5 @@ public abstract class Exercise {
 	public World getAnswerOfWorld(int index) {
 		return this.answerWorld[index];
 	}
-	
 }
 
