@@ -5,7 +5,7 @@ import java.awt.Color;
 public class DragonCurve2Entity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void dragon(int ordre, double x, double y, double z, double t) {
+public void dragon(int ordre, double x, double y, double z, double t) {
 		/* BEGIN SOLUTION */
 		double u, v;
 
@@ -19,9 +19,9 @@ public class DragonCurve2Entity extends universe.turtles.Turtle {
 			dragonInverse(ordre - 1, u, v, z, t);
 		}
 		/* END SOLUTION */
-	}
+}
 
-	public void dragonInverse(int ordre, double x, double y, double z, double t) {
+public void dragonInverse(int ordre, double x, double y, double z, double t) {
 		/* BEGIN SOLUTION */
 		double u, v;
 
@@ -35,7 +35,7 @@ public class DragonCurve2Entity extends universe.turtles.Turtle {
 			dragonInverse(ordre - 1, u, v, z, t);
 		}
 		/* END SOLUTION */
-	}
+}
 	/* END TEMPLATE */
 
 	public void run() {

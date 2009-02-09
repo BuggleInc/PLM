@@ -3,7 +3,7 @@ package lessons.recursion;
 public class DragonCurve1Entity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void dragon(int ordre, double x, double y, double z, double t) {
+public void dragon(int ordre, double x, double y, double z, double t) {
 		/* BEGIN SOLUTION */
 		double u, v;
 
@@ -17,7 +17,7 @@ public class DragonCurve1Entity extends universe.turtles.Turtle {
 			dragon(ordre - 1, z, t, u, v);
 		}
 		/* END SOLUTION */
-	}
+}
 	/* END TEMPLATE */
 
 	public void run() {

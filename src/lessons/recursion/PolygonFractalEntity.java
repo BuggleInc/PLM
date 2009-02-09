@@ -3,7 +3,7 @@ package lessons.recursion;
 public class PolygonFractalEntity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-	void polygonFractal (int levels, int sides, double length, double shrink) {
+void polygonFractal (int levels, int sides, double length, double shrink) {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			/* do nothing */
@@ -19,7 +19,7 @@ public class PolygonFractalEntity extends universe.turtles.Turtle {
 			}
 		}
 		/* END SOLUTION */	
-	}
+}
 	/* END TEMPLATE */
 
 	public void run() {

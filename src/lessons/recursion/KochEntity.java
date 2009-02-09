@@ -3,15 +3,15 @@ package lessons.recursion;
 public class KochEntity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-	void snowFlake (int levels, double length) {
-		snowSide(levels, length);
-		turnRight(120);
-		snowSide(levels, length);
-		turnRight(120);
-		snowSide(levels, length);
-		turnRight(120);
-	}
-	void snowSide(int levels, double length) {
+void snowFlake (int levels, double length) {
+	snowSide(levels, length);
+	turnRight(120);
+	snowSide(levels, length);
+	turnRight(120);
+	snowSide(levels, length);
+	turnRight(120);
+}
+void snowSide(int levels, double length) {
 		/* BEGIN SOLUTION */
 		if (levels == 0) {
 			forward(length);
@@ -25,7 +25,7 @@ public class KochEntity extends universe.turtles.Turtle {
 			snowSide(levels-1, length/3);
 		}
 		/* END SOLUTION */	
-	}
+}
 	/* END TEMPLATE */
 
 	public void run() {

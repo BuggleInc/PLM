@@ -3,7 +3,7 @@ package lessons.recursion;
 public class SierpinskiEntity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void sierpinski(int level, double length) {
+public void sierpinski(int level, double length) {
 		/* BEGIN SOLUTION */
 		if (level >= 0) {
 			for (int i = 0; i < 3; i++) {
@@ -16,7 +16,7 @@ public class SierpinskiEntity extends universe.turtles.Turtle {
 			}
 		}
 		/* END SOLUTION */
-	}
+}
 	/* END TEMPLATE */
 
 	public void run() {
