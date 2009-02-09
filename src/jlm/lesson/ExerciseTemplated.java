@@ -11,6 +11,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -87,8 +89,8 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		/* read it */
+		StringBuffer sb = new StringBuffer();
 		try {
-			StringBuffer sb = new StringBuffer();
 			String s;
 			s = br.readLine();
 			while (s != null) {
@@ -96,7 +98,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				sb.append(newLine);
 				s = br.readLine();
 			}
-			mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+sb.toString()+"</body>\n</html>\n";
+			
 		} catch (IOException e) {
 			e.printStackTrace();			
 		} finally {
@@ -106,6 +108,19 @@ public abstract class ExerciseTemplated extends Exercise {
 				e.printStackTrace();
 			}
 		}
+		String str = sb.toString();
+		
+		/* search the mission name */
+		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
+		Matcher m = p.matcher(str);
+		if (!m.find())
+			System.out.println("Cannot find the name of mission in "+filename+".html");
+		if (!name.equals("<no name>"))
+			System.out.print(" "+filename+".java ");
+		name = m.group(1);
+		
+		/* get the mission explanation */
+		mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+str+"</body>\n</html>\n";
 	}
 
 	protected void loadMap(World intoWorld) {
@@ -188,7 +203,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					if (line.contains("END TEMPLATE")) {
 						state = 4;
 					} else if (line.contains("END SOLUTION")) {
-						state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of severable solutions, is it wrong? 
+						state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of several solutions, is it wrong? 
 					} else {
 						solution.append(line+"\n");
 					}
@@ -260,7 +275,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		ws[0] = w;
 		setup(ws);
 	}
-	protected void setup(World[] ws) {		
+	protected void setup(World[] ws) {
 		worldDuplicate(ws);
 
 		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); 
