@@ -120,25 +120,20 @@ public abstract class World {
 	public void runEntities(List<Thread> runnerVect) {
 		// Logger.log("World:runEntities","");
 		for (final Entity b : entities) {
-			if (runnerVect != null) {
-				Thread runner = new Thread(new Runnable() {
-					public void run() {
-						Game.getInstance().statusArgAdd(getName());
-						b.run();
-						Game.getInstance().statusArgRemove(getName());
-					}
-				});
+			Thread runner = new Thread(new Runnable() {
+				public void run() {
+					Game.getInstance().statusArgAdd(getName());
+					b.run();
+					Game.getInstance().statusArgRemove(getName());
+				}
+			});
 
-				// in order to be able to stop it from the AWT Thread in case of
-				// an infinite loop
-				runner.setPriority(Thread.MIN_PRIORITY);
+			// in order to be able to stop it from the AWT Thread in case of
+			// an infinite loop
+			runner.setPriority(Thread.MIN_PRIORITY);
 
-				runner.start();
-				runnerVect.add(runner);
-			} else {
-				// everything in current thread
-				b.run();
-			}
+			runner.start();
+			runnerVect.add(runner);
 		}
 	}
 
@@ -232,7 +227,7 @@ public abstract class World {
 	public abstract WorldView getView();
 
 	public abstract EntityControlPanel getEntityControlPanel();
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -265,14 +260,14 @@ public abstract class World {
 	}
 
 	final static String HTMLMissionHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
-			+ "  <style>\n"
-			+ "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"
-			+ "    code { background:#EEEEEE; }\n" + "    pre { background: #EEEEEE;\n" + "          margin: 5px;\n"
-			+ "          padding: 6px;\n" + "          border: 1px inset;\n" + "          width: 640px;\n"
-			+ "          overflow: auto;\n" + "          text-align: left;\n"
-			+ "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"
-			+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
-			+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
+	+ "  <style>\n"
+	+ "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"
+	+ "    code { background:#EEEEEE; }\n" + "    pre { background: #EEEEEE;\n" + "          margin: 5px;\n"
+	+ "          padding: 6px;\n" + "          border: 1px inset;\n" + "          width: 640px;\n"
+	+ "          overflow: auto;\n" + "          text-align: left;\n"
+	+ "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"
+	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
+	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 	String about = null;
 
 	public String getAbout() {
