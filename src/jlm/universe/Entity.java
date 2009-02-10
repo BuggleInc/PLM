@@ -55,9 +55,9 @@ public abstract class Entity {
 
 	protected void stepUI() {
 		// only a trial to see moving steps
-		if (world.getDelayCurrent() > 0) {
+		if (world.isDelayed()) {
 			try {
-				Thread.sleep(world.getDelayCurrent());
+				Thread.sleep(world.getDelay());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

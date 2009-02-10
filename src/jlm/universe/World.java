@@ -24,8 +24,8 @@ import org.simpleframework.xml.Root;
 @Root
 public abstract class World {
 	@Attribute
-	private int delay = 0; // delay between two instruction executions of an entity.
-	private int delaySlow = 100; // delay to use when displaying stuff to user
+	private boolean isDelayed = false; // whether we display interactively or not
+	private int delay = 100; // delay between two instruction executions of an entity.
 
 	@ElementList
 	private ArrayList<Entity> entities = new ArrayList<Entity>();
@@ -44,8 +44,8 @@ public abstract class World {
 			e2.setWorld(this);
 			entities.add(e2);
 		}
+		this.isDelayed = w2.isDelayed;
 		this.delay = w2.delay;
-		this.delaySlow = w2.delaySlow;
 	}
 
 	public abstract World copy();
@@ -63,8 +63,8 @@ public abstract class World {
 			br.setWorld(this);
 			entities.add(br);
 		}
+		this.isDelayed = initialWorld.isDelayed;
 		this.delay = initialWorld.delay;
-		this.delaySlow = initialWorld.delaySlow;
 		notifyEntityUpdateListeners();
 		notifyWorldUpdatesListeners();
 	}
@@ -77,23 +77,25 @@ public abstract class World {
 		name = n;
 	}
 
-	/** @brief returns the delay to apply */
-	public int getDelayCurrent() {
+	public boolean isDelayed() {
+		return isDelayed;
+	}
+	/** returns the delay to apply */
+	public int getDelay() {
 		return this.delay;
 	}
-	/** @brief set the value of the UI delay which will be used on doDelay() */
-	public void setDelayUI(int d) {
-		this.delaySlow = d;
-		//notifyWorldUpdatesListeners();
+	/** set the value of the UI delay which will be used on doDelay() */
+	public void setDelay(int d) {
+		this.delay = d;
+		notifyWorldUpdatesListeners(); // notify the speed slider model
 	}
-	/** @brief set current UI delay to what was defined as max UI delay with setDelayUI() */
+	/** set current UI delay to what was defined as max UI delay with setDelayUI() */
 	public void doDelay() {
-		this.delay = this.delaySlow;
-		notifyWorldUpdatesListeners();
+		isDelayed = true;
 	}
-	/** @brief set current UI delay to 0 */
+	/** set current UI delay to 0 */
 	public void doneDelay() {
-		this.delay = 0;
+		isDelayed = false;
 	}
 
 	public void addEntity(Entity b) {

@@ -54,11 +54,7 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 
 	@Override
 	public int getValue() {
-		//if (this.currentWorld != null) {
-			return this.currentWorld.getDelayCurrent();
-		//} else {
-		//	return DEFAULT_DELAY;
-		//}
+		return this.currentWorld.getDelay();
 	}
 
 	@Override
@@ -71,8 +67,6 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 				newValue = max - extent;
 			}
 			setRangeProperties(newValue, extent, min, max, isAdjusting);
-			// this.currentWorld.setDelayUI(newValue);
-
 		}
 	}
 
@@ -83,7 +77,7 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 
 	@Override
 	public void setValueIsAdjusting(boolean b) {
-		setRangeProperties(this.currentWorld.getDelayCurrent(), extent, min, max, b);
+		setRangeProperties(this.currentWorld.getDelay(), extent, min, max, b);
 	}
 
 	@Override
@@ -94,7 +88,7 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 	@Override
 	public void setExtent(int n) {
         int newExtent = Math.max(0, n);
-        int value = this.currentWorld.getDelayCurrent();
+        int value = this.currentWorld.getDelay();
         if(value + newExtent > max) {
             newExtent = max - value;
         }
@@ -126,12 +120,11 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 			newExtent = 0;
 		}
 
-		boolean isChange = (newValue != this.currentWorld.getDelayCurrent()) || (newExtent != extent)
+		boolean isChange = (newValue != this.currentWorld.getDelay()) || (newExtent != extent)
 				|| (newMin != min) || (newMax != max) || (adjusting != isAdjusting);
 
 		if (isChange) {
-			this.currentWorld.setDelayUI(newValue);
-			this.currentWorld.doDelay();
+			this.currentWorld.setDelay(newValue);
 			extent = newExtent;
 			min = newMin;
 			max = newMax;
