@@ -11,9 +11,14 @@ public class Main extends Lesson {
 		super();
 		setSequential(false);
 		name = "Labyrinthes";
+	}
+
+	@Override
+	protected void loadExercises() {
 		addExercise(new RandomMouseMaze(this));
 		addExercise(new WallFollowerMaze(this));
 		addExercise(new PledgeMaze(this));
+		exercisesLoaded = true;
 	}
 	
 }

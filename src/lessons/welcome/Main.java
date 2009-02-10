@@ -20,6 +20,10 @@ public class Main extends Lesson {
 				" <li>Tableaux</li>" +
 				"</ul></p>";
 		setSequential(false);
+	}
+
+	@Override
+	protected void loadExercises() {
 		addExercise(new Environment(this));
 		addExercise(new Basics(this));
 		addExercise(new Basics3Pas(this));
@@ -47,5 +51,6 @@ public class Main extends Lesson {
 		addExercise(new TraversalByLine(this));
 		addExercise(new TraversalZigZag(this));
 		addExercise(new TraversalDiagonal(this));
+		exercisesLoaded = true;
 	}
 }

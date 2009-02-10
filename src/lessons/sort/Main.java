@@ -17,8 +17,12 @@ public class Main extends Lesson {
 				"<p>Un exercice sur les tris récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir.";
 
 		sequential = false;
+	}
+	@Override
+	protected void loadExercises() {
 		addExercise(new ExExchangeSort(this));
 		addExercise(new ExSelectionSort(this));
 		addExercise(new ExInsertionSort(this));
+		exercisesLoaded = true;
 	}
 }

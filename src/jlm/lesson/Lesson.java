@@ -6,12 +6,13 @@ import java.util.List;
 import jlm.core.Game;
 
 
-public class Lesson {
+public abstract class Lesson {
 	public String name;
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Exercise> exercises = new ArrayList<Exercise>();
 	
 	protected Exercise currentExercise;
+	protected boolean exercisesLoaded = false; /* for lazy loading of exercises */
 	
 	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
 	+ "  <style>\n"
@@ -58,11 +59,17 @@ public class Lesson {
 	}
 	
 	public Exercise getCurrentExercise() {
+		if (!exercisesLoaded) {
+			System.out.println("Load exercises of lesson "+name);
+			loadExercises();
+		}
 		if (this.currentExercise == null && exercises.size() > 0) {
 			this.currentExercise = exercises.get(0);
 		}
 		return this.currentExercise;
 	}
+
+	abstract protected void loadExercises();
 
 	public void setCurrentExercise(Exercise exo) {
 		this.currentExercise = exo;
