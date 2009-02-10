@@ -1,13 +1,18 @@
 package jlm.lesson;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jlm.core.Game;
 
 
 public abstract class Lesson {
-	public String name;
+	private String name;
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Exercise> exercises = new ArrayList<Exercise>();
 	
@@ -32,11 +37,59 @@ public abstract class Lesson {
 	public Lesson() {
 	}
 
+	private boolean aboutLoaded = false;
+	private void loadAboutAndName() {
+		aboutLoaded = true;
+		
+		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+		BufferedReader br = ExerciseTemplated.fileReader(filename,"html");
+		if (br==null) {
+			about = "File "+filename+".html not found.";
+			name = filename;
+			return;
+		}
+
+		/* read it */
+		StringBuffer sb = new StringBuffer();
+		try {
+			String s;
+			s = br.readLine();
+			while (s != null) {
+				sb.append(s);
+				s = br.readLine();
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();			
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		String str = sb.toString();
+		
+		/* search the mission name */
+		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
+		Matcher m = p.matcher(str);
+		if (!m.find())
+			System.out.println("Cannot find the name of mission in "+filename+".html");
+		name = m.group(1);
+		
+		/* get the mission explanation */
+		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";		
+	}
 	public String getName() {
+		if (!aboutLoaded)
+			loadAboutAndName();
 		return this.name;
 	}
 	public String getAbout(){
-		return "<html>"+LessonHeader+"<body><h1>"+getName()+"</h1>"+about+"</body></html>";
+		if (!aboutLoaded) {
+			loadAboutAndName();
+		}
+		return about;
 	}
 
 	public boolean isSequential() {		
@@ -54,13 +107,11 @@ public abstract class Lesson {
 	
 	public void addExercise(Exercise exo) {
 		exercises.add(exo);
-		//currentExercise = exercises.get(exerciseCount()-1);
-		//	sequential = false;
 	}
 	
 	public Exercise getCurrentExercise() {
 		if (!exercisesLoaded) {
-			System.out.println("Load exercises of lesson "+name);
+			System.out.println("Load exercises of lesson "+getName());
 			loadExercises();
 		}
 		if (this.currentExercise == null && exercises.size() > 0) {

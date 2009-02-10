@@ -10,7 +10,6 @@ public class Main extends Lesson {
 	public Main() {
 		super();
 		setSequential(false);
-		name = "Labyrinthes";
 	}
 
 	@Override

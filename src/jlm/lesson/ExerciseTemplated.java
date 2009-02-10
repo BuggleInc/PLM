@@ -52,7 +52,7 @@ public abstract class ExerciseTemplated extends Exercise {
         "  </style>\n"+
         "</head>\n";
 
-	protected BufferedReader fileReader(String filename,String extension) {
+	static protected BufferedReader fileReader(String filename,String extension) {
 
 		BufferedReader br = null;
 		/* try to find the file */
