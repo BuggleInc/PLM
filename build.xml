@@ -17,13 +17,6 @@
 	<target name="compile">
         <mkdir dir="${classes.dir}"/>
         <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />        
-         <copy todir="${classes.dir}">
-                 <fileset dir="${src.dir}">
-                         <include name="**/*.java"/>
-                         <include name="**/*.html"/>
-                 	     <include name="**/*.css"/>
-                 </fileset>
-         </copy> 		
 	</target>
 	
 	<target name="dist" depends="compile">
@@ -33,12 +26,25 @@
 				<attribute name="Main-Class" value="jlm.ui.JavaLearningMachine" />
 				<attribute name="Class-Path" value="." />
 			</manifest>
-			<fileset dir="${classes.dir}" excludes="**/.gitignore"/>
-			<fileset dir="${src.dir}" excludes="**/.gitignore"/>
+			<fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
+			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css" excludes="**/.gitignore"/> 
 			<fileset dir="${lib.dir}" excludes="*.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.4.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.6-swing.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
+		</jar>
+	</target>
+
+	<target name="dist-web" depends="compile">
+		<jar destfile="jlm-webstart.jar" filesetmanifest="mergewithoutmain">
+			<manifest>
+				<attribute name="Built-By" value="M. Quinson and G. Oster" />
+				<attribute name="Main-Class" value="jlm.ui.JavaLearningMachine" />
+				<attribute name="Class-Path" value="." />
+			</manifest>
+			<fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
+			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css" excludes="**/.gitignore"/> 
+			<fileset dir="${lib.dir}" excludes="*.jar"/>
 		</jar>
 	</target>
 </project>
