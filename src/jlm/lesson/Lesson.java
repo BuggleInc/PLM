@@ -152,6 +152,8 @@ public abstract class Lesson {
 	}
 
 	public boolean isSuccessfullyCompleted() {
+		if (!exercisesLoaded)
+			return false;
 		// TODO: too lazy, to add a boolean 'completed' which is updated when a test is passed 
 		if (isSequential()) {
 			return this.exercises.get(this.exercises.size()-1).isSuccessfullyPassed();			
