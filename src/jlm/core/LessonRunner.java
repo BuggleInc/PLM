@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import jlm.exception.JLMCompilerException;
 import jlm.lesson.Exercise;
 import jlm.ui.ResourcesCache;
 
@@ -57,8 +58,10 @@ public class LessonRunner extends Thread {
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
 			game.setState(GameState.EXECUTION_ENDED);
+		} catch (JLMCompilerException e) {
+			game.setState(GameState.COMPILATION_ENDED);
+			game.setState(GameState.EXECUTION_ENDED);
 		} catch (Exception e) {
-			//e.printStackTrace();
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
 			game.setState(GameState.COMPILATION_ENDED);
