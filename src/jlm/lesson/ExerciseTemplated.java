@@ -135,10 +135,14 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 
-	public void newSourceFromFile(String name, String filename) {		
-		BufferedReader br = fileReader( "src"+File.separator+filename,null);
+	public void newSourceFromFile(String name, String filename, String extension) {		
+		BufferedReader br = fileReader( "src"+File.separator+filename,extension);
 		if (br==null)
+			br = fileReader(filename,extension);
+		if (br==null) {
+			System.err.println("Source file "+filename+" not found.");
 			return;
+		}
 
 		String newLine = System.getProperty("line.separator");
 
@@ -250,7 +254,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		se.setName(name);
 		entitiesNames.add(se.getClass().getName());
 		tabsNames.add("My"+name);
-		newSourceFromFile("My"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); 
+		newSourceFromFile("My"+name, se.getClass().getName(),"java"); 
 	}
 	protected void addEntityKind(World[] ws, Entity se, String name) {
 		if (entitiesNames == null)  {
@@ -264,7 +268,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			if (i==0) {
 				entitiesNames.add(se.getClass().getName());
 				tabsNames.add("My"+name);
-				newSourceFromFile("My"+name, se.getClass().getName().replace('.',File.separatorChar)+".java"); 
+				newSourceFromFile("My"+name, se.getClass().getName(),"java"); 
 			}
 		}
 	}
@@ -278,7 +282,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void setup(World[] ws) {
 		worldDuplicate(ws);
 
-		newSourceFromFile(tabName, entityName.replace('.',File.separatorChar)+".java"); 
+		newSourceFromFile(tabName, entityName,"java"); 
 
 		computeAnswer();
 	}
