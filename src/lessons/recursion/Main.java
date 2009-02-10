@@ -3,10 +3,6 @@ package lessons.recursion;
 import jlm.lesson.Lesson;
 
 public class Main extends Lesson {
-	public Main() {
-		super();	
-		sequential = false;
-	}
 	@Override
 	protected void loadExercises() {
 		addExercise(new Square(this));

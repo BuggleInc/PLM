@@ -31,7 +31,7 @@ public abstract class Lesson {
 
 	
 	
-	protected boolean sequential = true;
+	protected boolean sequential = false;
 	/** if true, one must succeed in first exercise before trying next ones */
 
 	public Lesson() {

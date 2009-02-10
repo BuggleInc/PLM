@@ -4,11 +4,6 @@ import jlm.lesson.Lesson;
 
 public class Main extends Lesson {
 
-	public Main() {
-		super();
-		setSequential(false);
-	}
-
 	@Override
 	protected void loadExercises() {
 		addExercise(new Environment(this));
