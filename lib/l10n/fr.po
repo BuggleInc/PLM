@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2009-02-10 21:23+0100\n"
-"PO-Revision-Date: 2009-02-11 10:25+0100\n"
+"PO-Revision-Date: 2009-02-11 12:19+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1047,7 +1047,7 @@ msgstr ""
 
 #: src/lessons/recursion/Square.html:1
 msgid "Les petites cousines des Buggles"
-msgstr ""
+msgstr "The small cousines of Buggles"
 
 #: src/lessons/recursion/Square.html:3
 msgid ""
@@ -1057,7 +1057,7 @@ msgid ""
 "MIT nommé Seymour Papert pour aider à l'enseignement la programmation, et "
 "les buggles sont une variation sur le thème inventée par Lyn Turbak du "
 "Wellesley College plus tard."
-msgstr ""
+msgstr "Today, we will meet the small cousines of the buggles: the turtles. In fact, turtles are much olders than the buggles. They were invented in the 70's by a scientific from MIT called Seymour Papert to help teaching programming, and the buggles are a variation on the idea invented by Lyn Turbak from Wellesley College later."
 
 #: src/lessons/recursion/Square.html:10
 msgid ""
@@ -1065,7 +1065,7 @@ msgid ""
 "buggles, vous pouvez leur demander d'avancer, de tourner, de reculer, etc. "
 "Comme les buggles, elles laissent une trace sur leur passage quand elles "
 "avancent (simplement, le trait est bien plus fin)."
-msgstr ""
+msgstr "Turtles are thus a bit like buggles, but smaller. Just like buggles, you can order them to move forward, to turn, to move backward, etc. Just like buggles, they leave a line on their path when they move (but the line is much smaller)."
 
 #: src/lessons/recursion/Square.html:15
 msgid ""
@@ -1076,7 +1076,7 @@ msgid ""
 "tortues, comme lire et écrire des messages sur le sol ou ramasser des "
 "objets, et il y a parfois des murs dans leur univers, mais tout cela dépasse "
 "complètement les tortues."
-msgstr ""
+msgstr "The main difference is that where buggles can only move of right angles, turtles can move of any arbitrary angles specified by a real number (a double). This gives them much more liberty in their movings. The buggles can do several other tricks, like reading and writting messages, picking or dropping objects, and there is sometimes walls in their worlds (but all this is completely above the capacities of turtles)."
 
 #: src/lessons/recursion/Square.html:22
 msgid ""
@@ -1085,15 +1085,15 @@ msgid ""
 "variantes près. En particulier, la méthode <code>forward</code> prend en "
 "argument le nombre de pas donné comme un nombre double (voir \"About this "
 "world\" dans le menu pour plus de détails)."
-msgstr ""
+msgstr "From a practical point of view, most of the methods you knew about buggles still work with turtles, with some minor adaptations. In particular, the <code>forward()</code> method takes the amount of steps to do as a double (see \"About this world\" for more details)."
 
 #: src/lessons/recursion/Square.html:28
 msgid "Des doubles ? Mais qu'est ce que c'est ?"
-msgstr ""
+msgstr "Doubles? But what is it?"
 
 #: src/lessons/recursion/Square.html:29
 msgid "C'est simplement un nombre à virgule. Exemple:"
-msgstr ""
+msgstr "It's simply a point number. Example:"
 
 #: src/lessons/recursion/Square.html:31
 #, no-wrap
@@ -1111,18 +1111,30 @@ msgid ""
 "Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)\n"
 "(double) 17 // Value = 17.0 (“transtypage en double”, converti en double)\n"
 msgstr ""
+"double x = 3.72;\n"
+"x + 1.234 // Value = 4.954\n"
+"x + 2 // Value = 5.72 (2 converted to 2.0 automatically)\n"
+"x * 2 // Value = 7.44 (2 converted to 2.0 automatically)\n"
+"x / 2 // Value = 1.86 (2 converted to 2.0 automatically)\n"
+"(int) x // Value = 1 (“casting to int”, converted to integer by truncating)\n"
+"Math.round(x) // Value = 2 (1.86 rounded to nearest integer)\n"
+"Math.floor(x) // Value = 1 (1.86 rounded toward minus infinity)\n"
+"Math.floor(-5.12) // Value = -6 (rounded toward minus infinity)\n"
+"Math.ceiling(x) // Value = 2 (1.86 rounded toward plus infinity)\n"
+"Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)\n"
+"(double) 17 // Value = 17.0 (“casted to double”, converted to double)\n"
 
 #: src/lessons/recursion/Square.html:45 src/lessons/recursion/Circle.html:16
 #: src/lessons/welcome/Array.html:150
 msgid "Objectif de l'exercice"
-msgstr ""
+msgstr "Goal of this exercise"
 
 #: src/lessons/recursion/Square.html:46
 msgid ""
 "Bien que ce soit le premier exercice de la leçon sur la récursivité, le code "
 "que vous devez écrire n'est pas récursif. L'objectif est de se familiariser "
 "avec le monde des tortues avant d'attaquer les choses sérieuses."
-msgstr ""
+msgstr "Even if this is the first exercise on the recursivity lesson, the code you have to write is not recursive. The goal is to get familiar with the turtle world before getting on serious matter."
 
 #: src/lessons/recursion/Square.html:50
 msgid ""
@@ -1132,7 +1144,7 @@ msgid ""
 "réutiliser lors de l'écriture de la méthode <code>run()</code> qui fait le "
 "travail. Il est indispensable d'écrire au moins la méthode run, dont le "
 "prototype est le suivant:"
-msgstr ""
+msgstr "You must reproduce a simple geometrical painting constituted of four 100 steps long squares (see the objective world for more details). It is obviously a good idea to write a method to draw a square, and then use it in your <code>run()</code> in charge of doing the work. You must absolutely write at least the run method, which prototype is the following:"
 
 #: src/lessons/recursion/Square.html:57
 #, no-wrap
@@ -1218,7 +1230,7 @@ msgstr "Observe the drawing in each world's objective to understand the pattern'
 
 #: src/lessons/recursion/Star.html:1
 msgid "Tortues dans les étoiles"
-msgstr ""
+msgstr "Turtles in the stars"
 
 #: src/lessons/recursion/Star.html:3
 msgid ""
@@ -1226,7 +1238,7 @@ msgid ""
 "faire dessiner trois étoiles à 5 branches à la tortue. Comme toutes les "
 "étoiles régulières à N branches, les angles des pointes sont de 360/N degrés "
 "tandis que les angles entre les pointes sont de 2*360/N degrés."
-msgstr ""
+msgstr "This is the last hand-on turtles exercise before recursion. The goal is to draw three 5-branches stars. Like any regular stars with N branches, the angle at each external corners are 360/N degrees while the angles between branches are of 2*360/N degrees."
 
 #: src/lessons/recursion/Star.html:8
 msgid ""
@@ -1236,15 +1248,15 @@ msgid ""
 "degrés vers le bas par rapport à la première.  La dernière étoile est rouge "
 "(<code>Color.red</code>), ses branches font 60 pas, et elle est décallée de "
 "45 degrés par rapport à la seconde."
-msgstr ""
+msgstr "The first star to draw is black (<code>Color.black</code>) and its branches are 100 steps long. The second is blue (<code>Color.blue</code>) and its branches are 80 steps long. It's shifted of 45 degrees from the first one. The last star is red (<code>Color.red</code>), its branches are 60 steps long and it's shifted of 45 degrees from the previous one."
 
 #: src/lessons/recursion/Star.html:15
 msgid "Consultez l'objectif du monde pour visualiser la figure à réaliser."
-msgstr ""
+msgstr "Observe the world's objective to visualize the picture to draw."
 
 #: src/lessons/recursion/Circle.html:1
 msgid "Trois petits tours"
-msgstr ""
+msgstr "Three little circles"
 
 #: src/lessons/recursion/Circle.html:3
 msgid ""
@@ -1254,7 +1266,7 @@ msgid ""
 "de leur faire dessiner des cercles... On peut pourtant résoudre ce problème "
 "simplement en réalisant qu'un cercle peut être représenté comme une "
 "concaténation de petits segments."
-msgstr ""
+msgstr "As we saw (and as you can check in the documentation of this world under \"About this world\"), turtles can only draw straight lines. Despite of this, the goal of this world is to draw circles... This can be achived simply by realizing that a circle can be seen as a concatenation of very little segments."
 
 #: src/lessons/recursion/Circle.html:10
 msgid ""
@@ -1262,7 +1274,7 @@ msgid ""
 "est la limite asymptotique d'une telle construction quand la taille des "
 "segments tend vers zéro alors que leur nombre tend vers l'infini (mais on "
 "peut tout de même réussir l'exercice sans maîtriser le calcul différentiel)."
-msgstr ""
+msgstr "Differential calculus would even argue that a circle is the asymptotical limit of such construct when the size of each segment becomes infinitely small while their amount becomes infinitely large (but it is still possible to solve this exercise without understanding differential calculus)."
 
 #: src/lessons/recursion/Circle.html:18
 msgid ""
@@ -1272,17 +1284,17 @@ msgid ""
 "avec des pas de 0.5, le second avec des pas de 1 et le troisième avec des "
 "pas de 1.5. Encore une fois, il s'agit d'un exercice de prise en main, et "
 "aucune récursion n'est nécessaire."
-msgstr ""
+msgstr "Write a function drawing a circle, taking the size of each of the 360 segments as parameter. Then use it in your <code>run()</code> method to draw the whole picture. The first circle is obtained with segments of size 0.5, the second with segments of size 1 and the last one with 1.5-long segments. Once again, this is a hand-on exercise, no recursion is needed."
 
 #: src/lessons/recursion/Tree.html:1
 msgid "Arbres"
-msgstr ""
+msgstr "Trees"
 
 #: src/lessons/recursion/Tree.html:3
 msgid ""
 "Nous allons maintenant dessiner des arbres. Pour cela, nous allons écrire "
 "une fonction doublement récursive de prototype"
-msgstr ""
+msgstr "We will now draw trees. For that, we will write a method using double recursion following this prototype"
 
 #: src/lessons/recursion/Tree.html:4
 #, no-wrap
@@ -1295,24 +1307,24 @@ msgid ""
 "taille indiquée, tourner à droite de l'angle indiqué, faire un arbre à 3 "
 "étages, tourner à gauche de deux fois l'angle indiqué, faire un autre arbre "
 "à 3 étages, puis revenir à sa position initiale."
-msgstr ""
+msgstr "To draw a tree of four levels, you have to draw a trunk of the given length, turn right of the given angle, draw a tree of level 3, turn left twice of the given angle, draw another tree of level 3, and come back to your initial location."
 
 #: src/lessons/recursion/Tree.html:10
 msgid ""
 "Si le tronc d'un arbre mesure length à l'étage N, il mesure shrink*length à "
 "l'étage N+1."
-msgstr ""
+msgstr "If a tree's trunk is of length 'len', the trunk of the next level tree will be of length 'len*shrink'."
 
 #: src/lessons/recursion/Sierpinski.html:1
 msgid "Triangle de Sierpinski"
-msgstr ""
+msgstr "Sierpinski's Triangle"
 
 #: src/lessons/recursion/Sierpinski.html:3
 msgid ""
 "La fractale que nous allons dessiner maintenant est formée d'un triangle "
 "dans lequel sont imbriqués des triangles plus petits.  Le prototype de la "
 "fonction le traçant est le suivant :"
-msgstr ""
+msgstr "The fractal we will now draw is formed of a big triangle inside which several smaller triangles are embeeded. The prototype of the fuction to draw it is the following:"
 
 #: src/lessons/recursion/Sierpinski.html:5
 #, no-wrap
@@ -1321,14 +1333,14 @@ msgstr "void sierpinski(int level, double length)"
 
 #: src/lessons/recursion/Spiral.html:1
 msgid "Spirales"
-msgstr ""
+msgstr "Spirals"
 
 #: src/lessons/recursion/Spiral.html:3
 msgid ""
 "Nous allons maintenant écrire notre première fonction récursive avec les "
 "tortues. L'objectif est de dessiner des spirales de différentes formes avec "
 "la même fonction, dont le prototype est le suivant:"
-msgstr ""
+msgstr "We will now draw our first recursive function with the turtle. The goal is to draw different kind of spirals with the same function, which prototype is the following: "
 
 #: src/lessons/recursion/Spiral.html:6
 #, no-wrap
@@ -1339,7 +1351,7 @@ msgstr "void spiral(int steps, int angle, int length, int increment)"
 msgid ""
 "Pour vous aider à comprendre comment l'écrire, voici un exemple de la suite "
 "des différentes valeurs prises par les paramètres dans un cas:"
-msgstr ""
+msgstr "To help you understanding how to write it, here is an example of how the parameters change during one specific call:"
 
 #: src/lessons/recursion/Spiral.html:11
 #, no-wrap
@@ -1380,21 +1392,21 @@ msgstr ""
 
 #: src/lessons/recursion/DragonCurve1.html:1
 msgid "Courbe du Dragon (1)"
-msgstr ""
+msgstr "Dragon curve (1)"
 
 #: src/lessons/recursion/DragonCurve1.html:3
 msgid "Un exemple classique de la méthode récursive est la courbe du Dragon."
-msgstr ""
+msgstr "The dragon curve is a classical example of recursive method."
 
 #: src/lessons/recursion/DragonCurve1.html:5
 msgid "La définition de cette courbe est la suivante :"
-msgstr ""
+msgstr "The definition of this curve is the following:"
 
 #: src/lessons/recursion/DragonCurve1.html:6
 msgid ""
 "la courbe du Dragon d'ordre 1 est un vecteur entre deux points quelconques P "
 "et Q,"
-msgstr ""
+msgstr "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 
 #: src/lessons/recursion/DragonCurve1.html:7
 msgid ""
@@ -1403,7 +1415,7 @@ msgid ""
 "le triangle isocèle rectangle en R, et R est à droite du vecteur PQ.  Donc, "
 "si P et Q sont les points de coordonnées (x, y) et (z,t), les coordonnées "
 "(u, v) de R sont"
-msgstr ""
+msgstr "the dragon curve of order n is the dragon curve of order n-1 between P and R, followed by the same curve of order n-1 between R and Q (reverse side), where PRQ is an isoscele triangle with angle R being a right angle, and R being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y) and (z, t), the coordinate (u, v) of R are given by:"
 
 #: src/lessons/recursion/DragonCurve1.html:13
 #: src/lessons/recursion/DragonCurve2.html:18
@@ -1418,7 +1430,7 @@ msgstr ""
 
 #: src/lessons/recursion/DragonCurve1.html:19
 msgid "Le prototype de la méthode traçant la courbe est le suivant :"
-msgstr ""
+msgstr "The prototype of the method drawing the curve is the following:"
 
 #: src/lessons/recursion/DragonCurve1.html:20
 #: src/lessons/recursion/DragonCurve2.html:14
@@ -1432,7 +1444,7 @@ msgid ""
 "tortue aux coordonnées (x,y) et la méthode <code>moveTo(z,t)</code> pour "
 "tracer un trait depuis le point où la tortue est positionnée vers le point "
 "de coordonnées (z,t)"
-msgstr ""
+msgstr "You should use the method <code>setPos(x,y)</code> to put your turtle at coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line between the turtle position and the point (z,t)."
 
 #: src/lessons/recursion/DragonCurve2.html:1
 msgid "Courbe du Dragon (2)"
