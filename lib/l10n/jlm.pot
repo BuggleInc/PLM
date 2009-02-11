@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-10 21:11+0100\n"
+"POT-Creation-Date: 2009-02-11 12:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1240,8 +1240,8 @@ msgid ""
 "(double) 17 // Value = 17.0 (“transtypage en double”, converti en double)\n"
 msgstr ""
 
-# type: Content of: <h2>
-#: src/lessons/recursion/Square.html:45 src/lessons/recursion/Circle.html:16 src/lessons/welcome/Array.html:143
+# type: Content of: <br><p><p><p><p><h2>
+#: src/lessons/recursion/Square.html:45 src/lessons/recursion/Circle.html:16 src/lessons/welcome/Array.html:150
 msgid "Objectif de l'exercice"
 msgstr ""
 
@@ -2895,7 +2895,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><a><p>
-#: src/lessons/welcome/Array2.html:26 src/lessons/welcome/Array.html:157 src/lessons/welcome/MethodsDogHouse.html:45 src/lessons/maze/RandomMouseMaze.html:45 src/lessons/maze/WallFollowerMaze.html:26 src/lessons/maze/PledgeMaze.html:38
+#: src/lessons/welcome/Array2.html:26 src/lessons/welcome/Array.html:164 src/lessons/welcome/MethodsDogHouse.html:45 src/lessons/maze/RandomMouseMaze.html:45 src/lessons/maze/WallFollowerMaze.html:26 src/lessons/maze/PledgeMaze.html:38
 msgid "À vous de jouer."
 msgstr ""
 
@@ -3470,29 +3470,79 @@ msgid ""
 "<b>tableau</b>."
 msgstr ""
 
-# type: Content of: <h2>
-#: src/lessons/welcome/Array.html:19
+# type: Content of: <p><h2>
+#: src/lessons/welcome/Array.html:18
 msgid "Les tableaux en Java"
 msgstr ""
 
 # type: Content of: <p>
-#: src/lessons/welcome/Array.html:20
+#: src/lessons/welcome/Array.html:19
 msgid ""
 "Un tableau est une séquence d'emplacements dans lesquels on peut mettre des "
 "valeurs de même type (une par emplacement). C'est donc une séquence de cases "
 "de même type :"
 msgstr ""
 
-# type: Content of: <p>
+# type: Content of: <br><table><tr><td>
 #: src/lessons/welcome/Array.html:25
+msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:26
+msgid "3"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:26
+msgid "7"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:26
+msgid "13"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:27
+msgid "8"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:27
+msgid "15"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:27
+msgid "6"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:28
+msgid "11"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:28
+msgid "10"
+msgstr ""
+
+# type: Content of: <br><table><tr><td>
+#: src/lessons/welcome/Array.html:28
+msgid "9"
+msgstr ""
+
+# type: Content of: <br><p>
+#: src/lessons/welcome/Array.html:32
 msgid ""
 "T est le nom du tableau, T[0] est le nom de la première case, T[1] de la "
 "deuxième case, T[2] de la troisième case, etc... Et oui, la première case "
 "est T[0] et la dernière case d'un tableau de dimension N est T[N - 1]."
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:29
+# type: Content of: <br><p>
+#: src/lessons/welcome/Array.html:36
 msgid ""
 "On peut utiliser une variable entière <i>i</i> pour accéder avec T[i] aux "
 "cases d'un tableau : lorsque <i>i</i> vaut 0 alors T[i] dénote la case T[0], "
@@ -3500,20 +3550,20 @@ msgid ""
 "un <b>indice</b> dans le tableau T ."
 msgstr ""
 
-# type: Content of: <h2>
-#: src/lessons/welcome/Array.html:34
+# type: Content of: <br><p><h2>
+#: src/lessons/welcome/Array.html:41
 msgid "Remplissage d'un tableau"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:35
+# type: Content of: <br><p>
+#: src/lessons/welcome/Array.html:42
 msgid ""
 "Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On "
 "peut alors le remplir de la manièere suivante :"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:38
+# type: Content of: <br><p><pre>
+#: src/lessons/welcome/Array.html:45
 #, no-wrap
 msgid ""
 "for (int i = 0; i&lt;10; i++) {\n"
@@ -3521,35 +3571,35 @@ msgid ""
 "}\n"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:43
+# type: Content of: <br><p>
+#: src/lessons/welcome/Array.html:50
 msgid "<code>T[i]</code> s'utilise comme une variable. On peut l'affecter :"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:44
+# type: Content of: <br><p><pre>
+#: src/lessons/welcome/Array.html:51
 #, no-wrap
 msgid "T[i] = 78;"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:46
+# type: Content of: <br><p><p>
+#: src/lessons/welcome/Array.html:53
 msgid "On peut lire sa valeur :"
 msgstr ""
 
-# type: Content of: <p><pre>
-#: src/lessons/welcome/Array.html:47
+# type: Content of: <br><p><p><pre>
+#: src/lessons/welcome/Array.html:54
 #, no-wrap
 msgid "x = T[i];"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:49
+# type: Content of: <br><p><p>
+#: src/lessons/welcome/Array.html:56
 msgid "On peut tester cette valeur :"
 msgstr ""
 
-# type: Content of: <p><pre>
-#: src/lessons/welcome/Array.html:51
+# type: Content of: <br><p><p><pre>
+#: src/lessons/welcome/Array.html:58
 #, no-wrap
 msgid ""
 "if (T[i] > 0 ) {\n"
@@ -3557,24 +3607,24 @@ msgid ""
 "}\n"
 msgstr ""
 
-# type: Content of: <h3>
-#: src/lessons/welcome/Array.html:56
+# type: Content of: <br><p><h3>
+#: src/lessons/welcome/Array.html:63
 msgid "Déclaration d'un tableau"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:57
+# type: Content of: <br><p>
+#: src/lessons/welcome/Array.html:64
 msgid "Un tableau se déclare de la manière suivante :"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:58
+# type: Content of: <br><p><pre>
+#: src/lessons/welcome/Array.html:65
 #, no-wrap
 msgid "int[] T;"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:60
+# type: Content of: <br><p><p>
+#: src/lessons/welcome/Array.html:67
 msgid ""
 "<code>int</code> indique que les éléments du tableau <code>T</code> sont de "
 "type entier est le nom du tableau, <code>[]</code> indique qu'il s'agit d'un "
@@ -3583,19 +3633,19 @@ msgid ""
 "préférée en Java."
 msgstr ""
 
-# type: Content of: <p><pre>
-#: src/lessons/welcome/Array.html:65
+# type: Content of: <br><p><p><pre>
+#: src/lessons/welcome/Array.html:72
 #, no-wrap
 msgid "int T[];"
 msgstr ""
 
-# type: Content of: <h3>
-#: src/lessons/welcome/Array.html:67
+# type: Content of: <br><p><h3>
+#: src/lessons/welcome/Array.html:74
 msgid "Allocation d'un tableau"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:69
+# type: Content of: <br><p>
+#: src/lessons/welcome/Array.html:76
 msgid ""
 "Déclarer un tableau <code>T</code> nous réserve juste le nom <code>T</code> "
 "pour l'utiliser plus tard. Mais le tableau n'est pas initialisé : il n'a pas "
@@ -3603,19 +3653,19 @@ msgid ""
 "dit que <code>T</code> est un tableau d'au moins 5 éléments ?"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:74
+# type: Content of: <br><p><p>
+#: src/lessons/welcome/Array.html:81
 msgid "Avant tout, il faut donc lui affecter une valeur à <code>T</code>:"
 msgstr ""
 
-# type: Content of: <p><pre>
-#: src/lessons/welcome/Array.html:75
+# type: Content of: <br><p><p><pre>
+#: src/lessons/welcome/Array.html:82
 #, no-wrap
 msgid "T = new int[10];"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:76
+# type: Content of: <br><p><p>
+#: src/lessons/welcome/Array.html:83
 msgid ""
 "<code>new</code> indique qu'il faut créer quelque chose, et "
 "<code>int[10]</code> indique qu'il s'agit d'un tableau de 10 valeur "
@@ -3623,83 +3673,83 @@ msgid ""
 "mémoire, et la variable <code>T</code> référence ce tableau."
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:81
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:88
 msgid ""
 "La taille d'un tableau est fixée et ne peut plus être changée après la "
 "création du tableau. Pour connapitre la taille d'un tableau <code>T</code>, "
 "on peut consulter la valeur de la variable <code>T.length</code>."
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:86
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:93
 msgid "On ne peut pas écrire :"
 msgstr ""
 
-# type: Content of: <p><pre>
-#: src/lessons/welcome/Array.html:87
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:94
 #, no-wrap
 msgid "int T[10]; // FAUX !!!"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:88
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:95
 msgid ""
 "Il faut absolument utiliser l'instruction <code>new</code>. Par contre, on "
 "peut très bien donner la dimension par une variable <code>i</code>."
 msgstr ""
 
-# type: Content of: <p><pre>
-#: src/lessons/welcome/Array.html:90
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:97
 #, no-wrap
 msgid "T = new int[i];"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:91
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:98
 msgid ""
 "Dans ce cas, la taille du tableau sera la valeur de <code>i</code> <b>au "
 "moment où on a fait le</b> <code>new</code>. Si <code>i</code> change après "
 "coup, cela ne modifie pas la taille du tableau."
 msgstr ""
 
-# type: Content of: <h4>
-#: src/lessons/welcome/Array.html:95
+# type: Content of: <br><p><p><p><h4>
+#: src/lessons/welcome/Array.html:102
 msgid "Déclaration et allocation"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:96
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:103
 #, no-wrap
 msgid "int[] T = new int[10];"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:98
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:105
 msgid "On déclare et alloue le tableau en une seule ligne."
 msgstr ""
 
-# type: Content of: <h4>
-#: src/lessons/welcome/Array.html:100
+# type: Content of: <br><p><p><p><h4>
+#: src/lessons/welcome/Array.html:107
 msgid "Déclaration et initialisation"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:101
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:108
 #, no-wrap
 msgid "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:103
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:110
 msgid ""
 "On déclare, alloue et initialise le tableau en une seule ligne. Pour "
 "connaître la taille du tableau à allouer, le compilateur compte les valeurs "
 "données.  Ce code est équivalent à :"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:107
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:114
 #, no-wrap
 msgid ""
 "int[] T = new int[10];\n"
@@ -3709,13 +3759,13 @@ msgid ""
 "T[9] = 10;\n"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:114
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:121
 msgid "C'est aussi équivalent au code :"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:116
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:123
 #, no-wrap
 msgid ""
 "int[] T = new int[10];\n"
@@ -3724,20 +3774,20 @@ msgid ""
 "}\n"
 msgstr ""
 
-# type: Content of: <h3>
-#: src/lessons/welcome/Array.html:122
+# type: Content of: <br><p><p><p><h3>
+#: src/lessons/welcome/Array.html:129
 msgid "Tableaux et paramètres de méthode"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:123
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:130
 msgid ""
 "On peut tout à fait passer un tableau en paramètre d'une méthode. La méthode "
 "doit l'indiquer dans son prototype de la façon suivante:"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:125
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:132
 #, no-wrap
 msgid ""
 "void maMethode(int[] valeurs) {\n"
@@ -3745,13 +3795,13 @@ msgid ""
 "}"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:129
+# type: Content of: <br><p><p><p>
+#: src/lessons/welcome/Array.html:136
 msgid "Coté appelant, c'est aussi simple :"
 msgstr ""
 
-# type: Content of: <pre>
-#: src/lessons/welcome/Array.html:131
+# type: Content of: <br><p><p><p><pre>
+#: src/lessons/welcome/Array.html:138
 #, no-wrap
 msgid ""
 "int[] tab = new int[10];\n"
@@ -3759,13 +3809,13 @@ msgid ""
 "maMethode(tab);\n"
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:136
+# type: Content of: <br><p><p><p><p>
+#: src/lessons/welcome/Array.html:143
 msgid "On peut également avoir des méthodes renvoyant des tableaux en résultat :"
 msgstr ""
 
-# type: Content of: <p><pre>
-#: src/lessons/welcome/Array.html:137
+# type: Content of: <br><p><p><p><p><pre>
+#: src/lessons/welcome/Array.html:144
 #, no-wrap
 msgid ""
 "int[] autreMethode() {\n"
@@ -3775,8 +3825,8 @@ msgid ""
 "}"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Array.html:144
+# type: Content of: <br><p><p><p><p>
+#: src/lessons/welcome/Array.html:151
 msgid ""
 "La méthode <code>run()</code> que vous devez écrire doit commencer par "
 "déclarer un tableau de couleurs (<code>Color[]</code>) et "
@@ -3785,16 +3835,16 @@ msgid ""
 "pour retrouver le nombre de lignes du monde actuel."
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:150
+# type: Content of: <br><p><p><p><p><p>
+#: src/lessons/welcome/Array.html:157
 msgid ""
 "Une fois le tableau alloué, il faut le remplir. Pour chaque case de la "
 "colonne, lisez la couleur du sol (avec <code>getGroundColor()</code>), et "
 "stockez le résultat de cette méthode dans la bonne case du tableau."
 msgstr ""
 
-# type: Content of: <p>
-#: src/lessons/welcome/Array.html:154
+# type: Content of: <br><p><p><p><p><p>
+#: src/lessons/welcome/Array.html:161
 msgid ""
 "Une fois le tableau initialisé, il faut répliquer le motif sur toutes les "
 "colonnes, par exemple en exécutant <code>getWorldWidth()</code> fois une "
