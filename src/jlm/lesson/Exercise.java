@@ -102,6 +102,7 @@ public abstract class Exercise {
 	 * +++++++++++++++++++++++++
 	 * 
 	 */
+	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. I tried to put it as static, but of course strange behaviors happen afterwars
 	// Create a compiler of classes (using java 1.6)
 	private final InMemoryCompiler compiler = new InMemoryCompiler(
 			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
@@ -127,7 +128,7 @@ public abstract class Exercise {
 
 		/* Do the compile */
 		try {
-			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();
+			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 			compiledClasses = compiler.compile(sources, errs);
 
 			out.log(errs);

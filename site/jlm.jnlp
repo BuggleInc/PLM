@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="http://www.loria.fr/~oster/jlm/" href="jlm.jnlp">
+	<information>
+		<title>Java Learning Machine</title>
+		<homepage href="http://http://www.assembla.com/spaces/JLM"/>
+		<description>Java Learning Machine (JLM) - a learning platform dedicated to Java and other programming concepts</description>
+		<vendor>ESIAL / Nancy-Université</vendor>
+		<!-- <icon href="jlm.png"/> -->
+		<icon kind="splash" href="splash.png"/>
+		<offline-allowed/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<resources>
+		<j2se href="http://java.sun.com/products/autodl/j2se" version="1.6+" max-heap-size="128m"/>
+		<jar href="lib/jlm-webstart.jar"/>
+		<jar href="lib/jsyntaxpane-0.9.4.jar"/>
+		<jar href="lib/simple-xml-1.7.2.jar"/>
+		<jar href="lib/miglayout-3.6-swing.jar"/>
+		<jar href="lib/langtools-beta.jar"/>
+	</resources>
+	<application-desc main-class="jlm.ui.JavaLearningMachine"/>
+</jnlp>

@@ -52,15 +52,15 @@ public abstract class ExerciseTemplated extends Exercise {
         "  </style>\n"+
         "</head>\n";
 
-	static protected BufferedReader fileReader(String filename,String extension) {
-
+	static protected BufferedReader fileReader(String file,String extension) {
+		String filename = file.replace('.','/')+(extension!=null?"."+extension:"");
 		BufferedReader br = null;
 		/* try to find the file */
 		try {
-			br = new BufferedReader(new FileReader(new File(filename+(extension!=null?"."+extension:""))));
+			br = new BufferedReader(new FileReader(new File(filename)));
 		} catch (FileNotFoundException e) {
 			// external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
-			String resourceName = "/"+filename.replace('.','/')+(extension!=null?"."+extension:"");
+			String resourceName = "/"+filename;
 			resourceName = resourceName.replace('\\', '/'); /* just in case we're passed a windows path */
 
 			InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
