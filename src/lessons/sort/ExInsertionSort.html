@@ -30,8 +30,8 @@ L'écrire explicitement de la sorte serait vraiment ... contre-productif.
 <h2>ShellSort</h2>
  
 Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en 1959. Son principe peut être vu comme une 
-application de l'idée du ComboSort (faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) au tri
-par insertion (le ComboSort est une variante du tri à bulle). 
+application de l'idée du CombSort (faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) au tri
+par insertion (le CombSort est une variante du tri à bulle). 
 
 Au lieu de comparer les valeurs ajacentes lors du tri par insertion, on compare des valeurs séparées par un <i>gap</i>
 (écartement) plus grand. Plus le gap est grand et plus les éléments sont déplacés rapidement vers leur position finale,
@@ -47,7 +47,7 @@ tant que gap>0:
   appliquer l'algorithme de tri par insertion en comparant i-gap et i, puis i-2gap et i-gap, puis i-3gap et i-2gap, etc.
 </pre>
 
-<p>Comme dans le cas du ComboSort, la séquence des valeurs prises par le gap se révèle être d'une importance capitale pour
+<p>Comme dans le cas du CombSort, la séquence des valeurs prises par le gap se révèle être d'une importance capitale pour
 les performances du tri de Shell. Il existe des cas pathologiques qui font que la séquence que nous avons utilisée ici 
 présente une complexité en O(n^2) dans le pire des cas. D'autres séquences ont été proposé: la séquence des incréments
 de Hibbard (2^k − 1) permet une complexité dans le pire des cas de O(n^(3/2)), les incréments de Pratt (2^i*3^j) permettent
