@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-10 21:23+0100\n"
-"PO-Revision-Date: 2009-02-11 21:48+0100\n"
+"POT-Creation-Date: 2009-02-13 22:23+0100\n"
+"PO-Revision-Date: 2009-02-13 22:26+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -139,13 +139,15 @@ msgstr ""
 
 #: src/universe/turtles/TurtleWorld.html:13
 msgid "<b>Reculer</b> <code>public void backward(double nbPas);</code>"
-msgstr "<b>Moving backward</b> <code>public void backward(double stepAmount);</code>"
+msgstr ""
+"<b>Moving backward</b> <code>public void backward(double stepAmount);</code>"
 
 #: src/universe/turtles/TurtleWorld.html:14
 msgid ""
 "<b>Tourner à gauche</b> <code>public void turnLeft(double angle);</code> (en "
 "degrés)"
-msgstr "<b>Turn left</b> <code>public void turnLeft(double angle);</code> (in degree)"
+msgstr ""
+"<b>Turn left</b> <code>public void turnLeft(double angle);</code> (in degree)"
 
 #: src/universe/turtles/TurtleWorld.html:15
 msgid ""
@@ -166,7 +168,7 @@ msgstr "<b>Get pen position</b> <code>public boolean isPenDown();</code>"
 
 #: src/universe/turtles/TurtleWorld.html:19
 msgid "(les tortues ont des stylos, pas des brosses comme les buggles)"
-msgstr "(turtles have pens, not brushes as buggles)\"\n"
+msgstr "(turtles have pens, not brushes as buggles)"
 
 #: src/universe/turtles/TurtleWorld.html:20
 msgid "<b>Obtenir direction</b> <code>public double getHeading();</code>"
@@ -175,7 +177,8 @@ msgstr "<b>Get heading</b> <code>public double getHeading();</code>"
 #: src/universe/turtles/TurtleWorld.html:21
 msgid ""
 "<b>Changer direction</b> <code>public void setHeading(double angle);</code>"
-msgstr "<b>Change heading</b> <code>public void setHeading(double angle);</code>"
+msgstr ""
+"<b>Change heading</b> <code>public void setHeading(double angle);</code>"
 
 #: src/universe/turtles/TurtleWorld.html:22
 msgid "<b>Obtenir couleur</b> <code>public Color getColor();</code>"
@@ -189,14 +192,19 @@ msgstr "<b>Set color</b> <code>public void setColor(Color color);</code>"
 msgid ""
 "<b>Obtenir position</b> <code>public double getX();</code> <code>public "
 "double getY();</code>"
-msgstr "<b>Get position</b> <code>public double getX();</code> <code>public double getY();</code>"
+msgstr ""
+"<b>Get position</b> <code>public double getX();</code> <code>public double "
+"getY();</code>"
 
 #: src/universe/turtles/TurtleWorld.html:26
 msgid ""
 "<b>Changer position</b> <code>public void setX(double x);</code> \t "
 "<code>public void setY(double y);</code> <code>public void setPos(double x, "
 "double y);</code>"
-msgstr "<b>Set position</b> <code>public void setX(double x);</code> \t <code>public void setY(double y);</code> <code>public void setPos(double x, double y);</code>"
+msgstr ""
+"<b>Set position</b> <code>public void setX(double x);</code> \t <code>public "
+"void setY(double y);</code> <code>public void setPos(double x, double y);</"
+"code>"
 
 #: src/universe/bugglequest/BuggleWorld.html:1
 msgid "BuggleWorld"
@@ -511,6 +519,35 @@ msgstr ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
 
+#: src/lessons/sort/Main.html:1
+msgid "Algorithmes de tri"
+msgstr "Sorting Algorithms"
+
+#: src/lessons/sort/Main.html:3
+msgid ""
+"Cette leçon vous permet d'expérimenter avec les algorithmes de tri "
+"classiques (et certaines optimisations moins courantes de ceux-ci). "
+"L'objectif est double: il s'agit tout d'abord de mieux comprendre le "
+"principe de ces algorithmes en les codant vous-même.  Mais même si vous ne "
+"codez pas les algorithmes, vous pouvez utiliser le mode démo pour organiser "
+"des \\\"courses\\\" entre ces algorithmes afin d'expérimenter en pratique ce "
+"qu'implique la différence de complexité asymptotique entre deux algorithmes."
+msgstr ""
+"This lesson allows to experiment with some classical sorting algorithms (and "
+"some less common variante of them). The goal is two fold: you can first "
+"better understand the idea of these algorithms by writting them yourself. "
+"But even if you don't code the algorithms, you can use the demo mode to "
+"organize \"races\" between these algorithms to experiment in practice what "
+"the different asymptotical complexity mean."
+
+#: src/lessons/sort/Main.html:10
+msgid ""
+"Un exercice sur les tris récursifs (en particulier QuickSort et MergeSort) "
+"est prévu à l'avenir."
+msgstr ""
+"An exercise on recursive sorting algorithms (such as QuickSort and "
+"MergeSort) is planned for the future."
+
 #: src/lessons/sort/ExSelectionSort.html:1
 msgid "Tri par selection"
 msgstr "Selection Sort"
@@ -563,35 +600,6 @@ msgstr ""
 "yet. Simply remember that HeapSort provides a O(n log n) performance in "
 "worst case, which is why it is a very interesting algorithm in practice."
 
-#: src/lessons/sort/Main.html:1
-msgid "Algorithmes de tri"
-msgstr "Sorting Algorithms"
-
-#: src/lessons/sort/Main.html:3
-msgid ""
-"Cette leçon vous permet d'expérimenter avec les algorithmes de tri "
-"classiques (et certaines optimisations moins courantes de ceux-ci). "
-"L'objectif est double: il s'agit tout d'abord de mieux comprendre le "
-"principe de ces algorithmes en les codant vous-même.  Mais même si vous ne "
-"codez pas les algorithmes, vous pouvez utiliser le mode démo pour organiser "
-"des \\\"courses\\\" entre ces algorithmes afin d'expérimenter en pratique ce "
-"qu'implique la différence de complexité asymptotique entre deux algorithmes."
-msgstr ""
-"This lesson allows to experiment with some classical sorting algorithms (and "
-"some less common variante of them). The goal is two fold: you can first "
-"better understand the idea of these algorithms by writting them yourself. "
-"But even if you don't code the algorithms, you can use the demo mode to "
-"organize \"races\" between these algorithms to experiment in practice what "
-"the different asymptotical complexity mean."
-
-#: src/lessons/sort/Main.html:10
-msgid ""
-"Un exercice sur les tris récursifs (en particulier QuickSort et MergeSort) "
-"est prévu à l'avenir."
-msgstr ""
-"An exercise on recursive sorting algorithms (such as QuickSort and "
-"MergeSort) is planned for the future."
-
 #: src/lessons/sort/ExInsertionSort.html:1
 msgid "Algorithme par insertion et variantes"
 msgstr "Insertion algorithms and variations"
@@ -615,7 +623,11 @@ msgid ""
 "quadratique (complexité asymptotique en O(n2)), mais il est plus efficace en "
 "pratique (linéaire dans le meilleur des cas, ie quand le tableau déjà trié "
 "et N2/4 en moyenne)."
-msgstr "This sorting algorithm is quite simple to understand and write, even if it is not as efficient as possible. Its asymptotic complexity is in O(n2), but it is more efficient in practice (linear in best case, ie when the array is already sorted, and N2/4 on average)."
+msgstr ""
+"This sorting algorithm is quite simple to understand and write, even if it "
+"is not as efficient as possible. Its asymptotic complexity is in O(n2), but "
+"it is more efficient in practice (linear in best case, ie when the array is "
+"already sorted, and N2/4 on average)."
 
 #: src/lessons/sort/ExInsertionSort.html:8
 msgid ""
@@ -624,7 +636,12 @@ msgid ""
 "élément x du tableau, on est dans la situation suivante : tous les éléments "
 "à gauche du tableau sont déjà triés, et il faut insérer x à sa place dans le "
 "tableau."
-msgstr "The idea is to traverse all elements of the array, and to insert each of them into its proper position in the already sorted part of the array. When we look at an element x, the situation is the following: any elements to the left of the array are already sorted, and we have to insert x at its position in the array."
+msgstr ""
+"The idea is to traverse all elements of the array, and to insert each of "
+"them into its proper position in the already sorted part of the array. When "
+"we look at an element x, the situation is the following: any elements to the "
+"left of the array are already sorted, and we have to insert x at its "
+"position in the array."
 
 #: src/lessons/sort/ExInsertionSort.html:13
 msgid "Une fois ceci fait, on se retrouve dans la situation suivante:"
@@ -661,7 +678,9 @@ msgid ""
 "Bien entendu, il faut utiliser une boucle pour écrire la grosse permutation "
 "circulaire au coeur de la boucle.  L'écrire explicitement de la sorte serait "
 "vraiment ... contre-productif."
-msgstr "Naturally, you should use a loop to write the big permutation within the given loop. Writing it this way would be really ... counter-productive."
+msgstr ""
+"Naturally, you should use a loop to write the big permutation within the "
+"given loop. Writing it this way would be really ... counter-productive."
 
 #: src/lessons/sort/ExInsertionSort.html:30
 msgid "ShellSort"
@@ -670,25 +689,37 @@ msgstr "ShellSort"
 #: src/lessons/sort/ExInsertionSort.html:32
 msgid ""
 "Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en "
-"1959. Son principe peut être vu comme une application de l'idée du ComboSort "
+"1959. Son principe peut être vu comme une application de l'idée du CombSort "
 "(faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) "
-"au tri par insertion (le ComboSort est une variante du tri à bulle).  Au "
-"lieu de comparer les valeurs ajacentes lors du tri par insertion, on compare "
-"des valeurs séparées par un <i>gap</i> (écartement) plus grand. Plus le gap "
-"est grand et plus les éléments sont déplacés rapidement vers leur position "
+"au tri par insertion (le CombSort est une variante du tri à bulle).  Au lieu "
+"de comparer les valeurs ajacentes lors du tri par insertion, on compare des "
+"valeurs séparées par un <i>gap</i> (écartement) plus grand. Plus le gap est "
+"grand et plus les éléments sont déplacés rapidement vers leur position "
 "finale, mais aussi plus le déplacement est imprécis. Il faut donc appliquer "
 "l'algorithme avec une séquence de gaps décroissante vers 1. Ainsi, à la "
 "dernière étape quand le gap vaut 1, on applique l'algorithme de tri par "
 "insertion de base, mais sur un tableau déjà presque trié par les étapes "
 "précédentes."
-msgstr "This algorithm is named after its author, Donald Shell, who published it in 1959. It can be seen as an application of the ComboSort idea (let elements having a long path to travel take shortcuts) to the insertion sort (ComboSort is a variation of BubbleSort). Instead of comparing adjacent values during the insertion sort, it compares values separated by a bigger gap. The bigger the gap, the faster the elements are moved to their final destination, but also the less precise is this move. It is thus mandatory to apply the algorithm with a serie of decreasing gaps. At the last step, when the gap is 1, InsertionSort is used, but onto an array which is almost already sorted by previous steps."
+msgstr ""
+"This algorithm is named after its author, Donald Shell, who published it in "
+"1959. It can be seen as an application of the CombSort idea (let elements "
+"having a long path to travel take shortcuts) to the insertion sort (CombSort "
+"is a variation of BubbleSort). Instead of comparing adjacent values during "
+"the insertion sort, it compares values separated by a bigger gap. The bigger "
+"the gap, the faster the elements are moved to their final destination, but "
+"also the less precise is this move. It is thus mandatory to apply the "
+"algorithm with a serie of decreasing gaps. At the last step, when the gap is "
+"1, InsertionSort is used, but onto an array which is almost already sorted "
+"by previous steps."
 
 #: src/lessons/sort/ExInsertionSort.html:42
 msgid ""
 "Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur du "
 "gap, puis de le diviser par deux à chaque étape.  Le pseudo-code est donc le "
 "suivant:"
-msgstr "Donald Shell propose <code>len/2</code> as initial value of the gap, and then to divide it by 2 at each step. The pseudo-code is thus the following:"
+msgstr ""
+"Donald Shell propose <code>len/2</code> as initial value of the gap, and "
+"then to divide it by 2 at each step. The pseudo-code is thus the following:"
 
 #: src/lessons/sort/ExInsertionSort.html:45
 #, no-wrap
@@ -703,7 +734,7 @@ msgstr ""
 
 #: src/lessons/sort/ExInsertionSort.html:50
 msgid ""
-"Comme dans le cas du ComboSort, la séquence des valeurs prises par le gap se "
+"Comme dans le cas du CombSort, la séquence des valeurs prises par le gap se "
 "révèle être d'une importance capitale pour les performances du tri de Shell. "
 "Il existe des cas pathologiques qui font que la séquence que nous avons "
 "utilisée ici présente une complexité en O(n^2) dans le pire des cas. "
@@ -713,7 +744,16 @@ msgid ""
 "Ces résultats font du tri de Shell un candidat tout à fait valide pour des "
 "instances de tableau de quelques centaines de milliers d'éléments quand il "
 "est correctement implémenté."
-msgstr "Just like in ComboSort, the sequence of values taken by the gap is crucial for Shell sort performance. In some rare pathological cases, the sequence we used above can lead to a O(n^2) performance. Other sequences were proposed: the Hibbard's increments of 2k − 1 lead to a complexity of O(n^(3/2)) in worst cases. Pratt's increments 2^i3^j lead to a O(nlog(n)log(n) performance in worst cases. The existance of a sequence leading to a O(n log(n)) was precluded by Poonen, Plaxton, and Suel. Thanks to this performance, ShellSort is a valid candidate for array of several hundred thousands when correctly implemented."
+msgstr ""
+"Just like in CombSort, the sequence of values taken by the gap is crucial "
+"for Shell sort performance. In some rare pathological cases, the sequence we "
+"used above can lead to a O(n^2) performance. Other sequences were proposed: "
+"the Hibbard's increments of 2k − 1 lead to a complexity of O(n^(3/2)) in "
+"worst cases. Pratt's increments 2^i3^j lead to a O(nlog(n)log(n) performance "
+"in worst cases. The existance of a sequence leading to a O(n log(n)) was "
+"precluded by Poonen, Plaxton, and Suel. Thanks to this performance, "
+"ShellSort is a valid candidate for array of several hundred thousands when "
+"correctly implemented."
 
 #: src/lessons/sort/ExInsertionSort.html:57
 msgid ""
@@ -722,7 +762,11 @@ msgid ""
 "voulait le faire, il faudrait prendre en valeur initiale du gap la plus "
 "grande valeur de la suite utilisée, puis prendre les valeurs successives en "
 "descendant ensuite."
-msgstr "In our case, the array are ways too small to benefit of these optimizations. If you ever need to do so, take as initial gap the biggest value of the targeted serie still smaller than the array size, and then use decreasing values of the serie."
+msgstr ""
+"In our case, the array are ways too small to benefit of these optimizations. "
+"If you ever need to do so, take as initial gap the biggest value of the "
+"targeted serie still smaller than the array size, and then use decreasing "
+"values of the serie."
 
 #: src/lessons/sort/ExInsertionSort.html:61
 msgid ""
@@ -733,7 +777,14 @@ msgid ""
 "10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the "
 "Average Case of Shellsort, 13th International Symposium on Fundamentals of "
 "Computation Theory, LNCS 2001; Vol. 2138)."
-msgstr "Interesingly enough, determining the best gap sequence for shell sort turns into a contemporary research issue in computer science. For example, an article of 2001 introduces the following sequence, which seems to be optimal in practice for arrays of size up to 10^5: {1, 4, 10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th International Symposium on Fundamentals of Computation Theory, LNCS 2001; Vol. 2138)."
+msgstr ""
+"Interesingly enough, determining the best gap sequence for shell sort turns "
+"into a contemporary research issue in computer science. For example, an "
+"article of 2001 introduces the following sequence, which seems to be optimal "
+"in practice for arrays of size up to 10^5: {1, 4, 10, 23, 57, 132, 301, 701, "
+"1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th "
+"International Symposium on Fundamentals of Computation Theory, LNCS 2001; "
+"Vol. 2138)."
 
 #: src/lessons/sort/ExInsertionSort.html:67
 msgid ""
@@ -741,7 +792,10 @@ msgid ""
 "informatique à notre époque, voici un élément de réponse: certains d'entre "
 "eux améliorent des algorithmes fondamentaux pour permettre à d'autres de "
 "faire des programmes efficaces..."
-msgstr "If you've always wondered what computer science researchers do nowadays, here is part of the answer: They improve fundamental algorithms so that others can write efficient programs."
+msgstr ""
+"If you've always wondered what computer science researchers do nowadays, "
+"here is part of the answer: They improve fundamental algorithms so that "
+"others can write efficient programs."
 
 #: src/lessons/sort/ExInsertionSort.html:70
 msgid "D'autres variantes du tri par insertion"
@@ -754,7 +808,11 @@ msgid ""
 "cas). Nous n'étudierons pas cet algorithme ici puisque comprendre son "
 "fonctionnement demande de savoir ce qu'est un arbre binaire, ce qui est au "
 "dela de nos objectifs présents."
-msgstr "TreeSort builds a binary search tree to sort them. It leads to a O(n log(n)) on average, but O(n^2) in worst cases. We won't study this algorithm here since unterstanding its behavior requires to know what a binary tree is, what is beyond our present goals."
+msgstr ""
+"TreeSort builds a binary search tree to sort them. It leads to a O(n log(n)) "
+"on average, but O(n^2) in worst cases. We won't study this algorithm here "
+"since unterstanding its behavior requires to know what a binary tree is, "
+"what is beyond our present goals."
 
 #: src/lessons/sort/ExInsertionSort.html:76
 msgid ""
@@ -765,12 +823,20 @@ msgid ""
 "du temps puisqu'il présente une complexité moyenne en O(n log n), mais "
 "nécessite de stoquer des données supplémentaires."
 msgstr ""
+"There is other variations over the insertion sort, such as PatienceSort "
+"which builds piles of values and sort each pile afterward. This algorithm "
+"presents a 0(n log(n)) timing worst case and a 0(n) space complexity. "
+"LibrarySort (proposed in 2004) also trades a bit space in exchange for time "
+"since it provide a time complexity of O(n log(n)) but needs to store some "
+"more data."
 
 #: src/lessons/sort/ExInsertionSort.html:81
 msgid ""
 "Wikipedia (en anglais) propose une description détaillée de tous ces "
 "algorithmes que nous n'avons pas le temps de détailler ici."
-msgstr "Wikipedia provides a detailled description of all these algorithms we cannot present here because of time constraints."
+msgstr ""
+"Wikipedia provides a detailled description of all these algorithms we cannot "
+"present here because of time constraints."
 
 #: src/lessons/sort/ExExchangeSort.html:1
 msgid "Le tri à bulle et variantes"
@@ -783,6 +849,9 @@ msgid ""
 ">About this world\") pour une aide sur les primitives utilisables par vos "
 "algorithmes."
 msgstr ""
+"Welcome to the sorting world. It allows you to experiment with the existing "
+"sorting algorithms. Please consult the world help (\"Help\"->\"About this "
+"world\") for more information on the available buildins for your algorithms."
 
 #: src/lessons/sort/ExExchangeSort.html:6
 msgid ""
@@ -793,10 +862,15 @@ msgid ""
 "que la solution codée dans l'objectif.  Attention donc à suivre le pseudo-"
 "code de chaque algorithme à la lettre!"
 msgstr ""
+"In this first exercise, we will explore some of the simpler of them. The tab "
+"\"Source code\" contains several sub-tabs, corresponding to the different "
+"algorithms to write. To succeed in this exercise, your solution must sort "
+"the array using exactly the same amount of read and write than the solution. "
+"That is why you have to follow strictly the pseudo-code of each algorithm."
 
 #: src/lessons/sort/ExExchangeSort.html:11
 msgid "BubbleSort"
-msgstr ""
+msgstr "BubbleSort"
 
 #: src/lessons/sort/ExExchangeSort.html:13
 msgid ""
@@ -811,6 +885,15 @@ msgid ""
 "étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est "
 "quasiment jamais utilisé en pratique."
 msgstr ""
+"Bubble sort consists in progressively moving up the smaller elements of the "
+"array, as if they were air bubbles moving up to the surface of a liquid. The "
+"algorithm traverse the array, and compare any pair of adjacent elements. If "
+"two adjacent elements are wrongly sorted, they are swapped. Once the array "
+"was completely traversed, the operation starts again from the begining. When "
+"no elements were sorted after a full traversal, it means that the array is "
+"completely sorted: the algorithm can stop. Bubble sort is studied because of "
+"its simplicity, but it is almost never used in practice because of its bad "
+"performance (O(n^2) on average)."
 
 #: src/lessons/sort/ExExchangeSort.html:23
 #, no-wrap
@@ -820,10 +903,14 @@ msgid ""
 "          Si les cases i et i+1 doivent être inverser, le faire\n"
 "     tant qu'on a inverser des choses lors du dernier parcours\n"
 msgstr ""
+"do: \n"
+"        For each i in [0,len-2]\n"
+"          If cells i and i+1 must be swapped, do it\n"
+"while we swapped something during last traversal\n"
 
 #: src/lessons/sort/ExExchangeSort.html:29
 msgid "BubbleSort2"
-msgstr ""
+msgstr "BubbleSort2"
 
 #: src/lessons/sort/ExExchangeSort.html:31
 msgid ""
@@ -836,6 +923,14 @@ msgid ""
 "Dans un premier temps, nous ferons autant de parcours qu'il y a d'éléments "
 "dans le tableau. Cela nous donne le pseudo-code suivant :"
 msgstr ""
+"If you look carefully at the behavior of BubbleSort, a first easy "
+"optimisation appears: after one traversal, the last element of the array "
+"must be the biggest of all since the traversal moved it up like a bubble to "
+"its position. More generally, after N traversal, we know that the N last "
+"elements of the array are already sorted. It is thus not necessary to "
+"compare them again during the subsequent traversals. For now, we will have "
+"as many traversal as there is in the array. This gives the following pseudo-"
+"code:"
 
 #: src/lessons/sort/ExExchangeSort.html:37
 #, no-wrap
@@ -844,6 +939,9 @@ msgid ""
 "       Pour tout j dans [0, i]\n"
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
 msgstr ""
+"For all i in [len-1,0] (traversing from biggest to smallest)\n"
+"       For all j in [0, i]\n"
+"          If cells j and j+1 must be swapped, do it\n"
 
 #: src/lessons/sort/ExExchangeSort.html:42
 msgid ""
@@ -857,16 +955,27 @@ msgid ""
 "statistiques sur le nombre de lectures montrent bien que l'on a économisé "
 "plus d'un quart du nombre de lectures, ce qui n'est pas si mal."
 msgstr ""
+"When we run this algorithm, it is quite disapointing to see that it runs "
+"approximately at the same speed than the basic version of BubbleSort. This "
+"is a graphical effect only since only value changes are graphically "
+"represented. Since this variation avoids some useless comparisons, it does "
+"exactly the same amount of swaps that the basic version. It is thus quite "
+"logical that the graphical interface draws this version at the same pace "
+"than the base version. But the stats on the amount of reads show that we "
+"saved about the fourth of the amount of reads, which is not bad."
 
 #: src/lessons/sort/ExExchangeSort.html:49
 msgid ""
 "D'un point de vue complexité algorithmique, cela ne change rien: cette "
 "variante est toujours en O(n2) en moyenne (on ne gagne que sur la constante)."
 msgstr ""
+"From the asymptotic complexity point of view, there is absolutely no "
+"difference: this variation is still in O(n^2) on average (our gain is only "
+"on the constant term, ignored when computing the asymptotic complexity)."
 
 #: src/lessons/sort/ExExchangeSort.html:52
 msgid "BubbleSort3"
-msgstr ""
+msgstr "BubbleSort3"
 
 #: src/lessons/sort/ExExchangeSort.html:54
 msgid ""
@@ -874,6 +983,9 @@ msgid ""
 "l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau "
 "est maintenant trié. Cela nous donne le pseudo-code suivant :"
 msgstr ""
+"Let's now reintroduce the little optimization we removed at previous step: "
+"if a traversal does not swap any element, it means that the array is already "
+"sorted. This leads to the following pseudo-code:"
 
 #: src/lessons/sort/ExExchangeSort.html:57
 #, no-wrap
@@ -883,16 +995,22 @@ msgid ""
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
 "       Si le parcours sur les j n'a rien inversé, quiter la fonction\n"
 msgstr ""
+"For all i in [len-1,0] (traversing from biggest to smallest)\n"
+"       For all j in [0, i]\n"
+"          If cells j and j+1 must be swapped, do it\n"
+"       If traversal on j did not swap anything, return from the function\n"
 
 #: src/lessons/sort/ExExchangeSort.html:63
 msgid ""
 "Cet optimisation est plus décevante : on ne gagne que quelques pourcents en "
 "nombre de lectures sur BubbleSort2."
 msgstr ""
+"This optimization is even more disapointing: it only provide a gain of a few "
+"percents on the amount of reads over BubbleSort2."
 
 #: src/lessons/sort/ExExchangeSort.html:65
 msgid "CocktailSort"
-msgstr ""
+msgstr "CocktailSort"
 
 #: src/lessons/sort/ExExchangeSort.html:67
 msgid ""
@@ -903,6 +1021,11 @@ msgid ""
 "tortues pour désigner respectivement les grandes valeurs et les petites "
 "valeurs."
 msgstr ""
+"To improve further the algorithm, we need to look closer its behavior. One "
+"can notice that big elements are moved very quickly in position while small "
+"ones move very slowly to their destination. They are thus traditionally "
+"refered to as \"rabits\" and \"turtles\" respectively for big fast values "
+"and small slow ones.."
 
 #: src/lessons/sort/ExExchangeSort.html:72
 msgid ""
@@ -910,6 +1033,8 @@ msgid ""
 "alternativement le tableau de gauche à droite et de droite à gauche. Voici "
 "son pseudo-code:"
 msgstr ""
+"To help the turtles moving faster, the cocktail sort traverse alternatively "
+"the array from right to left and from left to right. Here is the pseudo-code:"
 
 #: src/lessons/sort/ExExchangeSort.html:76
 #, no-wrap
@@ -921,6 +1046,12 @@ msgid ""
 "    si i et i+1 doivent être échangées, le faire\n"
 "tant qu'au moins l'un des parcours a inversé un élément\n"
 msgstr ""
+"Do\n"
+"  For all i in [0,len-2], do:\n"
+"    if i and i+1 must be swapped, do it\n"
+"  For all i in [len-2,0] (downward), do:\n"
+"    if i and i+1 must be swapped, do it\n"
+"while at least one of the traversal swapped an element\n"
 
 #: src/lessons/sort/ExExchangeSort.html:84
 msgid ""
@@ -928,10 +1059,13 @@ msgid ""
 "d'échanges que le tri à bulle, mais qu'il améliore les choses sur le nombre "
 "de lectures. Il reste cependant moins bon que BubbleSort2 en la matière."
 msgstr ""
+"One can see that cocktail sort achieves exactly the same amount of swaps "
+"than the bubble sort, but improves sligtly on read amount. It is however "
+"still worse than BubbleSort2 to that extend."
 
 #: src/lessons/sort/ExExchangeSort.html:87
 msgid "CocktailSort2"
-msgstr ""
+msgstr "CocktailSort2"
 
 #: src/lessons/sort/ExExchangeSort.html:89
 msgid ""
@@ -939,6 +1073,10 @@ msgid ""
 "Il nous faut nous souvenir des bornes du tableau pas encore trié, et le "
 "parcourir alternativement de droite à gauche et de gauche à droite:"
 msgstr ""
+"We will now apply to CocktailSort the same optimization than BubbleSort2 did "
+"to BubbleSort. We must remember the limits of the array part not being "
+"sorted yet, and traverse it alternatively from left to right and from right "
+"to left:"
 
 #: src/lessons/sort/ExExchangeSort.html:92
 #, no-wrap
@@ -953,10 +1091,19 @@ msgid ""
 "  debut++\n"
 "tant qu'au moins l'un des parcours a inversé un élément\n"
 msgstr ""
+"beg=0; end=len-2\n"
+"do\n"
+"  For all Pour i in [beg,end], do:\n"
+"      If cells i and i+1 must be swapped, do it    \n"
+"  end--\n"
+"  For all Pour i in [beg,end] (downwards), do:\n"
+"      If cells i and i+1 must be swapped, do it    \n"
+"  beg++\n"
+"while at least one of the traversal swapped an element\n"
 
 #: src/lessons/sort/ExExchangeSort.html:103
 msgid "CocktailSort3"
-msgstr ""
+msgstr "CocktailSort3"
 
 #: src/lessons/sort/ExExchangeSort.html:104
 msgid ""
@@ -967,10 +1114,16 @@ msgid ""
 "descroissant. De même, on peut quiter si le parcours croissant a inversé des "
 "choses, mais pas le parcours décroissant."
 msgstr ""
+"Even if the asymptotic complexity of CocktailSort2 is the same than the one "
+"of BubbleSort, it seem to perform better in practice. It is even possible to "
+"improve a bit further by stopping it if the first traversal didn't found "
+"anything to swap, without achieving the downwards traversal. Likewise, we "
+"can stop if the upward traversal found something to swap, but not the "
+"downwards one."
 
 #: src/lessons/sort/ExExchangeSort.html:109
 msgid "CombSort"
-msgstr ""
+msgstr "CombSort"
 
 #: src/lessons/sort/ExExchangeSort.html:111
 msgid ""
@@ -986,6 +1139,16 @@ msgid ""
 "wikipédia en anglais sur le thème), mais en pratique, le diviser par 1.3 à "
 "chaque fois amène de bons résultats. Voici le pseudo-code correspondant :"
 msgstr ""
+"We saw that CocktailSort improve a bit for turtles (ie, small values near to "
+"the end of the array), but it is still possible to achieve better. ComboSort "
+"comes down to providing them a short cut: instead of comparing adjacent "
+"values, we compare values separated by a gap bigger than 1. That way, "
+"turtles we traverse <i>gap</i> cells at each traversal. Naturally, we have "
+"to apply the algorithm with decreasing gaps, and finish with <i>gap=1</i> to "
+"ensure that the array is correctly sorted afterward. Choosing the right gap "
+"and how to decrease it is a difficult question, but in practice, dividing it "
+"by 1.3 after each traversal leads to good performance. Here is the "
+"corresponding pseudo-code:"
 
 #: src/lessons/sort/ExExchangeSort.html:120
 #, no-wrap
@@ -1000,6 +1163,15 @@ msgid ""
 "     ajouter ecart à i\n"
 " tant que l'écart est plus grand que 1 et/ou que le dernier parcours a inversé au moins un élément\n"
 msgstr ""
+"gap = len;\n"
+"do\n"
+"   if gap>1 then\n"
+"     gap = gap / 1.3\n"
+"   i = O\n"
+"   while i+gap &lt; len do:\n"
+"     if i and i+gap must be swapped, do it\n"
+"     increase i by the gap\n"
+"while the gap is bigger than 1 and/or the last traversal swapped at least one pair\n"
 
 #: src/lessons/sort/ExExchangeSort.html:131
 msgid ""
@@ -1007,10 +1179,13 @@ msgid ""
 "et popularisé par Stephen Lacey et Richard Box, qui l'ont décrit dans le "
 "magazine Byte d'avril 1991."
 msgstr ""
+"This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
+"rediscovered and popularised by Stephen Lacey and Richard Box, who described "
+"it in Byte Magazine in April 1991"
 
 #: src/lessons/sort/ExExchangeSort.html:134
 msgid "CombSort11"
-msgstr ""
+msgstr "CombSort11"
 
 #: src/lessons/sort/ExExchangeSort.html:136
 msgid ""
@@ -1020,10 +1195,15 @@ msgid ""
 "code de CombSort, et indiquez juste après la mise à jour de l'écart que si "
 "la valeur est 9 ou 10, il faut utiliser 11 à la place."
 msgstr ""
+"The authors of this algorithm constated that the performance is increased if "
+"we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, 1) "
+"rather than (9, 6, 4, 3, 2, 1) or (10, 7, 5, 3, 2, 1). Rework the code of "
+"CombSort to ensure just after the gap update that if it is 9 or 10, we "
+"should use 11 instead."
 
 #: src/lessons/sort/ExExchangeSort.html:140
 msgid "GnomeSort"
-msgstr ""
+msgstr "GnomeSort"
 
 #: src/lessons/sort/ExExchangeSort.html:142
 msgid ""
@@ -1033,6 +1213,10 @@ msgid ""
 "une série de pots de fleurs. Voici la description de l'algorithme par son "
 "auteur:"
 msgstr ""
+"The Gnome sort is similar to insertion sort, but the elements are moved in "
+"position by a serie of swaps just like in bubble sort. It is named after the "
+"supposed behavior of garden gnomes when they sort flower pots. Here is a "
+"description of the algorithm by its author:"
 
 #: src/lessons/sort/ExExchangeSort.html:146
 msgid ""
@@ -1044,6 +1228,31 @@ msgid ""
 "previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
 msgstr ""
+"Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
+"(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
+"Basically, he looks at the flower pot next to him and the previous one; if "
+"they are in the right order he steps one pot forward, otherwise he swaps "
+"them and steps one pot backwards. Boundary conditions: if there is no "
+"previous pot, he steps forwards; if there is no pot next to him, he is "
+"done.  <i>—Dick Grune</i>"
+
+#: src/lessons/recursion/Main.html:1
+msgid "Algorithmes récursifs"
+msgstr "Recursive algorithms"
+
+#: src/lessons/recursion/Main.html:2
+msgid "Cette leçon vous permet d'expérimenter avec des algorithmes récursifs."
+msgstr "This lesson allows to experiment with recursive algorithms."
+
+#: src/lessons/recursion/Main.html:4
+msgid ""
+"Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
+"récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir dans "
+"la leçon sur les tris."
+msgstr ""
+"If you need more recursive algorithms, an exercise on recursive sorting "
+"algorithms (in particular QuickSort and MergeSort) is planned in the future "
+"within the sorting lesson."
 
 #: src/lessons/recursion/Square.html:1
 msgid "Les petites cousines des Buggles"
@@ -1057,7 +1266,12 @@ msgid ""
 "MIT nommé Seymour Papert pour aider à l'enseignement la programmation, et "
 "les buggles sont une variation sur le thème inventée par Lyn Turbak du "
 "Wellesley College plus tard."
-msgstr "Today, we will meet the small cousines of the buggles: the turtles. In fact, turtles are much olders than the buggles. They were invented in the 70's by a scientific from MIT called Seymour Papert to help teaching programming, and the buggles are a variation on the idea invented by Lyn Turbak from Wellesley College later."
+msgstr ""
+"Today, we will meet the small cousines of the buggles: the turtles. In fact, "
+"turtles are much olders than the buggles. They were invented in the 70's by "
+"a scientific from MIT called Seymour Papert to help teaching programming, "
+"and the buggles are a variation on the idea invented by Lyn Turbak from "
+"Wellesley College later."
 
 #: src/lessons/recursion/Square.html:10
 msgid ""
@@ -1065,7 +1279,11 @@ msgid ""
 "buggles, vous pouvez leur demander d'avancer, de tourner, de reculer, etc. "
 "Comme les buggles, elles laissent une trace sur leur passage quand elles "
 "avancent (simplement, le trait est bien plus fin)."
-msgstr "Turtles are thus a bit like buggles, but smaller. Just like buggles, you can order them to move forward, to turn, to move backward, etc. Just like buggles, they leave a line on their path when they move (but the line is much smaller)."
+msgstr ""
+"Turtles are thus a bit like buggles, but smaller. Just like buggles, you can "
+"order them to move forward, to turn, to move backward, etc. Just like "
+"buggles, they leave a line on their path when they move (but the line is "
+"much smaller)."
 
 #: src/lessons/recursion/Square.html:15
 msgid ""
@@ -1076,7 +1294,13 @@ msgid ""
 "tortues, comme lire et écrire des messages sur le sol ou ramasser des "
 "objets, et il y a parfois des murs dans leur univers, mais tout cela dépasse "
 "complètement les tortues."
-msgstr "The main difference is that where buggles can only move of right angles, turtles can move of any arbitrary angles specified by a real number (a double). This gives them much more liberty in their movings. The buggles can do several other tricks, like reading and writting messages, picking or dropping objects, and there is sometimes walls in their worlds (but all this is completely above the capacities of turtles)."
+msgstr ""
+"The main difference is that where buggles can only move of right angles, "
+"turtles can move of any arbitrary angles specified by a real number (a "
+"double). This gives them much more liberty in their movings. The buggles can "
+"do several other tricks, like reading and writting messages, picking or "
+"dropping objects, and there is sometimes walls in their worlds (but all this "
+"is completely above the capacities of turtles)."
 
 #: src/lessons/recursion/Square.html:22
 msgid ""
@@ -1085,7 +1309,11 @@ msgid ""
 "variantes près. En particulier, la méthode <code>forward</code> prend en "
 "argument le nombre de pas donné comme un nombre double (voir \"About this "
 "world\" dans le menu pour plus de détails)."
-msgstr "From a practical point of view, most of the methods you knew about buggles still work with turtles, with some minor adaptations. In particular, the <code>forward()</code> method takes the amount of steps to do as a double (see \"About this world\" for more details)."
+msgstr ""
+"From a practical point of view, most of the methods you knew about buggles "
+"still work with turtles, with some minor adaptations. In particular, the "
+"<code>forward()</code> method takes the amount of steps to do as a double "
+"(see \"About this world\" for more details)."
 
 #: src/lessons/recursion/Square.html:28
 msgid "Des doubles ? Mais qu'est ce que c'est ?"
@@ -1134,7 +1362,10 @@ msgid ""
 "Bien que ce soit le premier exercice de la leçon sur la récursivité, le code "
 "que vous devez écrire n'est pas récursif. L'objectif est de se familiariser "
 "avec le monde des tortues avant d'attaquer les choses sérieuses."
-msgstr "Even if this is the first exercise on the recursivity lesson, the code you have to write is not recursive. The goal is to get familiar with the turtle world before getting on serious matter."
+msgstr ""
+"Even if this is the first exercise on the recursivity lesson, the code you "
+"have to write is not recursive. The goal is to get familiar with the turtle "
+"world before getting on serious matter."
 
 #: src/lessons/recursion/Square.html:50
 msgid ""
@@ -1144,7 +1375,12 @@ msgid ""
 "réutiliser lors de l'écriture de la méthode <code>run()</code> qui fait le "
 "travail. Il est indispensable d'écrire au moins la méthode run, dont le "
 "prototype est le suivant:"
-msgstr "You must reproduce a simple geometrical painting constituted of four 100 steps long squares (see the objective world for more details). It is obviously a good idea to write a method to draw a square, and then use it in your <code>run()</code> in charge of doing the work. You must absolutely write at least the run method, which prototype is the following:"
+msgstr ""
+"You must reproduce a simple geometrical painting constituted of four 100 "
+"steps long squares (see the objective world for more details). It is "
+"obviously a good idea to write a method to draw a square, and then use it in "
+"your <code>run()</code> in charge of doing the work. You must absolutely "
+"write at least the run method, which prototype is the following:"
 
 #: src/lessons/recursion/Square.html:57
 #, no-wrap
@@ -1166,7 +1402,9 @@ msgid ""
 "La fractale que nous allons dessiner maintenant est formée d'un polygone "
 "auquel sont ajoutés des petits polygones sur chaque angle. Le prototype de "
 "la fonction le traçant est le suivant:"
-msgstr "The fractal we will now draw is formed of a polygon, with little polygons on each corner. The prototype of the method drawing it is the following:"
+msgstr ""
+"The fractal we will now draw is formed of a polygon, with little polygons on "
+"each corner. The prototype of the method drawing it is the following:"
 
 #: src/lessons/recursion/PolygonFractal.html:5
 #, no-wrap
@@ -1180,7 +1418,9 @@ msgstr "void polygonFractal (int levels, int sides, double length, double shrink
 msgid ""
 "Consultez les objectifs de chaque monde pour comprendre comment écrire la "
 "fonction."
-msgstr "Have a look at each world's objective view to understand how to write the function."
+msgstr ""
+"Have a look at each world's objective view to understand how to write the "
+"function."
 
 #: src/lessons/recursion/Koch.html:1
 msgid "Flocons de neige"
@@ -1191,14 +1431,18 @@ msgid ""
 "Nous allons maintenant dessiner des flocons de neige en utilisant la "
 "fractale de Koch.  Une fractale est un dessin géométrique dont le motif se "
 "reproduit à n'importe quelle échelle."
-msgstr "We will now draw snow flakes using the Koch fractal. A fractal is a geometrical pattern repeated at every scale."
+msgstr ""
+"We will now draw snow flakes using the Koch fractal. A fractal is a "
+"geometrical pattern repeated at every scale."
 
 #: src/lessons/recursion/Koch.html:6
 msgid ""
 "La forme générale est un triangle dont chaque coté est donné par une série "
 "d'appels récursifs.  La forme générale est obtenue en enchainant trois cotés "
 "de la façon suivante."
-msgstr "The general form is a triangle, with each side given by a serie of recursive calls. The general form is given by something like this:"
+msgstr ""
+"The general form is a triangle, with each side given by a serie of recursive "
+"calls. The general form is given by something like this:"
 
 #: src/lessons/recursion/Koch.html:8
 #, no-wrap
@@ -1226,7 +1470,10 @@ msgid ""
 "Observez le dessin dans chaque monde objectif pour comprendre la logique de "
 "ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui "
 "est récursive."
-msgstr "Observe the drawing in each world's objective to understand the pattern's logic, and then reproduce it. You must write the <code>snowSide()</code> method, which is recursive."
+msgstr ""
+"Observe the drawing in each world's objective to understand the pattern's "
+"logic, and then reproduce it. You must write the <code>snowSide()</code> "
+"method, which is recursive."
 
 #: src/lessons/recursion/Star.html:1
 msgid "Tortues dans les étoiles"
@@ -1238,7 +1485,11 @@ msgid ""
 "faire dessiner trois étoiles à 5 branches à la tortue. Comme toutes les "
 "étoiles régulières à N branches, les angles des pointes sont de 360/N degrés "
 "tandis que les angles entre les pointes sont de 2*360/N degrés."
-msgstr "This is the last hand-on turtles exercise before recursion. The goal is to draw three 5-branches stars. Like any regular stars with N branches, the angle at each external corners are 360/N degrees while the angles between branches are of 2*360/N degrees."
+msgstr ""
+"This is the last hand-on turtles exercise before recursion. The goal is to "
+"draw three 5-branches stars. Like any regular stars with N branches, the "
+"angle at each external corners are 360/N degrees while the angles between "
+"branches are of 2*360/N degrees."
 
 #: src/lessons/recursion/Star.html:8
 msgid ""
@@ -1248,7 +1499,12 @@ msgid ""
 "degrés vers le bas par rapport à la première.  La dernière étoile est rouge "
 "(<code>Color.red</code>), ses branches font 60 pas, et elle est décallée de "
 "45 degrés par rapport à la seconde."
-msgstr "The first star to draw is black (<code>Color.black</code>) and its branches are 100 steps long. The second is blue (<code>Color.blue</code>) and its branches are 80 steps long. It's shifted of 45 degrees from the first one. The last star is red (<code>Color.red</code>), its branches are 60 steps long and it's shifted of 45 degrees from the previous one."
+msgstr ""
+"The first star to draw is black (<code>Color.black</code>) and its branches "
+"are 100 steps long. The second is blue (<code>Color.blue</code>) and its "
+"branches are 80 steps long. It's shifted of 45 degrees from the first one. "
+"The last star is red (<code>Color.red</code>), its branches are 60 steps "
+"long and it's shifted of 45 degrees from the previous one."
 
 #: src/lessons/recursion/Star.html:15
 msgid "Consultez l'objectif du monde pour visualiser la figure à réaliser."
@@ -1266,7 +1522,12 @@ msgid ""
 "de leur faire dessiner des cercles... On peut pourtant résoudre ce problème "
 "simplement en réalisant qu'un cercle peut être représenté comme une "
 "concaténation de petits segments."
-msgstr "As we saw (and as you can check in the documentation of this world under \"About this world\"), turtles can only draw straight lines. Despite of this, the goal of this world is to draw circles... This can be achived simply by realizing that a circle can be seen as a concatenation of very little segments."
+msgstr ""
+"As we saw (and as you can check in the documentation of this world under "
+"\"About this world\"), turtles can only draw straight lines. Despite of "
+"this, the goal of this world is to draw circles... This can be achived "
+"simply by realizing that a circle can be seen as a concatenation of very "
+"little segments."
 
 #: src/lessons/recursion/Circle.html:10
 msgid ""
@@ -1274,7 +1535,11 @@ msgid ""
 "est la limite asymptotique d'une telle construction quand la taille des "
 "segments tend vers zéro alors que leur nombre tend vers l'infini (mais on "
 "peut tout de même réussir l'exercice sans maîtriser le calcul différentiel)."
-msgstr "Differential calculus would even argue that a circle is the asymptotical limit of such construct when the size of each segment becomes infinitely small while their amount becomes infinitely large (but it is still possible to solve this exercise without understanding differential calculus)."
+msgstr ""
+"Differential calculus would even argue that a circle is the asymptotical "
+"limit of such construct when the size of each segment becomes infinitely "
+"small while their amount becomes infinitely large (but it is still possible "
+"to solve this exercise without understanding differential calculus)."
 
 #: src/lessons/recursion/Circle.html:18
 msgid ""
@@ -1284,7 +1549,12 @@ msgid ""
 "avec des pas de 0.5, le second avec des pas de 1 et le troisième avec des "
 "pas de 1.5. Encore une fois, il s'agit d'un exercice de prise en main, et "
 "aucune récursion n'est nécessaire."
-msgstr "Write a function drawing a circle, taking the size of each of the 360 segments as parameter. Then use it in your <code>run()</code> method to draw the whole picture. The first circle is obtained with segments of size 0.5, the second with segments of size 1 and the last one with 1.5-long segments. Once again, this is a hand-on exercise, no recursion is needed."
+msgstr ""
+"Write a function drawing a circle, taking the size of each of the 360 "
+"segments as parameter. Then use it in your <code>run()</code> method to draw "
+"the whole picture. The first circle is obtained with segments of size 0.5, "
+"the second with segments of size 1 and the last one with 1.5-long segments. "
+"Once again, this is a hand-on exercise, no recursion is needed."
 
 #: src/lessons/recursion/Tree.html:1
 msgid "Arbres"
@@ -1294,7 +1564,9 @@ msgstr "Trees"
 msgid ""
 "Nous allons maintenant dessiner des arbres. Pour cela, nous allons écrire "
 "une fonction doublement récursive de prototype"
-msgstr "We will now draw trees. For that, we will write a method using double recursion following this prototype"
+msgstr ""
+"We will now draw trees. For that, we will write a method using double "
+"recursion following this prototype"
 
 #: src/lessons/recursion/Tree.html:4
 #, no-wrap
@@ -1307,13 +1579,19 @@ msgid ""
 "taille indiquée, tourner à droite de l'angle indiqué, faire un arbre à 3 "
 "étages, tourner à gauche de deux fois l'angle indiqué, faire un autre arbre "
 "à 3 étages, puis revenir à sa position initiale."
-msgstr "To draw a tree of four levels, you have to draw a trunk of the given length, turn right of the given angle, draw a tree of level 3, turn left twice of the given angle, draw another tree of level 3, and come back to your initial location."
+msgstr ""
+"To draw a tree of four levels, you have to draw a trunk of the given length, "
+"turn right of the given angle, draw a tree of level 3, turn left twice of "
+"the given angle, draw another tree of level 3, and come back to your initial "
+"location."
 
 #: src/lessons/recursion/Tree.html:10
 msgid ""
 "Si le tronc d'un arbre mesure length à l'étage N, il mesure shrink*length à "
 "l'étage N+1."
-msgstr "If a tree's trunk is of length 'len', the trunk of the next level tree will be of length 'len*shrink'."
+msgstr ""
+"If a tree's trunk is of length 'len', the trunk of the next level tree will "
+"be of length 'len*shrink'."
 
 #: src/lessons/recursion/Sierpinski.html:1
 msgid "Triangle de Sierpinski"
@@ -1324,7 +1602,10 @@ msgid ""
 "La fractale que nous allons dessiner maintenant est formée d'un triangle "
 "dans lequel sont imbriqués des triangles plus petits.  Le prototype de la "
 "fonction le traçant est le suivant :"
-msgstr "The fractal we will now draw is formed of a big triangle inside which several smaller triangles are embeeded. The prototype of the fuction to draw it is the following:"
+msgstr ""
+"The fractal we will now draw is formed of a big triangle inside which "
+"several smaller triangles are embeeded. The prototype of the fuction to draw "
+"it is the following:"
 
 #: src/lessons/recursion/Sierpinski.html:5
 #, no-wrap
@@ -1340,7 +1621,10 @@ msgid ""
 "Nous allons maintenant écrire notre première fonction récursive avec les "
 "tortues. L'objectif est de dessiner des spirales de différentes formes avec "
 "la même fonction, dont le prototype est le suivant:"
-msgstr "We will now draw our first recursive function with the turtle. The goal is to draw different kind of spirals with the same function, which prototype is the following: "
+msgstr ""
+"We will now draw our first recursive function with the turtle. The goal is "
+"to draw different kind of spirals with the same function, which prototype is "
+"the following: "
 
 #: src/lessons/recursion/Spiral.html:6
 #, no-wrap
@@ -1351,7 +1635,9 @@ msgstr "void spiral(int steps, int angle, int length, int increment)"
 msgid ""
 "Pour vous aider à comprendre comment l'écrire, voici un exemple de la suite "
 "des différentes valeurs prises par les paramètres dans un cas:"
-msgstr "To help you understanding how to write it, here is an example of how the parameters change during one specific call:"
+msgstr ""
+"To help you understanding how to write it, here is an example of how the "
+"parameters change during one specific call:"
 
 #: src/lessons/recursion/Spiral.html:11
 #, no-wrap
@@ -1406,7 +1692,8 @@ msgstr "The definition of this curve is the following:"
 msgid ""
 "la courbe du Dragon d'ordre 1 est un vecteur entre deux points quelconques P "
 "et Q,"
-msgstr "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
+msgstr ""
+"the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 
 #: src/lessons/recursion/DragonCurve1.html:7
 msgid ""
@@ -1415,7 +1702,12 @@ msgid ""
 "le triangle isocèle rectangle en R, et R est à droite du vecteur PQ.  Donc, "
 "si P et Q sont les points de coordonnées (x, y) et (z,t), les coordonnées "
 "(u, v) de R sont"
-msgstr "the dragon curve of order n is the dragon curve of order n-1 between P and R, followed by the same curve of order n-1 between R and Q (reverse side), where PRQ is an isoscele triangle with angle R being a right angle, and R being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y) and (z, t), the coordinate (u, v) of R are given by:"
+msgstr ""
+"the dragon curve of order n is the dragon curve of order n-1 between P and "
+"R, followed by the same curve of order n-1 between R and Q (reverse side), "
+"where PRQ is an isoscele triangle with angle R being a right angle, and R "
+"being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y) "
+"and (z, t), the coordinate (u, v) of R are given by:"
 
 #: src/lessons/recursion/DragonCurve1.html:13
 #: src/lessons/recursion/DragonCurve2.html:18
@@ -1444,7 +1736,10 @@ msgid ""
 "tortue aux coordonnées (x,y) et la méthode <code>moveTo(z,t)</code> pour "
 "tracer un trait depuis le point où la tortue est positionnée vers le point "
 "de coordonnées (z,t)"
-msgstr "You should use the method <code>setPos(x,y)</code> to put your turtle at coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line between the turtle position and the point (z,t)."
+msgstr ""
+"You should use the method <code>setPos(x,y)</code> to put your turtle at "
+"coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
+"between the turtle position and the point (z,t)."
 
 #: src/lessons/recursion/DragonCurve2.html:1
 msgid "Courbe du Dragon (2)"
@@ -1458,14 +1753,22 @@ msgid ""
 "correspond pas à la source du trait qui doit être tracé par le second appel "
 "récursif.  C'est pourquoi il était nécessaire d'utiliser la méthode "
 "<code>setPos()</code>"
-msgstr "Previous solution induce that the turtle teleports to other location, or at the very least, that it moves its pen up during the drawing. Indeed, the end of the drawing of the first recursive call does not match the begining of the second recursive call. That is why we had to use the method <code>setPos()</code>"
+msgstr ""
+"Previous solution induce that the turtle teleports to other location, or at "
+"the very least, that it moves its pen up during the drawing. Indeed, the end "
+"of the drawing of the first recursive call does not match the begining of "
+"the second recursive call. That is why we had to use the method <code>setPos"
+"()</code>"
 
 #: src/lessons/recursion/DragonCurve2.html:7
 msgid ""
 "Dans cette leçon, vous allez donc réaliser une méthode récursive qui permet "
 "de tracer la courbe du dragon sans lever le crayon. Pour ce faire, vous "
 "définirez une seconde méthode récursive qui trace la courbe à l'envers."
-msgstr "In this lesson, you will write a recursive method allowing to draw the dragon curve without taking the pen up. For that, we need another recursive method drawing the mirror side of the curve."
+msgstr ""
+"In this lesson, you will write a recursive method allowing to draw the "
+"dragon curve without taking the pen up. For that, we need another recursive "
+"method drawing the mirror side of the curve."
 
 #: src/lessons/recursion/DragonCurve2.html:9
 msgid ""
@@ -1474,19 +1777,27 @@ msgid ""
 "méthode <code>dragonInverse()</code> sera définie récursivement en terme de "
 "<code>dragon()</code> et de <code>dragonInverse()</code>. Voici un bien bel "
 "exemple de <i>récursivité croisée</i>."
-msgstr "The method <code>dragon()</code> is then recursively defined using itself and <code>dragonReverse()</code>. Likewise, the method <code>dragonReverse()</code> is defined recursively using itself and <code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
+msgstr ""
+"The method <code>dragon()</code> is then recursively defined using itself "
+"and <code>dragonReverse()</code>. Likewise, the method <code>dragonReverse()"
+"</code> is defined recursively using itself and <code>dragon()</code>. This "
+"is thus an example of <i>mutual recursion</i>."
 
 #: src/lessons/recursion/DragonCurve2.html:13
 msgid ""
 "Le prototype de la méthode <code>dragon()</code> reste le même que "
 "précédemment :"
-msgstr "The prototype of the <code>dragon()</code> method remains unchanged from previous exercise:"
+msgstr ""
+"The prototype of the <code>dragon()</code> method remains unchanged from "
+"previous exercise:"
 
 #: src/lessons/recursion/DragonCurve2.html:16
 msgid ""
 "Les coordonnées (u, v) du nouveau point introduit par la méthode <code>dragon"
 "()</code> seront :"
-msgstr "The new point's coordinate (u, v) introduced by the <code>dragon()</code> are:"
+msgstr ""
+"The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
+"are:"
 
 #: src/lessons/recursion/DragonCurve2.html:24
 msgid ""
@@ -1502,7 +1813,9 @@ msgstr "void dragonReverse(int ordre, double x, double y, double z, double t)"
 msgid ""
 "Les coordonnées (u, v) du nouveau point introduit par la méthode "
 "<code>dragonInverse()</code> seront :"
-msgstr "The new point's coordinate (u, v) introduced by the <code>dragonReverse()</code> are:"
+msgstr ""
+"The new point's coordinate (u, v) introduced by the <code>dragonReverse()</"
+"code> are:"
 
 #: src/lessons/recursion/DragonCurve2.html:35
 msgid ""
@@ -1510,7 +1823,11 @@ msgid ""
 "récursives, le trait tracé par la méthode <code>dragon()</code> devra être "
 "rouge (<code>Color.red</code>) et le trait tracé par la méthode "
 "<code>dragonInverse</code> devra être bleu (<code>Color.blue</code>)."
-msgstr "To make the work of each method recursiv more visible, the line painted by the <code>dragon()</code> must be red (<code>Color.red</code>) while the line painted by the <code>dragonReverse()</code> must be blue (<code>Color.blue</code>)."
+msgstr ""
+"To make the work of each method recursiv more visible, the line painted by "
+"the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
+"line painted by the <code>dragonReverse()</code> must be blue (<code>Color."
+"blue</code>)."
 
 #: src/lessons/recursion/SpiralUse.html:1
 msgid "Faire des spirales"
@@ -1520,7 +1837,9 @@ msgstr "Drawing spirals"
 msgid ""
 "Saurez-vous faire les différents motifs de cet exercice en utilisant la "
 "méthode <code>spiral()</code>?"
-msgstr "Can you reproduce the provided patterns of this exercise using the <code>spiral()</code> method?"
+msgstr ""
+"Can you reproduce the provided patterns of this exercise using the "
+"<code>spiral()</code> method?"
 
 #: src/lessons/recursion/SpiralUse.html:6
 msgid ""
@@ -1528,7 +1847,11 @@ msgid ""
 "le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0, "
 "etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les "
 "valeurs convenables pour chaque page."
-msgstr "You must provide a method called <code>doit(int)</code> taking the number of the page to draw as parameter. Its code is as following, with A0, B0, etc being integers. The goal of this exercise is to find the good values for each page."
+msgstr ""
+"You must provide a method called <code>doit(int)</code> taking the number of "
+"the page to draw as parameter. Its code is as following, with A0, B0, etc "
+"being integers. The goal of this exercise is to find the good values for "
+"each page."
 
 #: src/lessons/recursion/SpiralUse.html:12
 #, no-wrap
@@ -1577,609 +1900,51 @@ msgstr ""
 msgid ""
 "Pas besoin de recopier le code de <code>spiral()</code>, la tortue de cet "
 "exercice connait déjà la méthode."
-msgstr "No need to copy over the method of <code>spiral()</code>, the turtle of this exercise already knows it."
+msgstr ""
+"No need to copy over the method of <code>spiral()</code>, the turtle of this "
+"exercise already knows it."
 
-#: src/lessons/recursion/Main.html:1
-msgid "Algorithmes récursifs"
-msgstr "Recursive algorithms"
+#: src/lessons/welcome/Main.html:1
+msgid "Premiers pas"
+msgstr "First steps"
 
-#: src/lessons/recursion/Main.html:2
-msgid "Cette leçon vous permet d'expérimenter avec des algorithmes récursifs."
-msgstr "This lesson allows to experiment with recursive algorithms."
-
-#: src/lessons/recursion/Main.html:4
+#: src/lessons/welcome/Main.html:3
 msgid ""
-"Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
-"récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir dans "
-"la leçon sur les tris."
-msgstr "If you need more recursive algorithms, an exercise on recursive sorting algorithms (in particular QuickSort and MergeSort) is planned in the future within the sorting lesson."
-
-#: src/lessons/welcome/MethodsPicture2.html:1
-msgid "Dessiner avec méthode (en plus grand)"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture2.html:3
-msgid ""
-"Nous allons maintenant reproduire un dessin géométrique plus grand. Encore "
-"une fois, vous pouvez voir le modèle en cliquant sur l'onglet \"Objective\"."
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture2.html:6
-msgid ""
-"Vous pouvez bien entendu réutiliser tout le code que vous aviez tapé à "
-"l'exercice précédent (sélectionnez l'autre exercice, allez dans le code, "
-"sélectionner tout, faites Ctrl-C, revenez dans le code de l'exercice "
-"courant, faites Ctrl-V)."
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture2.html:11
-msgid ""
-"Mais pour que votre méthode <code>run()</code> reste aussi simple que "
-"possible, il faudra définir de nouvelles méthodes afin de gérer simplement "
-"les repétions du motif. Par exemple, une méthode <code>makePattern()</code> "
-"réalisant le motif de l'exercice précédent semble être un bon départ (mais "
-"ce n'est sans doute pas suffisant)."
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture2.html:17
-msgid ""
-"À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
-"de 2 lignes, incluses dans une boucle for..."
-msgstr ""
-
-#: src/lessons/welcome/Basics3Pas.html:1
-msgid "Découverte du Java (2)"
-msgstr ""
-
-#: src/lessons/welcome/Basics3Pas.html:3
-msgid ""
-"En se basant sur les acquis de la leçon précédente, nous allons essayer de "
-"résoudre différents petits problèmes.  Voici le premier."
-msgstr ""
-
-#: src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BDR2.html:116
-#: src/lessons/welcome/MethodsReturning.html:43
-#: src/lessons/welcome/SlugHunting.html:34
-#: src/lessons/welcome/LoopWhile.html:21
-#: src/lessons/welcome/Conditions.html:46 src/lessons/welcome/Basics.html:61
-#: src/lessons/welcome/LoopFor.html:52 src/lessons/welcome/BasicsDrawG.html:8
-#: src/lessons/welcome/BDR.html:136
-#: src/lessons/welcome/MethodsDogHouse.html:38
-#: src/lessons/welcome/Methods.html:51 src/lessons/welcome/MethodsArgs.html:55
-#: src/lessons/welcome/LoopDoWhile.html:8
-#: src/lessons/welcome/Variables.html:40
-#: src/lessons/maze/RandomMouseMaze.html:22
-#: src/lessons/maze/WallFollowerMaze.html:11
-#: src/lessons/maze/PledgeMaze.html:22
-msgid "Objectif de cet exercice"
-msgstr ""
-
-#: src/lessons/welcome/Basics3Pas.html:6
-msgid "<a name=\"Objectifs\"> Faites avancer votre buggle de 3 pas."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:1
-msgid "Buggle Dance Revolution 2"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:2
-msgid "(BDR2)"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:4
-msgid ""
-"Le BDR, c'est cool, mais c'est un peu le chaos. Tout d'abord, les buggles "
-"gigotent en tout sens, et en plus, le code que vous avez écrit pour les "
-"faire bouger est très difficile à lire. Voici un nouveau monde de BDR, où "
-"les buggles vont faire une gentille petite ronde plus reposante. Nous "
-"profiterons de cette accalmie pour nettoyer un peu le code grâce aux "
-"nouveaux éléments que nous allons maintenant étudier."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:12
-msgid "Les conditionnels <tt>switch</tt>"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:14
-msgid ""
-"Le plus difficile à lire du code précédent est certainement la cascade de "
-"conditionnelles. Quelque part dans votre programme, vous avez sans doute "
-"écrit quelque chose comme:"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:18
-#, no-wrap
-msgid ""
-"if (getIndication() == 'R') {\n"
-"  turnRight();\n"
-"  forward();\n"
-"} else if (getIndication() == 'L') {\n"
-"  turnLeft();\n"
-"  forward();\n"
-"} else if (getIndication() == 'U') {\n"
-"  turnBack();\n"
-"  forward();\n"
-"/* d'autres else if */\n"
-"} else {\n"
-"  return;\n"
-"}\n"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:33
-msgid ""
-"Quand on relit ce programme, on ne voit pas forcément tout de suite qu'il "
-"s'agit simplement d'un choix à 4 branches selon la valeur de getIndication"
-"(). Pour faire mieux, on va utiliser la construction <tt>switch</tt>, dont "
-"la syntaxe est la suivante:"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:39
-#, no-wrap
-msgid ""
-"switch (<b>expression</b>) {\n"
-"  case <b>premierValeur</b>: \n"
-"    <b>queFaireSiExpressionVautPremiereValeur();</b>\n"
-"    break;\n"
-"  case <b>deuxiemeValeur</b>: \n"
-"    <b>queFaireSiExpressionVautDeuxiemeValeur();</b>\n"
-"    break;\n"
-"  case <b>troisiemeValeur</b>: \n"
-"    <b>queFaireSiExpressionVautTroisiemeValeur();</b>\n"
-"    break;\n"
-"    /* autant de cas sur le même modèle qu'on le souhaite */\n"
-"  default: \n"
-"    <b>queFaireSiExpressionVautAucuneDesValeursProposees();</b>\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:54
-msgid ""
-"Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un "
-"<code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas "
-"suivant dans la liste quand elle a fini le code du cas où elle a sauté dans "
-"le switch. Il y a même quelques très rares cas où ce comportement est "
-"pratique."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:60
-msgid ""
-"On peut réécrire le code précédent bien plus clairement grâce à la "
-"construction <tt>switch</tt> de la façon suivante."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:63
-#, no-wrap
-msgid ""
-"switch (getIndication()) {\n"
-"  case 'R':\n"
-"    turnRight(); \n"
-"    forward(); \n"
-"    break;\n"
-"  case 'L':\n"
-"    turnLeft();\n"
-"    forward(); \n"
-"    break;\n"
-"  case 'U':\n"
-"    turnBack();\n"
-"    forward();\n"
-"    break;\n"
-"  default: \n"
-"    return;\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:81
-msgid "Variables partagées par les méthodes"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:83
-msgid ""
-"Un autre problème de votre code est qu'il commence à être un peu long pour "
-"être dans une seule fonction. On voudrait découper en deux méthodes:"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:87
-msgid "<code>danceOneStep()</code> s'occuperait de faire un pas de danse"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:88
-msgid ""
-"<code>run()</code> s'occuperait de faire la danse en entier, c'est à dire de "
-"faire des pas de danse tant qu'on est pas arrivé à une case ne demandant pas "
-"d'aller plus loin."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:93
-msgid ""
-"Le problème est de faire en sorte que <tt>danceOneStep()</tt> prévienne "
-"<tt>run()</tt> qu'il n'y a plus de pas possible. La solution la plus simple "
-"est encore d'avoir une variable booléenne visible depuis les deux fonctions "
-"indiquant s'il reste des pas à faire, ou si on a fini. On écrira donc en "
-"dehors de toute méthode"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:98
-#, no-wrap
-msgid "boolean moreMusic = true;"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:100
-msgid ""
-"Notez que s'il est possible d'écrire des déclarations en dehors des méthode, "
-"les instructions doivent obligatoirement être placées dans des méthodes. En "
-"Java, on appelle ces variables <i>globales</i> à plusieurs méthodes des "
-"<b>champs</b>."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:105
-msgid ""
-"Ensuite, la fonction <tt>danseOneStep()</tt> doit être modifiée pour mettre "
-"cette valeur à <tt>false</tt> quand il n'y a plus rien à faire. Pour cela, "
-"ajoutez simplement <code>moreMusic = false;</code> avant chaque <tt>return</"
-"tt>."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:110
-msgid "On peut alors utiliser la fonction <tt>run()</tt> suivante:"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:111
-#, no-wrap
-msgid ""
-"public void run() {\n"
-"  while (moreMusic)\n"
-"    danseOneStep();\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:116
-msgid ""
-"<a name=\"Objectifs\"> Réécrivez le code des buggles en appliquant les "
-"améliorations que nous venons de voir."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:121
-msgid ""
-"Vous n'avez pas à écrire la fonction <tt>run</tt>, que les buggles "
-"connaissent déjà. Si vous tentez de la définir malgré tout, le compilateur "
-"se plaindra de trouver deux définitions de la même fonction, sans se rendre "
-"compte qu'il s'agit de la même fonction. Contentez vous de déclarer la "
-"variable <tt>moreMusic</tt> et la méthode <tt>danseOneStep()</tt>."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:128
-msgid ""
-"Voici les indications au sol à utiliser pour BDR2. Remarquez qu'on peut "
-"maintenant avancer la buggle de 6 cases d'un coup."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:132 src/lessons/welcome/BDR.html:143
-msgid "Indication"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:133 src/lessons/welcome/BDR.html:144
-msgid "Quoi faire"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:135 src/lessons/welcome/BDR.html:147
-msgid "R"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:135 src/lessons/welcome/BDR.html:147
-msgid "Tourner à droite et avancer d'une case"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:136 src/lessons/welcome/BDR.html:148
-msgid "L"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:136 src/lessons/welcome/BDR.html:148
-msgid "Tourner à gauche et avancer d'une case"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:137 src/lessons/welcome/BDR.html:149
-msgid "I"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:137 src/lessons/welcome/BDR.html:149
-msgid "Tourner en sens inverse et avancer d'une case"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:139 src/lessons/welcome/BDR.html:151
-msgid "A"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:139 src/lessons/welcome/BDR.html:151
-msgid "Avancer d'une case"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:140 src/lessons/welcome/BDR.html:152
-msgid "B"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:140 src/lessons/welcome/BDR.html:152
-msgid "Avancer de deux cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:141 src/lessons/welcome/BDR.html:153
-msgid "C"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:141 src/lessons/welcome/BDR.html:153
-msgid "Avancer de trois cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:142
-msgid "D"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:142
-msgid "Avancer de quatre cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:143
-msgid "E"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:143
-msgid "Avancer de cinq cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:144
-msgid "F"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:144
-msgid "Avancer de six cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:146 src/lessons/welcome/BDR.html:155
-msgid "Z"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:146 src/lessons/welcome/BDR.html:155
-msgid "Reculer d'une case"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:147 src/lessons/welcome/BDR.html:156
-msgid "Y"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:147 src/lessons/welcome/BDR.html:156
-msgid "Reculer de deux cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:148 src/lessons/welcome/BDR.html:157
-msgid "X"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:148 src/lessons/welcome/BDR.html:157
-msgid "Reculer de trois cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:149
-msgid "W"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:149
-msgid "Reculer de quatre cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:150
-msgid "V"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:150
-msgid "Reculer de cinq cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:151
-msgid "U"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:151
-msgid "Reculer de six cases"
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:154 src/lessons/welcome/BDR.html:160
-msgid "Dans tous les autres cas, il faut s'arrêter."
-msgstr ""
-
-#: src/lessons/welcome/BDR2.html:156
-msgid ""
-"Quand votre programme fonctionne de nouveau, passez à l'exercice suivant."
-msgstr ""
-
-#: src/lessons/welcome/TraversalDiagonal.html:1
-msgid "Parcours en diagonale"
-msgstr ""
-
-#: src/lessons/welcome/TraversalDiagonal.html:3
-msgid ""
-"Cette fois, il faut parcourir le monde en diagonale. Regardez le monde "
-"objectif pour voir les détails de l'ordre de parcours demandé."
-msgstr ""
-
-#: src/lessons/welcome/TraversalDiagonal.html:6
-msgid ""
-"Il vous est recommandé d'utiliser une variable entière <code>diag</code> "
-"conservant le numéro de la diagonale que la buggle est en train de parcourir."
-msgstr ""
-
-#: src/lessons/welcome/TraversalDiagonal.html:8
-#: src/lessons/welcome/MethodsPicture3.html:11
-#: src/lessons/welcome/TraversalByLine.html:10
-#: src/lessons/welcome/TraversalByColumn.html:46
-#: src/lessons/welcome/Snake.html:47
-#: src/lessons/welcome/TraversalZigZag.html:6
-msgid "À vous de jouer..."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:1
-msgid "Méthodes retournant un résultat"
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:3
-msgid ""
-"Écrire des méthodes retournant un résultat n'est pas bien plus compliqué "
-"qu'écrire une méthode n'en renvoyant pas. Il suffit d'une part de mettre le "
-"type de la donnée renvoyée avant le nom de la méthode, et d'autre part "
-"d'écrire dans le corps de la méthode une instruction <code>return</code> qui "
-"précise ce qu'il faut renvoyer."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:9
-#, no-wrap
-msgid ""
-"double pi() {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;\n"
-"}\n"
-"boolean deuxEstIlPair() {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-"}\n"
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:17
-msgid ""
-"Il est possible d'avoir plusieurs instructions <code>return</code> dans "
-"différentes branches de <code>if</code>. Ce qui est interdit, c'est d'avoir "
-"une branche du code qui n'est pas terminée par un <code>return</code>, ou "
-"d'écrire du code après le <code>return</code>."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:23
-msgid ""
-"En effet, si la machine arrive à la fin de la méthode sans avoir rencontré "
-"de <tt>return</tt>, elle ne peut pas savoir quelle valeur communiquer à "
-"celui qui a appelé la méthode. De plus, le <tt>return</tt> interrompt "
-"immédiatement l'exécution de la méthode (pourquoi continuer à chercher quand "
-"on a déjà trouvé le résultat de la méthode?). Donc, s'il y a du code après "
-"un <tt>return</tt>, c'est sans doute une erreur, et le compilateur vous "
-"l'indique."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:31
-#, no-wrap
-msgid ""
-"boolean negation(boolean cond) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* interdit d'écrire du code ici */</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;} else {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* ici aussi */</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* même ici */</span>\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:43
-msgid ""
-"<a name=\"Objectifs\"> Vous allez encore une fois écrire une méthode qui "
-"sera utilisée par la buggle. Son nom doit être <code>haveBaggle</code>, et "
-"elle doit renvoyer un booléen indiquant si la colonne face à la buggle "
-"contient un baggle ou non. Votre buggle va s'en servir pour chercher la "
-"première colonne contenant un baggle et s'y arrêter."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:51
-msgid ""
-"Le plus simple pour écrire cette méthode est peut être d'utiliser une "
-"variable booléenne <code>vuBaggle</code> indiquant si on a vu un baggle "
-"jusque là. Initialement, elle contient faux."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:55
-msgid ""
-"Ensuite, on avance de 6 cases (le monde contient 7 cases, et on est déjà sur "
-"l'une d'entre elles). Pour chaque case, si elle contient un baggle, on range "
-"la valeur vrai dans <tt>vuBaggle</tt> (et on ne fait rien d'autre qu'avancer "
-"si non)."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:60
-msgid ""
-"Quand on est arrivé à la fin, on recule de 6 cases, et on retourne le "
-"contenu de <tt>vuBaggle</tt> à l'appelant."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:64
-msgid ""
-"Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux, "
-"chacun ayant un objectif particulier. C'est pourquoi la vue du monde est "
-"placée dans un onglet : il s'agit des différents mondes initiaux sur lequel "
-"sera testé votre code."
-msgstr ""
-
-#: src/lessons/welcome/MethodsReturning.html:69
-msgid ""
-"Quand votre méthode <tt>haveBaggle</tt> fonctionne, passez à l'exercice "
-"suivant."
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:1
-msgid "Chasse à la limace"
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:3
-msgid ""
-"Après toute l'agitation de la dance revolution, nous allons passer à une "
-"activité plus calme : la chasse à la limace. Votre buggle a en effet trouvé "
-"par hasard la trace d'une limace : une traînée baveuse verte. Si elle "
-"parvient à la suivre jusqu'au bout, elle trouvera un baggle représentant la "
-"grosse limace si appétissante (pour une buggle)."
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:10
-msgid ""
-"Pour arriver au résultat, le plus simple serait d'avoir une méthode "
-"booléenne <tt>isFacingTrail</tt>, qui permettrait de savoir si on est face à "
-"une case verte ou non. Bien sûr, si on est face à un mur, elle doit répondre "
-"faux. Il faudrait de plus que cette méthode ne modifie ni l'état de la "
-"buggle qui l'appelle, ni celui du monde. Une telle méthode est dite <b>sans "
-"effet de bord</b>."
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:17
-msgid ""
-"Ensuite, le mieux serait qu'elle prenne en argument la couleur de la piste "
-"que l'on veut suivre. Les limaces laissent des traces vertes, mais d'autres "
-"proies laissent des traces d'autres couleurs.  En Java, il existe un "
-"<i>type</i> <tt>Color</tt> pour désigner les couleurs.  La couleur verte est "
-"définie par <code>Color.green</code>."
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:23
-msgid ""
-"Afin de ne pas confondre la partie de la trace à suivre avec celle que votre "
-"buggle a déjà suivie, il est conseillé à votre buggle de laisser une trace "
-"derrière ses pas.  Pensez à utiliser la méthode <code>brushDown()</code> "
-"pour baisser votre crayon (et <code>brushUp()</code> pour le relever)"
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:28
-msgid ""
-"Un buggle peut connaître la couleur de la case sur laquelle il est "
-"positionné en utilisant la méthode <code>Color getGroundColor()</code>."
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:31
-msgid ""
-"Enfin, n'oubliez de capturer votre proie une fois que vous l'aurez débusquée "
-"(avec <code>pickUpBaggle()</code>)."
-msgstr ""
-
-#: src/lessons/welcome/SlugHunting.html:34
-msgid ""
-"<a name=\"Objectifs\"> Complétez la méthode <code>hunt()</code> qui sera "
-"appelée par la méthode <code>run()</code> définissant le comportement par "
-"défaut de votre buggle.  La méthode <tt>hunt()</tt> doit utiliser la méthode "
-"<code>isFacingTrail()</code> que vous devez également définir."
-msgstr ""
+"Cette première leçon va vous guider dans vos premiers pas en programmation "
+"Java. Elle est destinée aux débutants en Java."
+msgstr "This first leçon will lead your first steps in Java programming. It is intended for beginners."
+
+#: src/lessons/welcome/Main.html:4
+msgid "Liste des notions abordées :"
+msgstr "List of seen notions:"
+
+#: src/lessons/welcome/Main.html:6
+msgid "Variables et instructions"
+msgstr "Variables and instructions"
+
+#: src/lessons/welcome/Main.html:7
+msgid "Constructions de syntaxiques de base:"
+msgstr "Basic synthaxic constructions"
+
+#: src/lessons/welcome/Main.html:9
+msgid "conditionnelles (if et switch)"
+msgstr "Conditionnals (if and switch)"
+
+#: src/lessons/welcome/Main.html:10
+msgid "boucles (for, while et do-whiles)"
+msgstr "loops (for, while and do-while)"
+
+#: src/lessons/welcome/Main.html:12
+msgid "Méthodes (avec ou sans arguments, avec ou sans retour)"
+msgstr "Methods (with or without arguments, with or without return)"
+
+#: src/lessons/welcome/Main.html:13
+msgid "Tableaux"
+msgstr "Arrays"
 
 #: src/lessons/welcome/Environment.html:1
 msgid "Bienvenue dans le monde des buggles"
-msgstr ""
+msgstr "Welcome in the Buggles' World"
 
 #: src/lessons/welcome/Environment.html:3
 msgid ""
@@ -2397,250 +2162,6 @@ msgid ""
 "(<b>Exercise</b>)."
 msgstr ""
 
-#: src/lessons/welcome/LoopWhile.html:1
-msgid "Boucles tant que<tt> (while)</tt>"
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:3
-msgid ""
-"En plus des instructions conditionnelles, une autre construction pratique "
-"est de pouvoir demander à la buggle de répéter une action tant qu'une "
-"condition particulière n'est pas arrivée. On utilise pour cela une boucle "
-"<tt>while</tt>, dont la syntaxe Java est la suivante :"
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:4
-#, no-wrap
-msgid ""
-"while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;<b>action()</b>;\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:8
-msgid ""
-"Evidement, si l'action en question ne modifie pas la valeur de la condition, "
-"la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le "
-"bouton <b>stop</b> de l'interface devient utile. Pour tester cela, vous "
-"pouvez essayer de taper le code suivant dans l'éditeur :"
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:14
-#, no-wrap
-msgid ""
-"while (true) {\n"
-"&nbsp;&nbsp;turnLeft();\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:18
-msgid ""
-"La buggle va tourner vers la gauche tant que <code>true</code> est vrai "
-"(sans fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton "
-"stop."
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:21
-msgid ""
-"<a name=\"Objectifs\"> Il vous faut maintenant écrire le code nécessaire "
-"pour que vos buggles avancent jusqu'à rencontrer un mur. L'idée est donc de "
-"faire :"
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:23
-#, no-wrap
-msgid ""
-"tant que l'on est pas face à un mur, faire :\n"
-"&nbsp;&nbsp;avancer();"
-msgstr ""
-
-#: src/lessons/welcome/LoopWhile.html:26
-#: src/lessons/welcome/Conditions.html:54
-#: src/lessons/welcome/LoopDoWhile.html:20
-msgid "Quand votre programme fonctionne, passez à l'exercice suivant."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:1
-msgid "Instructions conditionnelles"
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:3
-msgid ""
-"Les programmes faits d'une simple suite d'instructions comme celui de "
-"l'exercice précédent sont bien ennuyeux. Ils font toujours la même chose, et "
-"ne peuvent pas réagir aux conditions extérieurs. Une <b>instruction "
-"conditionnelle</b> permet au programme de s'adapter en disant quelque chose "
-"comme <i>S'il pleut, prend un parapluie</i>."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:5
-msgid "La syntaxe Java est la suivante :"
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:6
-#, no-wrap
-msgid ""
-"if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:9
-msgid ""
-"Si la condition est vraie, tout le code compris entre le { et le } "
-"correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est "
-"possible d'écrire plusieurs instructions entre les deux accolades (voire un "
-"autre test)."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:11
-msgid ""
-"Une condition peut être une variable de type <tt>boolean</tt>. Le code entre "
-"accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et "
-"il sera ignoré si elle vaut <tt>false</tt> (faux)."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:13
-msgid ""
-"La condition peut aussi être un test arithmétique, comme <tt>x</tt> <b>==</"
-"b> <tt>5</tt>, qui vérifie si la valeur actuelle de <tt>x</tt> est 5, ou "
-"bien comme <b>!=</b> (teste l'inégalité), <b>&lt;</b> (inférieur à), <b>&gt;"
-"</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal à), <b>&gt;=</b> "
-"(supérieur ou égal à)."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:19
-msgid ""
-"Attention au piège classique, qui consiste à tester l'égalité d'une variable "
-"avec = au lieu de ==. Heureusement, le compilateur Java vous indique le plus "
-"souvent ce problème, mais pas tout le temps. Si la variable est de type "
-"booléen, il peut se faire prendre au piège, et il convient donc d'être "
-"attentif..."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:25
-msgid ""
-"La condition peut également être un appel à certaines méthodes "
-"particulières, dont le résultat est un booléen. Par exemple, la méthode "
-"<tt>isFacingWall()</tt> de la buggle renvoie vrai si la buggle est face à un "
-"mur, et faux sinon."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:30
-msgid ""
-"Enfin, il est possible de construire une condition composée de plusieurs "
-"sous-conditions reliées par des opérations booléennes."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:32
-msgid ""
-"<tt>cond1 && cond2</tt> est vraie quand <tt>cond1</tt> <b>et</b> <tt>cond2</"
-"tt> sont toutes deux vraies."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:33
-msgid ""
-"<tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
-"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
-"évaluée)."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:34
-msgid "<tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:35
-msgid ""
-"On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de "
-"doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever "
-"les ambiguïtés sur l'ordre d'évaluation."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:38
-msgid ""
-"Pour finir, il est possible de spécifier ce qu'il faut faire quand la "
-"condition est fausse, en utilisant la syntaxe suivante :"
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:39
-#, no-wrap
-msgid ""
-"if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>\n"
-"} else {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:46
-msgid ""
-"<a name=\"Objectifs\"> Si la buggle est face à un mur (prédicat "
-"<tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer "
-"d'un pas."
-msgstr ""
-
-#: src/lessons/welcome/Conditions.html:49
-msgid ""
-"Cet exercice est un peu particulier : il faut que votre programme fonctionne "
-"pour plusieurs buggles, chacune étant dans une situation initiale "
-"différente. Le même code sera utilisé pour chacune d'entre elles."
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:1
-msgid "Tricots, tableaux et modulos"
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:3
-msgid ""
-"Cet exercice ressemble au précédent : il faut reproduire le motif de "
-"couleurs de la première colonne dans les colonnes suivantes."
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:6
-msgid ""
-"La première différence est que le monde est entouré d'un mur : il faut donc "
-"modifier légèrement les parcours pour s'assurer que la buggle ne se cogne "
-"pas sur les bords. Le plus simple est de traiter la première case de la "
-"colonne en dehors de la boucle <code>for</code> (avant la boucle), et faire "
-"seulement <code>getWorldHeight()-1</code> pas dans la boucle."
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:12
-msgid ""
-"La seconde différence est que le décalage à effectuer entre les colonnes "
-"n'est pas fixe, mais écrit sur la première case de chaque colonne. Pour "
-"obtenir l'information sous forme d'un entier, on peut utiliser:"
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:15
-#, no-wrap
-msgid "int offset = Integer.parseInt(readMessage())"
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:17
-msgid ""
-"<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine "
-"de caractères, tandis que <code>Integer.parseInt()</code> transforme une "
-"chaine de caractères en entiers en la <i>lisant</i>."
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:21
-msgid ""
-"Ensuite, pour trouver la bonne couleur à utiliser, le plus simple est "
-"d'utiliser l'opérateur <code>%</code> (modulo). Par exemple, <code>(i + 5) % "
-"taille</code> permet de trouver la <code>i</code>ieme case d'un tableau de "
-"taille <code>taille</code> quand on applique un décalage de <code>5</code> "
-"cases."
-msgstr ""
-
-#: src/lessons/welcome/Array2.html:26 src/lessons/welcome/Array.html:164
-#: src/lessons/welcome/MethodsDogHouse.html:45
-#: src/lessons/maze/RandomMouseMaze.html:45
-#: src/lessons/maze/WallFollowerMaze.html:26
-#: src/lessons/maze/PledgeMaze.html:38
-msgid "À vous de jouer."
-msgstr ""
-
 #: src/lessons/welcome/Basics.html:1
 msgid "Découverte du Java"
 msgstr ""
@@ -2856,6 +2377,23 @@ msgid ""
 "formalisme précis."
 msgstr ""
 
+#: src/lessons/welcome/Basics.html:61 src/lessons/welcome/Basics3Pas.html:6
+#: src/lessons/welcome/BasicsDrawG.html:8
+#: src/lessons/welcome/Conditions.html:46
+#: src/lessons/welcome/LoopWhile.html:21
+#: src/lessons/welcome/LoopDoWhile.html:8
+#: src/lessons/welcome/Variables.html:40 src/lessons/welcome/LoopFor.html:52
+#: src/lessons/welcome/Methods.html:51
+#: src/lessons/welcome/MethodsDogHouse.html:38
+#: src/lessons/welcome/MethodsReturning.html:43
+#: src/lessons/welcome/MethodsArgs.html:55 src/lessons/welcome/BDR.html:136
+#: src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34
+#: src/lessons/maze/RandomMouseMaze.html:22
+#: src/lessons/maze/WallFollowerMaze.html:11
+#: src/lessons/maze/PledgeMaze.html:22
+msgid "Objectif de cet exercice"
+msgstr ""
+
 #: src/lessons/welcome/Basics.html:61
 msgid ""
 "<a name\"Objectifs\"> Nous allons faire le programme Java pour buggle le "
@@ -2881,80 +2419,423 @@ msgid ""
 "à l'exercice suivant."
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:1
-msgid "Dessiner avec méthode"
+#: src/lessons/welcome/Basics3Pas.html:1
+msgid "Découverte du Java (2)"
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:3
+#: src/lessons/welcome/Basics3Pas.html:3
 msgid ""
-"Dans cet exercice, nous allons reproduire un dessin géométrique, que vous "
-"pouvez voir en cliquant sur l'onglet \"Objective\"."
+"En se basant sur les acquis de la leçon précédente, nous allons essayer de "
+"résoudre différents petits problèmes.  Voici le premier."
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:6
+#: src/lessons/welcome/Basics3Pas.html:6
+msgid "<a name=\"Objectifs\"> Faites avancer votre buggle de 3 pas."
+msgstr ""
+
+#: src/lessons/welcome/BasicsDrawG.html:1
+msgid "Découverte du Java (3)"
+msgstr ""
+
+#: src/lessons/welcome/BasicsDrawG.html:3
 msgid ""
-"Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire "
-"une méthode <code>run()</code> la plus simple possible. Pour cela, vous "
-"veillerez à décomposer le travail à faire en sous-étape, et à faire réaliser "
-"chaque sous-étape par une méthode particulière."
+"Bien sûr, les buggles ne sont pas condamnées à se déplacer en ligne droite. "
+"Elles savent également tourner à gauche ou à droite (avec les méthodes "
+"<code>turnLeft()</code> et <code>turnRight()</code>) ou reculer (avec "
+"<code>backward()</code>)."
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:11
+#: src/lessons/welcome/BasicsDrawG.html:8
 msgid ""
-"Si on observe attentivement le modèle à dessiner, on remarque qu'il est "
-"composé de quatre formes en sorte de V de couleurs différentes, et à des "
-"positions différentes.  Un découpage possible est d'écrire une fonction "
-"chargée de faire un V de la couleur indiquée à partir de la position "
-"courante. Son prototype peut être :"
+"<a name=\"Objectifs\"> Faites dessiner &agrave; votre buggle la lettre G."
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:15
+#: src/lessons/welcome/BasicsDrawG.html:11
+msgid ""
+"N'hésitez pas à consulter la vue du monde attendu pour connaître la forme "
+"exacte de la lettre."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:1
+msgid "Instructions conditionnelles"
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:3
+msgid ""
+"Les programmes faits d'une simple suite d'instructions comme celui de "
+"l'exercice précédent sont bien ennuyeux. Ils font toujours la même chose, et "
+"ne peuvent pas réagir aux conditions extérieurs. Une <b>instruction "
+"conditionnelle</b> permet au programme de s'adapter en disant quelque chose "
+"comme <i>S'il pleut, prend un parapluie</i>."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:5
+msgid "La syntaxe Java est la suivante :"
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:6
 #, no-wrap
-msgid "void makeV(Color c)"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture.html:17
 msgid ""
-"Le type de données <code>Color</code> représente naturellement une couleur "
-"en particulier.  Votre méthode <code>run()</code> invoquera sans doute "
-"<code>makeV</code> avec les arguments suivants (une couleur différente à "
-"chaque appel) :"
+"if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>\n"
+"}"
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:21
-msgid "Color.yellow"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture.html:22
-msgid "Color.red"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture.html:23
-msgid "Color.blue"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture.html:24
-msgid "Color.green"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture.html:27
+#: src/lessons/welcome/Conditions.html:9
 msgid ""
-"Dans la méthode <code>makeV()</code>, il faut utiliser la méthode "
-"<code>setBrushColor()</code>, qui est prédéfinie dans la buggle, pour "
-"changer la couleur du pinceau, ainsi que <code>brushUp()</code> et "
-"<code>brushDown()</code> pour lever et baisser le pinceau."
+"Si la condition est vraie, tout le code compris entre le { et le } "
+"correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est "
+"possible d'écrire plusieurs instructions entre les deux accolades (voire un "
+"autre test)."
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:31
+#: src/lessons/welcome/Conditions.html:11
 msgid ""
-"Il faudrait également que la méthode <code>makeV()</code> place la buggle en "
-"position pour dessiner le prochain V directement."
+"Une condition peut être une variable de type <tt>boolean</tt>. Le code entre "
+"accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et "
+"il sera ignoré si elle vaut <tt>false</tt> (faux)."
 msgstr ""
 
-#: src/lessons/welcome/MethodsPicture.html:34
+#: src/lessons/welcome/Conditions.html:13
 msgid ""
-"À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
-"de quatre lignes..."
+"La condition peut aussi être un test arithmétique, comme <tt>x</tt> <b>==</"
+"b> <tt>5</tt>, qui vérifie si la valeur actuelle de <tt>x</tt> est 5, ou "
+"bien comme <b>!=</b> (teste l'inégalité), <b>&lt;</b> (inférieur à), <b>&gt;"
+"</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal à), <b>&gt;=</b> "
+"(supérieur ou égal à)."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:19
+msgid ""
+"Attention au piège classique, qui consiste à tester l'égalité d'une variable "
+"avec = au lieu de ==. Heureusement, le compilateur Java vous indique le plus "
+"souvent ce problème, mais pas tout le temps. Si la variable est de type "
+"booléen, il peut se faire prendre au piège, et il convient donc d'être "
+"attentif..."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:25
+msgid ""
+"La condition peut également être un appel à certaines méthodes "
+"particulières, dont le résultat est un booléen. Par exemple, la méthode "
+"<tt>isFacingWall()</tt> de la buggle renvoie vrai si la buggle est face à un "
+"mur, et faux sinon."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:30
+msgid ""
+"Enfin, il est possible de construire une condition composée de plusieurs "
+"sous-conditions reliées par des opérations booléennes."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:32
+msgid ""
+"<tt>cond1 && cond2</tt> est vraie quand <tt>cond1</tt> <b>et</b> <tt>cond2</"
+"tt> sont toutes deux vraies."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:33
+msgid ""
+"<tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
+"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
+"évaluée)."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:34
+msgid "<tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:35
+msgid ""
+"On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de "
+"doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever "
+"les ambiguïtés sur l'ordre d'évaluation."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:38
+msgid ""
+"Pour finir, il est possible de spécifier ce qu'il faut faire quand la "
+"condition est fausse, en utilisant la syntaxe suivante :"
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:39
+#, no-wrap
+msgid ""
+"if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>\n"
+"} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:46
+msgid ""
+"<a name=\"Objectifs\"> Si la buggle est face à un mur (prédicat "
+"<tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer "
+"d'un pas."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:49
+msgid ""
+"Cet exercice est un peu particulier : il faut que votre programme fonctionne "
+"pour plusieurs buggles, chacune étant dans une situation initiale "
+"différente. Le même code sera utilisé pour chacune d'entre elles."
+msgstr ""
+
+#: src/lessons/welcome/Conditions.html:54
+#: src/lessons/welcome/LoopWhile.html:26
+#: src/lessons/welcome/LoopDoWhile.html:20
+msgid "Quand votre programme fonctionne, passez à l'exercice suivant."
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:1
+msgid "Boucles tant que<tt> (while)</tt>"
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:3
+msgid ""
+"En plus des instructions conditionnelles, une autre construction pratique "
+"est de pouvoir demander à la buggle de répéter une action tant qu'une "
+"condition particulière n'est pas arrivée. On utilise pour cela une boucle "
+"<tt>while</tt>, dont la syntaxe Java est la suivante :"
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:4
+#, no-wrap
+msgid ""
+"while (<b>condition</b>) {\n"
+"&nbsp;&nbsp;<b>action()</b>;\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:8
+msgid ""
+"Evidement, si l'action en question ne modifie pas la valeur de la condition, "
+"la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le "
+"bouton <b>stop</b> de l'interface devient utile. Pour tester cela, vous "
+"pouvez essayer de taper le code suivant dans l'éditeur :"
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:14
+#, no-wrap
+msgid ""
+"while (true) {\n"
+"&nbsp;&nbsp;turnLeft();\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:18
+msgid ""
+"La buggle va tourner vers la gauche tant que <code>true</code> est vrai "
+"(sans fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton "
+"stop."
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:21
+msgid ""
+"<a name=\"Objectifs\"> Il vous faut maintenant écrire le code nécessaire "
+"pour que vos buggles avancent jusqu'à rencontrer un mur. L'idée est donc de "
+"faire :"
+msgstr ""
+
+#: src/lessons/welcome/LoopWhile.html:23
+#, no-wrap
+msgid ""
+"tant que l'on est pas face à un mur, faire :\n"
+"&nbsp;&nbsp;avancer();"
+msgstr ""
+
+#: src/lessons/welcome/LoopDoWhile.html:1
+msgid "Boucles jusqu'à<tt> (do ... while)</tt>"
+msgstr ""
+
+#: src/lessons/welcome/LoopDoWhile.html:3
+msgid ""
+"Dans une instruction <tt>while</tt>, la condition est évaluée avant toute "
+"chose, et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il "
+"arrive que l'on veuille que le corps de la boucle soit évalué au moins une "
+"fois, même si la condition est initialement fausse. On utilise pour cela une "
+"variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
+msgstr ""
+
+#: src/lessons/welcome/LoopDoWhile.html:4
+#, no-wrap
+msgid ""
+"do {\n"
+"&nbsp;&nbsp;<b>action()</b>;\n"
+"} while (<b>condition</b>);"
+msgstr ""
+
+#: src/lessons/welcome/LoopDoWhile.html:8
+msgid ""
+"<a name=\"Objectifs\"> Certaines cases du monde sont jaunes, mais votre "
+"buggle ne supporte pas de s'y trouver comme c'est son cas actuellement. "
+"Écrivez le code lui permettant d'avancer jusqu'à se trouver sur une case "
+"blanche. Vous utiliserez pour cela la méthode isGroundWhite(), que seule la "
+"buggle de cet exercice connaît."
+msgstr ""
+
+#: src/lessons/welcome/LoopDoWhile.html:15
+msgid "L'idée général est donc de faire:"
+msgstr ""
+
+#: src/lessons/welcome/LoopDoWhile.html:16
+#, no-wrap
+msgid "avancer jusqu'à se trouver sur une case blanche"
+msgstr ""
+
+#: src/lessons/welcome/LoopDoWhile.html:18
+msgid ""
+"<i>Remarque :</i> il est également possible de résoudre cet exercice avec "
+"une boucle <tt>while</tt> classique, mais ce n'est pas l'objectif."
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:1
+msgid "Variables"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:3
+msgid ""
+"Nous avons vu que les variables étaient des cases mémoire de l'ordinateur "
+"dans lequel on peut stocker une valeur. En Java, chaque variable a un type "
+"particulier, qui peut être par exemple <code>int</code> pour stocker des "
+"nombres entiers, <code>boolean</code> pour des booléens, <code>double</code> "
+"pour des nombres à virgule ou encore <code>String</code> pour des chaînes de "
+"caractères."
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:11
+msgid ""
+"La syntaxe pour créer une variable entière <code>x</code> de valeur initiale "
+"4 est la suivante :"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:13
+#, no-wrap
+msgid "int x = 4;"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:14
+msgid "Un autre exemple avec des chaînes de caractères :"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:15
+#, no-wrap
+msgid "String hello = \"Bonjour\";"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:17
+msgid ""
+"Pour affecter une nouvelle valeur à une variable, il suffit d'utiliser le "
+"symbole = :"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:18
+#, no-wrap
+msgid "x = 3;"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:20
+msgid ""
+"À droite du signe égal, on peut mettre une opération arithmétique "
+"quelconque, qui peut contenir des constantes ou des variables :"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:23
+#, no-wrap
+msgid ""
+"x = 3 + 2;\n"
+"x = 3 * x;\n"
+"hello = \"Salut \"+\"à \"+\"tous !\";\n"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:28
+msgid "Les baggles"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:30
+msgid ""
+"Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
+"biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
+"cela, elles peuvent utiliser les fonctions suivantes :"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:34
+#, no-wrap
+msgid ""
+"isOverBaggle() <span class=\"comment\">/* test booléen pour savoir si la buggle marche sur un baggle */</span>\n"
+"isCarryingBaggle() <span class=\"comment\">/* test booléen pour savoir si la buggle porte un baggle */</span>\n"
+"pickUpBaggle() <span class=\"comment\">/* ramasse le baggle au sol (attention, s'il n'y a pas de baggle, ça pose problème) */</span>\n"
+"dropBaggle() <span class=\"comment\">/* pose le baggle transporté (attention, ça pose problème si on ne porte pas de \n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baggle, ou s'il y en a déjà un par terre) */</span>"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:40
+msgid ""
+"<a name=\"Objectifs\"> Il est temps de faire un exercice un peu plus dur, "
+"n'est ce pas ? L'objectif cette fois est d'avancer jusqu'au baggle qui se "
+"trouve devant la buggle, le ramasser, revenir à la position initiale, puis "
+"de poser le baggle."
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:47 src/lessons/welcome/BDR.html:165
+msgid "Indications"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:47
+msgid "<a name=\"Indications\">"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:48
+msgid ""
+"Pour résoudre ce problème, il faut le décomposer en parties que vous savez "
+"résoudre. Par exemple, on peut vouloir faire les étapes suivantes :"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:52
+msgid "Avancer jusqu'à se trouver sur un baggle"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:53
+msgid "Ramasser le baggel au sol"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:54
+msgid "Reculer du même nombre de cases que ce qu'on a avancé"
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:57
+msgid ""
+"Bien entendu, il est impossible de reculer du bon nombre de case à l'étape 3 "
+"si l'on a pas compté le nombre de pas faits à la première étape. On va pour "
+"cela utiliser une variable, que l'on peut nommer <code>nbPas</code>."
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:62
+msgid ""
+"On crée cette variable (de type <code>int</code>) avant l'étape 1, on "
+"l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1 "
+"(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux "
+"écritures sont équivalentes)."
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:67
+msgid ""
+"Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière "
+"<code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que "
+"<code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant "
+"<code>dejaFait</code> à chaque fois."
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:73
+msgid ""
+"Attention, il est interdit d'utiliser des caractères accentués dans les noms "
+"de variables Java. Vous pouvez donc nommer votre variable <code>dejaFait</"
+"code>, mais <code>déjaFait</code> n'est pas un nom valide."
+msgstr ""
+
+#: src/lessons/welcome/Variables.html:78
+msgid "À vous de jouer !"
 msgstr ""
 
 #: src/lessons/welcome/LoopFor.html:1
@@ -3062,6 +2943,544 @@ msgstr ""
 msgid "Une fois ceci fait, passez à l'exercice suivant."
 msgstr ""
 
+#: src/lessons/welcome/Methods.html:1
+msgid "Méthodes"
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:3
+msgid ""
+"Nous allons maintenant voir comment écrire nos propres méthodes. Il s'agit "
+"en quelque sorte d'étendre le vocabulaire de la buggle en lui apprenant à "
+"faire de nouvelles choses."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:7
+msgid ""
+"Par exemple, nous avons vu à l'exercice précédent comment demander à la "
+"buggle d'aller chercher la buggle qui se trouve devant elle, et la ramener à "
+"sa position initiale. S'il y a maintenant plusieurs baggles sur le plateau, "
+"et que nous voulons tous les ramener sur la ligne du bas, il faut soit "
+"répéter ce code plusieurs fois, soit l'inclure dans une boucle. Dans les "
+"deux cas, le code résultant n'est pas très lisible, et il serait mieux que "
+"la buggle comprenne un ordre de type <code>vaChercher()</code> tout comme "
+"elle comprend un <code>forward()</code>."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:18
+msgid ""
+"La syntaxe pour écrire une méthode simple nommée <code>vaChercher</code> est "
+"la suivante:"
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:19
+#, no-wrap
+msgid ""
+"public void vaChercher() {\n"
+"  actions();\n"
+"  aFaire();\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:24
+msgid ""
+"Le corps de la méthode (entre les accolades) peut contenir autant "
+"d'instructions que vous le souhaitez, et toutes les constructions vues "
+"jusque là (for, while, if, etc)."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:28
+msgid ""
+"Nous reviendrons plus tard sur le sens exact du mot-clé <code>public</code>. "
+"Disons simplement pour l'instant qu'il indique que tout le monde a le droit "
+"d'utiliser cette méthode."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:33
+msgid ""
+"<code>void</code> indique quant à lui que la méthode ne donne pas de "
+"résultat. Nous avions vu que la méthode <code>isOverBaggle()</code> renvoie "
+"un booléen, et peut donc être utilisé comme une condition dans un if ou un "
+"while. Cela signifie qu'elle a été déclarée de la façon suivante :"
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:38
+#, no-wrap
+msgid "public boolean isOverBaggle() { ... }"
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:40
+msgid ""
+"Nous verrons dans le prochain exercice comment faire ce genre de chose. Pour "
+"l'instant, contentons nous d'écrire ce <code>void</code> à cet endroit."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:44
+msgid ""
+"En Java, il est d'usage de mettre la première lettre du nom d'une méthode en "
+"minuscules, et de coller tous les mots décrivant la méthode les uns aux "
+"autres en mettant une majuscule à chacun. Il est interdit de mettre des "
+"espaces ou des accentués dans le nom d'une méthode. C'est pourquoi nous "
+"écrivons \"va chercher\" sous la forme \"vaChercher\"."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:51
+msgid ""
+"<a name=\"Objectifs\"> L'objectif de cet exercice est donc d'écrire une "
+"méthode nommée <code>vaChercher()</code> et qui fait la même chose qu'aux "
+"exercices précédents (avance tant qu'on ne trouve pas de baggle, ramasser le "
+"baggle, reculer à la case départ, poser le baggle)."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:58
+msgid ""
+"La particularité de cet exercice est que vous n'allez donc pas écrire "
+"directement le code que la buggle va exécuter, mais une méthode qu'elle "
+"utilisera. En fait, dans tous les exercices précédents, vous avez écrit le "
+"corps d'une méthode particulière de la buggle nommée <code>run()</code> et "
+"qui est invoquée par l'environnement quand on clique sur le bouton <b>Start</"
+"b>."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:65
+msgid ""
+"N'essayez pas de définir ici cette méthode, puisque la buggle la connaît "
+"déjà. Cela troublerait le compilateur qui vous donnerait un message d'erreur "
+"en échange. Pour information, voici le corps de la méthode <code>run()</"
+"code> de la buggle de cet exercice:"
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:70
+#, no-wrap
+msgid ""
+"public void run() {\n"
+"&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
+"&nbsp;&nbsp;&nbsp;&nbsp;vaChercher();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
+"&nbsp;&nbsp;}\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:79
+msgid ""
+"Donc, votre buggle va répéter 7 fois (la taille du monde)  l'opération "
+"<code>vaChercher()</code> que vous allez écrire, plus les opérations "
+"nécessaire à se décaler d'une colonne vers la droite (tourner à droite, "
+"avancer, tourner à gauche). Notez que la buggle va donc faire un pas vers la "
+"droite alors qu'elle sera tout à droite du monde. Cela la ramènera sur le "
+"bord gauche, car le monde des buggles est torique."
+msgstr ""
+
+#: src/lessons/welcome/Methods.html:86
+msgid "À vous d'écrire cette méthode vaChercher()."
+msgstr ""
+
+#: src/lessons/welcome/MethodsDogHouse.html:1
+msgid "Construire avec méthode"
+msgstr ""
+
+#: src/lessons/welcome/MethodsDogHouse.html:3
+msgid ""
+"Nous souhaitons maintenant apprendre à la buggle à se faire une niche.  La "
+"première approche, la plus simple au premier abord, est d'écrire directement "
+"le code permettant de le faire, comme ci-dessous (cela marche car la buggle "
+"de cet exercice laisse une traînée rouge dans son sillage quand elle se "
+"déplace)."
+msgstr ""
+
+#: src/lessons/welcome/MethodsDogHouse.html:10
+#, no-wrap
+msgid ""
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+msgstr ""
+
+#: src/lessons/welcome/MethodsDogHouse.html:24
+msgid ""
+"Les problèmes commencent quand nous voulons faire faire deux cabanes à la "
+"buggle : Il faut réécrire le code deux fois, ce qui n'est pas très pratique. "
+"Pire que ça, une telle duplication de code est en général très mal vu. En "
+"effet, si vous vous rendez compte que vous vous êtes trompé dans votre code, "
+"et que vous l'avez recopier à plusieurs endroits, il va falloir le corriger "
+"plusieurs fois. Et gare si vous oubliez de corriger un exemplaire."
+msgstr ""
+
+#: src/lessons/welcome/MethodsDogHouse.html:32
+msgid ""
+"Il est bien préférable de <b>factoriser votre code</b>, c'est-à-dire "
+"d'écrire le code une seule fois, par exemple dans une méthode. C'est ce que "
+"vous allez faire maintenant. Il est même possible d'aller plus loin en "
+"factorisant le code de la méthode avec une boucle <code>for</code> comme vu "
+"précédemment."
+msgstr ""
+
+#: src/lessons/welcome/MethodsDogHouse.html:38
+msgid ""
+"<a name=\"Objectifs\"> L'objectif de cet exercice est d'écrire une méthode "
+"nommée <code>faireNiche()</code> et exécute le code ci-dessus. La buggle "
+"invoquera plusieurs fois votre oeuvre afin de dessiner des cabanes un peu "
+"partout. Pensez à factoriser le code de votre méthode avec une boucle for."
+msgstr ""
+
+#: src/lessons/welcome/MethodsDogHouse.html:45
+#: src/lessons/welcome/Array.html:164 src/lessons/welcome/Array2.html:26
+#: src/lessons/maze/RandomMouseMaze.html:45
+#: src/lessons/maze/WallFollowerMaze.html:26
+#: src/lessons/maze/PledgeMaze.html:38
+msgid "À vous de jouer."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:1
+msgid "Méthodes retournant un résultat"
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:3
+msgid ""
+"Écrire des méthodes retournant un résultat n'est pas bien plus compliqué "
+"qu'écrire une méthode n'en renvoyant pas. Il suffit d'une part de mettre le "
+"type de la donnée renvoyée avant le nom de la méthode, et d'autre part "
+"d'écrire dans le corps de la méthode une instruction <code>return</code> qui "
+"précise ce qu'il faut renvoyer."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:9
+#, no-wrap
+msgid ""
+"double pi() {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;\n"
+"}\n"
+"boolean deuxEstIlPair() {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
+"}\n"
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:17
+msgid ""
+"Il est possible d'avoir plusieurs instructions <code>return</code> dans "
+"différentes branches de <code>if</code>. Ce qui est interdit, c'est d'avoir "
+"une branche du code qui n'est pas terminée par un <code>return</code>, ou "
+"d'écrire du code après le <code>return</code>."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:23
+msgid ""
+"En effet, si la machine arrive à la fin de la méthode sans avoir rencontré "
+"de <tt>return</tt>, elle ne peut pas savoir quelle valeur communiquer à "
+"celui qui a appelé la méthode. De plus, le <tt>return</tt> interrompt "
+"immédiatement l'exécution de la méthode (pourquoi continuer à chercher quand "
+"on a déjà trouvé le résultat de la méthode?). Donc, s'il y a du code après "
+"un <tt>return</tt>, c'est sans doute une erreur, et le compilateur vous "
+"l'indique."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:31
+#, no-wrap
+msgid ""
+"boolean negation(boolean cond) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* interdit d'écrire du code ici */</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* ici aussi */</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;}\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* même ici */</span>\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:43
+msgid ""
+"<a name=\"Objectifs\"> Vous allez encore une fois écrire une méthode qui "
+"sera utilisée par la buggle. Son nom doit être <code>haveBaggle</code>, et "
+"elle doit renvoyer un booléen indiquant si la colonne face à la buggle "
+"contient un baggle ou non. Votre buggle va s'en servir pour chercher la "
+"première colonne contenant un baggle et s'y arrêter."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:51
+msgid ""
+"Le plus simple pour écrire cette méthode est peut être d'utiliser une "
+"variable booléenne <code>vuBaggle</code> indiquant si on a vu un baggle "
+"jusque là. Initialement, elle contient faux."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:55
+msgid ""
+"Ensuite, on avance de 6 cases (le monde contient 7 cases, et on est déjà sur "
+"l'une d'entre elles). Pour chaque case, si elle contient un baggle, on range "
+"la valeur vrai dans <tt>vuBaggle</tt> (et on ne fait rien d'autre qu'avancer "
+"si non)."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:60
+msgid ""
+"Quand on est arrivé à la fin, on recule de 6 cases, et on retourne le "
+"contenu de <tt>vuBaggle</tt> à l'appelant."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:64
+msgid ""
+"Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux, "
+"chacun ayant un objectif particulier. C'est pourquoi la vue du monde est "
+"placée dans un onglet : il s'agit des différents mondes initiaux sur lequel "
+"sera testé votre code."
+msgstr ""
+
+#: src/lessons/welcome/MethodsReturning.html:69
+msgid ""
+"Quand votre méthode <tt>haveBaggle</tt> fonctionne, passez à l'exercice "
+"suivant."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:1
+msgid "Méthodes avec paramètres"
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:3
+msgid ""
+"N'êtes vous pas fatigué d'écrire encore et encore le code qui permet "
+"d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les "
+"méthode <tt>forward2()</tt>, <tt>forward3()</tt>, <tt>forward4()</tt>, et "
+"<tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt>, et ainsi "
+"de suite, ça ne constitue pas un réel gain de temps..."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:10
+msgid ""
+"Heureusement, il est possible de donner des <b>paramètres</b> à vos "
+"méthodes. Il faut marquer leur type et leur nom entre les parenthèses qui "
+"suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de "
+"la fonction comme s'il s'agissait de variables définies ici."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:16
+#, no-wrap
+msgid ""
+"double diviseParDeux(double x) {\n"
+"&nbsp;&nbsp;return x / 2;\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:20
+msgid ""
+"À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les "
+"parenthèses de l'appel."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:21
+#, no-wrap
+msgid "double y = diviseParDeux(3.14);"
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:23
+msgid ""
+"Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules, "
+"lors de la déclaration comme lors de l'appel."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:25
+#, no-wrap
+msgid ""
+"double divise(double x, double y) {\n"
+"&nbsp;&nbsp;return x / y;\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:28
+#, no-wrap
+msgid "double y = divise(3.14 , 1.5);"
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:30
+msgid ""
+"En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition "
+"qu'elles n'aient pas les mêmes paramètres (on dit qu'elles n'ont pas la même "
+"<b>signature</b>)."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:32
+#, no-wrap
+msgid ""
+"int max(int x, int y) {\n"
+"&nbsp;&nbsp;if (x > y) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return x;\n"
+"&nbsp;&nbsp;}\n"
+"&nbsp;&nbsp;return y;\n"
+"}\n"
+"int max(int x, int y, int z) {\n"
+"&nbsp;&nbsp;if (x > y && x > z) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return x;\n"
+"&nbsp;&nbsp;}\n"
+"&nbsp;&nbsp;if (y > z) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return y;\n"
+"&nbsp;&nbsp;}\n"
+"&nbsp;&nbsp;return z;\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:48
+msgid ""
+"Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque "
+"alternative. Cela fonctionne tout de même car un <tt>return</tt> interrompt "
+"l'exécution de la méthode. Si on arrive à la dernière ligne de <code>max(int,"
+"int)</code>, on est donc sur que <code>x&lt;=y</code> car dans le cas "
+"contraire, le <tt>return</tt> de la deuxième ligne aurait arrêté l'exécution "
+"de la fonction."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:55
+msgid ""
+"<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode <code>move"
+"(int nbPas, boolean forward)</code> qui avance de <code>nbPas</code> si "
+"<code>forward</code> est vrai, et recule d'autant de pas si le booléen est "
+"faux. La buggle s'en servira pour retourner sur la ligne du haut. Elle "
+"utilisera au passage des méthodes que l'on ne connaît pas encore pour "
+"deviner sa position et sa direction actuelles afin de calculer le sens et le "
+"nombre de pas à faire (mais ce n'est pas important ici)."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:66
+msgid ""
+"Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas "
+"grand chose pour vous, puisque toutes sont ici régies par le même code."
+msgstr ""
+
+#: src/lessons/welcome/MethodsArgs.html:70
+msgid ""
+"Le code de la méthode à proprement parlé ne devrait pas poser de problème."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:1
+msgid "Dessiner avec méthode"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:3
+msgid ""
+"Dans cet exercice, nous allons reproduire un dessin géométrique, que vous "
+"pouvez voir en cliquant sur l'onglet \"Objective\"."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:6
+msgid ""
+"Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire "
+"une méthode <code>run()</code> la plus simple possible. Pour cela, vous "
+"veillerez à décomposer le travail à faire en sous-étape, et à faire réaliser "
+"chaque sous-étape par une méthode particulière."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:11
+msgid ""
+"Si on observe attentivement le modèle à dessiner, on remarque qu'il est "
+"composé de quatre formes en sorte de V de couleurs différentes, et à des "
+"positions différentes.  Un découpage possible est d'écrire une fonction "
+"chargée de faire un V de la couleur indiquée à partir de la position "
+"courante. Son prototype peut être :"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:15
+#, no-wrap
+msgid "void makeV(Color c)"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:17
+msgid ""
+"Le type de données <code>Color</code> représente naturellement une couleur "
+"en particulier.  Votre méthode <code>run()</code> invoquera sans doute "
+"<code>makeV</code> avec les arguments suivants (une couleur différente à "
+"chaque appel) :"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:21
+msgid "Color.yellow"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:22
+msgid "Color.red"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:23
+msgid "Color.blue"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:24
+msgid "Color.green"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:27
+msgid ""
+"Dans la méthode <code>makeV()</code>, il faut utiliser la méthode "
+"<code>setBrushColor()</code>, qui est prédéfinie dans la buggle, pour "
+"changer la couleur du pinceau, ainsi que <code>brushUp()</code> et "
+"<code>brushDown()</code> pour lever et baisser le pinceau."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:31
+msgid ""
+"Il faudrait également que la méthode <code>makeV()</code> place la buggle en "
+"position pour dessiner le prochain V directement."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture.html:34
+msgid ""
+"À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
+"de quatre lignes..."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture2.html:1
+msgid "Dessiner avec méthode (en plus grand)"
+msgstr "Methodically drawing (only bigger)"
+
+#: src/lessons/welcome/MethodsPicture2.html:3
+msgid ""
+"Nous allons maintenant reproduire un dessin géométrique plus grand. Encore "
+"une fois, vous pouvez voir le modèle en cliquant sur l'onglet \"Objective\"."
+msgstr ""
+"We will now reproduce an even bigger geometrical drawing. Once again, you "
+"can see the model by clicking on the \"Objective\" tab."
+
+#: src/lessons/welcome/MethodsPicture2.html:6
+msgid ""
+"Vous pouvez bien entendu réutiliser tout le code que vous aviez tapé à "
+"l'exercice précédent (sélectionnez l'autre exercice, allez dans le code, "
+"sélectionner tout, faites Ctrl-C, revenez dans le code de l'exercice "
+"courant, faites Ctrl-V)."
+msgstr ""
+"You can naturally reuse all the code you typed in previous exercise (select "
+"the other exercise, do Ctrl-C, come back to the code of this exercise, do "
+"Ctrl-V)."
+
+#: src/lessons/welcome/MethodsPicture2.html:11
+msgid ""
+"Mais pour que votre méthode <code>run()</code> reste aussi simple que "
+"possible, il faudra définir de nouvelles méthodes afin de gérer simplement "
+"les repétions du motif. Par exemple, une méthode <code>makePattern()</code> "
+"réalisant le motif de l'exercice précédent semble être un bon départ (mais "
+"ce n'est sans doute pas suffisant)."
+msgstr ""
+"But you want to keep your <code>run()</code> as simple as possible. For "
+"that, define new methods to deal simply with the repetitions in the pattern. "
+"For example, a method <code>makePattern()</code> achieving the pattern of "
+"previous example seems to be a good idea (but this may not be enough)."
+
+#: src/lessons/welcome/MethodsPicture2.html:17
+msgid ""
+"À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
+"de 2 lignes, incluses dans une boucle for..."
+msgstr ""
+"Why don't you give it a shot? The <code>run()</code> method shouldn't take "
+"more than 2 lines (included in a for loop)"
+
 #: src/lessons/welcome/MethodsPicture3.html:1
 msgid "Dessiner de plus en plus grand"
 msgstr ""
@@ -3081,27 +3500,872 @@ msgid ""
 "changant les tailles."
 msgstr ""
 
-#: src/lessons/welcome/BasicsDrawG.html:1
-msgid "Découverte du Java (3)"
+#: src/lessons/welcome/MethodsPicture3.html:11
+#: src/lessons/welcome/Snake.html:47
+#: src/lessons/welcome/TraversalByColumn.html:46
+#: src/lessons/welcome/TraversalByLine.html:10
+#: src/lessons/welcome/TraversalDiagonal.html:8
+#: src/lessons/welcome/TraversalZigZag.html:6
+msgid "À vous de jouer..."
 msgstr ""
 
-#: src/lessons/welcome/BasicsDrawG.html:3
-msgid ""
-"Bien sûr, les buggles ne sont pas condamnées à se déplacer en ligne droite. "
-"Elles savent également tourner à gauche ou à droite (avec les méthodes "
-"<code>turnLeft()</code> et <code>turnRight()</code>) ou reculer (avec "
-"<code>backward()</code>)."
+#: src/lessons/welcome/BDR.html:1
+msgid "Buggle Dance Revolution"
 msgstr ""
 
-#: src/lessons/welcome/BasicsDrawG.html:8
-msgid ""
-"<a name=\"Objectifs\"> Faites dessiner &agrave; votre buggle la lettre G."
+#: src/lessons/welcome/BDR.html:2
+msgid "(BDR)"
 msgstr ""
 
-#: src/lessons/welcome/BasicsDrawG.html:11
+#: src/lessons/welcome/BDR.html:4
 msgid ""
-"N'hésitez pas à consulter la vue du monde attendu pour connaître la forme "
-"exacte de la lettre."
+"Aujourd'hui est un grand jour : nous allons apprendre à nos buggles à jouer "
+"à Dance Revolution, ce jeu très prisé de certains étudiants où le joueur "
+"doit bouger sur un tapis prévu à cet effet en fonction des consignes "
+"présentées à l'écran en rythme avec la musique. Mais avant cela, nous avons "
+"quelques détails à étudier."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:10
+msgid "Conditionnelles sans accolades"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:11
+msgid ""
+"Il y a un détail que nous avons omis à propos de la syntaxe des "
+"conditionnelles : si une branche ne contient qu'une seule instruction, les "
+"accolades sont optionnelles. Ainsi, les deux extraits suivants sont "
+"équivalents:"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:16
+#, no-wrap
+msgid ""
+"if (<b>condition</b>) {\n"
+"    <b>quoiFaireSiLaConditionEstVraie();</b>\n"
+"} else {\n"
+"    <b>quoiFaireSinon();</b>\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:21
+#, no-wrap
+msgid ""
+"if (<b>condition</b>)\n"
+"    <b>quoiFaireSiLaConditionEstVraie();</b>\n"
+"else\n"
+"    <b>quoiFaireSinon();</b>"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:26
+msgid ""
+"Mais attention, ceci peut être dangereux si on enchaîne les <tt>if</tt> "
+"comme dans l'exemple suivant."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:28
+#, no-wrap
+msgid ""
+"if (isOverBaggle())    \n"
+"     if (x == 5)\n"
+"          turnLeft();\n"
+"else\n"
+"     turnRight();\n"
+"forward();"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:35
+msgid ""
+"En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET "
+"que x vaut 5, mais quand la buggle a trouvé un baggle, et que x vaut une "
+"autre valeur. Autrement dit, la buggle lit le code précédent comme suit "
+"(notez que le <tt>else</tt> est décalé vers la droite par rapport à "
+"précédemment) :"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:40
+#, no-wrap
+msgid ""
+"if (isOverBaggle())    \n"
+"        if (x == 5)\n"
+"            turnLeft();\n"
+"        else\n"
+"            turnRight();\n"
+"forward();"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:47
+msgid ""
+"La première leçon, c'est que l'indentation aide les humains à comprendre, "
+"mais elle est sans importance pour la signification du code. On aurait tout "
+"aussi bien pu écrire le code suivant et obtenir le même résultat. Mais "
+"attention, si on veut qu'un humain puisse relire le code, l'indentation "
+"devient très importante voire indispensable. C'est par exemple le cas si "
+"votre code doit être relu par un professeur (pour qu'il le note ou pour lui "
+"poser une question), ou si vous comptez réutiliser votre code plus tard."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:56
+#, no-wrap
+msgid "if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:58
+msgid ""
+"La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours "
+"au <tt>if</tt> le plus proche. C'est parfois un peu contre-intuitif, et il "
+"est préférable d'ajouter plus d'accolades que nécessaire pour lever toute "
+"ambiguïté."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:63
+msgid "Enchaînements de conditionnelles"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:65
+msgid ""
+"Il arrive que l'on veuille demander à la buggle quelque chose similaire à :"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:67
+#, no-wrap
+msgid ""
+"s'il pleut, prend un parapluie; \n"
+"si non, s'il fait chaud, prend une bouteille d'eau; \n"
+"si non, si nous sommes le 14 juillet, prend un drapeau français"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:71
+msgid ""
+"Le piège étant que nous voudrions qu'au plus l'une de ces actions soient "
+"réalisées. C'est à dire, que s'il pleut un 14 juillet très chaud, on ne veut "
+"pas que la buggle sorte avec un parapluie, de l'eau et un drapeau, mais "
+"juste avec un parapluie. Le code suivant est donc faux."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:77
+#, no-wrap
+msgid ""
+"if (ilPleut()) {\n"
+"  prendreParapluie();\n"
+"}\n"
+"if (ilFaitChaud()) {\n"
+"  prendreDeLEau();\n"
+"} \n"
+"if (sommes14Juillet()) {\n"
+"  prendreDrapeau();\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:87
+msgid ""
+"En effet, toutes les conditions sont évaluées les unes après les autres, et "
+"on risque donc d'aller au défilé un jour de pluie. À la place, il faut donc "
+"écrire quelque chose comme :"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:91
+#, no-wrap
+msgid ""
+"if (ilPleut()) {\n"
+"  prendreParapluie();\n"
+"} else {\n"
+"  if (ilFaitChaud()) {\n"
+"    prendreDeLEau();\n"
+"  } else {\n"
+"    if (sommes14Juillet()) {\n"
+"      prendreDrapeau();\n"
+"    }\n"
+"  }\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:103
+msgid ""
+"Une telle cascade de conditionnelles est un peu difficile à lire, et il est "
+"préférable d'omettre les accolades associées aux <tt>else</tt> comme il "
+"suit. Il y a même certains langages qui introduisent un mot-clé spécial pour "
+"ces <tt>else if</tt> (mais pas Java)."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:108
+#, no-wrap
+msgid ""
+"if (ilPleut()) {\n"
+"  prendreParapluie();\n"
+"} else if (ilFaitChaud()) {\n"
+"  prendreDeLEau();\n"
+"} else if (sommes14Juillet()) {\n"
+"  prendreDrapeau();\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:117
+msgid "Les graffitis dans le monde des buggles"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:119
+msgid ""
+"Les buggles peuvent écrire des choses par terre dans leur monde. Pour ce "
+"faire, elles utilisent les quatre méthodes suivantes:"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:123
+msgid ""
+"<code>boolean isOverMessage()</code> : renvoie vrai si et seulement s'il y a "
+"un message écrit par terre."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:125
+msgid ""
+"<code>String readMessage()</code> : renvoie le message qu'il y a écrit par "
+"terre (s'il y a rien, on obtient une chaîne vide)."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:127
+msgid ""
+"<code>void writeMessage(String msg)</code> : écrit le message spécifié en "
+"argument par terre. S'il y a déjà quelque chose écrit par terre, on ajoute "
+"le nouveau message à la fin du précédent."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:131
+msgid "<code>void clearMessage()</code> : efface ce qui est écrit par terre."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:136
+msgid ""
+"<a name=\"Objectifs\"> L'objectif est donc d'organiser une partie de BDR "
+"entre les buggles en leur apprenant à bouger en fonction des indications "
+"écrites par terre.  Ces indications sont des messages au sol, avec le code "
+"suivant:"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:143 src/lessons/welcome/BDR2.html:132
+msgid "Indication"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:144 src/lessons/welcome/BDR2.html:133
+msgid "Quoi faire"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:145
+msgid "Mnémotechnique"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:147 src/lessons/welcome/BDR2.html:135
+msgid "R"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:147 src/lessons/welcome/BDR2.html:135
+msgid "Tourner à droite et avancer d'une case"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:147
+msgid "Right"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:148 src/lessons/welcome/BDR2.html:136
+msgid "L"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:148 src/lessons/welcome/BDR2.html:136
+msgid "Tourner à gauche et avancer d'une case"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:148
+msgid "Left"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:149 src/lessons/welcome/BDR2.html:137
+msgid "I"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:149 src/lessons/welcome/BDR2.html:137
+msgid "Tourner en sens inverse et avancer d'une case"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:149
+msgid "Inverse"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:151 src/lessons/welcome/BDR2.html:139
+msgid "A"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:151 src/lessons/welcome/BDR2.html:139
+msgid "Avancer d'une case"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:151
+msgid "première lettre de l'alphabet"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:152 src/lessons/welcome/BDR2.html:140
+msgid "B"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:152 src/lessons/welcome/BDR2.html:140
+msgid "Avancer de deux cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:152
+msgid "deuxième lettre de l'alphabet"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:153 src/lessons/welcome/BDR2.html:141
+msgid "C"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:153 src/lessons/welcome/BDR2.html:141
+msgid "Avancer de trois cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:153
+msgid "troisième lettre de l'alphabet"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:155 src/lessons/welcome/BDR2.html:146
+msgid "Z"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:155 src/lessons/welcome/BDR2.html:146
+msgid "Reculer d'une case"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:155
+msgid "à une lettre de la fin de l'alphabet"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:156 src/lessons/welcome/BDR2.html:147
+msgid "Y"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:156 src/lessons/welcome/BDR2.html:147
+msgid "Reculer de deux cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:156
+msgid "à deux lettres de la fin de l'alphabet"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:148
+msgid "X"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:148
+msgid "Reculer de trois cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:157
+msgid "à trois lettres de la fin de l'alphabet"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:160 src/lessons/welcome/BDR2.html:154
+msgid "Dans tous les autres cas, il faut s'arrêter."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:162
+msgid ""
+"Écrivez le code de la dance dans la fonction <code>run()</code> dont le "
+"prototype se trouve déjà dans l'éditeur."
+msgstr ""
+
+#. *** NOT TRUE !!!, so I decided to remove it ***
+#. <p>
+#. La première subtilité étant de retrouver l'indication au sol sous
+#.    forme de caractère unique que de chaîne de caractères. En effet, les
+#.    tests d'égalité entre les chaînes sont un peu compliqués à écrire
+#.    (car les chaînes sont des objets).<br>
+#.    Java considère que le test <code>("toto" == "toto")</code> est
+#.    faux, puisqu'il y a une chaîne à gauche, et une chaîne à droite. Ce
+#.    n'est donc pas la même chaîne (le fait qu'elles signifient toutes
+#.    les deux la même chose n'entre malheureusement pas en
+#.    considération).</p>
+#. <p>Au lieu de s'attarder sur ces subtilités sur lesquelles nous aurons
+#.    largement le temps de revenir, utilisons <code>char	
+#: src/lessons/welcome/BDR.html:167
+msgid ""
+"Cet exercice peut sembler un peu compliqué, mais il s'agit principalement de "
+"traduire le contenu du tableau ci-dessus dans un enchaînement de "
+"conditionnelles."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:187
+msgid ""
+"La première subtilité est que nous utiliserons la méthode <code>char "
+"getIndication()</code> à la place de <code>String readMessage()</code>. "
+"Cette méthode, qui n'est connue que des buggles des exercice BDR, renvoie le "
+"premier caractère du message au sol (ou ' ' s'il n'y a rien d'écrit au sol)."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:194
+msgid ""
+"L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant "
+"qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus "
+"simple pour cela est de faire une boucle infinie (<code>while (true)</"
+"code>), avec tous les tests dans le corps. Si on trouve une case ne "
+"répondant à aucune ligne du tableau, on arrêtera tout d'un simple "
+"<code>return;</code>."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:201
+msgid ""
+"Les fonctions dont le type de retour est <tt>void</tt> peuvent contenir des "
+"<tt>return</tt> sans valeur associée. Cela interrompt immédiatement leur "
+"exécution."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:205
+msgid "Trucs et astuces"
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:207
+msgid ""
+"Si vous ne parvenez plus à comprendre pourquoi votre buggle n'exécute pas "
+"les pas de danse demandés, essayez d'ajouter <code>brushDown()</code> dans "
+"votre méthode. Cela demandera à la buggle de poser un crayon par terre, "
+"laissant une trace au sol quand elle avance. Cela devrait vous aider à "
+"suivre sa trajectoire, mais pensez à retirer cette appel lorsque vous voulez "
+"tester si votre solution marche : on vous demande de faire danser les "
+"buggles, pas de dégrader le dance floor."
+msgstr ""
+
+#: src/lessons/welcome/BDR.html:216
+msgid "Quand votre programme fonctionne enfin, passez à l'exercice suivant."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:1
+msgid "Buggle Dance Revolution 2"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:2
+msgid "(BDR2)"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:4
+msgid ""
+"Le BDR, c'est cool, mais c'est un peu le chaos. Tout d'abord, les buggles "
+"gigotent en tout sens, et en plus, le code que vous avez écrit pour les "
+"faire bouger est très difficile à lire. Voici un nouveau monde de BDR, où "
+"les buggles vont faire une gentille petite ronde plus reposante. Nous "
+"profiterons de cette accalmie pour nettoyer un peu le code grâce aux "
+"nouveaux éléments que nous allons maintenant étudier."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:12
+msgid "Les conditionnels <tt>switch</tt>"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:14
+msgid ""
+"Le plus difficile à lire du code précédent est certainement la cascade de "
+"conditionnelles. Quelque part dans votre programme, vous avez sans doute "
+"écrit quelque chose comme:"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:18
+#, no-wrap
+msgid ""
+"if (getIndication() == 'R') {\n"
+"  turnRight();\n"
+"  forward();\n"
+"} else if (getIndication() == 'L') {\n"
+"  turnLeft();\n"
+"  forward();\n"
+"} else if (getIndication() == 'U') {\n"
+"  turnBack();\n"
+"  forward();\n"
+"/* d'autres else if */\n"
+"} else {\n"
+"  return;\n"
+"}\n"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:33
+msgid ""
+"Quand on relit ce programme, on ne voit pas forcément tout de suite qu'il "
+"s'agit simplement d'un choix à 4 branches selon la valeur de getIndication"
+"(). Pour faire mieux, on va utiliser la construction <tt>switch</tt>, dont "
+"la syntaxe est la suivante:"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:39
+#, no-wrap
+msgid ""
+"switch (<b>expression</b>) {\n"
+"  case <b>premierValeur</b>: \n"
+"    <b>queFaireSiExpressionVautPremiereValeur();</b>\n"
+"    break;\n"
+"  case <b>deuxiemeValeur</b>: \n"
+"    <b>queFaireSiExpressionVautDeuxiemeValeur();</b>\n"
+"    break;\n"
+"  case <b>troisiemeValeur</b>: \n"
+"    <b>queFaireSiExpressionVautTroisiemeValeur();</b>\n"
+"    break;\n"
+"    /* autant de cas sur le même modèle qu'on le souhaite */\n"
+"  default: \n"
+"    <b>queFaireSiExpressionVautAucuneDesValeursProposees();</b>\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:54
+msgid ""
+"Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un "
+"<code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas "
+"suivant dans la liste quand elle a fini le code du cas où elle a sauté dans "
+"le switch. Il y a même quelques très rares cas où ce comportement est "
+"pratique."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:60
+msgid ""
+"On peut réécrire le code précédent bien plus clairement grâce à la "
+"construction <tt>switch</tt> de la façon suivante."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:63
+#, no-wrap
+msgid ""
+"switch (getIndication()) {\n"
+"  case 'R':\n"
+"    turnRight(); \n"
+"    forward(); \n"
+"    break;\n"
+"  case 'L':\n"
+"    turnLeft();\n"
+"    forward(); \n"
+"    break;\n"
+"  case 'U':\n"
+"    turnBack();\n"
+"    forward();\n"
+"    break;\n"
+"  default: \n"
+"    return;\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:81
+msgid "Variables partagées par les méthodes"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:83
+msgid ""
+"Un autre problème de votre code est qu'il commence à être un peu long pour "
+"être dans une seule fonction. On voudrait découper en deux méthodes:"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:87
+msgid "<code>danceOneStep()</code> s'occuperait de faire un pas de danse"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:88
+msgid ""
+"<code>run()</code> s'occuperait de faire la danse en entier, c'est à dire de "
+"faire des pas de danse tant qu'on est pas arrivé à une case ne demandant pas "
+"d'aller plus loin."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:93
+msgid ""
+"Le problème est de faire en sorte que <tt>danceOneStep()</tt> prévienne "
+"<tt>run()</tt> qu'il n'y a plus de pas possible. La solution la plus simple "
+"est encore d'avoir une variable booléenne visible depuis les deux fonctions "
+"indiquant s'il reste des pas à faire, ou si on a fini. On écrira donc en "
+"dehors de toute méthode"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:98
+#, no-wrap
+msgid "boolean moreMusic = true;"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:100
+msgid ""
+"Notez que s'il est possible d'écrire des déclarations en dehors des méthode, "
+"les instructions doivent obligatoirement être placées dans des méthodes. En "
+"Java, on appelle ces variables <i>globales</i> à plusieurs méthodes des "
+"<b>champs</b>."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:105
+msgid ""
+"Ensuite, la fonction <tt>danseOneStep()</tt> doit être modifiée pour mettre "
+"cette valeur à <tt>false</tt> quand il n'y a plus rien à faire. Pour cela, "
+"ajoutez simplement <code>moreMusic = false;</code> avant chaque <tt>return</"
+"tt>."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:110
+msgid "On peut alors utiliser la fonction <tt>run()</tt> suivante:"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:111
+#, no-wrap
+msgid ""
+"public void run() {\n"
+"  while (moreMusic)\n"
+"    danseOneStep();\n"
+"}"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:116
+msgid ""
+"<a name=\"Objectifs\"> Réécrivez le code des buggles en appliquant les "
+"améliorations que nous venons de voir."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:121
+msgid ""
+"Vous n'avez pas à écrire la fonction <tt>run</tt>, que les buggles "
+"connaissent déjà. Si vous tentez de la définir malgré tout, le compilateur "
+"se plaindra de trouver deux définitions de la même fonction, sans se rendre "
+"compte qu'il s'agit de la même fonction. Contentez vous de déclarer la "
+"variable <tt>moreMusic</tt> et la méthode <tt>danseOneStep()</tt>."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:128
+msgid ""
+"Voici les indications au sol à utiliser pour BDR2. Remarquez qu'on peut "
+"maintenant avancer la buggle de 6 cases d'un coup."
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:142
+msgid "D"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:142
+msgid "Avancer de quatre cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:143
+msgid "E"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:143
+msgid "Avancer de cinq cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:144
+msgid "F"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:144
+msgid "Avancer de six cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:149
+msgid "W"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:149
+msgid "Reculer de quatre cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:150
+msgid "V"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:150
+msgid "Reculer de cinq cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:151
+msgid "U"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:151
+msgid "Reculer de six cases"
+msgstr ""
+
+#: src/lessons/welcome/BDR2.html:156
+msgid ""
+"Quand votre programme fonctionne de nouveau, passez à l'exercice suivant."
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:1
+msgid "Chasse à la limace"
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:3
+msgid ""
+"Après toute l'agitation de la dance revolution, nous allons passer à une "
+"activité plus calme : la chasse à la limace. Votre buggle a en effet trouvé "
+"par hasard la trace d'une limace : une traînée baveuse verte. Si elle "
+"parvient à la suivre jusqu'au bout, elle trouvera un baggle représentant la "
+"grosse limace si appétissante (pour une buggle)."
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:10
+msgid ""
+"Pour arriver au résultat, le plus simple serait d'avoir une méthode "
+"booléenne <tt>isFacingTrail</tt>, qui permettrait de savoir si on est face à "
+"une case verte ou non. Bien sûr, si on est face à un mur, elle doit répondre "
+"faux. Il faudrait de plus que cette méthode ne modifie ni l'état de la "
+"buggle qui l'appelle, ni celui du monde. Une telle méthode est dite <b>sans "
+"effet de bord</b>."
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:17
+msgid ""
+"Ensuite, le mieux serait qu'elle prenne en argument la couleur de la piste "
+"que l'on veut suivre. Les limaces laissent des traces vertes, mais d'autres "
+"proies laissent des traces d'autres couleurs.  En Java, il existe un "
+"<i>type</i> <tt>Color</tt> pour désigner les couleurs.  La couleur verte est "
+"définie par <code>Color.green</code>."
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:23
+msgid ""
+"Afin de ne pas confondre la partie de la trace à suivre avec celle que votre "
+"buggle a déjà suivie, il est conseillé à votre buggle de laisser une trace "
+"derrière ses pas.  Pensez à utiliser la méthode <code>brushDown()</code> "
+"pour baisser votre crayon (et <code>brushUp()</code> pour le relever)"
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:28
+msgid ""
+"Un buggle peut connaître la couleur de la case sur laquelle il est "
+"positionné en utilisant la méthode <code>Color getGroundColor()</code>."
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:31
+msgid ""
+"Enfin, n'oubliez de capturer votre proie une fois que vous l'aurez débusquée "
+"(avec <code>pickUpBaggle()</code>)."
+msgstr ""
+
+#: src/lessons/welcome/SlugHunting.html:34
+msgid ""
+"<a name=\"Objectifs\"> Complétez la méthode <code>hunt()</code> qui sera "
+"appelée par la méthode <code>run()</code> définissant le comportement par "
+"défaut de votre buggle.  La méthode <tt>hunt()</tt> doit utiliser la méthode "
+"<code>isFacingTrail()</code> que vous devez également définir."
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:1
+msgid "Monde de serpents"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:3
+msgid ""
+"Nous allons maintenant apprendre à la buggle à explorer son monde. Sa "
+"position de départ est en bas à gauche, et elle doit visiter toutes les "
+"cases juqu'en haut (en coloriant le sol sur son passage).  La boucle "
+"principale de la méthode <code>run()</code> (que vous devez écrire)  est de "
+"la forme :"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:10
+#, no-wrap
+msgid ""
+" baisser le crayon\n"
+" tant que l'on est pas à la position finale\n"
+"   avancer comme un serpent\n"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:15
+msgid "Le prototype de cette méthode (sa première ligne) doit être :"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:16
+#, no-wrap
+msgid "public void run()"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:17
+msgid ""
+"(nous verrons plus tard ce que ce <code>public</code> signifie).  Il faut "
+"donc écrire deux méthodes en plus de <code>run()</code>. L'une renvoit un "
+"booléen et indique si l'on se trouve à une position finale, tandis que "
+"l'autre ne renvoit pas de résultat et avance d'un pas."
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:23
+msgid "On se trouve sur une position finale si et seulement si :"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:25
+msgid "On est face à un mur"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:26
+msgid ""
+"Il y a un mur au dessus de la buggle. Donc, si la buggle regarde à l'est, il "
+"faut vérifier s'il y a un mur à gauche, et si la buggle regarde à l'ouest, "
+"il faut vérifier s'il y a un mur à droite."
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:29
+msgid ""
+"On obtient la direction actuelle de la buggle avec la méthode "
+"<code>getDirection()</code>, et on sait si elle regarde à l'est avec le test "
+"<code>getDirection() == Direction.EAST</code> (WEST pour ouest)."
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:32
+msgid ""
+"Pour la vérification elle-même, rien de magique : il faut se tourner et "
+"regarder si on est face à un mur une fois tourné."
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:36
+msgid ""
+"Ensuite un pas de serpent se fait en avancant d'un pas si l'on est pas face "
+"à un mur, et en montant à la ligne du dessus sinon (càd, si on regarde à "
+"l'ouest face à un mur, il faut tourner à droite, avancer, tourner à droite)."
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:40
+msgid ""
+"Indication: la boucle principale de la méthode <code>run()</code> doit "
+"continuer tant que la fonction adéquate renvoie faux. On peut l'écrire de "
+"deux façons:"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:42
+#, no-wrap
+msgid "while (fonctionTest() == false)"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:43
+msgid "ou bien"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:44
+#, no-wrap
+msgid "while (! fonctionTest())"
+msgstr ""
+
+#: src/lessons/welcome/Snake.html:45
+msgid ""
+"Cela fonctionne car le point d'exclamation en java indique une négation "
+"booléenne."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture4.html:1
+msgid "Encore des motifs à dessiner"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture4.html:2
+msgid "(et des méthodes à écrire)"
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture4.html:4
+msgid ""
+"Voici de nouveau un exercice où il faut reproduire un motif donné dans "
+"l'onglet \"Objective\"."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture4.html:7
+msgid ""
+"Celui-ci est un peu plus difficile que ceux vus précédement. Cherchez les "
+"motifs qui se répètent, même si la couleur change, et faites une méthode "
+"dessinant chacun d'entre eux."
+msgstr ""
+
+#: src/lessons/welcome/MethodsPicture4.html:11
+msgid "Bon courage !"
 msgstr ""
 
 #: src/lessons/welcome/Array.html:1
@@ -3459,403 +4723,51 @@ msgid ""
 "méthode écrite tout exprès."
 msgstr ""
 
-#: src/lessons/welcome/BDR.html:1
-msgid "Buggle Dance Revolution"
+#: src/lessons/welcome/Array2.html:1
+msgid "Tricots, tableaux et modulos"
 msgstr ""
 
-#: src/lessons/welcome/BDR.html:2
-msgid "(BDR)"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:4
+#: src/lessons/welcome/Array2.html:3
 msgid ""
-"Aujourd'hui est un grand jour : nous allons apprendre à nos buggles à jouer "
-"à Dance Revolution, ce jeu très prisé de certains étudiants où le joueur "
-"doit bouger sur un tapis prévu à cet effet en fonction des consignes "
-"présentées à l'écran en rythme avec la musique. Mais avant cela, nous avons "
-"quelques détails à étudier."
+"Cet exercice ressemble au précédent : il faut reproduire le motif de "
+"couleurs de la première colonne dans les colonnes suivantes."
 msgstr ""
 
-#: src/lessons/welcome/BDR.html:10
-msgid "Conditionnelles sans accolades"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:11
+#: src/lessons/welcome/Array2.html:6
 msgid ""
-"Il y a un détail que nous avons omis à propos de la syntaxe des "
-"conditionnelles : si une branche ne contient qu'une seule instruction, les "
-"accolades sont optionnelles. Ainsi, les deux extraits suivants sont "
-"équivalents:"
+"La première différence est que le monde est entouré d'un mur : il faut donc "
+"modifier légèrement les parcours pour s'assurer que la buggle ne se cogne "
+"pas sur les bords. Le plus simple est de traiter la première case de la "
+"colonne en dehors de la boucle <code>for</code> (avant la boucle), et faire "
+"seulement <code>getWorldHeight()-1</code> pas dans la boucle."
 msgstr ""
 
-#: src/lessons/welcome/BDR.html:16
+#: src/lessons/welcome/Array2.html:12
+msgid ""
+"La seconde différence est que le décalage à effectuer entre les colonnes "
+"n'est pas fixe, mais écrit sur la première case de chaque colonne. Pour "
+"obtenir l'information sous forme d'un entier, on peut utiliser:"
+msgstr ""
+
+#: src/lessons/welcome/Array2.html:15
 #, no-wrap
+msgid "int offset = Integer.parseInt(readMessage())"
+msgstr ""
+
+#: src/lessons/welcome/Array2.html:17
 msgid ""
-"if (<b>condition</b>) {\n"
-"    <b>quoiFaireSiLaConditionEstVraie();</b>\n"
-"} else {\n"
-"    <b>quoiFaireSinon();</b>\n"
-"}"
+"<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine "
+"de caractères, tandis que <code>Integer.parseInt()</code> transforme une "
+"chaine de caractères en entiers en la <i>lisant</i>."
 msgstr ""
 
-#: src/lessons/welcome/BDR.html:21
-#, no-wrap
+#: src/lessons/welcome/Array2.html:21
 msgid ""
-"if (<b>condition</b>)\n"
-"    <b>quoiFaireSiLaConditionEstVraie();</b>\n"
-"else\n"
-"    <b>quoiFaireSinon();</b>"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:26
-msgid ""
-"Mais attention, ceci peut être dangereux si on enchaîne les <tt>if</tt> "
-"comme dans l'exemple suivant."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:28
-#, no-wrap
-msgid ""
-"if (isOverBaggle())    \n"
-"     if (x == 5)\n"
-"          turnLeft();\n"
-"else\n"
-"     turnRight();\n"
-"forward();"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:35
-msgid ""
-"En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET "
-"que x vaut 5, mais quand la buggle a trouvé un baggle, et que x vaut une "
-"autre valeur. Autrement dit, la buggle lit le code précédent comme suit "
-"(notez que le <tt>else</tt> est décalé vers la droite par rapport à "
-"précédemment) :"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:40
-#, no-wrap
-msgid ""
-"if (isOverBaggle())    \n"
-"        if (x == 5)\n"
-"            turnLeft();\n"
-"        else\n"
-"            turnRight();\n"
-"forward();"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:47
-msgid ""
-"La première leçon, c'est que l'indentation aide les humains à comprendre, "
-"mais elle est sans importance pour la signification du code. On aurait tout "
-"aussi bien pu écrire le code suivant et obtenir le même résultat. Mais "
-"attention, si on veut qu'un humain puisse relire le code, l'indentation "
-"devient très importante voire indispensable. C'est par exemple le cas si "
-"votre code doit être relu par un professeur (pour qu'il le note ou pour lui "
-"poser une question), ou si vous comptez réutiliser votre code plus tard."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:56
-#, no-wrap
-msgid "if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:58
-msgid ""
-"La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours "
-"au <tt>if</tt> le plus proche. C'est parfois un peu contre-intuitif, et il "
-"est préférable d'ajouter plus d'accolades que nécessaire pour lever toute "
-"ambiguïté."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:63
-msgid "Enchaînements de conditionnelles"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:65
-msgid ""
-"Il arrive que l'on veuille demander à la buggle quelque chose similaire à :"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:67
-#, no-wrap
-msgid ""
-"s'il pleut, prend un parapluie; \n"
-"si non, s'il fait chaud, prend une bouteille d'eau; \n"
-"si non, si nous sommes le 14 juillet, prend un drapeau français"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:71
-msgid ""
-"Le piège étant que nous voudrions qu'au plus l'une de ces actions soient "
-"réalisées. C'est à dire, que s'il pleut un 14 juillet très chaud, on ne veut "
-"pas que la buggle sorte avec un parapluie, de l'eau et un drapeau, mais "
-"juste avec un parapluie. Le code suivant est donc faux."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:77
-#, no-wrap
-msgid ""
-"if (ilPleut()) {\n"
-"  prendreParapluie();\n"
-"}\n"
-"if (ilFaitChaud()) {\n"
-"  prendreDeLEau();\n"
-"} \n"
-"if (sommes14Juillet()) {\n"
-"  prendreDrapeau();\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:87
-msgid ""
-"En effet, toutes les conditions sont évaluées les unes après les autres, et "
-"on risque donc d'aller au défilé un jour de pluie. À la place, il faut donc "
-"écrire quelque chose comme :"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:91
-#, no-wrap
-msgid ""
-"if (ilPleut()) {\n"
-"  prendreParapluie();\n"
-"} else {\n"
-"  if (ilFaitChaud()) {\n"
-"    prendreDeLEau();\n"
-"  } else {\n"
-"    if (sommes14Juillet()) {\n"
-"      prendreDrapeau();\n"
-"    }\n"
-"  }\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:103
-msgid ""
-"Une telle cascade de conditionnelles est un peu difficile à lire, et il est "
-"préférable d'omettre les accolades associées aux <tt>else</tt> comme il "
-"suit. Il y a même certains langages qui introduisent un mot-clé spécial pour "
-"ces <tt>else if</tt> (mais pas Java)."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:108
-#, no-wrap
-msgid ""
-"if (ilPleut()) {\n"
-"  prendreParapluie();\n"
-"} else if (ilFaitChaud()) {\n"
-"  prendreDeLEau();\n"
-"} else if (sommes14Juillet()) {\n"
-"  prendreDrapeau();\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:117
-msgid "Les graffitis dans le monde des buggles"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:119
-msgid ""
-"Les buggles peuvent écrire des choses par terre dans leur monde. Pour ce "
-"faire, elles utilisent les quatre méthodes suivantes:"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:123
-msgid ""
-"<code>boolean isOverMessage()</code> : renvoie vrai si et seulement s'il y a "
-"un message écrit par terre."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:125
-msgid ""
-"<code>String readMessage()</code> : renvoie le message qu'il y a écrit par "
-"terre (s'il y a rien, on obtient une chaîne vide)."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:127
-msgid ""
-"<code>void writeMessage(String msg)</code> : écrit le message spécifié en "
-"argument par terre. S'il y a déjà quelque chose écrit par terre, on ajoute "
-"le nouveau message à la fin du précédent."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:131
-msgid "<code>void clearMessage()</code> : efface ce qui est écrit par terre."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:136
-msgid ""
-"<a name=\"Objectifs\"> L'objectif est donc d'organiser une partie de BDR "
-"entre les buggles en leur apprenant à bouger en fonction des indications "
-"écrites par terre.  Ces indications sont des messages au sol, avec le code "
-"suivant:"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:145
-msgid "Mnémotechnique"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:147
-msgid "Right"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:148
-msgid "Left"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:149
-msgid "Inverse"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:151
-msgid "première lettre de l'alphabet"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:152
-msgid "deuxième lettre de l'alphabet"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:153
-msgid "troisième lettre de l'alphabet"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:155
-msgid "à une lettre de la fin de l'alphabet"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:156
-msgid "à deux lettres de la fin de l'alphabet"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:157
-msgid "à trois lettres de la fin de l'alphabet"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:162
-msgid ""
-"Écrivez le code de la dance dans la fonction <code>run()</code> dont le "
-"prototype se trouve déjà dans l'éditeur."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:165 src/lessons/welcome/Variables.html:47
-msgid "Indications"
-msgstr ""
-
-#. *** NOT TRUE !!!, so I decided to remove it ***
-#. <p>
-#. La première subtilité étant de retrouver l'indication au sol sous
-#.    forme de caractère unique que de chaîne de caractères. En effet, les
-#.    tests d'égalité entre les chaînes sont un peu compliqués à écrire
-#.    (car les chaînes sont des objets).<br>
-#.    Java considère que le test <code>("toto" == "toto")</code> est
-#.    faux, puisqu'il y a une chaîne à gauche, et une chaîne à droite. Ce
-#.    n'est donc pas la même chaîne (le fait qu'elles signifient toutes
-#.    les deux la même chose n'entre malheureusement pas en
-#.    considération).</p>
-#. <p>Au lieu de s'attarder sur ces subtilités sur lesquelles nous aurons
-#.    largement le temps de revenir, utilisons <code>char	
-#: src/lessons/welcome/BDR.html:167
-msgid ""
-"Cet exercice peut sembler un peu compliqué, mais il s'agit principalement de "
-"traduire le contenu du tableau ci-dessus dans un enchaînement de "
-"conditionnelles."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:187
-msgid ""
-"La première subtilité est que nous utiliserons la méthode <code>char "
-"getIndication()</code> à la place de <code>String readMessage()</code>. "
-"Cette méthode, qui n'est connue que des buggles des exercice BDR, renvoie le "
-"premier caractère du message au sol (ou ' ' s'il n'y a rien d'écrit au sol)."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:194
-msgid ""
-"L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant "
-"qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus "
-"simple pour cela est de faire une boucle infinie (<code>while (true)</"
-"code>), avec tous les tests dans le corps. Si on trouve une case ne "
-"répondant à aucune ligne du tableau, on arrêtera tout d'un simple "
-"<code>return;</code>."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:201
-msgid ""
-"Les fonctions dont le type de retour est <tt>void</tt> peuvent contenir des "
-"<tt>return</tt> sans valeur associée. Cela interrompt immédiatement leur "
-"exécution."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:205
-msgid "Trucs et astuces"
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:207
-msgid ""
-"Si vous ne parvenez plus à comprendre pourquoi votre buggle n'exécute pas "
-"les pas de danse demandés, essayez d'ajouter <code>brushDown()</code> dans "
-"votre méthode. Cela demandera à la buggle de poser un crayon par terre, "
-"laissant une trace au sol quand elle avance. Cela devrait vous aider à "
-"suivre sa trajectoire, mais pensez à retirer cette appel lorsque vous voulez "
-"tester si votre solution marche : on vous demande de faire danser les "
-"buggles, pas de dégrader le dance floor."
-msgstr ""
-
-#: src/lessons/welcome/BDR.html:216
-msgid "Quand votre programme fonctionne enfin, passez à l'exercice suivant."
-msgstr ""
-
-#: src/lessons/welcome/Main.html:1
-msgid "Premiers pas"
-msgstr ""
-
-#: src/lessons/welcome/Main.html:3
-msgid ""
-"Cette première leçon va vous guider dans vos premiers pas en programmation "
-"Java. Elle est destinée aux débutants en Java."
-msgstr ""
-
-#: src/lessons/welcome/Main.html:4
-msgid "Liste des notions abordées :"
-msgstr ""
-
-#: src/lessons/welcome/Main.html:6
-msgid "Variables et instructions"
-msgstr ""
-
-#: src/lessons/welcome/Main.html:7
-msgid "Constructions de syntaxiques de base:"
-msgstr ""
-
-#: src/lessons/welcome/Main.html:9
-msgid "conditionnelles (if et switch)"
-msgstr ""
-
-#: src/lessons/welcome/Main.html:10
-msgid "boucles (for, while et do-whiles)"
-msgstr ""
-
-#: src/lessons/welcome/Main.html:12
-msgid "Méthodes (avec ou sans arguments, avec ou sans retour)"
-msgstr ""
-
-#: src/lessons/welcome/Main.html:13
-msgid "Tableaux"
-msgstr ""
-
-#: src/lessons/welcome/TraversalByLine.html:1
-msgid "Parcours ligne par ligne"
-msgstr ""
-
-#: src/lessons/welcome/TraversalByLine.html:3
-msgid ""
-"Il faut encore faire parcourir le monde à la buggle en numérotant les cases "
-"au passage, mais l'objectif de cet exercice est d'écrire un parcours ligne "
-"par ligne. La plupart du code écrit à l'exercice précédent reste utilisable, "
-"mais la méthode calculant les prochaines coordonnées de la buggle doit être "
-"modifiée en conséquence : si l'on est tout à droite d'une ligne, il faut "
-"aller au début de la ligne précédente. Si non, il faut aller sur la case à "
-"droite."
+"Ensuite, pour trouver la bonne couleur à utiliser, le plus simple est "
+"d'utiliser l'opérateur <code>%</code> (modulo). Par exemple, <code>(i + 5) % "
+"taille</code> permet de trouver la <code>i</code>ieme case d'un tableau de "
+"taille <code>taille</code> quand on applique un décalage de <code>5</code> "
+"cases."
 msgstr ""
 
 #: src/lessons/welcome/TraversalByColumn.html:1
@@ -3942,626 +4854,35 @@ msgid ""
 "<code>while {}</code> ou un <code>do {} while</code>..."
 msgstr ""
 
-#: src/lessons/welcome/MethodsDogHouse.html:1
-msgid "Construire avec méthode"
+#: src/lessons/welcome/TraversalByLine.html:1
+msgid "Parcours ligne par ligne"
 msgstr ""
 
-#: src/lessons/welcome/MethodsDogHouse.html:3
+#: src/lessons/welcome/TraversalByLine.html:3
 msgid ""
-"Nous souhaitons maintenant apprendre à la buggle à se faire une niche.  La "
-"première approche, la plus simple au premier abord, est d'écrire directement "
-"le code permettant de le faire, comme ci-dessous (cela marche car la buggle "
-"de cet exercice laisse une traînée rouge dans son sillage quand elle se "
-"déplace)."
+"Il faut encore faire parcourir le monde à la buggle en numérotant les cases "
+"au passage, mais l'objectif de cet exercice est d'écrire un parcours ligne "
+"par ligne. La plupart du code écrit à l'exercice précédent reste utilisable, "
+"mais la méthode calculant les prochaines coordonnées de la buggle doit être "
+"modifiée en conséquence : si l'on est tout à droite d'une ligne, il faut "
+"aller au début de la ligne précédente. Si non, il faut aller sur la case à "
+"droite."
 msgstr ""
 
-#: src/lessons/welcome/MethodsDogHouse.html:10
-#, no-wrap
+#: src/lessons/welcome/TraversalDiagonal.html:1
+msgid "Parcours en diagonale"
+msgstr ""
+
+#: src/lessons/welcome/TraversalDiagonal.html:3
 msgid ""
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
+"Cette fois, il faut parcourir le monde en diagonale. Regardez le monde "
+"objectif pour voir les détails de l'ordre de parcours demandé."
 msgstr ""
 
-#: src/lessons/welcome/MethodsDogHouse.html:24
+#: src/lessons/welcome/TraversalDiagonal.html:6
 msgid ""
-"Les problèmes commencent quand nous voulons faire faire deux cabanes à la "
-"buggle : Il faut réécrire le code deux fois, ce qui n'est pas très pratique. "
-"Pire que ça, une telle duplication de code est en général très mal vu. En "
-"effet, si vous vous rendez compte que vous vous êtes trompé dans votre code, "
-"et que vous l'avez recopier à plusieurs endroits, il va falloir le corriger "
-"plusieurs fois. Et gare si vous oubliez de corriger un exemplaire."
-msgstr ""
-
-#: src/lessons/welcome/MethodsDogHouse.html:32
-msgid ""
-"Il est bien préférable de <b>factoriser votre code</b>, c'est-à-dire "
-"d'écrire le code une seule fois, par exemple dans une méthode. C'est ce que "
-"vous allez faire maintenant. Il est même possible d'aller plus loin en "
-"factorisant le code de la méthode avec une boucle <code>for</code> comme vu "
-"précédemment."
-msgstr ""
-
-#: src/lessons/welcome/MethodsDogHouse.html:38
-msgid ""
-"<a name=\"Objectifs\"> L'objectif de cet exercice est d'écrire une méthode "
-"nommée <code>faireNiche()</code> et exécute le code ci-dessus. La buggle "
-"invoquera plusieurs fois votre oeuvre afin de dessiner des cabanes un peu "
-"partout. Pensez à factoriser le code de votre méthode avec une boucle for."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:1
-msgid "Méthodes"
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:3
-msgid ""
-"Nous allons maintenant voir comment écrire nos propres méthodes. Il s'agit "
-"en quelque sorte d'étendre le vocabulaire de la buggle en lui apprenant à "
-"faire de nouvelles choses."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:7
-msgid ""
-"Par exemple, nous avons vu à l'exercice précédent comment demander à la "
-"buggle d'aller chercher la buggle qui se trouve devant elle, et la ramener à "
-"sa position initiale. S'il y a maintenant plusieurs baggles sur le plateau, "
-"et que nous voulons tous les ramener sur la ligne du bas, il faut soit "
-"répéter ce code plusieurs fois, soit l'inclure dans une boucle. Dans les "
-"deux cas, le code résultant n'est pas très lisible, et il serait mieux que "
-"la buggle comprenne un ordre de type <code>vaChercher()</code> tout comme "
-"elle comprend un <code>forward()</code>."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:18
-msgid ""
-"La syntaxe pour écrire une méthode simple nommée <code>vaChercher</code> est "
-"la suivante:"
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:19
-#, no-wrap
-msgid ""
-"public void vaChercher() {\n"
-"  actions();\n"
-"  aFaire();\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:24
-msgid ""
-"Le corps de la méthode (entre les accolades) peut contenir autant "
-"d'instructions que vous le souhaitez, et toutes les constructions vues "
-"jusque là (for, while, if, etc)."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:28
-msgid ""
-"Nous reviendrons plus tard sur le sens exact du mot-clé <code>public</code>. "
-"Disons simplement pour l'instant qu'il indique que tout le monde a le droit "
-"d'utiliser cette méthode."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:33
-msgid ""
-"<code>void</code> indique quant à lui que la méthode ne donne pas de "
-"résultat. Nous avions vu que la méthode <code>isOverBaggle()</code> renvoie "
-"un booléen, et peut donc être utilisé comme une condition dans un if ou un "
-"while. Cela signifie qu'elle a été déclarée de la façon suivante :"
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:38
-#, no-wrap
-msgid "public boolean isOverBaggle() { ... }"
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:40
-msgid ""
-"Nous verrons dans le prochain exercice comment faire ce genre de chose. Pour "
-"l'instant, contentons nous d'écrire ce <code>void</code> à cet endroit."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:44
-msgid ""
-"En Java, il est d'usage de mettre la première lettre du nom d'une méthode en "
-"minuscules, et de coller tous les mots décrivant la méthode les uns aux "
-"autres en mettant une majuscule à chacun. Il est interdit de mettre des "
-"espaces ou des accentués dans le nom d'une méthode. C'est pourquoi nous "
-"écrivons \"va chercher\" sous la forme \"vaChercher\"."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:51
-msgid ""
-"<a name=\"Objectifs\"> L'objectif de cet exercice est donc d'écrire une "
-"méthode nommée <code>vaChercher()</code> et qui fait la même chose qu'aux "
-"exercices précédents (avance tant qu'on ne trouve pas de baggle, ramasser le "
-"baggle, reculer à la case départ, poser le baggle)."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:58
-msgid ""
-"La particularité de cet exercice est que vous n'allez donc pas écrire "
-"directement le code que la buggle va exécuter, mais une méthode qu'elle "
-"utilisera. En fait, dans tous les exercices précédents, vous avez écrit le "
-"corps d'une méthode particulière de la buggle nommée <code>run()</code> et "
-"qui est invoquée par l'environnement quand on clique sur le bouton <b>Start</"
-"b>."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:65
-msgid ""
-"N'essayez pas de définir ici cette méthode, puisque la buggle la connaît "
-"déjà. Cela troublerait le compilateur qui vous donnerait un message d'erreur "
-"en échange. Pour information, voici le corps de la méthode <code>run()</"
-"code> de la buggle de cet exercice:"
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:70
-#, no-wrap
-msgid ""
-"public void run() {\n"
-"&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;vaChercher();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
-"&nbsp;&nbsp;}\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:79
-msgid ""
-"Donc, votre buggle va répéter 7 fois (la taille du monde)  l'opération "
-"<code>vaChercher()</code> que vous allez écrire, plus les opérations "
-"nécessaire à se décaler d'une colonne vers la droite (tourner à droite, "
-"avancer, tourner à gauche). Notez que la buggle va donc faire un pas vers la "
-"droite alors qu'elle sera tout à droite du monde. Cela la ramènera sur le "
-"bord gauche, car le monde des buggles est torique."
-msgstr ""
-
-#: src/lessons/welcome/Methods.html:86
-msgid "À vous d'écrire cette méthode vaChercher()."
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:1
-msgid "Monde de serpents"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:3
-msgid ""
-"Nous allons maintenant apprendre à la buggle à explorer son monde. Sa "
-"position de départ est en bas à gauche, et elle doit visiter toutes les "
-"cases juqu'en haut (en coloriant le sol sur son passage).  La boucle "
-"principale de la méthode <code>run()</code> (que vous devez écrire)  est de "
-"la forme :"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:10
-#, no-wrap
-msgid ""
-" baisser le crayon\n"
-" tant que l'on est pas à la position finale\n"
-"   avancer comme un serpent\n"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:15
-msgid "Le prototype de cette méthode (sa première ligne) doit être :"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:16
-#, no-wrap
-msgid "public void run()"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:17
-msgid ""
-"(nous verrons plus tard ce que ce <code>public</code> signifie).  Il faut "
-"donc écrire deux méthodes en plus de <code>run()</code>. L'une renvoit un "
-"booléen et indique si l'on se trouve à une position finale, tandis que "
-"l'autre ne renvoit pas de résultat et avance d'un pas."
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:23
-msgid "On se trouve sur une position finale si et seulement si :"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:25
-msgid "On est face à un mur"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:26
-msgid ""
-"Il y a un mur au dessus de la buggle. Donc, si la buggle regarde à l'est, il "
-"faut vérifier s'il y a un mur à gauche, et si la buggle regarde à l'ouest, "
-"il faut vérifier s'il y a un mur à droite."
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:29
-msgid ""
-"On obtient la direction actuelle de la buggle avec la méthode "
-"<code>getDirection()</code>, et on sait si elle regarde à l'est avec le test "
-"<code>getDirection() == Direction.EAST</code> (WEST pour ouest)."
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:32
-msgid ""
-"Pour la vérification elle-même, rien de magique : il faut se tourner et "
-"regarder si on est face à un mur une fois tourné."
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:36
-msgid ""
-"Ensuite un pas de serpent se fait en avancant d'un pas si l'on est pas face "
-"à un mur, et en montant à la ligne du dessus sinon (càd, si on regarde à "
-"l'ouest face à un mur, il faut tourner à droite, avancer, tourner à droite)."
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:40
-msgid ""
-"Indication: la boucle principale de la méthode <code>run()</code> doit "
-"continuer tant que la fonction adéquate renvoie faux. On peut l'écrire de "
-"deux façons:"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:42
-#, no-wrap
-msgid "while (fonctionTest() == false)"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:43
-msgid "ou bien"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:44
-#, no-wrap
-msgid "while (! fonctionTest())"
-msgstr ""
-
-#: src/lessons/welcome/Snake.html:45
-msgid ""
-"Cela fonctionne car le point d'exclamation en java indique une négation "
-"booléenne."
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture4.html:1
-msgid "Encore des motifs à dessiner"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture4.html:2
-msgid "(et des méthodes à écrire)"
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture4.html:4
-msgid ""
-"Voici de nouveau un exercice où il faut reproduire un motif donné dans "
-"l'onglet \"Objective\"."
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture4.html:7
-msgid ""
-"Celui-ci est un peu plus difficile que ceux vus précédement. Cherchez les "
-"motifs qui se répètent, même si la couleur change, et faites une méthode "
-"dessinant chacun d'entre eux."
-msgstr ""
-
-#: src/lessons/welcome/MethodsPicture4.html:11
-msgid "Bon courage !"
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:1
-msgid "Méthodes avec paramètres"
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:3
-msgid ""
-"N'êtes vous pas fatigué d'écrire encore et encore le code qui permet "
-"d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les "
-"méthode <tt>forward2()</tt>, <tt>forward3()</tt>, <tt>forward4()</tt>, et "
-"<tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt>, et ainsi "
-"de suite, ça ne constitue pas un réel gain de temps..."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:10
-msgid ""
-"Heureusement, il est possible de donner des <b>paramètres</b> à vos "
-"méthodes. Il faut marquer leur type et leur nom entre les parenthèses qui "
-"suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de "
-"la fonction comme s'il s'agissait de variables définies ici."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:16
-#, no-wrap
-msgid ""
-"double diviseParDeux(double x) {\n"
-"&nbsp;&nbsp;return x / 2;\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:20
-msgid ""
-"À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les "
-"parenthèses de l'appel."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:21
-#, no-wrap
-msgid "double y = diviseParDeux(3.14);"
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:23
-msgid ""
-"Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules, "
-"lors de la déclaration comme lors de l'appel."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:25
-#, no-wrap
-msgid ""
-"double divise(double x, double y) {\n"
-"&nbsp;&nbsp;return x / y;\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:28
-#, no-wrap
-msgid "double y = divise(3.14 , 1.5);"
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:30
-msgid ""
-"En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition "
-"qu'elles n'aient pas les mêmes paramètres (on dit qu'elles n'ont pas la même "
-"<b>signature</b>)."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:32
-#, no-wrap
-msgid ""
-"int max(int x, int y) {\n"
-"&nbsp;&nbsp;if (x > y) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return x;\n"
-"&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;return y;\n"
-"}\n"
-"int max(int x, int y, int z) {\n"
-"&nbsp;&nbsp;if (x > y && x > z) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return x;\n"
-"&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;if (y > z) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return y;\n"
-"&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;return z;\n"
-"}"
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:48
-msgid ""
-"Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque "
-"alternative. Cela fonctionne tout de même car un <tt>return</tt> interrompt "
-"l'exécution de la méthode. Si on arrive à la dernière ligne de <code>max(int,"
-"int)</code>, on est donc sur que <code>x&lt;=y</code> car dans le cas "
-"contraire, le <tt>return</tt> de la deuxième ligne aurait arrêté l'exécution "
-"de la fonction."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:55
-msgid ""
-"<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode <code>move"
-"(int nbPas, boolean forward)</code> qui avance de <code>nbPas</code> si "
-"<code>forward</code> est vrai, et recule d'autant de pas si le booléen est "
-"faux. La buggle s'en servira pour retourner sur la ligne du haut. Elle "
-"utilisera au passage des méthodes que l'on ne connaît pas encore pour "
-"deviner sa position et sa direction actuelles afin de calculer le sens et le "
-"nombre de pas à faire (mais ce n'est pas important ici)."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:66
-msgid ""
-"Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas "
-"grand chose pour vous, puisque toutes sont ici régies par le même code."
-msgstr ""
-
-#: src/lessons/welcome/MethodsArgs.html:70
-msgid ""
-"Le code de la méthode à proprement parlé ne devrait pas poser de problème."
-msgstr ""
-
-#: src/lessons/welcome/LoopDoWhile.html:1
-msgid "Boucles jusqu'à<tt> (do ... while)</tt>"
-msgstr ""
-
-#: src/lessons/welcome/LoopDoWhile.html:3
-msgid ""
-"Dans une instruction <tt>while</tt>, la condition est évaluée avant toute "
-"chose, et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il "
-"arrive que l'on veuille que le corps de la boucle soit évalué au moins une "
-"fois, même si la condition est initialement fausse. On utilise pour cela une "
-"variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
-msgstr ""
-
-#: src/lessons/welcome/LoopDoWhile.html:4
-#, no-wrap
-msgid ""
-"do {\n"
-"&nbsp;&nbsp;<b>action()</b>;\n"
-"} while (<b>condition</b>);"
-msgstr ""
-
-#: src/lessons/welcome/LoopDoWhile.html:8
-msgid ""
-"<a name=\"Objectifs\"> Certaines cases du monde sont jaunes, mais votre "
-"buggle ne supporte pas de s'y trouver comme c'est son cas actuellement. "
-"Écrivez le code lui permettant d'avancer jusqu'à se trouver sur une case "
-"blanche. Vous utiliserez pour cela la méthode isGroundWhite(), que seule la "
-"buggle de cet exercice connaît."
-msgstr ""
-
-#: src/lessons/welcome/LoopDoWhile.html:15
-msgid "L'idée général est donc de faire:"
-msgstr ""
-
-#: src/lessons/welcome/LoopDoWhile.html:16
-#, no-wrap
-msgid "avancer jusqu'à se trouver sur une case blanche"
-msgstr ""
-
-#: src/lessons/welcome/LoopDoWhile.html:18
-msgid ""
-"<i>Remarque :</i> il est également possible de résoudre cet exercice avec "
-"une boucle <tt>while</tt> classique, mais ce n'est pas l'objectif."
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:1
-msgid "Variables"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:3
-msgid ""
-"Nous avons vu que les variables étaient des cases mémoire de l'ordinateur "
-"dans lequel on peut stocker une valeur. En Java, chaque variable a un type "
-"particulier, qui peut être par exemple <code>int</code> pour stocker des "
-"nombres entiers, <code>boolean</code> pour des booléens, <code>double</code> "
-"pour des nombres à virgule ou encore <code>String</code> pour des chaînes de "
-"caractères."
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:11
-msgid ""
-"La syntaxe pour créer une variable entière <code>x</code> de valeur initiale "
-"4 est la suivante :"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:13
-#, no-wrap
-msgid "int x = 4;"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:14
-msgid "Un autre exemple avec des chaînes de caractères :"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:15
-#, no-wrap
-msgid "String hello = \"Bonjour\";"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:17
-msgid ""
-"Pour affecter une nouvelle valeur à une variable, il suffit d'utiliser le "
-"symbole = :"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:18
-#, no-wrap
-msgid "x = 3;"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:20
-msgid ""
-"À droite du signe égal, on peut mettre une opération arithmétique "
-"quelconque, qui peut contenir des constantes ou des variables :"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:23
-#, no-wrap
-msgid ""
-"x = 3 + 2;\n"
-"x = 3 * x;\n"
-"hello = \"Salut \"+\"à \"+\"tous !\";\n"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:28
-msgid "Les baggles"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:30
-msgid ""
-"Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
-"biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
-"cela, elles peuvent utiliser les fonctions suivantes :"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:34
-#, no-wrap
-msgid ""
-"isOverBaggle() <span class=\"comment\">/* test booléen pour savoir si la buggle marche sur un baggle */</span>\n"
-"isCarryingBaggle() <span class=\"comment\">/* test booléen pour savoir si la buggle porte un baggle */</span>\n"
-"pickUpBaggle() <span class=\"comment\">/* ramasse le baggle au sol (attention, s'il n'y a pas de baggle, ça pose problème) */</span>\n"
-"dropBaggle() <span class=\"comment\">/* pose le baggle transporté (attention, ça pose problème si on ne porte pas de \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baggle, ou s'il y en a déjà un par terre) */</span>"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:40
-msgid ""
-"<a name=\"Objectifs\"> Il est temps de faire un exercice un peu plus dur, "
-"n'est ce pas ? L'objectif cette fois est d'avancer jusqu'au baggle qui se "
-"trouve devant la buggle, le ramasser, revenir à la position initiale, puis "
-"de poser le baggle."
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:47
-msgid "<a name=\"Indications\">"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:48
-msgid ""
-"Pour résoudre ce problème, il faut le décomposer en parties que vous savez "
-"résoudre. Par exemple, on peut vouloir faire les étapes suivantes :"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:52
-msgid "Avancer jusqu'à se trouver sur un baggle"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:53
-msgid "Ramasser le baggel au sol"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:54
-msgid "Reculer du même nombre de cases que ce qu'on a avancé"
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:57
-msgid ""
-"Bien entendu, il est impossible de reculer du bon nombre de case à l'étape 3 "
-"si l'on a pas compté le nombre de pas faits à la première étape. On va pour "
-"cela utiliser une variable, que l'on peut nommer <code>nbPas</code>."
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:62
-msgid ""
-"On crée cette variable (de type <code>int</code>) avant l'étape 1, on "
-"l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1 "
-"(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux "
-"écritures sont équivalentes)."
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:67
-msgid ""
-"Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière "
-"<code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que "
-"<code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant "
-"<code>dejaFait</code> à chaque fois."
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:73
-msgid ""
-"Attention, il est interdit d'utiliser des caractères accentués dans les noms "
-"de variables Java. Vous pouvez donc nommer votre variable <code>dejaFait</"
-"code>, mais <code>déjaFait</code> n'est pas un nom valide."
-msgstr ""
-
-#: src/lessons/welcome/Variables.html:78
-msgid "À vous de jouer !"
+"Il vous est recommandé d'utiliser une variable entière <code>diag</code> "
+"conservant le numéro de la diagonale que la buggle est en train de parcourir."
 msgstr ""
 
 #: src/lessons/welcome/TraversalZigZag.html:1
