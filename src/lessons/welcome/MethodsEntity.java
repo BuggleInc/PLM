@@ -12,7 +12,7 @@ public class MethodsEntity extends universe.bugglequest.SimpleBuggle {
 	}
 
 	/* BEGIN SOLUTION */
-	public void vaChercher() {
+	public void goAndGet() {
 		int i = 0;
 		while (!isOverBaggle()) {
 			i++;
@@ -30,7 +30,7 @@ public class MethodsEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void run() { 
 		for (int i=0; i<7; i++) {
-			vaChercher();
+			goAndGet();
 			turnRight();
 			forward();
 			turnLeft();

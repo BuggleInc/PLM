@@ -26,7 +26,7 @@ public class MethodsDogHouseEntity extends universe.bugglequest.SimpleBuggle {
 	}
 
 	/* BEGIN SOLUTION */
-    void faireNiche() {
+    void dogHouse() {
 		for (int i=0;i<4;i++) {
 			forward();
 			forward();
@@ -38,13 +38,13 @@ public class MethodsDogHouseEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void run() {
 		brushDown();
-		faireNiche();
+		dogHouse();
 		brushUp();
 		
 		forward(4);
 
 		brushDown();
-		faireNiche();		
+		dogHouse();		
 		brushUp();
 		
 		forward(2);
@@ -52,7 +52,7 @@ public class MethodsDogHouseEntity extends universe.bugglequest.SimpleBuggle {
 		forward(4);
 		
 		brushDown();
-		faireNiche();		
+		dogHouse();		
 		brushUp();
 		
 		forward(2);
@@ -60,6 +60,6 @@ public class MethodsDogHouseEntity extends universe.bugglequest.SimpleBuggle {
 		forward(4);
 		
 		brushDown();
-		faireNiche();		
+		dogHouse();		
 	} 
 }

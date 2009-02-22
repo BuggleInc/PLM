@@ -11,12 +11,12 @@ apprenant à faire de nouvelles choses.
    ligne du bas, il faut soit répéter ce code plusieurs fois, soit
    l'inclure dans une boucle. Dans les deux cas, le code résultant
    n'est pas très lisible, et il serait mieux que la buggle comprenne
-   un ordre de type <code>vaChercher()</code> tout comme elle comprend
+   un ordre de type <code>goAndGet()</code> tout comme elle comprend
    un <code>forward()</code>.</p>
 
 
-<p>La syntaxe pour écrire une méthode simple nommée <code>vaChercher</code> est la suivante:
-<pre>public void vaChercher() {
+<p>La syntaxe pour écrire une méthode simple nommée <code>goAndGet</code> est la suivante:
+<pre>public void goAndGet() {
   actions();
   aFaire();
 }</pre>
@@ -45,13 +45,13 @@ apprenant à faire de nouvelles choses.
    méthode en minuscules, et de coller tous les mots décrivant la
    méthode les uns aux autres en mettant une majuscule à chacun. Il
    est interdit de mettre des espaces ou des accentués dans le nom
-   d'une méthode. C'est pourquoi nous écrivons "va chercher" sous la
-   forme "vaChercher".</p>
+   d'une méthode. C'est pourquoi nous écrivons "go and get" sous la
+   forme "goAndGet".</p>
 
 <h3>Objectif de cet exercice</h3><a name="Objectifs"> 
 
 L'objectif de cet exercice est donc d'écrire une méthode nommée
-<code>vaChercher()</code> et qui fait la même chose qu'aux exercices
+<code>goAndGet()</code> et qui fait la même chose qu'aux exercices
 précédents (avance tant qu'on ne trouve pas de baggle, ramasser le
 baggle, reculer à la case départ, poser le baggle).
 
@@ -69,7 +69,7 @@ baggle, reculer à la case départ, poser le baggle).
 
 <pre>public void run() {
 &nbsp;&nbsp;for (int i=0; i&lt;7; i++) { 
-&nbsp;&nbsp;&nbsp;&nbsp;vaChercher();
+&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();
 &nbsp;&nbsp;&nbsp;&nbsp;turnRight();
 &nbsp;&nbsp;&nbsp;&nbsp;forward();
 &nbsp;&nbsp;&nbsp;&nbsp;turnLeft();
@@ -77,11 +77,11 @@ baggle, reculer à la case départ, poser le baggle).
 }</pre>
 
 <p>Donc, votre buggle va répéter 7 fois (la taille du monde)
-   l'opération <code>vaChercher()</code> que vous allez écrire, plus
+   l'opération <code>goAndGet()</code> que vous allez écrire, plus
    les opérations nécessaire à se décaler d'une colonne vers la droite
    (tourner à droite, avancer, tourner à gauche). Notez que la buggle va 
    donc faire un pas vers la droite alors qu'elle sera tout à droite du 
    monde. Cela la ramènera sur le bord gauche, car le monde des buggles est torique.</p>
 
-<p>À vous d'écrire cette méthode vaChercher().</p>
+<p>À vous d'écrire cette méthode goAndGet().</p>
 
