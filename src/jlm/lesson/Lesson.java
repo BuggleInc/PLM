@@ -1,8 +1,6 @@
 package jlm.lesson;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -41,33 +39,15 @@ public abstract class Lesson {
 	private void loadAboutAndName() {
 		aboutLoaded = true;
 		
+		/* read it */
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
-		BufferedReader br = ExerciseTemplated.fileReader(filename,"html");
-		if (br==null) {
+		StringBuffer sb = ExerciseTemplated.fileToStringBuffer(filename,"html");
+		if (sb==null) {
 			about = "File "+filename+".html not found.";
 			name = filename;
 			return;
 		}
 
-		/* read it */
-		StringBuffer sb = new StringBuffer();
-		try {
-			String s;
-			s = br.readLine();
-			while (s != null) {
-				sb.append(s);
-				s = br.readLine();
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();			
-		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 		String str = sb.toString();
 		
 		/* search the mission name */

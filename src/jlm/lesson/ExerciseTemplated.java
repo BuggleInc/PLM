@@ -79,16 +79,12 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		return br;
 	}	
-	protected void loadHTMLMission() {
-		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+	static protected StringBuffer fileToStringBuffer(String file, String extension) {
+		BufferedReader br = fileReader(file,extension);
 		String newLine = System.getProperty("line.separator");
-		BufferedReader br = fileReader(filename,"html");
-		if (br==null) {
-			mission = "File "+filename+" not found.";
-			return;
-		}
-
-		/* read it */
+		if (br==null) 
+			return null;
+		
 		StringBuffer sb = new StringBuffer();
 		try {
 			String s;
@@ -108,6 +104,16 @@ public abstract class ExerciseTemplated extends Exercise {
 				e.printStackTrace();
 			}
 		}
+		return sb;
+	}
+	protected void loadHTMLMission() {
+		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+
+		StringBuffer sb = fileToStringBuffer(filename, "html");
+		if (sb==null) {
+			mission = "File "+filename+" not found.";
+			return;
+		}		
 		String str = sb.toString();
 		
 		/* search the mission name */
@@ -129,119 +135,95 @@ public abstract class ExerciseTemplated extends Exercise {
 			return;
 		try {
 			intoWorld.readFromFile(br);
-		}catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 
-	public void newSourceFromFile(String name, String filename, String extension) {		
-		BufferedReader br = fileReader( "src"+File.separator+filename,extension);
-		if (br==null)
-			br = fileReader(filename,extension);
-		if (br==null) {
+	public void newSourceFromFile(String name, String filename, String extension) {
+		StringBuffer sb = fileToStringBuffer("src"+File.separator+filename,extension);
+		if (sb==null)
+			sb = fileToStringBuffer(filename,extension);
+		if (sb==null) {
 			System.err.println("Source file "+filename+" not found.");
 			return;
 		}
 
-		String newLine = System.getProperty("line.separator");
+		/* Extract the template, the initial content and the solution out of the file */
+		int state = 0;
+		StringBuffer head = new StringBuffer(); /* before the template (state 0) */
+		StringBuffer templateHead = new StringBuffer(); /* in template before solution (state 1) */
+		StringBuffer solution = new StringBuffer(); /* the solution (state 2) */
+		StringBuffer templateTail = new StringBuffer(); /* in template after solution (state 3) */
+		StringBuffer tail = new StringBuffer(); /* after the template (state 4) */
 
-		StringBuffer sbFullContent=null;
-		try {
-			sbFullContent = new StringBuffer();
-			String s;
-			s = br.readLine();
-			while (s != null) {
-				sbFullContent.append(s);
-				sbFullContent.append(newLine);
-				s = br.readLine();
-			}
-		} catch (IOException e) {
-			e.printStackTrace();			
-		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}	
-
-		if (sbFullContent != null) {
-			/* Extract the template, the initial content and the solution out of the file */
-			int state = 0;
-			StringBuffer head = new StringBuffer(); /* before the template (state 0) */
-			StringBuffer templateHead = new StringBuffer(); /* in template before solution (state 1) */
-			StringBuffer solution = new StringBuffer(); /* the solution (state 2) */
-			StringBuffer templateTail = new StringBuffer(); /* in template after solution (state 3) */
-			StringBuffer tail = new StringBuffer(); /* after the template (state 4) */
-
-			for (String line : sbFullContent.toString().split("\n")) {
-				if (this.debug)
-					System.out.println(state+"->"+line);
-				switch (state) {
-				case 0: /* initial content */
-					if (line.contains("public class ")) {
-						head.append(line.replaceAll("public class \\S*", "public class "+name));
-					} else if (line.contains("package")) {
-						head.append("$package\n");						
-					} else if (line.contains("BEGIN TEMPLATE")) {
-						state = 1;
-					} else if (line.contains("BEGIN SOLUTION")) {
-						state = 2; 
-					} else {
-						head.append(line+"\n");
-					}
-					break;
-				case 1: /* template head */
-					if (line.contains("public class "))
-						templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
-					else if (line.contains("END TEMPLATE")) {
-						state = 4;
-					} else if (line.contains("BEGIN SOLUTION")) {
-						state = 2; 
-					} else {
-						templateHead.append(line+"\n");
-					}
-					break;
-				case 2: /* solution */
-					if (line.contains("END TEMPLATE")) {
-						state = 4;
-					} else if (line.contains("END SOLUTION")) {
-						state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of several solutions, is it wrong? 
-					} else {
-						solution.append(line+"\n");
-					}
-					break;
-				case 3: /* template tail */
-					if (line.contains("END TEMPLATE")) {
-						state = 4;
-					} else {
-						templateTail.append(line+"\n");	
-					}
-					break;
-				case 4: 
-					tail.append(line+"\n");
-					break;
-				default: 	
-					throw new RuntimeException("Parser error in "+filename+". This is a parser bug (state="+state+"), please report.");	
+		for (String line : sb.toString().split("\n")) {
+			if (this.debug)
+				System.out.println(state+"->"+line);
+			switch (state) {
+			case 0: /* initial content */
+				if (line.contains("public class ")) {
+					head.append(line.replaceAll("public class \\S*", "public class "+name));
+				} else if (line.contains("package")) {
+					head.append("$package\n");						
+				} else if (line.contains("BEGIN TEMPLATE")) {
+					state = 1;
+				} else if (line.contains("BEGIN SOLUTION")) {
+					state = 2; 
+				} else {
+					head.append(line+"\n");
 				}
+				break;
+			case 1: /* template head */
+				if (line.contains("public class "))
+					templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
+				else if (line.contains("END TEMPLATE")) {
+					state = 4;
+				} else if (line.contains("BEGIN SOLUTION")) {
+					state = 2; 
+				} else {
+					templateHead.append(line+"\n");
+				}
+				break;
+			case 2: /* solution */
+				if (line.contains("END TEMPLATE")) {
+					state = 4;
+				} else if (line.contains("END SOLUTION")) {
+					state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of several solutions, is it wrong? 
+				} else {
+					solution.append(line+"\n");
+				}
+				break;
+			case 3: /* template tail */
+				if (line.contains("END TEMPLATE")) {
+					state = 4;
+				} else {
+					templateTail.append(line+"\n");	
+				}
+				break;
+			case 4: 
+				tail.append(line+"\n");
+				break;
+			default: 	
+				throw new RuntimeException("Parser error in "+filename+". This is a parser bug (state="+state+"), please report.");	
 			}
-
-			String initialContent = templateHead.toString() + templateTail.toString();
-			String debugContent = templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ templateTail.toString();
-			/* TODO: remove "//.*\n" before putting everything on one line only */
-			/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
-			StringBuffer template = new StringBuffer();
-			for (String s: (head+"$body"+tail).split("\n")) 
-				template.append(s);			
-
-			if (this.debug) {
-				System.out.println("<<<<<<<<template:"+template);
-				System.out.println("<<<<<<<<debugCtn:"+debugContent);
-				System.out.println("<<<<<<<<initialContent:"+initialContent);
-			}
-			newSource(name, initialContent, template.toString());
 		}
+
+		String initialContent = templateHead.toString() + templateTail.toString();
+		String debugContent = templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ templateTail.toString();
+		/* TODO: remove "//.*\n" before putting everything on one line only */
+		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
+		StringBuffer template = new StringBuffer();
+		for (String s: (head+"$body"+tail).split("\n")) 
+			template.append(s);			
+
+		if (this.debug) {
+			System.out.println("<<<<<<<<template:"+template);
+			System.out.println("<<<<<<<<debugCtn:"+debugContent);
+			System.out.println("<<<<<<<<initialContent:"+initialContent);
+		}
+		newSource(name, initialContent, template.toString());
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
 		if (entitiesNames == null)  {
