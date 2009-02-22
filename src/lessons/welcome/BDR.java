@@ -4,10 +4,9 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
-
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 import universe.bugglequest.BuggleWorldCell;
+import universe.bugglequest.Direction;
 
 public class BDR extends ExerciseTemplated {
 

@@ -1,10 +1,6 @@
 package jlm.ui;
 
-import java.util.Dictionary;
-import java.util.Hashtable;
-
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTabbedPane;

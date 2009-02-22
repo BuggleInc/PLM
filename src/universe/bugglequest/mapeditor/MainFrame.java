@@ -18,8 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
-
-
 import jlm.ui.ResourcesCache;
 
 

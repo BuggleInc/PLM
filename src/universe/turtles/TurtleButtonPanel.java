@@ -4,7 +4,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import jlm.universe.EntityControlPanel;
-
 import net.miginfocom.swing.MigLayout;
 
 public class TurtleButtonPanel extends EntityControlPanel {

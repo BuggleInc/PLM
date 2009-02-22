@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
-
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;

@@ -8,7 +8,6 @@ import java.util.Arrays;
 
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
-
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.ui.BuggleButtonPanel;
 import universe.bugglequest.ui.BuggleWorldView;

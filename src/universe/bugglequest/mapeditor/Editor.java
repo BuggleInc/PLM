@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import jlm.universe.IWorldView;
-
-
 import universe.bugglequest.BuggleWorld;
 
 public class Editor {

@@ -6,10 +6,9 @@ import java.util.Iterator;
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
 import jlm.universe.Entity;
-
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 import universe.bugglequest.BuggleWorldCell;
+import universe.bugglequest.Direction;
 
 public class BDR2 extends ExerciseTemplated {
 

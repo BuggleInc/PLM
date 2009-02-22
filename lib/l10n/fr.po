@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-22 06:31+0100\n"
-"PO-Revision-Date: 2009-02-22 06:56+0100\n"
+"POT-Creation-Date: 2009-02-22 07:12+0100\n"
+"PO-Revision-Date: 2009-02-22 07:13+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -1174,7 +1174,7 @@ msgstr ""
 #: src/lessons/welcome/Methods.html:51
 #: src/lessons/welcome/MethodsDogHouse.html:38
 #: src/lessons/welcome/MethodsReturning.html:43
-#: src/lessons/welcome/MethodsArgs.html:55 src/lessons/welcome/BDR.html:136
+#: src/lessons/welcome/MethodsArgs.html:56 src/lessons/welcome/BDR.html:136
 #: src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34
 #: src/lessons/maze/RandomMouseMaze.html:22
 #: src/lessons/maze/WallFollowerMaze.html:11
@@ -2336,13 +2336,18 @@ msgid ""
 "chacun d'entre eux. Remarquez que le menu déroulant de sélection du monde "
 "(juste sous la barre de réglage de la vitesse) permet de spécifier le monde "
 "que vous souhaitez observer."
-msgstr "This exercise is a bit different since there is two initial worlds, each with a specific objective. Your code must work for each of them. Observe that the world selection scrolling menu (right below the speed slider) allows to switch the observed world."
+msgstr ""
+"This exercise is a bit different since there is two initial worlds, each "
+"with a specific objective. Your code must work for each of them. Observe "
+"that the world selection scrolling menu (right below the speed slider) "
+"allows to switch the observed world."
 
 #: src/lessons/welcome/MethodsReturning.html:70
 msgid ""
 "Quand votre méthode <tt>haveBaggle</tt> fonctionne, passez à l'exercice "
 "suivant."
-msgstr "When your method <code>haveBaggle</code> works, proceed to next exercise."
+msgstr ""
+"When your method <code>haveBaggle</code> works, proceed to next exercise."
 
 #: src/lessons/welcome/MethodsArgs.html:1
 msgid "Méthodes avec paramètres"
@@ -2356,6 +2361,10 @@ msgid ""
 "<tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt>, et ainsi "
 "de suite, ça ne constitue pas un réel gain de temps..."
 msgstr ""
+"Don't you get tired of writing again and again the code to move by a fixed "
+"amount of steps? On the other hand, writting <tt>forward2()</tt>, "
+"<tt>forward3()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>, "
+"<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help"
 
 #: src/lessons/welcome/MethodsArgs.html:10
 msgid ""
@@ -2364,6 +2373,10 @@ msgid ""
 "suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de "
 "la fonction comme s'il s'agissait de variables définies ici."
 msgstr ""
+"Luckily, it is possible to pass <b>parameters</b> to your methods. You have "
+"to specifiy their type and name between the parenthesis after the method "
+"name. Then, you can use them in the method body as if it were variables "
+"defined in there, and which initial value is what the caller specified."
 
 #: src/lessons/welcome/MethodsArgs.html:16
 #, no-wrap
@@ -2372,23 +2385,30 @@ msgid ""
 "&nbsp;&nbsp;return x / 2;\n"
 "}"
 msgstr ""
+"double divideByTwo(double x) {\n"
+"&nbsp;&nbsp;return x / 2;\n"
+"}"
 
 #: src/lessons/welcome/MethodsArgs.html:20
 msgid ""
 "À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les "
 "parenthèses de l'appel."
 msgstr ""
+"As caller, you have to specify the initial value of this \"variables\" "
+"between the call's parenthesis."
 
 #: src/lessons/welcome/MethodsArgs.html:21
 #, no-wrap
 msgid "double y = diviseParDeux(3.14);"
-msgstr ""
+msgstr "double y = divideByTwo(3.14);"
 
 #: src/lessons/welcome/MethodsArgs.html:23
 msgid ""
 "Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules, "
 "lors de la déclaration comme lors de l'appel."
 msgstr ""
+"If you want several parameters, you need to separate them with comas (,) "
+"both in the declaration and calls."
 
 #: src/lessons/welcome/MethodsArgs.html:25
 #, no-wrap
@@ -2397,20 +2417,26 @@ msgid ""
 "&nbsp;&nbsp;return x / y;\n"
 "}"
 msgstr ""
+"double divide(double x, double y) {\n"
+"&nbsp;&nbsp;return x / y;\n"
+"}"
 
 #: src/lessons/welcome/MethodsArgs.html:28
 #, no-wrap
 msgid "double y = divise(3.14 , 1.5);"
-msgstr ""
+msgstr "double y = divide(3.14 , 1.5);"
 
 #: src/lessons/welcome/MethodsArgs.html:30
 msgid ""
 "En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition "
-"qu'elles n'aient pas les mêmes paramètres (on dit qu'elles n'ont pas la même "
-"<b>signature</b>)."
+"qu'elles n'aient pas le même nombre et les mêmes types de paramètres (on dit "
+"qu'elles n'ont pas la même <b>signature</b>)."
 msgstr ""
+"In Java, you can declare several methods of the same name as long as they "
+"don't have the same parameter types and number (they are said to have "
+"different <b>signature</b>)."
 
-#: src/lessons/welcome/MethodsArgs.html:32
+#: src/lessons/welcome/MethodsArgs.html:33
 #, no-wrap
 msgid ""
 "int max(int x, int y) {\n"
@@ -2429,8 +2455,23 @@ msgid ""
 "&nbsp;&nbsp;return z;\n"
 "}"
 msgstr ""
+"int max(int x, int y) {\n"
+"  if (x > y) {\n"
+"    return x;\n"
+"  }\n"
+"  return y;\n"
+"}\n"
+"int max(int x, int y, int z) {\n"
+"  if (x > y && x > z) {\n"
+"    return x;\n"
+"  }\n"
+"  if (y > z) {\n"
+"    return y;\n"
+"  }\n"
+"  return z;\n"
+"}"
 
-#: src/lessons/welcome/MethodsArgs.html:48
+#: src/lessons/welcome/MethodsArgs.html:49
 msgid ""
 "Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque "
 "alternative. Cela fonctionne tout de même car un <tt>return</tt> interrompt "
@@ -2440,7 +2481,7 @@ msgid ""
 "de la fonction."
 msgstr ""
 
-#: src/lessons/welcome/MethodsArgs.html:55
+#: src/lessons/welcome/MethodsArgs.html:56
 msgid ""
 "<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode <code>move"
 "(int nbPas, boolean forward)</code> qui avance de <code>nbPas</code> si "
@@ -2451,13 +2492,13 @@ msgid ""
 "nombre de pas à faire (mais ce n'est pas important ici)."
 msgstr ""
 
-#: src/lessons/welcome/MethodsArgs.html:66
+#: src/lessons/welcome/MethodsArgs.html:67
 msgid ""
 "Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas "
 "grand chose pour vous, puisque toutes sont ici régies par le même code."
 msgstr ""
 
-#: src/lessons/welcome/MethodsArgs.html:70
+#: src/lessons/welcome/MethodsArgs.html:71
 msgid ""
 "Le code de la méthode à proprement parlé ne devrait pas poser de problème."
 msgstr ""

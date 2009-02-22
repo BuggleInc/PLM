@@ -16,7 +16,6 @@ import jlm.event.GameStateListener;
 import jlm.event.StatusStateListener;
 import jlm.lesson.Exercise;
 import jlm.lesson.Lesson;
-import jlm.ui.StatusBar;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
