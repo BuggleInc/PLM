@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-22 06:58+0100\n"
+"POT-Creation-Date: 2009-02-22 07:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1167,7 +1167,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><h3>
-#: src/lessons/welcome/Basics.html:61 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:8 src/lessons/welcome/Conditions.html:46 src/lessons/welcome/LoopWhile.html:21 src/lessons/welcome/LoopDoWhile.html:8 src/lessons/welcome/Variables.html:40 src/lessons/welcome/LoopFor.html:53 src/lessons/welcome/Methods.html:51 src/lessons/welcome/MethodsDogHouse.html:38 src/lessons/welcome/MethodsReturning.html:43 src/lessons/welcome/MethodsArgs.html:55 src/lessons/welcome/BDR.html:136 src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34 src/lessons/maze/RandomMouseMaze.html:22 src/lessons/maze/WallFollowerMaze.html:11 src/lessons/maze/PledgeMaze.html:22
+#: src/lessons/welcome/Basics.html:61 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:8 src/lessons/welcome/Conditions.html:46 src/lessons/welcome/LoopWhile.html:21 src/lessons/welcome/LoopDoWhile.html:8 src/lessons/welcome/Variables.html:40 src/lessons/welcome/LoopFor.html:53 src/lessons/welcome/Methods.html:51 src/lessons/welcome/MethodsDogHouse.html:38 src/lessons/welcome/MethodsReturning.html:43 src/lessons/welcome/MethodsArgs.html:56 src/lessons/welcome/BDR.html:136 src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34 src/lessons/maze/RandomMouseMaze.html:22 src/lessons/maze/WallFollowerMaze.html:11 src/lessons/maze/PledgeMaze.html:22
 msgid "Objectif de cet exercice"
 msgstr ""
 
@@ -2216,12 +2216,12 @@ msgstr ""
 #: src/lessons/welcome/MethodsArgs.html:30
 msgid ""
 "En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition "
-"qu'elles n'aient pas les mêmes paramètres (on dit qu'elles n'ont pas la même "
-"<b>signature</b>)."
+"qu'elles n'aient pas le même nombre et les mêmes types de paramètres (on dit "
+"qu'elles n'ont pas la même <b>signature</b>)."
 msgstr ""
 
 # type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:32
+#: src/lessons/welcome/MethodsArgs.html:33
 #, no-wrap
 msgid ""
 "int max(int x, int y) {\n"
@@ -2242,7 +2242,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:48
+#: src/lessons/welcome/MethodsArgs.html:49
 msgid ""
 "Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque "
 "alternative. Cela fonctionne tout de même car un <tt>return</tt> interrompt "
@@ -2253,7 +2253,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p><p><a>
-#: src/lessons/welcome/MethodsArgs.html:55
+#: src/lessons/welcome/MethodsArgs.html:56
 msgid ""
 "<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode "
 "<code>move(int nbPas, boolean forward)</code> qui avance de "
@@ -2266,14 +2266,14 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p><p><a><p>
-#: src/lessons/welcome/MethodsArgs.html:66
+#: src/lessons/welcome/MethodsArgs.html:67
 msgid ""
 "Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas "
 "grand chose pour vous, puisque toutes sont ici régies par le même code."
 msgstr ""
 
 # type: Content of: <p><p><p><p><a><p>
-#: src/lessons/welcome/MethodsArgs.html:70
+#: src/lessons/welcome/MethodsArgs.html:71
 msgid "Le code de la méthode à proprement parlé ne devrait pas poser de problème."
 msgstr ""
 
