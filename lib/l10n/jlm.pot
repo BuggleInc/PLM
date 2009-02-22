@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-02-13 22:23+0100\n"
+"POT-Creation-Date: 2009-02-22 06:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -592,1130 +592,6 @@ msgid ""
 msgstr ""
 
 # type: Content of: <h1>
-#: src/lessons/sort/Main.html:1
-msgid "Algorithmes de tri"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/sort/Main.html:3
-msgid ""
-"Cette leçon vous permet d'expérimenter avec les algorithmes de tri "
-"classiques (et certaines optimisations moins courantes de "
-"ceux-ci). L'objectif est double: il s'agit tout d'abord de mieux comprendre "
-"le principe de ces algorithmes en les codant vous-même.  Mais même si vous "
-"ne codez pas les algorithmes, vous pouvez utiliser le mode démo pour "
-"organiser des \\\"courses\\\" entre ces algorithmes afin d'expérimenter en "
-"pratique ce qu'implique la différence de complexité asymptotique entre deux "
-"algorithmes."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/sort/Main.html:10
-msgid ""
-"Un exercice sur les tris récursifs (en particulier QuickSort et MergeSort) "
-"est prévu à l'avenir."
-msgstr ""
-
-# type: Content of: <h1>
-#: src/lessons/sort/ExSelectionSort.html:1
-msgid "Tri par selection"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/sort/ExSelectionSort.html:3
-msgid ""
-"Cet exercice est l'occasion d'implémenter un autre algorithme très classique "
-": le tri par sélection."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/sort/ExSelectionSort.html:5
-msgid ""
-"Son principe est simplement de sélectioner pour chaque case du tableau la "
-"plus petite valeur de la partie pas encore triée. Ainsi, pour la premiere "
-"case, je prend la plus petite valeur du tableau. Pour la seconde, je prend "
-"la seconde plus petite valeur, qui se trouve être la plus petite des cases "
-"n'étant pas encore triées."
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/sort/ExSelectionSort.html:9
-msgid ""
-"Plus généralement, pour la case N, je cherche la case M de [n;lgr] contenant "
-"la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N "
-"et celui de la case M."
-msgstr ""
-
-# type: Content of: <p><p><h2>
-#: src/lessons/sort/ExSelectionSort.html:12
-msgid "Variantes possibles"
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/sort/ExSelectionSort.html:13
-msgid ""
-"Un autre algorithme classique dont le principe repose sur la sélection des "
-"bons éléments est le tri par tas, mais il utilise une structure de données "
-"en tas, que nous n'avons pas encore introduite. Sachez simplement que ce tri "
-"présente un coût en O(n log n) dans le pire des cas, ce qui en fait un "
-"algorithme très intéressant en pratique."
-msgstr ""
-
-# type: Content of: <h1>
-#: src/lessons/sort/ExInsertionSort.html:1
-msgid "Algorithme par insertion et variantes"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/sort/ExInsertionSort.html:3
-msgid ""
-"Cet exercice vous permet d'expérimenter avec le tri par insertion et ses "
-"variantes les plus classiques."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/sort/ExInsertionSort.html:4
-msgid "InsertionSort"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/sort/ExInsertionSort.html:5
-msgid ""
-"Ce tri est relativement simple à comprendre et à écrire, même s'il n'offre "
-"pas les meilleures performances possibles.  Il s'agit d'un algorithme "
-"quadratique (complexité asymptotique en O(n2)), mais il est plus efficace en "
-"pratique (linéaire dans le meilleur des cas, ie quand le tableau déjà trié "
-"et N2/4 en moyenne)."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/sort/ExInsertionSort.html:8
-msgid ""
-"L'idée est de parcourir tous les éléments du tableau, et d'insérer chacun à "
-"sa place dans la partie du tableau déjà trié.  Lorsque l'on regarde un "
-"élément x du tableau, on est dans la situation suivante : tous les éléments "
-"à gauche du tableau sont déjà triés, et il faut insérer x à sa place dans le "
-"tableau."
-msgstr ""
-
-# type: Content of: <p><img><p>
-#: src/lessons/sort/ExInsertionSort.html:13
-msgid "Une fois ceci fait, on se retrouve dans la situation suivante:"
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/sort/ExInsertionSort.html:16 src/lessons/sort/ExExchangeSort.html:22
-msgid "Le pseudo-code de cet algorithme est donc le suivant :"
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><pre>
-#: src/lessons/sort/ExInsertionSort.html:17
-#, no-wrap
-msgid ""
-"Pour tout i dans [1,lgr]\n"
-"  stoquer la valeur de la case i dans une variable val\n"
-"  recopier la case i-1 dans i, si i-1 contient une valeur plus grande que "
-"val\n"
-"  recopier la case i-2 dans i-1, si i-2 contient une valeur plus grande que "
-"val  \n"
-"  recopier la case i-3 dans i-2, si i-3 contient une valeur plus grande que "
-"val  \n"
-"  recopier la case i-4 dans i-3, si i-4 contient une valeur plus grande que "
-"val\n"
-"  ...\n"
-"  recopier val dans la dernière case recopiée plus haut\n"
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p>
-#: src/lessons/sort/ExInsertionSort.html:27
-msgid ""
-"Bien entendu, il faut utiliser une boucle pour écrire la grosse permutation "
-"circulaire au coeur de la boucle.  L'écrire explicitement de la sorte serait "
-"vraiment ... contre-productif."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><h2>
-#: src/lessons/sort/ExInsertionSort.html:30
-msgid "ShellSort"
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p>
-#: src/lessons/sort/ExInsertionSort.html:32
-msgid ""
-"Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en "
-"1959. Son principe peut être vu comme une application de l'idée du CombSort "
-"(faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) "
-"au tri par insertion (le CombSort est une variante du tri à bulle).  Au lieu "
-"de comparer les valeurs ajacentes lors du tri par insertion, on compare des "
-"valeurs séparées par un <i>gap</i> (écartement) plus grand. Plus le gap est "
-"grand et plus les éléments sont déplacés rapidement vers leur position "
-"finale, mais aussi plus le déplacement est imprécis. Il faut donc appliquer "
-"l'algorithme avec une séquence de gaps décroissante vers 1. Ainsi, à la "
-"dernière étape quand le gap vaut 1, on applique l'algorithme de tri par "
-"insertion de base, mais sur un tableau déjà presque trié par les étapes "
-"précédentes."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p>
-#: src/lessons/sort/ExInsertionSort.html:42
-msgid ""
-"Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur du "
-"gap, puis de le diviser par deux à chaque étape.  Le pseudo-code est donc le "
-"suivant:"
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><pre>
-#: src/lessons/sort/ExInsertionSort.html:45
-#, no-wrap
-msgid ""
-"gap=lgr/2\n"
-"tant que gap>0:\n"
-"  appliquer l'algorithme de tri par insertion en comparant i-gap et i, puis "
-"i-2gap et i-gap, puis i-3gap et i-2gap, etc.\n"
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><p>
-#: src/lessons/sort/ExInsertionSort.html:50
-msgid ""
-"Comme dans le cas du CombSort, la séquence des valeurs prises par le gap se "
-"révèle être d'une importance capitale pour les performances du tri de "
-"Shell. Il existe des cas pathologiques qui font que la séquence que nous "
-"avons utilisée ici présente une complexité en O(n^2) dans le pire des "
-"cas. D'autres séquences ont été proposé: la séquence des incréments de "
-"Hibbard (2^k − 1) permet une complexité dans le pire des cas de O(n^(3/2)), "
-"les incréments de Pratt (2^i*3^j) permettent un pire cas en O(n "
-"log(n)log(n)).  Ces résultats font du tri de Shell un candidat tout à fait "
-"valide pour des instances de tableau de quelques centaines de milliers "
-"d'éléments quand il est correctement implémenté."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><p>
-#: src/lessons/sort/ExInsertionSort.html:57
-msgid ""
-"Dans notre cas, les instances de tableaux que nous utilisons sont trop "
-"petites pour que ces optimisations présentent un réel avantage. Si on "
-"voulait le faire, il faudrait prendre en valeur initiale du gap la plus "
-"grande valeur de la suite utilisée, puis prendre les valeurs successives en "
-"descendant ensuite."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><p>
-#: src/lessons/sort/ExInsertionSort.html:61
-msgid ""
-"De façon intéressante, déterminer la meilleure séquence de gap pour le shell "
-"sort s'avère être un problème de recherche actuel en informatique. Par "
-"exemple, un article publié en 2001 propose la suite suivante, qui semble "
-"optimale en pratique pour des tailles de tableau allant jusqu'à 10^5: {1, 4, "
-"10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the "
-"Average Case of Shellsort, 13th International Symposium on Fundamentals of "
-"Computation Theory, LNCS 2001; Vol. 2138)."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><p>
-#: src/lessons/sort/ExInsertionSort.html:67
-msgid ""
-"Si vous vous étiez toujours demandé ce que font les chercheurs en "
-"informatique à notre époque, voici un élément de réponse: certains d'entre "
-"eux améliorent des algorithmes fondamentaux pour permettre à d'autres de "
-"faire des programmes efficaces..."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><h2>
-#: src/lessons/sort/ExInsertionSort.html:70
-msgid "D'autres variantes du tri par insertion"
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p>
-#: src/lessons/sort/ExInsertionSort.html:72
-msgid ""
-"TreeSort construit un arbre binaire équilibré des données pour les "
-"trier. Cela lui permet d'être en O(nlog n) en moyenne (mais O(n^2) dans le "
-"pire cas). Nous n'étudierons pas cet algorithme ici puisque comprendre son "
-"fonctionnement demande de savoir ce qu'est un arbre binaire, ce qui est au "
-"dela de nos objectifs présents."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><p>
-#: src/lessons/sort/ExInsertionSort.html:76
-msgid ""
-"Il existe d'autres variantes du tri par insertion, comme PatienceSorting, "
-"qui fait des paquets des valeurs et trie ensuite chaque paquet. Cet "
-"algorithme présente un pire cas en O(nlog n), et une complexité spatiale en "
-"O(n).  LibrarySort (proposé en 2004) échange également un peu d'espace pour "
-"du temps puisqu'il présente une complexité moyenne en O(n log n), mais "
-"nécessite de stoquer des données supplémentaires."
-msgstr ""
-
-# type: Content of: <p><img><p><p><img><p><p><p>
-#: src/lessons/sort/ExInsertionSort.html:81
-msgid ""
-"Wikipedia (en anglais) propose une description détaillée de tous ces "
-"algorithmes que nous n'avons pas le temps de détailler ici."
-msgstr ""
-
-# type: Content of: <h1>
-#: src/lessons/sort/ExExchangeSort.html:1
-msgid "Le tri à bulle et variantes"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/sort/ExExchangeSort.html:3
-msgid ""
-"Vous voici dans le monde des tris. Il vous permet d'expérimenter avec les "
-"différents algorithmes de tri existant.  Consultez l'aide du monde "
-"(\"Help->About this world\") pour une aide sur les primitives utilisables "
-"par vos algorithmes."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/sort/ExExchangeSort.html:6
-msgid ""
-"Dans ce premier exercice, nous allons voir les plus simples d'entre "
-"eux. L'onglet \"Source code\" est composé de plusieurs sous-onglets, "
-"correspondant aux différents algorithmes à écrire. Pour réussir l'exercice, "
-"il faut que votre solution réalise le même nombre de lectures et écritures "
-"que la solution codée dans l'objectif.  Attention donc à suivre le "
-"pseudo-code de chaque algorithme à la lettre!"
-msgstr ""
-
-# type: Content of: <p><h2>
-#: src/lessons/sort/ExExchangeSort.html:11
-msgid "BubbleSort"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/sort/ExExchangeSort.html:13
-msgid ""
-"Le tri à bulles ou tri par propagation consiste à faire remonter "
-"progressivement les plus petits éléments d'une liste, comme les bulles d'air "
-"remontent à la surface d'un liquide. L'algorithme parcourt la liste, et "
-"compare les couples d'éléments successifs. Lorsque deux éléments successifs "
-"ne sont pas dans l'ordre croissant, ils sont échangés. Après chaque parcours "
-"complet de la liste, l'algorithme recommence l'opération. Lorsqu'aucun "
-"échange n'a lieu pendant un parcours, cela signifie que la liste est triée : "
-"l'algorithme peut s'arrêter.  La simplicité de cet algorithme justifie son "
-"étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est "
-"quasiment jamais utilisé en pratique."
-msgstr ""
-
-# type: Content of: <p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:23
-#, no-wrap
-msgid ""
-"faire: \n"
-"        Pour tout i dans [0,lgr-2]\n"
-"          Si les cases i et i+1 doivent être inverser, le faire\n"
-"     tant qu'on a inverser des choses lors du dernier parcours\n"
-msgstr ""
-
-# type: Content of: <p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:29
-msgid "BubbleSort2"
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/sort/ExExchangeSort.html:31
-msgid ""
-"En étudiant le comportement du tri à bulle, on peut voir une première "
-"optimisation facile à effectuer: Après un parcours, le dernier élément du "
-"tableau est forcément le plus grand d'entre tous car le parcours l'a fait "
-"remonté comme une bulle à sa position. Plus généralement, après N parcours, "
-"on sait que les N derniers éléments du tableau sont déjà triés. En "
-"conclusion, il n'est pas utile de les recomparer sur les parcours "
-"suivants. Dans un premier temps, nous ferons autant de parcours qu'il y a "
-"d'éléments dans le tableau. Cela nous donne le pseudo-code suivant :"
-msgstr ""
-
-# type: Content of: <p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:37
-#, no-wrap
-msgid ""
-"Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)\n"
-"       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/sort/ExExchangeSort.html:42
-msgid ""
-"Lorsqu'on exécute cet algorithme, il peut être un peu décevant de constater "
-"qu'il s'exécute à la même vitesse que la version de base de "
-"BubbleSort. C'est un effet graphique seulement puisque seules les "
-"changements de valeurs dans le tableau sont représentées. Comme cette "
-"variante consiste à éviter des comparaisons inutiles, elle effectue très "
-"exactement le même nombre d'échanges que la version de base. Il est donc "
-"normal que notre interface graphique la représente à la même vitesse que la "
-"version de base. Mais les statistiques sur le nombre de lectures montrent "
-"bien que l'on a économisé plus d'un quart du nombre de lectures, ce qui "
-"n'est pas si mal."
-msgstr ""
-
-# type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:49
-msgid ""
-"D'un point de vue complexité algorithmique, cela ne change rien: cette "
-"variante est toujours en O(n2) en moyenne (on ne gagne que sur la "
-"constante)."
-msgstr ""
-
-# type: Content of: <p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:52
-msgid "BubbleSort3"
-msgstr ""
-
-# type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:54
-msgid ""
-"Réintroduisons maintenant la petite optimisation que nous avions retiré à "
-"l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau "
-"est maintenant trié. Cela nous donne le pseudo-code suivant :"
-msgstr ""
-
-# type: Content of: <p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:57
-#, no-wrap
-msgid ""
-"Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)\n"
-"       Pour tout j dans [0, i]\n"
-"          Si les cases j et j+1 doivent être inverser, le faire\n"
-"       Si le parcours sur les j n'a rien inversé, quiter la fonction\n"
-msgstr ""
-
-# type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:63
-msgid ""
-"Cet optimisation est plus décevante : on ne gagne que quelques pourcents en "
-"nombre de lectures sur BubbleSort2."
-msgstr ""
-
-# type: Content of: <p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:65
-msgid "CocktailSort"
-msgstr ""
-
-# type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:67
-msgid ""
-"Pour améliorer encore notre algorithme, il faut regarder un peu plus en "
-"détail son comportement. On peut constater que les grands éléments sont très "
-"rapidement mis en place tandis que les petits éléments se déplacent très "
-"lentement vers leur destination. On parle classiquement de lièvres et de "
-"tortues pour désigner respectivement les grandes valeurs et les petites "
-"valeurs."
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:72
-msgid ""
-"Pour permettre aux tortues d'aller plus vite, le tri cocktail parcours "
-"alternativement le tableau de gauche à droite et de droite à gauche. Voici "
-"son pseudo-code:"
-msgstr ""
-
-# type: Content of: <p><p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:76
-#, no-wrap
-msgid ""
-"Faire\n"
-"  Pour tout i dans [0,lgr-2], faire:\n"
-"    si i et i+1 doivent être échangées, le faire\n"
-"  Pour tout i dans [lgr-2,0] en descendant, faire:\n"
-"    si i et i+1 doivent être échangées, le faire\n"
-"tant qu'au moins l'un des parcours a inversé un élément\n"
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:84
-msgid ""
-"On constate que le tri cocktail fait très exactement le même nombre "
-"d'échanges que le tri à bulle, mais qu'il améliore les choses sur le nombre "
-"de lectures. Il reste cependant moins bon que BubbleSort2 en la matière."
-msgstr ""
-
-# type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:87
-msgid "CocktailSort2"
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:89
-msgid ""
-"Nous allons appliquer la même optimisation que BubbleSort2 à "
-"CocktailSort. Il nous faut nous souvenir des bornes du tableau pas encore "
-"trié, et le parcourir alternativement de droite à gauche et de gauche à "
-"droite:"
-msgstr ""
-
-# type: Content of: <p><p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:92
-#, no-wrap
-msgid ""
-"debut=0; fin=lgr-2\n"
-"Faire\n"
-"  Pour tout i dans [debut,fin], faire:\n"
-"    si i et i+1 doivent être échangées, le faire\n"
-"  fin--\n"
-"  Pour tout i dans [fin, debut] en descendant, faire:\n"
-"    si i et i+1 doivent être échangées, le faire\n"
-"  debut++\n"
-"tant qu'au moins l'un des parcours a inversé un élément\n"
-msgstr ""
-
-# type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:103
-msgid "CocktailSort3"
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:104
-msgid ""
-"Même si la complexité algorithmique de CocktailSort2 est la même que le tri "
-"à bulle, il semble bien mieux s'en tirer en pratique. On peut encore "
-"l'améliorer un tout petit peu en arretant tout si le parcours dans l'ordre "
-"croissant n'a rien inversé, sans faire le parcours dans l'ordre "
-"descroissant. De même, on peut quiter si le parcours croissant a inversé des "
-"choses, mais pas le parcours décroissant."
-msgstr ""
-
-# type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:109
-msgid "CombSort"
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:111
-msgid ""
-"Nous avons vu que le tri cocktail permet d'améliorer un peu les choses pour "
-"les tortues (ie, les petites valeurs près de la fin du tableau), mais on "
-"peut faire mieux. CombSort revient à leur faire prendre un racourci: Au lieu "
-"de comparer les valeurs adjacentes, on compare des valeurs séparés par un "
-"écart plus grand que 1. Ainsi, les tortues vont se déplacer de <i>ecart</i> "
-"cases à chaque parcours. Bien entendu, il faut appliquer l'algorithme avec "
-"des écarts de plus en plus petit et terminer avec <i>ecart=1</i> pour "
-"s'assurer que le tableau est entièrement trié à la fin. Choisir comment "
-"réduire l'écart entre les parcours est une question difficile (voir "
-"wikipédia en anglais sur le thème), mais en pratique, le diviser par 1.3 à "
-"chaque fois amène de bons résultats. Voici le pseudo-code correspondant :"
-msgstr ""
-
-# type: Content of: <p><p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:120
-#, no-wrap
-msgid ""
-" ecart = lgr;\n"
-" faire \n"
-"   si ecart>1 alors\n"
-"     ecart = ecart / 1.3\n"
-"   i = O\n"
-"   tant que i+ecart &lt; lgr faire:\n"
-"     si i et i+ecart doivent être inversés, le faire\n"
-"     ajouter ecart à i\n"
-" tant que l'écart est plus grand que 1 et/ou que le dernier parcours a "
-"inversé au moins un élément\n"
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:131
-msgid ""
-"Cet algorithme a été inventé par Wlodek Dobosiewicz en 1980 et redécouvert "
-"et popularisé par Stephen Lacey et Richard Box, qui l'ont décrit dans le "
-"magazine Byte d'avril 1991."
-msgstr ""
-
-# type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:134
-msgid "CombSort11"
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:136
-msgid ""
-"Les auteurs de l'algorithme ont constaté que l'on améliore les performances "
-"en s'assurant que les dernières valeurs de l'écart sont (11, 8, 6, 4, 3, 2, "
-"1) plutôt que (9, 6, 4, 3, 2, 1) ou (10, 7, 5, 3, 2, 1). Reprenez donc le "
-"code de CombSort, et indiquez juste après la mise à jour de l'écart que si "
-"la valeur est 9 ou 10, il faut utiliser 11 à la place."
-msgstr ""
-
-# type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:140
-msgid "GnomeSort"
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:142
-msgid ""
-"Le tri du gnome s'apparente au tri par insertion, à ceci près que les "
-"éléments sont déplacés par une série d'échange comme dans le tri à bulle. Le "
-"nom vient du comportement supposé des gnomes des jardins quand ils rangent "
-"une série de pots de fleurs. Voici la description de l'algorithme par son "
-"auteur:"
-msgstr ""
-
-# type: Content of: <p><p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:146
-msgid ""
-"Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
-"(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower "
-"pots. Basically, he looks at the flower pot next to him and the previous "
-"one; if they are in the right order he steps one pot forward, otherwise he "
-"swaps them and steps one pot backwards. Boundary conditions: if there is no "
-"previous pot, he steps forwards; if there is no pot next to him, he is "
-"done.  <i>—Dick Grune</i>"
-msgstr ""
-
-# type: Content of: <h1>
-#: src/lessons/recursion/Main.html:1
-msgid "Algorithmes récursifs"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Main.html:2
-msgid "Cette leçon vous permet d'expérimenter avec des algorithmes récursifs."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/Main.html:4
-msgid ""
-"Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
-"récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir dans "
-"la leçon sur les tris."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/Square.html:1
-msgid "Les petites cousines des Buggles"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Square.html:3
-msgid ""
-"Aujourd'hui, nous allons faire la connaissance des petites cousines des "
-"buggles : les tortues. En fait, les tortues sont bien plus vieilles que les "
-"buggles. Elles ont été inventées dans les années 70 par un scientifique du "
-"MIT nommé Seymour Papert pour aider à l'enseignement la programmation, et "
-"les buggles sont une variation sur le thème inventée par Lyn Turbak du "
-"Wellesley College plus tard."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/Square.html:10
-msgid ""
-"Les tortues sont donc un peu comme les buggles, en plus petit.  Comme les "
-"buggles, vous pouvez leur demander d'avancer, de tourner, de reculer, "
-"etc. Comme les buggles, elles laissent une trace sur leur passage quand "
-"elles avancent (simplement, le trait est bien plus fin)."
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/recursion/Square.html:15
-msgid ""
-"La principale différence est que là où les buggles ne peuvent tourner que de "
-"quarts de tour, les tortues peuvent tourner d'un angle quelconque précisé "
-"par un nombre réel (double). Cela leur donne bien plus de liberté dans leur "
-"mouvement. Les buggles savent faire plusieurs trucs qui échappent aux "
-"tortues, comme lire et écrire des messages sur le sol ou ramasser des "
-"objets, et il y a parfois des murs dans leur univers, mais tout cela dépasse "
-"complètement les tortues."
-msgstr ""
-
-# type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:22
-msgid ""
-"D'un point de vue pratique, la plupart des méthodes que vous connaissez à "
-"propos des buggles fonctionnent également avec les tortues, à quelques "
-"variantes près. En particulier, la méthode <code>forward</code> prend en "
-"argument le nombre de pas donné comme un nombre double (voir \"About this "
-"world\" dans le menu pour plus de détails)."
-msgstr ""
-
-# type: Content of: <p><p><p><h3>
-#: src/lessons/recursion/Square.html:28
-msgid "Des doubles ? Mais qu'est ce que c'est ?"
-msgstr ""
-
-# type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:29
-msgid "C'est simplement un nombre à virgule. Exemple:"
-msgstr ""
-
-# type: Content of: <p><p><p><pre>
-#: src/lessons/recursion/Square.html:31
-#, no-wrap
-msgid ""
-"double x = 3.72;\n"
-"x + 1.234 // Valeur = 4.954\n"
-"x + 2 // Valeur = 5.72 (2 converti en 2.0 automatiquement)\n"
-"x * 2 // Valeur = 7.44 (2 converti en 2.0 automatiquement)\n"
-"x / 2 // Valeur = 1.86 (2 converti en 2.0 automatiquement)\n"
-"(int) x // Valeur = 1 (“transtypage en int”, converti en entier en "
-"tronquant)\n"
-"Math.round(x) // Valeur = 2 (1.86 arrondi à l'entier le plus proche)\n"
-"Math.floor(x) // Valeur = 1 (1.86 arrondi en direction de moins l'infini)\n"
-"Math.floor(-5.12) // Vale = -6 (Arrondi en direction de moins l'infini)\n"
-"Math.ceiling(x) // Value = 2 (1.86 arrondi en direction de plus l'infini)\n"
-"Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)\n"
-"(double) 17 // Value = 17.0 (“transtypage en double”, converti en double)\n"
-msgstr ""
-
-# type: Content of: <br><p><p><p><p><h2>
-#: src/lessons/recursion/Square.html:45 src/lessons/recursion/Circle.html:16 src/lessons/welcome/Array.html:150
-msgid "Objectif de l'exercice"
-msgstr ""
-
-# type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:46
-msgid ""
-"Bien que ce soit le premier exercice de la leçon sur la récursivité, le code "
-"que vous devez écrire n'est pas récursif. L'objectif est de se familiariser "
-"avec le monde des tortues avant d'attaquer les choses sérieuses."
-msgstr ""
-
-# type: Content of: <p><p><p><p>
-#: src/lessons/recursion/Square.html:50
-msgid ""
-"Vous devez reproduire une forme géométrique simple faite de quatre carrés de "
-"longueur 100 de coté (voir le monde objectif pour plus de détails). C'est "
-"sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la "
-"réutiliser lors de l'écriture de la méthode <code>run()</code> qui fait le "
-"travail. Il est indispensable d'écrire au moins la méthode run, dont le "
-"prototype est le suivant:"
-msgstr ""
-
-# type: Content of: <p><p><p><p><pre>
-#: src/lessons/recursion/Square.html:57
-#, no-wrap
-msgid ""
-"public void run() {\n"
-"  // ecrivez ici ce que doit faire votre tortue\n"
-"}"
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/PolygonFractal.html:1
-msgid "Fractales de polygones"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/PolygonFractal.html:3
-msgid ""
-"La fractale que nous allons dessiner maintenant est formée d'un polygone "
-"auquel sont ajoutés des petits polygones sur chaque angle. Le prototype de "
-"la fonction le traçant est le suivant:"
-msgstr ""
-
-# type: Content of: <pre>
-#: src/lessons/recursion/PolygonFractal.html:5
-#, no-wrap
-msgid "void polygonFractal (int levels, int sides, double length, double shrink)"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/PolygonFractal.html:7 src/lessons/recursion/Sierpinski.html:7 src/lessons/recursion/DragonCurve1.html:25 src/lessons/recursion/DragonCurve2.html:37
-msgid ""
-"Consultez les objectifs de chaque monde pour comprendre comment écrire la "
-"fonction."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/Koch.html:1
-msgid "Flocons de neige"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Koch.html:3
-msgid ""
-"Nous allons maintenant dessiner des flocons de neige en utilisant la "
-"fractale de Koch.  Une fractale est un dessin géométrique dont le motif se "
-"reproduit à n'importe quelle échelle."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/Koch.html:6
-msgid ""
-"La forme générale est un triangle dont chaque coté est donné par une série "
-"d'appels récursifs.  La forme générale est obtenue en enchainant trois cotés "
-"de la façon suivante."
-msgstr ""
-
-# type: Content of: <p><pre>
-#: src/lessons/recursion/Koch.html:8
-#, no-wrap
-msgid ""
-"void snowFlake (int levels, double length) {\n"
-"   snowSide(levels, length);\n"
-"   turnRight(120);\n"
-"   snowSide(levels, length);\n"
-"   turnRight(120);\n"
-"   snowSide(levels, length);\n"
-"   turnRight(120);\n"
-"}"
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/recursion/Koch.html:17
-msgid ""
-"Observez le dessin dans chaque monde objectif pour comprendre la logique de "
-"ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui "
-"est récursive."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/Star.html:1
-msgid "Tortues dans les étoiles"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Star.html:3
-msgid ""
-"Voici un dernier exercice de prise en main avant la récursion. Il s'agit de "
-"faire dessiner trois étoiles à 5 branches à la tortue. Comme toutes les "
-"étoiles régulières à N branches, les angles des pointes sont de 360/N degrés "
-"tandis que les angles entre les pointes sont de 2*360/N degrés."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/Star.html:8
-msgid ""
-"La première étoile à dessiner est noire (<code>Color.black</code>) et ses "
-"branches font 100 pas de longueur, la seconde est bleue "
-"(<code>Color.blue</code>) et ses branches font 80 pas de longueur. Elle est "
-"décallée de 45 degrés vers le bas par rapport à la première.  La dernière "
-"étoile est rouge (<code>Color.red</code>), ses branches font 60 pas, et elle "
-"est décallée de 45 degrés par rapport à la seconde."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/Star.html:15
-msgid "Consultez l'objectif du monde pour visualiser la figure à réaliser."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/Circle.html:1
-msgid "Trois petits tours"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Circle.html:3
-msgid ""
-"Comme nous l'avons vu (et comme vous pouvez le vérifier en consultant l'aide "
-"de ce monde dans le menu \"À propos de ce monde\"), les tortues ne savent "
-"que se déplacer en ligne droite. Et pourtant, l'objectif de cet exercice est "
-"de leur faire dessiner des cercles... On peut pourtant résoudre ce problème "
-"simplement en réalisant qu'un cercle peut être représenté comme une "
-"concaténation de petits segments."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/Circle.html:10
-msgid ""
-"Les amateurs de calcul différentiel diraient même sans doute qu'un cercle "
-"est la limite asymptotique d'une telle construction quand la taille des "
-"segments tend vers zéro alors que leur nombre tend vers l'infini (mais on "
-"peut tout de même réussir l'exercice sans maîtriser le calcul différentiel)."
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Circle.html:18
-msgid ""
-"Écrivez une fonction dessinant un cercle, avec la taille de chacun des 360 "
-"pas passée en paramètre. Utilisez la ensuite dans votre méthode "
-"<code>run()</code> pour réaliser la figure dans son ensemble. Le premier "
-"cercle s'obtient avec des pas de 0.5, le second avec des pas de 1 et le "
-"troisième avec des pas de 1.5. Encore une fois, il s'agit d'un exercice de "
-"prise en main, et aucune récursion n'est nécessaire."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/Tree.html:1
-msgid "Arbres"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Tree.html:3
-msgid ""
-"Nous allons maintenant dessiner des arbres. Pour cela, nous allons écrire "
-"une fonction doublement récursive de prototype"
-msgstr ""
-
-# type: Content of: <pre>
-#: src/lessons/recursion/Tree.html:4
-#, no-wrap
-msgid "void tree(int steps, double length, double angle, double shrink)"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/Tree.html:6
-msgid ""
-"Pour dessiner un arbre à quatre étages, il faut dessiner un tronc de la "
-"taille indiquée, tourner à droite de l'angle indiqué, faire un arbre à 3 "
-"étages, tourner à gauche de deux fois l'angle indiqué, faire un autre arbre "
-"à 3 étages, puis revenir à sa position initiale."
-msgstr ""
-
-# type: Content of: <p><p>
-#: src/lessons/recursion/Tree.html:10
-msgid ""
-"Si le tronc d'un arbre mesure length à l'étage N, il mesure shrink*length à "
-"l'étage N+1."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/Sierpinski.html:1
-msgid "Triangle de Sierpinski"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Sierpinski.html:3
-msgid ""
-"La fractale que nous allons dessiner maintenant est formée d'un triangle "
-"dans lequel sont imbriqués des triangles plus petits.  Le prototype de la "
-"fonction le traçant est le suivant :"
-msgstr ""
-
-# type: Content of: <pre>
-#: src/lessons/recursion/Sierpinski.html:5
-#, no-wrap
-msgid "void sierpinski(int level, double length)"
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/Spiral.html:1
-msgid "Spirales"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Spiral.html:3
-msgid ""
-"Nous allons maintenant écrire notre première fonction récursive avec les "
-"tortues. L'objectif est de dessiner des spirales de différentes formes avec "
-"la même fonction, dont le prototype est le suivant:"
-msgstr ""
-
-# type: Content of: <pre>
-#: src/lessons/recursion/Spiral.html:6
-#, no-wrap
-msgid "void spiral(int steps, int angle, int length, int increment)"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Spiral.html:8
-msgid ""
-"Pour vous aider à comprendre comment l'écrire, voici un exemple de la suite "
-"des différentes valeurs prises par les paramètres dans un cas:"
-msgstr ""
-
-# type: Content of: <pre>
-#: src/lessons/recursion/Spiral.html:11
-#, no-wrap
-msgid ""
-"spiral(5, 90, 0, 3);\n"
-"  forward(0);\n"
-"  turnLeft(90);\n"
-"  spiral(4,90,3,3);\n"
-"    forward(3);\n"
-"    turnLeft(90);\n"
-"    spiral(3,90,6,3);\n"
-"      forward(6);\n"
-"      turnLeft(90);\n"
-"      spiral(2,90,9,3);\n"
-"        forward(9);\n"
-"        turnLeft(90);\n"
-"        spiral(1,90,12,3);\n"
-"          forward(12);\n"
-"          turnLeft(90);\n"
-"          spiral(0,90,12,3);\n"
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/DragonCurve1.html:1
-msgid "Courbe du Dragon (1)"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:3
-msgid "Un exemple classique de la méthode récursive est la courbe du Dragon."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:5
-msgid "La définition de cette courbe est la suivante :"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:6
-msgid ""
-"la courbe du Dragon d'ordre 1 est un vecteur entre deux points quelconques P "
-"et Q,"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:7
-msgid ""
-"la courbe du Dragon d'ordre n est la courbe du Dragon d'ordre n-1 entre P et "
-"R suivie de la même courbe d'ordre n-1 entre R et Q (à l'envers), où PRQ est "
-"le triangle isocèle rectangle en R, et R est à droite du vecteur PQ.  Donc, "
-"si P et Q sont les points de coordonnées (x, y) et (z,t), les coordonnées "
-"(u, v) de R sont"
-msgstr ""
-
-# type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve1.html:13 src/lessons/recursion/DragonCurve2.html:18 src/lessons/recursion/DragonCurve2.html:29
-#, no-wrap
-msgid ""
-"u = (x + z)/2 + (t - y)/2\n"
-"v = (y + t)/2 - (z - x)/2\n"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:19
-msgid "Le prototype de la méthode traçant la courbe est le suivant :"
-msgstr ""
-
-# type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve1.html:20 src/lessons/recursion/DragonCurve2.html:14
-#, no-wrap
-msgid "void dragon(int ordre, double x, double y, double z, double t)"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:23
-msgid ""
-"Vous utiliserez la méthode <code>setPos(x,y)</code> pour déplacer votre "
-"tortue aux coordonnées (x,y) et la méthode <code>moveTo(z,t)</code> pour "
-"tracer un trait depuis le point où la tortue est positionnée vers le point "
-"de coordonnées (z,t)"
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/DragonCurve2.html:1
-msgid "Courbe du Dragon (2)"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:3
-msgid ""
-"La solution précédente nécessite que la tortue se téléporte, autrement dit, "
-"qu'il est parfois nécessaire de lever le crayon pour tracer la courbe.  En "
-"effet, entre la destination du trait tracé par le premier appel récursif ne "
-"correspond pas à la source du trait qui doit être tracé par le second appel "
-"récursif.  C'est pourquoi il était nécessaire d'utiliser la méthode "
-"<code>setPos()</code>"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:7
-msgid ""
-"Dans cette leçon, vous allez donc réaliser une méthode récursive qui permet "
-"de tracer la courbe du dragon sans lever le crayon. Pour ce faire, vous "
-"définirez une seconde méthode récursive qui trace la courbe à l'envers."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:9
-msgid ""
-"La méthode <code>dragon()</code> sera définie récursivement en fonction des "
-"méthodes <code>dragon()</code> et <code>dragonInverse()</code>. De même, la "
-"méthode <code>dragonInverse()</code> sera définie récursivement en terme de "
-"<code>dragon()</code> et de <code>dragonInverse()</code>. Voici un bien bel "
-"exemple de <i>récursivité croisée</i>."
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:13
-msgid ""
-"Le prototype de la méthode <code>dragon()</code> reste le même que "
-"précédemment :"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:16
-msgid ""
-"Les coordonnées (u, v) du nouveau point introduit par la méthode "
-"<code>dragon()</code> seront :"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:24
-msgid "Le prototype de la méthode <code>dragonInverse()</code> est identique : :"
-msgstr ""
-
-# type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve2.html:25
-#, no-wrap
-msgid "void dragonInverse(int ordre, double x, double y, double z, double t)"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:27
-msgid ""
-"Les coordonnées (u, v) du nouveau point introduit par la méthode "
-"<code>dragonInverse()</code> seront :"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:35
-msgid ""
-"Afin de rendre, plus visible le travail de chacune des deux méthodes "
-"récursives, le trait tracé par la méthode <code>dragon()</code> devra être "
-"rouge (<code>Color.red</code>) et le trait tracé par la méthode "
-"<code>dragonInverse</code> devra être bleu (<code>Color.blue</code>)."
-msgstr ""
-
-# type: Content of: <h2>
-#: src/lessons/recursion/SpiralUse.html:1
-msgid "Faire des spirales"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/recursion/SpiralUse.html:3
-msgid ""
-"Saurez-vous faire les différents motifs de cet exercice en utilisant la "
-"méthode <code>spiral()</code>?"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/SpiralUse.html:6
-msgid ""
-"Vous devez écrire une méthode <code>doit(int)</code> qui prend en paramètre "
-"le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0, "
-"etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les "
-"valeurs convenables pour chaque page."
-msgstr ""
-
-# type: Content of: <pre>
-#: src/lessons/recursion/SpiralUse.html:12
-#, no-wrap
-msgid ""
-"void doit(int page) {\n"
-"  switch (page) {\n"
-"    case 0: /* Dessin de la première page, marquée \"One\" */\n"
-"      spiral(A0,B0,C0,D0);\n"
-"      break;\n"
-"    case 1: /* Dessin de la seconde page, marquée \"Two\" */\n"
-"      spiral(A1,B1,C1,D1);\n"
-"      break;\n"
-"    case 2: /* Dessin de la page marquée \"Three\" */\n"
-"      spiral(A2,B2,C2,D2);\n"
-"      break;\n"
-"    case 3: /* Dessin de la page marquée \"Four\" */\n"
-"      spiral(A3,B3,C3,D3);\n"
-"      break;\n"
-"    case 4: /* Dessin de la page marquée \"Five\" */\n"
-"      spiral(A4,B4,C4,D4);\n"
-"      break;\n"
-"  }\n"
-"}\n"
-msgstr ""
-
-# type: Content of: <p>
-#: src/lessons/recursion/SpiralUse.html:34
-msgid ""
-"Pas besoin de recopier le code de <code>spiral()</code>, la tortue de cet "
-"exercice connait déjà la méthode."
-msgstr ""
-
-# type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
 msgid "Premiers pas"
 msgstr ""
@@ -1770,55 +646,62 @@ msgstr ""
 # type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Environment.html:3
 msgid ""
-"Vous venez de lancer le programme des buggles.  Il s'agit d'une plate-forme "
+"Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme "
 "pédagogique destinée à simplifier l'apprentissage du Java.  Il est constitué "
 "d'un ensemble d'exercices groupés par leçons, que vous pouvez faire pas à "
 "pas."
 msgstr ""
 
-# type: Content of: <h3>
-#: src/lessons/welcome/Environment.html:10
+# type: Content of: <p>
+#: src/lessons/welcome/Environment.html:9
+msgid ""
+"Dans cette première leçon, les buggles guideront vos premiers pas en "
+"programmation."
+msgstr ""
+
+# type: Content of: <p><h3>
+#: src/lessons/welcome/Environment.html:12
 msgid "Les <i>buggles</i> ? Qu'est ce que c'est ??"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Environment.html:12
+# type: Content of: <p>
+#: src/lessons/welcome/Environment.html:14
 msgid ""
 "Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
 "donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
 "pour faire en sorte que le monde ressemble à l'objectif de l'exercice."
 msgstr ""
 
-# type: Content of: <h3>
-#: src/lessons/welcome/Environment.html:17
+# type: Content of: <p><h3>
+#: src/lessons/welcome/Environment.html:19
 msgid "L'environnement de travail"
 msgstr ""
 
-# type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Environment.html:19
+# type: Content of: <p>
+#: src/lessons/welcome/Environment.html:21
 msgid ""
 "Avant d'aller plus loin, familiarisez vous avec l'environnement de travail.  "
 "La fenêtre principale (celle que vous voyez) est composée de 5 éléments "
 "principaux:"
 msgstr ""
 
-# type: Content of: <ul><li>
-#: src/lessons/welcome/Environment.html:25
+# type: Content of: <p><ul><li>
+#: src/lessons/welcome/Environment.html:27
 msgid ""
 "<b>Le menu :</b> Placé en haut de la fenêtre, il vous permet de quitter le "
 "programme, et d'accéder à certaines commandes avancées que nous détaillerons "
 "plus tard."
 msgstr ""
 
-# type: Content of: <ul><li>
-#: src/lessons/welcome/Environment.html:30
+# type: Content of: <p><ul><li>
+#: src/lessons/welcome/Environment.html:32
 msgid ""
 "<b>La barre de commandes : </b> Placée juste en dessous du menu, celle-ci "
 "vous donne accès aux quatre commandes principales :"
 msgstr ""
 
-# type: Content of: <ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:36
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:38
 msgid ""
 "Le bouton <b>Start</b> qui lance la compilation et l'exécution du code que "
 "vous aurez tapé dans l'éditeur.  A la fin de l'exécution, il vérifie que "
@@ -1827,43 +710,52 @@ msgid ""
 "vous faudra corriger votre code."
 msgstr ""
 
-# type: Content of: <ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:45
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:47
 msgid ""
 "Le bouton <b>Stop</b> permet d'interrompre l'exécution de votre code, ce qui "
 "est pratique si vous avez une <i>boucle infinie</i>."
 msgstr ""
 
-# type: Content of: <ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:49
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:51
 msgid "Le bouton <b>Reset</b> permet de remettre le monde dans son état initial."
 msgstr ""
 
-# type: Content of: <ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:51
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:53
 msgid ""
 "Le bouton <b>Demo</b> vous montre l'exécution de la solution "
 "attendue. Pendant l'exécution, vous êtes autorisés à changer de monde afin "
 "de voir les différentes exécutions attendues."
 msgstr ""
 
-# type: Content of: <ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:53
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:54
+msgid ""
+"Notez qu'il y a souvent plusieurs moyens d'atteindre la solution escomptée, "
+"et que celle présentée lors de la démo n'est pas plus ou moins correcte que "
+"les autres. Libre à vous de ne pas suivre à la lettre le procédé de la démo, "
+"à condition que le résultat final corresponde bien à ce qui est demandé."
+msgstr ""
+
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:61
 msgid ""
 "Le menu déroulant <b>Lesson</b>, vous permet de choisir la leçon que vous "
 "souhaitez étudier"
 msgstr ""
 
-# type: Content of: <ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:56
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:64
 msgid ""
 "Le menu déroulant <b>Exercise</b>, vous permet de changer d'exercice quand "
 "vous le souhaitez. Notez que certaines leçons vous imposent de finir un "
 "exercice avant de pouvoir commencer le suivant."
 msgstr ""
 
-# type: Content of: <ul><li><li>
-#: src/lessons/welcome/Environment.html:63
+# type: Content of: <p><ul><li>
+#: src/lessons/welcome/Environment.html:71
 msgid ""
 "<b>Les onglets de consigne et d'édition :</b> C'est ici que vous lisez le "
 "texte actuel.  Cette zone contient plusieurs onglets, auxquels on peut "
@@ -1875,23 +767,23 @@ msgid ""
 "il n'y a rien à faire pour cet exercice de prise en main de l'environnement."
 msgstr ""
 
-# type: Content of: <ul><li><li>
-#: src/lessons/welcome/Environment.html:75
+# type: Content of: <p><ul><li>
+#: src/lessons/welcome/Environment.html:83
 msgid ""
 "<b>La console :</b> Placée sous les onglets, c'est ici que s'afficheront "
 "tous les messages de l'application. Cette zone est initialement vide et "
 "blanche."
 msgstr ""
 
-# type: Content of: <ul><li><li><li>
-#: src/lessons/welcome/Environment.html:79
+# type: Content of: <p><ul><li>
+#: src/lessons/welcome/Environment.html:87
 msgid ""
 "<b>La vue du monde :</b> Placée à droite des onglets, elle est constituée de "
-"quatre éléments:"
+"cinq éléments:"
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li>
-#: src/lessons/welcome/Environment.html:85
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:93
 msgid ""
 "Un menu déroulant permettant de choisir un monde. En effet, le programme que "
 "vous devez écrire sera parfois exécuté dans plusieurs monde pour vous "
@@ -1899,24 +791,33 @@ msgid ""
 "choisir le monde que vous souhaitez voir."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li>
-#: src/lessons/welcome/Environment.html:92
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:100
 msgid ""
-"Un onglet <b>World</b> qui représente la vue du monde actuellement "
-"sélectionné (dans le menu déroulant. Cette vue est constituée d'une grille "
-"représentant les différentes cases du monde, ainsi que d'une ou plusieurs "
-"<i>buggle</i> qui attend vos ordres."
+"Un règlet placé en dessous permet de choisir la vitesse d'animation du "
+"monde. Plus exactement, il permet de choisir le delai (en millisecondes) que "
+"les buggles doivent attendre après chaque action afin que vous ayez le temps "
+"de voir ce qu'elles font."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li>
-#: src/lessons/welcome/Environment.html:99
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:106
+msgid ""
+"Un onglet <b>World</b> qui représente la vue du monde actuellement "
+"sélectionné (dans le menu déroulant). Cette vue est constituée d'une grille "
+"représentant les différentes cases du monde, ainsi que d'une ou plusieurs "
+"<i>buggles</i> qui attend vos ordres."
+msgstr ""
+
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:113
 msgid ""
 "Un onglet <b>Objective</b> qui permet d'afficher la vue du monde tel qu'il "
 "doit être à la fin de l'exercice."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li>
-#: src/lessons/welcome/Environment.html:104
+# type: Content of: <p><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:118
 msgid ""
 "<b>Les contrôles interactifs</b> Placés sous la vue du monde, ces boutons "
 "vous permettent de contrôler interactivement les buggles.  Vous pouvez ainsi "
@@ -1924,82 +825,80 @@ msgid ""
 "d'écrire le code nécessaire dans l'éditeur."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:113
+# type: Content of: <p><ul><li><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:127
 msgid ""
 "Un menu déroulant permettant de sélectionner la buggle que vous souhaitez "
 "contrôler."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:116
+# type: Content of: <p><ul><li><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:130
 msgid "Le bouton <b>Forward</b> fait avancer votre buggle d'un pas."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:119
+# type: Content of: <p><ul><li><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:133
 msgid "Le bouton <b>Backward</b> fait reculer votre buggle d'un pas."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:122
+# type: Content of: <p><ul><li><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:136
 msgid "Le bouton <b>Turn left</b> demande à votre buggle de tourner vers la gauche."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:125
+# type: Content of: <p><ul><li><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:139
 msgid ""
 "Le bouton <b>Turn right</b> demande à votre buggle de tourner vers la "
 "droite."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:128
+# type: Content of: <p><ul><li><ul><li><ul><li>
+#: src/lessons/welcome/Environment.html:142
 msgid ""
 "Le bouton <b>Mark</b> demande à votre buggle de faire un trait au sol quand "
 "elle avance."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><h3>
-#: src/lessons/welcome/Environment.html:137
+# type: Content of: <p><ul><li><h3>
+#: src/lessons/welcome/Environment.html:151
 msgid "Que dois-je faire ?"
 msgstr ""
 
-# type: Content of: <ul><li><li><li>
-#: src/lessons/welcome/Environment.html:139
+# type: Content of: <p><ul><li>
+#: src/lessons/welcome/Environment.html:153
 msgid ""
 "L'objectif de chaque exercice est donc de taper du code dans l'onglet de "
 "l'éditeur afin de donner les ordres nécessaires à la buggle pour atteindre "
 "son objectif."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><p>
-#: src/lessons/welcome/Environment.html:144
+# type: Content of: <p><ul><li><p>
+#: src/lessons/welcome/Environment.html:158
 msgid ""
 "Ce code doit naturellement être écrit en Java.  S'il contient des erreurs, "
 "un message sera affiché dans la console par le compilateur, et il vous "
 "faudra corriger avant de tenter de l'exécuter."
 msgstr ""
 
-#. Effacez maintenant  le  contenu de  l'onglet
-#.   <b>Source Code</b> avant de continuer.
-# type: Content of: <ul><li><li><li><p><p>
-#: src/lessons/welcome/Environment.html:149
+# type: Content of: <p><ul><li><p><p>
+#: src/lessons/welcome/Environment.html:163
 msgid ""
 "Essayez par exemple d'écrire quelque chose dans l'éditeur (onglet <b>Source "
 "Code</b>) comme <tt>bonjour</tt>, puis de cliquer sur <b>Start</b>.  Les "
 "messages qui s'affichent peuvent vous sembler obscures au premier abord, "
 "mais ne vous inquiétez pas : nous verrons leur signification au fur et à "
-"mesure."
+"mesure. Effacez maintenant le contenu de l'éditeur avant de continuer."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><p><h3>
-#: src/lessons/welcome/Environment.html:157
+# type: Content of: <p><ul><li><p><h3>
+#: src/lessons/welcome/Environment.html:171
 msgid "Et maintenant ?"
 msgstr ""
 
-# type: Content of: <ul><li><li><li><p>
-#: src/lessons/welcome/Environment.html:159
+# type: Content of: <p><ul><li><p>
+#: src/lessons/welcome/Environment.html:173
 msgid ""
 "Pour ce premier exercice, vous n'avez rien à faire : le monde initial est "
 "l'objectif à atteindre. Vous n'avez donc pas de code à écrire.  Après avoir "
@@ -2008,8 +907,8 @@ msgid ""
 "avez remplit le contrat de l'exercice."
 msgstr ""
 
-# type: Content of: <ul><li><li><li><p><p>
-#: src/lessons/welcome/Environment.html:167
+# type: Content of: <p><ul><li><p><p>
+#: src/lessons/welcome/Environment.html:181
 msgid ""
 "Vous pouvez alors passez à l'exercice suivant en utilisant le menu adéquat "
 "(<b>Exercise</b>)."
@@ -2161,7 +1060,7 @@ msgstr ""
 msgid ""
 "<a name=\"instructions\"> Bien entendu, ces méthodes n'existent pas en Java, "
 "et il est difficile de faire la liste des méthodes existantes en Java. Dans "
-"BuggleQuest, les instructions les plus souvent utilisées sont des appels à "
+"cette leçon, les instructions les plus souvent utilisées sont des appels à "
 "des méthodes de la buggle, par lesquelles on donne des ordres à la buggle "
 "qui les reçoit."
 msgstr ""
@@ -2268,7 +1167,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><h3>
-#: src/lessons/welcome/Basics.html:61 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:8 src/lessons/welcome/Conditions.html:46 src/lessons/welcome/LoopWhile.html:21 src/lessons/welcome/LoopDoWhile.html:8 src/lessons/welcome/Variables.html:40 src/lessons/welcome/LoopFor.html:52 src/lessons/welcome/Methods.html:51 src/lessons/welcome/MethodsDogHouse.html:38 src/lessons/welcome/MethodsReturning.html:43 src/lessons/welcome/MethodsArgs.html:55 src/lessons/welcome/BDR.html:136 src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34 src/lessons/maze/RandomMouseMaze.html:22 src/lessons/maze/WallFollowerMaze.html:11 src/lessons/maze/PledgeMaze.html:22
+#: src/lessons/welcome/Basics.html:61 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:8 src/lessons/welcome/Conditions.html:46 src/lessons/welcome/LoopWhile.html:21 src/lessons/welcome/LoopDoWhile.html:8 src/lessons/welcome/Variables.html:40 src/lessons/welcome/LoopFor.html:53 src/lessons/welcome/Methods.html:51 src/lessons/welcome/MethodsDogHouse.html:38 src/lessons/welcome/MethodsReturning.html:43 src/lessons/welcome/MethodsArgs.html:55 src/lessons/welcome/BDR.html:136 src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34 src/lessons/maze/RandomMouseMaze.html:22 src/lessons/maze/WallFollowerMaze.html:11 src/lessons/maze/PledgeMaze.html:22
 msgid "Objectif de cet exercice"
 msgstr ""
 
@@ -2778,13 +1677,14 @@ msgstr ""
 # type: Content of: <p><p><p><p><a><a><p>
 #: src/lessons/welcome/Variables.html:73
 msgid ""
-"Attention, il est interdit d'utiliser des caractères accentués dans les noms "
-"de variables Java. Vous pouvez donc nommer votre variable "
-"<code>dejaFait</code>, mais <code>déjaFait</code> n'est pas un nom valide."
+"Attention, il est interdit d'utiliser des caractères accentués ou des "
+"espaces dans les noms de variables Java. Vous pouvez donc nommer votre "
+"variable <code>dejaFait</code>, mais ni <code>déjaFait</code> ni <code>deja "
+"Fait</code> ne sont des noms valides."
 msgstr ""
 
 # type: Content of: <p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:78
+#: src/lessons/welcome/Variables.html:79
 msgid "À vous de jouer !"
 msgstr ""
 
@@ -2801,19 +1701,20 @@ msgid ""
 "moins pratiques pour réaliser une action un nombre prédéterminé de fois. Par "
 "exemple, lorsque nous voulions reculer de <code>nbPas</code> dans l'exercice "
 "précédent, il fallait créer une nouvelle variable, l'initialiser, et "
-"demander à reculer tant que <code>nbPas</code> n'était pas nul, en "
-"décrémentant cette variable à la main à la fin du corps de la boucle."
+"demander à reculer tant que la nouvelle variable n'était pas égale à "
+"<code>nbPas</code>, en incrémentant cette variable à la main à la fin du "
+"corps de la boucle."
 msgstr ""
 
 # type: Content of: <p>
-#: src/lessons/welcome/LoopFor.html:12
+#: src/lessons/welcome/LoopFor.html:13
 msgid ""
 "Dans ce genre de cas, les boucles de type <code>for</code> sont plus "
 "pratique. Leur syntaxe est la suivante :"
 msgstr ""
 
 # type: Content of: <p><pre>
-#: src/lessons/welcome/LoopFor.html:13
+#: src/lessons/welcome/LoopFor.html:14
 #, no-wrap
 msgid ""
 "for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {\n"
@@ -2822,12 +1723,12 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p>
-#: src/lessons/welcome/LoopFor.html:17
+#: src/lessons/welcome/LoopFor.html:18
 msgid "Ce code est parfaitement équivalent à celui-ci :"
 msgstr ""
 
 # type: Content of: <p><pre>
-#: src/lessons/welcome/LoopFor.html:18
+#: src/lessons/welcome/LoopFor.html:19
 #, no-wrap
 msgid ""
 "<b>initialisation</b>;\n"
@@ -2838,14 +1739,14 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p>
-#: src/lessons/welcome/LoopFor.html:24
+#: src/lessons/welcome/LoopFor.html:25
 msgid ""
 "Par exemple, les deux codes suivants sont équivalents. Avouez que la seconde "
 "forme est plus lisible, non ?"
 msgstr ""
 
 # type: Content of: <p><p><pre>
-#: src/lessons/welcome/LoopFor.html:27
+#: src/lessons/welcome/LoopFor.html:28
 #, no-wrap
 msgid ""
 "int dejaFait = 0;\n"
@@ -2856,7 +1757,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><pre>
-#: src/lessons/welcome/LoopFor.html:32
+#: src/lessons/welcome/LoopFor.html:33
 #, no-wrap
 msgid ""
 "for (int dejaFait = 0; dejaFait &lt; nbPas; dejaFait++) {\n"
@@ -2865,7 +1766,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p>
-#: src/lessons/welcome/LoopFor.html:36
+#: src/lessons/welcome/LoopFor.html:37
 msgid ""
 "On peut imaginer des utilisations bien plus avancées des boucles "
 "<tt>for</tt> car toute instruction valide peut être utilisée comme "
@@ -2876,7 +1777,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/LoopFor.html:43
+#: src/lessons/welcome/LoopFor.html:44
 #, no-wrap
 msgid ""
 "int x=20, y=3, tmp;\n"
@@ -2885,7 +1786,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p><p>
-#: src/lessons/welcome/LoopFor.html:47
+#: src/lessons/welcome/LoopFor.html:48
 msgid ""
 "Si vous ne comprenez pas tous les détails de cet exemple, pas de panique, "
 "c'est assez logique puisqu'il utilise des points de syntaxe que nous n'avons "
@@ -2893,7 +1794,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p><a>
-#: src/lessons/welcome/LoopFor.html:52
+#: src/lessons/welcome/LoopFor.html:53
 msgid ""
 "<a name=\"Objectifs\"> Il s'agit de refaire le même exercice que "
 "précédemment (avancer jusqu'à trouver un baggle, le ramasser, revenir là où "
@@ -2903,7 +1804,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/LoopFor.html:59
+#: src/lessons/welcome/LoopFor.html:60
 msgid "Une fois ceci fait, passez à l'exercice suivant."
 msgstr ""
 
@@ -2929,14 +1830,14 @@ msgid ""
 "et que nous voulons tous les ramener sur la ligne du bas, il faut soit "
 "répéter ce code plusieurs fois, soit l'inclure dans une boucle. Dans les "
 "deux cas, le code résultant n'est pas très lisible, et il serait mieux que "
-"la buggle comprenne un ordre de type <code>vaChercher()</code> tout comme "
-"elle comprend un <code>forward()</code>."
+"la buggle comprenne un ordre de type <code>goAndGet()</code> tout comme elle "
+"comprend un <code>forward()</code>."
 msgstr ""
 
 # type: Content of: <p>
 #: src/lessons/welcome/Methods.html:18
 msgid ""
-"La syntaxe pour écrire une méthode simple nommée <code>vaChercher</code> est "
+"La syntaxe pour écrire une méthode simple nommée <code>goAndGet</code> est "
 "la suivante:"
 msgstr ""
 
@@ -2944,7 +1845,7 @@ msgstr ""
 #: src/lessons/welcome/Methods.html:19
 #, no-wrap
 msgid ""
-"public void vaChercher() {\n"
+"public void goAndGet() {\n"
 "  actions();\n"
 "  aFaire();\n"
 "}"
@@ -2995,14 +1896,14 @@ msgid ""
 "minuscules, et de coller tous les mots décrivant la méthode les uns aux "
 "autres en mettant une majuscule à chacun. Il est interdit de mettre des "
 "espaces ou des accentués dans le nom d'une méthode. C'est pourquoi nous "
-"écrivons \"va chercher\" sous la forme \"vaChercher\"."
+"écrivons \"go and get\" sous la forme \"goAndGet\"."
 msgstr ""
 
 # type: Content of: <p><a>
 #: src/lessons/welcome/Methods.html:51
 msgid ""
 "<a name=\"Objectifs\"> L'objectif de cet exercice est donc d'écrire une "
-"méthode nommée <code>vaChercher()</code> et qui fait la même chose qu'aux "
+"méthode nommée <code>goAndGet()</code> et qui fait la même chose qu'aux "
 "exercices précédents (avance tant qu'on ne trouve pas de baggle, ramasser le "
 "baggle, reculer à la case départ, poser le baggle)."
 msgstr ""
@@ -3033,7 +1934,7 @@ msgstr ""
 msgid ""
 "public void run() {\n"
 "&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;vaChercher();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
@@ -3045,7 +1946,7 @@ msgstr ""
 #: src/lessons/welcome/Methods.html:79
 msgid ""
 "Donc, votre buggle va répéter 7 fois (la taille du monde)  l'opération "
-"<code>vaChercher()</code> que vous allez écrire, plus les opérations "
+"<code>goAndGet()</code> que vous allez écrire, plus les opérations "
 "nécessaire à se décaler d'une colonne vers la droite (tourner à droite, "
 "avancer, tourner à gauche). Notez que la buggle va donc faire un pas vers la "
 "droite alors qu'elle sera tout à droite du monde. Cela la ramènera sur le "
@@ -3054,7 +1955,7 @@ msgstr ""
 
 # type: Content of: <p><a><p><p><p>
 #: src/lessons/welcome/Methods.html:86
-msgid "À vous d'écrire cette méthode vaChercher()."
+msgid "À vous d'écrire cette méthode goAndGet()."
 msgstr ""
 
 # type: Content of: <h2>
@@ -3230,13 +2131,14 @@ msgstr ""
 #: src/lessons/welcome/MethodsReturning.html:64
 msgid ""
 "Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux, "
-"chacun ayant un objectif particulier. C'est pourquoi la vue du monde est "
-"placée dans un onglet : il s'agit des différents mondes initiaux sur lequel "
-"sera testé votre code."
+"chacun ayant un objectif particulier. Votre code doit fonctionner pour "
+"chacun d'entre eux. Remarquez que le menu déroulant de sélection du monde "
+"(juste sous la barre de réglage de la vitesse) permet de spécifier le monde "
+"que vous souhaitez observer."
 msgstr ""
 
 # type: Content of: <a><p>
-#: src/lessons/welcome/MethodsReturning.html:69
+#: src/lessons/welcome/MethodsReturning.html:70
 msgid ""
 "Quand votre méthode <tt>haveBaggle</tt> fonctionne, passez à l'exercice "
 "suivant."
@@ -4915,6 +3817,11 @@ msgid ""
 "}"
 msgstr ""
 
+# type: Content of: <h3>
+#: src/lessons/welcome/Array.html:150 src/lessons/recursion/Square.html:45 src/lessons/recursion/Circle.html:16
+msgid "Objectif de l'exercice"
+msgstr ""
+
 # type: Content of: <br><p><p><p><p>
 #: src/lessons/welcome/Array.html:151
 msgid ""
@@ -5141,6 +4048,1125 @@ msgid ""
 msgstr ""
 
 # type: Content of: <h1>
+#: src/lessons/sort/Main.html:1
+msgid "Algorithmes de tri"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/sort/Main.html:3
+msgid ""
+"Cette leçon vous permet d'expérimenter avec les algorithmes de tri "
+"classiques (et certaines optimisations moins courantes de "
+"ceux-ci). L'objectif est double: il s'agit tout d'abord de mieux comprendre "
+"le principe de ces algorithmes en les codant vous-même.  Mais même si vous "
+"ne codez pas les algorithmes, vous pouvez utiliser le mode démo pour "
+"organiser des \\\"courses\\\" entre ces algorithmes afin d'expérimenter en "
+"pratique ce qu'implique la différence de complexité asymptotique entre deux "
+"algorithmes."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/sort/Main.html:10
+msgid ""
+"Un exercice sur les tris récursifs (en particulier QuickSort et MergeSort) "
+"est prévu à l'avenir."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/sort/ExSelectionSort.html:1
+msgid "Tri par selection"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/sort/ExSelectionSort.html:3
+msgid ""
+"Cet exercice est l'occasion d'implémenter un autre algorithme très classique "
+": le tri par sélection."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/sort/ExSelectionSort.html:5
+msgid ""
+"Son principe est simplement de sélectioner pour chaque case du tableau la "
+"plus petite valeur de la partie pas encore triée. Ainsi, pour la premiere "
+"case, je prend la plus petite valeur du tableau. Pour la seconde, je prend "
+"la seconde plus petite valeur, qui se trouve être la plus petite des cases "
+"n'étant pas encore triées."
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/sort/ExSelectionSort.html:9
+msgid ""
+"Plus généralement, pour la case N, je cherche la case M de [n;lgr] contenant "
+"la plus petite valeur possible. Ensuite, j'inverse le contenu de la case N "
+"et celui de la case M."
+msgstr ""
+
+# type: Content of: <p><p><h2>
+#: src/lessons/sort/ExSelectionSort.html:12
+msgid "Variantes possibles"
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/sort/ExSelectionSort.html:13
+msgid ""
+"Un autre algorithme classique dont le principe repose sur la sélection des "
+"bons éléments est le tri par tas, mais il utilise une structure de données "
+"en tas, que nous n'avons pas encore introduite. Sachez simplement que ce tri "
+"présente un coût en O(n log n) dans le pire des cas, ce qui en fait un "
+"algorithme très intéressant en pratique."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/sort/ExInsertionSort.html:1
+msgid "Algorithme par insertion et variantes"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/sort/ExInsertionSort.html:3
+msgid ""
+"Cet exercice vous permet d'expérimenter avec le tri par insertion et ses "
+"variantes les plus classiques."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/sort/ExInsertionSort.html:4
+msgid "InsertionSort"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/sort/ExInsertionSort.html:5
+msgid ""
+"Ce tri est relativement simple à comprendre et à écrire, même s'il n'offre "
+"pas les meilleures performances possibles.  Il s'agit d'un algorithme "
+"quadratique (complexité asymptotique en O(n2)), mais il est plus efficace en "
+"pratique (linéaire dans le meilleur des cas, ie quand le tableau déjà trié "
+"et N2/4 en moyenne)."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/sort/ExInsertionSort.html:8
+msgid ""
+"L'idée est de parcourir tous les éléments du tableau, et d'insérer chacun à "
+"sa place dans la partie du tableau déjà trié.  Lorsque l'on regarde un "
+"élément x du tableau, on est dans la situation suivante : tous les éléments "
+"à gauche du tableau sont déjà triés, et il faut insérer x à sa place dans le "
+"tableau."
+msgstr ""
+
+# type: Content of: <p><img><p>
+#: src/lessons/sort/ExInsertionSort.html:13
+msgid "Une fois ceci fait, on se retrouve dans la situation suivante:"
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/sort/ExInsertionSort.html:16 src/lessons/sort/ExExchangeSort.html:22
+msgid "Le pseudo-code de cet algorithme est donc le suivant :"
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><pre>
+#: src/lessons/sort/ExInsertionSort.html:17
+#, no-wrap
+msgid ""
+"Pour tout i dans [1,lgr]\n"
+"  stoquer la valeur de la case i dans une variable val\n"
+"  recopier la case i-1 dans i, si i-1 contient une valeur plus grande que "
+"val\n"
+"  recopier la case i-2 dans i-1, si i-2 contient une valeur plus grande que "
+"val  \n"
+"  recopier la case i-3 dans i-2, si i-3 contient une valeur plus grande que "
+"val  \n"
+"  recopier la case i-4 dans i-3, si i-4 contient une valeur plus grande que "
+"val\n"
+"  ...\n"
+"  recopier val dans la dernière case recopiée plus haut\n"
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p>
+#: src/lessons/sort/ExInsertionSort.html:27
+msgid ""
+"Bien entendu, il faut utiliser une boucle pour écrire la grosse permutation "
+"circulaire au coeur de la boucle.  L'écrire explicitement de la sorte serait "
+"vraiment ... contre-productif."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><h2>
+#: src/lessons/sort/ExInsertionSort.html:30
+msgid "ShellSort"
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p>
+#: src/lessons/sort/ExInsertionSort.html:32
+msgid ""
+"Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en "
+"1959. Son principe peut être vu comme une application de l'idée du CombSort "
+"(faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) "
+"au tri par insertion (le CombSort est une variante du tri à bulle).  Au lieu "
+"de comparer les valeurs ajacentes lors du tri par insertion, on compare des "
+"valeurs séparées par un <i>gap</i> (écartement) plus grand. Plus le gap est "
+"grand et plus les éléments sont déplacés rapidement vers leur position "
+"finale, mais aussi plus le déplacement est imprécis. Il faut donc appliquer "
+"l'algorithme avec une séquence de gaps décroissante vers 1. Ainsi, à la "
+"dernière étape quand le gap vaut 1, on applique l'algorithme de tri par "
+"insertion de base, mais sur un tableau déjà presque trié par les étapes "
+"précédentes."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p>
+#: src/lessons/sort/ExInsertionSort.html:42
+msgid ""
+"Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur du "
+"gap, puis de le diviser par deux à chaque étape.  Le pseudo-code est donc le "
+"suivant:"
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><pre>
+#: src/lessons/sort/ExInsertionSort.html:45
+#, no-wrap
+msgid ""
+"gap=lgr/2\n"
+"tant que gap>0:\n"
+"  appliquer l'algorithme de tri par insertion en comparant i-gap et i, puis "
+"i-2gap et i-gap, puis i-3gap et i-2gap, etc.\n"
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><p>
+#: src/lessons/sort/ExInsertionSort.html:50
+msgid ""
+"Comme dans le cas du CombSort, la séquence des valeurs prises par le gap se "
+"révèle être d'une importance capitale pour les performances du tri de "
+"Shell. Il existe des cas pathologiques qui font que la séquence que nous "
+"avons utilisée ici présente une complexité en O(n^2) dans le pire des "
+"cas. D'autres séquences ont été proposé: la séquence des incréments de "
+"Hibbard (2^k − 1) permet une complexité dans le pire des cas de O(n^(3/2)), "
+"les incréments de Pratt (2^i*3^j) permettent un pire cas en O(n "
+"log(n)log(n)).  Ces résultats font du tri de Shell un candidat tout à fait "
+"valide pour des instances de tableau de quelques centaines de milliers "
+"d'éléments quand il est correctement implémenté."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><p>
+#: src/lessons/sort/ExInsertionSort.html:57
+msgid ""
+"Dans notre cas, les instances de tableaux que nous utilisons sont trop "
+"petites pour que ces optimisations présentent un réel avantage. Si on "
+"voulait le faire, il faudrait prendre en valeur initiale du gap la plus "
+"grande valeur de la suite utilisée, puis prendre les valeurs successives en "
+"descendant ensuite."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><p>
+#: src/lessons/sort/ExInsertionSort.html:61
+msgid ""
+"De façon intéressante, déterminer la meilleure séquence de gap pour le shell "
+"sort s'avère être un problème de recherche actuel en informatique. Par "
+"exemple, un article publié en 2001 propose la suite suivante, qui semble "
+"optimale en pratique pour des tailles de tableau allant jusqu'à 10^5: {1, 4, "
+"10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the "
+"Average Case of Shellsort, 13th International Symposium on Fundamentals of "
+"Computation Theory, LNCS 2001; Vol. 2138)."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><p>
+#: src/lessons/sort/ExInsertionSort.html:67
+msgid ""
+"Si vous vous étiez toujours demandé ce que font les chercheurs en "
+"informatique à notre époque, voici un élément de réponse: certains d'entre "
+"eux améliorent des algorithmes fondamentaux pour permettre à d'autres de "
+"faire des programmes efficaces..."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><h2>
+#: src/lessons/sort/ExInsertionSort.html:70
+msgid "D'autres variantes du tri par insertion"
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p>
+#: src/lessons/sort/ExInsertionSort.html:72
+msgid ""
+"TreeSort construit un arbre binaire équilibré des données pour les "
+"trier. Cela lui permet d'être en O(nlog n) en moyenne (mais O(n^2) dans le "
+"pire cas). Nous n'étudierons pas cet algorithme ici puisque comprendre son "
+"fonctionnement demande de savoir ce qu'est un arbre binaire, ce qui est au "
+"dela de nos objectifs présents."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><p>
+#: src/lessons/sort/ExInsertionSort.html:76
+msgid ""
+"Il existe d'autres variantes du tri par insertion, comme PatienceSorting, "
+"qui fait des paquets des valeurs et trie ensuite chaque paquet. Cet "
+"algorithme présente un pire cas en O(nlog n), et une complexité spatiale en "
+"O(n).  LibrarySort (proposé en 2004) échange également un peu d'espace pour "
+"du temps puisqu'il présente une complexité moyenne en O(n log n), mais "
+"nécessite de stoquer des données supplémentaires."
+msgstr ""
+
+# type: Content of: <p><img><p><p><img><p><p><p>
+#: src/lessons/sort/ExInsertionSort.html:81
+msgid ""
+"Wikipedia (en anglais) propose une description détaillée de tous ces "
+"algorithmes que nous n'avons pas le temps de détailler ici."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/sort/ExExchangeSort.html:1
+msgid "Le tri à bulle et variantes"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/sort/ExExchangeSort.html:3
+msgid ""
+"Vous voici dans le monde des tris. Il vous permet d'expérimenter avec les "
+"différents algorithmes de tri existant.  Consultez l'aide du monde "
+"(\"Help->About this world\") pour une aide sur les primitives utilisables "
+"par vos algorithmes."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:6
+msgid ""
+"Dans ce premier exercice, nous allons voir les plus simples d'entre "
+"eux. L'onglet \"Source code\" est composé de plusieurs sous-onglets, "
+"correspondant aux différents algorithmes à écrire. Pour réussir l'exercice, "
+"il faut que votre solution réalise le même nombre de lectures et écritures "
+"que la solution codée dans l'objectif.  Attention donc à suivre le "
+"pseudo-code de chaque algorithme à la lettre!"
+msgstr ""
+
+# type: Content of: <p><h2>
+#: src/lessons/sort/ExExchangeSort.html:11
+msgid "BubbleSort"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:13
+msgid ""
+"Le tri à bulles ou tri par propagation consiste à faire remonter "
+"progressivement les plus petits éléments d'une liste, comme les bulles d'air "
+"remontent à la surface d'un liquide. L'algorithme parcourt la liste, et "
+"compare les couples d'éléments successifs. Lorsque deux éléments successifs "
+"ne sont pas dans l'ordre croissant, ils sont échangés. Après chaque parcours "
+"complet de la liste, l'algorithme recommence l'opération. Lorsqu'aucun "
+"échange n'a lieu pendant un parcours, cela signifie que la liste est triée : "
+"l'algorithme peut s'arrêter.  La simplicité de cet algorithme justifie son "
+"étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est "
+"quasiment jamais utilisé en pratique."
+msgstr ""
+
+# type: Content of: <p><p><pre>
+#: src/lessons/sort/ExExchangeSort.html:23
+#, no-wrap
+msgid ""
+"faire: \n"
+"        Pour tout i dans [0,lgr-2]\n"
+"          Si les cases i et i+1 doivent être inverser, le faire\n"
+"     tant qu'on a inverser des choses lors du dernier parcours\n"
+msgstr ""
+
+# type: Content of: <p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:29
+msgid "BubbleSort2"
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/sort/ExExchangeSort.html:31
+msgid ""
+"En étudiant le comportement du tri à bulle, on peut voir une première "
+"optimisation facile à effectuer: Après un parcours, le dernier élément du "
+"tableau est forcément le plus grand d'entre tous car le parcours l'a fait "
+"remonté comme une bulle à sa position. Plus généralement, après N parcours, "
+"on sait que les N derniers éléments du tableau sont déjà triés. En "
+"conclusion, il n'est pas utile de les recomparer sur les parcours "
+"suivants. Dans un premier temps, nous ferons autant de parcours qu'il y a "
+"d'éléments dans le tableau. Cela nous donne le pseudo-code suivant :"
+msgstr ""
+
+# type: Content of: <p><p><pre>
+#: src/lessons/sort/ExExchangeSort.html:37
+#, no-wrap
+msgid ""
+"Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)\n"
+"       Pour tout j dans [0, i]\n"
+"          Si les cases j et j+1 doivent être inverser, le faire\n"
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/sort/ExExchangeSort.html:42
+msgid ""
+"Lorsqu'on exécute cet algorithme, il peut être un peu décevant de constater "
+"qu'il s'exécute à la même vitesse que la version de base de "
+"BubbleSort. C'est un effet graphique seulement puisque seules les "
+"changements de valeurs dans le tableau sont représentées. Comme cette "
+"variante consiste à éviter des comparaisons inutiles, elle effectue très "
+"exactement le même nombre d'échanges que la version de base. Il est donc "
+"normal que notre interface graphique la représente à la même vitesse que la "
+"version de base. Mais les statistiques sur le nombre de lectures montrent "
+"bien que l'on a économisé plus d'un quart du nombre de lectures, ce qui "
+"n'est pas si mal."
+msgstr ""
+
+# type: Content of: <p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:49
+msgid ""
+"D'un point de vue complexité algorithmique, cela ne change rien: cette "
+"variante est toujours en O(n2) en moyenne (on ne gagne que sur la "
+"constante)."
+msgstr ""
+
+# type: Content of: <p><p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:52
+msgid "BubbleSort3"
+msgstr ""
+
+# type: Content of: <p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:54
+msgid ""
+"Réintroduisons maintenant la petite optimisation que nous avions retiré à "
+"l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau "
+"est maintenant trié. Cela nous donne le pseudo-code suivant :"
+msgstr ""
+
+# type: Content of: <p><p><p><pre>
+#: src/lessons/sort/ExExchangeSort.html:57
+#, no-wrap
+msgid ""
+"Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)\n"
+"       Pour tout j dans [0, i]\n"
+"          Si les cases j et j+1 doivent être inverser, le faire\n"
+"       Si le parcours sur les j n'a rien inversé, quiter la fonction\n"
+msgstr ""
+
+# type: Content of: <p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:63
+msgid ""
+"Cet optimisation est plus décevante : on ne gagne que quelques pourcents en "
+"nombre de lectures sur BubbleSort2."
+msgstr ""
+
+# type: Content of: <p><p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:65
+msgid "CocktailSort"
+msgstr ""
+
+# type: Content of: <p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:67
+msgid ""
+"Pour améliorer encore notre algorithme, il faut regarder un peu plus en "
+"détail son comportement. On peut constater que les grands éléments sont très "
+"rapidement mis en place tandis que les petits éléments se déplacent très "
+"lentement vers leur destination. On parle classiquement de lièvres et de "
+"tortues pour désigner respectivement les grandes valeurs et les petites "
+"valeurs."
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:72
+msgid ""
+"Pour permettre aux tortues d'aller plus vite, le tri cocktail parcours "
+"alternativement le tableau de gauche à droite et de droite à gauche. Voici "
+"son pseudo-code:"
+msgstr ""
+
+# type: Content of: <p><p><p><p><pre>
+#: src/lessons/sort/ExExchangeSort.html:76
+#, no-wrap
+msgid ""
+"Faire\n"
+"  Pour tout i dans [0,lgr-2], faire:\n"
+"    si i et i+1 doivent être échangées, le faire\n"
+"  Pour tout i dans [lgr-2,0] en descendant, faire:\n"
+"    si i et i+1 doivent être échangées, le faire\n"
+"tant qu'au moins l'un des parcours a inversé un élément\n"
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:84
+msgid ""
+"On constate que le tri cocktail fait très exactement le même nombre "
+"d'échanges que le tri à bulle, mais qu'il améliore les choses sur le nombre "
+"de lectures. Il reste cependant moins bon que BubbleSort2 en la matière."
+msgstr ""
+
+# type: Content of: <p><p><p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:87
+msgid "CocktailSort2"
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:89
+msgid ""
+"Nous allons appliquer la même optimisation que BubbleSort2 à "
+"CocktailSort. Il nous faut nous souvenir des bornes du tableau pas encore "
+"trié, et le parcourir alternativement de droite à gauche et de gauche à "
+"droite:"
+msgstr ""
+
+# type: Content of: <p><p><p><p><pre>
+#: src/lessons/sort/ExExchangeSort.html:92
+#, no-wrap
+msgid ""
+"debut=0; fin=lgr-2\n"
+"Faire\n"
+"  Pour tout i dans [debut,fin], faire:\n"
+"    si i et i+1 doivent être échangées, le faire\n"
+"  fin--\n"
+"  Pour tout i dans [fin, debut] en descendant, faire:\n"
+"    si i et i+1 doivent être échangées, le faire\n"
+"  debut++\n"
+"tant qu'au moins l'un des parcours a inversé un élément\n"
+msgstr ""
+
+# type: Content of: <p><p><p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:103
+msgid "CocktailSort3"
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:104
+msgid ""
+"Même si la complexité algorithmique de CocktailSort2 est la même que le tri "
+"à bulle, il semble bien mieux s'en tirer en pratique. On peut encore "
+"l'améliorer un tout petit peu en arretant tout si le parcours dans l'ordre "
+"croissant n'a rien inversé, sans faire le parcours dans l'ordre "
+"descroissant. De même, on peut quiter si le parcours croissant a inversé des "
+"choses, mais pas le parcours décroissant."
+msgstr ""
+
+# type: Content of: <p><p><p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:109
+msgid "CombSort"
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:111
+msgid ""
+"Nous avons vu que le tri cocktail permet d'améliorer un peu les choses pour "
+"les tortues (ie, les petites valeurs près de la fin du tableau), mais on "
+"peut faire mieux. CombSort revient à leur faire prendre un racourci: Au lieu "
+"de comparer les valeurs adjacentes, on compare des valeurs séparés par un "
+"écart plus grand que 1. Ainsi, les tortues vont se déplacer de <i>ecart</i> "
+"cases à chaque parcours. Bien entendu, il faut appliquer l'algorithme avec "
+"des écarts de plus en plus petit et terminer avec <i>ecart=1</i> pour "
+"s'assurer que le tableau est entièrement trié à la fin. Choisir comment "
+"réduire l'écart entre les parcours est une question difficile (voir "
+"wikipédia en anglais sur le thème), mais en pratique, le diviser par 1.3 à "
+"chaque fois amène de bons résultats. Voici le pseudo-code correspondant :"
+msgstr ""
+
+# type: Content of: <p><p><p><p><pre>
+#: src/lessons/sort/ExExchangeSort.html:120
+#, no-wrap
+msgid ""
+" ecart = lgr;\n"
+" faire \n"
+"   si ecart>1 alors\n"
+"     ecart = ecart / 1.3\n"
+"   i = O\n"
+"   tant que i+ecart &lt; lgr faire:\n"
+"     si i et i+ecart doivent être inversés, le faire\n"
+"     ajouter ecart à i\n"
+" tant que l'écart est plus grand que 1 et/ou que le dernier parcours a "
+"inversé au moins un élément\n"
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:131
+msgid ""
+"Cet algorithme a été inventé par Wlodek Dobosiewicz en 1980 et redécouvert "
+"et popularisé par Stephen Lacey et Richard Box, qui l'ont décrit dans le "
+"magazine Byte d'avril 1991."
+msgstr ""
+
+# type: Content of: <p><p><p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:134
+msgid "CombSort11"
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:136
+msgid ""
+"Les auteurs de l'algorithme ont constaté que l'on améliore les performances "
+"en s'assurant que les dernières valeurs de l'écart sont (11, 8, 6, 4, 3, 2, "
+"1) plutôt que (9, 6, 4, 3, 2, 1) ou (10, 7, 5, 3, 2, 1). Reprenez donc le "
+"code de CombSort, et indiquez juste après la mise à jour de l'écart que si "
+"la valeur est 9 ou 10, il faut utiliser 11 à la place."
+msgstr ""
+
+# type: Content of: <p><p><p><p><h2>
+#: src/lessons/sort/ExExchangeSort.html:140
+msgid "GnomeSort"
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:142
+msgid ""
+"Le tri du gnome s'apparente au tri par insertion, à ceci près que les "
+"éléments sont déplacés par une série d'échange comme dans le tri à bulle. Le "
+"nom vient du comportement supposé des gnomes des jardins quand ils rangent "
+"une série de pots de fleurs. Voici la description de l'algorithme par son "
+"auteur:"
+msgstr ""
+
+# type: Content of: <p><p><p><p><p>
+#: src/lessons/sort/ExExchangeSort.html:146
+msgid ""
+"Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
+"(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower "
+"pots. Basically, he looks at the flower pot next to him and the previous "
+"one; if they are in the right order he steps one pot forward, otherwise he "
+"swaps them and steps one pot backwards. Boundary conditions: if there is no "
+"previous pot, he steps forwards; if there is no pot next to him, he is "
+"done.  <i>—Dick Grune</i>"
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/recursion/Main.html:1
+msgid "Algorithmes récursifs"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Main.html:2
+msgid "Cette leçon vous permet d'expérimenter avec des algorithmes récursifs."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/Main.html:4
+msgid ""
+"Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
+"récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir dans "
+"la leçon sur les tris."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/Square.html:1
+msgid "Les petites cousines des Buggles"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Square.html:3
+msgid ""
+"Aujourd'hui, nous allons faire la connaissance des petites cousines des "
+"buggles : les tortues. En fait, les tortues sont bien plus vieilles que les "
+"buggles. Elles ont été inventées dans les années 70 par un scientifique du "
+"MIT nommé Seymour Papert pour aider à l'enseignement la programmation, et "
+"les buggles sont une variation sur le thème inventée par Lyn Turbak du "
+"Wellesley College plus tard."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/Square.html:10
+msgid ""
+"Les tortues sont donc un peu comme les buggles, en plus petit.  Comme les "
+"buggles, vous pouvez leur demander d'avancer, de tourner, de reculer, "
+"etc. Comme les buggles, elles laissent une trace sur leur passage quand "
+"elles avancent (simplement, le trait est bien plus fin)."
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/recursion/Square.html:15
+msgid ""
+"La principale différence est que là où les buggles ne peuvent tourner que de "
+"quarts de tour, les tortues peuvent tourner d'un angle quelconque précisé "
+"par un nombre réel (double). Cela leur donne bien plus de liberté dans leur "
+"mouvement. Les buggles savent faire plusieurs trucs qui échappent aux "
+"tortues, comme lire et écrire des messages sur le sol ou ramasser des "
+"objets, et il y a parfois des murs dans leur univers, mais tout cela dépasse "
+"complètement les tortues."
+msgstr ""
+
+# type: Content of: <p><p><p>
+#: src/lessons/recursion/Square.html:22
+msgid ""
+"D'un point de vue pratique, la plupart des méthodes que vous connaissez à "
+"propos des buggles fonctionnent également avec les tortues, à quelques "
+"variantes près. En particulier, la méthode <code>forward</code> prend en "
+"argument le nombre de pas donné comme un nombre double (voir \"About this "
+"world\" dans le menu pour plus de détails)."
+msgstr ""
+
+# type: Content of: <p><p><p><h3>
+#: src/lessons/recursion/Square.html:28
+msgid "Des doubles ? Mais qu'est ce que c'est ?"
+msgstr ""
+
+# type: Content of: <p><p><p>
+#: src/lessons/recursion/Square.html:29
+msgid "C'est simplement un nombre à virgule. Exemple:"
+msgstr ""
+
+# type: Content of: <p><p><p><pre>
+#: src/lessons/recursion/Square.html:31
+#, no-wrap
+msgid ""
+"double x = 3.72;\n"
+"x + 1.234 // Valeur = 4.954\n"
+"x + 2 // Valeur = 5.72 (2 converti en 2.0 automatiquement)\n"
+"x * 2 // Valeur = 7.44 (2 converti en 2.0 automatiquement)\n"
+"x / 2 // Valeur = 1.86 (2 converti en 2.0 automatiquement)\n"
+"(int) x // Valeur = 1 (“transtypage en int”, converti en entier en "
+"tronquant)\n"
+"Math.round(x) // Valeur = 2 (1.86 arrondi à l'entier le plus proche)\n"
+"Math.floor(x) // Valeur = 1 (1.86 arrondi en direction de moins l'infini)\n"
+"Math.floor(-5.12) // Vale = -6 (Arrondi en direction de moins l'infini)\n"
+"Math.ceiling(x) // Value = 2 (1.86 arrondi en direction de plus l'infini)\n"
+"Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)\n"
+"(double) 17 // Value = 17.0 (“transtypage en double”, converti en double)\n"
+msgstr ""
+
+# type: Content of: <p><p><p>
+#: src/lessons/recursion/Square.html:46
+msgid ""
+"Bien que ce soit le premier exercice de la leçon sur la récursivité, le code "
+"que vous devez écrire n'est pas récursif. L'objectif est de se familiariser "
+"avec le monde des tortues avant d'attaquer les choses sérieuses."
+msgstr ""
+
+# type: Content of: <p><p><p><p>
+#: src/lessons/recursion/Square.html:50
+msgid ""
+"Vous devez reproduire une forme géométrique simple faite de quatre carrés de "
+"longueur 100 de coté (voir le monde objectif pour plus de détails). C'est "
+"sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la "
+"réutiliser lors de l'écriture de la méthode <code>run()</code> qui fait le "
+"travail. Il est indispensable d'écrire au moins la méthode run, dont le "
+"prototype est le suivant:"
+msgstr ""
+
+# type: Content of: <p><p><p><p><pre>
+#: src/lessons/recursion/Square.html:57
+#, no-wrap
+msgid ""
+"public void run() {\n"
+"  // ecrivez ici ce que doit faire votre tortue\n"
+"}"
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/PolygonFractal.html:1
+msgid "Fractales de polygones"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/PolygonFractal.html:3
+msgid ""
+"La fractale que nous allons dessiner maintenant est formée d'un polygone "
+"auquel sont ajoutés des petits polygones sur chaque angle. Le prototype de "
+"la fonction le traçant est le suivant:"
+msgstr ""
+
+# type: Content of: <pre>
+#: src/lessons/recursion/PolygonFractal.html:5
+#, no-wrap
+msgid "void polygonFractal (int levels, int sides, double length, double shrink)"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/PolygonFractal.html:7 src/lessons/recursion/Sierpinski.html:7 src/lessons/recursion/DragonCurve1.html:25 src/lessons/recursion/DragonCurve2.html:37
+msgid ""
+"Consultez les objectifs de chaque monde pour comprendre comment écrire la "
+"fonction."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/Koch.html:1
+msgid "Flocons de neige"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Koch.html:3
+msgid ""
+"Nous allons maintenant dessiner des flocons de neige en utilisant la "
+"fractale de Koch.  Une fractale est un dessin géométrique dont le motif se "
+"reproduit à n'importe quelle échelle."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/Koch.html:6
+msgid ""
+"La forme générale est un triangle dont chaque coté est donné par une série "
+"d'appels récursifs.  La forme générale est obtenue en enchainant trois cotés "
+"de la façon suivante."
+msgstr ""
+
+# type: Content of: <p><pre>
+#: src/lessons/recursion/Koch.html:8
+#, no-wrap
+msgid ""
+"void snowFlake (int levels, double length) {\n"
+"   snowSide(levels, length);\n"
+"   turnRight(120);\n"
+"   snowSide(levels, length);\n"
+"   turnRight(120);\n"
+"   snowSide(levels, length);\n"
+"   turnRight(120);\n"
+"}"
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/recursion/Koch.html:17
+msgid ""
+"Observez le dessin dans chaque monde objectif pour comprendre la logique de "
+"ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui "
+"est récursive."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/Star.html:1
+msgid "Tortues dans les étoiles"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Star.html:3
+msgid ""
+"Voici un dernier exercice de prise en main avant la récursion. Il s'agit de "
+"faire dessiner trois étoiles à 5 branches à la tortue. Comme toutes les "
+"étoiles régulières à N branches, les angles des pointes sont de 360/N degrés "
+"tandis que les angles entre les pointes sont de 2*360/N degrés."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/Star.html:8
+msgid ""
+"La première étoile à dessiner est noire (<code>Color.black</code>) et ses "
+"branches font 100 pas de longueur, la seconde est bleue "
+"(<code>Color.blue</code>) et ses branches font 80 pas de longueur. Elle est "
+"décallée de 45 degrés vers le bas par rapport à la première.  La dernière "
+"étoile est rouge (<code>Color.red</code>), ses branches font 60 pas, et elle "
+"est décallée de 45 degrés par rapport à la seconde."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/Star.html:15
+msgid "Consultez l'objectif du monde pour visualiser la figure à réaliser."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/Circle.html:1
+msgid "Trois petits tours"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Circle.html:3
+msgid ""
+"Comme nous l'avons vu (et comme vous pouvez le vérifier en consultant l'aide "
+"de ce monde dans le menu \"À propos de ce monde\"), les tortues ne savent "
+"que se déplacer en ligne droite. Et pourtant, l'objectif de cet exercice est "
+"de leur faire dessiner des cercles... On peut pourtant résoudre ce problème "
+"simplement en réalisant qu'un cercle peut être représenté comme une "
+"concaténation de petits segments."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/Circle.html:10
+msgid ""
+"Les amateurs de calcul différentiel diraient même sans doute qu'un cercle "
+"est la limite asymptotique d'une telle construction quand la taille des "
+"segments tend vers zéro alors que leur nombre tend vers l'infini (mais on "
+"peut tout de même réussir l'exercice sans maîtriser le calcul différentiel)."
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Circle.html:18
+msgid ""
+"Écrivez une fonction dessinant un cercle, avec la taille de chacun des 360 "
+"pas passée en paramètre. Utilisez la ensuite dans votre méthode "
+"<code>run()</code> pour réaliser la figure dans son ensemble. Le premier "
+"cercle s'obtient avec des pas de 0.5, le second avec des pas de 1 et le "
+"troisième avec des pas de 1.5. Encore une fois, il s'agit d'un exercice de "
+"prise en main, et aucune récursion n'est nécessaire."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/Tree.html:1
+msgid "Arbres"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Tree.html:3
+msgid ""
+"Nous allons maintenant dessiner des arbres. Pour cela, nous allons écrire "
+"une fonction doublement récursive de prototype"
+msgstr ""
+
+# type: Content of: <pre>
+#: src/lessons/recursion/Tree.html:4
+#, no-wrap
+msgid "void tree(int steps, double length, double angle, double shrink)"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/Tree.html:6
+msgid ""
+"Pour dessiner un arbre à quatre étages, il faut dessiner un tronc de la "
+"taille indiquée, tourner à droite de l'angle indiqué, faire un arbre à 3 "
+"étages, tourner à gauche de deux fois l'angle indiqué, faire un autre arbre "
+"à 3 étages, puis revenir à sa position initiale."
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/recursion/Tree.html:10
+msgid ""
+"Si le tronc d'un arbre mesure length à l'étage N, il mesure shrink*length à "
+"l'étage N+1."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/Sierpinski.html:1
+msgid "Triangle de Sierpinski"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Sierpinski.html:3
+msgid ""
+"La fractale que nous allons dessiner maintenant est formée d'un triangle "
+"dans lequel sont imbriqués des triangles plus petits.  Le prototype de la "
+"fonction le traçant est le suivant :"
+msgstr ""
+
+# type: Content of: <pre>
+#: src/lessons/recursion/Sierpinski.html:5
+#, no-wrap
+msgid "void sierpinski(int level, double length)"
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/Spiral.html:1
+msgid "Spirales"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Spiral.html:3
+msgid ""
+"Nous allons maintenant écrire notre première fonction récursive avec les "
+"tortues. L'objectif est de dessiner des spirales de différentes formes avec "
+"la même fonction, dont le prototype est le suivant:"
+msgstr ""
+
+# type: Content of: <pre>
+#: src/lessons/recursion/Spiral.html:6
+#, no-wrap
+msgid "void spiral(int steps, int angle, int length, int increment)"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/Spiral.html:8
+msgid ""
+"Pour vous aider à comprendre comment l'écrire, voici un exemple de la suite "
+"des différentes valeurs prises par les paramètres dans un cas:"
+msgstr ""
+
+# type: Content of: <pre>
+#: src/lessons/recursion/Spiral.html:11
+#, no-wrap
+msgid ""
+"spiral(5, 90, 0, 3);\n"
+"  forward(0);\n"
+"  turnLeft(90);\n"
+"  spiral(4,90,3,3);\n"
+"    forward(3);\n"
+"    turnLeft(90);\n"
+"    spiral(3,90,6,3);\n"
+"      forward(6);\n"
+"      turnLeft(90);\n"
+"      spiral(2,90,9,3);\n"
+"        forward(9);\n"
+"        turnLeft(90);\n"
+"        spiral(1,90,12,3);\n"
+"          forward(12);\n"
+"          turnLeft(90);\n"
+"          spiral(0,90,12,3);\n"
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/DragonCurve1.html:1
+msgid "Courbe du Dragon (1)"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve1.html:3
+msgid "Un exemple classique de la méthode récursive est la courbe du Dragon."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve1.html:5
+msgid "La définition de cette courbe est la suivante :"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve1.html:6
+msgid ""
+"la courbe du Dragon d'ordre 1 est un vecteur entre deux points quelconques P "
+"et Q,"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve1.html:7
+msgid ""
+"la courbe du Dragon d'ordre n est la courbe du Dragon d'ordre n-1 entre P et "
+"R suivie de la même courbe d'ordre n-1 entre R et Q (à l'envers), où PRQ est "
+"le triangle isocèle rectangle en R, et R est à droite du vecteur PQ.  Donc, "
+"si P et Q sont les points de coordonnées (x, y) et (z,t), les coordonnées "
+"(u, v) de R sont"
+msgstr ""
+
+# type: Content of: <p><pre>
+#: src/lessons/recursion/DragonCurve1.html:13 src/lessons/recursion/DragonCurve2.html:18 src/lessons/recursion/DragonCurve2.html:29
+#, no-wrap
+msgid ""
+"u = (x + z)/2 + (t - y)/2\n"
+"v = (y + t)/2 - (z - x)/2\n"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve1.html:19
+msgid "Le prototype de la méthode traçant la courbe est le suivant :"
+msgstr ""
+
+# type: Content of: <p><pre>
+#: src/lessons/recursion/DragonCurve1.html:20 src/lessons/recursion/DragonCurve2.html:14
+#, no-wrap
+msgid "void dragon(int ordre, double x, double y, double z, double t)"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve1.html:23
+msgid ""
+"Vous utiliserez la méthode <code>setPos(x,y)</code> pour déplacer votre "
+"tortue aux coordonnées (x,y) et la méthode <code>moveTo(z,t)</code> pour "
+"tracer un trait depuis le point où la tortue est positionnée vers le point "
+"de coordonnées (z,t)"
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/DragonCurve2.html:1
+msgid "Courbe du Dragon (2)"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:3
+msgid ""
+"La solution précédente nécessite que la tortue se téléporte, autrement dit, "
+"qu'il est parfois nécessaire de lever le crayon pour tracer la courbe.  En "
+"effet, entre la destination du trait tracé par le premier appel récursif ne "
+"correspond pas à la source du trait qui doit être tracé par le second appel "
+"récursif.  C'est pourquoi il était nécessaire d'utiliser la méthode "
+"<code>setPos()</code>"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:7
+msgid ""
+"Dans cette leçon, vous allez donc réaliser une méthode récursive qui permet "
+"de tracer la courbe du dragon sans lever le crayon. Pour ce faire, vous "
+"définirez une seconde méthode récursive qui trace la courbe à l'envers."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:9
+msgid ""
+"La méthode <code>dragon()</code> sera définie récursivement en fonction des "
+"méthodes <code>dragon()</code> et <code>dragonInverse()</code>. De même, la "
+"méthode <code>dragonInverse()</code> sera définie récursivement en terme de "
+"<code>dragon()</code> et de <code>dragonInverse()</code>. Voici un bien bel "
+"exemple de <i>récursivité croisée</i>."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:13
+msgid ""
+"Le prototype de la méthode <code>dragon()</code> reste le même que "
+"précédemment :"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:16
+msgid ""
+"Les coordonnées (u, v) du nouveau point introduit par la méthode "
+"<code>dragon()</code> seront :"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:24
+msgid "Le prototype de la méthode <code>dragonInverse()</code> est identique : :"
+msgstr ""
+
+# type: Content of: <p><pre>
+#: src/lessons/recursion/DragonCurve2.html:25
+#, no-wrap
+msgid "void dragonInverse(int ordre, double x, double y, double z, double t)"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:27
+msgid ""
+"Les coordonnées (u, v) du nouveau point introduit par la méthode "
+"<code>dragonInverse()</code> seront :"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/DragonCurve2.html:35
+msgid ""
+"Afin de rendre, plus visible le travail de chacune des deux méthodes "
+"récursives, le trait tracé par la méthode <code>dragon()</code> devra être "
+"rouge (<code>Color.red</code>) et le trait tracé par la méthode "
+"<code>dragonInverse</code> devra être bleu (<code>Color.blue</code>)."
+msgstr ""
+
+# type: Content of: <h2>
+#: src/lessons/recursion/SpiralUse.html:1
+msgid "Faire des spirales"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/recursion/SpiralUse.html:3
+msgid ""
+"Saurez-vous faire les différents motifs de cet exercice en utilisant la "
+"méthode <code>spiral()</code>?"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/SpiralUse.html:6
+msgid ""
+"Vous devez écrire une méthode <code>doit(int)</code> qui prend en paramètre "
+"le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0, "
+"etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les "
+"valeurs convenables pour chaque page."
+msgstr ""
+
+# type: Content of: <pre>
+#: src/lessons/recursion/SpiralUse.html:12
+#, no-wrap
+msgid ""
+"void doit(int page) {\n"
+"  switch (page) {\n"
+"    case 0: /* Dessin de la première page, marquée \"One\" */\n"
+"      spiral(A0,B0,C0,D0);\n"
+"      break;\n"
+"    case 1: /* Dessin de la seconde page, marquée \"Two\" */\n"
+"      spiral(A1,B1,C1,D1);\n"
+"      break;\n"
+"    case 2: /* Dessin de la page marquée \"Three\" */\n"
+"      spiral(A2,B2,C2,D2);\n"
+"      break;\n"
+"    case 3: /* Dessin de la page marquée \"Four\" */\n"
+"      spiral(A3,B3,C3,D3);\n"
+"      break;\n"
+"    case 4: /* Dessin de la page marquée \"Five\" */\n"
+"      spiral(A4,B4,C4,D4);\n"
+"      break;\n"
+"  }\n"
+"}\n"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/recursion/SpiralUse.html:34
+msgid ""
+"Pas besoin de recopier le code de <code>spiral()</code>, la tortue de cet "
+"exercice connait déjà la méthode."
+msgstr ""
+
+# type: Content of: <h1>
 #: src/lessons/maze/Main.html:1
 msgid "Labyrinthes"
 msgstr ""
@@ -5200,10 +5226,9 @@ msgstr ""
 # type: Content of: <a><p>
 #: src/lessons/maze/RandomMouseMaze.html:33
 msgid ""
-"Ecrivez la méthode <code>void turnRandomly()</code> que votre buggle "
-"utiliser pour tourner au hasard à droite ou à gauche. Vous pouvez vous aidez "
-"de la méthode <code>random2()</code> qui retourne 0 ou 1 de manière "
-"aléatoire."
+"Ecrivez la méthode <code>void turnRandomly()</code> que votre buggle utilise "
+"pour tourner au hasard à droite ou à gauche. Vous pouvez vous aidez de la "
+"méthode <code>random2()</code> qui retourne 0 ou 1 de manière aléatoire."
 msgstr ""
 
 # type: Content of: <a><p>
