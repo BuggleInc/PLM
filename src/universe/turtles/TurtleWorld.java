@@ -1,9 +1,6 @@
 package universe.turtles;
 
 import java.awt.Color;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -90,12 +87,7 @@ public class TurtleWorld extends World {
 	}
 	
 
-	// TODO implement world IO
-	@Override
-	public void readFromFile(BufferedReader br) throws IOException {}
-	@Override
-	public void writeToFile(BufferedWriter f) throws IOException {}
-	
+	// TODO implement world IO	
 	
 	@Override
 	public String toString(){

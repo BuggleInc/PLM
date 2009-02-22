@@ -1,9 +1,6 @@
 package universe.sort;
 
 import java.awt.Color;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -92,8 +89,4 @@ public class SortingWorld extends World {
 	}
 
 	// TODO Implement world IO
-	@Override
-	public void readFromFile(BufferedReader br) throws IOException {}
-	@Override
-	public void writeToFile(BufferedWriter f) throws IOException {}
 }

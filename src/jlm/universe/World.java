@@ -192,9 +192,9 @@ public abstract class World {
 	}
 
 	/* IO related */
-	public abstract void readFromFile(BufferedReader br) throws IOException;
+	public void readFromFile(BufferedReader br) throws IOException {}
 
-	public abstract void writeToFile(BufferedWriter f) throws IOException;
+	public void writeToFile(BufferedWriter f) throws IOException {}
 
 	public void writeToFile(File outputFile) throws IOException {
 		BufferedWriter bw = null;
