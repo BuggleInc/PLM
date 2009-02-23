@@ -49,7 +49,10 @@ public class LightBotWorldCell {
 		lightOn = false;
 		world.notifyWorldUpdatesListeners();
 	}
-	
+	/** Returns true if the light is on, or if there is no light */
+	public boolean getLightOnOrNone(){
+		return (!light) || lightOn;
+	}
 
 			
 	public int getX() {

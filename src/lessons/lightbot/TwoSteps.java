@@ -1,10 +1,9 @@
 package lessons.lightbot;
 
-import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
 import universe.bugglequest.Direction;
 
-public class TwoSteps extends ExerciseTemplated {
+public class TwoSteps extends LightBotExercise {
 
 	public TwoSteps(Lesson lesson) {
 		super(lesson);

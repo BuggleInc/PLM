@@ -1,6 +1,7 @@
 package lessons.lightbot;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
@@ -127,5 +128,33 @@ public class LightBotWorld extends jlm.universe.World {
 					return false;
 
 		return super.equals(obj);
+	}
+	
+	public class CellIterator implements Iterator<LightBotWorldCell> {
+		int x=0;
+		int y=0;
+		
+		@Override
+		public boolean hasNext() {
+			return x<LightBotWorld.this.sizeX-1 || y<LightBotWorld.this.sizeY-1;
+		}
+
+		@Override
+		public LightBotWorldCell next() {
+			LightBotWorldCell res = LightBotWorld.this.getCell(x, y);
+			if (x >= LightBotWorld.this.sizeX-1) {
+				x=0;
+				y++;
+			} else {
+				x++;
+			}
+			return res;
+		}
+
+		@Override
+		public void remove() {
+			throw new RuntimeException("Method not implemented (and not implementable");
+		}
+		
 	}
 }
