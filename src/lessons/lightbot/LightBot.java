@@ -54,32 +54,17 @@ public class LightBot extends Entity {
 		LightBot lb = new LightBot();
 		lb.setWorld(getWorld());
 		lb.setName(getName());
-		lb.setPos(getX(), getY());
+		lb.setPos(x, y);
 		lb.setDirection(direction);
 		return lb;
 	}
 
 
+	public void setDirection(Direction d) {
+		direction=d;
+	}
 	public Direction getDirection() {
 		return direction;
-	}
-
-	public void setDirection(Direction direction) {
-		assert (world != null);
-		this.direction = direction;
-		world.notifyWorldUpdatesListeners();
-	}
-
-	public void turnLeft() {
-		setDirection(direction.left());
-	}
-
-	public void turnRight() {
-		setDirection(direction.right());
-	}
-
-	public void turnBack() {
-		setDirection(direction.opposite());
 	}
 
 	public int getWorldHeight() {
@@ -100,12 +85,6 @@ public class LightBot extends Entity {
 	}
 
 
-	public int getX() {
-		return x;
-	}
-	public int getY() {
-		return y;
-	}
 	public void setPos(int x, int y) {
 		this.x = x;
 		this.y = y;
@@ -118,10 +97,14 @@ public class LightBot extends Entity {
 			System.out.println("facing wall");
 	}
 	public void jump(){
-		if (Math.abs(getCellNeighbor(getDirection().toPoint()).getHeight() - getCell().getHeight()) == 1)
+		int heightHere = getCell().getHeight();
+		int heightThere = getCellNeighbor(getDirection().toPoint()).getHeight();
+		
+		if ( (heightThere - heightHere  == 1 /*jump one up*/) || 
+		     (heightHere > heightThere /*jump down*/))
 			move();
 		else 
-			System.out.println("not facing steps");
+			System.out.println("cannot jump here");
 	}
 
 	private void move() {
@@ -201,9 +184,8 @@ public class LightBot extends Entity {
 
 		InstructionKind kind;
 		String loc;
-		public Instruction(String s,String location) throws SyntaxErrorException {
+		public Instruction(String read,String location) throws SyntaxErrorException {
 			loc=location;
-			String read = s.replaceAll("^[ \t]*", "").replaceAll("[ \t]*$", "");
 			
 			if (read.equalsIgnoreCase("forward")) {
 				kind=InstructionKind.FORWARD;
@@ -220,11 +202,11 @@ public class LightBot extends Entity {
 			} else if (read.equalsIgnoreCase("f2")) {
 				kind=InstructionKind.F2;
 			} else {
-				throw new SyntaxErrorException(s,location); 
+				throw new SyntaxErrorException(read,location); 
 			}
 		}
 		public void run() {
-			System.err.println("Execute "+kind+" at "+LightBot.this.getX()+","+LightBot.this.getY());
+			System.err.println("Execute "+kind+" at "+LightBot.this.x+","+LightBot.this.y);
 			switch (kind) {
 			case FORWARD: forward(); break;
 			case JUMP: jump(); break;
@@ -241,10 +223,12 @@ public class LightBot extends Entity {
 			return null;
 		Instruction[] res = new Instruction[maxSize];
 
-		String[] lines = sf.getCompilableContent().split("\n| |\t");
+		String[] lines = sf.getCompilableContent().split("\n");
 		int lineNumber=1;
 		for (String l: lines) {
-			res[lineNumber] = new Instruction(l,sf.getName()+":"+lineNumber);
+			String read = l.replaceAll("^[ \t]*", "").replaceAll("[ \t]*$", "");
+			if (!read.isEmpty())
+				res[lineNumber] = new Instruction(read,sf.getName()+":"+lineNumber);
 			lineNumber++;
 		}
 		return res;
@@ -268,6 +252,9 @@ public class LightBot extends Entity {
 			sf = Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile("function 2");
 			func2=parseFile(sf, 8);
 		} catch (SyntaxErrorException e) {
+			main = null;
+			func1 = null;
+			func2 = null;
 			System.err.println(e.getMessage());
 		}
 		
@@ -276,6 +263,8 @@ public class LightBot extends Entity {
 	}
 
 	private void run(Instruction[] file) {
+		if (file == null)
+			return;
 		for (Instruction i: file)
 			if (i!=null)
 				i.run();
