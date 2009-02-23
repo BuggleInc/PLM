@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2009-02-22 07:12+0100\n"
-"PO-Revision-Date: 2009-02-22 07:13+0100\n"
+"PO-Revision-Date: 2009-02-23 10:36+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -2479,7 +2479,7 @@ msgid ""
 "int)</code>, on est donc sur que <code>x&lt;=y</code> car dans le cas "
 "contraire, le <tt>return</tt> de la deuxième ligne aurait arrêté l'exécution "
 "de la fonction."
-msgstr ""
+msgstr "Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It works anyway because a <tt>return</tt> interrupts the method execution. If we arrive to the last line of <code>max(int,int)</code>, we know that <code>x&lt;=y</code> because on the other case, the <tt>return</tt> of line 2 would have stopped the execution."
 
 #: src/lessons/welcome/MethodsArgs.html:56
 msgid ""
@@ -2490,28 +2490,28 @@ msgid ""
 "utilisera au passage des méthodes que l'on ne connaît pas encore pour "
 "deviner sa position et sa direction actuelles afin de calculer le sens et le "
 "nombre de pas à faire (mais ce n'est pas important ici)."
-msgstr ""
+msgstr "This time, you have to write a <code>move(int stepCount,boolean forward)</code> method which move forward of <code>stepCount</code> if <code>forward</code> is true, and move back of that amount of steps if the boolean is false. The buggle will use some methods we did not introduce yet to guess its position and orientation in order to determine the amount of steps to do and their direction, but it is not relevant here."
 
 #: src/lessons/welcome/MethodsArgs.html:67
 msgid ""
 "Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas "
 "grand chose pour vous, puisque toutes sont ici régies par le même code."
-msgstr ""
+msgstr "This time, there is only one world, and seven buggles. But it does not change anything for you, since the same code is used for any buggles."
 
 #: src/lessons/welcome/MethodsArgs.html:71
 msgid ""
 "Le code de la méthode à proprement parlé ne devrait pas poser de problème."
-msgstr ""
+msgstr "The code of the method to write should not be really problematic for you."
 
 #: src/lessons/welcome/MethodsPicture.html:1
 msgid "Dessiner avec méthode"
-msgstr ""
+msgstr "Methodically drawing"
 
 #: src/lessons/welcome/MethodsPicture.html:3
 msgid ""
 "Dans cet exercice, nous allons reproduire un dessin géométrique, que vous "
 "pouvez voir en cliquant sur l'onglet \"Objective\"."
-msgstr ""
+msgstr "In this exercise, we will reproduce the geometrical drawing that you can see in the \"Objective\" tab."
 
 #: src/lessons/welcome/MethodsPicture.html:6
 msgid ""
@@ -2519,7 +2519,7 @@ msgid ""
 "une méthode <code>run()</code> la plus simple possible. Pour cela, vous "
 "veillerez à décomposer le travail à faire en sous-étape, et à faire réaliser "
 "chaque sous-étape par une méthode particulière."
-msgstr ""
+msgstr "Your goal (here and in any well written program) is to write the simplest possible <code>run()</code>. For that, you have to decompose your work in sub-steps, and write a specific method for each sub-step."
 
 #: src/lessons/welcome/MethodsPicture.html:11
 msgid ""
@@ -2528,12 +2528,12 @@ msgid ""
 "positions différentes.  Un découpage possible est d'écrire une fonction "
 "chargée de faire un V de la couleur indiquée à partir de la position "
 "courante. Son prototype peut être :"
-msgstr ""
+msgstr "If you observe carefully the picture to draw, it is constituted of four parts depicting a sort of V using a different color. A possible decomposition is to write a method in charge of drawing a V of the specified color from the current position. Its prototype can be:"
 
 #: src/lessons/welcome/MethodsPicture.html:15
 #, no-wrap
 msgid "void makeV(Color c)"
-msgstr ""
+msgstr "void makeV(Color c)"
 
 #: src/lessons/welcome/MethodsPicture.html:17
 msgid ""
@@ -2545,19 +2545,19 @@ msgstr ""
 
 #: src/lessons/welcome/MethodsPicture.html:21
 msgid "Color.yellow"
-msgstr ""
+msgstr "Color.yellow"
 
 #: src/lessons/welcome/MethodsPicture.html:22
 msgid "Color.red"
-msgstr ""
+msgstr "Color.red"
 
 #: src/lessons/welcome/MethodsPicture.html:23
 msgid "Color.blue"
-msgstr ""
+msgstr "Color.blue"
 
 #: src/lessons/welcome/MethodsPicture.html:24
 msgid "Color.green"
-msgstr ""
+msgstr "Color.green"
 
 #: src/lessons/welcome/MethodsPicture.html:27
 msgid ""
