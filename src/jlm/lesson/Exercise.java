@@ -126,6 +126,9 @@ public abstract class Exercise {
 		for (SourceFile sf: hiddenSourceFiles)
 			sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 			
 
+		if (sources.isEmpty())
+			return;
+		
 		/* Do the compile */
 		try {
 			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
