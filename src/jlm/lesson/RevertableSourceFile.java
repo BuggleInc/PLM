@@ -52,5 +52,4 @@ public class RevertableSourceFile extends SourceFile {
 			return false;
 		return true;
 	}
-	
 }

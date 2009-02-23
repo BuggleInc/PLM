@@ -25,8 +25,10 @@ public abstract class Exercise {
 
 	public String name = "<no name>"; 
 	public String mission = "";  /** The text to display to present the lesson */
-	protected List<RevertableSourceFile> sourceFiles; /** All the editable source files */
-	protected List<SourceFile> hiddenSourceFiles; /** Other source files, that the compiler should use, but the user shouldn't see */
+	
+	protected List<SourceFile> sourceFiles; /** All the editable source files */
+	
+	
 	Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
 	protected List<String> fileNames;
 
@@ -121,10 +123,9 @@ public abstract class Exercise {
 		/* Prepare the source files */
 		Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
 		for (SourceFile sf: sourceFiles) {
-			sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns));
+			if (sf.isCompilable())
+				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns));
 		}
-		for (SourceFile sf: hiddenSourceFiles)
-			sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 			
 
 		if (sources.isEmpty())
 			return;
@@ -152,9 +153,14 @@ public abstract class Exercise {
 	 */
 	public void newFrozenSource(String name, String content) {
 		SourceFile sf = new SourceFile(name, content);
-		hiddenSourceFiles.add(sf);
+		sf.setEditable(false);
+		sourceFiles.add(sf);
 	}
-	
+	public void newTextFile(String name, String content) {
+		SourceFile sf = new SourceFile(name, content);
+		sf.setCompilable(false);
+		sourceFiles.add(sf);
+	}
 	public void newSource(String name, String initialContent, String template) {
 		newSource(name, initialContent, template, "");
 	}
@@ -230,18 +236,19 @@ public abstract class Exercise {
 	public Exercise(Lesson lesson) {
 		super();
 		this.lesson = lesson;
-		sourceFiles = new ArrayList<RevertableSourceFile>();
-		hiddenSourceFiles = new ArrayList<SourceFile>();
+		sourceFiles = new ArrayList<SourceFile>();
 		runtimePatterns = new TreeMap<String, String>();
 		fileNames = new ArrayList<String>();
 	}
 
 	public String[] getSourceFilesNames() {
-		String[] res = new String[sourceFiles.size()];
+		String[] res = new String[sourceFiles.size()]; // will be too large if not all compilable, but who cares?
 		int i = 0;
 		for (SourceFile sf: sourceFiles) {
-			res[i] = sf.getName();
-			i++;
+			if (sf.isCompilable()) {
+				res[i] = sf.getName();
+				i++;
+			}
 		}
 		return res;
 	}
@@ -255,11 +262,30 @@ public abstract class Exercise {
 	}
 
 	public int publicSourceFileCount() {
-		return this.sourceFiles.size();
+		int res=0;
+		for (SourceFile sf : sourceFiles) {
+			if (sf.isEditable())
+				res++;
+		}
+		return res;
 	}
 	
-	public RevertableSourceFile getPublicSourceFile(int i) {
-		return this.sourceFiles.get(i);
+	public SourceFile getPublicSourceFile(int i) {
+		int count=0;
+		for (SourceFile sf : sourceFiles) {
+			if (sf.isEditable())
+				if (i == count)
+					return sf;
+				count++;
+		}
+		throw new ArrayIndexOutOfBoundsException("Not "+i+" public source files (but only "+count+")");
+	}
+	public SourceFile getPublicSourceFile(String name) {
+		for (SourceFile sf : sourceFiles) {
+			if (sf.getName().equals(name))
+				return sf;
+		}
+		return null; // not found
 	}
 	
 	public int worldCount() {

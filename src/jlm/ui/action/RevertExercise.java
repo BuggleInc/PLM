@@ -20,7 +20,7 @@ public class RevertExercise extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		Exercise ex = game.getCurrentLesson().getCurrentExercise();
 		for (int i=0; i<ex.publicSourceFileCount(); i++) {
-			RevertableSourceFile srcFile = ex.getPublicSourceFile(i);
+			RevertableSourceFile srcFile = (RevertableSourceFile) ex.getPublicSourceFile(i);
 			srcFile.revert();
 		}
 	}

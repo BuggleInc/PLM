@@ -69,9 +69,14 @@ public class FileSessionKit implements ISessionKit {
 
 				// save exercise body
 				for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
-					RevertableSourceFile srcFile = exercise.getPublicSourceFile(i);
+					SourceFile sf = exercise.getPublicSourceFile(i);
+					
+					if (!(sf instanceof RevertableSourceFile))
+						continue;
+					
+					RevertableSourceFile srcFile = (RevertableSourceFile)sf;
 					File outputFile = new File(exerciseDir, srcFile.getName());
-
+					
 					if (srcFile.hasChanged()) {
 						BufferedWriter bw = null;
 						try {

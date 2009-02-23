@@ -78,7 +78,12 @@ public class ZipSessionKit implements ISessionKit {
 
 					// save exercise body
 					for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
-						RevertableSourceFile srcFile = exercise.getPublicSourceFile(i);
+						SourceFile sf = exercise.getPublicSourceFile(i);
+						
+						if (!(sf instanceof RevertableSourceFile))
+							continue;
+						
+						RevertableSourceFile srcFile = (RevertableSourceFile) sf;
 
 						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/" + srcFile.getName());
 						zos.putNextEntry(ze);

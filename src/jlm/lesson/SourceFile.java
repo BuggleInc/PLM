@@ -12,6 +12,9 @@ public class SourceFile {
 	private Map<String, String> patterns;
 	private ISourceFileListener listener;
 
+	private boolean isCompilable=true;
+	private boolean isEditable=true;
+
 	public SourceFile(String name, String initialBody) {
 		this(name, initialBody, null, null);
 	}
@@ -75,6 +78,22 @@ public class SourceFile {
 	public void notifyListener() {
 		if (this.listener != null)
 			this.listener.sourceFileContentHasChanged();
+	}
+
+	public boolean isCompilable() {
+		return isCompilable;
+	}
+
+	public void setCompilable(boolean isCompilable) {
+		this.isCompilable = isCompilable;
+	}
+
+	public boolean isEditable() {
+		return isEditable;
+	}
+
+	public void setEditable(boolean isEditable) {
+		this.isEditable = isEditable;
 	}
 
 	@Override
