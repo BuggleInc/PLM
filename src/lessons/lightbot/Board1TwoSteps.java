@@ -3,11 +3,11 @@ package lessons.lightbot;
 import jlm.lesson.Lesson;
 import universe.bugglequest.Direction;
 
-public class TwoSteps extends LightBotExercise {
+public class Board1TwoSteps extends LightBotExercise {
 
-	public TwoSteps(Lesson lesson) {
+	public Board1TwoSteps(Lesson lesson) {
 		super(lesson);
-		tabName = "TwoSteps";
+		tabName = "Mars";
 				
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Two steps", 8, 8);
@@ -18,7 +18,9 @@ public class TwoSteps extends LightBotExercise {
 		myWorld.addLight(2,5);
 		
 		new LightBot(myWorld, "D2R2", 2, 3, Direction.SOUTH);
-		newTextFile("main", "forward\nforward\nlight");
+		newTextFile("main", "");
+		newTextFile("function 1", "");
+		newTextFile("function 2", "");
 		setup(myWorld);
 	}
 }
