@@ -2,6 +2,8 @@ package lessons.lightbot;
 
 import java.awt.Point;
 
+import jlm.core.Game;
+import jlm.lesson.SourceFile;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -244,8 +246,13 @@ public class LightBot extends Entity {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		SourceFile sf = Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile(0);
+		if (sf == null) {
+			System.err.println("No source file available. Broken exercise.");
+			return;
+		}
 		
+		System.out.println("Interpretation of file "+sf.getName()+". Body:\n"+sf.getCompilableContent());		
 	}
 
 }

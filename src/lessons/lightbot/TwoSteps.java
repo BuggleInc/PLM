@@ -13,6 +13,7 @@ public class TwoSteps extends LightBotExercise {
 		LightBotWorld myWorld = new LightBotWorld("Two steps", 8, 8);
 
 		new LightBot(myWorld, "D2R2", 2, 3, Direction.NORTH);
+		newTextFile("D2R2", "");
 		setup(myWorld);
 	}
 }
