@@ -20,7 +20,7 @@ public class LightBot extends Entity {
 
 	@Attribute
 	Direction direction;
-	
+
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
 	 * constructor. But it should not be used as most methods assert on world
@@ -81,11 +81,11 @@ public class LightBot extends Entity {
 	public void turnBack() {
 		setDirection(direction.opposite());
 	}
-	
+
 	public int getWorldHeight() {
 		return ((LightBotWorld)world).getHeight();
 	}
-	
+
 	public int getWorldWidth() {
 		return ((LightBotWorld)world).getWidth();
 	}
@@ -103,109 +103,51 @@ public class LightBot extends Entity {
 	public int getX() {
 		return x;
 	}
-
-	public void setX(int x) {
-		assert (world != null);
-		this.x = x;
-		stepUI();
-	}
-
 	public int getY() {
 		return y;
 	}
-
-	public void setY(int y) {
-		assert (world != null);
-		this.y = y;
-		stepUI();
-	}
-
 	public void setPos(int x, int y) {
 		this.x = x;
 		this.y = y;
 		stepUI();
 	}
-
 	public void forward() {
-		move(direction.toPoint());
+		if (getCellNeighbor(getDirection().toPoint()).getHeight() == getCell().getHeight())
+			move();
+		else 
+			System.out.println("facing wall");
+	}
+	public void jump(){
+		if (Math.abs(getCellNeighbor(getDirection().toPoint()).getHeight() - getCell().getHeight()) == 1)
+			move();
+		else 
+			System.out.println("not facing steps");
 	}
 
-	public void forward(int count) {
-		for (int i = 0; i < count; i++)
-			forward();
-	}
-
-	public void backward() {
-		move(direction.opposite().toPoint());
-	}
-
-	public void backward(int count) {
-		for (int i = 0; i < count; i++)
-			backward();
-	}
-
-	private boolean lookAtWall(boolean forward) {
-		return false;
-		/*
-		Direction delta;
-		if (forward)
-			delta = getDirection();
-		else
-			delta = getDirection().opposite();
-
-		LightBotWorldCell cell;
-		switch (delta.intValue()) {
-		case Direction.NORTH_VALUE: /* looking up is easy * /
-			cell = getCell();
-			return cell.hasTopWall();
-
-		case Direction.WEST_VALUE: /* looking to the left also * /
-			cell = getCell();
-			return cell.hasLeftWall();
-
-		case Direction.SOUTH_VALUE: /* if looking down, look to the top of one cell lower * /
-			cell = getCell(getX(),                        (getY()+1) % getWorldHeight());
-			return cell.hasTopWall();
-
-		case Direction.EAST_VALUE: /* if looking right, look to the left of one next cell * /
-			cell = getCell((getX()+1) % getWorldWidth(), getY());
-			return cell.hasLeftWall();
-
-		default: throw new RuntimeException("Invalid direction: "+delta);
-		}*/
-	}
-	public boolean isFacingWall() {
-		return lookAtWall(true);
-	}
-	public boolean isBackingWall() {
-		return lookAtWall(false);
-	}
-	public boolean canWalk(){
-		return getCellNeighbor(getDirection().toPoint()).getHeight() == getCell().getHeight();
-	}
-
-	private void move(Point delta) {
-		int newx = (x + delta.x) % getWorldWidth();
+	private void move() {
+		int newx = (x + getDirection().toPoint().x) % getWorldWidth();
 		if (newx < 0)
 			newx += getWorldWidth();
-		int newy = (y + delta.y) % getWorldHeight();
+		int newy = (y + getDirection().toPoint().y) % getWorldHeight();
 		if (newy < 0)
 			newy += getWorldHeight();
-
-		if (delta.equals(direction.toPoint())            && isFacingWall() ||
-				delta.equals(direction.opposite().toPoint()) && isBackingWall()) {	
-
-			/* do nothing: we cannot traverse walls. TODO: We should do a specific animation */
-		} else {
-			x = newx;
-			y = newy;
-		}
-
+		x=newx;
+		y=newy;
 		stepUI();
 	}
 
-
-
+	public void left() {
+		direction=getDirection().left();
+		stepUI();
+	}
+	public void right() {
+		direction=getDirection().right();
+		stepUI();
+	}
+	public void light() {
+		((LightBotWorld) world).switchLight(x,y);
+	}
+	
 
 	@Override
 	public String toString() {
@@ -230,7 +172,7 @@ public class LightBot extends Entity {
 			return false;
 		if (!(obj instanceof LightBot))
 			return false;
-		
+
 		final LightBot other = (LightBot) obj;
 		if (direction == null) {
 			if (other.direction != null)
@@ -244,15 +186,98 @@ public class LightBot extends Entity {
 		return true;
 	}
 
-	@Override
-	public void run() {
-		SourceFile sf = Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile(0);
-		if (sf == null) {
-			System.err.println("No source file available. Broken exercise.");
-			return;
+	private class SyntaxErrorException extends Exception {
+		private static final long serialVersionUID = 1L;
+
+		public SyntaxErrorException(String s, String location) {
+			super(location+": Syntax error: "+s);
 		}
-		
-		System.out.println("Interpretation of file "+sf.getName()+". Body:\n"+sf.getCompilableContent());		
 	}
 
+	private enum InstructionKind {
+		FORWARD,JUMP,LIGHT,LEFT,RIGHT,F1,F2;		
+	}
+	private class Instruction {
+
+		InstructionKind kind;
+		String loc;
+		public Instruction(String s,String location) throws SyntaxErrorException {
+			loc=location;
+			String read = s.replaceAll("^[ \t]*", "").replaceAll("[ \t]*$", "");
+			
+			if (read.equalsIgnoreCase("forward")) {
+				kind=InstructionKind.FORWARD;
+			} else if (read.equalsIgnoreCase("jump")) {
+				kind=InstructionKind.JUMP;
+			} else if (read.equalsIgnoreCase("light")) {
+				kind=InstructionKind.LIGHT;
+			} else if (read.equalsIgnoreCase("left")) {
+				kind=InstructionKind.LEFT;
+			} else if (read.equalsIgnoreCase("right")) {
+				kind=InstructionKind.RIGHT;
+			} else if (read.equalsIgnoreCase("f1")) {
+				kind=InstructionKind.F1;
+			} else if (read.equalsIgnoreCase("f2")) {
+				kind=InstructionKind.F2;
+			} else {
+				throw new SyntaxErrorException(s,location); 
+			}
+		}
+		public void run() {
+			System.err.println("Execute "+kind+" at "+LightBot.this.getX()+","+LightBot.this.getY());
+			switch (kind) {
+			case FORWARD: forward(); break;
+			case JUMP: jump(); break;
+			case LEFT: left(); break;
+			case RIGHT: right(); break;
+			case LIGHT: light(); break;
+			case F1: LightBot.this.run(func1); break;
+			case F2: LightBot.this.run(func2); break;
+			}
+		}
+	}
+	private Instruction[] parseFile(SourceFile sf,int maxSize) throws SyntaxErrorException {
+		if (sf == null)
+			return null;
+		Instruction[] res = new Instruction[maxSize];
+
+		String[] lines = sf.getCompilableContent().split("\n| |\t");
+		int lineNumber=1;
+		for (String l: lines) {
+			res[lineNumber] = new Instruction(l,sf.getName()+":"+lineNumber);
+			lineNumber++;
+		}
+		return res;
+	}
+
+	Instruction[] main;
+	Instruction[] func1;
+	Instruction[] func2;
+	@Override
+	public void run() {
+		SourceFile sf;
+		
+		/* Parse every functions */
+		try {
+			sf = Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile("main");
+			main=parseFile(sf, 12);
+
+			sf = Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile("function 1");
+			func1=parseFile(sf, 8);
+
+			sf = Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile("function 2");
+			func2=parseFile(sf, 8);
+		} catch (SyntaxErrorException e) {
+			System.err.println(e.getMessage());
+		}
+		
+		/* Run main */
+		run(main);
+	}
+
+	private void run(Instruction[] file) {
+		for (Instruction i: file)
+			if (i!=null)
+				i.run();
+	}
 }

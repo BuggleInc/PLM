@@ -4,8 +4,8 @@ package lessons.lightbot;
 
 
 public class LightBotWorldCell {
-	private boolean light; /* whether we have a light */
-	private boolean lightOn; /* if we have a light, whether it's on or off */
+	private boolean light=false; /* whether we have a light */
+	private boolean lightOn=false; /* if we have a light, whether it's on or off */
 
 	private LightBotWorld world;
 
@@ -31,6 +31,7 @@ public class LightBotWorldCell {
 
 	public void addLight() {
 		this.light = true;
+		this.lightOn = false;
 		world.notifyWorldUpdatesListeners();
 	}
 	public void removeLight() {
@@ -105,5 +106,13 @@ public class LightBotWorldCell {
 
 	public void setHeight(int h) {
 		height = h;
+	}
+
+	public boolean isLight() {
+		return light;
+	}
+
+	public boolean isLightOn() {
+		return lightOn;
 	}
 }

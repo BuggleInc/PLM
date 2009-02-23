@@ -15,8 +15,10 @@ public class TwoSteps extends LightBotExercise {
 			myWorld.setHeight(0,i,2);
 			myWorld.setHeight(7,i,2);
 		}			
-		new LightBot(myWorld, "D2R2", 2, 3, Direction.NORTH);
-		newTextFile("D2R2", "");
+		myWorld.addLight(2,5);
+		
+		new LightBot(myWorld, "D2R2", 2, 3, Direction.SOUTH);
+		newTextFile("main", "forward\nforward\nlight");
 		setup(myWorld);
 	}
 }
