@@ -89,6 +89,7 @@ public class LightBotWorld extends jlm.universe.World {
 	public LightBotWorldView getView() {
 		return new LightBotWorldView(this);
 	}
+	
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
 		return new EntityControlPanel() { // TODO display something

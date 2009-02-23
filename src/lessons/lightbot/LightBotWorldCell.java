@@ -14,19 +14,20 @@ public class LightBotWorldCell {
 	private int height;
 
 	public LightBotWorldCell(LightBotWorld w, int x, int y) {
-		this(w, x, y, false, false);
+		this(w, x, y, false, false, 0);
 	}
 
 	public LightBotWorldCell(LightBotWorldCell c) {
-		this(c.world, c.x, c.y, c.light, c.lightOn);
+		this(c.world, c.x, c.y, c.light, c.lightOn, c.height);
 	}
 
-	public LightBotWorldCell(LightBotWorld w, int x, int y, boolean light, boolean lightOn) {
+	public LightBotWorldCell(LightBotWorld w, int x, int y, boolean light, boolean lightOn, int height) {
 		this.world = w;
 		this.x = x;
 		this.y = y;
 		this.light = light;
 		this.lightOn = lightOn;
+		this.height = height;
 	}
 
 	public void addLight() {

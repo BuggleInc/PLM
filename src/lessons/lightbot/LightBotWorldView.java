@@ -25,6 +25,8 @@ public class LightBotWorldView extends WorldView {
 	private static Color LIGHT_ON_COLOR = Color.YELLOW;
 	private static Color BOT_COLOR = Color.BLUE;
 
+	private static final double CELL_WIDTH = 50.;
+	
 	public LightBotWorldView(World w) {
 		super(w);
 	}
@@ -36,21 +38,20 @@ public class LightBotWorldView extends WorldView {
 
 		LightBotWorld tw = (LightBotWorld) this.world;
 
-		double ratio = Math.min(((double) getWidth()) / tw.getWidth(), ((double) getHeight()) / tw.getHeight());
-		g2.translate(Math.abs((getWidth() - ratio * tw.getWidth()) / 2.), Math.abs((getHeight() - ratio
-				* tw.getHeight()) / 2.));
+		double ratio = Math.min(((double) getWidth()) / (tw.getWidth()*LightBotWorldView.CELL_WIDTH), ((double) getHeight()) / (tw.getHeight()*LightBotWorldView.CELL_WIDTH));
+		g2.translate(Math.abs((getWidth() - ratio * tw.getWidth()*LightBotWorldView.CELL_WIDTH) / 2.), Math.abs((getHeight() - ratio * tw.getHeight()*LightBotWorldView.CELL_WIDTH) / 2.));
 		g2.scale(ratio, ratio);
+		
 
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g2.setColor(Color.white);
-		g2.fill(new Rectangle2D.Double(0., 0., (double) tw.getWidth(), (double) tw.getHeight()));
+		g2.fill(new Rectangle2D.Double(0., 0., (double) tw.getWidth()*LightBotWorldView.CELL_WIDTH, (double) tw.getHeight()*LightBotWorldView.CELL_WIDTH));
 
 		
 		// draw background
 		drawWorld2D(g2);
 		
 		// draw lights (and elevation)
-		// g2.getTransform().setToIdentity();
 		for (int x = 0; x < tw.getWidth(); x++) {
 			for (int y = 0; y < tw.getHeight(); y++) {
 				LightBotWorldCell cell = tw.getCell(x, y);
@@ -59,8 +60,8 @@ public class LightBotWorldView extends WorldView {
 				}
 				
 				
-				//g2.setColor(Color.BLACK);
-				//g2.drawString(Integer.toString(cell.getHeight()), x, y);
+				g2.setColor(Color.RED);
+				g2.drawString(Integer.toString(cell.getHeight()), (int) (x*LightBotWorldView.CELL_WIDTH), (int) ((y+1)*LightBotWorldView.CELL_WIDTH));
 			}
 		}
 		
@@ -75,8 +76,8 @@ public class LightBotWorldView extends WorldView {
 				/ Math.max(((LightBotWorld) world).getWidth(), ((LightBotWorld) world).getHeight());
 	}
 
-	private final BasicStroke gridStroke = new BasicStroke((float) 0.1 / ((LightBotWorld) world).getWidth(),
-			BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER);
+	//private final BasicStroke gridStroke = new BasicStroke((float) 0.1 / ((LightBotWorld) world).getWidth(),
+	//		BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER);
 
 	private void drawWorld2D(Graphics2D g) {
 		LightBotWorld w = (LightBotWorld) world;
@@ -88,23 +89,16 @@ public class LightBotWorldView extends WorldView {
 					cellColor = LightBotWorldView.DARK_CELL_COLOR;
 				else
 					cellColor = LightBotWorldView.LIGHT_CELL_COLOR;
-
-				//LightBotWorldCell cell = w.getCell(x, y);				
-				//for (int h=0; h<cell.getHeight(); h++) {
-				//	cellColor.darker();
-				//}
-				
 				g.setColor(cellColor);
-				g.fill(new Rectangle2D.Double(x, y, 1., 1.));
+				g.fill(new Rectangle2D.Double(x*LightBotWorldView.CELL_WIDTH, y*LightBotWorldView.CELL_WIDTH, LightBotWorldView.CELL_WIDTH, LightBotWorldView.CELL_WIDTH));
 			}
 		}
 
 		g.setColor(GRID_COLOR);
-		g.setStroke(gridStroke);
 		for (int x = 0; x <= w.getWidth(); x++)
-			g.draw(new Line2D.Double(x, 0., x, w.getHeight()));
+			g.draw(new Line2D.Double(x*LightBotWorldView.CELL_WIDTH, 0., x*LightBotWorldView.CELL_WIDTH, w.getHeight()*LightBotWorldView.CELL_WIDTH));
 		for (int y = 0; y <= w.getHeight(); y++)
-			g.draw(new Line2D.Double(0., y, w.getWidth(), y));
+			g.draw(new Line2D.Double(0., y*LightBotWorldView.CELL_WIDTH, w.getWidth()*LightBotWorldView.CELL_WIDTH, y*LightBotWorldView.CELL_WIDTH));
 	}
 
 	private void drawLight2D(Graphics2D g, LightBotWorldCell cell, boolean lightOn) {
@@ -112,22 +106,17 @@ public class LightBotWorldView extends WorldView {
 			g.setColor(LightBotWorldView.LIGHT_ON_COLOR);
 		else
 			g.setColor(LightBotWorldView.LIGHT_OFF_COLOR);
-		g.fill(new Arc2D.Double(cell.getX() + 0.1, cell.getY() + 0.1, 0.8, 0.8, 0, 360, Arc2D.OPEN));
+		g.fill(new Arc2D.Double(cell.getX()*LightBotWorldView.CELL_WIDTH + 0.1*LightBotWorldView.CELL_WIDTH, cell.getY()*LightBotWorldView.CELL_WIDTH + 0.1*LightBotWorldView.CELL_WIDTH, 0.8*LightBotWorldView.CELL_WIDTH, 0.8*LightBotWorldView.CELL_WIDTH, 0, 360, Arc2D.OPEN));
 	}
 
 	private void drawBot2D(Graphics2D g, LightBot bot) {
 		LightBotWorldCell cell = bot.getCell();
 
-		double width = 1.;
-		double height = 1.;
+		double width = LightBotWorldView.CELL_WIDTH;
+		double height = LightBotWorldView.CELL_WIDTH;
 		double cx = cell.getX();
 		double cy = cell.getY();
 		
-		// ImageIcon ic = ResourcesCache.getIcon("resources/kturtle.png");
-		AffineTransform t = new AffineTransform(1.,0, 0, 1., cell.getX()-width/2., cell.getY()-height/2.);
-		// t.rotate(0., ic.getIconWidth()/2., ic.getIconHeight()/2.);
-		// g.drawImage(ic.getImage(), t, null);
-
 		double angle = 0.;
 		switch (bot.getDirection().intValue()) {
 		case Direction.NORTH_VALUE:
@@ -143,51 +132,11 @@ public class LightBotWorldView extends WorldView {
 			angle = Math.PI/2;
 			break;
 		}
-		g.rotate(angle, cx+width/2., cy+height/2.);
+		g.rotate(angle, cx*LightBotWorldView.CELL_WIDTH+width/2., cy*LightBotWorldView.CELL_WIDTH+height/2.);
 		
 		g.setColor(LightBotWorldView.BOT_COLOR);
-		g.fill(new Arc2D.Double(cx,cy+0.25,1.,1.,45,90, Arc2D.PIE));		
+		g.fill(new Arc2D.Double((cx-0.25)*LightBotWorldView.CELL_WIDTH,(cy+0.1)*LightBotWorldView.CELL_WIDTH,1.5*width,1.5*height,60,60, Arc2D.PIE));		
 	}
-
-	private void drawWorld3DIsometric(Graphics2D g) {
-		LightBotWorld w = (LightBotWorld) world;
-
-		double scaleW = 1.;
-		double scaleH = 0.5;
-
-		for (int y = 1; y <= w.getHeight(); y++) {
-			for (int x = 1; x <= w.getWidth(); x++) {
-				int numCell = (y - 1) * w.getWidth() + x;
-
-				double xPos = (y + x) * scaleW;
-				double yPos = (y - x) * scaleH;
-
-				g.setColor(Color.red);
-				g.fill(new Arc2D.Double(xPos, yPos, 1., 1., 0., 360., Arc2D.OPEN));
-				g.setColor(Color.black);
-				g.drawString(Integer.toString(numCell), (int) xPos, (int) yPos);
-
-				// g.setColor(getCellColor(x, y));
-				// BuggleWorldCell cell = w.getCell(x, y);
-				// g.fill(new Rectangle2D.Double(padx+x*cellW, pady+y*cellW,
-				// cellW, cellW));
-				// if (cell.hasBaggle())
-				// drawBaggle(g, cell, cell.getBaggle());
-				// if (cell.hasContent())
-				// drawMessage(g, cell, cell.getContent());
-			}
-		}
-
-	}
-
-	/*
-	 * private void drawTurtle(Graphics2D g, Turtle b) { ImageIcon ic =
-	 * ResourcesCache.getIcon("resources/kturtle.png"); AffineTransform t = new
-	 * AffineTransform(1.0, 0, 0, 1.0, b.getX()-ic.getIconWidth()/2.,
-	 * b.getY()-ic.getIconHeight()/2.); t.rotate(b.getHeadingRadian(),
-	 * ic.getIconWidth()/2., ic.getIconHeight()/2.); g.drawImage(ic.getImage(),
-	 * t, null); }
-	 */
 
 	@Override
 	public boolean isWorldCompatible(World world) {
