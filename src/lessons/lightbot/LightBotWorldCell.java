@@ -102,4 +102,8 @@ public class LightBotWorldCell {
 	public int getHeight() {
 		return height;
 	}
+
+	public void setHeight(int h) {
+		height = h;
+	}
 }

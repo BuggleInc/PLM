@@ -157,4 +157,8 @@ public class LightBotWorld extends jlm.universe.World {
 		}
 		
 	}
+
+	public void setHeight(int x, int y, int h) {
+		getCell(x,y).setHeight(h);
+	}
 }
