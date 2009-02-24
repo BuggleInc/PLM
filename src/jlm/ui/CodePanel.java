@@ -18,26 +18,18 @@ import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
 
 public class CodePanel extends JTabbedPane implements GameListener {
-// TODO: clean up this class. It's a mess!
-	
-	
 	private static final long serialVersionUID = 3242655852676336111L;
 	private Game game;
 	private Exercise currentExercise;
 
-	// private EditorKit editorKit;
-
-	private ArrayList<JEditorPane> codeEditors = new ArrayList<JEditorPane>();
 	private ArrayList<SourceFile> sourceFiles = new ArrayList<SourceFile>();
-	private ArrayList<SourceFileDocumentSynchronizer> synchronizers = new ArrayList<SourceFileDocumentSynchronizer>();
+
+	private Font font = null;
 
 	public CodePanel(Game game) {
 		super(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
 		this.game = game;
 		this.game.addGameListener(this);
-
-		// this.editorKit = new SyntaxKit("java");
-		// this.editorKit = SyntaxKitFactory.getKitForLanguage("java");
 
 		DefaultSyntaxKit.initKit();
 
@@ -46,105 +38,58 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		currentExerciseHasChanged();
 	}
 
-	protected void updateComponents() {
-		int publicSrcFileCount = this.currentExercise.publicSourceFileCount();
-
-		// if we have to remove few tabs
-		for (int i = this.getTabCount() - 1; i >= publicSrcFileCount; i--) {
-			this.removeTabAt(i);
-			JEditorPane codeEditor = this.codeEditors.remove(i);
-			SourceFileDocumentSynchronizer sync = this.synchronizers.remove(i);
-			SourceFile srcFile = this.sourceFiles.remove(i);
-
-			codeEditor.getDocument().removeDocumentListener(sync);
-			sync.clear();
-			srcFile.setListener(null);
-		}
-		// if we have to add few tabs
-		for (int i = this.getTabCount(); i < publicSrcFileCount; i++) {			
-			JEditorPane codeEditor = createJavaEditorPane();
-			JScrollPane scrPane = new JScrollPane(codeEditor);
-			codeEditor.setContentType("text/java");
-
-			if (f != null) {
-				codeEditor.setFont(f);
-			}
-
-			
-			
-			this.codeEditors.add(i, codeEditor);
-			// this.synchronizers.add(i, new
-			// SourceFileDocumentSynchronizer(this.editorKit));
-			this.synchronizers.add(i, new SourceFileDocumentSynchronizer(codeEditor.getEditorKit()));
-			//codeEditor.setContentType("text/java");
-			// remove auto-indent when return is pressed
-			//codeEditor.getKeymap().removeKeyStrokeBinding(KeyStroke.getKeyStroke("ENTER"));
-			//codeEditor.setEditable(true);
-
-			this.addTab("tmp" + i, scrPane);
-		}
-
-		for (SourceFile srcFile : this.sourceFiles) {
-			srcFile.setListener(null);
-		}
-		this.sourceFiles.clear();
-				
-		for (int i = 0; i < publicSrcFileCount; i++) {
-			SourceFile srcFile = this.currentExercise.getPublicSourceFile(i);
-			this.sourceFiles.add(i, srcFile);
-
-			this.setTitleAt(i, srcFile.getName() + ".code");
-			JEditorPane codeEditor = this.codeEditors.get(i);
-
-			SourceFileDocumentSynchronizer sync = this.synchronizers.get(i);
-			srcFile.setListener(sync);
-			sync.setDocument(codeEditor.getDocument());
-			sync.setSourceFile(srcFile);
-			codeEditor.getDocument().addDocumentListener(sync);
-
-			//codeEditor.setContentType("text/plain");
-			codeEditor.setText(srcFile.getBody());			
-			//codeEditor.setContentType("text/java");
-		}
-		
-		//this.doLayout();
-		//for (int i = 0; i < publicSrcFileCount; i++) {
-		//	this.codeEditors.get(i).setContentType("text/java");
-		//}
-
-	}
-
+	/* Call backs to GameListener */
 	@Override
 	public void currentExerciseHasChanged() {
-		this.currentExercise = this.game.getCurrentLesson().getCurrentExercise();		
-		updateComponents();
-	}
+		currentExercise = game.getCurrentLesson().getCurrentExercise();		
+		int publicSrcFileCount = currentExercise.publicSourceFileCount();
 
+		/* notify all previously edited source files that they are not under edit anymore */
+		for (SourceFile srcFile : sourceFiles) 
+			srcFile.removeListener();		
+		sourceFiles.clear();
+		
+		/* Remove every tabs */
+		this.removeAll();
+
+		/* Add back the right amount of tabs */
+		for (int i = 0; i < publicSrcFileCount; i++) {
+			/* Create the code editor */
+			JEditorPane codeEditor = new JEditorPane();
+			JScrollPane scrollPane = new JScrollPane(codeEditor);
+			codeEditor.setContentType("text/java");
+			if (font != null) 
+				codeEditor.setFont(font);
+			
+			/* Create a synchronization element, and connect it to the editor */
+			SourceFileDocumentSynchronizer sync = new SourceFileDocumentSynchronizer(codeEditor.getEditorKit());
+			sync.setDocument(codeEditor.getDocument());
+			codeEditor.getDocument().addDocumentListener(sync);
+			
+			/* Connect the synchronization element to the source file */
+			SourceFile srcFile = currentExercise.getPublicSourceFile(i);
+			sourceFiles.add(i, srcFile);
+			srcFile.setListener(sync);
+			sync.setSourceFile(srcFile);
+			
+			codeEditor.setText(srcFile.getBody());
+			
+			/* Create the tab with the code editor as content */
+			this.addTab(srcFile.getName(), scrollPane); // name is over written in next loop			
+		}		
+	}
 	@Override
-	public void currentLessonHasChanged() {
-		// don't care
-	}
-
+	public void currentLessonHasChanged()  { /* don't care */ }
 	@Override
-	public void lessonsChanged() {
-		// don't care
-	}
-
+	public void lessonsChanged()           { /* don't care */ }
 	@Override
-	public void selectedWorldHasChanged() {
-		// don't care
-	}
-
+	public void selectedWorldHasChanged()  { /* don't care */ }
 	@Override
-	public void selectedEntityHasChanged() {
-		// don't care
-	}
-
+	public void selectedEntityHasChanged() { /* don't care */ }
 	@Override
-	public void selectedWorldWasUpdated() {
-		// don't care
-	}
+	public void selectedWorldWasUpdated()  { /* don't care */ }
 
+	/* setup methods */
 	private void configureSyntaxStyles() {
 		//TODO: can be configured through a property file in the new version of jsyntaxpane
 		SyntaxStyles st = SyntaxStyles.getInstance();
@@ -155,18 +100,13 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		st.put(TokenType.COMMENT, new SyntaxStyle(new Color(0x29825e), false, false)); // dark
 																						// green
 		st.put(TokenType.NUMBER, new SyntaxStyle(Color.BLACK, false, false)); // black
-		// st.add(TokenType.REGEX, new SyntaxStyle(new Color(0xcc6600), false,
-		// false)); // not used in Java
-		// st.add(TokenType.IDENT, new SyntaxStyle(new Color(0x1300c5), false,
-		// false)); // dark blue
+		// st.add(TokenType.REGEX, new SyntaxStyle(new Color(0xcc6600), false, false)); // not used in Java
+		// st.add(TokenType.IDENT, new SyntaxStyle(new Color(0x1300c5), false, false)); // dark blue
 		st.put(TokenType.IDENTIFIER, new SyntaxStyle(Color.black, false, false)); // black
 		st.put(TokenType.STRING, new SyntaxStyle(new Color(0x3600ff), false, false)); // blue
 		st.put(TokenType.DEFAULT, new SyntaxStyle(Color.BLACK, false, false)); // black
-
 	}
-
 	
-	Font f = null;
 	private void loadFont() {
 		/*
 		 * Font f = new Font("Monaco", Font.PLAIN, 12); 
@@ -176,9 +116,7 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		 */
 
 		
-	/*	
-		//Font f = null;
-		InputStream is = null;
+	/*	InputStream is = null;
 		try {
 			// is = getClass().getResourceAsStream("/resources/Monaco.ttf");
 			// FIXME: must try this font on neptune/linux/windows ? it works
@@ -208,22 +146,4 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		}	
 	*/	
 	}
-	
-	private JEditorPane createJavaEditorPane() {
-		JEditorPane editor = new JEditorPane();
-		// FIXME: does not work well on neptune ;-(
-		// editor.setEditorKit(editorKit);
-		// editor.setContentType("text/java");
-		if (f != null) {
-			editor.setFont(f);
-		}
-
-		// remove auto-indent when return is pressed
-		// editor.getKeymap().removeKeyStrokeBinding(KeyStroke.getKeyStroke("ENTER"));
-		// editor.setEditable(true);
-
-		
-		return editor;
-	}
-
 }

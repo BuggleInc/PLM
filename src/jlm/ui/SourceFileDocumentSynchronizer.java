@@ -23,11 +23,8 @@ import jlm.lesson.SourceFile;
 public class SourceFileDocumentSynchronizer implements DocumentListener, ISourceFileListener {
 
 	private Document document;
-
 	private SourceFile sourceFile;
-
 	private EditorKit editorKit;
-
 	private boolean propagationInProgress = false;
 
 	public SourceFileDocumentSynchronizer(EditorKit kit) {
@@ -102,5 +99,4 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 	public void sourceFileContentHasChanged() {
 		copySourceFileBodyToDocumentContent();
 	}
-
 }

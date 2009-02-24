@@ -72,6 +72,8 @@ public class SourceFile {
 	}
 
 	public void removeListener() {
+		if (listener!=null)
+			listener.clear();
 		this.listener = null;
 	}
 
