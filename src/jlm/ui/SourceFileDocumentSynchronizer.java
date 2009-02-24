@@ -32,8 +32,11 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 	}
 
 	public void clear() {
+		document.removeDocumentListener(this);
+		sourceFile.removeListener();
 		this.document = null;
 		this.sourceFile = null;
+		editorKit = null;
 	}
 
 	public void setDocument(Document doc) {
