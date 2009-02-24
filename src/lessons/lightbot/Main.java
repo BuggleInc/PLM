@@ -7,6 +7,7 @@ public class Main extends Lesson {
 	protected void loadExercises() {
 		addExercise(new Board1TwoSteps(this));
 		addExercise(new Board2Turn(this));
+		addExercise(new Board3Jump(this));
 		exercisesLoaded = true;
 	}
 }
