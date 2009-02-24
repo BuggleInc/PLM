@@ -33,6 +33,7 @@ public abstract class Lesson {
 	/** if true, one must succeed in first exercise before trying next ones */
 
 	public Lesson() {
+		loadExercises(); /* FIXME: remove this line when session saver can deal with laziness */
 	}
 
 	private boolean aboutLoaded = false;
