@@ -12,7 +12,6 @@ import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -21,7 +20,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
@@ -87,20 +85,12 @@ public class MainFrame extends JFrame implements GameStateListener {
 
 		JSplitPane mainPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
 
-		JTabbedPane tabPane = new JTabbedPane();
 		mainPanel.setOneTouchExpandable(true);
 		double weight = 0.6;
 		mainPanel.setResizeWeight(weight);
 		mainPanel.setDividerLocation((int) (1024 * weight));
 
-		JEditorPane missionPanel = new MissionPanel(Game.getInstance());
-		JScrollPane scrollPane = new JScrollPane(missionPanel);
-		tabPane.add("Mission", scrollPane);
-
-		CodePanel codePanel = new CodePanel(Game.getInstance());
-		tabPane.add("Source Code", codePanel);
-
-		mainPanel.setLeftComponent(tabPane);
+		mainPanel.setLeftComponent(new MissionEditorTabs());
 
 		exerciseView = new ExerciseView(Game.getInstance());
 		mainPanel.setRightComponent(exerciseView);

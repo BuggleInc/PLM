@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.text.html.HTMLDocument;
+import javax.swing.text.html.StyleSheet;
 
 import jlm.core.Game;
 import jlm.event.GameListener;
@@ -17,31 +19,51 @@ import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
 
-public class CodePanel extends JTabbedPane implements GameListener {
-	private static final long serialVersionUID = 3242655852676336111L;
+public class MissionEditorTabs extends JTabbedPane implements GameListener {
+	private static final long serialVersionUID = 1L;
+
 	private Game game;
+	private JEditorPane missionTab = new JEditorPane("text/html", "");
+	
+	/* for code tabs */
 	private Exercise currentExercise;
-
 	private ArrayList<SourceFile> sourceFiles = new ArrayList<SourceFile>();
-
 	private Font font = null;
 
-	public CodePanel(Game game) {
-		super(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
-		this.game = game;
-		this.game.addGameListener(this);
+	
+	public MissionEditorTabs() {
+		super();
+		
+		/* Setup the mission tab */
+		missionTab.setEditable(false);
+		missionTab.setEditorKit(new JlmHtmlEditorKit());
+		StyleSheet styles = ((HTMLDocument) missionTab.getDocument()).getStyleSheet();
+		styles.importStyleSheet(getClass().getResource("/lessons/screen.css"));			
 
+		this.add("Mission", new JScrollPane(missionTab));
+		
+		/* setup code tabs */
 		DefaultSyntaxKit.initKit();
-
 		loadFont();
 		configureSyntaxStyles();
+
+		/* Register to game engine */
+		this.game = Game.getInstance();
+		this.game.addGameListener(this);
+		
+		/* load content */
 		currentExerciseHasChanged();
 	}
-
-	/* Call backs to GameListener */
+	
 	@Override
 	public void currentExerciseHasChanged() {
 		currentExercise = game.getCurrentLesson().getCurrentExercise();		
+		
+		/* Change the mission text */
+		missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission());
+		missionTab.setCaretPosition(0);
+		
+		/* Redo any code panel */
 		int publicSrcFileCount = currentExercise.publicSourceFileCount();
 
 		/* notify all previously edited source files that they are not under edit anymore */
@@ -49,8 +71,9 @@ public class CodePanel extends JTabbedPane implements GameListener {
 			srcFile.removeListener();		
 		sourceFiles.clear();
 		
-		/* Remove every tabs */
-		this.removeAll();
+		/* Remove every tabs, but the mission one */
+		while (getTabCount()>1)
+			this.remove(getTabCount()-1);
 
 		/* Add back the right amount of tabs */
 		for (int i = 0; i < publicSrcFileCount; i++) {
@@ -79,15 +102,15 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		}		
 	}
 	@Override
-	public void currentLessonHasChanged()  { /* don't care */ }
+	public void currentLessonHasChanged() { /* don't care */ }
 	@Override
-	public void lessonsChanged()           { /* don't care */ }
+	public void lessonsChanged() { /* don't care */ }
 	@Override
-	public void selectedWorldHasChanged()  { /* don't care */ }
+	public void selectedWorldHasChanged() { /* don't care */ }
 	@Override
 	public void selectedEntityHasChanged() { /* don't care */ }
 	@Override
-	public void selectedWorldWasUpdated()  { /* don't care */ }
+	public void selectedWorldWasUpdated() { /* don't care */ }
 
 	/* setup methods */
 	private void configureSyntaxStyles() {
@@ -146,4 +169,5 @@ public class CodePanel extends JTabbedPane implements GameListener {
 		}	
 	*/	
 	}
+
 }
