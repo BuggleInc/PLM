@@ -11,10 +11,10 @@ public class Board2Turn extends LightBotExercise {
 				
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Two steps", 8, 8);
-		myWorld.setHeight(2, 4, 2);
-		myWorld.addLight(2,6);
+		myWorld.setHeight(4, 4, 2);
+		myWorld.addLight(4,6);
 		
-		new LightBot(myWorld, "D2R2", 2, 2, Direction.SOUTH);
+		new LightBot(myWorld, "D2R2", 4, 2, Direction.SOUTH);
 		
 		/* decorum */
 		for (int i=2;i<6;i++) {
