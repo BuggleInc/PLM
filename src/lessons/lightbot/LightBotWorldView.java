@@ -69,7 +69,7 @@ public class LightBotWorldView extends WorldView {
 		// draw lightBots 
 		Iterator<Entity> it = world.entities();
 		while (it.hasNext())
-			drawBot2D(g2, (LightBot) it.next());
+			drawBot2D(g2, (LightBotEntity) it.next());
 	}
 
 	protected double getCellWidth() {
@@ -110,7 +110,7 @@ public class LightBotWorldView extends WorldView {
 		g.fill(new Arc2D.Double(cell.getX()*LightBotWorldView.CELL_WIDTH + 0.1*LightBotWorldView.CELL_WIDTH, cell.getY()*LightBotWorldView.CELL_WIDTH + 0.1*LightBotWorldView.CELL_WIDTH, 0.8*LightBotWorldView.CELL_WIDTH, 0.8*LightBotWorldView.CELL_WIDTH, 0, 360, Arc2D.OPEN));
 	}
 
-	private void drawBot2D(Graphics2D g, LightBot bot) {
+	private void drawBot2D(Graphics2D g, LightBotEntity bot) {
 		LightBotWorldCell cell = bot.getCell();
 
 		double width = LightBotWorldView.CELL_WIDTH;

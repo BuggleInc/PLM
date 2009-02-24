@@ -11,7 +11,7 @@ public class Board11Sea extends LightBotExercise {
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
 		
-		new LightBot(myWorld, "D2R2", 0, 0, Direction.SOUTH);
+		new LightBotEntity(myWorld, "D2R2", 0, 0, Direction.SOUTH);
 
 		for (int i=0;i<8;i++) {
 			myWorld.setHeight(1, i, 1);
@@ -25,9 +25,6 @@ public class Board11Sea extends LightBotExercise {
 		}
 		myWorld.removeLight(0,0);
 		
-		newTextFile("main", "");
-		newTextFile("function 1", "");
-		newTextFile("function 2", "");
 		setup(myWorld);
 	}
 }

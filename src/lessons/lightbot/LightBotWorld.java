@@ -18,6 +18,7 @@ public class LightBotWorld extends jlm.universe.World {
 	public LightBotWorld(String name, int x, int y) {
 		super(name);
 		create(x, y);
+		setDelay(200);
 	}
 
 	public void create(int width, int height) {

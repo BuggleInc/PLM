@@ -11,7 +11,7 @@ public class Board09Castle extends LightBotExercise {
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
 		
-		new LightBot(myWorld, "D2R2", 2, 1, Direction.SOUTH);
+		new LightBotEntity(myWorld, "D2R2", 2, 1, Direction.SOUTH);
 
 		for (int i=1;i<7;i++) {
 			myWorld.setHeight(3, i, 1);
@@ -34,9 +34,6 @@ public class Board09Castle extends LightBotExercise {
 		myWorld.setHeight(6, 2, 2);
 		myWorld.setHeight(6, 5, 2);
 		
-		newTextFile("main", "");
-		newTextFile("function 1", "");
-		newTextFile("function 2", "");
 		setup(myWorld);
 	}
 }

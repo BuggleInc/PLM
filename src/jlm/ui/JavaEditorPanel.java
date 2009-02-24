@@ -5,7 +5,7 @@ import javax.swing.JScrollPane;
 
 import jlm.lesson.SourceFile;
 
-public class JavaEditorPanel extends JScrollPane {
+public class JavaEditorPanel extends JScrollPane implements IEditorPanel {
 	private static final long serialVersionUID = 1L;
 	SourceFile srcFile;
 	SourceFileDocumentSynchronizer sync ;
@@ -30,6 +30,7 @@ public class JavaEditorPanel extends JScrollPane {
 		
 		codeEditor.setText(srcFile.getBody());
 	}
+	@Override
 	public void clear() {
 		sync.clear();
 		srcFile = null;

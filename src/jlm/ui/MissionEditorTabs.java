@@ -65,7 +65,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		
 		/* Remove every tabs, but the mission one */
 		while (getTabCount()>1) {
-			JavaEditorPanel p = (JavaEditorPanel) this.getComponentAt(getTabCount()-1);
+			IEditorPanel p = (IEditorPanel) this.getComponentAt(getTabCount()-1);
 			p.clear();
 			removeTabAt(getTabCount()-1);
 		}
