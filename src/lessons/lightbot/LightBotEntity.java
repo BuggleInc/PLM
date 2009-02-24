@@ -179,7 +179,6 @@ public class LightBotEntity extends Entity {
 		run(sf.main);
 	}
 	public void runF1(){
-		System.out.println("Run f1");
 		run(sf.func1);
 	}
 	public void runF2(){

@@ -38,16 +38,16 @@ public class LightBotInstruction {
 			kind=InstructionKind.LEFT;
 		} else if (str.equalsIgnoreCase("right")) {
 			kind=InstructionKind.RIGHT;
-		} else if (str.equalsIgnoreCase("f1")) {
+		} else if (str.equalsIgnoreCase("call f1")) {
 			kind=InstructionKind.F1;
-		} else if (str.equalsIgnoreCase("f2")) {
+		} else if (str.equalsIgnoreCase("call f2")) {
 			kind=InstructionKind.F2;
 		} else {
 			kind=InstructionKind.NOOP; 
 		}
 	}
 	public void run(LightBotEntity lb) {
-		System.out.println("exec "+toString());
+//		System.out.println("exec "+toString());
 		switch (kind) {
 		case FORWARD: lb.forward(); break;
 		case JUMP: lb.jump(); break;

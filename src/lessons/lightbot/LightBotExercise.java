@@ -37,8 +37,8 @@ public class LightBotExercise extends ExerciseTemplated {
 			LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld[w]).new CellIterator();
 			while (ci.hasNext()) {
 				LightBotWorldCell cell = ci.next();
-				if (cell.isLight())
-					System.out.println(""+cell.getX()+","+cell.getY()+": "+(cell.isLight()?(cell.isLightOn()?"LIGHT ON":"LIGHT OFF"):"no light"));
+//				if (cell.isLight())
+//					System.out.println(""+cell.getX()+","+cell.getY()+": "+(cell.isLight()?(cell.isLightOn()?"LIGHT ON":"LIGHT OFF"):"no light"));
 				if (! cell.getLightOnOrNone())
 					result = false;
 			}
