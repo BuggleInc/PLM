@@ -61,7 +61,8 @@ public class LightBotWorldView extends WorldView {
 				
 				
 				g2.setColor(Color.RED);
-				g2.drawString(Integer.toString(cell.getHeight()), (int) (x*LightBotWorldView.CELL_WIDTH), (int) ((y+1)*LightBotWorldView.CELL_WIDTH));
+				if (cell.getHeight() != 0)
+					g2.drawString(Integer.toString(cell.getHeight()), (int) (x*LightBotWorldView.CELL_WIDTH), (int) ((y+1)*LightBotWorldView.CELL_WIDTH));
 			}
 		}
 		
