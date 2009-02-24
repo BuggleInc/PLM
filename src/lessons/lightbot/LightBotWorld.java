@@ -166,7 +166,11 @@ public class LightBotWorld extends jlm.universe.World {
 	public void addLight(int x, int y) {
 		getCell(x,y).addLight();		
 	}
+	public void removeLight(int x, int y) {
+		getCell(x,y).removeLight();		
+	}
 	public void switchLight(int x, int y) {
 		getCell(x,y).lightSwitch();
 	}
+
 }

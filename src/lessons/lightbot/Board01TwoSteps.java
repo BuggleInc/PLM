@@ -3,14 +3,13 @@ package lessons.lightbot;
 import jlm.lesson.Lesson;
 import universe.bugglequest.Direction;
 
-public class Board1TwoSteps extends LightBotExercise {
+public class Board01TwoSteps extends LightBotExercise {
 
-	public Board1TwoSteps(Lesson lesson) {
+	public Board01TwoSteps(Lesson lesson) {
 		super(lesson);
-		tabName = "Mars";
 				
 		/* Create initial situation */
-		LightBotWorld myWorld = new LightBotWorld("Two steps", 8, 8);
+		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
 		for (int i=0;i<8;i++) {
 			myWorld.setHeight(0,i,2);
 			myWorld.setHeight(7,i,2);

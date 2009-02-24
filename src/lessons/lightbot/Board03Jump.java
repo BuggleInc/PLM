@@ -3,14 +3,13 @@ package lessons.lightbot;
 import jlm.lesson.Lesson;
 import universe.bugglequest.Direction;
 
-public class Board3Jump extends LightBotExercise {
+public class Board03Jump extends LightBotExercise {
 
-	public Board3Jump(Lesson lesson) {
+	public Board03Jump(Lesson lesson) {
 		super(lesson);
-		tabName = "Mars";
 				
 		/* Create initial situation */
-		LightBotWorld myWorld = new LightBotWorld("Two steps", 8, 8);
+		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
 		
 		new LightBot(myWorld, "D2R2", 3, 0, Direction.SOUTH);
 		

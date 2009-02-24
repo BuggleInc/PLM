@@ -5,9 +5,18 @@ import jlm.lesson.Lesson;
 public class Main extends Lesson {
 	@Override
 	protected void loadExercises() {
-		addExercise(new Board1TwoSteps(this));
-		addExercise(new Board2Turn(this));
-		addExercise(new Board3Jump(this));
+		addExercise(new Board01TwoSteps(this));
+		addExercise(new Board02Turn(this));
+		addExercise(new Board03Jump(this));
+		addExercise(new Board04Stairs(this));
+		addExercise(new Board05Higher(this));
+		addExercise(new Board06Func(this));
+		addExercise(new Board07Repeat(this));
+		addExercise(new Board08Rec(this));
+		addExercise(new Board09Castle(this));
+		addExercise(new Board10Wall(this));
+		addExercise(new Board11Sea(this));
+		addExercise(new Board12Moebius(this));
 		exercisesLoaded = true;
 	}
 }
