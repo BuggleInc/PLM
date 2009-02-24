@@ -14,6 +14,9 @@ public class LightBotExercise extends ExerciseTemplated {
 	@Override
 	protected void setup(World[] ws) {		
 		worldDuplicate(ws);
+		/* remove entities from the answer world: we don't care of where the bot is at the end */
+		for (World w :answerWorld)
+			w.emptyEntities();
 		computeAnswer();
 	}
 
@@ -53,13 +56,7 @@ public class LightBotExercise extends ExerciseTemplated {
 	}
 
 	@Override
-	public void runDemo(List<Thread> runnerVect){
-		for (int i=0; i<initialWorld.length; i++) { 
-			answerWorld[i].reset(initialWorld[i]);
-			answerWorld[i].doDelay();
-		}
-				
-		for (int i=0; i<answerWorld.length; i++)
-			answerWorld[i].runEntities(runnerVect);
+	public void runDemo(List<Thread> runnerVect){		
+		/* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */
 	}
 }
