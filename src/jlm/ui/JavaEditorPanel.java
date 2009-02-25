@@ -16,7 +16,7 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel {
 		this.srcFile = srcFile;
 
 		codeEditor = new JEditorPane();
-		this.add(codeEditor);
+		setViewportView(codeEditor);
 		codeEditor.setContentType("text/java");
 		
 		/* Create a synchronization element, and connect it to the editor */
