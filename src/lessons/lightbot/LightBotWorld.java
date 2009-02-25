@@ -138,7 +138,7 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 			bot.left();
 		}
 		
-		//notifyWorldUpdatesListeners();		
+		notifyWorldUpdatesListeners();		
 	}
 	
 	

@@ -52,13 +52,6 @@ public class LightBotWorldView extends WorldView {
 	private LightBotWorld getWorld() {
 		return (LightBotWorld) this.world;
 	}
-
-	
-	@Override
-	public void worldHasMoved() {
-		this.isometricView.setWorld(this.world);
-		super.worldHasMoved();
-	}
 	
 	@Override
 	public boolean isWorldCompatible(World world) {
