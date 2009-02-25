@@ -1,10 +1,15 @@
 package lessons.lightbot;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridLayout;
 import java.awt.RenderingHints;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Rectangle2D;
@@ -12,6 +17,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 import jlm.ui.WorldView;
 import jlm.universe.World;
@@ -41,6 +49,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 
 	public LightBotWorldViewIsometric(World w) {
 		super(w);
+		initComponents();
 		computeZOrders();
 		if (world.getEntityCount() > 1)
 			throw new RuntimeException("Multiple entities in lightbot world not supported");
@@ -66,6 +75,9 @@ public class LightBotWorldViewIsometric extends WorldView {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+		AffineTransform originalTransform = g2.getTransform();
+		
+		
 		LightBotWorld tw = (LightBotWorld) this.world;
 
 		double componentWidth = (double) getWidth();
@@ -104,6 +116,8 @@ public class LightBotWorldViewIsometric extends WorldView {
 
 		// draw world and lights
 		drawWorld3D(g2);
+		
+		g2.setTransform(originalTransform);		
 	}
 
 	public static int computeZOrder(LightBotWorldCell cell) {
@@ -260,6 +274,35 @@ public class LightBotWorldViewIsometric extends WorldView {
 	public void worldHasMoved() {
 		computeZOrders();
 		super.worldHasMoved();
-	}
+	}	
 
+	
+	private LightBotWorld getWorld() {
+		return (LightBotWorld) this.world;
+	}
+	
+	public void initComponents() {
+		JButton rotateLeft = new JButton("left");
+		rotateLeft.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				getWorld().rotateLeft();
+			}
+		});
+	
+		JButton rotateRight = new JButton("right");
+		rotateRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				getWorld().rotateRight();
+			}
+		});
+		
+		JPanel buttonsPanel = new JPanel();
+		buttonsPanel.setLayout(new GridLayout(1,2));
+		buttonsPanel.add(rotateLeft);
+		buttonsPanel.add(rotateRight);
+		
+		setLayout(new BorderLayout());
+		add(BorderLayout.NORTH, buttonsPanel);
+	}
+	
 }
