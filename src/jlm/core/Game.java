@@ -40,6 +40,7 @@ public class Game implements IWorldView {
 	private ArrayList<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
+	private World initialOfSelectedWorld;
 	private Entity selectedEntity;
 	private List<Thread> lessonRunners = new ArrayList<Thread>();
 	private List<Thread> demoRunners = new ArrayList<Thread>();
@@ -138,6 +139,13 @@ public class Game implements IWorldView {
 		}
 		return this.selectedWorld;
 	}
+	public World[] getSelectedWorlds() {
+		World[] res = new World[3];
+		res[0] = selectedWorld;
+		res[1] = answerOfSelectedWorld;
+		res[2] = initialOfSelectedWorld;
+		return res;
+	}
 
 	public void setSelectedWorld(World world) {
 		if (this.selectedWorld != null)
@@ -148,6 +156,7 @@ public class Game implements IWorldView {
 		Exercise currentExercise = getCurrentLesson().getCurrentExercise();
 		int index = currentExercise.indexOfWorld(this.selectedWorld);
 		this.answerOfSelectedWorld = currentExercise.getAnswerOfWorld(index);
+		this.initialOfSelectedWorld = currentExercise.getInitialWorld().get(index);
 		this.selectedEntity = this.selectedWorld.getEntity(0);
 		fireSelectedWorldHasChanged();
 	}
