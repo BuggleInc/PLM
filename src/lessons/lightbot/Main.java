@@ -16,7 +16,7 @@ public class Main extends Lesson {
 		addExercise(new Board09Castle(this));
 		addExercise(new Board10Wall(this));
 		addExercise(new Board11Sea(this));
-		addExercise(new Board12Moebius(this));
+		addExercise(new Board12Escher(this));
 		exercisesLoaded = true;
 	}
 }

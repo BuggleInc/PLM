@@ -3,9 +3,9 @@ package lessons.lightbot;
 import jlm.lesson.Lesson;
 import universe.bugglequest.Direction;
 
-public class Board12Moebius extends LightBotExercise {
+public class Board12Escher extends LightBotExercise {
 
-	public Board12Moebius(Lesson lesson) {
+	public Board12Escher(Lesson lesson) {
 		super(lesson);
 				
 		/* Create initial situation */
