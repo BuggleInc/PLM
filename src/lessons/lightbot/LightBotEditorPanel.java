@@ -112,7 +112,6 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 			this.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					String name = iconNameByIcons.get((Icon) InstructionChooser.this.getSelectedItem());
 					func[pos] = new LightBotInstruction(iconNameByIcons.get((Icon) InstructionChooser.this.getSelectedItem()));
 				}				
 			});
