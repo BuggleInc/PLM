@@ -13,7 +13,10 @@ public class LightBotExercise extends ExerciseTemplated {
 	}
 
 	@Override
-	protected void setup(World[] ws) {		
+	protected void setup(World[] ws) {
+		for (World w : ws) 
+			((LightBotWorld) w).rotateLeft();
+		
 		worldDuplicate(ws);
 		/* remove entities from the answer world: we don't care of where the bot is at the end */
 		for (World w :answerWorld)

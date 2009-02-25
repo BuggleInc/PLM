@@ -1,4 +1,4 @@
-package lessons.lightbot;
+	package lessons.lightbot;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,6 +21,7 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import jlm.core.Game;
 import jlm.ui.WorldView;
 import jlm.universe.World;
 
@@ -55,7 +56,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 			throw new RuntimeException("Multiple entities in lightbot world not supported");
 	}
 
-	private void computeZOrders() {
+	private synchronized void computeZOrders() {
 		this.cellsZOrdered.clear();
 		for (LightBotWorldCell c : ((LightBotWorld) this.world))
 			cellsZOrdered.add(c);
@@ -136,7 +137,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 		return val;
 	}
 
-	private void drawWorld3D(Graphics2D g) {
+	private synchronized void drawWorld3D(Graphics2D g) {
 		LightBotEntity bot = null;
 		if (world.getEntityCount() > 0)
 			bot = (LightBotEntity) world.getEntity(0);
@@ -275,24 +276,21 @@ public class LightBotWorldViewIsometric extends WorldView {
 		computeZOrders();
 		super.worldHasMoved();
 	}	
-
-	
-	private LightBotWorld getWorld() {
-		return (LightBotWorld) this.world;
-	}
 	
 	public void initComponents() {
 		JButton rotateLeft = new JButton("left");
 		rotateLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				getWorld().rotateLeft();
+				for (World w : Game.getInstance().getSelectedWorlds())
+					((LightBotWorld) w).rotateLeft();
 			}
 		});
 	
 		JButton rotateRight = new JButton("right");
 		rotateRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				getWorld().rotateRight();
+				for (World w : Game.getInstance().getSelectedWorlds())
+					((LightBotWorld) w).rotateRight();
 			}
 		});
 		
