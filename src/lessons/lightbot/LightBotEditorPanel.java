@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,6 +15,7 @@ import javax.swing.border.BevelBorder;
 import jlm.core.Game;
 import jlm.lesson.ISourceFileListener;
 import jlm.ui.IEditorPanel;
+import jlm.ui.ResourcesCache;
 import jlm.universe.Entity;
 import jlm.universe.IEntityTracable;
 import jlm.universe.IEntityTraceListener;
@@ -25,9 +27,22 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	Map<String,InstructionChooser> choosers=new HashMap<String, InstructionChooser>();
 	InstructionChooser selectedChooser = null;
 	IEntityTracable tracedEntity;
+	private Map<String,Icon> iconsByNames = new HashMap<String, Icon>();
+	private Map<Icon,String> iconNameByIcons = new HashMap<Icon,String>();
+	private Icon[] iconList;
 
 	public LightBotEditorPanel(LightBotSourceFile srcFile) {
 		super();
+		
+		iconList = new Icon[LightBotInstruction.instructionNames.length];
+		int i=0;
+		for (String n:LightBotInstruction.instructionNames) {
+			iconList[i] =ResourcesCache.getIcon("resources/lightbot/"+n+".png");
+			iconNameByIcons.put(iconList[i],n);
+			iconsByNames.put(n,iconList[i]);
+			i++;
+		}
+		
 		this.srcFile = srcFile;
 		srcFile.setListener(this);
 		sourceFileContentHasChanged();
@@ -91,16 +106,17 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		int pos;
 
 		public InstructionChooser(final LightBotInstruction[] func, final int pos) {
-			super(LightBotInstruction.instructionNames);
+			super(iconList);
 			this.func = func;
 			this.pos = pos;
 			this.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					func[pos] = new LightBotInstruction((String) InstructionChooser.this.getSelectedItem());
+					String name = iconNameByIcons.get((Icon) InstructionChooser.this.getSelectedItem());
+					func[pos] = new LightBotInstruction(iconNameByIcons.get((Icon) InstructionChooser.this.getSelectedItem()));
 				}				
 			});
-			setSelectedItem(func[pos].toString());
+			setSelectedItem(iconsByNames.get(func[pos].toString()));
 		}
 
 		private static final long serialVersionUID = 7308818147531552628L;

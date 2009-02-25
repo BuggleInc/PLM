@@ -3,7 +3,7 @@ package lessons.lightbot;
 
 public class LightBotInstruction {
 	/* instructionNames must match what toString says, or comboboxes of editor won't work */
-	final static String[] instructionNames = { "","forward", "jump", "left", "right", "light", "call f1","call f2" };
+	final static String[] instructionNames = { "noop","forward", "jump", "left", "right", "light", "f1","f2" };
 
 	private enum InstructionKind {
 		NOOP,FORWARD,JUMP,LIGHT,LEFT,RIGHT,F1,F2;		
@@ -38,9 +38,9 @@ public class LightBotInstruction {
 			kind=InstructionKind.LEFT;
 		} else if (str.equalsIgnoreCase("right")) {
 			kind=InstructionKind.RIGHT;
-		} else if (str.equalsIgnoreCase("call f1")) {
+		} else if (str.equalsIgnoreCase("f1")) {
 			kind=InstructionKind.F1;
-		} else if (str.equalsIgnoreCase("call f2")) {
+		} else if (str.equalsIgnoreCase("f2")) {
 			kind=InstructionKind.F2;
 		} else {
 			kind=InstructionKind.NOOP; 
@@ -76,14 +76,14 @@ public class LightBotInstruction {
 	
 	public String toString() {
 		switch (kind) { /* must match instructionNames, or the comboboxes in the editor won't work */
-		case NOOP: return "";
+		case NOOP: return "noop";
 		case FORWARD: return "forward"; 
 		case JUMP: return "jump"; 
 		case LEFT: return "left"; 
 		case RIGHT: return "right";
 		case LIGHT: return "light";
-		case F1: return "call f1"; 
-		case F2: return "call f2"; 
+		case F1: return "f1"; 
+		case F2: return "f2"; 
 		}
 		return "noop";
 	}
