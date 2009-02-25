@@ -6,15 +6,13 @@ import java.util.Iterator;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
+public class LightBotWorld extends jlm.universe.World implements Iterable<LightBotWorldCell> {
 
-public class LightBotWorld extends jlm.universe.World implements Iterable<LightBotWorldCell>{
- 
 	private LightBotWorldCell[][] world;
 
 	private int sizeX;
 	private int sizeY;
 
-	
 	public LightBotWorld(String name, int x, int y) {
 		super(name);
 		create(x, y);
@@ -27,11 +25,12 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 		this.world = new LightBotWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++)
-				world[i][j] = new LightBotWorldCell(this,i,j);		
+				world[i][j] = new LightBotWorldCell(this, i, j);
 	}
 
-	/** 
-		 * Create a new world being almost a copy of the first one. 
+	/**
+	 * Create a new world being almost a copy of the first one.
+	 * 
 	 * @param world2
 	 */
 	public LightBotWorld(LightBotWorld world2) {
@@ -46,29 +45,30 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 				world[i][j].setWorld(this);
 			}
 	}
-	
+
 	@Override
-	public World copy(){
+	public World copy() {
 		return new LightBotWorld(this);
 	}
+
 	/**
-	 * Reset the content of a world to be the same than the one passed as argument
-	 * does not affect the name of the initial world.
+	 * Reset the content of a world to be the same than the one passed as
+	 * argument does not affect the name of the initial world.
+	 * 
 	 * @param initialWorld
 	 */
 	@Override
 	public void reset(World iw) {
-		LightBotWorld initialWorld = (LightBotWorld)iw;
+		LightBotWorld initialWorld = (LightBotWorld) iw;
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
 				LightBotWorldCell c = initialWorld.getCell(i, j);
 				world[i][j] = new LightBotWorldCell(c);
 			}
 
-		
 		super.reset(initialWorld);
-	}	
-	
+	}
+
 	public LightBotWorldCell getCell(int x, int y) {
 		return this.world[x][y];
 	}
@@ -90,20 +90,22 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 	public LightBotWorldViewIsometric getView() {
 		return new LightBotWorldViewIsometric(this);
 	}
-	//public LightBotWorldView getView() {
-	//	return new LightBotWorldView(this);
-	//}
-	
+
+	// public LightBotWorldView getView() {
+	// return new LightBotWorldView(this);
+	// }
+
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
 		return new EntityControlPanel() { // TODO display something
 			private static final long serialVersionUID = 1L;
+
 			@Override
 			public void setEnabledControl(boolean enabled) {
-			}			
-		}; 
+			}
+		};
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
@@ -127,28 +129,28 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 			return false;
 		if (sizeY != other.sizeY)
 			return false;
-		for (int x=0; x<getWidth(); x++) 
-			for (int y=0; y<getHeight(); y++) 
+		for (int x = 0; x < getWidth(); x++)
+			for (int y = 0; y < getHeight(); y++)
 				if (!getCell(x, y).equals(other.getCell(x, y)))
 					return false;
 
 		return super.equals(obj);
 	}
-	
+
 	public class CellIterator implements Iterator<LightBotWorldCell> {
-		int x=0;
-		int y=0;
-		
+		private int x = 0;
+		private int y = 0;
+
 		@Override
 		public boolean hasNext() {
-			return x<LightBotWorld.this.sizeX-1 || y<LightBotWorld.this.sizeY-1;
+			return x <= LightBotWorld.this.sizeX - 1 && y <= LightBotWorld.this.sizeY - 1;
 		}
 
 		@Override
 		public LightBotWorldCell next() {
 			LightBotWorldCell res = LightBotWorld.this.getCell(x, y);
-			if (x >= LightBotWorld.this.sizeX-1) {
-				x=0;
+			if (x >= LightBotWorld.this.sizeX - 1) {
+				x = 0;
 				y++;
 			} else {
 				x++;
@@ -160,21 +162,23 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 		public void remove() {
 			throw new RuntimeException("Method not implemented (and not implementable");
 		}
-		
+
 	}
 
 	public void setHeight(int x, int y, int h) {
-		getCell(x,y).setHeight(h);
+		getCell(x, y).setHeight(h);
 	}
 
 	public void addLight(int x, int y) {
-		getCell(x,y).addLight();		
+		getCell(x, y).addLight();
 	}
+
 	public void removeLight(int x, int y) {
-		getCell(x,y).removeLight();		
+		getCell(x, y).removeLight();
 	}
+
 	public void switchLight(int x, int y) {
-		getCell(x,y).lightSwitch();
+		getCell(x, y).lightSwitch();
 	}
 
 	@Override
