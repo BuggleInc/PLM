@@ -7,7 +7,7 @@ import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 
-public class LightBotWorld extends jlm.universe.World {
+public class LightBotWorld extends jlm.universe.World implements Iterable<LightBotWorldCell>{
  
 	private LightBotWorldCell[][] world;
 
@@ -86,9 +86,12 @@ public class LightBotWorld extends jlm.universe.World {
 	}
 
 	@Override
-	public LightBotWorldView getView() {
-		return new LightBotWorldView(this);
+	public LightBotWorldViewIsometric getView() {
+		return new LightBotWorldViewIsometric(this);
 	}
+	//public LightBotWorldView getView() {
+	//	return new LightBotWorldView(this);
+	//}
 	
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
@@ -171,6 +174,11 @@ public class LightBotWorld extends jlm.universe.World {
 	}
 	public void switchLight(int x, int y) {
 		getCell(x,y).lightSwitch();
+	}
+
+	@Override
+	public Iterator<LightBotWorldCell> iterator() {
+		return new CellIterator();
 	}
 
 }

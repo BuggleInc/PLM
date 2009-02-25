@@ -1,11 +1,9 @@
 package lessons.lightbot;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
@@ -71,14 +69,6 @@ public class LightBotWorldView extends WorldView {
 		while (it.hasNext())
 			drawBot2D(g2, (LightBot) it.next());
 	}
-
-	protected double getCellWidth() {
-		return (double) Math.min(getHeight(), getWidth())
-				/ Math.max(((LightBotWorld) world).getWidth(), ((LightBotWorld) world).getHeight());
-	}
-
-	//private final BasicStroke gridStroke = new BasicStroke((float) 0.1 / ((LightBotWorld) world).getWidth(),
-	//		BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER);
 
 	private void drawWorld2D(Graphics2D g) {
 		LightBotWorld w = (LightBotWorld) world;

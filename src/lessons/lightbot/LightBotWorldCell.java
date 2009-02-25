@@ -56,7 +56,10 @@ public class LightBotWorldCell {
 		return (!light) || lightOn;
 	}
 
-			
+	public LightBotWorld getWorld() {
+		return this.world;
+	}
+	
 	public int getX() {
 		return this.x;
 	}
@@ -64,7 +67,7 @@ public class LightBotWorldCell {
 	public int getY() {
 		return this.y;
 	}
-
+		
 	public void setWorld(LightBotWorld w) {
 		this.world = w;
 	}
