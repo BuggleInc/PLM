@@ -18,10 +18,10 @@ public class Board06Func extends LightBotExercise {
 		myWorld.setHeight(4, 3, 3);
 		myWorld.setHeight(4, 4, 4);
 		myWorld.addLight( 4, 4);
-		for (int i=1;i<7;i++)
+		for (int i=1;i<8;i++)
 			myWorld.setHeight(i, 5, 2);
 		myWorld.addLight(1, 5);
-		myWorld.addLight(6, 5);
+		myWorld.addLight(7, 5);
 		
 		setup(myWorld);
 	}
