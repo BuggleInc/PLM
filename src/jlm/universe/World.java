@@ -28,7 +28,7 @@ public abstract class World {
 	private int delay = 100; // delay between two instruction executions of an entity.
 
 	@ElementList
-	private ArrayList<Entity> entities = new ArrayList<Entity>();
+	protected ArrayList<Entity> entities = new ArrayList<Entity>();
 
 	@Attribute
 	private String name;
