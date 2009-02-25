@@ -3,6 +3,7 @@ package lessons.lightbot;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import jlm.universe.Entity;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
@@ -11,8 +12,8 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 	private LightBotWorldCell[][] world;
 
 	private int sizeX;
-	private int sizeY;
-
+	private int sizeY; 
+	
 	public LightBotWorld(String name, int x, int y) {
 		super(name);
 		create(x, y);
@@ -86,14 +87,66 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 		return this.sizeY;
 	}
 
-	@Override
-	public LightBotWorldViewIsometric getView() {
-		return new LightBotWorldViewIsometric(this);
+	public void rotateRight() {	
+		LightBotWorldCell[][] newWorld = new LightBotWorldCell[this.sizeY][this.sizeX];
+		for (int y=0; y<this.sizeY; y++)
+			for (int x=0; x<this.sizeX; x++) {
+				LightBotWorldCell cell = this.world[x][y];
+				cell.setX(this.sizeX-(y+1));
+				cell.setY(x);
+				newWorld[this.sizeX-(y+1)][x] = cell;
+			}
+		this.world = newWorld;
+		int oldSizeX = this.sizeX;
+		this.sizeX = this.sizeY;
+		this.sizeY = oldSizeX;
+		
+		for (Entity entity : this.entities) {
+			LightBotEntity bot = (LightBotEntity) entity;
+			int x = bot.getX();
+			int y = bot.getY();
+			
+			bot.setX(this.sizeX-(y+1));
+			bot.setY(x);
+			bot.right();
+		}
+		
+		notifyWorldUpdatesListeners();
 	}
-
-	// public LightBotWorldView getView() {
-	// return new LightBotWorldView(this);
-	// }
+	
+	public void rotateLeft() {
+		LightBotWorldCell[][] newWorld = new LightBotWorldCell[this.sizeY][this.sizeX];
+		for (int y=0; y<this.sizeY; y++)
+			for (int x=0; x<this.sizeX; x++) {
+				LightBotWorldCell cell = this.world[x][y];
+				cell.setX(y);
+				cell.setY(this.sizeX-(x+1));
+				newWorld[y][this.sizeX-(x+1)] = cell;
+			}
+		this.world = newWorld;
+		int oldSizeX = this.sizeX;
+		this.sizeX = this.sizeY;
+		this.sizeY = oldSizeX;
+		
+		for (Entity entity : this.entities) {
+			LightBotEntity bot = (LightBotEntity) entity;
+			int x = bot.getX();
+			int y = bot.getY();
+			
+			bot.setX(y);
+			bot.setY(this.sizeX-(x+1));
+			bot.left();
+		}
+		
+		//notifyWorldUpdatesListeners();		
+	}
+	
+	
+	
+	@Override
+	public LightBotWorldView getView() {
+	 return new LightBotWorldView(this);
+	}
 
 	@Override
 	public EntityControlPanel getEntityControlPanel() {

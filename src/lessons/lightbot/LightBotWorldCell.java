@@ -64,10 +64,20 @@ public class LightBotWorldCell {
 		return this.x;
 	}
 
+	public void setX(int newX) {
+		this.x = newX;
+		//world.notifyWorldUpdatesListeners();
+	}
+	
 	public int getY() {
 		return this.y;
 	}
-		
+	
+	public void setY(int newY) {
+		this.y = newY;
+		//world.notifyWorldUpdatesListeners();
+	}
+	
 	public void setWorld(LightBotWorld w) {
 		this.world = w;
 	}
@@ -119,4 +129,11 @@ public class LightBotWorldCell {
 	public boolean isLightOn() {
 		return lightOn;
 	}
+	
+	@Override
+	public String toString() {
+		return "LBCell[x:"+this.x+";y:"+this.y+";z:"+this.height+";light:"+(light?(lightOn?"on":"off"):"none")+"]";
+	}
+	
+	
 }
