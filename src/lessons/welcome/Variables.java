@@ -13,7 +13,6 @@ public class Variables extends ExerciseTemplated {
 
 	public Variables(Lesson lesson) {
 		super(lesson);
-		tabName = "Program";
 
 		BuggleWorld myWorld = new BuggleWorld("Kitchen",7,7);
 		for (int i=0;i<7;i++) {

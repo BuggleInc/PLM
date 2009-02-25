@@ -3,15 +3,15 @@ package lessons.lightbot;
 import jlm.lesson.Lesson;
 import universe.bugglequest.Direction;
 
-public class Board12Moebius extends LightBotExercise {
+public class Board12Escher extends LightBotExercise {
 
-	public Board12Moebius(Lesson lesson) {
+	public Board12Escher(Lesson lesson) {
 		super(lesson);
 				
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
 		
-		new LightBot(myWorld, "D2R2", 0, 4, Direction.EAST);
+		new LightBotEntity(myWorld, "D2R2", 0, 4, Direction.EAST);
 
 		for (int i=1;i<5;i++) {
 			myWorld.setHeight(5, i, i);  myWorld.addLight(5, i);
@@ -23,9 +23,6 @@ public class Board12Moebius extends LightBotExercise {
 			myWorld.setHeight(2, 3+i, i);myWorld.addLight(2, 3+i);
 		}
 		
-		newTextFile("main", "");
-		newTextFile("function 1", "");
-		newTextFile("function 2", "");
 		setup(myWorld);
 	}
 }

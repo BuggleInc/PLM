@@ -13,7 +13,6 @@ public class SlugHunting extends ExerciseTemplated {
 
 	public SlugHunting(Lesson lesson) {
 		super(lesson);
-		tabName = "Program";
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 

@@ -11,7 +11,7 @@ public class Board08Rec extends LightBotExercise {
 		/* Create initial situation */
 		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
 		
-		new LightBot(myWorld, "D2R2", 2, 2, Direction.EAST);
+		new LightBotEntity(myWorld, "D2R2", 2, 2, Direction.EAST);
 
 		for (int i=2;i<7;i++) {
 			myWorld.setHeight(i, 2, 1);
@@ -33,9 +33,6 @@ public class Board08Rec extends LightBotExercise {
 		myWorld.addLight(4, 6);
 		myWorld.addLight(6, 6);
 		
-		newTextFile("main", "");
-		newTextFile("function 1", "");
-		newTextFile("function 2", "");
 		setup(myWorld);
 	}
 }

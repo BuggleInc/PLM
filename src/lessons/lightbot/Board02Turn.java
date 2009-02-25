@@ -13,7 +13,7 @@ public class Board02Turn extends LightBotExercise {
 		myWorld.setHeight(4, 4, 2);
 		myWorld.addLight(4,6);
 		
-		new LightBot(myWorld, "D2R2", 4, 2, Direction.SOUTH);
+		new LightBotEntity(myWorld, "D2R2", 4, 2, Direction.SOUTH);
 		
 		/* decorum */
 		for (int i=2;i<6;i++) {
@@ -30,10 +30,6 @@ public class Board02Turn extends LightBotExercise {
 		myWorld.setHeight(0, 6, 2);
 		myWorld.setHeight(7, 6, 2);
 
-		
-		newTextFile("main", "");
-		newTextFile("function 1", "");
-		newTextFile("function 2", "");
 		setup(myWorld);
 	}
 }

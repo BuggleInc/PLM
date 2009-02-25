@@ -12,7 +12,7 @@ public class Basics3Pas extends ExerciseTemplated {
 
 	public Basics3Pas(Lesson lesson) {
 		super(lesson);
-		tabName="Program";
+		tabName="Source Code";
 		
 		BuggleWorld myWorld = new BuggleWorld("Training World", 7,7);
 		new Buggle(myWorld, "Rookie", 3, 3, Direction.NORTH, Color.black, Color.lightGray);

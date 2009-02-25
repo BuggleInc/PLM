@@ -1,8 +1,6 @@
 package jlm.ui;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.util.ArrayList;
 
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
@@ -27,8 +25,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 	
 	/* for code tabs */
 	private Exercise currentExercise;
-	private ArrayList<SourceFile> sourceFiles = new ArrayList<SourceFile>();
-	private Font font = null;
+//	private Font font = null;
 
 	
 	public MissionEditorTabs() {
@@ -65,41 +62,23 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		
 		/* Redo any code panel */
 		int publicSrcFileCount = currentExercise.publicSourceFileCount();
-
-		/* notify all previously edited source files that they are not under edit anymore */
-		for (SourceFile srcFile : sourceFiles) 
-			srcFile.removeListener();		
-		sourceFiles.clear();
 		
 		/* Remove every tabs, but the mission one */
-		while (getTabCount()>1)
-			this.remove(getTabCount()-1);
+		while (getTabCount()>1) {
+			IEditorPanel p = (IEditorPanel) this.getComponentAt(getTabCount()-1);
+			p.clear();
+			removeTabAt(getTabCount()-1);
+		}
 
 		/* Add back the right amount of tabs */
 		for (int i = 0; i < publicSrcFileCount; i++) {
 			/* Create the code editor */
-			JEditorPane codeEditor = new JEditorPane();
-			JScrollPane scrollPane = new JScrollPane(codeEditor);
-			codeEditor.setContentType("text/java");
-			if (font != null) 
-				codeEditor.setFont(font);
-			
-			/* Create a synchronization element, and connect it to the editor */
-			SourceFileDocumentSynchronizer sync = new SourceFileDocumentSynchronizer(codeEditor.getEditorKit());
-			sync.setDocument(codeEditor.getDocument());
-			codeEditor.getDocument().addDocumentListener(sync);
-			
-			/* Connect the synchronization element to the source file */
 			SourceFile srcFile = currentExercise.getPublicSourceFile(i);
-			sourceFiles.add(i, srcFile);
-			srcFile.setListener(sync);
-			sync.setSourceFile(srcFile);
-			
-			codeEditor.setText(srcFile.getBody());
-			
+
 			/* Create the tab with the code editor as content */
-			this.addTab(srcFile.getName(), scrollPane); // name is over written in next loop			
+			this.addTab(srcFile.getName(), srcFile.getEditorPanel()); 			
 		}		
+		doLayout();
 	}
 	@Override
 	public void currentLessonHasChanged() { /* don't care */ }

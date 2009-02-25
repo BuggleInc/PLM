@@ -3,6 +3,10 @@ package jlm.lesson;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.swing.JScrollPane;
+
+import jlm.ui.JavaEditorPanel;
+
 
 public class SourceFile {
 
@@ -10,7 +14,7 @@ public class SourceFile {
 	private String template;
 	private String body;
 	private Map<String, String> patterns;
-	private ISourceFileListener listener;
+	private ISourceFileListener listener = null;
 
 	private boolean isCompilable=true;
 	private boolean isEditable=true;
@@ -72,8 +76,6 @@ public class SourceFile {
 	}
 
 	public void removeListener() {
-		if (listener!=null)
-			listener.clear();
 		this.listener = null;
 	}
 
@@ -123,4 +125,7 @@ public class SourceFile {
 		return true;
 	}
 
+	public JScrollPane getEditorPanel() {
+		return new JavaEditorPanel(this);
+	}
 }
