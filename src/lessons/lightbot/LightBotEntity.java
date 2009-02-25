@@ -79,8 +79,16 @@ public class LightBotEntity extends Entity {
 	protected LightBotWorldCell getCell(int u, int v){
 		return ((LightBotWorld)world).getCell(u, v);
 	}
+	private int bounded(int x,int max) {
+		if (x<0)
+			return 0;
+		if (x>=max)
+			return max-1;
+		return x;
+	}
+	
 	private LightBotWorldCell getCellNeighbor(Point delta) {
-		return getCell( (getX()+delta.x)%getWorldWidth() , (getY()+delta.y)%getWorldHeight());
+		return getCell( bounded((getX()+delta.x),getWorldWidth()) , bounded((getY()+delta.y),getWorldHeight()));
 	}
 
 
@@ -107,12 +115,8 @@ public class LightBotEntity extends Entity {
 	}
 
 	private void move() {
-		int newx = (getX() + getDirection().toPoint().x) % getWorldWidth();
-		if (newx < 0)
-			newx += getWorldWidth();
-		int newy = (getY() + getDirection().toPoint().y) % getWorldHeight();
-		if (newy < 0)
-			newy += getWorldHeight();
+		int newx = bounded(getX() + getDirection().toPoint().x , getWorldWidth());
+		int newy = bounded(getY() + getDirection().toPoint().y , getWorldHeight());
 		setX(newx);
 		setY(newy);
 		stepUI();
