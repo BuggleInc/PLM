@@ -51,6 +51,9 @@ public class MainFrame extends JFrame implements GameStateListener {
 	private JButton demoButton;
 	private LoggerPanel outputArea;
 
+	private JComboBox lessonComboBox;
+	private JComboBox exerciseComboBox;
+	
 	private MainFrame() {
 		super("Java Learning Machine");
 		initComponents();
@@ -232,11 +235,11 @@ public class MainFrame extends JFrame implements GameStateListener {
 		demoButton.setEnabled(true);
 
 		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
-		JComboBox lessonComboBox = new JComboBox(lessonAdapter);
+		lessonComboBox = new JComboBox(lessonAdapter);
 		lessonComboBox.setRenderer(new LessonCellRenderer());
 
 		ExerciseComboListAdapter exerciseAdapter = new ExerciseComboListAdapter(Game.getInstance());
-		JComboBox exerciseComboBox = new JComboBox(exerciseAdapter);
+		exerciseComboBox = new JComboBox(exerciseAdapter);
 		exerciseComboBox.setRenderer(new ExerciseCellRenderer());
 
 		toolBar.add(startButton);
@@ -278,6 +281,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
+			lessonComboBox.setEnabled(false);
+			exerciseComboBox.setEnabled(false);		
 			break;
 		case LOADING_DONE:
 		case SAVING_DONE:
@@ -297,6 +302,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			exerciseView.setEnabledControl(false);
+			lessonComboBox.setEnabled(false);
+			exerciseComboBox.setEnabled(false);		
 			break;
 		case EXECUTION_ENDED:
 			stopButton.setEnabled(false);
@@ -304,6 +311,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
+			lessonComboBox.setEnabled(true);
+			exerciseComboBox.setEnabled(true);		
 			break;
 		case DEMO_STARTED:
 			exerciseView.selectObjectivePane();
@@ -311,7 +320,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
-
+			lessonComboBox.setEnabled(false);
+			exerciseComboBox.setEnabled(false);		
 			// exerciseView.setEnabledControl(false);
 			break;
 		case DEMO_ENDED:
@@ -320,6 +330,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
+			lessonComboBox.setEnabled(true);
+			exerciseComboBox.setEnabled(true);		
 			break;
 		default:
 		}
