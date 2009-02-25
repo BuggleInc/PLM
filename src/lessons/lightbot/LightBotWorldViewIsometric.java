@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.awt.geom.GeneralPath;
+import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +30,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 
 	private static final long serialVersionUID = -697923562790202622L;
 
-	private static final Color GRID_COLOR = new Color(0.5f, 0.5f, 0.5f);
+	private static final Color GRID_COLOR = new Color(0.2f, 0.2f, 0.2f);
 	private static final Color DARK_CELL_COLOR = new Color(0.9f, 0.9f, 0.9f);
 	private static final Color LIGHT_CELL_COLOR = new Color(0.93f, 0.93f, 0.93f);
 
@@ -188,6 +189,14 @@ public class LightBotWorldViewIsometric extends WorldView {
 			g.setColor(GRID_COLOR);
 			g.draw(face2);
 
+			// steps on faces
+			for (int h = 0; h<cell.getHeight(); h++) {
+				g.setColor(GRID_COLOR);
+				double z = h * CELL_HEIGHT;
+				g.draw(new Line2D.Double(dx - z, dy + cw - z, dx + cw - z, dy + cw - z));
+				g.draw(new Line2D.Double(dx + cw -z , dy + cw - z, dx + cw -z , dy - z));
+			}
+	
 			// roof
 			g.setColor(cellColor);
 			g.fill(new Rectangle2D.Double(dx - dz, dy - dz, cw, cw));
