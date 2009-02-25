@@ -11,7 +11,7 @@ import universe.bugglequest.Direction;
 public class Environment extends ExerciseTemplated {
 	public Environment(Lesson lesson) {
 		super(lesson);
-		tabName = "Source Code";
+		tabName = "SourceCode";
 		
 		BuggleWorld myWorld = new BuggleWorld("Training Camp",7,7);
 		new Buggle(myWorld, "Noob", 3, 3, Direction.NORTH, Color.black, Color.lightGray);

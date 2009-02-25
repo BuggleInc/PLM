@@ -1,9 +1,12 @@
 package lessons.lightbot;
 
 import java.awt.Point;
+import java.util.ArrayList;
 
 import jlm.core.Game;
 import jlm.universe.Entity;
+import jlm.universe.IEntityTracable;
+import jlm.universe.IEntityTraceListener;
 import jlm.universe.World;
 
 import org.simpleframework.xml.Attribute;
@@ -11,7 +14,7 @@ import org.simpleframework.xml.Attribute;
 import universe.bugglequest.Direction;
 
 
-public class LightBotEntity extends Entity {
+public class LightBotEntity extends Entity implements IEntityTracable {
 	@Attribute
 	private int x;
 	@Attribute
@@ -95,7 +98,6 @@ public class LightBotEntity extends Entity {
 	public void setPos(int x, int y) {
 		this.setX(x);
 		this.setY(y);
-		stepUI();
 	}
 	public void forward() {
 		if (getCellNeighbor(getDirection().toPoint()).getHeight() == getCell().getHeight())
@@ -119,16 +121,13 @@ public class LightBotEntity extends Entity {
 		int newy = bounded(getY() + getDirection().toPoint().y , getWorldHeight());
 		setX(newx);
 		setY(newy);
-		stepUI();
 	}
 
 	public void left() {
 		direction=getDirection().left();
-		stepUI();
 	}
 	public void right() {
 		direction=getDirection().right();
-		stepUI();
 	}
 	public void light() {
 		((LightBotWorld) world).switchLight(getX(),getY());
@@ -180,21 +179,27 @@ public class LightBotEntity extends Entity {
 		sf = (LightBotSourceFile) Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile("Code");
 				
 		/* Run main */
-		run(sf.main);
+		run("main",sf.main);
+		fireTraceListener(null);
 	}
 	public void runF1(){
-		run(sf.func1);
+		run("func1",sf.func1);
 	}
 	public void runF2(){
-		run(sf.func2);
+		run("func2",sf.func2);
 	}
 
-	private void run(LightBotInstruction[] file) {
+	private void run(String fileName,LightBotInstruction[] file) {
 		if (file == null)
 			return;
-		for (LightBotInstruction i: file)
+		int line=0;
+		for (LightBotInstruction i: file) {
+			fireTraceListener(fileName+":"+line++);
+			if (i!=null && !i.isNoop())
+			stepUI();
 			if (i!=null)
 				i.run(this);
+		}
 	}
 
 	public void setX(int x) {
@@ -208,5 +213,29 @@ public class LightBotEntity extends Entity {
 	}
 	public int getY() {
 		return y;
+	}
+
+	ArrayList<IEntityTraceListener> traceListeners = new ArrayList<IEntityTraceListener>();
+	@Override
+	public void addTraceListener(IEntityTraceListener l) {
+		traceListeners.add(l);
+	}
+
+	@Override
+	public void removeTraceListener(IEntityTraceListener l) {
+		traceListeners.remove(l);
+	}
+
+	public String selectedInstruction;
+	@Override
+	public void fireTraceListener(String location) {
+		selectedInstruction = location;
+		for (IEntityTraceListener l:traceListeners)
+			l.entityTraceChanged(this, location);		
+	}
+
+	@Override
+	public String getCurrentTrace() {
+		return selectedInstruction;
 	}
 }

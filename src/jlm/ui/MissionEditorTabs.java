@@ -1,6 +1,7 @@
 package jlm.ui;
 
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
@@ -12,6 +13,7 @@ import jlm.core.Game;
 import jlm.event.GameListener;
 import jlm.lesson.Exercise;
 import jlm.lesson.SourceFile;
+import jlm.universe.IEntityTraceListener;
 import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
@@ -48,7 +50,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		this.game = Game.getInstance();
 		this.game.addGameListener(this);
 		
-		/* load content */
+		/* add code tabs */
 		currentExerciseHasChanged();
 	}
 	
@@ -87,7 +89,13 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 	@Override
 	public void selectedWorldHasChanged() { /* don't care */ }
 	@Override
-	public void selectedEntityHasChanged() { /* don't care */ }
+	public void selectedEntityHasChanged() { /* the code panels may want to know */
+		for (int i=1;i<getTabCount();i++) {
+			Component c = this.getComponentAt(getTabCount()-1);
+			if (c instanceof IEntityTraceListener)
+				((IEntityTraceListener) c).tracedEntityChanged(game.getSelectedEntity());
+		}
+	}
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
 

@@ -87,4 +87,7 @@ public class LightBotInstruction {
 		}
 		return "noop";
 	}
+	public boolean isNoop() {
+		return kind == InstructionKind.NOOP;
+	}
 }
