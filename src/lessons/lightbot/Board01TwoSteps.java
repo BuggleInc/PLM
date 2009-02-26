@@ -9,7 +9,7 @@ public class Board01TwoSteps extends LightBotExercise {
 		super(lesson);
 				
 		/* Create initial situation */
-		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
+		LightBotWorld myWorld = new LightBotWorld("Board 1", 8, 8);
 		for (int i=0;i<8;i++) {
 			myWorld.setHeight(0,i,2);
 			myWorld.setHeight(7,i,2);

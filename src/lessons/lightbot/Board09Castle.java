@@ -9,7 +9,7 @@ public class Board09Castle extends LightBotExercise {
 		super(lesson);
 				
 		/* Create initial situation */
-		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
+		LightBotWorld myWorld = new LightBotWorld("Board 9", 8, 8);
 		
 		new LightBotEntity(myWorld, "D2R2", 2, 1, Direction.SOUTH);
 

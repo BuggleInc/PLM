@@ -9,7 +9,7 @@ public class Board08Rec extends LightBotExercise {
 		super(lesson);
 				
 		/* Create initial situation */
-		LightBotWorld myWorld = new LightBotWorld("Mars", 8, 8);
+		LightBotWorld myWorld = new LightBotWorld("Board 8", 8, 8);
 		
 		new LightBotEntity(myWorld, "D2R2", 2, 2, Direction.EAST);
 
