@@ -1,3 +1,8 @@
+/* This file is not used anymore: it displays a stupid 2D view of the world.
+ * Its main interest were to be able to test the world before the 3D isometric were functional.
+ * I don't kill it so that we have a backup in case the 3D view breaks at some point.
+ */
+
 package lessons.lightbot;
 
 import java.awt.Color;
