@@ -2,7 +2,7 @@ package lessons.lightbot;
 
 
 public class LightBotInstruction {
-	/* instructionNames must match what toString says, or comboboxes of editor won't work */
+	/* instructionNames must match what toString says, and what the string constructor expects, or comboboxes of editor won't work */
 	final static String[] instructionNames = { "noop","forward", "jump", "left", "right", "light", "f1","f2" };
 
 	private enum InstructionKind {
@@ -28,6 +28,7 @@ public class LightBotInstruction {
 		}
 	}
 	public LightBotInstruction(String str) {
+		/* must match instructionNames, or the comboboxes in the editor won't work */
 		if (str.equalsIgnoreCase("forward")) {
 			kind=InstructionKind.FORWARD;
 		} else if (str.equalsIgnoreCase("jump")) {

@@ -66,7 +66,6 @@ public class LightBotWorldCell {
 
 	public void setX(int newX) {
 		this.x = newX;
-		//world.notifyWorldUpdatesListeners();
 	}
 	
 	public int getY() {
@@ -75,7 +74,6 @@ public class LightBotWorldCell {
 	
 	public void setY(int newY) {
 		this.y = newY;
-		//world.notifyWorldUpdatesListeners();
 	}
 	
 	public void setWorld(LightBotWorld w) {

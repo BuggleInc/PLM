@@ -150,9 +150,8 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() { // TODO display something
+		return new EntityControlPanel() {
 			private static final long serialVersionUID = 1L;
-
 			@Override
 			public void setEnabledControl(boolean enabled) {
 			}
