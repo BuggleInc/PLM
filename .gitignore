@@ -1,6 +1,5 @@
 bin
 dist
 keystore.properties
-.classpath
 .settings
 *~
