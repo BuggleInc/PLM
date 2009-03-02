@@ -102,7 +102,7 @@ méthodes:
    des méthodes. En Java, on appelle ces variables <i>globales</i> à
    plusieurs méthodes des <b>champs</b>.</p>
 
-<p>Ensuite, la fonction <tt>danseOneStep()</tt> doit être modifiée
+<p>Ensuite, la fonction <tt>danceOneStep()</tt> doit être modifiée
    pour mettre cette valeur à <tt>false</tt> quand il n'y a plus rien
    à faire. Pour cela, ajoutez simplement <code>moreMusic =
    false;</code> avant chaque <tt>return</tt>.
@@ -110,7 +110,7 @@ méthodes:
 <p>On peut alors utiliser la fonction <tt>run()</tt> suivante:
 <pre>public void run() {
   while (moreMusic)
-    danseOneStep();
+    danceOneStep();
 }</pre>
 
 <h3>Objectif de cet exercice</h3><a name="Objectifs">
@@ -123,7 +123,7 @@ nous venons de voir.
    compilateur se plaindra de trouver deux définitions de la même
    fonction, sans se rendre compte qu'il s'agit de la même
    fonction. Contentez vous de déclarer la variable <tt>moreMusic</tt>
-   et la méthode <tt>danseOneStep()</tt>.</p>
+   et la méthode <tt>danceOneStep()</tt>.</p>
 
 <p>Voici les indications au sol à utiliser pour BDR2. Remarquez qu'on
   peut maintenant avancer la buggle de 6 cases d'un coup.
