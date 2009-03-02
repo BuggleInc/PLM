@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-02 12:03+0100\n"
-"PO-Revision-Date: 2009-03-02 12:06+0100\n"
+"POT-Creation-Date: 2009-03-02 15:36+0100\n"
+"PO-Revision-Date: 2009-03-02 22:10+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -3578,7 +3578,7 @@ msgstr "When you program works again, proceed to next exercise."
 
 #: src/lessons/welcome/SlugHunting.html:1
 msgid "Chasse à la limace"
-msgstr ""
+msgstr "Slug Hunting"
 
 #: src/lessons/welcome/SlugHunting.html:3
 msgid ""
@@ -3587,7 +3587,7 @@ msgid ""
 "par hasard la trace d'une limace : une traînée baveuse verte. Si elle "
 "parvient à la suivre jusqu'au bout, elle trouvera un baggle représentant la "
 "grosse limace si appétissante (pour une buggle)."
-msgstr ""
+msgstr "After all this excitation of dance revolution, we will move on to a slower activity : the slug hunting. Your buggle just happened to found the trail of a slug: a green dribbling path. If it manage to follow it to its end, it will find a baggle representing an appetizing slug (from a buggle point of view). "
 
 #: src/lessons/welcome/SlugHunting.html:10
 msgid ""
@@ -3597,7 +3597,7 @@ msgid ""
 "faux. Il faudrait de plus que cette méthode ne modifie ni l'état de la "
 "buggle qui l'appelle, ni celui du monde. Une telle méthode est dite <b>sans "
 "effet de bord</b>."
-msgstr ""
+msgstr "To reach that goal, the simpler would be to have a boolean method <tt>isFacingTrail</tt>, which would help determining whether we are facing a green cell or not. Of course, if we are facing a wall, it should return false. It would be great if this method could in addition preserve the state of the calling buggle and of the world. Such a method is said to have no <b>side effect</b>."
 
 #: src/lessons/welcome/SlugHunting.html:17
 msgid ""
@@ -3606,7 +3606,7 @@ msgid ""
 "proies laissent des traces d'autres couleurs.  En Java, il existe un "
 "<i>type</i> <tt>Color</tt> pour désigner les couleurs.  La couleur verte est "
 "définie par <code>Color.green</code>."
-msgstr ""
+msgstr "Then, the best would be if it could take the color of the trail we want to follow as an argument. Slugs leave green trails, but other prey leave trails of other colors. In Java, there is a <i>data type</i> <tt>Color</tt> to indicate the colors. The green color is defined by <code>Color.green</code>."
 
 #: src/lessons/welcome/SlugHunting.html:23
 msgid ""
@@ -3763,7 +3763,7 @@ msgstr ""
 
 #: src/lessons/welcome/Array.html:1
 msgid "Tricots (et tableaux)"
-msgstr ""
+msgstr "Knitting and Arrays"
 
 #: src/lessons/welcome/Array.html:3
 msgid ""
@@ -3774,7 +3774,7 @@ msgid ""
 "souhaité, puis le reproduire ensuite. Il est impossible de faire autrement "
 "car votre programme sera exécuté par trois buggles dans trois mondes "
 "différents, chacune ayant un motif propre à reproduire."
-msgstr ""
+msgstr "The goal of this exercise is to reproduce the pattern of the first row in the other rows with a shift of one cell (see the Objective tab for details). The biggest difference between this exercise and the other we had on patterns is that you have to read the pattern (on first row) before reproducing it. You cannot do otherwise because the same code will be executed on three different worlds, each of them having its specific pattern."
 
 #: src/lessons/welcome/Array.html:10
 msgid ""
@@ -3783,29 +3783,30 @@ msgid ""
 "pas le droit d'utiliser les méthodes permettant de téléporter la buggle à "
 "une case particulière (<code>setPos()</code> et autres), cette façon de "
 "faire va être très pénible à mettre en place."
-msgstr ""
+msgstr "One solution is to read the next cell, and go copy it in position before comming back to read the second cell. But since it is forbiden to use the methods to teleport the buggle to a specific position (<code>setPos()</code> and similar), this approach will be a pain to implement. "
 
 #: src/lessons/welcome/Array.html:16
 msgid ""
 "Le plus simple est de stocker l'enchainement de couleurs dans un <b>tableau</"
 "b>."
-msgstr ""
+msgstr "The simplest is to store the whole color pattern in an <b>array</b>."
 
 #: src/lessons/welcome/Array.html:18
 msgid "Les tableaux en Java"
-msgstr ""
+msgstr "Arrays in Java"
 
 #: src/lessons/welcome/Array.html:19
 msgid ""
 "Un tableau est une séquence d'emplacements dans lesquels on peut mettre des "
 "valeurs de même type (une par emplacement). C'est donc une séquence de cases "
 "de même type :"
-msgstr ""
+msgstr "An array is a sequence of positions in which one can store values of the same kind (one value per cell). It is thus a sequence of values of the same kind:"
 
 #: src/lessons/welcome/Array.html:25
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
-msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
+msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
 
 #: src/lessons/welcome/Array.html:26
 msgid "3"
@@ -3848,7 +3849,7 @@ msgid ""
 "T est le nom du tableau, T[0] est le nom de la première case, T[1] de la "
 "deuxième case, T[2] de la troisième case, etc... Et oui, la première case "
 "est T[0] et la dernière case d'un tableau de dimension N est T[N - 1]."
-msgstr ""
+msgstr "T is the array's name, T[0] is the name of the first cell, T[1] the name of the second cell, T[2] the third one, etc. And yes, the first cell in numbered T[0] and the last one of an array of size N is T[N-1]."
 
 #: src/lessons/welcome/Array.html:36
 msgid ""
@@ -3860,13 +3861,15 @@ msgstr ""
 
 #: src/lessons/welcome/Array.html:41
 msgid "Remplissage d'un tableau"
-msgstr ""
+msgstr "Initializing an array"
 
 #: src/lessons/welcome/Array.html:42
 msgid ""
 "Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On "
-"peut alors le remplir de la manièere suivante :"
+"peut alors le remplir de la manière suivante :"
 msgstr ""
+"Let <code>T</code> be an array of 10 integer elements. It can then be "
+"initialized this way:"
 
 #: src/lessons/welcome/Array.html:45
 #, no-wrap
@@ -3875,28 +3878,31 @@ msgid ""
 "   T[i] = 3;\n"
 "}\n"
 msgstr ""
+"for (int i = 0; i&lt;10; i++) {\n"
+"   T[i] = 3;\n"
+"}\n"
 
 #: src/lessons/welcome/Array.html:50
 msgid "<code>T[i]</code> s'utilise comme une variable. On peut l'affecter :"
-msgstr ""
+msgstr "<code>T[i]</code> can be used just like a variable. We can set a new value:"
 
 #: src/lessons/welcome/Array.html:51
 #, no-wrap
 msgid "T[i] = 78;"
-msgstr ""
+msgstr "T[i] = 78;"
 
 #: src/lessons/welcome/Array.html:53
 msgid "On peut lire sa valeur :"
-msgstr ""
+msgstr "We can access its value:"
 
 #: src/lessons/welcome/Array.html:54
 #, no-wrap
 msgid "x = T[i];"
-msgstr ""
+msgstr "x = T[i];"
 
 #: src/lessons/welcome/Array.html:56
 msgid "On peut tester cette valeur :"
-msgstr ""
+msgstr "We can test this value:"
 
 #: src/lessons/welcome/Array.html:58
 #, no-wrap
@@ -3905,6 +3911,9 @@ msgid ""
 "    // instructions...\n"
 "}\n"
 msgstr ""
+"if (T[i] > 0 ) {\n"
+"    // instructions...\n"
+"}\n"
 
 #: src/lessons/welcome/Array.html:63
 msgid "Déclaration d'un tableau"
@@ -3917,7 +3926,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:65
 #, no-wrap
 msgid "int[] T;"
-msgstr ""
+msgstr "int[] T;"
 
 #: src/lessons/welcome/Array.html:67
 msgid ""
@@ -3931,7 +3940,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:72
 #, no-wrap
 msgid "int T[];"
-msgstr ""
+msgstr "int T[];"
 
 #: src/lessons/welcome/Array.html:74
 msgid "Allocation d'un tableau"
@@ -3952,7 +3961,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:82
 #, no-wrap
 msgid "T = new int[10];"
-msgstr ""
+msgstr "T = new int[10];"
 
 #: src/lessons/welcome/Array.html:83
 msgid ""
@@ -3976,7 +3985,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:94
 #, no-wrap
 msgid "int T[10]; // FAUX !!!"
-msgstr ""
+msgstr "int T[10]; // WRONG!!!"
 
 #: src/lessons/welcome/Array.html:95
 msgid ""
@@ -3987,7 +3996,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:97
 #, no-wrap
 msgid "T = new int[i];"
-msgstr ""
+msgstr "T = new int[i];"
 
 #: src/lessons/welcome/Array.html:98
 msgid ""
@@ -4003,7 +4012,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:103
 #, no-wrap
 msgid "int[] T = new int[10];"
-msgstr ""
+msgstr "int[] T = new int[10];"
 
 #: src/lessons/welcome/Array.html:105
 msgid "On déclare et alloue le tableau en une seule ligne."
@@ -4016,7 +4025,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:108
 #, no-wrap
 msgid "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
-msgstr ""
+msgstr "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
 
 #: src/lessons/welcome/Array.html:110
 msgid ""
@@ -4034,6 +4043,11 @@ msgid ""
 "...\n"
 "T[9] = 10;\n"
 msgstr ""
+"int[] T = new int[10];\n"
+"T[0] = 1;\n"
+"T[1] = 2;\n"
+"...\n"
+"T[9] = 10;\n"
 
 #: src/lessons/welcome/Array.html:121
 msgid "C'est aussi équivalent au code :"
@@ -4047,6 +4061,10 @@ msgid ""
 "  T[i] = i+1;\n"
 "}\n"
 msgstr ""
+"int[] T = new int[10];\n"
+"for (int i=0; i&lt;T.length; i++) {\n"
+"  T[i] = i+1;\n"
+"}\n"
 
 #: src/lessons/welcome/Array.html:129
 msgid "Tableaux et paramètres de méthode"
@@ -4150,7 +4168,7 @@ msgstr ""
 #: src/lessons/welcome/Array2.html:15
 #, no-wrap
 msgid "int offset = Integer.parseInt(readMessage())"
-msgstr ""
+msgstr "int offset = Integer.parseInt(readMessage())"
 
 #: src/lessons/welcome/Array2.html:17
 msgid ""
