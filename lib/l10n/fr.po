@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-02 12:03+0100\n"
-"PO-Revision-Date: 2009-03-02 12:06+0100\n"
+"POT-Creation-Date: 2009-03-06 02:24+0100\n"
+"PO-Revision-Date: 2009-03-06 02:36+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -3578,7 +3578,7 @@ msgstr "When you program works again, proceed to next exercise."
 
 #: src/lessons/welcome/SlugHunting.html:1
 msgid "Chasse à la limace"
-msgstr ""
+msgstr "Slug Hunting"
 
 #: src/lessons/welcome/SlugHunting.html:3
 msgid ""
@@ -3588,6 +3588,11 @@ msgid ""
 "parvient à la suivre jusqu'au bout, elle trouvera un baggle représentant la "
 "grosse limace si appétissante (pour une buggle)."
 msgstr ""
+"After all this excitation of dance revolution, we will move on to a slower "
+"activity : the slug hunting. Your buggle just happened to found the trail of "
+"a slug: a green dribbling tracks. If it manage to follow it to its end, it "
+"will find a baggle representing an appetizing slug (from a buggle point of "
+"view). "
 
 #: src/lessons/welcome/SlugHunting.html:10
 msgid ""
@@ -3598,6 +3603,12 @@ msgid ""
 "buggle qui l'appelle, ni celui du monde. Une telle méthode est dite <b>sans "
 "effet de bord</b>."
 msgstr ""
+"To reach that goal, the simpler would be to have a boolean method "
+"<tt>isFacingTrail</tt>, which would help determining whether we are facing a "
+"green cell or not. Of course, if we are facing a wall, it should return "
+"false. It would be great if this method could in addition preserve the state "
+"of the calling buggle and of the world. Such a method is said to have no "
+"<b>side effect</b>."
 
 #: src/lessons/welcome/SlugHunting.html:17
 msgid ""
@@ -3607,6 +3618,10 @@ msgid ""
 "<i>type</i> <tt>Color</tt> pour désigner les couleurs.  La couleur verte est "
 "définie par <code>Color.green</code>."
 msgstr ""
+"Then, the best would be if it could take the color of the trail we want to "
+"follow as an argument. Slugs leave green trails, but other prey leave trails "
+"of other colors. In Java, there is a <i>data type</i> <tt>Color</tt> to "
+"indicate the colors. The green color is defined by <code>Color.green</code>."
 
 #: src/lessons/welcome/SlugHunting.html:23
 msgid ""
@@ -3615,18 +3630,26 @@ msgid ""
 "derrière ses pas.  Pensez à utiliser la méthode <code>brushDown()</code> "
 "pour baisser votre crayon (et <code>brushUp()</code> pour le relever)"
 msgstr ""
+"In order to not mistake the part of the tracks to follow with the one your "
+"buggle comes from, you should ask your buggle to leave a tracks behind it. "
+"Don't forget to use the code>brushDown()</code>  method to put your brush "
+"down and <code>brushUp()</code> to move it up again."
 
 #: src/lessons/welcome/SlugHunting.html:28
 msgid ""
 "Un buggle peut connaître la couleur de la case sur laquelle il est "
 "positionné en utilisant la méthode <code>Color getGroundColor()</code>."
 msgstr ""
+"A buggle can know the color of the cell it is over using the <code>Color "
+"getGroundColor()</code> method."
 
 #: src/lessons/welcome/SlugHunting.html:31
 msgid ""
 "Enfin, n'oubliez de capturer votre proie une fois que vous l'aurez débusquée "
 "(avec <code>pickUpBaggle()</code>)."
 msgstr ""
+"Finally, do not forget to capture your prey once you found it (using "
+"<code>pickUpBaggle()</code>)."
 
 #: src/lessons/welcome/SlugHunting.html:34
 msgid ""
@@ -3635,10 +3658,13 @@ msgid ""
 "défaut de votre buggle.  La méthode <tt>hunt()</tt> doit utiliser la méthode "
 "<code>isFacingTrail()</code> que vous devez également définir."
 msgstr ""
+"<a name=\"Objectives\">Complete the <code>hunt()</code> method (which gets "
+"called by <code>run()</code> automatically). It should use a "
+"<code>isFacingTrail()</code> method that you also have to write."
 
 #: src/lessons/welcome/Snake.html:1
 msgid "Monde de serpents"
-msgstr ""
+msgstr "Snake World"
 
 #: src/lessons/welcome/Snake.html:3
 msgid ""
@@ -3648,6 +3674,10 @@ msgid ""
 "principale de la méthode <code>run()</code> (que vous devez écrire)  est de "
 "la forme :"
 msgstr ""
+"We will now teach the buggle to explore its world. Its initial position is "
+"the bottom left corner, and it should visit any cells up to the top "
+"(coloring the ground on its path. The main loop of the <code>run()</code> "
+"method (that you should write) is something like:"
 
 #: src/lessons/welcome/Snake.html:10
 #, no-wrap
@@ -3656,15 +3686,18 @@ msgid ""
 " tant que l'on est pas à la position finale\n"
 "   avancer comme un serpent\n"
 msgstr ""
+" move brush down\n"
+" while we did not reach the final position\n"
+"   move like a snake\n"
 
 #: src/lessons/welcome/Snake.html:15
 msgid "Le prototype de cette méthode (sa première ligne) doit être :"
-msgstr ""
+msgstr "The prototype of this method (its first line) must be:"
 
 #: src/lessons/welcome/Snake.html:16
 #, no-wrap
 msgid "public void run()"
-msgstr ""
+msgstr "public void run()"
 
 #: src/lessons/welcome/Snake.html:17
 msgid ""
@@ -3673,21 +3706,28 @@ msgid ""
 "booléen et indique si l'on se trouve à une position finale, tandis que "
 "l'autre ne renvoit pas de résultat et avance d'un pas."
 msgstr ""
+"(we will come back later on the meaning of <code>public</code>). We thus "
+"have to write two methods in addition to <code>run()</code>. The former "
+"returns a boolean indicating whether we are on a final position while the "
+"latter does not return any result and move one snake step forward."
 
 #: src/lessons/welcome/Snake.html:23
 msgid "On se trouve sur une position finale si et seulement si :"
-msgstr ""
+msgstr "We reached the final position if and only if:"
 
 #: src/lessons/welcome/Snake.html:25
 msgid "On est face à un mur"
-msgstr ""
+msgstr "We are facing a wall"
 
 #: src/lessons/welcome/Snake.html:26
 msgid ""
-"Il y a un mur au dessus de la buggle. Donc, si la buggle regarde à l'est, il "
+"Il y a un mur au nord de la buggle. Donc, si la buggle regarde à l'est, il "
 "faut vérifier s'il y a un mur à gauche, et si la buggle regarde à l'ouest, "
 "il faut vérifier s'il y a un mur à droite."
 msgstr ""
+"There is a wall on the north of the buggle. So, if the buggle is facing "
+"east, you should check whether there is a wall on the left, and if the "
+"buggle is facing west, you should check on the right side."
 
 #: src/lessons/welcome/Snake.html:29
 msgid ""
@@ -3695,12 +3735,17 @@ msgid ""
 "<code>getDirection()</code>, et on sait si elle regarde à l'est avec le test "
 "<code>getDirection() == Direction.EAST</code> (WEST pour ouest)."
 msgstr ""
+"We can get the current heading of the buggle using the <code>getDirection()</"
+"code>, and we know whether it looks east using <code>getDirection() == "
+"Direction.EAST</code> (WEST for west)."
 
 #: src/lessons/welcome/Snake.html:32
 msgid ""
 "Pour la vérification elle-même, rien de magique : il faut se tourner et "
 "regarder si on est face à un mur une fois tourné."
 msgstr ""
+"For the checking itself, nothing magical: you have to turn the buggle and "
+"check whether it is facing a wall afterward."
 
 #: src/lessons/welcome/Snake.html:36
 msgid ""
@@ -3708,6 +3753,9 @@ msgid ""
 "à un mur, et en montant à la ligne du dessus sinon (càd, si on regarde à "
 "l'ouest face à un mur, il faut tourner à droite, avancer, tourner à droite)."
 msgstr ""
+"Then, a snake step can be achieved by moving one step forward if we are not "
+"facing a wall, and moving to the upper line else (ie, if you look to the "
+"west facing a wall, you have to turn right, forward and turn right)."
 
 #: src/lessons/welcome/Snake.html:40
 msgid ""
@@ -3715,40 +3763,45 @@ msgid ""
 "continuer tant que la fonction adéquate renvoie faux. On peut l'écrire de "
 "deux façons:"
 msgstr ""
+"Hint: the main loop of the <code>run()</code> method must continue while the "
+"testing function returns false. Their is thus two way of writing it:"
 
 #: src/lessons/welcome/Snake.html:42
 #, no-wrap
 msgid "while (fonctionTest() == false)"
-msgstr ""
+msgstr "while (testingFunction() == false)"
 
 #: src/lessons/welcome/Snake.html:43
 msgid "ou bien"
-msgstr ""
+msgstr "or"
 
 #: src/lessons/welcome/Snake.html:44
 #, no-wrap
 msgid "while (! fonctionTest())"
-msgstr ""
+msgstr "while (! testingFunction())"
 
 #: src/lessons/welcome/Snake.html:45
 msgid ""
 "Cela fonctionne car le point d'exclamation en java indique une négation "
 "booléenne."
 msgstr ""
+"It works because the exclamation mark (!) means in Java a boolean negation."
 
 #: src/lessons/welcome/MethodsPicture4.html:1
 msgid "Encore des motifs à dessiner"
-msgstr ""
+msgstr "Even more pattern to draw"
 
 #: src/lessons/welcome/MethodsPicture4.html:2
 msgid "(et des méthodes à écrire)"
-msgstr ""
+msgstr "(and methods to write)"
 
 #: src/lessons/welcome/MethodsPicture4.html:4
 msgid ""
 "Voici de nouveau un exercice où il faut reproduire un motif donné dans "
 "l'onglet \"Objective\"."
 msgstr ""
+"Here is yet another exercise where you have to reproduce the pattern "
+"provided in the \"Objective\" tab."
 
 #: src/lessons/welcome/MethodsPicture4.html:7
 msgid ""
@@ -3756,14 +3809,17 @@ msgid ""
 "motifs qui se répètent, même si la couleur change, et faites une méthode "
 "dessinant chacun d'entre eux."
 msgstr ""
+"This one is a bit more difficult than the one seen previously. Look for "
+"repeating patterns, even if the color changes, and write a method drawing "
+"each of them."
 
 #: src/lessons/welcome/MethodsPicture4.html:11
 msgid "Bon courage !"
-msgstr ""
+msgstr "Good luck!"
 
 #: src/lessons/welcome/Array.html:1
 msgid "Tricots (et tableaux)"
-msgstr ""
+msgstr "Knitting and Arrays"
 
 #: src/lessons/welcome/Array.html:3
 msgid ""
@@ -3775,6 +3831,12 @@ msgid ""
 "car votre programme sera exécuté par trois buggles dans trois mondes "
 "différents, chacune ayant un motif propre à reproduire."
 msgstr ""
+"The goal of this exercise is to reproduce the pattern of the first row in "
+"the other rows with a shift of one cell (see the Objective tab for details). "
+"The biggest difference between this exercise and the other we had on "
+"patterns is that you have to read the pattern (on first row) before "
+"reproducing it. You cannot do otherwise because the same code will be "
+"executed on three different worlds, each of them having its specific pattern."
 
 #: src/lessons/welcome/Array.html:10
 msgid ""
@@ -3784,16 +3846,20 @@ msgid ""
 "une case particulière (<code>setPos()</code> et autres), cette façon de "
 "faire va être très pénible à mettre en place."
 msgstr ""
+"One solution is to read the next cell, and go copy it in position before "
+"comming back to read the second cell. But since it is forbiden to use the "
+"methods to teleport the buggle to a specific position (<code>setPos()</code> "
+"and similar), this approach will be a pain to implement. "
 
 #: src/lessons/welcome/Array.html:16
 msgid ""
 "Le plus simple est de stocker l'enchainement de couleurs dans un <b>tableau</"
 "b>."
-msgstr ""
+msgstr "The simplest is to store the whole color pattern in an <b>array</b>."
 
 #: src/lessons/welcome/Array.html:18
 msgid "Les tableaux en Java"
-msgstr ""
+msgstr "Arrays in Java"
 
 #: src/lessons/welcome/Array.html:19
 msgid ""
@@ -3801,11 +3867,15 @@ msgid ""
 "valeurs de même type (une par emplacement). C'est donc une séquence de cases "
 "de même type :"
 msgstr ""
+"An array is a sequence of positions in which one can store values of the "
+"same kind (one value per cell). It is thus a sequence of values of the same "
+"kind:"
 
 #: src/lessons/welcome/Array.html:25
 msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
-msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
+msgstr ""
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
 
 #: src/lessons/welcome/Array.html:26
 msgid "3"
@@ -3849,6 +3919,9 @@ msgid ""
 "deuxième case, T[2] de la troisième case, etc... Et oui, la première case "
 "est T[0] et la dernière case d'un tableau de dimension N est T[N - 1]."
 msgstr ""
+"T is the array's name, T[0] is the name of the first cell, T[1] the name of "
+"the second cell, T[2] the third one, etc. And yes, the first cell in "
+"numbered T[0] and the last one of an array of size N is T[N-1]."
 
 #: src/lessons/welcome/Array.html:36
 msgid ""
@@ -3857,16 +3930,22 @@ msgid ""
 "lorsque <i>i</i> vaut 10, T[i] dénote T[10]. On dit alors que <i>i</i> est "
 "un <b>indice</b> dans le tableau T ."
 msgstr ""
+"We can use an integer variable <i>i</i> to access with T[i] to the array's "
+"cells: when the value of <i>i</i> is 0, then T[i] accesses T[0], when the "
+"value of <i>i</i> is 10, then T[i] accesses T[10]. <i>i</i> is said to be "
+"the indice in the array T."
 
 #: src/lessons/welcome/Array.html:41
 msgid "Remplissage d'un tableau"
-msgstr ""
+msgstr "Initializing an array"
 
 #: src/lessons/welcome/Array.html:42
 msgid ""
 "Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On "
-"peut alors le remplir de la manièere suivante :"
+"peut alors le remplir de la manière suivante :"
 msgstr ""
+"Let <code>T</code> be an array of 10 integer elements. It can then be "
+"initialized this way:"
 
 #: src/lessons/welcome/Array.html:45
 #, no-wrap
@@ -3875,28 +3954,32 @@ msgid ""
 "   T[i] = 3;\n"
 "}\n"
 msgstr ""
+"for (int i = 0; i&lt;10; i++) {\n"
+"   T[i] = 3;\n"
+"}\n"
 
 #: src/lessons/welcome/Array.html:50
 msgid "<code>T[i]</code> s'utilise comme une variable. On peut l'affecter :"
 msgstr ""
+"<code>T[i]</code> can be used just like a variable. We can set a new value:"
 
 #: src/lessons/welcome/Array.html:51
 #, no-wrap
 msgid "T[i] = 78;"
-msgstr ""
+msgstr "T[i] = 78;"
 
 #: src/lessons/welcome/Array.html:53
 msgid "On peut lire sa valeur :"
-msgstr ""
+msgstr "We can access its value:"
 
 #: src/lessons/welcome/Array.html:54
 #, no-wrap
 msgid "x = T[i];"
-msgstr ""
+msgstr "x = T[i];"
 
 #: src/lessons/welcome/Array.html:56
 msgid "On peut tester cette valeur :"
-msgstr ""
+msgstr "We can test this value:"
 
 #: src/lessons/welcome/Array.html:58
 #, no-wrap
@@ -3905,19 +3988,22 @@ msgid ""
 "    // instructions...\n"
 "}\n"
 msgstr ""
+"if (T[i] > 0 ) {\n"
+"    // instructions...\n"
+"}\n"
 
 #: src/lessons/welcome/Array.html:63
 msgid "Déclaration d'un tableau"
-msgstr ""
+msgstr "Declaring an array"
 
 #: src/lessons/welcome/Array.html:64
 msgid "Un tableau se déclare de la manière suivante :"
-msgstr ""
+msgstr "An array can be declared the following way:"
 
 #: src/lessons/welcome/Array.html:65
 #, no-wrap
 msgid "int[] T;"
-msgstr ""
+msgstr "int[] T;"
 
 #: src/lessons/welcome/Array.html:67
 msgid ""
@@ -3927,32 +4013,41 @@ msgid ""
 "deux écritures sont syntaxiquement équivalente, mais la première est souvent "
 "préférée en Java."
 msgstr ""
+"<code>int</code> means that the elements of the array are of type integer;  "
+"<code>T</code> is the name of the array and <code>[]</code> means that we "
+"are speaking of an array. It is also possible to declare the same array the "
+"following way. Both writings are equivalent, but the first one is often "
+"prefered in Java."
 
 #: src/lessons/welcome/Array.html:72
 #, no-wrap
 msgid "int T[];"
-msgstr ""
+msgstr "int T[];"
 
 #: src/lessons/welcome/Array.html:74
 msgid "Allocation d'un tableau"
-msgstr ""
+msgstr "Allocating an array"
 
 #: src/lessons/welcome/Array.html:76
 msgid ""
 "Déclarer un tableau <code>T</code> nous réserve juste le nom <code>T</code> "
 "pour l'utiliser plus tard. Mais le tableau n'est pas initialisé : il n'a pas "
-"de valeur. Que voudrait dire <code>T[5]</code> si nous n'avons pas encore "
+"de valeur. Que voudrait dire <code>T[4]</code> si nous n'avons pas encore "
 "dit que <code>T</code> est un tableau d'au moins 5 éléments ?"
 msgstr ""
+"Declaring an array <code>T</code> only reserve the name <code>T</code> for "
+"later use. But the array is not initialized yet: it does not have any value. "
+"What would <code>T[4]</code> mean if we didn't say that the array is at "
+"least 5 cells long?"
 
 #: src/lessons/welcome/Array.html:81
 msgid "Avant tout, il faut donc lui affecter une valeur à <code>T</code>:"
-msgstr ""
+msgstr "First and foremost, we have to give a value to <code>T</code>:"
 
 #: src/lessons/welcome/Array.html:82
 #, no-wrap
 msgid "T = new int[10];"
-msgstr ""
+msgstr "T = new int[10];"
 
 #: src/lessons/welcome/Array.html:83
 msgid ""
@@ -3960,70 +4055,70 @@ msgid ""
 "code> indique qu'il s'agit d'un tableau de 10 valeur entières. En réponse, "
 "un tableau d'entiers de longueur 10 est crée en mémoire, et la variable "
 "<code>T</code> référence ce tableau."
-msgstr ""
+msgstr "<code>new</code> means that we want to create something, and <code>int[10]</code> means that it is an array of 10 integer values. In return, an array of 10 integer cells is created in memory, and the <code>T</code> variable reference this array."
 
 #: src/lessons/welcome/Array.html:88
 msgid ""
 "La taille d'un tableau est fixée et ne peut plus être changée après la "
 "création du tableau. Pour connapitre la taille d'un tableau <code>T</code>, "
 "on peut consulter la valeur de la variable <code>T.length</code>."
-msgstr ""
+msgstr "The size of an array is fixed and cannot be changed after the creation of the array. To know the size of a <code>T</code> array, we can consult the value of the variable <code>T.length</code>."
 
 #: src/lessons/welcome/Array.html:93
 msgid "On ne peut pas écrire :"
-msgstr ""
+msgstr "It is forbidden to write:"
 
 #: src/lessons/welcome/Array.html:94
 #, no-wrap
 msgid "int T[10]; // FAUX !!!"
-msgstr ""
+msgstr "int T[10]; // WRONG!!!"
 
 #: src/lessons/welcome/Array.html:95
 msgid ""
 "Il faut absolument utiliser l'instruction <code>new</code>. Par contre, on "
 "peut très bien donner la dimension par une variable <code>i</code>."
-msgstr ""
+msgstr "You are required to use the <code>new</code> instruction. On the other hand, you perfectly can specify the size with a variable <code>i</code>."
 
 #: src/lessons/welcome/Array.html:97
 #, no-wrap
 msgid "T = new int[i];"
-msgstr ""
+msgstr "T = new int[i];"
 
 #: src/lessons/welcome/Array.html:98
 msgid ""
 "Dans ce cas, la taille du tableau sera la valeur de <code>i</code> <b>au "
 "moment où on a fait le</b> <code>new</code>. Si <code>i</code> change après "
 "coup, cela ne modifie pas la taille du tableau."
-msgstr ""
+msgstr "In this case, the array's size will be set to the value of <code>i</code> <b>when <code>new</code> gets called</b>. If the variable changes afterward, it won't change the array's size."
 
 #: src/lessons/welcome/Array.html:102
 msgid "Déclaration et allocation"
-msgstr ""
+msgstr "Declaration and allocation"
 
 #: src/lessons/welcome/Array.html:103
 #, no-wrap
 msgid "int[] T = new int[10];"
-msgstr ""
+msgstr "int[] T = new int[10];"
 
 #: src/lessons/welcome/Array.html:105
 msgid "On déclare et alloue le tableau en une seule ligne."
-msgstr ""
+msgstr "We declare and allocate the array on the same line."
 
 #: src/lessons/welcome/Array.html:107
 msgid "Déclaration et initialisation"
-msgstr ""
+msgstr "Declaration and initialization"
 
 #: src/lessons/welcome/Array.html:108
 #, no-wrap
 msgid "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
-msgstr ""
+msgstr "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
 
 #: src/lessons/welcome/Array.html:110
 msgid ""
 "On déclare, alloue et initialise le tableau en une seule ligne. Pour "
 "connaître la taille du tableau à allouer, le compilateur compte les valeurs "
 "données.  Ce code est équivalent à :"
-msgstr ""
+msgstr "We declare, allocate and initialize the array on the same line. To know the size of the array to allocate, the compiler counts the provided values. This code is equivalent to:"
 
 #: src/lessons/welcome/Array.html:114
 #, no-wrap
@@ -4034,10 +4129,15 @@ msgid ""
 "...\n"
 "T[9] = 10;\n"
 msgstr ""
+"int[] T = new int[10];\n"
+"T[0] = 1;\n"
+"T[1] = 2;\n"
+"...\n"
+"T[9] = 10;\n"
 
 #: src/lessons/welcome/Array.html:121
 msgid "C'est aussi équivalent au code :"
-msgstr ""
+msgstr "It is also equivalent to:"
 
 #: src/lessons/welcome/Array.html:123
 #, no-wrap
@@ -4047,16 +4147,20 @@ msgid ""
 "  T[i] = i+1;\n"
 "}\n"
 msgstr ""
+"int[] T = new int[10];\n"
+"for (int i=0; i&lt;T.length; i++) {\n"
+"  T[i] = i+1;\n"
+"}\n"
 
 #: src/lessons/welcome/Array.html:129
 msgid "Tableaux et paramètres de méthode"
-msgstr ""
+msgstr "Arrays and method parameters"
 
 #: src/lessons/welcome/Array.html:130
 msgid ""
 "On peut tout à fait passer un tableau en paramètre d'une méthode. La méthode "
 "doit l'indiquer dans son prototype de la façon suivante:"
-msgstr ""
+msgstr "It is perfectly ok to pass an array to a method as a parameter. The method must have a prototype similar to:"
 
 #: src/lessons/welcome/Array.html:132
 #, no-wrap
@@ -4065,10 +4169,13 @@ msgid ""
 "  // faire quelque chose\n"
 "}"
 msgstr ""
+"void myMethod(int[] values) {\n"
+"  // do something\n"
+"}"
 
 #: src/lessons/welcome/Array.html:136
 msgid "Coté appelant, c'est aussi simple :"
-msgstr ""
+msgstr "On the caller side, that also very simple:"
 
 #: src/lessons/welcome/Array.html:138
 #, no-wrap
@@ -4077,11 +4184,14 @@ msgid ""
 "// initialiser les valeurs\n"
 "maMethode(tab);\n"
 msgstr ""
+"int[] tab = new int[10];\n"
+"// initalize the values\n"
+"myMethod(tab);\n"
 
 #: src/lessons/welcome/Array.html:143
 msgid ""
 "On peut également avoir des méthodes renvoyant des tableaux en résultat :"
-msgstr ""
+msgstr "We can also have methods returns arrays as results:"
 
 #: src/lessons/welcome/Array.html:144
 #, no-wrap
@@ -4092,6 +4202,11 @@ msgid ""
 "  return resultat;\n"
 "}"
 msgstr ""
+"int[] otherMethod() {\n"
+"  int[] result = new int[10];\n"
+"  // do something\n"
+"  return result;\n"
+"}"
 
 #: src/lessons/welcome/Array.html:150 src/lessons/recursion/Square.html:45
 #: src/lessons/recursion/Circle.html:16
@@ -4150,7 +4265,7 @@ msgstr ""
 #: src/lessons/welcome/Array2.html:15
 #, no-wrap
 msgid "int offset = Integer.parseInt(readMessage())"
-msgstr ""
+msgstr "int offset = Integer.parseInt(readMessage())"
 
 #: src/lessons/welcome/Array2.html:17
 msgid ""
