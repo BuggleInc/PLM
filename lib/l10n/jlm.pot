@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-02 12:03+0100\n"
+"POT-Creation-Date: 2009-03-02 15:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3551,7 +3551,7 @@ msgstr ""
 #: src/lessons/welcome/Array.html:42
 msgid ""
 "Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On "
-"peut alors le remplir de la manièere suivante :"
+"peut alors le remplir de la manière suivante :"
 msgstr ""
 
 # type: Content of: <br><p><pre>
