@@ -42,7 +42,7 @@ public abstract class Lesson {
 		
 		/* read it */
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
-		StringBuffer sb = ExerciseTemplated.fileToStringBuffer(filename,"html");
+		StringBuffer sb = ExerciseTemplated.fileToStringBuffer(filename,"html",true);
 		if (sb==null) {
 			about = "File "+filename+".html not found.";
 			name = filename;
