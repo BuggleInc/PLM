@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-06 02:24+0100\n"
+"POT-Creation-Date: 2009-03-06 09:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1167,7 +1167,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><h3>
-#: src/lessons/welcome/Basics.html:61 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:8 src/lessons/welcome/Conditions.html:46 src/lessons/welcome/LoopWhile.html:21 src/lessons/welcome/LoopDoWhile.html:8 src/lessons/welcome/Variables.html:40 src/lessons/welcome/LoopFor.html:53 src/lessons/welcome/Methods.html:51 src/lessons/welcome/MethodsDogHouse.html:38 src/lessons/welcome/MethodsReturning.html:43 src/lessons/welcome/MethodsArgs.html:56 src/lessons/welcome/BDR.html:136 src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34 src/lessons/maze/RandomMouseMaze.html:22 src/lessons/maze/WallFollowerMaze.html:11 src/lessons/maze/PledgeMaze.html:22
+#: src/lessons/welcome/Basics.html:61 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:8 src/lessons/welcome/Conditions.html:46 src/lessons/welcome/LoopWhile.html:21 src/lessons/welcome/LoopDoWhile.html:8 src/lessons/welcome/Variables.html:40 src/lessons/welcome/LoopFor.html:53 src/lessons/welcome/Methods.html:51 src/lessons/welcome/MethodsDogHouse.html:38 src/lessons/welcome/MethodsReturning.html:43 src/lessons/welcome/MethodsArgs.html:56 src/lessons/welcome/BDR.html:136 src/lessons/welcome/BDR2.html:116 src/lessons/welcome/SlugHunting.html:34 src/lessons/maze/RandomMouseMaze.html:22 src/lessons/maze/WallFollowerMaze.html:11 src/lessons/maze/PledgeMaze.html:30
 msgid "Objectif de cet exercice"
 msgstr ""
 
@@ -2023,7 +2023,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><a><p>
-#: src/lessons/welcome/MethodsDogHouse.html:45 src/lessons/welcome/Array.html:164 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:45 src/lessons/maze/WallFollowerMaze.html:26 src/lessons/maze/PledgeMaze.html:38
+#: src/lessons/welcome/MethodsDogHouse.html:45 src/lessons/welcome/Array.html:164 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:45 src/lessons/maze/WallFollowerMaze.html:26 src/lessons/maze/PledgeMaze.html:46
 msgid "À vous de jouer."
 msgstr ""
 
@@ -5330,8 +5330,7 @@ msgid ""
 "précédente (<i>wall follower algorithm</i>) si l'entrée et la sortie du "
 "labyrinthe se trouve sur les murs extérieurs du labyrinthe. Si par contre, "
 "le buggle débute à l'intérieur du labyrinthe, il peut exister une section du "
-"labyrinthe qui soit disjointe de la sortie, et il se peut que le buggle "
-"suive indéfiniment les murs de cette section."
+"labyrinthe qui soit disjointe de la sortie."
 msgstr ""
 
 # type: Content of: <p><p>
@@ -5362,25 +5361,29 @@ msgid ""
 "déplacer dans sa direction d'origine."
 msgstr ""
 
-#. >
 # type: Content of: <p><p>
 #: src/lessons/maze/PledgeMaze.html:15
 msgid ""
-"Il faut remarquer que l'utilisation de la \"somme des virages\" à la place "
-"de la \"direction courante\" permet à l'algorithme d'éviter les pièges tel "
-"que les formes en \"G\" majuscule.  Note that the use of \"total turning\" "
-"rather than just the \"current direction\" allows the algorithm to avoid "
-"traps shaped like an upper case \"G\". If one proceeds left into the trap, "
-"one gets turned around a full 360 degrees by the walls. A naive \"current "
-"direction\" algorithm gets into a limit cycle as it leaves the lower "
-"rightmost wall heading left and runs into the curved section on the left "
-"again. The Pledge algorithm does not leave the rightmost wall due to the "
-"total turning not being zero at that point. It follows the wall all the way "
-"around, finally leaving it heading left on the bottom outside -->"
+"Notez que l'utilisation de la \"somme des virages\" à la place de la "
+"\"direction courante\" permet à l'algorithme d'éviter les pièges tel que les "
+"formes en \"G\" majuscule. Si l'on rentre par la droite dans le piège, on "
+"tourne de 360 degrés autour des murs. Un algorithme qui se contenterait "
+"naivement de se retrouver dans la même direction qu'à l'origine rentre dans "
+"un cycle infini puisque qu'il quite le mur le plus à droite en étant dirigé "
+"vers la gauche, et entre à nouveau dans la section incurvée."
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/maze/PledgeMaze.html:24
+msgid ""
+"L'algorithme de Pledge ne quite pas le mur en bas à droite puisque la somme "
+"des virages ne vaut pas zéro à ce moment. Il continue de suivre le mur "
+"jusqu'à avoir complétement fait le tour, et le quite en regardant à gauche "
+"une fois parvenu sous l'obstacle."
 msgstr ""
 
 # type: Content of: <p><a>
-#: src/lessons/maze/PledgeMaze.html:22
+#: src/lessons/maze/PledgeMaze.html:30
 msgid ""
 "<a name=\"Objectifs\"> L'objectif de cet exercice est d'écrire une "
 "implémentation de l'algorithme de Pledge qui permettra à votre buggle de "
@@ -5388,7 +5391,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><a><p>
-#: src/lessons/maze/PledgeMaze.html:28
+#: src/lessons/maze/PledgeMaze.html:36
 msgid ""
 "Reprenez la méthode <code>void keepHandOnSideWall()</code> de l'exercice "
 "précédent. Modifiez cette méthode pour compter les virages pris par votre "
@@ -5398,7 +5401,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><a><p>
-#: src/lessons/maze/PledgeMaze.html:30
+#: src/lessons/maze/PledgeMaze.html:38
 msgid ""
 "Ecrivez une méthode <code>boolean isChosenDirectionFree()</code> vous "
 "indiquant si la direction arbitraire que vous avez choisie est libre "
@@ -5415,7 +5418,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><a><p>
-#: src/lessons/maze/PledgeMaze.html:32
+#: src/lessons/maze/PledgeMaze.html:40
 msgid ""
 "Ecrivez la méthode <code>void run()</code>. Cette méthode doit définir la "
 "direction de prédilection de votre buggle en utilisant la variable que vous "
@@ -5430,7 +5433,7 @@ msgid ""
 msgstr ""
 
 # type: Content of: <p><a><p>
-#: src/lessons/maze/PledgeMaze.html:35
+#: src/lessons/maze/PledgeMaze.html:43
 msgid ""
 "Pensez à faire prendre le baggle à votre buggle avant la fin de votre "
 "programme."
