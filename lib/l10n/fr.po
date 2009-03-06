@@ -6,13 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-<<<<<<< HEAD:lib/l10n/fr.po
 "POT-Creation-Date: 2009-03-06 17:25+0100\n"
 "PO-Revision-Date: 2009-03-06 17:26+0100\n"
-=======
-"POT-Creation-Date: 2009-03-02 15:36+0100\n"
-"PO-Revision-Date: 2009-03-02 22:10+0100\n"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -3580,13 +3575,8 @@ msgstr ""
 "Quand votre programme fonctionne de nouveau, passez à l'exercice suivant."
 
 #: src/lessons/welcome/SlugHunting.html:1
-<<<<<<< HEAD:lib/l10n/fr.po
 msgid "Slug Hunting"
 msgstr "Chasse à la limace"
-=======
-msgid "Chasse à la limace"
-msgstr "Slug Hunting"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/SlugHunting.html:3
 msgid ""
@@ -3601,10 +3591,6 @@ msgstr ""
 "par hasard la trace d'une limace : une traînée baveuse verte. Si elle "
 "parvient à la suivre jusqu'au bout, elle trouvera un baggle représentant la "
 "grosse limace si appétissante (pour une buggle)."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "After all this excitation of dance revolution, we will move on to a slower activity : the slug hunting. Your buggle just happened to found the trail of a slug: a green dribbling path. If it manage to follow it to its end, it will find a baggle representing an appetizing slug (from a buggle point of view). "
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/SlugHunting.html:9
 msgid ""
@@ -3621,10 +3607,6 @@ msgstr ""
 "faux. Il faudrait de plus que cette méthode ne modifie ni l'état de la "
 "buggle qui l'appelle, ni celui du monde. Une telle méthode est dite <b>sans "
 "effet de bord</b>."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "To reach that goal, the simpler would be to have a boolean method <tt>isFacingTrail</tt>, which would help determining whether we are facing a green cell or not. Of course, if we are facing a wall, it should return false. It would be great if this method could in addition preserve the state of the calling buggle and of the world. Such a method is said to have no <b>side effect</b>."
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/SlugHunting.html:16
 msgid ""
@@ -3638,10 +3620,6 @@ msgstr ""
 "proies laissent des traces d'autres couleurs.  En Java, il existe un "
 "<i>type</i> <tt>Color</tt> pour désigner les couleurs.  La couleur verte est "
 "définie par <code>Color.green</code>."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "Then, the best would be if it could take the color of the trail we want to follow as an argument. Slugs leave green trails, but other prey leave trails of other colors. In Java, there is a <i>data type</i> <tt>Color</tt> to indicate the colors. The green color is defined by <code>Color.green</code>."
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/SlugHunting.html:21
 msgid ""
@@ -3838,13 +3816,8 @@ msgid "Good luck!"
 msgstr "Bon courage !"
 
 #: src/lessons/welcome/Array.html:1
-<<<<<<< HEAD:lib/l10n/fr.po
 msgid "Knitting and Arrays"
 msgstr "Tricots (et tableaux)"
-=======
-msgid "Tricots (et tableaux)"
-msgstr "Knitting and Arrays"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:3
 msgid ""
@@ -3862,10 +3835,6 @@ msgstr ""
 "souhaité, puis le reproduire ensuite. Il est impossible de faire autrement "
 "car votre programme sera exécuté par trois buggles dans trois mondes "
 "différents, chacune ayant un motif propre à reproduire."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "The goal of this exercise is to reproduce the pattern of the first row in the other rows with a shift of one cell (see the Objective tab for details). The biggest difference between this exercise and the other we had on patterns is that you have to read the pattern (on first row) before reproducing it. You cannot do otherwise because the same code will be executed on three different worlds, each of them having its specific pattern."
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:11
 msgid ""
@@ -3879,29 +3848,16 @@ msgstr ""
 "pas le droit d'utiliser les méthodes permettant de téléporter la buggle à "
 "une case particulière (<code>setPos()</code> et autres), cette façon de "
 "faire va être très pénible à mettre en place."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "One solution is to read the next cell, and go copy it in position before comming back to read the second cell. But since it is forbiden to use the methods to teleport the buggle to a specific position (<code>setPos()</code> and similar), this approach will be a pain to implement. "
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:16
 msgid "The simplest is to store the whole color pattern in an <b>array</b>."
 msgstr ""
 "Le plus simple est de stocker l'enchainement de couleurs dans un <b>tableau</"
 "b>."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "The simplest is to store the whole color pattern in an <b>array</b>."
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:18
-<<<<<<< HEAD:lib/l10n/fr.po
 msgid "Arrays in Java"
 msgstr "Les tableaux en Java"
-=======
-msgid "Les tableaux en Java"
-msgstr "Arrays in Java"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:19
 msgid ""
@@ -3912,10 +3868,6 @@ msgstr ""
 "Un tableau est une séquence d'emplacements dans lesquels on peut mettre des "
 "valeurs de même type (une par emplacement). C'est donc une séquence de cases "
 "de même type :"
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "An array is a sequence of positions in which one can store values of the same kind (one value per cell). It is thus a sequence of values of the same kind:"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:26
 msgid ""
@@ -3968,10 +3920,6 @@ msgstr ""
 "T est le nom du tableau, T[0] est le nom de la première case, T[1] de la "
 "deuxième case, T[2] de la troisième case, etc... Et oui, la première case "
 "est T[0] et la dernière case d'un tableau de dimension N est T[N - 1]."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr "T is the array's name, T[0] is the name of the first cell, T[1] the name of the second cell, T[2] the third one, etc. And yes, the first cell in numbered T[0] and the last one of an array of size N is T[N-1]."
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:37
 msgid ""
@@ -3984,14 +3932,6 @@ msgstr ""
 "cases d'un tableau : lorsque <i>i</i> vaut 0 alors T[i] dénote la case T[0], "
 "lorsque <i>i</i> vaut 10, T[i] dénote T[10]. On dit alors que <i>i</i> est "
 "un <b>indice</b> dans le tableau T ."
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-msgstr ""
-
-#: src/lessons/welcome/Array.html:41
-msgid "Remplissage d'un tableau"
-msgstr "Initializing an array"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:42
 msgid "Initializing an array"
@@ -3999,21 +3939,11 @@ msgstr "Remplissage d'un tableau"
 
 #: src/lessons/welcome/Array.html:43
 msgid ""
-<<<<<<< HEAD:lib/l10n/fr.po
 "Let <code>T</code> be an array of 10 integer elements. It can then be "
 "initialized this way:"
-=======
-"Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On "
-"peut alors le remplir de la manière suivante :"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 msgstr ""
-<<<<<<< HEAD:lib/l10n/fr.po
 "Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On "
 "peut alors le remplir de la manière suivante :"
-=======
-"Let <code>T</code> be an array of 10 integer elements. It can then be "
-"initialized this way:"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:46
 #, no-wrap
@@ -4025,13 +3955,6 @@ msgstr ""
 "for (int i = 0; i&lt;10; i++) {\n"
 "   T[i] = 3;\n"
 "}\n"
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-
-#: src/lessons/welcome/Array.html:50
-msgid "<code>T[i]</code> s'utilise comme une variable. On peut l'affecter :"
-msgstr "<code>T[i]</code> can be used just like a variable. We can set a new value:"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:51
 msgid ""
@@ -4042,13 +3965,6 @@ msgstr "<code>T[i]</code> s'utilise comme une variable. On peut l'affecter :"
 #, no-wrap
 msgid "T[i] = 78;"
 msgstr "T[i] = 78;"
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-
-#: src/lessons/welcome/Array.html:53
-msgid "On peut lire sa valeur :"
-msgstr "We can access its value:"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:54
 msgid "We can access its value:"
@@ -4059,15 +3975,9 @@ msgstr "On peut lire sa valeur :"
 msgid "x = T[i];"
 msgstr "x = T[i];"
 
-<<<<<<< HEAD:lib/l10n/fr.po
 #: src/lessons/welcome/Array.html:57
 msgid "We can test this value:"
 msgstr "On peut tester cette valeur :"
-=======
-#: src/lessons/welcome/Array.html:56
-msgid "On peut tester cette valeur :"
-msgstr "We can test this value:"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:59
 #, no-wrap
@@ -4079,13 +3989,6 @@ msgstr ""
 "if (T[i] > 0 ) {\n"
 "    // instructions...\n"
 "}\n"
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-
-#: src/lessons/welcome/Array.html:63
-msgid "Déclaration d'un tableau"
-msgstr ""
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:64
 msgid "Declaring an array"
@@ -4167,14 +4070,8 @@ msgstr ""
 "on peut consulter la valeur de la variable <code>T.length</code>."
 
 #: src/lessons/welcome/Array.html:94
-<<<<<<< HEAD:lib/l10n/fr.po
 msgid "It is forbidden to write:"
 msgstr "On ne peut pas écrire :"
-=======
-#, no-wrap
-msgid "int T[10]; // FAUX !!!"
-msgstr "int T[10]; // WRONG!!!"
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:95
 #, no-wrap
@@ -4267,13 +4164,6 @@ msgstr ""
 "for (int i=0; i&lt;T.length; i++) {\n"
 "  T[i] = i+1;\n"
 "}\n"
-<<<<<<< HEAD:lib/l10n/fr.po
-=======
-
-#: src/lessons/welcome/Array.html:129
-msgid "Tableaux et paramètres de méthode"
-msgstr ""
->>>>>>> 595778a9c508d2e3571ad1d3469b6a2708c5587b:lib/l10n/fr.po
 
 #: src/lessons/welcome/Array.html:130
 msgid "Arrays and method parameters"
