@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.swing.JComboBox;
-
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -61,10 +59,8 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	static protected BufferedReader fileReader(String file,String extension,boolean translatable) {
 		if (translatable) {
-			if (locale==null) {
-				JComboBox c = new JComboBox();
-				locale = c.getLocale().getLanguage(); 
-			}
+			if (locale==null) 
+				throw new RuntimeException("locale is null");
 				
 			BufferedReader br =  fileReader(file.replace('.','/')+"."+locale+(extension!=null?"."+extension:""));
 			if (br != null)
