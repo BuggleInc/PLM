@@ -1,45 +1,51 @@
 <h2>La souris folle</h2>
 
-<p>La journée de votre buggle commence mal. Il n'a pas eu de
-chance. Il est tombé dans un piège.
-
-Aidez le à sortir de ce labyrinthe. 
+<p>La journée de votre buggle commence mal. Il n'a pas eu de chance. Il est
+tombé dans un piège.  Aidez le à sortir de ce labyrinthe. 
 </p>
 
 <p>
-Nous allons profiter du fait que le labyrinthe ne soit pas trop grand pour écrire l'algorithme le plus bête possible.
-Cet algorithme repose sur le hasard et est très inefficace.
+Nous allons profiter du fait que le labyrinthe ne soit pas trop grand pour
+écrire l'algorithme le plus bête possible.  Cet algorithme repose sur le
+hasard et est très inefficace.
 </p>
 
 <p>
-Tant que notre buggle n'a pas trouvé la sortie, il doit progresser de la façon suivante :
-Si il se trouve à une jonction, il doit prendre une décision au hasard (avancer si il le peut, ou bien tourner à droite ou bien tourner à gauche).
-Si ce n'est pas une jonction, il doit avancer si il le peut, sinon il doit tourner de manière aléatoire.
+Tant que notre buggle n'a pas trouvé la sortie, il doit progresser de la
+façon suivante : Si il se trouve à une jonction, il doit prendre une
+décision au hasard (avancer si il le peut, ou bien tourner à droite ou bien
+tourner à gauche).  Si ce n'est pas une jonction, il doit avancer si il le
+peut, sinon il doit tourner de manière aléatoire.
 </p>
 
 
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> 
-
-L'objectif de cet exercice est d'écrire un algorithme permettant à votre
-buggle de sortir du labyrinthe. Pensez à faire prendre le baggle à votre
-buggle avant la fin de votre programme.
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> L'objectif de cet exercice est d'écrire un algorithme
+permettant à votre buggle de sortir du labyrinthe. Pensez à faire prendre le
+baggle à votre buggle avant la fin de votre programme.
 
 <p>
-Le corps de la méthode <code>void run()</code> vous est fourni. Il vous est demandé d'implémenter les méthodes qui vont aider votre buggle.	
+Le corps de la méthode <code>void run()</code> vous est fourni. Il vous est
+demandé d'implémenter les méthodes qui vont aider votre buggle.	
 </p>
 
 <p>
-Ecrivez la méthode <code>void turnRandomly()</code> que votre buggle utilise pour tourner au hasard à droite ou à gauche. Vous pouvez vous aidez de la méthode <code>random2()</code> qui retourne 0 ou 1 de manière aléatoire.
+Ecrivez la méthode <code>void turnRandomly()</code> que votre buggle utilise
+pour tourner au hasard à droite ou à gauche. Vous pouvez vous aidez de la
+méthode <code>random2()</code> qui retourne 0 ou 1 de manière aléatoire.
 </p>
 
 <p>
-Ecrivez la méthode <code>void takeRandomDirection()</code> pour que votre buggle prenne une décision (avancer, tourner à droite, tourner à gauche) au hasard.
-Vous pouvez utiliser la méthode <code>random3()</code> qui retourne de manière aléatoire la valeur 0, 1 ou 2.	
+Ecrivez la méthode <code>void takeRandomDirection()</code> pour que votre
+buggle prenne une décision (avancer, tourner à droite, tourner à gauche) au
+hasard.  Vous pouvez utiliser la méthode <code>random3()</code> qui retourne
+de manière aléatoire la valeur 0, 1 ou 2.	
 </p>
 
 <p>
-Ecrivez la méthode <code>boolean atAJunction()</code> qui indique à votre buggle si il se trouve à une jonction (autrement dit, si il a la possibilité de tourner à droite ou à gauche).
+Ecrivez la méthode <code>boolean atAJunction()</code> qui indique à votre
+buggle si il se trouve à une jonction (autrement dit, si il a la possibilité
+de tourner à droite ou à gauche).
 </p>
 
 <p>À vous de jouer.</p>

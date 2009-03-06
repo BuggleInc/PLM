@@ -1,10 +1,10 @@
 <h2>Méthodes retournant un résultat</h2>
 
-Écrire des méthodes retournant un résultat n'est pas bien plus
-compliqué qu'écrire une méthode n'en renvoyant pas. Il suffit d'une
-part de mettre le type de la donnée renvoyée avant le nom de la
-méthode, et d'autre part d'écrire dans le corps de la méthode une
-instruction <code>return</code> qui précise ce qu'il faut renvoyer.
+Écrire des méthodes retournant un résultat n'est pas bien plus compliqué
+qu'écrire une méthode n'en renvoyant pas. Il suffit d'une part de mettre le
+type de la donnée renvoyée avant le nom de la méthode, et d'autre part
+d'écrire dans le corps de la méthode une instruction <code>return</code> qui
+précise ce qu'il faut renvoyer.
 
 <pre>double pi() {
 &nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;
@@ -14,19 +14,18 @@ boolean deuxEstIlPair() {
 }
 </pre>
 
-<p>Il est possible d'avoir plusieurs instructions <code>return</code>
-   dans différentes branches de <code>if</code>. Ce qui est interdit,
-   c'est d'avoir une branche du code qui n'est pas terminée par un
-   <code>return</code>, ou d'écrire du code après le
-   <code>return</code>.</p>
+<p>Il est possible d'avoir plusieurs instructions <code>return</code> dans
+différentes branches de <code>if</code>. Ce qui est interdit, c'est d'avoir
+une branche du code qui n'est pas terminée par un <code>return</code>, ou
+d'écrire du code après le <code>return</code>.</p>
 
-<p>En effet, si la machine arrive à la fin de la méthode sans avoir
-   rencontré de <tt>return</tt>, elle ne peut pas savoir quelle valeur
-   communiquer à celui qui a appelé la méthode. De plus, le
-   <tt>return</tt> interrompt immédiatement l'exécution de la méthode
-   (pourquoi continuer à chercher quand on a déjà trouvé le résultat
-   de la méthode?). Donc, s'il y a du code après un <tt>return</tt>,
-   c'est sans doute une erreur, et le compilateur vous l'indique.</p>
+<p>En effet, si la machine arrive à la fin de la méthode sans avoir rencontré
+de <tt>return</tt>, elle ne peut pas savoir quelle valeur communiquer à
+celui qui a appelé la méthode. De plus, le <tt>return</tt> interrompt
+immédiatement l'exécution de la méthode (pourquoi continuer à chercher quand
+on a déjà trouvé le résultat de la méthode?). Donc, s'il y a du code après
+un <tt>return</tt>, c'est sans doute une erreur, et le compilateur vous
+l'indique.</p>
 
 <pre>boolean negation(boolean cond) {
 &nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {
@@ -40,33 +39,31 @@ boolean deuxEstIlPair() {
 }</pre>
 
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> 
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> Vous allez encore une fois écrire une méthode qui sera
+utilisée par la buggle. Son nom doit être <code>haveBaggle</code>, et elle
+doit renvoyer un booléen indiquant si la colonne face à la buggle contient
+un baggle ou non. Votre buggle va s'en servir pour chercher la première
+colonne contenant un baggle et s'y arrêter.
 
-Vous allez encore une fois écrire une méthode qui sera utilisée par la
-buggle. Son nom doit être <code>haveBaggle</code>, et elle doit
-renvoyer un booléen indiquant si la colonne face à la buggle contient
-un baggle ou non. Votre buggle va s'en servir pour chercher la
-première colonne contenant un baggle et s'y arrêter.
+<p>Le plus simple pour écrire cette méthode est peut être d'utiliser une
+variable booléenne <code>vuBaggle</code> indiquant si on a vu un baggle
+jusque là. Initialement, elle contient faux.</p>
 
-<p>Le plus simple pour écrire cette méthode est peut être d'utiliser
-   une variable booléenne <code>vuBaggle</code> indiquant si on a vu
-   un baggle jusque là. Initialement, elle contient faux.</p>
+<p>Ensuite, on avance de 6 cases (le monde contient 7 cases, et on est déjà sur
+l'une d'entre elles). Pour chaque case, si elle contient un baggle, on range
+la valeur vrai dans <tt>vuBaggle</tt> (et on ne fait rien d'autre qu'avancer
+si non).</p>
 
-<p>Ensuite, on avance de 6 cases (le monde contient 7 cases, et on est
-   déjà sur l'une d'entre elles). Pour chaque case, si elle contient
-   un baggle, on range la valeur vrai dans <tt>vuBaggle</tt> (et on ne
-   fait rien d'autre qu'avancer si non).</p>
-
-<p>Quand on est arrivé à la fin, on recule de 6 cases, et on retourne
-   le contenu de <tt>vuBaggle</tt> à l'appelant.</p>
+<p>Quand on est arrivé à la fin, on recule de 6 cases, et on retourne le
+contenu de <tt>vuBaggle</tt> à l'appelant.</p>
 
 
-<p>Cet exercice est un peu particulier, puisqu'il a deux mondes
-   initiaux, chacun ayant un objectif particulier. Votre code doit
-   fonctionner pour chacun d'entre eux. Remarquez que le menu
-   déroulant de sélection du monde (juste sous la barre de réglage
-   de la vitesse) permet de spécifier le monde que vous souhaitez observer. </p>
+<p>Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux,
+chacun ayant un objectif particulier. Votre code doit fonctionner pour
+chacun d'entre eux. Remarquez que le menu déroulant de sélection du monde
+(juste sous la barre de réglage de la vitesse) permet de spécifier le monde
+que vous souhaitez observer. </p>
 
-<p>Quand votre méthode <tt>haveBaggle</tt> fonctionne, passez à
-   l'exercice suivant.</p>
+<p>Quand votre méthode <tt>haveBaggle</tt> fonctionne, passez à l'exercice
+suivant.</p>
 

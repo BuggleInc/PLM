@@ -1,16 +1,16 @@
 <h2>Boucles pour<tt> (for)</tt></h2>
 
-<p>Les boucles <tt>while</tt> sont bien adaptées aux situations où l'on
-   veut réaliser une action tant qu'une condition est réalisée, mais
-   elles sont moins pratiques pour réaliser une action un nombre
-   prédéterminé de fois. Par exemple, lorsque nous voulions reculer de
-   <code>nbPas</code> dans l'exercice précédent, il fallait créer une
-   nouvelle variable, l'initialiser, et demander à reculer tant que
-   la nouvelle variable n'était pas égale à <code>nbPas</code>,  en
-   incrémentant cette variable à la main à la fin du corps de la
-   boucle.</p> 
+<p>Les boucles <tt>while</tt> sont bien adaptées aux situations où l'on veut
+réaliser une action tant qu'une condition est réalisée, mais elles sont
+moins pratiques pour réaliser une action un nombre prédéterminé de fois. Par
+exemple, lorsque nous voulions reculer de <code>nbPas</code> dans l'exercice
+précédent, il fallait créer une nouvelle variable, l'initialiser, et
+demander à reculer tant que la nouvelle variable n'était pas égale à
+<code>nbPas</code>, en incrémentant cette variable à la main à la fin du
+corps de la boucle.</p> 
 
-<p>Dans ce genre de cas, les boucles de type <code>for</code> sont plus pratique. Leur syntaxe est la suivante : 
+<p>Dans ce genre de cas, les boucles de type <code>for</code> sont plus
+pratique. Leur syntaxe est la suivante : 
 <pre>for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {
 &nbsp;&nbsp;&nbsp;<b>action</b>();
 }</pre>
@@ -22,8 +22,8 @@ while (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;<b>incrémentation</b>;
 }</pre>
 
-<p>Par exemple, les deux codes suivants sont équivalents. Avouez que
-la seconde forme est plus lisible, non ?
+<p>Par exemple, les deux codes suivants sont équivalents. Avouez que la seconde
+forme est plus lisible, non ?
 
 <pre>int dejaFait = 0;
 while (dejaFait &lt; nbPas) {
@@ -35,26 +35,24 @@ while (dejaFait &lt; nbPas) {
 }</pre>
 
 <p>On peut imaginer des utilisations bien plus avancées des boucles
-  <tt>for</tt> car toute instruction valide peut être utilisée comme
-  initialisation, condition et incrémentation. L'exemple suivant est
-  un peu extrême, puisqu'elle calcule le PGCD de deux nombres sans
-  avoir de corps de boucle du tout, ni d'initialisation (tout est fait
-  dans la condition et l'incrémentation).
+<tt>for</tt> car toute instruction valide peut être utilisée comme
+initialisation, condition et incrémentation. L'exemple suivant est un peu
+extrême, puisqu'elle calcule le PGCD de deux nombres sans avoir de corps de
+boucle du tout, ni d'initialisation (tout est fait dans la condition et
+l'incrémentation).
 
 <pre>int x=20, y=3, tmp;
 for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }
  <span class="comment">/* le PGCD est stocké dans x */</span></pre>
 
-<p>Si vous ne comprenez pas tous les détails de cet exemple, pas de
-   panique, c'est assez logique puisqu'il utilise des points de
-   syntaxe que nous n'avons pas encore vu.</p>
+<p>Si vous ne comprenez pas tous les détails de cet exemple, pas de panique,
+c'est assez logique puisqu'il utilise des points de syntaxe que nous n'avons
+pas encore vu.</p>
 
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> 
-
-Il s'agit de refaire le même exercice que précédemment (avancer jusqu'à
-trouver un baggle, le ramasser, revenir là où on était au début puis reposer le baggle),
-mais en utilisant une boucle <tt>for</tt> pour revenir au point de
-départ à la place d'une boucle <tt>while</tt>.
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> Il s'agit de refaire le même exercice que précédemment
+(avancer jusqu'à trouver un baggle, le ramasser, revenir là où on était au
+début puis reposer le baggle), mais en utilisant une boucle <tt>for</tt>
+pour revenir au point de départ à la place d'une boucle <tt>while</tt>.
 
 <p>Une fois ceci fait, passez à l'exercice suivant.</p>

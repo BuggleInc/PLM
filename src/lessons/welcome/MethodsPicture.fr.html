@@ -3,20 +3,22 @@
 Dans cet exercice, nous allons reproduire un dessin géométrique, que vous
 pouvez voir en cliquant sur l'onglet "Objective".
 
-<p>Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire 
-une méthode <code>run()</code> la plus simple possible. Pour cela, vous veillerez 
-à décomposer le travail à faire en sous-étape, et à faire réaliser chaque 
-sous-étape par une méthode particulière.</p>
+<p>Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire
+une méthode <code>run()</code> la plus simple possible. Pour cela, vous
+veillerez à décomposer le travail à faire en sous-étape, et à faire réaliser
+chaque sous-étape par une méthode particulière.</p>
 
-<p>Si on observe attentivement le modèle à dessiner, on remarque qu'il est composé 
-de quatre formes en sorte de V de couleurs différentes, et à des positions différentes.
-Un découpage possible est d'écrire une fonction chargée de faire un V de la couleur 
-indiquée à partir de la position courante. Son prototype peut être : 
+<p>Si on observe attentivement le modèle à dessiner, on remarque qu'il est
+composé de quatre formes en sorte de V de couleurs différentes, et à des
+positions différentes.  Un découpage possible est d'écrire une fonction
+chargée de faire un V de la couleur indiquée à partir de la position
+courante. Son prototype peut être : 
 <pre>void makeV(Color c)</pre>
 
-<p>Le type de données <code>Color</code> représente naturellement une couleur en particulier. 
-Votre méthode <code>run()</code> invoquera sans doute <code>makeV</code> avec les arguments
-suivants (une couleur différente à chaque appel) :
+<p>Le type de données <code>Color</code> représente naturellement une couleur
+en particulier.  Votre méthode <code>run()</code> invoquera sans doute
+<code>makeV</code> avec les arguments suivants (une couleur différente à
+chaque appel) :
 <ul>
 <li>Color.yellow</li>
 <li>Color.red</li>
@@ -24,11 +26,13 @@ suivants (une couleur différente à chaque appel) :
 <li>Color.green</li>
 </ul>
 
-<p>Dans la méthode <code>makeV()</code>, il faut utiliser la méthode <code>setBrushColor()</code>, 
-qui est prédéfinie dans la buggle, pour changer la couleur du pinceau, ainsi que <code>brushUp()</code> 
-et <code>brushDown()</code> pour lever et baisser le pinceau.</p>
+<p>Dans la méthode <code>makeV()</code>, il faut utiliser la méthode
+<code>setBrushColor()</code>, qui est prédéfinie dans la buggle, pour
+changer la couleur du pinceau, ainsi que <code>brushUp()</code> et
+<code>brushDown()</code> pour lever et baisser le pinceau.</p>
  
-<p>Il faudrait également que la méthode <code>makeV()</code> place la buggle en position pour dessiner 
-le prochain V directement.</p>
+<p>Il faudrait également que la méthode <code>makeV()</code> place la buggle en
+position pour dessiner le prochain V directement.</p>
  
-<p>À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus de quatre lignes...</p>
+<p>À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus
+de quatre lignes...</p>

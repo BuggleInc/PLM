@@ -1,19 +1,18 @@
 <h2>Buggle Dance Revolution 2</h2>
 <h3>(BDR2)</h3>
 
-Le BDR, c'est cool, mais c'est un peu le chaos. Tout d'abord, les
-buggles gigotent en tout sens, et en plus, le code que vous avez
-écrit pour les faire bouger est très difficile à lire. Voici un
-nouveau monde de BDR, où les buggles vont faire une gentille petite
-ronde plus reposante. Nous profiterons de cette accalmie pour nettoyer
-un peu le code grâce aux nouveaux éléments que nous allons maintenant
-étudier.
+Le BDR, c'est cool, mais c'est un peu le chaos. Tout d'abord, les buggles
+gigotent en tout sens, et en plus, le code que vous avez écrit pour les
+faire bouger est très difficile à lire. Voici un nouveau monde de BDR, où
+les buggles vont faire une gentille petite ronde plus reposante. Nous
+profiterons de cette accalmie pour nettoyer un peu le code grâce aux
+nouveaux éléments que nous allons maintenant étudier.
 
 <h3>Les conditionnels <tt>switch</tt></h3>
 
-Le plus difficile à lire du code précédent est certainement la cascade
-de conditionnelles. Quelque part dans votre programme, vous avez sans
-doute écrit quelque chose comme:
+Le plus difficile à lire du code précédent est certainement la cascade de
+conditionnelles. Quelque part dans votre programme, vous avez sans doute
+écrit quelque chose comme:
 
 <pre>if (getIndication() == 'R') {
   turnRight();
@@ -30,8 +29,8 @@ doute écrit quelque chose comme:
 }
 </pre>
 
-Quand on relit ce programme, on ne voit pas forcément tout de suite
-qu'il s'agit simplement d'un choix à 4 branches selon la valeur de
+Quand on relit ce programme, on ne voit pas forcément tout de suite qu'il
+s'agit simplement d'un choix à 4 branches selon la valeur de
 getIndication(). Pour faire mieux, on va utiliser la construction
 <tt>switch</tt>, dont la syntaxe est la suivante:
 
@@ -51,11 +50,11 @@ switch (<b>expression</b>) {
     <b>queFaireSiExpressionVautAucuneDesValeursProposees();</b>
 }</pre>
 
-Remarquez que chaque branche du <tt>switch</tt> doit être terminée par
-un <code>break</code>. Si on l'oublie, la machine continue d'exécuter
-le cas suivant dans la liste quand elle a fini le code du cas où elle
-a sauté dans le switch. Il y a même quelques très rares cas où ce
-comportement est pratique.
+Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un
+<code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas
+suivant dans la liste quand elle a fini le code du cas où elle a sauté dans
+le switch. Il y a même quelques très rares cas où ce comportement est
+pratique.
 
 <p>On peut réécrire le code précédent bien plus clairement grâce à la
 construction <tt>switch</tt> de la façon suivante.</p>
@@ -80,32 +79,31 @@ construction <tt>switch</tt> de la façon suivante.</p>
 
 <h2>Variables partagées par les méthodes</h2>
 
-Un autre problème de votre code est qu'il commence à être un peu long
-pour être dans une seule fonction. On voudrait découper en deux
-méthodes:
+Un autre problème de votre code est qu'il commence à être un peu long pour
+être dans une seule fonction. On voudrait découper en deux méthodes:
 <ul>
  <li><code>danceOneStep()</code> s'occuperait de faire un pas de danse</li>
- <li><code>run()</code> s'occuperait de faire la danse en entier,
-      c'est à dire de faire des pas de danse tant qu'on est pas arrivé
-      à une case ne demandant pas d'aller plus loin.</li>
+ <li><code>run()</code> s'occuperait de faire la danse en entier, c'est à dire de
+faire des pas de danse tant qu'on est pas arrivé à une case ne demandant pas
+d'aller plus loin.</li>
 </ul>
 
-<p>Le problème est de faire en sorte que <tt>danceOneStep()</tt>
-    prévienne <tt>run()</tt> qu'il n'y a plus de pas possible. La
-    solution la plus simple est encore d'avoir une variable booléenne
-    visible depuis les deux fonctions indiquant s'il reste des pas à
-    faire, ou si on a fini. On écrira donc en dehors de toute méthode
+<p>Le problème est de faire en sorte que <tt>danceOneStep()</tt> prévienne
+<tt>run()</tt> qu'il n'y a plus de pas possible. La solution la plus simple
+est encore d'avoir une variable booléenne visible depuis les deux fonctions
+indiquant s'il reste des pas à faire, ou si on a fini. On écrira donc en
+dehors de toute méthode
 <pre>boolean moreMusic = true;</pre>
 
-<p>Notez que s'il est possible d'écrire des déclarations en dehors des
-   méthode, les instructions doivent obligatoirement être placées dans
-   des méthodes. En Java, on appelle ces variables <i>globales</i> à
-   plusieurs méthodes des <b>champs</b>.</p>
+<p>Notez que s'il est possible d'écrire des déclarations en dehors des méthode,
+les instructions doivent obligatoirement être placées dans des méthodes. En
+Java, on appelle ces variables <i>globales</i> à plusieurs méthodes des
+<b>champs</b>.</p>
 
-<p>Ensuite, la fonction <tt>danceOneStep()</tt> doit être modifiée
-   pour mettre cette valeur à <tt>false</tt> quand il n'y a plus rien
-   à faire. Pour cela, ajoutez simplement <code>moreMusic =
-   false;</code> avant chaque <tt>return</tt>.
+<p>Ensuite, la fonction <tt>danceOneStep()</tt> doit être modifiée pour mettre
+cette valeur à <tt>false</tt> quand il n'y a plus rien à faire. Pour cela,
+ajoutez simplement <code>moreMusic = false;</code> avant chaque
+<tt>return</tt>.
 
 <p>On peut alors utiliser la fonction <tt>run()</tt> suivante:
 <pre>public void run() {
@@ -113,20 +111,17 @@ méthodes:
     danceOneStep();
 }</pre>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs">
-
-Réécrivez le code des buggles en appliquant les améliorations que
-nous venons de voir. 
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> Réécrivez le code des buggles en appliquant les
+améliorations que nous venons de voir. 
 
 <p>Vous n'avez pas à écrire la fonction <tt>run</tt>, que les buggles
-   connaissent déjà. Si vous tentez de la définir malgré tout, le
-   compilateur se plaindra de trouver deux définitions de la même
-   fonction, sans se rendre compte qu'il s'agit de la même
-   fonction. Contentez vous de déclarer la variable <tt>moreMusic</tt>
-   et la méthode <tt>danceOneStep()</tt>.</p>
+connaissent déjà. Si vous tentez de la définir malgré tout, le compilateur
+se plaindra de trouver deux définitions de la même fonction, sans se rendre
+compte qu'il s'agit de la même fonction. Contentez vous de déclarer la
+variable <tt>moreMusic</tt> et la méthode <tt>danceOneStep()</tt>.</p>
 
-<p>Voici les indications au sol à utiliser pour BDR2. Remarquez qu'on
-  peut maintenant avancer la buggle de 6 cases d'un coup.
+<p>Voici les indications au sol à utiliser pour BDR2. Remarquez qu'on peut
+maintenant avancer la buggle de 6 cases d'un coup.
 
 <table border="1">
  <tr><td>Indication</td>

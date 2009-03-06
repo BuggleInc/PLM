@@ -1,22 +1,43 @@
   <h2>Découverte du Java</h2>
 
-  Nous allons maintenant écrire notre tout premier programme Java. Dans un programme informatique (en Java ou autre), on trouve deux choses : les <b>données</b>, et les <b>instructions</b> qui manipulent ces données.
+  Nous allons maintenant écrire notre tout premier programme Java. Dans un
+programme informatique (en Java ou autre), on trouve deux choses : les
+<b>données</b>, et les <b>instructions</b> qui manipulent ces données.
 
   <h3>Les données en Java</h3>
-  Java permet d'utiliser différents <i>types</i> de données, tels que les entiers, les nombres à virgules ou les chaînes de caractères. Si on veut utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</i>, qui est une sorte de case contenant une valeur. Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker une valeur que dans une variable du bon type. Pas question de stocker une chaîne de caractères dans une variable entière.
+  Java permet d'utiliser différents <i>types</i> de données, tels que les
+entiers, les nombres à virgules ou les chaînes de caractères. Si on veut
+utiliser une donnée plusieurs fois, il faut la stocker dans une
+<i>variable</i>, qui est une sorte de case contenant une valeur. Java est un
+langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker une valeur
+que dans une variable du bon type. Pas question de stocker une chaîne de
+caractères dans une variable entière.
   
-  <p>Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, un espace et le nom de la variable.
-     Parmi les types existants, on trouve: <b>int</b> pour les entiers, <b>double</b> pour les nombres à virgule, <b>boolean</b> pour les booléens (i.e. les variables qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes de caractères.
-     Si l'on veut, on peut faire suivre la déclaration du signe = suivi de la valeur initiale à donner à la valeur. </p>
-  <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on écrira : <pre>int x;</pre>
+  <p>Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type,
+un espace et le nom de la variable.  Parmi les types existants, on trouve:
+<b>int</b> pour les entiers, <b>double</b> pour les nombres à virgule,
+<b>boolean</b> pour les booléens (i.e. les variables qui peuvent être soit
+vraies soit fausses) et <b>String</b> pour les chaînes de caractères.  Si
+l'on veut, on peut faire suivre la déclaration du signe = suivi de la valeur
+initiale à donner à la valeur. </p>
+  <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
+écrira : <pre>int x;</pre>
 	 Si on veut que sa valeur initiale soit 5, on écrira : <pre>int x = 5;</pre>
-  <p>Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle valeur à la variable, c'est très simple :
+  <p>Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle
+valeur à la variable, c'est très simple :
         
 		<pre>x=3; <span class="comment">ceci remplace la valeur de x par 3</span></pre>
 
-  <h3>Généralités sur les instructions</h3><a name="generalites">
-  Le programme Java le plus simple est formé d'une suite d'instructions, séparées par des points-virgules. Il faut le comprendre comme une suite d'ordres simples que l'on donne à la machine. C'est assez comparable à une recette de cuisine où l'on dit <i>cassez les oeufs puis ajoutez du sel puis mélangez le tout puis faites cuire</i>.
-  <p>Les affectations de variables comme <pre>x=5</pre> sont les instructions les plus simples. L'autre type classique d'instruction en Java est l'<i>appel à une méthode</i>. Nous verrons plus tard comment définir de telles méthodes, disons simplement pour l'instant qu'il s'agit des ordres disponibles. La syntaxe est en général est :
+  <h3>Généralités sur les instructions</h3><a name="generalites"> Le programme Java le plus simple est formé d'une
+suite d'instructions, séparées par des points-virgules. Il faut le
+comprendre comme une suite d'ordres simples que l'on donne à la
+machine. C'est assez comparable à une recette de cuisine où l'on dit
+<i>cassez les oeufs puis ajoutez du sel puis mélangez le tout puis faites
+cuire</i>.
+  <p>Les affectations de variables comme <pre>x=5</pre> sont les instructions les plus simples. L'autre type classique d'instruction
+en Java est l'<i>appel à une méthode</i>. Nous verrons plus tard comment
+définir de telles méthodes, disons simplement pour l'instant qu'il s'agit
+des ordres disponibles. La syntaxe est en général est :
 		<pre>nomDeLaMethode()</pre>
   <p>L'exemple ci-dessus de recette s'écrirait donc ainsi à peu près ainsi:
 <pre>
@@ -26,28 +47,40 @@ melangerLeTout();
 faireCuire();
 </pre>
 
-  <h3>Les instructions en Java</h3><a name="instructions">
-  Bien entendu, ces méthodes n'existent pas en Java, et il est difficile de faire la liste des méthodes existantes en Java. Dans cette leçon, les instructions les plus souvent utilisées sont des appels à des méthodes de la buggle, par lesquelles on donne des ordres à la buggle qui les reçoit.
+  <h3>Les instructions en Java</h3><a name="instructions"> Bien entendu, ces méthodes n'existent pas en Java,
+et il est difficile de faire la liste des méthodes existantes en Java. Dans
+cette leçon, les instructions les plus souvent utilisées sont des appels à
+des méthodes de la buggle, par lesquelles on donne des ordres à la buggle
+qui les reçoit.
   <p>Par exemple, il y a une méthode pour chaque bouton du contrôle interactif.
-	 Pour faire la même chose que le bouton <b>forward</b> (faire avancer la buggle d'un pas), il faut écrire dans l'éditeur : <pre>forward();</pre>
-	 De même, pour faire l'équivalent des boutons <b>backward</b>, <b>turn left</b> et <b>turn right</b>, il faut utiliser respectivement : 
+Pour faire la même chose que le bouton <b>forward</b> (faire avancer la
+buggle d'un pas), il faut écrire dans l'éditeur : <pre>forward();</pre>
+	 De même, pour faire l'équivalent des boutons <b>backward</b>, <b>turn
+left</b> et <b>turn right</b>, il faut utiliser respectivement : 
 <pre>
 backward();
 turnLeft();
 turnRight();
 </pre>
-	 Le bouton <b>mark</b> est un peu particulier, puisqu'il correspond à deux méthodes : la première lève le crayon, tandis que la seconde le baisse.
+	 Le bouton <b>mark</b> est un peu particulier, puisqu'il correspond à deux
+méthodes : la première lève le crayon, tandis que la seconde le baisse.
 <pre>
 brushDown();
 brushUp();
 </pre></p>
-  <p>La buggle offre d'autres méthodes, que nous verrons lorsque le besoin s'en fera sentir.</p>
+  <p>La buggle offre d'autres méthodes, que nous verrons lorsque le besoin s'en
+fera sentir.</p>
 
   <h3>Ajouter des commentaires</h3>
-  Quand on écrit un programme un peu complexe, il est parfois utile d'ajouter des <i>commentaires</i> pour simplifier la relecture du code après coup. Il existe trois types de commentaires en Java:
+  Quand on écrit un programme un peu complexe, il est parfois utile d'ajouter
+des <i>commentaires</i> pour simplifier la relecture du code après coup. Il
+existe trois types de commentaires en Java:
   <ul>
-    <li><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre le symbole //, il ignore la fin de la ligne.</li>
-	<li><b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui se trouve entre les symboles /* et */, même s'ils sont sur des lignes différentes</li>
+    <li><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre le
+symbole //, il ignore la fin de la ligne.</li>
+	<li><b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui
+se trouve entre les symboles /* et */, même s'ils sont sur des lignes
+différentes</li>
   </ul>
 <pre>
 appelMethodeLuParLeCompilateur(); <span class="comment"> // tout ceci est ignoré</span>
@@ -56,12 +89,18 @@ autreAppel(); <span class="comment">/* ceci est</span>
 encoreUnAppel();
 </pre>  
   
-  <p>Il existe une troisième forme de commentaires, entre /** et */, qui sont lus par un programme nommé JavaDoc pour générer automatiquement la documentation expliquant comment utiliser le code. Ces commentaires doivent suivre un formalisme précis.</p>
+  <p>Il existe une troisième forme de commentaires, entre /** et */, qui sont lus
+par un programme nommé JavaDoc pour générer automatiquement la documentation
+expliquant comment utiliser le code. Ces commentaires doivent suivre un
+formalisme précis.</p>
 
-  <h3>Objectif de cet exercice</h3><a name"Objectifs">
-  Nous allons faire le programme Java pour buggle le plus simple existant : vous devez faire en sorte que la buggle avance d'un pas.
-  <p>Pour cela, écrivez simplement dans l'éditeur (onglet <b>Source Code</b>) le code suivant : <pre>forward();</pre>
-     N'oubliez pas le point-virgule, qui indique au compilateur que l'instruction est finie.</p>
-  <p>Après avoir recopié le code dans l'éditeur, cliquez sur <b>run</b> et passez à l'exercice suivant.</p>
+  <h3>Objectif de cet exercice</h3><a name"Objectifs"> Nous allons faire le programme Java pour buggle le plus
+simple existant : vous devez faire en sorte que la buggle avance d'un pas.
+  <p>Pour cela, écrivez simplement dans l'éditeur (onglet <b>Source Code</b>) le
+code suivant : <pre>forward();</pre>
+     N'oubliez pas le point-virgule, qui indique au compilateur que l'instruction
+est finie.</p>
+  <p>Après avoir recopié le code dans l'éditeur, cliquez sur <b>run</b> et passez
+à l'exercice suivant.</p>
 	 
 	 
