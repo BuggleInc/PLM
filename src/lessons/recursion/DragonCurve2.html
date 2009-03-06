@@ -1,19 +1,28 @@
-<h2>Courbe du Dragon (2)</h2>
+<h2>The dragon curve (2)</h2>
 
-<p>La solution précédente nécessite que la tortue se téléporte, autrement dit, qu'il est parfois nécessaire de lever le crayon pour tracer la courbe.
-En effet, entre la destination du trait tracé par le premier appel récursif ne correspond pas à la source du trait qui doit être tracé par le second appel récursif.
-C'est pourquoi il était nécessaire d'utiliser la méthode <code>setPos()</code></p>	
+<p>Previous solution induce that the turtle teleports to other location, or at
+the very least, that it moves its pen up during the drawing. Indeed, the end
+of the drawing of the first recursive call does not match the begining of
+the second recursive call. That is why we had to use the method
+<code>setPos()</code></p>	
 
-<p>Dans cette leçon, vous allez donc réaliser une méthode récursive qui permet de tracer la courbe du dragon sans lever le crayon. Pour ce faire, vous définirez une seconde méthode récursive qui trace la courbe à l'envers.</p>
+<p>In this lesson, you will write a recursive method allowing to draw the
+dragon curve without taking the pen up. For that, we need another recursive
+method drawing the mirror side of the curve.</p>
 
-<p>La méthode <code>dragon()</code> sera définie récursivement en fonction des méthodes <code>dragon()</code> et <code>dragonInverse()</code>. De même, la méthode <code>dragonInverse()</code> sera définie récursivement en terme de <code>dragon()</code> et de <code>dragonInverse()</code>. Voici un bien bel exemple de <i>récursivité croisée</i>.
+<p>The method <code>dragon()</code> is then recursively defined using itself
+and <code>dragonReverse()</code>. Likewise, the method
+<code>dragonReverse()</code> is defined recursively using itself and
+<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>.
 </p>
 
 <p>
-Le prototype de la méthode <code>dragon()</code> reste le même que précédemment :
+The prototype of the <code>dragon()</code> method remains unchanged from
+previous exercise:
 <pre>void dragon(int ordre, double x, double y, double z, double t)</pre>
 
-Les coordonnées (u, v) du nouveau point introduit par la méthode <code>dragon()</code> seront :
+The new point's coordinate (u, v) introduced by the <code>dragon()</code>
+are:
 <pre>
 u = (x + z)/2 + (t - y)/2
 v = (y + t)/2 - (z - x)/2
@@ -21,10 +30,11 @@ v = (y + t)/2 - (z - x)/2
 </p>
 
 <p>
-Le prototype de la méthode <code>dragonInverse()</code> est identique : :
-<pre>void dragonInverse(int ordre, double x, double y, double z, double t)</pre>
+The prototype of the method <code>dragonReverse</code> is similar:
+<pre>void dragonReverse(int ordre, double x, double y, double z, double t)</pre>
 
-Les coordonnées (u, v) du nouveau point introduit par la méthode <code>dragonInverse()</code> seront :
+The new point's coordinate (u, v) introduced by the
+<code>dragonReverse()</code> are:
 <pre>
 u = (x + z)/2 + (t - y)/2
 v = (y + t)/2 - (z - x)/2
@@ -32,6 +42,10 @@ v = (y + t)/2 - (z - x)/2
 </p>
 
 
-<p>Afin de rendre, plus visible le travail de chacune des deux méthodes récursives, le trait tracé par la méthode <code>dragon()</code> devra être rouge (<code>Color.red</code>) et le trait tracé par la méthode <code>dragonInverse</code> devra être bleu (<code>Color.blue</code>).</p>
+<p>To make the work of each method recursiv more visible, the line painted by
+the <code>dragon()</code> must be red (<code>Color.red</code>) while the
+line painted by the <code>dragonReverse()</code> must be blue
+(<code>Color.blue</code>).</p>
 
-<p>Consultez les objectifs de chaque monde pour comprendre comment écrire la fonction.</p> 
+<p>Have a look at each world's objective view to understand how to write the
+function.</p> 

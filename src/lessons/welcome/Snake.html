@@ -1,48 +1,45 @@
-<h2>Monde de serpents</h2>
+<h2>Snake World</h2>
 
-Nous allons maintenant apprendre à la buggle à explorer son monde. Sa position
-de départ est en bas à gauche, et elle doit visiter toutes les cases juqu'en 
-haut (en coloriant le sol sur son passage). 
-
-La boucle principale de la méthode <code>run()</code> (que vous devez écrire) 
-est de la forme : 
+We will now teach the buggle to explore its world. Its initial position is
+the bottom left corner, and it should visit any cells up to the top
+(coloring the ground on its path. The main loop of the <code>run()</code>
+method (that you should write) is something like: 
 <pre>
- baisser le crayon
- tant que l'on est pas à la position finale
-   avancer comme un serpent
+ move brush down
+ while we did not reach the final position
+   move like a snake
 </pre>
 
-Le prototype de cette méthode (sa première ligne) doit être :
+The prototype of this method (its first line) must be:
 <pre>public void run()</pre>
-(nous verrons plus tard ce que ce <code>public</code> signifie).
+(we will come back later on the meaning of <code>public</code>). We thus
+have to write two methods in addition to <code>run()</code>. The former
+returns a boolean indicating whether we are on a final position while the
+latter does not return any result and move one snake step forward.
 
-Il faut donc écrire deux méthodes en plus de <code>run()</code>. L'une renvoit
-un booléen et indique si l'on se trouve à une position finale, tandis que l'autre
-ne renvoit pas de résultat et avance d'un pas.
-
-<p>On se trouve sur une position finale si et seulement si :
+<p>We reached the final position if and only if:
 <ul>
-  <li>On est face à un mur</li>
-  <li>Il y a un mur au nord de la buggle. Donc, si la buggle regarde à l'est, 
-      il faut vérifier s'il y a un mur à gauche, et si la buggle regarde à l'ouest, 
-      il faut vérifier s'il y a un mur à droite.<br/>
-      On obtient la direction actuelle de la buggle avec la méthode
-      <code>getDirection()</code>, et on sait si elle regarde à l'est avec le test
-      <code>getDirection() == Direction.EAST</code> (WEST pour ouest).<br/>
-      Pour la vérification elle-même, rien de magique : il faut se tourner et 
-      regarder si on est face à un mur une fois tourné.</li>
+  <li>We are facing a wall</li>
+  <li>There is a wall on the north of the buggle. So, if the buggle is facing
+east, you should check whether there is a wall on the left, and if the
+buggle is facing west, you should check on the right side.<br/>
+      We can get the current heading of the buggle using the
+<code>getDirection()</code>, and we know whether it looks east using
+<code>getDirection() == Direction.EAST</code> (WEST for west).<br/>
+      For the checking itself, nothing magical: you have to turn the buggle and
+check whether it is facing a wall afterward.</li>
 </ul></p>
 
-<p>Ensuite un pas de serpent se fait en avancant d'un pas si l'on est pas face à un mur, 
-et en montant à la ligne du dessus sinon (càd, si on regarde à l'ouest face à un mur,
-il faut tourner à droite, avancer, tourner à droite).</p>
+<p>Then, a snake step can be achieved by moving one step forward if we are not
+facing a wall, and moving to the upper line else (ie, if you look to the
+west facing a wall, you have to turn right, forward and turn right).</p>
 
-<p>Indication: la boucle principale de la méthode <code>run()</code> doit continuer 
-tant que la fonction adéquate renvoie faux. On peut l'écrire de deux façons:
-<pre>while (fonctionTest() == false)</pre>
-ou bien
-<pre>while (! fonctionTest())</pre>
-Cela fonctionne car le point d'exclamation en java indique une négation booléenne. 
+<p>Hint: the main loop of the <code>run()</code> method must continue while the
+testing function returns false. Their is thus two way of writing it:
+<pre>while (testingFunction() == false)</pre>
+or
+<pre>while (! testingFunction())</pre>
+It works because the exclamation mark (!) means in Java a boolean negation. 
 
-<p>À vous de jouer...</p>
+<p>Your turn...</p>
 

@@ -1,0 +1,46 @@
+<h2>Construire avec méthode</h2>
+
+Nous souhaitons maintenant apprendre à la buggle à se faire une niche. 
+La première approche, la plus simple au premier abord, est d'écrire 
+directement le code permettant de le faire, comme ci-dessous (cela 
+marche car la buggle de cet exercice laisse une traînée rouge dans
+son sillage quand elle se déplace).
+
+<pre>
+forward();
+forward();
+turnLeft(); 
+forward();
+forward();
+turnLeft(); 
+forward();
+forward();
+turnLeft(); 
+forward();
+forward();
+turnLeft(); 
+</pre>
+
+<p>Les problèmes commencent quand nous voulons faire faire deux cabanes 
+à la buggle : Il faut réécrire le code deux fois, ce qui n'est pas
+très pratique. Pire que ça, une telle duplication de code est en 
+général très mal vu. En effet, si vous vous rendez compte que vous 
+vous êtes trompé dans votre code, et que vous l'avez recopier à plusieurs
+endroits, il va falloir le corriger plusieurs fois. Et gare si vous 
+oubliez de corriger un exemplaire.</p> 
+
+<p>Il est bien préférable de <b>factoriser votre code</b>, c'est-à-dire
+d'écrire le code une seule fois, par exemple dans une méthode. C'est ce 
+que vous allez faire maintenant. Il est même possible d'aller plus loin en 
+factorisant le code de la méthode avec une boucle <code>for</code> comme vu
+ précédemment.
+
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> 
+
+L'objectif de cet exercice est d'écrire une méthode nommée
+<code>faireNiche()</code> et exécute le code ci-dessus. La buggle invoquera 
+plusieurs fois votre oeuvre afin de dessiner des cabanes un peu partout. Pensez à 
+factoriser le code de votre méthode avec une boucle for.
+
+<p>À vous de jouer.</p>
+

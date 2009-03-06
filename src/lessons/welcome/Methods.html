@@ -1,71 +1,61 @@
-<h2>Méthodes</h2>
+<h2>Methods</h2>
 
-Nous allons maintenant voir comment écrire nos propres méthodes. Il
-s'agit en quelque sorte d'étendre le vocabulaire de la buggle en lui
-apprenant à faire de nouvelles choses. 
+We will now write our own methods. It somehow comes down to extending the
+buggle vocabulary by learning it new tricks. 
 
-<p>Par exemple, nous avons vu à l'exercice précédent comment demander
-   à la buggle d'aller chercher la buggle qui se trouve devant elle,
-   et la ramener à sa position initiale. S'il y a maintenant plusieurs
-   baggles sur le plateau, et que nous voulons tous les ramener sur la
-   ligne du bas, il faut soit répéter ce code plusieurs fois, soit
-   l'inclure dans une boucle. Dans les deux cas, le code résultant
-   n'est pas très lisible, et il serait mieux que la buggle comprenne
-   un ordre de type <code>goAndGet()</code> tout comme elle comprend
-   un <code>forward()</code>.</p>
+<p>For example, we saw in previous exercise how to ask the buggle to go get the
+baggle in front of it, and bring it back. If there is several baggles on the
+board, and if we want to bring all of them on the bottom line, you have to
+repeate this code several times, or include it in a loop. In any case, the
+result may reveal unpleasant to read, and it would be better if the buggle
+could obey an <code>goAndGet()</code> order just like it understands a
+<code>forward()</code> one.</p>
 
 
-<p>La syntaxe pour écrire une méthode simple nommée <code>goAndGet</code> est la suivante:
+<p>The syntax to write a simple method called <code>goAndGet</code> is the
+following:
 <pre>public void goAndGet() {
   actions();
-  aFaire();
+  to();
+  do();
 }</pre>
 
-<p>Le corps de la méthode (entre les accolades) peut contenir autant
-   d'instructions que vous le souhaitez, et toutes les constructions
-   vues jusque là (for, while, if, etc).</p>
+<p>The method body (between curly braces) can contain as many instructions as
+you want, and any construction we saw so far (for, while, if, etc).</p>
 
-<p>Nous reviendrons plus tard sur le sens exact du mot-clé
-   <code>public</code>. Disons simplement pour l'instant qu'il indique
-   que tout le monde a le droit d'utiliser cette
-   méthode.</p>
+<p>We will come back later on the exact signification of the
+<code>public</code> keyword. Let's say for now that it means that everybody
+can use this method.</p>
 
-<p><code>void</code> indique quant à lui que la méthode ne donne pas
-   de résultat. Nous avions vu que la méthode
-   <code>isOverBaggle()</code> renvoie un booléen, et peut donc être
-   utilisé comme une condition dans un if ou un while. Cela signifie
-   qu'elle a été déclarée de la façon suivante :
+<p><code>void</code> means that the method does not return any result. We said
+previously that the <code>isOverBaggle()</code> method returns a boolean and
+can thus be used as a condition in a if or a while. This means that it is
+declared the following way:
 <pre>public boolean isOverBaggle() { ... }</pre>
 
-   Nous verrons dans le prochain exercice comment faire ce genre de
-   chose. Pour l'instant, contentons nous d'écrire ce
-   <code>void</code> à cet endroit.</p>
+   We will introduce in next exercise how to do this kind of tricks. For now,
+let's just write <code>void</code> at this location.</p>
 
-<p>En Java, il est d'usage de mettre la première lettre du nom d'une
-   méthode en minuscules, et de coller tous les mots décrivant la
-   méthode les uns aux autres en mettant une majuscule à chacun. Il
-   est interdit de mettre des espaces ou des accentués dans le nom
-   d'une méthode. C'est pourquoi nous écrivons "go and get" sous la
-   forme "goAndGet".</p>
+<p>In Java, the convention is to use lower case for the first letter of a
+method name and concatenate every word describing the method using a upper
+case for each first letter. It is forbidden to use spaces or accentuated
+letters in a method name. That is why we write "go and get" as goAndGet().</p>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> 
+<h3>Exercise goal</h3><a name="Objectives"> The goal of this exercise is to write a method called
+<code>goAndGet()</code> which does the same than in previous exercises (move
+forward until over a baggle, pick it up, move back to initial position, drop
+baggle).
 
-L'objectif de cet exercice est donc d'écrire une méthode nommée
-<code>goAndGet()</code> et qui fait la même chose qu'aux exercices
-précédents (avance tant qu'on ne trouve pas de baggle, ramasser le
-baggle, reculer à la case départ, poser le baggle).
+<p>One particularity of this exercise is that you shouldn't write directly the
+code that the buggle should execute, but a method it should use. Actually,
+in any previous exercise, you wrote the body of a specific method called
+<code>run()</code> which gets invoked by the environment when you clic on
+<b>Start</b>. 
 
-<p>La particularité de cet exercice est que vous n'allez donc pas
-   écrire directement le code que la buggle va exécuter, mais une
-   méthode qu'elle utilisera. En fait, dans tous les exercices
-   précédents, vous avez écrit le corps d'une méthode particulière de
-   la buggle nommée <code>run()</code> et qui est invoquée par
-   l'environnement quand on clique sur le bouton <b>Start</b>. 
-
-<p>N'essayez pas de définir ici cette méthode, puisque la buggle la
-   connaît déjà. Cela troublerait le compilateur qui vous donnerait un
-   message d'erreur en échange. Pour information, voici le corps de la
-   méthode <code>run()</code> de la buggle de cet exercice:
+<p>Don't try to define this method here, since the buggle already knows
+it. This would cause trouble to the compiler, which would give you an error
+message in exchange. For your information, here is the <code>run()</code>
+method of this exercise:
 
 <pre>public void run() {
 &nbsp;&nbsp;for (int i=0; i&lt;7; i++) { 
@@ -76,12 +66,12 @@ baggle, reculer à la case départ, poser le baggle).
 &nbsp;&nbsp;}
 }</pre>
 
-<p>Donc, votre buggle va répéter 7 fois (la taille du monde)
-   l'opération <code>goAndGet()</code> que vous allez écrire, plus
-   les opérations nécessaire à se décaler d'une colonne vers la droite
-   (tourner à droite, avancer, tourner à gauche). Notez que la buggle va 
-   donc faire un pas vers la droite alors qu'elle sera tout à droite du 
-   monde. Cela la ramènera sur le bord gauche, car le monde des buggles est torique.</p>
+<p>So, your buggle will repeat 7 times (which matches the world's dimension)
+sequence constituted of the <code>goAndGet()</code> method that you should
+write, plus what is needed to shift a row to the right (turn right, move
+forward, turn left). As you can see, the buggle will do one step right from
+the right border of the world. It will bring it back to the left side since
+its world is a torus.</p>
 
-<p>À vous d'écrire cette méthode goAndGet().</p>
+<p>You should now write this goAndGet() method.</p>
 

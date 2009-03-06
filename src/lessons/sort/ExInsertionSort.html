@@ -1,82 +1,98 @@
-<h1>Algorithme par insertion et variantes</h1>
+<h1>Insertion algorithms and variations</h1>
 
-Cet exercice vous permet d'expérimenter avec le tri par insertion et ses variantes les plus classiques.
+This exercise allows you to experiment with the insertion sort and its major
+variations.
 <h2>InsertionSort</h2>
-Ce tri est relativement simple à comprendre et à écrire, même s'il n'offre pas les meilleures performances possibles. 
-Il s'agit d'un algorithme quadratique (complexité asymptotique en O(n2)), mais il est plus efficace en pratique (linéaire dans le meilleur des cas, ie quand le tableau déjà trié et N2/4 en moyenne).
+This sorting algorithm is quite simple to understand and write, even if it
+is not as efficient as possible. Its asymptotic complexity is in O(n2), but
+it is more efficient in practice (linear in best case, ie when the array is
+already sorted, and N2/4 on average).
   
-<p>L'idée est de parcourir tous les éléments du tableau, et d'insérer chacun à sa place dans la partie du tableau déjà trié.
-Lorsque l'on regarde un élément x du tableau, on est dans la situation suivante : tous les éléments à gauche du tableau 
-sont déjà triés, et il faut insérer x à sa place dans le tableau.</p>
+<p>The idea is to traverse all elements of the array, and to insert each of
+them into its proper position in the already sorted part of the array. When
+we look at an element x, the situation is the following: any elements to the
+left of the array are already sorted, and we have to insert x at its
+position in the array.</p>
 <p align=center><img src="lessons/sort/Insertionsort-before.png">
 
-<p>Une fois ceci fait, on se retrouve dans la situation suivante:
+<p>Once this is done, the situation is the following:
 <p align=center><img src="lessons/sort/Insertionsort-after.png">
 
-<p>Le pseudo-code de cet algorithme est donc le suivant :
-<pre>Pour tout i dans [1,lgr]
-  stoquer la valeur de la case i dans une variable val
-  recopier la case i-1 dans i, si i-1 contient une valeur plus grande que val
-  recopier la case i-2 dans i-1, si i-2 contient une valeur plus grande que val  
-  recopier la case i-3 dans i-2, si i-3 contient une valeur plus grande que val  
-  recopier la case i-4 dans i-3, si i-4 contient une valeur plus grande que val
+<p>The pseudo-code of this algorithm is thus the following:
+<pre>For each i in [1,len]
+  store the value of i in a variable val
+  copy the cell i-1 into i if i-1 contains a value bigger than val
+  copy the cell i-2 into i-1 if i-2 contains a value bigger than val
+  copy the cell i-3 into i-2 if i-3 contains a value bigger than val
+  copy the cell i-4 into i-3 if i-4 contains a value bigger than val
   ...
-  recopier val dans la dernière case recopiée plus haut
+  copy val into the last cell copied above
 </pre>
 
-Bien entendu, il faut utiliser une boucle pour écrire la grosse permutation circulaire au coeur de la boucle. 
-L'écrire explicitement de la sorte serait vraiment ... contre-productif.
+Naturally, you should use a loop to write the big permutation within the
+given loop. Writing it this way would be really ... counter-productive.
 
 <h2>ShellSort</h2>
  
-Cet algorithme porte le nom de son auteur, Donald Shell, qui l'a publié en 1959. Son principe peut être vu comme une 
-application de l'idée du CombSort (faire prendre des raccourcis aux éléments ayant beaucoup de chemin à faire) au tri
-par insertion (le CombSort est une variante du tri à bulle). 
+This algorithm is named after its author, Donald Shell, who published it in
+1959. It can be seen as an application of the CombSort idea (let elements
+having a long path to travel take shortcuts) to the insertion sort (CombSort
+is a variation of BubbleSort). Instead of comparing adjacent values during
+the insertion sort, it compares values separated by a bigger gap. The bigger
+the gap, the faster the elements are moved to their final destination, but
+also the less precise is this move. It is thus mandatory to apply the
+algorithm with a serie of decreasing gaps. At the last step, when the gap is
+1, InsertionSort is used, but onto an array which is almost already sorted
+by previous steps.
 
-Au lieu de comparer les valeurs ajacentes lors du tri par insertion, on compare des valeurs séparées par un <i>gap</i>
-(écartement) plus grand. Plus le gap est grand et plus les éléments sont déplacés rapidement vers leur position finale,
-mais aussi plus le déplacement est imprécis. Il faut donc appliquer l'algorithme avec une séquence de gaps décroissante
-vers 1. Ainsi, à la dernière étape quand le gap vaut 1, on applique l'algorithme de tri par insertion de base, mais sur
-un tableau déjà presque trié par les étapes précédentes.
-
-<p>Donald Shell propose d'utiliser <code>lgr/2</code> comme première valeur du gap, puis de le diviser par deux à chaque étape.
-Le pseudo-code est donc le suivant:
+<p>Donald Shell propose <code>len/2</code> as initial value of the gap, and
+then to divide it by 2 at each step. The pseudo-code is thus the following:
 <pre>
-gap=lgr/2
-tant que gap>0:
-  appliquer l'algorithme de tri par insertion en comparant i-gap et i, puis i-2gap et i-gap, puis i-3gap et i-2gap, etc.
+gap=len/2
+while gap>0:
+  apply InsertionSort, comparing i-gap and i, then i-2gap and i-gap, then i-3gap and i-2gap, etc.
 </pre>
 
-<p>Comme dans le cas du CombSort, la séquence des valeurs prises par le gap se révèle être d'une importance capitale pour
-les performances du tri de Shell. Il existe des cas pathologiques qui font que la séquence que nous avons utilisée ici 
-présente une complexité en O(n^2) dans le pire des cas. D'autres séquences ont été proposé: la séquence des incréments
-de Hibbard (2^k − 1) permet une complexité dans le pire des cas de O(n^(3/2)), les incréments de Pratt (2^i*3^j) permettent
-un pire cas en O(n log(n)log(n)).  Ces résultats font du tri de Shell un candidat tout à fait valide pour des instances de
-tableau de quelques centaines de milliers d'éléments quand il est correctement implémenté.</p>
+<p>Just like in CombSort, the sequence of values taken by the gap is crucial
+for Shell sort performance. In some rare pathological cases, the sequence we
+used above can lead to a O(n^2) performance. Other sequences were proposed:
+the Hibbard's increments of 2k − 1 lead to a complexity of O(n^(3/2)) in
+worst cases. Pratt's increments 2^i3^j lead to a O(nlog(n)log(n) performance
+in worst cases. The existance of a sequence leading to a O(n log(n)) was
+precluded by Poonen, Plaxton, and Suel. Thanks to this performance,
+ShellSort is a valid candidate for array of several hundred thousands when
+correctly implemented.</p>
 
-<p>Dans notre cas, les instances de tableaux que nous utilisons sont trop petites pour que ces optimisations présentent 
-un réel avantage. Si on voulait le faire, il faudrait prendre en valeur initiale du gap la plus grande valeur de la suite
-utilisée, puis prendre les valeurs successives en descendant ensuite.</p>
+<p>In our case, the array are ways too small to benefit of these
+optimizations. If you ever need to do so, take as initial gap the biggest
+value of the targeted serie still smaller than the array size, and then use
+decreasing values of the serie.</p>
 
-<p>De façon intéressante, déterminer la meilleure séquence de gap pour le shell sort s'avère être un problème de 
-recherche actuel en informatique. Par exemple, un article publié en 2001 propose la suite suivante, qui semble
-optimale en pratique pour des tailles de tableau allant jusqu'à 10^5: 
-{1, 4, 10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th International Symposium on Fundamentals
-of Computation Theory,  LNCS 2001; Vol. 2138).</p> 
+<p>Interesingly enough, determining the best gap sequence for shell sort turns
+into a contemporary research issue in computer science. For example, an
+article of 2001 introduces the following sequence, which seems to be optimal
+in practice for arrays of size up to 10^5: {1, 4, 10, 23, 57, 132, 301, 701,
+1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th
+International Symposium on Fundamentals of Computation Theory, LNCS 2001;
+Vol. 2138).</p> 
 
-<p>Si vous vous étiez toujours demandé ce que font les chercheurs en informatique à notre époque, voici un élément de réponse:
-certains d'entre eux améliorent des algorithmes fondamentaux pour permettre à d'autres de faire des programmes efficaces...</p>
+<p>If you've always wondered what computer science researchers do nowadays,
+here is part of the answer: They improve fundamental algorithms so that
+others can write efficient programs.</p>
 
-<h2>D'autres variantes du tri par insertion</h2>
+<h2>Other variation of insertion sort</h2>
 
-TreeSort construit un arbre binaire équilibré des données pour les trier. Cela lui permet d'être en O(nlog n) en moyenne
-(mais O(n^2) dans le pire cas). Nous n'étudierons pas cet algorithme ici puisque comprendre son fonctionnement demande
-de savoir ce qu'est un arbre binaire, ce qui est au dela de nos objectifs présents. 
+TreeSort builds a binary search tree to sort them. It leads to a O(n log(n))
+on average, but O(n^2) in worst cases. We won't study this algorithm here
+since unterstanding its behavior requires to know what a binary tree is,
+what is beyond our present goals. 
 
-<p>Il existe d'autres variantes du tri par insertion, comme PatienceSorting, qui fait des paquets des valeurs et 
-trie ensuite chaque paquet. Cet algorithme présente un pire cas en O(nlog n), et une complexité spatiale en O(n). 
-LibrarySort (proposé en 2004) échange également un peu d'espace pour du temps puisqu'il présente une complexité moyenne 
-en O(n log n),  mais nécessite de stoquer des données supplémentaires.</p>
+<p>There is other variations over the insertion sort, such as PatienceSort
+which builds piles of values and sort each pile afterward. This algorithm
+presents a 0(n log(n)) timing worst case and a 0(n) space
+complexity. LibrarySort (proposed in 2004) also trades a bit space in
+exchange for time since it provide a time complexity of O(n log(n)) but
+needs to store some more data.</p>
  
-<p>Wikipedia (en anglais) propose une description détaillée de tous ces algorithmes que nous n'avons pas le temps de
-détailler ici.</p> 
+<p>Wikipedia provides a detailled description of all these algorithms we cannot
+present here because of time constraints.</p> 

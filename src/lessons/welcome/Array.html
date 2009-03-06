@@ -1,23 +1,24 @@
-<h1>Tricots (et tableaux)</h1>
+<h1>Knitting and Arrays</h1>
 
-L'objectif de cet exercice est de reproduire le motif de la première colonne en le
-décalant d'une case (voir l'onglet Objectives pour plus de détails). La grande différence
-entre cet exercice et les précédents sur les motifs, c'est qu'il faut maintenant lire 
-(sur la première colonne) le motif souhaité, puis le reproduire ensuite. Il est 
-impossible de faire autrement car votre programme sera exécuté par trois buggles dans 
-trois mondes différents, chacune ayant un motif propre à reproduire.
+The goal of this exercise is to reproduce the pattern of the first row in
+the other rows with a shift of one cell (see the Objective tab for
+details). The biggest difference between this exercise and the other we had
+on patterns is that you have to read the pattern (on first row) before
+reproducing it. You cannot do otherwise because the same code will be
+executed on three different worlds, each of them having its specific
+pattern.
 
-<p>Une possibilité est de lire la prochaine case, puis d'aller la recopier en position, 
-avant de revenir lire la case suivate, etc. Mais comme vous n'avez pas le droit 
-d'utiliser les méthodes permettant de téléporter la buggle à une case particulière 
-(<code>setPos()</code> et autres), cette façon de faire va être très pénible à mettre
-en place.</p>
+<p>One solution is to read the next cell, and go copy it in position before
+comming back to read the second cell. But since it is forbiden to use the
+methods to teleport the buggle to a specific position (<code>setPos()</code>
+and similar), this approach will be a pain to implement. </p>
  
-<p>Le plus simple est de stocker l'enchainement de couleurs dans un <b>tableau</b>.
+<p>The simplest is to store the whole color pattern in an <b>array</b>.
 
-<h2>Les tableaux en Java</h2> 
-Un tableau est une séquence d'emplacements dans lesquels on peut mettre des valeurs 
-de même type (une par emplacement). C'est donc une séquence de cases de même type :</p>
+<h2>Arrays in Java</h2> 
+An array is a sequence of positions in which one can store values of the
+same kind (one value per cell). It is thus a sequence of values of the same
+kind:</p>
 
 <br>
 <table border="0">
@@ -29,87 +30,87 @@ de même type (une par emplacement). C'est donc une séquence de cases de même 
 </tr>
 </table>
 
-<p>T est le nom du tableau, T[0] est le nom de la première case, T[1] de la 
-deuxième case, T[2] de la troisième case, etc... Et oui, la première case est 
-T[0] et la dernière case d'un tableau de dimension N est T[N - 1].</p>
+<p>T is the array's name, T[0] is the name of the first cell, T[1] the name of
+the second cell, T[2] the third one, etc. And yes, the first cell in
+numbered T[0] and the last one of an array of size N is T[N-1].</p>
 
-<p>On peut utiliser une variable entière <i>i</i> pour accéder avec T[i] aux 
-cases d'un tableau : lorsque <i>i</i> vaut 0 alors T[i] dénote la case T[0], 
-lorsque <i>i</i> vaut 10, T[i] dénote T[10]. On dit alors que <i>i</i> est un 
-<b>indice</b> dans le tableau T .
+<p>We can use an integer variable <i>i</i> to access with T[i] to the array's
+cells: when the value of <i>i</i> is 0, then T[i] accesses T[0], when the
+value of <i>i</i> is 10, then T[i] accesses T[10]. <i>i</i> is said to be
+the indice in the array T.
 
-<h2>Remplissage d'un tableau</h2>
-Supposons que <code>T</code> soit un tableau de 10 éléments entiers. 
-On peut alors le remplir de la manière suivante :
+<h2>Initializing an array</h2>
+Let <code>T</code> be an array of 10 integer elements. It can then be
+initialized this way:
 <pre>
 for (int i = 0; i&lt;10; i++) {
    T[i] = 3;
 }
 </pre>
 
-<code>T[i]</code> s'utilise comme une variable. On peut l'affecter : 
+<code>T[i]</code> can be used just like a variable. We can set a new value: 
 <pre>T[i] = 78;</pre>
 
-<p>On peut lire sa valeur : 
+<p>We can access its value: 
 <pre>x = T[i];</pre></p>
 
-<p>On peut tester cette valeur :
+<p>We can test this value:
 <pre>
 if (T[i] > 0 ) {
     // instructions...
 }
 </pre></p>
 
-<h3>Déclaration d'un tableau</h3>
-Un tableau se déclare de la manière suivante :
+<h3>Declaring an array</h3>
+An array can be declared the following way:
 <pre>int[] T;</pre>
 
-<p><code>int</code> indique que les éléments du tableau <code>T</code> 
-sont de type entier est le nom du tableau, <code>[]</code> indique qu'il 
-s'agit d'un tableau. On peut aussi écrire cette déclaration de la 
-manière suivante. Les deux écritures sont syntaxiquement équivalente,
-mais la première est souvent préférée en Java.
+<p><code>int</code> means that the elements of the array are of type integer;
+<code>T</code> is the name of the array and <code>[]</code> means that we
+are speaking of an array. It is also possible to declare the same array the
+following way. Both writings are equivalent, but the first one is often
+prefered in Java.
 <pre>int T[];</pre></p>
 
-<h3>Allocation d'un tableau</h3>
+<h3>Allocating an array</h3>
 
-Déclarer un tableau <code>T</code> nous réserve juste le nom 
-<code>T</code> pour l'utiliser plus tard. Mais le tableau n'est pas initialisé :
-il n'a pas de valeur. Que voudrait dire <code>T[4]</code> si nous n'avons pas
-encore dit que <code>T</code> est un tableau d'au moins 5 éléments ?
+Declaring an array <code>T</code> only reserve the name <code>T</code> for
+later use. But the array is not initialized yet: it does not have any
+value. What would <code>T[4]</code> mean if we didn't say that the array is
+at least 5 cells long?
 
-<p>Avant tout, il faut donc lui affecter une valeur à <code>T</code>:
+<p>First and foremost, we have to give a value to <code>T</code>:
 <pre>T = new int[10];</pre>
-<code>new</code> indique qu'il faut créer quelque chose, et <code>int[10]</code>
-indique qu'il s'agit d'un tableau de 10 valeur entières. En réponse, un tableau 
-d'entiers de longueur 10 est crée en mémoire, et la variable <code>T</code> 
-référence ce tableau.
+<code>new</code> means that we want to create something, and
+<code>int[10]</code> means that it is an array of 10 integer values. In
+return, an array of 10 integer cells is created in memory, and the
+<code>T</code> variable reference this array.
 
-<p>La taille d'un tableau est fixée et ne peut plus être changée après la création
-du tableau. Pour connapitre la taille d'un tableau <code>T</code>, on peut consulter 
-la valeur de la variable <code>T.length</code>.</p>
+<p>The size of an array is fixed and cannot be changed after the creation of
+the array. To know the size of a <code>T</code> array, we can consult the
+value of the variable <code>T.length</code>.</p>
 
 <p>
-On ne peut pas écrire :
-<pre>int T[10]; // FAUX !!!</pre>
-Il faut absolument utiliser l'instruction <code>new</code>. Par contre, on peut très
-bien donner la dimension par une variable <code>i</code>.
+It is forbidden to write:
+<pre>int T[10]; // WRONG!!!</pre>
+You are required to use the <code>new</code> instruction. On the other hand,
+you perfectly can specify the size with a variable <code>i</code>.
 <pre>T = new int[i];</pre>
-Dans ce cas, la taille du tableau sera la valeur de <code>i</code> <b>au moment où on a 
-fait le</b> <code>new</code>. Si <code>i</code> change après coup, cela ne modifie pas
-la taille du tableau.
+In this case, the array's size will be set to the value of <code>i</code>
+<b>when <code>new</code> gets called</b>. If the variable changes afterward,
+it won't change the array's size.
 
-<h4>Déclaration et allocation</h4>
+<h4>Declaration and allocation</h4>
 <pre>int[] T = new int[10];</pre>
 
-On déclare et alloue le tableau en une seule ligne.
+We declare and allocate the array on the same line.
 
-<h4>Déclaration et initialisation</h4>
+<h4>Declaration and initialization</h4>
 <pre>int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };</pre>
 
-On déclare, alloue et initialise le tableau en une seule ligne. Pour connaître 
-la taille du tableau à allouer, le compilateur compte les valeurs données. 
-Ce code est équivalent à :
+We declare, allocate and initialize the array on the same line. To know the
+size of the array to allocate, the compiler counts the provided values. This
+code is equivalent to:
 <pre>
 int[] T = new int[10];
 T[0] = 1;
@@ -118,7 +119,7 @@ T[1] = 2;
 T[9] = 10;
 </pre>
 
-C'est aussi équivalent au code :
+It is also equivalent to:
 <pre>
 int[] T = new int[10];
 for (int i=0; i&lt;T.length; i++) {
@@ -126,40 +127,41 @@ for (int i=0; i&lt;T.length; i++) {
 }
 </pre>
 
-<h3>Tableaux et paramètres de méthode</h3>
-On peut tout à fait passer un tableau en paramètre d'une méthode. La méthode doit 
-l'indiquer dans son prototype de la façon suivante:
-<pre>void maMethode(int[] valeurs) {
-  // faire quelque chose
+<h3>Arrays and method parameters</h3>
+It is perfectly ok to pass an array to a method as a parameter. The method
+must have a prototype similar to:
+<pre>void myMethod(int[] values) {
+  // do something
 }</pre>
 
-Coté appelant, c'est aussi simple :
+On the caller side, that also very simple:
 <pre>
 int[] tab = new int[10];
-// initialiser les valeurs
-maMethode(tab);
+// initalize the values
+myMethod(tab);
 </pre>
 
-<p>On peut également avoir des méthodes renvoyant des tableaux en résultat :
-<pre>int[] autreMethode() {
-  int[] resultat = new int[10];
-  // faire quelque chose
-  return resultat;
+<p>We can also have methods returns arrays as results:
+<pre>int[] otherMethod() {
+  int[] result = new int[10];
+  // do something
+  return result;
 }</pre>
 
-<h2>Objectif de l'exercice</h2>
-La méthode <code>run()</code> que vous devez écrire doit commencer par
-déclarer un tableau de couleurs (<code>Color[]</code>) et l'allouer. Attention, 
-le premier monde est de taille 6x6, mais ce n'est pas le cas des autres. Utilisez 
-donc la méthode <code>getWorldHeight()</code> pour retrouver le nombre de lignes du 
-monde actuel.
+<h2>Goal of this exercise</h2>
+The <code>run()</code> method that you should write must declare an array of
+colors (<code>Color[]</code>) and allocate it. Beware, the first world is
+6x6, but this is not the case of the others. Use the
+<code>getWorldHeight()</code> method to retrieve the amount of lines in the
+current world.
 
-<p>Une fois le tableau alloué, il faut le remplir. Pour chaque case de la colonne, 
-lisez la couleur du sol (avec <code>getGroundColor()</code>), et stockez le résultat de
-cette méthode dans la bonne case du tableau.</p>
+<p>Once the array allocated, we have to fill it. For each cel of the row, read
+the ground color (with <code>getGroundColor()</code>), and store it in the
+right cell of the array.</p>
 
-<p>Une fois le tableau initialisé, il faut répliquer le motif sur toutes les colonnes, 
-par exemple en exécutant <code>getWorldWidth()</code> fois une méthode écrite tout exprès.</p> 
+<p>Once hte array initialized, you have to reapply the pattern on every rows,
+for example by excuting <code>getWorldHeight()</code> times a method written
+specifically for this.</p> 
 
-<p>À vous de jouer.</p>
+<p>You're up.</p>
 

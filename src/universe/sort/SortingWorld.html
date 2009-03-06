@@ -1,21 +1,22 @@
-<h1>Sorting World</h1>
-Ce monde vous donne les outils pour expérimenter les algorithmes de tris. On peut l'utiliser de deux manières différentes : 
-la première est bien sûr d'écrire les algorithmes de tri demandés. Mais on peut aussi se contenter dans un premier temps de lancer
-la démo de chaque exercice et observer les algorithmes de tri fonctionner. Cela permet 
-de mieux se rendre compte des différences d'efficacité entre eux.
+<h1>Sorting World </h1>
+This world provides tools to experiment with the sorting algorithms. It can
+be used in two different ways: the first one is naturally to write the
+required sorting algorithms. But it is also possible to simply use the demo
+mode of each exercise to observe the behaviour of sorting algorithms. It
+helps understanding the differences between each of them.
 
-<h2>Méthodes disponibles pour les algorithmes de tri</h2>
+<h2>Methods available to sorting algorithms</h2>
 <table border=1>
-<tr><td>int getValueCount()</td><td>Retourne le nombre de valeurs dans le tableau</td></tr>
+<tr><td>int getValueCount()</td><td>Returns the amount of values in the array</td></tr>
 
-<tr><td>boolean compare(int i, int j)</td><td>Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j</td></tr>
-<tr><td>boolean compareTo(int i, int val)</td><td>Retourne vrai ssi le contenu de la case i est inférieur à la valeur val</td></tr>
+<tr><td>boolean compare(int i, int j)</td><td>Returns true if the content of cell i is smaller than the one of cell j</td></tr>
+<tr><td>boolean compareTo(int i, int val)</td><td>Returns true if the content of cell i is smaller than value val</td></tr>
 
-<tr><td>void swap(int i, int j)</td><td>Inverse le contenu de la case i et celui de la case j</td></tr>
-<tr><td>void copy(int from, int to)</td><td>Recopie le contenu de la case from dans la case to</td></tr>
+<tr><td>void swap(int i, int j)</td><td>Swaps the content of cell i and the one of cell j</td></tr>
+<tr><td>void copy(int from, int to)</td><td>Copy the content of cell 'from' into the cell 'to'</td></tr>
 
-<tr><td>int getValue(int idx)</td><td>Retourne la valeur de la case idx</td></tr>
-<tr><td>void setValue(int idx,int val)</td><td>Affecte la valeur val à la case idx</td></tr>
+<tr><td>int getValue(int idx)</td><td>Returns the value of cell idx</td></tr>
+<tr><td>void setValue(int idx,int val)</td><td>Sets cell 'idx' to the value 'val' </td></tr>
 
-<tr><td>void sorted(int idx)</td><td>Indique que la case idx est triée (pour l'affichage)</td></tr>
+<tr><td>void sorted(int idx)</td><td>Tells that the cell 'idx' was successfully sorted (only used for display)</td></tr>
 </table>

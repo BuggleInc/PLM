@@ -1,27 +1,36 @@
-<h2>Longer les murs</h2>
+<h2>Following the walls</h2>
 
-<p>Cette fois-ci le labyrinthe est beaucoup plus compliqué. Le hasard ne sera pas suffisant, il va falloir être intelligent !</p>
+<p>This time, the maze is a bit more complicated. Random won't be enough, we
+ough to be smart!</p>
 
-<p>Heureusement, ce labyrinthe est plus simple qu'il n'y paraît, il ne contient aucun îlot qui risquerait de faire tourner en rond notre buggle. Pour sortir de ce genre de labyrinthe, il suffit à votre buggle de longer un mur.  De façon imagée votre buggle
-doit poser une de ses pattes sur un mur (celui à sa droite, ou celui à
-sa gauche). Et, tout en essayant de garder sa patte poser sur ce mur,
-votre buggle doit avancer jusqu'à ce qu'il trouve la sortie du labyrinthe et ce biscuit qu'il
-apprécie tant.</p>
+<p>Hopefully, this maze is simpler that it seems at the first glance: there is
+not island where our buggle could loop around for ever. To get out of this
+kind of maze, the buggle only have to follow a wall (the one on its left or
+the one on its right). While keeping the paw on the wall, the buggle must
+move forward until it finds the maze exit and this biscuit it loves so much.</p>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> 
+<h3>Exercise goal</h3>The goal of this exercise is to write an algorithm allowing the buggle to
+get out of this maze.
 
-L'objectif de cet exercice est d'écrire un algorithme permettant à votre
-buggle de sortir du labyrinthe.
-
-<p>Avant d'écrire votre programme, choisissez une direction (droite ou gauche). C'est les murs de ce côté que votre buggle suivra.
+<p>Before writing your program, pick a side (left or right). Your buggle will
+follow the buggles on this side.
 </p>
-<p>Ecrivez une méthode <code>void putHandOnSideWall()</code> qui déplacera votre buggle afin qu'il s'appuie sur le mur du côté que vous avez choisi. Pensez à faire pivoter votre buggle pour qu'il ne regarde plus le mur.
+<p>Write a method <code>void putHandOnSideWall()</code> which moves your buggle
+so that it goes to the wall on the selected side. Do not forget to change
+the buggle heading so that it does not face the wall anymore at the method
+end.
 </p>
 <p>
-Ecrivez une méthode <code>void keepHandOnSideWall()</code> qui fait avancer votre buggle d'une case tout en gardant la patte sur le mur du côté choisi. Vous devez donc vous assurez que votre buggle garde toujours la patte sur le mur et également qu'il ne risque pas de percuter un mur.
+Write a method <code>void keepHandOnSideWall()</code> which lets the buggle
+move one step forward while keeping the paw on the wall on the selected
+side. You thus have to ensure that the buggle always keep the paw on the
+wall, but also that it won't crash into a wall.
 </p>
 <p>
-Enfin, écrivez la méthode <code>void run()</code> qui cherche le mur le plus proche (méthode <code>void putHandOnSideWall()</code>), puis parcours le labyrinthe (méthode <code>void keepHandOnSideWall()</code>) jusqu'à trouver la sortie et le biscuit. Enfin il ne faut pas oubliez de prendre la baggle.
+Finaly, write a <code>run()</code> method which looks for the closer wall
+(using <code>void putHandOnSideWall()</code>) and then traverse the maze
+(using  <code>void keepHandOnSideWall()</code>) until it finds the biscuit
+and the exit. Don't forget to pick the baggle up.
 </p>
-<p>À vous de jouer.</p>
+<p>You're up.</p>
 

@@ -1,26 +1,26 @@
-<h1>Tricots, tableaux et modulos</h1>
+<h1>Knitting, Arrays and modulos</h1>
 
-Cet exercice ressemble au précédent : il faut reproduire le motif de couleurs de la 
-première colonne dans les colonnes suivantes. 
+This exercise is similar to the previous one: you have to reproduce the
+color pattern of the first cell into the other ones. 
 
-<p>La première différence est que le monde 
-est entouré d'un mur : il faut donc modifier légèrement les parcours pour s'assurer 
-que la buggle ne se cogne pas sur les bords. Le plus simple est de traiter la première 
-case de la colonne en dehors de la boucle <code>for</code> (avant la boucle), et faire
-seulement <code>getWorldHeight()-1</code> pas dans la boucle.</p>
+<p>The first difference is that the world is bordered of walls: you thus have
+to slightly modify your trajectory to ensure that the buggle does not crash
+into a wall. The simpler for that is to handle the first cell out of the
+<code>for</code> loop and do only <code>getWorldHeight()-1</code> steps in
+the loop.</p>
 
-<p>La seconde différence est que le décalage à effectuer entre les colonnes n'est pas fixe, 
-mais écrit sur la première case de chaque colonne. Pour obtenir l'information sous forme 
-d'un entier, on peut utiliser:
+<p>The other difference is that the offset to apply between columns is not
+fixed, but written on the first cell of each column. To get the info as an
+integer, we can use:
 <pre>int offset = Integer.parseInt(readMessage())</pre>
 
-<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine de caractères, 
-tandis que <code>Integer.parseInt()</code> transforme une chaine de caractères en entiers 
-en la <i>lisant</i>.
+<code>readMessage()</code> gets the message on the ground as a String, while
+<code>Integer.parseInt()</code> transforms a String into an integer by
+<i>reading</i> it.
 
-<p>Ensuite, pour trouver la bonne couleur à utiliser, le plus simple est d'utiliser l'opérateur 
-<code>%</code> (modulo). Par exemple, <code>(i + 5) % taille</code> permet de trouver la 
-<code>i</code>ieme case d'un tableau de taille <code>taille</code> quand on applique un 
-décalage de <code>5</code> cases.
+<p>Then, to pick the right color, the easier is to use the <code>%</code>
+(modulo) operator. For example, <code>(i + 5) % size</code> allows to
+retrieve teh <code>i</code>th cell of an array of size <code>size</code>
+with an offset of <code>5</code>.
 
-<p>À vous de jouer.</p>
+<p>You're up.</p>

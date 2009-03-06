@@ -1,0 +1,48 @@
+<h2>Monde de serpents</h2>
+
+Nous allons maintenant apprendre à la buggle à explorer son monde. Sa position
+de départ est en bas à gauche, et elle doit visiter toutes les cases juqu'en 
+haut (en coloriant le sol sur son passage). 
+
+La boucle principale de la méthode <code>run()</code> (que vous devez écrire) 
+est de la forme : 
+<pre>
+ baisser le crayon
+ tant que l'on est pas à la position finale
+   avancer comme un serpent
+</pre>
+
+Le prototype de cette méthode (sa première ligne) doit être :
+<pre>public void run()</pre>
+(nous verrons plus tard ce que ce <code>public</code> signifie).
+
+Il faut donc écrire deux méthodes en plus de <code>run()</code>. L'une renvoit
+un booléen et indique si l'on se trouve à une position finale, tandis que l'autre
+ne renvoit pas de résultat et avance d'un pas.
+
+<p>On se trouve sur une position finale si et seulement si :
+<ul>
+  <li>On est face à un mur</li>
+  <li>Il y a un mur au nord de la buggle. Donc, si la buggle regarde à l'est, 
+      il faut vérifier s'il y a un mur à gauche, et si la buggle regarde à l'ouest, 
+      il faut vérifier s'il y a un mur à droite.<br/>
+      On obtient la direction actuelle de la buggle avec la méthode
+      <code>getDirection()</code>, et on sait si elle regarde à l'est avec le test
+      <code>getDirection() == Direction.EAST</code> (WEST pour ouest).<br/>
+      Pour la vérification elle-même, rien de magique : il faut se tourner et 
+      regarder si on est face à un mur une fois tourné.</li>
+</ul></p>
+
+<p>Ensuite un pas de serpent se fait en avancant d'un pas si l'on est pas face à un mur, 
+et en montant à la ligne du dessus sinon (càd, si on regarde à l'ouest face à un mur,
+il faut tourner à droite, avancer, tourner à droite).</p>
+
+<p>Indication: la boucle principale de la méthode <code>run()</code> doit continuer 
+tant que la fonction adéquate renvoie faux. On peut l'écrire de deux façons:
+<pre>while (fonctionTest() == false)</pre>
+ou bien
+<pre>while (! fonctionTest())</pre>
+Cela fonctionne car le point d'exclamation en java indique une négation booléenne. 
+
+<p>À vous de jouer...</p>
+

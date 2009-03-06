@@ -1,54 +1,66 @@
-<h2>Instructions conditionnelles</h2>
+<h2>Conditional instructions</h2>
 
-Les programmes faits d'une simple suite d'instructions comme celui de l'exercice précédent sont bien ennuyeux. Ils font toujours la même chose, et ne peuvent pas réagir aux conditions extérieurs. Une <b>instruction conditionnelle</b> permet au programme de s'adapter en disant quelque chose comme <i>S'il pleut, prend un parapluie</i>. 
+Programs made of simple suite of instructions similar to previous exercise
+are quite boring. They always do the same thing, and cannot react to
+external conditions. A <b>conditional</b> let the program adapt by doing
+something like <i>if it's raining, take an umbrella</i>. 
 
-<p>La syntaxe Java est la suivante :
+<p>The Java syntax is the following:
  <pre>if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>
 }</pre>
-Si la condition est vraie, tout le code compris entre le { et le } correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est possible d'écrire plusieurs instructions entre les deux accolades (voire un autre test).</p>
+If the condition is true, any code enclosed between the { and the
+corresponding } will be executed. If not, it will be ignored. Of course, it
+is possible to write more than one instruction between the curly brackets
+(even another test).</p>
 
-<p>Une condition peut être une variable de type <tt>boolean</tt>. Le code entre accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et il sera ignoré si elle vaut <tt>false</tt> (faux).</p>
+<p>A condition can be a variable of type <tt>boolean</tt>. The code between
+curly braces will get executed if the variable is <tt>true</tt> and it will
+be ignored if it is <tt>false</tt>.</p>
 
-<p>La condition peut aussi être un test arithmétique, comme <tt>x</tt>
-   <b>==</b> <tt>5</tt>, qui vérifie si la valeur actuelle de
-   <tt>x</tt> est 5, ou bien comme <b>!=</b> (teste l'inégalité),
-   <b>&lt;</b> (inférieur à), <b>&gt;</b> (supérieur à), <b>&lt;=</b>
-   (inférieur ou égal à), <b>&gt;=</b> (supérieur ou égal à).</p>
+<p>The condition can also be an arithmetic test, such as <tt>x</tt> <b>==</b>
+<tt>5</tt>, which checks whether the current value of <tt>x</tt> is 5, or
+such as <b>!=</b> (checking inequality), <b>&lt;</b> (smaller than),
+<b>&gt;</b> (larger than), <b>&lt;=</b> (smaller or equal to), <b>&gt;=</b>
+(larger or equal to).</p>
 
-<p>Attention au piège classique, qui consiste à tester l'égalité d'une
-   variable avec = au lieu de ==. Heureusement, le compilateur Java
-   vous indique le plus souvent ce problème, mais pas tout le
-   temps. Si la variable est de type booléen, il peut se faire prendre
-   au piège, et il convient donc d'être attentif...
+<p>Beware of the classical trap, which consists in testing the equality of a
+variable using = instead of ==. Hopefully, the Java compiler detects this
+problem most of the time, but not always. If the variable is of type
+boolean, it can get trapped, so you have to be careful...
 
-<p>La condition peut également être un appel à certaines méthodes
-   particulières, dont le résultat est un booléen. Par exemple, la
-   méthode <tt>isFacingWall()</tt> de la buggle renvoie vrai si la
-   buggle est face à un mur, et faux sinon.
+<p>The condition can also be a call to some perticular methods returning a
+boolean. For example, the <tt>isFacingWall()</tt> method of the buggle
+returns true if the buggle is facing a wall, and false in the other case.
 
-<p>Enfin, il est possible de construire une condition composée de plusieurs sous-conditions reliées par des opérations booléennes.
+<p>Finally, a condition can be composed of several sub-conditions connected by
+boolean operations.
 <ul>
-  <li><tt>cond1 && cond2</tt> est vraie quand <tt>cond1</tt> <b>et</b> <tt>cond2</tt> sont toutes deux vraies.</li>
-  <li><tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée).</li>
-  <li><tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas.</li>
-  <li>On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever les ambiguïtés sur l'ordre d'évaluation.</li>
+  <li><tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b>
+<tt>cond2</tt> are both true.</li>
+  <li><tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt>
+are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated).</li>
+  <li><tt>!cond</tt> is true if <tt>cond</tt> is false.</li>
+  <li>It is possible to force the order of evaluation by adding parenthesis. In
+ambigous cases, do not hesitate to add more parenthesis to remove any
+ambiguities on evaluation order.</li>
 </ul> 
 
-<p>Pour finir, il est possible de spécifier ce qu'il faut faire quand la condition est fausse, en utilisant la syntaxe suivante :
+<p>At least, it is possible to specify what to do when the condition is false
+using the following syntax:
  <pre>if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
 } else {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
 }</pre>
 
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs">
-Si la buggle est face à un mur (prédicat <tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer d'un pas.
+<h3>Exercise goal</h3><a name="Objectives">If the buggle is facing a wall (predicate
+<tt>isFacingWall()</tt>), you must move one step back. If not, you must move
+one step forward.
 
-<p>Cet exercice est un peu particulier : il faut que votre programme
-   fonctionne pour plusieurs buggles, chacune étant dans une situation
-   initiale différente. Le même code sera utilisé pour chacune d'entre
-   elles.</p>
+<p>This exercise is a bit different: your code has to work for several buggles,
+each of them being in a specific initial condition. The same code will be
+executed for each of them.</p>
 
-<p>Quand votre programme fonctionne, passez à l'exercice suivant.</p>
+<p>When your program works, move forward to the next exercise.</p>

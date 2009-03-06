@@ -1,27 +1,29 @@
-<h2>Boucles tant que<tt> (while)</tt></h2>
+<h2>While loops</h2>
 		
-<p>En plus des instructions conditionnelles, une autre construction pratique est de pouvoir demander à la buggle de répéter une action tant qu'une condition particulière n'est pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe Java est la suivante :
+<p>In addition to conditionals, another handy construction is the ability to
+repeat an action while a specific condition does not appear. A while loop is
+used for that, with the following Java syntax:
  <pre>while (<b>condition</b>) {
 &nbsp;&nbsp;<b>action()</b>;
 }</pre>
 
-<p>Evidement, si l'action en question ne modifie pas la valeur de la
-   condition, la buggle va exécuter l'action à l'infini. C'est dans ce
-   genre de cas que le bouton <b>stop</b> de l'interface devient
-   utile. Pour tester cela, vous pouvez essayer de taper le code
-   suivant dans l'éditeur :
+<p>Naturally, if the chosen action does not modify the value of the condition,
+the buggle will do the action endlessly. The <b>stop</b> button of the
+interface becomes then handy. To test this, you can try to type the
+following code in the editor:
 
  <pre>while (true) {
 &nbsp;&nbsp;turnLeft();
 }</pre>
 
-La buggle va tourner vers la gauche tant que <code>true</code> est
-vrai (sans fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton stop.</p>
+The buggle will turn left while <code>true</code> is true (ie, endlessly),
+or until you stop it manually using the stop button.</p>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs">
-Il vous faut maintenant écrire le code nécessaire pour que vos buggles avancent jusqu'à rencontrer un mur. L'idée est donc de faire :
-<pre>tant que l'on est pas face à un mur, faire :
-&nbsp;&nbsp;avancer();</pre>
+<h3>Exercise goal</h3><a name="Objective">You now have to write some code so that your buggles
+move forward until they encounter a wall. The idea is thus to do something
+like:
+<pre>while we are not facing a wall, do:
+&nbsp;&nbsp;moveForward();</pre>
 
-<p>Quand votre programme fonctionne, passez à l'exercice suivant.</p>
+<p>When your program works, move forward to the next exercise.</p>
 

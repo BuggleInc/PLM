@@ -1,15 +1,20 @@
-<h1>Tri par selection</h1>
+<h1>Selection Sort</h1>
 
-Cet exercice est l'occasion d'implémenter un autre algorithme très classique : le tri par sélection.
+In this exercise we will implement another classical algorithm: selection
+sort.
 
-<p>Son principe est simplement de sélectioner pour chaque case du tableau la plus petite valeur de la partie 
-pas encore triée. Ainsi, pour la premiere case, je prend la plus petite valeur du tableau. Pour la seconde, je prend 
-la seconde plus petite valeur, qui se trouve être la plus petite des cases n'étant pas encore triées.     
+<p>The idea is simply to select for each cell of the array the smallest value
+from the part not already sorted. Thus for the first cell, it takes the
+smallest value over the whole array. For the second one, it takes the second
+smallest value, which is the smallest value from the cell not already
+sorted.     
 
-<p>Plus généralement, pour la case N, je cherche la case M de [n;lgr] contenant la plus petite valeur possible. Ensuite,
-j'inverse le contenu de la case N et celui de la case M. 
+<p>More generally, for the cell N, it looks the cell M in [n;len] containing
+the smallest possible value of the interval. Then, it swaps the content of
+cell N with the one of cell M. 
 
-<h2>Variantes possibles</h2>
-Un autre algorithme classique dont le principe repose sur la sélection des bons éléments est le tri par tas, mais 
-il utilise une structure de données en tas, que nous n'avons pas encore introduite. Sachez simplement que ce tri 
-présente un coût en O(n log n) dans le pire des cas, ce qui en fait un algorithme très intéressant en pratique. 
+<h2>Existing variations</h2>
+Another classical algorithm which idea is based on the selection of good
+elements is HeapSort, but it uses a heap data structure which we did not see
+yet. Simply remember that HeapSort provides a O(n log n) performance in
+worst case, which is why it is a very interesting algorithm in practice. 

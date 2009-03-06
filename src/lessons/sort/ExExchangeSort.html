@@ -1,150 +1,178 @@
-<h1>Le tri à bulle et variantes</h1>
+<h1>BubbleSort and variations</h1>
 
-Vous voici dans le monde des tris. Il vous permet d'expérimenter avec les différents algorithmes de tri existant.
-Consultez l'aide du monde ("Help->About this world") pour une aide sur les primitives utilisables par vos algorithmes.
+Welcome to the sorting world. It allows you to experiment with the existing
+sorting algorithms. Please consult the world help ("Help"->"About this
+world") for more information on the available buildins for your algorithms.
 
-<p>Dans ce premier exercice, nous allons voir les plus simples d'entre eux. L'onglet "Source code" est composé de 
-plusieurs sous-onglets, correspondant aux différents algorithmes à écrire. Pour réussir l'exercice, il faut que
-votre solution réalise le même nombre de lectures et écritures que la solution codée dans l'objectif. 
-Attention donc à suivre le pseudo-code de chaque algorithme à la lettre!
+<p>In this first exercise, we will explore some of the simpler of them. The tab
+"Source code" contains several sub-tabs, corresponding to the different
+algorithms to write. To succeed in this exercise, your solution must sort
+the array using exactly the same amount of read and write than the
+solution. That is why you have to follow strictly the pseudo-code of each
+algorithm.
 
 <h2>BubbleSort</h2>
 
-Le tri à bulles ou tri par propagation consiste à faire remonter progressivement les plus petits éléments d'une liste, 
-comme les bulles d'air remontent à la surface d'un liquide. L'algorithme parcourt la liste, et compare les couples 
-d'éléments successifs. Lorsque deux éléments successifs ne sont pas dans l'ordre croissant, ils sont échangés. Après 
-chaque parcours complet de la liste, l'algorithme recommence l'opération. Lorsqu'aucun échange n'a lieu pendant un 
-parcours, cela signifie que la liste est triée : l'algorithme peut s'arrêter.
+Bubble sort consists in progressively moving up the smaller elements of the
+array, as if they were air bubbles moving up to the surface of a liquid. The
+algorithm traverse the array, and compare any pair of adjacent elements. If
+two adjacent elements are wrongly sorted, they are swapped. Once the array
+was completely traversed, the operation starts again from the begining. When
+no elements were sorted after a full traversal, it means that the array is
+completely sorted: the algorithm can stop. Bubble sort is studied because of
+its simplicity, but it is almost never used in practice because of its bad
+performance (O(n^2) on average).
 
-La simplicité de cet algorithme justifie son étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est 
-quasiment jamais utilisé en pratique.
-
-<p>Le pseudo-code de cet algorithme est donc le suivant :
-<pre>faire: 
-        Pour tout i dans [0,lgr-2]
-          Si les cases i et i+1 doivent être inverser, le faire
-     tant qu'on a inverser des choses lors du dernier parcours
+<p>The pseudo-code of this algorithm is thus the following:
+<pre>do: 
+        For each i in [0,len-2]
+          If cells i and i+1 must be swapped, do it
+while we swapped something during last traversal
 </pre>
 
 <h2>BubbleSort2</h2>
 
-En étudiant le comportement du tri à bulle, on peut voir une première optimisation facile à effectuer: Après un parcours,
-le dernier élément du tableau est forcément le plus grand d'entre tous car le parcours l'a fait remonté comme une bulle 
-à sa position. Plus généralement, après N parcours, on sait que les N derniers éléments du tableau sont déjà triés. En
-conclusion, il n'est pas utile de les recomparer sur les parcours suivants. Dans un premier temps, nous ferons autant de
-parcours qu'il y a d'éléments dans le tableau. Cela nous donne le pseudo-code suivant :
+If you look carefully at the behavior of BubbleSort, a first easy
+optimisation appears: after one traversal, the last element of the array
+must be the biggest of all since the traversal moved it up like a bubble to
+its position. More generally, after N traversal, we know that the N last
+elements of the array are already sorted. It is thus not necessary to
+compare them again during the subsequent traversals. For now, we will have
+as many traversal as there is in the array. This gives the following
+pseudo-code:
 
-<pre>Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)
-       Pour tout j dans [0, i]
-          Si les cases j et j+1 doivent être inverser, le faire
+<pre>For all i in [len-1,0] (traversing from biggest to smallest)
+       For all j in [0, i]
+          If cells j and j+1 must be swapped, do it
 </pre>
 
-Lorsqu'on exécute cet algorithme, il peut être un peu décevant de constater qu'il s'exécute à la même vitesse que la 
-version de base de BubbleSort. C'est un effet graphique seulement puisque seules les changements de valeurs dans le tableau 
-sont représentées. Comme cette variante consiste à éviter des comparaisons inutiles, elle effectue très exactement le même
-nombre d'échanges que la version de base. Il est donc normal que notre interface graphique la représente à la même vitesse que 
-la version de base. Mais les statistiques sur le nombre de lectures montrent bien que l'on a économisé plus d'un quart du 
-nombre de lectures, ce qui n'est pas si mal. 
+When we run this algorithm, it is quite disapointing to see that it runs
+approximately at the same speed than the basic version of BubbleSort. This
+is a graphical effect only since only value changes are graphically
+represented. Since this variation avoids some useless comparisons, it does
+exactly the same amount of swaps that the basic version. It is thus quite
+logical that the graphical interface draws this version at the same pace
+than the base version. But the stats on the amount of reads show that we
+saved about the fourth of the amount of reads, which is not bad. 
 
-<p>D'un point de vue complexité algorithmique, cela ne change rien: cette variante est toujours en O(n2) en moyenne (on ne 
-gagne que sur la constante).
+<p>From the asymptotic complexity point of view, there is absolutely no
+difference: this variation is still in O(n^2) on average (our gain is only
+on the constant term, ignored when computing the asymptotic complexity).
 
 <h2>BubbleSort3</h2>
 
-Réintroduisons maintenant la petite optimisation que nous avions retiré à l'étape précédente : Si un parcours n'a rien inversé, 
-c'est que le tableau est maintenant trié. Cela nous donne le pseudo-code suivant :
+Let's now reintroduce the little optimization we removed at previous step:
+if a traversal does not swap any element, it means that the array is already
+sorted. This leads to the following pseudo-code:
 
-<pre>Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)
-       Pour tout j dans [0, i]
-          Si les cases j et j+1 doivent être inverser, le faire
-       Si le parcours sur les j n'a rien inversé, quiter la fonction
+<pre>For all i in [len-1,0] (traversing from biggest to smallest)
+       For all j in [0, i]
+          If cells j and j+1 must be swapped, do it
+       If traversal on j did not swap anything, return from the function
 </pre>
 
-Cet optimisation est plus décevante : on ne gagne que quelques pourcents en nombre de lectures sur BubbleSort2.
+This optimization is even more disapointing: it only provide a gain of a few
+percents on the amount of reads over BubbleSort2.
 
 <h2>CocktailSort</h2>
 
-Pour améliorer encore notre algorithme, il faut regarder un peu plus en détail son comportement. On peut constater que les 
-grands éléments sont très rapidement mis en place tandis que les petits éléments se déplacent très lentement vers leur 
-destination. On parle classiquement de lièvres et de tortues pour désigner respectivement les grandes valeurs et les petites 
-valeurs. 
+To improve further the algorithm, we need to look closer its behavior. One
+can notice that big elements are moved very quickly in position while small
+ones move very slowly to their destination. They are thus traditionally
+refered to as "rabits" and "turtles" respectively for big fast values and
+small slow ones.. 
 
-<p>Pour permettre aux tortues d'aller plus vite, le tri cocktail parcours alternativement le tableau de gauche à droite et 
-de droite à gauche. Voici son pseudo-code:
+<p>To help the turtles moving faster, the cocktail sort traverse alternatively
+the array from right to left and from left to right. Here is the
+pseudo-code:
 
 <pre>
-Faire
-  Pour tout i dans [0,lgr-2], faire:
-    si i et i+1 doivent être échangées, le faire
-  Pour tout i dans [lgr-2,0] en descendant, faire:
-    si i et i+1 doivent être échangées, le faire
-tant qu'au moins l'un des parcours a inversé un élément
+Do
+  For all i in [0,len-2], do:
+    if i and i+1 must be swapped, do it
+  For all i in [len-2,0] (downward), do:
+    if i and i+1 must be swapped, do it
+while at least one of the traversal swapped an element
 </pre>
 
-On constate que le tri cocktail fait très exactement le même nombre d'échanges que le tri à bulle, mais qu'il améliore les 
-choses sur le nombre de lectures. Il reste cependant moins bon que BubbleSort2 en la matière. 
+One can see that cocktail sort achieves exactly the same amount of swaps
+than the bubble sort, but improves sligtly on read amount. It is however
+still worse than BubbleSort2 to that extend. 
 
 <h2>CocktailSort2</h2>
 
-Nous allons appliquer la même optimisation que BubbleSort2 à CocktailSort. Il nous faut nous souvenir des bornes du tableau pas 
-encore trié, et le parcourir alternativement de droite à gauche et de gauche à droite: 
+We will now apply to CocktailSort the same optimization than BubbleSort2 did
+to BubbleSort. We must remember the limits of the array part not being
+sorted yet, and traverse it alternatively from left to right and from right
+to left: 
 <pre>
-debut=0; fin=lgr-2
-Faire
-  Pour tout i dans [debut,fin], faire:
-    si i et i+1 doivent être échangées, le faire
-  fin--
-  Pour tout i dans [fin, debut] en descendant, faire:
-    si i et i+1 doivent être échangées, le faire
-  debut++
-tant qu'au moins l'un des parcours a inversé un élément
+beg=0; end=len-2
+do
+  For all Pour i in [beg,end], do:
+      If cells i and i+1 must be swapped, do it    
+  end--
+  For all Pour i in [beg,end] (downwards), do:
+      If cells i and i+1 must be swapped, do it    
+  beg++
+while at least one of the traversal swapped an element
 </pre>
 
 <h2>CocktailSort3</h2>
-Même si la complexité algorithmique de CocktailSort2 est la même que le tri à bulle, il semble bien mieux s'en tirer en 
-pratique. On peut encore l'améliorer un tout petit peu en arretant tout si le parcours dans l'ordre croissant n'a rien inversé, 
-sans faire le parcours dans l'ordre descroissant. De même, on peut quiter si le parcours croissant a inversé des choses, mais
-pas le parcours décroissant. 
+Even if the asymptotic complexity of CocktailSort2 is the same than the one
+of BubbleSort, it seem to perform better in practice. It is even possible to
+improve a bit further by stopping it if the first traversal didn't found
+anything to swap, without achieving the downwards traversal. Likewise, we
+can stop if the upward traversal found something to swap, but not the
+downwards one. 
 
 <h2>CombSort</h2>
  
- Nous avons vu que le tri cocktail permet d'améliorer un peu les choses pour les tortues (ie, les petites valeurs près de la 
- fin du tableau), mais on peut faire mieux. CombSort revient à leur faire prendre un racourci: Au lieu de comparer les valeurs
- adjacentes, on compare des valeurs séparés par un écart plus grand que 1. Ainsi, les tortues vont se déplacer de <i>ecart</i> 
- cases à chaque parcours. Bien entendu, il faut appliquer l'algorithme avec des écarts de plus en plus petit et terminer avec 
- <i>ecart=1</i> pour s'assurer que le tableau est entièrement trié à la fin. Choisir comment réduire l'écart entre les parcours
- est une question difficile (voir wikipédia en anglais sur le thème), mais en pratique, le diviser par 1.3 à chaque fois amène de
- bons résultats. Voici le pseudo-code correspondant :
+ We saw that CocktailSort improve a bit for turtles (ie, small values near to
+the end of the array), but it is still possible to achieve better. ComboSort
+comes down to providing them a short cut: instead of comparing adjacent
+values, we compare values separated by a gap bigger than 1. That way,
+turtles we traverse <i>gap</i> cells at each traversal. Naturally, we have
+to apply the algorithm with decreasing gaps, and finish with <i>gap=1</i> to
+ensure that the array is correctly sorted afterward. Choosing the right gap
+and how to decrease it is a difficult question, but in practice, dividing it
+by 1.3 after each traversal leads to good performance. Here is the
+corresponding pseudo-code:
  
  <pre>
- ecart = lgr;
- faire 
-   si ecart>1 alors
-     ecart = ecart / 1.3
+gap = len;
+do
+   if gap>1 then
+     gap = gap / 1.3
    i = O
-   tant que i+ecart &lt; lgr faire:
-     si i et i+ecart doivent être inversés, le faire
-     ajouter ecart à i
- tant que l'écart est plus grand que 1 et/ou que le dernier parcours a inversé au moins un élément
+   while i+gap &lt; len do:
+     if i and i+gap must be swapped, do it
+     increase i by the gap
+while the gap is bigger than 1 and/or the last traversal swapped at least one pair
 </pre>
 
-Cet algorithme a été inventé par Wlodek Dobosiewicz en 1980 et redécouvert et popularisé par Stephen Lacey et Richard Box, qui
-l'ont décrit dans le magazine Byte d'avril 1991.
+This algorithm was invented by Wlodek Dobosiewicz in 1980, and later
+rediscovered and popularised by Stephen Lacey and Richard Box, who described
+it in Byte Magazine in April 1991
 
 <h2>CombSort11</h2>
  
-Les auteurs de l'algorithme ont constaté que l'on améliore les performances en s'assurant que les dernières valeurs de 
-l'écart sont (11, 8, 6, 4, 3, 2, 1) plutôt que (9, 6, 4, 3, 2, 1) ou (10, 7, 5, 3, 2, 1). Reprenez donc le code de CombSort, 
-et indiquez juste après la mise à jour de l'écart que si la valeur est 9 ou 10, il faut utiliser 11 à la place.  
+The authors of this algorithm constated that the performance is increased if
+we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, 1)
+rather than (9, 6, 4, 3, 2, 1) or (10, 7, 5, 3, 2, 1). Rework the code of
+CombSort to ensure just after the gap update that if it is 9 or 10, we
+should use 11 instead.  
 
 <h2>GnomeSort</h2>
 
-Le tri du gnome s'apparente au tri par insertion, à ceci près que les éléments sont déplacés par une série d'échange comme dans
-le tri à bulle. Le nom vient du comportement supposé des gnomes des jardins quand ils rangent une série de pots de fleurs. Voici
-la description de l'algorithme par son auteur:
+The Gnome sort is similar to insertion sort, but the elements are moved in
+position by a serie of swaps just like in bubble sort. It is named after the
+supposed behavior of garden gnomes when they sort flower pots. Here is a
+description of the algorithm by its author:
 
-<p>Gnome Sort is based on the technique used by the standard Dutch Garden Gnome (Du.: tuinkabouter). Here is how a garden gnome
- sorts a line of flower pots. Basically, he looks at the flower pot next to him and the previous one; if they are in the right 
- order he steps one pot forward, otherwise he swaps them and steps one pot backwards. Boundary conditions: if there is no 
- previous pot, he steps forwards; if there is no pot next to him, he is done.
-    <i>—Dick Grune</i></p>
+<p>Gnome Sort is based on the technique used by the standard Dutch Garden Gnome
+(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower
+pots. Basically, he looks at the flower pot next to him and the previous
+one; if they are in the right order he steps one pot forward, otherwise he
+swaps them and steps one pot backwards. Boundary conditions: if there is no
+previous pot, he steps forwards; if there is no pot next to him, he is
+done.  <i>—Dick Grune</i></p>

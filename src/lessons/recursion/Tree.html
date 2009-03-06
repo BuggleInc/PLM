@@ -1,12 +1,15 @@
-<h2>Arbres</h2>
+<h2>Trees</h2>
 
-Nous allons maintenant dessiner des arbres. Pour cela, nous allons écrire une fonction doublement récursive de prototype 
+We will now draw trees. For that, we will write a method using double
+recursion following this prototype 
 <pre>void tree(int steps, double length, double angle, double shrink)</pre>
 
-<p>Pour dessiner un arbre à quatre étages, il faut dessiner un tronc de la taille indiquée, tourner à droite de 
-l'angle indiqué, faire un arbre à 3 étages, tourner à gauche de deux fois l'angle indiqué, faire un autre 
-arbre à 3 étages, puis revenir à sa position initiale. 
+<p>To draw a tree of four levels, you have to draw a trunk of the given length,
+turn right of the given angle, draw a tree of level 3, turn left twice of
+the given angle, draw another tree of level 3, and come back to your initial
+location. 
 
-<p>Si le tronc d'un arbre mesure length à l'étage N, il mesure shrink*length à l'étage N+1.
+<p>If a tree's trunk is of length 'len', the trunk of the next level tree will
+be of length 'len*shrink'.
  
 

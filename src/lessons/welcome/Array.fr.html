@@ -1,0 +1,165 @@
+<h1>Tricots (et tableaux)</h1>
+
+L'objectif de cet exercice est de reproduire le motif de la première colonne en le
+décalant d'une case (voir l'onglet Objectives pour plus de détails). La grande différence
+entre cet exercice et les précédents sur les motifs, c'est qu'il faut maintenant lire 
+(sur la première colonne) le motif souhaité, puis le reproduire ensuite. Il est 
+impossible de faire autrement car votre programme sera exécuté par trois buggles dans 
+trois mondes différents, chacune ayant un motif propre à reproduire.
+
+<p>Une possibilité est de lire la prochaine case, puis d'aller la recopier en position, 
+avant de revenir lire la case suivate, etc. Mais comme vous n'avez pas le droit 
+d'utiliser les méthodes permettant de téléporter la buggle à une case particulière 
+(<code>setPos()</code> et autres), cette façon de faire va être très pénible à mettre
+en place.</p>
+ 
+<p>Le plus simple est de stocker l'enchainement de couleurs dans un <b>tableau</b>.
+
+<h2>Les tableaux en Java</h2> 
+Un tableau est une séquence d'emplacements dans lesquels on peut mettre des valeurs 
+de même type (une par emplacement). C'est donc une séquence de cases de même type :</p>
+
+<br>
+<table border="0">
+<tr>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td border="1">3</td><td border="1">7</td><td border="1">13</td>
+          <td border="1">8</td><td border="1">15</td><td border="1">6</td>
+          <td border="1">11</td><td border="1">10</td><td border="1">9</td>
+</tr>
+</table>
+
+<p>T est le nom du tableau, T[0] est le nom de la première case, T[1] de la 
+deuxième case, T[2] de la troisième case, etc... Et oui, la première case est 
+T[0] et la dernière case d'un tableau de dimension N est T[N - 1].</p>
+
+<p>On peut utiliser une variable entière <i>i</i> pour accéder avec T[i] aux 
+cases d'un tableau : lorsque <i>i</i> vaut 0 alors T[i] dénote la case T[0], 
+lorsque <i>i</i> vaut 10, T[i] dénote T[10]. On dit alors que <i>i</i> est un 
+<b>indice</b> dans le tableau T .
+
+<h2>Remplissage d'un tableau</h2>
+Supposons que <code>T</code> soit un tableau de 10 éléments entiers. 
+On peut alors le remplir de la manière suivante :
+<pre>
+for (int i = 0; i&lt;10; i++) {
+   T[i] = 3;
+}
+</pre>
+
+<code>T[i]</code> s'utilise comme une variable. On peut l'affecter : 
+<pre>T[i] = 78;</pre>
+
+<p>On peut lire sa valeur : 
+<pre>x = T[i];</pre></p>
+
+<p>On peut tester cette valeur :
+<pre>
+if (T[i] > 0 ) {
+    // instructions...
+}
+</pre></p>
+
+<h3>Déclaration d'un tableau</h3>
+Un tableau se déclare de la manière suivante :
+<pre>int[] T;</pre>
+
+<p><code>int</code> indique que les éléments du tableau <code>T</code> 
+sont de type entier est le nom du tableau, <code>[]</code> indique qu'il 
+s'agit d'un tableau. On peut aussi écrire cette déclaration de la 
+manière suivante. Les deux écritures sont syntaxiquement équivalente,
+mais la première est souvent préférée en Java.
+<pre>int T[];</pre></p>
+
+<h3>Allocation d'un tableau</h3>
+
+Déclarer un tableau <code>T</code> nous réserve juste le nom 
+<code>T</code> pour l'utiliser plus tard. Mais le tableau n'est pas initialisé :
+il n'a pas de valeur. Que voudrait dire <code>T[4]</code> si nous n'avons pas
+encore dit que <code>T</code> est un tableau d'au moins 5 éléments ?
+
+<p>Avant tout, il faut donc lui affecter une valeur à <code>T</code>:
+<pre>T = new int[10];</pre>
+<code>new</code> indique qu'il faut créer quelque chose, et <code>int[10]</code>
+indique qu'il s'agit d'un tableau de 10 valeur entières. En réponse, un tableau 
+d'entiers de longueur 10 est crée en mémoire, et la variable <code>T</code> 
+référence ce tableau.
+
+<p>La taille d'un tableau est fixée et ne peut plus être changée après la création
+du tableau. Pour connapitre la taille d'un tableau <code>T</code>, on peut consulter 
+la valeur de la variable <code>T.length</code>.</p>
+
+<p>
+On ne peut pas écrire :
+<pre>int T[10]; // FAUX !!!</pre>
+Il faut absolument utiliser l'instruction <code>new</code>. Par contre, on peut très
+bien donner la dimension par une variable <code>i</code>.
+<pre>T = new int[i];</pre>
+Dans ce cas, la taille du tableau sera la valeur de <code>i</code> <b>au moment où on a 
+fait le</b> <code>new</code>. Si <code>i</code> change après coup, cela ne modifie pas
+la taille du tableau.
+
+<h4>Déclaration et allocation</h4>
+<pre>int[] T = new int[10];</pre>
+
+On déclare et alloue le tableau en une seule ligne.
+
+<h4>Déclaration et initialisation</h4>
+<pre>int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };</pre>
+
+On déclare, alloue et initialise le tableau en une seule ligne. Pour connaître 
+la taille du tableau à allouer, le compilateur compte les valeurs données. 
+Ce code est équivalent à :
+<pre>
+int[] T = new int[10];
+T[0] = 1;
+T[1] = 2;
+...
+T[9] = 10;
+</pre>
+
+C'est aussi équivalent au code :
+<pre>
+int[] T = new int[10];
+for (int i=0; i&lt;T.length; i++) {
+  T[i] = i+1;
+}
+</pre>
+
+<h3>Tableaux et paramètres de méthode</h3>
+On peut tout à fait passer un tableau en paramètre d'une méthode. La méthode doit 
+l'indiquer dans son prototype de la façon suivante:
+<pre>void maMethode(int[] valeurs) {
+  // faire quelque chose
+}</pre>
+
+Coté appelant, c'est aussi simple :
+<pre>
+int[] tab = new int[10];
+// initialiser les valeurs
+maMethode(tab);
+</pre>
+
+<p>On peut également avoir des méthodes renvoyant des tableaux en résultat :
+<pre>int[] autreMethode() {
+  int[] resultat = new int[10];
+  // faire quelque chose
+  return resultat;
+}</pre>
+
+<h2>Objectif de l'exercice</h2>
+La méthode <code>run()</code> que vous devez écrire doit commencer par
+déclarer un tableau de couleurs (<code>Color[]</code>) et l'allouer. Attention, 
+le premier monde est de taille 6x6, mais ce n'est pas le cas des autres. Utilisez 
+donc la méthode <code>getWorldHeight()</code> pour retrouver le nombre de lignes du 
+monde actuel.
+
+<p>Une fois le tableau alloué, il faut le remplir. Pour chaque case de la colonne, 
+lisez la couleur du sol (avec <code>getGroundColor()</code>), et stockez le résultat de
+cette méthode dans la bonne case du tableau.</p>
+
+<p>Une fois le tableau initialisé, il faut répliquer le motif sur toutes les colonnes, 
+par exemple en exécutant <code>getWorldWidth()</code> fois une méthode écrite tout exprès.</p> 
+
+<p>À vous de jouer.</p>
+
