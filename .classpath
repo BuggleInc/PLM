@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="lib/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/jsyntaxpane-0.9.4.jar"/>
 	<classpathentry kind="lib" path="lib/langtools-beta.jar"/>
 	<classpathentry kind="lib" path="lib/miglayout-3.6-swing.jar"/>
 	<classpathentry kind="lib" path="lib/simple-xml-1.7.2.jar"/>
-	<classpathentry kind="lib" path="lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
