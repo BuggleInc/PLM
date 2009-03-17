@@ -58,21 +58,26 @@ class MyIconView extends View {
 	public MyIconView(Element elem) {
 		super(elem);
 		String filename = (String) elem.getAttributes().getAttribute(HTML.Attribute.SRC);
-		String resourceName = "/"+filename.replace('.','/');
-		resourceName = resourceName.replaceAll("/png$", ".png").replaceAll("/jpg$", ".jpg");
-		resourceName = resourceName.replaceAll("/jpeg$", ".jpeg").replaceAll("/gif$", ".gif");
-
-		InputStream s = getClass().getResourceAsStream(resourceName);
-		
-		
-		try {
-			if (s == null)
-				c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
-			else
-				c = new ImageIcon(ImageIO.read(s));
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (filename == null) {
+			System.err.println("<img> tag without src attribute");
 			c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
+		} else {
+			String resourceName = "/"+filename.replace('.','/');
+			resourceName = resourceName.replaceAll("/png$", ".png").replaceAll("/jpg$", ".jpg");
+			resourceName = resourceName.replaceAll("/jpeg$", ".jpeg").replaceAll("/gif$", ".gif");
+
+			InputStream s = getClass().getResourceAsStream(resourceName);
+
+
+			try {
+				if (s == null)
+					c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
+				else
+					c = new ImageIcon(ImageIO.read(s));
+			} catch (IOException e) {
+				e.printStackTrace();
+				c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
+			}
 		}
 	}
 
