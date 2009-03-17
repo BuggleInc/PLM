@@ -1,4 +1,4 @@
-package lessons.lightbot;
+package lessons.lightbot.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -25,6 +25,10 @@ import javax.swing.JPanel;
 import jlm.core.Game;
 import jlm.ui.WorldView;
 import jlm.universe.World;
+import lessons.lightbot.world.Direction;
+import lessons.lightbot.world.LightBotEntity;
+import lessons.lightbot.world.LightBotWorld;
+import lessons.lightbot.world.LightBotWorldCell;
 
 public class LightBotWorldViewIsometric extends WorldView {
 

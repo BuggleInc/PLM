@@ -1,4 +1,4 @@
-package lessons.lightbot;
+package lessons.lightbot.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +19,8 @@ import jlm.ui.ResourcesCache;
 import jlm.universe.Entity;
 import jlm.universe.IEntityTracable;
 import jlm.universe.IEntityTraceListener;
+import lessons.lightbot.world.LightBotInstruction;
+import lessons.lightbot.world.LightBotSourceFile;
 import net.miginfocom.swing.MigLayout;
 
 public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISourceFileListener,IEntityTraceListener {
@@ -63,8 +65,8 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		JPanel mainPanel = new JPanel();
 		mainPanel.setBorder(BorderFactory.createTitledBorder("Main"));
 		mainPanel.setLayout(new MigLayout("wrap 4, fill"));
-		for (int i=0;i<srcFile.main.length;i++) {
-			InstructionChooser chooser = new InstructionChooser(srcFile.main,i);
+		for (int i=0;i<srcFile.getMain().length;i++) {
+			InstructionChooser chooser = new InstructionChooser(srcFile.getMain(),i);
 			choosers.put("main:"+i, chooser);
 			mainPanel.add(chooser, "grow");
 		}
@@ -73,8 +75,8 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		JPanel func1Panel = new JPanel();
 		func1Panel.setBorder(BorderFactory.createTitledBorder("Function 1"));
 		func1Panel.setLayout(new MigLayout("wrap 4, fill"));
-		for (int i=0;i<srcFile.func1.length;i++) { 
-			InstructionChooser chooser = new InstructionChooser(srcFile.func1,i);
+		for (int i=0;i<srcFile.getFunc1().length;i++) { 
+			InstructionChooser chooser = new InstructionChooser(srcFile.getFunc1(),i);
 			choosers.put("func1:"+i, chooser);
 			func1Panel.add(chooser, "grow");
 		}
@@ -83,8 +85,8 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		JPanel func2Panel = new JPanel();
 		func2Panel.setBorder(BorderFactory.createTitledBorder("Function 2"));
 		func2Panel.setLayout(new MigLayout("wrap 4, fill"));
-		for (int i=0;i<srcFile.func2.length;i++) {
-			InstructionChooser chooser = new InstructionChooser(srcFile.func2,i); 
+		for (int i=0;i<srcFile.getFunc2().length;i++) {
+			InstructionChooser chooser = new InstructionChooser(srcFile.getFunc2(),i); 
 			choosers.put("func2:"+i, chooser);
 			func2Panel.add(chooser, "grow");
 		}

@@ -3,7 +3,7 @@
  * I don't kill it so that we have a backup in case the 3D view breaks at some point.
  */
 
-package lessons.lightbot;
+package lessons.lightbot.ui;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -17,6 +17,10 @@ import java.util.Iterator;
 import jlm.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
+import lessons.lightbot.world.Direction;
+import lessons.lightbot.world.LightBotEntity;
+import lessons.lightbot.world.LightBotWorld;
+import lessons.lightbot.world.LightBotWorldCell;
 
 public class LightBotWorldView2D extends WorldView {
 	private static final long serialVersionUID = 1674820378395646693L;

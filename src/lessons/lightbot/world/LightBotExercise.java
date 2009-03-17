@@ -1,4 +1,4 @@
-package lessons.lightbot;
+package lessons.lightbot.world;
 
 import java.util.List;
 

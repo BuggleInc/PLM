@@ -1,6 +1,18 @@
 package lessons.lightbot;
 
 import jlm.lesson.Lesson;
+import lessons.lightbot.boards.Board01TwoSteps;
+import lessons.lightbot.boards.Board02Turn;
+import lessons.lightbot.boards.Board03Jump;
+import lessons.lightbot.boards.Board04Stairs;
+import lessons.lightbot.boards.Board05Higher;
+import lessons.lightbot.boards.Board06Func;
+import lessons.lightbot.boards.Board07Repeat;
+import lessons.lightbot.boards.Board08Rec;
+import lessons.lightbot.boards.Board09Castle;
+import lessons.lightbot.boards.Board10Wall;
+import lessons.lightbot.boards.Board11Sea;
+import lessons.lightbot.boards.Board12Escher;
 
 public class Main extends Lesson {
 	@Override

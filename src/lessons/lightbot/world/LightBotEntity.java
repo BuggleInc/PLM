@@ -1,4 +1,4 @@
-package lessons.lightbot;
+package lessons.lightbot.world;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 	public int getWorldWidth() {
 		return ((LightBotWorld)world).getWidth();
 	}
-	protected LightBotWorldCell getCell(){
+	public LightBotWorldCell getCell(){
 		return ((LightBotWorld)world).getCell(getX(), getY());
 	}
 	protected LightBotWorldCell getCell(int u, int v){
@@ -179,14 +179,14 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 		sf = (LightBotSourceFile) Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile("Code");
 				
 		/* Run main */
-		run("main",sf.main);
+		run("main",sf.getMain());
 		fireTraceListener(null);
 	}
 	public void runF1(){
-		run("func1",sf.func1);
+		run("func1",sf.getFunc1());
 	}
 	public void runF2(){
-		run("func2",sf.func2);
+		run("func2",sf.getFunc2());
 	}
 
 	private void run(String fileName,LightBotInstruction[] file) {

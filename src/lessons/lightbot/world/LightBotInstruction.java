@@ -1,9 +1,10 @@
-package lessons.lightbot;
+package lessons.lightbot.world;
+
 
 
 public class LightBotInstruction {
 	/* instructionNames must match what toString says, and what the string constructor expects, or comboboxes of editor won't work */
-	final static String[] instructionNames = { "noop","forward", "jump", "left", "right", "light", "f1","f2" };
+	public final static String[] instructionNames = { "noop","forward", "jump", "left", "right", "light", "f1","f2" };
 
 	private enum InstructionKind {
 		NOOP,FORWARD,JUMP,LIGHT,LEFT,RIGHT,F1,F2;		

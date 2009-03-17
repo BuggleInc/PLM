@@ -1,6 +1,9 @@
-package lessons.lightbot;
+package lessons.lightbot.boards;
 
 import jlm.lesson.Lesson;
+import lessons.lightbot.world.LightBotEntity;
+import lessons.lightbot.world.LightBotExercise;
+import lessons.lightbot.world.LightBotWorld;
 import universe.bugglequest.Direction;
 
 public class Board09Castle extends LightBotExercise {
