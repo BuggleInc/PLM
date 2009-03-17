@@ -2,18 +2,14 @@ package jlm.lesson;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jlm.core.Reader;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -26,8 +22,6 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected String entityName = getClass().getCanonicalName()+"Entity"; /* name of the class of entities being solution of this exercise */
 	protected ArrayList<String> entitiesNames = null;
 
-	private static String locale;
-	
 	public ExerciseTemplated(Lesson lesson) {
 		super(lesson);
 		loadHTMLMission();
@@ -54,78 +48,10 @@ public abstract class ExerciseTemplated extends Exercise {
         "  </style>\n"+
         "</head>\n";
 
-	public static void setLocale(String lang) {
-		locale=lang;
-	}
-	static protected BufferedReader fileReader(String file,String extension,boolean translatable) {
-		if (translatable) {
-			if (locale==null) 
-				throw new RuntimeException("locale is null");
-				
-			BufferedReader br =  fileReader(file.replace('.','/')+"."+locale+(extension!=null?"."+extension:""));
-			if (br != null)
-				return br;
-		}
-		BufferedReader br = fileReader(file.replace('.','/')+(extension!=null?"."+extension:""));
-		return br;
-	}	
-	static protected BufferedReader fileReader(String filename) {
-		BufferedReader br = null;
-		/* try to find the file */
-		try {
-			br = new BufferedReader(new FileReader(new File(filename)));
-		} catch (FileNotFoundException e) {
-			// external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
-			String resourceName = "/"+filename;
-			resourceName = resourceName.replace('\\', '/'); /* just in case we're passed a windows path */
-
-			InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
-			if (s == null) {
-				return null;	/* file not found, give up */
-			}
-
-			try {
-				br = new BufferedReader(new InputStreamReader(s,"UTF-8"));
-			} catch (UnsupportedEncodingException e1) {
-				e1.printStackTrace();
-				System.err.println("File encoding of "+filename+
-						" is not supported on this platform (please report this bug)");
-				return null;
-			}
-		}
-		return br;
-	}	
-	static protected StringBuffer fileToStringBuffer(String file, String extension, boolean translatable) {
-		BufferedReader br = fileReader(file,extension,translatable);
-		String newLine = System.getProperty("line.separator");
-		if (br==null) 
-			return null;
-		
-		StringBuffer sb = new StringBuffer();
-		try {
-			String s;
-			s = br.readLine();
-			while (s != null) {
-				sb.append(s);
-				sb.append(newLine);
-				s = br.readLine();
-			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();			
-		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return sb;
-	}
 	protected void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 
-		StringBuffer sb = fileToStringBuffer(filename, "html",true);
+		StringBuffer sb = Reader.fileToStringBuffer(filename, "html",true);
 		if (sb==null) {
 			mission = "File "+filename+" not found.";
 			return;
@@ -146,7 +72,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	protected void loadMap(World intoWorld) {
-		BufferedReader br = fileReader( getClass().getCanonicalName(),"map",false);
+		BufferedReader br = Reader.fileReader( getClass().getCanonicalName(),"map",false);
 		if (br==null)
 			return;
 		try {
@@ -158,9 +84,9 @@ public abstract class ExerciseTemplated extends Exercise {
 
 
 	public void newSourceFromFile(String name, String filename, String extension) {
-		StringBuffer sb = fileToStringBuffer("src"+File.separator+filename,extension,false);
+		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,extension,false);
 		if (sb==null)
-			sb = fileToStringBuffer(filename,extension,false);
+			sb = Reader.fileToStringBuffer(filename,extension,false);
 		if (sb==null) {
 			System.err.println("Source file "+filename+" not found.");
 			return;

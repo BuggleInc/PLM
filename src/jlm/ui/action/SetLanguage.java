@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 import jlm.core.Game;
-import jlm.lesson.ExerciseTemplated;
+import jlm.core.Reader;
 
 public class SetLanguage extends AbstractGameAction {
 
@@ -21,7 +21,7 @@ public class SetLanguage extends AbstractGameAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		ExerciseTemplated.setLocale(lang);
+		Reader.setLocale(lang);
 	}
 
 }

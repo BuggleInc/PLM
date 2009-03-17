@@ -26,8 +26,8 @@ import javax.swing.SwingConstants;
 
 import jlm.core.Game;
 import jlm.core.GameState;
+import jlm.core.Reader;
 import jlm.event.GameStateListener;
-import jlm.lesson.ExerciseTemplated;
 import jlm.ui.action.AbstractGameAction;
 import jlm.ui.action.CleanUpSession;
 import jlm.ui.action.ExportSession;
@@ -67,7 +67,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 	}
 
 	private void initComponents() {
-		ExerciseTemplated.setLocale(this.getLocale().getLanguage());
+		Reader.setLocale(this.getLocale().getLanguage());
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
