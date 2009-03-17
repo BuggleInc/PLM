@@ -7,10 +7,11 @@
 
 ***************** BASE
 
-
 Assez urgent :
  * Quand un exo est fait, il faut passer au suivant de la lesson
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
+ * Il faut ajouter d'autres mondes parallèles aux labyrinthes pour
+   eviter les tricheurs qui résolvent le problème "à la main"
  
 D'autres points moins urgents :
   
@@ -22,12 +23,15 @@ D'autres points moins urgents :
    faudrait la mettre dans un package à part comme l'EditorKit.
  * pas moyen de changer la couleur d'une buggle interactivement
  * Il faudrait masquer les combo de changement de monde et d'entité si y'a rien à changer.
+ * Extraire une classe générique "monde à grille" reprenant des bouts
+   de lightbot et des buggles.
 
 Une série d'idées bêtes :
  * J'aimerais ajouter une sorte de diff entre le monde attendu et le
    monde créé s'il y a un problème, avec des ronds rouges autour des
    cases de la mauvaise couleur, des croix sur les buggles mal
-   placées, etc. Je n'ai aucune idée de comment faire, techniquement.
+   placées, etc. Il faudrait déjà que check() renvoie une chaine des
+   différences à afficher dans un truc "détails" en cas d'échec.
  * les localisations de fichier dans la console devrait être des liens
    qui déplacent l'éditeur.
  * lors d'exécution pas à pas, j'aimerais afficher le contenu des
@@ -35,12 +39,25 @@ Une série d'idées bêtes :
    d'objets, on peut tenter l'introspection. Sinon, je sais pas.
    Peut-être qu'en convertissant le tout en plugin eclipse on pourrait
    y arriver, mais pas cette année.
+ * Changer le JavaEditor pour suivre le point d'exécution, comme c'est
+   fait dans lightbot.
 
-***************** LEÇONS
-          
-Il y a aussi pleins d'idées d'exo sur les pages des gens qui ont
+***************** LEÇONS          
+Il y a pleins d'idées d'exo sur les pages des gens qui ont
 inventé le concept. Par exemple:
 
 http://cs.wellesley.edu/~cs111/fall98/assignments.html
 
 ***************** MONDES
+Micro-mondes pédagogiques
+ * Karel the robot (peut-être qu'un chargeur de mondes karel dans les
+   buggles suffit)
+ * PatchWorld
+Pour enfants
+ * La course de bateau de gcompris
+Ludiques pour programmeurs (nécessitent un mode King of hill?)
+ * CodeRuler (stratégie)
+ * CodeRobot (combats de robots)
+ * CodeRally (courses de voitures)
+ * MARS (assembleur)
+ 
