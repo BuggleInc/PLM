@@ -3,18 +3,15 @@ package jlm.universe;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import jlm.core.Game;
+import jlm.core.Reader;
 import jlm.ui.WorldView;
 
 import org.simpleframework.xml.Attribute;
@@ -276,54 +273,14 @@ public abstract class World {
 
 	public String getAbout() {
 		if (about == null) {
-			String filename = getClass().getCanonicalName().replace('.', File.separatorChar) + ".html";
-
-			String newLine = System.getProperty("line.separator");
-
-			BufferedReader br = null;
-			/* try to find the file */
-			try {
-				br = new BufferedReader(new FileReader(new File(filename)));
-			} catch (FileNotFoundException e) {
-				// external HTML file of this exercise not found on file system.
-				// Give as resource, in case we are in a jar file
-				String resourceName = "/" + getClass().getCanonicalName().replace('.', '/') + ".html";
-
-				InputStream s = World.class.getResourceAsStream(resourceName);
-				if (s == null) {
-					about = "File " + filename + " and resource " + resourceName + " not found.";
-					return about; /* file not found, give up */
-				}
-
-				try {
-					br = new BufferedReader(new InputStreamReader(s, "UTF-8"));
-				} catch (UnsupportedEncodingException e1) {
-					e1.printStackTrace();
-					about = "About world file encoding is not supported on this platform (please report this bug)";
-					return about;
-				}
+			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
+			StringBuffer sb = Reader.fileToStringBuffer(filename, "html", true);
+			if (sb==null) {
+				about = "File "+filename+".html not found.";
+				return about;
 			}
-
 			/* read it */
-			try {
-				StringBuffer sb = new StringBuffer();
-				String s;
-				s = br.readLine();
-				while (s != null) {
-					sb.append(s);
-					sb.append(newLine);
-					s = br.readLine();
-				}
-				about = "<html>\n" + HTMLMissionHeader + "<body>\n" + sb.toString() + "</body>\n</html>\n";
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			about = "<html>\n" + HTMLMissionHeader + "<body>\n" + sb.toString() + "</body>\n</html>\n";
 		}
 
 		return about;
