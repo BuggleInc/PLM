@@ -21,7 +21,7 @@ D'autres points moins urgents :
  * La classe façade au compilateur n'est pas de moi non plus, il
    faudrait la mettre dans un package à part comme l'EditorKit.
  * pas moyen de changer la couleur d'une buggle interactivement
- * Il faudrait internationaliser le tout
+ * Il faudrait masquer les combo de changement de monde et d'entité si y'a rien à changer.
 
 Une série d'idées bêtes :
  * J'aimerais ajouter une sorte de diff entre le monde attendu et le
@@ -44,5 +44,3 @@ inventé le concept. Par exemple:
 http://cs.wellesley.edu/~cs111/fall98/assignments.html
 
 ***************** MONDES
-Un peu d'assembleur like dans ce monde de brutes
-http://www.kongregate.com/games/Coolio_Niato/light-bot
