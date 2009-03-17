@@ -144,8 +144,10 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 	
 	
 	@Override
-	public LightBotWorldViewIsometric getView() {
-	 return new LightBotWorldViewIsometric(this);
+	public LightBotWorldViewIsometric[] getView() {
+		LightBotWorldViewIsometric[] res = new LightBotWorldViewIsometric[1];
+		res[0] = new LightBotWorldViewIsometric(this);
+		return res;
 	}
 
 	@Override

@@ -41,7 +41,7 @@ public class SortingExercise extends ExerciseTemplated {
 						cur.color[i] = Color.red;
 					else
 						cur.color[i] = Color.blue;
-				cur.getWorld().getView().repaint();
+				cur.getWorld().getView()[0].repaint();
 			}
 		}
 		return result;	

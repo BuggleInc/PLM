@@ -92,8 +92,10 @@ public class BuggleWorld extends jlm.universe.World {
 	}
 
 	@Override
-	public BuggleWorldView getView() {
-		return new BuggleWorldView(this);
+	public BuggleWorldView[] getView() {
+		BuggleWorldView[] res = new BuggleWorldView[1];
+		res[0] = new BuggleWorldView(this);
+		return res;
 	}
 	@Override
 	public EntityControlPanel getEntityControlPanel() {

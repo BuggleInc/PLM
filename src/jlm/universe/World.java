@@ -225,7 +225,7 @@ public abstract class World {
 	}
 
 	/* Find my UI */
-	public abstract WorldView getView();
+	public abstract WorldView[] getView();
 
 	public abstract EntityControlPanel getEntityControlPanel();
 

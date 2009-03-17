@@ -14,8 +14,8 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	private static final long serialVersionUID = 6649968807663790018L;
 	private Game game;
-	private WorldView worldView;
-	private WorldView objectivesView;
+	private WorldView[] worldView;
+	private WorldView[] objectivesView;
 
 	private JComboBox entityComboBox;
 	private JComboBox worldComboBox;
@@ -59,10 +59,13 @@ public class ExerciseView extends JPanel implements GameListener {
 
 		tabPane = new JTabbedPane();
 		worldView = Game.getInstance().getSelectedWorld().getView();
-		tabPane.add("World", worldView);
+		tabPane.add("World", worldView[0]);
 
 		objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-		tabPane.add("Objective", objectivesView);
+		tabPane.add("Objective", objectivesView[0]);
+		for (int i=1;i<worldView.length;i++)
+			tabPane.add(worldView[i].getTabName(), worldView[i]);
+
 		add(tabPane, "span,grow,wrap");
 
 		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
@@ -108,16 +111,21 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	@Override
 	public void selectedWorldHasChanged() {
-		if (worldView.isWorldCompatible(this.game.getSelectedWorld())) {
-			worldView.setWorld(this.game.getSelectedWorld());
-			objectivesView.setWorld(this.game.getAnswerOfSelectedWorld());
+		if (worldView[0].isWorldCompatible(this.game.getSelectedWorld())) {
+			for (WorldView w:worldView)
+				w.setWorld(this.game.getSelectedWorld());
+			for (WorldView w:objectivesView)
+				w.setWorld(this.game.getAnswerOfSelectedWorld());
 		} else {
 			tabPane.removeAll();
 			worldView = Game.getInstance().getSelectedWorld().getView();
-			tabPane.add("World", worldView);
+			tabPane.add("World", worldView[0]);
 
 			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-			tabPane.add("Objective", objectivesView);
+			tabPane.add("Objective", objectivesView[0]);
+			
+			for (int i=1;i<worldView.length;i++)
+				tabPane.add(worldView[i].getTabName(), worldView[i]);
 
 			controlPane.removeAll();
 			buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();

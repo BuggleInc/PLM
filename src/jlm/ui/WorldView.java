@@ -44,4 +44,8 @@ public abstract class WorldView extends JComponent  implements IWorldView {
 
 	public abstract boolean isWorldCompatible(World world);
 
+	public String getTabName() {
+		return "Unnamed Tab";
+	}
+
 }

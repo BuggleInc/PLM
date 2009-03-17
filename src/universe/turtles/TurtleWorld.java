@@ -82,8 +82,10 @@ public class TurtleWorld extends World {
 	}
 
 	@Override
-	public WorldView getView() {
-		return new TurtleWorldView(this);
+	public WorldView[] getView() {
+		WorldView[] res = new WorldView[1];
+		res[0] = new TurtleWorldView(this);
+		return res;
 	}
 	
 
