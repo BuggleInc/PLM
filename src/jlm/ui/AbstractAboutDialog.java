@@ -26,6 +26,7 @@ public abstract class AbstractAboutDialog extends JDialog implements GameListene
 		
 		setMinimumSize(new Dimension(600,400));
 		
+		area.setEditorKit(new JlmHtmlEditorKit());
 		area.setEditable(false);
 		
 		setLayout(new MigLayout("fill"));
