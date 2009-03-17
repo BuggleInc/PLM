@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-06 17:25+0100\n"
+"POT-Creation-Date: 2009-03-18 00:11+0100\n"
 "PO-Revision-Date: 2009-03-06 21:25+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -4510,7 +4510,14 @@ msgid ""
 "But even if you don't code the algorithms, you can use the demo mode to "
 "organize \"races\" between these algorithms to experiment in practice what "
 "the different asymptotical complexity mean."
-msgstr "Cette leçon vous permet d'expérimenter avec les algorithmes de tri classiques (et certaines optimisations moins courantes de ceux-ci). L'objectif est double: il s'agit tout d'abord de mieux comprendre le principe de ces algorithmes en les codant vous-même.  Mais même si vous ne codez pas les algorithmes, vous pouvez utiliser le mode démo pour organiser des \"courses\" entre ces algorithmes afin d'expérimenter en pratique ce qu'implique la différence de complexité asymptotique entre deux algorithmes."
+msgstr ""
+"Cette leçon vous permet d'expérimenter avec les algorithmes de tri "
+"classiques (et certaines optimisations moins courantes de ceux-ci). "
+"L'objectif est double: il s'agit tout d'abord de mieux comprendre le "
+"principe de ces algorithmes en les codant vous-même.  Mais même si vous ne "
+"codez pas les algorithmes, vous pouvez utiliser le mode démo pour organiser "
+"des \"courses\" entre ces algorithmes afin d'expérimenter en pratique ce "
+"qu'implique la différence de complexité asymptotique entre deux algorithmes."
 
 #: src/lessons/sort/Main.html:10
 msgid ""
@@ -6207,3 +6214,286 @@ msgid "Don't forget to let the buggle pick the baggle at the end of your code."
 msgstr ""
 "Pensez à faire prendre le baggle à votre buggle avant la fin de votre "
 "programme."
+
+#: src/lessons/lightbot/Main.html:1
+#, fuzzy
+msgid "LightBot"
+msgstr "Right"
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/lightbot/Main.html:2
+msgid ""
+"Cette leçon propose différents petits casses tête de programmation repris "
+"d'un jeu flash."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/Main.html:4
+msgid ""
+"Les objectifs pédagogiques ne sont peut-être pas aussi clairs qu'il "
+"faudrait, il ne se programme pas en Java, mais je trouve ce jeu amusant "
+"malgré tout."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board01TwoSteps.html:1
+msgid "Welcome"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board01TwoSteps.html:3
+msgid ""
+"Welcome to the lightbot world. This is merely a programmer puzzle rather "
+"than a real lesson (although some use it to teach programming).  The robot "
+"is not programmed in Java, but rather graphically. You can see the existing "
+"orders in the documentation using the <i>About this world</i> menu."
+msgstr ""
+
+# type: Content of: <p><</p><p>
+#: src/lessons/lightbot/boards/Board01TwoSteps.html:6
+msgid ""
+"The goal of each board is simply to switch on every lights of the board "
+"using your little robot."
+msgstr ""
+
+# type: Content of: <p><</p><p>
+#: src/lessons/lightbot/boards/Board01TwoSteps.html:8
+msgid ""
+"This is a introduction exercise, which should be solvable by only moving "
+"forward and switching the light, using respectively"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board01TwoSteps.html:8
+#: src/lessons/lightbot/boards/Board02Turn.html:3
+#: src/lessons/lightbot/boards/Board06Func.html:3
+msgid "and"
+msgstr ""
+
+# type: Content of: <p><</p><p>
+#: src/lessons/lightbot/boards/Board01TwoSteps.html:8
+msgid "."
+msgstr ""
+
+#: src/lessons/lightbot/boards/Board02Turn.html:1
+#, fuzzy
+msgid "Turn around"
+msgstr "Se retourner"
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board02Turn.html:3
+msgid "Now, you probably need to turn in addition (using"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board02Turn.html:3
+msgid ")."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board03Jump.html:1
+msgid "Jump"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board03Jump.html:3
+msgid "You can also jump using"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board03Jump.html:3
+msgid ""
+"to pass obstacles. You can either jump one level up or any amount of levels "
+"down, but you cannot jump to go on a cell of the same height."
+msgstr ""
+
+#: src/lessons/lightbot/boards/Board04Stairs.html:1
+#, fuzzy
+msgid "Stairs"
+msgstr "Spirales"
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board04Stairs.html:3
+msgid "Can you pass these stairs?"
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board05Higher.html:1
+msgid "Higher"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board05Higher.html:3
+msgid "Let's go higher"
+msgstr ""
+
+#: src/lessons/lightbot/boards/Board06Func.html:1
+#, fuzzy
+msgid "Functions"
+msgstr "Indications"
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board06Func.html:3
+msgid "You can use"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board06Func.html:3
+msgid ""
+"to call respectively the first and second functions. Define their code in "
+"their own tab."
+msgstr ""
+
+# type: Content of: <p><p>
+#: src/lessons/lightbot/boards/Board06Func.html:5
+msgid "This is great if you get out of space in your main function"
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board07Repeat.html:1
+msgid "Repetitive tasks"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board07Repeat.html:3
+msgid "Functions are also of great use for repetitive tasks"
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board08Rec.html:1
+msgid "Calling functions from functions"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board08Rec.html:3
+msgid "It is perfectly okay to call a function from within a function!"
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board09Castle.html:1
+msgid "Castle"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board09Castle.html:3
+msgid "You're getting good at this..."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board10Wall.html:1
+msgid "Wall"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board10Wall.html:3
+msgid "Ready to climb the wall?"
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board11Sea.html:1
+msgid "Sea"
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/boards/Board11Sea.html:3
+msgid "You now have to surf these waves of lamps."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/boards/Board12Escher.html:1
+msgid "Escher Castle"
+msgstr ""
+
+#: src/lessons/lightbot/boards/Board12Escher.html:3
+#, fuzzy
+msgid "This one aint easy."
+msgstr "Trucs et astuces"
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/world/LightBotWorld.html:1
+msgid "LightBotWorld"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/lightbot/world/LightBotWorld.html:3
+msgid ""
+"This world introduces a little programming puzzle which can somehow be used "
+"to introduce programmation to non-reading kids since it is programmed "
+"graphically.  The goal of each board is to light up all the lights. Your "
+"robot understands the following orders:"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:7
+msgid "<b>Order</b>"
+msgstr ""
+
+#: src/lessons/lightbot/world/LightBotWorld.html:7
+#, fuzzy
+msgid "<b>Meaning</b>"
+msgstr "<b>Bouger</b>"
+
+#: src/lessons/lightbot/world/LightBotWorld.html:8
+#, fuzzy
+msgid "<b>Move forward</b>"
+msgstr "Avancer"
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:8
+msgid ""
+"Cannot be done if the destination cell is of another height than source cell"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:9
+msgid "<b>Jump forward</b>"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:9
+msgid ""
+"Can only be done if the destination cell is one step higher than source "
+"cell, or if destination is lower than source. Cannot be used for plain moves."
+msgstr ""
+
+#: src/lessons/lightbot/world/LightBotWorld.html:10
+#, fuzzy
+msgid "<b>Turn left</b>."
+msgstr "<b>Tourner à gauche"
+
+#: src/lessons/lightbot/world/LightBotWorld.html:11
+#, fuzzy
+msgid "<b>Turn right</b>."
+msgstr "Tourner à droite"
+
+#: src/lessons/lightbot/world/LightBotWorld.html:12
+#, fuzzy
+msgid "<b>Switch the light</b>."
+msgstr "<b>À propos de la brosse</b>"
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:12
+msgid ""
+"Turn it on if it was off, and off if it was on. No effect if the cell does "
+"not contain any light."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:13
+msgid "<b>Call function 1</b>."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:14
+msgid "<b>Call function 2</b>."
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/lightbot/world/LightBotWorld.html:17
+msgid ""
+"Please note that this world is not completely suited to small kids since the "
+"main difficulty comes from the fact that your are highly limited in the "
+"amount of instructions you can give to your robot. Advanced levels thus "
+"require to write sound functions, and are often above the capacities of "
+"small kids."
+msgstr ""
