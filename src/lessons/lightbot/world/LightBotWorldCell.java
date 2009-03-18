@@ -21,9 +21,7 @@ public class LightBotWorldCell extends GridWorldCell {
 	}
 
 	public LightBotWorldCell(GridWorld w, int x, int y, boolean light, boolean lightOn, int height) {
-		this.world = w;
-		this.x = x;
-		this.y = y;
+		super(w,x,y);
 		this.light = light;
 		this.lightOn = lightOn;
 		this.height = height;

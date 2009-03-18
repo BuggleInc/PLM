@@ -45,9 +45,7 @@ public class BuggleWorldCell extends GridWorldCell {
 	}
 
 	public BuggleWorldCell(BuggleWorld w, int x, int y, Color c, boolean leftWall, boolean topWall, Baggle baggle, String content) {
-		this.world = w;
-		this.x = x;
-		this.y = y;
+		super(w,x,y);
 		this.color = c;
 		this.leftWall = leftWall;
 		this.topWall = topWall;

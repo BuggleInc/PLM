@@ -1,11 +1,18 @@
 package jlm.universe;
 
 
+
 public class GridWorldCell {
 
 	protected GridWorld world;
 	protected int x;
 	protected int y;
+
+	public GridWorldCell(GridWorld w, int x, int y) {
+		world = w;
+		this.x = x;
+		this.y = y;
+	}
 
 	public GridWorld getWorld() {
 		return this.world;
