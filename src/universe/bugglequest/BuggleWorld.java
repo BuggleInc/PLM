@@ -7,20 +7,15 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import jlm.universe.EntityControlPanel;
+import jlm.universe.GridWorld;
 import jlm.universe.World;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.ui.BuggleButtonPanel;
 import universe.bugglequest.ui.BuggleWorldView;
 
 
-public class BuggleWorld extends jlm.universe.World {
+public class BuggleWorld extends GridWorld {
  
-	private BuggleWorldCell[][] world;
-
-	private int sizeX;
-	private int sizeY;
-
-	
 	public BuggleWorld(String name, int x, int y) {
 		super(name);
 		create(x, y);
@@ -29,10 +24,10 @@ public class BuggleWorld extends jlm.universe.World {
 	public void create(int width, int height) {
 		this.sizeX = width;
 		this.sizeY = height;
-		this.world = new BuggleWorldCell[sizeX][sizeY];
+		this.cells = new BuggleWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++)
-				world[i][j] = new BuggleWorldCell(this,i,j);		
+				cells[i][j] = new BuggleWorldCell(this,i,j);		
 	}
 
 	/** 
@@ -44,11 +39,11 @@ public class BuggleWorld extends jlm.universe.World {
 		setName(world2.getName());
 		sizeX = world2.getWidth();
 		sizeY = world2.getHeight();
-		this.world = new BuggleWorldCell[sizeX][sizeY];
+		this.cells = new BuggleWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
-				world[i][j] = new BuggleWorldCell(world2.getCell(i, j));
-				world[i][j].setWorld(this);
+				cells[i][j] = new BuggleWorldCell((BuggleWorldCell) world2.getCell(i, j));
+				cells[i][j].setWorld(this);
 			}
 	}
 	
@@ -66,31 +61,14 @@ public class BuggleWorld extends jlm.universe.World {
 		BuggleWorld initialWorld = (BuggleWorld)iw;
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
-				BuggleWorldCell c = initialWorld.getCell(i, j);
-				world[i][j] = new BuggleWorldCell(c);
+				BuggleWorldCell c = (BuggleWorldCell) initialWorld.getCell(i, j);
+				cells[i][j] = new BuggleWorldCell(c);
 			}
 
 		
 		super.reset(initialWorld);
 	}	
 	
-	public BuggleWorldCell getCell(int x, int y) {
-		return this.world[x][y];
-	}
-
-	public void setCell(BuggleWorldCell c, int x, int y) {
-		this.world[x][y] = c;
-		notifyWorldUpdatesListeners();
-	}
-
-	public int getWidth() {
-		return this.sizeX;
-	}
-
-	public int getHeight() {
-		return this.sizeY;
-	}
-
 	@Override
 	public BuggleWorldView[] getView() {
 		BuggleWorldView[] res = new BuggleWorldView[1];
@@ -177,7 +155,7 @@ public class BuggleWorld extends jlm.universe.World {
 
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
-				BuggleWorldCell cell = getCell(x, y);
+				BuggleWorldCell cell = (BuggleWorldCell) getCell(x, y);
 
 				writer.write("[");
 				Color c = cell.getColor();
@@ -236,7 +214,7 @@ public class BuggleWorld extends jlm.universe.World {
 		//result = PRIME * result + ((entities == null) ? 0 : entities.hashCode());
 		result = PRIME * result + sizeX;
 		result = PRIME * result + sizeY;
-		result = PRIME * result + Arrays.hashCode(world);
+		result = PRIME * result + Arrays.hashCode(cells);
 		return result;
 	}
 
@@ -260,4 +238,23 @@ public class BuggleWorld extends jlm.universe.World {
 
 		return super.equals(obj);
 	}
+	/* adapters to the cells */
+	public void setColor(int x, int y, Color c) {
+		((BuggleWorldCell) getCell(x, y)).setColor(c);
+	}
+	public void addContent(int x, int y, String string) {
+		((BuggleWorldCell) getCell(x, y)).addContent(string);
+	}
+
+	public void putTopWall(int x, int y) {
+		((BuggleWorldCell) getCell(x, y)).putTopWall();		
+	}
+
+	public void putLeftWall(int x, int y) {
+		((BuggleWorldCell) getCell(x, y)).putLeftWall();		
+	}
+	public void newBaggle(int x, int y) throws AlreadyHaveBaggleException {
+		((BuggleWorldCell) getCell(x, y)).newBaggle();		
+	}
+
 }

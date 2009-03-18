@@ -23,8 +23,6 @@ D'autres points moins urgents :
    faudrait la mettre dans un package à part comme l'EditorKit.
  * pas moyen de changer la couleur d'une buggle interactivement
  * Il faudrait masquer les combo de changement de monde et d'entité si y'a rien à changer.
- * Extraire une classe générique "monde à grille" reprenant des bouts
-   de lightbot et des buggles.
 
 Une série d'idées bêtes :
  * J'aimerais ajouter une sorte de diff entre le monde attendu et le

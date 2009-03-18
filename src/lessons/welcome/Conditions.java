@@ -4,9 +4,9 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.Direction;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 
 public class Conditions extends ExerciseTemplated {
 
@@ -18,19 +18,19 @@ public class Conditions extends ExerciseTemplated {
 		for (int i=0;i<7;i++) { 
 			new Buggle(myWorld, "Buggle "+(i+1), i, 3, Direction.NORTH, Color.black, Color.lightGray);
 			if (i%2 == 0) {
-				myWorld.getCell(i, 3).putTopWall();
-				myWorld.getCell(i, 5).putTopWall();
+				myWorld.putTopWall(i, 3);
+				myWorld.putTopWall(i, 5);
 			} else {
-				myWorld.getCell(i, 2).putTopWall();
-				myWorld.getCell(i, 4).putTopWall();
-			}
-			if (i!=0) {
-				myWorld.getCell(i, 2).putLeftWall();
-				myWorld.getCell(i, 4).putLeftWall();
+				myWorld.putTopWall(i, 2);
+				myWorld.putTopWall(i, 4);
+			}				         
+			if (i!=0) {			         
+			    myWorld.putLeftWall(i, 2);
+			    myWorld.putLeftWall(i, 4);
 			}			
 		}
-		myWorld.getCell(0, 3).putLeftWall();
-		myWorld.getCell(0, 4).putLeftWall();
+		myWorld.putLeftWall(0, 3);
+		myWorld.putLeftWall(0, 4);
 
 		setup(myWorld);
 	}

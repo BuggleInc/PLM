@@ -4,14 +4,14 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import jlm.core.Game;
+import jlm.universe.Direction;
 import jlm.universe.Entity;
+import jlm.universe.GridWorld;
 import jlm.universe.IEntityTracable;
 import jlm.universe.IEntityTraceListener;
 import jlm.universe.World;
 
 import org.simpleframework.xml.Attribute;
-
-import universe.bugglequest.Direction;
 
 
 public class LightBotEntity extends Entity implements IEntityTracable {
@@ -33,7 +33,7 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 		this(null, "John Doe", 0, 0, Direction.NORTH);
 	}
 
-	public LightBotEntity(LightBotWorld w) {
+	public LightBotEntity(GridWorld w) {
 		this(w, "John Doe", 0, 0, Direction.NORTH);
 	}
 
@@ -70,17 +70,17 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 	}
 
 	public int getWorldHeight() {
-		return ((LightBotWorld)world).getHeight();
+		return ((GridWorld)world).getHeight();
 	}
 
 	public int getWorldWidth() {
-		return ((LightBotWorld)world).getWidth();
+		return ((GridWorld)world).getWidth();
 	}
 	public LightBotWorldCell getCell(){
-		return ((LightBotWorld)world).getCell(getX(), getY());
+		return (LightBotWorldCell) ((GridWorld) world).getCell(getX(), getY());
 	}
 	protected LightBotWorldCell getCell(int u, int v){
-		return ((LightBotWorld)world).getCell(u, v);
+		return (LightBotWorldCell) ((GridWorld) world).getCell(u, v);
 	}
 	private int bounded(int x,int max) {
 		if (x<0)

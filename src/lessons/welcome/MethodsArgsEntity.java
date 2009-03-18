@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-import universe.bugglequest.Direction;
+import jlm.universe.Direction;
 
 public class MethodsArgsEntity extends universe.bugglequest.SimpleBuggle {
 	@Override

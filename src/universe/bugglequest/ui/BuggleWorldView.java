@@ -64,7 +64,7 @@ public class BuggleWorldView extends WorldView {
 	
 	// return the color of the cell located at position (x,y)
 	private Color getCellColor(int x, int y) {
-		BuggleWorldCell cell = ((BuggleWorld)world).getCell(x, y);
+		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
 
 		if (BuggleWorldCell.DEFAULT_COLOR.equals(cell.getColor())) {
 			if ((x+y)%2==0)
@@ -86,7 +86,7 @@ public class BuggleWorldView extends WorldView {
 			for (int y=0; y<w.getHeight(); y++) {
 				g.setColor(getCellColor(x, y));
 				
-				BuggleWorldCell cell = w.getCell(x, y);
+				BuggleWorldCell cell = (BuggleWorldCell) w.getCell(x, y);
 
 				g.fill(new Rectangle2D.Double(padx+x*cellW, pady+y*cellW, cellW, cellW));	
 				
@@ -119,7 +119,7 @@ public class BuggleWorldView extends WorldView {
 		
 		for (int x = 0; x < width; x++) {
 			for (int y = 0; y < height; y++) {
-				BuggleWorldCell cell = w.getCell(x, y);
+				BuggleWorldCell cell = (BuggleWorldCell) w.getCell(x, y);
 
 				if (cell.hasTopWall()) {
 					g.draw(new Line2D.Double(padx+x*cellW, pady+y*cellW-1, padx+(x+1)*cellW, pady+y*cellW-1));						
@@ -137,7 +137,7 @@ public class BuggleWorldView extends WorldView {
 
 		// frontier walls (since the world is a torus)
 		for (int y = 0; y < height; y++) {
-			if (w.getCell(0, y).hasLeftWall()) {
+			if (((BuggleWorldCell) w.getCell(0, y)).hasLeftWall()) {
 				g.draw(new Line2D.Double(padx+width*cellW-1, pady+y*cellW, padx+width*cellW-1, pady+(y+1)*cellW));
 				g.draw(new Line2D.Double(padx+width*cellW, pady+y*cellW, padx+width*cellW, pady+(y+1)*cellW));
 				g.draw(new Line2D.Double(padx+width*cellW+1, pady+y*cellW, padx+width*cellW+1, pady+(y+1)*cellW));				
@@ -145,7 +145,7 @@ public class BuggleWorldView extends WorldView {
 		}
 
 		for (int x = 0; x < width; x++) {
-			if (w.getCell(x, 0).hasTopWall()) {
+			if (((BuggleWorldCell) w.getCell(x, 0)).hasTopWall()) {
 				g.draw(new Line2D.Double(padx+x*cellW, pady+height*cellW-1, padx+(x+1)*cellW, pady+height*cellW-1));						
 				g.draw(new Line2D.Double(padx+x*cellW, pady+height*cellW, padx+(x+1)*cellW, pady+height*cellW));						
 				g.draw(new Line2D.Double(padx+x*cellW, pady+height*cellW+1, padx+(x+1)*cellW, pady+height*cellW+1));						

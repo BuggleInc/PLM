@@ -1,6 +1,6 @@
 package lessons.maze;
 
-import universe.bugglequest.Direction;
+import jlm.universe.Direction;
 
 public class PledgeMazeEntity extends universe.bugglequest.SimpleBuggle {
 

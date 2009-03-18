@@ -3,6 +3,7 @@ package universe.bugglequest;
 import java.awt.Color;
 import java.awt.Point;
 
+import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -95,7 +96,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public void brushDown() {
 		this.brushDown = true;
-		BuggleWorldCell cell = ((BuggleWorld)world).getCell(x, y);
+		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
 		cell.setColor(brushColor);
 		world.notifyWorldUpdatesListeners();
 	}
@@ -155,10 +156,10 @@ public abstract class AbstractBuggle extends Entity {
 		return ((BuggleWorld)world).getWidth();
 	}
 	protected BuggleWorldCell getCell(){
-		return ((BuggleWorld)world).getCell(x, y);
+		return (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
 	}
 	protected BuggleWorldCell getCell(int u, int v){
-		return ((BuggleWorld)world).getCell(u, v);
+		return (BuggleWorldCell) ((BuggleWorld)world).getCell(u, v);
 	}
 
 	public int getX() {
@@ -264,7 +265,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public boolean isOverBaggle() {
-		return ((BuggleWorld)world).getCell(this.x, this.y).hasBaggle();
+		return getCell(this.x, this.y).hasBaggle();
 	}
 
 	public boolean isCarryingBaggle() {
@@ -276,11 +277,11 @@ public abstract class AbstractBuggle extends Entity {
 			throw new NoBaggleUnderBuggleException("There is no baggle to pick up");
 		if (isCarryingBaggle())
 			throw new AlreadyHaveBaggleException("Your buggle is already carrying a baggle");
-		baggle = ((BuggleWorld)world).getCell(this.x, this.y).pickUpBaggle();
+		baggle = getCell(this.x, this.y).pickUpBaggle();
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException {
-		((BuggleWorld)world).getCell(this.x, this.y).setBaggle(this.baggle);
+		getCell(this.x, this.y).setBaggle(this.baggle);
 		baggle = null;
 	}
 

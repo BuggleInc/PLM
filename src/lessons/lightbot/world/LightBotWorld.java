@@ -5,16 +5,12 @@ import java.util.Iterator;
 
 import jlm.universe.Entity;
 import jlm.universe.EntityControlPanel;
+import jlm.universe.GridWorld;
 import jlm.universe.World;
 import lessons.lightbot.ui.LightBotWorldViewIsometric;
 
-public class LightBotWorld extends jlm.universe.World implements Iterable<LightBotWorldCell> {
+public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<LightBotWorldCell> {
 
-	private LightBotWorldCell[][] world;
-
-	private int sizeX;
-	private int sizeY; 
-	
 	public LightBotWorld(String name, int x, int y) {
 		super(name);
 		create(x, y);
@@ -24,10 +20,10 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 	public void create(int width, int height) {
 		this.sizeX = width;
 		this.sizeY = height;
-		this.world = new LightBotWorldCell[sizeX][sizeY];
+		this.cells = new LightBotWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++)
-				world[i][j] = new LightBotWorldCell(this, i, j);
+				cells[i][j] = new LightBotWorldCell(this, i, j);
 	}
 
 	/**
@@ -35,16 +31,16 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 	 * 
 	 * @param world2
 	 */
-	public LightBotWorld(LightBotWorld world2) {
+	public LightBotWorld(GridWorld world2) {
 		super(world2);
 		setName(world2.getName());
 		sizeX = world2.getWidth();
 		sizeY = world2.getHeight();
-		this.world = new LightBotWorldCell[sizeX][sizeY];
+		this.cells = new LightBotWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
-				world[i][j] = new LightBotWorldCell(world2.getCell(i, j));
-				world[i][j].setWorld(this);
+				cells[i][j] = new LightBotWorldCell((LightBotWorldCell) world2.getCell(i, j));
+				cells[i][j].setWorld(this);
 			}
 	}
 
@@ -61,43 +57,26 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 	 */
 	@Override
 	public void reset(World iw) {
-		LightBotWorld initialWorld = (LightBotWorld) iw;
+		GridWorld initialWorld = (GridWorld) iw;
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
-				LightBotWorldCell c = initialWorld.getCell(i, j);
-				world[i][j] = new LightBotWorldCell(c);
+				LightBotWorldCell c = (LightBotWorldCell) initialWorld.getCell(i, j);
+				cells[i][j] = new LightBotWorldCell(c);
 			}
 
 		super.reset(initialWorld);
-	}
-
-	public LightBotWorldCell getCell(int x, int y) {
-		return this.world[x][y];
-	}
-
-	public void setCell(LightBotWorldCell c, int x, int y) {
-		this.world[x][y] = c;
-		notifyWorldUpdatesListeners();
-	}
-
-	public int getWidth() {
-		return this.sizeX;
-	}
-
-	public int getHeight() {
-		return this.sizeY;
 	}
 
 	public void rotateRight() {	
 		LightBotWorldCell[][] newWorld = new LightBotWorldCell[this.sizeY][this.sizeX];
 		for (int y=0; y<this.sizeY; y++)
 			for (int x=0; x<this.sizeX; x++) {
-				LightBotWorldCell cell = this.world[x][y];
+				LightBotWorldCell cell = (LightBotWorldCell) this.cells[x][y];
 				cell.setX(this.sizeX-(y+1));
 				cell.setY(x);
 				newWorld[this.sizeX-(y+1)][x] = cell;
 			}
-		this.world = newWorld;
+		this.cells = newWorld;
 		int oldSizeX = this.sizeX;
 		this.sizeX = this.sizeY;
 		this.sizeY = oldSizeX;
@@ -119,12 +98,12 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 		LightBotWorldCell[][] newWorld = new LightBotWorldCell[this.sizeY][this.sizeX];
 		for (int y=0; y<this.sizeY; y++)
 			for (int x=0; x<this.sizeX; x++) {
-				LightBotWorldCell cell = this.world[x][y];
+				LightBotWorldCell cell = (LightBotWorldCell) this.cells[x][y];
 				cell.setX(y);
 				cell.setY(this.sizeX-(x+1));
 				newWorld[y][this.sizeX-(x+1)] = cell;
 			}
-		this.world = newWorld;
+		this.cells = newWorld;
 		int oldSizeX = this.sizeX;
 		this.sizeX = this.sizeY;
 		this.sizeY = oldSizeX;
@@ -167,7 +146,7 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 		int result = 1;
 		result = PRIME * result + sizeX;
 		result = PRIME * result + sizeY;
-		result = PRIME * result + Arrays.hashCode(world);
+		result = PRIME * result + Arrays.hashCode(cells);
 		return result;
 	}
 
@@ -179,10 +158,10 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final LightBotWorld other = (LightBotWorld) obj;
-		if (sizeX != other.sizeX)
+		final GridWorld other = (GridWorld) obj;
+		if (getWidth() != other.getWidth())
 			return false;
-		if (sizeY != other.sizeY)
+		if (getHeight() != other.getHeight())
 			return false;
 		for (int x = 0; x < getWidth(); x++)
 			for (int y = 0; y < getHeight(); y++)
@@ -203,7 +182,7 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 
 		@Override
 		public LightBotWorldCell next() {
-			LightBotWorldCell res = LightBotWorld.this.getCell(x, y);
+			LightBotWorldCell res = (LightBotWorldCell) LightBotWorld.this.getCell(x, y);
 			if (x >= LightBotWorld.this.sizeX - 1) {
 				x = 0;
 				y++;
@@ -221,19 +200,19 @@ public class LightBotWorld extends jlm.universe.World implements Iterable<LightB
 	}
 
 	public void setHeight(int x, int y, int h) {
-		getCell(x, y).setHeight(h);
+		((LightBotWorldCell) getCell(x, y)).setHeight(h);
 	}
 
 	public void addLight(int x, int y) {
-		getCell(x, y).addLight();
+		((LightBotWorldCell) getCell(x, y)).addLight();
 	}
 
 	public void removeLight(int x, int y) {
-		getCell(x, y).removeLight();
+		((LightBotWorldCell) getCell(x, y)).removeLight();
 	}
 
 	public void switchLight(int x, int y) {
-		getCell(x, y).lightSwitch();
+		((LightBotWorldCell) getCell(x, y)).lightSwitch();
 	}
 
 	@Override

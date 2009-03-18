@@ -24,8 +24,10 @@ import javax.swing.JPanel;
 
 import jlm.core.Game;
 import jlm.ui.WorldView;
+import jlm.universe.Direction;
+import jlm.universe.GridWorld;
+import jlm.universe.GridWorldCell;
 import jlm.universe.World;
-import lessons.lightbot.world.Direction;
 import lessons.lightbot.world.LightBotEntity;
 import lessons.lightbot.world.LightBotWorld;
 import lessons.lightbot.world.LightBotWorldCell;
@@ -84,7 +86,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 		AffineTransform originalTransform = g2.getTransform();
 		
 		
-		LightBotWorld tw = (LightBotWorld) this.world;
+		GridWorld tw = (GridWorld) this.world;
 
 		double componentWidth = (double) getWidth();
 		double componentHeight = (double) getHeight();
@@ -126,7 +128,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 		g2.setTransform(originalTransform);		
 	}
 
-	public static int computeZOrder(LightBotWorldCell cell) {
+	public static int computeZOrder(GridWorldCell cell) {
 		final int tx = cell.getWorld().getWidth();
 		final int ty = cell.getWorld().getHeight();
 

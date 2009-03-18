@@ -35,7 +35,7 @@ public class MapView extends BuggleWorldView {
 				int x = (int) ((e.getX() - getPadX()) / getCellWidth());
 				int y = (int) ((e.getY() - getPadY()) / getCellWidth());
 
-				BuggleWorldCell cell = editor.getWorld().getCell(x, y);
+				BuggleWorldCell cell = (BuggleWorldCell) editor.getWorld().getCell(x, y);
 				String cmd = editor.getCommand();
 
 				if (cmd.equals("topwall")) {

@@ -4,10 +4,10 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.Direction;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.exception.NoBaggleUnderBuggleException;
 

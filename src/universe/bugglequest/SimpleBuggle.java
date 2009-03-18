@@ -2,6 +2,7 @@ package universe.bugglequest;
 
 import java.awt.Color;
 
+import jlm.universe.Direction;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.exception.BuggleWallException;
 import universe.bugglequest.exception.NoBaggleUnderBuggleException;

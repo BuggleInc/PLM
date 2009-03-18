@@ -4,9 +4,9 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.Direction;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 
 public class MethodsPicture extends ExerciseTemplated {
 

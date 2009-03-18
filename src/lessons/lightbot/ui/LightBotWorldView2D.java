@@ -15,9 +15,11 @@ import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
 import jlm.ui.WorldView;
+import jlm.universe.Direction;
 import jlm.universe.Entity;
+import jlm.universe.GridWorld;
+import jlm.universe.GridWorldCell;
 import jlm.universe.World;
-import lessons.lightbot.world.Direction;
 import lessons.lightbot.world.LightBotEntity;
 import lessons.lightbot.world.LightBotWorld;
 import lessons.lightbot.world.LightBotWorldCell;
@@ -43,7 +45,7 @@ public class LightBotWorldView2D extends WorldView {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 
-		LightBotWorld tw = (LightBotWorld) this.world;
+		GridWorld tw = (GridWorld) this.world;
 
 		double ratio = Math.min(((double) getWidth()) / (tw.getWidth()*LightBotWorldView2D.CELL_WIDTH), ((double) getHeight()) / (tw.getHeight()*LightBotWorldView2D.CELL_WIDTH));
 		g2.translate(Math.abs((getWidth() - ratio * tw.getWidth()*LightBotWorldView2D.CELL_WIDTH) / 2.), Math.abs((getHeight() - ratio * tw.getHeight()*LightBotWorldView2D.CELL_WIDTH) / 2.));
@@ -61,7 +63,7 @@ public class LightBotWorldView2D extends WorldView {
 		// draw lights (and elevation)
 		for (int x = 0; x < tw.getWidth(); x++) {
 			for (int y = 0; y < tw.getHeight(); y++) {
-				LightBotWorldCell cell = tw.getCell(x, y);
+				LightBotWorldCell cell = (LightBotWorldCell) tw.getCell(x, y);
 				if (cell.isLight()) {
 					drawLight2D(g2, cell, cell.isLightOn());
 				}
@@ -80,7 +82,7 @@ public class LightBotWorldView2D extends WorldView {
 	}
 
 	private void drawWorld2D(Graphics2D g) {
-		LightBotWorld w = (LightBotWorld) world;
+		GridWorld w = (GridWorld) world;
 
 		for (int x = 0; x < w.getWidth(); x++) {
 			for (int y = 0; y < w.getHeight(); y++) {
@@ -101,7 +103,7 @@ public class LightBotWorldView2D extends WorldView {
 			g.draw(new Line2D.Double(0., y*LightBotWorldView2D.CELL_WIDTH, w.getWidth()*LightBotWorldView2D.CELL_WIDTH, y*LightBotWorldView2D.CELL_WIDTH));
 	}
 
-	private void drawLight2D(Graphics2D g, LightBotWorldCell cell, boolean lightOn) {
+	private void drawLight2D(Graphics2D g, GridWorldCell cell, boolean lightOn) {
 		if (lightOn)
 			g.setColor(LightBotWorldView2D.LIGHT_ON_COLOR);
 		else
@@ -110,7 +112,7 @@ public class LightBotWorldView2D extends WorldView {
 	}
 
 	private void drawBot2D(Graphics2D g, LightBotEntity bot) {
-		LightBotWorldCell cell = bot.getCell();
+		GridWorldCell cell = bot.getCell();
 
 		double width = LightBotWorldView2D.CELL_WIDTH;
 		double height = LightBotWorldView2D.CELL_WIDTH;

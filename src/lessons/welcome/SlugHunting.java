@@ -4,9 +4,9 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.Direction;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class SlugHunting extends ExerciseTemplated {
@@ -18,17 +18,17 @@ public class SlugHunting extends ExerciseTemplated {
 
 		BuggleWorld myWorld = new BuggleWorld("Forrest", 7, 7);
 		for (int i = 5; i >= 2; i--)
-			myWorld.getCell(6, i).setColor(Color.green);
-		myWorld.getCell(5, 2).setColor(Color.green);
+			myWorld.setColor(6, i,Color.green);
+		myWorld.setColor(5, 2,Color.green);
 		for (int i = 2; i <= 4; i++)
-			myWorld.getCell(4, i).setColor(Color.green);
-		myWorld.getCell(3, 4).setColor(Color.green);
+			myWorld.setColor(4, i,Color.green);
+		myWorld.setColor(3, 4,Color.green);
 		for (int i = 4; i >= 1; i--)
-			myWorld.getCell(2, i).setColor(Color.green);
-		myWorld.getCell(1, 1).setColor(Color.green);
-		myWorld.getCell(0, 1).setColor(Color.green);
+			myWorld.setColor(2, i,Color.green);
+		myWorld.setColor(1, 1,Color.green);
+		myWorld.setColor(0, 1,Color.green);
 		try {
-			myWorld.getCell(0, 1).newBaggle();
+			myWorld.newBaggle(0, 1);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}
@@ -36,24 +36,24 @@ public class SlugHunting extends ExerciseTemplated {
 
 		myWorld = new BuggleWorld("Desert", 7, 7);
 		for (int i = 5; i >= 2; i--)
-			myWorld.getCell(6, i).setColor(Color.green);
-		myWorld.getCell(6, 2).putTopWall();
-		myWorld.getCell(6, 3).putLeftWall();
-		myWorld.getCell(0, 2).putLeftWall();
-		myWorld.getCell(5, 2).setColor(Color.green);
-		myWorld.getCell(5, 1).setColor(Color.green);
-		myWorld.getCell(5, 0).setColor(Color.green);
-		myWorld.getCell(4, 0).setColor(Color.green);
-		myWorld.getCell(3, 0).setColor(Color.green);
-		myWorld.getCell(2, 0).setColor(Color.green);
-
-		myWorld.getCell(3, 4).setColor(Color.green);
+		    myWorld.setColor(6, i,Color.green);
+		myWorld.putTopWall(6, 2);
+		myWorld.putLeftWall(6, 3);
+		myWorld.putLeftWall(0, 2);
+		myWorld.setColor(5, 2,Color.green);
+		myWorld.setColor(5, 1,Color.green);
+		myWorld.setColor(5, 0,Color.green);
+		myWorld.setColor(4, 0,Color.green);
+		myWorld.setColor(3, 0,Color.green);
+		myWorld.setColor(2, 0,Color.green);
+				       
+		myWorld.setColor(3, 4,Color.green);
 		for (int i = 4; i >= 1; i--)
-			myWorld.getCell(2, i).setColor(Color.green);
-		myWorld.getCell(4, 4).setColor(Color.green);
+			myWorld.setColor(2, i,Color.green);
+		myWorld.setColor(4, 4,Color.green);
 
 		try {
-			myWorld.getCell(3, 4).newBaggle();
+			myWorld.newBaggle(3, 4);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}

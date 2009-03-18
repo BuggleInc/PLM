@@ -4,9 +4,9 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.Direction;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class LoopFor extends ExerciseTemplated {
@@ -20,7 +20,7 @@ public class LoopFor extends ExerciseTemplated {
 			new Buggle(myWorld, "Ungry"+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 		    
 		    try {
-				myWorld.getCell(i, 6-i).newBaggle();
+				myWorld.newBaggle(i, 6-i);
 			} catch (AlreadyHaveBaggleException e) {
 				e.printStackTrace();
 			}

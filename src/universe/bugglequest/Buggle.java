@@ -2,6 +2,8 @@ package universe.bugglequest;
 
 import java.awt.Color;
 
+import jlm.universe.Direction;
+
 
 public final class Buggle extends AbstractBuggle {
 

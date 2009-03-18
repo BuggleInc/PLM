@@ -2,8 +2,8 @@ package lessons.welcome;
 
 import java.awt.Color;
 
+import jlm.universe.Direction;
 import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.Direction;
 import universe.bugglequest.SimpleBuggle;
 
 

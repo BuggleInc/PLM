@@ -4,15 +4,15 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.Direction;
 import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.BuggleWorldCell;
-import universe.bugglequest.Direction;
 
 public class BDR extends ExerciseTemplated {
 
 	BuggleWorld myWorld;
 	void set(int x, int y, String clue) {
-		BuggleWorldCell c = myWorld.getCell(x, y);
+		BuggleWorldCell c = (BuggleWorldCell) myWorld.getCell(x, y);
 		if (!c.hasContent())
 			c.addContent(clue);
 		

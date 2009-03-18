@@ -1,27 +1,26 @@
 package lessons.lightbot.world;
 
+import jlm.universe.GridWorld;
+import jlm.universe.GridWorldCell;
 
 
 
-public class LightBotWorldCell {
+
+public class LightBotWorldCell extends GridWorldCell {
 	private boolean light=false; /* whether we have a light */
 	private boolean lightOn=false; /* if we have a light, whether it's on or off */
 
-	private LightBotWorld world;
-
-	private int x;
-	private int y;
 	private int height;
 
-	public LightBotWorldCell(LightBotWorld w, int x, int y) {
+	public LightBotWorldCell(GridWorld w, int x, int y) {
 		this(w, x, y, false, false, 0);
 	}
 
 	public LightBotWorldCell(LightBotWorldCell c) {
-		this(c.world, c.x, c.y, c.light, c.lightOn, c.height);
+		this((GridWorld) c.world, c.x, c.y, c.light, c.lightOn, c.height);
 	}
 
-	public LightBotWorldCell(LightBotWorld w, int x, int y, boolean light, boolean lightOn, int height) {
+	public LightBotWorldCell(GridWorld w, int x, int y, boolean light, boolean lightOn, int height) {
 		this.world = w;
 		this.x = x;
 		this.y = y;
@@ -56,30 +55,6 @@ public class LightBotWorldCell {
 		return (!light) || lightOn;
 	}
 
-	public LightBotWorld getWorld() {
-		return this.world;
-	}
-	
-	public int getX() {
-		return this.x;
-	}
-
-	public void setX(int newX) {
-		this.x = newX;
-	}
-	
-	public int getY() {
-		return this.y;
-	}
-	
-	public void setY(int newY) {
-		this.y = newY;
-	}
-	
-	public void setWorld(LightBotWorld w) {
-		this.world = w;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -2,11 +2,13 @@ package universe.bugglequest;
 
 import java.awt.Color;
 
+import jlm.universe.GridWorldCell;
+
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 
 
-public class BuggleWorldCell {
+public class BuggleWorldCell extends GridWorldCell {
 	private Color color;
 
 	private Color msgColor = DEFAULT_MSG_COLOR; 
@@ -23,10 +25,6 @@ public class BuggleWorldCell {
 	private boolean topWall;
 
 	private BuggleWorld world;
-
-	private int x;
-
-	private int y;
 
 	public BuggleWorldCell(BuggleWorld w, int x, int y) {
 		this(w, x, y, DEFAULT_COLOR, false, false, null, "");
@@ -171,19 +169,7 @@ public class BuggleWorldCell {
 		this.content = "";
 		world.notifyWorldUpdatesListeners();		
 	}
-		
-	public int getX() {
-		return this.x;
-	}
-
-	public int getY() {
-		return this.y;
-	}
-
-	public void setWorld(BuggleWorld w) {
-		this.world = w;
-	}
-	
+			
 	@Override
 	public int hashCode() {
 		final int prime = 31;
