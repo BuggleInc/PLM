@@ -17,34 +17,22 @@ import universe.bugglequest.ui.BuggleWorldView;
 public class BuggleWorld extends GridWorld {
  
 	public BuggleWorld(String name, int x, int y) {
-		super(name);
-		create(x, y);
+		super(name,x,y);
 	}
-
-	public void create(int width, int height) {
-		this.sizeX = width;
-		this.sizeY = height;
-		this.cells = new BuggleWorldCell[sizeX][sizeY];
+	@Override
+	public void create(int x, int y) {
+		super.create(x,y);
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++)
-				cells[i][j] = new BuggleWorldCell(this,i,j);		
+				setCell(new BuggleWorldCell(this, i, j), i, j) ;
 	}
 
 	/** 
-		 * Create a new world being almost a copy of the first one. Beware, all the buggles of the copy are changed to BuggleRaw. 
+	 * Create a new world being almost a copy of the first one. Beware, all the buggles of the copy are changed to BuggleRaw. 
 	 * @param world2
 	 */
 	public BuggleWorld(BuggleWorld world2) {
 		super(world2);
-		setName(world2.getName());
-		sizeX = world2.getWidth();
-		sizeY = world2.getHeight();
-		this.cells = new BuggleWorldCell[sizeX][sizeY];
-		for (int i = 0; i < sizeX; i++)
-			for (int j = 0; j < sizeY; j++) {
-				cells[i][j] = new BuggleWorldCell((BuggleWorldCell) world2.getCell(i, j));
-				cells[i][j].setWorld(this);
-			}
 	}
 	
 	@Override
@@ -62,7 +50,7 @@ public class BuggleWorld extends GridWorld {
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
 				BuggleWorldCell c = (BuggleWorldCell) initialWorld.getCell(i, j);
-				cells[i][j] = new BuggleWorldCell(c);
+				cells[i][j] = new BuggleWorldCell(c, this);
 			}
 
 		

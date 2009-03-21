@@ -16,8 +16,12 @@ public class LightBotWorldCell extends GridWorldCell {
 		this(w, x, y, false, false, 0);
 	}
 
-	public LightBotWorldCell(LightBotWorldCell c) {
-		this((GridWorld) c.world, c.x, c.y, c.light, c.lightOn, c.height);
+	public LightBotWorldCell(LightBotWorldCell c, GridWorld w) {
+		this(w, c.x, c.y, c.light, c.lightOn, c.height);
+	}
+	@Override
+	public GridWorldCell copy(GridWorld world) {
+		return new LightBotWorldCell(this,world);
 	}
 
 	public LightBotWorldCell(GridWorld w, int x, int y, boolean light, boolean lightOn, int height) {
@@ -104,7 +108,6 @@ public class LightBotWorldCell extends GridWorldCell {
 	@Override
 	public String toString() {
 		return "LBCell[x:"+this.x+";y:"+this.y+";z:"+this.height+";light:"+(light?(lightOn?"on":"off"):"none")+"]";
-	}
-	
+	}	
 	
 }

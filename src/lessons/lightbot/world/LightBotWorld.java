@@ -12,20 +12,16 @@ import lessons.lightbot.ui.LightBotWorldViewIsometric;
 public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<LightBotWorldCell> {
 
 	public LightBotWorld(String name, int x, int y) {
-		super(name);
-		create(x, y);
+		super(name,x,y);
 		setDelay(200);
 	}
-
-	public void create(int width, int height) {
-		this.sizeX = width;
-		this.sizeY = height;
-		this.cells = new LightBotWorldCell[sizeX][sizeY];
+	@Override
+	public void create(int x, int y) {
+		super.create(x,y);
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++)
-				cells[i][j] = new LightBotWorldCell(this, i, j);
+				setCell(new LightBotWorldCell(this, i, j), i, j) ;
 	}
-
 	/**
 	 * Create a new world being almost a copy of the first one.
 	 * 
@@ -33,15 +29,6 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 	 */
 	public LightBotWorld(GridWorld world2) {
 		super(world2);
-		setName(world2.getName());
-		sizeX = world2.getWidth();
-		sizeY = world2.getHeight();
-		this.cells = new LightBotWorldCell[sizeX][sizeY];
-		for (int i = 0; i < sizeX; i++)
-			for (int j = 0; j < sizeY; j++) {
-				cells[i][j] = new LightBotWorldCell((LightBotWorldCell) world2.getCell(i, j));
-				cells[i][j].setWorld(this);
-			}
 	}
 
 	@Override
@@ -61,7 +48,7 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
 				LightBotWorldCell c = (LightBotWorldCell) initialWorld.getCell(i, j);
-				cells[i][j] = new LightBotWorldCell(c);
+				cells[i][j] = new LightBotWorldCell(c,this);
 			}
 
 		super.reset(initialWorld);

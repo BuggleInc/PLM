@@ -2,7 +2,8 @@ package jlm.universe;
 
 
 
-public class GridWorldCell {
+
+public abstract class GridWorldCell {
 
 	protected GridWorld world;
 	protected int x;
@@ -13,6 +14,7 @@ public class GridWorldCell {
 		this.x = x;
 		this.y = y;
 	}
+	public abstract GridWorldCell copy(GridWorld world);
 
 	public GridWorld getWorld() {
 		return this.world;

@@ -5,6 +5,7 @@ import java.awt.Point;
 
 import jlm.universe.Direction;
 import jlm.universe.Entity;
+import jlm.universe.GridWorld;
 import jlm.universe.World;
 
 import org.simpleframework.xml.Attribute;
@@ -149,17 +150,17 @@ public abstract class AbstractBuggle extends Entity {
 	}
 	
 	public int getWorldHeight() {
-		return ((BuggleWorld)world).getHeight();
+		return ((GridWorld) world).getHeight();
 	}
 	
 	public int getWorldWidth() {
-		return ((BuggleWorld)world).getWidth();
+		return ((GridWorld) world).getWidth();
 	}
 	protected BuggleWorldCell getCell(){
-		return (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
+		return (BuggleWorldCell) ((GridWorld)world).getCell(x, y);
 	}
 	protected BuggleWorldCell getCell(int u, int v){
-		return (BuggleWorldCell) ((BuggleWorld)world).getCell(u, v);
+		return (BuggleWorldCell) ((GridWorld)world).getCell(u, v);
 	}
 
 	public int getX() {

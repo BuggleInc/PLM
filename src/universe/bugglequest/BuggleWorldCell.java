@@ -2,8 +2,8 @@ package universe.bugglequest;
 
 import java.awt.Color;
 
+import jlm.universe.GridWorld;
 import jlm.universe.GridWorldCell;
-
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 
@@ -24,20 +24,21 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	private boolean topWall;
 
-	private BuggleWorld world;
-
 	public BuggleWorldCell(BuggleWorld w, int x, int y) {
 		this(w, x, y, DEFAULT_COLOR, false, false, null, "");
 	}
 
-	public BuggleWorldCell(BuggleWorldCell c) {
-		this(c.world, c.x, c.y, c.color, c.leftWall, c.topWall, null, null);
+	public BuggleWorldCell(BuggleWorldCell c, GridWorld w) {
+		this((BuggleWorld) w, c.x, c.y, c.color, c.leftWall, c.topWall, null, null);
 		if (c.hasBaggle()) {
 			Baggle b = new Baggle(c.getBaggle());
 			b.setCell(this);
 			this.baggle = b;
 		}
 		this.content = c.content;
+	}
+	public BuggleWorldCell copy(GridWorld w) {
+		return new BuggleWorldCell(this,w);
 	}
 
 	public BuggleWorldCell(BuggleWorld w, int x, int y, Color color, boolean leftWall, boolean topWall) {
