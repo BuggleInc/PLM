@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-03-18 00:11+0100\n"
+"POT-Creation-Date: 2009-04-02 11:27+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5307,16 +5307,110 @@ msgstr ""
 # type: Content of: outside any tag (error?)
 #: src/lessons/lightbot/Main.html:2
 msgid ""
-"Cette leçon propose différents petits casses tête de programmation repris "
-"d'un jeu flash."
+"This lesson introduces a little programming puzzle inspired from a flash "
+"game."
 msgstr ""
 
 # type: Content of: <p>
 #: src/lessons/lightbot/Main.html:4
+msgid "See the <i>About this world</i> dialog for more details."
+msgstr ""
+
+# type: Content of: <h1>
+#: src/lessons/lightbot/world/LightBotWorld.html:1
+msgid "LightBotWorld"
+msgstr ""
+
+# type: Content of: outside any tag (error?)
+#: src/lessons/lightbot/world/LightBotWorld.html:3
 msgid ""
-"Les objectifs pédagogiques ne sont peut-être pas aussi clairs qu'il "
-"faudrait, il ne se programme pas en Java, mais je trouve ce jeu amusant "
-"malgré tout."
+"This world introduces a little programming puzzle which can somehow be used "
+"to introduce programmation to non-reading kids since it is programmed "
+"graphically.  The goal of each board is to light up all the lights. Your "
+"robot understands the following orders:"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:7
+msgid "<b>Order</b>"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:7
+msgid "<b>Meaning</b>"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:8
+msgid "<b>Move forward</b>"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:8
+msgid "Cannot be done if the destination cell is of another height than source cell"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:9
+msgid "<b>Jump forward</b>"
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:9
+msgid ""
+"Can only be done if the destination cell is one step higher than source "
+"cell, or if destination is lower than source. Cannot be used for plain "
+"moves."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:10
+msgid "<b>Turn left</b>."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:11
+msgid "<b>Turn right</b>."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:12
+msgid "<b>Switch the light</b>."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:12
+msgid ""
+"Turn it on if it was off, and off if it was on. No effect if the cell does "
+"not contain any light."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:13
+msgid "<b>Call function 1</b>."
+msgstr ""
+
+# type: Content of: <table><tr><td>
+#: src/lessons/lightbot/world/LightBotWorld.html:14
+msgid "<b>Call function 2</b>."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/world/LightBotWorld.html:17
+msgid ""
+"Please note that this world is not completely suited to small kids since the "
+"main difficulty comes from the fact that your are highly limited in the "
+"amount of instructions you can give to your robot. Advanced levels thus "
+"require to write sound functions, and are often above the capacities of "
+"small kids."
+msgstr ""
+
+# type: Content of: <p>
+#: src/lessons/lightbot/world/LightBotWorld.html:19
+msgid ""
+"This game is heavily inspirated from a flash game of the same name, which "
+"can for example be played on kongregate.com. It was written by Danny "
+"Yaroslavski (Coolio-Niato), the original idea being of Matt Chase."
 msgstr ""
 
 # type: Content of: <h1>
@@ -5489,93 +5583,4 @@ msgstr ""
 # type: Content of: <p>
 #: src/lessons/lightbot/boards/Board12Escher.html:3
 msgid "This one aint easy."
-msgstr ""
-
-# type: Content of: <h1>
-#: src/lessons/lightbot/world/LightBotWorld.html:1
-msgid "LightBotWorld"
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/lightbot/world/LightBotWorld.html:3
-msgid ""
-"This world introduces a little programming puzzle which can somehow be used "
-"to introduce programmation to non-reading kids since it is programmed "
-"graphically.  The goal of each board is to light up all the lights. Your "
-"robot understands the following orders:"
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:7
-msgid "<b>Order</b>"
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:7
-msgid "<b>Meaning</b>"
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:8
-msgid "<b>Move forward</b>"
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:8
-msgid "Cannot be done if the destination cell is of another height than source cell"
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:9
-msgid "<b>Jump forward</b>"
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:9
-msgid ""
-"Can only be done if the destination cell is one step higher than source "
-"cell, or if destination is lower than source. Cannot be used for plain "
-"moves."
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:10
-msgid "<b>Turn left</b>."
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:11
-msgid "<b>Turn right</b>."
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:12
-msgid "<b>Switch the light</b>."
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:12
-msgid ""
-"Turn it on if it was off, and off if it was on. No effect if the cell does "
-"not contain any light."
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:13
-msgid "<b>Call function 1</b>."
-msgstr ""
-
-# type: Content of: <table><tr><td>
-#: src/lessons/lightbot/world/LightBotWorld.html:14
-msgid "<b>Call function 2</b>."
-msgstr ""
-
-# type: Content of: outside any tag (error?)
-#: src/lessons/lightbot/world/LightBotWorld.html:17
-msgid ""
-"Please note that this world is not completely suited to small kids since the "
-"main difficulty comes from the fact that your are highly limited in the "
-"amount of instructions you can give to your robot. Advanced levels thus "
-"require to write sound functions, and are often above the capacities of "
-"small kids."
 msgstr ""
