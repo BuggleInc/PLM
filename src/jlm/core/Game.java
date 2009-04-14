@@ -501,11 +501,9 @@ public class Game implements IWorldView {
 	}
 	
 	public void allowOneStep() {
-		if (this.stepMode) {
-			World w = getSelectedWorld();			
-			for (Iterator<Entity> it = w.entities(); it.hasNext() ; ) {
-				it.next().allowOneStep();
-			}
+		World w = getSelectedWorld();			
+		for (Iterator<Entity> it = w.entities(); it.hasNext() ; ) {
+			it.next().allowOneStep();
 		}
 	}
 	
