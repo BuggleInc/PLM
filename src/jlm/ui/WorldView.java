@@ -16,6 +16,7 @@ public abstract class WorldView extends JComponent  implements IWorldView {
 	
 	public WorldView(World w) {
 		this.world = w;
+		w.doDelay();
 		this.world.addWorldUpdatesListener(this);
 	}
 	
