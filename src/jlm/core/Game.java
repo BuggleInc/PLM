@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
@@ -193,7 +194,7 @@ public class Game implements IWorldView {
 
 	public void startExerciseDemoExecution() {
 		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
-		runner.start();
+		runner.start();		
 	}
 
 	public void reset() {
@@ -484,4 +485,28 @@ public class Game implements IWorldView {
 			l.stateChanged(str);
 		}
 	}
+
+	private boolean stepMode = false;
+	
+	public void enableStepMode() {
+		this.stepMode = true;
+	}
+	
+	public void disableStepMode() {
+		this.stepMode = false;
+	}
+	
+	public boolean stepModeEnabled() {
+		return this.stepMode;
+	}
+	
+	public void allowOneStep() {
+		if (this.stepMode) {
+			World w = getSelectedWorld();			
+			for (Iterator<Entity> it = w.entities(); it.hasNext() ; ) {
+				it.next().allowOneStep();
+			}
+		}
+	}
+	
 }

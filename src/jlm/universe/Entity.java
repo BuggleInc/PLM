@@ -1,5 +1,9 @@
 package jlm.universe;
 
+import java.util.concurrent.Semaphore;
+
+import jlm.core.Game;
+
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
 
@@ -8,6 +12,9 @@ import org.simpleframework.xml.Element;
 public abstract class Entity {
 	protected String name;
 	protected World world;
+	
+	private Semaphore oneStepSemaphore = new Semaphore(0);
+	
 	
 	public Entity() {
 	}
@@ -53,9 +60,18 @@ public abstract class Entity {
 		inited = true;		
 	}
 
-	protected void stepUI() {
+	public void allowOneStep() {
+		//if (Game.getInstance().stepModeActivated()) {
+			this.oneStepSemaphore.release();
+		//}
+	}
+	
+	protected void stepUI() {		
 		// only a trial to see moving steps
 		if (world.isDelayed()) {
+			if (Game.getInstance().stepModeEnabled()) {
+				this.oneStepSemaphore.acquireUninterruptibly();
+			}	
 			try {
 				Thread.sleep(world.getDelay());
 			} catch (InterruptedException e) {

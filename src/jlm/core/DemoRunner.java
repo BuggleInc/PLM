@@ -20,10 +20,15 @@ public class DemoRunner extends Thread {
 
 	@Override
 	public void run() {
+		boolean stepModeWasActivated = this.game.stepModeEnabled();
+
 		try {
 			Exercise exo = this.game.getCurrentLesson().getCurrentExercise();
 
 			game.setState(GameState.DEMO_STARTED);
+			
+			this.game.disableStepMode();
+			
 			exo.runDemo(runners);
 
 			Iterator<Thread> it = runners.iterator();
@@ -34,13 +39,15 @@ public class DemoRunner extends Thread {
 					it.remove();
 				}
 			}
-			game.setState(GameState.DEMO_ENDED);
 		} catch (InterruptedException e) {
 			game.getOutputWriter().log(e);
-			game.setState(GameState.DEMO_ENDED);
 		} catch (Exception e) {
 			e.printStackTrace();
-			game.setState(GameState.DEMO_ENDED);
+		} finally {
+			if (stepModeWasActivated) {
+				this.game.enableStepMode();
+			}
+			game.setState(GameState.DEMO_ENDED);			
 		}
 
 		runners.remove(this);

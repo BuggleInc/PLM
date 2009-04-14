@@ -20,6 +20,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
+import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
@@ -30,8 +31,10 @@ import jlm.core.Reader;
 import jlm.event.GameStateListener;
 import jlm.ui.action.AbstractGameAction;
 import jlm.ui.action.CleanUpSession;
+import jlm.ui.action.EnableDisableStepMode;
 import jlm.ui.action.ExportSession;
 import jlm.ui.action.ImportSession;
+import jlm.ui.action.OneStep;
 import jlm.ui.action.PlayDemo;
 import jlm.ui.action.QuitGame;
 import jlm.ui.action.Reset;
@@ -50,6 +53,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 	private JButton stopButton;
 	private JButton resetButton;
 	private JButton demoButton;
+	private JToggleButton stepModeToggleButton;
+	private JButton stepButton;
 	private LoggerPanel outputArea;
 
 	private JComboBox lessonComboBox;
@@ -241,6 +246,14 @@ public class MainFrame extends JFrame implements GameStateListener {
 		demoButton.setBorderPainted(false);
 		demoButton.setEnabled(true);
 
+		stepButton = new JButton(new OneStep(Game.getInstance(), "Step", ResourcesCache.getIcon("resources/step.png")));
+		stepButton.setBorderPainted(false);
+		stepButton.setEnabled(false);	
+
+		stepModeToggleButton = new JToggleButton(new EnableDisableStepMode(Game.getInstance(), "Step Mode", ResourcesCache.getIcon("resources/stepmode.png")));
+		stepModeToggleButton.setEnabled(true);	
+		stepModeToggleButton.setText("");		
+		
 		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
 		lessonComboBox = new JComboBox(lessonAdapter);
 		lessonComboBox.setRenderer(new LessonCellRenderer());
@@ -253,6 +266,9 @@ public class MainFrame extends JFrame implements GameStateListener {
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
 		toolBar.add(demoButton);
+		toolBar.add(new JSeparator(SwingConstants.VERTICAL));
+		toolBar.add(stepModeToggleButton);
+		toolBar.add(stepButton);
 		// toolBar.add(viewObjectivesButton);
 		toolBar.add(new JSeparator(SwingConstants.VERTICAL));
 		toolBar.add(Box.createHorizontalGlue());
@@ -308,6 +324,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
+			stepButton.setEnabled(true);
 			exerciseView.setEnabledControl(false);
 			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
@@ -315,6 +332,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 		case EXECUTION_ENDED:
 			stopButton.setEnabled(false);
 			startButton.setEnabled(true);
+			stepButton.setEnabled(false);
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
@@ -327,12 +345,14 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
+			stepButton.setEnabled(true);
 			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
 			// exerciseView.setEnabledControl(false);
 			break;
 		case DEMO_ENDED:
 			stopButton.setEnabled(false);
+			stepButton.setEnabled(false);
 			startButton.setEnabled(true);
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
