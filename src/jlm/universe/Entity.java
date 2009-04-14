@@ -61,9 +61,7 @@ public abstract class Entity {
 	}
 
 	public void allowOneStep() {
-		//if (Game.getInstance().stepModeActivated()) {
-			this.oneStepSemaphore.release();
-		//}
+		this.oneStepSemaphore.release();
 	}
 	
 	protected void stepUI() {		
