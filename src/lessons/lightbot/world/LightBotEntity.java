@@ -7,8 +7,8 @@ import jlm.core.Game;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.GridWorld;
+import jlm.universe.IEntityStackListener;
 import jlm.universe.IEntityTracable;
-import jlm.universe.IEntityTraceListener;
 import jlm.universe.World;
 
 import org.simpleframework.xml.Attribute;
@@ -22,7 +22,7 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 
 	@Attribute
 	Direction direction;
-
+	
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
 	 * constructor. But it should not be used as most methods assert on world
@@ -180,7 +180,7 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 				
 		/* Run main */
 		run("main",sf.getMain());
-		fireTraceListener(null);
+		fireStackListener(null);
 	}
 	public void runF1(){
 		run("func1",sf.getFunc1());
@@ -194,7 +194,8 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 			return;
 		int line=0;
 		for (LightBotInstruction i: file) {
-			fireTraceListener(fileName+":"+line++);
+			tracedStack[0] = new StackTraceElement("LightbotEntity",fileName,fileName,line++);
+			fireStackListener(tracedStack);
 			if (i!=null && !i.isNoop())
 			stepUI();
 			if (i!=null)
@@ -215,27 +216,27 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 		return y;
 	}
 
-	ArrayList<IEntityTraceListener> traceListeners = new ArrayList<IEntityTraceListener>();
+	ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
 	@Override
-	public void addTraceListener(IEntityTraceListener l) {
-		traceListeners.add(l);
+	public void addStackListener(IEntityStackListener l) {
+		stackListeners.add(l);
 	}
 
 	@Override
-	public void removeTraceListener(IEntityTraceListener l) {
-		traceListeners.remove(l);
+	public void removeStackListener(IEntityStackListener l) {
+		stackListeners.remove(l);
 	}
 
-	public String selectedInstruction;
+	StackTraceElement[] tracedStack = new StackTraceElement[1];
 	@Override
-	public void fireTraceListener(String location) {
-		selectedInstruction = location;
-		for (IEntityTraceListener l:traceListeners)
-			l.entityTraceChanged(this, location);		
+	public void fireStackListener(StackTraceElement[] trace) {
+		tracedStack = trace;
+		for (IEntityStackListener l:stackListeners)
+			l.entityTraceChanged(this, trace);		
 	}
 
 	@Override
-	public String getCurrentTrace() {
-		return selectedInstruction;
+	public StackTraceElement[] getCurrentStack() {
+		return tracedStack;
 	}
 }

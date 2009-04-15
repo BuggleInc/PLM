@@ -18,12 +18,12 @@ import jlm.ui.IEditorPanel;
 import jlm.ui.ResourcesCache;
 import jlm.universe.Entity;
 import jlm.universe.IEntityTracable;
-import jlm.universe.IEntityTraceListener;
+import jlm.universe.IEntityStackListener;
 import lessons.lightbot.world.LightBotInstruction;
 import lessons.lightbot.world.LightBotSourceFile;
 import net.miginfocom.swing.MigLayout;
 
-public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISourceFileListener,IEntityTraceListener {
+public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISourceFileListener,IEntityStackListener {
 	private static final long serialVersionUID = 1L;
 	LightBotSourceFile srcFile;
 	Map<String,InstructionChooser> choosers=new HashMap<String, InstructionChooser>();
@@ -51,7 +51,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		Entity e = Game.getInstance().getSelectedEntity();
 		if (e instanceof IEntityTracable) {
 			tracedEntity = (IEntityTracable) e;
-			tracedEntity.addTraceListener(this);
+			tracedEntity.addStackListener(this);
 		}
 	}
 	@Override
@@ -125,11 +125,11 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	}
 
 	@Override
-	public void entityTraceChanged(Entity e, String location) {
+	public void entityTraceChanged(Entity e, StackTraceElement[] trace) {
 		if (selectedChooser != null)
 			selectedChooser.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-		if (location != null) {
-			selectedChooser = choosers.get(location);
+		if (trace != null && trace[0]!=null) {
+			selectedChooser = choosers.get(trace[0].getMethodName()+":"+trace[0].getLineNumber());
 			if (selectedChooser!=null)
 				selectedChooser.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
 		}
@@ -138,11 +138,11 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	@Override
 	public void tracedEntityChanged(Entity e) {
 		if (tracedEntity != null)
-			tracedEntity.removeTraceListener(this);
+			tracedEntity.removeStackListener(this);
 		if (e instanceof IEntityTracable) {
 			tracedEntity = (IEntityTracable) e;
-			tracedEntity.addTraceListener(this);
-			entityTraceChanged(e, tracedEntity.getCurrentTrace());
+			tracedEntity.addStackListener(this);
+			entityTraceChanged(e, tracedEntity.getCurrentStack());
 		}
 		else {
 			System.out.println("Not a tracable entity");

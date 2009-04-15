@@ -1,8 +1,8 @@
 package jlm.universe;
 
 public interface IEntityTracable {
-	public void addTraceListener(IEntityTraceListener l);
-	public void removeTraceListener(IEntityTraceListener l);
-	public void fireTraceListener(String location);
-	public String getCurrentTrace();
+	public void addStackListener(IEntityStackListener l);
+	public void removeStackListener(IEntityStackListener l);
+	public void fireStackListener(StackTraceElement[] trace);
+	public StackTraceElement[] getCurrentStack();
 }
