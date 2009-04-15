@@ -13,7 +13,8 @@ import jlm.core.Game;
 import jlm.event.GameListener;
 import jlm.lesson.Exercise;
 import jlm.lesson.SourceFile;
-import jlm.universe.IEntityTraceListener;
+import jlm.universe.IEntityStackListener;
+import jlm.universe.IEntityTracable;
 import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
@@ -92,8 +93,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 	public void selectedEntityHasChanged() { /* the code panels may want to know */
 		for (int i=1;i<getTabCount();i++) {
 			Component c = this.getComponentAt(getTabCount()-1);
-			if (c instanceof IEntityTraceListener)
-				((IEntityTraceListener) c).tracedEntityChanged(game.getSelectedEntity());
+			if (c instanceof IEntityStackListener)
+				((IEntityStackListener) c).tracedEntityChanged(game.getSelectedEntity());
 		}
 	}
 	@Override
