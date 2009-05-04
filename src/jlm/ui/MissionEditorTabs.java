@@ -13,7 +13,7 @@ import jlm.core.Game;
 import jlm.event.GameListener;
 import jlm.lesson.Exercise;
 import jlm.lesson.SourceFile;
-import jlm.universe.IEntityTraceListener;
+import jlm.universe.IEntityStackListener;
 import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
@@ -63,7 +63,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		missionTab.setCaretPosition(0);
 		
 		/* Redo any code panel */
-		int publicSrcFileCount = currentExercise.publicSourceFileCount();
 		
 		/* Remove every tabs, but the mission one */
 		while (getTabCount()>1) {
@@ -73,6 +72,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		}
 
 		/* Add back the right amount of tabs */
+		int publicSrcFileCount = currentExercise.publicSourceFileCount();
 		for (int i = 0; i < publicSrcFileCount; i++) {
 			/* Create the code editor */
 			SourceFile srcFile = currentExercise.getPublicSourceFile(i);
@@ -80,6 +80,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 			/* Create the tab with the code editor as content */
 			this.addTab(srcFile.getName(), srcFile.getEditorPanel()); 			
 		}		
+		selectedEntityHasChanged();
 		doLayout();
 	}
 	@Override
@@ -87,13 +88,15 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 	@Override
 	public void lessonsChanged() { /* don't care */ }
 	@Override
-	public void selectedWorldHasChanged() { /* don't care */ }
+	public void selectedWorldHasChanged() { 
+		selectedEntityHasChanged();
+	}
 	@Override
 	public void selectedEntityHasChanged() { /* the code panels may want to know */
 		for (int i=1;i<getTabCount();i++) {
 			Component c = this.getComponentAt(getTabCount()-1);
-			if (c instanceof IEntityTraceListener)
-				((IEntityTraceListener) c).tracedEntityChanged(game.getSelectedEntity());
+			if (c instanceof IEntityStackListener)
+				((IEntityStackListener) c).tracedEntityChanged(game.getSelectedEntity());
 		}
 	}
 	@Override

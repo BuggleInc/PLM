@@ -1,5 +1,6 @@
 package jlm.universe;
 
+import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
 import jlm.core.Game;
@@ -75,6 +76,7 @@ public abstract class Entity {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			fireStackListener();
 			world.notifyWorldUpdatesListeners();
 		}		
 	}
@@ -88,4 +90,21 @@ public abstract class Entity {
 	public abstract Entity copy();
 	public abstract void run();
 
+	
+	/* stuff related to tracing mechanism */
+	ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
+	public void addStackListener(IEntityStackListener l) {
+		stackListeners.add(l);
+	}
+	public void removeStackListener(IEntityStackListener l) {
+		stackListeners.remove(l);
+	}
+	public void fireStackListener() {
+		StackTraceElement[] trace = getCurrentStack();
+		for (IEntityStackListener l:stackListeners)
+			l.entityTraceChanged(this, trace);		
+	}
+	public StackTraceElement[] getCurrentStack() {
+		return Thread.currentThread().getStackTrace();
+	}	
 }

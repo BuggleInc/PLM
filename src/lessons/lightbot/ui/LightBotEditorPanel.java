@@ -17,7 +17,6 @@ import jlm.lesson.ISourceFileListener;
 import jlm.ui.IEditorPanel;
 import jlm.ui.ResourcesCache;
 import jlm.universe.Entity;
-import jlm.universe.IEntityTracable;
 import jlm.universe.IEntityStackListener;
 import lessons.lightbot.world.LightBotInstruction;
 import lessons.lightbot.world.LightBotSourceFile;
@@ -28,7 +27,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	LightBotSourceFile srcFile;
 	Map<String,InstructionChooser> choosers=new HashMap<String, InstructionChooser>();
 	InstructionChooser selectedChooser = null;
-	IEntityTracable tracedEntity;
+	Entity tracedEntity;
 	private Map<String,Icon> iconsByNames = new HashMap<String, Icon>();
 	private Map<Icon,String> iconNameByIcons = new HashMap<Icon,String>();
 	private Icon[] iconList;
@@ -48,15 +47,14 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		this.srcFile = srcFile;
 		srcFile.setListener(this);
 		sourceFileContentHasChanged();
-		Entity e = Game.getInstance().getSelectedEntity();
-		if (e instanceof IEntityTracable) {
-			tracedEntity = (IEntityTracable) e;
-			tracedEntity.addStackListener(this);
-		}
+		tracedEntity = Game.getInstance().getSelectedEntity();
+		tracedEntity.addStackListener(this);
 	}
 	@Override
 	public void clear() {
 		srcFile.removeListener();
+		if (tracedEntity != null)
+			tracedEntity.removeStackListener(this);
 	}
 	@Override
 	public void sourceFileContentHasChanged() {
@@ -139,15 +137,8 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	public void tracedEntityChanged(Entity e) {
 		if (tracedEntity != null)
 			tracedEntity.removeStackListener(this);
-		if (e instanceof IEntityTracable) {
-			tracedEntity = (IEntityTracable) e;
-			tracedEntity.addStackListener(this);
-			entityTraceChanged(e, tracedEntity.getCurrentStack());
-		}
-		else {
-			System.out.println("Not a tracable entity");
-			if (selectedChooser != null)
-				selectedChooser.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
-		}
+		tracedEntity =  e;
+		tracedEntity.addStackListener(this);
+		entityTraceChanged(e, tracedEntity.getCurrentStack());
 	}
 }

@@ -1,20 +1,17 @@
 package lessons.lightbot.world;
 
 import java.awt.Point;
-import java.util.ArrayList;
 
 import jlm.core.Game;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.GridWorld;
-import jlm.universe.IEntityStackListener;
-import jlm.universe.IEntityTracable;
 import jlm.universe.World;
 
 import org.simpleframework.xml.Attribute;
 
 
-public class LightBotEntity extends Entity implements IEntityTracable {
+public class LightBotEntity extends Entity  {
 	@Attribute
 	private int x;
 	@Attribute
@@ -22,6 +19,8 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 
 	@Attribute
 	Direction direction;
+	
+	StackTraceElement[] tracedStack = new StackTraceElement[1];
 	
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
@@ -180,7 +179,8 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 				
 		/* Run main */
 		run("main",sf.getMain());
-		fireStackListener(null);
+		tracedStack[0] = new StackTraceElement("LightbotEntity","main","main",1);
+		fireStackListener();
 	}
 	public void runF1(){
 		run("func1",sf.getFunc1());
@@ -195,7 +195,7 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 		int line=0;
 		for (LightBotInstruction i: file) {
 			tracedStack[0] = new StackTraceElement("LightbotEntity",fileName,fileName,line++);
-			fireStackListener(tracedStack);
+			fireStackListener();
 			if (i!=null && !i.isNoop())
 			stepUI();
 			if (i!=null)
@@ -214,25 +214,6 @@ public class LightBotEntity extends Entity implements IEntityTracable {
 	}
 	public int getY() {
 		return y;
-	}
-
-	ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
-	@Override
-	public void addStackListener(IEntityStackListener l) {
-		stackListeners.add(l);
-	}
-
-	@Override
-	public void removeStackListener(IEntityStackListener l) {
-		stackListeners.remove(l);
-	}
-
-	StackTraceElement[] tracedStack = new StackTraceElement[1];
-	@Override
-	public void fireStackListener(StackTraceElement[] trace) {
-		tracedStack = trace;
-		for (IEntityStackListener l:stackListeners)
-			l.entityTraceChanged(this, trace);		
 	}
 
 	@Override
