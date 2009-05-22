@@ -68,6 +68,6 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 		tracedEntity = e;
 		if (tracedEntity != null)
 			tracedEntity.addStackListener(this);
-		System.out.println("yop");
+		//System.out.println("yop");
 	}
 }
