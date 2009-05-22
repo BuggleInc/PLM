@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
 import jlm.core.Game;
+import jlm.core.GameState;
 
 
 public class StartExecution extends AbstractGameAction {
@@ -17,6 +18,10 @@ public class StartExecution extends AbstractGameAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.game.startExerciseExecution();		
+		if (game.getState().equals(GameState.EXECUTION_STARTED) && game.stepModeEnabled()) {
+			game.disableStepMode();
+			game.allowOneStep();
+		} else
+			this.game.startExerciseExecution();		
 	}
 }

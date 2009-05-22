@@ -20,7 +20,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
-import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.SwingConstants;
@@ -31,10 +30,9 @@ import jlm.core.Reader;
 import jlm.event.GameStateListener;
 import jlm.ui.action.AbstractGameAction;
 import jlm.ui.action.CleanUpSession;
-import jlm.ui.action.EnableDisableStepMode;
+import jlm.ui.action.DebugExecution;
 import jlm.ui.action.ExportSession;
 import jlm.ui.action.ImportSession;
-import jlm.ui.action.OneStep;
 import jlm.ui.action.PlayDemo;
 import jlm.ui.action.QuitGame;
 import jlm.ui.action.Reset;
@@ -50,11 +48,10 @@ public class MainFrame extends JFrame implements GameStateListener {
 
 	private ExerciseView exerciseView;
 	private JButton startButton;
+	private JButton debugButton;
 	private JButton stopButton;
 	private JButton resetButton;
 	private JButton demoButton;
-	private JToggleButton stepModeToggleButton;
-	private JButton stepButton;
 	private LoggerPanel outputArea;
 
 	private JComboBox lessonComboBox;
@@ -230,9 +227,13 @@ public class MainFrame extends JFrame implements GameStateListener {
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
 		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
-		startButton = new JButton(new StartExecution(Game.getInstance(), "Start", ii));
+		startButton = new JButton(new StartExecution(Game.getInstance(), "Run", ii));
 		startButton.setBorderPainted(false);
 
+		debugButton = new JButton(new DebugExecution(Game.getInstance(), "Step", ResourcesCache
+				.getIcon("resources/debug.png")));
+		debugButton.setBorderPainted(false);
+		
 		stopButton = new JButton(new StopExecution(Game.getInstance(), "Stop", ResourcesCache
 				.getIcon("resources/stop.png")));
 		stopButton.setBorderPainted(false);
@@ -245,14 +246,6 @@ public class MainFrame extends JFrame implements GameStateListener {
 		demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setBorderPainted(false);
 		demoButton.setEnabled(true);
-
-		stepButton = new JButton(new OneStep(Game.getInstance(), "Step", ResourcesCache.getIcon("resources/step.png")));
-		stepButton.setBorderPainted(false);
-		stepButton.setEnabled(false);	
-
-		stepModeToggleButton = new JToggleButton(new EnableDisableStepMode(Game.getInstance(), "Step Mode", ResourcesCache.getIcon("resources/stepmode.png")));
-		stepModeToggleButton.setEnabled(true);	
-		stepModeToggleButton.setText("");		
 		
 		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
 		lessonComboBox = new JComboBox(lessonAdapter);
@@ -263,13 +256,10 @@ public class MainFrame extends JFrame implements GameStateListener {
 		exerciseComboBox.setRenderer(new ExerciseCellRenderer());
 
 		toolBar.add(startButton);
+		toolBar.add(debugButton);
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
 		toolBar.add(demoButton);
-		toolBar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolBar.add(stepModeToggleButton);
-		toolBar.add(stepButton);
-		// toolBar.add(viewObjectivesButton);
 		toolBar.add(new JSeparator(SwingConstants.VERTICAL));
 		toolBar.add(Box.createHorizontalGlue());
 		toolBar.add(new JLabel("Lesson:"));
@@ -294,6 +284,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 		case LOADING:
 		case SAVING:
 			startButton.setEnabled(false);
+			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
@@ -301,6 +292,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 		case COMPILATION_STARTED:
 			outputArea.clear();
 			startButton.setEnabled(false);
+			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
@@ -310,6 +302,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 		case LOADING_DONE:
 		case SAVING_DONE:
 			startButton.setEnabled(true);
+			debugButton.setEnabled(true);
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
@@ -320,11 +313,17 @@ public class MainFrame extends JFrame implements GameStateListener {
 			break;
 		case EXECUTION_STARTED:
 			exerciseView.selectWorldPane();
-			startButton.setEnabled(false);
+			if (Game.getInstance().stepModeEnabled()) {
+				debugButton.setEnabled(true);
+				startButton.setEnabled(true);
+				debugButton.setText("Next");
+			} else {
+				startButton.setEnabled(false);
+				debugButton.setEnabled(false);				
+			}
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
-			stepButton.setEnabled(true);
 			exerciseView.setEnabledControl(false);
 			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
@@ -332,7 +331,8 @@ public class MainFrame extends JFrame implements GameStateListener {
 		case EXECUTION_ENDED:
 			stopButton.setEnabled(false);
 			startButton.setEnabled(true);
-			stepButton.setEnabled(false);
+			debugButton.setEnabled(true);
+			debugButton.setText("Step");
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
@@ -342,18 +342,18 @@ public class MainFrame extends JFrame implements GameStateListener {
 		case DEMO_STARTED:
 			exerciseView.selectObjectivePane();
 			startButton.setEnabled(false);
+			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
-			stepButton.setEnabled(true);
 			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
 			// exerciseView.setEnabledControl(false);
 			break;
 		case DEMO_ENDED:
 			stopButton.setEnabled(false);
-			stepButton.setEnabled(false);
 			startButton.setEnabled(true);
+			debugButton.setEnabled(true);
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);

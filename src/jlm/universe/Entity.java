@@ -70,11 +70,12 @@ public abstract class Entity {
 		if (world.isDelayed()) {
 			if (Game.getInstance().stepModeEnabled()) {
 				this.oneStepSemaphore.acquireUninterruptibly();
-			}	
-			try {
-				Thread.sleep(world.getDelay());
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+			} else {	
+				try {
+					Thread.sleep(world.getDelay());
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 			fireStackListener();
 			world.notifyWorldUpdatesListeners();

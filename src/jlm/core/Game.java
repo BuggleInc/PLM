@@ -175,12 +175,12 @@ public class Game implements IWorldView {
 		return this.selectedEntity;
 	}
 
+	/* Actions of the toolbar buttons */
+	private boolean stepMode = false;	
 	public void startExerciseExecution() {
 		LessonRunner runner = new LessonRunner(Game.getInstance(), this.lessonRunners);
-		// lessonsRunner.add(runner);
 		runner.start();
 	}
-
 	public void stopExerciseExecution() {
 		while (this.lessonRunners.size() > 0) {
 			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
@@ -191,10 +191,32 @@ public class Game implements IWorldView {
 		}
 		setState(GameState.EXECUTION_ENDED);
 	}
-
 	public void startExerciseDemoExecution() {
 		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
 		runner.start();		
+	}
+	public void startExerciseStepExecution() {
+		stepMode = true;
+		LessonRunner runner = new LessonRunner(Game.getInstance(), this.lessonRunners);
+		runner.start();
+	}
+
+	public void enableStepMode() {
+		this.stepMode = true;
+	}	
+	public void disableStepMode() {
+		this.stepMode = false;
+	}
+	
+	public boolean stepModeEnabled() {
+		return this.stepMode;
+	}
+	
+	public void allowOneStep() {
+		World w = getSelectedWorld();			
+		for (Iterator<Entity> it = w.entities(); it.hasNext() ; ) {
+			it.next().allowOneStep();
+		}
 	}
 
 	public void reset() {
@@ -483,27 +505,6 @@ public class Game implements IWorldView {
 		}
 		for (StatusStateListener l : this.statusStateListeners) {
 			l.stateChanged(str);
-		}
-	}
-
-	private boolean stepMode = false;
-	
-	public void enableStepMode() {
-		this.stepMode = true;
-	}
-	
-	public void disableStepMode() {
-		this.stepMode = false;
-	}
-	
-	public boolean stepModeEnabled() {
-		return this.stepMode;
-	}
-	
-	public void allowOneStep() {
-		World w = getSelectedWorld();			
-		for (Iterator<Entity> it = w.entities(); it.hasNext() ; ) {
-			it.next().allowOneStep();
 		}
 	}
 	
