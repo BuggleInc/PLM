@@ -158,7 +158,9 @@ public class Game implements IWorldView {
 		int index = currentExercise.indexOfWorld(this.selectedWorld);
 		this.answerOfSelectedWorld = currentExercise.getAnswerOfWorld(index);
 		this.initialOfSelectedWorld = currentExercise.getInitialWorld().get(index);
-		this.selectedEntity = this.selectedWorld.getEntity(0);
+		if (this.selectedWorld.getEntityCount()>0) {
+			this.selectedEntity = this.selectedWorld.getEntity(0);
+		}
 		fireSelectedWorldHasChanged();
 	}
 
