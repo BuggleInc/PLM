@@ -232,8 +232,15 @@ public abstract class World {
 	}
 
 	/* Find my UI */
-	public abstract WorldView[] getView();
-
+	public WorldView[] getView() {
+		return new WorldView[] { new WorldView(this) {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public boolean isWorldCompatible(World world) {
+				return false;
+			}			
+		}};
+	}
 	public EntityControlPanel getEntityControlPanel() {
 		return new EntityControlPanel() {
 			private static final long serialVersionUID = 1L;
@@ -304,4 +311,5 @@ public abstract class World {
 	public void setParameter(Object[] parameters) {
 		this.parameters = parameters;		
 	}
+
 }
