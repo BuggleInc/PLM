@@ -27,15 +27,6 @@ public class HanoiWorld extends World {
 					slots[src].top()+" > "+slots[dst].top());
 		slots[dst].push(slots[src].pop());
 	}
-	@Override
-	public void reset(World w) {
-		HanoiWorld other = (HanoiWorld)w;
-		slots = new HanoiSlot[3];
-		for (int i=0;i<3;i++)
-			slots[i] = other.slots[i].copy(); 		
-		super.reset(w);		
-	}
-
 	
 	public HanoiWorld(String name, int size) {
 		super(name);
@@ -47,12 +38,6 @@ public class HanoiWorld extends World {
 			slots[0].push(new Integer(i));
 	}
 
-	public HanoiWorld(HanoiWorld other) {
-		super(other);
-		slots = new HanoiSlot[3];
-		for (int i=0;i<3;i++)
-			slots[i] = other.slots[i].copy(); 		
-	}
 	
 
 	public HanoiWorld(String name, int size1, int size2, int size3) {
@@ -67,9 +52,16 @@ public class HanoiWorld extends World {
 		for (int i=size3; i>0; i--) 
 			slots[2].push(new Integer(i));
 	}
+	public HanoiWorld(HanoiWorld other) {
+		super(other);
+	}
 	@Override
-	public World copy() {
-		return new HanoiWorld(this);
+	public void reset(World w) {
+		HanoiWorld other = (HanoiWorld)w;
+		slots = new HanoiSlot[3];
+		for (int i=0;i<3;i++)
+			slots[i] = other.slots[i].copy(); 		
+		super.reset(w);		
 	}
 
 	@Override

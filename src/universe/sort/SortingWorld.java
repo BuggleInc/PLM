@@ -14,9 +14,6 @@ public class SortingWorld extends World {
 	public int maxValue=-1;
 	Color[] color;
 	
-	public SortingWorld() {
-		this("Sorting world");
-	}
 	public SortingWorld(String name) {
 		this(name,200);
 	}
@@ -45,6 +42,24 @@ public class SortingWorld extends World {
 	
 	public SortingWorld(SortingWorld world2) {
 		super(world2);
+		reset(world2);
+/*		values = world2.values.clone();
+		color = world2.color.clone();
+		maxValue = world2.maxValue;
+
+		Iterator<Entity> it = entities();
+		while (it.hasNext()) {
+			SortingEntity se = (SortingEntity) it.next();
+			se.values = values.clone();
+			se.color = color.clone();
+			se.maxValue = maxValue;
+		}*/
+	}
+
+	@Override
+	public void reset(World w) {
+		System.out.println("Reset to "+w);
+		SortingWorld world2 = (SortingWorld)w;
 		values = world2.values.clone();
 		color = world2.color.clone();
 		maxValue = world2.maxValue;
@@ -55,20 +70,7 @@ public class SortingWorld extends World {
 			se.values = values.clone();
 			se.color = color.clone();
 			se.maxValue = maxValue;
-		}
-	}
-	
-	@Override
-	public World copy() {
-		return new SortingWorld(this);
-	}
-	@Override
-	public void reset(World w) {
-		SortingWorld world2 = (SortingWorld)w;
-		values = world2.values.clone();
-		color = world2.color.clone();
-		maxValue = world2.maxValue;
-				
+		}		
 		super.reset(w);		
 	}
 

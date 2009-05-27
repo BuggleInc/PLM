@@ -31,22 +31,18 @@ public class TurtleWorld extends World {
 		this.width = width;
 		this.height = height;
 	}
+	
 	public TurtleWorld(TurtleWorld world2) {
 		super(world2);
-		this.height = world2.height;
-		this.width = world2.width;
-		for (ShapeAbstract s:world2.shapes)
-			shapes.add(s.copy());
 	}
 
 	@Override
-	public World copy() {
-		return new TurtleWorld(this);
-	}
-	@Override
 	public void reset(World w) {
 		TurtleWorld initialWorld = (TurtleWorld)w;
-		shapes.clear();
+		shapes = new ArrayList<ShapeAbstract>();
+		this.height = initialWorld.height;
+		this.width = initialWorld.width;
+
 		Iterator<ShapeAbstract> it = initialWorld.shapes();
 		while (it.hasNext()) 
 			shapes.add(it.next().copy());

@@ -36,17 +36,18 @@ public abstract class World {
 
 	public World(World w2) {
 		this(w2.getName());
-		for (Entity e : w2.entities) {
-			Entity e2 = e.copy();
-			e2.setWorld(this);
-			entities.add(e2);
-		}
-		this.isDelayed = w2.isDelayed;
-		this.delay = w2.delay;
-		this.parameters = w2.parameters;
+		reset(w2);
 	}
 
-	public abstract World copy();
+	public World copy() {
+		World res=null;
+		try {
+			res = this.getClass().getConstructor(this.getClass()).newInstance(this);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
 
 	/**
 	 * Reset the content of a world to be the same than the one passed as
@@ -63,6 +64,7 @@ public abstract class World {
 		}
 		this.isDelayed = initialWorld.isDelayed;
 		this.delay = initialWorld.delay;
+		this.parameters = initialWorld.parameters;
 		notifyEntityUpdateListeners();
 		notifyWorldUpdatesListeners();
 	}

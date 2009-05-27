@@ -27,13 +27,8 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 	 * 
 	 * @param world2
 	 */
-	public LightBotWorld(GridWorld world2) {
+	public LightBotWorld(LightBotWorld world2) {
 		super(world2);
-	}
-
-	@Override
-	public World copy() {
-		return new LightBotWorld(this);
 	}
 
 	/**

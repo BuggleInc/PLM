@@ -35,10 +35,6 @@ public class BuggleWorld extends GridWorld {
 		super(world2);
 	}
 	
-	@Override
-	public World copy(){
-		return new BuggleWorld(this);
-	}
 	/**
 	 * Reset the content of a world to be the same than the one passed as argument
 	 * does not affect the name of the initial world.
