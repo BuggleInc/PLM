@@ -352,11 +352,6 @@ public class Turtle extends Entity {
 		setPos((double) x, (double) y);
 	}
 	
-	/** @brief retrieve one parameter from the world */
-	protected Object getParam(int i) {
-		return getWorld().parameters[i];
-	}	
-
 	@Override
 	public String toString() {
 		return "Turtle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Heading:" + heading + " Color:"

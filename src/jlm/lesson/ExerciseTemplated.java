@@ -218,7 +218,11 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (World aw : answerWorld) {
 			Iterator<Entity> it = aw.entities();
 			while (it.hasNext())
-				it.next().run();
+				try {
+					it.next().run();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 		}		
 	}
 

@@ -89,7 +89,7 @@ public abstract class Entity {
 	}
 	/** Copy constructor */
 	public abstract Entity copy();
-	public abstract void run();
+	public abstract void run() throws Exception;
 
 	
 	/* stuff related to tracing mechanism */
@@ -107,5 +107,10 @@ public abstract class Entity {
 	}
 	public StackTraceElement[] getCurrentStack() {
 		return Thread.currentThread().getStackTrace();
+	}
+	
+	/** @brief retrieve one parameter from the world */
+	protected Object getParam(int i) {
+		return world.parameters[i];
 	}	
 }

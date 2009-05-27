@@ -43,6 +43,7 @@ public abstract class World {
 		}
 		this.isDelayed = w2.isDelayed;
 		this.delay = w2.delay;
+		this.parameters = w2.parameters;
 	}
 
 	public abstract World copy();
@@ -124,7 +125,11 @@ public abstract class World {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
-					b.run();
+					try {
+						b.run();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 					Game.getInstance().statusArgRemove(getName());
 				}
 			});
@@ -284,5 +289,10 @@ public abstract class World {
 		}
 
 		return about;
+	}
+
+	protected Object[] parameters = null;
+	public void setParameter(Object[] parameters) {
+		this.parameters = parameters;		
 	}
 }

@@ -37,8 +37,6 @@ public class TurtleWorld extends World {
 		this.width = world2.width;
 		for (ShapeAbstract s:world2.shapes)
 			shapes.add(s.copy());
-		if (world2.parameters != null)
-			parameters = world2.parameters;
 	}
 
 	@Override
@@ -102,10 +100,5 @@ public class TurtleWorld extends World {
 			res += it.next().toString();
 		res += "]";
 		return res;
-	}
-
-	protected Object[] parameters=null;
-	public void setParameter(Object[] parameters) {
-		this.parameters = parameters;		
 	}
 }
