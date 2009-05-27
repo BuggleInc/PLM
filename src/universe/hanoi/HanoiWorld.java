@@ -1,7 +1,6 @@
 package universe.hanoi;
 
 import jlm.ui.WorldView;
-import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 public class HanoiWorld extends World {
@@ -55,16 +54,6 @@ public class HanoiWorld extends World {
 		for (int i=0;i<3;i++)
 			slots[i] = other.slots[i].copy(); 		
 		super.reset(w);		
-	}
-
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void setEnabledControl(boolean enabled) {
-			}
-		};
 	}
 
 	@Override

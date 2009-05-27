@@ -6,7 +6,6 @@ import java.util.Random;
 
 import jlm.ui.WorldView;
 import jlm.universe.Entity;
-import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 public class SortingWorld extends World {
@@ -60,16 +59,6 @@ public class SortingWorld extends World {
 			se.maxValue = maxValue;
 		}		
 		super.reset(w);		
-	}
-
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() { // TODO display something
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void setEnabledControl(boolean enabled) {
-			}			
-		}; 
 	}
 
 	@Override

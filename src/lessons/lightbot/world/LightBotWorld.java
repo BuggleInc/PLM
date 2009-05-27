@@ -5,7 +5,6 @@ import java.util.Iterator;
 
 import jlm.ui.WorldView;
 import jlm.universe.Entity;
-import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
 import lessons.lightbot.ui.LightBotWorldViewIsometric;
@@ -110,16 +109,6 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 	public WorldView[] getView() {
 //		return new WorldView[] { new LightBotWorldViewIsometric(this), new LightBotWorldView2D(this) };
 		return new WorldView[] { new LightBotWorldViewIsometric(this) };
-	}
-
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new EntityControlPanel() {
-			private static final long serialVersionUID = 1L;
-			@Override
-			public void setEnabledControl(boolean enabled) {
-			}
-		};
 	}
 
 	@Override

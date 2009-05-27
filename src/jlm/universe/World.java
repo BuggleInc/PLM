@@ -234,7 +234,14 @@ public abstract class World {
 	/* Find my UI */
 	public abstract WorldView[] getView();
 
-	public abstract EntityControlPanel getEntityControlPanel();
+	public EntityControlPanel getEntityControlPanel() {
+		return new EntityControlPanel() {
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void setEnabledControl(boolean enabled) {
+			}
+		};
+	}
 
 	@Override
 	public int hashCode() {
