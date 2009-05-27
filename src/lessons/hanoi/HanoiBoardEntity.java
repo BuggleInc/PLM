@@ -18,20 +18,14 @@ public class HanoiBoardEntity extends HanoiEntity {
 	public void solve(int src, int dst, int height) throws HanoiInvalidMove {
 		/* BEGIN SOLUTION */
 		if (height!=0) {
-			int other;
-			switch(src+dst) {
-			case 1: /* 0+1 */
+			int other=-1;
+			if (src+dst==1) /* 0+1 */
 				other=2;
-				break;
-			case 2: /* 0+2 */
+			if (src+dst==2) /* 0+2 */
 				other=1;
-				break;
-			case 3: /* 1+2 */
+			if (src+dst==3) /* 1+2 */
 				other=0;
-				break;
-			default:
-				other=-1;
-			}
+			
 			solve(src,other, height-1);
 			move(src,dst);
 			solve(other,dst,height-1);
