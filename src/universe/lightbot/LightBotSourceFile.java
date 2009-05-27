@@ -1,9 +1,8 @@
-package lessons.lightbot.world;
+package universe.lightbot;
 
 import javax.swing.JScrollPane;
 
 import jlm.lesson.RevertableSourceFile;
-import lessons.lightbot.ui.LightBotEditorPanel;
 
 public class LightBotSourceFile extends RevertableSourceFile {
 	private LightBotInstruction[] main;

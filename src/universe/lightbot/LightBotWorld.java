@@ -1,4 +1,4 @@
-package lessons.lightbot.world;
+package universe.lightbot;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -7,7 +7,6 @@ import jlm.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
-import lessons.lightbot.ui.LightBotWorldViewIsometric;
 
 public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<LightBotWorldCell> {
 

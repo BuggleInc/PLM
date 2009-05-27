@@ -1,4 +1,4 @@
-package lessons.lightbot.world;
+package universe.lightbot;
 
 import jlm.universe.GridWorld;
 import jlm.universe.GridWorldCell;

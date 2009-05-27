@@ -1,10 +1,10 @@
-package lessons.lightbot.boards;
+package lessons.lightbot;
 
+import universe.lightbot.LightBotEntity;
+import universe.lightbot.LightBotExercise;
+import universe.lightbot.LightBotWorld;
 import jlm.lesson.Lesson;
 import jlm.universe.Direction;
-import lessons.lightbot.world.LightBotEntity;
-import lessons.lightbot.world.LightBotExercise;
-import lessons.lightbot.world.LightBotWorld;
 
 public class Board05Higher extends LightBotExercise {
 

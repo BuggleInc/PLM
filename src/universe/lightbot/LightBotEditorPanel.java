@@ -1,4 +1,4 @@
-package lessons.lightbot.ui;
+package universe.lightbot;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,14 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 
+
 import jlm.core.Game;
 import jlm.lesson.ISourceFileListener;
 import jlm.ui.IEditorPanel;
 import jlm.ui.ResourcesCache;
 import jlm.universe.Entity;
 import jlm.universe.IEntityStackListener;
-import lessons.lightbot.world.LightBotInstruction;
-import lessons.lightbot.world.LightBotSourceFile;
 import net.miginfocom.swing.MigLayout;
 
 public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISourceFileListener,IEntityStackListener {
