@@ -42,23 +42,11 @@ public class SortingWorld extends World {
 	
 	public SortingWorld(SortingWorld world2) {
 		super(world2);
-		reset(world2);
-/*		values = world2.values.clone();
-		color = world2.color.clone();
-		maxValue = world2.maxValue;
-
-		Iterator<Entity> it = entities();
-		while (it.hasNext()) {
-			SortingEntity se = (SortingEntity) it.next();
-			se.values = values.clone();
-			se.color = color.clone();
-			se.maxValue = maxValue;
-		}*/
+		reset(world2); /* FIXME: if I remove this line, the boxes become of height 0; no idea why */
 	}
 
 	@Override
 	public void reset(World w) {
-		System.out.println("Reset to "+w);
 		SortingWorld world2 = (SortingWorld)w;
 		values = world2.values.clone();
 		color = world2.color.clone();
