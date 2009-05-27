@@ -3,6 +3,7 @@ package lessons.lightbot.world;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import jlm.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
@@ -106,10 +107,9 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 	
 	
 	@Override
-	public LightBotWorldViewIsometric[] getView() {
-		LightBotWorldViewIsometric[] res = new LightBotWorldViewIsometric[1];
-		res[0] = new LightBotWorldViewIsometric(this);
-		return res;
+	public WorldView[] getView() {
+//		return new WorldView[] { new LightBotWorldViewIsometric(this), new LightBotWorldView2D(this) };
+		return new WorldView[] { new LightBotWorldViewIsometric(this) };
 	}
 
 	@Override

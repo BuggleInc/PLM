@@ -74,9 +74,7 @@ public class SortingWorld extends World {
 
 	@Override
 	public WorldView[] getView() {
-		WorldView[] res = new WorldView[1];
-		res[0] = new SortingWorldView(this);
-		return res;
+		return new WorldView[] { new SortingWorldView(this) };
 	}
 
 	// TODO Implement world IO

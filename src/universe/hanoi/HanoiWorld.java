@@ -29,19 +29,12 @@ public class HanoiWorld extends World {
 	}
 	
 	public HanoiWorld(String name, int size) {
-		super(name);
-		setDelay(200);
-		slots = new HanoiSlot[3];
-		for (int i=0;i<3;i++)
-			slots[i] = new HanoiSlot();
-		for (int i=size; i>0; i--) 
-			slots[0].push(new Integer(i));
-	}
-
-	
+		this(name,size,0,0);
+	}	
 
 	public HanoiWorld(String name, int size1, int size2, int size3) {
 		super(name);
+		setDelay(200);
 		slots = new HanoiSlot[3];
 		for (int i=0;i<3;i++)
 			slots[i] = new HanoiSlot();
@@ -76,9 +69,7 @@ public class HanoiWorld extends World {
 
 	@Override
 	public WorldView[] getView() {
-		WorldView res[] = new WorldView[1];
-		res[0] = new HanoiWorldView(this);
-		return res;
+		return new WorldView[] { new HanoiWorldView(this) } ;
 	}
 	
 	@Override
