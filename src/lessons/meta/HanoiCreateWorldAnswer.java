@@ -33,7 +33,7 @@ public class HanoiCreateWorldAnswer extends World {
 	 * In general, you could even have none of them, but writing exercises will be harder. 
 	 * The metalesson, use this specific constructor, so please don't change its arguments.
 	 */
-	public HanoiCreateWorldAnswer(String name, int[] slotA, int[] slotB, int[] slotC) {
+	public HanoiCreateWorldAnswer(String name, Integer[] slotA, Integer[] slotB, Integer[] slotC) {
 		super(name);
 		setDelay(200);
 		/* Your code here */
