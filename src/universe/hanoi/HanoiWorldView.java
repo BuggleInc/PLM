@@ -52,6 +52,9 @@ public class HanoiWorldView extends WorldView {
 		g2.setColor(Color.black);
 		g2.fill(new Rectangle2D.Double(xoffset-2, 55.,  2., 125.));
 		
+		if (values==null)
+			return;
+		
 		/* draw discs */
 		int height = 1;
 		for (int size : values) { 

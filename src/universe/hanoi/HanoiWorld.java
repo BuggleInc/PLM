@@ -42,6 +42,7 @@ public class HanoiWorld extends World {
 		slots = new HanoiSlot[3];
 		for (int i=0;i<3;i++)
 			slots[i] = new HanoiSlot();
+		
 		for (int i=A.length-1; i>=0; i--) 
 			slots[0].push(A[i]);
 		for (int i=B.length-1; i>=0; i--) 

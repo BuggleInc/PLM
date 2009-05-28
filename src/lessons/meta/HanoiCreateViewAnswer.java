@@ -58,7 +58,7 @@ public class HanoiCreateViewAnswer extends WorldView {
 		g2.setColor(Color.white);
 		g2.fill(new Rectangle2D.Double(0., 0., renderedX, renderedY));
 		
-		HanoiCreateWorldWorld hw = (HanoiCreateWorldWorld)world;
+		HanoiMetaWorld hw = (HanoiMetaWorld)world;
 		/* Write here the code to render your world. Feel free to declare methods to factorize the code */
 		/* BEGIN SOLUTION */		
 		drawSlot(g2,hw.values(0), 50.);

@@ -1,6 +1,5 @@
 package lessons.meta;
 
-import java.lang.reflect.Constructor;
 import java.util.List;
 
 import jlm.core.Game;
@@ -13,8 +12,8 @@ public class HanoiCreateWorld extends ExerciseTemplated {
 	boolean error = false;
 	public HanoiCreateWorld(Lesson lesson) {
 		super(lesson);
-		HanoiCreateWorldWorld w = new HanoiCreateWorldWorld("hanoi",
-					new Integer[] {8, 7, 6, 5, 4, 3, 2, 1}, new Integer[0], new Integer[0]);
+		HanoiMetaWorld w = new HanoiMetaWorld("hanoi",
+					new Integer[] {1,2,3,4,5,6,7,8}, new Integer[0], new Integer[0]);
 		setup(w);
 	}
 	@Override
@@ -23,12 +22,9 @@ public class HanoiCreateWorld extends ExerciseTemplated {
 
 		newSourceFromFile("HanoiWorld","src/lessons/meta/HanoiCreateWorldAnswer","java",
 					"s/HanoiCreateWorldAnswer/HanoiWorld/;");
-		/*newSourceFromFile("HanoiView","src/lessons/meta/HanoiCreateWorldEntityView","java",
-				"s/HanoiCreateWorldEntityWorld/HanoiWorld/;"+
-				"s/HanoiCreateWorldEntityView/HanoiView/");*/
 
 		/* compute answer */
-		((HanoiCreateWorldWorld)answerWorld[0]).isAnswer=true;
+		((HanoiMetaWorld)answerWorld[0]).isAnswer=true;
 	}
 	
 	@Override
@@ -44,16 +40,8 @@ public class HanoiCreateWorld extends ExerciseTemplated {
 					e.printStackTrace();
 					return;
 				}
-				HanoiCreateWorldWorld w = (HanoiCreateWorldWorld)currentWorld[0];
-				try {
-					Constructor<Object> c = compiledClasses.get(className("HanoiWorld")).
-					getConstructor(String.class,Integer[].class,Integer[].class,Integer[].class);			
-					w.servant = (World) c.newInstance("",w.slotA,w.slotB,w.slotC);
-				} catch (Exception e1) {
-					System.err.println("Cannot instantiate your world implementation");
-					error = true;
-					e1.printStackTrace();
-				}
+				HanoiMetaWorld w = (HanoiMetaWorld)currentWorld[0];
+				w.setServant(compiledClasses.get(className("HanoiWorld")));
 				w.view.repaint();
 			}
 		});

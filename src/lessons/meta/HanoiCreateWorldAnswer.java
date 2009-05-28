@@ -7,15 +7,6 @@ import java.util.Vector;
 import jlm.universe.World;
 
 public class HanoiCreateWorldAnswer extends World {
-	/* BEGIN SOLUTION */
-	/* we need this empty constructor to instantiate the student code after dynamic compilation, 
-	 * but that's an artifact of the meta-mess, so hide it.
-	 */
-	public HanoiCreateWorldAnswer() {
-		super("");
-	}
-	/* END SOLUTION */
-
 	/** A copy constructor (mandatory for the internal compilation mechanism to work)
 	 * 
 	 * There is normally no need to change it, but it must be present. 
