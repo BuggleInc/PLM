@@ -62,8 +62,10 @@ public class SourceFile {
 				}
 				
 			if (patterns != null)
-				for (String pattern : patterns.keySet())
+				for (String pattern : patterns.keySet()) {
+					System.out.println("Replace all "+pattern+" to "+patterns.get(pattern));
 					res = res.replaceAll(pattern, patterns.get(pattern));
+				}
 
 		} else {
 			res = this.body;

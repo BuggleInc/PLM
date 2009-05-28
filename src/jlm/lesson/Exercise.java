@@ -29,7 +29,7 @@ public abstract class Exercise {
 	protected List<SourceFile> sourceFiles; /** All the editable source files */
 	
 	
-	Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
+	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
 	protected List<String> fileNames;
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
@@ -69,9 +69,6 @@ public abstract class Exercise {
 		return this.mission;
 	}
 
-	public abstract void reset();
-	
-	
 	public List<World> getCurrentWorld() {
 		return Arrays.asList(currentWorld);
 	}
@@ -96,6 +93,10 @@ public abstract class Exercise {
 				return false;
 		}
 		return true;
+	}
+	public void reset() {
+		for (int i=0; i<initialWorld.length; i++) 
+			currentWorld[i].reset(initialWorld[i]);
 	}
 
 	/*
@@ -145,7 +146,7 @@ public abstract class Exercise {
 	private String packageName(){
 		return packageNamePrefix + packageNameSuffix;
 	}
-	private String className(String name) {
+	public String className(String name) {
 		return packageName() + "." + name;
 	}
 	/* ***
@@ -177,8 +178,8 @@ public abstract class Exercise {
 		sourceFiles.add(new RevertableSourceFile(name, initialContent, template, pat));
 		fileNames.add(name);
 	}
-
-	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames){
+	
+	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {
 		for (World current:worlds) {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			Iterator<Entity> it = current.entities();

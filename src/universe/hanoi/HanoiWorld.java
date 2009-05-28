@@ -30,22 +30,24 @@ public class HanoiWorld extends World {
 		slots[dst].push(slots[src].pop());
 	}
 	
-	public HanoiWorld(String name, int size) {
-		this(name,size,0,0);
+	public HanoiWorld(String name, Integer  size) {
+		this(name,new Integer[0],new Integer[0],new Integer[0]);
+		for (int i=size;i>0;i--)
+			slots[0].push(i);
 	}	
 
-	public HanoiWorld(String name, int size1, int size2, int size3) {
+	public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C) {
 		super(name);
 		setDelay(200);
 		slots = new HanoiSlot[3];
 		for (int i=0;i<3;i++)
 			slots[i] = new HanoiSlot();
-		for (int i=size1; i>0; i--) 
-			slots[0].push(new Integer(i));
-		for (int i=size2; i>0; i--) 
-			slots[1].push(new Integer(i));
-		for (int i=size3; i>0; i--) 
-			slots[2].push(new Integer(i));
+		for (int i=A.length-1; i>=0; i--) 
+			slots[0].push(A[i]);
+		for (int i=B.length-1; i>=0; i--) 
+			slots[1].push(B[i]);
+		for (int i=C.length-1; i>=0; i--) 
+			slots[2].push(C[i]);
 	}
 	public HanoiWorld(HanoiWorld other) {
 		super(other);

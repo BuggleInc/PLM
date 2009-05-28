@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -84,6 +86,10 @@ public abstract class ExerciseTemplated extends Exercise {
 
 
 	public void newSourceFromFile(String name, String filename, String extension) {
+		newSourceFromFile(name, filename, extension,"");
+	}
+	public void newSourceFromFile(String name, String filename, String extension,String patternString) {
+		
 		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,extension,false);
 		if (sb==null)
 			sb = Reader.fileToStringBuffer(filename,extension,false);
@@ -156,16 +162,35 @@ public abstract class ExerciseTemplated extends Exercise {
 		String debugContent = templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ templateTail.toString();
 		/* TODO: remove "//.*\n" before putting everything on one line only */
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
-		StringBuffer template = new StringBuffer();
+		StringBuffer templateSb = new StringBuffer();
 		for (String s: (head+"$body"+tail).split("\n")) 
-			template.append(s);			
+			templateSb.append(s);			
+		String template = templateSb.toString();
+		
+		/* Apply all requested rewrites, if any */
+		if (patternString != null) {
+		Map<String, String> patterns = new HashMap<String, String>();
+			for (String pattern: patternString.split(";")) {
+				String[] parts = pattern.split("/");
+				if (parts.length != 1 || !parts[0].equals("")) {
+					if (parts.length != 3 || !parts[0].equals("s")) 
+						throw new RuntimeException("Malformed pattern for file "+name+": '"+ pattern+"' (from '"+patterns+"')");
+
+					if (this.debug)
+						System.out.println("Replace all "+parts[1]+" to "+parts[2]);
+					template = template.replaceAll(parts[1], parts[2]);
+					initialContent = initialContent.replaceAll(parts[1], parts[2]);
+				}
+			}
+
+		}
 
 		if (this.debug) {
 			System.out.println("<<<<<<<<template:"+template);
 			System.out.println("<<<<<<<<debugCtn:"+debugContent);
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
 		}
-		newSource(name, initialContent, template.toString());
+		newSource(name, initialContent, template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
 		if (entitiesNames == null)  {
@@ -224,13 +249,6 @@ public abstract class ExerciseTemplated extends Exercise {
 					e.printStackTrace();
 				}
 		}		
-	}
-
-
-	@Override
-	public void reset(){
-		for (int i=0; i<initialWorld.length; i++) 
-			currentWorld[i].reset(initialWorld[i]);
 	}
 
 	@Override
