@@ -33,6 +33,7 @@ public class LessonRunner extends Thread {
 			game.setState(GameState.COMPILATION_ENDED);
 			
 			game.setState(GameState.EXECUTION_STARTED);
+			exo.reset();
 			exo.run(runners);
 
 			Iterator<Thread> it = runners.iterator();

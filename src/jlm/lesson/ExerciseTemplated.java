@@ -253,8 +253,6 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	@Override
 	public void run(List<Thread> runnerVect){
-		reset();
-
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].doDelay();
 
