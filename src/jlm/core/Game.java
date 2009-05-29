@@ -455,7 +455,8 @@ public class Game implements IWorldView {
 
 	@Override
 	public void worldHasChanged() {
-		setSelectedEntity(this.selectedWorld.getEntity(0));
+		if (selectedWorld.getEntityCount()>0)
+			setSelectedEntity(this.selectedWorld.getEntity(0));
 		fireSelectedWorldWasUpdated();
 	}
 
