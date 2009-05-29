@@ -1,4 +1,4 @@
-package lessons.hanoi;
+package lessons.recursion;
 
 import universe.hanoi.HanoiEntity;
 import universe.hanoi.HanoiInvalidMove;
