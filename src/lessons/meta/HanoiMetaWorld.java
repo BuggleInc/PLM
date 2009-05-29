@@ -15,7 +15,7 @@ public class HanoiMetaWorld extends HanoiWorld {
 	World servant;
 	
 	/* We need to ask the view to redraw everything at some point of the testing process */
-	WorldView view;
+	WorldView view=null;
 	/* We report errors to the exercise directly */
 	MetaExercise exercise;
 	
@@ -38,7 +38,8 @@ public class HanoiMetaWorld extends HanoiWorld {
 	}
 	@Override
 	public WorldView[] getView() {
-		view = new HanoiWorldView(this);
+		if (view == null)
+			view = new HanoiWorldView(this);
 		return new WorldView[] {view};
 	}
 

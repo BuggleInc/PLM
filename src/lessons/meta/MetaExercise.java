@@ -9,7 +9,12 @@ public class MetaExercise extends ExerciseTemplated {
 	public MetaExercise(Lesson lesson) {
 		super(lesson);
 	}
-
+	@Override
+	public void reset() {
+		error = false;
+		super.reset();
+	}
+	
 	@Override
 	public boolean check() {
 		return !error;
