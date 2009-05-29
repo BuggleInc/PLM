@@ -138,6 +138,7 @@ public abstract class Exercise {
 
 			out.log(errs);
 		} catch (JLMCompilerException e) {
+			System.err.println("Compilation error:");
 			out.log(e.getDiagnostics());
 			throw e;
 		}

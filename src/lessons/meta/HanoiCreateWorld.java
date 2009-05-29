@@ -2,8 +2,6 @@ package lessons.meta;
 
 import java.util.List;
 
-import jlm.core.Game;
-import jlm.exception.JLMCompilerException;
 import jlm.lesson.Lesson;
 import jlm.universe.World;
 
@@ -30,14 +28,6 @@ public class HanoiCreateWorld extends MetaExercise {
 		error = false;
 		Thread runner = new Thread(new Runnable() {
 			public void run() {
-				try {
-					compileAll(Game.getInstance().getOutputWriter());
-				} catch (JLMCompilerException e) {
-					System.err.println("Cannot compile your world implementation");
-					error = true;
-					e.printStackTrace();
-					return;
-				}
 				HanoiMetaWorld w = (HanoiMetaWorld)currentWorld[0];
 				w.setServant(compiledClasses.get(className("HanoiWorld")));
 				w.view.repaint();
