@@ -4,15 +4,13 @@ import java.util.List;
 
 import jlm.core.Game;
 import jlm.exception.JLMCompilerException;
-import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
 import jlm.universe.World;
 
-public class HanoiCreateWorld extends ExerciseTemplated {
-	boolean error = false;
+public class HanoiCreateWorld extends MetaExercise {
 	public HanoiCreateWorld(Lesson lesson) {
 		super(lesson);
-		HanoiMetaWorld w = new HanoiMetaWorld("hanoi",
+		HanoiMetaWorld w = new HanoiMetaWorld("hanoi",this,
 					new Integer[] {1,2,3,4,5,6,7,8}, new Integer[0], new Integer[0]);
 		setup(w);
 	}
@@ -48,10 +46,5 @@ public class HanoiCreateWorld extends ExerciseTemplated {
 		
 		runner.start();
 		runnerVect.add(runner);
-	}
-	
-	@Override
-	public boolean check() {
-		return !error;
 	}
 }

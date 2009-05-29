@@ -3,7 +3,6 @@ package lessons.meta;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
-import jlm.core.Game;
 import jlm.ui.WorldView;
 import jlm.universe.World;
 import universe.hanoi.HanoiWorld;
@@ -17,9 +16,12 @@ public class HanoiMetaWorld extends HanoiWorld {
 	
 	/* We need to ask the view to redraw everything at some point of the testing process */
 	WorldView view;
+	/* We report errors to the exercise directly */
+	MetaExercise exercise;
 	
-	public HanoiMetaWorld(String name, Integer[] slotA, Integer[] slotB, Integer[] slotC) {
+	public HanoiMetaWorld(String name, MetaExercise exo, Integer[] slotA, Integer[] slotB, Integer[] slotC) {
 		super(name,slotA,slotB,slotC);
+		exercise = exo;
 	}
 
 	public HanoiMetaWorld(HanoiMetaWorld w2) {
@@ -27,6 +29,11 @@ public class HanoiMetaWorld extends HanoiWorld {
 	}
 	@Override
 	public void reset(World w) {
+		HanoiMetaWorld other = (HanoiMetaWorld) w;
+		isAnswer = other.isAnswer;
+		servant = other.servant;
+		view = other.view;
+		exercise = other.exercise;
 		super.reset(w);		
 	}
 	@Override
@@ -50,7 +57,7 @@ public class HanoiMetaWorld extends HanoiWorld {
 	}
 	private void error(String msg, Exception e) {
 		System.err.println(msg);
-		((HanoiCreateWorld)Game.getInstance().getCurrentLesson().getCurrentExercise()).error = true;
+		exercise.error = true;
 		if (e != null)
 			e.printStackTrace();		
 	}
