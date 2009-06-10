@@ -52,9 +52,15 @@ public class Game implements IWorldView {
 
 	private ISessionKit sessionKit = new ZipSessionKit(this);
 
+	private static boolean ongoingInitialization = false;
 	public static Game getInstance() {
-		if (Game.instance == null)
+		if (Game.instance == null) {
+			if (ongoingInitialization) 
+				throw new RuntimeException("Loop in initialization process. This is a JLM bug.");
+			ongoingInitialization = true;
 			Game.instance = new Game();
+			ongoingInitialization = false;
+		}
 		return Game.instance;
 	}
 
