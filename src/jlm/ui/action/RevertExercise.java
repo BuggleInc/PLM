@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 
 import jlm.core.Game;
 import jlm.lesson.Exercise;
-import jlm.lesson.RevertableSourceFile;
+import jlm.lesson.SourceFileRevertable;
 
 public class RevertExercise extends AbstractGameAction {
 
@@ -20,7 +20,7 @@ public class RevertExercise extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		Exercise ex = game.getCurrentLesson().getCurrentExercise();
 		for (int i=0; i<ex.publicSourceFileCount(); i++) {
-			RevertableSourceFile srcFile = (RevertableSourceFile) ex.getPublicSourceFile(i);
+			SourceFileRevertable srcFile = (SourceFileRevertable) ex.getPublicSourceFile(i);
 			srcFile.revert();
 		}
 	}

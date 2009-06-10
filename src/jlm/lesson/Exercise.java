@@ -176,7 +176,7 @@ public abstract class Exercise {
 				pat.put(parts[1], parts[2]);
 			}
 		}
-		sourceFiles.add(new RevertableSourceFile(name, initialContent, template, pat));
+		sourceFiles.add(new SourceFileRevertable(name, initialContent, template, pat));
 		fileNames.add(name);
 	}
 	

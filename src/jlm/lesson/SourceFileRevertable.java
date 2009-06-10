@@ -3,19 +3,19 @@ package jlm.lesson;
 import java.util.Map;
 
 
-public class RevertableSourceFile extends SourceFile {
+public class SourceFileRevertable extends SourceFile {
 
 	private String initialBody; 
 	
-	public RevertableSourceFile(String name, String initialBody) {
+	public SourceFileRevertable(String name, String initialBody) {
 		this(name, initialBody, null, null);
 	}
 
-	public RevertableSourceFile(String name, String initialBody, String template) {
+	public SourceFileRevertable(String name, String initialBody, String template) {
 		this(name, initialBody, template, null);
 	}
 
-	public RevertableSourceFile(String name, String initialBody, String template, Map<String, String> patterns) {
+	public SourceFileRevertable(String name, String initialBody, String template, Map<String, String> patterns) {
 		super(name, initialBody, template, patterns);
 		this.initialBody = initialBody;
 	}
@@ -44,7 +44,7 @@ public class RevertableSourceFile extends SourceFile {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		RevertableSourceFile other = (RevertableSourceFile) obj;
+		SourceFileRevertable other = (SourceFileRevertable) obj;
 		if (initialBody == null) {
 			if (other.initialBody != null)
 				return false;

@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 
 import jlm.lesson.Exercise;
 import jlm.lesson.Lesson;
-import jlm.lesson.RevertableSourceFile;
+import jlm.lesson.SourceFileRevertable;
 import jlm.lesson.SourceFile;
 
 public class ZipSessionKit implements ISessionKit {
@@ -80,10 +80,10 @@ public class ZipSessionKit implements ISessionKit {
 					for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
 						SourceFile sf = exercise.getPublicSourceFile(i);
 						
-						if (!(sf instanceof RevertableSourceFile))
+						if (!(sf instanceof SourceFileRevertable))
 							continue;
 						
-						RevertableSourceFile srcFile = (RevertableSourceFile) sf;
+						SourceFileRevertable srcFile = (SourceFileRevertable) sf;
 
 						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/" + srcFile.getName());
 						zos.putNextEntry(ze);
