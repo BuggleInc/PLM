@@ -1,7 +1,6 @@
 package lessons.meta;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 
 import jlm.ui.WorldView;
 import jlm.universe.World;
@@ -17,11 +16,11 @@ public class HanoiMetaWorld extends HanoiWorld {
 	/* We need to ask the view to redraw everything at some point of the testing process */
 	WorldView view=null;
 	/* We report errors to the exercise directly */
-	MetaExercise exercise;
+	MetaExercise exo;
 	
 	public HanoiMetaWorld(String name, MetaExercise exo, Integer[] slotA, Integer[] slotB, Integer[] slotC) {
 		super(name,slotA,slotB,slotC);
-		exercise = exo;
+		this.exo = exo;
 	}
 
 	public HanoiMetaWorld(HanoiMetaWorld w2) {
@@ -33,7 +32,7 @@ public class HanoiMetaWorld extends HanoiWorld {
 		isAnswer = other.isAnswer;
 		servant = other.servant;
 		view = other.view;
-		exercise = other.exercise;
+		exo = other.exo;
 		super.reset(w);		
 	}
 	@Override
@@ -43,27 +42,20 @@ public class HanoiMetaWorld extends HanoiWorld {
 		return new WorldView[] {view};
 	}
 
-	/* helper function for testing */
+	/* Set tested code in position */
 	protected void setServant(Class<Object> servantClass) {
 		try {
 			Constructor<Object> c = servantClass.getConstructor(String.class,Integer[].class,Integer[].class,Integer[].class);			
 			servant = (World) c.newInstance("",rawValues(0),rawValues(1),rawValues(2));
 		} catch (Exception e) {
-			error("Cannot instantiate your world implementation",e);
+			exo.error("Cannot instantiate your world implementation",e);
 		}
-
-	}
-	private void error(String msg) {
-		error(msg,null);
-	}
-	private void error(String msg, Exception e) {
-		System.err.println(msg);
-		exercise.error = true;
-		if (e != null)
-			e.printStackTrace();		
 	}
 	
 	/* Intercepting all methods of interest */
+	public Integer[] rawValues(int i) {
+		return super.values(i);
+	}
 	@Override
 	protected Integer[] values(int slot) {
 		Integer[] answer = rawValues(slot);
@@ -73,46 +65,43 @@ public class HanoiMetaWorld extends HanoiWorld {
 			return answer;
 		if (servant == null)
 			return null;
-		
+
+		/* get a result from the servant, if possible */
 		try {
-			Method m = servant.getClass().getMethod("values", Integer.class);
-			res = (Integer[]) m.invoke(servant, slot);
+			res = (Integer[]) 
+				servant.getClass().getMethod("values", Integer.class)
+				.invoke(servant, slot);
 		} catch (NoSuchMethodException e) {
-			error("Method values(Integer) not found in your World implementation. Did you mark it public?");
+			exo.error("Method values(Integer) not found in your World implementation. Did you mark it public?");
 		} catch (Exception e) {
-			error("Cannot invoke the values() method of your World implementation",e);
+			exo.error("Cannot invoke the values() method of your World implementation",e);
 		}
+		/* Check that the servant returned the right value */
 		if (res == null) {
-			error("Your values("+slot+") method returned null");
+			exo.error("Your values("+slot+") method returned null");
 			return null;
 		} 
+		boolean match = true;
 		if (res.length != answer.length) {
-			error("Your values("+slot+") method did not return the values provided during the instanciation");
-			System.err.print("Provided: ");
+			match = false;
+		} else {
+			for (int cpt=0;cpt<res.length;cpt++)
+				if (res[cpt] != answer[cpt]) {
+					match = false;
+				}
+		}
+		if (!match) {
+			exo.error("Your values("+slot+") method did not return the right values");
+			System.err.print("Right   : ");
 			for (Integer i:answer)
 				System.err.print(i+" ");
 			System.err.println("(length:"+answer.length+")");
-			System.err.print("Retrieved: ");
+			System.err.print("Returned: ");
 			for (Integer i:res)
 				System.err.print(i+" ");
 			System.err.println("(length:"+res.length+")");
 		}
-		for (int cpt=0;cpt<res.length;cpt++)
-			if (res[cpt] != answer[cpt]) {
-				error("Your values("+slot+") method did not return the values provided during the instanciation");
-				System.err.print("Provided: ");
-				for (Integer i:answer)
-					System.err.print(i+" ");
-				System.err.println("(length:"+answer.length+")");
-				System.err.print("Retrieved: ");
-				for (Integer i:res)
-					System.err.print(i+" ");
-				System.err.println("(length:"+res.length+")");
-			}
 		return res;
 	}
 
-	public Integer[] rawValues(int i) {
-		return super.values(i);
-	}
 }
