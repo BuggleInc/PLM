@@ -15,8 +15,9 @@ import javax.swing.JOptionPane;
 
 import jlm.lesson.Exercise;
 import jlm.lesson.Lesson;
-import jlm.lesson.SourceFileRevertable;
 import jlm.lesson.SourceFile;
+import jlm.lesson.SourceFileAliased;
+import jlm.lesson.SourceFileRevertable;
 
 public class ZipSessionKit implements ISessionKit {
 
@@ -34,7 +35,7 @@ public class ZipSessionKit implements ISessionKit {
 	public ZipSessionKit(Game game) {
 		this.game = game;
 	}
-	
+
 	public void store() {
 		this.store(SAVE_FILE);
 	}
@@ -79,10 +80,10 @@ public class ZipSessionKit implements ISessionKit {
 					// save exercise body
 					for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
 						SourceFile sf = exercise.getPublicSourceFile(i);
-						
+
 						if (!(sf instanceof SourceFileRevertable))
 							continue;
-						
+
 						SourceFileRevertable srcFile = (SourceFileRevertable) sf;
 
 						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/" + srcFile.getName());
@@ -136,6 +137,9 @@ public class ZipSessionKit implements ISessionKit {
 
 					for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
 						SourceFile srcFile = exercise.getPublicSourceFile(i);
+
+						if (srcFile instanceof SourceFileAliased)
+							continue;
 
 						ZipEntry srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
 

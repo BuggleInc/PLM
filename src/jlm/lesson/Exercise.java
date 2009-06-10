@@ -30,7 +30,6 @@ public abstract class Exercise {
 	
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
-	protected List<String> fileNames;
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
 	private static final String packageNamePrefix = "jlm.runtime";
@@ -163,6 +162,10 @@ public abstract class Exercise {
 		sf.setCompilable(false);
 		sourceFiles.add(sf);
 	}
+	public void newSourceAliased(String lesson, String exercise, String file) {
+		SourceFile sf = new SourceFileAliased(lesson, exercise,file);
+		sourceFiles.add(sf);
+	}
 	public void newSource(String name, String initialContent, String template) {
 		newSource(name, initialContent, template, "");
 	}
@@ -177,7 +180,6 @@ public abstract class Exercise {
 			}
 		}
 		sourceFiles.add(new SourceFileRevertable(name, initialContent, template, pat));
-		fileNames.add(name);
 	}
 	
 	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {
@@ -240,7 +242,6 @@ public abstract class Exercise {
 		this.lesson = lesson;
 		sourceFiles = new ArrayList<SourceFile>();
 		runtimePatterns = new TreeMap<String, String>();
-		fileNames = new ArrayList<String>();
 	}
 
 	public String[] getSourceFilesNames() {

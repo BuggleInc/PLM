@@ -10,7 +10,7 @@ import jlm.ui.JavaEditorPanel;
 
 public class SourceFile {
 
-	private String name;
+	protected String name;
 	private String template;
 	private String body;
 	private Map<String, String> patterns;

@@ -9,6 +9,7 @@ import java.io.IOException;
 
 import jlm.lesson.Exercise;
 import jlm.lesson.Lesson;
+import jlm.lesson.SourceFileAliased;
 import jlm.lesson.SourceFileRevertable;
 import jlm.lesson.SourceFile;
 
@@ -121,6 +122,9 @@ public class FileSessionKit implements ISessionKit {
 				// load exercise body
 				for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
 					SourceFile srcFile = exercise.getPublicSourceFile(i);
+					
+					if (srcFile instanceof SourceFileAliased)
+						continue;
 
 					File of = new File(exerciseDir, srcFile.getName());
 					if (of.exists()) {

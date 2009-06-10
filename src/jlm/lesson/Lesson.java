@@ -119,6 +119,9 @@ public abstract class Lesson {
 	public Exercise getExercise(int index) {
 		return this.exercises.get(index);
 	}
+	public int getExerciseCount() {
+		return this.exercises.size();
+	}
 
 	public boolean isAccessible(Exercise exo) {
 		if (isSequential()) {
