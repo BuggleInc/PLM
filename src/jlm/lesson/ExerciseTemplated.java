@@ -108,8 +108,8 @@ public abstract class ExerciseTemplated extends Exercise {
 		StringBuffer tail = new StringBuffer(); /* after the template (state 4) */
 
 		for (String line : sb.toString().split("\n")) {
-			if (this.debug)
-				System.out.println(state+"->"+line);
+			//if (this.debug)
+			//	System.out.println(state+"->"+line);
 			switch (state) {
 			case 0: /* initial content */
 				if (line.contains("public class ")) {
@@ -202,11 +202,13 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		}
 
+		/*
 		if (this.debug) {
 			System.out.println("<<<<<<<<template:"+template);
 			System.out.println("<<<<<<<<debugCtn:"+debugContent);
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
 		}
+		*/
 		newSource(name, debug?debugContent:initialContent, template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
