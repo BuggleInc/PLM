@@ -131,7 +131,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					state = 2; 
-				} else if (line.contains("BEGIN HIDDEN")) {
+				} else if (line.contains("BEGIN HIDDEN") && !debug) {
 					savedState = 1;
 					state = 5; 
 				} else {
@@ -152,7 +152,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					throw new RuntimeException("Begin solution in template tail in file "+name+" of "+getName()+". Change it to BEGIN HIDDEN");
-				} else if (line.contains("BEGIN HIDDEN")) {
+				} else if (line.contains("BEGIN HIDDEN") && !debug) {
 					savedState = 4;
 					state = 2; 
 				} else {
@@ -173,7 +173,9 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		String initialContent = templateHead.toString() + templateTail.toString();
-		String debugContent = templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ templateTail.toString();
+		String debugContent = "/* The solution is displayed because we are in debug mode */\n"+
+			templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
+			templateTail.toString();
 		/* TODO: remove "//.*\n" before putting everything on one line only */
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
 		StringBuffer templateSb = new StringBuffer();
