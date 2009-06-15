@@ -18,8 +18,10 @@ public class HanoiCreateWorld extends MetaExercise {
 		
 		worldDuplicate(w);
 
-		newSourceFromFile("HanoiWorld","src/lessons/meta/HanoiCreateWorldAnswer","java",
-					"s/HanoiCreateWorldAnswer/HanoiWorld/;");
+		newSourceFromFile("HanoiWorld","src/universe/hanoi/HanoiWorld","java");
+		newSourceFromFile("HanoiInvalidMove","src/universe/hanoi/HanoiInvalidMove","java");
+		getSourceFile("HanoiInvalidMove").setEditable(false);
+		debug=true;
 
 		/* compute answer */
 		for (World it:answerWorld) 
@@ -28,17 +30,13 @@ public class HanoiCreateWorld extends MetaExercise {
 	
 	@Override
 	public void run(List<Thread> runnerVect) {
-		Thread runner = new Thread(new Runnable() {
-			public void run() {
-				for (World it:currentWorld) {
-					HanoiMetaWorld w = (HanoiMetaWorld)it;
-					w.setServant(compiledClasses.get(className("HanoiWorld")));
-					w.getView()[0].repaint();
-				}
-			}
-		});
-		
-		runner.start();
-		runnerVect.add(runner);
+		for (World it:currentWorld) {
+			HanoiMetaWorld w = (HanoiMetaWorld)it;
+			w.setServant(compiledClasses.get(className("HanoiWorld")));
+			w.getView()[0].repaint();
+			w.values(0);
+			w.values(1);
+			w.values(2);
+		}
 	}
 }

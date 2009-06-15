@@ -6,39 +6,31 @@ import java.util.Vector;
 import jlm.ui.WorldView;
 import jlm.universe.World;
 
-public class HanoiWorld extends World {
-	private HanoiSlot slots[];
-	
-	protected Integer[] values(int i) {
-		return slots[i].values();
-	}
-	public int getSlotSize(int slot) {
-		return slots[slot].size();
-	}
-	public void move(int src, int dst) throws HanoiInvalidMove {
-		if (src < 0 || src > 2 || dst < 0 || dst > 2)
-			throw new HanoiInvalidMove("Cannot move from slot #"+src+" to #"+dst+": invalid parameters");
-		if (src == dst)
-			throw new HanoiInvalidMove("Cannot move from slot #"+src+" itself: invalid parameters");
-		
-		if (slots[src].size() == 0)
-			throw new HanoiInvalidMove("No disc to move from slot #"+src);
-		if (slots[dst].size() > 0 &&
-				slots[src].top() > slots[dst].top())
-			throw new HanoiInvalidMove("Cannot move disc from slot #"+src+" to #"+dst+": "+
-					slots[src].top()+" > "+slots[dst].top());
-		slots[dst].push(slots[src].pop());
+/* BEGIN TEMPLATE */
+public class HanoiWorld extends World {	
+	/** A copy constructor (mandatory for the internal compilation mechanism to work)
+	 * 
+	 * There is normally no need to change it, but it must be present. 
+	 */ 
+	public HanoiWorld(HanoiWorld other) {
+		super(other);
 	}
 	
-	public HanoiWorld(String name, Integer  size) {
-		this(name,new Integer[0],new Integer[0],new Integer[0]);
-		for (int i=size;i>0;i--)
-			slots[0].push(i);
-	}	
-
+	/** The constructor that the exercises will use to setup the world.
+	 *  
+	 * It must begin by super(name), and the rest is free (depending on the state describing your world).
+	 * It is a good idea to use setDelay to specify the default animation delay, but this is not mandatory.
+	 * 
+	 * You can perfectly have several such constructor. 
+	 * 
+	 * In general, you could even have none of them, but writing exercises will be harder. 
+	 * The metalesson, use this specific constructor, so please don't change its arguments.
+	 */
 	public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C) {
 		super(name);
 		setDelay(200);
+		/* Your code here */
+		/* BEGIN HIDDEN */
 		slots = new HanoiSlot[3];
 		for (int i=0;i<3;i++)
 			slots[i] = new HanoiSlot();
@@ -49,24 +41,39 @@ public class HanoiWorld extends World {
 			slots[1].push(B[i]);
 		for (int i=C.length-1; i>=0; i--) 
 			slots[2].push(C[i]);
+		/* END HIDDEN */
 	}
-	public HanoiWorld(HanoiWorld other) {
-		super(other);
-	}
+	
+	/** Reset the state of the current world to the one passed in argument
+	 * 
+	 * This is mandatory for the JLM good working. Even if the prototype says that the passed object can be 
+	 * any kind of world, you can be sure that it's of the same type than the current world. So, there is 
+	 * no need to check before casting your argument.
+	 * 
+	 * Do not forget to call super.reset(w) afterward, or some internal world fields may not get reset.
+	 */
 	@Override
 	public void reset(World w) {
 		HanoiWorld other = (HanoiWorld)w;
+		/* Your code here */
+		/* BEGIN HIDDEN */
 		slots = new HanoiSlot[3];
 		for (int i=0;i<3;i++)
 			slots[i] = other.slots[i].copy(); 		
+		/* END HIDDEN */
 		super.reset(w);		
 	}
 
+	/* BEGIN HIDDEN */
+	/** Returns a component able of displaying the world -- will be used in third exercise 
+	 * You should comment this for the first exercises */
 	@Override
 	public WorldView[] getView() {
 		return new WorldView[] { new HanoiWorldView(this) } ;
 	}
+	/* END HIDDEN */
 	
+	/* BEGIN HIDDEN */
 	@Override
 	public String toString(){
 		StringBuffer sb = new StringBuffer();
@@ -83,9 +90,12 @@ public class HanoiWorld extends World {
 		sb.append("]");
 		return sb.toString();
 	}
+	/* END HIDDEN */
 
+	/** Used to check whether the student code changed the world in the right state -- see lesson 4 */
 	@Override 
 	public boolean equals(Object o) {
+		/* BEGIN HIDDEN */
 		if (o == null || !(o instanceof HanoiWorld))
 			return false;
 		HanoiWorld other = (HanoiWorld) o;
@@ -93,7 +103,33 @@ public class HanoiWorld extends World {
 			if (!(this.slots[i].equals(other.slots[i])))
 				return false;
 		}
+		/* END HIDDEN */
 		return true;
+	}
+	
+	/* Here comes the world logic */
+	/* BEGIN HIDDEN */
+	private HanoiSlot slots[];
+	
+	public Integer[] values(Integer	 i) {
+		return slots[i].values();
+	}
+	public int getSlotSize(int slot) {
+		return slots[slot].size();
+	}
+	public void move(Integer src, Integer dst) throws HanoiInvalidMove {
+		if (src < 0 || src > 2 || dst < 0 || dst > 2)
+			throw new HanoiInvalidMove("Cannot move from slot #"+src+" to #"+dst+": invalid parameters");
+		if (src == dst)
+			throw new HanoiInvalidMove("Cannot move from slot #"+src+" itself: invalid parameters");
+		
+		if (slots[src].size() == 0)
+			throw new HanoiInvalidMove("No disc to move from slot #"+src);
+		if (slots[dst].size() > 0 &&
+				slots[src].top() > slots[dst].top())
+			throw new HanoiInvalidMove("Cannot move disc from slot #"+src+" to #"+dst+": "+
+					slots[src].top()+" > "+slots[dst].top());
+		slots[dst].push(slots[src].pop());
 	}
 	
 	class HanoiSlot {
@@ -150,4 +186,6 @@ public class HanoiWorld extends World {
 			return true;
 		}
 	}
+	/* END HIDDEN */
 }
+/* END TEMPLATE */
