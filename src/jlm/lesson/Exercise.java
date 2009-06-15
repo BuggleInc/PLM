@@ -181,6 +181,13 @@ public abstract class Exercise {
 		}
 		sourceFiles.add(new SourceFileRevertable(name, initialContent, template, pat));
 	}
+	public SourceFile getSourceFile(String name) {
+		for (SourceFile sf: sourceFiles) {
+			if (sf.getName().equals(name))
+				return sf;
+		}
+		return null;
+	}
 	
 	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {
 		for (World current:worlds) {
