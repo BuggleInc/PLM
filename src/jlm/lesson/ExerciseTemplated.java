@@ -100,6 +100,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		/* Extract the template, the initial content and the solution out of the file */
 		int state = 0;
+		int savedState = 0;
 		StringBuffer head = new StringBuffer(); /* before the template (state 0) */
 		StringBuffer templateHead = new StringBuffer(); /* in template before solution (state 1) */
 		StringBuffer solution = new StringBuffer(); /* the solution (state 2) */
@@ -130,6 +131,9 @@ public abstract class ExerciseTemplated extends Exercise {
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					state = 2; 
+				} else if (line.contains("BEGIN HIDDEN")) {
+					savedState = 1;
+					state = 5; 
 				} else {
 					templateHead.append(line+"\n");
 				}
@@ -138,7 +142,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				if (line.contains("END TEMPLATE")) {
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
-					state = 1; // FIXME: gg: I changed this state from 3 to 1 to enable masking of several solutions, is it wrong? 
+					state = 3;  
 				} else {
 					solution.append(line+"\n");
 				}
@@ -146,12 +150,22 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 3: /* template tail */
 				if (line.contains("END TEMPLATE")) {
 					state = 4;
+				} else if (line.contains("BEGIN SOLUTION")) {
+					throw new RuntimeException("Begin solution in template tail in file "+name+" of "+getName()+". Change it to BEGIN HIDDEN");
+				} else if (line.contains("BEGIN HIDDEN")) {
+					savedState = 4;
+					state = 2; 
 				} else {
 					templateTail.append(line+"\n");	
 				}
 				break;
-			case 4: 
+			case 4: /* end of file */
 				tail.append(line+"\n");
+				break;
+			case 5: /* Hidden but not bodied */
+				if (line.contains("END HIDDEN")) {
+					state = savedState;
+				}
 				break;
 			default: 	
 				throw new RuntimeException("Parser error in "+filename+". This is a parser bug (state="+state+"), please report.");	
@@ -180,6 +194,7 @@ public abstract class ExerciseTemplated extends Exercise {
 						System.out.println("Replace all "+parts[1]+" to "+parts[2]);
 					template = template.replaceAll(parts[1], parts[2]);
 					initialContent = initialContent.replaceAll(parts[1], parts[2]);
+					debugContent = debugContent.replaceAll(parts[1], parts[2]);
 				}
 			}
 
@@ -190,7 +205,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			System.out.println("<<<<<<<<debugCtn:"+debugContent);
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
 		}
-		newSource(name, initialContent, template);
+		newSource(name, debug?debugContent:initialContent, template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
 		if (entitiesNames == null)  {

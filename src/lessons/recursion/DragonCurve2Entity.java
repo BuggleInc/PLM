@@ -6,7 +6,7 @@ public class DragonCurve2Entity extends universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 public void dragon(int ordre, double x, double y, double z, double t) {
-		/* BEGIN SOLUTION */
+		/* BEGIN HIDDEN */
 		double u, v;
 
 		if (ordre == 1) {
@@ -18,11 +18,11 @@ public void dragon(int ordre, double x, double y, double z, double t) {
 			dragon(ordre - 1, x, y, u, v);
 			dragonInverse(ordre - 1, u, v, z, t);
 		}
-		/* END SOLUTION */
+		/* END HIDDEN */
 }
 
 public void dragonInverse(int ordre, double x, double y, double z, double t) {
-		/* BEGIN SOLUTION */
+		/* BEGIN HIDDEN */
 		double u, v;
 
 		if (ordre == 1) {
@@ -34,7 +34,7 @@ public void dragonInverse(int ordre, double x, double y, double z, double t) {
 			dragon(ordre - 1, x, y, u, v);
 			dragonInverse(ordre - 1, u, v, z, t);
 		}
-		/* END SOLUTION */
+		/* END HIDDEN */
 }
 	/* END TEMPLATE */
 
