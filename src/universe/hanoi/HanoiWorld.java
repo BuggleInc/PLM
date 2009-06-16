@@ -35,11 +35,11 @@ public class HanoiWorld extends World {
 		for (int i=0;i<3;i++)
 			slots[i] = new HanoiSlot();
 		
-		for (int i=A.length-1; i>=0; i--) 
+		for (int i=0; i<A.length; i++) 
 			slots[0].push(A[i]);
-		for (int i=B.length-1; i>=0; i--) 
+		for (int i=0; i<B.length; i++) 
 			slots[1].push(B[i]);
-		for (int i=C.length-1; i>=0; i--) 
+		for (int i=0; i<C.length; i++) 
 			slots[2].push(C[i]);
 		/* END HIDDEN */
 	}

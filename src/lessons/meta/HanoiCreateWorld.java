@@ -9,12 +9,12 @@ public class HanoiCreateWorld extends MetaExercise {
 	public HanoiCreateWorld(Lesson lesson) {
 		super(lesson);
 		HanoiMetaWorld[] w = new HanoiMetaWorld[3];
-		w[0]=new HanoiMetaWorld("HanoiWorld({1,2,3,4,5,6,7,8},{},{})",this,
-				new Integer[] {1,2,3,4,5,6,7,8}, new Integer[0], new Integer[0]);
-		w[1]=new HanoiMetaWorld("HanoiWorld({},{1,2,3,4,5,6,7,8},{})",this,
-				new Integer[0], new Integer[] {1,2,3,4,5,6,7,8}, new Integer[0]);
-		w[2]=new HanoiMetaWorld("HanoiWorld({},{},{1,2,3,4,5,6,7,8})",this,
-				new Integer[0], new Integer[0], new Integer[] {1,2,3,4,5,6,7,8});
+		w[0]=new HanoiMetaWorld("HanoiWorld({8,7,6,5,4,3,2,1},{},{})",this,
+				new Integer[] {8,7,6,5,4,3,2,1}, new Integer[0], new Integer[0]);
+		w[1]=new HanoiMetaWorld("HanoiWorld({},{8,7,6,5,4,3,2,1},{})",this,
+				new Integer[0], new Integer[] {8,7,6,5,4,3,2,1}, new Integer[0]);
+		w[2]=new HanoiMetaWorld("HanoiWorld({},{},{8,7,6,5,4,3,2,1})",this,
+				new Integer[0], new Integer[0], new Integer[] {8,7,6,5,4,3,2,1});
 		
 		worldDuplicate(w);
 
