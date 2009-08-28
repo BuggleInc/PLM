@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 
 import jlm.ui.WorldView;
 import jlm.universe.World;
+import universe.hanoi.HanoiInvalidMove;
 import universe.hanoi.HanoiWorld;
 import universe.hanoi.HanoiWorldView;
 
@@ -45,7 +46,8 @@ public class HanoiMetaWorld extends HanoiWorld {
 	/* Set tested code in position */
 	protected void setServant(Class<Object> servantClass) {
 		try {
-			Constructor<Object> c = servantClass.getConstructor(String.class,Integer[].class,Integer[].class,Integer[].class);			
+			Constructor<Object> c = servantClass.getConstructor(String.class,Integer[].class,Integer[].class,Integer[].class);
+			System.out.println("New instance "+rawValues(0).length+" "+rawValues(1).length+" "+rawValues(2).length);
 			servant = (World) c.newInstance("",rawValues(0),rawValues(1),rawValues(2));
 		} catch (Exception e) {
 			exo.error("Cannot instantiate your world implementation",e);
@@ -57,7 +59,7 @@ public class HanoiMetaWorld extends HanoiWorld {
 		return super.values(i);
 	}
 	@Override
-	protected Integer[] values(int slot) {
+	public Integer[] values(Integer slot) {
 		Integer[] answer = rawValues(slot);
 		Integer[] res = null;
 		
@@ -102,6 +104,26 @@ public class HanoiMetaWorld extends HanoiWorld {
 			System.err.println("(length:"+res.length+")");
 		}
 		return res;
+	}
+	@Override
+	public void move(Integer src, Integer dest) throws HanoiInvalidMove {
+		if (isAnswer) {
+			super.move(src,dest);
+			return;
+		}
+		if (servant == null)
+			return;
+
+		/* get a result from the servant, if possible */
+		try {
+			servant.getClass().getMethod("move", Integer.class, Integer.class)
+			.invoke(servant, src,dest);
+		} catch (NoSuchMethodException e) {
+			exo.error("Method move(Integer,Integer) not found in your World implementation. Did you mark it public?");
+		} catch (Exception e) {
+			exo.error("Cannot invoke the move(Integer,Integer) method of your World implementation",e);
+		}
+
 	}
 
 }
