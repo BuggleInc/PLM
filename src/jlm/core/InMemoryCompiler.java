@@ -279,10 +279,12 @@ public class InMemoryCompiler {
 		final Boolean result = task.call();
 		if (result == null || !result.booleanValue()) {
 			/*
-			 * for (String n:classes.keySet()) FIXME: provide a way to debug
+			 * FIXME: provide a way to debug
 			 * when templates are broken
-			 * System.out.println("File "+n+":\n"+classes.get(n));
 			 */
+			 //for (String n:classes.keySet()) 
+			 // System.out.println("File "+n+":\n"+classes.get(n));
+			 
 			throw new JLMCompilerException("Compilation failed.", classes.keySet(), diagnostics);
 		}
 		try {
