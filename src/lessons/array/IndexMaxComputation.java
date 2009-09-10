@@ -9,12 +9,12 @@ public class IndexMaxComputation extends ArrayEntity {
 	@Override
 	public void run() {
 		ArrayWorld w = (ArrayWorld) this.getWorld();
-		this.result = this.maximum(w.getValues());
+		this.result = this.indexOfMaximum(w.getValues());
 	}
 
 	/* BEGIN TEMPLATE */
 // computes the index of the maximum of the values contained in tab variable
-public int maximum(int[] tab) {
+public int indexOfMaximum(int[] tab) {
 	/* BEGIN SOLUTION */
 	int max = Integer.MIN_VALUE;
 	int index = 0;

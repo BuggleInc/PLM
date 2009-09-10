@@ -6,24 +6,24 @@ import jlm.lesson.Lesson;
 import universe.array.ArrayExercise;
 import universe.array.ArrayWorld;
 
-public class MaxValueOfArray extends ArrayExercise {
+public class OccurrenceOfValueOfArray extends ArrayExercise {
 
-	public MaxValueOfArray(Lesson lesson) {
+	public OccurrenceOfValueOfArray(Lesson lesson) {
 		super(lesson);
 		
 		ArrayWorld[] myWorlds = new ArrayWorld[2];
 		myWorlds[0] = new ArrayWorld("Toy array", 10);
-		myWorlds[0].setValues( new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 } );
+		myWorlds[0].setValues( new int[] { 2, -3, 1, 17, -13, 5, 3, 17, 9, 18 } );
 		myWorlds[1] = new ArrayWorld("Bigger Array", 1);
-		
+
 		int[] tab = new int[30];
 		Random r = new Random();
 		for (int i=0; i<tab.length; i++) {
-			tab[i] = r.nextInt(35);
+			tab[i] = r.nextInt(30);
 		}
 		myWorlds[1].setValues(tab);
-
-		addEntityKind(myWorlds, new MaxComputation(), "MaxComputation");  
+		
+		addEntityKind(myWorlds, new OccurrenceValueComputation(), "OccurrenceValueComputation");  
 		
 		setup(myWorlds);
 	}
