@@ -44,22 +44,32 @@ public class ArrayWorldView extends WorldView {
 			//int rowHeight = (dx+5);
 			//g2.translate(Math.abs((getWidth() - lineWidth) / 2.), 
 			//		Math.abs(getHeight() - rowHeight*(1+(values.length % cellsByLineCount))) / 2.);
-			
-			g2.setFont(new Font("Monaco", Font.PLAIN, 14));
-			FontMetrics fm = g2.getFontMetrics();
+			FontMetrics fm;
 
 			int x = xorigin;
 			int y = yorigin;
 			for (int i=0; i<values.length;  i++) {
 				if (x+dx > getWidth()) {
-					y += dx+4;
+					y += dx+20;
 					x = xorigin;
 				}
 				g2.setColor(Color.black);
 				g2.draw(new Rectangle2D.Double(x, 5+y, dx, dx));
+
+				g2.setFont(new Font("Monaco", Font.PLAIN, 9));
+				fm = g2.getFontMetrics();
+				String str = Integer.toString(i);
+				g2.drawString(str, x+(dx-fm.stringWidth(str))/2, y+(dx+fm.getHeight())+2);				
+				
 				g2.setColor(Color.blue);
-				String str = Integer.toString(values[i]);
+				g2.setFont(new Font("Monaco", Font.PLAIN, 14));
+				fm = g2.getFontMetrics();
+				str = Integer.toString(values[i]);
 				g2.drawString(str, x+(dx-fm.stringWidth(str))/2, y+(dx+fm.getHeight())/2+2);				
+				
+				
+				
+				
 				x += dx;
 			}
 	
