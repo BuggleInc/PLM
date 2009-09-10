@@ -55,7 +55,7 @@
 				<attribute name="Class-Path" value="." />
 			</manifest>
 			<fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css" excludes="**/.gitignore"/> 
+			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.map" excludes="**/.gitignore"/> 
 			<fileset dir="${lib.dir}" excludes="*.jar"/>
 		</jar>
 		<copy todir="${site.dir}/lib">
