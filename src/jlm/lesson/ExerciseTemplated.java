@@ -76,6 +76,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void loadMap(World intoWorld) {
 		BufferedReader br = Reader.fileReader( getClass().getCanonicalName(),"map",false);
 		if (br==null)
+			// TODO: well not very nice, particularly when we were expecting to load a map and it is not included in the .jar file ;)
 			return;
 		try {
 			intoWorld.readFromFile(br);
