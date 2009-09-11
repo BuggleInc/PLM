@@ -54,8 +54,10 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 	@Override
 	public void entityTraceChanged(Entity e, StackTraceElement[] trace) {
 		for (StackTraceElement elm:trace) {
-			if (elm.getFileName().equals(srcFile.getName()) || elm.getFileName().equals(srcFile.getName()+".java from JavaFileObjectImpl")) {				
-				((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(elm.getLineNumber());
+			if (elm.getFileName() != null && codeEditor != null && (elm.getFileName().equals(srcFile.getName()) || elm.getFileName().equals(srcFile.getName()+".java from JavaFileObjectImpl"))) {				
+				SyntaxDocument sd = ((SyntaxDocument) codeEditor.getDocument());
+				if (sd != null)
+					sd.setCurrentEditedLineNumber(elm.getLineNumber());
 				codeEditor.repaint();
 			}
 		}		
