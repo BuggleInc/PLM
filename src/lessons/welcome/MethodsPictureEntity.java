@@ -32,7 +32,7 @@ public class MethodsPictureEntity extends universe.bugglequest.SimpleBuggle {
 	
 	
 	public void run() {
-		makeV(Color.black);
+		makeV(Color.yellow);
 		makeV(Color.red);
 		makeV(Color.blue);
 		makeV(Color.green);
