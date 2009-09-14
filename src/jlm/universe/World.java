@@ -314,5 +314,8 @@ public abstract class World {
 	public Object[] getParameters() {
 		return parameters;
 	}
+	public Object getParameter(int i){
+		return parameters[i];
+	}
 
 }
