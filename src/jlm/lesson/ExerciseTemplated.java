@@ -107,6 +107,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		StringBuffer solution = new StringBuffer(); /* the solution (state 2) */
 		StringBuffer templateTail = new StringBuffer(); /* in template after solution (state 3) */
 		StringBuffer tail = new StringBuffer(); /* after the template (state 4) */
+		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
 
 		for (String line : sb.toString().split("\n")) {
 			//if (this.debug)
@@ -116,11 +117,14 @@ public abstract class ExerciseTemplated extends Exercise {
 				if (line.contains("public class ")) {
 					head.append(line.replaceAll("public class \\S*", "public class "+name));
 				} else if (line.contains("package")) {
-					head.append("$package\n");						
+					head.append("$package \n");						
 				} else if (line.contains("BEGIN TEMPLATE")) {
 					state = 1;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					state = 2; 
+				} else if (line.contains("BEGIN SKEL")) {
+					savedState = state;
+					state = 6; 
 				} else {
 					head.append(line+"\n");
 				}
@@ -135,6 +139,9 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else if (line.contains("BEGIN HIDDEN") && !debug) {
 					savedState = 1;
 					state = 5; 
+				} else if (line.contains("BEGIN SKEL")) {
+					savedState = state;
+					state = 6; 
 				} else {
 					templateHead.append(line+"\n");
 				}
@@ -144,6 +151,9 @@ public abstract class ExerciseTemplated extends Exercise {
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
 					state = 3;  
+				} else if (line.contains("BEGIN SKEL")) {
+					savedState = state;
+					state = 6; 
 				} else {
 					solution.append(line+"\n");
 				}
@@ -153,6 +163,9 @@ public abstract class ExerciseTemplated extends Exercise {
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					throw new RuntimeException("Begin solution in template tail in file "+name+" of "+getName()+". Change it to BEGIN HIDDEN");
+				} else if (line.contains("BEGIN SKEL")) {
+					savedState = state;
+					state = 6; 
 				} else if (line.contains("BEGIN HIDDEN") && !debug) {
 					savedState = 4;
 					state = 2; 
@@ -166,6 +179,13 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 5: /* Hidden but not bodied */
 				if (line.contains("END HIDDEN")) {
 					state = savedState;
+				} 
+				break;
+			case 6: /* skeleton */
+				if (line.contains("END SKEL")) {
+					state = savedState;
+				} else {
+					skel.append(line+"\n");					
 				}
 				break;
 			default: 	
@@ -177,6 +197,8 @@ public abstract class ExerciseTemplated extends Exercise {
 		String debugContent = "/* The solution is displayed because we are in debug mode */\n"+
 			templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
 			templateTail.toString();
+		String skelContent = skel.toString().replaceAll("\n", " ");
+		
 		/* TODO: remove "//.*\n" before putting everything on one line only */
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
 		StringBuffer templateSb = new StringBuffer();
@@ -198,19 +220,22 @@ public abstract class ExerciseTemplated extends Exercise {
 					template = template.replaceAll(parts[1], parts[2]);
 					initialContent = initialContent.replaceAll(parts[1], parts[2]);
 					debugContent = debugContent.replaceAll(parts[1], parts[2]);
+					skelContent = skelContent.replaceAll(parts[1], parts[2]);
 				}
 			}
 
 		}
 
-		/*
-		if (this.debug) {
+		 /*if (this.debug) {
 			System.out.println("<<<<<<<<template:"+template);
 			System.out.println("<<<<<<<<debugCtn:"+debugContent);
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
-		}
-		*/
-		newSource(name, debug?debugContent:initialContent, template);
+		    System.out.println("<<<<<<<<Skel: "+skelContent);
+		}*/
+		
+		newSource(name, 
+				debug?debugContent:initialContent,
+				skelContent.length()>0?skelContent:template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
 		if (entitiesNames == null)  {
