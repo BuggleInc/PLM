@@ -17,9 +17,27 @@ public class SleepIn extends BatExercise {
 		myWorlds[3] = new BatWorld(INVISIBLE, true,true);
 
 		
-		setup(myWorlds,"sleepIn", new SleepInEntity());
+		setup(myWorlds,"sleepIn");
 	}
 
+
+	/* BEGIN SKEL */
+	public void run(World w) {
+		BatWorld bw = (BatWorld) w;
+		bw.result = sleepIn((Boolean)w.getParameter(0),(Boolean)w.getParameter(1));		
+	}
+	/* END SKEL */
 	
-	
+	/* BEGIN TEMPLATE */
+public boolean sleepIn(boolean weekday, boolean vacation) {
+		/* BEGIN SOLUTION */
+		 if (!weekday || vacation) {
+			 return true;
+		 } else {
+			 return false;
+		 }
+		 // This can be shortened to: return(!weekday || vacation);
+		/* END SOLUTION */
+}
+		/* END TEMPLATE */
 }
