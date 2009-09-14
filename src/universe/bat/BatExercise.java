@@ -1,39 +1,42 @@
 package universe.bat;
 
-import jlm.lesson.ExerciseTemplated;
+import java.util.List;
+
+import jlm.lesson.ExerciseTemplatingEntity;
 import jlm.lesson.Lesson;
-import jlm.universe.Entity;
 import jlm.universe.World;
 
-public class BatExercise extends ExerciseTemplated {
+public abstract class BatExercise extends ExerciseTemplatingEntity {
 	public static final boolean INVISIBLE = false;
 	public static final boolean VISIBLE = true;
-	protected String methName;
 	
 	public BatExercise(Lesson lesson) {
 		super(lesson);
+		entityName = getClass().getCanonicalName()+".Entity";
 	}
 
-	@Override
-	protected void setup(World[] ws) {		
-		worldDuplicate(ws);
-		computeAnswer();
-	}
-	protected void setup(World[] myWorlds, String methName, BatEntity e) {
-		this.methName=methName;
-		for (World w : myWorlds) {
+	protected void setup(World[] ws, String entName) {
+		for (World w : ws) {
 			BatWorld bw = (BatWorld) w;
-			String name=methName+"(";
+			String name=entName+"(";
 			for (Object o:w.getParameters()) {
 				name+=o.toString()+",";
 			}
 			name=name.substring(0,name.length()-1);
 			name+=")";
 			bw.setName(name);
-			Entity cpy = e.copy();
-			w.addEntity(cpy);
+			w.addEntity(new BatEntity());
 		}
-		super.setup(myWorlds);
+		super.setup(ws,entName,
+				"import universe.bat.BatEntity; "+
+		        "import universe.bat.BatWorld; "+
+		        "import jlm.universe.World; "+
+		        "public class sleepIn extends BatEntity { ");
+	}
+
+	@Override
+	public void runDemo(List<Thread> runnerVect){
+		/* No demo in bat exercises */
 	}
 	//@Override
 	//public boolean check() {

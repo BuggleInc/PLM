@@ -40,6 +40,8 @@ public class BatEntity extends Entity {
 	
 	@Override
 	public void run() {
-		stepUI();
+		run(world);
+	}
+	public void run(World w){
 	}
 }
