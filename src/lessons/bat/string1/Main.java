@@ -1,4 +1,4 @@
-package lessons.bat.warmup2;
+package lessons.bat.string1;
 
 import jlm.lesson.Lesson;
 
