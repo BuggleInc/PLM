@@ -53,7 +53,9 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 	}
 	@Override
 	public void entityTraceChanged(Entity e, StackTraceElement[] trace) {
+		
 		for (StackTraceElement elm:trace) {
+			// TODO: added defenses against NPE because sometimes (launched from a .jar file, a NullPointerException might happen...)
 			if (elm.getFileName() != null && codeEditor != null && (elm.getFileName().equals(srcFile.getName()) || elm.getFileName().equals(srcFile.getName()+".java from JavaFileObjectImpl"))) {				
 				SyntaxDocument sd = ((SyntaxDocument) codeEditor.getDocument());
 				if (sd != null)
@@ -70,6 +72,5 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 		tracedEntity = e;
 		if (tracedEntity != null)
 			tracedEntity.addStackListener(this);
-		//System.out.println("yop");
 	}
 }
