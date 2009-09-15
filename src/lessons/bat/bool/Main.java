@@ -22,6 +22,7 @@ public class Main extends Lesson {
 		addExercise(new Close10(this));
 		addExercise(new In3050(this));
 		addExercise(new Max1020(this));
+		addExercise(new LastDigit(this));
 		exercisesLoaded = true;
 	}
 
