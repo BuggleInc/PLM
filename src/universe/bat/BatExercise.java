@@ -31,7 +31,7 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 				"import universe.bat.BatEntity; "+
 		        "import universe.bat.BatWorld; "+
 		        "import jlm.universe.World; "+
-		        "public class sleepIn extends BatEntity { ");
+		        "public class "+entName+" extends BatEntity { ");
 	}
 
 	@Override

@@ -134,7 +134,7 @@ public abstract class AbstractBuggle extends Entity {
 	public void setDirection(Direction direction) {
 		assert (world != null);
 		this.direction = direction;
-		world.notifyWorldUpdatesListeners();
+		stepUI();
 	}
 
 	public void turnLeft() {

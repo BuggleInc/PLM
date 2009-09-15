@@ -1,4 +1,4 @@
-package lessons.bat;
+package lessons.bat.bool;
 
 import jlm.lesson.Lesson;
 import jlm.universe.World;
@@ -16,7 +16,6 @@ public class SleepIn extends BatExercise {
 		myWorlds[2] = new BatWorld(INVISIBLE, false,true);
 		myWorlds[3] = new BatWorld(INVISIBLE, true,true);
 
-		
 		setup(myWorlds,"sleepIn");
 	}
 
@@ -29,7 +28,7 @@ public class SleepIn extends BatExercise {
 	/* END SKEL */
 	
 	/* BEGIN TEMPLATE */
-public boolean sleepIn(boolean weekday, boolean vacation) {
+boolean sleepIn(boolean weekday, boolean vacation) {
 		/* BEGIN SOLUTION */
 		 if (!weekday || vacation) {
 			 return true;
