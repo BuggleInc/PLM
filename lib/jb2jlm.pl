@@ -12,6 +12,11 @@ while (<>) {
 }
 $mission =~ s/<[^>]*>//g;
 
+## Get the package name
+my $package = `pwd`;
+chomp $package;
+$package =~ s|/$||;
+$package =~ s|.*/||;
 
 ## Get the prototype of the function to run
 while (<>) { last if /spellcheck="false"/}
@@ -28,6 +33,7 @@ my @worlds;
 while (<>) {
     chomp;
     next unless /<tr>/;
+    next if /other tests/;
     s/<tr><td>([^(]*)\(//; #)
     if (defined $name && $1 ne $name) {
 	die "name redefined from $name to $1\n";
@@ -35,6 +41,8 @@ while (<>) {
     $name=$1;
     
     s/&.*//;
+    s/{/new int[] {/g;
+   
 #    print "w:$_\n";
     push @worlds,$_;
 }
@@ -42,7 +50,8 @@ my $upname= ucfirst $name;
 print "Write $upname.java\n";
 open J,">$upname.java" || die "Cannot open $upname.java: $!\n";
 
-print J "package lessons.bat.bool;\n";
+print J "/* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */\n\n";	
+print J "package lessons.bat.$package;\n";
 print J "import jlm.lesson.Lesson;\n";
 print J "import jlm.universe.World;\n";
 print J "import universe.bat.BatExercise;\n";
@@ -72,8 +81,8 @@ foreach (split (/,/,$protoargs)) {
     s/^ *//;
     s/ *$//;
     s/ .*//;
-    s/int/Integer/;
-    s/bool/Boolean/;
+    s/int$/Integer/;
+    s/boolean$/Boolean/;
     print J ", " if ($argcount>0);
     print J "($_)w.getParameter($argcount)";
     $argcount++;
@@ -95,5 +104,6 @@ print "Write $upname.html\n";
 open H,">$upname.html" || die "Cannot open $upname.html: $!\n";
 print H "<h1>$upname</h1>\n";
 print H "$mission\n";
+print H "\n<p>This exercise was converted to JLM from the excellent exercising site http://javabat.com/</p>\n";
 close H;
 
