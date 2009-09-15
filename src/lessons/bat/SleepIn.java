@@ -16,7 +16,6 @@ public class SleepIn extends BatExercise {
 		myWorlds[2] = new BatWorld(INVISIBLE, false,true);
 		myWorlds[3] = new BatWorld(INVISIBLE, true,true);
 
-		
 		setup(myWorlds,"sleepIn");
 	}
 
