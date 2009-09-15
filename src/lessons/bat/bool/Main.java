@@ -7,6 +7,7 @@ public class Main extends Lesson {
 	@Override
 	protected void loadExercises() {
 		addExercise(new SleepIn(this));
+		addExercise(new MonkeyTrouble(this));
 		addExercise(new NearHundred(this));
 		addExercise(new SumDouble(this));
 		addExercise(new Diff21(this));
