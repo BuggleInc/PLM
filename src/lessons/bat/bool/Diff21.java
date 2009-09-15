@@ -1,4 +1,4 @@
-package lessons.bat;
+package lessons.bat.bool;
 
 import jlm.lesson.Lesson;
 import jlm.universe.World;
