@@ -7,6 +7,7 @@ public class Main extends Lesson {
 	@Override
 	protected void loadExercises() {
 		addExercise(new SleepIn(this));
+		addExercise(new NearHundred(this));
 		exercisesLoaded = true;
 	}
 
