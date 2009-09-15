@@ -88,6 +88,7 @@ public abstract class Exercise {
 	
 	public boolean check() throws Exception {
 		for (int i=0; i<currentWorld.length; i++) {
+			currentWorld[i].notifyWorldUpdatesListeners();
 			if (!currentWorld[i].equals(answerWorld[i]))
 				return false;
 		}

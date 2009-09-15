@@ -73,7 +73,7 @@ public abstract class World {
 		return this.name;
 	}
 
-	protected void setName(String n) {
+	public void setName(String n) {
 		name = n;
 	}
 
@@ -310,6 +310,12 @@ public abstract class World {
 	protected Object[] parameters = null;
 	public void setParameter(Object[] parameters) {
 		this.parameters = parameters;		
+	}
+	public Object[] getParameters() {
+		return parameters;
+	}
+	public Object getParameter(int i){
+		return parameters[i];
 	}
 
 }

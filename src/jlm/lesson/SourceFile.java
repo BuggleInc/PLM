@@ -46,6 +46,13 @@ public class SourceFile {
 		this.body = text;
 		notifyListener();
 	}
+	public void setTemplate(String string) {
+		this.template = string;
+	}
+	public String getTemplate() {
+		return template;
+	}
+
 
 	public String getCompilableContent() {
 		return getCompilableContent(null);
