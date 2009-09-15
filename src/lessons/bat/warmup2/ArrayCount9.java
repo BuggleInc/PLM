@@ -1,4 +1,4 @@
-package lessons.bat.bool;
+package lessons.bat.warmup2;
 import jlm.lesson.Lesson;
 import jlm.universe.World;
 import universe.bat.BatExercise;
@@ -9,13 +9,13 @@ public class ArrayCount9 extends BatExercise {
     super(lesson);
     
     World[] myWorlds = new BatWorld[7];
-    myWorlds[0] = new BatWorld(VISIBLE, {1, 2, 9}) ;
-    myWorlds[1] = new BatWorld(VISIBLE, {1, 9, 9}) ;
-    myWorlds[2] = new BatWorld(VISIBLE, {1, 9, 9, 3, 9}) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, {1, 2, 3}) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, {}) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, {4, 2, 4, 3, 1}) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, {9, 2, 4, 3, 1}) ;
+    myWorlds[0] = new BatWorld(VISIBLE, (Object)new int[] {1, 2, 9}) ;
+    myWorlds[1] = new BatWorld(VISIBLE, (Object)new int[] {1, 9, 9}) ;
+    myWorlds[2] = new BatWorld(VISIBLE, (Object)new int[] {1, 9, 9, 3, 9}) ;
+    myWorlds[3] = new BatWorld(INVISIBLE, (Object)new int[] {1, 2, 3}) ;
+    myWorlds[4] = new BatWorld(INVISIBLE, (Object)new int[] {}) ;
+    myWorlds[5] = new BatWorld(INVISIBLE, (Object)new int[] {4, 2, 4, 3, 1}) ;
+    myWorlds[6] = new BatWorld(INVISIBLE, (Object)new int[] {9, 2, 4, 3, 1}) ;
 
     setup(myWorlds,"arrayCount9");
   }
@@ -23,7 +23,7 @@ public class ArrayCount9 extends BatExercise {
   /* BEGIN SKEL */
   public void run(World w) {
     BatWorld bw = (BatWorld) w;
-    bw.result = arrayCount9((Integer[])w.getParameter(0));
+    bw.result = arrayCount9((int[])w.getParameter(0));
   }
   /* END SKEL */
 

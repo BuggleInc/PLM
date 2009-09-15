@@ -1,4 +1,4 @@
-package lessons.bat.bool;
+package lessons.bat.warmup2;
 import jlm.lesson.Lesson;
 import jlm.universe.World;
 import universe.bat.BatExercise;
@@ -28,7 +28,6 @@ public class StringBits extends BatExercise {
   /* BEGIN TEMPLATE */
 String stringBits(String str) {
   /* BEGIN SOLUTION */
-public String stringBits(String str) {
   String result = "";
   // Note: the loop increments i by 2
   for (int i=0; i<str.length(); i+=2) {
@@ -36,7 +35,7 @@ public String stringBits(String str) {
     // Alternately could use str.charAt(i)
   }
   return result;
-}  /* END SOLUTION */
+  /* END SOLUTION */
 }
   /* END TEMPLATE */
 }

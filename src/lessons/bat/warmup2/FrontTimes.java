@@ -1,4 +1,4 @@
-package lessons.bat.bool;
+package lessons.bat.warmup2;
 import jlm.lesson.Lesson;
 import jlm.universe.World;
 import universe.bat.BatExercise;
