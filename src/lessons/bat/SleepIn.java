@@ -28,7 +28,7 @@ public class SleepIn extends BatExercise {
 	/* END SKEL */
 	
 	/* BEGIN TEMPLATE */
-public boolean sleepIn(boolean weekday, boolean vacation) {
+boolean sleepIn(boolean weekday, boolean vacation) {
 		/* BEGIN SOLUTION */
 		 if (!weekday || vacation) {
 			 return true;

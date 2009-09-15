@@ -35,7 +35,7 @@ public class NearHundred extends BatExercise {
 	/* END SKEL */
 	
 	/* BEGIN TEMPLATE */
-public boolean nearHundred(int n) {
+boolean nearHundred(int n) {
 	
 		/* BEGIN SOLUTION */
 	  return (90<=n && n<=110)||(190<=n&&n<=210);

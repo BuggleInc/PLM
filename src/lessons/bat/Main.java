@@ -8,6 +8,10 @@ public class Main extends Lesson {
 	protected void loadExercises() {
 		addExercise(new SleepIn(this));
 		addExercise(new NearHundred(this));
+		addExercise(new Makes10(this));
+		addExercise(new SumDouble(this));
+		addExercise(new Diff21(this));
+		addExercise(new ParotTrouble(this));
 		exercisesLoaded = true;
 	}
 
