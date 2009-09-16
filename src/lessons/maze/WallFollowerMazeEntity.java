@@ -1,6 +1,21 @@
 package lessons.maze;
 
 public class WallFollowerMazeEntity extends universe.bugglequest.SimpleBuggle {
+	@Override
+	public void setX(int i)  {
+		if (isInited())
+			throw new RuntimeException("Pas le droit d'utiliser setX(int) dans cet exercice");
+	}
+	@Override
+	public void setY(int i)  { 
+		if (isInited())
+			throw new RuntimeException("Pas le droit d'utiliser setY(int) dans cet exercice");
+	}
+	@Override
+	public void setPos(int i,int j)  { 
+		if (isInited())
+			throw new RuntimeException("Pas le droit d'utiliser setPos(int,int) dans cet exercice");
+	}
 
 	/* BEGIN SOLUTION */
 	public void run() {
