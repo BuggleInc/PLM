@@ -396,8 +396,7 @@ public class Turtle extends Entity {
 
 	@Override
 	public void run() {
-		// TODO Raccord de méthode auto-généré
-
+		// Overriden by childs
 	}
 
 }

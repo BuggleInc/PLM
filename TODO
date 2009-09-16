@@ -1,9 +1,6 @@
 
 ***************** BUGS
- * dans le parser qui strip les parties cachées dans un template de leçon,
-   utiliser // pose des problèmes car il semble que les \n  soient supprimés 
-   et du coup tout un tas d'instructions se retrouve commenté  bien qu'elles
-   soient pas sur la même ligne
+None known
 
 ***************** BASE
 
@@ -17,8 +14,6 @@ D'autres points moins urgents :
   
  * Un autre truc sympa serait d'avoir un log sur un compte prof du
    style "[date] untel a passé tel exo".
- * Exécution pas à pas des programmes (à grands renforts de threads et
-   sémaphores, je pense).
  * La classe façade au compilateur n'est pas de moi non plus, il
    faudrait la mettre dans un package à part comme l'EditorKit.
  * pas moyen de changer la couleur d'une buggle interactivement
