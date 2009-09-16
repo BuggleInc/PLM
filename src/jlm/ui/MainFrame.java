@@ -37,6 +37,7 @@ import jlm.ui.action.PlayDemo;
 import jlm.ui.action.QuitGame;
 import jlm.ui.action.Reset;
 import jlm.ui.action.RevertExercise;
+import jlm.ui.action.SetLanguage;
 import jlm.ui.action.StartExecution;
 import jlm.ui.action.StopExecution;
 
@@ -164,10 +165,10 @@ public class MainFrame extends JFrame implements GameStateListener {
 				null, this));
 		menu.add(importSessionMenuItem);
 
-//		JMenuItem setLanguageToFrench = new JMenuItem(new SetLanguage(Game.getInstance(), "Français", null, this,"fr"));
-//		menu.add(setLanguageToFrench);
-//		JMenuItem setLanguageToEnglish = new JMenuItem(new SetLanguage(Game.getInstance(), "English", null, this,"en"));
-//		menu.add(setLanguageToEnglish);
+		JMenuItem setLanguageToFrench = new JMenuItem(new SetLanguage(Game.getInstance(), "Français", null, this,"fr"));
+		menu.add(setLanguageToFrench);
+		JMenuItem setLanguageToEnglish = new JMenuItem(new SetLanguage(Game.getInstance(), "English", null, this,"en"));
+		menu.add(setLanguageToEnglish);
 
 		menu = new JMenu("Help");
 		menuBar.add(menu);

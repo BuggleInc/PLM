@@ -16,6 +16,7 @@ import jlm.event.GameListener;
 import jlm.event.GameStateListener;
 import jlm.event.StatusStateListener;
 import jlm.lesson.Exercise;
+import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
@@ -516,5 +517,16 @@ public class Game implements IWorldView {
 			l.stateChanged(str);
 		}
 	}
-	
+	public void setLocale(String lang) {
+		Reader.setLocale(lang);
+		for (Lesson lesson : lessons) {
+			for (Exercise e:lesson.exercises()) {
+				if (e instanceof ExerciseTemplated) {
+					((ExerciseTemplated) e).loadHTMLMission();
+				}
+			}
+		}
+		setCurrentLesson(getCurrentLesson());
+		currentLesson.setCurrentExercise(currentLesson.getCurrentExercise());
+	}
 }

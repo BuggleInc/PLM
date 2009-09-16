@@ -50,7 +50,7 @@ public abstract class ExerciseTemplated extends Exercise {
         "  </style>\n"+
         "</head>\n";
 
-	protected void loadHTMLMission() {
+	public void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 
 		StringBuffer sb = Reader.fileToStringBuffer(filename, "html",true);
