@@ -36,6 +36,14 @@ public class RedTicket extends BatExercise {
   /* BEGIN TEMPLATE */
 int redTicket(int a, int b, int c) {
   /* BEGIN SOLUTION */
+  if (a == b && b == c && c == 2)
+     return 10;
+  else if (a == b && b == c)
+     return 5;
+  else if (b != a && c != a)
+	 return 1;
+  else
+     return 0;
   /* END SOLUTION */
 }
   /* END TEMPLATE */

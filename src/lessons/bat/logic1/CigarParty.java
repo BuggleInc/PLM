@@ -36,6 +36,7 @@ public class CigarParty extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean cigarParty(int cigars, boolean isWeekend) {
   /* BEGIN SOLUTION */
+  return (isWeekend && cigars >= 40) || (!isWeekend && (cigars >= 40) && (cigars <= 60));
   /* END SOLUTION */
 }
   /* END TEMPLATE */

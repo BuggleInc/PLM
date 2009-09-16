@@ -31,6 +31,7 @@ public class AnswerCell extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean answerCell(boolean isMorning, boolean isMom, boolean isAsleep) {
   /* BEGIN SOLUTION */
+  return (! isAsleep) && ! (isMorning && ! isMom);
   /* END SOLUTION */
 }
   /* END TEMPLATE */

@@ -35,6 +35,7 @@ public class ShareDigit extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean shareDigit(int a, int b) {
   /* BEGIN SOLUTION */
+  return (a/10 == b/10 || a/10 == b%10 || a%10 == b/10 || a%10 == b%10);
   /* END SOLUTION */
 }
   /* END TEMPLATE */

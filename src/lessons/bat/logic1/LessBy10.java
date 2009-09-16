@@ -39,6 +39,7 @@ public class LessBy10 extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean lessBy10(int a, int b, int c) {
   /* BEGIN SOLUTION */
+  return ((a - b) >= 10) || ((b - a) >= 10) || ((b - c) >= 10) || ((c - b) >= 10) || ((a - c) >= 10) || ((c - a) >= 10);
   /* END SOLUTION */
 }
   /* END TEMPLATE */

@@ -37,6 +37,7 @@ public class InOrder extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean inOrder(int a, int b, int c, boolean bOk) {
   /* BEGIN SOLUTION */
+  return (bOk || (b > a)) && (c > b);
   /* END SOLUTION */
 }
   /* END TEMPLATE */

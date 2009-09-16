@@ -34,6 +34,11 @@ public class SortaSum extends BatExercise {
   /* BEGIN TEMPLATE */
 int sortaSum(int a, int b) {
   /* BEGIN SOLUTION */
+    int sum = a+b;
+    if (sum >= 10 && sum <= 19)
+	   return 20;
+    else
+	   return sum;
   /* END SOLUTION */
 }
   /* END TEMPLATE */

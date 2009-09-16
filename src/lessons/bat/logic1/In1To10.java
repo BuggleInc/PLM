@@ -37,6 +37,7 @@ public class In1To10 extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean in1To10(int n, boolean outsideMode) {
   /* BEGIN SOLUTION */
+  return (outsideMode && (n <= 1 || n >= 10)) || ((! outsideMode) && (n >= 1 && n <= 10));
   /* END SOLUTION */
 }
   /* END TEMPLATE */
