@@ -85,7 +85,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void loadMap(World intoWorld) {
 		BufferedReader br = Reader.fileReader( getClass().getCanonicalName(),"map",false);
 		if (br==null)
-			// TODO: well not very nice, particularly when we were expecting to load a map and it is not included in the .jar file ;)
+			// TODO: not very nice, particularly when we were expecting to load a map and it is not included in the .jar file ;)
 			return;
 		try {
 			intoWorld.readFromFile(br);
@@ -208,12 +208,16 @@ public abstract class ExerciseTemplated extends Exercise {
 			templateTail.toString();
 		String skelContent = skel.toString().replaceAll("\n", " ");
 		
-		/* TODO: remove "//.*\n" before putting everything on one line only */
+		String template = (head+"$body"+tail);
+		/* remove "//.*\n" before putting everything on one line only */
+		Pattern lineCommentPattern = Pattern.compile("//.*?$");
+		Matcher lineCommentMatcher = lineCommentPattern.matcher(template);
+		template = lineCommentMatcher.replaceAll(" ");
+		
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
-		StringBuffer templateSb = new StringBuffer();
-		for (String s: (head+"$body"+tail).split("\n")) 
-			templateSb.append(s);			
-		String template = templateSb.toString();
+		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
+		Matcher newLineMatcher = newLinePattern.matcher(template);
+		template = newLineMatcher.replaceAll(" ");
 		
 		/* Apply all requested rewrites, if any */
 		if (patternString != null) {
