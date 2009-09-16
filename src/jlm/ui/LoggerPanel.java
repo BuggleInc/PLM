@@ -31,7 +31,7 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 	@Override
 	public void log(DiagnosticCollector<JavaFileObject> diagnostics) {
 		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {			
-			append(diagnostic.getMessage(null));
+			append(diagnostic.getSource().getName()+":"+diagnostic.getLineNumber()+":"+ diagnostic.getMessage(null));
 			append("\n");
 		}
 	}
