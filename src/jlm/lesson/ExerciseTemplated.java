@@ -68,6 +68,15 @@ public abstract class ExerciseTemplated extends Exercise {
 		if (!name.equals("<no name>"))
 			System.out.print(" "+filename+".java ");
 		name = m.group(1);
+
+		/* extract the hint, if any */
+		Pattern p2 =  Pattern.compile("<div class=\"hint\">(.*?)</div>",Pattern.MULTILINE);
+		Matcher m2 = p2.matcher(str);
+		if (m2.find()) {
+			hint=m2.group(1);
+			str=m2.replaceAll("");
+			System.out.println("Found a hint: "+hint);
+		}
 		
 		/* get the mission explanation */
 		mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+str+"</body>\n</html>\n";

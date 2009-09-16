@@ -25,6 +25,7 @@ public abstract class Exercise {
 
 	public String name = "<no name>"; 
 	public String mission = "";  /** The text to display to present the lesson */
+	public String hint = null;
 	
 	protected List<SourceFile> sourceFiles; /** All the editable source files */
 	

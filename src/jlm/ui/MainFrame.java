@@ -27,6 +27,7 @@ import javax.swing.SwingConstants;
 import jlm.core.Game;
 import jlm.core.GameState;
 import jlm.core.Reader;
+import jlm.event.GameListener;
 import jlm.event.GameStateListener;
 import jlm.ui.action.AbstractGameAction;
 import jlm.ui.action.CleanUpSession;
@@ -38,10 +39,11 @@ import jlm.ui.action.QuitGame;
 import jlm.ui.action.Reset;
 import jlm.ui.action.RevertExercise;
 import jlm.ui.action.SetLanguage;
+import jlm.ui.action.ShowHint;
 import jlm.ui.action.StartExecution;
 import jlm.ui.action.StopExecution;
 
-public class MainFrame extends JFrame implements GameStateListener {
+public class MainFrame extends JFrame implements GameStateListener, GameListener {
 
 	private static final long serialVersionUID = -5022279647890315264L;
 
@@ -52,6 +54,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 	private JButton debugButton;
 	private JButton stopButton;
 	private JButton resetButton;
+	private JButton hintButton;
 	private JButton demoButton;
 	private LoggerPanel outputArea;
 
@@ -116,6 +119,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 		initStatusBar();
 
 		Game.getInstance().addGameStateListener(this);
+		Game.getInstance().addGameListener(this);
 
 		pack();
 		setSize(1024, 768);
@@ -244,6 +248,10 @@ public class MainFrame extends JFrame implements GameStateListener {
 		resetButton.setBorderPainted(false);
 		resetButton.setEnabled(true);
 
+		hintButton = new JButton(new ShowHint(Game.getInstance(), "Hint", ResourcesCache.getIcon("resources/step.png")));
+		hintButton.setBorderPainted(false);
+		hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
+		
 		demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setBorderPainted(false);
 		demoButton.setEnabled(true);
@@ -260,6 +268,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 		toolBar.add(debugButton);
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
+		toolBar.add(hintButton);
 		toolBar.add(demoButton);
 		toolBar.add(new JSeparator(SwingConstants.VERTICAL));
 		toolBar.add(Box.createHorizontalGlue());
@@ -288,6 +297,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
+			hintButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
 			break;
 		case COMPILATION_STARTED:
@@ -296,6 +306,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
+			hintButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
 			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
@@ -305,6 +316,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			startButton.setEnabled(true);
 			debugButton.setEnabled(true);
 			resetButton.setEnabled(true);
+			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
 			break;
@@ -324,6 +336,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			}
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
+			hintButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			exerciseView.setEnabledControl(false);
 			lessonComboBox.setEnabled(false);
@@ -337,6 +350,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
+			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 			lessonComboBox.setEnabled(true);
 			exerciseComboBox.setEnabled(true);		
 			break;
@@ -345,6 +359,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			startButton.setEnabled(false);
 			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
+			hintButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			lessonComboBox.setEnabled(false);
@@ -358,6 +373,7 @@ public class MainFrame extends JFrame implements GameStateListener {
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
+			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 			lessonComboBox.setEnabled(true);
 			exerciseComboBox.setEnabled(true);		
 			break;
@@ -383,5 +399,35 @@ public class MainFrame extends JFrame implements GameStateListener {
 				// event.setHandled(true);
 			}
 		});
+	}
+
+	@Override
+	public void currentExerciseHasChanged() {
+		hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
+	}
+
+	@Override
+	public void currentLessonHasChanged() {
+		hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
+	}
+
+	@Override
+	public void lessonsChanged() {
+		// don't care
+	}
+
+	@Override
+	public void selectedEntityHasChanged() {
+		// don't care
+	}
+
+	@Override
+	public void selectedWorldHasChanged() {
+		// don't care
+	}
+
+	@Override
+	public void selectedWorldWasUpdated() {
+		// don't care
 	}
 }
