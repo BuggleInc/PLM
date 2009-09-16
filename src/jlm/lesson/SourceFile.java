@@ -62,7 +62,7 @@ public class SourceFile {
 		String res;
 
 		if (template != null) {
-			res = template.replaceAll("\\$body", " "+this.body+" ");
+			res = template.replaceAll("\\$body", " "+this.body+" \n");
 			if (runtimePatterns != null)
 				for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 					res = res.replaceAll(pattern.getKey(), pattern.getValue());
