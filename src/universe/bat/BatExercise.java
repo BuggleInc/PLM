@@ -19,8 +19,29 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		for (World w : ws) {
 			BatWorld bw = (BatWorld) w;
 			String name=entName+"(";
+			
 			for (Object o:w.getParameters()) {
-				name+=o.toString()+",";
+				if (o instanceof String[]) {
+					name+="{";
+					String[]a = (String[]) o;
+					for (String i:a) {
+						name+=i+",";
+					}
+					name=name.substring(0,name.length()-1)+"},";					
+				} else if (o.getClass().isArray()){
+					name+="{";
+					if (o.getClass().getComponentType().equals(Integer.TYPE)) {
+						int[]a = (int[]) o;
+						for (int i:a) {
+							name+=i+",";
+						}
+					} else {
+						throw new RuntimeException("Unhandled internal type");
+					}
+					name=name.substring(0,name.length()-1)+"},";
+				} else {
+					name+=o.toString()+",";
+				}
 			}
 			name=name.substring(0,name.length()-1);
 			name+=")";
