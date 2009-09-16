@@ -75,7 +75,6 @@ public abstract class ExerciseTemplated extends Exercise {
 		if (m2.find()) {
 			hint=m2.group(1);
 			str=m2.replaceAll("");
-			System.out.println("Found a hint: "+hint);
 		}
 		
 		/* get the mission explanation */
