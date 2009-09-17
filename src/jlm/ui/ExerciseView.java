@@ -1,8 +1,11 @@
 package jlm.ui;
 
+import java.awt.Color;
+
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
 
 import jlm.core.Game;
@@ -39,14 +42,18 @@ public class ExerciseView extends JPanel implements GameListener {
 			buttonPanel.setEnabledControl(enabled);
 	}
 
-	public void initComponents() {
+	public void initComponents() {	
+		
+		JPanel upperPane = new JPanel();
+		
 		// TODO: add key shortcuts
-		setLayout(new MigLayout("fill"));
+				
+		upperPane.setLayout(new MigLayout("insets 0 0 0 0, fill"));
 
 		worldComboBox = new JComboBox(new WorldComboListAdapter(Game.getInstance()));
 		worldComboBox.setRenderer(new WorldCellRenderer());
 		worldComboBox.setEditable(false);
-		add(worldComboBox, "span,growx,wrap");
+		upperPane.add(worldComboBox, "span,growx,wrap");
 
 		// TODO: logarithmic slider ?
 		speedSlider = new JSlider(new DelayBoundedRangeModel(Game.getInstance()));
@@ -55,7 +62,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		speedSlider.setMinorTickSpacing(10);
 		speedSlider.setPaintTicks(true);
 		speedSlider.setPaintLabels(true);
-		add(speedSlider, "growx,wrap");
+		upperPane.add(speedSlider, "growx,wrap");
 
 		tabPane = new JTabbedPane();
 		worldView = Game.getInstance().getSelectedWorld().getView();
@@ -66,12 +73,12 @@ public class ExerciseView extends JPanel implements GameListener {
 		for (int i=1;i<worldView.length;i++)
 			tabPane.add(worldView[i].getTabName(), worldView[i]);
 
-		add(tabPane, "span,grow,wrap");
+		upperPane.add(tabPane, "span,grow,wrap");
 
 		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
 		entityComboBox.setRenderer(new EntityCellRenderer());
 		entityComboBox.setEditable(false);
-		add(entityComboBox, "span,alignx center");
+		upperPane.add(entityComboBox, "span,alignx center");
 
 		/*
 		 * FIXME: strange behavior on OSX, if you click on long time on the
@@ -81,9 +88,18 @@ public class ExerciseView extends JPanel implements GameListener {
 
 		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 		controlPane = new JPanel();
-		controlPane.setLayout(new MigLayout("fill"));
+		controlPane.setLayout(new MigLayout("insets 0 0 0 0, fill"));
 		controlPane.add(buttonPanel, "grow");
-		add(controlPane, "span,growx,wrap");
+		//add(controlPane, "span,growx,wrap");
+		
+		
+		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, upperPane, controlPane);
+		splitPane.setBorder(null);
+		splitPane.setOneTouchExpandable(true);
+		splitPane.setDividerLocation(420);
+		
+		this.setLayout(new MigLayout("insets 0 0 0 0, fill"));
+		this.add(splitPane, "grow");
 	}
 
 	public void selectObjectivePane() {
