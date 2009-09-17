@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-09-17 08:55+0300\n"
+"POT-Creation-Date: 2009-09-17 18:29+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -402,6 +402,11 @@ msgid "Set heading</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
+#: src/universe/bugglequest/BuggleWorld.html:21
+msgid "valid directions are:"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
 #: src/universe/bugglequest/BuggleWorld.html:22
 msgid "Direction getDirection();"
 msgstr ""
@@ -409,6 +414,11 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/universe/bugglequest/BuggleWorld.html:22
 msgid "void setDirection(Direction)"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/bugglequest/BuggleWorld.html:22
+msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -5599,7 +5609,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/bat/bool1/Close10.html:6 src/lessons/bat/bool1/Diff21.html:5 src/lessons/bat/bool1/HasTeen.html:6 src/lessons/bat/bool1/IcyHot.html:5 src/lessons/bat/bool1/In1020.html:5 src/lessons/bat/bool1/In3050.html:5 src/lessons/bat/bool1/LastDigit.html:9 src/lessons/bat/bool1/LoneTeen.html:6 src/lessons/bat/bool1/Main.html:11 src/lessons/bat/bool1/Makes10.html:5 src/lessons/bat/bool1/Max1020.html:8 src/lessons/bat/bool1/MonkeyTrouble.html:7 src/lessons/bat/bool1/NearHundred.html:5 src/lessons/bat/bool1/ParotTrouble.html:8 src/lessons/bat/bool1/PosNeg.html:5 src/lessons/bat/bool1/SleepIn.html:7 src/lessons/bat/bool1/SumDouble.html:5 src/lessons/bat/bool2/AlarmClock.html:11 src/lessons/bat/bool2/AnswerCell.html:8 src/lessons/bat/bool2/BlueTicket.html:10 src/lessons/bat/bool2/CaughtSpeeding.html:11 src/lessons/bat/bool2/CigarParty.html:9 src/lessons/bat/bool2/DateFashion.html:12 src/lessons/bat/bool2/GreenTicket.html:9 src/lessons/bat/bool2/In1To10.html:8 src/lessons/bat/bool2/InOrderEqual.html:9 src/lessons/bat/bool2/InOrder.html:8 src/lessons/bat/bool2/LastDigit.html:8 src/lessons/bat/bool2/LessBy10.html:5 src/lessons/bat/bool2/Main.html:6 src/lessons/bat/bool2/MaxMod5.html:9 src/lessons/bat/bool2/NearTen.html:8 src/lessons/bat/bool2/RedTicket.html:9 src/lessons/bat/bool2/ShareDigit.html:9 src/lessons/bat/bool2/SortaSum.html:7 src/lessons/bat/bool2/SquirrelPlay.html:10 src/lessons/bat/bool2/TeaParty.html:11 src/lessons/bat/bool2/TeenSum.html:8 src/lessons/bat/bool2/TwoAsOne.html:5 src/lessons/bat/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/Array123.html:4 src/lessons/bat/string1/Array667.html:7 src/lessons/bat/string1/ArrayCount9.html:4 src/lessons/bat/string1/ArrayFront9.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Has271.html:8 src/lessons/bat/string1/Last2.html:7 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/NoTriples.html:7 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7
+#: src/lessons/bat/bool1/Close10.html:6 src/lessons/bat/bool1/Diff21.html:5 src/lessons/bat/bool1/HasTeen.html:6 src/lessons/bat/bool1/IcyHot.html:5 src/lessons/bat/bool1/In1020.html:5 src/lessons/bat/bool1/In3050.html:5 src/lessons/bat/bool1/LastDigit.html:9 src/lessons/bat/bool1/LoneTeen.html:6 src/lessons/bat/bool1/Main.html:11 src/lessons/bat/bool1/Makes10.html:5 src/lessons/bat/bool1/Max1020.html:8 src/lessons/bat/bool1/MonkeyTrouble.html:7 src/lessons/bat/bool1/NearHundred.html:5 src/lessons/bat/bool1/ParotTrouble.html:8 src/lessons/bat/bool1/PosNeg.html:5 src/lessons/bat/bool1/SleepIn.html:7 src/lessons/bat/bool1/SumDouble.html:5 src/lessons/bat/bool2/AlarmClock.html:11 src/lessons/bat/bool2/AnswerCell.html:8 src/lessons/bat/bool2/BlueTicket.html:10 src/lessons/bat/bool2/CaughtSpeeding.html:11 src/lessons/bat/bool2/CigarParty.html:9 src/lessons/bat/bool2/DateFashion.html:12 src/lessons/bat/bool2/GreenTicket.html:9 src/lessons/bat/bool2/In1To10.html:8 src/lessons/bat/bool2/InOrderEqual.html:9 src/lessons/bat/bool2/InOrder.html:8 src/lessons/bat/bool2/LastDigit.html:8 src/lessons/bat/bool2/LessBy10.html:5 src/lessons/bat/bool2/Main.html:4 src/lessons/bat/bool2/MaxMod5.html:9 src/lessons/bat/bool2/NearTen.html:8 src/lessons/bat/bool2/RedTicket.html:9 src/lessons/bat/bool2/ShareDigit.html:9 src/lessons/bat/bool2/SortaSum.html:7 src/lessons/bat/bool2/SquirrelPlay.html:10 src/lessons/bat/bool2/TeaParty.html:11 src/lessons/bat/bool2/TeenSum.html:8 src/lessons/bat/bool2/TwoAsOne.html:5 src/lessons/bat/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/Array123.html:4 src/lessons/bat/string1/Array667.html:7 src/lessons/bat/string1/ArrayCount9.html:4 src/lessons/bat/string1/ArrayFront9.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Has271.html:8 src/lessons/bat/string1/Last2.html:7 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/NoTriples.html:7 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7
 msgid ""
 "This exercise was converted to JLM from the excellent exercising site "
 "http://javabat.com/"
@@ -5994,16 +6004,11 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/Main.html:1
-msgid "Logic 1"
+msgid "Boolean (even more) fun"
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/bat/bool2/Main.html:3
-msgid "Booleans are ..."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool2/Main.html:5
 msgid ""
 "A very good introduction to this type is available here: "
 "http://javabat.com/doc/ifboolean.html."

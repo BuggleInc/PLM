@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-09-17 08:55+0300\n"
-"PO-Revision-Date: 2009-09-17 09:40+0200\n"
+"POT-Creation-Date: 2009-09-17 18:29+0300\n"
+"PO-Revision-Date: 2009-09-17 18:30+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -432,6 +432,11 @@ msgid "Set heading</b>"
 msgstr "Changer la direction</b>"
 
 #. type: Content of: <table><tr><td>
+#: src/universe/bugglequest/BuggleWorld.html:21
+msgid "valid directions are:"
+msgstr "Les directions valides sont :"
+
+#. type: Content of: <table><tr><td>
 #: src/universe/bugglequest/BuggleWorld.html:22
 msgid "Direction getDirection();"
 msgstr "Direction getDirection();"
@@ -440,6 +445,11 @@ msgstr "Direction getDirection();"
 #: src/universe/bugglequest/BuggleWorld.html:22
 msgid "void setDirection(Direction)"
 msgstr "void setDirection(Direction)"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/bugglequest/BuggleWorld.html:22
+msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
+msgstr "Direction.NORTH, Direction.EAST, Direction.SOUTH et Direction.WEST"
 
 #. type: Content of: <table><tr><td>
 #: src/universe/bugglequest/BuggleWorld.html:24
@@ -7294,7 +7304,10 @@ msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that Math.abs(n) returns the absolute "
 "value of a number."
-msgstr "Étant donné deux nombres entiers, retourner la valeur la plus proche de 10, ou 0 en cas de match nul. Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
+msgstr ""
+"Étant donné deux nombres entiers, retourner la valeur la plus proche de 10, "
+"ou 0 en cas de match nul. Remarquez que Math.abs(n) retourne la valeur "
+"absolue d'un nombre."
 
 #. type: Content of: <p>
 #: src/lessons/bat/bool1/Close10.html:6 src/lessons/bat/bool1/Diff21.html:5
@@ -7318,7 +7331,7 @@ msgstr "Étant donné deux nombres entiers, retourner la valeur la plus proche d
 #: src/lessons/bat/bool2/In1To10.html:8
 #: src/lessons/bat/bool2/InOrderEqual.html:9
 #: src/lessons/bat/bool2/InOrder.html:8 src/lessons/bat/bool2/LastDigit.html:8
-#: src/lessons/bat/bool2/LessBy10.html:5 src/lessons/bat/bool2/Main.html:6
+#: src/lessons/bat/bool2/LessBy10.html:5 src/lessons/bat/bool2/Main.html:4
 #: src/lessons/bat/bool2/MaxMod5.html:9 src/lessons/bat/bool2/NearTen.html:8
 #: src/lessons/bat/bool2/RedTicket.html:9
 #: src/lessons/bat/bool2/ShareDigit.html:9
@@ -7345,7 +7358,9 @@ msgstr "Étant donné deux nombres entiers, retourner la valeur la plus proche d
 msgid ""
 "This exercise was converted to JLM from the excellent exercising site http://"
 "javabat.com/"
-msgstr "Cet exercice a été extrait de l'excellent site d'exercices http://javabot.com/ pour JLM."
+msgstr ""
+"Cet exercice a été extrait de l'excellent site d'exercices http://javabot."
+"com/ pour JLM."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/CountTeen.html:1
@@ -7357,7 +7372,9 @@ msgstr "Compter les ados"
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 4 int values, return the amount of teen ones."
-msgstr "On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. Étant donné quatre nombres entiers, retournez combien d'entre eux sont ados."
+msgstr ""
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"Étant donné quatre nombres entiers, retournez combien d'entre eux sont ados."
 
 #. type: Content of: <p>
 #: src/lessons/bat/bool1/CountTeen.html:5
@@ -7374,7 +7391,9 @@ msgstr "Diff 21"
 msgid ""
 "Given an int n, return the absolute difference between n and 21, except "
 "return double the absolute difference if n is over 21."
-msgstr "Étant donné un entier n, retournez la différence absolue entre n et 21, sauf si n est plus grand que 21. Dans ce cas, doublez la différence absolue."
+msgstr ""
+"Étant donné un entier n, retournez la différence absolue entre n et 21, sauf "
+"si n est plus grand que 21. Dans ce cas, doublez la différence absolue."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/HasTeen.html:1
@@ -7386,7 +7405,10 @@ msgstr "A des ados"
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 3 int values, return true if 1 or more of them are teen."
-msgstr "On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. Étant donné trois nombres entiers, retournez vrai ssi un ou plusieurs d'entre eux sont ados."
+msgstr ""
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"Étant donné trois nombres entiers, retournez vrai ssi un ou plusieurs "
+"d'entre eux sont ados."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/IcyHot.html:1
@@ -7398,7 +7420,9 @@ msgstr "Feu glacé"
 msgid ""
 "Given two temperatures, return true if one is less than 0 and the other is "
 "greater than 100."
-msgstr "Étant donné deux températures, retournez vrai si l'une est inférieure à zéro et l'autre supérieure à 100."
+msgstr ""
+"Étant donné deux températures, retournez vrai si l'une est inférieure à zéro "
+"et l'autre supérieure à 100."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/In1020.html:1
@@ -7410,7 +7434,9 @@ msgstr "Dans [10;20]"
 msgid ""
 "Given 2 int values, return true if either of them is in the range 10..20 "
 "inclusive."
-msgstr "Étant donné deux nombres entiers, retournez vrai s'un d'entre eux est dans l'intervale [10;20]."
+msgstr ""
+"Étant donné deux nombres entiers, retournez vrai s'un d'entre eux est dans "
+"l'intervale [10;20]."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/In3050.html:1
@@ -7422,7 +7448,10 @@ msgstr "Dans [30;50]"
 msgid ""
 "Given 2 int values, return true if they are both in the range 30..40 "
 "inclusive, or they are both in the range 40..50 inclusive."
-msgstr "Étant donné deux nombres entiers, retournez vrai s'ils sont tous les deux dans l'intervale [30;40], ou s'ils sont tous les deux dans l'intervale [40;50]."
+msgstr ""
+"Étant donné deux nombres entiers, retournez vrai s'ils sont tous les deux "
+"dans l'intervale [30;40], ou s'ils sont tous les deux dans l'intervale "
+"[40;50]."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/LastDigit.html:1
@@ -7436,7 +7465,10 @@ msgid ""
 "Given two non-negative int values, return true if they have the same last "
 "digit, such as with 27 and 57. Note that the % \"mod\" operator computes "
 "remainders, so 17 % 10 is 7."
-msgstr "Étant donné deux nombres entiers positifs, retournez vrai s'ils ont le même dernier chiffre, comme 27 et 57. Remarquez que l'opérateur % (modulo) calcule le reste de la division entière (donc 17 % 10 vaut 7)."
+msgstr ""
+"Étant donné deux nombres entiers positifs, retournez vrai s'ils ont le même "
+"dernier chiffre, comme 27 et 57. Remarquez que l'opérateur % (modulo) "
+"calcule le reste de la division entière (donc 17 % 10 vaut 7)."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/LoneTeen.html:1
@@ -7448,7 +7480,10 @@ msgstr "Ado solitaire"
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 2 int values, return true if one or the other is teen, but not both."
-msgstr "On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux est ado, mais pas les deux."
+msgstr ""
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux est "
+"ado, mais pas les deux."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/Main.html:1
@@ -7461,14 +7496,19 @@ msgid ""
 "Boolean operations are one of the very basic task in programming.  As long "
 "as you cannot write a not so simple boolean test under the minute, you "
 "probably will have a very bad time writing a real program."
-msgstr "Les opérations booléennes sont l'une des fondements de la programmation. Tant que vous ne pourrez pas écrire des tests booléens (même non triviaux) en moins d'une minute, il vous sera difficile d'écrire un vrai programme."
+msgstr ""
+"Les opérations booléennes sont l'une des fondements de la programmation. "
+"Tant que vous ne pourrez pas écrire des tests booléens (même non triviaux) "
+"en moins d'une minute, il vous sera difficile d'écrire un vrai programme."
 
 #. type: Content of: <p>
 #: src/lessons/bat/bool1/Main.html:8
 msgid ""
 "That is why this lesson provides you a bunch of such exercises, so that you "
 "can get trained in this."
-msgstr "C'est pourquoi cette leçon vous propose une certaine quantité de tels exercices pour vous permettre de vous entrainer."
+msgstr ""
+"C'est pourquoi cette leçon vous propose une certaine quantité de tels "
+"exercices pour vous permettre de vous entrainer."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/Makes10.html:1
@@ -7480,7 +7520,9 @@ msgstr "Font 10"
 msgid ""
 "Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
 "10."
-msgstr "Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux vaut 10, ou si leur somme vaut 10."
+msgstr ""
+"Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux vaut "
+"10, ou si leur somme vaut 10."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/Max1020.html:1
@@ -7492,7 +7534,10 @@ msgstr "Max1020"
 msgid ""
 "Given 2 positive int values, return the larger value that is in the range "
 "10..20 inclusive, or return 0 if neither is in that range."
-msgstr "Étant donné deux nombres entiers, retournez la plus grande valeur dans l'intervale [10;20], ou retournez 0 si aucun des nombres n'est dans cet intervale."
+msgstr ""
+"Étant donné deux nombres entiers, retournez la plus grande valeur dans "
+"l'intervale [10;20], ou retournez 0 si aucun des nombres n'est dans cet "
+"intervale."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/MonkeyTrouble.html:1
@@ -7505,7 +7550,11 @@ msgid ""
 "We have two monkeys, a and b, and the parameters aSmile and bSmile indicate "
 "if each is smiling.  We are in trouble if they are both smiling or if "
 "neither of them is smiling.  Return true if we are in trouble."
-msgstr "Nous avons deux singes, a et b, et les paramètres aSmile et bSmile indiquent s'ils sourient. Nous avons un problème s'ils sourient tous les deux en même temps, ou si aucun des deux ne sourit. Retournez vrai si nous avons un problème."
+msgstr ""
+"Nous avons deux singes, a et b, et les paramètres aSmile et bSmile indiquent "
+"s'ils sourient. Nous avons un problème s'ils sourient tous les deux en même "
+"temps, ou si aucun des deux ne sourit. Retournez vrai si nous avons un "
+"problème."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/NearHundred.html:1
@@ -7517,7 +7566,9 @@ msgstr "Presque 100"
 msgid ""
 "Given an int n, return true if it is within 10 of 100 or 200. Note Math.abs"
 "(n) returns the absolute value of a number."
-msgstr "Étant donné un entier n, retournez vrai s'il est à 10 près de 100 ou de 200. Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
+msgstr ""
+"Étant donné un entier n, retournez vrai s'il est à 10 près de 100 ou de 200. "
+"Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/ParotTrouble.html:1
@@ -7530,7 +7581,10 @@ msgid ""
 "We have a loud talking parrot. The \"hour\" parameter is the current hour "
 "time in the range 0..23. We are in trouble if the parrot is talking and the "
 "hour is before 7 or after 20. Return true if we are in trouble."
-msgstr "Nous avons un perroquet très bruyant. Le paramètre \"hour\" indique l'heure courante (dans l'intervale [0;23]). Nous avons un problème si le perroquet parle avant 7h ou après 20h. Retournez vrai si nous avons un problème."
+msgstr ""
+"Nous avons un perroquet très bruyant. Le paramètre \"hour\" indique l'heure "
+"courante (dans l'intervale [0;23]). Nous avons un problème si le perroquet "
+"parle avant 7h ou après 20h. Retournez vrai si nous avons un problème."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/PosNeg.html:1
@@ -7542,7 +7596,10 @@ msgstr "Positif Negatif"
 msgid ""
 "Given 2 int values, return true if one is negative and one is positive. "
 "Unless negative is true, then they both must be negative."
-msgstr "Étant donné deux entiers, retournez vrai si l'un d'entre eux est positif et l'autre négatif. Sauf si le paramètre negative est vrai, auquel cas il faut que les deux nombres soient négatifs."
+msgstr ""
+"Étant donné deux entiers, retournez vrai si l'un d'entre eux est positif et "
+"l'autre négatif. Sauf si le paramètre negative est vrai, auquel cas il faut "
+"que les deux nombres soient négatifs."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/SleepIn.html:1
@@ -7555,7 +7612,11 @@ msgid ""
 "The parameter weekday is true if it is a weekday, and the parameter vacation "
 "is true if we are on vacation. We sleep in if it is not a weekday or we're "
 "on vacation. Return true if we sleep in."
-msgstr "Le paramètre weekday est vrai si nous sommes un jour de semaine, et le paramètre vacation est vrai si nous sommes en vacances. Nous pouvons dormir ce matin s'il ne s'agit pas d'un jour de semaine ou si nous sommes en vacances. Retournez vrai si nous pouvons faire la grasse matinée."
+msgstr ""
+"Le paramètre weekday est vrai si nous sommes un jour de semaine, et le "
+"paramètre vacation est vrai si nous sommes en vacances. Nous pouvons dormir "
+"ce matin s'il ne s'agit pas d'un jour de semaine ou si nous sommes en "
+"vacances. Retournez vrai si nous pouvons faire la grasse matinée."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool1/SumDouble.html:1
@@ -7567,7 +7628,9 @@ msgstr "Somme doublée"
 msgid ""
 "Given two int values, return their sum. Unless the two values are the same, "
 "then return double their sum."
-msgstr "Étant donné deux entiers, retournez leur somme. Sauf si les valeurs sont égales, auquel cas vous devez retourner le double de leur somme."
+msgstr ""
+"Étant donné deux entiers, retournez leur somme. Sauf si les valeurs sont "
+"égales, auquel cas vous devez retourner le double de leur somme."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/AlarmClock.html:1
@@ -7583,7 +7646,15 @@ msgid ""
 "be \"7:00\" and on the weekend it should be \"10:00\". Unless we are on "
 "vacation -- then on weekdays it should be \"10:00\" and weekends it should "
 "be \"off\"."
-msgstr "Étant donné le jour de la semaine, codé de la façon suivante : 0=Dimanche, 1=Lundi, 2=Mardi, ... 6=Samedi, et un booléen vacation indiquant si nous sommes en vacances, retournez une chaine de caractères de la forme \"7:00\" indiquant à quelle heure nous devons régler le radio-réveil. Les jours de la semaine, nous devons nous réveiller à 7h tandis que nous pouvons dormir jusqu'à 10h le week-end. Pendant les vacances, il nous faut nous lever à 10h la semaine tandis que le réglage pour le radio-réveil doit être \"off\" le week-end."
+msgstr ""
+"Étant donné le jour de la semaine, codé de la façon suivante : 0=Dimanche, "
+"1=Lundi, 2=Mardi, ... 6=Samedi, et un booléen vacation indiquant si nous "
+"sommes en vacances, retournez une chaine de caractères de la forme \"7:00\" "
+"indiquant à quelle heure nous devons régler le radio-réveil. Les jours de la "
+"semaine, nous devons nous réveiller à 7h tandis que nous pouvons dormir "
+"jusqu'à 10h le week-end. Pendant les vacances, il nous faut nous lever à 10h "
+"la semaine tandis que le réglage pour le radio-réveil doit être \"off\" le "
+"week-end."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/AnswerCell.html:1
@@ -7736,16 +7807,12 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/Main.html:1
-msgid "Logic 1"
-msgstr ""
+#, fuzzy
+msgid "Boolean (even more) fun"
+msgstr "Jeux booléens"
 
 #. type: Content of: <p>
 #: src/lessons/bat/bool2/Main.html:3
-msgid "Booleans are ..."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool2/Main.html:5
 msgid ""
 "A very good introduction to this type is available here: http://javabat.com/"
 "doc/ifboolean.html."
@@ -7860,7 +7927,10 @@ msgid ""
 "Given 2 ints, a and b, return their sum. However, \"teen\" values in the "
 "range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
 "return 19."
-msgstr "Étant donné deux nombres entiers (a et b), retournez leur somme. Cependant, les valeurs ados (dans l'intervale [13;19]) sont particulièrement chanceuse. Donc, si l'un des nombres est ado, retournez simplement 19."
+msgstr ""
+"Étant donné deux nombres entiers (a et b), retournez leur somme. Cependant, "
+"les valeurs ados (dans l'intervale [13;19]) sont particulièrement chanceuse. "
+"Donc, si l'un des nombres est ado, retournez simplement 19."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/TwoAsOne.html:1
