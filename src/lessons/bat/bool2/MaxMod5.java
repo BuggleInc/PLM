@@ -36,6 +36,18 @@ public class MaxMod5 extends BatExercise {
   /* BEGIN TEMPLATE */
 int maxMod5(int a, int b) {
   /* BEGIN SOLUTION */
+	   if (a == b)
+		      return 0;
+		   else if (a > b)
+		           if (a % 5 == b % 5)
+		              return b;
+		           else 
+		              return a;
+		        else 
+		           if (a % 5 == b % 5)
+		              return a;
+		           else 
+		              return b;  
   /* END SOLUTION */
 }
   /* END TEMPLATE */

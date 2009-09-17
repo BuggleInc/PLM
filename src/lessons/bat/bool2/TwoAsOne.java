@@ -37,6 +37,7 @@ public class TwoAsOne extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean twoAsOne(int a, int b, int c) {
   /* BEGIN SOLUTION */
+  return (a + b == c) || (a + c == b) || (b + c == a);
   /* END SOLUTION */
 }
   /* END TEMPLATE */

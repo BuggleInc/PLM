@@ -38,6 +38,10 @@ public class LastDigit extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean lastDigit(int a, int b, int c) {
   /* BEGIN SOLUTION */
+	  int da = a % 10;
+	  int db = b % 10;
+	  int dc = c % 10;
+	  return da == db || da == dc || dc == db;
   /* END SOLUTION */
 }
   /* END TEMPLATE */

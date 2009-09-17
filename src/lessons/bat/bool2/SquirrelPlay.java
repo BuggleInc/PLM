@@ -38,6 +38,7 @@ public class SquirrelPlay extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean squirrelPlay(int temp, boolean isSummer) {
   /* BEGIN SOLUTION */
+  return (temp >= 60 && ((isSummer && temp <= 100) || temp <= 90));
   /* END SOLUTION */
 }
   /* END TEMPLATE */

@@ -41,6 +41,10 @@ public class TeenSum extends BatExercise {
   /* BEGIN TEMPLATE */
 int teenSum(int a, int b) {
   /* BEGIN SOLUTION */
+	  if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19))
+		     return 19;
+		  else
+		     return a+b;
   /* END SOLUTION */
 }
   /* END TEMPLATE */

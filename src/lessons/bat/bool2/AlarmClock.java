@@ -34,6 +34,17 @@ public class AlarmClock extends BatExercise {
   /* BEGIN TEMPLATE */
 String alarmClock(int day, boolean vacation) {
   /* BEGIN SOLUTION */
+	  if (! vacation) {  
+		     if (day >= 1 && day <= 5)
+		        return "7:00";
+		     else
+		        return "10:00";
+		  } else {
+		     if (day >= 1 && day <= 5)
+		        return "10:00";
+		     else
+		        return "off";  
+		  }
   /* END SOLUTION */
 }
   /* END TEMPLATE */
