@@ -169,11 +169,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				null, this));
 		menu.add(importSessionMenuItem);
 
+
+		/* === Language menu === */
+		menu = new JMenu("Language");
+		menuBar.add(menu);
 		JMenuItem setLanguageToFrench = new JMenuItem(new SetLanguage(Game.getInstance(), "Français", null, this,"fr"));
 		menu.add(setLanguageToFrench);
 		JMenuItem setLanguageToEnglish = new JMenuItem(new SetLanguage(Game.getInstance(), "English", null, this,"en"));
 		menu.add(setLanguageToEnglish);
-
+		
+		/* === Help menu === */
 		menu = new JMenu("Help");
 		menuBar.add(menu);
 
