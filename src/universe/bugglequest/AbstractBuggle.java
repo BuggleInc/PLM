@@ -115,7 +115,8 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void setBrushColor(Color c) {
-		brushColor = c;
+		if (c != null)
+			brushColor = c;
 	}
 
 	public Color getColor() {
@@ -123,8 +124,10 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void setColor(Color c) {
-		this.color = c;
-		world.notifyWorldUpdatesListeners();
+		if (c != null) {
+			this.color = c;
+			world.notifyWorldUpdatesListeners();
+		}
 	}
 
 	public Direction getDirection() {
@@ -132,9 +135,10 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void setDirection(Direction direction) {
-		assert (world != null);
-		this.direction = direction;
-		stepUI();
+		if (direction != null) {
+			this.direction = direction;
+			stepUI();
+		}
 	}
 
 	public void turnLeft() {
@@ -243,6 +247,9 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	private void move(Point delta) throws BuggleWallException {
+		if (delta == null)
+			return;
+		
 		int newx = (x + delta.x) % getWorldWidth();
 		if (newx < 0)
 			newx += getWorldWidth();
