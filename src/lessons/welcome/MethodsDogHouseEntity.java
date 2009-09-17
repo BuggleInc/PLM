@@ -6,7 +6,7 @@ public class MethodsDogHouseEntity extends universe.bugglequest.SimpleBuggle {
 	
 	@Override
 	public void turnRight() {
-		throw new RuntimeException("Pas le droit d'utiliser turnRight dans cet exercice.");
+		throw new RuntimeException("turnRight() forbidden in this exercise.");
 	}
 	
 	@Override
@@ -14,8 +14,8 @@ public class MethodsDogHouseEntity extends universe.bugglequest.SimpleBuggle {
 		for (StackTraceElement s : Thread.currentThread().getStackTrace()) {
 			if (s.getMethodName().contains("turnLeft")) {
 				if (line != -1 && line != s.getLineNumber()) {
-					System.out.println("Pas le droit d'utiliser plusieurs fois turnLeft() dans cet exercice.");
-					throw new RuntimeException("Pas le droit d'utiliser plusieurs fois turnLeft() dans cet exercice.");
+					System.out.println("Forbiden to use turnLeft() more than once in this exercise.");
+					throw new RuntimeException("Forbiden to use turnLeft() more than once in this exercise.");
 				} else {
 					line = s.getLineNumber();
 					super.turnLeft();

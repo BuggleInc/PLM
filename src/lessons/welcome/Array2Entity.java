@@ -6,17 +6,17 @@ public class Array2Entity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
-			throw new RuntimeException("Pas le droit d'utiliser setX(int) dans cet exercice");
+			throw new RuntimeException("setX(int) forbidden in this exercise");
 	}
 	@Override
 	public void setY(int i)  { 
 		if (isInited())
-			throw new RuntimeException("Pas le droit d'utiliser setY(int) dans cet exercice");
+			throw new RuntimeException("setY(int) forbidden in this exercise");
 	}
 	@Override
 	public void setPos(int i,int j)  { 
 		if (isInited())
-			throw new RuntimeException("Pas le droit d'utiliser setPos(int,int) dans cet exercice");
+			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
 	}
 
 	/* BEGIN SOLUTION */

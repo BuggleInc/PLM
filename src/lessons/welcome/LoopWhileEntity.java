@@ -3,12 +3,12 @@ package lessons.welcome;
 public class LoopWhileEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException("Pas le droit d'utiliser forward(int) dans cet exercice");
+		throw new RuntimeException("forward(int) forbidden in this exercise");
 	}
 
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException("Pas le droit d'utiliser backward(int) dans cet exercice");
+		throw new RuntimeException("backward(int) forbidden in this exercise");
 	}
 
 	@Override
