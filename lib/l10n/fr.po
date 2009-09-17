@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2009-09-17 08:55+0300\n"
-"PO-Revision-Date: 2009-09-17 09:32+0200\n"
+"PO-Revision-Date: 2009-09-17 09:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -7572,7 +7572,7 @@ msgstr "Étant donné deux entiers, retournez leur somme. Sauf si les valeurs so
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/AlarmClock.html:1
 msgid "AlarmClock"
-msgstr ""
+msgstr "Radio réveil"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/bool2/AlarmClock.html:2
@@ -7583,7 +7583,7 @@ msgid ""
 "be \"7:00\" and on the weekend it should be \"10:00\". Unless we are on "
 "vacation -- then on weekdays it should be \"10:00\" and weekends it should "
 "be \"off\"."
-msgstr ""
+msgstr "Étant donné le jour de la semaine, codé de la façon suivante : 0=Dimanche, 1=Lundi, 2=Mardi, ... 6=Samedi, et un booléen vacation indiquant si nous sommes en vacances, retournez une chaine de caractères de la forme \"7:00\" indiquant à quelle heure nous devons régler le radio-réveil. Les jours de la semaine, nous devons nous réveiller à 7h tandis que nous pouvons dormir jusqu'à 10h le week-end. Pendant les vacances, il nous faut nous lever à 10h la semaine tandis que le réglage pour le radio-réveil doit être \"off\" le week-end."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/AnswerCell.html:1
