@@ -68,6 +68,8 @@ public abstract class Entity {
 	protected void stepUI() {		
 		// only a trial to see moving steps
 		if (world.isDelayed()) {
+			fireStackListener();
+			world.notifyWorldUpdatesListeners();
 			if (Game.getInstance().stepModeEnabled()) {
 				this.oneStepSemaphore.acquireUninterruptibly();
 			} else {	
@@ -77,8 +79,6 @@ public abstract class Entity {
 					e.printStackTrace();
 				}
 			}
-			fireStackListener();
-			world.notifyWorldUpdatesListeners();
 		}		
 	}
 	
