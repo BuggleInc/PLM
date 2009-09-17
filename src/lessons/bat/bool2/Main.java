@@ -1,4 +1,4 @@
-package lessons.bat.logic1;
+package lessons.bat.bool2;
 
 import jlm.lesson.Lesson;
 

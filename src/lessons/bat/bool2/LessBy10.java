@@ -1,6 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
-package lessons.bat.logic1;
+package lessons.bat.bool2;
 import jlm.lesson.Lesson;
 import jlm.universe.World;
 import universe.bat.BatExercise;
