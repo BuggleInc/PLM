@@ -37,6 +37,12 @@ public class GreenTicket extends BatExercise {
   /* BEGIN TEMPLATE */
 int greenTicket(int a, int b, int c) {
   /* BEGIN SOLUTION */
+  if (a == b && b == c)
+     return 20;
+  else if (a == b || b == c || a == c)
+     return 10;
+  else  // (a != b && b != a && c != a)
+     return 0;
   /* END SOLUTION */
 }
   /* END TEMPLATE */

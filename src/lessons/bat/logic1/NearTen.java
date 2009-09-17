@@ -39,6 +39,7 @@ public class NearTen extends BatExercise {
   /* BEGIN TEMPLATE */
 boolean nearTen(int num) {
   /* BEGIN SOLUTION */
+  return (num % 10) <= 2 || (num % 10) >= 8; 
   /* END SOLUTION */
 }
   /* END TEMPLATE */

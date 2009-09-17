@@ -37,6 +37,13 @@ public class WithoutDoubles extends BatExercise {
   /* BEGIN TEMPLATE */
 int withoutDoubles(int die1, int die2, boolean noDoubles) {
   /* BEGIN SOLUTION */
+  if (noDoubles && (die1 == die2)) {
+     if (die1 == 6)
+        return 1 + die2;
+     else 
+        return die1 + 1 + die2;
+   } else 
+		return die1 + die2;
   /* END SOLUTION */
 }
   /* END TEMPLATE */

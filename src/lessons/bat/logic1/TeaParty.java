@@ -38,6 +38,12 @@ public class TeaParty extends BatExercise {
   /* BEGIN TEMPLATE */
 int teaParty(int tea, int candy) {
   /* BEGIN SOLUTION */
+  if (tea < 5 || candy < 5)
+     return 0;
+  else if (tea >= 2*candy || candy >= 2*tea) 
+     return 2;
+  else // (tea >= 5 && candy >= 5)
+     return 1;
   /* END SOLUTION */
 }
   /* END TEMPLATE */
