@@ -5,6 +5,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
@@ -70,6 +72,14 @@ public class BuggleWorld extends GridWorld {
 	@Override
 	public void readFromFile(BufferedReader reader) throws IOException {
 		String line = reader.readLine();
+		/* Kill the '; name' part */
+		if (!line.contains("; name"))
+			throw new RuntimeException("Parse error: expected the world name field, got '"+line+"'");
+		Pattern p = Pattern.compile(";.*$");
+		Matcher m = p.matcher(line);
+		m.replaceAll("");
+		
+		line = reader.readLine();
 		int width = 0;
 		if (line != null)
 			width = Integer.parseInt(strip(line));
@@ -129,11 +139,9 @@ public class BuggleWorld extends GridWorld {
 	@Override
 	public void writeToFile(BufferedWriter writer) throws IOException {
 
-		writer.write(getName() + "; name");
-		writer.write(getWidth() + "; width");
-		writer.write("\n");
-		writer.write(getHeight() + "; height");
-		writer.write("\n");
+		writer.write(getName() + "; name\n");
+		writer.write(getWidth() + "; width\n");
+		writer.write(getHeight() + "; height\n");
 
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
