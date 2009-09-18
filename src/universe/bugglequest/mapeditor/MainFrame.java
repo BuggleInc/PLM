@@ -27,7 +27,8 @@ public class MainFrame extends JFrame {
 
 	private Editor editor;
 	private ButtonGroup tools;
-
+	private File path;	
+	
 	public MainFrame(Editor editor) {
 		super("BuggleQuest - MapEditor");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -155,6 +156,7 @@ public class MainFrame extends JFrame {
 				w = Integer.parseInt(wString);
 				h = Integer.parseInt(hString);
 				editor.createNewMap(w, h);
+				MainFrame.this.path = null;
 			}
 		}
 
@@ -169,7 +171,11 @@ public class MainFrame extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			JFileChooser fc = new JFileChooser();
+			JFileChooser fc;
+			if (MainFrame.this.path != null)
+				fc = new JFileChooser(MainFrame.this.path);
+			else
+				fc = new JFileChooser();
 			int status = fc.showSaveDialog(MainFrame.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {
@@ -192,8 +198,8 @@ public class MainFrame extends JFrame {
 			int status = fc.showOpenDialog(MainFrame.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {
-				File file = fc.getSelectedFile();
-				editor.loadMap(file);
+				MainFrame.this.path = fc.getSelectedFile();
+				editor.loadMap(MainFrame.this.path);
 			}
 		}
 
