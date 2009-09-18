@@ -7359,7 +7359,7 @@ msgid ""
 "This exercise was converted to JLM from the excellent exercising site http://"
 "javabat.com/"
 msgstr ""
-"Cet exercice a été extrait de l'excellent site d'exercices http://javabot."
+"Cet exercice a été extrait de l'excellent site d'exercices http://javabat."
 "com/ pour JLM."
 
 #. type: Content of: <h1>
