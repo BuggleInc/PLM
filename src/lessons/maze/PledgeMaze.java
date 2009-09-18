@@ -15,20 +15,23 @@ public class PledgeMaze extends ExerciseTemplated {
 
 	public PledgeMaze(Lesson lesson) {
 		super(lesson);
-		tabName = "PledgeMaze";
+		tabName = "IslandMaze";
 				
 		/* Create initial situation */
-		BuggleWorld myWorld = new BuggleWorld("Labyrinth",1,1);
+		BuggleWorld myWorlds[] = new BuggleWorld[1];
+		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
+		loadMap(myWorlds[0],"lessons/maze/PledgeMaze");
 
-		new Buggle(myWorld, "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
-		setup(myWorld);
+		new Buggle(myWorlds[0], "Thésée", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
+		setup(myWorlds);
 	}
 
 	// to shorten loading time	
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
-		b.setPos(11, 5);
+		b.setPos(19, 19);
+		b.setDirection(Direction.EAST);
 		try {
 			b.pickUpBaggle();
 		} catch (NoBaggleUnderBuggleException e) {

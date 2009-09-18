@@ -18,9 +18,11 @@ public class RandomMouseMaze extends ExerciseTemplated {
 		tabName = "RandomMouseMaze";
 				
 		/* Create initial situation */
-		BuggleWorld myWorld = new BuggleWorld("Labyrinth",4,4);
-		new Buggle(myWorld, "Thésée", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
-		setup(myWorld);
+		BuggleWorld myWorlds[] = new BuggleWorld[1];
+		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
+		loadMap(myWorlds[0],"lessons/maze/RandomMouseMaze");
+		new Buggle(myWorlds[0], "Thésée", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
+		setup(myWorlds);
 	}
 
 	// Skip random solver since it might take too much time to find solution.

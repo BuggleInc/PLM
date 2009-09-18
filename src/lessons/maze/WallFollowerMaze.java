@@ -18,9 +18,11 @@ public class WallFollowerMaze extends ExerciseTemplated {
 		tabName = "WallFollowerMaze";
 				
 		/* Create initial situation */
-		BuggleWorld myWorld = new BuggleWorld("Labyrinth",1,12);
-		new Buggle(myWorld, "Thésée", 1, 11, Direction.NORTH, Color.black, Color.lightGray);
-		setup(myWorld);
+		BuggleWorld myWorlds[] = new BuggleWorld[1];
+		myWorlds[0] = new BuggleWorld("Labyrith", 1, 1); 
+		loadMap(myWorlds[0],"lessons/maze/WallFollowerMaze");
+		new Buggle(myWorlds[0], "Thésée", 6, 10, Direction.NORTH, Color.black, Color.lightGray);
+		setup(myWorlds);
 	}
 
 	

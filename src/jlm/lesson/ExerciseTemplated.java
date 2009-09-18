@@ -81,6 +81,16 @@ public abstract class ExerciseTemplated extends Exercise {
 		mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+str+"</body>\n</html>\n";
 	}
 
+	protected void loadMap(World w,String path) {
+		BufferedReader br = Reader.fileReader( path,"map",false);
+		if (br==null)
+			throw new RuntimeException("Unable to load "+path+".map");
+		try {
+			w.readFromFile(br);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}		
+	}
 	protected void loadMap(World intoWorld) {
 		BufferedReader br = Reader.fileReader( getClass().getCanonicalName(),"map",false);
 		if (br==null)
@@ -280,7 +290,6 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	protected final void setup(World w) {
-		loadMap(w);
 		World[] ws = new World[1];
 		ws[0] = w;
 		setup(ws);
