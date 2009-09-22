@@ -67,9 +67,9 @@ public abstract class Entity {
 	
 	protected void stepUI() {		
 		// only a trial to see moving steps
+		fireStackListener();
+		world.notifyWorldUpdatesListeners();
 		if (world.isDelayed()) {
-			fireStackListener();
-			world.notifyWorldUpdatesListeners();
 			if (Game.getInstance().stepModeEnabled()) {
 				this.oneStepSemaphore.acquireUninterruptibly();
 			} else {	
