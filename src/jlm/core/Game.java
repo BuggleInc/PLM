@@ -222,10 +222,9 @@ public class Game implements IWorldView {
 	}
 	
 	public void allowOneStep() {
-		World w = getSelectedWorld();			
-		for (Iterator<Entity> it = w.entities(); it.hasNext() ; ) {
-			it.next().allowOneStep();
-		}
+		for (World w: getCurrentLesson().getCurrentExercise().getCurrentWorld())
+			for (Entity e : w.getEntities()) 
+				e.allowOneStep();
 	}
 
 	public void reset() {
