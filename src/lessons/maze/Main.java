@@ -11,6 +11,8 @@ public class Main extends Lesson {
 	protected void loadExercises() {
 		addExercise(new RandomMouseMaze(this));
 		addExercise(new WallFollowerMaze(this));
+		addExercise(new WallFindFollowMaze(this));
+		addExercise(new IslandMaze(this));
 		addExercise(new PledgeMaze(this));
 		exercisesLoaded = true;
 	}

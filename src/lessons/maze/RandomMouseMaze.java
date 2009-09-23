@@ -2,9 +2,12 @@ package lessons.maze;
 
 import java.awt.Color;
 
+import jlm.core.Game;
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
 import jlm.universe.Direction;
+import jlm.universe.Entity;
+import jlm.universe.World;
 import universe.bugglequest.AbstractBuggle;
 import universe.bugglequest.Buggle;
 import universe.bugglequest.BuggleWorld;
@@ -41,4 +44,13 @@ public class RandomMouseMaze extends ExerciseTemplated {
 		}	
 	}
 	
+	@Override
+	public boolean check() {
+		for (World w: Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld())
+			for (Entity e:w.getEntities()) {
+				if (!((AbstractBuggle) e).isCarryingBaggle())
+					return false;
+			}
+		return true;
+	}
 }

@@ -14,17 +14,21 @@ import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-public class WallFollowerMaze extends ExerciseTemplated {
+public class WallFindFollowMaze extends ExerciseTemplated {
 
-	public WallFollowerMaze(Lesson lesson) {
+	public WallFindFollowMaze(Lesson lesson) {
 		super(lesson);
 		tabName = "Escaper";
-				
+		entityName = "lessons.maze.WallFollowerMazeEntity";	
+		
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[1];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
 		loadMap(myWorlds[0],"lessons/maze/WallFollowerMaze");
-		new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
+		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
+		
+		newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
+		
 		setup(myWorlds);
 	}
 

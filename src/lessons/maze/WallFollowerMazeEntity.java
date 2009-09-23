@@ -1,28 +1,34 @@
 package lessons.maze;
 
+import jlm.universe.Direction;
+
+@SuppressWarnings("unused")
 public class WallFollowerMazeEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
-		if (isInited())
+		if (isInited()) 
 			throw new RuntimeException("setX(int) forbidden in this exercise");
+		super.setX(i);
 	}
 	@Override
 	public void setY(int i)  { 
 		if (isInited())
 			throw new RuntimeException("setY(int) forbidden in this exercise");
+		super.setY(i);
 	}
 	@Override
 	public void setPos(int i,int j)  { 
 		if (isInited())
 			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
+		super.setPos(i, j);
 	}
-/* Solution by Martin
-	// Stop moving if stepping over a baggle 
+/*	// Stop moving if stepping over a baggle; commented because overriding forward is beyond the object know how of the students at this point 
 	public void forward() {
 	    if (!isOverBaggle()) 
 	      super.forward();
 	}
-
+*/
+	/* BEGIN SOLUTION */
 	public void stepHandOnWall() {
 	    // PRE: we have a wall on the left
 	    // POST: we still have the same wall on the left, are one step ahead
@@ -46,9 +52,9 @@ public class WallFollowerMazeEntity extends universe.bugglequest.SimpleBuggle {
 	      
 	    pickUpBaggle();
 	}
-*/
-	/* BEGIN SOLUTION */
-	public void run() {
+	/* END SOLUTION */
+}
+/*	public void run() {
 		putHandOnSideWall();
 		while (!isOverBaggle()) {
 			keepHandOnSideWall();
@@ -123,7 +129,4 @@ public class WallFollowerMazeEntity extends universe.bugglequest.SimpleBuggle {
 			}
 		}
 	}
-
-	/* END TEMPLATE */
-
-}
+*/

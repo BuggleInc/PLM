@@ -1,3 +1,4 @@
+Small maze; name
 4; width
 4; height
 [(255,255,255),false,true,true] ; cell

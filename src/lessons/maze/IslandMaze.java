@@ -14,22 +14,24 @@ import universe.bugglequest.BuggleWorld;
 import universe.bugglequest.exception.AlreadyHaveBaggleException;
 import universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-public class WallFollowerMaze extends ExerciseTemplated {
+public class IslandMaze extends ExerciseTemplated {
 
-	public WallFollowerMaze(Lesson lesson) {
+	public IslandMaze(Lesson lesson) {
 		super(lesson);
 		tabName = "Escaper";
 				
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[1];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
-		loadMap(myWorlds[0],"lessons/maze/WallFollowerMaze");
-		new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
-		setup(myWorlds);
+		loadMap(myWorlds[0],"lessons/maze/IslandMaze");
+		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
+		
+		newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
+
+		setup(myWorlds);		
 	}
 
-	
-	// to shorten loading time
+	// to shorten loading time	
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();

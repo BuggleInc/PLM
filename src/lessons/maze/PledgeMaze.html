@@ -1,34 +1,31 @@
-<h2>Lost between islands</h2>
+<h2>Pledge algorithm</h2>
 
-<p>Yet another maze, but why is the fate so mean against your poor buggle?
+<p>Once again, you thought that your algorithm were good enough to
+escape the maze, and once again, you buggle is now in a maze where
+your previous algorithm fails. Just give it a try: hit the "Run"
+button and see your creation fail. The trap is shaped like an upper
+case "G". The buggle enters the trap and follows the inner border. At
+some point, it finds the north direction free, run into that
+direction, and falls again in the trap.
 </p>
 
-<p>Any mazes such as the one we saw so far can be solved using previous method
-(which is called <i>wall folower algorithm</i>) if the entry and the exit
-are placed near to external walls. But if the buggle begins in the middle of
-the maze, it may exist wall sections disconnected from the external wall.
-
-<p>That is why the previous strategy would let the buggle round around for
-even. Indeed, this maze contains islands, and the buggle does not start
-along one of the external walls.
-</p>
-
-<p>The pledge algorithm (named after Jon Pledge of Exeter) can solve this maze.</p>
+<p>The pledge algorithm (named after Jon Pledge of Exeter) can solve
+this maze.</p> 
 
 <p>This algorithm is a modification of the previous one thought to avoid
 obstacles. It randomly picks a heading and let the buggle move in that
-direction. When it encounters an obstacle, a paw (for example the right one)
+direction. When it encounters an obstacle, a paw (for example the left one)
 is kept on the wall following the obstacle while counting the turns. When
 the buggle is back to its original heading and when the sum of the turns is
 0, the buggle leaves the obstacle and continues keeping its original
 heading. </p>
 
 <p>Note that the use of "total turning" rather than just the "current
-direction" allows the algorithm to avoid traps shaped like an upper case
-"G". If one proceeds left into the trap, one gets turned around a full 360
-degrees by the walls. A naive "current direction" algorithm gets into a
-limit cycle as it leaves the lower rightmost wall heading left and runs into
-the curved section on the left again.</p>
+direction" allows the algorithm to avoid G-shapped traps. If one
+proceeds left into the trap, one gets turned around a full 360 
+degrees by the walls. As we said before, the naive "current direction"
+algorithm gets into a limit cycle as it leaves the lower rightmost
+wall heading left and runs into the curved section on the left again.</p>
 
 <p>The Pledge algorithm does not leave the rightmost wall due to the total
 turning not being zero at that point. It follows the wall all the way
@@ -37,36 +34,33 @@ around, finally leaving it heading left on the bottom outside</p>
 
 <h3>Exercise goal</h3>
 
-<p><a name="Objective"/>In this exercise, you have to implement the Pledge
+<p><a name="Objective"/>You now have to modify your solution to implement the Pledge
 algorithm to escape this maze.</p>
 
-<p>Reuse the <code>void keepHandOnSideWall()</code> method of previous
-exercise. Change this method to count the amount of turns done by the buggle
-(+1 when it turns left, and -1 when it turns right). This counting may
-require the addition of an <code>angleSum</code> integer value in your
-program.</p>
+<p>Change your <code>void keepHandOnSideWall()</code> method to count
+the amount of turns done by the buggle (+1 when it turns left, and -1
+when it turns right). This counting may require the addition of an
+<code>angleSum</code> integer value in your program.</p>
 
 <p>Write a <code>boolean isChosenDirectionFree()</code> method indicating if
-the arbitrary direction you picked up is free (ie, if you can move in that
-direction). For that, you need to use a variable of type
-<code>Direction</code> to store the direction you choose (for example
-<code>Direction.NORTH</code>). You can retrieve the current direction of the
+the arbitrary direction you picked up is free, ie, if you can move in
+that direction. (Note that the demo uses the NORTH direction for
+that).  You can retrieve the current direction of the
 buggle using the <code>Direction getDirection()</code> method. You can
 change your direction (without moving) using <code>void
 setDirection(Direction d)</code>. Don't forget to store the previous
-direction of your buggle (in a variable) before checking if your favorite
+direction of your buggle (in a variable of type Direction) before checking if your favorite
 direction is free in order to restore your state afterward.</p>
 
-<p>Then write the <code>void run()</code> method. It should set the buggle's
-favorite direction using the afformentioned variable. Then, it should move
-your buggle in that direction. Then, you should write the algorithm main
+<p>You may have to change the rest of your code also, but these
+changes should remain limited.</p>
+
+<div class="hint">
+The <code>void run()</code> method should move in your favorite
+direction (NORTH is advised). Then, you should write the algorithm main
 loop. In other words, while your buggle did not find its biscuit, you have
 to move forward until next obstacle in the favorite direction. Then, put a
 paw on a wall (using (<code>void keepHandOnSideWall()</code>) while the sum
 of turns is not null and the favorite direction is not free. Do that until
-you find your baggle.</p>
+you find your baggle.</div>
 	
-<p>Don't forget to let the buggle pick the baggle at the end of your code.</p>
-	
-	
-<p>You're up.</p>

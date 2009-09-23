@@ -2,36 +2,21 @@ package lessons.maze;
 
 import jlm.universe.Direction;
 
-public class PledgeMazeEntity extends universe.bugglequest.SimpleBuggle {
-	@Override
-	public int getX() {
-		if (isInited())
-			throw new RuntimeException("getX() forbidden in this exercise");
-		return super.getX();
-	}
-	@Override
-	public int getY() {
-		if (isInited())
-			throw new RuntimeException("getY() forbidden in this exercise");
-		return super.getY();
-	}
+public class IslandMazeEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
 			throw new RuntimeException("setX(int) forbidden in this exercise");
-		super.setX(i);
 	}
 	@Override
 	public void setY(int i)  { 
 		if (isInited())
 			throw new RuntimeException("setY(int) forbidden in this exercise");
-		super.setY(i);
 	}
 	@Override
 	public void setPos(int i,int j)  { 
 		if (isInited())
 			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
-		super.setPos(i,j);
 	}
 
 	/* BEGIN SOLUTION */
