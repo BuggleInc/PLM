@@ -4,18 +4,6 @@ import jlm.universe.Direction;
 
 public class PledgeMazeEntity extends universe.bugglequest.SimpleBuggle {
 	@Override
-	public int getX() {
-		if (isInited())
-			throw new RuntimeException("getX() forbidden in this exercise");
-		return super.getX();
-	}
-	@Override
-	public int getY() {
-		if (isInited())
-			throw new RuntimeException("getY() forbidden in this exercise");
-		return super.getY();
-	}
-	@Override
 	public void setX(int i)  {
 		if (isInited())
 			throw new RuntimeException("setX(int) forbidden in this exercise");
