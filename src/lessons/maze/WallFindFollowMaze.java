@@ -50,10 +50,9 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 	@Override
 	public boolean check() {
 		for (World w: Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld())
-			for (Entity e:w.getEntities()) {
+			for (Entity e:w.getEntities()) 
 				if (!((AbstractBuggle) e).isCarryingBaggle())
 					return false;
-			}
 		return true;
 	}
 }
