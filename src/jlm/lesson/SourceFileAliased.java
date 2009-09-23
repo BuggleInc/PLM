@@ -1,8 +1,12 @@
 package jlm.lesson;
 
 import java.util.Map;
-
 import jlm.core.Game;
+
+/* This class uses lazy initialization because we cannot retrieve and traverse the list 
+ * of lessons while initializing the exercise because that would let the Game.getInstance()
+ * mecanism loop.
+ */
 
 public class SourceFileAliased extends SourceFile {
 
@@ -12,13 +16,13 @@ public class SourceFileAliased extends SourceFile {
 	private String file;
 
 	public SourceFileAliased(String lesson, String exercise, String file) {
-		super("ignored", "", null, null);
+		super(file, "", null, null);
 		this.lesson = lesson;
 		this.exercise = exercise;
 		this.file = file;
 	}
 
-	private void searchAliased() {
+	private void searchAliased() { /* Check the headers to see why we lazy initialize this way */
 		for (Lesson l : Game.getInstance().getLessons()) {
 			if (l.getClass().getName().equals(lesson)) {
 				for (int eCount=0; eCount<l.getExerciseCount();eCount++) {
