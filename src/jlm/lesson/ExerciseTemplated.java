@@ -70,10 +70,10 @@ public abstract class ExerciseTemplated extends Exercise {
 		name = m.group(1);
 
 		/* extract the hint, if any */
-		Pattern p2 =  Pattern.compile("<div class=\"hint\">(.*?)</div>",Pattern.MULTILINE);
+		Pattern p2 =  Pattern.compile("<div class=\"hint\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
 		Matcher m2 = p2.matcher(str);
 		if (m2.find()) {
-			hint=m2.group(1);
+			hint="<html>\n"+HTMLMissionHeader+"<body>\n"+m2.group(1)+"</body>\n</html>\n";
 			str=m2.replaceAll("");
 		}
 		
@@ -116,6 +116,11 @@ public abstract class ExerciseTemplated extends Exercise {
 			System.err.println("Source file "+filename+" not found.");
 			return;
 		}
+		/* Remove line comments since at some point, we put everything on one line only, 
+		 * so this would comment the end of the template and break everything */
+		Pattern lineCommentPattern = Pattern.compile("//.*$");
+		Matcher lineCommentMatcher = lineCommentPattern.matcher(sb.toString());
+		String content = lineCommentMatcher.replaceAll("");
 
 		/* Extract the template, the initial content and the solution out of the file */
 		int state = 0;
@@ -127,7 +132,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		StringBuffer tail = new StringBuffer(); /* after the template (state 4) */
 		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
 
-		for (String line : sb.toString().split("\n")) {
+		for (String line : content.split("\n")) {
 			//if (this.debug)
 			//	System.out.println(state+"->"+line);
 			switch (state) {
@@ -218,10 +223,6 @@ public abstract class ExerciseTemplated extends Exercise {
 		String skelContent = skel.toString().replaceAll("\n", " ");
 		
 		String template = (head+"$body"+tail);
-		/* remove "//.*\n" before putting everything on one line only */
-		Pattern lineCommentPattern = Pattern.compile("//.*?$");
-		Matcher lineCommentMatcher = lineCommentPattern.matcher(template);
-		template = lineCommentMatcher.replaceAll(" ");
 		
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
@@ -297,7 +298,27 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void setup(World[] ws) {
 		worldDuplicate(ws);
 
-		newSourceFromFile(tabName, entityName,"java"); 
+		boolean found = false;
+		String searchedName = null;
+		for (SourceFile sf : sourceFiles) {
+			if (searchedName == null) {//lazy initialization
+				Pattern p = Pattern.compile(".*?([^.]*)$");
+				Matcher m = p.matcher(entityName);
+				if (m.matches())
+					searchedName = m.group(1);
+				p = Pattern.compile("Entity$");
+				m = p.matcher(searchedName);
+				searchedName = m.replaceAll("");
+				
+			}
+//			System.out.println("Saw "+sf.name+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
+			if (sf.name.equals(searchedName)||sf.name.equals(tabName))
+				found=true;
+		}
+		if (!found)
+			newSourceFromFile(tabName, entityName,"java");
+//		else
+//			System.out.println("Found it, no need to create a new source file");
 
 		computeAnswer();
 	}
