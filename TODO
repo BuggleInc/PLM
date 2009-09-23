@@ -1,6 +1,7 @@
 
 ***************** BUGS
-None known
+The delay slider is not aware of the exercises changes. That is why it
+fails to get the value of the newly selected exercise.
 
 ***************** BASE
 
