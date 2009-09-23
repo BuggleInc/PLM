@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-09-17 18:29+0300\n"
+"POT-Creation-Date: 2009-09-23 15:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1160,8 +1160,8 @@ msgid ""
 "formalism."
 msgstr ""
 
-#. type: Content of: <p><h3>
-#: src/lessons/welcome/Basics.html:91 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:7 src/lessons/welcome/Conditions.html:58 src/lessons/welcome/LoopWhile.html:22 src/lessons/welcome/LoopDoWhile.html:12 src/lessons/welcome/Variables.html:37 src/lessons/welcome/LoopFor.html:50 src/lessons/welcome/Methods.html:44 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:127 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:12 src/lessons/maze/PledgeMaze.html:38
+#. type: Content of: <h3>
+#: src/lessons/welcome/Basics.html:91 src/lessons/welcome/Basics3Pas.html:6 src/lessons/welcome/BasicsDrawG.html:7 src/lessons/welcome/Conditions.html:58 src/lessons/welcome/LoopWhile.html:22 src/lessons/welcome/LoopDoWhile.html:12 src/lessons/welcome/Variables.html:37 src/lessons/welcome/LoopFor.html:50 src/lessons/welcome/Methods.html:44 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:127 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35
 msgid "Exercise goal"
 msgstr ""
 
@@ -1991,8 +1991,8 @@ msgid ""
 "your method with a for loop."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/MethodsDogHouse.html:39 src/lessons/welcome/Array.html:166 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:47 src/lessons/maze/WallFollowerMaze.html:35 src/lessons/maze/PledgeMaze.html:72
+#. type: Content of: <a><p>
+#: src/lessons/welcome/MethodsDogHouse.html:39 src/lessons/welcome/Array.html:166 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:47
 msgid "You're up."
 msgstr ""
 
@@ -5148,165 +5148,197 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:6
 msgid ""
-"Hopefully, this maze is simpler that it seems at the first glance: there is "
-"not island where our buggle could loop around for ever. To get out of this "
-"kind of maze, the buggle only have to follow a wall (the one on its left or "
-"the one on its right). While keeping the paw on the wall, the buggle must "
+"Hopefully, this maze is simpler that it seems at the first glance: every "
+"wall are connected to each other. To get out of this kind of maze, the "
+"buggle only have to follow a wall (the one on its left or the one on its "
+"right, it doesn't matter).  While keeping a paw on the wall, the buggle must "
 "move forward until it finds the maze exit and this biscuit it loves so much."
 msgstr ""
 
+#. type: Content of: <p>
+#: src/lessons/maze/WallFollowerMaze.html:13
+msgid ""
+"This algorithm works here because there is no island of isolated walls, so "
+"our buggle cannot loop around for ever without encountering the baggel it "
+"looks for."
+msgstr ""
+
 #. type: Content of: outside any tag (error?)
-#: src/lessons/maze/WallFollowerMaze.html:12
+#: src/lessons/maze/WallFollowerMaze.html:17
 msgid ""
 "The goal of this exercise is to write an algorithm allowing the buggle to "
 "get out of this maze."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:15
+#: src/lessons/maze/WallFollowerMaze.html:20
 msgid ""
-"Before writing your program, pick a side (left or right). Your buggle will "
-"follow the buggles on this side."
+"As said in the introduction, it is exactly the same if you decide to follow "
+"the left wall or the right one. Simply, the demo follows the left one, so "
+"you should the same in your solution to ease the comparison of your solution "
+"and the demo."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:18
-msgid ""
-"Write a method <code>void putHandOnSideWall()</code> which moves your buggle "
-"so that it goes to the wall on the selected side. Do not forget to change "
-"the buggle heading so that it does not face the wall anymore at the method "
-"end."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:24
+#: src/lessons/maze/WallFollowerMaze.html:25
 msgid ""
 "Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
 "move one step forward while keeping the paw on the wall on the selected "
 "side. You thus have to ensure that the buggle always keep the paw on the "
-"wall, but also that it won't crash into a wall."
+"wall, but also that it won't crash into a wall. You can check the hint for "
+"more info on this, but only do so if you're stuck. Try to do it without the "
+"hint first."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:30
+#: src/lessons/maze/WallFollowerMaze.html:32
 msgid ""
-"Finaly, write a <code>run()</code> method which looks for the closer wall "
-"(using <code>void putHandOnSideWall()</code>) and then traverse the maze "
+"Then, write a <code>run()</code> method which traverse the maze step by step "
 "(using <code>void keepHandOnSideWall()</code>) until it finds the biscuit "
-"and the exit. Don't forget to pick the baggle up."
+"and the exit. Don't forget to pick the baggle up once you've found it."
+msgstr ""
+
+#. type: Content of: <div><p>
+#: src/lessons/maze/WallFollowerMaze.html:38
+msgid ""
+"When your buggle has a wall on the left, there is three situations to "
+"consider, depending on the surrounding walls. The following table depicts "
+"each initial situation, and where you should let your buggle end after one "
+"step."
+msgstr ""
+
+#. type: Content of: <div><table><tr><td>
+#: src/lessons/maze/WallFollowerMaze.html:45
+msgid "Case 1"
+msgstr ""
+
+#. type: Content of: <div><table><tr><td>
+#: src/lessons/maze/WallFollowerMaze.html:46
+msgid "Case 2"
+msgstr ""
+
+#. type: Content of: <div><table><tr><td>
+#: src/lessons/maze/WallFollowerMaze.html:47
+msgid "Case 3"
+msgstr ""
+
+#. type: Content of: <div><table><tr><td>
+#: src/lessons/maze/WallFollowerMaze.html:49
+msgid "Intial situation"
+msgstr ""
+
+#. type: Content of: <div><table><tr><td>
+#: src/lessons/maze/WallFollowerMaze.html:54
+msgid "Where is the next step"
+msgstr ""
+
+#. type: Content of: <div><p>
+#: src/lessons/maze/WallFollowerMaze.html:60
+msgid ""
+"If you do a <code>turnRight()</code> in any case at the end of your "
+"function, it's possible to write it in 3 lines with a <code>while()</code> "
+"loop."
 msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/maze/PledgeMaze.html:1
-msgid "Lost between islands"
+msgid "Pledge algorithm"
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:3
-msgid "Yet another maze, but why is the fate so mean against your poor buggle?"
+msgid ""
+"Once again, you thought that your algorithm were good enough to escape the "
+"maze, and once again, you buggle is now in a maze where your previous "
+"algorithm fails. Just give it a try: hit the \"Run\" button and see your "
+"creation fail. The trap is shaped like an upper case \"G\". The buggle "
+"enters the trap and follows the inner border. At some point, it finds the "
+"north direction free, run into that direction, and falls again in the trap."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:6
-msgid ""
-"Any mazes such as the one we saw so far can be solved using previous method "
-"(which is called <i>wall folower algorithm</i>) if the entry and the exit "
-"are placed near to external walls. But if the buggle begins in the middle of "
-"the maze, it may exist wall sections disconnected from the external wall."
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:11
-msgid ""
-"That is why the previous strategy would let the buggle round around for "
-"even. Indeed, this maze contains islands, and the buggle does not start "
-"along one of the external walls."
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:16
+#: src/lessons/maze/PledgeMaze.html:12
 msgid "The pledge algorithm (named after Jon Pledge of Exeter) can solve this maze."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:18
+#. type: Content of: <p>
+#: src/lessons/maze/PledgeMaze.html:15
 msgid ""
 "This algorithm is a modification of the previous one thought to avoid "
 "obstacles. It randomly picks a heading and let the buggle move in that "
-"direction. When it encounters an obstacle, a paw (for example the right one)  "
+"direction. When it encounters an obstacle, a paw (for example the left one)  "
 "is kept on the wall following the obstacle while counting the turns. When "
 "the buggle is back to its original heading and when the sum of the turns is "
 "0, the buggle leaves the obstacle and continues keeping its original "
 "heading."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:26
+#. type: Content of: <p>
+#: src/lessons/maze/PledgeMaze.html:23
 msgid ""
 "Note that the use of \"total turning\" rather than just the \"current "
-"direction\" allows the algorithm to avoid traps shaped like an upper case "
-"\"G\". If one proceeds left into the trap, one gets turned around a full 360 "
-"degrees by the walls. A naive \"current direction\" algorithm gets into a "
-"limit cycle as it leaves the lower rightmost wall heading left and runs into "
-"the curved section on the left again."
+"direction\" allows the algorithm to avoid G-shapped traps. If one proceeds "
+"left into the trap, one gets turned around a full 360 degrees by the "
+"walls. As we said before, the naive \"current direction\" algorithm gets "
+"into a limit cycle as it leaves the lower rightmost wall heading left and "
+"runs into the curved section on the left again."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:33
+#. type: Content of: <p>
+#: src/lessons/maze/PledgeMaze.html:30
 msgid ""
 "The Pledge algorithm does not leave the rightmost wall due to the total "
 "turning not being zero at that point. It follows the wall all the way "
 "around, finally leaving it heading left on the bottom outside"
 msgstr ""
 
-#. type: Content of: <p><p>
+#. type: Content of: <p>
+#: src/lessons/maze/PledgeMaze.html:37
+msgid ""
+"<a name=\"Objective\"/>You now have to modify your solution to implement the "
+"Pledge algorithm to escape this maze."
+msgstr ""
+
+#. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:40
 msgid ""
-"<a name=\"Objective\"/>In this exercise, you have to implement the Pledge "
-"algorithm to escape this maze."
+"Change your <code>void keepHandOnSideWall()</code> method to count the "
+"amount of turns done by the buggle (+1 when it turns left, and -1 when it "
+"turns right). This counting may require the addition of an "
+"<code>angleSum</code> integer value in your program."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:43
-msgid ""
-"Reuse the <code>void keepHandOnSideWall()</code> method of previous "
-"exercise. Change this method to count the amount of turns done by the buggle "
-"(+1 when it turns left, and -1 when it turns right). This counting may "
-"require the addition of an <code>angleSum</code> integer value in your "
-"program."
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:49
+#. type: Content of: <p>
+#: src/lessons/maze/PledgeMaze.html:45
 msgid ""
 "Write a <code>boolean isChosenDirectionFree()</code> method indicating if "
-"the arbitrary direction you picked up is free (ie, if you can move in that "
-"direction). For that, you need to use a variable of type "
-"<code>Direction</code> to store the direction you choose (for example "
-"<code>Direction.NORTH</code>). You can retrieve the current direction of the "
-"buggle using the <code>Direction getDirection()</code> method. You can "
-"change your direction (without moving) using <code>void "
-"setDirection(Direction d)</code>. Don't forget to store the previous "
-"direction of your buggle (in a variable) before checking if your favorite "
-"direction is free in order to restore your state afterward."
+"the arbitrary direction you picked up is free, ie, if you can move in that "
+"direction. (Note that the demo uses the NORTH direction for that).  You can "
+"retrieve the current direction of the buggle using the <code>Direction "
+"getDirection()</code> method. You can change your direction (without moving) "
+"using <code>void setDirection(Direction d)</code>. Don't forget to store the "
+"previous direction of your buggle (in a variable of type Direction) before "
+"checking if your favorite direction is free in order to restore your state "
+"afterward."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:60
+#. type: Content of: <p>
+#: src/lessons/maze/PledgeMaze.html:55
 msgid ""
-"Then write the <code>void run()</code> method. It should set the buggle's "
-"favorite direction using the afformentioned variable. Then, it should move "
-"your buggle in that direction. Then, you should write the algorithm main "
-"loop. In other words, while your buggle did not find its biscuit, you have "
-"to move forward until next obstacle in the favorite direction. Then, put a "
-"paw on a wall (using (<code>void keepHandOnSideWall()</code>) while the sum "
-"of turns is not null and the favorite direction is not free. Do that until "
-"you find your baggle."
+"You may have to change the rest of your code also, but these changes should "
+"remain limited."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/maze/PledgeMaze.html:69
-msgid "Don't forget to let the buggle pick the baggle at the end of your code."
+#. type: Content of: <div>
+#: src/lessons/maze/PledgeMaze.html:59
+msgid ""
+"The <code>void run()</code> method should move in your favorite direction "
+"(NORTH is advised). Then, you should write the algorithm main loop. In other "
+"words, while your buggle did not find its biscuit, you have to move forward "
+"until next obstacle in the favorite direction. Then, put a paw on a wall "
+"(using (<code>void keepHandOnSideWall()</code>) while the sum of turns is "
+"not null and the favorite direction is not free. Do that until you find your "
+"baggle."
 msgstr ""
 
 #. type: Content of: <h1>
