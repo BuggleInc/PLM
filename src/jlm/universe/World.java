@@ -120,6 +120,9 @@ public abstract class World {
 	public Entity getEntity(int i) {
 		return entities.get(i);
 	}
+	public List<Entity> getEntities() {
+		return entities;
+	}
 
 	public void runEntities(List<Thread> runnerVect) {
 		// Logger.log("World:runEntities","");
