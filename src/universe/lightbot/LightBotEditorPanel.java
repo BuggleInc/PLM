@@ -101,13 +101,8 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 	}
 
 	private class InstructionChooser extends JComboBox {
-		LightBotInstruction[] func;
-		int pos;
-
 		public InstructionChooser(final LightBotInstruction[] func, final int pos) {
 			super(iconList);
-			this.func = func;
-			this.pos = pos;
 			this.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
