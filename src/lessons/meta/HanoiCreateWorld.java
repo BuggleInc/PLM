@@ -8,6 +8,8 @@ import jlm.universe.World;
 public class HanoiCreateWorld extends MetaExercise {
 	public HanoiCreateWorld(Lesson lesson) {
 		super(lesson);
+		debug=true;
+		
 		HanoiMetaWorld[] w = new HanoiMetaWorld[3];
 		w[0]=new HanoiMetaWorld("HanoiWorld({8,7,6,5,4,3,2,1},{},{})",this,
 				new Integer[] {8,7,6,5,4,3,2,1}, new Integer[0], new Integer[0]);
@@ -32,8 +34,15 @@ public class HanoiCreateWorld extends MetaExercise {
 	public void run(List<Thread> runnerVect) {
 		for (World it:currentWorld) {
 			HanoiMetaWorld w = (HanoiMetaWorld)it;
+			/* Setup the intercepter */
 			w.setServant(compiledClasses.get(className("HanoiWorld")));
-			w.getView()[0].repaint();
+			/* leave some time to the system to actually draw the stuff */
+			try {
+				Thread.sleep(20);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			/* Access the values from the student's code, to get the intercepter check them */
 			w.values(0);
 			w.values(1);
 			w.values(2);
