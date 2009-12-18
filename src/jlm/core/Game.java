@@ -11,6 +11,8 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
 
+import javax.swing.JOptionPane;
+
 import jlm.event.GameListener;
 import jlm.event.GameStateListener;
 import jlm.event.StatusStateListener;
@@ -368,7 +370,11 @@ public class Game implements IWorldView {
 
 				}
 			} else {
-				Logger.log("Game:storeProperties", "cannot store local properties, not path provided");
+				JOptionPane.showMessageDialog(null, 
+						"No path provided in the property file (or property file not found)", 
+						"Cannot save your changes",
+						JOptionPane.ERROR_MESSAGE);
+				return;
 			}
 			// }
 			fo = new FileOutputStream(Game.localGamePropertiesLoadedFile);
