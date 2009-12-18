@@ -74,7 +74,8 @@ public abstract class Entity {
 				this.oneStepSemaphore.acquireUninterruptibly();
 			} else {	
 				try {
-					Thread.sleep(world.getDelay());
+					if (world.getDelay()>0) // seems that sleep(0) takes time (yield thread?)
+						Thread.sleep(world.getDelay());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
