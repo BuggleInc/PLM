@@ -43,7 +43,7 @@ conclusion, il n'est pas utile de les recomparer sur les parcours
 suivants. Dans un premier temps, nous ferons autant de parcours qu'il y a
 d'éléments dans le tableau. Cela nous donne le pseudo-code suivant :
 
-<pre>Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)
+<pre>Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)
        Pour tout j dans [0, i]
           Si les cases j et j+1 doivent être inverser, le faire
 </pre>
@@ -69,7 +69,7 @@ Réintroduisons maintenant la petite optimisation que nous avions retiré à
 l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau
 est maintenant trié. Cela nous donne le pseudo-code suivant :
 
-<pre>Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)
+<pre>Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)
        Pour tout j dans [0, i]
           Si les cases j et j+1 doivent être inverser, le faire
        Si le parcours sur les j n'a rien inversé, quiter la fonction

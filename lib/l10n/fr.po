@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-12-18 11:31+0100\n"
-"PO-Revision-Date: 2009-12-18 11:34+0100\n"
+"POT-Creation-Date: 2009-12-18 12:18+0100\n"
+"PO-Revision-Date: 2009-12-18 12:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -80,7 +80,8 @@ msgstr "boolean compare(int i, int j)"
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:13
 msgid "Returns true if the content of cell i is smaller than the one of cell j"
-msgstr "Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j"
+msgstr ""
+"Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j"
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:13
@@ -95,7 +96,8 @@ msgstr "boolean compareTo(int i, int val)"
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:14
 msgid "Returns true if the content of cell i is smaller than value val"
-msgstr "Retourne vrai ssi le contenu de la case i est inférieur à la valeur val"
+msgstr ""
+"Retourne vrai ssi le contenu de la case i est inférieur à la valeur val"
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:14
@@ -5516,11 +5518,11 @@ msgid ""
 "array, as if they were air bubbles moving up to the surface of a liquid. The "
 "algorithm traverse the array, and compare any pair of adjacent elements. If "
 "two adjacent elements are wrongly sorted, they are swapped. Once the array "
-"was completely traversed, the operation starts again from the begining. When "
-"no elements were sorted after a full traversal, it means that the array is "
-"completely sorted: the algorithm can stop. Bubble sort is studied because of "
-"its simplicity, but it is almost never used in practice because of its bad "
-"performance (O(n^2) on average)."
+"was completely traversed, the operation starts again from the beginning. "
+"When no elements were sorted after a full traversal, it means that the array "
+"is completely sorted: the algorithm can stop. Bubble sort is studied because "
+"of its simplicity, but it is almost never used in practice because of its "
+"bad performance (O(n^2) on average)."
 msgstr ""
 "Le tri à bulles ou tri par propagation consiste à faire remonter "
 "progressivement les plus petits éléments d'une liste, comme les bulles d'air "
@@ -5577,11 +5579,11 @@ msgstr ""
 #: src/lessons/sort/ExExchangeSort.html:44
 #, no-wrap
 msgid ""
-"For all i in [len-1,0] (traversing from biggest to smallest)\n"
+"For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
 "          If cells j and j+1 must be swapped, do it\n"
 msgstr ""
-"Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)\n"
+"Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
 
@@ -5637,12 +5639,12 @@ msgstr ""
 #: src/lessons/sort/ExExchangeSort.html:68
 #, no-wrap
 msgid ""
-"For all i in [len-1,0] (traversing from biggest to smallest)\n"
+"For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
 "          If cells j and j+1 must be swapped, do it\n"
 "       If traversal on j did not swap anything, return from the function\n"
 msgstr ""
-"Pour tout i dans [lgr-1,0] (parcours du plus grand au plus petit)\n"
+"Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
 "       Si le parcours sur les j n'a rien inversé, quiter la fonction\n"
@@ -5667,7 +5669,7 @@ msgid ""
 "To improve further the algorithm, we need to look closer its behavior. One "
 "can notice that big elements are moved very quickly in position while small "
 "ones move very slowly to their destination. They are thus traditionally "
-"refered to as \"rabits\" and \"turtles\" respectively for big fast values "
+"referred to as \"rabbits\" and \"turtles\" respectively for big fast values "
 "and small slow ones.."
 msgstr ""
 "Pour améliorer encore notre algorithme, il faut regarder un peu plus en "
@@ -6796,7 +6798,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:25
-#, fuzzy
 msgid ""
 "Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
 "move one step forward while keeping the paw on the wall on the selected "
@@ -6812,7 +6813,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:32
-#, fuzzy
 msgid ""
 "Then, write a <code>run()</code> method which traverse the maze step by step "
 "(using <code>void keepHandOnSideWall()</code>) until it finds the biscuit "
