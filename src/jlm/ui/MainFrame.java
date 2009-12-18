@@ -144,8 +144,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuBar.add(menu);
 
 		/* === Edit menu === */
-		menu = new JMenu("Edit");
-		menu.setMnemonic(KeyEvent.VK_G);
+		menu = new JMenu("Session");
+		menu.setMnemonic(KeyEvent.VK_S);
 		menu.getAccessibleContext().setAccessibleDescription("Lesson related functions");
 		menuBar.add(menu);
 		menu.setEnabled(true);
@@ -172,6 +172,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		/* === Language menu === */
 		menu = new JMenu("Language");
+		menu.setMnemonic(KeyEvent.VK_L);
 		menuBar.add(menu);
 		JMenuItem setLanguageToFrench = new JMenuItem(new SetLanguage(Game.getInstance(), "Français", null, this,"fr"));
 		menu.add(setLanguageToFrench);
@@ -180,6 +181,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		
 		/* === Help menu === */
 		menu = new JMenu("Help");
+		menu.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menu);
 
 		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this lesson", null) {
