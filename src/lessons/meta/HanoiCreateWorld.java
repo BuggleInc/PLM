@@ -3,6 +3,7 @@ package lessons.meta;
 import java.util.List;
 
 import jlm.lesson.Lesson;
+import jlm.ui.MainFrame;
 import jlm.universe.World;
 
 public class HanoiCreateWorld extends MetaExercise {
@@ -36,9 +37,12 @@ public class HanoiCreateWorld extends MetaExercise {
 			HanoiMetaWorld w = (HanoiMetaWorld)it;
 			/* Setup the intercepter */
 			w.setServant(compiledClasses.get(className("HanoiWorld")));
+			/* Ask for a (future) redraw */
+			// asking to redraw the view is not enough, apparently. Ask full windows
+			MainFrame.getInstance().repaint();
 			/* leave some time to the system to actually draw the stuff */
 			try {
-				Thread.sleep(20);
+				Thread.sleep(1);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
