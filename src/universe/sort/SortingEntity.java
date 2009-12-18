@@ -64,6 +64,11 @@ public class SortingEntity extends Entity {
 	}
 
 	public final boolean compare(int i, int j) {
+		if (i<0) throw new RuntimeException("In compare("+i+","+j+"), i<0 (Out of bounds)");
+		if (j<0) throw new RuntimeException("In compare("+i+","+j+"), j<0 (Out of bounds)");
+		if (i>=getValueCount()) throw new RuntimeException("In compare("+i+","+j+"), i>= value count (Out of bounds)");
+		if (j>=getValueCount()) throw new RuntimeException("In compare("+i+","+j+"), j>= value count (Out of bounds)");
+
 		readCount+=2;
 		return values[i]<values[j];
 	}
