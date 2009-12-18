@@ -64,19 +64,25 @@ public class SortingEntity extends Entity {
 	}
 
 	public final boolean compare(int i, int j) {
-		if (i<0) throw new RuntimeException("In compare("+i+","+j+"), i<0 (Out of bounds)");
-		if (j<0) throw new RuntimeException("In compare("+i+","+j+"), j<0 (Out of bounds)");
-		if (i>=getValueCount()) throw new RuntimeException("In compare("+i+","+j+"), i>= value count (Out of bounds)");
-		if (j>=getValueCount()) throw new RuntimeException("In compare("+i+","+j+"), j>= value count (Out of bounds)");
+		if (i<0) throw new RuntimeException("Out of bounds in compare("+i+","+j+"): "+i+"<0");
+		if (j<0) throw new RuntimeException("Out of bounds in compare("+i+","+j+"): "+j+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in compare("+i+","+j+"), "+i+">= value count");
+		if (j>=getValueCount()) throw new RuntimeException("Out of bounds in compare("+i+","+j+"), "+j+">= value count");
 
 		readCount+=2;
 		return values[i]<values[j];
 	}
 	public final boolean compareTo(int i, int val) {
+		if (i<0) throw new RuntimeException("Out of bounds in compareTo("+i+","+val+"): "+i+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in compareTo("+i+","+val+"), "+i+">= value count");
 		readCount+=1;
 		return values[i]<val;
 	}
 	public final void swap(int i, int j) {
+		if (i<0) throw new RuntimeException("Out of bounds in swap("+i+","+j+"): "+i+"<0");
+		if (j<0) throw new RuntimeException("Out of bounds in swap("+i+","+j+"): "+j+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+i+">= value count");
+		if (j>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+j+">= value count");
 		readCount+=2;
 		writeCount+=2;
 		synchronized (values) {
@@ -90,15 +96,24 @@ public class SortingEntity extends Entity {
 		return values.length;
 	}
 	public final int getValue(int i) {
+		if (i<0) throw new RuntimeException("Out of bounds in getValue("+i+"): "+i+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in getValue("+i+"), "+i+">= value count");
 		readCount++;
 		return values[i];
 	}
-	public final void setValue(int idx,int val) {
+	public final void setValue(int i,int val) {
+		if (i<0) throw new RuntimeException("Out of bounds in setValue("+i+"): "+i+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in setValue("+i+"), "+i+">= value count");
 		writeCount++;
-		values[idx]=val;
+		values[i]=val;
 		stepUI();
 	}
 	public final void copy(int from,int to) {
+		if (from<0) throw new RuntimeException("Out of bounds in copy("+from+","+to+"): "+from+"<0");
+		if (to<0) throw new RuntimeException("Out of bounds in copy("+from+","+to+"): "+to+"<0");
+		if (from>=getValueCount()) throw new RuntimeException("Out of bounds in copy("+from+","+to+"), "+from+">= value count");
+		if (to>=getValueCount()) throw new RuntimeException("Out of bounds in copy("+from+","+to+"), "+to+">= value count");
+		
 		readCount++;
 		writeCount++;
 		values[to] = values[from];
