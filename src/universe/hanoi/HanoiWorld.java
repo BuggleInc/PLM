@@ -69,7 +69,7 @@ public class HanoiWorld extends World {
 	 * You should comment this for the first exercises */
 	@Override
 	public WorldView[] getView() {
-		return new WorldView[] { new HanoiWorldView(this) } ;
+		return new WorldView[] { new universe.hanoi.HanoiWorldView(this) } ;
 	}
 	/* END HIDDEN */
 	
@@ -92,7 +92,7 @@ public class HanoiWorld extends World {
 	}
 	/* END HIDDEN */
 
-	/** Used to check whether the student code changed the world in the right state -- see lesson 4 */
+	/** Used to check whether the student code changed the world in the right state -- see exercise 4 */
 	@Override 
 	public boolean equals(Object o) {
 		/* BEGIN HIDDEN */
