@@ -46,6 +46,7 @@ public class IslandMazeEntity extends universe.bugglequest.SimpleBuggle {
 		memorizedD = getDirection();
 		setDirection(chosenD);
 		if (!isFacingWall()) {
+			setDirection(memorizedD);
 			return true;
 		} else {
 			setDirection(memorizedD);
