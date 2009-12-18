@@ -75,14 +75,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private void initComponents() {
 		Reader.setLocale(this.getLocale().getLanguage());
 		
+		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				Game.getInstance().quit();
-			}
-
-			@Override
-			public void windowClosed(WindowEvent e) {
 				Game.getInstance().quit();
 			}
 		});

@@ -258,8 +258,13 @@ public class Game implements IWorldView {
 	public void quit() {
 		// FIXME: this method is not called when pressing APPLE+Q on OSX
 		saveSession();
-		storeProperties();
-		System.exit(0);
+		try {
+			storeProperties();
+			System.exit(0);
+		} catch (UserAbortException e) {
+			// Ok, user decided to not quit (to get a chance to export the session)
+			System.out.println("Exit aborted");
+		}
 	}
 
 	public void clearSession() {
@@ -342,7 +347,7 @@ public class Game implements IWorldView {
 		}
 	}
 
-	public static void storeProperties() {
+	public static void storeProperties() throws UserAbortException {
 		FileOutputStream fo = null;
 		try {
 
@@ -370,10 +375,15 @@ public class Game implements IWorldView {
 
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, 
-						"No path provided in the property file (or property file not found)", 
-						"Cannot save your changes",
-						JOptionPane.ERROR_MESSAGE);
+				int choice = JOptionPane.showConfirmDialog(null, 
+						"No path provided in the property file (or property file not found)\n"+
+						"You may want to export your session with the menu 'Session/Export session'\n" +
+						"to save your work manually.\n\n" +
+						"Quit without saving?", 
+						"Cannot save your changes. Quit without saving?",
+						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE);
+				if (choice==JOptionPane.NO_OPTION)
+					throw new UserAbortException("Quit aborded by user.");
 				return;
 			}
 			// }
