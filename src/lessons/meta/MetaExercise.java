@@ -8,7 +8,6 @@ public class MetaExercise extends ExerciseTemplated {
 
 	public MetaExercise(Lesson lesson) {
 		super(lesson);
-		debug = true;
 	}
 	@Override
 	public void reset() {
