@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-09-23 15:26+0300\n"
+"POT-Creation-Date: 2009-12-18 11:31+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgid ""
 "This world provides tools to experiment with the sorting algorithms. It can "
 "be used in two different ways: the first one is naturally to write the "
 "required sorting algorithms. But it is also possible to simply use the demo "
-"mode of each exercise to observe the behaviour of sorting algorithms. It "
+"mode of each exercise to observe the behavior of sorting algorithms. It "
 "helps understanding the differences between each of them."
 msgstr ""
 
@@ -37,81 +37,126 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:10
-msgid "int getValueCount()"
+msgid "<b>Method</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:10
+msgid "<b>Action</b>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:10
+msgid "<b>Cost</b>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:11
+msgid "int getValueCount()"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:11
 msgid "Returns the amount of values in the array"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:12
+#: src/universe/sort/SortingWorld.html:11 src/universe/sort/SortingWorld.html:22
+msgid "none"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:13
 msgid "boolean compare(int i, int j)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:12
+#: src/universe/sort/SortingWorld.html:13
 msgid "Returns true if the content of cell i is smaller than the one of cell j"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:13
+msgid "two reads"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:14
 msgid "boolean compareTo(int i, int val)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:13
+#: src/universe/sort/SortingWorld.html:14
 msgid "Returns true if the content of cell i is smaller than value val"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:15
+#: src/universe/sort/SortingWorld.html:14 src/universe/sort/SortingWorld.html:19
+msgid "one read"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:16
 msgid "void swap(int i, int j)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:15
+#: src/universe/sort/SortingWorld.html:16
 msgid "Swaps the content of cell i and the one of cell j"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:16
+msgid "two reads, two writes"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:17
 msgid "void copy(int from, int to)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:16
+#: src/universe/sort/SortingWorld.html:17
 msgid "Copy the content of cell 'from' into the cell 'to'"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:18
+#: src/universe/sort/SortingWorld.html:17
+msgid "one read, one write"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:19
 msgid "int getValue(int idx)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:18
+#: src/universe/sort/SortingWorld.html:19
 msgid "Returns the value of cell idx"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:19
+#: src/universe/sort/SortingWorld.html:20
 msgid "void setValue(int idx,int val)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:19
+#: src/universe/sort/SortingWorld.html:20
 msgid "Sets cell 'idx' to the value 'val'"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:21
+#: src/universe/sort/SortingWorld.html:20
+msgid "one write"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:22
 msgid "void sorted(int idx)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:21
+#: src/universe/sort/SortingWorld.html:22
 msgid "Tells that the cell 'idx' was successfully sorted (only used for display)"
 msgstr ""
 

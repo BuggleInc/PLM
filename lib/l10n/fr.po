@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-09-23 15:26+0300\n"
-"PO-Revision-Date: 2009-09-17 18:30+0200\n"
+"POT-Creation-Date: 2009-12-18 11:31+0100\n"
+"PO-Revision-Date: 2009-12-18 11:34+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgid ""
 "This world provides tools to experiment with the sorting algorithms. It can "
 "be used in two different ways: the first one is naturally to write the "
 "required sorting algorithms. But it is also possible to simply use the demo "
-"mode of each exercise to observe the behaviour of sorting algorithms. It "
+"mode of each exercise to observe the behavior of sorting algorithms. It "
 "helps understanding the differences between each of them."
 msgstr ""
 "Ce monde vous donne les outils pour expérimenter les algorithmes de tris. On "
@@ -43,83 +43,128 @@ msgstr "Méthodes disponibles pour les algorithmes de tri"
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:10
+msgid "<b>Method</b>"
+msgstr "<b>Méthode</b>"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:10
+msgid "<b>Action</b>"
+msgstr "<b>Action</b>"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:10
+msgid "<b>Cost</b>"
+msgstr "<b>Coût</b>"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:11
 msgid "int getValueCount()"
 msgstr "int getValueCount()"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:10
+#: src/universe/sort/SortingWorld.html:11
 msgid "Returns the amount of values in the array"
 msgstr "Retourne le nombre de valeurs dans le tableau"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:12
+#: src/universe/sort/SortingWorld.html:11
+#: src/universe/sort/SortingWorld.html:22
+msgid "none"
+msgstr "aucun"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:13
 msgid "boolean compare(int i, int j)"
 msgstr "boolean compare(int i, int j)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:12
+#: src/universe/sort/SortingWorld.html:13
 msgid "Returns true if the content of cell i is smaller than the one of cell j"
-msgstr ""
-"Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j"
+msgstr "Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j"
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:13
+msgid "two reads"
+msgstr "2 lectures"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:14
 msgid "boolean compareTo(int i, int val)"
 msgstr "boolean compareTo(int i, int val)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:13
+#: src/universe/sort/SortingWorld.html:14
 msgid "Returns true if the content of cell i is smaller than value val"
-msgstr ""
-"Retourne vrai ssi le contenu de la case i est inférieur à la valeur val"
+msgstr "Retourne vrai ssi le contenu de la case i est inférieur à la valeur val"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:15
+#: src/universe/sort/SortingWorld.html:14
+#: src/universe/sort/SortingWorld.html:19
+msgid "one read"
+msgstr "une lecture"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:16
 msgid "void swap(int i, int j)"
 msgstr "void swap(int i, int j)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:15
+#: src/universe/sort/SortingWorld.html:16
 msgid "Swaps the content of cell i and the one of cell j"
 msgstr "Inverse le contenu de la case i et celui de la case j"
 
 #. type: Content of: <table><tr><td>
 #: src/universe/sort/SortingWorld.html:16
+msgid "two reads, two writes"
+msgstr "deux lectures, deux écritures"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:17
 msgid "void copy(int from, int to)"
 msgstr "void copy(int from, int to)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:16
+#: src/universe/sort/SortingWorld.html:17
 msgid "Copy the content of cell 'from' into the cell 'to'"
 msgstr "Recopie le contenu de la case from dans la case to"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:18
+#: src/universe/sort/SortingWorld.html:17
+msgid "one read, one write"
+msgstr "Une lecture, une écriture"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:19
 msgid "int getValue(int idx)"
 msgstr "int getValue(int idx)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:18
+#: src/universe/sort/SortingWorld.html:19
 msgid "Returns the value of cell idx"
 msgstr "Retourne la valeur de la case idx"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:19
+#: src/universe/sort/SortingWorld.html:20
 msgid "void setValue(int idx,int val)"
 msgstr "void setValue(int idx,int val)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:19
+#: src/universe/sort/SortingWorld.html:20
 msgid "Sets cell 'idx' to the value 'val'"
 msgstr "Affecte la valeur val à la case idx"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:21
+#: src/universe/sort/SortingWorld.html:20
+msgid "one write"
+msgstr "une écriture"
+
+#. type: Content of: <table><tr><td>
+#: src/universe/sort/SortingWorld.html:22
 msgid "void sorted(int idx)"
 msgstr "void sorted(int idx)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:21
+#: src/universe/sort/SortingWorld.html:22
 msgid ""
 "Tells that the cell 'idx' was successfully sorted (only used for display)"
 msgstr "Indique que la case idx est triée (pour l'affichage)"
@@ -6709,7 +6754,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:6
-#, fuzzy
 msgid ""
 "Hopefully, this maze is simpler that it seems at the first glance: every "
 "wall are connected to each other. To get out of this kind of maze, the "
@@ -6717,13 +6761,12 @@ msgid ""
 "right, it doesn't matter).  While keeping a paw on the wall, the buggle must "
 "move forward until it finds the maze exit and this biscuit it loves so much."
 msgstr ""
-"Heureusement, ce labyrinthe est plus simple qu'il n'y paraît, il ne contient "
-"aucun îlot qui risquerait de faire tourner en rond notre buggle. Pour sortir "
-"de ce genre de labyrinthe, il suffit à votre buggle de longer un mur.  De "
-"façon imagée votre buggle doit poser une de ses pattes sur un mur (celui à "
-"sa droite, ou celui à sa gauche). Et, tout en essayant de garder sa patte "
-"poser sur ce mur, votre buggle doit avancer jusqu'à ce qu'il trouve la "
-"sortie du labyrinthe et ce biscuit qu'il apprécie tant."
+"Heureusement, ce labyrinthe est plus simple qu'il n'y paraît: tous les murs "
+"sont connectés les uns aux autres. Pour sortir de ce genre de labyrinthe, il "
+"suffit à votre buggle de longer un mur (celui à sa droite, ou celui à sa "
+"gauche: c'est sans importance). Et, tout en gardant sa patte poser sur ce "
+"mur, votre buggle doit avancer jusqu'à ce qu'il trouve la sortie du "
+"labyrinthe et ce biscuit qu'il apprécie tant."
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:13
