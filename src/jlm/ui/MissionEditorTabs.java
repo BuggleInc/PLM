@@ -6,6 +6,8 @@ import java.awt.Component;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.StyleSheet;
 
@@ -39,6 +41,24 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		StyleSheet styles = ((HTMLDocument) missionTab.getDocument()).getStyleSheet();
 		styles.importStyleSheet(getClass().getResource("/lessons/screen.css"));			
 
+		missionTab.addHyperlinkListener(new HyperlinkListener() {
+			TipsDialog tipsDialog = null;
+			
+			@Override
+			public void hyperlinkUpdate(HyperlinkEvent event) {
+				if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+					String desc = event.getDescription();
+					if (desc.startsWith("#tips-")) {
+						if (this.tipsDialog == null) {
+							this.tipsDialog = new TipsDialog(MainFrame.getInstance());
+						}
+						this.tipsDialog.setText(currentExercise.getTips(desc));
+						this.tipsDialog.setVisible(true);
+					}
+				}
+			}
+		});
+		
 		this.add("Mission", new JScrollPane(missionTab));
 		
 		/* setup code tabs */

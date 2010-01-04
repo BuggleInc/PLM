@@ -37,8 +37,9 @@
 				<attribute name="Class-Path" value="." />
 			</manifest>
 			<fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css" excludes="**/.gitignore"/> 
+			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.png" excludes="**/.gitignore"/> 
 			<fileset dir="${lib.dir}" excludes="*.jar"/>
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jtwitter.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.4.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.6-swing.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
@@ -55,7 +56,7 @@
 				<attribute name="Class-Path" value="." />
 			</manifest>
 			<fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.map" excludes="**/.gitignore"/> 
+			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.map **/*.png" excludes="**/.gitignore"/> 
 			<fileset dir="${lib.dir}" excludes="*.jar"/>
 		</jar>
 		<copy todir="${site.dir}/lib">
