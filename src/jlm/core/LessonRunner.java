@@ -2,13 +2,16 @@ package jlm.core;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
 import jlm.exception.JLMCompilerException;
 import jlm.lesson.Exercise;
 import jlm.ui.ResourcesCache;
-import winterwell.jtwitter.Twitter;
+import twitter4j.Status;
+import twitter4j.Twitter;
+import twitter4j.http.AccessToken;
 
 public class LessonRunner extends Thread {
 
@@ -57,18 +60,23 @@ public class LessonRunner extends Thread {
 
 				
 				if (! exo.isSuccessfullyPassed()) {
-					Twitter twitter = new Twitter("jlmlovers","mysecret");
+					String username = System.getenv("USER");
+					if (username == null)
+						username = System.getenv("USERNAME");
+					if (username == null)
+						username = "John Doe";
+					
+					Twitter twitter = new Twitter();						
+					Status status = null;
 					try {
-						String username = System.getenv("USER");
-						if (username == null)
-							username = System.getenv("USERNAME");
-						if (username == null)
-							username = "John Doe";
-		        	
-						twitter.updateStatus(username+" solves "+exo.getName()+"!");
+						twitter.setOAuthConsumer(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"));
+						twitter.setOAuthAccessToken(new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
+						status = twitter.updateStatus(username+" solves "+exo.getName()+"!");
 					} catch (Exception e) {
 						// silently ignore network unavailability ;)
+						//e.printStackTrace();
 					}
+	
 				}
 				exo.successfullyPassed();
 			}
