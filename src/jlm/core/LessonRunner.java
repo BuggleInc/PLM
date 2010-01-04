@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import jlm.exception.JLMCompilerException;
 import jlm.lesson.Exercise;
 import jlm.ui.ResourcesCache;
+import winterwell.jtwitter.Twitter;
 
 public class LessonRunner extends Thread {
 
@@ -53,6 +54,22 @@ public class LessonRunner extends Thread {
 				JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Congratulations", JOptionPane.PLAIN_MESSAGE,
 						ResourcesCache.getIcon("resources/success.png"));
 				//this.game.getCurrentLesson().exercisePassed();
+
+				
+				if (! exo.isSuccessfullyPassed()) {
+					Twitter twitter = new Twitter("jlmlovers","mysecret");
+					try {
+						String username = System.getenv("USER");
+						if (username == null)
+							username = System.getenv("USERNAME");
+						if (username == null)
+							username = "John Doe";
+		        	
+						twitter.updateStatus(username+" solves "+exo.getName()+"!");
+					} catch (Exception e) {
+						// silently ignore network unavailability ;)
+					}
+				}
 				exo.successfullyPassed();
 			}
 		} catch (InterruptedException e) {
