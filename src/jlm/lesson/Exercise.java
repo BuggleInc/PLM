@@ -28,7 +28,7 @@ public abstract class Exercise {
 	public String mission = "";  /** The text to display to present the lesson */
 	public String hint = null;
 	
-	public Map<String, String> tips = new HashMap<String, String>();
+	protected Map<String, String> tips = new HashMap<String, String>();
 	
 	protected List<SourceFile> sourceFiles; /** All the editable source files */
 	
@@ -326,7 +326,7 @@ public abstract class Exercise {
 		return this.answerWorld[index];
 	}
 	
-	public String getTips(String tipsId) {
+	public String getTip(String tipsId) {
 		return this.tips.get(tipsId);
 	}
 	

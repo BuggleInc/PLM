@@ -14,6 +14,7 @@ import javax.swing.text.html.StyleSheet;
 import jlm.core.Game;
 import jlm.event.GameListener;
 import jlm.lesson.Exercise;
+import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.SourceFile;
 import jlm.universe.IEntityStackListener;
 import jsyntaxpane.DefaultSyntaxKit;
@@ -48,11 +49,11 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 			public void hyperlinkUpdate(HyperlinkEvent event) {
 				if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
 					String desc = event.getDescription();
-					if (desc.startsWith("#tips-")) {
+					if (desc.startsWith("#tip-")) {
 						if (this.tipsDialog == null) {
 							this.tipsDialog = new TipsDialog(MainFrame.getInstance());
 						}
-						this.tipsDialog.setText(currentExercise.getTips(desc));
+						this.tipsDialog.setText("<html>\n"+ExerciseTemplated.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
 					}
 				}

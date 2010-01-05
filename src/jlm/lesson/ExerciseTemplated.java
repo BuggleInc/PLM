@@ -50,7 +50,7 @@ public abstract class ExerciseTemplated extends Exercise {
         "  </style>\n"+
         "</head>\n";
 
-	final static String HTMLTipsHeader = 
+	final public static String HTMLTipHeader = 
 		"<head>\n"+
 		"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
 		"  <style>\n"+
@@ -98,16 +98,21 @@ public abstract class ExerciseTemplated extends Exercise {
 			hint="<html>\n"+HTMLMissionHeader+"<body>\n"+m2.group(1)+"</body>\n</html>\n";
 			str=m2.replaceAll("");
 		}
-		
 
-		Pattern p3 =  Pattern.compile("<div class=\"tips\" id=\"(tips-.*?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
+		Pattern p3 =  Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\" alt=\"([^\"]+?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
 		Matcher m3 = p3.matcher(str);
-		while (m3.find()) {
-			tips.put("#"+m3.group(1), "<html>\n"+HTMLTipsHeader+"<body>\n"+m3.group(2)+"</body>\n</html>\n");
-			str=m3.replaceAll("<a href=\"#"+m3.group(1)+"\">Show Tips</a>");
+		while (m3.find()) {	
+			tips.put("#"+m3.group(1), m3.group(3));
 		}
+		str = m3.replaceAll("<a href=\"#$1\">$2</a>");
 
-		
+		Pattern p4 =  Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
+		Matcher m4 = p4.matcher(str);
+		while (m4.find()) {	
+			tips.put("#"+m4.group(1), m4.group(2));
+		}		
+		str=m4.replaceAll("<a href=\"#$1\">Show Tip</a>");				
+
 		
 		/* get the mission explanation */
 		mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+str+"</body>\n</html>\n";
