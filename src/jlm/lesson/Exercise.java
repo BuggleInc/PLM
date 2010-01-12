@@ -2,6 +2,7 @@ package jlm.lesson;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,8 @@ public abstract class Exercise {
 	public String name = "<no name>"; 
 	public String mission = "";  /** The text to display to present the lesson */
 	public String hint = null;
+	
+	protected Map<String, String> tips = new HashMap<String, String>();
 	
 	protected List<SourceFile> sourceFiles; /** All the editable source files */
 	
@@ -322,5 +325,10 @@ public abstract class Exercise {
 	public World getAnswerOfWorld(int index) {
 		return this.answerWorld[index];
 	}
+	
+	public String getTip(String tipsId) {
+		return this.tips.get(tipsId);
+	}
+	
 }
 

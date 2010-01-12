@@ -50,6 +50,28 @@ public abstract class ExerciseTemplated extends Exercise {
         "  </style>\n"+
         "</head>\n";
 
+	final public static String HTMLTipHeader = 
+		"<head>\n"+
+		"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
+		"  <style>\n"+
+        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+        "    code { background:#EEEEEE; }\n"+
+        "    pre { background: #EEEEEE;\n"+
+        "          margin: 5px;\n"+
+        "          padding: 6px;\n"+
+        "          border: 1px inset;\n"+
+        "          width: 400px;\n"+
+        "          overflow: auto;\n"+
+        "          text-align: left;\n"+
+        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+        "   .comment { background:#EEEEEE;\n"+
+        "              font-family: \"Times New Roman\", serif;\n"+
+        "              color:#00AA00;\n"+
+        "              font-style: italic; }\n"+
+        "  </style>\n"+
+        "</head>\n";
+
+	
 	public void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 
@@ -76,6 +98,21 @@ public abstract class ExerciseTemplated extends Exercise {
 			hint="<html>\n"+HTMLMissionHeader+"<body>\n"+m2.group(1)+"</body>\n</html>\n";
 			str=m2.replaceAll("");
 		}
+
+		Pattern p3 =  Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\" alt=\"([^\"]+?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
+		Matcher m3 = p3.matcher(str);
+		while (m3.find()) {	
+			tips.put("#"+m3.group(1), m3.group(3));
+		}
+		str = m3.replaceAll("<a href=\"#$1\">$2</a>");
+
+		Pattern p4 =  Pattern.compile("<div class=\"tip\" id=\"(tip-\\d+?)\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
+		Matcher m4 = p4.matcher(str);
+		while (m4.find()) {	
+			tips.put("#"+m4.group(1), m4.group(2));
+		}		
+		str=m4.replaceAll("<a href=\"#$1\">Show Tip</a>");				
+
 		
 		/* get the mission explanation */
 		mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+str+"</body>\n</html>\n";
