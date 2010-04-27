@@ -29,11 +29,11 @@ public abstract class WorldView extends JComponent  implements IWorldView {
 
 	@Override
 	public void worldHasMoved() {
-		//Logger.log("WorldView:worldHasMoved","");
+		//System.out.println("WorldView:worldHasMoved:SwingUtilities:"+"(ask for repaint later)");
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				//Logger.log("WorldView:worldHasMoved:SwingUtilities","(ask for repaint)");
-				repaint();
+				//System.out.println("WorldView:worldHasMoved:SwingUtilities:"+"(ask for repaint NOW)");
+				repaint();	
 			}
 		});
 	}

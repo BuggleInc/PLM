@@ -321,4 +321,7 @@ public abstract class World {
 		return parameters[i];
 	}
 
+	public void setSelectedEntity(Entity e) {
+		notifyWorldUpdatesListeners();//EntityUpdateListeners();
+	}
 }
