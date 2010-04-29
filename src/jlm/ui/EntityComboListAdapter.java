@@ -42,6 +42,7 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 		if (anItem instanceof Entity) {
 			Entity e = (Entity) anItem;
 			this.game.setSelectedEntity(e);
+			this.world.setSelectedEntity(e);
 		} else {
 			Logger.log("entityComboListAdapter:setSelectedItem", "parameter is not an entity");
 		}

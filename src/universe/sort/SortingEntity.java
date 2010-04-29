@@ -1,6 +1,7 @@
 package universe.sort;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -8,15 +9,25 @@ import jlm.universe.World;
 public class SortingEntity extends Entity {
 	Color[] color;	
 	int[] values;
+	ArrayList<Integer> initValues;
+	boolean init = false;
 	int maxValue;
 	private int readCount = 0;
 	private int writeCount = 0;
 
+	ArrayList<Operation> operations;
+	
 	public SortingEntity(){
 		super();
+		
+		initValues = new ArrayList<Integer>();
+		operations = new ArrayList<Operation>();
 	}
 	public SortingEntity(String name, World w) {
 		super(name,w);
+		
+		initValues = new ArrayList<Integer>();
+		operations = new ArrayList<Operation>();
 	}
 	public SortingEntity(SortingEntity other) {
 		super();
@@ -29,12 +40,14 @@ public class SortingEntity extends Entity {
 			values = ((SortingWorld)w).values.clone();
 			maxValue=((SortingWorld)w).maxValue;
 			color = ((SortingWorld)w).color.clone();
-		}	
+		}
 	}
 	@Override
 	public Entity copy() {
 		return new SortingEntity(this);
 	}
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public void copy(Entity o) {
 		super.copy(o);
@@ -48,6 +61,13 @@ public class SortingEntity extends Entity {
 			values = ((SortingWorld)other.world).values.clone();
 			maxValue = ((SortingWorld)other.world).maxValue;
 		}
+		
+		for(int k=0 ; k<other.initValues.size() ; k++){
+			initValues.set(k, other.initValues.get(k));
+		}
+		
+		if(other.initValues!=null)initValues = (ArrayList<Integer>)other.initValues.clone();
+		if(other.operations!=null)operations = (ArrayList<Operation>)other.operations.clone();
 	}
 
 	@Override
@@ -83,6 +103,16 @@ public class SortingEntity extends Entity {
 		if (j<0) throw new RuntimeException("Out of bounds in swap("+i+","+j+"): "+j+"<0");
 		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+i+">= value count");
 		if (j>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+j+">= value count");
+		
+		if(!init){
+			initValues.clear();
+			for(int k=0 ; k<values.length ; k++){
+				initValues.add(new Integer(values[k]));
+			}
+			init = true;
+		}
+		operations.add(new Swap(i, j));
+		
 		readCount+=2;
 		writeCount+=2;
 		synchronized (values) {
@@ -104,6 +134,16 @@ public class SortingEntity extends Entity {
 	public final void setValue(int i,int val) {
 		if (i<0) throw new RuntimeException("Out of bounds in setValue("+i+"): "+i+"<0");
 		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in setValue("+i+"), "+i+">= value count");
+		
+		if(!init){
+			initValues.clear();
+			for(int k=0 ; k<values.length ; k++){
+				initValues.add(new Integer(values[k]));
+			}
+			init = true;
+		}
+		operations.add(new SetVal(i, val));
+		
 		writeCount++;
 		values[i]=val;
 		stepUI();
@@ -113,6 +153,15 @@ public class SortingEntity extends Entity {
 		if (to<0) throw new RuntimeException("Out of bounds in copy("+from+","+to+"): "+to+"<0");
 		if (from>=getValueCount()) throw new RuntimeException("Out of bounds in copy("+from+","+to+"), "+from+">= value count");
 		if (to>=getValueCount()) throw new RuntimeException("Out of bounds in copy("+from+","+to+"), "+to+">= value count");
+		
+		if(!init){
+			initValues.clear();
+			for(int k=0 ; k<values.length ; k++){
+				initValues.add(new Integer(values[k]));
+			}
+			init = true;
+		}
+		operations.add(new CopyVal(from, to));
 		
 		readCount++;
 		writeCount++;
@@ -129,4 +178,10 @@ public class SortingEntity extends Entity {
 	public int getReadCount() {
 		return readCount;
 	}
+
+	/*@ get the color of the value passed as argument */
+	protected int getValueColor(int value) {
+		return (int) ((((float) value) / ((float) getValueCount())) * 255.);
+	}
+
 }

@@ -63,7 +63,7 @@ public class SortingWorld extends World {
 
 	@Override
 	public WorldView[] getView() {
-		return new WorldView[] { new SortingWorldView(this) };
+		return new WorldView[] { new SortingWorldView2(this) , new SortingWorldView(this)};
 	}
 
 	// TODO Implement world IO
