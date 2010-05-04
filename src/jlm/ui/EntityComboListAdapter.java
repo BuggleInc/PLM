@@ -14,22 +14,22 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 
 	private static final long serialVersionUID = -4602618861291726344L;
 	private Game game;
-	private World world;
+	private World[] worlds;
 
 	public EntityComboListAdapter(Game game) {
 		this.game = game;
 		this.game.addGameListener(this);
-		this.world = this.game.getSelectedWorld();
+		this.worlds = this.game.getSelectedWorlds();
 	}
 
 	@Override
 	public Object getElementAt(int index) {
-		return this.world.getEntity(index);
+		return this.worlds[0].getEntity(index);
 	}
 
 	@Override
 	public int getSize() {
-		return this.world.getEntityCount();
+		return this.worlds[0].getEntityCount();
 	}
 
 	@Override
@@ -42,7 +42,10 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 		if (anItem instanceof Entity) {
 			Entity e = (Entity) anItem;
 			this.game.setSelectedEntity(e);
-			this.world.setSelectedEntity(e);
+			this.worlds[0].setSelectedEntity(e);
+			/* Also inform the objective world that it was changed */
+			for (World w:worlds)
+				w.notifyWorldUpdatesListeners();
 		} else {
 			Logger.log("entityComboListAdapter:setSelectedItem", "parameter is not an entity");
 		}
@@ -65,18 +68,18 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 
 	@Override
 	public void selectedWorldHasChanged() {
-		this.world = this.game.getSelectedWorld();
-		fireContentsChanged(this, 0, this.world.getEntityCount() - 1);
+		this.worlds = this.game.getSelectedWorlds();
+		fireContentsChanged(this, 0, this.worlds[0].getEntityCount() - 1);
 	}
 
 	@Override
 	public void selectedEntityHasChanged() {
-		fireContentsChanged(this, 0, this.world.getEntityCount() - 1);
+		fireContentsChanged(this, 0, this.worlds[0].getEntityCount() - 1);
 	}
 	
 	@Override
 	public void selectedWorldWasUpdated() {
-		fireContentsChanged(this, 0, this.world.getEntityCount() - 1);
+		fireContentsChanged(this, 0, this.worlds[0].getEntityCount() - 1);
 	}
 
 }
