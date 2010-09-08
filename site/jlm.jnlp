@@ -15,11 +15,15 @@
 	<resources>
 		<j2se href="http://java.sun.com/products/autodl/j2se" version="1.6+" max-heap-size="128m"/>
 		<jar href="lib/jlm-webstart.jar"/>
-		<jar href="lib/jtwitter.jar"/>
+		<jar href="lib/twitter4j-core-2.1.4-SNAPSHOT.jar"/>
 		<jar href="lib/jsyntaxpane-0.9.4.jar"/>
 		<jar href="lib/simple-xml-1.7.2.jar"/>
 		<jar href="lib/miglayout-3.6-swing.jar"/>
 		<jar href="lib/langtools-beta.jar"/>
+		<property name="twitter4j.loggerFactory" value="twitter4j.internal.logging.NullLoggerFactory"/>
 	</resources>
 	<application-desc main-class="jlm.ui.JavaLearningMachine"/>
 </jnlp>
+
+
+

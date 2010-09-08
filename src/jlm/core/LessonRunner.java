@@ -10,6 +10,7 @@ import jlm.lesson.Exercise;
 import jlm.ui.ResourcesCache;
 import twitter4j.Status;
 import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
 import twitter4j.http.AccessToken;
 
 public class LessonRunner extends Thread {
@@ -64,12 +65,14 @@ public class LessonRunner extends Thread {
 						username = System.getenv("USERNAME");
 					if (username == null)
 						username = "John Doe";
-					
-					Twitter twitter = new Twitter();						
+										
+					//Twitter twitter = new Twitter();						
+					//Twitter twitter = new TwitterFactory().getInstance();
+					Twitter twitter = new TwitterFactory().getOAuthAuthorizedInstance(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"), new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
+					//twitter.setOAuthConsumer(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"));
 					Status status = null;
 					try {
-						twitter.setOAuthConsumer(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"));
-						twitter.setOAuthAccessToken(new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
+						//twitter.setOAuthAccessToken(new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
 						status = twitter.updateStatus(username+" solves "+exo.getName()+"!");
 					} catch (Exception e) {
 						// silently ignore network unavailability ;)
