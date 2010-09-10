@@ -1,7 +1,9 @@
 package lessons.welcome;
 
 import java.awt.Color;
+import jlm.universe.Direction;
 
+@SuppressWarnings("unused")
 public class MethodsPicture3Entity extends universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN SOLUTION */
