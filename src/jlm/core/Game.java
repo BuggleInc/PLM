@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Properties;
@@ -40,7 +41,7 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private ArrayList<Lesson> lessons = new ArrayList<Lesson>();
 	private Lesson currentLesson;
-	private ArrayList<GameListener> listeners = new ArrayList<GameListener>();
+	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
 	private World initialOfSelectedWorld;
