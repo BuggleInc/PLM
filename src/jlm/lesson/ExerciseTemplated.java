@@ -258,8 +258,9 @@ public abstract class ExerciseTemplated extends Exercise {
 			templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
 			templateTail.toString();
 		String skelContent = skel.toString().replaceAll("\n", " ");
+		String headContent = head.toString().replaceAll("\n", " ");
 		
-		String template = (head+"$body"+tail);
+		String template = (headContent+"$body"+tail);
 		
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
