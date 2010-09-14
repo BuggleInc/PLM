@@ -160,6 +160,20 @@ public class BuggleWorldCell extends GridWorldCell {
 		return this.content;
 	}
 	
+	public int getContentAsInt() {
+		return Integer.parseInt(this.content);
+	}
+	
+	public void setContent(String c) {
+		this.content = c;
+		world.notifyWorldUpdatesListeners();
+	}
+	
+	public void setContentFromInt(int i) {
+		this.content = ""+i;
+		world.notifyWorldUpdatesListeners();		
+	}
+	
 	public void addContent(String c) {
 		this.content += c;
 		world.notifyWorldUpdatesListeners();

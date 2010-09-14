@@ -228,23 +228,28 @@ public class BuggleWorld extends GridWorld {
 
 		return super.equals(obj);
 	}
+	
+	public BuggleWorldCell getCell(int x, int y) {
+		return (BuggleWorldCell) super.getCell(x, y);
+	}
+	
 	/* adapters to the cells */
 	public void setColor(int x, int y, Color c) {
-		((BuggleWorldCell) getCell(x, y)).setColor(c);
+		getCell(x, y).setColor(c);
 	}
 	public void addContent(int x, int y, String string) {
-		((BuggleWorldCell) getCell(x, y)).addContent(string);
+		getCell(x, y).addContent(string);
 	}
 
 	public void putTopWall(int x, int y) {
-		((BuggleWorldCell) getCell(x, y)).putTopWall();		
+		getCell(x, y).putTopWall();		
 	}
 
 	public void putLeftWall(int x, int y) {
-		((BuggleWorldCell) getCell(x, y)).putLeftWall();		
+		getCell(x, y).putLeftWall();		
 	}
 	public void newBaggle(int x, int y) throws AlreadyHaveBaggleException {
-		((BuggleWorldCell) getCell(x, y)).newBaggle();		
+		getCell(x, y).newBaggle();		
 	}
 
 }
