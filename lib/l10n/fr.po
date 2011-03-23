@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-03-23 15:04+0100\n"
-"PO-Revision-Date: 2011-03-23 15:30+0100\n"
+"PO-Revision-Date: 2011-03-23 16:36+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -6830,6 +6830,9 @@ msgid ""
 "our buggle cannot loop around for ever without encountering the baggel it "
 "looks for."
 msgstr ""
+"Cet algorithme fonctionne ici car il n'y a pas d'île de murs isolés, ce qui\n"
+"fait que la buggle ne peut pas boucler autour des murs sans rencontrer le\n"
+"biscuit qu'elle cherche."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/maze/WallFollowerMaze.html:17
@@ -6848,6 +6851,10 @@ msgid ""
 "you should the same in your solution to ease the comparison of your solution "
 "and the demo."
 msgstr ""
+"Comme dit dans l'introduction, il est sans importance de décider de suivre le\n"
+"mur droit ou le mur gauche. Simplement, la démo suit le mur gauche, et il\n"
+"serait donc avisé d'en faire de même dans votre solution pour simplifier la\n"
+"comparaison de votre solution et de la démo."
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:25
@@ -6884,6 +6891,10 @@ msgid ""
 "each initial situation, and where you should let your buggle end after one "
 "step."
 msgstr ""
+"Quand votre buggle a un mur à sa gauche, il faut considérer trois situations\n"
+"possible, qui dépendent des murs alentours. Le tableau suivant représente\n"
+"graphiquement chaque situation initiale, et où vous devez placer votre buggle à\n"
+"la fin de l'étape."
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/WallFollowerMaze.html:45
@@ -6917,6 +6928,9 @@ msgid ""
 "function, it's possible to write it in 3 lines with a <code>while()</code> "
 "loop."
 msgstr ""
+"Si vous faites un <code>turnRight()</code> dans tous les cas à la fin de votre\n"
+"fonction, il est possible de l'écrire en trois lignes avec une boucle\n"
+"<code>while()</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/maze/PledgeMaze.html:1
@@ -6933,6 +6947,13 @@ msgid ""
 "enters the trap and follows the inner border. At some point, it finds the "
 "north direction free, run into that direction, and falls again in the trap."
 msgstr ""
+"Une fois de plus, vous pensiez que votre algorithme vous permettait de vous\n"
+"échapper des labyrinthes, et une fois de plus, votre buggle est prise dans un\n"
+"labyrinthe où votre algorithme précédent ne suffit pas. Vous pouvez tenter de\n"
+"simplement appuyer sur le bouton «Run» et voir votre création échouer. Le piège\n"
+"a la forme d'un «G» majuscule : la buggle entre dans le piège, suit le bord\n"
+"interne. Au bout d'un moment, la direction nord est libre et votre buggle se\n"
+"met donc à courir dans cette direction. Pour retomber dans le piège..."
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:12
@@ -6944,7 +6965,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:15
-#, fuzzy
 msgid ""
 "This algorithm is a modification of the previous one thought to avoid "
 "obstacles. It randomly picks a heading and let the buggle move in that "
@@ -6952,20 +6972,11 @@ msgid ""
 "is kept on the wall following the obstacle while counting the turns. When "
 "the buggle is back to its original heading and when the sum of the turns is "
 "0, the buggle leaves the obstacle and continues keeping its original heading."
-msgstr ""
-"Cet algorithme est une version modifiée l'algorithme précédent et a été "
-"conçu pour éviter les obstacles. Il nécessite de choisir de manière "
-"arbitraire une direction vers laquelle le buggle se dirigera. Quand un "
-"obstacle est rencontré, une patte (disons la patte de droite) est gardée le "
-"long des obstacles tandis que les virages sont comptabilisés. Quand le "
-"buggle est face à nouveau à la direction originale, et que la somme des "
-"virages est égale à 0, le buggle quitte l'obstacle et continue de se "
-"déplacer dans sa direction d'origine."
+msgstr "Cet algorithme est une version modifiée l'algorithme précédent conçu pour éviter les obstacles. Il nécessite de choisir de manière arbitraire une direction vers laquelle le buggle se dirigera. Quand un obstacle est rencontré, une patte (disons la patte de gauche) est gardée le long des obstacles tandis que les virages sont comptabilisés. Quand le buggle est face à nouveau à la direction originale, et que la somme des virages est égale à 0, le buggle quitte l'obstacle et continue de se déplacer dans sa direction d'origine."
 
 # type: Content of: <p><p>
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:23
-#, fuzzy
 msgid ""
 "Note that the use of \"total turning\" rather than just the \"current "
 "direction\" allows the algorithm to avoid G-shapped traps. If one proceeds "
@@ -6973,14 +6984,7 @@ msgid ""
 "As we said before, the naive \"current direction\" algorithm gets into a "
 "limit cycle as it leaves the lower rightmost wall heading left and runs into "
 "the curved section on the left again."
-msgstr ""
-"Notez que l'utilisation de la \"somme des virages\" à la place de la "
-"\"direction courante\" permet à l'algorithme d'éviter les pièges tel que les "
-"formes en \"G\" majuscule. Si l'on rentre par la droite dans le piège, on "
-"tourne de 360 degrés autour des murs. Un algorithme qui se contenterait "
-"naivement de se retrouver dans la même direction qu'à l'origine rentre dans "
-"un cycle infini puisque qu'il quite le mur le plus à droite en étant dirigé "
-"vers la gauche, et entre à nouveau dans la section incurvée."
+msgstr "Notez que l'utilisation de la \"somme des virages\" à la place de la \"direction courante\" permet à l'algorithme d'éviter les pièges tel que les formes en \"G\" majuscule. Si l'on rentre par la gauche dans le piège, on tourne de 360 degrés autour des murs. Un algorithme qui se contenterait naivement de se retrouver dans la même direction qu'à l'origine rentre dans un cycle infini puisque qu'il quite le mur le plus à droite en étant dirigé vers la gauche, et entre à nouveau dans la section incurvée."
 
 # type: Content of: <p><p>
 #. type: Content of: <p>
@@ -6997,7 +7001,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:37
-#, fuzzy
 msgid ""
 "<a name=\"Objective\"/>You now have to modify your solution to implement the "
 "Pledge algorithm to escape this maze."
@@ -7008,22 +7011,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:40
-#, fuzzy
 msgid ""
 "Change your <code>void keepHandOnSideWall()</code> method to count the "
 "amount of turns done by the buggle (+1 when it turns left, and -1 when it "
 "turns right). This counting may require the addition of an <code>angleSum</"
 "code> integer value in your program."
-msgstr ""
-"Reprenez la méthode <code>void keepHandOnSideWall()</code> de l'exercice "
-"précédent. Modifiez cette méthode pour compter les virages pris par votre "
-"buggle (+1 lorsqu'il a tourné à droite par rapport à son origine, -1 "
-"lorsqu'il a tourné à gauche). Pour comptabiliser vous aurez besoin d'ajouter "
-"une variable <code>angleSum</code> de type entière à votre programme."
+msgstr "Reprenez la méthode <code>void keepHandOnSideWall()</code> de l'exercice précédent. Modifiez cette méthode pour compter les virages pris par votre buggle (+1 lorsqu'il a tourné à gauche par rapport à son origine, -1 lorsqu'il a tourné à droite). Pour comptabiliser vous aurez besoin d'ajouter une variable <code>angleSum</code> de type entière à votre programme."
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:45
-#, fuzzy
 msgid ""
 "Write a <code>boolean isChosenDirectionFree()</code> method indicating if "
 "the arbitrary direction you picked up is free, ie, if you can move in that "
@@ -7034,30 +7030,17 @@ msgid ""
 "previous direction of your buggle (in a variable of type Direction) before "
 "checking if your favorite direction is free in order to restore your state "
 "afterward."
-msgstr ""
-"Ecrivez une méthode <code>boolean isChosenDirectionFree()</code> vous "
-"indiquant si la direction arbitraire que vous avez choisie est libre "
-"(autrement dit que vous pouvez vous déplacer dans cette direction). Pour "
-"cela, il est nécessaire d'utiliser une variable de type <code>Direction</"
-"code> pour conserver la direction que vous avez choisie (par exemple "
-"<code>Direction.NORTH</code>). Vous pouvez connaître la direction vers "
-"laquelle se dirige votre buggle en utilisant la méthode <code>Direction "
-"getDirection()</code>. Vous pouvez diriger (sans se déplacer) votre buggle "
-"dans une direction en utilisant la méthode <code>void setDirection(Direction "
-"d)</code>. Pensez à mémoriser (dans une variable) pour la récupérer plus "
-"tard, la direction courante de votre buggle avant de vérifier si votre "
-"buggle peut se diriger vers sa direction de prédilection."
+msgstr "Écrivez une méthode <code>boolean isChosenDirectionFree()</code> indiquant si la direction arbitraire que vous avez choisie est libre, c'est-à-dire si vous pouvez vous déplacer dans cette direction. Notez que la démo utilise la direction NORTH pour cela. Vous pouvez retrouver la direction courante de la buggle en utilisant la méthode <code>Direction getDirection()</code>.  Vous pouvez diriger (sans se déplacer) votre buggle dans une direction en utilisant la méthode <code>void setDirection(Direction d)</code>.  Pensez à mémoriser (dans une variable de type <code>Direction</code>) la direction courante de votre buggle avant de vérifier si votre buggle peut se diriger vers sa direction de prédilection pour pouvoir restaurer l'état après coup."
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:55
 msgid ""
 "You may have to change the rest of your code also, but these changes should "
 "remain limited."
-msgstr ""
+msgstr "Vous pouvez être amenés à modifier également le reste de votre code, mais ces changements devraient rester limités."
 
 #. type: Content of: <div>
 #: src/lessons/maze/PledgeMaze.html:59
-#, fuzzy
 msgid ""
 "The <code>void run()</code> method should move in your favorite direction "
 "(NORTH is advised). Then, you should write the algorithm main loop. In other "
@@ -7067,16 +7050,15 @@ msgid ""
 "not null and the favorite direction is not free. Do that until you find your "
 "baggle."
 msgstr ""
-"Ecrivez la méthode <code>void run()</code>. Cette méthode doit définir la "
-"direction de prédilection de votre buggle en utilisant la variable que vous "
-"avez définie à cet effet. Puis, elle doit diriger votre buggle dans cette "
-"direction. Ensuite, vous devez écrire la boucle principale de l'algorithme.  "
-"Autrement dit, tant que votre buggle n'a pas trouvé son biscuit, il faut "
-"avancer jusqu'à un obstacle tant la direction de prédilection. Quand un "
-"obstacle est rencontré, il faut garder la patte sur un mur (<code>void "
-"keepHandOnSideWall()</code>) tant que la somme des virages n'est pas nulle "
-"et que la direction de prédilection n'est pas libre et que votre buggle "
-"n'est pas au dessus de son biscuit."
+"La méthode <code>void run()</code> doit déplacer votre buggle dans votre\n"
+"direction de prédilection (il est conseillé de choisir le nord pour\n"
+"cela). Ensuite, vous devez écrire la boucle principale de l'algorithme.\n"
+"Autrement dit, tant que votre buggle n'a pas trouvé son biscuit, il faut\n"
+"avancer jusqu'à un obstacle dans la direction de prédilection. Quand un\n"
+"obstacle est rencontré, il faut garder la patte sur un mur (en utilisant <code>void\n"
+"keepHandOnSideWall()</code>) tant que la somme des virages n'est pas nulle et\n"
+"que la direction de prédilection n'est pas libre. Faites cela jusqu'à trouver\n"
+"votre biscuit."
 
 #. type: Content of: <h1>
 #: src/universe/lightbot/LightBotWorld.html:1
@@ -7777,7 +7759,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/AnswerCell.html:1
 msgid "AnswerCell"
-msgstr ""
+msgstr "Répondeur"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/bool2/AnswerCell.html:2
@@ -7785,7 +7767,7 @@ msgid ""
 "Your cell phone rings. Return true if you should answer it. Normally you "
 "answer, except in the morning you only answer if it is your mom calling. In "
 "all cases, if you are asleep, you do not answer."
-msgstr ""
+msgstr "Votre téléphone sonne. Renvoyez vrai si vous décrochez. Vous le faites habituellement, sauf le matin où vous ne répondez que si votre mère appelle. Dans tous les cas, vous ne répondez pas si vous dormez."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/BlueTicket.html:1
