@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.World;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
@@ -13,7 +14,7 @@ public class PolygonFractal extends ExerciseTemplated {
 		super(lesson);
 
 		/* Create initial situation */
-		TurtleWorld[] myWorlds = new TurtleWorld[7];
+		World[] myWorlds = new World[7];
 		myWorlds[0] = new TurtleWorld("polygonFractal(1,5,100,0.5)", 400, 400);
 		myWorlds[0].setParameter(new Object[] {1,5,100.,.5});		
 		new Turtle(myWorlds[0], "Hawksbill", 125, 250, -90, Color.red);

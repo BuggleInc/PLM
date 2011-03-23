@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.World;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
@@ -13,7 +14,7 @@ public class Tree extends ExerciseTemplated {
 		super(lesson);
 
 		/* Create initial situation */
-		TurtleWorld[] myWorlds = new TurtleWorld[4];
+		World[] myWorlds = new World[4];
 		myWorlds[0] = new TurtleWorld("tree(7,75,30,0.8)", 400, 400);
 		myWorlds[0].setParameter(new Object[] {7,75.,30.,.8});		
 		new Turtle(myWorlds[0], "Hawksbill", 200, 350, -90, Color.red);

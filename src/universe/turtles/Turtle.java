@@ -3,6 +3,7 @@ package universe.turtles;
 import java.awt.Color;
 
 import jlm.universe.Entity;
+import jlm.universe.World;
 
 import org.simpleframework.xml.Attribute;
 
@@ -41,19 +42,19 @@ public class Turtle extends Entity {
 		this(null, "John Doe", 0., 0., 0., Color.red);
 	}
 
-	public Turtle(TurtleWorld w) {
+	public Turtle(World w) {
 		this(w, "John Doe", 0., 0., 0., Color.red);
 	}
 
-	public Turtle(TurtleWorld w, String name) {
+	public Turtle(World w, String name) {
 		this(w, name, 0., 0., 0., Color.red);
 	}
 
-	public Turtle(TurtleWorld w, String name, double x, double y) {
+	public Turtle(World w, String name, double x, double y) {
 		this(w, name, x, y, 0., Color.red);
 	}
 
-	public Turtle(TurtleWorld world, String name, double x, double y, double heading, Color c) {
+	public Turtle(World world, String name, double x, double y, double heading, Color c) {
 		super(name, world);
 		this.color = c;
 		this.x = x;
@@ -138,7 +139,7 @@ public class Turtle extends Entity {
 	public void moveTo(double newX, double newY) {
 		final double w = this.getWorld().getWidth();
 		final double h = this.getWorld().getHeight();
-
+		
 		double nX = newX;
 		double nY = newY;
 		

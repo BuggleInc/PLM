@@ -12,7 +12,7 @@ public class AlgCombSort extends SortingEntity {
 			if (gap>1) 
 	            gap /= 1.3;
 			swapped = false;
-			for (int i=0; i+gap<getValueCount(); i+=gap)
+			for (int i=0; i+gap<getValueCount(); i++)
 				if (!compare(i,i+gap)) {
 					swap(i,i+gap);
 					swapped =true;

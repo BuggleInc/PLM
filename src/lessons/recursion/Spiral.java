@@ -2,6 +2,7 @@ package lessons.recursion;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.World;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
@@ -11,7 +12,7 @@ public class Spiral extends ExerciseTemplated {
 		super(lesson);
 
 		/* Create initial situation */
-		TurtleWorld[] myWorlds = new TurtleWorld[4];
+		World[] myWorlds = new World[4];
 		myWorlds[0] = new TurtleWorld("Square Pyramid", 400, 400);
 		myWorlds[0].setParameter(new Integer[] {100,90,0,3});		
 		new Turtle(myWorlds[0], "Hawksbill", 200, 200);

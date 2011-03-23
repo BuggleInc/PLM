@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.World;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
@@ -13,7 +14,7 @@ public class Koch extends ExerciseTemplated {
 		super(lesson);
 
 		/* Create initial situation */
-		TurtleWorld[] myWorlds = new TurtleWorld[6];
+		World[] myWorlds = new World[6];
 		myWorlds[0] = new TurtleWorld("snowFlake(0,200)", 400, 400);
 		myWorlds[0].setParameter(new Object[] {0,200.});		
 		new Turtle(myWorlds[0], "Hawksbill", 200, 350, -90, Color.red);

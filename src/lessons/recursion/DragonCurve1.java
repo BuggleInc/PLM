@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.World;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
@@ -13,7 +14,7 @@ public class DragonCurve1 extends ExerciseTemplated {
 		super(lesson);
 
 		/* Create initial situation */
-		TurtleWorld[] myWorlds = new TurtleWorld[7];
+		World[] myWorlds = new World[7];
 		myWorlds[0] = new TurtleWorld("dragon(1,100.,100.,200.,200.)", 300, 300);
 		myWorlds[0].setParameter(new Object[] {1,100.,100.,200.,200.});		
 		new Turtle(myWorlds[0], "Lee", 100, 100, 0, Color.red);

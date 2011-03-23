@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
+import jlm.universe.World;
 import universe.turtles.Turtle;
 import universe.turtles.TurtleWorld;
 
@@ -13,7 +14,7 @@ public class Sierpinski extends ExerciseTemplated {
 		super(lesson);
 
 		/* Create initial situation */
-		TurtleWorld[] myWorlds = new TurtleWorld[5];
+		World[] myWorlds = new World[5];
 		myWorlds[0] = new TurtleWorld("sierpinski(0,300.)", 400, 400);
 		myWorlds[0].setParameter(new Object[] {0, 300.});		
 		new Turtle(myWorlds[0], "Hawksbill", 350, 350, -180, Color.red);
