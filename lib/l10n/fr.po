@@ -6,10 +6,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2009-12-18 12:18+0100\n"
-"PO-Revision-Date: 2009-12-18 12:20+0100\n"
+"POT-Creation-Date: 2011-01-14 18:06+0100\n"
+"PO-Revision-Date: 2011-02-24 13:23+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -684,6 +685,36 @@ msgstr ""
 "Les SimpleBuggles (ie, celles utilisées dans les premiers exercices) affiche "
 "un message d'erreur sans que vous ayez à vous soucier de ce qu'est une "
 "exception."
+
+#. type: Content of: <h1>
+#: src/universe/hanoi/HanoiWorld.html:1
+msgid "HanoiWorld"
+msgstr "Le monde de Hanoï"
+
+#. type: Content of: outside any tag (error?)
+#: src/universe/hanoi/HanoiWorld.html:3
+msgid ""
+"This world implements the ultra-classical Hanoi problem. You are asked to "
+"move the disk pile from the stick where they are to the target stick (given "
+"as second parameter in the world's name -- number 1 for the default world). "
+"There is some extra constraint: you can only move one disk at a time, and "
+"you cannot move a big disk over a smaller one.  The only function provided "
+"is the following:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/universe/hanoi/HanoiWorld.html:11
+#, no-wrap
+msgid "public void move(int src, int dst) throws HanoiInvalidMove;"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/universe/hanoi/HanoiWorld.html:13
+msgid ""
+"It moves one disk from the stick <code>src</code> onto the stick <code>dst</"
+"code>. As you can see, if you try to do an invalid move (like laying a disk "
+"over a smaller one), an exception is thrown."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
@@ -5267,9 +5298,8 @@ msgstr ""
 msgid "Once this is done, the situation is the following:"
 msgstr "Une fois ceci fait, on se retrouve dans la situation suivante:"
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><img><p><p><img><p>
 #: src/lessons/sort/ExInsertionSort.html:21
-#: src/lessons/sort/ExExchangeSort.html:26
 msgid "The pseudo-code of this algorithm is thus the following:"
 msgstr "Le pseudo-code de cet algorithme est donc le suivant :"
 
@@ -5478,7 +5508,7 @@ msgstr ""
 msgid "BubbleSort and variations"
 msgstr "Le tri à bulle et variantes"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:3
 msgid ""
 "Welcome to the sorting world. It allows you to experiment with the existing "
@@ -5506,7 +5536,7 @@ msgstr ""
 "que la solution codée dans l'objectif.  Attention donc à suivre le pseudo-"
 "code de chaque algorithme à la lettre!"
 
-#. type: Content of: <p><h2>
+#. type: Content of: <h2>
 #: src/lessons/sort/ExExchangeSort.html:14
 msgid "BubbleSort"
 msgstr "BubbleSort"
@@ -5535,8 +5565,20 @@ msgstr ""
 "étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est "
 "quasiment jamais utilisé en pratique."
 
-#. type: Content of: <p><p><pre>
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/sort/ExExchangeSort.html:26
+#: src/lessons/sort/ExExchangeSort.html:45
+#: src/lessons/sort/ExExchangeSort.html:72
+msgid "Show Tip (Pseudo-code)"
+msgstr "Montrer l'indice (le pseudo-code)"
+
+#. type: Content of: <div><p>
 #: src/lessons/sort/ExExchangeSort.html:27
+msgid "The pseudo-code of the BubbleSort algorithm is the following:"
+msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
+
+#. type: Content of: <div><pre>
+#: src/lessons/sort/ExExchangeSort.html:28
 #, no-wrap
 msgid ""
 "do: \n"
@@ -5549,22 +5591,31 @@ msgstr ""
 "          Si les cases i et i+1 doivent être inverser, le faire\n"
 "     tant qu'on a inverser des choses lors du dernier parcours\n"
 
-#. type: Content of: <p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:33
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:35
 msgid "BubbleSort2"
 msgstr "BubbleSort2"
 
-#. type: Content of: <p><p>
-#: src/lessons/sort/ExExchangeSort.html:35
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:37
+#, fuzzy
+#| msgid ""
+#| "If you look carefully at the behavior of BubbleSort, a first easy "
+#| "optimisation appears: after one traversal, the last element of the array "
+#| "must be the biggest of all since the traversal moved it up like a bubble "
+#| "to its position. More generally, after N traversal, we know that the N "
+#| "last elements of the array are already sorted. It is thus not necessary "
+#| "to compare them again during the subsequent traversals. For now, we will "
+#| "have as many traversal as there is in the array. This gives the following "
+#| "pseudo-code:"
 msgid ""
 "If you look carefully at the behavior of BubbleSort, a first easy "
-"optimisation appears: after one traversal, the last element of the array "
+"optimization appears: after one traversal, the last element of the array "
 "must be the biggest of all since the traversal moved it up like a bubble to "
 "its position. More generally, after N traversal, we know that the N last "
 "elements of the array are already sorted. It is thus not necessary to "
 "compare them again during the subsequent traversals. For now, we will have "
-"as many traversal as there is in the array. This gives the following pseudo-"
-"code:"
+"as many traversal as there is in the array."
 msgstr ""
 "En étudiant le comportement du tri à bulle, on peut voir une première "
 "optimisation facile à effectuer: Après un parcours, le dernier élément du "
@@ -5575,8 +5626,15 @@ msgstr ""
 "Dans un premier temps, nous ferons autant de parcours qu'il y a d'éléments "
 "dans le tableau. Cela nous donne le pseudo-code suivant :"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:44
+#. type: Content of: <div><p>
+#: src/lessons/sort/ExExchangeSort.html:46
+#, fuzzy
+#| msgid "The pseudo-code of this algorithm is thus the following:"
+msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
+msgstr "Le pseudo-code de cet algorithme est donc le suivant :"
+
+#. type: Content of: <div><pre>
+#: src/lessons/sort/ExExchangeSort.html:47
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5587,17 +5645,27 @@ msgstr ""
 "       Pour tout j dans [0, i]\n"
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
 
-#. type: Content of: <p><p>
-#: src/lessons/sort/ExExchangeSort.html:49
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:53
+#, fuzzy
+#| msgid ""
+#| "When we run this algorithm, it is quite disapointing to see that it runs "
+#| "approximately at the same speed than the basic version of BubbleSort. "
+#| "This is a graphical effect only since only value changes are graphically "
+#| "represented. Since this variation avoids some useless comparisons, it "
+#| "does exactly the same amount of swaps that the basic version. It is thus "
+#| "quite logical that the graphical interface draws this version at the same "
+#| "pace than the base version. But the stats on the amount of reads show "
+#| "that we saved about the fourth of the amount of reads, which is not bad."
 msgid ""
-"When we run this algorithm, it is quite disapointing to see that it runs "
+"When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
 "is a graphical effect only since only value changes are graphically "
 "represented. Since this variation avoids some useless comparisons, it does "
 "exactly the same amount of swaps that the basic version. It is thus quite "
 "logical that the graphical interface draws this version at the same pace "
-"than the base version. But the stats on the amount of reads show that we "
-"saved about the fourth of the amount of reads, which is not bad."
+"than the base version. But the statistics on the amount of reads show that "
+"we saved about the fourth of the amount of reads, which is not bad."
 msgstr ""
 "Lorsqu'on exécute cet algorithme, il peut être un peu décevant de constater "
 "qu'il s'exécute à la même vitesse que la version de base de BubbleSort. "
@@ -5609,8 +5677,8 @@ msgstr ""
 "statistiques sur le nombre de lectures montrent bien que l'on a économisé "
 "plus d'un quart du nombre de lectures, ce qui n'est pas si mal."
 
-#. type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:58
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:62
 msgid ""
 "From the asymptotic complexity point of view, there is absolutely no "
 "difference: this variation is still in O(n^2) on average (our gain is only "
@@ -5619,24 +5687,36 @@ msgstr ""
 "D'un point de vue complexité algorithmique, cela ne change rien: cette "
 "variante est toujours en O(n2) en moyenne (on ne gagne que sur la constante)."
 
-#. type: Content of: <p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:62
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:66
 msgid "BubbleSort3"
 msgstr "BubbleSort3"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:64
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:68
+#, fuzzy
+#| msgid ""
+#| "Let's now reintroduce the little optimization we removed at previous "
+#| "step: if a traversal does not swap any element, it means that the array "
+#| "is already sorted. This leads to the following pseudo-code:"
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
-"sorted. This leads to the following pseudo-code:"
+"sorted."
 msgstr ""
 "Réintroduisons maintenant la petite optimisation que nous avions retiré à "
 "l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau "
 "est maintenant trié. Cela nous donne le pseudo-code suivant :"
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:68
+#. type: Content of: <div><p>
+#: src/lessons/sort/ExExchangeSort.html:73
+#, fuzzy
+#| msgid "The pseudo-code of this algorithm is thus the following:"
+msgid "The pseudo-code of the BubbleSort3 algorithm is the following:"
+msgstr "Le pseudo-code de cet algorithme est donc le suivant :"
+
+#. type: Content of: <div><pre>
+#: src/lessons/sort/ExExchangeSort.html:74
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5649,28 +5729,39 @@ msgstr ""
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
 "       Si le parcours sur les j n'a rien inversé, quiter la fonction\n"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:74
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:81
+#, fuzzy
+#| msgid ""
+#| "This optimization is even more disapointing: it only provide a gain of a "
+#| "few percents on the amount of reads over BubbleSort2."
 msgid ""
-"This optimization is even more disapointing: it only provide a gain of a few "
-"percents on the amount of reads over BubbleSort2."
+"This optimization is even more disappointing: it only provide a gain of a "
+"few percents on the amount of reads over BubbleSort2."
 msgstr ""
 "Cet optimisation est plus décevante : on ne gagne que quelques pourcents en "
 "nombre de lectures sur BubbleSort2."
 
-#. type: Content of: <p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:77
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:84
 msgid "CocktailSort"
 msgstr "CocktailSort"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:79
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:86
+#, fuzzy
+#| msgid ""
+#| "To improve further the algorithm, we need to look closer its behavior. "
+#| "One can notice that big elements are moved very quickly in position while "
+#| "small ones move very slowly to their destination. They are thus "
+#| "traditionally referred to as \"rabbits\" and \"turtles\" respectively for "
+#| "big fast values and small slow ones.."
 msgid ""
 "To improve further the algorithm, we need to look closer its behavior. One "
 "can notice that big elements are moved very quickly in position while small "
 "ones move very slowly to their destination. They are thus traditionally "
 "referred to as \"rabbits\" and \"turtles\" respectively for big fast values "
-"and small slow ones.."
+"and small slow ones."
 msgstr ""
 "Pour améliorer encore notre algorithme, il faut regarder un peu plus en "
 "détail son comportement. On peut constater que les grands éléments sont très "
@@ -5679,8 +5770,8 @@ msgstr ""
 "tortues pour désigner respectivement les grandes valeurs et les petites "
 "valeurs."
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:85
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:92
 msgid ""
 "To help the turtles moving faster, the cocktail sort traverse alternatively "
 "the array from right to left and from left to right. Here is the pseudo-code:"
@@ -5689,8 +5780,8 @@ msgstr ""
 "alternativement le tableau de gauche à droite et de droite à gauche. Voici "
 "son pseudo-code:"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:90
+#. type: Content of: <pre>
+#: src/lessons/sort/ExExchangeSort.html:97
 #, no-wrap
 msgid ""
 "Do\n"
@@ -5707,24 +5798,29 @@ msgstr ""
 "    si i et i+1 doivent être échangées, le faire\n"
 "tant qu'au moins l'un des parcours a inversé un élément\n"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:98
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:105
+#, fuzzy
+#| msgid ""
+#| "One can see that cocktail sort achieves exactly the same amount of swaps "
+#| "than the bubble sort, but improves sligtly on read amount. It is however "
+#| "still worse than BubbleSort2 to that extend."
 msgid ""
 "One can see that cocktail sort achieves exactly the same amount of swaps "
-"than the bubble sort, but improves sligtly on read amount. It is however "
+"than the bubble sort, but improves slightly on read amount. It is however "
 "still worse than BubbleSort2 to that extend."
 msgstr ""
 "On constate que le tri cocktail fait très exactement le même nombre "
 "d'échanges que le tri à bulle, mais qu'il améliore les choses sur le nombre "
 "de lectures. Il reste cependant moins bon que BubbleSort2 en la matière."
 
-#. type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:102
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:109
 msgid "CocktailSort2"
 msgstr "CocktailSort2"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:104
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:111
 msgid ""
 "We will now apply to CocktailSort the same optimization than BubbleSort2 did "
 "to BubbleSort. We must remember the limits of the array part not being "
@@ -5735,8 +5831,8 @@ msgstr ""
 "Il nous faut nous souvenir des bornes du tableau pas encore trié, et le "
 "parcourir alternativement de droite à gauche et de gauche à droite:"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:109
+#. type: Content of: <pre>
+#: src/lessons/sort/ExExchangeSort.html:116
 #, no-wrap
 msgid ""
 "beg=0; end=len-2\n"
@@ -5759,13 +5855,13 @@ msgstr ""
 "  debut++\n"
 "tant qu'au moins l'un des parcours a inversé un élément\n"
 
-#. type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:120
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:127
 msgid "CocktailSort3"
 msgstr "CocktailSort3"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:121
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:129
 msgid ""
 "Even if the asymptotic complexity of CocktailSort2 is the same than the one "
 "of BubbleSort, it seem to perform better in practice. It is even possible to "
@@ -5781,24 +5877,36 @@ msgstr ""
 "descroissant. De même, on peut quiter si le parcours croissant a inversé des "
 "choses, mais pas le parcours décroissant."
 
-#. type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:128
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:136
 msgid "CombSort"
 msgstr "CombSort"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:130
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:138
+#, fuzzy
+#| msgid ""
+#| "We saw that CocktailSort improve a bit for turtles (ie, small values near "
+#| "to the end of the array), but it is still possible to achieve better. "
+#| "ComboSort comes down to providing them a short cut: instead of comparing "
+#| "adjacent values, we compare values separated by a gap bigger than 1. That "
+#| "way, turtles we traverse <i>gap</i> cells at each traversal. Naturally, "
+#| "we have to apply the algorithm with decreasing gaps, and finish with "
+#| "<i>gap=1</i> to ensure that the array is correctly sorted afterward. "
+#| "Choosing the right gap and how to decrease it is a difficult question, "
+#| "but in practice, dividing it by 1.3 after each traversal leads to good "
+#| "performance. Here is the corresponding pseudo-code:"
 msgid ""
-"We saw that CocktailSort improve a bit for turtles (ie, small values near to "
-"the end of the array), but it is still possible to achieve better. ComboSort "
-"comes down to providing them a short cut: instead of comparing adjacent "
-"values, we compare values separated by a gap bigger than 1. That way, "
-"turtles we traverse <i>gap</i> cells at each traversal. Naturally, we have "
-"to apply the algorithm with decreasing gaps, and finish with <i>gap=1</i> to "
-"ensure that the array is correctly sorted afterward. Choosing the right gap "
-"and how to decrease it is a difficult question, but in practice, dividing it "
-"by 1.3 after each traversal leads to good performance. Here is the "
-"corresponding pseudo-code:"
+"We saw that CocktailSort improve a bit for turtles (i.e. small values near "
+"to the end of the array), but it is still possible to achieve better. "
+"ComboSort comes down to providing them a short cut: instead of comparing "
+"adjacent values, we compare values separated by a gap bigger than 1. That "
+"way, turtles we traverse <i>gap</i> cells at each traversal. Naturally, we "
+"have to apply the algorithm with decreasing gaps, and finish with <i>gap=1</"
+"i> to ensure that the array is correctly sorted afterward. Choosing the "
+"right gap and how to decrease it is a difficult question, but in practice, "
+"dividing it by 1.3 after each traversal leads to good performance. Here is "
+"the corresponding pseudo-code:"
 msgstr ""
 "Nous avons vu que le tri cocktail permet d'améliorer un peu les choses pour "
 "les tortues (ie, les petites valeurs près de la fin du tableau), mais on "
@@ -5812,9 +5920,19 @@ msgstr ""
 "wikipédia en anglais sur le thème), mais en pratique, le diviser par 1.3 à "
 "chaque fois amène de bons résultats. Voici le pseudo-code correspondant :"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/sort/ExExchangeSort.html:142
-#, no-wrap
+#. type: Content of: <pre>
+#: src/lessons/sort/ExExchangeSort.html:150
+#, fuzzy, no-wrap
+#| msgid ""
+#| "gap = len;\n"
+#| "do\n"
+#| "   if gap>1 then\n"
+#| "     gap = gap / 1.3\n"
+#| "   i = O\n"
+#| "   while i+gap &lt; len do:\n"
+#| "     if i and i+gap must be swapped, do it\n"
+#| "     increase i by the gap\n"
+#| "while the gap is bigger than 1 and/or the last traversal swapped at least one pair\n"
 msgid ""
 "gap = len;\n"
 "do\n"
@@ -5823,7 +5941,7 @@ msgid ""
 "   i = O\n"
 "   while i+gap &lt; len do:\n"
 "     if i and i+gap must be swapped, do it\n"
-"     increase i by the gap\n"
+"     increase i by ones\n"
 "while the gap is bigger than 1 and/or the last traversal swapped at least one pair\n"
 msgstr ""
 " ecart = lgr;\n"
@@ -5836,26 +5954,38 @@ msgstr ""
 "     ajouter ecart à i\n"
 " tant que l'écart est plus grand que 1 et/ou que le dernier parcours a inversé au moins un élément\n"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:153
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:161
+#, fuzzy
+#| msgid ""
+#| "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
+#| "rediscovered and popularised by Stephen Lacey and Richard Box, who "
+#| "described it in Byte Magazine in April 1991"
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
-"rediscovered and popularised by Stephen Lacey and Richard Box, who described "
-"it in Byte Magazine in April 1991"
+"rediscovered and popularized by Stephen Lacey and Richard Box, who described "
+"it in Byte Magazine in April 1991."
 msgstr ""
 "Cet algorithme a été inventé par Wlodek Dobosiewicz en 1980 et redécouvert "
 "et popularisé par Stephen Lacey et Richard Box, qui l'ont décrit dans le "
 "magazine Byte d'avril 1991."
 
-#. type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:157
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:165
 msgid "CombSort11"
 msgstr "CombSort11"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:159
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:167
+#, fuzzy
+#| msgid ""
+#| "The authors of this algorithm constated that the performance is increased "
+#| "if we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, "
+#| "1)  rather than (9, 6, 4, 3, 2, 1) or (10, 7, 5, 3, 2, 1). Rework the "
+#| "code of CombSort to ensure just after the gap update that if it is 9 or "
+#| "10, we should use 11 instead."
 msgid ""
-"The authors of this algorithm constated that the performance is increased if "
+"The authors of this algorithm observed that the performance is increased if "
 "we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, 1)  "
 "rather than (9, 6, 4, 3, 2, 1) or (10, 7, 5, 3, 2, 1). Rework the code of "
 "CombSort to ensure just after the gap update that if it is 9 or 10, we "
@@ -5867,13 +5997,13 @@ msgstr ""
 "code de CombSort, et indiquez juste après la mise à jour de l'écart que si "
 "la valeur est 9 ou 10, il faut utiliser 11 à la place."
 
-#. type: Content of: <p><p><p><p><h2>
-#: src/lessons/sort/ExExchangeSort.html:165
+#. type: Content of: <h2>
+#: src/lessons/sort/ExExchangeSort.html:173
 msgid "GnomeSort"
 msgstr "GnomeSort"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:167
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:175
 msgid ""
 "The Gnome sort is similar to insertion sort, but the elements are moved in "
 "position by a serie of swaps just like in bubble sort. It is named after the "
@@ -5886,8 +6016,8 @@ msgstr ""
 "une série de pots de fleurs. Voici la description de l'algorithme par son "
 "auteur:"
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/sort/ExExchangeSort.html:172
+#. type: Content of: <p>
+#: src/lessons/sort/ExExchangeSort.html:180
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
@@ -7711,11 +7841,11 @@ msgstr "Radio réveil"
 #: src/lessons/bat/bool2/AlarmClock.html:2
 msgid ""
 "Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a "
-"boolean indicating if we are on vacation, return a string of the form \"7:00"
-"\" indicating when the alarm clock should ring. Weekdays, the alarm should "
-"be \"7:00\" and on the weekend it should be \"10:00\". Unless we are on "
-"vacation -- then on weekdays it should be \"10:00\" and weekends it should "
-"be \"off\"."
+"boolean indicating if we are on vacation, return a string of the form "
+"\"7:00\" indicating when the alarm clock should ring. Weekdays, the alarm "
+"should be \"7:00\" and on the weekend it should be \"10:00\". Unless we are "
+"on vacation -- then on weekdays it should be \"10:00\" and weekends it "
+"should be \"off\"."
 msgstr ""
 "Étant donné le jour de la semaine, codé de la façon suivante : 0=Dimanche, "
 "1=Lundi, 2=Mardi, ... 6=Samedi, et un booléen vacation indiquant si nous "
