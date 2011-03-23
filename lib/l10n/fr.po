@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-03-23 15:04+0100\n"
-"PO-Revision-Date: 2011-03-23 15:04+0100\n"
+"PO-Revision-Date: 2011-03-23 15:30+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -700,13 +700,13 @@ msgid ""
 "There is some extra constraint: you can only move one disk at a time, and "
 "you cannot move a big disk over a smaller one.  The only function provided "
 "is the following:"
-msgstr ""
+msgstr "Ce monde implémente le problème ultra classique de Hanoï. Il vous est demandé de déplacer une pile de disques du piquet où ils se trouvent vers un piquet cible (passé comme second paramètre dans le nom du monde -- numéro 1 pour le monde par défaut). Il y a quelques contraintes supplémentaires: il est interdit de déplacer plus d'un disque à la fois, ainsi que de placer un disque plus grand sur un disque plus petit. La seule fonction fournie est la suivante :"
 
 #. type: Content of: <pre>
 #: src/universe/hanoi/HanoiWorld.html:11
 #, no-wrap
 msgid "public void move(int src, int dst) throws HanoiInvalidMove;"
-msgstr ""
+msgstr "public void move(int src, int dst) throws HanoiInvalidMove;"
 
 #. type: Content of: outside any tag (error?)
 #: src/universe/hanoi/HanoiWorld.html:13
@@ -714,7 +714,7 @@ msgid ""
 "It moves one disk from the stick <code>src</code> onto the stick <code>dst</"
 "code>. As you can see, if you try to do an invalid move (like laying a disk "
 "over a smaller one), an exception is thrown."
-msgstr ""
+msgstr "Elle déplace un disque d'un piquet <code>src</code> vers le piquet <code>dst</code>. Comme vous le voyez, si vous demandez un déplacement invalide (comme le placement d'un disque sur un disque plus petit), une exception est levée."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
@@ -5839,18 +5839,6 @@ msgstr "CombSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:138
-#, fuzzy
-#| msgid ""
-#| "We saw that CocktailSort improve a bit for turtles (ie, small values near "
-#| "to the end of the array), but it is still possible to achieve better. "
-#| "ComboSort comes down to providing them a short cut: instead of comparing "
-#| "adjacent values, we compare values separated by a gap bigger than 1. That "
-#| "way, turtles we traverse <i>gap</i> cells at each traversal. Naturally, "
-#| "we have to apply the algorithm with decreasing gaps, and finish with "
-#| "<i>gap=1</i> to ensure that the array is correctly sorted afterward. "
-#| "Choosing the right gap and how to decrease it is a difficult question, "
-#| "but in practice, dividing it by 1.3 after each traversal leads to good "
-#| "performance. Here is the corresponding pseudo-code:"
 msgid ""
 "We saw that CocktailSort improve a bit for turtles (i.e. small values near "
 "to the end of the array), but it is still possible to achieve better. "
@@ -5877,17 +5865,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/ExExchangeSort.html:150
-#, fuzzy, no-wrap
-#| msgid ""
-#| "gap = len;\n"
-#| "do\n"
-#| "   if gap>1 then\n"
-#| "     gap = gap / 1.3\n"
-#| "   i = O\n"
-#| "   while i+gap &lt; len do:\n"
-#| "     if i and i+gap must be swapped, do it\n"
-#| "     increase i by the gap\n"
-#| "while the gap is bigger than 1 and/or the last traversal swapped at least one pair\n"
+#, no-wrap
 msgid ""
 "gap = len;\n"
 "do\n"
@@ -5911,11 +5889,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:161
-#, fuzzy
-#| msgid ""
-#| "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
-#| "rediscovered and popularised by Stephen Lacey and Richard Box, who "
-#| "described it in Byte Magazine in April 1991"
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
@@ -5932,13 +5905,6 @@ msgstr "CombSort11"
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:167
-#, fuzzy
-#| msgid ""
-#| "The authors of this algorithm constated that the performance is increased "
-#| "if we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, "
-#| "1)  rather than (9, 6, 4, 3, 2, 1) or (10, 7, 5, 3, 2, 1). Rework the "
-#| "code of CombSort to ensure just after the gap update that if it is 9 or "
-#| "10, we should use 11 instead."
 msgid ""
 "The authors of this algorithm observed that the performance is increased if "
 "we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, 1)  "
@@ -6954,9 +6920,8 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/maze/PledgeMaze.html:1
-#, fuzzy
 msgid "Pledge algorithm"
-msgstr "Algorithmes récursifs"
+msgstr "Algorithmes de Pledge"
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:3
@@ -7825,7 +7790,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/BlueTicket.html:1
 msgid "BlueTicket"
-msgstr ""
+msgstr "Ticket bleu"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/bool2/BlueTicket.html:2
@@ -7836,6 +7801,11 @@ msgid ""
 "Otherwise if the ab sum is exactly 10 more than either bc or ac sums, the "
 "result is 5. Otherwise the result is 0."
 msgstr ""
+"Vous avez un ticket de loterie bleu, avec des entiers a, b et c inscrits "
+"dessus. Cela fait trois paires que l'on appellera ab, bc et ac. Considérez la "
+"somme des nombres de chaque pair. Si la somme de l'une des paires vaut "
+"exactement 10, le résultat est 10. Sinon, si la somme ab vaut exactement 10 de "
+"plus que les sommes bc ou ac, le résultat est 5. Sinon, le résultat est 0."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/CaughtSpeeding.html:1
