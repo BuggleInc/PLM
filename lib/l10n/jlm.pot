@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-01-14 18:06+0100\n"
+"POT-Creation-Date: 2011-03-23 15:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4568,8 +4568,8 @@ msgid ""
 "   while i+gap &lt; len do:\n"
 "     if i and i+gap must be swapped, do it\n"
 "     increase i by the gap\n"
-"while the gap is bigger than 1 or the last traversal swapped at least "
-"one pair\n"
+"while the gap is bigger than 1 or the last traversal swapped at least one "
+"pair\n"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5319,7 +5319,7 @@ msgstr ""
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/WallFollowerMaze.html:49
-msgid "Intial situation"
+msgid "Initial situation"
 msgstr ""
 
 #. type: Content of: <div><table><tr><td>
