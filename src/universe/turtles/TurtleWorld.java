@@ -32,7 +32,7 @@ public class TurtleWorld extends World {
 		this.height = height;
 	}
 	
-	public TurtleWorld(World world2) {
+	public TurtleWorld(TurtleWorld world2) {
 		super(world2);
 	}
 
