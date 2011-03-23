@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-01-14 18:06+0100\n"
-"PO-Revision-Date: 2011-02-24 13:23+0100\n"
+"POT-Creation-Date: 2011-03-23 15:04+0100\n"
+"PO-Revision-Date: 2011-03-23 15:04+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -5598,16 +5598,6 @@ msgstr "BubbleSort2"
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:37
-#, fuzzy
-#| msgid ""
-#| "If you look carefully at the behavior of BubbleSort, a first easy "
-#| "optimisation appears: after one traversal, the last element of the array "
-#| "must be the biggest of all since the traversal moved it up like a bubble "
-#| "to its position. More generally, after N traversal, we know that the N "
-#| "last elements of the array are already sorted. It is thus not necessary "
-#| "to compare them again during the subsequent traversals. For now, we will "
-#| "have as many traversal as there is in the array. This gives the following "
-#| "pseudo-code:"
 msgid ""
 "If you look carefully at the behavior of BubbleSort, a first easy "
 "optimization appears: after one traversal, the last element of the array "
@@ -5624,14 +5614,12 @@ msgstr ""
 "on sait que les N derniers éléments du tableau sont déjà triés. En "
 "conclusion, il n'est pas utile de les recomparer sur les parcours suivants. "
 "Dans un premier temps, nous ferons autant de parcours qu'il y a d'éléments "
-"dans le tableau. Cela nous donne le pseudo-code suivant :"
+"dans le tableau."
 
 #. type: Content of: <div><p>
 #: src/lessons/sort/ExExchangeSort.html:46
-#, fuzzy
-#| msgid "The pseudo-code of this algorithm is thus the following:"
 msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
-msgstr "Le pseudo-code de cet algorithme est donc le suivant :"
+msgstr "Le pseudo-code de l'algorithme BubbleSort2 est le suivant :"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/ExExchangeSort.html:47
@@ -5647,16 +5635,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:53
-#, fuzzy
-#| msgid ""
-#| "When we run this algorithm, it is quite disapointing to see that it runs "
-#| "approximately at the same speed than the basic version of BubbleSort. "
-#| "This is a graphical effect only since only value changes are graphically "
-#| "represented. Since this variation avoids some useless comparisons, it "
-#| "does exactly the same amount of swaps that the basic version. It is thus "
-#| "quite logical that the graphical interface draws this version at the same "
-#| "pace than the base version. But the stats on the amount of reads show "
-#| "that we saved about the fourth of the amount of reads, which is not bad."
 msgid ""
 "When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
@@ -5694,11 +5672,6 @@ msgstr "BubbleSort3"
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:68
-#, fuzzy
-#| msgid ""
-#| "Let's now reintroduce the little optimization we removed at previous "
-#| "step: if a traversal does not swap any element, it means that the array "
-#| "is already sorted. This leads to the following pseudo-code:"
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
@@ -5710,10 +5683,8 @@ msgstr ""
 
 #. type: Content of: <div><p>
 #: src/lessons/sort/ExExchangeSort.html:73
-#, fuzzy
-#| msgid "The pseudo-code of this algorithm is thus the following:"
 msgid "The pseudo-code of the BubbleSort3 algorithm is the following:"
-msgstr "Le pseudo-code de cet algorithme est donc le suivant :"
+msgstr "Le pseudo-code de l'algorithme BubbleSort3 est le suivant :"
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/ExExchangeSort.html:74
@@ -5731,16 +5702,12 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:81
-#, fuzzy
-#| msgid ""
-#| "This optimization is even more disapointing: it only provide a gain of a "
-#| "few percents on the amount of reads over BubbleSort2."
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
 msgstr ""
-"Cet optimisation est plus décevante : on ne gagne que quelques pourcents en "
-"nombre de lectures sur BubbleSort2."
+"Cet optimisation est encore plus décevante : on ne gagne que quelques "
+"pourcents en nombre de lectures sur BubbleSort2."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/ExExchangeSort.html:84
@@ -5749,13 +5716,6 @@ msgstr "CocktailSort"
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:86
-#, fuzzy
-#| msgid ""
-#| "To improve further the algorithm, we need to look closer its behavior. "
-#| "One can notice that big elements are moved very quickly in position while "
-#| "small ones move very slowly to their destination. They are thus "
-#| "traditionally referred to as \"rabbits\" and \"turtles\" respectively for "
-#| "big fast values and small slow ones.."
 msgid ""
 "To improve further the algorithm, we need to look closer its behavior. One "
 "can notice that big elements are moved very quickly in position while small "
@@ -5800,11 +5760,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/ExExchangeSort.html:105
-#, fuzzy
-#| msgid ""
-#| "One can see that cocktail sort achieves exactly the same amount of swaps "
-#| "than the bubble sort, but improves sligtly on read amount. It is however "
-#| "still worse than BubbleSort2 to that extend."
 msgid ""
 "One can see that cocktail sort achieves exactly the same amount of swaps "
 "than the bubble sort, but improves slightly on read amount. It is however "
@@ -6027,12 +5982,15 @@ msgid ""
 "previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
 msgstr ""
-"L'algorithme de tri Gnome repose sur la manière habituelle de travailler des Nains de Jardin Hollandais Garden"
-"(Du.: tuinkabouter). Voici comment les nains de jardin trient une ligne de pots de fleurs."
-"Le nain regarde le pot de fleur qui est à côté de lui et il regarde également le pot de fleurs précédent; si "
-"ces deux pots sont alignés dans le bon ordre, le nain se déplace en avant d'un pot de fleurs, sinon il les échange "
-"et se déplace en arrière d'un pot de fleur. Condition d'arrêt : si il n'y a pas "
-"de pot de fleurs précédent, le nain avance ; si il n'y a pas de pot suivant alors il a terminé sa tâche."
+"L'algorithme de tri Gnome repose sur la manière habituelle de travailler des "
+"Nains de Jardin Hollandais Garden(Du.: tuinkabouter). Voici comment les "
+"nains de jardin trient une ligne de pots de fleurs.Le nain regarde le pot de "
+"fleur qui est à côté de lui et il regarde également le pot de fleurs "
+"précédent; si ces deux pots sont alignés dans le bon ordre, le nain se "
+"déplace en avant d'un pot de fleurs, sinon il les échange et se déplace en "
+"arrière d'un pot de fleur. Condition d'arrêt : si il n'y a pas de pot de "
+"fleurs précédent, le nain avance ; si il n'y a pas de pot suivant alors il a "
+"terminé sa tâche."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/Main.html:1
@@ -6963,32 +6921,28 @@ msgstr ""
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/WallFollowerMaze.html:45
-#, fuzzy
 msgid "Case 1"
-msgstr "Chateau"
+msgstr "Case 1"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/WallFollowerMaze.html:46
-#, fuzzy
 msgid "Case 2"
-msgstr "Chateau"
+msgstr "Case 2"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/WallFollowerMaze.html:47
-#, fuzzy
 msgid "Case 3"
-msgstr "Chateau"
+msgstr "Case 3"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/WallFollowerMaze.html:49
-#, fuzzy
-msgid "Intial situation"
-msgstr "Instructions conditionnelles"
+msgid "Initial situation"
+msgstr "Situation initiale"
 
 #. type: Content of: <div><table><tr><td>
 #: src/lessons/maze/WallFollowerMaze.html:54
 msgid "Where is the next step"
-msgstr ""
+msgstr "Étape suivante"
 
 #. type: Content of: <div><p>
 #: src/lessons/maze/WallFollowerMaze.html:60
