@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-03-23 15:04+0100\n"
-"PO-Revision-Date: 2011-03-23 16:52+0100\n"
+"PO-Revision-Date: 2011-03-23 17:00+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -7839,7 +7839,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/CaughtSpeeding.html:1
 msgid "CaughtSpeeding"
-msgstr ""
+msgstr "Radar de vitesse"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/bool2/CaughtSpeeding.html:2
@@ -7851,11 +7851,18 @@ msgid ""
 "result is 2. Unless it is your birthday -- on that day, your speed can be 5 "
 "higher in all cases."
 msgstr ""
+"Vous conduisez un peu trop vite et un officier de police vous arrête. "
+"Écrivez le code pour calculer le résultat, encodé sous forme d'un entier : "
+"0=pas d'amende, 1=petite amende, 2=grosse amende. Si votre vitesse est "
+"inférieure à 60, le résultat est 0. Si la vitesse est incluse entre 61 et 80 "
+"(inclus), le résultat est 1. Si la vitesse est 81 ou plus, le résultat est "
+"2. Tout ceci ne vaut que si ce n'est pas votre anniversaire aujourd'hui, car "
+"sinon, votre vitesse peut être supérieure de 5 dans tous les cas."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/CigarParty.html:1
 msgid "CigarParty"
-msgstr ""
+msgstr "Cigares de fête"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/bool2/CigarParty.html:2
@@ -7865,6 +7872,10 @@ msgid ""
 "inclusive. Unless it is the weekend, in which case there is no upper bound "
 "on the number of cigars. Return true if the party with the"
 msgstr ""
+"Quand les écureuils font la fête, ils aiment avoir des cigares. Une fête "
+"d'écureuils est réussie si le nombre de cigares est entre 40 et 60 (inclus). "
+"Sauf si c'est le week-end, auquel cas il n'y a pas de limite supérieure au "
+"nombre de cigares. Renvoyez vrai si la fête est réussie. "
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/DateFashion.html:1
