@@ -12,6 +12,7 @@ import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -180,6 +181,18 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menu);
 
+		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "Join the forum", null) {
+			private static final long serialVersionUID = 1L;
+
+			private JDialog dialog = null;
+
+			public void actionPerformed(ActionEvent arg0) {
+				if (this.dialog == null) {
+					this.dialog = new JLMForumDialog();
+				}
+				this.dialog.setVisible(true);
+			}
+		}));
 		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this lesson", null) {
 			private static final long serialVersionUID = 1L;
 
