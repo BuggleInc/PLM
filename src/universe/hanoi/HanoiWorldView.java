@@ -17,12 +17,6 @@ public class HanoiWorldView extends WorldView {
 	}
 
 	@Override
-	public boolean isWorldCompatible(World world) {
-		return world instanceof HanoiWorld;
-	}
-
-	
-	@Override
 	public void paintComponent(Graphics g) {
 		HanoiWorld hw = (HanoiWorld)world;
 		super.paintComponent(g);

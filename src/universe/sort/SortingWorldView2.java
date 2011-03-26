@@ -21,11 +21,6 @@ public class SortingWorldView2 extends WorldView {
 	}
 
 	@Override
-	public boolean isWorldCompatible(World world) {
-		return world instanceof SortingWorld;
-	}
-
-	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;

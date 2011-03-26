@@ -19,10 +19,6 @@ public class SortingWorldView extends WorldView {
 	public SortingWorldView(World w) {
 		super(w);
 	}
-	@Override
-	public boolean isWorldCompatible(World world) {
-		return world instanceof SortingWorld;
-	}
 
 	@Override
 	public void paintComponent(Graphics g) {

@@ -280,11 +280,6 @@ public class LightBotWorldViewIsometric extends WorldView {
 	}
 
 	@Override
-	public boolean isWorldCompatible(World world) {
-		return world instanceof LightBotWorld;
-	}
-
-	@Override
 	public void worldHasMoved() {
 		computeZOrders();
 		super.worldHasMoved();

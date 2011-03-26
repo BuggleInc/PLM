@@ -24,10 +24,12 @@ public class HanoiCreateViewAnswer extends WorldView {
 	 * This method is called by JLM when the user selects a new world in the interface. 
 	 * If it returns yes, then the WorldView component is reused. If not, a new one is created.
 	 * 
-	 * The classical code of this method is usually simply a call to instanceof as follows.
+	 * This method is not often defined as the ancestor checks that the classes match 
+	 * (using world.getClass()), but you may want to override in specific settings. 
+	 * For example, BatWorldView redefines it to false to ensure that a new view is recreated each time.
 	 */
 	public boolean isWorldCompatible(World world) {
-		return false;//FIXME world instanceof HanoiCreateWorldEntityWorld;
+		return super.isWorldCompatible(world);
 	}
 
 	/** Main method of the renderer: the painting one

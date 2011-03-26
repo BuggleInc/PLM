@@ -55,9 +55,4 @@ public class TurtleWorldView extends WorldView {
 		t.rotate(b.getHeadingRadian(), ic.getIconWidth()/2., ic.getIconHeight()/2.);
 		g.drawImage(ic.getImage(), t, null);
 	}
-
-	@Override
-	public boolean isWorldCompatible(World world) {
-		return world instanceof TurtleWorld;
-	}
 }

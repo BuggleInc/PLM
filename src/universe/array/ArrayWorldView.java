@@ -20,11 +20,6 @@ public class ArrayWorldView extends WorldView {
 		}
 		
 		@Override
-		public boolean isWorldCompatible(World world) {
-			return world instanceof ArrayWorld;
-		}
-	
-		@Override
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			Graphics2D g2 = (Graphics2D) g;

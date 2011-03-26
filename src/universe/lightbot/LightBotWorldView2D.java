@@ -137,9 +137,4 @@ public class LightBotWorldView2D extends WorldView {
 		g.setColor(LightBotWorldView2D.BOT_COLOR);
 		g.fill(new Arc2D.Double((cx-0.25)*LightBotWorldView2D.CELL_WIDTH,(cy+0.1)*LightBotWorldView2D.CELL_WIDTH,1.5*width,1.5*height,60,60, Arc2D.PIE));		
 	}
-
-	@Override
-	public boolean isWorldCompatible(World world) {
-		return world instanceof LightBotWorld;
-	}
 }
