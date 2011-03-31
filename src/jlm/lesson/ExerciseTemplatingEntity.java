@@ -4,6 +4,12 @@ import java.util.List;
 
 import jlm.universe.World;
 
+/** This class of Exercises are useful to merge the entity and world within the same class.
+ * #BatExercice is a known implementation 
+ *
+ *
+ */
+
 public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	
 	public ExerciseTemplatingEntity(Lesson lesson) {
