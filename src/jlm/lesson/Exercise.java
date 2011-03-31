@@ -11,7 +11,6 @@ import java.util.TreeMap;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-import jlm.core.InMemoryCompiler;
 import jlm.core.LogWriter;
 import jlm.exception.BrokenLessonException;
 import jlm.exception.JLMCompilerException;
@@ -109,7 +108,7 @@ public abstract class Exercise {
 	 * +++++++++++++++++++++++++
 	 * 
 	 */
-	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. I tried to put it as static, but of course strange behaviors happen afterwars
+	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. I tried to put it as static, but of course strange behaviors happen afterwards
 	// Create a compiler of classes (using java 1.6)
 	private final InMemoryCompiler compiler = new InMemoryCompiler(
 			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
