@@ -35,7 +35,7 @@ public class Turtle extends Entity {
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
 	 * constructor. But it should not be used as most methods assert on world
-	 * being not null. After using it, {@link Entitty#setWorld(BuggleWorld)} must be
+	 * being not null. After using it, {@link Entity#setWorld(BuggleWorld)} must be
 	 * used ASAP.
 	 */
 	public Turtle() {

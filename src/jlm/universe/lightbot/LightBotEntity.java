@@ -25,7 +25,7 @@ public class LightBotEntity extends Entity  {
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
 	 * constructor. But it should not be used as most methods assert on world
-	 * being not null. After using it, {@link Entity#setWorld(LightBotWorld)} must be used
+	 * being not null. After using it, {@link jlm.universe.Entity#setWorld(LightBotWorld)} must be used
 	 * ASAP.
 	 */
 	public LightBotEntity() {
