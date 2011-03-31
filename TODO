@@ -5,7 +5,6 @@
  * le libération du verrou "step-by-step" ne se passe pas bien lors de l'utilisation de "Reset",
    un "Run" remet zéro correctement
  * il faudrait supprimer les \160 qui empêchent la compilation
- * reported linenumber when compilation errors occur are still wrong
  * certains tests de countTeen() semblent faux par rapport à l'énoncé
  * certains énoncés extraits javabat sont tronqués
 
