@@ -1,7 +1,7 @@
 package lessons.recursion;
 
 
-public class CircleEntity extends universe.turtles.Turtle {
+public class CircleEntity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN SOLUTION */
 	public void circle(double step) {

@@ -1,6 +1,6 @@
 package lessons.backtracking;
 
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
 
 public class ExKnapsack extends BacktrackingExercise {

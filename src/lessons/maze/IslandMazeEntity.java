@@ -2,7 +2,7 @@ package lessons.maze;
 
 import jlm.universe.Direction;
 
-public class IslandMazeEntity extends universe.bugglequest.SimpleBuggle {
+public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

@@ -2,17 +2,17 @@ package lessons.maze;
 
 import java.awt.Color;
 
-import jlm.core.Game;
-import jlm.lesson.ExerciseTemplated;
-import jlm.lesson.Lesson;
+import jlm.core.model.Game;
+import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.lesson.Lesson;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;
-import universe.bugglequest.AbstractBuggle;
-import universe.bugglequest.Buggle;
-import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.exception.AlreadyHaveBaggleException;
-import universe.bugglequest.exception.NoBaggleUnderBuggleException;
+import jlm.universe.bugglequest.AbstractBuggle;
+import jlm.universe.bugglequest.Buggle;
+import jlm.universe.bugglequest.BuggleWorld;
+import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
+import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 public class PledgeMaze extends ExerciseTemplated {
 

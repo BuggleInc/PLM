@@ -1,9 +1,8 @@
 package lessons.maze;
 
-import jlm.universe.Direction;
 
 @SuppressWarnings("unused")
-public class WallFollowerMazeEntity extends universe.bugglequest.SimpleBuggle {
+public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited()) 

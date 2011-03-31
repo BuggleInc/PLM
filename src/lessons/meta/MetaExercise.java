@@ -1,7 +1,7 @@
 package lessons.meta;
 
-import jlm.lesson.ExerciseTemplated;
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.lesson.Lesson;
 
 public class MetaExercise extends ExerciseTemplated {
 	boolean error = false;

@@ -1,10 +1,10 @@
 package lessons.maze;
 
 import jlm.universe.Direction;
-import universe.bugglequest.BuggleWorldCell;
-import universe.bugglequest.BuggleWorld;
+import jlm.universe.bugglequest.BuggleWorld;
+import jlm.universe.bugglequest.BuggleWorldCell;
 
-public class ShortestPathMazeEntity extends universe.bugglequest.SimpleBuggle {
+public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-public class LoopWhileEntity extends universe.bugglequest.SimpleBuggle {
+public class LoopWhileEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("forward(int) forbidden in this exercise");

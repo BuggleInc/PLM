@@ -2,9 +2,9 @@ package lessons.meta;
 
 import java.util.List;
 
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
-import universe.hanoi.HanoiInvalidMove;
+import jlm.universe.hanoi.HanoiInvalidMove;
 
 public class HanoiCreateEntity extends MetaExercise {
 	public HanoiCreateEntity(Lesson lesson) {

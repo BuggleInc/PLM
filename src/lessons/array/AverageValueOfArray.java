@@ -2,9 +2,9 @@ package lessons.array;
 
 import java.util.Random;
 
-import jlm.lesson.Lesson;
-import universe.array.ArrayExercise;
-import universe.array.ArrayWorld;
+import jlm.core.model.lesson.Lesson;
+import jlm.universe.array.ArrayExercise;
+import jlm.universe.array.ArrayWorld;
 
 public class AverageValueOfArray extends ArrayExercise {
 

@@ -3,8 +3,8 @@ package lessons.backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-import jlm.lesson.ExerciseTemplated;
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
 
 public abstract class BacktrackingExercise extends ExerciseTemplated {

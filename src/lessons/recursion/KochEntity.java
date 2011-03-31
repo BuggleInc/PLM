@@ -1,6 +1,6 @@
 package lessons.recursion;
 
-public class KochEntity extends universe.turtles.Turtle {
+public class KochEntity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 void snowFlake (int levels, double length) {

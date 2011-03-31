@@ -2,7 +2,7 @@ package lessons.welcome;
 
 import jlm.universe.Direction;
 
-public class MethodsArgsEntity extends universe.bugglequest.SimpleBuggle {
+public class MethodsArgsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("forward(int) forbidden in this exercise");

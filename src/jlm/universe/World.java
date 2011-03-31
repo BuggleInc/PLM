@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import jlm.core.Game;
-import jlm.core.Reader;
-import jlm.ui.WorldView;
+import jlm.core.model.Game;
+import jlm.core.model.Reader;
+import jlm.core.ui.WorldView;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.ElementList;

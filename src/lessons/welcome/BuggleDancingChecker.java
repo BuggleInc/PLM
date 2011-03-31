@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.util.Stack;
 
 import jlm.universe.Direction;
-import universe.bugglequest.BuggleWorld;
-import universe.bugglequest.SimpleBuggle;
+import jlm.universe.bugglequest.BuggleWorld;
+import jlm.universe.bugglequest.SimpleBuggle;
 
 
 

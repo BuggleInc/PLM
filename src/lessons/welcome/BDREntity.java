@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-public class BDREntity extends universe.bugglequest.SimpleBuggle {
+public class BDREntity extends jlm.universe.bugglequest.SimpleBuggle {
 	public char getIndication() { 
 		if (isOverMessage()) { 
 			return readMessage().charAt(0); 

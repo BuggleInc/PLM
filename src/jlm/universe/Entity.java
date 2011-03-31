@@ -3,7 +3,7 @@ package jlm.universe;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
-import jlm.core.Game;
+import jlm.core.model.Game;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -110,7 +110,7 @@ public abstract class Entity {
 		return Thread.currentThread().getStackTrace();
 	}
 	
-	/** @brief retrieve one parameter from the world */
+	/** Retrieve one parameter from the world */
 	protected Object getParam(int i) {
 		return world.parameters[i];
 	}	

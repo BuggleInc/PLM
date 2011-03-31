@@ -1,6 +1,6 @@
 package lessons.sort;
 
-import universe.sort.SortingEntity;
+import jlm.universe.sort.SortingEntity;
 
 /* Variante with precalculated gap:
  *

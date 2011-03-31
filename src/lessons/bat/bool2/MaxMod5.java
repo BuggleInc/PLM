@@ -1,10 +1,10 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.bat.bool2;
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
-import universe.bat.BatExercise;
-import universe.bat.BatWorld;
+import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatWorld;
 
 public class MaxMod5 extends BatExercise {
   public MaxMod5(Lesson lesson) {

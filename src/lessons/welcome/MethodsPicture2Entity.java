@@ -1,10 +1,9 @@
 package lessons.welcome;
 
 import java.awt.Color;
-import jlm.universe.Direction;
 
 @SuppressWarnings("unused")
-public class MethodsPicture2Entity extends universe.bugglequest.SimpleBuggle {
+public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN SOLUTION */
 	void mark() {

@@ -1,6 +1,6 @@
 package lessons.sort;
 
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.Lesson;
 
 // see http://www.cs.ubc.ca/~harrison/Java/sorting-demo.html
 

@@ -2,11 +2,11 @@ package lessons.meta;
 
 import java.lang.reflect.Constructor;
 
-import jlm.ui.WorldView;
+import jlm.core.ui.WorldView;
 import jlm.universe.World;
-import universe.hanoi.HanoiInvalidMove;
-import universe.hanoi.HanoiWorld;
-import universe.hanoi.HanoiWorldView;
+import jlm.universe.hanoi.HanoiInvalidMove;
+import jlm.universe.hanoi.HanoiWorld;
+import jlm.universe.hanoi.HanoiWorldView;
 
 public class HanoiMetaWorld extends HanoiWorld {
 	/* If i'm the answer world, cheat and return use the implementation of my ancestor directly */

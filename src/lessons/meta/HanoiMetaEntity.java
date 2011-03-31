@@ -4,9 +4,9 @@ import java.lang.reflect.Constructor;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
-import universe.hanoi.HanoiEntity;
-import universe.hanoi.HanoiInvalidMove;
-import universe.hanoi.HanoiWorld;
+import jlm.universe.hanoi.HanoiEntity;
+import jlm.universe.hanoi.HanoiInvalidMove;
+import jlm.universe.hanoi.HanoiWorld;
 
 public class HanoiMetaEntity extends HanoiEntity {
 	/* If i'm the answer world, cheat and return use the implementation of my ancestor directly */

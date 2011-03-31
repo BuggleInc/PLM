@@ -1,8 +1,8 @@
 package lessons.recursion;
 
-import universe.hanoi.HanoiEntity;
-import universe.hanoi.HanoiInvalidMove;
-import universe.hanoi.HanoiWorld;
+import jlm.universe.hanoi.HanoiEntity;
+import jlm.universe.hanoi.HanoiInvalidMove;
+import jlm.universe.hanoi.HanoiWorld;
 
 public class HanoiBoardEntity extends HanoiEntity {
 

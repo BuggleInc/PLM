@@ -1,7 +1,7 @@
 package lessons.array;
 
-import universe.array.ArrayEntity;
-import universe.array.ArrayWorld;
+import jlm.universe.array.ArrayEntity;
+import jlm.universe.array.ArrayWorld;
 import lessons.array.AverageComputation;
 
 public class AverageComputation extends ArrayEntity {

@@ -1,8 +1,8 @@
 package lessons.sort;
 
-import jlm.lesson.Lesson;
-import universe.sort.SortingExercise;
-import universe.sort.SortingWorld;
+import jlm.core.model.lesson.Lesson;
+import jlm.universe.sort.SortingExercise;
+import jlm.universe.sort.SortingWorld;
 
 public class ExInsertionSort extends SortingExercise {
 

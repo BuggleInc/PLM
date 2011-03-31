@@ -1,7 +1,7 @@
 package lessons.welcome;
 
 import jlm.universe.Direction;
-import universe.bugglequest.SimpleBuggle;
+import jlm.universe.bugglequest.SimpleBuggle;
 
 public class SnakeEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */

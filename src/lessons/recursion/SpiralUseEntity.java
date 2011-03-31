@@ -1,7 +1,7 @@
 package lessons.recursion;
 
 
-public class SpiralUseEntity extends universe.turtles.Turtle {
+public class SpiralUseEntity extends jlm.universe.turtles.Turtle {
 
 	public void spiral(int steps, int angle, int length, int increment)	{
 	     if (steps <= 0) {

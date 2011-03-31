@@ -1,6 +1,6 @@
 package lessons.recursion;
 
-public class SquareEntity extends universe.turtles.Turtle {
+public class SquareEntity extends jlm.universe.turtles.Turtle {
 
 
 	/* BEGIN TEMPLATE */

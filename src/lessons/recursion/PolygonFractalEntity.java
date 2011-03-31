@@ -1,6 +1,6 @@
 package lessons.recursion;
 
-public class PolygonFractalEntity extends universe.turtles.Turtle {
+public class PolygonFractalEntity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 void polygonFractal (int levels, int sides, double length, double shrink) {

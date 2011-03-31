@@ -1,8 +1,8 @@
 package lessons.bat.string1;
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
-import universe.bat.BatExercise;
-import universe.bat.BatWorld;
+import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatWorld;
 
 public class ArrayCount9 extends BatExercise {
   public ArrayCount9(Lesson lesson) {

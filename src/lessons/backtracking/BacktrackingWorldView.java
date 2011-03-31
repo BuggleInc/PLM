@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 
-import jlm.ui.WorldView;
+import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
 public class BacktrackingWorldView extends WorldView {

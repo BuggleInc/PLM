@@ -1,6 +1,6 @@
 package lessons.recursion;
 
-public class TreeEntity extends universe.turtles.Turtle {
+public class TreeEntity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 public void tree(int steps, double length, double angle, double shrink)	{

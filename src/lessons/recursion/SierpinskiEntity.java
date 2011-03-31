@@ -1,6 +1,6 @@
 package lessons.recursion;
 
-public class SierpinskiEntity extends universe.turtles.Turtle {
+public class SierpinskiEntity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 public void sierpinski(int level, double length) {

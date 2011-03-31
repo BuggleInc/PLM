@@ -2,7 +2,7 @@ package lessons.recursion;
 
 import java.awt.Color;
 
-public class StarEntity extends universe.turtles.Turtle {
+public class StarEntity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN SOLUTION */
 	public void branch(int size) {

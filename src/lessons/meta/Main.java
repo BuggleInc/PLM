@@ -1,6 +1,6 @@
 package lessons.meta;
 
-import jlm.lesson.Lesson;
+import jlm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
 	@Override

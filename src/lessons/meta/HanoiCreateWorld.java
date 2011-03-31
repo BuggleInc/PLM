@@ -2,8 +2,8 @@ package lessons.meta;
 
 import java.util.List;
 
-import jlm.lesson.Lesson;
-import jlm.ui.MainFrame;
+import jlm.core.model.lesson.Lesson;
+import jlm.core.ui.MainFrame;
 import jlm.universe.World;
 
 public class HanoiCreateWorld extends MetaExercise {

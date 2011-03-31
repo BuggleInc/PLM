@@ -1,6 +1,6 @@
 package lessons.sort;
 
-import universe.sort.SortingEntity;
+import jlm.universe.sort.SortingEntity;
 
 /* BEGIN TEMPLATE */
 public class AlgBubbleSort3 extends SortingEntity {

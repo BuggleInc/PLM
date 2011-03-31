@@ -1,6 +1,6 @@
 package lessons.backtracking;
 
-import jlm.ui.WorldView;
+import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
 public class BacktrackingWorld extends World {	

@@ -1,6 +1,6 @@
 package lessons.sort;
 
-import universe.sort.SortingEntity;
+import jlm.universe.sort.SortingEntity;
 
 /* BEGIN TEMPLATE */
 public class AlgCocktailSort3 extends SortingEntity {

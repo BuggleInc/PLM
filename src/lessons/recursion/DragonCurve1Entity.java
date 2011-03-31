@@ -1,6 +1,6 @@
 package lessons.recursion;
 
-public class DragonCurve1Entity extends universe.turtles.Turtle {
+public class DragonCurve1Entity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 public void dragon(int ordre, double x, double y, double z, double t) {

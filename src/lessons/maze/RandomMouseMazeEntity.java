@@ -1,6 +1,6 @@
 package lessons.maze;
 
-public class RandomMouseMazeEntity extends universe.bugglequest.SimpleBuggle {
+public class RandomMouseMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
