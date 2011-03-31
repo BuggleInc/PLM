@@ -1,11 +1,9 @@
 package lessons.backtracking;
 
-import java.util.Vector;
-
 import jlm.ui.WorldView;
 import jlm.universe.World;
 
-public abstract class BacktrackingWorld extends World {	
+public class BacktrackingWorld extends World {	
 	/** A copy constructor (mandatory for the internal compilation mechanism to work)
 	 * 
 	 * There is normally no need to change it, but it must be present. 
@@ -13,15 +11,12 @@ public abstract class BacktrackingWorld extends World {
 	public BacktrackingWorld(BacktrackingWorld other) {
 		super(other);
 	}
-	
-	/** The constructor that the exercises will use to setup the world.
-	 */
-	public BacktrackingWorld(String name, BacktrackingElement[] parameters) {
-		super(name);
-		setDelay(200);
-		addEntity(new BacktrackingEntity());
-		this.parameters = parameters; 
+	public BacktrackingWorld(BacktrackingPartialSolution sol) {
+		super(sol.getTitle());
+		parameters=new Object[] {sol};
 	}
+	
+	/* The constructor that the exercises will use to setup the world: in subclasses */
 	
 	/** Reset the state of the current world to the one passed in argument
 	 * 
@@ -35,10 +30,12 @@ public abstract class BacktrackingWorld extends World {
 	public void reset(World w) {
 		BacktrackingWorld other = (BacktrackingWorld)w;
 		
-		bestSolution.removeAllElements();
-		for (int i=0;i<other.bestSolution.size();i++)
-			bestSolution.add(other.bestSolution.get(i).copy());
-
+		if (other.bestSolution == null)
+			bestSolution=null;
+		else
+			bestSolution=other.bestSolution.clone();
+		
+		
 		/* FIXME */
 		super.reset(w);		
 	}
@@ -52,28 +49,8 @@ public abstract class BacktrackingWorld extends World {
 	
 	@Override
 	public String toString(){
-		StringBuffer sb = new StringBuffer();
-		sb.append(getClass().getName()+" "+getName()+"; Parameters: (");
-		boolean first=true;
-		for (Object o:parameters) {
-			if (first) 
-				first=false;
-			else
-				sb.append(", ");
-			sb.append(o);
-		}
 		
-		sb.append(") Best Solution: (");
-		first=true;
-		for (BacktrackingElement e:bestSolution) {
-			if (first) 
-				first=false;
-			else
-				sb.append(", ");
-			sb.append(e);
-		}
-		sb.append(")");
-		return sb.toString();
+		return getName()+"Best Solution: ("+bestSolution+")";
 	}
 
 	/** Used to check whether the student code changed the world in the right state */
@@ -90,7 +67,9 @@ public abstract class BacktrackingWorld extends World {
 				return false;
 		
 		/* Same best solution */
-		if (! other.bestSolution.equals(bestSolution))
+		if (other.bestSolution==null && bestSolution!=null)
+			return false;
+		if (other.bestSolution!=null && (! other.bestSolution.equals(bestSolution)))
 			return false;
 		
 		/* FIXME */
@@ -98,12 +77,12 @@ public abstract class BacktrackingWorld extends World {
 	}
 	
 	/* Here comes the world logic */
-	public abstract double getSolutionValue(int depth, Vector<BacktrackingElement> solution);
-	public abstract boolean isSolutionValid(int depth, Vector<BacktrackingElement> solution);
-	Vector<BacktrackingElement> bestSolution = new Vector<BacktrackingElement>();
-	public void newBestSolution(Vector<BacktrackingElement> solution) {
-		bestSolution.removeAllElements();
-		for (int i=0;i<solution.size();i++)
-			bestSolution.add(solution.get(i).copy());
+	protected BacktrackingPartialSolution bestSolution = null;
+	public void newBestSolution(BacktrackingPartialSolution solution) {
+		bestSolution = solution.clone();
+		System.out.println("XXXX New best solution: "+bestSolution);
+	}
+	public BacktrackingPartialSolution getBestSolution() {
+		return bestSolution;
 	}
 }

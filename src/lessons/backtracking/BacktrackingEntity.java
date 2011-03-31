@@ -1,5 +1,4 @@
 package lessons.backtracking;
-import java.util.Vector;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -20,42 +19,31 @@ public class BacktrackingEntity extends Entity {
 	public BacktrackingEntity(String name) {
 		super(name);
 	}
-	/** Must exist too. Calling HanoiEntity("dummy name") is ok */
 	public BacktrackingEntity() {
-		this("Backtracking Entity");
+		this("Backtracking Solver");
 	}
 
 	@Override
 	public Entity copy() {
 		return new BacktrackingEntity(name);
 	}
-
-	/** Must exist so that exercises can instantiate your entity (Entity is abstract) */
 	@Override
 	public void run() {
-		solve((BacktrackingElement[]) world.getParameters());
-	}
-
-	public void solve(BacktrackingElement[] elements){
-		
+		run((BacktrackingPartialSolution) world.getParameter(0));
+		System.out.println("Solution:"+((BacktrackingWorld) world).bestSolution);
 	}
 	
-	@Override
-	public String toString(){
-		return "BacktrackingEntity (" + this.getClass().getName() + ")";
+	protected void run(BacktrackingPartialSolution solution) {
+		throw new RuntimeException("This method should be overriden! Please go fix your lesson.");
+	}
+	
+	/* World logic */
+	
+	public void newBestSolution(BacktrackingPartialSolution solution) {
+		((BacktrackingWorld) world).newBestSolution(solution);
 	}
 
-	/* **** world logic **** */
-	public double getSolutionValue(int depth, Vector<BacktrackingElement> solution) {
-		stepUI();
-		return ((BacktrackingWorld) world).getSolutionValue(depth,solution);
-	}
-	public boolean isSolutionValid(int depth, Vector<BacktrackingElement> solution) {
-		stepUI();
-		return ((BacktrackingWorld) world).isSolutionValid(depth,solution);
-	}
-	public void newBestSolution(int depth, Vector<BacktrackingElement> solution) {
-		stepUI();
-		((BacktrackingWorld) world).newBestSolution(solution);
+	protected BacktrackingPartialSolution getBestSolution() {
+		return ((BacktrackingWorld) world).getBestSolution();
 	}
 }
