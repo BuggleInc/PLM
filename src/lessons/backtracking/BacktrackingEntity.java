@@ -34,7 +34,7 @@ public class BacktrackingEntity extends Entity {
 	}
 	
 	protected void run(BacktrackingPartialSolution solution) {
-		throw new RuntimeException("This method should be overriden! Please go fix your lesson.");
+		throw new RuntimeException(this.getClass().getCanonicalName()+": This method should be overriden! Please go fix your lesson.");
 	}
 	
 	/* World logic */

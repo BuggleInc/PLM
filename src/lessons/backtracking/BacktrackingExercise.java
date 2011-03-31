@@ -1,10 +1,10 @@
 package lessons.backtracking;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jlm.lesson.ExerciseTemplated;
 import jlm.lesson.Lesson;
-import jlm.lesson.SourceFile;
 import jlm.universe.World;
 
 public abstract class BacktrackingExercise extends ExerciseTemplated {
@@ -19,21 +19,17 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		}
 		worldDuplicate(ws);
 		newSourceFromFile(this.tabName, solver.getClass().getCanonicalName(), "java"); 
-		SourceFile sf = sourceFiles.get(0);
 
-/*		sf.setTemplate(
-				"$package "+
-				"import lessons.backtracking.*; "+
-				/*"import jlm.universe.World; "+
-				"public class "+this.tabName+" extends BacktrackingEntity { "+
-				sf.getTemplate()+" $body }");*/
-		System.out.println("New template: "+sf.getTemplate());
 		computeAnswer();
 	}
 	protected void computeAnswer() {
 		for (World aw : answerWorld) {
 			System.out.println("Compute answer for world "+aw.getName());
-			run((BacktrackingPartialSolution)aw.getParameter(0));
+			try {
+				aw.getEntity(0).run();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
 		}
 	}
 
@@ -46,7 +42,6 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			cw.runEntities(runnerVect);
 		}
 	}
-	public abstract void run(BacktrackingPartialSolution ps);
 	
 	protected void newBestSolution(BacktrackingPartialSolution sol) {
 		((BacktrackingWorld) getCurrentWorld().get(0)).newBestSolution(sol);

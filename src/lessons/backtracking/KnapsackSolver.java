@@ -3,8 +3,12 @@ package lessons.backtracking;
 import lessons.backtracking.BacktrackingEntity;
 import lessons.backtracking.BacktrackingPartialSolution;
 import lessons.backtracking.KnapsackPartialSolution;
+import lessons.backtracking.KnapsackSolver;
 
 public class KnapsackSolver extends BacktrackingEntity {
+	public KnapsackSolver copy(){
+		return new KnapsackSolver();
+	}
 	public void run(BacktrackingPartialSolution bps) {
 		solve((KnapsackPartialSolution)bps);
 	}
