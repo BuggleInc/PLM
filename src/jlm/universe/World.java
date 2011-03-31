@@ -45,6 +45,7 @@ public abstract class World {
 			res = this.getClass().getConstructor(this.getClass()).newInstance(this);
 		} catch (Exception e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 		return res;
 	}
@@ -64,7 +65,7 @@ public abstract class World {
 		}
 		this.isDelayed = initialWorld.isDelayed;
 		this.delay = initialWorld.delay;
-		this.parameters = initialWorld.parameters;
+		this.parameters = initialWorld.parameters.clone();
 		notifyEntityUpdateListeners();
 		notifyWorldUpdatesListeners();
 	}
