@@ -19,6 +19,11 @@ import jlm.lesson.SourceFile;
 import jlm.lesson.SourceFileAliased;
 import jlm.lesson.SourceFileRevertable;
 
+/**
+ * Implementation of the {@link ISessionKit} saving the student data in a zip file.
+ * 
+ * Unless you edit the source, this is the session kit used.
+ */
 public class ZipSessionKit implements ISessionKit {
 
 	private Game game;

@@ -13,7 +13,11 @@ import jlm.lesson.SourceFileAliased;
 import jlm.lesson.SourceFileRevertable;
 import jlm.lesson.SourceFile;
 
-
+/**
+ * Implementation of the {@link ISessionKit} saving the student data as a collection of 
+ * separated files. It is not used by default, and you have to edit the source to activate it.
+ *
+ */
 public class FileSessionKit implements ISessionKit {
 
 	private Game game;

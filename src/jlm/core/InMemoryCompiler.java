@@ -1,9 +1,5 @@
 package jlm.core;
 
-/* See also "Create dynamic applications with javax.tools", David J. Biesack.
- http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR
- */
-
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -45,7 +41,10 @@ import jlm.exception.JLMCompilerException;
 
 /**
  * This class provides a facade to the javax.tools compiler, to ease its use in
- * our case
+ * our case. It is used in {@link jlm.lesson.Exercise}, where the student code gets compiled.
+ * 
+ * See also "Create dynamic applications with javax.tools", David J. Biesack.
+ * http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR
  */
 
 public class InMemoryCompiler {
@@ -71,7 +70,7 @@ public class InMemoryCompiler {
 	 * 
 	 * @param loader
 	 *            the application ClassLoader. The compiler will look through to
-	 *            this // class loader for dependent classes
+	 *            this class loader for dependent classes
 	 * @param options
 	 *            The compiler options (such as "-target" "1.5"). See the usage
 	 *            for javac
@@ -186,7 +185,7 @@ public class InMemoryCompiler {
 	}
 
 	/**
-	 * Compile Java source in <var>javaSource</name> and return the resulting
+	 * Compile Java source in <var>javaSource</var> and return the resulting
 	 * class.
 	 * <p>
 	 * Thread safety: this method is thread safe if the <var>javaSource</var>

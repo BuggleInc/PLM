@@ -3,6 +3,9 @@ package jlm.core;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+/**
+ * Interface that all output consoles that we may use must implement.   
+ */
 public interface LogWriter {
 
 	public void log(String msg) ;

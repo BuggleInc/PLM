@@ -4,7 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 
-
+/**
+ * The log console used within JLM. It is setup by Game as the default System.out, 
+ * and points into the console pane at the bottom of the interface.
+ */
 public class Logger extends PrintStream {
 	private LogWriter writer;
 	private static boolean ENABLED = true;

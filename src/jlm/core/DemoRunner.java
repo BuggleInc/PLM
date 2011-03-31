@@ -5,7 +5,12 @@ import java.util.List;
 
 import jlm.lesson.Exercise;
 
-
+/** 
+ * This class runs the demo of the current exercise in a separated thread 
+ * when the Demo button is clicked. The run and demo buttons are disabled until the demo ends.
+ * 
+ * Activated by {@link Game#startExerciseDemoExecution()}.
+ */
 public class DemoRunner extends Thread {
 
 	private Game game;
