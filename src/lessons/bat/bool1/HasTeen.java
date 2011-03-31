@@ -10,19 +10,20 @@ public class HasTeen extends BatExercise {
 	public HasTeen(Lesson lesson) {
 		super(lesson);
 		
-		World[] myWorlds = new BatWorld[11];
-		myWorlds[0] = new BatWorld(VISIBLE,  13,20,10);
-		myWorlds[1] = new BatWorld(VISIBLE,  20,19,10);
-		myWorlds[2] = new BatWorld(VISIBLE,  20,10,13);
-		
-		myWorlds[3] = new BatWorld(INVISIBLE, 1,20,12);
-		myWorlds[4] = new BatWorld(INVISIBLE, 19,20,12);
-		myWorlds[5] = new BatWorld(INVISIBLE, 12,20,19);
-		myWorlds[6] = new BatWorld(INVISIBLE, 12,9,20);
-		myWorlds[7] = new BatWorld(INVISIBLE, 12,18,20);
-		myWorlds[8] = new BatWorld(INVISIBLE, 14,2,20);
-		myWorlds[9] = new BatWorld(INVISIBLE, 4,2,20);
-		myWorlds[10]= new BatWorld(INVISIBLE, 11,22,22);
+		World[] myWorlds = new BatWorld[] {
+				new BatWorld(VISIBLE,  13,20,10),
+				new BatWorld(VISIBLE,  20,19,10),
+				new BatWorld(VISIBLE,  20,10,13),
+
+				new BatWorld(INVISIBLE, 1,20,12),
+				new BatWorld(INVISIBLE, 19,20,12),
+				new BatWorld(INVISIBLE, 12,20,19),
+				new BatWorld(INVISIBLE, 12,9,20),
+				new BatWorld(INVISIBLE, 12,18,20),
+				new BatWorld(INVISIBLE, 14,2,20),
+				new BatWorld(INVISIBLE, 4,2,20),
+				new BatWorld(INVISIBLE, 11,22,22)
+		};
 
 
 		setup(myWorlds,"hasTeen");
