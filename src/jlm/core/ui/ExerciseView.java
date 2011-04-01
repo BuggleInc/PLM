@@ -51,6 +51,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		worldComboBox = new JComboBox(new WorldComboListAdapter(Game.getInstance()));
 		worldComboBox.setRenderer(new WorldCellRenderer());
 		worldComboBox.setEditable(false);
+		worldComboBox.setToolTipText("Switch the displayed world");
 		upperPane.add(worldComboBox, "span,growx,wrap");
 
 		// TODO: logarithmic slider ?
@@ -60,14 +61,17 @@ public class ExerciseView extends JPanel implements GameListener {
 		speedSlider.setMinorTickSpacing(10);
 		speedSlider.setPaintTicks(true);
 		speedSlider.setPaintLabels(true);
+		speedSlider.setToolTipText("Change the speed of execution");
 		upperPane.add(speedSlider, "growx,wrap");
 
 		tabPane = new JTabbedPane();
 		worldView = Game.getInstance().getSelectedWorld().getView();
-		tabPane.add("World", worldView[0]);
+		tabPane.addTab("World", null, worldView[0],"Current state of the world");
 
 		objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-		tabPane.add("Objective", objectivesView[0]);
+		tabPane.addTab("Objective", null, objectivesView[0],
+				"Target state of the world");
+		/* FIXME if there is more than one view per world, we should do subpanes in both World and Objective tabs, I guess */
 		for (int i=1;i<worldView.length;i++)
 			tabPane.add(worldView[i].getTabName(), worldView[i]);
 
@@ -76,6 +80,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
 		entityComboBox.setRenderer(new EntityCellRenderer());
 		entityComboBox.setEditable(false);
+		entityComboBox.setToolTipText("Switch the entity");
 		upperPane.add(entityComboBox, "span,alignx center");
 
 		/*

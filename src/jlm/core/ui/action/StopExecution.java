@@ -12,7 +12,7 @@ public class StopExecution extends AbstractGameAction {
 	private static final long serialVersionUID = -4563140493957678216L;
 	
 	public StopExecution(Game game, String text, ImageIcon icon) {
-		super(game, text, icon);
+		super(game, text, icon, "Stop your code", "No execution to stop right now");
 	}
 
 	@Override

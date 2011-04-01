@@ -32,7 +32,6 @@ import jlm.core.model.GameState;
 import jlm.core.model.Reader;
 import jlm.core.ui.action.AbstractGameAction;
 import jlm.core.ui.action.CleanUpSession;
-import jlm.core.ui.action.DebugExecution;
 import jlm.core.ui.action.ExportSession;
 import jlm.core.ui.action.ImportSession;
 import jlm.core.ui.action.PlayDemo;
@@ -42,6 +41,7 @@ import jlm.core.ui.action.RevertExercise;
 import jlm.core.ui.action.SetLanguage;
 import jlm.core.ui.action.ShowHint;
 import jlm.core.ui.action.StartExecution;
+import jlm.core.ui.action.StepExecution;
 import jlm.core.ui.action.StopExecution;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
@@ -133,7 +133,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription("File related functions");
 
-		menuItem = new JMenuItem(new QuitGame(Game.getInstance(), "Quit", null, "Quit the application", KeyEvent.VK_Q));
+		menuItem = new JMenuItem(new QuitGame(Game.getInstance(), "Quit", null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
 		menu.add(menuItem);
@@ -248,37 +248,36 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
 		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
-		startButton = new JButton(new StartExecution(Game.getInstance(), "Run", ii));
-		startButton.setBorderPainted(false);
+		startButton = new PropagatingButton(new StartExecution(Game.getInstance(), "Run", ii));
 
-		debugButton = new JButton(new DebugExecution(Game.getInstance(), "Step", ResourcesCache
-				.getIcon("resources/debug.png")));
-		debugButton.setBorderPainted(false);
+		debugButton = new PropagatingButton(new StepExecution(Game.getInstance(), "Step", 
+				ResourcesCache.getIcon("resources/debug.png")));
 		
-		stopButton = new JButton(new StopExecution(Game.getInstance(), "Stop", ResourcesCache
-				.getIcon("resources/stop.png")));
-		stopButton.setBorderPainted(false);
+		stopButton = new PropagatingButton(new StopExecution(Game.getInstance(), "Stop", 
+				ResourcesCache.getIcon("resources/stop.png")));
 		stopButton.setEnabled(false);
 
-		resetButton = new JButton(new Reset(Game.getInstance(), "Reset", ResourcesCache.getIcon("resources/reset.png")));
-		resetButton.setBorderPainted(false);
+		resetButton = new PropagatingButton(new Reset(Game.getInstance(), "Reset", 
+				ResourcesCache.getIcon("resources/reset.png")));
 		resetButton.setEnabled(true);
 
-		hintButton = new JButton(new ShowHint(Game.getInstance(), "Hint", ResourcesCache.getIcon("resources/step.png")));
-		hintButton.setBorderPainted(false);
+		hintButton = new PropagatingButton(new ShowHint(Game.getInstance(), "Hint", 
+				ResourcesCache.getIcon("resources/step.png")));
 		hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 		
-		demoButton = new JButton(new PlayDemo(Game.getInstance(), "Demo", ResourcesCache.getIcon("resources/demo.png")));
-		demoButton.setBorderPainted(false);
+		demoButton = new PropagatingButton(new PlayDemo(Game.getInstance(), "Demo", 
+				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
 		
 		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
 		lessonComboBox = new JComboBox(lessonAdapter);
 		lessonComboBox.setRenderer(new LessonCellRenderer());
+		lessonComboBox.setToolTipText("Switch the lesson");
 
 		ExerciseComboListAdapter exerciseAdapter = new ExerciseComboListAdapter(Game.getInstance());
 		exerciseComboBox = new JComboBox(exerciseAdapter);
 		exerciseComboBox.setRenderer(new ExerciseCellRenderer());
+		exerciseComboBox.setToolTipText("Switch the exercise");
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);
@@ -445,5 +444,19 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	@Override
 	public void selectedWorldWasUpdated() {
 		// don't care
+	}
+	
+	/** Simple JButton which pass the enabled signals to their action */
+	class PropagatingButton extends JButton {
+		private static final long serialVersionUID = 1L;
+		public PropagatingButton(AbstractGameAction act) {
+			super(act);
+			setBorderPainted(false);
+		}
+		@Override
+		public void setEnabled(boolean enabled) {
+			getAction().setEnabled(enabled);
+			super.setEnabled(enabled);
+		}
 	}
 }

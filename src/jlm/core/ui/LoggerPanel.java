@@ -16,6 +16,7 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 	public LoggerPanel(Game game) {
 		super();
 		setEditable(false);
+		setToolTipText("Where error and other messages get written");
 		game.setOutputWriter(this);
 	}
 	

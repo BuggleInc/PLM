@@ -11,8 +11,8 @@ public class QuitGame extends AbstractGameAction {
 
 	private static final long serialVersionUID = 5778501209753480269L;
 
-	public QuitGame(Game game, String text, ImageIcon icon, String desc, Integer mnemonic) {
-		super(game, text, icon, desc, mnemonic);
+	public QuitGame(Game game, String text, ImageIcon icon, Integer mnemonic) {
+		super(game, text, icon, "Quit the application","Impossible to quit the application right now", mnemonic);
 	}
 
 	@Override

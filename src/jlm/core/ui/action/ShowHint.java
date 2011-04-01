@@ -14,7 +14,7 @@ public class ShowHint extends AbstractGameAction {
 	private static final long serialVersionUID = -1509545929438458599L;
 
 	public ShowHint(Game game, String text, ImageIcon icon) {
-		super(game, text, icon);
+		super(game, text, icon,"Show an hint","There is no more hint for this exercise");
 	}
 
 	private AbstractAboutDialog dialog = null;

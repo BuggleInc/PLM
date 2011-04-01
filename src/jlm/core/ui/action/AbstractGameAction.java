@@ -9,6 +9,7 @@ import jlm.core.model.Game;
 public abstract class AbstractGameAction extends AbstractAction {
 
 	private static final long serialVersionUID = -1190103028775831188L;
+	private String descEnabled, descDisabled;
 
 	protected Game game;
 
@@ -22,15 +23,36 @@ public abstract class AbstractGameAction extends AbstractAction {
 		this.game = game;
 	}
 	
-	public AbstractGameAction(Game game, String text, ImageIcon icon, String desc, Integer mnemonic) {
+	public AbstractGameAction(Game game, String text, ImageIcon icon, String descEnabled, String descDisabled) {
+		this(game,text,icon);
+		putValue(SHORT_DESCRIPTION, descEnabled);
+		this.descEnabled = descEnabled;
+		this.descDisabled = descDisabled;
+	}
+	/*
+	public AbstractGameAction(Game game, String text, String desc, ImageIcon icon) {
 		super(text, icon);
 		putValue(SHORT_DESCRIPTION, desc);
-		putValue(MNEMONIC_KEY, mnemonic);
 		this.game = game;
+	}*/
+
+	public AbstractGameAction(Game game, String text, ImageIcon icon, String descEnabled,String descDisabled, Integer mnemonic) {
+		this (game,text,icon, descEnabled,descDisabled);
+		putValue(MNEMONIC_KEY, mnemonic);
 	}
 
 	public Game getGame() {
 		return this.game;
+	}
+
+	@Override
+	public void setEnabled(boolean enabled) {
+		if (enabled)
+			putValue(SHORT_DESCRIPTION, descEnabled);
+		else
+			putValue(SHORT_DESCRIPTION, descDisabled);
+			
+		super.setEnabled(enabled);
 	}
 
 }

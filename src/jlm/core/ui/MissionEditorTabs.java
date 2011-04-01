@@ -60,7 +60,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 			}
 		});
 		
-		this.add("Mission", new JScrollPane(missionTab));
+		this.addTab("Mission", null, new JScrollPane(missionTab),
+				"Description of the work to do");
 		
 		/* setup code tabs */
 		DefaultSyntaxKit.initKit();
@@ -99,7 +100,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 			SourceFile srcFile = currentExercise.getPublicSourceFile(i);
 
 			/* Create the tab with the code editor as content */
-			this.addTab(srcFile.getName(), srcFile.getEditorPanel()); 			
+			this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(),
+					"Type your code here"); 			
 		}		
 		selectedEntityHasChanged();
 		doLayout();
