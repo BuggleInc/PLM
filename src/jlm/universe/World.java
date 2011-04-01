@@ -65,7 +65,7 @@ public abstract class World {
 		}
 		this.isDelayed = initialWorld.isDelayed;
 		this.delay = initialWorld.delay;
-		this.parameters = initialWorld.parameters.clone();
+		this.parameters = (initialWorld.parameters!=null?initialWorld.parameters.clone():null);
 		notifyEntityUpdateListeners();
 		notifyWorldUpdatesListeners();
 	}
