@@ -71,5 +71,12 @@
 		  </path>
 		</signjar>
 	</target>
-	
+    <target name="javadoc" description="Create Javadocs">
+        <mkdir dir="${site.dir}/javadoc/"/>
+        <javadoc 
+            destdir="${site.dir}/javadoc/">
+            <fileset dir="${src.dir}/jlm" includes="**/*.java" />
+            <fileset dir="${src.dir}/universe" includes="**/*.java" />
+        </javadoc>
+    </target>
 </project>
