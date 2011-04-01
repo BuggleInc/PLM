@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-03-23 15:04+0100\n"
+"POT-Creation-Date: 2011-04-01 11:18+0300\n"
 "PO-Revision-Date: 2011-03-23 17:00+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -16,13 +16,263 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#. type: Content of: <h2>
+#: lib/doc/MainWindow.html:1
+msgid "The JLM Main Window"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: lib/doc/MainWindow.html:3
+msgid ""
+"The JLM working environment should be self-explanatory, in particular with "
+"the tool tips appearing when your mouse is over the elements.  Here is a "
+"little explanation of the components in case you fail to understand "
+"something. The main window is made of 5 main components:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:10
+msgid ""
+"<b>The menu:</b> Placed on top of the window, it gives you access to some "
+"advanced commands such as exiting the program, and some other that we will "
+"detail later."
+msgstr ""
+"<b>Le menu :</b> Placé en haut de la fenêtre, il vous permet de quitter le "
+"programme, et d'accéder à certaines commandes avancées que nous détaillerons "
+"plus tard."
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:14
+msgid ""
+"<b>The tool bar:</b> Placed just below the menu, it gives you access to the "
+"four main commands:"
+msgstr ""
+"<b>La barre de commandes : </b> Placée juste en dessous du menu, celle-ci "
+"vous donne accès aux quatre commandes principales :"
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:19
+msgid ""
+"The <b>Start</b> button, which begins the compilation and execution of the "
+"code you may have typed in the editor. At the end of the execution, it "
+"verifies whether you reach the situation constituting the objective of the "
+"exercise or not. If yes, you gain access to the next exercise using the "
+"<b>Exercise</b> menu. If not, you need to rework your code."
+msgstr ""
+"Le bouton <b>Start</b> qui lance la compilation et l'exécution du code que "
+"vous aurez tapé dans l'éditeur.  A la fin de l'exécution, il vérifie que "
+"vous arrivez bien à la situation finale de l'exercice. Si c'est le cas, vous "
+"aurez accès à l'exercice suivant par le menu <b>Exercise</b>.  Sinon, il "
+"vous faudra corriger votre code."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:25
+msgid ""
+"The <b>Stop</b> button allows you to interupt the execution of your code, "
+"what may reveal useful if you encounter an <i>infinite loop</i>."
+msgstr ""
+"Le bouton <b>Stop</b> permet d'interrompre l'exécution de votre code, ce qui "
+"est pratique si vous avez une <i>boucle infinie</i>."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:28
+msgid ""
+"The <b>Reset</b> button can be used to reset the world into its initial "
+"state."
+msgstr ""
+"Le bouton <b>Reset</b> permet de remettre le monde dans son état initial."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:31
+msgid ""
+"The <b>Demo</b> button shows you the execution of the expected solution. "
+"During its execution, you may want to swich the seen world to see the "
+"different expected solutions."
+msgstr ""
+"Le bouton <b>Demo</b> vous montre l'exécution de la solution attendue. "
+"Pendant l'exécution, vous êtes autorisés à changer de monde afin de voir les "
+"différentes exécutions attendues."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:34
+msgid ""
+"Please note that there is often several ways of achieving the awaited "
+"solution, and that the one presented during the demo is not more or less "
+"correct than the others. You are completely free to not follow strictly the "
+"process shown by the demo, as long as your final solution matches the "
+"exercise expectations."
+msgstr ""
+"Notez qu'il y a souvent plusieurs moyens d'atteindre la solution escomptée, "
+"et que celle présentée lors de la démo n'est pas plus ou moins correcte que "
+"les autres. Libre à vous de ne pas suivre à la lettre le procédé de la démo, "
+"à condition que le résultat final corresponde bien à ce qui est demandé."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:40
+msgid ""
+"The scrolling menu <b>Lessoon</b> allows you to choose the lesson you want "
+"to work on."
+msgstr ""
+"Le menu déroulant <b>Lesson</b>, vous permet de choisir la leçon que vous "
+"souhaitez étudier"
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:43
+msgid ""
+"The scrolling menu <b>Exercise</b> allows you to switch to another exercise "
+"when you want. Some lessons require you to finish an exercise before "
+"starting the previous one."
+msgstr ""
+"Le menu déroulant <b>Exercise</b>, vous permet de changer d'exercice quand "
+"vous le souhaitez. Notez que certaines leçons vous imposent de finir un "
+"exercice avant de pouvoir commencer le suivant."
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:49
+msgid ""
+"<b>Mission and editor tabs:</b> this is were you read this very text. This "
+"area contains several tabs to which you can access by clicking on their name "
+"on the top left. The first tab (which is always named <b>Mission</b>)  "
+"contains a presentation of the current exercise. To solve an exercise, you "
+"need to write your code in the other tabs. For example, you can now clic on "
+"the <b>Source Code</b> tab to see the actual source. It is empty because "
+"there is no code to write for this introduction exercise."
+msgstr ""
+"<b>Les onglets de consigne et d'édition :</b> C'est ici que vous lisez le "
+"texte actuel.  Cette zone contient plusieurs onglets, auxquels on peut "
+"accéder en cliquant sur leur nom en haut à gauche.  Le premier onglet (qui "
+"est toujours intitulé <b>Mission</b>)  contient une présentation de "
+"l'exercice en cours.  Pour résoudre un exercice, vous devez écrire votre "
+"code dans les autres onglets.  Par exemple, vous pouvez maintenant cliquer "
+"sur l'onglet <b>Source Code</b> pour voir le code actuel.  Il est vide, car "
+"il n'y a rien à faire pour cet exercice de prise en main de l'environnement."
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:57
+msgid ""
+"<b>The console:</b> Placed under the tabs, this is where any messages of the "
+"application will appear. This area is initially empty and white."
+msgstr ""
+"<b>La console :</b> Placée sous les onglets, c'est ici que s'afficheront "
+"tous les messages de l'application. Cette zone est initialement vide et "
+"blanche."
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:60
+msgid ""
+"<b>World view</b> Placed on the right of the tabs, it is constituted of five "
+"elements:"
+msgstr ""
+"<b>La vue du monde :</b> Placée à droite des onglets, elle est constituée de "
+"cinq éléments:"
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:65
+msgid ""
+"A scrolling menu allows to choose the world. Indeed, the program you write "
+"may be executed in several worlds to test it in differing conditions. This "
+"menu allows you to choose the world you want to see."
+msgstr ""
+"Un menu déroulant permettant de choisir un monde. En effet, le programme que "
+"vous devez écrire sera parfois exécuté dans plusieurs monde pour vous "
+"confronter à différentes situations. Ce menu déroulant vous permettra de "
+"choisir le monde que vous souhaitez voir."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:69
+msgid ""
+"A slider placed underneath allows to choose the animation speed of the "
+"world. More precisely, it allows to choose the delay (in milliseconds) that "
+"the buggles must wait after each action to allow you to see what they are "
+"doing."
+msgstr ""
+"Un règlet placé en dessous permet de choisir la vitesse d'animation du "
+"monde. Plus exactement, il permet de choisir le delai (en millisecondes) que "
+"les buggles doivent attendre après chaque action afin que vous ayez le temps "
+"de voir ce qu'elles font."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:74
+msgid ""
+"A tab <b>World</b> represents the view of the world currently selected (from "
+"the scrolling menu). This view is thus constitued of a grid forming the "
+"several cells of the world, as well as several <i>buggles</i> awaiting for "
+"your orders."
+msgstr ""
+"Un onglet <b>World</b> qui représente la vue du monde actuellement "
+"sélectionné (dans le menu déroulant). Cette vue est constituée d'une grille "
+"représentant les différentes cases du monde, ainsi que d'une ou plusieurs "
+"<i>buggles</i> qui attend vos ordres."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:79
+msgid ""
+"An <b>Objective</b> tab displaying the world as it must be by the end of the "
+"exercise."
+msgstr ""
+"Un onglet <b>Objective</b> qui permet d'afficher la vue du monde tel qu'il "
+"doit être à la fin de l'exercice."
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:83
+msgid ""
+"<b>The interactive controls</b>. Placed under the world view, these buttons "
+"allows you to interactively control the buggles. This way, you can try to "
+"<i>manually</i> bring your buggle to the scenario objective before writting "
+"the needed code in the editor."
+msgstr ""
+"<b>Les contrôles interactifs</b> Placés sous la vue du monde, ces boutons "
+"vous permettent de contrôler interactivement les buggles.  Vous pouvez ainsi "
+"essayer d'amener la buggle à l'objectif du scénario <i>à la main</i> avant "
+"d'écrire le code nécessaire dans l'éditeur."
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:89
+msgid "A scrolling menu allows to select the buggle you want to control."
+msgstr ""
+"Un menu déroulant permettant de sélectionner la buggle que vous souhaitez "
+"contrôler."
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:91
+msgid "The <b>Forward</b> button let your buggle do one step forward."
+msgstr "Le bouton <b>Forward</b> fait avancer votre buggle d'un pas."
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:93
+msgid "The <b>Backward</b> button let it do one step backward."
+msgstr "Le bouton <b>Backward</b> fait reculer votre buggle d'un pas."
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:95
+msgid "The <b>Turn left</b> button ask your buggle to turn of 90° to its left."
+msgstr ""
+"Le bouton <b>Turn left</b> demande à votre buggle de tourner vers la gauche."
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:97
+msgid ""
+"The <b>Turn right</b> button asks the buggle to turn to the right (isn't "
+"this amazing?)."
+msgstr ""
+"Le bouton <b>Turn right</b> demande à votre buggle de tourner vers la droite."
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:100
+msgid ""
+"The <b>Mark</b> button requests your buggle to leave a mark behind it when "
+"it goes."
+msgstr ""
+"Le bouton <b>Mark</b> demande à votre buggle de faire un trait au sol quand "
+"elle avance."
+
 #. type: Content of: <h1>
-#: src/universe/sort/SortingWorld.html:1
+#: src/jlm/universe/sort/SortingWorld.html:1
 msgid "Sorting World"
 msgstr "Sorting World"
 
 #. type: Content of: outside any tag (error?)
-#: src/universe/sort/SortingWorld.html:2
+#: src/jlm/universe/sort/SortingWorld.html:2
 msgid ""
 "This world provides tools to experiment with the sorting algorithms. It can "
 "be used in two different ways: the first one is naturally to write the "
@@ -38,147 +288,147 @@ msgstr ""
 "différences d'efficacité entre eux."
 
 #. type: Content of: <h2>
-#: src/universe/sort/SortingWorld.html:8
+#: src/jlm/universe/sort/SortingWorld.html:8
 msgid "Methods available to sorting algorithms"
 msgstr "Méthodes disponibles pour les algorithmes de tri"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:10
+#: src/jlm/universe/sort/SortingWorld.html:10
 msgid "<b>Method</b>"
 msgstr "<b>Méthode</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:10
+#: src/jlm/universe/sort/SortingWorld.html:10
 msgid "<b>Action</b>"
 msgstr "<b>Action</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:10
+#: src/jlm/universe/sort/SortingWorld.html:10
 msgid "<b>Cost</b>"
 msgstr "<b>Coût</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:11
+#: src/jlm/universe/sort/SortingWorld.html:11
 msgid "int getValueCount()"
 msgstr "int getValueCount()"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:11
+#: src/jlm/universe/sort/SortingWorld.html:11
 msgid "Returns the amount of values in the array"
 msgstr "Retourne le nombre de valeurs dans le tableau"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:11
-#: src/universe/sort/SortingWorld.html:22
+#: src/jlm/universe/sort/SortingWorld.html:11
+#: src/jlm/universe/sort/SortingWorld.html:22
 msgid "none"
 msgstr "aucun"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:13
+#: src/jlm/universe/sort/SortingWorld.html:13
 msgid "boolean compare(int i, int j)"
 msgstr "boolean compare(int i, int j)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:13
+#: src/jlm/universe/sort/SortingWorld.html:13
 msgid "Returns true if the content of cell i is smaller than the one of cell j"
 msgstr ""
 "Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:13
+#: src/jlm/universe/sort/SortingWorld.html:13
 msgid "two reads"
 msgstr "2 lectures"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:14
+#: src/jlm/universe/sort/SortingWorld.html:14
 msgid "boolean compareTo(int i, int val)"
 msgstr "boolean compareTo(int i, int val)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:14
+#: src/jlm/universe/sort/SortingWorld.html:14
 msgid "Returns true if the content of cell i is smaller than value val"
 msgstr ""
 "Retourne vrai ssi le contenu de la case i est inférieur à la valeur val"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:14
-#: src/universe/sort/SortingWorld.html:19
+#: src/jlm/universe/sort/SortingWorld.html:14
+#: src/jlm/universe/sort/SortingWorld.html:19
 msgid "one read"
 msgstr "une lecture"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:16
+#: src/jlm/universe/sort/SortingWorld.html:16
 msgid "void swap(int i, int j)"
 msgstr "void swap(int i, int j)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:16
+#: src/jlm/universe/sort/SortingWorld.html:16
 msgid "Swaps the content of cell i and the one of cell j"
 msgstr "Inverse le contenu de la case i et celui de la case j"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:16
+#: src/jlm/universe/sort/SortingWorld.html:16
 msgid "two reads, two writes"
 msgstr "deux lectures, deux écritures"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:17
+#: src/jlm/universe/sort/SortingWorld.html:17
 msgid "void copy(int from, int to)"
 msgstr "void copy(int from, int to)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:17
+#: src/jlm/universe/sort/SortingWorld.html:17
 msgid "Copy the content of cell 'from' into the cell 'to'"
 msgstr "Recopie le contenu de la case from dans la case to"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:17
+#: src/jlm/universe/sort/SortingWorld.html:17
 msgid "one read, one write"
 msgstr "Une lecture, une écriture"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:19
+#: src/jlm/universe/sort/SortingWorld.html:19
 msgid "int getValue(int idx)"
 msgstr "int getValue(int idx)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:19
+#: src/jlm/universe/sort/SortingWorld.html:19
 msgid "Returns the value of cell idx"
 msgstr "Retourne la valeur de la case idx"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:20
+#: src/jlm/universe/sort/SortingWorld.html:20
 msgid "void setValue(int idx,int val)"
 msgstr "void setValue(int idx,int val)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:20
+#: src/jlm/universe/sort/SortingWorld.html:20
 msgid "Sets cell 'idx' to the value 'val'"
 msgstr "Affecte la valeur val à la case idx"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:20
+#: src/jlm/universe/sort/SortingWorld.html:20
 msgid "one write"
 msgstr "une écriture"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:22
+#: src/jlm/universe/sort/SortingWorld.html:22
 msgid "void sorted(int idx)"
 msgstr "void sorted(int idx)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/sort/SortingWorld.html:22
+#: src/jlm/universe/sort/SortingWorld.html:22
 msgid ""
 "Tells that the cell 'idx' was successfully sorted (only used for display)"
 msgstr "Indique que la case idx est triée (pour l'affichage)"
 
 #. type: Content of: <h1>
-#: src/universe/turtles/TurtleWorld.html:1
+#: src/jlm/universe/turtles/TurtleWorld.html:1
 msgid "TurtleWorld"
 msgstr "TurtleWorld"
 
 #. type: Content of: outside any tag (error?)
-#: src/universe/turtles/TurtleWorld.html:2
+#: src/jlm/universe/turtles/TurtleWorld.html:2
 msgid ""
 "This world is directly inspired from the work of the mathematician Seymour "
 "Papert in the 60's. Inspirated from the swiss psycholog Jean Piaget, he came "
@@ -193,30 +443,30 @@ msgstr ""
 "trace là où elles marchent et à qui on peut donner des ordres simples."
 
 #. type: Content of: <p>
-#: src/universe/turtles/TurtleWorld.html:8
+#: src/jlm/universe/turtles/TurtleWorld.html:8
 msgid "This world is an adaptation of LOGO for the Java Learning Machine."
 msgstr ""
 "Le TurtleWorld est une adaptation de LOGO pour la Java Learning Machine."
 
 #. type: Content of: <h2>
-#: src/universe/turtles/TurtleWorld.html:10
+#: src/jlm/universe/turtles/TurtleWorld.html:10
 msgid "Methods understood by turtles"
 msgstr "Méthodes comprises par les tortues"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:13
+#: src/jlm/universe/turtles/TurtleWorld.html:13
 msgid ""
 "<b>Moving forward</b> <code>public void forward(double stepAmount);</code>"
 msgstr "<b>Avancer</b> <code>public void forward(double nbPas);</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:14
+#: src/jlm/universe/turtles/TurtleWorld.html:14
 msgid ""
 "<b>Moving backward</b> <code>public void backward(double stepAmount);</code>"
 msgstr "<b>Reculer</b> <code>public void backward(double nbPas);</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:15
+#: src/jlm/universe/turtles/TurtleWorld.html:15
 msgid ""
 "<b>Turn left</b> <code>public void turnLeft(double angle);</code> (in degree)"
 msgstr ""
@@ -224,55 +474,55 @@ msgstr ""
 "degrés)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:17
+#: src/jlm/universe/turtles/TurtleWorld.html:17
 msgid "<b>Turn right</b> <code>public void turnRight(double angle);</code>"
 msgstr ""
 "<b>Tourner à droite</b> <code>public void turnRight(double angle);</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:18
+#: src/jlm/universe/turtles/TurtleWorld.html:18
 msgid "<b>Pen up</b> <code>public void penUp();</code>"
 msgstr "<b>Lever stylo</b> <code>public void penUp();</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:19
+#: src/jlm/universe/turtles/TurtleWorld.html:19
 msgid "<b>Pen down</b> <code>public void penDown();</code>"
 msgstr "<b>Baisser stylo</b> <code>public void penDown();</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:20
+#: src/jlm/universe/turtles/TurtleWorld.html:20
 msgid "<b>Get pen position</b> <code>public boolean isPenDown();</code>"
 msgstr "<b>Obtenir position stylo</b> <code>public boolean isPenDown();</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:21
+#: src/jlm/universe/turtles/TurtleWorld.html:21
 msgid "(turtles have pens, not brushes as buggles)"
 msgstr "(les tortues ont des stylos, pas des brosses comme les buggles)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:22
+#: src/jlm/universe/turtles/TurtleWorld.html:22
 msgid "<b>Get heading</b> <code>public double getHeading();</code>"
 msgstr "<b>Obtenir direction</b> <code>public double getHeading();</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:23
+#: src/jlm/universe/turtles/TurtleWorld.html:23
 msgid ""
 "<b>Change heading</b> <code>public void setHeading(double angle);</code>"
 msgstr ""
 "<b>Changer direction</b> <code>public void setHeading(double angle);</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:24
+#: src/jlm/universe/turtles/TurtleWorld.html:24
 msgid "<b>Get color</b> <code>public Color getColor();</code>"
 msgstr "<b>Obtenir couleur</b> <code>public Color getColor();</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:25
+#: src/jlm/universe/turtles/TurtleWorld.html:25
 msgid "<b>Set color</b> <code>public void setColor(Color color);</code>"
 msgstr "<b>Changer couleur</b> <code>public void setColor(Color color);</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:26
+#: src/jlm/universe/turtles/TurtleWorld.html:26
 msgid ""
 "<b>Get position</b> <code>public double getX();</code> <code>public double "
 "getY();</code>"
@@ -281,7 +531,7 @@ msgstr ""
 "double getY();</code>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/turtles/TurtleWorld.html:28
+#: src/jlm/universe/turtles/TurtleWorld.html:28
 msgid ""
 "<b>Set position</b> <code>public void setX(double x);</code> \t <code>public "
 "void setY(double y);</code> <code>public void setPos(double x, double y);</"
@@ -292,12 +542,12 @@ msgstr ""
 "double y);</code>"
 
 #. type: Content of: <h1>
-#: src/universe/bugglequest/BuggleWorld.html:1
+#: src/jlm/universe/bugglequest/BuggleWorld.html:1
 msgid "BuggleWorld"
 msgstr "BuggleWorld"
 
 #. type: Content of: outside any tag (error?)
-#: src/universe/bugglequest/BuggleWorld.html:2
+#: src/jlm/universe/bugglequest/BuggleWorld.html:2
 msgid ""
 "This world was invented by Lyn Turbak, at Wellesley College. It is full of "
 "Buggles, little animals understanding simple orders, and offers numerous "
@@ -310,357 +560,357 @@ msgstr ""
 "objets, colorier le sol, se cogner à des murs, etc."
 
 #. type: Content of: <h2>
-#: src/universe/bugglequest/BuggleWorld.html:7
+#: src/jlm/universe/bugglequest/BuggleWorld.html:7
 msgid "Methods understood by buggles"
 msgstr "Méthodes comprises par les buggles"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:9
+#: src/jlm/universe/bugglequest/BuggleWorld.html:9
 msgid "<b>Moving</b>"
 msgstr "<b>Bouger</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:9
+#: src/jlm/universe/bugglequest/BuggleWorld.html:9
 msgid "(See also the note on exceptions, below)"
 msgstr "(voir aussi la note sur les exceptions, plus bas)"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10
 msgid "<b>Turn left"
 msgstr "<b>Tourner à gauche"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10
 msgid "Turn right"
 msgstr "Tourner à droite"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10
 msgid "Turn back"
 msgstr "Se retourner"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10
 msgid "Moving forward"
 msgstr "Avancer"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10
 msgid "Moving back</b>"
 msgstr "Reculer</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:11
+#: src/jlm/universe/bugglequest/BuggleWorld.html:11
 msgid "void turnLeft();"
 msgstr "void turnLeft();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:11
+#: src/jlm/universe/bugglequest/BuggleWorld.html:11
 msgid "void turnRight()"
 msgstr "void turnRight()"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:11
+#: src/jlm/universe/bugglequest/BuggleWorld.html:11
 msgid "void turnBack()"
 msgstr "void turnBack()"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:12
+#: src/jlm/universe/bugglequest/BuggleWorld.html:12
 msgid "void forward() or void forward(int)"
 msgstr "void forward() ou void forward(int)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:12
+#: src/jlm/universe/bugglequest/BuggleWorld.html:12
 msgid "void backward() or void backward(int)"
 msgstr "void backward() ou void backward(int)"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:13
 msgid "<b>Get X coordinate"
 msgstr "<b>Obtenir l'abcisse"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:13
 msgid "Get Y coordinate"
 msgstr "Obtenir l'ordonnée"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:13
 msgid "Set X coordinate"
 msgstr "Changer l'abcisse"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:13
 msgid "Set Y coordinate"
 msgstr "Changer l'ordonnée"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:13
 msgid "Set position</b>"
 msgstr "Changer la position</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:14
+#: src/jlm/universe/bugglequest/BuggleWorld.html:14
 msgid "int getX();"
 msgstr "int getX();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:14
+#: src/jlm/universe/bugglequest/BuggleWorld.html:14
 msgid "int getY()"
 msgstr "int getY()"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:14
+#: src/jlm/universe/bugglequest/BuggleWorld.html:14
 msgid "void setX(int)"
 msgstr "void setX(int)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:14
+#: src/jlm/universe/bugglequest/BuggleWorld.html:14
 msgid "void setY(int)"
 msgstr "void setY(int)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:14
+#: src/jlm/universe/bugglequest/BuggleWorld.html:14
 msgid "void setPos(int,int)"
 msgstr "void setPos(int,int)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:16
+#: src/jlm/universe/bugglequest/BuggleWorld.html:16
 msgid "<b>Information on the buggle</b>"
 msgstr "<b>Informations sur la buggle</b>"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:17
+#: src/jlm/universe/bugglequest/BuggleWorld.html:17
 msgid "<b>Get the color"
 msgstr "<b>Obtenir la couleur"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:17
+#: src/jlm/universe/bugglequest/BuggleWorld.html:17
 msgid "Set the color</b>"
 msgstr "Changer la couleur</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:18
+#: src/jlm/universe/bugglequest/BuggleWorld.html:18
 msgid "Color getColor();"
 msgstr "Color getColor();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:18
+#: src/jlm/universe/bugglequest/BuggleWorld.html:18
 msgid "void setColor(Color)"
 msgstr "void setColor(Color)"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:19
+#: src/jlm/universe/bugglequest/BuggleWorld.html:19
 msgid "<b>Look for a wall forward"
 msgstr "<b>Chercher un mur devant"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:19
+#: src/jlm/universe/bugglequest/BuggleWorld.html:19
 msgid "Look for a wall backward</b>"
 msgstr "Chercher un mur derriere</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:20
+#: src/jlm/universe/bugglequest/BuggleWorld.html:20
 msgid "boolean isFacingWall();"
 msgstr "boolean isFacingWall();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:20
+#: src/jlm/universe/bugglequest/BuggleWorld.html:20
 msgid "boolean isBackingWall()"
 msgstr "boolean isBackingWall()"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:21
+#: src/jlm/universe/bugglequest/BuggleWorld.html:21
 msgid "<b>Get heading"
 msgstr "<b>Obtenir la direction"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:21
+#: src/jlm/universe/bugglequest/BuggleWorld.html:21
 msgid "Set heading</b>"
 msgstr "Changer la direction</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:21
+#: src/jlm/universe/bugglequest/BuggleWorld.html:21
 msgid "valid directions are:"
 msgstr "Les directions valides sont :"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:22
+#: src/jlm/universe/bugglequest/BuggleWorld.html:22
 msgid "Direction getDirection();"
 msgstr "Direction getDirection();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:22
+#: src/jlm/universe/bugglequest/BuggleWorld.html:22
 msgid "void setDirection(Direction)"
 msgstr "void setDirection(Direction)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:22
+#: src/jlm/universe/bugglequest/BuggleWorld.html:22
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
 msgstr "Direction.NORTH, Direction.EAST, Direction.SOUTH et Direction.WEST"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:24
+#: src/jlm/universe/bugglequest/BuggleWorld.html:24
 msgid "<b>About the brush</b>"
 msgstr "<b>À propos de la brosse</b>"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:25
 msgid "<b>Brush down"
 msgstr "<b>Baisser la brosse"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:25
 msgid "Brush up"
 msgstr "Lever la brosse"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:25
 msgid "Get brush position</b>"
 msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:26
+#: src/jlm/universe/bugglequest/BuggleWorld.html:26
 msgid "void brushUp();"
 msgstr "void brushUp();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:26
+#: src/jlm/universe/bugglequest/BuggleWorld.html:26
 msgid "void brushDown();"
 msgstr "void brushDown();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:26
+#: src/jlm/universe/bugglequest/BuggleWorld.html:26
 msgid "boolean isBrushDown();"
 msgstr "boolean isBrushDown();"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:27
+#: src/jlm/universe/bugglequest/BuggleWorld.html:27
 msgid "<b>Change the brush color"
 msgstr "<b>Modifier la couleur de la brosse"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:27
+#: src/jlm/universe/bugglequest/BuggleWorld.html:27
 msgid "Get the color of the brush</b>"
 msgstr "Obtenir la couleur de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:28
+#: src/jlm/universe/bugglequest/BuggleWorld.html:28
 msgid "void setBrushColor(Color);"
 msgstr "void setBrushColor(Color);"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:28
+#: src/jlm/universe/bugglequest/BuggleWorld.html:28
 msgid "Color getBrushColor();"
 msgstr "Color getBrushColor();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:30
+#: src/jlm/universe/bugglequest/BuggleWorld.html:30
 msgid "<b>Interacting with the world</b>"
 msgstr "<b>Interagir avec le monde</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:31
+#: src/jlm/universe/bugglequest/BuggleWorld.html:31
 msgid "<b>Get the color of the ground</b>"
 msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:31
+#: src/jlm/universe/bugglequest/BuggleWorld.html:31
 msgid "Color getGroundColor();"
 msgstr "Color getGroundColor();"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:33
 msgid "<b>Look for a baggle on the ground"
 msgstr "<b>Chercher un baggle par terre"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:33
 msgid "Look for a baggle in bag"
 msgstr "Chercher un baggle dans ses poches"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:33
 msgid "Pickup a baggle"
 msgstr "Prendre un baggle"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:33
 msgid "Drop a baggle</b>"
 msgstr "Poser un baggle</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:34
+#: src/jlm/universe/bugglequest/BuggleWorld.html:34
 msgid "(see the note on exceptions)"
 msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 msgid "boolean isOverBaggle();"
 msgstr "boolean isOverBaggle();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 msgid "boolean isCarryingBaggle();"
 msgstr "boolean isCarryingBaggle();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 msgid "void pickupBaggle()"
 msgstr "void pickupBaggle()"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 msgid "void dropBaggle()"
 msgstr "void dropBaggle()"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 msgid "<b>Look for a message"
 msgstr "<b>Chercher un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 msgid "Add a message"
 msgstr "Ajouter un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 msgid "Read the message"
 msgstr "Lire le message"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 msgid "Erase the message</b>"
 msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:38
 msgid "boolean isOverMessage();"
 msgstr "boolean isOverMessage();"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:38
 msgid "void writeMessage(String);"
 msgstr "void writeMessage(String);"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:38
 msgid "String readMessage()"
 msgstr "String readMessage()"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:38
 msgid "void clearMessage()"
 msgstr "void clearMessage()"
 
 #. type: Content of: <h2>
-#: src/universe/bugglequest/BuggleWorld.html:41
+#: src/jlm/universe/bugglequest/BuggleWorld.html:41
 msgid "Note on exceptions"
 msgstr "Note sur les exceptions"
 
 #. type: Content of: outside any tag (error?)
-#: src/universe/bugglequest/BuggleWorld.html:42
+#: src/jlm/universe/bugglequest/BuggleWorld.html:42
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -677,7 +927,7 @@ msgstr ""
 "contient déjà lève une exception AlreadyHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/universe/bugglequest/BuggleWorld.html:48
+#: src/jlm/universe/bugglequest/BuggleWorld.html:48
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -687,12 +937,12 @@ msgstr ""
 "exception."
 
 #. type: Content of: <h1>
-#: src/universe/hanoi/HanoiWorld.html:1
+#: src/jlm/universe/hanoi/HanoiWorld.html:1
 msgid "HanoiWorld"
 msgstr "Le monde de Hanoï"
 
 #. type: Content of: outside any tag (error?)
-#: src/universe/hanoi/HanoiWorld.html:3
+#: src/jlm/universe/hanoi/HanoiWorld.html:3
 msgid ""
 "This world implements the ultra-classical Hanoi problem. You are asked to "
 "move the disk pile from the stick where they are to the target stick (given "
@@ -710,13 +960,13 @@ msgstr ""
 "suivante :"
 
 #. type: Content of: <pre>
-#: src/universe/hanoi/HanoiWorld.html:11
+#: src/jlm/universe/hanoi/HanoiWorld.html:11
 #, no-wrap
 msgid "public void move(int src, int dst) throws HanoiInvalidMove;"
 msgstr "public void move(int src, int dst) throws HanoiInvalidMove;"
 
 #. type: Content of: outside any tag (error?)
-#: src/universe/hanoi/HanoiWorld.html:13
+#: src/jlm/universe/hanoi/HanoiWorld.html:13
 msgid ""
 "It moves one disk from the stick <code>src</code> onto the stick <code>dst</"
 "code>. As you can see, if you try to do an invalid move (like laying a disk "
@@ -809,447 +1059,129 @@ msgstr "Les <i>buggles</i> ? Qu'est ce que c'est ??"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Environment.html:12
+#, fuzzy
+#| msgid ""
+#| "The buggles are little animals obeying any order you may give them. In "
+#| "each exercise, you have to provide them with the right instructions so "
+#| "that the world turns into the objective of the exercise."
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
-"world turns into the objective of the exercise."
+"world turns into the objective of the exercise. For example in this "
+"exercise, you show instruct your buggle to move forward once. You can see "
+"that by checking the difference between the <i>World</i> view and the "
+"<i>Objective</i> one.  In most lessons, your code must be written in Java."
 msgstr ""
 "Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
 "donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
 "pour faire en sorte que le monde ressemble à l'objectif de l'exercice."
 
 #. type: Content of: <p><h3>
-#: src/lessons/welcome/Environment.html:16
+#: src/lessons/welcome/Environment.html:19
 msgid "Working environment"
 msgstr "L'environnement de travail"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/Environment.html:18
+#: src/lessons/welcome/Environment.html:21
 msgid ""
-"Before going any further, get familiar with the working environment. The "
-"main window (the one you are currently looking at) is made of 5 main "
-"components:"
+"Before going any further, get familiar with the working environment. Have a "
+"look at the several elements composing the main window, move your mouse over "
+"them to show the tooltip, and experiment with the elements to see what they "
+"do.  The white area below is the console: this is where errors and messages "
+"get displayed. If you have access to the net, try to open the forum in the "
+"help menu to check if other people are connected right now. Note that when "
+"you successfully solve an exercise, the good news is spread on twitter.  "
+"Keep posted to the progress of your friends by following #jlmlovers :)"
 msgstr ""
-"Avant d'aller plus loin, familiarisez vous avec l'environnement de travail.  "
-"La fenêtre principale (celle que vous voyez) est composée de 5 éléments "
-"principaux:"
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Environment.html:24
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Environment.html:30
 msgid ""
-"<b>The menu:</b> Placed on top of the window, it gives you access to some "
-"advanced commands such as exiting the program, and some other that we will "
-"detail later."
+"If your code contains errors (and code always do at some point), the "
+"computer will display error messages in the console. You obviously have to "
+"fix the errors to pass the exercises. The messages that get displayed may "
+"sound scary at first glance, but don't panic. The compiler is only somehow "
+"limited in its communication abilities, but he's not mean. If you look "
+"closer, the solution to solve your issue is written in the middle of those "
+"cryptic messages. You'll see, with a bit of habit, we get used to it."
 msgstr ""
-"<b>Le menu :</b> Placé en haut de la fenêtre, il vous permet de quitter le "
-"programme, et d'accéder à certaines commandes avancées que nous détaillerons "
-"plus tard."
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Environment.html:28
-msgid ""
-"<b>The tool bar:</b> Placed just below the menu, it gives you access to the "
-"four main commands:"
-msgstr ""
-"<b>La barre de commandes : </b> Placée juste en dessous du menu, celle-ci "
-"vous donne accès aux quatre commandes principales :"
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:33
-msgid ""
-"The <b>Start</b> button, which begins the compilation and execution of the "
-"code you may have typed in the editor. At the end of the execution, it "
-"verifies whether you reach the situation constituting the objective of the "
-"exercise or not. If yes, you gain access to the next exercise using the "
-"<b>Exercise</b> menu. If not, you need to rework your code."
-msgstr ""
-"Le bouton <b>Start</b> qui lance la compilation et l'exécution du code que "
-"vous aurez tapé dans l'éditeur.  A la fin de l'exécution, il vérifie que "
-"vous arrivez bien à la situation finale de l'exercice. Si c'est le cas, vous "
-"aurez accès à l'exercice suivant par le menu <b>Exercise</b>.  Sinon, il "
-"vous faudra corriger votre code."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:39
-msgid ""
-"The <b>Stop</b> button allows you to interupt the execution of your code, "
-"what may reveal useful if you encounter an <i>infinite loop</i>."
-msgstr ""
-"Le bouton <b>Stop</b> permet d'interrompre l'exécution de votre code, ce qui "
-"est pratique si vous avez une <i>boucle infinie</i>."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:42
-msgid ""
-"The <b>Reset</b> button can be used to reset the world into its initial "
-"state."
-msgstr ""
-"Le bouton <b>Reset</b> permet de remettre le monde dans son état initial."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:45
-msgid ""
-"The <b>Demo</b> button shows you the execution of the expected solution. "
-"During its execution, you may want to swich the seen world to see the "
-"different expected solutions."
-msgstr ""
-"Le bouton <b>Demo</b> vous montre l'exécution de la solution attendue. "
-"Pendant l'exécution, vous êtes autorisés à changer de monde afin de voir les "
-"différentes exécutions attendues."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:48
-msgid ""
-"Please note that there is often several ways of achieving the awaited "
-"solution, and that the one presented during the demo is not more or less "
-"correct than the others. You are completely free to not follow strictly the "
-"process shown by the demo, as long as your final solution matches the "
-"exercise expectations."
-msgstr ""
-"Notez qu'il y a souvent plusieurs moyens d'atteindre la solution escomptée, "
-"et que celle présentée lors de la démo n'est pas plus ou moins correcte que "
-"les autres. Libre à vous de ne pas suivre à la lettre le procédé de la démo, "
-"à condition que le résultat final corresponde bien à ce qui est demandé."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:54
-msgid ""
-"The scrolling menu <b>Lessoon</b> allows you to choose the lesson you want "
-"to work on."
-msgstr ""
-"Le menu déroulant <b>Lesson</b>, vous permet de choisir la leçon que vous "
-"souhaitez étudier"
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:57
-msgid ""
-"The scrolling menu <b>Exercise</b> allows you to switch to another exercise "
-"when you want. Some lessons require you to finish an exercise before "
-"starting the previous one."
-msgstr ""
-"Le menu déroulant <b>Exercise</b>, vous permet de changer d'exercice quand "
-"vous le souhaitez. Notez que certaines leçons vous imposent de finir un "
-"exercice avant de pouvoir commencer le suivant."
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Environment.html:63
-msgid ""
-"<b>Mission and editor tabs:</b> this is were you read this very text. This "
-"area contains several tabs to which you can access by clicking on their name "
-"on the top left. The first tab (which is always named <b>Mission</b>)  "
-"contains a presentation of the current exercise. To solve an exercise, you "
-"need to write your code in the other tabs. For example, you can now clic on "
-"the <b>Source Code</b> tab to see the actual source. It is empty because "
-"there is no code to write for this introduction exercise."
-msgstr ""
-"<b>Les onglets de consigne et d'édition :</b> C'est ici que vous lisez le "
-"texte actuel.  Cette zone contient plusieurs onglets, auxquels on peut "
-"accéder en cliquant sur leur nom en haut à gauche.  Le premier onglet (qui "
-"est toujours intitulé <b>Mission</b>)  contient une présentation de "
-"l'exercice en cours.  Pour résoudre un exercice, vous devez écrire votre "
-"code dans les autres onglets.  Par exemple, vous pouvez maintenant cliquer "
-"sur l'onglet <b>Source Code</b> pour voir le code actuel.  Il est vide, car "
-"il n'y a rien à faire pour cet exercice de prise en main de l'environnement."
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Environment.html:71
-msgid ""
-"<b>The console:</b> Placed under the tabs, this is where any messages of the "
-"application will appear. This area is initially empty and white."
-msgstr ""
-"<b>La console :</b> Placée sous les onglets, c'est ici que s'afficheront "
-"tous les messages de l'application. Cette zone est initialement vide et "
-"blanche."
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Environment.html:74
-msgid ""
-"<b>World view</b> Placed on the right of the tabs, it is constituted of five "
-"elements:"
-msgstr ""
-"<b>La vue du monde :</b> Placée à droite des onglets, elle est constituée de "
-"cinq éléments:"
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:79
-msgid ""
-"A scrolling menu allows to choose the world. Indeed, the program you write "
-"may be executed in several worlds to test it in differing conditions. This "
-"menu allows you to choose the world you want to see."
-msgstr ""
-"Un menu déroulant permettant de choisir un monde. En effet, le programme que "
-"vous devez écrire sera parfois exécuté dans plusieurs monde pour vous "
-"confronter à différentes situations. Ce menu déroulant vous permettra de "
-"choisir le monde que vous souhaitez voir."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:83
-msgid ""
-"A slider placed underneath allows to choose the animation speed of the "
-"world. More precisely, it allows to choose the delay (in milliseconds) that "
-"the buggles must wait after each action to allow you to see what they are "
-"doing."
-msgstr ""
-"Un règlet placé en dessous permet de choisir la vitesse d'animation du "
-"monde. Plus exactement, il permet de choisir le delai (en millisecondes) que "
-"les buggles doivent attendre après chaque action afin que vous ayez le temps "
-"de voir ce qu'elles font."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:88
-msgid ""
-"A tab <b>World</b> represents the view of the world currently selected (from "
-"the scrolling menu). This view is thus constitued of a grid forming the "
-"several cells of the world, as well as several <i>buggles</i> awaiting for "
-"your orders."
-msgstr ""
-"Un onglet <b>World</b> qui représente la vue du monde actuellement "
-"sélectionné (dans le menu déroulant). Cette vue est constituée d'une grille "
-"représentant les différentes cases du monde, ainsi que d'une ou plusieurs "
-"<i>buggles</i> qui attend vos ordres."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:93
-msgid ""
-"An <b>Objective</b> tab displaying the world as it must be by the end of the "
-"exercise."
-msgstr ""
-"Un onglet <b>Objective</b> qui permet d'afficher la vue du monde tel qu'il "
-"doit être à la fin de l'exercice."
-
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:97
-msgid ""
-"<b>The interactive controls</b>. Placed under the world view, these buttons "
-"allows you to interactively control the buggles. This way, you can try to "
-"<i>manually</i> bring your buggle to the scenario objective before writting "
-"the needed code in the editor."
-msgstr ""
-"<b>Les contrôles interactifs</b> Placés sous la vue du monde, ces boutons "
-"vous permettent de contrôler interactivement les buggles.  Vous pouvez ainsi "
-"essayer d'amener la buggle à l'objectif du scénario <i>à la main</i> avant "
-"d'écrire le code nécessaire dans l'éditeur."
-
-#. type: Content of: <p><ul><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:103
-msgid "A scrolling menu allows to select the buggle you want to control."
-msgstr ""
-"Un menu déroulant permettant de sélectionner la buggle que vous souhaitez "
-"contrôler."
-
-#. type: Content of: <p><ul><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:105
-msgid "The <b>Forward</b> button let your buggle do one step forward."
-msgstr "Le bouton <b>Forward</b> fait avancer votre buggle d'un pas."
-
-#. type: Content of: <p><ul><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:107
-msgid "The <b>Backward</b> button let it do one step backward."
-msgstr "Le bouton <b>Backward</b> fait reculer votre buggle d'un pas."
-
-#. type: Content of: <p><ul><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:109
-msgid "The <b>Turn left</b> button ask your buggle to turn of 90° to its left."
-msgstr ""
-"Le bouton <b>Turn left</b> demande à votre buggle de tourner vers la gauche."
-
-#. type: Content of: <p><ul><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:111
-msgid ""
-"The <b>Turn right</b> button asks the buggle to turn to the right (isn't "
-"this amazing?)."
-msgstr ""
-"Le bouton <b>Turn right</b> demande à votre buggle de tourner vers la droite."
-
-#. type: Content of: <p><ul><li><ul><li><ul><li>
-#: src/lessons/welcome/Environment.html:114
-msgid ""
-"The <b>Mark</b> button requests your buggle to leave a mark behind it when "
-"it goes."
-msgstr ""
-"Le bouton <b>Mark</b> demande à votre buggle de faire un trait au sol quand "
-"elle avance."
-
-#. type: Content of: <p><ul><li><h3>
-#: src/lessons/welcome/Environment.html:123
+#. type: Content of: <p><p><h3>
+#: src/lessons/welcome/Environment.html:38
 msgid "What am I supposed to do?"
 msgstr "Que dois-je faire ?"
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Environment.html:125
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Environment.html:40
 msgid ""
-"The goal of each exercise is thus to type some code in the editor tab to "
-"instruct your buggle to reach its goal."
+"It's time to write your first program. Simply ask your buggle to move one "
+"step forward using the Source Code pane. For that, simply write the "
+"following code (clicking on the interactive controls is not enough: You have "
+"to write the code after experimenting interactively)."
 msgstr ""
-"L'objectif de chaque exercice est donc de taper du code dans l'onglet de "
-"l'éditeur afin de donner les ordres nécessaires à la buggle pour atteindre "
-"son objectif."
 
-#. type: Content of: <p><ul><li><p>
-#: src/lessons/welcome/Environment.html:128
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Environment.html:44 src/lessons/welcome/Basics.html:26
+#, no-wrap
+msgid "forward();"
+msgstr "forward();"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Environment.html:45
+msgid "Do not forget the final"
+msgstr ""
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Environment.html:45
+#, no-wrap
+msgid ";"
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Environment.html:45
 msgid ""
-"This code must naturally be written in Java. It it contains errors, the "
-"compiler will display a message in the console, and you will need to fix it "
-"before trying to execute it."
+"which tells the compiler that the instruction is over (yes, computers are so "
+"dumb that they cannot <i>guess</i> obvious stuff like this)."
 msgstr ""
-"Ce code doit naturellement être écrit en Java.  S'il contient des erreurs, "
-"un message sera affiché dans la console par le compilateur, et il vous "
-"faudra corriger avant de tenter de l'exécuter."
 
-#. type: Content of: <p><ul><li><p><p>
-#: src/lessons/welcome/Environment.html:132
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Environment.html:49
 msgid ""
-"Try now to write something in the editor (tab <b>Source Code</b>) such as "
-"<tt>Hello</tt>, and then clic on the <b>Start</b> button. The messages that "
-"get displayed may sound strange at first glance, but don't panic. We will "
-"see their signification as they appear. Erase for now any content you may "
-"have typed in the editor."
+"Once done, clic on run, and proceed to next exercise with the right combo-"
+"box (or keep around to experiment further if you feel so)."
 msgstr ""
-"Essayez par exemple d'écrire quelque chose dans l'éditeur (onglet <b>Source "
-"Code</b>) comme <tt>bonjour</tt>, puis de cliquer sur <b>Start</b>.  Les "
-"messages qui s'affichent peuvent vous sembler obscures au premier abord, "
-"mais ne vous inquiétez pas : nous verrons leur signification au fur et à "
-"mesure. Effacez maintenant le contenu de l'éditeur avant de continuer."
-
-#. type: Content of: <p><ul><li><p><h3>
-#: src/lessons/welcome/Environment.html:138
-msgid "And now?"
-msgstr "Et maintenant ?"
-
-#. type: Content of: <p><ul><li><p>
-#: src/lessons/welcome/Environment.html:140
-msgid ""
-"For this first exercise, you are not expected to do anything perticular: the "
-"initial world is exactly the same than the objective to reach. So, you don't "
-"have any code to write. Once you're done visiting the interface and playing "
-"with the interactive controls, clic on the <b>Start</b> button. A window "
-"appear informing you that you completed the exercise expectations."
-msgstr ""
-"Pour ce premier exercice, vous n'avez rien à faire : le monde initial est "
-"l'objectif à atteindre. Vous n'avez donc pas de code à écrire.  Après avoir "
-"visité l'interface et joué un peu avec les contrôles interactifs, appuyez "
-"sur le bouton <b>Start</b>. Une fenêtre apparaît pour vous informez que vous "
-"avez remplit le contrat de l'exercice."
-
-#. type: Content of: <p><ul><li><p><p>
-#: src/lessons/welcome/Environment.html:146
-msgid ""
-"You can then move to next exercise using the right menu (<b>Exercise</b>)."
-msgstr ""
-"Vous pouvez alors passez à l'exercice suivant en utilisant le menu adéquat "
-"(<b>Exercise</b>)."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Basics.html:1
-msgid "Discovering Java"
-msgstr "Découverte du Java"
+#, fuzzy
+#| msgid "Java instructions"
+msgid "Java Instructions"
+msgstr "Les instructions en Java"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Basics.html:3
 msgid ""
-"We will now write our first Java program. In a computer program (let it be "
-"in Java or anything else), you can find two kind of stuff: <b>data</b> and "
-"<b>instructions</b> manipulating these data."
+"Congratulations! You just wrote your first program! You got the idea now: "
+"programming is nothing more than giving simple instructions to the computer "
+"that blindly apply them. The main difficulty is to explain stuff to someone "
+"as stupid as a computer..."
 msgstr ""
-"Nous allons maintenant écrire notre tout premier programme Java. Dans un "
-"programme informatique (en Java ou autre), on trouve deux choses : les "
-"<b>données</b>, et les <b>instructions</b> qui manipulent ces données."
 
-#. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:7
-msgid "Data in Java"
-msgstr "Les données en Java"
-
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/Basics.html:8
+#, fuzzy
+#| msgid ""
+#| "<a name=\"generality\">The simplest Java program is constituted by a "
+#| "suite of instructions separated by semi-columns (;). You can read it as a "
+#| "list of simple order given to the machine. It is very similar to a recipe "
+#| "stating <i>Melt the chocolate pieces, add sugar, cool the mix and serve</"
+#| "i>."
 msgid ""
-"Java allows to use several <i>types</i> of data, such as integers or strings "
-"of chars. If you want to use a data several times, you need to store it "
-"within a <i>variable</i>, which can be seen as a cell containing a value. "
-"Java is said to be a <i>typed</i> language, which means that it is onle "
-"possible to store a value in a variable of the right type. Don't think about "
-"storing a string into an integer variable."
-msgstr ""
-"Java permet d'utiliser différents <i>types</i> de données, tels que les "
-"entiers, les nombres à virgules ou les chaînes de caractères. Si on veut "
-"utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</"
-"i>, qui est une sorte de case contenant une valeur. Java est un langage "
-"<i>typé</i>, ce qui veut dire que l'on ne peut stocker une valeur que dans "
-"une variable du bon type. Pas question de stocker une chaîne de caractères "
-"dans une variable entière."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Basics.html:15
-msgid ""
-"To <i>declare</i> (ie, create) a variable, you just need to write its type, "
-"a space, and the variable name. From the existing types, we can speak of "
-"<b>int</b> (for integers), <b>double</b> for dot numbers, <b>boolean</b> for "
-"booleans (ie, values being either true or false) and <b>String</b> for char "
-"strings. If you want, you can specify the initial value of the variable by "
-"adding a equal sign (=) followed by the value after the declaration."
-msgstr ""
-"Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, "
-"un espace et le nom de la variable.  Parmi les types existants, on trouve: "
-"<b>int</b> pour les entiers, <b>double</b> pour les nombres à virgule, "
-"<b>boolean</b> pour les booléens (i.e. les variables qui peuvent être soit "
-"vraies soit fausses) et <b>String</b> pour les chaînes de caractères.  Si "
-"l'on veut, on peut faire suivre la déclaration du signe = suivi de la valeur "
-"initiale à donner à la valeur."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Basics.html:21
-msgid ""
-"So, to create a variable named <b>x</b> intended to contain integers, one "
-"can write:"
-msgstr ""
-"Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on "
-"écrira :"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/Basics.html:22
-#, no-wrap
-msgid "int x;"
-msgstr "int x;"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Basics.html:23
-msgid ""
-"If you want that the variable contains 5 as initial value, you should type:"
-msgstr "Si on veut que sa valeur initiale soit 5, on écrira :"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/Basics.html:23
-#, no-wrap
-msgid "int x = 5;"
-msgstr "int x = 5;"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/Basics.html:24
-msgid ""
-"Later in the program, if you want to <i>affect</i> a new value to the "
-"variable, that's really easy:"
-msgstr ""
-"Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle "
-"valeur à la variable, c'est très simple :"
-
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Basics.html:27
-#, no-wrap
-msgid "x=3; <span class=\"comment\">It replace the old value of x by 3</span>"
-msgstr "x=3; <span class=\"comment\">ceci remplace la valeur de x par 3</span>"
-
-#. type: Content of: <p><p><h3>
-#: src/lessons/welcome/Basics.html:29
-msgid "Generality on instructions"
-msgstr "Généralités sur les instructions"
-
-#. type: Content of: <p><p><a>
-#: src/lessons/welcome/Basics.html:29
-msgid ""
-"<a name=\"generality\">The simplest Java program is constituted by a suite "
-"of instructions separated by semi-columns (;). You can read it as a list of "
+"Programs are mainly suites of method calls, which are no more than a list of "
 "simple order given to the machine. It is very similar to a recipe stating "
-"<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>."
+"<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. Java "
+"want to have the instructions separated by semi-columns (;) and given "
+"parenthesis, as in"
 msgstr ""
 "<a name=\"generalites\"> Le programme Java le plus simple est formé d'une "
 "suite d'instructions, séparées par des points-virgules. Il faut le "
@@ -1257,43 +1189,19 @@ msgstr ""
 "C'est assez comparable à une recette de cuisine où l'on dit <i>cassez les "
 "oeufs puis ajoutez du sel puis mélangez le tout puis faites cuire</i>."
 
-#. type: Content of: <p><p><a><p>
-#: src/lessons/welcome/Basics.html:33
-msgid "Variable affectations such as"
-msgstr "Les affectations de variables comme"
-
-#. type: Content of: <p><p><a><p><pre>
-#: src/lessons/welcome/Basics.html:33
-#, no-wrap
-msgid "x=5"
-msgstr "x=5"
-
-#. type: Content of: <p><p><a><p>
-#: src/lessons/welcome/Basics.html:33
-msgid ""
-"are the simpler instructions. The other instruction kind in Java are "
-"constituted by <i>method calls</i>. We will come back later on how to define "
-"such methods, but we can already say that they are the available orders. The "
-"general syntax is:"
-msgstr ""
-"sont les instructions les plus simples. L'autre type classique d'instruction "
-"en Java est l'<i>appel à une méthode</i>. Nous verrons plus tard comment "
-"définir de telles méthodes, disons simplement pour l'instant qu'il s'agit "
-"des ordres disponibles. La syntaxe est en général est :"
-
-#. type: Content of: <p><p><a><p><pre>
-#: src/lessons/welcome/Basics.html:37
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/Basics.html:12
 #, no-wrap
 msgid "nameOfTheMethod()"
 msgstr "nomDeLaMethode()"
 
-#. type: Content of: <p><p><a><p><p>
-#: src/lessons/welcome/Basics.html:38
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Basics.html:13
 msgid "The example of previous recipe would thus be written in a similar way:"
 msgstr "L'exemple ci-dessus de recette s'écrirait donc ainsi à peu près ainsi:"
 
-#. type: Content of: <p><p><a><p><p><pre>
-#: src/lessons/welcome/Basics.html:40
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/Basics.html:15
 #, no-wrap
 msgid ""
 "meltTheChocolatePieces();\n"
@@ -1306,45 +1214,28 @@ msgstr ""
 "melangerLeTout();\n"
 "faireCuire();\n"
 
-#. type: Content of: <p><p><a><p><p><h3>
-#: src/lessons/welcome/Basics.html:46
-msgid "Java instructions"
-msgstr "Les instructions en Java"
-
-#. type: Content of: <p><p><a><p><p><a>
-#: src/lessons/welcome/Basics.html:46
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Basics.html:21
+#, fuzzy
+#| msgid ""
+#| "For example, there is a method for each button of the interactive control "
+#| "panel. To achieve the same effect than the <b>forward</b> button (making "
+#| "the buggle moving one step forward), you need to write the following in "
+#| "the editor:"
 msgid ""
-"<a name=\"instructions\">Of course, these methods do not exist in Java, and "
-"it is almost impossible to list all existing methods in Java. In this "
-"lesson, the most common instructions are calls to the buggle methods, ie, "
-"orders passed to the buggle."
-msgstr ""
-"<a name=\"instructions\"> Bien entendu, ces méthodes n'existent pas en Java, "
-"et il est difficile de faire la liste des méthodes existantes en Java. Dans "
-"cette leçon, les instructions les plus souvent utilisées sont des appels à "
-"des méthodes de la buggle, par lesquelles on donne des ordres à la buggle "
-"qui les reçoit."
-
-#. type: Content of: <p><p><a><p><p><a><p>
-#: src/lessons/welcome/Basics.html:50
-msgid ""
-"For example, there is a method for each button of the interactive control "
-"panel. To achieve the same effect than the <b>forward</b> button (making the "
-"buggle moving one step forward), you need to write the following in the "
-"editor:"
+"Of course, these specific methods do not exist in Java, but it may be "
+"possible to define them by yourself (we'll see later how to define your how "
+"methods). For now, we'll simply go for the buggle instructions. There is a "
+"method for each button of the interactive control panel. To achieve the same "
+"effect than the <b>forward</b> button (making the buggle moving one step "
+"forward), you need to write the following in the editor:"
 msgstr ""
 "Par exemple, il y a une méthode pour chaque bouton du contrôle interactif.  "
 "Pour faire la même chose que le bouton <b>forward</b> (faire avancer la "
 "buggle d'un pas), il faut écrire dans l'éditeur :"
 
-#. type: Content of: <p><p><a><p><p><a><a><p><pre>
-#: src/lessons/welcome/Basics.html:53 src/lessons/welcome/Basics.html:94
-#, no-wrap
-msgid "forward();"
-msgstr "forward();"
-
-#. type: Content of: <p><p><a><p><p><a><p>
-#: src/lessons/welcome/Basics.html:54
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Basics.html:27
 msgid ""
 "Likewise, to achieve the same effect than the <b>backward</b>, <b>turn left</"
 "b> and <b>turn right</b> buttons, you need to use respectively:"
@@ -1352,8 +1243,8 @@ msgstr ""
 "De même, pour faire l'équivalent des boutons <b>backward</b>, <b>turn left</"
 "b> et <b>turn right</b>, il faut utiliser respectivement :"
 
-#. type: Content of: <p><p><a><p><p><a><p><pre>
-#: src/lessons/welcome/Basics.html:57
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Basics.html:30
 #, no-wrap
 msgid ""
 "backward();\n"
@@ -1364,8 +1255,8 @@ msgstr ""
 "turnLeft();\n"
 "turnRight();\n"
 
-#. type: Content of: <p><p><a><p><p><a><p>
-#: src/lessons/welcome/Basics.html:61
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Basics.html:34
 msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
@@ -1373,8 +1264,8 @@ msgstr ""
 "Le bouton <b>mark</b> est un peu particulier, puisqu'il correspond à deux "
 "méthodes : la première lève le crayon, tandis que la seconde le baisse."
 
-#. type: Content of: <p><p><a><p><p><a><p><pre>
-#: src/lessons/welcome/Basics.html:64
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Basics.html:37
 #, no-wrap
 msgid ""
 "brushDown();\n"
@@ -1383,31 +1274,70 @@ msgstr ""
 "brushDown();\n"
 "brushUp();\n"
 
-#. type: Content of: <p><p><a><p><p><a><p>
-#: src/lessons/welcome/Basics.html:67
-msgid "The buggle offers other methods, that we will introduce when needed."
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Basics.html:40
+#, fuzzy
+#| msgid "The buggle offers other methods, that we will introduce when needed."
+msgid ""
+"The buggle offers other methods, that are presented from the \"Help/about "
+"this world\" menu and will be introduced on need."
 msgstr ""
 "La buggle offre d'autres méthodes, que nous verrons lorsque le besoin s'en "
 "fera sentir."
 
-#. type: Content of: <p><p><a><p><p><a><h3>
-#: src/lessons/welcome/Basics.html:69
-msgid "Adding comments"
-msgstr "Ajouter des commentaires"
+#. type: Content of: <h3>
+#: src/lessons/welcome/Basics.html:44 src/lessons/welcome/Conditions.html:58
+#: src/lessons/welcome/LoopWhile.html:22
+#: src/lessons/welcome/LoopDoWhile.html:13
+#: src/lessons/welcome/Variables.html:61 src/lessons/welcome/LoopFor.html:50
+#: src/lessons/welcome/Methods.html:44
+#: src/lessons/welcome/MethodsDogHouse.html:34
+#: src/lessons/welcome/MethodsReturning.html:41
+#: src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:127
+#: src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33
+#: src/lessons/maze/RandomMouseMaze.html:21
+#: src/lessons/maze/WallFollowerMaze.html:17
+#: src/lessons/maze/PledgeMaze.html:35
+msgid "Exercise goal"
+msgstr "Objectif de cet exercice"
 
-#. type: Content of: <p><p><a><p><p><a>
-#: src/lessons/welcome/Basics.html:70
+#. type: Content of: <p><p><a>
+#: src/lessons/welcome/Basics.html:44
 msgid ""
-"When you write a quite complex program, it is sometimes useful to add "
-"<i>comments</i> to simplify the code reviews afterward. There is three types "
-"of comments in Java:"
+"<a name=\"Objectives\"> Our second program will be a bit more complicated, "
+"but not much. The goal for your buggle is simply to draw a house (a box), "
+"and hide inside. Check the objective world to see exactly what this means."
 msgstr ""
-"Quand on écrit un programme un peu complexe, il est parfois utile d'ajouter "
-"des <i>commentaires</i> pour simplifier la relecture du code après coup. Il "
-"existe trois types de commentaires en Java:"
 
-#. type: Content of: <p><p><a><p><p><a><ul><li>
-#: src/lessons/welcome/Basics.html:74
+#. type: Content of: <h2>
+#: src/lessons/welcome/BasicsDrawG.html:1
+msgid "Writing more complex programs"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/BasicsDrawG.html:2
+msgid ""
+"Now that we know how to draw things on the board, we'll enjoy this ability "
+"and draw a beautiful G on the board (check Objective panel for details on "
+"what's expected)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/BasicsDrawG.html:6
+msgid ""
+"When you write a quite complex program, it is sometimes useful to <b>add "
+"comments</b> to simplify the code reviews afterward. Here for example, it's "
+"quite easy to get lost in the drawing process, and you may want to add "
+"comments like <i>vertical bar done</i> or <i>finished drawing the G. Time to "
+"move back to initial position</i>. Commenting your code is almost mandatory "
+"if you (or someone else) want to read it afterward, although overcommenting "
+"(describing obvious stuff) is a bad idea as the important idea get lost in "
+"the noise.  There is three types of comments in Java, instructing the "
+"compiler to not read the text you add for humans:"
+msgstr ""
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/welcome/BasicsDrawG.html:16
 msgid ""
 "<b>Comments on a single line</b>. When the compiler encounters the "
 "symbol //, it ignores the end of the line."
@@ -1415,8 +1345,8 @@ msgstr ""
 "<b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre le "
 "symbole //, il ignore la fin de la ligne."
 
-#. type: Content of: <p><p><a><p><p><a><ul><li>
-#: src/lessons/welcome/Basics.html:76
+#. type: Content of: <p><ul><li>
+#: src/lessons/welcome/BasicsDrawG.html:18
 msgid ""
 "<b>Comments on several lines</b>. The compiler ignores anything placed "
 "between the symbols /* and */, even if they are placed on differing lines."
@@ -1425,8 +1355,8 @@ msgstr ""
 "se trouve entre les symboles /* et */, même s'ils sont sur des lignes "
 "différentes"
 
-#. type: Content of: <p><p><a><p><p><a><pre>
-#: src/lessons/welcome/Basics.html:80
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/BasicsDrawG.html:22
 #, no-wrap
 msgid ""
 "methodCallReadByTheCompiler(); <span class=\"comment\"> // all this is ignored</span>\n"
@@ -1439,124 +1369,24 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> également ignoré */</span>\n"
 "encoreUnAppel();\n"
 
-#. type: Content of: <p><p><a><p><p><a><p>
-#: src/lessons/welcome/Basics.html:86
+#. type: Content of: <p><p>
+#: src/lessons/welcome/BasicsDrawG.html:28
+#, fuzzy
+#| msgid ""
+#| "There is a third kind of comments, between /** and */, which are read by "
+#| "a specific program called JavaDoc to generate automatically the "
+#| "documentation explaning how to use the code. These comments must follow a "
+#| "very precise formalism."
 msgid ""
 "There is a third kind of comments, between /** and */, which are read by a "
 "specific program called JavaDoc to generate automatically the documentation "
-"explaning how to use the code. These comments must follow a very precise "
+"explaining how to use the code. These comments must follow a very precise "
 "formalism."
 msgstr ""
 "Il existe une troisième forme de commentaires, entre /** et */, qui sont lus "
 "par un programme nommé JavaDoc pour générer automatiquement la documentation "
 "expliquant comment utiliser le code. Ces commentaires doivent suivre un "
 "formalisme précis."
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:91 src/lessons/welcome/Basics3Pas.html:6
-#: src/lessons/welcome/BasicsDrawG.html:7
-#: src/lessons/welcome/Conditions.html:58
-#: src/lessons/welcome/LoopWhile.html:22
-#: src/lessons/welcome/LoopDoWhile.html:12
-#: src/lessons/welcome/Variables.html:37 src/lessons/welcome/LoopFor.html:50
-#: src/lessons/welcome/Methods.html:44
-#: src/lessons/welcome/MethodsDogHouse.html:34
-#: src/lessons/welcome/MethodsReturning.html:41
-#: src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:127
-#: src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33
-#: src/lessons/maze/RandomMouseMaze.html:21
-#: src/lessons/maze/WallFollowerMaze.html:17
-#: src/lessons/maze/PledgeMaze.html:35
-msgid "Exercise goal"
-msgstr "Objectif de cet exercice"
-
-#. type: Content of: <p><p><a><p><p><a><a>
-#: src/lessons/welcome/Basics.html:91
-msgid ""
-"<a name=\"Objectives\">We will now write the simplest Java program for "
-"buggles ever: you need to ask your buggle to move one step forward."
-msgstr ""
-"<a name\"Objectifs\"> Nous allons faire le programme Java pour buggle le "
-"plus simple existant : vous devez faire en sorte que la buggle avance d'un "
-"pas."
-
-#. type: Content of: <p><p><a><p><p><a><a><p>
-#: src/lessons/welcome/Basics.html:93
-msgid ""
-"For that, simply write the following code in the editor (tab <b>Source Code</"
-"b>):"
-msgstr ""
-"Pour cela, écrivez simplement dans l'éditeur (onglet <b>Source Code</b>) le "
-"code suivant :"
-
-#. type: Content of: <p><p><a><p><p><a><a><p>
-#: src/lessons/welcome/Basics.html:95
-msgid ""
-"Do not forget the final semi-colum, which tells the compiler that the "
-"instruction is over."
-msgstr ""
-"N'oubliez pas le point-virgule, qui indique au compilateur que l'instruction "
-"est finie."
-
-#. type: Content of: <p><p><a><p><p><a><a><p>
-#: src/lessons/welcome/Basics.html:97
-msgid ""
-"After typing this code into the editor, clic on <b>run</b> and move forward "
-"to next exercise."
-msgstr ""
-"Après avoir recopié le code dans l'éditeur, cliquez sur <b>run</b> et passez "
-"à l'exercice suivant."
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/Basics3Pas.html:1
-msgid "Discovering Java (2)"
-msgstr "Découverte du Java (2)"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Basics3Pas.html:3
-msgid ""
-"Using what you've learnt in previous exercise, we will now try to solve "
-"several little problems. Here is the first one."
-msgstr ""
-"En se basant sur les acquis de la leçon précédente, nous allons essayer de "
-"résoudre différents petits problèmes.  Voici le premier."
-
-#. type: Content of: <a>
-#: src/lessons/welcome/Basics3Pas.html:6
-msgid "<a name=\"Objectives\">Let your buggle move forward by three steps."
-msgstr "<a name=\"Objectifs\"> Faites avancer votre buggle de 3 pas."
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/BasicsDrawG.html:1
-msgid "Discovering Java (3)"
-msgstr "Découverte du Java (3)"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/BasicsDrawG.html:3
-msgid ""
-"Of course, buggles are not doomed to move in straight lines. They can also "
-"turn left or right (with methods <code>turnLeft()</code> and <code>turnRight"
-"()</code>) or move backward (with <code>backward()</code>)"
-msgstr ""
-"Bien sûr, les buggles ne sont pas condamnées à se déplacer en ligne droite. "
-"Elles savent également tourner à gauche ou à droite (avec les méthodes "
-"<code>turnLeft()</code> et <code>turnRight()</code>) ou reculer (avec "
-"<code>backward()</code>)."
-
-#. type: Content of: <a>
-#: src/lessons/welcome/BasicsDrawG.html:7
-msgid "<a name=\"Objective\">Let your buggle draw a G letter."
-msgstr ""
-"<a name=\"Objectifs\"> Faites dessiner &agrave; votre buggle la lettre G."
-
-#. type: Content of: <a>
-#: src/lessons/welcome/BasicsDrawG.html:8
-msgid ""
-"Please consult the view of the world objective to know the exact form of the "
-"letter to draw."
-msgstr ""
-"N'hésitez pas à consulter la vue du monde attendu pour connaître la forme "
-"exacte de la lettre."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Conditions.html:1
@@ -1750,10 +1580,9 @@ msgstr ""
 "pour plusieurs buggles, chacune étant dans une situation initiale "
 "différente. Le même code sera utilisé pour chacune d'entre elles."
 
-#. type: Content of: <p><a><p><p>
+#. type: Content of: <p><a><p>
 #: src/lessons/welcome/Conditions.html:66
 #: src/lessons/welcome/LoopWhile.html:28
-#: src/lessons/welcome/LoopDoWhile.html:23
 msgid "When your program works, move forward to the next exercise."
 msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
 
@@ -1849,12 +1678,19 @@ msgstr "Boucles jusqu'à<tt> (do ... while)</tt>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopDoWhile.html:3
+#, fuzzy
+#| msgid ""
+#| "In a <tt>while</tt> loop, the condition is evaluated before anything "
+#| "else, and if it's false, the loop body is never evaluated. Sometimes, you "
+#| "want the loop body to get evaluated at least once, even if the condition "
+#| "is initially false. For that, a variation of the <tt>while</tt> loop gets "
+#| "used, using the following syntax in Java:"
 msgid ""
 "In a <tt>while</tt> loop, the condition is evaluated before anything else, "
-"and if it's false, the loop body is never evaluated. Sometimes, you want the "
-"loop body to get evaluated at least once, even if the condition is initially "
-"false. For that, a variation of the <tt>while</tt> loop gets used, using the "
-"following syntax in Java:"
+"and if it's false, the loop body is never evaluated. Sometimes (although not "
+"that often), you would prefer the loop body to get evaluated at least once, "
+"even if the condition is initially false. For that, a variation of the "
+"<tt>while</tt> loop gets used, using the following syntax in Java:"
 msgstr ""
 "Dans une instruction <tt>while</tt>, la condition est évaluée avant toute "
 "chose, et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il "
@@ -1863,7 +1699,7 @@ msgstr ""
 "variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/LoopDoWhile.html:8
+#: src/lessons/welcome/LoopDoWhile.html:9
 #, no-wrap
 msgid ""
 "do {\n"
@@ -1875,7 +1711,7 @@ msgstr ""
 "} while (<b>condition</b>);"
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/LoopDoWhile.html:12
+#: src/lessons/welcome/LoopDoWhile.html:13
 msgid ""
 "<a name=\"Objectives\"> Some cells of the world are yellow, but your buggle "
 "cannot stand being in such cells as it is right now. Write the code needed "
@@ -1889,18 +1725,18 @@ msgstr ""
 "buggle de cet exercice connaît."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/LoopDoWhile.html:17
+#: src/lessons/welcome/LoopDoWhile.html:18
 msgid "The general idea is to do something like:"
 msgstr "L'idée général est donc de faire:"
 
 #. type: Content of: <p><a><p><pre>
-#: src/lessons/welcome/LoopDoWhile.html:18
+#: src/lessons/welcome/LoopDoWhile.html:19
 #, no-wrap
 msgid "move forward until located in a white cell"
 msgstr "avancer jusqu'à se trouver sur une case blanche"
 
 #. type: Content of: <p><a><p><p>
-#: src/lessons/welcome/LoopDoWhile.html:20
+#: src/lessons/welcome/LoopDoWhile.html:21
 msgid ""
 "<i>Remark:</i> it is also possible to solve this exercise with a classical "
 "<tt>while</tt> loop, but it's not the goal."
@@ -1908,13 +1744,138 @@ msgstr ""
 "<i>Remarque :</i> il est également possible de résoudre cet exercice avec "
 "une boucle <tt>while</tt> classique, mais ce n'est pas l'objectif."
 
+#. type: Content of: <p><a><p><h2>
+#: src/lessons/welcome/LoopDoWhile.html:24
+msgid "What's coming next?"
+msgstr ""
+
+#. type: Content of: <p><a><p><p>
+#: src/lessons/welcome/LoopDoWhile.html:25
+msgid ""
+"You now know the very basics of Java Programming. At least, we introduced "
+"all the important concepts, and you should be able to read most Java code by "
+"now. If you want to play safe, you should proceed to the next exercises of "
+"this lesson to solidify your knowledge by reusing these concepts in various "
+"simple situations. After taking them, you'll master what's called \"Tactical "
+"programming\", meaning that you will master the Java syntax enough to not "
+"have any issue with it, allowing you to focus on the fundamental problems of "
+"what you want to solve instead of struggling with syntaxic difficulties. "
+"Some of these exercises are even fun to do ;)"
+msgstr ""
+
+#. type: Content of: <p><a><p><p><p>
+#: src/lessons/welcome/LoopDoWhile.html:33
+msgid ""
+"If you are in a hurry and want more, you can skip these exercises and "
+"proceed directly to more interesting challenges. For example, the "
+"<i>Labyrinths</i> lesson will teach you about maze escaping algorithms, "
+"which are not rocket science but require several improvements to work for "
+"any kind of maze. The <i>Lightbot</i> lesson is a little programming game "
+"where you control a little robot wanting to light the world. Since it is not "
+"programmed in Java but graphically, the first exercises can be used as an "
+"introduction activity to what programming means for real beginners, but the "
+"last exercises constitute challenges and brain teaser even to professional "
+"programmers."
+msgstr ""
+
 #. type: Content of: <h2>
 #: src/lessons/welcome/Variables.html:1
 msgid "Variables"
 msgstr "Variables"
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/Variables.html:3
+#. type: Content of: <p>
+#: src/lessons/welcome/Variables.html:2
+msgid ""
+"A fundamental aspect of every program (be it in Java or anything else) is "
+"that they are about manipulating <b>data</b> through specific "
+"<b>instruction</b>."
+msgstr ""
+
+#. type: Content of: <p><h3>
+#: src/lessons/welcome/Variables.html:5
+msgid "Data in Java"
+msgstr "Les données en Java"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/Variables.html:6
+msgid ""
+"Java allows to use several <i>types</i> of data, such as integers or strings "
+"of chars. If you want to use a data several times, you need to store it "
+"within a <i>variable</i>, which can be seen as a cell containing a value. "
+"Java is said to be a <i>typed</i> language, which means that it is onle "
+"possible to store a value in a variable of the right type. Don't think about "
+"storing a string into an integer variable."
+msgstr ""
+"Java permet d'utiliser différents <i>types</i> de données, tels que les "
+"entiers, les nombres à virgules ou les chaînes de caractères. Si on veut "
+"utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</"
+"i>, qui est une sorte de case contenant une valeur. Java est un langage "
+"<i>typé</i>, ce qui veut dire que l'on ne peut stocker une valeur que dans "
+"une variable du bon type. Pas question de stocker une chaîne de caractères "
+"dans une variable entière."
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Variables.html:13
+msgid ""
+"To <i>declare</i> (ie, create) a variable, you just need to write its type, "
+"a space, and the variable name. From the existing types, we can speak of "
+"<b>int</b> (for integers), <b>double</b> for dot numbers, <b>boolean</b> for "
+"booleans (ie, values being either true or false) and <b>String</b> for char "
+"strings. If you want, you can specify the initial value of the variable by "
+"adding a equal sign (=) followed by the value after the declaration."
+msgstr ""
+"Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, "
+"un espace et le nom de la variable.  Parmi les types existants, on trouve: "
+"<b>int</b> pour les entiers, <b>double</b> pour les nombres à virgule, "
+"<b>boolean</b> pour les booléens (i.e. les variables qui peuvent être soit "
+"vraies soit fausses) et <b>String</b> pour les chaînes de caractères.  Si "
+"l'on veut, on peut faire suivre la déclaration du signe = suivi de la valeur "
+"initiale à donner à la valeur."
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Variables.html:19
+msgid ""
+"So, to create a variable named <b>x</b> intended to contain integers, one "
+"can write:"
+msgstr ""
+"Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on "
+"écrira :"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/Variables.html:20
+#, no-wrap
+msgid "int x;"
+msgstr "int x;"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Variables.html:21
+msgid ""
+"If you want that the variable contains 5 as initial value, you should type:"
+msgstr "Si on veut que sa valeur initiale soit 5, on écrira :"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/Variables.html:21
+#, no-wrap
+msgid "int x = 5;"
+msgstr "int x = 5;"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Variables.html:22
+msgid ""
+"Later in the program, if you want to <i>affect</i> a new value to the "
+"variable, that's really easy:"
+msgstr ""
+"Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle "
+"valeur à la variable, c'est très simple :"
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Variables.html:25
+#, no-wrap
+msgid "x=3; <span class=\"comment\">It replace the old value of x by 3</span>"
+msgstr "x=3; <span class=\"comment\">ceci remplace la valeur de x par 3</span>"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Variables.html:27
 msgid ""
 "We saw in a previous exercise that variables are memory cells of the "
 "computer in which it is possible to store a value. In Java, every variable "
@@ -1929,8 +1890,8 @@ msgstr ""
 "pour des nombres à virgule ou encore <code>String</code> pour des chaînes de "
 "caractères."
 
-#. type: Content of: <p>
-#: src/lessons/welcome/Variables.html:9
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Variables.html:33
 msgid ""
 "The syntax to create an integer variable <code>x</code> with 4 as initial "
 "value is the following:"
@@ -1938,38 +1899,38 @@ msgstr ""
 "La syntaxe pour créer une variable entière <code>x</code> de valeur initiale "
 "4 est la suivante :"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/Variables.html:11
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:35
 #, no-wrap
 msgid "int x = 4;"
 msgstr "int x = 4;"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/Variables.html:12
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:36
 msgid "Another example with char strings:"
 msgstr "Un autre exemple avec des chaînes de caractères :"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Variables.html:13
+#. type: Content of: <p><p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:37
 #, no-wrap
 msgid "String hello = \"what's up, doc?\";"
 msgstr "String hello = \"Bonjour\";"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Variables.html:15
+#. type: Content of: <p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:39
 msgid "To change the value in a variable, you just have to use the = symbol:"
 msgstr ""
 "Pour affecter une nouvelle valeur à une variable, il suffit d'utiliser le "
 "symbole = :"
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/Variables.html:15
+#. type: Content of: <p><p><p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:39
 #, no-wrap
 msgid "x = 3;"
 msgstr "x = 3;"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/Variables.html:17
+#. type: Content of: <p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:41
 msgid ""
 "To the right of the equal symbol, you can put an arbitrary arithmetic "
 "operation, which can contain constants or variables:"
@@ -1977,8 +1938,8 @@ msgstr ""
 "À droite du signe égal, on peut mettre une opération arithmétique "
 "quelconque, qui peut contenir des constantes ou des variables :"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Variables.html:20
+#. type: Content of: <p><p><p><p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:44
 #, no-wrap
 msgid ""
 "x = 3 + 2;\n"
@@ -1989,13 +1950,13 @@ msgstr ""
 "x = 3 * x;\n"
 "hello = \"Salut \"+\"à \"+\"tous !\";\n"
 
-#. type: Content of: <p><p><p><p><h3>
-#: src/lessons/welcome/Variables.html:25
+#. type: Content of: <p><p><p><p><p><p><p><h3>
+#: src/lessons/welcome/Variables.html:49
 msgid "Baggles"
 msgstr "Les baggles"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/Variables.html:27
+#. type: Content of: <p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:51
 msgid ""
 "The buggle world can sometimes contain some <i>baggles</i>, which are little "
 "biscuits that buggles can carry from one point to another. For that, they "
@@ -2005,8 +1966,8 @@ msgstr ""
 "biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
 "cela, elles peuvent utiliser les fonctions suivantes :"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Variables.html:31
+#. type: Content of: <p><p><p><p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:55
 #, no-wrap
 msgid ""
 "isOverBaggle() <span class=\"comment\">/* boolean test to know whether the buggle is currently over a baggle */</span>\n"
@@ -2021,8 +1982,8 @@ msgstr ""
 "dropBaggle() <span class=\"comment\">/* pose le baggle transporté (attention, ça pose problème si on ne porte pas de \n"
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;baggle, ou s'il y en a déjà un par terre) */</span>"
 
-#. type: Content of: <p><p><p><p><a>
-#: src/lessons/welcome/Variables.html:37
+#. type: Content of: <p><p><p><p><p><p><p><a>
+#: src/lessons/welcome/Variables.html:61
 msgid ""
 "<a name=\"Objectifs\"> It is now time to do more challenging exercises, "
 "don't you think? The objective is now to move forward until you find a "
@@ -2035,17 +1996,17 @@ msgstr ""
 "de poser le baggle."
 
 #. type: Content of: <p><p><p><p><p><p><a><h3>
-#: src/lessons/welcome/Variables.html:42 src/lessons/welcome/BDR.html:155
+#: src/lessons/welcome/Variables.html:66 src/lessons/welcome/BDR.html:155
 msgid "Indications"
 msgstr "Indications"
 
-#. type: Content of: <p><p><p><p><a><a>
-#: src/lessons/welcome/Variables.html:42
+#. type: Content of: <p><p><p><p><p><p><p><a><a>
+#: src/lessons/welcome/Variables.html:66
 msgid "<a name=\"Indications\">"
 msgstr "<a name=\"Indications\">"
 
-#. type: Content of: <p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:43
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
+#: src/lessons/welcome/Variables.html:67
 msgid ""
 "To solve this problemm, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
@@ -2053,23 +2014,23 @@ msgstr ""
 "Pour résoudre ce problème, il faut le décomposer en parties que vous savez "
 "résoudre. Par exemple, on peut vouloir faire les étapes suivantes :"
 
-#. type: Content of: <p><p><p><p><a><a><p><ol><li>
-#: src/lessons/welcome/Variables.html:46
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p><ol><li>
+#: src/lessons/welcome/Variables.html:70
 msgid "Move forward until located over a baggle"
 msgstr "Avancer jusqu'à se trouver sur un baggle"
 
-#. type: Content of: <p><p><p><p><a><a><p><ol><li>
-#: src/lessons/welcome/Variables.html:47
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p><ol><li>
+#: src/lessons/welcome/Variables.html:71
 msgid "Pickup the baggle"
 msgstr "Ramasser le baggel au sol"
 
-#. type: Content of: <p><p><p><p><a><a><p><ol><li>
-#: src/lessons/welcome/Variables.html:48
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p><ol><li>
+#: src/lessons/welcome/Variables.html:72
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr "Reculer du même nombre de cases que ce qu'on a avancé"
 
-#. type: Content of: <p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:51
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
+#: src/lessons/welcome/Variables.html:75
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
@@ -2079,8 +2040,8 @@ msgstr ""
 "si l'on a pas compté le nombre de pas faits à la première étape. On va pour "
 "cela utiliser une variable, que l'on peut nommer <code>nbPas</code>."
 
-#. type: Content of: <p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:55
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
+#: src/lessons/welcome/Variables.html:79
 msgid ""
 "Create a variable (of type <code>int</code>) before phase 1, initialize it "
 "to 0, and each time you move one step forward, increment its value by one "
@@ -2092,8 +2053,8 @@ msgstr ""
 "(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux "
 "écritures sont équivalentes)."
 
-#. type: Content of: <p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:60
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
+#: src/lessons/welcome/Variables.html:84
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward until "
@@ -2105,8 +2066,8 @@ msgstr ""
 "<code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant "
 "<code>dejaFait</code> à chaque fois."
 
-#. type: Content of: <p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:65
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
+#: src/lessons/welcome/Variables.html:89
 msgid ""
 "Please note that it is forbiden to use spaces in variable names in Java. So "
 "you can name you variable <code>stepAmount</code>, but <code>step Amount</"
@@ -2117,8 +2078,8 @@ msgstr ""
 "variable <code>dejaFait</code>, mais ni <code>déjaFait</code> ni <code>deja "
 "Fait</code> ne sont des noms valides."
 
-#. type: Content of: <p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:69
+#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
+#: src/lessons/welcome/Variables.html:93
 msgid "It's your turn now!"
 msgstr "À vous de jouer !"
 
@@ -3094,6 +3055,14 @@ msgid ""
 msgstr ""
 "À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
 "de 2 lignes, incluses dans une boucle for..."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/MethodsPicture2.html:19
+msgid ""
+"To proceed to the next exercise, you need to remark that the combobox used "
+"to switch the exercise have a scroll bar that you can use to see the next "
+"exercises of the lesson."
+msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/MethodsPicture3.html:1
@@ -7105,12 +7074,12 @@ msgstr ""
 "trouver votre biscuit."
 
 #. type: Content of: <h1>
-#: src/universe/lightbot/LightBotWorld.html:1
+#: src/jlm/universe/lightbot/LightBotWorld.html:1
 msgid "LightBotWorld"
 msgstr "LightBotWorld"
 
 #. type: Content of: outside any tag (error?)
-#: src/universe/lightbot/LightBotWorld.html:3
+#: src/jlm/universe/lightbot/LightBotWorld.html:3
 msgid ""
 "This world introduces a little programming puzzle which can somehow be used "
 "to introduce programmation to non-reading kids since it is programmed "
@@ -7124,22 +7093,22 @@ msgstr ""
 "ci comprend les ordres suivants :"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:7
+#: src/jlm/universe/lightbot/LightBotWorld.html:7
 msgid "<b>Order</b>"
 msgstr "<b>Ordre</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:7
+#: src/jlm/universe/lightbot/LightBotWorld.html:7
 msgid "<b>Meaning</b>"
 msgstr "<b>Signification</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:8
+#: src/jlm/universe/lightbot/LightBotWorld.html:8
 msgid "<b>Move forward</b>"
 msgstr "<b>Avancer</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:8
+#: src/jlm/universe/lightbot/LightBotWorld.html:8
 msgid ""
 "Cannot be done if the destination cell is of another height than source cell"
 msgstr ""
@@ -7147,12 +7116,12 @@ msgstr ""
 "la case de départ."
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:9
+#: src/jlm/universe/lightbot/LightBotWorld.html:9
 msgid "<b>Jump forward</b>"
 msgstr "<b>Sauter en avant</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:9
+#: src/jlm/universe/lightbot/LightBotWorld.html:9
 msgid ""
 "Can only be done if the destination cell is one step higher than source "
 "cell, or if destination is lower than source. Cannot be used for plain moves."
@@ -7162,22 +7131,22 @@ msgstr ""
 "utilisée pour des déplacements à plat."
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:10
+#: src/jlm/universe/lightbot/LightBotWorld.html:10
 msgid "<b>Turn left</b>."
 msgstr "<b>Tourner à gauche</b>."
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:11
+#: src/jlm/universe/lightbot/LightBotWorld.html:11
 msgid "<b>Turn right</b>."
 msgstr "<b>Tourner à droite</b>."
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:12
+#: src/jlm/universe/lightbot/LightBotWorld.html:12
 msgid "<b>Switch the light</b>."
 msgstr "<b>Allumer ou éteindre</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:12
+#: src/jlm/universe/lightbot/LightBotWorld.html:12
 msgid ""
 "Turn it on if it was off, and off if it was on. No effect if the cell does "
 "not contain any light."
@@ -7186,17 +7155,17 @@ msgstr ""
 "Sans effet s'il n'y a pas d'ampoule dans la case courante."
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:13
+#: src/jlm/universe/lightbot/LightBotWorld.html:13
 msgid "<b>Call function 1</b>."
 msgstr "<b>Appeller la fonction 1</b>."
 
 #. type: Content of: <table><tr><td>
-#: src/universe/lightbot/LightBotWorld.html:14
+#: src/jlm/universe/lightbot/LightBotWorld.html:14
 msgid "<b>Call function 2</b>."
 msgstr "<b>Appeller la fonction 2</b>."
 
 #. type: Content of: <p>
-#: src/universe/lightbot/LightBotWorld.html:17
+#: src/jlm/universe/lightbot/LightBotWorld.html:17
 msgid ""
 "Please note that this world is not completely suited to small kids since the "
 "main difficulty comes from the fact that your are highly limited in the "
@@ -7211,7 +7180,7 @@ msgstr ""
 "qui est souvent au delà des capacités des jeunes enfants."
 
 #. type: Content of: <p>
-#: src/universe/lightbot/LightBotWorld.html:19
+#: src/jlm/universe/lightbot/LightBotWorld.html:19
 msgid ""
 "This game is heavily inspirated from a flash game of the same name, which "
 "can for example be played on kongregate.com. It was written by Danny "
@@ -8326,6 +8295,191 @@ msgid ""
 "where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"
 "\" strings will not overlap."
 msgstr ""
+
+#~ msgid ""
+#~ "Before going any further, get familiar with the working environment. The "
+#~ "main window (the one you are currently looking at) is made of 5 main "
+#~ "components:"
+#~ msgstr ""
+#~ "Avant d'aller plus loin, familiarisez vous avec l'environnement de "
+#~ "travail.  La fenêtre principale (celle que vous voyez) est composée de 5 "
+#~ "éléments principaux:"
+
+#~ msgid ""
+#~ "The goal of each exercise is thus to type some code in the editor tab to "
+#~ "instruct your buggle to reach its goal."
+#~ msgstr ""
+#~ "L'objectif de chaque exercice est donc de taper du code dans l'onglet de "
+#~ "l'éditeur afin de donner les ordres nécessaires à la buggle pour "
+#~ "atteindre son objectif."
+
+#~ msgid ""
+#~ "This code must naturally be written in Java. It it contains errors, the "
+#~ "compiler will display a message in the console, and you will need to fix "
+#~ "it before trying to execute it."
+#~ msgstr ""
+#~ "Ce code doit naturellement être écrit en Java.  S'il contient des "
+#~ "erreurs, un message sera affiché dans la console par le compilateur, et "
+#~ "il vous faudra corriger avant de tenter de l'exécuter."
+
+#~ msgid ""
+#~ "Try now to write something in the editor (tab <b>Source Code</b>) such as "
+#~ "<tt>Hello</tt>, and then clic on the <b>Start</b> button. The messages "
+#~ "that get displayed may sound strange at first glance, but don't panic. We "
+#~ "will see their signification as they appear. Erase for now any content "
+#~ "you may have typed in the editor."
+#~ msgstr ""
+#~ "Essayez par exemple d'écrire quelque chose dans l'éditeur (onglet "
+#~ "<b>Source Code</b>) comme <tt>bonjour</tt>, puis de cliquer sur <b>Start</"
+#~ "b>.  Les messages qui s'affichent peuvent vous sembler obscures au "
+#~ "premier abord, mais ne vous inquiétez pas : nous verrons leur "
+#~ "signification au fur et à mesure. Effacez maintenant le contenu de "
+#~ "l'éditeur avant de continuer."
+
+#~ msgid "And now?"
+#~ msgstr "Et maintenant ?"
+
+#~ msgid ""
+#~ "For this first exercise, you are not expected to do anything perticular: "
+#~ "the initial world is exactly the same than the objective to reach. So, "
+#~ "you don't have any code to write. Once you're done visiting the interface "
+#~ "and playing with the interactive controls, clic on the <b>Start</b> "
+#~ "button. A window appear informing you that you completed the exercise "
+#~ "expectations."
+#~ msgstr ""
+#~ "Pour ce premier exercice, vous n'avez rien à faire : le monde initial est "
+#~ "l'objectif à atteindre. Vous n'avez donc pas de code à écrire.  Après "
+#~ "avoir visité l'interface et joué un peu avec les contrôles interactifs, "
+#~ "appuyez sur le bouton <b>Start</b>. Une fenêtre apparaît pour vous "
+#~ "informez que vous avez remplit le contrat de l'exercice."
+
+#~ msgid ""
+#~ "You can then move to next exercise using the right menu (<b>Exercise</b>)."
+#~ msgstr ""
+#~ "Vous pouvez alors passez à l'exercice suivant en utilisant le menu "
+#~ "adéquat (<b>Exercise</b>)."
+
+#~ msgid "Discovering Java"
+#~ msgstr "Découverte du Java"
+
+#~ msgid ""
+#~ "We will now write our first Java program. In a computer program (let it "
+#~ "be in Java or anything else), you can find two kind of stuff: <b>data</b> "
+#~ "and <b>instructions</b> manipulating these data."
+#~ msgstr ""
+#~ "Nous allons maintenant écrire notre tout premier programme Java. Dans un "
+#~ "programme informatique (en Java ou autre), on trouve deux choses : les "
+#~ "<b>données</b>, et les <b>instructions</b> qui manipulent ces données."
+
+#~ msgid "Generality on instructions"
+#~ msgstr "Généralités sur les instructions"
+
+#~ msgid "Variable affectations such as"
+#~ msgstr "Les affectations de variables comme"
+
+#~ msgid "x=5"
+#~ msgstr "x=5"
+
+#~ msgid ""
+#~ "are the simpler instructions. The other instruction kind in Java are "
+#~ "constituted by <i>method calls</i>. We will come back later on how to "
+#~ "define such methods, but we can already say that they are the available "
+#~ "orders. The general syntax is:"
+#~ msgstr ""
+#~ "sont les instructions les plus simples. L'autre type classique "
+#~ "d'instruction en Java est l'<i>appel à une méthode</i>. Nous verrons plus "
+#~ "tard comment définir de telles méthodes, disons simplement pour l'instant "
+#~ "qu'il s'agit des ordres disponibles. La syntaxe est en général est :"
+
+#~ msgid ""
+#~ "<a name=\"instructions\">Of course, these methods do not exist in Java, "
+#~ "and it is almost impossible to list all existing methods in Java. In this "
+#~ "lesson, the most common instructions are calls to the buggle methods, ie, "
+#~ "orders passed to the buggle."
+#~ msgstr ""
+#~ "<a name=\"instructions\"> Bien entendu, ces méthodes n'existent pas en "
+#~ "Java, et il est difficile de faire la liste des méthodes existantes en "
+#~ "Java. Dans cette leçon, les instructions les plus souvent utilisées sont "
+#~ "des appels à des méthodes de la buggle, par lesquelles on donne des "
+#~ "ordres à la buggle qui les reçoit."
+
+#~ msgid "Adding comments"
+#~ msgstr "Ajouter des commentaires"
+
+#~ msgid ""
+#~ "When you write a quite complex program, it is sometimes useful to add "
+#~ "<i>comments</i> to simplify the code reviews afterward. There is three "
+#~ "types of comments in Java:"
+#~ msgstr ""
+#~ "Quand on écrit un programme un peu complexe, il est parfois utile "
+#~ "d'ajouter des <i>commentaires</i> pour simplifier la relecture du code "
+#~ "après coup. Il existe trois types de commentaires en Java:"
+
+#~ msgid ""
+#~ "<a name=\"Objectives\">We will now write the simplest Java program for "
+#~ "buggles ever: you need to ask your buggle to move one step forward."
+#~ msgstr ""
+#~ "<a name\"Objectifs\"> Nous allons faire le programme Java pour buggle le "
+#~ "plus simple existant : vous devez faire en sorte que la buggle avance "
+#~ "d'un pas."
+
+#~ msgid ""
+#~ "For that, simply write the following code in the editor (tab <b>Source "
+#~ "Code</b>):"
+#~ msgstr ""
+#~ "Pour cela, écrivez simplement dans l'éditeur (onglet <b>Source Code</b>) "
+#~ "le code suivant :"
+
+#~ msgid ""
+#~ "Do not forget the final semi-colum, which tells the compiler that the "
+#~ "instruction is over."
+#~ msgstr ""
+#~ "N'oubliez pas le point-virgule, qui indique au compilateur que "
+#~ "l'instruction est finie."
+
+#~ msgid ""
+#~ "After typing this code into the editor, clic on <b>run</b> and move "
+#~ "forward to next exercise."
+#~ msgstr ""
+#~ "Après avoir recopié le code dans l'éditeur, cliquez sur <b>run</b> et "
+#~ "passez à l'exercice suivant."
+
+#~ msgid "Discovering Java (2)"
+#~ msgstr "Découverte du Java (2)"
+
+#~ msgid ""
+#~ "Using what you've learnt in previous exercise, we will now try to solve "
+#~ "several little problems. Here is the first one."
+#~ msgstr ""
+#~ "En se basant sur les acquis de la leçon précédente, nous allons essayer "
+#~ "de résoudre différents petits problèmes.  Voici le premier."
+
+#~ msgid "<a name=\"Objectives\">Let your buggle move forward by three steps."
+#~ msgstr "<a name=\"Objectifs\"> Faites avancer votre buggle de 3 pas."
+
+#~ msgid "Discovering Java (3)"
+#~ msgstr "Découverte du Java (3)"
+
+#~ msgid ""
+#~ "Of course, buggles are not doomed to move in straight lines. They can "
+#~ "also turn left or right (with methods <code>turnLeft()</code> and "
+#~ "<code>turnRight()</code>) or move backward (with <code>backward()</code>)"
+#~ msgstr ""
+#~ "Bien sûr, les buggles ne sont pas condamnées à se déplacer en ligne "
+#~ "droite. Elles savent également tourner à gauche ou à droite (avec les "
+#~ "méthodes <code>turnLeft()</code> et <code>turnRight()</code>) ou reculer "
+#~ "(avec <code>backward()</code>)."
+
+#~ msgid "<a name=\"Objective\">Let your buggle draw a G letter."
+#~ msgstr ""
+#~ "<a name=\"Objectifs\"> Faites dessiner &agrave; votre buggle la lettre G."
+
+#~ msgid ""
+#~ "Please consult the view of the world objective to know the exact form of "
+#~ "the letter to draw."
+#~ msgstr ""
+#~ "N'hésitez pas à consulter la vue du monde attendu pour connaître la forme "
+#~ "exacte de la lettre."
 
 #~ msgid ""
 #~ "Don't forget to let the buggle pick the baggle at the end of your code."

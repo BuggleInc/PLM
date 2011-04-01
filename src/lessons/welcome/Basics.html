@@ -1,39 +1,14 @@
-  <h2>Discovering Java</h2>
+  <h2>Java Instructions</h2>
 
-  We will now write our first Java program. In a computer program (let it be
-in Java or anything else), you can find two kind of stuff: <b>data</b> and
-<b>instructions</b> manipulating these data.
-
-  <h3>Data in Java</h3>
-  Java allows to use several <i>types</i> of data, such as integers or strings
-of chars. If you want to use a data several times, you need to store it
-within a <i>variable</i>, which can be seen as a cell containing a
-value. Java is said to be a <i>typed</i> language, which means that it is
-onle possible to store a value in a variable of the right type. Don't think
-about storing a string into an integer variable.
+  Congratulations! You just wrote your first program! You got the idea now: 
+  programming is nothing more than giving simple instructions to the computer that 
+  blindly apply them. The main difficulty is to explain stuff to someone as stupid 
+  as a computer...  
   
-  <p>To <i>declare</i> (ie, create) a variable, you just need to write its type,
-a space, and the variable name. From the existing types, we can speak of
-<b>int</b> (for integers), <b>double</b> for dot numbers, <b>boolean</b> for
-booleans (ie, values being either true or false) and <b>String</b> for char
-strings. If you want, you can specify the initial value of the variable by
-adding a equal sign (=) followed by the value after the declaration. </p>
-  <p>So, to create a variable named <b>x</b> intended to contain integers, one
-can write: <pre>int x;</pre>
-	 If you want that the variable contains 5 as initial value, you should type: <pre>int x = 5;</pre>
-  <p>Later in the program, if you want to <i>affect</i> a new value to the
-variable, that's really easy:
-        
-		<pre>x=3; <span class="comment">It replace the old value of x by 3</span></pre>
-
-  <h3>Generality on instructions</h3><a name="generality">The simplest Java program is constituted by a suite of
-instructions separated by semi-columns (;). You can read it as a list of
-simple order given to the machine. It is very similar to a recipe stating
-<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.
-  <p>Variable affectations such as <pre>x=5</pre> are the simpler instructions. The other instruction kind in Java are
-constituted by <i>method calls</i>. We will come back later on how to define
-such methods, but we can already say that they are the available orders. The
-general syntax is:
+  <p>Programs are mainly suites of method calls, which are no more than a list of
+   simple order given to the machine. It is very similar to a recipe stating
+   <i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. Java want 
+   to have the instructions separated by semi-columns (;) and given parenthesis, as in
 		<pre>nameOfTheMethod()</pre>
   <p>The example of previous recipe would thus be written in a similar way:
 <pre>
@@ -43,16 +18,14 @@ coolMix();
 serve();
 </pre>
 
-  <h3>Java instructions</h3><a name="instructions">Of course, these methods do not exist in Java, and it
-is almost impossible to list all existing methods in Java. In this lesson,
-the most common instructions are calls to the buggle methods, ie, orders
-passed to the buggle.
-  <p>For example, there is a method for each button of the interactive control
-panel. To achieve the same effect than the <b>forward</b> button (making the
-buggle moving one step forward), you need to write the following in the
-editor: <pre>forward();</pre>
-	 Likewise, to achieve the same effect than the <b>backward</b>, <b>turn
-left</b> and <b>turn right</b> buttons, you need to use respectively: 
+  <p>Of course, these specific methods do not exist in Java, but it may be possible 
+  to define them by yourself (we'll see later how to define your how methods). For now, 
+  we'll simply go for the buggle instructions. There is a method for each button of the 
+  interactive control panel. To achieve the same effect than the <b>forward</b> button 
+  (making the buggle moving one step forward), you need to write the following in the
+  editor: <pre>forward();</pre>
+  Likewise, to achieve the same effect than the <b>backward</b>, <b>turn
+  left</b> and <b>turn right</b> buttons, you need to use respectively: 
 <pre>
 backward();
 turnLeft();
@@ -64,37 +37,11 @@ methods: the first one moves the pen up while the second moves it down.
 brushDown();
 brushUp();
 </pre></p>
-  <p>The buggle offers other methods, that we will introduce when needed.</p>
+  <p>The buggle offers other methods, that are presented from the "Help/about
+   this world" menu and will be introduced on need.</p>
 
-  <h3>Adding comments</h3>
-  When you write a quite complex program, it is sometimes useful to add
-<i>comments</i> to simplify the code reviews afterward. There is three types
-of comments in Java:
-  <ul>
-    <li><b>Comments on a single line</b>. When the compiler encounters the symbol
-//, it ignores the end of the line.</li>
-	<li><b>Comments on several lines</b>. The compiler ignores anything placed
-between the symbols /* and */, even if they are placed on differing lines.</li>
-  </ul>
-<pre>
-methodCallReadByTheCompiler(); <span class="comment"> // all this is ignored</span>
-otherCall(); <span class="comment">/* This is</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>
-yetAnotherCall();
-</pre>  
-  
-  <p>There is a third kind of comments, between /** and */, which are read by a
-specific program called JavaDoc to generate automatically the documentation
-explaning how to use the code. These comments must follow a very precise
-formalism.</p>
 
-  <h3>Exercise goal</h3><a name="Objectives">We will now write the simplest Java program for buggles
-ever: you need to ask your buggle to move one step forward.
-  <p>For that, simply write the following code in the editor (tab <b>Source
-Code</b>): <pre>forward();</pre>
-     Do not forget the final semi-colum, which tells the compiler that the
-instruction is over.</p>
-  <p>After typing this code into the editor, clic on <b>run</b> and move forward
-to next exercise.</p>
-	 
-	 
+  <h3>Exercise goal</h3><a name="Objectives">
+  Our second program will be a bit more complicated, but not much. The goal for 
+  your buggle is simply to draw a house (a box), and hide inside. Check the 
+  objective world to see exactly what this means. 

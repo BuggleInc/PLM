@@ -15,7 +15,7 @@ public class Basics extends ExerciseTemplated {
 		tabName="Program";
 
 		BuggleWorld myWorld = new BuggleWorld("Training World", 7,7);
-		new Buggle(myWorld, "Rookie", 3, 3, Direction.NORTH, Color.black, Color.lightGray);
+		new Buggle(myWorld, "Rookie", 2, 4, Direction.NORTH, Color.black, Color.lightGray);
 
 		setup(myWorld);
 	}

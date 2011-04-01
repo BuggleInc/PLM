@@ -1,11 +1,31 @@
-  <h2>Discovering Java (3)</h2>
+<h2>Writing more complex programs</h2>
+  Now that we know how to draw things on the board, we'll enjoy this ability and 
+  draw a beautiful G on the board (check Objective panel for details on what's 
+  expected). 
 
-  Of course, buggles are not doomed to move in straight lines. They can also
-turn left or right (with methods <code>turnLeft()</code> and
-<code>turnRight()</code>) or move backward (with <code>backward()</code>)
-
-  <h3>Exercise goal</h3><a name="Objective">Let your buggle draw a G letter.<br/>
-  Please consult the view of the world objective to know the exact form of the
-letter to draw.
-	 
-	 
+  <p>When you write a quite complex program, it is sometimes useful to <b>add
+   comments</b> to simplify the code reviews afterward. Here for example, it's 
+   quite easy to get lost in the drawing process, and you may want to add 
+   comments like <i>vertical bar done</i> or <i>finished drawing the G. Time to 
+   move back to initial position</i>. Commenting your code is almost mandatory if you 
+   (or someone else) want to read it afterward, although overcommenting 
+   (describing obvious stuff) is a bad idea as the important idea get lost in the noise. 
+   There is three types of comments in Java, instructing the compiler to not read the 
+   text you add for humans:
+  <ul>
+    <li><b>Comments on a single line</b>. When the compiler encounters the symbol
+//, it ignores the end of the line.</li>
+	<li><b>Comments on several lines</b>. The compiler ignores anything placed
+between the symbols /* and */, even if they are placed on differing lines.</li>
+  </ul>
+<pre>
+methodCallReadByTheCompiler(); <span class="comment"> // all this is ignored</span>
+otherCall(); <span class="comment">/* This is</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>
+yetAnotherCall();
+</pre>  
+  
+  <p>There is a third kind of comments, between /** and */, which are read by a
+specific program called JavaDoc to generate automatically the documentation
+explaining how to use the code. These comments must follow a very precise
+formalism.</p>

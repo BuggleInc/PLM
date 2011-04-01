@@ -8,13 +8,13 @@ public class Main extends Lesson {
 	protected void loadExercises() {
 		addExercise(new Environment(this));
 		addExercise(new Basics(this));
-		addExercise(new Basics3Pas(this));
 		addExercise(new BasicsDrawG(this));
 		addExercise(new Conditions(this));
 		addExercise(new LoopWhile(this));
-		addExercise(new LoopDoWhile(this));
+		addExercise(new BaggleSeeker(this));
 		addExercise(new Variables(this));
 		addExercise(new LoopFor(this));
+		addExercise(new LoopDoWhile(this));
 		addExercise(new Methods(this));
 		addExercise(new MethodsDogHouse(this));
 		addExercise(new MethodsReturning(this));
@@ -22,11 +22,11 @@ public class Main extends Lesson {
 		addExercise(new MethodsPicture(this));
 		addExercise(new MethodsPicture2(this));
 		addExercise(new MethodsPicture3(this));
+		addExercise(new MethodsPicture4(this));
 		addExercise(new BDR(this));
 		addExercise(new BDR2(this));
 		addExercise(new SlugHunting(this));
 		addExercise(new Snake(this));
-		addExercise(new MethodsPicture4(this));
 		addExercise(new Array(this));
 		addExercise(new Array2(this));
 		addExercise(new TraversalByColumn(this));

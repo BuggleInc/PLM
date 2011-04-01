@@ -1,46 +1,59 @@
-<h2>Variables</h2>
+<h2>Storing and manipulating data</h2>
+  <p>The programs we wrote so far are missing a fundamental point in computing.
+   Actually, it is all about processing <b>data</b> through specific 
+   <b>instructions</b>. In the buggle world, the main data are a bit hidden behind 
+   the graphical representation, but that's no reason to never manipulate some 
+   data explicitly. 
 
-We saw in a previous exercise that variables are memory cells of the
-computer in which it is possible to store a value. In Java, every variable
-has a particular type, such as <code>int</code> to store integers,
-<code>boolean</code> for booleans, <code>double</code> for dot numbers or
-<code>String</code> for char strings.
+  <h3>Data in Java</h3>
+  Java allows to use several <i>types</i> of data, such as integers or strings
+of chars. If you want to use a data several times, you need to store it
+within a <i>variable</i>, which is a memory cell containing a value. It's not very 
+different from a shelve containing a book: you put your data (say '5') in the 
+variable (say 'length'), and you can retrieve it latter when you need it.
 
+  <p>Java is said to be a <i>typed</i> language, which means that it is
+only possible to store a value in a variable of the right type. Don't think
+about storing the letters of your name into an integer variable.
+  
+  <p>To <i>declare</i> (ie, create) a variable, you just need to write its type,
+a space, and the variable name. From the existing types, we can speak of
+<b>int</b> (for integers), <b>double</b> for dot numbers, <b>boolean</b> for
+booleans (ie, values being either true or false) and <b>String</b> for char
+strings. If you want, you can specify the initial value of the variable by
+adding a equal sign (=) followed by the value after the declaration. </p>
+  <p>So, to create a variable named <b>x</b> intended to contain integers, one
+can write: <pre>int x;</pre>
+	 If you want that the variable contains 5 as initial value, you should type: <pre>int x = 5;</pre>
+  <p>Later in the program, if you want to <i>affect</i> a new value to the
+variable, that's really easy: <pre>x = 3;</pre>
+      
 <p>The syntax to create an integer variable <code>x</code> with 4 as initial
 value is the following: 
 <pre>int x = 4;</pre>
-<p>Another example with char strings:
-<pre>String hello = "what's up, doc?";</pre>
+<p>This quite the same story for strings, floating point numbers and boolean values. 
+<pre>String name = "Martin Quinson";
+double height=1.77; <span class="comment">// in meters</span>
+boolean married=yes;</pre>
 
-<p>To change the value in a variable, you just have to use the = symbol: <pre>x = 3;</pre>
 
-<p>To the right of the equal symbol, you can put an arbitrary arithmetic
-operation, which can contain constants or variables:
+<p>To the right of the equal symbol, you can put an expression containing constants, 
+variables and operations: 
 
 <pre>x = 3 + 2;
 x = 3 * x;
-hello = "hello "+"every"+"body!";
+greeting = "Hello "+name;
 </pre> 
 
-<h3>Baggles</h3> 
 
-The buggle world can sometimes contain some <i>baggles</i>, which are little
-biscuits that buggles can carry from one point to another. For that, they
-have to use the following methods:
-
-<pre>isOverBaggle() <span class="comment">/* boolean test to know whether the buggle is currently over a baggle */</span>
-isCarryingBaggle() <span class="comment">/* boolean test to know whether the buggle is currently carrying a baggle */</span>
-pickUpBaggle() <span class="comment">/* pickup the baggle laying on the ground (if there is no baggle on the ground, this will lead to a problem) */</span>
-dropBaggle() <span class="comment">/* drop the baggle carried (there is a problem if the buggle does not carry any baggle, 
-                or if there is already a baggle on the ground) */</span></pre>
-
-<h3>Exercise goal</h3><a name="Objectifs"> It is now time to do more challenging exercises, don't
-you think? The objective is now to move forward until you find a baggle,
+<h3>Exercise goal</h3>
+It is now time to do more challenging exercises, don't you think? 
+The objective is now to move forward until you find a baggle,
 pick it up, and then move back to your initial location before dropping the
 baggle.
 
-<h3>Indications</h3><a name="Indications"> 
-<p>To solve this problemm, you have to decompose it in easier sub-parts. For
+<h3>How to do this?</h3> 
+<p>To solve this problem, you have to decompose it in easier sub-parts. For
 example, you may want to do the following steps:
 <ol>
   <li>Move forward until located over a baggle</li>
@@ -62,7 +75,7 @@ both syntaxes being equivalent).</p>
 <code>doneSteps</code> equals <code>stepAmount</code>, incrementing
 <code>doneSteps</code> each time.</p>
 
-<p>Please note that it is forbiden to use spaces in variable names in Java. So
+<p>Please note that it is forbidden to use spaces in variable names in Java. So
 you can name you variable <code>stepAmount</code>, but <code>step
 Amount</code> is not a valid name.</p>
 
