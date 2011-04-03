@@ -11,13 +11,13 @@ import jlm.core.GameListener;
 import jlm.core.model.Game;
 import net.miginfocom.swing.MigLayout;
 
-public abstract class AbstractAboutDialog extends JDialog implements GameListener {
+public abstract class AbstractAboutDialog extends JFrame implements GameListener {
 
 	private static final long serialVersionUID = -6550658679688214378L;
 	protected JEditorPane area = new JEditorPane("text/html","");
 	
 	protected AbstractAboutDialog(JFrame parent) {
-		super(parent, "", false);
+		super();
 		Game.getInstance().addGameListener(this);
 		
 		setResizable(true);
