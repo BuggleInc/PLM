@@ -2,6 +2,7 @@ package lessons.welcome;
 
 import java.awt.Color;
 
+/* The suppress warning is sometimes mandatory for student code to compile cleanly */
 @SuppressWarnings("unused")
 public class MethodsPictureEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
