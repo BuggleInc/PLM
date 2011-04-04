@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 11:18+0300\n"
+"POT-Creation-Date: 2011-04-04 18:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -872,47 +872,207 @@ msgstr ""
 #: src/lessons/welcome/Main.html:3
 msgid ""
 "This first lesson will lead your first steps in Java programming. It is "
-"intended for beginners."
+"intended for beginners. List of seen notions per exercise:"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/Main.html:5
-msgid "List of seen notions:"
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91 src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254 src/lessons/welcome/Main.html:335 src/lessons/welcome/Main.html:415 src/lessons/welcome/Main.html:455
+msgid "&nbsp;"
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Main.html:7
-msgid "Variables and instructions"
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92 src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255 src/lessons/welcome/Main.html:336 src/lessons/welcome/Main.html:416 src/lessons/welcome/Main.html:456
+msgid "Instructions"
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Main.html:8
-msgid "Basic synthaxic constructions"
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93 src/lessons/welcome/Main.html:176 src/lessons/welcome/Main.html:256 src/lessons/welcome/Main.html:337 src/lessons/welcome/Main.html:417 src/lessons/welcome/Main.html:457
+msgid "Comments"
 msgstr ""
 
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Main.html:10
-msgid "Conditionnals (if and switch)"
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94 src/lessons/welcome/Main.html:177 src/lessons/welcome/Main.html:257 src/lessons/welcome/Main.html:338 src/lessons/welcome/Main.html:418 src/lessons/welcome/Main.html:458
+msgid "Conditionals/ Expressions"
 msgstr ""
 
-#. type: Content of: <p><ul><li><ul><li>
-#: src/lessons/welcome/Main.html:11
-msgid "loops (for, while and do-while)"
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:78 src/lessons/welcome/Main.html:95 src/lessons/welcome/Main.html:178 src/lessons/welcome/Main.html:258 src/lessons/welcome/Main.html:339 src/lessons/welcome/Main.html:419 src/lessons/welcome/Main.html:459 src/lessons/welcome/LoopWhile.html:1
+msgid "While loops"
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Main.html:13
-msgid "Methods (with or without arguments, with or without return)"
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:13 src/lessons/welcome/Main.html:96 src/lessons/welcome/Main.html:179 src/lessons/welcome/Main.html:259 src/lessons/welcome/Main.html:340 src/lessons/welcome/Main.html:420 src/lessons/welcome/Main.html:460
+msgid "Variables"
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/Main.html:14
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:14 src/lessons/welcome/Main.html:97 src/lessons/welcome/Main.html:133 src/lessons/welcome/Main.html:180 src/lessons/welcome/Main.html:260 src/lessons/welcome/Main.html:341 src/lessons/welcome/Main.html:421 src/lessons/welcome/Main.html:461 src/lessons/welcome/LoopFor.html:1
+msgid "For loops"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:15 src/lessons/welcome/Main.html:98 src/lessons/welcome/Main.html:181 src/lessons/welcome/Main.html:261 src/lessons/welcome/Main.html:342 src/lessons/welcome/Main.html:422 src/lessons/welcome/Main.html:462
+msgid "Do/While loops"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:16 src/lessons/welcome/Main.html:99 src/lessons/welcome/Main.html:161 src/lessons/welcome/Main.html:182 src/lessons/welcome/Main.html:262 src/lessons/welcome/Main.html:343 src/lessons/welcome/Main.html:423 src/lessons/welcome/Main.html:463 src/lessons/welcome/Methods.html:1
+msgid "Methods"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:17 src/lessons/welcome/Main.html:100 src/lessons/welcome/Main.html:183 src/lessons/welcome/Main.html:263 src/lessons/welcome/Main.html:344 src/lessons/welcome/Main.html:424 src/lessons/welcome/Main.html:464
+msgid "Switch"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:345 src/lessons/welcome/Main.html:425 src/lessons/welcome/Main.html:465
 msgid "Arrays"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Environment.html:1
+#: src/lessons/welcome/Main.html:22 src/lessons/welcome/Environment.html:1
 msgid "Welcome in the Buggles' World"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:36 src/lessons/welcome/Basics.html:1
+msgid "Java Instructions"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:50 src/lessons/welcome/BasicsDrawG.html:1
+msgid "Writing more complex programs"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:64 src/lessons/welcome/Conditions.html:1
+msgid "Conditional instructions"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:105 src/lessons/welcome/BaggleSeeker.html:1
+msgid "Baggle Seeking"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:119 src/lessons/welcome/Variables.html:1
+msgid "Storing and manipulating data"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:147 src/lessons/welcome/LoopDoWhile.html:1
+msgid "Do .. while loops"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:187 src/lessons/welcome/MethodsDogHouse.html:1
+msgid "Building methodically"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:201 src/lessons/welcome/MethodsReturning.html:1
+msgid "Methods returning a result"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:214 src/lessons/welcome/MethodsArgs.html:1
+msgid "Methods with parameters"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:228 src/lessons/welcome/MethodsPicture.html:1
+msgid "Methodically drawing"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:241 src/lessons/welcome/MethodsPicture2.html:1
+msgid "Methodically drawing (only bigger)"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:267 src/lessons/welcome/MethodsPicture3.html:1
+msgid "Drawing bigger and bigger"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:280 src/lessons/welcome/MethodsPicture4.html:1
+msgid "Even more pattern to draw"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:294 src/lessons/welcome/BDR.html:1
+msgid "Buggle Dance Revolution"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:308 src/lessons/welcome/BDR2.html:1
+msgid "Buggle Dance Revolution 2"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:322 src/lessons/welcome/SlugHunting.html:1
+msgid "Slug Hunting"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:348 src/lessons/welcome/Snake.html:1
+msgid "Snake World"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/Main.html:362 src/lessons/welcome/Array.html:1
+msgid "Knitting and Arrays"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/Main.html:376 src/lessons/welcome/Array2.html:1
+msgid "Knitting, Arrays and modulos"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:389 src/lessons/welcome/TraversalByColumn.html:1
+msgid "Traversal by column"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:402 src/lessons/welcome/TraversalByLine.html:1
+msgid "Traversal by line"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:428 src/lessons/welcome/TraversalZigZag.html:1
+msgid "Zig-zag traversal"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:441 src/lessons/welcome/TraversalDiagonal.html:1
+msgid "Diagonal Traversal"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:469
+msgid "Meaning of the symbols"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:472
+msgid "Introducing the concept"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:475
+msgid "Working on the concept"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:478
+msgid "Concept assumed mastered"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:481
+msgid "Concept not mandated by the exercise"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1020,11 +1180,6 @@ msgid ""
 "combo-box (or keep around to experiment further if you feel so)."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/Basics.html:1
-msgid "Java Instructions"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Basics.html:3
 msgid ""
@@ -1115,7 +1270,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:44 src/lessons/welcome/Conditions.html:58 src/lessons/welcome/LoopWhile.html:22 src/lessons/welcome/LoopDoWhile.html:13 src/lessons/welcome/Variables.html:61 src/lessons/welcome/LoopFor.html:50 src/lessons/welcome/Methods.html:44 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:127 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35
+#: src/lessons/welcome/Basics.html:44 src/lessons/welcome/Conditions.html:58 src/lessons/welcome/LoopWhile.html:22 src/lessons/welcome/LoopDoWhile.html:13 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:49 src/lessons/welcome/LoopFor.html:50 src/lessons/welcome/Methods.html:44 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:127 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35
 msgid "Exercise goal"
 msgstr ""
 
@@ -1125,11 +1280,6 @@ msgid ""
 "<a name=\"Objectives\"> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
 "and hide inside. Check the objective world to see exactly what this means."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/BasicsDrawG.html:1
-msgid "Writing more complex programs"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1187,11 +1337,6 @@ msgid ""
 "specific program called JavaDoc to generate automatically the documentation "
 "explaining how to use the code. These comments must follow a very precise "
 "formalism."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/Conditions.html:1
-msgid "Conditional instructions"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1334,11 +1479,6 @@ msgstr ""
 msgid "When your program works, move forward to the next exercise."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/LoopWhile.html:1
-msgid "While loops"
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopWhile.html:3
 msgid ""
@@ -1397,11 +1537,6 @@ msgid ""
 "&nbsp;&nbsp;moveForward();"
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/LoopDoWhile.html:1
-msgid "Do .. while loops"
-msgstr ""
-
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopDoWhile.html:3
 msgid ""
@@ -1448,71 +1583,60 @@ msgid ""
 "<tt>while</tt> loop, but it's not the goal."
 msgstr ""
 
-#. type: Content of: <p><a><p><h2>
-#: src/lessons/welcome/LoopDoWhile.html:24
-msgid "What's coming next?"
-msgstr ""
-
-#. type: Content of: <p><a><p><p>
-#: src/lessons/welcome/LoopDoWhile.html:25
+#. type: Content of: <p>
+#: src/lessons/welcome/BaggleSeeker.html:2
 msgid ""
-"You now know the very basics of Java Programming. At least, we introduced "
-"all the important concepts, and you should be able to read most Java code by "
-"now. If you want to play safe, you should proceed to the next exercises of "
-"this lesson to solidify your knowledge by reusing these concepts in various "
-"simple situations. After taking them, you'll master what's called \"Tactical "
-"programming\", meaning that you will master the Java syntax enough to not "
-"have any issue with it, allowing you to focus on the fundamental problems of "
-"what you want to solve instead of struggling with syntaxic "
-"difficulties. Some of these exercises are even fun to do ;)"
+"The buggle world can sometimes contain some <i>baggles</i>, which are little "
+"biscuits that buggles can carry from one point to another. For that, they "
+"have to use specific methods such as <code>isOverBaggle(), "
+"isCarryingBaggle(), pickUpBaggle()</code> or "
+"<code>dropBaggle()</code>. Check their documentation in \"Help/About this "
+"world\" for more details."
 msgstr ""
 
-#. type: Content of: <p><a><p><p><p>
-#: src/lessons/welcome/LoopDoWhile.html:33
+#. type: Content of: <p><p>
+#: src/lessons/welcome/BaggleSeeker.html:10
 msgid ""
-"If you are in a hurry and want more, you can skip these exercises and "
-"proceed directly to more interesting challenges. For example, the "
-"<i>Labyrinths</i> lesson will teach you about maze escaping algorithms, "
-"which are not rocket science but require several improvements to work for "
-"any kind of maze. The <i>Lightbot</i> lesson is a little programming game "
-"where you control a little robot wanting to light the world. Since it is not "
-"programmed in Java but graphically, the first exercises can be used as an "
-"introduction activity to what programming means for real beginners, but the "
-"last exercises constitute challenges and brain teaser even to professional "
-"programmers."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/Variables.html:1
-msgid "Variables"
+"Let each buggle find its baggle by adapting the code you wrote in previous "
+"exercise (copy/paste what you've done before to save time)."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Variables.html:2
 msgid ""
-"A fundamental aspect of every program (be it in Java or anything else) is "
-"that they are about manipulating <b>data</b> through specific "
-"<b>instruction</b>."
+"The programs we wrote so far are missing a fundamental point in computing.  "
+"Actually, it is all about processing <b>data</b> through specific "
+"<b>instructions</b>. In the buggle world, the main data are a bit hidden "
+"behind the graphical representation, but that's no reason to never "
+"manipulate some data explicitly."
 msgstr ""
 
 #. type: Content of: <p><h3>
-#: src/lessons/welcome/Variables.html:5
+#: src/lessons/welcome/Variables.html:8
 msgid "Data in Java"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/Variables.html:6
+#: src/lessons/welcome/Variables.html:9
 msgid ""
 "Java allows to use several <i>types</i> of data, such as integers or strings "
 "of chars. If you want to use a data several times, you need to store it "
-"within a <i>variable</i>, which can be seen as a cell containing a "
-"value. Java is said to be a <i>typed</i> language, which means that it is "
-"onle possible to store a value in a variable of the right type. Don't think "
-"about storing a string into an integer variable."
+"within a <i>variable</i>, which is a memory cell containing a value. It's "
+"not very different from a shelve containing a book: you put your data (say "
+"'5') in the variable (say 'length'), and you can retrieve it latter when you "
+"need it."
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/Variables.html:13
+#: src/lessons/welcome/Variables.html:15
+msgid ""
+"Java is said to be a <i>typed</i> language, which means that it is only "
+"possible to store a value in a variable of the right type. Don't think about "
+"storing the letters of your name into an integer variable."
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Variables.html:19
 msgid ""
 "To <i>declare</i> (ie, create) a variable, you just need to write its type, "
 "a space, and the variable name. From the existing types, we can speak of "
@@ -1522,184 +1646,133 @@ msgid ""
 "adding a equal sign (=) followed by the value after the declaration."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/Variables.html:19
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Variables.html:25
 msgid ""
 "So, to create a variable named <b>x</b> intended to contain integers, one "
 "can write:"
 msgstr ""
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Variables.html:20
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Variables.html:26
 #, no-wrap
 msgid "int x;"
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/Variables.html:21
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Variables.html:27
 msgid "If you want that the variable contains 5 as initial value, you should type:"
 msgstr ""
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Variables.html:21
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Variables.html:27
 #, no-wrap
 msgid "int x = 5;"
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Variables.html:22
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Variables.html:28
 msgid ""
 "Later in the program, if you want to <i>affect</i> a new value to the "
 "variable, that's really easy:"
 msgstr ""
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/Variables.html:25
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:29
 #, no-wrap
-msgid "x=3; <span class=\"comment\">It replace the old value of x by 3</span>"
+msgid "x = 3;"
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Variables.html:27
-msgid ""
-"We saw in a previous exercise that variables are memory cells of the "
-"computer in which it is possible to store a value. In Java, every variable "
-"has a particular type, such as <code>int</code> to store integers, "
-"<code>boolean</code> for booleans, <code>double</code> for dot numbers or "
-"<code>String</code> for char strings."
-msgstr ""
-
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/Variables.html:33
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:31
 msgid ""
 "The syntax to create an integer variable <code>x</code> with 4 as initial "
 "value is the following:"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Variables.html:35
+#. type: Content of: <p><p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:33
 #, no-wrap
 msgid "int x = 4;"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:36
-msgid "Another example with char strings:"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><pre>
-#: src/lessons/welcome/Variables.html:37
-#, no-wrap
-msgid "String hello = \"what's up, doc?\";"
-msgstr ""
-
 #. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:39
-msgid "To change the value in a variable, you just have to use the = symbol:"
+#: src/lessons/welcome/Variables.html:34
+msgid ""
+"This quite the same story for strings, floating point numbers and boolean "
+"values."
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><pre>
-#: src/lessons/welcome/Variables.html:39
+#: src/lessons/welcome/Variables.html:35
 #, no-wrap
-msgid "x = 3;"
+msgid ""
+"String name = \"Martin Quinson\";\n"
+"double height=1.77; <span class=\"comment\">// in meters</span>\n"
+"boolean married=yes;"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:41
+#: src/lessons/welcome/Variables.html:40
 msgid ""
-"To the right of the equal symbol, you can put an arbitrary arithmetic "
-"operation, which can contain constants or variables:"
+"To the right of the equal symbol, you can put an expression containing "
+"constants, variables and operations:"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre>
-#: src/lessons/welcome/Variables.html:44
+#: src/lessons/welcome/Variables.html:43
 #, no-wrap
 msgid ""
 "x = 3 + 2;\n"
 "x = 3 * x;\n"
-"hello = \"hello \"+\"every\"+\"body!\";\n"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><h3>
-#: src/lessons/welcome/Variables.html:49
-msgid "Baggles"
+"greeting = \"Hello \"+name;\n"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:51
+#: src/lessons/welcome/Variables.html:50
 msgid ""
-"The buggle world can sometimes contain some <i>baggles</i>, which are little "
-"biscuits that buggles can carry from one point to another. For that, they "
-"have to use the following methods:"
+"It is now time to do more challenging exercises, don't you think? The "
+"objective is now to move forward until you find a baggle, pick it up, and "
+"then move back to your initial location before dropping the baggle."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><pre>
+#. type: Content of: <p><p><p><p><p><p><p><h3>
 #: src/lessons/welcome/Variables.html:55
-#, no-wrap
+msgid "How to do this?"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:56
 msgid ""
-"isOverBaggle() <span class=\"comment\">/* boolean test to know whether the "
-"buggle is currently over a baggle */</span>\n"
-"isCarryingBaggle() <span class=\"comment\">/* boolean test to know whether "
-"the buggle is currently carrying a baggle */</span>\n"
-"pickUpBaggle() <span class=\"comment\">/* pickup the baggle laying on the "
-"ground (if there is no baggle on the ground, this will lead to a problem) "
-"*/</span>\n"
-"dropBaggle() <span class=\"comment\">/* drop the baggle carried (there is a "
-"problem if the buggle does not carry any baggle, \n"
-"                or if there is already a baggle on the ground) */</span>"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><a>
-#: src/lessons/welcome/Variables.html:61
-msgid ""
-"<a name=\"Objectifs\"> It is now time to do more challenging exercises, "
-"don't you think? The objective is now to move forward until you find a "
-"baggle, pick it up, and then move back to your initial location before "
-"dropping the baggle."
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><a><h3>
-#: src/lessons/welcome/Variables.html:66 src/lessons/welcome/BDR.html:155
-msgid "Indications"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><a><a>
-#: src/lessons/welcome/Variables.html:66
-msgid "<a name=\"Indications\">"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:67
-msgid ""
-"To solve this problemm, you have to decompose it in easier sub-parts. For "
+"To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p><ol><li>
-#: src/lessons/welcome/Variables.html:70
+#. type: Content of: <p><p><p><p><p><p><p><p><ol><li>
+#: src/lessons/welcome/Variables.html:59
 msgid "Move forward until located over a baggle"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p><ol><li>
-#: src/lessons/welcome/Variables.html:71
+#. type: Content of: <p><p><p><p><p><p><p><p><ol><li>
+#: src/lessons/welcome/Variables.html:60
 msgid "Pickup the baggle"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p><ol><li>
-#: src/lessons/welcome/Variables.html:72
+#. type: Content of: <p><p><p><p><p><p><p><p><ol><li>
+#: src/lessons/welcome/Variables.html:61
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:75
+#. type: Content of: <p><p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:64
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
 "use a variable for that, which can be named <code>stepAmount</code>."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:79
+#. type: Content of: <p><p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:68
 msgid ""
 "Create a variable (of type <code>int</code>) before phase 1, initialize it "
 "to 0, and each time you move one step forward, increment its value by one "
@@ -1707,8 +1780,8 @@ msgid ""
 "both syntaxes being equivalent)."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:84
+#. type: Content of: <p><p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:73
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward until "
@@ -1716,22 +1789,17 @@ msgid ""
 "<code>doneSteps</code> each time."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:89
+#. type: Content of: <p><p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:78
 msgid ""
-"Please note that it is forbiden to use spaces in variable names in Java. So "
+"Please note that it is forbidden to use spaces in variable names in Java. So "
 "you can name you variable <code>stepAmount</code>, but <code>step "
 "Amount</code> is not a valid name."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><a><a><p>
-#: src/lessons/welcome/Variables.html:93
+#. type: Content of: <p><p><p><p><p><p><p><p>
+#: src/lessons/welcome/Variables.html:82
 msgid "It's your turn now!"
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/LoopFor.html:1
-msgid "For loops"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1843,11 +1911,6 @@ msgstr ""
 #. type: Content of: <p><p><p><a><p>
 #: src/lessons/welcome/LoopFor.html:55
 msgid "Once done, proceed to next exercise."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/Methods.html:1
-msgid "Methods"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1991,11 +2054,6 @@ msgstr ""
 msgid "You should now write this goAndGet() method."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/MethodsDogHouse.html:1
-msgid "Building methodically"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsDogHouse.html:3
 msgid ""
@@ -2054,11 +2112,6 @@ msgstr ""
 #. type: Content of: <a><p>
 #: src/lessons/welcome/MethodsDogHouse.html:39 src/lessons/welcome/Array.html:166 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:47
 msgid "You're up."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/MethodsReturning.html:1
-msgid "Methods returning a result"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -2166,11 +2219,6 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsReturning.html:63
 msgid "When your method <code>haveBaggle</code> works, proceed to next exercise."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/MethodsArgs.html:1
-msgid "Methods with parameters"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -2297,15 +2345,44 @@ msgstr ""
 msgid "The code of the method to write should not be really problematic for you."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/MethodsPicture.html:1
-msgid "Methodically drawing"
+#. type: Content of: <p><p><p><p><h2>
+#: src/lessons/welcome/MethodsArgs.html:66
+msgid "What's coming next?"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/MethodsArgs.html:67
+msgid ""
+"You now know the very basics of Java Programming. At least, we introduced "
+"all the important concepts, and you should be able to read most Java code by "
+"now. If you want to play safe, you should proceed to the next exercises of "
+"this lesson to solidify your knowledge by reusing these concepts in various "
+"simple situations. After taking them, you'll master what's called \"Tactical "
+"programming\", meaning that you will master the Java syntax enough to not "
+"have any issue with it, allowing you to focus on the fundamental problems of "
+"what you want to solve instead of struggling with syntaxic "
+"difficulties. Some of these exercises are even fun to do ;)"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p>
+#: src/lessons/welcome/MethodsArgs.html:75
+msgid ""
+"If you are in a hurry and want more, you can skip these exercises and "
+"proceed directly to more interesting challenges. For example, the "
+"<i>Labyrinths</i> lesson will teach you about maze escaping algorithms, "
+"which are not rocket science but require several improvements to work for "
+"any kind of maze. The <i>Lightbot</i> lesson is a little programming game "
+"where you control a little robot wanting to light the world. Since it is not "
+"programmed in Java but graphically, the first exercises can be used as an "
+"introduction activity to what programming means for real beginners, but the "
+"last exercises constitute challenges and brain teaser even to professional "
+"programmers."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture.html:3
 msgid ""
-"In this exercise, we will reproduce the geometrical drawing that you can see "
+"In this exercise, we will reproduce the geometric drawing that you can see "
 "in the \"Objective\" tab."
 msgstr ""
 
@@ -2384,11 +2461,6 @@ msgid ""
 "lines..."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/MethodsPicture2.html:1
-msgid "Methodically drawing (only bigger)"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture2.html:3
 msgid ""
@@ -2429,11 +2501,6 @@ msgid ""
 "exercises of the lesson."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/MethodsPicture3.html:1
-msgid "Drawing bigger and bigger"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture3.html:3
 msgid ""
@@ -2453,11 +2520,6 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture3.html:11 src/lessons/welcome/Snake.html:44 src/lessons/welcome/TraversalByColumn.html:49 src/lessons/welcome/TraversalByLine.html:10 src/lessons/welcome/TraversalDiagonal.html:10 src/lessons/welcome/TraversalZigZag.html:6
 msgid "Your turn..."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/BDR.html:1
-msgid "Buggle Dance Revolution"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -2875,6 +2937,11 @@ msgid ""
 "is already in the editor."
 msgstr ""
 
+#. type: Content of: <p><p><p><p><p><p><a><h3>
+#: src/lessons/welcome/BDR.html:155
+msgid "Indications"
+msgstr ""
+
 #
 #. *** NOT TRUE !!!, so I decided to remove it ***
 #. <p>
@@ -2946,11 +3013,6 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p><p><a><p>
 #: src/lessons/welcome/BDR.html:203
 msgid "When your program finally works, move on to the next exercise."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/BDR2.html:1
-msgid "Buggle Dance Revolution 2"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -3226,11 +3288,6 @@ msgstr ""
 msgid "When you program works again, proceed to next exercise."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/SlugHunting.html:1
-msgid "Slug Hunting"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/SlugHunting.html:3
 msgid ""
@@ -3290,11 +3347,6 @@ msgid ""
 "<a name=\"Objectives\">Complete the <code>hunt()</code> method (which gets "
 "called by <code>run()</code> automatically). It should use a "
 "<code>isFacingTrail()</code> method that you also have to write."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/Snake.html:1
-msgid "Snake World"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -3405,11 +3457,6 @@ msgstr ""
 msgid "It works because the exclamation mark (!) means in Java a boolean negation."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/MethodsPicture4.html:1
-msgid "Even more pattern to draw"
-msgstr ""
-
 #. type: Content of: <h3>
 #: src/lessons/welcome/MethodsPicture4.html:2
 msgid "(and methods to write)"
@@ -3433,11 +3480,6 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture4.html:11
 msgid "Good luck!"
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/Array.html:1
-msgid "Knitting and Arrays"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -3852,11 +3894,6 @@ msgid ""
 "specifically for this."
 msgstr ""
 
-#. type: Content of: <h1>
-#: src/lessons/welcome/Array2.html:1
-msgid "Knitting, Arrays and modulos"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Array2.html:3
 msgid ""
@@ -3903,11 +3940,6 @@ msgid ""
 "(modulo) operator. For example, <code>(i + 5) % size</code> allows to "
 "retrieve teh <code>i</code>th cell of an array of size <code>size</code> "
 "with an offset of <code>5</code>."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/TraversalByColumn.html:1
-msgid "Traversal by column"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -3996,11 +4028,6 @@ msgid ""
 "{} while</code>..."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/TraversalByLine.html:1
-msgid "Traversal by line"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/TraversalByLine.html:3
 msgid ""
@@ -4010,11 +4037,6 @@ msgid ""
 "method computing the coordinates of the next buggle position has to be "
 "correctly updated: if you are at the right of a line, you have to go to the "
 "begining of the next one. If not, you have to go to the right cell."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/TraversalDiagonal.html:1
-msgid "Diagonal Traversal"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4030,11 +4052,6 @@ msgstr ""
 msgid ""
 "You may find useful to use an integer variable <code>diag</code> storing the "
 "number of the diagonal you are traversing."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/TraversalZigZag.html:1
-msgid "Zig-zag traversal"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
