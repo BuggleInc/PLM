@@ -1,15 +1,483 @@
 <h1>Premiers pas</h1>
 
 Cette première leçon va vous guider dans vos premiers pas en programmation
-Java. Elle est destinée aux débutants en Java.
-<p>Liste des notions abordées : 
-<ul>
- <li>Variables et instructions</li>
- <li>Constructions de syntaxiques de base: 
-  <ul>
-   <li>conditionnelles (if et switch)</li>
-   <li>boucles (for, while et do-whiles)</li>
-  </ul></li>
- <li>Méthodes (avec ou sans arguments, avec ou sans retour)</li>
- <li>Tableaux</li>
-</ul></p>
+Java. Elle est destinée aux débutants en Java. 
+
+<table border=1>
+ <tr>
+  <td>&nbsp;</td>
+  <td>Instructions</td>
+  <td>Commentaires</td>
+  <td>Instructions conditionnelles et expressions</td>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td>Variables</td>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td>Boucles jusqu'à</td>
+  <td>Méthodes</td>
+  <td>Switch</td>
+  <td>Tableaux</td>
+ </tr>
+
+ <tr>
+  <td>Bienvenue dans le monde des buggles</td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Les instructions Java</td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ 
+ <tr>
+  <td>Écrire des programmes plus complexes</td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Instructions conditionnelles</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ <tr>
+  <td>&nbsp;</td>
+  <td>Instructions</td>
+  <td>Commentaires</td>
+  <td>Instructions conditionnelles et expressions</td>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td>Variables</td>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td>Boucles jusqu'à</td>
+  <td>Méthodes</td>
+  <td>Switch</td>
+  <td>Tableaux</td>
+ </tr>
+
+ <tr>
+  <td>Chercheur de baggles</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Stocker et manipuler des données</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Boucles jusqu'à<tt> (do ... while)</tt></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Méthodes</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ <tr>
+  <td>&nbsp;</td>
+  <td>Instructions</td>
+  <td>Commentaires</td>
+  <td>Instructions conditionnelles et expressions</td>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td>Variables</td>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td>Boucles jusqu'à</td>
+  <td>Méthodes</td>
+  <td>Switch</td>
+  <td>Tableaux</td>
+ </tr>
+ <tr>
+  <td>Construire avec méthode</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ 
+ <tr>
+  <td>Méthodes retournant un résultat</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ <tr>
+  <td>Méthodes avec paramètres</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Dessiner avec méthode</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ <tr>
+  <td>Dessiner avec méthode (en plus grand)</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ <tr>
+  <td>&nbsp;</td>
+  <td>Instructions</td>
+  <td>Commentaires</td>
+  <td>Instructions conditionnelles et expressions</td>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td>Variables</td>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td>Boucles jusqu'à</td>
+  <td>Méthodes</td>
+  <td>Switch</td>
+  <td>Tableaux</td>
+ </tr>
+ <tr>
+  <td>Dessiner de plus en plus grand</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ <tr>
+  <td>Encore des motifs à dessiner</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ 
+ <tr>
+  <td>Buggle Dance Revolution</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ 
+ <tr>
+  <td>Buggle Dance Revolution 2</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ 
+ <tr>
+  <td>Chasse à la limace</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+ <tr>
+  <td>&nbsp;</td>
+  <td>Instructions</td>
+  <td>Commentaires</td>
+  <td>Instructions conditionnelles et expressions</td>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td>Variables</td>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td>Boucles jusqu'à</td>
+  <td>Méthodes</td>
+  <td>Switch</td>
+  <td>Tableaux</td>
+ </tr>
+ <tr>
+  <td>Monde de serpents</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>  
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+ </tr>
+
+ <tr>
+  <td>Tricots (et tableaux)</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td>  
+ </tr>
+ 
+ <tr>
+  <td>Tricots, tableaux et modulos</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+ </tr>
+ <tr>
+  <td>Parcours colonne par colonne</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+ </tr>
+ <tr>
+  <td>Parcours ligne par ligne</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+ </tr>
+ <tr>
+  <td>&nbsp;</td>
+  <td>Instructions</td>
+  <td>Commentaires</td>
+  <td>Instructions conditionnelles et expressions</td>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td>Variables</td>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td>Boucles jusqu'à</td>
+  <td>Méthodes</td>
+  <td>Switch</td>
+  <td>Tableaux</td>
+ </tr>
+ <tr>
+  <td>Parcours en zig-zag</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+ </tr>
+ <tr>
+  <td>Parcours en diagonale</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td>  
+ </tr>
+ 
+ <tr>
+  <td>&nbsp;</td>
+  <td>Instructions</td>
+  <td>Commentaires</td>
+  <td>Instructions conditionnelles et expressions</td>
+  <td>Boucles tant que<tt> (while)</tt></td>
+  <td>Variables</td>
+  <td>Boucles pour<tt> (for)</tt></td>
+  <td>Boucles jusqu'à</td>
+  <td>Méthodes</td>
+  <td>Switch</td>
+  <td>Tableaux</td>
+ </tr>
+</table>
+
+<h2>Légende</h2>
+<table>
+ <tr>
+  <td>Le concept est introduit</td>
+  <td align="center"><img src="lessons/welcome/sign_intro_32.png" /></td></tr>
+ <tr>
+  <td>L'exercice travaille sur le concept</td>
+  <td align="center"><img src="lessons/welcome/sign_working_32.png" /></td></tr>
+ <tr>
+  <td>Le concept est supposé maîtrisé</td>
+  <td align="center"><img src="lessons/welcome/sign_check_32.png" /></td></tr>
+ <tr>
+  <td>Le concept n'est pas indispensable à l'exercice</td>
+  <td align="center"><img src="lessons/welcome/sign_not.png" /></td></tr>
+</table>

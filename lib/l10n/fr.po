@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-04-04 18:12+0300\n"
-"PO-Revision-Date: 2011-03-23 17:00+0100\n"
+"PO-Revision-Date: 2011-04-05 15:13+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -19,7 +19,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: lib/doc/MainWindow.html:1
 msgid "The JLM Main Window"
-msgstr ""
+msgstr "La fenêtre principale de JLM"
 
 #. type: Content of: outside any tag (error?)
 #: lib/doc/MainWindow.html:3
@@ -28,7 +28,7 @@ msgid ""
 "the tool tips appearing when your mouse is over the elements.  Here is a "
 "little explanation of the components in case you fail to understand "
 "something. The main window is made of 5 main components:"
-msgstr ""
+msgstr "L'environnement de travail de JLM devrait être immédiat à maîtriser, en particulier avec les bulles d'aide qui apparaissent quand votre souris survole les éléments. Voici une petite explication des composants au cas où quelque chose vous échappe. La fenêtre principale est faite de 5 composants majeurs :"
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:10
@@ -984,10 +984,6 @@ msgstr "Premiers pas"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Main.html:3
-#, fuzzy
-#| msgid ""
-#| "This first lesson will lead your first steps in Java programming. It is "
-#| "intended for beginners."
 msgid ""
 "This first lesson will lead your first steps in Java programming. It is "
 "intended for beginners. List of seen notions per exercise:"
@@ -1001,37 +997,31 @@ msgstr ""
 #: src/lessons/welcome/Main.html:335 src/lessons/welcome/Main.html:415
 #: src/lessons/welcome/Main.html:455
 msgid "&nbsp;"
-msgstr ""
+msgstr "&nbsp;"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
 #: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
 #: src/lessons/welcome/Main.html:336 src/lessons/welcome/Main.html:416
 #: src/lessons/welcome/Main.html:456
-#, fuzzy
-#| msgid "Java instructions"
 msgid "Instructions"
-msgstr "Les instructions en Java"
+msgstr "Instructions"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93
 #: src/lessons/welcome/Main.html:176 src/lessons/welcome/Main.html:256
 #: src/lessons/welcome/Main.html:337 src/lessons/welcome/Main.html:417
 #: src/lessons/welcome/Main.html:457
-#, fuzzy
-#| msgid "Adding comments"
 msgid "Comments"
-msgstr "Ajouter des commentaires"
+msgstr "Commentaires"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94
 #: src/lessons/welcome/Main.html:177 src/lessons/welcome/Main.html:257
 #: src/lessons/welcome/Main.html:338 src/lessons/welcome/Main.html:418
 #: src/lessons/welcome/Main.html:458
-#, fuzzy
-#| msgid "Conditional instructions"
 msgid "Conditionals/ Expressions"
-msgstr "Instructions conditionnelles"
+msgstr "Instructions conditionnelles et expressions"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:78
@@ -1064,10 +1054,8 @@ msgstr "Boucles pour<tt> (for)</tt>"
 #: src/lessons/welcome/Main.html:181 src/lessons/welcome/Main.html:261
 #: src/lessons/welcome/Main.html:342 src/lessons/welcome/Main.html:422
 #: src/lessons/welcome/Main.html:462
-#, fuzzy
-#| msgid "While loops"
 msgid "Do/While loops"
-msgstr "Boucles tant que<tt> (while)</tt>"
+msgstr "Boucles jusqu'à"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:16 src/lessons/welcome/Main.html:99
@@ -1084,7 +1072,7 @@ msgstr "Méthodes"
 #: src/lessons/welcome/Main.html:344 src/lessons/welcome/Main.html:424
 #: src/lessons/welcome/Main.html:464
 msgid "Switch"
-msgstr ""
+msgstr "Switch"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101
@@ -1101,15 +1089,13 @@ msgstr "Bienvenue dans le monde des buggles"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:36 src/lessons/welcome/Basics.html:1
-#, fuzzy
-#| msgid "Java instructions"
 msgid "Java Instructions"
-msgstr "Les instructions en Java"
+msgstr "Les instructions Java"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:50 src/lessons/welcome/BasicsDrawG.html:1
 msgid "Writing more complex programs"
-msgstr ""
+msgstr "Écrire des programmes plus complexes"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:64 src/lessons/welcome/Conditions.html:1
@@ -1119,12 +1105,12 @@ msgstr "Instructions conditionnelles"
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:105 src/lessons/welcome/BaggleSeeker.html:1
 msgid "Baggle Seeking"
-msgstr ""
+msgstr "Chercheur de baggles"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:119 src/lessons/welcome/Variables.html:1
 msgid "Storing and manipulating data"
-msgstr ""
+msgstr "Stocker et manipuler des données"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:147 src/lessons/welcome/LoopDoWhile.html:1
@@ -1228,29 +1214,27 @@ msgstr "Parcours en diagonale"
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:469
 msgid "Meaning of the symbols"
-msgstr ""
+msgstr "Légende"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:472
 msgid "Introducing the concept"
-msgstr ""
+msgstr "Le concept est introduit"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:475
-#, fuzzy
-#| msgid "Working environment"
 msgid "Working on the concept"
-msgstr "L'environnement de travail"
+msgstr "L'exercice travaille sur le concept"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:478
 msgid "Concept assumed mastered"
-msgstr ""
+msgstr "Le concept est supposé maîtrisé"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:481
 msgid "Concept not mandated by the exercise"
-msgstr ""
+msgstr "Le concept n'est pas indispensable à l'exercice"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Environment.html:3
@@ -1280,11 +1264,6 @@ msgstr "Les <i>buggles</i> ? Qu'est ce que c'est ??"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Environment.html:12
-#, fuzzy
-#| msgid ""
-#| "The buggles are little animals obeying any order you may give them. In "
-#| "each exercise, you have to provide them with the right instructions so "
-#| "that the world turns into the objective of the exercise."
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
@@ -1292,10 +1271,7 @@ msgid ""
 "exercise, you show instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
 "<i>Objective</i> one.  In most lessons, your code must be written in Java."
-msgstr ""
-"Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
-"donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
-"pour faire en sorte que le monde ressemble à l'objectif de l'exercice."
+msgstr "Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles pour faire en sorte que le monde ressemble à l'objectif de l'exercice. Par exemple dans cet exercice, vous devez instruire votre buggle pour qu'elle avance d'un pas. Observez la différence entre l'état initial et l'objectif en utilisant les panneaux à droite. Dans la plupart des exercices, vous devez écrire vos programmes en Java."
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/Environment.html:19
@@ -1313,7 +1289,7 @@ msgid ""
 "help menu to check if other people are connected right now. Note that when "
 "you successfully solve an exercise, the good news is spread on twitter.  "
 "Keep posted to the progress of your friends by following #jlmlovers :)"
-msgstr ""
+msgstr "Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez les différents éléments composant la fenêtre, et placez la souris sur dessus pour voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La zone blanche en bas est la console : c'est là que les erreurs et messages sont affichés. Si vous avez accès à internet, connectez vous au forum par le menu d'aide pour voir si d'autres personnes sont connectés. Notez que quand vous réussissez un exercice, la bonne nouvelle est envoyée sur twitter. Suivez les progrès de vos amis en suivant #jlmlovers :)"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Environment.html:30
@@ -1325,7 +1301,7 @@ msgid ""
 "limited in its communication abilities, but he's not mean. If you look "
 "closer, the solution to solve your issue is written in the middle of those "
 "cryptic messages. You'll see, with a bit of habit, we get used to it."
-msgstr ""
+msgstr "Si votre code contient des erreurs (et les programmes finissent toujours par en contenir), l'ordinateur affichera les messages d'erreur sur la console. Vous devez bien entendu corriger ces erreurs pour réussir les exercices. Les messages affichés peuvent paraître inquiétant au premier abord, mais pas de panique. Le compilateur est seulement pas très doué pour communiquer, il n'est pas fondamentalement méchant. En regardant de plus près, la solution pour corriger les problèmes est inscrite dans ces messages cryptiques. Vous verrez, avec un peu d'entraînement, vous vous y habituerez."
 
 #. type: Content of: <p><p><h3>
 #: src/lessons/welcome/Environment.html:38
@@ -1339,7 +1315,7 @@ msgid ""
 "step forward using the Source Code pane. For that, simply write the "
 "following code (clicking on the interactive controls is not enough: You have "
 "to write the code after experimenting interactively)."
-msgstr ""
+msgstr "Il est temps d'écrire votre premier programme. Demandez simplement de faire un pas en avant dans le panneau de Code Source. Pour cela, écrivez simplement le code suivant. Cliquer sur les contrôles interactifs ne suffit pas. Il faut écrire le code après avoir expérimenté interactivement."
 
 #. type: Content of: <p><p><p><pre>
 #: src/lessons/welcome/Environment.html:44 src/lessons/welcome/Basics.html:26
@@ -1350,27 +1326,27 @@ msgstr "forward();"
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Environment.html:45
 msgid "Do not forget the final"
-msgstr ""
+msgstr "N'oubliez pas de terminer par"
 
 #. type: Content of: <p><p><p><pre>
 #: src/lessons/welcome/Environment.html:45
 #, no-wrap
 msgid ";"
-msgstr ""
+msgstr ";"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Environment.html:45
 msgid ""
 "which tells the compiler that the instruction is over (yes, computers are so "
 "dumb that they cannot <i>guess</i> obvious stuff like this)."
-msgstr ""
+msgstr "car cela indique au compilateur que l'instruction est terminée (oui, les ordinateurs sont si stupides qu'il faut leur préciser des choses aussi simples)."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Environment.html:49
 msgid ""
 "Once done, clic on run, and proceed to next exercise with the right combo-"
 "box (or keep around to experiment further if you feel so)."
-msgstr ""
+msgstr "Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec le menu défilant en haut à droite (ou restez ici pour expérimenter un peu si vous le voulez)."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Basics.html:3
@@ -1379,29 +1355,17 @@ msgid ""
 "programming is nothing more than giving simple instructions to the computer "
 "that blindly apply them. The main difficulty is to explain stuff to someone "
 "as stupid as a computer..."
-msgstr ""
+msgstr "Félicitations ! Vous venez d'écrire votre premier programme ! Vous avez compris l'idée maintenant : programmer, c'est simplement donner des instructions à l'ordinateur, qui les applique aveuglément. La plus grande difficulté est d'expliquer quoi faire à quelqu'un d'aussi bête que l'ordinateur..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Basics.html:8
-#, fuzzy
-#| msgid ""
-#| "<a name=\"generality\">The simplest Java program is constituted by a "
-#| "suite of instructions separated by semi-columns (;). You can read it as a "
-#| "list of simple order given to the machine. It is very similar to a recipe "
-#| "stating <i>Melt the chocolate pieces, add sugar, cool the mix and serve</"
-#| "i>."
 msgid ""
 "Programs are mainly suites of method calls, which are no more than a list of "
 "simple order given to the machine. It is very similar to a recipe stating "
 "<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. Java "
 "want to have the instructions separated by semi-columns (;) and given "
 "parenthesis, as in"
-msgstr ""
-"<a name=\"generalites\"> Le programme Java le plus simple est formé d'une "
-"suite d'instructions, séparées par des points-virgules. Il faut le "
-"comprendre comme une suite d'ordres simples que l'on donne à la machine. "
-"C'est assez comparable à une recette de cuisine où l'on dit <i>cassez les "
-"oeufs puis ajoutez du sel puis mélangez le tout puis faites cuire</i>."
+msgstr "<a name=\"generalites\"> Le programme Java le plus simple est formé d'une suite d'instructions, séparées par des points-virgules. Il faut le comprendre comme une suite d'ordres simples que l'on donne à la machine. C'est assez comparable à une recette de cuisine où l'on dit <i>cassez les oeufs puis ajoutez du sel puis mélangez le tout puis faites cuire</i>. Java veut que les instructions soient séparées par des points-virgules (;) et dotées de parenthèses comme dans"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/Basics.html:12
@@ -1430,12 +1394,6 @@ msgstr ""
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Basics.html:21
-#, fuzzy
-#| msgid ""
-#| "For example, there is a method for each button of the interactive control "
-#| "panel. To achieve the same effect than the <b>forward</b> button (making "
-#| "the buggle moving one step forward), you need to write the following in "
-#| "the editor:"
 msgid ""
 "Of course, these specific methods do not exist in Java, but it may be "
 "possible to define them by yourself (we'll see later how to define your how "
@@ -1443,10 +1401,7 @@ msgid ""
 "method for each button of the interactive control panel. To achieve the same "
 "effect than the <b>forward</b> button (making the buggle moving one step "
 "forward), you need to write the following in the editor:"
-msgstr ""
-"Par exemple, il y a une méthode pour chaque bouton du contrôle interactif.  "
-"Pour faire la même chose que le bouton <b>forward</b> (faire avancer la "
-"buggle d'un pas), il faut écrire dans l'éditeur :"
+msgstr "Bien sûr, ces instructions en particulier n'existent pas en Java, même si vous pourriez les définir par vous-même (nous apprendrons à le faire dans un moment). Pour l'instant, nous allons utiliser les instructions de la buggle. Il y a une méthode pour chaque bouton du contrôle interactif.  Pour faire la même chose que le bouton <b>forward</b> (faire avancer la buggle d'un pas), il faut écrire dans l'éditeur :"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Basics.html:27
@@ -1490,14 +1445,10 @@ msgstr ""
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Basics.html:40
-#, fuzzy
-#| msgid "The buggle offers other methods, that we will introduce when needed."
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
-msgstr ""
-"La buggle offre d'autres méthodes, que nous verrons lorsque le besoin s'en "
-"fera sentir."
+msgstr "La buggle offre d'autres méthodes, présentées dans le menu \"Help/about this world\". Elles seront introduites au fur et à mesure des besoins."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/Basics.html:44 src/lessons/welcome/Conditions.html:58
@@ -1522,7 +1473,7 @@ msgid ""
 "<a name=\"Objectives\"> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
 "and hide inside. Check the objective world to see exactly what this means."
-msgstr ""
+msgstr "<a name=\"Objectives\"> Notre second programme sera un peu plus compliqué, mais pas tellement. L'objectif de votre buggle est simplement de se dessiner une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif pour voir exactement ce que cela veut dire."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/BasicsDrawG.html:2
@@ -1530,7 +1481,7 @@ msgid ""
 "Now that we know how to draw things on the board, we'll enjoy this ability "
 "and draw a beautiful G on the board (check Objective panel for details on "
 "what's expected)."
-msgstr ""
+msgstr "Maintenant que vous savez écrire des choses sur le sol, nous allons utiliser cette compétence pour dessiner un merveilleux G par terre. Consultez le panneau d'objectif pour les détails de ce qui est attendu."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BasicsDrawG.html:6
@@ -1544,7 +1495,7 @@ msgid ""
 "(describing obvious stuff) is a bad idea as the important idea get lost in "
 "the noise.  There is three types of comments in Java, instructing the "
 "compiler to not read the text you add for humans:"
-msgstr ""
+msgstr "Quand vous écrivez un programme un peu complexe, il est souvent pratique d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après coup. Ici par exemple, il est assez facile de se perdre dans les ordres nécessaires au dessin. Il peut être pratique d'ajouter des commentaires comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. Retournons à la position initiale</i>. Documenter votre code est presque toujours nécessaire si vous (ou quelqu'un d'autre) veut le lire après coup. Cependant, commenter des choses triviales est une mauvaise idée car cela dilue les instructions Java dans des commentaires trop verbeux. En anglais, ce travers s'appelle <i>overcommenting</i>. Il y a trois types de commentaires en Java, indiquant au compilateur de ne pas lire le texte que vous ajoutez pour les humains :"
 
 #. type: Content of: <p><ul><li>
 #: src/lessons/welcome/BasicsDrawG.html:16
@@ -1581,12 +1532,6 @@ msgstr ""
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/BasicsDrawG.html:28
-#, fuzzy
-#| msgid ""
-#| "There is a third kind of comments, between /** and */, which are read by "
-#| "a specific program called JavaDoc to generate automatically the "
-#| "documentation explaning how to use the code. These comments must follow a "
-#| "very precise formalism."
 msgid ""
 "There is a third kind of comments, between /** and */, which are read by a "
 "specific program called JavaDoc to generate automatically the documentation "
@@ -1873,25 +1818,13 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopDoWhile.html:3
-#, fuzzy
-#| msgid ""
-#| "In a <tt>while</tt> loop, the condition is evaluated before anything "
-#| "else, and if it's false, the loop body is never evaluated. Sometimes, you "
-#| "want the loop body to get evaluated at least once, even if the condition "
-#| "is initially false. For that, a variation of the <tt>while</tt> loop gets "
-#| "used, using the following syntax in Java:"
 msgid ""
 "In a <tt>while</tt> loop, the condition is evaluated before anything else, "
 "and if it's false, the loop body is never evaluated. Sometimes (although not "
 "that often), you would prefer the loop body to get evaluated at least once, "
 "even if the condition is initially false. For that, a variation of the "
 "<tt>while</tt> loop gets used, using the following syntax in Java:"
-msgstr ""
-"Dans une instruction <tt>while</tt>, la condition est évaluée avant toute "
-"chose, et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il "
-"arrive que l'on veuille que le corps de la boucle soit évalué au moins une "
-"fois, même si la condition est initialement fausse. On utilise pour cela une "
-"variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
+msgstr "Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose, et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive parfois que l'on veuille que le corps de la boucle soit évalué au moins une fois, même si la condition est initialement fausse. On utilise pour cela une variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/LoopDoWhile.html:9
@@ -1941,28 +1874,20 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BaggleSeeker.html:2
-#, fuzzy
-#| msgid ""
-#| "The buggle world can sometimes contain some <i>baggles</i>, which are "
-#| "little biscuits that buggles can carry from one point to another. For "
-#| "that, they have to use the following methods:"
 msgid ""
 "The buggle world can sometimes contain some <i>baggles</i>, which are little "
 "biscuits that buggles can carry from one point to another. For that, they "
 "have to use specific methods such as <code>isOverBaggle(), isCarryingBaggle"
 "(), pickUpBaggle()</code> or <code>dropBaggle()</code>. Check their "
 "documentation in \"Help/About this world\" for more details."
-msgstr ""
-"Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
-"biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
-"cela, elles peuvent utiliser les fonctions suivantes :"
+msgstr "Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour cela, elles peuvent utiliser des fonctions spécifiques : <code>isOverBaggle(), isCarryingBaggle(), pickUpBaggle()</code> et <code>dropBaggle()</code>. Tous les détails se trouvent dans la documentation accessible depuis \"Help/About this world\"."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/BaggleSeeker.html:10
 msgid ""
 "Let each buggle find its baggle by adapting the code you wrote in previous "
 "exercise (copy/paste what you've done before to save time)."
-msgstr ""
+msgstr "Faites en sorte que chaque buggle trouve son baggle en adaptant le code que vous aviez écrit pour l'exercice précédent (faites un copie/colle de ce que vous aviez fait pour gagner du temps)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Variables.html:2
@@ -1972,7 +1897,7 @@ msgid ""
 "<b>instructions</b>. In the buggle world, the main data are a bit hidden "
 "behind the graphical representation, but that's no reason to never "
 "manipulate some data explicitly."
-msgstr ""
+msgstr "Les programmes que nous avons écrit jusque là passent à coté d'un point fondamental en informatique. En effet, la science informatique est celle de traiter des <b>données</b> grâce à des <b>instructions</b>. Dans le monde des buggles, les principales données sont cachées derrière la représentation graphique, mais ce n'est pas une raison pour ne jamais manipuler explicitement des données."
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/Variables.html:8
@@ -1981,14 +1906,6 @@ msgstr "Les données en Java"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Variables.html:9
-#, fuzzy
-#| msgid ""
-#| "Java allows to use several <i>types</i> of data, such as integers or "
-#| "strings of chars. If you want to use a data several times, you need to "
-#| "store it within a <i>variable</i>, which can be seen as a cell containing "
-#| "a value. Java is said to be a <i>typed</i> language, which means that it "
-#| "is onle possible to store a value in a variable of the right type. Don't "
-#| "think about storing a string into an integer variable."
 msgid ""
 "Java allows to use several <i>types</i> of data, such as integers or strings "
 "of chars. If you want to use a data several times, you need to store it "
@@ -1996,14 +1913,7 @@ msgid ""
 "not very different from a shelve containing a book: you put your data (say "
 "'5') in the variable (say 'length'), and you can retrieve it latter when you "
 "need it."
-msgstr ""
-"Java permet d'utiliser différents <i>types</i> de données, tels que les "
-"entiers, les nombres à virgules ou les chaînes de caractères. Si on veut "
-"utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</"
-"i>, qui est une sorte de case contenant une valeur. Java est un langage "
-"<i>typé</i>, ce qui veut dire que l'on ne peut stocker une valeur que dans "
-"une variable du bon type. Pas question de stocker une chaîne de caractères "
-"dans une variable entière."
+msgstr "Java permet d'utiliser différents <i>types</i> de données, tels que les entiers, les nombres à virgules ou les chaînes de caractères. Si on veut utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est pas très différent d'une étagère contenant un livre: vous rangez votre donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la retrouver plus tard quand vous en avez besoin."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Variables.html:15
@@ -2011,7 +1921,7 @@ msgid ""
 "Java is said to be a <i>typed</i> language, which means that it is only "
 "possible to store a value in a variable of the right type. Don't think about "
 "storing the letters of your name into an integer variable."
-msgstr ""
+msgstr "Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker une valeur que dans une variable du bon type. Pas question de stocker votre nom dans une variable entière."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Variables.html:19
@@ -2022,14 +1932,7 @@ msgid ""
 "booleans (ie, values being either true or false) and <b>String</b> for char "
 "strings. If you want, you can specify the initial value of the variable by "
 "adding a equal sign (=) followed by the value after the declaration."
-msgstr ""
-"Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, "
-"un espace et le nom de la variable.  Parmi les types existants, on trouve: "
-"<b>int</b> pour les entiers, <b>double</b> pour les nombres à virgule, "
-"<b>boolean</b> pour les booléens (i.e. les variables qui peuvent être soit "
-"vraies soit fausses) et <b>String</b> pour les chaînes de caractères.  Si "
-"l'on veut, on peut faire suivre la déclaration du signe = suivi de la valeur "
-"initiale à donner à la valeur."
+msgstr "Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, un espace et le nom de la variable. Notez qu'il n'est pas possible d'utiliser d'accents dans les noms de variables, malheureusement. Parmi les types existants, on trouve: <b>int</b> pour les entiers, <b>double</b> pour les nombres à virgule, <b>boolean</b> pour les booléens (i.e. les variables qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes de caractères.  Si l'on veut, on peut faire suivre la déclaration du signe = suivi de la valeur initiale à donner à la valeur."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Variables.html:25
@@ -2093,7 +1996,7 @@ msgstr "int x = 4;"
 msgid ""
 "This quite the same story for strings, floating point numbers and boolean "
 "values."
-msgstr ""
+msgstr "C'est la même histoire pour les chaînes, nombres à virgule flotante et les booléens."
 
 #. type: Content of: <p><p><p><p><p><p><pre>
 #: src/lessons/welcome/Variables.html:35
@@ -2103,27 +2006,20 @@ msgid ""
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
 "boolean married=yes;"
 msgstr ""
+"String nom = \"Martin Quinson\";\n"
+"double taille=1.77; <span class=\"comment\">// in meters</span>\n"
+"boolean marrie=yes;"
 
 #. type: Content of: <p><p><p><p><p><p><p>
 #: src/lessons/welcome/Variables.html:40
-#, fuzzy
-#| msgid ""
-#| "To the right of the equal symbol, you can put an arbitrary arithmetic "
-#| "operation, which can contain constants or variables:"
 msgid ""
 "To the right of the equal symbol, you can put an expression containing "
 "constants, variables and operations:"
-msgstr ""
-"À droite du signe égal, on peut mettre une opération arithmétique "
-"quelconque, qui peut contenir des constantes ou des variables :"
+msgstr "À droite du signe égal, on peut mettre une expression quelconque, qui peut contenir des constantes, des variables et des opérations :"
 
 #. type: Content of: <p><p><p><p><p><p><p><pre>
 #: src/lessons/welcome/Variables.html:43
-#, fuzzy, no-wrap
-#| msgid ""
-#| "x = 3 + 2;\n"
-#| "x = 3 * x;\n"
-#| "hello = \"hello \"+\"every\"+\"body!\";\n"
+#, no-wrap
 msgid ""
 "x = 3 + 2;\n"
 "x = 3 * x;\n"
@@ -2131,37 +2027,23 @@ msgid ""
 msgstr ""
 "x = 3 + 2;\n"
 "x = 3 * x;\n"
-"hello = \"Salut \"+\"à \"+\"tous !\";\n"
+"hello = \"Salut \"+nom;\n"
 
 #. type: Content of: <p><p><p><p><p><p><p>
 #: src/lessons/welcome/Variables.html:50
-#, fuzzy
-#| msgid ""
-#| "<a name=\"Objectifs\"> It is now time to do more challenging exercises, "
-#| "don't you think? The objective is now to move forward until you find a "
-#| "baggle, pick it up, and then move back to your initial location before "
-#| "dropping the baggle."
 msgid ""
 "It is now time to do more challenging exercises, don't you think? The "
 "objective is now to move forward until you find a baggle, pick it up, and "
 "then move back to your initial location before dropping the baggle."
-msgstr ""
-"<a name=\"Objectifs\"> Il est temps de faire un exercice un peu plus dur, "
-"n'est ce pas ? L'objectif cette fois est d'avancer jusqu'au baggle qui se "
-"trouve devant la buggle, le ramasser, revenir à la position initiale, puis "
-"de poser le baggle."
+msgstr "Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif cette fois est d'avancer jusqu'au baggle qui se trouve devant la buggle, le ramasser, revenir à la position initiale, puis de poser le baggle."
 
 #. type: Content of: <p><p><p><p><p><p><p><h3>
 #: src/lessons/welcome/Variables.html:55
 msgid "How to do this?"
-msgstr ""
+msgstr "Comment faire ?"
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
 #: src/lessons/welcome/Variables.html:56
-#, fuzzy
-#| msgid ""
-#| "To solve this problemm, you have to decompose it in easier sub-parts. For "
-#| "example, you may want to do the following steps:"
 msgid ""
 "To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
@@ -2223,11 +2105,6 @@ msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
 #: src/lessons/welcome/Variables.html:78
-#, fuzzy
-#| msgid ""
-#| "Please note that it is forbiden to use spaces in variable names in Java. "
-#| "So you can name you variable <code>stepAmount</code>, but <code>step "
-#| "Amount</code> is not a valid name."
 msgid ""
 "Please note that it is forbidden to use spaces in variable names in Java. So "
 "you can name you variable <code>stepAmount</code>, but <code>step Amount</"
@@ -3037,7 +2914,7 @@ msgstr ""
 #. type: Content of: <p><p><p><p><h2>
 #: src/lessons/welcome/MethodsArgs.html:66
 msgid "What's coming next?"
-msgstr ""
+msgstr "Et ensuite?"
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/welcome/MethodsArgs.html:67
@@ -3051,7 +2928,7 @@ msgid ""
 "have any issue with it, allowing you to focus on the fundamental problems of "
 "what you want to solve instead of struggling with syntaxic difficulties. "
 "Some of these exercises are even fun to do ;)"
-msgstr ""
+msgstr "Vous connaissez maintenant les bases de la programmation Java. Disons au moins que vous avez vu les concepts les plus important et que vous devriez être capable de lire et comprendre la plupart des programmes écrits en Java. Pour plus de sécurité, vous devriez faire les autres exercices de cette leçon pour solidifier vos acquis en les réutilisant dans diverses situations. Après cela, vous maîtriserez ce qu'on appelle la \"programmation tactique\", ce qui veut dire que votre maîtrise de la syntaxe Java vous permettra de vous concentrer sur les problèmes à résoudre sans vous battre contre le compilateur à propos de la syntaxe. Certains de ces exercices sont même amusants à résoudre ;)"
 
 #. type: Content of: <p><p><p><p><p><p>
 #: src/lessons/welcome/MethodsArgs.html:75
@@ -3066,14 +2943,10 @@ msgid ""
 "introduction activity to what programming means for real beginners, but the "
 "last exercises constitute challenges and brain teaser even to professional "
 "programmers."
-msgstr ""
+msgstr "Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et passer directement à des exercices plus complets et plus intéressants. Par exemple, la leçon sur les <i>Labyrinthes</i> vous apprendra à sortir d'un labyrinthe. Les algorithmes impliqués ne sont pas ultra complexes, mais vous serez amenés à améliorer votre code à plusieurs reprises afin de pouvoir sortir de n'importe quel type de labyrinthe. La leçon <i>LightBot</i> est un petit jeu de programmation où vous contrôlez un robot voulant éclairer le monde. Comme il est programmé graphiquement et non en Java, les premiers exercices peuvent être utilisés comme une introduction à ce que programmer veut dire pour les débutants. Mais les derniers exercices sont plus difficiles et devraient constituer des casse-têtes même pour les programmeurs professionnels."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture.html:3
-#, fuzzy
-#| msgid ""
-#| "In this exercise, we will reproduce the geometrical drawing that you can "
-#| "see in the \"Objective\" tab."
 msgid ""
 "In this exercise, we will reproduce the geometric drawing that you can see "
 "in the \"Objective\" tab."
@@ -3225,7 +3098,7 @@ msgid ""
 "To proceed to the next exercise, you need to remark that the combobox used "
 "to switch the exercise have a scroll bar that you can use to see the next "
 "exercises of the lesson."
-msgstr ""
+msgstr "Pour passer à l'exercice suivant, remarquez que le menu défilant pour changer l'exercice est doté d'un ascenseur que vous devez utiliser pour voir la suite."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture3.html:3
@@ -8047,9 +7920,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/bat/bool2/Main.html:1
-#, fuzzy
 msgid "Boolean (even more) fun"
-msgstr "Jeux booléens"
+msgstr "Encore des jeux booléens"
 
 #. type: Content of: <p>
 #: src/lessons/bat/bool2/Main.html:3
@@ -8199,9 +8071,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/AltPairs.html:1
-#, fuzzy
 msgid "AltPairs"
-msgstr "Escaliers"
+msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/AltPairs.html:2
@@ -8212,9 +8083,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/Array123.html:1
-#, fuzzy
 msgid "Array123"
-msgstr "Tableaux"
+msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/Array123.html:2
@@ -8225,9 +8095,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/Array667.html:1
-#, fuzzy
 msgid "Array667"
-msgstr "Tableaux"
+msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/Array667.html:2
@@ -8403,323 +8272,3 @@ msgid ""
 "where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"
 "\" strings will not overlap."
 msgstr ""
-
-#, fuzzy
-#~| msgid "Chaining conditionals"
-#~ msgid "Conditionals"
-#~ msgstr "Enchaînements de conditionnelles"
-
-#~ msgid "Variables and instructions"
-#~ msgstr "Variables et instructions"
-
-#~ msgid "Basic synthaxic constructions"
-#~ msgstr "Constructions de syntaxiques de base:"
-
-#~ msgid "Conditionnals (if and switch)"
-#~ msgstr "conditionnelles (if et switch)"
-
-#~ msgid "loops (for, while and do-while)"
-#~ msgstr "boucles (for, while et do-whiles)"
-
-#~ msgid "Methods (with or without arguments, with or without return)"
-#~ msgstr "Méthodes (avec ou sans arguments, avec ou sans retour)"
-
-#~ msgid "List of seen notions:"
-#~ msgstr "Liste des notions abordées :"
-
-#~ msgid ""
-#~ "x=3; <span class=\"comment\">It replace the old value of x by 3</span>"
-#~ msgstr ""
-#~ "x=3; <span class=\"comment\">ceci remplace la valeur de x par 3</span>"
-
-#~ msgid ""
-#~ "We saw in a previous exercise that variables are memory cells of the "
-#~ "computer in which it is possible to store a value. In Java, every "
-#~ "variable has a particular type, such as <code>int</code> to store "
-#~ "integers, <code>boolean</code> for booleans, <code>double</code> for dot "
-#~ "numbers or <code>String</code> for char strings."
-#~ msgstr ""
-#~ "Nous avons vu que les variables étaient des cases mémoire de l'ordinateur "
-#~ "dans lequel on peut stocker une valeur. En Java, chaque variable a un "
-#~ "type particulier, qui peut être par exemple <code>int</code> pour stocker "
-#~ "des nombres entiers, <code>boolean</code> pour des booléens, "
-#~ "<code>double</code> pour des nombres à virgule ou encore <code>String</"
-#~ "code> pour des chaînes de caractères."
-
-#~ msgid "Another example with char strings:"
-#~ msgstr "Un autre exemple avec des chaînes de caractères :"
-
-#~ msgid "String hello = \"what's up, doc?\";"
-#~ msgstr "String hello = \"Bonjour\";"
-
-#~ msgid ""
-#~ "To change the value in a variable, you just have to use the = symbol:"
-#~ msgstr ""
-#~ "Pour affecter une nouvelle valeur à une variable, il suffit d'utiliser le "
-#~ "symbole = :"
-
-#~ msgid "Baggles"
-#~ msgstr "Les baggles"
-
-#~ msgid ""
-#~ "isOverBaggle() <span class=\"comment\">/* boolean test to know whether "
-#~ "the buggle is currently over a baggle */</span>\n"
-#~ "isCarryingBaggle() <span class=\"comment\">/* boolean test to know "
-#~ "whether the buggle is currently carrying a baggle */</span>\n"
-#~ "pickUpBaggle() <span class=\"comment\">/* pickup the baggle laying on the "
-#~ "ground (if there is no baggle on the ground, this will lead to a problem) "
-#~ "*/</span>\n"
-#~ "dropBaggle() <span class=\"comment\">/* drop the baggle carried (there is "
-#~ "a problem if the buggle does not carry any baggle, \n"
-#~ "                or if there is already a baggle on the ground) */</span>"
-#~ msgstr ""
-#~ "isOverBaggle() <span class=\"comment\">/* test booléen pour savoir si la "
-#~ "buggle marche sur un baggle */</span>\n"
-#~ "isCarryingBaggle() <span class=\"comment\">/* test booléen pour savoir si "
-#~ "la buggle porte un baggle */</span>\n"
-#~ "pickUpBaggle() <span class=\"comment\">/* ramasse le baggle au sol "
-#~ "(attention, s'il n'y a pas de baggle, ça pose problème) */</span>\n"
-#~ "dropBaggle() <span class=\"comment\">/* pose le baggle transporté "
-#~ "(attention, ça pose problème si on ne porte pas de \n"
-#~ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-#~ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
-#~ "&nbsp;&nbsp;baggle, ou s'il y en a déjà un par terre) */</span>"
-
-#~ msgid "<a name=\"Indications\">"
-#~ msgstr "<a name=\"Indications\">"
-
-#~ msgid ""
-#~ "Before going any further, get familiar with the working environment. The "
-#~ "main window (the one you are currently looking at) is made of 5 main "
-#~ "components:"
-#~ msgstr ""
-#~ "Avant d'aller plus loin, familiarisez vous avec l'environnement de "
-#~ "travail.  La fenêtre principale (celle que vous voyez) est composée de 5 "
-#~ "éléments principaux:"
-
-#~ msgid ""
-#~ "The goal of each exercise is thus to type some code in the editor tab to "
-#~ "instruct your buggle to reach its goal."
-#~ msgstr ""
-#~ "L'objectif de chaque exercice est donc de taper du code dans l'onglet de "
-#~ "l'éditeur afin de donner les ordres nécessaires à la buggle pour "
-#~ "atteindre son objectif."
-
-#~ msgid ""
-#~ "This code must naturally be written in Java. It it contains errors, the "
-#~ "compiler will display a message in the console, and you will need to fix "
-#~ "it before trying to execute it."
-#~ msgstr ""
-#~ "Ce code doit naturellement être écrit en Java.  S'il contient des "
-#~ "erreurs, un message sera affiché dans la console par le compilateur, et "
-#~ "il vous faudra corriger avant de tenter de l'exécuter."
-
-#~ msgid ""
-#~ "Try now to write something in the editor (tab <b>Source Code</b>) such as "
-#~ "<tt>Hello</tt>, and then clic on the <b>Start</b> button. The messages "
-#~ "that get displayed may sound strange at first glance, but don't panic. We "
-#~ "will see their signification as they appear. Erase for now any content "
-#~ "you may have typed in the editor."
-#~ msgstr ""
-#~ "Essayez par exemple d'écrire quelque chose dans l'éditeur (onglet "
-#~ "<b>Source Code</b>) comme <tt>bonjour</tt>, puis de cliquer sur <b>Start</"
-#~ "b>.  Les messages qui s'affichent peuvent vous sembler obscures au "
-#~ "premier abord, mais ne vous inquiétez pas : nous verrons leur "
-#~ "signification au fur et à mesure. Effacez maintenant le contenu de "
-#~ "l'éditeur avant de continuer."
-
-#~ msgid "And now?"
-#~ msgstr "Et maintenant ?"
-
-#~ msgid ""
-#~ "For this first exercise, you are not expected to do anything perticular: "
-#~ "the initial world is exactly the same than the objective to reach. So, "
-#~ "you don't have any code to write. Once you're done visiting the interface "
-#~ "and playing with the interactive controls, clic on the <b>Start</b> "
-#~ "button. A window appear informing you that you completed the exercise "
-#~ "expectations."
-#~ msgstr ""
-#~ "Pour ce premier exercice, vous n'avez rien à faire : le monde initial est "
-#~ "l'objectif à atteindre. Vous n'avez donc pas de code à écrire.  Après "
-#~ "avoir visité l'interface et joué un peu avec les contrôles interactifs, "
-#~ "appuyez sur le bouton <b>Start</b>. Une fenêtre apparaît pour vous "
-#~ "informez que vous avez remplit le contrat de l'exercice."
-
-#~ msgid ""
-#~ "You can then move to next exercise using the right menu (<b>Exercise</b>)."
-#~ msgstr ""
-#~ "Vous pouvez alors passez à l'exercice suivant en utilisant le menu "
-#~ "adéquat (<b>Exercise</b>)."
-
-#~ msgid "Discovering Java"
-#~ msgstr "Découverte du Java"
-
-#~ msgid ""
-#~ "We will now write our first Java program. In a computer program (let it "
-#~ "be in Java or anything else), you can find two kind of stuff: <b>data</b> "
-#~ "and <b>instructions</b> manipulating these data."
-#~ msgstr ""
-#~ "Nous allons maintenant écrire notre tout premier programme Java. Dans un "
-#~ "programme informatique (en Java ou autre), on trouve deux choses : les "
-#~ "<b>données</b>, et les <b>instructions</b> qui manipulent ces données."
-
-#~ msgid "Generality on instructions"
-#~ msgstr "Généralités sur les instructions"
-
-#~ msgid "Variable affectations such as"
-#~ msgstr "Les affectations de variables comme"
-
-#~ msgid "x=5"
-#~ msgstr "x=5"
-
-#~ msgid ""
-#~ "are the simpler instructions. The other instruction kind in Java are "
-#~ "constituted by <i>method calls</i>. We will come back later on how to "
-#~ "define such methods, but we can already say that they are the available "
-#~ "orders. The general syntax is:"
-#~ msgstr ""
-#~ "sont les instructions les plus simples. L'autre type classique "
-#~ "d'instruction en Java est l'<i>appel à une méthode</i>. Nous verrons plus "
-#~ "tard comment définir de telles méthodes, disons simplement pour l'instant "
-#~ "qu'il s'agit des ordres disponibles. La syntaxe est en général est :"
-
-#~ msgid ""
-#~ "<a name=\"instructions\">Of course, these methods do not exist in Java, "
-#~ "and it is almost impossible to list all existing methods in Java. In this "
-#~ "lesson, the most common instructions are calls to the buggle methods, ie, "
-#~ "orders passed to the buggle."
-#~ msgstr ""
-#~ "<a name=\"instructions\"> Bien entendu, ces méthodes n'existent pas en "
-#~ "Java, et il est difficile de faire la liste des méthodes existantes en "
-#~ "Java. Dans cette leçon, les instructions les plus souvent utilisées sont "
-#~ "des appels à des méthodes de la buggle, par lesquelles on donne des "
-#~ "ordres à la buggle qui les reçoit."
-
-#~ msgid ""
-#~ "When you write a quite complex program, it is sometimes useful to add "
-#~ "<i>comments</i> to simplify the code reviews afterward. There is three "
-#~ "types of comments in Java:"
-#~ msgstr ""
-#~ "Quand on écrit un programme un peu complexe, il est parfois utile "
-#~ "d'ajouter des <i>commentaires</i> pour simplifier la relecture du code "
-#~ "après coup. Il existe trois types de commentaires en Java:"
-
-#~ msgid ""
-#~ "<a name=\"Objectives\">We will now write the simplest Java program for "
-#~ "buggles ever: you need to ask your buggle to move one step forward."
-#~ msgstr ""
-#~ "<a name\"Objectifs\"> Nous allons faire le programme Java pour buggle le "
-#~ "plus simple existant : vous devez faire en sorte que la buggle avance "
-#~ "d'un pas."
-
-#~ msgid ""
-#~ "For that, simply write the following code in the editor (tab <b>Source "
-#~ "Code</b>):"
-#~ msgstr ""
-#~ "Pour cela, écrivez simplement dans l'éditeur (onglet <b>Source Code</b>) "
-#~ "le code suivant :"
-
-#~ msgid ""
-#~ "Do not forget the final semi-colum, which tells the compiler that the "
-#~ "instruction is over."
-#~ msgstr ""
-#~ "N'oubliez pas le point-virgule, qui indique au compilateur que "
-#~ "l'instruction est finie."
-
-#~ msgid ""
-#~ "After typing this code into the editor, clic on <b>run</b> and move "
-#~ "forward to next exercise."
-#~ msgstr ""
-#~ "Après avoir recopié le code dans l'éditeur, cliquez sur <b>run</b> et "
-#~ "passez à l'exercice suivant."
-
-#~ msgid "Discovering Java (2)"
-#~ msgstr "Découverte du Java (2)"
-
-#~ msgid ""
-#~ "Using what you've learnt in previous exercise, we will now try to solve "
-#~ "several little problems. Here is the first one."
-#~ msgstr ""
-#~ "En se basant sur les acquis de la leçon précédente, nous allons essayer "
-#~ "de résoudre différents petits problèmes.  Voici le premier."
-
-#~ msgid "<a name=\"Objectives\">Let your buggle move forward by three steps."
-#~ msgstr "<a name=\"Objectifs\"> Faites avancer votre buggle de 3 pas."
-
-#~ msgid "Discovering Java (3)"
-#~ msgstr "Découverte du Java (3)"
-
-#~ msgid ""
-#~ "Of course, buggles are not doomed to move in straight lines. They can "
-#~ "also turn left or right (with methods <code>turnLeft()</code> and "
-#~ "<code>turnRight()</code>) or move backward (with <code>backward()</code>)"
-#~ msgstr ""
-#~ "Bien sûr, les buggles ne sont pas condamnées à se déplacer en ligne "
-#~ "droite. Elles savent également tourner à gauche ou à droite (avec les "
-#~ "méthodes <code>turnLeft()</code> et <code>turnRight()</code>) ou reculer "
-#~ "(avec <code>backward()</code>)."
-
-#~ msgid "<a name=\"Objective\">Let your buggle draw a G letter."
-#~ msgstr ""
-#~ "<a name=\"Objectifs\"> Faites dessiner &agrave; votre buggle la lettre G."
-
-#~ msgid ""
-#~ "Please consult the view of the world objective to know the exact form of "
-#~ "the letter to draw."
-#~ msgstr ""
-#~ "N'hésitez pas à consulter la vue du monde attendu pour connaître la forme "
-#~ "exacte de la lettre."
-
-#~ msgid ""
-#~ "Don't forget to let the buggle pick the baggle at the end of your code."
-#~ msgstr ""
-#~ "Pensez à faire prendre le baggle à votre buggle avant la fin de votre "
-#~ "programme."
-
-#~ msgid "Lost between islands"
-#~ msgstr "Perdu au milieu des îlots"
-
-#~ msgid ""
-#~ "Yet another maze, but why is the fate so mean against your poor buggle?"
-#~ msgstr ""
-#~ "Encore un labyrinthe, mais pourquoi tant de haine envers ce pauvre "
-#~ "buggle ?"
-
-#~ msgid ""
-#~ "Any mazes such as the one we saw so far can be solved using previous "
-#~ "method (which is called <i>wall folower algorithm</i>) if the entry and "
-#~ "the exit are placed near to external walls. But if the buggle begins in "
-#~ "the middle of the maze, it may exist wall sections disconnected from the "
-#~ "external wall."
-#~ msgstr ""
-#~ "Tous les labyrinthes disjoints peuvent être résolus par la méthode "
-#~ "précédente (<i>wall follower algorithm</i>) si l'entrée et la sortie du "
-#~ "labyrinthe se trouve sur les murs extérieurs du labyrinthe. Si par "
-#~ "contre, le buggle débute à l'intérieur du labyrinthe, il peut exister une "
-#~ "section du labyrinthe qui soit disjointe de la sortie."
-
-#~ msgid ""
-#~ "That is why the previous strategy would let the buggle round around for "
-#~ "even. Indeed, this maze contains islands, and the buggle does not start "
-#~ "along one of the external walls."
-#~ msgstr ""
-#~ "C'est pourquoi si l'on applique la même stratégie que précédemment, alors "
-#~ "le buggle tourne en rond. En effet, ce labyrinthe contient des îlots, et "
-#~ "notre buggle ne débute pas le long d'un mur extérieur."
-
-#~ msgid ""
-#~ "Before writing your program, pick a side (left or right). Your buggle "
-#~ "will follow the buggles on this side."
-#~ msgstr ""
-#~ "Avant d'écrire votre programme, choisissez une direction (droite ou "
-#~ "gauche). C'est les murs de ce côté que votre buggle suivra."
-
-#~ msgid ""
-#~ "Write a method <code>void putHandOnSideWall()</code> which moves your "
-#~ "buggle so that it goes to the wall on the selected side. Do not forget to "
-#~ "change the buggle heading so that it does not face the wall anymore at "
-#~ "the method end."
-#~ msgstr ""
-#~ "Ecrivez une méthode <code>void putHandOnSideWall()</code> qui déplacera "
-#~ "votre buggle afin qu'il s'appuie sur le mur du côté que vous avez choisi. "
-#~ "Pensez à faire pivoter votre buggle pour qu'il ne regarde plus le mur."

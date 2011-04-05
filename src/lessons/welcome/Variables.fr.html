@@ -1,0 +1,88 @@
+<h2>Stocker et manipuler des données</h2>
+  <p>Les programmes que nous avons écrit jusque là passent à coté d'un point
+fondamental en informatique. En effet, la science informatique est celle de
+traiter des <b>données</b> grâce à des <b>instructions</b>. Dans le monde
+des buggles, les principales données sont cachées derrière la représentation
+graphique, mais ce n'est pas une raison pour ne jamais manipuler
+explicitement des données. 
+
+  <h3>Les données en Java</h3>
+  Java permet d'utiliser différents <i>types</i> de données, tels que les
+entiers, les nombres à virgules ou les chaînes de caractères. Si on veut
+utiliser une donnée plusieurs fois, il faut la stocker dans une
+<i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est
+pas très différent d'une étagère contenant un livre: vous rangez votre
+donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la
+retrouver plus tard quand vous en avez besoin.
+
+  <p>Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker
+une valeur que dans une variable du bon type. Pas question de stocker votre
+nom dans une variable entière.
+  
+  <p>Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type,
+un espace et le nom de la variable. Notez qu'il n'est pas possible
+d'utiliser d'accents dans les noms de variables, malheureusement. Parmi les
+types existants, on trouve: <b>int</b> pour les entiers, <b>double</b> pour
+les nombres à virgule, <b>boolean</b> pour les booléens (i.e. les variables
+qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes
+de caractères.  Si l'on veut, on peut faire suivre la déclaration du signe =
+suivi de la valeur initiale à donner à la valeur. </p>
+  <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
+écrira : <pre>int x;</pre>
+	 Si on veut que sa valeur initiale soit 5, on écrira : <pre>int x = 5;</pre>
+  <p>Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle
+valeur à la variable, c'est très simple : <pre>x = 3;</pre>
+      
+<p>La syntaxe pour créer une variable entière <code>x</code> de valeur initiale
+4 est la suivante : 
+<pre>int x = 4;</pre>
+<p>C'est la même histoire pour les chaînes, nombres à virgule flotante et les
+booléens. 
+<pre>String nom = "Martin Quinson";
+double taille=1.77; <span class="comment">// in meters</span>
+boolean marrie=yes;</pre>
+
+
+<p>À droite du signe égal, on peut mettre une expression quelconque, qui peut
+contenir des constantes, des variables et des opérations : 
+
+<pre>x = 3 + 2;
+x = 3 * x;
+hello = "Salut "+nom;
+</pre> 
+
+
+<h3>Objectif de cet exercice</h3>
+Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif
+cette fois est d'avancer jusqu'au baggle qui se trouve devant la buggle, le
+ramasser, revenir à la position initiale, puis de poser le baggle.
+
+<h3>Comment faire ?</h3> 
+<p>Pour résoudre ce problème, il faut le décomposer en parties que vous savez
+résoudre. Par exemple, on peut vouloir faire les étapes suivantes :
+<ol>
+  <li>Avancer jusqu'à se trouver sur un baggle</li>
+  <li>Ramasser le baggel au sol</li>
+  <li>Reculer du même nombre de cases que ce qu'on a avancé</li>
+</ol></p>
+
+<p>Bien entendu, il est impossible de reculer du bon nombre de case à l'étape 3
+si l'on a pas compté le nombre de pas faits à la première étape. On va pour
+cela utiliser une variable, que l'on peut nommer <code>nbPas</code>.</p>
+
+<p>On crée cette variable (de type <code>int</code>) avant l'étape 1, on
+l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1
+(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux
+écritures sont équivalentes).</p>
+
+<p>Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière
+<code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que
+<code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant
+<code>dejaFait</code> à chaque fois.</p>
+
+<p>Attention, il est interdit d'utiliser des caractères accentués ou des
+espaces dans les noms de variables Java. Vous pouvez donc nommer votre
+variable <code>dejaFait</code>, mais ni <code>déjaFait</code> ni <code>deja
+Fait</code> ne sont des noms valides.</p>
+
+<p>À vous de jouer !</p>
