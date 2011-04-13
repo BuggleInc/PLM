@@ -21,8 +21,8 @@ public class HanoiCreateWorld extends MetaExercise {
 		
 		worldDuplicate(w);
 
-		newSourceFromFile("HanoiWorld","src/universe/hanoi/HanoiWorld","java");
-		newSourceFromFile("HanoiInvalidMove","src/universe/hanoi/HanoiInvalidMove","java");
+		newSourceFromFile("HanoiWorld","src/jlm/universe/hanoi/HanoiWorld","java");
+		newSourceFromFile("HanoiInvalidMove","src/jlm/universe/hanoi/HanoiInvalidMove","java");
 		getSourceFile("HanoiInvalidMove").setEditable(false);
 		debug=true;
 
