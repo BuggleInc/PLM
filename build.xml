@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="dist" name="JLM">
 
+  <property name="version" value="1.1"/>
+
 	<property name="base.dir" value="."/>
     <property name="dist.dir" value="${base.dir}/dist"/>
     <property name="lib.dir" value="${base.dir}/lib"/>
@@ -46,6 +48,19 @@
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
 		</jar>
+	</target>
+	<target name="dist-src" depends="compile" description="build a standalone application jar file">
+		<mkdir dir="${dist.dir}"/>
+		<zip destfile="${dist.dir}/jlm-src-${version}.zip">
+			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/> 
+			<fileset dir="${lib.dir}" excludes="*.jar *.pl"/>
+			<!--<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-2.1.0-SNAPSHOT.jar" /> -->
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />	
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.4.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.6-swing.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
+		</zip>
 	</target>
 
 	<target name="dist-web" depends="compile" description="build webstart application jar files">
