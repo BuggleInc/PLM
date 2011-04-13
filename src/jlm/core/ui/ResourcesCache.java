@@ -35,6 +35,9 @@ public class ResourcesCache {
 	public static ImageIcon getIcon(String path) {
 		if (!iconsCache.containsKey(path)) {
 			URL url = ResourcesCache.class.getClassLoader().getResource(path);
+			if (url==null) { // give a try to another path, used in Debian packages
+				url = ResourcesCache.class.getClassLoader().getResource("lib/"+path);
+			}
 			if (url == null) {
 				if (!warnedAboutBrokenPath) {
 					Logger.log("jlm.ui.ResourcesCache.getIcon()", "Cannot find path "+path+": classloader returned null.");

@@ -25,8 +25,21 @@ public class Reader {
 			BufferedReader br =  fileReader(file.replace('.','/')+"."+locale+(extension!=null?"."+extension:""));
 			if (br != null)
 				return br;
+			br =  fileReader("lib/"+file.replace('.','/')+"."+locale+(extension!=null?"."+extension:""));
+			if (br != null)
+				return br;
+			br =  fileReader("src/"+file.replace('.','/')+"."+locale+(extension!=null?"."+extension:""));
+			if (br != null)
+				return br;
+			
 		}
 		BufferedReader br = fileReader(file.replace('.','/')+(extension!=null?"."+extension:""));
+		if (br != null)
+			return br;
+		br = fileReader("lib/"+file.replace('.','/')+(extension!=null?"."+extension:""));
+		if (br != null)
+			return br;
+		br = fileReader("src/"+file.replace('.','/')+(extension!=null?"."+extension:""));
 		return br;
 	}	
 	static protected BufferedReader fileReader(String filename) {

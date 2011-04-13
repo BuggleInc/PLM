@@ -296,6 +296,8 @@ public class Game implements IWorldView {
 		InputStream is = null;
 		try {
 			is = Game.class.getClassLoader().getResourceAsStream("resources/jlm.configuration.properties");
+			if (is==null) // try to find the file in the debian package
+				is = Game.class.getClassLoader().getResourceAsStream("/etc/jlm.configuration.properties");
 			Game.defaultGameProperties.load(is);
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
