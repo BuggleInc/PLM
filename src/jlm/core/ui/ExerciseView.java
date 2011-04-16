@@ -46,13 +46,13 @@ public class ExerciseView extends JPanel implements GameListener {
 		
 		// TODO: add key shortcuts
 				
-		upperPane.setLayout(new MigLayout("insets 0 0 0 0, fill"));
+		upperPane.setLayout(new MigLayout("insets 0 0 0 0,wrap","[fill]"));
 
 		worldComboBox = new JComboBox(new WorldComboListAdapter(Game.getInstance()));
 		worldComboBox.setRenderer(new WorldCellRenderer());
 		worldComboBox.setEditable(false);
 		worldComboBox.setToolTipText("Switch the displayed world");
-		upperPane.add(worldComboBox, "span,growx,wrap");
+		upperPane.add(worldComboBox, "growx");
 
 		// TODO: logarithmic slider ?
 		speedSlider = new JSlider(new DelayBoundedRangeModel(Game.getInstance()));
@@ -62,7 +62,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		speedSlider.setPaintTicks(true);
 		speedSlider.setPaintLabels(true);
 		speedSlider.setToolTipText("Change the speed of execution");
-		upperPane.add(speedSlider, "growx,wrap");
+		upperPane.add(speedSlider, "growx");
 
 		tabPane = new JTabbedPane();
 		worldView = Game.getInstance().getSelectedWorld().getView();
@@ -75,13 +75,13 @@ public class ExerciseView extends JPanel implements GameListener {
 		for (int i=1;i<worldView.length;i++)
 			tabPane.add(worldView[i].getTabName(), worldView[i]);
 
-		upperPane.add(tabPane, "span,grow,wrap");
+		upperPane.add(tabPane, "grow 100 100,push");
 
 		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
 		entityComboBox.setRenderer(new EntityCellRenderer());
 		entityComboBox.setEditable(false);
 		entityComboBox.setToolTipText("Switch the entity");
-		upperPane.add(entityComboBox, "span,alignx center");
+		upperPane.add(entityComboBox, "alignx center");
 
 		/*
 		 * FIXME: strange behavior on OSX, if you click on long time on the
@@ -99,6 +99,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, upperPane, controlPane);
 		splitPane.setBorder(null);
 		splitPane.setOneTouchExpandable(true);
+		splitPane.setResizeWeight(1.0);
 		splitPane.setDividerLocation(420);
 		
 		this.setLayout(new MigLayout("insets 0 0 0 0, fill"));
