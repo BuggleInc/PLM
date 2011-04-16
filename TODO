@@ -27,11 +27,6 @@ D'autres points moins urgents :
    - demander ensuite d'écrire la méthode isFacingTrail()
  * le bouton quitter est mal-placé (un triple clic qui l'application), 
    il serait utile de demander une confirmation avant de quitter l'application.
- * traduire les énoncés extraits de javabat.com
- * Un autre truc sympa serait d'avoir un log sur un compte prof du
-   style "[date] untel a passé tel exo".
- * La classe façade au compilateur n'est pas de moi non plus, il
-   faudrait la mettre dans un package à part comme l'EditorKit.
  * pas moyen de changer la couleur d'une buggle interactivement
  * Il faudrait masquer les combo de changement de monde et d'entité si y'a rien à changer.
 
