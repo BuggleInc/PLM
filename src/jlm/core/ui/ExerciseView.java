@@ -65,16 +65,18 @@ public class ExerciseView extends JPanel implements GameListener {
 		upperPane.add(speedSlider, "growx");
 
 		tabPane = new JTabbedPane();
+		
 		worldView = Game.getInstance().getSelectedWorld().getView();
-		tabPane.addTab("World", null, worldView[0],"Current state of the world");
-
+		for (WorldView wv: worldView) {
+			tabPane.addTab("World"+wv.getTabName(), null, wv, 
+					       "Current world"+wv.getTip());
+		}
 		objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-		tabPane.addTab("Objective", null, objectivesView[0],
-				"Target state of the world");
-		/* FIXME if there is more than one view per world, we should do subpanes in both World and Objective tabs, I guess */
-		for (int i=1;i<worldView.length;i++)
-			tabPane.add(worldView[i].getTabName(), worldView[i]);
-
+		for (WorldView wv: objectivesView) {
+			tabPane.addTab("Objective"+wv.getTabName(), null, wv, 
+					       "Target world"+wv.getTip());
+		}
+		
 		upperPane.add(tabPane, "grow 100 100,push");
 
 		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
@@ -141,15 +143,18 @@ public class ExerciseView extends JPanel implements GameListener {
 				w.setWorld(this.game.getAnswerOfSelectedWorld());
 		} else {
 			tabPane.removeAll();
-			worldView = Game.getInstance().getSelectedWorld().getView();
-			tabPane.add("World", worldView[0]);
-
-			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-			tabPane.add("Objective", objectivesView[0]);
 			
-			for (int i=1;i<worldView.length;i++)
-				tabPane.add(worldView[i].getTabName(), worldView[i]);
-
+			worldView = Game.getInstance().getSelectedWorld().getView();
+			for (WorldView wv: worldView) {
+				tabPane.addTab("World"+wv.getTabName(), null, wv, 
+						       "Current world"+wv.getTip());
+			}
+			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
+			for (WorldView wv: objectivesView) {
+				tabPane.addTab("Objective"+wv.getTabName(), null, wv, 
+						       "Target world"+wv.getTip());
+			}
+			
 			controlPane.removeAll();
 			buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 			controlPane.add(buttonPanel, "grow");
