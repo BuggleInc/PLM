@@ -13,11 +13,19 @@ import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
-public class SortingWorldView extends WorldView {
+public class SortingWorldStateView extends WorldView {
 	private static final long serialVersionUID = 1L;
 
-	public SortingWorldView(World w) {
+	public SortingWorldStateView(World w) {
 		super(w);
+	}
+	@Override
+	public String getTabName(){
+		return " (state)";
+	}
+	@Override
+	public String getTip(){
+		return " (view only last state)";
 	}
 
 	@Override

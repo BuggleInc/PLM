@@ -63,9 +63,9 @@ public class SortingWorld extends World {
 
 	@Override
 	public WorldView[] getView() {
-//		return new WorldView[] { new SortingWorldView2(this) , new SortingWorldView(this)};
-// disabled 'nice and buggy' sorting view for 2011' sessions
-		return new WorldView[] { new SortingWorldView(this) };
+		return new WorldView[] { new SortingWorldChronoView(this) , new SortingWorldStateView(this)};
+// enabled 'nice and buggy' sorting view for  debugging 
+//		return new WorldView[] { new SortingWorldView(this) };
 	}
 
 	// TODO Implement world IO

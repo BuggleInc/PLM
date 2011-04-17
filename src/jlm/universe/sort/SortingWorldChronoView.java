@@ -13,13 +13,22 @@ import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
-public class SortingWorldView2 extends WorldView {
+public class SortingWorldChronoView extends WorldView {
 	private static final long serialVersionUID = 1L;
 
-	public SortingWorldView2(World w) {
+	public SortingWorldChronoView(World w) {
 		super(w);
 	}
 
+	@Override
+	public String getTabName(){
+		return " (history)";
+	}
+	@Override
+	public String getTip(){
+		return " (view the history)";
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
