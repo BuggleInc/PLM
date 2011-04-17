@@ -104,6 +104,9 @@ public class ExerciseView extends JPanel implements GameListener {
 		
 		this.setLayout(new MigLayout("insets 0 0 0 0, fill"));
 		this.add(splitPane, "grow");
+		
+		worldComboBox.setVisible(this.game.getCurrentLesson().getCurrentExercise().worldCount() > 1);
+		entityComboBox.setVisible(this.game.getSelectedWorld().getEntityCount() > 1); 
 	}
 
 	public void selectObjectivePane() {
@@ -116,7 +119,7 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	@Override
 	public void currentExerciseHasChanged() {
-		// don't care
+		worldComboBox.setVisible(this.game.getCurrentLesson().getCurrentExercise().worldCount() > 1);
 	}
 
 	@Override
@@ -151,6 +154,10 @@ public class ExerciseView extends JPanel implements GameListener {
 			buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
 			controlPane.add(buttonPanel, "grow");
 		}
+		
+		// 
+		worldComboBox.setVisible(this.game.getCurrentLesson().getCurrentExercise().worldCount() > 1);
+		entityComboBox.setVisible(this.game.getSelectedWorld().getEntityCount() > 1); 
 	}
 
 	@Override
