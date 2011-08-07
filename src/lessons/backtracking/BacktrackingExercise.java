@@ -1,6 +1,5 @@
 package lessons.backtracking;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import jlm.core.model.lesson.ExerciseTemplated;
