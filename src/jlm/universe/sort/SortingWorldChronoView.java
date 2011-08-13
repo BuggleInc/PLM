@@ -82,7 +82,6 @@ public class SortingWorldChronoView extends WorldView {
 			
 			// Case without any operation to draw: initial view
 			if (ent.operations.size() == 0) {
-				//for (int value = 0; value < ent.getValueCount(); value++) {
 
 				for (int valueIdx = 0; valueIdx < ent.getValueCount(); valueIdx++) { 
 					y1 = (int) (valueIdx * stepY + stepY/2.);
@@ -148,7 +147,7 @@ public class SortingWorldChronoView extends WorldView {
 					g2.drawLine(x1, y1, x2, y2);
 					
 				} else {
-					System.out.print("Ouch");
+					System.out.println("Ouch: that's not a swap but a "+op.toString()+" this code was never debugged.");
 				for (int valueIterator = 0; valueIterator < ent.getValueCount(); valueIterator++) {
 					x1 = (int) (opIdx * stepX);
 					y1 = 0;
