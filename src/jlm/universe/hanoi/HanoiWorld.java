@@ -1,6 +1,5 @@
 package jlm.universe.hanoi;
 
-import java.util.NoSuchElementException;
 import java.util.Vector;
 
 import jlm.core.ui.WorldView;
@@ -26,21 +25,20 @@ public class HanoiWorld extends World {
 	 * In general, you could even have none of them, but writing exercises will be harder. 
 	 * The metalesson, use this specific constructor, so please don't change its arguments.
 	 */
+	@SuppressWarnings("unchecked")
 	public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C) {
 		super(name);
-		setDelay(200);
+		setDelay(200); /* Delay (in ms) in default animations */
 		/* Your code here */
 		/* BEGIN HIDDEN */
-		slots = new HanoiSlot[3];
-		for (int i=0;i<3;i++)
-			slots[i] = new HanoiSlot();
+		slots = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
 		
 		for (int i=0; i<A.length; i++) 
-			slots[0].push(A[i]);
+			slots[0].add(A[i]);
 		for (int i=0; i<B.length; i++) 
-			slots[1].push(B[i]);
+			slots[1].add(B[i]);
 		for (int i=0; i<C.length; i++) 
-			slots[2].push(C[i]);
+			slots[2].add(C[i]);
 		/* END HIDDEN */
 	}
 	
@@ -52,14 +50,16 @@ public class HanoiWorld extends World {
 	 * 
 	 * Do not forget to call super.reset(w) afterward, or some internal world fields may not get reset.
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void reset(World w) {
 		HanoiWorld other = (HanoiWorld)w;
 		/* Your code here */
 		/* BEGIN HIDDEN */
-		slots = new HanoiSlot[3];
-		for (int i=0;i<3;i++)
-			slots[i] = other.slots[i].copy(); 		
+		slots = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
+		for (int slot=0;slot<3;slot++)
+			for (int i=0; i<other.slots[slot].size(); i++)
+				slots[slot].add( other.slots[slot].elementAt(i));
 		/* END HIDDEN */
 		super.reset(w);		
 	}
@@ -79,13 +79,13 @@ public class HanoiWorld extends World {
 		StringBuffer sb = new StringBuffer();
 		sb.append("HanoiWorld "+getName()+": ");
 		sb.append("A: [");
-		for (int i:slots[0].values()) 
+		for (Object i:slots[0].toArray()) 
 			sb.append(i+" ");
 		sb.append("] B: [");
-		for (int i:slots[1].values()) 
+		for (Object i:slots[1].toArray()) 
 			sb.append(i+" ");
 		sb.append("] C: [");
-		for (int i:slots[2].values()) 
+		for (Object i:slots[2].toArray()) 
 			sb.append(i+" ");
 		sb.append("]");
 		return sb.toString();
@@ -109,82 +109,31 @@ public class HanoiWorld extends World {
 	
 	/* Here comes the world logic */
 	/* BEGIN HIDDEN */
-	private HanoiSlot slots[];
+	private Vector<Integer> slots[];
 	
-	public Integer[] values(Integer	 i) {
-		return slots[i].values();
+	/** This function is used by the view to retrieve the data to display */
+	protected Integer[] values(Integer	 i) {
+		return slots[i].toArray(new Integer[slots[i].size()]);
+	}
+	
+	/** This is the main function of the public interface */
+	public void move(Integer src, Integer dst) throws HanoiInvalidMove {
+		if (src < 0 || src > 2 || dst < 0 || dst > 2)
+			throw new HanoiInvalidMove("Cannot move from slot #"+src+" to #"+dst+": the only existing slots are 0, 1 and 2");
+		if (src == dst)
+			throw new HanoiInvalidMove("Cannot move from slot #"+src+" to itself");
+		if (slots[src].size() == 0)
+			throw new HanoiInvalidMove("No disc to move from slot #"+src);
+		
+		if (slots[dst].size() > 0 &&
+				slots[src].lastElement() > slots[dst].lastElement())
+			throw new HanoiInvalidMove("Cannot move disc from slot #"+src+" to #"+dst+": small disk must remain over large ones but "+
+					slots[src].lastElement() +" > "+slots[dst].lastElement());
+		
+		slots[dst].add( slots[src].remove(slots[src].size()-1) );
 	}
 	public int getSlotSize(int slot) {
 		return slots[slot].size();
-	}
-	public void move(Integer src, Integer dst) throws HanoiInvalidMove {
-		if (src < 0 || src > 2 || dst < 0 || dst > 2)
-			throw new HanoiInvalidMove("Cannot move from slot #"+src+" to #"+dst+": invalid parameters");
-		if (src == dst)
-			throw new HanoiInvalidMove("Cannot move from slot #"+src+" itself: invalid parameters");
-		
-		if (slots[src].size() == 0)
-			throw new HanoiInvalidMove("No disc to move from slot #"+src);
-		if (slots[dst].size() > 0 &&
-				slots[src].top() > slots[dst].top())
-			throw new HanoiInvalidMove("Cannot move disc from slot #"+src+" to #"+dst+": "+
-					slots[src].top()+" > "+slots[dst].top());
-		slots[dst].push(slots[src].pop());
-	}
-	
-	class HanoiSlot {
-		private Vector<Integer> data;
-		
-		public HanoiSlot() {
-			data = new Vector<Integer>();
-		}
-		public HanoiSlot(Integer[] content) {
-			data = new Vector<Integer>();
-			for (int i:content) {
-				data.add(i);
-			}
-		}
-		public HanoiSlot copy() {
-			HanoiSlot res = new HanoiSlot();
-			for (int i:data)
-				res.push(i);
-			return res;		
-		}
-		
-		public int top() {
-			if (data.size()==0)
-				throw new NoSuchElementException("Slot is empty");
-			return data.lastElement();
-		}
-		public int pop() {
-			if (data.size()==0)
-				throw new NoSuchElementException("Slot is empty");
-			int res = data.lastElement();
-			data.remove(data.size()-1);
-			return res;
-		}
-		public void push(int elm) {
-			data.add(elm);
-		}
-		public int size() {
-			return data.size();
-		}
-		public Integer[] values() {
-			return data.toArray(new Integer[data.size()]);
-		}
-		
-		@Override 
-		public boolean equals(Object o) {
-			if (!(o instanceof HanoiSlot))
-				return false;
-			HanoiSlot other = (HanoiSlot) o;
-			if (other.data.size() != this.data.size())
-				return false;
-			for (int pos=0;pos<this.data.size();pos++)
-				if (other.data.get(pos) != this.data.get(pos))
-					return false;
-			return true;
-		}
 	}
 	/* END HIDDEN */
 }
