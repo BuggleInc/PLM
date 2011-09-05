@@ -9,12 +9,19 @@ import java.util.regex.Pattern;
 import jlm.core.model.Game;
 import jlm.core.model.Reader;
 
+import org.apache.commons.collections15.Factory;
+
+import edu.uci.ics.jung.graph.DelegateForest;
+import edu.uci.ics.jung.graph.Graph;
+
 
 public abstract class Lesson {
 	private String name;
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Exercise> exercises = new ArrayList<Exercise>();
 	
+	private Graph<Exercise,Integer> exercisesGraph = new DelegateForest<Exercise,Integer>();
+		
 	protected Exercise currentExercise;
 	protected boolean exercisesLoaded = false; /* for lazy loading of exercises */
 	
@@ -28,7 +35,11 @@ public abstract class Lesson {
 	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
 	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 
-	
+	Factory<Integer> edgeFactory = new Factory<Integer>() {
+		int i=0;
+		public Integer create() {
+			return i++;
+		}};
 	
 	protected boolean sequential = false;
 	/** if true, one must succeed in first exercise before trying next ones */
@@ -86,10 +97,39 @@ public abstract class Lesson {
 	public void setSequential(boolean enabled) {
 		this.sequential = enabled;
 	}	
-	
-	public void addExercise(Exercise exo) {
-		exercises.add(exo);
+
+	Exercise rootExo, lastAdded;
+	public Exercise getRootExo() {
+		return rootExo;
 	}
+	public void addExercise(Exercise exo) {
+		exercises.add(exo);		
+		getExercisesGraph().addVertex(exo);
+		if (lastAdded != null) {
+			getExercisesGraph().addEdge(edgeFactory.create(), lastAdded, exo);
+		} 
+		if (rootExo == null) {
+			rootExo = exo;
+		}
+		lastAdded = exo;
+	}
+	public void addExercise(Exercise exo, Exercise[] deps) {
+		exercises.add(exo);
+		System.err.println("Add exercise "+exo);
+		
+		getExercisesGraph().addVertex(exo);
+		if (deps!=null) {
+			for (Exercise d:deps) {
+				System.err.println("Add dep "+d+" -> "+exo);
+				getExercisesGraph().addEdge(edgeFactory.create(), d, exo);				
+			}
+		}
+		if (rootExo == null) {
+			rootExo = exo;
+		}
+		lastAdded = exo;
+	}
+
 	
 	public Exercise getCurrentExercise() {
 		if (!exercisesLoaded) {
@@ -149,5 +189,10 @@ public abstract class Lesson {
 			}
 			return true;
 		}
+	}
+	
+	/* Methods to retrieve the dependencies so that the lesson navigator can display them */
+	public Graph<Exercise,Integer> getExercisesGraph() {
+		return exercisesGraph;
 	}
 }

@@ -198,13 +198,26 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			private AbstractAboutDialog dialog = null;
 
 			public void actionPerformed(ActionEvent arg0) {
-				if (this.dialog == null) {
+				if (this.dialog == null) 
 					this.dialog = new AboutLessonDialog(MainFrame.getInstance());
-				}
+				
 				this.dialog.setVisible(true);
 			}			
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+		menu.add(menuItem);
+		menuItem = new JMenuItem(new AbstractGameAction(Game.getInstance(), "Navigate this lesson") {
+			private static final long serialVersionUID = 1L;
+			private LessonNavigatorDialog dialog = null;
+
+			public void actionPerformed(ActionEvent arg0) {
+				if (this.dialog == null) {
+					this.dialog = new LessonNavigatorDialog(MainFrame.getInstance());
+				}
+				this.dialog.setVisible(true);
+			}			
+		});
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
 		
 		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this world", null) {

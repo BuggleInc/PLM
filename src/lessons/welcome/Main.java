@@ -1,19 +1,36 @@
 package lessons.welcome;
 
+import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
 
 	@Override
 	protected void loadExercises() {
-		addExercise(new Environment(this));
-		addExercise(new Basics(this));
-		addExercise(new BasicsDrawG(this));
-		addExercise(new Conditions(this));
-		addExercise(new LoopWhile(this));
-		addExercise(new BaggleSeeker(this));
-		addExercise(new Variables(this));
-		addExercise(new LoopFor(this));
+		Exercise environment =     new Environment(this);
+		addExercise(environment);
+		
+		Exercise basics =          new Basics(this);
+		addExercise(basics,        new Exercise[] {environment});
+		
+		Exercise basicsDrawG =     new BasicsDrawG(this);
+		addExercise(basicsDrawG,   new Exercise[] {basics});
+		
+		Exercise conditions =      new Conditions(this);
+		addExercise(conditions,    new Exercise[] {basics});
+		
+		Exercise loopWhile =       new LoopWhile(this);
+		addExercise(loopWhile,     new Exercise[] {basics,conditions});
+
+		Exercise bagglerSeeker=    new BaggleSeeker(this);
+		addExercise(bagglerSeeker, new Exercise[] {loopWhile});
+
+		Exercise variables =       new Variables(this);
+		addExercise(variables,     new Exercise[] {basics,conditions,loopWhile});
+		
+		Exercise loopFor =         new LoopFor(this);
+		addExercise(loopFor,       new Exercise[] {basics, conditions, loopWhile, variables} );
+		
 		addExercise(new LoopDoWhile(this));
 		addExercise(new Methods(this));
 		addExercise(new MethodsDogHouse(this));
@@ -35,4 +52,5 @@ public class Main extends Lesson {
 		addExercise(new TraversalDiagonal(this));
 		exercisesLoaded = true;
 	}
+
 }
