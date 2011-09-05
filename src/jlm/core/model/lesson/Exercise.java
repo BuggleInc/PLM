@@ -304,6 +304,9 @@ public abstract class Exercise {
 		return this.initialWorld.length;
 	}
 	
+	/** Returns the current world number index 
+	 * @see #getAnswerOfWorld(int)
+	 */
 	public World getWorld(int index) {
 		return this.currentWorld[index];
 	}
@@ -326,6 +329,8 @@ public abstract class Exercise {
 	public String getTip(String tipsId) {
 		return this.tips.get(tipsId);
 	}
-	
+	public String toString() {
+		return name;
+	}
 }
 
