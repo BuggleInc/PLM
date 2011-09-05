@@ -171,7 +171,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu = new JMenu("Language");
 		menu.setMnemonic(KeyEvent.VK_L);
 		menuBar.add(menu);
-		JMenuItem setLanguageToFrench = new JMenuItem(new SetLanguage(Game.getInstance(), "Français", null, this,"fr"));
+		JMenuItem setLanguageToFrench = new JMenuItem(new SetLanguage(Game.getInstance(), "Francais", null, this,"fr"));
 		menu.add(setLanguageToFrench);
 		JMenuItem setLanguageToEnglish = new JMenuItem(new SetLanguage(Game.getInstance(), "English", null, this,"en"));
 		menu.add(setLanguageToEnglish);
