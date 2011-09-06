@@ -7,8 +7,12 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 
 public class HanoiCreateViewAnswer extends WorldView {
 	/* This field is mandatory because WorldView are swing components  */
@@ -84,5 +88,11 @@ public class HanoiCreateViewAnswer extends WorldView {
 		}
 		/* END SOLUTION */
 	}
+	
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("resources/icon-hanoi.png");
+	}
+
 }
 /* END TEMPLATE */

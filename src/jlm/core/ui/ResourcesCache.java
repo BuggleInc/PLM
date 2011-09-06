@@ -1,5 +1,7 @@
 package jlm.core.ui;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.Hashtable;
 
@@ -53,6 +55,26 @@ public class ResourcesCache {
 		return iconsCache.get(path);
 	}
 
+	public static ImageIcon getCombinedIcon(String path1, String path2) {
+		String path = path1+path2;
+		if (!iconsCache.containsKey(path)) {
+
+			ImageIcon img1 = getIcon(path1);			
+			ImageIcon img2 = getIcon(path2);
+			
+			int w = Math.max(img1.getIconWidth(), img2.getIconWidth());
+			int h = Math.max(img1.getIconHeight(), img2.getIconHeight());
+			BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+			Graphics g = combined.getGraphics();
+			g.drawImage(img1.getImage(), 0, 0, null);
+			g.drawImage(img2.getImage(), 0, 0, null);
+			
+			iconsCache.put(path, new ImageIcon(combined));
+		}
+		return iconsCache.get(path);
+	}
+	
+	
 
 	public static int getBusyIconsSize() {
 		return ResourcesCache.busyIcons.length;
@@ -61,6 +83,25 @@ public class ResourcesCache {
 
 	public static Icon getBusyIcons(int busyIconIndex) {
 		return ResourcesCache.busyIcons[busyIconIndex];
+	}
+
+	public static ImageIcon getStarIcon(ImageIcon icon, String name) {
+		String path = name+"-star";
+		if (!iconsCache.containsKey(path)) {
+
+			ImageIcon img1 = icon;			
+			ImageIcon img2 = getIcon("resources/star.png");
+			
+			int w = Math.max(img1.getIconWidth(), img2.getIconWidth());
+			int h = Math.max(img1.getIconHeight(), img2.getIconHeight());
+			BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+			Graphics g = combined.getGraphics();
+			g.drawImage(img1.getImage(), 0, 0, null);
+			g.drawImage(img2.getImage(), 0, 0, null);
+			
+			iconsCache.put(path, new ImageIcon(combined));
+		}
+		return iconsCache.get(path);
 	}
 	
 }

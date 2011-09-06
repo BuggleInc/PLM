@@ -1,7 +1,10 @@
 package jlm.core.ui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Paint;
 import java.awt.Polygon;
@@ -11,8 +14,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
@@ -156,20 +163,43 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
         vv =  new VisualizationViewer<Exercise,Integer>(layout, new Dimension(600,600));
         vv.setBackground(Color.white);
         vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line());
-        vv.getRenderContext().setVertexShapeTransformer(new Transformer<Exercise,Shape>() {
-
-			@Override
-			public Shape transform(Exercise exo) {
-				if (exo.isSuccessfullyPassed()) {
-					return new StarPolygon(0, 0, /* outer*/15, /* inner R */7, /* #vertexes*/ 5, /* start angle */50);
-				}
-				return new Ellipse2D.Double(-10, -10, 20, 20);
-			}
-        	
-        });
+  
+  //      vv.getRenderContext().setVertexShapeTransformer(new Transformer<Exercise,Shape>() {
+  //			@Override
+  //			public Shape transform(Exercise exo) {
+  //				if (exo.isSuccessfullyPassed()) {
+  //					return new StarPolygon(0, 0, /* outer*/15, /* inner R */7, /* #vertexes*/ 5, /* start angle */50);
+  //				}
+  //				return new Ellipse2D.Double(-10, -10, 20, 20);
+  //			}
+  //      	
+  //      });
         
-        vv.getRenderContext().setVertexFillPaintTransformer(new Transformer<Exercise, Paint>() {
-			
+        vv.getRenderContext().setVertexIconTransformer(new Transformer<Exercise, Icon>() {
+			@Override
+			public Icon transform(Exercise exo) {	
+				ImageIcon ico = null;				
+				if (exo.isSuccessfullyPassed()) {
+					ico = ResourcesCache.getStarIcon(exo.getWorld(0).getView()[0].getIcon(), exo.getWorld(0).getView()[0].getName());					
+				} else {
+					ico = exo.getWorld(0).getView()[0].getIcon();
+				}
+				
+				if (vv.getPickedVertexState().isPicked(exo)) {
+					// FIXME: dirty (not cached!)
+					BufferedImage combined = new BufferedImage(32, 32, BufferedImage.TYPE_INT_ARGB);
+					Graphics g = combined.getGraphics();
+					g.drawImage(ico.getImage(), 0, 0, null);
+					g.setColor(Color.red);
+					g.drawRect(0, 0, 31, 31);
+					ico = new ImageIcon(combined);
+				}
+				
+				return ico;
+		}});
+
+        /*
+        vv.getRenderContext().setVertexFillPaintTransformer(new Transformer<Exercise, Paint>() {			
 			@Override
 			public Paint transform(Exercise exo) {
 				if (vv.getPickedVertexState().isPicked(exo))
@@ -181,7 +211,7 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
 				return Color.RED;
 			}
 		});
-        
+        */
         
         // add a listener for ToolTips
         vv.setVertexToolTipTransformer(new ToStringLabeller()); 

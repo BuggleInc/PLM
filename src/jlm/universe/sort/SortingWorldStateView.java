@@ -9,6 +9,10 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -70,4 +74,10 @@ public class SortingWorldStateView extends WorldView {
 		g2.setColor(Color.black);
 		g2.drawString(ent.getName()+" ("+ent.getWriteCount()+" write, "+ent.getReadCount()+" read)", 0, offset+15);
 	}
+	
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("resources/icon-sorting.png");
+	}
+
 }
