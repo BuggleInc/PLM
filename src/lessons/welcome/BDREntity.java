@@ -39,25 +39,4 @@ public class BDREntity extends jlm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
-	
-	/* Old solution: removed since student do not know switch yet.
-	 while (true) 
-		switch (getIndication()) {
-			case 'R': turnRight(); forward(); break;
-			case 'L': turnLeft();  forward(); break;
-			case 'I': turnBack();  forward(); break;
-
-			case 'A': forward(1); break;
-			case 'B': forward(2); break;
-			case 'C': forward(3); break;
-
-			case 'Z': backward(1); break;
-			case 'Y': backward(2); break;
-			case 'X': backward(3); break;
-
-			default: return;
-		}
-	 */
-
 }
