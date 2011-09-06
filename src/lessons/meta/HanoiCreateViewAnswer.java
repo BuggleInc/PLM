@@ -91,7 +91,7 @@ public class HanoiCreateViewAnswer extends WorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/icon-hanoi.png");
+		return ResourcesCache.getIcon("resources/IconWorld/hanoi.png");
 	}
 
 }

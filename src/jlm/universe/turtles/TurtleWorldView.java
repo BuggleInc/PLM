@@ -59,7 +59,7 @@ public class TurtleWorldView extends WorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/icon-turtle.png");
+		return ResourcesCache.getIcon("resources/IconWorld/turtle.png");
 	}
 
 }

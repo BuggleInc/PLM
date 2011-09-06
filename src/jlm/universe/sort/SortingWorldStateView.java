@@ -77,7 +77,7 @@ public class SortingWorldStateView extends WorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/icon-sorting.png");
+		return ResourcesCache.getIcon("resources/IconWorld/sorting.png");
 	}
 
 }

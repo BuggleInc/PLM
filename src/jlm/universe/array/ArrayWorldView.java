@@ -87,6 +87,6 @@ public class ArrayWorldView extends WorldView {
 
 		@Override
 		public ImageIcon getIcon() {
-			return ResourcesCache.getIcon("resources/icon-arrays.png");
+			return ResourcesCache.getIcon("resources/IconWorld/arrays.png");
 		}
 }
