@@ -124,10 +124,9 @@ public abstract class Exercise {
 
 		/* Prepare the source files */
 		Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
-		for (SourceFile sf: sourceFiles) {
-			if (sf.isCompilable())
-				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns));
-		}
+		for (SourceFile sf: sourceFiles) 
+			if (sf.isCompilable()) 
+				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
 
 		if (sources.isEmpty())
 			return;
