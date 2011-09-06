@@ -8,7 +8,11 @@ import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import jlm.core.model.Game;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -182,6 +186,11 @@ public class SortingWorldChronoView extends WorldView {
 			}
 
 		}
+	}
+	
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("resources/icon-sorting.png");
 	}
 
 

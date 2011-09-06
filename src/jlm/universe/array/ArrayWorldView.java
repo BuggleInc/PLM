@@ -8,6 +8,10 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -79,5 +83,10 @@ public class ArrayWorldView extends WorldView {
 			y = getHeight() - fm.getHeight();
 			x = (getWidth()-fm.stringWidth(resultString)) / 2 ;
 			g2.drawString(resultString, x, y);
+		}
+
+		@Override
+		public ImageIcon getIcon() {
+			return ResourcesCache.getIcon("resources/icon-arrays.png");
 		}
 }

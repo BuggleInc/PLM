@@ -43,6 +43,7 @@
 			<fileset dir="${lib.dir}" excludes="*.jar *.pl l10n/*"/>
 			<!--<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-2.1.0-SNAPSHOT.jar" /> -->
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />	
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/irclib.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.4.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.2.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
@@ -56,6 +57,7 @@
 			<fileset dir="${lib.dir}" excludes="*.jar *.pl"/>
 			<!--<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-2.1.0-SNAPSHOT.jar" /> -->
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />	
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/irclib.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.4.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.2.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />

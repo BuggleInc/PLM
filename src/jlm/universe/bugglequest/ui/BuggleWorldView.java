@@ -9,6 +9,10 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -277,4 +281,9 @@ public class BuggleWorldView extends WorldView {
 		{ 0,0,0,0,1,1,0,0,0,0,0 },
 		{ 0,0,0,0,0,1,1,1,0,0,0 }
 	}};
+	
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("resources/icon-bugglequest.png");
+	}
 }
