@@ -11,39 +11,45 @@ public class Main extends Lesson {
 		addExercise(environment);
 		
 		Exercise basics =          new Basics(this);
-		addExercise(basics,        new Exercise[] {environment});
+		addExercise(basics,        environment);
 		
-		Exercise basicsDrawG =     new BasicsDrawG(this);
-		addExercise(basicsDrawG,   new Exercise[] {basics});
+		addExercise(new BasicsDrawG(this),   basics);
 		
 		Exercise conditions =      new Conditions(this);
-		addExercise(conditions,    new Exercise[] {basics});
+		addExercise(conditions,    basics);
 		
 		Exercise loopWhile =       new LoopWhile(this);
-		addExercise(loopWhile,     new Exercise[] {basics,conditions});
+		addExercise(loopWhile,     conditions);
 
-		Exercise bagglerSeeker=    new BaggleSeeker(this);
-		addExercise(bagglerSeeker, new Exercise[] {loopWhile});
+		addExercise(new BaggleSeeker(this), loopWhile);
 
 		Exercise variables =       new Variables(this);
-		addExercise(variables,     new Exercise[] {basics,conditions,loopWhile});
+		addExercise(variables,     loopWhile);
 		
 		Exercise loopFor =         new LoopFor(this);
-		addExercise(loopFor,       new Exercise[] {basics, conditions, loopWhile, variables} );
+		addExercise(loopFor,       variables );
 		
-		addExercise(new LoopDoWhile(this));
-		addExercise(new Methods(this));
-		addExercise(new MethodsDogHouse(this));
-		addExercise(new MethodsReturning(this));
-		addExercise(new MethodsArgs(this));
+		addExercise(new LoopDoWhile(this),    loopFor);
+		
+		Exercise methodsVoid =         new Methods(this); 
+		addExercise(methodsVoid,       loopFor);
+		
+		addExercise(new MethodsDogHouse(this),methodsVoid);
+		addExercise(new MethodsReturning(this),methodsVoid);
+		
+		Exercise methods = new MethodsArgs(this);
+		addExercise(methods);
 		addExercise(new MethodsPicture(this));
 		addExercise(new MethodsPicture2(this));
 		addExercise(new MethodsPicture3(this));
 		addExercise(new MethodsPicture4(this));
-		addExercise(new BDR(this));
+		
+		addExercise(new BDR(this),conditions);
 		addExercise(new BDR2(this));
-		addExercise(new SlugHunting(this));
+		
+		addExercise(new SlugHunting(this),methods);
 		addExercise(new Snake(this));
+		
 		addExercise(new Array(this));
 		addExercise(new Array2(this));
 		addExercise(new TraversalByColumn(this));
