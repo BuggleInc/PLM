@@ -35,10 +35,14 @@ import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.functors.ConstantTransformer;
 
 import edu.uci.ics.jung.algorithms.layout.DAGLayout;
+import edu.uci.ics.jung.algorithms.layout.FRLayout;
+import edu.uci.ics.jung.algorithms.layout.ISOMLayout;
 import edu.uci.ics.jung.algorithms.layout.Layout;
+import edu.uci.ics.jung.algorithms.layout.TreeLayout;
 import edu.uci.ics.jung.graph.DelegateTree;
 import edu.uci.ics.jung.graph.DirectedGraph;
 import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
+import edu.uci.ics.jung.graph.Forest;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.Tree;
 import edu.uci.ics.jung.visualization.GraphZoomScrollPane;
@@ -122,9 +126,33 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
 		//mainPane.setDividerLocation((int) (1024 * weight));
 
 		layout = new DAGLayout<Exercise,Integer>(graph);
-		((DAGLayout<Exercise,Integer>) layout).setRoot(Game.getInstance().getCurrentLesson().getRootExo());
+		/*DAGLayout<Exercise, Integer> dagLayout = (DAGLayout<Exercise, Integer>) layout;
+		// Sets the force multiplier for this instance. 
+		// This value is used to specify how strongly an edge "wants" to be its default length 
+		// (higher values indicate a greater attraction for the default length), which affects 
+		// how much its endpoints move at each timestep. The default value is 1/3. 
+		// 
+		// A value of 0 turns off any attempt by the layout to cause edges to conform to the default length.
+		// 
+		// Negative values cause long edges to get longer and short edges to get shorter; use at your own risk.
+		dagLayout.setForceMultiplier(60);
+		dagLayout.setStretch(.1);
+		dagLayout.setRoot(Game.getInstance().getCurrentLesson().getRootExo());
+		 */			
+		FRLayout<Exercise, Integer> frLayout = new FRLayout<Exercise,Integer>(graph);
+		frLayout.setAttractionMultiplier(10);
+		frLayout.setRepulsionMultiplier(10);
+		frLayout.setMaxIterations(500000);
+		layout = frLayout;
 		
-        
+		try {
+			layout = new TreeLayout<Exercise, Integer>((Forest<Exercise, Integer>) graph);
+		} catch (IllegalArgumentException iae) {
+			System.out.println("The dependency graph of this exercise does not seem to be a tree (got '"+iae.getMessage()+"'). Switching to ISOMlayout.");
+			layout = new ISOMLayout<Exercise, Integer>(graph);
+		}
+		
+		
         vv =  new VisualizationViewer<Exercise,Integer>(layout, new Dimension(600,600));
         vv.setBackground(Color.white);
         vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line());
@@ -183,7 +211,7 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
         mainPane.setRightComponent(rightPane);
         
         JScrollPane missionAreaScrolled = new JScrollPane(missionArea);
-        missionAreaScrolled.setPreferredSize(new Dimension(100,200));
+        missionAreaScrolled.setPreferredSize(new Dimension(100,500));
         
         rightPane.add(exoNameArea,"wrap");
         rightPane.add(missionAreaScrolled,"grow, gpy 0, wrap");
@@ -224,6 +252,7 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
 				}
 			}
 		});
+        vv.getPickedVertexState().pick(selectedExo, false);
         vv.getPickedVertexState().pick(selectedExo, true);
 
         
