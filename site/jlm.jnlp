@@ -20,6 +20,7 @@
 		<jar href="lib/simple-xml-1.7.2.jar"/>
 		<jar href="lib/miglayout-3.7.2.jar"/>
 		<jar href="lib/langtools-beta.jar"/>
+		<jar href="lib/irclib.jar"/>
 		<property name="twitter4j.loggerFactory" value="twitter4j.internal.logging.NullLoggerFactory"/>
 	</resources>
 	<application-desc main-class="jlm.core.ui.JavaLearningMachine"/>
