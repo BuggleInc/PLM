@@ -1,4 +1,4 @@
-package lessons.bat.bool1;
+package lessons.welcome.bool1;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
