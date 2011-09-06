@@ -40,8 +40,12 @@ public class BatEntity extends Entity {
 	
 	@Override
 	public void run() {
-		run(world);
+		for (BatTest t:((BatWorld) world).getTests())
+			run(t);
 	}
-	public void run(World w){
+
+	protected void run(BatTest t) {
+		// To be overriden by child classes
 	}
+	
 }
