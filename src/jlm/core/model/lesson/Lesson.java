@@ -102,7 +102,7 @@ public abstract class Lesson {
 	public Exercise getRootExo() {
 		return rootExo;
 	}
-	public void addExercise(Exercise exo) {
+	public Exercise addExercise(Exercise exo) {
 		exercises.add(exo);		
 		getExercisesGraph().addVertex(exo);
 		if (lastAdded != null) {
@@ -112,8 +112,9 @@ public abstract class Lesson {
 			rootExo = exo;
 		}
 		lastAdded = exo;
+		return exo;
 	}
-	public void addExercise(Exercise exo, Exercise[] deps) {
+	public Exercise addExercise(Exercise exo, Exercise[] deps) {
 		exercises.add(exo);
 		
 		getExercisesGraph().addVertex(exo);
@@ -126,9 +127,10 @@ public abstract class Lesson {
 			rootExo = exo;
 		}
 		lastAdded = exo;
+		return exo;
 	}
-	public void addExercise(Exercise exo, Exercise dependency) {
-		addExercise(exo, new Exercise[] {dependency});
+	public Exercise addExercise(Exercise exo, Exercise dependency) {
+		return addExercise(exo, new Exercise[] {dependency});
 	}
 
 	
