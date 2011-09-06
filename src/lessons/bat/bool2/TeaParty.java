@@ -2,36 +2,35 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class TeaParty extends BatExercise {
   public TeaParty(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[13];
-    myWorlds[0] = new BatWorld(VISIBLE, 6, 8) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 3, 8) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 20, 6) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 12, 6) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 11, 6) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 11, 4) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 4, 5) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 5, 5) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 6, 6) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 5, 10) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 5, 9) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, 10, 4) ;
-    myWorlds[12] = new BatWorld(INVISIBLE, 10, 20) ;
+    BatWorld myWorld = new BatWorld("teaParty");
+    myWorld.addTest(VISIBLE, 6, 8) ;
+    myWorld.addTest(VISIBLE, 3, 8) ;
+    myWorld.addTest(VISIBLE, 20, 6) ;
+    myWorld.addTest(INVISIBLE, 12, 6) ;
+    myWorld.addTest(INVISIBLE, 11, 6) ;
+    myWorld.addTest(INVISIBLE, 11, 4) ;
+    myWorld.addTest(INVISIBLE, 4, 5) ;
+    myWorld.addTest(INVISIBLE, 5, 5) ;
+    myWorld.addTest(INVISIBLE, 6, 6) ;
+    myWorld.addTest(INVISIBLE, 5, 10) ;
+    myWorld.addTest(INVISIBLE, 5, 9) ;
+    myWorld.addTest(INVISIBLE, 10, 4) ;
+    myWorld.addTest(INVISIBLE, 10, 20) ;
 
-    setup(myWorlds,"teaParty");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = teaParty((Integer)w.getParameter(0), (Integer)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( teaParty((Integer)t.getParameter(0), (Integer)t.getParameter(1)) );
   }
   /* END SKEL */
 

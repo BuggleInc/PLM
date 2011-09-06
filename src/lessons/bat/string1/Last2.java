@@ -1,34 +1,33 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class Last2 extends BatExercise {
   public Last2(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[12];
-    myWorlds[0] = new BatWorld(VISIBLE, "hixxhi") ;
-    myWorlds[1] = new BatWorld(VISIBLE, "xaxxaxaxx") ;
-    myWorlds[2] = new BatWorld(VISIBLE, "axxxaaxx") ;
-    myWorlds[3] = new BatWorld(INVISIBLE, "xxaxxaxxaxx") ;
-    myWorlds[4] = new BatWorld(INVISIBLE, "xaxaxaxx") ;
-    myWorlds[5] = new BatWorld(INVISIBLE, "13121312") ;
-    myWorlds[6] = new BatWorld(INVISIBLE, "11212") ;
-    myWorlds[7] = new BatWorld(INVISIBLE, "13121311") ;
-    myWorlds[8] = new BatWorld(INVISIBLE, "1717171") ;
-    myWorlds[9] = new BatWorld(INVISIBLE, "hi") ;
-    myWorlds[10] = new BatWorld(INVISIBLE, "h") ;
-    myWorlds[11] = new BatWorld(INVISIBLE, "") ;
+    BatWorld myWorld = new BatWorld("last2");
+    myWorld.addTest(VISIBLE, "hixxhi") ;
+    myWorld.addTest(VISIBLE, "xaxxaxaxx") ;
+    myWorld.addTest(VISIBLE, "axxxaaxx") ;
+    myWorld.addTest(INVISIBLE, "xxaxxaxxaxx") ;
+    myWorld.addTest(INVISIBLE, "xaxaxaxx") ;
+    myWorld.addTest(INVISIBLE, "13121312") ;
+    myWorld.addTest(INVISIBLE, "11212") ;
+    myWorld.addTest(INVISIBLE, "13121311") ;
+    myWorld.addTest(INVISIBLE, "1717171") ;
+    myWorld.addTest(INVISIBLE, "hi") ;
+    myWorld.addTest(INVISIBLE, "h") ;
+    myWorld.addTest(INVISIBLE, "") ;
 
-    setup(myWorlds,"last2");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = last2((String)w.getParameter(0));
+  public void run(BatTest t) {
+    t.setResult( last2((String)t.getParameter(0)) );
   }
   /* END SKEL */
 

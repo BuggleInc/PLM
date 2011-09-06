@@ -1,32 +1,31 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class StringMatch extends BatExercise {
   public StringMatch(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[10];
-    myWorlds[0] = new BatWorld(VISIBLE, "xxcaazz", "xxbaaz") ;
-    myWorlds[1] = new BatWorld(VISIBLE, "abc", "abc") ;
-    myWorlds[2] = new BatWorld(VISIBLE, "abc", "axc") ;
-    myWorlds[3] = new BatWorld(INVISIBLE, "hello", "he") ;
-    myWorlds[4] = new BatWorld(INVISIBLE, "he", "hello") ;
-    myWorlds[5] = new BatWorld(INVISIBLE, "h", "hello") ;
-    myWorlds[6] = new BatWorld(INVISIBLE, "", "hello") ;
-    myWorlds[7] = new BatWorld(INVISIBLE, "aabbccdd", "abbbxxd") ;
-    myWorlds[8] = new BatWorld(INVISIBLE, "aaxxaaxx", "iaxxai") ;
-    myWorlds[9] = new BatWorld(INVISIBLE, "iaxxai", "aaxxaaxx") ;
+    BatWorld myWorld = new BatWorld("stringMatch");
+    myWorld.addTest(VISIBLE, "xxcaazz", "xxbaaz") ;
+    myWorld.addTest(VISIBLE, "abc", "abc") ;
+    myWorld.addTest(VISIBLE, "abc", "axc") ;
+    myWorld.addTest(INVISIBLE, "hello", "he") ;
+    myWorld.addTest(INVISIBLE, "he", "hello") ;
+    myWorld.addTest(INVISIBLE, "h", "hello") ;
+    myWorld.addTest(INVISIBLE, "", "hello") ;
+    myWorld.addTest(INVISIBLE, "aabbccdd", "abbbxxd") ;
+    myWorld.addTest(INVISIBLE, "aaxxaaxx", "iaxxai") ;
+    myWorld.addTest(INVISIBLE, "iaxxai", "aaxxaaxx") ;
 
-    setup(myWorlds,"stringMatch");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = stringMatch((String)w.getParameter(0), (String)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( stringMatch((String)t.getParameter(0), (String)t.getParameter(1)) );
   }
   /* END SKEL */
 

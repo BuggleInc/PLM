@@ -1,32 +1,31 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class Array123 extends BatExercise {
   public Array123(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[10];
-    myWorlds[0] = new BatWorld(VISIBLE, (Object)new int[] {1, 1, 2, 3, 1}) ;
-    myWorlds[1] = new BatWorld(VISIBLE, (Object)new int[] {1, 1, 2, 4, 1}) ;
-    myWorlds[2] = new BatWorld(VISIBLE, (Object)new int[] {1, 1, 2, 1, 2, 3}) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, (Object)new int[] {1, 1, 2, 1, 2, 1}) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, (Object)new int[] {1, 2, 3, 1, 2, 3}) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, (Object)new int[] {1, 2, 3}) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, (Object)new int[] {1, 1, 1}) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, (Object)new int[] {1, 2}) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, (Object)new int[] {1}) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, (Object)new int[] {}) ;
+    BatWorld myWorld = new BatWorld("array123");
+    myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 3, 1}) ;
+    myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 4, 1}) ;
+    myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 1, 2, 3}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 1, 2, 1, 2, 1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 1, 2, 3}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 1, 1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-    setup(myWorlds,"array123");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = array123((int[])w.getParameter(0));
+  public void run(BatTest t) {
+    t.setResult( array123((int[])t.getParameter(0)) );
   }
   /* END SKEL */
 

@@ -62,7 +62,7 @@ public class SourceFile {
 		String res;
 
 		if (template != null) {
-			res = template.replaceAll("\\$body", " "+this.body+" \n");
+			res = template.replaceAll("\\$body", " "+this.body+" \n");			
 			if (runtimePatterns != null)
 				for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 					res = res.replaceAll(pattern.getKey(), pattern.getValue());
@@ -77,7 +77,7 @@ public class SourceFile {
 		} else {
 			res = this.body;
 		}
-		return res;
+		return res.replaceAll("\\xa0", " "); // Kill those damn \160 chars, which are non-breaking spaces (got them from copy/pasting source examples?)
 	}
 
 	public void setListener(ISourceFileListener l) {

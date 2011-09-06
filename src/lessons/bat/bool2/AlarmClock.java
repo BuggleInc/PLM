@@ -2,32 +2,31 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class AlarmClock extends BatExercise {
   public AlarmClock(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[9];
-    myWorlds[0] = new BatWorld(VISIBLE, 1, false) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 5, false) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 0, false) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 6, false) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 0, true) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 6, true) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 1, true) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 3, true) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 5, true) ;
+    BatWorld myWorld = new BatWorld("AlarmClock");
+    myWorld.addTest(VISIBLE, 1, false) ;
+    myWorld.addTest(VISIBLE, 5, false) ;
+    myWorld.addTest(VISIBLE, 0, false) ;
+    myWorld.addTest(INVISIBLE, 6, false) ;
+    myWorld.addTest(INVISIBLE, 0, true) ;
+    myWorld.addTest(INVISIBLE, 6, true) ;
+    myWorld.addTest(INVISIBLE, 1, true) ;
+    myWorld.addTest(INVISIBLE, 3, true) ;
+    myWorld.addTest(INVISIBLE, 5, true) ;
 
-    setup(myWorlds,"alarmClock");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = alarmClock((Integer)w.getParameter(0), (Boolean)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( alarmClock((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
   }
   /* END SKEL */
 

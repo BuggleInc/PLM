@@ -1,32 +1,55 @@
 package lessons.welcome;
 
+import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
 
 	@Override
 	protected void loadExercises() {
-		addExercise(new Environment(this));
-		addExercise(new Basics(this));
-		addExercise(new BasicsDrawG(this));
-		addExercise(new Conditions(this));
-		addExercise(new LoopWhile(this));
-		addExercise(new BaggleSeeker(this));
-		addExercise(new Variables(this));
-		addExercise(new LoopFor(this));
-		addExercise(new LoopDoWhile(this));
-		addExercise(new Methods(this));
-		addExercise(new MethodsDogHouse(this));
-		addExercise(new MethodsReturning(this));
-		addExercise(new MethodsArgs(this));
+		Exercise environment =     new Environment(this);
+		addExercise(environment);
+		
+		Exercise basics =          new Basics(this);
+		addExercise(basics,        environment);
+		
+		addExercise(new BasicsDrawG(this),   basics);
+		
+		Exercise conditions =      new Conditions(this);
+		addExercise(conditions,    basics);
+		
+		Exercise loopWhile =       new LoopWhile(this);
+		addExercise(loopWhile,     conditions);
+
+		addExercise(new BaggleSeeker(this), loopWhile);
+
+		Exercise variables =       new Variables(this);
+		addExercise(variables,     loopWhile);
+		
+		Exercise loopFor =         new LoopFor(this);
+		addExercise(loopFor,       variables );
+		
+		addExercise(new LoopDoWhile(this),    loopFor);
+		
+		Exercise methodsVoid =         new Methods(this); 
+		addExercise(methodsVoid,       loopFor);
+		
+		addExercise(new MethodsDogHouse(this),methodsVoid);
+		addExercise(new MethodsReturning(this),methodsVoid);
+		
+		Exercise methods = new MethodsArgs(this);
+		addExercise(methods);
 		addExercise(new MethodsPicture(this));
 		addExercise(new MethodsPicture2(this));
 		addExercise(new MethodsPicture3(this));
 		addExercise(new MethodsPicture4(this));
-		addExercise(new BDR(this));
+		
+		addExercise(new BDR(this),conditions);
 		addExercise(new BDR2(this));
-		addExercise(new SlugHunting(this));
+		
+		addExercise(new SlugHunting(this),methods);
 		addExercise(new Snake(this));
+		
 		addExercise(new Array(this));
 		addExercise(new Array2(this));
 		addExercise(new TraversalByColumn(this));
@@ -35,4 +58,5 @@ public class Main extends Lesson {
 		addExercise(new TraversalDiagonal(this));
 		exercisesLoaded = true;
 	}
+
 }

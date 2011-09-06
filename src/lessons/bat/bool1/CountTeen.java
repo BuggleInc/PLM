@@ -1,8 +1,8 @@
 package lessons.bat.bool1;
 
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class CountTeen extends BatExercise {
@@ -10,29 +10,28 @@ public class CountTeen extends BatExercise {
 	public CountTeen(Lesson lesson) {
 		super(lesson);
 		
-		World[] myWorlds = new BatWorld[12];
-		myWorlds[0] = new BatWorld(VISIBLE,  13,20,10,54);
-		myWorlds[1] = new BatWorld(VISIBLE,  20,19,13,15);
-		myWorlds[2] = new BatWorld(VISIBLE,  20,10,13,42);
+		BatWorld myWorld = new BatWorld("CountTeen");
+		myWorld.addTest(VISIBLE,  13,20,10,54);
+		myWorld.addTest(VISIBLE,  20,19,13,15);
+		myWorld.addTest(VISIBLE,  20,10,13,42);
 		
-		myWorlds[3] = new BatWorld(INVISIBLE, 1,20,12,54);
-		myWorlds[4] = new BatWorld(INVISIBLE, 19,20,42,12);
-		myWorlds[5] = new BatWorld(INVISIBLE, 12,16,20,19);
-		myWorlds[6] = new BatWorld(INVISIBLE, 42,12,9,20);
-		myWorlds[7] = new BatWorld(INVISIBLE, 12,18,19,14);
-		myWorlds[8] = new BatWorld(INVISIBLE, 14,2,20,99);
-		myWorlds[9] = new BatWorld(INVISIBLE, 4,11,2,20);
-		myWorlds[10]= new BatWorld(INVISIBLE, 11,11,11,11);
-		myWorlds[11]= new BatWorld(INVISIBLE, 15,15,15,15);
+		myWorld.addTest(INVISIBLE, 1,20,12,54);
+		myWorld.addTest(INVISIBLE, 19,20,42,12);
+		myWorld.addTest(INVISIBLE, 12,16,20,19);
+		myWorld.addTest(INVISIBLE, 42,12,9,20);
+		myWorld.addTest(INVISIBLE, 12,18,19,14);
+		myWorld.addTest(INVISIBLE, 14,2,20,99);
+		myWorld.addTest(INVISIBLE, 4,11,2,20);
+		myWorld.addTest(INVISIBLE, 11,11,11,11);
+		myWorld.addTest(INVISIBLE, 15,15,15,15);
 
-		setup(myWorlds,"countTeen");
+		setup(myWorld);
 	}
 
 
 	/* BEGIN SKEL */
-	public void run(World w) {
-		BatWorld bw = (BatWorld) w;
-		bw.result = countTeen((Integer)w.getParameter(0),(Integer)w.getParameter(1),(Integer)w.getParameter(2),(Integer)w.getParameter(3));		
+	public void run(BatTest t) {
+		t.setResult( countTeen((Integer)t.getParameter(0),(Integer)t.getParameter(1),(Integer)t.getParameter(2),(Integer)t.getParameter(3)) );		
 	}
 	/* END SKEL */
 	

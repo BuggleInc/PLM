@@ -1,24 +1,30 @@
 package jlm.universe.bat;
 
+import java.util.List;
+import java.util.Vector;
+
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
 public class BatWorld extends World {
-	public Object result;
-	public boolean visible;
-	public BatWorld(boolean visible, Object...params) {
-		super("");
-		this.visible = visible;
-		parameters=params;
+	public List<BatTest> tests = new Vector<BatTest>();
+	
+	public BatWorld(String funName) {
+		super(funName);
 	}
 	public BatWorld(BatWorld w2) {
 		super(w2);
+		this.tests = new Vector<BatTest>();
+		for (BatTest t:w2.tests) 
+			tests.add(t.copy());
 	}
+	
 	@Override
 	public void reset(World w) {
 		BatWorld anotherWorld = (BatWorld) w;
-		this.result = anotherWorld.result;
-		this.visible = anotherWorld.visible;
+		this.tests = new Vector<BatTest>();
+		for (BatTest t:anotherWorld.tests) 
+			tests.add(t.copy());
 		super.reset(anotherWorld);		
 	}
 	@Override
@@ -27,19 +33,25 @@ public class BatWorld extends World {
 			return false;
 		}
 		BatWorld other = (BatWorld) o;
-//		System.out.println(this+"  =?=  "+o);
-		if (other.result==null && this.result != null)
+		if (other.tests.size() != tests.size())
 			return false;
-		if (other.result!=null && !other.result.equals(this.result))
-			return false;
+		for (int i=0;i<tests.size();i++)
+			if (!tests.get(i).equals(other.tests.get(i)))
+				return false;
 		return true;
-	}
-	@Override
-	public String toString() {
-		return getName()+"="+result;
 	}
 	@Override
 	public WorldView[] getView() {
 		return new WorldView[] { new BatWorldView(this) };
+	}
+	
+	/* So that the view can display them */
+	protected List<BatTest> getTests() {
+		return tests;
+	}
+
+	/* World logic */
+	public void addTest(boolean visible, Object...params) {
+		tests.add(new BatTest(getName(),visible, params));
 	}
 }
