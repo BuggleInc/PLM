@@ -1,8 +1,8 @@
 package lessons.bat.bool1;
 
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class NearHundred extends BatExercise {
@@ -10,27 +10,26 @@ public class NearHundred extends BatExercise {
 	public NearHundred(Lesson lesson) {
 		super(lesson);
 		
-		World[] myWorlds = new BatWorld[10];
-		myWorlds[0] = new BatWorld(VISIBLE, 93);
-		myWorlds[1] = new BatWorld(VISIBLE, 90);
-		myWorlds[2] = new BatWorld(VISIBLE, 89);
+		BatWorld myWorld = new BatWorld("NearHundred");
+		myWorld.addTest(VISIBLE, 93);
+		myWorld.addTest(VISIBLE, 90);
+		myWorld.addTest(VISIBLE, 89);
 		
-		myWorlds[3] = new BatWorld(INVISIBLE, 110);
-		myWorlds[4] = new BatWorld(INVISIBLE, 191);
-		myWorlds[5] = new BatWorld(INVISIBLE, 189);
-		myWorlds[6] = new BatWorld(INVISIBLE, 200);
-		myWorlds[7] = new BatWorld(INVISIBLE, 210);
-		myWorlds[8] = new BatWorld(INVISIBLE, 211);
-		myWorlds[9] = new BatWorld(INVISIBLE, -100);
+		myWorld.addTest(INVISIBLE, 110);
+		myWorld.addTest(INVISIBLE, 191);
+		myWorld.addTest(INVISIBLE, 189);
+		myWorld.addTest(INVISIBLE, 200);
+		myWorld.addTest(INVISIBLE, 210);
+		myWorld.addTest(INVISIBLE, 211);
+		myWorld.addTest(INVISIBLE, -100);
 
-		setup(myWorlds,"nearHundred");
+		setup(myWorld);
 	}
 
 
 	/* BEGIN SKEL */
-	public void run(World w) {
-		BatWorld bw = (BatWorld) w;
-		bw.result = nearHundred((Integer)w.getParameter(0));		
+	public void run(BatTest t) {
+		t.setResult( nearHundred((Integer)t.getParameter(0)) );		
 	}
 	/* END SKEL */
 	

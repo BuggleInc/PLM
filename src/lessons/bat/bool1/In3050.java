@@ -1,8 +1,8 @@
 package lessons.bat.bool1;
 
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class In3050 extends BatExercise {
@@ -10,30 +10,29 @@ public class In3050 extends BatExercise {
 	public In3050(Lesson lesson) {
 		super(lesson);
 		
-		World[] myWorlds = new BatWorld[12];
-		myWorlds[0] = new BatWorld(VISIBLE,  30,31);
-		myWorlds[1] = new BatWorld(VISIBLE,  30,41);
-		myWorlds[2] = new BatWorld(VISIBLE,  40,50);
+		BatWorld myWorld = new BatWorld("In3050");
+		myWorld.addTest(VISIBLE,  30,31);
+		myWorld.addTest(VISIBLE,  30,41);
+		myWorld.addTest(VISIBLE,  40,50);
 		
-		myWorlds[3] = new BatWorld(INVISIBLE, 40,51);
-		myWorlds[4] = new BatWorld(INVISIBLE, 39,50);
-		myWorlds[5] = new BatWorld(INVISIBLE, 50,39);
-		myWorlds[6] = new BatWorld(INVISIBLE, 40,39);
-		myWorlds[7] = new BatWorld(INVISIBLE, 49,48);
-		myWorlds[8] = new BatWorld(INVISIBLE, 50,40);
-		myWorlds[9] = new BatWorld(INVISIBLE, 50,51);
-		myWorlds[10]= new BatWorld(INVISIBLE, 35,36);
-		myWorlds[11]= new BatWorld(INVISIBLE, 35,45);
+		myWorld.addTest(INVISIBLE, 40,51);
+		myWorld.addTest(INVISIBLE, 39,50);
+		myWorld.addTest(INVISIBLE, 50,39);
+		myWorld.addTest(INVISIBLE, 40,39);
+		myWorld.addTest(INVISIBLE, 49,48);
+		myWorld.addTest(INVISIBLE, 50,40);
+		myWorld.addTest(INVISIBLE, 50,51);
+		myWorld.addTest(INVISIBLE, 35,36);
+		myWorld.addTest(INVISIBLE, 35,45);
 
 
-		setup(myWorlds,"in3050");
+		setup(myWorld);
 	}
 
 
 	/* BEGIN SKEL */
-	public void run(World w) {
-		BatWorld bw = (BatWorld) w;
-		bw.result = in3050((Integer)w.getParameter(0),(Integer)w.getParameter(1));		
+	public void run(BatTest t) {
+		t.setResult( in3050((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
 	}
 	/* END SKEL */
 	

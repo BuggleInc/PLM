@@ -2,35 +2,34 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class In1To10 extends BatExercise {
   public In1To10(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[12];
-    myWorlds[0] = new BatWorld(VISIBLE, 5, false) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 11, false) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 11, true) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 10, false) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 10, true) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 9, false) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 9, true) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 1, false) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 1, true) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 0, false) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 0, true) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, -1, false) ;
+    BatWorld myWorld = new BatWorld("In1To10");
+    myWorld.addTest(VISIBLE, 5, false) ;
+    myWorld.addTest(VISIBLE, 11, false) ;
+    myWorld.addTest(VISIBLE, 11, true) ;
+    myWorld.addTest(INVISIBLE, 10, false) ;
+    myWorld.addTest(INVISIBLE, 10, true) ;
+    myWorld.addTest(INVISIBLE, 9, false) ;
+    myWorld.addTest(INVISIBLE, 9, true) ;
+    myWorld.addTest(INVISIBLE, 1, false) ;
+    myWorld.addTest(INVISIBLE, 1, true) ;
+    myWorld.addTest(INVISIBLE, 0, false) ;
+    myWorld.addTest(INVISIBLE, 0, true) ;
+    myWorld.addTest(INVISIBLE, -1, false) ;
 
-    setup(myWorlds,"in1To10");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = in1To10((Integer)w.getParameter(0), (Boolean)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( in1To10((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
   }
   /* END SKEL */
 

@@ -2,35 +2,34 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class InOrder extends BatExercise {
   public InOrder(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[12];
-    myWorlds[0] = new BatWorld(VISIBLE, 1, 2, 4, false) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 1, 2, 1, false) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 1, 1, 2, true) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 3, 2, 4, false) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 2, 3, 4, false) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 3, 2, 4, true) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 4, 2, 2, true) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 4, 5, 2, true) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 2, 4, 6, true) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 7, 9, 10, false) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 7, 5, 6, true) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, 7, 5, 4, true) ;
+    BatWorld myWorld = new BatWorld("InOrder");
+    myWorld.addTest(VISIBLE, 1, 2, 4, false) ;
+    myWorld.addTest(VISIBLE, 1, 2, 1, false) ;
+    myWorld.addTest(VISIBLE, 1, 1, 2, true) ;
+    myWorld.addTest(INVISIBLE, 3, 2, 4, false) ;
+    myWorld.addTest(INVISIBLE, 2, 3, 4, false) ;
+    myWorld.addTest(INVISIBLE, 3, 2, 4, true) ;
+    myWorld.addTest(INVISIBLE, 4, 2, 2, true) ;
+    myWorld.addTest(INVISIBLE, 4, 5, 2, true) ;
+    myWorld.addTest(INVISIBLE, 2, 4, 6, true) ;
+    myWorld.addTest(INVISIBLE, 7, 9, 10, false) ;
+    myWorld.addTest(INVISIBLE, 7, 5, 6, true) ;
+    myWorld.addTest(INVISIBLE, 7, 5, 4, true) ;
 
-    setup(myWorlds,"inOrder");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = inOrder((Integer)w.getParameter(0), (Integer)w.getParameter(1), (Integer)w.getParameter(2), (Boolean)w.getParameter(3));
+  public void run(BatTest t) {
+    t.setResult( inOrder((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2), (Boolean)t.getParameter(3)) );
   }
   /* END SKEL */
 

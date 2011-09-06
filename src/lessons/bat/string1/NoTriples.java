@@ -1,31 +1,30 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class NoTriples extends BatExercise {
   public NoTriples(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[9];
-    myWorlds[0] = new BatWorld(VISIBLE, (Object)new int[] {1, 1, 2, 2, 1}) ;
-    myWorlds[1] = new BatWorld(VISIBLE, (Object)new int[] {1, 1, 2, 2, 2, 1}) ;
-    myWorlds[2] = new BatWorld(VISIBLE, (Object)new int[] {1, 1, 1, 2, 2, 2, 1}) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, (Object)new int[] {1, 1, 2, 2, 1, 2, 1}) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, (Object)new int[] {1, 2, 1}) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, (Object)new int[] {1, 1, 1}) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, (Object)new int[] {1, 1}) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, (Object)new int[] {1}) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, (Object)new int[] {}) ;
+    BatWorld myWorld = new BatWorld("noTriples");
+    myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 2, 1}) ;
+    myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 2, 2, 2, 1}) ;
+    myWorld.addTest(VISIBLE, (Object)new int[] {1, 1, 1, 2, 2, 2, 1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 1, 2, 2, 1, 2, 1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 1, 1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1, 1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
+    myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-    setup(myWorlds,"noTriples");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = noTriples((int[])w.getParameter(0));
+  public void run(BatTest t) {
+    t.setResult( noTriples((int[])t.getParameter(0)) );
   }
   /* END SKEL */
 

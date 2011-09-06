@@ -2,35 +2,34 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class TwoAsOne extends BatExercise {
   public TwoAsOne(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[12];
-    myWorlds[0] = new BatWorld(VISIBLE, 1, 2, 3) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 3, 1, 2) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 3, 2, 2) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 2, 3, 1) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 5, 3, -2) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 5, 3, -3) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 2, 5, 3) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 9, 5, 5) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 9, 4, 5) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 5, 4, 9) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 3, 3, 0) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, 3, 3, 2) ;
+    BatWorld myWorld = new BatWorld("twoAsOne");
+    myWorld.addTest(VISIBLE, 1, 2, 3) ;
+    myWorld.addTest(VISIBLE, 3, 1, 2) ;
+    myWorld.addTest(VISIBLE, 3, 2, 2) ;
+    myWorld.addTest(INVISIBLE, 2, 3, 1) ;
+    myWorld.addTest(INVISIBLE, 5, 3, -2) ;
+    myWorld.addTest(INVISIBLE, 5, 3, -3) ;
+    myWorld.addTest(INVISIBLE, 2, 5, 3) ;
+    myWorld.addTest(INVISIBLE, 9, 5, 5) ;
+    myWorld.addTest(INVISIBLE, 9, 4, 5) ;
+    myWorld.addTest(INVISIBLE, 5, 4, 9) ;
+    myWorld.addTest(INVISIBLE, 3, 3, 0) ;
+    myWorld.addTest(INVISIBLE, 3, 3, 2) ;
 
-    setup(myWorlds,"twoAsOne");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = twoAsOne((Integer)w.getParameter(0), (Integer)w.getParameter(1), (Integer)w.getParameter(2));
+  public void run(BatTest t) {
+    t.setResult( twoAsOne((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2)) );
   }
   /* END SKEL */
 

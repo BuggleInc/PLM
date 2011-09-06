@@ -2,34 +2,33 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class CigarParty extends BatExercise {
   public CigarParty(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[11];
-    myWorlds[0] = new BatWorld(VISIBLE, 30, false) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 50, false) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 70, true) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 30, true) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 50, true) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 60, false) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 61, false) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 40, false) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 39, false) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 40, true) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 39, true) ;
+    BatWorld myWorld = new BatWorld("CigarParty");
+    myWorld.addTest(VISIBLE, 30, false) ;
+    myWorld.addTest(VISIBLE, 50, false) ;
+    myWorld.addTest(VISIBLE, 70, true) ;
+    myWorld.addTest(INVISIBLE, 30, true) ;
+    myWorld.addTest(INVISIBLE, 50, true) ;
+    myWorld.addTest(INVISIBLE, 60, false) ;
+    myWorld.addTest(INVISIBLE, 61, false) ;
+    myWorld.addTest(INVISIBLE, 40, false) ;
+    myWorld.addTest(INVISIBLE, 39, false) ;
+    myWorld.addTest(INVISIBLE, 40, true) ;
+    myWorld.addTest(INVISIBLE, 39, true) ;
 
-    setup(myWorlds,"cigarParty");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = cigarParty((Integer)w.getParameter(0), (Boolean)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( cigarParty((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
   }
   /* END SKEL */
 

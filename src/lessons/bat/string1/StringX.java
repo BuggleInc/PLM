@@ -1,30 +1,29 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class StringX extends BatExercise {
   public StringX(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[8];
-    myWorlds[0] = new BatWorld(VISIBLE, "xxHxix") ;
-    myWorlds[1] = new BatWorld(VISIBLE, "abxxxcd") ;
-    myWorlds[2] = new BatWorld(VISIBLE, "xabxxxcdx") ;
-    myWorlds[3] = new BatWorld(INVISIBLE, "xKittenx") ;
-    myWorlds[4] = new BatWorld(INVISIBLE, "Hello") ;
-    myWorlds[5] = new BatWorld(INVISIBLE, "xx") ;
-    myWorlds[6] = new BatWorld(INVISIBLE, "x") ;
-    myWorlds[7] = new BatWorld(INVISIBLE, "") ;
+    BatWorld myWorld = new BatWorld("stringX");
+    myWorld.addTest(VISIBLE, "xxHxix") ;
+    myWorld.addTest(VISIBLE, "abxxxcd") ;
+    myWorld.addTest(VISIBLE, "xabxxxcdx") ;
+    myWorld.addTest(INVISIBLE, "xKittenx") ;
+    myWorld.addTest(INVISIBLE, "Hello") ;
+    myWorld.addTest(INVISIBLE, "xx") ;
+    myWorld.addTest(INVISIBLE, "x") ;
+    myWorld.addTest(INVISIBLE, "") ;
 
-    setup(myWorlds,"stringX");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = stringX((String)w.getParameter(0));
+  public void run(BatTest t) {
+    t.setResult( stringX((String)t.getParameter(0)) );
   }
   /* END SKEL */
 

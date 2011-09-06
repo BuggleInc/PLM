@@ -1,8 +1,8 @@
 package lessons.bat.bool1;
 
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class MonkeyTrouble extends BatExercise {
@@ -10,20 +10,19 @@ public class MonkeyTrouble extends BatExercise {
 	public MonkeyTrouble(Lesson lesson) {
 		super(lesson);
 		
-		World[] myWorlds = new BatWorld[4];
-		myWorlds[0] = new BatWorld(VISIBLE, true, true);
-		myWorlds[1] = new BatWorld(VISIBLE, false, false);
-		myWorlds[2] = new BatWorld(VISIBLE, true, false);
-		myWorlds[3] = new BatWorld(INVISIBLE, false, true);
+		BatWorld myWorld = new BatWorld("MonkeyTrouble");
+		myWorld.addTest(VISIBLE, true, true);
+		myWorld.addTest(VISIBLE, false, false);
+		myWorld.addTest(VISIBLE, true, false);
+		myWorld.addTest(INVISIBLE, false, true);
 		
-		setup(myWorlds,"monkeyTrouble");
+		setup(myWorld);
 	}
 
 
 	/* BEGIN SKEL */
-	public void run(World w) {
-		BatWorld bw = (BatWorld) w;
-		bw.result = monkeyTrouble((Boolean)w.getParameter(0),(Boolean)w.getParameter(1));		
+	public void run(BatTest t) {
+		t.setResult( monkeyTrouble((Boolean)t.getParameter(0),(Boolean)t.getParameter(1)) );		
 	}
 	/* END SKEL */
 	

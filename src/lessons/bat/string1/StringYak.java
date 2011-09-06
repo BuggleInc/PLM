@@ -1,29 +1,28 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class StringYak extends BatExercise {
   public StringYak(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[7];
-    myWorlds[0] = new BatWorld(VISIBLE, "yakpak") ;
-    myWorlds[1] = new BatWorld(VISIBLE, "pakyak") ;
-    myWorlds[2] = new BatWorld(VISIBLE, "yak123ya") ;
-    myWorlds[3] = new BatWorld(INVISIBLE, "yak") ;
-    myWorlds[4] = new BatWorld(INVISIBLE, "yakxxxyak") ;
-    myWorlds[5] = new BatWorld(INVISIBLE, "HiyakHi") ;
-    myWorlds[6] = new BatWorld(INVISIBLE, "xxxyakyyyakzzz") ;
+    BatWorld myWorld = new BatWorld("stringYak");
+    myWorld.addTest(VISIBLE, "yakpak") ;
+    myWorld.addTest(VISIBLE, "pakyak") ;
+    myWorld.addTest(VISIBLE, "yak123ya") ;
+    myWorld.addTest(INVISIBLE, "yak") ;
+    myWorld.addTest(INVISIBLE, "yakxxxyak") ;
+    myWorld.addTest(INVISIBLE, "HiyakHi") ;
+    myWorld.addTest(INVISIBLE, "xxxyakyyyakzzz") ;
 
-    setup(myWorlds,"stringYak");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = stringYak((String)w.getParameter(0));
+  public void run(BatTest t) {
+    t.setResult( stringYak((String)t.getParameter(0)) );
   }
   /* END SKEL */
 
