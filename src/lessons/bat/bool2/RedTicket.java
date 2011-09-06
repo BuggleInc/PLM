@@ -2,34 +2,33 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class RedTicket extends BatExercise {
   public RedTicket(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[11];
-    myWorlds[0] = new BatWorld(VISIBLE, 2, 2, 2) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 2, 2, 1) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 0, 0, 0) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 2, 0, 0) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 1, 1, 1) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 1, 2, 1) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 1, 2, 0) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 0, 2, 2) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 1, 2, 2) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 0, 2, 0) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 1, 1, 2) ;
+    BatWorld myWorld = new BatWorld("RedTicket");
+    myWorld.addTest(VISIBLE, 2, 2, 2) ;
+    myWorld.addTest(VISIBLE, 2, 2, 1) ;
+    myWorld.addTest(VISIBLE, 0, 0, 0) ;
+    myWorld.addTest(INVISIBLE, 2, 0, 0) ;
+    myWorld.addTest(INVISIBLE, 1, 1, 1) ;
+    myWorld.addTest(INVISIBLE, 1, 2, 1) ;
+    myWorld.addTest(INVISIBLE, 1, 2, 0) ;
+    myWorld.addTest(INVISIBLE, 0, 2, 2) ;
+    myWorld.addTest(INVISIBLE, 1, 2, 2) ;
+    myWorld.addTest(INVISIBLE, 0, 2, 0) ;
+    myWorld.addTest(INVISIBLE, 1, 1, 2) ;
 
-    setup(myWorlds,"redTicket");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = redTicket((Integer)w.getParameter(0), (Integer)w.getParameter(1), (Integer)w.getParameter(2));
+  public void run(BatTest t) {
+    t.setResult( redTicket((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2)) );
   }
   /* END SKEL */
 

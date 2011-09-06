@@ -2,36 +2,35 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class LastDigit extends BatExercise {
   public LastDigit(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[13];
-    myWorlds[0] = new BatWorld(VISIBLE, 23, 19, 13) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 23, 19, 12) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 23, 19, 3) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 23, 19, 39) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 1, 2, 3) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 1, 1, 2) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 1, 2, 2) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 14, 25, 43) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 14, 25, 45) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 248, 106, 1002) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 248, 106, 1008) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, 10, 11, 20) ;
-    myWorlds[12] = new BatWorld(INVISIBLE, 0, 11, 0) ;
+    BatWorld myWorld = new BatWorld("lastDigit");
+    myWorld.addTest(VISIBLE, 23, 19, 13) ;
+    myWorld.addTest(VISIBLE, 23, 19, 12) ;
+    myWorld.addTest(VISIBLE, 23, 19, 3) ;
+    myWorld.addTest(INVISIBLE, 23, 19, 39) ;
+    myWorld.addTest(INVISIBLE, 1, 2, 3) ;
+    myWorld.addTest(INVISIBLE, 1, 1, 2) ;
+    myWorld.addTest(INVISIBLE, 1, 2, 2) ;
+    myWorld.addTest(INVISIBLE, 14, 25, 43) ;
+    myWorld.addTest(INVISIBLE, 14, 25, 45) ;
+    myWorld.addTest(INVISIBLE, 248, 106, 1002) ;
+    myWorld.addTest(INVISIBLE, 248, 106, 1008) ;
+    myWorld.addTest(INVISIBLE, 10, 11, 20) ;
+    myWorld.addTest(INVISIBLE, 0, 11, 0) ;
 
-    setup(myWorlds,"lastDigit");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = lastDigit((Integer)w.getParameter(0), (Integer)w.getParameter(1), (Integer)w.getParameter(2));
+  public void run(BatTest t) {
+    t.setResult( lastDigit((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Integer)t.getParameter(2)) );
   }
   /* END SKEL */
 

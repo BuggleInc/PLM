@@ -2,36 +2,35 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class SquirrelPlay extends BatExercise {
   public SquirrelPlay(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[13];
-    myWorlds[0] = new BatWorld(VISIBLE, 70, false) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 95, false) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 95, true) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 90, false) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 90, true) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 50, false) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 50, true) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 100, false) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 100, true) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 105, true) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 59, false) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, 59, true) ;
-    myWorlds[12] = new BatWorld(INVISIBLE, 60, false) ;
+    BatWorld myWorld = new BatWorld("squirrelPlay");
+    myWorld.addTest(VISIBLE, 70, false) ;
+    myWorld.addTest(VISIBLE, 95, false) ;
+    myWorld.addTest(VISIBLE, 95, true) ;
+    myWorld.addTest(INVISIBLE, 90, false) ;
+    myWorld.addTest(INVISIBLE, 90, true) ;
+    myWorld.addTest(INVISIBLE, 50, false) ;
+    myWorld.addTest(INVISIBLE, 50, true) ;
+    myWorld.addTest(INVISIBLE, 100, false) ;
+    myWorld.addTest(INVISIBLE, 100, true) ;
+    myWorld.addTest(INVISIBLE, 105, true) ;
+    myWorld.addTest(INVISIBLE, 59, false) ;
+    myWorld.addTest(INVISIBLE, 59, true) ;
+    myWorld.addTest(INVISIBLE, 60, false) ;
 
-    setup(myWorlds,"squirrelPlay");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = squirrelPlay((Integer)w.getParameter(0), (Boolean)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( squirrelPlay((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
   }
   /* END SKEL */
 

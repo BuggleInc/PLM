@@ -1,8 +1,8 @@
 package lessons.bat.bool1;
 
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class SumDouble extends BatExercise {
@@ -10,24 +10,22 @@ public class SumDouble extends BatExercise {
 	public SumDouble(Lesson lesson) {
 		super(lesson);
 		
-		World[] myWorlds = new BatWorld[6];
-		myWorlds[0] = new BatWorld(VISIBLE,  1,2);
-		myWorlds[1] = new BatWorld(VISIBLE,  3,2);
-		myWorlds[2] = new BatWorld(VISIBLE,  2,2);
+		BatWorld myWorld = new BatWorld("SumDouble");
+		myWorld.addTest(VISIBLE,  1,2);
+		myWorld.addTest(VISIBLE,  3,2);
+		myWorld.addTest(VISIBLE,  2,2);
 		
-		myWorlds[3] = new BatWorld(INVISIBLE, -1,0);
-		myWorlds[4] = new BatWorld(INVISIBLE, 0,0);
-		myWorlds[5] = new BatWorld(INVISIBLE, 0,1);
+		myWorld.addTest(INVISIBLE, -1,0);
+		myWorld.addTest(INVISIBLE, 0,0);
+		myWorld.addTest(INVISIBLE, 0,1);
 
-
-		setup(myWorlds,"sumDouble");
+		setup(myWorld);
 	}
 
 
 	/* BEGIN SKEL */
-	public void run(World w) {
-		BatWorld bw = (BatWorld) w;
-		bw.result = sumDouble((Integer)w.getParameter(0),(Integer)w.getParameter(1));		
+	public void run(BatTest t) {
+		t.setResult( sumDouble((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
 	}
 	/* END SKEL */
 	

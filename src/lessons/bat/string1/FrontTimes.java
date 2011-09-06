@@ -1,29 +1,28 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class FrontTimes extends BatExercise {
   public FrontTimes(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[7];
-    myWorlds[0] = new BatWorld(VISIBLE, "Chocolate", 2) ;
-    myWorlds[1] = new BatWorld(VISIBLE, "Chocolate", 3) ;
-    myWorlds[2] = new BatWorld(VISIBLE, "Abc", 3) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, "Ab", 4) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, "A", 4) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, "", 4) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, "Abc", 0) ;
+    BatWorld myWorld = new BatWorld("frontTimes");
+    myWorld.addTest(VISIBLE, "Chocolate", 2) ;
+    myWorld.addTest(VISIBLE, "Chocolate", 3) ;
+    myWorld.addTest(VISIBLE, "Abc", 3) ;
+    myWorld.addTest(INVISIBLE, "Ab", 4) ;
+    myWorld.addTest(INVISIBLE, "A", 4) ;
+    myWorld.addTest(INVISIBLE, "", 4) ;
+    myWorld.addTest(INVISIBLE, "Abc", 0) ;
 
-    setup(myWorlds,"frontTimes");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = frontTimes((String)w.getParameter(0), (Integer)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( frontTimes((String)t.getParameter(0), (Integer)t.getParameter(1)) );
   }
   /* END SKEL */
 

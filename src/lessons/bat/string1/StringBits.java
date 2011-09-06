@@ -1,27 +1,26 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class StringBits extends BatExercise {
   public StringBits(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[5];
-    myWorlds[0] = new BatWorld(VISIBLE, "Hello") ;
-    myWorlds[1] = new BatWorld(VISIBLE, "Hi") ;
-    myWorlds[2] = new BatWorld(VISIBLE, "HiHiHi") ;
-    myWorlds[3] = new BatWorld(INVISIBLE, "") ;
-    myWorlds[4] = new BatWorld(INVISIBLE, "Greetings") ;
+    BatWorld myWorld = new BatWorld("stringBits");
+    myWorld.addTest(VISIBLE, "Hello") ;
+    myWorld.addTest(VISIBLE, "Hi") ;
+    myWorld.addTest(VISIBLE, "HiHiHi") ;
+    myWorld.addTest(INVISIBLE, "") ;
+    myWorld.addTest(INVISIBLE, "Greetings") ;
 
-    setup(myWorlds,"stringBits");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = stringBits((String)w.getParameter(0));
+  public void run(BatTest t) {
+    t.setResult( stringBits((String)t.getParameter(0)) );
   }
   /* END SKEL */
 

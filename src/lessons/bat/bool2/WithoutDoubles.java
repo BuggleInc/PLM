@@ -2,35 +2,34 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class WithoutDoubles extends BatExercise {
   public WithoutDoubles(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[12];
-    myWorlds[0] = new BatWorld(VISIBLE, 2, 3, true) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 3, 3, true) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 3, 3, false) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 2, 3, false) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 5, 4, true) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 5, 4, false) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 5, 5, true) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 5, 5, false) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 6, 6, true) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 6, 6, false) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 1, 6, true) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, 6, 1, false) ;
+    BatWorld myWorld = new BatWorld("withoutDoubles");
+    myWorld.addTest(VISIBLE, 2, 3, true) ;
+    myWorld.addTest(VISIBLE, 3, 3, true) ;
+    myWorld.addTest(VISIBLE, 3, 3, false) ;
+    myWorld.addTest(INVISIBLE, 2, 3, false) ;
+    myWorld.addTest(INVISIBLE, 5, 4, true) ;
+    myWorld.addTest(INVISIBLE, 5, 4, false) ;
+    myWorld.addTest(INVISIBLE, 5, 5, true) ;
+    myWorld.addTest(INVISIBLE, 5, 5, false) ;
+    myWorld.addTest(INVISIBLE, 6, 6, true) ;
+    myWorld.addTest(INVISIBLE, 6, 6, false) ;
+    myWorld.addTest(INVISIBLE, 1, 6, true) ;
+    myWorld.addTest(INVISIBLE, 6, 1, false) ;
 
-    setup(myWorlds,"withoutDoubles");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = withoutDoubles((Integer)w.getParameter(0), (Integer)w.getParameter(1), (Boolean)w.getParameter(2));
+  public void run(BatTest t) {
+    t.setResult( withoutDoubles((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Boolean)t.getParameter(2)) );
   }
   /* END SKEL */
 

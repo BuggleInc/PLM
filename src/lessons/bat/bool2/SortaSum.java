@@ -2,32 +2,31 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class SortaSum extends BatExercise {
   public SortaSum(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[9];
-    myWorlds[0] = new BatWorld(VISIBLE, 3, 4) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 9, 4) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 10, 11) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 12, -3) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, -3, 12) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 4, 5) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 4, 6) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 14, 7) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 14, 6) ;
+    BatWorld myWorld = new BatWorld("sortaSum");
+    myWorld.addTest(VISIBLE, 3, 4) ;
+    myWorld.addTest(VISIBLE, 9, 4) ;
+    myWorld.addTest(VISIBLE, 10, 11) ;
+    myWorld.addTest(INVISIBLE, 12, -3) ;
+    myWorld.addTest(INVISIBLE, -3, 12) ;
+    myWorld.addTest(INVISIBLE, 4, 5) ;
+    myWorld.addTest(INVISIBLE, 4, 6) ;
+    myWorld.addTest(INVISIBLE, 14, 7) ;
+    myWorld.addTest(INVISIBLE, 14, 6) ;
 
-    setup(myWorlds,"sortaSum");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = sortaSum((Integer)w.getParameter(0), (Integer)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( sortaSum((Integer)t.getParameter(0), (Integer)t.getParameter(1)) );
   }
   /* END SKEL */
 

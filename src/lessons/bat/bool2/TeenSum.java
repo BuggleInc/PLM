@@ -2,39 +2,38 @@
 
 package lessons.bat.bool2;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class TeenSum extends BatExercise {
   public TeenSum(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[16];
-    myWorlds[0] = new BatWorld(VISIBLE, 3, 4) ;
-    myWorlds[1] = new BatWorld(VISIBLE, 10, 13) ;
-    myWorlds[2] = new BatWorld(VISIBLE, 13, 2) ;
-    myWorlds[3] = new BatWorld(INVISIBLE, 3, 19) ;
-    myWorlds[4] = new BatWorld(INVISIBLE, 13, 13) ;
-    myWorlds[5] = new BatWorld(INVISIBLE, 10, 10) ;
-    myWorlds[6] = new BatWorld(INVISIBLE, 6, 14) ;
-    myWorlds[7] = new BatWorld(INVISIBLE, 15, 2) ;
-    myWorlds[8] = new BatWorld(INVISIBLE, 19, 19) ;
-    myWorlds[9] = new BatWorld(INVISIBLE, 19, 20) ;
-    myWorlds[10] = new BatWorld(INVISIBLE, 2, 18) ;
-    myWorlds[11] = new BatWorld(INVISIBLE, 12, 4) ;
-    myWorlds[12] = new BatWorld(INVISIBLE, 2, 20) ;
-    myWorlds[13] = new BatWorld(INVISIBLE, 2, 17) ;
-    myWorlds[14] = new BatWorld(INVISIBLE, 2, 16) ;
-    myWorlds[15] = new BatWorld(INVISIBLE, 6, 7) ;
+    BatWorld myWorld = new BatWorld("teenSum");
+    myWorld.addTest(VISIBLE, 3, 4) ;
+    myWorld.addTest(VISIBLE, 10, 13) ;
+    myWorld.addTest(VISIBLE, 13, 2) ;
+    myWorld.addTest(INVISIBLE, 3, 19) ;
+    myWorld.addTest(INVISIBLE, 13, 13) ;
+    myWorld.addTest(INVISIBLE, 10, 10) ;
+    myWorld.addTest(INVISIBLE, 6, 14) ;
+    myWorld.addTest(INVISIBLE, 15, 2) ;
+    myWorld.addTest(INVISIBLE, 19, 19) ;
+    myWorld.addTest(INVISIBLE, 19, 20) ;
+    myWorld.addTest(INVISIBLE, 2, 18) ;
+    myWorld.addTest(INVISIBLE, 12, 4) ;
+    myWorld.addTest(INVISIBLE, 2, 20) ;
+    myWorld.addTest(INVISIBLE, 2, 17) ;
+    myWorld.addTest(INVISIBLE, 2, 16) ;
+    myWorld.addTest(INVISIBLE, 6, 7) ;
 
-    setup(myWorlds,"teenSum");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = teenSum((Integer)w.getParameter(0), (Integer)w.getParameter(1));
+  public void run(BatTest t) {
+    t.setResult( teenSum((Integer)t.getParameter(0), (Integer)t.getParameter(1)) );
   }
   /* END SKEL */
 

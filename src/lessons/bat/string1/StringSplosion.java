@@ -1,29 +1,28 @@
 package lessons.bat.string1;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
 import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class StringSplosion extends BatExercise {
   public StringSplosion(Lesson lesson) {
     super(lesson);
     
-    World[] myWorlds = new BatWorld[7];
-    myWorlds[0] = new BatWorld(VISIBLE, "Code") ;
-    myWorlds[1] = new BatWorld(VISIBLE, "abc") ;
-    myWorlds[2] = new BatWorld(VISIBLE, "x") ;
-    myWorlds[3] = new BatWorld(INVISIBLE, "There") ;
-    myWorlds[4] = new BatWorld(INVISIBLE, "Bye") ;
-    myWorlds[5] = new BatWorld(INVISIBLE, "Good") ;
-    myWorlds[6] = new BatWorld(INVISIBLE, "Bad") ;
+    BatWorld myWorld = new BatWorld("stringSplosion");
+    myWorld.addTest(VISIBLE, "Code") ;
+    myWorld.addTest(VISIBLE, "abc") ;
+    myWorld.addTest(VISIBLE, "x") ;
+    myWorld.addTest(INVISIBLE, "There") ;
+    myWorld.addTest(INVISIBLE, "Bye") ;
+    myWorld.addTest(INVISIBLE, "Good") ;
+    myWorld.addTest(INVISIBLE, "Bad") ;
 
-    setup(myWorlds,"stringSplosion");
+    setup(myWorld);
   }
 
   /* BEGIN SKEL */
-  public void run(World w) {
-    BatWorld bw = (BatWorld) w;
-    bw.result = stringSplosion((String)w.getParameter(0));
+  public void run(BatTest t) {
+    t.setResult( stringSplosion((String)t.getParameter(0)) ); 
   }
   /* END SKEL */
 
