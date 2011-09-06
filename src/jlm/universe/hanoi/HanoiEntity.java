@@ -5,11 +5,9 @@ import jlm.universe.World;
 
 public class HanoiEntity extends Entity {
 	/** Instantiation Constructor (used by exercises to setup the world) 
-	 * Must call super(name, world). If you had fields to setup, you'd be free to have more parameters
-	 * @param name
-	 * @param world
+	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
 	 */
-	public HanoiEntity(String name,World world) {
+	public HanoiEntity(String name, World world) {
 		/* BEGIN HIDDEN */
 		super(name,world);
 		/* END HIDDEN */
@@ -30,7 +28,7 @@ public class HanoiEntity extends Entity {
 		/* END HIDDEN */
 	}
 
-	/** Must *NOT* call HanoiEntity(name, world) because it's called in a traversal of the world.
+	/** Must *NOT* call HanoiEntity(name, world) because it's called in a traversal of the world so you don't want to modify it.
 	 * Instead, call HanoiEntity(name), leaving the world field empty; the JLM will fill it with the right value afterward 
 	 */
 	@Override
@@ -51,6 +49,9 @@ public class HanoiEntity extends Entity {
 		((HanoiWorld) world).move(src,dst);
 		stepUI();
 		/* END HIDDEN */
+	}
+	public int getSlotSize(int slot) {
+		return ((HanoiWorld) world).getSlotSize(slot);
 	}
 	
 	/* BEGIN HIDDEN */

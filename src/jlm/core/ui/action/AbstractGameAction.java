@@ -29,12 +29,6 @@ public abstract class AbstractGameAction extends AbstractAction {
 		this.descEnabled = descEnabled;
 		this.descDisabled = descDisabled;
 	}
-	/*
-	public AbstractGameAction(Game game, String text, String desc, ImageIcon icon) {
-		super(text, icon);
-		putValue(SHORT_DESCRIPTION, desc);
-		this.game = game;
-	}*/
 
 	public AbstractGameAction(Game game, String text, ImageIcon icon, String descEnabled,String descDisabled, Integer mnemonic) {
 		this (game,text,icon, descEnabled,descDisabled);

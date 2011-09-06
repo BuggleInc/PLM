@@ -2,7 +2,6 @@ package lessons.recursion;
 
 import jlm.universe.hanoi.HanoiEntity;
 import jlm.universe.hanoi.HanoiInvalidMove;
-import jlm.universe.hanoi.HanoiWorld;
 
 public class HanoiBoardEntity extends HanoiEntity {
 
@@ -12,7 +11,7 @@ public class HanoiBoardEntity extends HanoiEntity {
 	
 	/* BEGIN TEMPLATE */
 	public void solve(int src,int dst) throws HanoiInvalidMove {
-		solve(src,dst,((HanoiWorld) world).getSlotSize(src));
+		solve(src,dst, getSlotSize(src));
 	}
 	
 	public void solve(int src, int dst, int height) throws HanoiInvalidMove {
