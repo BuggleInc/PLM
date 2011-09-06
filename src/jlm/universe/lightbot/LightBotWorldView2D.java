@@ -14,6 +14,10 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
@@ -135,5 +139,10 @@ public class LightBotWorldView2D extends WorldView {
 		
 		g.setColor(LightBotWorldView2D.BOT_COLOR);
 		g.fill(new Arc2D.Double((cx-0.25)*LightBotWorldView2D.CELL_WIDTH,(cy+0.1)*LightBotWorldView2D.CELL_WIDTH,1.5*width,1.5*height,60,60, Arc2D.PIE));		
+	}
+	
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("resources/icon-lightbot.png");
 	}
 }

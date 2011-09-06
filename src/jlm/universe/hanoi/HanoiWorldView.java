@@ -6,6 +6,10 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -59,4 +63,11 @@ public class HanoiWorldView extends WorldView {
 			height++;
 		}
 	}
+
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("resources/icon-hanoi.png");
+	}
 }
+
+

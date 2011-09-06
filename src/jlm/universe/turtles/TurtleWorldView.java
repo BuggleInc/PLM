@@ -8,6 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import jlm.core.ui.ResourcesCache;
@@ -55,4 +56,10 @@ public class TurtleWorldView extends WorldView {
 		t.rotate(b.getHeadingRadian(), ic.getIconWidth()/2., ic.getIconHeight()/2.);
 		g.drawImage(ic.getImage(), t, null);
 	}
+	
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("resources/icon-turtle.png");
+	}
+
 }

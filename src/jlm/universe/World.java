@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import jlm.core.model.Game;
 import jlm.core.model.Reader;
 import jlm.core.ui.WorldView;
@@ -242,7 +245,12 @@ public abstract class World {
 			@Override
 			public boolean isWorldCompatible(World world) {
 				return false;
-			}			
+			}
+			
+			@Override
+			public ImageIcon getIcon() {
+				return null; // FIXME: not sure about this?
+			}
 		}};
 	}
 	public EntityControlPanel getEntityControlPanel() {
