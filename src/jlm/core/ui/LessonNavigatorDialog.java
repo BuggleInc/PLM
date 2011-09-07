@@ -1,20 +1,14 @@
 package jlm.core.ui;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Paint;
 import java.awt.Polygon;
-import java.awt.Shape;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
@@ -192,6 +186,7 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
 					g.drawImage(ico.getImage(), 0, 0, null);
 					g.setColor(Color.red);
 					g.drawRect(0, 0, 31, 31);
+					g.drawRect(1, 1, 30, 30);
 					ico = new ImageIcon(combined);
 				}
 				

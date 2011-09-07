@@ -10,8 +10,6 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import jlm.core.model.Game;
-import jlm.core.model.lesson.Exercise;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
@@ -75,6 +73,6 @@ public class BatWorldView extends WorldView {
 		
 		@Override
 		public ImageIcon getIcon() {
-			return ResourcesCache.getIcon("resources/icon-bat.png");
+			return ResourcesCache.getIcon("resources/IconWorld/bat.png");
 		}
 }
