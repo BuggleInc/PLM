@@ -13,21 +13,18 @@
 	<classpathentry kind="lib" path="lib/jung/concurrent-1.3.4.jar"/>
 	<classpathentry kind="lib" path="lib/jung/j3d-core-1.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/jung-3d-2.0.1.jar"/>
-	<classpathentry kind="lib" path="lib/jung/jung-3d-demos-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/jung-algorithms-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/jung-api-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/jung-graph-impl-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/jung-io-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/jung-jai-2.0.1.jar"/>
-	<classpathentry kind="lib" path="lib/jung/jung-jai-samples-2.0.1.jar"/>
-	<classpathentry kind="lib" path="lib/jung/jung-samples-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/jung-visualization-2.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/stax-api-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/vecmath-1.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/jung/wstx-asl-3.2.6.jar"/>
-	<classpathentry kind="lib" path="/Users/oster/Documents/Education/gits/JLM/lib/httpclient-4.1.2.jar"/>
-	<classpathentry kind="lib" path="/Users/oster/Documents/Education/gits/JLM/lib/httpcore-4.1.2.jar"/>
-	<classpathentry kind="lib" path="/Users/oster/Documents/Education/gits/JLM/lib/commons-logging-1.1.1.jar"/>
-	<classpathentry kind="lib" path="/Users/oster/Documents/Education/gits/JLM/lib/commons-codec-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/httpclient-4.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/httpcore-4.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
