@@ -6,8 +6,8 @@ import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
-public class LastDigit extends BatExercise {
-  public LastDigit(Lesson lesson) {
+public class LastDigit2 extends BatExercise {
+  public LastDigit2(Lesson lesson) {
     super(lesson);
     
     BatWorld myWorld = new BatWorld("lastDigit");

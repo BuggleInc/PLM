@@ -34,6 +34,7 @@ import lessons.welcome.bool2.GreenTicket;
 import lessons.welcome.bool2.In1To10;
 import lessons.welcome.bool2.InOrder;
 import lessons.welcome.bool2.InOrderEqual;
+import lessons.welcome.bool2.LastDigit2;
 import lessons.welcome.bool2.LessBy10;
 import lessons.welcome.bool2.MaxMod5;
 import lessons.welcome.bool2.NearTen;
@@ -130,7 +131,7 @@ public class Main extends Lesson {
 		addExercise(new In1To10(this));
 		addExercise(new InOrder(this));
 		addExercise(new InOrderEqual(this));
-		addExercise(new LastDigit(this));
+		addExercise(new LastDigit2(this));
 		addExercise(new LessBy10(this));
 		addExercise(new MaxMod5(this));
 		addExercise(new NearTen(this));
