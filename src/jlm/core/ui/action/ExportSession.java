@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 import jlm.core.model.Game;
+import jlm.core.model.UserAbortException;
 import jlm.core.model.ZipSessionKit;
 
 public class ExportSession extends AbstractGameAction {
@@ -30,7 +31,11 @@ public class ExportSession extends AbstractGameAction {
 			File sessionFileToExportTo = fc.getSelectedFile();
 			
 			ZipSessionKit kit = new ZipSessionKit(this.game);
-			kit.store(sessionFileToExportTo);
+			try {
+				kit.store(sessionFileToExportTo);
+			} catch (UserAbortException e1) {
+				e1.printStackTrace();
+			}
 		}
 	}
 

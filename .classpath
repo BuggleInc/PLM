@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry including="**" kind="src" path="src"/>
 	<classpathentry excluding="*.jar" including="resources|resources/" kind="src" path="lib"/>
 	<classpathentry kind="lib" path="lib/irclib.jar"/>
 	<classpathentry kind="lib" path="lib/jsyntaxpane-0.9.4.jar"/>

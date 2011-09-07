@@ -25,7 +25,6 @@ import javax.swing.JTextArea;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.StyleSheet;
 
-import jlm.core.GameListener;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lesson;
@@ -56,28 +55,24 @@ import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 
 
-public class LessonNavigatorDialog extends JFrame implements GameListener {
+public class LessonNavigatorDialog extends JDialog  {
 
 	private static final long serialVersionUID = -1800747039420103759L;
+	Lesson lesson;
 	
 	public LessonNavigatorDialog(JFrame parent) {
 		super();
 		
-		currentLessonHasChanged();
-		Game.getInstance().addGameListener(this);
+		lesson = Game.getInstance().getCurrentLesson();
+		setTitle("Your progress on lesson "+ lesson.getName());
+
+		graph = lesson.getExercisesGraph();
+		initComponents();
 
 		setResizable(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(getParent());
 	}
-
-	/* elements of the GameListener interface that we do not care about */
-	public void currentExerciseHasChanged() {}
-	public void lessonsChanged() {}
-	public void selectedEntityHasChanged() {}
-	public void selectedWorldHasChanged() {}
-	public void selectedWorldWasUpdated() {}
-
 	
     /**
      * the graph
@@ -306,6 +301,7 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
 			public void actionPerformed(ActionEvent e) {
 				if (selectedExo != null) { 
 					Game.getInstance().setCurrentExercise(selectedExo);
+					Game.getInstance().setCurrentLesson(lesson);
 				}
 				dispose();
 			}
@@ -329,14 +325,6 @@ public class LessonNavigatorDialog extends JFrame implements GameListener {
 		pack();
     }
     
-	@Override
-	public void currentLessonHasChanged() {
-		Lesson lesson = Game.getInstance().getCurrentLesson();
-		setTitle("Your progress on lesson "+ lesson.getName());
-
-		graph = lesson.getExercisesGraph();
-		initComponents();
-	}
 }
 
 /* FIXME: better location */

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-04 18:12+0300\n"
+"POT-Creation-Date: 2011-09-07 09:58+0300\n"
 "PO-Revision-Date: 2011-04-05 15:13+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -28,7 +28,12 @@ msgid ""
 "the tool tips appearing when your mouse is over the elements.  Here is a "
 "little explanation of the components in case you fail to understand "
 "something. The main window is made of 5 main components:"
-msgstr "L'environnement de travail de JLM devrait être immédiat à maîtriser, en particulier avec les bulles d'aide qui apparaissent quand votre souris survole les éléments. Voici une petite explication des composants au cas où quelque chose vous échappe. La fenêtre principale est faite de 5 composants majeurs :"
+msgstr ""
+"L'environnement de travail de JLM devrait être immédiat à maîtriser, en "
+"particulier avec les bulles d'aide qui apparaissent quand votre souris "
+"survole les éléments. Voici une petite explication des composants au cas où "
+"quelque chose vous échappe. La fenêtre principale est faite de 5 composants "
+"majeurs :"
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:10
@@ -943,13 +948,21 @@ msgstr "Le monde de Hanoï"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/hanoi/HanoiWorld.html:3
+#, fuzzy
+#| msgid ""
+#| "This world implements the ultra-classical Hanoi problem. You are asked to "
+#| "move the disk pile from the stick where they are to the target stick "
+#| "(given as second parameter in the world's name -- number 1 for the "
+#| "default world). There is some extra constraint: you can only move one "
+#| "disk at a time, and you cannot move a big disk over a smaller one.  The "
+#| "only function provided is the following:"
 msgid ""
 "This world implements the ultra-classical Hanoi problem. You are asked to "
 "move the disk pile from the stick where they are to the target stick (given "
 "as second parameter in the world's name -- number 1 for the default world). "
 "There is some extra constraint: you can only move one disk at a time, and "
-"you cannot move a big disk over a smaller one.  The only function provided "
-"is the following:"
+"you cannot move a big disk over a smaller one.  There is only 2 functions "
+"provided is the following:"
 msgstr ""
 "Ce monde implémente le problème ultra classique de Hanoï. Il vous est "
 "demandé de déplacer une pile de disques du piquet où ils se trouvent vers un "
@@ -976,6 +989,21 @@ msgstr ""
 "<code>dst</code>. Comme vous le voyez, si vous demandez un déplacement "
 "invalide (comme le placement d'un disque sur un disque plus petit), une "
 "exception est levée."
+
+#. type: Content of: <pre>
+#: src/jlm/universe/hanoi/HanoiWorld.html:17
+#, fuzzy, no-wrap
+#| msgid "int getValue(int idx)"
+msgid "int getSlotSize(int slot);"
+msgstr "int getValue(int idx)"
+
+#. type: Content of: outside any tag (error?)
+#: src/jlm/universe/hanoi/HanoiWorld.html:19
+msgid ""
+"It returns the amount of disks placed on the specified slot. This is mainly "
+"used to initialize the recursion and set the amount of recursive call to "
+"execute."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
@@ -1271,7 +1299,14 @@ msgid ""
 "exercise, you show instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
 "<i>Objective</i> one.  In most lessons, your code must be written in Java."
-msgstr "Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles pour faire en sorte que le monde ressemble à l'objectif de l'exercice. Par exemple dans cet exercice, vous devez instruire votre buggle pour qu'elle avance d'un pas. Observez la différence entre l'état initial et l'objectif en utilisant les panneaux à droite. Dans la plupart des exercices, vous devez écrire vos programmes en Java."
+msgstr ""
+"Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
+"donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
+"pour faire en sorte que le monde ressemble à l'objectif de l'exercice. Par "
+"exemple dans cet exercice, vous devez instruire votre buggle pour qu'elle "
+"avance d'un pas. Observez la différence entre l'état initial et l'objectif "
+"en utilisant les panneaux à droite. Dans la plupart des exercices, vous "
+"devez écrire vos programmes en Java."
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/Environment.html:19
@@ -1289,7 +1324,15 @@ msgid ""
 "help menu to check if other people are connected right now. Note that when "
 "you successfully solve an exercise, the good news is spread on twitter.  "
 "Keep posted to the progress of your friends by following #jlmlovers :)"
-msgstr "Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez les différents éléments composant la fenêtre, et placez la souris sur dessus pour voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La zone blanche en bas est la console : c'est là que les erreurs et messages sont affichés. Si vous avez accès à internet, connectez vous au forum par le menu d'aide pour voir si d'autres personnes sont connectés. Notez que quand vous réussissez un exercice, la bonne nouvelle est envoyée sur twitter. Suivez les progrès de vos amis en suivant #jlmlovers :)"
+msgstr ""
+"Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez "
+"les différents éléments composant la fenêtre, et placez la souris sur dessus "
+"pour voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La "
+"zone blanche en bas est la console : c'est là que les erreurs et messages "
+"sont affichés. Si vous avez accès à internet, connectez vous au forum par le "
+"menu d'aide pour voir si d'autres personnes sont connectés. Notez que quand "
+"vous réussissez un exercice, la bonne nouvelle est envoyée sur twitter. "
+"Suivez les progrès de vos amis en suivant #jlmlovers :)"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Environment.html:30
@@ -1301,7 +1344,15 @@ msgid ""
 "limited in its communication abilities, but he's not mean. If you look "
 "closer, the solution to solve your issue is written in the middle of those "
 "cryptic messages. You'll see, with a bit of habit, we get used to it."
-msgstr "Si votre code contient des erreurs (et les programmes finissent toujours par en contenir), l'ordinateur affichera les messages d'erreur sur la console. Vous devez bien entendu corriger ces erreurs pour réussir les exercices. Les messages affichés peuvent paraître inquiétant au premier abord, mais pas de panique. Le compilateur est seulement pas très doué pour communiquer, il n'est pas fondamentalement méchant. En regardant de plus près, la solution pour corriger les problèmes est inscrite dans ces messages cryptiques. Vous verrez, avec un peu d'entraînement, vous vous y habituerez."
+msgstr ""
+"Si votre code contient des erreurs (et les programmes finissent toujours par "
+"en contenir), l'ordinateur affichera les messages d'erreur sur la console. "
+"Vous devez bien entendu corriger ces erreurs pour réussir les exercices. Les "
+"messages affichés peuvent paraître inquiétant au premier abord, mais pas de "
+"panique. Le compilateur est seulement pas très doué pour communiquer, il "
+"n'est pas fondamentalement méchant. En regardant de plus près, la solution "
+"pour corriger les problèmes est inscrite dans ces messages cryptiques. Vous "
+"verrez, avec un peu d'entraînement, vous vous y habituerez."
 
 #. type: Content of: <p><p><h3>
 #: src/lessons/welcome/Environment.html:38
@@ -1315,7 +1366,11 @@ msgid ""
 "step forward using the Source Code pane. For that, simply write the "
 "following code (clicking on the interactive controls is not enough: You have "
 "to write the code after experimenting interactively)."
-msgstr "Il est temps d'écrire votre premier programme. Demandez simplement de faire un pas en avant dans le panneau de Code Source. Pour cela, écrivez simplement le code suivant. Cliquer sur les contrôles interactifs ne suffit pas. Il faut écrire le code après avoir expérimenté interactivement."
+msgstr ""
+"Il est temps d'écrire votre premier programme. Demandez simplement de faire "
+"un pas en avant dans le panneau de Code Source. Pour cela, écrivez "
+"simplement le code suivant. Cliquer sur les contrôles interactifs ne suffit "
+"pas. Il faut écrire le code après avoir expérimenté interactivement."
 
 #. type: Content of: <p><p><p><pre>
 #: src/lessons/welcome/Environment.html:44 src/lessons/welcome/Basics.html:26
@@ -1339,14 +1394,20 @@ msgstr ";"
 msgid ""
 "which tells the compiler that the instruction is over (yes, computers are so "
 "dumb that they cannot <i>guess</i> obvious stuff like this)."
-msgstr "car cela indique au compilateur que l'instruction est terminée (oui, les ordinateurs sont si stupides qu'il faut leur préciser des choses aussi simples)."
+msgstr ""
+"car cela indique au compilateur que l'instruction est terminée (oui, les "
+"ordinateurs sont si stupides qu'il faut leur préciser des choses aussi "
+"simples)."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Environment.html:49
 msgid ""
 "Once done, clic on run, and proceed to next exercise with the right combo-"
 "box (or keep around to experiment further if you feel so)."
-msgstr "Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec le menu défilant en haut à droite (ou restez ici pour expérimenter un peu si vous le voulez)."
+msgstr ""
+"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec "
+"le menu défilant en haut à droite (ou restez ici pour expérimenter un peu si "
+"vous le voulez)."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Basics.html:3
@@ -1355,7 +1416,12 @@ msgid ""
 "programming is nothing more than giving simple instructions to the computer "
 "that blindly apply them. The main difficulty is to explain stuff to someone "
 "as stupid as a computer..."
-msgstr "Félicitations ! Vous venez d'écrire votre premier programme ! Vous avez compris l'idée maintenant : programmer, c'est simplement donner des instructions à l'ordinateur, qui les applique aveuglément. La plus grande difficulté est d'expliquer quoi faire à quelqu'un d'aussi bête que l'ordinateur..."
+msgstr ""
+"Félicitations ! Vous venez d'écrire votre premier programme ! Vous avez "
+"compris l'idée maintenant : programmer, c'est simplement donner des "
+"instructions à l'ordinateur, qui les applique aveuglément. La plus grande "
+"difficulté est d'expliquer quoi faire à quelqu'un d'aussi bête que "
+"l'ordinateur..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Basics.html:8
@@ -1365,7 +1431,14 @@ msgid ""
 "<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. Java "
 "want to have the instructions separated by semi-columns (;) and given "
 "parenthesis, as in"
-msgstr "<a name=\"generalites\"> Le programme Java le plus simple est formé d'une suite d'instructions, séparées par des points-virgules. Il faut le comprendre comme une suite d'ordres simples que l'on donne à la machine. C'est assez comparable à une recette de cuisine où l'on dit <i>cassez les oeufs puis ajoutez du sel puis mélangez le tout puis faites cuire</i>. Java veut que les instructions soient séparées par des points-virgules (;) et dotées de parenthèses comme dans"
+msgstr ""
+"<a name=\"generalites\"> Le programme Java le plus simple est formé d'une "
+"suite d'instructions, séparées par des points-virgules. Il faut le "
+"comprendre comme une suite d'ordres simples que l'on donne à la machine. "
+"C'est assez comparable à une recette de cuisine où l'on dit <i>cassez les "
+"oeufs puis ajoutez du sel puis mélangez le tout puis faites cuire</i>. Java "
+"veut que les instructions soient séparées par des points-virgules (;) et "
+"dotées de parenthèses comme dans"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/Basics.html:12
@@ -1401,7 +1474,13 @@ msgid ""
 "method for each button of the interactive control panel. To achieve the same "
 "effect than the <b>forward</b> button (making the buggle moving one step "
 "forward), you need to write the following in the editor:"
-msgstr "Bien sûr, ces instructions en particulier n'existent pas en Java, même si vous pourriez les définir par vous-même (nous apprendrons à le faire dans un moment). Pour l'instant, nous allons utiliser les instructions de la buggle. Il y a une méthode pour chaque bouton du contrôle interactif.  Pour faire la même chose que le bouton <b>forward</b> (faire avancer la buggle d'un pas), il faut écrire dans l'éditeur :"
+msgstr ""
+"Bien sûr, ces instructions en particulier n'existent pas en Java, même si "
+"vous pourriez les définir par vous-même (nous apprendrons à le faire dans un "
+"moment). Pour l'instant, nous allons utiliser les instructions de la buggle. "
+"Il y a une méthode pour chaque bouton du contrôle interactif.  Pour faire la "
+"même chose que le bouton <b>forward</b> (faire avancer la buggle d'un pas), "
+"il faut écrire dans l'éditeur :"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Basics.html:27
@@ -1448,7 +1527,9 @@ msgstr ""
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
-msgstr "La buggle offre d'autres méthodes, présentées dans le menu \"Help/about this world\". Elles seront introduites au fur et à mesure des besoins."
+msgstr ""
+"La buggle offre d'autres méthodes, présentées dans le menu \"Help/about this "
+"world\". Elles seront introduites au fur et à mesure des besoins."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/Basics.html:44 src/lessons/welcome/Conditions.html:58
@@ -1473,7 +1554,11 @@ msgid ""
 "<a name=\"Objectives\"> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
 "and hide inside. Check the objective world to see exactly what this means."
-msgstr "<a name=\"Objectives\"> Notre second programme sera un peu plus compliqué, mais pas tellement. L'objectif de votre buggle est simplement de se dessiner une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif pour voir exactement ce que cela veut dire."
+msgstr ""
+"<a name=\"Objectives\"> Notre second programme sera un peu plus compliqué, "
+"mais pas tellement. L'objectif de votre buggle est simplement de se dessiner "
+"une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif "
+"pour voir exactement ce que cela veut dire."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/BasicsDrawG.html:2
@@ -1481,7 +1566,10 @@ msgid ""
 "Now that we know how to draw things on the board, we'll enjoy this ability "
 "and draw a beautiful G on the board (check Objective panel for details on "
 "what's expected)."
-msgstr "Maintenant que vous savez écrire des choses sur le sol, nous allons utiliser cette compétence pour dessiner un merveilleux G par terre. Consultez le panneau d'objectif pour les détails de ce qui est attendu."
+msgstr ""
+"Maintenant que vous savez écrire des choses sur le sol, nous allons utiliser "
+"cette compétence pour dessiner un merveilleux G par terre. Consultez le "
+"panneau d'objectif pour les détails de ce qui est attendu."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BasicsDrawG.html:6
@@ -1495,7 +1583,19 @@ msgid ""
 "(describing obvious stuff) is a bad idea as the important idea get lost in "
 "the noise.  There is three types of comments in Java, instructing the "
 "compiler to not read the text you add for humans:"
-msgstr "Quand vous écrivez un programme un peu complexe, il est souvent pratique d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après coup. Ici par exemple, il est assez facile de se perdre dans les ordres nécessaires au dessin. Il peut être pratique d'ajouter des commentaires comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. Retournons à la position initiale</i>. Documenter votre code est presque toujours nécessaire si vous (ou quelqu'un d'autre) veut le lire après coup. Cependant, commenter des choses triviales est une mauvaise idée car cela dilue les instructions Java dans des commentaires trop verbeux. En anglais, ce travers s'appelle <i>overcommenting</i>. Il y a trois types de commentaires en Java, indiquant au compilateur de ne pas lire le texte que vous ajoutez pour les humains :"
+msgstr ""
+"Quand vous écrivez un programme un peu complexe, il est souvent pratique "
+"d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après "
+"coup. Ici par exemple, il est assez facile de se perdre dans les ordres "
+"nécessaires au dessin. Il peut être pratique d'ajouter des commentaires "
+"comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. "
+"Retournons à la position initiale</i>. Documenter votre code est presque "
+"toujours nécessaire si vous (ou quelqu'un d'autre) veut le lire après coup. "
+"Cependant, commenter des choses triviales est une mauvaise idée car cela "
+"dilue les instructions Java dans des commentaires trop verbeux. En anglais, "
+"ce travers s'appelle <i>overcommenting</i>. Il y a trois types de "
+"commentaires en Java, indiquant au compilateur de ne pas lire le texte que "
+"vous ajoutez pour les humains :"
 
 #. type: Content of: <p><ul><li>
 #: src/lessons/welcome/BasicsDrawG.html:16
@@ -1824,7 +1924,12 @@ msgid ""
 "that often), you would prefer the loop body to get evaluated at least once, "
 "even if the condition is initially false. For that, a variation of the "
 "<tt>while</tt> loop gets used, using the following syntax in Java:"
-msgstr "Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose, et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive parfois que l'on veuille que le corps de la boucle soit évalué au moins une fois, même si la condition est initialement fausse. On utilise pour cela une variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
+msgstr ""
+"Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose, "
+"et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive "
+"parfois que l'on veuille que le corps de la boucle soit évalué au moins une "
+"fois, même si la condition est initialement fausse. On utilise pour cela une "
+"variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/LoopDoWhile.html:9
@@ -1880,14 +1985,23 @@ msgid ""
 "have to use specific methods such as <code>isOverBaggle(), isCarryingBaggle"
 "(), pickUpBaggle()</code> or <code>dropBaggle()</code>. Check their "
 "documentation in \"Help/About this world\" for more details."
-msgstr "Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour cela, elles peuvent utiliser des fonctions spécifiques : <code>isOverBaggle(), isCarryingBaggle(), pickUpBaggle()</code> et <code>dropBaggle()</code>. Tous les détails se trouvent dans la documentation accessible depuis \"Help/About this world\"."
+msgstr ""
+"Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
+"biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
+"cela, elles peuvent utiliser des fonctions spécifiques : <code>isOverBaggle"
+"(), isCarryingBaggle(), pickUpBaggle()</code> et <code>dropBaggle()</code>. "
+"Tous les détails se trouvent dans la documentation accessible depuis \"Help/"
+"About this world\"."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/BaggleSeeker.html:10
 msgid ""
 "Let each buggle find its baggle by adapting the code you wrote in previous "
 "exercise (copy/paste what you've done before to save time)."
-msgstr "Faites en sorte que chaque buggle trouve son baggle en adaptant le code que vous aviez écrit pour l'exercice précédent (faites un copie/colle de ce que vous aviez fait pour gagner du temps)."
+msgstr ""
+"Faites en sorte que chaque buggle trouve son baggle en adaptant le code que "
+"vous aviez écrit pour l'exercice précédent (faites un copie/colle de ce que "
+"vous aviez fait pour gagner du temps)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Variables.html:2
@@ -1897,7 +2011,13 @@ msgid ""
 "<b>instructions</b>. In the buggle world, the main data are a bit hidden "
 "behind the graphical representation, but that's no reason to never "
 "manipulate some data explicitly."
-msgstr "Les programmes que nous avons écrit jusque là passent à coté d'un point fondamental en informatique. En effet, la science informatique est celle de traiter des <b>données</b> grâce à des <b>instructions</b>. Dans le monde des buggles, les principales données sont cachées derrière la représentation graphique, mais ce n'est pas une raison pour ne jamais manipuler explicitement des données."
+msgstr ""
+"Les programmes que nous avons écrit jusque là passent à coté d'un point "
+"fondamental en informatique. En effet, la science informatique est celle de "
+"traiter des <b>données</b> grâce à des <b>instructions</b>. Dans le monde "
+"des buggles, les principales données sont cachées derrière la représentation "
+"graphique, mais ce n'est pas une raison pour ne jamais manipuler "
+"explicitement des données."
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/Variables.html:8
@@ -1913,7 +2033,14 @@ msgid ""
 "not very different from a shelve containing a book: you put your data (say "
 "'5') in the variable (say 'length'), and you can retrieve it latter when you "
 "need it."
-msgstr "Java permet d'utiliser différents <i>types</i> de données, tels que les entiers, les nombres à virgules ou les chaînes de caractères. Si on veut utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est pas très différent d'une étagère contenant un livre: vous rangez votre donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la retrouver plus tard quand vous en avez besoin."
+msgstr ""
+"Java permet d'utiliser différents <i>types</i> de données, tels que les "
+"entiers, les nombres à virgules ou les chaînes de caractères. Si on veut "
+"utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</"
+"i>, qui est une sorte de case contenant une valeur. Ce n'est pas très "
+"différent d'une étagère contenant un livre: vous rangez votre donnée (disons "
+"'5') dans la variable (disons 'longueur'), et vous pouvez la retrouver plus "
+"tard quand vous en avez besoin."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Variables.html:15
@@ -1921,7 +2048,10 @@ msgid ""
 "Java is said to be a <i>typed</i> language, which means that it is only "
 "possible to store a value in a variable of the right type. Don't think about "
 "storing the letters of your name into an integer variable."
-msgstr "Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker une valeur que dans une variable du bon type. Pas question de stocker votre nom dans une variable entière."
+msgstr ""
+"Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker "
+"une valeur que dans une variable du bon type. Pas question de stocker votre "
+"nom dans une variable entière."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Variables.html:19
@@ -1932,7 +2062,15 @@ msgid ""
 "booleans (ie, values being either true or false) and <b>String</b> for char "
 "strings. If you want, you can specify the initial value of the variable by "
 "adding a equal sign (=) followed by the value after the declaration."
-msgstr "Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, un espace et le nom de la variable. Notez qu'il n'est pas possible d'utiliser d'accents dans les noms de variables, malheureusement. Parmi les types existants, on trouve: <b>int</b> pour les entiers, <b>double</b> pour les nombres à virgule, <b>boolean</b> pour les booléens (i.e. les variables qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes de caractères.  Si l'on veut, on peut faire suivre la déclaration du signe = suivi de la valeur initiale à donner à la valeur."
+msgstr ""
+"Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, "
+"un espace et le nom de la variable. Notez qu'il n'est pas possible "
+"d'utiliser d'accents dans les noms de variables, malheureusement. Parmi les "
+"types existants, on trouve: <b>int</b> pour les entiers, <b>double</b> pour "
+"les nombres à virgule, <b>boolean</b> pour les booléens (i.e. les variables "
+"qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes "
+"de caractères.  Si l'on veut, on peut faire suivre la déclaration du signe = "
+"suivi de la valeur initiale à donner à la valeur."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Variables.html:25
@@ -1996,7 +2134,9 @@ msgstr "int x = 4;"
 msgid ""
 "This quite the same story for strings, floating point numbers and boolean "
 "values."
-msgstr "C'est la même histoire pour les chaînes, nombres à virgule flotante et les booléens."
+msgstr ""
+"C'est la même histoire pour les chaînes, nombres à virgule flotante et les "
+"booléens."
 
 #. type: Content of: <p><p><p><p><p><p><pre>
 #: src/lessons/welcome/Variables.html:35
@@ -2015,7 +2155,9 @@ msgstr ""
 msgid ""
 "To the right of the equal symbol, you can put an expression containing "
 "constants, variables and operations:"
-msgstr "À droite du signe égal, on peut mettre une expression quelconque, qui peut contenir des constantes, des variables et des opérations :"
+msgstr ""
+"À droite du signe égal, on peut mettre une expression quelconque, qui peut "
+"contenir des constantes, des variables et des opérations :"
 
 #. type: Content of: <p><p><p><p><p><p><p><pre>
 #: src/lessons/welcome/Variables.html:43
@@ -2035,7 +2177,10 @@ msgid ""
 "It is now time to do more challenging exercises, don't you think? The "
 "objective is now to move forward until you find a baggle, pick it up, and "
 "then move back to your initial location before dropping the baggle."
-msgstr "Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif cette fois est d'avancer jusqu'au baggle qui se trouve devant la buggle, le ramasser, revenir à la position initiale, puis de poser le baggle."
+msgstr ""
+"Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif "
+"cette fois est d'avancer jusqu'au baggle qui se trouve devant la buggle, le "
+"ramasser, revenir à la position initiale, puis de poser le baggle."
 
 #. type: Content of: <p><p><p><p><p><p><p><h3>
 #: src/lessons/welcome/Variables.html:55
@@ -2928,7 +3073,17 @@ msgid ""
 "have any issue with it, allowing you to focus on the fundamental problems of "
 "what you want to solve instead of struggling with syntaxic difficulties. "
 "Some of these exercises are even fun to do ;)"
-msgstr "Vous connaissez maintenant les bases de la programmation Java. Disons au moins que vous avez vu les concepts les plus important et que vous devriez être capable de lire et comprendre la plupart des programmes écrits en Java. Pour plus de sécurité, vous devriez faire les autres exercices de cette leçon pour solidifier vos acquis en les réutilisant dans diverses situations. Après cela, vous maîtriserez ce qu'on appelle la \"programmation tactique\", ce qui veut dire que votre maîtrise de la syntaxe Java vous permettra de vous concentrer sur les problèmes à résoudre sans vous battre contre le compilateur à propos de la syntaxe. Certains de ces exercices sont même amusants à résoudre ;)"
+msgstr ""
+"Vous connaissez maintenant les bases de la programmation Java. Disons au "
+"moins que vous avez vu les concepts les plus important et que vous devriez "
+"être capable de lire et comprendre la plupart des programmes écrits en Java. "
+"Pour plus de sécurité, vous devriez faire les autres exercices de cette "
+"leçon pour solidifier vos acquis en les réutilisant dans diverses "
+"situations. Après cela, vous maîtriserez ce qu'on appelle la \"programmation "
+"tactique\", ce qui veut dire que votre maîtrise de la syntaxe Java vous "
+"permettra de vous concentrer sur les problèmes à résoudre sans vous battre "
+"contre le compilateur à propos de la syntaxe. Certains de ces exercices sont "
+"même amusants à résoudre ;)"
 
 #. type: Content of: <p><p><p><p><p><p>
 #: src/lessons/welcome/MethodsArgs.html:75
@@ -2943,7 +3098,19 @@ msgid ""
 "introduction activity to what programming means for real beginners, but the "
 "last exercises constitute challenges and brain teaser even to professional "
 "programmers."
-msgstr "Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et passer directement à des exercices plus complets et plus intéressants. Par exemple, la leçon sur les <i>Labyrinthes</i> vous apprendra à sortir d'un labyrinthe. Les algorithmes impliqués ne sont pas ultra complexes, mais vous serez amenés à améliorer votre code à plusieurs reprises afin de pouvoir sortir de n'importe quel type de labyrinthe. La leçon <i>LightBot</i> est un petit jeu de programmation où vous contrôlez un robot voulant éclairer le monde. Comme il est programmé graphiquement et non en Java, les premiers exercices peuvent être utilisés comme une introduction à ce que programmer veut dire pour les débutants. Mais les derniers exercices sont plus difficiles et devraient constituer des casse-têtes même pour les programmeurs professionnels."
+msgstr ""
+"Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et "
+"passer directement à des exercices plus complets et plus intéressants. Par "
+"exemple, la leçon sur les <i>Labyrinthes</i> vous apprendra à sortir d'un "
+"labyrinthe. Les algorithmes impliqués ne sont pas ultra complexes, mais vous "
+"serez amenés à améliorer votre code à plusieurs reprises afin de pouvoir "
+"sortir de n'importe quel type de labyrinthe. La leçon <i>LightBot</i> est un "
+"petit jeu de programmation où vous contrôlez un robot voulant éclairer le "
+"monde. Comme il est programmé graphiquement et non en Java, les premiers "
+"exercices peuvent être utilisés comme une introduction à ce que programmer "
+"veut dire pour les débutants. Mais les derniers exercices sont plus "
+"difficiles et devraient constituer des casse-têtes même pour les "
+"programmeurs professionnels."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture.html:3
@@ -3098,7 +3265,10 @@ msgid ""
 "To proceed to the next exercise, you need to remark that the combobox used "
 "to switch the exercise have a scroll bar that you can use to see the next "
 "exercises of the lesson."
-msgstr "Pour passer à l'exercice suivant, remarquez que le menu défilant pour changer l'exercice est doté d'un ascenseur que vous devez utiliser pour voir la suite."
+msgstr ""
+"Pour passer à l'exercice suivant, remarquez que le menu défilant pour "
+"changer l'exercice est doté d'un ascenseur que vous devez utiliser pour voir "
+"la suite."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture3.html:3
@@ -5115,6 +5285,698 @@ msgid ""
 msgstr ""
 "Cette fois, il faut parcourir le monde en zig-zag. Regardez le monde "
 "objectif pour voir les détails de l'ordre de parcours demandé."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/Close10.html:1
+msgid "Close to 10"
+msgstr "Proche de 10"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/Close10.html:2
+msgid ""
+"Given 2 int values, return whichever value is nearest to the value 10, or "
+"return 0 in the event of a tie. Note that Math.abs(n) returns the absolute "
+"value of a number."
+msgstr ""
+"Étant donné deux nombres entiers, retourner la valeur la plus proche de 10, "
+"ou 0 en cas de match nul. Remarquez que Math.abs(n) retourne la valeur "
+"absolue d'un nombre."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/Close10.html:6
+#: src/lessons/welcome/bool1/Diff21.html:5
+#: src/lessons/welcome/bool1/HasTeen.html:6
+#: src/lessons/welcome/bool1/IcyHot.html:5
+#: src/lessons/welcome/bool1/In1020.html:5
+#: src/lessons/welcome/bool1/In3050.html:5
+#: src/lessons/welcome/bool1/LastDigit.html:9
+#: src/lessons/welcome/bool1/LoneTeen.html:6
+#: src/lessons/welcome/bool1/Main.html:11
+#: src/lessons/welcome/bool1/Makes10.html:5
+#: src/lessons/welcome/bool1/Max1020.html:8
+#: src/lessons/welcome/bool1/MonkeyTrouble.html:7
+#: src/lessons/welcome/bool1/NearHundred.html:5
+#: src/lessons/welcome/bool1/ParotTrouble.html:8
+#: src/lessons/welcome/bool1/PosNeg.html:5
+#: src/lessons/welcome/bool1/SleepIn.html:7
+#: src/lessons/welcome/bool1/SumDouble.html:5
+#: src/lessons/welcome/bool2/AlarmClock.html:11
+#: src/lessons/welcome/bool2/AnswerCell.html:8
+#: src/lessons/welcome/bool2/BlueTicket.html:10
+#: src/lessons/welcome/bool2/CaughtSpeeding.html:11
+#: src/lessons/welcome/bool2/CigarParty.html:9
+#: src/lessons/welcome/bool2/DateFashion.html:12
+#: src/lessons/welcome/bool2/GreenTicket.html:9
+#: src/lessons/welcome/bool2/In1To10.html:8
+#: src/lessons/welcome/bool2/InOrderEqual.html:9
+#: src/lessons/welcome/bool2/InOrder.html:8
+#: src/lessons/welcome/bool2/LastDigit.html:8
+#: src/lessons/welcome/bool2/LessBy10.html:5
+#: src/lessons/welcome/bool2/Main.html:4
+#: src/lessons/welcome/bool2/MaxMod5.html:9
+#: src/lessons/welcome/bool2/NearTen.html:8
+#: src/lessons/welcome/bool2/RedTicket.html:9
+#: src/lessons/welcome/bool2/ShareDigit.html:9
+#: src/lessons/welcome/bool2/SortaSum.html:7
+#: src/lessons/welcome/bool2/SquirrelPlay.html:10
+#: src/lessons/welcome/bool2/TeaParty.html:11
+#: src/lessons/welcome/bool2/TeenSum.html:8
+#: src/lessons/welcome/bool2/TwoAsOne.html:5
+#: src/lessons/welcome/bool2/WithoutDoubles.html:8
+#: src/lessons/bat/string1/AltPairs.html:4
+#: src/lessons/bat/string1/Array123.html:4
+#: src/lessons/bat/string1/Array667.html:7
+#: src/lessons/bat/string1/ArrayCount9.html:4
+#: src/lessons/bat/string1/ArrayFront9.html:4
+#: src/lessons/bat/string1/FrontTimes.html:7
+#: src/lessons/bat/string1/Has271.html:8 src/lessons/bat/string1/Last2.html:7
+#: src/lessons/bat/string1/Main.html:8
+#: src/lessons/bat/string1/NoTriples.html:7
+#: src/lessons/bat/string1/StringBits.html:4
+#: src/lessons/bat/string1/StringMatch.html:8
+#: src/lessons/bat/string1/StringSplosion.html:4
+#: src/lessons/bat/string1/StringTimes.html:4
+#: src/lessons/bat/string1/StringX.html:6
+#: src/lessons/bat/string1/StringYak.html:7
+msgid ""
+"This exercise was converted to JLM from the excellent exercising site http://"
+"javabat.com/"
+msgstr ""
+"Cet exercice a été extrait de l'excellent site d'exercices http://javabat."
+"com/ pour JLM."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/CountTeen.html:1
+msgid "Count Teen"
+msgstr "Compter les ados"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/CountTeen.html:2
+msgid ""
+"We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
+"Given 4 int values, return the amount of teen ones."
+msgstr ""
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"Étant donné quatre nombres entiers, retournez combien d'entre eux sont ados."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/CountTeen.html:5
+msgid "This exercise was written by Martin Quinson."
+msgstr "Cet exercice a été écrit par Martin Quinson."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/Diff21.html:1
+msgid "Diff 21"
+msgstr "Diff 21"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/Diff21.html:2
+msgid ""
+"Given an int n, return the absolute difference between n and 21, except "
+"return double the absolute difference if n is over 21."
+msgstr ""
+"Étant donné un entier n, retournez la différence absolue entre n et 21, sauf "
+"si n est plus grand que 21. Dans ce cas, doublez la différence absolue."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/HasTeen.html:1
+msgid "Has Teen"
+msgstr "A des ados"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/HasTeen.html:2
+msgid ""
+"We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
+"Given 3 int values, return true if 1 or more of them are teen."
+msgstr ""
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"Étant donné trois nombres entiers, retournez vrai ssi un ou plusieurs "
+"d'entre eux sont ados."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/IcyHot.html:1
+msgid "Icy Hot"
+msgstr "Feu glacé"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/IcyHot.html:2
+msgid ""
+"Given two temperatures, return true if one is less than 0 and the other is "
+"greater than 100."
+msgstr ""
+"Étant donné deux températures, retournez vrai si l'une est inférieure à zéro "
+"et l'autre supérieure à 100."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/In1020.html:1
+msgid "In [10;20]"
+msgstr "Dans [10;20]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/In1020.html:2
+msgid ""
+"Given 2 int values, return true if either of them is in the range 10..20 "
+"inclusive."
+msgstr ""
+"Étant donné deux nombres entiers, retournez vrai s'un d'entre eux est dans "
+"l'intervale [10;20]."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/In3050.html:1
+msgid "In [30;50]"
+msgstr "Dans [30;50]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/In3050.html:2
+msgid ""
+"Given 2 int values, return true if they are both in the range 30..40 "
+"inclusive, or they are both in the range 40..50 inclusive."
+msgstr ""
+"Étant donné deux nombres entiers, retournez vrai s'ils sont tous les deux "
+"dans l'intervale [30;40], ou s'ils sont tous les deux dans l'intervale "
+"[40;50]."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/LastDigit.html:1
+#: src/lessons/welcome/bool2/LastDigit.html:1
+msgid "LastDigit"
+msgstr "Dernier chiffre"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/LastDigit.html:2
+msgid ""
+"Given two non-negative int values, return true if they have the same last "
+"digit, such as with 27 and 57. Note that the % \"mod\" operator computes "
+"remainders, so 17 % 10 is 7."
+msgstr ""
+"Étant donné deux nombres entiers positifs, retournez vrai s'ils ont le même "
+"dernier chiffre, comme 27 et 57. Remarquez que l'opérateur % (modulo) "
+"calcule le reste de la division entière (donc 17 % 10 vaut 7)."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/LoneTeen.html:1
+msgid "Lone Teen"
+msgstr "Ado solitaire"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/LoneTeen.html:2
+msgid ""
+"We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
+"Given 2 int values, return true if one or the other is teen, but not both."
+msgstr ""
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux est "
+"ado, mais pas les deux."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/Main.html:1
+msgid "Boolean fun"
+msgstr "Jeux booléens"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/Main.html:3
+msgid ""
+"Boolean operations are one of the very basic task in programming.  As long "
+"as you cannot write a not so simple boolean test under the minute, you "
+"probably will have a very bad time writing a real program."
+msgstr ""
+"Les opérations booléennes sont l'une des fondements de la programmation. "
+"Tant que vous ne pourrez pas écrire des tests booléens (même non triviaux) "
+"en moins d'une minute, il vous sera difficile d'écrire un vrai programme."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/Main.html:8
+msgid ""
+"That is why this lesson provides you a bunch of such exercises, so that you "
+"can get trained in this."
+msgstr ""
+"C'est pourquoi cette leçon vous propose une certaine quantité de tels "
+"exercices pour vous permettre de vous entrainer."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/Makes10.html:1
+msgid "Makes 10"
+msgstr "Font 10"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/Makes10.html:2
+msgid ""
+"Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
+"10."
+msgstr ""
+"Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux vaut "
+"10, ou si leur somme vaut 10."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/Max1020.html:1
+msgid "Max1020"
+msgstr "Max1020"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/Max1020.html:2
+msgid ""
+"Given 2 positive int values, return the larger value that is in the range "
+"10..20 inclusive, or return 0 if neither is in that range."
+msgstr ""
+"Étant donné deux nombres entiers, retournez la plus grande valeur dans "
+"l'intervale [10;20], ou retournez 0 si aucun des nombres n'est dans cet "
+"intervale."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/MonkeyTrouble.html:1
+msgid "MonkeyTrouble"
+msgstr "Problème de singe"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/MonkeyTrouble.html:3
+msgid ""
+"We have two monkeys, a and b, and the parameters aSmile and bSmile indicate "
+"if each is smiling.  We are in trouble if they are both smiling or if "
+"neither of them is smiling.  Return true if we are in trouble."
+msgstr ""
+"Nous avons deux singes, a et b, et les paramètres aSmile et bSmile indiquent "
+"s'ils sourient. Nous avons un problème s'ils sourient tous les deux en même "
+"temps, ou si aucun des deux ne sourit. Retournez vrai si nous avons un "
+"problème."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/NearHundred.html:1
+msgid "Near Hundred"
+msgstr "Presque 100"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/NearHundred.html:2
+msgid ""
+"Given an int n, return true if it is within 10 of 100 or 200. Note Math.abs"
+"(n) returns the absolute value of a number."
+msgstr ""
+"Étant donné un entier n, retournez vrai s'il est à 10 près de 100 ou de 200. "
+"Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/ParotTrouble.html:1
+msgid "Parot Trouble"
+msgstr "Problème de perroquet"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/ParotTrouble.html:3
+msgid ""
+"We have a loud talking parrot. The \"hour\" parameter is the current hour "
+"time in the range 0..23. We are in trouble if the parrot is talking and the "
+"hour is before 7 or after 20. Return true if we are in trouble."
+msgstr ""
+"Nous avons un perroquet très bruyant. Le paramètre \"hour\" indique l'heure "
+"courante (dans l'intervale [0;23]). Nous avons un problème si le perroquet "
+"parle avant 7h ou après 20h. Retournez vrai si nous avons un problème."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/PosNeg.html:1
+msgid "Positive Negative"
+msgstr "Positif Negatif"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/PosNeg.html:2
+msgid ""
+"Given 2 int values, return true if one is negative and one is positive. "
+"Unless negative is true, then they both must be negative."
+msgstr ""
+"Étant donné deux entiers, retournez vrai si l'un d'entre eux est positif et "
+"l'autre négatif. Sauf si le paramètre negative est vrai, auquel cas il faut "
+"que les deux nombres soient négatifs."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/SleepIn.html:1
+msgid "SleepDay"
+msgstr "Grasse matinée"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/SleepIn.html:3
+msgid ""
+"The parameter weekday is true if it is a weekday, and the parameter vacation "
+"is true if we are on vacation. We sleep in if it is not a weekday or we're "
+"on vacation. Return true if we sleep in."
+msgstr ""
+"Le paramètre weekday est vrai si nous sommes un jour de semaine, et le "
+"paramètre vacation est vrai si nous sommes en vacances. Nous pouvons dormir "
+"ce matin s'il ne s'agit pas d'un jour de semaine ou si nous sommes en "
+"vacances. Retournez vrai si nous pouvons faire la grasse matinée."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool1/SumDouble.html:1
+msgid "Sum Double"
+msgstr "Somme doublée"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool1/SumDouble.html:2
+msgid ""
+"Given two int values, return their sum. Unless the two values are the same, "
+"then return double their sum."
+msgstr ""
+"Étant donné deux entiers, retournez leur somme. Sauf si les valeurs sont "
+"égales, auquel cas vous devez retourner le double de leur somme."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/AlarmClock.html:1
+msgid "AlarmClock"
+msgstr "Radio réveil"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/AlarmClock.html:2
+msgid ""
+"Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a "
+"boolean indicating if we are on vacation, return a string of the form "
+"\"7:00\" indicating when the alarm clock should ring. Weekdays, the alarm "
+"should be \"7:00\" and on the weekend it should be \"10:00\". Unless we are "
+"on vacation -- then on weekdays it should be \"10:00\" and weekends it "
+"should be \"off\"."
+msgstr ""
+"Étant donné le jour de la semaine, codé de la façon suivante : 0=Dimanche, "
+"1=Lundi, 2=Mardi, ... 6=Samedi, et un booléen vacation indiquant si nous "
+"sommes en vacances, retournez une chaine de caractères de la forme \"7:00\" "
+"indiquant à quelle heure nous devons régler le radio-réveil. Les jours de la "
+"semaine, nous devons nous réveiller à 7h tandis que nous pouvons dormir "
+"jusqu'à 10h le week-end. Pendant les vacances, il nous faut nous lever à 10h "
+"la semaine tandis que le réglage pour le radio-réveil doit être \"off\" le "
+"week-end."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/AnswerCell.html:1
+msgid "AnswerCell"
+msgstr "Répondeur"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/AnswerCell.html:2
+msgid ""
+"Your cell phone rings. Return true if you should answer it. Normally you "
+"answer, except in the morning you only answer if it is your mom calling. In "
+"all cases, if you are asleep, you do not answer."
+msgstr ""
+"Votre téléphone sonne. Renvoyez vrai si vous décrochez. Vous le faites "
+"habituellement, sauf le matin où vous ne répondez que si votre mère appelle. "
+"Dans tous les cas, vous ne répondez pas si vous dormez."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/BlueTicket.html:1
+msgid "BlueTicket"
+msgstr "Ticket bleu"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/BlueTicket.html:2
+msgid ""
+"You have a blue lottery ticket, with ints a, b, and c on it. This makes "
+"three pairs, which we'll call ab, bc, and ac. Consider the sum of the "
+"numbers in each pair. If any pair sums to exactly 10, the result is 10.  "
+"Otherwise if the ab sum is exactly 10 more than either bc or ac sums, the "
+"result is 5. Otherwise the result is 0."
+msgstr ""
+"Vous avez un ticket de loterie bleu, avec des entiers a, b et c inscrits "
+"dessus. Cela fait trois paires que l'on appellera ab, bc et ac. Considérez "
+"la somme des nombres de chaque pair. Si la somme de l'une des paires vaut "
+"exactement 10, le résultat est 10. Sinon, si la somme ab vaut exactement 10 "
+"de plus que les sommes bc ou ac, le résultat est 5. Sinon, le résultat est 0."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/CaughtSpeeding.html:1
+msgid "CaughtSpeeding"
+msgstr "Radar de vitesse"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/CaughtSpeeding.html:2
+msgid ""
+"You are driving a little too fast, and a police officer stops you. Write "
+"code to compute the result, encoded as an int value: 0=no ticket, 1=small "
+"ticket, 2=big ticket. If speed is 60 or less, the result is 0. If speed is "
+"between 61 and 80 inclusive, the result is 1. If speed is 81 or more, the "
+"result is 2. Unless it is your birthday -- on that day, your speed can be 5 "
+"higher in all cases."
+msgstr ""
+"Vous conduisez un peu trop vite et un officier de police vous arrête. "
+"Écrivez le code pour calculer le résultat, encodé sous forme d'un entier : "
+"0=pas d'amende, 1=petite amende, 2=grosse amende. Si votre vitesse est "
+"inférieure à 60, le résultat est 0. Si la vitesse est incluse entre 61 et 80 "
+"(inclus), le résultat est 1. Si la vitesse est 81 ou plus, le résultat est "
+"2. Tout ceci ne vaut que si ce n'est pas votre anniversaire aujourd'hui, car "
+"sinon, votre vitesse peut être supérieure de 5 dans tous les cas."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/CigarParty.html:1
+msgid "CigarParty"
+msgstr "Cigares de fête"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/CigarParty.html:2
+msgid ""
+"When squirrels get together for a party, they like to have cigars. A "
+"squirrel party is successful when the number of cigars is between 40 and 60, "
+"inclusive. Unless it is the weekend, in which case there is no upper bound "
+"on the number of cigars. Return true if the party with the"
+msgstr ""
+"Quand les écureuils font la fête, ils aiment avoir des cigares. Une fête "
+"d'écureuils est réussie si le nombre de cigares est entre 40 et 60 (inclus). "
+"Sauf si c'est le week-end, auquel cas il n'y a pas de limite supérieure au "
+"nombre de cigares. Renvoyez vrai si la fête est réussie. "
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/DateFashion.html:1
+msgid "DateFashion"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/DateFashion.html:2
+msgid ""
+"You and your date are trying to get a table at a restaurant. The parameter "
+"\"you\" is the stylishness of your clothes, in the range 0..10, and \"date\" "
+"is the stylishness of your date's clothes. The result getting the table is "
+"encoded as an int value with 0=no, 1=maybe, 2=yes. If either of you is very "
+"stylish, 8 or more, then the result is 2 (yes). With the exception that if "
+"either of you has style of 2 or less, then the result is 0 (no). Otherwise "
+"the result is 1 (maybe)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/GreenTicket.html:1
+msgid "GreenTicket"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/GreenTicket.html:2
+msgid ""
+"You have a green lottery ticket, with ints a, b, and c on it. If the numbers "
+"are all different from each other, the result is 0. If all of the numbers "
+"are the same, the result is 20. If two of the numbers are the same, the "
+"result is 10."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/In1To10.html:1
+msgid "In1To10"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/In1To10.html:2
+msgid ""
+"Given a number n, return true if n is in the range 1..10, inclusive. Unless "
+"\"outsideMode\" is true, in which case return true if the number is less or "
+"equal to 1, or greater or equal to 10."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/InOrderEqual.html:1
+msgid "InOrderEqual"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/InOrderEqual.html:2
+msgid ""
+"Given three ints, a b c, return true if they are in strict increasing order, "
+"such as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7. However, with the "
+"exception that if \"equalOk\" is true, equality is allowed, such as 5 5 7 or "
+"5 5 5."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/InOrder.html:1
+msgid "InOrder"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/InOrder.html:2
+msgid ""
+"Given three ints, a b c, return true if b is greater than a, and c is "
+"greater than b. However, with the exception that if \"bOk\" is true, b does "
+"not need to be greater than a."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/LastDigit.html:2
+msgid ""
+"Given three ints, a b c, return true if two or more of them have the same "
+"rightmost digit. The ints are non-negative. Note: the % \"mod\" operator "
+"computes the remainder, e.g. 17 % 10 is 7."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/LessBy10.html:1
+msgid "LessBy10"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/LessBy10.html:2
+msgid ""
+"Given three ints, a b c, return true if one of them is 10 or more less than "
+"one of the others."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/Main.html:1
+msgid "Boolean (even more) fun"
+msgstr "Encore des jeux booléens"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool2/Main.html:3
+msgid ""
+"A very good introduction to this type is available here: http://javabat.com/"
+"doc/ifboolean.html."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/MaxMod5.html:1
+msgid "MaxMod5"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/MaxMod5.html:2
+msgid ""
+"Given two int values, return whichever value is larger. However if the two "
+"values have the same remainder when divided by 5, then the return the "
+"smaller value. However, in all cases, if the two values are the same, return "
+"0.  Note: the % \"mod\" operator computes the remainder, e.g. 7 % 5 is 2."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/NearTen.html:1
+msgid "NearTen"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/NearTen.html:2
+msgid ""
+"Given a non-negative number \"num\", return true if num is within 2 of a "
+"multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
+"5) is 2."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/RedTicket.html:1
+msgid "RedTicket"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/RedTicket.html:2
+msgid ""
+"You have a red lottery ticket showing ints a, b, and c, each of which is 0, "
+"1, or 2. If they are all the value 2, the result is 10. Otherwise if they "
+"are all the same, the result is 5. Otherwise so long as both b and c are "
+"different from a, the result is 1. Otherwise the result is 0."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/ShareDigit.html:1
+msgid "ShareDigit"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/ShareDigit.html:2
+msgid ""
+"Given two ints, each in the range 10..99, return true if there is a digit "
+"that appears in both numbers, such as the 2 in 12 and 23. (Note: division, e."
+"g. n/10, gives the left digit while the % \"mod\" n%10 gives the right "
+"digit.)"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/SortaSum.html:1
+msgid "SortaSum"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/SortaSum.html:2
+msgid ""
+"Given 2 ints, a and b, return their sum. However, sums in the range 10..19 "
+"inclusive, are forbidden, so in that case just return 20."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/SquirrelPlay.html:1
+msgid "SquirrelPlay"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/SquirrelPlay.html:2
+msgid ""
+"The squirrels in Palo Alto spend most of the day playing. In particular, "
+"they play if the temperature is between 60 and 90 (inclusive). Unless it is "
+"summer, then the upper limit is 100 instead of 90. Given an int temperature "
+"and a boolean isSummer, return true if the squirrels play and false "
+"otherwise."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/TeaParty.html:1
+msgid "TeaParty"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/TeaParty.html:2
+msgid ""
+"We are having a party with amounts of tea and candy. Return the int outcome "
+"of the party encoded as 0=bad, 1=good, or 2=great. A party is good (1) if "
+"both tea and candy are at least 5. However, if either tea or candy is at "
+"least double the amount of the other one, the party is great (2).  However, "
+"in all cases, if either tea or candy is less than 5, the party is always bad "
+"(0)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/TeenSum.html:1
+msgid "TeenSum"
+msgstr "Somme d'ados"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/TeenSum.html:2
+msgid ""
+"Given 2 ints, a and b, return their sum. However, \"teen\" values in the "
+"range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
+"return 19."
+msgstr ""
+"Étant donné deux nombres entiers (a et b), retournez leur somme. Cependant, "
+"les valeurs ados (dans l'intervale [13;19]) sont particulièrement chanceuse. "
+"Donc, si l'un des nombres est ado, retournez simplement 19."
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/TwoAsOne.html:1
+msgid "TwoAsOne"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/TwoAsOne.html:2
+msgid ""
+"Given three ints, a b c, return true if it is possible to add two of the "
+"ints to get the third."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bool2/WithoutDoubles.html:1
+msgid "WithoutDoubles"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bool2/WithoutDoubles.html:2
+msgid ""
+"Return the sum of two 6-sided dice rolls, each in the range 1..6. However, "
+"if noDoubles is true, if the two dice show the same value, increment one die "
+"to the next value, wrapping around to 1 if its value was 6."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/sort/Main.html:1
@@ -7386,688 +8248,6 @@ msgstr "Le chateau d'Escher"
 #: src/lessons/lightbot/Board12Escher.html:3
 msgid "This one aint easy."
 msgstr "Celui-ci est loin d'être facile."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/Close10.html:1
-msgid "Close to 10"
-msgstr "Proche de 10"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/Close10.html:2
-msgid ""
-"Given 2 int values, return whichever value is nearest to the value 10, or "
-"return 0 in the event of a tie. Note that Math.abs(n) returns the absolute "
-"value of a number."
-msgstr ""
-"Étant donné deux nombres entiers, retourner la valeur la plus proche de 10, "
-"ou 0 en cas de match nul. Remarquez que Math.abs(n) retourne la valeur "
-"absolue d'un nombre."
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool1/Close10.html:6 src/lessons/bat/bool1/Diff21.html:5
-#: src/lessons/bat/bool1/HasTeen.html:6 src/lessons/bat/bool1/IcyHot.html:5
-#: src/lessons/bat/bool1/In1020.html:5 src/lessons/bat/bool1/In3050.html:5
-#: src/lessons/bat/bool1/LastDigit.html:9
-#: src/lessons/bat/bool1/LoneTeen.html:6 src/lessons/bat/bool1/Main.html:11
-#: src/lessons/bat/bool1/Makes10.html:5 src/lessons/bat/bool1/Max1020.html:8
-#: src/lessons/bat/bool1/MonkeyTrouble.html:7
-#: src/lessons/bat/bool1/NearHundred.html:5
-#: src/lessons/bat/bool1/ParotTrouble.html:8
-#: src/lessons/bat/bool1/PosNeg.html:5 src/lessons/bat/bool1/SleepIn.html:7
-#: src/lessons/bat/bool1/SumDouble.html:5
-#: src/lessons/bat/bool2/AlarmClock.html:11
-#: src/lessons/bat/bool2/AnswerCell.html:8
-#: src/lessons/bat/bool2/BlueTicket.html:10
-#: src/lessons/bat/bool2/CaughtSpeeding.html:11
-#: src/lessons/bat/bool2/CigarParty.html:9
-#: src/lessons/bat/bool2/DateFashion.html:12
-#: src/lessons/bat/bool2/GreenTicket.html:9
-#: src/lessons/bat/bool2/In1To10.html:8
-#: src/lessons/bat/bool2/InOrderEqual.html:9
-#: src/lessons/bat/bool2/InOrder.html:8 src/lessons/bat/bool2/LastDigit.html:8
-#: src/lessons/bat/bool2/LessBy10.html:5 src/lessons/bat/bool2/Main.html:4
-#: src/lessons/bat/bool2/MaxMod5.html:9 src/lessons/bat/bool2/NearTen.html:8
-#: src/lessons/bat/bool2/RedTicket.html:9
-#: src/lessons/bat/bool2/ShareDigit.html:9
-#: src/lessons/bat/bool2/SortaSum.html:7
-#: src/lessons/bat/bool2/SquirrelPlay.html:10
-#: src/lessons/bat/bool2/TeaParty.html:11 src/lessons/bat/bool2/TeenSum.html:8
-#: src/lessons/bat/bool2/TwoAsOne.html:5
-#: src/lessons/bat/bool2/WithoutDoubles.html:8
-#: src/lessons/bat/string1/AltPairs.html:4
-#: src/lessons/bat/string1/Array123.html:4
-#: src/lessons/bat/string1/Array667.html:7
-#: src/lessons/bat/string1/ArrayCount9.html:4
-#: src/lessons/bat/string1/ArrayFront9.html:4
-#: src/lessons/bat/string1/FrontTimes.html:7
-#: src/lessons/bat/string1/Has271.html:8 src/lessons/bat/string1/Last2.html:7
-#: src/lessons/bat/string1/Main.html:8
-#: src/lessons/bat/string1/NoTriples.html:7
-#: src/lessons/bat/string1/StringBits.html:4
-#: src/lessons/bat/string1/StringMatch.html:8
-#: src/lessons/bat/string1/StringSplosion.html:4
-#: src/lessons/bat/string1/StringTimes.html:4
-#: src/lessons/bat/string1/StringX.html:6
-#: src/lessons/bat/string1/StringYak.html:7
-msgid ""
-"This exercise was converted to JLM from the excellent exercising site http://"
-"javabat.com/"
-msgstr ""
-"Cet exercice a été extrait de l'excellent site d'exercices http://javabat."
-"com/ pour JLM."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/CountTeen.html:1
-msgid "Count Teen"
-msgstr "Compter les ados"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/CountTeen.html:2
-msgid ""
-"We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
-"Given 4 int values, return the amount of teen ones."
-msgstr ""
-"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
-"Étant donné quatre nombres entiers, retournez combien d'entre eux sont ados."
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool1/CountTeen.html:5
-msgid "This exercise was written by Martin Quinson."
-msgstr "Cet exercice a été écrit par Martin Quinson."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/Diff21.html:1
-msgid "Diff 21"
-msgstr "Diff 21"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/Diff21.html:2
-msgid ""
-"Given an int n, return the absolute difference between n and 21, except "
-"return double the absolute difference if n is over 21."
-msgstr ""
-"Étant donné un entier n, retournez la différence absolue entre n et 21, sauf "
-"si n est plus grand que 21. Dans ce cas, doublez la différence absolue."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/HasTeen.html:1
-msgid "Has Teen"
-msgstr "A des ados"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/HasTeen.html:2
-msgid ""
-"We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
-"Given 3 int values, return true if 1 or more of them are teen."
-msgstr ""
-"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
-"Étant donné trois nombres entiers, retournez vrai ssi un ou plusieurs "
-"d'entre eux sont ados."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/IcyHot.html:1
-msgid "Icy Hot"
-msgstr "Feu glacé"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/IcyHot.html:2
-msgid ""
-"Given two temperatures, return true if one is less than 0 and the other is "
-"greater than 100."
-msgstr ""
-"Étant donné deux températures, retournez vrai si l'une est inférieure à zéro "
-"et l'autre supérieure à 100."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/In1020.html:1
-msgid "In [10;20]"
-msgstr "Dans [10;20]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/In1020.html:2
-msgid ""
-"Given 2 int values, return true if either of them is in the range 10..20 "
-"inclusive."
-msgstr ""
-"Étant donné deux nombres entiers, retournez vrai s'un d'entre eux est dans "
-"l'intervale [10;20]."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/In3050.html:1
-msgid "In [30;50]"
-msgstr "Dans [30;50]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/In3050.html:2
-msgid ""
-"Given 2 int values, return true if they are both in the range 30..40 "
-"inclusive, or they are both in the range 40..50 inclusive."
-msgstr ""
-"Étant donné deux nombres entiers, retournez vrai s'ils sont tous les deux "
-"dans l'intervale [30;40], ou s'ils sont tous les deux dans l'intervale "
-"[40;50]."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/LastDigit.html:1
-#: src/lessons/bat/bool2/LastDigit.html:1
-msgid "LastDigit"
-msgstr "Dernier chiffre"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/LastDigit.html:2
-msgid ""
-"Given two non-negative int values, return true if they have the same last "
-"digit, such as with 27 and 57. Note that the % \"mod\" operator computes "
-"remainders, so 17 % 10 is 7."
-msgstr ""
-"Étant donné deux nombres entiers positifs, retournez vrai s'ils ont le même "
-"dernier chiffre, comme 27 et 57. Remarquez que l'opérateur % (modulo) "
-"calcule le reste de la division entière (donc 17 % 10 vaut 7)."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/LoneTeen.html:1
-msgid "Lone Teen"
-msgstr "Ado solitaire"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/LoneTeen.html:2
-msgid ""
-"We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
-"Given 2 int values, return true if one or the other is teen, but not both."
-msgstr ""
-"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
-"Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux est "
-"ado, mais pas les deux."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/Main.html:1
-msgid "Boolean fun"
-msgstr "Jeux booléens"
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool1/Main.html:3
-msgid ""
-"Boolean operations are one of the very basic task in programming.  As long "
-"as you cannot write a not so simple boolean test under the minute, you "
-"probably will have a very bad time writing a real program."
-msgstr ""
-"Les opérations booléennes sont l'une des fondements de la programmation. "
-"Tant que vous ne pourrez pas écrire des tests booléens (même non triviaux) "
-"en moins d'une minute, il vous sera difficile d'écrire un vrai programme."
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool1/Main.html:8
-msgid ""
-"That is why this lesson provides you a bunch of such exercises, so that you "
-"can get trained in this."
-msgstr ""
-"C'est pourquoi cette leçon vous propose une certaine quantité de tels "
-"exercices pour vous permettre de vous entrainer."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/Makes10.html:1
-msgid "Makes 10"
-msgstr "Font 10"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/Makes10.html:2
-msgid ""
-"Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
-"10."
-msgstr ""
-"Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux vaut "
-"10, ou si leur somme vaut 10."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/Max1020.html:1
-msgid "Max1020"
-msgstr "Max1020"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/Max1020.html:2
-msgid ""
-"Given 2 positive int values, return the larger value that is in the range "
-"10..20 inclusive, or return 0 if neither is in that range."
-msgstr ""
-"Étant donné deux nombres entiers, retournez la plus grande valeur dans "
-"l'intervale [10;20], ou retournez 0 si aucun des nombres n'est dans cet "
-"intervale."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/MonkeyTrouble.html:1
-msgid "MonkeyTrouble"
-msgstr "Problème de singe"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/MonkeyTrouble.html:3
-msgid ""
-"We have two monkeys, a and b, and the parameters aSmile and bSmile indicate "
-"if each is smiling.  We are in trouble if they are both smiling or if "
-"neither of them is smiling.  Return true if we are in trouble."
-msgstr ""
-"Nous avons deux singes, a et b, et les paramètres aSmile et bSmile indiquent "
-"s'ils sourient. Nous avons un problème s'ils sourient tous les deux en même "
-"temps, ou si aucun des deux ne sourit. Retournez vrai si nous avons un "
-"problème."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/NearHundred.html:1
-msgid "Near Hundred"
-msgstr "Presque 100"
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool1/NearHundred.html:2
-msgid ""
-"Given an int n, return true if it is within 10 of 100 or 200. Note Math.abs"
-"(n) returns the absolute value of a number."
-msgstr ""
-"Étant donné un entier n, retournez vrai s'il est à 10 près de 100 ou de 200. "
-"Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/ParotTrouble.html:1
-msgid "Parot Trouble"
-msgstr "Problème de perroquet"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/ParotTrouble.html:3
-msgid ""
-"We have a loud talking parrot. The \"hour\" parameter is the current hour "
-"time in the range 0..23. We are in trouble if the parrot is talking and the "
-"hour is before 7 or after 20. Return true if we are in trouble."
-msgstr ""
-"Nous avons un perroquet très bruyant. Le paramètre \"hour\" indique l'heure "
-"courante (dans l'intervale [0;23]). Nous avons un problème si le perroquet "
-"parle avant 7h ou après 20h. Retournez vrai si nous avons un problème."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/PosNeg.html:1
-msgid "Positive Negative"
-msgstr "Positif Negatif"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/PosNeg.html:2
-msgid ""
-"Given 2 int values, return true if one is negative and one is positive. "
-"Unless negative is true, then they both must be negative."
-msgstr ""
-"Étant donné deux entiers, retournez vrai si l'un d'entre eux est positif et "
-"l'autre négatif. Sauf si le paramètre negative est vrai, auquel cas il faut "
-"que les deux nombres soient négatifs."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/SleepIn.html:1
-msgid "SleepDay"
-msgstr "Grasse matinée"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/SleepIn.html:3
-msgid ""
-"The parameter weekday is true if it is a weekday, and the parameter vacation "
-"is true if we are on vacation. We sleep in if it is not a weekday or we're "
-"on vacation. Return true if we sleep in."
-msgstr ""
-"Le paramètre weekday est vrai si nous sommes un jour de semaine, et le "
-"paramètre vacation est vrai si nous sommes en vacances. Nous pouvons dormir "
-"ce matin s'il ne s'agit pas d'un jour de semaine ou si nous sommes en "
-"vacances. Retournez vrai si nous pouvons faire la grasse matinée."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool1/SumDouble.html:1
-msgid "Sum Double"
-msgstr "Somme doublée"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool1/SumDouble.html:2
-msgid ""
-"Given two int values, return their sum. Unless the two values are the same, "
-"then return double their sum."
-msgstr ""
-"Étant donné deux entiers, retournez leur somme. Sauf si les valeurs sont "
-"égales, auquel cas vous devez retourner le double de leur somme."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/AlarmClock.html:1
-msgid "AlarmClock"
-msgstr "Radio réveil"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/AlarmClock.html:2
-msgid ""
-"Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a "
-"boolean indicating if we are on vacation, return a string of the form "
-"\"7:00\" indicating when the alarm clock should ring. Weekdays, the alarm "
-"should be \"7:00\" and on the weekend it should be \"10:00\". Unless we are "
-"on vacation -- then on weekdays it should be \"10:00\" and weekends it "
-"should be \"off\"."
-msgstr ""
-"Étant donné le jour de la semaine, codé de la façon suivante : 0=Dimanche, "
-"1=Lundi, 2=Mardi, ... 6=Samedi, et un booléen vacation indiquant si nous "
-"sommes en vacances, retournez une chaine de caractères de la forme \"7:00\" "
-"indiquant à quelle heure nous devons régler le radio-réveil. Les jours de la "
-"semaine, nous devons nous réveiller à 7h tandis que nous pouvons dormir "
-"jusqu'à 10h le week-end. Pendant les vacances, il nous faut nous lever à 10h "
-"la semaine tandis que le réglage pour le radio-réveil doit être \"off\" le "
-"week-end."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/AnswerCell.html:1
-msgid "AnswerCell"
-msgstr "Répondeur"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/AnswerCell.html:2
-msgid ""
-"Your cell phone rings. Return true if you should answer it. Normally you "
-"answer, except in the morning you only answer if it is your mom calling. In "
-"all cases, if you are asleep, you do not answer."
-msgstr ""
-"Votre téléphone sonne. Renvoyez vrai si vous décrochez. Vous le faites "
-"habituellement, sauf le matin où vous ne répondez que si votre mère appelle. "
-"Dans tous les cas, vous ne répondez pas si vous dormez."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/BlueTicket.html:1
-msgid "BlueTicket"
-msgstr "Ticket bleu"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/BlueTicket.html:2
-msgid ""
-"You have a blue lottery ticket, with ints a, b, and c on it. This makes "
-"three pairs, which we'll call ab, bc, and ac. Consider the sum of the "
-"numbers in each pair. If any pair sums to exactly 10, the result is 10.  "
-"Otherwise if the ab sum is exactly 10 more than either bc or ac sums, the "
-"result is 5. Otherwise the result is 0."
-msgstr ""
-"Vous avez un ticket de loterie bleu, avec des entiers a, b et c inscrits "
-"dessus. Cela fait trois paires que l'on appellera ab, bc et ac. Considérez "
-"la somme des nombres de chaque pair. Si la somme de l'une des paires vaut "
-"exactement 10, le résultat est 10. Sinon, si la somme ab vaut exactement 10 "
-"de plus que les sommes bc ou ac, le résultat est 5. Sinon, le résultat est 0."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/CaughtSpeeding.html:1
-msgid "CaughtSpeeding"
-msgstr "Radar de vitesse"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/CaughtSpeeding.html:2
-msgid ""
-"You are driving a little too fast, and a police officer stops you. Write "
-"code to compute the result, encoded as an int value: 0=no ticket, 1=small "
-"ticket, 2=big ticket. If speed is 60 or less, the result is 0. If speed is "
-"between 61 and 80 inclusive, the result is 1. If speed is 81 or more, the "
-"result is 2. Unless it is your birthday -- on that day, your speed can be 5 "
-"higher in all cases."
-msgstr ""
-"Vous conduisez un peu trop vite et un officier de police vous arrête. "
-"Écrivez le code pour calculer le résultat, encodé sous forme d'un entier : "
-"0=pas d'amende, 1=petite amende, 2=grosse amende. Si votre vitesse est "
-"inférieure à 60, le résultat est 0. Si la vitesse est incluse entre 61 et 80 "
-"(inclus), le résultat est 1. Si la vitesse est 81 ou plus, le résultat est "
-"2. Tout ceci ne vaut que si ce n'est pas votre anniversaire aujourd'hui, car "
-"sinon, votre vitesse peut être supérieure de 5 dans tous les cas."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/CigarParty.html:1
-msgid "CigarParty"
-msgstr "Cigares de fête"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/CigarParty.html:2
-msgid ""
-"When squirrels get together for a party, they like to have cigars. A "
-"squirrel party is successful when the number of cigars is between 40 and 60, "
-"inclusive. Unless it is the weekend, in which case there is no upper bound "
-"on the number of cigars. Return true if the party with the"
-msgstr ""
-"Quand les écureuils font la fête, ils aiment avoir des cigares. Une fête "
-"d'écureuils est réussie si le nombre de cigares est entre 40 et 60 (inclus). "
-"Sauf si c'est le week-end, auquel cas il n'y a pas de limite supérieure au "
-"nombre de cigares. Renvoyez vrai si la fête est réussie. "
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/DateFashion.html:1
-msgid "DateFashion"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/DateFashion.html:2
-msgid ""
-"You and your date are trying to get a table at a restaurant. The parameter "
-"\"you\" is the stylishness of your clothes, in the range 0..10, and \"date\" "
-"is the stylishness of your date's clothes. The result getting the table is "
-"encoded as an int value with 0=no, 1=maybe, 2=yes. If either of you is very "
-"stylish, 8 or more, then the result is 2 (yes). With the exception that if "
-"either of you has style of 2 or less, then the result is 0 (no). Otherwise "
-"the result is 1 (maybe)."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/GreenTicket.html:1
-msgid "GreenTicket"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/GreenTicket.html:2
-msgid ""
-"You have a green lottery ticket, with ints a, b, and c on it. If the numbers "
-"are all different from each other, the result is 0. If all of the numbers "
-"are the same, the result is 20. If two of the numbers are the same, the "
-"result is 10."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/In1To10.html:1
-msgid "In1To10"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/In1To10.html:2
-msgid ""
-"Given a number n, return true if n is in the range 1..10, inclusive. Unless "
-"\"outsideMode\" is true, in which case return true if the number is less or "
-"equal to 1, or greater or equal to 10."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/InOrderEqual.html:1
-msgid "InOrderEqual"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/InOrderEqual.html:2
-msgid ""
-"Given three ints, a b c, return true if they are in strict increasing order, "
-"such as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7. However, with the "
-"exception that if \"equalOk\" is true, equality is allowed, such as 5 5 7 or "
-"5 5 5."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/InOrder.html:1
-msgid "InOrder"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/InOrder.html:2
-msgid ""
-"Given three ints, a b c, return true if b is greater than a, and c is "
-"greater than b. However, with the exception that if \"bOk\" is true, b does "
-"not need to be greater than a."
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/LastDigit.html:2
-msgid ""
-"Given three ints, a b c, return true if two or more of them have the same "
-"rightmost digit. The ints are non-negative. Note: the % \"mod\" operator "
-"computes the remainder, e.g. 17 % 10 is 7."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/LessBy10.html:1
-msgid "LessBy10"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/LessBy10.html:2
-msgid ""
-"Given three ints, a b c, return true if one of them is 10 or more less than "
-"one of the others."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/Main.html:1
-msgid "Boolean (even more) fun"
-msgstr "Encore des jeux booléens"
-
-#. type: Content of: <p>
-#: src/lessons/bat/bool2/Main.html:3
-msgid ""
-"A very good introduction to this type is available here: http://javabat.com/"
-"doc/ifboolean.html."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/MaxMod5.html:1
-msgid "MaxMod5"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/MaxMod5.html:2
-msgid ""
-"Given two int values, return whichever value is larger. However if the two "
-"values have the same remainder when divided by 5, then the return the "
-"smaller value. However, in all cases, if the two values are the same, return "
-"0.  Note: the % \"mod\" operator computes the remainder, e.g. 7 % 5 is 2."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/NearTen.html:1
-msgid "NearTen"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/NearTen.html:2
-msgid ""
-"Given a non-negative number \"num\", return true if num is within 2 of a "
-"multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
-"5) is 2."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/RedTicket.html:1
-msgid "RedTicket"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/RedTicket.html:2
-msgid ""
-"You have a red lottery ticket showing ints a, b, and c, each of which is 0, "
-"1, or 2. If they are all the value 2, the result is 10. Otherwise if they "
-"are all the same, the result is 5. Otherwise so long as both b and c are "
-"different from a, the result is 1. Otherwise the result is 0."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/ShareDigit.html:1
-msgid "ShareDigit"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/ShareDigit.html:2
-msgid ""
-"Given two ints, each in the range 10..99, return true if there is a digit "
-"that appears in both numbers, such as the 2 in 12 and 23. (Note: division, e."
-"g. n/10, gives the left digit while the % \"mod\" n%10 gives the right "
-"digit.)"
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/SortaSum.html:1
-msgid "SortaSum"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/SortaSum.html:2
-msgid ""
-"Given 2 ints, a and b, return their sum. However, sums in the range 10..19 "
-"inclusive, are forbidden, so in that case just return 20."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/SquirrelPlay.html:1
-msgid "SquirrelPlay"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/SquirrelPlay.html:2
-msgid ""
-"The squirrels in Palo Alto spend most of the day playing. In particular, "
-"they play if the temperature is between 60 and 90 (inclusive). Unless it is "
-"summer, then the upper limit is 100 instead of 90. Given an int temperature "
-"and a boolean isSummer, return true if the squirrels play and false "
-"otherwise."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/TeaParty.html:1
-msgid "TeaParty"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/TeaParty.html:2
-msgid ""
-"We are having a party with amounts of tea and candy. Return the int outcome "
-"of the party encoded as 0=bad, 1=good, or 2=great. A party is good (1) if "
-"both tea and candy are at least 5. However, if either tea or candy is at "
-"least double the amount of the other one, the party is great (2).  However, "
-"in all cases, if either tea or candy is less than 5, the party is always bad "
-"(0)."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/TeenSum.html:1
-msgid "TeenSum"
-msgstr "Somme d'ados"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/TeenSum.html:2
-msgid ""
-"Given 2 ints, a and b, return their sum. However, \"teen\" values in the "
-"range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
-"return 19."
-msgstr ""
-"Étant donné deux nombres entiers (a et b), retournez leur somme. Cependant, "
-"les valeurs ados (dans l'intervale [13;19]) sont particulièrement chanceuse. "
-"Donc, si l'un des nombres est ado, retournez simplement 19."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/TwoAsOne.html:1
-msgid "TwoAsOne"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/TwoAsOne.html:2
-msgid ""
-"Given three ints, a b c, return true if it is possible to add two of the "
-"ints to get the third."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/bool2/WithoutDoubles.html:1
-msgid "WithoutDoubles"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/bool2/WithoutDoubles.html:2
-msgid ""
-"Return the sum of two 6-sided dice rolls, each in the range 1..6. However, "
-"if noDoubles is true, if the two dice show the same value, increment one die "
-"to the next value, wrapping around to 1 if its value was 6."
-msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/AltPairs.html:1

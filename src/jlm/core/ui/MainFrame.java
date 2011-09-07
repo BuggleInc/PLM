@@ -208,13 +208,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.add(menuItem);
 		menuItem = new JMenuItem(new AbstractGameAction(Game.getInstance(), "Navigate this lesson") {
 			private static final long serialVersionUID = 1L;
-			private LessonNavigatorDialog dialog = null;
 
 			public void actionPerformed(ActionEvent arg0) {
-				if (this.dialog == null) {
-					this.dialog = new LessonNavigatorDialog(MainFrame.getInstance());
-				}
-				this.dialog.setVisible(true);
+				new LessonNavigatorDialog(MainFrame.getInstance()).setVisible(true);
 			}			
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
