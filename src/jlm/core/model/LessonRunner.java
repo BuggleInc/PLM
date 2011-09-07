@@ -1,9 +1,25 @@
 package jlm.core.model;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+
+import org.apache.http.HttpMessage;
+import org.apache.http.NameValuePair;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.auth.params.AuthPNames;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.params.AuthPolicy;
+import org.apache.http.impl.DefaultHttpClientConnection;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.JLMCompilerException;
@@ -73,14 +89,23 @@ public class LessonRunner extends Thread {
 						username = System.getenv("USERNAME");
 					if (username == null)
 						username = "John Doe";
+									
+					DefaultHttpClient httpclient = new DefaultHttpClient();
+					HttpPost post = new HttpPost(new URI("http://identi.ca/api/statuses/update.json"));	
+		            httpclient.getCredentialsProvider().setCredentials(
+		                    new AuthScope("identi.ca", 80),
+		                    new UsernamePasswordCredentials(Game.getProperty("jlm.identica.username"), Game.getProperty("jlm.identica.password")));
+						
+					List<NameValuePair> formparams = new ArrayList<NameValuePair>();
+					formparams.add(new BasicNameValuePair("status", username+" solves "+exo.getName()+"!"));
+					UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
+					post.setEntity(entity);					
+					
+					HttpMessage msg = httpclient.execute(post);
 										
-					//Twitter twitter = new Twitter();						
-					//Twitter twitter = new TwitterFactory().getInstance();
 					Twitter twitter = new TwitterFactory().getOAuthAuthorizedInstance(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"), new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
-					//twitter.setOAuthConsumer(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"));
 					Status status = null;
 					try {
-						//twitter.setOAuthAccessToken(new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
 						status = twitter.updateStatus(username+" solves "+exo.getName()+"!");
 					} catch (Exception e) {
 						// silently ignore network unavailability ;)

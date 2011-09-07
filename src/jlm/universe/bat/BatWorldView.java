@@ -7,7 +7,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 
-<<<<<<< HEAD
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
