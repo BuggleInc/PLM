@@ -10,7 +10,7 @@ package jlm.core.model;
  */
 public interface ISessionKit {
 
-	public void store() ;
+	public void store() throws UserAbortException;
 	
 	public void load() ;
 	

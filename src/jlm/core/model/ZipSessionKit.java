@@ -41,7 +41,7 @@ public class ZipSessionKit implements ISessionKit {
 		this.game = game;
 	}
 
-	public void store() {
+	public void store() throws UserAbortException {
 		this.store(SAVE_FILE);
 	}
 
@@ -53,7 +53,7 @@ public class ZipSessionKit implements ISessionKit {
 		this.cleanUp(SAVE_FILE);
 	}
 
-	public void store(File saveFile) {
+	public void store(File saveFile) throws UserAbortException {
 		if (!saveFile.exists()) {
 			File parentDirectory = saveFile.getParentFile().getAbsoluteFile();
 			if (!parentDirectory.exists()) {
@@ -109,9 +109,17 @@ public class ZipSessionKit implements ISessionKit {
 
 		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
-			JOptionPane.showMessageDialog(null, "JLM were unable to save your session file:\n"
-					+ ex.getClass().getSimpleName() + ": " + ex.getMessage(), "Your changes are NOT saved.",
-					JOptionPane.ERROR_MESSAGE);
+			ex.printStackTrace();
+			Object[] options = { "Ok, quit and loose my data", "Please stop! I'll save it myself first" };
+			int n = JOptionPane.showOptionDialog(null, "JLM were unable to save your session file ("
+					+ ex.getClass().getSimpleName() + ":" + ex.getMessage() + ").\n\n"
+					+ " Would you like proceed anyway (and loose any solution typed so far)?",
+					"Your changes are NOT saved", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
+					null, options, options[1]);
+			if (n == 1) {
+				throw new UserAbortException("User aborted saving on system error",ex);
+			}
+
 
 		} finally {
 			try {

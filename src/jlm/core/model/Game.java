@@ -256,9 +256,9 @@ public class Game implements IWorldView {
 	}
 
 	public void quit() {
-		// FIXME: this method is not called when pressing APPLE+Q on OSX
-		saveSession();
 		try {
+			// FIXME: this method is not called when pressing APPLE+Q on OSX
+			saveSession();
 			storeProperties();
 			System.exit(0);
 		} catch (UserAbortException e) {
@@ -282,7 +282,7 @@ public class Game implements IWorldView {
 		this.setState(GameState.LOADING_DONE);
 	}
 
-	public void saveSession() {
+	public void saveSession() throws UserAbortException {
 		this.setState(GameState.SAVING);
 		this.sessionKit.store();
 		this.setState(GameState.SAVING_DONE);
