@@ -21,6 +21,30 @@
 		<jar href="lib/miglayout-3.7.2.jar"/>
 		<jar href="lib/langtools-beta.jar"/>
 		<jar href="lib/irclib.jar"/>
+		
+		<jar href="lib/httpclient-4.1.2.jar"/>
+		<jar href="lib/httpcore-4.1.2.jar"/>
+		<jar href="lib/commons-logging-1.1.1.jar"/>
+		<jar href="lib/commons-codec-1.4.jar"/>
+		
+		<jar href="lib/collections-generic-4.01.jar"/>
+		<jar href="lib/jung-3d-demos-2.0.1.jar"/>
+		<jar href="lib/jung-jai-2.0.1.jar"/>
+		<jar href="lib/vecmath-1.3.1.jar"/>
+		<jar href="lib/colt-1.2.0.jar"/>
+		<jar href="lib/jung-algorithms-2.0.1.jar"/>
+		<jar href="lib/jung-jai-samples-2.0.1.jar"/>
+		<jar href="lib/wstx-asl-3.2.6.jar"/>
+		<jar href="lib/concurrent-1.3.4.jar"/>
+		<jar href="lib/jung-api-2.0.1.jar"/>
+		<jar href="lib/jung-samples-2.0.1.jar"/>
+		<jar href="lib/j3d-core-1.3.1.jar"/>
+		<jar href="lib/jung-graph-impl-2.0.1.jar"/>
+		<jar href="lib/jung-visualization-2.0.1.jar"/>
+		<jar href="lib/jung-3d-2.0.1.jar"/>
+		<jar href="lib/jung-io-2.0.1.jar"/>
+		<jar href="lib/stax-api-1.0.1.jar"/>
+		
 		<property name="twitter4j.loggerFactory" value="twitter4j.internal.logging.NullLoggerFactory"/>
 	</resources>
 	<application-desc main-class="jlm.core.ui.JavaLearningMachine"/>
