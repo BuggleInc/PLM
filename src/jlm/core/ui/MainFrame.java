@@ -188,8 +188,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			public void actionPerformed(ActionEvent arg0) {
 				if (this.dialog == null) {
-					this.dialog = new JLMForumDialog();
-					//this.dialog = new XMPPDialog();
+					//this.dialog = new JLMForumDialog();
+					this.dialog = new XMPPDialog();
 				}
 				this.dialog.setVisible(true);
 			}

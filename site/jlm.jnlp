@@ -42,6 +42,8 @@
 		<jar href="lib/jung-io-2.0.1.jar"/>
 		<jar href="lib/stax-api-1.0.1.jar"/>
 		
+		<jar href="lib/smackx.jar"/>
+		
 		<property name="twitter4j.loggerFactory" value="twitter4j.internal.logging.NullLoggerFactory"/>
 	</resources>
 	<application-desc main-class="jlm.core.ui.JavaLearningMachine"/>
