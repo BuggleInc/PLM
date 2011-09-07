@@ -43,18 +43,30 @@ public class BatTest {
 	
 	@Override
 	public boolean equals(Object o) {
-		if (o instanceof BatTest) 
+		if (!(o instanceof BatTest)) 
 			return false;
 		BatTest other = (BatTest) o;
-		if (other.parameters.length != parameters.length)
+		if (other.parameters.length != parameters.length) {
+			//System.out.println("While comparing a Bat test, the amount of parameters differs: "+parameters.length+" != "+other.parameters.length);
 			return false;
+		}
 		for (int i=0;i<parameters.length;i++)
-			if (!parameters[i].equals(other.parameters[i]))
+			if (!parameters[i].equals(other.parameters[i])) {
+				//System.out.println("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
 				return false;
-		if (!result.equals(other.result))
+			}
+		if (result == null && other.result != null) {
+			//System.out.println("While comparing a Bat test, the result differs: null != "+other.result);
+			return false;			
+		}
+		if (result !=null && !result.equals(other.result)) {
+			//System.out.println("While comparing a Bat test, the result differs: "+result+" != "+other.result);
 			return false;
-		if (!expected.equals(other.expected))
+		}
+		if (!expected.equals(other.expected)) {
+			//System.out.println("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
 			return false;
+		}
 		return true;
 	}
 
@@ -110,5 +122,9 @@ public class BatTest {
 	}
 	public boolean isObjective() {
 		return objectiveTest;
+	}
+	
+	public String toString() {
+		return name+"="+result+" (expected "+expected+")";
 	}
 }

@@ -33,11 +33,15 @@ public class BatWorld extends World {
 			return false;
 		}
 		BatWorld other = (BatWorld) o;
-		if (other.tests.size() != tests.size())
+		if (other.tests.size() != tests.size()) {
+			//System.out.println("Amount of tests differ between worlds: "+tests.size()+" != "+other.tests.size());
 			return false;
+		}
 		for (int i=0;i<tests.size();i++)
-			if (!tests.get(i).equals(other.tests.get(i)))
+			if (!tests.get(i).equals(other.tests.get(i))) {
+				//System.out.println("Test "+i+" differs: "+tests.get(i)+" != "+other.tests.get(i));
 				return false;
+			}
 		return true;
 	}
 	@Override

@@ -16,6 +16,9 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	}
 
 	protected void setup(World[] ws) {
+		if (ws.length > 1)
+			throw new RuntimeException("Bat exercises must have at most one world");
+		
 		String entName="no name";
 		for (World w : ws) {
 			entName = w.getName();
@@ -28,10 +31,11 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		        "import jlm.universe.bat.BatTest; "+
 		        "import jlm.universe.World; "+
 		        "public class "+entName+" extends BatEntity { ");
+	}
+	
+	@Override
+	protected void computeAnswer() {
 
-		if (answerWorld.length > 1)
-			throw new RuntimeException("Bat exercises must have at most one world");
-		
 		BatWorld answer = (BatWorld) answerWorld[0];
 		BatWorld init = (BatWorld) initialWorld[0];
 		BatWorld curr = (BatWorld) currentWorld[0];
