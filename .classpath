@@ -27,5 +27,6 @@
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/smackx.jar"/>
+	<classpathentry kind="lib" path="lib/smack.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
