@@ -43,6 +43,7 @@
 		<jar href="lib/stax-api-1.0.1.jar"/>
 		
 		<jar href="lib/smackx.jar"/>
+		<jar href="lib/smack.jar"/>
 		
 		<property name="twitter4j.loggerFactory" value="twitter4j.internal.logging.NullLoggerFactory"/>
 	</resources>
