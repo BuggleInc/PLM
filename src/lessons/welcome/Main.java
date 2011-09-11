@@ -77,6 +77,8 @@ public class Main extends Lesson {
 		addExercise(new MethodsPicture3(this));
 		addExercise(new MethodsPicture4(this));
 		
+		addExercise(new lessons.welcome.cells.Langton(this), methods);
+		
 		addExercise(new BDR(this),conditions);
 		addExercise(new BDR2(this));
 		
