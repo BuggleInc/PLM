@@ -114,4 +114,7 @@ public abstract class Entity {
 	protected Object getParam(int i) {
 		return world.parameters[i];
 	}	
+	protected int getParamsAmount() {
+		return world.parameters.length;
+	}
 }
