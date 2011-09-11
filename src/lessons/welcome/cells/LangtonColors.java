@@ -25,7 +25,7 @@ public class LangtonColors extends ExerciseTemplated {
 			colors
 		});
 		
-		new Buggle(bw,"ant",buggleX,buggleY,Direction.NORTH,Color.black,Color.black);
+		new Buggle(bw,"ant",buggleX,buggleY,Direction.NORTH,Color.red,Color.black);
 		
 		bw.setDelay(1);
 		return bw;

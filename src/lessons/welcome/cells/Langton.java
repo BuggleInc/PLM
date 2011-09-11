@@ -17,7 +17,7 @@ public class Langton extends ExerciseTemplated {
 
 		BuggleWorld bw =  new BuggleWorld("12000 steps",100, 70);
 		bw.setDelay(1);
-		new Buggle(bw, "ant", 2*bw.getWidth()/3,  bw.getHeight()/3,  Direction.NORTH, Color.black, Color.black);
+		new Buggle(bw, "ant", 2*bw.getWidth()/3,  bw.getHeight()/3,  Direction.NORTH, Color.red, Color.black);
 		bw.setParameter(new Object[] {12000});
 
 		setup(bw);
