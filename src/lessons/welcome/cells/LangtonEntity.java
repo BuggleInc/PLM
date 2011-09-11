@@ -3,22 +3,24 @@ package lessons.welcome.cells;
 import java.awt.Color;
 
 public class LangtonEntity extends jlm.universe.bugglequest.SimpleBuggle {
-	void setGroundColor(Color c) {
-		setBrushColor(c);
-		brushDown();
-		brushUp();
-	}
-	
 	/* BEGIN TEMPLATE */
 public void step() {
 		/* BEGIN SOLUTION */
 		if (getGroundColor().equals(Color.white)) {
 			turnRight();
-			setGroundColor(Color.black);
+			
+			setBrushColor(Color.black);
+			brushDown();
+			brushUp();
+			
 			forward();
 		} else {
 			turnLeft();
-			setGroundColor(Color.white);
+			
+			setBrushColor(Color.white);
+			brushDown();
+			brushUp();
+
 			forward();				
 		}
 		/* END SOLUTION */
