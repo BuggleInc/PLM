@@ -34,7 +34,7 @@ public class LangtonColors extends ExerciseTemplated {
 	
 	public LangtonColors(Lesson lesson) {
 		super(lesson);
-		tabName = "Langton's ant";
+		tabName = "LangtonsAnt";
 
 		BuggleWorld[] myWorlds = new BuggleWorld[] {
 				 createWorld("RL",           12000, 100, 70, 66, 23),
