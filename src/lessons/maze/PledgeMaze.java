@@ -34,7 +34,7 @@ public class PledgeMaze extends ExerciseTemplated {
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
-		b.setPos(19, 19);
+		b.setPosFromLesson(19, 19);
 		b.setDirection(Direction.EAST);
 		try {
 			b.pickUpBaggle();

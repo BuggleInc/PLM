@@ -8,6 +8,7 @@ import jlm.universe.Entity;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
+import jlm.universe.bugglequest.exception.BuggleInOuterSpace;
 import jlm.universe.bugglequest.exception.BuggleWallException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
@@ -163,34 +164,77 @@ public abstract class AbstractBuggle extends Entity {
 	protected BuggleWorldCell getCell(){
 		return (BuggleWorldCell) ((GridWorld)world).getCell(x, y);
 	}
-	protected BuggleWorldCell getCell(int u, int v){
+	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpace{
+		BuggleWorld bw = (BuggleWorld) world;
+		if (y>=bw.getHeight())
+			throw new BuggleInOuterSpace("You tried to access a cell with Y="+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+		if (x>=bw.getWidth())
+			throw new BuggleInOuterSpace("You tried to access a cell with X="+x+", but the maximal X in this world is "+(bw.getWidth()-1));
+
 		return (BuggleWorldCell) ((GridWorld)world).getCell(u, v);
+	}
+	protected BuggleWorldCell getCellFromLesson(int u, int v) {
+		try {
+			return getCell(u,v);
+		} catch (BuggleInOuterSpace e) {
+			throw new RuntimeException("Broken lesson: you accessed a cell in outer space",e);
+		}
 	}
 
 	public int getX() {
 		return x;
 	}
 
-	public void setX(int x) {
-		assert (world != null);
+	public void setX(int x) throws BuggleInOuterSpace {
+		BuggleWorld bw = (BuggleWorld) world;
+		if (x>=bw.getWidth())
+			throw new BuggleInOuterSpace("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
 		this.x = x;
 		stepUI();
+	}
+	public void setXFromLesson(int x)  {
+		try {
+			setX(x);
+		} catch (BuggleInOuterSpace e) {
+			throw new RuntimeException("Broken lesson: you moved to outer space",e);
+		}
 	}
 
 	public int getY() {
 		return y;
 	}
 
-	public void setY(int y) {
-		assert (world != null);
+	public void setY(int y) throws BuggleInOuterSpace  {
+		BuggleWorld bw = (BuggleWorld) world;
+		if (y>=bw.getHeight())
+			throw new BuggleInOuterSpace("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
 		this.y = y;
 		stepUI();
 	}
+	public void setYFromLesson(int y)  {
+		try {
+			setY(y);
+		} catch (BuggleInOuterSpace e) {
+			throw new RuntimeException("Broken lesson: you moved to outer space",e);
+		}
+	}
 
-	public void setPos(int x, int y) {
+	public void setPos(int x, int y) throws BuggleInOuterSpace {
+		BuggleWorld bw = (BuggleWorld) world;
+		if (y>=bw.getHeight())
+			throw new BuggleInOuterSpace("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+		if (x>=bw.getWidth())
+			throw new BuggleInOuterSpace("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
 		this.x = x;
 		this.y = y;
 		stepUI();
+	}
+	public void setPosFromLesson(int x, int y)  {
+		try {
+			setPos(x,y);
+		} catch (BuggleInOuterSpace e) {
+			throw new RuntimeException("Broken lesson: you moved to outer space",e);
+		}
 	}
 
 	public void forward() throws BuggleWallException {
@@ -229,11 +273,11 @@ public abstract class AbstractBuggle extends Entity {
 			return cell.hasLeftWall();
 
 		case Direction.SOUTH_VALUE: /* if looking down, look to the top of one cell lower */
-			cell = getCell(getX(),                        (getY()+1) % getWorldHeight());
+			cell = getCellFromLesson(getX(),                        (getY()+1) % getWorldHeight());
 			return cell.hasTopWall();
 
 		case Direction.EAST_VALUE: /* if looking right, look to the left of one next cell */
-			cell = getCell((getX()+1) % getWorldWidth(), getY());
+			cell = getCellFromLesson((getX()+1) % getWorldWidth(), getY());
 			return cell.hasLeftWall();
 
 		default: throw new RuntimeException("Invalid direction: "+delta);
@@ -273,7 +317,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public boolean isOverBaggle() {
-		return getCell(this.x, this.y).hasBaggle();
+		return getCellFromLesson(this.x, this.y).hasBaggle();
 	}
 
 	public boolean isCarryingBaggle() {
@@ -285,11 +329,11 @@ public abstract class AbstractBuggle extends Entity {
 			throw new NoBaggleUnderBuggleException("There is no baggle to pick up");
 		if (isCarryingBaggle())
 			throw new AlreadyHaveBaggleException("Your buggle is already carrying a baggle");
-		baggle = getCell(this.x, this.y).pickUpBaggle();
+		baggle = getCellFromLesson(this.x, this.y).pickUpBaggle();
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException {
-		getCell(this.x, this.y).setBaggle(this.baggle);
+		getCellFromLesson(this.x, this.y).setBaggle(this.baggle);
 		baggle = null;
 	}
 

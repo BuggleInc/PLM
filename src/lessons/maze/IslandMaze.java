@@ -35,7 +35,7 @@ public class IslandMaze extends ExerciseTemplated {
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
-		b.setPos(11, 5);
+		b.setPosFromLesson(11, 5);
 		try {
 			b.pickUpBaggle();
 		} catch (NoBaggleUnderBuggleException e) {

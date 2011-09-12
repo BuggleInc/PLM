@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import jlm.universe.Direction;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
+import jlm.universe.bugglequest.exception.BuggleInOuterSpace;
 import jlm.universe.bugglequest.exception.BuggleWallException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
@@ -87,4 +88,34 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			seenError();
 		}
 	}	
+	@Override 
+	public void setX(int x) {
+		try {
+			super.setX(x);
+		} catch (BuggleInOuterSpace e) {
+			if (!haveSeenError())
+				javax.swing.JOptionPane.showMessageDialog(null, "The buggle moved to the outer space.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+			seenError();
+		}
+	}
+	@Override 
+	public void setY(int y) {
+		try {
+			super.setY(y);
+		} catch (BuggleInOuterSpace e) {
+			if (!haveSeenError())
+				javax.swing.JOptionPane.showMessageDialog(null, "The buggle moved to the outer space.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+			seenError();
+		}
+	}
+	@Override 
+	public void setPos(int x,int y) {
+		try {
+			super.setPos(x,y);
+		} catch (BuggleInOuterSpace e) {
+			if (!haveSeenError())
+				javax.swing.JOptionPane.showMessageDialog(null, "The buggle moved to the outer space.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+			seenError();
+		}
+	}
 }

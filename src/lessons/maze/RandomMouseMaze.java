@@ -32,7 +32,7 @@ public class RandomMouseMaze extends ExerciseTemplated {
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
-		b.setPos(3, 3);
+		b.setPosFromLesson(3, 3);
 		b.turnBack();
 		
 		try {
