@@ -27,6 +27,7 @@ public class LangtonColors extends ExerciseTemplated {
 		
 		new Buggle(bw,"ant",buggleX,buggleY,Direction.NORTH,Color.red,Color.black);
 		
+		bw.setVisibleGrid(false);
 		bw.setDelay(1);
 		return bw;
 	}
@@ -42,7 +43,7 @@ public class LangtonColors extends ExerciseTemplated {
 				 createWorld("LLRRRLRLRLLR", 33000, 100, 60, 80, 30),
 				 createWorld("RRLLLRLLLRRR", 30000,  80, 90, 60, 28),
 		};
-
+		
 		setup(myWorlds);
 
 	}

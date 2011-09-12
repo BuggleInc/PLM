@@ -19,6 +19,7 @@ public class Langton extends ExerciseTemplated {
 		bw.setDelay(1);
 		new Buggle(bw, "ant", 2*bw.getWidth()/3,  bw.getHeight()/3,  Direction.NORTH, Color.red, Color.black);
 		bw.setParameter(new Object[] {12000});
+		bw.setVisibleGrid(false);
 
 		setup(bw);
 

@@ -16,6 +16,8 @@ public class TurmiteCreator extends ExerciseTemplated {
 
 		BuggleWorld bw = new BuggleWorld("blah",100,100);
 		new Buggle(bw,"ant",50,50,Direction.NORTH,Color.red,Color.red);
+		bw.setVisibleGrid(false);
+		bw.setDelay(1);
 
 		setup(bw);
 	}

@@ -25,6 +25,7 @@ public class Turmite extends ExerciseTemplated {
 		new Buggle(bw,"ant",buggleX,buggleY,Direction.NORTH,Color.red,Color.red);
 		
 		bw.setDelay(1);
+		bw.setVisibleGrid(false);
 		return bw;
 	}
 	
@@ -37,7 +38,7 @@ public class Turmite extends ExerciseTemplated {
 				 createWorld("snail",          10100, new int[][][]  {{{1, 1, 1}, {1, 8, 0}}, {{1, 2, 1}, {0, 1, 0}}}, 68, 72, 32, 33),
 				 createWorld("stepped pyramid", 4800, new int[][][]  {{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {1, 1, 0}}}, 65, 65, 5, 55), //6
 		};
-
+		
 		setup(myWorlds);
 
 	}

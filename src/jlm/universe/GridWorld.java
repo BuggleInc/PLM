@@ -10,6 +10,7 @@ public abstract class GridWorld extends World {
 	protected GridWorldCell[][] cells;
 	protected int sizeX;
 	protected int sizeY;
+	protected boolean visibleGrid=true;
 
 	public GridWorld(String name, int x, int y) {
 		super(name);
@@ -20,6 +21,7 @@ public abstract class GridWorld extends World {
 		super(world2);
 		sizeX = world2.getWidth();
 		sizeY = world2.getHeight();
+		visibleGrid = world2.visibleGrid;
 		this.cells = new GridWorldCell[sizeX][sizeY];
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++) {
@@ -48,5 +50,11 @@ public abstract class GridWorld extends World {
 
 	public int getHeight() {
 		return this.sizeY;
+	}
+	public boolean getVisibleGrid() {
+		return visibleGrid;
+	}
+	public void setVisibleGrid(boolean s) {
+		visibleGrid=s;
 	}
 }

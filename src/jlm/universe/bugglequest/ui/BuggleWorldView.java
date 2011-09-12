@@ -9,12 +9,12 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
+import jlm.universe.GridWorld;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
 import jlm.universe.bugglequest.Baggle;
@@ -71,10 +71,14 @@ public class BuggleWorldView extends WorldView {
 		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
 
 		if (BuggleWorldCell.DEFAULT_COLOR.equals(cell.getColor())) {
-			if ((x+y)%2==0)
-				return DARK_CELL_COLOR;	
-			else
-				return LIGHT_CELL_COLOR;
+			if (((BuggleWorld) world).getVisibleGrid()) { 
+				if ((x+y)%2==0)
+					return DARK_CELL_COLOR;	
+				else
+					return LIGHT_CELL_COLOR;
+			} else {
+				return Color.WHITE;
+			}
 		} else {
 			return cell.getColor();
 		}		
@@ -86,6 +90,10 @@ public class BuggleWorldView extends WorldView {
 		double pady = getPadY();
 		BuggleWorld w = (BuggleWorld)world;
 
+		if (w.getVisibleGrid() == false) {
+			g.setColor(Color.white);
+			g.fill(new Rectangle2D.Double(padx,pady ,(w.getWidth()-1)*cellW,(w.getHeight()-1)*cellW));				
+		}
 		for (int x=0; x<w.getWidth(); x++) {
 			for (int y=0; y<w.getHeight(); y++) {
 				g.setColor(getCellColor(x, y));
@@ -101,12 +109,14 @@ public class BuggleWorldView extends WorldView {
 			}
 		}
 
-		g.setColor(GRID_COLOR);
-		for (int x=0; x<=w.getWidth(); x++) {
-			g.draw(new Line2D.Double(padx+x*cellW, pady, padx+x*cellW, pady+w.getHeight()*cellW));
-		}
-		for (int y=0; y<=w.getHeight(); y++) {
-			g.draw(new Line2D.Double(padx+0, pady+y*cellW, padx+w.getWidth()*cellW, pady+y*cellW));						
+		if (((BuggleWorld) world).getVisibleGrid()) {
+			g.setColor(GRID_COLOR);
+			for (int x=0; x<=w.getWidth(); x++) {
+				g.draw(new Line2D.Double(padx+x*cellW, pady, padx+x*cellW, pady+w.getHeight()*cellW));
+			}
+			for (int y=0; y<=w.getHeight(); y++) {
+				g.draw(new Line2D.Double(padx+0, pady+y*cellW, padx+w.getWidth()*cellW, pady+y*cellW));						
+			}
 		}
 	}
 	
