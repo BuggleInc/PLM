@@ -80,6 +80,7 @@ public class Main extends Lesson {
 		addExercise(new lessons.welcome.cells.Langton(this), methods);
 		addExercise(new lessons.welcome.cells.LangtonColors(this));
 		addExercise(new lessons.welcome.cells.Turmite(this));
+		addExercise(new lessons.welcome.cells.TurmiteCreator(this));
 		
 		addExercise(new BDR(this),conditions);
 		addExercise(new BDR2(this));
