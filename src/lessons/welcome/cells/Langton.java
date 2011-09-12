@@ -12,7 +12,7 @@ public class Langton extends ExerciseTemplated {
 
 	public Langton(Lesson lesson) {
 		super(lesson);
-		tabName = "Langton's ant";
+		tabName = "LangtonsAnt";
 
 
 		BuggleWorld bw =  new BuggleWorld("12000 steps",100, 70);
