@@ -1,3 +1,7 @@
+20110909:
+  * New exercise track on turmites
+  * Enforce that the buggles cannot move to outer space with
+    setPos(), setX(), setY() nor peek outer space with getCell()
 20110907:
   * Add a new lesson navigator allowing to break the lesson linearity
   * Use identi.ca in addition to twitter to push the success of students
