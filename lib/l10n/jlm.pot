@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-13 09:28+0300\n"
+"POT-Creation-Date: 2011-09-13 13:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4363,7 +4363,7 @@ msgid ""
 "This exercise allows you to build your own turmites. To pass the exercise, "
 "you should simply write a <code>init()</code> method which initializes the "
 "<code>rule</code> to use the following transitions table (from wikipedia), "
-"set the buggle initial position at (70;33), and ask for 8342 steps."
+"set the buggle initial position at (8;33), and ask for 8342 steps."
 msgstr ""
 
 #. type: Content of: <table><tr><th>
