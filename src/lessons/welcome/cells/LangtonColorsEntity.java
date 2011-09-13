@@ -3,6 +3,9 @@ package lessons.welcome.cells;
 import java.awt.Color;
 
 public class LangtonColorsEntity extends jlm.universe.bugglequest.SimpleBuggle {
+	Color[] allColors = {Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
+			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray};
+
 	/* BEGIN TEMPLATE */
 public void step(char[] rule, Color[] colors) {
 		/* BEGIN SOLUTION */
@@ -33,9 +36,14 @@ public void step(char[] rule, Color[] colors) {
 	public void run() { 
 		int nbSteps = (Integer)getParam(0);
 		char[] rule = ((char[])getParam(1));
-		Color[] colors = ((Color[])getParam(2));
 		
-		for (int i=0;i<nbSteps;i++) 
+		Color[] colors = new Color[rule.length];
+		for (int i=0; i<rule.length; i++)
+			colors[i] = allColors[i];
+		
+		for (int i=0;i<nbSteps;i++) {
+			((TurmiteWorld)world).currStep = i;
 			step(rule,colors);
+		}
 	}
 }

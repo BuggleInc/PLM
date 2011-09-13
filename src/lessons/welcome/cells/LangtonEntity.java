@@ -30,7 +30,9 @@ public void step() {
 	@Override
 	public void run() { 
 		int nbSteps = (Integer)getParam(0); 
-		for (int i=0;i<nbSteps;i++) 
+		for (int i=0;i<nbSteps;i++) {
 			step();
+			((TurmiteWorld)world).currStep = i;
+		}
 	}
 }

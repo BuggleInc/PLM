@@ -60,7 +60,9 @@ public void step() {
 		for (int i=0; i<rule.length; i++)
 			colors[i] = allColors[i];
 
-		for (int i=0;i<nbSteps;i++) 
+		for (int i=0;i<nbSteps;i++) {
+			((TurmiteWorld)world).currStep = i;
 			step();
+		}
 	}
 }
