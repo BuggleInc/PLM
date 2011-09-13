@@ -169,7 +169,7 @@ public class LessonNavigatorDialog extends JDialog  {
 			public Icon transform(Exercise exo) {	
 				ImageIcon ico = null;				
 				if (exo.isSuccessfullyPassed()) {
-					ico = ResourcesCache.getStarIcon(exo.getWorld(0).getView()[0].getIcon(), exo.getWorld(0).getView()[0].getName());					
+					ico = ResourcesCache.getStarIcon(exo.getWorld(0).getView()[0].getIcon(), exo.getWorld(0).getView()[0].getClass().getCanonicalName());					
 				} else {
 					ico = exo.getWorld(0).getView()[0].getIcon();
 				}
