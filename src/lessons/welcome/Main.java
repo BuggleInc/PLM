@@ -76,12 +76,7 @@ public class Main extends Lesson {
 		addExercise(new MethodsPicture2(this));
 		addExercise(new MethodsPicture3(this));
 		addExercise(new MethodsPicture4(this));
-		
-		addExercise(new lessons.welcome.cells.Langton(this), methods);
-		addExercise(new lessons.welcome.cells.LangtonColors(this));
-		addExercise(new lessons.welcome.cells.Turmite(this));
-		addExercise(new lessons.welcome.cells.TurmiteCreator(this));
-		
+				
 		addExercise(new BDR(this),conditions);
 		addExercise(new BDR2(this));
 		
@@ -91,7 +86,11 @@ public class Main extends Lesson {
 		addExercise(new Array(this),methods);
 		Exercise arrays = addExercise(new Array2(this));
 		
-		
+	        /* Turmites exercises */
+	        addExercise(new lessons.welcome.cells.Langton(this), arrays);
+		addExercise(new lessons.welcome.cells.LangtonColors(this));
+		addExercise(new lessons.welcome.cells.Turmite(this));
+		addExercise(new lessons.welcome.cells.TurmiteCreator(this));
 		
 		/* Arrays exercises */
 		addExercise(new IndexOfValueOfArray(this),arrays);
