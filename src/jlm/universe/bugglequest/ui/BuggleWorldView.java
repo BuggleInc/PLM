@@ -14,7 +14,6 @@ import javax.swing.ImageIcon;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
-import jlm.universe.GridWorld;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
 import jlm.universe.bugglequest.Baggle;

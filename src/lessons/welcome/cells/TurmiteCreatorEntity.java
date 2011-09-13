@@ -29,8 +29,8 @@ public void step() {
 
 		switch (rule[state][currentColor][NEXT_MOVE]) {
 		case NOTURN: /* no turn */; break;
-		case LEFT:   turnRight();   break;
-		case RIGHT:  turnLeft();    break;
+		case LEFT:   turnLeft();   break;
+		case RIGHT:  turnRight();    break;
 		case BACK:   turnBack();    break;
 		default:
 			System.out.println("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
@@ -59,7 +59,7 @@ void init() {
 	/* BEGIN SOLUTION */
 	nbSteps = 8342;
 	rule = new int[][][] {{{1, LEFT, 0}, {1, LEFT, 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}};
-	setX(70); setY(33);
+	setX(8); setY(33);
 	/* END SOLUTION */
 }
 /* END TEMPLATE */
