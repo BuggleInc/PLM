@@ -26,7 +26,9 @@ to your current situation by using <code>rule[state][currentColor]</code>.</p>
 
 <p>Each such information set contains 3 values. The first one is the rank of the 
 color to write on the ground. The second is the move to do, with the following 
-notation: 1=noturn, 2=right, 4=u-turn, 8=left. Finally, the third integer is the 
+notation: 0=stop, 1=noturn, 2=right, 4=u-turn, 8=left. Note that if the command is stop, 
+you shouldn't even move forward on that step (but you shouldn't stop your program 
+either: the next steps can do something else). Finally, the third integer is the 
 next <code>state</code> value to go into after this iteration.</p> 
 
 <p>Since these arbitrary notations are somehow difficult to remember, the template 
@@ -42,7 +44,7 @@ code easier to read, since
 </pre>
 is much more easier to read than
 <pre>
-  if (rule[state][currentColor][1] == 2) {
+  if (rule[x][y][1] == 2) {
     turnLeft();
   }
 </pre>

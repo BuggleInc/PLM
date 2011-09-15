@@ -4,13 +4,13 @@ import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bugglequest.BuggleWorld;
 
-public class Turmite extends ExerciseTemplated {
+public class HelloTurmite extends ExerciseTemplated {
 	final static int NOTURN = 1;
 	final static int LEFT   = 2;
 	final static int BACK   = 4;
 	final static int RIGHT  = 8;
 	
-	public Turmite(Lesson lesson) {
+	public HelloTurmite(Lesson lesson) {
 		super(lesson);
 		tabName = "Turmite";
 

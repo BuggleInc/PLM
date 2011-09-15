@@ -89,7 +89,7 @@ public class Main extends Lesson {
 	        /* Turmites exercises */
 	        addExercise(new lessons.welcome.cells.Langton(this), arrays);
 		addExercise(new lessons.welcome.cells.LangtonColors(this));
-		addExercise(new lessons.welcome.cells.Turmite(this));
+		addExercise(new lessons.welcome.cells.HelloTurmite(this));
 		addExercise(new lessons.welcome.cells.TurmiteCreator(this));
 		
 		/* Arrays exercises */

@@ -2,12 +2,13 @@ package lessons.welcome.cells;
 
 import java.awt.Color;
 
-public class TurmiteEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class HelloTurmiteEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	Color[] allColors = {Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray};
 
 	/* BEGIN TEMPLATE */
 /* Do not change these definitions */
+final static int STOP   = 0;
 final static int NOTURN = 1;
 final static int LEFT   = 2;
 final static int BACK   = 4;
@@ -36,17 +37,17 @@ public void step() {
 		brushUp();
 
 		switch (rule[state][currentColor][NEXT_MOVE]) {
-		case NOTURN: /* no turn */; break;
-		case LEFT:   turnLeft();   break;
-		case RIGHT:  turnRight();    break;
-		case BACK:   turnBack();    break;
+		case STOP:   /* nothing */;            break;
+		case NOTURN: /* no turn */; forward(); break;
+		case LEFT:   turnLeft();   	forward(); break;
+		case RIGHT:  turnRight();   forward(); break;
+		case BACK:   turnBack();    forward(); break;
 		default:
 			System.out.println("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
 		}
 
 		state = rule[state][currentColor][NEXT_STATE];
 
-		forward();
 		/* END SOLUTION */
 }
 	/* END TEMPLATE */
