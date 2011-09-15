@@ -41,7 +41,11 @@ public class BatEntity extends Entity {
 	@Override
 	public void run() {
 		for (BatTest t:((BatWorld) world).getTests())
-			run(t);
+			try {
+				run(t);
+			} catch (Exception e) {
+				t.setResult("this test raised an exception: "+e.getMessage());
+			}
 	}
 
 	protected void run(BatTest t) {

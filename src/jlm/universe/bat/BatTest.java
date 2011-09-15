@@ -127,4 +127,11 @@ public class BatTest {
 	public String toString() {
 		return name+"="+result+" (expected "+expected+")";
 	}
+	public String getResult() {
+		if (result !=null) {
+			return result.toString();
+		} else {
+			return "(null)";
+		}
+	}
 }
