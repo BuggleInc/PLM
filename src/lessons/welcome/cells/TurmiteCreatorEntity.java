@@ -3,7 +3,8 @@ package lessons.welcome.cells;
 import java.awt.Color;
 
 public class TurmiteCreatorEntity extends jlm.universe.bugglequest.SimpleBuggle {
-	Color[] allColors = {Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 
+	Color[] allColors = {Color.white, Color.yellow, Color.red, Color.cyan, Color.green, Color.orange, 
+			Color.blue, Color.black,
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray};
 
 /* Do not change these definitions */
