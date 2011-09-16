@@ -111,4 +111,38 @@ EdPeggJrTurmiteLibrary = [
 "{{{1, 2, 1}, {0, 8, 0}}, {{1, 2, 2}, {0, 1, 0}}, {{1, 8, 0}, {0, 8, 0}}}", # 45: makes a 4 in 1 highway
 </pre> 
 
+<p>Langton's ants may not share the expressivness power of the turmites, but they remain 
+fascinating too. You can experiment with them using the initLangton() method, provided
+in your template, that allows to build a Turmite transition table from a Langton's ant
+name. Tiny changes in the ant may result huge changes. For example, "RRL" does not 
+seam to lead to any constructed pattern, even after a million steps, but "RLL" starts 
+building a very simple highway pattern after less than 100 steps!</p>  
+
+<p>Quite a lot of Langton's ants build highways: RL, of course, but also RLRLRLLRLR (about 2500 steps). 
+The chaotic behavior of ants before the highway can be very short (as with RLL that only need 100 steps 
+to converge) or very long, as with LLLLLLRRLRRR which seems chaotic for more than 500,000 steps before 
+build the highway or even RRLLLRRRLRRR which needs 1170000 to start converging. Some are narrow, and 
+others are very large, such as RRLRLLRLRR (200,000 steps). This ant is also notable since it is somehow 
+squarish even before the highway start where most others do not show anything notable before their 
+highway.<p>
+
+<p>Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps), RRLLLRLLLRRR (30,000 steps), 
+RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR (20,000 steps). Some even fill the whole space (RRLRR 
+after 3000 steps). Some of my personal favorite ones are the ones where the ant seem to be bouncing 
+within a box that gets bigger on each bump, such as LRRRRRLLR (30,000 steps). LRRRRLLLRRR is even 
+more impressing since the bounces within the box are regular and since it converges more rapidly to 
+its stable behavior (15,000 steps are enough).</p>
+
+<p>Finally, some ants are just build artistic patterns. You should check this video for some beautiful 
+ones: http://www.youtube.com/watch?v=1X-gtr4pEBU. If you want to convert them into your code, you have to 
+shift them by one: For example, the one depicted at 3:42 is not RRLRLRLLRL, but RLRLRLLRLR (the first visible 
+move should be read as last one).</p>
+
+<p>As you can see by exploring the above set of turmites, they are usually not as colorful as the ants, but 
+this may be because very few colors suffice to exhibit complex behaviors. For example, there is a specific 
+class of turmites called <i>busy beavers</i> which are turmites that write a lot of things before stopping 
+(busy beavers are usually classical turing machines, but the idea fits perfectly to turmites too). There is 
+a sort of international competition where people strive to find the turmite that covers the biggest area 
+before stopping. The web page is here: 
+http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines 
 
