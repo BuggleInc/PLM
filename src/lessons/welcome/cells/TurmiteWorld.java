@@ -75,4 +75,8 @@ public class TurmiteWorld extends BuggleWorld {
 	public void stepDone() {
 		currStep++;
 	}
+	@Override
+	public boolean isDelayed() {
+		return super.isDelayed() && ( (getDelay() > 0) || (currStep % 1000 == 0) );
+	}
 }
