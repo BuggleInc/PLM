@@ -11,16 +11,29 @@ import java.io.UnsupportedEncodingException;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 
+/** This class is in charge of loading the resources from disk into memory
+ * 
+ * 	It solves 2 main difficulties. The first one is to find the files in any case, be 
+ *  them in the distributed jar file, or on the disk (as it happens when we develop JLM: 
+ *  we don't build a jar for each run, we directly from our source tree). It also deals 
+ *  with the windows/unix incompatibilities about directory separators (/ or \).
+ * 
+ *  The second problem it deals with is about translations. When looking for a help file, 
+ *  it first seach for a suitable translated version. If not found, it fallbacks to the 
+ *  english version. This is done through the locale static variable. Yeah, that's not 
+ *  clean but it just works.
+ */
 public class Reader {
 	private static String locale;
 	
+	/** Specifies the locale that we have to use when looking for translated files */
 	public static void setLocale(String lang) {
 		locale=lang;
 	}
 	public static BufferedReader fileReader(String file,String extension,boolean translatable) {
 		if (translatable) {
 			if (locale==null) 
-				throw new RuntimeException("locale is null");
+				throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
 				
 			BufferedReader br =  fileReader(file.replace('.','/')+"."+locale+(extension!=null?"."+extension:""));
 			if (br != null)
