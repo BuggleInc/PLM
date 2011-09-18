@@ -19,6 +19,7 @@ import jlm.core.StatusStateListener;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
+import jlm.core.ui.MainFrame;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
@@ -40,6 +41,8 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private ArrayList<Lesson> lessons = new ArrayList<Lesson>();
 	private Lesson currentLesson;
+	private String[] programingLanguages = new String[] {"java","python"};
+	private String programingLanguage = "java";
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
@@ -126,6 +129,21 @@ public class Game implements IWorldView {
 			exo.reset();
 			fireCurrentExerciseChanged();
 			setSelectedWorld(this.currentLesson.getCurrentExercise().getWorld(0));
+			
+			boolean seenJava=false;
+			for (String l:exo.getProgLanguages()) {
+				if (l.equals(programingLanguage)) 
+					return; /* The exo accepts the language we currently have */
+				if (l.equals("Java"))
+					seenJava = true;
+			}
+			/* Use java as a fallback programming language (if the exo accepts it)  */
+			if (seenJava)
+				setProgramingLanguage("Java"); 
+			/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
+			setProgramingLanguage( exo.getProgLanguages()[0] );
+			
+			MainFrame.getInstance().currentExerciseHasChanged(); // make sure that the right language is selected -- yeah that's a ugly way of doing it
 		}
 	}
 
@@ -544,5 +562,32 @@ public class Game implements IWorldView {
 		}
 		setCurrentLesson(getCurrentLesson());
 		currentLesson.setCurrentExercise(currentLesson.getCurrentExercise());
+	}
+
+	public void setProgramingLanguage(String newLanguage) {
+		if (programingLanguage.equals(newLanguage))
+			return;
+		
+		for (String l:programingLanguages) 
+			if (l.equals(newLanguage)) {
+				System.out.println("Switch programming language to "+newLanguage);
+				this.programingLanguage = newLanguage;
+				return;
+			}
+		throw new RuntimeException("Ignoring request to switch the programing language to the unknown "+newLanguage);
+	}
+
+	public String getProgramingLanguage() {
+		return programingLanguage;
+	}
+	public String[] getProgrammingLanguages(){
+		return programingLanguages;
+	}
+
+	public boolean isValidProgLanguage(String newL) {
+		for (String l:programingLanguages)
+			if (newL.equals(l))
+				return true;
+		return false;
 	}
 }

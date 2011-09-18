@@ -6,9 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -18,6 +21,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
@@ -30,6 +34,7 @@ import jlm.core.GameStateListener;
 import jlm.core.model.Game;
 import jlm.core.model.GameState;
 import jlm.core.model.Reader;
+import jlm.core.model.lesson.Exercise;
 import jlm.core.ui.action.AbstractGameAction;
 import jlm.core.ui.action.CleanUpSession;
 import jlm.core.ui.action.ExportSession;
@@ -39,6 +44,7 @@ import jlm.core.ui.action.QuitGame;
 import jlm.core.ui.action.Reset;
 import jlm.core.ui.action.RevertExercise;
 import jlm.core.ui.action.SetLanguage;
+import jlm.core.ui.action.SetProgLanguage;
 import jlm.core.ui.action.ShowHint;
 import jlm.core.ui.action.StartExecution;
 import jlm.core.ui.action.StepExecution;
@@ -48,7 +54,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private static final long serialVersionUID = -5022279647890315264L;
 
-	private static JFrame instance = null;
+	private static MainFrame instance = null;
 
 	private ExerciseView exerciseView;
 	private JButton startButton;
@@ -57,6 +63,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton resetButton;
 	private JButton hintButton;
 	private JButton demoButton;
+	private Map<String,JMenuItem> progLangItems = new HashMap<String, JMenuItem>();
 	private LoggerPanel outputArea;
 
 	private JComboBox lessonComboBox;
@@ -64,23 +71,22 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	
 	private MainFrame() {
 		super("Java Learning Machine");
-		initComponents();
+		Reader.setLocale(this.getLocale().getLanguage());
+		initComponents(Game.getInstance());
 	}
 
-	public static JFrame getInstance() {
+	public static MainFrame getInstance() {
 		if (MainFrame.instance == null)
 			MainFrame.instance = new MainFrame();
 		return MainFrame.instance;
 	}
 
-	private void initComponents() {
-		Reader.setLocale(this.getLocale().getLanguage());
-		
+	private void initComponents(final Game g) {		
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				Game.getInstance().quit();
+				g.quit();
 			}
 		});
 
@@ -101,28 +107,29 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		mainPanel.setLeftComponent(new MissionEditorTabs());
 
-		exerciseView = new ExerciseView(Game.getInstance());
+		exerciseView = new ExerciseView(g);
 		mainPanel.setRightComponent(exerciseView);
 
 		logPane.setTopComponent(mainPanel);
-		outputArea = new LoggerPanel(Game.getInstance());
+		outputArea = new LoggerPanel(g);
 		JScrollPane outputScrollPane = new JScrollPane(outputArea);
 		logPane.setBottomComponent(outputScrollPane);
 		getContentPane().add(logPane, BorderLayout.CENTER);
-		// Game.getInstance().setOutputWriter(outputArea);
+		// g.setOutputWriter(outputArea);
 
-		initMenuBar();
-		initToolBar();
-		initStatusBar();
+		initMenuBar(g);
+		initToolBar(g);
+		initStatusBar(g);
+		currentExerciseHasChanged(); 
 
-		Game.getInstance().addGameStateListener(this);
-		Game.getInstance().addGameListener(this);
+		g.addGameStateListener(this);
+		g.addGameListener(this);
 
 		pack();
 		setSize(1024, 768);
 	}
 
-	private void initMenuBar() {
+	private void initMenuBar(Game g) {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu menu;
@@ -133,7 +140,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription("File related functions");
 
-		menuItem = new JMenuItem(new QuitGame(Game.getInstance(), "Quit", null,  KeyEvent.VK_Q));
+		menuItem = new JMenuItem(new QuitGame(g, "Quit", null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
 		menu.add(menuItem);
@@ -150,19 +157,19 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		// JMenu lessonSubmenu = new JMenu("Change lesson...");
 		// JMenu exerciceSubmenu = new JMenu("Change exercise...");
 
-		JMenuItem revertExerciseCodeSource = new JMenuItem(new RevertExercise(Game.getInstance(), "Revert Exercise",
+		JMenuItem revertExerciseCodeSource = new JMenuItem(new RevertExercise(g, "Revert Exercise",
 				null));
 		menu.add(revertExerciseCodeSource);
 
-		JMenuItem cleanUpSessionMenuItem = new JMenuItem(new CleanUpSession(Game.getInstance(), "Clear Session Cache",
+		JMenuItem cleanUpSessionMenuItem = new JMenuItem(new CleanUpSession(g, "Clear Session Cache",
 				null));
 		menu.add(cleanUpSessionMenuItem);
 
-		JMenuItem exportSessionMenuItem = new JMenuItem(new ExportSession(Game.getInstance(), "Export Session Cache",
+		JMenuItem exportSessionMenuItem = new JMenuItem(new ExportSession(g, "Export Session Cache",
 				null, this));
 		menu.add(exportSessionMenuItem);
 
-		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(Game.getInstance(), "Import Session Cache",
+		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(g, "Import Session Cache",
 				null, this));
 		menu.add(importSessionMenuItem);
 
@@ -171,17 +178,26 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu = new JMenu("Language");
 		menu.setMnemonic(KeyEvent.VK_L);
 		menuBar.add(menu);
-		JMenuItem setLanguageToFrench = new JMenuItem(new SetLanguage(Game.getInstance(), "Francais", null, this,"fr"));
-		menu.add(setLanguageToFrench);
-		JMenuItem setLanguageToEnglish = new JMenuItem(new SetLanguage(Game.getInstance(), "English", null, this,"en"));
-		menu.add(setLanguageToEnglish);
+		for (String[] lang : new String[][] { {"Français","fr"}, {"English","en"}}) 
+			menu.add(new JMenuItem(new SetLanguage(g, lang[0], lang[1])));
 		
+		/* === Programming language changing === */
+		menu.addSeparator();
+		ButtonGroup group = new ButtonGroup();
+		for (String l:g.getProgrammingLanguages()) {			
+			JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,l));
+			progLangItems.put(l,item);
+			item.setSelected(true);
+			group.add(item);
+			menu.add(item);
+		}
+
 		/* === Help menu === */
 		menu = new JMenu("Help");
 		menu.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menu);
 
-		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "Join the forum", null) {
+		menu.add(new JMenuItem(new AbstractGameAction(g, "Join the forum", null) {
 			private static final long serialVersionUID = 1L;
 
 			private JDialog dialog = null;
@@ -194,7 +210,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				this.dialog.setVisible(true);
 			}
 		}));
-		menuItem = new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this lesson") {
+		menuItem = new JMenuItem(new AbstractGameAction(g, "About this lesson") {
 			private static final long serialVersionUID = 1L;
 			private AbstractAboutDialog dialog = null;
 
@@ -207,7 +223,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
-		menuItem = new JMenuItem(new AbstractGameAction(Game.getInstance(), "Navigate this lesson") {
+		menuItem = new JMenuItem(new AbstractGameAction(g, "Navigate this lesson") {
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -217,7 +233,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
 		
-		menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About this world", null) {
+		menu.add(new JMenuItem(new AbstractGameAction(g, "About this world", null) {
 			private static final long serialVersionUID = 1L;
 
 			private AbstractAboutDialog dialog = null;
@@ -231,7 +247,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		}));
 
 		if (!System.getProperty("os.name").startsWith("Mac")) {
-			menu.add(new JMenuItem(new AbstractGameAction(Game.getInstance(), "About JLM", null) {
+			menu.add(new JMenuItem(new AbstractGameAction(g, "About JLM", null) {
 				private static final long serialVersionUID = 1L;
 
 				public void actionPerformed(ActionEvent e) {
@@ -254,39 +270,38 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	}
 
-	private void initToolBar() {
+	private void initToolBar(Game g) {
 		JToolBar toolBar = new JToolBar();
 		toolBar.setFloatable(true);
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
 		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
-		startButton = new PropagatingButton(new StartExecution(Game.getInstance(), "Run", ii));
+		startButton = new PropagatingButton(new StartExecution(g, "Run", ii));
 
-		debugButton = new PropagatingButton(new StepExecution(Game.getInstance(), "Step", 
+		debugButton = new PropagatingButton(new StepExecution(g, "Step", 
 				ResourcesCache.getIcon("resources/debug.png")));
 		
-		stopButton = new PropagatingButton(new StopExecution(Game.getInstance(), "Stop", 
+		stopButton = new PropagatingButton(new StopExecution(g, "Stop", 
 				ResourcesCache.getIcon("resources/stop.png")));
 		stopButton.setEnabled(false);
 
-		resetButton = new PropagatingButton(new Reset(Game.getInstance(), "Reset", 
+		resetButton = new PropagatingButton(new Reset(g, "Reset", 
 				ResourcesCache.getIcon("resources/reset.png")));
 		resetButton.setEnabled(true);
 
-		hintButton = new PropagatingButton(new ShowHint(Game.getInstance(), "Hint", 
+		hintButton = new PropagatingButton(new ShowHint(g, "Hint", 
 				ResourcesCache.getIcon("resources/step.png")));
-		hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 		
-		demoButton = new PropagatingButton(new PlayDemo(Game.getInstance(), "Demo", 
+		demoButton = new PropagatingButton(new PlayDemo(g, "Demo", 
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
 		
-		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(Game.getInstance());
+		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(g);
 		lessonComboBox = new JComboBox(lessonAdapter);
 		lessonComboBox.setRenderer(new LessonCellRenderer());
 		lessonComboBox.setToolTipText("Switch the lesson");
 
-		ExerciseComboListAdapter exerciseAdapter = new ExerciseComboListAdapter(Game.getInstance());
+		ExerciseComboListAdapter exerciseAdapter = new ExerciseComboListAdapter(g);
 		exerciseComboBox = new JComboBox(exerciseAdapter);
 		exerciseComboBox.setRenderer(new ExerciseCellRenderer());
 		exerciseComboBox.setToolTipText("Switch the exercise");
@@ -310,8 +325,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 	}
 
-	private void initStatusBar() {
-		StatusBar statusBar = new StatusBar(Game.getInstance());
+	private void initStatusBar(Game g) {
+		StatusBar statusBar = new StatusBar(g);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
 	}
 
@@ -430,7 +445,26 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	@Override
 	public void currentExerciseHasChanged() {
-		hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
+		Game g = Game.getInstance();
+		Exercise exo = g.getCurrentLesson().getCurrentExercise();
+		hintButton.setEnabled(exo.hint != null);
+		
+		for (String l:progLangItems.keySet()) {
+			JMenuItem i = progLangItems.get(l);
+			i.setEnabled(false);
+			i.setToolTipText("This exercise cannot be solved in "+l);
+		}
+		
+		for (String l:exo.getProgLanguages()) {
+			if (!g.isValidProgLanguage(l)) 
+				System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your JLM.");
+			else {
+				JMenuItem i = progLangItems.get(l);
+				i.setEnabled(true);
+				i.setToolTipText(null);
+				i.setSelected(l.equals(g.getProgramingLanguage()));
+			}
+		}
 	}
 
 	@Override

@@ -331,5 +331,25 @@ public abstract class Exercise {
 	public String toString() {
 		return name;
 	}
+
+	/* setters and getter of the programming language that this exercise accepts */ 
+	private String[] progLanguages = new String[] {"java"};
+	public String[] getProgLanguages() {
+		return progLanguages;
+	}
+	public void addProgLanguage(String newL) {
+		String[] res = new String[progLanguages.length +1 ];
+		for (int i=0;i<progLanguages.length;i++) 
+			res[i] = progLanguages[i];
+		res[progLanguages.length] = newL;
+		progLanguages = res;
+	}
+	public void addProgLanguage(String[] newL) { /* FIXME: inefficient: increase the array size only once */
+		for (String l:newL)
+			addProgLanguage(l);
+	}
+	public void setProgLanguages(String ... languages) {
+		progLanguages = languages;
+	}
 }
 
