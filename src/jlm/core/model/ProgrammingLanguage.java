@@ -2,8 +2,10 @@ package jlm.core.model;
 
 public class ProgrammingLanguage {
 	String lang;
-	public ProgrammingLanguage(String l) {
+	String ext;
+	public ProgrammingLanguage(String l, String ext) {
 		lang = l;
+		this.ext = ext;
 	}
 	public boolean equals(Object o) {
 		if (!super.equals(o))
@@ -15,7 +17,15 @@ public class ProgrammingLanguage {
 	public String getLang() {
 		return lang;
 	}
+	public String getExt() {
+		return ext;
+	}
+	@Override
 	public String toString() {
 		return lang;
+	}
+	@Override
+	public int hashCode() {
+		return lang.hashCode();
 	}
 }

@@ -7,12 +7,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
@@ -47,11 +44,13 @@ public class Game implements IWorldView {
 	private ArrayList<Lesson> lessons = new ArrayList<Lesson>();
 	private Lesson currentLesson;
 	
-	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java");
-	public static final ProgrammingLanguage PYTHON = new ProgrammingLanguage("Python");
-	public static final ProgrammingLanguage  RUBY = new ProgrammingLanguage("Ruby");
-	public static final ProgrammingLanguage  LIGHTBOT = new ProgrammingLanguage("lightbot");
-	private static Map<ProgrammingLanguage,String> programmingLanguagesExtensions = null;
+	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java","java");
+	public static final ProgrammingLanguage PYTHON = new ProgrammingLanguage("Python","py");
+	public static final ProgrammingLanguage RUBY = new ProgrammingLanguage("Ruby","rb");
+	public static final ProgrammingLanguage LIGHTBOT = new ProgrammingLanguage("lightbot","ignored");
+	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
+		JAVA, PYTHON, RUBY, LIGHTBOT
+	};
 	private ProgrammingLanguage programmingLanguage = JAVA;
 	
 	private List<GameListener> listeners = new ArrayList<GameListener>();
@@ -81,13 +80,6 @@ public class Game implements IWorldView {
 	}
 
 	private Game() {
-		if (programmingLanguagesExtensions == null) {
-			programmingLanguagesExtensions = new HashMap<ProgrammingLanguage, String>();
-			programmingLanguagesExtensions.put(JAVA, "java");
-			programmingLanguagesExtensions.put(PYTHON, "py");
-			programmingLanguagesExtensions.put(RUBY, "rb");
-			programmingLanguagesExtensions.put(LIGHTBOT, "ignored");
-		}
 		Game.loadProperties();
 		initLessons();
 		loadSession();
@@ -603,18 +595,15 @@ public class Game implements IWorldView {
 		else 
 			return getInstance().programmingLanguage;
 	}
-	public static String getProgrammingFileExtension() {
-		return getProgrammingFileExtension(getProgrammingLanguage());
-	}
-	public static String getProgrammingFileExtension(ProgrammingLanguage lang) {
-		return programmingLanguagesExtensions.get(lang);
-	}
-	public Set<ProgrammingLanguage> getProgrammingLanguages(){
-		return programmingLanguagesExtensions.keySet();
+	public ProgrammingLanguage[] getProgrammingLanguages(){
+		return programmingLanguages;
 	}
 
 	public boolean isValidProgLanguage(ProgrammingLanguage newL) {
-		return programmingLanguagesExtensions.get(newL) != null;
+		for (ProgrammingLanguage pl : programmingLanguages)
+			if (pl.equals(newL))
+				return true;
+		return false;
 	}
 	private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
 	public void addProgLangListener(ProgLangChangesListener l) {

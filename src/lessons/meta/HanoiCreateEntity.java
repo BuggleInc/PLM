@@ -34,7 +34,7 @@ public class HanoiCreateEntity extends MetaExercise {
 		
 		/* setup the source files */
 		newSourceAliased(Game.JAVA,"lessons.meta.Main","jlm.lessons.meta.HanoiCreateWorld","HanoiWorld");
-		newSourceFromFile(Game.JAVA,"HanoiEntity","src/jlm/universe/hanoi/HanoiEntity","java",
+		newSourceFromFile(Game.JAVA,"HanoiEntity","src/jlm/universe/hanoi/HanoiEntity",
 		       "s/HanoiCreateEntityAnswer/HanoiEntity/;");
 	}
 

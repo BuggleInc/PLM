@@ -143,17 +143,17 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 
-	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String extension) {
-		newSourceFromFile(lang, name, filename, extension,"");
+	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) {
+		newSourceFromFile(lang, name, filename, "");
 	}
-	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String extension,String patternString) {
+	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) {
 		
-		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,extension,false);
+		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,lang.getExt(),false);
 
 		if (sb==null)
-			sb = Reader.fileToStringBuffer(filename,extension,false);
+			sb = Reader.fileToStringBuffer(filename,lang.getExt(),false);
 		if (sb==null) {
-			System.err.println("Source file "+filename+"."+extension+" not found.");
+			System.err.println("Source file "+filename+"."+lang.getExt()+" not found.");
 			return;
 		}
 		/* Remove line comments since at some point, we put everything on one line only, 
@@ -364,7 +364,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					found=true;
 			}
 			if (!found) {
-				newSourceFromFile(lang, tabName, entityName, Game.getProgrammingFileExtension(lang));
+				newSourceFromFile(lang, tabName, entityName);
 			} else if (!lang.equals(Game.JAVA))
 				System.out.println("Found it, no need to create a new source file");
 		}
