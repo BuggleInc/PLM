@@ -1,0 +1,21 @@
+<h1>Le monde de Hanoï</h1>
+
+This world implements the ultra-classical Hanoi problem. You are asked to
+move the disk pile from the stick where they are to the target stick (given
+as second parameter in the world's name -- number 1 for the default
+world). There is some extra constraint: you can only move one disk at a
+time, and you cannot move a big disk over a smaller one.  There is only 2
+functions provided is the following:
+
+<pre>public void move(int src, int dst) throws HanoiInvalidMove;</pre>
+
+Elle déplace un disque d'un piquet <code>src</code> vers le piquet
+<code>dst</code>. Comme vous le voyez, si vous demandez un déplacement
+invalide (comme le placement d'un disque sur un disque plus petit), une
+exception est levée.
+
+<pre>int getSlotSize(int slot);</pre>
+
+It returns the amount of disks placed on the specified slot. This is mainly
+used to initialize the recursion and set the amount of recursive call to
+execute.
