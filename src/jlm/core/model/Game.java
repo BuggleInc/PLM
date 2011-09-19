@@ -7,14 +7,19 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
+import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
@@ -41,8 +46,14 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private ArrayList<Lesson> lessons = new ArrayList<Lesson>();
 	private Lesson currentLesson;
-	private String[] programingLanguages = new String[] {"java","python"};
-	private String programingLanguage = "java";
+	
+	public static final String JAVA = "java";
+	public static final String PYTHON = "Python";
+	public static final String RUBY = "Ruby";
+	public static final String LIGHTBOT = "lightbot";
+	private static Map<String,String> programmingLanguagesExtensions = null;
+	private String programmingLanguage = JAVA;
+	
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
@@ -70,6 +81,13 @@ public class Game implements IWorldView {
 	}
 
 	private Game() {
+		if (programmingLanguagesExtensions == null) {
+			programmingLanguagesExtensions = new HashMap<String, String>();
+			programmingLanguagesExtensions.put(JAVA, "java");
+			programmingLanguagesExtensions.put(PYTHON, "py");
+			programmingLanguagesExtensions.put(RUBY, "rb");
+			programmingLanguagesExtensions.put(LIGHTBOT, "ignored");
+		}
 		Game.loadProperties();
 		initLessons();
 		loadSession();
@@ -132,7 +150,7 @@ public class Game implements IWorldView {
 			
 			boolean seenJava=false;
 			for (String l:exo.getProgLanguages()) {
-				if (l.equals(programingLanguage)) 
+				if (l.equals(programmingLanguage)) 
 					return; /* The exo accepts the language we currently have */
 				if (l.equals("Java"))
 					seenJava = true;
@@ -564,30 +582,50 @@ public class Game implements IWorldView {
 		currentLesson.setCurrentExercise(currentLesson.getCurrentExercise());
 	}
 
+	
+	
 	public void setProgramingLanguage(String newLanguage) {
-		if (programingLanguage.equals(newLanguage))
+		if (programmingLanguage.equals(newLanguage))
 			return;
 		
-		for (String l:programingLanguages) 
-			if (l.equals(newLanguage)) {
-				System.out.println("Switch programming language to "+newLanguage);
-				this.programingLanguage = newLanguage;
-				return;
-			}
+		if (isValidProgLanguage(newLanguage)) {
+			System.out.println("Switch programming language to "+newLanguage);
+			this.programmingLanguage = newLanguage;
+			fireProgLangChange(newLanguage);
+			return;
+		}
 		throw new RuntimeException("Ignoring request to switch the programing language to the unknown "+newLanguage);
 	}
 
-	public String getProgramingLanguage() {
-		return programingLanguage;
+	public static String getProgrammingLanguage() {
+		if (ongoingInitialization) /* break an initialization loop -- the crude way (FIXME) */
+			return JAVA;
+		else 
+			return getInstance().programmingLanguage;
 	}
-	public String[] getProgrammingLanguages(){
-		return programingLanguages;
+	public static String getProgrammingFileExtension() {
+		return getProgrammingFileExtension(getProgrammingLanguage());
+	}
+	public static String getProgrammingFileExtension(String lang) {
+		return programmingLanguagesExtensions.get(lang);
+	}
+	public Set<String> getProgrammingLanguages(){
+		return programmingLanguagesExtensions.keySet();
 	}
 
 	public boolean isValidProgLanguage(String newL) {
-		for (String l:programingLanguages)
-			if (newL.equals(l))
-				return true;
-		return false;
+		return programmingLanguagesExtensions.get(newL) != null;
 	}
+	private List<ProgLangChangesListener> progLangListeners = new Vector<ProgLangChangesListener>();
+	public void addProgLangListener(ProgLangChangesListener l) {
+		progLangListeners.add(l);
+	}
+	public void fireProgLangChange(String newLang) {
+		for (ProgLangChangesListener l : progLangListeners)
+			l.currentProgrammingLanguageHasChanged(newLang);
+	}
+	public void removeProgLangListener(ProgLangChangesListener l) {
+		this.progLangListeners.remove(l);
+	}
+ 
 }
