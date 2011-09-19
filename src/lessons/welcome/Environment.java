@@ -2,6 +2,7 @@ package lessons.welcome;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Direction;
@@ -16,6 +17,8 @@ public class Environment extends ExerciseTemplated {
 		BuggleWorld myWorld = new BuggleWorld("Training Camp",7,7);
 		new Buggle(myWorld, "Noob", 3, 3, Direction.NORTH, Color.black, Color.lightGray);
 
+		addProgLanguage(Game.PYTHON);
+		
 		setup(myWorld);
 	}
 }
