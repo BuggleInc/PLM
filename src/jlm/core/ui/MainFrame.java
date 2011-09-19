@@ -187,7 +187,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		for (String l:g.getProgrammingLanguages()) {			
 			JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,l));
 			progLangItems.put(l,item);
-			item.setSelected(true);
 			group.add(item);
 			menu.add(item);
 		}
@@ -462,7 +461,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				JMenuItem i = progLangItems.get(l);
 				i.setEnabled(true);
 				i.setToolTipText(null);
-				i.setSelected(l.equals(g.getProgramingLanguage()));
+				i.setSelected(l.equals(Game.getProgrammingLanguage()));
 			}
 		}
 	}
