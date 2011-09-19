@@ -16,13 +16,13 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 	JEditorPane codeEditor;
 	Entity tracedEntity;
 
-	public JavaEditorPanel(SourceFile srcFile) {
+	public JavaEditorPanel(SourceFile srcFile, String lang) {
 		super();
 		this.srcFile = srcFile;
 
 		codeEditor = new JEditorPane();
 		setViewportView(codeEditor);
-		codeEditor.setContentType("text/java");
+		codeEditor.setContentType("text/"+lang.toLowerCase());
 		codeEditor.setCaretPosition(0);
 		((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(0);
 		
