@@ -9,7 +9,8 @@ import jlm.universe.World;
 public class LightBotExercise extends ExerciseTemplated {
 	public LightBotExercise(Lesson lesson) {
 		super(lesson);
-		sourceFiles.add(new LightBotSourceFile("Code"));
+		setProgLanguages("lightbot");
+		getSourceFiles("lightbot").add(new LightBotSourceFile("Code"));
 	}
 
 	@Override

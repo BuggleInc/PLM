@@ -134,7 +134,7 @@ public class SourceFile {
 		return true;
 	}
 
-	public JScrollPane getEditorPanel() {
-		return new JavaEditorPanel(this);
+	public JScrollPane getEditorPanel(String lang) {
+		return new JavaEditorPanel(this, lang);
 	}
 }

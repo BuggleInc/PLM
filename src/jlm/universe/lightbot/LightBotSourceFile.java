@@ -63,7 +63,7 @@ public class LightBotSourceFile extends SourceFileRevertable {
 	}
 
 	@Override
-	public JScrollPane getEditorPanel(){
+	public JScrollPane getEditorPanel(String lang){
 		return new LightBotEditorPanel(this);
 	}
 	public void setMain(LightBotInstruction[] main) {

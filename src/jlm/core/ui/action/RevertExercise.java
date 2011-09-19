@@ -20,11 +20,12 @@ public class RevertExercise extends AbstractGameAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Exercise ex = game.getCurrentLesson().getCurrentExercise();
-		for (int i=0; i<ex.publicSourceFileCount(); i++) {
-			SourceFile sf = ex.getPublicSourceFile(i);
-			if (sf instanceof SourceFileRevertable)
-				((SourceFileRevertable) sf).revert();
-		}
+		for (String lang: ex.getProgLanguages())
+			for (int i=0; i<ex.publicSourceFileCount(lang); i++) {
+				SourceFile sf = ex.getPublicSourceFile(lang,i);
+				if (sf instanceof SourceFileRevertable)
+					((SourceFileRevertable) sf).revert();
+			}
 	}
 
 }

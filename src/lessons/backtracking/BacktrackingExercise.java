@@ -17,7 +17,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			w.addEntity(solver.copy());
 		}
 		worldDuplicate(ws);
-		newSourceFromFile(this.tabName, solver.getClass().getCanonicalName(), "java"); 
+		newSourceFromFile("java",this.tabName, solver.getClass().getCanonicalName(), "java"); //FIXME 
 
 		computeAnswer();
 	}

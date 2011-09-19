@@ -6,7 +6,7 @@ import jlm.core.model.Game;
 
 /* This class uses lazy initialization because we cannot retrieve and traverse the list 
  * of lessons while initializing the exercise because that would let the Game.getInstance()
- * mecanism loop.
+ * mechanism loop.
  */
 
 public class SourceFileAliased extends SourceFile {
@@ -15,12 +15,14 @@ public class SourceFileAliased extends SourceFile {
 	private String lesson;
 	private String exercise;
 	private String file;
+	private String lang;
 
-	public SourceFileAliased(String lesson, String exercise, String file) {
+	public SourceFileAliased(String lang, String lesson, String exercise, String file) {
 		super(file, "", null, null);
 		this.lesson = lesson;
 		this.exercise = exercise;
 		this.file = file;
+		this.lang = lang;
 	}
 
 	private void searchAliased() { /* Check the headers to see why we lazy initialize this way */
@@ -29,7 +31,7 @@ public class SourceFileAliased extends SourceFile {
 				for (int eCount=0; eCount<l.getExerciseCount();eCount++) {
 					Exercise e = l.getExercise(eCount);
 					if (e.getClass().getName().equals(exercise)) {
-						for (SourceFile sf : e.sourceFiles) {
+						for (SourceFile sf : e.getSourceFiles(lang)) {
 							System.out.println("Seen file "+sf.getName() +" (searching for "+file+")");
 							if (sf.getName().equals(file)) {
 								/* Found it, cool */

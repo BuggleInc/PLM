@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jlm.core.model.Game;
 import jlm.core.model.Reader;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -141,16 +142,17 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 
-	public void newSourceFromFile(String name, String filename, String extension) {
-		newSourceFromFile(name, filename, extension,"");
+	public void newSourceFromFile(String lang, String name, String filename, String extension) {
+		newSourceFromFile(lang, name, filename, extension,"");
 	}
-	public void newSourceFromFile(String name, String filename, String extension,String patternString) {
+	public void newSourceFromFile(String lang, String name, String filename, String extension,String patternString) {
 		
 		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,extension,false);
+
 		if (sb==null)
 			sb = Reader.fileToStringBuffer(filename,extension,false);
 		if (sb==null) {
-			System.err.println("Source file "+filename+" not found.");
+			System.err.println("Source file "+filename+"."+extension+" not found.");
 			return;
 		}
 		/* Remove line comments since at some point, we put everything on one line only, 
@@ -294,11 +296,14 @@ public abstract class ExerciseTemplated extends Exercise {
 		    System.out.println("<<<<<<<<Skel: "+skelContent);
 		}*/
 		
-		newSource(name, 
+		newSource(lang, name, 
 				debug?debugContent:initialContent,
 				skelContent.length()>0?skelContent:template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
+		addEntityKind("java", w, se, name);
+	}
+	protected void addEntityKind(String lang, World w, Entity se, String name) {
 		if (entitiesNames == null)  {
 			entitiesNames = new ArrayList<String>();
 			tabsNames = new ArrayList<String>();
@@ -309,9 +314,12 @@ public abstract class ExerciseTemplated extends Exercise {
 		se.setName(name);
 		entitiesNames.add(se.getClass().getName());
 		tabsNames.add("My"+name);
-		newSourceFromFile("My"+name, se.getClass().getName(),"java"); 
+		newSourceFromFile(lang, "My"+name, se.getClass().getName(),"java"); 
 	}
 	protected void addEntityKind(World[] ws, Entity se, String name) {
+		addEntityKind("java", ws, se, name);
+	}
+	protected void addEntityKind(String lang, World[] ws, Entity se, String name) {
 		if (entitiesNames == null)  {
 			entitiesNames = new ArrayList<String>();
 			tabsNames = new ArrayList<String>();
@@ -323,7 +331,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			if (i==0) {
 				entitiesNames.add(se.getClass().getName());
 				tabsNames.add("My"+name);
-				newSourceFromFile("My"+name, se.getClass().getName(),"java"); 
+				newSourceFromFile(lang, "My"+name, se.getClass().getName(),"java"); 
 			}
 		}
 	}
@@ -335,29 +343,30 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	protected void setup(World[] ws) {
 		worldDuplicate(ws);
+	
+		for (String lang: getProgLanguages()) {
+			boolean found = false;
+			String searchedName = null;
+			for (SourceFile sf : getSourceFiles(lang)) {
+				if (searchedName == null) {//lazy initialization
+					Pattern p = Pattern.compile(".*?([^.]*)$");
+					Matcher m = p.matcher(entityName);
+					if (m.matches())
+						searchedName = m.group(1);
+					p = Pattern.compile("Entity$");
+					m = p.matcher(searchedName);
+					searchedName = m.replaceAll("");
 
-		boolean found = false;
-		String searchedName = null;
-		for (SourceFile sf : sourceFiles) {
-			if (searchedName == null) {//lazy initialization
-				Pattern p = Pattern.compile(".*?([^.]*)$");
-				Matcher m = p.matcher(entityName);
-				if (m.matches())
-					searchedName = m.group(1);
-				p = Pattern.compile("Entity$");
-				m = p.matcher(searchedName);
-				searchedName = m.replaceAll("");
-				
+				}
+				//	System.out.println("Saw "+sf.name+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
+				if (sf.name.equals(searchedName)||sf.name.equals(tabName))
+					found=true;
 			}
-//			System.out.println("Saw "+sf.name+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
-			if (sf.name.equals(searchedName)||sf.name.equals(tabName))
-				found=true;
+			if (!found) {
+				newSourceFromFile(lang, tabName, entityName, Game.getProgrammingFileExtension(lang));
+			} else if (!lang.equals(Game.JAVA))
+				System.out.println("Found it, no need to create a new source file");
 		}
-		if (!found)
-			newSourceFromFile(tabName, entityName,"java");
-//		else
-//			System.out.println("Found it, no need to create a new source file");
-
 		computeAnswer();
 	}
 	protected void computeAnswer() {
