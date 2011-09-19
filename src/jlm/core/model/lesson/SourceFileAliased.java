@@ -3,6 +3,7 @@ package jlm.core.model.lesson;
 import java.util.Map;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 
 /* This class uses lazy initialization because we cannot retrieve and traverse the list 
  * of lessons while initializing the exercise because that would let the Game.getInstance()
@@ -15,9 +16,9 @@ public class SourceFileAliased extends SourceFile {
 	private String lesson;
 	private String exercise;
 	private String file;
-	private String lang;
+	private ProgrammingLanguage lang;
 
-	public SourceFileAliased(String lang, String lesson, String exercise, String file) {
+	public SourceFileAliased(ProgrammingLanguage lang, String lesson, String exercise, String file) {
 		super(file, "", null, null);
 		this.lesson = lesson;
 		this.exercise = exercise;

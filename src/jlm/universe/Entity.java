@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.concurrent.Semaphore;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
@@ -119,11 +120,11 @@ public abstract class Entity {
 	protected int getParamsAmount() {
 		return world.parameters.length;
 	}
-	private Map<String,String> script = new HashMap<String, String>(); /* What to execute when running a scripting language */
-	public void setScript(String lang, String s) {
+	private Map<ProgrammingLanguage,String> script = new HashMap<ProgrammingLanguage, String>(); /* What to execute when running a scripting language */
+	public void setScript(ProgrammingLanguage lang, String s) {
 		script.put(lang,  s);
 	}
-	public String getScript(String lang) {
+	public String getScript(ProgrammingLanguage lang) {
 		return script.get(lang);
 	}
 }

@@ -4,6 +4,7 @@ import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.SourceFile;
 import jlm.universe.Entity;
 import jlm.universe.IEntityStackListener;
@@ -16,13 +17,13 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 	JEditorPane codeEditor;
 	Entity tracedEntity;
 
-	public JavaEditorPanel(SourceFile srcFile, String lang) {
+	public JavaEditorPanel(SourceFile srcFile, ProgrammingLanguage lang) {
 		super();
 		this.srcFile = srcFile;
 
 		codeEditor = new JEditorPane();
 		setViewportView(codeEditor);
-		codeEditor.setContentType("text/"+lang.toLowerCase());
+		codeEditor.setContentType("text/"+lang.getLang().toLowerCase());
 		codeEditor.setCaretPosition(0);
 		((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(0);
 		

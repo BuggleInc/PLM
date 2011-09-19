@@ -3,6 +3,7 @@ package jlm.universe.lightbot;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.GridWorld;
@@ -188,7 +189,7 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 		return new CellIterator();
 	}
 	@Override
-	public String getBindings(String lang) {
+	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of LightbotWorld for "+lang);
 	}
 }

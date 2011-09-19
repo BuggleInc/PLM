@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Iterator;
 import java.util.Random;
 
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -68,7 +69,7 @@ public class SortingWorld extends World {
 //		return new WorldView[] { new SortingWorldView(this) };
 	}
 	@Override
-	public String getBindings(String lang) {
+	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of SortingWorld for "+lang);
 	}
 

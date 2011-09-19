@@ -4,15 +4,16 @@ import java.awt.event.ActionEvent;
 
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 
 public class SetProgLanguage extends AbstractGameAction implements ProgLangChangesListener {
 
 	private static final long serialVersionUID = 5778501209753480269L;
 
-	private String lang;
+	private ProgrammingLanguage lang;
 
-	public SetProgLanguage(Game game, String lang) {
-		super(game, lang, null);
+	public SetProgLanguage(Game game, ProgrammingLanguage lang) {
+		super(game, lang.toString(), null);
 		game.addProgLangListener(this);
 		this.lang = lang;
 	}
@@ -23,7 +24,7 @@ public class SetProgLanguage extends AbstractGameAction implements ProgLangChang
 	}
 
 	@Override
-	public void currentProgrammingLanguageHasChanged(String newLang) {
+	public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang) {
 		setEnabled( newLang.equals(lang) );
 	}
 }

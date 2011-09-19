@@ -2,6 +2,7 @@ package jlm.universe.lightbot;
 
 import java.util.List;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
@@ -9,8 +10,8 @@ import jlm.universe.World;
 public class LightBotExercise extends ExerciseTemplated {
 	public LightBotExercise(Lesson lesson) {
 		super(lesson);
-		setProgLanguages("lightbot");
-		getSourceFiles("lightbot").add(new LightBotSourceFile("Code"));
+		setProgLanguages(Game.LIGHTBOT);
+		getSourceFiles(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
 	}
 
 	@Override

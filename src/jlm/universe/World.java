@@ -15,6 +15,7 @@ import javax.script.ScriptEngineManager;
 import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.ui.WorldView;
 
@@ -135,15 +136,15 @@ public abstract class World {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
-					String progLang = Game.getProgrammingLanguage(); 
+					ProgrammingLanguage progLang = Game.getProgrammingLanguage(); 
 					try {
 						if (progLang.equals(Game.JAVA)) {
 							b.run();
 						} else {
 							ScriptEngineManager manager = new ScriptEngineManager();       
-							ScriptEngine engine = manager.getEngineByName(progLang.toLowerCase());
+							ScriptEngine engine = manager.getEngineByName(progLang.getLang().toLowerCase());
 							if (engine==null) 
-								throw new RuntimeException("Failed to start an interpreter for "+progLang.toLowerCase());
+								throw new RuntimeException("Failed to start an interpreter for "+progLang.getLang().toLowerCase());
 
 							engine.put("entity", b);
 							engine.eval(b.getWorld().getBindings(progLang));
@@ -355,5 +356,5 @@ public abstract class World {
 	 * 
 	 * It should pass all order to the java entity, which were injected independently  
 	 */
-	public abstract String getBindings(String lang);
+	public abstract String getBindings(ProgrammingLanguage lang);
 }

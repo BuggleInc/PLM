@@ -2,6 +2,7 @@ package lessons.backtracking;
 
 import java.util.List;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
@@ -17,7 +18,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			w.addEntity(solver.copy());
 		}
 		worldDuplicate(ws);
-		newSourceFromFile("java",this.tabName, solver.getClass().getCanonicalName(), "java"); //FIXME 
+		newSourceFromFile(Game.JAVA,this.tabName, solver.getClass().getCanonicalName(), "java"); //FIXME 
 
 		computeAnswer();
 	}

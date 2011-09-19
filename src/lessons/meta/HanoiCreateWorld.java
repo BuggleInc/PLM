@@ -2,6 +2,7 @@ package lessons.meta;
 
 import java.util.List;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.ui.MainFrame;
 import jlm.universe.World;
@@ -21,9 +22,9 @@ public class HanoiCreateWorld extends MetaExercise {
 		
 		worldDuplicate(w);
 
-		newSourceFromFile("java","HanoiWorld","src/jlm/universe/hanoi/HanoiWorld","java");
-		newSourceFromFile("java","HanoiInvalidMove","src/jlm/universe/hanoi/HanoiInvalidMove","java");
-		getSourceFile("java","HanoiInvalidMove").setEditable(false);
+		newSourceFromFile(Game.JAVA,"HanoiWorld","src/jlm/universe/hanoi/HanoiWorld","java");
+		newSourceFromFile(Game.JAVA,"HanoiInvalidMove","src/jlm/universe/hanoi/HanoiInvalidMove","java");
+		getSourceFile(Game.JAVA,"HanoiInvalidMove").setEditable(false);
 		debug=true;
 
 		/* compute answer */

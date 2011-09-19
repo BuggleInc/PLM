@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 
 import javax.swing.JScrollPane;
 
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.JavaEditorPanel;
 
 
@@ -134,7 +135,7 @@ public class SourceFile {
 		return true;
 	}
 
-	public JScrollPane getEditorPanel(String lang) {
+	public JScrollPane getEditorPanel(ProgrammingLanguage lang) {
 		return new JavaEditorPanel(this, lang);
 	}
 }

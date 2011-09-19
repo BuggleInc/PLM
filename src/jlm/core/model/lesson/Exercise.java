@@ -13,6 +13,7 @@ import javax.tools.JavaFileObject;
 
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -28,11 +29,11 @@ public abstract class Exercise  {
 	
 	protected Map<String, String> tips = new HashMap<String, String>();
 	
-	protected Map<String, List<SourceFile>> sourceFiles; /** All the editable source files */
+	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All the editable source files */
 
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
-	public Map<String, Map<String, String>> scriptSources = new TreeMap<String, Map<String, String>>(); /* (Lang x scriptName |-> script source) list of scripts that are to be executed by entities when not running Java */
+	public Map<ProgrammingLanguage, Map<String, String>> scriptSources = new TreeMap<ProgrammingLanguage, Map<String, String>>(); /* (Lang x scriptName |-> script source) list of scripts that are to be executed by entities when not running Java */
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
 	private static final String packageNamePrefix = "jlm.runtime";
@@ -146,7 +147,7 @@ public abstract class Exercise  {
 		}
 		
 		/* Setup the scripts for the other languages */
-		for (String lang: getProgLanguages()) {
+		for (ProgrammingLanguage lang: getProgLanguages()) {
 			if (!lang.equals(Game.JAVA)) {
 				Map<String, String> scripts = new TreeMap<String, String>();
 				
@@ -166,7 +167,7 @@ public abstract class Exercise  {
 		return packageName() + "." + name;
 	}
 	/** get the list of source files for a given language, or create it if not existent yet */
-	protected List<SourceFile> getSourceFiles(String lang) {
+	protected List<SourceFile> getSourceFiles(ProgrammingLanguage lang) {
 		List<SourceFile> res = sourceFiles.get(lang); 
 		if (res == null) {
 			res = new ArrayList<SourceFile>();
@@ -175,7 +176,7 @@ public abstract class Exercise  {
 		return res;
 	}
 	/** Add a new unmodifiable source file in child classes, ie alongside to stuff to be written by the student */
-	public void newFrozenSource(String lang, String name, String content) {
+	public void newFrozenSource(ProgrammingLanguage lang, String name, String content) {
 		SourceFile sf = new SourceFile(name, content);
 		sf.setEditable(false);
 		getSourceFiles(lang).add(sf);
@@ -184,7 +185,7 @@ public abstract class Exercise  {
 		newFrozenSource(Game.JAVA, name, content);
 	}
 	/** Add a new text file in child classes, ie file that is not going to be compiled  */
-	public void newTextFile(String lang, String name, String content) {
+	public void newTextFile(ProgrammingLanguage lang, String name, String content) {
 		SourceFile sf = new SourceFile(name, content);
 		sf.setCompilable(false);
 		getSourceFiles(lang).add(sf);
@@ -193,14 +194,14 @@ public abstract class Exercise  {
 		/* FIXME: this should alias for all existing languages */
 		newSourceAliased(Game.JAVA, lesson, exercise, file);
 	}
-	public void newSourceAliased(String lang, String lesson, String exercise, String file) {
+	public void newSourceAliased(ProgrammingLanguage lang, String lesson, String exercise, String file) {
 		SourceFile sf = new SourceFileAliased(lang, lesson, exercise,file);
 		getSourceFiles(lang).add(sf);
 	}
-	public void newSource(String lang, String name, String initialContent, String template) {
+	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
 		newSource(lang, name, initialContent, template, "");
 	}
-	public void newSource(String lang, String name, String initialContent, String template, String patterns) {
+	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template, String patterns) {
 		Map<String, String> pat = new TreeMap<String, String>();
 		for (String pattern: patterns.split(";")) {
 			String[] parts = pattern.split("/");
@@ -212,7 +213,7 @@ public abstract class Exercise  {
 		}
 		getSourceFiles(lang).add(new SourceFileRevertable(name, initialContent, template, pat));
 	}
-	public SourceFile getSourceFile(String lang, String name) {
+	public SourceFile getSourceFile(ProgrammingLanguage lang, String name) {
 		for (SourceFile sf: getSourceFiles(lang)) {
 			if (sf.getName().equals(name))
 				return sf;
@@ -287,12 +288,12 @@ public abstract class Exercise  {
 	public Exercise(Lesson lesson) {
 		super();
 		this.lesson = lesson;
-		sourceFiles = new HashMap<String, List<SourceFile>>();
+		sourceFiles = new HashMap<ProgrammingLanguage, List<SourceFile>>();
 		runtimePatterns = new TreeMap<String, String>();
 	}
 
 	@Deprecated
-	public String[] getSourceFilesNames(String lang) {
+	public String[] getSourceFilesNames(ProgrammingLanguage lang) {
 		String[] res = new String[sourceFiles.size()]; // will be too large if not all compilable, but who cares?
 		int i = 0;
 		for (SourceFile sf: getSourceFiles(lang)) {
@@ -312,7 +313,7 @@ public abstract class Exercise  {
 		return Arrays.asList(this.initialWorld);
 	}
 
-	public int publicSourceFileCount(String lang) {
+	public int publicSourceFileCount(ProgrammingLanguage lang) {
 		int res=0;
 		for (SourceFile sf : getSourceFiles(lang)) {
 			if (sf.isEditable())
@@ -321,7 +322,7 @@ public abstract class Exercise  {
 		return res;
 	}
 	
-	public SourceFile getPublicSourceFile(String lang, int i) {
+	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, int i) {
 		int count=0;
 		for (SourceFile sf : getSourceFiles(lang)) {
 			if (sf.isEditable())
@@ -331,7 +332,7 @@ public abstract class Exercise  {
 		}
 		throw new ArrayIndexOutOfBoundsException("Not "+i+" public source files (but only "+count+")");
 	}
-	public SourceFile getPublicSourceFile(String lang, String name) {
+	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, String name) {
 		for (SourceFile sf : getSourceFiles(lang)) {
 			if (sf.getName().equals(name))
 				return sf;
@@ -373,22 +374,22 @@ public abstract class Exercise  {
 	}
 
 	/* setters and getter of the programming language that this exercise accepts */ 
-	private String[] progLanguages = new String[] {Game.JAVA};
-	public String[] getProgLanguages() {
+	private ProgrammingLanguage[] progLanguages = new ProgrammingLanguage[] {Game.JAVA};
+	public ProgrammingLanguage[] getProgLanguages() {
 		return progLanguages;
 	}
-	public void addProgLanguage(String newL) {
-		String[] res = new String[progLanguages.length +1 ];
+	public void addProgLanguage(ProgrammingLanguage newL) {
+		ProgrammingLanguage[] res = new ProgrammingLanguage[progLanguages.length +1 ];
 		for (int i=0;i<progLanguages.length;i++) 
 			res[i] = progLanguages[i];
 		res[progLanguages.length] = newL;
 		progLanguages = res;
 	}
-	public void addProgLanguage(String[] newL) { /* FIXME: inefficient: increase the array size only once */
-		for (String l:newL)
+	public void addProgLanguage(ProgrammingLanguage[] newL) { /* FIXME: inefficient: increase the array size only once */
+		for (ProgrammingLanguage l:newL)
 			addProgLanguage(l);
 	}
-	public void setProgLanguages(String ... languages) {
+	public void setProgLanguages(ProgrammingLanguage ... languages) {
 		progLanguages = languages;
 	}
 }

@@ -73,7 +73,7 @@ public class FileSessionKit implements ISessionKit {
 				}
 
 				// save exercise body
-				for (String lang:exercise.getProgLanguages()) 
+				for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
 					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 						SourceFile sf = exercise.getPublicSourceFile(lang,i);
 
@@ -126,7 +126,7 @@ public class FileSessionKit implements ISessionKit {
 				}
 
 				// load exercise body
-				for (String lang:exercise.getProgLanguages()) {
+				for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 						SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
@@ -183,7 +183,7 @@ public class FileSessionKit implements ISessionKit {
 					};
 				}
 
-				for (String lang:exercise.getProgLanguages()) 
+				for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
 					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 						SourceFile srcFile = exercise.getPublicSourceFile(lang, i);
 

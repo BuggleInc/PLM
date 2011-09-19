@@ -2,6 +2,7 @@ package jlm.universe.array;
 
 import java.util.Arrays;
 
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -56,7 +57,7 @@ public class ArrayWorld extends World {
 		this.values = newValues;
 	}
 	@Override
-	public String getBindings(String lang) {
+	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of ArrayWorld for "+lang);
 	}
 	

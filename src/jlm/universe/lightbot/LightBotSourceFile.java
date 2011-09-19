@@ -2,6 +2,7 @@ package jlm.universe.lightbot;
 
 import javax.swing.JScrollPane;
 
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.SourceFileRevertable;
 
 public class LightBotSourceFile extends SourceFileRevertable {
@@ -63,7 +64,7 @@ public class LightBotSourceFile extends SourceFileRevertable {
 	}
 
 	@Override
-	public JScrollPane getEditorPanel(String lang){
+	public JScrollPane getEditorPanel(ProgrammingLanguage lang){
 		return new LightBotEditorPanel(this);
 	}
 	public void setMain(LightBotInstruction[] main) {

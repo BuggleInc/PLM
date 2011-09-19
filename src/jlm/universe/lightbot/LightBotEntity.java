@@ -175,7 +175,7 @@ public class LightBotEntity extends Entity  {
 	LightBotSourceFile sf;
 	@Override
 	public void run() {
-		sf = (LightBotSourceFile) Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile("lightbot","Code");
+		sf = (LightBotSourceFile) Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile(Game.LIGHTBOT,"Code");
 				
 		/* Run main */
 		run("main",sf.getMain());

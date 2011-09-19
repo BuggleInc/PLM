@@ -3,6 +3,7 @@ package jlm.universe.bat;
 import java.util.List;
 import java.util.Vector;
 
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -59,7 +60,7 @@ public class BatWorld extends World {
 		tests.add(new BatTest(getName(),visible, params));
 	}
 	@Override
-	public String getBindings(String lang) {
+	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of BatWorld for "+lang);
 	}
 }

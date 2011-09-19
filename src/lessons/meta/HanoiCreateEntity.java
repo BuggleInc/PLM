@@ -2,6 +2,7 @@ package lessons.meta;
 
 import java.util.List;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
 import jlm.universe.hanoi.HanoiInvalidMove;
@@ -32,8 +33,8 @@ public class HanoiCreateEntity extends MetaExercise {
 		System.out.println("Done computing answers");
 		
 		/* setup the source files */
-		newSourceAliased("java","lessons.meta.Main","jlm.lessons.meta.HanoiCreateWorld","HanoiWorld");
-		newSourceFromFile("java","HanoiEntity","src/jlm/universe/hanoi/HanoiEntity","java",
+		newSourceAliased(Game.JAVA,"lessons.meta.Main","jlm.lessons.meta.HanoiCreateWorld","HanoiWorld");
+		newSourceFromFile(Game.JAVA,"HanoiEntity","src/jlm/universe/hanoi/HanoiEntity","java",
 		       "s/HanoiCreateEntityAnswer/HanoiEntity/;");
 	}
 

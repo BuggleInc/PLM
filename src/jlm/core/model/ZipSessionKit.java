@@ -83,7 +83,7 @@ public class ZipSessionKit implements ISessionKit {
 					}
 
 					// save exercise body
-					for (String lang:exercise.getProgLanguages()) 
+					for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
 						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 							SourceFile sf = exercise.getPublicSourceFile(lang,i);
 
@@ -149,7 +149,7 @@ public class ZipSessionKit implements ISessionKit {
 						exercise.successfullyPassed();
 					}
 
-					for (String lang:exercise.getProgLanguages())
+					for (ProgrammingLanguage lang:exercise.getProgLanguages())
 						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 

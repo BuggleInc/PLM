@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -142,10 +143,10 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 
-	public void newSourceFromFile(String lang, String name, String filename, String extension) {
+	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String extension) {
 		newSourceFromFile(lang, name, filename, extension,"");
 	}
-	public void newSourceFromFile(String lang, String name, String filename, String extension,String patternString) {
+	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename, String extension,String patternString) {
 		
 		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,extension,false);
 
@@ -301,9 +302,9 @@ public abstract class ExerciseTemplated extends Exercise {
 				skelContent.length()>0?skelContent:template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
-		addEntityKind("java", w, se, name);
+		addEntityKind(Game.JAVA, w, se, name);
 	}
-	protected void addEntityKind(String lang, World w, Entity se, String name) {
+	protected void addEntityKind(ProgrammingLanguage lang, World w, Entity se, String name) {
 		if (entitiesNames == null)  {
 			entitiesNames = new ArrayList<String>();
 			tabsNames = new ArrayList<String>();
@@ -317,9 +318,9 @@ public abstract class ExerciseTemplated extends Exercise {
 		newSourceFromFile(lang, "My"+name, se.getClass().getName(),"java"); 
 	}
 	protected void addEntityKind(World[] ws, Entity se, String name) {
-		addEntityKind("java", ws, se, name);
+		addEntityKind(Game.JAVA, ws, se, name);
 	}
-	protected void addEntityKind(String lang, World[] ws, Entity se, String name) {
+	protected void addEntityKind(ProgrammingLanguage lang, World[] ws, Entity se, String name) {
 		if (entitiesNames == null)  {
 			entitiesNames = new ArrayList<String>();
 			tabsNames = new ArrayList<String>();
@@ -344,7 +345,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void setup(World[] ws) {
 		worldDuplicate(ws);
 	
-		for (String lang: getProgLanguages()) {
+		for (ProgrammingLanguage lang: getProgLanguages()) {
 			boolean found = false;
 			String searchedName = null;
 			for (SourceFile sf : getSourceFiles(lang)) {

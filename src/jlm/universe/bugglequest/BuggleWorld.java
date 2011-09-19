@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
@@ -252,7 +253,7 @@ public class BuggleWorld extends GridWorld {
 		getCell(x, y).newBaggle();		
 	}
 	@Override
-	public String getBindings(String lang) {
+	public String getBindings(ProgrammingLanguage lang) {
 		if (lang.equals(Game.PYTHON)) {
 			String res =  
 				"def forward(steps=1):\n"+

@@ -14,6 +14,7 @@ import javax.swing.text.html.StyleSheet;
 import jlm.core.GameListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.SourceFile;
@@ -100,7 +101,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	}
 	
 	@Override
-	public void currentProgrammingLanguageHasChanged(String newLang) { /* Redo any code panel */
+	public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang) { /* Redo any code panel */
 		int tabPosition = getSelectedIndex();
 		/* Remove every tabs, but the mission one */
 		while (getTabCount()>1) {

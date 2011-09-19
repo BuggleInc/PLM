@@ -33,6 +33,7 @@ import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.model.Game;
 import jlm.core.model.GameState;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.ui.action.AbstractGameAction;
@@ -63,7 +64,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton resetButton;
 	private JButton hintButton;
 	private JButton demoButton;
-	private Map<String,JMenuItem> progLangItems = new HashMap<String, JMenuItem>();
+	private Map<ProgrammingLanguage,JMenuItem> progLangItems = new HashMap<ProgrammingLanguage, JMenuItem>();
 	private LoggerPanel outputArea;
 
 	private JComboBox lessonComboBox;
@@ -184,7 +185,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		/* === Programming language changing === */
 		menu.addSeparator();
 		ButtonGroup group = new ButtonGroup();
-		for (String l:g.getProgrammingLanguages()) {			
+		for (ProgrammingLanguage l:g.getProgrammingLanguages()) {			
 			JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,l));
 			progLangItems.put(l,item);
 			group.add(item);
@@ -448,13 +449,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		Exercise exo = g.getCurrentLesson().getCurrentExercise();
 		hintButton.setEnabled(exo.hint != null);
 		
-		for (String l:progLangItems.keySet()) {
+		for (ProgrammingLanguage l:progLangItems.keySet()) {
 			JMenuItem i = progLangItems.get(l);
 			i.setEnabled(false);
 			i.setToolTipText("This exercise cannot be solved in "+l);
 		}
 		
-		for (String l:exo.getProgLanguages()) {
+		for (ProgrammingLanguage l:exo.getProgLanguages()) {
 			if (!g.isValidProgLanguage(l)) 
 				System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your JLM.");
 			else {

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
@@ -96,7 +97,7 @@ public class TurtleWorld extends World {
 		return res;
 	}
 	@Override
-	public String getBindings(String lang) {
+	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of TurtleWorld for "+lang);
 	}
 }
