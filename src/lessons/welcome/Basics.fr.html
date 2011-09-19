@@ -1,4 +1,4 @@
-  <h2>Les instructions Java</h2>
+  <h2>Instructions</h2>
 
   Félicitations ! Vous venez d'écrire votre premier programme ! Vous avez
 compris l'idée maintenant : programmer, c'est simplement donner des
@@ -6,40 +6,57 @@ instructions à l'ordinateur, qui les applique aveuglément. La plus grande
 difficulté est d'expliquer quoi faire à quelqu'un d'aussi bête que
 l'ordinateur...  
   
-  <p><a name="generalites"> Le programme Java le plus simple est formé d'une
-suite d'instructions, séparées par des points-virgules. Il faut le
-comprendre comme une suite d'ordres simples que l'on donne à la
-machine. C'est assez comparable à une recette de cuisine où l'on dit
-<i>cassez les oeufs puis ajoutez du sel puis mélangez le tout puis faites
-cuire</i>. Java veut que les instructions soient séparées par des
-points-virgules (;) et dotées de parenthèses comme dans
+  <p>Programs are mainly suites of method calls, which are no more than a list of
+simple order given to the machine. It is very similar to a recipe stating
+<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.  In
+your programs, such built instructions are called functions or methods, and
+you should add parenthesis to invoke them, as in  
 		<pre>nomDeLaMethode()</pre>
-  <p>L'exemple ci-dessus de recette s'écrirait donc ainsi à peu près ainsi:
+		
+   <p>
+   <if lang="Java">Java want to have the instructions separated by semi-columns (;).  The
+previous example would thus be written in a similar way:
 <pre>
 casserLesOeufs();
 ajouterDuSel();
 melangerLeTout();
 faireCuire();
 </pre>
+    </if>
+   <if lang="Python">Python want to have the instructions given parenthesis, and separated by
+either semi-columns (;) or by new lines. The previous example would thus be
+written the following way.
+<pre>
+meltTheChocolatePieces()
+addSugar()
+coolMix()
+serve()
+</pre>
+   It could also be written in the following way, but it's generally considered
+as a bad practice to group several instructions on the same line.
+<pre>
+meltTheChocolatePieces(); addSugar(); coolMix(); serve()
+</pre>
+   </if>
 
-  <p>Bien sûr, ces instructions en particulier n'existent pas en Java, même si
-vous pourriez les définir par vous-même (nous apprendrons à le faire dans un
-moment). Pour l'instant, nous allons utiliser les instructions de la
-buggle. Il y a une méthode pour chaque bouton du contrôle interactif.  Pour
-faire la même chose que le bouton <b>forward</b> (faire avancer la buggle
-d'un pas), il faut écrire dans l'éditeur : <pre>forward();</pre>
+  <p>Of course, these specific methods do not exist in <if lang="Java">Java</if><if lang="Python">Python</if>, but it may be possible to define them by yourself (we'll see later how to
+define your how methods). For now, we'll simply go for the buggle
+instructions. There is a method for each button of the interactive control
+panel. To achieve the same effect than the <b>forward</b> button (making the
+buggle moving one step forward), you need to write the following in the
+editor: <pre>forward()<if lang="Java">;</if></pre>
   De même, pour faire l'équivalent des boutons <b>backward</b>, <b>turn
 left</b> et <b>turn right</b>, il faut utiliser respectivement : 
 <pre>
-backward();
-turnLeft();
+backward()<if lang="Java">;</if>
+turnLeft()<if lang="Java">;</if>
 turnRight();
 </pre>
 	 Le bouton <b>mark</b> est un peu particulier, puisqu'il correspond à deux
 méthodes : la première lève le crayon, tandis que la seconde le baisse.
 <pre>
-brushDown();
-brushUp();
+brushDown()<if lang="Java">;</if>
+brushUp()<if lang="Java">;</if>
 </pre></p>
   <p>La buggle offre d'autres méthodes, présentées dans le menu "Help/about this
 world". Elles seront introduites au fur et à mesure des besoins.</p>
