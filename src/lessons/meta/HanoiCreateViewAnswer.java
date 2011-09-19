@@ -10,7 +10,6 @@ import java.awt.geom.Rectangle2D;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 

@@ -33,11 +33,12 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 		add(new JScrollPane(area),"grow");
 	}
 		
-	public void currentExerciseHasChanged() {}
-	public void currentLessonHasChanged() {}
-	public void lessonsChanged() {}
-	public void selectedEntityHasChanged() {}
-	public void selectedWorldHasChanged() {}
-	public void selectedWorldWasUpdated() {}
+	public void currentProgrammingLanguageHasChanged() { /* I dont care I'm a punk */ }
+	public void currentExerciseHasChanged()            { /* I dont care I'm a punk */ }
+	public void currentLessonHasChanged()              { /* I dont care I'm a punk */ }
+	public void lessonsChanged()                       { /* I dont care I'm a punk */ }
+	public void selectedEntityHasChanged()             { /* I dont care I'm a punk */ }
+	public void selectedWorldHasChanged()              { /* I dont care I'm a punk */ }
+	public void selectedWorldWasUpdated()              { /* I dont care I'm a punk */ }
 	
 }

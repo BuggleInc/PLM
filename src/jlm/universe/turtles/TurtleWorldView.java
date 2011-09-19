@@ -8,7 +8,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import jlm.core.ui.ResourcesCache;

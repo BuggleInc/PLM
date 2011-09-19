@@ -1,7 +1,5 @@
 package jlm.core.model;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,22 +7,18 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import org.apache.http.HttpMessage;
-import org.apache.http.NameValuePair;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.auth.params.AuthPNames;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.params.AuthPolicy;
-import org.apache.http.impl.DefaultHttpClientConnection;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.JLMCompilerException;
 import jlm.core.ui.ResourcesCache;
-import twitter4j.Status;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.http.AccessToken;
@@ -101,12 +95,11 @@ public class LessonRunner extends Thread {
 					UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
 					post.setEntity(entity);					
 					
-					HttpMessage msg = httpclient.execute(post);
+					httpclient.execute(post);
 										
 					Twitter twitter = new TwitterFactory().getOAuthAuthorizedInstance(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"), new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
-					Status status = null;
 					try {
-						status = twitter.updateStatus(username+" solves "+exo.getName()+"!");
+						twitter.updateStatus(username+" solved "+exo.getName()+"!");
 					} catch (Exception e) {
 						// silently ignore network unavailability ;)
 						//e.printStackTrace();
