@@ -12,6 +12,7 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.StyleSheet;
 
 import jlm.core.GameListener;
+import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
@@ -22,7 +23,7 @@ import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
 
-public class MissionEditorTabs extends JTabbedPane implements GameListener {
+public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener {
 	private static final long serialVersionUID = 1L;
 
 	private Game game;
@@ -71,6 +72,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		/* Register to game engine */
 		this.game = Game.getInstance();
 		this.game.addGameListener(this);
+		this.game.addProgLangListener(this);
 		
 		/* add code tabs */
 		currentExerciseHasChanged();
@@ -84,25 +86,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 		missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission());
 		missionTab.setCaretPosition(0);
 		
-		/* Redo any code panel */
-		
-		/* Remove every tabs, but the mission one */
-		while (getTabCount()>1) {
-			IEditorPanel p = (IEditorPanel) this.getComponentAt(getTabCount()-1);
-			p.clear();
-			removeTabAt(getTabCount()-1);
-		}
-
-		/* Add back the right amount of tabs */
-		int publicSrcFileCount = currentExercise.publicSourceFileCount();
-		for (int i = 0; i < publicSrcFileCount; i++) {
-			/* Create the code editor */
-			SourceFile srcFile = currentExercise.getPublicSourceFile(i);
-
-			/* Create the tab with the code editor as content */
-			this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(),
-					"Type your code here"); 			
-		}		
+		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage()); /* Redo any code panel */
 		selectedEntityHasChanged();
 		doLayout();
 	}
@@ -114,6 +98,30 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener {
 	public void selectedWorldHasChanged() { 
 		selectedEntityHasChanged();
 	}
+	
+	@Override
+	public void currentProgrammingLanguageHasChanged(String newLang) { /* Redo any code panel */
+		int tabPosition = getSelectedIndex();
+		/* Remove every tabs, but the mission one */
+		while (getTabCount()>1) {
+			IEditorPanel p = (IEditorPanel) this.getComponentAt(getTabCount()-1);
+			p.clear();
+			removeTabAt(getTabCount()-1);
+		}
+
+		/* Add back the right amount of tabs */
+		int publicSrcFileCount = currentExercise.publicSourceFileCount(newLang);
+		for (int i = 0; i < publicSrcFileCount; i++) {
+			/* Create the code editor */
+			SourceFile srcFile = currentExercise.getPublicSourceFile(newLang, i);
+
+			/* Create the tab with the code editor as content */
+			this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(newLang), "Type your code here"); 			
+		}		
+		if (getTabCount()>tabPosition)
+			setSelectedIndex(tabPosition);
+	}
+
 	@Override
 	public void selectedEntityHasChanged() { /* the code panels may want to know */
 		for (int i=1;i<getTabCount();i++) {
