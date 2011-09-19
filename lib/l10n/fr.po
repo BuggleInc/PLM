@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-13 13:50+0300\n"
+"POT-Creation-Date: 2011-09-19 17:15+0300\n"
 "PO-Revision-Date: 2011-04-05 15:13+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1027,11 +1027,11 @@ msgstr ""
 msgid "&nbsp;"
 msgstr "&nbsp;"
 
-#. type: Content of: <table><tr><td>
+#. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
 #: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
 #: src/lessons/welcome/Main.html:336 src/lessons/welcome/Main.html:416
-#: src/lessons/welcome/Main.html:456
+#: src/lessons/welcome/Main.html:456 src/lessons/welcome/Basics.html:1
 msgid "Instructions"
 msgstr "Instructions"
 
@@ -1115,8 +1115,8 @@ msgstr "Tableaux"
 msgid "Welcome in the Buggles' World"
 msgstr "Bienvenue dans le monde des buggles"
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:36 src/lessons/welcome/Basics.html:1
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:36
 msgid "Java Instructions"
 msgstr "Les instructions Java"
 
@@ -1266,11 +1266,19 @@ msgstr "Le concept n'est pas indispensable à l'exercice"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Environment.html:3
+#, fuzzy
+#| msgid ""
+#| "You just started the Java Learning Machine. This is a Learning Management "
+#| "System (LMS) aiming at teaching the art of computer programming through "
+#| "the Java language. It is constituted by a set of exercises grouped by "
+#| "lessons, allowing you to practice at your own pace."
 msgid ""
 "You just started the Java Learning Machine. This is a Learning Management "
-"System (LMS) aiming at teaching the art of computer programming through the "
-"Java language. It is constituted by a set of exercises grouped by lessons, "
-"allowing you to practice at your own pace."
+"System (LMS) aiming at teaching the art of computer programming through "
+"interactive exercises. It is constituted by a set of exercises grouped by "
+"lessons, allowing you to practice at your own pace. By default, the "
+"environment is configured to be programmed in the Java programming language, "
+"but you can change it from the Language menu if you want."
 msgstr ""
 "Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme "
 "pédagogique destinée à simplifier l'apprentissage du Java.  Il est constitué "
@@ -1278,7 +1286,7 @@ msgstr ""
 "pas."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/Environment.html:8
+#: src/lessons/welcome/Environment.html:9
 msgid ""
 "In this first lesson, the buggles will lead your first steps in programming."
 msgstr ""
@@ -1286,12 +1294,12 @@ msgstr ""
 "programmation."
 
 #. type: Content of: <p><h3>
-#: src/lessons/welcome/Environment.html:10
+#: src/lessons/welcome/Environment.html:11
 msgid "The <i>buggles</i>? What is this??"
 msgstr "Les <i>buggles</i> ? Qu'est ce que c'est ??"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/Environment.html:12
+#: src/lessons/welcome/Environment.html:13
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
@@ -1309,12 +1317,12 @@ msgstr ""
 "devez écrire vos programmes en Java."
 
 #. type: Content of: <p><h3>
-#: src/lessons/welcome/Environment.html:19
+#: src/lessons/welcome/Environment.html:20
 msgid "Working environment"
 msgstr "L'environnement de travail"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/Environment.html:21
+#: src/lessons/welcome/Environment.html:22
 msgid ""
 "Before going any further, get familiar with the working environment. Have a "
 "look at the several elements composing the main window, move your mouse over "
@@ -1335,7 +1343,7 @@ msgstr ""
 "Suivez les progrès de vos amis en suivant #jlmlovers :)"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/Environment.html:30
+#: src/lessons/welcome/Environment.html:31
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -1355,12 +1363,12 @@ msgstr ""
 "verrez, avec un peu d'entraînement, vous vous y habituerez."
 
 #. type: Content of: <p><p><h3>
-#: src/lessons/welcome/Environment.html:38
+#: src/lessons/welcome/Environment.html:39
 msgid "What am I supposed to do?"
 msgstr "Que dois-je faire ?"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/Environment.html:40
+#: src/lessons/welcome/Environment.html:41
 msgid ""
 "It's time to write your first program. Simply ask your buggle to move one "
 "step forward using the Source Code pane. For that, simply write the "
@@ -1373,24 +1381,37 @@ msgstr ""
 "pas. Il faut écrire le code après avoir expérimenté interactivement."
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/Environment.html:44 src/lessons/welcome/Basics.html:26
-#, no-wrap
-msgid "forward();"
+#: src/lessons/welcome/Environment.html:45 src/lessons/welcome/Basics.html:46
+#, fuzzy, no-wrap
+#| msgid "forward();"
+msgid "forward()"
 msgstr "forward();"
 
-#. type: Content of: <p><p><p>
+#. type: Attribute 'lang' of: <p><p><p><pre><if>
 #: src/lessons/welcome/Environment.html:45
-msgid "Do not forget the final"
-msgstr "N'oubliez pas de terminer par"
+#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Basics.html:16
+#: src/lessons/welcome/Basics.html:41 src/lessons/welcome/Basics.html:46
+#: src/lessons/welcome/Basics.html:50 src/lessons/welcome/Basics.html:51
+#: src/lessons/welcome/Basics.html:57 src/lessons/welcome/Basics.html:58
+msgid "Java"
+msgstr ""
 
-#. type: Content of: <p><p><p><pre>
+#. type: Content of: <p><p><p><pre><if>
 #: src/lessons/welcome/Environment.html:45
+#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Basics.html:46
+#: src/lessons/welcome/Basics.html:50 src/lessons/welcome/Basics.html:51
+#: src/lessons/welcome/Basics.html:57 src/lessons/welcome/Basics.html:58
 #, no-wrap
 msgid ";"
 msgstr ";"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Environment.html:45
+#. type: Content of: <p><p><p><if>
+#: src/lessons/welcome/Environment.html:46
+msgid "Do not forget the final"
+msgstr "N'oubliez pas de terminer par"
+
+#. type: Content of: <p><p><p><if>
+#: src/lessons/welcome/Environment.html:46
 msgid ""
 "which tells the compiler that the instruction is over (yes, computers are so "
 "dumb that they cannot <i>guess</i> obvious stuff like this)."
@@ -1400,7 +1421,7 @@ msgstr ""
 "simples)."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/Environment.html:49
+#: src/lessons/welcome/Environment.html:50
 msgid ""
 "Once done, clic on run, and proceed to next exercise with the right combo-"
 "box (or keep around to experiment further if you feel so)."
@@ -1425,12 +1446,19 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Basics.html:8
+#, fuzzy
+#| msgid ""
+#| "Programs are mainly suites of method calls, which are no more than a list "
+#| "of simple order given to the machine. It is very similar to a recipe "
+#| "stating <i>Melt the chocolate pieces, add sugar, cool the mix and serve</"
+#| "i>. Java want to have the instructions separated by semi-columns (;) and "
+#| "given parenthesis, as in"
 msgid ""
 "Programs are mainly suites of method calls, which are no more than a list of "
 "simple order given to the machine. It is very similar to a recipe stating "
-"<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. Java "
-"want to have the instructions separated by semi-columns (;) and given "
-"parenthesis, as in"
+"<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.  In "
+"your programs, such built instructions are called functions or methods, and "
+"you should add parenthesis to invoke them, as in"
 msgstr ""
 "<a name=\"generalites\"> Le programme Java le plus simple est formé d'une "
 "suite d'instructions, séparées par des points-virgules. Il faut le "
@@ -1441,18 +1469,23 @@ msgstr ""
 "dotées de parenthèses comme dans"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/Basics.html:12
+#: src/lessons/welcome/Basics.html:13
 #, no-wrap
 msgid "nameOfTheMethod()"
 msgstr "nomDeLaMethode()"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/Basics.html:13
-msgid "The example of previous recipe would thus be written in a similar way:"
+#. type: Content of: <p><p><if>
+#: src/lessons/welcome/Basics.html:16
+#, fuzzy
+#| msgid ""
+#| "The example of previous recipe would thus be written in a similar way:"
+msgid ""
+"Java want to have the instructions separated by semi-columns (;).  The "
+"previous example would thus be written in a similar way:"
 msgstr "L'exemple ci-dessus de recette s'écrirait donc ainsi à peu près ainsi:"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Basics.html:15
+#. type: Content of: <p><p><if><pre>
+#: src/lessons/welcome/Basics.html:19
 #, no-wrap
 msgid ""
 "meltTheChocolatePieces();\n"
@@ -1465,15 +1498,82 @@ msgstr ""
 "melangerLeTout();\n"
 "faireCuire();\n"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Basics.html:21
+#. type: Content of: <p><p><p><if>
+#: src/lessons/welcome/Basics.html:25 src/lessons/welcome/Basics.html:41
+msgid "Python"
+msgstr ""
+
+#. type: Content of: <p><p><if>
+#: src/lessons/welcome/Basics.html:25
 msgid ""
-"Of course, these specific methods do not exist in Java, but it may be "
-"possible to define them by yourself (we'll see later how to define your how "
-"methods). For now, we'll simply go for the buggle instructions. There is a "
-"method for each button of the interactive control panel. To achieve the same "
-"effect than the <b>forward</b> button (making the buggle moving one step "
-"forward), you need to write the following in the editor:"
+"Python want to have the instructions given parenthesis, and separated by "
+"either semi-columns (;) or by new lines. The previous example would thus be "
+"written the following way."
+msgstr ""
+
+#. type: Content of: <p><p><if><pre>
+#: src/lessons/welcome/Basics.html:29
+#, fuzzy, no-wrap
+#| msgid ""
+#| "meltTheChocolatePieces();\n"
+#| "addSugar();\n"
+#| "coolMix();\n"
+#| "serve();\n"
+msgid ""
+"meltTheChocolatePieces()\n"
+"addSugar()\n"
+"coolMix()\n"
+"serve()\n"
+msgstr ""
+"casserLesOeufs();\n"
+"ajouterDuSel();\n"
+"melangerLeTout();\n"
+"faireCuire();\n"
+
+#. type: Content of: <p><p><if>
+#: src/lessons/welcome/Basics.html:34
+msgid ""
+"It could also be written in the following way, but it's generally considered "
+"as a bad practice to group several instructions on the same line."
+msgstr ""
+
+#. type: Content of: <p><p><if><pre>
+#: src/lessons/welcome/Basics.html:37
+#, fuzzy, no-wrap
+#| msgid ""
+#| "meltTheChocolatePieces();\n"
+#| "addSugar();\n"
+#| "coolMix();\n"
+#| "serve();\n"
+msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
+msgstr ""
+"casserLesOeufs();\n"
+"ajouterDuSel();\n"
+"melangerLeTout();\n"
+"faireCuire();\n"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Basics.html:41
+msgid "Of course, these specific methods do not exist in"
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Basics.html:41
+#, fuzzy
+#| msgid ""
+#| "Of course, these specific methods do not exist in Java, but it may be "
+#| "possible to define them by yourself (we'll see later how to define your "
+#| "how methods). For now, we'll simply go for the buggle instructions. There "
+#| "is a method for each button of the interactive control panel. To achieve "
+#| "the same effect than the <b>forward</b> button (making the buggle moving "
+#| "one step forward), you need to write the following in the editor:"
+msgid ""
+", but it may be possible to define them by yourself (we'll see later how to "
+"define your how methods). For now, we'll simply go for the buggle "
+"instructions. There is a method for each button of the interactive control "
+"panel. To achieve the same effect than the <b>forward</b> button (making the "
+"buggle moving one step forward), you need to write the following in the "
+"editor:"
 msgstr ""
 "Bien sûr, ces instructions en particulier n'existent pas en Java, même si "
 "vous pourriez les définir par vous-même (nous apprendrons à le faire dans un "
@@ -1483,7 +1583,7 @@ msgstr ""
 "il faut écrire dans l'éditeur :"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/Basics.html:27
+#: src/lessons/welcome/Basics.html:47
 msgid ""
 "Likewise, to achieve the same effect than the <b>backward</b>, <b>turn left</"
 "b> and <b>turn right</b> buttons, you need to use respectively:"
@@ -1492,19 +1592,28 @@ msgstr ""
 "b> et <b>turn right</b>, il faut utiliser respectivement :"
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/Basics.html:30
-#, no-wrap
-msgid ""
-"backward();\n"
-"turnLeft();\n"
-"turnRight();\n"
-msgstr ""
-"backward();\n"
-"turnLeft();\n"
-"turnRight();\n"
+#: src/lessons/welcome/Basics.html:50
+#, fuzzy, no-wrap
+#| msgid "forward();"
+msgid "backward()"
+msgstr "forward();"
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Basics.html:51
+#, fuzzy, no-wrap
+#| msgid "void turnLeft();"
+msgid "turnLeft()"
+msgstr "void turnLeft();"
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Basics.html:52
+#, fuzzy, no-wrap
+#| msgid "void turnRight()"
+msgid "turnRight();\n"
+msgstr "void turnRight()"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/Basics.html:34
+#: src/lessons/welcome/Basics.html:54
 msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
@@ -1513,17 +1622,21 @@ msgstr ""
 "méthodes : la première lève le crayon, tandis que la seconde le baisse."
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/Basics.html:37
-#, no-wrap
-msgid ""
-"brushDown();\n"
-"brushUp();\n"
-msgstr ""
-"brushDown();\n"
-"brushUp();\n"
+#: src/lessons/welcome/Basics.html:57
+#, fuzzy, no-wrap
+#| msgid "void brushDown();"
+msgid "brushDown()"
+msgstr "void brushDown();"
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/Basics.html:58
+#, fuzzy, no-wrap
+#| msgid "void brushUp();"
+msgid "brushUp()"
+msgstr "void brushUp();"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/Basics.html:40
+#: src/lessons/welcome/Basics.html:60
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
@@ -1532,7 +1645,7 @@ msgstr ""
 "world\". Elles seront introduites au fur et à mesure des besoins."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:44 src/lessons/welcome/Conditions.html:58
+#: src/lessons/welcome/Basics.html:64 src/lessons/welcome/Conditions.html:58
 #: src/lessons/welcome/LoopWhile.html:22
 #: src/lessons/welcome/LoopDoWhile.html:13
 #: src/lessons/welcome/BaggleSeeker.html:8
@@ -1549,7 +1662,7 @@ msgid "Exercise goal"
 msgstr "Objectif de cet exercice"
 
 #. type: Content of: <p><p><a>
-#: src/lessons/welcome/Basics.html:44
+#: src/lessons/welcome/Basics.html:64
 msgid ""
 "<a name=\"Objectives\"> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
@@ -5450,13 +5563,13 @@ msgstr ""
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/cells/LangtonColors.html:32
-#: src/lessons/welcome/cells/Turmite.html:50
+#: src/lessons/welcome/cells/HelloTurmite.html:52
 msgid "You now should have enough information to succeed."
 msgstr ""
 
 #. type: Content of: <p><h2>
 #: src/lessons/welcome/cells/LangtonColors.html:34
-#: src/lessons/welcome/cells/Turmite.html:52
+#: src/lessons/welcome/cells/HelloTurmite.html:54
 msgid "Bibliographical notes"
 msgstr ""
 
@@ -5470,12 +5583,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/cells/Turmite.html:1
+#: src/lessons/welcome/cells/HelloTurmite.html:1
 msgid "Turmites"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/cells/Turmite.html:3
+#: src/lessons/welcome/cells/HelloTurmite.html:3
 msgid ""
 "This exercise explores a new way to extend the concept of Langton's ant. "
 "Now, the behavior of the ant not only depends on the color on the ground, "
@@ -5488,7 +5601,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/cells/Turmite.html:12
+#: src/lessons/welcome/cells/HelloTurmite.html:12
 msgid ""
 "Once again, you just have to write the <code>step()</code> method, in charge "
 "of doing one turmite's step. Once again, you should first find the rank of "
@@ -5500,7 +5613,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/cells/Turmite.html:20
+#: src/lessons/welcome/cells/HelloTurmite.html:20
 msgid ""
 "The second step is to use the <code>rule</code> data depending on the "
 "current color and the current state. <code>rule</code> actually contains 3 "
@@ -5512,16 +5625,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/cells/Turmite.html:27
+#: src/lessons/welcome/cells/HelloTurmite.html:27
 msgid ""
 "Each such information set contains 3 values. The first one is the rank of "
 "the color to write on the ground. The second is the move to do, with the "
-"following notation: 1=noturn, 2=right, 4=u-turn, 8=left. Finally, the third "
-"integer is the next <code>state</code> value to go into after this iteration."
+"following notation: 0=stop, 1=noturn, 2=right, 4=u-turn, 8=left. Note that "
+"if the command is stop, you shouldn't even move forward on that step (but "
+"you shouldn't stop your program either: the next steps can do something "
+"else). Finally, the third integer is the next <code>state</code> value to go "
+"into after this iteration."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/cells/Turmite.html:32
+#: src/lessons/welcome/cells/HelloTurmite.html:34
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, the "
 "template code defines a set of constants that you should use instead of the "
@@ -5532,7 +5648,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/cells/Turmite.html:39
+#: src/lessons/welcome/cells/HelloTurmite.html:41
 #, no-wrap
 msgid ""
 "  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
@@ -5541,21 +5657,21 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/cells/Turmite.html:43
+#: src/lessons/welcome/cells/HelloTurmite.html:45
 msgid "is much more easier to read than"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/cells/Turmite.html:45
+#: src/lessons/welcome/cells/HelloTurmite.html:47
 #, no-wrap
 msgid ""
-"  if (rule[state][currentColor][1] == 2) {\n"
+"  if (rule[x][y][1] == 2) {\n"
 "    turnLeft();\n"
 "  }\n"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/cells/Turmite.html:53
+#: src/lessons/welcome/cells/HelloTurmite.html:55
 msgid ""
 "According to wikipedia, turmites were invented independently by the end of "
 "the eighties. It has been shown that turmites in general are exactly "
@@ -5722,6 +5838,69 @@ msgid ""
 "\"{{{1, 8, 2}, {0, 2, 0}}, {{1, 8, 0}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 1}}}\", # 43: growth by cornices \n"
 "\"{{{1, 2, 0}, {0, 2, 2}}, {{0, 8, 0}, {0, 2, 0}}, {{0, 1, 1}, {1, 8, 0}}}\", # 44: makes a 1 in 7 highway\n"
 "\"{{{1, 2, 1}, {0, 8, 0}}, {{1, 2, 2}, {0, 1, 0}}, {{1, 8, 0}, {0, 8, 0}}}\", # 45: makes a 4 in 1 highway\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/cells/TurmiteCreator.html:114
+msgid ""
+"Langton's ants may not share the expressivness power of the turmites, but "
+"they remain fascinating too. You can experiment with them using the "
+"initLangton() method, provided in your template, that allows to build a "
+"Turmite transition table from a Langton's ant name. Tiny changes in the ant "
+"may result huge changes. For example, \"RRL\" does not seam to lead to any "
+"constructed pattern, even after a million steps, but \"RLL\" starts building "
+"a very simple highway pattern after less than 100 steps!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/cells/TurmiteCreator.html:121
+msgid ""
+"Quite a lot of Langton's ants build highways: RL, of course, but also "
+"RLRLRLLRLR (about 2500 steps).  The chaotic behavior of ants before the "
+"highway can be very short (as with RLL that only need 100 steps to converge) "
+"or very long, as with LLLLLLRRLRRR which seems chaotic for more than 500,000 "
+"steps before build the highway or even RRLLLRRRLRRR which needs 1170000 to "
+"start converging. Some are narrow, and others are very large, such as "
+"RRLRLLRLRR (200,000 steps). This ant is also notable since it is somehow "
+"squarish even before the highway start where most others do not show "
+"anything notable before their highway."
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/cells/TurmiteCreator.html:129
+msgid ""
+"Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps), "
+"RRLLLRLLLRRR (30,000 steps), RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR "
+"(20,000 steps). Some even fill the whole space (RRLRR after 3000 steps). "
+"Some of my personal favorite ones are the ones where the ant seem to be "
+"bouncing within a box that gets bigger on each bump, such as LRRRRRLLR "
+"(30,000 steps). LRRRRLLLRRR is even more impressing since the bounces within "
+"the box are regular and since it converges more rapidly to its stable "
+"behavior (15,000 steps are enough)."
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/cells/TurmiteCreator.html:136
+msgid ""
+"Finally, some ants are just build artistic patterns. You should check this "
+"video for some beautiful ones: http://www.youtube.com/watch?v=1X-gtr4pEBU. "
+"If you want to convert them into your code, you have to shift them by one: "
+"For example, the one depicted at 3:42 is not RRLRLRLLRL, but RLRLRLLRLR (the "
+"first visible move should be read as last one)."
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/cells/TurmiteCreator.html:141
+msgid ""
+"As you can see by exploring the above set of turmites, they are usually not "
+"as colorful as the ants, but this may be because very few colors suffice to "
+"exhibit complex behaviors. For example, there is a specific class of "
+"turmites called <i>busy beavers</i> which are turmites that write a lot of "
+"things before stopping (busy beavers are usually classical turing machines, "
+"but the idea fits perfectly to turmites too). There is a sort of "
+"international competition where people strive to find the turmite that "
+"covers the biggest area before stopping. The web page is here: http://code."
+"google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8896,3 +9075,19 @@ msgid ""
 "where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"
 "\" strings will not overlap."
 msgstr ""
+
+#~ msgid ""
+#~ "backward();\n"
+#~ "turnLeft();\n"
+#~ "turnRight();\n"
+#~ msgstr ""
+#~ "backward();\n"
+#~ "turnLeft();\n"
+#~ "turnRight();\n"
+
+#~ msgid ""
+#~ "brushDown();\n"
+#~ "brushUp();\n"
+#~ msgstr ""
+#~ "brushDown();\n"
+#~ "brushUp();\n"
