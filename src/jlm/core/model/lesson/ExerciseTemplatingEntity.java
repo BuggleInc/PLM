@@ -19,7 +19,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected void setup(World[] ws, String entName, String template) {
 		this.tabName=entName;
 		worldDuplicate(ws);
-		newSourceFromFile(Game.JAVA, entName, getClass().getCanonicalName(), "java"); 
+		newSourceFromFile(Game.JAVA, entName, getClass().getCanonicalName()); 
 		SourceFile sf = sourceFiles.get(Game.JAVA).get(0);
 		sf.setTemplate("$package "+template+" "+sf.getTemplate()+" $body }");
 		//System.out.println("New template: "+sf.getTemplate());

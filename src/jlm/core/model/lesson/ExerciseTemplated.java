@@ -332,7 +332,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			if (i==0) {
 				entitiesNames.add(se.getClass().getName());
 				tabsNames.add("My"+name);
-				newSourceFromFile(lang, "My"+name, se.getClass().getName(),"java"); 
+				newSourceFromFile(lang, "My"+name, se.getClass().getName()); 
 			}
 		}
 	}
