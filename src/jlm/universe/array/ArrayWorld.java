@@ -55,5 +55,9 @@ public class ArrayWorld extends World {
 	public void setValues(int[] newValues) {
 		this.values = newValues;
 	}
+	@Override
+	public String getBindings(String lang) {
+		throw new RuntimeException("No binding of ArrayWorld for "+lang);
+	}
 	
 }

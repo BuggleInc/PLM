@@ -85,4 +85,8 @@ public class BacktrackingWorld extends World {
 	public BacktrackingPartialSolution getBestSolution() {
 		return bestSolution;
 	}
+	@Override
+	public String getBindings(String lang) {
+		throw new RuntimeException("No binding of BacktrackingWorld for "+lang);
+	}
 }

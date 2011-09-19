@@ -58,4 +58,8 @@ public class BatWorld extends World {
 	public void addTest(boolean visible, Object...params) {
 		tests.add(new BatTest(getName(),visible, params));
 	}
+	@Override
+	public String getBindings(String lang) {
+		throw new RuntimeException("No binding of BatWorld for "+lang);
+	}
 }

@@ -187,5 +187,8 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 	public Iterator<LightBotWorldCell> iterator() {
 		return new CellIterator();
 	}
-
+	@Override
+	public String getBindings(String lang) {
+		throw new RuntimeException("No binding of LightbotWorld for "+lang);
+	}
 }

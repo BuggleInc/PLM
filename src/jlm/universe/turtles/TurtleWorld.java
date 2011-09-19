@@ -95,4 +95,8 @@ public class TurtleWorld extends World {
 		res += "]";
 		return res;
 	}
+	@Override
+	public String getBindings(String lang) {
+		throw new RuntimeException("No binding of TurtleWorld for "+lang);
+	}
 }

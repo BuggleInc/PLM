@@ -67,6 +67,10 @@ public class SortingWorld extends World {
 // enabled 'nice and buggy' sorting view for  debugging 
 //		return new WorldView[] { new SortingWorldView(this) };
 	}
+	@Override
+	public String getBindings(String lang) {
+		throw new RuntimeException("No binding of SortingWorld for "+lang);
+	}
 
 	// TODO Implement world IO
 }

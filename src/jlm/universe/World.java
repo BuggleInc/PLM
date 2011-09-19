@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
 import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
@@ -133,8 +135,25 @@ public abstract class World {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
+					String progLang = Game.getProgrammingLanguage(); 
 					try {
-						b.run();
+						if (progLang.equals(Game.JAVA)) {
+							b.run();
+						} else {
+							ScriptEngineManager manager = new ScriptEngineManager();       
+							ScriptEngine engine = manager.getEngineByName(progLang.toLowerCase());
+							if (engine==null) 
+								throw new RuntimeException("Failed to start an interpreter for "+progLang.toLowerCase());
+
+							engine.put("entity", b);
+							engine.eval(b.getWorld().getBindings(progLang));
+							String script = b.getScript(progLang);
+							if (script == null) {
+								System.out.println("no script source for entity "+b);
+								//script = Game.getInstance().getCurrentLesson().getCurrentExercise().scriptSources.get(Game.getProgrammingLanguage()).get(b)
+							}
+							engine.eval(script);
+						}
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -332,4 +351,9 @@ public abstract class World {
 	public void setSelectedEntity(Entity e) {
 		notifyWorldUpdatesListeners();//EntityUpdateListeners();
 	}
+	/** Returns the script except that must be injected within the environment before running user code
+	 * 
+	 * It should pass all order to the java entity, which were injected independently  
+	 */
+	public abstract String getBindings(String lang);
 }

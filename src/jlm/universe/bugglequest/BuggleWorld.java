@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
@@ -17,7 +18,7 @@ import jlm.universe.bugglequest.ui.BuggleWorldView;
 
 
 public class BuggleWorld extends GridWorld {
- 
+
 	public BuggleWorld(String name, int x, int y) {
 		super(name,x,y);
 	}
@@ -36,7 +37,7 @@ public class BuggleWorld extends GridWorld {
 	public BuggleWorld(BuggleWorld world2) {
 		super(world2);
 	}
-	
+
 	/**
 	 * Reset the content of a world to be the same than the one passed as argument
 	 * does not affect the name of the initial world.
@@ -50,10 +51,10 @@ public class BuggleWorld extends GridWorld {
 				cells[i][j] = new BuggleWorldCell(c, this);
 			}
 
-		
+
 		super.reset(initialWorld);
 	}	
-	
+
 	@Override
 	public BuggleWorldView[] getView() {
 		return new BuggleWorldView[] { new BuggleWorldView(this) };
@@ -77,7 +78,7 @@ public class BuggleWorld extends GridWorld {
 		Pattern p = Pattern.compile(";.*$");
 		Matcher m = p.matcher(line);
 		m.replaceAll("");
-		
+
 		line = reader.readLine();
 		int width = 0;
 		if (line != null)
@@ -160,11 +161,11 @@ public class BuggleWorld extends GridWorld {
 			}
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		return super.toString(); 
-	/*	
+		/*	
 		// cell
 		String res = "";
 		for (int j = 0; j < sizeY + 2; j++)
@@ -184,16 +185,16 @@ public class BuggleWorld extends GridWorld {
 		//res += buggles.toString();
 
 		// buggles
-	
+
 		Iterator<AbstractBuggle> it;
 		for (it = buggles(); it.hasNext();) {
 			AbstractBuggle b = it.next();
 			res += "Buggle: "+b.toString()+"\n";
 		}
-	
-		
+
+
 		return res;
-	*/	
+		 */	
 	}
 
 	@Override
@@ -227,11 +228,11 @@ public class BuggleWorld extends GridWorld {
 
 		return super.equals(obj);
 	}
-	
+
 	public BuggleWorldCell getCell(int x, int y) {
 		return (BuggleWorldCell) super.getCell(x, y);
 	}
-	
+
 	/* adapters to the cells */
 	public void setColor(int x, int y, Color c) {
 		getCell(x, y).setColor(c);
@@ -249,6 +250,40 @@ public class BuggleWorld extends GridWorld {
 	}
 	public void newBaggle(int x, int y) throws AlreadyHaveBaggleException {
 		getCell(x, y).newBaggle();		
+	}
+	@Override
+	public String getBindings(String lang) {
+		if (lang.equals(Game.PYTHON)) {
+			String res =  
+				"def forward(steps=1):\n"+
+				"	entity.forward(steps)\n"+
+				"def backward(steps=1):\n"+
+				"	entity.backward(steps)\n"+
+				"def turnLeft():\n"+
+				"	entity.turnLeft()\n"+
+				"def turnBack():\n"+
+				"	entity.turnBack()\n"+
+				"def turnRight():\n"+
+				"	entity.turnRight()\n"+
+				"\n"+
+				"def getX():\n"+
+				"	return entity.getX()\n"+
+				"def getY():\n"+
+				"	return entity.getY()\n"+
+				"def setX(x):\n"+
+				"	entity.setX(x)\n"+
+				"def setY(y):\n"+
+				"	entity.setY(y)\n"+
+				"def setPos(x,y):\n"+
+				"	entity.setPos(x,y)\n"+
+				"def brushDown():\n"+
+				"   entity.brushDown()\n"+
+				"def brushUp():\n"+
+				"   entity.brushUp()\n"
+				;
+			return res;
+		}
+		throw new RuntimeException("No binding of BuggleWorld for "+lang);
 	}
 
 }

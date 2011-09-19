@@ -135,6 +135,10 @@ public class HanoiWorld extends World {
 	public int getSlotSize(int slot) {
 		return slots[slot].size();
 	}
+	@Override
+	public String getBindings(String lang) {
+		throw new RuntimeException("No binding of HanoiWorld for "+lang);
+	}
 	/* END HIDDEN */
 }
 /* END TEMPLATE */
