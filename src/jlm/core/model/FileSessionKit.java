@@ -73,35 +73,37 @@ public class FileSessionKit implements ISessionKit {
 				}
 
 				// save exercise body
-				for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
-					SourceFile sf = exercise.getPublicSourceFile(i);
-					
-					if (!(sf instanceof SourceFileRevertable))
-						continue;
-					
-					SourceFileRevertable srcFile = (SourceFileRevertable)sf;
-					File outputFile = new File(exerciseDir, srcFile.getName());
-					
-					if (srcFile.hasChanged()) {
-						BufferedWriter bw = null;
-						try {
-							bw = new BufferedWriter(new FileWriter(outputFile));
-							bw.write(srcFile.getBody());
-						} catch (IOException e) {
-							e.printStackTrace();
-						} finally {
+				for (String lang:exercise.getProgLanguages()) 
+					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						SourceFile sf = exercise.getPublicSourceFile(lang,i);
+
+						if (!(sf instanceof SourceFileRevertable))
+							continue;
+
+						SourceFileRevertable srcFile = (SourceFileRevertable)sf;
+						File outputFile = new File(exerciseDir+"/"+lang, srcFile.getName());
+
+						if (srcFile.hasChanged()) {
+							BufferedWriter bw = null;
 							try {
-								bw.close();
+								bw = new BufferedWriter(new FileWriter(outputFile));
+								bw.write(srcFile.getBody());
 							} catch (IOException e) {
 								e.printStackTrace();
+							} finally {
+								try {
+									bw.close();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
 							}
+						} else {
+							if (outputFile.exists())
+								if (! outputFile.delete())
+									Logger.log("FileSessionKit:store", "cannot remove "+outputFile);
 						}
-					} else {
-						if (outputFile.exists())
-							if (! outputFile.delete())
-								Logger.log("FileSessionKit:store", "cannot remove "+outputFile);
 					}
-				}
+				
 			} // end-for exercise
 		} // end-for lesson
 	}
@@ -124,33 +126,37 @@ public class FileSessionKit implements ISessionKit {
 				}
 
 				// load exercise body
-				for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
-					SourceFile srcFile = exercise.getPublicSourceFile(i);
-					
-					if (srcFile instanceof SourceFileAliased)
-						continue;
+				for (String lang:exercise.getProgLanguages()) {
+					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
-					File of = new File(exerciseDir, srcFile.getName());
-					if (of.exists()) {
-						BufferedReader br = null;
-						try {
-							br = new BufferedReader(new FileReader(of));
-							String s;
-							StringBuffer b = new StringBuffer();
+						if (srcFile instanceof SourceFileAliased)
+							continue;
 
-							while ((s = br.readLine()) != null) {
-								b.append(s);
-								b.append("\n");
-							}
-
-							srcFile.setBody(b.toString());
-						} catch (IOException e) {
-							e.printStackTrace();
-						} finally {
+						File of = new File(exerciseDir+"/"+lang, srcFile.getName());
+						if (!of.exists()) /* try to load using the old format (not specifying the programming language) */
+							of = new File(exerciseDir+"/"+lang, srcFile.getName());
+						if (of.exists()) {
+							BufferedReader br = null;
 							try {
-								br.close();
+								br = new BufferedReader(new FileReader(of));
+								String s;
+								StringBuffer b = new StringBuffer();
+
+								while ((s = br.readLine()) != null) {
+									b.append(s);
+									b.append("\n");
+								}
+
+								srcFile.setBody(b.toString());
 							} catch (IOException e) {
 								e.printStackTrace();
+							} finally {
+								try {
+									br.close();
+								} catch (IOException e) {
+									e.printStackTrace();
+								}
 							}
 						}
 					}
@@ -177,16 +183,17 @@ public class FileSessionKit implements ISessionKit {
 					};
 				}
 
-				for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
-					SourceFile srcFile = exercise.getPublicSourceFile(i);
+				for (String lang:exercise.getProgLanguages()) 
+					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						SourceFile srcFile = exercise.getPublicSourceFile(lang, i);
 
-					File of = new File(exerciseDir, srcFile.getName());
-					if (of.exists()) {
-						if (! of.delete()) {
-							Logger.log("FileSessionKit:cleanUp", "cannot remove "+exerciseDir+"/"+srcFile.getName()+" directory");				
+						File of = new File(exerciseDir, srcFile.getName());
+						if (of.exists()) {
+							if (! of.delete()) {
+								Logger.log("FileSessionKit:cleanUp", "cannot remove "+exerciseDir+"/"+srcFile.getName()+" directory");				
+							}
 						}
 					}
-				}
 
 				if (! exerciseDir.delete()) {
 					Logger.log("FileSessionKit:cleanUp", "cannot remove "+exerciseDir+" directory");					

@@ -83,27 +83,28 @@ public class ZipSessionKit implements ISessionKit {
 					}
 
 					// save exercise body
-					for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
-						SourceFile sf = exercise.getPublicSourceFile(i);
+					for (String lang:exercise.getProgLanguages()) 
+						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+							SourceFile sf = exercise.getPublicSourceFile(lang,i);
 
-						if (!(sf instanceof SourceFileRevertable))
-							continue;
+							if (!(sf instanceof SourceFileRevertable))
+								continue;
 
-						SourceFileRevertable srcFile = (SourceFileRevertable) sf;
+							SourceFileRevertable srcFile = (SourceFileRevertable) sf;
 
-						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/" + srcFile.getName());
-						zos.putNextEntry(ze);
+							ZipEntry ze = new ZipEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							zos.putNextEntry(ze);
 
-						String content = srcFile.getBody();
+							String content = srcFile.getBody();
 
-						if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
-							content = content + "\n";
+							if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
+								content = content + "\n";
+							}
+
+							byte[] bytes = srcFile.getBody().getBytes();
+							zos.write(bytes);
+							zos.closeEntry();
 						}
-
-						byte[] bytes = srcFile.getBody().getBytes();
-						zos.write(bytes);
-						zos.closeEntry();
-					}
 				} // end-for exercise
 			} // end-for lesson
 
@@ -148,41 +149,44 @@ public class ZipSessionKit implements ISessionKit {
 						exercise.successfullyPassed();
 					}
 
-					for (int i = 0; i < exercise.publicSourceFileCount(); i++) {
-						SourceFile srcFile = exercise.getPublicSourceFile(i);
+					for (String lang:exercise.getProgLanguages())
+						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
-						if (srcFile instanceof SourceFileAliased)
-							continue;
+							if (srcFile instanceof SourceFileAliased)
+								continue;
 
-						ZipEntry srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
+							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
+								srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
+							
+							if (srcEntry != null) {
+								InputStream is = zf.getInputStream(srcEntry);
 
-						if (srcEntry != null) {
-							InputStream is = zf.getInputStream(srcEntry);
-
-							BufferedReader br = null;
-							try {
-								br = new BufferedReader(new InputStreamReader(is));
-
-								String s;
-								StringBuffer b = new StringBuffer();
-
-								while ((s = br.readLine()) != null) {
-									b.append(s);
-									b.append("\n");
-								}
-
-								srcFile.setBody(b.toString());
-							} catch (IOException e) {
-								e.printStackTrace();
-							} finally {
+								BufferedReader br = null;
 								try {
-									br.close();
+									br = new BufferedReader(new InputStreamReader(is));
+
+									String s;
+									StringBuffer b = new StringBuffer();
+
+									while ((s = br.readLine()) != null) {
+										b.append(s);
+										b.append("\n");
+									}
+
+									srcFile.setBody(b.toString());
 								} catch (IOException e) {
 									e.printStackTrace();
+								} finally {
+									try {
+										br.close();
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
 								}
 							}
 						}
-					}
 				} // end-for exercise
 			} // end-for lesson
 
