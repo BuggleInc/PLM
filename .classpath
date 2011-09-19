@@ -28,5 +28,9 @@
 	<classpathentry kind="lib" path="lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="lib" path="lib/smackx.jar"/>
 	<classpathentry kind="lib" path="lib/smack.jar"/>
+	<classpathentry kind="lib" path="lib/jython/antlr3-runtime.jar"/>
+	<classpathentry kind="lib" path="lib/jython/jruby.jar"/>
+	<classpathentry kind="lib" path="lib/jython/jython-2.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jython/asm3-3.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
