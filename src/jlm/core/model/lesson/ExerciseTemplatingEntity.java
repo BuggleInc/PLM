@@ -2,6 +2,7 @@ package jlm.core.model.lesson;
 
 import java.util.List;
 
+import jlm.core.model.Game;
 import jlm.universe.World;
 
 /** This class of Exercises are useful to merge the entity and world within the same class.
@@ -18,8 +19,8 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected void setup(World[] ws, String entName, String template) {
 		this.tabName=entName;
 		worldDuplicate(ws);
-		newSourceFromFile("java", entName, getClass().getCanonicalName(), "java"); 
-		SourceFile sf = sourceFiles.get("java").get(0);
+		newSourceFromFile(Game.JAVA, entName, getClass().getCanonicalName(), "java"); 
+		SourceFile sf = sourceFiles.get(Game.JAVA).get(0);
 		sf.setTemplate("$package "+template+" "+sf.getTemplate()+" $body }");
 		//System.out.println("New template: "+sf.getTemplate());
 		computeAnswer();

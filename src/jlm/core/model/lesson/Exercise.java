@@ -181,7 +181,7 @@ public abstract class Exercise  {
 		getSourceFiles(lang).add(sf);
 	}
 	public void newFrozenSource(String name, String content) {
-		newFrozenSource("Java", name, content);
+		newFrozenSource(Game.JAVA, name, content);
 	}
 	/** Add a new text file in child classes, ie file that is not going to be compiled  */
 	public void newTextFile(String lang, String name, String content) {
@@ -191,7 +191,7 @@ public abstract class Exercise  {
 	}
 	public void newSourceAliased(String lesson, String exercise, String file) {
 		/* FIXME: this should alias for all existing languages */
-		newSourceAliased("java", lesson, exercise, file);
+		newSourceAliased(Game.JAVA, lesson, exercise, file);
 	}
 	public void newSourceAliased(String lang, String lesson, String exercise, String file) {
 		SourceFile sf = new SourceFileAliased(lang, lesson, exercise,file);
@@ -373,7 +373,7 @@ public abstract class Exercise  {
 	}
 
 	/* setters and getter of the programming language that this exercise accepts */ 
-	private String[] progLanguages = new String[] {"java"};
+	private String[] progLanguages = new String[] {Game.JAVA};
 	public String[] getProgLanguages() {
 		return progLanguages;
 	}

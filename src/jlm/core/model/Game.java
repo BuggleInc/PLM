@@ -47,7 +47,7 @@ public class Game implements IWorldView {
 	private ArrayList<Lesson> lessons = new ArrayList<Lesson>();
 	private Lesson currentLesson;
 	
-	public static final String JAVA = "java";
+	public static final String JAVA = "Java";
 	public static final String PYTHON = "Python";
 	public static final String RUBY = "Ruby";
 	public static final String LIGHTBOT = "lightbot";
@@ -152,12 +152,12 @@ public class Game implements IWorldView {
 			for (String l:exo.getProgLanguages()) {
 				if (l.equals(programmingLanguage)) 
 					return; /* The exo accepts the language we currently have */
-				if (l.equals("Java"))
+				if (l.equals(Game.JAVA))
 					seenJava = true;
 			}
 			/* Use java as a fallback programming language (if the exo accepts it)  */
 			if (seenJava)
-				setProgramingLanguage("Java"); 
+				setProgramingLanguage(Game.JAVA); 
 			/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
 			setProgramingLanguage( exo.getProgLanguages()[0] );
 			
@@ -594,7 +594,7 @@ public class Game implements IWorldView {
 			fireProgLangChange(newLanguage);
 			return;
 		}
-		throw new RuntimeException("Ignoring request to switch the programing language to the unknown "+newLanguage);
+		throw new RuntimeException("Ignoring request to switch the programming language to the unknown "+newLanguage);
 	}
 
 	public static String getProgrammingLanguage() {
