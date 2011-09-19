@@ -66,7 +66,13 @@
  			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jung/jung-3d-2.0.1.jar"/>
  			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jung/jung-io-2.0.1.jar"/>
  			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jung/stax-api-1.0.1.jar"/>
- 
+
+ 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/antlr3-runtime.jar"/>
+ 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm3-3.2.jar"/>
+ 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jruby.jar"/>
+ 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
+
+
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.1.2.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.1.2.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
