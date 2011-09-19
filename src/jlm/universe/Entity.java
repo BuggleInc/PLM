@@ -1,6 +1,8 @@
 package jlm.universe;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Semaphore;
 
 import jlm.core.model.Game;
@@ -116,5 +118,12 @@ public abstract class Entity {
 	}	
 	protected int getParamsAmount() {
 		return world.parameters.length;
+	}
+	private Map<String,String> script = new HashMap<String, String>(); /* What to execute when running a scripting language */
+	public void setScript(String lang, String s) {
+		script.put(lang,  s);
+	}
+	public String getScript(String lang) {
+		return script.get(lang);
 	}
 }
