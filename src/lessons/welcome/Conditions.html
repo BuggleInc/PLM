@@ -10,10 +10,53 @@ something like <i>if it's raining, take an umbrella</i>.
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b><if lang="Java">
 }</if></pre>
 If the condition is true, any code <if lang="Java">enclosed between the { and the
-corresponding }</if><if lang="Python">in the following bloc</if> will be executed.
+corresponding }</if><if lang="Python">in the block following the colon symbol</if> will be executed.
 If not, it will be ignored. Of course, it
 is possible to write more than one instruction between the curly brackets
 (even another test).</p>
+
+<if lang="Python">
+<p>
+Python uses indentation to define code blocks. The standard Python indentation
+is 4 spaces. Notice that code blocks do not need any termination. Indenting starts
+a block and unindenting ends it. In the
+following code the instructions <b>whatToDo()</b> and <b>whatToDoNext()</b>
+will be exectuded if the condition is true, then the instruction
+<b>whatToDoAnyway()</b> will be executed anyway.
+
+<pre>if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
+<b>whatToDoAnyway()</b>
+</pre>
+
+Python functions have no explicit begin or end, and no curly braces to mark where the function code starts and stops. The only delimiter is a colon (:) and the indentation of the code itself.
+
+Example 2.5. Indenting the buildConnectionString Function
+
+def buildConnectionString(params):
+    """Build a connection string from a dictionary of parameters.
+
+    Returns string."""
+    return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
+Code blocks are defined by their indentation. By "code block", I mean functions, if statements, for loops, while loops, and so forth. Indenting starts a block and unindenting ends it. There are no explicit braces, brackets, or keywords. This means that whitespace is significant, and must be consistent. In this example, the function code (including the doc string) is indented four spaces. It doesn't need to be four spaces, it just needs to be consistent. The first line that is not indented is outside the function.
+
+
+It is important that the indentations of all the instructions of a block are consistent,
+and it is not possible to cut a block. The two following codes are incorrect and will
+raise errors.
+<pre>if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
+<b>whatToDoAnyway()</b>
+</pre>
+<pre>if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+<b>whatToDoAnyway()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
+</pre>
+</p>
+</if>
 
 <p>A condition can be a variable of type <tt>boolean</tt>. The code <if lang="Java">between
 curly braces</if><if lang="Python">in the inner bloc</if> will get executed if the variable is <tt><if lang="Java">true</if><if lang="Python">True</if></tt> and it will
