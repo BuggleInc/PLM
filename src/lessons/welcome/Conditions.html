@@ -6,17 +6,18 @@ external conditions. A <b>conditional</b> let the program adapt by doing
 something like <i>if it's raining, take an umbrella</i>. 
 
 <p>The Java syntax is the following:
- <pre>if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>
-}</pre>
-If the condition is true, any code enclosed between the { and the
-corresponding } will be executed. If not, it will be ignored. Of course, it
+ <pre>if <if lang="Java">(</if><b>condition</b><if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b><if lang="Java">
+}</if></pre>
+If the condition is true, any code <if lang="Java">enclosed between the { and the
+corresponding }</if><if lang="Python">in the following bloc</if> will be executed.
+If not, it will be ignored. Of course, it
 is possible to write more than one instruction between the curly brackets
 (even another test).</p>
 
-<p>A condition can be a variable of type <tt>boolean</tt>. The code between
-curly braces will get executed if the variable is <tt>true</tt> and it will
-be ignored if it is <tt>false</tt>.</p>
+<p>A condition can be a variable of type <tt>boolean</tt>. The code <if lang="Java">between
+curly braces</if><if lang="Python">in the inner bloc</if> will get executed if the variable is <tt><if lang="Java">true</if><if lang="Python">True</if></tt> and it will
+be ignored if it is <tt><if lang="Java">false</if><if lang="Python">False</if></tt>.</p>
 
 <p>The condition can also be an arithmetic test, such as <tt>x</tt> <b>==</b>
 <tt>5</tt>, which checks whether the current value of <tt>x</tt> is 5, or
@@ -36,11 +37,11 @@ returns true if the buggle is facing a wall, and false in the other case.
 <p>Finally, a condition can be composed of several sub-conditions connected by
 boolean operations.
 <ul>
-  <li><tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b>
-<tt>cond2</tt> are both true.</li>
-  <li><tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt>
+  <li><tt>cond1 <if lang="Java">&&</if><if lang="Python">and</if> cond2</tt> is true when <tt>cond1</tt> <b>and</b>
+  <tt>cond2</tt> are both true<if lang="Python">, (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated)</if>.</li>
+  <li><tt>cond1 <if lang="Java">||</if><if lang="Python">or</if> cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt>
 are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated).</li>
-  <li><tt>!cond</tt> is true if <tt>cond</tt> is false.</li>
+<li><tt><if lang="Java">!</if><if lang="Python">not </if>cond</tt> is true if <tt>cond</tt> is false.</li>
   <li>It is possible to force the order of evaluation by adding parenthesis. In
 ambigous cases, do not hesitate to add more parenthesis to remove any
 ambiguities on evaluation order.</li>
@@ -48,10 +49,10 @@ ambiguities on evaluation order.</li>
 
 <p>At least, it is possible to specify what to do when the condition is false
 using the following syntax:
- <pre>if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
-} else {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
+ <pre>if <if lang="Java">(</if><b>condition</b><if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()<if lang="Java">;</if></b>
+<if lang="Java">} </if>else<if lang="Java"> {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()<if lang="Java">;</if></b>
 }</pre>
 
 
