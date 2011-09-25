@@ -10,22 +10,26 @@
    move back to initial position</i>. Commenting your code is almost mandatory if you 
    (or someone else) want to read it afterward, although overcommenting 
    (describing obvious stuff) is a bad idea as the important idea get lost in the noise. 
-   There is three types of comments in Java, instructing the compiler to not read the 
+   There is <if lang="Java">three</if><if lang="Python">two</if> types of comments in Java, instructing the compiler to not read the 
    text you add for humans:
   <ul>
     <li><b>Comments on a single line</b>. When the compiler encounters the symbol
-//, it ignores the end of the line.</li>
-	<li><b>Comments on several lines</b>. The compiler ignores anything placed
-between the symbols /* and */, even if they are placed on differing lines.</li>
+<if lang="Java">//</if><if lang="Python">#</if>, it ignores the end of the line.</li>
+    <li><b>Comments on several lines</b>. The compiler ignores anything placed
+between the symbols <if lang="Java">/*</if><if lang="Python">''' at the begining of a
+line</if> and <if lang="Java">*/</if><if lang="Python">''' at the end of a line</if>
+<if lang="Java">, even if they are placed on differing lines</if>.</li>
   </ul>
 <pre>
-methodCallReadByTheCompiler(); <span class="comment"> // all this is ignored</span>
-otherCall(); <span class="comment">/* This is</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>
-yetAnotherCall();
+methodCallReadByTheCompiler()<if lang="Java">;</if> <span class="comment"> <if lang="Java">//</if><if lang="Python">#</if> all this is ignored</span>
+otherCall()<if lang="Java">;</if> <span class="comment"><if lang="Java">/*</if><if lang="Python">
+'''</if> This is</span>
+<if lang="Java">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</if> <span class="comment"> also ignored <if lang="Java">*/</if><if lang="Python">'''</if></span>
+yetAnotherCall()<if lang="Java">;</if>
 </pre>  
   
-  <p>There is a third kind of comments, between /** and */, which are read by a
+  <p><if lang="Java">There is a third kind of comments, between /** and */, which are read by a
 specific program called JavaDoc to generate automatically the documentation
 explaining how to use the code. These comments must follow a very precise
-formalism.</p>
+formalism.</if><if lang="Python">The comments on several lines, could also be used for
+documenting functions and classes.</if></p>
