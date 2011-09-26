@@ -138,7 +138,7 @@ public abstract class World {
 					Game.getInstance().statusArgAdd(getName());
 					ProgrammingLanguage progLang = Game.getProgrammingLanguage(); 
 					try {
-						if (progLang.equals(Game.JAVA)) {
+						if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
 							b.run();
 						} else {
 							ScriptEngineManager manager = new ScriptEngineManager();       

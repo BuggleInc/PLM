@@ -148,7 +148,7 @@ public abstract class Exercise  {
 		
 		/* Setup the scripts for the other languages */
 		for (ProgrammingLanguage lang: getProgLanguages()) {
-			if (!lang.equals(Game.JAVA)) {
+			if (!lang.equals(Game.JAVA) && !lang.equals(Game.LIGHTBOT)) {
 				Map<String, String> scripts = new TreeMap<String, String>();
 				
 				for (SourceFile sf: sourceFiles.get(lang)) 
@@ -231,7 +231,8 @@ public abstract class Exercise  {
 					throw new BrokenLessonException("Too much arguments provided to mutateEntities");
 				Entity old = it.next();
 
-				if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
+				if (Game.getProgrammingLanguage().equals(Game.JAVA) || 
+						Game.getProgrammingLanguage().equals(Game.LIGHTBOT)) {
 					/* Instanciate a new entity of the new type */
 					Entity ent;
 					try {
