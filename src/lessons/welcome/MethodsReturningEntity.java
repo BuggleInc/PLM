@@ -23,8 +23,9 @@ public class MethodsReturningEntity extends jlm.universe.bugglequest.SimpleBuggl
 			turnLeft();
 		}
 	}
-	/* BEGIN SOLUTION */
+	/* BEGIN TEMPLATE */
 	public boolean haveBaggle() {
+		/* BEGIN SOLUTION */
 		boolean res = false;
 		for (int i=0; i<6; i++) {
 			if (isOverBaggle()) 
@@ -34,6 +35,7 @@ public class MethodsReturningEntity extends jlm.universe.bugglequest.SimpleBuggl
 		for (int i=0; i<6; i++) 
 			backward();
 		return res;
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
 }
