@@ -6,8 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -31,6 +29,7 @@ import javax.swing.SwingConstants;
 
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
+import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.GameState;
 import jlm.core.model.ProgrammingLanguage;
@@ -64,9 +63,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton resetButton;
 	private JButton hintButton;
 	private JButton demoButton;
-	private Map<ProgrammingLanguage,JMenuItem> progLangItems = new HashMap<ProgrammingLanguage, JMenuItem>();
 	private LoggerPanel outputArea;
-
+	
 	private JComboBox lessonComboBox;
 	private JComboBox exerciseComboBox;
 	
@@ -184,13 +182,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		
 		/* === Programming language changing === */
 		menu.addSeparator();
-		ButtonGroup group = new ButtonGroup();
-		for (ProgrammingLanguage l:g.getProgrammingLanguages()) {			
-			JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,l));
-			progLangItems.put(l,item);
-			group.add(item);
-			menu.add(item);
-		}
+		
+		menu.add(new ProgLangSubMenu());
 
 		/* === Help menu === */
 		menu = new JMenu("Help");
@@ -448,22 +441,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		Game g = Game.getInstance();
 		Exercise exo = g.getCurrentLesson().getCurrentExercise();
 		hintButton.setEnabled(exo.hint != null);
-		
-		for (ProgrammingLanguage l:progLangItems.keySet()) {
-			JMenuItem i = progLangItems.get(l);
-			i.setEnabled(false);
-			i.setToolTipText("This exercise cannot be solved in "+l);
-		}
-		
+				
 		for (ProgrammingLanguage l:exo.getProgLanguages()) {
 			if (!g.isValidProgLanguage(l)) 
 				System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your JLM.");
-			else {
-				JMenuItem i = progLangItems.get(l);
-				i.setEnabled(true);
-				i.setToolTipText(null);
-				i.setSelected(l.equals(Game.getProgrammingLanguage()));
-			}
 		}
 	}
 
@@ -505,4 +486,44 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			super.setEnabled(enabled);
 		}
 	}
+}
+
+class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameListener {
+	private static final long serialVersionUID = 1L;
+	
+	public ProgLangSubMenu() {
+		super("Programming");
+		Game.getInstance().addGameListener(this);
+		Game.getInstance().addProgLangListener(this);
+		currentExerciseHasChanged();
+	}
+
+	@Override
+	public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang) {
+		currentExerciseHasChanged();		
+	}
+	@Override
+	public void currentExerciseHasChanged() {
+		Game g = Game.getInstance();
+		removeAll();
+		for (ProgrammingLanguage pl : Game.getInstance().getCurrentLesson().getCurrentExercise().getProgLanguages()) {
+			ButtonGroup group = new ButtonGroup();
+			JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,pl));
+			if (pl.equals(Game.getProgrammingLanguage()))
+				item.setSelected(true);
+			group.add(item);
+			add(item);
+		}
+	}
+
+	@Override
+	public void currentLessonHasChanged() {   /* don't care */ }
+	@Override
+	public void lessonsChanged() {            /* don't care */ }
+	@Override
+	public void selectedWorldHasChanged() {   /* don't care */ }
+	@Override
+	public void selectedEntityHasChanged() {  /* don't care */ }
+	@Override
+	public void selectedWorldWasUpdated() {   /* don't care */ }
 }
