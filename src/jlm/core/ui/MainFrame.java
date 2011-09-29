@@ -177,11 +177,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu = new JMenu("Language");
 		menu.setMnemonic(KeyEvent.VK_L);
 		menuBar.add(menu);
-		for (String[] lang : new String[][] { {"Français","fr"}, {"English","en"}}) 
-			menu.add(new JMenuItem(new SetLanguage(g, lang[0], lang[1])));
 		
 		/* === Programming language changing === */
-		menu.addSeparator();
+		JMenu textLangSubMenu = new JMenu("Human");
+		menu.add(textLangSubMenu);
+		for (String[] lang : new String[][] { {"Français","fr"}, {"English","en"}}) 
+			textLangSubMenu.add(new JMenuItem(new SetLanguage(g, lang[0], lang[1])));		
 		
 		menu.add(new ProgLangSubMenu());
 
@@ -492,7 +493,7 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 	private static final long serialVersionUID = 1L;
 	
 	public ProgLangSubMenu() {
-		super("Programming");
+		super("Computer");
 		Game.getInstance().addGameListener(this);
 		Game.getInstance().addProgLangListener(this);
 		currentExerciseHasChanged();
