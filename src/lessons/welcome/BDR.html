@@ -6,44 +6,44 @@ this game beloved of some students where the player has to move its feets on
 the carpet according to the instructions presented on the screen following
 the music. But before that, we have some details to study first.
 
-<if lang="Java">
-<h3>Conditionals without curly braces</h3>
+<h3 class="Java">Conditionals without curly braces</h3>
+<p class="Java">
 There is one detail we omit about the conditional syntax: if a branch
 contains only one instruction, then the curly braces become optional. So,
 the two chunk of code are equivalent:
 
- <pre>if (<b>condition</b>) {
+ <pre class="Java">if (<b>condition</b>) {
     <b>whatToDoIfTheConditionIsTrue();</b>
 } else {
     <b>whatToDoElse();</b>
 }</pre>
- <pre>if (<b>condition</b>) 
+ <pre class="Java">if (<b>condition</b>) 
     <b>whatToDoIfTheConditionIsTrue();</b>
 else
     <b>whatToDoElse();</b></pre>
 
-<p>But beware, this becomes dangerous if you chain the <tt>if</tt> instructions
+<p class="Java">But beware, this becomes dangerous if you chain the <tt>if</tt> instructions
 like this: 
-<pre>if (isOverBaggle())    
+<pre class="Java">if (isOverBaggle())    
      if (x == 5)
           turnLeft();
 else
      turnRight();
 forward();</pre>
 
-<p>In fact, it does not turn right when there is no baggle on the ground AND x
+<p class="Java">In fact, it does not turn right when there is no baggle on the ground AND x
 equals 5, but when the buggle found a baggle on the ground and x equals
 anything but 5. Putting this otherwise, the buggle understands the previous
 code as if it were written the following way (note that the <tt>else</tt>
 were moved to the right):
-<pre>if (isOverBaggle())    
+<pre class="Java">if (isOverBaggle())    
         if (x == 5)
             turnLeft();
         else
             turnRight();
 forward();</pre>
 
-<p>The first lesson of this is that the indentation is very helpful to help
+<p class="Java">The first lesson of this is that the indentation is very helpful to help
 humans understanding, but it's of no importance for the actual meaning of
 the code. We could have written the following code and obtain the same
 result. But beware, if you want a human to read and review your code, you
@@ -51,12 +51,11 @@ really want to indent it correctly. That's for example the case if you want
 a professor to read it (to grade it or to answer a question about it), or if
 you want to reuse your code later. 
 
-<pre>if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
+<pre class="Java">if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
 
-<p>The second lesson is that a <tt>else</tt> branch always connects to the
+<p class="Java">The second lesson is that a <tt>else</tt> branch always connects to the
 closest <tt>if</tt>. This may be a bit troublesome in some case, and it may
 be easier to add more braces than strictly needed to remove any ambiguity.</p>
-</if>
 
 <h3>Chaining conditionals</h3>
 

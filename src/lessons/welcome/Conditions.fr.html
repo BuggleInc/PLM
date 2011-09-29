@@ -7,17 +7,58 @@ conditionnelle</b> permet au programme de s'adapter en disant quelque chose
 comme <i>S'il pleut, prend un parapluie</i>. 
 
 <p>La syntaxe Java est la suivante :
- <pre>if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>
-}</pre>
-Si la condition est vraie, tout le code compris entre le { et le }
-correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est
-possible d'écrire plusieurs instructions entre les deux accolades (voire un
-autre test).</p>
+ <pre>if <if lang="Java">(</if><b>condition</b><if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b><if lang="Java">
+}</if></pre>
+If the condition is true, any code <if lang="Java">enclosed between the { and the corresponding }</if><if lang="Python">in the block following the colon symbol</if> will be executed.  If not, it will be ignored. Of course, it is possible to
+write more than one instruction between the curly brackets (even another
+test).</p>
 
-<p>Une condition peut être une variable de type <tt>boolean</tt>. Le code entre
-accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et
-il sera ignoré si elle vaut <tt>false</tt> (faux).</p>
+<if lang="Python">
+<p>
+Python uses indentation to define code blocks. The standard Python
+indentation is 4 spaces. Notice that code blocks do not need any
+termination. Indenting starts a block and unindenting ends it. In the
+following code the instructions <b>whatToDo()</b> and <b>whatToDoNext()</b>
+will be exectuded if the condition is true, then the instruction
+<b>whatToDoAnyway()</b> will be executed anyway.
+
+<pre>if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
+<b>whatToDoAnyway()</b>
+</pre>
+
+Python functions have no explicit begin or end, and no curly braces to mark
+where the function code starts and stops. The only delimiter is a colon (:)
+and the indentation of the code itself.  Example 2.5. Indenting the
+buildConnectionString Function def buildConnectionString(params): """Build a
+connection string from a dictionary of parameters.  Returns string."""
+return ";".join(["%s=%s" % (k, v) for k, v in params.items()])  Code blocks
+are defined by their indentation. By "code block", I mean functions, if
+statements, for loops, while loops, and so forth. Indenting starts a block
+and unindenting ends it. There are no explicit braces, brackets, or
+keywords. This means that whitespace is significant, and must be
+consistent. In this example, the function code (including the doc string) is
+indented four spaces. It doesn't need to be four spaces, it just needs to be
+consistent. The first line that is not indented is outside the function.  It
+is important that the indentations of all the instructions of a block are
+consistent, and it is not possible to cut a block. The two following codes
+are incorrect and will raise errors.
+<pre>if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
+<b>whatToDoAnyway()</b>
+</pre>
+<pre>if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
+<b>whatToDoAnyway()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
+</pre>
+</p>
+</if>
+
+<p>A condition can be a variable of type <tt>boolean</tt>. The code <if lang="Java">between curly braces</if><if lang="Python">in the inner bloc</if> will get executed if the variable is <tt><if lang="Java">true</if><if lang="Python">True</if></tt> and it will be ignored if it is <tt><if lang="Java">false</if><if lang="Python">False</if></tt>.</p>
 
 <p>La condition peut aussi être un test arithmétique, comme <tt>x</tt>
 <b>==</b> <tt>5</tt>, qui vérifie si la valeur actuelle de <tt>x</tt> est 5,
@@ -39,12 +80,11 @@ mur, et faux sinon.
 <p>Enfin, il est possible de construire une condition composée de plusieurs
 sous-conditions reliées par des opérations booléennes.
 <ul>
-  <li><tt>cond1 && cond2</tt> est vraie quand <tt>cond1</tt> <b>et</b>
-<tt>cond2</tt> sont toutes deux vraies.</li>
-  <li><tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt>
-est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas
-évaluée).</li>
-  <li><tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas.</li>
+  <li><tt>cond1 <if lang="Java">&&</if><if lang="Python">et</if> cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both
+true<if lang="Python">, (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated)</if>.</li>
+  <li><tt>cond1 <if lang="Java">||</if><if lang="Python">ou bien</if> cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> are true (if
+<tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated).</li>
+<li><tt><if lang="Java">!</if><if lang="Python">not </if>cond</tt> is true if <tt>cond</tt> is false.</li>
   <li>On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de
 doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever
 les ambiguïtés sur l'ordre d'évaluation.</li>
@@ -52,10 +92,10 @@ les ambiguïtés sur l'ordre d'évaluation.</li>
 
 <p>Pour finir, il est possible de spécifier ce qu'il faut faire quand la
 condition est fausse, en utilisant la syntaxe suivante :
- <pre>if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>
-} else {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>
+ <pre>if <if lang="Java">(</if><b>condition</b><if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()<if lang="Java">;</if></b>
+<if lang="Java">} </if>else<if lang="Java"> {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()<if lang="Java">;</if></b>
 }</pre>
 
 

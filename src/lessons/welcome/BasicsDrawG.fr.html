@@ -3,33 +3,44 @@
 cette compétence pour dessiner un merveilleux G par terre. Consultez le
 panneau d'objectif pour les détails de ce qui est attendu. 
 
-  <p>Quand vous écrivez un programme un peu complexe, il est souvent pratique
-d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après
-coup. Ici par exemple, il est assez facile de se perdre dans les ordres
-nécessaires au dessin. Il peut être pratique d'ajouter des commentaires
-comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le
-G. Retournons à la position initiale</i>. Documenter votre code est presque
-toujours nécessaire si vous (ou quelqu'un d'autre) veut le lire après
-coup. Cependant, commenter des choses triviales est une mauvaise idée car
-cela dilue les instructions Java dans des commentaires trop verbeux. En
-anglais, ce travers s'appelle <i>overcommenting</i>. Il y a trois types de
-commentaires en Java, indiquant au compilateur de ne pas lire le texte que
-vous ajoutez pour les humains :
+  <p>When you write a quite complex program, it is sometimes useful to <b>add
+comments</b> to simplify the code reviews afterward. Here for example, it's
+quite easy to get lost in the drawing process, and you may want to add
+comments like <i>vertical bar done</i> or <i>finished drawing the G. Time to
+move back to initial position</i>. Commenting your code is almost mandatory
+if you (or someone else) want to read it afterward, although overcommenting
+(describing obvious stuff) is a bad idea as the important idea get lost in
+the noise.  There is <if lang="Java">three</if><if lang="Python">two</if> types of comments in Java, instructing the compiler to not read the text you
+add for humans:
   <ul>
-    <li><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre le
-symbole //, il ignore la fin de la ligne.</li>
-	<li><b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui
-se trouve entre les symboles /* et */, même s'ils sont sur des lignes
-différentes</li>
+    <li class="Java"><b>Comments on a single line</b>. When the compiler encounters the symbols
+//, it ignores the end of the line.</li>
+    <li class="Python"><b>Comments on a single line</b>. When the compiler encounters the symbol #,
+it ignores the end of the line.</li>
+      
+    <li class="Java"><b>Comments on several lines</b>. The compiler ignores anything placed
+between the symbols /* and */ even if they are placed on differing lines.</li>
+    <li class="Python"><b>Comments on several lines</b>. The compiler ignores anything placed
+between a line beginning with ''' and the next line ending with '''.</li>      
   </ul>
-<pre>
-appelMethodeLuParLeCompilateur(); <span class="comment"> // tout ceci est ignoré</span>
-autreAppel(); <span class="comment">/* ceci est</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> également ignoré */</span>
-encoreUnAppel();
+<pre class="Java">
+methodCallReadByTheCompiler(); <span class="comment">// all this is ignored</span>
+otherCall(); <span class="comment">/* This is</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>
+yetAnotherCall();
+</pre>  
+<pre class="Python">
+methodCallReadByTheCompiler() <span class="comment"># all this is ignored</span>
+otherCall() <span class="comment">
+''' This is
+also ignored  '''</span>
+yetAnotherCall();
 </pre>  
   
-  <p>Il existe une troisième forme de commentaires, entre /** et */, qui sont lus
+  <p class="Java">Il existe une troisième forme de commentaires, entre /** et */, qui sont lus
 par un programme nommé JavaDoc pour générer automatiquement la documentation
 expliquant comment utiliser le code. Ces commentaires doivent suivre un
 formalisme précis.</p>
+
+  <p class="Python">The comments on several lines are often used to document functions and
+classes.</p>

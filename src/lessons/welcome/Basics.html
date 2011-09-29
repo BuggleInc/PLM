@@ -12,51 +12,63 @@
    should add parenthesis to invoke them, as in  
 		<pre>nameOfTheMethod()</pre>
 		
-   <p>
-   <if lang="Java">Java want to have the instructions separated by semi-columns (;). 
-    The previous example would thus be written in a similar way:
-<pre>
+   <p class="Java">
+   Java want to have the instructions separated by semi-columns (;). 
+    The previous example would thus be written in a similar way:</p>
+<pre class="Java">
 meltTheChocolatePieces();
 addSugar();
 coolMix();
 serve();
 </pre>
-    </if>
-   <if lang="Python">Python want to have the instructions given parenthesis, and 
+    
+   <p class="Python">Python want to have the instructions given parenthesis, and 
    separated by either semi-columns (;) or by new lines. The previous example would thus 
-   be written the following way.
-<pre>
+   be written the following way.</p>
+<pre class="Python">
 meltTheChocolatePieces()
 addSugar()
 coolMix()
 serve()
 </pre>
+   <p class="Python">
    It could also be written in the following way, but it's generally considered as a bad 
-   practice to group several instructions on the same line.
-<pre>
+   practice to group several instructions on the same line.</p>
+<pre class="Python">
 meltTheChocolatePieces(); addSugar(); coolMix(); serve()
 </pre>
-   </if>
 
-  <p>Of course, these specific methods do not exist in <if lang="Java">Java</if><if lang="Python">Python</if>, but it may be possible 
-  to define them by yourself (we'll see later how to define your how methods). For now, 
+  <p class="Java">Of course, these specific methods do not exist in Java, but it may be possible 
+  to define them by yourself (we'll see later how to define your how methods).</p>
+  <p class="Python">Of course, these specific methods do not exist in Python, but it may be possible 
+  to define them by yourself (we'll see later how to define your how methods).</p>
+  <p>For now, 
   we'll simply go for the buggle instructions. There is a method for each button of the 
   interactive control panel. To achieve the same effect than the <b>forward</b> button 
   (making the buggle moving one step forward), you need to write the following in the
-  editor: <pre>forward()<if lang="Java">;</if></pre>
+  editor: <pre class="Java">forward();</pre> <pre class="Python">forward()</pre>
   Likewise, to achieve the same effect than the <b>backward</b>, <b>turn
   left</b> and <b>turn right</b> buttons, you need to use respectively: 
-<pre>
-backward()<if lang="Java">;</if>
-turnLeft()<if lang="Java">;</if>
+<pre class="Java">
+backward();
+turnLeft();
 turnRight();
+</pre>
+<pre class="Python">
+backward()
+turnLeft()
+turnRight()
 </pre>
 	 The <b>mark</b> button is a bit particular, since it correspond to two
 methods: the first one moves the pen up while the second moves it down.
-<pre>
-brushDown()<if lang="Java">;</if>
-brushUp()<if lang="Java">;</if>
-</pre></p>
+<pre class="Java">
+brushDown();
+brushUp();
+</pre>
+<pre class="Python">
+brushDown()
+brushUp()
+</pre>
   <p>The buggle offers other methods, that are presented from the "Help/about
    this world" menu and will be introduced on need.</p>
 

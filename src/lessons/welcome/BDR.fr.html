@@ -7,44 +7,45 @@ doit bouger sur un tapis prévu à cet effet en fonction des consignes
 présentées à l'écran en rythme avec la musique. Mais avant cela, nous avons
 quelques détails à étudier.
 
-<h3>Conditionnelles sans accolades</h3>
+<h3 class="Java">Conditionnelles sans accolades</h3>
+<p class="Java">
 Il y a un détail que nous avons omis à propos de la syntaxe des
 conditionnelles : si une branche ne contient qu'une seule instruction, les
 accolades sont optionnelles. Ainsi, les deux extraits suivants sont
 équivalents:
 
- <pre>if (<b>condition</b>) {
+ <pre class="Java">if (<b>condition</b>) {
     <b>quoiFaireSiLaConditionEstVraie();</b>
 } else {
     <b>quoiFaireSinon();</b>
 }</pre>
- <pre>if (<b>condition</b>)
+ <pre class="Java">if (<b>condition</b>)
     <b>quoiFaireSiLaConditionEstVraie();</b>
 else
     <b>quoiFaireSinon();</b></pre>
 
-<p>Mais attention, ceci peut être dangereux si on enchaîne les <tt>if</tt>
+<p class="Java">Mais attention, ceci peut être dangereux si on enchaîne les <tt>if</tt>
 comme dans l'exemple suivant. 
-<pre>if (isOverBaggle())    
+<pre class="Java">if (isOverBaggle())    
      if (x == 5)
           turnLeft();
 else
      turnRight();
 forward();</pre>
 
-<p>En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET
+<p class="Java">En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET
 que x vaut 5, mais quand la buggle a trouvé un baggle, et que x vaut une
 autre valeur. Autrement dit, la buggle lit le code précédent comme suit
 (notez que le <tt>else</tt> est décalé vers la droite par rapport à
 précédemment) :
-<pre>if (isOverBaggle())    
+<pre class="Java">if (isOverBaggle())    
         if (x == 5)
             turnLeft();
         else
             turnRight();
 forward();</pre>
 
-<p>La première leçon, c'est que l'indentation aide les humains à comprendre,
+<p class="Java">La première leçon, c'est que l'indentation aide les humains à comprendre,
 mais elle est sans importance pour la signification du code. On aurait tout
 aussi bien pu écrire le code suivant et obtenir le même résultat. Mais
 attention, si on veut qu'un humain puisse relire le code, l'indentation
@@ -52,9 +53,9 @@ devient très importante voire indispensable. C'est par exemple le cas si
 votre code doit être relu par un professeur (pour qu'il le note ou pour lui
 poser une question), ou si vous comptez réutiliser votre code plus tard. 
 
-<pre>if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
+<pre class="Java">if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
 
-<p>La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours
+<p class="Java">La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours
 au <tt>if</tt> le plus proche. C'est parfois un peu contre-intuitif, et il
 est préférable d'ajouter plus d'accolades que nécessaire pour lever toute
 ambiguïté.</p>
@@ -71,42 +72,34 @@ réalisées. C'est à dire, que s'il pleut un 14 juillet très chaud, on ne veut
 pas que la buggle sorte avec un parapluie, de l'eau et un drapeau, mais
 juste avec un parapluie. Le code suivant est donc faux.
 
-<pre>if (ilPleut()) {
-  prendreParapluie();
-}
-if (ilFaitChaud()) {
-  prendreDeLEau();
-} 
-if (sommes14Juillet()) {
-  prendreDrapeau();
-}</pre>
+<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">; }</if>
+if <if lang="Java">(</if>hot()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">; } </if>
+if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">; }</if></pre>
 
 <p>En effet, toutes les conditions sont évaluées les unes après les autres, et
 on risque donc d'aller au défilé un jour de pluie. À la place, il faut donc
 écrire quelque chose comme :
 
-<pre>if (ilPleut()) {
-  prendreParapluie();
-} else {
-  if (ilFaitChaud()) {
-    prendreDeLEau();
-  } else {
-    if (sommes14Juillet()) {
-      prendreDrapeau();
-    }
-  }
-}</pre>
+<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">; } </if>else<if lang="Java"> {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;if <if lang="Java">(</if>hotDay()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">;</if>
+&nbsp;&nbsp;&nbsp;&nbsp;<if lang="Java">} </if>else<if lang="Java"> {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;} }</if></pre>
 
-<p>Une telle cascade de conditionnelles est un peu difficile à lire, et il est
-préférable d'omettre les accolades associées aux <tt>else</tt> comme il
-suit. Il y a même certains langages qui introduisent un mot-clé spécial pour
-ces <tt>else if</tt> (mais pas Java).
-<pre>if (ilPleut()) {
-  prendreParapluie();
-} else if (ilFaitChaud()) {
-  prendreDeLEau();
-} else if (sommes14Juillet()) {
-  prendreDrapeau();
+<p>Such a cascade of conditionals are quite difficult to read, and it is better
+to omit the curly braces for the <tt>else</tt> statements. <if lang="Java">Some languages even</if><if lang="Python">Python</if> introduce a specific construct for these <tt><if lang="Java">else if</if><if lang="Python">elif</if></tt><if lang="Java"> (but Java doesn't)</if>.
+<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">;</if>
+<if lang="Java">} else </if><if lang="Python">el</if>if <if lang="Java">(</if>hotDay()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">;</if>
+<if lang="Java">} else </if><if lang="Python">el</if>if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
+&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">;</if>
 }</pre>
 
 
