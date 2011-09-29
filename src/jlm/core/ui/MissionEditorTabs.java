@@ -8,8 +8,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.StyleSheet;
 
 import jlm.core.GameListener;
 import jlm.core.ProgLangChangesListener;
@@ -41,8 +39,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		/* Setup the mission tab */
 		missionTab.setEditable(false);
 		missionTab.setEditorKit(new JlmHtmlEditorKit());
-		StyleSheet styles = ((HTMLDocument) missionTab.getDocument()).getStyleSheet();
-		styles.importStyleSheet(getClass().getResource("/lessons/screen.css"));			
 
 		missionTab.addHyperlinkListener(new HyperlinkListener() {
 			TipsDialog tipsDialog = null;
@@ -82,12 +78,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	@Override
 	public void currentExerciseHasChanged() {
 		currentExercise = game.getCurrentLesson().getCurrentExercise();		
-		
-		/* Change the mission text */
-		missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission());
-		missionTab.setCaretPosition(0);
-		
-		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage()); /* Redo any code panel */
+				
+		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage()); /* Redo any code panel, and reload the mission */
 		selectedEntityHasChanged();
 		doLayout();
 	}
@@ -121,6 +113,10 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		}		
 		if (getTabCount()>tabPosition)
 			setSelectedIndex(tabPosition);
+		
+		/* Change the mission text, because the CSS changed */
+		missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(newLang));
+		missionTab.setCaretPosition(0);
 	}
 
 	@Override

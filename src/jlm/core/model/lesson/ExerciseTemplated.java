@@ -31,27 +31,6 @@ public abstract class ExerciseTemplated extends Exercise {
 		loadHTMLMission();
 	}
 	
-	final static String HTMLMissionHeader = 
-		"<head>\n"+
-		"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
-		"  <style>\n"+
-        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
-        "    code { background:#EEEEEE; }\n"+
-        "    pre { background: #EEEEEE;\n"+
-        "          margin: 5px;\n"+
-        "          padding: 6px;\n"+
-        "          border: 1px inset;\n"+
-        "          width: 640px;\n"+
-        "          overflow: auto;\n"+
-        "          text-align: left;\n"+
-        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
-        "   .comment { background:#EEEEEE;\n"+
-        "              font-family: \"Times New Roman\", serif;\n"+
-        "              color:#00AA00;\n"+
-        "              font-style: italic; }\n"+
-        "  </style>\n"+
-        "</head>\n";
-
 	final public static String HTMLTipHeader = 
 		"<head>\n"+
 		"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
@@ -97,7 +76,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		Pattern p2 =  Pattern.compile("<div class=\"hint\">(.*?)</div>",Pattern.MULTILINE|Pattern.DOTALL);
 		Matcher m2 = p2.matcher(str);
 		if (m2.find()) {
-			hint="<html>\n"+HTMLMissionHeader+"<body>\n"+m2.group(1)+"</body>\n</html>\n";
+			hint=m2.group(1);
 			str=m2.replaceAll("");
 		}
 
@@ -117,7 +96,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		
 		/* get the mission explanation */
-		mission = "<html>\n"+HTMLMissionHeader+"<body>\n"+str+"</body>\n</html>\n";
+		mission = str;
 	}
 
 	protected void loadMap(World w,String path) {

@@ -24,7 +24,8 @@ public abstract class Exercise  {
 	protected boolean done = false; /** indicate whether this Exercise was successfully done or not */
 
 	public String name = "<no name>"; 
-	public String mission = "";  /** The text to display to present the lesson */
+	protected String mission = "";  /** The text to display to present the lesson */
+	static protected Map<ProgrammingLanguage,String> css; /** The CSS to use for a given language */
 	public String hint = null;
 	
 	protected Map<String, String> tips = new HashMap<String, String>();
@@ -67,9 +68,49 @@ public abstract class Exercise  {
 	public Lesson getLesson() {
 		return this.lesson;
 	}
-
-	public String getMission() {
-		return this.mission;
+	
+	protected static String getCSS(ProgrammingLanguage lang) {
+		if (css==null) {
+			 css = new HashMap<ProgrammingLanguage, String>();
+			 for (ProgrammingLanguage l : Game.programmingLanguages) {
+				 String theCSS = 
+						"  <style type=\"text/css\">\n"+
+				        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+				        "    code { background:#EEEEEE; }\n"+
+				        "    pre { background: #EEEEEE;\n"+
+				        "          margin: 5px;\n"+
+				        "          padding: 6px;\n"+
+				        "          border: 1px inset;\n"+
+				        "          width: 640px;\n"+
+				        "          overflow: auto;\n"+
+				        "          text-align: left;\n"+
+				        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+				        "   .comment { background:#EEEEEE;\n"+
+				        "              font-family: \"Times New Roman\", serif;\n"+
+				        "              color:#00AA00;\n"+
+				        "              font-style: italic; }\n";
+				 for (ProgrammingLanguage l2 : Game.programmingLanguages) {
+					 if (!l.equals(l2)) {
+						 theCSS += "."+l2.getLang()+" {display: none; color:#0000FF;}\n";
+						 theCSS += "."+l2.getLang().toLowerCase()+" {display: none; color:#0000FF;}\n";
+					 } else {
+						 /* DEBUG ONLY, to see the specific elements 
+						 theCSS += "."+l2.getLang()+" {visibility: visible; color:#00AA00;}\n";
+						 theCSS += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#00AA00;}\n";
+						 */
+					 }
+				 }
+				 theCSS +=  "  </style>\n";
+				 css.put(l, theCSS);
+			 }
+		}
+		if (css.get(lang)==null)
+			throw new RuntimeException("Damn, no CSS for lang "+lang+". I'm puzzled");
+		return css.get(lang);
+	}
+	public String getMission(ProgrammingLanguage lang) {
+		String res = "<html><head>"+getCSS(lang)+"</head><body>"+this.mission+"</body></html>";
+		return res;
 	}
 
 	public List<World> getCurrentWorld() {

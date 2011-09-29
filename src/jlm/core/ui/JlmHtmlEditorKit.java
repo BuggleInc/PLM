@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
+import javax.swing.text.IconView;
 import javax.swing.text.Position;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.View;
@@ -19,16 +20,31 @@ import javax.swing.text.ViewFactory;
 import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 
+import jlm.core.model.Game;
+
 
 public class JlmHtmlEditorKit extends HTMLEditorKit {
 	private static final long serialVersionUID = 1L;
 
 	public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
+		boolean visible=false;
 		@Override
 		public View create(Element element) {
-			Object object = element.getAttributes().getAttribute(StyleConstants.NameAttribute);
-			if (object instanceof HTML.Tag) {
-				HTML.Tag tag = (HTML.Tag) object;
+			Element iterElem = element;
+			String theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
+			while (theCSSClass == null && iterElem != null) {
+				iterElem = iterElem.getParentElement();
+				if (iterElem != null)
+					theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
+			}
+			if (theCSSClass != null && 
+				!theCSSClass.toLowerCase().equals(Game.getProgrammingLanguage().getLang().toLowerCase())) {
+				return new EmptyView(element);
+			}
+			
+			Object tagName = element.getAttributes().getAttribute(StyleConstants.NameAttribute);
+			if (tagName instanceof HTML.Tag) {
+				HTML.Tag tag = (HTML.Tag) tagName;
 				if (tag == HTML.Tag.IMG)
 					return new MyIconView(element);
 			}
@@ -39,6 +55,20 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	@Override
 	public ViewFactory getViewFactory() {
 		return new HTMLFactoryX();
+	}
+}
+
+class EmptyView extends IconView {
+
+	public EmptyView(Element elem) {
+		super(elem);
+	}
+	@Override
+	public float getPreferredSpan(int axis) {
+		return 0;
+	}
+	@Override
+	public void paint(Graphics g, Shape a) {
 	}
 }
 

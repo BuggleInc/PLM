@@ -22,8 +22,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
-import javax.swing.text.html.HTMLDocument;
-import javax.swing.text.html.StyleSheet;
 
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
@@ -222,10 +220,8 @@ public class LessonNavigatorDialog extends JDialog  {
         exoNameArea.setEditable(false);
         
     	final JEditorPane missionArea = new JEditorPane("text/html", "");
+    	missionArea.setEditorKit(new JlmHtmlEditorKit());
 		missionArea.setEditable(false);
-		missionArea.setEditorKit(new JlmHtmlEditorKit());
-		StyleSheet styles = ((HTMLDocument) missionArea.getDocument()).getStyleSheet();
-		styles.importStyleSheet(getClass().getResource("/lessons/screen.css"));			
         
         JPanel rightPane = new JPanel(new MigLayout("insets 0 0 0 0","[fill]"));
         mainPane.setRightComponent(rightPane);
@@ -247,7 +243,7 @@ public class LessonNavigatorDialog extends JDialog  {
 						vv.getPickedVertexState().pick(selectedExo,false); // fight multiple selection
 					}
 					selectedExo = exo;
-					missionArea.setText(exo.getMission());
+					missionArea.setText(exo.getMission(Game.getProgrammingLanguage()));
 					missionArea.setCaretPosition(0);
 					
 					exoWorldViews.removeAll();
