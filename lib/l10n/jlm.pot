@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-29 12:17+0300\n"
+"POT-Creation-Date: 2011-09-30 19:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -845,8 +845,8 @@ msgid ""
 "move the disk pile from the stick where they are to the target stick (given "
 "as second parameter in the world's name -- number 1 for the default "
 "world). There is some extra constraint: you can only move one disk at a "
-"time, and you cannot move a big disk over a smaller one.  There is only 2 "
-"functions provided is the following:"
+"time, and you cannot move a big disk over a smaller one.  Only 2 functions "
+"are provided:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -1118,16 +1118,18 @@ msgid ""
 "world turns into the objective of the exercise. For example in this "
 "exercise, you show instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  In most lessons, your code must be written in Java."
+"<i>Objective</i> one.  Depending on the lessons (and your settings in the "
+"Language menu), your code must be written in either Java, JavaScript, Python "
+"or Ruby."
 msgstr ""
 
 #. type: Content of: <p><h3>
-#: src/lessons/welcome/Environment.html:20
+#: src/lessons/welcome/Environment.html:21
 msgid "Working environment"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/Environment.html:22
+#: src/lessons/welcome/Environment.html:23
 msgid ""
 "Before going any further, get familiar with the working environment. Have a "
 "look at the several elements composing the main window, move your mouse over "
@@ -1140,7 +1142,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/Environment.html:31
+#: src/lessons/welcome/Environment.html:32
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -1152,12 +1154,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><h3>
-#: src/lessons/welcome/Environment.html:39
+#: src/lessons/welcome/Environment.html:40
 msgid "What am I supposed to do?"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/Environment.html:41
+#: src/lessons/welcome/Environment.html:42
 msgid ""
 "It's time to write your first program. Simply ask your buggle to move one "
 "step forward using the Source Code pane. For that, simply write the "
@@ -1166,36 +1168,36 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Environment.html:45 src/lessons/welcome/Basics.html:49
+#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Basics.html:49
 #, no-wrap
 msgid "forward()"
 msgstr ""
 
 #. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Environment.html:45 src/lessons/welcome/Environment.html:46 src/lessons/welcome/BasicsDrawG.html:13 src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:10 src/lessons/welcome/Conditions.html:12 src/lessons/welcome/Conditions.html:61 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:63 src/lessons/welcome/Conditions.html:83 src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Conditions.html:87 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:96 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:73 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:76 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:79 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:87 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:93 src/lessons/welcome/BDR.html:99 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:107
+#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Environment.html:47 src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:10 src/lessons/welcome/Conditions.html:12 src/lessons/welcome/Conditions.html:61 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:63 src/lessons/welcome/Conditions.html:83 src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Conditions.html:87 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:96 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:73 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:76 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:79 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:87 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:93 src/lessons/welcome/BDR.html:99 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:107
 msgid "Java"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Environment.html:45 src/lessons/welcome/Environment.html:46 src/lessons/welcome/Conditions.html:96 src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:107
+#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Environment.html:47 src/lessons/welcome/Conditions.html:96 src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:107
 #, no-wrap
 msgid ";"
 msgstr ""
 
 #. type: Content of: <p><p><p><if>
-#: src/lessons/welcome/Environment.html:46
+#: src/lessons/welcome/Environment.html:47
 msgid "Do not forget the final"
 msgstr ""
 
 #. type: Content of: <p><p><p><if>
-#: src/lessons/welcome/Environment.html:46
+#: src/lessons/welcome/Environment.html:47
 msgid ""
 "which tells the compiler that the instruction is over (yes, computers are so "
 "dumb that they cannot <i>guess</i> obvious stuff like this)."
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/Environment.html:50
+#: src/lessons/welcome/Environment.html:51
 msgid ""
 "Once done, clic on run, and proceed to next exercise with the right "
 "combo-box (or keep around to experiment further if you feel so)."
@@ -1246,9 +1248,8 @@ msgstr ""
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Basics.html:25
 msgid ""
-"Python want to have the instructions given parenthesis, and separated by "
-"either semi-columns (;) or by new lines. The previous example would thus be "
-"written the following way."
+"Python want to have the instructions separated by either semi-columns (;) or "
+"by new lines. The previous example would thus be written the following way."
 msgstr ""
 
 #. type: Content of: <p><pre>
@@ -1391,61 +1392,46 @@ msgid ""
 "move back to initial position</i>. Commenting your code is almost mandatory "
 "if you (or someone else) want to read it afterward, although overcommenting "
 "(describing obvious stuff) is a bad idea as the important idea get lost in "
-"the noise.  There is"
-msgstr ""
-
-#. type: Content of: <p><if>
-#: src/lessons/welcome/BasicsDrawG.html:13
-msgid "three"
-msgstr ""
-
-#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/BasicsDrawG.html:13 src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:13 src/lessons/welcome/Conditions.html:18 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:63 src/lessons/welcome/Conditions.html:83 src/lessons/welcome/Conditions.html:84 src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Conditions.html:87 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106
-msgid "Python"
-msgstr ""
-
-#. type: Content of: <p><if>
-#: src/lessons/welcome/BasicsDrawG.html:13
-msgid "two"
+"the noise."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/BasicsDrawG.html:13
+#: src/lessons/welcome/BasicsDrawG.html:14 src/lessons/welcome/BasicsDrawG.html:16
 msgid ""
-"types of comments in Java, instructing the compiler to not read the text you "
-"add for humans:"
+"There is three types of comments in Java, instructing the compiler to not "
+"read the text you add for humans:"
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/BasicsDrawG.html:16
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/BasicsDrawG.html:20
 msgid ""
 "<b>Comments on a single line</b>. When the compiler encounters the symbols "
 "//, it ignores the end of the line."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/BasicsDrawG.html:18
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/BasicsDrawG.html:22
 msgid ""
 "<b>Comments on a single line</b>. When the compiler encounters the symbol #, "
 "it ignores the end of the line."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/BasicsDrawG.html:21
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/BasicsDrawG.html:25
 msgid ""
 "<b>Comments on several lines</b>. The compiler ignores anything placed "
 "between the symbols /* and */ even if they are placed on differing lines."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
-#: src/lessons/welcome/BasicsDrawG.html:23
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/BasicsDrawG.html:27
 msgid ""
 "<b>Comments on several lines</b>. The compiler ignores anything placed "
 "between a line beginning with ''' and the next line ending with '''."
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/BasicsDrawG.html:27
+#. type: Content of: <pre>
+#: src/lessons/welcome/BasicsDrawG.html:31
 #, no-wrap
 msgid ""
 "methodCallReadByTheCompiler(); <span class=\"comment\">// all this is "
@@ -1456,8 +1442,8 @@ msgid ""
 "yetAnotherCall();\n"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/BasicsDrawG.html:33
+#. type: Content of: <pre>
+#: src/lessons/welcome/BasicsDrawG.html:37
 #, no-wrap
 msgid ""
 "methodCallReadByTheCompiler() <span class=\"comment\"># all this is "
@@ -1468,20 +1454,20 @@ msgid ""
 "yetAnotherCall();\n"
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/BasicsDrawG.html:40
+#. type: Content of: <p>
+#: src/lessons/welcome/BasicsDrawG.html:44
 msgid ""
-"There is a third kind of comments, between /** and */, which are read by a "
-"specific program called JavaDoc to generate automatically the documentation "
-"explaining how to use the code. These comments must follow a very precise "
-"formalism."
+"There is a third kind of comments in Java, between /** and */, which are "
+"read by a specific program called JavaDoc to generate automatically the "
+"documentation explaining how to use the code. These comments must follow a "
+"very precise formalism."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/BasicsDrawG.html:45
+#. type: Content of: <p>
+#: src/lessons/welcome/BasicsDrawG.html:49
 msgid ""
-"The comments on several lines are often used to document functions and "
-"classes."
+"The comments on several lines are often used to document how to use the "
+"code, while others are more used to describe how this code works."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1518,6 +1504,11 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p><p><p><pre><if>
 #: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
 msgid ") {"
+msgstr ""
+
+#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:13 src/lessons/welcome/Conditions.html:18 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:63 src/lessons/welcome/Conditions.html:83 src/lessons/welcome/Conditions.html:84 src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Conditions.html:87 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106
+msgid "Python"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre><if>
