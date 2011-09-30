@@ -284,6 +284,50 @@ public class BuggleWorld extends GridWorld {
 				;
 			return res;
 		}
+		if (lang.equals(Game.JAVASCRIPT)) {
+			String res = 
+				"function forward(steps) {\n"+
+				"   if (steps==undefined) steps = 1;"+
+				"	entity.forward(steps)\n"+
+				"}"+
+				"function backward(steps){\n"+
+				"   if (steps==undefined) steps = 1;"+
+				"	entity.backward(steps)\n"+
+				"}"+
+				"function turnLeft(){\n"+
+				"	entity.turnLeft()\n"+
+				"}"+
+				"function turnBack(){\n"+
+				"	entity.turnBack()\n"+
+				"}"+
+				"function turnRight(){\n"+
+				"	entity.turnRight()\n"+
+				"}"+
+				"\n"+
+				"function getX(){\n"+
+				"	return entity.getX()\n"+
+				"}"+
+				"function getY(){\n"+
+				"	return entity.getY()\n"+
+				"}"+
+				"function setX(x){\n"+
+				"	entity.setX(x)\n"+
+				"}"+
+				"function setY(y){\n"+
+				"	entity.setY(y)\n"+
+				"}"+
+				"function setPos(x,y){\n"+
+				"	entity.setPos(x,y)\n"+
+				"}"+
+				"function brushDown(){\n"+
+				"   entity.brushDown()\n"+
+				"}"+
+				"function brushUp(){\n"+
+				"   entity.brushUp()\n"+
+				"}"
+				;
+			return res;
+		}
 		throw new RuntimeException("No binding of BuggleWorld for "+lang);
 	}
 

@@ -45,11 +45,12 @@ public class Game implements IWorldView {
 	private Lesson currentLesson;
 	
 	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java","java");
+	public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js");
 	public static final ProgrammingLanguage PYTHON = new ProgrammingLanguage("Python","py");
 	public static final ProgrammingLanguage RUBY = new ProgrammingLanguage("Ruby","rb");
 	public static final ProgrammingLanguage LIGHTBOT = new ProgrammingLanguage("lightbot","ignored");
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
-		JAVA, PYTHON, RUBY, LIGHTBOT
+		JAVA, JAVASCRIPT, PYTHON, RUBY, LIGHTBOT
 	};
 	private ProgrammingLanguage programmingLanguage = JAVA;
 	
