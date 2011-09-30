@@ -71,7 +71,7 @@
  			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm3-3.2.jar"/>
  			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jruby.jar"/>
  			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
-
+ 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/js-1.7R3.jar"/>
 
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.1.2.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.1.2.jar"/>
