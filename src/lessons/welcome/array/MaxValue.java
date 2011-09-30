@@ -2,13 +2,13 @@ package lessons.welcome.array;
 
 import java.util.Random;
 
+import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.array.ArrayExercise;
 import jlm.universe.array.ArrayWorld;
 
-public class AverageValueOfArray extends ArrayExercise {
+public class MaxValue extends ExerciseTemplated {
 
-	public AverageValueOfArray(Lesson lesson) {
+	public MaxValue(Lesson lesson) {
 		super(lesson);
 		
 		ArrayWorld[] myWorlds = new ArrayWorld[2];
@@ -22,9 +22,7 @@ public class AverageValueOfArray extends ArrayExercise {
 			tab[i] = r.nextInt(35);
 		}
 		myWorlds[1].setValues(tab);
-		
-		addEntityKind(myWorlds, new AverageComputation(), "AverageComputation");  
-		
+
 		setup(myWorlds);
 	}
 }

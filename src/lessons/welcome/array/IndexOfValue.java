@@ -2,13 +2,13 @@ package lessons.welcome.array;
 
 import java.util.Random;
 
+import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.array.ArrayExercise;
 import jlm.universe.array.ArrayWorld;
 
-public class IndexOfValueOfArray extends ArrayExercise {
+public class IndexOfValue extends ExerciseTemplated {
 
-	public IndexOfValueOfArray(Lesson lesson) {
+	public IndexOfValue(Lesson lesson) {
 		super(lesson);
 		
 		ArrayWorld[] myWorlds = new ArrayWorld[2];
@@ -22,8 +22,6 @@ public class IndexOfValueOfArray extends ArrayExercise {
 			tab[i] = r.nextInt(35);
 		}
 		myWorlds[1].setValues(tab);
-		
-		addEntityKind(myWorlds, new IndexValueComputation(), "IndexValueComputation");  
 		
 		setup(myWorlds);
 	}

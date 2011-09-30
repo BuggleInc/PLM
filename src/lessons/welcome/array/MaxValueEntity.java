@@ -2,25 +2,27 @@ package lessons.welcome.array;
 
 import jlm.universe.array.ArrayEntity;
 import jlm.universe.array.ArrayWorld;
-import lessons.welcome.array.AverageComputation;
+import lessons.welcome.array.MaxValueEntity;
 
-public class AverageComputation extends ArrayEntity {
+public class MaxValueEntity extends ArrayEntity {
 
 	@Override
 	public void run() {
 		ArrayWorld w = (ArrayWorld) this.getWorld();
-		this.result = this.average(w.getValues());
+		this.result = this.maximum(w.getValues());
 	}
 
 	/* BEGIN TEMPLATE */
-// computes the average value of the values contained in tab variable
-public int average(int[] tab) {
+// computes the maximum of the values contained in tab variable
+public int maximum(int[] tab) {
 	/* BEGIN SOLUTION */
-	int sum = 0;
+	int max = Integer.MIN_VALUE;
 	for (int i=0; i<tab.length; i++) {
-		sum += tab[i];
+		if (tab[i] >= max) {
+			max = tab[i];
+		}
 	}
-	return sum / tab.length;
+	return max;
 	/* END SOLUTION */
 }
 

@@ -2,9 +2,9 @@ package lessons.welcome.array;
 
 import jlm.universe.array.ArrayEntity;
 import jlm.universe.array.ArrayWorld;
-import lessons.welcome.array.IndexValueComputation;
+import lessons.welcome.array.IndexOfValueEntity;
 
-public class IndexValueComputation extends ArrayEntity {
+public class IndexOfValueEntity extends ArrayEntity {
 
 	@Override
 	public void run() {

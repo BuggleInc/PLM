@@ -2,11 +2,11 @@ package lessons.welcome;
 
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lesson;
-import lessons.welcome.array.AverageValueOfArray;
-import lessons.welcome.array.IndexOfMaxValueOfArray;
-import lessons.welcome.array.IndexOfValueOfArray;
-import lessons.welcome.array.MaxValueOfArray;
-import lessons.welcome.array.OccurrenceOfValueOfArray;
+import lessons.welcome.array.AverageValue;
+import lessons.welcome.array.IndexOfMaxValue;
+import lessons.welcome.array.IndexOfValue;
+import lessons.welcome.array.MaxValue;
+import lessons.welcome.array.OccurrenceOfValue;
 import lessons.welcome.bool1.Close10;
 import lessons.welcome.bool1.CountTeen;
 import lessons.welcome.bool1.Diff21;
@@ -93,11 +93,11 @@ public class Main extends Lesson {
 		addExercise(new lessons.welcome.cells.TurmiteCreator(this));
 	*/	
 		/* Arrays exercises */ 
-		addExercise(new IndexOfValueOfArray(this),arrays);
-		addExercise(new OccurrenceOfValueOfArray(this));
-		addExercise(new AverageValueOfArray(this));
-		addExercise(new MaxValueOfArray(this));
-		addExercise(new IndexOfMaxValueOfArray(this));
+		addExercise(new IndexOfValue(this),arrays);
+		addExercise(new OccurrenceOfValue(this));
+		addExercise(new AverageValue(this));
+		addExercise(new MaxValue(this));
+		addExercise(new IndexOfMaxValue(this));
 
 		/* Traversal exercises */
 		addExercise(new TraversalByColumn(this),arrays);

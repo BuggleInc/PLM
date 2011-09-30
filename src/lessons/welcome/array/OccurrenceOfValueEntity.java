@@ -2,9 +2,9 @@ package lessons.welcome.array;
 
 import jlm.universe.array.ArrayEntity;
 import jlm.universe.array.ArrayWorld;
-import lessons.welcome.array.OccurrenceValueComputation;
+import lessons.welcome.array.OccurrenceOfValueEntity;
 
-public class OccurrenceValueComputation extends ArrayEntity {
+public class OccurrenceOfValueEntity extends ArrayEntity {
 
 	@Override
 	public void run() {
