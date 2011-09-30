@@ -4,6 +4,7 @@ import java.util.List;
 
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
+import jlm.core.model.lesson.NoSuchEntityException;
 import jlm.core.ui.MainFrame;
 import jlm.universe.World;
 
@@ -22,8 +23,13 @@ public class HanoiCreateWorld extends MetaExercise {
 		
 		worldDuplicate(w);
 
-		newSourceFromFile(Game.JAVA,"HanoiWorld","src/jlm/universe/hanoi/HanoiWorld","java");
-		newSourceFromFile(Game.JAVA,"HanoiInvalidMove","src/jlm/universe/hanoi/HanoiInvalidMove","java");
+		try {
+			newSourceFromFile(Game.JAVA,"HanoiWorld","src/jlm/universe/hanoi/HanoiWorld","java");
+			newSourceFromFile(Game.JAVA,"HanoiInvalidMove","src/jlm/universe/hanoi/HanoiInvalidMove","java");
+		} catch (NoSuchEntityException e) {
+			System.out.println("Cannot find my files. Please go fix your pathes and such");
+			e.printStackTrace();
+		}
 		getSourceFile(Game.JAVA,"HanoiInvalidMove").setEditable(false);
 		debug=true;
 

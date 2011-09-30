@@ -122,18 +122,17 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 
-	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) {
+	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
 		newSourceFromFile(lang, name, filename, "");
 	}
-	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) {
+	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) throws NoSuchEntityException {
 		
 		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,lang.getExt(),false);
 
 		if (sb==null)
 			sb = Reader.fileToStringBuffer(filename,lang.getExt(),false);
 		if (sb==null) {
-			System.err.println("Source file "+filename+"."+lang.getExt()+" not found.");
-			return;
+			throw new NoSuchEntityException("Source file "+filename+"."+lang.getExt()+" not found.");
 		}
 		/* Remove line comments since at some point, we put everything on one line only, 
 		 * so this would comment the end of the template and break everything */
@@ -281,9 +280,19 @@ public abstract class ExerciseTemplated extends Exercise {
 				skelContent.length()>0?skelContent:template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
-		addEntityKind(Game.JAVA, w, se, name);
+		boolean foundOne = false;		
+		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
+			try {
+				addEntityKind(pl, w, se, name);
+				foundOne = true;
+			} catch (NoSuchEntityException e) {
+				/* Does not work for this exercise. I'd better find a working language */
+			}
+		}
+		if (!foundOne)
+			throw new RuntimeException("Cannot find an entity of name "+name+" for this exercise. You should fix your pathes and such");
 	}
-	protected void addEntityKind(ProgrammingLanguage lang, World w, Entity se, String name) {
+	protected void addEntityKind(ProgrammingLanguage lang, World w, Entity se, String name) throws NoSuchEntityException {
 		if (entitiesNames == null)  {
 			entitiesNames = new ArrayList<String>();
 			tabsNames = new ArrayList<String>();
@@ -297,9 +306,19 @@ public abstract class ExerciseTemplated extends Exercise {
 		newSourceFromFile(lang, "My"+name, se.getClass().getName(),"java"); 
 	}
 	protected void addEntityKind(World[] ws, Entity se, String name) {
-		addEntityKind(Game.JAVA, ws, se, name);
+		boolean foundOne = false;		
+		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
+			try {
+				addEntityKind(pl, ws, se, name);
+				foundOne = true;
+			} catch (NoSuchEntityException e) {
+				/* Does not work for this exercise. I'd better find a working language */
+			}
+		}
+		if (!foundOne)
+			throw new RuntimeException("Cannot find an entity of name "+name+" for this exercise. You should fix your pathes and such");
 	}
-	protected void addEntityKind(ProgrammingLanguage lang, World[] ws, Entity se, String name) {
+	protected void addEntityKind(ProgrammingLanguage lang, World[] ws, Entity se, String name) throws NoSuchEntityException {
 		if (entitiesNames == null)  {
 			entitiesNames = new ArrayList<String>();
 			tabsNames = new ArrayList<String>();
@@ -322,10 +341,11 @@ public abstract class ExerciseTemplated extends Exercise {
 		setup(ws);
 	}
 	protected void setup(World[] ws) {
+		boolean foundALanguage=false;
 		worldDuplicate(ws);
 	
-		for (ProgrammingLanguage lang: getProgLanguages()) {
-			boolean found = false;
+		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
+			boolean foundThisLanguage = false;
 			String searchedName = null;
 			for (SourceFile sf : getSourceFiles(lang)) {
 				if (searchedName == null) {//lazy initialization
@@ -340,12 +360,22 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				//	System.out.println("Saw "+sf.name+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
 				if (sf.name.equals(searchedName)||sf.name.equals(tabName))
-					found=true;
+					foundThisLanguage=true;
 			}
-			if (!found) {
-				newSourceFromFile(lang, tabName, entityName);
-			} else if (!lang.equals(Game.JAVA))
-				System.out.println("Found it, no need to create a new source file");
+			if (!foundThisLanguage) {
+				try {
+					newSourceFromFile(lang, tabName, entityName);
+					addProgLanguage(lang);
+					foundALanguage = true;
+				} catch (NoSuchEntityException e) {
+					/* Ok, this language does not work for this exercise. I can deal with it */
+				}
+			} else {
+				foundALanguage = true;
+			}
+		}
+		if (!foundALanguage) {
+			throw new RuntimeException("Cannot find an entity for this exercise. You should fix your pathes and such");
 		}
 		computeAnswer();
 	}

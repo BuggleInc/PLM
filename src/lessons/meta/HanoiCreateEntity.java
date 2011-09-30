@@ -4,6 +4,7 @@ import java.util.List;
 
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
+import jlm.core.model.lesson.NoSuchEntityException;
 import jlm.universe.World;
 import jlm.universe.hanoi.HanoiInvalidMove;
 
@@ -34,8 +35,13 @@ public class HanoiCreateEntity extends MetaExercise {
 		
 		/* setup the source files */
 		newSourceAliased(Game.JAVA,"lessons.meta.Main","jlm.lessons.meta.HanoiCreateWorld","HanoiWorld");
-		newSourceFromFile(Game.JAVA,"HanoiEntity","src/jlm/universe/hanoi/HanoiEntity",
-		       "s/HanoiCreateEntityAnswer/HanoiEntity/;");
+		try {
+			newSourceFromFile(Game.JAVA,"HanoiEntity","src/jlm/universe/hanoi/HanoiEntity",
+			       "s/HanoiCreateEntityAnswer/HanoiEntity/;");
+		} catch (NoSuchEntityException e) {
+			System.out.println("Cannot find my files. Please go fix your pathes and such");
+			e.printStackTrace();
+		}
 	}
 
 	protected void solve(HanoiMetaWorld w,int src, int dst, int height) throws HanoiInvalidMove {

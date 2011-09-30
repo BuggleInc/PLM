@@ -420,10 +420,15 @@ public abstract class Exercise  {
 	public ProgrammingLanguage[] getProgLanguages() {
 		return progLanguages;
 	}
-	public void addProgLanguage(ProgrammingLanguage newL) {
+	protected void addProgLanguage(ProgrammingLanguage newL) {
 		ProgrammingLanguage[] res = new ProgrammingLanguage[progLanguages.length +1 ];
-		for (int i=0;i<progLanguages.length;i++) 
+		for (int i=0;i<progLanguages.length;i++) {
 			res[i] = progLanguages[i];
+			if (progLanguages[i].equals(newL)) {
+				// I already had this language in the list, bail out w/o modification
+				return;
+			}
+		}
 		res[progLanguages.length] = newL;
 		progLanguages = res;
 	}

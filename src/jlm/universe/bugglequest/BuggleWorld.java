@@ -280,7 +280,7 @@ public class BuggleWorld extends GridWorld {
 				"def brushDown():\n"+
 				"   entity.brushDown()\n"+
 				"def brushUp():\n"+
-				"   entity.brushUp()\n"
+				"   entity.brushUp()\n\n"
 				;
 			return res;
 		}

@@ -595,7 +595,7 @@ public class Game implements IWorldView {
 		else 
 			return getInstance().programmingLanguage;
 	}
-	public ProgrammingLanguage[] getProgrammingLanguages(){
+	public static ProgrammingLanguage[] getProgrammingLanguages(){
 		return programmingLanguages;
 	}
 

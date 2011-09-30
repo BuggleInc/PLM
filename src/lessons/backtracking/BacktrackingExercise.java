@@ -5,6 +5,7 @@ import java.util.List;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
+import jlm.core.model.lesson.NoSuchEntityException;
 import jlm.universe.World;
 
 public abstract class BacktrackingExercise extends ExerciseTemplated {
@@ -18,7 +19,13 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			w.addEntity(solver.copy());
 		}
 		worldDuplicate(ws);
-		newSourceFromFile(Game.JAVA,this.tabName, solver.getClass().getCanonicalName(), "java"); //FIXME 
+		try {
+			// FIXME: Java only aint good
+			newSourceFromFile(Game.JAVA,this.tabName, solver.getClass().getCanonicalName(), "java");
+		} catch (NoSuchEntityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
 
 		computeAnswer();
 	}
