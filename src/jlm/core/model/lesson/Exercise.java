@@ -92,13 +92,12 @@ public abstract class Exercise  {
 				        "              font-style: italic; }\n";
 				 for (ProgrammingLanguage l2 : Game.programmingLanguages) {
 					 if (!l.equals(l2)) {
-						 theCSS += "."+l2.getLang()+" {display: none; color:#0000FF;}\n";
-						 theCSS += "."+l2.getLang().toLowerCase()+" {display: none; color:#0000FF;}\n";
+						 theCSS += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
+						 theCSS += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
 					 } else {
-						 /* DEBUG ONLY, to see the specific elements 
-						 theCSS += "."+l2.getLang()+" {visibility: visible; color:#00AA00;}\n";
-						 theCSS += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#00AA00;}\n";
-						 */
+						 /* DEBUG ONLY, to see the specific elements*/ 
+						 //theCSS += "."+l2.getLang()+" {visibility: visible; color:#00AA00;}\n";
+						 //theCSS += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#00AA00;}\n";
 					 }
 				 }
 				 theCSS +=  "  </style>\n";
