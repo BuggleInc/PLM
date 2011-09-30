@@ -310,9 +310,13 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			try {
 				addEntityKind(pl, ws, se, name);
+				addProgLanguage(pl);
 				foundOne = true;
+				//System.out.println("Found "+name+" in "+pl+" for "+this.name);
 			} catch (NoSuchEntityException e) {
-				/* Does not work for this exercise. I'd better find a working language */
+				if (getProgLanguages().contains(pl)) 
+					throw new RuntimeException("This exercise is said to be compatible with language "+pl+", but I fail to find an entity of name "+name+" in this language");					
+				/* Does not work for this exercise, but nobody said it should. I'd better find a working language */
 			}
 		}
 		if (!foundOne)
@@ -324,14 +328,14 @@ public abstract class ExerciseTemplated extends Exercise {
 			tabsNames = new ArrayList<String>();
 		}
 		for (int i=0;i<ws.length;i++) {
+			if (i==0) {
+				newSourceFromFile(lang, "My"+name, se.getClass().getName()); 
+				entitiesNames.add(se.getClass().getName());
+				tabsNames.add("My"+name);
+			}
 			ws[i].addEntity(se);
 			se.setWorld(ws[i]);
 			se.setName(name);
-			if (i==0) {
-				entitiesNames.add(se.getClass().getName());
-				tabsNames.add("My"+name);
-				newSourceFromFile(lang, "My"+name, se.getClass().getName()); 
-			}
 		}
 	}
 
@@ -368,6 +372,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					addProgLanguage(lang);
 					foundALanguage = true;
 				} catch (NoSuchEntityException e) {
+					if (getProgLanguages().contains(lang)) 
+						throw new RuntimeException("This exercise is said to be compatible with language "+lang+", but I fail to find an entity for this language");					
 					/* Ok, this language does not work for this exercise. I can deal with it */
 				}
 			} else {

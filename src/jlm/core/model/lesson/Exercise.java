@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import javax.tools.DiagnosticCollector;
@@ -265,12 +266,14 @@ public abstract class Exercise  {
 	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {
 		for (World current:worlds) {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
-			Iterator<Entity> it = current.entities();
+			Iterator<Entity> entityIterator = current.entities();
 			for (String name : newClasseNames) {
 				/* Get the next existing entity */
-				if (!it.hasNext()) 
-					throw new BrokenLessonException("Too much arguments provided to mutateEntities");
-				Entity old = it.next();
+				if (!entityIterator.hasNext()) 
+					throw new BrokenLessonException("Too much class names ("+newClasseNames.size()+")"+
+							"provided to mutateEntities compared to the amount of entities found "+
+							"("+current.getEntityCount()+")");
+				Entity old = entityIterator.next();
 
 				if (Game.getProgrammingLanguage().equals(Game.JAVA) || 
 						Game.getProgrammingLanguage().equals(Game.LIGHTBOT)) {
@@ -278,7 +281,7 @@ public abstract class Exercise  {
 					Entity ent;
 					try {
 						ent = (Entity)compiledClasses.get(className(name)).newInstance();
-						//Logger.log("Exercise:mutateEntities to "+className(name), b.toString());
+						//System.out.println("Exercise:mutateEntities to "+className(name));
 					} catch (InstantiationException e) {
 						throw new RuntimeException("Cannot instanciate entity of type "+className(name), e);
 					} catch (IllegalAccessException e) {
@@ -305,7 +308,7 @@ public abstract class Exercise  {
 					old.setScript(Game.getProgrammingLanguage(), script);
 				}
 			}
-			if (it.hasNext())
+			if (entityIterator.hasNext())
 				throw new BrokenLessonException("Not enough arguments provided to mutateEntities");
 			if (Game.getProgrammingLanguage().equals(Game.JAVA)) 
 				current.setEntities(newEntities);
@@ -416,28 +419,22 @@ public abstract class Exercise  {
 	}
 
 	/* setters and getter of the programming language that this exercise accepts */ 
-	private ProgrammingLanguage[] progLanguages = new ProgrammingLanguage[] {Game.JAVA};
-	public ProgrammingLanguage[] getProgLanguages() {
-		return progLanguages;
+	private Map<ProgrammingLanguage,String> progLanguages = new HashMap<ProgrammingLanguage, String>();
+	public Set<ProgrammingLanguage> getProgLanguages() {
+		return progLanguages.keySet();
 	}
 	protected void addProgLanguage(ProgrammingLanguage newL) {
-		ProgrammingLanguage[] res = new ProgrammingLanguage[progLanguages.length +1 ];
-		for (int i=0;i<progLanguages.length;i++) {
-			res[i] = progLanguages[i];
-			if (progLanguages[i].equals(newL)) {
-				// I already had this language in the list, bail out w/o modification
-				return;
-			}
-		}
-		res[progLanguages.length] = newL;
-		progLanguages = res;
+		progLanguages.put(newL, "ignored");
 	}
-	public void addProgLanguage(ProgrammingLanguage[] newL) { /* FIXME: inefficient: increase the array size only once */
+	public void addProgLanguage(ProgrammingLanguage[] newL) { 
 		for (ProgrammingLanguage l:newL)
 			addProgLanguage(l);
 	}
 	public void setProgLanguages(ProgrammingLanguage ... languages) {
-		progLanguages = languages;
+		progLanguages = new HashMap<ProgrammingLanguage, String>();
+		for (ProgrammingLanguage pl:languages) {
+			progLanguages.put(pl, "ignored");
+		}
 	}
 }
 

@@ -151,7 +151,7 @@ public class Game implements IWorldView {
 			if (seenJava)
 				setProgramingLanguage(Game.JAVA); 
 			/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
-			setProgramingLanguage( exo.getProgLanguages()[0] );
+			setProgramingLanguage( exo.getProgLanguages().iterator().next() );
 			
 			MainFrame.getInstance().currentExerciseHasChanged(); // make sure that the right language is selected -- yeah that's a ugly way of doing it
 		}
