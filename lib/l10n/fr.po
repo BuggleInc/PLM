@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-09-29 12:17+0300\n"
-"PO-Revision-Date: 2011-04-05 15:13+0200\n"
+"PO-Revision-Date: 2011-09-30 11:58+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -992,10 +992,9 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/jlm/universe/hanoi/HanoiWorld.html:17
-#, fuzzy, no-wrap
-#| msgid "int getValue(int idx)"
+#, no-wrap
 msgid "int getSlotSize(int slot);"
-msgstr "int getValue(int idx)"
+msgstr "int getSlotSize(int slot);"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/hanoi/HanoiWorld.html:19
@@ -1004,6 +1003,9 @@ msgid ""
 "used to initialize the recursion and set the amount of recursive call to "
 "execute."
 msgstr ""
+"Elle retourne le nombre de disques placés sur un piquet donné. Cette fonction\n"
+"est surtout utile pour initialiser la récursion et déterminer le nombre\n"
+"d'appels récursifs à réaliser."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
