@@ -60,6 +60,8 @@ public class Game implements IWorldView {
 	private Entity selectedEntity;
 	private List<Thread> lessonRunners = new ArrayList<Thread>();
 	private List<Thread> demoRunners = new ArrayList<Thread>();
+	private static List<Thread> initRunners = new ArrayList<Thread>();
+	
 	private boolean sequential = false;
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -106,6 +108,9 @@ public class Game implements IWorldView {
 				e.printStackTrace();
 			}
 		}
+	}
+	public static void addInitThread(Thread t) {
+		initRunners.add(t);
 	}
 
 	public void addLesson(Lesson lesson) {

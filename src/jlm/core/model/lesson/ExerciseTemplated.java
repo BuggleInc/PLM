@@ -30,29 +30,29 @@ public abstract class ExerciseTemplated extends Exercise {
 		super(lesson);
 		loadHTMLMission();
 	}
-	
+
 	final public static String HTMLTipHeader = 
 		"<head>\n"+
 		"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
 		"  <style>\n"+
-        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
-        "    code { background:#EEEEEE; }\n"+
-        "    pre { background: #EEEEEE;\n"+
-        "          margin: 5px;\n"+
-        "          padding: 6px;\n"+
-        "          border: 1px inset;\n"+
-        "          width: 400px;\n"+
-        "          overflow: auto;\n"+
-        "          text-align: left;\n"+
-        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
-        "   .comment { background:#EEEEEE;\n"+
-        "              font-family: \"Times New Roman\", serif;\n"+
-        "              color:#00AA00;\n"+
-        "              font-style: italic; }\n"+
-        "  </style>\n"+
-        "</head>\n";
+		"    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+		"    code { background:#EEEEEE; }\n"+
+		"    pre { background: #EEEEEE;\n"+
+		"          margin: 5px;\n"+
+		"          padding: 6px;\n"+
+		"          border: 1px inset;\n"+
+		"          width: 400px;\n"+
+		"          overflow: auto;\n"+
+		"          text-align: left;\n"+
+		"          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+		"   .comment { background:#EEEEEE;\n"+
+		"              font-family: \"Times New Roman\", serif;\n"+
+		"              color:#00AA00;\n"+
+		"              font-style: italic; }\n"+
+		"  </style>\n"+
+		"</head>\n";
 
-	
+
 	public void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 
@@ -62,7 +62,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			return;
 		}		
 		String str = sb.toString();
-		
+
 		/* search the mission name */
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
@@ -94,7 +94,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}		
 		str=m4.replaceAll("<a href=\"#$1\">Show Tip</a>");				
 
-		
+
 		/* get the mission explanation */
 		mission = str;
 	}
@@ -126,7 +126,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		newSourceFromFile(lang, name, filename, "");
 	}
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) throws NoSuchEntityException {
-		
+
 		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,lang.getExt(),false);
 
 		if (sb==null)
@@ -236,21 +236,21 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String debugContent = "/* The solution is displayed because we are in debug mode */\n"+
-			templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
-			templateTail.toString();
+		templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
+		templateTail.toString();
 		String skelContent = skel.toString().replaceAll("\n", " ");
 		String headContent = head.toString().replaceAll("\n", " ");
-		
+
 		String template = (headContent+"$body"+tail);
-		
+
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
 		Matcher newLineMatcher = newLinePattern.matcher(template);
 		template = newLineMatcher.replaceAll(" ");
-		
+
 		/* Apply all requested rewrites, if any */
 		if (patternString != null) {
-		Map<String, String> patterns = new HashMap<String, String>();
+			Map<String, String> patterns = new HashMap<String, String>();
 			for (String pattern: patternString.split(";")) {
 				String[] parts = pattern.split("/");
 				if (parts.length != 1 || !parts[0].equals("")) {
@@ -268,16 +268,16 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		}
 
-		 /*if (this.debug) {
+		/*if (this.debug) {
 			System.out.println("<<<<<<<<template:"+template);
 			System.out.println("<<<<<<<<debugCtn:"+debugContent);
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
 		    System.out.println("<<<<<<<<Skel: "+skelContent);
 		}*/
-		
+
 		newSource(lang, name, 
 				debug?debugContent:initialContent,
-				skelContent.length()>0?skelContent:template);
+						skelContent.length()>0?skelContent:template);
 	}
 	protected void addEntityKind(World w, Entity se, String name) {
 		boolean foundOne = false;		
@@ -347,7 +347,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected void setup(World[] ws) {
 		boolean foundALanguage=false;
 		worldDuplicate(ws);
-	
+
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
@@ -386,19 +386,26 @@ public abstract class ExerciseTemplated extends Exercise {
 		computeAnswer();
 	}
 	protected void computeAnswer() {
-		if (entitiesNames != null)
-			mutateEntities(answerWorld,entitiesNames);
-		else 
-			mutateEntity(answerWorld,entityName);
-		for (World aw : answerWorld) {
-			Iterator<Entity> it = aw.entities();
-			while (it.hasNext())
-				try {
-					it.next().run();
-				} catch (Exception e) {
-					e.printStackTrace();
+		Thread t = new Thread() {
+			@Override
+			public void run() {
+				if (entitiesNames != null)
+					mutateEntities(answerWorld,entitiesNames);
+				else 
+					mutateEntity(answerWorld,entityName);
+				for (World aw : answerWorld) {
+					Iterator<Entity> it = aw.entities();
+					while (it.hasNext())
+						try {
+							it.next().run();
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 				}
-		}		
+			}
+		};
+		t.start();
+		Game.addInitThread(t);
 	}
 
 	@Override
@@ -410,7 +417,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			mutateEntity(tabName);
 		else
 			mutateEntities(tabsNames);
-		
+
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].runEntities(runnerVect);
 
@@ -422,12 +429,12 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].doDelay();
 		}
-		
+
 		if (entitiesNames == null)
 			mutateEntity(answerWorld, entityName);
 		else
 			mutateEntities(answerWorld, entitiesNames);
-		
+
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
 	}
