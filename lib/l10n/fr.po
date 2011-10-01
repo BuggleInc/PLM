@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-30 19:36+0300\n"
+"POT-Creation-Date: 2011-10-01 09:17+0300\n"
 "PO-Revision-Date: 2011-09-30 19:40+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1729,25 +1729,38 @@ msgid ""
 "the noise."
 msgstr ""
 "Quand vous écrivez un programme un peu complexe, il est souvent pratique\n"
-"d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après\n"
+"d'ajouter des <b>commentaires</b> pour simplifier la relecture du code "
+"après\n"
 "coup. Ici par exemple, il est assez facile de se perdre dans les ordres\n"
-"nécessaires au dessin. Il peut être pratique d'ajouter des commentaires comme\n"
-"<i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. Retournons à la\n"
-"position initiale</i>. Documenter votre code est presque toujours nécessaire si\n"
-"quelqu'un (vous ou quelqu'un d'autre) veut le lire après coup. Cependant, commenter des\n"
+"nécessaires au dessin. Il peut être pratique d'ajouter des commentaires "
+"comme\n"
+"<i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. Retournons à "
+"la\n"
+"position initiale</i>. Documenter votre code est presque toujours nécessaire "
+"si\n"
+"quelqu'un (vous ou quelqu'un d'autre) veut le lire après coup. Cependant, "
+"commenter des\n"
 "choses triviales est une mauvaise idée car cela dilue les informations\n"
 "dans des commentaires trop verbeux. En anglais, ce travers s'appelle\n"
 "<i>overcommenting</i>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BasicsDrawG.html:14
-#: src/lessons/welcome/BasicsDrawG.html:16
 msgid ""
 "There is three types of comments in Java, instructing the compiler to not "
 "read the text you add for humans:"
 msgstr ""
 "Il y a trois sortes de commentaires en Java, indiquant au compilateur qu'il "
 "ne\n"
+"doit pas lire le texte ajouté pour les humains."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/BasicsDrawG.html:16
+msgid ""
+"There is two types of comments in Python, instructing the compiler to not "
+"read the text you add for humans:"
+msgstr ""
+"Il y a deux sortes de commentaires en Python, indiquant au compilateur qu'il ne\n"
 "doit pas lire le texte ajouté pour les humains."
 
 #. type: Content of: <ul><li>
@@ -1868,7 +1881,7 @@ msgstr "La syntaxe Java est la suivante :"
 #: src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78
 #: src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:102
 #: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "if "
 msgstr "if "
 
