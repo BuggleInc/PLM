@@ -1,5 +1,9 @@
 package jlm.core.model;
 
+import java.io.File;
+
+import jlm.core.model.lesson.Lesson;
+
 /** 
  * This interface is to be implemented by every session kits, aka mecanisms able to 
  * save and restore the state of the code written by the students. 
@@ -10,10 +14,36 @@ package jlm.core.model;
  */
 public interface ISessionKit {
 
-	public void store() throws UserAbortException;
+	/** Saves the user content of all loaded lessons
+	 * 
+	 *  On error, the user is given an opportunity to cancel the procedure through a dialog window.
+	 */
+	public void storeAll() throws UserAbortException;	
+
+	/** Saves the user content of all loaded lessons
+	 * 
+	 *  On error, the user is given an opportunity to cancel the procedure through a dialog window.
+	 */
+	public void storeAll(File path) throws UserAbortException;	
 	
-	public void load() ;
+	/** Loads saved user content for all loaded lessons */
+	public void loadAll();
+	/** Loads saved user content for all loaded lessons */
+	public void loadAll(File path);
 	
-	public void cleanUp() ;
+	/** Saves the user content of the specified lessons
+	 * 
+	 *  On error, the user is given an opportunity to cancel the procedure through a dialog window.
+	 */
+	public void storeLesson(File path, Lesson l) throws UserAbortException;
 	
+	/** Loads saved user content of the specified lessons */
+	public void loadLesson(File path, Lesson l);
+	
+	/** Removes all user content for all loaded lessons */
+	public void cleanAll() ;
+	
+	/** Removes all user content for all loaded lessons */
+	public void cleanLesson(Lesson l);
+
 }

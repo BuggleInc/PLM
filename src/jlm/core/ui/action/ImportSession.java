@@ -24,14 +24,14 @@ public class ImportSession extends AbstractGameAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser fc = new JFileChooser();
-		fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		int returnValue = fc.showOpenDialog(this.parent);
 
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			File sessionFileToImportFrom = fc.getSelectedFile();
 			
 			ZipSessionKit kit = new ZipSessionKit(this.game);
-			kit.load(sessionFileToImportFrom);
+			kit.loadAll(sessionFileToImportFrom);
 		}
 	}
 

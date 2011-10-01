@@ -24,7 +24,8 @@ public class ExportSession extends AbstractGameAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser fc = new JFileChooser();
-		fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+		fc.setAcceptAllFileFilterUsed(false);
 		int returnValue = fc.showSaveDialog(this.parent);
 
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
@@ -32,7 +33,7 @@ public class ExportSession extends AbstractGameAction {
 			
 			ZipSessionKit kit = new ZipSessionKit(this.game);
 			try {
-				kit.store(sessionFileToExportTo);
+				kit.storeAll(sessionFileToExportTo);
 			} catch (UserAbortException e1) {
 				e1.printStackTrace();
 			}

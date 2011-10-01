@@ -302,7 +302,7 @@ public class Game implements IWorldView {
 	}
 
 	public void clearSession() {
-		this.sessionKit.cleanUp();
+		this.sessionKit.cleanAll();
 		for (Lesson l : this.lessons)
 			for (Exercise ex : l.exercises())
 				ex.failed();
@@ -312,13 +312,13 @@ public class Game implements IWorldView {
 
 	public void loadSession() {
 		this.setState(GameState.LOADING);
-		this.sessionKit.load();
+		this.sessionKit.loadAll();
 		this.setState(GameState.LOADING_DONE);
 	}
 
 	public void saveSession() throws UserAbortException {
 		this.setState(GameState.SAVING);
-		this.sessionKit.store();
+		this.sessionKit.storeAll();
 		this.setState(GameState.SAVING_DONE);
 	}
 

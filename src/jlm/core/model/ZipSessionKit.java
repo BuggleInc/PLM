@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -34,26 +36,48 @@ public class ZipSessionKit implements ISessionKit {
 
 	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".jlm");
 
-	private static String SAVE_FILENAME = "jlm.zip";
-	private static File SAVE_FILE = new File(SAVE_DIR, SAVE_FILENAME);
-
 	public ZipSessionKit(Game game) {
 		this.game = game;
 	}
-
-	public void store() throws UserAbortException {
-		this.store(SAVE_FILE);
+	
+	private File openSaveFile(File path, Lesson lesson) {
+		if (path == null)
+			path = SAVE_DIR;
+		
+		String name = lesson.getClass().getCanonicalName();
+		Pattern namePattern = Pattern.compile(".Main$");
+		Matcher nameMatcher = namePattern.matcher(name);
+		name = nameMatcher.replaceAll("");
+		
+		namePattern = Pattern.compile("^lessons.");
+		nameMatcher = namePattern.matcher(name);
+		name = nameMatcher.replaceAll("");
+		
+		return new File(path, "jlm-"+name+".zip");
 	}
 
-	public void load() {
-		this.load(SAVE_FILE);
+	@Override
+	public void storeAll(File path) throws UserAbortException {
+		for (Lesson lesson : this.game.getLessons())
+			storeLesson(path, lesson);
 	}
 
-	public void cleanUp() {
-		this.cleanUp(SAVE_FILE);
+	@Override
+	public void loadAll(File path) {
+		for (Lesson lesson : this.game.getLessons())
+			loadLesson(path, lesson);
 	}
 
-	public void store(File saveFile) throws UserAbortException {
+	@Override
+	public void cleanAll() {
+		for (Lesson lesson : this.game.getLessons())
+			cleanLesson(lesson);
+	}
+
+	@Override
+	public void storeLesson(File path, Lesson lesson) throws UserAbortException {
+		File saveFile = openSaveFile(path, lesson);
+
 		if (!saveFile.exists()) {
 			File parentDirectory = saveFile.getParentFile().getAbsoluteFile();
 			if (!parentDirectory.exists()) {
@@ -69,44 +93,42 @@ public class ZipSessionKit implements ISessionKit {
 			zos.setMethod(ZipOutputStream.DEFLATED);
 			zos.setLevel(Deflater.BEST_COMPRESSION);
 
-			for (Lesson lesson : this.game.getLessons()) {
-				for (Exercise exercise : lesson.exercises()) {
+			for (Exercise exercise : lesson.exercises()) {
 
-					// flag successfully passed exercise
-					if (exercise.isSuccessfullyPassed()) {
-						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/DONE");
+				// flag successfully passed exercise
+				if (exercise.isSuccessfullyPassed()) {
+					ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/DONE");
+					zos.putNextEntry(ze);
+					byte[] bytes = new byte[1];
+					// bytes[0] = 'x';
+					zos.write(bytes);
+					zos.closeEntry();
+				}
+
+				// save exercise body
+				for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
+					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						SourceFile sf = exercise.getPublicSourceFile(lang,i);
+
+						if (!(sf instanceof SourceFileRevertable))
+							continue;
+
+						SourceFileRevertable srcFile = (SourceFileRevertable) sf;
+
+						ZipEntry ze = new ZipEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
 						zos.putNextEntry(ze);
-						byte[] bytes = new byte[1];
-						// bytes[0] = 'x';
+
+						String content = srcFile.getBody();
+
+						if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
+							content = content + "\n";
+						}
+
+						byte[] bytes = srcFile.getBody().getBytes();
 						zos.write(bytes);
 						zos.closeEntry();
 					}
-
-					// save exercise body
-					for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
-							SourceFile sf = exercise.getPublicSourceFile(lang,i);
-
-							if (!(sf instanceof SourceFileRevertable))
-								continue;
-
-							SourceFileRevertable srcFile = (SourceFileRevertable) sf;
-
-							ZipEntry ze = new ZipEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
-							zos.putNextEntry(ze);
-
-							String content = srcFile.getBody();
-
-							if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
-								content = content + "\n";
-							}
-
-							byte[] bytes = srcFile.getBody().getBytes();
-							zos.write(bytes);
-							zos.closeEntry();
-						}
-				} // end-for exercise
-			} // end-for lesson
+			} // end-for exercise
 
 		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
@@ -133,7 +155,9 @@ public class ZipSessionKit implements ISessionKit {
 
 	}
 
-	public void load(File saveFile) {
+	public void loadLesson(File path, Lesson lesson) {
+		File saveFile = openSaveFile(path, lesson);
+
 		if (!saveFile.exists())
 			return;
 
@@ -141,54 +165,52 @@ public class ZipSessionKit implements ISessionKit {
 		try {
 			zf = new ZipFile(saveFile);
 
-			for (Lesson lesson : this.game.getLessons()) {
-				for (Exercise exercise : lesson.exercises()) {
+			for (Exercise exercise : lesson.exercises()) {
 
-					ZipEntry entry = zf.getEntry(exercise.getClass().getName() + "/DONE");
-					if (entry != null) {
-						exercise.successfullyPassed();
-					}
+				ZipEntry entry = zf.getEntry(exercise.getClass().getName() + "/DONE");
+				if (entry != null) {
+					exercise.successfullyPassed();
+				}
 
-					for (ProgrammingLanguage lang:exercise.getProgLanguages())
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
-							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
+				for (ProgrammingLanguage lang:exercise.getProgLanguages())
+					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
-							if (srcFile instanceof SourceFileAliased)
-								continue;
+						if (srcFile instanceof SourceFileAliased)
+							continue;
 
-							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
-							if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
-								srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
-							
-							if (srcEntry != null) {
-								InputStream is = zf.getInputStream(srcEntry);
+						ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+						if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
+							srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
 
-								BufferedReader br = null;
+						if (srcEntry != null) {
+							InputStream is = zf.getInputStream(srcEntry);
+
+							BufferedReader br = null;
+							try {
+								br = new BufferedReader(new InputStreamReader(is));
+
+								String s;
+								StringBuffer b = new StringBuffer();
+
+								while ((s = br.readLine()) != null) {
+									b.append(s);
+									b.append("\n");
+								}
+
+								srcFile.setBody(b.toString());
+							} catch (IOException e) {
+								e.printStackTrace();
+							} finally {
 								try {
-									br = new BufferedReader(new InputStreamReader(is));
-
-									String s;
-									StringBuffer b = new StringBuffer();
-
-									while ((s = br.readLine()) != null) {
-										b.append(s);
-										b.append("\n");
-									}
-
-									srcFile.setBody(b.toString());
+									br.close();
 								} catch (IOException e) {
 									e.printStackTrace();
-								} finally {
-									try {
-										br.close();
-									} catch (IOException e) {
-										e.printStackTrace();
-									}
 								}
 							}
 						}
-				} // end-for exercise
-			} // end-for lesson
+					}
+			} // end-for exercise
 
 		} catch (IOException ex) { // ZipExecption or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
@@ -214,14 +236,25 @@ public class ZipSessionKit implements ISessionKit {
 		}
 	}
 
-	public void cleanUp(File saveFile) {
-		if (!saveFile.exists())
-			return;
-		else {
+	@Override
+	public void cleanLesson(Lesson lesson) {
+		File saveFile = openSaveFile(null, lesson);
+
+		if (saveFile.exists()) {
 			if (saveFile.delete()) {
 				Logger.log("ZipSessionKit:cleanup", "cannot remove session store directory");
 			}
 		}
+	}
+
+	@Override
+	public void storeAll() throws UserAbortException {
+		storeAll(null);
+	}
+
+	@Override
+	public void loadAll() {
+		loadAll(null);
 	}
 
 }

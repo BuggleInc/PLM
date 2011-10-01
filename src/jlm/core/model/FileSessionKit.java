@@ -18,7 +18,7 @@ import jlm.core.model.lesson.SourceFileRevertable;
  * separated files. It is not used by default, and you have to edit the source to activate it.
  *
  */
-public class FileSessionKit implements ISessionKit {
+public class FileSessionKit /* FIXME implements ISessionKit  */ {
 
 	private Game game;
 
@@ -32,7 +32,7 @@ public class FileSessionKit implements ISessionKit {
 		this.game = game;
 	}
 
-	public void store() {
+	public void storeAll() {
 		if (!SAVE_DIR.exists())
 			if (! SAVE_DIR.mkdir()) {
 				Logger.log("FileSessionKit:store", "cannot create session store directory");
@@ -108,7 +108,7 @@ public class FileSessionKit implements ISessionKit {
 		} // end-for lesson
 	}
 
-	public void load() {
+	public void loadAll() {
 		if (!SAVE_DIR.exists())
 			return;
 
