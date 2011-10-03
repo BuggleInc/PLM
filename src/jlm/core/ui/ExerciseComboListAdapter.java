@@ -56,9 +56,6 @@ public class ExerciseComboListAdapter extends AbstractListModel implements Combo
 	}
 
 	@Override
-	public void lessonsChanged() { /* don't care */ }
-
-	@Override
 	public void currentExerciseHasChanged() {
 		fireContentsChanged(this, 0, this.lesson.exerciseCount()-1);		
 	}

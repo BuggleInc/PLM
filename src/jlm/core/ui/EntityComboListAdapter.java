@@ -58,9 +58,6 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void lessonsChanged() { /* don't care */ }
-
-	@Override
 	public void selectedWorldHasChanged() {
 		this.worlds = this.game.getSelectedWorlds();
 		fireContentsChanged(this, 0, this.worlds[0].getEntityCount() - 1);

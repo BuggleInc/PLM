@@ -61,9 +61,6 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void lessonsChanged() { /* don't care */ }
-
-	@Override
 	public void selectedWorldHasChanged() {
 		this.selectedWorld = this.game.getSelectedWorld();
 		fireContentsChanged(this, 0, this.currentExercise.worldCount()-1);		

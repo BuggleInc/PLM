@@ -128,9 +128,6 @@ public class ExerciseView extends JPanel implements GameListener {
 	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void lessonsChanged() { /* don't care */ }
-
-	@Override
 	public void selectedWorldHasChanged() {
 		if (worldView[0].isWorldCompatible(this.game.getSelectedWorld())) {
 			for (WorldView w:worldView)

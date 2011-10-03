@@ -5,9 +5,6 @@ public interface GameListener {
 	// when a lesson becomes current lesson of the game
 	public void currentLessonHasChanged() ;
 	
-	// when a lesson is added or removed from the game
-	public void lessonsChanged() ;
-
 	// when an exercise becomes current exercise of the game
 	public void currentExerciseHasChanged() ;
 	

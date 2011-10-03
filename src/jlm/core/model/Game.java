@@ -281,7 +281,6 @@ public class Game implements IWorldView {
 		for (Lesson l : this.lessons.values())
 			for (Exercise ex : l.exercises())
 				ex.failed();
-		fireLessonsChanged();
 		fireCurrentExerciseChanged();
 	}
 
@@ -438,12 +437,6 @@ public class Game implements IWorldView {
 	protected void fireCurrentLessonChanged() {
 		for (GameListener v : this.listeners) {
 			v.currentLessonHasChanged();
-		}
-	}
-@Deprecated
-	protected void fireLessonsChanged() {
-		for (GameListener v : this.listeners) {
-			v.lessonsChanged();
 		}
 	}
 
