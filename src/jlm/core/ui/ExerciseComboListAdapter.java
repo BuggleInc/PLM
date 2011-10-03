@@ -56,9 +56,7 @@ public class ExerciseComboListAdapter extends AbstractListModel implements Combo
 	}
 
 	@Override
-	public void lessonsChanged() {
-		// don't care
-	}
+	public void lessonsChanged() { /* don't care */ }
 
 	@Override
 	public void currentExerciseHasChanged() {
@@ -66,17 +64,11 @@ public class ExerciseComboListAdapter extends AbstractListModel implements Combo
 	}
 
 	@Override
-	public void selectedWorldHasChanged() {
-		// don't care
-	}
+	public void selectedWorldHasChanged() { /* don't care */ }
 	
 	@Override
-	public void selectedEntityHasChanged() {
-		// don't care
-	}
+	public void selectedEntityHasChanged() { /* don't care */ }
 	
 	@Override
-	public void selectedWorldWasUpdated() {
-		// don't care
-	}
+	public void selectedWorldWasUpdated() { /* don't care */ }
 }

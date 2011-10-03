@@ -125,14 +125,10 @@ public class ExerciseView extends JPanel implements GameListener {
 	}
 
 	@Override
-	public void currentLessonHasChanged() {
-		// don't care
-	}
+	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void lessonsChanged() {
-		// don't care
-	}
+	public void lessonsChanged() { /* don't care */ }
 
 	@Override
 	public void selectedWorldHasChanged() {
@@ -166,12 +162,8 @@ public class ExerciseView extends JPanel implements GameListener {
 	}
 
 	@Override
-	public void selectedEntityHasChanged() {
-		// don't care
-	}
+	public void selectedEntityHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldWasUpdated() {
-		// don't care
-	}
+	public void selectedWorldWasUpdated() { /* don't care */ }
 }

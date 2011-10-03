@@ -58,14 +58,10 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 	}
 	
 	@Override
-	public void currentLessonHasChanged() {
-		// don't care
-	}
+	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void lessonsChanged() {
-		// don't care
-	}
+	public void lessonsChanged() { /* don't care */ }
 
 	@Override
 	public void selectedWorldHasChanged() {
@@ -74,13 +70,8 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 	}
 	
 	@Override
-	public void selectedEntityHasChanged() {
-		// don't care
-	}
+	public void selectedEntityHasChanged() { /* don't care */ }
 	
 	@Override
-	public void selectedWorldWasUpdated() {
-		// don't care
-	}
-	
+	public void selectedWorldWasUpdated() { /* don't care */ }
 }

@@ -156,19 +156,13 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 	}
 
 	@Override
-	public void currentExerciseHasChanged() {
-		// don't care
-	}
+	public void currentExerciseHasChanged() { /* don't care */ }
 
 	@Override
-	public void currentLessonHasChanged() {
-		// don't care
-	}
+	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void lessonsChanged() {
-		// don't care
-	}
+	public void lessonsChanged() { /* don't care */ }
 
 	@Override
 	public void selectedWorldHasChanged() {
@@ -176,13 +170,10 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 	}
 
 	@Override
-	public void selectedEntityHasChanged() {
-		// don't care
-	}
+	public void selectedEntityHasChanged() { /* don't care */ }
 
 	@Override
 	public void selectedWorldWasUpdated() {
 		fireStateChanged();
 	}
-
 }
