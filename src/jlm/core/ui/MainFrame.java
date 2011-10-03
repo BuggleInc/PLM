@@ -8,24 +8,19 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
-import javax.swing.SwingConstants;
 
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
@@ -64,8 +59,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton hintButton;
 	private JButton demoButton;
 	private LoggerPanel outputArea;
-	
-	private JComboBox exerciseComboBox;
 	
 	private MainFrame() {
 		super("Java Learning Machine");
@@ -305,10 +298,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
 		
-		ExerciseComboListAdapter exerciseAdapter = new ExerciseComboListAdapter(g);
-		exerciseComboBox = new JComboBox(exerciseAdapter);
-		exerciseComboBox.setRenderer(new ExerciseCellRenderer());
-		exerciseComboBox.setToolTipText("Switch the exercise");
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);
@@ -316,14 +305,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.add(resetButton);
 		toolBar.add(hintButton);
 		toolBar.add(demoButton);
-		toolBar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolBar.add(Box.createHorizontalGlue());
-		toolBar.add(new JLabel("Lesson:"));
-		toolBar.add(Box.createHorizontalStrut(10));
-		toolBar.add(new JLabel("Exercise:"));
-		toolBar.add(exerciseComboBox);
-		// toolBar.add(new JSeparator(SwingConstants.VERTICAL));
-		toolBar.add(Box.createHorizontalGlue());
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 	}
@@ -353,7 +334,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			demoButton.setEnabled(false);
 			hintButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
-			exerciseComboBox.setEnabled(false);		
 			break;
 		case LOADING_DONE:
 		case SAVING_DONE:
@@ -383,7 +363,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			hintButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			exerciseView.setEnabledControl(false);
-			exerciseComboBox.setEnabled(false);		
 			break;
 		case EXECUTION_ENDED:
 			stopButton.setEnabled(false);
@@ -394,7 +373,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
 			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
-			exerciseComboBox.setEnabled(true);		
 			break;
 		case DEMO_STARTED:
 			exerciseView.selectObjectivePane();
@@ -404,7 +382,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			hintButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
-			exerciseComboBox.setEnabled(false);		
 			// exerciseView.setEnabledControl(false);
 			break;
 		case DEMO_ENDED:
@@ -415,7 +392,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
 			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
-			exerciseComboBox.setEnabled(true);		
 			break;
 		default:
 		}
