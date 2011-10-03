@@ -139,6 +139,30 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription("File related functions");
 
+		menuItem = new JMenuItem(new AbstractGameAction(g, "Switch exercise") {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				new LessonNavigatorDialog(MainFrame.getInstance()).setVisible(true);
+			}			
+		});
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+		menu.add(menuItem);
+		
+		menuItem = new JMenuItem(new AbstractGameAction(g, "Switch lesson", null, "Go to another lesson",  "Cannot switch lesson now", KeyEvent.VK_L) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				JavaLearningMachine.chooser = new ChooserFrame();
+				JavaLearningMachine.chooser.setVisible(true);
+			}
+		});
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+		menu.add(menuItem);
+		
 		menuItem = new JMenuItem(new QuitGame(g, "Quit", null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
@@ -215,19 +239,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				this.dialog.setVisible(true);
 			}			
 		});
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
-		menu.add(menuItem);
-		menuItem = new JMenuItem(new AbstractGameAction(g, "Navigate this lesson") {
-			private static final long serialVersionUID = 1L;
-
-			public void actionPerformed(ActionEvent arg0) {
-				new LessonNavigatorDialog(MainFrame.getInstance()).setVisible(true);
-			}			
-		});
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
 		
-		menu.add(new JMenuItem(new AbstractGameAction(g, "About this world", null) {
+		menuItem = new JMenuItem(new AbstractGameAction(g, "About this world", null) {
 			private static final long serialVersionUID = 1L;
 
 			private AbstractAboutDialog dialog = null;
@@ -238,8 +252,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				}
 				this.dialog.setVisible(true);
 			}
-		}));
-
+		});
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
+		menu.add(menuItem);
+		
 		if (!System.getProperty("os.name").startsWith("Mac")) {
 			menu.add(new JMenuItem(new AbstractGameAction(g, "About JLM", null) {
 				private static final long serialVersionUID = 1L;
@@ -290,11 +306,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
 		
-		LessonComboListAdapter lessonAdapter = new LessonComboListAdapter(g);
-		lessonComboBox = new JComboBox(lessonAdapter);
-		lessonComboBox.setRenderer(new LessonCellRenderer());
-		lessonComboBox.setToolTipText("Switch the lesson");
-
 		ExerciseComboListAdapter exerciseAdapter = new ExerciseComboListAdapter(g);
 		exerciseComboBox = new JComboBox(exerciseAdapter);
 		exerciseComboBox.setRenderer(new ExerciseCellRenderer());
@@ -455,24 +466,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	@Override
-	public void lessonsChanged() {
-		// don't care
-	}
+	public void lessonsChanged() { /* don't care */ }
 
 	@Override
-	public void selectedEntityHasChanged() {
-		// don't care
-	}
+	public void selectedEntityHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldHasChanged() {
-		// don't care
-	}
+	public void selectedWorldHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldWasUpdated() {
-		// don't care
-	}
+	public void selectedWorldWasUpdated() { /* don't care */ }
 	
 	/** Simple JButton which pass the enabled signals to their action */
 	class PropagatingButton extends JButton {

@@ -7,8 +7,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Vector;
 
@@ -41,7 +44,7 @@ public class Game implements IWorldView {
 	private static File localGamePropertiesLoadedFile;
 
 	private static Game instance = null;
-	private ArrayList<Lesson> lessons = new ArrayList<Lesson>();
+	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
 	
 	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java","java");
@@ -63,7 +66,6 @@ public class Game implements IWorldView {
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
 	
-	private boolean sequential = false;
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
 	private LogWriter outputWriter;
@@ -84,43 +86,31 @@ public class Game implements IWorldView {
 
 	private Game() {
 		Game.loadProperties();
-		initLessons();
 		loadSession();
 	}
 
-	public void initLessons() {
-		String lessons = getProperty("jlm.lessons", "");
-		if (lessons.equals("")) {
-			System.err.println("Error: the property file does not contain any lesson to start. Default to lessons.welcome");
-			lessons = "lessons.welcome";
-		}
-		String[] lessonNames = lessons.split(",");
-		for (String name : lessonNames) {
-			System.out.println("Load lesson "+name);
-			Lesson lesson = null;
-			try {
-				lesson = (Lesson) Class.forName(name + ".Main").newInstance();
-				addLesson(lesson);
-			} catch (InstantiationException e) {
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
+	public Lesson loadLesson(String lessonName) {
+		System.out.println("Load lesson "+lessonName);
+		Lesson lesson = null;
+		try {
+			lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
+			lessons.put(lessonName, lesson);
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}		
+		return lesson;
 	}
+	
 	public static void addInitThread(Thread t) {
 		initRunners.add(t);
 	}
 
-	public void addLesson(Lesson lesson) {
-		this.lessons.add(lesson);
-		fireLessonsChanged();
-	}
-
-	public List<Lesson> getLessons() {
-		return this.lessons;
+	public Collection<Lesson> getLessons() {
+		return this.lessons.values();
 	}
 
 	public Lesson getCurrentLesson() {
@@ -131,11 +121,9 @@ public class Game implements IWorldView {
 	}
 
 	public void setCurrentLesson(Lesson lesson) {
-		if (isAccessible(lesson)) {
-			this.currentLesson = lesson;
-			fireCurrentLessonChanged();
-			setCurrentExercise(this.currentLesson.getCurrentExercise());
-		}
+		this.currentLesson = lesson;
+		fireCurrentLessonChanged();
+		setCurrentExercise(this.currentLesson.getCurrentExercise());
 	}
 
 	// only to avoid that exercise views register as listener of a lesson
@@ -160,19 +148,6 @@ public class Game implements IWorldView {
 			setProgramingLanguage( exo.getProgLanguages().iterator().next() );
 			
 			MainFrame.getInstance().currentExerciseHasChanged(); // make sure that the right language is selected -- yeah that's a ugly way of doing it
-		}
-	}
-
-	public boolean isAccessible(Lesson lesson) {
-		if (sequential) {
-			int index = this.lessons.indexOf(lesson);
-			if (index == 0)
-				return true;
-			if (index > 0)
-				return this.lessons.get(index - 1).isSuccessfullyCompleted();
-			return false;
-		} else {
-			return true;
 		}
 	}
 
@@ -303,7 +278,7 @@ public class Game implements IWorldView {
 
 	public void clearSession() {
 		this.sessionKit.cleanAll();
-		for (Lesson l : this.lessons)
+		for (Lesson l : this.lessons.values())
 			for (Exercise ex : l.exercises())
 				ex.failed();
 		fireLessonsChanged();
@@ -465,7 +440,7 @@ public class Game implements IWorldView {
 			v.currentLessonHasChanged();
 		}
 	}
-
+@Deprecated
 	protected void fireLessonsChanged() {
 		for (GameListener v : this.listeners) {
 			v.lessonsChanged();
@@ -569,7 +544,7 @@ public class Game implements IWorldView {
 	}
 	public void setLocale(String lang) {
 		Reader.setLocale(lang);
-		for (Lesson lesson : lessons) {
+		for (Lesson lesson : lessons.values()) {
 			for (Exercise e:lesson.exercises()) {
 				if (e instanceof ExerciseTemplated) {
 					((ExerciseTemplated) e).loadHTMLMission();

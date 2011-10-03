@@ -2,7 +2,8 @@ package jlm.core.ui;
 
 
 public class JavaLearningMachine {
-
+	static ChooserFrame chooser;
+	
 	public static void main(String args[]) {
 		
 		if (System.getProperty("os.name").startsWith("Mac")) {
@@ -10,6 +11,7 @@ public class JavaLearningMachine {
 			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "JLM");
 		}
 		
-		MainFrame.getInstance().setVisible(true);
+		chooser = new ChooserFrame();
+		chooser.setVisible(true);
 	}
 }
