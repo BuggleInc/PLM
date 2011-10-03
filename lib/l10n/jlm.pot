@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-30 19:36+0300\n"
+"POT-Creation-Date: 2011-10-04 00:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -877,6 +877,72 @@ msgid ""
 "execute."
 msgstr ""
 
+#. type: Content of: <table><tr><td>
+#: src/lessons/chooser/LessonChooser.html:3 src/lessons/chooser/LessonChooser.html:3
+msgid "&nbsp;&nbsp;"
+msgstr ""
+
+#. type: Content of: <table><tr><td><font>
+#: src/lessons/chooser/LessonChooser.html:3
+msgid "Welcome to the Java Learning Machine"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/chooser/LessonChooser.html:7
+msgid ""
+"The JLM is a Learning Management System (LMS) aiming at teaching the art of "
+"computer programming through interactive exercises. It offers an extensive "
+"set of varied exercises, allowing you to practice at your own pace."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/chooser/LessonChooser.html:11
+msgid "Pick a classical lesson"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:13
+msgid ""
+"<a href=\"lesson://lessons.welcome\">Welcome lesson</a> This lesson is "
+"intended to lead the first steps in programming of absolute beginners."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:16
+msgid ""
+"<a href=\"lesson://lessons.maze\">Escape the maze</a> Will you escape the "
+"mazes?"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:18
+msgid ""
+"<a href=\"lesson://lessons.bat.string1\">String lesson</a> A bunch of "
+"exercises on strings."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:20
+msgid ""
+"<a href=\"lesson://lessons.sort\">Sorting lesson</a> This short lesson "
+"proposes to discover the classical sorting algorithms by practice."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:23
+msgid ""
+"<a href=\"lesson://lessons.recursion\">Recursion lesson</a> Build some "
+"classical geometric figures through recursion."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:26
+msgid ""
+"<a href=\"lesson://lessons.lightbot\">LightBot</a> In this little game, you "
+"must program graphically a little robot to instruct it how to switch the "
+"lights off. It is a brain teaser for programmer."
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
 msgid "First steps"
@@ -1396,9 +1462,16 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/BasicsDrawG.html:14 src/lessons/welcome/BasicsDrawG.html:16
+#: src/lessons/welcome/BasicsDrawG.html:14
 msgid ""
 "There is three types of comments in Java, instructing the compiler to not "
+"read the text you add for humans:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/BasicsDrawG.html:16
+msgid ""
+"There is two types of comments in Python, instructing the compiler to not "
 "read the text you add for humans:"
 msgstr ""
 
@@ -1448,10 +1521,10 @@ msgstr ""
 msgid ""
 "methodCallReadByTheCompiler() <span class=\"comment\"># all this is "
 "ignored</span>\n"
-"otherCall() <span class=\"comment\">\n"
-"''' This is\n"
-"also ignored  '''</span>\n"
-"yetAnotherCall();\n"
+"otherCall() \n"
+"<span class=\"comment\">''' This is</span>\n"
+"<span class=\"comment\">also ignored  '''</span>\n"
+"yetAnotherCall()\n"
 msgstr ""
 
 #. type: Content of: <p>
@@ -6235,9 +6308,9 @@ msgid ""
 "Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
 "move one step forward while keeping the paw on the wall on the selected "
 "side. You thus have to ensure that the buggle always keep the paw on the "
-"wall, but also that it won't crash into a wall. You can check the hint for "
+"wall, but also that it won't crash into a wall. You can check the tip for "
 "more info on this, but only do so if you're stuck. Try to do it without the "
-"hint first."
+"tip first."
 msgstr ""
 
 #. type: Content of: <p>
@@ -6246,6 +6319,11 @@ msgid ""
 "Then, write a <code>run()</code> method which traverse the maze step by step "
 "(using <code>void keepHandOnSideWall()</code>) until it finds the biscuit "
 "and the exit. Don't forget to pick the baggle up once you've found it."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/maze/WallFollowerMaze.html:37
+msgid "I'm lost, please give me some extra indications"
 msgstr ""
 
 #. type: Content of: <div><p>
@@ -6377,6 +6455,11 @@ msgstr ""
 msgid ""
 "You may have to change the rest of your code also, but these changes should "
 "remain limited."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/maze/PledgeMaze.html:58
+msgid "Show an additional tip"
 msgstr ""
 
 #. type: Content of: <div>

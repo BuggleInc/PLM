@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-01 13:51+0300\n"
+"POT-Creation-Date: 2011-10-04 00:36+0300\n"
 "PO-Revision-Date: 2011-10-01 13:52+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1001,6 +1001,90 @@ msgstr ""
 "fonction\n"
 "est surtout utile pour initialiser la récursion et déterminer le nombre\n"
 "d'appels récursifs à réaliser."
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/chooser/LessonChooser.html:3
+#, fuzzy
+#| msgid "&nbsp;"
+msgid "&nbsp;&nbsp;"
+msgstr "&nbsp;"
+
+#. type: Content of: <table><tr><td><font>
+#: src/lessons/chooser/LessonChooser.html:3
+msgid "Welcome to the Java Learning Machine"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/chooser/LessonChooser.html:7
+#, fuzzy
+#| msgid ""
+#| "You just started the Java Learning Machine. This is a Learning Management "
+#| "System (LMS) aiming at teaching the art of computer programming through "
+#| "interactive exercises. It is constituted by a set of exercises grouped by "
+#| "lessons, allowing you to practice at your own pace. By default, the "
+#| "environment is configured to be programmed in the Java programming "
+#| "language, but you can change it from the Language menu if you want."
+msgid ""
+"The JLM is a Learning Management System (LMS) aiming at teaching the art of "
+"computer programming through interactive exercises. It offers an extensive "
+"set of varied exercises, allowing you to practice at your own pace."
+msgstr ""
+"Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme\n"
+"pédagogique destinée à simplifier l'apprentissage de la programmation.  Il "
+"est\n"
+"constitué d'un ensemble d'exercices groupés par leçons, pour vous permettre "
+"de\n"
+"progresser à votre rythme. Par défaut, l'outil est configuré pour vous\n"
+"permettre de programmer en Java, mais vous pouvez changer de langage de\n"
+"programmation grâce au menu Language si vous le désirez."
+
+#. type: Content of: <h1>
+#: src/lessons/chooser/LessonChooser.html:11
+msgid "Pick a classical lesson"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:13
+msgid ""
+"<a href=\"lesson://lessons.welcome\">Welcome lesson</a> This lesson is "
+"intended to lead the first steps in programming of absolute beginners."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:16
+msgid ""
+"<a href=\"lesson://lessons.maze\">Escape the maze</a> Will you escape the "
+"mazes?"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:18
+msgid ""
+"<a href=\"lesson://lessons.bat.string1\">String lesson</a> A bunch of "
+"exercises on strings."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:20
+msgid ""
+"<a href=\"lesson://lessons.sort\">Sorting lesson</a> This short lesson "
+"proposes to discover the classical sorting algorithms by practice."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:23
+msgid ""
+"<a href=\"lesson://lessons.recursion\">Recursion lesson</a> Build some "
+"classical geometric figures through recursion."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/chooser/LessonChooser.html:26
+msgid ""
+"<a href=\"lesson://lessons.lightbot\">LightBot</a> In this little game, you "
+"must program graphically a little robot to instruct it how to switch the "
+"lights off. It is a brain teaser for programmer."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
@@ -8100,13 +8184,21 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:25
+#, fuzzy
+#| msgid ""
+#| "Write a method <code>void keepHandOnSideWall()</code> which lets the "
+#| "buggle move one step forward while keeping the paw on the wall on the "
+#| "selected side. You thus have to ensure that the buggle always keep the "
+#| "paw on the wall, but also that it won't crash into a wall. You can check "
+#| "the hint for more info on this, but only do so if you're stuck. Try to do "
+#| "it without the hint first."
 msgid ""
 "Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
 "move one step forward while keeping the paw on the wall on the selected "
 "side. You thus have to ensure that the buggle always keep the paw on the "
-"wall, but also that it won't crash into a wall. You can check the hint for "
+"wall, but also that it won't crash into a wall. You can check the tip for "
 "more info on this, but only do so if you're stuck. Try to do it without the "
-"hint first."
+"tip first."
 msgstr ""
 "Ecrivez une méthode <code>void keepHandOnSideWall()</code> qui fait avancer "
 "votre buggle d'une case tout en gardant la patte sur le mur du côté choisi. "
@@ -8124,6 +8216,11 @@ msgstr ""
 "proche (méthode <code>void putHandOnSideWall()</code>), puis parcours le "
 "labyrinthe (méthode <code>void keepHandOnSideWall()</code>) jusqu'à trouver "
 "la sortie et le biscuit. Enfin il ne faut pas oubliez de prendre la baggle."
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/maze/WallFollowerMaze.html:37
+msgid "I'm lost, please give me some extra indications"
+msgstr ""
 
 #. type: Content of: <div><p>
 #: src/lessons/maze/WallFollowerMaze.html:38
@@ -8313,6 +8410,11 @@ msgid ""
 msgstr ""
 "Vous pouvez être amenés à modifier également le reste de votre code, mais "
 "ces changements devraient rester limités."
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/maze/PledgeMaze.html:58
+msgid "Show an additional tip"
+msgstr ""
 
 #. type: Content of: <div>
 #: src/lessons/maze/PledgeMaze.html:59
