@@ -65,7 +65,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton demoButton;
 	private LoggerPanel outputArea;
 	
-	private JComboBox lessonComboBox;
 	private JComboBox exerciseComboBox;
 	
 	private MainFrame() {
@@ -320,7 +319,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.add(new JSeparator(SwingConstants.VERTICAL));
 		toolBar.add(Box.createHorizontalGlue());
 		toolBar.add(new JLabel("Lesson:"));
-		toolBar.add(lessonComboBox);
 		toolBar.add(Box.createHorizontalStrut(10));
 		toolBar.add(new JLabel("Exercise:"));
 		toolBar.add(exerciseComboBox);
@@ -355,7 +353,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			demoButton.setEnabled(false);
 			hintButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
-			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
 			break;
 		case LOADING_DONE:
@@ -386,7 +383,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			hintButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			exerciseView.setEnabledControl(false);
-			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
 			break;
 		case EXECUTION_ENDED:
@@ -398,7 +394,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
 			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
-			lessonComboBox.setEnabled(true);
 			exerciseComboBox.setEnabled(true);		
 			break;
 		case DEMO_STARTED:
@@ -409,7 +404,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			hintButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
-			lessonComboBox.setEnabled(false);
 			exerciseComboBox.setEnabled(false);		
 			// exerciseView.setEnabledControl(false);
 			break;
@@ -421,7 +415,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
 			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
-			lessonComboBox.setEnabled(true);
 			exerciseComboBox.setEnabled(true);		
 			break;
 		default:
