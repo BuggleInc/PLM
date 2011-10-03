@@ -9,6 +9,8 @@ import javax.swing.JScrollPane;
 
 import jlm.core.GameListener;
 import jlm.core.model.Game;
+import jlm.core.model.lesson.Lecture;
+import jlm.universe.World;
 import net.miginfocom.swing.MigLayout;
 
 public abstract class AbstractAboutDialog extends JFrame implements GameListener {
@@ -33,12 +35,14 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 		add(new JScrollPane(area),"grow");
 	}
 		
-	public void currentProgrammingLanguageHasChanged() { /* I dont care I'm a punk */ }
-	public void currentExerciseHasChanged()            { /* I dont care I'm a punk */ }
+	@Override
+	public void currentExerciseHasChanged(Lecture l)   { /* I dont care I'm a punk */ }
+	@Override
 	public void currentLessonHasChanged()              { /* I dont care I'm a punk */ }
-	public void lessonsChanged()                       { /* I dont care I'm a punk */ }
+	@Override
 	public void selectedEntityHasChanged()             { /* I dont care I'm a punk */ }
-	public void selectedWorldHasChanged()              { /* I dont care I'm a punk */ }
+	@Override
+	public void selectedWorldHasChanged(World w)       { /* I dont care I'm a punk */ }
+	@Override
 	public void selectedWorldWasUpdated()              { /* I dont care I'm a punk */ }
-	
 }

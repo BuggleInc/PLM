@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.SourceFile;
 import jlm.core.model.lesson.SourceFileRevertable;
 
@@ -20,7 +21,11 @@ public class RevertExercise extends AbstractGameAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Exercise ex = game.getCurrentLesson().getCurrentExercise();
+		Lecture lect = game.getCurrentLesson().getCurrentExercise();
+		if (! (lect instanceof Exercise))
+			return;
+		
+		Exercise ex = (Exercise) lect;
 		for (ProgrammingLanguage lang: ex.getProgLanguages())
 			for (int i=0; i<ex.publicSourceFileCount(lang); i++) {
 				SourceFile sf = ex.getPublicSourceFile(lang,i);

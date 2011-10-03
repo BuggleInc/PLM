@@ -3,6 +3,9 @@ package jlm.core.ui;
 import javax.swing.JFrame;
 
 import jlm.core.model.Game;
+import jlm.core.model.Logger;
+import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 
 public class AboutWorldDialog extends AbstractAboutDialog {
 
@@ -10,16 +13,23 @@ public class AboutWorldDialog extends AbstractAboutDialog {
 
 	public AboutWorldDialog(JFrame parent) {
 		super(parent);
-		currentExerciseHasChanged();
+		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
 	}
 
 	@Override
-	public void currentExerciseHasChanged() {
-		setTitle("About world - "
-				+ Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld().get(0).getClass()
-						.getSimpleName());
-		area.setText(Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld().get(0).getAbout());
-		area.setCaretPosition(0);
+	public void currentExerciseHasChanged(Lecture lecture) {
+		if (lecture instanceof Exercise) {
+			Exercise exo = (Exercise) lecture;
+			setTitle("About world - "
+					+ exo.getCurrentWorld().get(0).getClass()
+					.getSimpleName());
+			area.setText(exo.getCurrentWorld().get(0).getAbout());
+			area.setCaretPosition(0);
+		} else {
+			// FIXME: should disable the entry menu when seing a lecture, and close any preexisting window when switching to a lecture
+			setVisible(false);
+		}
+		Logger.log("End currentExerciseHasChanged", getClass().getName());
 	}
 
 }

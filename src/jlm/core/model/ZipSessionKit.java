@@ -16,6 +16,7 @@ import java.util.zip.ZipOutputStream;
 import javax.swing.JOptionPane;
 
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.model.lesson.SourceFile;
 import jlm.core.model.lesson.SourceFileAliased;
@@ -39,20 +40,20 @@ public class ZipSessionKit implements ISessionKit {
 	public ZipSessionKit(Game game) {
 		this.game = game;
 	}
-	
+
 	private File openSaveFile(File path, Lesson lesson) {
 		if (path == null)
 			path = SAVE_DIR;
-		
+
 		String name = lesson.getClass().getCanonicalName();
 		Pattern namePattern = Pattern.compile(".Main$");
 		Matcher nameMatcher = namePattern.matcher(name);
 		name = nameMatcher.replaceAll("");
-		
+
 		namePattern = Pattern.compile("^lessons.");
 		nameMatcher = namePattern.matcher(name);
 		name = nameMatcher.replaceAll("");
-		
+
 		return new File(path, "jlm-"+name+".zip");
 	}
 
@@ -93,42 +94,44 @@ public class ZipSessionKit implements ISessionKit {
 			zos.setMethod(ZipOutputStream.DEFLATED);
 			zos.setLevel(Deflater.BEST_COMPRESSION);
 
-			for (Exercise exercise : lesson.exercises()) {
-
-				// flag successfully passed exercise
-				if (exercise.isSuccessfullyPassed()) {
-					ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/DONE");
-					zos.putNextEntry(ze);
-					byte[] bytes = new byte[1];
-					// bytes[0] = 'x';
-					zos.write(bytes);
-					zos.closeEntry();
-				}
-
-				// save exercise body
-				for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
-					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
-						SourceFile sf = exercise.getPublicSourceFile(lang,i);
-
-						if (!(sf instanceof SourceFileRevertable))
-							continue;
-
-						SourceFileRevertable srcFile = (SourceFileRevertable) sf;
-
-						ZipEntry ze = new ZipEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+			for (Lecture lecture : lesson.exercises()) {
+				if (lecture instanceof Exercise) {
+					Exercise exercise = (Exercise) lecture;
+					// flag successfully passed exercise
+					if (exercise.isSuccessfullyPassed()) {
+						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/DONE");
 						zos.putNextEntry(ze);
-
-						String content = srcFile.getBody();
-
-						if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
-							content = content + "\n";
-						}
-
-						byte[] bytes = srcFile.getBody().getBytes();
+						byte[] bytes = new byte[1];
+						// bytes[0] = 'x';
 						zos.write(bytes);
 						zos.closeEntry();
 					}
-			} // end-for exercise
+
+					// save exercise body
+					for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
+						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+							SourceFile sf = exercise.getPublicSourceFile(lang,i);
+
+							if (!(sf instanceof SourceFileRevertable))
+								continue;
+
+							SourceFileRevertable srcFile = (SourceFileRevertable) sf;
+
+							ZipEntry ze = new ZipEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							zos.putNextEntry(ze);
+
+							String content = srcFile.getBody();
+
+							if (content.length() > 0 && content.charAt(content.length() - 1) != '\n') {
+								content = content + "\n";
+							}
+
+							byte[] bytes = srcFile.getBody().getBytes();
+							zos.write(bytes);
+							zos.closeEntry();
+						}
+				} // is exercise
+			} // end-for lecture
 
 		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
@@ -165,52 +168,55 @@ public class ZipSessionKit implements ISessionKit {
 		try {
 			zf = new ZipFile(saveFile);
 
-			for (Exercise exercise : lesson.exercises()) {
+			for (Lecture lecture : lesson.exercises()) {
+				if (lecture instanceof Exercise) {
+					Exercise exercise = (Exercise) lecture;
 
-				ZipEntry entry = zf.getEntry(exercise.getClass().getName() + "/DONE");
-				if (entry != null) {
-					exercise.successfullyPassed();
-				}
+					ZipEntry entry = zf.getEntry(exercise.getClass().getName() + "/DONE");
+					if (entry != null) {
+						exercise.successfullyPassed();
+					}
 
-				for (ProgrammingLanguage lang:exercise.getProgLanguages())
-					for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
-						SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
+					for (ProgrammingLanguage lang:exercise.getProgLanguages())
+						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
-						if (srcFile instanceof SourceFileAliased)
-							continue;
+							if (srcFile instanceof SourceFileAliased)
+								continue;
 
-						ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
-						if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
-							srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
+							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
+								srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
 
-						if (srcEntry != null) {
-							InputStream is = zf.getInputStream(srcEntry);
+							if (srcEntry != null) {
+								InputStream is = zf.getInputStream(srcEntry);
 
-							BufferedReader br = null;
-							try {
-								br = new BufferedReader(new InputStreamReader(is));
-
-								String s;
-								StringBuffer b = new StringBuffer();
-
-								while ((s = br.readLine()) != null) {
-									b.append(s);
-									b.append("\n");
-								}
-
-								srcFile.setBody(b.toString());
-							} catch (IOException e) {
-								e.printStackTrace();
-							} finally {
+								BufferedReader br = null;
 								try {
-									br.close();
+									br = new BufferedReader(new InputStreamReader(is));
+
+									String s;
+									StringBuffer b = new StringBuffer();
+
+									while ((s = br.readLine()) != null) {
+										b.append(s);
+										b.append("\n");
+									}
+
+									srcFile.setBody(b.toString());
 								} catch (IOException e) {
 									e.printStackTrace();
+								} finally {
+									try {
+										br.close();
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
 								}
 							}
 						}
-					}
-			} // end-for exercise
+				} // is exercise
+			} // end-for lecture
 
 		} catch (IOException ex) { // ZipExecption or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)

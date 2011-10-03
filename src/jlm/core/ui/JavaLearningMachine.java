@@ -1,8 +1,12 @@
 package jlm.core.ui;
 
+import javax.swing.JFrame;
+
+import jlm.core.model.Game;
+import jlm.core.model.Reader;
+
 
 public class JavaLearningMachine {
-	static ChooserFrame chooser;
 	
 	public static void main(String args[]) {
 		
@@ -11,7 +15,9 @@ public class JavaLearningMachine {
 			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "JLM");
 		}
 		
-		chooser = new ChooserFrame();
-		chooser.setVisible(true);
+		Reader.setLocale(new JFrame().getLocale().getLanguage());
+		
+		Game.getInstance().loadLesson("lessons.chooser");
+		MainFrame.getInstance().setVisible(true);
 	}
 }

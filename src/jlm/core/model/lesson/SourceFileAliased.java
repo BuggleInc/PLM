@@ -30,18 +30,23 @@ public class SourceFileAliased extends SourceFile {
 		for (Lesson l : Game.getInstance().getLessons()) {
 			if (l.getClass().getName().equals(lesson)) {
 				for (int eCount=0; eCount<l.getExerciseCount();eCount++) {
-					Exercise e = l.getExercise(eCount);
-					if (e.getClass().getName().equals(exercise)) {
-						for (SourceFile sf : e.getSourceFiles(lang)) {
-							System.out.println("Seen file "+sf.getName() +" (searching for "+file+")");
-							if (sf.getName().equals(file)) {
-								/* Found it, cool */
-								aliased=sf;
-								name=sf.name;
-								return;
+					Lecture lect = l.getExercise(eCount);
+					if (lect instanceof Exercise) {
+						Exercise e = (Exercise) lect;
+						if (e.getClass().getName().equals(exercise)) {
+							for (SourceFile sf : e.getSourceFiles(lang)) {
+								System.out.println("Seen file "+sf.getName() +" (searching for "+file+")");
+								if (sf.getName().equals(file)) {
+									/* Found it, cool */
+									aliased=sf;
+									name=sf.name;
+									return;
+								}
 							}
+							throw new RuntimeException("No file "+file+" found in exercise "+exercise+" of lesson "+lesson+". Cannot find the aliased file");				
 						}
-						throw new RuntimeException("No file "+file+" found in exercise "+exercise+" of lesson "+lesson+". Cannot find the aliased file");				
+					} else {
+						throw new RuntimeException("Exercise "+exercise+" in lesson "+lesson+" is a lecture. Cannot find the aliased file");										
 					}
 				}
 				throw new RuntimeException("No exercise "+exercise+" found in lesson "+lesson+". Cannot find the aliased file");				

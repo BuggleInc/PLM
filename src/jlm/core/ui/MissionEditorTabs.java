@@ -14,9 +14,11 @@ import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
-import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.lesson.Lecture;
+import jlm.core.model.lesson.Lesson;
 import jlm.core.model.lesson.SourceFile;
 import jlm.universe.IEntityStackListener;
+import jlm.universe.World;
 import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
@@ -29,7 +31,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	private JEditorPane missionTab = new JEditorPane("text/html", "");
 	
 	/* for code tabs */
-	private Exercise currentExercise;
+	private Lecture currentExercise;
 //	private Font font = null;
 
 	
@@ -51,8 +53,13 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						if (this.tipsDialog == null) {
 							this.tipsDialog = new TipsDialog(MainFrame.getInstance());
 						}
-						this.tipsDialog.setText("<html>\n"+ExerciseTemplated.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
+						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
+					}
+					if (desc.startsWith("lesson://")) {
+						String lessonName = desc.substring(new String("lesson://").length());
+						Lesson lesson = Game.getInstance().loadLesson(lessonName);
+						Game.getInstance().setCurrentLesson(lesson);
 					}
 				}
 			}
@@ -72,13 +79,13 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.game.addProgLangListener(this);
 		
 		/* add code tabs */
-		currentExerciseHasChanged();
+		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
 	}
 	
 	@Override
-	public void currentExerciseHasChanged() {
-		currentExercise = game.getCurrentLesson().getCurrentExercise();		
-				
+	public void currentExerciseHasChanged(Lecture lecture) {
+		currentExercise = lecture;		
+
 		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage()); /* Redo any code panel, and reload the mission */
 		selectedEntityHasChanged();
 		doLayout();
@@ -86,7 +93,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	@Override
 	public void currentLessonHasChanged() { /* don't care */ }
 	@Override
-	public void selectedWorldHasChanged() { 
+	public void selectedWorldHasChanged(World w) { 
 		selectedEntityHasChanged();
 	}
 	
@@ -100,17 +107,19 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 			removeTabAt(getTabCount()-1);
 		}
 
-		/* Add back the right amount of tabs */
-		int publicSrcFileCount = currentExercise.publicSourceFileCount(newLang);
-		for (int i = 0; i < publicSrcFileCount; i++) {
-			/* Create the code editor */
-			SourceFile srcFile = currentExercise.getPublicSourceFile(newLang, i);
+		if (currentExercise instanceof Exercise) {
+			/* Add back the right amount of tabs */
+			int publicSrcFileCount = ((Exercise) currentExercise).publicSourceFileCount(newLang);
+			for (int i = 0; i < publicSrcFileCount; i++) {
+				/* Create the code editor */
+				SourceFile srcFile = ((Exercise) currentExercise).getPublicSourceFile(newLang, i);
 
-			/* Create the tab with the code editor as content */
-			this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(newLang), "Type your code here"); 			
-		}		
-		if (getTabCount()>tabPosition)
-			setSelectedIndex(tabPosition);
+				/* Create the tab with the code editor as content */
+				this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(newLang), "Type your code here"); 			
+			}		
+			if (getTabCount()>tabPosition)
+				setSelectedIndex(tabPosition);
+		}
 		
 		/* Change the mission text, because the CSS changed */
 		missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(newLang));
@@ -185,5 +194,4 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		}	
 	*/	
 	}
-
 }

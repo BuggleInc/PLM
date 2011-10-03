@@ -3,6 +3,7 @@ package jlm.universe.lightbot;
 import java.awt.Point;
 
 import jlm.core.model.Game;
+import jlm.core.model.lesson.Exercise;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.GridWorld;
@@ -175,7 +176,7 @@ public class LightBotEntity extends Entity  {
 	LightBotSourceFile sf;
 	@Override
 	public void run() {
-		sf = (LightBotSourceFile) Game.getInstance().getCurrentLesson().getCurrentExercise().getPublicSourceFile(Game.LIGHTBOT,"Code");
+		sf = (LightBotSourceFile) ((Exercise) Game.getInstance().getCurrentLesson().getCurrentExercise()).getPublicSourceFile(Game.LIGHTBOT,"Code");
 				
 		/* Run main */
 		run("main",sf.getMain());

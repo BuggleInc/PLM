@@ -18,12 +18,12 @@ import edu.uci.ics.jung.graph.Graph;
 public abstract class Lesson {
 	private String name;
 	protected String about = "(no information provided by the lesson)";
-	protected ArrayList<Exercise> exercises = new ArrayList<Exercise>();
+	protected ArrayList<Lecture> lectures = new ArrayList<Lecture>();
 	
-	private Graph<Exercise,Integer> exercisesGraph = new DelegateForest<Exercise,Integer>();
+	private Graph<Lecture,Integer> exercisesGraph = new DelegateForest<Lecture,Integer>();
 		
-	protected Exercise currentExercise;
-	protected boolean exercisesLoaded = false; /* for lazy loading of exercises */
+	protected Lecture currentExercise;
+	protected boolean exercisesLoaded = false; /* for lazy loading of exercises FIXME: killme*/
 	
 	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
 	+ "  <style>\n"
@@ -98,12 +98,12 @@ public abstract class Lesson {
 		this.sequential = enabled;
 	}	
 
-	Exercise rootExo, lastAdded;
-	public Exercise getRootExo() {
+	Lecture rootExo, lastAdded;
+	public Lecture getRootExo() {
 		return rootExo;
 	}
-	public Exercise addExercise(Exercise exo) {
-		exercises.add(exo);		
+	public Lecture addExercise(Lecture exo) {
+		lectures.add(exo);		
 		getExercisesGraph().addVertex(exo);
 		if (lastAdded != null) {
 			getExercisesGraph().addEdge(edgeFactory.create(), lastAdded, exo);
@@ -114,12 +114,12 @@ public abstract class Lesson {
 		lastAdded = exo;
 		return exo;
 	}
-	public Exercise addExercise(Exercise exo, Exercise[] deps) {
-		exercises.add(exo);
+	public Lecture addExercise(Lecture exo, Lecture[] deps) {
+		lectures.add(exo);
 		
 		getExercisesGraph().addVertex(exo);
 		if (deps!=null) {
-			for (Exercise d:deps) {
+			for (Lecture d:deps) {
 				getExercisesGraph().addEdge(edgeFactory.create(), d, exo);				
 			}
 		}
@@ -129,50 +129,53 @@ public abstract class Lesson {
 		lastAdded = exo;
 		return exo;
 	}
-	public Exercise addExercise(Exercise exo, Exercise dependency) {
-		return addExercise(exo, new Exercise[] {dependency});
+	public Lecture addExercise(Lecture exo, Lecture dependency) {
+		return addExercise(exo, new Lecture[] {dependency});
 	}
 
 	
-	public Exercise getCurrentExercise() {
+	public Lecture getCurrentExercise() {
 		if (!exercisesLoaded) {
-			System.out.println("Load exercises of lesson "+getName());
 			loadExercises();
+			exercisesLoaded = true;//FIXME: kill laziness
 		}
-		if (this.currentExercise == null && exercises.size() > 0) {
-			this.currentExercise = exercises.get(0);
+		if (this.currentExercise == null && lectures.size() > 0) {
+			this.currentExercise = lectures.get(0);
 		}
+		if (currentExercise == null)
+			System.out.print("There is only "+lectures.size()+" so far");
 		return this.currentExercise;
 	}
 
 	abstract protected void loadExercises();
 
-	public void setCurrentExercise(Exercise exo) {
+	public void setCurrentExercise(Lecture exo) {
 		this.currentExercise = exo;
 	}
 	
 	public int exerciseCount() {
-		return this.exercises.size();
+		return this.lectures.size();
 	}
 
-	public List<Exercise> exercises() {
-		return this.exercises;
+	public List<Lecture> exercises() {
+		return this.lectures;
 	}
 	
-	public Exercise getExercise(int index) {
-		return this.exercises.get(index);
+	@Deprecated
+	public Lecture getExercise(int index) { // FIXME: killme
+		return this.lectures.get(index); 
 	}
 	public int getExerciseCount() {
-		return this.exercises.size();
+		return this.lectures.size();
 	}
 
-	public boolean isAccessible(Exercise exo) {
+	public boolean isAccessible(Lecture exo) {
 		if (isSequential()) {
-			int index = this.exercises.indexOf(exo);
+			int index = this.lectures.indexOf(exo);
 			if (index == 0)
 				return true;
 			if (index > 0)
-				return this.exercises.get(index-1).isSuccessfullyPassed();
+				return this.lectures.get(index-1).isSuccessfullyPassed();
 			return false;
 		} else {
 			return true;
@@ -184,9 +187,9 @@ public abstract class Lesson {
 			return false;
 		// TODO: too lazy, to add a boolean 'completed' which is updated when a test is passed 
 		if (isSequential()) {
-			return this.exercises.get(this.exercises.size()-1).isSuccessfullyPassed();			
+			return this.lectures.get(this.lectures.size()-1).isSuccessfullyPassed();			
 		} else {
-			for (Exercise exo : this.exercises) {
+			for (Lecture exo : this.lectures) {
 				if (!exo.isSuccessfullyPassed())
 					return false;
 			}
@@ -195,7 +198,7 @@ public abstract class Lesson {
 	}
 	
 	/* Methods to retrieve the dependencies so that the lesson navigator can display them */
-	public Graph<Exercise,Integer> getExercisesGraph() {
+	public Graph<Lecture,Integer> getExercisesGraph() {
 		return exercisesGraph;
 	}
 }

@@ -23,6 +23,7 @@ import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.ui.MainFrame;
 import jlm.universe.Entity;
@@ -46,7 +47,7 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
-	
+
 	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java","java");
 	public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js");
 	public static final ProgrammingLanguage PYTHON = new ProgrammingLanguage("Python","py");
@@ -56,7 +57,7 @@ public class Game implements IWorldView {
 		JAVA, JAVASCRIPT, PYTHON, RUBY, LIGHTBOT
 	};
 	private ProgrammingLanguage programmingLanguage = JAVA;
-	
+
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
@@ -65,7 +66,7 @@ public class Game implements IWorldView {
 	private List<Thread> lessonRunners = new ArrayList<Thread>();
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
-	
+
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
 	private LogWriter outputWriter;
@@ -90,21 +91,28 @@ public class Game implements IWorldView {
 	}
 
 	public Lesson loadLesson(String lessonName) {
-		System.out.println("Load lesson "+lessonName);
-		Lesson lesson = null;
-		try {
-			lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
-			lessons.put(lessonName, lesson);
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}		
+		statusArgAdd("Load lesson "+lessonName);
+		Lesson lesson = lessons.get(lessonName);
+		if (lesson == null) {
+			try {
+				lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
+				lessons.put(lessonName, lesson);
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}		
+		}
+		setCurrentLesson(lesson);
+		statusArgRemove("Load lesson "+lessonName);
 		return lesson;
 	}
-	
+	public void changeLesson(String lessonName) {
+		setCurrentLesson(lessons.get(lessonName));
+	}
+
 	public static void addInitThread(Thread t) {
 		initRunners.add(t);
 	}
@@ -127,35 +135,42 @@ public class Game implements IWorldView {
 	}
 
 	// only to avoid that exercise views register as listener of a lesson
-	public void setCurrentExercise(Exercise exo) {
-		if (exo.getLesson().isAccessible(exo)) {
-			this.currentLesson.setCurrentExercise(exo);
-			exo.reset();
-			fireCurrentExerciseChanged();
-			setSelectedWorld(this.currentLesson.getCurrentExercise().getWorld(0));
-			
-			boolean seenJava=false;
-			for (ProgrammingLanguage l:exo.getProgLanguages()) {
-				if (l.equals(programmingLanguage)) 
-					return; /* The exo accepts the language we currently have */
-				if (l.equals(Game.JAVA))
-					seenJava = true;
+	public void setCurrentExercise(Lecture lect) {
+		if (lect.getLesson().isAccessible(lect)) {
+			fireCurrentExerciseChanged(lect);
+			this.currentLesson.setCurrentExercise(lect);
+			if (lect instanceof Exercise) {
+				Exercise exo = (Exercise) lect;
+				exo.reset();
+				setSelectedWorld(exo.getWorld(0));
+
+				boolean seenJava=false;
+				for (ProgrammingLanguage l:exo.getProgLanguages()) {
+					if (l.equals(programmingLanguage)) 
+						return; /* The exo accepts the language we currently have */
+					if (l.equals(Game.JAVA))
+						seenJava = true;
+				}
+				/* Use java as a fallback programming language (if the exo accepts it)  */
+				if (seenJava)
+					setProgramingLanguage(Game.JAVA); 
+				/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
+				setProgramingLanguage( exo.getProgLanguages().iterator().next() );
 			}
-			/* Use java as a fallback programming language (if the exo accepts it)  */
-			if (seenJava)
-				setProgramingLanguage(Game.JAVA); 
-			/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
-			setProgramingLanguage( exo.getProgLanguages().iterator().next() );
-			
-			MainFrame.getInstance().currentExerciseHasChanged(); // make sure that the right language is selected -- yeah that's a ugly way of doing it
+			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
 		}
 	}
 
 	public World getSelectedWorld() {
-		if (this.selectedWorld == null) {
-			setSelectedWorld(this.getCurrentLesson().getCurrentExercise().getWorld(0));
+		Lecture lecture = this.currentLesson.getCurrentExercise();
+		if (lecture instanceof Exercise) {
+			if (this.selectedWorld == null) {
+				setSelectedWorld(((Exercise) lecture).getWorld(0));
+			}
+			return this.selectedWorld;
+		} else {
+			return null;
 		}
-		return this.selectedWorld;
 	}
 	public World[] getSelectedWorlds() {
 		World[] res = new World[3];
@@ -166,19 +181,24 @@ public class Game implements IWorldView {
 	}
 
 	public void setSelectedWorld(World world) {
-		if (this.selectedWorld != null)
-			this.selectedWorld.removeEntityUpdateListener(this);
-		this.selectedWorld = world;
-		this.selectedWorld.addEntityUpdateListener(this);
+		Lecture lect = getCurrentLesson().getCurrentExercise();
+		if (lect instanceof Exercise) {
+			Exercise exo = (Exercise) lect;
+			if (this.selectedWorld != null)
+				this.selectedWorld.removeEntityUpdateListener(this);
+			this.selectedWorld = world;
+			this.selectedWorld.addEntityUpdateListener(this);
 
-		Exercise currentExercise = getCurrentLesson().getCurrentExercise();
-		int index = currentExercise.indexOfWorld(this.selectedWorld);
-		this.answerOfSelectedWorld = currentExercise.getAnswerOfWorld(index);
-		this.initialOfSelectedWorld = currentExercise.getInitialWorld().get(index);
-		if (this.selectedWorld.getEntityCount()>0) {
-			this.selectedEntity = this.selectedWorld.getEntity(0);
+			int index = exo.indexOfWorld(this.selectedWorld);
+			this.answerOfSelectedWorld = exo.getAnswerOfWorld(index);
+			this.initialOfSelectedWorld = exo.getInitialWorld().get(index);
+			if (this.selectedWorld.getEntityCount()>0) {
+				this.selectedEntity = this.selectedWorld.getEntity(0);
+			}
+			fireSelectedWorldHasChanged(world);
+		} else {
+			throw new RuntimeException("The lecture "+lect+" has no world that I can select");
 		}
-		fireSelectedWorldHasChanged();
 	}
 
 	public World getAnswerOfSelectedWorld() {
@@ -205,9 +225,11 @@ public class Game implements IWorldView {
 			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
 			t.stop(); // harmful but who cares ?
 		}
-		for (World w : this.currentLesson.getCurrentExercise().getAnswerWorld()) { 
-			w.doneDelay();
-		}
+		Lecture lecture = this.currentLesson.getCurrentExercise();
+		if (lecture instanceof Exercise)
+			for (World w : ((Exercise) lecture).getAnswerWorld())  
+				w.doneDelay();
+
 		setState(GameState.EXECUTION_ENDED);
 	}
 	public void startExerciseDemoExecution() {
@@ -226,20 +248,25 @@ public class Game implements IWorldView {
 	public void disableStepMode() {
 		this.stepMode = false;
 	}
-	
+
 	public boolean stepModeEnabled() {
 		return this.stepMode;
 	}
-	
+
 	public void allowOneStep() {
-		for (World w: getCurrentLesson().getCurrentExercise().getCurrentWorld())
-			for (Entity e : w.getEntities()) 
-				e.allowOneStep();
+		Lecture lecture = this.currentLesson.getCurrentExercise();
+		if (lecture instanceof Exercise)
+			for (World w: ((Exercise) lecture).getCurrentWorld())
+				for (Entity e : w.getEntities()) 
+					e.allowOneStep();
 	}
 
 	public void reset() {
-		getCurrentLesson().getCurrentExercise().reset();
-		fireCurrentExerciseChanged();
+		Lecture lecture = this.currentLesson.getCurrentExercise();
+		if (lecture instanceof Exercise) {
+			((Exercise) lecture).reset();
+			fireCurrentExerciseChanged(lecture);
+		}
 	}
 
 	public void setState(GameState status) {
@@ -279,9 +306,10 @@ public class Game implements IWorldView {
 	public void clearSession() {
 		this.sessionKit.cleanAll();
 		for (Lesson l : this.lessons.values())
-			for (Exercise ex : l.exercises())
-				ex.failed();
-		fireCurrentExerciseChanged();
+			for (Lecture lect : l.exercises())
+				if (lect instanceof Exercise)
+					((Exercise) lect).failed();
+		fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
 	}
 
 	public void loadSession() {
@@ -440,15 +468,15 @@ public class Game implements IWorldView {
 		}
 	}
 
-	protected void fireCurrentExerciseChanged() {
+	protected void fireCurrentExerciseChanged(Lecture lect) {
 		for (GameListener v : this.listeners) {
-			v.currentExerciseHasChanged();
+			v.currentExerciseHasChanged(lect);
 		}
 	}
 
-	protected void fireSelectedWorldHasChanged() {
+	protected void fireSelectedWorldHasChanged(World w) {
 		for (GameListener v : this.listeners) {
-			v.selectedWorldHasChanged();
+			v.selectedWorldHasChanged(w);
 		}
 	}
 
@@ -538,9 +566,9 @@ public class Game implements IWorldView {
 	public void setLocale(String lang) {
 		Reader.setLocale(lang);
 		for (Lesson lesson : lessons.values()) {
-			for (Exercise e:lesson.exercises()) {
-				if (e instanceof ExerciseTemplated) {
-					((ExerciseTemplated) e).loadHTMLMission();
+			for (Lecture lect:lesson.exercises()) {
+				if (lect instanceof ExerciseTemplated) {
+					lect.loadHTMLMission();
 				}
 			}
 		}
@@ -548,12 +576,12 @@ public class Game implements IWorldView {
 		currentLesson.setCurrentExercise(currentLesson.getCurrentExercise());
 	}
 
-	
-	
+
+
 	public void setProgramingLanguage(ProgrammingLanguage newLanguage) {
 		if (programmingLanguage.equals(newLanguage))
 			return;
-		
+
 		if (isValidProgLanguage(newLanguage)) {
 			System.out.println("Switch programming language to "+newLanguage);
 			this.programmingLanguage = newLanguage;
@@ -590,5 +618,5 @@ public class Game implements IWorldView {
 	public void removeProgLangListener(ProgLangChangesListener l) {
 		this.progLangListeners.remove(l);
 	}
- 
+
 }

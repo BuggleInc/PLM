@@ -8,7 +8,10 @@ import javax.swing.JTabbedPane;
 
 import jlm.core.GameListener;
 import jlm.core.model.Game;
+import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 import jlm.universe.EntityControlPanel;
+import jlm.universe.World;
 import net.miginfocom.swing.MigLayout;
 
 public class ExerciseView extends JPanel implements GameListener {
@@ -29,11 +32,13 @@ public class ExerciseView extends JPanel implements GameListener {
 		super();
 		this.game = game;
 		this.game.addGameListener(this);
-		this.initComponents();
-		currentExerciseHasChanged();
+		initComponents();
+		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
 	}
 
 	public void setEnabledControl(boolean enabled) {
+		if (entityComboBox == null) 
+			return;
 		// worldComboBox.setEnabled(enabled);
 		entityComboBox.setEnabled(enabled);
 		if (buttonPanel != null)
@@ -41,7 +46,6 @@ public class ExerciseView extends JPanel implements GameListener {
 	}
 
 	public void initComponents() {	
-		
 		JPanel upperPane = new JPanel();
 		
 		// TODO: add key shortcuts
@@ -66,15 +70,19 @@ public class ExerciseView extends JPanel implements GameListener {
 
 		tabPane = new JTabbedPane();
 		
-		worldView = Game.getInstance().getSelectedWorld().getView();
-		for (WorldView wv: worldView) {
-			tabPane.addTab("World"+wv.getTabName(), null, wv, 
-					       "Current world"+wv.getTip());
+		if (Game.getInstance().getSelectedWorld() != null) {
+			worldView = Game.getInstance().getSelectedWorld().getView();
+			for (WorldView wv: worldView) {
+				tabPane.addTab("World"+wv.getTabName(), null, wv, 
+						"Current world"+wv.getTip());
+			}
 		}
-		objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-		for (WorldView wv: objectivesView) {
-			tabPane.addTab("Objective"+wv.getTabName(), null, wv, 
-					       "Target world"+wv.getTip());
+		if (Game.getInstance().getAnswerOfSelectedWorld() != null) {
+			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
+			for (WorldView wv: objectivesView) {
+				tabPane.addTab("Objective"+wv.getTabName(), null, wv, 
+						"Target world"+wv.getTip());
+			}
 		}
 		
 		upperPane.add(tabPane, "grow 100 100,push");
@@ -91,10 +99,13 @@ public class ExerciseView extends JPanel implements GameListener {
 		 * Even if the editable property is set to false
 		 */
 
-		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+		
 		controlPane = new JPanel();
 		controlPane.setLayout(new MigLayout("insets 0 0 0 0, fill"));
-		controlPane.add(buttonPanel, "grow");
+		if (Game.getInstance().getSelectedWorld()!=null) {
+			buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+			controlPane.add(buttonPanel, "grow");
+		}
 		//add(controlPane, "span,growx,wrap");
 		
 		
@@ -107,8 +118,9 @@ public class ExerciseView extends JPanel implements GameListener {
 		this.setLayout(new MigLayout("insets 0 0 0 0, fill"));
 		this.add(splitPane, "grow");
 		
-		worldComboBox.setVisible(this.game.getCurrentLesson().getCurrentExercise().worldCount() > 1);
-		entityComboBox.setVisible(this.game.getSelectedWorld().getEntityCount() > 1); 
+		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
+		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);
+		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorld().get(0).getEntityCount() > 1); 
 	}
 
 	public void selectObjectivePane() {
@@ -120,16 +132,17 @@ public class ExerciseView extends JPanel implements GameListener {
 	}
 
 	@Override
-	public void currentExerciseHasChanged() {
-		worldComboBox.setVisible(this.game.getCurrentLesson().getCurrentExercise().worldCount() > 1);
+	public void currentExerciseHasChanged(Lecture lect) {
+		if (worldComboBox != null)
+			worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);
 	}
 
 	@Override
 	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldHasChanged() {
-		if (worldView[0].isWorldCompatible(this.game.getSelectedWorld())) {
+	public void selectedWorldHasChanged(World newWorld) {
+		if (worldView != null && worldView[0].isWorldCompatible(this.game.getSelectedWorld())) {
 			for (WorldView w:worldView)
 				w.setWorld(this.game.getSelectedWorld());
 			for (WorldView w:objectivesView)
@@ -154,8 +167,9 @@ public class ExerciseView extends JPanel implements GameListener {
 		}
 		
 		// 
-		worldComboBox.setVisible(this.game.getCurrentLesson().getCurrentExercise().worldCount() > 1);
-		entityComboBox.setVisible(this.game.getSelectedWorld().getEntityCount() > 1); 
+		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
+		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorld().get(0).getEntityCount() > 1); 
+		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);		
 	}
 
 	@Override

@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 
 /** 
  * This class runs the demo of the current exercise in a separated thread 
@@ -25,11 +26,14 @@ public class DemoRunner extends Thread {
 
 	@Override
 	public void run() {
+		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
+		if (! (lect instanceof Exercise))
+			return;
+		Exercise exo = (Exercise) lect;
+		
 		boolean stepModeWasActivated = this.game.stepModeEnabled();
 
 		try {
-			Exercise exo = this.game.getCurrentLesson().getCurrentExercise();
-
 			game.setState(GameState.DEMO_STARTED);
 			
 			this.game.disableStepMode();

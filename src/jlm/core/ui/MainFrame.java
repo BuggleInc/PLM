@@ -30,6 +30,7 @@ import jlm.core.model.GameState;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.action.AbstractGameAction;
 import jlm.core.ui.action.CleanUpSession;
 import jlm.core.ui.action.ExportSession;
@@ -40,10 +41,10 @@ import jlm.core.ui.action.Reset;
 import jlm.core.ui.action.RevertExercise;
 import jlm.core.ui.action.SetLanguage;
 import jlm.core.ui.action.SetProgLanguage;
-import jlm.core.ui.action.ShowHint;
 import jlm.core.ui.action.StartExecution;
 import jlm.core.ui.action.StepExecution;
 import jlm.core.ui.action.StopExecution;
+import jlm.universe.World;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
 
@@ -56,9 +57,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton debugButton;
 	private JButton stopButton;
 	private JButton resetButton;
-	private JButton hintButton;
 	private JButton demoButton;
 	private LoggerPanel outputArea;
+	
+	private JSplitPane mainPanel;
 	
 	private MainFrame() {
 		super("Java Learning Machine");
@@ -89,7 +91,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		logPane.setResizeWeight(ratio);
 		logPane.setDividerLocation((int) (768 * ratio));
 
-		JSplitPane mainPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
+		mainPanel = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
 
 		mainPanel.setOneTouchExpandable(true);
 		double weight = 0.6;
@@ -111,7 +113,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		initMenuBar(g);
 		initToolBar(g);
 		initStatusBar(g);
-		currentExerciseHasChanged(); 
+		currentExerciseHasChanged(g.getCurrentLesson().getCurrentExercise()); 
 
 		g.addGameStateListener(this);
 		g.addGameListener(this);
@@ -147,9 +149,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				JavaLearningMachine.chooser = new ChooserFrame();
-				JavaLearningMachine.chooser.setVisible(true);
+				Game.getInstance().changeLesson("lessons.chooser");
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
@@ -291,9 +291,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				ResourcesCache.getIcon("resources/reset.png")));
 		resetButton.setEnabled(true);
 
-		hintButton = new PropagatingButton(new ShowHint(g, "Hint", 
-				ResourcesCache.getIcon("resources/step.png")));
-		
 		demoButton = new PropagatingButton(new PlayDemo(g, "Demo", 
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
@@ -303,7 +300,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.add(debugButton);
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
-		toolBar.add(hintButton);
 		toolBar.add(demoButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
@@ -323,7 +319,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
-			hintButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
 			break;
 		case COMPILATION_STARTED:
@@ -332,7 +327,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
-			hintButton.setEnabled(false);
 			exerciseView.setEnabledControl(false);
 			break;
 		case LOADING_DONE:
@@ -340,7 +334,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			startButton.setEnabled(true);
 			debugButton.setEnabled(true);
 			resetButton.setEnabled(true);
-			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
 			break;
@@ -360,7 +353,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 			resetButton.setEnabled(false);
 			demoButton.setEnabled(false);
-			hintButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			exerciseView.setEnabledControl(false);
 			break;
@@ -372,14 +364,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
-			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 			break;
 		case DEMO_STARTED:
 			exerciseView.selectObjectivePane();
 			startButton.setEnabled(false);
 			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
-			hintButton.setEnabled(false);
 			demoButton.setEnabled(false);
 			stopButton.setEnabled(true);
 			// exerciseView.setEnabledControl(false);
@@ -391,13 +381,27 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
-			hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
 			break;
 		default:
 		}
 
 	}
 
+	public void hideWorldView() {
+		mainPanel.getBottomComponent().setVisible(false);
+		mainPanel.setDividerSize(0);
+		validate();
+	}
+	public void showWorldView() {
+		mainPanel.getBottomComponent().setVisible(true);
+		mainPanel.setDividerSize(10);
+		validate();
+	}
+	public void lessonChooser() {
+		
+	}
+
+	
 	public void quit() {
 		MainFrame.getInstance().dispose();
 		Game.getInstance().quit();
@@ -418,27 +422,28 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	@Override
-	public void currentExerciseHasChanged() {
+	public void currentExerciseHasChanged(Lecture lecture) {
 		Game g = Game.getInstance();
-		Exercise exo = g.getCurrentLesson().getCurrentExercise();
-		hintButton.setEnabled(exo.hint != null);
-				
-		for (ProgrammingLanguage l:exo.getProgLanguages()) {
-			if (!g.isValidProgLanguage(l)) 
-				System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your JLM.");
+		if (lecture instanceof Exercise) {
+			showWorldView();
+			Exercise exo = (Exercise) lecture;
+			for (ProgrammingLanguage l:exo.getProgLanguages()) {
+				if (!g.isValidProgLanguage(l)) 
+					System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your JLM.");
+			}
+		} else {
+			hideWorldView();
 		}
 	}
 
 	@Override
-	public void currentLessonHasChanged() {
-		hintButton.setEnabled(Game.getInstance().getCurrentLesson().getCurrentExercise().hint != null);
-	}
+	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
 	public void selectedEntityHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldHasChanged() { /* don't care */ }
+	public void selectedWorldHasChanged(World w) { /* don't care */ }
 
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
@@ -465,31 +470,37 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 		super("Computer");
 		Game.getInstance().addGameListener(this);
 		Game.getInstance().addProgLangListener(this);
-		currentExerciseHasChanged();
+		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
 	}
 
 	@Override
 	public void currentProgrammingLanguageHasChanged(ProgrammingLanguage newLang) {
-		currentExerciseHasChanged();		
+		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());		
 	}
 	@Override
-	public void currentExerciseHasChanged() {
+	public void currentExerciseHasChanged(Lecture lecture) {
 		Game g = Game.getInstance();
-		removeAll();
-		for (ProgrammingLanguage pl : Game.getInstance().getCurrentLesson().getCurrentExercise().getProgLanguages()) {
-			ButtonGroup group = new ButtonGroup();
-			JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,pl));
-			if (pl.equals(Game.getProgrammingLanguage()))
-				item.setSelected(true);
-			group.add(item);
-			add(item);
+		if (lecture instanceof Exercise) {
+			setEnabled(true);
+			Exercise exo = (Exercise) lecture;
+			removeAll();
+			for (ProgrammingLanguage pl : exo.getProgLanguages()) {
+				ButtonGroup group = new ButtonGroup();
+				JMenuItem item = new JRadioButtonMenuItem(new SetProgLanguage(g,pl));
+				if (pl.equals(Game.getProgrammingLanguage()))
+					item.setSelected(true);
+				group.add(item);
+				add(item);
+			}
+		} else {
+			setEnabled(false);
 		}
 	}
 
 	@Override
 	public void currentLessonHasChanged() {   /* don't care */ }
 	@Override
-	public void selectedWorldHasChanged() {   /* don't care */ }
+	public void selectedWorldHasChanged(World w) {   /* don't care */ }
 	@Override
 	public void selectedEntityHasChanged() {  /* don't care */ }
 	@Override

@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.JLMCompilerException;
+import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.ResourcesCache;
 
 import org.apache.http.NameValuePair;
@@ -45,11 +46,14 @@ public class LessonRunner extends Thread {
 
 	@Override
 	public void run() {
+		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
+		if (! (lect instanceof Exercise))
+			return;
+		Exercise exo = (Exercise) lect;
+		
 		try {
 			game.saveSession(); // for safety reasons;
 			
-			Exercise exo = this.game.getCurrentLesson().getCurrentExercise();
-
 			game.setState(GameState.COMPILATION_STARTED);
 			exo.compileAll(this.game.getOutputWriter());
 			game.setState(GameState.COMPILATION_ENDED);

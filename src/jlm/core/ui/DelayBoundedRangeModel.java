@@ -7,6 +7,7 @@ import javax.swing.event.EventListenerList;
 
 import jlm.core.GameListener;
 import jlm.core.model.Game;
+import jlm.core.model.lesson.Lecture;
 import jlm.universe.World;
 
 public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
@@ -52,7 +53,7 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 
 	@Override
 	public int getValue() {
-		return game.getSelectedWorld().getDelay();
+		return game.getSelectedWorld() == null? 0: game.getSelectedWorld().getDelay();
 	}
 
 	@Override
@@ -156,13 +157,13 @@ public class DelayBoundedRangeModel implements BoundedRangeModel, GameListener {
 	}
 
 	@Override
-	public void currentExerciseHasChanged() { /* don't care */ }
+	public void currentExerciseHasChanged(Lecture lect) { /* don't care */ }
 
 	@Override
 	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldHasChanged() {
+	public void selectedWorldHasChanged(World w) {
 		fireStateChanged();
 	}
 

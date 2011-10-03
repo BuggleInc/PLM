@@ -1,6 +1,6 @@
 package lessons.welcome;
 
-import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import lessons.welcome.array.AverageValue;
 import lessons.welcome.array.IndexOfMaxValue;
@@ -51,27 +51,27 @@ public class Main extends Lesson {
 
 	@Override
 	protected void loadExercises() {
-		Exercise environment = addExercise(new Environment(this));
-		Exercise basics = addExercise(new Basics(this), environment);
+		Lecture environment = addExercise(new Environment(this));
+		Lecture basics = addExercise(new Basics(this), environment);
 		
 		addExercise(new BasicsDrawG(this), basics);
 		
-		Exercise conditions = addExercise(new Conditions(this), basics);
+		Lecture conditions = addExercise(new Conditions(this), basics);
 		
-		Exercise loopWhile = addExercise(new LoopWhile(this), conditions);
+		Lecture loopWhile = addExercise(new LoopWhile(this), conditions);
 		addExercise(new BaggleSeeker(this), loopWhile);
 
-		Exercise variables = addExercise(new Variables(this), loopWhile);
+		Lecture variables = addExercise(new Variables(this), loopWhile);
 		
-		Exercise loopFor = addExercise(new LoopFor(this), variables );
+		Lecture loopFor = addExercise(new LoopFor(this), variables );
 		addExercise(new LoopDoWhile(this), loopFor);
 		
-		Exercise methodsVoid = addExercise(new Methods(this), loopFor);
+		Lecture methodsVoid = addExercise(new Methods(this), loopFor);
 		
 		addExercise(new MethodsDogHouse(this),methodsVoid);
 		addExercise(new MethodsReturning(this),methodsVoid);
 		
-		Exercise methods = addExercise(new MethodsArgs(this));
+		Lecture methods = addExercise(new MethodsArgs(this));
 		addExercise(new MethodsPicture(this));
 		addExercise(new MethodsPicture2(this));
 		addExercise(new MethodsPicture3(this));
@@ -84,14 +84,14 @@ public class Main extends Lesson {
 		addExercise(new Snake(this));
 		
 		addExercise(new Array(this),methods);
-		Exercise arrays = addExercise(new Array2(this));
+		Lecture arrays = addExercise(new Array2(this));
 		
 		/* Turmites exercises */	
-/*		addExercise(new lessons.welcome.cells.Langton(this), arrays);
+		addExercise(new lessons.welcome.cells.Langton(this), arrays);
 		addExercise(new lessons.welcome.cells.LangtonColors(this));
 		addExercise(new lessons.welcome.cells.HelloTurmite(this));
 		addExercise(new lessons.welcome.cells.TurmiteCreator(this));
-	*/	
+		
 		/* Arrays exercises */ 
 		addExercise(new IndexOfValue(this),arrays);
 		addExercise(new OccurrenceOfValue(this));

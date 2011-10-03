@@ -2,7 +2,6 @@ package lessons.maze;
 
 import java.awt.Color;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Direction;
@@ -60,7 +59,7 @@ public class ShortestPathMaze extends ExerciseTemplated {
 	
 	@Override
 	public boolean check() {
-		for (World w: Game.getInstance().getCurrentLesson().getCurrentExercise().getCurrentWorld())
+		for (World w: this.getCurrentWorld())
 			for (Entity e:w.getEntities()) {
 				if (!((AbstractBuggle) e).isCarryingBaggle())
 					return false;

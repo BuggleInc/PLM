@@ -7,6 +7,7 @@ import jlm.core.GameListener;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
 import jlm.universe.World;
 
 public class WorldComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
@@ -19,23 +20,25 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 	public WorldComboListAdapter(Game game) {
 		this.game = game;
 		this.game.addGameListener(this);
-		this.currentExercise = this.game.getCurrentLesson().getCurrentExercise();
-		this.selectedWorld = this.game.getSelectedWorld();
+		if (game.getCurrentLesson().getCurrentExercise() instanceof Exercise) {
+			this.currentExercise = (Exercise) this.game.getCurrentLesson().getCurrentExercise();
+			this.selectedWorld = this.game.getSelectedWorld();
+		}
 	}
 
 	@Override
 	public Object getElementAt(int index) {
-		return this.currentExercise.getWorld(index);
+		return currentExercise == null?null: this.currentExercise.getWorld(index);
 	}
 
 	@Override
 	public int getSize() {
-		return this.currentExercise.worldCount();
+		return currentExercise == null?0: currentExercise.worldCount();
 	}
 
 	@Override
 	public Object getSelectedItem() {
-		return this.selectedWorld;
+		return currentExercise == null?null: selectedWorld;
 	}
 
 	@Override
@@ -51,18 +54,23 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 
 	
 	@Override
-	public void currentExerciseHasChanged() {
-		this.currentExercise = this.game.getCurrentLesson().getCurrentExercise();
-		this.selectedWorld = this.game.getSelectedWorld();
-		fireContentsChanged(this, 0, this.currentExercise.worldCount()-1);
+	public void currentExerciseHasChanged(Lecture lect) {
+		if (lect instanceof Exercise) {
+			this.currentExercise = (Exercise) lect;
+			this.selectedWorld = game.getSelectedWorld();
+			fireContentsChanged(this, 0, this.currentExercise.worldCount()-1);
+		} else {
+			currentExercise = null;
+			selectedWorld = null;
+		}
 	}
 	
 	@Override
 	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldHasChanged() {
-		this.selectedWorld = this.game.getSelectedWorld();
+	public void selectedWorldHasChanged(World w) {
+		this.selectedWorld = w;
 		fireContentsChanged(this, 0, this.currentExercise.worldCount()-1);		
 	}
 	

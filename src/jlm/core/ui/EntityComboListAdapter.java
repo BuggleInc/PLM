@@ -6,6 +6,7 @@ import javax.swing.ComboBoxModel;
 import jlm.core.GameListener;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
+import jlm.core.model.lesson.Lecture;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -29,7 +30,7 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 
 	@Override
 	public int getSize() {
-		return this.worlds[0].getEntityCount();
+		return worlds==null || worlds[0]==null ? 0: this.worlds[0].getEntityCount();
 	}
 
 	@Override
@@ -52,13 +53,13 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 	}
 
 	@Override
-	public void currentExerciseHasChanged() { /* don't care */ }
+	public void currentExerciseHasChanged(Lecture lect) { /* don't care */ }
 
 	@Override
 	public void currentLessonHasChanged() { /* don't care */ }
 
 	@Override
-	public void selectedWorldHasChanged() {
+	public void selectedWorldHasChanged(World w) {
 		this.worlds = this.game.getSelectedWorlds();
 		fireContentsChanged(this, 0, this.worlds[0].getEntityCount() - 1);
 	}
