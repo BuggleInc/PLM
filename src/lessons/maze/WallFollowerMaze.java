@@ -2,6 +2,7 @@ package lessons.maze;
 
 import java.awt.Color;
 
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Direction;
@@ -43,12 +44,15 @@ public class WallFollowerMaze extends ExerciseTemplated {
 	}
 	
 	@Override
-	public boolean check() {
-		for (World w: this.getCurrentWorld())
+	public void check() {
+		lastResult = new ExecutionProgress();
+		for (World w: this.getCurrentWorld()) 
 			for (Entity e:w.getEntities()) {
+				lastResult.totalTests++;
 				if (!((AbstractBuggle) e).isCarryingBaggle())
-					return false;
+					lastResult.details += "Buggle "+e.getName()+" didn't find the baggle";
+				else
+					lastResult.passedTests++;
 			}
-		return true;
 	}
 }

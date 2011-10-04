@@ -40,6 +40,8 @@ public abstract class Exercise  extends Lecture {
 
 	protected Map<String, String> runtimePatterns;
 
+	public ExecutionProgress lastResult;
+	
 	public void successfullyPassed() {
 		this.done = true;
 	}
@@ -70,13 +72,19 @@ public abstract class Exercise  extends Lecture {
 	public abstract void run(List<Thread> runnerVect);	
 	public abstract void runDemo(List<Thread> runnerVect);	
 	
-	public boolean check() throws Exception {
+	public void check() throws Exception {
+		lastResult = new ExecutionProgress();
 		for (int i=0; i<currentWorld.length; i++) {
 			currentWorld[i].notifyWorldUpdatesListeners();
-			if (!currentWorld[i].equals(answerWorld[i]))
-				return false;
+			
+			lastResult.totalTests++;
+
+			if (!currentWorld[i].equals(answerWorld[i])) {
+				lastResult.details += "the world "+currentWorld[i].getName()+" differs";
+			} else {
+				lastResult.passedTests++;
+			}
 		}
-		return true;
 	}
 	public void reset() {
 		for (int i=0; i<initialWorld.length; i++) 
@@ -93,6 +101,7 @@ public abstract class Exercise  extends Lecture {
 	// Create a compiler of classes (using java 1.6)
 	private final InMemoryCompiler compiler = new InMemoryCompiler(
 			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
+
 
 	/**
 	 * Generate Java source from the user function
@@ -123,6 +132,7 @@ public abstract class Exercise  extends Lecture {
 		} catch (JLMCompilerException e) {
 			System.err.println("Compilation error:");
 			out.log(e.getDiagnostics());
+			lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
 			throw e;
 		}
 		

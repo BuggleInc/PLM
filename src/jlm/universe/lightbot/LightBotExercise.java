@@ -3,6 +3,7 @@ package jlm.universe.lightbot;
 import java.util.List;
 
 import jlm.core.model.Game;
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
@@ -36,17 +37,19 @@ public class LightBotExercise extends ExerciseTemplated {
 		}
 	}
 	@Override
-	public boolean check() {
-		boolean result = true;
+	public void check() {
+		lastResult = new ExecutionProgress();
 		for (int w=0;w<currentWorld.length;w++) {
 			LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld[w]).new CellIterator();
 			while (ci.hasNext()) {
 				LightBotWorldCell cell = ci.next();
-				if (! cell.getLightOnOrNone())
-					result = false;
+				if (cell.isLight()) {
+					lastResult.totalTests++;
+					if (!cell.isLightOn())
+						lastResult.passedTests++;
+				}
 			}
 		}
-		return result;	
 	}
 	@Override
 	public void run(List<Thread> runnerVect){

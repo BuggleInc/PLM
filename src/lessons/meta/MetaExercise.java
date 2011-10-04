@@ -1,23 +1,22 @@
 package lessons.meta;
 
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 
 public class MetaExercise extends ExerciseTemplated {
-	boolean error = false;
-
 	public MetaExercise(Lesson lesson) {
 		super(lesson);
+		lastResult = new ExecutionProgress();
 	}
 	@Override
 	public void reset() {
-		error = false;
+		lastResult = new ExecutionProgress();
 		super.reset();
 	}
 	
 	@Override
-	public boolean check() {
-		return !error;
+	public void check() {
 	}
 
 	protected void error(String msg) {
@@ -25,9 +24,12 @@ public class MetaExercise extends ExerciseTemplated {
 	}
 	protected void error(String msg, Exception e) {
 		System.err.println(msg);
-		error = true;
-		if (e != null)
-			e.printStackTrace();		
+		lastResult.totalTests++;
+		lastResult.details += msg;
+		if (e != null) {
+			lastResult.details += "(exception raised)";
+			e.printStackTrace();
+		}
 	}
 
 }

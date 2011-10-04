@@ -4,10 +4,12 @@ import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.JLMCompilerException;
 import jlm.core.model.lesson.Lecture;
+import jlm.core.ui.ExerciseFailedDialog;
 import jlm.core.ui.ResourcesCache;
 
 /** 
@@ -35,7 +37,7 @@ public class LessonRunner extends Thread {
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
 		if (! (lect instanceof Exercise))
 			return;
-		Exercise exo = (Exercise) lect;
+		final Exercise exo = (Exercise) lect;
 		
 		try {
 			game.saveSession(); // for safety reasons;
@@ -58,17 +60,7 @@ public class LessonRunner extends Thread {
 			}
 			game.setState(GameState.EXECUTION_ENDED);
 
-			if (!exo.check()) {
-				JOptionPane.showMessageDialog(null, "Your world differs from the expected one.", "Test failed",
-						JOptionPane.ERROR_MESSAGE);
-			} else {
-				JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Congratulations", JOptionPane.PLAIN_MESSAGE,
-						ResourcesCache.getIcon("resources/success.png"));
-				//this.game.getCurrentLesson().exercisePassed();
-				
-				exo.successfullyPassed();
-			}
-			Game.getInstance().fireProgressSpy(exo);									
+			exo.check();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
@@ -82,6 +74,21 @@ public class LessonRunner extends Thread {
 			game.setState(GameState.COMPILATION_ENDED);
 			game.setState(GameState.EXECUTION_ENDED);
 		}
+		
+		if (exo.lastResult.totalTests == exo.lastResult.passedTests) {
+			JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Congratulations", JOptionPane.PLAIN_MESSAGE,
+					ResourcesCache.getIcon("resources/success.png"));
+			
+			exo.successfullyPassed();
+		} else {
+			 SwingUtilities.invokeLater(new Runnable() {
+		            public void run() {
+		            	new ExerciseFailedDialog(exo.lastResult);
+		            }
+		        });
+
+		}
+		Game.getInstance().fireProgressSpy(exo);									
 		
 		runners.remove(this);
 	}
