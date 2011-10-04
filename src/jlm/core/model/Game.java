@@ -88,6 +88,8 @@ public class Game implements IWorldView {
 	private Game() {
 		Game.loadProperties();
 		loadSession();
+		addProgressSpyListener(new IdenticaSpy());
+		addProgressSpyListener(new TwitterSpy());
 	}
 
 	public Lesson loadLesson(String lessonName) {
@@ -503,6 +505,19 @@ public class Game implements IWorldView {
 	protected void fireStateChanged(GameState status) {
 		for (GameStateListener l : this.gameStateListeners) {
 			l.stateChanged(status);
+		}
+	}
+	
+	private ArrayList<ProgressSpyListener> progressSpyListeners = new ArrayList<ProgressSpyListener>();
+	public void addProgressSpyListener(ProgressSpyListener l) {
+		this.progressSpyListeners.add(l);
+	}
+	public void removeProgressSpyListener(ProgressSpyListener l) {
+		this.progressSpyListeners.remove(l);
+	}
+	public void fireProgressSpy(Exercise exo) {
+		for (ProgressSpyListener l : this.progressSpyListeners) {
+			l.executed(exo);
 		}
 	}
 

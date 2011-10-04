@@ -1,7 +1,5 @@
 package jlm.core.model;
 
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,18 +9,6 @@ import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.JLMCompilerException;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.ResourcesCache;
-
-import org.apache.http.NameValuePair;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.http.AccessToken;
 
 /** 
  * This class runs the student code of the current exercise in a separated thread 
@@ -79,39 +65,10 @@ public class LessonRunner extends Thread {
 				JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Congratulations", JOptionPane.PLAIN_MESSAGE,
 						ResourcesCache.getIcon("resources/success.png"));
 				//this.game.getCurrentLesson().exercisePassed();
-
 				
-				if (! exo.isSuccessfullyPassed()) {
-					String username = System.getenv("USER");
-					if (username == null)
-						username = System.getenv("USERNAME");
-					if (username == null)
-						username = "John Doe";
-									
-					DefaultHttpClient httpclient = new DefaultHttpClient();
-					HttpPost post = new HttpPost(new URI("http://identi.ca/api/statuses/update.json"));	
-		            httpclient.getCredentialsProvider().setCredentials(
-		                    new AuthScope("identi.ca", 80),
-		                    new UsernamePasswordCredentials(Game.getProperty("jlm.identica.username"), Game.getProperty("jlm.identica.password")));
-						
-					List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-					formparams.add(new BasicNameValuePair("status", username+" solves "+exo.getName()+"!"));
-					UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
-					post.setEntity(entity);					
-					
-					httpclient.execute(post);
-										
-					Twitter twitter = new TwitterFactory().getOAuthAuthorizedInstance(Game.getProperty("jlm.oauth.consumerKey"), Game.getProperty("jlm.oauth.consumerSecret"), new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
-					try {
-						twitter.updateStatus(username+" solved "+exo.getName()+"!");
-					} catch (Exception e) {
-						// silently ignore network unavailability ;)
-						//e.printStackTrace();
-					}
-	
-				}
 				exo.successfullyPassed();
 			}
+			Game.getInstance().fireProgressSpy(exo);									
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
