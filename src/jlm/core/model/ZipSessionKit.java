@@ -89,6 +89,7 @@ public class ZipSessionKit implements ISessionKit {
 		}
 
 		ZipOutputStream zos = null;
+		boolean wroteSomething = false;
 		try {
 			zos = new ZipOutputStream(new FileOutputStream(saveFile));
 			zos.setMethod(ZipOutputStream.DEFLATED);
@@ -105,6 +106,7 @@ public class ZipSessionKit implements ISessionKit {
 						// bytes[0] = 'x';
 						zos.write(bytes);
 						zos.closeEntry();
+						wroteSomething  = true;
 					}
 
 					// save exercise body
@@ -129,6 +131,7 @@ public class ZipSessionKit implements ISessionKit {
 							byte[] bytes = srcFile.getBody().getBytes();
 							zos.write(bytes);
 							zos.closeEntry();
+							wroteSomething = true;
 						}
 				} // is exercise
 			} // end-for lecture
@@ -149,7 +152,7 @@ public class ZipSessionKit implements ISessionKit {
 
 		} finally {
 			try {
-				if (zos != null)
+				if (zos != null && wroteSomething)
 					zos.close();
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
