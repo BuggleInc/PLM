@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-10-04 00:36+0300\n"
-"PO-Revision-Date: 2011-10-01 13:52+0200\n"
+"PO-Revision-Date: 2011-10-04 15:42+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1012,36 +1012,23 @@ msgstr "&nbsp;"
 #. type: Content of: <table><tr><td><font>
 #: src/lessons/chooser/LessonChooser.html:3
 msgid "Welcome to the Java Learning Machine"
-msgstr ""
+msgstr "Bienvenus dans la Java Learning Machine"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/chooser/LessonChooser.html:7
-#, fuzzy
-#| msgid ""
-#| "You just started the Java Learning Machine. This is a Learning Management "
-#| "System (LMS) aiming at teaching the art of computer programming through "
-#| "interactive exercises. It is constituted by a set of exercises grouped by "
-#| "lessons, allowing you to practice at your own pace. By default, the "
-#| "environment is configured to be programmed in the Java programming "
-#| "language, but you can change it from the Language menu if you want."
 msgid ""
 "The JLM is a Learning Management System (LMS) aiming at teaching the art of "
 "computer programming through interactive exercises. It offers an extensive "
 "set of varied exercises, allowing you to practice at your own pace."
 msgstr ""
 "Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme\n"
-"pédagogique destinée à simplifier l'apprentissage de la programmation.  Il "
-"est\n"
-"constitué d'un ensemble d'exercices groupés par leçons, pour vous permettre "
-"de\n"
-"progresser à votre rythme. Par défaut, l'outil est configuré pour vous\n"
-"permettre de programmer en Java, mais vous pouvez changer de langage de\n"
-"programmation grâce au menu Language si vous le désirez."
+"pédagogique destinée à simplifier l'apprentissage de la programmation offrant\n"
+"un grand nombre d'exercises pour vous permettre de progresser à votre rythme."
 
 #. type: Content of: <h1>
 #: src/lessons/chooser/LessonChooser.html:11
 msgid "Pick a classical lesson"
-msgstr ""
+msgstr "Choisissez une leçon"
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:13
@@ -1049,6 +1036,8 @@ msgid ""
 "<a href=\"lesson://lessons.welcome\">Welcome lesson</a> This lesson is "
 "intended to lead the first steps in programming of absolute beginners."
 msgstr ""
+"<a href=\"lesson://lessons.welcome\">Premiers pas</a> Cette leçon est destinée à\n"
+"guider les premiers pas en programmation de débutants sans aucune connaissance préalable."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:16
@@ -1056,6 +1045,8 @@ msgid ""
 "<a href=\"lesson://lessons.maze\">Escape the maze</a> Will you escape the "
 "mazes?"
 msgstr ""
+"<a href=\"lesson://lessons.maze\">Labyrinthes</a> Saurez vous vous échapere du\n"
+"labyrinthe?\n"
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:18
@@ -1063,6 +1054,8 @@ msgid ""
 "<a href=\"lesson://lessons.bat.string1\">String lesson</a> A bunch of "
 "exercises on strings."
 msgstr ""
+"<a href=\"lesson://lessons.bat.string1\">Chaînes</a> Quelques exercices sur les\n"
+"chaînes de caractères."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:20
@@ -1070,6 +1063,8 @@ msgid ""
 "<a href=\"lesson://lessons.sort\">Sorting lesson</a> This short lesson "
 "proposes to discover the classical sorting algorithms by practice."
 msgstr ""
+"<a href=\"lesson://lessons.sort\">Algorithmes de tri</a> Cette leçon vous propose\n"
+"de découvrir les algorithmes classiques de tri par la pratique."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:23
@@ -1077,6 +1072,8 @@ msgid ""
 "<a href=\"lesson://lessons.recursion\">Recursion lesson</a> Build some "
 "classical geometric figures through recursion."
 msgstr ""
+"<a href=\"lesson://lessons.recursion\">Recursivité</a> Construisez des figures\n"
+"géométriques classiques par récursivité."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:26
@@ -1085,6 +1082,9 @@ msgid ""
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
+"<a href=\"lesson://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous devez\n"
+"programmer graphiquement un petit robot pour lui faire éteindre des\n"
+"lumières. C'est un petit casse-tête pour programmeurs."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
