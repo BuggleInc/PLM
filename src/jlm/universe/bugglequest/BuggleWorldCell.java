@@ -231,4 +231,32 @@ public class BuggleWorldCell extends GridWorldCell {
 			return false;
 		return true;
 	}
+
+	public String diffTo(BuggleWorldCell other) {
+		StringBuffer sb = new StringBuffer();
+		if (baggle == null && other.baggle != null) 
+			sb.append(", there should be a baggle");
+		if (baggle != null && other.baggle == null)
+			sb.append(", there shouldn't be this baggle");
+		if (baggle != null && other.baggle != null && !baggle.equals(other.baggle))
+			sb.append(", the baggle differs");
+		if (color == null) {
+			if (other.color != null)
+				sb.append(", the ground should be "+other.color);
+		} else if (!color.equals(other.color))
+			sb.append(", the ground is "+color+" (expected: "+other.color+")");
+		if (!content.equals(other.content))
+			sb.append(", the ground reads '"+content+" (expected: "+other.content+")");
+		if (leftWall != other.leftWall)
+			if (leftWall)
+				sb.append(", there shouldn't be any wall at west");
+			else
+				sb.append(", there should be a wall at west");
+		if (topWall != other.topWall)
+			if (topWall)
+				sb.append(", there shouldn't be any wall at north");
+			else
+				sb.append(", there should be a wall at north");
+		return sb.toString();
+	}
 }

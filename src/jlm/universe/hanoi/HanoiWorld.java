@@ -141,5 +141,10 @@ public class HanoiWorld extends World {
 		throw new RuntimeException("No binding of HanoiWorld for "+lang);
 	}
 	/* END HIDDEN */
+
+	@Override
+	public String diffTo(World world) {
+		return null; // FIXME: how to represent this textually?
+	}
 }
 /* END TEMPLATE */

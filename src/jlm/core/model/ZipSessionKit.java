@@ -83,7 +83,7 @@ public class ZipSessionKit implements ISessionKit {
 			File parentDirectory = saveFile.getParentFile().getAbsoluteFile();
 			if (!parentDirectory.exists()) {
 				if (!parentDirectory.mkdir()) {
-					Logger.log("ZipSessionKit:store", "cannot create session store directory '" + parentDirectory + "'");
+					throw new RuntimeException("cannot create session store directory '" + parentDirectory + "'");
 				}
 			}
 		}
@@ -158,7 +158,6 @@ public class ZipSessionKit implements ISessionKit {
 				ioe.printStackTrace();
 			}
 		}
-
 	}
 
 	public void loadLesson(File path, Lesson lesson) {

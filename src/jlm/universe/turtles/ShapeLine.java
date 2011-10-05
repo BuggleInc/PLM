@@ -30,6 +30,39 @@ public class ShapeLine extends ShapeAbstract {
 	public ShapeAbstract copy() {
 		return new ShapeLine(x1,y1,x2,y2,color);
 	}
+	private boolean doubleEqual(double a, double b) {
+		return (Math.abs(a-b)<0.000001);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (! (obj instanceof ShapeLine))
+			return false;
+		
+		ShapeLine other = (ShapeLine) obj;
+		if (!doubleEqual(x1,other.x1))
+			return false;
+		if (!doubleEqual(x2,other.x2))
+			return false;
+		if (!doubleEqual(y1,other.y1))
+			return false;
+		if (!doubleEqual(y2,other.y2))
+			return false;
+				
+		return true;
+	}
+	public String diffTo(ShapeAbstract o) {
+		ShapeLine other = (ShapeLine) o;
+		if (!doubleEqual(x1,other.x1))
+			return "x1 differs";
+		if (!doubleEqual(x2,other.x2))
+			return "x2 differs";
+		if (!doubleEqual(y1,other.y1))
+			return "y1 differs";
+		if (!doubleEqual(y2,other.y2))
+			return "y2 differs";
+		return "I dont see the difference";
+	}
 	
 	@Override
 	public String toString(){

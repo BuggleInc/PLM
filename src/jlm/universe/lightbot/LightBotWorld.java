@@ -192,4 +192,8 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of LightbotWorld for "+lang);
 	}
+	@Override
+	public String diffTo(World other) {
+		return "null";
+	}
 }

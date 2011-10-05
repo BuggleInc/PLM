@@ -90,4 +90,8 @@ public class BacktrackingWorld extends World {
 	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of BacktrackingWorld for "+lang);
 	}
+	@Override
+	public String diffTo(World world) {
+		return null; // FIXME: implement a textual diff
+	}
 }

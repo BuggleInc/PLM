@@ -76,7 +76,7 @@ public class LessonRunner extends Thread {
 		}
 		
 		if (exo.lastResult.totalTests == exo.lastResult.passedTests) {
-			JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Congratulations", JOptionPane.PLAIN_MESSAGE,
+			JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Exercise passed \\o/", JOptionPane.PLAIN_MESSAGE,
 					ResourcesCache.getIcon("resources/success.png"));
 			
 			exo.successfullyPassed();

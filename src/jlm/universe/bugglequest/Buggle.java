@@ -30,5 +30,4 @@ public final class Buggle extends AbstractBuggle {
 	public void run() {
 		// nothing by default
 	}
-	
 }

@@ -80,7 +80,11 @@ public abstract class Exercise  extends Lecture {
 			lastResult.totalTests++;
 
 			if (!currentWorld[i].equals(answerWorld[i])) {
-				lastResult.details += "the world "+currentWorld[i].getName()+" differs";
+				String diff = answerWorld[i].diffTo(currentWorld[i]);
+				lastResult.details += "The world '"+currentWorld[i].getName()+"' differs";
+				if (diff != null) 
+					lastResult.details += ":\n"+diff;
+				lastResult.details += "\n";
 			} else {
 				lastResult.passedTests++;
 			}
@@ -116,9 +120,10 @@ public abstract class Exercise  extends Lecture {
 
 		/* Prepare the source files */
 		Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
-		for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-			if (sf.isCompilable()) 
-				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
+		if (sourceFiles.get(Game.JAVA) != null)
+			for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
+				if (sf.isCompilable()) 
+					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
 
 		if (sources.isEmpty())
 			return;

@@ -45,10 +45,16 @@ public class LightBotExercise extends ExerciseTemplated {
 				LightBotWorldCell cell = ci.next();
 				if (cell.isLight()) {
 					lastResult.totalTests++;
-					if (!cell.isLightOn())
+					if (cell.isLightOn())
 						lastResult.passedTests++;
 				}
 			}
+			int stillOff = lastResult.totalTests - lastResult.passedTests;
+			if (stillOff == 1) 
+				lastResult.details = "The light is still off";
+			if (stillOff > 1)
+				lastResult.details = stillOff + " lights (out of "+lastResult.totalTests+") are still off";
+
 		}
 	}
 	@Override

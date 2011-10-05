@@ -18,7 +18,7 @@ public class ExerciseFailedDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
 
 	public ExerciseFailedDialog(ExecutionProgress ep) {
-		super(MainFrame.getInstance(), "Exercise failed", true);
+		super(MainFrame.getInstance(), "Exercise failed /o\\", true);
 		
 		setLayout(new MigLayout("fill",""));
 		add(new JLabel( (Icon) UIManager.getLookAndFeelDefaults().get("OptionPane.errorIcon") ));

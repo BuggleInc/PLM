@@ -56,10 +56,10 @@ public class Baggle {
 				return false;
 		} else if (!color.equals(other.color))
 			return false;
-		if (cell == null) {
-			if (other.cell != null)
-				return false;
-		} //else if (!cell.equals(other.cell))
+//		if (cell == null) {
+//			if (other.cell != null)
+//				return false;
+//		} //else if (!cell.equals(other.cell))
 		//	return false;
 		return true;
 	}

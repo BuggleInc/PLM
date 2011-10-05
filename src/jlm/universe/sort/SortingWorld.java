@@ -72,6 +72,10 @@ public class SortingWorld extends World {
 	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of SortingWorld for "+lang);
 	}
+	@Override
+	public String diffTo(World world) {
+		return null; // This is not used since SortingExercise overrides check()
+	}
 
 	// TODO Implement world IO
 }

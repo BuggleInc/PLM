@@ -63,4 +63,20 @@ public class BatWorld extends World {
 	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of BatWorld for "+lang);
 	}
+	@Override
+	public String diffTo(World w) {
+		BatWorld other = (BatWorld) w;
+		StringBuffer sb = new StringBuffer();
+		boolean foundError = false;
+		for (int i=0;i<tests.size();i++) {
+			if (foundError && !tests.get(i).isVisible()) 
+				return sb.toString();
+					
+			if (!tests.get(i).equals(other.tests.get(i))) { 
+				sb.append(other.tests.get(i).getName()+" returned "+other.tests.get(i).getResult()+  "while "+tests.get(i).getResult()+" were expected."+"\n");
+				foundError = true;
+			}
+		}
+		return sb.toString();
+	}
 }

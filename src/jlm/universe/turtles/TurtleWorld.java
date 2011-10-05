@@ -2,6 +2,8 @@ package jlm.universe.turtles;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 import jlm.core.model.ProgrammingLanguage;
@@ -81,7 +83,25 @@ public class TurtleWorld extends World {
 		return new WorldView[] { new TurtleWorldView(this) };
 	}
 	
-
+	@Override
+	public boolean equals(Object obj) {
+		if (! (obj instanceof TurtleWorld))
+			return false;
+		if (! super.equals(obj))
+			return false;
+		
+		TurtleWorld other = (TurtleWorld) obj;
+		if (shapes.size() != other.shapes.size())
+			return false;
+		Collections.sort(shapes, new ShapeComparator());
+		Collections.sort(other.shapes, new ShapeComparator());
+		for (int i=0;i<shapes.size();i++)
+			if (! shapes.get(i).equals(other.shapes.get(i)))
+				return false;
+		
+		return true;
+	}
+	
 	// TODO implement world IO	
 	
 	@Override
@@ -100,4 +120,53 @@ public class TurtleWorld extends World {
 	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of TurtleWorld for "+lang);
 	}
+
+	@Override
+	public String diffTo(World world) {
+		StringBuffer sb = new StringBuffer();
+		TurtleWorld other = (TurtleWorld) world;
+		if (shapes.size() != other.shapes.size())
+			sb.append("  There is only "+other.shapes.size()+" lines where "+shapes.size()+" were expected.\n");
+		for (int i=0;i<other.shapes.size();i++)
+			if (! other.shapes.get(i).equals(shapes.get(i)))
+				sb.append("  Got "+other.shapes.get(i)+" where "+shapes.get(i)+" were expected ("+
+						((ShapeLine) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
+		
+		return sb.toString();
+	}
+}
+
+class ShapeComparator implements Comparator<ShapeAbstract> {
+
+	public ShapeComparator() {
+		super();
+	}
+
+	@Override
+	public int compare(ShapeAbstract o1, ShapeAbstract o2) {
+		ShapeLine l1 = (ShapeLine) o1;
+		ShapeLine l2 = (ShapeLine) o2;
+		if (l1.x1 < l2.x1)
+			return -1;
+		if (l1.x1 > l2.x1)
+			return 1;
+
+		if (l1.x2 < l2.x2)
+			return -1;
+		if (l1.x2 > l2.x2)
+			return 1;
+
+		if (l1.y1 < l2.y1)
+			return -1;
+		if (l1.y1 > l2.y1)
+			return 1;
+
+		if (l1.y2 < l2.y2)
+			return -1;
+		if (l1.y2 > l2.y2)
+			return 1;
+		
+		return 0;
+	}
+	
 }

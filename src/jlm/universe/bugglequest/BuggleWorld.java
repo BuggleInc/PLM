@@ -330,5 +330,19 @@ public class BuggleWorld extends GridWorld {
 		}
 		throw new RuntimeException("No binding of BuggleWorld for "+lang);
 	}
+	@Override
+	public String diffTo(World world) {
+		BuggleWorld other = (BuggleWorld) world;
+		StringBuffer sb = new StringBuffer();
+		for (int x=0; x<getWidth(); x++) 
+			for (int y=0; y<getHeight(); y++) 
+				if (!getCell(x, y).equals(other.getCell(x, y))) 
+					sb.append("  In ("+x+","+y+")"+  getCell(x, y).diffTo(other.getCell(x, y))+".\n");
+		for (int i=0; i<entities.size(); i++)  
+			if (! entities.get(i).equals(other.entities.get(i))) 
+				sb.append("  Something's wrong about buggle '"+entities.get(i).getName()+"':\n"+
+						((AbstractBuggle) entities.get(i)).diffTo((AbstractBuggle) other.entities.get(i)));
+		return sb.toString();
+	}
 
 }

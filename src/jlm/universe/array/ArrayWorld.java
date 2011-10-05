@@ -60,5 +60,10 @@ public class ArrayWorld extends World {
 	public String getBindings(ProgrammingLanguage lang) {
 		throw new RuntimeException("No binding of ArrayWorld for "+lang);
 	}
+
+	@Override
+	public String diffTo(World wrong) {
+		return null;
+	}
 	
 }

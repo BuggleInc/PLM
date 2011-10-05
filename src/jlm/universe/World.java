@@ -357,4 +357,7 @@ public abstract class World {
 	 * It should pass all order to the java entity, which were injected independently  
 	 */
 	public abstract String getBindings(ProgrammingLanguage lang);
+
+	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
+	public abstract String diffTo(World world);
 }
