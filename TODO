@@ -4,7 +4,6 @@
   fails to get the value of the newly selected exercise.
  * le libération du verrou "step-by-step" ne se passe pas bien lors de l'utilisation de "Reset",
    un "Run" remet zéro correctement
- * il faudrait supprimer les \160 qui empêchent la compilation
  * certains tests de countTeen() semblent faux par rapport à l'énoncé
  * certains énoncés extraits javabat sont tronqués
 
@@ -18,8 +17,6 @@
 Assez urgent :
  * Quand un exo est fait, il faut passer au suivant de la lesson
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
- * Il faut ajouter d'autres mondes parallèles aux labyrinthes pour
-   eviter les tricheurs qui résolvent le problème "à la main"
  
 D'autres points moins urgents :
  * on pourrait couper l'exercice sur "la chasse à la limace" en deux :
@@ -28,19 +25,12 @@ D'autres points moins urgents :
  * le bouton quitter est mal-placé (un triple clic qui l'application), 
    il serait utile de demander une confirmation avant de quitter l'application.
  * pas moyen de changer la couleur d'une buggle interactivement
- * Il faudrait masquer les combo de changement de monde et d'entité si y'a rien à changer.
-
- * dans ExerciseTemplated, les header html (principalement pour les css) HTMLMissionHeader et HTMLTipsHeader
-   sont concaténés au texte de la mission ou du type lors du chargement. Du coup, ces headers sont dupliqués
-   un nombre considérable de fois en mémoire. Il doit avoir moyen de concaténer ce header au moment de l'affichage
-   dans le JEditorPane...
 
 Une série d'idées bêtes :
  * J'aimerais ajouter une sorte de diff entre le monde attendu et le
    monde créé s'il y a un problème, avec des ronds rouges autour des
    cases de la mauvaise couleur, des croix sur les buggles mal
-   placées, etc. Il faudrait déjà que check() renvoie une chaine des
-   différences à afficher dans un truc "détails" en cas d'échec.
+   placées, etc.
  * les localisations de fichier dans la console devrait être des liens
    qui déplacent l'éditeur.
  * lors d'exécution pas à pas, j'aimerais afficher le contenu des
