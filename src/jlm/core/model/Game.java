@@ -107,6 +107,7 @@ public class Game implements IWorldView {
 				e.printStackTrace();
 			}		
 		}
+		sessionKit.loadLesson(null, lesson);
 		setCurrentLesson(lesson);
 		statusArgRemove("Load lesson "+lessonName);
 		return lesson;
