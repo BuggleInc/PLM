@@ -58,11 +58,11 @@ public abstract class Lecture {
 	}
 
 	protected static String getCSS(ProgrammingLanguage lang) {
-		if (css==null) {
+		if (css==null) 
 			 css = new HashMap<ProgrammingLanguage, String>();
-			 for (ProgrammingLanguage l : Game.programmingLanguages) {
-				 String theCSS = 
-						"  <style type=\"text/css\">\n"+
+		String res = css.get(lang);
+		if (res == null) {
+			res =		"  <style type=\"text/css\">\n"+
 				        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
 				        "    code { background:#EEEEEE; }\n"+
 				        "    pre { background: #EEEEEE;\n"+
@@ -77,23 +77,20 @@ public abstract class Lecture {
 				        "              font-family: \"Times New Roman\", serif;\n"+
 				        "              color:#00AA00;\n"+
 				        "              font-style: italic; }\n";
-				 for (ProgrammingLanguage l2 : Game.programmingLanguages) {
-					 if (!l.equals(l2)) {
-						 theCSS += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
-						 theCSS += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
-					 } else {
-						 /* DEBUG ONLY, to see the specific elements*/ 
-						 //theCSS += "."+l2.getLang()+" {visibility: visible; color:#00AA00;}\n";
-						 //theCSS += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#00AA00;}\n";
-					 }
-				 }
-				 theCSS +=  "  </style>\n";
-				 css.put(l, theCSS);
-			 }
+			for (ProgrammingLanguage l2 : Game.programmingLanguages) {
+				if (!lang.equals(l2)) {
+					res += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
+					res += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
+				} else {
+					/* DEBUG ONLY, to see the specific elements*/ 
+					//theCSS += "."+l2.getLang()+" {visibility: visible; color:#00AA00;}\n";
+					//theCSS += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#00AA00;}\n";
+				}
+			}
+			res +=  "  </style>\n";
+			css.put(lang, res);
 		}
-		if (css.get(lang)==null)
-			throw new RuntimeException("Damn, no CSS for lang "+lang+". I'm puzzled");
-		return css.get(lang);
+		return res;
 	}
 
 	public String getMission(ProgrammingLanguage lang) {
