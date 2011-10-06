@@ -3,7 +3,6 @@ package jlm.core.ui;
 import javax.swing.JFrame;
 
 import jlm.core.model.Game;
-import jlm.core.model.Logger;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 
@@ -29,7 +28,5 @@ public class AboutWorldDialog extends AbstractAboutDialog {
 			// FIXME: should disable the entry menu when seing a lecture, and close any preexisting window when switching to a lecture
 			setVisible(false);
 		}
-		Logger.log("End currentExerciseHasChanged", getClass().getName());
 	}
-
 }
