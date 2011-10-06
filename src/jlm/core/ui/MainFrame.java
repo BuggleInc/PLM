@@ -169,16 +169,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuBar.add(menu);
 		menu.setEnabled(true);
 
-		// JMenu lessonSubmenu = new JMenu("Change lesson...");
-		// JMenu exerciceSubmenu = new JMenu("Change exercise...");
-
 		JMenuItem revertExerciseCodeSource = new JMenuItem(new RevertExercise(g, "Revert Exercise",
 				null));
 		menu.add(revertExerciseCodeSource);
-
-		JMenuItem cleanUpSessionMenuItem = new JMenuItem(new CleanUpSession(g, "Clear Session Cache",
-				null));
-		menu.add(cleanUpSessionMenuItem);
 
 		JMenuItem exportSessionMenuItem = new JMenuItem(new ExportSession(g, "Export Session Cache",
 				null, this));
