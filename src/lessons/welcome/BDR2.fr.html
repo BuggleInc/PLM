@@ -53,10 +53,10 @@ switch (<b>expression</b>) {
 Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un
 <code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas
 suivant dans la liste quand elle a fini le code du cas où elle a sauté dans
-le switch. Il y a même quelques très rares cas où ce comportement est
+le switch. Il y a même quelques <b>très rares</b> cas où ce comportement est
 pratique.
 
-<p>On peut réécrire le code précédent bien plus clairement grâce à la
+<p>On peut réécrire le code BDR précédent bien plus clairement grâce à la
 construction <tt>switch</tt> de la façon suivante.</p>
 
 <pre>switch (getIndication()) {
@@ -84,25 +84,27 @@ Un autre problème de votre code est qu'il commence à être un peu long pour
 <ul>
  <li><code>danceOneStep()</code> s'occuperait de faire un pas de danse</li>
  <li><code>run()</code> s'occuperait de faire la danse en entier, c'est à dire de
-faire des pas de danse tant qu'on est pas arrivé à une case ne demandant pas
-d'aller plus loin.</li>
+faire des pas de danse tant que l'on n'est pas arrivé à une case ne
+demandant pas d'aller plus loin.</li>
 </ul>
 
 <p>Le problème est de faire en sorte que <tt>danceOneStep()</tt> prévienne
 <tt>run()</tt> qu'il n'y a plus de pas possible. La solution la plus simple
-est encore d'avoir une variable booléenne visible depuis les deux fonctions
+est
+encore d'avoir une variable booléenne visible depuis les deux fonctions
 indiquant s'il reste des pas à faire, ou si on a fini. On écrira donc en
-dehors de toute méthode
+dehors
+de toute méthode :
 <pre>boolean moreMusic = true;</pre>
 
-<p>Notez que s'il est possible d'écrire des déclarations en dehors des méthode,
-les instructions doivent obligatoirement être placées dans des méthodes. En
-Java, on appelle ces variables <i>globales</i> à plusieurs méthodes des
-<b>champs</b>.</p>
+<p>Notez que s'il est possible d'écrire des déclarations en dehors des
+méthodes, les instructions doivent obligatoirement être placées dans des
+méthodes. En Java, on appelle ces variables <i>globales</i> à plusieurs
+méthodes des <b>champs</b>.</p>
 
 <p>Ensuite, la fonction <tt>danceOneStep()</tt> doit être modifiée pour mettre
 cette valeur à <tt>false</tt> quand il n'y a plus rien à faire. Pour cela,
-ajoutez simplement <code>moreMusic = false;</code> avant chaque
+ajoutez simplement <code>moreMusic = false;</code> avant tout
 <tt>return</tt>.
 
 <p>On peut alors utiliser la fonction <tt>run()</tt> suivante:

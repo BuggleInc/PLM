@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-06 16:48+0300\n"
-"PO-Revision-Date: 2011-10-06 17:27+0200\n"
+"POT-Creation-Date: 2011-10-06 20:37+0300\n"
+"PO-Revision-Date: 2011-10-06 20:37+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2165,8 +2165,10 @@ msgid ""
 "inner bloc will get executed if the variable is <tt>True</tt> and it will be "
 "ignored if it is <tt>False</tt>."
 msgstr ""
-"Une condition peut être une variable de type <tt>boolean</tt>. Le code dans le\n"
-"bloc indenté sera exécuté si la variable vaut la valeur <tt>True</tt> (vrai), et il sera ignoré si elle vaut <tt>False</tt> (faux)."
+"Une condition peut être une variable de type <tt>boolean</tt>. Le code dans "
+"le\n"
+"bloc indenté sera exécuté si la variable vaut la valeur <tt>True</tt> "
+"(vrai), et il sera ignoré si elle vaut <tt>False</tt> (faux)."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Conditions.html:88
@@ -2190,7 +2192,12 @@ msgid ""
 "variable using = instead of ==. Hopefully, the compiler detects this problem "
 "most of the time, but not always. If the variable is of type boolean, it can "
 "get trapped, so you have to be careful..."
-msgstr "Attention au piège classique, qui consiste à tester l'égalité d'une variable avec = au lieu de ==. Heureusement, le compilateur vous indique le plus souvent ce problème, mais pas tout le temps. Si la variable est de type booléen, il peut se faire prendre au piège, et il convient donc d'être attentif..."
+msgstr ""
+"Attention au piège classique, qui consiste à tester l'égalité d'une variable "
+"avec = au lieu de ==. Heureusement, le compilateur vous indique le plus "
+"souvent ce problème, mais pas tout le temps. Si la variable est de type "
+"booléen, il peut se faire prendre au piège, et il convient donc d'être "
+"attentif..."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Conditions.html:99
@@ -2219,7 +2226,10 @@ msgid ""
 "<tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</"
 "tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even "
 "evaluated)."
-msgstr "<tt>cond1 && cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas évaluée)."
+msgstr ""
+"<tt>cond1 && cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt> "
+"est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas "
+"évaluée)."
 
 #. type: Content of: <p><p><p><p><ul><li>
 #: src/lessons/welcome/Conditions.html:109
@@ -2254,14 +2264,20 @@ msgid ""
 "<tt>cond1 and cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</"
 "tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even "
 "evaluated)."
-msgstr "<tt>cond1 and cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas évaluée)."
+msgstr ""
+"<tt>cond1 and cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</"
+"tt> est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas "
+"évaluée)."
 
 #. type: Content of: <p><p><p><p><ul><li>
 #: src/lessons/welcome/Conditions.html:121
 msgid ""
 "<tt>cond1 or cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> "
 "are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
-msgstr "<tt>cond1 or cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée)."
+msgstr ""
+"<tt>cond1 or cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
+"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
+"évaluée)."
 
 #. type: Content of: <p><p><p><p><ul><li>
 #: src/lessons/welcome/Conditions.html:124
@@ -2313,7 +2329,8 @@ msgid ""
 "Don't forget the colon (:) after the else, it is indicating that a new block "
 "is beginning."
 msgstr ""
-"N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau\n"
+"N'oubliez pas les deux points (:) après le else, ils indiquent qu'un "
+"nouveau\n"
 "bloc débute."
 
 #. type: Content of: <p><p><p><p><p><a>
@@ -2652,11 +2669,11 @@ msgstr ""
 msgid ""
 "String name = \"Martin Quinson\";\n"
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
-"boolean married=yes;"
+"boolean married=true;"
 msgstr ""
 "String nom = \"Martin Quinson\";\n"
 "double taille=1.77; <span class=\"comment\">// in meters</span>\n"
-"boolean marrie=yes;"
+"boolean marie=true;"
 
 #. type: Content of: <p><p><p><p><p><p><p>
 #: src/lessons/welcome/Variables.html:40
@@ -4120,7 +4137,11 @@ msgid ""
 "to omit the curly braces for the <tt>else</tt> statements. Some languages "
 "even introduce a specific construct for these <tt>else if</tt> (but Java "
 "doesn't)."
-msgstr "Une telle cascade de conditionnelles est un peu difficile à lire, et il est préférable d'omettre les accolades associées aux <tt>else</tt> comme suit. Il y a même certains langages qui introduisent un mot-clé spécial pour ces <tt>else if</tt> (mais pas Java)."
+msgstr ""
+"Une telle cascade de conditionnelles est un peu difficile à lire, et il est "
+"préférable d'omettre les accolades associées aux <tt>else</tt> comme suit. "
+"Il y a même certains langages qui introduisent un mot-clé spécial pour ces "
+"<tt>else if</tt> (mais pas Java)."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/BDR.html:121
@@ -4151,7 +4172,8 @@ msgid ""
 msgstr ""
 "Une telle cascade de conditionnelles est un peu difficile à lire, et il est\n"
 "préférable d'omettre les indentations supplémentaires associées aux\n"
-"<tt>else</tt> comme suit. Le mot-clé <tt>elif</tt> du langage Python permet de\n"
+"<tt>else</tt> comme suit. Le mot-clé <tt>elif</tt> du langage Python permet "
+"de\n"
 "faire ceci facilement."
 
 #. type: Content of: <p><pre>
@@ -4547,7 +4569,7 @@ msgid ""
 "} else if (getIndication() == 'U') {\n"
 "  turnBack();\n"
 "  forward();\n"
-"/* d'autres else if */\n"
+"/* other else if */\n"
 "} else {\n"
 "  return;\n"
 "}\n"
@@ -4619,21 +4641,21 @@ msgid ""
 "Observe that each branch of a <tt>switch</tt> must be ended by a "
 "<code>break</code>. If you forget this, the machine keeps going and execute "
 "the next branch in the list after the branch it jumped to. There is even "
-"some rare cases where this behavior reveals helpful."
+"some <b>rare</b> cases where this behavior reveals helpful."
 msgstr ""
 "Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un "
 "<code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas "
 "suivant dans la liste quand elle a fini le code du cas où elle a sauté dans "
-"le switch. Il y a même quelques très rares cas où ce comportement est "
+"le switch. Il y a même quelques <b>très rares</b> cas où ce comportement est "
 "pratique."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BDR2.html:56
 msgid ""
-"It is then possible to rewrite previous code in a cleaner way using the "
+"It is then possible to rewrite previous BDR code in a cleaner way using the "
 "<tt>switch</tt> construct:"
 msgstr ""
-"On peut réécrire le code précédent bien plus clairement grâce à la "
+"On peut réécrire le code BDR précédent bien plus clairement grâce à la "
 "construction <tt>switch</tt> de la façon suivante."
 
 #. type: Content of: <pre>
@@ -4683,7 +4705,7 @@ msgstr "Variables partagées par les méthodes"
 #: src/lessons/welcome/BDR2.html:79
 msgid ""
 "Another issue in your code is that it begins to be a bit long to be written "
-"as a uniq method. We would like to split it up in two methods:"
+"as a single method. We would like to split it up in two methods:"
 msgstr ""
 "Un autre problème de votre code est qu'il commence à être un peu long pour "
 "être dans une seule fonction. On voudrait découper en deux méthodes:"
@@ -4691,18 +4713,19 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/BDR2.html:82
 msgid ""
-"<code>danceOneStep()</code> would take care of achieving a uniq dance step"
+"<code>danceOneStep()</code> would take care of achieving a single dance step"
 msgstr "<code>danceOneStep()</code> s'occuperait de faire un pas de danse"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/BDR2.html:83
 msgid ""
-"<code>run()</code> would take care of the dance as a whole. It would do a "
-"step step while we didn't encounter a cell not asking any further move."
+"<code>run()</code> would take care of the dance as a whole. It would do the "
+"steps while we didn't encounter a cell not asking any further move."
 msgstr ""
-"<code>run()</code> s'occuperait de faire la danse en entier, c'est à dire de "
-"faire des pas de danse tant qu'on est pas arrivé à une case ne demandant pas "
-"d'aller plus loin."
+"<code>run()</code> s'occuperait de faire la danse en entier, c'est à dire "
+"de\n"
+"faire des pas de danse tant que l'on n'est pas arrivé à une case ne "
+"demandant pas d'aller plus loin."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BDR2.html:87
@@ -4713,11 +4736,13 @@ msgid ""
 "whether there is more steps to do or if we're done. For that, we have to "
 "write out the following of any method:"
 msgstr ""
-"Le problème est de faire en sorte que <tt>danceOneStep()</tt> prévienne "
+"Le problème est de faire en sorte que <tt>danceOneStep()</tt> prévienne\n"
 "<tt>run()</tt> qu'il n'y a plus de pas possible. La solution la plus simple "
-"est encore d'avoir une variable booléenne visible depuis les deux fonctions "
+"est\n"
+"encore d'avoir une variable booléenne visible depuis les deux fonctions\n"
 "indiquant s'il reste des pas à faire, ou si on a fini. On écrira donc en "
-"dehors de toute méthode"
+"dehors\n"
+"de toute méthode :"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/BDR2.html:92
@@ -4729,13 +4754,13 @@ msgstr "boolean moreMusic = true;"
 #: src/lessons/welcome/BDR2.html:94
 msgid ""
 "Note that it is possible to write variable declarations out of any methods, "
-"but that instruction must be in a method. In Java such <i>global</i> "
+"but that instructions must be in a method. In Java such <i>global</i> "
 "variables are called <b>fields</b>."
 msgstr ""
-"Notez que s'il est possible d'écrire des déclarations en dehors des méthode, "
-"les instructions doivent obligatoirement être placées dans des méthodes. En "
-"Java, on appelle ces variables <i>globales</i> à plusieurs méthodes des "
-"<b>champs</b>."
+"Notez que s'il est possible d'écrire des déclarations en dehors des "
+"méthodes, les instructions doivent obligatoirement être placées dans des "
+"méthodes. En Java, on appelle ces variables <i>globales</i> à plusieurs "
+"méthodes des <b>champs</b>."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/BDR2.html:98
@@ -4744,9 +4769,9 @@ msgid ""
 "<tt>false</tt> when there is nothing more to do. For that, simply add "
 "<code>moreMusic = false;</code> before any <tt>return</tt>."
 msgstr ""
-"Ensuite, la fonction <tt>danceOneStep()</tt> doit être modifiée pour mettre "
-"cette valeur à <tt>false</tt> quand il n'y a plus rien à faire. Pour cela, "
-"ajoutez simplement <code>moreMusic = false;</code> avant chaque <tt>return</"
+"Ensuite, la fonction <tt>danceOneStep()</tt> doit être modifiée pour mettre\n"
+"cette valeur à <tt>false</tt> quand il n'y a plus rien à faire. Pour cela,\n"
+"ajoutez simplement <code>moreMusic = false;</code> avant tout <tt>return</"
 "tt>."
 
 #. type: Content of: <p><p><p>
@@ -8079,7 +8104,8 @@ msgid ""
 msgstr ""
 "Écrivez une méthode <code>void keepHandOnSideWall()</code> qui fait avancer\n"
 "votre buggle d'une case tout en gardant la patte sur le mur du côté\n"
-"choisi. Vous devez donc vous assurez que votre buggle garde toujours la patte\n"
+"choisi. Vous devez donc vous assurez que votre buggle garde toujours la "
+"patte\n"
 "sur le mur et également qu'il ne risque pas de percuter un mur. Vous pouvez\n"
 "regarder l'indice (hint) si vous êtes coincés, mais vous devriez d'abord\n"
 "essayer de le faire sans l'indice."

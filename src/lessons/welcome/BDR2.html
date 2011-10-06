@@ -21,7 +21,7 @@ cascading. Somewhere in your code, you certainly had something similar to:
 } else if (getIndication() == 'U') {
   turnBack();
   forward();
-/* d'autres else if */
+/* other else if */
 } else {
   return;
 }
@@ -51,9 +51,9 @@ switch (<b>expression</b>) {
 Observe that each branch of a <tt>switch</tt> must be ended by a
 <code>break</code>. If you forget this, the machine keeps going and execute
 the next branch in the list after the branch it jumped to. There is even
-some rare cases where this behavior reveals helpful.
+some <b>rare</b> cases where this behavior reveals helpful.
 
-<p>It is then possible to rewrite previous code in a cleaner way using the
+<p>It is then possible to rewrite previous BDR code in a cleaner way using the
 <tt>switch</tt> construct:</p>
 
 <pre>switch (getIndication()) {
@@ -77,11 +77,11 @@ some rare cases where this behavior reveals helpful.
 <h2>Variables shared between methods</h2>
 
 Another issue in your code is that it begins to be a bit long to be written
-as a uniq method. We would like to split it up in two methods:
+as a single method. We would like to split it up in two methods:
 <ul>
- <li><code>danceOneStep()</code> would take care of achieving a uniq dance step</li>
- <li><code>run()</code> would take care of the dance as a whole. It would do a
-step step while we didn't encounter a cell not asking any further move.</li>
+ <li><code>danceOneStep()</code> would take care of achieving a single dance step</li>
+ <li><code>run()</code> would take care of the dance as a whole. It would do the
+steps while we didn't encounter a cell not asking any further move.</li>
 </ul>
 
 <p>The difficulty is to make sure that <tt>danceOneStep()</tt> keeps
@@ -92,7 +92,7 @@ have to write out the following of any method:
 <pre>boolean moreMusic = true;</pre>
 
 <p>Note that it is possible to write variable declarations out of any methods,
-but that instruction must be in a method. In Java such <i>global</i>
+but that instructions must be in a method. In Java such <i>global</i>
 variables are called <b>fields</b>.</p>
 
 <p>Then, the <tt>danceOneStep()</tt> must be changed to update this variable to
