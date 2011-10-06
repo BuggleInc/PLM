@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-07 00:42+0300\n"
+"POT-Creation-Date: 2011-10-07 01:28+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1470,13 +1470,6 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/BasicsDrawG.html:22
 msgid ""
-"<b>Comments on a single line</b>. When the compiler encounters the symbol #, "
-"it ignores the end of the line."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/welcome/BasicsDrawG.html:25
-msgid ""
 "<b>Comments on several lines</b>. The compiler ignores anything placed "
 "between the symbols /* and */ even if they are placed on differing lines."
 msgstr ""
@@ -1484,12 +1477,19 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/BasicsDrawG.html:27
 msgid ""
+"<b>Comments on a single line</b>. When the compiler encounters the symbol #, "
+"it ignores the end of the line."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/BasicsDrawG.html:29
+msgid ""
 "<b>Comments on several lines</b>. The compiler ignores anything placed "
 "between a line beginning with ''' and the next line ending with '''."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/BasicsDrawG.html:31
+#: src/lessons/welcome/BasicsDrawG.html:34
 #, no-wrap
 msgid ""
 "methodCallReadByTheCompiler(); <span class=\"comment\">// all this is "
@@ -1501,7 +1501,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/BasicsDrawG.html:37
+#: src/lessons/welcome/BasicsDrawG.html:40
 #, no-wrap
 msgid ""
 "methodCallReadByTheCompiler() <span class=\"comment\"># all this is "
@@ -1513,7 +1513,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/BasicsDrawG.html:44
+#: src/lessons/welcome/BasicsDrawG.html:47
 msgid ""
 "There is a third kind of comments in Java, between /** and */, which are "
 "read by a specific program called JavaDoc to generate automatically the "
@@ -1522,7 +1522,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/BasicsDrawG.html:49
+#: src/lessons/welcome/BasicsDrawG.html:52
 msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."

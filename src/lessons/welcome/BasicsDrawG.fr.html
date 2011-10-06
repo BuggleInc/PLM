@@ -25,20 +25,23 @@ doit pas lire le texte ajouté pour les humains.</p>
 ne
 doit pas lire le texte ajouté pour les humains.</p>
    
-  <ul>
+  <ul class="Java">
     <li class="Java"><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre
-les symboles //, il ignore la fin de la ligne.</li>
-    <li class="Python"><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre le
-symbole #, il ignore la fin de la ligne.</li>
-      
+les symboles //, il ignore la fin de la ligne.</li>      
     <li class="Java"><b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui
 se trouve entre les symboles /* et */, même s'ils sont sur des lignes
 différentes</li>
+  </ul>
+
+  <ul class="Python">
+    <li class="Python"><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre le
+symbole #, il ignore la fin de la ligne.</li>
     <li class="Python"><b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui
 se
 trouve entre une ligne commençant par ''' et la prochaine ligne terminant
 par '''.</li>      
   </ul>
+
 <pre class="Java">
 appelMethodeLuParLeCompilateur(); <span class="comment"> // tout ceci est ignoré</span>
 autreAppel(); <span class="comment">/* ceci est</span>
