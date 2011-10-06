@@ -4,6 +4,7 @@ import java.util.Random;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
+import jlm.universe.array.ArrayEntity;
 import jlm.universe.array.ArrayWorld;
 
 public class MaxValue extends ExerciseTemplated {
@@ -22,6 +23,9 @@ public class MaxValue extends ExerciseTemplated {
 			tab[i] = r.nextInt(35);
 		}
 		myWorlds[1].setValues(tab);
+		for (ArrayWorld w:myWorlds)
+			new ArrayEntity("maximum seeker", w);
+
 
 		setup(myWorlds);
 	}
