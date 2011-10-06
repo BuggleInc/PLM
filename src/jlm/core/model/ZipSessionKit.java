@@ -157,7 +157,7 @@ public class ZipSessionKit implements ISessionKit {
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
-			if (!wroteSomething)
+			if (!wroteSomething || saveFile.length() == 0)
 				saveFile.delete();
 		}
 	}
