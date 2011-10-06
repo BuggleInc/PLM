@@ -95,6 +95,11 @@ public class ZipSessionKit implements ISessionKit {
 			zos.setMethod(ZipOutputStream.DEFLATED);
 			zos.setLevel(Deflater.BEST_COMPRESSION);
 
+			zos.putNextEntry(new ZipEntry("README"));
+			String text = "This file is a JLM session file. Please see http://www.loria.fr/~quinson/Teaching/JLM/ for more details";
+			zos.write(text.getBytes());
+			zos.closeEntry();
+			
 			for (Lecture lecture : lesson.exercises()) {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
