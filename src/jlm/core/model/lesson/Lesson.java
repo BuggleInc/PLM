@@ -23,7 +23,6 @@ public abstract class Lesson {
 	private Graph<Lecture,Integer> exercisesGraph = new DelegateForest<Lecture,Integer>();
 		
 	protected Lecture currentExercise;
-	protected boolean exercisesLoaded = false; /* for lazy loading of exercises FIXME: killme*/
 	
 	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
 	+ "  <style>\n"
@@ -135,10 +134,6 @@ public abstract class Lesson {
 
 	
 	public Lecture getCurrentExercise() {
-		if (!exercisesLoaded) {
-			loadExercises();
-			exercisesLoaded = true;//FIXME: kill laziness
-		}
 		if (this.currentExercise == null && lectures.size() > 0) {
 			this.currentExercise = lectures.get(0);
 		}
@@ -183,8 +178,6 @@ public abstract class Lesson {
 	}
 
 	public boolean isSuccessfullyCompleted() {
-		if (!exercisesLoaded)
-			return false;
 		// TODO: too lazy, to add a boolean 'completed' which is updated when a test is passed 
 		if (isSequential()) {
 			return this.lectures.get(this.lectures.size()-1).isSuccessfullyPassed();			

@@ -15,7 +15,6 @@ public class Main extends Lesson {
 		addExercise(new IslandMaze(this));
 		addExercise(new PledgeMaze(this));
 		addExercise(new ShortestPathMaze(this));
-		exercisesLoaded = true;
 	}
 	
 }

@@ -10,7 +10,5 @@ public class Main extends Lesson {
 
 		System.out.println("Add Create entity exo");
 		addExercise(new HanoiCreateEntity(this));
-
-		exercisesLoaded = true;
 	}
 }

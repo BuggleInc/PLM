@@ -17,7 +17,6 @@ public class Main extends Lesson {
 		addExercise(new Board10Wall(this));
 		addExercise(new Board11Sea(this));
 		addExercise(new Board12Escher(this));
-		exercisesLoaded = true;
 	}
 }
 /* L6: not enough space? try creating functions 

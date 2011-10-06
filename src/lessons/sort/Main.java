@@ -10,6 +10,5 @@ public class Main extends Lesson {
 		addExercise(new ExExchangeSort(this));
 		addExercise(new ExSelectionSort(this));
 		addExercise(new ExInsertionSort(this));
-		exercisesLoaded = true;
 	}
 }

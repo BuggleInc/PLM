@@ -19,6 +19,5 @@ public class Main extends Lesson {
 		
 		addExercise(new HanoiBoard(this));
 
-		exercisesLoaded = true;
 	}
 }

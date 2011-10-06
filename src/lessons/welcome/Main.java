@@ -147,8 +147,6 @@ public class Main extends Lesson {
 		addExercise(new TeenSum(this));
 		addExercise(new TwoAsOne(this));
 		addExercise(new WithoutDoubles(this));
-
-		exercisesLoaded = true;
 	}
 
 }

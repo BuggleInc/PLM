@@ -21,7 +21,6 @@ public class Main extends Lesson {
 		addExercise(new Array667(this));
 		addExercise(new NoTriples(this));
 		addExercise(new Has271(this));
-		exercisesLoaded = true;
 	}
 
 }

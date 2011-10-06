@@ -6,7 +6,5 @@ public class Main extends Lesson {
 	@Override
 	protected void loadExercises() {
 		addExercise(new ExKnapsack(this));
-
-		exercisesLoaded = true;
 	}
 }
