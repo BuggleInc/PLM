@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-06 23:58+0300\n"
+"POT-Creation-Date: 2011-10-07 00:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7466,4 +7466,112 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/IndexOfValue.html:24
 msgid "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/AverageValue.html:1
+msgid "Average value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/AverageValue.html:4
+msgid ""
+"The objective of this exercise is to compute the average value of the "
+"integer values stored in an array."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/AverageValue.html:6
+msgid ""
+"You have to fill the body of the method <code>average(int[] tab)</code> "
+"which takes as parameter the array of integers of which it computes and "
+"returns the average value. Please note that the return type of the method "
+"has type <code>int</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/AverageValue.html:8
+msgid ""
+"To compute the average value of an integer, it is necessary to traverse the "
+"whole array and to compute the sum of all its values (so you will need a "
+"variable to store this temporary result), then you have to divide this sum "
+"by the size of the array. In Java, you can get the size of an array "
+"<code>myarray</code> by consulting its <code>length</code> attribute (in "
+"other words, <code>myarray.length</code>)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/IndexOfMaxValue.html:1
+msgid "Index of the maximum value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfMaxValue.html:3
+msgid ""
+"In this exercise, you must compute the indice of the tab cell containing the "
+"biggest value."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfMaxValue.html:5
+msgid ""
+"For that, fill the <code>indexOfMaximum(int[] tab)</code> method. Its "
+"parameter is the array to explore. Should the array contain the searched "
+"value several times, you should return the indice of the first occurrence."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfMaxValue.html:9
+msgid ""
+"To solve this exercise, you should sweep over the whole array. For each "
+"value, if it's bigger than the biggest value you saw so far, you must save "
+"this new champion and its position.  You will thus need 2 extra variables; "
+"the initial value of the champion could be the value of the first cell."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/MaxValue.html:1
+msgid "Maximal value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/MaxValue.html:3
+msgid ""
+"In this exercise, you must compute the maximal value contained in an array.  "
+"For that, fill the <code>maximum(int[] tab)</code> method, which parameter "
+"is the array to explore."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/MaxValue.html:7
+msgid ""
+"To compute this value, sweep over the whole parameter. For each value, if "
+"it's bigger than the biggest value you saw so far, you must save this value "
+"somewhere to remember it afterward. You thus need an extra variable, which "
+"can be initialized to the value of the first array cell. Another possibility "
+"is to initialize it to the smallest integer that Java knows about (which can "
+"be retrieved through <code>Integer.MIN_VALUE</code>)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/OccurrenceOfValue.html:1
+msgid "Occurrence of a value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/OccurrenceOfValue.html:3
+msgid ""
+"In this exercise, you must compute the amount of occurrences of a given "
+"value in an array (that is, the amount of time that this value appears in "
+"the array). For that, fill the <code>occurrences(int[] tab, int "
+"lookingFor)</code> method, which returns the number of occurrence of "
+"<code>lookingFor</code> in <code>tab</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/OccurrenceOfValue.html:8
+msgid ""
+"To compute this value, simply sweep over the array counting for the amount "
+"of cells containing the searched value. You thus need an extra variable for "
+"that."
 msgstr ""
