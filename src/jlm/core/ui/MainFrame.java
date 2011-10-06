@@ -197,7 +197,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		/* === Programming language changing === */
 		JMenu textLangSubMenu = new JMenu("Human");
 		menu.add(textLangSubMenu);
-		for (String[] lang : new String[][] { {"Français","fr"}, {"English","en"}}) 
+		for (String[] lang : new String[][] { {"Francais","fr"}, {"English","en"}}) 
 			textLangSubMenu.add(new JMenuItem(new SetLanguage(g, lang[0], lang[1])));		
 		
 		menu.add(new ProgLangSubMenu());
