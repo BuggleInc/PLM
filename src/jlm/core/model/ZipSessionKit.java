@@ -140,7 +140,7 @@ public class ZipSessionKit implements ISessionKit {
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
 			Object[] options = { "Ok, quit and lose my data", "Please stop! I'll save it myself first" };
-			int n = JOptionPane.showOptionDialog(null, "JLM were unable to save your session file ("
+			int n = JOptionPane.showOptionDialog(null, "JLM were unable to save your session file for lesson "+lesson.getName()+"("
 					+ ex.getClass().getSimpleName() + ":" + ex.getMessage() + ").\n\n"
 					+ " Would you like proceed anyway (and lose any solution typed so far)?",
 					"Your changes are NOT saved", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
@@ -157,6 +157,8 @@ public class ZipSessionKit implements ISessionKit {
 			} catch (IOException ioe) {
 				ioe.printStackTrace();
 			}
+			if (!wroteSomething)
+				saveFile.delete();
 		}
 	}
 
@@ -224,9 +226,9 @@ public class ZipSessionKit implements ISessionKit {
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
 			Object[] options = { "Proceed", "Abort" };
-			int n = JOptionPane.showOptionDialog(null, "JLM were unable to load your session file ("
+			int n = JOptionPane.showOptionDialog(null, "JLM were unable to load your code for lesson "+lesson.getName()+" ("
 					+ ex.getClass().getSimpleName() + ":" + ex.getMessage() + ").\n\n"
-					+ " Would you like proceed anyway (and lose any solution typed so far)?",
+					+ " Would you like proceed anyway (and lose any solution typed previously)?",
 					"Error while loading your session", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
 					null, options, options[1]);
 			if (n == 1) {
