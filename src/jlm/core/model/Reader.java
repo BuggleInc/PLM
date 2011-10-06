@@ -30,6 +30,9 @@ public class Reader {
 	public static void setLocale(String lang) {
 		locale=lang;
 	}
+	public static String getLocale() {
+		return locale;
+	}
 	public static BufferedReader fileReader(String file,String extension,boolean translatable) {
 		if (translatable) {
 			if (locale==null) 
