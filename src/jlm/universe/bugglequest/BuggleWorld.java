@@ -280,7 +280,9 @@ public class BuggleWorld extends GridWorld {
 				"def brushDown():\n"+
 				"   entity.brushDown()\n"+
 				"def brushUp():\n"+
-				"   entity.brushUp()\n\n"
+				"   entity.brushUp()\n" +
+				"def isFacingWall():" +
+				"	return entity.isFacingWall()\n"
 				;
 			return res;
 		}
@@ -324,6 +326,9 @@ public class BuggleWorld extends GridWorld {
 				"}"+
 				"function brushUp(){\n"+
 				"   entity.brushUp()\n"+
+				"}"+
+				"function isFacingWall(){\n"+
+				"  return entity.isFacingWall();\n" +
 				"}"
 				;
 			return res;
