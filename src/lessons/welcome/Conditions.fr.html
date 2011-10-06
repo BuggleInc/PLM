@@ -7,21 +7,21 @@ conditionnelle</b> permet au programme de s'adapter en disant quelque chose
 comme <i>S'il pleut, prend un parapluie</i>. 
 
 <p class="Java">La syntaxe Java est la suivante :</p>
-<p class="Python">The Python syntax is the following:</p>
+<p class="Python">La syntaxe Python est la suivante :</p>
  <pre class="Java">if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>
 }</pre>
- <pre class="Python">if <b>condition</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b></pre>
+ <pre class="Python">if <b>condition</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b></pre>
 
-<p class="Java">If the condition is true, any code enclosed between the { and the
-corresponding } will be executed. If not, it will be ignored. Of course, it
-is possible to write more than one instruction between the curly brackets
-(even another test).</p>
-<p class="Python">If the condition is true, any code in the block following the colon symbol
-will be executed. If not, it will be ignored. Of course, it is possible to
-write more than one instruction between the curly brackets (even another
-test).</p>
+<p class="Java">Si la condition est vraie, tout le code compris entre le { et le }
+correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est
+possible d'écrire plusieurs instructions entre les deux accolades (voire un
+autre test).</p>
+<p class="Python">Si la condition est vraie, tout le code du bloc placé après les deux points
+(:)
+sera exécuté. Si non, il sera ignoré. Bien entendu, il est possible d'écrire
+plusieurs instructions dans le sous-bloc (voire un autre test).</p>
 
 <p class="Python">
 Python uses indentation to define code blocks. The standard Python
@@ -32,9 +32,9 @@ will be exectuded if the condition is true, then the instruction
 <b>whatToDoAnyway()</b> will be executed anyway.
 
 <pre class="Python">if <b>condition</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
-<b>whatToDoAnyway()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>
+<b>quoiFaireDansTousLesCas()</b>
 </pre>
 
 <p class="Python">Python functions have no explicit begin or end, and no curly braces to mark
@@ -64,23 +64,24 @@ function.</p>
 consistent, and it is not possible to cut a block. The two following codes
 are incorrect and will raise errors.</p>
 <pre class="Python">if <b>condition</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
-<b>whatToDoAnyway()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>
+<b>quoiFaireDansTousLesCas()</b>
 </pre>
 <pre class="Python">if <b>condition</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
-<b>whatToDoAnyway()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
+<b>quoiFaireDansTousLesCas()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>
 </pre>
 
 <p class="Java">Une condition peut être une variable de type <tt>boolean</tt>. Le code entre
 accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et
 il sera ignoré si elle vaut <tt>false</tt> (faux).</p>
 
-<p class="Python">A condition can be a variable of type <tt>boolean</tt>. The code in the
-inner bloc will get executed if the variable is <tt>True</tt> and it will be
-ignored if it is <tt>False</tt>.</p> 
+<p class="Python">Une condition peut être une variable de type <tt>boolean</tt>. Le code dans
+le
+bloc indenté sera exécuté si la variable vaut la valeur <tt>True</tt>
+(vrai), et il sera ignoré si elle vaut <tt>False</tt> (faux).</p> 
 
 <p>La condition peut aussi être un test arithmétique, comme <tt>x</tt>
 <b>==</b> <tt>5</tt>, qui vérifie si la valeur actuelle de <tt>x</tt> est 5,
@@ -88,10 +89,11 @@ ou bien comme <b>!=</b> (teste l'inégalité), <b>&lt;</b> (inférieur à),
 <b>&gt;</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal à), <b>&gt;=</b>
 (supérieur ou égal à).</p>
 
-<p>Beware of the classical trap, which consists in testing the equality of a
-variable using = instead of ==. Hopefully, the compiler detects this problem
-most of the time, but not always. If the variable is of type boolean, it can
-get trapped, so you have to be careful...
+<p>Attention au piège classique, qui consiste à tester l'égalité d'une variable
+avec = au lieu de ==. Heureusement, le compilateur vous indique le plus
+souvent ce problème, mais pas tout le temps. Si la variable est de type
+booléen, il peut se faire prendre au piège, et il convient donc d'être
+attentif...
 
 <p>La condition peut également être un appel à certaines méthodes
 particulières, dont le résultat est un booléen. Par exemple, la méthode
@@ -101,45 +103,46 @@ mur, et faux sinon.
 <p>Enfin, il est possible de construire une condition composée de plusieurs
 sous-conditions reliées par des opérations booléennes.
 <ul class="Java">
-  <li><tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b>
-<tt>cond2</tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is
-not even evaluated).</li> 
-  <li><tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt>
-are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated).</li>
-  <li><tt>!cond</tt> is true if <tt>cond</tt> is false.</li>
+  <li><tt>cond1 && cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt>
+est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas
+évaluée).</li> 
+  <li><tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt>
+est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas
+évaluée).</li>
+  <li><tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas.</li>
   <li>On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de
 doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever
 les ambiguïtés sur l'ordre d'évaluation.</li>
 </ul> 
 
 <ul class="Python">
-  <li><tt>cond1 and cond2</tt> is true when <tt>cond1</tt> <b>and</b>
-<tt>cond2</tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is
-not even evaluated).</li> 
-  <li><tt>cond1 or cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt>
-are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated).</li> 
-  <li><tt>not cond</tt> is true if <tt>cond</tt> is false.</li>
+  <li><tt>cond1 and cond2</tt> est vraie si <tt>cond1</tt> <b>et</b>
+<tt>cond2</tt> est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est
+même pas évaluée).</li> 
+  <li><tt>cond1 or cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt>
+est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas
+évaluée).</li> 
+  <li><tt>not cond</tt> est vraie si <tt>cond</tt> ne l'est pas.</li>
   <li>On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de
 doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever
 les ambiguïtés sur l'ordre d'évaluation.</li>
 </ul> 
 
-<p>Finally, it is possible to specify what to do when the condition is false
-using the following syntax:
+<p>Pour finir, il est possible de spécifier ce qu'il faut faire quand la
+condition est fausse, en utilisant la syntaxe suivante :
  <pre class="Java">if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>
 } else {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>
 }</pre>
 
  <pre class="Python">if (<b>condition</b>):
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie()</b>
 else:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>
-</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon()</b></pre>
 
-<p class="Python">Don't forget the colon (:) after the else, it is indicating that a new block
-is beginning.</p>
+<p class="Python">N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau
+bloc débute.</p>
 
 <h3>Objectif de cet exercice</h3><a name="Objectifs"> Si la buggle est face à un mur (prédicat
 <tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer

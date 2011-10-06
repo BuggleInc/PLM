@@ -1,18 +1,17 @@
-<h2>Buggle Dance Revolution</h2>
-<h3>(BDR)</h3>
+<h2>Buggle Dance Revolution (BDR)</h2>
 
-Aujourd'hui est un grand jour : nous allons apprendre à nos buggles à jouer
+<p>Aujourd'hui est un grand jour : nous allons apprendre à nos buggles à jouer
 à Dance Revolution, ce jeu très prisé de certains étudiants où le joueur
 doit bouger sur un tapis prévu à cet effet en fonction des consignes
 présentées à l'écran en rythme avec la musique. Mais avant cela, nous avons
-quelques détails à étudier.
+quelques détails à étudier.</p>
 
 <h3 class="Java">Conditionnelles sans accolades</h3>
 <p class="Java">
 Il y a un détail que nous avons omis à propos de la syntaxe des
 conditionnelles : si une branche ne contient qu'une seule instruction, les
 accolades sont optionnelles. Ainsi, les deux extraits suivants sont
-équivalents:
+équivalents:</p>
 
  <pre class="Java">if (<b>condition</b>) {
     <b>quoiFaireSiLaConditionEstVraie();</b>
@@ -25,7 +24,7 @@ else
     <b>quoiFaireSinon();</b></pre>
 
 <p class="Java">Mais attention, ceci peut être dangereux si on enchaîne les <tt>if</tt>
-comme dans l'exemple suivant. 
+comme dans l'exemple suivant. </p>
 <pre class="Java">if (isOverBaggle())    
      if (x == 5)
           turnLeft();
@@ -37,7 +36,7 @@ forward();</pre>
 que x vaut 5, mais quand la buggle a trouvé un baggle, et que x vaut une
 autre valeur. Autrement dit, la buggle lit le code précédent comme suit
 (notez que le <tt>else</tt> est décalé vers la droite par rapport à
-précédemment) :
+précédemment) :</p>
 <pre class="Java">if (isOverBaggle())    
         if (x == 5)
             turnLeft();
@@ -51,7 +50,7 @@ aussi bien pu écrire le code suivant et obtenir le même résultat. Mais
 attention, si on veut qu'un humain puisse relire le code, l'indentation
 devient très importante voire indispensable. C'est par exemple le cas si
 votre code doit être relu par un professeur (pour qu'il le note ou pour lui
-poser une question), ou si vous comptez réutiliser votre code plus tard. 
+poser une question), ou si vous comptez réutiliser votre code plus tard.</p> 
 
 <pre class="Java">if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
 
@@ -62,7 +61,7 @@ ambiguïté.</p>
 
 <h3>Enchaînements de conditionnelles</h3>
 
-Il arrive que l'on veuille demander à la buggle quelque chose similaire à : 
+<p>Il arrive que l'on veuille demander à la buggle quelque chose similaire à :</p> 
 <pre>s'il pleut, prend un parapluie; 
 si non, s'il fait chaud, prend une bouteille d'eau; 
 si non, si nous sommes le 14 juillet, prend un drapeau français</pre>
@@ -70,38 +69,78 @@ si non, si nous sommes le 14 juillet, prend un drapeau français</pre>
 <p>Le piège étant que nous voudrions qu'au plus l'une de ces actions soient
 réalisées. C'est à dire, que s'il pleut un 14 juillet très chaud, on ne veut
 pas que la buggle sorte avec un parapluie, de l'eau et un drapeau, mais
-juste avec un parapluie. Le code suivant est donc faux.
+juste avec un parapluie. Le code suivant est donc faux.</p>
 
-<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">; }</if>
-if <if lang="Java">(</if>hot()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">; } </if>
-if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">; }</if></pre>
+<pre class="Java">if (ilPleut()) {
+  prendreParapluie();
+}
+if (ilFaitChaud()) {
+  prendreDeLEau();
+} 
+if (sommes14Juillet()) {
+  prendreDrapeau();
+}</pre>
+
+<pre class="Python">if ilPleut():
+&nbsp;&nbsp;&nbsp;&nbsp;prendreParapluie()
+if ilFaitChaud():
+&nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau()
+if sommes14Juillet():
+&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()
+</pre>
+
 
 <p>En effet, toutes les conditions sont évaluées les unes après les autres, et
 on risque donc d'aller au défilé un jour de pluie. À la place, il faut donc
-écrire quelque chose comme :
+écrire quelque chose comme :</p>
 
-<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">; } </if>else<if lang="Java"> {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;if <if lang="Java">(</if>hotDay()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">;</if>
-&nbsp;&nbsp;&nbsp;&nbsp;<if lang="Java">} </if>else<if lang="Java"> {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-&nbsp;&nbsp;&nbsp;&nbsp;} }</if></pre>
-
-<p>Such a cascade of conditionals are quite difficult to read, and it is better
-to omit the curly braces for the <tt>else</tt> statements. <if lang="Java">Some languages even</if><if lang="Python">Python</if> introduce a specific construct for these <tt><if lang="Java">else if</if><if lang="Python">elif</if></tt><if lang="Java"> (but Java doesn't)</if>.
-<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">;</if>
-<if lang="Java">} else </if><if lang="Python">el</if>if <if lang="Java">(</if>hotDay()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">;</if>
-<if lang="Java">} else </if><if lang="Python">el</if>if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">;</if>
+<pre class="Java">if (ilPleut()) {
+&nbsp;&nbsp;&nbsp;&nbsp;prendreParapluie();
+} else {
+&nbsp;&nbsp;&nbsp;&nbsp;if (ilFaitChaud()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau();
+&nbsp;&nbsp;&nbsp;&nbsp;} else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (sommes14Juillet()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;}
 }</pre>
 
+<pre class="Python">if ilPleut():
+&nbsp;&nbsp;&nbsp;&nbsp;prendreParapluie()
+else:
+&nbsp;&nbsp;&nbsp;&nbsp;if ilFaitChaud():
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau()
+&nbsp;&nbsp;&nbsp;&nbsp;else:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if sommes14Juillet():
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()
+</pre>
+
+
+<p class="Java">Une telle cascade de conditionnelles est un peu difficile à lire, et il est
+préférable d'omettre les accolades associées aux <tt>else</tt> comme
+suit. Il y a même certains langages qui introduisent un mot-clé spécial pour
+ces <tt>else if</tt> (mais pas Java).</p>
+<pre class="Java">if (ilPleut()) {
+  prendreParapluie();
+} else if (ilFaitChaud()) {
+  prendreDeLEau();
+} else if (sommes14Juillet()) {
+  prendreDrapeau();
+}</pre>
+
+<p class="Python">Une telle cascade de conditionnelles est un peu difficile à lire, et il est
+préférable d'omettre les indentations supplémentaires associées aux
+<tt>else</tt> comme suit. Le mot-clé <tt>elif</tt> du langage Python permet
+de
+faire ceci facilement.
+<pre class="Python">if ilPleut():
+&nbsp;&nbsp;&nbsp;&nbsp;prendreParapluie()
+elif ilFaitChaud():
+&nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau()
+elif sommes14Juillet():
+&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()
+}</pre>
 
 <h3>Les graffitis dans le monde des buggles</h3>
 
