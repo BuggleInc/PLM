@@ -1,14 +1,21 @@
 package jlm.core.model.lesson;
 
+import java.util.Date;
+
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
+
+import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 
 /** Class representing the result of pressing on the "run" button. Either a compilation error, or a percentage of passed/failed tests + a descriptive message */ 
 public class ExecutionProgress {
 	public String compilationError;
 	public int passedTests, totalTests;
 	public String details = "";
+	public Date date = new Date();
+	public ProgrammingLanguage language = Game.getProgrammingLanguage();
 
 	public static ExecutionProgress newCompilationError(
 			DiagnosticCollector<JavaFileObject> diagnostics) {

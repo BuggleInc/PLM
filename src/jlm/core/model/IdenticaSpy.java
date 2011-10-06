@@ -40,7 +40,7 @@ public class IdenticaSpy implements ProgressSpyListener {
 								Game.getProperty("jlm.identica.password")));
 				
 				List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-				formparams.add(new BasicNameValuePair("status", username+" solves "+exo.getName()+"!"));
+				formparams.add(new BasicNameValuePair("status", username+" solved "+exo.getName()+" in "+exo.lastResult.language+"!"));
 				UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
 				post.setEntity(entity);					
 				
