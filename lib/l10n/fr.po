@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-04 00:36+0300\n"
-"PO-Revision-Date: 2011-10-04 15:42+0200\n"
+"POT-Creation-Date: 2011-10-06 11:10+0300\n"
+"PO-Revision-Date: 2011-10-06 11:13+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -861,8 +861,8 @@ msgstr "boolean isCarryingBaggle();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "void pickupBaggle()"
-msgstr "void pickupBaggle()"
+msgid "void pickUpBaggle()"
+msgstr "void pickUpBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
@@ -1022,7 +1022,8 @@ msgid ""
 "set of varied exercises, allowing you to practice at your own pace."
 msgstr ""
 "Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme\n"
-"pédagogique destinée à simplifier l'apprentissage de la programmation offrant\n"
+"pédagogique destinée à simplifier l'apprentissage de la programmation "
+"offrant\n"
 "un grand nombre d'exercises pour vous permettre de progresser à votre rythme."
 
 #. type: Content of: <h1>
@@ -1036,8 +1037,10 @@ msgid ""
 "<a href=\"lesson://lessons.welcome\">Welcome lesson</a> This lesson is "
 "intended to lead the first steps in programming of absolute beginners."
 msgstr ""
-"<a href=\"lesson://lessons.welcome\">Premiers pas</a> Cette leçon est destinée à\n"
-"guider les premiers pas en programmation de débutants sans aucune connaissance préalable."
+"<a href=\"lesson://lessons.welcome\">Premiers pas</a> Cette leçon est "
+"destinée à\n"
+"guider les premiers pas en programmation de débutants sans aucune "
+"connaissance préalable."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:16
@@ -1045,7 +1048,7 @@ msgid ""
 "<a href=\"lesson://lessons.maze\">Escape the maze</a> Will you escape the "
 "mazes?"
 msgstr ""
-"<a href=\"lesson://lessons.maze\">Labyrinthes</a> Saurez vous vous échapere du\n"
+"<a href=\"lesson://lessons.maze\">Labyrinthes</a> Saurez vous vous échaper du\n"
 "labyrinthe?\n"
 
 #. type: Content of: <ul><li>
@@ -1054,7 +1057,8 @@ msgid ""
 "<a href=\"lesson://lessons.bat.string1\">String lesson</a> A bunch of "
 "exercises on strings."
 msgstr ""
-"<a href=\"lesson://lessons.bat.string1\">Chaînes</a> Quelques exercices sur les\n"
+"<a href=\"lesson://lessons.bat.string1\">Chaînes</a> Quelques exercices sur "
+"les\n"
 "chaînes de caractères."
 
 #. type: Content of: <ul><li>
@@ -1063,7 +1067,8 @@ msgid ""
 "<a href=\"lesson://lessons.sort\">Sorting lesson</a> This short lesson "
 "proposes to discover the classical sorting algorithms by practice."
 msgstr ""
-"<a href=\"lesson://lessons.sort\">Algorithmes de tri</a> Cette leçon vous propose\n"
+"<a href=\"lesson://lessons.sort\">Algorithmes de tri</a> Cette leçon vous "
+"propose\n"
 "de découvrir les algorithmes classiques de tri par la pratique."
 
 #. type: Content of: <ul><li>
@@ -1072,7 +1077,8 @@ msgid ""
 "<a href=\"lesson://lessons.recursion\">Recursion lesson</a> Build some "
 "classical geometric figures through recursion."
 msgstr ""
-"<a href=\"lesson://lessons.recursion\">Recursivité</a> Construisez des figures\n"
+"<a href=\"lesson://lessons.recursion\">Recursivité</a> Construisez des "
+"figures\n"
 "géométriques classiques par récursivité."
 
 #. type: Content of: <ul><li>
@@ -1082,7 +1088,8 @@ msgid ""
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
-"<a href=\"lesson://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous devez\n"
+"<a href=\"lesson://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous "
+"devez\n"
 "programmer graphiquement un petit robot pour lui faire éteindre des\n"
 "lumières. C'est un petit casse-tête pour programmeurs."
 
