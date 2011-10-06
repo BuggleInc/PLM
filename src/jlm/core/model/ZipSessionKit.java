@@ -165,7 +165,7 @@ public class ZipSessionKit implements ISessionKit {
 	public void loadLesson(File path, Lesson lesson) {
 		File saveFile = openSaveFile(path, lesson);
 
-		if (!saveFile.exists())
+		if (!saveFile.exists() || saveFile.length()==0)
 			return;
 
 		ZipFile zf = null;
