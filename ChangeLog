@@ -1,3 +1,22 @@
+not released yet:
+  * Fix the array exercises (there were bugged and not properly
+    integrated into po4a)
+  * various improvements to the french translation
+  * Remove the "clear session" menu entry
+  * Graphical consistency between menu choosing the human language,
+    and the one choosing the programming language
+20111006e:
+  * Allow to code in python, javascript or ruby
+  * Definitely kill the linearity of lessons (combobox removed)
+  * Load the lessons on need only (and save them separately from each
+    other)
+  * Cleanup the way identica and twitter get informed of student
+    progress
+  * Textual display of what's wrong when the world is not what's
+    expected
+  * implement the world equality for logo
+  * Allow to have lectures, ie non-interactive exercises
+  * Improved turmite track, with a specific view displaying the step
 20110909:
   * New exercise track on turmites
   * Enforce that the buggles cannot move to outer space with
