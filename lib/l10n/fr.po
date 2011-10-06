@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-10-06 23:58+0300\n"
-"PO-Revision-Date: 2011-10-06 23:59+0200\n"
+"PO-Revision-Date: 2011-10-07 00:05+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2738,10 +2738,8 @@ msgstr "Reculer du même nombre de cases que ce qu'on a avancé"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><ol><li>
 #: src/lessons/welcome/Variables.html:62
-#, fuzzy
-#| msgid "Pickup the baggle"
 msgid "Drop back the baggle"
-msgstr "Ramasser le baggel au sol"
+msgstr "Reposer le baggel au sol"
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
 #: src/lessons/welcome/Variables.html:65
@@ -8132,7 +8130,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/WallFollowerMaze.html:37
 msgid "I'm lost, please give me some extra indications"
-msgstr ""
+msgstr "Je suis perdu, je voudrais plus d'indications"
 
 #. type: Content of: <div><p>
 #: src/lessons/maze/WallFollowerMaze.html:38
@@ -8326,7 +8324,7 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/PledgeMaze.html:58
 msgid "Show an additional tip"
-msgstr ""
+msgstr "Montrer un indice supplémentaire"
 
 #. type: Content of: <div>
 #: src/lessons/maze/PledgeMaze.html:59
@@ -9511,7 +9509,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringBits.html:1
 msgid "StringBits"
-msgstr ""
+msgstr "Éclats de chaîne"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/bat/string1/StringBits.html:2
@@ -9519,6 +9517,9 @@ msgid ""
 "Given a string, return a new string made of every other char starting with "
 "the first, so \"Hello\" yields \"Hlo\"."
 msgstr ""
+"Étant donné une chaîne de caractères, retournez une nouvelle chaîne formée en\n"
+"prenant un caractère sur deux dans le paramètre, en commençant avec le premier\n"
+"caractère. Ainsi, \"Bonjour\" donne \"Bnor\"."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringMatch.html:1
