@@ -29,7 +29,8 @@ if (c.equals(Color.black)) {
 
 <p>Changing the ground color is not difficult, but a bit long: you have to 
 change the brush color of your buggle, set the brush down (to mark the current 
-cell), and set the brush back up to avoid further issues when the buggle will 
+cell -- with <code>brushDown()</code>), and set the brush back up (with 
+<code>brushUp()</code>) to avoid further issues when the buggle will 
 move. You are naturally free of organizing your code the way you want, but you may
 want to write a <code>void setGroundColor(Color c)</code> method to factorize 
 things a bit.</p>
