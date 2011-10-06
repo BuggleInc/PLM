@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-06 11:40+0300\n"
+"POT-Creation-Date: 2011-10-06 12:19+0300\n"
 "PO-Revision-Date: 2011-10-06 11:13+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1551,59 +1551,27 @@ msgstr ""
 "pas. Il faut écrire le code après avoir expérimenté interactivement."
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Basics.html:49
-#, no-wrap
-msgid "forward()"
-msgstr "forward()"
-
-#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
 #: src/lessons/welcome/Environment.html:46
-#: src/lessons/welcome/Environment.html:47
-#: src/lessons/welcome/Conditions.html:9
-#: src/lessons/welcome/Conditions.html:10
-#: src/lessons/welcome/Conditions.html:12
-#: src/lessons/welcome/Conditions.html:61
-#: src/lessons/welcome/Conditions.html:62
-#: src/lessons/welcome/Conditions.html:63
-#: src/lessons/welcome/Conditions.html:83
-#: src/lessons/welcome/Conditions.html:85
-#: src/lessons/welcome/Conditions.html:87
-#: src/lessons/welcome/Conditions.html:95
-#: src/lessons/welcome/Conditions.html:96
-#: src/lessons/welcome/Conditions.html:97
-#: src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:72
-#: src/lessons/welcome/BDR.html:73 src/lessons/welcome/BDR.html:75
-#: src/lessons/welcome/BDR.html:76 src/lessons/welcome/BDR.html:78
-#: src/lessons/welcome/BDR.html:79 src/lessons/welcome/BDR.html:86
-#: src/lessons/welcome/BDR.html:87 src/lessons/welcome/BDR.html:88
-#: src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:90
-#: src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92
-#: src/lessons/welcome/BDR.html:93 src/lessons/welcome/BDR.html:99
-#: src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102
-#: src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:104
-#: src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:106
-#: src/lessons/welcome/BDR.html:107
-msgid "Java"
-msgstr "Java"
+#: src/lessons/welcome/Environment.html:47 src/lessons/welcome/Basics.html:49
+#, no-wrap
+msgid "forward();"
+msgstr "forward();"
+
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Environment.html:48
+msgid "Do not forget the final"
+msgstr "N'oubliez pas de terminer par"
 
 #. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Environment.html:46
-#: src/lessons/welcome/Environment.html:47
-#: src/lessons/welcome/Conditions.html:96
-#: src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:90
+#: src/lessons/welcome/Environment.html:48 src/lessons/welcome/BDR.html:90
 #: src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:105
 #: src/lessons/welcome/BDR.html:107
 #, no-wrap
 msgid ";"
 msgstr ";"
 
-#. type: Content of: <p><p><p><if>
-#: src/lessons/welcome/Environment.html:47
-msgid "Do not forget the final"
-msgstr "N'oubliez pas de terminer par"
-
-#. type: Content of: <p><p><p><if>
-#: src/lessons/welcome/Environment.html:47
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Environment.html:48
 msgid ""
 "which tells the compiler that the instruction is over (yes, computers are so "
 "dumb that they cannot <i>guess</i> obvious stuff like this)."
@@ -1612,8 +1580,8 @@ msgstr ""
 "ordinateurs sont si stupides qu'il faut leur préciser des choses aussi "
 "simples)."
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Environment.html:51
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Environment.html:52
 msgid ""
 "Once done, clic on run, and proceed to next exercise with the right combo-"
 "box (or keep around to experiment further if you feel so)."
@@ -1768,8 +1736,8 @@ msgstr ""
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/Basics.html:49
 #, no-wrap
-msgid "forward();"
-msgstr "forward();"
+msgid "forward()"
+msgstr "forward()"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Basics.html:50
@@ -1843,7 +1811,7 @@ msgstr ""
 "world\". Elles seront introduites au fur et à mesure des besoins."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:76 src/lessons/welcome/Conditions.html:102
+#: src/lessons/welcome/Basics.html:76 src/lessons/welcome/Conditions.html:147
 #: src/lessons/welcome/LoopWhile.html:22
 #: src/lessons/welcome/LoopDoWhile.html:13
 #: src/lessons/welcome/BaggleSeeker.html:8
@@ -2042,115 +2010,46 @@ msgstr ""
 msgid "The Java syntax is the following:"
 msgstr "La syntaxe Java est la suivante :"
 
-#. type: Content of: <p><p><p><p><p><p><p><pre>
+#. type: Content of: <p>
 #: src/lessons/welcome/Conditions.html:9
-#: src/lessons/welcome/Conditions.html:95 src/lessons/welcome/BDR.html:72
-#: src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78
-#: src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:102
-#: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-#, no-wrap
-msgid "if "
-msgstr "if "
+#, fuzzy
+#| msgid "The Java syntax is the following:"
+msgid "The Python syntax is the following:"
+msgstr "La syntaxe Java est la suivante :"
 
-#. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9
-#: src/lessons/welcome/Conditions.html:95 src/lessons/welcome/BDR.html:72
-#: src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78
-#: src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:89
-#: src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102
-#: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-msgid "("
-msgstr ""
-
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:9
-#: src/lessons/welcome/Conditions.html:95
-#, fuzzy, no-wrap
-#| msgid "<b>Action</b>"
-msgid "<b>condition</b>"
-msgstr "<b>Action</b>"
-
-#. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9
-#: src/lessons/welcome/Conditions.html:95 src/lessons/welcome/BDR.html:72
-#: src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78
-#: src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:89
-#: src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102
-#: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-msgid ") {"
-msgstr ""
-
-#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9
-#: src/lessons/welcome/Conditions.html:13
-#: src/lessons/welcome/Conditions.html:18
-#: src/lessons/welcome/Conditions.html:62
-#: src/lessons/welcome/Conditions.html:63
-#: src/lessons/welcome/Conditions.html:83
-#: src/lessons/welcome/Conditions.html:84
-#: src/lessons/welcome/Conditions.html:85
-#: src/lessons/welcome/Conditions.html:87
-#: src/lessons/welcome/Conditions.html:95
-#: src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:72
-#: src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78
-#: src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88
-#: src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91
-#: src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:100
-#: src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104
-#: src/lessons/welcome/BDR.html:106
-msgid "Python"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9
-#: src/lessons/welcome/Conditions.html:95
-#: src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:72
-#: src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78
-#: src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88
-#: src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91
-#: src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102
-#: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-msgid ":"
-msgstr ""
-
-#. type: Content of: <p><pre>
+#. type: Content of: <pre>
 #: src/lessons/welcome/Conditions.html:10
+#, fuzzy, no-wrap
+#| msgid ""
+#| "while (<b>condition</b>) {\n"
+#| "&nbsp;&nbsp;<b>action()</b>;\n"
+#| "}"
+msgid ""
+"if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>\n"
+"}"
+msgstr ""
+"while (<b>condition</b>) {\n"
+"&nbsp;&nbsp;<b>action()</b>;\n"
+"}"
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/Conditions.html:13
 #, fuzzy, no-wrap
 #| msgid ""
 #| "if (<b>condition</b>) {\n"
 #| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>\n"
 #| "}"
-msgid "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>"
+msgid ""
+"if <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>"
 msgstr ""
 "if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>\n"
 "}"
 
-#. type: Content of: <p><p><p><p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:11
-#: src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:91
-#: src/lessons/welcome/BDR.html:108
-#, no-wrap
-msgid "}"
-msgstr ""
-
 #. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:12
-msgid "If the condition is true, any code"
-msgstr ""
-
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:12
-msgid "enclosed between the { and the corresponding }"
-msgstr ""
-
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:13
-msgid "in the block following the colon symbol"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:13
+#: src/lessons/welcome/Conditions.html:16
 #, fuzzy
 #| msgid ""
 #| "If the condition is true, any code enclosed between the { and the "
@@ -2158,7 +2057,27 @@ msgstr ""
 #| "it is possible to write more than one instruction between the curly "
 #| "brackets (even another test)."
 msgid ""
-"will be executed.  If not, it will be ignored. Of course, it is possible to "
+"If the condition is true, any code enclosed between the { and the "
+"corresponding } will be executed. If not, it will be ignored. Of course, it "
+"is possible to write more than one instruction between the curly brackets "
+"(even another test)."
+msgstr ""
+"Si la condition est vraie, tout le code compris entre le { et le } "
+"correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est "
+"possible d'écrire plusieurs instructions entre les deux accolades (voire un "
+"autre test)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/Conditions.html:20
+#, fuzzy
+#| msgid ""
+#| "If the condition is true, any code enclosed between the { and the "
+#| "corresponding } will be executed. If not, it will be ignored. Of course, "
+#| "it is possible to write more than one instruction between the curly "
+#| "brackets (even another test)."
+msgid ""
+"If the condition is true, any code in the block following the colon symbol "
+"will be executed. If not, it will be ignored. Of course, it is possible to "
 "write more than one instruction between the curly brackets (even another "
 "test)."
 msgstr ""
@@ -2167,8 +2086,8 @@ msgstr ""
 "possible d'écrire plusieurs instructions entre les deux accolades (voire un "
 "autre test)."
 
-#. type: Content of: <if><p>
-#: src/lessons/welcome/Conditions.html:20
+#. type: Content of: <p>
+#: src/lessons/welcome/Conditions.html:26
 msgid ""
 "Python uses indentation to define code blocks. The standard Python "
 "indentation is 4 spaces. Notice that code blocks do not need any "
@@ -2178,8 +2097,8 @@ msgid ""
 "<b>whatToDoAnyway()</b> will be executed anyway."
 msgstr ""
 
-#. type: Content of: <if><p><pre>
-#: src/lessons/welcome/Conditions.html:27
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/Conditions.html:33
 #, fuzzy, no-wrap
 #| msgid ""
 #| "if (<b>condition</b>) {\n"
@@ -2199,29 +2118,53 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
 "}"
 
-#. type: Content of: <if><p>
-#: src/lessons/welcome/Conditions.html:33
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:39
 msgid ""
 "Python functions have no explicit begin or end, and no curly braces to mark "
 "where the function code starts and stops. The only delimiter is a colon (:) "
-"and the indentation of the code itself.  Example 2.5. Indenting the "
-"buildConnectionString Function def buildConnectionString(params): "
-"\"\"\"Build a connection string from a dictionary of parameters.  Returns "
-"string.\"\"\" return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items"
-"()])  Code blocks are defined by their indentation. By \"code block\", I "
-"mean functions, if statements, for loops, while loops, and so forth. "
-"Indenting starts a block and unindenting ends it. There are no explicit "
-"braces, brackets, or keywords. This means that whitespace is significant, "
-"and must be consistent. In this example, the function code (including the "
-"doc string) is indented four spaces. It doesn't need to be four spaces, it "
-"just needs to be consistent. The first line that is not indented is outside "
-"the function.  It is important that the indentations of all the instructions "
-"of a block are consistent, and it is not possible to cut a block. The two "
-"following codes are incorrect and will raise errors."
+"and the indentation of the code itself."
 msgstr ""
 
-#. type: Content of: <if><p><pre>
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:44
+msgid "Example 2.5. Indenting the buildConnectionString Function"
+msgstr ""
+
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/Conditions.html:48
+#, no-wrap
+msgid ""
+"def buildConnectionString(params):\n"
+"    \"\"\"Build a connection string from a dictionary of parameters.\n"
+"\n"
+"    Returns string.\"\"\"\n"
+"    return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items()])\n"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:55
+msgid ""
+"Code blocks are defined by their indentation. By \"code block\", I mean "
+"functions, if statements, for loops, while loops, and so forth. Indenting "
+"starts a block and unindenting ends it. There are no explicit braces, "
+"brackets, or keywords. This means that whitespace is significant, and must "
+"be consistent. In this example, the function code (including the doc string) "
+"is indented four spaces.  It doesn't need to be four spaces, it just needs "
+"to be consistent. The first line that is not indented is outside the "
+"function."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:64
+msgid ""
+"It is important that the indentations of all the instructions of a block are "
+"consistent, and it is not possible to cut a block. The two following codes "
+"are incorrect and will raise errors."
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/Conditions.html:68
 #, fuzzy, no-wrap
 #| msgid ""
 #| "if (<b>condition</b>) {\n"
@@ -2241,8 +2184,8 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
 "}"
 
-#. type: Content of: <if><p><pre>
-#: src/lessons/welcome/Conditions.html:53
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/Conditions.html:73
 #, fuzzy, no-wrap
 #| msgid ""
 #| "if (<b>condition</b>) {\n"
@@ -2262,58 +2205,35 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
 "}"
 
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:61
-msgid "A condition can be a variable of type <tt>boolean</tt>. The code"
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:79
+msgid ""
+"A condition can be a variable of type <tt>boolean</tt>. The code between "
+"curly braces will get executed if the variable is <tt>true</tt> and it will "
+"be ignored if it is <tt>false</tt>."
 msgstr ""
+"Une condition peut être une variable de type <tt>boolean</tt>. Le code entre "
+"accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et "
+"il sera ignoré si elle vaut <tt>false</tt> (faux)."
 
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:61
-msgid "between curly braces"
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:83
+#, fuzzy
+#| msgid ""
+#| "A condition can be a variable of type <tt>boolean</tt>. The code between "
+#| "curly braces will get executed if the variable is <tt>true</tt> and it "
+#| "will be ignored if it is <tt>false</tt>."
+msgid ""
+"A condition can be a variable of type <tt>boolean</tt>. The code in the "
+"inner bloc will get executed if the variable is <tt>True</tt> and it will be "
+"ignored if it is <tt>False</tt>."
 msgstr ""
+"Une condition peut être une variable de type <tt>boolean</tt>. Le code entre "
+"accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et "
+"il sera ignoré si elle vaut <tt>false</tt> (faux)."
 
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:62
-msgid "in the inner bloc"
-msgstr ""
-
-#. type: Content of: <p><tt>
-#: src/lessons/welcome/Conditions.html:62
-msgid "will get executed if the variable is <tt>"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:62
-msgid "true"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:62
-msgid "True"
-msgstr ""
-
-#. type: Content of: <p><tt>
-#: src/lessons/welcome/Conditions.html:62
-msgid "</tt> and it will be ignored if it is <tt>"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:63
-msgid "false"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:63
-msgid "False"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:63
-msgid "</tt>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:65
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:88
 msgid ""
 "The condition can also be an arithmetic test, such as <tt>x</tt> <b>==</b> "
 "<tt>5</tt>, which checks whether the current value of <tt>x</tt> is 5, or "
@@ -2327,13 +2247,19 @@ msgstr ""
 "</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal à), <b>&gt;=</b> "
 "(supérieur ou égal à)."
 
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:71
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:94
+#, fuzzy
+#| msgid ""
+#| "Beware of the classical trap, which consists in testing the equality of a "
+#| "variable using = instead of ==. Hopefully, the Java compiler detects this "
+#| "problem most of the time, but not always. If the variable is of type "
+#| "boolean, it can get trapped, so you have to be careful..."
 msgid ""
 "Beware of the classical trap, which consists in testing the equality of a "
-"variable using = instead of ==. Hopefully, the Java compiler detects this "
-"problem most of the time, but not always. If the variable is of type "
-"boolean, it can get trapped, so you have to be careful..."
+"variable using = instead of ==. Hopefully, the compiler detects this problem "
+"most of the time, but not always. If the variable is of type boolean, it can "
+"get trapped, so you have to be careful..."
 msgstr ""
 "Attention au piège classique, qui consiste à tester l'égalité d'une variable "
 "avec = au lieu de ==. Heureusement, le compilateur Java vous indique le plus "
@@ -2341,8 +2267,8 @@ msgstr ""
 "booléen, il peut se faire prendre au piège, et il convient donc d'être "
 "attentif..."
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/Conditions.html:76
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Conditions.html:99
 msgid ""
 "The condition can also be a call to some perticular methods returning a "
 "boolean. For example, the <tt>isFacingWall()</tt> method of the buggle "
@@ -2353,8 +2279,8 @@ msgstr ""
 "<tt>isFacingWall()</tt> de la buggle renvoie vrai si la buggle est face à un "
 "mur, et faux sinon."
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Conditions.html:80
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Conditions.html:103
 msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
 "boolean operations."
@@ -2362,100 +2288,47 @@ msgstr ""
 "Enfin, il est possible de construire une condition composée de plusieurs "
 "sous-conditions reliées par des opérations booléennes."
 
-#. type: Content of: <p><p><p><ul><li><tt>
-#: src/lessons/welcome/Conditions.html:83
-#: src/lessons/welcome/Conditions.html:85
-msgid "<tt>cond1"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:83
-msgid "&&"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:83
-#: src/lessons/lightbot/Board01TwoSteps.html:8
-#: src/lessons/lightbot/Board02Turn.html:3
-#: src/lessons/lightbot/Board06Func.html:3
-msgid "and"
-msgstr "et"
-
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:83
-#, fuzzy
-#| msgid ""
-#| "<tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</"
-#| "tt> are both true."
-msgid ""
-"cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both "
-"true"
-msgstr ""
-"<tt>cond1 && cond2</tt> est vraie quand <tt>cond1</tt> <b>et</b> <tt>cond2</"
-"tt> sont toutes deux vraies."
-
-#. type: Content of: <p><p><p><ul><li><if>
-#: src/lessons/welcome/Conditions.html:84
-#, fuzzy
-#| msgid "<tt>!cond</tt> is true if <tt>cond</tt> is false."
-msgid ", (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated)"
-msgstr "<tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
-
-#. type: Content of: <p><</p><p>
-#: src/lessons/welcome/Conditions.html:84 src/lessons/welcome/BDR.html:101
-#: src/lessons/lightbot/Board01TwoSteps.html:8
-msgid "."
-msgstr "."
-
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:85
-msgid "||"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Snake.html:40
-msgid "or"
-msgstr "ou bien"
-
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:85
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:106
 #, fuzzy
 #| msgid ""
 #| "<tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</"
 #| "tt> are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even "
 #| "evaluated)."
 msgid ""
-"cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> are true (if "
-"<tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
+"<tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</"
+"tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even "
+"evaluated)."
 msgstr ""
 "<tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
 "est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
 "évaluée)."
 
-#. type: Content of: <p><p><p><ul><li><tt>
-#: src/lessons/welcome/Conditions.html:87
-msgid "<tt>"
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:109
+#, fuzzy
+#| msgid ""
+#| "<tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</"
+#| "tt> are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even "
+#| "evaluated)."
+msgid ""
+"<tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> "
+"are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
 msgstr ""
+"<tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
+"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
+"évaluée)."
 
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:87
-msgid "!"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:87
-msgid "not"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:87
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:111
 #, fuzzy
 #| msgid "<tt>!cond</tt> is true if <tt>cond</tt> is false."
-msgid "cond</tt> is true if <tt>cond</tt> is false."
+msgid "<tt>!cond</tt> is true if <tt>cond</tt> is false."
 msgstr "<tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
 
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:88
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:112
+#: src/lessons/welcome/Conditions.html:125
 msgid ""
 "It is possible to force the order of evaluation by adding parenthesis. In "
 "ambigous cases, do not hesitate to add more parenthesis to remove any "
@@ -2465,62 +2338,109 @@ msgstr ""
 "doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever "
 "les ambiguïtés sur l'ordre d'évaluation."
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/Conditions.html:93
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:118
+#, fuzzy
+#| msgid ""
+#| "<tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</"
+#| "tt> are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even "
+#| "evaluated)."
 msgid ""
-"At least, it is possible to specify what to do when the condition is false "
+"<tt>cond1 and cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</"
+"tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even "
+"evaluated)."
+msgstr ""
+"<tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
+"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
+"évaluée)."
+
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:121
+#, fuzzy
+#| msgid ""
+#| "<tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</"
+#| "tt> are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even "
+#| "evaluated)."
+msgid ""
+"<tt>cond1 or cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> "
+"are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
+msgstr ""
+"<tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
+"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
+"évaluée)."
+
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:124
+#, fuzzy
+#| msgid "<tt>!cond</tt> is true if <tt>cond</tt> is false."
+msgid "<tt>not cond</tt> is true if <tt>cond</tt> is false."
+msgstr "<tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/Conditions.html:130
+#, fuzzy
+#| msgid ""
+#| "At least, it is possible to specify what to do when the condition is "
+#| "false using the following syntax:"
+msgid ""
+"Finally, it is possible to specify what to do when the condition is false "
 "using the following syntax:"
 msgstr ""
 "Pour finir, il est possible de spécifier ce qu'il faut faire quand la "
 "condition est fausse, en utilisant la syntaxe suivante :"
 
-#. type: Content of: <p><p><p><p><pre><b>
-#: src/lessons/welcome/Conditions.html:96
-msgid "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:96
-#, no-wrap
-msgid "</b>\n"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:88
-#: src/lessons/welcome/BDR.html:91
-#, no-wrap
-msgid "else"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:88
-#: src/lessons/welcome/BDR.html:91
-msgid "{"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><pre><b>
-#: src/lessons/welcome/Conditions.html:98
-#, fuzzy
+#. type: Content of: <p><p><p><p><p><pre>
+#: src/lessons/welcome/Conditions.html:132
+#, fuzzy, no-wrap
 #| msgid ""
 #| "if (<b>condition</b>) {\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
+#| "} else {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
 #| "}"
-msgid "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()"
+msgid ""
+"if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
+"} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
+"}"
 msgstr ""
 "if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>\n"
+"} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
 "}"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:98
-#, no-wrap
+#. type: Content of: <p><p><p><p><p><pre>
+#: src/lessons/welcome/Conditions.html:138
+#, fuzzy, no-wrap
+#| msgid ""
+#| "if (<b>condition</b>) {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
+#| "} else {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
+#| "}"
 msgid ""
-"</b>\n"
+"if (<b>condition</b>):\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>\n"
+"else:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>\n"
+msgstr ""
+"if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>\n"
+"} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
 "}"
+
+#. type: Content of: <p><p><p><p><p><p>
+#: src/lessons/welcome/Conditions.html:144
+msgid ""
+"Don't forget the colon (:) after the else, it is indicating that a new block "
+"is beginning."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><a>
-#: src/lessons/welcome/Conditions.html:102
+#. type: Content of: <p><p><p><p><p><a>
+#: src/lessons/welcome/Conditions.html:147
 msgid ""
 "<a name=\"Objectives\">If the buggle is facing a wall (predicate "
 "<tt>isFacingWall()</tt>), you must move one step back. If not, you must move "
@@ -2530,8 +2450,8 @@ msgstr ""
 "<tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer "
 "d'un pas."
 
-#. type: Content of: <p><p><p><p><a><p>
-#: src/lessons/welcome/Conditions.html:106
+#. type: Content of: <p><p><p><p><p><a><p>
+#: src/lessons/welcome/Conditions.html:151
 msgid ""
 "This exercise is a bit different: your code has to work for several buggles, "
 "each of them being in a specific initial condition. The same code will be "
@@ -2542,7 +2462,7 @@ msgstr ""
 "différente. Le même code sera utilisé pour chacune d'entre elles."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/Conditions.html:110
+#: src/lessons/welcome/Conditions.html:155
 #: src/lessons/welcome/LoopWhile.html:28
 msgid "When your program works, move forward to the next exercise."
 msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
@@ -4214,10 +4134,72 @@ msgstr ""
 "juste avec un parapluie. Le code suivant est donc faux."
 
 #. type: Content of: <p><p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75
+#: src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86
+#: src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104
+#: src/lessons/welcome/BDR.html:106
+#, no-wrap
+msgid "if "
+msgstr "if "
+
+#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:73
+#: src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:76
+#: src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:79
+#: src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:87
+#: src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89
+#: src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:91
+#: src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:93
+#: src/lessons/welcome/BDR.html:99 src/lessons/welcome/BDR.html:100
+#: src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:103
+#: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:105
+#: src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:107
+msgid "Java"
+msgstr "Java"
+
+#. type: Content of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75
+#: src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86
+#: src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:92
+#: src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104
+#: src/lessons/welcome/BDR.html:106
+msgid "("
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre>
 #: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:86
 #: src/lessons/welcome/BDR.html:102
 #, no-wrap
 msgid "rainy()"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75
+#: src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86
+#: src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:92
+#: src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104
+#: src/lessons/welcome/BDR.html:106
+msgid ") {"
+msgstr ""
+
+#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75
+#: src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86
+#: src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89
+#: src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92
+#: src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102
+#: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
+msgid "Python"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75
+#: src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86
+#: src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89
+#: src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92
+#: src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104
+#: src/lessons/welcome/BDR.html:106
+msgid ":"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre>
@@ -4270,6 +4252,17 @@ msgstr ""
 "écrire quelque chose comme :"
 
 #. type: Content of: <p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:91
+#, no-wrap
+msgid "else"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:91
+msgid "{"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><pre>
 #: src/lessons/welcome/BDR.html:89
 #, no-wrap
 msgid "&nbsp;&nbsp;&nbsp;&nbsp;if "
@@ -4292,6 +4285,12 @@ msgstr "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp
 #: src/lessons/welcome/BDR.html:91
 #, no-wrap
 msgid "&nbsp;&nbsp;&nbsp;&nbsp;"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:108
+#, no-wrap
+msgid "}"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><pre>
@@ -4365,6 +4364,12 @@ msgstr ""
 #: src/lessons/welcome/BDR.html:100
 msgid "(but Java doesn't)"
 msgstr ""
+
+#. type: Content of: <p><</p><p>
+#: src/lessons/welcome/BDR.html:101
+#: src/lessons/lightbot/Board01TwoSteps.html:8
+msgid "."
+msgstr "."
 
 #. type: Content of: <p><p><p><p><p><p><p><pre><if>
 #: src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
@@ -5275,6 +5280,11 @@ msgstr ""
 #, no-wrap
 msgid "while (testingFunction() == false)"
 msgstr "while (fonctionTest() == false)"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/Snake.html:40
+msgid "or"
+msgstr "ou bien"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/Snake.html:41
@@ -8694,6 +8704,13 @@ msgstr ""
 "résourdre simplement en avancant et en allumant la lampe, grâce aux ordres "
 "suivants: "
 
+#. type: Content of: <p>
+#: src/lessons/lightbot/Board01TwoSteps.html:8
+#: src/lessons/lightbot/Board02Turn.html:3
+#: src/lessons/lightbot/Board06Func.html:3
+msgid "and"
+msgstr "et"
+
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board02Turn.html:1
 msgid "Turn around"
@@ -9744,6 +9761,38 @@ msgid ""
 msgstr ""
 
 #, fuzzy
+#~| msgid "<b>Action</b>"
+#~ msgid "<b>condition</b>"
+#~ msgstr "<b>Action</b>"
+
+#, fuzzy
+#~| msgid ""
+#~| "<tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b> "
+#~| "<tt>cond2</tt> are both true."
+#~ msgid ""
+#~ "cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both "
+#~ "true"
+#~ msgstr ""
+#~ "<tt>cond1 && cond2</tt> est vraie quand <tt>cond1</tt> <b>et</b> "
+#~ "<tt>cond2</tt> sont toutes deux vraies."
+
+#, fuzzy
+#~| msgid "<tt>!cond</tt> is true if <tt>cond</tt> is false."
+#~ msgid ", (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated)"
+#~ msgstr "<tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
+
+#, fuzzy
+#~| msgid ""
+#~| "if (<b>condition</b>) {\n"
+#~| "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>\n"
+#~| "}"
+#~ msgid "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()"
+#~ msgstr ""
+#~ "if (<b>condition</b>) {\n"
+#~ "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>\n"
+#~ "}"
+
+#, fuzzy
 #~| msgid "One letter before the end of the alphabet"
 #~ msgid ", it ignores the end of the line."
 #~ msgstr "à une lettre de la fin de l'alphabet"
@@ -9781,15 +9830,6 @@ msgstr ""
 #~| msgid "void brushUp();"
 #~ msgid "brushUp()"
 #~ msgstr "void brushUp();"
-
-#~ msgid ""
-#~ "A condition can be a variable of type <tt>boolean</tt>. The code between "
-#~ "curly braces will get executed if the variable is <tt>true</tt> and it "
-#~ "will be ignored if it is <tt>false</tt>."
-#~ msgstr ""
-#~ "Une condition peut être une variable de type <tt>boolean</tt>. Le code "
-#~ "entre accolade sera exécuté si la variable vaut la valeur <tt>true</tt> "
-#~ "(vrai), et il sera ignoré si elle vaut <tt>false</tt> (faux)."
 
 #~ msgid ""
 #~ "if (rainy()) {\n"

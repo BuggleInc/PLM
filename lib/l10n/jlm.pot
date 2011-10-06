@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-06 11:40+0300\n"
+"POT-Creation-Date: 2011-10-06 12:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1234,36 +1234,31 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Basics.html:49
+#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Environment.html:47 src/lessons/welcome/Basics.html:49
 #, no-wrap
-msgid "forward()"
+msgid "forward();"
 msgstr ""
 
-#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Environment.html:47 src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:10 src/lessons/welcome/Conditions.html:12 src/lessons/welcome/Conditions.html:61 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:63 src/lessons/welcome/Conditions.html:83 src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Conditions.html:87 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:96 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:73 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:76 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:79 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:87 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:93 src/lessons/welcome/BDR.html:99 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:107
-msgid "Java"
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Environment.html:48
+msgid "Do not forget the final"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Environment.html:46 src/lessons/welcome/Environment.html:47 src/lessons/welcome/Conditions.html:96 src/lessons/welcome/Conditions.html:98 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:107
+#: src/lessons/welcome/Environment.html:48 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:107
 #, no-wrap
 msgid ";"
 msgstr ""
 
-#. type: Content of: <p><p><p><if>
-#: src/lessons/welcome/Environment.html:47
-msgid "Do not forget the final"
-msgstr ""
-
-#. type: Content of: <p><p><p><if>
-#: src/lessons/welcome/Environment.html:47
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Environment.html:48
 msgid ""
 "which tells the compiler that the instruction is over (yes, computers are so "
 "dumb that they cannot <i>guess</i> obvious stuff like this)."
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Environment.html:51
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Environment.html:52
 msgid ""
 "Once done, clic on run, and proceed to next exercise with the right "
 "combo-box (or keep around to experiment further if you feel so)."
@@ -1369,7 +1364,7 @@ msgstr ""
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/Basics.html:49
 #, no-wrap
-msgid "forward();"
+msgid "forward()"
 msgstr ""
 
 #. type: Content of: <p><p>
@@ -1428,7 +1423,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:76 src/lessons/welcome/Conditions.html:102 src/lessons/welcome/LoopWhile.html:22 src/lessons/welcome/LoopDoWhile.html:13 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:49 src/lessons/welcome/LoopFor.html:50 src/lessons/welcome/Methods.html:44 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:128 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35
+#: src/lessons/welcome/Basics.html:76 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:22 src/lessons/welcome/LoopDoWhile.html:13 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:49 src/lessons/welcome/LoopFor.html:50 src/lessons/welcome/Methods.html:44 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:128 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35
 msgid "Exercise goal"
 msgstr ""
 
@@ -1557,75 +1552,48 @@ msgstr ""
 msgid "The Java syntax is the following:"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-#, no-wrap
-msgid "if "
+#. type: Content of: <p>
+#: src/lessons/welcome/Conditions.html:9
+msgid "The Python syntax is the following:"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-msgid "("
-msgstr ""
-
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:95
-#, no-wrap
-msgid "<b>condition</b>"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-msgid ") {"
-msgstr ""
-
-#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:13 src/lessons/welcome/Conditions.html:18 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:62 src/lessons/welcome/Conditions.html:63 src/lessons/welcome/Conditions.html:83 src/lessons/welcome/Conditions.html:84 src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Conditions.html:87 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106
-msgid "Python"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:9 src/lessons/welcome/Conditions.html:95 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
-msgid ":"
-msgstr ""
-
-#. type: Content of: <p><pre>
+#. type: Content of: <pre>
 #: src/lessons/welcome/Conditions.html:10
 #, no-wrap
-msgid "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:11 src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:108
-#, no-wrap
-msgid "}"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:12
-msgid "If the condition is true, any code"
-msgstr ""
-
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:12
-msgid "enclosed between the { and the corresponding }"
-msgstr ""
-
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:13
-msgid "in the block following the colon symbol"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:13
 msgid ""
-"will be executed.  If not, it will be ignored. Of course, it is possible to "
+"if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>\n"
+"}"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/Conditions.html:13
+#, no-wrap
+msgid ""
+"if <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/Conditions.html:16
+msgid ""
+"If the condition is true, any code enclosed between the { and the "
+"corresponding } will be executed. If not, it will be ignored. Of course, it "
+"is possible to write more than one instruction between the curly brackets "
+"(even another test)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/Conditions.html:20
+msgid ""
+"If the condition is true, any code in the block following the colon symbol "
+"will be executed. If not, it will be ignored. Of course, it is possible to "
 "write more than one instruction between the curly brackets (even another "
 "test)."
 msgstr ""
 
-#. type: Content of: <if><p>
-#: src/lessons/welcome/Conditions.html:20
+#. type: Content of: <p>
+#: src/lessons/welcome/Conditions.html:26
 msgid ""
 "Python uses indentation to define code blocks. The standard Python "
 "indentation is 4 spaces. Notice that code blocks do not need any "
@@ -1635,8 +1603,8 @@ msgid ""
 "<b>whatToDoAnyway()</b> will be executed anyway."
 msgstr ""
 
-#. type: Content of: <if><p><pre>
-#: src/lessons/welcome/Conditions.html:27
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/Conditions.html:33
 #, no-wrap
 msgid ""
 "if <b>condition</b>:\n"
@@ -1645,29 +1613,53 @@ msgid ""
 "<b>whatToDoAnyway()</b>\n"
 msgstr ""
 
-#. type: Content of: <if><p>
-#: src/lessons/welcome/Conditions.html:33
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:39
 msgid ""
 "Python functions have no explicit begin or end, and no curly braces to mark "
 "where the function code starts and stops. The only delimiter is a colon (:) "
-"and the indentation of the code itself.  Example 2.5. Indenting the "
-"buildConnectionString Function def buildConnectionString(params): "
-"\"\"\"Build a connection string from a dictionary of parameters.  Returns "
-"string.\"\"\" return \";\".join([\"%s=%s\" % (k, v) for k, v in "
-"params.items()])  Code blocks are defined by their indentation. By \"code "
-"block\", I mean functions, if statements, for loops, while loops, and so "
-"forth. Indenting starts a block and unindenting ends it. There are no "
-"explicit braces, brackets, or keywords. This means that whitespace is "
-"significant, and must be consistent. In this example, the function code "
-"(including the doc string) is indented four spaces. It doesn't need to be "
-"four spaces, it just needs to be consistent. The first line that is not "
-"indented is outside the function.  It is important that the indentations of "
-"all the instructions of a block are consistent, and it is not possible to "
-"cut a block. The two following codes are incorrect and will raise errors."
+"and the indentation of the code itself."
 msgstr ""
 
-#. type: Content of: <if><p><pre>
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:44
+msgid "Example 2.5. Indenting the buildConnectionString Function"
+msgstr ""
+
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/Conditions.html:48
+#, no-wrap
+msgid ""
+"def buildConnectionString(params):\n"
+"    \"\"\"Build a connection string from a dictionary of parameters.\n"
+"\n"
+"    Returns string.\"\"\"\n"
+"    return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items()])\n"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:55
+msgid ""
+"Code blocks are defined by their indentation. By \"code block\", I mean "
+"functions, if statements, for loops, while loops, and so forth. Indenting "
+"starts a block and unindenting ends it. There are no explicit braces, "
+"brackets, or keywords. This means that whitespace is significant, and must "
+"be consistent. In this example, the function code (including the doc string) "
+"is indented four spaces.  It doesn't need to be four spaces, it just needs "
+"to be consistent. The first line that is not indented is outside the "
+"function."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:64
+msgid ""
+"It is important that the indentations of all the instructions of a block are "
+"consistent, and it is not possible to cut a block. The two following codes "
+"are incorrect and will raise errors."
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/Conditions.html:68
 #, no-wrap
 msgid ""
 "if <b>condition</b>:\n"
@@ -1676,8 +1668,8 @@ msgid ""
 "<b>whatToDoAnyway()</b>\n"
 msgstr ""
 
-#. type: Content of: <if><p><pre>
-#: src/lessons/welcome/Conditions.html:53
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/Conditions.html:73
 #, no-wrap
 msgid ""
 "if <b>condition</b>:\n"
@@ -1686,58 +1678,24 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>\n"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:61
-msgid "A condition can be a variable of type <tt>boolean</tt>. The code"
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:79
+msgid ""
+"A condition can be a variable of type <tt>boolean</tt>. The code between "
+"curly braces will get executed if the variable is <tt>true</tt> and it will "
+"be ignored if it is <tt>false</tt>."
 msgstr ""
 
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:61
-msgid "between curly braces"
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:83
+msgid ""
+"A condition can be a variable of type <tt>boolean</tt>. The code in the "
+"inner bloc will get executed if the variable is <tt>True</tt> and it will be "
+"ignored if it is <tt>False</tt>."
 msgstr ""
 
-#. type: Content of: <p><if>
-#: src/lessons/welcome/Conditions.html:62
-msgid "in the inner bloc"
-msgstr ""
-
-#. type: Content of: <p><tt>
-#: src/lessons/welcome/Conditions.html:62
-msgid "will get executed if the variable is <tt>"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:62
-msgid "true"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:62
-msgid "True"
-msgstr ""
-
-#. type: Content of: <p><tt>
-#: src/lessons/welcome/Conditions.html:62
-msgid "</tt> and it will be ignored if it is <tt>"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:63
-msgid "false"
-msgstr ""
-
-#. type: Content of: <p><tt><if>
-#: src/lessons/welcome/Conditions.html:63
-msgid "False"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:63
-msgid "</tt>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:65
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:88
 msgid ""
 "The condition can also be an arithmetic test, such as <tt>x</tt> <b>==</b> "
 "<tt>5</tt>, which checks whether the current value of <tt>x</tt> is 5, or "
@@ -1746,159 +1704,123 @@ msgid ""
 "(larger or equal to)."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:71
+#. type: Content of: <p><p>
+#: src/lessons/welcome/Conditions.html:94
 msgid ""
 "Beware of the classical trap, which consists in testing the equality of a "
-"variable using = instead of ==. Hopefully, the Java compiler detects this "
-"problem most of the time, but not always. If the variable is of type "
-"boolean, it can get trapped, so you have to be careful..."
+"variable using = instead of ==. Hopefully, the compiler detects this problem "
+"most of the time, but not always. If the variable is of type boolean, it can "
+"get trapped, so you have to be careful..."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/Conditions.html:76
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Conditions.html:99
 msgid ""
 "The condition can also be a call to some perticular methods returning a "
 "boolean. For example, the <tt>isFacingWall()</tt> method of the buggle "
 "returns true if the buggle is facing a wall, and false in the other case."
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/Conditions.html:80
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/Conditions.html:103
 msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
 "boolean operations."
 msgstr ""
 
-#. type: Content of: <p><p><p><ul><li><tt>
-#: src/lessons/welcome/Conditions.html:83 src/lessons/welcome/Conditions.html:85
-msgid "<tt>cond1"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:83
-msgid "&&"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:83 src/lessons/lightbot/Board01TwoSteps.html:8 src/lessons/lightbot/Board02Turn.html:3 src/lessons/lightbot/Board06Func.html:3
-msgid "and"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:83
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:106
 msgid ""
-"cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both "
-"true"
+"<tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b> "
+"<tt>cond2</tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is "
+"not even evaluated)."
 msgstr ""
 
-#. type: Content of: <p><p><p><ul><li><if>
-#: src/lessons/welcome/Conditions.html:84
-msgid ", (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated)"
-msgstr ""
-
-#. type: Content of: <p><</p><p>
-#: src/lessons/welcome/Conditions.html:84 src/lessons/welcome/BDR.html:101 src/lessons/lightbot/Board01TwoSteps.html:8
-msgid "."
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:85
-msgid "||"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/Conditions.html:85 src/lessons/welcome/Snake.html:40
-msgid "or"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:85
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:109
 msgid ""
-"cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> are true (if "
-"<tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
+"<tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> "
+"are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
 msgstr ""
 
-#. type: Content of: <p><p><p><ul><li><tt>
-#: src/lessons/welcome/Conditions.html:87
-msgid "<tt>"
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:111
+msgid "<tt>!cond</tt> is true if <tt>cond</tt> is false."
 msgstr ""
 
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:87
-msgid "!"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li><tt><if>
-#: src/lessons/welcome/Conditions.html:87
-msgid "not"
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:87
-msgid "cond</tt> is true if <tt>cond</tt> is false."
-msgstr ""
-
-#. type: Content of: <p><p><p><ul><li>
-#: src/lessons/welcome/Conditions.html:88
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:112 src/lessons/welcome/Conditions.html:125
 msgid ""
 "It is possible to force the order of evaluation by adding parenthesis. In "
 "ambigous cases, do not hesitate to add more parenthesis to remove any "
 "ambiguities on evaluation order."
 msgstr ""
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/Conditions.html:93
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:118
 msgid ""
-"At least, it is possible to specify what to do when the condition is false "
+"<tt>cond1 and cond2</tt> is true when <tt>cond1</tt> <b>and</b> "
+"<tt>cond2</tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is "
+"not even evaluated)."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:121
+msgid ""
+"<tt>cond1 or cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> "
+"are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><ul><li>
+#: src/lessons/welcome/Conditions.html:124
+msgid "<tt>not cond</tt> is true if <tt>cond</tt> is false."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/Conditions.html:130
+msgid ""
+"Finally, it is possible to specify what to do when the condition is false "
 "using the following syntax:"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><pre><b>
-#: src/lessons/welcome/Conditions.html:96
-msgid "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:96
-#, no-wrap
-msgid "</b>\n"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:91
-#, no-wrap
-msgid "else"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p><pre><if>
-#: src/lessons/welcome/Conditions.html:97 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:91
-msgid "{"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><pre><b>
-#: src/lessons/welcome/Conditions.html:98
-msgid "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()"
-msgstr ""
-
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/Conditions.html:98
+#. type: Content of: <p><p><p><p><p><pre>
+#: src/lessons/welcome/Conditions.html:132
 #, no-wrap
 msgid ""
-"</b>\n"
+"if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
+"} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
 "}"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><a>
-#: src/lessons/welcome/Conditions.html:102
+#. type: Content of: <p><p><p><p><p><pre>
+#: src/lessons/welcome/Conditions.html:138
+#, no-wrap
+msgid ""
+"if (<b>condition</b>):\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>\n"
+"else:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>\n"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p>
+#: src/lessons/welcome/Conditions.html:144
+msgid ""
+"Don't forget the colon (:) after the else, it is indicating that a new block "
+"is beginning."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><a>
+#: src/lessons/welcome/Conditions.html:147
 msgid ""
 "<a name=\"Objectives\">If the buggle is facing a wall (predicate "
 "<tt>isFacingWall()</tt>), you must move one step back. If not, you must move "
 "one step forward."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><a><p>
-#: src/lessons/welcome/Conditions.html:106
+#. type: Content of: <p><p><p><p><p><a><p>
+#: src/lessons/welcome/Conditions.html:151
 msgid ""
 "This exercise is a bit different: your code has to work for several buggles, "
 "each of them being in a specific initial condition. The same code will be "
@@ -1906,7 +1828,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/Conditions.html:110 src/lessons/welcome/LoopWhile.html:28
+#: src/lessons/welcome/Conditions.html:155 src/lessons/welcome/LoopWhile.html:28
 msgid "When your program works, move forward to the next exercise."
 msgstr ""
 
@@ -3097,9 +3019,40 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
+#, no-wrap
+msgid "if "
+msgstr ""
+
+#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:73 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:76 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:79 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:87 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:90 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:93 src/lessons/welcome/BDR.html:99 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:103 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:105 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:107
+msgid "Java"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
+msgid "("
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre>
 #: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:102
 #, no-wrap
 msgid "rainy()"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
+msgid ") {"
+msgstr ""
+
+#. type: Attribute 'lang' of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:100 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106 src/lessons/welcome/BDR.html:106
+msgid "Python"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:72 src/lessons/welcome/BDR.html:75 src/lessons/welcome/BDR.html:78 src/lessons/welcome/BDR.html:86 src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:89 src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:92 src/lessons/welcome/BDR.html:102 src/lessons/welcome/BDR.html:104 src/lessons/welcome/BDR.html:106
+msgid ":"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre>
@@ -3146,6 +3099,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:91
+#, no-wrap
+msgid "else"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><pre><if>
+#: src/lessons/welcome/BDR.html:88 src/lessons/welcome/BDR.html:91
+msgid "{"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><pre>
 #: src/lessons/welcome/BDR.html:89
 #, no-wrap
 msgid "&nbsp;&nbsp;&nbsp;&nbsp;if "
@@ -3167,6 +3131,12 @@ msgstr ""
 #: src/lessons/welcome/BDR.html:91
 #, no-wrap
 msgid "&nbsp;&nbsp;&nbsp;&nbsp;"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR.html:91 src/lessons/welcome/BDR.html:108
+#, no-wrap
+msgid "}"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><pre>
@@ -3223,6 +3193,11 @@ msgstr ""
 #. type: Content of: <p><p><p><p><p><p><p><if>
 #: src/lessons/welcome/BDR.html:100
 msgid "(but Java doesn't)"
+msgstr ""
+
+#. type: Content of: <p><</p><p>
+#: src/lessons/welcome/BDR.html:101 src/lessons/lightbot/Board01TwoSteps.html:8
+msgid "."
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p><p><pre><if>
@@ -3947,6 +3922,11 @@ msgstr ""
 #: src/lessons/welcome/Snake.html:39
 #, no-wrap
 msgid "while (testingFunction() == false)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/Snake.html:40
+msgid "or"
 msgstr ""
 
 #. type: Content of: <p><pre>
@@ -6615,6 +6595,11 @@ msgstr ""
 msgid ""
 "This is a introduction exercise, which should be solvable by only moving "
 "forward and switching the light, using respectively"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lightbot/Board01TwoSteps.html:8 src/lessons/lightbot/Board02Turn.html:3 src/lessons/lightbot/Board06Func.html:3
+msgid "and"
 msgstr ""
 
 #. type: Content of: <h1>
