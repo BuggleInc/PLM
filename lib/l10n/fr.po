@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-10-06 16:48+0300\n"
-"PO-Revision-Date: 2011-10-06 17:06+0200\n"
+"PO-Revision-Date: 2011-10-06 17:27+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -5867,7 +5867,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/cells/Langton.html:1
 msgid "Langton's ant"
-msgstr ""
+msgstr "La fourmi de Langton"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/cells/Langton.html:3
@@ -8069,14 +8069,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:25
-#, fuzzy
-#| msgid ""
-#| "Write a method <code>void keepHandOnSideWall()</code> which lets the "
-#| "buggle move one step forward while keeping the paw on the wall on the "
-#| "selected side. You thus have to ensure that the buggle always keep the "
-#| "paw on the wall, but also that it won't crash into a wall. You can check "
-#| "the hint for more info on this, but only do so if you're stuck. Try to do "
-#| "it without the hint first."
 msgid ""
 "Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
 "move one step forward while keeping the paw on the wall on the selected "
@@ -8085,10 +8077,12 @@ msgid ""
 "more info on this, but only do so if you're stuck. Try to do it without the "
 "tip first."
 msgstr ""
-"Ecrivez une méthode <code>void keepHandOnSideWall()</code> qui fait avancer "
-"votre buggle d'une case tout en gardant la patte sur le mur du côté choisi. "
-"Vous devez donc vous assurez que votre buggle garde toujours la patte sur le "
-"mur et également qu'il ne risque pas de percuter un mur."
+"Écrivez une méthode <code>void keepHandOnSideWall()</code> qui fait avancer\n"
+"votre buggle d'une case tout en gardant la patte sur le mur du côté\n"
+"choisi. Vous devez donc vous assurez que votre buggle garde toujours la patte\n"
+"sur le mur et également qu'il ne risque pas de percuter un mur. Vous pouvez\n"
+"regarder l'indice (hint) si vous êtes coincés, mais vous devriez d'abord\n"
+"essayer de le faire sans l'indice."
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:32
@@ -9177,10 +9171,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bool2/LastDigit2.html:1
-#, fuzzy
-#| msgid "LastDigit"
 msgid "LastDigit 2"
-msgstr "Dernier chiffre"
+msgstr "L'autre dernier chiffre"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/bool2/LastDigit2.html:2
