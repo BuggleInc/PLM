@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-06 20:37+0300\n"
-"PO-Revision-Date: 2011-10-06 20:37+0200\n"
+"POT-Creation-Date: 2011-10-06 23:58+0300\n"
+"PO-Revision-Date: 2011-10-06 23:59+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2672,7 +2672,7 @@ msgid ""
 "boolean married=true;"
 msgstr ""
 "String nom = \"Martin Quinson\";\n"
-"double taille=1.77; <span class=\"comment\">// in meters</span>\n"
+"double taille=1.77; <span class=\"comment\">// en mètres</span>\n"
 "boolean marie=true;"
 
 #. type: Content of: <p><p><p><p><p><p><p>
@@ -2736,8 +2736,15 @@ msgstr "Ramasser le baggel au sol"
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr "Reculer du même nombre de cases que ce qu'on a avancé"
 
+#. type: Content of: <p><p><p><p><p><p><p><p><ol><li>
+#: src/lessons/welcome/Variables.html:62
+#, fuzzy
+#| msgid "Pickup the baggle"
+msgid "Drop back the baggle"
+msgstr "Ramasser le baggel au sol"
+
 #. type: Content of: <p><p><p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:64
+#: src/lessons/welcome/Variables.html:65
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
@@ -2748,7 +2755,7 @@ msgstr ""
 "cela utiliser une variable, que l'on peut nommer <code>nbPas</code>."
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:68
+#: src/lessons/welcome/Variables.html:69
 msgid ""
 "Create a variable (of type <code>int</code>) before phase 1, initialize it "
 "to 0, and each time you move one step forward, increment its value by one "
@@ -2761,7 +2768,7 @@ msgstr ""
 "écritures sont équivalentes)."
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:73
+#: src/lessons/welcome/Variables.html:74
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward until "
@@ -2774,7 +2781,7 @@ msgstr ""
 "<code>dejaFait</code> à chaque fois."
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:78
+#: src/lessons/welcome/Variables.html:79
 msgid ""
 "Please note that it is forbidden to use spaces in variable names in Java. So "
 "you can name you variable <code>stepAmount</code>, but <code>step Amount</"
@@ -2786,7 +2793,7 @@ msgstr ""
 "Fait</code> ne sont des noms valides."
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:82
+#: src/lessons/welcome/Variables.html:83
 msgid "It's your turn now!"
 msgstr "À vous de jouer !"
 
@@ -9574,3 +9581,80 @@ msgid ""
 "where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"
 "\" strings will not overlap."
 msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/IndexOfValue.html:1
+msgid "Searching a given value"
+msgstr "Indice d'une valeur donnée"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfValue.html:3
+msgid ""
+"The goal of this exercise is to search the cell of value 17 in an array, and "
+"return its position."
+msgstr ""
+"L'objectif de cet exercice est de calculer l'indice d'une valeur donnée (17 "
+"dans cet exercice) dans un tableau."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfValue.html:5
+msgid ""
+"To that extend, you should fill the method <code>indexOf(int[] tab, int "
+"lookingFor)</code>, which parameters are the array to explore, and the value "
+"to search. If the value <code>lookingFor</code> is not in the array "
+"<code>tab</code>, the method should return -1."
+msgstr ""
+"Pour cela, il vous faut remplir le corps de la méthode <code>indexOf(int[] "
+"tab,\n"
+"int lookingFor)</code>. Ses paramètres sont le tableau à explorer et la "
+"valeur\n"
+"à chercher. Si la valeur <code>lookingFor</code> n'est pas dans le tableau\n"
+"<code>tab</code>, la méthode doit renvoyer -1."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfValue.html:10
+msgid ""
+"The idea of the algorithm is to sweep over the whole array, checking the "
+"value of each cell. If it's the searched value, you should return the index "
+"of the cell currently checked."
+msgstr ""
+"L'idée de l'algorithme est de parcourir tout le tableau en vérifiant la "
+"valeur\n"
+"contenue dans chaque case. S'il s'agit de la valeur cherchée, vous devez\n"
+"renvoyer l'indice de la case actuellement explorée."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfValue.html:14
+msgid ""
+"The first thing to remember about arrays is that their indices begin at 0. "
+"So, if there is 3 cells, their indices will be 0, 1 and 2. There would not "
+"be any cell numbered 3."
+msgstr ""
+"La première chose dont il faut se souvenir à propos des tableaux est que "
+"leurs\n"
+"indices sont numérotés à partir de 0. Donc, si vous avez 3 cases, leurs "
+"indices\n"
+"seront 0, 1 et 2. Il n'y aura pas de case numérotée 3."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfValue.html:18
+msgid ""
+"Then, remember that the amount of cells in an array can be retrieved using "
+"the <code>length</code> attribute. So, if your array is called <code>tab</"
+"code>, its size can be retrieved as <code>tab.length</code>.  Note that "
+"there is no () after <code>length</code>. An attribute is a sort of variable "
+"embedded in another object (here, the array)."
+msgstr ""
+"Ensuite, souvenez vous que le nombre de cases d'un tableau peut être retrouvé\n"
+"grâce à l'attribut <code>length</code>. Donc, si votre tableau s'appelle\n"
+"<code>tableau</code>, sa taille sera <code>tableau.length</code>. Notez qu'il\n"
+"n'y a pas de () après <code>length</code>. Un attribut est une sorte de\n"
+"variable embarquée dans un autre objet (ici, le tableau)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/IndexOfValue.html:24
+msgid ""
+"So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
+msgstr ""
+"Donc, la dernière valeur d'un tableau est donnée par <code>tab[tab.length -1]"
+"</code>."

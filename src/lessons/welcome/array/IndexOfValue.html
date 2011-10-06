@@ -1,0 +1,24 @@
+<h1>Searching a given value</h1>
+
+<p>The goal of this exercise is to search the cell of value 17 in an array, and return its position.</p>
+
+<p>To that extend, you should fill the method <code>indexOf(int[] tab,
+int lookingFor)</code>, which parameters are the array to explore,
+and the value to search. If the value <code>lookingFor</code>
+is not in the array <code>tab</code>, the method should return -1.</p>
+
+<p>The idea of the algorithm is to sweep over the whole array,
+checking the value of each cell. If it's the searched value, you
+should return the index of the cell currently checked.</p>
+
+<p>The first thing to remember about arrays is that their indices 
+begin at 0. So, if there is 3 cells, their indices will be 0, 1 
+and 2. There would not be any cell numbered 3.</p>
+
+<p>Then, remember that the amount of cells in an array can be retrieved 
+using the <code>length</code> attribute. So, if your array is called 
+<code>tab</code>, its size can be retrieved as <code>tab.length</code>. 
+Note that there is no () after <code>length</code>. An attribute is a 
+sort of variable embedded in another object (here, the array).</p> 
+
+<p>So, the last value of an array is given by <code>tab[tab.length - 1]</code>.</p>
