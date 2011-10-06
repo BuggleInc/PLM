@@ -69,6 +69,7 @@ public class LessonNavigatorDialog extends JDialog  {
 		setResizable(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(getParent());
+		setMinimumSize(new Dimension(100,100));
 	}
 
 	/**
@@ -150,6 +151,7 @@ public class LessonNavigatorDialog extends JDialog  {
 
 		vv =  new VisualizationViewer<Lecture,Integer>(layout, new Dimension(600,600));
 		vv.setBackground(Color.white);
+		vv.setMinimumSize(new Dimension(50, 50));
 		vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line());
 
 		//      vv.getRenderContext().setVertexShapeTransformer(new Transformer<Exercise,Shape>() {
