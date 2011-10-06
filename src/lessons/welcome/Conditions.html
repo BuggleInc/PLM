@@ -5,18 +5,24 @@ are quite boring. They always do the same thing, and cannot react to
 external conditions. A <b>conditional</b> let the program adapt by doing
 something like <i>if it's raining, take an umbrella</i>. 
 
-<p>The Java syntax is the following:
- <pre>if <if lang="Java">(</if><b>condition</b><if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b><if lang="Java">
-}</if></pre>
-If the condition is true, any code <if lang="Java">enclosed between the { and the
-corresponding }</if><if lang="Python">in the block following the colon symbol</if> will be executed.
-If not, it will be ignored. Of course, it
+<p class="Java">The Java syntax is the following:</p>
+<p class="Python">The Python syntax is the following:</p>
+ <pre class="Java">if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>
+}</pre>
+ <pre class="Python">if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b</pre>
+
+<p class="Java">If the condition is true, any code enclosed between the { and the
+corresponding } will be executed. If not, it will be ignored. Of course, it
+is possible to write more than one instruction between the curly brackets
+(even another test).</p>
+<p class="Python">If the condition is true, any code in the block following the 
+colon symbol will be executed. If not, it will be ignored. Of course, it
 is possible to write more than one instruction between the curly brackets
 (even another test).</p>
 
-<if lang="Python">
-<p>
+<p class="Python">
 Python uses indentation to define code blocks. The standard Python indentation
 is 4 spaces. Notice that code blocks do not need any termination. Indenting starts
 a block and unindenting ends it. In the
@@ -24,43 +30,60 @@ following code the instructions <b>whatToDo()</b> and <b>whatToDoNext()</b>
 will be exectuded if the condition is true, then the instruction
 <b>whatToDoAnyway()</b> will be executed anyway.
 
-<pre>if <b>condition</b>:
+<pre class="Python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
 <b>whatToDoAnyway()</b>
 </pre>
 
-Python functions have no explicit begin or end, and no curly braces to mark where the function code starts and stops. The only delimiter is a colon (:) and the indentation of the code itself.
+<p class="Python">Python functions have no explicit begin or end, and
+no curly braces to mark where the function code starts and stops. The
+only delimiter is a colon (:) and the indentation of the code
+itself.</p>
 
-Example 2.5. Indenting the buildConnectionString Function
+<p class="Python">Example 2.5. Indenting the buildConnectionString
+Function</p>
 
+<pre class="Python">
 def buildConnectionString(params):
     """Build a connection string from a dictionary of parameters.
 
     Returns string."""
     return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
-Code blocks are defined by their indentation. By "code block", I mean functions, if statements, for loops, while loops, and so forth. Indenting starts a block and unindenting ends it. There are no explicit braces, brackets, or keywords. This means that whitespace is significant, and must be consistent. In this example, the function code (including the doc string) is indented four spaces. It doesn't need to be four spaces, it just needs to be consistent. The first line that is not indented is outside the function.
+</pre>
 
+<p class="Python">Code blocks are defined by their indentation. By
+"code block", I mean functions, if statements, for loops, while loops,
+and so forth. Indenting starts a block and unindenting ends it. There
+are no explicit braces, brackets, or keywords. This means that
+whitespace is significant, and must be consistent. In this example,
+the function code (including the doc string) is indented four spaces.
+It doesn't need to be four spaces, it just needs to be consistent. The
+first line that is not indented is outside the function.</p>
 
-It is important that the indentations of all the instructions of a block are consistent,
-and it is not possible to cut a block. The two following codes are incorrect and will
-raise errors.
-<pre>if <b>condition</b>:
+<p class="Python">It is important that the indentations of all the
+instructions of a block are consistent, and it is not possible to cut
+a block. The two following codes are incorrect and will raise
+errors.</p>
+<pre class="Python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
 <b>whatToDoAnyway()</b>
 </pre>
-<pre>if <b>condition</b>:
+<pre class="Python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>
 <b>whatToDoAnyway()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>
 </pre>
-</p>
-</if>
 
-<p>A condition can be a variable of type <tt>boolean</tt>. The code <if lang="Java">between
-curly braces</if><if lang="Python">in the inner bloc</if> will get executed if the variable is <tt><if lang="Java">true</if><if lang="Python">True</if></tt> and it will
-be ignored if it is <tt><if lang="Java">false</if><if lang="Python">False</if></tt>.</p>
+<p class="Java">A condition can be a variable of type <tt>boolean</tt>. The code between
+curly braces will get executed if the variable is <tt>true</tt> and it will
+be ignored if it is <tt>false</tt>.</p>
+
+<p class="Python">A condition can be a variable of type
+<tt>boolean</tt>. The code in the inner bloc will get executed if the
+variable is <tt>True</tt> and it will be ignored if it is
+<tt>False</tt>.</p> 
 
 <p>The condition can also be an arithmetic test, such as <tt>x</tt> <b>==</b>
 <tt>5</tt>, which checks whether the current value of <tt>x</tt> is 5, or
@@ -69,7 +92,7 @@ such as <b>!=</b> (checking inequality), <b>&lt;</b> (smaller than),
 (larger or equal to).</p>
 
 <p>Beware of the classical trap, which consists in testing the equality of a
-variable using = instead of ==. Hopefully, the Java compiler detects this
+variable using = instead of ==. Hopefully, the compiler detects this
 problem most of the time, but not always. If the variable is of type
 boolean, it can get trapped, so you have to be careful...
 
@@ -79,25 +102,47 @@ returns true if the buggle is facing a wall, and false in the other case.
 
 <p>Finally, a condition can be composed of several sub-conditions connected by
 boolean operations.
-<ul>
-  <li><tt>cond1 <if lang="Java">&&</if><if lang="Python">and</if> cond2</tt> is true when <tt>cond1</tt> <b>and</b>
-  <tt>cond2</tt> are both true<if lang="Python">, (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even evaluated)</if>.</li>
-  <li><tt>cond1 <if lang="Java">||</if><if lang="Python">or</if> cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt>
-are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated).</li>
-<li><tt><if lang="Java">!</if><if lang="Python">not </if>cond</tt> is true if <tt>cond</tt> is false.</li>
+<ul class="Java">
+  <li><tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b>
+      <tt>cond2</tt> are both true (if <tt>cond1</tt> is false,
+      <tt>cond2</tt> is not even evaluated).</li> 
+  <li><tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt>
+      are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated).</li>
+  <li><tt>!cond</tt> is true if <tt>cond</tt> is false.</li>
   <li>It is possible to force the order of evaluation by adding parenthesis. In
 ambigous cases, do not hesitate to add more parenthesis to remove any
 ambiguities on evaluation order.</li>
 </ul> 
 
-<p>At least, it is possible to specify what to do when the condition is false
+<ul class="Python">
+  <li><tt>cond1 and cond2</tt> is true when <tt>cond1</tt> <b>and</b>
+      <tt>cond2</tt> are both true (if <tt>cond1</tt> is false,
+      <tt>cond2</tt> is not even evaluated).</li> 
+  <li><tt>cond1 or cond2</tt> is true if <tt>cond1</tt> <b>or</b>
+      <tt>cond2</tt> are true (if <tt>cond1</tt> is true,
+      <tt>cond2</tt> is not even evaluated).</li> 
+  <li><tt>not cond</tt> is true if <tt>cond</tt> is false.</li>
+  <li>It is possible to force the order of evaluation by adding parenthesis. In
+ambigous cases, do not hesitate to add more parenthesis to remove any
+ambiguities on evaluation order.</li>
+</ul> 
+
+<p>Finally, it is possible to specify what to do when the condition is false
 using the following syntax:
- <pre>if <if lang="Java">(</if><b>condition</b><if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()<if lang="Java">;</if></b>
-<if lang="Java">} </if>else<if lang="Java"> {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()<if lang="Java">;</if></b>
+ <pre class="Java">if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
+} else {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>
 }</pre>
 
+ <pre class="Python">if (<b>condition</b>):
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>
+else:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>
+</pre>
+
+<p class="Python">Don't forget the colon (:) after the else, it is indicating 
+that a new block is beginning.</p>
 
 <h3>Exercise goal</h3><a name="Objectives">If the buggle is facing a wall (predicate
 <tt>isFacingWall()</tt>), you must move one step back. If not, you must move
