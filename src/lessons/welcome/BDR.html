@@ -1,16 +1,15 @@
-<h2>Buggle Dance Revolution</h2>
-<h3>(BDR)</h3>
+<h2>Buggle Dance Revolution (BDR)</h2>
 
-Today is a great day : we will learn the buggles to play Dance Revolution,
-this game beloved of some students where the player has to move its feets on
-the carpet according to the instructions presented on the screen following
-the music. But before that, we have some details to study first.
+<p>Today is a great day: we will learn the buggles to play Dance Revolution,
+this game beloved of some students where the player has to move its feet on
+the carpet according to the instructions presented on the screen, and following
+the music. But before that, we have some details to study first.</p>
 
 <h3 class="Java">Conditionals without curly braces</h3>
 <p class="Java">
-There is one detail we omit about the conditional syntax: if a branch
+There is one detail we omitted about the conditional syntax: if a branch
 contains only one instruction, then the curly braces become optional. So,
-the two chunk of code are equivalent:
+the two chunk of code are equivalent:</p>
 
  <pre class="Java">if (<b>condition</b>) {
     <b>whatToDoIfTheConditionIsTrue();</b>
@@ -23,7 +22,7 @@ else
     <b>whatToDoElse();</b></pre>
 
 <p class="Java">But beware, this becomes dangerous if you chain the <tt>if</tt> instructions
-like this: 
+like this: </p>
 <pre class="Java">if (isOverBaggle())    
      if (x == 5)
           turnLeft();
@@ -35,7 +34,7 @@ forward();</pre>
 equals 5, but when the buggle found a baggle on the ground and x equals
 anything but 5. Putting this otherwise, the buggle understands the previous
 code as if it were written the following way (note that the <tt>else</tt>
-were moved to the right):
+were moved to the right):</p>
 <pre class="Java">if (isOverBaggle())    
         if (x == 5)
             turnLeft();
@@ -49,7 +48,7 @@ the code. We could have written the following code and obtain the same
 result. But beware, if you want a human to read and review your code, you
 really want to indent it correctly. That's for example the case if you want
 a professor to read it (to grade it or to answer a question about it), or if
-you want to reuse your code later. 
+you want to reuse your code later.</p> 
 
 <pre class="Java">if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
 
@@ -59,7 +58,7 @@ be easier to add more braces than strictly needed to remove any ambiguity.</p>
 
 <h3>Chaining conditionals</h3>
 
-You sometimes want to ask the buggle something similar to: 
+<p>You sometimes want to ask the buggle something similar to:</p> 
 <pre>if it's raining, take an umbrella;
 if not, and if it's a hot day, take a bottle of water;
 if not and if it's July 4th, take an american flag</pre>
@@ -67,46 +66,76 @@ if not and if it's July 4th, take an american flag</pre>
 <p>The trap is that we want at most one of these actions to be taken. That is
 to say, if it's raining a very hot July 4th, we don't want the buggle to get
 outside with an umbrella, some water and a flag, but simply with an
-umbrella. The following code is thus WRONG.
+umbrella. The following code is thus WRONG.</p>
 
-<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">;
-}</if>
-if <if lang="Java">(</if>hot()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">;
-} </if>
-if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">;
-}</if></pre>
+<pre class="Java">if (rainy()) {
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella();
+}
+if (hot()) {
+&nbsp;&nbsp;&nbsp;&nbsp;takeWater();
+} 
+if (todayIsJuly4th()) {
+&nbsp;&nbsp;&nbsp;&nbsp;takeFlag();
+}</pre>
+
+<pre class="Python">if rainy():
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()
+if hot():
+&nbsp;&nbsp;&nbsp;&nbsp;takeWater()
+if todayIsJuly4th():
+&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()
+</pre>
+
 
 <p>Indeed, since the conditions are evaluated one after the other, there is a
 risk that you go to the July 4th march on a rainy day. Instead, we should
-use something like this:
+use something like this:</p>
 
-<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">;
-} </if>else<if lang="Java"> {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;if <if lang="Java">(</if>hotDay()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">;</if>
-&nbsp;&nbsp;&nbsp;&nbsp;<if lang="Java">} </if>else<if lang="Java"> {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">;
+<pre class="Java">if (rainy()) {
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella();
+} else {
+&nbsp;&nbsp;&nbsp;&nbsp;if (hotDay()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeWater();
+&nbsp;&nbsp;&nbsp;&nbsp;} else {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (todayIsJuly4th()) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeFlag();
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 &nbsp;&nbsp;&nbsp;&nbsp;}
-}</if></pre>
-
-<p>Such a cascade of conditionals are quite difficult to read, and it is better
-to omit the curly braces for the <tt>else</tt> statements. <if lang="Java">Some languages
-even</if><if lang="Python">Python</if> introduce a specific construct for these <tt><if lang="Java">else if</if><if lang="Python">elif</if></tt><if lang="Java"> (but Java
-doesn't)</if>.
-<pre>if <if lang="Java">(</if>rainy()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()<if lang="Java">;</if>
-<if lang="Java">} else </if><if lang="Python">el</if>if <if lang="Java">(</if>hotDay()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater()<if lang="Java">;</if>
-<if lang="Java">} else </if><if lang="Python">el</if>if <if lang="Java">(</if>todayIsJuly4th()<if lang="Java">) {</if><if lang="Python">:</if>
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()<if lang="Java">;</if>
 }</pre>
 
+<pre class="Python">if rainy():
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()
+else:
+&nbsp;&nbsp;&nbsp;&nbsp;if hotDay():
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeWater()
+&nbsp;&nbsp;&nbsp;&nbsp;else:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if todayIsJuly4th():
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()
+</pre>
+
+
+<p class="Java">Such a cascade of conditionals are quite difficult to read, and it is better
+to omit the curly braces for the <tt>else</tt> statements. Some languages
+even introduce a specific construct for these <tt>else if</tt> (but Java
+doesn't).</p>
+<pre class="Java">if (rainy()) {
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella();
+} else if (hotDay()) {
+&nbsp;&nbsp;&nbsp;&nbsp;takeWater();
+} else if (todayIsJuly4th()) {
+&nbsp;&nbsp;&nbsp;&nbsp;takeFlag();
+}</pre>
+
+<p class="Python">Such a cascade of conditionals are quite difficult to read, and it is better
+to omit extra indentation for the <tt>else</tt> statements. In Python, there is a specific 
+construct for this: <tt>elif</tt>.
+<pre class="Python">if rainy():
+&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()
+elif hotDay():
+&nbsp;&nbsp;&nbsp;&nbsp;takeWater()
+elif todayIsJuly4th():
+&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()
+}</pre>
 
 <h3>Graffitis in the Buggle World</h3>
 
