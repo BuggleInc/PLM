@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-07 01:28+0300\n"
+"POT-Creation-Date: 2011-10-07 11:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3219,9 +3219,9 @@ msgstr ""
 msgid "I"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:126
-msgid "Turn back and move one step forward"
+#. type: Content of: <p><a><table><tr><td>
+#: src/lessons/welcome/BDR.html:169
+msgid "Turn back (U-turn) and move one step forward"
 msgstr ""
 
 #. type: Content of: <p><a><table><tr><td>
@@ -3336,43 +3336,26 @@ msgstr ""
 msgid "Indications"
 msgstr ""
 
-#
-#. *** NOT TRUE !!!, so I decided to remove it ***
-#. <p>
-#
-#. La première subtilité étant de retrouver l'indication au sol sous
-#.    forme de caractère unique que de chaîne de caractères. En effet, les
-#.    tests d'égalité entre les chaînes sont un peu compliqués à écrire
-#.    (car les chaînes sont des objets).<br>
-#.    Java considère que le test <code>("toto" == "toto")</code> est
-#.    faux, puisqu'il y a une chaîne à gauche, et une chaîne à droite. Ce
-#.    n'est donc pas la même chaîne (le fait qu'elles signifient toutes
-#.    les deux la même chose n'entre malheureusement pas en
-#.    considération).</p>
-#
-#. <p>Au lieu de s'attarder sur ces subtilités sur lesquelles nous aurons
-#.    largement le temps de revenir, utilisons <code>char	
-#
 #. type: Content of: <p><a>
-#: src/lessons/welcome/BDR.html:203
+#: src/lessons/welcome/BDR.html:187
 msgid ""
 "This exercise may seem a bit complex at the first glance, but it comes down "
-"to summarizing the information above in a serie of conditionnals."
+"to summarizing the information above in a sequence of conditionals."
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:208
+#: src/lessons/welcome/BDR.html:192
 msgid ""
-"The first subtility is that we use the <code>char getIndication()</code> "
+"The first subtlety is that we use the <code>char getIndication()</code> "
 "instead of <code>String readMessage()</code>. This method, only known by the "
 "buggles of this exercise, return the first char of the message written on "
 "the ground (or ' ' if nothing is written down)."
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:213
+#: src/lessons/welcome/BDR.html:197
 msgid ""
-"The other subtility is to keep working as long as there is some work to do, "
+"The other subtlety is to keep working as long as there is some work to do, "
 "i.e., as long as we did not find a cell which content is not described in "
 "the table. The easier for that is to use an infinite loop (<code>while "
 "(true)</code>) with all the tests in the loop body. If we find a cell not "
@@ -3381,7 +3364,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:220
+#: src/lessons/welcome/BDR.html:204
 msgid ""
 "The functions having <code>void</code> as return type can contain some "
 "<tt>return</tt> without any associated value. It interrupts immediately "
@@ -3389,12 +3372,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><h3>
-#: src/lessons/welcome/BDR.html:224
+#: src/lessons/welcome/BDR.html:208
 msgid "Tips and Hints"
 msgstr ""
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/BDR.html:226
+#: src/lessons/welcome/BDR.html:210
 msgid ""
 "If you fail understanding why the buggle does not execute the expected "
 "steps, try adding <code>brushDown()</code> in your method. This asks the "
@@ -3405,7 +3388,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:233
+#: src/lessons/welcome/BDR.html:217
 msgid "When your program finally works, move on to the next exercise."
 msgstr ""
 
@@ -3446,7 +3429,7 @@ msgid ""
 "} else if (getIndication() == 'L') {\n"
 "  turnLeft();\n"
 "  forward();\n"
-"} else if (getIndication() == 'U') {\n"
+"} else if (getIndication() == 'I') {\n"
 "  turnBack();\n"
 "  forward();\n"
 "/* other else if */\n"
@@ -3615,6 +3598,11 @@ msgstr ""
 msgid ""
 "Here are the ground indications to use for BRD2. Note that we can now move a "
 "bugle up to 6 cells in one dance step."
+msgstr ""
+
+#. type: Content of: <p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:126
+msgid "Turn back and move one step forward"
 msgstr ""
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>

@@ -166,7 +166,7 @@ following signification:
 
  <tr><td>R</td><td>Turn right and move one step forward</td><td>Right</td></tr>
  <tr><td>L</td><td>Turn left and move one step forward</td><td>Left</td></tr>
- <tr><td>I</td><td>Turn back and move one step forward</td><td>Inverse</td></tr>
+ <tr><td>I</td><td>Turn back (U-turn) and move one step forward</td><td>Inverse</td></tr>
 
  <tr><td>A</td><td>Move one step forward</td><td>First letter of the alphabet</td></tr>
  <tr><td>B</td><td>Move two steps forward</td><td>Second letter of the alphabet</td></tr>
@@ -184,33 +184,17 @@ is already in the editor.</p>
 
 <h3>Indications</h3>
 
-<!--
-*** NOT TRUE !!!, so I decided to remove it ***
-<p>
-La première subtilité étant de retrouver l'indication au sol sous
-   forme de caractère unique que de chaîne de caractères. En effet, les
-   tests d'égalité entre les chaînes sont un peu compliqués à écrire
-   (car les chaînes sont des objets).<br>
-   Java considère que le test <code>("toto" == "toto")</code> est
-   faux, puisqu'il y a une chaîne à gauche, et une chaîne à droite. Ce
-   n'est donc pas la même chaîne (le fait qu'elles signifient toutes
-   les deux la même chose n'entre malheureusement pas en
-   considération).</p>
-
-<p>Au lieu de s'attarder sur ces subtilités sur lesquelles nous aurons
-   largement le temps de revenir, utilisons <code>char	
--->
 This exercise may seem a bit complex at the first glance, but it comes down
-to summarizing the information above in a serie of conditionnals.
+to summarizing the information above in a sequence of conditionals.
 
 
 
-<p>The first subtility is that we use the <code>char getIndication()</code>
+<p>The first subtlety is that we use the <code>char getIndication()</code>
 instead of <code>String readMessage()</code>. This method, only known by the
 buggles of this exercise, return the first char of the message written on
 the ground (or ' ' if nothing is written down). </p>
 
-<p>The other subtility is to keep working as long as there is some work to do,
+<p>The other subtlety is to keep working as long as there is some work to do,
 i.e., as long as we did not find a cell which content is not described in
 the table. The easier for that is to use an infinite loop (<code>while
 (true)</code>) with all the tests in the loop body. If we find a cell not

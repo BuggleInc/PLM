@@ -170,7 +170,7 @@ par terre.  Ces indications sont des messages au sol, avec le code suivant:
 
  <tr><td>R</td><td>Tourner à droite et avancer d'une case</td><td>Right</td></tr>
  <tr><td>L</td><td>Tourner à gauche et avancer d'une case</td><td>Left</td></tr>
- <tr><td>I</td><td>Tourner en sens inverse et avancer d'une case</td><td>Inverse</td></tr>
+ <tr><td>I</td><td>Tourner en sens inverse (demi tour) et avancer d'une case</td><td>Inverse</td></tr>
 
  <tr><td>A</td><td>Avancer d'une case</td><td>première lettre de l'alphabet</td></tr>
  <tr><td>B</td><td>Avancer de deux cases</td><td>deuxième lettre de l'alphabet</td></tr>
@@ -188,24 +188,6 @@ prototype se trouve déjà dans l'éditeur.</p>
 
 <h3>Indications</h3>
 
-
-<!--
-*** NOT TRUE !!!, so I decided to remove it ***
-<p>
-
-La première subtilité étant de retrouver l'indication au sol sous
-   forme de caractère unique que de chaîne de caractères. En effet, les
-   tests d'égalité entre les chaînes sont un peu compliqués à écrire
-   (car les chaînes sont des objets).<br>
-   Java considère que le test <code>("toto" == "toto")</code> est
-   faux, puisqu'il y a une chaîne à gauche, et une chaîne à droite. Ce
-   n'est donc pas la même chaîne (le fait qu'elles signifient toutes
-   les deux la même chose n'entre malheureusement pas en
-   considération).</p>
-
-<p>Au lieu de s'attarder sur ces subtilités sur lesquelles nous aurons
-   largement le temps de revenir, utilisons <code>char	
--->
 Cet exercice peut sembler un peu compliqué, mais il s'agit principalement de
 traduire le contenu du tableau ci-dessus dans un enchaînement de
 conditionnelles.

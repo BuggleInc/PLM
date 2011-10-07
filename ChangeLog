@@ -1,12 +1,11 @@
 not released yet:
   * Fix the array exercises (there were bugged and not properly
     integrated into po4a)
-  * various improvements to the french translation
-  * Remove the "clear session" menu entry
+  * various improvements to the missions and their french translations
+  * Remove the "clear session" menu entry. Too dangerous.
   * Graphical consistency between menu choosing the human language,
     and the one choosing the programming language
-  * Display in about box where the session gets saved to avoid NFS
-    hell. 
+  * Show in about box where the session gets saved to avoid NFS hell
 20111006e:
   * Allow to code in python, javascript or ruby
   * Definitely kill the linearity of lessons (combobox removed)
