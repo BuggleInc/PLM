@@ -26,7 +26,7 @@ public class TwitterSpy implements ProgressSpyListener {
 	public void executed(Exercise exo) {
 		if (exo.isSuccessfullyPassed()) {
 			try {
-				twitter.updateStatus(username+" solved "+exo.getName()+"!");
+				twitter.updateStatus(username+" solved "+exo.getName()+" in "+exo.lastResult.language+"!");
 			} catch (Exception e) {
 				// silently ignore network unavailability ;)
 				//e.printStackTrace();
