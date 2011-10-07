@@ -5,6 +5,8 @@ not released yet:
   * Remove the "clear session" menu entry
   * Graphical consistency between menu choosing the human language,
     and the one choosing the programming language
+  * Display in about box where the session gets saved to avoid NFS
+    hell. 
 20111006e:
   * Allow to code in python, javascript or ruby
   * Definitely kill the linearity of lessons (combobox removed)

@@ -46,4 +46,6 @@ public interface ISessionKit {
 	/** Removes all user content for all loaded lessons */
 	public void cleanLesson(Lesson l);
 
+	/** Returns the path to where the student data are saved */
+	public String getSavingLocation();
 }

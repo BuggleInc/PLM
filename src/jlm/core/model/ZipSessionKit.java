@@ -32,9 +32,7 @@ public class ZipSessionKit implements ISessionKit {
 	private Game game;
 
 	private static String HOME_DIR = System.getProperty("user.home");
-
 	private static String SEP = System.getProperty("file.separator");
-
 	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".jlm");
 
 	public ZipSessionKit(Game game) {
@@ -270,6 +268,11 @@ public class ZipSessionKit implements ISessionKit {
 	@Override
 	public void loadAll() {
 		loadAll(null);
+	}
+
+	@Override
+	public String getSavingLocation() {
+		return SAVE_DIR.getAbsolutePath();
 	}
 
 }

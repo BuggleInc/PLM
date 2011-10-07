@@ -44,12 +44,14 @@ public class AboutJLMDialog extends JDialog {
 				"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">("+Game.getProperty("jlm.major.version","internal")+"."+Game.getProperty("jlm.minor.version","")+")</span>"+
 				"</h3>"+
 				"<br/>"+
-				"&copy; 2008 Contributors. All rights reserved.<br/>"+
+				"&copy; 2008-2011 Contributors. All rights reserved.<br/>"+
 				"<ul style=\"margin-left:20px;\">" +
 				"<li>Original idea: <i>L. Turbak (Wellesley College)</i></li>"+
 				"<li>Design and code: <i>M. Quinson and G. Oster</i></li>"+
-				"<li>Tests: <i>esial students (class '11)</i></li>"+
-				"</ul></html>"
+				"<li>Tests: <i>esial students (class '11, '12, '13, '14)</i></li>"+
+				"</ul><br/>"+
+				"Your code is saved to "+Game.getInstance().getSessionKit().getSavingLocation()+"<br/>"+
+				"</html>"
 		);
 		text.setBackground(Color.white);
 		text.setOpaque(true);

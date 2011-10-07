@@ -32,7 +32,6 @@ import jlm.core.model.Reader;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.action.AbstractGameAction;
-import jlm.core.ui.action.CleanUpSession;
 import jlm.core.ui.action.ExportSession;
 import jlm.core.ui.action.ImportSession;
 import jlm.core.ui.action.PlayDemo;
