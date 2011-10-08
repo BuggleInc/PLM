@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-10-07 11:05+0300\n"
-"PO-Revision-Date: 2011-10-07 11:11+0200\n"
+"PO-Revision-Date: 2011-10-08 16:24+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -3583,8 +3583,7 @@ msgstr ""
 #: src/lessons/welcome/MethodsArgs.html:64
 msgid ""
 "The code of the method to write should not be really problematic for you."
-msgstr ""
-"Le code de la méthode à proprement parlé ne devrait pas poser de problème."
+msgstr "Le code de la méthode à proprement parler ne devrait pas poser de problème."
 
 #. type: Content of: <p><p><p><p><h2>
 #: src/lessons/welcome/MethodsArgs.html:66
