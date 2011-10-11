@@ -638,6 +638,14 @@ public class Game implements IWorldView {
 	private boolean doDebug = false;
 	public void switchDebug() {
 		doDebug = !doDebug;
+		if (doDebug) {
+			System.out.println("Saving location: "+Game.getInstance().getSessionKit().getSavingLocation());
+			System.out.println("Lesson: "+Game.getInstance().getCurrentLesson().getName());
+			System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
+			System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal")+" ("+Game.getProperty("jlm.major.version","internal")+"."+Game.getProperty("jlm.minor.version","")+")");
+			System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
+			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+		}
 	}
 	public boolean isDebugEnabled() {
 		return doDebug;
