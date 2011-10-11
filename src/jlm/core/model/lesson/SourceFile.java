@@ -5,6 +5,7 @@ import java.util.Map.Entry;
 
 import javax.swing.JScrollPane;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.JavaEditorPanel;
 
@@ -31,7 +32,7 @@ public class SourceFile {
 	public SourceFile(String name, String initialBody, String template, Map<String, String> patterns) {
 		this.name = name;
 		this.body = initialBody;
-		this.template = template;
+		setTemplate( template );
 		this.patterns = patterns;
 	}
 
@@ -63,18 +64,26 @@ public class SourceFile {
 		String res;
 
 		if (template != null) {
-			res = template.replaceAll("\\$body", " "+this.body+" \n");			
+			res = template.replaceAll("\\$body", this.body+" \n");;			
 			if (runtimePatterns != null)
 				for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 					res = res.replaceAll(pattern.getKey(), pattern.getValue());
+					if (pattern.getValue().contains("\n")) { 
+						System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong. Please repport this bug (alongside with the following informations)!");
+						System.out.println("pattern key: "+pattern.getKey());
+						System.out.println("pattern value: "+pattern.getValue());
+						System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
+						System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal")+" ("+Game.getProperty("jlm.major.version","internal")+"."+Game.getProperty("jlm.minor.version","")+")");
+						System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
+						System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+					}
 				}
-				
+
 			if (patterns != null)
 				for (String pattern : patterns.keySet()) {
 					System.out.println("Replace all "+pattern+" to "+patterns.get(pattern));
 					res = res.replaceAll(pattern, patterns.get(pattern));
 				}
-
 		} else {
 			res = this.body;
 		}
