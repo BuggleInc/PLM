@@ -138,6 +138,12 @@ public abstract class Exercise  extends Lecture {
 			System.err.println("Compilation error:");
 			out.log(e.getDiagnostics());
 			lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
+
+			if (Game.getInstance().isDebugEnabled() && sourceFiles.get(Game.JAVA) != null)
+				for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
+					if (sf.isCompilable()) 
+						System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
+			
 			throw e;
 		}
 		
