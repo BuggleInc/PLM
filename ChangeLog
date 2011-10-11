@@ -1,4 +1,10 @@
 not released yet:
+  * Fix a bug in python that were due to an extra space added in front
+    of the body. Damn python indentation freaks.
+  * Add a debug mode to JLM, to see more infos on problem
+  * Add a trap spitting a lot of info when issue #42 (line numbers are
+    shifted) occures. I need more info to understand where it comes
+    from.
   * Fix the array exercises (there were bugged and not properly
     integrated into po4a)
   * various improvements to the missions and their french translations
