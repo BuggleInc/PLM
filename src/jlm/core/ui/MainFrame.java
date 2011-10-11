@@ -11,6 +11,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -148,7 +149,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Game.getInstance().changeLesson("lessons.chooser");
+				game.changeLesson("lessons.chooser");
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
@@ -179,6 +180,17 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(g, "Import Session Cache",
 				null, this));
 		menu.add(importSessionMenuItem);
+		
+		JMenuItem switchDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, "Debug mode", null, "Display more debug message in logs", "Cannot switch debug mode now", KeyEvent.VK_D) {
+			private static final long serialVersionUID = 1L;
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.switchDebug();
+				
+			}
+		});
+		menu.add(switchDebug);
 
 
 		/* === Language menu === */

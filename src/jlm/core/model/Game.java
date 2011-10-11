@@ -635,4 +635,11 @@ public class Game implements IWorldView {
 		this.progLangListeners.remove(l);
 	}
 
+	private boolean doDebug = false;
+	public void switchDebug() {
+		doDebug = !doDebug;
+	}
+	public boolean isDebugEnabled() {
+		return doDebug;
+	}
 }
