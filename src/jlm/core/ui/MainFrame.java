@@ -333,7 +333,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			exerciseView.setEnabledControl(false);
 			break;
 		case COMPILATION_STARTED:
-			outputArea.clear();
+			if (!Game.getInstance().isDebugEnabled())
+				outputArea.clear();
 			startButton.setEnabled(false);
 			debugButton.setEnabled(false);
 			resetButton.setEnabled(false);
