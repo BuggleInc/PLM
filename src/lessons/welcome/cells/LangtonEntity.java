@@ -33,7 +33,6 @@ public void step() {
 		for (int i=0;i<nbSteps;i++) {
 			step();
 			((lessons.welcome.cells.TurmiteWorld)world).stepDone();
-			/*((TurmiteWorld)world).currStep = i;*/
 		}
 	}
 }
