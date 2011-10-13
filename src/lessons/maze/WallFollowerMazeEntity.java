@@ -1,8 +1,11 @@
 package lessons.maze;
 
+import jlm.universe.Direction;
 
 @SuppressWarnings("unused")
 public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+	private Direction uselessVariableExistingJustToMakeSureThatEclipseWontRemoveTheImport; /* If removed, user code can't use directions easily */
+	
 	@Override
 	public void setX(int i)  {
 		if (isInited()) 
