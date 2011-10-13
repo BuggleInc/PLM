@@ -116,13 +116,6 @@ public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 	 	}
 	}
 
-
-	public void clearPaths() {
-		for (int x = 0; x < getWorldWidth(); x++)
-			for (int y = 0; y < getWorldHeight(); y++)  
-				getMyWorld().getCell(x,y).emptyContent();
-	}
-
 	public void followShortestPath() {
 		while (! isOverBaggle()) {
 
@@ -163,7 +156,6 @@ public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 	public void run() {
 	  evaluatePaths(); // write on each case the distance to the maze exit
 	  followShortestPath(); // make the buggle follow the shortest path
-	  clearPaths(); // remove all distance marks
 	  pickUpBaggle(); // enjoy the baggle!           
 	}
 	/* END TEMPLATE */

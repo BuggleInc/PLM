@@ -1,6 +1,8 @@
 <h2>Basic Shortest Path algorithm</h2>
 
-<p>To conclude with this introductory lesson to maze solving algorithms, we will investigate another way to find the exit. The buggle in this lesson is a special buggle: he is a jedi. He can feel the Force. This means he is able to feel his environment.</p>
+<p>To conclude with this introductory lesson to maze solving algorithms, we will 
+investigate another way to find the exit. The buggle in this lesson is a special 
+buggle: he is a jedi. He can feel the Force. This means he is able to feel his environment.</p>
 
 <p>By using method <code>BuggleWorld getMyWorld()</code> he can retrieve information about the world he is leaving in.</p>
 
@@ -8,11 +10,14 @@
 	<ul>
 		<li><code>int getHeight()</code> to know the height of the world.</li>
 		<li><code>int getWidth()</code> to know the width of the world.</li>
-		<li><code>BuggleWorldCell getCell(int x, int y)</code> to retrieve the <code>BuggleWorldCell</code> object located at a specific position in the world.</li>
+		<li><code>BuggleWorldCell getCell(int x, int y)</code> to retrieve the 
+		  <code>BuggleWorldCell</code> object located at a specific position in the 
+		  world.</li>
     </ul>
 </p>
 
-<p>A <code>BuggleWorldCell</code> is an object that represents a cell of the world. On an object of this type, it is possible to call the following methods:
+<p>A <code>BuggleWorldCell</code> is an object that represents a cell of the world. On an object 
+   of this type, it is possible to call the following methods:
     <ul>		
 	    <li><code>boolean hasContent()<code> to know if something is written on the floor of this cell.</li>
 	    <li><code>void setContentFromInt(int v)</code> to write an integer value on the floor of this cell.</li>
@@ -24,17 +29,24 @@
 	</ul>
 </p>
 
-<p>It has to be noted that it is not possible to build a wall on the bottom edge or on the right edge of a cell. Therefore when such wall exists, it means it was built on a sibling cells -- as a top (respectively left) wall on the cell that is located below (respectively at the left of) the current cell.</p>
+<p>It has to be noted that it is not possible to build a wall on the bottom edge or on the right edge of a cell. 
+  Therefore when such wall exists, it means it was built on a sibling cells -- as a top (respectively left) wall 
+  on the cell that is located below (respectively at the left of) the current cell.</p>
 
 <h3>Exercise goal</h3>
 
-<p><a name="Objective"/>Write a method <code>evaluatePaths()</code> which computes a very basic shortest path algorithm. This algorithm will write on each world cell (or at least the one that are usefull) the distance from this cell to the maze exit.<br/>
-To achieve this objective, your algorithm has to find the exit of the maze on the map. Then, for every cells next to the cell where the exit is located, it has to mark these cells with a integer value of 1 (indicating the distance). Then, it has to iterate the same process to mark the cells which are at a distance of 2 and so on until it marks the cell where the buggle is located.	</p>
+<p><a name="Objective"/>Write a method <code>evaluatePaths()</code> which computes a very basic shortest path 
+  algorithm. This algorithm will write on each world cell (or at least the one that are useful) the distance 
+  from this cell to the maze exit.<br/>
+To achieve this objective, your algorithm has to find the exit of the maze on the map. Then, for every cells 
+next to the cell where the exit is located, it has to mark these cells with a integer value of 1 (indicating the 
+distance). Then, it has to iterate the same process to mark the cells which are at a distance of 2 and so on 
+until it marks the cell where the buggle is located.</p>
 
-<p>Write a method <code>followShortestPath()</code> that will make the jedi buggle to follow the shortest path. Basically the buggle has only to walk on each case with the lesser distance from the exit. You can use the method <code>void setDirection(Direction d)</code> to make your buggle look at the specific direction such as <code>Direction.NORTH</code> or <code>Direction.EAST</code>.</p>
-
-<p>Write a method <code>clearPaths</code> that will remove all the distance marks written on the floor.</p>
-
+<p>Write a method <code>followShortestPath()</code> that will make the jedi buggle to follow the shortest path. 
+Basically the buggle has only to walk on each case with the lesser distance from the exit. You can use the 
+method <code>void setDirection(Direction d)</code> to make your buggle look at the specific direction such as 
+<code>Direction.NORTH</code> or <code>Direction.EAST</code>.</p>
 
 <div class="tip" id="tip-1" alt="I'm lost now. Please give me some extra indications.">
 Use the Force Luke!
