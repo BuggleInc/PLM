@@ -32,7 +32,8 @@ public void step() {
 		int nbSteps = (Integer)getParam(0); 
 		for (int i=0;i<nbSteps;i++) {
 			step();
-			((TurmiteWorld)world).currStep = i;
+			((lessons.welcome.cells.TurmiteWorld)world).stepDone();
+			/*((TurmiteWorld)world).currStep = i;*/
 		}
 	}
 }
