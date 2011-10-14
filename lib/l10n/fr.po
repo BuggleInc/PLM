@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-07 11:05+0300\n"
-"PO-Revision-Date: 2011-10-08 16:24+0200\n"
+"POT-Creation-Date: 2011-10-13 20:47+0300\n"
+"PO-Revision-Date: 2011-10-13 20:51+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1122,7 +1122,7 @@ msgid ""
 msgstr ""
 "<a href=\"lesson://lessons.maze\">Labyrinthes</a> Saurez vous vous échaper "
 "du\n"
-"labyrinthe?\n"
+"labyrinthe?"
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:18
@@ -2321,7 +2321,7 @@ msgstr ""
 "if (<b>condition</b>):\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie()</b>\n"
 "else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon()</b>"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon()</b>\n"
 
 #. type: Content of: <p><p><p><p><p><p>
 #: src/lessons/welcome/Conditions.html:144
@@ -3583,7 +3583,8 @@ msgstr ""
 #: src/lessons/welcome/MethodsArgs.html:64
 msgid ""
 "The code of the method to write should not be really problematic for you."
-msgstr "Le code de la méthode à proprement parler ne devrait pas poser de problème."
+msgstr ""
+"Le code de la méthode à proprement parler ne devrait pas poser de problème."
 
 #. type: Content of: <p><p><p><p><h2>
 #: src/lessons/welcome/MethodsArgs.html:66
@@ -8079,8 +8080,8 @@ msgstr ""
 msgid ""
 "As said in the introduction, it is exactly the same if you decide to follow "
 "the left wall or the right one. Simply, the demo follows the left one, so "
-"you should do the same in your solution to ease the comparison of your solution "
-"and the demo."
+"you should do the same in your solution to ease the comparison of your "
+"solution and the demo."
 msgstr ""
 "Comme dit dans l'introduction, il est sans importance de décider de suivre "
 "le mur droit ou le mur gauche. Simplement, la démo suit le mur gauche, et il "

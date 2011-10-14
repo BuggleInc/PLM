@@ -1,4 +1,4 @@
-not released yet:
+20111013:
   * Fix a bug in python that were due to an extra space added in front
     of the body. Damn python indentation freaks.
   * Add a debug mode to JLM, to see more infos on problem
@@ -12,6 +12,9 @@ not released yet:
   * Graphical consistency between menu choosing the human language,
     and the one choosing the programming language
   * Show in about box where the session gets saved to avoid NFS hell
+  * Various typos and little errors hunted down by Pierre-Etienne and JC
+  * Improve shortest path exercise by not removing distance marks, so
+    that students can compare their computation with the correct one
 20111006e:
   * Allow to code in python, javascript or ruby
   * Definitely kill the linearity of lessons (combobox removed)
