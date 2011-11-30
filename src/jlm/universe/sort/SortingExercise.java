@@ -7,18 +7,11 @@ import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Entity;
-import jlm.universe.World;
 
 public class SortingExercise extends ExerciseTemplated {
 
 	public SortingExercise(Lesson lesson) {
 		super(lesson);
-	}
-
-	@Override
-	protected void setup(World[] ws) {		
-		worldDuplicate(ws);
-		computeAnswer();
 	}
 
 	@Override
