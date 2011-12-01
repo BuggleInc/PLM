@@ -1,3 +1,7 @@
+20111201:
+  * Port some more welcome exercises to Python. 
+    The translations should be updated to appear again.
+  * Port all sorting exercises to Python
 20111013:
   * Fix a bug in python that were due to an extra space added in front
     of the body. Damn python indentation freaks.
