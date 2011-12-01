@@ -122,7 +122,7 @@ public class SortingEntity extends Entity {
 		}
 		stepUI();
 	}
-	protected final int getValueCount() {
+	public final int getValueCount() {
 		return values.length;
 	}
 	public final int getValue(int i) {
