@@ -255,7 +255,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				//System.out.println("Found "+name+" in "+pl+" for "+this.name);
 			} catch (NoSuchEntityException e) {
 				if (getProgLanguages().contains(pl)) 
-					throw new RuntimeException("This exercise is said to be compatible with language "+pl+", but I fail to find an entity of name "+name+" in this language");					
+					throw new RuntimeException("Exercise "+getName()+"is said to be compatible with language "+pl+", but I fail to find an entity of name "+name+" in this language",e);					
 				/* Does not work for this exercise, but nobody said it should. I'd better find a working language */
 			}
 		}
@@ -293,14 +293,18 @@ public abstract class ExerciseTemplated extends Exercise {
 			String searchedName = null;
 			for (SourceFile sf : getSourceFiles(lang)) {
 				if (searchedName == null) {//lazy initialization
-					Pattern p = Pattern.compile(".*?([^.]*)$");
-					Matcher m = p.matcher(entityName);
-					if (m.matches())
-						searchedName = m.group(1);
-					p = Pattern.compile("Entity$");
-					m = p.matcher(searchedName);
-					searchedName = m.replaceAll("");
-
+					if (tabsNames != null) {
+						// If entities were added, use the name of the first one to detect whether this language is valid 
+						searchedName = tabsNames.get(0);
+					} else {
+						Pattern p = Pattern.compile(".*?([^.]*)$");
+						Matcher m = p.matcher(entityName);
+						if (m.matches())
+							searchedName = m.group(1);
+						p = Pattern.compile("Entity$");
+						m = p.matcher(searchedName);
+						searchedName = m.replaceAll("");
+					}
 				}
 				if (Game.getInstance().isDebugEnabled())
 					System.out.println("Saw "+sf.name+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
