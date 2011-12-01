@@ -302,7 +302,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					searchedName = m.replaceAll("");
 
 				}
-				//	System.out.println("Saw "+sf.name+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
+				if (Game.getInstance().isDebugEnabled())
+					System.out.println("Saw "+sf.name+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
 				if (sf.name.equals(searchedName)||sf.name.equals(tabName))
 					foundThisLanguage=true;
 			}
@@ -313,8 +314,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					foundALanguage = true;
 				} catch (NoSuchEntityException e) {
 					if (getProgLanguages().contains(lang)) 
-						throw new RuntimeException("This exercise is said to be compatible with language "+lang+", but I fail to find an entity for this language");					
-					/* Ok, this language does not work for this exercise. I can deal with it */
+						throw new RuntimeException("Exercise "+getName()+" is said to be compatible with language "+lang+", but I fail to find an entity for this language",e);					
+					/* Ok, this language does not work for this exercise but didn't promise anything. I can't deal with it */
 				}
 			} else {
 				foundALanguage = true;
