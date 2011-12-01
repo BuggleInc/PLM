@@ -15,5 +15,5 @@ turnRight()
 brushUp()
 forward()
 forward()
-# END SOLUTION
+# END TEMPLATE
 
