@@ -1,5 +1,7 @@
 <h2>For loops</h2>
 
+<p class="Python">Warning, this lesson is currently written in Java only. Adapt it yourself</p>
+
 <p>While loops are well adapted to situations where you want to achieve an
 action while a condition stays true, but it is less adapted to achieve a
 given action a predetermined amount of time. For example, when we wanted to
@@ -7,6 +9,19 @@ move <code>stepAmount</code> steps backward in previous exercise, you had to
 create a new variable, initialize it, and move backward until the new
 variable became equal to <code>stepAmount</code>, incrementing the new
 variable manually at the end of the loop.</p> 
+
+<p>In such situations, <code>for</code> loops become handy. Their syntax is the
+following: 
+<pre>for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
+&nbsp;&nbsp;&nbsp;<b>action</b>();
+}</pre>
+
+This code is perfectly equivalent to the following:
+<pre><b>initializing</b>;
+while (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;<b>action</b>();
+&nbsp;&nbsp;&nbsp;<b>incrementing</b>;
+}</pre>
 
 <p>In such situations, <code>for</code> loops become handy. Their syntax is the
 following: 

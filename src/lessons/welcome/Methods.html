@@ -12,7 +12,13 @@ could obey an <code>goAndGet()</code> order just like it understands a
 <code>forward()</code> one.</p>
 
 
-<p>The syntax to write a simple method called <code>goAndGet</code> is the
+<p class="Python">The syntax to write a simple method called <code>goAndGet</code> is the
+following:
+<pre>def goAndGet():
+  actions();
+  to();
+  do();</pre>
+<p class="Java">The syntax to write a simple method called <code>goAndGet</code> is the
 following:
 <pre>public void goAndGet() {
   actions();
@@ -20,14 +26,16 @@ following:
   do();
 }</pre>
 
-<p>The method body (between curly braces) can contain as many instructions as
+<p class="Java">The method body (between curly braces) can contain as many instructions as
+you want, and any construction we saw so far (for, while, if, etc).</p>
+<p class="Python">The method body (the code that is indended) can contain as many instructions as
 you want, and any construction we saw so far (for, while, if, etc).</p>
 
-<p>We will come back later on the exact signification of the
+<p class="Java">We will come back later on the exact signification of the
 <code>public</code> keyword. Let's say for now that it means that everybody
 can use this method.</p>
 
-<p><code>void</code> means that the method does not return any result. We said
+<p class="Java"><code>void</code> means that the method does not return any result. We said
 previously that the <code>isOverBaggle()</code> method returns a boolean and
 can thus be used as a condition in a if or a while. This means that it is
 declared the following way:
@@ -36,23 +44,28 @@ declared the following way:
    We will introduce in next exercise how to do this kind of tricks. For now,
 let's just write <code>void</code> at this location.</p>
 
-<p>In Java, the convention is to use lower case for the first letter of a
+<p class="Java">In Java, the convention is to use lower case for the first letter of a
 method name and concatenate every word describing the method using a upper
 case for each first letter. It is forbidden to use spaces or accentuated
 letters in a method name. That is why we write "go and get" as goAndGet().</p>
+
+<p class="Python">FIXME: add here a word about the variable naming schema. Either caseBased or as_in_C</p>
 
 <h3>Exercise goal</h3><a name="Objectives"> The goal of this exercise is to write a method called
 <code>goAndGet()</code> which does the same than in previous exercises (move
 forward until over a baggle, pick it up, move back to initial position, drop
 baggle).
 
-<p>One particularity of this exercise is that you shouldn't write directly the
+<p class="Python">One particularity of this exercise is that all your code should be written in 
+  this function, with nothing out of it. The code that calls your function will be automagically added 
+  when you click on <b>Start</b>.</p>  
+  
+<p class="Java">One particularity of this exercise is that you shouldn't write directly the
 code that the buggle should execute, but a method it should use. Actually,
 in any previous exercise, you wrote the body of a specific method called
 <code>run()</code> which gets invoked by the environment when you clic on
 <b>Start</b>. 
-
-<p>Don't try to define this method here, since the buggle already knows
+<p class="Java">Don't try to define this method here, since the buggle already knows
 it. This would cause trouble to the compiler, which would give you an error
 message in exchange. For your information, here is the <code>run()</code>
 method of this exercise:
@@ -66,9 +79,9 @@ method of this exercise:
 &nbsp;&nbsp;}
 }</pre>
 
-<p>So, your buggle will repeat 7 times (which matches the world's dimension)
-sequence constituted of the <code>goAndGet()</code> method that you should
-write, plus what is needed to shift a row to the right (turn right, move
+<p>Your buggle will repeat 7 times (which matches the world's dimension)
+sequence constituted of a call to the <code>goAndGet()</code> method that you should
+write, plus a move to get to the next row (turn right, move
 forward, turn left). As you can see, the buggle will do one step right from
 the right border of the world. It will bring it back to the left side since
 its world is a torus.</p>

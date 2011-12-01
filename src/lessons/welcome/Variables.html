@@ -5,38 +5,55 @@
    the graphical representation, but that's no reason to never manipulate some 
    data explicitly. 
 
-  <h3>Data in Java</h3>
-  Java allows to use several <i>types</i> of data, such as integers or strings
+  <h3 class="Java">Data in Java</h3>
+  <h3 class="Python">Data in Python</h3>
+  In a program, you can use several <i>types</i> of data, such as integers or strings
 of chars. If you want to use a data several times, you need to store it
 within a <i>variable</i>, which is a memory cell containing a value. It's not very 
 different from a shelve containing a book: you put your data (say '5') in the 
 variable (say 'length'), and you can retrieve it latter when you need it.
 
-  <p>Java is said to be a <i>typed</i> language, which means that it is
-only possible to store a value in a variable of the right type. Don't think
-about storing the letters of your name into an integer variable.
+  <p class="Java">Java is said to be a <i>typed</i> language, which means that it is
+	only possible to store a value in a variable of the right type. Don't think
+	about storing the letters of your name into an integer variable. In other languages (such as Python) 
+	allow you to store any kind of data in any variable without such restriction, but not in Java.</p>
+  <p class="Python">The Python language is said to <i>not typed</i>, which means you can 
+  store any type of data into a given variable. Other languages (such as Java) mandate 
+  that each variable store only data of a given type, but there is no such 
+  difficulties here.</p>
   
-  <p>To <i>declare</i> (ie, create) a variable, you just need to write its type,
-a space, and the variable name. From the existing types, we can speak of
-<b>int</b> (for integers), <b>double</b> for dot numbers, <b>boolean</b> for
-booleans (ie, values being either true or false) and <b>String</b> for char
-strings. If you want, you can specify the initial value of the variable by
-adding a equal sign (=) followed by the value after the declaration. </p>
-  <p>So, to create a variable named <b>x</b> intended to contain integers, one
-can write: <pre>int x;</pre>
-	 If you want that the variable contains 5 as initial value, you should type: <pre>int x = 5;</pre>
-  <p>Later in the program, if you want to <i>affect</i> a new value to the
-variable, that's really easy: <pre>x = 3;</pre>
-      
-<p>The syntax to create an integer variable <code>x</code> with 4 as initial
-value is the following: 
-<pre>int x = 4;</pre>
-<p>This quite the same story for strings, floating point numbers and boolean values. 
-<pre>String name = "Martin Quinson";
+<p class="Java">To <i>declare</i> (ie, create) a variable, you just need to write its type,
+  a space, and the variable name. From the existing types, we can speak of
+  <b>int</b> (for integers), <b>double</b> for dot numbers, <b>boolean</b> for
+  booleans (ie, values being either true or false) and <b>String</b> for char
+  strings. If you want, you can specify the initial value of the variable by
+  adding a equal sign (=) followed by the value after the declaration. </p>
+<p class="Java">So, to create a variable named <b>x</b> intended to contain integers, one
+  can write: <pre>int x;</pre>
+  If you want that the variable contains 5 as initial value, you should type: <pre>int x = 5;</pre></p>	
+<p class="Java">Later in the program, if you want to <i>affect</i> a new value to the
+  variable, that's really easy: <pre>x = 3;</pre>
+<p class="Java">The syntax to create an integer variable <code>x</code> with 4 as initial
+  value is the following: 
+  <pre>int x = 4;</pre></p>
+<p class="Java">This quite the same story for strings, floating point numbers and boolean values. 
+  <pre>String name = "Martin Quinson";
 double height=1.77; <span class="comment">// in meters</span>
-boolean married=true;</pre>
+boolean married=true;</pre></p>
 
+<p class="Python"><i>Declaring</i> (ie, creating) a variable in Python is 
+  dead simple: you just need to give it an initial value by writing its name, the equal sign and the value.</p>  
+<p class="Python">So, to create a variable named <b>x</b> which initial value should be 5, you should type: <pre>x = 5</pre></p>
+<p class="Python">Later in the program, if you want to <i>affect</i> a new value to the
+  variable, that's really easy: <pre>x = 3</pre>
+<p class="Python">This quite the same story for strings, floating point numbers and boolean values. 
+<pre>firstName = "Martin"
+lastName = 'Quinson' <span class="comment"># both single and double quote work here</span>
+motto = "I never finish anyth' (but I keep trying)" <span class="comment"># having single quote within double quote is fine</span> 
+height=1.77 <span class="comment"># in meters</span>
+married=True <span class="comment"># the contrary would be written False</pre></p>
 
+      
 <p>To the right of the equal symbol, you can put an expression containing constants, 
 variables and operations: 
 
@@ -66,17 +83,20 @@ example, you may want to do the following steps:
 3 if you didn't count the amount of steps done in the first phase. You can
 use a variable for that, which can be named <code>stepAmount</code>.</p>
 
-<p>Create a variable (of type <code>int</code>) before phase 1, initialize it
-to 0, and each time you move one step forward, increment its value by one
-(<code>stepAmount = stepAmount + 1;</code> or <code>stepAmount++;</code>,
-both syntaxes being equivalent).</p>
+<p class="Java">Create a variable (of type <code>int</code>) before phase 1, initialize it
+  to 0, and each time you move one step forward, increment its value by one
+  (<code>stepAmount = stepAmount + 1;</code> or <code>stepAmount++;</code>,
+  both syntaxes being equivalent).</p>
+<p class="Python">Create a variable before phase 1, initialize it
+  to 0, and each time you move one step forward, increment its value by one
+  (<code>stepAmount = stepAmount + 1</code>).</p>
 
 <p>Then, phase 3 consists in simply creating a new integer variable
 <code>doneSteps</code> initialized to 0, and do one step backward until
 <code>doneSteps</code> equals <code>stepAmount</code>, incrementing
 <code>doneSteps</code> each time.</p>
 
-<p>Please note that it is forbidden to use spaces in variable names in Java. So
+<p>Please note that it is forbidden to use spaces in variable names. So
 you can name you variable <code>stepAmount</code>, but <code>step
 Amount</code> is not a valid name.</p>
 

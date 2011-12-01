@@ -1,4 +1,4 @@
-# BEGIN TEMPLATE 
+# BEGIN SOLUTION
 def side():
     forward()
     forward()
@@ -15,5 +15,5 @@ turnRight()
 brushUp()
 forward()
 forward()
-# END TEMPLATE
+# END SOLUTION
 

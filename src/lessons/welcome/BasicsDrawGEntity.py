@@ -1,4 +1,4 @@
-# BEGIN TEMPLATE 
+# BEGIN SOLUTION
 		brushDown()
 		turnLeft()
 		forward(4)
@@ -18,5 +18,5 @@
 		turnRight()
 		forward()
 		turnLeft()
-# END TEMPLATE
+# END SOLUTION
 

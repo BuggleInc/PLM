@@ -2,28 +2,32 @@
 		
 <p>In addition to conditionals, another handy construction is the ability to
 repeat an action while a specific condition does not appear. A while loop is
-used for that, with the following Java syntax:
- <pre>while (<b>condition</b>) {
+used for that, with the following syntax:
+ <pre class="Java">while (<b>condition</b>) {
 &nbsp;&nbsp;<b>action()</b>;
 }</pre>
+ <pre class="Python">while <b>condition</b>:
+&nbsp;&nbsp;<b>action()</b></pre>
 
 <p>Naturally, if the chosen action does not modify the value of the condition,
 the buggle will do the action endlessly. The <b>stop</b> button of the
 interface becomes then handy. To test this, you can try to type the
 following code in the editor:
 
- <pre>while (true) {
+ <pre class="Java">while (true) {
 &nbsp;&nbsp;turnLeft();
 }</pre>
+ <pre class="Java">while True:
+&nbsp;&nbsp;turnLeft()</pre>
 
-The buggle will turn left while <code>true</code> is true (ie, endlessly),
+The buggle will turn left while true is true (ie, endlessly),
 or until you stop it manually using the stop button.</p>
 
 <h3>Exercise goal</h3><a name="Objective">You now have to write some code so that your buggles
 move forward until they encounter a wall. The idea is thus to do something
 like:
 <pre>while we are not facing a wall, do:
-&nbsp;&nbsp;moveForward();</pre>
+&nbsp;&nbsp;moveForward()</pre>
 
 <p>When your program works, move forward to the next exercise.</p>
 
