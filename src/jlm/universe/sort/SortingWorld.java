@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Iterator;
 import java.util.Random;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
@@ -70,6 +71,27 @@ public class SortingWorld extends World {
 	}
 	@Override
 	public String getBindings(ProgrammingLanguage lang) {
+		if (lang.equals(Game.PYTHON)) {
+			String res =
+				"def getValueCount():\n" +
+				"  return entity.getValueCount()\n" +
+				"def compare(i,j):\n" +
+				"  return entity.compare(i,j)\n" +
+				"def compareTo(i,j):\n"+
+				"  return entity.compareTo(i,j)\n" +
+				"def swap(i,j):\n" +
+				"  entity.swap(i,j)\n" +
+				"def copy(i,j):\n" +
+				"  entity.copy(i,j)\n" +
+				"def getValue(i):\n" +
+				"  return entity.getValue(i)\n" +
+				"def setValue(i,j):\n" +
+				"  entity.setValue(i,j)\n" +
+				"def sorted(i):\n" +
+				"  entity.sorted(i)\n"				
+				;
+			return res;
+		}
 		throw new RuntimeException("No binding of SortingWorld for "+lang);
 	}
 	@Override
