@@ -169,16 +169,25 @@ public abstract class ExerciseTemplated extends Exercise {
 		String debugContent = "/* The solution is displayed because we are in debug mode */\n"+
 		templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
 		templateTail.toString();
-		String skelContent = skel.toString().replaceAll("\n", " ");
-		String headContent = head.toString().replaceAll("\n", " ");
-
+		String skelContent;
+		String headContent;
+		if (lang == Game.PYTHON) { 
+			skelContent = skel.toString();
+			headContent = head.toString();
+		} else {
+			skelContent = skel.toString().replaceAll("\n", " ");
+			headContent = head.toString().replaceAll("\n", " ");
+		}
+		
 		String template = (headContent+"$body"+tail);
 
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
-		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
-		Matcher newLineMatcher = newLinePattern.matcher(template);
-		template = newLineMatcher.replaceAll(" ");
-
+		if (lang != Game.PYTHON) {
+			Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
+			Matcher newLineMatcher = newLinePattern.matcher(template);
+			template = newLineMatcher.replaceAll(" ");
+		}
+		
 		/* Apply all requested rewrites, if any */
 		if (patternString != null) {
 			Map<String, String> patterns = new HashMap<String, String>();
