@@ -1,5 +1,7 @@
 <h2>Boucles pour<tt> (for)</tt></h2>
 
+<p class="Python">Warning, this lesson is currently written in Java only. Adapt it yourself</p>
+
 <p>Les boucles <tt>while</tt> sont bien adaptées aux situations où l'on veut
 réaliser une action tant qu'une condition est réalisée, mais elles sont
 moins pratiques pour réaliser une action un nombre prédéterminé de fois. Par
@@ -8,6 +10,19 @@ précédent, il fallait créer une nouvelle variable, l'initialiser, et
 demander à reculer tant que la nouvelle variable n'était pas égale à
 <code>nbPas</code>, en incrémentant cette variable à la main à la fin du
 corps de la boucle.</p> 
+
+<p>Dans ce genre de cas, les boucles de type <code>for</code> sont plus
+pratique. Leur syntaxe est la suivante : 
+<pre>for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {
+&nbsp;&nbsp;&nbsp;<b>action</b>();
+}</pre>
+
+Ce code est parfaitement équivalent à celui-ci :
+<pre><b>initialisation</b>;
+while (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;<b>action</b>();
+&nbsp;&nbsp;&nbsp;<b>incrémentation</b>;
+}</pre>
 
 <p>Dans ce genre de cas, les boucles de type <code>for</code> sont plus
 pratique. Leur syntaxe est la suivante : 
