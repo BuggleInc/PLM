@@ -15,6 +15,7 @@ import javax.script.ScriptEngineManager;
 import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
+import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.ui.WorldView;
@@ -131,7 +132,9 @@ public abstract class World {
 	}
 
 	public void runEntities(List<Thread> runnerVect) {
-		// Logger.log("World:runEntities","");
+		if (Game.getInstance().isDebugEnabled())
+			Logger.log("World:runEntities","Programming language: "+Game.getProgrammingLanguage());
+		
 		for (final Entity b : entities) {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
