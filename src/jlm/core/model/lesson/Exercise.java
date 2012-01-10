@@ -125,26 +125,28 @@ public abstract class Exercise  extends Lecture {
 				if (sf.isCompilable()) 
 					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
 
-		if (sources.isEmpty())
+		if (sources.isEmpty()) 
 			return;
 		
-		/* Do the compile */
-		try {
-			DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-			compiledClasses = compiler.compile(sources, errs);
+		/* Do the compile (but only if the current language is Java: scripts are not compiled of course) */
+		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
+			try {
+				DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
+				compiledClasses = compiler.compile(sources, errs);
 
-			out.log(errs);
-		} catch (JLMCompilerException e) {
-			System.err.println("Compilation error:");
-			out.log(e.getDiagnostics());
-			lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
+				out.log(errs);
+			} catch (JLMCompilerException e) {
+				System.err.println("Compilation error:");
+				out.log(e.getDiagnostics());
+				lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
 
-			if (Game.getInstance().isDebugEnabled() && sourceFiles.get(Game.JAVA) != null)
-				for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-					if (sf.isCompilable()) 
-						System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
-			
-			throw e;
+				if (Game.getInstance().isDebugEnabled() && sourceFiles.get(Game.JAVA) != null)
+					for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
+						if (sf.isCompilable()) 
+							System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
+
+				throw e;
+			}
 		}
 		
 		/* Setup the scripts for the other languages */
