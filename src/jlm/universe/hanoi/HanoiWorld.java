@@ -108,6 +108,11 @@ public class HanoiWorld extends World {
 		return true;
 	}
 	
+	@Override
+	public String diffTo(World world) {
+		return null; // FIXME: how to represent this textually?
+	}
+	
 	/* Here comes the world logic */
 	/* BEGIN HIDDEN */
 	private Vector<Integer> slots[];
@@ -142,9 +147,5 @@ public class HanoiWorld extends World {
 	}
 	/* END HIDDEN */
 
-	@Override
-	public String diffTo(World world) {
-		return null; // FIXME: how to represent this textually?
-	}
 }
 /* END TEMPLATE */
