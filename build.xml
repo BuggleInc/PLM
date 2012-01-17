@@ -162,7 +162,7 @@
     <target name="tar" description="Create a tar file containing the sources">
       <tar destfile="${dist.dir}/jlm-${version}.tar.gz" compression="gzip"
            basedir="."
-           includes="src/**/*.py src/**/*.java src/**/*.html src/**/*.css src/**/*.png src/**/*.map lib/resources/**"
+           includes="ChangeLog src/**/*.py src/**/*.java src/**/*.html src/**/*.css src/**/*.png src/**/*.map lib/resources/**"
            excludes="**/.gitignore" />
     </target>
 <!-- FIXME: doesnt work yet
