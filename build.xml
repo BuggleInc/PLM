@@ -164,5 +164,12 @@
            basedir="."
            includes="src/**/*.py src/**/*.java src/**/*.html src/**/*.css src/**/*.png src/**/*.map lib/resources/**"
            excludes="**/.gitignore" />
-    </target>      
+    </target>
+<!-- FIXME: doesnt work yet
+    <target name="updateversion" description="Update the version number in the properties file">
+      <PropertyFile file="lib/resources/jlm.configuration.properties">
+        <entry key="jlm.minor.version" value="${version}" operation="="/>
+      </PropertyFile>
+    </target>
+-->
 </project>
