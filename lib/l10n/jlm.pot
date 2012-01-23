@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-12-01 02:59+0100\n"
+"POT-Creation-Date: 2012-01-23 14:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -822,7 +822,7 @@ msgid ""
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
 "ask them to pickup a baggle from an empty cell, or a "
 "AlreadyHaveBaggleException exception if they already carry a baggle.  Trying "
-"to drop a baggel on a cell already containing one throws an "
+"to drop a baggle on a cell already containing one throws an "
 "AlreadyHaveBaggleException exception."
 msgstr ""
 
@@ -6035,7 +6035,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve1.html:13 src/lessons/recursion/DragonCurve2.html:27 src/lessons/recursion/DragonCurve2.html:39
+#: src/lessons/recursion/DragonCurve1.html:13 src/lessons/recursion/DragonCurve2.html:27
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -6123,6 +6123,14 @@ msgstr ""
 msgid ""
 "The new point's coordinate (u, v) introduced by the "
 "<code>dragonReverse()</code> are:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/recursion/DragonCurve2.html:39
+#, no-wrap
+msgid ""
+"u = (x + z)/2 - (t - y)/2\n"
+"v = (y + t)/2 + (z - x)/2\n"
 msgstr ""
 
 #. type: Content of: <p>
@@ -6289,7 +6297,7 @@ msgstr ""
 #: src/lessons/maze/WallFollowerMaze.html:13
 msgid ""
 "This algorithm works here because there is no island of isolated walls, so "
-"our buggle cannot loop around for ever without encountering the baggel it "
+"our buggle cannot loop around for ever without encountering the baggle it "
 "looks for."
 msgstr ""
 
