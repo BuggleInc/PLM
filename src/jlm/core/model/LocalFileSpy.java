@@ -50,7 +50,7 @@ public class LocalFileSpy implements ProgressSpyListener {
 				for (String localPath : paths) {
 					localPath = localPath.replace("$HOME$", System.getProperty("user.home"));
 					File localPropertiesFileParentDirectory = new File(localPath);
-					File localPropertiesFileDirectory = new File(localPath, Game.getInstance().getLocalPropertiesSubdirectory());
+					File localPropertiesFileDirectory = new File(localPath, Game.getLocalPropertiesSubdirectory());
 
 					if (!localPropertiesFileParentDirectory.exists()) {
 						continue;
