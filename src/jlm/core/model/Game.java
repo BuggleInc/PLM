@@ -91,6 +91,7 @@ public class Game implements IWorldView {
 		addProgressSpyListener(new IdenticaSpy());
 		addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
+        addProgressSpyListener(new AppEngineSpy());
 	}
 
 	public Lesson loadLesson(String lessonName) {

@@ -64,7 +64,7 @@ public class LocalFileSpy implements ProgressSpyListener {
 
 				}
 			} else {
-				int choice = JOptionPane.showConfirmDialog(null,
+				JOptionPane.showConfirmDialog(null,
                         "No path provided in the property file (or property file not found)\n" +
                                 "You may want to export your session with the menu 'Session/Export session'\n" +
                                 "to save your work manually.\n\n" +
