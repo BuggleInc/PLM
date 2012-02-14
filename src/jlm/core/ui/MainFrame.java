@@ -23,6 +23,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
+import com.sun.corba.se.impl.orb.PropertyOnlyDataCollector;
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
@@ -32,18 +33,7 @@ import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
-import jlm.core.ui.action.AbstractGameAction;
-import jlm.core.ui.action.ExportSession;
-import jlm.core.ui.action.ImportSession;
-import jlm.core.ui.action.PlayDemo;
-import jlm.core.ui.action.QuitGame;
-import jlm.core.ui.action.Reset;
-import jlm.core.ui.action.RevertExercise;
-import jlm.core.ui.action.SetLanguage;
-import jlm.core.ui.action.SetProgLanguage;
-import jlm.core.ui.action.StartExecution;
-import jlm.core.ui.action.StepExecution;
-import jlm.core.ui.action.StopExecution;
+import jlm.core.ui.action.*;
 import jlm.universe.World;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
@@ -58,6 +48,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton stopButton;
 	private JButton resetButton;
 	private JButton demoButton;
+    private JButton alertButton;
 	private LoggerPanel outputArea;
 	
 	private JSplitPane mainPanel;
@@ -305,6 +296,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		demoButton = new PropagatingButton(new PlayDemo(g, "Demo", 
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
+
+        alertButton = new PropagatingButton(new Alert(g, "Alert",
+                ResourcesCache.getIcon("resources/alert.png")));
 		
 
 		toolBar.add(startButton);
@@ -312,6 +306,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
 		toolBar.add(demoButton);
+        toolBar.add(alertButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 	}

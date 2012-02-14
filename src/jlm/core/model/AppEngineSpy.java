@@ -21,7 +21,7 @@ public class AppEngineSpy implements ProgressSpyListener {
             username = "John Doe";
 
         try {
-            server = new URL(Game.getProperty("jlm.appengine.url"));
+            server = new URL(Game.getProperty("jlm.appengine.url") + "/student");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,6 @@ public class AppEngineSpy implements ProgressSpyListener {
             wr.flush();
 
             // Get response data and print it
-            System.out.println("Server response:");
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
             while((line = br.readLine()) != null)
