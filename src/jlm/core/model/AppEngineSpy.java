@@ -2,9 +2,7 @@ package jlm.core.model;
 
 import jlm.core.model.lesson.Exercise;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -51,7 +49,17 @@ public class AppEngineSpy implements ProgressSpyListener {
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
             wr.write(data);
             wr.flush();
+
+            // Get response data and print it
+            System.out.println("Server response:");
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            while((line = br.readLine()) != null)
+                System.out.println(line);
+
             wr.close();
+            br.close();
+          
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {

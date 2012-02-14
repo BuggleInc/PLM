@@ -88,8 +88,8 @@ public class Game implements IWorldView {
 	private Game() {
 		Game.loadProperties();
 		loadSession();
-		addProgressSpyListener(new IdenticaSpy());
-		addProgressSpyListener(new TwitterSpy());
+		//addProgressSpyListener(new IdenticaSpy());
+		//addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new AppEngineSpy());
 	}
