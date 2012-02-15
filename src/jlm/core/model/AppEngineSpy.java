@@ -1,5 +1,6 @@
 package jlm.core.model;
 
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
 
 import java.io.*;
@@ -7,6 +8,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Set;
 
 public class AppEngineSpy implements ProgressSpyListener {
     
@@ -30,38 +33,63 @@ public class AppEngineSpy implements ProgressSpyListener {
 
     @Override
     public void executed(Exercise exo) {
-        String exoName = exo.getName();
-        String exoLang = exo.lastResult.language.toString();
-        boolean success = exo.isSuccessfullyPassed();
-
-
+    	
+        HashMap<String, String> parameters = new HashMap<String, String>();
+    	
+        ExecutionProgress lastResult = exo.lastResult;
+        
+        // Retrieve appropriate parameters regarding the current exercise
+        parameters.put("username", 		username);
+        parameters.put("exoname", 		exo.getName() );
+        parameters.put("exolang", 		lastResult.language.toString() );
+        parameters.put("passedtests", 	lastResult.passedTests +"" );
+        parameters.put("totaltests", 	lastResult.totalTests +"" );
+        
+        
         try {
-            // Construct data
-            String data;
-            data = URLEncoder.encode("exoname", "UTF-8") + "=" + URLEncoder.encode(exoName, "UTF-8");
-            data += "&" + URLEncoder.encode("exolang", "UTF-8") + "=" + URLEncoder.encode(exoLang, "UTF-8");
-            data += "&" + URLEncoder.encode("exosuccess", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(success), "UTF-8");
-            data += "&" + URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
-
-            // Send data
-            URLConnection conn = server.openConnection();
-            conn.setDoOutput(true);
-            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-            wr.write(data);
-            wr.flush();
-
-            // Get response data and print it
-            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String line;
-            while((line = br.readLine()) != null)
-                System.out.println(line);
-
-            wr.close();
-            br.close();
-          
+        	// Construct request query
+        	String query = "";
+        	
+        	Set<String> paramKeys = parameters.keySet();
+        	boolean putDelim = false;
+        	for (String key : paramKeys) 
+        	{      		
+        		if (putDelim) query += "&";
+        		else putDelim = true;
+        		
+        		query += key + "=" + URLEncoder.encode(parameters.get(key), "UTF-8");
+        	}
+        	
+        	this.sendQuery(query);
+        	
         } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+        
+    }
+    
+    
+    
+    private void sendQuery(String query) {
+    	try {
+    		
+	    	// Send data
+	        URLConnection conn = server.openConnection();
+	        conn.setDoOutput(true);
+	        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+	        wr.write(query);
+	        wr.flush();
+	
+	        // Get response data and print it
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        String line;
+	        while((line = br.readLine()) != null)
+	            System.err.println(line);
+	
+	        wr.close();
+	        br.close();
+	        
+	    }  catch (IOException e) {
             // e.printStackTrace();
             System.out.println("Unable to contact JLMServer");
         }
