@@ -47,7 +47,7 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
-	private String currentCourseId = null;
+	private Course currentCourse = null;
 
 	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java","java");
 	public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js");
@@ -96,7 +96,7 @@ public class Game implements IWorldView {
 	}
 
 	public Lesson loadLesson(String lessonName) {
-		statusArgAdd("Load lesson "+lessonName);
+		statusArgAdd("Load lesson " + lessonName);
 		Lesson lesson = lessons.get(lessonName);
 		if (lesson == null) {
 			try {
@@ -666,14 +666,21 @@ public class Game implements IWorldView {
      * JLM student with a course started by a teacher.
      */
     public String getCourseID() {
-    	if (this.currentCourseId == null)
+    	if (this.currentCourse == null)
     		return "";
     	else
-    		return currentCourseId;
+    		return currentCourse.getCourseId();
     }
     
     public void setCourseID(String courseID) {
-    	this.currentCourseId = courseID;
+    	this.currentCourse.setCourseId(courseID);
     }
 
+    public Course getCurrentCourse() {
+        return currentCourse;
+    }
+
+    public void setCurrentCourse(Course currentCourse) {
+        this.currentCourse = currentCourse;
+    }
 }
