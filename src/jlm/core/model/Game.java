@@ -47,7 +47,7 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
-	private Course currentCourse = null;
+	private Course currentCourse;
 
 	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java","java");
 	public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js");
@@ -89,10 +89,13 @@ public class Game implements IWorldView {
 	private Game() {
 		Game.loadProperties();
 		loadSession();
+
 		//addProgressSpyListener(new IdenticaSpy());
 		//addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new AppEngineSpy());
+
+        currentCourse = new Course();
 	}
 
 	public Lesson loadLesson(String lessonName) {
