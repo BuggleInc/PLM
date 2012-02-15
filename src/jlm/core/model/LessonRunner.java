@@ -16,7 +16,7 @@ import jlm.core.ui.ResourcesCache;
  * This class runs the student code of the current exercise in a separated thread 
  * when the Run button is clicked. The run and demo buttons are disabled until the demo ends.
  * 
- * It sends a twitter update when the exercise is successfully passed.
+ * It sends an update to the remote GoogleAppEngine when the exercise is successfully passed.
  * 
  * Activated by {@link Game#startExerciseExecution()} and {@link Game#startExerciseStepExecution()}.
  */
