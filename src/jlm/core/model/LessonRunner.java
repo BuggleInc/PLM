@@ -21,7 +21,7 @@ import jlm.core.ui.ResourcesCache;
  * Activated by {@link Game#startExerciseExecution()} and {@link Game#startExerciseStepExecution()}.
  */
 public class LessonRunner extends Thread {
-
+	
 	private Game game;
 	private List<Thread> runners = null; // threads who run entities from lesson
 

@@ -89,9 +89,10 @@ public class AppEngineSpy implements ProgressSpyListener {
 	        wr.close();
 	        br.close();
 	        
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
+	    }  catch (IOException e) {
+            // e.printStackTrace();
+            System.out.println("Unable to contact JLMServer");
+        }
     }
 
 }
