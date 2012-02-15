@@ -28,18 +28,21 @@ public class AppEngineSpy implements ProgressSpyListener {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-
     }
-
+    
+    
     @Override
     public void executed(Exercise exo) {
     	
         HashMap<String, String> parameters = new HashMap<String, String>();
+        Game game = Game.getInstance();
     	
         ExecutionProgress lastResult = exo.lastResult;
         
         // Retrieve appropriate parameters regarding the current exercise
-        parameters.put("username", 		username);
+        parameters.put("username", 		username );
+        parameters.put("course_id", 	game.getCourseID() );
+        
         parameters.put("exoname", 		exo.getName() );
         parameters.put("exolang", 		lastResult.language.toString() );
         parameters.put("passedtests", 	lastResult.passedTests +"" );
@@ -61,6 +64,7 @@ public class AppEngineSpy implements ProgressSpyListener {
         	}
         	
         	this.sendQuery(query);
+        	System.out.println(query);
         	
         } catch (UnsupportedEncodingException e) {
 	        e.printStackTrace();

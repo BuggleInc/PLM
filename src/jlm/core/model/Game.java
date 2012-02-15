@@ -47,6 +47,7 @@ public class Game implements IWorldView {
 	private static Game instance = null;
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
+	private String currentCourseId = null;
 
 	public static final ProgrammingLanguage JAVA = new ProgrammingLanguage("Java","java");
 	public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js");
@@ -107,7 +108,7 @@ public class Game implements IWorldView {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
-			}		
+			}
 		}
 		sessionKit.loadLesson(null, lesson);
 		setCurrentLesson(lesson);
@@ -657,5 +658,22 @@ public class Game implements IWorldView {
         return LOCAL_PROPERTIES_SUBDIRECTORY;
     }
 
+    
+    
+    /*
+     * Getter and Setter for the course ID for the current session.
+     * This ID will be used by the GoogleAppEngine spy, to associate this
+     * JLM student with a course started by a teacher.
+     */
+    public String getCourseID() {
+    	if (this.currentCourseId == null)
+    		return "";
+    	else
+    		return currentCourseId;
+    }
+    
+    public void setCourseID(String courseID) {
+    	this.currentCourseId = courseID;
+    }
 
 }

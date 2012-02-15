@@ -145,7 +145,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
-
+		
+		// Teacher console menu item (shown only if defined in the JLM properties)
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
             menuItem = new JMenuItem(new AbstractGameAction(g, "Teacher Console") {
 
@@ -162,7 +163,24 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
             menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
             menu.add(menuItem);
         }
+        
+        // Menu item to change the current Course
+        menuItem = new JMenuItem(new AbstractGameAction(g, "Change your course") {
 
+            private JDialog dialog;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // launch teacher console
+                if(dialog == null)
+                    dialog = new CourseChangeDialog();
+                dialog.setVisible(true);
+            }
+        });
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
+        menu.add(menuItem);
+        
+        
 		menuItem = new JMenuItem(new QuitGame(g, "Quit", null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
