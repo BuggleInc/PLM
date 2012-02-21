@@ -79,7 +79,7 @@ public class Course {
         
     }
 
-    public static ArrayList<String> getAllCoursesId(){
+    public ArrayList<String> getAllCoursesId() throws IOException{
         ArrayList<String> ids = new ArrayList<String>();
 
         // get data from JLMServer
@@ -106,8 +106,6 @@ public class Course {
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("Unable to contact JLMServer");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }

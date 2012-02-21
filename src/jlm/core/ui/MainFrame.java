@@ -53,8 +53,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	
 	private JSplitPane mainPanel;
 	
+	private static final String frameTitle = "Java Learning Machine";
+	
+	
 	private MainFrame() {
-		super("Java Learning Machine");
+		super(frameTitle);
 		Reader.setLocale(this.getLocale().getLanguage());
 		initComponents(Game.getInstance());
 	}
@@ -177,7 +180,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
                 dialog.setVisible(true);
             }
         });
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_I, ActionEvent.CTRL_MASK));
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
         menu.add(menuItem);
         
         
@@ -308,7 +311,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		setJMenuBar(menuBar);
 
 	}
-
+	
+	
+	public void appendToTitle(String addendum) {
+		this.setTitle(MainFrame.frameTitle +"      "+ addendum);
+	}
+	
+	
 	private void initToolBar(Game g) {
 		JToolBar toolBar = new JToolBar();
 		toolBar.setFloatable(true);

@@ -41,7 +41,7 @@ public class AppEngineSpy implements ProgressSpyListener {
         
         // Retrieve appropriate parameters regarding the current exercise
         parameters.put("username", 		username );
-        parameters.put("course_id", 	game.getCourseID() );
+        parameters.put("course", 	game.getCourseID() );
         
         parameters.put("exoname", 		exo.getName() );
         parameters.put("exolang", 		lastResult.language.toString() );
