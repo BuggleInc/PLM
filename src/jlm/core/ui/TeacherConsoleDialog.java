@@ -2,6 +2,9 @@ package jlm.core.ui;
 
 import jlm.core.model.Course;
 import jlm.core.model.Game;
+import jlm.core.ui.action.CreateCourse;
+import jlm.core.ui.action.DeleteCourse;
+import jlm.core.ui.action.RefreshCourse;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,12 +17,12 @@ import java.util.HashMap;
 
 public class TeacherConsoleDialog extends JDialog{
     
-    private Course course;
+    private Game game;
     
     public TeacherConsoleDialog() {
         super(MainFrame.getInstance(), "The JLM Teacher Console", false);
 
-        course = Game.getInstance().getCurrentCourse();
+        game = Game.getInstance();
         initComponent();
     }
 
@@ -29,13 +32,13 @@ public class TeacherConsoleDialog extends JDialog{
         JToolBar toolBar = new JToolBar();
         toolBar.setBorder(BorderFactory.createEtchedBorder());
         
-        JButton newButton = new JButton("New");
+        JButton newButton = new JButton(new CreateCourse(game, "Create course"));
         newButton.setBorderPainted(false);
 
-        JButton refreshButton = new JButton("Refresh");
+        JButton refreshButton = new JButton(new RefreshCourse(game, "Refresh"));
         refreshButton.setBorderPainted(false);
 
-        JButton deleteButton = new JButton("Delete");
+        JButton deleteButton = new JButton(new DeleteCourse(game, "Delete"));
         deleteButton.setBorderPainted(false);
 
         toolBar.add(newButton);

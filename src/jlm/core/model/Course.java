@@ -8,6 +8,10 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Class to manage course data online
+ * It has an id and allows to save/retrieve exos/users results by course
+ */
 public class Course {
 
     private static URL teacherServer;
@@ -33,10 +37,35 @@ public class Course {
         }
     }
 
+    /**
+     * Create a new course on the server
+     * For example top_quinson
+     */
     public void create(){
-        
+        try {
+            // Construct data
+            String data;
+            data = URLEncoder.encode("action", "UTF-8") + "=" + URLEncoder.encode("new", "UTF-8");
+            data += "&" + URLEncoder.encode("course", "UTF-8") + "=" + URLEncoder.encode(courseId, "UTF-8");
+
+            // Send data
+            URLConnection conn = teacherServer.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(data);
+            wr.close();
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Unable to contact JLMServer");
+        }
     }
-    
+
+    /**
+     * Download updated data from server
+     * It loads a list of results by student and by exercise
+     */
     public void refresh(){
 
         // get data from JLMServer
@@ -74,19 +103,46 @@ public class Course {
         System.out.println(exoResults);
 
     }
-    
+
+    /**
+     * Delete the course on the server
+     * All student and exercises results will be removed
+     */
     public void delete(){
-        
+        try {
+            // Construct data
+            String data;
+            data = URLEncoder.encode("action", "UTF-8") + "=" + URLEncoder.encode("remove", "UTF-8");
+            data += "&" + URLEncoder.encode("course", "UTF-8") + "=" + URLEncoder.encode(courseId, "UTF-8");
+
+            // Send data
+            URLConnection conn = teacherServer.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(data);
+            wr.close();
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Unable to contact JLMServer");
+        }
+
     }
 
-    public ArrayList<String> getAllCoursesId() throws IOException{
+
+    /**
+     * Get all courses identifiers from the server
+     * It allows to display it in form, to select the current course
+     * @return list of all courses on the server
+     */
+    public ArrayList<String> getAllCoursesId() throws IOException {
         ArrayList<String> ids = new ArrayList<String>();
 
         // get data from JLMServer
         try {
             // Construct data
-            String data;
-            data = URLEncoder.encode("", "UTF-8");
+            String data = URLEncoder.encode("", "UTF-8");
 
             // Send data
             URLConnection conn = courseServer.openConnection();
