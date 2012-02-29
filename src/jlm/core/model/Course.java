@@ -17,7 +17,7 @@ public class Course {
     private static URL teacherServer;
     private static URL courseServer;
     private String courseId;
-    private HashMap<String, Integer> usersResults;
+    private HashMap<String, Integer> studentsResults;
     private HashMap<String, Integer> exoResults;
     
     public Course() { 
@@ -26,7 +26,7 @@ public class Course {
     
     public Course(String id){
         courseId = id;
-        usersResults = new HashMap<String, Integer>();
+        studentsResults = new HashMap<String, Integer>();
         exoResults = new HashMap<String, Integer>();
 
         try {
@@ -53,7 +53,15 @@ public class Course {
             conn.setDoOutput(true);
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
             wr.write(data);
+
+            // Get response data and print it
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        String line;
+	        while((line = br.readLine()) != null)
+	            System.out.println(line);
+
             wr.close();
+            br.close();
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -84,8 +92,8 @@ public class Course {
             // Get results
             InputStream is = conn.getInputStream();
             ObjectInputStream ois = new ObjectInputStream(is);
-            usersResults = (HashMap<String, Integer>)ois.readObject();
-            if(usersResults != null)
+            studentsResults = (HashMap<String, Integer>)ois.readObject();
+            if(studentsResults != null)
                 exoResults = (HashMap<String, Integer>)ois.readObject();
 
             ois.close();
@@ -99,7 +107,7 @@ public class Course {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(usersResults);
+        System.out.println(studentsResults);
         System.out.println(exoResults);
 
     }
@@ -120,7 +128,15 @@ public class Course {
             conn.setDoOutput(true);
             OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
             wr.write(data);
+
+            // Get response data and print it
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        String line;
+	        while((line = br.readLine()) != null)
+	            System.out.println(line);
+
             wr.close();
+            br.close();
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -180,12 +196,12 @@ public class Course {
         this.courseId = courseId;
     }
 
-    public HashMap<String, Integer> getUsersResults() {
-        return usersResults;
+    public HashMap<String, Integer> getStudentsResults() {
+        return studentsResults;
     }
 
-    public void setUsersResults(HashMap<String, Integer> usersResults) {
-        this.usersResults = usersResults;
+    public void setStudentsResults(HashMap<String, Integer> studentsResults) {
+        this.studentsResults = studentsResults;
     }
 
     public HashMap<String, Integer> getExoResults() {
