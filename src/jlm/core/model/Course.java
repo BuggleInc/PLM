@@ -48,6 +48,7 @@ public class Course {
             data = URLEncoder.encode("action", "UTF-8") + "=" + URLEncoder.encode("new", "UTF-8");
             data += "&" + URLEncoder.encode("course", "UTF-8") + "=" + URLEncoder.encode(courseId, "UTF-8");
 
+            System.out.println("request:"+data);
             // Send data
             URLConnection conn = teacherServer.openConnection();
             conn.setDoOutput(true);

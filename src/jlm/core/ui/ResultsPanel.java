@@ -3,6 +3,7 @@ package jlm.core.ui;
 import jlm.core.model.Course;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 
 public class ResultsPanel extends JPanel {
@@ -14,10 +15,17 @@ public class ResultsPanel extends JPanel {
         studentsResults = course.getStudentsResults();
         exosResults = course.getExoResults();
 
+        // for test only
+        studentsResults.put("julien", 90);
+        exosResults.put("pidr", 10);
+
         initComponents();
     }
 
     private void initComponents() {
+
+        setLayout(new BorderLayout());
+
         JPanel studentsResultsPanel = new JPanel();
         studentsResultsPanel.setBorder(BorderFactory.createTitledBorder("Results by student"));
 
@@ -44,7 +52,7 @@ public class ResultsPanel extends JPanel {
             graph.setValue(exosResults.get(exo));
         }
 
-        add(studentsResultsPanel);
-        add(exosResultsPanel);
+        add(BorderLayout.NORTH, studentsResultsPanel);
+        add(BorderLayout.SOUTH, exosResultsPanel);
     }
 }
