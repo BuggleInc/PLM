@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-12-01 02:59+0100\n"
+"POT-Creation-Date: 2012-01-23 14:58+0100\n"
 "PO-Revision-Date: 2011-10-13 20:51+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -989,12 +989,20 @@ msgstr "Note sur les exceptions"
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/bugglequest/BuggleWorld.html:42
 #: src/lessons/welcome/cells/TurmiteWorld.html:42
+#, fuzzy
+#| msgid ""
+#| "Regular buggles throw a BuggleWallException exception if you ask them to "
+#| "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if "
+#| "you ask them to pickup a baggle from an empty cell, or a "
+#| "AlreadyHaveBaggleException exception if they already carry a baggle.  "
+#| "Trying to drop a baggel on a cell already containing one throws an "
+#| "AlreadyHaveBaggleException exception."
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
 "ask them to pickup a baggle from an empty cell, or a "
 "AlreadyHaveBaggleException exception if they already carry a baggle.  Trying "
-"to drop a baggel on a cell already containing one throws an "
+"to drop a baggle on a cell already containing one throws an "
 "AlreadyHaveBaggleException exception."
 msgstr ""
 "Les buggles normales lèvent une exception BuggleWallException si on cherche "
@@ -7931,7 +7939,6 @@ msgstr ""
 #. type: Content of: <p><pre>
 #: src/lessons/recursion/DragonCurve1.html:13
 #: src/lessons/recursion/DragonCurve2.html:27
-#: src/lessons/recursion/DragonCurve2.html:39
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -8048,6 +8055,19 @@ msgid ""
 msgstr ""
 "Les coordonnées (u, v) du nouveau point introduit par la méthode "
 "<code>dragonInverse()</code> seront :"
+
+#. type: Content of: <p><pre>
+#: src/lessons/recursion/DragonCurve2.html:39
+#, fuzzy, no-wrap
+#| msgid ""
+#| "u = (x + z)/2 + (t - y)/2\n"
+#| "v = (y + t)/2 - (z - x)/2\n"
+msgid ""
+"u = (x + z)/2 - (t - y)/2\n"
+"v = (y + t)/2 + (z - x)/2\n"
+msgstr ""
+"u = (x + z)/2 + (t - y)/2\n"
+"v = (y + t)/2 - (z - x)/2\n"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/DragonCurve2.html:45
@@ -8278,9 +8298,14 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFollowerMaze.html:13
+#, fuzzy
+#| msgid ""
+#| "This algorithm works here because there is no island of isolated walls, "
+#| "so our buggle cannot loop around for ever without encountering the baggel "
+#| "it looks for."
 msgid ""
 "This algorithm works here because there is no island of isolated walls, so "
-"our buggle cannot loop around for ever without encountering the baggel it "
+"our buggle cannot loop around for ever without encountering the baggle it "
 "looks for."
 msgstr ""
 "Cet algorithme fonctionne ici car il n'y a pas d'île de murs isolés, ce qui "

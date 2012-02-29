@@ -1,3 +1,5 @@
+20120116:
+  * Add an ant target to generate a source tgz (for Debian packaging)
 20120110:
   * Do not even try to compile the Java sources if we were asked to
     used another language, such as Python.

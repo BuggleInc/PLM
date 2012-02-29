@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="dist" name="JLM">
 
-  <property name="version" value="1.1"/>
+  <property name="version" value="20120116"/>
 
 	<property name="base.dir" value="."/>
     <property name="dist.dir" value="${base.dir}/dist"/>
@@ -32,14 +32,14 @@
 	
 	<target name="dist" depends="compile" description="build a standalone application jar file">
 		<mkdir dir="${dist.dir}"/>
-		<jar destfile="${dist.dir}/jlm.jar" filesetmanifest="mergewithoutmain">
+		<jar destfile="${dist.dir}/jlm-${version}.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
 				<attribute name="Built-By" value="M. Quinson and G. Oster" />
 				<attribute name="Main-Class" value="jlm.core.ui.JavaLearningMachine" />
 				<attribute name="Class-Path" value="." />
 			</manifest>
 			<fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
-			<fileset dir="${src.dir}" includes="**/*.py **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/> 
+			<fileset dir="${src.dir}" includes="**/*.py **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
 			<fileset dir="${lib.dir}" excludes="*.jar *.pl l10n/*"/>
 			<!--<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-2.1.0-SNAPSHOT.jar" /> -->
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />	
@@ -159,4 +159,17 @@
             <fileset dir="${src.dir}/universe" includes="**/*.java" />
         </javadoc>
     </target>
+    <target name="tar" description="Create a tar file containing the sources">
+      <tar destfile="${dist.dir}/jlm-${version}.tar.gz" compression="gzip"
+           basedir="."
+           includes="ChangeLog build.xml src/**/*.py src/**/*.java src/**/*.html src/**/*.css src/**/*.png src/**/*.map lib/resources/**"
+           excludes="**/.gitignore" />
+    </target>
+<!-- FIXME: doesnt work yet
+    <target name="updateversion" description="Update the version number in the properties file">
+      <PropertyFile file="lib/resources/jlm.configuration.properties">
+        <entry key="jlm.minor.version" value="${version}" operation="="/>
+      </PropertyFile>
+    </target>
+-->
 </project>
