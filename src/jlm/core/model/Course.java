@@ -66,7 +66,7 @@ public class Course {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Unable to contact JLMServer");
+            e.printStackTrace();
         }
     }
 
@@ -103,7 +103,7 @@ public class Course {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Unable to contact JLMServer");
+            e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -141,7 +141,7 @@ public class Course {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Unable to contact JLMServer");
+            e.printStackTrace();
         }
 
     }
