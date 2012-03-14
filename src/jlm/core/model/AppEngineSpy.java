@@ -11,7 +11,7 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Set;
 
-public class AppEngineSpy implements ProgressSpyListener {
+public class AppEngineSpy implements ServerSpy {
     
     private String username;
     private URL server;
@@ -74,7 +74,7 @@ public class AppEngineSpy implements ProgressSpyListener {
     
     
     
-    private void sendQuery(String query) {
+    public void sendQuery(String query) {
     	try {
     		
 	    	// Send data

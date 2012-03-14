@@ -1,22 +1,5 @@
 package jlm.core.model;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.InvalidPropertiesFormatException;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Vector;
-
-import javax.swing.JOptionPane;
-
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
@@ -29,6 +12,10 @@ import jlm.core.ui.MainFrame;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
+
+import javax.swing.*;
+import java.io.*;
+import java.util.*;
 
 /*
  *  core model which contains all known exercises.
@@ -95,7 +82,7 @@ public class Game implements IWorldView {
         addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new AppEngineSpy());
 
-        currentCourse = new Course();
+        currentCourse = new CourseAppEngine();
 	}
 
 	public Lesson loadLesson(String lessonName) {

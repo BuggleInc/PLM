@@ -1,29 +1,5 @@
 package jlm.core.ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
-
-import com.sun.corba.se.impl.orb.PropertyOnlyDataCollector;
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
@@ -35,6 +11,13 @@ import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.action.*;
 import jlm.universe.World;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
 

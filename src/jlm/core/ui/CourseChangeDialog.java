@@ -1,22 +1,15 @@
 package jlm.core.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import jlm.core.model.Course;
+import jlm.core.model.CourseAppEngine;
+import jlm.core.model.Game;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-
-import jlm.core.model.Course;
-import jlm.core.model.Game;
 
 
 public class CourseChangeDialog extends JDialog {
@@ -80,7 +73,7 @@ public class CourseChangeDialog extends JDialog {
         // Load the list of availables "courses", or a message to say nope.
 	    
         Game.getInstance().getCurrentCourse();
-        Course course = new Course();
+        Course course = new CourseAppEngine();
         
         try {
 			courseListIDs = course.getAllCoursesId();

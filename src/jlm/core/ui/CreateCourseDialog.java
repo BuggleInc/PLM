@@ -12,7 +12,7 @@ public class CreateCourseDialog extends JDialog {
     private static Course course;
 
     public CreateCourseDialog(Course course) {
-        super(MainFrame.getInstance(), "JLM Course", false);
+        super(MainFrame.getInstance(), "Add a course", false);
 
         this.course = course;
         initComponent();
@@ -21,16 +21,19 @@ public class CreateCourseDialog extends JDialog {
     public void initComponent() {
         setLayout(new BorderLayout());
 
-        JLabel label = new JLabel("Choose the name of the course:");
-        final JTextField field = new JTextField();
+        JLabel nameLabel = new JLabel("Name:");
+        final JTextField nameField = new JTextField(10);
 
-        // OK/Cancel button
+        JLabel passwordLabel = new JLabel("Password (optionnal):");
+        final JPasswordField passwordField = new JPasswordField(10);
+
         JButton OKButton = new JButton("OK");
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if (!field.getText().isEmpty()) {
-                    course.setCourseId(field.getText());
+                if (!nameField.getText().isEmpty()) {
+                    course.setCourseId(nameField.getText());
+                    course.setPassword(passwordField.getText());
                     setVisible(false);
                 }
             }
@@ -51,8 +54,24 @@ public class CreateCourseDialog extends JDialog {
         bottomButtons.add(cancelButton);
         bottomButtons.add(OKButton);
 
-        add(label, BorderLayout.NORTH);
-        add(field, BorderLayout.CENTER);
+        JPanel fieldsPanel = new JPanel();
+        fieldsPanel.setLayout(new BorderLayout());
+        
+        JPanel namePanel = new JPanel();
+        namePanel.setLayout(new FlowLayout());
+        namePanel.add(nameLabel);
+        namePanel.add(nameField);
+        
+        JPanel passwordPanel = new JPanel();
+        passwordPanel.setLayout(new FlowLayout());
+        passwordPanel.add(passwordLabel);
+        passwordPanel.add(passwordField);
+
+        fieldsPanel.add(namePanel, BorderLayout.NORTH);
+        fieldsPanel.add(passwordPanel, BorderLayout.SOUTH);
+
+
+        add(fieldsPanel, BorderLayout.CENTER);
         add(bottomButtons, BorderLayout.SOUTH);
 
         pack();
