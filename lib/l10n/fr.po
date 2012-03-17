@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-01-23 14:58+0100\n"
-"PO-Revision-Date: 2011-10-13 20:51+0200\n"
+"POT-Creation-Date: 2012-03-18 00:55+0100\n"
+"PO-Revision-Date: 2012-03-18 00:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1114,63 +1114,55 @@ msgstr "Choisissez une leçon"
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:13
 msgid ""
-"<a href=\"lesson://lessons.welcome\">Welcome lesson</a> This lesson is "
-"intended to lead the first steps in programming of absolute beginners."
+"<a href=\"jlm://lessons.welcome\">Welcome lesson</a> This lesson is intended "
+"to lead the first steps in programming of absolute beginners."
 msgstr ""
-"<a href=\"lesson://lessons.welcome\">Premiers pas</a> Cette leçon est "
-"destinée à\n"
-"guider les premiers pas en programmation de débutants sans aucune "
-"connaissance préalable."
+"<a href=\"jlm://lessons.welcome\">Premiers pas</a> Cette leçon est destinée à\n"
+"guider les premiers pas en programmation de débutants sans aucune connaissance préalable."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:16
 msgid ""
-"<a href=\"lesson://lessons.maze\">Escape the maze</a> Will you escape the "
-"mazes?"
+"<a href=\"jlm://lessons.maze\">Escape the maze</a> Will you escape the mazes?"
 msgstr ""
-"<a href=\"lesson://lessons.maze\">Labyrinthes</a> Saurez vous vous échaper "
-"du\n"
+"<a href=\"jlm://lessons.maze\">Labyrinthes</a> Saurez vous vous échaper du\n"
 "labyrinthe?"
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:18
 msgid ""
-"<a href=\"lesson://lessons.bat.string1\">String lesson</a> A bunch of "
-"exercises on strings."
+"<a href=\"jlm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
+"on strings."
 msgstr ""
-"<a href=\"lesson://lessons.bat.string1\">Chaînes</a> Quelques exercices sur "
-"les\n"
+"<a href=\"jlm://lessons.bat.string1\">Chaînes</a> Quelques exercices sur les\n"
 "chaînes de caractères."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:20
 msgid ""
-"<a href=\"lesson://lessons.sort\">Sorting lesson</a> This short lesson "
-"proposes to discover the classical sorting algorithms by practice."
+"<a href=\"jlm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
+"to discover the classical sorting algorithms by practice."
 msgstr ""
-"<a href=\"lesson://lessons.sort\">Algorithmes de tri</a> Cette leçon vous "
-"propose\n"
+"<a href=\"jlm://lessons.sort\">Algorithmes de tri</a> Cette leçon vous propose\n"
 "de découvrir les algorithmes classiques de tri par la pratique."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:23
 msgid ""
-"<a href=\"lesson://lessons.recursion\">Recursion lesson</a> Build some "
+"<a href=\"jlm://lessons.recursion\">Recursion lesson</a> Build some "
 "classical geometric figures through recursion."
 msgstr ""
-"<a href=\"lesson://lessons.recursion\">Recursivité</a> Construisez des "
-"figures\n"
+"<a href=\"jlm://lessons.recursion\">Recursivité</a> Construisez des figures\n"
 "géométriques classiques par récursivité."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:26
 msgid ""
-"<a href=\"lesson://lessons.lightbot\">LightBot</a> In this little game, you "
+"<a href=\"jlm://lessons.lightbot\">LightBot</a> In this little game, you "
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
-"<a href=\"lesson://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous "
-"devez\n"
+"<a href=\"jlm://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous devez\n"
 "programmer graphiquement un petit robot pour lui faire éteindre des\n"
 "lumières. C'est un petit casse-tête pour programmeurs."
 
