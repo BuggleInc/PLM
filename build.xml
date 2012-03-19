@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="dist" name="JLM">
-
-  <property name="version" value="20120318"/>
-
+	
+	<!-- load ChangeLog and set property jlm.version accordingly -->
+	<loadfile property="jlm.version" srcFile="ChangeLog">
+        <filterchain>
+            <linecontainsregexp>
+              <regexp pattern="[0-9]+:"/>
+            </linecontainsregexp>          
+          <headfilter lines="1"/>
+          <striplinebreaks/>
+          <striplinebreaks linebreaks=":"/>
+        </filterchain>
+    </loadfile>
+	
 	<property name="base.dir" value="."/>
     <property name="dist.dir" value="${base.dir}/dist"/>
     <property name="lib.dir" value="${base.dir}/lib"/>
@@ -30,9 +40,9 @@
         <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />        
 	</target>	
 	
-	<target name="dist" depends="compile" description="build a standalone application jar file">
+	<target name="dist" depends="compile, updateversion" description="build a standalone application jar file">
 		<mkdir dir="${dist.dir}"/>
-		<jar destfile="${dist.dir}/jlm-${version}.jar" filesetmanifest="mergewithoutmain">
+		<jar destfile="${dist.dir}/jlm-${jlm.version}.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
 				<attribute name="Built-By" value="M. Quinson and G. Oster" />
 				<attribute name="Main-Class" value="jlm.core.ui.JavaLearningMachine" />
@@ -83,9 +93,10 @@
 			
 		</jar>
 	</target>
-	<target name="dist-src" depends="compile" description="build a standalone application jar file">
+	
+	<target name="dist-src" depends="compile, updateversion" description="build a standalone application jar file">
 		<mkdir dir="${dist.dir}"/>
-		<zip destfile="${dist.dir}/jlm-src-${version}.zip">
+		<zip destfile="${dist.dir}/jlm-src-${jlm.version}.zip">
 			<fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/> 
 			<fileset dir="${lib.dir}" excludes="*.jar *.pl"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />	
@@ -122,7 +133,7 @@
 		</zip>
 	</target>
 
-	<target name="dist-web" depends="compile" description="build webstart application jar files">
+	<target name="dist-web" depends="compile, updateversion" description="build webstart application jar files">
 		<mkdir dir="${site.dir}/lib"/>
 		<jar destfile="${site.dir}/lib/jlm-webstart.jar" filesetmanifest="mergewithoutmain">
 			<manifest>
@@ -151,6 +162,7 @@
 		  </path>
 		</signjar>
 	</target>
+	
     <target name="javadoc" description="Create Javadocs">
         <mkdir dir="${site.dir}/javadoc/"/>
         <javadoc 
@@ -159,17 +171,17 @@
             <fileset dir="${src.dir}/universe" includes="**/*.java" />
         </javadoc>
     </target>
+
     <target name="tar" description="Create a tar file containing the sources">
-      <tar destfile="${dist.dir}/jlm-${version}.tar.gz" compression="gzip"
+      <tar destfile="${dist.dir}/jlm-${jlm.version}.tar.gz" compression="gzip"
            basedir="."
            includes="ChangeLog build.xml src/**/*.py src/**/*.java src/**/*.html src/**/*.css src/**/*.png src/**/*.map lib/resources/**"
            excludes="**/.gitignore" />
     </target>
-<!-- FIXME: doesnt work yet
+
     <target name="updateversion" description="Update the version number in the properties file">
-      <PropertyFile file="lib/resources/jlm.configuration.properties">
-        <entry key="jlm.minor.version" value="${version}" operation="="/>
-      </PropertyFile>
+      <propertyfile file="${lib.dir}/resources/jlm.configuration.properties">
+        <entry key="jlm.minor.version" value="${jlm.version}" operation="="/>
+      </propertyfile>
     </target>
--->
 </project>
