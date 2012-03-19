@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2012-01-23 14:58+0100\n"
-"PO-Revision-Date: 2011-10-13 20:51+0200\n"
+"PO-Revision-Date: 2012-01-23 15:11+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -989,14 +989,6 @@ msgstr "Note sur les exceptions"
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/bugglequest/BuggleWorld.html:42
 #: src/lessons/welcome/cells/TurmiteWorld.html:42
-#, fuzzy
-#| msgid ""
-#| "Regular buggles throw a BuggleWallException exception if you ask them to "
-#| "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if "
-#| "you ask them to pickup a baggle from an empty cell, or a "
-#| "AlreadyHaveBaggleException exception if they already carry a baggle.  "
-#| "Trying to drop a baggel on a cell already containing one throws an "
-#| "AlreadyHaveBaggleException exception."
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -1004,13 +996,7 @@ msgid ""
 "AlreadyHaveBaggleException exception if they already carry a baggle.  Trying "
 "to drop a baggle on a cell already containing one throws an "
 "AlreadyHaveBaggleException exception."
-msgstr ""
-"Les buggles normales lèvent une exception BuggleWallException si on cherche "
-"à leur faire traverser un mur.  Elles lèvent une exception "
-"NoBaggleUnderBuggleException si vous cherchez à prendre un baggle dans une "
-"case qui n'en contient pas, ou une exception AlreadyHaveBaggleException si "
-"vous portez déjà un baggle.  Tenter de déposer un baggle sur une case qui en "
-"contient déjà lève une exception AlreadyHaveBaggleException."
+msgstr "Les buggles normales lèvent une exception BuggleWallException si on cherche à leur faire traverser un mur.  Elles lèvent une exception NoBaggleUnderBuggleException si vous cherchez à prendre un baggle dans une case qui n'en contient pas, ou une exception AlreadyHaveBaggleException si vous portez déjà un baggel.  Tenter de déposer un baggel sur une case qui en contient déjà lève une exception AlreadyHaveBaggleException."
 
 #. type: Content of: <p>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:48
@@ -1581,17 +1567,12 @@ msgstr ""
 
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/Environment.html:52
-#, fuzzy
-#| msgid ""
-#| "Once done, clic on run, and proceed to next exercise with the right combo-"
-#| "box (or keep around to experiment further if you feel so)."
 msgid ""
 "Once done, clic on run, and proceed to next exercise using the File menu "
 "entry (or keep around to experiment further if you feel so)."
 msgstr ""
-"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec "
-"le menu défilant en haut à droite (ou restez ici pour expérimenter un peu si "
-"vous le voulez)."
+"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec le\n"
+"menu File (ou restez ici pour expérimenter un peu si vous le voulez)."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Basics.html:3
@@ -1681,21 +1662,15 @@ msgstr ""
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Basics.html:35
-#, fuzzy
-#| msgid ""
-#| "It could also be written in the following way, but it's generally "
-#| "considered as a bad practice to group several instructions on the same "
-#| "line."
 msgid ""
 "It could also be written in the following way, but it's generally considered "
 "as a bad practice to group several instructions on the same line since it "
 "greatly hinders the readability."
 msgstr ""
-"Il serait également possible de l'écrire sous la forme suivante, mais "
-"placer\n"
-"plusieurs instructions sur la même ligne est généralement considéré comme "
-"une\n"
-"très mauvaise habitude."
+"Il serait également possible de l'écrire sous la forme suivante, mais placer\n"
+"plusieurs instructions sur la même ligne est généralement considéré comme une\n"
+"très mauvaise habitude car cela complique grandement la relecture du code après\n"
+"coup."
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/Basics.html:39
@@ -2380,20 +2355,11 @@ msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopWhile.html:3
-#, fuzzy
-#| msgid ""
-#| "In addition to conditionals, another handy construction is the ability to "
-#| "repeat an action while a specific condition does not appear. A while loop "
-#| "is used for that, with the following Java syntax:"
 msgid ""
 "In addition to conditionals, another handy construction is the ability to "
 "repeat an action while a specific condition does not appear. A while loop is "
 "used for that, with the following syntax:"
-msgstr ""
-"En plus des instructions conditionnelles, une autre construction pratique "
-"est de pouvoir demander à la buggle de répéter une action tant qu'une "
-"condition particulière n'est pas arrivée. On utilise pour cela une boucle "
-"<tt>while</tt>, dont la syntaxe Java est la suivante :"
+msgstr "En plus des instructions conditionnelles, une autre construction pratique est de pouvoir demander à la buggle de répéter une action tant qu'une condition particulière n'est pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe est la suivante :"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/LoopWhile.html:6
