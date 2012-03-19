@@ -1,3 +1,5 @@
+20120318:
+  * Allow jlm://<lesson>/<exo> links in mission texts
 20120116:
   * Add an ant target to generate a source tgz (for Debian packaging)
 20120110:

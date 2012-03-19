@@ -56,10 +56,29 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
 					}
-					if (desc.startsWith("lesson://")) {
-						String lessonName = desc.substring(new String("lesson://").length());
+					if (desc.startsWith("jlm://")) {
+						String lessonName = desc.substring(new String("jlm://").length());
+						String exoName = null;
+						int sep = lessonName.indexOf("/");
+						if (sep != -1) {
+							exoName = lessonName.substring(sep+1);
+							lessonName = lessonName.substring(0, sep);
+							if (exoName.length()==0)
+								exoName = null;
+						}
+						if (Game.getInstance().isDebugEnabled()) 
+							System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
+								
 						Lesson lesson = Game.getInstance().loadLesson(lessonName);
 						Game.getInstance().setCurrentLesson(lesson);
+						if (exoName != null && exoName.length()>0) {
+							Lecture lect = lesson.getExercise(exoName);
+							if (lect != null) {
+								Game.getInstance().setCurrentExercise(lect);
+							} else {
+								System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
+							}
+						}
 					}
 				}
 			}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="dist" name="JLM">
 
-  <property name="version" value="20120116"/>
+  <property name="version" value="20120318"/>
 
 	<property name="base.dir" value="."/>
     <property name="dist.dir" value="${base.dir}/dist"/>
