@@ -24,7 +24,9 @@ public class AppEngineSpy extends ServerSpy {
     
     public void sendRequest(String request) {
     	try {
-    		
+
+            System.out.println(request);
+
 	    	// Send data
 	        URLConnection conn = server.openConnection();
 	        conn.setDoOutput(true);

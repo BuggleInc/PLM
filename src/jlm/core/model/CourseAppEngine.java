@@ -5,32 +5,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Class to manage course data online
  * It has an id and allows to save/retrieve exos/users results by course
  */
-public class CourseAppEngine implements Course {
+public class CourseAppEngine extends Course {
 
     private static URL teacherServer;
     private static URL courseServer;
-    private String courseId;
-    private String password;
-    private HashMap<String, Integer> studentsResults;
-    private HashMap<String, Integer> exoResults;
-    
-    public CourseAppEngine() {
+
+    public CourseAppEngine(){
         this(null);
     }
-    
-    public CourseAppEngine(String id){
-        courseId = id;
-        password = "";
-        studentsResults = new HashMap<String, Integer>();
-        exoResults = new HashMap<String, Integer>();
 
+    public CourseAppEngine(String id){
+        super(id);
         try {
             teacherServer = new URL(Game.getProperty("jlm.appengine.url") + "/teacher");
             courseServer = new URL(Game.getProperty("jlm.appengine.url") + "/course");
@@ -156,9 +147,8 @@ public class CourseAppEngine implements Course {
      * It allows to display it in form, to select the current course
      * @return list of all courses on the server
      */
-    public ArrayList<String> getAllCoursesId() throws IOException {
-        ArrayList<String> ids = new ArrayList<String>();
-
+    public String getAllCoursesIdRequest() {
+        String coursesId = "";
         // get data from JLMServer
         try {
             // Construct data
@@ -172,55 +162,24 @@ public class CourseAppEngine implements Course {
             wr.flush();
 
             // Get results
-            InputStream is = conn.getInputStream();
-            ObjectInputStream ois = new ObjectInputStream(is);
-            ids = (ArrayList<String>)ois.readObject();
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            while((line = br.readLine()) != null){
+                coursesId += line;
+            }
 
-            ois.close();
+            System.out.println(coursesId);
+
             wr.close();
-            is.close();
+            br.close();
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+       } catch (IOException e) {
             e.printStackTrace();
         }
-        return ids;
+        return coursesId;
     }
 
-    /*
-    * Getters and setters...
-    */
 
-    public String getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(String courseId) {
-        this.courseId = courseId;
-    }
-
-    public HashMap<String, Integer> getStudentsResults() {
-        return studentsResults;
-    }
-
-    public void setStudentsResults(HashMap<String, Integer> studentsResults) {
-        this.studentsResults = studentsResults;
-    }
-
-    public HashMap<String, Integer> getExoResults() {
-        return exoResults;
-    }
-
-    public void setExoResults(HashMap<String, Integer> exoResults) {
-        this.exoResults = exoResults;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

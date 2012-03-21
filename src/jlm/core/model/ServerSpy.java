@@ -5,6 +5,10 @@ import jlm.core.model.json.JSONObject;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
 
+/**
+ * Abstract class to send users results to a server
+ * It constructs the request to send, you have to extend this class to indicate how/where to send the request
+ */
 public abstract class ServerSpy implements ProgressSpyListener {
 
     protected String username;
@@ -17,6 +21,11 @@ public abstract class ServerSpy implements ProgressSpyListener {
             username = "John Doe";
     }
 
+    /**
+     * Receive an exercise progress from progressSpyListener, and construct the request to send to
+     * a server in json
+     * @param exo progress data
+     */
     public void executed(Exercise exo) {
         JSONObject jsonObject = new JSONObject();
 
@@ -39,5 +48,9 @@ public abstract class ServerSpy implements ProgressSpyListener {
         }
     }
 
+    /**
+     * Method to implement to indicate how/where to send data
+     * @param request request in json to send to the server
+     */
     public abstract void sendRequest(String request);
 }
