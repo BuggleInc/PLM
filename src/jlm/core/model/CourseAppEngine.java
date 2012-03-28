@@ -41,6 +41,7 @@ public class CourseAppEngine extends Course {
             data = URLEncoder.encode("action", "UTF-8") + "=" + URLEncoder.encode("new", "UTF-8");
             data += "&" + URLEncoder.encode("course", "UTF-8") + "=" + URLEncoder.encode(courseId, "UTF-8");
             data += "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(password, "UTF-8");
+            data += "&" + URLEncoder.encode("teacher_password", "UTF-8") + "=" + URLEncoder.encode(teacherPassword, "UTF-8");
 
             // Send data
             URLConnection conn = teacherServer.openConnection();

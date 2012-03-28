@@ -7,6 +7,7 @@ public abstract class Course {
 
     protected String courseId;
     protected String password;
+    protected String teacherPassword;
     protected HashMap<String, Integer> studentsResults;
     protected HashMap<String, Integer> exoResults;
 
@@ -17,6 +18,7 @@ public abstract class Course {
     public Course(String id) {
         courseId = id;
         password = "";
+        teacherPassword = "";
         studentsResults = new HashMap<String, Integer>();
         exoResults = new HashMap<String, Integer>();
 
@@ -41,6 +43,8 @@ public abstract class Course {
     */
 
     public String getCourseId() {
+        if(courseId == null)
+            return "";
         return courseId;
     }
 
@@ -70,5 +74,13 @@ public abstract class Course {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getTeacherPassword() {
+        return teacherPassword;
+    }
+
+    public void setTeacherPassword(String teacherPassword) {
+        this.teacherPassword = teacherPassword;
     }
 }

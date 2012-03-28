@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton stopButton;
 	private JButton resetButton;
 	private JButton demoButton;
-    private JButton alertButton;
+    private JButton helpMeButton;
 	private LoggerPanel outputArea;
 	
 	private JSplitPane mainPanel;
@@ -324,7 +324,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
 
-        alertButton = new PropagatingButton(new Alert(g, "Alert",
+        helpMeButton = new PropagatingButton(new HelpMe(g, "Help",
                 ResourcesCache.getIcon("resources/alert.png")));
 		
 
@@ -333,7 +333,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
 		toolBar.add(demoButton);
-        toolBar.add(alertButton);
+        toolBar.add(helpMeButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 	}

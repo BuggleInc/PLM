@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -74,23 +73,17 @@ public class CourseChangeDialog extends JDialog {
 	    
         Game.getInstance().getCurrentCourse();
         Course course = new CourseAppEngine();
-        
-        try {
-			courseListIDs = course.getAllCoursesId();
 
-	        if (courseListIDs.size() == 0) {
-	        	c.add(new JLabel("No course currently opened, sorry.", JLabel.CENTER), BorderLayout.CENTER);
-	        	OKButton.setEnabled(false);
-	        }
-	        else {
-	        	jListID = new JList(courseListIDs.toArray());
-	        	c.add(jListID, BorderLayout.CENTER);
-	        }
-			
-		} catch (IOException e) {
-			c.add(new JLabel("Course server currently unavailable.", JLabel.CENTER), BorderLayout.CENTER);
-			OKButton.setEnabled(false);
-		}
-	    
+        courseListIDs = course.getAllCoursesId();
+
+        if (courseListIDs.size() == 0) {
+            c.add(new JLabel("No course currently opened, sorry.", JLabel.CENTER), BorderLayout.CENTER);
+            OKButton.setEnabled(false);
+        }
+        else {
+            jListID = new JList(courseListIDs.toArray());
+            c.add(jListID, BorderLayout.CENTER);
+        }
+
     }
 }

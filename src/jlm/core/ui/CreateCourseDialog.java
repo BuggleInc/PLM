@@ -21,19 +21,23 @@ public class CreateCourseDialog extends JDialog {
     public void initComponent() {
         setLayout(new BorderLayout());
 
-        JLabel nameLabel = new JLabel("Name:");
+        JLabel nameLabel = new JLabel("Name: ");
         final JTextField nameField = new JTextField(10);
 
-        JLabel passwordLabel = new JLabel("Password (optionnal):");
+        JLabel passwordLabel = new JLabel("Password (optionnal): ");
         final JPasswordField passwordField = new JPasswordField(10);
+
+        JLabel teacherPasswordLabel = new JLabel("Teacher password: ");
+        final JPasswordField teacherPasswordField = new JPasswordField(10);
 
         JButton OKButton = new JButton("OK");
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if (!nameField.getText().isEmpty()) {
+                if (!nameField.getText().isEmpty() && !teacherPasswordField.getText().isEmpty()) {
                     course.setCourseId(nameField.getText());
                     course.setPassword(passwordField.getText());
+                    course.setTeacherPassword(teacherPasswordField.getText());
                     setVisible(false);
                 }
             }
@@ -66,6 +70,11 @@ public class CreateCourseDialog extends JDialog {
         passwordPanel.setLayout(new FlowLayout());
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
+
+        JPanel teacherPasswordPanel = new JPanel();
+        teacherPasswordPanel.setLayout(new FlowLayout());
+        teacherPasswordPanel.add(teacherPasswordLabel);
+        teacherPasswordPanel.add(teacherPasswordField);
 
         fieldsPanel.add(namePanel, BorderLayout.NORTH);
         fieldsPanel.add(passwordPanel, BorderLayout.SOUTH);
