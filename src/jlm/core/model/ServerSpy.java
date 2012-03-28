@@ -26,6 +26,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
      * a server in json
      * @param exo progress data
      */
+    @Override
     public void executed(Exercise exo) {
         JSONObject jsonObject = new JSONObject();
 
@@ -40,6 +41,29 @@ public abstract class ServerSpy implements ProgressSpyListener {
             jsonObject.put("exolang", lastResult.language.toString());
             jsonObject.put("passedtests", lastResult.passedTests + "");
             jsonObject.put("totaltests", lastResult.totalTests + "");
+            jsonObject.put("action", "executed");
+
+            sendRequest(jsonObject.toString());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void switched(Exercise exo) {
+        JSONObject jsonObject = new JSONObject();
+
+        Game game = Game.getInstance();
+        ExecutionProgress lastResult = exo.lastResult;
+
+        try {
+            // Retrieve appropriate parameters regarding the new exercise
+            jsonObject.put("username", username);
+            jsonObject.put("course", game.getCourseID());
+            jsonObject.put("exoname", exo.getName());
+            jsonObject.put("exolang", lastResult.language.toString());
+            jsonObject.put("action", "switched");
 
             sendRequest(jsonObject.toString());
 

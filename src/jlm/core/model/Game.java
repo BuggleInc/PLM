@@ -468,6 +468,10 @@ public class Game implements IWorldView {
 		for (GameListener v : this.listeners) {
 			v.currentExerciseHasChanged(lect);
 		}
+
+        for(ProgressSpyListener p: this.progressSpyListeners){
+            p.switched((Exercise)lect);
+        }
 	}
 
 	protected void fireSelectedWorldHasChanged(World w) {

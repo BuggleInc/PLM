@@ -9,7 +9,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class AppEngineSpy extends ServerSpy {
-    
+
     private URL server;
 
     public AppEngineSpy() {
@@ -21,29 +21,29 @@ public class AppEngineSpy extends ServerSpy {
             e.printStackTrace();
         }
     }
-    
+
     public void sendRequest(String request) {
-    	try {
+        try {
 
             System.out.println(request);
 
-	    	// Send data
-	        URLConnection conn = server.openConnection();
-	        conn.setDoOutput(true);
-	        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-	        wr.write(request);
-	        wr.flush();
-	
-	        // Get response data and print it
-	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-	        String line;
-	        while((line = br.readLine()) != null)
-	            System.err.println(line);
-	
-	        wr.close();
-	        br.close();
-	        
-	    }  catch (IOException e) {
+            // Send data
+            URLConnection conn = server.openConnection();
+            conn.setDoOutput(true);
+            OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.write(request);
+            wr.flush();
+
+            // Get response data and print it
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            while ((line = br.readLine()) != null)
+                System.err.println(line);
+
+            wr.close();
+            br.close();
+
+        } catch (IOException e) {
             // e.printStackTrace();
             System.out.println("Unable to contact JLMServer");
         }
