@@ -94,11 +94,19 @@ public class Game implements IWorldView {
 
 	public Lesson loadLesson(String lessonName) {
 		statusArgAdd("Load lesson "+lessonName);
+		// Check whether this lesson is already in cache. 
+		//   (this is because loading a lesson is possibly very long: we have to compute the solution of every exercise)  
 		Lesson lesson = lessons.get(lessonName);
-		if (lesson == null) {
+		
+		// If not cached, load it from file, and store it in cache
+		if (lesson == null) { 
 			try {
+				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
+				// We manualy build a call to the constructor of this object, and fire it
+				// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
 				lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
-				lessons.put(lessonName, lesson);
+				
+				lessons.put(lessonName, lesson); // cache the newly created object
 			} catch (InstantiationException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
