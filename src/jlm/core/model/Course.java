@@ -1,8 +1,16 @@
 package jlm.core.model;
 
+import jlm.core.model.json.JSONArray;
+import jlm.core.model.json.JSONException;
+import jlm.core.model.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Class to manage course data online
+ * It has an id and allows to save/retrieve exos/users results by course
+ */
 public abstract class Course {
 
     protected String courseId;
@@ -21,29 +29,115 @@ public abstract class Course {
         teacherPassword = "";
         studentsResults = new HashMap<String, Integer>();
         exoResults = new HashMap<String, Integer>();
-
     }
 
-    public abstract void create();
+    /**
+     * Create a new course on the server
+     * For example top_quinson
+     */
+    public void create() {
+        JSONObject jsonObject = new JSONObject();
 
-    public abstract void refresh();
+        try {
+            jsonObject.put("action", "new");
+            jsonObject.put("course", courseId);
+            jsonObject.put("password", password);
+            jsonObject.put("teacher_password", teacherPassword);
 
-    public abstract void delete();
+            String response = sendTeacherRequest(jsonObject.toString());
+            System.out.println(response);
 
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Download updated data from server
+     * It loads a list of results by student and by exercise
+     */
+    public void refresh() {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("action", "refresh");
+
+            String response = sendTeacherRequest(jsonObject.toString());
+            /* TODO : convert response into a list of students and exos results with JSONArray and store it in class
+             arguments */
+            System.out.println(response);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Delete the course on the server
+     * All student and exercises results will be removed
+     */
+    public void delete() {
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("action", "remove");
+            jsonObject.put("course", courseId);
+            jsonObject.put("password", password);
+
+            String response = sendTeacherRequest(jsonObject.toString());
+            System.out.println(response);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Get all courses identifiers from the server
+     * It allows to display it in form, to select the current course
+     *
+     * @return list of all courses on the server
+     */
     public ArrayList<String> getAllCoursesId() {
-        String requestResult = getAllCoursesIdRequest();
+        String response = "";
         ArrayList<String> coursesId = new ArrayList<String>();
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+
+            jsonObject.put("action", "allids");
+            response = sendCourseRequest(jsonObject.toString());
+
+            if (!response.equals("")) {
+                JSONArray arrayResult = new JSONArray(response);
+                for (int i = 0; i < arrayResult.length(); i++) {
+                    coursesId.add(arrayResult.getString(i));
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(response);
         return coursesId;
     }
 
-    public abstract String getAllCoursesIdRequest();
+    /**
+     * Method to implement to indicate how/where to send data
+     *
+     * @param request request in json to send to the server
+     */
+    public abstract String sendTeacherRequest(String request);
+
+    public abstract String sendCourseRequest(String request);
+
 
     /*
     * Getters and setters...
     */
-
     public String getCourseId() {
-        if(courseId == null)
+        if (courseId == null)
             return "";
         return courseId;
     }
