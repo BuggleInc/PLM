@@ -11,6 +11,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 
+/**
+ * Class that handle clicks on HELP button
+ * It sends a request to the JLM server
+ * TODO use an abstraction layer and move most of the code to the model
+ */
 public class HelpMe extends AbstractGameAction {
 
     // url to the course server

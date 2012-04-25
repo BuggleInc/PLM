@@ -45,7 +45,7 @@ public class AppEngineSpy extends ServerSpy {
 
         } catch (IOException e) {
             // e.printStackTrace();
-            System.out.println("Unable to contact JLMServer");
+            System.out.println("Unable to contact JLMServer to send request " + request);
         }
     }
 
