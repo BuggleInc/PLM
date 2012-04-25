@@ -1,8 +1,8 @@
 package jlm.core.model;
 
-import jlm.core.model.json.JSONArray;
-import jlm.core.model.json.JSONException;
-import jlm.core.model.json.JSONObject;
+import twitter4j.internal.org.json.JSONArray;
+import twitter4j.internal.org.json.JSONException;
+import twitter4j.internal.org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
