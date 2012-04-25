@@ -1,7 +1,8 @@
 package jlm.core.model;
 
-import jlm.core.model.json.JSONException;
-import jlm.core.model.json.JSONObject;
+import org.json.me.JSONException;
+import org.json.me.JSONObject;
+
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
 
