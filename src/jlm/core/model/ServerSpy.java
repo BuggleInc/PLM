@@ -73,6 +73,22 @@ public abstract class ServerSpy implements ProgressSpyListener {
     }
 
     /**
+     * Send a presence report to the server
+     */
+    public void heartbeat(){
+        JSONObject jsonObject = new JSONObject();
+
+        try{
+            jsonObject.put("username", username);
+            jsonObject.put("action", "heartbeat");
+
+            sendRequest(jsonObject.toString());
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * Method to implement to indicate how/where to send data
      * @param request request in json to send to the server
      */

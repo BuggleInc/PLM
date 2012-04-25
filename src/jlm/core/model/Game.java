@@ -55,6 +55,8 @@ public class Game implements IWorldView {
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
 
+    private HeartBeatSpy heartBeatSpy;
+
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
 	private LogWriter outputWriter;
@@ -64,7 +66,7 @@ public class Game implements IWorldView {
 	private static boolean ongoingInitialization = false;
 	public static Game getInstance() {
 		if (Game.instance == null) {
-			if (ongoingInitialization) 
+			if (ongoingInitialization)
 				throw new RuntimeException("Loop in initialization process. This is a JLM bug.");
 			ongoingInitialization = true;
 			Game.instance = new Game();
@@ -77,10 +79,14 @@ public class Game implements IWorldView {
 		Game.loadProperties();
 		loadSession();
 
+        // TODO: uncomment identica & twitter spies?
 		//addProgressSpyListener(new IdenticaSpy());
 		//addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new AppEngineSpy());
+        heartBeatSpy = new HeartBeatSpy(progressSpyListeners);
+
+        // TODO launch UserJoin event (to record on the server)
 
         currentCourse = new CourseAppEngine();
 	}
@@ -142,14 +148,14 @@ public class Game implements IWorldView {
 
 				boolean seenJava=false;
 				for (ProgrammingLanguage l:exo.getProgLanguages()) {
-					if (l.equals(programmingLanguage)) 
+					if (l.equals(programmingLanguage))
 						return; /* The exo accepts the language we currently have */
 					if (l.equals(Game.JAVA))
 						seenJava = true;
 				}
 				/* Use java as a fallback programming language (if the exo accepts it)  */
 				if (seenJava)
-					setProgramingLanguage(Game.JAVA); 
+					setProgramingLanguage(Game.JAVA);
 				/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
 				setProgramingLanguage( exo.getProgLanguages().iterator().next() );
 			}
@@ -211,7 +217,7 @@ public class Game implements IWorldView {
 	}
 
 	/* Actions of the toolbar buttons */
-	private boolean stepMode = false;	
+	private boolean stepMode = false;
 	public void startExerciseExecution() {
 		LessonRunner runner = new LessonRunner(Game.getInstance(), this.lessonRunners);
 		runner.start();
@@ -223,14 +229,14 @@ public class Game implements IWorldView {
 		}
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
-			for (World w : ((Exercise) lecture).getAnswerWorld())  
+			for (World w : ((Exercise) lecture).getAnswerWorld())
 				w.doneDelay();
 
 		setState(GameState.EXECUTION_ENDED);
 	}
 	public void startExerciseDemoExecution() {
 		DemoRunner runner = new DemoRunner(Game.getInstance(), this.demoRunners);
-		runner.start();		
+		runner.start();
 	}
 	public void startExerciseStepExecution() {
 		stepMode = true;
@@ -240,7 +246,7 @@ public class Game implements IWorldView {
 
 	public void enableStepMode() {
 		this.stepMode = true;
-	}	
+	}
 	public void disableStepMode() {
 		this.stepMode = false;
 	}
@@ -253,7 +259,7 @@ public class Game implements IWorldView {
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
 			for (World w: ((Exercise) lecture).getCurrentWorld())
-				for (Entity e : w.getEntities()) 
+				for (Entity e : w.getEntities())
 					e.allowOneStep();
 	}
 
@@ -290,6 +296,11 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
+            // TODO launch UserLeaved event (to save on the server)
+
+            // stop the heartbeat report to JLMServer
+            heartBeatSpy.die();
+
 			saveSession();
 			storeProperties();
 			System.exit(0);
@@ -409,11 +420,11 @@ public class Game implements IWorldView {
 
 				}
 			} else {
-				int choice = JOptionPane.showConfirmDialog(null, 
+				int choice = JOptionPane.showConfirmDialog(null,
 						"No path provided in the property file (or property file not found)\n"+
 						"You may want to export your session with the menu 'Session/Export session'\n" +
 						"to save your work manually.\n\n" +
-						"Quit without saving?", 
+						"Quit without saving?",
 						"Cannot save your changes. Quit without saving?",
 						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE);
 				if (choice==JOptionPane.NO_OPTION)
@@ -464,15 +475,17 @@ public class Game implements IWorldView {
 		}
 	}
 
-	protected void fireCurrentExerciseChanged(Lecture lect) {
-		for (GameListener v : this.listeners) {
-			v.currentExerciseHasChanged(lect);
-		}
-
-        for(ProgressSpyListener p: this.progressSpyListeners){
-            p.switched((Exercise)lect);
+    protected void fireCurrentExerciseChanged(Lecture lect) {
+        for (GameListener v : this.listeners) {
+            v.currentExerciseHasChanged(lect);
         }
-	}
+
+        if(lect instanceof Exercise){
+            for(ProgressSpyListener p: this.progressSpyListeners){
+                p.switched((Exercise)lect);
+            }
+        }
+    }
 
 	protected void fireSelectedWorldHasChanged(World w) {
 		for (GameListener v : this.listeners) {
@@ -505,7 +518,7 @@ public class Game implements IWorldView {
 			l.stateChanged(status);
 		}
 	}
-	
+
 	private ArrayList<ProgressSpyListener> progressSpyListeners = new ArrayList<ProgressSpyListener>();
 	public void addProgressSpyListener(ProgressSpyListener l) {
 		this.progressSpyListeners.add(l);
@@ -547,7 +560,7 @@ public class Game implements IWorldView {
 	public void statusArgAdd(String txt) {
 		synchronized (statusArgs) {
 			statusArgs.add(txt);
-			statusChanged();			
+			statusChanged();
 		}
 	}
 	public void statusArgRemove(String txt) {
@@ -607,7 +620,7 @@ public class Game implements IWorldView {
 	public static ProgrammingLanguage getProgrammingLanguage() {
 		if (ongoingInitialization) /* break an initialization loop -- the crude way (FIXME) */
 			return JAVA;
-		else 
+		else
 			return getInstance().programmingLanguage;
 	}
 	public static ProgrammingLanguage[] getProgrammingLanguages(){
@@ -652,8 +665,8 @@ public class Game implements IWorldView {
         return LOCAL_PROPERTIES_SUBDIRECTORY;
     }
 
-    
-    
+
+
     /*
      * Getter and Setter for the course ID for the current session.
      * This ID will be used by the GoogleAppEngine spy, to associate this
@@ -665,7 +678,7 @@ public class Game implements IWorldView {
     	else
     		return currentCourse.getCourseId();
     }
-    
+
     public void setCourseID(String courseID) {
     	this.currentCourse.setCourseId(courseID);
     }
