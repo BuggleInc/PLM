@@ -53,4 +53,14 @@ public class IdenticaSpy implements ProgressSpyListener {
     @Override
     public void switched(Exercise exo) {    /* i don't care, i'm a viking */ }
 
+    @Override
+    public void heartbeat(){    /* i don't care, i'm a viking */ }
+
+    @Override
+    public void join() {
+    }
+
+    @Override
+    public void leave() {
+    }
 }
