@@ -84,9 +84,12 @@ public class Game implements IWorldView {
 		//addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new AppEngineSpy());
-        heartBeatSpy = new HeartBeatSpy(progressSpyListeners);
 
-        // TODO launch UserJoin event (to record on the server)
+        // report the user presence on the server, launch the heartbeat timertask
+        heartBeatSpy = new HeartBeatSpy(progressSpyListeners);
+        for(ProgressSpyListener spyListener: progressSpyListeners){
+            spyListener.join();
+        }
 
         currentCourse = new CourseAppEngine();
 	}
@@ -296,8 +299,11 @@ public class Game implements IWorldView {
 	public void quit() {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
-            // TODO launch UserLeaved event (to save on the server)
 
+            // report user leave on the server
+            for(ProgressSpyListener spyListener: progressSpyListeners){
+                spyListener.leave();
+            }
             // stop the heartbeat report to JLMServer
             heartBeatSpy.die();
 

@@ -76,12 +76,41 @@ public abstract class ServerSpy implements ProgressSpyListener {
     /**
      * Send a presence report to the server
      */
+    @Override
     public void heartbeat(){
         JSONObject jsonObject = new JSONObject();
 
         try{
             jsonObject.put("username", username);
             jsonObject.put("action", "heartbeat");
+
+            sendRequest(jsonObject.toString());
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void join(){
+        JSONObject jsonObject = new JSONObject();
+
+        try{
+            jsonObject.put("username", username);
+            jsonObject.put("action", "join");
+
+            sendRequest(jsonObject.toString());
+        } catch(JSONException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void leave(){
+        JSONObject jsonObject = new JSONObject();
+
+        try{
+            jsonObject.put("username", username);
+            jsonObject.put("action", "leave");
 
             sendRequest(jsonObject.toString());
         } catch(JSONException e){
