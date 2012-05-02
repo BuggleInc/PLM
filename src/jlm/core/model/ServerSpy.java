@@ -33,6 +33,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
 
         Game game = Game.getInstance();
         ExecutionProgress lastResult = exo.lastResult;
+        String exoCode = exo.getPublicSourceFile(lastResult.language, 0).getBody();
 
         try {
             // Retrieve appropriate parameters regarding the current exercise
@@ -42,6 +43,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
             jsonObject.put("exolang", lastResult.language.toString());
             jsonObject.put("passedtests", lastResult.passedTests + "");
             jsonObject.put("totaltests", lastResult.totalTests + "");
+            jsonObject.put("source", exoCode);
             jsonObject.put("action", "executed");
 
             sendRequest(jsonObject.toString());
