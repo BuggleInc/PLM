@@ -43,7 +43,6 @@ public class CourseAppEngine extends Course {
     public String sendRequest(String request, URL server) {
         String response = "";
         try {
-
             System.out.println(request);
 
             // Send data
@@ -55,16 +54,15 @@ public class CourseAppEngine extends Course {
 
             // Get response data and print it
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            while ((response = br.readLine()) != null)
-                response += response;
+            String line;
+            while ((line = br.readLine()) != null)
+            	response += line;
 
             wr.close();
             br.close();
-
         } catch (IOException e) {
             System.out.println("Unable to contact JLMServer to send request " + request);
         }
-
         return response;
     }
 }
