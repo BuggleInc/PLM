@@ -6,10 +6,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
+/**
+ * Dialog to create a course on the server, with a name, a user password and an administrator password
+ */
 public class CreateCourseDialog extends JDialog {
 
     private static Course course;
+    private JButton OKButton;
+    private JTextField nameField;
+    private JTextField passwordField;
+    private JTextField teacherPasswordField;
 
     public CreateCourseDialog(Course course) {
         super(MainFrame.getInstance(), "Add a course", false);
@@ -21,25 +30,14 @@ public class CreateCourseDialog extends JDialog {
     public void initComponent() {
         setLayout(new BorderLayout());
 
-        JLabel nameLabel = new JLabel("Name: ");
-        final JTextField nameField = new JTextField(10);
+        // OK and Cancel buttons
 
-        JLabel passwordLabel = new JLabel("Password (optionnal): ");
-        final JPasswordField passwordField = new JPasswordField(10);
-
-        JLabel teacherPasswordLabel = new JLabel("Teacher password: ");
-        final JPasswordField teacherPasswordField = new JPasswordField(10);
-
-        JButton OKButton = new JButton("OK");
+        OKButton = new JButton("OK");
+        OKButton.setEnabled(false);
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                if (!nameField.getText().isEmpty() && !teacherPasswordField.getText().isEmpty()) {
-                    course.setCourseId(nameField.getText());
-                    course.setPassword(passwordField.getText());
-                    course.setTeacherPassword(teacherPasswordField.getText());
-                    setVisible(false);
-                }
+                createCourse();
             }
         });
         this.add(OKButton);
@@ -53,6 +51,34 @@ public class CreateCourseDialog extends JDialog {
         });
         this.add(cancelButton);
 
+        // labels describing fields
+        JLabel nameLabel = new JLabel("Name: ");
+        JLabel passwordLabel = new JLabel("Password (optionnal): ");
+        JLabel teacherPasswordLabel = new JLabel("Teacher password: ");
+
+        // fields where to enter data
+        nameField = new JTextField(10);
+        nameField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(nameField.getText().isEmpty())
+                    OKButton.setEnabled(false);
+                else
+                    OKButton.setEnabled(true);
+
+                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                    createCourse();
+            }
+        });
+
+        passwordField = new JPasswordField(10);
+        addEnterKeyHandler(passwordField);
+
+        teacherPasswordField = new JPasswordField(10);
+        addEnterKeyHandler(teacherPasswordField);
+
+        // panels to contain all those components
+
         JPanel bottomButtons = new JPanel();
         bottomButtons.setLayout(new FlowLayout());
         bottomButtons.add(cancelButton);
@@ -60,12 +86,12 @@ public class CreateCourseDialog extends JDialog {
 
         JPanel fieldsPanel = new JPanel();
         fieldsPanel.setLayout(new BorderLayout());
-        
+
         JPanel namePanel = new JPanel();
         namePanel.setLayout(new FlowLayout());
         namePanel.add(nameLabel);
         namePanel.add(nameField);
-        
+
         JPanel passwordPanel = new JPanel();
         passwordPanel.setLayout(new FlowLayout());
         passwordPanel.add(passwordLabel);
@@ -77,8 +103,8 @@ public class CreateCourseDialog extends JDialog {
         teacherPasswordPanel.add(teacherPasswordField);
 
         fieldsPanel.add(namePanel, BorderLayout.NORTH);
-        fieldsPanel.add(passwordPanel, BorderLayout.SOUTH);
-
+        fieldsPanel.add(passwordPanel, BorderLayout.CENTER);
+        fieldsPanel.add(teacherPasswordPanel, BorderLayout.SOUTH);
 
         add(fieldsPanel, BorderLayout.CENTER);
         add(bottomButtons, BorderLayout.SOUTH);
@@ -89,5 +115,36 @@ public class CreateCourseDialog extends JDialog {
 
         setLocationRelativeTo(getParent());
 
+    }
+
+    /**
+     * Create a new course with given name, password and admin password, if name is not empty
+     * We considerate that a course can be created without any password
+     */
+    public void createCourse() {
+        if (!nameField.getText().isEmpty()) {
+            course.setCourseId(nameField.getText());
+            course.setPassword(passwordField.getText());
+            course.setTeacherPassword(teacherPasswordField.getText());
+            setVisible(false);
+            if (course.getCourseId() != null)
+                course.create();
+                setVisible(false);
+        }
+    }
+
+    /**
+     * Add a key listener to a field to create a course if enter key is typed
+     * @param field
+     */
+    public void addEnterKeyHandler(JTextField field){
+
+        field.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                if(e.getKeyChar() == KeyEvent.VK_ENTER)
+                    createCourse();
+            }
+        });
     }
 }

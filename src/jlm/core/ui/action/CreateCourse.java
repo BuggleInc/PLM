@@ -24,7 +24,5 @@ public class CreateCourse extends AbstractGameAction {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         new CreateCourseDialog(course).show();
-        if (course.getCourseId() != null)
-            course.create();
     }
 }
