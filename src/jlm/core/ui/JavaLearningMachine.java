@@ -17,7 +17,7 @@ public class JavaLearningMachine {
 		
 		Reader.setLocale(new JFrame().getLocale().getLanguage());
 		
-		Game.getInstance().loadLesson("lessons.chooser");
+		Game.getInstance().loadChooser();
 		MainFrame.getInstance().setVisible(true);
 	}
 }

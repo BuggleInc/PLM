@@ -93,7 +93,19 @@ public class Game implements IWorldView {
 
         currentCourse = new CourseAppEngine();
 	}
-
+	
+	
+	/**
+	 * Load the chooser, stored in jlm.core.ui.chooser
+	 */
+	public void loadChooser() {
+		Game.instance.loadLesson("lessons.chooser");
+	}
+	
+	
+	/**
+	 * Load the lesson in the package given in parameter
+	 */
 	public Lesson loadLesson(String lessonName) {
 		statusArgAdd("Load lesson " + lessonName);
 		Lesson lesson = lessons.get(lessonName);
