@@ -1,80 +1,29 @@
 package jlm.core.ui.action;
 
 import jlm.core.model.Game;
+import jlm.core.model.HelpAppEngine;
+import jlm.core.model.HelpServer;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 
 /**
  * Class that handle clicks on HELP button
  * It sends a request to the JLM server
- * TODO use an abstraction layer and move most of the code to the model
  */
 public class HelpMe extends AbstractGameAction {
 
-    // url to the course server
-    private URL server;
-    private String username;
-    // the user is already requesting help
-    private boolean isRequestingHelp;
+    private HelpServer helpServer;
 
     public HelpMe(Game game, String text, ImageIcon icon) {
         super(game, text, icon);
-
-        username = System.getenv("USER");
-        if (username == null)
-            username = System.getenv("USERNAME");
-        if (username == null)
-            username = "John Doe";
-
-        try {
-            server = new URL(Game.getProperty("jlm.appengine.url") + "/alert");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-
-        isRequestingHelp = false;
+        helpServer = new HelpAppEngine();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String courseId = Game.getInstance().getCourseID();
-        if (!courseId.isEmpty()) {
-            JButton helpMeButton = (JButton) e.getSource();
-
-            try {
-                String data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(username, "UTF-8");
-                data += "&" + URLEncoder.encode("course", "UTF-8") + "=" + URLEncoder.encode(courseId, "UTF-8");
-
-
-                if (!isRequestingHelp) {
-                    // the user is not yet requesting help, launch a request
-                    data += "&" + URLEncoder.encode("request_help", "UTF-8") + "=" + URLEncoder.encode(courseId, "true");
-                    helpMeButton.setText("Discard help");
-
-                } else {
-                    // the user got some help, abort the request
-                    data += "&" + URLEncoder.encode("request_help", "UTF-8") + "=" + URLEncoder.encode(courseId, "false");
-                    helpMeButton.setText("Help");
-
-                }
-
-                isRequestingHelp = !isRequestingHelp;
-                URLConnection conn = server.openConnection();
-                conn.setDoOutput(true);
-                OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
-                wr.write(data);
-                wr.flush();
-
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        }
+        helpServer.switchStatus((JButton)e.getSource());
+        helpServer.requestHelp();
     }
+
 }

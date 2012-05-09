@@ -326,7 +326,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         helpMeButton = new PropagatingButton(new HelpMe(g, "Help",
                 ResourcesCache.getIcon("resources/alert.png")));
-		
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);

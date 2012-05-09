@@ -685,6 +685,13 @@ public class Game implements IWorldView {
     		return currentCourse.getCourseId();
     }
 
+    public String getCoursePassword(){
+        if(this.currentCourse == null)
+            return "";
+        else
+            return currentCourse.getPassword();
+    }
+
     public void setCourseID(String courseID) {
     	this.currentCourse.setCourseId(courseID);
     }
