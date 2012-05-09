@@ -9,7 +9,7 @@ public interface ProgressSpyListener {
 
     public void heartbeat();
 
-    public void join();
+    public String join();
 
     public void leave();
 }

@@ -1,7 +1,6 @@
 package jlm.core.ui;
 
-import jlm.core.model.Course;
-import jlm.core.model.Game;
+import jlm.core.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -67,6 +66,7 @@ public class CourseChooseDialog extends JDialog {
         // Load the list of available "courses", or a message to say nope.
         Course currentCourse = Game.getInstance().getCurrentCourse();
         courseListIDs = currentCourse.getAllCoursesId();
+        // TODO the courses list is not refreshed
 
         if (courseListIDs.isEmpty()) {
             c.add(new JLabel("No course currently opened, sorry.", JLabel.CENTER), BorderLayout.CENTER);
@@ -93,9 +93,19 @@ public class CourseChooseDialog extends JDialog {
     public void selectCourse() {
         System.out.println(jListID.getSelectedValue());
         MainFrame.getInstance().appendToTitle("[ " + jListID.getSelectedValue() + " ]");
-        Course course = Game.getInstance().getCurrentCourse();
-        course.setCourseId(jListID.getSelectedValue().toString());
-        course.setPassword(new String(passwordField.getPassword()));
+        Course course = new CourseAppEngine(jListID.getSelectedValue().toString(),
+                new String(passwordField.getPassword()));
+        Game game = Game.getInstance();
+        game.setCurrentCourse(course);
+
+        // report the user presence on the server, launch the heartbeat timertask (and kill the current one)
+        if(game.getHeartBeatSpy() != null)
+            game.getHeartBeatSpy().die();
+
+        game.setHeartBeatSpy(new HeartBeatSpy(game.getProgressSpyListeners()));
+        for(ProgressSpyListener spyListener: game.getProgressSpyListeners()){
+            spyListener.join();
+        }
 
         setVisible(false);
     }

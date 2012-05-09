@@ -47,7 +47,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 		jsonObject.put("action", "executed");
 
 		sendRequest(jsonObject.toString());
-
 	}
 
 	@Override
@@ -72,26 +71,35 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	@Override
 	public void heartbeat() {
 		JSONObject jsonObject = new JSONObject();
+        Game game = Game.getInstance();
 		jsonObject.put("username", username);
 		jsonObject.put("action", "heartbeat");
+        jsonObject.put("course", game.getCourseID());
+        jsonObject.put("password", game.getCoursePassword());
 
 		sendRequest(jsonObject.toString());
 	}
 
 	@Override
-	public void join() {
+	public String join() {
 		JSONObject jsonObject = new JSONObject();
+        Game game = Game.getInstance();
 		jsonObject.put("username", username);
 		jsonObject.put("action", "join");
+        jsonObject.put("course", game.getCourseID());
+        jsonObject.put("password", game.getCoursePassword());
 
-		sendRequest(jsonObject.toString());
+        return sendRequest(jsonObject.toString());
 	}
 
 	@Override
 	public void leave() {
 		JSONObject jsonObject = new JSONObject();
+        Game game = Game.getInstance();
 		jsonObject.put("username", username);
 		jsonObject.put("action", "leave");
+        jsonObject.put("course", game.getCourseID());
+        jsonObject.put("password", game.getCoursePassword());
 
 		sendRequest(jsonObject.toString());
 	}
@@ -102,5 +110,5 @@ public abstract class ServerSpy implements ProgressSpyListener {
 	 * @param request
 	 *            request in json to send to the server
 	 */
-	public abstract void sendRequest(String request);
+	public abstract String sendRequest(String request);
 }

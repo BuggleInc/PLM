@@ -31,6 +31,14 @@ public abstract class Course {
 		exoResults = new HashMap<String, Integer>();
 	}
 
+    public Course(String id, String password) {
+		courseId = id;
+		this.password = password;
+		teacherPassword = "";
+		studentsResults = new HashMap<String, Integer>();
+		exoResults = new HashMap<String, Integer>();
+	}
+
 	/**
 	 * Create a new course on the server
      * For example "top_quinson"

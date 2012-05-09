@@ -85,12 +85,6 @@ public class Game implements IWorldView {
         addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new ServerSpyAppEngine());
 
-        // report the user presence on the server, launch the heartbeat timertask
-        heartBeatSpy = new HeartBeatSpy(progressSpyListeners);
-        for(ProgressSpyListener spyListener: progressSpyListeners){
-            spyListener.join();
-        }
-
         currentCourse = new CourseAppEngine();
 	}
 	
@@ -715,4 +709,10 @@ public class Game implements IWorldView {
     public void setCurrentCourse(Course currentCourse) {
         this.currentCourse = currentCourse;
     }
+
+    public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
+
+    public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
+
+    public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
 }
