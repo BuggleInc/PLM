@@ -98,25 +98,53 @@ public class CourseChooseDialog extends JDialog {
 
     }
 
+    /**
+     * Select a new course in the list
+     * if a course was already selected, send a leave and heartbeat die signal
+     * Launch new heartbeat and join events, change current course
+     */
     public void selectCourse() {
-        MainFrame.getInstance().appendToTitle("[ " + jListID.getSelectedValue() + " ]");
-        Course course = new CourseAppEngine(jListID.getSelectedValue().toString(),
-                new String(passwordField.getPassword()));
         Game game = Game.getInstance();
-        game.setCurrentCourse(course);
 
-        // report the user presence on the server, launch the heartbeat timertask (and kill the current one)
+        // leave the previous course and kill the heartbeat if existing
         if(game.getHeartBeatSpy() != null)
             game.getHeartBeatSpy().die();
+        if(game.getCourseID() != null)
+            for(ProgressSpyListener spyListener: game.getProgressSpyListeners())
+                spyListener.leave();
 
-        game.setHeartBeatSpy(new HeartBeatSpy(game.getProgressSpyListeners()));
+        // select the new course
+        Course course = new CourseAppEngine(jListID.getSelectedValue().toString(),
+                new String(passwordField.getPassword()));
+        game.setCurrentCourse(course);
+
+        // report the user presence on the server and verify password
+        boolean passwordError = false;
         for(ProgressSpyListener spyListener: game.getProgressSpyListeners()){
-            spyListener.join();
+            String response = spyListener.join();
+            if(spyListener instanceof ServerSpy){
+                if(ServerAnswer.values()[Integer.parseInt(response)] == ServerAnswer.WRONG_PASSWORD)
+                    passwordError = true;
+            }
+        }
+
+        if(passwordError){
+            JOptionPane.showMessageDialog(getParent(), "Wrong module password", "Server error",
+                    JOptionPane.ERROR_MESSAGE);
+            game.getCurrentCourse().setCourseId(null);
+            MainFrame.getInstance().appendToTitle("");
+        } else {
+            // launch the heartbeat timertask and change window title
+            game.setHeartBeatSpy(new HeartBeatSpy(game.getProgressSpyListeners()));
+            MainFrame.getInstance().appendToTitle("[ " + jListID.getSelectedValue() + " ]");
         }
 
         setVisible(false);
     }
 
+    /**
+     * Refresh the list of available courses from the server
+     */
     public void refreshList(){
        courseListIDs = Game.getInstance().getCurrentCourse().getAllCoursesId();
         jListID.setListData(courseListIDs.toArray());
