@@ -36,7 +36,7 @@ public abstract class Course {
      * For example "top_quinson"
      * A user password is set to push data, a teacher password to administrate course
 	 */
-	public void create() {
+	public ServerAnswer create() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("action", "new");
 		jsonObject.put("course", courseId);
@@ -44,7 +44,7 @@ public abstract class Course {
 		jsonObject.put("teacher_password", teacherPassword);
 
 		String response = sendTeacherRequest(jsonObject.toString());
-		System.out.println(response);
+        return ServerAnswer.values()[Integer.parseInt(response)];
 	}
 
 	/**
