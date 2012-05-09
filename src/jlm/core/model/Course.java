@@ -1,11 +1,11 @@
 package jlm.core.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Class to manage course data online It has an id and allows to save/retrieve
@@ -32,7 +32,9 @@ public abstract class Course {
 	}
 
 	/**
-	 * Create a new course on the server For example top_quinson
+	 * Create a new course on the server
+     * For example "top_quinson"
+     * A user password is set to push data, a teacher password to administrate course
 	 */
 	public void create() {
 		JSONObject jsonObject = new JSONObject();
@@ -52,6 +54,8 @@ public abstract class Course {
 	public void refresh() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("action", "refresh");
+        jsonObject.put("course", courseId);
+        jsonObject.put("teacher_password", teacherPassword);
 
 		String response = sendTeacherRequest(jsonObject.toString());
 		/*
@@ -69,7 +73,7 @@ public abstract class Course {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("action", "remove");
 		jsonObject.put("course", courseId);
-		jsonObject.put("password", password);
+		jsonObject.put("teacher_password", teacherPassword);
 
 		String response = sendTeacherRequest(jsonObject.toString());
 		System.out.println(response);

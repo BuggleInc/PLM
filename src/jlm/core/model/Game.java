@@ -83,7 +83,7 @@ public class Game implements IWorldView {
 		//addProgressSpyListener(new IdenticaSpy());
 		//addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
-        addProgressSpyListener(new AppEngineSpy());
+        addProgressSpyListener(new ServerSpyAppEngine());
 
         // report the user presence on the server, launch the heartbeat timertask
         heartBeatSpy = new HeartBeatSpy(progressSpyListeners);

@@ -8,11 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class AppEngineSpy extends ServerSpy {
+public class ServerSpyAppEngine extends ServerSpy {
 
     private URL server;
 
-    public AppEngineSpy() {
+    public ServerSpyAppEngine() {
         super();
 
         try {
