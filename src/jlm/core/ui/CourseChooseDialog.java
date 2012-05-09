@@ -3,6 +3,8 @@ package jlm.core.ui;
 import jlm.core.model.*;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -44,6 +46,7 @@ public class CourseChooseDialog extends JDialog {
                 selectCourse();
             }
         });
+        OKButton.setEnabled(false);
 
         JButton cancelButton = new JButton("Cancel");
         cancelButton.addActionListener(new ActionListener() {
@@ -66,14 +69,19 @@ public class CourseChooseDialog extends JDialog {
         // Load the list of available "courses", or a message to say nope.
         Course currentCourse = Game.getInstance().getCurrentCourse();
         courseListIDs = currentCourse.getAllCoursesId();
-        // TODO the courses list is not refreshed
 
         if (courseListIDs.isEmpty()) {
             c.add(new JLabel("No course currently opened, sorry.", JLabel.CENTER), BorderLayout.CENTER);
-            OKButton.setEnabled(false);
         } else {
             jListID = new JList(courseListIDs.toArray());
             jListID.setSelectedValue(currentCourse.getCourseId(), true);
+            jListID.addListSelectionListener(new ListSelectionListener() {
+                @Override
+                public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                    OKButton.setEnabled(true);
+                }
+            });
+
             coursesPanel.add(jListID, BorderLayout.CENTER);
         }
 
@@ -91,7 +99,6 @@ public class CourseChooseDialog extends JDialog {
     }
 
     public void selectCourse() {
-        System.out.println(jListID.getSelectedValue());
         MainFrame.getInstance().appendToTitle("[ " + jListID.getSelectedValue() + " ]");
         Course course = new CourseAppEngine(jListID.getSelectedValue().toString(),
                 new String(passwordField.getPassword()));
@@ -108,5 +115,10 @@ public class CourseChooseDialog extends JDialog {
         }
 
         setVisible(false);
+    }
+
+    public void refreshList(){
+       courseListIDs = Game.getInstance().getCurrentCourse().getAllCoursesId();
+        jListID.setListData(courseListIDs.toArray());
     }
 }

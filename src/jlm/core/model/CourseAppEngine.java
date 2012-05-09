@@ -53,7 +53,6 @@ public class CourseAppEngine extends Course {
     public String sendRequest(String request, URL server) {
         String response = "";
         try {
-            System.out.println(request);
 
             // Send data
             URLConnection conn = server.openConnection();

@@ -311,7 +311,8 @@ public class Game implements IWorldView {
                 spyListener.leave();
             }
             // stop the heartbeat report to JLMServer
-            heartBeatSpy.die();
+            if(heartBeatSpy != null)
+                heartBeatSpy.die();
 
 			saveSession();
 			storeProperties();
