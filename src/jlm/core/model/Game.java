@@ -99,6 +99,9 @@ public class Game implements IWorldView {
 	 * Load the chooser, stored in jlm.core.ui.chooser
 	 */
 	public void loadChooser() {
+		if (JLMClassLoader.isInAJAR())
+			JLMClassLoader.setInAJAR(false);
+		
 		Game.instance.loadLesson("lessons.chooser");
 	}
 	
