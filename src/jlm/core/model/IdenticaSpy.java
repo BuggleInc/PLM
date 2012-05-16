@@ -57,8 +57,7 @@ public class IdenticaSpy implements ProgressSpyListener {
     public void heartbeat(){    /* i don't care, i'm a viking */ }
 
     @Override
-    public void join() {
-    }
+    public String join() { return ""; }
 
     @Override
     public void leave() {

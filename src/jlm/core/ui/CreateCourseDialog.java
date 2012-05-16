@@ -1,6 +1,7 @@
 package jlm.core.ui;
 
 import jlm.core.model.Course;
+import jlm.core.model.ServerAnswer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -59,8 +60,9 @@ public class CreateCourseDialog extends JDialog {
         // fields where to enter data
         nameField = new JTextField(10);
         nameField.addKeyListener(new KeyAdapter() {
+
             @Override
-            public void keyPressed(KeyEvent e) {
+            public void keyReleased(KeyEvent e) {
                 if(nameField.getText().isEmpty())
                     OKButton.setEnabled(false);
                 else
@@ -127,9 +129,11 @@ public class CreateCourseDialog extends JDialog {
             course.setPassword(passwordField.getText());
             course.setTeacherPassword(teacherPasswordField.getText());
             setVisible(false);
-            if (course.getCourseId() != null)
-                course.create();
-                setVisible(false);
+            if (course.getCourseId() != null){
+                if(course.create() == ServerAnswer.COURSE_NAME_ALREADY_USED)
+                    JOptionPane.showMessageDialog(getParent(), "Course name already used on the server", "Server error",
+                            JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 

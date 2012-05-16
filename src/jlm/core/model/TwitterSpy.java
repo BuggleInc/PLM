@@ -41,8 +41,7 @@ public class TwitterSpy implements ProgressSpyListener {
     public void heartbeat() {}
 
     @Override
-    public void join() {
-    }
+    public String join() { return ""; }
 
     @Override
     public void leave() {

@@ -14,7 +14,7 @@ public class HelpAppEngine extends HelpServer {
 
     public HelpAppEngine() {
         try {
-            helpServer = new URL(Game.getProperty("jlm.appengine.url") + "/help");
+            helpServer = new URL(Game.getProperty("jlm.appengine.url") + "/student");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

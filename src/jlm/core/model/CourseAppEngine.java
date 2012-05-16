@@ -30,6 +30,16 @@ public class CourseAppEngine extends Course {
         }
     }
 
+    public CourseAppEngine(String id, String password) {
+        super(id, password);
+        try {
+            teacherServer = new URL(Game.getProperty("jlm.appengine.url") + "/teacher");
+            courseServer = new URL(Game.getProperty("jlm.appengine.url") + "/course");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public String sendTeacherRequest(String request){
         return sendRequest(request, teacherServer);
@@ -43,7 +53,6 @@ public class CourseAppEngine extends Course {
     public String sendRequest(String request, URL server) {
         String response = "";
         try {
-            System.out.println(request);
 
             // Send data
             URLConnection conn = server.openConnection();

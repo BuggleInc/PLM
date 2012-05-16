@@ -8,11 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-public class AppEngineSpy extends ServerSpy {
+public class ServerSpyAppEngine extends ServerSpy {
 
     private URL server;
 
-    public AppEngineSpy() {
+    public ServerSpyAppEngine() {
         super();
 
         try {
@@ -22,10 +22,9 @@ public class AppEngineSpy extends ServerSpy {
         }
     }
 
-    public void sendRequest(String request) {
+    public String sendRequest(String request) {
+        String response = "";
         try {
-
-            System.out.println(request);
 
             // Send data
             URLConnection conn = server.openConnection();
@@ -38,15 +37,16 @@ public class AppEngineSpy extends ServerSpy {
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line;
             while ((line = br.readLine()) != null)
-                System.err.println(line);
+                response += line;
 
             wr.close();
             br.close();
 
         } catch (IOException e) {
-            // e.printStackTrace();
             System.out.println("Unable to contact JLMServer to send request " + request);
         }
+
+        return response;
     }
 
 }
