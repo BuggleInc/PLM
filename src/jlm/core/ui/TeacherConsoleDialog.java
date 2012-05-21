@@ -11,6 +11,8 @@ import java.awt.*;
 public class TeacherConsoleDialog extends JDialog {
 
     private Game game;
+    private JLabel courseNameLabel;
+    private ResultsPanel resultsPanel;
 
     public TeacherConsoleDialog() {
         super(MainFrame.getInstance(), "The JLM Teacher Console", false);
@@ -22,12 +24,14 @@ public class TeacherConsoleDialog extends JDialog {
     public void initComponent() {
         setLayout(new BorderLayout());
 
-        ResultsPanel resultsPanel = new ResultsPanel(game.getCurrentCourse());
+        resultsPanel = new ResultsPanel(game.getCurrentCourse());
 
         JToolBar toolBar = new JToolBar();
         toolBar.setBorder(BorderFactory.createEtchedBorder());
 
-        JButton newButton = new JButton(new CreateCourse(game, "Create course"));
+        courseNameLabel = new JLabel(game.getCourseID().isEmpty() ? "No course selected" : "[" + game.getCourseID() + "]");
+
+        JButton newButton = new JButton(new CreateCourse(game, "New course", this));
         newButton.setBorderPainted(false);
 
         JButton refreshButton = new JButton(new RefreshCourse(game, "Refresh", this));
@@ -36,6 +40,7 @@ public class TeacherConsoleDialog extends JDialog {
         JButton deleteButton = new JButton(new DeleteCourse(game, "Delete", this));
         deleteButton.setBorderPainted(false);
 
+        toolBar.add(courseNameLabel);
         toolBar.add(newButton);
         toolBar.add(refreshButton);
         toolBar.add(deleteButton);
@@ -47,8 +52,13 @@ public class TeacherConsoleDialog extends JDialog {
         setMinimumSize(new Dimension(500, 300));
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setResizable(true);
+        setVisible(true);
 
         setLocationRelativeTo(getParent());
 
+    }
+
+    public void refresh(){
+        courseNameLabel.setText(game.getCourseID());
     }
 }

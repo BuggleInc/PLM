@@ -136,14 +136,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
             menuItem = new JMenuItem(new AbstractGameAction(g, "Teacher Console") {
 
-                private JDialog dialog;
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // launch teacher console
-                    if(dialog == null)
-                        dialog = new TeacherConsoleDialog();
-                    dialog.setVisible(true);
+                    new TeacherConsoleDialog();
                 }
             });
             menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
@@ -156,7 +152,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
             @Override
             public void actionPerformed(ActionEvent e) {
                 // launch a dialog to choose the course
-                CourseChooseDialog dialog = new CourseChooseDialog();
+                ChooseCourseDialog dialog = new ChooseCourseDialog();
             }
         });
 

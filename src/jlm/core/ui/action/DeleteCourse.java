@@ -1,9 +1,11 @@
 package jlm.core.ui.action;
 
 import jlm.core.model.Course;
+import jlm.core.model.CourseAppEngine;
 import jlm.core.model.Game;
 import jlm.core.model.ServerAnswer;
 import jlm.core.ui.MainFrame;
+import jlm.core.ui.TeacherConsoleDialog;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +14,9 @@ import java.awt.event.ActionEvent;
 public class DeleteCourse extends AbstractGameAction {
 
     private Course course;
-    private Component parentComponent;
+    private TeacherConsoleDialog parentComponent;
 
-    public DeleteCourse(Game game, String text, Component parentComponent) {
+    public DeleteCourse(Game game, String text, TeacherConsoleDialog parentComponent) {
         super(game, text);
         course = game.getCurrentCourse();
         this.parentComponent = parentComponent;
@@ -26,9 +28,15 @@ public class DeleteCourse extends AbstractGameAction {
             int choice = JOptionPane.showConfirmDialog(MainFrame.getInstance(), "Do you really want to delete the course on the server?");
             if (choice == JOptionPane.OK_OPTION) {
                 String answer = course.delete();
-                if (ServerAnswer.values()[Integer.parseInt(answer)] == ServerAnswer.WRONG_TEACHER_PASSWORD)
+                ServerAnswer serverAnswer = ServerAnswer.values()[Integer.parseInt(answer)];
+                if (serverAnswer == ServerAnswer.WRONG_TEACHER_PASSWORD)
                     JOptionPane.showMessageDialog(parentComponent, "Wrong module teacher password", "Server error",
                             JOptionPane.ERROR_MESSAGE);
+                if(serverAnswer == ServerAnswer.ALL_IS_FINE){
+                    Game.getInstance().setCurrentCourse(new CourseAppEngine());
+                    MainFrame.getInstance().appendToTitle("");
+                    parentComponent.refresh();
+                }
             }
         }
     }

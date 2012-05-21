@@ -1,6 +1,8 @@
 package jlm.core.ui;
 
 import jlm.core.model.Course;
+import jlm.core.model.CourseAppEngine;
+import jlm.core.model.Game;
 import jlm.core.model.ServerAnswer;
 
 import javax.swing.*;
@@ -15,16 +17,16 @@ import java.awt.event.KeyEvent;
  */
 public class CreateCourseDialog extends JDialog {
 
-    private static Course course;
+    private Course course;
     private JButton OKButton;
     private JTextField nameField;
     private JTextField passwordField;
     private JTextField teacherPasswordField;
 
-    public CreateCourseDialog(Course course) {
+    public CreateCourseDialog() {
         super(MainFrame.getInstance(), "Add a course", false);
 
-        this.course = course;
+        this.course = new CourseAppEngine();
         initComponent();
     }
 
@@ -129,12 +131,16 @@ public class CreateCourseDialog extends JDialog {
             course.setPassword(passwordField.getText());
             course.setTeacherPassword(teacherPasswordField.getText());
             setVisible(false);
+
             if (course.getCourseId() != null){
-                ServerAnswer response = course.create();
-                if(response == ServerAnswer.COURSE_NAME_ALREADY_USED)
+                ServerAnswer answer = course.create();
+                if(answer == ServerAnswer.COURSE_NAME_ALREADY_USED)
                     JOptionPane.showMessageDialog(getParent(), "Course name already used on the server", "Server error",
                             JOptionPane.ERROR_MESSAGE);
-
+                else if(answer == ServerAnswer.ALL_IS_FINE){
+                    Game.getInstance().setCurrentCourse(course);
+                    MainFrame.getInstance().appendToTitle("[" + course.getCourseId() + "]");
+                }
             }
         }
     }

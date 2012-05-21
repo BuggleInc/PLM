@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
-public class CourseChooseDialog extends JDialog {
+public class ChooseCourseDialog extends JDialog {
 
     private static final long serialVersionUID = 2234402839093122248L;
 
@@ -22,7 +22,7 @@ public class CourseChooseDialog extends JDialog {
     protected JPasswordField teacherPasswordField;
 
 
-    public CourseChooseDialog() {
+    public ChooseCourseDialog() {
         super(MainFrame.getInstance(), "JLM Course", false);
 
         initComponent(this.getContentPane());
