@@ -153,18 +153,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         // Menu item to change the current Course
         menuItem = new JMenuItem(new AbstractGameAction(g, "Choose your course") {
 
-            private CourseChooseDialog dialog;
-
             @Override
             public void actionPerformed(ActionEvent e) {
-                // launch teacher console
-                if(dialog == null)
-                    dialog = new CourseChooseDialog();
-                else
-                    dialog.refreshList();
-                dialog.setVisible(true);
+                // launch a dialog to choose the course
+                CourseChooseDialog dialog = new CourseChooseDialog();
             }
         });
+
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
         menu.add(menuItem);
         
