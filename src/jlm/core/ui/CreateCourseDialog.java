@@ -130,9 +130,11 @@ public class CreateCourseDialog extends JDialog {
             course.setTeacherPassword(teacherPasswordField.getText());
             setVisible(false);
             if (course.getCourseId() != null){
-                if(course.create() == ServerAnswer.COURSE_NAME_ALREADY_USED)
+                ServerAnswer response = course.create();
+                if(response == ServerAnswer.COURSE_NAME_ALREADY_USED)
                     JOptionPane.showMessageDialog(getParent(), "Course name already used on the server", "Server error",
                             JOptionPane.ERROR_MESSAGE);
+
             }
         }
     }

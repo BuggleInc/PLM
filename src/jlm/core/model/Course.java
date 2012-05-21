@@ -59,32 +59,31 @@ public abstract class Course {
 	 * Download updated data from server It loads a list of results by student
 	 * and by exercise
 	 */
-	public void refresh() {
+	public String refresh() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("action", "refresh");
         jsonObject.put("course", courseId);
         jsonObject.put("teacher_password", teacherPassword);
 
-		String response = sendTeacherRequest(jsonObject.toString());
 		/*
 		 * TODO : convert response into a list of students and exos results with
 		 * JSONArray and store it in class arguments
 		 */
-		System.out.println(response);
+
+        return sendTeacherRequest(jsonObject.toString());
 	}
 
 	/**
 	 * Delete the course on the server All student and exercises results will be
 	 * removed
 	 */
-	public void delete() {
+	public String delete() {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("action", "remove");
 		jsonObject.put("course", courseId);
 		jsonObject.put("teacher_password", teacherPassword);
 
-		String response = sendTeacherRequest(jsonObject.toString());
-		System.out.println(response);
+        return sendTeacherRequest(jsonObject.toString());
 	}
 
 	/**
@@ -102,9 +101,9 @@ public abstract class Course {
 
 		if (response != null && !response.isEmpty()) {
 			JSONArray arrayResult = (JSONArray) JSONValue.parse(response);
-			for (int i = 0; i < arrayResult.size(); i++) {
-				coursesId.add((String) arrayResult.get(i));
-			}
+            for (Object anArrayResult : arrayResult) {
+                coursesId.add((String) anArrayResult);
+            }
 		}
 
 		System.out.println(response);

@@ -30,10 +30,10 @@ public class TeacherConsoleDialog extends JDialog {
         JButton newButton = new JButton(new CreateCourse(game, "Create course"));
         newButton.setBorderPainted(false);
 
-        JButton refreshButton = new JButton(new RefreshCourse(game, "Refresh"));
+        JButton refreshButton = new JButton(new RefreshCourse(game, "Refresh", this));
         refreshButton.setBorderPainted(false);
 
-        JButton deleteButton = new JButton(new DeleteCourse(game, "Delete"));
+        JButton deleteButton = new JButton(new DeleteCourse(game, "Delete", this));
         deleteButton.setBorderPainted(false);
 
         toolBar.add(newButton);

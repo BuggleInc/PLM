@@ -75,7 +75,10 @@ public class CourseChooseDialog extends JDialog {
             c.add(new JLabel("No course currently opened, sorry.", JLabel.CENTER), BorderLayout.CENTER);
         } else {
             jListID.setListData(courseListIDs.toArray());
+
             jListID.setSelectedValue(currentCourse.getCourseId(), true);
+            if(!currentCourse.getCourseId().isEmpty())
+                OKButton.setEnabled(true);
             jListID.addListSelectionListener(new ListSelectionListener() {
                 @Override
                 public void valueChanged(ListSelectionEvent listSelectionEvent) {
