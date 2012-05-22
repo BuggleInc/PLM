@@ -1,5 +1,6 @@
 package jlm.core.model;
 
+import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 
@@ -70,13 +71,19 @@ public class ServerUserData {
             JSONObject userMap = (JSONObject) dataMap.get(user);
             ServerUserData sud = new ServerUserData();
             sud.setUsername((String) userMap.get("username"));
-            sud.setLastJoin((new Date((String) userMap.get("lastJoin"))));
-            sud.setLastHeartbeat(new Date((String) userMap.get("lastHeartbeat")));
-            sud.setLastLeave(new Date((String) userMap.get("lastLeave")));
 
-            JSONObject exercisesMap = (JSONObject) userMap.get("exercises");
-            for (int i = 0; i < exercisesMap.size(); i++) {
-                JSONObject exerciseMap = (JSONObject) exercisesMap.get(i);
+            String lastJoinString = (String) userMap.get("lastJoin");
+            sud.setLastJoin(lastJoinString.equals("null") ? null : new Date(lastJoinString));
+
+            String lastHeartbeatString = (String)userMap.get("lastHeartbeat");
+            sud.setLastHeartbeat(lastHeartbeatString.equals("null") ? null : new Date(lastHeartbeatString));
+
+            String lastLeaveString = (String)userMap.get("lastLeave");
+            sud.setLastLeave(lastLeaveString.equals("null") ? null : new Date(lastLeaveString));
+
+            JSONArray exercisesArray = (JSONArray) userMap.get("exercises");
+            for (Object anExercisesArray : exercisesArray) {
+                JSONObject exerciseMap = (JSONObject) anExercisesArray;
                 ServerExerciseData sed = new ServerExerciseData();
                 sed.setName((String) exerciseMap.get("name"));
                 sed.setLang((String) exerciseMap.get("lang"));
@@ -92,5 +99,23 @@ public class ServerUserData {
         }
 
         return data;
+    }
+
+    public int getExercisesPassed(){
+        int exercisesPassed = 0;
+        for(ServerExerciseData exercise: exercises){
+            exercisesPassed += exercise.getPassedTests();
+        }
+
+        return exercisesPassed;
+    }
+
+    public int getExercisesTotal(){
+        int exercisesTotal = 0;
+        for(ServerExerciseData exercise: exercises){
+            exercisesTotal += exercise.getTotalTests();
+        }
+
+        return exercisesTotal;
     }
 }

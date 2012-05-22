@@ -8,7 +8,6 @@ import jlm.core.ui.MainFrame;
 import jlm.core.ui.TeacherConsoleDialog;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class DeleteCourse extends AbstractGameAction {
@@ -18,6 +17,12 @@ public class DeleteCourse extends AbstractGameAction {
 
     public DeleteCourse(Game game, String text, TeacherConsoleDialog parentComponent) {
         super(game, text);
+        course = game.getCurrentCourse();
+        this.parentComponent = parentComponent;
+    }
+
+    public DeleteCourse(Game game, String text, ImageIcon icon, TeacherConsoleDialog parentComponent) {
+        super(game, text, icon);
         course = game.getCurrentCourse();
         this.parentComponent = parentComponent;
     }

@@ -1,6 +1,5 @@
 package jlm.core.ui.action;
 
-import jlm.core.model.Course;
 import jlm.core.model.Game;
 import jlm.core.ui.CreateCourseDialog;
 import jlm.core.ui.TeacherConsoleDialog;
@@ -17,8 +16,9 @@ public class CreateCourse extends AbstractGameAction {
         this.teacherConsoleDialog = teacherConsoleDialog;
     }
 
-    public CreateCourse(Game game, String text, ImageIcon icon) {
+    public CreateCourse(Game game, String text, ImageIcon icon, TeacherConsoleDialog teacherConsoleDialog) {
         super(game, text, icon);
+        this.teacherConsoleDialog = teacherConsoleDialog;
     }
 
     @Override

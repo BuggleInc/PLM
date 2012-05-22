@@ -65,4 +65,5 @@ public class ServerExerciseData {
 				+ passedTests + ", totalTests=" + totalTests + ", source="
 				+ source + ", date=" + date + "]";
 	}
+
 }

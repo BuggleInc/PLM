@@ -42,8 +42,9 @@ public abstract class ServerSpy implements ProgressSpyListener {
         jsonObject.put("password", game.getCoursePassword());
 		jsonObject.put("exoname", exo.getName());
 		jsonObject.put("exolang", lastResult.language.toString());
-		jsonObject.put("passedtests", lastResult.passedTests + "");
-		jsonObject.put("totaltests", lastResult.totalTests + "");
+        // passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
+		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
+		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
 		jsonObject.put("source", exoCode);
 		jsonObject.put("action", "execute");
 

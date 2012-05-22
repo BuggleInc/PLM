@@ -38,7 +38,7 @@ public class ChooseCourseDialog extends JDialog {
 
     public void initComponent(Container c) {
         c.setLayout(new BorderLayout());
-        c.add(new JLabel("Please select your course:"), BorderLayout.NORTH);
+        c.add(new JLabel("Please select your course:", JLabel.CENTER), BorderLayout.NORTH);
 
         // OK/Cancel button
         OKButton = new JButton("OK");
@@ -72,7 +72,7 @@ public class ChooseCourseDialog extends JDialog {
         courseListIDs = currentCourse.getAllCoursesId();
 
         if (courseListIDs.isEmpty()) {
-            c.add(new JLabel("No course currently opened, sorry.", JLabel.CENTER), BorderLayout.CENTER);
+            coursesPanel.add(new JLabel("No course currently opened, sorry.", JLabel.CENTER), BorderLayout.CENTER);
         } else {
             jListID.setListData(courseListIDs.toArray());
 
