@@ -67,7 +67,7 @@ public class TeacherConsoleDialog extends JDialog {
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
 
         JPanel unknownPanel = new JPanel();
-        tabbedPanel.addTab("No results", null, unknownPanel, "Students with no results");
+        tabbedPanel.addTab("No activity", null, unknownPanel, "Students with no recorded activity");
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
 
         JPanel failingPanel = new JPanel();
