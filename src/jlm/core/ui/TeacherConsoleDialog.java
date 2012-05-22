@@ -7,12 +7,15 @@ import jlm.core.ui.action.RefreshCourse;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class TeacherConsoleDialog extends JDialog {
 
     private Game game;
     private JLabel courseNameLabel;
     private ResultsPanel resultsPanel;
+    
+    private JTabbedPane tabbedPanel;
 
     public TeacherConsoleDialog() {
         super(MainFrame.getInstance(), "JLM Teacher Console", false);
@@ -27,8 +30,7 @@ public class TeacherConsoleDialog extends JDialog {
     public void initComponent() {
         setLayout(new BorderLayout());
 
-        resultsPanel = new ResultsPanel();
-
+        //Top toolbar
         JToolBar toolBar = new JToolBar();
         toolBar.setBorder(BorderFactory.createEtchedBorder());
 
@@ -50,9 +52,33 @@ public class TeacherConsoleDialog extends JDialog {
         toolBar.add(newButton);
         toolBar.add(refreshButton);
         toolBar.add(deleteButton);
-
+        
         add(BorderLayout.NORTH, toolBar);
-        add(BorderLayout.CENTER, resultsPanel);
+        
+        //Center tabbed panel, with the different resultsPanel
+        tabbedPanel = new JTabbedPane();
+        
+        resultsPanel = new ResultsPanel();
+        tabbedPanel.addTab("All results", resultsPanel);
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_A);
+        
+        JPanel needingHelpPanel = new JPanel();
+        tabbedPanel.addTab("Need help", null, needingHelpPanel, "Students requesting help");
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
+
+        JPanel unknownPanel = new JPanel();
+        tabbedPanel.addTab("No results", null, unknownPanel, "Students with no results");
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
+
+        JPanel failingPanel = new JPanel();
+        tabbedPanel.addTab("Failing", null, failingPanel, "Students failing completely");
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
+
+        JPanel successfulPanel = new JPanel();
+        tabbedPanel.addTab("Successful", null, successfulPanel, "Students doing good");
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
+        
+        add(BorderLayout.CENTER, tabbedPanel);
 
         pack();
         setMinimumSize(new Dimension(500, 300));
