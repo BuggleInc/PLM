@@ -11,13 +11,13 @@ public class ResultsPanel extends JPanel {
 
     public ResultsPanel() {
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+        setBorder(BorderFactory.createTitledBorder("Results by student"));
         displayResults();
     }
 
     public void displayResults() {
+        this.removeAll();
         Map<String, ServerUserData> serverData = Game.getInstance().getCurrentCourse().getServerData();
-
-        setBorder(BorderFactory.createTitledBorder("Results by student"));
 
         UIManager.put("ProgressBar.background", Color.RED); //color of the background
         UIManager.put("ProgressBar.foreground", Color.GREEN);  //color of progress bar

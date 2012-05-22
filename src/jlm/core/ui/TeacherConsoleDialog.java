@@ -1,6 +1,7 @@
 package jlm.core.ui;
 
 import jlm.core.model.Game;
+import jlm.core.model.ServerAnswer;
 import jlm.core.ui.action.CreateCourse;
 import jlm.core.ui.action.DeleteCourse;
 import jlm.core.ui.action.RefreshCourse;
@@ -21,8 +22,18 @@ public class TeacherConsoleDialog extends JDialog {
         super(MainFrame.getInstance(), "JLM Teacher Console", false);
 
         game = Game.getInstance();
-        if (game.getCurrentCourse().getCourseId() != null)
-            game.getCurrentCourse().refresh();
+
+        // refresh the course to display in the teacher console
+        if (game.getCurrentCourse().getCourseId() != null && !game.getCurrentCourse().getCourseId().isEmpty()){
+            String answer = game.getCurrentCourse().refresh();
+            try {
+                if (ServerAnswer.values()[Integer.parseInt(answer)] == ServerAnswer.WRONG_TEACHER_PASSWORD)
+                    JOptionPane.showMessageDialog(this, "Wrong teacher password for the course",
+                            "Server error", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException nfe) {
+             // the answer was not a status message, it contains course data
+            }
+        }
 
         initComponent();
     }
