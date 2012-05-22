@@ -8,6 +8,8 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 
@@ -20,10 +22,13 @@ public class ChooseCourseDialog extends JDialog {
     protected JButton OKButton;
     protected JPasswordField passwordField;
     protected JPasswordField teacherPasswordField;
+    
+    private boolean isChoosen;
 
 
     public ChooseCourseDialog() {
         super(MainFrame.getInstance(), "JLM Course", false);
+        isChoosen = false;
 
         initComponent(this.getContentPane());
 
@@ -83,8 +88,15 @@ public class ChooseCourseDialog extends JDialog {
                 @Override
                 public void valueChanged(ListSelectionEvent listSelectionEvent) {
                     OKButton.setEnabled(true);
+                    isChoosen = true;
                 }
-
+            });
+            jListID.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER && isChoosen)
+                        selectCourse();
+                }
             });
             coursesPanel.add(jListID, BorderLayout.CENTER);
         }
@@ -93,14 +105,31 @@ public class ChooseCourseDialog extends JDialog {
         JPanel passwordsPanel = new JPanel(new BorderLayout()); // i hate swing...
         JLabel passwordLabel = new JLabel("Course password: ");
         passwordField = new JPasswordField(10);
+        passwordField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER && isChoosen)
+                    selectCourse();
+            }
+        });
+        
         JPanel passwordPanel = new JPanel(new FlowLayout());
         passwordPanel.add(passwordLabel);
         passwordPanel.add(passwordField);
         passwordsPanel.add(passwordPanel, BorderLayout.NORTH);
-
+        
+        	//Teacher password field
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
             JLabel teacherPasswordLabel = new JLabel("Teacher password: ");
             teacherPasswordField = new JPasswordField(10);
+            teacherPasswordField.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    if(e.getKeyCode() == KeyEvent.VK_ENTER && isChoosen)
+                        selectCourse();
+                }
+            });
+            
             JPanel teacherPasswordPanel = new JPanel(new FlowLayout());
             teacherPasswordPanel.add(teacherPasswordLabel);
             teacherPasswordPanel.add(teacherPasswordField);

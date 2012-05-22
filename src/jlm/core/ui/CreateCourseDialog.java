@@ -65,7 +65,7 @@ public class CreateCourseDialog extends JDialog {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if(nameField.getText().isEmpty())
+                if(nameField.getText().isEmpty() || passwordField.getText().isEmpty())
                     OKButton.setEnabled(false);
                 else
                     OKButton.setEnabled(true);
@@ -79,6 +79,19 @@ public class CreateCourseDialog extends JDialog {
         addEnterKeyHandler(passwordField);
 
         teacherPasswordField = new JPasswordField(10);
+        teacherPasswordField.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(nameField.getText().isEmpty() || passwordField.getText().isEmpty())
+                    OKButton.setEnabled(false);
+                else
+                    OKButton.setEnabled(true);
+
+                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                    createCourse();
+            }
+        });
         addEnterKeyHandler(teacherPasswordField);
 
         // panels to contain all those components
