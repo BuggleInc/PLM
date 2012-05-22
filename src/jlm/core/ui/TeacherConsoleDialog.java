@@ -15,7 +15,7 @@ public class TeacherConsoleDialog extends JDialog {
     private ResultsPanel resultsPanel;
 
     public TeacherConsoleDialog() {
-        super(MainFrame.getInstance(), "The JLM Teacher Console", false);
+        super(MainFrame.getInstance(), "JLM Teacher Console", false);
 
         game = Game.getInstance();
         if (game.getCurrentCourse().getCourseId() != null)

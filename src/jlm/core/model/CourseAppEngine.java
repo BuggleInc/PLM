@@ -41,16 +41,16 @@ public class CourseAppEngine extends Course {
     }
 
     @Override
-    public String sendTeacherRequest(String request){
+    public String sendTeacherRequest(String request) throws IOException{
         return sendRequest(request, teacherServer);
     }
 
     @Override
-    public String sendCourseRequest(String request){
+    public String sendCourseRequest(String request) throws IOException{
        return sendRequest(request, courseServer);
     }
 
-    public String sendRequest(String request, URL server) {
+    public String sendRequest(String request, URL server) throws IOException{
         String response = "";
         try {
 
@@ -71,6 +71,7 @@ public class CourseAppEngine extends Course {
             br.close();
         } catch (IOException e) {
             System.out.println("Unable to contact JLMServer to send request " + request);
+            throw new IOException(e);
         }
         return response;
     }

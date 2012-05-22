@@ -4,6 +4,7 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -46,7 +47,14 @@ public abstract class Course {
 		jsonObject.put("password", password);
 		jsonObject.put("teacher_password", teacherPassword);
 
-		String response = sendTeacherRequest(jsonObject.toString());
+        String response;
+
+        try {
+            response = sendTeacherRequest(jsonObject.toString());
+        } catch (IOException e) {
+            return null;
+        }
+
         return ServerAnswer.values()[Integer.parseInt(response)];
 	}
 
@@ -60,9 +68,15 @@ public abstract class Course {
         jsonObject.put("course", courseId);
         jsonObject.put("teacher_password", teacherPassword);
 
-        String answer = sendTeacherRequest(jsonObject.toString());
-        // test if the answer was a status code or course data
+        String answer = null;
+        try {
+            answer = sendTeacherRequest(jsonObject.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
 
+        // test if the answer was a status code or course data
         try{
             Integer.parseInt(answer);
         } catch(NumberFormatException nfe){
@@ -81,8 +95,12 @@ public abstract class Course {
 		jsonObject.put("course", courseId);
 		jsonObject.put("teacher_password", teacherPassword);
 
-        return sendTeacherRequest(jsonObject.toString());
-	}
+        try {
+            return sendTeacherRequest(jsonObject.toString());
+        } catch (IOException e) {
+            return null;
+        }
+    }
 
 	/**
 	 * Get all courses identifiers from the server It allows to display it in
@@ -95,9 +113,14 @@ public abstract class Course {
 		ArrayList<String> coursesId = new ArrayList<String>();
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("action", "allids");
-		response = sendCourseRequest(jsonObject.toString());
 
-		if (response != null && !response.isEmpty()) {
+        try {
+            response = sendCourseRequest(jsonObject.toString());
+        } catch (IOException e) {
+            return null;
+        }
+
+        if (response != null && !response.isEmpty()) {
 			JSONArray arrayResult = (JSONArray) JSONValue.parse(response);
             for (Object anArrayResult : arrayResult) {
                 coursesId.add((String) anArrayResult);
@@ -114,9 +137,9 @@ public abstract class Course {
 	 * @param request
 	 *            request in json to send to the server
 	 */
-	public abstract String sendTeacherRequest(String request);
+	public abstract String sendTeacherRequest(String request) throws IOException;
 
-	public abstract String sendCourseRequest(String request);
+	public abstract String sendCourseRequest(String request) throws IOException;
 
 	/*
 	 * Getters and setters...
