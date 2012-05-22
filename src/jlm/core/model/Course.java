@@ -5,7 +5,7 @@ import net.minidev.json.JSONObject;
 import net.minidev.json.JSONValue;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Class to manage course data online It has an id and allows to save/retrieve
@@ -16,8 +16,7 @@ public abstract class Course {
 	protected String courseId;
 	protected String password;
 	protected String teacherPassword;
-	protected HashMap<String, Integer> studentsResults;
-	protected HashMap<String, Integer> exoResults;
+    protected Map<String, ServerUserData> serverData;
 
 	public Course() {
 		this(null);
@@ -27,16 +26,12 @@ public abstract class Course {
 		courseId = id;
 		password = "";
 		teacherPassword = "";
-		studentsResults = new HashMap<String, Integer>();
-		exoResults = new HashMap<String, Integer>();
 	}
 
     public Course(String id, String password) {
 		courseId = id;
 		this.password = password;
 		teacherPassword = "";
-		studentsResults = new HashMap<String, Integer>();
-		exoResults = new HashMap<String, Integer>();
 	}
 
 	/**
@@ -65,12 +60,15 @@ public abstract class Course {
         jsonObject.put("course", courseId);
         jsonObject.put("teacher_password", teacherPassword);
 
-		/*
-		 * TODO : convert response into a list of students and exos results with
-		 * JSONArray and store it in class arguments
-		 */
+        String answer = sendTeacherRequest(jsonObject.toString());
+        // test if the answer was a status code or course data
 
-        return sendTeacherRequest(jsonObject.toString());
+        try{
+            Integer.parseInt(answer);
+        } catch(NumberFormatException nfe){
+            serverData = ServerUserData.parse(answer);
+        }
+        return answer;
 	}
 
 	/**
@@ -133,22 +131,6 @@ public abstract class Course {
 		this.courseId = courseId;
 	}
 
-	public HashMap<String, Integer> getStudentsResults() {
-		return studentsResults;
-	}
-
-	public void setStudentsResults(HashMap<String, Integer> studentsResults) {
-		this.studentsResults = studentsResults;
-	}
-
-	public HashMap<String, Integer> getExoResults() {
-		return exoResults;
-	}
-
-	public void setExoResults(HashMap<String, Integer> exoResults) {
-		this.exoResults = exoResults;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -164,4 +146,12 @@ public abstract class Course {
 	public void setTeacherPassword(String teacherPassword) {
 		this.teacherPassword = teacherPassword;
 	}
+
+    public Map<String, ServerUserData> getServerData() {
+        return serverData;
+    }
+
+    public void setServerData(Map<String, ServerUserData> serverData) {
+        this.serverData = serverData;
+    }
 }

@@ -18,13 +18,16 @@ public class TeacherConsoleDialog extends JDialog {
         super(MainFrame.getInstance(), "The JLM Teacher Console", false);
 
         game = Game.getInstance();
+        if (game.getCurrentCourse().getCourseId() != null)
+            game.getCurrentCourse().refresh();
+
         initComponent();
     }
 
     public void initComponent() {
         setLayout(new BorderLayout());
 
-        resultsPanel = new ResultsPanel(game.getCurrentCourse());
+        resultsPanel = new ResultsPanel();
 
         JToolBar toolBar = new JToolBar();
         toolBar.setBorder(BorderFactory.createEtchedBorder());
@@ -58,7 +61,8 @@ public class TeacherConsoleDialog extends JDialog {
 
     }
 
-    public void refresh(){
-        courseNameLabel.setText(game.getCourseID());
+    public void refresh() {
+        courseNameLabel.setText("[" + game.getCourseID() + "]");
+        resultsPanel.displayResults();
     }
 }

@@ -24,12 +24,13 @@ public class RefreshCourse extends AbstractGameAction {
     public void actionPerformed(ActionEvent actionEvent) {
         if (course.getCourseId() != null) {
             String answer = course.refresh();
-            System.out.println(answer);
             try {
                 if (ServerAnswer.values()[Integer.parseInt(answer)] == ServerAnswer.WRONG_TEACHER_PASSWORD)
-                    JOptionPane.showMessageDialog(parentComponent, "Wrong module teacher password", "Server error",
-                            JOptionPane.ERROR_MESSAGE);
-            } catch (NumberFormatException nfe) { /* the answer was not a status message */ }
+                    JOptionPane.showMessageDialog(parentComponent, "Wrong teacher password for the course",
+                            "Server error", JOptionPane.ERROR_MESSAGE);
+            } catch (NumberFormatException nfe) {
+             // the answer was not a status message, it contains course data
+            }
             parentComponent.refresh();
         }
     }
