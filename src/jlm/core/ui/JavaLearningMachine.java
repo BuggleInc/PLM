@@ -1,16 +1,10 @@
 package jlm.core.ui;
 
-import java.net.URLClassLoader;
-
 import javax.swing.JFrame;
 
-import jlm.core.GameListener;
-import jlm.core.model.Course;
 import jlm.core.model.CourseAppEngine;
 import jlm.core.model.Game;
-import jlm.core.model.JLMClassLoader;
 import jlm.core.model.Reader;
-import jlm.core.model.lesson.Lesson;
 
 
 public class JavaLearningMachine {

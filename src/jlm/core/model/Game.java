@@ -4,6 +4,7 @@ import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
+import jlm.core.JLMClassLoader;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
@@ -25,7 +26,7 @@ public class Game implements IWorldView {
 	private GameState state = GameState.IDLE;
 
 	private final static String LOCAL_PROPERTIES_FILENAME = "jlm.properties";
-   private final static String LOCAL_PROPERTIES_SUBDIRECTORY = ".jlm";
+	private final static String LOCAL_PROPERTIES_SUBDIRECTORY = ".jlm";
 
 	private static Properties defaultGameProperties = new Properties();
 	private static Properties localGameProperties = new Properties();

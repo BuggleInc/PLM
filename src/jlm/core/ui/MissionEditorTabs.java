@@ -20,7 +20,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import jlm.core.GameListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
-import jlm.core.model.JLMClassLoader;
+import jlm.core.JLMClassLoader;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
