@@ -36,6 +36,9 @@ public class RefreshCourse extends AbstractGameAction {
             } catch (NumberFormatException nfe) {
              // the answer was not a status message, it contains course data
             }
+            // refresh the needing help, layabout, bad and good students lists
+            course.refreshStudentsLists();
+
             parentComponent.refresh();
         }
     }

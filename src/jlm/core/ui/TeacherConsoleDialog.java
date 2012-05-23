@@ -1,5 +1,6 @@
 package jlm.core.ui;
 
+import jlm.core.model.Course;
 import jlm.core.model.Game;
 import jlm.core.model.ServerAnswer;
 import jlm.core.ui.action.CreateCourse;
@@ -13,20 +14,24 @@ import java.awt.event.KeyEvent;
 public class TeacherConsoleDialog extends JDialog {
 
     private Game game;
+    private Course course;
     private JLabel courseNameLabel;
-    private ResultsPanel resultsPanel;
-    
-    private JTabbedPane tabbedPanel;
+    private ResultsPanel allResultsPanel;
+    private ResultsPanel helpPanel;
+    private ResultsPanel layaboutPanel;
+    private ResultsPanel badPanel;
+    private ResultsPanel goodPanel;
 
     public TeacherConsoleDialog() {
         super(MainFrame.getInstance(), "JLM Teacher Console", false);
 
         game = Game.getInstance();
+        course = game.getCurrentCourse();
 
         // automatically refresh the course to display in the teacher console if it's empty
-        if (game.getCurrentCourse().getCourseId() != null && !game.getCurrentCourse().getCourseId().isEmpty()
-                && game.getCurrentCourse().getServerData() == null){
-            String answer = game.getCurrentCourse().refresh();
+        if (course.getCourseId() != null && !course.getCourseId().isEmpty()
+                && course.getServerData() == null){
+            String answer = course.refresh();
             try {
                 if (ServerAnswer.values()[Integer.parseInt(answer)] == ServerAnswer.WRONG_TEACHER_PASSWORD)
                     JOptionPane.showMessageDialog(this, "Wrong teacher password for the course",
@@ -34,6 +39,8 @@ public class TeacherConsoleDialog extends JDialog {
             } catch (NumberFormatException nfe) {
              // the answer was not a status message, it contains course data
             }
+            // refresh the needing help, layabout, bad and good students lists
+            course.refreshStudentsLists();
         }
 
         initComponent();
@@ -68,30 +75,30 @@ public class TeacherConsoleDialog extends JDialog {
         add(BorderLayout.NORTH, toolBar);
         
         //Center tabbed panel, with the different resultsPanel
-        tabbedPanel = new JTabbedPane();
+        JTabbedPane tabbedPanel = new JTabbedPane();
         
-        resultsPanel = new ResultsPanel(null);
-        tabbedPanel.addTab("All results", new JScrollPane(resultsPanel));
+        allResultsPanel = new ResultsPanel(null);
+        tabbedPanel.addTab("All results", new JScrollPane(allResultsPanel));
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_A);
         
-        JPanel needingHelpPanel = new ResultsPanel(game.getCurrentCourse().getStudentsNeedingHelp());
-        tabbedPanel.addTab("Need help", null, 
-        		new JScrollPane(needingHelpPanel), "Students requesting help");
+        helpPanel = new ResultsPanel(course.getNeedingHelpStudents());
+        tabbedPanel.addTab("Need help", null,
+                new JScrollPane(helpPanel), "Students requesting help");
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
 
-        JPanel unknownPanel = new ResultsPanel(game.getCurrentCourse().getLayaboutStudents());
-        tabbedPanel.addTab("No activity", null, 
-        		new JScrollPane(unknownPanel), "Students with no recorded activity");
+        layaboutPanel = new ResultsPanel(course.getLayaboutStudents());
+        tabbedPanel.addTab("No activity", null,
+                new JScrollPane(layaboutPanel), "Students with no recorded activity");
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_L);
 
-        JPanel failingPanel = new ResultsPanel(game.getCurrentCourse().getBadStudents());
-        tabbedPanel.addTab("Failing", null, 
-        		new JScrollPane(failingPanel), "Students failing completely");
+        badPanel = new ResultsPanel(course.getBadStudents());
+        tabbedPanel.addTab("Failing", null,
+                new JScrollPane(badPanel), "Students failing completely");
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_B);
 
-        JPanel successfulPanel = new ResultsPanel(game.getCurrentCourse().getGoodStudents());
-        tabbedPanel.addTab("Successful", null, 
-        		new JScrollPane(successfulPanel), "Students doing good");
+        goodPanel = new ResultsPanel(course.getGoodStudents());
+        tabbedPanel.addTab("Successful", null,
+                new JScrollPane(goodPanel), "Students doing good");
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_G);
         
         add(BorderLayout.CENTER, tabbedPanel);
@@ -108,6 +115,11 @@ public class TeacherConsoleDialog extends JDialog {
 
     public void refresh() {
         courseNameLabel.setText(game.getCourseID().isEmpty() ? "" : "[" + game.getCourseID() + "]");
-        resultsPanel.displayResults();
+        allResultsPanel.displayResults();
+        helpPanel.displayResults();
+        layaboutPanel.displayResults();
+        badPanel.displayResults();
+        goodPanel.displayResults();
+        this.repaint();
     }
 }

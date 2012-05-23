@@ -18,6 +18,10 @@ public abstract class Course {
     protected String password;
     protected String teacherPassword;
     protected Map<String, ServerUserData> serverData;
+    protected ArrayList<String> needingHelpStudents;
+    protected ArrayList<String> goodStudents;
+    protected ArrayList<String> badStudents;
+    protected ArrayList<String> layaboutStudents;
 
     public Course() {
         this(null);
@@ -131,7 +135,14 @@ public abstract class Course {
         return coursesId;
     }
 
-    public ArrayList<String> getStudentsFromFilter(String filter) {
+    public void refreshStudentsLists(){
+        refreshStudentsNeedingHelp();
+        refreshLayaboutStudents();
+        refreshBadStudents();
+        refreshGoodStudents();
+    }
+
+    public ArrayList<String> refreshStudentsFromFilter(String filter) {
         String answer = "";
         ArrayList<String> students = new ArrayList<String>();
 
@@ -162,20 +173,20 @@ public abstract class Course {
         return students;
     }
 
-    public ArrayList<String> getStudentsNeedingHelp() {
-        return getStudentsFromFilter("needinghelp");
+    public void refreshStudentsNeedingHelp() {
+        needingHelpStudents = refreshStudentsFromFilter("needinghelp");
     }
 
-    public ArrayList<String> getLayaboutStudents() {
-        return getStudentsFromFilter("ugly");
+    public void refreshLayaboutStudents() {
+        layaboutStudents = refreshStudentsFromFilter("ugly");
     }
 
-    public ArrayList<String> getBadStudents() {
-        return getStudentsFromFilter("bad");
+    public void refreshBadStudents() {
+        badStudents = refreshStudentsFromFilter("bad");
     }
 
-    public ArrayList<String> getGoodStudents() {
-        return getStudentsFromFilter("good");
+    public void refreshGoodStudents() {
+        goodStudents = refreshStudentsFromFilter("good");
     }
 
     /**
@@ -222,5 +233,37 @@ public abstract class Course {
 
     public void setServerData(Map<String, ServerUserData> serverData) {
         this.serverData = serverData;
+    }
+
+    public ArrayList<String> getNeedingHelpStudents() {
+        return needingHelpStudents;
+    }
+
+    public void setNeedingHelpStudents(ArrayList<String> needingHelpStudents) {
+        this.needingHelpStudents = needingHelpStudents;
+    }
+
+    public ArrayList<String> getGoodStudents() {
+        return goodStudents;
+    }
+
+    public void setGoodStudents(ArrayList<String> goodStudents) {
+        this.goodStudents = goodStudents;
+    }
+
+    public ArrayList<String> getBadStudents() {
+        return badStudents;
+    }
+
+    public void setBadStudents(ArrayList<String> badStudents) {
+        this.badStudents = badStudents;
+    }
+
+    public ArrayList<String> getLayaboutStudents() {
+        return layaboutStudents;
+    }
+
+    public void setLayaboutStudents(ArrayList<String> layaboutStudents) {
+        this.layaboutStudents = layaboutStudents;
     }
 }
