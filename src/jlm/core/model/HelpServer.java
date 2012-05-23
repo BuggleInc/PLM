@@ -27,12 +27,12 @@ public abstract class HelpServer {
 		jsonObject.put("action", "help");
         jsonObject.put("course", Game.getInstance().getCourseID());
         jsonObject.put("password", Game.getInstance().getCoursePassword());
-        jsonObject.put("status", isRequestingHelp ? "on" : "off");
+        jsonObject.put("status", isRequestingHelp ? "true" : "false");
 
 		sendRequest(jsonObject.toString());
     }
 
-    public void switchStatus(JButton helpButton){
+    public void switchStatus(JToggleButton helpButton){
         isRequestingHelp = !isRequestingHelp;
         helpButton.setText(isRequestingHelp ? "Cancel Help" : "Help");
     }

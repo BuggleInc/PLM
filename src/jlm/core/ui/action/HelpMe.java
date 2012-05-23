@@ -22,7 +22,7 @@ public class HelpMe extends AbstractGameAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        helpServer.switchStatus((JButton)e.getSource());
+        helpServer.switchStatus((JToggleButton)e.getSource());
         helpServer.requestHelp();
     }
 

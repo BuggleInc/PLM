@@ -69,25 +69,25 @@ public class TeacherConsoleDialog extends JDialog {
         //Center tabbed panel, with the different resultsPanel
         tabbedPanel = new JTabbedPane();
         
-        resultsPanel = new ResultsPanel();
+        resultsPanel = new ResultsPanel(null);
         tabbedPanel.addTab("All results", resultsPanel);
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_A);
         
-        JPanel needingHelpPanel = new JPanel();
+        JPanel needingHelpPanel = new ResultsPanel(game.getCurrentCourse().getStudentsNeedingHelp());
         tabbedPanel.addTab("Need help", null, needingHelpPanel, "Students requesting help");
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
 
-        JPanel unknownPanel = new JPanel();
+        JPanel unknownPanel = new ResultsPanel(game.getCurrentCourse().getLayaboutStudents());
         tabbedPanel.addTab("No activity", null, unknownPanel, "Students with no recorded activity");
-        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_L);
 
-        JPanel failingPanel = new JPanel();
+        JPanel failingPanel = new ResultsPanel(game.getCurrentCourse().getBadStudents());
         tabbedPanel.addTab("Failing", null, failingPanel, "Students failing completely");
-        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_B);
 
-        JPanel successfulPanel = new JPanel();
+        JPanel successfulPanel = new ResultsPanel(game.getCurrentCourse().getGoodStudents());
         tabbedPanel.addTab("Successful", null, successfulPanel, "Students doing good");
-        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_H);
+        tabbedPanel.setMnemonicAt(0, KeyEvent.VK_G);
         
         add(BorderLayout.CENTER, tabbedPanel);
 

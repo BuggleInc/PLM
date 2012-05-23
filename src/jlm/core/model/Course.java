@@ -14,38 +14,38 @@ import java.util.Map;
  */
 public abstract class Course {
 
-	protected String courseId;
-	protected String password;
-	protected String teacherPassword;
+    protected String courseId;
+    protected String password;
+    protected String teacherPassword;
     protected Map<String, ServerUserData> serverData;
 
-	public Course() {
-		this(null);
-	}
+    public Course() {
+        this(null);
+    }
 
-	public Course(String id) {
-		courseId = id;
-		password = "";
-		teacherPassword = "";
-	}
+    public Course(String id) {
+        courseId = id;
+        password = "";
+        teacherPassword = "";
+    }
 
     public Course(String id, String password) {
-		courseId = id;
-		this.password = password;
-		teacherPassword = "";
-	}
+        courseId = id;
+        this.password = password;
+        teacherPassword = "";
+    }
 
-	/**
-	 * Create a new course on the server
+    /**
+     * Create a new course on the server
      * For example "top_quinson"
      * A user password is set to push data, a teacher password to administrate course
-	 */
-	public ServerAnswer create() {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("action", "new");
-		jsonObject.put("course", courseId);
-		jsonObject.put("password", password);
-		jsonObject.put("teacher_password", teacherPassword);
+     */
+    public ServerAnswer create() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("action", "new");
+        jsonObject.put("course", courseId);
+        jsonObject.put("password", password);
+        jsonObject.put("teacher_password", teacherPassword);
 
         String response;
 
@@ -56,15 +56,15 @@ public abstract class Course {
         }
 
         return ServerAnswer.values()[Integer.parseInt(response)];
-	}
+    }
 
-	/**
-	 * Download updated data from server It loads a list of results by student
-	 * and by exercise
-	 */
-	public String refresh() {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("action", "refresh");
+    /**
+     * Download updated data from server It loads a list of results by student
+     * and by exercise
+     */
+    public String refresh() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("action", "refresh");
         jsonObject.put("course", courseId);
         jsonObject.put("teacher_password", teacherPassword);
 
@@ -77,23 +77,23 @@ public abstract class Course {
         }
 
         // test if the answer was a status code or course data
-        try{
+        try {
             Integer.parseInt(answer);
-        } catch(NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             serverData = ServerUserData.parse(answer);
         }
         return answer;
-	}
+    }
 
-	/**
-	 * Delete the course on the server All student and exercises results will be
-	 * removed
-	 */
-	public String delete() {
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("action", "remove");
-		jsonObject.put("course", courseId);
-		jsonObject.put("teacher_password", teacherPassword);
+    /**
+     * Delete the course on the server All student and exercises results will be
+     * removed
+     */
+    public String delete() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("action", "remove");
+        jsonObject.put("course", courseId);
+        jsonObject.put("teacher_password", teacherPassword);
 
         try {
             return sendTeacherRequest(jsonObject.toString());
@@ -102,17 +102,17 @@ public abstract class Course {
         }
     }
 
-	/**
-	 * Get all courses identifiers from the server It allows to display it in
-	 * form, to select the current course
-	 * 
-	 * @return list of all courses on the server
-	 */
-	public ArrayList<String> getAllCoursesId() {
-		String response = "";
-		ArrayList<String> coursesId = new ArrayList<String>();
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("action", "allids");
+    /**
+     * Get all courses identifiers from the server It allows to display it in
+     * form, to select the current course
+     *
+     * @return list of all courses on the server
+     */
+    public ArrayList<String> getAllCoursesId() {
+        String response = "";
+        ArrayList<String> coursesId = new ArrayList<String>();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("action", "allids");
 
         try {
             response = sendCourseRequest(jsonObject.toString());
@@ -121,54 +121,100 @@ public abstract class Course {
         }
 
         if (response != null && !response.isEmpty()) {
-			JSONArray arrayResult = (JSONArray) JSONValue.parse(response);
+            JSONArray arrayResult = (JSONArray) JSONValue.parse(response);
             for (Object anArrayResult : arrayResult) {
                 coursesId.add((String) anArrayResult);
             }
-		}
+        }
 
-		System.out.println(response);
-		return coursesId;
-	}
+        System.out.println(response);
+        return coursesId;
+    }
 
-	/**
-	 * Method to implement to indicate how/where to send data
-	 * 
-	 * @param request
-	 *            request in json to send to the server
-	 */
-	public abstract String sendTeacherRequest(String request) throws IOException;
+    public ArrayList<String> getStudentsFromFilter(String filter) {
+        String answer = "";
+        ArrayList<String> students = new ArrayList<String>();
 
-	public abstract String sendCourseRequest(String request) throws IOException;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("action", filter);
+        jsonObject.put("course", courseId);
+        jsonObject.put("teacher_password", teacherPassword);
 
-	/*
-	 * Getters and setters...
-	 */
-	public String getCourseId() {
-		if (courseId == null)
-			return "";
-		return courseId;
-	}
+        try {
+            answer = sendTeacherRequest(jsonObject.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
 
-	public void setCourseId(String courseId) {
-		this.courseId = courseId;
-	}
+        try {
+            if (!answer.isEmpty()) {
+                JSONArray arrayResult = (JSONArray) JSONValue.parse(answer);
+                for (Object result : arrayResult)
+                    students.add((String) result);
+            }
+        } catch (ClassCastException cce) {
+            // the answer is a status number, it can't be casted into a list...
+            return null;
+        }
 
-	public String getPassword() {
-		return password;
-	}
+        System.out.println(answer);
+        return students;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public ArrayList<String> getStudentsNeedingHelp() {
+        return getStudentsFromFilter("needinghelp");
+    }
 
-	public String getTeacherPassword() {
-		return teacherPassword;
-	}
+    public ArrayList<String> getLayaboutStudents() {
+        return getStudentsFromFilter("ugly");
+    }
 
-	public void setTeacherPassword(String teacherPassword) {
-		this.teacherPassword = teacherPassword;
-	}
+    public ArrayList<String> getBadStudents() {
+        return getStudentsFromFilter("bad");
+    }
+
+    public ArrayList<String> getGoodStudents() {
+        return getStudentsFromFilter("good");
+    }
+
+    /**
+     * Method to implement to indicate how/where to send data
+     *
+     * @param request request in json to send to the server
+     */
+    public abstract String sendTeacherRequest(String request) throws IOException;
+
+    public abstract String sendCourseRequest(String request) throws IOException;
+
+    /*
+      * Getters and setters...
+      */
+    public String getCourseId() {
+        if (courseId == null)
+            return "";
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getTeacherPassword() {
+        return teacherPassword;
+    }
+
+    public void setTeacherPassword(String teacherPassword) {
+        this.teacherPassword = teacherPassword;
+    }
 
     public Map<String, ServerUserData> getServerData() {
         return serverData;

@@ -31,7 +31,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton stopButton;
 	private JButton resetButton;
 	private JButton demoButton;
-    private JButton helpMeButton;
+    private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
 	
 	private JSplitPane mainPanel;
@@ -317,7 +317,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
 
-        helpMeButton = new PropagatingButton(new HelpMe(g, "Help",
+        helpMeButton = new PropagatingToggleButton(new HelpMe(g, "Help",
                 ResourcesCache.getIcon("resources/alert.png")));
 
 		toolBar.add(startButton);
@@ -478,6 +478,20 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	class PropagatingButton extends JButton {
 		private static final long serialVersionUID = 1L;
 		public PropagatingButton(AbstractGameAction act) {
+			super(act);
+			setBorderPainted(false);
+		}
+		@Override
+		public void setEnabled(boolean enabled) {
+			getAction().setEnabled(enabled);
+			super.setEnabled(enabled);
+		}
+	}
+
+    /** Simple JToggleButton which pass the enabled signals to their action */
+	class PropagatingToggleButton extends JToggleButton {
+		private static final long serialVersionUID = 1L;
+		public PropagatingToggleButton(AbstractGameAction act) {
 			super(act);
 			setBorderPainted(false);
 		}

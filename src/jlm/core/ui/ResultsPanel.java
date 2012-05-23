@@ -7,13 +7,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class ResultsPanel extends JPanel {
 
+    // all data on students from the server
     private Map<String, ServerUserData> serverData;
+    // list of students to filter the selection to display (null if all data has to be displayed)
+    private ArrayList<String> userFilter;
 
-    public ResultsPanel() {
+    public ResultsPanel(ArrayList<String> userFilter) {
+        this.userFilter = userFilter;
+
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         setBorder(BorderFactory.createTitledBorder("Results by student"));
         displayResults();
@@ -28,7 +34,9 @@ public class ResultsPanel extends JPanel {
 
         if (serverData != null) {
             // Add the results graph of each student to serverDataPanel
-            for (final String student : serverData.keySet()) {
+            // if a filter has been set, iterate only through these students
+            // else, iterate through all students of the course
+            for (final String student : (userFilter == null ? serverData.keySet() : userFilter)) {
                 JPanel studentPanel = new JPanel();
                 studentPanel.add(new JLabel(student));
 
