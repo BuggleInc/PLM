@@ -17,7 +17,9 @@ import java.awt.event.KeyEvent;
  */
 public class CreateCourseDialog extends JDialog {
 
-    private Course course;
+	private static final long serialVersionUID = 2678745555760465778L;
+	
+	private Course course;
     private JButton OKButton;
     private JTextField nameField;
     private JTextField passwordField;
@@ -65,34 +67,31 @@ public class CreateCourseDialog extends JDialog {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if(nameField.getText().isEmpty() || passwordField.getText().isEmpty())
-                    OKButton.setEnabled(false);
-                else
-                    OKButton.setEnabled(true);
-
-                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+            	boolean valid = !nameField.getText().isEmpty() && !teacherPasswordField.getText().isEmpty();
+            	
+                OKButton.setEnabled(valid);
+                System.out.println("-"+valid);
+                if(valid && e.getKeyCode() == KeyEvent.VK_ENTER)
                     createCourse();
             }
         });
 
         passwordField = new JPasswordField(10);
-        addEnterKeyHandler(passwordField);
 
         teacherPasswordField = new JPasswordField(10);
         teacherPasswordField.addKeyListener(new KeyAdapter() {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                if(nameField.getText().isEmpty() || passwordField.getText().isEmpty())
-                    OKButton.setEnabled(false);
-                else
-                    OKButton.setEnabled(true);
+            	boolean valid = !nameField.getText().isEmpty() && !teacherPasswordField.getText().isEmpty();
+            	
+                OKButton.setEnabled(valid);
+                System.out.println("+"+valid);
 
-                if(e.getKeyCode() == KeyEvent.VK_ENTER)
+                if(valid && e.getKeyCode() == KeyEvent.VK_ENTER)
                     createCourse();
             }
         });
-        addEnterKeyHandler(teacherPasswordField);
 
         // panels to contain all those components
 
@@ -108,7 +107,7 @@ public class CreateCourseDialog extends JDialog {
         namePanel.setLayout(new FlowLayout());
         namePanel.add(nameLabel);
         namePanel.add(nameField);
-
+        
         JPanel passwordPanel = new JPanel();
         passwordPanel.setLayout(new FlowLayout());
         passwordPanel.add(passwordLabel);
@@ -156,20 +155,5 @@ public class CreateCourseDialog extends JDialog {
                 }
             }
         }
-    }
-
-    /**
-     * Add a key listener to a field to create a course if enter key is typed
-     * @param field
-     */
-    public void addEnterKeyHandler(JTextField field){
-
-        field.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if(e.getKeyChar() == KeyEvent.VK_ENTER)
-                    createCourse();
-            }
-        });
     }
 }

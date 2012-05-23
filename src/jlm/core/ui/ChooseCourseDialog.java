@@ -107,7 +107,7 @@ public class ChooseCourseDialog extends JDialog {
         passwordField = new JPasswordField(10);
         passwordField.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyReleased(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {
                 if(e.getKeyCode() == KeyEvent.VK_ENTER && isChoosen)
                     selectCourse();
             }
@@ -124,7 +124,7 @@ public class ChooseCourseDialog extends JDialog {
             teacherPasswordField = new JPasswordField(10);
             teacherPasswordField.addKeyListener(new KeyAdapter() {
                 @Override
-                public void keyReleased(KeyEvent e) {
+                public void keyPressed(KeyEvent e) {
                     if(e.getKeyCode() == KeyEvent.VK_ENTER && isChoosen)
                         selectCourse();
                 }
