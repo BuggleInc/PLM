@@ -27,6 +27,7 @@ public class ResultsPanel extends JPanel {
 
     public void displayResults() {
         this.removeAll();
+        this.repaint();
         serverData = Game.getInstance().getCurrentCourse().getServerData();
 
         UIManager.put("ProgressBar.background", Color.RED); //color of the background
