@@ -23,8 +23,9 @@ public class TeacherConsoleDialog extends JDialog {
 
         game = Game.getInstance();
 
-        // refresh the course to display in the teacher console
-        if (game.getCurrentCourse().getCourseId() != null && !game.getCurrentCourse().getCourseId().isEmpty()){
+        // automatically refresh the course to display in the teacher console if it's empty
+        if (game.getCurrentCourse().getCourseId() != null && !game.getCurrentCourse().getCourseId().isEmpty()
+                && game.getCurrentCourse().getServerData() == null){
             String answer = game.getCurrentCourse().refresh();
             try {
                 if (ServerAnswer.values()[Integer.parseInt(answer)] == ServerAnswer.WRONG_TEACHER_PASSWORD)

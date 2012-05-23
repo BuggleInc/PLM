@@ -73,13 +73,13 @@ public class ServerUserData {
             sud.setUsername((String) userMap.get("username"));
 
             String lastJoinString = (String) userMap.get("lastJoin");
-            sud.setLastJoin(lastJoinString.equals("null") ? null : new Date(lastJoinString));
+            sud.setLastJoin(lastJoinString == null ? null : new Date(lastJoinString));
 
             String lastHeartbeatString = (String)userMap.get("lastHeartbeat");
-            sud.setLastHeartbeat(lastHeartbeatString.equals("null") ? null : new Date(lastHeartbeatString));
+            sud.setLastHeartbeat(lastHeartbeatString == null ? null : new Date(lastHeartbeatString));
 
             String lastLeaveString = (String)userMap.get("lastLeave");
-            sud.setLastLeave(lastLeaveString.equals("null") ? null : new Date(lastLeaveString));
+            sud.setLastLeave(lastLeaveString == null ? null : new Date(lastLeaveString));
 
             JSONArray exercisesArray = (JSONArray) userMap.get("exercises");
             for (Object anExercisesArray : exercisesArray) {
