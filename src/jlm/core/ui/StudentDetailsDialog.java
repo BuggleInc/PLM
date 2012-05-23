@@ -1,5 +1,6 @@
 package jlm.core.ui;
 
+import jlm.core.model.ServerExerciseData;
 import jlm.core.model.ServerUserData;
 
 import javax.swing.*;
@@ -7,23 +8,31 @@ import java.awt.*;
 
 public class StudentDetailsDialog extends JDialog {
 
-    private ServerUserData userData;
-
     public StudentDetailsDialog(ServerUserData userData) {
         super(MainFrame.getInstance(), "Details on " + userData.getUsername(), false);
-        this.userData = userData;
+        setLayout(new BorderLayout());
 
-        JPanel detailsPanel = new JPanel();
-        detailsPanel.setLayout(new BoxLayout(detailsPanel, BoxLayout.PAGE_AXIS));
-        detailsPanel.setBorder(BorderFactory.createTitledBorder(userData.getUsername()));
+        JPanel infosPanel = new JPanel();
+        infosPanel.setLayout(new BoxLayout(infosPanel, BoxLayout.PAGE_AXIS));
+        infosPanel.setBorder(BorderFactory.createTitledBorder("Infos on " + userData.getUsername()));
 
-        detailsPanel.add(new JLabel("Last Join: " + userData.getLastJoin()));
-        detailsPanel.add(new JLabel("Last Leave: " + userData.getLastLeave()));
-        detailsPanel.add(new JLabel("Last Heartbeat: " + userData.getLastHeartbeat()));
-        detailsPanel.add(new JLabel("Total number of exercises passed: " + userData.getExercisesTotal()));
-        detailsPanel.add(new JLabel("Total number of exercises passed with success: " + userData.getExercisesPassed()));
+        infosPanel.add(new JLabel("Last Join: " + userData.getLastJoin()));
+        infosPanel.add(new JLabel("Last Leave: " + userData.getLastLeave()));
+        infosPanel.add(new JLabel("Last Heartbeat: " + userData.getLastHeartbeat()));
+        infosPanel.add(new JLabel("Total number of exercises passed: " + userData.getExercisesTotal()));
+        infosPanel.add(new JLabel("Total number of exercises passed with success: " + userData.getExercisesPassed()));
 
-        add(detailsPanel);
+        JPanel exercisesPanel = new JPanel();
+        exercisesPanel.setLayout(new BoxLayout(exercisesPanel, BoxLayout.PAGE_AXIS));
+        exercisesPanel.setBorder(BorderFactory.createTitledBorder("Exercises done"));
+        for(ServerExerciseData exo: userData.getExercises()){
+            exercisesPanel.add(new JLabel(exo.getName() + " (" + exo.getLang() + ") " + exo.getPassedTests()
+            + "/" + exo.getTotalTests() + " - " + exo.getDate()));
+        }
+
+        add(infosPanel, BorderLayout.NORTH);
+        add(exercisesPanel, BorderLayout.CENTER);
+
         pack();
         setMinimumSize(new Dimension(500, 300));
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
