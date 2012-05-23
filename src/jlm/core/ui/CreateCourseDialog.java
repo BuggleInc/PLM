@@ -70,7 +70,7 @@ public class CreateCourseDialog extends JDialog {
             	boolean valid = !nameField.getText().isEmpty() && !teacherPasswordField.getText().isEmpty();
             	
                 OKButton.setEnabled(valid);
-                System.out.println("-"+valid);
+                
                 if(valid && e.getKeyCode() == KeyEvent.VK_ENTER)
                     createCourse();
             }
@@ -86,7 +86,6 @@ public class CreateCourseDialog extends JDialog {
             	boolean valid = !nameField.getText().isEmpty() && !teacherPasswordField.getText().isEmpty();
             	
                 OKButton.setEnabled(valid);
-                System.out.println("+"+valid);
 
                 if(valid && e.getKeyCode() == KeyEvent.VK_ENTER)
                     createCourse();
