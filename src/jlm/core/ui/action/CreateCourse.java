@@ -7,6 +7,9 @@ import jlm.core.ui.TeacherConsoleDialog;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * Controller to handle clicks on the create button from the teacher console
+ */
 public class CreateCourse extends AbstractGameAction {
 
     private TeacherConsoleDialog teacherConsoleDialog;

@@ -8,6 +8,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * Implementation of HelpServer that sends requests to an App Engine server
+ */
 public class HelpAppEngine extends HelpServer {
 
     private static URL helpServer;
@@ -24,7 +27,6 @@ public class HelpAppEngine extends HelpServer {
     public String sendRequest(String request) {
         String response = "";
         try {
-            System.out.println(request);
 
             // Send data
             URLConnection conn = helpServer.openConnection();

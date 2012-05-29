@@ -2,6 +2,10 @@ package jlm.core.model;
 
 import java.util.Date;
 
+/**
+ * Class that contains exercises data sent by the server
+ * It describes an exercise and its results
+ */
 public class ServerExerciseData {
 
 	private String name;

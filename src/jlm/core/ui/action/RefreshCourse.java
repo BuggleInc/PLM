@@ -8,6 +8,10 @@ import jlm.core.ui.TeacherConsoleDialog;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * Controller to handle clicks on the refresh button from the teacher console
+ * It download updated data from the server and refresh the console ui
+ */
 public class RefreshCourse extends AbstractGameAction {
 
     private Course course;

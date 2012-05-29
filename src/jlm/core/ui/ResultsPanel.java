@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Map;
 
+/**
+ * Panel to display students results from the server
+ * You can add a filter of student to display only a list of usernames depending of a criteria (good, bad student...)
+ */
 public class ResultsPanel extends JPanel {
 
     // all data on students from the server

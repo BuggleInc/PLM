@@ -80,9 +80,8 @@ public class Game implements IWorldView {
 		Game.loadProperties();
 		loadSession();
 
-        // TODO: uncomment identica & twitter spies?
-		//addProgressSpyListener(new IdenticaSpy());
-		//addProgressSpyListener(new TwitterSpy());
+		addProgressSpyListener(new IdenticaSpy());
+		addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new ServerSpyAppEngine());
 
@@ -686,8 +685,8 @@ public class Game implements IWorldView {
 
     /*
      * Getter and Setter for the course ID for the current session.
-     * This ID will be used by the GoogleAppEngine spy, to associate this
-     * JLM student with a course started by a teacher.
+     * This ID will be used by the ServerSpy, to associate this
+     * JLM student with a course started by a teacher on the server
      */
     public String getCourseID() {
     	if (this.currentCourse == null)

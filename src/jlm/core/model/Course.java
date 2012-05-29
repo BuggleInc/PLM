@@ -9,8 +9,13 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Class to manage course data online It has an id and allows to save/retrieve
- * exos/users results by course
+ * Class to manage course data online
+ * It has an id and allows to save/retrieve users results by course
+ * It contains lists of students names sorted by criteria :
+ * * students needing help (pressed the help button)
+ * * good students (>=90% of good answers)
+ * * bad students (<=5% of good answers
+ * * layabout students (didn't try any exercises)
  */
 public abstract class Course {
 
@@ -131,10 +136,12 @@ public abstract class Course {
             }
         }
 
-        System.out.println(response);
         return coursesId;
     }
 
+    /**
+     * Refresh all the students filter lists from the server
+     */
     public void refreshStudentsLists(){
         refreshStudentsNeedingHelp();
         refreshLayaboutStudents();
@@ -142,6 +149,11 @@ public abstract class Course {
         refreshGoodStudents();
     }
 
+    /**
+     * Generic method that constructs a request to get a list of students, depending on a filter
+     * @param filter filter to apply in the request
+     * @return the list of students
+     */
     public ArrayList<String> refreshStudentsFromFilter(String filter) {
         String answer = "";
         ArrayList<String> students = new ArrayList<String>();
@@ -169,7 +181,6 @@ public abstract class Course {
             return null;
         }
 
-        System.out.println(answer);
         return students;
     }
 
@@ -201,6 +212,7 @@ public abstract class Course {
     /*
       * Getters and setters...
       */
+
     public String getCourseId() {
         if (courseId == null)
             return "";

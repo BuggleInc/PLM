@@ -13,6 +13,11 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 
+/**
+ * Dialog to allow students or teachers to select the current course
+ * It get the updated list of courses from the server, display it
+ * You have to enter the course password, and the admin password if you're teacher
+ */
 public class ChooseCourseDialog extends JDialog {
 
     private static final long serialVersionUID = 2234402839093122248L;

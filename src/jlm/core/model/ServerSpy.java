@@ -48,7 +48,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 		jsonObject.put("source", exoCode);
 		jsonObject.put("action", "execute");
 
-        System.out.println(jsonObject);
 		sendRequest(jsonObject.toString());
 	}
 
@@ -66,7 +65,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
 		jsonObject.put("exolang", lastResult != null ? lastResult.language.toString() : "");
 		jsonObject.put("action", "switch");
 
-        System.out.println(jsonObject);
 		sendRequest(jsonObject.toString());
 	}
 
@@ -82,7 +80,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
         jsonObject.put("course", game.getCourseID());
         jsonObject.put("password", game.getCoursePassword());
 
-        System.out.println("heartbeat: " + jsonObject);
 		sendRequest(jsonObject.toString());
 	}
 
@@ -95,7 +92,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
         jsonObject.put("course", game.getCourseID());
         jsonObject.put("password", game.getCoursePassword());
 
-        System.out.println("joined: " + jsonObject);
         return sendRequest(jsonObject.toString());
 	}
 
@@ -108,7 +104,6 @@ public abstract class ServerSpy implements ProgressSpyListener {
         jsonObject.put("course", game.getCourseID());
         jsonObject.put("password", game.getCoursePassword());
 
-        System.out.println("left: " + jsonObject);
 		sendRequest(jsonObject.toString());
 	}
 

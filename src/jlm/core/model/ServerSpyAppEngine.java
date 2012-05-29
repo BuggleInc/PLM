@@ -8,6 +8,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * Implementation of the ServerSpy class, to indicate how/where to send json requests
+ * It opens a connection with an App Engine servlet, and send it the request
+ * It listens for answer from the server
+ */
 public class ServerSpyAppEngine extends ServerSpy {
 
     private URL server;

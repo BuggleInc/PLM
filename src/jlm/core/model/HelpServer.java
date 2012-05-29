@@ -4,6 +4,11 @@ import net.minidev.json.JSONObject;
 
 import javax.swing.*;
 
+/**
+ * Abstract class that allows the user to ask help to a teacher by clicking on help button
+ * This class only constructs the request with JSON, an implementation must be done to send requests
+ * For now it's App Engine which is used
+ */
 public abstract class HelpServer {
 
     protected String username;
@@ -20,6 +25,9 @@ public abstract class HelpServer {
         isRequestingHelp = false;
 	}
 
+    /**
+     * Construct a request to ask teacher help in a course
+     */
     public void requestHelp(){
 
         JSONObject jsonObject = new JSONObject();
@@ -32,9 +40,13 @@ public abstract class HelpServer {
 		sendRequest(jsonObject.toString());
     }
 
+    /**
+     * Enable or disable the help request
+     * @param helpButton button to change
+     */
     public void switchStatus(JToggleButton helpButton){
         isRequestingHelp = !isRequestingHelp;
-        helpButton.setText(isRequestingHelp ? "Cancel Help" : "Help");
+        helpButton.setText(isRequestingHelp ? "Cancel" : "Help");
     }
 
    	/**

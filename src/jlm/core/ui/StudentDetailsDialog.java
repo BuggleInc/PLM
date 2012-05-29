@@ -6,6 +6,10 @@ import jlm.core.model.ServerUserData;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Dialog to display detailed data about a student in a course
+ * For now, it is only text, but it could be graphs of progression, ...
+ */
 public class StudentDetailsDialog extends JDialog {
 
     public StudentDetailsDialog(ServerUserData userData) {

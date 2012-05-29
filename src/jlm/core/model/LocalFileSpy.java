@@ -6,6 +6,9 @@ import javax.swing.*;
 import java.io.*;
 import java.text.SimpleDateFormat;
 
+/**
+ * Spy that registers events in a local file
+ */
 public class LocalFileSpy implements ProgressSpyListener {
 
     private String username;

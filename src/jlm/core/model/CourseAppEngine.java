@@ -10,6 +10,7 @@ import java.net.URLConnection;
 
 /**
  * Implementation of Course which works with GAE
+ * It overrides Course methods to send requests constructed by it
  */
 public class CourseAppEngine extends Course {
 

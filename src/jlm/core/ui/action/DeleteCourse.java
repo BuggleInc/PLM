@@ -10,6 +10,9 @@ import jlm.core.ui.TeacherConsoleDialog;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
+/**
+ * Controller to handle clicks on the Delete button from the teacher console
+ */
 public class DeleteCourse extends AbstractGameAction {
 
     private Course course;

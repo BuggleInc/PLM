@@ -11,6 +11,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
+/**
+ * Dialog to display all options available to the teacher
+ * Once the course selected, he can view its students results in this console
+ * He can also manage courses : create or delete
+ */
 public class TeacherConsoleDialog extends JDialog {
 
     private Game game;

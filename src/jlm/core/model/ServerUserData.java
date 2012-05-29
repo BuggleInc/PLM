@@ -6,6 +6,10 @@ import net.minidev.json.JSONValue;
 
 import java.util.*;
 
+/**
+ * Class that contains the data sent by the server
+ * It describes a student and its results
+ */
 public class ServerUserData {
 
     private String username;
@@ -61,10 +65,14 @@ public class ServerUserData {
                 + ", lastHeartbeat=" + lastHeartbeat + "]";
     }
 
+    /**
+     * Method to transform a json response from the server to ServerUserData objects
+     * @param answer response to parse
+     * @return list of results by student
+     */
     public static Map<String, ServerUserData> parse(String answer) {
         Map<String, ServerUserData> data = new HashMap<String, ServerUserData>();
 
-        System.out.println(answer);
         JSONObject dataMap = (JSONObject) JSONValue.parse(answer);
         // for each user
         for (String user : dataMap.keySet()) {
@@ -82,6 +90,7 @@ public class ServerUserData {
             sud.setLastLeave(lastLeaveString == null ? null : new Date(lastLeaveString));
 
             JSONArray exercisesArray = (JSONArray) userMap.get("exercises");
+            // for each exercise done by the user
             for (Object anExercisesArray : exercisesArray) {
                 JSONObject exerciseMap = (JSONObject) anExercisesArray;
                 ServerExerciseData sed = new ServerExerciseData();
@@ -101,6 +110,10 @@ public class ServerUserData {
         return data;
     }
 
+    /**
+     * Get the number of exercises passed successfully in all exercises done
+     * @return the number..
+     */
     public int getExercisesPassed(){
         int exercisesPassed = 0;
         for(ServerExerciseData exercise: exercises){
@@ -110,6 +123,10 @@ public class ServerUserData {
         return exercisesPassed;
     }
 
+    /**
+     * Get the total number of exercises performed (successfully or with fail)
+     * @return number
+     */
     public int getExercisesTotal(){
         int exercisesTotal = 0;
         for(ServerExerciseData exercise: exercises){
