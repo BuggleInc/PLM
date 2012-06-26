@@ -155,7 +155,14 @@ public abstract class Lesson {
 	public List<Lecture> exercises() {
 		return this.lectures;
 	}
-	
+	public Lecture getExercise(String name) {
+		String searchedName = getClass().getPackage().getName()+"."+name;
+		for (Lecture l: lectures) {
+			if (l.getClass().getCanonicalName().equals(searchedName))
+				return l;
+		}
+		return null;
+	}
 	@Deprecated
 	public Lecture getExercise(int index) { // FIXME: killme
 		return this.lectures.get(index); 

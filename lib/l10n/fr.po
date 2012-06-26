@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-01-23 14:58+0100\n"
-"PO-Revision-Date: 2011-10-13 20:51+0200\n"
+"POT-Creation-Date: 2012-03-18 00:55+0100\n"
+"PO-Revision-Date: 2012-03-18 00:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -989,14 +989,6 @@ msgstr "Note sur les exceptions"
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/bugglequest/BuggleWorld.html:42
 #: src/lessons/welcome/cells/TurmiteWorld.html:42
-#, fuzzy
-#| msgid ""
-#| "Regular buggles throw a BuggleWallException exception if you ask them to "
-#| "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if "
-#| "you ask them to pickup a baggle from an empty cell, or a "
-#| "AlreadyHaveBaggleException exception if they already carry a baggle.  "
-#| "Trying to drop a baggel on a cell already containing one throws an "
-#| "AlreadyHaveBaggleException exception."
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -1004,13 +996,7 @@ msgid ""
 "AlreadyHaveBaggleException exception if they already carry a baggle.  Trying "
 "to drop a baggle on a cell already containing one throws an "
 "AlreadyHaveBaggleException exception."
-msgstr ""
-"Les buggles normales lèvent une exception BuggleWallException si on cherche "
-"à leur faire traverser un mur.  Elles lèvent une exception "
-"NoBaggleUnderBuggleException si vous cherchez à prendre un baggle dans une "
-"case qui n'en contient pas, ou une exception AlreadyHaveBaggleException si "
-"vous portez déjà un baggle.  Tenter de déposer un baggle sur une case qui en "
-"contient déjà lève une exception AlreadyHaveBaggleException."
+msgstr "Les buggles normales lèvent une exception BuggleWallException si on cherche à leur faire traverser un mur.  Elles lèvent une exception NoBaggleUnderBuggleException si vous cherchez à prendre un baggle dans une case qui n'en contient pas, ou une exception AlreadyHaveBaggleException si vous portez déjà un baggel.  Tenter de déposer un baggel sur une case qui en contient déjà lève une exception AlreadyHaveBaggleException."
 
 #. type: Content of: <p>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:48
@@ -1114,63 +1100,55 @@ msgstr "Choisissez une leçon"
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:13
 msgid ""
-"<a href=\"lesson://lessons.welcome\">Welcome lesson</a> This lesson is "
-"intended to lead the first steps in programming of absolute beginners."
+"<a href=\"jlm://lessons.welcome\">Welcome lesson</a> This lesson is intended "
+"to lead the first steps in programming of absolute beginners."
 msgstr ""
-"<a href=\"lesson://lessons.welcome\">Premiers pas</a> Cette leçon est "
-"destinée à\n"
-"guider les premiers pas en programmation de débutants sans aucune "
-"connaissance préalable."
+"<a href=\"jlm://lessons.welcome\">Premiers pas</a> Cette leçon est destinée à\n"
+"guider les premiers pas en programmation de débutants sans aucune connaissance préalable."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:16
 msgid ""
-"<a href=\"lesson://lessons.maze\">Escape the maze</a> Will you escape the "
-"mazes?"
+"<a href=\"jlm://lessons.maze\">Escape the maze</a> Will you escape the mazes?"
 msgstr ""
-"<a href=\"lesson://lessons.maze\">Labyrinthes</a> Saurez vous vous échaper "
-"du\n"
+"<a href=\"jlm://lessons.maze\">Labyrinthes</a> Saurez vous vous échaper du\n"
 "labyrinthe?"
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:18
 msgid ""
-"<a href=\"lesson://lessons.bat.string1\">String lesson</a> A bunch of "
-"exercises on strings."
+"<a href=\"jlm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
+"on strings."
 msgstr ""
-"<a href=\"lesson://lessons.bat.string1\">Chaînes</a> Quelques exercices sur "
-"les\n"
+"<a href=\"jlm://lessons.bat.string1\">Chaînes</a> Quelques exercices sur les\n"
 "chaînes de caractères."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:20
 msgid ""
-"<a href=\"lesson://lessons.sort\">Sorting lesson</a> This short lesson "
-"proposes to discover the classical sorting algorithms by practice."
+"<a href=\"jlm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
+"to discover the classical sorting algorithms by practice."
 msgstr ""
-"<a href=\"lesson://lessons.sort\">Algorithmes de tri</a> Cette leçon vous "
-"propose\n"
+"<a href=\"jlm://lessons.sort\">Algorithmes de tri</a> Cette leçon vous propose\n"
 "de découvrir les algorithmes classiques de tri par la pratique."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:23
 msgid ""
-"<a href=\"lesson://lessons.recursion\">Recursion lesson</a> Build some "
+"<a href=\"jlm://lessons.recursion\">Recursion lesson</a> Build some "
 "classical geometric figures through recursion."
 msgstr ""
-"<a href=\"lesson://lessons.recursion\">Recursivité</a> Construisez des "
-"figures\n"
+"<a href=\"jlm://lessons.recursion\">Recursivité</a> Construisez des figures\n"
 "géométriques classiques par récursivité."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:26
 msgid ""
-"<a href=\"lesson://lessons.lightbot\">LightBot</a> In this little game, you "
+"<a href=\"jlm://lessons.lightbot\">LightBot</a> In this little game, you "
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
-"<a href=\"lesson://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous "
-"devez\n"
+"<a href=\"jlm://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous devez\n"
 "programmer graphiquement un petit robot pour lui faire éteindre des\n"
 "lumières. C'est un petit casse-tête pour programmeurs."
 
@@ -1581,17 +1559,12 @@ msgstr ""
 
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/Environment.html:52
-#, fuzzy
-#| msgid ""
-#| "Once done, clic on run, and proceed to next exercise with the right combo-"
-#| "box (or keep around to experiment further if you feel so)."
 msgid ""
 "Once done, clic on run, and proceed to next exercise using the File menu "
 "entry (or keep around to experiment further if you feel so)."
 msgstr ""
-"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec "
-"le menu défilant en haut à droite (ou restez ici pour expérimenter un peu si "
-"vous le voulez)."
+"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec le\n"
+"menu File (ou restez ici pour expérimenter un peu si vous le voulez)."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Basics.html:3
@@ -1681,21 +1654,15 @@ msgstr ""
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Basics.html:35
-#, fuzzy
-#| msgid ""
-#| "It could also be written in the following way, but it's generally "
-#| "considered as a bad practice to group several instructions on the same "
-#| "line."
 msgid ""
 "It could also be written in the following way, but it's generally considered "
 "as a bad practice to group several instructions on the same line since it "
 "greatly hinders the readability."
 msgstr ""
-"Il serait également possible de l'écrire sous la forme suivante, mais "
-"placer\n"
-"plusieurs instructions sur la même ligne est généralement considéré comme "
-"une\n"
-"très mauvaise habitude."
+"Il serait également possible de l'écrire sous la forme suivante, mais placer\n"
+"plusieurs instructions sur la même ligne est généralement considéré comme une\n"
+"très mauvaise habitude car cela complique grandement la relecture du code après\n"
+"coup."
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/Basics.html:39
@@ -2380,20 +2347,11 @@ msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopWhile.html:3
-#, fuzzy
-#| msgid ""
-#| "In addition to conditionals, another handy construction is the ability to "
-#| "repeat an action while a specific condition does not appear. A while loop "
-#| "is used for that, with the following Java syntax:"
 msgid ""
 "In addition to conditionals, another handy construction is the ability to "
 "repeat an action while a specific condition does not appear. A while loop is "
 "used for that, with the following syntax:"
-msgstr ""
-"En plus des instructions conditionnelles, une autre construction pratique "
-"est de pouvoir demander à la buggle de répéter une action tant qu'une "
-"condition particulière n'est pas arrivée. On utilise pour cela une boucle "
-"<tt>while</tt>, dont la syntaxe Java est la suivante :"
+msgstr "En plus des instructions conditionnelles, une autre construction pratique est de pouvoir demander à la buggle de répéter une action tant qu'une condition particulière n'est pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe est la suivante :"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/LoopWhile.html:6

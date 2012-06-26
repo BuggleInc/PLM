@@ -68,8 +68,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
 					}
-					if (desc.startsWith("lesson://")) {
-						if (desc.startsWith("lesson://load_jar")) { 
+
+					if (desc.startsWith("jlm://")) {
+					    if (desc.startsWith("jlm://load_jar")) { 
 						//Load a lesson JAR
 							JFileChooser fc = new JFileChooser();
 								fc.setFileFilter(new FileNameExtensionFilter("JAR filter", "jar"));
@@ -83,14 +84,32 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
-					     
-						}
-						else {
+					     } else {
 						//Load a regular lesson
-							String lessonName = desc.substring(new String("lesson://").length());
-							Lesson lesson = Game.getInstance().loadLesson(lessonName);
-							Game.getInstance().setCurrentLesson(lesson);
+						String lessonName = desc.substring(new String("jlm://").length());
+						String exoName = null;
+						int sep = lessonName.indexOf("/");
+						if (sep != -1) {
+							exoName = lessonName.substring(sep+1);
+							lessonName = lessonName.substring(0, sep);
+							if (exoName.length()==0)
+								exoName = null;
 						}
+						if (Game.getInstance().isDebugEnabled()) 
+							System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
+								
+						Lesson lesson = Game.getInstance().loadLesson(lessonName);
+						Game.getInstance().setCurrentLesson(lesson);
+						if (exoName != null && exoName.length()>0) {
+							Lecture lect = lesson.getExercise(exoName);
+							if (lect != null) {
+								Game.getInstance().setCurrentExercise(lect);
+							} else {
+								System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
+							}
+						}					 
+					     }
+
 					}
 				}
 			}
