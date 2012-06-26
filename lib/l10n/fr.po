@@ -1078,7 +1078,7 @@ msgstr "&nbsp;&nbsp;"
 #. type: Content of: <table><tr><td><font>
 #: src/lessons/chooser/LessonChooser.html:3
 msgid "Welcome to the Java Learning Machine"
-msgstr "Bienvenus dans la Java Learning Machine"
+msgstr "Bienvenue dans la Java Learning Machine"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/chooser/LessonChooser.html:7

@@ -2,7 +2,7 @@
 <jnlp codebase="http://www.loria.fr/~oster/jlm/" href="jlm.jnlp">
 	<information>
 		<title>Java Learning Machine</title>
-		<homepage href="http://http://www.assembla.com/spaces/JLM"/>
+		<homepage href="http://www.assembla.com/spaces/JLM"/>
 		<description>Java Learning Machine (JLM) - a learning platform dedicated to Java and other programming concepts</description>
 		<vendor>ESIAL / Nancy-Université</vendor>
 		<!-- <icon href="jlm.png"/> -->
