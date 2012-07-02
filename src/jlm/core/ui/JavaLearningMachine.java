@@ -2,6 +2,7 @@ package jlm.core.ui;
 
 import javax.swing.JFrame;
 
+import jlm.core.model.CourseAppEngine;
 import jlm.core.model.Game;
 import jlm.core.model.Reader;
 
@@ -17,7 +18,9 @@ public class JavaLearningMachine {
 		
 		Reader.setLocale(new JFrame().getLocale().getLanguage());
 		
-		Game.getInstance().loadLesson("lessons.chooser");
+		Game.getInstance().loadChooser();
 		MainFrame.getInstance().setVisible(true);
+		
+		CourseAppEngine c = new CourseAppEngine();
 	}
 }
