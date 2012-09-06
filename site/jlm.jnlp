@@ -45,6 +45,8 @@
 		<jar href="lib/smackx.jar"/>
 		<jar href="lib/smack.jar"/>
 		
+		<jar href="lib/json-smart-1.1.1.jar"/>
+		
 		<property name="twitter4j.loggerFactory" value="twitter4j.internal.logging.NullLoggerFactory"/>
 	</resources>
 	<application-desc main-class="jlm.core.ui.JavaLearningMachine"/>
