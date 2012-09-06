@@ -33,4 +33,18 @@ public class TwitterSpy implements ProgressSpyListener {
 			}
 		}
 	}
+
+    @Override
+    public void switched(Exercise exo) {    /* i don't care, i'm a viking */    }
+
+    @Override
+    public void heartbeat() {}
+
+    @Override
+    public String join() { return ""; }
+
+    @Override
+    public void leave() {
+    }
+
 }

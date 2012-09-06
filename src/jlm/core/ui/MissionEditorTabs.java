@@ -2,16 +2,25 @@ package jlm.core.ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.jar.Manifest;
 
 import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.GameListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
+import jlm.core.JLMClassLoader;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
@@ -23,6 +32,9 @@ import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
+
+import java.lang.reflect.Method;
+
 
 public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener {
 	private static final long serialVersionUID = 1L;
@@ -56,7 +68,24 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
 					}
+
 					if (desc.startsWith("jlm://")) {
+					    if (desc.startsWith("jlm://load_jar")) { 
+						//Load a lesson JAR
+							JFileChooser fc = new JFileChooser();
+								fc.setFileFilter(new FileNameExtensionFilter("JAR filter", "jar"));
+								fc.setDialogType(JFileChooser.OPEN_DIALOG);
+							fc.showOpenDialog(MainFrame.getInstance());
+							File selectedFile = fc.getSelectedFile();
+							
+							try {
+								if (selectedFile != null)
+									JLMClassLoader.addJar(fc.getSelectedFile());
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+					     } else {
+						//Load a regular lesson
 						String lessonName = desc.substring(new String("jlm://").length());
 						String exoName = null;
 						int sep = lessonName.indexOf("/");
@@ -78,7 +107,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 							} else {
 								System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
 							}
-						}
+						}					 
+					     }
+
 					}
 				}
 			}

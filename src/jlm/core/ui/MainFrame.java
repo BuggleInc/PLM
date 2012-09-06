@@ -1,28 +1,5 @@
 package jlm.core.ui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JToolBar;
-import javax.swing.KeyStroke;
-
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
@@ -32,19 +9,15 @@ import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
-import jlm.core.ui.action.AbstractGameAction;
-import jlm.core.ui.action.ExportSession;
-import jlm.core.ui.action.ImportSession;
-import jlm.core.ui.action.PlayDemo;
-import jlm.core.ui.action.QuitGame;
-import jlm.core.ui.action.Reset;
-import jlm.core.ui.action.RevertExercise;
-import jlm.core.ui.action.SetLanguage;
-import jlm.core.ui.action.SetProgLanguage;
-import jlm.core.ui.action.StartExecution;
-import jlm.core.ui.action.StepExecution;
-import jlm.core.ui.action.StopExecution;
+import jlm.core.ui.action.*;
 import jlm.universe.World;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
 
@@ -58,12 +31,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton stopButton;
 	private JButton resetButton;
 	private JButton demoButton;
+    private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
 	
 	private JSplitPane mainPanel;
 	
+	private static final String frameTitle = "Java Learning Machine";
+	
+	
 	private MainFrame() {
-		super("Java Learning Machine");
+		super(frameTitle);
 		Reader.setLocale(this.getLocale().getLanguage());
 		initComponents(Game.getInstance());
 	}
@@ -155,6 +132,34 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
 		
+		// Teacher console menu item (shown only if defined in the JLM properties)
+        if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
+            menuItem = new JMenuItem(new AbstractGameAction(g, "Teacher Console") {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // launch teacher console
+                    new TeacherConsoleDialog();
+                }
+            });
+            menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+            menu.add(menuItem);
+        }
+        
+        // Menu item to change the current Course
+        menuItem = new JMenuItem(new AbstractGameAction(g, "Choose your course") {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // launch a dialog to choose the course
+                ChooseCourseDialog dialog = new ChooseCourseDialog();
+            }
+        });
+
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
+        menu.add(menuItem);
+        
+        
 		menuItem = new JMenuItem(new QuitGame(g, "Quit", null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
@@ -282,7 +287,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		setJMenuBar(menuBar);
 
 	}
-
+	
+	
+	public void appendToTitle(String addendum) {
+		this.setTitle(MainFrame.frameTitle +"      "+ addendum);
+	}
+	
+	
 	private void initToolBar(Game g) {
 		JToolBar toolBar = new JToolBar();
 		toolBar.setFloatable(true);
@@ -305,13 +316,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		demoButton = new PropagatingButton(new PlayDemo(g, "Demo", 
 				ResourcesCache.getIcon("resources/demo.png")));
 		demoButton.setEnabled(true);
-		
+
+        helpMeButton = new PropagatingToggleButton(new HelpMe(g, "Help",
+                ResourcesCache.getIcon("resources/alert.png")));
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);
 		toolBar.add(stopButton);
 		toolBar.add(resetButton);
 		toolBar.add(demoButton);
+        toolBar.add(helpMeButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 	}
@@ -464,6 +478,20 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	class PropagatingButton extends JButton {
 		private static final long serialVersionUID = 1L;
 		public PropagatingButton(AbstractGameAction act) {
+			super(act);
+			setBorderPainted(false);
+		}
+		@Override
+		public void setEnabled(boolean enabled) {
+			getAction().setEnabled(enabled);
+			super.setEnabled(enabled);
+		}
+	}
+
+    /** Simple JToggleButton which pass the enabled signals to their action */
+	class PropagatingToggleButton extends JToggleButton {
+		private static final long serialVersionUID = 1L;
+		public PropagatingToggleButton(AbstractGameAction act) {
 			super(act);
 			setBorderPainted(false);
 		}
