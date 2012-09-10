@@ -70,7 +70,7 @@ public class TurmiteWorld extends BuggleWorld {
 	}
 	
 	/* Here comes the world logic */
-	int currStep=0;
+	public int currStep=0;
 
 	public void stepDone() {
 		currStep++;

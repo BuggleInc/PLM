@@ -42,7 +42,7 @@ public void step(char[] rule, Color[] colors) {
 			colors[i] = allColors[i];
 		
 		for (int i=0;i<nbSteps;i++) {
-			((TurmiteWorld)world).currStep = i;
+			((lessons.welcome.cells.TurmiteWorld)world).currStep = i;
 			step(rule,colors);
 		}
 	}
