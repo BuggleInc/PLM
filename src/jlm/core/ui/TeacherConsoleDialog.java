@@ -18,8 +18,8 @@ import java.awt.event.KeyEvent;
  */
 public class TeacherConsoleDialog extends JDialog {
 
-    private Game game;
-    private Course course;
+    //private Game game;
+    //private Course course;
     private JLabel courseNameLabel;
     private ResultsPanel allResultsPanel;
     private ResultsPanel helpPanel;
@@ -30,8 +30,8 @@ public class TeacherConsoleDialog extends JDialog {
     public TeacherConsoleDialog() {
         super(MainFrame.getInstance(), "JLM Teacher Console", false);
 
-        game = Game.getInstance();
-        course = game.getCurrentCourse();
+        Game game = Game.getInstance();
+        Course course = game.getCurrentCourse();
 
         // automatically refresh the course to display in the teacher console if it's empty
         if (course.getCourseId() != null && !course.getCourseId().isEmpty()
@@ -44,7 +44,7 @@ public class TeacherConsoleDialog extends JDialog {
             } catch (NumberFormatException nfe) {
              // the answer was not a status message, it contains course data
             }
-            // refresh the needing help, layabout, bad and good students lists
+            // refresh the needing help, layout, bad and good students lists
             course.refreshStudentsLists();
         }
 
@@ -58,6 +58,8 @@ public class TeacherConsoleDialog extends JDialog {
         JToolBar toolBar = new JToolBar();
         toolBar.setBorder(BorderFactory.createEtchedBorder());
 
+        Game game = Game.getInstance();
+        
         courseNameLabel = new JLabel(game.getCourseID().isEmpty() ? "No course selected" : "[" + game.getCourseID() + "]");
 
         JButton newButton = new JButton(new CreateCourse(game, "New course",
@@ -85,6 +87,8 @@ public class TeacherConsoleDialog extends JDialog {
         allResultsPanel = new ResultsPanel(null);
         tabbedPanel.addTab("All results", new JScrollPane(allResultsPanel));
         tabbedPanel.setMnemonicAt(0, KeyEvent.VK_A);
+        
+        Course course = game.getCurrentCourse();
         
         helpPanel = new ResultsPanel(course.getNeedingHelpStudents());
         tabbedPanel.addTab("Need help", null,
@@ -119,6 +123,7 @@ public class TeacherConsoleDialog extends JDialog {
     }
 
     public void refresh() {
+    	Game game = Game.getInstance();
         courseNameLabel.setText(game.getCourseID().isEmpty() ? "" : "[" + game.getCourseID() + "]");
         allResultsPanel.displayResults();
         helpPanel.displayResults();
