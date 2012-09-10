@@ -312,7 +312,7 @@ public class LessonNavigatorDialog extends JDialog  {
 		rightPane.add(controls, "center");
 
 		doLayout();
-		setVisible(true);
+		//setVisible(true);
 		pack();
 	}
 

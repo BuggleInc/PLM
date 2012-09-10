@@ -43,7 +43,7 @@ public class ChooseCourseDialog extends JDialog {
         setLocationRelativeTo(getParent());
         setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         setResizable(false);
-        setVisible(true);
+        //setVisible(true);
     }
 
     public void initComponent(Container c) {

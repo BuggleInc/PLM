@@ -113,9 +113,14 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuItem = new JMenuItem(new AbstractGameAction(g, "Switch exercise") {
 			private static final long serialVersionUID = 1L;
 
+			private LessonNavigatorDialog dialog = null;
+
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new LessonNavigatorDialog(MainFrame.getInstance()).setVisible(true);
+				if (dialog == null) {
+					dialog = new LessonNavigatorDialog(MainFrame.getInstance());
+				}
+				dialog.setVisible(true);
 			}			
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
@@ -135,11 +140,15 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		// Teacher console menu item (shown only if defined in the JLM properties)
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
             menuItem = new JMenuItem(new AbstractGameAction(g, "Teacher Console") {
+				private TeacherConsoleDialog dialog = null;
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // launch teacher console
-                    new TeacherConsoleDialog();
+					if (dialog == null) {
+						dialog = new TeacherConsoleDialog();
+					}
+                    dialog.setVisible(true);
                 }
             });
             menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
@@ -149,10 +158,15 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         // Menu item to change the current Course
         menuItem = new JMenuItem(new AbstractGameAction(g, "Choose your course") {
 
+			private ChooseCourseDialog dialog = null;
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 // launch a dialog to choose the course
-                ChooseCourseDialog dialog = new ChooseCourseDialog();
+                if (dialog == null) {
+					dialog = new ChooseCourseDialog();
+				}
+				dialog.setVisible(true);
             }
         });
 
@@ -223,6 +237,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menu);
 
+/*	
+ TODO: forum to be fixed	
 		menu.add(new JMenuItem(new AbstractGameAction(g, "Join the forum", null) {
 			private static final long serialVersionUID = 1L;
 
@@ -236,6 +252,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				this.dialog.setVisible(true);
 			}
 		}));
+*/
 		menuItem = new JMenuItem(new AbstractGameAction(g, "About this lesson") {
 			private static final long serialVersionUID = 1L;
 			private AbstractAboutDialog dialog = null;
