@@ -163,8 +163,12 @@ public class ChooseCourseDialog extends JDialog {
         // select the new course
         String courseName = (jListID.getSelectedValue() != null) ? jListID.getSelectedValue().toString() : "";
         String coursePass = (passwordField.getPassword() != null) ? new String(passwordField.getPassword()) : "";
-        String teacherCoursePass = (teacherPasswordField.getPassword() != null) ? new String(teacherPasswordField.getPassword()) : "";
-
+        
+        String teacherCoursePass =  "";
+        if (teacherPasswordField != null) {
+        	teacherCoursePass = (teacherPasswordField.getPassword() != null) ? new String(teacherPasswordField.getPassword()) : "";
+        }
+        		
         Course course = new CourseAppEngine(courseName, coursePass);
         course.setTeacherPassword(teacherCoursePass);
         game.setCurrentCourse(course);
