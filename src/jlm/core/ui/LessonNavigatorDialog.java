@@ -24,6 +24,9 @@ import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 
 import jlm.core.model.Game;
+import jlm.core.GameListener;
+import jlm.universe.World;
+
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
@@ -52,7 +55,7 @@ import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 
 
-public class LessonNavigatorDialog extends JDialog  {
+public class LessonNavigatorDialog extends JDialog implements GameListener {
 
 	private static final long serialVersionUID = -1800747039420103759L;
 	Lesson lesson;
@@ -60,17 +63,46 @@ public class LessonNavigatorDialog extends JDialog  {
 	public LessonNavigatorDialog(JFrame parent) {
 		super();
 
-		lesson = Game.getInstance().getCurrentLesson();
-		setTitle("Your progress on lesson "+ lesson.getName());
-
-		graph = lesson.getExercisesGraph();
-		initComponents();
-
+		refreshUI();
+		
 		setResizable(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(getParent());
 		setMinimumSize(new Dimension(100,100));
 	}
+	
+	public void refreshUI() {
+		lesson = Game.getInstance().getCurrentLesson();
+		setTitle("Your progress on lesson "+ lesson.getName());
+
+		graph = lesson.getExercisesGraph();	
+		initComponents();		
+	}
+
+
+	// when a lesson becomes current lesson of the game
+	public void currentLessonHasChanged() {
+		refreshUI();		
+	}		
+	
+	// when an exercise becomes current exercise of the game
+	public void currentExerciseHasChanged(Lecture lect) {
+	}
+	
+	// when a world is selected as the current world
+	public void selectedWorldHasChanged(World newWorld) {
+	}
+	
+	// when an entity is selected as the current entity in a world
+	public void selectedEntityHasChanged() {
+	}
+
+	// when entities are replaced in the current 
+	public void selectedWorldWasUpdated() {
+	}
+
+
+
 
 	/**
 	 * the graph

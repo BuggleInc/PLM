@@ -119,6 +119,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			public void actionPerformed(ActionEvent arg0) {
 				if (dialog == null) {
 					dialog = new LessonNavigatorDialog(MainFrame.getInstance());
+					Game.getInstance().addGameListener(dialog);
 				}
 				dialog.setVisible(true);
 			}			
