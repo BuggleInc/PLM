@@ -6,11 +6,14 @@ import jlm.universe.pancake.PancakeWorld;
 
 public class PancakeBoardEntity extends PancakeEntity {
 
+	/* BEGIN TEMPLATE */
 	public void run() throws PancakeNumberException {
 		this.solve();
 	}
 	
+	
 	public void solve() throws PancakeNumberException{
+		/* BEGIN SOLUTION */
 		PancakeWorld pancakeWorld = (PancakeWorld) world;
 		int stackSize = this.getStackSize();
 		boolean currentPancakeAlreadySorted;
@@ -29,7 +32,9 @@ public class PancakeBoardEntity extends PancakeEntity {
 				this.flip(this.getPancakeSize(0));	// hit the bottom !
 			}	
 		}
+		
 	}
+	
 	
 	/*
 	 *  We are looking for the next big thing !
@@ -47,7 +52,10 @@ public class PancakeBoardEntity extends PancakeEntity {
 			}
 		}
 		return indexBigPancake;
+		/* END SOLUTION */
 	}
 	
+
+	/* END TEMPLATE */
 	
 }
