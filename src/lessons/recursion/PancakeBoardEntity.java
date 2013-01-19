@@ -4,14 +4,17 @@ import jlm.universe.pancake.PancakeEntity;
 import jlm.universe.pancake.PancakeNumberException;
 import jlm.universe.pancake.PancakeWorld;
 
+/**
+ * @author Julien BASTIAN & Geoffrey HUMBERT
+ * @version 1.2
+ */
 public class PancakeBoardEntity extends PancakeEntity {
 
-	/* BEGIN TEMPLATE */
 	public void run() throws PancakeNumberException {
 		this.solve();
 	}
 	
-	
+	/* BEGIN TEMPLATE */
 	public void solve() throws PancakeNumberException{
 		/* BEGIN SOLUTION */
 		PancakeWorld pancakeWorld = (PancakeWorld) world;
@@ -23,8 +26,17 @@ public class PancakeBoardEntity extends PancakeEntity {
 					&& !this.isPancakeUpsideDown(pancakesToSort-1) ) ;
 			if ( !currentPancakeAlreadySorted)
 			{
-				int index = this.findBiggestPancake(pancakesToSort);
-				this.flip(index+1);	// putting the pancake at the top
+				int indexBigPancake =-1;
+				boolean found = false;
+				for ( int currentPancake = 0 ; currentPancake < pancakesToSort && !found; currentPancake++)
+				{
+					if ( this.getPancakeSize(currentPancake) == pancakesToSort)
+					{
+						indexBigPancake = currentPancake;	// gotcha !
+						found = true;
+					}
+				}
+				this.flip(indexBigPancake+1);	// putting the pancake at the top
 				if ( !this.isPancakeUpsideDown(0))
 				{
 					this.flip(1);	// show your dark side to the world
@@ -32,30 +44,8 @@ public class PancakeBoardEntity extends PancakeEntity {
 				this.flip(this.getPancakeSize(0));	// hit the bottom !
 			}	
 		}
-		
-	}
-	
-	
-	/*
-	 *  We are looking for the next big thing !
-	 *  And we know that it is somewhere in the remaining stack !
-	 */
-	private int findBiggestPancake(int numberOfPancakesNotSorted) {
-		int indexBigPancake =-1;
-		boolean found = false;
-		for ( int j = 0 ; j < numberOfPancakesNotSorted && !found; j++)
-		{
-			if ( this.getPancakeSize(j) == numberOfPancakesNotSorted)
-			{
-				indexBigPancake = j;	// gotcha !
-				found = true;
-			}
-		}
-		return indexBigPancake;
 		/* END SOLUTION */
 	}
-	
-
 	/* END TEMPLATE */
 	
 }

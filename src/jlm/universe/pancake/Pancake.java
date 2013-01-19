@@ -19,6 +19,11 @@ public class Pancake {
 		this.upsideDown = false;
 	}
 	
+	/**
+	 * Make a copy of the caller
+	 * @version 1.2
+	 * @return a copy of the method caller
+	 */
 	public Pancake copy() {
 		Pancake p = new Pancake(this.getSize());
 		if ( this.isUpsideDown())

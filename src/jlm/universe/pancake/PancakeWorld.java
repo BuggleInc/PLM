@@ -7,6 +7,7 @@ import jlm.universe.World;
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
  * @version 1.2
+ * @see PancakesStack
  */
 public class PancakeWorld extends World {
 
@@ -90,7 +91,9 @@ public class PancakeWorld extends World {
 	/**
 	 * Returns the script except that must be injected within the environment before running user code 
 	 * It should pass all order to the java entity, which were injected independently  
+	 * @return  the script except that must be injected within the environment before running user code 
 	 * @version 1.2
+	 * @param the programming language used
 	 */
 	@Override
 	public String getBindings(ProgrammingLanguage lang) {
@@ -116,12 +119,14 @@ public class PancakeWorld extends World {
 		return this.stack.getSize();
 	}
 	
-	/* BEGIN HIDDEN */
-	/** Returns a component able of displaying the world -- will be used in third exercise 
-	 * You should comment this for the first exercises */
+	/** 
+	 * Return a component able of displaying the world
+	 * @return a component able of displaying the world
+	 * @version 1.2
+	 */
 	@Override
 	public WorldView[] getView() {
-		return new WorldView[] { new jlm.universe.pancake.PancakeWorldView(this) } ;
+		return new WorldView[] { new PancakeWorldView(this) } ;
 	}
 
 	/**
@@ -146,10 +151,20 @@ public class PancakeWorld extends World {
 		super.reset(world);		
 	}
 
+	/**
+	 * Sort the stack of pancakes correctly, according to the control freak pancake seller
+	 * @version 1.2
+	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
+	 */
 	public void solve() throws PancakeNumberException {
 		this.stack.solve();
 	}
 	
+	/**
+	 * Getter for the stack of pancakes
+	 * @version 1.2
+	 * @return return the stack of pancakes
+	 */
 	protected PancakesStack getStack() {
 		return this.stack;
 	}
@@ -166,6 +181,11 @@ public class PancakeWorld extends World {
 		return sb.toString();
 	}
 
+	/**
+	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
+	 * @version 1.2
+	 * @return TRUE if the stack is okay <br>FALSE else
+	 */
 	public boolean isSorted() {
 		return this.stack.isSorted();
 	}

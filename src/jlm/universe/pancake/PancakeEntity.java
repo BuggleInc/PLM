@@ -47,11 +47,13 @@ public class PancakeEntity extends Entity {
 	}
 
 	/** 
+	 * A copy method needed by the JLM
 	 * @version 1.2
+	 * @return a new PancakeEntity with the same name as the caller
 	 */
 	@Override
 	public Entity copy() {
-		return new PancakeEntity(name);
+		return new PancakeEntity(this.name);
 	}
 
 	/**
@@ -98,6 +100,7 @@ public class PancakeEntity extends Entity {
 	
 	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
 	 * @version 1.2
+	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
 	@Override
 	public void run() throws PancakeNumberException {

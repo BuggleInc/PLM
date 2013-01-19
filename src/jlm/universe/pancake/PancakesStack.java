@@ -233,7 +233,7 @@ public class PancakesStack {
 	
 	/**
 	 * Sort the stack of pancakes correctly, according to the control freak pancake seller
-	 * @version 1.1
+	 * @version 1.2
 	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
 	public void solve() throws PancakeNumberException {
@@ -256,9 +256,11 @@ public class PancakesStack {
 		}
 	}
 	
-	/*
-	 *  We are looking for the next big thing !
-	 *  And we know that it is somewhere in the remaining stack !
+	/**
+	 * Search and fin the index of the biggest
+	 * pancake in the stack among the pancakes which are not sorted
+	 * @version 1.2
+	 * @return the index of the biggest pancake among the not sorted pancake in the stack
 	 */
 	private int findBiggestPancake(int numberOfPancakesNotSorted) {
 		int indexBigPancake =-1;
