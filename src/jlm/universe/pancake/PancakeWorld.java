@@ -73,7 +73,7 @@ public class PancakeWorld extends World {
 		else
 		{
 			PancakeWorld other = (PancakeWorld) o;
-			this.stack.equals(other.stack);
+			sw = this.stack.equals(other.stack);
 		}
 		return sw;
 	}
