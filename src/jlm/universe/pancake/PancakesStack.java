@@ -116,7 +116,7 @@ public class PancakesStack {
 	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
 	public void flip(int numberOfPancakes) throws InvalidPancakeNumber {
-		if ( numberOfPancakes < 0|| numberOfPancakes > this.getSize()) {
+		if ( numberOfPancakes < 0 || numberOfPancakes > this.getSize()) {
 			throw new InvalidPancakeNumber(
 					"The number of pancakes must be between 0 and the maximum amount of " +
 					"pancakes in the stack " +
