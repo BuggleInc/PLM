@@ -61,10 +61,10 @@ public class PancakeEntity extends Entity {
 	 * @version 1.2
 	 * @param numberOfPancakes : the number of pancakes, 
 	 * 			beginning from the top of the stack, that you want to flip.
-	 * @throws PancakeNumberException : in case you ask to flip less than one or 
+	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or 
 	 * 									more than the total amount of pancakes
 	 */
-	public void flip(int numberOfPancakes) throws PancakeNumberException {
+	public void flip(int numberOfPancakes) throws InvalidPancakeNumber {
 		((PancakeWorld) world).flip(numberOfPancakes);
 		stepUI();
 	}
@@ -74,8 +74,9 @@ public class PancakeEntity extends Entity {
 	 * @version 1.2
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The size of the expected pancake
+	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
-	public int getPancakeSize(int pancakeNumber){
+	public int getPancakeSize(int pancakeNumber) throws InvalidPancakeNumber{
 		return ((PancakeWorld) world).getPancakeSize(pancakeNumber);
 	}
 	
@@ -93,17 +94,18 @@ public class PancakeEntity extends Entity {
 	 * @version 1.2
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return If the specific pancake is upside down or not
+	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
-	public boolean isPancakeUpsideDown(int pancakeNumber) {
+	public boolean isPancakeUpsideDown(int pancakeNumber) throws InvalidPancakeNumber {
 		return ((PancakeWorld) world).isPancakeUpsideDown(pancakeNumber);
 	}
 	
 	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
 	 * @version 1.2
-	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
+	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
 	@Override
-	public void run() throws PancakeNumberException {
+	public void run() throws InvalidPancakeNumber {
 	}
 	
 	/**

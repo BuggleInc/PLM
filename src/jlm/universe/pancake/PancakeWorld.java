@@ -82,9 +82,10 @@ public class PancakeWorld extends World {
 	 * Flip a certain amount of pancakes in the stack
 	 * @version 1.2
 	 * @param numberOfPancakes : the number of pancakes, beginning from the top of the stack, that you want to flip.
-	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
+	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more 
+	 * 									than the total amount of pancakes
 	 */
-	public void flip(int numberOfPancakes) throws PancakeNumberException {
+	public void flip(int numberOfPancakes) throws InvalidPancakeNumber {
 		this.stack.flip(numberOfPancakes);
 	}
 	
@@ -105,9 +106,19 @@ public class PancakeWorld extends World {
 	 * @version 1.2
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The size of the expected pancake
+	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
-	public int getPancakeSize(int pancakeNumber){
-		return this.stack.getPancake(pancakeNumber).getSize();
+	public int getPancakeSize(int pancakeNumber) throws InvalidPancakeNumber{
+		if ( pancakeNumber < 0 || pancakeNumber >= this.stack.getSize())
+		{
+			throw new InvalidPancakeNumber(
+					"The pancake's number you've asked is not between 0 and the stack size -1"
+					);
+		}
+		else
+		{
+			return this.stack.getPancake(pancakeNumber).getSize();
+		}
 	}
 
 	/**
@@ -134,9 +145,19 @@ public class PancakeWorld extends World {
 	 * @version 1.2
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return If the specific pancake is upside down or not
+	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
-	public boolean isPancakeUpsideDown(int pancakeNumber) {
-		return this.stack.getPancake(pancakeNumber).isUpsideDown();
+	public boolean isPancakeUpsideDown(int pancakeNumber) throws InvalidPancakeNumber {
+		if ( pancakeNumber < 0 || pancakeNumber >= this.stack.getSize())
+		{
+			throw new InvalidPancakeNumber(
+					"The pancake's number you've asked is not between 0 and the stack size -1"
+					);
+		}
+		else
+		{
+			return this.stack.getPancake(pancakeNumber).isUpsideDown();
+		}
 	}
 
 	/** 
@@ -154,9 +175,9 @@ public class PancakeWorld extends World {
 	/**
 	 * Sort the stack of pancakes correctly, according to the control freak pancake seller
 	 * @version 1.2
-	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
+	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
-	public void solve() throws PancakeNumberException {
+	public void solve() throws InvalidPancakeNumber {
 		this.stack.solve();
 	}
 	

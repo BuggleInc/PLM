@@ -113,11 +113,11 @@ public class PancakesStack {
 	 * Flip a certain amount of pancakes
 	 * @version 1.1
 	 * @param numberOfPancakes : the number of pancakes, beginning from the top of the stack, that you want to flip.
-	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
+	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
-	public void flip(int numberOfPancakes) throws PancakeNumberException {
+	public void flip(int numberOfPancakes) throws InvalidPancakeNumber {
 		if ( numberOfPancakes < 0|| numberOfPancakes > this.getSize()) {
-			throw new PancakeNumberException(
+			throw new InvalidPancakeNumber(
 					"The number of pancakes must be between 0 and the maximum amount of " +
 					"pancakes in the stack " +
 					"( "+this.getSize() +" here )\n"+ numberOfPancakes +" (the number of pancakes) isn't !");							
@@ -234,9 +234,9 @@ public class PancakesStack {
 	/**
 	 * Sort the stack of pancakes correctly, according to the control freak pancake seller
 	 * @version 1.2
-	 * @throws PancakeNumberException : in case you ask to flip less than one or more than the total amount of pancakes
+	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
-	public void solve() throws PancakeNumberException {
+	public void solve() throws InvalidPancakeNumber {
 		int stackSize = this.getSize();
 		boolean currentPancakeAlreadySorted;
 		for ( int pancakesToSort = stackSize ; pancakesToSort != -1 &&!this.isSorted(); pancakesToSort-- )
