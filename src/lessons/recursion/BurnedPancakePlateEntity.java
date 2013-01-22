@@ -1,14 +1,14 @@
 package lessons.recursion;
 
-import jlm.universe.pancake.PancakeEntity;
-import jlm.universe.pancake.PancakeWorld;
-import jlm.universe.pancake.InvalidPancakeNumber;
+import jlm.universe.pancake.burned.InvalidPancakeNumber;
+import jlm.universe.pancake.burned.PancakeEntity;
+import jlm.universe.pancake.burned.PancakeWorld;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
  * @version 1.2
  */
-public class PancakePlateEntity extends PancakeEntity {
+public class BurnedPancakePlateEntity extends PancakeEntity {
 
 	public void run() throws InvalidPancakeNumber {
 		try

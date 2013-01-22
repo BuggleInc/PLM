@@ -2,22 +2,22 @@ package lessons.recursion;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.pancake.PancakeEntity;
-import jlm.universe.pancake.PancakeWorld;
+import jlm.universe.pancake.raw.PancakeEntity;
+import jlm.universe.pancake.raw.PancakeWorld;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
  * @version 1.2
  */
-public class PancakePlate extends ExerciseTemplated {
+public class RawPancakePlate extends ExerciseTemplated {
 
 	
 	/**
-	 * Constructor of the class PancakePlate
+	 * Constructor of the class BurnedPancakePlate
 	 * @version 1.2
 	 * @param Lesson : a lesson
 	 */
-	public PancakePlate(Lesson lesson) {
+	public RawPancakePlate(Lesson lesson) {
 		super(lesson);
 		PancakeWorld plate[] = new PancakeWorld[4];
 		plate[0]= new PancakeWorld("5 pancakes",5,true);

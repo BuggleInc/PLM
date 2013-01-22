@@ -18,7 +18,8 @@ public class Main extends Lesson {
 		addExercise(new DragonCurve2(this));
 		
 		addExercise(new HanoiBoard(this));
-		addExercise(new PancakePlate(this));
+		addExercise(new BurnedPancakePlate(this));
+		addExercise(new RawPancakePlate(this));
 
 	}
 }
