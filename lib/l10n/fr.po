@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-03-18 00:55+0100\n"
+"POT-Creation-Date: 2013-01-23 17:28+0100\n"
 "PO-Revision-Date: 2012-03-18 00:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -548,13 +548,11 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:1
-#: src/lessons/welcome/cells/TurmiteWorld.html:1
 msgid "BuggleWorld"
 msgstr "BuggleWorld"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/bugglequest/BuggleWorld.html:2
-#: src/lessons/welcome/cells/TurmiteWorld.html:2
 msgid ""
 "This world was invented by Lyn Turbak, at Wellesley College. It is full of "
 "Buggles, little animals understanding simple orders, and offers numerous "
@@ -568,427 +566,356 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:7
-#: src/lessons/welcome/cells/TurmiteWorld.html:7
 msgid "Methods understood by buggles"
 msgstr "Méthodes comprises par les buggles"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:9
-#: src/lessons/welcome/cells/TurmiteWorld.html:9
 msgid "<b>Moving</b>"
 msgstr "<b>Bouger</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:9
-#: src/lessons/welcome/cells/TurmiteWorld.html:9
 msgid "(See also the note on exceptions, below)"
 msgstr "(voir aussi la note sur les exceptions, plus bas)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/cells/TurmiteWorld.html:10
 msgid "<b>Turn left"
 msgstr "<b>Tourner à gauche"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/cells/TurmiteWorld.html:10
 msgid "Turn right"
 msgstr "Tourner à droite"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/cells/TurmiteWorld.html:10
 msgid "Turn back"
 msgstr "Se retourner"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/cells/TurmiteWorld.html:10
 msgid "Moving forward"
 msgstr "Avancer"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/cells/TurmiteWorld.html:10
 msgid "Moving back</b>"
 msgstr "Reculer</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/welcome/cells/TurmiteWorld.html:11
 msgid "void turnLeft();"
 msgstr "void turnLeft();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/welcome/cells/TurmiteWorld.html:11
 msgid "void turnRight()"
 msgstr "void turnRight()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/welcome/cells/TurmiteWorld.html:11
 msgid "void turnBack()"
 msgstr "void turnBack()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
-#: src/lessons/welcome/cells/TurmiteWorld.html:12
 msgid "void forward() or void forward(int)"
 msgstr "void forward() ou void forward(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
-#: src/lessons/welcome/cells/TurmiteWorld.html:12
 msgid "void backward() or void backward(int)"
 msgstr "void backward() ou void backward(int)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/cells/TurmiteWorld.html:13
 msgid "<b>Get X coordinate"
 msgstr "<b>Obtenir l'abcisse"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/cells/TurmiteWorld.html:13
 msgid "Get Y coordinate"
 msgstr "Obtenir l'ordonnée"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/cells/TurmiteWorld.html:13
 msgid "Set X coordinate"
 msgstr "Changer l'abcisse"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/cells/TurmiteWorld.html:13
 msgid "Set Y coordinate"
 msgstr "Changer l'ordonnée"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/cells/TurmiteWorld.html:13
 msgid "Set position</b>"
 msgstr "Changer la position</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/cells/TurmiteWorld.html:14
 msgid "int getX();"
 msgstr "int getX();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/cells/TurmiteWorld.html:14
 msgid "int getY()"
 msgstr "int getY()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/cells/TurmiteWorld.html:14
 msgid "void setX(int)"
 msgstr "void setX(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/cells/TurmiteWorld.html:14
 msgid "void setY(int)"
 msgstr "void setY(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/cells/TurmiteWorld.html:14
 msgid "void setPos(int,int)"
 msgstr "void setPos(int,int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:16
-#: src/lessons/welcome/cells/TurmiteWorld.html:16
 msgid "<b>Information on the buggle</b>"
 msgstr "<b>Informations sur la buggle</b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:17
-#: src/lessons/welcome/cells/TurmiteWorld.html:17
 msgid "<b>Get the color"
 msgstr "<b>Obtenir la couleur"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:17
-#: src/lessons/welcome/cells/TurmiteWorld.html:17
 msgid "Set the color</b>"
 msgstr "Changer la couleur</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-#: src/lessons/welcome/cells/TurmiteWorld.html:18
 msgid "Color getColor();"
 msgstr "Color getColor();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-#: src/lessons/welcome/cells/TurmiteWorld.html:18
 msgid "void setColor(Color)"
 msgstr "void setColor(Color)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:19
-#: src/lessons/welcome/cells/TurmiteWorld.html:19
 msgid "<b>Look for a wall forward"
 msgstr "<b>Chercher un mur devant"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:19
-#: src/lessons/welcome/cells/TurmiteWorld.html:19
 msgid "Look for a wall backward</b>"
 msgstr "Chercher un mur derriere</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-#: src/lessons/welcome/cells/TurmiteWorld.html:20
 msgid "boolean isFacingWall();"
 msgstr "boolean isFacingWall();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-#: src/lessons/welcome/cells/TurmiteWorld.html:20
 msgid "boolean isBackingWall()"
 msgstr "boolean isBackingWall()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:21
-#: src/lessons/welcome/cells/TurmiteWorld.html:21
 msgid "<b>Get heading"
 msgstr "<b>Obtenir la direction"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:21
-#: src/lessons/welcome/cells/TurmiteWorld.html:21
 msgid "Set heading</b>"
 msgstr "Changer la direction</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:21
-#: src/lessons/welcome/cells/TurmiteWorld.html:21
 msgid "valid directions are:"
 msgstr "Les directions valides sont :"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-#: src/lessons/welcome/cells/TurmiteWorld.html:22
 msgid "Direction getDirection();"
 msgstr "Direction getDirection();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-#: src/lessons/welcome/cells/TurmiteWorld.html:22
 msgid "void setDirection(Direction)"
 msgstr "void setDirection(Direction)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-#: src/lessons/welcome/cells/TurmiteWorld.html:22
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
 msgstr "Direction.NORTH, Direction.EAST, Direction.SOUTH et Direction.WEST"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:24
-#: src/lessons/welcome/cells/TurmiteWorld.html:24
 msgid "<b>About the brush</b>"
 msgstr "<b>À propos de la brosse</b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:25
-#: src/lessons/welcome/cells/TurmiteWorld.html:25
 msgid "<b>Brush down"
 msgstr "<b>Baisser la brosse"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:25
-#: src/lessons/welcome/cells/TurmiteWorld.html:25
 msgid "Brush up"
 msgstr "Lever la brosse"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:25
-#: src/lessons/welcome/cells/TurmiteWorld.html:25
 msgid "Get brush position</b>"
 msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-#: src/lessons/welcome/cells/TurmiteWorld.html:26
 msgid "void brushUp();"
 msgstr "void brushUp();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-#: src/lessons/welcome/cells/TurmiteWorld.html:26
 msgid "void brushDown();"
 msgstr "void brushDown();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-#: src/lessons/welcome/cells/TurmiteWorld.html:26
 msgid "boolean isBrushDown();"
 msgstr "boolean isBrushDown();"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
-#: src/lessons/welcome/cells/TurmiteWorld.html:27
 msgid "<b>Change the brush color"
 msgstr "<b>Modifier la couleur de la brosse"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
-#: src/lessons/welcome/cells/TurmiteWorld.html:27
 msgid "Get the color of the brush</b>"
 msgstr "Obtenir la couleur de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-#: src/lessons/welcome/cells/TurmiteWorld.html:28
 msgid "void setBrushColor(Color);"
 msgstr "void setBrushColor(Color);"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-#: src/lessons/welcome/cells/TurmiteWorld.html:28
 msgid "Color getBrushColor();"
 msgstr "Color getBrushColor();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:30
-#: src/lessons/welcome/cells/TurmiteWorld.html:30
 msgid "<b>Interacting with the world</b>"
 msgstr "<b>Interagir avec le monde</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:31
-#: src/lessons/welcome/cells/TurmiteWorld.html:31
 msgid "<b>Get the color of the ground</b>"
 msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:31
-#: src/lessons/welcome/cells/TurmiteWorld.html:31
 msgid "Color getGroundColor();"
 msgstr "Color getGroundColor();"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
-#: src/lessons/welcome/cells/TurmiteWorld.html:33
 msgid "<b>Look for a baggle on the ground"
 msgstr "<b>Chercher un baggle par terre"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
-#: src/lessons/welcome/cells/TurmiteWorld.html:33
 msgid "Look for a baggle in bag"
 msgstr "Chercher un baggle dans ses poches"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
-#: src/lessons/welcome/cells/TurmiteWorld.html:33
 msgid "Pickup a baggle"
 msgstr "Prendre un baggle"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
-#: src/lessons/welcome/cells/TurmiteWorld.html:33
 msgid "Drop a baggle</b>"
 msgstr "Poser un baggle</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:34
-#: src/lessons/welcome/cells/TurmiteWorld.html:34
 msgid "(see the note on exceptions)"
 msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/cells/TurmiteWorld.html:35
 msgid "boolean isOverBaggle();"
 msgstr "boolean isOverBaggle();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/cells/TurmiteWorld.html:35
 msgid "boolean isCarryingBaggle();"
 msgstr "boolean isCarryingBaggle();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/cells/TurmiteWorld.html:35
 msgid "void pickUpBaggle()"
 msgstr "void pickUpBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/cells/TurmiteWorld.html:35
 msgid "void dropBaggle()"
 msgstr "void dropBaggle()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/cells/TurmiteWorld.html:37
 msgid "<b>Look for a message"
 msgstr "<b>Chercher un message"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/cells/TurmiteWorld.html:37
 msgid "Add a message"
 msgstr "Ajouter un message"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/cells/TurmiteWorld.html:37
 msgid "Read the message"
 msgstr "Lire le message"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/cells/TurmiteWorld.html:37
 msgid "Erase the message</b>"
 msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-#: src/lessons/welcome/cells/TurmiteWorld.html:38
 msgid "boolean isOverMessage();"
 msgstr "boolean isOverMessage();"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-#: src/lessons/welcome/cells/TurmiteWorld.html:38
 msgid "void writeMessage(String);"
 msgstr "void writeMessage(String);"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-#: src/lessons/welcome/cells/TurmiteWorld.html:38
 msgid "String readMessage()"
 msgstr "String readMessage()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-#: src/lessons/welcome/cells/TurmiteWorld.html:38
 msgid "void clearMessage()"
 msgstr "void clearMessage()"
 
 #. type: Content of: <h2>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:41
-#: src/lessons/welcome/cells/TurmiteWorld.html:41
 msgid "Note on exceptions"
 msgstr "Note sur les exceptions"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/bugglequest/BuggleWorld.html:42
-#: src/lessons/welcome/cells/TurmiteWorld.html:42
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -996,11 +923,16 @@ msgid ""
 "AlreadyHaveBaggleException exception if they already carry a baggle.  Trying "
 "to drop a baggle on a cell already containing one throws an "
 "AlreadyHaveBaggleException exception."
-msgstr "Les buggles normales lèvent une exception BuggleWallException si on cherche à leur faire traverser un mur.  Elles lèvent une exception NoBaggleUnderBuggleException si vous cherchez à prendre un baggle dans une case qui n'en contient pas, ou une exception AlreadyHaveBaggleException si vous portez déjà un baggel.  Tenter de déposer un baggel sur une case qui en contient déjà lève une exception AlreadyHaveBaggleException."
+msgstr ""
+"Les buggles normales lèvent une exception BuggleWallException si on cherche "
+"à leur faire traverser un mur.  Elles lèvent une exception "
+"NoBaggleUnderBuggleException si vous cherchez à prendre un baggle dans une "
+"case qui n'en contient pas, ou une exception AlreadyHaveBaggleException si "
+"vous portez déjà un baggel.  Tenter de déposer un baggel sur une case qui en "
+"contient déjà lève une exception AlreadyHaveBaggleException."
 
 #. type: Content of: <p>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:48
-#: src/lessons/welcome/cells/TurmiteWorld.html:48
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -1103,8 +1035,10 @@ msgid ""
 "<a href=\"jlm://lessons.welcome\">Welcome lesson</a> This lesson is intended "
 "to lead the first steps in programming of absolute beginners."
 msgstr ""
-"<a href=\"jlm://lessons.welcome\">Premiers pas</a> Cette leçon est destinée à\n"
-"guider les premiers pas en programmation de débutants sans aucune connaissance préalable."
+"<a href=\"jlm://lessons.welcome\">Premiers pas</a> Cette leçon est destinée "
+"à\n"
+"guider les premiers pas en programmation de débutants sans aucune "
+"connaissance préalable."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:16
@@ -1120,7 +1054,8 @@ msgid ""
 "<a href=\"jlm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
 "on strings."
 msgstr ""
-"<a href=\"jlm://lessons.bat.string1\">Chaînes</a> Quelques exercices sur les\n"
+"<a href=\"jlm://lessons.bat.string1\">Chaînes</a> Quelques exercices sur "
+"les\n"
 "chaînes de caractères."
 
 #. type: Content of: <ul><li>
@@ -1129,7 +1064,8 @@ msgid ""
 "<a href=\"jlm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
 "to discover the classical sorting algorithms by practice."
 msgstr ""
-"<a href=\"jlm://lessons.sort\">Algorithmes de tri</a> Cette leçon vous propose\n"
+"<a href=\"jlm://lessons.sort\">Algorithmes de tri</a> Cette leçon vous "
+"propose\n"
 "de découvrir les algorithmes classiques de tri par la pratique."
 
 #. type: Content of: <ul><li>
@@ -1148,9 +1084,15 @@ msgid ""
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
-"<a href=\"jlm://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous devez\n"
+"<a href=\"jlm://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous "
+"devez\n"
 "programmer graphiquement un petit robot pour lui faire éteindre des\n"
 "lumières. C'est un petit casse-tête pour programmeurs."
+
+#. type: Content of: <p>
+#: src/lessons/chooser/LessonChooser.html:32
+msgid "<a href=\"jlm://load_jar\">→ Load a lesson JAR</a>"
+msgstr "<a href=\"jlm://load_jar\">→ Charger un JAR de leçon</a>"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
@@ -1475,7 +1417,7 @@ msgstr ""
 msgid "Working environment"
 msgstr "L'environnement de travail"
 
-#. type: Content of: <p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/Environment.html:23
 msgid ""
 "Before going any further, get familiar with the working environment. Have a "
@@ -1485,7 +1427,7 @@ msgid ""
 "get displayed. If you have access to the net, try to open the forum in the "
 "help menu to check if other people are connected right now. Note that when "
 "you successfully solve an exercise, the good news is spread on twitter.  "
-"Keep posted to the progress of your friends by following #jlmlovers :)"
+"Keep posted to the progress of your friends by following @jlmlovers :)"
 msgstr ""
 "Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez "
 "les différents éléments composant la fenêtre, et placez la souris sur dessus "
@@ -1563,7 +1505,8 @@ msgid ""
 "Once done, clic on run, and proceed to next exercise using the File menu "
 "entry (or keep around to experiment further if you feel so)."
 msgstr ""
-"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec le\n"
+"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec "
+"le\n"
 "menu File (ou restez ici pour expérimenter un peu si vous le voulez)."
 
 #. type: Content of: outside any tag (error?)
@@ -1659,9 +1602,12 @@ msgid ""
 "as a bad practice to group several instructions on the same line since it "
 "greatly hinders the readability."
 msgstr ""
-"Il serait également possible de l'écrire sous la forme suivante, mais placer\n"
-"plusieurs instructions sur la même ligne est généralement considéré comme une\n"
-"très mauvaise habitude car cela complique grandement la relecture du code après\n"
+"Il serait également possible de l'écrire sous la forme suivante, mais "
+"placer\n"
+"plusieurs instructions sur la même ligne est généralement considéré comme "
+"une\n"
+"très mauvaise habitude car cela complique grandement la relecture du code "
+"après\n"
 "coup."
 
 #. type: Content of: <p><pre>
@@ -2351,7 +2297,11 @@ msgid ""
 "In addition to conditionals, another handy construction is the ability to "
 "repeat an action while a specific condition does not appear. A while loop is "
 "used for that, with the following syntax:"
-msgstr "En plus des instructions conditionnelles, une autre construction pratique est de pouvoir demander à la buggle de répéter une action tant qu'une condition particulière n'est pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe est la suivante :"
+msgstr ""
+"En plus des instructions conditionnelles, une autre construction pratique "
+"est de pouvoir demander à la buggle de répéter une action tant qu'une "
+"condition particulière n'est pas arrivée. On utilise pour cela une boucle "
+"<tt>while</tt>, dont la syntaxe est la suivante :"
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/LoopWhile.html:6
@@ -2531,16 +2481,16 @@ msgstr ""
 msgid ""
 "The buggle world can sometimes contain some <i>baggles</i>, which are little "
 "biscuits that buggles can carry from one point to another. For that, they "
-"have to use specific methods such as <code>isOverBaggle(), isCarryingBaggle"
-"(), pickUpBaggle()</code> or <code>dropBaggle()</code>. Check their "
-"documentation in \"Help/About this world\" for more details."
+"have to use specific methods such as <code>isOverBaggle(), "
+"isCarryingBaggle(), pickUpBaggle()</code> or <code>dropBaggle()</code>. "
+"Check their documentation in \"Help/About this world\" for more details."
 msgstr ""
 "Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
 "biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
-"cela, elles peuvent utiliser des fonctions spécifiques : <code>isOverBaggle"
-"(), isCarryingBaggle(), pickUpBaggle()</code> et <code>dropBaggle()</code>. "
-"Tous les détails se trouvent dans la documentation accessible depuis \"Help/"
-"About this world\"."
+"cela, elles peuvent utiliser des fonctions spécifiques : "
+"<code>isOverBaggle(), isCarryingBaggle(), pickUpBaggle()</code> et "
+"<code>dropBaggle()</code>. Tous les détails se trouvent dans la "
+"documentation accessible depuis \"Help/About this world\"."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/BaggleSeeker.html:10
@@ -3749,13 +3699,13 @@ msgid ""
 "its position and orientation in order to determine the amount of steps to do "
 "and their direction, but it is not relevant here."
 msgstr ""
-"<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode <code>move"
-"(int nbPas, boolean forward)</code> qui avance de <code>nbPas</code> si "
-"<code>forward</code> est vrai, et recule d'autant de pas si le booléen est "
-"faux. La buggle s'en servira pour retourner sur la ligne du haut. Elle "
-"utilisera au passage des méthodes que l'on ne connaît pas encore pour "
-"deviner sa position et sa direction actuelles afin de calculer le sens et le "
-"nombre de pas à faire (mais ce n'est pas important ici)."
+"<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode "
+"<code>move(int nbPas, boolean forward)</code> qui avance de <code>nbPas</"
+"code> si <code>forward</code> est vrai, et recule d'autant de pas si le "
+"booléen est faux. La buggle s'en servira pour retourner sur la ligne du "
+"haut. Elle utilisera au passage des méthodes que l'on ne connaît pas encore "
+"pour deviner sa position et sa direction actuelles afin de calculer le sens "
+"et le nombre de pas à faire (mais ce n'est pas important ici)."
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/welcome/MethodsArgs.html:61
@@ -4770,14 +4720,14 @@ msgstr ""
 #: src/lessons/welcome/BDR2.html:30
 msgid ""
 "When you review this code, it may not be clear at the first glance that it "
-"is simply a choice with 4 branches depending on the value of getIndication"
-"(). To improve this, we will use a <code>switch</code> construct, which Java "
-"syntax is the following:"
+"is simply a choice with 4 branches depending on the value of "
+"getIndication(). To improve this, we will use a <code>switch</code> "
+"construct, which Java syntax is the following:"
 msgstr ""
 "Quand on relit ce programme, on ne voit pas forcément tout de suite qu'il "
-"s'agit simplement d'un choix à 4 branches selon la valeur de getIndication"
-"(). Pour faire mieux, on va utiliser la construction <tt>switch</tt>, dont "
-"la syntaxe est la suivante:"
+"s'agit simplement d'un choix à 4 branches selon la valeur de "
+"getIndication(). Pour faire mieux, on va utiliser la construction "
+"<tt>switch</tt>, dont la syntaxe est la suivante:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/BDR2.html:36
@@ -5935,12 +5885,12 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/TraversalByColumn.html:14
 msgid ""
-"In contrary to the exercises we saw so far, we won't use the <code>forward()"
-"</code>, <code>backward()</code> and similar methods. Instead, we will "
-"compute the coordinate of the next buggle position and use the <code>setPos"
-"(int, int)</code> method to <i>teleport</i> the buggle directly to this "
-"position. For example, <code>setPos(3, 5)</code> teleports the buggle to the "
-"cell where x=3 and y=5."
+"In contrary to the exercises we saw so far, we won't use the "
+"<code>forward()</code>, <code>backward()</code> and similar methods. "
+"Instead, we will compute the coordinate of the next buggle position and use "
+"the <code>setPos(int, int)</code> method to <i>teleport</i> the buggle "
+"directly to this position. For example, <code>setPos(3, 5)</code> teleports "
+"the buggle to the cell where x=3 and y=5."
 msgstr ""
 "À la différence des exercices vus jusque là, nous n'allons pas utiliser les "
 "méthodes <code>forward()</code>, <code>backward()</code> et autres, mais "
@@ -5962,11 +5912,12 @@ msgid ""
 msgstr ""
 "Le premier objectif est donc d'écrire une fonction booléenne indiquant si la "
 "buggle a atteint la position finale ou non, càd si elle est arrivée en bas à "
-"droite du monde.  Vous utiliserez pour cela les méthodes <code>getWorldWidth"
-"()</code> et <code>getWorldHeight()</code> qui retournent respectivement la "
-"largeur et la hauteur du monde.  Votre test est de comparer les coordonnées "
-"actuelles de votre buggle (que vous pouvez retrouver avec les méthodes "
-"<code>getX()</code> et <code>getY()</code>) aux dimensions du monde."
+"droite du monde.  Vous utiliserez pour cela les méthodes "
+"<code>getWorldWidth()</code> et <code>getWorldHeight()</code> qui retournent "
+"respectivement la largeur et la hauteur du monde.  Votre test est de "
+"comparer les coordonnées actuelles de votre buggle (que vous pouvez "
+"retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux "
+"dimensions du monde."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/TraversalByColumn.html:28
@@ -6010,10 +5961,10 @@ msgid ""
 "with <code>writeMessage(counter);</code>."
 msgstr ""
 "Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez "
-"besoin d'un compteur initialisé à zéro au début de votre méthode <code>run()"
-"</code>, et incrémenté de un à chaque pas (par exemple avec <code>cpt++;</"
-"code>). Ensuite, il faut écrire la valeur de ce compteur au sol à chaque "
-"pas, par exemple avec <code>writeMessage(cpt);</code>."
+"besoin d'un compteur initialisé à zéro au début de votre méthode "
+"<code>run()</code>, et incrémenté de un à chaque pas (par exemple avec "
+"<code>cpt++;</code>). Ensuite, il faut écrire la valeur de ce compteur au "
+"sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/TraversalByColumn.html:45
@@ -6090,10 +6041,10 @@ msgstr ""
 #: src/lessons/welcome/cells/Langton.html:8
 msgid ""
 "The rules are absolutely trivial: to compute what the next step should be, "
-"you should check the current color of the ground (using <code>getGroundColor"
-"()</code>). If it's white, change it to black, turn right and move forward "
-"by one cell. If the ground is currently black, change it to white, turn left "
-"and move forward by one cell."
+"you should check the current color of the ground (using "
+"<code>getGroundColor()</code>). If it's white, change it to black, turn "
+"right and move forward by one cell. If the ground is currently black, change "
+"it to white, turn left and move forward by one cell."
 msgstr ""
 
 #. type: Content of: <p>
@@ -6574,6 +6525,11 @@ msgid ""
 "google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
 msgstr ""
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/cells/TurmiteWorld.html:1
+msgid "../../../jlm/universe/bugglequest/BuggleWorld.html"
+msgstr ""
+
 #. type: Content of: <h1>
 #: src/lessons/sort/Main.html:1
 msgid "Sorting Algorithms"
@@ -6885,10 +6841,10 @@ msgstr "D'autres variantes du tri par insertion"
 #. type: Content of: <p><img><p><p><img><p><p>
 #: src/lessons/sort/ExInsertionSort.html:85
 msgid ""
-"TreeSort builds a binary search tree to sort them. It leads to a O(n log"
-"(n))  on average, but O(n^2) in worst cases. We won't study this algorithm "
-"here since unterstanding its behavior requires to know what a binary tree "
-"is, what is beyond our present goals."
+"TreeSort builds a binary search tree to sort them. It leads to a O(n "
+"log(n))  on average, but O(n^2) in worst cases. We won't study this "
+"algorithm here since unterstanding its behavior requires to know what a "
+"binary tree is, what is beyond our present goals."
 msgstr ""
 "TreeSort construit un arbre binaire équilibré des données pour les trier. "
 "Cela lui permet d'être en O(nlog n) en moyenne (mais O(n^2) dans le pire "
@@ -6908,8 +6864,8 @@ msgid ""
 msgstr ""
 "Il existe d'autres variantes du tri par insertion, comme PatienceSorting, "
 "qui fait des paquets des valeurs et trie ensuite chaque paquet. Cet "
-"algorithme présente un pire cas en O(nlog n), et une complexité spatiale en O"
-"(n).  LibrarySort (proposé en 2004) échange également un peu d'espace pour "
+"algorithme présente un pire cas en O(nlog n), et une complexité spatiale en "
+"O(n).  LibrarySort (proposé en 2004) échange également un peu d'espace pour "
 "du temps puisqu'il présente une complexité moyenne en O(n log n), mais "
 "nécessite de stoquer des données supplémentaires."
 
@@ -7940,8 +7896,8 @@ msgid ""
 "Previous solution induce that the turtle teleports to other location, or at "
 "the very least, that it moves its pen up during the drawing. Indeed, the end "
 "of the drawing of the first recursive call does not match the begining of "
-"the second recursive call. That is why we had to use the method <code>setPos"
-"()</code>"
+"the second recursive call. That is why we had to use the method "
+"<code>setPos()</code>"
 msgstr ""
 "La solution précédente nécessite que la tortue se téléporte, autrement dit, "
 "qu'il est parfois nécessaire de lever le crayon pour tracer la courbe.  En "
@@ -7965,9 +7921,9 @@ msgstr ""
 #: src/lessons/recursion/DragonCurve2.html:13
 msgid ""
 "The method <code>dragon()</code> is then recursively defined using itself "
-"and <code>dragonReverse()</code>. Likewise, the method <code>dragonReverse()"
-"</code> is defined recursively using itself and <code>dragon()</code>. This "
-"is thus an example of <i>mutual recursion</i>."
+"and <code>dragonReverse()</code>. Likewise, the method "
+"<code>dragonReverse()</code> is defined recursively using itself and "
+"<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
 msgstr ""
 "La méthode <code>dragon()</code> sera définie récursivement en fonction des "
 "méthodes <code>dragon()</code> et <code>dragonInverse()</code>. De même, la "
@@ -7990,8 +7946,8 @@ msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
 msgstr ""
-"Les coordonnées (u, v) du nouveau point introduit par la méthode <code>dragon"
-"()</code> seront :"
+"Les coordonnées (u, v) du nouveau point introduit par la méthode "
+"<code>dragon()</code> seront :"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/DragonCurve2.html:33
@@ -9155,8 +9111,8 @@ msgstr "Presque 100"
 #. type: Content of: <p>
 #: src/lessons/welcome/bool1/NearHundred.html:2
 msgid ""
-"Given an int n, return true if it is within 10 of 100 or 200. Note Math.abs"
-"(n) returns the absolute value of a number."
+"Given an int n, return true if it is within 10 of 100 or 200. Note Math."
+"abs(n) returns the absolute value of a number."
 msgstr ""
 "Étant donné un entier n, retournez vrai s'il est à 10 près de 100 ou de 200. "
 "Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
@@ -9856,8 +9812,8 @@ msgstr ""
 msgid ""
 "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
 msgstr ""
-"Donc, la dernière valeur d'un tableau est donnée par <code>tab[tab.length -1]"
-"</code>."
+"Donc, la dernière valeur d'un tableau est donnée par <code>tab[tab.length "
+"-1]</code>."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/AverageValue.html:1
@@ -10006,8 +9962,8 @@ msgstr ""
 "Dans cet exercice, il vous faut calculer le nombre d'occurrences d'une "
 "valeur\n"
 "donnée, c'est à dire le nombre de fois que cette valeur apparaît dans le\n"
-"tableau. Pour cela, remplissez le corps de la méthode <code>occurrences(int"
-"[]\n"
+"tableau. Pour cela, remplissez le corps de la méthode "
+"<code>occurrences(int[]\n"
 "tab, int lookingFor)</code>, qui retourne le nombre d'occurrences de\n"
 "<code>lookingFor</code> dans <code>tab</code>."
 
