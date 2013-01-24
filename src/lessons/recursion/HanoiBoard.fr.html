@@ -1,0 +1,46 @@
+<h2>Tower of Hanoi</h2>
+
+The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or
+Towers of Brahma, is a mathematical game or puzzle. It consists of three
+rods, and a number of disks of different sizes which can slide onto any
+rod. The puzzle starts with the disks in a neat stack in ascending order of
+size on one rod, the smallest at the top, thus forming a pyramid.  The
+objective of the puzzle is to move the entire stack to another rod, obeying
+the following rules:
+<ul>
+  <li>A chaque mouvement, un seul et unique disque peut être déplacé.</li>
+
+  <li>Chaque mouvement consiste à déplacer un disque placé sur le haut d'une pile
+d'un pique vers un autre piquet.</li>
+
+  <li>Aucun disque ne peut être placé au dessus d'un disque de diamètre plus
+petit.</li>
+</ul>
+
+<h3>Objectif de l'exercice</h3> 
+
+Ecrivez le corps de la méthode <code>public void solve(int src, int dst, int
+height) throws HanoiInvalidMove</code>. Cette méthode doit résoudre le
+problème présenté de manière récursive. Le premier paramètre nommé
+<code>src</code> correspond au numéro du piquet initial. Le second paramètre
+<code>dst</code> correspond au numéro du piquet final. Le troisième
+paramètre <code>height</code> indique la hauteur de la tour. L'idée clé pour
+résoudre ce puzzle est de constater qu'il peut être résolu en découpant le
+problème en problème plus petit, puis qu'il suffit de re-découper encore et
+encore ces problèmes en problèmes plus petits jusqu'à obtenir la
+solution. La procédure suivante illustre cette approche :
+<ul>
+  <li>étiqueter les piques A, B, C (ces étiquettes peuvent se déplacer à chaque
+étape)</li>
+  <li>soit n le nombre total de disques (la hauteur de la tour initiale)</li>
+  <li>numéroter les disques de 1 (le plus petit, le plus haut) à n (le plus large,
+le plus bas)</li>
+</ul>
+
+déplacer n disques de A vers C.
+<ul>
+  <li>déplacer n-1 disques de A vers B. Le disque #n reste alors seul sur le
+piquet A</li>
+  <li>déplacer le disque #n de A vers C</li>
+  <li>déplacer n-1 disques de B vers C tel qu'ils s'empilent sur le disque #n</li>
+</ul>
