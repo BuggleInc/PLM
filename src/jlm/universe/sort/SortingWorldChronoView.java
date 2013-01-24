@@ -150,7 +150,10 @@ public class SortingWorldChronoView extends WorldView {
 					g2.drawLine(x1, y1, x2, y2);
 					
 				} else {
-					System.out.println("Ouch: that's not a swap but a "+op.toString()+" this code was never debugged.");
+					if (!( op instanceof CopyVal) && !(op instanceof SetVal) )
+					{
+						System.out.println("Ouch: that's not a swap but a "+op.toString()+" this code was never debugged.");
+					}
 				for (int valueIterator = 0; valueIterator < ent.getValueCount(); valueIterator++) {
 					x1 = (int) (opIdx * stepX);
 					y1 = 0;
