@@ -1,8 +1,8 @@
 package lessons.smn;
 
 import jlm.core.model.lesson.Lesson;
-import lessons.smn.BurnedPancakePlate;
-import lessons.smn.RawPancakePlate;
+import lessons.smn.pancake.burned.BurnedPancakePlate;
+import lessons.smn.pancake.raw.RawPancakePlate;
 
 public class Main extends Lesson {
 	@Override

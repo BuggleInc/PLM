@@ -1,24 +1,26 @@
-package lessons.smn;
+package lessons.smn.pancake.raw;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.pancake.burned.PancakeEntity;
-import jlm.universe.pancake.burned.PancakeWorld;
+import jlm.universe.smn.pancake.raw.PancakeEntity;
+import jlm.universe.smn.pancake.raw.PancakeWorld;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
- * @version 1.2
  */
-public class BurnedPancakePlate extends ExerciseTemplated {
+public class RawPancakePlate extends ExerciseTemplated {
 
 	
 	/**
 	 * Constructor of the class BurnedPancakePlate
-	 * @version 1.2
 	 * @param Lesson : a lesson
 	 */
-	public BurnedPancakePlate(Lesson lesson) {
+	public RawPancakePlate(Lesson lesson) {
 		super(lesson);
+	
+		// addProgLanguage(Game.PYTHON);
+		
 		PancakeWorld plate[] = new PancakeWorld[4];
 		plate[0]= new PancakeWorld("5 pancakes",5,true);
 		plate[1]= new PancakeWorld("10 pancakes",10,true);

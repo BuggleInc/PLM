@@ -1,14 +1,14 @@
-package lessons.smn;
+package lessons.smn.pancake.burned;
 
-import jlm.universe.pancake.burned.InvalidPancakeNumber;
-import jlm.universe.pancake.burned.PancakeEntity;
-import jlm.universe.pancake.burned.PancakeWorld;
+import jlm.universe.smn.pancake.burned.InvalidPancakeNumber;
+import jlm.universe.smn.pancake.burned.PancakeEntity;
+import jlm.universe.smn.pancake.burned.PancakeWorld;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
- * @version 1.2
  */
 public class BurnedPancakePlateEntity extends PancakeEntity {
+
 
 	public void run() throws InvalidPancakeNumber {
 		try
