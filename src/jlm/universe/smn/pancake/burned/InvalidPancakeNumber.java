@@ -1,8 +1,7 @@
-package jlm.universe.pancake.raw;
+package jlm.universe.smn.pancake.burned;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
- * @version 1.2
  * @see PancakesStack
  */
 public class InvalidPancakeNumber extends Exception {
@@ -11,7 +10,6 @@ public class InvalidPancakeNumber extends Exception {
 	
 	/**
 	 * Create a InvalidPancakeNumber with errorMessage as message
-	 * @version 1.2
 	 * @param size : the size of the stack of pancakes 
 	 * @return A new stack of size pancakes
 	 */

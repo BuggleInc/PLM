@@ -1,8 +1,7 @@
-package jlm.universe.pancake.burned;
+package jlm.universe.smn.pancake.burned;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
- * @version 1.2
  */
 public class Pancake {
 
@@ -11,7 +10,6 @@ public class Pancake {
 	
 	/**
 	 * Constructor of the class Pancake
-	 * @version 1.0
 	 * @param size :the size of the pancake
 	 */
 	public Pancake(int size) {
@@ -21,7 +19,6 @@ public class Pancake {
 	
 	/**
 	 * Make a copy of the caller
-	 * @version 1.2
 	 * @return a copy of the method caller
 	 */
 	public Pancake copy() {
@@ -35,7 +32,6 @@ public class Pancake {
 	
 	/**
 	 * Flip a pancake, which leads to changing upsideDown
-	 * @version 1.0
 	 */
 	public void flip() {
 		this.upsideDown = !this.upsideDown;
@@ -43,7 +39,6 @@ public class Pancake {
 	
 	/**
 	 * Give the size of the pancake
-	 * @version 1.0
 	 * @return The size of the pancake
 	 */
 	public int getSize() {
@@ -52,7 +47,6 @@ public class Pancake {
 	
 	/**
 	 * Tell if the pancake is upside down
-	 * @version 1.0
 	 * @return If the pancake is upside down or not
 	 */
 	public boolean isUpsideDown() {
@@ -60,10 +54,9 @@ public class Pancake {
 	}
 	
 	/**
-	 * Indicates whether some other object is "equal to" this one. 
-	 * @version 1.2
+	 * Indicate whether some other object is "equal to" this one
 	 * @return If the two objects are equals
-	 * @param Object o: the reference object with which to compare.
+	 * @param Object o: the reference object with which to compare
 	 */
 	public boolean equals(Object o) {
 		boolean sw=true;
@@ -81,9 +74,8 @@ public class Pancake {
 	}
 	
 	/**
-	 * Returns a string representation of the pancake.
-	 * @version 1.2
-	 * @return A string representation of the pancake.
+	 * Return a string representation of the pancake
+	 * @return A string representation of the pancake
 	 */
 	public String toString() {
 		String s = "< Size: "+this.getSize();

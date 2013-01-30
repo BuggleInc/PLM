@@ -1,9 +1,8 @@
-package jlm.universe.pancake.burned;
+package jlm.universe.smn.pancake.burned;
 
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
- * @version 1.2
  * @see Pancake
  */
 public class PancakesStack {
@@ -12,7 +11,6 @@ public class PancakesStack {
 	
 	/**
 	 * Create a new stack of pancakes, which can be mixed or not
-	 * @version 1.1
 	 * @param size : the size of the stack of pancakes 
 	 * @return A new stack of size pancakes
 	 */
@@ -27,7 +25,6 @@ public class PancakesStack {
 	
 	/**
 	 * Constructor of the class PancakesStack
-	 * @version 1.1
 	 * @param size :the size of the stack of pancakes 
 	 */
 	private PancakesStack(int size) {
@@ -40,7 +37,6 @@ public class PancakesStack {
 	
 	/**
 	 * Make a copy of the given object
-	 * @version 1.2
 	 * @return A copy of the given object
 	 */
 	public PancakesStack copy() {
@@ -54,7 +50,6 @@ public class PancakesStack {
 	
 	/**
 	 * Make a textual description of the differences between the caller and stack
-	 * @version 1.2
 	 * @param stack : the stack of pancakes with which you want to compare your current stack 
 	 * @return A textual description of the differences between the caller and stack
 	 */
@@ -84,10 +79,9 @@ public class PancakesStack {
 	}
 	
 	/**
-	 * Indicates whether some other object is "equal to" this one. 
-	 * @version 1.2
+	 * Indicate whether some other object is "equal to" this one
 	 * @return If the two objects are equals
-	 * @param Object o: the reference object with which to compare.
+	 * @param Object o: the reference object with which to compare
 	 */
 	@Override
 	public boolean equals(Object o) {
@@ -111,7 +105,6 @@ public class PancakesStack {
 
 	/**
 	 * Flip a certain amount of pancakes
-	 * @version 1.1
 	 * @param numberOfPancakes : the number of pancakes, beginning from the top of the stack, that you want to flip.
 	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
@@ -141,7 +134,6 @@ public class PancakesStack {
 
 	/**
 	 * Give a specific pancake among others
-	 * @version 1.1
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The expected pancake
 	 */
@@ -151,7 +143,6 @@ public class PancakesStack {
 
 	/**
 	 * Give the size of a specific pancake among others
-	 * @version 1.1
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The size of the expected pancake
 	 */
@@ -161,7 +152,6 @@ public class PancakesStack {
 
 	/**
 	 * Give the size of the stack of pancakes
-	 * @version 1.1
 	 * @return The number of pancakes in the stack
 	 */
 	public int getSize() {
@@ -170,7 +160,6 @@ public class PancakesStack {
 	
 	/**
 	 * Tell if a specific pancake, among others, is upside down
-	 * @version 1.2
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return If the specific pancake is upside down or not
 	 */
@@ -180,7 +169,6 @@ public class PancakesStack {
 	
 	/**
 	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
-	 * @version 1.1
 	 * @return TRUE if the stack is okay <br>FALSE else
 	 */
 	public boolean isSorted() {
@@ -196,7 +184,6 @@ public class PancakesStack {
 	
 	/**
 	 * Mix the stack in order to screw the pancake seller
-	 * @version 1.1
 	 */
 	public void mix() {
 		int stackSize = this.getSize();
@@ -222,7 +209,6 @@ public class PancakesStack {
 
 	/**
 	 * Place the given pancake at the given floor in the stack
-	 * @version 1.1
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, where you want to place the pancake.
 	 * @param pancake :the pancake that you want to place in the stack
 	 */
@@ -233,7 +219,6 @@ public class PancakesStack {
 	
 	/**
 	 * Sort the stack of pancakes correctly, according to the control freak pancake seller
-	 * @version 1.2
 	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
 	public void solve() throws InvalidPancakeNumber {
@@ -259,7 +244,6 @@ public class PancakesStack {
 	/**
 	 * Search and fin the index of the biggest
 	 * pancake in the stack among the pancakes which are not sorted
-	 * @version 1.2
 	 * @return the index of the biggest pancake among the not sorted pancake in the stack
 	 */
 	private int findBiggestPancake(int numberOfPancakesNotSorted) {
@@ -278,8 +262,7 @@ public class PancakesStack {
 	
 	/**
 	 * Swap two pancakes
-	 * @version 1.1
-	 * @param pancakeOne :the first pancake which will be swaped
+	 * @param pancakeOne :the first pancake which will be swapped
 	 * @param pancakeTwo :the second one
 	 */
 	private void swap(int pancakeOne, int pancakeTwo) {
@@ -290,9 +273,8 @@ public class PancakesStack {
 	}
 	
 	/**
-	 * Returns a string representation of the stack of pancakes.
-	 * @version 1.2
-	 * @return A string representation of the stack of pancakes.
+	 * Returns a string representation of the stack of pancakes
+	 * @return A string representation of the stack of pancakes
 	 */
 	@Override
 	public String toString() {

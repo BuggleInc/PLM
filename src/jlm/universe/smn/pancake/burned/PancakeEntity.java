@@ -1,11 +1,10 @@
-package jlm.universe.pancake.burned;
+package jlm.universe.smn.pancake.burned;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
- * @version 1.2
  */
 public class PancakeEntity extends Entity {
 
@@ -13,7 +12,6 @@ public class PancakeEntity extends Entity {
 	 * Must exist too. Calling PancakeEntity("dummy name") is ok
 	 * Part of the copy process 
 	 * Must call super(name)
-	 * @version 1.2
 	 * @return A new instance of PancakeEntity
 	 */
 	public PancakeEntity() {
@@ -25,7 +23,6 @@ public class PancakeEntity extends Entity {
 	/**
 	 * Part of the copy process 
 	 * Must call super(name)
-	 * @version 1.2
 	 * @param name : the name of the entity
 	 * @return A new instance of PancakeEntity
 	 */
@@ -37,7 +34,6 @@ public class PancakeEntity extends Entity {
 	/** 
 	 * Instantiation Constructor (used by exercises to setup the world) 
 	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
-	 * @version 1.2
 	 * @param name : the name of the entity
 	 * @param world : a world
 	 * @return A new instance of PancakeEntity
@@ -48,7 +44,6 @@ public class PancakeEntity extends Entity {
 
 	/** 
 	 * A copy method needed by the JLM
-	 * @version 1.2
 	 * @return a new PancakeEntity with the same name as the caller
 	 */
 	@Override
@@ -58,7 +53,6 @@ public class PancakeEntity extends Entity {
 
 	/**
 	 * Flip a certain amount of pancakes in the stack
-	 * @version 1.2
 	 * @param numberOfPancakes : the number of pancakes, 
 	 * 			beginning from the top of the stack, that you want to flip.
 	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or 
@@ -71,7 +65,6 @@ public class PancakeEntity extends Entity {
 
 	/**
 	 * Give the size of a specific pancake among others
-	 * @version 1.2
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The size of the expected pancake
 	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
@@ -82,7 +75,6 @@ public class PancakeEntity extends Entity {
 	
 	/**
 	 * Give the size of the stack of pancakes
-	 * @version 1.2
 	 * @return The number of pancakes in the stack
 	 */
 	public int getStackSize() {
@@ -91,7 +83,6 @@ public class PancakeEntity extends Entity {
 	
 	/**
 	 * Tell if a specific pancake, among others, is upside down
-	 * @version 1.2
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return If the specific pancake is upside down or not
 	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
@@ -101,7 +92,6 @@ public class PancakeEntity extends Entity {
 	}
 	
 	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
-	 * @version 1.2
 	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
 	@Override
@@ -109,9 +99,8 @@ public class PancakeEntity extends Entity {
 	}
 	
 	/**
-	 * Returns a string representation of the world.
-	 * @version 1.2
-	 * @return A string representation of the world.
+	 * Return a string representation of the world
+	 * @return A string representation of the world
 	 */
 	public String toString(){
 		return "PancakeEntity (" + this.getClass().getName() + ")";
