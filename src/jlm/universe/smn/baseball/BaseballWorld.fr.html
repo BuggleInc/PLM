@@ -1,0 +1,20 @@
+<h1>Baseball</h1>
+
+Ce monde implémente le jeu du baseball, dans lequel plusieurs joueurs tentent de regagner leur base. Les bases forment un cercle et ont chacune une couleur qui leur est propre. Il y a deux joueurs de chaque couleur pour chaque base, sauf une, qui n'a donc qu'un seul joueur dans son équipe.
+
+Il vous est demandé de réordonner les joueurs pour que leur couleur corresponde à celle de la base sur laquelle ils sont.
+Le seul mouvement autorisé est celui de l'un des deux joueurs de l'une des deux bases adjacentes à la base n'ayant qu'un seul joueur, qui peut donc boucher le trou de cette base et en créer un sur la base qu'il a quittée. 
+
+Seule trois fonctions sont fournies :
+
+<pre>void move(int base, int player)</pre>
+
+Déplace le joueur <code>player</code> de la base <code>base</code> vers le trou.
+
+<pre>int getHoleContainer()</pre>
+
+Renvoie l'indice de la base ne contenant qu'un seul joueur.
+
+<pre>int findMissingPlayer()</pre>
+
+Renvoie le numéro de l'emplacement de la base qui n'a pas de joueur.

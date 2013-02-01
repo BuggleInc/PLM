@@ -1,0 +1,19 @@
+<h1>Baseball</h1>
+
+This world implements the baseball game, in which several players want to go back to their bases. The bases make a circle and have their own colors. There are two players for one base, except one, which has only one player in its team.
+
+You are asked to make the players go on the bases which colors correspond to theirs. The only allowed move is for one of the two players standing on one of the two bases which are directly next to the base with only one player to move and fill the hole, leaving a new one on the base it just left.
+
+Only three functions are provided :
+
+<pre>void move(int base, int player)</pre>
+
+Move the player <code>player</code> from the base <code>base</code> to the hole.
+
+<pre>int getHoleContainer()</pre>
+
+Return the index of the base with only one player.
+
+<pre>int findMissingPlayer()</pre>
+
+Return the index of the missing player.
