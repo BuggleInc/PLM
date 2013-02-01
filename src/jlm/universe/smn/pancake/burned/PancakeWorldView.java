@@ -14,10 +14,13 @@ import jlm.universe.World;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
+ * @see PancakeWorld
+ * @see WorldView
  */
 public class PancakeWorldView extends WorldView {
 
 	private static final long serialVersionUID = 1L;
+	private boolean flipped; // Used in order to improve the visual of the flipping
 	
 	/**
 	 * Constructor of the class PancakeWorldView
@@ -25,6 +28,7 @@ public class PancakeWorldView extends WorldView {
 	 */
 	public PancakeWorldView(World w) {
 		super(w);
+		this.flipped=false;
 	}
 
 	/**
@@ -94,14 +98,24 @@ public class PancakeWorldView extends WorldView {
 		
 		int yArrow = Math.max(yTop, yBottom);
 	
-		g2.setColor(Color.red);
-		
+		Color colors[] = new Color[2];
+		if ( this.flipped)
+		{
+			colors[0]=Color.blue;
+			colors[1]=Color.red;
+		}
+		else
+		{
+			colors[0]=Color.red;
+			colors[1]=Color.blue;
+		}
+		g2.setColor(colors[0]);
 		g2.drawLine(xMax, yTop, renderedX, yTop);
 		drawArrow(g2,xMin,yTop,xMax,yTop);
-		
+		g2.setColor(colors[1]);
 		g2.drawLine(xMax, yArrow, renderedX, yArrow);
-		
 		drawArrow(g2,xMin,yArrow,xMax,yArrow);
+		this.flipped=!this.flipped;
 	}
 
 	
@@ -118,7 +132,7 @@ public class PancakeWorldView extends WorldView {
 		{
 			g2.setColor(Color.YELLOW);
 			g2.fill(new Rectangle2D.Double( xoffset-psize*5-3, 239-(8.*(pancakeNumber)),  psize*10+3, 5));
-			g2.setColor(new Color(91, 59, 17));
+			g2.setColor(new Color(91, 59, 17)); // it's brown
 			g2.fill(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 3));
 			g2.setColor(Color.black);
 			g2.draw(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 8));
@@ -127,7 +141,7 @@ public class PancakeWorldView extends WorldView {
 		{
 			g2.setColor(Color.YELLOW);
 			g2.fill(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 5));
-			g2.setColor(new Color(91, 59, 17));
+			g2.setColor(new Color(91, 59, 17)); // it's brown
 			g2.fill(new Rectangle2D.Double( xoffset-psize*5-3, 241-(8.*(pancakeNumber)),  psize*10+3, 3));
 			g2.setColor(Color.black);
 			g2.draw(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 8));
