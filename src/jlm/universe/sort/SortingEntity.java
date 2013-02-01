@@ -169,7 +169,7 @@ public class SortingEntity extends Entity {
 		stepUI();
 	}
 	public final void sorted(int i){
-		color[i] = Color.blue;
+		color[i] = Color.green;
 	}
 	
 	public int getWriteCount() {
