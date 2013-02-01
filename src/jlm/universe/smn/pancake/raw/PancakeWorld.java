@@ -8,6 +8,7 @@ import jlm.universe.World;
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
  * @see PancakesStack
+ * @see World
  */
 public class PancakeWorld extends World {
 
