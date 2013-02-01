@@ -67,7 +67,6 @@ public class SortingWorldChronoView extends WorldView {
 		synchronized (ent.values) {
 			//If the array is small enough, we print the values
 			boolean drawStr = ent.operations.size() <= 50 && ent.values.length <= 50;
-			
 			/* getWidth()-12 to keep the room to display the very left value */
 			float stepX = ((float)getWidth()-(drawStr?12:0)) / ((float)(Math.max(ent.operations.size(), 1)));
 			float stepY = ((float)getHeight()) / ((float)(ent.getValueCount()));
@@ -186,7 +185,6 @@ public class SortingWorldChronoView extends WorldView {
 				}
 				}
 			}
-
 		}
 	}
 	

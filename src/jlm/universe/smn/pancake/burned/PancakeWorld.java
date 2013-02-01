@@ -15,9 +15,9 @@ public class PancakeWorld extends World {
 	protected int lastModifiedPancake;
 	
 	/**
-	 * Constructor of the class WorldPancake
+	 * Constructor of the class PancakeWorld
 	 * @param name : the name of the world
-	 * @param amountOfPancakes : the amount of pancake in the stack
+	 * @param amountOfPancakes : the amount of pancakes in the stack
 	 * @param mixed : if the stack shall be mixed or not
 	 * @return A new PancakeWorld
 	 */
@@ -29,7 +29,7 @@ public class PancakeWorld extends World {
 	}
 	
 	/**
-	 * Constructor of the class WorldPancake
+	 * Constructor of the class PancakeWorld
 	 * @param world : a world
 	 * @return A new PancakeWorld
 	 */
@@ -59,7 +59,7 @@ public class PancakeWorld extends World {
 	
 	/**
 	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equals
+	 * @return If the two objects are equal
 	 * @param Object o: the reference object with which to compare
 	 */
 	public boolean equals(Object o) {
