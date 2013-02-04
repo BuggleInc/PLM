@@ -183,7 +183,7 @@ public class PancakeWorldView extends WorldView {
 	  	
 	/**
 	 * Draw the component of the world
-	 * @param g : some Graphics
+	 * @param g The Graphics2D context to draw on
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
