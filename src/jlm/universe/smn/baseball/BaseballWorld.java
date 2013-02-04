@@ -15,6 +15,16 @@ public class BaseballWorld extends World
 	
 	/**
 	 * Constructor of the class BaseballWorld
+	 * @param world : a world
+	 * @return A new BaseballWorld
+	 */
+	public BaseballWorld(BaseballWorld world)
+	{
+		super(world);
+	}
+
+	/**
+	 * Constructor of the class BaseballWorld
 	 * @param name : the name of the world
 	 * @param numberOfBases : the amount of bases in the field
 	 * @return A new BaseballWorld
@@ -23,18 +33,7 @@ public class BaseballWorld extends World
 	{
 		super(name);
 		setDelay(200); // Delay (in ms) in default animations
-		
 		this.field = BaseballField.create(numberOfBases);
-	}
-
-	/**
-	 * Constructor of the class BaseballWorld
-	 * @param world : a world
-	 * @return A new BaseballWorld
-	 */
-	public BaseballWorld(BaseballWorld world)
-	{
-		super(world);
 	}
 	
 	/**
@@ -78,6 +77,23 @@ public class BaseballWorld extends World
 	}
 	
 	/**
+	 * Give the index of the hole
+	 * @return the index of the hole
+	 */
+	public int findMissingPlayer() {
+		return this.field.findMissingPlayer();
+	}
+	
+	/**
+	 * Give the number of bases on your field
+	 * @return the number of bases on your field
+	 */
+	public int getAmountOfBases()
+	{
+		return this.field.getAmountOfBases();
+	}
+	
+	/**
 	 * Return the script except that must be injected within the environment before running user code 
 	 * It should pass all order to the java entity, which were injected independently  
 	 * @return  the script except that must be injected within the environment before running user code 
@@ -89,6 +105,15 @@ public class BaseballWorld extends World
 		throw new RuntimeException("No binding of BaseballWorld for "+lang);
 	}
 	
+	/**
+	 * Give the index of the base with only one player
+	 * @return the index of the base with only one player
+	 */
+	public int getHoleContainer()
+	{
+		return this.field.getHoleContainer();
+	}
+	
 	/** 
 	 * Return a component able of displaying the world
 	 * @return a component able of displaying the world
@@ -97,6 +122,25 @@ public class BaseballWorld extends World
 	public WorldView[] getView()
 	{
 		return new WorldView[] { new BaseballWorldView(this) } ;
+	}
+
+	/**
+	 * Tell if everyone is home
+	 * @return TRUE if the field is okay <br>FALSE else
+	 */
+	public boolean isSorted()
+	{
+		return this.field.isSorted();
+	}
+	
+	/**
+	 * Move a player to the hole
+	 * @param base : index of the base you want to pick a player
+	 * @param player : index (1 or 2) of the player in the base you want to move
+	 */
+	public void move(int base, int player)
+	{
+		this.field.move(base,player);
 	}
 	
 	/** 
@@ -110,7 +154,7 @@ public class BaseballWorld extends World
 		this.field = other.field.copy();
 		super.reset(world);		
 	}
-	
+
 	/**
 	 * Return a string representation of the world
 	 * @return A string representation of the world
@@ -123,41 +167,4 @@ public class BaseballWorld extends World
 		return sb.toString();
 	}
 	
-	/**
-	 * Tell if everyone is home
-	 * @return TRUE if the field is okay <br>FALSE else
-	 */
-	public boolean isSorted()
-	{
-		return this.field.isSorted();
-	}
-
-	/**
-	 * Move a player to the hole
-	 * @param base : index of the base you want to pick a player
-	 * @param player : index (1 or 2) of the player in the base you want to move
-	 * @param the player player from the base base will be moved to the hole
-	 */
-	public void move(int base, int player)
-	{
-		this.field.move(base,player);
-	}
-	
-	/**
-	 * Give the index of the base with only one player
-	 * @return the index of the base with only one player
-	 */
-	public int getHoleContainer()
-	{
-		return this.field.getHoleContainer();
-	}
-	
-	/**
-	 * Give the index of the hole
-	 * @return the index of the hole
-	 */
-	public int findMissingPlayer()
-	{	
-		return this.field.findMissingPlayer();
-	}
 }

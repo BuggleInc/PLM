@@ -51,18 +51,22 @@ public class BaseballEntity extends Entity
 		return new BaseballEntity(this.name);
 	}
 	
-	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
+	/**
+	 * Give the index of the hole
+	 * @return the index of the hole
 	 */
-	@Override
-	public void run(){
+	public int findMissingPlayer()
+	{	
+		return ((BaseballWorld) world).findMissingPlayer();
 	}
 	
 	/**
-	 * Return a string representation of the world
-	 * @return A string representation of the world
+	 * Give the index of the base with only one player
+	 * @return the index of the base with only one player
 	 */
-	public String toString(){
-		return "BaseballEntity (" + this.getClass().getName() + ")";
+	public int getHoleContainer()
+	{
+		return ((BaseballWorld) world).getHoleContainer();
 	}
 	
 	/**
@@ -77,21 +81,17 @@ public class BaseballEntity extends Entity
 		stepUI();
 	}
 	
-	/**
-	 * Give the index of the base with only one player
-	 * @return the index of the base with only one player
+	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
 	 */
-	public int getHoleContainer()
-	{
-		return ((BaseballWorld) world).getHoleContainer();
+	@Override
+	public void run(){
 	}
 	
 	/**
-	 * Give the index of the hole
-	 * @return the index of the hole
+	 * Return a string representation of the world
+	 * @return A string representation of the world
 	 */
-	public int findMissingPlayer()
-	{	
-		return ((BaseballWorld) world).findMissingPlayer();
+	public String toString(){
+		return "BaseballEntity (" + this.getClass().getName() + ")";
 	}
 }
