@@ -7,8 +7,6 @@ package jlm.universe.smn.pancake.burned;
  */
 public class PancakesStack {
 
-	private Pancake[] pancakeStack; // The stack of pancakes
-	
 	/**
 	 * Create a new stack of pancakes, which can be mixed or not
 	 * @param size : the size of the stack of pancakes 
@@ -22,6 +20,8 @@ public class PancakesStack {
 		}
 		return pancakesStack;
 	}
+	
+	private Pancake[] pancakeStack; // The stack of pancakes
 	
 	/**
 	 * Constructor of the class PancakesStack
@@ -104,6 +104,25 @@ public class PancakesStack {
 	}
 
 	/**
+	 * Search and fin the index of the biggest
+	 * pancake in the stack among the pancakes which are not sorted
+	 * @return the index of the biggest pancake among the not sorted pancake in the stack
+	 */
+	private int findBiggestPancake(int numberOfPancakesNotSorted) {
+		int indexBigPancake =-1;
+		boolean found = false;
+		for ( int j = 0 ; j < numberOfPancakesNotSorted && !found; j++)
+		{
+			if ( this.getPancake(j).getSize() == numberOfPancakesNotSorted)
+			{
+				indexBigPancake = j;	// gotcha !
+				found = true;
+			}
+		}
+		return indexBigPancake;
+	}
+
+	/**
 	 * Flip a certain amount of pancakes
 	 * @param numberOfPancakes : the number of pancakes, beginning from the top of the stack, that you want to flip.
 	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
@@ -149,7 +168,7 @@ public class PancakesStack {
 	public int getPancakeSize(int pancakeNumber){
 		return this.getPancake(pancakeNumber).getSize();
 	}
-
+	
 	/**
 	 * Give the size of the stack of pancakes
 	 * @return The number of pancakes in the stack
@@ -181,7 +200,7 @@ public class PancakesStack {
 		}
 		return stackSorted;
 	}
-	
+
 	/**
 	 * Mix the stack in order to screw the pancake seller
 	 */
@@ -206,7 +225,7 @@ public class PancakesStack {
 		}
 		return;
 	}
-
+	
 	/**
 	 * Place the given pancake at the given floor in the stack
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, where you want to place the pancake.
@@ -239,25 +258,6 @@ public class PancakesStack {
 				this.flip(this.getPancake(0).getSize());	// hit the bottom !
 			}	
 		}
-	}
-	
-	/**
-	 * Search and fin the index of the biggest
-	 * pancake in the stack among the pancakes which are not sorted
-	 * @return the index of the biggest pancake among the not sorted pancake in the stack
-	 */
-	private int findBiggestPancake(int numberOfPancakesNotSorted) {
-		int indexBigPancake =-1;
-		boolean found = false;
-		for ( int j = 0 ; j < numberOfPancakesNotSorted && !found; j++)
-		{
-			if ( this.getPancake(j).getSize() == numberOfPancakesNotSorted)
-			{
-				indexBigPancake = j;	// gotcha !
-				found = true;
-			}
-		}
-		return indexBigPancake;
 	}
 	
 	/**
