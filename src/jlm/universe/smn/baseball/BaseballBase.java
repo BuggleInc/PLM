@@ -7,9 +7,8 @@ package jlm.universe.smn.baseball;
 
 public class BaseballBase
 {
-	private BaseballPlayer player1;
-	private BaseballPlayer player2;
-	private int color;
+	private BaseballPlayer[] players; // the players on the base
+	private int color; // the color of the base
 	
 	/**
 	 * BaseballBase constructor
@@ -17,40 +16,34 @@ public class BaseballBase
 	 */
 	public BaseballBase(int color)
 	{
-		this.player1=new BaseballPlayer(0);
-		this.player2=new BaseballPlayer(0);
+		this.players=new BaseballPlayer[2];
+		this.players[0] = new BaseballPlayer(color);
+		this.players[1] = new BaseballPlayer(color);
 		this.color=color;
 	}
 	
 	/**
-	 * Getters and setters
+	 * Give the player one of the base
+	 * @return The player one
 	 */
-	
-	public void setPlayer1(BaseballPlayer player)
+	public BaseballPlayer getPlayerOne()
 	{
-		this.player1=player;
+		return this.players[0];
 	}
 	
-	public void setPlayer2(BaseballPlayer player)
+	/**
+	 * Give the player two of the base
+	 * @return The player two
+	 */
+	public BaseballPlayer getPlayerTwo()
 	{
-		this.player2=player;
+		return this.players[1];
 	}
 	
-	public void setColor(int color)
-	{
-		this.color=color;
-	}
-	
-	public BaseballPlayer getPlayer1()
-	{
-		return this.player1;
-	}
-	
-	public BaseballPlayer getPlayer2()
-	{
-		return this.player2;
-	}
-	
+	/**
+	 * Give the color ( in integer ) of the base
+	 * @return The integer corresponding to the color of the base
+	 */
 	public int getColor()
 	{
 		return this.color;
@@ -59,19 +52,27 @@ public class BaseballBase
 	/**
 	 * Indicate whether some other object is "equal to" this one
 	 * @return if the two objects are equals
-	 * @param base : the reference object with which to compare
+	 * @param o the reference object with which to compare
 	 * @return TRUE if the bases are the same <br>FALSE else
 	 */
-	public boolean equals(BaseballBase base)
+	public boolean equals(Object o)
 	{
-		boolean bool=true;
-		
-		if (this.getPlayer1().getColor() != base.getPlayer1().getColor()
-				|| this.getPlayer2().getColor() != base.getPlayer2().getColor()
+		boolean sw=true;
+		if (o == null || !(o instanceof BaseballBase) )
+		{
+			sw = false ;
+		}
+		else 
+		{
+			BaseballBase base = (BaseballBase) o;
+			if (this.getPlayerOne().getColor() != base.getPlayerOne().getColor()
+				|| this.getPlayerTwo().getColor() != base.getPlayerTwo().getColor()
 				|| this.getColor() != base.getColor())
-			bool = false;
-		
-		return bool;
+			{		
+				sw = false;
+			}
+		}
+		return sw;
 	}
 	
 	/**
@@ -82,8 +83,25 @@ public class BaseballBase
 	{
 		String s = "";
 		
-		s+="Player 1 : "+this.getPlayer1().getColor()+" ; Player 2 : "+this.getPlayer2().getColor();
+		s+="Player 1 : "+this.getPlayerOne().getColor()+" ; Player 2 : "+this.getPlayerTwo().getColor();
 		
 		return s;
 	}
+
+	/**
+	 * Place the given player at the first position in the base
+	 * @param baseballPlayer : the player that you want to place
+	 */
+	public void setPlayerOne(BaseballPlayer baseballPlayer) {
+		this.players[0]=baseballPlayer;
+	}
+
+	/**
+	 * Place the given player at the second position in the base
+	 * @param baseballPlayer : the player that you want to place
+	 */
+	public void setPlayerTwo(BaseballPlayer baseballPlayer) {
+		this.players[1]=baseballPlayer;
+	}
+
 }

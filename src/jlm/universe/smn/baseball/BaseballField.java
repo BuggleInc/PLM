@@ -5,9 +5,8 @@ package jlm.universe.smn.baseball;
  * @see BaseballBase
  * @see BaseballPlayer
  */
+public class BaseballField {
 
-public class BaseballField
-{
 	/**
 	 * Create a new baseball field
 	 * @param numberOfBases : number of bases you want in your field
@@ -15,14 +14,18 @@ public class BaseballField
 	 */
 	public static BaseballField create(int numberOfBases)
 	{
-		return new BaseballField(numberOfBases);
+		BaseballField field = new BaseballField(numberOfBases);
+		field.mix();
+		field.setHoleContainer(field.findMissingPlayer());
+		return field;
 	}
-	private BaseballBase[] bases;
 	
-	private int holeContainer;
-	
+	private BaseballBase[] bases; // the bases which composed the field
+
+	private int[] holeContainer; // the current location of the hole
+
 	/**
-	 * Baseballfield constructor
+	 * BaseballField constructor
 	 * @param numberOfBases : number of bases in your field
 	 */
 	private BaseballField(int numberOfBases)
@@ -47,36 +50,27 @@ public class BaseballField
 			this.bases[j]=new BaseballBase(j+1);
 		}
 		
-		int p = 0;
-		
-		// allocating the players to the bases
-		for (int k = 0 ; k < numberOfBases ; k++)
-		{
-			this.bases[k].setPlayer1(players[p]);
-			p++;
-			this.bases[k].setPlayer2(players[p]);
-			p++;
-		}
+		this.bases[numberOfBases-1].setPlayerOne(new BaseballPlayer(0));
 		
 		// initializing holeContainer
-		this.holeContainer = numberOfBases-1;
+		this.holeContainer = new int[2];
+		this.holeContainer[0] = numberOfBases-1;
+		this.holeContainer = this.findMissingPlayer();
 	}
 	
 	/**
 	 * Make a copy of the given object
 	 * @return A copy of the given object
 	 */
-	public BaseballField copy()
-	{
-		BaseballField field = new BaseballField(this.getAmountOfBases());
-		
-		for (int i = 0 ; i < this.getAmountOfBases() ; i++)
+	public BaseballField copy() {
+		BaseballField newField = new BaseballField(this.bases.length);
+		newField.holeContainer = this.holeContainer;
+		for ( int i = 0 ; i < this.bases.length ; i++ )
 		{
-			field.bases[i].setColor(this.bases[i].getColor());
-		}	
-		field.setHoleContainer(this.getHoleContainer());
-		
-		return field;
+			newField.bases[i].setPlayerOne(this.bases[i].getPlayerOne());
+			newField.bases[i].setPlayerTwo(this.bases[i].getPlayerTwo());
+		}
+		return newField;
 	}
 	
 	/**
@@ -85,19 +79,19 @@ public class BaseballField
 	 * @return A textual description of the differences between the caller and field
 	 */
 	public String diffTo(BaseballField field) {
-		String s="These two fieldes are identical";
+		String s="These two fields are identical";
 		if ( !this.equals(field))
 		{
 			int numberOfBases = this.getAmountOfBases();
 			int numberOfPlayers = this.getAmountOfBases()*2;
 			if ( numberOfBases != field.getAmountOfBases())
 			{
-				s = "The number of bases are different in the two fieldes ( "
+				s = "The number of bases are different in the two fields ( "
 						+numberOfBases+" vs "+field.getAmountOfBases()+" )";
 			}
 			else if ( numberOfPlayers != field.getAmountOfBases()*2)
 			{
-				s = "The number of players are different in the two fieldes ( "
+				s = "The number of players are different in the two fields ( "
 						+numberOfPlayers+" vs "+field.getAmountOfBases()*2+" )";
 			}
 			else
@@ -119,159 +113,136 @@ public class BaseballField
 	
 	/**
 	 * Indicate whether some other object is "equal to" this one
-	 * @return if the two objects are equals
-	 * @param field : the reference object with which to compare
-	 * @return TRUE if the fields are the same <br>FALSE else
+	 * @return If the two objects are equals
+	 * @param Object o: the reference object with which to compare
 	 */
-	public boolean equals(BaseballField field)
-	{
+	public boolean equals(Object o) {
 		boolean sw=true;
-		
-		if (this.getAmountOfBases()!=field.getAmountOfBases()
-				|| this.bases.length*2!=field.bases.length*2 )
+		if (o == null || !(o instanceof BaseballField) )
 		{
-			sw= false;
+			sw = false ;
 		}
 		else
 		{
-			for (int i = 0 ; i < this.getAmountOfBases() && sw ; i++)
+			BaseballField other = (BaseballField) o;
+			if ( this.holeContainer == other.holeContainer && this.bases.length == other.bases.length)
 			{
-				sw=this.getBase(i).equals(field.getBase(i));
+				for ( int i = 0 ; i< this.bases.length && sw ;i++ )
+				{
+					sw = this.bases[i].equals(other.bases[i]);
+				}
+			}
+			else
+			{
+				sw = false;
 			}
 		}
 		return sw;
 	}
 	
 	/**
-	 * Give the index of the hole
-	 * @return the index of the hole
+	 * Give the index of the hole and the index of the base with the hole
+	 * @return  the index of the hole and the index of the base with the hole
 	 */
-	public int findMissingPlayer()
-	{		
-		if (this.bases[this.getHoleContainer()].getPlayer1().getColor() == 0)
+	public int[] findMissingPlayer() {
+		int hole[] = new int[2];
+		hole[0] = this.holeContainer[0];
+		if ( this.bases[this.holeContainer[0]].getPlayerOne().getColor()==0)
 		{
-			return 1;
+			hole[1]=1;
 		}
 		else
 		{
-			return 2;
+			hole[1]=2;
 		}
+		return hole;
 	}
 	
 	/**
 	 * Give the number of bases on your field
 	 * @return the number of bases on your field
 	 */
-	public int getAmountOfBases()
-	{
+	public int getAmountOfBases() {
 		return this.bases.length;
 	}
 
 	/**
-	 * Give a base
-	 * @param i : the index of the base you want
-	 * @return the base with the index i
+	 * Give a specific base of the field
+	 * @return the wanted base
 	 */
-	public BaseballBase getBase(int i)
-	{
+	public BaseballBase getBase(int i) {
 		return this.bases[i];
 	}
 
 	/**
-	 * Give the index of the base with only one player
-	 * @return the index of the base with only one player
+	 * Return the index of the base which have only one player on the field
+	 * @return the index of the base which has only one player on the field
 	 */
-	public int getHoleContainer()
+	public int indexOfBaseWithOnePlayer()
 	{
-		return holeContainer;
-	}
-	
-
-	 
-	/**
-	 * Give a player
-	 * @param playerNumber : the index of the player that you want
-	 * @param baseIndex : the index of the base wanted
-	 * @return the player with the index i
-	 */
-	public BaseballPlayer getPlayer(int playerNumber, int baseIndex)
-	{
-		if ( playerNumber == 1 )
-		{
-			return bases[baseIndex].getPlayer1();
-		}
-		else
-		{
-			return bases[baseIndex].getPlayer2();
-		}
+		return this.bases.length-1;
 	}
 	
 	/**
-	 * Tell whether the players are on their own bases or not
-	 * @return whether the players are on their own bases or not
-	 * @return TRUE if the field is sorted <br>FALSE else
+	 * Tell if every player of the base is on the base
+	 * @return if every players of the base is on the base
+	 * @param baseIndex the index of the base that you want to check
 	 */
-	public boolean isSorted()
-	{
-	boolean sw = true;
-	boolean sw1 = false;
-	boolean sw2 = false;
-	
-	for ( BaseballBase b : this.bases)
-	{	  
-		if ( b.getPlayer1().getColor() != 0)
-			sw1 = b.getPlayer1().getColor() == b.getColor();
-		if ( b.getPlayer2().getColor() != 0)
-			sw2 = b.getPlayer2().getColor() == b.getColor();
-		
-		sw = sw1&&sw2;
-		if(!sw)
-	    return sw;
-	}
-	  return sw;
+	public boolean isBaseSorted(int baseIndex) {
+		boolean sw = true;
+		if ( baseIndex == this.bases.length-1 )		// it's the base with only one player
+		{
+			sw = ( this.bases[baseIndex].getPlayerOne().getColor() == 0 
+					&& this.bases[baseIndex].getPlayerTwo().getColor() == this.bases[baseIndex].getColor())
+				||( this.bases[baseIndex].getPlayerTwo().getColor() == 0 
+						&& this.bases[baseIndex].getPlayerOne().getColor() == this.bases[baseIndex].getColor()) ;
+		}
+		else	// it's a regular base
+		{
+			sw = ( this.bases[baseIndex].getPlayerOne().getColor() == this.bases[baseIndex].getColor() 
+					&& this.bases[baseIndex].getPlayerTwo().getColor() == this.bases[baseIndex].getColor())
+				;
+		}
+		return sw;
 	}
 
-	/**
-	 * Mix the players between the bases
+	/*
+	 * Mix the players between the different bases
 	 */
-	public void mix()
-	{
-		//mix the players
+	private void mix() {
 		do
-		{
-			for ( int i = 0 ; i < this.bases.length*10 ; i++ )
+		{		
+			for (int i = 0 ; i < this.bases.length;i++)
 			{
-				swap(i%this.bases.length,(int) (Math.random()*this.bases.length));
+				this.swap(this.bases[i],this.bases[(int) (Math.random()*this.bases.length)]);
 			}
 		}
 		while(this.isSorted());
-	  
-		// where is the hole now ?
-		boolean found = false;
-		
-		for (int i = 0 ; i <this.bases.length && found == false ; i++)
-		{
-			if (this.bases[i].getPlayer1().getColor() == 0
-					|| this.bases[i].getPlayer2().getColor() == 0)
-			{
-				this.setHoleContainer(i);
-				found = true;
-			}
-		}
 	}
-	
+
+	/**
+	 * Tell if every player of every base is on the right base
+	 * @return if every player of every base is on the right base
+	 */
+	private boolean isSorted() {
+		boolean sw = true;
+		for ( int i = 0 ; i < this.bases.length && sw ; i++ )
+		{
+			sw = this.isBaseSorted(i);
+		}
+		return sw;
+	}
+
 	/**
 	 * Move a player to the hole
 	 * @param base : index of the base where you want to pick a player
 	 * @param player : index (1 or 2) of the player in the base you want to move
 	 * @param the player player from the base base will be moved to the hole
+	 * @throws InvalidMoveException in case baseSrc is not near the hole
 	 */
-	public void move(int baseSrc, int player)
+	public void move(int baseSrc, int player) throws InvalidMoveException
 	{
-		int [] hole = new int[2];
-		
-		hole[0] = this.getHoleContainer();
-		hole[1] = this.findMissingPlayer();
+		int [] hole = this.findMissingPlayer();;
 		
 		// must work only if the bases are next to each other
 		if(hole[0] == baseSrc+1 || hole[0] == baseSrc-1
@@ -282,69 +253,75 @@ public class BaseballField
 			{
 				if (player == 1) 
 				{
-					this.bases[hole[0]].getPlayer1().setColor(this.bases[baseSrc].getPlayer1().getColor());
+					this.bases[hole[0]].getPlayerOne().setColor(this.bases[baseSrc].getPlayerOne().getColor());
 				}
 				else
 				{
-					this.bases[hole[0]].getPlayer1().setColor(this.bases[baseSrc].getPlayer2().getColor());
+					this.bases[hole[0]].getPlayerOne().setColor(this.bases[baseSrc].getPlayerTwo().getColor());
 				}
 			}
 			else
 			{
 				if (player == 1)
 				{
-					this.bases[hole[0]].getPlayer2().setColor(this.bases[baseSrc].getPlayer1().getColor());
+					this.bases[hole[0]].getPlayerTwo().setColor(this.bases[baseSrc].getPlayerOne().getColor());
 				}
 				else
 				{
-				this.bases[hole[0]].getPlayer2().setColor(this.bases[baseSrc].getPlayer2().getColor());
+				this.bases[hole[0]].getPlayerTwo().setColor(this.bases[baseSrc].getPlayerTwo().getColor());
 				}
 			}
 			if (player == 1) // faire une exception
 			{
-				this.bases[baseSrc].getPlayer1().setColor(0);
+				this.bases[baseSrc].getPlayerOne().setColor(0);
 			}
 			else if (player == 2)
 			{
-				this.bases[baseSrc].getPlayer2().setColor(0);
+				this.bases[baseSrc].getPlayerTwo().setColor(0);
 			}
+		}
+		else
+		{
+			throw new InvalidMoveException(baseSrc,player,this.holeContainer[0]);
 		}
 		
 		// setting new hole base
-		this.setHoleContainer(baseSrc);
+		this.setHoleContainer(this.findMissingPlayer());
+	}
+
+	/**
+	 * Replace the current holeContainer by hole
+	 * @param hole : the new holeContainer
+	 */
+	private void setHoleContainer(int[] hole) {
+		this.holeContainer = new int[hole.length];
+		for ( int i = 0 ; i < hole.length;i++)
+		{
+			this.holeContainer[i]=hole[i];
+		}
 	}
 	
 	/**
-	 * Set the index of the base with only one player
+	 * Swap two players from two bases
+	 * @param baseOne :the first base where you will pick a player
+	 * @param baseTwo :the second one
 	 */
-	public void setHoleContainer(int i)
-	{
-		this.holeContainer = i;
-	}
-	
-	/**
-	 * Swap two players
-	 * @param firstPlayer one of the players you want to swap
-	 * @param secondPlayer the other player you want to swap
-	 */
-	private void swap(int firstPlayer , int secondPlayer ) 
-	{
+	private void swap(BaseballBase baseOne, BaseballBase baseTwo) {
 		BaseballPlayer flyingMan = null;
-		if ( Math.random()<0.5)
-			if ( Math.random()<0.5)
-			{
-				flyingMan=this.bases[firstPlayer].getPlayer1();
-				this.bases[firstPlayer].setPlayer1(this.bases[secondPlayer].getPlayer1());
-				this.bases[secondPlayer].setPlayer1(flyingMan);
-			}
-			else
-			{
-				flyingMan=this.bases[firstPlayer].getPlayer2();
-				this.bases[firstPlayer].setPlayer2(this.bases[secondPlayer].getPlayer2());
-				this.bases[secondPlayer].setPlayer2(flyingMan);
-			}
+		if ( Math.random()>0.5)
+		{
+			flyingMan = baseOne.getPlayerOne();
+			baseOne.setPlayerOne(baseTwo.getPlayerTwo());
+			baseTwo.setPlayerTwo(flyingMan);
+		}
+		else
+		{
+			flyingMan = baseOne.getPlayerTwo();
+			baseOne.setPlayerTwo(baseTwo.getPlayerOne());
+			baseTwo.setPlayerOne(flyingMan);
+		}
 	}
-	
+
 	/**
 	 * Return a string representation of the field
 	 * @return A string representation of the field
@@ -357,10 +334,11 @@ public class BaseballField
 		{
 			s+="- Base "+i+"\n";
 			s+="  Color : "+this.bases[i].getColor()+"\n";
-			s+="  Player 1 : "+this.bases[i].getPlayer1().getColor()+"\n";
-			s+="  Player 2 : "+this.bases[i].getPlayer2().getColor()+"\n";
+			s+="  Player 1 : "+this.bases[i].getPlayerOne().getColor()+"\n";
+			s+="  Player 2 : "+this.bases[i].getPlayerTwo().getColor()+"\n";
 		}
-		
 		return s;
 	}
+	
+
 }

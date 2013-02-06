@@ -52,33 +52,62 @@ public class BaseballEntity extends Entity
 	}
 	
 	/**
-	 * Give the index of the hole
-	 * @return the index of the hole
+	 * Give the index of the hole and the index of the base with the hole
+	 * @return  the index of the hole and the index of the base with the hole
 	 */
-	public int findMissingPlayer()
+	public int[] findMissingPlayer()
 	{	
 		return ((BaseballWorld) world).findMissingPlayer();
 	}
 	
 	/**
-	 * Give the index of the base with only one player
-	 * @return the index of the base with only one player
+	 * Give the number of bases on your field
+	 * @return the number of bases on your field
 	 */
-	public int getHoleContainer()
+	public int getAmountOfBases()
 	{
-		return ((BaseballWorld) world).getHoleContainer();
+		return ((BaseballWorld) this.world).getAmountOfBases();
 	}
 	
 	/**
-	 * Move a player to the hole
-	 * @param base : index of the base you want to pick a player
-	 * @param player : index (1 or 2) of the player in the base you want to move
-	 * @param the player player from the base base will be moved to the hole
+	 * Tell if everyone is at home int base located at index
+	 * @param baseIndex the index of the base that we want to check
+	 * @return TRUE if the field is okay <br>FALSE else
 	 */
-	public void move(int base, int player)
+	public boolean isBaseSorted( int baseIndex)
 	{
-		((BaseballWorld) world).move(base,player);
+		return ((BaseballWorld) this.world).isBaseSorted(baseIndex);
+	}
+	
+	/**
+	 * Move the player one of baseSrc to the hole
+	 * @param base : index of the base you want to pick a player
+	 * @throws InvalidMoveException in case baseSrc is not near the hole
+	 */
+	public void movePlayerOne(int baseSrc) throws InvalidMoveException
+	{
+		((BaseballWorld) world).movePlayerOne(baseSrc);
 		stepUI();
+	}
+	
+	/**
+	 * Move the player two of baseSrc to the hole
+	 * @param base : index of the base you want to pick a player
+	 * @throws InvalidMoveException in case baseSrc is not near the hole 
+	 */
+	public void movePlayerTwo(int base) throws InvalidMoveException
+	{
+		((BaseballWorld) this.world).movePlayerTwo(base);
+		stepUI();
+	}
+	
+	/**
+	 * Return the index of the base which have only one player on the field
+	 * @return the index of the base which has only one player on the field
+	 */
+	public int indexOfBaseWithOnePlayer()
+	{
+		return ((BaseballWorld) this.world).indexOfBaseWithOnePlayer();
 	}
 	
 	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 

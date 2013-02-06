@@ -1,18 +1,15 @@
 package jlm.universe.smn.baseball;
 
-
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
  */
-
 public class BaseballPlayer
 {
 	private int color;
 
 	/**
 	 * BaseballPlayer constructor
-	 * @param color : the color of the player you are creating
-	 * @param 0 is for no color
+	 * @param color : the color of the player you are creating<br>0 is for no color
 	 */
 	public BaseballPlayer(int color)
 	{
@@ -20,14 +17,17 @@ public class BaseballPlayer
 	}
 	
 	/**
-	 * Getters and setters
+	 * Set the player's color at color
+	 * @param color : the wanted color
 	 */
-	
 	public void setColor(int color)
 	{
 		this.color=color;
 	}
 	
+	/**
+	 * Give the color of the player
+	 */
 	public int getColor()
 	{
 		return this.color;
