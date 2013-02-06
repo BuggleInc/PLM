@@ -18,7 +18,7 @@ public class BurnedPancakePlate extends ExerciseTemplated {
 	public BurnedPancakePlate(Lesson lesson) {
 		super(lesson);
 		
-		// addProgLanguage(Game.PYTHON);
+		addProgLanguage(Game.PYTHON);
 		
 		PancakeWorld plate[] = new PancakeWorld[4];
 		plate[0]= new PancakeWorld("5 pancakes",5,true);
