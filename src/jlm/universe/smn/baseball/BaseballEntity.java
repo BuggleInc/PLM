@@ -51,13 +51,22 @@ public class BaseballEntity extends Entity
 		return new BaseballEntity(this.name);
 	}
 	
+	public int getPlayerColor(int baseIndex, int playerLocation) {
+		return ((BaseballWorld) world).getPlayerColor(baseIndex,playerLocation);
+	}
+	
+	public int getBaseColor( int baseIndex)
+	{
+		return  ((BaseballWorld) world).getBaseColor(baseIndex);
+	}
+	
 	/**
 	 * Give the index of the hole and the index of the base with the hole
 	 * @return  the index of the hole and the index of the base with the hole
 	 */
-	public int[] findMissingPlayer()
+	public int[] getHolePosition()
 	{	
-		return ((BaseballWorld) world).findMissingPlayer();
+		return ((BaseballWorld) world).getHolePosition();
 	}
 	
 	/**
@@ -70,7 +79,7 @@ public class BaseballEntity extends Entity
 	}
 	
 	/**
-	 * Tell if everyone is at home int base located at index
+	 * Tell if the base at baseIndex is sorted
 	 * @param baseIndex the index of the base that we want to check
 	 * @return TRUE if the field is okay <br>FALSE else
 	 */
@@ -78,26 +87,17 @@ public class BaseballEntity extends Entity
 	{
 		return ((BaseballWorld) this.world).isBaseSorted(baseIndex);
 	}
+
 	
 	/**
-	 * Move the player one of baseSrc to the hole
-	 * @param base : index of the base you want to pick a player
-	 * @throws InvalidMoveException in case baseSrc is not near the hole
-	 */
-	public void movePlayerOne(int baseSrc) throws InvalidMoveException
-	{
-		((BaseballWorld) world).movePlayerOne(baseSrc);
-		stepUI();
-	}
-	
-	/**
-	 * Move the player two of baseSrc to the hole
-	 * @param base : index of the base you want to pick a player
+	 * Move the player playerSrc of baseSrc to the hole
+	 * @param baseSrc : index of the base you want to pick a player
+	 * @param playerSrc : index of the player that you want to pick
 	 * @throws InvalidMoveException in case baseSrc is not near the hole 
 	 */
-	public void movePlayerTwo(int base) throws InvalidMoveException
+	public void move(int baseSrc, int playerSrc) throws InvalidMoveException
 	{
-		((BaseballWorld) this.world).movePlayerTwo(base);
+		((BaseballWorld) this.world).move(baseSrc,playerSrc);
 		stepUI();
 	}
 	
@@ -110,10 +110,11 @@ public class BaseballEntity extends Entity
 		return ((BaseballWorld) this.world).indexOfBaseWithOnePlayer();
 	}
 	
-	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
+	/** 
+	 * Must exist so that exercises can instantiate the entity (Entity is abstract) 
 	 */
 	@Override
-	public void run(){
+	public void run() {
 	}
 	
 	/**

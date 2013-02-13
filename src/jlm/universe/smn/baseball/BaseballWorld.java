@@ -79,8 +79,8 @@ public class BaseballWorld extends World
 	 * Give the index of the hole and the index of the base with the hole
 	 * @return  the index of the hole and the index of the base with the hole
 	 */
-	public int[] findMissingPlayer() {
-		return this.field.findMissingPlayer();
+	public int[] getHolePosition() {
+		return this.field.getHolePosition();
 	}
 	
 	/**
@@ -132,23 +132,14 @@ public class BaseballWorld extends World
 	}
 	
 	/**
-	 * Move the player one of baseSrc to the hole
-	 * @param base : index of the base you want to pick a player
-	 * @throws InvalidMoveException in case baseSrc is not near the hole
+	 * Move the player playerSrc of baseSrc to the hole
+	 * @param baseSrc : index of the base you want to pick a player
+	 * @param PlayerSrc : index of the base you want to pick a player
+	 * @throws InvalidMoveException in case baseSrc is not near the hole 
 	 */
-	public void movePlayerOne(int baseSrc) throws InvalidMoveException
+	public void move(int baseSrc, int playerSrc) throws InvalidMoveException
 	{
-		this.field.move(baseSrc, 1);
-	}
-
-	/**
-	 * Move the player two of baseSrc to the hole
-	 * @param base : index of the base you want to pick a player
-	 * @throws InvalidMoveException in case baseSrc is not near the hole
-	 */
-	public void movePlayerTwo(int baseSrc) throws InvalidMoveException
-	{
-		this.field.move(baseSrc, 2);
+		this.field.move(baseSrc, playerSrc);
 	}
 	
 	/** 
@@ -172,6 +163,14 @@ public class BaseballWorld extends World
 		sb.append("BaseballWorld "+getName()+": ");
 		sb.append(this.field.toString());
 		return sb.toString();
-	}
+	}	
 	
+	public int getPlayerColor(int baseIndex, int playerLocation) {
+		return this.field.getPlayerColor(baseIndex,playerLocation);
+	}
+
+	public int getBaseColor(int baseIndex) {
+		return this.field.getBaseColor(baseIndex);
+	}
+
 }

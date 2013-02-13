@@ -22,24 +22,7 @@ public class BaseballBase
 		this.color=color;
 	}
 	
-	/**
-	 * Give the player one of the base
-	 * @return The player one
-	 */
-	public BaseballPlayer getPlayerOne()
-	{
-		return this.players[0];
-	}
-	
-	/**
-	 * Give the player two of the base
-	 * @return The player two
-	 */
-	public BaseballPlayer getPlayerTwo()
-	{
-		return this.players[1];
-	}
-	
+
 	/**
 	 * Give the color ( in integer ) of the base
 	 * @return The integer corresponding to the color of the base
@@ -65,8 +48,8 @@ public class BaseballBase
 		else 
 		{
 			BaseballBase base = (BaseballBase) o;
-			if (this.getPlayerOne().getColor() != base.getPlayerOne().getColor()
-				|| this.getPlayerTwo().getColor() != base.getPlayerTwo().getColor()
+			if (this.getPlayer(0).getColor() != base.getPlayer(0).getColor()
+				|| this.getPlayer(1).getColor() != base.getPlayer(1).getColor()
 				|| this.getColor() != base.getColor())
 			{		
 				sw = false;
@@ -83,25 +66,34 @@ public class BaseballBase
 	{
 		String s = "";
 		
-		s+="Player 1 : "+this.getPlayerOne().getColor()+" ; Player 2 : "+this.getPlayerTwo().getColor();
+		s+="Player 1 : "+this.getPlayer(0).getColor()+" ; Player 2 : "+this.getPlayer(1).getColor();
 		
 		return s;
 	}
 
-	/**
-	 * Place the given player at the first position in the base
-	 * @param baseballPlayer : the player that you want to place
-	 */
-	public void setPlayerOne(BaseballPlayer baseballPlayer) {
-		this.players[0]=baseballPlayer;
-	}
 
 	/**
-	 * Place the given player at the second position in the base
-	 * @param baseballPlayer : the player that you want to place
+	 * Give the wanted player of the base
+	 * @return The player wanted
+	 * @param the index of the player
 	 */
-	public void setPlayerTwo(BaseballPlayer baseballPlayer) {
-		this.players[1]=baseballPlayer;
+	public BaseballPlayer getPlayer(int player) {
+		return this.players[player];
+	}
+
+
+	/**
+	 * Place the given baseballPlayer at the position player in the base
+	 * @param baseballPlayer : the player that you want to place
+	 * @param position : the position where you want to place the player
+	 */
+	public void setPlayer(int position, BaseballPlayer baseballPlayer) {
+		this.players[position] = baseballPlayer;
+	}
+
+
+	public int getPlayerColor(int playerLocation) {
+		return this.players[playerLocation].getColor();
 	}
 
 }

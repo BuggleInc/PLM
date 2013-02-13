@@ -91,7 +91,7 @@ public class BaseballWorldView extends WorldView
 		centerPlayerOne[0] = (int) (x+r*Math.cos(theta)-(L/2)*Math.sin(theta)); // x coordinate of the center of the disk representing player one
 		centerPlayerOne[1] = (int) (y-((L/2)*Math.cos(theta)+r*Math.sin(theta))); // y coordinate of the center of the disk representing player one
 		  
-		Color colorPlayerOne = obtainColor(base.getPlayerOne().getColor());
+		Color colorPlayerOne = obtainColor(base.getPlayer(0).getColor());
 		drawDisk(g, centerPlayerOne, radius, colorPlayerOne);
 		  
 		// draw Player Two
@@ -100,7 +100,7 @@ public class BaseballWorldView extends WorldView
 		centerPlayerTwo[0] = (int) (x+r*Math.cos(theta)+(L/2)*Math.sin(theta)); // x coordinate of the center of the disk representing player two
 		centerPlayerTwo[1] = (int) (y-(-(L/2)*Math.cos(theta)+r*Math.sin(theta))); // y coordinate of the center of the disk representing player two
 		
-		Color colorPlayerTwo = obtainColor(base.getPlayerTwo().getColor());
+		Color colorPlayerTwo = obtainColor(base.getPlayer(1).getColor());
 		drawDisk(g, centerPlayerTwo, radius, colorPlayerTwo);
 	}
 
@@ -169,16 +169,16 @@ public class BaseballWorldView extends WorldView
 			colorSent = Color.BLUE;
 			break;
 		case 3:
-			colorSent = new Color(204,204,255); // pervenche
+			colorSent = Color.YELLOW;
 			break;
 		case 4:
-			colorSent =  new Color(255,73,1); // feu
-			break;
-		case 5:
 			colorSent = new Color(158,253,56); // vert lime
 			break;
+		case 5:
+			colorSent =  new Color(255,73,1); // feu
+						break;
 		case 6:
-			colorSent = Color.YELLOW;
+			colorSent = new Color(204,204,255); // pervenche
 			break;
 		case 7:
 			colorSent = new Color(230,126,48); // abricot
