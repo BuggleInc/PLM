@@ -18,10 +18,10 @@ public class BaseballGame extends ExerciseTemplated {
 		super(lesson);
 		
 		//addProgLanguage(Game.PYTHON);
-		
+	
 		BaseballWorld sets[] = new BaseballWorld[3];
 		
-		sets[0]= new BaseballWorld("5 bases",5);
+		sets[0]= new BaseballWorld("4 bases",4);
 		sets[1]= new BaseballWorld("10 bases",10);
 		sets[2]= new BaseballWorld("15 bases",15);
 		
@@ -29,6 +29,7 @@ public class BaseballGame extends ExerciseTemplated {
 		{
 			new BaseballEntity("Baseball Player",sets[i]);
 		}
+		
 		setup(sets);
 	}
 
