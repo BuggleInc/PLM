@@ -21,6 +21,7 @@ public class BaseballField
 	
 	private BaseballBase[] bases; // the bases which composed the field
 	private int[] holeContainer; // the current location of the hole
+	private BaseballMove lastMove;
 
 	/**
 	 * BaseballField constructor
@@ -54,6 +55,8 @@ public class BaseballField
 		this.holeContainer = new int[2];
 		this.holeContainer[0] = this.bases.length-1;
 		this.holeContainer[1] = 1;
+		
+		this.setLastMove(null);
 	}
 	
 	/**
@@ -140,6 +143,36 @@ public class BaseballField
 	}
 	
 	/**
+	 * Give the number of bases on your field
+	 * @return the number of bases on your field
+	 */
+	public int getAmountOfBases() {
+		return this.bases.length;
+	}
+	
+	/**
+	 * Give a specific base of the field
+	 * @return the wanted base
+	 */
+	public BaseballBase getBase(int i) {
+		return this.bases[i];
+	}
+
+	/**
+	 * Return the color of the base located at baseIndex
+	 * @param baseIndex the index of the wanted base
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
+	 */
+	public int getBaseColor(int baseIndex) throws InvalidPositionException {
+		if ( baseIndex < 0 || baseIndex>= this.bases.length)
+		{
+			throw new InvalidPositionException("getBaseColor: you ask for a base "+baseIndex+" which isn't in the range 0 to getAmountOfBases()-1.");
+		}
+		return this.bases[baseIndex].getColor();
+	}
+
+	/**
 	 * Give the index of the hole and the index of the base with the hole
 	 * @return  the index of the hole and the index of the base with the hole
 	 */
@@ -172,19 +205,22 @@ public class BaseballField
 	}
 	
 	/**
-	 * Give the number of bases on your field
-	 * @return the number of bases on your field
+	 * Return the last move made on the field
+	 * @return the last move made on the field
 	 */
-	public int getAmountOfBases() {
-		return this.bases.length;
+	public BaseballMove getLastMove() {
+		return lastMove;
 	}
 
 	/**
-	 * Give a specific base of the field
-	 * @return the wanted base
+	 * Return the color of the player in base baseIndex at position playerLocation
+	 * @param baseIndex the index of the wanted base
+	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
 	 */
-	public BaseballBase getBase(int i) {
-		return this.bases[i];
+	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
+		return this.bases[baseIndex].getPlayerColor(playerLocation);
 	}
 
 	/**
@@ -195,7 +231,7 @@ public class BaseballField
 	{
 		return this.bases.length-1;
 	}
-	
+
 	/**
 	 * Tell if every player of the base is on the base
 	 * @return if every players of the base is on the base
@@ -223,6 +259,19 @@ public class BaseballField
 		return sw;
 	}
 
+	/**
+	 * Tell if every player of every base is on the right base
+	 * @return if every player of every base is on the right base
+	 */
+	private boolean isSorted() {
+		boolean sw = true;
+		for ( int i = 0 ; i < this.bases.length && sw ; i++ )
+		{
+			sw = this.isBaseSorted(i);
+		}
+		return sw;
+	}
+	
 	/*
 	 * Mix the players between the different bases
 	 */
@@ -236,19 +285,6 @@ public class BaseballField
 		}
 		while(this.isSorted());
 		this.setHoleContainer(this.getHolePosition());
-	}
-
-	/**
-	 * Tell if every player of every base is on the right base
-	 * @return if every player of every base is on the right base
-	 */
-	private boolean isSorted() {
-		boolean sw = true;
-		for ( int i = 0 ; i < this.bases.length && sw ; i++ )
-		{
-			sw = this.isBaseSorted(i);
-		}
-		return sw;
 	}
 
 	/**
@@ -276,14 +312,31 @@ public class BaseballField
 				|| this.holeContainer[0] == indexBaseSrc
 				)
 		{
+			try
+			{
+				this.setLastMove(new BaseballMove(indexBaseSrc, playerLocation, this.holeContainer[0], this.holeContainer[1], this.getPlayerColor(indexBaseSrc, playerLocation)));
+			}
+			catch (InvalidPositionException ipe)
+			{
+				System.out.println("Unexepected InvalidPositionException in move");
+			}
 			swap(indexBaseSrc, playerLocation, this.holeContainer[0], this.holeContainer[1]);
 			this.holeContainer[0]=indexBaseSrc;
 			this.holeContainer[1]=playerLocation;
+			
 		}
 		else
 		{
 			throw new InvalidMoveException("The player "+playerLocation+" from base "+indexBaseSrc+" can't move to base "+this.holeContainer[0]+" since it's a lazy guy and he doesn't want to travel more than one base at once");
 		}
+	}
+
+	/**
+	 * Replace the current last move by baseballMove
+	 * @param baseballMove : the new last move
+	 */
+	private void setLastMove(BaseballMove baseballMove) {
+		this.lastMove = baseballMove;
 	}
 
 	/**
@@ -297,9 +350,13 @@ public class BaseballField
 			this.holeContainer[i]=hole[i];
 		}
 	}
-	
+
 	/**
 	 * Swap two players from two bases
+	 * @param indexBaseSrc : the index of the source base
+	 * @param playerSrc : the position of the player that you want to move from the source base
+	 * @param indexBaseDst : the index of the destination base
+	 * @param playerDst : the position of the player that you want to move from the destination base
 	 */
 	private void swap(int indexBaseSrc, int playerSrc, int indexBaseDst, int playerDst) {
 		BaseballPlayer flyingMan = this.bases[indexBaseSrc].getPlayer(playerSrc);
@@ -325,31 +382,7 @@ public class BaseballField
 		return s;
 	}
 
-	/**
-	 * Return the color of the player in base baseIndex at position playerLocation
-	 * @param baseIndex the index of the wanted base
-	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
-	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
-	 */
-	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
-		return this.bases[baseIndex].getPlayerColor(playerLocation);
-	}
 
-	/**
-	 * Return the color of the base located at baseIndex
-	 * @param baseIndex the index of the wanted base
-	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
-	 */
-	public int getBaseColor(int baseIndex) throws InvalidPositionException {
-		if ( baseIndex < 0 || baseIndex>= this.bases.length)
-		{
-			throw new InvalidPositionException("getBaseColor: you ask for a base "+baseIndex+" which isn't in the range 0 to getAmountOfBases()-1.");
-		}
-		return this.bases[baseIndex].getColor();
-	}
-	
 
 	
 

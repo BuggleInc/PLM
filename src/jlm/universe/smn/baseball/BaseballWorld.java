@@ -186,4 +186,12 @@ public class BaseballWorld extends World
 		return this.field.getBaseColor(baseIndex);
 	}
 
+	/**
+	 * Return the last move made on the field
+	 * @return the last move made on the field
+	 */
+	public BaseballMove getLastMove() {
+		return this.field.getLastMove();
+	}
+
 }

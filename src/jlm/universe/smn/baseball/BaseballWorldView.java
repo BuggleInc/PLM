@@ -1,9 +1,12 @@
 package jlm.universe.smn.baseball;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Stroke;
+import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
@@ -58,11 +61,15 @@ public class BaseballWorldView extends WorldView
 		BaseballWorld myWorld = (BaseballWorld) this.world ;
 		int amountOfBases = myWorld.getAmountOfBases();
 		double theta = 2*Math.PI / amountOfBases;
+		int L = Math.max(3*(20-amountOfBases),10); // adapting the size of the base to the total amount of bases
+		radius+=amountOfBases-5; // adapting the position of the base to the total amount of bases
 		
 		for ( int i=0 ; i < myWorld.getAmountOfBases();i++)
 		{
-			drawBase(g2, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , myWorld.field.getBase(i),amountOfBases);
+			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , myWorld.field.getBase(i),amountOfBases);
 		}
+		
+		drawLastMove(g2, myWorld.getLastMove(), radius-L/2-3, theta, renderedX/2, renderedY/2, L);
 	}
 	
 	/**
@@ -75,15 +82,12 @@ public class BaseballWorldView extends WorldView
 	 * @param base the base that we want to draw
 	 * @param amountOfBases the total amount of bases in the field
 	 */
-	private void drawBase(Graphics2D g, int r, double theta, int x, int y, BaseballBase base,int amountOfBases) {
-		
-		int L = Math.max(3*(20-amountOfBases),10); // adapting the size of the base to the total amount of bases
-		r+=amountOfBases-5; // adapting the position of the base to the total amount of bases
+	private void drawBase(Graphics2D g, int L, int r, double theta, int x, int y, BaseballBase base,int amountOfBases) {
 		
 		// draw the base
 		drawRectangle(g,r,theta,x,y,obtainColor(base.getColor()),L);
 		
-		int radius = L/2-2; // the radius of the disk
+		int radius = L/2-2; // the radius of the disk representing the player
 		
 		//draw PlayerOne as a disc
 		int centerPlayerOne[] = new int[2]; 
@@ -151,10 +155,63 @@ public class BaseballWorldView extends WorldView
 	
 	/**
 	 * Draw an arrow which represent the last movement
-	 * @see http://manu.kegtux.org/Java/Tutoriels/AWT/Graphisme2D.html
-	 * 
+	 * @param g The Graphics2D context to draw on
+	 * @param move The baseball move that we want to draw
+	 * @param radius The distance between the center of the screen and end of the line
+	 * @param theta The default angle between two bases
+	 * @param xControl The center of the screen in x-axis
+	 * @param yControl The center of the screen in y-axis
+	 * @param L A coefficient which adapt the length of the arrow to the total amount of bases
 	 */
-	private void drawMovement(){;}
+	private void drawLastMove(Graphics2D g, BaseballMove move, int radius, double theta, double xControl, double yControl , int L){
+		if ( move != null)
+		{
+			Stroke s = g.getStroke();
+			double xBegin = 0 ;
+			double yBegin = 0 ;
+			double xEnd = 0 ;
+			double yEnd = 0 ;
+			double thetaBegin = move.getBaseSrc() * theta ;
+			double thetaEnd = move.getBaseDst() * theta ;
+			
+			g.setColor(obtainColor(move.getPlayerColor()));
+			g.setStroke(new BasicStroke(
+					3.0f,						// Width
+					BasicStroke.CAP_ROUND,		// End cap
+                    BasicStroke.JOIN_BEVEL,		// Join style
+                    10.0f,						// Miter limit
+                    new float[] {5.0f,5.0f},	// Dash pattern
+                    0.0f						// Dash phase
+                    ));
+			if ( move.getPlayerSrc() == 0)
+			{
+				xBegin = xControl+radius*Math.cos(thetaBegin)-(L/2)*Math.sin(thetaBegin);
+				yBegin = yControl-((L/2)*Math.cos(thetaBegin)+radius*Math.sin(thetaBegin));
+				thetaBegin -= theta/4;
+			}
+			else
+			{
+				xBegin = xControl+radius*Math.cos(thetaBegin)+(L/2)*Math.sin(thetaBegin);
+				yBegin = yControl-(-(L/2)*Math.cos(thetaBegin)+radius*Math.sin(thetaBegin)) ;
+				thetaBegin += theta/4;
+			}
+			if ( move.getPlayerDst() == 0)
+			{
+				xEnd = xControl+radius*Math.cos(thetaEnd)-(L/2)*Math.sin(thetaEnd);;
+				yEnd = yControl-((L/2)*Math.cos(thetaEnd)+radius*Math.sin(thetaEnd));
+				thetaEnd -= theta/4;
+			}
+			else
+			{
+				xEnd = xControl+radius*Math.cos(thetaEnd)+(L/2)*Math.sin(thetaEnd);
+				yEnd = yControl-(-(L/2)*Math.cos(thetaEnd)+radius*Math.sin(thetaEnd)) ;
+				thetaEnd += theta/4;
+			}
+			
+			g.draw(new QuadCurve2D.Double(xBegin, yBegin, xControl, yControl, xEnd, yEnd));
+			g.setStroke(s);
+		}
+	}
 	
 	/**
 	 * Return the color corresponding to colorIndex
