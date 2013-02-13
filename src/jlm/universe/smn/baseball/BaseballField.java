@@ -144,20 +144,29 @@ public class BaseballField
 	 * @return  the index of the hole and the index of the base with the hole
 	 */
 	public int[] getHolePosition() {
-		int hole[] = new int[2];
+		
+
+		 int hole[] = new int[2];
 		int n = this.getAmountOfBases();
 		boolean found = false;
-		for ( int i = 0 ; i < n && !found ; i++)
+		try 
 		{
-			for ( int j = 0 ; j < 2 && !found; j++)
+			for ( int i = 0 ; i < n && !found ; i++)
 			{
-				if ( this.bases[i].getPlayerColor(j)==0)
+				for ( int j = 0 ; j < 2 && !found; j++)
 				{
-					found = true;
-					hole[0] = i;
-					hole[1] = j;
-				}
-			}
+					if ( this.bases[i].getPlayerColor(j)==0)
+					{
+						found = true;
+						hole[0] = i;
+						hole[1] = j;
+					}
+				}	
+			}	
+		}
+		catch ( InvalidPositionException ipe)
+		{
+			System.out.println("Unexpected InvalidPositionException in getHolePosition: "+ipe.getMessage());
 		}
 		return hole;
 	}
@@ -316,11 +325,28 @@ public class BaseballField
 		return s;
 	}
 
-	public int getPlayerColor(int baseIndex, int playerLocation) {
+	/**
+	 * Return the color of the player in base baseIndex at position playerLocation
+	 * @param baseIndex the index of the wanted base
+	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
+	 */
+	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
 		return this.bases[baseIndex].getPlayerColor(playerLocation);
 	}
 
-	public int getBaseColor(int baseIndex) {
+	/**
+	 * Return the color of the base located at baseIndex
+	 * @param baseIndex the index of the wanted base
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
+	 */
+	public int getBaseColor(int baseIndex) throws InvalidPositionException {
+		if ( baseIndex < 0 || baseIndex>= this.bases.length)
+		{
+			throw new InvalidPositionException("getBaseColor: you ask for a base "+baseIndex+" which isn't in the range 0 to getAmountOfBases()-1.");
+		}
 		return this.bases[baseIndex].getColor();
 	}
 	

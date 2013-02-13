@@ -51,11 +51,22 @@ public class BaseballEntity extends Entity
 		return new BaseballEntity(this.name);
 	}
 	
-	public int getPlayerColor(int baseIndex, int playerLocation) {
-		return ((BaseballWorld) world).getPlayerColor(baseIndex,playerLocation);
+	/**
+	 * Give the number of bases on your field
+	 * @return the number of bases on your field
+	 */
+	public int getAmountOfBases()
+	{
+		return ((BaseballWorld) this.world).getAmountOfBases();
 	}
 	
-	public int getBaseColor( int baseIndex)
+	/**
+	 * Return the color of the base located at baseIndex
+	 * @param baseIndex the index of the wanted base
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
+	 */
+	public int getBaseColor( int baseIndex) throws InvalidPositionException
 	{
 		return  ((BaseballWorld) world).getBaseColor(baseIndex);
 	}
@@ -70,13 +81,25 @@ public class BaseballEntity extends Entity
 	}
 	
 	/**
-	 * Give the number of bases on your field
-	 * @return the number of bases on your field
+	 * Return the color of the player in base baseIndex at position playerLocation
+	 * @param baseIndex the index of the wanted base
+	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
 	 */
-	public int getAmountOfBases()
-	{
-		return ((BaseballWorld) this.world).getAmountOfBases();
+	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
+		return ((BaseballWorld) world).getPlayerColor(baseIndex,playerLocation);
 	}
+	
+	/**
+	 * Return the index of the base which have only one player on the field
+	 * @return the index of the base which has only one player on the field
+	 */
+	public int indexOfBaseWithOnePlayer()
+	{
+		return ((BaseballWorld) this.world).indexOfBaseWithOnePlayer();
+	}
+
 	
 	/**
 	 * Tell if the base at baseIndex is sorted
@@ -87,7 +110,6 @@ public class BaseballEntity extends Entity
 	{
 		return ((BaseballWorld) this.world).isBaseSorted(baseIndex);
 	}
-
 	
 	/**
 	 * Move the player playerSrc of baseSrc to the hole
@@ -99,15 +121,6 @@ public class BaseballEntity extends Entity
 	{
 		((BaseballWorld) this.world).move(baseSrc,playerSrc);
 		stepUI();
-	}
-	
-	/**
-	 * Return the index of the base which have only one player on the field
-	 * @return the index of the base which has only one player on the field
-	 */
-	public int indexOfBaseWithOnePlayer()
-	{
-		return ((BaseballWorld) this.world).indexOfBaseWithOnePlayer();
 	}
 	
 	/** 

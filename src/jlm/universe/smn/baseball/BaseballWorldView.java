@@ -150,6 +150,13 @@ public class BaseballWorldView extends WorldView
 	}
 	
 	/**
+	 * Draw an arrow which represent the last movement
+	 * @see http://manu.kegtux.org/Java/Tutoriels/AWT/Graphisme2D.html
+	 * 
+	 */
+	private void drawMovement(){;}
+	
+	/**
 	 * Return the color corresponding to colorIndex
 	 * ( from : http://fr.wikipedia.org/wiki/Liste_de_couleurs )
 	 * @param colorIndex a 

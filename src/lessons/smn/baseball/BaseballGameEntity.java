@@ -1,6 +1,7 @@
 package lessons.smn.baseball;
 
 import jlm.universe.smn.baseball.BaseballEntity;
+import jlm.universe.smn.baseball.InvalidPositionException;
 //import jlm.universe.smn.baseball.BaseballWorld;
 import jlm.universe.smn.baseball.InvalidMoveException;
 
@@ -19,10 +20,14 @@ public class BaseballGameEntity extends BaseballEntity {
 		{
 			System.out.println(this.world.getName() +" :"+ime.getMessage());
 		}
+		catch( InvalidPositionException ipe)
+		{
+			System.out.println(this.world.getName() +" :"+ipe.getMessage());
+		}
 	}
 	
 	/* BEGIN TEMPLATE */
-	private void homerun() throws InvalidMoveException {
+	private void homerun() throws InvalidMoveException, InvalidPositionException {
 		int amountOfBases = this.getAmountOfBases()-1;
 		for ( int baseIndex = 0 ; baseIndex < amountOfBases ; baseIndex++)
 		{
@@ -33,7 +38,7 @@ public class BaseballGameEntity extends BaseballEntity {
 		}
 	}
 	
-	private void solve(int baseIndex) throws InvalidMoveException{
+	private void solve(int baseIndex) throws InvalidMoveException, InvalidPositionException{
 		/* BEGIN SOLUTION */
 		int colorWanted = this.getBaseColor(baseIndex);
 		if ( this.getPlayerColor(baseIndex, 0) != colorWanted) // sort the first player
@@ -69,7 +74,7 @@ public class BaseballGameEntity extends BaseballEntity {
 		}
 	}
 	
-	private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) {
+	private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) throws InvalidPositionException {
 		int[] location = new int[2];
 		int nbBases = this.getAmountOfBases();
 		boolean found = false;
@@ -104,8 +109,7 @@ public class BaseballGameEntity extends BaseballEntity {
 			{
 				move(i,1-playerToProtect);
 			}
-			move(baseDst,playerDst);
-		
+			move(baseDst,playerDst);	
 		}
 		else if ( baseDst == holeLocation[0] && playerDst != holeLocation[1]) // good base but wrong player =/
 		{

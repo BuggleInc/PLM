@@ -24,15 +24,6 @@ public class BaseballBase
 	
 
 	/**
-	 * Give the color ( in integer ) of the base
-	 * @return The integer corresponding to the color of the base
-	 */
-	public int getColor()
-	{
-		return this.color;
-	}
-	
-	/**
 	 * Indicate whether some other object is "equal to" this one
 	 * @return if the two objects are equals
 	 * @param o the reference object with which to compare
@@ -59,19 +50,14 @@ public class BaseballBase
 	}
 	
 	/**
-	 * Return a string representation of the base
-	 * @return A string representation of the base
+	 * Give the color ( in integer ) of the base
+	 * @return The integer corresponding to the color of the base
 	 */
-	public String toString()
+	public int getColor()
 	{
-		String s = "";
-		
-		s+="Player 1 : "+this.getPlayer(0).getColor()+" ; Player 2 : "+this.getPlayer(1).getColor();
-		
-		return s;
+		return this.color;
 	}
-
-
+	
 	/**
 	 * Give the wanted player of the base
 	 * @return The player wanted
@@ -79,6 +65,22 @@ public class BaseballBase
 	 */
 	public BaseballPlayer getPlayer(int player) {
 		return this.players[player];
+	}
+
+
+	/**
+	 * Return the color of the player in base baseIndex at position playerLocation
+	 * @param baseIndex the index of the wanted base
+	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
+	 */
+	public int getPlayerColor(int playerLocation) throws InvalidPositionException {
+		if ( playerLocation < 0 || playerLocation >1)
+		{
+			throw new InvalidPositionException("The position of a player must be 0 or 1.\nIt's sad but "+playerLocation+" isn't one of these values !");
+		}
+		return this.players[playerLocation].getColor();
 	}
 
 
@@ -92,8 +94,17 @@ public class BaseballBase
 	}
 
 
-	public int getPlayerColor(int playerLocation) {
-		return this.players[playerLocation].getColor();
+	/**
+	 * Return a string representation of the base
+	 * @return A string representation of the base
+	 */
+	public String toString()
+	{
+		String s = "";
+		
+		s+="Player 1 : "+this.getPlayer(0).getColor()+" ; Player 2 : "+this.getPlayer(1).getColor();
+		
+		return s;
 	}
 
 }

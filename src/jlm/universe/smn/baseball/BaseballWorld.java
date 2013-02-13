@@ -165,11 +165,24 @@ public class BaseballWorld extends World
 		return sb.toString();
 	}	
 	
-	public int getPlayerColor(int baseIndex, int playerLocation) {
+	/**
+	 * Return the color of the player in base baseIndex at position playerLocation
+	 * @param baseIndex the index of the wanted base
+	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
+	 */
+	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
 		return this.field.getPlayerColor(baseIndex,playerLocation);
 	}
 
-	public int getBaseColor(int baseIndex) {
+	/**
+	 * Return the color of the base located at baseIndex
+	 * @param baseIndex the index of the wanted base
+	 * @return the color of the player in base baseIndex at position playerLocation
+	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
+	 */
+	public int getBaseColor(int baseIndex) throws InvalidPositionException {
 		return this.field.getBaseColor(baseIndex);
 	}
 
