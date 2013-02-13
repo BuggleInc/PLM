@@ -4,17 +4,21 @@ This world implements the baseball game, in which several players want to go bac
 
 You are asked to make the players go on the bases which colors correspond to theirs. The only allowed move is for one of the two players standing on one of the two bases which are directly next to the base with only one player to move and fill the hole, leaving a new one on the base it just left.
 
-There are six functions provided :
+There are seven functions provided :
 
-<pre>void movePlayerOne(int baseSrc)</pre>
+<pre>void move(int baseSrc, int playerSrc)</pre>
 
-Move the player one from the base <code>baseSrc</code> to the hole.
+Move the player on position <code>playerLocation</code> from the base <code>baseSrc</code> to the hole.
 
-<pre>void movePlayerTwo(int baseSrc)</pre>
+<pre> int getPlayerColor(int baseIndex, int playerLocation) </pre>
 
-Move the player two from the base <code>baseSrc</code> to the hole.
+Return the color of the player on position <code>playerLocation</code> ( 0 or 1 ) from the base <code>baseIndex</code>.
 
-<pre>int[] findMissingPlayer()</pre>
+<pre> int getBaseColor(int baseIndex) </pre>
+
+Return the color of the base <code>baseIndex</code>.
+
+<pre>int[] getHolePosition()</pre>
 
 Return an integer array where the first element is the index of the base with the hole, and where the second element is the hole position within this base
 

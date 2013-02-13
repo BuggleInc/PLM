@@ -2,17 +2,21 @@
 
 Fonctions fournies:
 
-<pre>void movePlayerOne(int baseSrc)</pre>
+<pre>void move(int baseSrc, int playerSrc)</pre>
 
-Déplace le joueur un de la base <code>baseSrc</code> vers le trou.
+Déplace le joueur en position <code>playerSrc</code> de la base <code>baseSrc</code> vers le trou.
 
-<pre>void movePlayerTwo(int baseSrc)</pre>
+<pre> int getPlayerColor(int baseIndex, int playerLocation) </pre>
 
-Déplace le joueur deux de la base <code>baseSrc</code> vers le trou.
+Renvoie la couleur du joueur en position <code>playerLocation</code> ( 0 ou 1 ) de la base <code>baseIndex</code>.
 
-<pre>int[] findMissingPlayer()</pre>
+<pre> int getBaseColor(int baseIndex) </pre>
 
-Renvoie un tableau d'entier où le premier élément est l'index de la base contenant le trou et le deuxième élément la position du trou sur cette base
+Renvoie la couleur de la base <code>baseIndex</code>.
+
+<pre>int[] getHolePosition()</pre>
+
+Renvoie un tableau d'entiers où le premier élément est l'index de la base contenant le trou et le deuxième élément la position du trou sur cette base
 
 <pre> boolean isBaseSorted( int baseIndex)</pre>
 
