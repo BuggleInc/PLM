@@ -33,14 +33,14 @@ public class PancakeWorldView extends WorldView {
 
 	/**
 	   * Draws an arrow on the given Graphics2D context
-	   * ( From http://www.bytemycode.com/snippets/snippet/82/ )
+	   * ( adapted from http://www.bytemycode.com/snippets/snippet/82/ )
 	   * @param g The Graphics2D context to draw on
-	   * @param x The x location of the "tail" of the arrow
-	   * @param y The y location of the "tail" of the arrow
-	   * @param xx The x location of the "head" of the arrow
-	   * @param yy The y location of the "head" of the arrow
+	   * @param xTail The x location of the "tail" of the arrow
+	   * @param yTail The y location of the "tail" of the arrow
+	   * @param xHead The x location of the "head" of the arrow
+	   * @param yHead The y location of the "head" of the arrow
 	   */
-	  private void drawArrow( Graphics2D g, int x, int y, int xx, int yy )
+	  private void drawArrow( Graphics2D g, int xTail, int yTail, int xHead, int yHead )
 	  {
 	    float arrowWidth = 10.0f ;
 	    float theta = 0.423f ;
@@ -53,12 +53,12 @@ public class PancakeWorldView extends WorldView {
 	    float ta;
 	    float baseX, baseY ;
 
-	    xPoints[ 0 ] = xx ;
-	    yPoints[ 0 ] = yy ;
+	    xPoints[ 0 ] = xHead ;
+	    yPoints[ 0 ] = yHead ;
 
 	    // build the line vector
-	    vecLine[ 0 ] = (float)xPoints[ 0 ] - x ;
-	    vecLine[ 1 ] = (float)yPoints[ 0 ] - y ;
+	    vecLine[ 0 ] = (float)xPoints[ 0 ] - xTail ;
+	    vecLine[ 1 ] = (float)yPoints[ 0 ] - yTail ;
 
 	    // build the arrow base vector - normal to the line
 	    vecLeft[ 0 ] = -vecLine[ 1 ] ;
@@ -79,7 +79,7 @@ public class PancakeWorldView extends WorldView {
 	    xPoints[ 2 ] = (int)( baseX - th * vecLeft[0] );
 	    yPoints[ 2 ] = (int)( baseY - th * vecLeft[1] );
 
-	    g.drawLine( x, y, (int)baseX, (int)baseY ) ;
+	    g.drawLine( xTail, yTail, (int)baseX, (int)baseY ) ;
 	    g.fillPolygon( xPoints, yPoints, 3 ) ;
 	  }
 	
