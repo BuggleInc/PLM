@@ -82,7 +82,7 @@ public class BaseballGameEntity extends BaseballEntity {
 		{
 			for ( int j = 0 ; j < 2  ; j++)
 			{
-				if ( this.getPlayerColor(i, j)== colorWanted)
+				if ( this.getPlayerColor(i, j)== colorWanted && !found )
 				{
 					location[0]= i;
 					location[1]= j;
