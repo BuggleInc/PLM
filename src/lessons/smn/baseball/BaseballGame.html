@@ -33,3 +33,128 @@ Return the amount of bases in the field.
 <pre> int indexOfBaseWithOnePlayer() </pre>
 
 Return the index of the base which has only one player on the field
+
+
+<br><br><hr><br>
+
+<div class="tip" id="tip-1" alt="Show Tip 1 ( the functions's prototype)">
+<p>The prototypes of the functions you may use are the followings :</p>
+<pre> 
+private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int playerDst) throws InvalidMoveException
+
+Move the player in position <code>playerSrc</code> of the base <code>baseSrc</code> to the position <code>playerDst</code> from the base <code>baseDst</code>
+
+private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) throws InvalidPositionException
+
+Return the base's number and the position of the nearest player which has<code>colorWanted</code> as color. It begins the search at the base <code>firstBaseToSearch</code>
+
+private void bringHole(int baseDst, int playerDst , int playerToProtect) throws InvalidMoveException
+
+Bring the hole to the position <code>playerDst</code> from the base <code>baseDst</code> while protecting the position <code>playerToProtect</code> during the travel
+</pre>
+</div>
+
+<br><br><hr><br>
+
+<div class="tip" id="tip-2" alt="Show Tip 2 (Pseudo-code of solve)">
+<p>The algorithm of the solve function is the following:</p>
+<pre> 
+BEGIN
+	colorWanted <- getBaseColor(baseIndex)
+	IF getPlayerColor(baseIndex, 0) != colorWanted 
+	THEN
+			IF getPlayerColor(baseIndex,1) == colorWanted
+			THEN
+					bringHole(baseIndex, 0, 1)
+					move(baseIndex, 1)
+			ELSE
+					wantedPlayerLocation <- findNearestPlayer(colorWanted, baseIndex+1 )
+					bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
+					bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
+			END_IF
+	END_IF
+	IF getPlayerColor(baseIndex, 1) != colorWanted 
+	THEN
+			wantedPlayerLocation <- this.findNearestPlayer(colorWanted, baseIndex+1)
+			bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
+			bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
+	END_IF
+END
+</pre>
+</div>
+
+<br><br><hr><br>
+
+<div class="tip" id="tip-3" alt="Show Tip 3 ( Pseudo-code of bringHole )">
+<p>The algorithm of the bringHole function is the following:</p>
+<pre> 
+BEGIN
+	holeLocation <- getHolePosition()
+	IF baseDst > holeLocation[0]
+	THEN
+		FOR i FROM holeLocation[0]+1 TO baseDst BY 1
+		DO
+			move(i, playerDst)
+		END_FOR
+	ELSE 
+		IF baseDst < holeLocation[0]
+		THEN
+			FOR i FROM holeLocation[0]-1 DOWNTO baseDst+1 BY -1
+			DO
+				move(i,1-playerToProtect)
+			END_FOR
+			move(baseDst,playerDst);
+		ELSE 
+			IF baseDst == holeLocation[0] AND playerDst != holeLocation[1]
+			THEN
+				move(baseDst,playerDst);
+			END_IF
+		END_IF
+	END_IF
+END
+</pre>
+</div>
+
+<br><br><hr><br>
+
+<div class="tip" id="tip-4" alt="Show Tip 4 ( Pseudo-code of findNearestPlayer)">
+<p>The algorithm of the findNearestPlayer function is the following :</p>
+<pre> 
+BEGIN
+	nbBases <- getAmountOfBases()
+	found <- false;
+	i <- firstBaseToSearch
+	WHILE i < nbBases AND !found
+	DO
+		FOR j FROM 0 TO 1 BY 1
+		DO
+			IF getPlayerColor(i, j)== colorWanted AND !found
+			THEN
+				location[0] <- i;
+				location[1] <- j;
+				found <- true;
+			END_IF
+		END_FOR
+		i <- i+1
+	END_WHILE
+	RETURN location
+END
+</pre>
+</div>
+
+<br><br><hr><br>
+
+<div class="tip" id="tip-5" alt="Show tip 5 ( Pseudo-code of bringPlayerHome)">
+<p>The algorithm of the bringPlayerHome function is the following :</p>
+<pre> 
+PRECONDITION: the hole is on the base of index baseSrc-1
+BEGIN
+		move( baseSrc,playerSrc)
+		FOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1
+		DO
+			move(i,1-playerDst)
+			move(i-1,playerDst)
+			move(i,playerDst)
+		END_FOR
+</pre>
+</div>

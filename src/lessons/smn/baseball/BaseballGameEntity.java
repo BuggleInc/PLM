@@ -91,7 +91,6 @@ public class BaseballGameEntity extends BaseballEntity {
 			}
 		}
 		return location;
-		
 	}
 	
 	private void bringHole(int baseDst, int playerDst , int playerToProtect) throws InvalidMoveException {
