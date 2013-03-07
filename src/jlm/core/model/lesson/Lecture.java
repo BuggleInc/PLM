@@ -110,8 +110,8 @@ public abstract class Lecture {
 
 	public void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
-	
-		StringBuffer sb = Reader.fileToStringBuffer(filename, "html",true);
+		
+		StringBuffer sb = Reader.fileToStringBuffer(filename, "txt",true);
 		if (sb==null) {
 			setMission("File "+filename+" not found.");
 			return;
@@ -122,7 +122,7 @@ public abstract class Lecture {
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			System.out.println("Cannot find the name of mission in "+filename+".html");
+			System.out.println("Cannot find the name of mission in "+filename+".md");
 		setName( m.group(1) );
 	
 		/* prepare the tips, if any */

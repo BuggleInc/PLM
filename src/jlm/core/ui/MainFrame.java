@@ -33,12 +33,23 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton demoButton;
     private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
+	private JMenuItem menuItem_teach;
+	private MissionEditorTabs mission_tab;
 	
+
 	private JSplitPane mainPanel;
 	
 	private static final String frameTitle = "Java Learning Machine";
 	
 	
+	public MissionEditorTabs getMission_tab() {
+		return mission_tab;
+	}
+
+	public void setMission_tab(MissionEditorTabs mission_tab) {
+		this.mission_tab = mission_tab;
+	}
+
 	private MainFrame() {
 		super(frameTitle);
 		Reader.setLocale(this.getLocale().getLanguage());
@@ -74,8 +85,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		double weight = 0.6;
 		mainPanel.setResizeWeight(weight);
 		mainPanel.setDividerLocation((int) (1024 * weight));
-
-		mainPanel.setLeftComponent(new MissionEditorTabs());
+		
+		mission_tab = new MissionEditorTabs();
+		mainPanel.setLeftComponent(mission_tab);
 
 		exerciseView = new ExerciseView(g);
 		mainPanel.setRightComponent(exerciseView);
@@ -174,7 +186,15 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
         menu.add(menuItem);
         
+        // Menu item to switch in teacher mode
+        TeachingGame teachinggame = new TeachingGame(g, "Teaching mode", null,KeyEvent.VK_T,mission_tab);
+		menuItem_teach = new JMenuItem(teachinggame);
+
+		menuItem_teach.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+		teachinggame.setItem(menuItem_teach);
+        menu.add(menuItem_teach);
         
+        // Menu item to Quit
 		menuItem = new JMenuItem(new QuitGame(g, "Quit", null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
@@ -518,6 +538,15 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			getAction().setEnabled(enabled);
 			super.setEnabled(enabled);
 		}
+	}
+	
+
+	public JMenuItem getMenuItem_teach() {
+		return menuItem_teach;
+	}
+
+	public void setMenuItem_teach(JMenuItem menuItem_teach) {
+		this.menuItem_teach = menuItem_teach;
 	}
 }
 
