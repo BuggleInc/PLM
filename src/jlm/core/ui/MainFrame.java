@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton demoButton;
     private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
-	private JMenuItem menuItem_teach;
+	private JMenuItem menuItem_teach,menuItem_lesson,menuItem_world;
 	private MissionEditorTabs mission_tab;
 	
 
@@ -145,6 +145,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.changeLesson("lessons.chooser");
+				mission_tab.path_md = (Game.getInstance().getCurrentLesson().getCurrentExercise()+"").replace('.', '/').replaceAll("@.*", "");
+				mission_tab.init();
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
@@ -191,7 +193,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuItem_teach = new JMenuItem(teachinggame);
 
 		menuItem_teach.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+		AboutGame about_lesson = new AboutGame(g, "About this lesson",false);
+		AboutGame about_world = new AboutGame(g, "About this world",null,true);
 		teachinggame.setItem(menuItem_teach);
+		teachinggame.setAboutLesson(about_lesson);
+		teachinggame.setAboutWorld(about_world);
+		
         menu.add(menuItem_teach);
         
         // Menu item to Quit
@@ -274,31 +281,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		}));
 */
-		menuItem = new JMenuItem(new AbstractGameAction(g, "About this lesson") {
-			private static final long serialVersionUID = 1L;
-			private AbstractAboutDialog dialog = null;
-
-			public void actionPerformed(ActionEvent arg0) {
-				if (this.dialog == null) 
-					this.dialog = new AboutLessonDialog(MainFrame.getInstance());
-				
-				this.dialog.setVisible(true);
-			}			
-		});
+		menuItem = new JMenuItem(about_lesson);
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem(new AbstractGameAction(g, "About this world", null) {
-			private static final long serialVersionUID = 1L;
-
-			private AbstractAboutDialog dialog = null;
-
-			public void actionPerformed(ActionEvent arg0) {
-				if (this.dialog == null) {
-					this.dialog = new AboutWorldDialog(MainFrame.getInstance());
-				}
-				this.dialog.setVisible(true);
-			}
-		});
+		menuItem = new JMenuItem(about_world);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
 		

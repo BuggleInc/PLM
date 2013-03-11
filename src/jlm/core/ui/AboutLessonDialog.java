@@ -17,8 +17,10 @@ public class AboutLessonDialog extends AbstractAboutDialog {
 	public void currentLessonHasChanged() {
 		setTitle("About lesson - " + Game.getInstance().getCurrentLesson().getName());
 
-		area.setText(Game.getInstance().getCurrentLesson().getAbout());
-		area.setCaretPosition(0);
+		//area.setText(Game.getInstance().getCurrentLesson().getAbout());
+		//area.setCaretPosition(0);
+		editeur.editeur.setText(Game.getInstance().getCurrentLesson().getAbout());
+		editeur.document.maj(Game.getInstance().getCurrentLesson().getAbout());
 	}
 
 }

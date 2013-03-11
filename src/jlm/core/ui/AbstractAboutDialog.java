@@ -3,38 +3,49 @@ package jlm.core.ui;
 import java.awt.Dimension;
 
 import javax.swing.JDialog;
-import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+
 
 import jlm.core.GameListener;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Lecture;
 import jlm.universe.World;
-import net.miginfocom.swing.MigLayout;
 
 public abstract class AbstractAboutDialog extends JFrame implements GameListener {
 
 	private static final long serialVersionUID = -6550658679688214378L;
-	protected JEditorPane area = new JEditorPane("text/html","");
-	
+	MarkdownDocument md_doc;
+	MarkdownEditorView editeur;
+
 	protected AbstractAboutDialog(JFrame parent) {
 		super();
 		Game.getInstance().addGameListener(this);
-		
+
 		setResizable(true);
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(getParent());
-		
+
 		setMinimumSize(new Dimension(600,400));
-		
-		area.setEditorKit(new JlmHtmlEditorKit());
-		area.setEditable(false);
-		
-		setLayout(new MigLayout("fill"));
-		add(new JScrollPane(area),"grow");
+
+		md_doc = new MarkdownDocument();
+		editeur = new MarkdownEditorView(md_doc);
+		if(Global.admin)
+			add(editeur);
+		else
+			add(new JScrollPane(editeur.apercu));
 	}
-		
+	
+	public void maj(){
+		this.removeAll();
+		if(Global.admin)
+			add(editeur);
+		else
+			add(new JScrollPane(editeur.apercu));
+		this.repaint();
+		this.validate();
+	}
+
 	@Override
 	public void currentExerciseHasChanged(Lecture l)   { /* I dont care I'm a punk */ }
 	@Override

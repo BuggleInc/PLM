@@ -25,10 +25,15 @@ import jlm.core.ui.Global;
 import jlm.core.ui.MissionEditorTabs;
 
 public class TeachingGame extends AbstractGameAction {
-	long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	JPasswordField passwordField;
 	private JMenuItem item;
 	MissionEditorTabs mission_tab;
+	private AboutGame about_lesson;
+	private AboutGame about_world;
 
 
 	public TeachingGame(Game game, String text, ImageIcon icon, Integer mnemonic,MissionEditorTabs mission_tab) {
@@ -42,13 +47,17 @@ public class TeachingGame extends AbstractGameAction {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(!Global.admin){
-			new FramePassword(item,mission_tab);
+			new FramePassword(item,mission_tab,about_lesson,about_world);
 		}
 		else{
 			Global.admin=false;
 			item.setText("Teaching mode");
 			JOptionPane.showMessageDialog(null,"successfully disconnected from teaching mode");
-			mission_tab.maj();
+			mission_tab.init();
+			if (about_lesson!=null)
+				about_lesson.getDialog().maj();
+			if (about_world!=null)
+				about_world.getDialog().maj();
 		}
 	}
 
@@ -58,6 +67,14 @@ public class TeachingGame extends AbstractGameAction {
 
 	public JMenuItem getItem() {
 		return item;
+	}
+
+	public void setAboutLesson(AboutGame about_lesson) {
+		this.about_lesson=about_lesson;
+	}
+
+	public void setAboutWorld(AboutGame about_world) {
+		this.about_world=about_world;
 	}
 }
 
@@ -76,7 +93,9 @@ class FramePassword extends JPanel implements ActionListener {
 	private JPasswordField passwordField;
 	static JMenuItem item;
 	static MissionEditorTabs mission_tab;
-	
+	static AboutGame about_lesson;
+	static AboutGame about_world;
+
 	public FramePassword(){
 		//Création de la fenêtre
 		JFrame frame = new JFrame("PasswordDemo");
@@ -98,7 +117,7 @@ class FramePassword extends JPanel implements ActionListener {
 		// affichage
 		frame.setVisible(true);
 	}
-	
+
 
 	public FramePassword(JFrame f) {
 		controllingFrame = f;
@@ -120,10 +139,12 @@ class FramePassword extends JPanel implements ActionListener {
 		add(buttonPane);
 	}
 
-	public FramePassword(JMenuItem item,MissionEditorTabs mission_tab) {
+	public FramePassword(JMenuItem item,MissionEditorTabs mission_tab,AboutGame agl,AboutGame agw) {
 		this();
 		this.item=item;
 		this.mission_tab=mission_tab;
+		this.about_lesson=agl;
+		this.about_world=agw;
 	}
 
 
@@ -152,14 +173,18 @@ class FramePassword extends JPanel implements ActionListener {
 				Global.admin=true;
 				controllingFrame.setVisible(false);
 				item.setText("Quit teaching mode");
-				mission_tab.maj();
+				mission_tab.init();
+				if (about_lesson!=null && about_lesson.getDialog().isValid())
+					about_lesson.getDialog().maj();
+				if (about_world!=null && about_world.getDialog().isValid())
+					about_world.getDialog().maj();
 			} else {
 				JOptionPane.showMessageDialog(controllingFrame,
 						"Invalid password. Try again.",
 						"Error Message",
 						JOptionPane.ERROR_MESSAGE);
 			}
-			
+
 			Arrays.fill(input, '0');
 
 			passwordField.selectAll();

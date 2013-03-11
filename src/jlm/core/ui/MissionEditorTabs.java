@@ -2,18 +2,15 @@ package jlm.core.ui;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.io.File;
 
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.html.HTMLEditorKit;
 
 import com.petebevin.markdown.MarkdownProcessor;
 
@@ -33,14 +30,14 @@ import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
 
-import java.lang.reflect.Method;
-
-
 public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener {
 	private static final long serialVersionUID = 1L;
 
 	private Game game;
 	private JEditorPane missionTab = new JEditorPane();
+	MarkdownProcessor markdownProcessor;
+	MarkdownEditorView editeur;
+	String path_md;
 
 	/* for code tabs */
 	private Lecture currentExercise;
@@ -49,7 +46,22 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
 	public MissionEditorTabs() {
 		super();
-		maj();
+		path_md = (Game.getInstance().getCurrentLesson().getCurrentExercise()+"").replace('.', '/').replaceAll("@.*", "");
+		init();
+
+
+		/* setup code tabs */
+		DefaultSyntaxKit.initKit();
+		loadFont();
+		configureSyntaxStyles();
+
+		/* Register to game engine */
+		this.game = Game.getInstance();
+		this.game.addGameListener(this);
+		this.game.addProgLangListener(this);
+
+		/* add code tabs */
+		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
 	}
 
 	@Override
@@ -103,6 +115,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 			if (c instanceof IEntityStackListener)
 				((IEntityStackListener) c).tracedEntityChanged(game.getSelectedEntity());
 		}
+		init();
 	}
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
@@ -165,176 +178,87 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		 */	
 	}
 
-	public void maj() {
+	public void init() {
 		this.removeAll();
-		if(Global.admin){
-			System.err.println(1);
-			MarkdownDocument md_doc = new MarkdownDocument("/Users/bogy/Desktop/test.md");
+		markdownProcessor = new MarkdownProcessor();
+		MarkdownDocument md_doc = new MarkdownDocument(path_md);
+		editeur = new MarkdownEditorView(md_doc);
 
-			System.err.println(11);
-			MarkdownEditorView editeur = new MarkdownEditorView(md_doc);
+		editeur.apercu.addHyperlinkListener(new HyperlinkListener() {
+			TipsDialog tipsDialog = null;
 
-			System.err.println(2);
-			editeur.apercu.addHyperlinkListener(new HyperlinkListener() {
-				TipsDialog tipsDialog = null;
-
-				@Override
-				public void hyperlinkUpdate(HyperlinkEvent event) {
-					if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-						String desc = event.getDescription();
-						if (desc.startsWith("#tip-")) {
-							if (this.tipsDialog == null) {
-								this.tipsDialog = new TipsDialog(MainFrame.getInstance());
-							}
-							this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
-							this.tipsDialog.setVisible(true);
+			@Override
+			public void hyperlinkUpdate(HyperlinkEvent event) {
+				if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+					String desc = event.getDescription();
+					if (desc.startsWith("#tip-")) {
+						if (this.tipsDialog == null) {
+							this.tipsDialog = new TipsDialog(MainFrame.getInstance());
 						}
+						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
+						this.tipsDialog.setVisible(true);
+					}
 
-						if (desc.startsWith("jlm://")) {
-							if (desc.startsWith("jlm://load_jar")) { 
-								//Load a lesson JAR
-								JFileChooser fc = new JFileChooser();
-								fc.setFileFilter(new FileNameExtensionFilter("JAR filter", "jar"));
-								fc.setDialogType(JFileChooser.OPEN_DIALOG);
-								fc.showOpenDialog(MainFrame.getInstance());
-								File selectedFile = fc.getSelectedFile();
+					if (desc.startsWith("jlm://")) {
+						if (desc.startsWith("jlm://load_jar")) { 
+							//Load a lesson JAR
+							JFileChooser fc = new JFileChooser();
+							fc.setFileFilter(new FileNameExtensionFilter("JAR filter", "jar"));
+							fc.setDialogType(JFileChooser.OPEN_DIALOG);
+							fc.showOpenDialog(MainFrame.getInstance());
+							File selectedFile = fc.getSelectedFile();
 
-								try {
-									if (selectedFile != null)
-										JLMClassLoader.addJar(fc.getSelectedFile());
-								} catch (Exception e) {
-									e.printStackTrace();
+							try {
+								if (selectedFile != null)
+									JLMClassLoader.addJar(fc.getSelectedFile());
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
+						} else {
+							//Load a regular lesson
+							String lessonName = desc.substring(new String("jlm://").length());
+							String exoName = null;
+							int sep = lessonName.indexOf("/");
+							if (sep != -1) {
+								exoName = lessonName.substring(sep+1);
+								lessonName = lessonName.substring(0, sep);
+								if (exoName.length()==0)
+									exoName = null;
+							}
+							if (Game.getInstance().isDebugEnabled()) 
+								System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
+
+							Lesson lesson = Game.getInstance().loadLesson(lessonName);
+							Game.getInstance().setCurrentLesson(lesson);
+
+							if (exoName != null && exoName.length()>0) {
+								Lecture lect = lesson.getExercise(exoName);
+								if (lect != null) {
+									Game.getInstance().setCurrentExercise(lect);
+								} else {
+									System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
 								}
-							} else {
-								//Load a regular lesson
-								String lessonName = desc.substring(new String("jlm://").length());
-								String exoName = null;
-								int sep = lessonName.indexOf("/");
-								if (sep != -1) {
-									exoName = lessonName.substring(sep+1);
-									lessonName = lessonName.substring(0, sep);
-									if (exoName.length()==0)
-										exoName = null;
-								}
-								if (Game.getInstance().isDebugEnabled()) 
-									System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
-
-								Lesson lesson = Game.getInstance().loadLesson(lessonName);
-								Game.getInstance().setCurrentLesson(lesson);
-								if (exoName != null && exoName.length()>0) {
-									Lecture lect = lesson.getExercise(exoName);
-									if (lect != null) {
-										Game.getInstance().setCurrentExercise(lect);
-									} else {
-										System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
-									}
-								}					 
 							}
 
+							path_md = (lessonName.replace('.', '/').replaceAll("@.*", ""))+"/Main";
+							MarkdownDocument md_doc = new MarkdownDocument(path_md);
+							editeur.apercu.setText(markdownProcessor.markdown(md_doc.getTexte()));
 						}
+
 					}
 				}
-			});
+			}
+		});
 
-			System.err.println(3);
+		if(Global.admin){
 			this.addTab("Mission", null, editeur,
 					"Description of the work to do");
-
-			System.err.println(4);
 		}
 		else{
-			MarkdownProcessor markdownProcessor = new MarkdownProcessor();
-			JTextPane apercu;
-			Dimension dimension_prefered = new Dimension(490, 520);
-			Dimension dimension_minimum = new Dimension(10, 10);
-			MarkdownDocument md_doc = new MarkdownDocument("/Users/bogy/Desktop/test.md");
-			
-			apercu = new JTextPane();
-			apercu.setEditorKit(new HTMLEditorKit());
-			apercu.setText(markdownProcessor.markdown(md_doc.getTexte()));
-			apercu.setEditable(false);
-	        JScrollPane preview_scroll_pane = new JScrollPane(apercu);
-	        preview_scroll_pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-	        preview_scroll_pane.setPreferredSize(dimension_prefered);
-	        preview_scroll_pane.setMinimumSize(dimension_minimum);
-	        
-	        apercu.addHyperlinkListener(new HyperlinkListener() {
-				TipsDialog tipsDialog = null;
-
-				@Override
-				public void hyperlinkUpdate(HyperlinkEvent event) {
-					if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-						String desc = event.getDescription();
-						if (desc.startsWith("#tip-")) {
-							if (this.tipsDialog == null) {
-								this.tipsDialog = new TipsDialog(MainFrame.getInstance());
-							}
-							this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
-							this.tipsDialog.setVisible(true);
-						}
-
-						if (desc.startsWith("jlm://")) {
-							if (desc.startsWith("jlm://load_jar")) { 
-								//Load a lesson JAR
-								JFileChooser fc = new JFileChooser();
-								fc.setFileFilter(new FileNameExtensionFilter("JAR filter", "jar"));
-								fc.setDialogType(JFileChooser.OPEN_DIALOG);
-								fc.showOpenDialog(MainFrame.getInstance());
-								File selectedFile = fc.getSelectedFile();
-
-								try {
-									if (selectedFile != null)
-										JLMClassLoader.addJar(fc.getSelectedFile());
-								} catch (Exception e) {
-									e.printStackTrace();
-								}
-							} else {
-								//Load a regular lesson
-								String lessonName = desc.substring(new String("jlm://").length());
-								String exoName = null;
-								int sep = lessonName.indexOf("/");
-								if (sep != -1) {
-									exoName = lessonName.substring(sep+1);
-									lessonName = lessonName.substring(0, sep);
-									if (exoName.length()==0)
-										exoName = null;
-								}
-								if (Game.getInstance().isDebugEnabled()) 
-									System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
-
-								Lesson lesson = Game.getInstance().loadLesson(lessonName);
-								Game.getInstance().setCurrentLesson(lesson);
-								if (exoName != null && exoName.length()>0) {
-									Lecture lect = lesson.getExercise(exoName);
-									if (lect != null) {
-										Game.getInstance().setCurrentExercise(lect);
-									} else {
-										System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
-									}
-								}					 
-							}
-
-						}
-					}
-				}
-			});
-
-			this.addTab("Mission", null, new JScrollPane(apercu),
+			this.addTab("Mission", null, new JScrollPane(editeur.apercu),
 					"Description of the work to do");
 		}
-
-		/* setup code tabs */
-		DefaultSyntaxKit.initKit();
-		loadFont();
-		configureSyntaxStyles();
-
-		/* Register to game engine */
-		this.game = Game.getInstance();
-		this.game.addGameListener(this);
-		this.game.addProgLangListener(this);
-
-		/* add code tabs */
-		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
+		
 		this.repaint();
 		this.validate();
 	}

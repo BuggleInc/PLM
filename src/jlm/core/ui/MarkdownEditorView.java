@@ -35,7 +35,7 @@ public class MarkdownEditorView extends JPanel implements Observer
 	JButton raccourcis[];
 	MarkdownProcessor markdownProcessor;
 	
-	public MarkdownEditorView(MarkdownDocument document)
+	public MarkdownEditorView(final MarkdownDocument document)
 	{
 		this.document = document;
 		document.addObserver(this);
@@ -94,7 +94,7 @@ public class MarkdownEditorView extends JPanel implements Observer
 			@Override
 			public void caretUpdate(CaretEvent arg0)
 			{
-				update(null, null);
+				document.maj(editeur.getText());
 			}
 		});
 	}
@@ -102,8 +102,8 @@ public class MarkdownEditorView extends JPanel implements Observer
 	@Override
 	public void update(Observable arg0, Object arg1)
 	{
-		document.setTexte(editeur.getText());
-		apercu.setText(markdownProcessor.markdown(document.getTexte()));
+		MarkdownDocument m = (MarkdownDocument) arg0;
+		apercu.setText(markdownProcessor.markdown(m.getTexte()));
 	}
 	
 	class SaveListener implements ActionListener
@@ -127,18 +127,4 @@ public class MarkdownEditorView extends JPanel implements Observer
 		return editeur;
 	}
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args)
-	{
-		JFrame f = new JFrame("Éditeur au format Mark Down");
-		MarkdownEditorView editeur = new MarkdownEditorView(new MarkdownDocument("/Users/bogy/Desktop/test.md"));
-		f.add(editeur);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
-		f.pack();
-		f.setLocationRelativeTo(null);
-		editeur.getEditeur().requestFocus();
-	}
 }

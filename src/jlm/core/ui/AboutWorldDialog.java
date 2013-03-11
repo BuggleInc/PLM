@@ -22,8 +22,8 @@ public class AboutWorldDialog extends AbstractAboutDialog {
 			setTitle("About world - "
 					+ exo.getCurrentWorld().get(0).getClass()
 					.getSimpleName());
-			area.setText(exo.getCurrentWorld().get(0).getAbout());
-			area.setCaretPosition(0);
+			editeur.editeur.setText(exo.getCurrentWorld().get(0).getAbout());
+			editeur.document.maj(exo.getCurrentWorld().get(0).getAbout());
 		} else {
 			// FIXME: should disable the entry menu when seing a lecture, and close any preexisting window when switching to a lecture
 			setVisible(false);

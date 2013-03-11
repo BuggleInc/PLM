@@ -144,6 +144,5 @@ public abstract class Lecture {
 		/* get the mission explanation */
 		setMission(str);
 	}
-
 	
 }

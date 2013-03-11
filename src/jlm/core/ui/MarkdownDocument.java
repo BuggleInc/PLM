@@ -13,10 +13,17 @@ import java.io.IOException;
 import java.util.Observable;
 import java.util.Scanner;
 
+import jlm.core.model.Reader;
+
 public class MarkdownDocument extends Observable
 {
 	private String chemin;
-	private String texte;
+	private String texte = "";
+	
+	public MarkdownDocument()
+	{
+		texte = new String();
+	}
 	
 	public MarkdownDocument(String chemin)
 	{
@@ -27,6 +34,7 @@ public class MarkdownDocument extends Observable
 	public void chargerDocument(String chemin)
 	{
 		texte = new String();
+		/*
 		Scanner scanner = null;
 		try
 		{
@@ -42,6 +50,13 @@ public class MarkdownDocument extends Observable
 		}
 
 		scanner.close();
+		*/
+		StringBuffer sb = Reader.fileToStringBuffer(chemin, "md",true);
+		if (sb==null) {
+			System.err.println("File "+chemin+" not found.");
+			return;
+		}		
+		texte = sb.toString();
 	}
 	
 	public void enregistrerDocument()
@@ -66,5 +81,11 @@ public class MarkdownDocument extends Observable
 	public void setTexte(String texte)
 	{
 		this.texte = texte;
+	}
+
+	public void maj(String text) {
+		setTexte(text);
+		setChanged();
+		notifyObservers();
 	}
 }

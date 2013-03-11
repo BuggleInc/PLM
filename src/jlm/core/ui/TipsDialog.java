@@ -16,13 +16,13 @@ public class TipsDialog extends AbstractAboutDialog {
 	@Override
 	public void currentExerciseHasChanged(Lecture lect) {
 		setTitle("Tips");
-		this.area.setText("no tips");
-		this.area.setCaretPosition(0);
+		//this.area.setText("no tips");
+		//this.area.setCaretPosition(0);
 	}
 	
 	public void setText(String txt) {
-		this.area.setText(txt);
-		this.area.setCaretPosition(0);
+		//this.area.setText(txt);
+		//this.area.setCaretPosition(0);
 	}
 
 }
