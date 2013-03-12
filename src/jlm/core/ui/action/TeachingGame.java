@@ -54,10 +54,12 @@ public class TeachingGame extends AbstractGameAction {
 			item.setText("Teaching mode");
 			JOptionPane.showMessageDialog(null,"successfully disconnected from teaching mode");
 			mission_tab.init();
-			if (about_lesson!=null)
+			if (about_lesson.getDialog()!=null){
 				about_lesson.getDialog().maj();
-			if (about_world!=null)
+			}
+			if (about_world.getDialog()!=null){
 				about_world.getDialog().maj();
+			}
 		}
 	}
 
@@ -174,10 +176,12 @@ class FramePassword extends JPanel implements ActionListener {
 				controllingFrame.setVisible(false);
 				item.setText("Quit teaching mode");
 				mission_tab.init();
-				if (about_lesson!=null && about_lesson.getDialog().isValid())
+				if (about_lesson.getDialog()!=null){
 					about_lesson.getDialog().maj();
-				if (about_world!=null && about_world.getDialog().isValid())
+				}
+				if (about_world.getDialog()!=null){
 					about_world.getDialog().maj();
+				}
 			} else {
 				JOptionPane.showMessageDialog(controllingFrame,
 						"Invalid password. Try again.",

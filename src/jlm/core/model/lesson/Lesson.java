@@ -50,7 +50,7 @@ public abstract class Lesson {
 	private boolean aboutLoaded = false;
 	private void loadAboutAndName() {
 		aboutLoaded = true;
-		
+
 		/* read it */
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 		StringBuffer sb = Reader.fileToStringBuffer(filename,"html",true);
@@ -61,14 +61,14 @@ public abstract class Lesson {
 		}
 
 		String str = sb.toString();
-		
+
 		/* search the mission name */
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
 			System.out.println("Cannot find the name of mission in "+filename+".html");
 		name = m.group(1);
-		
+
 		/* get the mission explanation */
 		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";		
 	}
@@ -82,6 +82,18 @@ public abstract class Lesson {
 			loadAboutAndName();
 		}
 		return about;
+	}
+	
+	public String getAboutFileName() {
+		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+		StringBuffer sb = Reader.fileToStringBuffer(filename,"md",true);
+		if (sb==null) {
+			about = "File "+filename+".md not found.";
+			name = filename;
+			return about;
+		}
+		
+		return filename;
 	}
 
 	public boolean isSequential() {		

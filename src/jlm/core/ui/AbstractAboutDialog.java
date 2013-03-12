@@ -1,10 +1,14 @@
 package jlm.core.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import com.petebevin.markdown.MarkdownProcessor;
 
 
 import jlm.core.GameListener;
@@ -17,6 +21,8 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 	private static final long serialVersionUID = -6550658679688214378L;
 	MarkdownDocument md_doc;
 	MarkdownEditorView editeur;
+	JPanel main_pane;
+	MarkdownProcessor markdownProcessor;
 
 	protected AbstractAboutDialog(JFrame parent) {
 		super();
@@ -26,24 +32,32 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(getParent());
 
-		setMinimumSize(new Dimension(600,400));
+		setSize(new Dimension(600,400));
+		main_pane = new JPanel(new BorderLayout());
+		add(main_pane);
 
+		markdownProcessor = new MarkdownProcessor();
 		md_doc = new MarkdownDocument();
 		editeur = new MarkdownEditorView(md_doc);
 		if(Global.admin)
-			add(editeur);
+			main_pane.add(editeur);
 		else
-			add(new JScrollPane(editeur.apercu));
+			main_pane.add(editeur.apercu);
 	}
 	
 	public void maj(){
-		this.removeAll();
-		if(Global.admin)
-			add(editeur);
-		else
-			add(new JScrollPane(editeur.apercu));
-		this.repaint();
-		this.validate();
+		this.main_pane.removeAll();
+		String path = md_doc.getChemin();
+		md_doc = new MarkdownDocument(path);
+		editeur = new MarkdownEditorView(md_doc);
+		if(Global.admin){
+			main_pane.add(editeur);
+		}
+		else{
+			main_pane.add(editeur.apercu);
+		}
+		this.main_pane.repaint();
+		this.main_pane.validate();
 	}
 
 	@Override

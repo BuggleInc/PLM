@@ -19,20 +19,23 @@ public class MarkdownDocument extends Observable
 {
 	private String chemin;
 	private String texte = "";
+	private boolean load_editor = false;
 	
 	public MarkdownDocument()
 	{
-		texte = new String();
+		texte = "";
+		chemin = "";
+		load_editor = false;
 	}
 	
 	public MarkdownDocument(String chemin)
 	{
-		this.chemin = chemin;
 		chargerDocument(chemin);
 	}
 	
 	public void chargerDocument(String chemin)
 	{
+		this.chemin = chemin;
 		texte = new String();
 		/*
 		Scanner scanner = null;
@@ -57,6 +60,9 @@ public class MarkdownDocument extends Observable
 			return;
 		}		
 		texte = sb.toString();
+		setLoad_editor(true);
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void enregistrerDocument()
@@ -84,8 +90,21 @@ public class MarkdownDocument extends Observable
 	}
 
 	public void maj(String text) {
+		setLoad_editor(false);
 		setTexte(text);
 		setChanged();
 		notifyObservers();
+	}
+
+	public boolean isLoad_editor() {
+		return load_editor;
+	}
+
+	public void setLoad_editor(boolean load_editor) {
+		this.load_editor = load_editor;
+	}
+
+	public String getChemin() {
+		return chemin;
 	}
 }

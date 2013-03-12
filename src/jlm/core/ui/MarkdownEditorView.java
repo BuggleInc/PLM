@@ -43,7 +43,7 @@ public class MarkdownEditorView extends JPanel implements Observer
 		
 		setLayout(new BorderLayout());
 		
-		Dimension dimension_prefered = new Dimension(490, 520);
+		Dimension dimension_prefered = new Dimension(100, 100);
 		Dimension dimension_minimum = new Dimension(10, 10);
 		
 		JPanel panelRaccourcis = new JPanel();
@@ -71,17 +71,17 @@ public class MarkdownEditorView extends JPanel implements Observer
 		editeur.setEditable(true);
 		editeur.setText(document.getTexte());
 		wiki_area_pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		wiki_area_pane.setPreferredSize(dimension_prefered);
-        wiki_area_pane.setMinimumSize(dimension_minimum);
+		//wiki_area_pane.setPreferredSize(dimension_prefered);
+        //wiki_area_pane.setMinimumSize(dimension_minimum);
 		
 		apercu = new JTextPane();
 		apercu.setEditorKit(new HTMLEditorKit());
-		apercu.setText(markdownProcessor.markdown(document.getTexte()));
+		apercu.setText(markdownProcessor.markdown(this.document.getTexte()));
 		apercu.setEditable(false);
         JScrollPane preview_scroll_pane = new JScrollPane(apercu);
         preview_scroll_pane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-        preview_scroll_pane.setPreferredSize(dimension_prefered);
-        preview_scroll_pane.setMinimumSize(dimension_minimum);
+        //preview_scroll_pane.setPreferredSize(dimension_prefered);
+        //preview_scroll_pane.setMinimumSize(dimension_minimum);
         
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,wiki_area_pane, preview_scroll_pane);
         splitPane.setOneTouchExpandable(true);
@@ -98,11 +98,12 @@ public class MarkdownEditorView extends JPanel implements Observer
 			}
 		});
 	}
-
+	
 	@Override
 	public void update(Observable arg0, Object arg1)
 	{
 		MarkdownDocument m = (MarkdownDocument) arg0;
+		if(m.isLoad_editor()){editeur.setText(m.getTexte());}
 		apercu.setText(markdownProcessor.markdown(m.getTexte()));
 	}
 	

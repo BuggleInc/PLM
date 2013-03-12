@@ -329,16 +329,27 @@ public abstract class World {
 	public String getAbout() {
 		if (about == null) {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
-			StringBuffer sb = Reader.fileToStringBuffer(filename, "html", true);
+			StringBuffer sb = Reader.fileToStringBuffer(filename, "md", true);
 			if (sb==null) {
-				about = "File "+filename+".html not found.";
+				about = "File "+filename+".md not found.";
 				return about;
 			}
 			/* read it */
-			about = "<html>\n" + HTMLMissionHeader + "<body>\n" + sb.toString() + "</body>\n</html>\n";
+			about = sb.toString();
 		}
 
 		return about;
+	}
+	
+	public String getAboutFilename() {
+			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
+			StringBuffer sb = Reader.fileToStringBuffer(filename, "md", true);
+			if (sb==null) {
+				about = "File "+filename+".md not found.";
+				return about;
+			}
+
+		return filename;
 	}
 
 	protected Object[] parameters = null;
