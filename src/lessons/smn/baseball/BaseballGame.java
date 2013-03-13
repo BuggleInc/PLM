@@ -16,9 +16,9 @@ public class BaseballGame extends ExerciseTemplated {
 	 */
 	public BaseballGame(Lesson lesson) {
 		super(lesson);
-		
-		//addProgLanguage(Game.PYTHON);
 	
+	//	this.addProgLanguage(Game.SCRATCH);
+		
 		BaseballWorld sets[] = new BaseballWorld[3];
 		
 		sets[0]= new BaseballWorld("4 bases",4);

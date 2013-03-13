@@ -127,7 +127,7 @@ public class PancakeWorldView extends WorldView {
 	 * @param pancakeNumber: the number of the pancake draw
 	 */
 	private void drawPancake(Graphics2D g2, double xoffset,Pancake p,int pancakeNumber){
-		int psize = p.getSize();
+		int psize = p.getRadius();
 		if ( p.isUpsideDown())
 		{
 			g2.setColor(Color.YELLOW);

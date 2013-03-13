@@ -66,12 +66,12 @@ public class PancakeEntity extends Entity {
 	}
 
 	/**
-	 * Give the size of a specific pancake among others
+	 * Give the radius of a specific pancake among others
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
-	 * @return The size of the expected pancake
+	 * @return The radius of the expected pancake
 	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
-	public int getPancakeSize(int pancakeNumber) throws InvalidPancakeNumber{
+	public int getPancakeRadius(int pancakeNumber) throws InvalidPancakeNumber{
 		return ((PancakeWorld) world).getPancakeSize(pancakeNumber);
 	}
 	

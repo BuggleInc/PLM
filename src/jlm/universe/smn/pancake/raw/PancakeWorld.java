@@ -133,7 +133,7 @@ public class PancakeWorld extends World {
 		}
 		else
 		{
-			return this.stack.getPancake(pancakeNumber).getSize();
+			return this.stack.getPancake(pancakeNumber).getRadius();
 		}
 	}
 

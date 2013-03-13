@@ -162,7 +162,7 @@ public class PancakeWorldView extends WorldView {
 			drawPlate(g2,xoffset,amountOfPancakes);
 			for (int i = 0; i<amountOfPancakes ;i++)
 			{ 
-				int psize = stack.getPancake(amountOfPancakes-i-1).getSize();
+				int psize = stack.getPancake(amountOfPancakes-i-1).getRadius();
 				drawPancake(g2,xoffset,psize,i);
 			}
 			

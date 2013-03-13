@@ -61,6 +61,7 @@ public class BaseballGameEntity extends BaseballEntity {
 			this.bringHole(wantedPlayerLocation[0]-1, 1,wantedPlayerLocation[1]);
 			this.bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,1);
 		}
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
 	

@@ -5,15 +5,15 @@ package jlm.universe.smn.pancake.burned;
  */
 public class Pancake {
 
-	private int size; // Size of the pancake
+	private int radius; // Radius of the pancake
 	private boolean upsideDown; // True if the burned face is facing the sky, else false
 	
 	/**
 	 * Constructor of the class Pancake
-	 * @param size :the size of the pancake
+	 * @param radius :the radius of the pancake
 	 */
 	public Pancake(int size) {
-		this.size = size;
+		this.radius = size;
 		this.upsideDown = false;
 	}
 	
@@ -22,7 +22,7 @@ public class Pancake {
 	 * @return a copy of the method caller
 	 */
 	public Pancake copy() {
-		Pancake p = new Pancake(this.getSize());
+		Pancake p = new Pancake(this.getRadius());
 		if ( this.isUpsideDown())
 		{
 			p.flip();
@@ -38,11 +38,11 @@ public class Pancake {
 	}
 	
 	/**
-	 * Give the size of the pancake
-	 * @return The size of the pancake
+	 * Give the radius of the pancake
+	 * @return The radius of the pancake
 	 */
-	public int getSize() {
-		return this.size;
+	public int getRadius() {
+		return this.radius;
 	}
 	
 	/**
@@ -67,7 +67,7 @@ public class Pancake {
 		else
 		{
 			Pancake other = (Pancake) o;
-			sw = (this.getSize()==other.getSize() )
+			sw = (this.getRadius()==other.getRadius() )
 					&& (this.isUpsideDown()==other.isUpsideDown());
 		}
 		return sw;
@@ -78,7 +78,7 @@ public class Pancake {
 	 * @return A string representation of the pancake
 	 */
 	public String toString() {
-		String s = "< Size: "+this.getSize();
+		String s = "< Radius: "+this.getRadius();
 		if ( this.isUpsideDown())
 		{
 			s+=" , upside down";

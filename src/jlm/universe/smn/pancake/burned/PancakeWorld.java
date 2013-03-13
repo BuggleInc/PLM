@@ -123,7 +123,7 @@ public class PancakeWorld extends World {
 	/**
 	 * Give the size of a specific pancake among others
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
-	 * @return The size of the expected pancake
+	 * @return The radius of the expected pancake
 	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
 	public int getPancakeSize(int pancakeNumber) throws InvalidPancakeNumber{
@@ -135,7 +135,7 @@ public class PancakeWorld extends World {
 		}
 		else
 		{
-			return this.stack.getPancake(pancakeNumber).getSize();
+			return this.stack.getPancake(pancakeNumber).getRadius();
 		}
 	}
 

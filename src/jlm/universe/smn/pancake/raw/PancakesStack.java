@@ -143,7 +143,7 @@ public class PancakesStack {
 	 * @return The size of the expected pancake
 	 */
 	public int getPancakeSize(int pancakeNumber){
-		return this.getPancake(pancakeNumber).getSize();
+		return this.getPancake(pancakeNumber).getRadius();
 	}
 
 	/**
@@ -164,7 +164,7 @@ public class PancakesStack {
 		for ( int pancakeNumber = 0 ; stackSorted  && pancakeNumber < stackSize ; pancakeNumber++)
 		{
 			Pancake pancake = this.getPancake(pancakeNumber);
-			stackSorted = ( pancake.getSize() == pancakeNumber+1);
+			stackSorted = ( pancake.getRadius() == pancakeNumber+1);
 		}
 		return stackSorted;
 	}
@@ -213,7 +213,7 @@ public class PancakesStack {
 			{
 				int index = this.findBiggestPancake(pancakesToSort);
 				this.flip(index+1);	// putting the pancake at the top
-				this.flip(this.getPancake(0).getSize());	// hit the bottom !
+				this.flip(this.getPancake(0).getRadius());	// hit the bottom !
 			}	
 		}
 	}
@@ -228,7 +228,7 @@ public class PancakesStack {
 		boolean found = false;
 		for ( int j = 0 ; j < numberOfPancakesNotSorted && !found; j++)
 		{
-			if ( this.getPancake(j).getSize() == numberOfPancakesNotSorted)
+			if ( this.getPancake(j).getRadius() == numberOfPancakesNotSorted)
 			{
 				indexBigPancake = j;	// gotcha !
 				found = true;

@@ -29,7 +29,7 @@ public class BurnedPancakePlateEntity extends PancakeEntity {
 		boolean currentPancakeAlreadySorted;
 		for ( int pancakesToSort = stackSize-1 ; pancakesToSort != -1 && !myWorld.isSorted() ; pancakesToSort-- )
 		{
-			currentPancakeAlreadySorted= (this.getPancakeSize(pancakesToSort)==pancakesToSort+1 
+			currentPancakeAlreadySorted= (this.getPancakeRadius(pancakesToSort)==pancakesToSort+1 
 					&& !this.isPancakeUpsideDown(pancakesToSort) ) ;
 			if ( !currentPancakeAlreadySorted)
 			{
@@ -37,7 +37,7 @@ public class BurnedPancakePlateEntity extends PancakeEntity {
 				boolean found = false;
 				for ( int currentPancake = 0 ; currentPancake < pancakesToSort+1 && !found; currentPancake++)
 				{
-					if ( this.getPancakeSize(currentPancake) == pancakesToSort+1)
+					if ( this.getPancakeRadius(currentPancake) == pancakesToSort+1)
 					{
 						indexBigPancake = currentPancake;	// gotcha !
 						found = true;
@@ -53,7 +53,7 @@ public class BurnedPancakePlateEntity extends PancakeEntity {
 					{
 						this.flip(1);	// show your dark side to the world
 					}
-					this.flip(this.getPancakeSize(0));	// hit the bottom !
+					this.flip(this.getPancakeRadius(0));	// hit the bottom !
 				}
 				else
 				{

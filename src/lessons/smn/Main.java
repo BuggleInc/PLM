@@ -8,10 +8,8 @@ import lessons.smn.pancake.raw.RawPancakePlate;
 public class Main extends Lesson {
 	@Override
 	protected void loadExercises() {
-		
-		addExercise(new BaseballGame(this));
 		addExercise(new RawPancakePlate(this));
 		addExercise(new BurnedPancakePlate(this));
-
+		addExercise(new BaseballGame(this));
 	}
 }

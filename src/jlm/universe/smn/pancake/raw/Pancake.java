@@ -5,14 +5,14 @@ package jlm.universe.smn.pancake.raw;
  */
 public class Pancake {
 
-	private int size; // Size of the pancake
+	private int radius; // Radius of the pancake
 	
 	/**
 	 * Constructor of the class Pancake
-	 * @param size :the size of the pancake
+	 * @param radius :the radius of the pancake
 	 */
-	public Pancake(int size) {
-		this.size = size;
+	public Pancake(int radius) {
+		this.radius = radius;
 	}
 	
 	/**
@@ -20,15 +20,15 @@ public class Pancake {
 	 * @return a copy of the method caller
 	 */
 	public Pancake copy() {
-		return new Pancake(this.getSize());
+		return new Pancake(this.getRadius());
 	}
 	
 	/**
-	 * Give the size of the pancake
-	 * @return The size of the pancake
+	 * Give the radius of the pancake
+	 * @return The radius of the pancake
 	 */
-	public int getSize() {
-		return this.size;
+	public int getRadius() {
+		return this.radius;
 	}
 	
 	/**
@@ -45,7 +45,7 @@ public class Pancake {
 		else
 		{
 			Pancake other = (Pancake) o;
-			sw = (this.getSize()==other.getSize() );
+			sw = (this.getRadius()==other.getRadius() );
 		}
 		return sw;
 	}
@@ -55,7 +55,7 @@ public class Pancake {
 	 * @return A string representation of the pancake.
 	 */
 	public String toString() {
-		return "< Size: "+this.getSize()+" >";
+		return "< Size: "+this.getRadius()+" >";
 	}
 	
 }
