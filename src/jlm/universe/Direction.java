@@ -2,6 +2,8 @@ package jlm.universe;
 
 import java.awt.Point;
 
+import org.python.antlr.PythonParser.return_stmt_return;
+
 
 // TODO: rewrite using enumeration
 public class Direction {
@@ -31,6 +33,20 @@ public class Direction {
 
 	private Direction(int d) {
 		value = d;
+	}
+	
+	public static Direction getDirectionFromString(String s)
+	{
+		if (s.toUpperCase().equals("NORTH"))
+			return Direction.NORTH;
+		else if (s.toUpperCase().equals("EAST"))
+			return Direction.EAST;
+		else if (s.toUpperCase().equals("SOUTH"))
+			return Direction.SOUTH;
+		else if (s.toUpperCase().equals("WEST"))
+			return Direction.WEST;
+		else
+			throw new IllegalArgumentException("String must be equals to north, east, south or west");
 	}
 
 	public boolean equals(Direction d) {

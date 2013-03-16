@@ -19,6 +19,7 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
 import jlm.core.ui.ResourcesCache;
+import jlm.universe.Direction;
 
 
 public class MainFrame extends JFrame {
@@ -59,6 +60,7 @@ public class MainFrame extends JFrame {
 		JToggleButton topButton = createButton("topwall"); 
 		JToggleButton leftButton = createButton("leftwall"); 
 		JToggleButton baggleButton = createButton("baggle");
+		JToggleButton buggleButton = createButton("buggle");
 		JToggleButton textButton = createButton("text");
 		JToggleButton colorButton = createButton("colors",new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -90,6 +92,7 @@ public class MainFrame extends JFrame {
 		toolBar.add(topButton);
 		toolBar.add(leftButton);
 		toolBar.add(baggleButton);
+		toolBar.add(buggleButton);
 		toolBar.add(colorButton);
 		toolBar.add(textButton);
 
@@ -97,6 +100,7 @@ public class MainFrame extends JFrame {
 		tools.add(topButton);
 		tools.add(leftButton);
 		tools.add(baggleButton);
+		tools.add(buggleButton);
 		tools.add(colorButton);
 		tools.add(textButton);
 
