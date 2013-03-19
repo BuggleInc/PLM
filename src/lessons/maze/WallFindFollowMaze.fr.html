@@ -1,0 +1,37 @@
+<h2>Trouver le mur à suivre</h2>
+
+<p>
+Il s'agit d'exactement le même labyrinthe que précédement, mais le 
+buggle ne commence pas à la même position.
+En particulier au commencement, il n'a aucun mur à sa gauche.
+</p>
+
+<p>En conséquence, la méthode que vous avez écrit pour l'exercice précédent
+ne fonctionnera probablement pas sur celui-ci.
+Si vous cliquez sur le bouton run sans modifier votre code, votre buggle va sans doute
+tourner en rond sur les quatre cases libres à côté de sa position initiale.
+( si ce n'est pas le cas, vous n'avez pas vraiment suivi à la lettre 
+l'algorithme énoncé dans l'exercice précédent. Vous êtes chanceux et vous avez le droit
+de passer à l'exercice suivant une fois que vous aurez lu ce texte).
+</p>
+
+<p>C'est parce que votre méthode <code>keepHandOnSideWall()
+</code> a une <b>pré-condition</b>
+implicite: votre buggle doit avoir un mur à sa gauche 
+pour assurer son fonctionnement normal.
+Les pré-conditions sont très utilisées en informatique.
+Quand elles sont spécifiées de manière explicite, elles
+aident à comprendre le code écrit par autrui, 
+et elles permettent parfois de prouver que le code fonctionne correctement.
+</p>
+
+<h3>Objectif de cet exercice</h3>
+
+<p> Corriger le problème devrait être très facile.
+Assurez-vous tout simplement que la pré-condition de
+<code>keepHandOnSideWall()</code> est vérifiée avant de l'appeler.
+</p>
+<p>Pour ce faire, mettez à jour votre méthode run() pour 
+tout d'abord rechercher à avoir un mur à gauche avant de faire 
+la grande boucle <code>while</code>.
+</p>

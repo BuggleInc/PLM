@@ -1,0 +1,64 @@
+<h2>Algorithme basique de recherche du plus cours chemin</h2>
+
+<p>Pour conclure cette introduction aux algorithmes de sorties de labyrinthes, 
+nous allons étudier un autre moyen de trouver la sortie. Le buggle de cette lesson est particulier:
+c'est un jedi. Il peut donc sentir la Force. Cela signifie qu'il est apte à resentir son environnement proche.
+</p>
+
+<p>En utilisant la méthode <code>BuggleWorld getMyWorld()</code>, 
+il peut obtenir des informations sur le monde où il est retenu.</p>
+
+<p>Un objet de type <code>BuggleWorld</code> est un objet Java sur lequel 
+vous pouvez appelez les méthodes suivantes:
+	<ul>
+		<li><code>int getHeight()</code> pour connaitre la hauteur du monde.</li>
+		<li><code>int getWidth()</code> pour connaitre la largeur du monde.</li>
+		<li><code>BuggleWorldCell getCell(int x, int y)</code> pour retrouver l'objet 
+		  <code>BuggleWorldCell</code> localisé à la position donnée dans ce monde.</li>
+    </ul>
+</p>
+
+<p>Une <code>BuggleWorldCell</code> est un objet Java qui représente une case du monde. 
+Sur un tel objet, il est possible d'appeler les méthodes suivantes:
+    <ul>		
+	    <li><code>boolean hasContent()</code> pour savoir s'il y a quelquechose d'écrit sur le sol de cette case.</li>
+	    <li><code>void setContentFromInt(int v)</code> pour écrire une valeur entière sur le sol de cette case.</li>
+		<li><code>int getContentAsInt()</code> pour récupérer la valeur qui est écrite sur le sol de cette case.</li>
+		<li><code>void emptyContent()</code> pour nettoyer le sol de cette case ( la Force a des usages multiples, jeune padawan).</li>
+		<li><code>boolean hasTopWall()</code> pour savoir s'il y a un mur sur le côté supérieur de cette case.</li>
+		<li><code>boolean hasLeftWall()</code> pour savoir s'il y a un mur sur le côté gauche de cette case.</li>
+		<li><code>boolean hasBaggle()</code> pour savoir s'il y a un baggle sur cette case.</li>
+	</ul>
+</p>
+
+<p>Il est bon de remarquer qu'il n'est pas possible de construire un mur sur le côté droit ou sur le côté inférieur d'une case, 
+c'est contre les croyances religieuses buggle-esques.
+Néanmoins, quand de tels murs existent, cela signifie qu'ils ont été construits sur une case adjacente -- 
+comme mur supérieur ( respectivement gauche ) de la case qui est située en dessous ( respectivement sur la droite ) 
+de la case courrante.
+</p>
+
+<h3>Objectif de cet exercice</h3>
+
+<p><a name="Objective"/>Ecrivez une méthode <code>evaluatePaths()</code> qui exécute une version simplifiée 
+de l'algorithme de recherche du plus cours chemin.
+Cette algorithme écrira sur chaque case du monde ( ou au minimum sur celles qui sont utiles ) la distance de cette case
+à la sortie.
+<br/>
+Pour réussir cet objectif, votre algorithme devra trouver la sortie de ce labyrinthe sur la carte.
+Ensuite, pour chaque case adjacente à la sortie, il devra la marquer avec l'entier 1 ( indiquant la distance ).
+Ensuite, il devra itérer ce processus pour marquer les cellules qui sont à une distance de 2 de la sortie 
+et continuer jusqu'à ce que la case où notre buggle se trouve soit marquée.
+</p>
+
+<p>Ecrivez ensuite une méthode <code>followShortestPath()</code> qui fera suivre à notre jedi le plus cours chemin.
+De 
+that will make the jedi buggle to follow the shortest path. 
+Le buggle a tout simplement à suivre les cases ayant la plus petite distance à la sortie.
+Vous pouvez utiliser la méthode <code>void setDirection(Direction d)</code> 
+pour faire que votre buggle regarde dans une direction particulière comme
+<code>Direction.NORTH</code> ou <code>Direction.EAST</code>.</p>
+
+<div class="tip" id="tip-1" alt="Je suis perdu, j'ai besoin d'indications supplémentaires.">
+N'oublie pas, un jedi doit sentir la Force filtrer à travers son esprit.
+</div>	
