@@ -23,65 +23,62 @@ public class PledgeMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	}
 
 	/* BEGIN SOLUTION */
-	public void run() {
-		chosenD = Direction.NORTH;
-		setDirection(chosenD);
+	 public void run() {
+		 int state = 0 ;
+		 this.angleSum = 0;
+		 this.setDirection(this.chosenDirection);
+		 while ( !isOverBaggle() )
+		 {
+			 switch ( state )
+			 {
+			 case 0: // North runner mode
+				 while ( !isFacingWall() )
+				 {
+					 forward();
+			     }
+				 this.turnRight(); // make sure that we have a left wall
+				 this.angleSum--;
+				 state = 1; // time to enter the Left Follower mode
+			 break;
+			 case 1: // Left Follower Mode
+				 this.stepHandOnWall(); // follow the left wall
+		         if ( this.isChosenDirectionFree() && this.angleSum == 0  ) 
+		         {
+		        	 state =0; // time to enter in North Runner mode
+			     }
+				          break;
+		      }
+		 }
+		 this.pickUpBaggle();
+	 }
+	 
+	int angleSum;
 
-		while (!isOverBaggle()) {
-			while (!isFacingWall()) {
-				forward();
-			}
+	private void stepHandOnWall(){
+		while ( ! isFacingWall() )
+		{
+			forward();
 			turnLeft();
-
-			do {
-				keepHandOnSideWall();
-			} while (!(angleSum == 0 && isChosenDirectionFree()) && !isOverBaggle());
+			this.angleSum++;
 		}
-		
-		pickUpBaggle();
+		turnRight();
+		this.angleSum--;
 	}
 
-	int angleSum = 0;
-	Direction chosenD;
-	Direction memorizedD;
+	Direction chosenDirection = Direction.NORTH;
 
 	private boolean isChosenDirectionFree() {
-		memorizedD = getDirection();
-		setDirection(chosenD);
-		if (!isFacingWall()) {
-			return true;
-		} else {
-			setDirection(memorizedD);
-			return false;
-		}
-	}
-
-	public void keepHandOnSideWall() {
-		keepHandOnRightWall();
+		Direction memorizedD = getDirection();
+		boolean isFree = false;
+		this.setDirection(this.chosenDirection);
+		if (!isFacingWall()) 
+		{
+			isFree=true;
+		} 
+		this.setDirection(memorizedD);
+		return isFree;
 	}
 	
-	private void keepHandOnRightWall() {
-		turnRight();
-		if (!isFacingWall()) {
-			angleSum = angleSum + 1;
-			forward(); // turn right then forward
-		} else {
-			turnLeft();
-			if (!isFacingWall()) {
-				forward(); // forward, direction did not change
-			} else {
-				turnLeft();
-				if (!isFacingWall()) {
-					angleSum = angleSum - 1;
-					forward(); // turn left then forward
-				} else {
-					angleSum = -2;
-					turnLeft(); // turn back then forward
-					forward();
-				}
-			}
-		}
-	}
 
 	/* END TEMPLATE */
 }
