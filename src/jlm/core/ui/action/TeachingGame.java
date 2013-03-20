@@ -100,7 +100,7 @@ class FramePassword extends JPanel implements ActionListener {
 
 	public FramePassword(){
 		//Création de la fenêtre
-		JFrame frame = new JFrame("PasswordDemo");
+		JFrame frame = new JFrame("Teach mode password");
 		final FramePassword newContentPane = new FramePassword(frame);
 		newContentPane.setOpaque(true);
 		frame.setContentPane(newContentPane);
