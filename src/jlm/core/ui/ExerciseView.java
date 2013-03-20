@@ -1,10 +1,19 @@
 package jlm.core.ui;
 
+import java.awt.AWTKeyStroke;
+import java.awt.Dimension;
+import java.awt.KeyboardFocusManager;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.swing.InputMap;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JSplitPane;
 import javax.swing.JTabbedPane;
+import javax.swing.KeyStroke;
 
 import jlm.core.GameListener;
 import jlm.core.model.Game;
@@ -69,7 +78,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		upperPane.add(speedSlider, "growx");
 
 		tabPane = new JTabbedPane();
-		
+		removeControlPage(tabPane);
 		if (Game.getInstance().getSelectedWorld() != null) {
 			worldView = Game.getInstance().getSelectedWorld().getView();
 			for (WorldView wv: worldView) {
@@ -177,4 +186,30 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
+	
+	 private static void removeControlPage(JComponent comp)
+	  {
+	    KeyStroke ctrlTab = KeyStroke.getKeyStroke("ctrl TAB");
+	    KeyStroke ctrlShiftTab = KeyStroke.getKeyStroke("ctrl shift TAB");
+	 
+	    // Remove ctrl-tab from normal focus traversal
+	    Set<AWTKeyStroke> forwardKeys = new HashSet<AWTKeyStroke>(comp.getFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS));
+	    forwardKeys.remove(ctrlTab);
+	    comp.setFocusTraversalKeys(KeyboardFocusManager.FORWARD_TRAVERSAL_KEYS, forwardKeys);
+	 
+	    // Remove ctrl-shift-tab from normal focus traversal
+	    Set<AWTKeyStroke> backwardKeys = new HashSet<AWTKeyStroke>(comp.getFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS));
+	    backwardKeys.remove(ctrlShiftTab);
+	    comp.setFocusTraversalKeys(KeyboardFocusManager.BACKWARD_TRAVERSAL_KEYS, backwardKeys);
+	 
+	    // Add keys to the tab's input map
+	    InputMap inputMap = comp.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+	    inputMap.put(ctrlTab, "navigateNext");
+	    inputMap.put(ctrlShiftTab, "navigatePrevious");
+	  }
+
+	public JTabbedPane getTabPane() {
+		return tabPane;
+	}
+	 
 }

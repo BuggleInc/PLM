@@ -1,5 +1,30 @@
 package jlm.core.ui;
 
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
+
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
@@ -13,11 +38,6 @@ import jlm.core.ui.action.*;
 import jlm.universe.World;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
 
@@ -33,16 +53,19 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton demoButton;
     private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
-	
+	private MissionEditorTabs met;
+
 	private JSplitPane mainPanel;
 	
 	private static final String frameTitle = "Java Learning Machine";
-	
-	
+
+	private LessonNavigatorPane lessonNavigator;
+
 	private MainFrame() {
 		super(frameTitle);
 		Reader.setLocale(this.getLocale().getLanguage());
 		initComponents(Game.getInstance());
+		this.keyListeners(exerciseView);
 	}
 
 	public static MainFrame getInstance() {
@@ -75,12 +98,21 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		mainPanel.setResizeWeight(weight);
 		mainPanel.setDividerLocation((int) (1024 * weight));
 
-		mainPanel.setLeftComponent(new MissionEditorTabs());
-
+		mainPanel.setLeftComponent(met=new MissionEditorTabs());
 		exerciseView = new ExerciseView(g);
 		mainPanel.setRightComponent(exerciseView);
 
-		logPane.setTopComponent(mainPanel);
+		/* FIXME CODE ADDED */
+		JSplitPane leftSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true); 
+		leftSplitPane.setOneTouchExpandable(true);
+		double leftWeight = 0.2;
+		leftSplitPane.setResizeWeight(leftWeight);
+		leftSplitPane.setRightComponent(mainPanel);
+		lessonNavigator = new LessonNavigatorPane();
+		leftSplitPane.setLeftComponent(lessonNavigator);
+		leftSplitPane.setDividerLocation((int) (1024 * leftWeight)); 
+		logPane.setTopComponent(leftSplitPane);
+		/* END */
 		outputArea = new LoggerPanel(g);
 		JScrollPane outputScrollPane = new JScrollPane(outputArea);
 		logPane.setBottomComponent(outputScrollPane);
@@ -141,6 +173,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		// Teacher console menu item (shown only if defined in the JLM properties)
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
             menuItem = new JMenuItem(new AbstractGameAction(g, "Teacher Console") {
+
+				private static final long serialVersionUID = 1L;
 				private TeacherConsoleDialog dialog = null;
 
                 @Override
@@ -159,6 +193,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         // Menu item to change the current Course
         menuItem = new JMenuItem(new AbstractGameAction(g, "Choose your course") {
 
+			private static final long serialVersionUID = 1L;
 			private ChooseCourseDialog dialog = null;
 
             @Override
@@ -200,14 +235,14 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(g, "Import Session Cache",
 				null, this));
 		menu.add(importSessionMenuItem);
-		
+
 		JMenuItem switchDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, "Debug mode", null, "Display more debug message in logs", "Cannot switch debug mode now", KeyEvent.VK_D) {
 			private static final long serialVersionUID = 1L;
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.switchDebug();
-				
+
 			}
 		});
 		menu.add(switchDebug);
@@ -217,12 +252,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu = new JMenu("Language");
 		menu.setMnemonic(KeyEvent.VK_L);
 		menuBar.add(menu);
-		
+
 		/* === Programming language changing === */
 		JMenu textLangSubMenu = new JMenu("Human");
 		menu.add(textLangSubMenu);
 		ButtonGroup group = new ButtonGroup();
-		
+
 		for (String[] lang : new String[][] { {"Francais","fr"}, {"English","en"}}) {
 			JMenuItem item = new JRadioButtonMenuItem(new SetLanguage(g, lang[0], lang[1]));
 			if (lang[1].equals(Reader.getLocale())) 
@@ -230,7 +265,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			group.add(item);
 			textLangSubMenu.add(item);		
 		}
-		
+
 		menu.add(new ProgLangSubMenu());
 
 		/* === Help menu === */
@@ -261,12 +296,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			public void actionPerformed(ActionEvent arg0) {
 				if (this.dialog == null) 
 					this.dialog = new AboutLessonDialog(MainFrame.getInstance());
-				
+
 				this.dialog.setVisible(true);
 			}			
 		});
 		menu.add(menuItem);
-		
+
 		menuItem = new JMenuItem(new AbstractGameAction(g, "About this world", null) {
 			private static final long serialVersionUID = 1L;
 
@@ -281,7 +316,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
-		
+
 		if (!System.getProperty("os.name").startsWith("Mac")) {
 			menu.add(new JMenuItem(new AbstractGameAction(g, "About JLM", null) {
 				private static final long serialVersionUID = 1L;
@@ -306,12 +341,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	}
 	
-	
 	public void appendToTitle(String addendum) {
 		this.setTitle(MainFrame.frameTitle +"      "+ addendum);
 	}
-	
-	
+
 	private void initToolBar(Game g) {
 		JToolBar toolBar = new JToolBar();
 		toolBar.setFloatable(true);
@@ -319,20 +352,30 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
 		startButton = new PropagatingButton(new StartExecution(g, "Run", ii));
+		//shortcut ctrl-r
+		startButton.setMnemonic(KeyEvent.VK_R);
 
 		debugButton = new PropagatingButton(new StepExecution(g, "Step", 
 				ResourcesCache.getIcon("resources/debug.png")));
-		
+		//shortcut ctrl-b
+		debugButton.setMnemonic(KeyEvent.VK_B);
+
 		stopButton = new PropagatingButton(new StopExecution(g, "Stop", 
 				ResourcesCache.getIcon("resources/stop.png")));
+		//shortcut ctrl-s
+		stopButton.setMnemonic(KeyEvent.VK_S);
 		stopButton.setEnabled(false);
 
 		resetButton = new PropagatingButton(new Reset(g, "Reset", 
 				ResourcesCache.getIcon("resources/reset.png")));
+		//shortcut ctrl-z
+		resetButton.setMnemonic(KeyEvent.VK_Z);
 		resetButton.setEnabled(true);
 
 		demoButton = new PropagatingButton(new PlayDemo(g, "Demo", 
 				ResourcesCache.getIcon("resources/demo.png")));
+		//shortcut ctrl-d
+		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
         helpMeButton = new PropagatingToggleButton(new HelpMe(g, "Help",
@@ -439,13 +482,14 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	public void showWorldView() {
 		mainPanel.getBottomComponent().setVisible(true);
 		mainPanel.setDividerSize(10);
+
 		validate();
 	}
 	public void lessonChooser() {
-		
+
 	}
 
-	
+
 	public void quit() {
 		MainFrame.getInstance().dispose();
 		Game.getInstance().quit();
@@ -469,6 +513,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	public void currentExerciseHasChanged(Lecture lecture) {
 		Game g = Game.getInstance();
 		if (lecture instanceof Exercise) {
+			/* FIXME CODE ADDED */
+			lessonNavigator.currentExerciseHasChanged(lecture);
 			showWorldView();
 			Exercise exo = (Exercise) lecture;
 			for (ProgrammingLanguage l:exo.getProgLanguages()) {
@@ -491,7 +537,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
-	
+
 	/** Simple JButton which pass the enabled signals to their action */
 	class PropagatingButton extends JButton {
 		private static final long serialVersionUID = 1L;
@@ -519,11 +565,71 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			super.setEnabled(enabled);
 		}
 	}
+
+	public void keyListeners(ExerciseView e){
+		//CTLR PAGEUP
+		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP,0 ), null );
+		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN,0), null );
+		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP,0), "action pageup" );
+		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN,0 ), "action pagedown" );
+		this.getRootPane().getActionMap().put("action pageup", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent ae) {
+				System.out.println("touche pageup pressée" );
+				System.out.println(met.getTabCount());
+				int index=(met.getSelectedIndex()==0?met.getTabCount()-1:met.getSelectedIndex()-1);
+				met.setSelectedIndex(index);
+			}
+		});
+		this.getRootPane().getActionMap().put("action pagedown", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent ae) {
+				System.out.println("touche pagedown pressée" );
+				System.out.println(met.getTabCount());
+				int index=(met.getSelectedIndex()==met.getTabCount()-1?0:met.getSelectedIndex()+1);
+				met.setSelectedIndex(index);
+			}
+		});
+		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("left"), "action left" );
+		this.getRootPane().getActionMap().put("action left", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent ae) {
+				System.out.println("touche left pressée" );
+			}
+		}
+				);
+		
+		//F1
+		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("F1" ), "action F1" );
+		this.getRootPane().getActionMap().put("action F1", new AbstractAction() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent ae) {
+				System.out.println("touche F1 pressée" );
+			}
+		}
+				);
+	}
 }
 
 class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameListener {
 	private static final long serialVersionUID = 1L;
-	
+
 	public ProgLangSubMenu() {
 		super("Computer");
 		Game.getInstance().addGameListener(this);
