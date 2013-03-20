@@ -68,7 +68,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	public void currentExerciseHasChanged(Lecture lecture) {
 		currentExercise = lecture;		
 
-		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage()); /* Redo any code panel, and reload the mission */
+		this.game.getCurrentLesson().getCurrentExercise().getMission(Game.getProgrammingLanguage());
+		init();
+		currentProgrammingLanguageHasChanged(Game.getProgrammingLanguage());
 		selectedEntityHasChanged();
 		doLayout();
 	}
@@ -115,7 +117,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 			if (c instanceof IEntityStackListener)
 				((IEntityStackListener) c).tracedEntityChanged(game.getSelectedEntity());
 		}
-		init();
 	}
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
