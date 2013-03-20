@@ -1,0 +1,12 @@
+# Radar de vitesse #
+Vous conduisez un peu trop vite et un officier de police vous
+arrête. Écrivez le code pour calculer le résultat, encodé sous forme d'un
+entier : 0=pas d'amende, 1=petite amende, 2=grosse amende. Si votre vitesse
+est inférieure à 60, le résultat est 0. Si la vitesse est incluse entre 61
+et 80 (inclus), le résultat est 1. Si la vitesse est 81 ou plus, le résultat
+est 2. Tout ceci ne vaut que si ce n'est pas votre anniversaire aujourd'hui,
+car sinon, votre vitesse peut être supérieure de 5 dans tous les cas.
+
+Cet exercice a été extrait de l'excellent site d'exercices
+http://javabat.com/ pour JLM.
+

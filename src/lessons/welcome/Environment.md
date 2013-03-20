@@ -1,0 +1,44 @@
+## Welcome in the Buggles' World ##
+You just started the Java Learning Machine. This is a Learning Management
+System (LMS) aiming at teaching the art of computer programming through interactive
+exercises. It is constituted by a set of exercises grouped by lessons, allowing you
+to practice at your own pace. By default, the environment is configured to be programmed
+in the Java programming language, but you can change it from the Language menu if you want.
+
+In this first lesson, the buggles will lead your first steps in programming. ### ? What is this?? ###
+The buggles are little animals obeying any order you may give them. In each
+exercise, you have to provide them with the right instructions so that the
+world turns into the objective of the exercise. For example in this exercise,
+you show instruct your buggle to move forward once. You can see that by checking
+the difference between the view and the one.
+Depending on the lessons (and your settings in the Language menu), your code must
+be written in either Java, JavaScript, Python or Ruby. ### Working environment ###
+Before going any further, get familiar with the working environment. Have a
+look at the several elements composing the main window, move your mouse over
+them to show the tooltip, and experiment with the elements to see what they do.
+The white area below is the console: this is where errors and messages get
+displayed. If you have access to the net, try to open the forum in the help
+menu to check if other people are connected right now. Note that when you
+successfully solve an exercise, the good news is spread on twitter.
+Keep posted to the progress of your friends by following @jlmlovers :)
+
+If your code contains errors (and code always do at some point), the
+computer will display error messages in the console. You obviously have to
+fix the errors to pass the exercises. The messages that get displayed may
+sound scary at first glance, but don't panic. The compiler is only somehow
+limited in its communication abilities, but he's not mean. If you look closer,
+the solution to solve your issue is written in the middle of those cryptic
+messages. You'll see, with a bit of habit, we get used to it. ### What am I supposed to do? ###
+
+It's time to write your first program. Simply ask your buggle to move one step
+forward using the Source Code pane. For that, simply write the following code
+(clicking on the interactive controls is not enough: You have to write the code
+after experimenting interactively).     forward();
+    forward()
+
+Do not forget the final which tells the compiler that the
+instruction is over (yes, computers are so dumb that they cannot obvious stuff like this).
+
+Once done, clic on run, and proceed to next exercise using the File menu entry
+(or keep around to experiment further if you feel so).
+

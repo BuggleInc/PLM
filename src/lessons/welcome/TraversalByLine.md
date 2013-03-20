@@ -1,0 +1,10 @@
+## Traversal by line ##
+You once again have to let the buggle traverse the world numbering the cells
+on its way, but the goal of this exercise is to write a line traversal. Most
+of the code you wrote for previous exercise remains usable here. Simply, the
+method computing the coordinates of the next buggle position has to be
+correctly updated: if you are at the right of a line, you have to go to the
+begining of the next one. If not, you have to go to the right cell.
+
+Your turn...
+

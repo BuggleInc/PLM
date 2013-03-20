@@ -1,0 +1,10 @@
+# Éclats de chaîne #
+Étant donné une chaîne de caractères, retournez une nouvelle chaîne formée
+en
+prenant un caractère sur deux dans le paramètre, en commençant avec le
+premier
+caractère. Ainsi, "Bonjour" donne "Bnor".
+
+Cet exercice a été extrait de l'excellent site d'exercices
+http://javabat.com/ pour JLM.
+

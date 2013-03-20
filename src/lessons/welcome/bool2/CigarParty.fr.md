@@ -1,0 +1,9 @@
+# Cigares de fête #
+Quand les écureuils font la fête, ils aiment avoir des cigares. Une fête
+d'écureuils est réussie si le nombre de cigares est entre 40 et 60
+(inclus). Sauf si c'est le week-end, auquel cas il n'y a pas de limite
+supérieure au nombre de cigares. Renvoyez vrai si la fête est réussie.
+
+Cet exercice a été extrait de l'excellent site d'exercices
+http://javabat.com/ pour JLM.
+
