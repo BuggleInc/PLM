@@ -1,0 +1,19 @@
+## Three little circles ##
+As we saw (and as you can check in the documentation of this world under
+"About this world"), turtles can only draw straight lines. Despite of this,
+the goal of this world is to draw circles... This can be achived simply by
+realizing that a circle can be seen as a concatenation of very little
+segments.
+
+Differential calculus would even argue that a circle is the asymptotical
+limit of such construct when the size of each segment becomes infinitely
+small while their amount becomes infinitely large (but it is still possible
+to solve this exercise without understanding differential calculus).
+
+### Goal of this exercise ###
+Write a function drawing a circle, taking the size of each of the 360
+segments as parameter. Then use it in your method to draw
+the whole picture. The first circle is obtained with segments of size 0.5,
+the second with segments of size 1 and the last one with 1.5-long
+segments. Once again, this is a hand-on exercise, no recursion is needed.
+

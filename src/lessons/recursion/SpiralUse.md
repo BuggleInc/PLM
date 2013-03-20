@@ -1,0 +1,31 @@
+## Drawing spirals ##
+Can you reproduce the provided patterns of this exercise using the method?
+
+You must provide a method called taking the number of
+the page to draw as parameter. Its code is as following, with A0, B0, etc
+being integers. The goal of this exercise is to find the good values for
+each page.
+
+    void doit(int page) {
+    switch (page) {
+    case 0: /* Drawing of the first page, dubbed "One" */
+    spiral(A0,B0,C0,D0);
+    break;
+    case 1: /* Drawing of the second page, dubbed "Two" */
+    spiral(A1,B1,C1,D1);
+    break;
+    case 2: /* Drawing of the page dubbed "Three" */
+    spiral(A2,B2,C2,D2);
+    break;
+    case 3: /* Drawing of the page dubbed "Four" */
+    spiral(A3,B3,C3,D3);
+    break;
+    case 4: /* Drawing of the page dubbed "Five" */
+    spiral(A4,B4,C4,D4);
+    break;
+    }
+    }
+
+No need to copy over the method of , the turtle of this
+exercise already knows it.
+

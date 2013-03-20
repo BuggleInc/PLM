@@ -1,0 +1,20 @@
+## Trois petits tours ##
+Comme nous l'avons vu (et comme vous pouvez le vérifier en consultant l'aide
+de ce monde dans le menu "À propos de ce monde"), les tortues ne savent que
+se déplacer en ligne droite. Et pourtant, l'objectif de cet exercice est de
+leur faire dessiner des cercles... On peut pourtant résoudre ce problème
+simplement en réalisant qu'un cercle peut être représenté comme une
+concaténation de petits segments.
+
+Les amateurs de calcul différentiel diraient même sans doute qu'un cercle
+est la limite asymptotique d'une telle construction quand la taille des
+segments tend vers zéro alors que leur nombre tend vers l'infini (mais on
+peut tout de même réussir l'exercice sans maîtriser le calcul différentiel).
+
+### Objectif de l'exercice ###
+Écrivez une fonction dessinant un cercle, avec la taille de chacun des 360
+pas passée en paramètre. Utilisez la ensuite dans votre méthode pour réaliser la figure dans son ensemble. Le premier
+cercle s'obtient avec des pas de 0.5, le second avec des pas de 1 et le
+troisième avec des pas de 1.5. Encore une fois, il s'agit d'un exercice de
+prise en main, et aucune récursion n'est nécessaire.
+

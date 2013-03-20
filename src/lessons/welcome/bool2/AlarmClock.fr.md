@@ -1,0 +1,13 @@
+# Radio réveil #
+Étant donné le jour de la semaine, codé de la façon suivante : 0=Dimanche,
+1=Lundi, 2=Mardi, ... 6=Samedi, et un booléen vacation indiquant si nous
+sommes en vacances, retournez une chaine de caractères de la forme "7:00"
+indiquant à quelle heure nous devons régler le radio-réveil. Les jours de la
+semaine, nous devons nous réveiller à 7h tandis que nous pouvons dormir
+jusqu'à 10h le week-end. Pendant les vacances, il nous faut nous lever à 10h
+la semaine tandis que le réglage pour le radio-réveil doit être "off" le
+week-end.
+
+Cet exercice a été extrait de l'excellent site d'exercices
+http://javabat.com/ pour JLM.
+
