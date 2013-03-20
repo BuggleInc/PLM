@@ -31,6 +31,26 @@ public class Pancake {
 	}
 	
 	/**
+	 * Indicate whether some other object is "equal to" this one
+	 * @return If the two objects are equals
+	 * @param Object o: the reference object with which to compare
+	 */
+	public boolean equals(Object o) {
+		boolean sw=true;
+		if (o == null || !(o instanceof Pancake) )
+		{
+			sw = false ;
+		}
+		else
+		{
+			Pancake other = (Pancake) o;
+			sw = (this.getRadius()==other.getRadius() )
+					&& (this.isUpsideDown()==other.isUpsideDown());
+		}
+		return sw;
+	}
+	
+	/**
 	 * Flip a pancake, which leads to changing upsideDown
 	 */
 	public void flip() {
@@ -51,26 +71,6 @@ public class Pancake {
 	 */
 	public boolean isUpsideDown() {
 		return this.upsideDown;
-	}
-	
-	/**
-	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equals
-	 * @param Object o: the reference object with which to compare
-	 */
-	public boolean equals(Object o) {
-		boolean sw=true;
-		if (o == null || !(o instanceof Pancake) )
-		{
-			sw = false ;
-		}
-		else
-		{
-			Pancake other = (Pancake) o;
-			sw = (this.getRadius()==other.getRadius() )
-					&& (this.isUpsideDown()==other.isUpsideDown());
-		}
-		return sw;
 	}
 	
 	/**

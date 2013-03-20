@@ -20,15 +20,13 @@ import jlm.universe.World;
 public class PancakeWorldView extends WorldView {
 
 	private static final long serialVersionUID = 1L;
-	private boolean flipped; // Used in order to improve the visual of the flipping
-	
+		
 	/**
 	 * Constructor of the class PancakeWorldView
 	 * @param w : a world
 	 */
 	public PancakeWorldView(World w) {
 		super(w);
-		this.flipped=false;
 	}
 
 	/**
@@ -99,7 +97,7 @@ public class PancakeWorldView extends WorldView {
 		int yArrow = Math.max(yTop, yBottom);
 	
 		Color colors[] = new Color[2];
-		if ( this.flipped)
+		if ( myWorld.isFlipped())
 		{
 			colors[0]=Color.blue;
 			colors[1]=Color.red;
@@ -115,7 +113,6 @@ public class PancakeWorldView extends WorldView {
 		g2.setColor(colors[1]);
 		g2.drawLine(xMax, yArrow, renderedX, yArrow);
 		drawArrow(g2,xMin,yArrow,xMax,yArrow);
-		this.flipped=!this.flipped;
 	}
 
 	

@@ -32,7 +32,6 @@ public class PancakeEntity extends Entity {
 		super(name);
 	}
 	
-	
 	/** 
 	 * Instantiation Constructor (used by exercises to setup the world) 
 	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
@@ -43,7 +42,7 @@ public class PancakeEntity extends Entity {
 	public PancakeEntity(String name, World world) {
 		super(name,world);
 	}
-
+	
 	/** 
 	 * A copy method needed by the JLM
 	 * @return a new PancakeEntity with the same name as the caller
@@ -74,7 +73,7 @@ public class PancakeEntity extends Entity {
 	public int getPancakeRadius(int pancakeNumber) throws InvalidPancakeNumber{
 		return ((PancakeWorld) world).getPancakeSize(pancakeNumber);
 	}
-	
+
 	/**
 	 * Give the size of the stack of pancakes
 	 * @return The number of pancakes in the stack
@@ -91,6 +90,14 @@ public class PancakeEntity extends Entity {
 	 */
 	public boolean isPancakeUpsideDown(int pancakeNumber) throws InvalidPancakeNumber {
 		return ((PancakeWorld) world).isPancakeUpsideDown(pancakeNumber);
+	}
+	
+	/**
+	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
+	 * @return TRUE if the stack is okay <br>FALSE else
+	 */
+	public boolean isSorted() {
+		return ( (PancakeWorld) this.world).isSorted();
 	}
 	
 	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 

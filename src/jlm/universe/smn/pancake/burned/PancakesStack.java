@@ -6,7 +6,7 @@ package jlm.universe.smn.pancake.burned;
  * @see Pancake
  */
 public class PancakesStack {
-
+	
 	/**
 	 * Create a new stack of pancakes, which can be mixed or not
 	 * @param size : the size of the stack of pancakes 
@@ -21,6 +21,7 @@ public class PancakesStack {
 		return pancakesStack;
 	}
 	
+	private boolean flipped; // Used in order to improve the visual of the flipping
 	private Pancake[] pancakeStack; // The stack of pancakes
 	
 	/**
@@ -33,6 +34,7 @@ public class PancakesStack {
 		{
 			this.pancakeStack[i] = new Pancake(i + 1);
 		}
+		this.flipped =false ;
 	}
 	
 	/**
@@ -45,6 +47,7 @@ public class PancakesStack {
 		{
 			stack.pancakeStack[i] = this.getPancake(i);
 		}
+		stack.flipped = this.flipped;
 		return stack;
 	}
 	
@@ -104,25 +107,6 @@ public class PancakesStack {
 	}
 
 	/**
-	 * Search and fin the index of the biggest
-	 * pancake in the stack among the pancakes which are not sorted
-	 * @return the index of the biggest pancake among the not sorted pancake in the stack
-	 */
-	private int findBiggestPancake(int numberOfPancakesNotSorted) {
-		int indexBigPancake =-1;
-		boolean found = false;
-		for ( int j = 0 ; j < numberOfPancakesNotSorted && !found; j++)
-		{
-			if ( this.getPancake(j).getRadius() == numberOfPancakesNotSorted)
-			{
-				indexBigPancake = j;	// gotcha !
-				found = true;
-			}
-		}
-		return indexBigPancake;
-	}
-
-	/**
 	 * Flip a certain amount of pancakes
 	 * @param numberOfPancakes : the number of pancakes, beginning from the top of the stack, that you want to flip.
 	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
@@ -148,6 +132,7 @@ public class PancakesStack {
 		{
 			this.getPancake(i).flip();
 		}
+		this.flipped = !this.flipped;
 		return;
 	}
 
@@ -165,16 +150,24 @@ public class PancakesStack {
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The radius of the expected pancake
 	 */
-	public int getPancakeSize(int pancakeNumber){
+	public int getPancakeRadius(int pancakeNumber){
 		return this.getPancake(pancakeNumber).getRadius();
 	}
-	
+
 	/**
 	 * Give the size of the stack of pancakes
 	 * @return The number of pancakes in the stack
 	 */
 	public int getSize() {
 		return this.pancakeStack.length;
+	}
+	
+	/**
+	 * Tell the value of flipped which is used for graphic purpose only
+	 * @return flipped
+	 */
+	public boolean isFlipped() {
+		return flipped;
 	}
 	
 	/**
@@ -185,7 +178,7 @@ public class PancakesStack {
 	public boolean isPancakeUpsideDown(int pancakeNumber) {
 		return this.getPancake(pancakeNumber).isUpsideDown();
 	}
-	
+
 	/**
 	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
 	 * @return TRUE if the stack is okay <br>FALSE else
@@ -200,7 +193,7 @@ public class PancakesStack {
 		}
 		return stackSorted;
 	}
-
+	
 	/**
 	 * Mix the stack in order to screw the pancake seller
 	 */
@@ -237,30 +230,6 @@ public class PancakesStack {
 	}
 	
 	/**
-	 * Sort the stack of pancakes correctly, according to the control freak pancake seller
-	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
-	 */
-	public void solve() throws InvalidPancakeNumber {
-		int stackSize = this.getSize();
-		boolean currentPancakeAlreadySorted;
-		for ( int pancakesToSort = stackSize ; pancakesToSort != -1 &&!this.isSorted(); pancakesToSort-- )
-		{
-			currentPancakeAlreadySorted= (this.getPancakeSize(pancakesToSort-1)==pancakesToSort 
-					&& !this.isPancakeUpsideDown(pancakesToSort-1) ) ;
-			if ( !currentPancakeAlreadySorted)
-			{
-				int index = this.findBiggestPancake(pancakesToSort);
-				this.flip(index+1);	// putting the pancake at the top
-				if ( !this.isPancakeUpsideDown(0))
-				{
-					this.flip(1);	// show your dark side to the world
-				}
-				this.flip(this.getPancake(0).getRadius());	// hit the bottom !
-			}	
-		}
-	}
-	
-	/**
 	 * Swap two pancakes
 	 * @param pancakeOne :the first pancake which will be swapped
 	 * @param pancakeTwo :the second one
@@ -271,7 +240,7 @@ public class PancakesStack {
 		this.setPancake(pancakeTwo,flyingPancake);
 		return;
 	}
-	
+
 	/**
 	 * Returns a string representation of the stack of pancakes
 	 * @return A string representation of the stack of pancakes

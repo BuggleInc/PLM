@@ -2,7 +2,6 @@ package lessons.smn.pancake.raw;
 
 import jlm.universe.smn.pancake.raw.InvalidPancakeNumber;
 import jlm.universe.smn.pancake.raw.PancakeEntity;
-import jlm.universe.smn.pancake.raw.PancakeWorld;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
@@ -23,10 +22,9 @@ public class RawPancakePlateEntity extends PancakeEntity {
 	/* BEGIN TEMPLATE */
 	public void solve() throws InvalidPancakeNumber {
 		/* BEGIN SOLUTION */
-		PancakeWorld myWorld = (PancakeWorld) this.world;
 		int stackSize = this.getStackSize();
 		boolean currentPancakeAlreadySorted;
-		for ( int pancakesToSort = stackSize-1 ; pancakesToSort != -1 && !myWorld.isSorted() ; pancakesToSort-- )
+		for ( int pancakesToSort = stackSize-1 ; pancakesToSort != -1 && !this.isSorted() ; pancakesToSort-- )
 		{
 			currentPancakeAlreadySorted= (this.getPancakeRadius(pancakesToSort)==pancakesToSort+1 ) ;
 			if ( !currentPancakeAlreadySorted)
@@ -54,5 +52,6 @@ public class RawPancakePlateEntity extends PancakeEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+
 	
 }

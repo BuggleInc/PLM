@@ -24,14 +24,6 @@ public class Pancake {
 	}
 	
 	/**
-	 * Give the radius of the pancake
-	 * @return The radius of the pancake
-	 */
-	public int getRadius() {
-		return this.radius;
-	}
-	
-	/**
 	 * Indicate whether some other object is "equal to" this one. 
 	 * @return If the two objects are equals
 	 * @param Object o: the reference object with which to compare.
@@ -48,6 +40,14 @@ public class Pancake {
 			sw = (this.getRadius()==other.getRadius() );
 		}
 		return sw;
+	}
+	
+	/**
+	 * Give the radius of the pancake
+	 * @return The radius of the pancake
+	 */
+	public int getRadius() {
+		return this.radius;
 	}
 	
 	/**

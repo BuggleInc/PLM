@@ -17,6 +17,15 @@ public class PancakeWorld extends World {
 	
 	/**
 	 * Constructor of the class PancakeWorld
+	 * @param world : a world
+	 * @return A new PancakeWorld
+	 */
+	public PancakeWorld(PancakeWorld world) {
+		super(world);
+	}
+	
+	/**
+	 * Constructor of the class PancakeWorld
 	 * @param name : the name of the world
 	 * @param amountOfPancakes : the amount of pancakes in the stack
 	 * @param mixed : if the stack shall be mixed or not
@@ -27,15 +36,6 @@ public class PancakeWorld extends World {
 		setDelay(200); // Delay (in ms) in default animations
 		this.stack =  PancakesStack.create(amountOfPancakes,mixed);
 		this.lastModifiedPancake = 0 ;
-	}
-	
-	/**
-	 * Constructor of the class PancakeWorld
-	 * @param world : a world
-	 * @return A new PancakeWorld
-	 */
-	public PancakeWorld(PancakeWorld world) {
-		super(world);
 	}
 
 	/**
@@ -89,14 +89,6 @@ public class PancakeWorld extends World {
 	}
 	
 	/**
-	 * Give the index of the last modified pancakes
-	 * @return pancakeNumber : the index of the pancake, beginning from the top of the stack, that was modified.
-	 */
-	public int getLastModifiedPancake() {
-		return lastModifiedPancake;
-	}
-	
-	/**
 	 * Return the script except that must be injected within the environment before running user code 
 	 * It should pass all order to the java entity, which were injected independently  
 	 * @return  the script except that must be injected within the environment before running user code 
@@ -121,6 +113,14 @@ public class PancakeWorld extends World {
 	}
 	
 	/**
+	 * Give the index of the last modified pancakes
+	 * @return pancakeNumber : the index of the pancake, beginning from the top of the stack, that was modified.
+	 */
+	public int getLastModifiedPancake() {
+		return lastModifiedPancake;
+	}
+	
+	/**
 	 * Give the size of a specific pancake among others
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The radius of the expected pancake
@@ -140,13 +140,21 @@ public class PancakeWorld extends World {
 	}
 
 	/**
+	 * Getter for the stack of pancakes
+	 * @return return the stack of pancakes
+	 */
+	protected PancakesStack getStack() {
+		return this.stack;
+	}
+	
+	/**
 	 * Give the size of the stack of pancakes
 	 * @return The number of pancakes in the stack
 	 */
 	public int getStackSize() {
 		return this.stack.getSize();
 	}
-	
+
 	/** 
 	 * Return a component able of displaying the world
 	 * @return a component able of displaying the world
@@ -156,6 +164,14 @@ public class PancakeWorld extends World {
 		return new WorldView[] { new PancakeWorldView(this) } ;
 	}
 
+	/**
+	 * Tell the value of flipped which is used for graphic purpose only
+	 * @return the flipped
+	 */
+	public boolean isFlipped() {
+		return this.stack.isFlipped();
+	}
+	
 	/**
 	 * Tell if a specific pancake, among others, is upside down
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
@@ -174,6 +190,14 @@ public class PancakeWorld extends World {
 			return this.stack.getPancake(pancakeNumber).isUpsideDown();
 		}
 	}
+	
+	/**
+	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
+	 * @return TRUE if the stack is okay <br>FALSE else
+	 */
+	public boolean isSorted() {
+		return this.stack.isSorted();
+	}
 
 	/** 
 	 * Reset the state of the current world to the one passed in argument
@@ -187,22 +211,6 @@ public class PancakeWorld extends World {
 	}
 
 	/**
-	 * Sort the stack of pancakes correctly, according to the control freak pancake seller
-	 * @throws InvalidPancakeNumber : in case you ask to flip less than one or more than the total amount of pancakes
-	 */
-	public void solve() throws InvalidPancakeNumber {
-		this.stack.solve();
-	}
-	
-	/**
-	 * Getter for the stack of pancakes
-	 * @return return the stack of pancakes
-	 */
-	protected PancakesStack getStack() {
-		return this.stack;
-	}
-	
-	/**
 	 * Return a string representation of the world
 	 * @return A string representation of the world
 	 */
@@ -211,14 +219,6 @@ public class PancakeWorld extends World {
 		sb.append("PancakeWorld "+getName()+": ");
 		sb.append(this.stack.toString());
 		return sb.toString();
-	}
-
-	/**
-	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
-	 * @return TRUE if the stack is okay <br>FALSE else
-	 */
-	public boolean isSorted() {
-		return this.stack.isSorted();
 	}
 
 }
