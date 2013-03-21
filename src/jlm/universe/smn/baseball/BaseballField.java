@@ -32,24 +32,22 @@ public class BaseballField
 		BaseballPlayer[] players;
 		
 		this.bases = new BaseballBase[numberOfBases];
-		players = new BaseballPlayer[2*numberOfBases];
+		players = new BaseballPlayer[2*numberOfBases-1];
 		
 		// creating the colored players
 		for (int i = 0 ; i < numberOfBases*2-1 ; i++)
 		{
-			players[i]= new BaseballPlayer((int)i/2+1);
+			players[i]= new BaseballPlayer((int)i/2);
 		}
-		
-		// creating the invisible player
-		players[2*numberOfBases-1]=new BaseballPlayer(0);
 		
 		// creating the bases
 		for (int j = 0 ; j < numberOfBases ; j++)
 		{
-			this.bases[j]=new BaseballBase(j+1);
+			this.bases[j]=new BaseballBase(j);
 		}
-		
-		this.bases[this.bases.length-1].setPlayer(1,new BaseballPlayer(0));
+
+		// add the hole
+		this.bases[this.bases.length-1].setPlayer(1,new BaseballPlayer(-1));
 		
 		// initializing holeContainer
 		this.holeContainer = new int[2];
@@ -126,8 +124,9 @@ public class BaseballField
 		else
 		{
 			BaseballField other = (BaseballField) o;
-			if ( this.holeContainer == other.holeContainer
-					&& this.bases.length == other.bases.length)
+			if ( this.holeContainer[0] == other.holeContainer[0]
+			     && this.holeContainer[1] == other.holeContainer[1]
+				 && this.bases.length == other.bases.length)
 			{
 				for ( int i = 0 ; i< this.bases.length && sw ;i++ )
 				{
@@ -171,39 +170,23 @@ public class BaseballField
 		}
 		return this.bases[baseIndex].getColor();
 	}
+	
+	/**
+	 * Return the index of the base where is hole is located
+	 * @return the index of the base where is hole is located
+	 */
+	public int getHoleBase() {
+		return this.holeContainer[0];
+	}
 
 	/**
-	 * Give the index of the hole and the index of the base with the hole
-	 * @return  the index of the hole and the index of the base with the hole
+	 * Return the position in the base where is hole is located
+	 * @return the position in the base where is hole is located
 	 */
-	public int[] getHolePosition() {
-		
-
-		 int hole[] = new int[2];
-		int n = this.getAmountOfBases();
-		boolean found = false;
-		try 
-		{
-			for ( int i = 0 ; i < n && !found ; i++)
-			{
-				for ( int j = 0 ; j < 2 && !found; j++)
-				{
-					if ( this.bases[i].getPlayerColor(j)==0)
-					{
-						found = true;
-						hole[0] = i;
-						hole[1] = j;
-					}
-				}	
-			}	
-		}
-		catch ( InvalidPositionException ipe)
-		{
-			System.out.println("Unexpected InvalidPositionException in getHolePosition: "+ipe.getMessage());
-		}
-		return hole;
+	public int getHolePositionInBase(){
+		return this.holeContainer[1];
 	}
-	
+
 	/**
 	 * Return the last move made on the field
 	 * @return the last move made on the field
@@ -222,16 +205,7 @@ public class BaseballField
 	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
 		return this.bases[baseIndex].getPlayerColor(playerLocation);
 	}
-
-	/**
-	 * Return the index of the base which have only one player on the field
-	 * @return the index of the base which has only one player on the field
-	 */
-	public int indexOfBaseWithOnePlayer()
-	{
-		return this.bases.length-1;
-	}
-
+	
 	/**
 	 * Tell if every player of the base is on the base
 	 * @return if every players of the base is on the base
@@ -258,7 +232,7 @@ public class BaseballField
 		}
 		return sw;
 	}
-
+	
 	/**
 	 * Tell if every player of every base is on the right base
 	 * @return if every player of every base is on the right base
@@ -272,10 +246,11 @@ public class BaseballField
 		return sw;
 	}
 	
-	/*
+	/**
 	 * Mix the players between the different bases
 	 */
 	private void mix() {
+		// mix the base
 		do
 		{		
 			for (int i = 0 ; i < this.bases.length;i++)
@@ -284,7 +259,28 @@ public class BaseballField
 			}
 		}
 		while(this.isSorted());
-		this.setHoleContainer(this.getHolePosition());
+		// update the holeContainer
+		int n = this.getAmountOfBases();
+		boolean found = false;
+		try 
+		{
+			for ( int i = 0 ; i < n && !found ; i++)
+			{
+				for ( int j = 0 ; j < 2 && !found; j++)
+				{
+					if ( this.bases[i].getPlayerColor(j)==-1)
+					{
+						found = true;
+						this.holeContainer[0] = i;
+						this.holeContainer[1] = j;
+					}
+				}	
+			}	
+		}
+		catch ( InvalidPositionException ipe)
+		{
+			System.out.println("Unexpected InvalidPositionException in getHolePosition: "+ipe.getMessage());
+		}
 	}
 
 	/**
@@ -310,33 +306,26 @@ public class BaseballField
 				|| (this.holeContainer[0] == 0 && indexBaseSrc == this.getAmountOfBases()-1)
 				|| (this.holeContainer[0] == this.getAmountOfBases()-1 && indexBaseSrc == 0)
 				|| this.holeContainer[0] == indexBaseSrc
-				)
+			)
 		{
 			try
 			{
-				this.setLastMove(new BaseballMove(indexBaseSrc, playerLocation, this.holeContainer[0], this.holeContainer[1], this.getPlayerColor(indexBaseSrc, playerLocation)));
+				this.setLastMove(
+						new BaseballMove(indexBaseSrc, playerLocation, this.holeContainer[0], this.holeContainer[1], this.getPlayerColor(indexBaseSrc, playerLocation)));
 			}
 			catch (InvalidPositionException ipe)
 			{
 				System.out.println("Unexepected InvalidPositionException in move");
 			}
 			swap(indexBaseSrc, playerLocation, this.holeContainer[0], this.holeContainer[1]);
-			this.holeContainer[0]=indexBaseSrc;
-			this.holeContainer[1]=playerLocation;
+			this.holeContainer[0]= indexBaseSrc;
+			this.holeContainer[1]= playerLocation;
 			
 		}
 		else
 		{
 			throw new InvalidMoveException("The player "+playerLocation+" from base "+indexBaseSrc+" can't move to base "+this.holeContainer[0]+" since it's a lazy guy and he doesn't want to travel more than one base at once");
 		}
-	}
-
-	/**
-	 * Replace the current last move by baseballMove
-	 * @param baseballMove : the new last move
-	 */
-	private void setLastMove(BaseballMove baseballMove) {
-		this.lastMove = baseballMove;
 	}
 
 	/**
@@ -349,6 +338,14 @@ public class BaseballField
 		{
 			this.holeContainer[i]=hole[i];
 		}
+	}
+
+	/**
+	 * Replace the current last move by baseballMove
+	 * @param baseballMove : the new last move
+	 */
+	private void setLastMove(BaseballMove baseballMove) {
+		this.lastMove = baseballMove;
 	}
 
 	/**

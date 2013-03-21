@@ -1,6 +1,12 @@
 <h1>Baseball</h1>
 
-Fonctions fournies:
+La couleur d'un base est donnée par son index.
+
+Le trou a comme couleur -1 par définition.
+
+La base qui ne dispose que d'un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> comme index.
+
+<u>Fonctions fournies:</u>
 
 <pre>void move(int baseSrc, int playerSrc)</pre>
 
@@ -10,22 +16,18 @@ Déplace le joueur en position <code>playerSrc</code> de la base <code>baseSrc</
 
 Renvoie la couleur du joueur en position <code>playerLocation</code> ( 0 ou 1 ) de la base <code>baseIndex</code>.
 
-<pre> int getBaseColor(int baseIndex) </pre>
+<pre> int getHoleBase() </pre>
 
-Renvoie la couleur de la base <code>baseIndex</code>.
+Renvoie l'index de la base où se trouve le trou
+	
+<pre> int getHolePositionInBase()</pre>
 
-<pre>int[] getHolePosition()</pre>
-
-Renvoie un tableau d'entiers où le premier élément est l'index de la base contenant le trou et le deuxième élément la position du trou sur cette base
+Renvoie la position du trou dans la base qui contient le trou.
 
 <pre> boolean isBaseSorted( int baseIndex)</pre>
 
-Renvoie VRAI ssi tous les joueurs de la base <code>baseIndex</code> sont sur cette même base 
+Renvoie VRAI ssi tous les joueurs de la base <code>baseSrc</code> sont sur cette même base 
 
 <pre>int getAmountOfBases()</pre>
 
 Renvoie le nombre de bases dans le jeu.
-
-<pre> int indexOfBaseWithOnePlayer() </pre>
-
-Renvoie l'index de la base qui n'a qu'un seul joueur sur le terrain

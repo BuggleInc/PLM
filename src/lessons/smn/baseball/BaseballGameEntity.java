@@ -40,24 +40,23 @@ public class BaseballGameEntity extends BaseballEntity {
 	
 	private void solve(int baseIndex) throws InvalidMoveException, InvalidPositionException{
 		/* BEGIN SOLUTION */
-		int colorWanted = this.getBaseColor(baseIndex);
-		if ( this.getPlayerColor(baseIndex, 0) != colorWanted) // sort the first player
+		if ( this.getPlayerColor(baseIndex, 0) != baseIndex) // sort the first player
 			{
-				if ( this.getPlayerColor(baseIndex,1) == colorWanted)
+				if ( this.getPlayerColor(baseIndex,1) == baseIndex)
 				{
 					this.bringHole(baseIndex, 0, 1);
 					this.move(baseIndex, 1);
 				}
 				else
 				{
-					int[] wantedPlayerLocation = this.findNearestPlayer(colorWanted, baseIndex+1);
+					int[] wantedPlayerLocation = this.findNearestPlayer(baseIndex, baseIndex+1);
 					this.bringHole(wantedPlayerLocation[0]-1, 0,wantedPlayerLocation[1]);
 					this.bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0);
 				}
 			}
-		if ( this.getPlayerColor(baseIndex, 1) != colorWanted) // sort the second player
+		if ( this.getPlayerColor(baseIndex, 1) != baseIndex) // sort the second player
 		{
-			int[] wantedPlayerLocation = this.findNearestPlayer(colorWanted, baseIndex+1);
+			int[] wantedPlayerLocation = this.findNearestPlayer(baseIndex, baseIndex+1);
 			this.bringHole(wantedPlayerLocation[0]-1, 1,wantedPlayerLocation[1]);
 			this.bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,1);
 		}
@@ -95,7 +94,7 @@ public class BaseballGameEntity extends BaseballEntity {
 	}
 	
 	private void bringHole(int baseDst, int playerDst , int playerToProtect) throws InvalidMoveException {
-		int[] holeLocation = this.getHolePosition();
+		int[] holeLocation = { this.getHoleBase(), this.getHolePositionInBase() };
 		if ( baseDst > holeLocation[0]) // the hole is before the base where we want it
 		{
 			for ( int i = holeLocation[0]+1; i<baseDst+1;i++)

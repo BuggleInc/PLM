@@ -72,12 +72,19 @@ public class BaseballEntity extends Entity
 	}
 	
 	/**
-	 * Give the index of the hole and the index of the base with the hole
-	 * @return  the index of the hole and the index of the base with the hole
+	 * Return the index of the base where is hole is located
+	 * @return the index of the base where is hole is located
 	 */
-	public int[] getHolePosition()
-	{	
-		return ((BaseballWorld) world).getHolePosition();
+	public int getHoleBase() {
+		return ((BaseballWorld) this.world).getHoleBase();
+	}
+	
+	/**
+	 * Return the position in the base where is hole is located
+	 * @return the position in the base where is hole is located
+	 */
+	public int getHolePositionInBase(){
+		return ((BaseballWorld) this.world).getHolePositionInBase();
 	}
 	
 	/**
@@ -90,16 +97,6 @@ public class BaseballEntity extends Entity
 	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
 		return ((BaseballWorld) world).getPlayerColor(baseIndex,playerLocation);
 	}
-	
-	/**
-	 * Return the index of the base which have only one player on the field
-	 * @return the index of the base which has only one player on the field
-	 */
-	public int indexOfBaseWithOnePlayer()
-	{
-		return ((BaseballWorld) this.world).indexOfBaseWithOnePlayer();
-	}
-
 	
 	/**
 	 * Tell if the base at baseIndex is sorted

@@ -5,8 +5,8 @@ package jlm.universe.smn.baseball;
  * @see BaseballPlayer
  */
 
-public class BaseballBase
-{
+public class BaseballBase {
+	
 	private BaseballPlayer[] players; // the players on the base
 	private int color; // the color of the base
 	
@@ -14,8 +14,7 @@ public class BaseballBase
 	 * BaseballBase constructor
 	 * @param color : the color of the base you are creating
 	 */
-	public BaseballBase(int color)
-	{
+	public BaseballBase(int color) {
 		this.players=new BaseballPlayer[2];
 		this.players[0] = new BaseballPlayer(color);
 		this.players[1] = new BaseballPlayer(color);
@@ -29,8 +28,7 @@ public class BaseballBase
 	 * @param o the reference object with which to compare
 	 * @return TRUE if the bases are the same <br>FALSE else
 	 */
-	public boolean equals(Object o)
-	{
+	public boolean equals(Object o) {
 		boolean sw=true;
 		if (o == null || !(o instanceof BaseballBase) )
 		{
@@ -53,8 +51,7 @@ public class BaseballBase
 	 * Give the color ( in integer ) of the base
 	 * @return The integer corresponding to the color of the base
 	 */
-	public int getColor()
-	{
+	public int getColor() {
 		return this.color;
 	}
 	

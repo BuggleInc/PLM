@@ -1,10 +1,17 @@
 <h1>Baseball</h1>
-
+<p>
 This world implements the baseball game, in which several players want to go back to their bases. The bases make a circle and have their own colors. There are two players for one base, except one, which has only one player in its team.
 
 You are asked to make the players go on the bases which colors correspond to theirs. The only allowed move is for one of the two players standing on one of the two bases which are directly next to the base with only one player to move and fill the hole, leaving a new one on the base it just left.
 
-There are seven functions provided :
+The color of a base is given by its index. 
+
+The hole has a color of -1.
+
+The base which has only one player on the field has <i>getAmountOfBases()-1</i> as index.
+
+</p>
+There are six methods provided :
 
 <pre>void move(int baseSrc, int playerSrc)</pre>
 
@@ -13,15 +20,16 @@ Move the player on position <code>playerLocation</code> from the base <code>base
 <pre> int getPlayerColor(int baseIndex, int playerLocation) </pre>
 
 Return the color of the player on position <code>playerLocation</code> ( 0 or 1 ) from the base <code>baseIndex</code>.
+The color -1 is the hole.
 
-<pre> int getBaseColor(int baseIndex) </pre>
+<pre> int getHoleBase() </pre>
 
-Return the color of the base <code>baseIndex</code>.
+Return the index of the base where the hole is located
+	
+<pre> int getHolePositionInBase()</pre>
 
-<pre>int[] getHolePosition()</pre>
-
-Return an integer array where the first element is the index of the base with the hole, and where the second element is the hole position within this base
-
+Return the player's position in the base where the hole is located
+	
 <pre> boolean isBaseSorted( int baseIndex)</pre>
 
 Return TRUE if all players of the base <code>baseSrc</code> are home  
@@ -30,15 +38,10 @@ Return TRUE if all players of the base <code>baseSrc</code> are home
 
 Return the amount of bases in the field.
 
-<pre> int indexOfBaseWithOnePlayer() </pre>
-
-Return the index of the base which has only one player on the field
-
-
 <br><br><hr><br>
 
-<div class="tip" id="tip-1" alt="Show Tip 1 ( the functions's prototype)">
-<p>The prototypes of the functions you may use are the followings :</p>
+<div class="tip" id="tip-1" alt="Show Tip 1 ( the methods's prototype)">
+<p>The prototypes of the methods you may use are the followings :</p>
 <pre> 
 private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int playerDst) throws InvalidMoveException
 
@@ -57,7 +60,7 @@ Bring the hole to the position <code>playerDst</code> from the base <code>baseDs
 <br><br><hr><br>
 
 <div class="tip" id="tip-2" alt="Show Tip 2 (Pseudo-code of solve)">
-<p>The algorithm of the solve function is the following:</p>
+<p>The algorithm of the solve method is the following:</p>
 <pre> 
 BEGIN
 	colorWanted <- getBaseColor(baseIndex)
@@ -86,10 +89,11 @@ END
 <br><br><hr><br>
 
 <div class="tip" id="tip-3" alt="Show Tip 3 ( Pseudo-code of bringHole )">
-<p>The algorithm of the bringHole function is the following:</p>
+<p>The algorithm of the bringHole method is the following:</p>
 <pre> 
 BEGIN
-	holeLocation <- getHolePosition()
+	holeBaseLocation[0] <- getHoleBase()
+	holeBaseLocation[1] <- getHolePositionInBase()
 	IF baseDst > holeLocation[0]
 	THEN
 		FOR i FROM holeLocation[0]+1 TO baseDst BY 1
@@ -118,7 +122,7 @@ END
 <br><br><hr><br>
 
 <div class="tip" id="tip-4" alt="Show Tip 4 ( Pseudo-code of findNearestPlayer)">
-<p>The algorithm of the findNearestPlayer function is the following :</p>
+<p>The algorithm of the findNearestPlayer method is the following :</p>
 <pre> 
 BEGIN
 	nbBases <- getAmountOfBases()
@@ -145,7 +149,7 @@ END
 <br><br><hr><br>
 
 <div class="tip" id="tip-5" alt="Show tip 5 ( Pseudo-code of bringPlayerHome)">
-<p>The algorithm of the bringPlayerHome function is the following :</p>
+<p>The algorithm of the bringPlayerHome method is the following :</p>
 <pre> 
 PRECONDITION: the hole is on the base of index baseSrc-1
 BEGIN

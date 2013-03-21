@@ -1,11 +1,18 @@
 <h1>Baseball</h1>
-
+<p>
 Ce monde implémente le jeu du baseball, dans lequel plusieurs joueurs tentent de regagner leur base. Les bases forment un cercle et ont chacune une couleur qui leur est propre. Il y a deux joueurs de chaque couleur pour chaque base, sauf une, qui n'a donc qu'un seul joueur dans son équipe.
 
 Il vous est demandé de réordonner les joueurs pour que leur couleur corresponde à celle de la base sur laquelle ils sont.
 Le seul mouvement autorisé est celui de l'un des deux joueurs de l'une des deux bases adjacentes à la base n'ayant qu'un seul joueur, qui peut donc boucher le trou de cette base et en créer un sur la base qu'il a quittée. 
 
-Il y a sept fonctions qui vous sont fournies :
+La couleur d'un base est donnée par son index.
+
+Le trou a comme couleur -1 par définition.
+
+La base qui ne dispose que d'un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> comme index.
+
+</p>
+Il y a six fonctions qui vous sont fournies :
 
 <pre>void move(int baseSrc, int playerSrc)</pre>
 
@@ -15,13 +22,13 @@ Déplace le joueur en position <code>playerSrc</code> de la base <code>baseSrc</
 
 Renvoie la couleur du joueur en position <code>playerLocation</code> ( 0 ou 1 ) de la base <code>baseIndex</code>.
 
-<pre> int getBaseColor(int baseIndex) </pre>
+<pre> int getHoleBase() </pre>
 
-Renvoie la couleur de la base <code>baseIndex</code>.
+Renvoie l'index de la base où se trouve le trou
+	
+<pre> int getHolePositionInBase()</pre>
 
-<pre>int[] getHolePosition()</pre>
-
-Renvoie un tableau d'entiers où le premier élément est l'index de la base contenant le trou et le deuxième élément la position du trou sur cette base
+Renvoie la position du trou dans la base qui contient le trou.
 
 <pre> boolean isBaseSorted( int baseIndex)</pre>
 
@@ -30,10 +37,6 @@ Renvoie VRAI ssi tous les joueurs de la base <code>baseSrc</code> sont sur cette
 <pre>int getAmountOfBases()</pre>
 
 Renvoie le nombre de bases dans le jeu.
-
-<pre> int indexOfBaseWithOnePlayer() </pre>
-
-Renvoie l'index de la base qui n'a qu'un seul joueur sur le terrain
 
 <br><br><hr><br>
 
@@ -60,22 +63,21 @@ Ramène le trou en position <code>playerDst</code> de la base <code>baseDst</cod
 <p>Le pseudo-code de l'algorithme de la fonction solve est donc le suivant :</p>
 <pre> 
 BEGIN
-	colorWanted <- getBaseColor(baseIndex)
-	IF getPlayerColor(baseIndex, 0) != colorWanted 
+	IF getPlayerColor(baseIndex, 0) != baseIndex 
 	THEN
-		IF getPlayerColor(baseIndex,1) == colorWanted
+		IF getPlayerColor(baseIndex,1) == baseIndex
 		THEN
 			bringHole(baseIndex, 0, 1)
 			move(baseIndex, 1)
 		ELSE
-			wantedPlayerLocation <- findNearestPlayer(colorWanted, baseIndex+1 )
+			wantedPlayerLocation <- findNearestPlayer(baseIndex, baseIndex+1 )
 			bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
 			bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
 		END_IF
 	END_IF
-	IF getPlayerColor(baseIndex, 1) != colorWanted 
+	IF getPlayerColor(baseIndex, 1) != baseIndex 
 	THEN
-		wantedPlayerLocation <- this.findNearestPlayer(colorWanted, baseIndex+1)
+		wantedPlayerLocation <- this.findNearestPlayer(baseIndex, baseIndex+1)
 		bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
 		bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
 	END_IF

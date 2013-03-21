@@ -10,10 +10,20 @@ public class BaseballPlayer
 	/**
 	 * BaseballPlayer constructor
 	 * @param color : the color of the player you are creating<br>0 is for no color
+	 * @return a new BaseballPlayer of the wanted color
 	 */
 	public BaseballPlayer(int color)
 	{
 		this.color=color;
+	}
+	
+	/**
+	 * Give the color of the player
+	 * @return the color of the player
+	 */
+	public int getColor()
+	{
+		return this.color;
 	}
 	
 	/**
@@ -23,13 +33,5 @@ public class BaseballPlayer
 	public void setColor(int color)
 	{
 		this.color=color;
-	}
-	
-	/**
-	 * Give the color of the player
-	 */
-	public int getColor()
-	{
-		return this.color;
 	}
 }

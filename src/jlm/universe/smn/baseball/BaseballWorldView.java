@@ -96,7 +96,6 @@ public class BaseballWorldView extends WorldView
 	 * @param amountOfBases the total amount of bases in the field
 	 */
 	private void drawBase(Graphics2D g, int L, int r, double theta, int x, int y, BaseballBase base,int amountOfBases) {
-		
 		// draw the base
 		drawRectangle(g,r,theta,x,y,obtainColor(base.getColor()),L);
 		
@@ -244,66 +243,35 @@ public class BaseballWorldView extends WorldView
 	
 	/**
 	 * Return the color corresponding to colorIndex
-	 * ( from : http://fr.wikipedia.org/wiki/Liste_de_couleurs )
+	 * ( from : http://en.wikipedia.org/wiki/List_of_colors )
 	 * @param colorIndex a 
 	 * @return the color corresponding to colorIndex
 	 */
 	private Color obtainColor(int colorIndex) {
+		Color[] colors = {
+				Color.BLACK, Color.RED, Color.BLUE, Color.YELLOW, 
+				new Color(158,253,56), /* French lime */
+				new Color(255,56,0), /* Coquelicot */ 
+				new Color(204,204,255), /* Lavender blue */
+				new Color(251,206,177), /* Apricot */
+				new Color(0,103,165), /* Blue Persian */
+				new Color(201,0,22), /* Harvard crimson */
+				new Color(111,78,55), /* Coffee */
+				new Color(109,7,26), /* Bordeaux */
+				new Color(254,195,172), /* carnation */
+				new Color(75,0,130), /* indigo du web */
+				new Color(150,85,120), /* mauve */
+				Color.GREEN
+		};
 		Color colorSent ;
-		switch (colorIndex)
+		if ( colorIndex < -1 || colorIndex > colors.length-1 )
 		{
-		case 0:
-			colorSent = Color.BLACK;
-			break;
-		case 1:
-			colorSent = Color.RED;
-			break;
-		case 2:
-			colorSent = Color.BLUE;
-			break;
-		case 3:
-			colorSent = Color.YELLOW;
-			break;
-		case 4:
-			colorSent = new Color(158,253,56); // vert lime
-			break;
-		case 5:
-			colorSent =  new Color(255,73,1); // feu
-						break;
-		case 6:
-			colorSent = new Color(204,204,255); // pervenche
-			break;
-		case 7:
-			colorSent = new Color(230,126,48); // abricot
-			break;
-		case 8:
-			colorSent = new Color(102,0,255); // bleu persan
-			break;
-		case 9:
-			colorSent = new Color(109,7,26); // bordeaux
-			break;
-		case 10:
-			colorSent = new Color(53,122,183); // Caeruléum
-			break;
-		case 11:
-			colorSent = new Color(70,46,1); // café
-			break;
-		case 12:
-			colorSent = new Color(254,195,172); // carnation
-			break;
-		case 13:
-			colorSent = new Color(75,0,130); // indigo du web
-			break;
-		case 14:
-			colorSent = new Color(150,85,120); // mauve
-			break;
-		case 15:
-			colorSent = Color.GREEN;
-			break;
-		default:
 			System.out.println("Unexpected colorIndex : "+colorIndex+"\nYou should add some colors in BaseballWorldView.obtainColor");
 			colorSent = Color.MAGENTA;
-			break;
+		}
+		else
+		{
+			colorSent = colors[colorIndex+1];
 		}
 		return colorSent;
 	}
