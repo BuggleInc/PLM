@@ -32,11 +32,11 @@ public class ShortestPathMaze extends ExerciseTemplated {
 		new Buggle(myWorlds[1], "Luke", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
 		
 		//newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
+		
 		setup(myWorlds);
 	}
 
 	// to shorten loading time	
-	
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
@@ -46,10 +46,10 @@ public class ShortestPathMaze extends ExerciseTemplated {
 		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
 		b2.setPosFromLesson(19, 19);
 		b2.setDirection(Direction.EAST);
-
+		
 		try {
 			b.pickUpBaggle();
-			//b2.pickUpBaggle();
+			b2.pickUpBaggle();
 		} catch (NoBaggleUnderBuggleException e) {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {

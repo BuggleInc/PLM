@@ -21,10 +21,16 @@ public class WallFollowerMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 				
 		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[1];
+		BuggleWorld myWorlds[] = new BuggleWorld[2];
+		
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
 		loadMap(myWorlds[0],"lessons/maze/WallFollowerMaze");
 		new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
+		
+		myWorlds[1] = new BuggleWorld("Labyrinth2", 1, 1); 
+		loadMap(myWorlds[1],"lessons/maze/WallFollowerMaze2");
+		new Buggle(myWorlds[1], "ZoroRorronoa", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
+		
 		setup(myWorlds);
 	}
 
@@ -34,8 +40,12 @@ public class WallFollowerMaze extends ExerciseTemplated {
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
 		b.setPosFromLesson(11, 5);
+		
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
+		b2.setPosFromLesson(11, 5);
 		try {
 			b.pickUpBaggle();
+			b2.pickUpBaggle();
 		} catch (NoBaggleUnderBuggleException e) {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {
