@@ -258,9 +258,9 @@ public class BaseballWorldView extends WorldView
 				new Color(201,0,22), /* Harvard crimson */
 				new Color(111,78,55), /* Coffee */
 				new Color(109,7,26), /* Bordeaux */
-				new Color(254,195,172), /* carnation */
-				new Color(75,0,130), /* indigo du web */
-				new Color(150,85,120), /* mauve */
+				new Color(155,150,10),
+				new Color(75,0,130), 
+				new Color(150,85,120),
 				Color.GREEN
 		};
 		Color colorSent ;
