@@ -64,27 +64,11 @@ public class BuggleChooser extends JComboBox implements ActionListener, IWorldVi
 		// TODO Auto-generated method stub
 		
 	}
-
-	public void addItem(Object e)
-	{
-		boolean exist = false;
-		for (int i=0; i<getItemCount(); i++)
-		{
-			Object elt = getItemAt(i);
-			if (elt.equals(e))
-			{
-				exist = true;
-				break;
-			}
-		}
-		
-		if (!exist)
-			super.addItem(e);
-	}
 	
 	@Override
 	public void worldHasChanged()
 	{
+		removeAllItems();
 		for(Entity e:world.getEntities())
 			addItem(e);	
 	}

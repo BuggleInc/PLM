@@ -111,6 +111,7 @@ public class BuggleWorldCell extends GridWorldCell {
 					world.getEntities().remove(i);
 			}
 		}
+		world.notifyEntityUpdateListeners();
 	}
 
 	@Override
