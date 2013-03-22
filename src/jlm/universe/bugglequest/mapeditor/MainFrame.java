@@ -6,20 +6,33 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
+import java.util.List;
+import java.util.Observer;
 
 import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
+import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
+import jlm.core.model.Game;
+import jlm.core.ui.EntityCellRenderer;
+import jlm.core.ui.EntityComboListAdapter;
 import jlm.core.ui.ResourcesCache;
 import jlm.universe.Direction;
+import jlm.universe.Entity;
+import jlm.universe.EntityControlPanel;
+import jlm.universe.bugglequest.Buggle;
+import jlm.universe.bugglequest.BuggleWorld;
+import jlm.universe.bugglequest.ui.BuggleButtonPanel;
 
 
 public class MainFrame extends JFrame {
@@ -109,6 +122,24 @@ public class MainFrame extends JFrame {
 		MapView mapView = new MapView(editor);
 		editor.addMapView(mapView);
 		getContentPane().add(mapView, BorderLayout.CENTER);
+		
+		// buggles panel
+		JPanel panelBuggles = new JPanel();
+		panelBuggles.setLayout(new BorderLayout());
+		getContentPane().add(panelBuggles, BorderLayout.SOUTH);
+		
+		// buggle selection panel
+		BuggleChooser buggleChooser = new BuggleChooser(editor.getWorld());
+		editor.getWorld().addEntityUpdateListener(buggleChooser);
+		panelBuggles.add(buggleChooser, BorderLayout.NORTH);
+		
+		// control pan
+		BuggleControlPanel buttonPanel;
+		buttonPanel =  new BuggleControlPanel(buggleChooser);
+		buttonPanel.remove(2); // don't need brush button in map editor
+		JPanel controlPane = new JPanel();
+		controlPane.add(buttonPanel, "grow");
+		panelBuggles.add(buttonPanel, BorderLayout.CENTER);		
 	}
 
 	private JToggleButton createButton(final String name) {

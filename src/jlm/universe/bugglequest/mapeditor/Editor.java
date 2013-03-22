@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Observable;
 
 import jlm.universe.IWorldView;
 import jlm.universe.bugglequest.BuggleWorld;
