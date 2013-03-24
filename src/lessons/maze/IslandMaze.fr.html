@@ -1,12 +1,12 @@
 <h2>Perdu dans les îles</h2>
 
-<p>Vous pensiez que votre algorithme était suffisant pour échapper à tous les labyrinthes ?Et bien, pas vraiment...
+<p>Vous pensiez que votre algorithme était suffisant pour échapper à tous les labyrinthes ? Et bien, pas vraiment ...
 </p>
 
 <p>L'algorithme du "<i>wall follower</i>" que nous avons utilisé jusqu'à présent
-fonctionne seulement si l'entrée et la sortie du labyrinthe sont placée près de murs reliés aux murs externes.
+fonctionne seulement si l'entrée et la sortie du labyrinthe sont placées près de murs reliés aux murs externes.
 Mais si le buggle commence vers le centre du labyrinthe, 
-il peut exister des pans de murs qui ne sont pas reliées aux murs externes.
+il peut exister des pans de murs qui ne sont pas reliés aux murs externes.
 </p>
 
 <p>C'est pourquoi notre stratégie précédente laissera le buggle tourner en rond pour toujours.
@@ -44,7 +44,7 @@ votre Buggle soit orienté vers le Nord et qu'il n'y ait pas de mur en face.
 </p>
 </li>
 </ul>
-La façon la plus simple d'écrire une machine à état de ce type est quelquechose comme:
+La façon la plus simple d'écrire une machine à état de ce type est quelque chose comme :
 <pre><code>int state=0;
 switch (state) {
   case 0: 
