@@ -1,13 +1,15 @@
-<h2>Boucles tant que<tt> (while)</tt></h2>
+<h2>Boucles tant que <tt>(while)</tt></h2>
 		
-<p>In addition to conditionals, another handy construction is the ability to
-repeat an action while a specific condition does not appear. A while loop is
-used for that, with the following syntax:
+<p>En plus des instructions conditionnelles, une autre construction pratique
+est de pouvoir demander à la buggle de répéter une action tant qu'une
+condition particulière n'est pas arrivée. On utilise pour cela une boucle
+<tt>while</tt>, dont la syntaxe est la suivante :
  <pre class="Java">while (<b>condition</b>) {
 &nbsp;&nbsp;<b>action()</b>;
 }</pre>
- <pre class="Python">while <b>condition</b>:
-&nbsp;&nbsp;<b>action()</b></pre>
+ <pre class="Python">while (<b>condition</b>) {
+&nbsp;&nbsp;<b>action()</b>;
+}</pre>
 
 <p>Evidement, si l'action en question ne modifie pas la valeur de la condition,
 la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le
@@ -17,17 +19,19 @@ pouvez essayer de taper le code suivant dans l'éditeur :
  <pre class="Java">while (true) {
 &nbsp;&nbsp;turnLeft();
 }</pre>
- <pre class="Java">while True:
-&nbsp;&nbsp;turnLeft()</pre>
+ <pre class="Java">while (true) {
+&nbsp;&nbsp;turnLeft();
+}</pre>
 
-The buggle will turn left while true is true (ie, endlessly), or until you
-stop it manually using the stop button.</p>
+La buggle va tourner vers la gauche tant que <code>true</code> est vrai
+(sans fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton
+stop.</p>
 
 <h3>Objectif de cet exercice</h3><a name="Objectifs"> Il vous faut maintenant écrire le code nécessaire pour
 que vos buggles avancent jusqu'à rencontrer un mur. L'idée est donc de faire
 :
-<pre>while we are not facing a wall, do:
-&nbsp;&nbsp;moveForward()</pre>
+<pre>tant que l'on est pas face à un mur, faire :
+&nbsp;&nbsp;avancer();</pre>
 
 <p>Quand votre programme fonctionne, passez à l'exercice suivant.</p>
 

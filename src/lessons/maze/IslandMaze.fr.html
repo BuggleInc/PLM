@@ -1,51 +1,45 @@
 <h2>Perdu dans les îles</h2>
 
-<p>Vous pensiez que votre algorithme était suffisant pour échapper à tous les labyrinthes ? Et bien, pas vraiment ...
+<p>Vous pensiez que votre algorithme était suffisant pour échapper de tous les
+labyrinthes ? Et bien, pas tous les labyrinthes...
 </p>
 
-<p>L'algorithme du "<i>wall follower</i>" que nous avons utilisé jusqu'à présent
-fonctionne seulement si l'entrée et la sortie du labyrinthe sont placées près de murs reliés aux murs externes.
-Mais si le buggle commence vers le centre du labyrinthe, 
-il peut exister des pans de murs qui ne sont pas reliés aux murs externes.
-</p>
+<p>L' algorithme du <i>Wall Follower</i> que nous avons utilisé jusqu'à présent
+fonctionne seulement si l'entrée et la sortie sont placées à côté de murs
+connectés à un mur externe. Mais si le buggle commence au milieu du
+labyrinthe, il peut exister des pans de mur déconnectés du mur externe.
 
-<p>C'est pourquoi notre stratégie précédente laissera le buggle tourner en rond pour toujours.
-En effet, le labyrinthe dont notre buggle doit maintenant s'échapper contient des îlots, 
-et il ne commence pas à côté d'un mur externe. Vous pouvez tester si vous le souhaitez : appuyer sur le bouton "run"
-et voyez votre solution précédente échouer pathétiquement.</p>
+<p>C'est pourquoi notre stratégie précédente laissera notre buggle tourner en
+rond pour toujours. En effet, le labyrinthe dont vous devez vous échapper
+maintenant contient des îles, et le buggle ne commence pas sur un des murs
+externes. Vous pouvez essayer si vous voulez : appuyez sur le bouton 'run'
+et admirez votre solution précédente échouer lamentablement</p>
 
-<p>La méthode consistant à suivre un mur est toujours bonne 
-et permet de s'échapper très efficacement de certaines portions du labyrinthe, 
-donc vous ne devez pas la supprimer entièrement.
-A la place, il faut arrêter de suivre le mur sous certaines conditions.
-Il est bon de remarquer que notre buggle débute dans les environs des murs extérieurs
-du labyrinthe. Il serait donc efficace de chercher à atteindre l'un de ces murs extérieurs 
-et de les suivre ensuite. 
-Nous chercherons, par exemple, à atteindre le mur Nord avant d'indiquer au Buggle de le suivre.
-</p>
+<p>Cette méthode de suivre un mur est toujours efficace est permet d'échapper
+de manière assez efficace à certaines parties du labyrinthe, on ne va donc
+pas la supprimer entièrement. A la place, nous allons cesser de suivre le
+mur sous certaines conditions. Notez que le baggle repose près d'un mur
+externe du labyrinthe. Donc nous voulons atteindre un mur externe et ensuite
+le suivre. Nous avons par exemple de rechercher le mur nord avant de le
+suivre jusqu'au baggle.
 
-<p>Pour trouver le mur Nord, il suffit d'aller vers le nord tant que c'est possible, 
-et lorsque l'on fait face à un obstacle, de l'éviter en utilisant la méthode précédente.</p>
+<p>Pour trouver le mur nord, vous avez tout simplement à foncez vers le nord
+tant que c'est possible, et quand vous faites face à un obstacle, vous
+l'évitez ( en utilisant la méthode précédente ).</p>
 
-
-<div class="tip" id="tip-1" alt="Je suis perdu, pouvez-vous me donner des indications ?">
-Notre nouvelle méthode run() va consister en deux états:
-<ul>
-<li>
-<p>Etat "north runner"</p>
-<p>C'est le mode de départ et il consiste à aller tout simplement vers le nord.
-Vous sortirez de ce mode lorsqu'il y a un mur au nord. ( n'oubliez pas de vous assurez qu'il y a un mur
-sur votre gauche avant de quitter ce mode ).</p>
-</li>
-<li>
-<p>Etat "left follower"</p>
-<p>Ce mode consiste à suivre le mur qu'il y a sur la gauche du buggle jusqu'à ce que 
-votre Buggle soit orienté vers le Nord et qu'il n'y ait pas de mur en face.
-</p>
-</li>
-</ul>
-La façon la plus simple d'écrire une machine à état de ce type est quelque chose comme :
-<pre><code>int state=0;
+<div class="tip" id="tip-1" alt="Je suis perdu, je voudrais plus d'indications">
+	Notre nouvelle méthode run() va consister en deux états: notre buggle va
+alterner entre le mode "north runner" et le mode "left follower".
+Vous commencerz dans le mode "north runner", et vous passerez au mode "left
+follower" quand il y aura un mur au nord ( n'oubliez pas de vous assurez
+d'avoir un mur à votre gauche avant de changer de passer au mode "left
+follower").
+Vous repasserez au mode "north runner" dès que votre buggle fera face au
+nord et qu'elle n'est pas face à un mur.
+La manière la plus simple d'écrire une telle machine à état est quelque
+chose du type 
+<pre>
+<code>int state=0;
 switch (state) {
   case 0: 
      ...
@@ -56,12 +50,15 @@ switch (state) {
      state = 0;
      break;
 }
-</code></pre></div>
+</code>
+</pre>
+</div>
 	
-<p> Surtout, n'oubliez pas de ramasser la baggle à la fin de votre périple.</p>
+<p>N'oubliez pas de faire ramasser le baggle par votre buggle à la fin de votre
+code.</p>
 	
 	
-<p>Vous êtes maintenant parés. Ces indications devraient être suffisantes pour
-vous permettre de parvenir à sauver votre buggle du labyrinthe, mais si jamais
-ce n'est pas le cas, vous pouvez toujours regarder l'astuce. Mais, vous n'avez plus
-besoin d'aide, n'est-ce pas ?</p>
+<p>Vous êtes prêts. Tout ceci devrait suffire pour vous permettre de trouver
+comment sortir de ce labyrinthe, mais si ce n'est pas le cas, vous pouvez
+toujours demander l'astuce. Mais vous n'avez plus besoin d'aide, n'est-ce
+pas ?</p>

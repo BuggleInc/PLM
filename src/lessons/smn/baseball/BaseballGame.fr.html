@@ -1,97 +1,121 @@
 <h1>Baseball</h1>
 <p>
-Ce monde implémente le jeu du baseball, dans lequel plusieurs joueurs tentent de regagner leur base. Les bases forment un cercle et ont chacune une couleur qui leur est propre. Il y a deux joueurs de chaque couleur pour chaque base, sauf une, qui n'a donc qu'un seul joueur dans son équipe.
-
-Il vous est demandé de réordonner les joueurs pour que leur couleur corresponde à celle de la base sur laquelle ils sont.
-Le seul mouvement autorisé est celui de l'un des deux joueurs de l'une des deux bases adjacentes à la base n'ayant qu'un seul joueur, qui peut donc boucher le trou de cette base et en créer un sur la base qu'il a quittée. 
-
-La couleur d'un base est donnée par son index.
-
-Le trou a comme couleur -1 par définition.
-
-La base qui ne dispose que d'un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> comme index.
-
+Ce monde implémente le jeu du baseball multicolore, dans lequel plusieurs
+joueurs veulent retourner à leur base. Les bases sont dans une disposition
+circulaire et ont leur propre couleur. Il y a deux joueurs pour toutes les
+bases sauf une, qui ne dispose donc que d'un joueur dans son équipe. Il vous
+est demandé de déplacer les joueurs jusqu'à la base qui a la même couleur
+que la leur. Le seul mouvement autorisé est, pour l'un des deux joueurs
+présents sur l'une des deux bases située à côté de la base ayant un seul
+joueur de se déplacer et de remplir le trou, laissant un nouveau trou sur la
+base qu'il vient de quitter.
 </p>
-Il y a six fonctions qui vous sont fournies :
+<p>
+La couleur d'un base est donnée par son index.
+Le trou a -1 comme couleur.
+La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i>
+comme index
+</p>
 
+<div>
+Six méthodes vous sont fournies :
+<p>
 <pre>void move(int baseSrc, int playerSrc)</pre>
 
-Déplace le joueur en position <code>playerSrc</code> de la base <code>baseSrc</code> vers le trou.
+Déplace le joueur de la position <code>playerLocation</code> de la base
+<code>baseSrc</code> au trou.
+</p><p>
+<pre>int getPlayerColor(int baseIndex, int playerLocation) </pre>
 
-<pre> int getPlayerColor(int baseIndex, int playerLocation) </pre>
-
-Renvoie la couleur du joueur en position <code>playerLocation</code> ( 0 ou 1 ) de la base <code>baseIndex</code>.
-
-<pre> int getHoleBase() </pre>
+Renvoie la couleur du joueur à la position <code>playerLocation</code> ( 0
+ou 1 ) de la base <code>baseIndex</code>.  La couleur -1 correspond au trou.
+</p><p>
+<pre>int getHoleBase()</pre>
 
 Renvoie l'index de la base où se trouve le trou
-	
-<pre> int getHolePositionInBase()</pre>
+</p><p>
+<pre>int getHolePositionInBase()</pre>
 
-Renvoie la position du trou dans la base qui contient le trou.
+Renvoie la position de joueur vide dans la base où se situe le trou
+</p><p>	
+<pre>boolean isBaseSorted( int baseIndex )</pre>
 
-<pre> boolean isBaseSorted( int baseIndex)</pre>
-
-Renvoie VRAI ssi tous les joueurs de la base <code>baseSrc</code> sont sur cette même base 
-
+Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur
+la bonne base.  
+</p><p>
 <pre>int getAmountOfBases()</pre>
 
-Renvoie le nombre de bases dans le jeu.
+Renvoie le nombre de bases dans le terrain
+</p>
+</div>
 
-<br><br><hr><br>
+<br/><br/><hr/><br/>
+<div class="tip" id="tip-1" alt="Montrer l'indice 1 ( le prototype des méthodes à utiliser)">
+<p>Les prototypes des méthodes que vous pouvez utiliser sont les suivants :</p>
 
-<div class="tip" id="tip-1" alt="Montrer l'indice numéro 1 (les prototypes des fonctions à utiliser)">
-<p>Les prototypes des fonctions à utiliser sont :</p>
-<pre> 
-private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int playerDst) throws InvalidMoveException
-
-Déplace le joueur en position <code>playerSrc</code> de la base <code>baseSrc</code> vers la position <code>playerDst</code> de la base <code>baseDst</code>
-
-private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) throws InvalidPositionException
-
-Renvoie le numéro de base et la position du joueur le plus proche dont la couleur correspond à <code>colorWanted</code> et en commençant la recherche à la base d'index <code>firstBaseToSearch</code>
-
-private void bringHole(int baseDst, int playerDst , int playerToProtect) throws InvalidMoveException
-
-Ramène le trou en position <code>playerDst</code> de la base <code>baseDst</code> en protégeant pendant le long du trajet la position <code>playerToProtect</code>
+<pre>
+<p>
+private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int
+playerDst) throws InvalidMoveException
+</p><p>
+Déplace le joueur de la position <code>playerLocation</code> de la base
+<code>baseSrc</code> à la position <code>playerDst</code> de la base
+<code>baseDst</code>.
+</p><p>
+private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch )
+throws InvalidPositionException
+</p><p>
+Renvoie l'index de la base et la position sur celle-ci du joueur le plus
+proche ayant <code>colorWanted</code> comme couleur. La recherche commence à
+la base d'index <code>firstBaseToSearch</code>
+</p><p>
+private void bringHole(int baseDst, int playerDst , int playerToProtect)
+throws InvalidMoveException
+</p><p>
+Amène le trou à la position <code>playerDst</code> de la base
+<code>baseDst</code> tout en protégeant la position
+<code>playerToProtect</code> durant le trajet
+</p>
 </pre>
 </div>
 
-<br><br><hr><br>
+<br/><br/><hr/><br/>
 
-<div class="tip" id="tip-2" alt="Montrer l'indice numéro 2 (le pseudo-code de la fonction solve)">
-<p>Le pseudo-code de l'algorithme de la fonction solve est donc le suivant :</p>
+<div class="tip" id="tip-2" alt="Montrer l'indice 2 (le pseudo-code de la fonction solve)">
+<p>L'algorithme de la méthode solve est le suivant :</p>
 <pre> 
 BEGIN
-	IF getPlayerColor(baseIndex, 0) != baseIndex 
+	colorWanted &lt;- getBaseColor(baseIndex)
+	IF getPlayerColor(baseIndex, 0) != colorWanted 
 	THEN
-		IF getPlayerColor(baseIndex,1) == baseIndex
-		THEN
-			bringHole(baseIndex, 0, 1)
-			move(baseIndex, 1)
-		ELSE
-			wantedPlayerLocation <- findNearestPlayer(baseIndex, baseIndex+1 )
-			bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
-			bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
-		END_IF
+			IF getPlayerColor(baseIndex,1) == colorWanted
+			THEN
+					bringHole(baseIndex, 0, 1)
+					move(baseIndex, 1)
+			ELSE
+					wantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )
+					bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
+					bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
+			END_IF
 	END_IF
-	IF getPlayerColor(baseIndex, 1) != baseIndex 
+	IF getPlayerColor(baseIndex, 1) != colorWanted 
 	THEN
-		wantedPlayerLocation <- this.findNearestPlayer(baseIndex, baseIndex+1)
-		bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
-		bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
+			wantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)
+			bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
+			bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
 	END_IF
 END
 </pre>
 </div>
 
-<br><br><hr><br>
+<br/><br/><hr/><br/>
 
-<div class="tip" id="tip-3" alt="Montrer l'indice numéro 3 (le pseudo-code de la fonction bringHole)">
-<p>L'algorithme de la fonction bringHole est donc le suivant :</p>
+<div class="tip" id="tip-3" alt="Montrer l'indice 3 (le pseudo-code de bringHole)">
+<p>L'algorithme de la méthode bringHole est le suivant :</p>
 <pre> 
 BEGIN
-	holeLocation <- getHolePosition()
+	holeBaseLocation[0] &lt;- getHoleBase()
+	holeBaseLocation[1] &lt;- getHolePositionInBase()
 	IF baseDst > holeLocation[0]
 	THEN
 		FOR i FROM holeLocation[0]+1 TO baseDst BY 1
@@ -99,7 +123,7 @@ BEGIN
 			move(i, playerDst)
 		END_FOR
 	ELSE 
-		IF baseDst < holeLocation[0]
+		IF baseDst &lt; holeLocation[0]
 		THEN
 			FOR i FROM holeLocation[0]-1 DOWNTO baseDst+1 BY -1
 			DO
@@ -116,47 +140,43 @@ BEGIN
 END
 </pre>
 </div>
-
-<br><br><hr><br>
-
-<div class="tip" id="tip-4" alt="Montrer l'indice numéro 4 (le pseudo-code de la fonction findNearestPlayer)">
-<p>L'algorithme de la fonction findNearestPlayer est donc le suivant :</p>
+<br/><br/><hr/><br/>
+<div class="tip" id="tip-4" alt="Montrer l'indice 4 (le pseudo-code de findNearestPlayer)">
+<p>L'algorithme de la méthode findNearestPlayer est le suivant :</p>
 <pre> 
 BEGIN
-	nbBases <- getAmountOfBases()
-	found <- false;
-	i <- firstBaseToSearch
-	WHILE i < nbBases AND NOT found
+	nbBases &lt;- getAmountOfBases()
+	found &lt;- false;
+	i &lt;- firstBaseToSearch
+	WHILE i &lt; nbBases AND !found
 	DO
 		FOR j FROM 0 TO 1 BY 1
 		DO
 			IF getPlayerColor(i, j)== colorWanted AND !found
 			THEN
-				location[0] <- i;
-				location[1] <- j;
-				found <- true;
+				location[0] &lt;- i;
+				location[1] &lt;- j;
+				found &lt;- true;
 			END_IF
 		END_FOR
-		i <- i+1
+		i &lt;- i+1
 	END_WHILE
 	RETURN location
 END
 </pre>
 </div>
-
-<br><br><hr><br>
-
-<div class="tip" id="tip-5" alt="Montrer l'indice numéro 5 (le pseudo-code de la fonction bringPlayerHome)">
-<p>L'algorithme de la fonction bringPlayerHome est donc le suivant :</p>
+<br/><br/><hr/><br/>
+<div class="tip" id="tip-5" alt="Montrer l'indice 5(le pseudo-code de bringPlayerHome)">
+<p>L'algorithme de la méthode bringPlayerHome est le suivant :</p>
 <pre> 
-PRECONDITION: le trou est situé dans la base d'indice baseSrc-1
+PRECONDITION: the hole is on the base of index baseSrc-1
 BEGIN
-	move( baseSrc,playerSrc)
-	FOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1
-	DO
-		move(i,1-playerDst)
-		move(i-1,playerDst)
-		move(i,playerDst)
-	END_FOR
+		move( baseSrc,playerSrc)
+		FOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1
+		DO
+			move(i,1-playerDst)
+			move(i-1,playerDst)
+			move(i,playerDst)
+		END_FOR
 </pre>
 </div>

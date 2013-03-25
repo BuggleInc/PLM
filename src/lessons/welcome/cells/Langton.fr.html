@@ -1,55 +1,58 @@
 <h2>La fourmi de Langton</h2>
 
-<p>In this exercise, you will turn your buggle into a <i>Langton's
-ant</i>. These artificial little animals are very interesting because they
-are given simple rules that depend only on their local environment, and
-after a period of apparent chaotic behavior, a general pattern
-<i>emerges</i>.</p>
+<p>Dans cet exercice, vous aller métamorphoser votre buggle en une <i>fourmi de
+Langton</i>. Ces petits animaux artificiels sont très intéressants parce
+qu'ils suivent des règles simples qui dépendent seulement de leur
+environnement local, et qu'après une période d'un comportement d'apparence
+chaotique, un schéma général <i>apparaît</i></p>
 
-<p>The rules are absolutely trivial: to compute what the next step should be,
-you should check the current color of the ground (using
-<code>getGroundColor()</code>). If it's white, change it to black, turn
-right and move forward by one cell. If the ground is currently black, change
-it to white, turn left and move forward by one cell.</p> 
+<p>Les règles sont absolument triviales: pour calculer quel sera le prochain
+pas, vous devez regarder la couleur actuelle du sol ( en utilisant
+<code>getGroundColor()</code>). Si c'est blanc, changez la en noir, tournez
+à droite et avancez d'une case. Si la couleur du sol est le noir, changez la
+en blanc, tournez à gauche et avancez d'une case.</p> 
 
-<p>It's hard to come up with simpler rules isn't it? Well, let's go and code it
-now. You have to complete the <code>step()</code> method, which encodes the
-behavior of the ant at each step. You will probably use the
-<code>getGroundColor()</code> method to retrieve the color of the cell on
-which the ant is currently. To compare colors, you cannot use the equal sign
-(=), because these things are not scalar values but objects. Instead, you
-need to write something like the following:
+<p>Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien,
+allons-y et codons les maintenant. Vous avez à compléter la méthode
+<code>step()</code>, qui définit le comportement de la fourmi à chaque
+pas. Vous utiliserez probablement la méthode <code>getGroundColor()</code>
+pour récupérer la valeur de la case sur laquelle la fourmi se trouve. Pour
+comparer des couleurs, vous ne pouvez pas utiliser le signe égal (=), parce
+que les couleurs ne sont pas des valeurs scalaires mais des objets. A la
+place, vous aurez besoin d'écrire quelquechose comme:
 </p> 
 <pre>
-Color c /* = some initialization */;
+Color c /* = une initialisation*/;
 if (c.equals(Color.black)) {
-  /* that's equal */
+  /* c'était égal */
 } else {
-  /* that was not equal */
+  /* ce n'était pas égal */
 }
 </pre>
 
-<p>Changing the ground color is not difficult, but a bit long: you have to
-change the brush color of your buggle, set the brush down (to mark the
-current cell -- with <code>brushDown()</code>), and set the brush back up
-(with <code>brushUp()</code>) to avoid further issues when the buggle will
-move. You are naturally free of organizing your code the way you want, but
-you may want to write a <code>void setGroundColor(Color c)</code> method to
-factorize things a bit.</p>
+<p>Changer la couleur du sol n'est pas difficile, seulement un peu long : vous
+avez à changer la couleur de la brosse de votre buggle, l'abaisser ( pour
+marquer la case courante -- avec <code>brushDown()</code>, et relever la
+brosse (avec <code>brushUp()</code>) pour éviter des problèmes lorsque la
+buggle va se déplacer. Vous être naturellement libre d'organiser votre code
+comme vous le souhaitez, mais vous pouvez vouloir écrire une méthode
+<code>void setGroundColor(Color c)</code> pour factoriser le tout.</p>
 
-<h2>More information on Langton's ant</h2>
+<h2>Plus d'informations sur la fourmi de Langton</h2>
 
-<p>As you can see from the execution of this exercise, the interest in this
-algorithm is that after about 10000 steps of relative chaotic behavior, the
-ant start building a regular pattern. This emergence of a regular pattern
-from the chaos is rather fascinating, isn't it?</p>   
+<p>Comme vous pouvez le constater avec l'exécution de cet exercice, l'intérêt
+dans cet algorithme est qu'après environ 10 000 pas de comportement
+relativement chaotique, la fourmi commence à suivre un schéma
+régulier. L'émergence de ce schéma régulier à partir du chaos est réellement
+fascinant, n'est-ce pas ?</p>   
 
-<p>This mechanism were invented in 1986 by Chris Langton, and later generalized
-in several ways (as we shall see in the next exercises). It was proven in
-2000 that the ant's trajectory can be used to compute any boolean circuit,
-and thus that the ant is capable of universal computation (ie, any possible
-computation can be achieved using the ant as a computing device). Yet
-another subject of fascination...</p>
+<p>Ce mécanisme a été inventé en 1986 par Chris Langton, et généralisé après de
+plusieures façons (comme nous le verrons dans les prochains exercices). Il a
+été prouvé en 2000 que la trajectoire de la fourmi peut être utilisée pour
+calculer n'importe quel circuit booléen, et que la fourmi est capable de
+calcul universel ( ie, n'importe quel calcul possible peut être réalisé en
+utilisant la fourmi comme instrument de calcul). Encore un autre sujet de
+fascination...</p>
 
-<p>Check the corresponding wikipedia web page, of which this exercise is
-inspired, for further details.</p>     
+<p>Consultez la page correspondante sur Wikipedia, à partir de laquelle cet
+exercice est inspiré, pour d'avantages de détails.</p>     

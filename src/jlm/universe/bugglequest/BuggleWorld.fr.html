@@ -1,4 +1,4 @@
-<h1>BuggleWorld</h1>
+<h1>Le monde des Buggles</h1>
 Ce monde a été inventé par Lyn Turbak, du Wellesley College. Il est peuplé
 de Buggles, petites bêtes qui comprennent des ordres simples, et offre de
 nombreuses possibilités d'interaction avec le monde: prendre ou poser des
@@ -39,12 +39,13 @@ objets, colorier le sol, se cogner à des murs, etc.
 </table>
 
 <h2>Note sur les exceptions</h2>
-Regular buggles throw a BuggleWallException exception if you ask them to
-traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you
-ask them to pickup a baggle from an empty cell, or a
-AlreadyHaveBaggleException exception if they already carry a baggle.  Trying
-to drop a baggle on a cell already containing one throws an
-AlreadyHaveBaggleException exception.
-<p>Les SimpleBuggles (ie, celles utilisées dans les premiers exercices) affiche
-un message d'erreur sans que vous ayez à vous soucier de ce qu'est une
-exception.</p>
+Les buggles normales lèvent une exception BuggleWallException si on cherche
+à leur faire traverser un mur.
+Elles lèvent une exception NoBaggleUnderBuggleException si vous cherchez à
+prendre un baggle dans une case qui n'en contient pas, ou une exception
+AlreadyHaveBaggleException si vous portez déjà un baggel.
+Tenter de déposer un baggel sur une case qui en contient déjà lève une
+exception AlreadyHaveBaggleException.
+<p>Les "SimpleBuggles" (ie, celles utilisées dans les premiers exercices)
+affiche un message d'erreur sans que vous ayez à vous soucier de ce qu'est
+une exception.</p>

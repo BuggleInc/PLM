@@ -1,9 +1,10 @@
 <h2>Méthodes</h2>
 
+<p>
 Nous allons maintenant voir comment écrire nos propres méthodes. Il s'agit
 en quelque sorte d'étendre le vocabulaire de la buggle en lui apprenant à
 faire de nouvelles choses. 
-
+</p>
 <p>Par exemple, nous avons vu à l'exercice précédent comment demander à la
 buggle d'aller chercher la buggle qui se trouve devant elle, et la ramener à
 sa position initiale. S'il y a maintenant plusieurs baggles sur le plateau,
@@ -16,10 +17,10 @@ comprend un <code>forward()</code>.</p>
 
 <p class="Python">La syntaxe pour écrire une méthode simple nommée <code>goAndGet</code> est
 la suivante:
-<pre>def goAndGet():
+<pre>public void goAndGet() {
   actions();
-  to();
-  do();</pre>
+  aFaire();
+}</pre>
 <p class="Java">La syntaxe pour écrire une méthode simple nommée <code>goAndGet</code> est
 la suivante:
 <pre>public void goAndGet() {
@@ -30,8 +31,9 @@ la suivante:
 <p class="Java">Le corps de la méthode (entre les accolades) peut contenir autant
 d'instructions que vous le souhaitez, et toutes les constructions vues
 jusque là (for, while, if, etc).</p>
-<p class="Python">The method body (the code that is indended) can contain as many instructions
-as you want, and any construction we saw so far (for, while, if, etc).</p>
+<p class="Python">Le corps de la méthode (entre les accolades) peut contenir autant
+d'instructions que vous le souhaitez, et toutes les constructions vues
+jusque là (for, while, if, etc).</p>
 
 <p class="Java">Nous reviendrons plus tard sur le sens exact du mot-clé
 <code>public</code>. Disons simplement pour l'instant qu'il indique que tout
@@ -52,24 +54,30 @@ autres en mettant une majuscule à chacun. Il est interdit de mettre des
 espaces ou des accentués dans le nom d'une méthode. C'est pourquoi nous
 écrivons "go and get" sous la forme "goAndGet".</p>
 
-<p class="Python">FIXME: add here a word about the variable naming schema. Either caseBased or
-as_in_C</p>
+ 
+<p class="Python">
+	 
+	<!--FIXME: add here a word about the variable naming schema. Either caseBased or as_in_C -->
+</p>
+
 
 <h3>Objectif de cet exercice</h3><a name="Objectifs"> L'objectif de cet exercice est donc d'écrire une
 méthode nommée <code>goAndGet()</code> et qui fait la même chose qu'aux
 exercices précédents (avance tant qu'on ne trouve pas de baggle, ramasser le
 baggle, reculer à la case départ, poser le baggle).
 
-<p class="Python">One particularity of this exercise is that all your code should be written
-in this function, with nothing out of it. The code that calls your function
-will be automagically added when you click on <b>Start</b>.</p>  
+<p class="Python">La particularité de cet exercice est que tout votre code doit être écrit
+dans cette fonction, avec rien en dehors. Le code qui appelle votre fonction
+sera automagiquement ajouté quand vous cliquerez sur <b>Start</b>.</p>  
   
 <p class="Java">La particularité de cet exercice est que vous n'allez donc pas écrire
 directement le code que la buggle va exécuter, mais une méthode qu'elle
 utilisera. En fait, dans tous les exercices précédents, vous avez écrit le
 corps d'une méthode particulière de la buggle nommée <code>run()</code> et
 qui est invoquée par l'environnement quand on clique sur le bouton
-<b>Start</b>. 
+<b>Start</b>.
+</p>
+<b>Début</b>. 
 <p class="Java">N'essayez pas de définir ici cette méthode, puisque la buggle la connaît
 déjà. Cela troublerait le compilateur qui vous donnerait un message d'erreur
 en échange. Pour information, voici le corps de la méthode
@@ -83,13 +91,13 @@ en échange. Pour information, voici le corps de la méthode
 &nbsp;&nbsp;&nbsp;&nbsp;turnLeft();
 &nbsp;&nbsp;}
 }</pre>
-
-<p>Your buggle will repeat 7 times (which matches the world's dimension)
-sequence constituted of a call to the <code>goAndGet()</code> method that
-you should write, plus a move to get to the next row (turn right, move
-forward, turn left). As you can see, the buggle will do one step right from
-the right border of the world. It will bring it back to the left side since
-its world is a torus.</p>
+</p>
+<p>Donc, votre buggle va répéter 7 fois (la taille du monde)  l'opération
+<code>goAndGet()</code> que vous allez écrire, plus les opérations
+nécessaire à se décaler d'une colonne vers la droite (tourner à droite,
+avancer, tourner à gauche). Notez que la buggle va donc faire un pas vers la
+droite alors qu'elle sera tout à droite du monde. Cela la ramènera sur le
+bord gauche, car le monde des buggles est torique.</p>
 
 <p>À vous d'écrire cette méthode goAndGet().</p>
 

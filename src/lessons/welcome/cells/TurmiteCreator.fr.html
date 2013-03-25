@@ -1,14 +1,15 @@
-<h2>Creating Turmites</h2>
+<h2>Créer des Turmites</h2>
 
-<p>This exercise allows you to build your own turmites. To pass the exercise,
-you should simply write a <code>init()</code> method which initializes the
-<code>rule</code> to use the following transitions table (from wikipedia),
-set the buggle initial position at (8;33), and ask for 8342 steps.</p> 
+<p>Cet exercice vous permet de construire vos propres turmites. Pour réussir
+cet exercice, vous devez simplement écrire une méthode <code>init()</code>
+qui initialise <code>rule</code> pour utiliser les tables de transitions
+suivantes ( de Wikipedia ), met la position initiale du buggle à (8;33), et
+demande de faire 8342 pas.</p> 
 
 <table border="1" style="text-align:center">
 <tr>
 <th rowspan="3" colspan="2"></th>
-<th colspan="6">Current color</th>
+<th colspan="6">Couleur actuelle</th>
 </tr>
 <tr>
 <th colspan="3">0</th>
@@ -16,10 +17,10 @@ set the buggle initial position at (8;33), and ask for 8342 steps.</p>
 
 </tr>
 <tr style="font-size:9pt">
-<th>Couleur à écrire</th>
+<th>Couleur à mettre</th>
 <th>Virage</th>
 <th>État suivant</th>
-<th>Couleur à écrire</th>
+<th>Couleur à mettre</th>
 <th>Virage</th>
 <th>État suivant</th>
 </tr>
@@ -50,19 +51,19 @@ set the buggle initial position at (8;33), and ask for 8342 steps.</p>
 <b>L</b> (90° vers la gauche -- left),
 <b>R</b> (90° vers la droite -- right),
 <b>N</b> (rien -- no turn),
-<b>U</b> (demi tour de 180° -- U-turn).
-</p>
+<b>U</b> (demi tour de 180° -- U-turn).</p>
 
-<h2>Going further</h2>
-<p>This exercise is naturally an excuse to let you experiment with your own
-turmites.  Feel free to change the transition table and the amount of steps
-to experiment by yourself. To that extend, you may find the Ed Pegg Jr's
-library useful. If you find new interesting patterns, send them per email so
-that we can integrate them to this list!  </p>
+<h2>Aller plus loin</h2>
+<p>Cet exercice est naturellement une excuse pour vous laisser expérimenter vos
+propres turmites. Vous êtes libres de changer la table de transition et le
+nombre de pas pour expérimenter par vous-même. A ce propos, vous pouvez
+trouver la bibliothèque Ed Pegg Jr's utile. Si vous trouvez de nouveaux
+schémas intéressants, envoyez-les nous pas email afin que nous les puissions
+les ajouter à cette liste.  </p>
 
-<p>In addition, wikipedia is desperately missing some good looking colorful
-turmites: only black and white ones are depicted.  You should consider
-submitting your creations directly to the free encyclopedia.</p>
+<p>De plus, Wikipedia manque désespérement de quelques beaux et colorés
+turmites: seuls des noirs et blancs sont décrits. Vous pouvez considérer
+l'idée de soumettre vos créations directement à l'encyclopédie libre.</p>
 
 <pre>
 EdPeggJrTurmiteLibrary = [
@@ -116,47 +117,52 @@ EdPeggJrTurmiteLibrary = [
 "{{{1, 2, 1}, {0, 8, 0}}, {{1, 2, 2}, {0, 1, 0}}, {{1, 8, 0}, {0, 8, 0}}}", # 45: makes a 4 in 1 highway
 </pre> 
 
-<p>Langton's ants may not share the expressiveeness power of the turmites, but
-they remain fascinating too. You can experiment with them using the
-initLangton() method, provided in your template, that allows to build a
-Turmite transition table from a Langton's ant name. Tiny changes in the ant
-may result huge changes. For example, "RRL" does not seam to lead to any
-constructed pattern, even after a million steps, but "RLL" starts building a
-very simple highway pattern after less than 100 steps!</p>  
+<p>Les fourmis de Langton ne partagent peut être pas la capacité d'expression
+des turmites, mais elles restent fascinantes elles aussi. Vous pouvez
+expérimenter avec elles en utilisant la méthode initLangton(), fournie dans
+le code de base, qui vous permet de construire une table de transition pour
+Turmite a partir du nom d'une fourmi de Langton. De petits changements
+peuvent engendrer de grandes choses. Par exemple, "RRL" ne semble pas mener
+à un quelconque schéma, même après un million de pas, mais "RLL" commence à
+construire un dessin très simple de route au bout de moins de 100 pas !</p>  
 
-<p>Quite a lot of Langton's ants build highways: RL, of course, but also
-RLRLRLLRLR (about 2500 steps).  The chaotic behavior of ants before the
-highway can be very short (as with RLL that only need 100 steps to converge)
-or very long, as with LLLLLLRRLRRR which seems chaotic for more than 500,000
-steps before build the highway or even RRLLLRRRLRRR which needs 1170000 to
-start converging. Some are narrow, and others are very large, such as
-RRLRLLRLRR (200,000 steps). This ant is also notable since it is somehow
-squarish even before the highway start where most others do not show
-anything notable before their highway.<p>
+<p>Beaucoup de fourmis de Langton construisent des routes: RL, bien entendu,
+mais aussi RLRLRLLRLR ( environ 2500 pas ). Le comportement chaotique des
+fourmis avant la route peut être très court ( comme avec RLL qui a seulement
+besoin de 100 pas pour converger ) ou très long, comme avec LLLLLLRRLRRR qui
+semble chaotique jusqu'à plus de 500 000 pas avant de constuire la route ou
+encore RRLLLRRRLRRR qui nécessite 1 170 000 pour commencer à
+converger. Certaines sont étroites, d'autres très larges, comme avec
+RRLRLLRLRR (200 000 pas). Cette fourmi est aussi notable puisque c'est
+quelque peu carré avant même que la route commence, là où d'autres ne
+montrent rien de transcendant avant leur route.<p>
 
-<p>Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps),
-RRLLLRLLLRRR (30,000 steps), RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR
-(20,000 steps). Some even fill the whole space (RRLRR after 3000
-steps). Some of my personal favorite ones are the ones where the ant seem to
-be bouncing within a box that gets bigger on each bump, such as LRRRRRLLR
-(30,000 steps). LRRRRLLLRRR is even more impressing since the bounces within
-the box are regular and since it converges more rapidly to its stable
-behavior (15,000 steps are enough).</p>
+<p>Certaines fourmis remplissent des secteurs entiers, comme avec RRLLLRLLLRRR
+(16 000 pas), RRLLLRLLLRRR (30 000 pas), RRLLLRRRRRLR (125 000 pas) ou
+RRLRLLRRRRRR (20 000 pas). D'autres encore remplissent tout l'espace (RRLRR
+après 3000 pas). Certaines de mes favorites sont celles où la fourmi semble
+rebondir dans une boite qui devient plus grande à chaque rebond, comme avec
+LRRRRRLLR (30 000 pas). LRRRRLLLRRR est encore plus impressionnant puisque
+les rebonds dans la boite sont réguliers et puisque la fourmi atteint
+rapidement son comportement stable (15 000 pas suffisent).</p>
 
-<p>Finally, some ants are just build artistic patterns. You should check this
-video for some beautiful ones:
-http://www.youtube.com/watch?v=1X-gtr4pEBU. If you want to convert them into
-your code, you have to shift them by one: For example, the one depicted at
-3:42 is not RRLRLRLLRL, but RLRLRLLRLR (the first visible move should be
-read as last one).</p>
+<p>Enfin, certaines fourmis construisent juste des schémas artistiques. Vous
+devriez regarder cette vidéo pour un bel aperçu :
+http://www.youtube.com/watch?v=1X-gtr4pEBU .
+Si vous voulez les implémenter dans votre code, vous devez les permutter de
+un : Par exemple, celle décrite à 3:42 n'est pas RRLRLRLLRL, mais RLRLRLLRLR
+(le premier mouvement visible doit être vu comme le dernier).</p>
 
-<p>As you can see by exploring the above set of turmites, they are usually not
-as colorful as the ants, but this may be because very few colors suffice to
-exhibit complex behaviors. For example, there is a specific class of
-turmites called <i>busy beavers</i> which are turmites that write a lot of
-things before stopping (busy beavers are usually classical turing machines,
-but the idea fits perfectly to turmites too). There is a sort of
-international competition where people strive to find the turmite that
-covers the biggest area before stopping. The web page is here:
+<p>Comme vous pouvez le constater en explorant l'ensemble ci-dessus de
+turmites, elles ne sont généralement pas aussi colorées que les fourmis,
+mais c'est peut-être car très peu de couleurs sont nécessaires pour
+expliciter des comportements complexes. Par exemple, il y a un classe
+spécifique de turmites appelée <i>busy beavers</i> qui sont des turmites qui
+écrivent énormément de choses avant de s'arrêter ( les <i>busy beavers</i>
+sont généralement des machines de Turing classiques, mais l'idée correpond
+parfaitement aux turmites). Il y a une sorte de compétition internationale
+où les participants font tout leur possible pour trouver le turmite qui
+couvre la plus grande surface avant de s'arrêter.
+La page web est ici :
 http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines 
 
