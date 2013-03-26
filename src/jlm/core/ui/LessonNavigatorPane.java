@@ -7,10 +7,13 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
+
+import net.miginfocom.swing.MigLayout;
 
 import org.apache.commons.collections15.Transformer;
 import org.apache.commons.collections15.functors.ConstantTransformer;
@@ -39,7 +42,7 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 
 	private static final long serialVersionUID = -1800747039420103759L;
 	private Lesson lesson;
-	private JLabel title;
+	private TitledBorder border;
 	Layout<Lecture, Integer> layout;
 	/**
 	 * the graph
@@ -61,15 +64,16 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 	}
 
 	private void initComponent() {
-		title = new JLabel("Your Progress on " + lesson.getName());
-		this.add(title);
+		setLayout(new MigLayout("insets 0","[grow]","[grow]"));
+		
 		try {
 			layout = new TreeLayout<Lecture, Integer>((Forest<Lecture, Integer>) graph);
 		} catch (IllegalArgumentException iae) {
 			System.out.println("The dependency graph of this exercise does not seem to be a tree (got '"+iae.getMessage()+"'). Switching to ISOMlayout.");
 			layout = new ISOMLayout<Lecture, Integer>(graph);
 		}
-		vv = new VisualizationViewer<Lecture,Integer>(layout, new Dimension(150,500));
+//		vv = new VisualizationViewer<Lecture,Integer>(layout, new Dimension(150,500));
+		vv = new VisualizationViewer<Lecture,Integer>(layout);
 		vv.setBackground(Color.white);
 		vv.setMinimumSize(new Dimension(50, 50));
 		vv.getRenderContext().setEdgeShapeTransformer(new EdgeShape.Line());
@@ -107,7 +111,12 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 		graphMouse.setMode(ModalGraphMouse.Mode.PICKING);
 		vv.setGraphMouse(graphMouse);
 		final GraphZoomScrollPane graphViewPane = new GraphZoomScrollPane(vv);
-		this.add(graphViewPane);
+		this.add(graphViewPane,"wrap, growx");
+		
+		border = BorderFactory.createTitledBorder("Your Progress on " + lesson.getName());
+		graphViewPane.setBorder(border);
+		
+		
 		vv.getPickedVertexState().addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -125,7 +134,6 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 		});
 	}
 
-
 	@Override
 	public void currentLessonHasChanged() { /* DON'T CARE */	}
 
@@ -133,7 +141,7 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 	public void currentExerciseHasChanged(Lecture lect) {
 		lesson = Game.getInstance().getCurrentLesson();
 		graph = lesson.getExercisesGraph();
-		title.setText("Your Progress on " + lesson.getName());
+		border.setTitle("Your Progress on " + lesson.getName());
 		try {
 			layout = new TreeLayout<Lecture, Integer>((Forest<Lecture, Integer>) graph);
 		} catch (IllegalArgumentException iae) {
