@@ -2,11 +2,11 @@
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-25 20:42+0100\n"
+"POT-Creation-Date: 2013-03-26 12:13+0100\n"
 "PO-Revision-Date: 2012-03-18 00:56+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1429,7 +1429,7 @@ msgstr ""
 msgid "Working environment"
 msgstr "L'environnement de travail"
 
-#. type: Content of: <p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/Environment.html:23
 msgid ""
 "Before going any further, get familiar with the working environment. Have a "
@@ -1513,13 +1513,22 @@ msgstr ""
 
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/Environment.html:52
+#, fuzzy
+#| msgid ""
+#| "Once done, clic on run, and proceed to next exercise using the File menu "
+#| "entry (or keep around to experiment further if you feel so)."
 msgid ""
 "Once done, clic on run, and proceed to next exercise using the File menu "
-"entry (or keep around to experiment further if you feel so)."
+"entry"
 msgstr ""
 "Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec "
 "le\n"
 "menu File (ou restez ici pour expérimenter un peu si vous le voulez)."
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Environment.html:54
+msgid "(or keep around to experiment further if you feel so)."
+msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Basics.html:3
@@ -2509,16 +2518,16 @@ msgstr ""
 msgid ""
 "The buggle world can sometimes contain some <i>baggles</i>, which are little "
 "biscuits that buggles can carry from one point to another. For that, they "
-"have to use specific methods such as <code>isOverBaggle(), isCarryingBaggle"
-"(), pickUpBaggle()</code> or <code>dropBaggle()</code>. Check their "
-"documentation in \"Help/About this world\" for more details."
+"have to use specific methods such as <code>isOverBaggle(), "
+"isCarryingBaggle(), pickUpBaggle()</code> or <code>dropBaggle()</code>. "
+"Check their documentation in \"Help/About this world\" for more details."
 msgstr ""
 "Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
 "biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
-"cela, elles peuvent utiliser des fonctions spécifiques : <code>isOverBaggle"
-"(), isCarryingBaggle(), pickUpBaggle()</code> et <code>dropBaggle()</code>. "
-"Tous les détails se trouvent dans la documentation accessible depuis \"Help/"
-"About this world\"."
+"cela, elles peuvent utiliser des fonctions spécifiques : "
+"<code>isOverBaggle(), isCarryingBaggle(), pickUpBaggle()</code> et "
+"<code>dropBaggle()</code>. Tous les détails se trouvent dans la "
+"documentation accessible depuis \"Help/About this world\"."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/BaggleSeeker.html:10
@@ -3691,13 +3700,13 @@ msgid ""
 "its position and orientation in order to determine the amount of steps to do "
 "and their direction, but it is not relevant here."
 msgstr ""
-"<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode <code>move"
-"(int nbPas, boolean forward)</code> qui avance de <code>nbPas</code> si "
-"<code>forward</code> est vrai, et recule d'autant de pas si le booléen est "
-"faux. La buggle s'en servira pour retourner sur la ligne du haut. Elle "
-"utilisera au passage des méthodes que l'on ne connaît pas encore pour "
-"deviner sa position et sa direction actuelles afin de calculer le sens et le "
-"nombre de pas à faire (mais ce n'est pas important ici)."
+"<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode "
+"<code>move(int nbPas, boolean forward)</code> qui avance de <code>nbPas</"
+"code> si <code>forward</code> est vrai, et recule d'autant de pas si le "
+"booléen est faux. La buggle s'en servira pour retourner sur la ligne du "
+"haut. Elle utilisera au passage des méthodes que l'on ne connaît pas encore "
+"pour deviner sa position et sa direction actuelles afin de calculer le sens "
+"et le nombre de pas à faire (mais ce n'est pas important ici)."
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/welcome/MethodsArgs.html:61
@@ -4712,14 +4721,14 @@ msgstr ""
 #: src/lessons/welcome/BDR2.html:30
 msgid ""
 "When you review this code, it may not be clear at the first glance that it "
-"is simply a choice with 4 branches depending on the value of getIndication"
-"(). To improve this, we will use a <code>switch</code> construct, which Java "
-"syntax is the following:"
+"is simply a choice with 4 branches depending on the value of "
+"getIndication(). To improve this, we will use a <code>switch</code> "
+"construct, which Java syntax is the following:"
 msgstr ""
 "Quand on relit ce programme, on ne voit pas forcément tout de suite qu'il "
-"s'agit simplement d'un choix à 4 branches selon la valeur de getIndication"
-"(). Pour faire mieux, on va utiliser la construction <tt>switch</tt>, dont "
-"la syntaxe est la suivante:"
+"s'agit simplement d'un choix à 4 branches selon la valeur de "
+"getIndication(). Pour faire mieux, on va utiliser la construction "
+"<tt>switch</tt>, dont la syntaxe est la suivante:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/BDR2.html:36
@@ -5738,6 +5747,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/Array.html:151 src/lessons/recursion/Square.html:43
 #: src/lessons/recursion/Circle.html:14
+#: src/lessons/recursion/HanoiBoard.html:20
 msgid "Goal of this exercise"
 msgstr "Objectif de l'exercice"
 
@@ -5877,12 +5887,12 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/TraversalByColumn.html:14
 msgid ""
-"In contrary to the exercises we saw so far, we won't use the <code>forward()"
-"</code>, <code>backward()</code> and similar methods. Instead, we will "
-"compute the coordinate of the next buggle position and use the <code>setPos"
-"(int, int)</code> method to <i>teleport</i> the buggle directly to this "
-"position. For example, <code>setPos(3, 5)</code> teleports the buggle to the "
-"cell where x=3 and y=5."
+"In contrary to the exercises we saw so far, we won't use the "
+"<code>forward()</code>, <code>backward()</code> and similar methods. "
+"Instead, we will compute the coordinate of the next buggle position and use "
+"the <code>setPos(int, int)</code> method to <i>teleport</i> the buggle "
+"directly to this position. For example, <code>setPos(3, 5)</code> teleports "
+"the buggle to the cell where x=3 and y=5."
 msgstr ""
 "À la différence des exercices vus jusque là, nous n'allons pas utiliser les "
 "méthodes <code>forward()</code>, <code>backward()</code> et autres, mais "
@@ -5904,11 +5914,12 @@ msgid ""
 msgstr ""
 "Le premier objectif est donc d'écrire une fonction booléenne indiquant si la "
 "buggle a atteint la position finale ou non, càd si elle est arrivée en bas à "
-"droite du monde.  Vous utiliserez pour cela les méthodes <code>getWorldWidth"
-"()</code> et <code>getWorldHeight()</code> qui retournent respectivement la "
-"largeur et la hauteur du monde.  Votre test est de comparer les coordonnées "
-"actuelles de votre buggle (que vous pouvez retrouver avec les méthodes "
-"<code>getX()</code> et <code>getY()</code>) aux dimensions du monde."
+"droite du monde.  Vous utiliserez pour cela les méthodes "
+"<code>getWorldWidth()</code> et <code>getWorldHeight()</code> qui retournent "
+"respectivement la largeur et la hauteur du monde.  Votre test est de "
+"comparer les coordonnées actuelles de votre buggle (que vous pouvez "
+"retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux "
+"dimensions du monde."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/TraversalByColumn.html:28
@@ -5952,10 +5963,10 @@ msgid ""
 "with <code>writeMessage(counter);</code>."
 msgstr ""
 "Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez "
-"besoin d'un compteur initialisé à zéro au début de votre méthode <code>run()"
-"</code>, et incrémenté de un à chaque pas (par exemple avec <code>cpt++;</"
-"code>). Ensuite, il faut écrire la valeur de ce compteur au sol à chaque "
-"pas, par exemple avec <code>writeMessage(cpt);</code>."
+"besoin d'un compteur initialisé à zéro au début de votre méthode "
+"<code>run()</code>, et incrémenté de un à chaque pas (par exemple avec "
+"<code>cpt++;</code>). Ensuite, il faut écrire la valeur de ce compteur au "
+"sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/TraversalByColumn.html:45
@@ -6037,10 +6048,10 @@ msgstr ""
 #: src/lessons/welcome/cells/Langton.html:8
 msgid ""
 "The rules are absolutely trivial: to compute what the next step should be, "
-"you should check the current color of the ground (using <code>getGroundColor"
-"()</code>). If it's white, change it to black, turn right and move forward "
-"by one cell. If the ground is currently black, change it to white, turn left "
-"and move forward by one cell."
+"you should check the current color of the ground (using "
+"<code>getGroundColor()</code>). If it's white, change it to black, turn "
+"right and move forward by one cell. If the ground is currently black, change "
+"it to white, turn left and move forward by one cell."
 msgstr ""
 "Les règles sont absolument triviales: pour calculer quel sera le prochain "
 "pas, vous devez regarder la couleur actuelle du sol ( en utilisant "
@@ -7239,10 +7250,10 @@ msgstr "D'autres variantes du tri par insertion"
 #. type: Content of: <p>
 #: src/lessons/sort/insertion/AlgInsertionSort.html:46
 msgid ""
-"TreeSort builds a binary search tree to sort them. It leads to a O(n log"
-"(n))  on average, but O(n^2) in worst cases. We won't study this algorithm "
-"here since unterstanding its behavior requires to know what a binary tree "
-"is, what is beyond our present goals."
+"TreeSort builds a binary search tree to sort them. It leads to a O(n "
+"log(n))  on average, but O(n^2) in worst cases. We won't study this "
+"algorithm here since unterstanding its behavior requires to know what a "
+"binary tree is, what is beyond our present goals."
 msgstr ""
 "TreeSort construit un arbre binaire équilibré des données pour les trier. "
 "Cela lui permet d'être en O(nlog n) en moyenne (mais O(n^2) dans le pire "
@@ -7262,8 +7273,8 @@ msgid ""
 msgstr ""
 "Il existe d'autres variantes du tri par insertion, comme PatienceSorting, "
 "qui fait des paquets des valeurs et trie ensuite chaque paquet. Cet "
-"algorithme présente un pire cas en O(nlog n), et une complexité spatiale en O"
-"(n).  LibrarySort (proposé en 2004) échange également un peu d'espace pour "
+"algorithme présente un pire cas en O(nlog n), et une complexité spatiale en "
+"O(n).  LibrarySort (proposé en 2004) échange également un peu d'espace pour "
 "du temps puisqu'il présente une complexité moyenne en O(n log n), mais "
 "nécessite de stoquer des données supplémentaires."
 
@@ -8141,8 +8152,8 @@ msgid ""
 "Previous solution induce that the turtle teleports to other location, or at "
 "the very least, that it moves its pen up during the drawing. Indeed, the end "
 "of the drawing of the first recursive call does not match the begining of "
-"the second recursive call. That is why we had to use the method <code>setPos"
-"()</code>"
+"the second recursive call. That is why we had to use the method "
+"<code>setPos()</code>"
 msgstr ""
 "La solution précédente nécessite que la tortue se téléporte, autrement dit, "
 "qu'il est parfois nécessaire de lever le crayon pour tracer la courbe.  En "
@@ -8166,9 +8177,9 @@ msgstr ""
 #: src/lessons/recursion/DragonCurve2.html:13
 msgid ""
 "The method <code>dragon()</code> is then recursively defined using itself "
-"and <code>dragonReverse()</code>. Likewise, the method <code>dragonReverse()"
-"</code> is defined recursively using itself and <code>dragon()</code>. This "
-"is thus an example of <i>mutual recursion</i>."
+"and <code>dragonReverse()</code>. Likewise, the method "
+"<code>dragonReverse()</code> is defined recursively using itself and "
+"<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
 msgstr ""
 "La méthode <code>dragon()</code> sera définie récursivement en fonction des "
 "méthodes <code>dragon()</code> et <code>dragonInverse()</code>. De même, la "
@@ -8191,8 +8202,8 @@ msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
 msgstr ""
-"Les coordonnées (u, v) du nouveau point introduit par la méthode <code>dragon"
-"()</code> seront :"
+"Les coordonnées (u, v) du nouveau point introduit par la méthode "
+"<code>dragon()</code> seront :"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/DragonCurve2.html:33
@@ -8317,6 +8328,91 @@ msgid ""
 msgstr ""
 "Pas besoin de recopier le code de <code>spiral()</code>, la tortue de cet "
 "exercice connait déjà la méthode."
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/HanoiBoard.html:1
+msgid "Tower of Hanoi"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/HanoiBoard.html:3
+msgid ""
+"The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or "
+"Towers of Brahma, is a mathematical game or puzzle. It consists of three "
+"rods, and a number of disks of different sizes which can slide onto any rod. "
+"The puzzle starts with the disks in a neat stack in ascending order of size "
+"on one rod, the smallest at the top, thus forming a pyramid.  The objective "
+"of the puzzle is to move the entire stack to another rod, obeying the "
+"following rules:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:11
+msgid "Only one disk may be moved at a time."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:13
+msgid ""
+"Each move consists of taking the upper disk from one of the rods and sliding "
+"it onto another rod, on top of the other disks that may already be present "
+"on that rod."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:17
+msgid "No disk may be placed on top of a smaller disk."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/HanoiBoard.html:22
+msgid ""
+"Write the core of the method: <code>public void solve(int src, int dst, int "
+"height) throws HanoiInvalidMove</code> This method will recursively solve "
+"the presented problem. First parameter named <code>src</code> is the index "
+"of the initial tower, second parameter <code>dst</code> is the index of the "
+"expected final tower, and the third parameter <code>height</code> is the "
+"height of the tower.  A key to solving this puzzle is to recognize that it "
+"can be solved by breaking the problem down into a collection of smaller "
+"problems and further breaking those problems down into even smaller problems "
+"until a solution is reached.  The following procedure demonstrates this "
+"approach:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:36
+msgid "label the pegs A, B, C (these labels may move at different steps)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:37
+msgid "let n be the total number of discs (the height of the initial tower)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:38
+msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/HanoiBoard.html:41
+msgid "To move n discs from peg A to peg C:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:43
+msgid "move n−1 discs from A to B. This leaves disc #n alone on peg A"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:44
+msgid "move disc #n from A to C"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:45
+msgid "move n−1 discs from B to C so they sit on disc #n"
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/maze/Main.html:1
@@ -9757,8 +9853,8 @@ msgstr "Presque 100"
 #. type: Content of: <p>
 #: src/lessons/welcome/bool1/NearHundred.html:2
 msgid ""
-"Given an int n, return true if it is within 10 of 100 or 200. Note Math.abs"
-"(n) returns the absolute value of a number."
+"Given an int n, return true if it is within 10 of 100 or 200. Note Math."
+"abs(n) returns the absolute value of a number."
 msgstr ""
 "Étant donné un entier n, retournez vrai s'il est à 10 près de 100 ou de 200. "
 "Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
@@ -10571,8 +10667,8 @@ msgstr ""
 msgid ""
 "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
 msgstr ""
-"Donc, la dernière valeur d'un tableau est donnée par <code>tab[tab.length -1]"
-"</code>."
+"Donc, la dernière valeur d'un tableau est donnée par <code>tab[tab.length "
+"-1]</code>."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/AverageValue.html:1
@@ -10721,8 +10817,8 @@ msgstr ""
 "Dans cet exercice, il vous faut calculer le nombre d'occurrences d'une "
 "valeur\n"
 "donnée, c'est à dire le nombre de fois que cette valeur apparaît dans le\n"
-"tableau. Pour cela, remplissez le corps de la méthode <code>occurrences(int"
-"[]\n"
+"tableau. Pour cela, remplissez le corps de la méthode "
+"<code>occurrences(int[]\n"
 "tab, int lookingFor)</code>, qui retourne le nombre d'occurrences de\n"
 "<code>lookingFor</code> dans <code>tab</code>."
 
@@ -10961,6 +11057,16 @@ msgstr "int getAmountOfBases()"
 #: src/lessons/smn/baseball/BaseballGame.html:41
 msgid "Return the amount of bases in the field."
 msgstr "Renvoie le nombre de bases dans le terrain"
+
+#. type: Content of: <h1>
+#: src/lessons/smn/Main.html:1
+msgid "Computer Science in Real Life"
+msgstr "Sciences Manuelles du Numérique"
+
+#. type: Content of: <p>
+#: src/lessons/smn/Main.html:3
+msgid "Few activities developped for Computer Science in Real Life"
+msgstr "Différentes activités développées pour les Sciences Manuelles du Numérique"
 
 #. type: Content of: <p>
 #: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:3

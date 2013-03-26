@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-25 20:42+0100\n"
+"POT-Creation-Date: 2013-03-26 12:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1206,7 +1206,7 @@ msgstr ""
 msgid "Working environment"
 msgstr ""
 
-#. type: Content of: <p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/Environment.html:23
 msgid ""
 "Before going any further, get familiar with the working environment. Have a "
@@ -1269,7 +1269,12 @@ msgstr ""
 #: src/lessons/welcome/Environment.html:52
 msgid ""
 "Once done, clic on run, and proceed to next exercise using the File menu "
-"entry (or keep around to experiment further if you feel so)."
+"entry"
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/Environment.html:54
+msgid "(or keep around to experiment further if you feel so)."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -4382,7 +4387,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Array.html:151 src/lessons/recursion/Square.html:43 src/lessons/recursion/Circle.html:14
+#: src/lessons/welcome/Array.html:151 src/lessons/recursion/Square.html:43 src/lessons/recursion/Circle.html:14 src/lessons/recursion/HanoiBoard.html:20
 msgid "Goal of this exercise"
 msgstr ""
 
@@ -6217,6 +6222,91 @@ msgstr ""
 msgid ""
 "No need to copy over the method of <code>spiral()</code>, the turtle of this "
 "exercise already knows it."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/HanoiBoard.html:1
+msgid "Tower of Hanoi"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/HanoiBoard.html:3
+msgid ""
+"The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or "
+"Towers of Brahma, is a mathematical game or puzzle. It consists of three "
+"rods, and a number of disks of different sizes which can slide onto any "
+"rod. The puzzle starts with the disks in a neat stack in ascending order of "
+"size on one rod, the smallest at the top, thus forming a pyramid.  The "
+"objective of the puzzle is to move the entire stack to another rod, obeying "
+"the following rules:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:11
+msgid "Only one disk may be moved at a time."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:13
+msgid ""
+"Each move consists of taking the upper disk from one of the rods and sliding "
+"it onto another rod, on top of the other disks that may already be present "
+"on that rod."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:17
+msgid "No disk may be placed on top of a smaller disk."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/HanoiBoard.html:22
+msgid ""
+"Write the core of the method: <code>public void solve(int src, int dst, int "
+"height) throws HanoiInvalidMove</code> This method will recursively solve "
+"the presented problem. First parameter named <code>src</code> is the index "
+"of the initial tower, second parameter <code>dst</code> is the index of the "
+"expected final tower, and the third parameter <code>height</code> is the "
+"height of the tower.  A key to solving this puzzle is to recognize that it "
+"can be solved by breaking the problem down into a collection of smaller "
+"problems and further breaking those problems down into even smaller problems "
+"until a solution is reached.  The following procedure demonstrates this "
+"approach:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:36
+msgid "label the pegs A, B, C (these labels may move at different steps)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:37
+msgid "let n be the total number of discs (the height of the initial tower)"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:38
+msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/HanoiBoard.html:41
+msgid "To move n discs from peg A to peg C:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:43
+msgid "move n−1 discs from A to B. This leaves disc #n alone on peg A"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:44
+msgid "move disc #n from A to C"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/HanoiBoard.html:45
+msgid "move n−1 discs from B to C so they sit on disc #n"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8190,6 +8280,16 @@ msgstr ""
 #. type: Content of: <div><p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:34 src/lessons/smn/baseball/BaseballGame.html:41
 msgid "Return the amount of bases in the field."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/smn/Main.html:1
+msgid "Computer Science in Real Life"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/smn/Main.html:3
+msgid "Few activities developped for Computer Science in Real Life"
 msgstr ""
 
 #. type: Content of: <p>
