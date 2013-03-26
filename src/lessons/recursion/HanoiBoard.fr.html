@@ -8,39 +8,36 @@ size on one rod, the smallest at the top, thus forming a pyramid.  The
 objective of the puzzle is to move the entire stack to another rod, obeying
 the following rules:
 <ul>
-  <li>A chaque mouvement, un seul et unique disque peut être déplacé.</li>
+  <li>Only one disk may be moved at a time.</li>
 
-  <li>Chaque mouvement consiste à déplacer un disque placé sur le haut d'une pile
-d'un pique vers un autre piquet.</li>
+  <li>Each move consists of taking the upper disk from one of the rods and sliding
+it onto another rod, on top of the other disks that may already be present
+on that rod.</li>
 
-  <li>Aucun disque ne peut être placé au dessus d'un disque de diamètre plus
-petit.</li>
+  <li>No disk may be placed on top of a smaller disk.</li>
 </ul>
 
 <h3>Objectif de l'exercice</h3> 
 
-Ecrivez le corps de la méthode <code>public void solve(int src, int dst, int
-height) throws HanoiInvalidMove</code>. Cette méthode doit résoudre le
-problème présenté de manière récursive. Le premier paramètre nommé
-<code>src</code> correspond au numéro du piquet initial. Le second paramètre
-<code>dst</code> correspond au numéro du piquet final. Le troisième
-paramètre <code>height</code> indique la hauteur de la tour. L'idée clé pour
-résoudre ce puzzle est de constater qu'il peut être résolu en découpant le
-problème en problème plus petit, puis qu'il suffit de re-découper encore et
-encore ces problèmes en problèmes plus petits jusqu'à obtenir la
-solution. La procédure suivante illustre cette approche :
+Write the core of the method: <code>public void solve(int src, int dst, int
+height) throws HanoiInvalidMove</code> This method will recursively solve
+the presented problem. First parameter named <code>src</code> is the index
+of the initial tower, second parameter <code>dst</code> is the index of the
+expected final tower, and the third parameter <code>height</code> is the
+height of the tower.  A key to solving this puzzle is to recognize that it
+can be solved by breaking the problem down into a collection of smaller
+problems and further breaking those problems down into even smaller problems
+until a solution is reached.  The following procedure demonstrates this
+approach:
 <ul>
-  <li>étiqueter les piques A, B, C (ces étiquettes peuvent se déplacer à chaque
-étape)</li>
-  <li>soit n le nombre total de disques (la hauteur de la tour initiale)</li>
-  <li>numéroter les disques de 1 (le plus petit, le plus haut) à n (le plus large,
-le plus bas)</li>
+  <li>label the pegs A, B, C (these labels may move at different steps)</li>
+  <li>let n be the total number of discs (the height of the initial tower)</li>
+  <li>number the discs from 1 (smallest, topmost) to n (largest, bottommost)</li>
 </ul>
 
-déplacer n disques de A vers C.
+To move n discs from peg A to peg C:
 <ul>
-  <li>déplacer n-1 disques de A vers B. Le disque #n reste alors seul sur le
-piquet A</li>
-  <li>déplacer le disque #n de A vers C</li>
-  <li>déplacer n-1 disques de B vers C tel qu'ils s'empilent sur le disque #n</li>
+  <li>move n−1 discs from A to B. This leaves disc #n alone on peg A</li>
+  <li>move disc #n from A to C</li>
+  <li>move n−1 discs from B to C so they sit on disc #n</li>
 </ul>
