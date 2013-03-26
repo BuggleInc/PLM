@@ -1,0 +1,166 @@
+<h1>Baseball</h1>
+<p>
+This world implements the baseball game, in which several players want to go back to their bases. The bases make a circle and have their own colors. There are two players for one base, except one, which has only one player in its team.
+
+You are asked to make the players go on the bases which colors correspond to theirs. The only allowed move is for one of the two players standing on one of the two bases which are directly next to the base with only one player to move and fill the hole, leaving a new one on the base it just left.
+</p>
+<p>
+The color of a base is given by its index. 
+
+The hole has a color of -1.
+
+The base which has only one player on the field has <i>getAmountOfBases()-1</i> as index
+</p>
+
+<div>
+There are six methods provided :
+<p>
+<pre>void move(int baseSrc, int playerSrc)</pre>
+
+Move the player on position <code>playerLocation</code> from the base <code>baseSrc</code> to the hole.
+</p><p>
+<pre>int getPlayerColor(int baseIndex, int playerLocation) </pre>
+
+Return the color of the player on position <code>playerLocation</code> ( 0 or 1 ) from the base <code>baseIndex</code>.
+The color -1 is the hole.
+</p><p>
+<pre>int getHoleBase() </pre>
+
+Return the index of the base where the hole is located
+</p><p>
+<pre>int getHolePositionInBase()</pre>
+
+Return the player's position in the base where the hole is located
+</p><p>	
+<pre>boolean isBaseSorted( int baseIndex)</pre>
+
+Return TRUE if all players of the base <code>baseSrc</code> are home  
+</p><p>
+<pre>int getAmountOfBases()</pre>
+
+Return the amount of bases in the field.
+</p>
+</div>
+
+<br/><br/><hr/><br/>
+<div class="tip" id="tip-1" alt="Show Tip 1 ( the methods's prototype)">
+<p>The prototypes of the methods you may use are the followings :</p>
+
+<pre>
+<p>
+private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int playerDst) throws InvalidMoveException
+</p><p>
+Move the player in position <code>playerSrc</code> of the base <code>baseSrc</code> to the position <code>playerDst</code> from the base <code>baseDst</code>
+</p><p>
+private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) throws InvalidPositionException
+</p><p>
+Return the base's number and the position of the nearest player which has<code>colorWanted</code> as color. It begins the search at the base <code>firstBaseToSearch</code>
+</p><p>
+private void bringHole(int baseDst, int playerDst , int playerToProtect) throws InvalidMoveException
+</p><p>
+Bring the hole to the position <code>playerDst</code> from the base <code>baseDst</code> while protecting the position <code>playerToProtect</code> during the travel
+</p>
+</pre>
+</div>
+
+<br/><br/><hr/><br/>
+
+<div class="tip" id="tip-2" alt="Show Tip 2 (Pseudo-code of solve)">
+<p>The algorithm of the solve method is the following:</p>
+<pre> 
+BEGIN
+	colorWanted &lt;- getBaseColor(baseIndex)
+	IF getPlayerColor(baseIndex, 0) != colorWanted 
+	THEN
+			IF getPlayerColor(baseIndex,1) == colorWanted
+			THEN
+					bringHole(baseIndex, 0, 1)
+					move(baseIndex, 1)
+			ELSE
+					wantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )
+					bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
+					bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
+			END_IF
+	END_IF
+	IF getPlayerColor(baseIndex, 1) != colorWanted 
+	THEN
+			wantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)
+			bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
+			bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
+	END_IF
+END
+</pre>
+</div>
+
+<br/><br/><hr/><br/>
+
+<div class="tip" id="tip-3" alt="Show Tip 3 ( Pseudo-code of bringHole )">
+<p>The algorithm of the bringHole method is the following:</p>
+<pre> 
+BEGIN
+	holeBaseLocation[0] &lt;- getHoleBase()
+	holeBaseLocation[1] &lt;- getHolePositionInBase()
+	IF baseDst > holeLocation[0]
+	THEN
+		FOR i FROM holeLocation[0]+1 TO baseDst BY 1
+		DO
+			move(i, playerDst)
+		END_FOR
+	ELSE 
+		IF baseDst &lt; holeLocation[0]
+		THEN
+			FOR i FROM holeLocation[0]-1 DOWNTO baseDst+1 BY -1
+			DO
+				move(i,1-playerToProtect)
+			END_FOR
+			move(baseDst,playerDst);
+		ELSE 
+			IF baseDst == holeLocation[0] AND playerDst != holeLocation[1]
+			THEN
+				move(baseDst,playerDst);
+			END_IF
+		END_IF
+	END_IF
+END
+</pre>
+</div>
+<br/><br/><hr/><br/>
+<div class="tip" id="tip-4" alt="Show Tip 4 ( Pseudo-code of findNearestPlayer)">
+<p>The algorithm of the findNearestPlayer method is the following :</p>
+<pre> 
+BEGIN
+	nbBases &lt;- getAmountOfBases()
+	found &lt;- false;
+	i &lt;- firstBaseToSearch
+	WHILE i &lt; nbBases AND !found
+	DO
+		FOR j FROM 0 TO 1 BY 1
+		DO
+			IF getPlayerColor(i, j)== colorWanted AND !found
+			THEN
+				location[0] &lt;- i;
+				location[1] &lt;- j;
+				found &lt;- true;
+			END_IF
+		END_FOR
+		i &lt;- i+1
+	END_WHILE
+	RETURN location
+END
+</pre>
+</div>
+<br/><br/><hr/><br/>
+<div class="tip" id="tip-5" alt="Show tip 5 ( Pseudo-code of bringPlayerHome)">
+<p>The algorithm of the bringPlayerHome method is the following :</p>
+<pre> 
+PRECONDITION: the hole is on the base of index baseSrc-1
+BEGIN
+		move( baseSrc,playerSrc)
+		FOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1
+		DO
+			move(i,1-playerDst)
+			move(i-1,playerDst)
+			move(i,playerDst)
+		END_FOR
+</pre>
+</div>

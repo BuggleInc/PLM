@@ -7,23 +7,22 @@ graphique, mais ce n'est pas une raison pour ne jamais manipuler
 explicitement des données. 
 
   <h3 class="Java">Les données en Java</h3>
-  <h3 class="Python">Data in Python</h3>
-  In a program, you can use several <i>types</i> of data, such as integers or
-strings of chars. If you want to use a data several times, you need to store
-it within a <i>variable</i>, which is a memory cell containing a value. It's
-not very different from a shelve containing a book: you put your data (say
-'5') in the variable (say 'length'), and you can retrieve it latter when you
-need it.
+  <h3 class="Python">Les données en Python</h3>
+  Java permet d'utiliser différents <i>types</i> de données, tels que les
+entiers, les nombres à virgules ou les chaînes de caractères. Si on veut
+utiliser une donnée plusieurs fois, il faut la stocker dans une
+<i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est
+pas très différent d'une étagère contenant un livre: vous rangez votre
+donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la
+retrouver plus tard quand vous en avez besoin.
 
-  <p class="Java">Java is said to be a <i>typed</i> language, which means that it is only
-possible to store a value in a variable of the right type. Don't think about
-storing the letters of your name into an integer variable. In other
-languages (such as Python)  allow you to store any kind of data in any
-variable without such restriction, but not in Java.</p>
-  <p class="Python">The Python language is said to <i>not typed</i>, which means you can store
-any type of data into a given variable. Other languages (such as Java)
-mandate that each variable store only data of a given type, but there is no
-such difficulties here.</p>
+  <p class="Java">Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker
+une valeur que dans une variable du bon type. Pas question de stocker votre
+nom dans une variable entière.</p>
+  <p class="Python">Le langage Python est dit <i>non typé</i>, ce qui signifie qu'une variable
+donnée peutcontenir n'importe quel type de donnée. D'autres langages ( comme
+Java) rende obligatoire que chaque variable  ne puisse contenir que des
+données d'un certain type, mais il n'y a pas de telles difficultés ici.</p>
   
 <p class="Java">Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type,
 un espace et le nom de la variable. Notez qu'il n'est pas possible
@@ -41,26 +40,26 @@ valeur à la variable, c'est très simple : <pre>x = 3;</pre>
 <p class="Java">La syntaxe pour créer une variable entière <code>x</code> de valeur initiale
 4 est la suivante : 
   <pre>int x = 4;</pre></p>
-<p class="Java">C'est la même histoire pour les chaînes, nombres à virgule flotante et les
+<p class="Java">C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
   <pre class="Java">String nom = "Martin Quinson";
 double taille=1.77; <span class="comment">// en mètres</span>
 boolean marie=true;</pre>
 
-<p class="Python"><i>Declaring</i> (ie, creating) a variable in Python is dead simple: you
-just need to give it an initial value by writing its name, the equal sign
-and the value.</p>  
-<p class="Python">So, to create a variable named <b>x</b> which initial value should be 5, you
-should type: <pre>x = 5</pre></p>
+<p class="Python"><i>Déclarer</i> (ie créer) une variable en Python est extrèmement simple:
+vous avez juste besoin de lui donner une valeur initiale en écrivant son
+nom, le signe égal et la valeur.</p>  
+<p class="Python">Ainsi, pour créer une variable nommée <b>x</b> dont la valeur initiale sera
+5, on écrira : <pre>x = 5;</pre></p>
 <p class="Python">Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle
-valeur à la variable, c'est très simple : <pre>x = 3</pre>
-<p class="Python">C'est la même histoire pour les chaînes, nombres à virgule flotante et les
+valeur à la variable, c'est très simple : <pre>x = 3;</pre>
+<p class="Python">C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
-<pre class="Python">firstName = "Martin"
-lastName = 'Quinson' <span class="comment"># both single and double quote work here</span>
-motto = "I never finish anyth' (but I keep trying)" <span class="comment"># having single quote within double quote is fine</span> 
-height=1.77 <span class="comment"># in meters</span>
-married=True <span class="comment"># the contrary would be written False</span></pre>
+<pre class="Python">prenom = "Martin"
+nom = 'Quinson' <span class="comment"># les simples et les doubles quotes fonctionnent ici</span>
+devise = "Je ne finis jam' (mais je continue d'essayer)" <span class="comment"># avoir des quotes simples dans des doubles quotes fonctionne</span> 
+taille=1.77 <span class="comment"># en mètre</span>
+marie=True <span class="comment"># le contraire serait marqué False</span></pre>
 
       
 <p>À droite du signe égal, on peut mettre une expression quelconque, qui peut
@@ -95,17 +94,19 @@ cela utiliser une variable, que l'on peut nommer <code>nbPas</code>.</p>
 l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1
 (<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux
 écritures sont équivalentes).</p>
-<p class="Python">Create a variable before phase 1, initialize it to 0, and each time you move
-one step forward, increment its value by one (<code>stepAmount = stepAmount
-+ 1</code>).</p>
+<p class="Python">On crée cette variable (de type <code>int</code>) avant l'étape 1, on
+l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1
+(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux
+écritures sont équivalentes).</p>
 
 <p>Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière
 <code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que
 <code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant
 <code>dejaFait</code> à chaque fois.</p>
 
-<p>Please note that it is forbidden to use spaces in variable names. So you can
-name you variable <code>stepAmount</code>, but <code>step Amount</code> is
-not a valid name.</p>
+<p>Attention, il est interdit d'utiliser des caractères accentués ou des
+espaces dans les noms de variables Java. Vous pouvez donc nommer votre
+variable <code>dejaFait</code>, mais ni <code>déjaFait</code> ni <code>deja
+Fait</code> ne sont des noms valides.</p>
 
 <p>À vous de jouer !</p>

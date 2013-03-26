@@ -7,8 +7,7 @@
  * certains tests de countTeen() semblent faux par rapport à l'énoncé
  * certains énoncés extraits javabat sont tronqués
 
- * la solution à l'exercice IslandMaze est fausse! elle ne trouve pas la solution 
-   et ne semble pas faire ce que l'énoncé demande
+ 
  * dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
  
 

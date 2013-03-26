@@ -19,7 +19,7 @@ buggle: he is a jedi. He can feel the Force. This means he is able to feel his e
 <p>A <code>BuggleWorldCell</code> is an object that represents a cell of the world. On an object 
    of this type, it is possible to call the following methods:
     <ul>		
-	    <li><code>boolean hasContent()<code> to know if something is written on the floor of this cell.</li>
+	    <li><code>boolean hasContent()</code> to know if something is written on the floor of this cell.</li>
 	    <li><code>void setContentFromInt(int v)</code> to write an integer value on the floor of this cell.</li>
 		<li><code>int getContentAsInt()</code> to retrieve the integer value which is written on the floor of this cell.</li>
 		<li><code>void emptyContent()</code> to clean the floor of this cell.</li>
@@ -31,7 +31,7 @@ buggle: he is a jedi. He can feel the Force. This means he is able to feel his e
 
 <p>It has to be noted that it is not possible to build a wall on the bottom edge or on the right edge of a cell. 
   Therefore when such wall exists, it means it was built on a sibling cells -- as a top (respectively left) wall 
-  on the cell that is located below (respectively at the left of) the current cell.</p>
+  on the cell that is located below (respectively at the right of) the current cell.</p>
 
 <h3>Exercise goal</h3>
 

@@ -21,10 +21,15 @@ public class IslandMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 				
 		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[1];
+		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
 		loadMap(myWorlds[0],"lessons/maze/IslandMaze");
 		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
+		
+		
+		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
+		loadMap(myWorlds[1],"lessons/maze/IslandMaze2");
+		new Buggle(myWorlds[1], "Luke", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
 
@@ -36,8 +41,14 @@ public class IslandMaze extends ExerciseTemplated {
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
 		b.setPosFromLesson(11, 5);
+		
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
+		b2.setPosFromLesson(11, 5);
+		b2.setDirection(Direction.EAST);
+		
 		try {
 			b.pickUpBaggle();
+			b2.pickUpBaggle();
 		} catch (NoBaggleUnderBuggleException e) {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {

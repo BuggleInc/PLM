@@ -24,12 +24,13 @@ sera exécuté. Si non, il sera ignoré. Bien entendu, il est possible d'écrire
 plusieurs instructions dans le sous-bloc (voire un autre test).</p>
 
 <p class="Python">
-Python uses indentation to define code blocks. The standard Python
-indentation is 4 spaces. Notice that code blocks do not need any
-termination. Indenting starts a block and unindenting ends it. In the
-following code the instructions <b>whatToDo()</b> and <b>whatToDoNext()</b>
-will be exectuded if the condition is true, then the instruction
-<b>whatToDoAnyway()</b> will be executed anyway.
+Python utilise l'indentation pour définir les blocs de code. L'indentation
+standard en Python est de quatre espaces. Veuillez noter que les blocs de
+code n'ont pas besoin de terminaison. Indenter commence un bloc et
+désindenter le termineDans le code suivant, les instructions
+<b>whatToDo()</b> et <b>whatToDoNext()</b> seront executées si la condition
+est vrai, ensuite l'instruction <b>whatToDoAnyway()</b> sera executée dans
+tous les cas.
 
 <pre class="Python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
@@ -37,32 +38,33 @@ will be exectuded if the condition is true, then the instruction
 <b>quoiFaireDansTousLesCas()</b>
 </pre>
 
-<p class="Python">Python functions have no explicit begin or end, and no curly braces to mark
-where the function code starts and stops. The only delimiter is a colon (:)
-and the indentation of the code itself.</p>
+<p class="Python">Les fonctions Pythons n'ont pas de début ou de fin explicite, ni d'accolade
+pour indiquer où le code commence et où il se termine. Le seul délimiteur
+est un double points (:) et l'indentation du code lui même.</p>
 
-<p class="Python">Example 2.5. Indenting the buildConnectionString Function</p>
+<p class="Python">Exemple 2.5. Indenter la fonction buildConnectionString</p>
 
 <pre class="Python">
 def buildConnectionString(params):
-    """Build a connection string from a dictionary of parameters.
+    """Construit une connection string à partir d'un dictionnaire de paramètres.
 
-    Returns string."""
+    Renvoie une chaîne de caractères."""
     return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
 </pre>
 
-<p class="Python">Code blocks are defined by their indentation. By "code block", I mean
-functions, if statements, for loops, while loops, and so forth. Indenting
-starts a block and unindenting ends it. There are no explicit braces,
-brackets, or keywords. This means that whitespace is significant, and must
-be consistent. In this example, the function code (including the doc string)
-is indented four spaces.  It doesn't need to be four spaces, it just needs
-to be consistent. The first line that is not indented is outside the
-function.</p>
+<p class="Python">Les blocs de code sont définis par leur indentation. Par "bloc de code", je
+veux dire les fonctions, les branchements conditionnels if, les boucles for,
+les boucles while, etc. Indenter commence un bloc et désindenter le
+termine. Il n'y a pas de parenthèses, d'accolades, ou de mots clés. Cela
+signifie qu'un espace est significatif et doit être cohérent. Dans cet
+exemple, le code de la fonction ( en comptant la documentation) est indenté
+avec quatre espaces. Il n'est pas nécessaire que cela soit quatre espaces,
+il faut juste que cela soit cohérent. La première ligne qui n'est pas
+indentée est en dehors de la fonction.</p>
 
-<p class="Python">It is important that the indentations of all the instructions of a block are
-consistent, and it is not possible to cut a block. The two following codes
-are incorrect and will raise errors.</p>
+<p class="Python">Il est important que l'indentation de toutes les instructions d'un bloc soit
+cohérente, et il n'est pas possible de couper un bloc. Les deux exemples
+suivants de code sont incorrects et vont générer des erreurs.</p>
 <pre class="Python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>
@@ -75,8 +77,8 @@ are incorrect and will raise errors.</p>
 </pre>
 
 <p class="Java">Une condition peut être une variable de type <tt>boolean</tt>. Le code entre
-accolade sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), et
-il sera ignoré si elle vaut <tt>false</tt> (faux).</p>
+accolades sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai),
+et il sera ignoré si elle vaut <tt>false</tt> (faux).</p>
 
 <p class="Python">Une condition peut être une variable de type <tt>boolean</tt>. Le code dans
 le

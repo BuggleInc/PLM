@@ -10,8 +10,8 @@ helps understanding the differences between each of them.
 <tr><td><b>Method</b></td><td><b>Action</b></td><td><b>Cost</b></td></tr>
 <tr><td>int getValueCount()</td><td>Returns the amount of values in the array</td><td>none</td></tr>
 
-<tr><td>boolean compare(int i, int j)</td><td>Returns true if the content of cell i is smaller than the one of cell j</td><td>two reads</td></tr>
-<tr><td>boolean compareTo(int i, int val)</td><td>Returns true if the content of cell i is smaller than value val</td><td>one read</td></tr>
+<tr><td>boolean isSmaller(int i, int j)</td><td>Returns true if the content of cell i is smaller than the one of cell j</td><td>two reads</td></tr>
+<tr><td>boolean isSmallerThan(int i, int val)</td><td>Returns true if the content of cell i is smaller than value val</td><td>one read</td></tr>
 
 <tr><td>void swap(int i, int j)</td><td>Swaps the content of cell i and the one of cell j</td><td>two reads, two writes</td></tr>
 <tr><td>void copy(int from, int to)</td><td>Copy the content of cell 'from' into the cell 'to'</td><td>one read, one write</td></tr>

@@ -21,12 +21,17 @@ public class PledgeMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 				
 		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[1];
+		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
 		loadMap(myWorlds[0],"lessons/maze/PledgeMaze");
-
 		new Buggle(myWorlds[0], "Thésée", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
+		
+		myWorlds[1] = new BuggleWorld("Trapception", 4, 4); 
+		loadMap(myWorlds[1],"lessons/maze/PledgeMaze2");
+		new Buggle(myWorlds[1], "Trapception", 8, 10, Direction.SOUTH, Color.black, Color.lightGray);
+		
 		newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
+
 		setup(myWorlds);
 	}
 
@@ -36,8 +41,14 @@ public class PledgeMaze extends ExerciseTemplated {
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
 		b.setPosFromLesson(19, 19);
 		b.setDirection(Direction.EAST);
+		
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
+		b2.setPosFromLesson(19, 19);
+		b2.setDirection(Direction.EAST);
+		
 		try {
 			b.pickUpBaggle();
+			b2.pickUpBaggle();
 		} catch (NoBaggleUnderBuggleException e) {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {

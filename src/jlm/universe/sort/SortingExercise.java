@@ -42,7 +42,7 @@ public class SortingExercise extends ExerciseTemplated {
 					if (cur.values[i]!=i) 
 						cur.color[i] = Color.red;
 					else
-						cur.color[i] = Color.blue;
+						cur.color[i] = Color.green;
 				cur.getWorld().getView()[0].repaint();
 				
 				lastResult.totalTests++;

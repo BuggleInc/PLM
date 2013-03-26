@@ -77,24 +77,24 @@ public class SortingEntity extends Entity {
 	public void checkme() {
 		for (int i=0;i<values.length;i++) {
 			if (values[i] == i)
-				color[i] = Color.blue;
+				color[i] = Color.green;
 			else
 				color[i] = Color.red;
 		}
 	}
 
-	public final boolean compare(int i, int j) {
-		if (i<0) throw new RuntimeException("Out of bounds in compare("+i+","+j+"): "+i+"<0");
-		if (j<0) throw new RuntimeException("Out of bounds in compare("+i+","+j+"): "+j+"<0");
-		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in compare("+i+","+j+"), "+i+">= value count");
-		if (j>=getValueCount()) throw new RuntimeException("Out of bounds in compare("+i+","+j+"), "+j+">= value count");
+	public final boolean isSmaller(int i, int j) {
+		if (i<0) throw new RuntimeException("Out of bounds in isSmaller("+i+","+j+"): "+i+"<0");
+		if (j<0) throw new RuntimeException("Out of bounds in isSmaller("+i+","+j+"): "+j+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in isSmaller("+i+","+j+"), "+i+">= value count");
+		if (j>=getValueCount()) throw new RuntimeException("Out of bounds in isSmaller("+i+","+j+"), "+j+">= value count");
 
 		readCount+=2;
 		return values[i]<values[j];
 	}
-	public final boolean compareTo(int i, int val) {
-		if (i<0) throw new RuntimeException("Out of bounds in compareTo("+i+","+val+"): "+i+"<0");
-		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in compareTo("+i+","+val+"), "+i+">= value count");
+	public final boolean isSmallerThan(int i, int val) {
+		if (i<0) throw new RuntimeException("Out of bounds in isSmallerThan("+i+","+val+"): "+i+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in isSmallerThan("+i+","+val+"), "+i+">= value count");
 		readCount+=1;
 		return values[i]<val;
 	}
@@ -169,7 +169,7 @@ public class SortingEntity extends Entity {
 		stepUI();
 	}
 	public final void sorted(int i){
-		color[i] = Color.blue;
+		color[i] = Color.green;
 	}
 	
 	public int getWriteCount() {

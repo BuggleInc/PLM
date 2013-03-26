@@ -21,10 +21,15 @@ public class RandomMouseMaze extends ExerciseTemplated {
 		tabName = "RandomMouseMaze";
 				
 		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[1];
+		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
 		loadMap(myWorlds[0],"lessons/maze/RandomMouseMaze");
 		new Buggle(myWorlds[0], "Thésée", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
+		
+		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
+		loadMap(myWorlds[1],"lessons/maze/RandomMouseMaze2");
+		new Buggle(myWorlds[1], "ZoroRorronoa", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
+		
 		setup(myWorlds);
 	}
 
@@ -35,8 +40,13 @@ public class RandomMouseMaze extends ExerciseTemplated {
 		b.setPosFromLesson(3, 3);
 		b.turnBack();
 		
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
+		b2.setPosFromLesson(3, 3);
+		b2.setDirection(Direction.EAST);
+		
 		try {
 			b.pickUpBaggle();
+			b2.pickUpBaggle();
 		} catch (NoBaggleUnderBuggleException e) {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {

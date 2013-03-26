@@ -67,7 +67,6 @@ public class SortingWorldChronoView extends WorldView {
 		synchronized (ent.values) {
 			//If the array is small enough, we print the values
 			boolean drawStr = ent.operations.size() <= 50 && ent.values.length <= 50;
-			
 			/* getWidth()-12 to keep the room to display the very left value */
 			float stepX = ((float)getWidth()-(drawStr?12:0)) / ((float)(Math.max(ent.operations.size(), 1)));
 			float stepY = ((float)getHeight()) / ((float)(ent.getValueCount()));
@@ -150,7 +149,10 @@ public class SortingWorldChronoView extends WorldView {
 					g2.drawLine(x1, y1, x2, y2);
 					
 				} else {
-					System.out.println("Ouch: that's not a swap but a "+op.toString()+" this code was never debugged.");
+					if (!( op instanceof CopyVal) && !(op instanceof SetVal) )
+					{
+						System.out.println("Ouch: that's not a swap but a "+op.toString()+" this code was never debugged.");
+					}
 				for (int valueIterator = 0; valueIterator < ent.getValueCount(); valueIterator++) {
 					x1 = (int) (opIdx * stepX);
 					y1 = 0;
@@ -183,7 +185,6 @@ public class SortingWorldChronoView extends WorldView {
 				}
 				}
 			}
-
 		}
 	}
 	
