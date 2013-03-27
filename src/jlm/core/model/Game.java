@@ -641,7 +641,7 @@ public class Game implements IWorldView {
 			return;
 
 		if (isValidProgLanguage(newLanguage)) {
-			System.out.println("Switch programming language to "+newLanguage);
+			//System.out.println("Switch programming language to "+newLanguage);
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
 			return;

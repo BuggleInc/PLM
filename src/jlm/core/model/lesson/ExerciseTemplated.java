@@ -326,7 +326,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 		}
 		if (!foundALanguage) {
-			throw new RuntimeException("Cannot find an entity for this exercise. You should fix your pathes and such");
+			throw new RuntimeException("Cannot find an entity for this exercise. You should fix your paths and such");
 		}
 		computeAnswer();
 	}
@@ -374,7 +374,8 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].doDelay();
 		}
-
+		ProgrammingLanguage current = Game.getProgrammingLanguage();
+		Game.getInstance().setProgramingLanguage(Game.JAVA);
 		if (entitiesNames == null)
 			mutateEntity(answerWorld, entityName);
 		else
@@ -382,5 +383,6 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
+		Game.getInstance().setProgramingLanguage(current);
 	}
 }
