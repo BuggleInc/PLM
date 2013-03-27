@@ -109,10 +109,6 @@ public abstract class Lecture {
 		return this.tips.get(tipsId);
 	}
 
-	public boolean isSuccessfullyPassed() {
-		return false;//FIXME
-	}
-
 	public void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 	

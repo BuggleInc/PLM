@@ -54,19 +54,21 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 
 
 						// create file DONE if exercise has been successfully passed
-						File exerciseFile = new File(exerciseDir, "DONE");
-						if (exercise.isSuccessfullyPassed()) {
-							if (!exerciseFile.exists()) {
-								try {
-									exerciseFile.createNewFile();
-								} catch (IOException e) {
-									e.printStackTrace();
+						for (ProgrammingLanguage lang: exercise.getProgLanguages()) {
+							File exerciseFile = new File(exerciseDir, "DONE."+lang.getExt());
+							if (Game.getInstance().studentWork.getPassed(lesson.getId(), exercise.getId(), lang)) {
+								if (!exerciseFile.exists()) {
+									try {
+										exerciseFile.createNewFile();
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
 								}
-							}
-						} else {
-							if (exerciseFile.exists()) {
-								if (!exerciseFile.delete()) {
-									Logger.log("FileSessionKit:store", "cannot remove "+exerciseFile+" directory");
+							} else {
+								if (exerciseFile.exists()) {
+									if (!exerciseFile.delete()) {
+										Logger.log("FileSessionKit:store", "cannot remove "+exerciseFile+" directory");
+									}
 								}
 							}
 						}
@@ -121,13 +123,14 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 					if (!exerciseDir.exists())
 						continue;
 
-					File exerciseFile = new File(exerciseDir, "DONE");
-					if (exerciseFile.exists()) {
-						exercise.successfullyPassed();
-					}
 
 					// load exercise body
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
+						File exerciseFile = new File(exerciseDir, "DONE"+lang.getExt());
+						if (exerciseFile.exists()) {
+							Game.getInstance().studentWork.setPassed(lesson.getId(), lecture.getId(), lang, true);
+						}
+						
 						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 

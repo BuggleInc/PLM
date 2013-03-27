@@ -31,7 +31,7 @@ public class LocalFileSpy implements ProgressSpyListener {
 
     @Override
     public void executed(Exercise exo) {
-        if (exo.isSuccessfullyPassed()) {
+        if (Game.getInstance().studentWork.getPassed(exo.getLesson().getId(), exo.getId(), exo.lastResult.language)) {
             write(username + " solved " + exo.getName() + " in "
                     + exo.lastResult.language + "!");
         } else {

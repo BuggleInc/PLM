@@ -25,7 +25,7 @@ public class TwitterSpy implements ProgressSpyListener {
 
 	@Override
 	public void executed(Exercise exo) {
-		if (exo.isSuccessfullyPassed()) {
+		if (Game.getInstance().studentWork.getPassed(exo.getLesson().getId(), exo.getId(), exo.lastResult.language)) {
 			try {
 				twitter.updateStatus(username+" solved "+exo.getName()+" in "+exo.lastResult.language+"!");
 			} catch (Exception e) {

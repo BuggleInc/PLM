@@ -39,7 +39,7 @@ public class HanoiCreateEntity extends MetaExercise {
 			newSourceFromFile(Game.JAVA,"HanoiEntity","src/jlm/universe/hanoi/HanoiEntity",
 			       "s/HanoiCreateEntityAnswer/HanoiEntity/;");
 		} catch (NoSuchEntityException e) {
-			System.out.println("Cannot find my files. Please go fix your pathes and such");
+			System.out.println("Cannot find my files. Please go fix your paths and such");
 			e.printStackTrace();
 		}
 	}

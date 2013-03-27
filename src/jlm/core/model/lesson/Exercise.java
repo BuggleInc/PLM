@@ -22,8 +22,6 @@ import jlm.universe.World;
 public abstract class Exercise  extends Lecture {
 	public boolean debug = false; /* whether to debug this particular exo */
 
-	protected boolean done = false;  
-		
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All the editable source files */
 
 	
@@ -42,18 +40,6 @@ public abstract class Exercise  extends Lecture {
 
 	public ExecutionProgress lastResult;
 	
-	public void successfullyPassed() {
-		this.done = true;
-	}
-	
-	public void failed() {
-		this.done = false;
-	}
-
-	public boolean isSuccessfullyPassed() {
-		return this.done;
-	}
-
 	public List<World> getCurrentWorld() {
 		return Arrays.asList(currentWorld);
 	}

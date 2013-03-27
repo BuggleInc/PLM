@@ -91,19 +91,19 @@ public class ZipSessionKit implements ISessionKit {
 			for (Lecture lecture : lesson.exercises()) {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
-					// flag successfully passed exercise
-					if (exercise.isSuccessfullyPassed()) {
-						ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE");
-						zos.putNextEntry(ze);
-						byte[] bytes = new byte[1];
-						// bytes[0] = 'x';
-						zos.write(bytes);
-						zos.closeEntry();
-						wroteSomething  = true;
-					}
+					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
+						// flag successfully passed exercise
+						if (Game.getInstance().studentWork.getPassed(lesson.getId(), exercise.getId(), lang)) {
+							ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE."+lang.getExt());
+							zos.putNextEntry(ze);
+							byte[] bytes = new byte[1];
+							// bytes[0] = 'x';
+							zos.write(bytes);
+							zos.closeEntry();
+							wroteSomething  = true;
+						}
 
 					// save exercise body
-					for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
 						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 							SourceFile sf = exercise.getPublicSourceFile(lang,i);
 
@@ -126,6 +126,7 @@ public class ZipSessionKit implements ISessionKit {
 							zos.closeEntry();
 							wroteSomething = true;
 						}
+					} // foreach lang
 				} // is exercise
 			} // end-for lecture
 
@@ -169,12 +170,12 @@ public class ZipSessionKit implements ISessionKit {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
 
-					ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE");
-					if (entry != null) {
-						exercise.successfullyPassed();
-					}
+					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
+						ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE."+lang.getExt());
+						if (entry != null) {
+							Game.getInstance().studentWork.setPassed(lesson.getId(), exercise.getId(), lang, true);
+						}
 
-					for (ProgrammingLanguage lang:exercise.getProgLanguages())
 						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
@@ -212,6 +213,7 @@ public class ZipSessionKit implements ISessionKit {
 								}
 							}
 						}
+					} // foreach lang
 				} // is exercise
 			} // end-for lecture
 

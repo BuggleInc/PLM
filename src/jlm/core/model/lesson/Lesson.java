@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jlm.core.model.Game;
 import jlm.core.model.Reader;
 
 import org.apache.commons.collections15.Factory;
@@ -169,14 +168,6 @@ public abstract class Lesson {
 		return this.lectures.size();
 	}
 
-	public boolean isSuccessfullyCompleted() {
-		for (Lecture exo : this.lectures) {
-			if (!exo.isSuccessfullyPassed())
-				return false;
-		}
-		return true;
-	}
-	
 	/* Methods to retrieve the dependencies so that the lesson navigator can display them */
 	public Graph<Lecture,Integer> getExercisesGraph() {
 		return exercisesGraph;

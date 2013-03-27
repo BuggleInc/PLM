@@ -27,6 +27,7 @@ import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.model.session.ISessionKit;
+import jlm.core.model.session.SessionDB;
 import jlm.core.model.session.ZipSessionKit;
 import jlm.core.model.tracking.HeartBeatSpy;
 import jlm.core.model.tracking.IdenticaSpy;
@@ -83,6 +84,7 @@ public class Game implements IWorldView {
 
 	private LogWriter outputWriter;
 
+	public SessionDB studentWork = new SessionDB();
 	private ISessionKit sessionKit = new ZipSessionKit(this);
 
 	private static boolean ongoingInitialization = false;
@@ -358,7 +360,9 @@ public class Game implements IWorldView {
 		for (Lesson l : this.lessons.values())
 			for (Lecture lect : l.exercises())
 				if (lect instanceof Exercise)
-					((Exercise) lect).failed();
+					for (ProgrammingLanguage lang:((Exercise) lect).getProgLanguages()) 
+						Game.getInstance().studentWork.setPassed(l.getId(), lect.getId(), lang, false);
+
 		fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
 	}
 
