@@ -11,6 +11,7 @@ import java.awt.*;
  * For now, it is only text, but it could be graphs of progression, ...
  */
 public class StudentDetailsDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
 
     public StudentDetailsDialog(ServerUserData userData) {
         super(MainFrame.getInstance(), "Details on " + userData.getUsername(), false);

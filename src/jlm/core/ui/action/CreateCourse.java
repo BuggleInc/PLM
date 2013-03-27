@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
  * Controller to handle clicks on the create button from the teacher console
  */
 public class CreateCourse extends AbstractGameAction {
+	private static final long serialVersionUID = 1L;
 
     private TeacherConsoleDialog teacherConsoleDialog;
 

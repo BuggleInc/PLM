@@ -15,6 +15,7 @@ import java.util.Map;
  * You can add a filter of student to display only a list of usernames depending of a criteria (good, bad student...)
  */
 public class ResultsPanel extends JPanel {
+	private static final long serialVersionUID = 1L;
 
     // all data on students from the server
     private Map<String, ServerUserData> serverData;

@@ -2,7 +2,6 @@ package jlm.core.model.session;
 
 import java.io.File;
 
-import jlm.core.model.Game;
 import jlm.core.model.UserAbortException;
 import jlm.core.model.lesson.Lesson;
 
