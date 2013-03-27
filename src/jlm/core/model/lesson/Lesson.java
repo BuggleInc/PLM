@@ -41,9 +41,6 @@ public abstract class Lesson {
 			return i++;
 		}};
 	
-	protected boolean sequential = false;
-	/** if true, one must succeed in first exercise before trying next ones */
-
 	public Lesson() {
 		loadExercises(); /* FIXME: remove this line when session savers can deal with laziness */
 		
@@ -97,19 +94,6 @@ public abstract class Lesson {
 		}
 		return about;
 	}
-
-	public boolean isSequential() {		
-		String seq = Game.getProperty(getClass().getCanonicalName()+".sequential");
-		if (seq != null) {
-			return ! seq.equals("false"); // sequential by default
-		} else {
-			return this.sequential;
-		}
-	}
-	
-	public void setSequential(boolean enabled) {
-		this.sequential = enabled;
-	}	
 
 	Lecture rootExo, lastAdded;
 	public Lecture getRootExo() {
@@ -185,30 +169,12 @@ public abstract class Lesson {
 		return this.lectures.size();
 	}
 
-	public boolean isAccessible(Lecture exo) {
-		if (isSequential()) {
-			int index = this.lectures.indexOf(exo);
-			if (index == 0)
-				return true;
-			if (index > 0)
-				return this.lectures.get(index-1).isSuccessfullyPassed();
-			return false;
-		} else {
-			return true;
-		}
-	}
-
 	public boolean isSuccessfullyCompleted() {
-		// TODO: too lazy, to add a boolean 'completed' which is updated when a test is passed 
-		if (isSequential()) {
-			return this.lectures.get(this.lectures.size()-1).isSuccessfullyPassed();			
-		} else {
-			for (Lecture exo : this.lectures) {
-				if (!exo.isSuccessfullyPassed())
-					return false;
-			}
-			return true;
+		for (Lecture exo : this.lectures) {
+			if (!exo.isSuccessfullyPassed())
+				return false;
 		}
+		return true;
 	}
 	
 	/* Methods to retrieve the dependencies so that the lesson navigator can display them */
