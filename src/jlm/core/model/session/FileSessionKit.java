@@ -27,9 +27,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 	private Game game;
 
 	private static String HOME_DIR = System.getProperty("user.home");
-
 	private static String SEP = System.getProperty("file.separator");
-
 	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".jlm");
 
 	public FileSessionKit(Game game) {
@@ -45,16 +43,11 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 			// File lessonDir;
 			File exerciseDir;
 			for (Lesson lesson : this.game.getLessons()) {
-				// lessonDir = new File(saveDir + sep +
-				// lesson.getClass().getName());
-				// if (!lessonDir.exists())
-				// lessonDir.mkdir();
-				// // save lesson data
 
 				for (Lecture lecture : lesson.exercises()) {
 					if (lecture instanceof Exercise) {
 						Exercise exercise = (Exercise) lecture;
-						exerciseDir = new File(SAVE_DIR, exercise.getClass().getName());
+						exerciseDir = new File(SAVE_DIR, exercise.getId());
 						if (!exerciseDir.exists())
 							if (! exerciseDir.mkdir()) 
 								Logger.log("FileSessionKit:store", "cannot remove "+exerciseDir+" directory");
@@ -124,7 +117,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 			for (Lecture lecture : lesson.exercises()) {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
-					exerciseDir = new File(SAVE_DIR, exercise.getClass().getName());
+					exerciseDir = new File(SAVE_DIR, exercise.getId());
 					if (!exerciseDir.exists())
 						continue;
 
@@ -183,7 +176,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 			for (Lecture lecture : lesson.exercises()) {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
-					exerciseDir = new File(SAVE_DIR, exercise.getClass().getName());
+					exerciseDir = new File(SAVE_DIR, exercise.getId());
 					if (!exerciseDir.exists())
 						continue;
 

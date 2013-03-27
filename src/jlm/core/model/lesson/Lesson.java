@@ -17,6 +17,7 @@ import edu.uci.ics.jung.graph.Graph;
 
 public abstract class Lesson {
 	private String name;
+	private String id;
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Lecture> lectures = new ArrayList<Lecture>();
 	
@@ -44,9 +45,22 @@ public abstract class Lesson {
 	/** if true, one must succeed in first exercise before trying next ones */
 
 	public Lesson() {
-		loadExercises(); /* FIXME: remove this line when session saver can deal with laziness */
-	}
+		loadExercises(); /* FIXME: remove this line when session savers can deal with laziness */
+		
+		id = getClass().getCanonicalName();
+		Pattern namePattern = Pattern.compile(".Main$");
+		Matcher nameMatcher = namePattern.matcher(id);
+		id = nameMatcher.replaceAll("");
 
+		namePattern = Pattern.compile("^lessons.");
+		nameMatcher = namePattern.matcher(id);
+		id = nameMatcher.replaceAll("");
+
+	}
+	public String getId() {
+		return id;
+	}
+	
 	private boolean aboutLoaded = false;
 	private void loadAboutAndName() {
 		aboutLoaded = true;

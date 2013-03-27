@@ -6,8 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -44,19 +42,7 @@ public class ZipSessionKit implements ISessionKit {
 	}
 
 	private File openSaveFile(File path, Lesson lesson) {
-		if (path == null)
-			path = SAVE_DIR;
-
-		String name = lesson.getClass().getCanonicalName();
-		Pattern namePattern = Pattern.compile(".Main$");
-		Matcher nameMatcher = namePattern.matcher(name);
-		name = nameMatcher.replaceAll("");
-
-		namePattern = Pattern.compile("^lessons.");
-		nameMatcher = namePattern.matcher(name);
-		name = nameMatcher.replaceAll("");
-
-		return new File(path, "jlm-"+name+".zip");
+		return new File(path==null?SAVE_DIR:path, "jlm-"+lesson.getId()+".zip");
 	}
 
 	@Override
@@ -107,7 +93,7 @@ public class ZipSessionKit implements ISessionKit {
 					Exercise exercise = (Exercise) lecture;
 					// flag successfully passed exercise
 					if (exercise.isSuccessfullyPassed()) {
-						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/DONE");
+						ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE");
 						zos.putNextEntry(ze);
 						byte[] bytes = new byte[1];
 						// bytes[0] = 'x';
@@ -126,7 +112,7 @@ public class ZipSessionKit implements ISessionKit {
 
 							SourceFileRevertable srcFile = (SourceFileRevertable) sf;
 
-							ZipEntry ze = new ZipEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							ZipEntry ze = new ZipEntry(lang+"/"+exercise.getId() + "/" + srcFile.getName());
 							zos.putNextEntry(ze);
 
 							String content = srcFile.getBody();
@@ -183,7 +169,7 @@ public class ZipSessionKit implements ISessionKit {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
 
-					ZipEntry entry = zf.getEntry(exercise.getClass().getName() + "/DONE");
+					ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE");
 					if (entry != null) {
 						exercise.successfullyPassed();
 					}
@@ -195,9 +181,9 @@ public class ZipSessionKit implements ISessionKit {
 							if (srcFile instanceof SourceFileAliased)
 								continue;
 
-							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getId() + "/" + srcFile.getName());
 							if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
-								srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
+								srcEntry = zf.getEntry(exercise.getId() + "/" + srcFile.getName());
 
 							if (srcEntry != null) {
 								InputStream is = zf.getInputStream(srcEntry);

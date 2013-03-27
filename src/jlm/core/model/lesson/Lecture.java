@@ -14,7 +14,8 @@ import jlm.core.model.Reader;
  * an exercise. A better name would be useful, but I feel limited in 
  * English today. Sorry. */
 public abstract class Lecture {
-
+	private String id; // used in session to identify this lecture or exercise
+	
 	public static final String HTMLTipHeader = "<head>\n"+
 			"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
 			"  <style>\n"+
@@ -44,6 +45,10 @@ public abstract class Lecture {
 	public Lecture(Lesson lesson) {
 		this.lesson = lesson;
 		loadHTMLMission();
+		id = getClass().getName();
+	}
+	public String getId() {
+		return id;
 	}
 
 	public void setName(String n) {
