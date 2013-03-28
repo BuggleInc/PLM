@@ -30,7 +30,6 @@ public class HanoiCreateWorld extends MetaExercise {
 			System.out.println("Cannot find my files. Please go fix your pathes and such");
 			e.printStackTrace();
 		}
-		getSourceFile(Game.JAVA,"HanoiInvalidMove").setEditable(false);
 		debug=true;
 
 		/* compute answer */

@@ -164,15 +164,6 @@ public abstract class Exercise  extends Lecture {
 		}
 		return res;
 	}
-	/** Add a new unmodifiable source file in child classes, ie alongside to stuff to be written by the student */
-	public void newFrozenSource(ProgrammingLanguage lang, String name, String content) {
-		SourceFile sf = new SourceFile(name, content);
-		sf.setEditable(false);
-		getSourceFiles(lang).add(sf);
-	}
-	public void newFrozenSource(String name, String content) {
-		newFrozenSource(Game.JAVA, name, content);
-	}
 	/** Add a new text file in child classes, ie file that is not going to be compiled  */
 	public void newTextFile(ProgrammingLanguage lang, String name, String content) {
 		SourceFile sf = new SourceFile(name, content);
@@ -304,24 +295,12 @@ public abstract class Exercise  extends Lecture {
 		return Arrays.asList(this.initialWorld);
 	}
 
-	public int publicSourceFileCount(ProgrammingLanguage lang) {
-		int res=0;
-		for (SourceFile sf : getSourceFiles(lang)) {
-			if (sf.isEditable())
-				res++;
-		}
-		return res;
+	public int sourceFileCount(ProgrammingLanguage lang) {
+		return getSourceFiles(lang).size();
 	}
 	
 	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, int i) {
-		int count=0;
-		for (SourceFile sf : getSourceFiles(lang)) {
-			if (sf.isEditable())
-				if (i == count)
-					return sf;
-				count++;
-		}
-		throw new ArrayIndexOutOfBoundsException("Not "+i+" public source files (but only "+count+")");
+		return getSourceFiles(lang).get(i);
 	}
 	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, String name) {
 		for (SourceFile sf : getSourceFiles(lang)) {

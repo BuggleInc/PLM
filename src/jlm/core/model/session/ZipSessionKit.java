@@ -104,7 +104,7 @@ public class ZipSessionKit implements ISessionKit {
 						}
 
 					// save exercise body
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 							SourceFile sf = exercise.getPublicSourceFile(lang,i);
 
 							if (!(sf instanceof SourceFileRevertable))
@@ -176,7 +176,7 @@ public class ZipSessionKit implements ISessionKit {
 							Game.getInstance().studentWork.setPassed(lesson.getId(), exercise.getId(), lang, true);
 						}
 
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
 							if (srcFile instanceof SourceFileAliased)

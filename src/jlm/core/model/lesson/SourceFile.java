@@ -19,7 +19,6 @@ public class SourceFile {
 	private ISourceFileListener listener = null;
 
 	private boolean isCompilable=true;
-	private boolean isEditable=true;
 
 	public SourceFile(String name, String initialBody) {
 		this(name, initialBody, null, null);
@@ -109,14 +108,6 @@ public class SourceFile {
 
 	public void setCompilable(boolean isCompilable) {
 		this.isCompilable = isCompilable;
-	}
-
-	public boolean isEditable() {
-		return isEditable;
-	}
-
-	public void setEditable(boolean isEditable) {
-		this.isEditable = isEditable;
 	}
 
 	@Override
