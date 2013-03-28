@@ -45,7 +45,7 @@ public abstract class Lecture {
 	public Lecture(Lesson lesson) {
 		this.lesson = lesson;
 		loadHTMLMission();
-		id = getClass().getName();
+		id = lesson.getId()+getClass().getName();
 	}
 	public String getId() {
 		return id;

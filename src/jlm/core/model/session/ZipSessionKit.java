@@ -92,7 +92,7 @@ public class ZipSessionKit implements ISessionKit {
 					Exercise exercise = (Exercise) lecture;
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						// flag successfully passed exercise
-						if (Game.getInstance().studentWork.getPassed(lesson.getId(), exercise.getId(), lang)) {
+						if (Game.getInstance().studentWork.getPassed(exercise.getId(), lang)) {
 							ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE."+lang.getExt());
 							zos.putNextEntry(ze);
 							byte[] bytes = new byte[1];
@@ -172,7 +172,7 @@ public class ZipSessionKit implements ISessionKit {
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE."+lang.getExt());
 						if (entry != null) {
-							Game.getInstance().studentWork.setPassed(lesson.getId(), exercise.getId(), lang, true);
+							Game.getInstance().studentWork.setPassed(exercise.getId(), lang, true);
 						}
 
 						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {

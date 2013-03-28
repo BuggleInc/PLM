@@ -55,7 +55,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 						// create file DONE if exercise has been successfully passed
 						for (ProgrammingLanguage lang: exercise.getProgLanguages()) {
 							File exerciseFile = new File(exerciseDir, "DONE."+lang.getExt());
-							if (Game.getInstance().studentWork.getPassed(lesson.getId(), exercise.getId(), lang)) {
+							if (Game.getInstance().studentWork.getPassed(exercise.getId(), lang)) {
 								if (!exerciseFile.exists()) {
 									try {
 										exerciseFile.createNewFile();
@@ -127,7 +127,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						File exerciseFile = new File(exerciseDir, "DONE"+lang.getExt());
 						if (exerciseFile.exists()) {
-							Game.getInstance().studentWork.setPassed(lesson.getId(), lecture.getId(), lang, true);
+							Game.getInstance().studentWork.setPassed(lecture.getId(), lang, true);
 						}
 						
 						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
