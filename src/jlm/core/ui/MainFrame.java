@@ -151,23 +151,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu = new JMenu("File");
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription("File related functions");
-
-		menuItem = new JMenuItem(new AbstractGameAction(g, "Switch exercise") {
-			private static final long serialVersionUID = 1L;
-
-			private LessonNavigatorDialog dialog = null;
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				if (dialog == null) {
-					dialog = new LessonNavigatorDialog(MainFrame.getInstance());
-					Game.getInstance().addGameListener(dialog);
-				}
-				dialog.setVisible(true);
-			}			
-		});
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-		menu.add(menuItem);
 		
 		menuItem = new JMenuItem(new AbstractGameAction(g, "Switch lesson", null, "Go to another lesson",  "Cannot switch lesson now", KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
