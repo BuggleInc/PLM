@@ -21,7 +21,7 @@ import jlm.universe.World;
 
 public abstract class ExerciseTemplated extends Exercise {
 
-	protected String tabName = getClass().getSimpleName(); /** Name of the tab in editor */
+	protected String tabName = getClass().getSimpleName(); /** Name of the tab in editor -- must be a valid java identifier */
 	protected ArrayList<String> tabsNames = null;
 	protected String entityName = getClass().getCanonicalName()+"Entity"; /** name of the class of entities being solution of this exercise */
 	protected ArrayList<String> entitiesNames = null;

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
@@ -198,6 +200,16 @@ public abstract class Exercise  extends Lecture {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			Iterator<Entity> entityIterator = current.entities();
 			for (String name : newClasseNames) {
+				/* Check that this is a valid name */
+				String[] forbidden = new String[] {"'","\""};
+				for (String stringPattern : forbidden) {
+					Pattern pattern = Pattern.compile(stringPattern);
+					Matcher matcher = pattern.matcher(name);
+				
+					if (matcher.matches())
+						throw new RuntimeException(name+" is not a valid java identifier (forbidden char: "+stringPattern+"). Does your exercise use a broken tabname?");
+				}
+
 				/* Get the next existing entity */
 				if (!entityIterator.hasNext()) 
 					throw new BrokenLessonException("Too much class names ("+newClasseNames.size()+")"+
