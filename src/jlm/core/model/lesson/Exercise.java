@@ -26,8 +26,7 @@ import jlm.universe.World;
 public abstract class Exercise  extends Lecture {
 	public boolean debug = false; /* whether to debug this particular exo */
 
-	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All the editable source files */
-
+	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All source files */
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
 	public Map<ProgrammingLanguage, Map<String, String>> scriptSources = new TreeMap<ProgrammingLanguage, Map<String, String>>(); /* (Lang x scriptName |-> script source) list of scripts that are to be executed by entities when not running Java */

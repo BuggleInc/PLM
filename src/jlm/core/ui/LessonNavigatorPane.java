@@ -7,12 +7,17 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.image.BufferedImage;
 
-import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import jlm.core.GameListener;
+import jlm.core.model.Game;
+import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Lecture;
+import jlm.core.model.lesson.Lesson;
+import jlm.universe.World;
 import net.miginfocom.swing.MigLayout;
 
 import org.apache.commons.collections15.Transformer;
@@ -30,19 +35,11 @@ import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.EdgeShape;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 
-import jlm.core.GameListener;
-import jlm.core.model.Game;
-import jlm.core.model.lesson.Exercise;
-import jlm.core.model.lesson.Lecture;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
-
 
 public class LessonNavigatorPane extends JPanel implements GameListener {
 
 	private static final long serialVersionUID = -1800747039420103759L;
 	private Lesson lesson;
-	private TitledBorder border;
 	Layout<Lecture, Integer> layout;
 	/**
 	 * the graph
@@ -113,10 +110,6 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 		final GraphZoomScrollPane graphViewPane = new GraphZoomScrollPane(vv);
 		this.add(graphViewPane,"wrap, growx");
 		
-		border = BorderFactory.createTitledBorder("Your Progress on " + lesson.getName());
-		graphViewPane.setBorder(border);
-		
-		
 		vv.getPickedVertexState().addItemListener(new ItemListener() {
 			@Override
 			public void itemStateChanged(ItemEvent e) {
@@ -141,7 +134,6 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 	public void currentExerciseHasChanged(Lecture lect) {
 		lesson = Game.getInstance().getCurrentLesson();
 		graph = lesson.getExercisesGraph();
-		border.setTitle("Your Progress on " + lesson.getName());
 		try {
 			layout = new TreeLayout<Lecture, Integer>((Forest<Lecture, Integer>) graph);
 		} catch (IllegalArgumentException iae) {
