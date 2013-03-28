@@ -79,7 +79,7 @@ public class LessonRunner extends Thread {
 			JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Exercise passed \\o/", JOptionPane.PLAIN_MESSAGE,
 					ResourcesCache.getIcon("resources/success.png"));
 			
-			exo.successfullyPassed();
+			Game.getInstance().studentWork.setPassed(null, exo.getId(), null, true);
 		} else {
 			 SwingUtilities.invokeLater(new Runnable() {
 		            public void run() {

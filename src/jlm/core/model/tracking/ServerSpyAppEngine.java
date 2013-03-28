@@ -1,4 +1,4 @@
-package jlm.core.model;
+package jlm.core.model.tracking;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,6 +7,8 @@ import java.io.OutputStreamWriter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+
+import jlm.core.model.Game;
 
 /**
  * Implementation of the ServerSpy class, to indicate how/where to send json requests

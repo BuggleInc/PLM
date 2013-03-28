@@ -1,6 +1,9 @@
 package jlm.core.ui;
 
 import jlm.core.model.*;
+import jlm.core.model.tracking.HeartBeatSpy;
+import jlm.core.model.tracking.ProgressSpyListener;
+import jlm.core.model.tracking.ServerSpy;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;

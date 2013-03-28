@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
  * Controller to handle clicks on the Delete button from the teacher console
  */
 public class DeleteCourse extends AbstractGameAction {
+	private static final long serialVersionUID = 1L;
 
     private Course course;
     private TeacherConsoleDialog parentComponent;

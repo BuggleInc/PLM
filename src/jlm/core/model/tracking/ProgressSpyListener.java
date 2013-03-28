@@ -1,4 +1,4 @@
-package jlm.core.model;
+package jlm.core.model.tracking;
 
 import jlm.core.model.lesson.Exercise;
 

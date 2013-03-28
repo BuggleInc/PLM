@@ -19,7 +19,6 @@ public class SourceFile {
 	private ISourceFileListener listener = null;
 
 	private boolean isCompilable=true;
-	private boolean isEditable=true;
 
 	public SourceFile(String name, String initialBody) {
 		this(name, initialBody, null, null);
@@ -68,8 +67,10 @@ public class SourceFile {
 			if (runtimePatterns != null)
 				for (Entry<String, String> pattern : runtimePatterns.entrySet()) {
 					res = res.replaceAll(pattern.getKey(), pattern.getValue());
+				        // This is a trap to find issue #42 that I fail to reproduce
 					if (pattern.getValue().contains("\n")) { 
-						System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong. Please repport this bug (alongside with the following informations)!");
+						System.out.println("Damn! I integrated a pattern being more than one line long, line numbers will be wrong."
+                                                                   +"Please repport this bug (alongside with the following informations) as it will help us fixing our issue #42!");
 						System.out.println("pattern key: "+pattern.getKey());
 						System.out.println("pattern value: "+pattern.getValue());
 						System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
@@ -109,14 +110,6 @@ public class SourceFile {
 
 	public void setCompilable(boolean isCompilable) {
 		this.isCompilable = isCompilable;
-	}
-
-	public boolean isEditable() {
-		return isEditable;
-	}
-
-	public void setEditable(boolean isEditable) {
-		this.isEditable = isEditable;
 	}
 
 	@Override

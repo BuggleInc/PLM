@@ -1,4 +1,4 @@
-package jlm.core.model;
+package jlm.core.model.session;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,8 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -15,11 +13,14 @@ import java.util.zip.ZipOutputStream;
 
 import javax.swing.JOptionPane;
 
+import jlm.core.model.Game;
+import jlm.core.model.Logger;
+import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.UserAbortException;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.model.lesson.SourceFile;
-import jlm.core.model.lesson.SourceFileAliased;
 import jlm.core.model.lesson.SourceFileRevertable;
 
 /**
@@ -40,19 +41,7 @@ public class ZipSessionKit implements ISessionKit {
 	}
 
 	private File openSaveFile(File path, Lesson lesson) {
-		if (path == null)
-			path = SAVE_DIR;
-
-		String name = lesson.getClass().getCanonicalName();
-		Pattern namePattern = Pattern.compile(".Main$");
-		Matcher nameMatcher = namePattern.matcher(name);
-		name = nameMatcher.replaceAll("");
-
-		namePattern = Pattern.compile("^lessons.");
-		nameMatcher = namePattern.matcher(name);
-		name = nameMatcher.replaceAll("");
-
-		return new File(path, "jlm-"+name+".zip");
+		return new File(path==null?SAVE_DIR:path, "jlm-"+lesson.getId()+".zip");
 	}
 
 	@Override
@@ -101,20 +90,20 @@ public class ZipSessionKit implements ISessionKit {
 			for (Lecture lecture : lesson.exercises()) {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
-					// flag successfully passed exercise
-					if (exercise.isSuccessfullyPassed()) {
-						ZipEntry ze = new ZipEntry(exercise.getClass().getName() + "/DONE");
-						zos.putNextEntry(ze);
-						byte[] bytes = new byte[1];
-						// bytes[0] = 'x';
-						zos.write(bytes);
-						zos.closeEntry();
-						wroteSomething  = true;
-					}
+					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
+						// flag successfully passed exercise
+						if (Game.getInstance().studentWork.getPassed(lesson.getId(), exercise.getId(), lang)) {
+							ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE."+lang.getExt());
+							zos.putNextEntry(ze);
+							byte[] bytes = new byte[1];
+							// bytes[0] = 'x';
+							zos.write(bytes);
+							zos.closeEntry();
+							wroteSomething  = true;
+						}
 
 					// save exercise body
-					for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 							SourceFile sf = exercise.getPublicSourceFile(lang,i);
 
 							if (!(sf instanceof SourceFileRevertable))
@@ -122,7 +111,7 @@ public class ZipSessionKit implements ISessionKit {
 
 							SourceFileRevertable srcFile = (SourceFileRevertable) sf;
 
-							ZipEntry ze = new ZipEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							ZipEntry ze = new ZipEntry(lang+"/"+exercise.getId() + "/" + srcFile.getName());
 							zos.putNextEntry(ze);
 
 							String content = srcFile.getBody();
@@ -136,6 +125,7 @@ public class ZipSessionKit implements ISessionKit {
 							zos.closeEntry();
 							wroteSomething = true;
 						}
+					} // foreach lang
 				} // is exercise
 			} // end-for lecture
 
@@ -179,21 +169,18 @@ public class ZipSessionKit implements ISessionKit {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
 
-					ZipEntry entry = zf.getEntry(exercise.getClass().getName() + "/DONE");
-					if (entry != null) {
-						exercise.successfullyPassed();
-					}
+					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
+						ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE."+lang.getExt());
+						if (entry != null) {
+							Game.getInstance().studentWork.setPassed(lesson.getId(), exercise.getId(), lang, true);
+						}
 
-					for (ProgrammingLanguage lang:exercise.getProgLanguages())
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
 
-							if (srcFile instanceof SourceFileAliased)
-								continue;
-
-							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getClass().getName() + "/" + srcFile.getName());
+							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getId() + "/" + srcFile.getName());
 							if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */
-								srcEntry = zf.getEntry(exercise.getClass().getName() + "/" + srcFile.getName());
+								srcEntry = zf.getEntry(exercise.getId() + "/" + srcFile.getName());
 
 							if (srcEntry != null) {
 								InputStream is = zf.getInputStream(srcEntry);
@@ -222,6 +209,7 @@ public class ZipSessionKit implements ISessionKit {
 								}
 							}
 						}
+					} // foreach lang
 				} // is exercise
 			} // end-for lecture
 

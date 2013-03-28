@@ -17,6 +17,7 @@ import java.awt.event.KeyEvent;
  * He can also manage courses : create or delete
  */
 public class TeacherConsoleDialog extends JDialog {
+	private static final long serialVersionUID = 1L;
 
     //private Game game;
     //private Course course;

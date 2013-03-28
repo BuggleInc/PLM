@@ -1,3 +1,16 @@
+20130328:
+  * Merge all code (and wiki) from last year's students
+  * Accept a pull request from J-Bastian, with a new lesson (SMN) and a
+    bunch of bug fixes.
+  * Kill several broken 'good idea' to simplify the code base:
+    - aliased source files: student must keep them synchronized
+      manually now. We may want to reintroduce this at some point?
+    - uneditable source files. The student will see all files passed
+      to the compiler, now. This was never used in production
+    - lessons cannot be sequential anymore. Forbidding pupils to
+      attempt the exercise in the order they want is not in the JLM
+      way of style anyway.
+  * Various little bug fixes.
 20120319:
   * Minor update on build process
 20120318:

@@ -1,22 +1,44 @@
 package jlm.core.model;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.InvalidPropertiesFormatException;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Vector;
+
+import javax.swing.JOptionPane;
+
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
+import jlm.core.JLMClassLoader;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
-import jlm.core.JLMClassLoader;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
+import jlm.core.model.session.ISessionKit;
+import jlm.core.model.session.SessionDB;
+import jlm.core.model.session.ZipSessionKit;
+import jlm.core.model.tracking.HeartBeatSpy;
+import jlm.core.model.tracking.IdenticaSpy;
+import jlm.core.model.tracking.LocalFileSpy;
+import jlm.core.model.tracking.ProgressSpyListener;
+import jlm.core.model.tracking.ServerSpyAppEngine;
+import jlm.core.model.tracking.TwitterSpy;
 import jlm.core.ui.MainFrame;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
-
-import javax.swing.*;
-import java.io.*;
-import java.util.*;
 
 /*
  *  core model which contains all known exercises.
@@ -62,6 +84,7 @@ public class Game implements IWorldView {
 
 	private LogWriter outputWriter;
 
+	public SessionDB studentWork = new SessionDB();
 	private ISessionKit sessionKit = new ZipSessionKit(this);
 
 	private static boolean ongoingInitialization = false;
@@ -158,29 +181,27 @@ public class Game implements IWorldView {
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
-		if (lect.getLesson().isAccessible(lect)) {
-			fireCurrentExerciseChanged(lect);
-			this.currentLesson.setCurrentExercise(lect);
-			if (lect instanceof Exercise) {
-				Exercise exo = (Exercise) lect;
-				exo.reset();
-				setSelectedWorld(exo.getWorld(0));
+		fireCurrentExerciseChanged(lect);
+		this.currentLesson.setCurrentExercise(lect);
+		if (lect instanceof Exercise) {
+			Exercise exo = (Exercise) lect;
+			exo.reset();
+			setSelectedWorld(exo.getWorld(0));
 
-				boolean seenJava=false;
-				for (ProgrammingLanguage l:exo.getProgLanguages()) {
-					if (l.equals(programmingLanguage))
-						return; /* The exo accepts the language we currently have */
-					if (l.equals(Game.JAVA))
-						seenJava = true;
-				}
-				/* Use java as a fallback programming language (if the exo accepts it)  */
-				if (seenJava)
-					setProgramingLanguage(Game.JAVA);
-				/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
-				setProgramingLanguage( exo.getProgLanguages().iterator().next() );
+			boolean seenJava=false;
+			for (ProgrammingLanguage l:exo.getProgLanguages()) {
+				if (l.equals(programmingLanguage))
+					return; /* The exo accepts the language we currently have */
+				if (l.equals(Game.JAVA))
+					seenJava = true;
 			}
-			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
+			/* Use java as a fallback programming language (if the exo accepts it)  */
+			if (seenJava)
+				setProgramingLanguage(Game.JAVA);
+			/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
+			setProgramingLanguage( exo.getProgLanguages().iterator().next() );
 		}
+		MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
 	}
 
 	public World getSelectedWorld() {
@@ -339,7 +360,9 @@ public class Game implements IWorldView {
 		for (Lesson l : this.lessons.values())
 			for (Lecture lect : l.exercises())
 				if (lect instanceof Exercise)
-					((Exercise) lect).failed();
+					for (ProgrammingLanguage lang:((Exercise) lect).getProgLanguages()) 
+						Game.getInstance().studentWork.setPassed(l.getId(), lect.getId(), lang, false);
+
 		fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
 	}
 
@@ -633,7 +656,7 @@ public class Game implements IWorldView {
 			return;
 
 		if (isValidProgLanguage(newLanguage)) {
-			System.out.println("Switch programming language to "+newLanguage);
+			//System.out.println("Switch programming language to "+newLanguage);
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
 			return;

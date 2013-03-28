@@ -1,7 +1,6 @@
 package jlm.core.ui;
 
 import java.awt.AWTKeyStroke;
-import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.util.HashSet;
 import java.util.Set;

@@ -203,11 +203,7 @@ public class LessonNavigatorDialog extends JDialog implements GameListener {
 				ImageIcon ico = null;				
 				if (lect instanceof Exercise) {
 					Exercise exo = (Exercise) lect;
-					if (exo.isSuccessfullyPassed()) {
-						ico = ResourcesCache.getStarIcon(exo.getWorld(0).getView()[0].getIcon(), exo.getWorld(0).getView()[0].getClass().getCanonicalName());					
-					} else {
-						ico = exo.getWorld(0).getView()[0].getIcon();
-					}
+					ico = exo.getWorld(0).getView()[0].getIcon();
 				} else {
 					ico = ResourcesCache.getIcon("resources/IconWorld/lesson.png");
 				}

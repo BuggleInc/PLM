@@ -1,4 +1,4 @@
-package jlm.core.model;
+package jlm.core.model.tracking;
 
 import java.util.ArrayList;
 import java.util.Timer;

@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
 import jlm.core.model.Game;
-import jlm.core.model.ZipSessionKit;
+import jlm.core.model.session.ZipSessionKit;
 
 public class ImportSession extends AbstractGameAction {
 

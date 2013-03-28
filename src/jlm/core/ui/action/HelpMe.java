@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
  * It sends a request to the JLM server
  */
 public class HelpMe extends AbstractGameAction {
+	private static final long serialVersionUID = 1L;
 
     private HelpServer helpServer;
 

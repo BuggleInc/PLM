@@ -14,7 +14,9 @@ import java.awt.event.ActionEvent;
  */
 public class RefreshCourse extends AbstractGameAction {
 
-    private Course course;
+	private static final long serialVersionUID = 1L;
+	
+	private Course course;
     private TeacherConsoleDialog parentComponent;
 
     public RefreshCourse(Game game, String text, TeacherConsoleDialog parentComponent) {

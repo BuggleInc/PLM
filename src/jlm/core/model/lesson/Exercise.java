@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
@@ -22,8 +24,6 @@ import jlm.universe.World;
 public abstract class Exercise  extends Lecture {
 	public boolean debug = false; /* whether to debug this particular exo */
 
-	protected boolean done = false;  
-		
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All the editable source files */
 
 	
@@ -42,18 +42,6 @@ public abstract class Exercise  extends Lecture {
 
 	public ExecutionProgress lastResult;
 	
-	public void successfullyPassed() {
-		this.done = true;
-	}
-	
-	public void failed() {
-		this.done = false;
-	}
-
-	public boolean isSuccessfullyPassed() {
-		return this.done;
-	}
-
 	public List<World> getCurrentWorld() {
 		return Arrays.asList(currentWorld);
 	}
@@ -178,27 +166,10 @@ public abstract class Exercise  extends Lecture {
 		}
 		return res;
 	}
-	/** Add a new unmodifiable source file in child classes, ie alongside to stuff to be written by the student */
-	public void newFrozenSource(ProgrammingLanguage lang, String name, String content) {
-		SourceFile sf = new SourceFile(name, content);
-		sf.setEditable(false);
-		getSourceFiles(lang).add(sf);
-	}
-	public void newFrozenSource(String name, String content) {
-		newFrozenSource(Game.JAVA, name, content);
-	}
 	/** Add a new text file in child classes, ie file that is not going to be compiled  */
 	public void newTextFile(ProgrammingLanguage lang, String name, String content) {
 		SourceFile sf = new SourceFile(name, content);
 		sf.setCompilable(false);
-		getSourceFiles(lang).add(sf);
-	}
-	public void newSourceAliased(String lesson, String exercise, String file) {
-		/* FIXME: this should alias for all existing languages */
-		newSourceAliased(Game.JAVA, lesson, exercise, file);
-	}
-	public void newSourceAliased(ProgrammingLanguage lang, String lesson, String exercise, String file) {
-		SourceFile sf = new SourceFileAliased(lang, lesson, exercise,file);
 		getSourceFiles(lang).add(sf);
 	}
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
@@ -229,6 +200,16 @@ public abstract class Exercise  extends Lecture {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			Iterator<Entity> entityIterator = current.entities();
 			for (String name : newClasseNames) {
+				/* Check that this is a valid name */
+				String[] forbidden = new String[] {"'","\""};
+				for (String stringPattern : forbidden) {
+					Pattern pattern = Pattern.compile(stringPattern);
+					Matcher matcher = pattern.matcher(name);
+				
+					if (matcher.matches())
+						throw new RuntimeException(name+" is not a valid java identifier (forbidden char: "+stringPattern+"). Does your exercise use a broken tabname?");
+				}
+
 				/* Get the next existing entity */
 				if (!entityIterator.hasNext()) 
 					throw new BrokenLessonException("Too much class names ("+newClasseNames.size()+")"+
@@ -318,24 +299,12 @@ public abstract class Exercise  extends Lecture {
 		return Arrays.asList(this.initialWorld);
 	}
 
-	public int publicSourceFileCount(ProgrammingLanguage lang) {
-		int res=0;
-		for (SourceFile sf : getSourceFiles(lang)) {
-			if (sf.isEditable())
-				res++;
-		}
-		return res;
+	public int sourceFileCount(ProgrammingLanguage lang) {
+		return getSourceFiles(lang).size();
 	}
 	
 	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, int i) {
-		int count=0;
-		for (SourceFile sf : getSourceFiles(lang)) {
-			if (sf.isEditable())
-				if (i == count)
-					return sf;
-				count++;
-		}
-		throw new ArrayIndexOutOfBoundsException("Not "+i+" public source files (but only "+count+")");
+		return getSourceFiles(lang).get(i);
 	}
 	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, String name) {
 		for (SourceFile sf : getSourceFiles(lang)) {

@@ -1,8 +1,9 @@
-package jlm.core.model;
+package jlm.core.model.tracking;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.http.AccessToken;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
 
 public class TwitterSpy implements ProgressSpyListener {
@@ -24,7 +25,7 @@ public class TwitterSpy implements ProgressSpyListener {
 
 	@Override
 	public void executed(Exercise exo) {
-		if (exo.isSuccessfullyPassed()) {
+		if (Game.getInstance().studentWork.getPassed(exo.getLesson().getId(), exo.getId(), exo.lastResult.language)) {
 			try {
 				twitter.updateStatus(username+" solved "+exo.getName()+" in "+exo.lastResult.language+"!");
 			} catch (Exception e) {

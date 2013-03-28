@@ -1,5 +1,6 @@
-package jlm.core.model;
+package jlm.core.model.tracking;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
 import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthScope;
@@ -27,7 +28,7 @@ public class IdenticaSpy implements ProgressSpyListener {
 
     @Override
     public void executed(Exercise exo) {
-        if (exo.isSuccessfullyPassed()) {
+        if (Game.getInstance().studentWork.getPassed(exo.getLesson().getId(), exo.getId(), exo.lastResult.language)) {
 
             DefaultHttpClient httpclient = new DefaultHttpClient();
             try {

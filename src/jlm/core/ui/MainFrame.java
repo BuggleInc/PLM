@@ -21,7 +21,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTabbedPane;
+import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 
@@ -34,10 +34,20 @@ import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
-import jlm.core.ui.action.*;
+import jlm.core.ui.action.AbstractGameAction;
+import jlm.core.ui.action.ExportSession;
+import jlm.core.ui.action.HelpMe;
+import jlm.core.ui.action.ImportSession;
+import jlm.core.ui.action.PlayDemo;
+import jlm.core.ui.action.QuitGame;
+import jlm.core.ui.action.Reset;
+import jlm.core.ui.action.RevertExercise;
+import jlm.core.ui.action.SetLanguage;
+import jlm.core.ui.action.SetProgLanguage;
+import jlm.core.ui.action.StartExecution;
+import jlm.core.ui.action.StepExecution;
+import jlm.core.ui.action.StopExecution;
 import jlm.universe.World;
-
-import javax.swing.*;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
 

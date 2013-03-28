@@ -1,6 +1,7 @@
-package jlm.core.model;
+package jlm.core.model.tracking;
 
 import net.minidev.json.JSONObject;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
 

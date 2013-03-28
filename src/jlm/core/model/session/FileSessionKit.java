@@ -1,4 +1,4 @@
-package jlm.core.model;
+package jlm.core.model.session;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,11 +7,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import jlm.core.model.Game;
+import jlm.core.model.Logger;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.model.lesson.SourceFile;
-import jlm.core.model.lesson.SourceFileAliased;
 import jlm.core.model.lesson.SourceFileRevertable;
 
 /**
@@ -24,9 +26,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 	private Game game;
 
 	private static String HOME_DIR = System.getProperty("user.home");
-
 	private static String SEP = System.getProperty("file.separator");
-
 	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".jlm");
 
 	public FileSessionKit(Game game) {
@@ -42,42 +42,39 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 			// File lessonDir;
 			File exerciseDir;
 			for (Lesson lesson : this.game.getLessons()) {
-				// lessonDir = new File(saveDir + sep +
-				// lesson.getClass().getName());
-				// if (!lessonDir.exists())
-				// lessonDir.mkdir();
-				// // save lesson data
 
 				for (Lecture lecture : lesson.exercises()) {
 					if (lecture instanceof Exercise) {
 						Exercise exercise = (Exercise) lecture;
-						exerciseDir = new File(SAVE_DIR, exercise.getClass().getName());
+						exerciseDir = new File(SAVE_DIR, exercise.getId());
 						if (!exerciseDir.exists())
 							if (! exerciseDir.mkdir()) 
 								Logger.log("FileSessionKit:store", "cannot remove "+exerciseDir+" directory");
 
 
 						// create file DONE if exercise has been successfully passed
-						File exerciseFile = new File(exerciseDir, "DONE");
-						if (exercise.isSuccessfullyPassed()) {
-							if (!exerciseFile.exists()) {
-								try {
-									exerciseFile.createNewFile();
-								} catch (IOException e) {
-									e.printStackTrace();
+						for (ProgrammingLanguage lang: exercise.getProgLanguages()) {
+							File exerciseFile = new File(exerciseDir, "DONE."+lang.getExt());
+							if (Game.getInstance().studentWork.getPassed(lesson.getId(), exercise.getId(), lang)) {
+								if (!exerciseFile.exists()) {
+									try {
+										exerciseFile.createNewFile();
+									} catch (IOException e) {
+										e.printStackTrace();
+									}
 								}
-							}
-						} else {
-							if (exerciseFile.exists()) {
-								if (!exerciseFile.delete()) {
-									Logger.log("FileSessionKit:store", "cannot remove "+exerciseFile+" directory");
+							} else {
+								if (exerciseFile.exists()) {
+									if (!exerciseFile.delete()) {
+										Logger.log("FileSessionKit:store", "cannot remove "+exerciseFile+" directory");
+									}
 								}
 							}
 						}
 
 						// save exercise body
 						for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
-							for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+							for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 								SourceFile sf = exercise.getPublicSourceFile(lang,i);
 
 								if (!(sf instanceof SourceFileRevertable))
@@ -121,22 +118,20 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 			for (Lecture lecture : lesson.exercises()) {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
-					exerciseDir = new File(SAVE_DIR, exercise.getClass().getName());
+					exerciseDir = new File(SAVE_DIR, exercise.getId());
 					if (!exerciseDir.exists())
 						continue;
 
-					File exerciseFile = new File(exerciseDir, "DONE");
-					if (exerciseFile.exists()) {
-						exercise.successfullyPassed();
-					}
 
 					// load exercise body
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						File exerciseFile = new File(exerciseDir, "DONE"+lang.getExt());
+						if (exerciseFile.exists()) {
+							Game.getInstance().studentWork.setPassed(lesson.getId(), lecture.getId(), lang, true);
+						}
+						
+						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
-
-							if (srcFile instanceof SourceFileAliased)
-								continue;
 
 							File of = new File(exerciseDir+"/"+lang, srcFile.getName());
 							if (!of.exists()) /* try to load using the old format (not specifying the programming language) */
@@ -180,7 +175,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 			for (Lecture lecture : lesson.exercises()) {
 				if (lecture instanceof Exercise) {
 					Exercise exercise = (Exercise) lecture;
-					exerciseDir = new File(SAVE_DIR, exercise.getClass().getName());
+					exerciseDir = new File(SAVE_DIR, exercise.getId());
 					if (!exerciseDir.exists())
 						continue;
 
@@ -192,7 +187,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 					}
 
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
-						for (int i = 0; i < exercise.publicSourceFileCount(lang); i++) {
+						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang, i);
 
 							File of = new File(exerciseDir, srcFile.getName());
