@@ -6,8 +6,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import jlm.core.JLMCompilerException;
 import jlm.core.model.lesson.Exercise;
-import jlm.core.model.lesson.JLMCompilerException;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.ExerciseFailedDialog;
 import jlm.core.ui.ResourcesCache;

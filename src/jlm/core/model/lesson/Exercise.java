@@ -14,6 +14,8 @@ import java.util.regex.Pattern;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import jlm.core.InMemoryCompiler;
+import jlm.core.JLMCompilerException;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 import jlm.core.model.ProgrammingLanguage;

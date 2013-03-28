@@ -1,4 +1,4 @@
-package jlm.core.model.lesson;
+package jlm.core;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayInputStream;
