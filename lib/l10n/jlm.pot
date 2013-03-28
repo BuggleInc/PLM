@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-26 12:13+0100\n"
+"POT-Creation-Date: 2013-03-28 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -877,6 +877,149 @@ msgid ""
 "execute."
 msgstr ""
 
+#. type: Content of: <h1>
+#: src/lessons/backtracking/Main.html:1
+msgid "Backtracking lesson"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:3
+msgid ""
+"This <b>experimental</b> lesson aims at teaching students about "
+"backtracking. It is not ready for consumtion yet, not even the first "
+"exercises. It will feature several exercices on the topic allowing to "
+"progressively build the relevant notions and mental representation in the "
+"students mind."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:9
+msgid ""
+"For now, it contains a Backtracking exercise which lacks a graphical "
+"representation to be usable. It is based on an entity KnapsackSolver which "
+"works on a KnapsackPartialSolution. This latter is not a World, but a "
+"passive world component. It is used by the solver to store the currently "
+"best solution and the working solution. This design should be rather generic "
+"and other backtracking problems, such as the ones used in my TOP teaching "
+"(pyramid, recipients) should be implmentable following this design. That is "
+"why Backtracking classes derive from generic ones: BacktrackingEntity and "
+"BacktrackingPartialSolution.  There is also a BacktrackingWorld, that "
+"specific universes should need to not override, and BacktrackingExercise, "
+"dealing with this specificity where the world does not only contain solving "
+"entities, but also two partial solutions (best know and current)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:23
+msgid ""
+"This exercise should be introduced by an interactive discovery activity such "
+"as the one used here: "
+"http://interstices.info/jcms/c_19213/le-probleme-du-sac-a-dos"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:27
+msgid ""
+"Although this exercise seems almost usable, there is a fundamental "
+"difficulty to solve in the visualization. It is envisionned that the call "
+"graph is used here, to help the students building their mental "
+"representation of recursion. The actual representation of the graph should "
+"be quite easy, thanks to the jung library. But I fail to see how to get the "
+"needed info so far. Adding sensors to the stepUI()  method is probably the "
+"best way to go, but I would need to inspect the complete call stack where "
+"Thread.currentThread().getStack() only give the static stack (method called, "
+"file location, etc). I think I need to inspect the parameters passed to each "
+"method call to rebuild the proper call tree."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:39
+msgid ""
+"The first thing that I tried to use was dtrace, but it seems non-portable "
+"and somehow linked to solaris so I didn't dig any further."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:43
+msgid ""
+"Then, I tried to use the debugging infrastructure (JPDA), but never managed "
+"to get it working. It seems to me that the original com.sun.jdi package is "
+"somehow deprecated since com.sun.jdi.BootStrap.virtualMachineManager() "
+"returns null while org.eclipse.jdi.Bootstrap.virtualMachineManager() does "
+"not. But when I'm using the eclipse version, it seem to take an endless "
+"amount of dependencies, which I'm not inclined to do. The root of my problem "
+"may be that I was using a jdi.jar comming from eclipse, but I didn' find any "
+"other. I just realised that the com.sun.jdi package is also implemented in "
+"/usr/lib/jvm/java-6-sun-1.6.0.26/lib/tools.jar on my disk. It seem to be "
+"functional, I should give it another spin."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:55
+msgid ""
+"Afterward, I tried to reuse the debugging infrastructure of DrJava. It looks "
+"like a good idea because they have several helper interfaces for debugging "
+"and compiling. Also, they have a good editor that we could reuse. Finally, "
+"they have a strong testing infrastructure with junit ensuring that their "
+"tool still work after modifications (that's something we are seriously "
+"missing in JLM). I'm really thinking that the two tools should converge to "
+"something stronger. The only argument for not doing so (beside the amount of "
+"work it'll take) is that each of us get the credit for each tool where "
+"things would be more fuzzy on a mixed tool. But I don't care, the mixed tool "
+"would be so much cooler that I'd like to find the time to ensure this "
+"convergence."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:67
+msgid ""
+"But the debugging feature of DrJava seems to suffer from an issue: "
+"http://sourceforge.net/tracker/index.php?func=detail&aid=3004294&group_id=44253&atid=438935 "
+"I was suspecting a permission error (something related to "
+"com.sun.jdi.JDIPermission), but even with a java.security.AllPermission as "
+"permission file, I still have the issue."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:73
+msgid ""
+"Another lead to get it working it to use lib ASM to modify the student code "
+"so that their recursive method gets traced. With the static backtrace and "
+"the tracing information, I guess I could rebuild the actual call tree. That "
+"seem to be possible: 2 sec of googling gave me something like "
+"http://rejeev.blogspot.com/2009/04/method-tracing.html"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/backtracking/Main.html:79
+msgid ""
+"So, here I am. The lesson would be very interesting to students, and quite "
+"easy to finish once I manage to get the information I need, but I didn't "
+"manage to do so so far, despite my efforts. If you have any hint (or "
+"patch!), please email martin.quinson#loria.fr."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/backtracking/Main.html:84
+msgid ""
+"This gives me the following todo actions: * Check whether tools.jar gives a "
+"working com.sun.jdi package * Find the DrJava bug around debugging to help "
+"them, and so that I can steal parts of their code about it for JLM (it's "
+"BSD'ed while JLM is mainly GPL'ed for now -- I'll have to ask them for an "
+"exception). That would be better since their helper interface seem to be "
+"able to deal with several debuggers (eclipse, sun or openjdk). That's quite "
+"a large amount of work I'd like to avoid dupplicating.  * Check wheter I can "
+"get tracing info from ASM. It may be more robust to JVM variants than the "
+"debugging approach. On the other hand, debugging is a neat feature for JLM "
+"as is.  * Work on the convergence of JLM and DrJava. Beside of the licencing "
+"issue, it will also complicate the ongoing integration of JLM within Debian, "
+"since DrJava is composed of [[5 separated "
+"modules|http://drjava.org/docs/developer/ch02s03.html]] that can only be "
+"integrated as separated source packages. As every java package, no source "
+"archive is distributed, and they must be retrieved directly from the "
+"svn. Finally, they are quite huge, with sloccount reporting"
+msgstr ""
+
 #. type: Content of: <table><tr><td>
 #: src/lessons/chooser/LessonChooser.html:3 src/lessons/chooser/LessonChooser.html:3
 msgid "&nbsp;&nbsp;"
@@ -953,6 +1096,337 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/chooser/LessonChooser.html:34
 msgid "<a href=\"jlm://load_jar\">→ Load a lesson JAR</a>"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/meta/HanoiCreateWorld.html:1
+msgid "Creating a new JLM world"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:4
+msgid ""
+"Welcome to the JLM Meta-Lesson. Its goal is to teach you how to write new "
+"universes in JLM. For that, we will reimplement the Hanoi world (available "
+"in the recursion lesson) step-by-step. This lesson covers quite advanced "
+"topics and suppose that you are fluent in Java and confident with the use of "
+"the JLM framework already. If you are not used to the framework already, you "
+"probably want to take another lesson before, like the welcome one or (maybe "
+"more fun) the maze one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:12
+msgid "Every JLM universe is composed of 4 main components:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:14
+msgid "<b>The world</b>: it contains the state of the universe."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:15
+msgid "<b>The view</b>: it allows to draw the world and the entities on the screen."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:17
+msgid ""
+"<b>The entity ancestor</b>: the code written by the student will derive from "
+"this class, which contains some state specific to the entity, and every "
+"accessor to let the entity interact with its world."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:20
+msgid ""
+"<b>The entity interactive control panel</b>: this is the little panel "
+"displayed under the world view in the JLM interface. It allows to "
+"interactively control the selected entity. As you can see from the existing "
+"universes, this is optional, and if you don't provide any, the panel will "
+"remain blank, preventing the users from interactively controlling the "
+"entities."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:28
+msgid "In addition, worlds are used by exercises, themselves sorted in lessons."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:30
+msgid ""
+"<b>Lessons</b> are just a list of exercise. They can be sequential (meaning "
+"that the student has to finish one exercise before being allowed to see the "
+"next one in the list), altrough most of them are not (ie, students are free "
+"to attempt the exercises in the order they like)."
+msgstr ""
+
+#. type: Content of: <ul><li><p>
+#: src/lessons/meta/HanoiCreateWorld.html:35
+msgid ""
+"In the future, we would like to have richer exercise ordering schema, where "
+"the requirements to fulfill to be allowed to try an exercise could be more "
+"complex.  The dependencies would probably turn into a graph instead of a "
+"chain.  But this is still to be done."
+msgstr ""
+
+#. type: Content of: <ul><li><p>
+#: src/lessons/meta/HanoiCreateWorld.html:40
+msgid ""
+"The main element of each lesson is a class classically called Main, which "
+"simply contains a constructor adding each exercise of the lesson in row."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:43
+msgid ""
+"Each <b>exercise</b> object is in charge of instantiating the worlds used, "
+"set them up (adding walls and baggles in BuggleWorld, or changing the "
+"elevation and adding lamps in the LightBotWorld, etc), and populate them "
+"with entities correctly setup (location, color, etc)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:48
+msgid ""
+"Most of the exercises also provide a specific <b>answer entity</b> able to "
+"solve the exercise.  It serve both to compute the initial content of the "
+"code editor, and to compute the objective world. We will come back on this "
+"in a latter exercise of this meta-lesson."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:53
+msgid ""
+"The very first element you want to write in a new JLM universe is a partial "
+"world implementation including the internal state. In subsequent exercises, "
+"we will complete the World class to provide entities ways to interact and "
+"modify their world, and we will also implement the other elements of the "
+"universe."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:58
+msgid ""
+"Before you jump in writing your World implementation, you should understand "
+"the big JLM picture, and how worlds are used internally."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/meta/HanoiCreateWorld.html:61
+msgid "JLM worlds big picture"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:64
+msgid ""
+"As you know, every JLM exercise can contain one or several worlds, each "
+"containing one or several entities. The code written by the student is "
+"executed in the entities, which must interact with their world to change it "
+"from its initial state to its goal state."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:69
+msgid ""
+"This multiplication of worlds and entities is used to test the student code "
+"in several conditions. It can thus be parallelized to test cases, aiming at "
+"full testing coverage of the student code."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:73
+msgid ""
+"Technically, in a given exercise, for every world accessible from the "
+"relevant combobox, there is three World objects. They live in "
+"jlm.lesson.Exercise:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/meta/HanoiCreateWorld.html:76
+#, no-wrap
+msgid ""
+"protected World [] initialWorld; \n"
+"protected World [] currentWorld; \n"
+"protected World [] answerWorld;  \n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:83
+msgid ""
+"The line number of the combobox gives the index to use in these arrays.  "
+"Each <code>initialWorld</code> is created by the exercise constructor."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:87
+msgid ""
+"<code>currentWorld</code> is the one displayed in the \"World\" tab of the "
+"interface. At the beginning, it is a plain copy of the initialWorld, but it "
+"gets modified when the student uses the interactive controls or when the "
+"program gets run. The \"Reset\" button reset it to be a perfect copy of the "
+"initial world."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:93
+msgid ""
+"<code>answerWorld</code> is the one displayed by the \"Objective\" "
+"world. Basically, it's a copy of the initial world, on which we let the "
+"specific answer entity of this exercise run.  This default behavior can be "
+"overloaded by exercises, but you'll probably never have to do so. We will "
+"come back on this in a subsequent exercise."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/meta/HanoiCreateWorld.html:98
+msgid "Implementing basic Worlds"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:100
+msgid ""
+"The internal use of Worlds hidden, but the important point is that every "
+"World object has extend the jlm.universe.World class and define the "
+"following methods and constructors:"
+msgstr ""
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:103
+msgid ""
+"<b>a copy constructor</b> which is used to copy initial worlds into "
+"currentWorld and answerWorld.  Its argument must be of the exact same type "
+"than the class itself, not Object (this is because we use Java introspection "
+"mechanism to search for such a constructor of the class).  For example, if "
+"you create a TotoWorld, your copy constructor must be declared as this:"
+msgstr ""
+
+#. type: Content of: <p><ul><li><pre>
+#: src/lessons/meta/HanoiCreateWorld.html:108
+#, no-wrap
+msgid ""
+"public TotoWorld(TotoWorld other) {...} // Correct\n"
+"public TotoWorld(Object other) {...} // FALSE\n"
+"public TotoWorld(World other) {...} // also FALSE\n"
+msgstr ""
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:112
+msgid ""
+"The content of this constructor is usually a simple call to the "
+"<code>super(World w)</code> constructor, but this constructor cannot be "
+"omitted."
+msgstr ""
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:115
+msgid ""
+"One or several <b>regular constructors</b> initializing the state of the "
+"object. They will be used by the exercise constructor to instantiate your "
+"world. Since you usually write both the world and the lessons, you are "
+"completely free to specify the parameters you want to your constructor. It "
+"should use the <code>super(String name)</code> constructor to setup the very "
+"basic elements of your world."
+msgstr ""
+
+#. type: Content of: <p><ul><li><p>
+#: src/lessons/meta/HanoiCreateWorld.html:120
+msgid ""
+"Optionally, you may also want to use the <code>setDelay(int delay)</code> "
+"method to change the initial animation delay. For example, the SortingWorld "
+"set this to 1 to speed animations up. This is the delay in milliseconds "
+"between each animation step during a continuous run."
+msgstr ""
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/meta/HanoiCreateWorld.html:124
+msgid ""
+"A <b>reset() method</b> taking one World as parameter, and in charge of "
+"copying the state of the parameter into the current world. This is naturally "
+"used when you press the \"Reset\" button, or at the beginning of each run."
+msgstr ""
+
+#. type: Content of: <p><ul><li><p>
+#: src/lessons/meta/HanoiCreateWorld.html:127
+msgid ""
+"The length of this method naturally depends on the complexity of your world "
+"state. In hanoi, there is only 3 slots containing a list of disc so that "
+"will be quite easy, but this can be quite complicated for complex worlds "
+"such as BuggleWorld."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/meta/HanoiCreateWorld.html:132
+msgid "Allowing the graphical rendering of Worlds"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:134
+msgid ""
+"Some specific steps naturally must be taken so that JLM can graphically "
+"display your world. Usually, you must write a specific class extending "
+"jlm.universe.WorldView, and provide some protected methods so that the View "
+"can retrieve the state to display. In this particular exercise, the view is "
+"provided (you will write you own one in next exercise), so you only have to "
+"implement the right accessor."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/meta/HanoiCreateWorld.html:139
+msgid "Implementing your HanoiWorld"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:141
+msgid ""
+"The main task of this exercise is to modify the provided template to store "
+"the state of the world. Since the exercise provides a view and automatically "
+"instantiate your world, you cannot change the instantiation constructor, nor "
+"the rendering accessor (see the code template for there prototype). But you "
+"are completely free about how you actually store the state in your object."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:146
+msgid ""
+"During the implementation of the Hanoi world, I changed my internal "
+"representation several times, to adapt to the code needs. My first try was "
+"only simply three ArrayList&lt;Integer>, for each slots, while the final "
+"design used an inner class called HanoiSlot, containing an integer array and "
+"providing friendly functions such as <code>push()</code>, <code>pop()</code> "
+"and <code>top()</code>. Even if it really becomes necessary when "
+"implementing the action methods allowing the entities to interact with their "
+"world, I advise you to design an inner class from the beginning."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:153
+msgid ""
+"You probably want to add 3 fields to your World, one for each slot (we will "
+"never try to have worlds with more than 3 slots), store the content of each "
+"slot in the instantiation constructor, and retrieve the content of a "
+"specific slot in the rendering accessor (<code>Integer[] values(Integer "
+"i)</code>)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/meta/HanoiCreateWorld.html:157
+msgid ""
+"That seems quite a lot of code to write compared to the other JLM exercises, "
+"but at the end, my HanoiWorld implementation is less than 100 lines long, "
+"which is not that much."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/meta/Main.html:1
+msgid "Meta lesson"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/meta/Main.html:2
+msgid "The purpose of this lesson is to teach you how to write lessons for JLM."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -7746,6 +8220,44 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
+#: src/jlm/universe/bat/BatWorld.html:1
+msgid "BatWorld"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/jlm/universe/bat/BatWorld.html:3
+msgid ""
+"This world is a simplistic testing environment largely inspired from the "
+"http://codingbat.com invented by Nick Parlente."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/jlm/universe/bat/BatWorld.html:6
+msgid ""
+"The typical exercises are very short ones, aiming at improving the tactical "
+"programming abilities of the students. That is to say that you will be "
+"presented a quite long list of very little exercises about rather simple "
+"things. The idea is to train you on these issues until they become automatic "
+"to you."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/jlm/universe/bat/BatWorld.html:12
+msgid ""
+"In contrary to the other worlds, the BatWorld does not provide any fancy "
+"abstraction nor visualization. You have to fill a function, which gets "
+"called for a bunch of parameter sets, and that's it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/jlm/universe/bat/BatWorld.html:16
+msgid ""
+"For more information, you should refer to the CodingBat.com documentation, "
+"which contains for example a very useful documentation on boolean operators: "
+"http://codingbat.com/doc/ifboolean.html"
+msgstr ""
+
+#. type: Content of: <h1>
 #: src/lessons/bat/string1/AltPairs.html:1
 msgid "AltPairs"
 msgstr ""
@@ -8245,7 +8757,7 @@ msgid " int getHoleBase() "
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:22 src/lessons/smn/baseball/BaseballGame.html:29
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:22 src/lessons/smn/baseball/BaseballGame.html:28
 msgid "Return the index of the base where the hole is located"
 msgstr ""
 
@@ -8256,7 +8768,7 @@ msgid " int getHolePositionInBase()"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:26 src/lessons/smn/baseball/BaseballGame.html:33
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:26 src/lessons/smn/baseball/BaseballGame.html:32
 msgid "Return the player's position in the base where the hole is located"
 msgstr ""
 
@@ -8267,18 +8779,18 @@ msgid " boolean isBaseSorted( int baseIndex)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:30 src/lessons/smn/baseball/BaseballGame.html:37
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:30 src/lessons/smn/baseball/BaseballGame.html:36
 msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:32 src/lessons/smn/baseball/BaseballGame.html:39
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:32 src/lessons/smn/baseball/BaseballGame.html:38
 #, no-wrap
 msgid "int getAmountOfBases()"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:34 src/lessons/smn/baseball/BaseballGame.html:41
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:34 src/lessons/smn/baseball/BaseballGame.html:40
 msgid "Return the amount of bases in the field."
 msgstr ""
 
@@ -8371,42 +8883,42 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:27
+#: src/lessons/smn/baseball/BaseballGame.html:26
 #, no-wrap
 msgid "int getHoleBase() "
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:31
+#: src/lessons/smn/baseball/BaseballGame.html:30
 #, no-wrap
 msgid "int getHolePositionInBase()"
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:35
+#: src/lessons/smn/baseball/BaseballGame.html:34
 #, no-wrap
 msgid "boolean isBaseSorted( int baseIndex)"
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:46
+#: src/lessons/smn/baseball/BaseballGame.html:45
 msgid "Show Tip 1 ( the methods's prototype)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:47
+#: src/lessons/smn/baseball/BaseballGame.html:46
 msgid "The prototypes of the methods you may use are the followings :"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:51
+#: src/lessons/smn/baseball/BaseballGame.html:50
 msgid ""
 "private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int "
 "playerDst) throws InvalidMoveException"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:53
+#: src/lessons/smn/baseball/BaseballGame.html:52
 msgid ""
 "Move the player in position <code>playerSrc</code> of the base "
 "<code>baseSrc</code> to the position <code>playerDst</code> from the base "
@@ -8414,14 +8926,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:55
+#: src/lessons/smn/baseball/BaseballGame.html:54
 msgid ""
 "private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) "
 "throws InvalidPositionException"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:57
+#: src/lessons/smn/baseball/BaseballGame.html:56
 msgid ""
 "Return the base's number and the position of the nearest player which "
 "has<code>colorWanted</code> as color. It begins the search at the base "
@@ -8429,14 +8941,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:59
+#: src/lessons/smn/baseball/BaseballGame.html:58
 msgid ""
 "private void bringHole(int baseDst, int playerDst , int playerToProtect) "
 "throws InvalidMoveException"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:61
+#: src/lessons/smn/baseball/BaseballGame.html:60
 msgid ""
 "Bring the hole to the position <code>playerDst</code> from the base "
 "<code>baseDst</code> while protecting the position "
@@ -8444,17 +8956,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:68
+#: src/lessons/smn/baseball/BaseballGame.html:67
 msgid "Show Tip 2 (Pseudo-code of solve)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:69
+#: src/lessons/smn/baseball/BaseballGame.html:68
 msgid "The algorithm of the solve method is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:71
+#: src/lessons/smn/baseball/BaseballGame.html:70
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -8486,17 +8998,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:97
+#: src/lessons/smn/baseball/BaseballGame.html:96
 msgid "Show Tip 3 ( Pseudo-code of bringHole )"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:98
+#: src/lessons/smn/baseball/BaseballGame.html:97
 msgid "The algorithm of the bringHole method is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:100
+#: src/lessons/smn/baseball/BaseballGame.html:99
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -8527,17 +9039,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:128
+#: src/lessons/smn/baseball/BaseballGame.html:127
 msgid "Show Tip 4 ( Pseudo-code of findNearestPlayer)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:129
+#: src/lessons/smn/baseball/BaseballGame.html:128
 msgid "The algorithm of the findNearestPlayer method is the following :"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:131
+#: src/lessons/smn/baseball/BaseballGame.html:130
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -8562,17 +9074,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:153
+#: src/lessons/smn/baseball/BaseballGame.html:152
 msgid "Show tip 5 ( Pseudo-code of bringPlayerHome)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:154
+#: src/lessons/smn/baseball/BaseballGame.html:153
 msgid "The algorithm of the bringPlayerHome method is the following :"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:156
+#: src/lessons/smn/baseball/BaseballGame.html:155
 #, no-wrap
 msgid ""
 "PRECONDITION: the hole is on the base of index baseSrc-1\n"
