@@ -14,7 +14,6 @@ import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.model.lesson.SourceFile;
-import jlm.core.model.lesson.SourceFileAliased;
 import jlm.core.model.lesson.SourceFileRevertable;
 
 /**
@@ -133,9 +132,6 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 						
 						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
-
-							if (srcFile instanceof SourceFileAliased)
-								continue;
 
 							File of = new File(exerciseDir+"/"+lang, srcFile.getName());
 							if (!of.exists()) /* try to load using the old format (not specifying the programming language) */

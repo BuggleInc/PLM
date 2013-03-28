@@ -30,8 +30,6 @@ public class PledgeMaze extends ExerciseTemplated {
 		loadMap(myWorlds[1],"lessons/maze/PledgeMaze2");
 		new Buggle(myWorlds[1], "Trapception", 8, 10, Direction.SOUTH, Color.black, Color.lightGray);
 		
-		newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
-
 		setup(myWorlds);
 	}
 

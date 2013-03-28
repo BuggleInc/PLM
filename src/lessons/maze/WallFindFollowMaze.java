@@ -31,8 +31,6 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 		loadMap(myWorlds[1],"lessons/maze/WallFollowerMaze2");
 		new Buggle(myWorlds[1], "ZoroRorronoa", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
-		newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
-		
 		setup(myWorlds);
 	}
 

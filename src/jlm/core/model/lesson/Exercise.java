@@ -170,14 +170,6 @@ public abstract class Exercise  extends Lecture {
 		sf.setCompilable(false);
 		getSourceFiles(lang).add(sf);
 	}
-	public void newSourceAliased(String lesson, String exercise, String file) {
-		/* FIXME: this should alias for all existing languages */
-		newSourceAliased(Game.JAVA, lesson, exercise, file);
-	}
-	public void newSourceAliased(ProgrammingLanguage lang, String lesson, String exercise, String file) {
-		SourceFile sf = new SourceFileAliased(lang, lesson, exercise,file);
-		getSourceFiles(lang).add(sf);
-	}
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
 		newSource(lang, name, initialContent, template, "");
 	}
