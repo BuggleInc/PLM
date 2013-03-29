@@ -37,7 +37,7 @@
 
 	<target name="compile" description="compile all source files">
         <mkdir dir="${classes.dir}"/>
-        <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />        
+        <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" />
 	</target>	
 	
 	<target name="dist" depends="compile, updateversion" description="build a standalone application jar file">
