@@ -20,20 +20,12 @@ import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.Reader;
 import jlm.core.ui.WorldView;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.ElementList;
-import org.simpleframework.xml.Root;
-
-@Root
 public abstract class World {
-	@Attribute
 	private boolean isDelayed = false; // whether we display interactively or not
 	private int delay = 100; // delay between two instruction executions of an entity.
 
-	@ElementList
 	protected ArrayList<Entity> entities = new ArrayList<Entity>();
 
-	@Attribute
 	private String name;
 
 	public World(String name) {

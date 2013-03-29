@@ -9,16 +9,12 @@ import jlm.universe.Entity;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
 
-import org.simpleframework.xml.Attribute;
 
 
 public class LightBotEntity extends Entity  {
-	@Attribute
 	private int x;
-	@Attribute
 	private int y;
 
-	@Attribute
 	Direction direction;
 	
 	StackTraceElement[] tracedStack = new StackTraceElement[1];

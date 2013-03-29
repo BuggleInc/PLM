@@ -5,7 +5,6 @@
  * le libération du verrou "step-by-step" ne se passe pas bien lors de l'utilisation de "Reset",
    un "Run" remet zéro correctement
  * certains tests de countTeen() semblent faux par rapport à l'énoncé
- * certains énoncés extraits javabat sont tronqués
 
  
  * dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
@@ -18,7 +17,7 @@ Assez urgent :
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
  
 D'autres points moins urgents :
- * on pourrait couper l'exercice sur "la chasse à la limace" en deux :
+ * on pourait couper l'exercice sur "la chasse à la limace" en deux :
    - écrire hunt() en fournissant la méthode isFacingTrail() sans donner le code celle-ci
    - demander ensuite d'écrire la méthode isFacingTrail()
  * le bouton quitter est mal-placé (un triple clic qui l'application), 
@@ -49,15 +48,11 @@ inventé le concept. Par exemple:
 
 http://cs.wellesley.edu/~cs111/fall98/assignments.html
 
-* Une leçon sur les labyrinthes avec A*
-
 ***************** MONDES
 Micro-mondes pédagogiques
  * Karel the robot (peut-être qu'un chargeur de mondes karel dans les
    buggles suffit)
  * PatchWorld
-Pour enfants
- * La course de bateau de gcompris
 Ludiques pour programmeurs (nécessitent un mode King of hill?)
  * CodeRuler (stratégie)
  * CodeRobot (combats de robots)

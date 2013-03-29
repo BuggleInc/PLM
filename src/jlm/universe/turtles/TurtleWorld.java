@@ -11,18 +11,11 @@ import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.ElementList;
-
-
 public class TurtleWorld extends World {
 
-	@ElementList 
 	ArrayList<ShapeAbstract> shapes = new ArrayList<ShapeAbstract>(); 
 
-	@Attribute
 	private double width;
-	@Attribute
 	private double height;
 	
 	public TurtleWorld(String name) {

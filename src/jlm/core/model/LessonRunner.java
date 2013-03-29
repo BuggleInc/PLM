@@ -6,8 +6,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import jlm.core.JLMCompilerException;
 import jlm.core.model.lesson.Exercise;
-import jlm.core.model.lesson.JLMCompilerException;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.ExerciseFailedDialog;
 import jlm.core.ui.ResourcesCache;
@@ -79,7 +79,7 @@ public class LessonRunner extends Thread {
 			JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Exercise passed \\o/", JOptionPane.PLAIN_MESSAGE,
 					ResourcesCache.getIcon("resources/success.png"));
 			
-			Game.getInstance().studentWork.setPassed(null, exo.getId(), null, true);
+			Game.getInstance().studentWork.setPassed(exo.getId(), null, true);
 		} else {
 			 SwingUtilities.invokeLater(new Runnable() {
 		            public void run() {

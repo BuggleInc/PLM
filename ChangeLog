@@ -1,3 +1,5 @@
+20130329:
+  * Remove simple-xml from the build-dependencies: wasn't used.
 20130328:
   * Merge all code (and wiki) from last year's students
   * Accept a pull request from J-Bastian, with a new lesson (SMN) and a
