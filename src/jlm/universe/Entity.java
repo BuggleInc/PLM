@@ -8,11 +8,6 @@ import java.util.concurrent.Semaphore;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
-
-
-
 public abstract class Entity {
 	protected String name;
 	protected World world;
@@ -33,22 +28,18 @@ public abstract class Entity {
 		}
 	}
 	
-	@Attribute
 	public String getName() {
 		return this.name;
 	}
 
-	@Attribute
 	public void setName(String name) {
 		this.name = name;
 	}	
 	
-	@Element
 	public World getWorld() {
 		return world;
 	}
 
-	@Element
 	public void setWorld(World world) {
 		this.world = world;
 	}

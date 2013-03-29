@@ -12,37 +12,23 @@ import jlm.universe.bugglequest.exception.BuggleInOuterSpace;
 import jlm.universe.bugglequest.exception.BuggleWallException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Element;
-
-
-
-
 public abstract class AbstractBuggle extends Entity {
-	@Attribute
 	Color color;
 	
-	@Attribute
 	Color brushColor;
 
-	@Attribute
 	private int x;
-	@Attribute
 	private int y;
 
-	@Attribute
 	Direction direction;
 
-	@Attribute
 	boolean brushDown;
 
-	@Element
 	private Baggle baggle;
 
 	/* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
 	 * candidate for exercise completion.
 	 */
-	@Attribute
 	private boolean seenError = false;
 	public void seenError() {
 		this.seenError = true;

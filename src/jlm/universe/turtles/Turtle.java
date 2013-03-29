@@ -6,30 +6,19 @@ import jlm.universe.Entity;
 import jlm.universe.World;
 import jlm.universe.bugglequest.BuggleWorld;
 
-import org.simpleframework.xml.Attribute;
-
-
 public class Turtle extends Entity {
 
 	public final static int DEGREE = 1;
 	public final static int RADIAN = 2;
 	public static final double EPSILON = .0000001;
 
-	@Attribute
 	private Color color;
 
-	@Attribute
 	private double x = 0.;
-	@Attribute
 	private double y = 0.;
 
-	@Attribute
 	private double heading = 0.;
-
-	@Attribute
 	private boolean penDown = true;
-
-	@Attribute
 	private int angularUnit = Turtle.DEGREE;
 
 	/**
