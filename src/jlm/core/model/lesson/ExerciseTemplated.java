@@ -38,7 +38,13 @@ public abstract class ExerciseTemplated extends Exercise {
 			w.readFromFile(br);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}		
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	protected void loadMap(World intoWorld) {
 		BufferedReader br = Reader.fileReader( getClass().getCanonicalName(),"map",false);
@@ -49,6 +55,12 @@ public abstract class ExerciseTemplated extends Exercise {
 			intoWorld.readFromFile(br);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
