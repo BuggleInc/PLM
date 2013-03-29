@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.Reader;
+import jlm.core.model.FileUtils;
 import jlm.core.ui.WorldView;
 
 public abstract class World {
@@ -321,8 +321,10 @@ public abstract class World {
 	public String getAbout() {
 		if (about == null) {
 			String filename = getClass().getCanonicalName().replace('.', File.separatorChar);
-			StringBuffer sb = Reader.fileToStringBuffer(filename, "html", true);
-			if (sb==null) {
+			StringBuffer sb = null;
+			try {
+				sb = FileUtils.readContentAsText(filename, "html", true);
+			} catch (IOException ex) {
 				about = "File "+filename+".html not found.";
 				return about;
 			}

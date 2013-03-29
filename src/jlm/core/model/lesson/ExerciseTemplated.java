@@ -1,7 +1,6 @@
 package jlm.core.model.lesson;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +12,7 @@ import java.util.regex.Pattern;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.Reader;
+import jlm.core.model.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -30,31 +29,14 @@ public abstract class ExerciseTemplated extends Exercise {
 		super(lesson);
 	}
 
-	protected void loadMap(World w,String path) {
-		BufferedReader br = Reader.fileReader( path,"map",false);
-		if (br==null)
-			throw new RuntimeException("Unable to load "+path+".map");
+	protected void loadMap(World intoWorld, String path) {
+		BufferedReader br = null;
 		try {
-			w.readFromFile(br);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	protected void loadMap(World intoWorld) {
-		BufferedReader br = Reader.fileReader( getClass().getCanonicalName(),"map",false);
-		if (br==null)
-			// TODO: not very nice, particularly when we were expecting to load a map and it is not included in the .jar file ;)
-			return;
-		try {
+			br = FileUtils.newFileReader(path, "map", false);
 			intoWorld.readFromFile(br);
-		} catch (IOException e) {
-			e.printStackTrace();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+			throw new RuntimeException("Unable to load "+path+".map");	
 		} finally {
 			try {
 				br.close();
@@ -63,20 +45,33 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 		}
 	}
-
+	
+	protected void loadMap(World intoWorld) {
+		loadMap(intoWorld, getClass().getCanonicalName());
+	}
 
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
 		newSourceFromFile(lang, name, filename, "");
 	}
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) throws NoSuchEntityException {
 
-		StringBuffer sb = Reader.fileToStringBuffer("src"+File.separator+filename,lang.getExt(),false);
+		/*
+		StringBuffer sb = Reader.readContentAsText("src"+File.separator+filename,lang.getExt(),false);
 
 		if (sb==null)
-			sb = Reader.fileToStringBuffer(filename,lang.getExt(),false);
+			sb = Reader.readContentAsText(filename,lang.getExt(),false);
 		if (sb==null) {
 			throw new NoSuchEntityException("Source file "+filename+"."+lang.getExt()+" not found.");
 		}
+		*/
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
+		} catch (IOException ex) {
+			throw new NoSuchEntityException("Source file "+filename+"."+lang.getExt()+" not found.");			
+		}
+		
+		
 		/* Remove line comments since at some point, we put everything on one line only, 
 		 * so this would comment the end of the template and break everything */
 		Pattern lineCommentPattern = Pattern.compile("//.*$");
