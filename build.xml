@@ -100,7 +100,6 @@
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/irclib.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.4.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.2.jar" />
-			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/simple-xml-1.7.2.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
 			
  			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jung/collections-generic-4.01.jar"/>
