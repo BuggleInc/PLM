@@ -88,36 +88,69 @@ public class BaseballWorldView extends WorldView
 	/**
 	 * Draw the base and the players
 	 * @param g The Graphics2D context to draw on
+	 * @param L A coefficient which adapt the length of the arrow to the total amount of bases
 	 * @param r the distance between the symmetry center of the rectangle and the point of Cartesian coordinates ( x , y )
 	 * @paran theta the angle made between the x-axis of the two-dimensional Cartesian system of origin ( x , y ) and the symmetry center of the rectange
 	 * @param x the x coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
 	 * @param y the y coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
 	 * @param base the base that we want to draw
-	 * @param amountOfBases the total amount of bases in the field
+	 * @param amountOfPlayers the total amount of players on the base
 	 */
-	private void drawBase(Graphics2D g, int L, int r, double theta, int x, int y, BaseballBase base,int amountOfBases) {
+	private void drawBase(Graphics2D g, int L, int r, double theta, int x, int y, BaseballBase base, int amountOfPlayers) {
+		int[] xPoints = new int[4];
+		int[] yPoints = new int[4];
+		
+		// Prevent some redundancies during the computing
+		double commonPart = L*Math.sin(theta);
+		double rightPart = (r+L/2)*Math.cos(theta);
+		double leftPart = (r-L/2)*Math.cos(theta) ;
+		
+		xPoints[0] = (int) (x - commonPart + rightPart); // x coordinate of the upper-right point when theta = 0
+		xPoints[1] = (int) (x + commonPart + rightPart); // x coordinate of the lower-right point when theta = 0
+		xPoints[2] = (int) (x + commonPart + leftPart); // x coordinate of the lower-left point when theta = 0
+		xPoints[3] = (int) (x - commonPart + leftPart); // x coordinate of the upper-left point when theta = 0
+		
+		commonPart = L*Math.cos(theta);
+		rightPart = -(r+L/2)*Math.sin(theta);
+		leftPart = -(r-L/2)*Math.sin(theta) ;
+		
+		yPoints[0] = (int) (y - commonPart + rightPart); // y coordinate of the upper-right point when theta = 0
+		yPoints[1] = (int) (y + commonPart + rightPart); // y coordinate of the lower-right point when theta = 0
+		yPoints[2] = (int) (y + commonPart + leftPart); // y coordinate of the lower-left point when theta = 0
+		yPoints[3] = (int) (y - commonPart + leftPart); // y coordinate of the upper-left point when theta = 0
+		
 		// draw the base
-		drawRectangle(g,r,theta,x,y,obtainColor(base.getColor()),L);
+		drawRectangle(g,xPoints,yPoints,obtainColor(base.getColor()));
 		
-		int radius = L/2-2; // the radius of the disk representing the player
-		
-		//draw PlayerOne as a disc
-		int centerPlayerOne[] = new int[2]; 
-		
-		centerPlayerOne[0] = (int) (x+r*Math.cos(theta)-(L/2)*Math.sin(theta)); // x coordinate of the center of the disk representing player one
-		centerPlayerOne[1] = (int) (y-((L/2)*Math.cos(theta)+r*Math.sin(theta))); // y coordinate of the center of the disk representing player one
-		  
-		Color colorPlayerOne = obtainColor(base.getPlayer(0).getColor());
-		drawDisk(g, centerPlayerOne, radius, colorPlayerOne,"1");
-		  
-		// draw Player Two
-		int centerPlayerTwo[] = new int[2];
-		
-		centerPlayerTwo[0] = (int) (x+r*Math.cos(theta)+(L/2)*Math.sin(theta)); // x coordinate of the center of the disk representing player two
-		centerPlayerTwo[1] = (int) (y-(-(L/2)*Math.cos(theta)+r*Math.sin(theta))); // y coordinate of the center of the disk representing player two
-		
-		Color colorPlayerTwo = obtainColor(base.getPlayer(1).getColor());
-		drawDisk(g, centerPlayerTwo, radius, colorPlayerTwo,"2");
+		// the radius of the disk representing the player
+		int radius = L/amountOfPlayers-2; 
+		/* 
+		 * This array contains the coordinates of the middle of the upper segment ( when theta = 0 ) of the base
+		 * 0 => x coordinate ; 1 => y coordinate
+		 */
+		int[] middleLower = { (xPoints[1]+xPoints[2])/2 , (yPoints[1]+yPoints[2])/2  };
+		/* 
+		 * This array contains the coordinates of the middle of the lower segment ( when theta = 0 ) of the base
+		 * 0 => x coordinate ; 1 => y coordinate
+		 */
+		int[] middleUpper =  { (xPoints[0]+xPoints[3])/2 , (yPoints[0]+yPoints[3])/2 };
+		// This array contains the coordinates of the "step" between two disks -- 0 => x step ; 1 => y step
+		int[] delta = { (middleUpper[0] - middleLower[0])/amountOfPlayers , (middleUpper[1] - middleLower[1])/amountOfPlayers };
+		// This array contains the coordinates of the center of the disk representing the player -- 0 => x coordinate ; 1 => y coordinate
+		int centerPlayer[] = new int[2]; 
+		// color of the player
+		Color colorPlayer = null;
+		//draw the players as disks
+		for ( int i = 0 ; i < amountOfPlayers ; i++)
+		{
+			// x coordinate of the center of the disk representing the player
+			centerPlayer[0] = (int) (middleUpper[0] - (i+.5)*delta[0] ); 
+			// y coordinate of the center of the disk representing the player
+			centerPlayer[1] = (int) (middleUpper[1] - (i+.5)*delta[1]);  
+
+			colorPlayer = obtainColor(base.getPlayer(i).getColor());	
+			drawDisk(g, centerPlayer, radius, colorPlayer);
+		}
 	}
 
 	/**
@@ -126,7 +159,7 @@ public class BaseballWorldView extends WorldView
 	 * @param centerPlayerOne the center of the disk which will represent the player
 	 * @param color the color with which the disk shall be filled
 	 */
-	private void drawDisk(Graphics2D g, int[] center, int radius,Color color, String s) {
+	private void drawDisk(Graphics2D g, int[] center, int radius,Color color) {
 		g.setColor(Color.BLACK);
 		g.drawOval(center[0]-radius, center[1]-radius, radius*2, radius*2);
 		g.setColor(color);
@@ -144,8 +177,6 @@ public class BaseballWorldView extends WorldView
 	 * @param L A coefficient which adapt the length of the arrow to the total amount of bases
 	 */
 	private void drawLastMove(Graphics2D g, BaseballMove move, int radius, double theta, double xControl, double yControl , int L){
-		if ( move != null)
-		{
 			Stroke s = g.getStroke();
 			double xBegin = 0 ;
 			double yBegin = 0 ;
@@ -197,39 +228,20 @@ public class BaseballWorldView extends WorldView
 			g.setStroke(s);
 
 			drawArrow(g,(int) xEnd, (int) yEnd, xHead, yHead);
-		}
 	}
 
 	/**
-	 * Draw a rectangle representing the base
+	 * Draw a rectangle representing the base. We can't use drawRectangle here.
 	 * @param g The Graphics2D context to draw on
-	 * @param r the distance between the symmetry center of the rectangle and the point of Cartesian coordinates ( x , y )
-	 * @paran theta the angle made between the x-axis of the two-dimensional Cartesian system of origin ( x , y ) and the symmetry center of the rectange
-	 * @param x the x coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
-	 * @param y the y coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
+	 * @param xPoints the four x coordinates of the corners of the rectangle 
+	 * @param yPoints the four y coordinates of the corners of the rectangle 
 	 * @param baseColor the color in which we will draw the base
-	 * @param L a coefficient which change the size of the rectangle depending from the amount of bases
 	 */
-	private void drawRectangle(Graphics2D g, int r, double theta, int x, int y,Color baseColor,int L) {
-		int amountOfPoints = 4 ;
-		int[] xPoints = new int[amountOfPoints];
-		int[] yPoints = new int[amountOfPoints];
-		
-		xPoints[0] = (int) (x - L*Math.sin(theta) + (r+L/2)*Math.cos(theta)); // x coordinate of the upper-left point
-		xPoints[1] = (int) (x + L*Math.sin(theta) + (r+L/2)*Math.cos(theta)); // x coordinate of the upper-right point
-		xPoints[2] = (int) (x + L*Math.sin(theta) + (r-L/2)*Math.cos(theta)); // x coordinate of the lower-right point
-		xPoints[3] = (int) (x - L*Math.sin(theta) + (r-L/2)*Math.cos(theta)); // x coordinate of the lower-left point
-		
-		yPoints[0] = (int) (y - ( L*Math.cos(theta) + (r+L/2)*Math.sin(theta))); // y coordinate of the upper-left point
-		yPoints[1] = (int) (y - ( -L*Math.cos(theta) + (r+L/2)*Math.sin(theta))); // y coordinate of the upper-right point
-		yPoints[2] = (int) (y - ( -L*Math.cos(theta) + (r-L/2)*Math.sin(theta))); // y coordinate of the lower-right point
-		yPoints[3] = (int) (y - ( L*Math.cos(theta) + (r-L/2)*Math.sin(theta))); // y coordinate of the lower-left point
-		
-		g.setColor(baseColor);
-		g.fillPolygon(xPoints, yPoints, amountOfPoints);
-		
+	private void drawRectangle(Graphics2D g, int[] xPoints, int[] yPoints, Color baseColor ) {
 		g.setColor(Color.BLACK);
-		g.drawPolygon(xPoints, yPoints, amountOfPoints);
+		g.drawPolygon(xPoints, yPoints, 4);
+		g.setColor(baseColor);
+		g.fillPolygon(xPoints, yPoints, 4);
 	}
 	
 	/**
@@ -294,25 +306,30 @@ public class BaseballWorldView extends WorldView
 		g2.scale(ratio, ratio);
 		
 		/* drawn the field */
-		g2.setColor(new Color(58,157,35)); // gazon
+		g2.setColor(new Color(58,157,35)); // lawn
 		g2.fill(new Rectangle2D.Double(0., 0., renderedX, renderedY));
 		
 		int radius = 120 ;
 		int[] fieldCenter = {(int) renderedX/2, (int) renderedY/2};
-		drawDisk(g2, fieldCenter , radius+30, new Color(174,74,52),"");
+		drawDisk(g2, fieldCenter , radius+30, new Color(174,74,52)); // draw the play area
 		
 		BaseballWorld myWorld = (BaseballWorld) this.world ;
-		int amountOfBases = myWorld.getAmountOfBases();
-		double theta = 2*Math.PI / amountOfBases;
+		int amountOfBases = myWorld.getAmountOfBases(); // amount of bases
+		double theta = 2*Math.PI / amountOfBases; // angle between center of symmetry of two bases
+		int amountOfPlayers = myWorld.getLocationsAmount(); // amount of players on a base
 		int L = Math.max(3*(20-amountOfBases),10); // adapting the size of the base to the total amount of bases
 		radius+=amountOfBases-5; // adapting the position of the base to the total amount of bases
 		
+		// Draw the bases and the players on each one
 		for ( int i=0 ; i < myWorld.getAmountOfBases();i++)
 		{
-			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , myWorld.field.getBase(i),amountOfBases);
+			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , myWorld.field.getBase(i),amountOfPlayers);
 		}
-		
-		drawLastMove(g2, myWorld.getLastMove(), radius-L/2-3, theta, renderedX/2, renderedY/2, L);
+		// Draw the last move made on the field if it exists
+		if ( myWorld.getLastMove() != null)
+		{
+			drawLastMove(g2, myWorld.getLastMove(), radius-L/2-3, theta, renderedX/2, renderedY/2, L);
+		}
 	}
 
 }

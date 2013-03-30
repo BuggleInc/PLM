@@ -47,7 +47,7 @@ public class BaseballWorld extends World
 		String s ;
 		if (world == null || !(world instanceof BaseballWorld))
 		{
-			s="This is not a baseball world ='(...";
+			s="This is not a baseball world ='( ..."; // it's truly sad =(
 		}
 		else
 		{
@@ -141,7 +141,7 @@ public class BaseballWorld extends World
 	/**
 	 * Return the color of the player in base baseIndex at position playerLocation
 	 * @param baseIndex the index of the wanted base
-	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
+	 * @param playerLocation the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
 	 * @return the color of the player in base baseIndex at position playerLocation
 	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
 	 */

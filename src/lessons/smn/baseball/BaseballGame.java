@@ -16,8 +16,6 @@ public class BaseballGame extends ExerciseTemplated {
 	 */
 	public BaseballGame(Lesson lesson) {
 		super(lesson);
-	
-	//	this.addProgLanguage(Game.SCRATCH);
 		
 		BaseballWorld sets[] = new BaseballWorld[3];
 		
