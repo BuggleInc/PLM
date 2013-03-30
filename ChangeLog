@@ -1,20 +1,23 @@
-20130330:
-  * Kill another seamingly good idea: Java code that is not complied
-  * Simplify a bit the way external lesson files are loaded 
-20130329:
-  * Remove simple-xml from the build-dependencies: wasn't used.
-20130328:
-  * Merge all code (and wiki) from last year's students
-  * Accept a pull request from J-Bastian, with a new lesson (SMN) and a
-    bunch of bug fixes.
-  * Kill several broken 'good idea' to simplify the code base:
+20130331:
+  * Kill several seamingly good ideas that complicated the code base:
     - aliased source files: student must keep them synchronized
       manually now. We may want to reintroduce this at some point?
+    - Java code that cannot be compiled. This would have been useful
+      only for user-provided text files, but we don't use it now.
     - uneditable source files. The student will see all files passed
       to the compiler, now. This was never used in production
     - lessons cannot be sequential anymore. Forbidding pupils to
       attempt the exercise in the order they want is not in the JLM
       way of style anyway.
+  * Simplify a bit the way external lesson files are loaded
+  * Remove a bunch of unused dependencies on external jars.
+    The distribution jar is now only half as big only (still 20M).
+  * Request a confirmation from the user (through a dialog) before
+    reverting the exercise, that was a mean trap...
+20130328:
+  * Merge all code (and wiki) from last year's students
+  * Accept a pull request from J-Bastian, with a new lesson (SMN) and a
+    bunch of bug fixes.
   * Various little bug fixes.
 20120319:
   * Minor update on build process
