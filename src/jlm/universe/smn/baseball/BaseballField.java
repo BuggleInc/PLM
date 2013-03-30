@@ -317,7 +317,9 @@ public class BaseballField
 			try
 			{
 				this.setLastMove(
-						new BaseballMove(indexBaseSrc, playerLocation, this.holeContainer[0], this.holeContainer[1], this.getPlayerColor(indexBaseSrc, playerLocation)));
+						new BaseballMove(indexBaseSrc, playerLocation, 
+								this.holeContainer[0], this.holeContainer[1], 
+								this.getPlayerColor(indexBaseSrc, playerLocation)));
 			}
 			catch (InvalidPositionException ipe)
 			{
