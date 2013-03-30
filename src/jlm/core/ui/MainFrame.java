@@ -31,7 +31,7 @@ import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.GameState;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.Reader;
+import jlm.core.model.FileUtils;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.action.AbstractGameAction;
@@ -73,7 +73,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private MainFrame() {
 		super(frameTitle);
-		Reader.setLocale(this.getLocale().getLanguage());
+		FileUtils.setLocale(this.getLocale().getLanguage());
 		initComponents(Game.getInstance());
 		this.keyListeners(exerciseView);
 	}
@@ -253,7 +253,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		for (String[] lang : new String[][] { {"Francais","fr"}, {"English","en"}}) {
 			JMenuItem item = new JRadioButtonMenuItem(new SetLanguage(g, lang[0], lang[1]));
-			if (lang[1].equals(Reader.getLocale())) 
+			if (lang[1].equals(FileUtils.getLocale())) 
 				item.setSelected(true);
 			group.add(item);
 			textLangSubMenu.add(item);		

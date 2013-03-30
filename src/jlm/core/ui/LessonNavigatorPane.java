@@ -10,7 +10,6 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 
 import jlm.core.GameListener;
 import jlm.core.model.Game;
