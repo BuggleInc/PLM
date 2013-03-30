@@ -3,6 +3,7 @@ package jlm.core.model.lesson;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -346,21 +347,21 @@ public abstract class Exercise  extends Lecture {
 	}
 
 	/* setters and getter of the programming language that this exercise accepts */ 
-	private Map<ProgrammingLanguage,String> progLanguages = new HashMap<ProgrammingLanguage, String>();
+	private Set<ProgrammingLanguage> progLanguages = new HashSet<ProgrammingLanguage>();
 	public Set<ProgrammingLanguage> getProgLanguages() {
-		return progLanguages.keySet();
+		return progLanguages;
 	}
 	protected void addProgLanguage(ProgrammingLanguage newL) {
-		progLanguages.put(newL, "ignored");
+		progLanguages.add(newL);
 	}
 	public void addProgLanguage(ProgrammingLanguage[] newL) { 
 		for (ProgrammingLanguage l:newL)
 			addProgLanguage(l);
 	}
 	public void setProgLanguages(ProgrammingLanguage ... languages) {
-		progLanguages = new HashMap<ProgrammingLanguage, String>();
+		progLanguages = new HashSet<ProgrammingLanguage>();
 		for (ProgrammingLanguage pl:languages) {
-			progLanguages.put(pl, "ignored");
+			progLanguages.add(pl);
 		}
 	}
 }
