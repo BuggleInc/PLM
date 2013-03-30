@@ -12,16 +12,16 @@ import java.util.jar.Manifest;
 
 import jlm.core.model.Game;
 
+/** This classloader is used to load exercises at runtime.  */
 
 public class JLMClassLoader {
 	
-	private static boolean inAJAR = false;
 	private static ArrayList<String> usedJARs = new ArrayList<String>();
 	
 	/**
 	 * Adds a JAR to the classloader at runtime, if not already added.
 	 * If the system classloader is not an URLClassLoader (either defined by the JVM,
-	 * or explicitely defined at the start), the method will fail, throwing an exception. 
+	 * or explicitly defined at the start), the method will fail, throwing an exception. 
 	 * 
 	 * @param path Path to the JAR file
 	 * @throws RuntimeException  
@@ -63,18 +63,6 @@ public class JLMClassLoader {
 		if (lessonPackage == null)
 			throw new IOException("Could not find the attribute LessonPackage in the JAR manifest.");
 		
-		inAJAR = true;
-		
 		Game.getInstance().loadLesson("lessons." + lessonPackage);
     }//end method
-
-	
-	
-	public static boolean isInAJAR() {
-		return inAJAR;
-	}
-
-	public static void setInAJAR(boolean inAJAR) {
-		JLMClassLoader.inAJAR = inAJAR;
-	}
 }
