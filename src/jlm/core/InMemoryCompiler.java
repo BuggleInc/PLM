@@ -45,7 +45,7 @@ import javax.tools.JavaFileObject.Kind;
  *  INPUT:  Map<String, CharSequence>  : a list of named sourcefiles
  *  OUTPUT: Map<String, Class<Object>> : a list of named compiled class 
  * 
- * our case. It is used in {@link jlm.core.model.lesson.Exercise}, where the student code gets compiled.
+ * It is used in {@link jlm.core.model.lesson.Exercise}, where the student code gets compiled.
  * 
  * See also "Create dynamic applications with javax.tools", David J. Biesack.
  * http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR
