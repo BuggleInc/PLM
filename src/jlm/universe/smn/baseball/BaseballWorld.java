@@ -27,13 +27,14 @@ public class BaseballWorld extends World
 	 * Constructor of the class BaseballWorld
 	 * @param name : the name of the world
 	 * @param numberOfBases : the amount of bases in the field
+	 * @param playerLocationAmount the amount of player locations available on the base
 	 * @return A new BaseballWorld
 	 */
-	public BaseballWorld(String name, int numberOfBases)
+	public BaseballWorld(String name, int numberOfBases, int playerLocationAmount)
 	{
 		super(name);
-		setDelay(200); // Delay (in ms) in default animations
-		this.field = BaseballField.create(numberOfBases);
+		setDelay(200); // Delay (in milliseconds) in default animations
+		this.field = BaseballField.create(numberOfBases,playerLocationAmount);
 	}
 
 	/**
@@ -122,6 +123,14 @@ public class BaseballWorld extends World
 	}
 	
 	/**
+	 * Give the amount of players locations available on each base of the field
+	 * @return The amount of players locations available on each base of the field
+	 */
+	public int getLocationsAmount() {
+		return this.field.getLocationsAmount();
+	}
+	
+	/**
 	 * Return the last move made on the field
 	 * @return the last move made on the field
 	 */
@@ -188,7 +197,7 @@ public class BaseballWorld extends World
 	public String toString()
 	{
 		StringBuffer sb = new StringBuffer();
-		sb.append("BaseballWorld "+getName()+": ");
+		sb.append("BaseballWorld "+getName()+":\n");
 		sb.append(this.field.toString());
 		return sb.toString();
 	}
