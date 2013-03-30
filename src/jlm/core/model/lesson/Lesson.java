@@ -1,12 +1,13 @@
 package jlm.core.model.lesson;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jlm.core.model.Reader;
+import jlm.core.model.FileUtils;
 
 import org.apache.commons.collections15.Factory;
 
@@ -63,13 +64,14 @@ public abstract class Lesson {
 		
 		/* read it */
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
-		StringBuffer sb = Reader.fileToStringBuffer(filename,"html",true);
-		if (sb==null) {
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename,"html",true);
+		} catch (IOException ex) {
 			about = "File "+filename+".html not found.";
 			name = filename;
 			return;
 		}
-
 		String str = sb.toString();
 		
 		/* search the mission name */

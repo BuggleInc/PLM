@@ -1,6 +1,7 @@
 package jlm.core.model.lesson;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -8,7 +9,7 @@ import java.util.regex.Pattern;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.Reader;
+import jlm.core.model.FileUtils;
 
 /** Represents an element of the pedagogic sequence, be it a lecture or 
  * an exercise. A better name would be useful, but I feel limited in 
@@ -112,11 +113,13 @@ public abstract class Lecture {
 	public void loadHTMLMission() {
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 	
-		StringBuffer sb = Reader.fileToStringBuffer(filename, "html",true);
-		if (sb==null) {
+		StringBuffer sb = null;
+		try {
+			sb = FileUtils.readContentAsText(filename, "html",true);
+		} catch (IOException ex) {
 			setMission("File "+filename+" not found.");
-			return;
-		}		
+			return;			
+		}
 		String str = sb.toString();
 	
 		/* search the mission name */

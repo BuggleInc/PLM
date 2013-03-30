@@ -637,7 +637,7 @@ public class Game implements IWorldView {
 		}
 	}
 	public void setLocale(String lang) {
-		Reader.setLocale(lang);
+		FileUtils.setLocale(lang);
 		for (Lesson lesson : lessons.values()) {
 			for (Lecture lect:lesson.exercises()) {
 				if (lect instanceof ExerciseTemplated) {
