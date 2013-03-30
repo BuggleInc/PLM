@@ -1,3 +1,5 @@
+20130330:
+  * Kill another seamingly good idea: Java code that is not complied
 20130329:
   * Remove simple-xml from the build-dependencies: wasn't used.
 20130328:

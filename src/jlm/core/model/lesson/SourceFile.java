@@ -18,8 +18,6 @@ public class SourceFile {
 	private Map<String, String> patterns;
 	private ISourceFileListener listener = null;
 
-	private boolean isCompilable=true;
-
 	public SourceFile(String name, String initialBody) {
 		this(name, initialBody, null, null);
 	}
@@ -102,14 +100,6 @@ public class SourceFile {
 	public void notifyListener() {
 		if (this.listener != null)
 			this.listener.sourceFileContentHasChanged();
-	}
-
-	public boolean isCompilable() {
-		return isCompilable;
-	}
-
-	public void setCompilable(boolean isCompilable) {
-		this.isCompilable = isCompilable;
 	}
 
 	@Override

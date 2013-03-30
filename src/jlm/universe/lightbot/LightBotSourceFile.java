@@ -13,7 +13,6 @@ public class LightBotSourceFile extends SourceFileRevertable {
 	public LightBotSourceFile(String name) {
 		super(name, "");
 		resetBody();
-		setCompilable(false);
 	}
 	@Override
 	public String getBody(){

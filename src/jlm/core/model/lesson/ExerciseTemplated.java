@@ -298,7 +298,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
-			for (SourceFile sf : getSourceFiles(lang)) {
+			for (SourceFile sf : getSourceFilesList(lang)) {
 				if (searchedName == null) {//lazy initialization
 					if (tabsNames != null) {
 						// If entities were added, use the name of the first one to detect whether this language is valid 

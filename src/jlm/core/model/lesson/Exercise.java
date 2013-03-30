@@ -112,8 +112,7 @@ public abstract class Exercise  extends Lecture {
 		Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
 		if (sourceFiles.get(Game.JAVA) != null)
 			for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-				if (sf.isCompilable()) 
-					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
+				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
 
 		if (sources.isEmpty()) 
 			return;
@@ -132,8 +131,7 @@ public abstract class Exercise  extends Lecture {
 
 				if (Game.getInstance().isDebugEnabled() && sourceFiles.get(Game.JAVA) != null)
 					for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-						if (sf.isCompilable()) 
-							System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
+						System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
 
 				throw e;
 			}
@@ -145,8 +143,7 @@ public abstract class Exercise  extends Lecture {
 				Map<String, String> scripts = new TreeMap<String, String>();
 				
 				for (SourceFile sf: sourceFiles.get(lang)) 
-					if (sf.isCompilable()) 
-						scripts.put(className(sf.getName()), sf.getCompilableContent(null)); 
+					scripts.put(className(sf.getName()), sf.getCompilableContent(null)); 
 				
 				scriptSources.put(lang,scripts); 
 			}
@@ -160,7 +157,7 @@ public abstract class Exercise  extends Lecture {
 		return packageName() + "." + name;
 	}
 	/** get the list of source files for a given language, or create it if not existent yet */
-	protected List<SourceFile> getSourceFiles(ProgrammingLanguage lang) {
+	protected List<SourceFile> getSourceFilesList(ProgrammingLanguage lang) {
 		List<SourceFile> res = sourceFiles.get(lang); 
 		if (res == null) {
 			res = new ArrayList<SourceFile>();
@@ -168,12 +165,13 @@ public abstract class Exercise  extends Lecture {
 		}
 		return res;
 	}
-	/** Add a new text file in child classes, ie file that is not going to be compiled  */
-	public void newTextFile(ProgrammingLanguage lang, String name, String content) {
-		SourceFile sf = new SourceFile(name, content);
-		sf.setCompilable(false);
-		getSourceFiles(lang).add(sf);
+	public int sourceFileCount(ProgrammingLanguage lang) {
+		return getSourceFilesList(lang).size();
+	}	
+	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, int i) {
+		return getSourceFilesList(lang).get(i);
 	}
+
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
 		newSource(lang, name, initialContent, template, "");
 	}
@@ -187,14 +185,7 @@ public abstract class Exercise  extends Lecture {
 				pat.put(parts[1], parts[2]);
 			}
 		}
-		getSourceFiles(lang).add(new SourceFileRevertable(name, initialContent, template, pat));
-	}
-	public SourceFile getSourceFile(ProgrammingLanguage lang, String name) {
-		for (SourceFile sf: getSourceFiles(lang)) {
-			if (sf.getName().equals(name))
-				return sf;
-		}
-		return null;
+		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, pat));
 	}
 	
 	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {
@@ -279,19 +270,6 @@ public abstract class Exercise  extends Lecture {
 		sourceFiles = new HashMap<ProgrammingLanguage, List<SourceFile>>();
 		runtimePatterns = new TreeMap<String, String>();
 	}
-
-	@Deprecated
-	public String[] getSourceFilesNames(ProgrammingLanguage lang) {
-		String[] res = new String[sourceFiles.size()]; // will be too large if not all compilable, but who cares?
-		int i = 0;
-		for (SourceFile sf: getSourceFiles(lang)) {
-			if (sf.isCompilable()) {
-				res[i] = sf.getName();
-				i++;
-			}
-		}
-		return res;
-	}
 			
 	public List<World> getAnswerWorld() {
 		return Arrays.asList(answerWorld);
@@ -299,21 +277,6 @@ public abstract class Exercise  extends Lecture {
 	
 	public List<World> getInitialWorld() {
 		return Arrays.asList(this.initialWorld);
-	}
-
-	public int sourceFileCount(ProgrammingLanguage lang) {
-		return getSourceFiles(lang).size();
-	}
-	
-	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, int i) {
-		return getSourceFiles(lang).get(i);
-	}
-	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, String name) {
-		for (SourceFile sf : getSourceFiles(lang)) {
-			if (sf.getName().equals(name))
-				return sf;
-		}
-		return null; // not found
 	}
 	
 	public int worldCount() {
