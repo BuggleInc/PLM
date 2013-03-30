@@ -950,11 +950,6 @@ msgid ""
 "developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/chooser/LessonChooser.html:34
-msgid "<a href=\"jlm://load_jar\">→ Load a lesson JAR</a>"
-msgstr ""
-
 #. type: Content of: <h1>
 #: src/lessons/welcome/Main.html:1
 msgid "First steps"

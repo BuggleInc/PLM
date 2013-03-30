@@ -1,6 +1,6 @@
 20130330:
   * Kill another seamingly good idea: Java code that is not complied
-  * Simplify a bit the way extenal lesson files are loaded 
+  * Simplify a bit the way external lesson files are loaded 
 20130329:
   * Remove simple-xml from the build-dependencies: wasn't used.
 20130328:

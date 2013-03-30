@@ -2,17 +2,14 @@ package jlm.core.ui;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.io.File;
 
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
-import javax.swing.JFileChooser;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.GameListener;
 import jlm.core.ProgLangChangesListener;
@@ -63,21 +60,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						this.tipsDialog.setVisible(true);
 					}
 					if (desc.startsWith("jlm://")) {
-					    if (desc.startsWith("jlm://load_jar")) { 
-						//Load a lesson JAR
-							JFileChooser fc = new JFileChooser();
-								fc.setFileFilter(new FileNameExtensionFilter("JAR filter", "jar"));
-								fc.setDialogType(JFileChooser.OPEN_DIALOG);
-							fc.showOpenDialog(MainFrame.getInstance());
-							File selectedFile = fc.getSelectedFile();
-							
-							try {
-								if (selectedFile != null)
-									game.loadLessonFromJAR(fc.getSelectedFile());
-							} catch (Exception e) {
-								e.printStackTrace();
-							}
-					     } else {
 						//Load a regular lesson
 						String lessonName = desc.substring(new String("jlm://").length());
 						String exoName = null;
@@ -101,8 +83,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 								System.err.println("Broken link: no such lecture '"+exoName+"' in lesson "+lessonName);
 							}
 						}					 
-					     }
-
 					}
 				}
 			}

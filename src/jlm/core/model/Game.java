@@ -152,7 +152,9 @@ public class Game implements IWorldView {
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+				System.err.println("Cannot switch to lesson "+lessonName+": class Main not found.");
+				statusArgRemove("Load lesson "+lessonName);				
+				return getCurrentLesson();
 			}
 		}
 		sessionKit.loadLesson(null, lesson);
@@ -172,7 +174,7 @@ public class Game implements IWorldView {
 	public void loadLessonFromJAR(File jar) throws LessonLoadingException {
 		
 		if (!jar.exists())
-			throw new LessonLoadingException("Cannot load an inexistent JAR file!");
+			throw new LessonLoadingException("File "+jar.getName()+" does not exist");
 		
 		
 		// Check if the JAR has already been added. If not, load it in the classloader.
@@ -184,7 +186,7 @@ public class Game implements IWorldView {
 			try {
 				urlOfJar = jar.toURI().toURL();
 			} catch (IOException e1) {
-				throw new LessonLoadingException("Error while reading the jarfile",e1);
+				throw new LessonLoadingException("Error while reading the jarfile "+jar.getName(),e1);
 			}
 	        
 	        try {
@@ -206,14 +208,14 @@ public class Game implements IWorldView {
 		try {
 			manifest = new JarFile(jar).getManifest();
 		} catch (Exception e) {
-			throw new LessonLoadingException("Invalid lesson file: Manifest not found.", e);
+			throw new LessonLoadingException("Invalid lesson file (Manifest not found): "+jar.getName(), e);
 		}
 		
 		String lessonPackage = manifest.getMainAttributes().getValue("LessonPackage");
 		if (lessonPackage == null)
-			throw new LessonLoadingException("Invalid lesson file: Attribute 'LessonPackage' not found in Manifest.");
+			throw new LessonLoadingException("Invalid lesson file (Attribute 'LessonPackage' not found in Manifest): "+jar.getName());
 		
-		// We're ready to launch this lesson
+		// We are ready to launch this lesson
 		Game.getInstance().switchLesson("lessons." + lessonPackage);
     }//end method
 
