@@ -15,7 +15,6 @@ import javax.swing.event.HyperlinkListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.GameListener;
-import jlm.core.JLMClassLoader;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
@@ -74,7 +73,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 							
 							try {
 								if (selectedFile != null)
-									JLMClassLoader.addJar(fc.getSelectedFile());
+									game.loadLessonFromJAR(fc.getSelectedFile());
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -92,7 +91,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						if (Game.getInstance().isDebugEnabled()) 
 							System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
 								
-						Lesson lesson = Game.getInstance().loadLesson(lessonName);
+						Lesson lesson = Game.getInstance().switchLesson(lessonName);
 						Game.getInstance().setCurrentLesson(lesson);
 						if (exoName != null && exoName.length()>0) {
 							Lecture lect = lesson.getExercise(exoName);

@@ -157,7 +157,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.changeLesson("lessons.chooser");
+				game.switchLesson("lessons.chooser");
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
