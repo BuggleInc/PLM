@@ -254,12 +254,13 @@ public class BaseballField
 	 * Mix the players between the different bases
 	 */
 	private void mix() {
+		int m = this.getLocationsAmount();
 		// mix the base
 		do
 		{		
 			for (int i = 0 ; i < this.bases.length;i++)
 			{
-				this.swap(i,(int) (Math.random()*2),(int) (Math.random()*this.bases.length),(int) (Math.random()*2));
+				this.swap(i,(int) (Math.random()*m),(int) (Math.random()*this.bases.length),(int) (Math.random()*m));
 			}
 		}
 		while(this.isSorted());
@@ -267,7 +268,6 @@ public class BaseballField
 		// update the holeContainer
 		int n = this.getAmountOfBases();
 		boolean found = false;
-		int m = this.getLocationsAmount();
 		try 
 		{
 			for ( int i = 0 ; i < n && !found ; i++)

@@ -1,41 +1,57 @@
 <h1>Baseball</h1>
 <p>
-The color of a base is given by its index. 
-
-The hole has a color of -1.
-
-The base which has only one player on the field has <i>getAmountOfBases()-1</i> as index
+Like the previous world, this world implements a baseball world. But now, you have more than two players on each base.
+Like before, your mission is to bring everyone home.
 </p>
-<div>
-<u>Functions provided:</u>
+<p>
+Memento:
+<ul>
+<li>
+You can have access to the number of locations available on each base by using the getLocationsAmount() method.
+</li>
+<li>
+The color of a base is given by its index. 
+</li>
+<li>
+The hole has a color of -1.
+</li>
+<li>
+The base which has only one player on the field has <i>getAmountOfBases()-1</i> as index
+</li>
+</ul>
+</p>
 
+<div>
+There are seven methods provided :
+<p>
 <pre>void move(int baseSrc, int playerSrc)</pre>
 
 Move the player on position <code>playerLocation</code> from the base <code>baseSrc</code> to the hole.
-
-<pre> int getPlayerColor(int baseIndex, int playerLocation) </pre>
+</p><p>
+<pre>int getPlayerColor(int baseIndex, int playerLocation) </pre>
 
 Return the color of the player on position <code>playerLocation</code> ( 0 or 1 ) from the base <code>baseIndex</code>.
-
-<pre> int getHoleBase() </pre>
+The color -1 is the hole.
+</p><p>
+<pre>int getHoleBase() </pre>
 
 Return the index of the base where the hole is located
-
-<pre> int getHolePositionInBase()</pre>
+</p><p>
+<pre>int getHolePositionInBase()</pre>
 
 Return the player's position in the base where the hole is located
-
-<pre> boolean isBaseSorted( int baseIndex)</pre>
+</p><p>	
+<pre>boolean isBaseSorted( int baseIndex)</pre>
 
 Return TRUE if all players of the base <code>baseSrc</code> are home  
-
+</p><p>
 <pre>int getAmountOfBases()</pre>
 
 Return the amount of bases in the field.
-
+</p>
+<p>
 <pre>int getLocationsAmount()</pre>
 
 Return the amount of players locations available on each base of the field
-
-
+</p>
 </div>

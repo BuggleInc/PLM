@@ -5,11 +5,18 @@ This world implements the baseball game, in which several players want to go bac
 You are asked to make the players go on the bases which colors correspond to theirs. The only allowed move is for one of the two players standing on one of the two bases which are directly next to the base with only one player to move and fill the hole, leaving a new one on the base it just left.
 </p>
 <p>
+Memento:
+<ul>
+<li>
 The color of a base is given by its index. 
-
+</li>
+<li>
 The hole has a color of -1.
-
+</li>
+<li>
 The base which has only one player on the field has <i>getAmountOfBases()-1</i> as index
+</li>
+</ul>
 </p>
 
 <div>
@@ -72,21 +79,21 @@ BEGIN
 	colorWanted &lt;- getBaseColor(baseIndex)
 	IF getPlayerColor(baseIndex, 0) != colorWanted 
 	THEN
-			IF getPlayerColor(baseIndex,1) == colorWanted
-			THEN
-					bringHole(baseIndex, 0, 1)
-					move(baseIndex, 1)
-			ELSE
-					wantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )
-					bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
-					bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
-			END_IF
+		IF getPlayerColor(baseIndex,1) == colorWanted
+		THEN
+			bringHole(baseIndex, 0, 1)
+			move(baseIndex, 1)
+		ELSE
+			wantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )
+			bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
+			bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
+		END_IF
 	END_IF
 	IF getPlayerColor(baseIndex, 1) != colorWanted 
 	THEN
-			wantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)
-			bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
-			bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
+		wantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)
+		bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
+		bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
 	END_IF
 END
 </pre>
@@ -124,7 +131,9 @@ BEGIN
 END
 </pre>
 </div>
+
 <br/><br/><hr/><br/>
+
 <div class="tip" id="tip-4" alt="Show Tip 4 ( Pseudo-code of findNearestPlayer)">
 <p>The algorithm of the findNearestPlayer method is the following :</p>
 <pre> 

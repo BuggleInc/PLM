@@ -2,11 +2,11 @@
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2009.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-28 16:45+0100\n"
+"POT-Creation-Date: 2013-03-30 17:00+0100\n"
 "PO-Revision-Date: 2013-03-26 18:09+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1449,6 +1449,10 @@ msgid ""
 "complex.  The dependencies would probably turn into a graph instead of a "
 "chain.  But this is still to be done."
 msgstr ""
+"A l'avenir, nous aimerions disposer d'un ordonnancement d'exercices plus riche, où "
+"les conditions à remplir pour pouvoir essayer un exercice pourrait être plus "
+"complexes. Les dépendances deviendraient probablement un graphe au lieu "
+"d'être une chaîne. Mais cela reste encore à réaliser."
 
 #. type: Content of: <ul><li><p>
 #: src/lessons/meta/HanoiCreateWorld.html:40
@@ -1710,8 +1714,8 @@ msgid ""
 "such as BuggleWorld."
 msgstr ""
 "La longueur de cette méthode dépend naturellemetn de la complexité de l'état "
-"de votre monde. Dans Hanoi, il y a seulement trois tours contenant une "
-"liste de disques, cela sera donc très facile, mais cela peut être bien plus "
+"de votre monde. Dans Hanoi, il y a seulement trois tours contenant une liste "
+"de disques, cela sera donc très facile, mais cela peut être bien plus "
 "compliqué avec des mondes complexes comme BuggleWorld."
 
 #. type: Content of: <h3>
@@ -1791,9 +1795,9 @@ msgid ""
 msgstr ""
 "Vous voudrez probablement ajouter trois champs à votre monde, un pour chaque "
 "tour (on n'essayera jamais d'avoir des mondes avec plus de trois tours), "
-"sauvegarder le contenu de chaque tour dans le construction "
-"d'instanciation, et récupérer le contenu d'une tour donnée dans l'accesseur "
-"de rendu graphique (<code>Integer[] values(Integer i)</code>)."
+"sauvegarder le contenu de chaque tour dans le construction d'instanciation, "
+"et récupérer le contenu d'une tour donnée dans l'accesseur de rendu "
+"graphique (<code>Integer[] values(Integer i)</code>)."
 
 #. type: Content of: <p>
 #: src/lessons/meta/HanoiCreateWorld.html:157
@@ -9054,11 +9058,12 @@ msgid ""
 "following rules:"
 msgstr ""
 "La tour de Hanoï, ou les tours de Hanoï, aussi appelé la Tour de Brahma ou "
-"les tours de Brahma, est un jeu ou puzzle mathématique. Il consiste en trois tours, "
-"et un nombre de disques de différentes tailles qui peuvent glisser sur n'importe quelle tour. "
-"Le puzzle commence avec tous les disques en une belle pile selon l'ordre croissant de la taille, "
-"le plus petit en haut, sur une tour, formant donc une pyramide. L'objectif du puzzle est de "
-"déplacer la pile entière jusqu'à une autre tour, en respectant les règles suivantes :"
+"les tours de Brahma, est un jeu ou puzzle mathématique. Il consiste en trois "
+"tours, et un nombre de disques de différentes tailles qui peuvent glisser "
+"sur n'importe quelle tour. Le puzzle commence avec tous les disques en une "
+"belle pile selon l'ordre croissant de la taille, le plus petit en haut, sur "
+"une tour, formant donc une pyramide. L'objectif du puzzle est de déplacer la "
+"pile entière jusqu'à une autre tour, en respectant les règles suivantes :"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/HanoiBoard.html:11
@@ -9073,8 +9078,8 @@ msgid ""
 "on that rod."
 msgstr ""
 "Chaque mouvement consiste à prendre le disque supérieur de l'une des tours "
-"et à le déposer sur une autre tour, au sommet des autres disques qui peuvent déjà être présents "
-"sur cette tour."
+"et à le déposer sur une autre tour, au sommet des autres disques qui peuvent "
+"déjà être présents sur cette tour."
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/HanoiBoard.html:17
@@ -9096,19 +9101,22 @@ msgid ""
 "approach:"
 msgstr ""
 "Ecrivez le coeur de la méthode <code>public void solve(int src, int dst, int "
-"height) throws HanoiInvalidMove</code>. Cette méthode résoudra de manière récursibe "
-"le problème. Le premier paramètre, nommé <code>src</code>, est l'index de "
-"la tour initiale, le second paramètre  <code>dst</code> est l'index de la tour "
-"final souhaitée, et le troisième paramètre <code>height</code> est la "
-"taille de la tour. La clé pour résoudre de puzzle est de reconnaitre qu'il peut être "
-"résolu en cassant le problème en un ensemble de problèmes de plus "
-"petites tailles et de continuer cette réduction de la taille du problème "
-"jusqu'à atteindre une solution. La procédure suivante démontre cette approche :"
+"height) throws HanoiInvalidMove</code>. Cette méthode résoudra de manière "
+"récursive le problème. Le premier paramètre, nommé <code>src</code>, est "
+"l'index de la tour initiale, le second paramètre  <code>dst</code> est "
+"l'index de la tour final souhaitée, et le troisième paramètre <code>height</"
+"code> est la taille de la tour. La clé pour résoudre de puzzle est de "
+"reconnaitre qu'il peut être résolu en cassant le problème en un ensemble de "
+"problèmes de plus petites tailles et de continuer cette réduction de la "
+"taille du problème jusqu'à atteindre une solution. La procédure suivante "
+"démontre cette approche :"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/HanoiBoard.html:36
 msgid "label the pegs A, B, C (these labels may move at different steps)"
-msgstr "Etiquetons les tours A, B, C ( ces étiquettes peuvent changer à différentes étapes )"
+msgstr ""
+"Etiquetons les tours A, B, C ( ces étiquettes peuvent changer à différentes "
+"étapes )"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/HanoiBoard.html:37
@@ -9118,7 +9126,9 @@ msgstr "Soit n le nombre total de disques ( la hauteur de la tour initiale )"
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/HanoiBoard.html:38
 msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
-msgstr "Numérotez les disques de 1 ( le plus petit, le plus en haut ) à n ( le plus large, le plus en bas )"
+msgstr ""
+"Numérotez les disques de 1 ( le plus petit, le plus en haut ) à n ( le plus "
+"large, le plus en bas )"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/HanoiBoard.html:41
@@ -9128,7 +9138,9 @@ msgstr "Pour déplacer n disques du poteau A au poteau C : "
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/HanoiBoard.html:43
 msgid "move n−1 discs from A to B. This leaves disc #n alone on peg A"
-msgstr "déplcacer n-1 disques de A vers B. Cela laisse le disque #n seul sur le poteau A"
+msgstr ""
+"déplacer n-1 disques de A vers B. Cela laisse le disque #n seul sur le "
+"poteau A"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/HanoiBoard.html:44
@@ -11732,12 +11744,12 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:1
 #: src/lessons/smn/baseball/BaseballGame.html:1
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:1
 msgid "Baseball"
 msgstr "Baseball"
 
 #. type: Content of: <p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:3
-#: src/lessons/smn/baseball/BaseballGame.html:8
 msgid ""
 "The color of a base is given by its index.  The hole has a color of -1.  The "
 "base which has only one player on the field has <i>getAmountOfBases()-1</i> "
@@ -11755,14 +11767,16 @@ msgstr "<u>Fonctions fournies :</u>"
 
 #. type: Content of: <div><p><pre>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:12
-#: src/lessons/smn/baseball/BaseballGame.html:18
+#: src/lessons/smn/baseball/BaseballGame.html:25
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:27
 #, no-wrap
 msgid "void move(int baseSrc, int playerSrc)"
 msgstr "void move(int baseSrc, int playerSrc)"
 
 #. type: Content of: <div><p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:14
-#: src/lessons/smn/baseball/BaseballGame.html:20
+#: src/lessons/smn/baseball/BaseballGame.html:27
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:29
 msgid ""
 "Move the player on position <code>playerLocation</code> from the base "
 "<code>baseSrc</code> to the hole."
@@ -11793,7 +11807,8 @@ msgstr "int getHoleBase()"
 
 #. type: Content of: <div><p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:22
-#: src/lessons/smn/baseball/BaseballGame.html:28
+#: src/lessons/smn/baseball/BaseballGame.html:36
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:38
 msgid "Return the index of the base where the hole is located"
 msgstr "Renvoie l'index de la base où se trouve le trou"
 
@@ -11805,7 +11820,8 @@ msgstr "int getHolePositionInBase()"
 
 #. type: Content of: <div><p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:26
-#: src/lessons/smn/baseball/BaseballGame.html:32
+#: src/lessons/smn/baseball/BaseballGame.html:40
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:42
 msgid "Return the player's position in the base where the hole is located"
 msgstr "Renvoie la position de joueur vide dans la base où se situe le trou"
 
@@ -11817,7 +11833,8 @@ msgstr "boolean isBaseSorted( int baseIndex )"
 
 #. type: Content of: <div><p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:30
-#: src/lessons/smn/baseball/BaseballGame.html:36
+#: src/lessons/smn/baseball/BaseballGame.html:44
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:46
 msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
 msgstr ""
 "Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur "
@@ -11825,16 +11842,34 @@ msgstr ""
 
 #. type: Content of: <div><p><pre>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:32
-#: src/lessons/smn/baseball/BaseballGame.html:38
+#: src/lessons/smn/baseball/BaseballGame.html:46
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:48
 #, no-wrap
 msgid "int getAmountOfBases()"
 msgstr "int getAmountOfBases()"
 
 #. type: Content of: <div><p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:34
-#: src/lessons/smn/baseball/BaseballGame.html:40
+#: src/lessons/smn/baseball/BaseballGame.html:48
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:50
 msgid "Return the amount of bases in the field."
 msgstr "Renvoie le nombre de bases dans le terrain"
+
+#. type: Content of: <div><p><pre>
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:36
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:53
+#, no-wrap
+msgid "int getLocationsAmount()"
+msgstr "int getLocationsAmount()"
+
+#. type: Content of: <div><p>
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:38
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:55
+msgid ""
+"Return the amount of players locations available on each base of the field"
+msgstr ""
+"Renvoie le nombre de positions de joueur disponible sur chaque base du "
+"terrain"
 
 #. type: Content of: <h1>
 #: src/lessons/smn/Main.html:1
@@ -11932,19 +11967,49 @@ msgstr ""
 "joueur de se déplacer et de remplir le trou, laissant un nouveau trou sur la "
 "base qu'il vient de quitter."
 
+#. type: Content of: <p>
+#: src/lessons/smn/baseball/BaseballGame.html:8
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:7
+msgid "Memento:"
+msgstr "Notes:"
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/smn/baseball/BaseballGame.html:11
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:13
+msgid "The color of a base is given by its index."
+msgstr "La couleur d'une base est donnée par son index."
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/smn/baseball/BaseballGame.html:14
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:16
+msgid "The hole has a color of -1."
+msgstr "Le trou a une couleur de -1."
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/smn/baseball/BaseballGame.html:17
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:19
+msgid ""
+"The base which has only one player on the field has <i>getAmountOfBases()-1</"
+"i> as index"
+msgstr ""
+"La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> "
+"comme index"
+
 #. type: Content of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:16
+#: src/lessons/smn/baseball/BaseballGame.html:23
 msgid "There are six methods provided :"
 msgstr "Six méthodes vous sont fournies :"
 
 #. type: Content of: <div><p><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:22
+#: src/lessons/smn/baseball/BaseballGame.html:29
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:31
 #, no-wrap
 msgid "int getPlayerColor(int baseIndex, int playerLocation) "
 msgstr "int getPlayerColor(int baseIndex, int playerLocation) "
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:24
+#: src/lessons/smn/baseball/BaseballGame.html:31
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:33
 msgid ""
 "Return the color of the player on position <code>playerLocation</code> ( 0 "
 "or 1 ) from the base <code>baseIndex</code>.  The color -1 is the hole."
@@ -11953,36 +12018,39 @@ msgstr ""
 "ou 1 ) de la base <code>baseIndex</code>.  La couleur -1 correspond au trou."
 
 #. type: Content of: <div><p><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:26
+#: src/lessons/smn/baseball/BaseballGame.html:34
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:36
 #, no-wrap
 msgid "int getHoleBase() "
 msgstr "int getHoleBase()"
 
 #. type: Content of: <div><p><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:30
+#: src/lessons/smn/baseball/BaseballGame.html:38
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:40
 #, no-wrap
 msgid "int getHolePositionInBase()"
 msgstr "int getHolePositionInBase()"
 
 #. type: Content of: <div><p><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:34
+#: src/lessons/smn/baseball/BaseballGame.html:42
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:44
 #, no-wrap
 msgid "boolean isBaseSorted( int baseIndex)"
 msgstr "boolean isBaseSorted( int baseIndex )"
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:45
+#: src/lessons/smn/baseball/BaseballGame.html:53
 msgid "Show Tip 1 ( the methods's prototype)"
 msgstr "Montrer l'indice 1 ( le prototype des méthodes à utiliser)"
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:46
+#: src/lessons/smn/baseball/BaseballGame.html:54
 msgid "The prototypes of the methods you may use are the followings :"
 msgstr ""
 "Les prototypes des méthodes que vous pouvez utiliser sont les suivants :"
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:50
+#: src/lessons/smn/baseball/BaseballGame.html:58
 msgid ""
 "private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int "
 "playerDst) throws InvalidMoveException"
@@ -11991,7 +12059,7 @@ msgstr ""
 "playerDst) throws InvalidMoveException"
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:52
+#: src/lessons/smn/baseball/BaseballGame.html:60
 msgid ""
 "Move the player in position <code>playerSrc</code> of the base "
 "<code>baseSrc</code> to the position <code>playerDst</code> from the base "
@@ -12002,7 +12070,7 @@ msgstr ""
 "<code>baseDst</code>."
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:54
+#: src/lessons/smn/baseball/BaseballGame.html:62
 msgid ""
 "private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) "
 "throws InvalidPositionException"
@@ -12011,7 +12079,7 @@ msgstr ""
 "throws InvalidPositionException"
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:56
+#: src/lessons/smn/baseball/BaseballGame.html:64
 msgid ""
 "Return the base's number and the position of the nearest player which "
 "has<code>colorWanted</code> as color. It begins the search at the base "
@@ -12022,7 +12090,7 @@ msgstr ""
 "la base d'index <code>firstBaseToSearch</code>"
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:58
+#: src/lessons/smn/baseball/BaseballGame.html:66
 msgid ""
 "private void bringHole(int baseDst, int playerDst , int playerToProtect) "
 "throws InvalidMoveException"
@@ -12031,7 +12099,7 @@ msgstr ""
 "throws InvalidMoveException"
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/BaseballGame.html:60
+#: src/lessons/smn/baseball/BaseballGame.html:68
 msgid ""
 "Bring the hole to the position <code>playerDst</code> from the base "
 "<code>baseDst</code> while protecting the position <code>playerToProtect</"
@@ -12042,38 +12110,38 @@ msgstr ""
 "trajet"
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:67
+#: src/lessons/smn/baseball/BaseballGame.html:75
 msgid "Show Tip 2 (Pseudo-code of solve)"
 msgstr "Montrer l'indice 2 (le pseudo-code de la fonction solve)"
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:68
+#: src/lessons/smn/baseball/BaseballGame.html:76
 msgid "The algorithm of the solve method is the following:"
 msgstr "L'algorithme de la méthode solve est le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:70
+#: src/lessons/smn/baseball/BaseballGame.html:78
 #, no-wrap
 msgid ""
 "BEGIN\n"
 "\tcolorWanted &lt;- getBaseColor(baseIndex)\n"
 "\tIF getPlayerColor(baseIndex, 0) != colorWanted \n"
 "\tTHEN\n"
-"\t\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
-"\t\t\tTHEN\n"
-"\t\t\t\t\tbringHole(baseIndex, 0, 1)\n"
-"\t\t\t\t\tmove(baseIndex, 1)\n"
-"\t\t\tELSE\n"
-"\t\t\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
-"\t\t\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
-"\t\t\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
-"\t\t\tEND_IF\n"
+"\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
+"\t\tTHEN\n"
+"\t\t\tbringHole(baseIndex, 0, 1)\n"
+"\t\t\tmove(baseIndex, 1)\n"
+"\t\tELSE\n"
+"\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
+"\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
+"\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
+"\t\tEND_IF\n"
 "\tEND_IF\n"
 "\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
 "\tTHEN\n"
-"\t\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
-"\t\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
-"\t\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
+"\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
+"\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
+"\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
 "\tEND_IF\n"
 "END\n"
 msgstr ""
@@ -12081,36 +12149,36 @@ msgstr ""
 "\tcolorWanted &lt;- getBaseColor(baseIndex)\n"
 "\tIF getPlayerColor(baseIndex, 0) != colorWanted \n"
 "\tTHEN\n"
-"\t\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
-"\t\t\tTHEN\n"
-"\t\t\t\t\tbringHole(baseIndex, 0, 1)\n"
-"\t\t\t\t\tmove(baseIndex, 1)\n"
-"\t\t\tELSE\n"
-"\t\t\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
-"\t\t\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
-"\t\t\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
-"\t\t\tEND_IF\n"
+"\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
+"\t\tTHEN\n"
+"\t\t\tbringHole(baseIndex, 0, 1)\n"
+"\t\t\tmove(baseIndex, 1)\n"
+"\t\tELSE\n"
+"\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
+"\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
+"\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
+"\t\tEND_IF\n"
 "\tEND_IF\n"
 "\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
 "\tTHEN\n"
-"\t\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
-"\t\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
-"\t\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
+"\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
+"\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
+"\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
 "\tEND_IF\n"
 "END\n"
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:96
+#: src/lessons/smn/baseball/BaseballGame.html:104
 msgid "Show Tip 3 ( Pseudo-code of bringHole )"
 msgstr "Montrer l'indice 3 (le pseudo-code de bringHole)"
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:97
+#: src/lessons/smn/baseball/BaseballGame.html:105
 msgid "The algorithm of the bringHole method is the following:"
 msgstr "L'algorithme de la méthode bringHole est le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:99
+#: src/lessons/smn/baseball/BaseballGame.html:107
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -12166,17 +12234,17 @@ msgstr ""
 "END\n"
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:127
+#: src/lessons/smn/baseball/BaseballGame.html:137
 msgid "Show Tip 4 ( Pseudo-code of findNearestPlayer)"
 msgstr "Montrer l'indice 4 (le pseudo-code de findNearestPlayer)"
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:128
+#: src/lessons/smn/baseball/BaseballGame.html:138
 msgid "The algorithm of the findNearestPlayer method is the following :"
 msgstr "L'algorithme de la méthode findNearestPlayer est le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:130
+#: src/lessons/smn/baseball/BaseballGame.html:140
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -12220,17 +12288,17 @@ msgstr ""
 "END\n"
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/BaseballGame.html:152
+#: src/lessons/smn/baseball/BaseballGame.html:162
 msgid "Show tip 5 ( Pseudo-code of bringPlayerHome)"
 msgstr "Montrer l'indice 5(le pseudo-code de bringPlayerHome)"
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/BaseballGame.html:153
+#: src/lessons/smn/baseball/BaseballGame.html:163
 msgid "The algorithm of the bringPlayerHome method is the following :"
 msgstr "L'algorithme de la méthode bringPlayerHome est le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/BaseballGame.html:155
+#: src/lessons/smn/baseball/BaseballGame.html:165
 #, no-wrap
 msgid ""
 "PRECONDITION: the hole is on the base of index baseSrc-1\n"
@@ -12252,3 +12320,28 @@ msgstr ""
 "\t\t\tmove(i-1,playerDst)\n"
 "\t\t\tmove(i,playerDst)\n"
 "\t\tEND_FOR\n"
+
+#. type: Content of: <p>
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:3
+msgid ""
+"Like the previous world, this world implements a baseball world. But now, "
+"you have more than two players on each base.  Like before, your mission is "
+"to bring everyone home."
+msgstr ""
+"A l'instar du monde précédent, ce monde implémente un monde de baseball. "
+"Mais maintenant, vous avez plus de deux joueurs sur chaque base. Comme "
+"auparavant, votre mission est d'amener chaque joueur à sa base."
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:10
+msgid ""
+"You can have access to the number of locations available on each base by "
+"using the getLocationsAmount() method."
+msgstr ""
+"Vous pouvez avoir accès au nombre de positions disponibles sur chaque base "
+"en utilisant la méthode getLocationsAmount()."
+
+#. type: Content of: <div>
+#: src/lessons/smn/baseball/BaseballGameMorePlayers.html:25
+msgid "There are seven methods provided :"
+msgstr "Sept méthodes vous sont fournies :"

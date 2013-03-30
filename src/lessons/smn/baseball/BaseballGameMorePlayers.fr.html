@@ -1,44 +1,63 @@
 <h1>Baseball</h1>
 <p>
-La couleur d'un base est donnée par son index.
-Le trou a -1 comme couleur.
+A l'instar du monde précédent, ce monde implémente un monde de
+baseball. Mais maintenant, vous avez plus de deux joueurs sur chaque
+base. Comme auparavant, votre mission est d'amener chaque joueur à sa base.
+</p>
+<p>
+Notes:
+<ul>
+<li>
+Vous pouvez avoir accès au nombre de positions disponibles sur chaque base
+en utilisant la méthode getLocationsAmount().
+</li>
+<li>
+La couleur d'une base est donnée par son index. 
+</li>
+<li>
+Le trou a une couleur de -1.
+</li>
+<li>
 La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i>
 comme index
+</li>
+</ul>
 </p>
-<div>
-<u>Fonctions fournies :</u>
 
+<div>
+Sept méthodes vous sont fournies :
+<p>
 <pre>void move(int baseSrc, int playerSrc)</pre>
 
 Déplace le joueur de la position <code>playerLocation</code> de la base
 <code>baseSrc</code> au trou.
-
+</p><p>
 <pre>int getPlayerColor(int baseIndex, int playerLocation) </pre>
 
-Renvoie la couleur du joueur de la position <code>playerLocation</code> ( 0
-ou 1 ) de la base <code>baseIndex</code>.
-
+Renvoie la couleur du joueur à la position <code>playerLocation</code> ( 0
+ou 1 ) de la base <code>baseIndex</code>.  La couleur -1 correspond au trou.
+</p><p>
 <pre>int getHoleBase()</pre>
 
 Renvoie l'index de la base où se trouve le trou
-
+</p><p>
 <pre>int getHolePositionInBase()</pre>
 
 Renvoie la position de joueur vide dans la base où se situe le trou
-
+</p><p>	
 <pre>boolean isBaseSorted( int baseIndex )</pre>
 
 Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur
 la bonne base.  
-
+</p><p>
 <pre>int getAmountOfBases()</pre>
 
 Renvoie le nombre de bases dans le terrain
-
+</p>
+<p>
 <pre>int getLocationsAmount()</pre>
 
 Renvoie le nombre de positions de joueur disponible sur chaque base du
 terrain
-
-
+</p>
 </div>
