@@ -136,7 +136,7 @@ public class BaseballWorldView extends WorldView
 		drawRectangle(g,points,obtainColor(base.getColor()));
 		
 		// the radius of the disk representing the player
-		int radius = L/amountOfPlayers-2; 
+		int radius = L/amountOfPlayers-1; 
 		
 		/* 
 		 * This array will contain the coordinates of the middle of the lower segment ( when theta = 0 ) of the base
@@ -228,7 +228,7 @@ public class BaseballWorldView extends WorldView
 		// The angle that will be used at each loop iteration
 		double[] thetaBase = { move.getBaseSrc() * theta, move.getBaseDst() * theta, move.getBaseDst() * theta };
 		// The radius that will be used at each loop iteration
-		int[] radius = { r , r-10, r};
+		int[] radius = { r , r-2*L/3, r-L/4};
 		// The players locations within its base
 		int[] players = { move.getPlayerSrc() , move.getPlayerDst() , move.getPlayerDst() } ;
 		// will contains the coordinates of the corners of the current base
