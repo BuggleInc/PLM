@@ -80,9 +80,9 @@ public class BaseballGameEntity extends BaseballEntity {
 		boolean found = false;
 		for ( int i = firstBaseToSearch; i < nbBases && !found ; i++)
 		{
-			for ( int j = 0 ; j < 2  ; j++)
+			for ( int j = 0 ; j < 2 && !found ; j++)
 			{
-				if ( this.getPlayerColor(i, j)== colorWanted && !found )
+				if ( this.getPlayerColor(i, j)== colorWanted  )
 				{
 					location[0]= i;
 					location[1]= j;
