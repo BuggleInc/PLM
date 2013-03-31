@@ -19,7 +19,7 @@ import jlm.universe.bugglequest.ui.BuggleWorldView;
 
 
 public class BuggleWorld extends GridWorld {
-
+	
 	public BuggleWorld(String name, int x, int y) {
 		super(name,x,y);
 	}
@@ -51,7 +51,7 @@ public class BuggleWorld extends GridWorld {
 				BuggleWorldCell c = (BuggleWorldCell) initialWorld.getCell(i, j);
 				cells[i][j] = new BuggleWorldCell(c, this);
 			}
-
+		easter=false;
 
 		super.reset(initialWorld);
 	}	
@@ -65,6 +65,7 @@ public class BuggleWorld extends GridWorld {
 		return new BuggleButtonPanel();
 	}
 
+	public boolean easter = false;
 	/* IO related */
 	private String strip(String s) {
 		return s.replaceAll(";.*", "");
