@@ -1,0 +1,36 @@
+Most of the JLM software was written internally by the team. This
+software is distributed under the GNU general public license version
+3, which you can find in the archive under the name LICENSE-GPL-3.
+
+For any copyright year range specified as YYYY-ZZZZ in this package
+note that the range specifies every single year in that closed
+interval.
+
+Some perticular files distributed with the project have other
+licenses. More specifically, these files are listed below, along with
+their license.
+
+=========================================================================
+
+The pedagogical material distributed with JLM is also covered by the
+CC-BY-SA license, that you can find at:
+http://creativecommons.org/licenses/by-sa/3.0/
+
+=========================================================================
+
+In addition, the artwork is also free. The artwork we did ourselves
+(such as the wonderful JLM logo) is distributed under the CC-BY-SA
+license. The rest was borowed from open clip art and other project
+gathering free artwork, as follows. For most of the pictures, we did
+unfortunately not write done their source. Here are the info we have:
+
+* The turtle was borowed from the kturtle project, from KDE edu.
+* The bunny and egg in BuggleQuest universe come from:
+  http://openclipart.org/detail/23052/
+  http://openclipart.org/detail/93979/
+
+We should probably replace the other for which we lost the copyright
+information. But as you can see from the rest of the project, we are
+better programmers than designers... You are welcome if you can help.
+
+=========================================================================
