@@ -91,7 +91,8 @@ public abstract class Exercise  extends Lecture {
 	 * +++++++++++++++++++++++++
 	 * 
 	 */
-	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. I tried to put it as static, but of course strange behaviors happen afterwards
+	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. 
+	//TODO: I tried to put it as static, but of course strange behaviors happen afterwards
 	// Create a compiler of classes (using java 1.6)
 	private final InMemoryCompiler compiler = new InMemoryCompiler(
 			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
@@ -102,26 +103,24 @@ public abstract class Exercise  extends Lecture {
 	 * @throws JLMCompilerException 
 	 */
 	public void compileAll(LogWriter out) throws JLMCompilerException {
-		compiledClasses = new TreeMap<String, Class<Object>>();
-
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";");
 
-		/* Prepare the source files */
-		Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
-		if (sourceFiles.get(Game.JAVA) != null)
-			for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-				sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
-
-		if (sources.isEmpty()) 
-			return;
-		
 		/* Do the compile (but only if the current language is Java: scripts are not compiled of course) */
 		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
+			/* Prepare the source files */
+			Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
+			if (sourceFiles.get(Game.JAVA) != null)
+				for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
+					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
+			
+			if (sources.isEmpty()) 
+				return;
+			
 			try {
 				DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-				compiledClasses = compiler.compile(sources, errs);
+				compiler.compile(sources, errs);
 
 				out.log(errs);
 			} catch (JLMCompilerException e) {
@@ -181,14 +180,15 @@ public abstract class Exercise  extends Lecture {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			Iterator<Entity> entityIterator = current.entities();
 			for (String name : newClasseNames) {
-				/* Check that this is a valid name */
+				/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
 				String[] forbidden = new String[] {"'","\""};
 				for (String stringPattern : forbidden) {
 					Pattern pattern = Pattern.compile(stringPattern);
 					Matcher matcher = pattern.matcher(name);
 				
 					if (matcher.matches())
-						throw new RuntimeException(name+" is not a valid java identifier (forbidden char: "+stringPattern+"). Does your exercise use a broken tabname?");
+						throw new RuntimeException(name+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
+					     "Does your exercise use a broken tabname?");
 				}
 
 				/* Get the next existing entity */
@@ -200,11 +200,10 @@ public abstract class Exercise  extends Lecture {
 
 				if (Game.getProgrammingLanguage().equals(Game.JAVA) || 
 						Game.getProgrammingLanguage().equals(Game.LIGHTBOT)) {
-					/* Instanciate a new entity of the new type */
+					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
 						ent = (Entity)compiledClasses.get(className(name)).newInstance();
-						//System.out.println("Exercise:mutateEntities to "+className(name));
 					} catch (InstantiationException e) {
 						throw new RuntimeException("Cannot instanciate entity of type "+className(name), e);
 					} catch (IllegalAccessException e) {
