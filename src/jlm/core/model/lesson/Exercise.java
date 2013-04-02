@@ -173,19 +173,7 @@ public abstract class Exercise  extends Lecture {
 	}
 
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
-		newSource(lang, name, initialContent, template, "");
-	}
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template, String patterns) {
-		Map<String, String> pat = new TreeMap<String, String>();
-		for (String pattern: patterns.split(";")) {
-			String[] parts = pattern.split("/");
-			if (parts.length != 1 || !parts[0].equals("")) {
-				if (parts.length != 3 || !parts[0].equals("s")) 
-					throw new RuntimeException("Malformed pattern for file "+name+": '"+ pattern+"' (from '"+patterns+"')");
-				pat.put(parts[1], parts[2]);
-			}
-		}
-		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, pat));
+		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template));
 	}
 	
 	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {

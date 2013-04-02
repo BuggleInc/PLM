@@ -1,4 +1,4 @@
-20130331:
+20130402:
   * Kill several seamingly good ideas that complicated the code base:
     - aliased source files: student must keep them synchronized
       manually now. We may want to reintroduce this at some point?
@@ -6,6 +6,8 @@
       only for user-provided text files, but we don't use it now.
     - uneditable source files. The student will see all files passed
       to the compiler, now. This was never used in production
+    - inconditional static rewriting patterns to apply to the source
+      code. People should change the code in their source directly :)
     - lessons cannot be sequential anymore. Forbidding pupils to
       attempt the exercise in the order they want is not in the JLM
       way of style anyway.

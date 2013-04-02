@@ -15,22 +15,16 @@ public class SourceFile {
 	protected String name;
 	private String template;
 	private String body;
-	private Map<String, String> patterns;
 	private ISourceFileListener listener = null;
 
 	public SourceFile(String name, String initialBody) {
-		this(name, initialBody, null, null);
+		this(name, initialBody, null);
 	}
 
 	public SourceFile(String name, String initialBody, String template) {
-		this(name, initialBody, template, null);
-	}
-
-	public SourceFile(String name, String initialBody, String template, Map<String, String> patterns) {
 		this.name = name;
 		this.body = initialBody;
 		setTemplate( template );
-		this.patterns = patterns;
 	}
 
 	public String getName() {
@@ -78,11 +72,6 @@ public class SourceFile {
 					}
 				}
 
-			if (patterns != null)
-				for (String pattern : patterns.keySet()) {
-					System.out.println("Replace all "+pattern+" to "+patterns.get(pattern));
-					res = res.replaceAll(pattern, patterns.get(pattern));
-				}
 		} else {
 			res = this.body;
 		}
