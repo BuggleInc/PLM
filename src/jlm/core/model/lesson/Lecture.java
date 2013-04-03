@@ -115,7 +115,7 @@ public abstract class Lecture {
 	
 		StringBuffer sb = null;
 		try {
-			sb = FileUtils.readContentAsText(filename, "html",true);
+			sb = FileUtils.readContentAsText(filename, "txt",true);
 		} catch (IOException ex) {
 			setMission("File "+filename+" not found.");
 			return;			
@@ -126,7 +126,7 @@ public abstract class Lecture {
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			System.out.println("Cannot find the name of mission in "+filename+".html");
+			System.out.println("Cannot find the name of mission in "+filename+".md");
 		setName( m.group(1) );
 	
 		/* prepare the tips, if any */
@@ -148,6 +148,5 @@ public abstract class Lecture {
 		/* get the mission explanation */
 		setMission(str);
 	}
-
 	
 }

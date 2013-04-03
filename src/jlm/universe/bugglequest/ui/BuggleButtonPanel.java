@@ -73,15 +73,19 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		brushButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
-				if (b.isBrushDown()) {
-					b.brushUp();
-				} else {
-					b.brushDown();
-				}
+				if (b != null)
+					if (b.isBrushDown()) {
+						b.brushUp();
+					} else {
+						b.brushDown();
+					}
+				else
+					brushButton.setSelected(false);
 			}
 		});
 		brushButton.setMnemonic(KeyEvent.VK_SPACE);
-		brushButton.setSelected(((AbstractBuggle)(Game.getInstance().getSelectedEntity())).isBrushDown());
+		if (((AbstractBuggle)(Game.getInstance().getSelectedEntity()) != null))
+			brushButton.setSelected(((AbstractBuggle)(Game.getInstance().getSelectedEntity())).isBrushDown());
 		
 		
 		GridBagLayout gdLayout = new GridBagLayout();

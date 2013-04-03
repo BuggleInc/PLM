@@ -39,6 +39,7 @@ import jlm.core.model.LessonLoadingException;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
+import jlm.core.ui.action.AboutGame;
 import jlm.core.ui.action.AbstractGameAction;
 import jlm.core.ui.action.ExportSession;
 import jlm.core.ui.action.HelpMe;
@@ -52,6 +53,7 @@ import jlm.core.ui.action.SetProgLanguage;
 import jlm.core.ui.action.StartExecution;
 import jlm.core.ui.action.StepExecution;
 import jlm.core.ui.action.StopExecution;
+import jlm.core.ui.action.TeachingGame;
 import jlm.universe.World;
 
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
@@ -68,13 +70,24 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton demoButton;
     private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
-	private MissionEditorTabs met;
 
+	private JMenuItem menuItem_teach,menuItem_lesson,menuItem_world;
+	private MissionEditorTabs mission_tab;
+	
 	private JSplitPane mainPanel;
 	
 	private static final String frameTitle = "Java Learning Machine";
 
 	private LessonNavigatorPane lessonNavigator;
+	
+	
+	public MissionEditorTabs getMission_tab() {
+		return mission_tab;
+	}
+
+	public void setMission_tab(MissionEditorTabs mission_tab) {
+		this.mission_tab = mission_tab;
+	}
 
 	private MainFrame() {
 		super(frameTitle);
@@ -113,7 +126,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		mainPanel.setResizeWeight(weight);
 		mainPanel.setDividerLocation((int) (1024 * weight));
 
-		mainPanel.setLeftComponent(met=new MissionEditorTabs());
+		mission_tab = new MissionEditorTabs();
+		mainPanel.setLeftComponent(mission_tab);
+
 		exerciseView = new ExerciseView(g);
 		mainPanel.setRightComponent(exerciseView);
 
@@ -184,6 +199,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				game.switchLesson("lessons.chooser");
+				mission_tab.path_md = (Game.getInstance().getCurrentLesson().getCurrentExercise()+"").replace('.', '/').replaceAll("@.*", "");
+				mission_tab.init();
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
@@ -228,7 +245,20 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
         menu.add(menuItem);
         
+        // Menu item to switch in teacher mode
+        TeachingGame teachinggame = new TeachingGame(g, "Teaching mode", null,KeyEvent.VK_T,mission_tab);
+		menuItem_teach = new JMenuItem(teachinggame);
+
+		menuItem_teach.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
+		AboutGame about_lesson = new AboutGame(g, "About this lesson",false);
+		AboutGame about_world = new AboutGame(g, "About this world",null,true);
+		teachinggame.setItem(menuItem_teach);
+		teachinggame.setAboutLesson(about_lesson);
+		teachinggame.setAboutWorld(about_world);
+		
+        menu.add(menuItem_teach);
         
+        // Menu item to Quit
 		menuItem = new JMenuItem(new QuitGame(g, "Quit", null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
@@ -308,31 +338,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		}));
 */
-		menuItem = new JMenuItem(new AbstractGameAction(g, "About this lesson") {
-			private static final long serialVersionUID = 1L;
-			private AbstractAboutDialog dialog = null;
-
-			public void actionPerformed(ActionEvent arg0) {
-				if (this.dialog == null) 
-					this.dialog = new AboutLessonDialog(MainFrame.getInstance());
-
-				this.dialog.setVisible(true);
-			}			
-		});
+		menuItem = new JMenuItem(about_lesson);
 		menu.add(menuItem);
-
-		menuItem = new JMenuItem(new AbstractGameAction(g, "About this world", null) {
-			private static final long serialVersionUID = 1L;
-
-			private AbstractAboutDialog dialog = null;
-
-			public void actionPerformed(ActionEvent arg0) {
-				if (this.dialog == null) {
-					this.dialog = new AboutWorldDialog(MainFrame.getInstance());
-				}
-				this.dialog.setVisible(true);
-			}
-		});
+		
+		menuItem = new JMenuItem(about_world);
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
 
@@ -599,9 +608,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			public void actionPerformed(ActionEvent ae) {
 				System.out.println("touche pageup pressée" );
-				System.out.println(met.getTabCount());
-				int index=(met.getSelectedIndex()==0?met.getTabCount()-1:met.getSelectedIndex()-1);
-				met.setSelectedIndex(index);
+				System.out.println(mission_tab.getTabCount());
+				int index=(mission_tab.getSelectedIndex()==0?mission_tab.getTabCount()-1:mission_tab.getSelectedIndex()-1);
+				mission_tab.setSelectedIndex(index);
 			}
 		});
 		this.getRootPane().getActionMap().put("action pagedown", new AbstractAction() {
@@ -612,9 +621,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			public void actionPerformed(ActionEvent ae) {
 				System.out.println("touche pagedown pressée" );
-				System.out.println(met.getTabCount());
-				int index=(met.getSelectedIndex()==met.getTabCount()-1?0:met.getSelectedIndex()+1);
-				met.setSelectedIndex(index);
+				System.out.println(mission_tab.getTabCount());
+				int index=(mission_tab.getSelectedIndex()==mission_tab.getTabCount()-1?0:mission_tab.getSelectedIndex()+1);
+				mission_tab.setSelectedIndex(index);
 			}
 		});
 		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("left"), "action left" );
@@ -641,8 +650,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			public void actionPerformed(ActionEvent ae) {
 				System.out.println("touche F1 pressée" );
 			}
-		}
-				);
+		});
+	}
+	
+
+	public JMenuItem getMenuItem_teach() {
+		return menuItem_teach;
+	}
+
+	public void setMenuItem_teach(JMenuItem menuItem_teach) {
+		this.menuItem_teach = menuItem_teach;
 	}
 }
 

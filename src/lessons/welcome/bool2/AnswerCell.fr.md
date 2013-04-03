@@ -1,0 +1,8 @@
+# Répondeur #
+Votre téléphone sonne. Renvoyez vrai si vous décrochez. Vous le faites
+habituellement, sauf le matin où vous ne répondez que si votre mère
+appelle. Dans tous les cas, vous ne répondez pas si vous dormez.
+
+Cet exercice a été extrait de l'excellent site d'exercices
+http://javabat.com/ pour JLM.
+

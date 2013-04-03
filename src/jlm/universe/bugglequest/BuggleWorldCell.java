@@ -2,6 +2,8 @@ package jlm.universe.bugglequest;
 
 import java.awt.Color;
 
+import jlm.universe.Direction;
+import jlm.universe.Entity;
 import jlm.universe.GridWorld;
 import jlm.universe.GridWorldCell;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
@@ -23,7 +25,7 @@ public class BuggleWorldCell extends GridWorldCell {
 	private boolean leftWall;
 
 	private boolean topWall;
-
+	
 	public BuggleWorldCell(BuggleWorld w, int x, int y) {
 		this(w, x, y, DEFAULT_COLOR, false, false, null, "");
 	}
@@ -91,6 +93,26 @@ public class BuggleWorldCell extends GridWorldCell {
 		this.leftWall = false;
 		world.notifyWorldUpdatesListeners();
 	}
+	
+	public void putBuggle(String name, Direction direction, Color color, Color brush)
+	{
+		new Buggle((BuggleWorld) world, name, x, y, direction, color, brush);
+	}
+	
+	public void removeBuggle()
+	{
+		for (int i=0; i<world.getEntities().size(); i++)
+		{
+			Entity e = world.getEntities().get(i);
+			if (e instanceof AbstractBuggle)
+			{
+				AbstractBuggle buggle = (AbstractBuggle) e;
+				if (buggle.getX() == this.x && buggle.getY() == this.y)
+					world.getEntities().remove(i);
+			}
+		}
+		world.notifyEntityUpdateListeners();
+	}
 
 	@Override
 	public String toString() {
@@ -120,6 +142,36 @@ public class BuggleWorldCell extends GridWorldCell {
 
 	public Baggle getBaggle() {
 		return this.baggle;
+	}
+	
+	public boolean hasBuggle()
+	{
+		for (Entity entity:world.getEntities())
+		{
+			if (entity instanceof AbstractBuggle)
+			{
+				AbstractBuggle buggle = (AbstractBuggle) entity;
+				if (buggle.getX() == this.x && buggle.getY() == this.y)
+					return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public AbstractBuggle getBuggle()
+	{
+		for (Entity entity:world.getEntities())
+		{
+			if (entity instanceof AbstractBuggle)
+			{
+				AbstractBuggle buggle = (AbstractBuggle) entity;
+				if (buggle.getX() == this.x && buggle.getY() == this.y)
+					return buggle;
+			}
+		}
+		
+		throw new IllegalAccessError("No buggle in cell " + x + ":" + y);
 	}
 
 	public void newBaggle() throws AlreadyHaveBaggleException {

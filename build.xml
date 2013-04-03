@@ -88,6 +88,7 @@
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smack.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json-smart-1.1.1.jar" />
 			
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/markdownj-1.0.2b4-0.3.0.jar" />
 		</jar>
 	</target>
 	
@@ -132,6 +133,7 @@
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smack.jar"/>
 			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json-smart-1.1.1.jar" />
 			
+			<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/markdownj-1.0.2b4-0.3.0.jar" />
 		</zip>
 	</target>
 

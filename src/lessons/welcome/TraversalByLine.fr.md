@@ -1,0 +1,11 @@
+## Parcours ligne par ligne ##
+Il faut encore faire parcourir le monde à la buggle en numérotant les cases
+au passage, mais l'objectif de cet exercice est d'écrire un parcours ligne
+par ligne. La plupart du code écrit à l'exercice précédent reste utilisable,
+mais la méthode calculant les prochaines coordonnées de la buggle doit être
+modifiée en conséquence : si l'on est tout à droite d'une ligne, il faut
+aller au début de la ligne précédente. Si non, il faut aller sur la case à
+droite.
+
+À vous de jouer...
+

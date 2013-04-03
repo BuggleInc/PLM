@@ -1,0 +1,106 @@
+## Creating Turmites ##
+
+This exercise allows you to build your own turmites. To pass the
+exercise, you should simply write a method which initializes the to
+use the following transitions table (from wikipedia), set the buggle initial position at (8;33), and ask for 8342 steps.
+
+where the direction to turn is one of *L* (90° left), *R* (90° right), *N* (no turn) and *U* (180° U-turn).
+
+## Going further ##
+
+This exercise is naturally an excuse to let you experiment with your own turmites.
+Feel free to change the transition table and the amount of steps to experiment by
+yourself. To that extend, you may find the Ed Pegg Jr's library useful. If you find
+new interesting patterns, send them per email so that we can integrate
+them to this list!
+
+In addition, wikipedia is desperately missing some good looking
+colorful turmites: only black and white ones are depicted.  You should
+consider submitting your creations directly to the free
+encyclopedia.
+
+    EdPeggJrTurmiteLibrary = [
+    # source: http://demonstrations.wolfram.com/Turmites/
+    # Translated into his later notation: 1=noturn, 2=right, 4=u-turn, 8=left
+    # (all these are 2-color patterns)
+    "{{{1, 2, 0}, {0, 8, 0}}}",  # 1: Langton's ant
+    "{{{1, 2, 0}, {0, 1, 0}}}",  # 2: binary counter
+    "{{{0, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}", # 3: (filled triangle)
+    "{{{0, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {0, 1, 1}}}", # 4: spiral in a box
+    "{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {0, 2, 0}}}", # 5: stripe-filled spiral
+    "{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {1, 1, 0}}}", # 6: stepped pyramid
+    "{{{0, 2, 1}, {0, 1, 1}}, {{1, 2, 1}, {1, 8, 0}}}", # 7: contoured island
+    "{{{0, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {0, 2, 1}}}", # 8: woven placemat
+    "{{{0, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {1, 8, 0}}}", # 9: snowflake-ish
+    "{{{1, 8, 0}, {0, 1, 1}}, {{0, 8, 0}, {0, 8, 1}}}", # 10: slow city builder
+    "{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 0}, {0, 8, 1}}}", # 11: framed computer art
+    "{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 1}, {1, 8, 0}}}", # 12: balloon bursting (makes a spreading highway)
+    "{{{1, 8, 1}, {0, 8, 0}}, {{1, 1, 0}, {0, 1, 0}}}", # 13: makes a horizontal highway
+    "{{{1, 8, 1}, {0, 8, 0}}, {{1, 2, 1}, {1, 2, 0}}}", # 14: makes a 45 degree highway
+    "{{{1, 8, 1}, {0, 8, 1}}, {{1, 2, 1}, {0, 8, 0}}}", # 15: makes a 45 degree highway
+    "{{{1, 8, 1}, {0, 1, 0}}, {{1, 1, 0}, {1, 2, 0}}}", # 16: spiral in a filled box
+    "{{{1, 8, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}", # 17: glaciers
+    "{{{1, 8, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 1, 0}}}", # 18: golden rectangle!
+    "{{{1, 8, 1}, {1, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}", # 19: fizzy spill
+    "{{{1, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {0, 1, 1}}}", # 20: nested cabinets
+    "{{{1, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {1, 1, 1}}}", # 21: (cross)
+    "{{{1, 1, 1}, {0, 1, 0}}, {{0, 2, 0}, {1, 8, 0}}}", # 22: saw-tipped growth
+    "{{{1, 1, 1}, {0, 1, 1}}, {{1, 2, 1}, {0, 1, 0}}}", # 23: curves in blocks growth
+    "{{{1, 1, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}", # 24: textured growth
+    "{{{1, 1, 1}, {0, 2, 1}}, {{1, 8, 0}, {1, 2, 0}}}", # 25: (diamond growth)
+    "{{{1, 1, 1}, {1, 8, 0}}, {{1, 2, 1}, {0, 1, 0}}}", # 26: coiled rope
+    "{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 1, 1}}}", # 27: (growth)
+    "{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 2, 1}}}", # 28: (square spiral)
+    "{{{1, 2, 0}, {1, 2, 1}}, {{0, 1, 0}, {0, 1, 1}}}", # 29: loopy growth with holes
+    "{{{1, 2, 1}, {0, 8, 1}}, {{1, 1, 0}, {0, 1, 0}}}", # 30: Lanton's Ant drawn with squares
+    "{{{1, 2, 1}, {0, 2, 0}}, {{0, 8, 1}, {1, 8, 0}}}", # 31: growth with curves and blocks
+    "{{{1, 2, 1}, {0, 2, 0}}, {{0, 1, 0}, {1, 2, 1}}}", # 32: distracted spiral builder
+    "{{{1, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}", # 33: cauliflower stalk (45 deg highway)
+    "{{{1, 2, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 2, 0}}}", # 34: worm trails (eventually turns cyclic!)
+    "{{{1, 2, 1}, {1, 1, 0}}, {{1, 1, 0}, {0, 1, 1}}}", # 35: eventually makes a two-way highway!
+    "{{{1, 2, 1}, {1, 2, 0}}, {{0, 1, 0}, {0, 1, 0}}}", # 36: almost symmetric mould bloom
+    "{{{1, 2, 1}, {1, 2, 0}}, {{0, 2, 0}, {1, 1, 1}}}", # 37: makes a 1 in 2 gradient highway
+    "{{{1, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {0, 2, 0}}}", # 38: immediately makes a 1 in 3 highway
+    "{{{0, 2, 1}, {1, 2, 1}}, {{0, 8, 2}, {0, 8, 0}}, {{1, 2, 2}, {1, 8, 0}}}", # 39: squares and diagonals growth
+    "{{{1, 8, 1}, {0, 1, 0}}, {{0, 2, 2}, {1, 8, 0}}, {{1, 2, 1}, {1, 1, 0}}}", # 40: streak at approx. an 8.1 in 1 gradient
+    "{{{1, 8, 1}, {0, 1, 2}}, {{0, 2, 2}, {1, 1, 1}}, {{1, 2, 1}, {1, 1, 0}}}", # 41: streak at approx. a 1.14 in 1 gradient
+    "{{{1, 8, 1}, {1, 8, 1}}, {{1, 1, 0}, {0, 1, 2}}, {{0, 8, 1}, {1, 1, 1}}}", # 42: maze-like growth
+    "{{{1, 8, 2}, {0, 2, 0}}, {{1, 8, 0}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 1}}}", # 43: growth by cornices
+    "{{{1, 2, 0}, {0, 2, 2}}, {{0, 8, 0}, {0, 2, 0}}, {{0, 1, 1}, {1, 8, 0}}}", # 44: makes a 1 in 7 highway
+    "{{{1, 2, 1}, {0, 8, 0}}, {{1, 2, 2}, {0, 1, 0}}, {{1, 8, 0}, {0, 8, 0}}}", # 45: makes a 4 in 1 highway
+
+Langton's ants may not share the expressiveeness power of the turmites, but they remain
+fascinating too. You can experiment with them using the initLangton() method, provided
+in your template, that allows to build a Turmite transition table from a Langton's ant
+name. Tiny changes in the ant may result huge changes. For example, "RRL" does not
+seam to lead to any constructed pattern, even after a million steps, but "RLL" starts
+building a very simple highway pattern after less than 100 steps!
+
+Quite a lot of Langton's ants build highways: RL, of course, but also RLRLRLLRLR (about 2500 steps).
+The chaotic behavior of ants before the highway can be very short (as with RLL that only need 100 steps
+to converge) or very long, as with LLLLLLRRLRRR which seems chaotic for more than 500,000 steps before
+build the highway or even RRLLLRRRLRRR which needs 1170000 to start converging. Some are narrow, and
+others are very large, such as RRLRLLRLRR (200,000 steps). This ant is also notable since it is somehow
+squarish even before the highway start where most others do not show anything notable before their
+highway.
+
+Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps), RRLLLRLLLRRR (30,000 steps),
+RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR (20,000 steps). Some even fill the whole space (RRLRR
+after 3000 steps). Some of my personal favorite ones are the ones where the ant seem to be bouncing
+within a box that gets bigger on each bump, such as LRRRRRLLR (30,000 steps). LRRRRLLLRRR is even
+more impressing since the bounces within the box are regular and since it converges more rapidly to
+its stable behavior (15,000 steps are enough).
+
+Finally, some ants are just build artistic patterns. You should check this video for some beautiful
+ones: http://www.youtube.com/watch?v=1X-gtr4pEBU. If you want to convert them into your code, you have to
+shift them by one: For example, the one depicted at 3:42 is not RRLRLRLLRL, but RLRLRLLRLR (the first visible
+move should be read as last one).
+
+As you can see by exploring the above set of turmites, they are usually not as colorful as the ants, but
+this may be because very few colors suffice to exhibit complex behaviors. For example, there is a specific
+class of turmites called which are turmites that write a lot of things before stopping
+(busy beavers are usually classical turing machines, but the idea fits perfectly to turmites too). There is
+a sort of international competition where people strive to find the turmite that covers the biggest area
+before stopping. The web page is here:
+http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines
+

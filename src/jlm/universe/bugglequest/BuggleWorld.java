@@ -10,6 +10,7 @@ import java.util.regex.Pattern;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.universe.Direction;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
@@ -91,7 +92,7 @@ public class BuggleWorld extends GridWorld {
 			height = Integer.parseInt(strip(line));
 
 		create(width, height);
-
+		
 		/* read each cell, one after the other */
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
@@ -102,38 +103,83 @@ public class BuggleWorld extends GridWorld {
 
 				line = strip(line); // strip '; comment'
 
-				int index1 = line.indexOf("),");
-				int index2 = line.indexOf(',', index1+2);
-				int index3 = line.indexOf(',', index2+1);
-				int index4 = line.length()-2;
+				int index1 = line.indexOf("),"); // to get the first baggle flag
+				int index2 = line.indexOf(',', index1+2); // to get the topwall flag
+				int index3 = line.indexOf(',', index2+1); // to get the left flag
+				int index4 = line.indexOf(',', index3+1); // to get the buggle flag
+				int index5 = -1; // to get the position of buggle
+				int index6 = -1; // to get the color of buggle
+				int index7 = -1; // to get brush
+				int index8 = line.length()-2; // end of line
+				
+				if (index4 != -1)
+				{
+					index5 = line.indexOf(',', index4+1);
+					index6 = line.indexOf(',', index5+1);
+					index7 = line.indexOf(',', index6+1);
+				}
 
 				boolean baggleFlag = Boolean.parseBoolean(line.substring(index1+2, index2));
 				boolean topWallFlag = Boolean.parseBoolean(line.substring(index2+1, index3));
-				boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, index4));
+				
+				int indexFin;
+				if (index4 != -1)
+					indexFin = index4;
+				else
+					indexFin = index8;
+				boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, indexFin));
+
 				if (baggleFlag)
 					try {
 						cell.setBaggle(new Baggle(cell));
 					} catch (AlreadyHaveBaggleException e) {
 						e.printStackTrace();
 					}
-					if (topWallFlag)
-						cell.putTopWall();
-					if (leftWallFlag)
-						cell.putLeftWall();		
+				if (topWallFlag)
+					cell.putTopWall();
+				if (leftWallFlag)
+					cell.putLeftWall();		
 
-					/* parse color */
-					String s =line.substring(1, index1+1); 
-					index1 = s.indexOf(",");
-					index2 = s.indexOf(',', index1+1);
+				/* parse color */
+				String s =line.substring(1, index1+1); 
+				index1 = s.indexOf("-");
+				index2 = s.indexOf('-', index1+1);
+				index3 = s.length()-1;
+
+				int r = Integer.parseInt(s.substring(1, index1));
+				int g = Integer.parseInt(s.substring(index1+1, index2));
+				int b = Integer.parseInt(s.substring(index2+1, index3));
+
+				cell.setColor(new Color(r,g,b));
+
+				setCell(cell, x, y);
+				
+				if (index4 != -1)
+				{ 
+					String nameBuggle = line.substring(index4+1, index5);
+					Direction direction = Direction.getDirectionFromString(line.substring(index5+1, index6));
+					Color color;
+					Color brush;
+					
+					s = line.substring(index6+1, index7);
+					index1 = s.indexOf('-');
+					index2 = s.indexOf('-', index1+1);
 					index3 = s.length()-1;
-
-					int r = Integer.parseInt(s.substring(1, index1));
-					int g = Integer.parseInt(s.substring(index1+1, index2));
-					int b = Integer.parseInt(s.substring(index2+1, index3));
-
-					cell.setColor(new Color(r,g,b));
-
-					setCell(cell, x, y);
+					r = Integer.parseInt(s.substring(1, index1));
+					g = Integer.parseInt(s.substring(index1+1, index2));
+					b = Integer.parseInt(s.substring(index2+1, index3));
+					color = new Color(r,g,b);
+					
+					s = line.substring(index7+1, index8);
+					index1 = s.indexOf('-');
+					index2 = s.indexOf('-', index1+1);
+					index3 = s.length()-1;
+					r = Integer.parseInt(s.substring(1, index1));
+					g = Integer.parseInt(s.substring(index1+1, index2));
+					b = Integer.parseInt(s.substring(index2+1, index3));
+					brush = new Color(r,g,b);
+					new Buggle(this, nameBuggle, x, y, direction, color, brush);
+				}
 			}
 		}
 	}
@@ -151,13 +197,20 @@ public class BuggleWorld extends GridWorld {
 
 				writer.write("[");
 				Color c = cell.getColor();
-				writer.write("(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue() + ")");
+				writer.write("(" + c.getRed() + "-" + c.getGreen() + "-" + c.getBlue() + ")");
 				writer.write(",");
 				writer.write(Boolean.toString(cell.hasBaggle()));
 				writer.write(",");
 				writer.write(Boolean.toString(cell.hasTopWall()));
 				writer.write(",");
 				writer.write(Boolean.toString(cell.hasLeftWall()));
+				if (cell.hasBuggle())
+				{
+					AbstractBuggle buggle = cell.getBuggle();
+					Color color = buggle.getColor();
+					Color brush = buggle.getBrushColor();
+					writer.write("," + buggle.getName() + "," + buggle.getDirection().toString() + ",(" + color.getRed() + "-" + color.getGreen() + "-" + color.getBlue() + "),(" + brush.getRed() + "-" + brush.getGreen() + "-" + brush.getBlue() + ")");
+				}
 				writer.write("] ; cell");
 				writer.write("\n");
 			}
