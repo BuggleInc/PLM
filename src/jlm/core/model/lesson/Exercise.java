@@ -188,7 +188,7 @@ public abstract class Exercise  extends Lecture {
 				
 					if (matcher.matches())
 						throw new RuntimeException(name+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
-					     "Does your exercise use a broken tabname?");
+					     "Does your exercise use a broken tabname or entityname?");
 				}
 
 				/* Get the next existing entity */
