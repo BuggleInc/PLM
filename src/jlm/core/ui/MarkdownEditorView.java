@@ -75,7 +75,7 @@ public class MarkdownEditorView extends JPanel implements Observer
         //wiki_area_pane.setMinimumSize(dimension_minimum);
 		
 		apercu = new JTextPane();
-		apercu.setEditorKit(new HTMLEditorKit());
+		apercu.setEditorKit(new JlmHtmlEditorKit());
 		apercu.setText(markdownProcessor.markdown(this.document.getTexte()));
 		apercu.setEditable(false);
         JScrollPane preview_scroll_pane = new JScrollPane(apercu);
