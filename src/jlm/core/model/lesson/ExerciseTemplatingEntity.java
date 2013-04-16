@@ -46,7 +46,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 
 	@Override
 	public void run(List<Thread> runnerVect){
-		mutateEntity(tabName);
+		mutateEntities(tabName);
 		for (int i=0; i<currentWorld.length; i++) {
 			currentWorld[i].doDelay();
 			currentWorld[i].runEntities(runnerVect);

@@ -175,45 +175,38 @@ public abstract class Exercise  extends Lecture {
 		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template));
 	}
 	
-	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {
+	protected void mutateEntities(World[] worlds, String newClassName) {
+		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
+		String[] forbidden = new String[] {"'","\""};
+		for (String stringPattern : forbidden) {
+			Pattern pattern = Pattern.compile(stringPattern);
+			Matcher matcher = pattern.matcher(newClassName);
+			
+			if (matcher.matches())
+				throw new RuntimeException(newClassName+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
+						"Does your exercise use a broken tabname or entityname?");
+		}
+		
 		for (World current:worlds) {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
-			Iterator<Entity> entityIterator = current.entities();
-			for (String name : newClasseNames) {
-				/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
-				String[] forbidden = new String[] {"'","\""};
-				for (String stringPattern : forbidden) {
-					Pattern pattern = Pattern.compile(stringPattern);
-					Matcher matcher = pattern.matcher(name);
-				
-					if (matcher.matches())
-						throw new RuntimeException(name+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
-					     "Does your exercise use a broken tabname or entityname?");
-				}
-
-				/* Get the next existing entity */
-				if (!entityIterator.hasNext()) 
-					throw new BrokenLessonException("Too much class names ("+newClasseNames.size()+")"+
-							"provided to mutateEntities compared to the amount of entities found "+
-							"("+current.getEntityCount()+")");
-				Entity old = entityIterator.next();
+			for (Entity old : current.getEntities()) {
 
 				if (Game.getProgrammingLanguage().equals(Game.JAVA) || 
 						Game.getProgrammingLanguage().equals(Game.LIGHTBOT)) {
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
-						ent = (Entity)compiledClasses.get(className(name)).newInstance();
+						ent = (Entity)compiledClasses.get(className(newClassName)).newInstance();
 					} catch (InstantiationException e) {
-						throw new RuntimeException("Cannot instanciate entity of type "+className(name), e);
+						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
 					} catch (IllegalAccessException e) {
-						throw new RuntimeException("Illegal access while instanciating entity of type "+className(name), e);
+						throw new RuntimeException("Illegal access while instanciating entity of type "+className(newClassName), e);
 					} catch (NullPointerException e) {
 						/* this kind of entity was not written by student. try to get it from default class loader, or complain if it also fails */
 						try {
-							ent = (Entity)compiler.loadClass(name).newInstance(); 
+							ent = (Entity)compiler.loadClass(newClassName).newInstance(); 
 						} catch (Exception e2) {
-							throw new RuntimeException("Cannot find an entity of name "+className(name)+" or "+name+". Broken lesson.", e2);
+							throw new RuntimeException("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 						}
 					}
 
@@ -224,31 +217,19 @@ public abstract class Exercise  extends Lecture {
 					/* Add new entity to the to be returned entities set */
 					newEntities.add(ent);
 				} else { /* In scripting, we don't need to actually mutate the entity, just set the script to be interpreted later */
-					String script = scriptSources.get(Game.getProgrammingLanguage()).get(className(name));
+					String script = scriptSources.get(Game.getProgrammingLanguage()).get(className(newClassName));
 					if (script == null) 
-						throw new RuntimeException("Cannot retrieve the script for "+className(name));
+						throw new RuntimeException("Cannot retrieve the script for "+className(newClassName));
 					old.setScript(Game.getProgrammingLanguage(), script);
 				}
 			}
-			if (entityIterator.hasNext())
-				throw new BrokenLessonException("Not enough arguments provided to mutateEntities");
 			if (Game.getProgrammingLanguage().equals(Game.JAVA)) 
 				current.setEntities(newEntities);
 		}
 	}
-	protected void mutateEntity(World[] worlds, String newClasseName){
-		ArrayList<String> names= new ArrayList<String>();
-		for (int i=0; i<currentWorld[0].getEntityCount(); i++)
-			names.add(newClasseName);
-		mutateEntities(worlds, names);
-	}
 
-	protected void mutateEntities(ArrayList<String> newClasseNames){
-		mutateEntities(currentWorld, newClasseNames);
-	}
-
-	protected void mutateEntity(String newClasseName){		
-		mutateEntity(currentWorld, newClasseName);
+	protected void mutateEntities(String newClasseName){		
+		mutateEntities(currentWorld, newClasseName);
 	}
 
 	

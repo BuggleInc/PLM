@@ -166,6 +166,7 @@ public abstract class World {
 		}
 	}
 
+	@Deprecated
 	public Iterator<Entity> entities() {
 		return entities.iterator();
 	}
