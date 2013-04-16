@@ -226,65 +226,6 @@ public abstract class ExerciseTemplated extends Exercise {
 				debug?debugContent:initialContent,
 						skelContent.length()>0?skelContent:template);
 	}
-	protected void addEntityKind(World w, Entity se, String name) {
-		boolean foundOne = false;		
-		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
-			try {
-				addEntityKind(pl, w, se, name);
-				foundOne = true;
-			} catch (NoSuchEntityException e) {
-				/* Does not work for this exercise. I'd better find a working language */
-			}
-		}
-		if (!foundOne)
-			throw new RuntimeException("Cannot find an entity of name "+name+" for this exercise. You should fix your pathes and such");
-	}
-	protected void addEntityKind(ProgrammingLanguage lang, World w, Entity se, String name) throws NoSuchEntityException {
-		if (entitiesNames == null)  {
-			entitiesNames = new ArrayList<String>();
-			tabsNames = new ArrayList<String>();
-		}
-
-		w.addEntity(se);
-		se.setWorld(w);
-		se.setName(name);
-		entitiesNames.add(se.getClass().getName());
-		tabsNames.add("My"+name);
-		newSourceFromFile(lang, "My"+name, se.getClass().getName(),"java"); 
-	}
-	protected void addEntityKind(World[] ws, Entity se, String name) {
-		boolean foundOne = false;		
-		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
-			try {
-				addEntityKind(pl, ws, se, name);
-				addProgLanguage(pl);
-				foundOne = true;
-				//System.out.println("Found "+name+" in "+pl+" for "+this.name);
-			} catch (NoSuchEntityException e) {
-				if (getProgLanguages().contains(pl)) 
-					throw new RuntimeException("Exercise "+getName()+"is said to be compatible with language "+pl+", but I fail to find an entity of name "+name+" in this language",e);					
-				/* Does not work for this exercise, but nobody said it should. I'd better find a working language */
-			}
-		}
-		if (!foundOne)
-			throw new RuntimeException("Cannot find an entity of name "+name+" for this exercise. You should fix your pathes and such");
-	}
-	protected void addEntityKind(ProgrammingLanguage lang, World[] ws, Entity se, String name) throws NoSuchEntityException {
-		if (entitiesNames == null)  {
-			entitiesNames = new ArrayList<String>();
-			tabsNames = new ArrayList<String>();
-		}
-		for (int i=0;i<ws.length;i++) {
-			if (i==0) {
-				newSourceFromFile(lang, "My"+name, se.getClass().getName()); 
-				entitiesNames.add(se.getClass().getName());
-				tabsNames.add("My"+name);
-			}
-			ws[i].addEntity(se);
-			se.setWorld(ws[i]);
-			se.setName(name);
-		}
-	}
 
 	protected final void setup(World w) {
 		World[] ws = new World[1];

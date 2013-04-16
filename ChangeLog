@@ -1,4 +1,4 @@
-20130402:
+20130416:
   * Kill several seamingly good ideas that complicated the code base:
     - aliased source files: student must keep them synchronized
       manually now. We may want to reintroduce this at some point?
@@ -11,6 +11,9 @@
     - lessons cannot be sequential anymore. Forbidding pupils to
       attempt the exercise in the order they want is not in the JLM
       way of style anyway.
+    - exercises cannot have more than one kind of exercise. This was
+      introduced to have all sorting exercises at once, but this was
+      split in several exercises because the SortingView was gone amok.
   * Simplify a bit the way external lesson files are loaded
   * Remove a bunch of unused dependencies on external jars.
     The distribution jar is now only half as big only (still 20M).

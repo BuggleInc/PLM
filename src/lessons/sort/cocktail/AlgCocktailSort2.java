@@ -18,9 +18,7 @@ public class AlgCocktailSort2 extends ExerciseTemplated{
 		myWorlds[1] = new SortingWorld("Performance test (150 elms)",150);
 		
 		for ( int i = 0 ; i < myWorlds.length ; i++)
-		{
-			new SortingEntity("Cocktail maker 2",myWorlds[i]);
-		}
+			new SortingEntity("Cocktail maker 1",myWorlds[i]);
 
 		setup(myWorlds);
 	}
