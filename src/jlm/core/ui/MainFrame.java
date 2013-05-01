@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
@@ -86,12 +87,28 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private void initComponents(final Game g) {		
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				g.quit();
-			}
-		});
+			addWindowListener(new WindowAdapter() {
+				@Override
+				public void windowClosing(WindowEvent e) {
+		    		String message ;
+		    		String title;
+		    		if ( FileUtils.getLocale().equals("fr"))
+		    		{
+		    			message = "Voulez-vous vraiment quitter ?";
+		    		 	title = "Quitter la JLM";
+		    		}
+		    		else
+		    		{
+		    			message = "Do you really want to quit ?";
+		    			title = "Exit the JLM";
+		    		}
+		    		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+		    		if (reply == JOptionPane.YES_OPTION)
+		    		{
+		    			g.quit();
+		    		}
+				}
+			});
 
 		getContentPane().setLayout(new BorderLayout());
 
