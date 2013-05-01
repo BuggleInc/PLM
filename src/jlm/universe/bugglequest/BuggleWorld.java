@@ -122,12 +122,12 @@ public class BuggleWorld extends GridWorld {
 				boolean baggleFlag = Boolean.parseBoolean(line.substring(index1+2, index2));
 				boolean topWallFlag = Boolean.parseBoolean(line.substring(index2+1, index3));
 				
-				int indexFin;
+				int index_end;
 				if (index4 != -1)
-					indexFin = index4;
+					index_end = index4;
 				else
-					indexFin = index8;
-				boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, indexFin));
+					index_end = index8;
+				boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, index_end));
 
 				if (baggleFlag)
 					try {

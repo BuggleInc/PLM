@@ -2,41 +2,39 @@ package jlm.core.ui;
 
 /**
  * 
- * Représente un document au format Markdown.
+ * Markdown file loader class
  *
  */
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Observable;
-import java.util.Scanner;
 
 import jlm.core.model.FileUtils;
 
 public class MarkdownDocument extends Observable
 {
-	private String chemin;
-	private String texte = "";
+	private String path;
+	private String text = "";
 	private boolean load_editor = false;
 	
 	public MarkdownDocument()
 	{
-		texte = "";
-		chemin = "";
+		text = "";
+		path = "";
 		load_editor = false;
 	}
 	
-	public MarkdownDocument(String chemin)
+	public MarkdownDocument(String path)
 	{
-		chargerDocument(chemin);
+		loadMarkDownDocument(path);
 	}
 	
-	public void chargerDocument(String chemin)
+	public void loadMarkDownDocument(String path)
 	{
-		this.chemin = chemin;
-		texte = new String();
+		this.path = path;
+		text = new String();
 		/*
 		Scanner scanner = null;
 		try
@@ -55,41 +53,41 @@ public class MarkdownDocument extends Observable
 		scanner.close();
 		*/
 		try {
-			StringBuffer sb = FileUtils.readContentAsText(chemin, "md",true);
-			texte = sb.toString();
+			StringBuffer sb = FileUtils.readContentAsText(path, "md",true);
+			text = sb.toString();
 			setLoad_editor(true);
 			setChanged();
 			notifyObservers();
 		} catch (Exception ex) {
-			System.err.println("File "+chemin+" not found.");
+			System.err.println("File "+path+" not found.");
 		}		
 	}
 	
-	public void enregistrerDocument()
+	public void saveMarkDownDocument()
 	{
 		try
 		{
-			BufferedWriter buffer = new BufferedWriter(new FileWriter(chemin));
-			buffer.write(texte);
+			BufferedWriter buffer = new BufferedWriter(new FileWriter(path));
+			buffer.write(text);
 			buffer.close();
 		}
 		catch (IOException e)
 		{
-			System.err.println("Erreur IO lors de l'écriture du fichier HTML.");
+			System.err.println("IO Error : cannot write md file.");
 		}
 	}
 
-	public String getTexte()
+	public String getText()
 	{
-		return texte;
+		return text;
 	}
 
-	public void setTexte(String texte)
+	public void setTexte(String text)
 	{
-		this.texte = texte;
+		this.text = text;
 	}
 
-	public void maj(String text) {
+	public void update(String text) {
 		setLoad_editor(false);
 		setTexte(text);
 		setChanged();
@@ -104,7 +102,7 @@ public class MarkdownDocument extends Observable
 		this.load_editor = load_editor;
 	}
 
-	public String getChemin() {
-		return chemin;
+	public String getPath() {
+		return path;
 	}
 }

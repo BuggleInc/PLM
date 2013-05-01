@@ -24,6 +24,11 @@ import jlm.core.model.Game;
 import jlm.core.ui.Global;
 import jlm.core.ui.MissionEditorTabs;
 
+/**
+ * This class allow administrator to get into the teaching mode by entering a password ('foo' as default)
+ * @author richard Querci
+ *
+ */
 public class TeachingGame extends AbstractGameAction {
 	/**
 	 * 

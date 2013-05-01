@@ -22,7 +22,7 @@ public class AboutWorldDialog extends AbstractAboutDialog {
 			setTitle("About world - "
 					+ exo.getCurrentWorld().get(0).getClass()
 					.getSimpleName());
-			md_doc.chargerDocument(exo.getCurrentWorld().get(0).getAboutFilename());
+			md_doc.loadMarkDownDocument(exo.getCurrentWorld().get(0).getAboutFilename());
 		} else {
 			// FIXME: should disable the entry menu when seing a lecture, and close any preexisting window when switching to a lecture
 			setVisible(false);

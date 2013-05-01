@@ -37,7 +37,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	private Game game;
 	private JEditorPane missionTab = new JEditorPane();
 	MarkdownProcessor markdownProcessor;
-	MarkdownEditorView editeur;
+	MarkdownEditorView editor;
 	String path_md;
 
 	/* for code tabs */
@@ -253,9 +253,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.removeAll();
 		markdownProcessor = new MarkdownProcessor();
 		MarkdownDocument md_doc = new MarkdownDocument(path_md);
-		editeur = new MarkdownEditorView(md_doc);
+		editor = new MarkdownEditorView(md_doc);
 
-		editeur.apercu.addHyperlinkListener(new HyperlinkListener() {
+		editor.view.addHyperlinkListener(new HyperlinkListener() {
 			TipsDialog tipsDialog = null;
 
 			@Override
@@ -313,7 +313,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
 							path_md = (lessonName.replace('.', '/').replaceAll("@.*", ""))+"/Main";
 							MarkdownDocument md_doc = new MarkdownDocument(path_md);
-							editeur.apercu.setText(markdownProcessor.markdown(md_doc.getTexte()));
+							editor.view.setText(markdownProcessor.markdown(md_doc.getText()));
 						}
 
 					}
@@ -322,11 +322,11 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		});
 
 		if(Global.admin){
-			this.addTab("Mission", null, editeur,
+			this.addTab("Mission", null, editor,
 					"Description of the work to do");
 		}
 		else{
-			this.addTab("Mission", null, new JScrollPane(editeur.apercu),
+			this.addTab("Mission", null, new JScrollPane(editor.view),
 					"Description of the work to do");
 		}
 		

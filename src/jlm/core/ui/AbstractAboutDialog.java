@@ -20,7 +20,7 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 
 	private static final long serialVersionUID = -6550658679688214378L;
 	MarkdownDocument md_doc;
-	MarkdownEditorView editeur;
+	MarkdownEditorView editor;
 	JPanel main_pane;
 	MarkdownProcessor markdownProcessor;
 
@@ -38,23 +38,23 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 
 		markdownProcessor = new MarkdownProcessor();
 		md_doc = new MarkdownDocument();
-		editeur = new MarkdownEditorView(md_doc);
+		editor = new MarkdownEditorView(md_doc);
 		if(Global.admin)
-			main_pane.add(editeur);
+			main_pane.add(editor);
 		else
-			main_pane.add(editeur.apercu);
+			main_pane.add(editor.view);
 	}
 	
 	public void maj(){
 		this.main_pane.removeAll();
-		String path = md_doc.getChemin();
+		String path = md_doc.getPath();
 		md_doc = new MarkdownDocument(path);
-		editeur = new MarkdownEditorView(md_doc);
+		editor = new MarkdownEditorView(md_doc);
 		if(Global.admin){
-			main_pane.add(editeur);
+			main_pane.add(editor);
 		}
 		else{
-			main_pane.add(editeur.apercu);
+			main_pane.add(editor.view);
 		}
 		this.main_pane.repaint();
 		this.main_pane.validate();
