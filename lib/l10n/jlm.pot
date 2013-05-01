@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-01 06:28-0800\n"
+"POT-Creation-Date: 2013-05-01 09:31-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1905,7 +1905,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:16 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:68 src/lessons/welcome/LoopFor.html:65 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/welcome/SlugTracking.html:20 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35 src/lessons/maze/ShortestPathMaze.html:36 src/lessons/maze/WallFindFollowMaze.html:21
+#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:16 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:68 src/lessons/welcome/LoopFor.html:65 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/welcome/SlugTracking.html:20 src/lessons/maze/RandomMouseMaze.html:23 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35 src/lessons/maze/ShortestPathMaze.html:36 src/lessons/maze/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -3072,7 +3072,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/welcome/MethodsDogHouse.html:39 src/lessons/welcome/Array.html:166 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:47
+#: src/lessons/welcome/MethodsDogHouse.html:39 src/lessons/welcome/Array.html:166 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:41
 msgid "You're up."
 msgstr ""
 
@@ -4354,7 +4354,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/SlugTracking.html:3
 msgid ""
-"After all this excitation of slug hunting, we will have to learn how to "
+"After all this excitation of slug hunting, we will have to learn hot to "
 "track their trail. Your buggle just happened to found the trail of a slug: a "
 "green dribbling tracks. If it manage to follow it to its end, it will find a "
 "baggle representing an appetizing slug (from a buggle point of view)."
@@ -6849,55 +6849,50 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/maze/RandomMouseMaze.html:8
 msgid ""
-"Since the maze is so small, we can write the dumbest possible algorithm to "
-"do so. It relies on randomness and proves quite inefficient."
+"The exit is represented by a baggle and you need to pick this baggle in "
+"order to exit the maze."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/RandomMouseMaze.html:13
 msgid ""
+"Since the maze is so small, we can write the dumbest possible algorithm to "
+"do so. It relies on randomness and proves quite inefficient."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/maze/RandomMouseMaze.html:18
+msgid ""
 "While the buggle didn't find the path to the escape, it must proceed the "
-"following way: if it is at an intersection, it must take a random decision "
-"(moving forward if possible, turn left or turn right). If there is no "
-"intersection, it must move forward if possible, and turn randomly if not."
+"following way: pick a random integer between 0 and 2 by using the "
+"<code>random3()</code> method and make one of the following actions: moving "
+"forward if possible, turn left or turn right."
 msgstr ""
 
 #. type: Content of: <a>
-#: src/lessons/maze/RandomMouseMaze.html:21
-msgid ""
-"<a name=\"Objectives\">This exercise's objective is to write an algorithm "
-"allowing the buggle to find its path out of the maze. Do not forget to let "
-"your buggle pick up the baggle once it found the way out."
+#: src/lessons/maze/RandomMouseMaze.html:23
+msgid "<a name=\"Objectives\">"
 msgstr ""
 
 #. type: Content of: <a><p>
 #: src/lessons/maze/RandomMouseMaze.html:26
 msgid ""
-"The body of the <code>void run()</code> method is provided. You are asked to "
-"implement the other methods that your buggle still miss."
+"This exercise's objective is to write an algorithm allowing the buggle to "
+"find its path out of the maze. Do not forget to let your buggle pick up the "
+"baggle once it found the way out."
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:31
+#: src/lessons/maze/RandomMouseMaze.html:32
 msgid ""
-"Write the <code>void turnRandomly()</code> method that your buggle uses to "
-"turn randomly to the right or to the left. You can use the "
-"<code>random2()</code> method that returns 0 or 1 randomly."
-msgstr ""
-
-#. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:37
-msgid ""
-"Write the <code>void takeRandomDirection()</code> method so that your buggle "
-"takes a random decision (forward, turn left or turn right). You can use the "
+"Write the <code>run()</code> method so that your buggle takes a random "
+"decision (forward, turn left or turn right). You can use the "
 "<code>random3()</code> method which returns randomly either 0, 1 or 2."
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:43
-msgid ""
-"Write the <code>boolean atAJunction()</code> method, indicating whether your "
-"buggle is at an intersection (ie, if it can turn right or left)."
+#: src/lessons/maze/RandomMouseMaze.html:38
+msgid "Don't forget to pick up the baggle once you've reached it."
 msgstr ""
 
 #. type: Content of: <h2>
