@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-03-31 22:27+0300\n"
+"POT-Creation-Date: 2013-05-01 06:28-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1905,7 +1905,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:16 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:68 src/lessons/welcome/LoopFor.html:65 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35 src/lessons/maze/ShortestPathMaze.html:36 src/lessons/maze/WallFindFollowMaze.html:21
+#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:16 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:68 src/lessons/welcome/LoopFor.html:65 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:34 src/lessons/welcome/MethodsReturning.html:41 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/welcome/SlugTracking.html:20 src/lessons/maze/RandomMouseMaze.html:21 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35 src/lessons/maze/ShortestPathMaze.html:36 src/lessons/maze/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -4298,10 +4298,9 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/SlugHunting.html:9
 msgid ""
-"To reach that goal, the simpler would be to have a boolean method "
-"<tt>isFacingTrail</tt>, which would help determining whether we are facing a "
-"green cell or not. Of course, if we are facing a wall, it should return "
-"false. It would be great if this method could in addition preserve the state "
+"To reach that goal, you have a boolean method <tt>isFacingTrail</tt>, which "
+"determine whether we are facing a green cell or not. Of course, if we are "
+"facing a wall, it returns false.In addition, this method preserve the state "
 "of the calling buggle and of the world. Such a method is said to have no "
 "<b>side effect</b>."
 msgstr ""
@@ -4309,19 +4308,20 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/SlugHunting.html:16
 msgid ""
-"Then, the best would be if it could take the color of the trail we want to "
-"follow as an argument. Slugs leave green trails, but other prey leave trails "
-"of other colors. In Java, there is a <i>data type</i> <tt>Color</tt> to "
-"indicate the colors. The green color is defined by <code>Color.green</code>."
+"It takes the color of the trail we want to follow as an argument. Slugs "
+"leave green trails, but other prey leave trails of other colors. In Java, "
+"there is a <i>data type</i> <tt>Color</tt> to indicate the colors. The green "
+"color is defined by <code>Color.green</code>."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/SlugHunting.html:21
 msgid ""
-"In order to not mistake the part of the tracks to follow with the one your "
-"buggle comes from, you should ask your buggle to leave a tracks behind "
-"it. Don't forget to use the <code>brushDown()</code> method to put your "
-"brush down and <code>brushUp()</code> to move it up again."
+"In order to hunt your prey, you should not mistake the part of the tracks to "
+"follow with the one your buggle comes from, you should ask your buggle to "
+"leave a tracks behind it. Don't forget to use the <code>brushDown()</code> "
+"method to put your brush down and <code>brushUp()</code> to move it up "
+"again."
 msgstr ""
 
 #. type: Content of: <p>
@@ -4342,8 +4342,49 @@ msgstr ""
 #: src/lessons/welcome/SlugHunting.html:33
 msgid ""
 "<a name=\"Objectives\">Complete the <code>hunt()</code> method (which gets "
-"called by <code>run()</code> automatically). It should use a "
-"<code>isFacingTrail()</code> method that you also have to write."
+"called by <code>run()</code> automatically). You should use the "
+"<code>isFacingTrail()</code> method that is provided."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/SlugTracking.html:1
+msgid "Slug Tracking"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/SlugTracking.html:3
+msgid ""
+"After all this excitation of slug hunting, we will have to learn how to "
+"track their trail. Your buggle just happened to found the trail of a slug: a "
+"green dribbling tracks. If it manage to follow it to its end, it will find a "
+"baggle representing an appetizing slug (from a buggle point of view)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/SlugTracking.html:9
+msgid ""
+"To reach that goal, you had to write the previously given boolean method "
+"<tt>isFacingTrail</tt>, which should determine whether we are facing a green "
+"cell or not. Of course, if we are facing a wall, it should return false. It "
+"would be great if this method could have no <b>side effect</b>.  on the "
+"calling buggle and on the world."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/SlugTracking.html:15
+msgid ""
+"Remember that this method takes the color of the trail we want to follow as "
+"an argument. Slugs leave green trails, but other prey leave trails of other "
+"colors. In Java, there is a <i>data type</i> <tt>Color</tt> to indicate the "
+"colors. The green color is defined by <code>Color.green</code>."
+msgstr ""
+
+#. type: Content of: <a>
+#: src/lessons/welcome/SlugTracking.html:20
+msgid ""
+"<a name=\"Objectives\">Complete the <code>isFacingTrail()</code> method "
+"(which gets called by <code>hunt()</code> automatically). You don't have to "
+"write the <code>hunt()</code> method."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)

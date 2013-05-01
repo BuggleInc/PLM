@@ -81,6 +81,7 @@ public class Main extends Lesson {
 		addExercise(new BDR2(this));
 		
 		addExercise(new SlugHunting(this),methods);
+		addExercise(new SlugTracking(this));
 		addExercise(new Snake(this));
 		
 		addExercise(new Array(this),methods);
