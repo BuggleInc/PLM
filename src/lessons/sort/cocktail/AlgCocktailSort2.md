@@ -1,0 +1,21 @@
+
+# CocktailSort and variations #
+
+## CocktailSort2 ##
+
+We will now apply to CocktailSort the same optimization than BubbleSort2 did
+to BubbleSort. We must remember the limits of the array part not being
+sorted yet, and traverse it alternatively from left to right and from right
+to left:
+
+
+<pre> beg=0; end=len-2
+do
+For all Pour i in [beg,end], do:
+If cells i and i+1 must be swapped, do it
+end--
+For all Pour i in [beg,end] (downwards), do:
+If cells i and i+1 must be swapped, do it
+beg++
+while at least one of the traversal swapped an element</pre>
+

@@ -1,0 +1,21 @@
+
+# Tris divers #
+
+## GnomeSort ##
+
+Le tri du gnome s'apparente au tri par insertion, à ceci près que les
+éléments sont déplacés par une série d'échange comme dans le tri à bulle. Le
+nom vient du comportement supposé des gnomes des jardins quand ils rangent
+une série de pots de fleurs. Voici la description de l'algorithme par son
+auteur:
+
+L'algorithme de tri Gnome repose sur la manière habituelle de travailler des
+Nains de Jardin Hollandais Garden(Du.: tuinkabouter). Voici comment les
+nains de jardin trient une ligne de pots de fleurs.Le nain regarde le pot de
+fleur qui est à côté de lui et il regarde également le pot de fleurs
+précédent; si ces deux pots sont alignés dans le bon ordre, le nain se
+déplace en avant d'un pot de fleurs, sinon il les échange et se déplace en
+arrière d'un pot de fleur. Condition d'arrêt : si il n'y a pas de pot de
+fleurs précédent, le nain avance ; si il n'y a pas de pot suivant alors il a
+terminé sa tâche.
+

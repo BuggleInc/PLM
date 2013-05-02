@@ -1,0 +1,12 @@
+
+# CocktailSort and variations #
+
+## CocktailSort3 ##
+
+Even if the asymptotic complexity of CocktailSort2 is the same than the one
+of BubbleSort, it seem to perform better in practice. It is even possible to
+improve a bit further by stopping it if the first traversal didn't found
+anything to swap, without achieving the downwards traversal. Likewise, we
+can stop if the upward traversal found something to swap, but not the
+downwards one.
+
