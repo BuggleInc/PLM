@@ -18,6 +18,7 @@ public class MarkdownDocument extends Observable
 	private String path;
 	private String text = "";
 	private boolean load_editor = false;
+	private String lang = "";
 	
 	public MarkdownDocument()
 	{
@@ -60,7 +61,8 @@ public class MarkdownDocument extends Observable
 			notifyObservers();
 		} catch (Exception ex) {
 			System.err.println("File "+path+" not found.");
-		}		
+		}
+		this.lang=FileUtils.getLocale();
 	}
 	
 	public void saveMarkDownDocument()
@@ -103,6 +105,14 @@ public class MarkdownDocument extends Observable
 	}
 
 	public String getPath() {
-		return path;
+		return path.replace('.', '/')+"."+lang+".md";
+	}
+
+	public String getLang() {
+		return lang;
+	}
+
+	public void setLang(String lang) {
+		this.lang = lang;
 	}
 }

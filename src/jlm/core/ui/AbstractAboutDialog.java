@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import com.petebevin.markdown.MarkdownProcessor;
@@ -39,10 +40,18 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 		markdownProcessor = new MarkdownProcessor();
 		md_doc = new MarkdownDocument();
 		editor = new MarkdownEditorView(md_doc);
+		JScrollPane jsp = null;
 		if(Global.admin)
-			main_pane.add(editor);
+			jsp = new JScrollPane(editor);
 		else
-			main_pane.add(editor.view);
+			jsp = new JScrollPane(editor.view);
+		
+		main_pane.add(jsp);
+
+	    JScrollBar verticalScrollBar = jsp.getVerticalScrollBar();
+	    JScrollBar horizontalScrollBar = jsp.getHorizontalScrollBar();
+	    verticalScrollBar.setValue(verticalScrollBar.getMinimum());
+	    horizontalScrollBar.setValue(horizontalScrollBar.getMinimum());
 	}
 	
 	public void maj(){
@@ -50,12 +59,19 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 		String path = md_doc.getPath();
 		md_doc = new MarkdownDocument(path);
 		editor = new MarkdownEditorView(md_doc);
-		if(Global.admin){
-			main_pane.add(editor);
-		}
-		else{
-			main_pane.add(editor.view);
-		}
+		JScrollPane jsp = null;
+		if(Global.admin)
+			jsp = new JScrollPane(editor);
+		else
+			jsp = new JScrollPane(editor.view);
+		
+		main_pane.add(jsp);
+
+	    JScrollBar verticalScrollBar = jsp.getVerticalScrollBar();
+	    JScrollBar horizontalScrollBar = jsp.getHorizontalScrollBar();
+	    verticalScrollBar.setValue(verticalScrollBar.getMinimum());
+	    horizontalScrollBar.setValue(horizontalScrollBar.getMinimum());
+	    
 		this.main_pane.repaint();
 		this.main_pane.validate();
 	}

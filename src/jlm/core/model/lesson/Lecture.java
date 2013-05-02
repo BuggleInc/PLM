@@ -103,6 +103,12 @@ public abstract class Lecture {
 		String res = "<html><head>"+getCSS(lang)+"</head><body>"+this.mission+"</body></html>";
 		return res;
 	}
+	
+	public String getMissionMarkDownFilePath() {
+		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+		return filename;
+	}
+	
 	public void setMission(String mission) {
 		this.mission=mission;
 	}
