@@ -1,9 +1,10 @@
+
 # Indice de la valeur maximale #
 
 Dans cet exercice, vous devez calculer l'indice de la case contenant la plus
 grande valeur du tableau.
 
-Pour cela, remplissez la méthode dont
+Pour cela, remplissez la méthode ` indexOfMaximum(int[] tab)` dont
 le
 paramètre est le tableau à explorer. Si jamais la plus grande des valeurs du
 tableau est répétée plusieurs fois, votre méthode doit renvoyer la position

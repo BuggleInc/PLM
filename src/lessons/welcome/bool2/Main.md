@@ -1,3 +1,4 @@
+
 # Boolean (even more) fun #
 
 A very good introduction to this type is available here:

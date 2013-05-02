@@ -1,24 +1,27 @@
-## Parcours colonne par colonne ##
+
+## Parcours en colonne ##
 L'objectif de cette série d'exercices est de faire parcourir le monde à la
 buggle.  Elle doit de plus numéroter les différentes cases rencontrées pour
 montrer son ordre de parcours.
 
-La boucle principale de la méthode (que vous devez
-écrire)  est de la forme :     tant que l'on n'est pas à la position finale
-    aller à la prochaine position
-    marquer le numéro de case au sol
+La boucle principale de la méthode ` run()` (que vous devez
+écrire)  est de la forme : 
+<pre> tant que l'on n'est pas à la position finale
+aller à la prochaine position
+marquer le numéro de case au sol</pre>
 
 À la différence des exercices vus jusque là, nous n'allons pas utiliser les
-méthodes , et autres, mais
+méthodes ` forward()` , ` backward()` et autres, mais
 nous allons calculer les coordonnées de la prochaine position de la buggle,
-et utiliser la méthode pour la buggle directement à cette position. Par exemple, téléporte la buggle sur la case où x=3 et y=5.
+et utiliser la méthode ` setPos(int, int)` pour *téléporter* la buggle directement à cette position. Par exemple, ` setPos(3,
+5)` téléporte la buggle sur la case où x=3 et y=5.
 
 Le premier objectif est donc d'écrire une fonction booléenne indiquant si la
 buggle a atteint la position finale ou non, càd si elle est arrivée en bas à
-droite du monde.  Vous utiliserez pour cela les méthodes et qui retournent
+droite du monde.  Vous utiliserez pour cela les méthodes ` getWorldWidth()` et ` getWorldHeight()` qui retournent
 respectivement la largeur et la hauteur du monde.  Votre test est de
 comparer les coordonnées actuelles de votre buggle (que vous pouvez
-retrouver avec les méthodes et ) aux
+retrouver avec les méthodes ` getX()` et ` getY()` ) aux
 dimensions du monde. Attention, la première ligne et la première colonne sont numérotées 0 et non
 1...
 
@@ -29,15 +32,15 @@ sinon, il faut aller à la case du dessous.
 
 À ce point, vous pouvez lancer votre programme pour vérifier que la buggle
 parcours bien le monde dans l'ordre souhaité, et s'arrête bien quand il
-faut. Pensez à utiliser le bouton *stop* pour arrêter l'exécution si
+faut. Pensez à utiliser le bouton **stop** pour arrêter l'exécution si
 votre programme ne se termine pas correctement.
 
 Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez
-besoin d'un compteur initialisé à zéro au début de votre méthode , et incrémenté de un à chaque pas (par exemple avec ). Ensuite, il faut écrire la valeur de ce compteur au
-sol à chaque pas, par exemple avec .
+besoin d'un compteur initialisé à zéro au début de votre méthode ` run()` , et incrémenté de un à chaque pas (par exemple avec ` cpt++;` ). Ensuite, il faut écrire la valeur de ce compteur au
+sol à chaque pas, par exemple avec ` writeMessage(cpt);` .
 
 Il est sans doute nécessaire d'écrire la valeur de la première ou dernière
-case en dehors de la boucle principale, selon que vous utilisez un ou un ...
+case en dehors de la boucle principale, selon que vous utilisez un ` while {}` ou un ` do {} while` ...
 
 À vous de jouer...
 

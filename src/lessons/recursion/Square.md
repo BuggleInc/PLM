@@ -1,3 +1,4 @@
+
 ## The small cousines of Buggles ##
 Today, we will meet the small cousines of the buggles: the turtles. In fact,
 turtles are much olders than the buggles. They were invented in the 70's by
@@ -18,20 +19,23 @@ dropping objects, and there is sometimes walls in their worlds (but all this
 is completely above the capacities of turtles).
 
 From a practical point of view, most of the methods you knew about buggles
-still work with turtles, with some minor adaptations. In particular, the method takes the amount of steps to do as a double
-(see "About this world" for more details). ### Doubles? But what is it? ###
-It's simply a point number. Example:     double x = 3.72;
-    x + 1.234 // Value = 4.954
-    x + 2 // Value = 5.72 (2 converted to 2.0 automatically)
-    x * 2 // Value = 7.44 (2 converted to 2.0 automatically)
-    x / 2 // Value = 1.86 (2 converted to 2.0 automatically)
-    (int) x // Value = 1 (“casting to int”, converted to integer by truncating)
-    Math.round(x) // Value = 2 (1.86 rounded to nearest integer)
-    Math.floor(x) // Value = 1 (1.86 rounded toward minus infinity)
-    Math.floor(-5.12) // Value = -6 (rounded toward minus infinity)
-    Math.ceiling(x) // Value = 2 (1.86 rounded toward plus infinity)
-    Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)
-    (double) 17 // Value = 17.0 (“casted to double”, converted to double)
+still work with turtles, with some minor adaptations. In particular, the ` forward()` method takes the amount of steps to do as a double
+(see "About this world" for more details). 
+### Doubles? But what is it? ###
+It's simply a point number. Example: 
+<pre> double x = 3.72;
+x + 1.234 // Value = 4.954
+x + 2 // Value = 5.72 (2 converted to 2.0 automatically)
+x * 2 // Value = 7.44 (2 converted to 2.0 automatically)
+x / 2 // Value = 1.86 (2 converted to 2.0 automatically)
+(int) x // Value = 1 (“casting to int”, converted to integer by truncating)
+Math.round(x) // Value = 2 (1.86 rounded to nearest integer)
+Math.floor(x) // Value = 1 (1.86 rounded toward minus infinity)
+Math.floor(-5.12) // Value = -6 (rounded toward minus infinity)
+Math.ceiling(x) // Value = 2 (1.86 rounded toward plus infinity)
+Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)
+(double) 17 // Value = 17.0 (“casted to double”, converted to double)</pre>
+
 ### Goal of this exercise ###
 Even if this is the first exercise on the recursivity lesson, the code you
 have to write is not recursive. The goal is to get familiar with the turtle
@@ -40,8 +44,9 @@ world before getting on serious matter.
 You must reproduce a simple geometrical painting constituted of four 100
 steps long squares (see the objective world for more details). It is
 obviously a good idea to write a method to draw a square, and then use it in
-your in charge of doing the work. You must absolutely
-write at least the run method, which prototype is the following:     public void run() {
-    // write here what your turtle is supposed to do
-    }
+your ` run()` in charge of doing the work. You must absolutely
+write at least the run method, which prototype is the following: 
+<pre> public void run() {
+// write here what your turtle is supposed to do
+}</pre>
 

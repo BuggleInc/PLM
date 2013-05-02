@@ -1,7 +1,8 @@
-# NearTen #
-Given a non-negative number "num", return true if num is within 2 of a
-multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 %
-5) is 2.
+
+# Près de dix #
+Soit un entier positif "num", renvoyez vrai si num est à moins de 2 d'un
+multiple de 10. Note: ( a % b ) est le reste de la division de a par b, donc
+(7 % 5) vaut 2.
 
 Cet exercice a été extrait de l'excellent site d'exercices
 http://javabat.com/ pour JLM.

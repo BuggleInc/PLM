@@ -1,3 +1,4 @@
+
 # InOrderEqual #
 Given three
 ints, a b c, return true if they are in strict increasing order, such

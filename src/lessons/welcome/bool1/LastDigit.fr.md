@@ -1,3 +1,4 @@
+
 # Dernier chiffre #
 Étant donné deux nombres entiers positifs, retournez vrai s'ils ont le même
 dernier chiffre, comme 27 et 57. Remarquez que l'opérateur % (modulo)

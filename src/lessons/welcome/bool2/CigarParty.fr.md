@@ -1,3 +1,4 @@
+
 # Cigares de fête #
 Quand les écureuils font la fête, ils aiment avoir des cigares. Une fête
 d'écureuils est réussie si le nombre de cigares est entre 40 et 60

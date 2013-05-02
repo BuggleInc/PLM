@@ -1,6 +1,7 @@
+
 # Encore des jeux booléens #
 
-A very good introduction to this type is available here:
+Une très bonne introduction à ce type est disponible ici :
 http://javabat.com/doc/ifboolean.html.
 
 Cet exercice a été extrait de l'excellent site d'exercices

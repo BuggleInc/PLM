@@ -1,3 +1,4 @@
+
 # Répondeur #
 Votre téléphone sonne. Renvoyez vrai si vous décrochez. Vous le faites
 habituellement, sauf le matin où vous ne répondez que si votre mère

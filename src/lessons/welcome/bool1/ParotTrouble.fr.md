@@ -1,3 +1,4 @@
+
 # Problème de perroquet #
 Nous avons un perroquet très bruyant. Le paramètre "hour" indique l'heure
 courante (dans l'intervale [0;23]). Nous avons un problème si le perroquet

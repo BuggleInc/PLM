@@ -1,3 +1,4 @@
+
 # Parot Trouble #
 We have a loud talking parrot. The "hour" parameter is the current
 hour time in the range 0..23. We are in trouble if the parrot is

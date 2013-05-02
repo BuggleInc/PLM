@@ -1,32 +1,34 @@
+
 ## Faire des spirales ##
 Saurez-vous faire les différents motifs de cet exercice en utilisant la
-méthode ?
+méthode ` spiral()` ?
 
-Vous devez écrire une méthode qui prend en paramètre
+Vous devez écrire une méthode ` doit(int)` qui prend en paramètre
 le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0,
 etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les
 valeurs convenables pour chaque page.
 
-    void doit(int page) {
-    switch (page) {
-    case 0: /* Dessin de la première page, marquée "One" */
-    spiral(A0,B0,C0,D0);
-    break;
-    case 1: /* Dessin de la seconde page, marquée "Two" */
-    spiral(A1,B1,C1,D1);
-    break;
-    case 2: /* Dessin de la page marquée "Three" */
-    spiral(A2,B2,C2,D2);
-    break;
-    case 3: /* Dessin de la page marquée "Four" */
-    spiral(A3,B3,C3,D3);
-    break;
-    case 4: /* Dessin de la page marquée "Five" */
-    spiral(A4,B4,C4,D4);
-    break;
-    }
-    }
 
-Pas besoin de recopier le code de , la tortue de cet
+<pre> void doit(int page) {
+switch (page) {
+case 0: /* Dessin de la première page, marquée "One" */
+spiral(A0,B0,C0,D0);
+break;
+case 1: /* Dessin de la seconde page, marquée "Two" */
+spiral(A1,B1,C1,D1);
+break;
+case 2: /* Dessin de la page marquée "Three" */
+spiral(A2,B2,C2,D2);
+break;
+case 3: /* Dessin de la page marquée "Four" */
+spiral(A3,B3,C3,D3);
+break;
+case 4: /* Dessin de la page marquée "Five" */
+spiral(A4,B4,C4,D4);
+break;
+}
+}</pre>
+
+Pas besoin de recopier le code de ` spiral()` , la tortue de cet
 exercice connait déjà la méthode.
 

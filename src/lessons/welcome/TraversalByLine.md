@@ -1,3 +1,4 @@
+
 ## Traversal by line ##
 You once again have to let the buggle traverse the world numbering the cells
 on its way, but the goal of this exercise is to write a line traversal. Most

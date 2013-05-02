@@ -1,3 +1,4 @@
+
 # AlarmClock #
 Given a day
 of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a boolean

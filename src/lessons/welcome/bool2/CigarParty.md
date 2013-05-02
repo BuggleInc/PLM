@@ -1,3 +1,4 @@
+
 # CigarParty #
 When
 squirrels get together for a party, they like to have cigars. A

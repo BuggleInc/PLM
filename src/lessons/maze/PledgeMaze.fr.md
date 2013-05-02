@@ -1,3 +1,4 @@
+
 ## Algorithmes de Pledge ##
 
 Une fois de plus, vous pensiez que votre algorithme vous permettait de vous
@@ -29,30 +30,43 @@ naivement de se retrouver dans la même direction qu'à l'origine rentre dans
 un cycle infini puisque qu'il quite le mur le plus à droite en étant dirigé
 vers la gauche, et entre à nouveau dans la section incurvée.
 
-L'algorithme de Pledge ne quite pas le mur en bas à droite puisque la somme
+L'algorithme de Pledge ne quitte pas le mur en bas à droite puisque la somme
 des virages ne vaut pas zéro à ce moment. Il continue de suivre le mur
-jusqu'à avoir complétement fait le tour, et le quite en regardant à gauche
+jusqu'à avoir complétement fait le tour, et le quitte en regardant à gauche
 une fois parvenu sous l'obstacle.
+
 
 ### Objectif de cet exercice ###
 
-Reprenez la méthode de l'exercice
+Reprenez la méthode ` void keepHandOnSideWall()` de l'exercice
 précédent. Modifiez cette méthode pour compter les virages pris par votre
 buggle (+1 lorsqu'il a tourné à gauche par rapport à son origine, -1
 lorsqu'il a tourné à droite). Pour comptabiliser vous aurez besoin d'ajouter
-une variable de type entière à votre programme.
+une variable ` angleSum` de type entière à votre programme.
 
-Écrivez une méthode indiquant
+Écrivez une méthode ` boolean isChosenDirectionFree()` indiquant
 si la direction arbitraire que vous avez choisie est libre, c'est-à-dire si
 vous pouvez vous déplacer dans cette direction. Notez que la démo utilise la
 direction NORTH pour cela. Vous pouvez retrouver la direction courante de la
-buggle en utilisant la méthode .  Vous
+buggle en utilisant la méthode ` Direction getDirection()` .  Vous
 pouvez diriger (sans se déplacer) votre buggle dans une direction en
-utilisant la méthode .  Pensez à
-mémoriser (dans une variable de type ) la direction
+utilisant la méthode ` void setDirection(Direction d)` .  Pensez à
+mémoriser (dans une variable de type ` Direction` ) la direction
 courante de votre buggle avant de vérifier si votre buggle peut se diriger
 vers sa direction de prédilection pour pouvoir restaurer l'état après coup.
 
 Vous pouvez être amenés à modifier également le reste de votre code, mais
 ces changements devraient rester limités.
+
+  
+  
+` La méthodevoid run()` ` doit déplacer votre buggle dans votre
+direction de prédilection (il est conseillé de choisir le nord pour
+cela). Ensuite, vous devez écrire la boucle principale de
+l'algorithme. Autrement dit, tant que votre buggle n'a pas trouvé son
+biscuit, il faut avancer jusqu'à un obstacle dans la direction de
+prédilection. Quand un obstacle est rencontré, il faut garder la patte sur
+un mur (en utilisantvoid keepHandOnSideWall()` ) tant que la
+somme des virages n'est pas nulle et que la direction de prédilection n'est
+pas libre. Faites cela jusqu'à trouver votre biscuit.
 

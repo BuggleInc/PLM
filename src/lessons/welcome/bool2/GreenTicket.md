@@ -1,3 +1,4 @@
+
 # GreenTicket #
 You have a
 green lottery ticket, with ints a, b, and c on it. If the numbers are

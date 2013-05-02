@@ -1,7 +1,8 @@
-# WithoutDoubles #
-Return the sum of two 6-sided dice rolls, each in the range 1..6. However,
-if noDoubles is true, if the two dice show the same value, increment one die
-to the next value, wrapping around to 1 if its value was 6.
+
+# Sans double #
+Renvoyez la somme du jet de deux dés à six faces. Cependant, si noDoubles
+est vrai et que les deux dés ont la même valeur, incrémentez l'un des dés à
+la valeur suivante, en le mettant à 1 si sa valeur était 6.
 
 Cet exercice a été extrait de l'excellent site d'exercices
 http://javabat.com/ pour JLM.

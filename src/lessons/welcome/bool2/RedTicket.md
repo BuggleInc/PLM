@@ -1,3 +1,4 @@
+
 # RedTicket #
 You have a
 red lottery ticket showing ints a, b, and c, each of which is 0, 1, or

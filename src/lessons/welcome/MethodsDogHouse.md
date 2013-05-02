@@ -1,18 +1,20 @@
+
 ## Building methodically ##
 We now would like to learn the buggle to build a doghouse. The seamingly
 simpler approach consists in directly writing the needed code as follows (it
-works because the buggle of this exercise leaves a red path as it moves).     forward();
-    forward();
-    turnLeft();
-    forward();
-    forward();
-    turnLeft();
-    forward();
-    forward();
-    turnLeft();
-    forward();
-    forward();
-    turnLeft();
+works because the buggle of this exercise leaves a red path as it moves). 
+<pre> forward();
+forward();
+turnLeft();
+forward();
+forward();
+turnLeft();
+forward();
+forward();
+turnLeft();
+forward();
+forward();
+turnLeft();</pre>
 
 It becomes harder when we want to draw two doghouses: we have to rewrite the
 same code twice, which is not really handy. Even worse: it's definitively
@@ -21,11 +23,12 @@ error sneaked into a code that you copied at several locations, you will
 have to fix it several times. And mind your back if you forget one of these
 locations.
 
-It is good form to *factorize your code* , ie to write it only once, for
+It is good form to **factorize your code** , ie to write it only once, for
 example in a method. This is what you will do now. It is even possible to go
-further by factorizing the method body with a loop, as seen
-previously. ### Exercise goal ###
-The goal of this exercise is to write a method called achieving the same result than the code above. The buggle will call your
+further by factorizing the method body with a ` for` loop, as seen
+previously. 
+### Exercise goal ###
+The goal of this exercise is to write a method called ` dogHouse` achieving the same result than the code above. The buggle will call your
 creation to create several dog houses around its world. Remind to factorize
 your method with a for loop.
 

@@ -1,9 +1,10 @@
+
 ## Lost between islands ##
 
 You thought that your algorithm was enough to escape mazes? Well,
 not every mazes...
 
-The we used so far only works if the entry and the exit
+The *wall follower algorithm* we used so far only works if the entry and the exit
 are placed near to walls connected to the external wall. But if the
 buggle begins in the middle of the maze, it may exist wall sections
 disconnected from the external wall.
@@ -26,7 +27,29 @@ To find the north wall, you simply run to the north as long as it's
 possible, and when facing an obstacle, you avoid it (using previous
 method).
 
-    
+  
+  
+
+<pre> ` Our new run() method will consist in two modes: our
+buggle will alternate between the "north runner mode" and the "left
+follower mode". You begin in "north runner mode", and switch to "left
+follower" when you have a wall at the north (do not forget to make
+sure you have a wall at your left before switching to "left follower"
+mode). You switch to "north runner" as soon as your buggle is facing
+north and is not in front of a wall during its trip around its left
+wall. The easiest way to write such a state machine is something likeint state=0;
+switch (state) {
+case 0:
+...
+state = 1;
+break;
+case 1:
+...
+state = 0;
+break;
+}` </pre>
+  
+  
 
 Don't forget to let the buggle pick the baggle at the end of your code.
 

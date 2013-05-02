@@ -1,4 +1,6 @@
+
 ## Even more pattern to draw ##
+
 ### (and methods to write) ###
 Here is yet another exercise where you have to reproduce the pattern
 provided in the "Objective" tab.

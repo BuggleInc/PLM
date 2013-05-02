@@ -1,4 +1,6 @@
+
 ## Encore des motifs à dessiner ##
+
 ### (et des méthodes à écrire) ###
 Voici de nouveau un exercice où il faut reproduire un motif donné dans
 l'onglet "Objective".

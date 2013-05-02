@@ -1,3 +1,4 @@
+
 # A des ados #
 On dira qu'un nombre est "ado" s'il appartient à l'intervale [13;19]. Étant
 donné trois nombres entiers, retournez vrai ssi un ou plusieurs d'entre eux

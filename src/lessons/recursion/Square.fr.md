@@ -1,3 +1,4 @@
+
 ## Les petites cousines des Buggles ##
 Aujourd'hui, nous allons faire la connaissance des petites cousines des
 buggles : les tortues. En fait, les tortues sont bien plus vieilles que les
@@ -21,21 +22,24 @@ complètement les tortues.
 
 D'un point de vue pratique, la plupart des méthodes que vous connaissez à
 propos des buggles fonctionnent également avec les tortues, à quelques
-variantes près. En particulier, la méthode prend en
+variantes près. En particulier, la méthode ` forward` prend en
 argument le nombre de pas donné comme un nombre double (voir "About this
-world" dans le menu pour plus de détails). ### Des doubles ? Mais qu'est ce que c'est ? ###
-C'est simplement un nombre à virgule. Exemple:     double x = 3.72;
-    x + 1.234 // Valeur = 4.954
-    x + 2 // Valeur = 5.72 (2 converti en 2.0 automatiquement)
-    x * 2 // Valeur = 7.44 (2 converti en 2.0 automatiquement)
-    x / 2 // Valeur = 1.86 (2 converti en 2.0 automatiquement)
-    (int) x // Valeur = 1 (“transtypage en int”, converti en entier en tronquant)
-    Math.round(x) // Valeur = 2 (1.86 arrondi à l'entier le plus proche)
-    Math.floor(x) // Valeur = 1 (1.86 arrondi en direction de moins l'infini)
-    Math.floor(-5.12) // Vale = -6 (Arrondi en direction de moins l'infini)
-    Math.ceiling(x) // Value = 2 (1.86 arrondi en direction de plus l'infini)
-    Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)
-    (double) 17 // Value = 17.0 (“transtypage en double”, converti en double)
+world" dans le menu pour plus de détails). 
+### Des doubles ? Mais qu'est ce que c'est ? ###
+C'est simplement un nombre à virgule. Exemple: 
+<pre> double x = 3.72;
+x + 1.234 // Valeur = 4.954
+x + 2 // Valeur = 5.72 (2 converti en 2.0 automatiquement)
+x * 2 // Valeur = 7.44 (2 converti en 2.0 automatiquement)
+x / 2 // Valeur = 1.86 (2 converti en 2.0 automatiquement)
+(int) x // Valeur = 1 (“transtypage en int”, converti en entier en tronquant)
+Math.round(x) // Valeur = 2 (1.86 arrondi à l'entier le plus proche)
+Math.floor(x) // Valeur = 1 (1.86 arrondi en direction de moins l'infini)
+Math.floor(-5.12) // Vale = -6 (Arrondi en direction de moins l'infini)
+Math.ceiling(x) // Value = 2 (1.86 arrondi en direction de plus l'infini)
+Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)
+(double) 17 // Value = 17.0 (“transtypage en double”, converti en double)</pre>
+
 ### Objectif de l'exercice ###
 Bien que ce soit le premier exercice de la leçon sur la récursivité, le code
 que vous devez écrire n'est pas récursif. L'objectif est de se familiariser
@@ -44,9 +48,10 @@ avec le monde des tortues avant d'attaquer les choses sérieuses.
 Vous devez reproduire une forme géométrique simple faite de quatre carrés de
 longueur 100 de coté (voir le monde objectif pour plus de détails). C'est
 sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la
-réutiliser lors de l'écriture de la méthode qui fait le
+réutiliser lors de l'écriture de la méthode ` run()` qui fait le
 travail. Il est indispensable d'écrire au moins la méthode run, dont le
-prototype est le suivant:     public void run() {
-    // ecrivez ici ce que doit faire votre tortue
-    }
+prototype est le suivant: 
+<pre> public void run() {
+// ecrivez ici ce que doit faire votre tortue
+}</pre>
 

@@ -1,42 +1,51 @@
+
 ## Méthodes avec paramètres ##
 N'êtes vous pas fatigué d'écrire encore et encore le code qui permet
 d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les
-méthode , , , et , , , et ainsi
+méthode forward2() , forward3() , forward4() , et backward2() , backward3() , backward4() , et ainsi
 de suite, ça ne constitue pas un réel gain de temps...
 
-Heureusement, il est possible de donner des *paramètres* à vos
+Heureusement, il est possible de donner des **paramètres** à vos
 méthodes. Il faut marquer leur type et leur nom entre les parenthèses qui
 suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de
-la fonction comme s'il s'agissait de variables définies ici.     double diviseParDeux(double x) {return x / 2;
-    }
+la fonction comme s'il s'agissait de variables définies ici. 
+<pre> double diviseParDeux(double x) {return x / 2;
+}</pre>
 
 À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les
-parenthèses de l'appel.     double y = diviseParDeux(3.14);
+parenthèses de l'appel. 
+<pre> double y = diviseParDeux(3.14);</pre>
 
 Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules,
-lors de la déclaration comme lors de l'appel.     double divise(double x, double y) {return x / y;
-    }
-    double y = divise(3.14 , 1.5);
+lors de la déclaration comme lors de l'appel. 
+<pre> double divise(double x, double y) {return x / y;
+}</pre>
+
+<pre> double y = divise(3.14 , 1.5);</pre>
 
 En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition
 qu'elles n'aient pas le même nombre et les mêmes types de paramètres (on dit
-qu'elles n'ont pas la même *signature* ).     int max(int x, int y) {if (x > y) {return x;}return y;
-    }
-    int max(int x, int y, int z) {if (x > y&&x > z) {return x;}if (y > z) {return y;}return z;
-    }
+qu'elles n'ont pas la même **signature** ). 
+<pre> int max(int x, int y) {if (x > y) {return x;}return y;
+}
+int max(int x, int y, int z) {if (x > y&&x > z) {return x;}if (y > z) {return y;}return z;
+}</pre>
 
-Remarquez que nous avons ici laissé de coté les de chaque
-alternative. Cela fonctionne tout de même car un interrompt
-l'exécution de la méthode. Si on arrive à la dernière ligne de , on est donc sur que car dans
-le cas contraire, le de la deuxième ligne aurait arrêté
+Remarquez que nous avons ici laissé de coté les else de chaque
+alternative. Cela fonctionne tout de même car un return interrompt
+l'exécution de la méthode. Si on arrive à la dernière ligne de ` max(int,int)` , on est donc sur que ` x=y` car dans
+le cas contraire, le return de la deuxième ligne aurait arrêté
 l'exécution de la fonction.
 
+
 ### Objectif de cet exercice ###
+` Il s'agit cette fois d'écrire une méthodemove(int nbPas, boolean forward)` ` qui avance denbPas` ` siforward`
 
 Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas
 grand chose pour vous, puisque toutes sont ici régies par le même code.
 
 Le code de la méthode à proprement parler ne devrait pas poser de problème.
+
 
 ## Et ensuite? ##
 
@@ -53,10 +62,10 @@ même amusants à résoudre ;)
 
 Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et
 passer directement à des exercices plus complets et plus intéressants. Par
-exemple, la leçon sur les vous apprendra à sortir d'un
+exemple, la leçon sur les *Labyrinthes* vous apprendra à sortir d'un
 labyrinthe. Les algorithmes impliqués ne sont pas ultra complexes, mais vous
 serez amenés à améliorer votre code à plusieurs reprises afin de pouvoir
-sortir de n'importe quel type de labyrinthe. La leçon est un
+sortir de n'importe quel type de labyrinthe. La leçon *LightBot* est un
 petit jeu de programmation où vous contrôlez un robot voulant éclairer le
 monde. Comme il est programmé graphiquement et non en Java, les premiers
 exercices peuvent être utilisés comme une introduction à ce que programmer

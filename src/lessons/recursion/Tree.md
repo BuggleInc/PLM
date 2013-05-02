@@ -1,6 +1,8 @@
+
 ## Trees ##
 We will now draw trees. For that, we will write a method using double
-recursion following this prototype     void tree(int steps, double length, double angle, double shrink)
+recursion following this prototype 
+<pre> void tree(int steps, double length, double angle, double shrink)</pre>
 
 To draw a tree of four levels, you have to draw a trunk of the given length,
 turn right of the given angle, draw a tree of level 3, turn left twice of

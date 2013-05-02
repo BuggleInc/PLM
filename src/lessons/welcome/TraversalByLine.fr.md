@@ -1,4 +1,5 @@
-## Parcours ligne par ligne ##
+
+## Parcours en ligne ##
 Il faut encore faire parcourir le monde à la buggle en numérotant les cases
 au passage, mais l'objectif de cet exercice est d'écrire un parcours ligne
 par ligne. La plupart du code écrit à l'exercice précédent reste utilisable,

@@ -1,8 +1,9 @@
-# ShareDigit #
-Given two ints, each in the range 10..99, return true if there is a digit
-that appears in both numbers, such as the 2 in 12 and 23. (Note: division,
-e.g. n/10, gives the left digit while the % "mod" n%10 gives the right
-digit.)
+
+# Chiffre partagé #
+Soit deux entiers, chacun étant dans l'intervalle [10,99], renvoyez vrai si
+il y a un chiffre qui apparait dans les deux nombres, comme 2 dans 12 et
+23. (Note: division, i.e.  n/10, renvoie le chiffre à gauche tant que le %
+"mod" n%10 renvoye le bon chiffre.)
 
 Cet exercice a été extrait de l'excellent site d'exercices
 http://javabat.com/ pour JLM.

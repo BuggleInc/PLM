@@ -1,6 +1,7 @@
-# AltPairs #
-Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9
-... so "kittens" yields "kien".
+
+# Sans les paires #
+Soit une chaîne de caractères, renvoyez la chaîne composée des caractères
+aux index 0,1,4,5,8,9 ... par exemple "kittens" devient "kien".
 
 Cet exercice a été extrait de l'excellent site d'exercices
 http://javabat.com/ pour JLM.

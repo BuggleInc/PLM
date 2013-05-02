@@ -1,3 +1,4 @@
+
 # BlueTicket #
 You have a
 blue lottery ticket, with ints a, b, and c on it. This makes three

@@ -1,3 +1,4 @@
+
 # Array667 #
 Given an
 array of ints, return the number of times that two 6's are next to each

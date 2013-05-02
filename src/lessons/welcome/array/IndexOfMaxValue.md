@@ -1,8 +1,9 @@
+
 # Index of the maximum value #
 
 In this exercise, you must compute the indice of the tab cell containing the biggest value.
 
-For that, fill the method. Its parameter is the array to
+For that, fill the ` indexOfMaximum(int[] tab)` method. Its parameter is the array to
 explore. Should the array contain the searched value
 several times, you should return the indice of the first occurrence.
 

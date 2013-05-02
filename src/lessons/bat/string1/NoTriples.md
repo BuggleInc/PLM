@@ -1,3 +1,4 @@
+
 # NoTriples #
 Given an
 array of ints, we'll say that a triple is a value appearing 3 times in

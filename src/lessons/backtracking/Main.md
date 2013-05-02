@@ -1,6 +1,7 @@
+
 # Backtracking lesson #
 
-This *experimental* lesson aims at teaching students about
+This **experimental** lesson aims at teaching students about
 backtracking. It is not ready for consumtion yet, not even the first
 exercises. It will feature several exercices on the topic allowing to
 progressively build the relevant notions and mental representation in

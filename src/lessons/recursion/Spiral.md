@@ -1,22 +1,25 @@
+
 ## Spirals ##
 We will now draw our first recursive function with the turtle. The goal is
 to draw different kind of spirals with the same function, which prototype is
-the following:     void spiral(int steps, int angle, int length, int increment)
+the following: 
+<pre> void spiral(int steps, int angle, int length, int increment)</pre>
 To help you understanding how to write it, here is an example of how the
-parameters change during one specific call:     spiral(5, 90, 0, 3);
-    forward(0);
-    turnLeft(90);
-    spiral(4,90,3,3);
-    forward(3);
-    turnLeft(90);
-    spiral(3,90,6,3);
-    forward(6);
-    turnLeft(90);
-    spiral(2,90,9,3);
-    forward(9);
-    turnLeft(90);
-    spiral(1,90,12,3);
-    forward(12);
-    turnLeft(90);
-    spiral(0,90,12,3);
+parameters change during one specific call: 
+<pre> spiral(5, 90, 0, 3);
+forward(0);
+turnLeft(90);
+spiral(4,90,3,3);
+forward(3);
+turnLeft(90);
+spiral(3,90,6,3);
+forward(6);
+turnLeft(90);
+spiral(2,90,9,3);
+forward(9);
+turnLeft(90);
+spiral(1,90,12,3);
+forward(12);
+turnLeft(90);
+spiral(0,90,12,3);</pre>
 

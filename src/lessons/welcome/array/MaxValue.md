@@ -1,12 +1,13 @@
+
 # Maximal value #
 
 In this exercise, you must compute the maximal value contained in an array.
-For that, fill the method, which parameter is
+For that, fill the ` maximum(int[] tab)` method, which parameter is
 the array to explore.
 
 To compute this value, sweep over the whole parameter. For each value, if it's
 bigger than the biggest value you saw so far, you must save this value somewhere to
 remember it afterward. You thus need an extra variable, which can be initialized to
 the value of the first array cell. Another possibility is to initialize it to the
-smallest integer that Java knows about (which can be retrieved through ).
+smallest integer that Java knows about (which can be retrieved through ` Integer.MIN_VALUE` ).
 

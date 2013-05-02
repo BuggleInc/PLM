@@ -1,3 +1,4 @@
+
 # Ticket bleu #
 Vous avez un ticket de loterie bleu, avec des entiers a, b et c inscrits
 dessus. Cela fait trois paires que l'on appellera ab, bc et ac. Considérez

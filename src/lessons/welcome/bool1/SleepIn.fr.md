@@ -1,3 +1,4 @@
+
 # Grasse matinée #
 Le paramètre weekday est vrai si nous sommes un jour de semaine, et le
 paramètre vacation est vrai si nous sommes en vacances. Nous pouvons dormir

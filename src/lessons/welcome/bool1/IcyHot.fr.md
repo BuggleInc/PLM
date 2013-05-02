@@ -1,3 +1,4 @@
+
 # Feu glacé #
 Étant donné deux températures, retournez vrai si l'une est inférieure à zéro
 et l'autre supérieure à 100.

@@ -1,9 +1,10 @@
+
 # Welcome #
 
 Welcome to the lightbot world. This is merely a programmer puzzle rather than a real lesson (although some use it to teach programming).
-The robot is not programmed in Java, but rather graphically. You can see the existing orders in the documentation using the menu. <
+The robot is not programmed in Java, but rather graphically. You can see the existing orders in the documentation using the *About this world* menu. <
 
 The goal of each board is simply to switch on every lights of the board using your little robot.
 
-This is a introduction exercise, which should be solvable by only moving forward and switching the light, using respectively and .
+This is a introduction exercise, which should be solvable by only moving forward and switching the light, using respectively <img src="resources/lightbot/forward.png" /> and <img src="resources/lightbot/light.png" /> .
 

@@ -1,3 +1,4 @@
+
 # Somme d'ados #
 Étant donné deux nombres entiers (a et b), retournez leur somme. Cependant,
 les valeurs ados (dans l'intervale [13;19]) sont particulièrement

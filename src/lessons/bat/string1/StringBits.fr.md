@@ -1,3 +1,4 @@
+
 # Éclats de chaîne #
 Étant donné une chaîne de caractères, retournez une nouvelle chaîne formée
 en

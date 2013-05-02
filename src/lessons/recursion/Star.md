@@ -1,13 +1,14 @@
+
 ## Turtles in the stars ##
 This is the last hand-on turtles exercise before recursion. The goal is to
 draw three 5-branches stars. Like any regular stars with N branches, the
 angle at each external corners are 360/N degrees while the angles between
 branches are of 2*360/N degrees.
 
-The first star to draw is black ( ) and its branches
-are 100 steps long. The second is blue ( ) and its
+The first star to draw is black ( ` Color.black` ) and its branches
+are 100 steps long. The second is blue ( ` Color.blue` ) and its
 branches are 80 steps long. It's shifted of 45 degrees from the first
-one. The last star is red ( ), its branches are 60
+one. The last star is red ( ` Color.red` ), its branches are 60
 steps long and it's shifted of 45 degrees from the previous one.
 
 Observe the world's objective to visualize the picture to draw.

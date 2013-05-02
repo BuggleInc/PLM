@@ -1,3 +1,4 @@
+
 # Radar de vitesse #
 Vous conduisez un peu trop vite et un officier de police vous
 arrête. Écrivez le code pour calculer le résultat, encodé sous forme d'un

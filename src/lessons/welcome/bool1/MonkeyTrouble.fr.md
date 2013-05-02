@@ -1,3 +1,4 @@
+
 # Problème de singe #
 Nous avons deux singes, a et b, et les paramètres aSmile et bSmile indiquent
 s'ils sourient. Nous avons un problème s'ils sourient tous les deux en même
