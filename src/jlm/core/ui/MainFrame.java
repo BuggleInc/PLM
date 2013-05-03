@@ -200,7 +200,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			public void actionPerformed(ActionEvent e) {
 				game.switchLesson("lessons.chooser");
 				mission_tab.path_md = (Game.getInstance().getCurrentLesson().getCurrentExercise()+"").replace('.', '/').replaceAll("@.*", "");
-				mission_tab.init();
+				mission_tab.init(true);
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));

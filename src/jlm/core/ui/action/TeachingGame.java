@@ -26,7 +26,7 @@ import jlm.core.ui.MissionEditorTabs;
 
 /**
  * This class allow administrator to get into the teaching mode by entering a password ('foo' as default)
- * @author richard Querci
+ * @author richard Guerci
  *
  */
 public class TeachingGame extends AbstractGameAction {
@@ -58,7 +58,7 @@ public class TeachingGame extends AbstractGameAction {
 			Global.admin=false;
 			item.setText("Teaching mode");
 			JOptionPane.showMessageDialog(null,"successfully disconnected from teaching mode");
-			mission_tab.init();
+			mission_tab.init(true);
 			if (about_lesson.getDialog()!=null){
 				about_lesson.getDialog().maj();
 			}
@@ -180,7 +180,7 @@ class FramePassword extends JPanel implements ActionListener {
 				Global.admin=true;
 				controllingFrame.setVisible(false);
 				item.setText("Quit teaching mode");
-				mission_tab.init();
+				mission_tab.init(true);
 				if (about_lesson.getDialog()!=null){
 					about_lesson.getDialog().maj();
 				}
