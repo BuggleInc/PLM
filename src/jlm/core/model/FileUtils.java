@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.ui.MarkdownDocument;
 
 /** This class is in charge of loading the resources from disk into memory
  * 
@@ -26,8 +27,8 @@ import jlm.core.model.lesson.ExerciseTemplated;
 public class FileUtils {
 	private static String locale;
 	
-	private final static String[] directories = { "", "lib/", "src/" };                
-
+	private final static String[] directories = { "", "lib/", "src/" };
+	private static String SEP = System.getProperty("file.separator");
 	
 	/** Specifies the locale that we have to use when looking for translated files */
 	public static void setLocale(String lang) {
@@ -38,7 +39,11 @@ public class FileUtils {
 	}
 	
 	public static BufferedReader newFileReader(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
-        String fileName = file.replace('.','/');
+	    return newFileReaderOption(file, extension, translatable, false);
+	}
+	
+	public static BufferedReader newFileReaderOption(String file, String extension, boolean translatable, boolean in_home_dir) throws FileNotFoundException, UnsupportedEncodingException {
+		String fileName = file.replace('.','/');
         if (translatable) {
             if (locale == null) 
                 throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
@@ -48,17 +53,26 @@ public class FileUtils {
         }
         fileName = fileName + (extension != null ? "." + extension : "");
                                
-        int i = 0;
-        boolean found = false;
-        while (!found && i<directories.length) {
-        	if ((new File(directories[i] + fileName)).exists()) {
-        		found = true;
-        		fileName = directories[i] + fileName;
-        	} else {
-        		i++;
-        	}   	
+    	boolean found = false;
+    	if(in_home_dir){
+    		if ((new File(MarkdownDocument.getSAVE_PATH() + SEP + fileName)).exists()) {
+    			found = true;
+    			fileName = MarkdownDocument.getSAVE_PATH() + SEP + fileName;
+    		}
+    	}
+    	
+        if(!found){
+        	int i = 0;
+        	while (!found && i<directories.length) {
+        		if ((new File(directories[i] + fileName)).exists()) {
+        			found = true;
+        			fileName = directories[i] + fileName;
+        		} else {
+        			i++;
+        		}   	
+        	}
         }
-        
+
         if (found) {
         	//System.out.println("[DEBUG] I found "+fileName+" on the filesystem.");
         	return new BufferedReader(new FileReader(fileName));
@@ -89,7 +103,11 @@ public class FileUtils {
 	}	
 	
 	public static StringBuffer readContentAsText(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
-		BufferedReader br = FileUtils.newFileReader(file, extension, translatable);
+		return readContentAsTextOption(file, extension, translatable, false);
+	}
+	
+	public static StringBuffer readContentAsTextOption(String file, String extension, boolean translatable, boolean in_home_dir) throws FileNotFoundException, UnsupportedEncodingException {
+		BufferedReader br = FileUtils.newFileReaderOption(file, extension, translatable, in_home_dir);
 		String newLine = System.getProperty("line.separator");
 		
 		StringBuffer sb = new StringBuffer();
