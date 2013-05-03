@@ -21,6 +21,9 @@ import javax.swing.JTextPane;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
+import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
+
 import com.petebevin.markdown.MarkdownProcessor;
 
 public class MarkdownEditorView extends JPanel implements Observer, ActionListener
@@ -100,12 +103,27 @@ public class MarkdownEditorView extends JPanel implements Observer, ActionListen
 		});
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void update(Observable arg0, Object arg1)
 	{
+		Game game = Game.getInstance();
 		MarkdownDocument md = (MarkdownDocument) arg0;
 		if(md.isLoad_editor()){editor.setText(md.getText());}
-		view.setText(markdownProcessor.markdown(md.getText()));
+		String res = new String(md.getText());
+
+		for(ProgrammingLanguage l:game.getProgrammingLanguages()){
+			if(Global.admin){
+				res=res.replaceAll("<"+l.getLang().toLowerCase()+">","["+l.getLang().toLowerCase()+"]");
+				res=res.replaceAll("</"+l.getLang().toLowerCase()+">","[/"+l.getLang().toLowerCase()+"]");
+			}
+			else{
+				if(!l.equals(game.getProgrammingLanguage())){
+					res=res.replaceAll("<"+l.getLang().toLowerCase()+">.*</"+l.getLang().toLowerCase()+">","");
+				}
+			}
+		}
+		view.setText(markdownProcessor.markdown(res));
 	}
 
 	class SaveListener implements ActionListener
