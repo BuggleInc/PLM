@@ -2,18 +2,15 @@ package jlm.universe.bugglequest.mapeditor;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.URL;
-import java.util.List;
-import java.util.Observer;
 
 import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
-import javax.swing.ComboBoxModel;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -23,19 +20,10 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
-import jlm.core.model.Game;
-import jlm.core.ui.EntityCellRenderer;
-import jlm.core.ui.EntityComboListAdapter;
 import jlm.core.ui.ResourcesCache;
-import jlm.universe.Direction;
-import jlm.universe.Entity;
-import jlm.universe.EntityControlPanel;
-import jlm.universe.bugglequest.Buggle;
-import jlm.universe.bugglequest.BuggleWorld;
-import jlm.universe.bugglequest.ui.BuggleButtonPanel;
 
 
-public class MainFrame extends JFrame {
+public class MapEditorPanel extends JPanel {
 
 	private static final long serialVersionUID = -7243431953648987489L;
 
@@ -43,13 +31,10 @@ public class MainFrame extends JFrame {
 	private ButtonGroup tools;
 	private File path;	
 	
-	public MainFrame(Editor editor) {
-		super("BuggleQuest - MapEditor");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public MapEditorPanel(Editor editor) {
 		this.editor = editor;
 		initComponents();
 		setSize(800, 600);
-		setVisible(true);
 	}
 
 	public void initComponents() {
@@ -61,14 +46,15 @@ public class MainFrame extends JFrame {
 		fileMenu.add(new NewMapAction());
 		fileMenu.add(new LoadMapAction());
 		fileMenu.add(new SaveMapAction());
-		fileMenu.add(new QuitAction());
 
 		menuBar.add(fileMenu);
-		this.setJMenuBar(menuBar);
+		//this.setJMenuBar(menuBar);
 
-		getContentPane().setLayout(new BorderLayout());
 
-		JToolBar toolBar = new JToolBar();
+		setLayout(new BorderLayout());
+		add(menuBar, BorderLayout.PAGE_START);
+		
+		JToolBar toolBar = new JToolBar(JToolBar.VERTICAL);
 
 		JToggleButton topButton = createButton("topwall"); 
 		JToggleButton leftButton = createButton("leftwall"); 
@@ -117,16 +103,16 @@ public class MainFrame extends JFrame {
 		tools.add(colorButton);
 		tools.add(textButton);
 
-		getContentPane().add(toolBar, BorderLayout.NORTH);
+		add(toolBar, BorderLayout.LINE_START);
 
 		MapView mapView = new MapView(editor);
 		editor.addMapView(mapView);
-		getContentPane().add(mapView, BorderLayout.CENTER);
+		add(mapView, BorderLayout.CENTER);
 		
 		// buggles panel
 		JPanel panelBuggles = new JPanel();
 		panelBuggles.setLayout(new BorderLayout());
-		getContentPane().add(panelBuggles, BorderLayout.SOUTH);
+		add(panelBuggles, BorderLayout.SOUTH);
 		
 		// buggle selection panel
 		BuggleChooser buggleChooser = new BuggleChooser(editor.getWorld());
@@ -191,7 +177,7 @@ public class MainFrame extends JFrame {
 				w = Integer.parseInt(wString);
 				h = Integer.parseInt(hString);
 				editor.createNewMap(w, h);
-				MainFrame.this.path = null;
+				MapEditorPanel.this.path = null;
 			}
 		}
 
@@ -207,11 +193,11 @@ public class MainFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fc;
-			if (MainFrame.this.path != null)
-				fc = new JFileChooser(MainFrame.this.path);
+			if (MapEditorPanel.this.path != null)
+				fc = new JFileChooser(MapEditorPanel.this.path);
 			else
 				fc = new JFileChooser();
-			int status = fc.showSaveDialog(MainFrame.this);
+			int status = fc.showSaveDialog(MapEditorPanel.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {
 				File file = fc.getSelectedFile();
@@ -230,26 +216,12 @@ public class MainFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fc = new JFileChooser();
-			int status = fc.showOpenDialog(MainFrame.this);
+			int status = fc.showOpenDialog(MapEditorPanel.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {
-				MainFrame.this.path = fc.getSelectedFile();
-				editor.loadMap(MainFrame.this.path);
+				MapEditorPanel.this.path = fc.getSelectedFile();
+				editor.loadMap(MapEditorPanel.this.path);
 			}
-		}
-
-	}
-
-	class QuitAction extends AbstractAction {
-		private static final long serialVersionUID = 1L;
-
-		public QuitAction() {
-			super("Quit Map Editor");
-		}
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			dispose();
 		}
 
 	}
