@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 
 import jlm.core.model.Game;
+import jlm.core.model.lesson.Exercise;
+import jlm.core.ui.ExerciseView;
 import jlm.core.ui.Global;
 import jlm.core.ui.MissionEditorTabs;
 
@@ -36,7 +38,7 @@ public class TeachingGame extends AbstractGameAction {
 	private static final long serialVersionUID = 1L;
 	JPasswordField passwordField;
 	private JMenuItem item;
-	MissionEditorTabs mission_tab;
+	static MissionEditorTabs mission_tab;
 	private AboutGame about_lesson;
 	private AboutGame about_world;
 
@@ -58,7 +60,7 @@ public class TeachingGame extends AbstractGameAction {
 			Global.admin=false;
 			item.setText("Teaching mode");
 			JOptionPane.showMessageDialog(null,"successfully disconnected from teaching mode");
-			mission_tab.init(true);
+			changeMode();
 			if (about_lesson.getDialog()!=null){
 				about_lesson.getDialog().maj();
 			}
@@ -82,6 +84,13 @@ public class TeachingGame extends AbstractGameAction {
 
 	public void setAboutWorld(AboutGame about_world) {
 		this.about_world=about_world;
+	}
+	
+	public static void changeMode(){
+		mission_tab.init(true);
+		if (ExerciseView.isOk())
+			ExerciseView.getInstance().selectedWorldHasChanged(null);
+		
 	}
 }
 
@@ -180,7 +189,7 @@ class FramePassword extends JPanel implements ActionListener {
 				Global.admin=true;
 				controllingFrame.setVisible(false);
 				item.setText("Quit teaching mode");
-				mission_tab.init(true);
+				TeachingGame.changeMode();
 				if (about_lesson.getDialog()!=null){
 					about_lesson.getDialog().maj();
 				}
