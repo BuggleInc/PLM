@@ -22,12 +22,12 @@ public class RandomMouseMaze extends ExerciseTemplated {
 				
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
-		loadMap(myWorlds[0],"lessons/maze/RandomMouseMaze");
+		myWorlds[0] = new BuggleWorld("Swiss cheese", 4, 4); 
+		loadMap(myWorlds[0],"lib/resources/maze/maps/RandomMouseMaze");
 		new Buggle(myWorlds[0], "Thésée", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
 		
-		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		loadMap(myWorlds[1],"lessons/maze/RandomMouseMaze2");
+		myWorlds[1] = new BuggleWorld("Blue cheese", 4, 4); 
+		loadMap(myWorlds[1],"lib/resources/maze/maps/RandomMouseMaze2");
 		new Buggle(myWorlds[1], "ZoroRorronoa", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);
