@@ -13,9 +13,11 @@ import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
+import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.bugglequest.AbstractBuggle;
@@ -33,7 +35,6 @@ public class BuggleButtonPanel extends EntityControlPanel {
 	private JComboBox brushColorComboBox;
 	
 	public BuggleButtonPanel() {
-
 		setLayout(new FlowLayout());
 		
 		initializeButtons();
@@ -53,7 +54,8 @@ public class BuggleButtonPanel extends EntityControlPanel {
 				try {
 					((AbstractBuggle)Game.getInstance().getSelectedEntity()).forward();
 				} catch (BuggleWallException e) {
-					 e.printStackTrace();
+					showWallHuggingErrorMessageDialog();
+					// e.printStackTrace();
 					//game.getOutputWriter().log(e);
 				}
 			}
@@ -66,8 +68,9 @@ public class BuggleButtonPanel extends EntityControlPanel {
 				try {
 					((AbstractBuggle)Game.getInstance().getSelectedEntity()).backward();
 				} catch (BuggleWallException e) {
+					showWallHuggingErrorMessageDialog();
 					// e.printStackTrace();
-					Game.getInstance().getOutputWriter().log(e);
+					// Game.getInstance().getOutputWriter().log(e);
 				}
 			}
 		});
@@ -114,7 +117,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		
 		brushColorComboBox=new JComboBox (colors);
 		brushColorComboBox.setRenderer(new BuggleColorCellRenderer());
-		brushColorComboBox.setSelectedItem(Color.LIGHT_GRAY);
+		brushColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBrushColor());
 		brushColorComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				JComboBox cb = (JComboBox) event.getSource();
@@ -126,7 +129,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		
 		buggleColorComboBox=new JComboBox (colors);
 		buggleColorComboBox.setRenderer(new BuggleColorCellRenderer());
-		buggleColorComboBox.setSelectedItem(Color.BLACK);
+		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getColor());
 		buggleColorComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				JComboBox cb = (JComboBox) event.getSource();
@@ -207,4 +210,19 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		buggleColorComboBox.setEnabled(enabled);
 		brushColorComboBox.setEnabled(enabled);
 	}
+	
+	public void showWallHuggingErrorMessageDialog() {
+		String message ;
+		String title = "Wall hugging error";
+		if ( FileUtils.getLocale().equals("fr"))
+		{
+			message = "Votre buggle est rentrée dans un mur, ça fait mal ! ='(";
+		}
+		else
+		{
+			message = "Your buggle has collided with a wall, it hurts a lot ! ='(";
+		}
+		JOptionPane.showMessageDialog(null, message,title, JOptionPane.ERROR_MESSAGE);
+	}
+	
 }
