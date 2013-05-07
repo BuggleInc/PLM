@@ -6,23 +6,13 @@
    un "Run" remet zéro correctement
  * certains tests de countTeen() semblent faux par rapport à l'énoncé
 
- 
  * dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
- 
 
 ***************** BASE
 
 Assez urgent :
  * Quand un exo est fait, il faut passer au suivant de la lesson
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
- 
-D'autres points moins urgents :
- * on pourait couper l'exercice sur "la chasse à la limace" en deux :
-   - écrire hunt() en fournissant la méthode isFacingTrail() sans donner le code celle-ci
-   - demander ensuite d'écrire la méthode isFacingTrail()
- * le bouton quitter est mal-placé (un triple clic qui l'application), 
-   il serait utile de demander une confirmation avant de quitter l'application.
- * pas moyen de changer la couleur d'une buggle interactivement
 
 Une série d'idées bêtes :
  * J'aimerais ajouter une sorte de diff entre le monde attendu et le
