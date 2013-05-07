@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-01 09:31-0800\n"
+"POT-Creation-Date: 2013-05-07 12:23-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1099,6 +1099,18 @@ msgid "<a href=\"jlm://load_jar\">→ Load a lesson JAR</a>"
 msgstr ""
 
 #. type: Content of: <h1>
+#: src/lessons/chooser/Main.html:1
+msgid "Lesson chooser"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/chooser/Main.html:3
+msgid ""
+"This isn't a real lesson, it's here that you can select a lesson among "
+"others."
+msgstr ""
+
+#. type: Content of: <h1>
 #: src/lessons/meta/HanoiCreateWorld.html:1
 msgid "Creating a new JLM world"
 msgstr ""
@@ -1442,57 +1454,57 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91 src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254 src/lessons/welcome/Main.html:335 src/lessons/welcome/Main.html:415 src/lessons/welcome/Main.html:455
+#: src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91 src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254 src/lessons/welcome/Main.html:348 src/lessons/welcome/Main.html:428 src/lessons/welcome/Main.html:468
 msgid "&nbsp;"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92 src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255 src/lessons/welcome/Main.html:336 src/lessons/welcome/Main.html:416 src/lessons/welcome/Main.html:456 src/lessons/welcome/Basics.html:1
+#: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92 src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255 src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429 src/lessons/welcome/Main.html:469 src/lessons/welcome/Basics.html:1
 msgid "Instructions"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93 src/lessons/welcome/Main.html:176 src/lessons/welcome/Main.html:256 src/lessons/welcome/Main.html:337 src/lessons/welcome/Main.html:417 src/lessons/welcome/Main.html:457
+#: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93 src/lessons/welcome/Main.html:176 src/lessons/welcome/Main.html:256 src/lessons/welcome/Main.html:350 src/lessons/welcome/Main.html:430 src/lessons/welcome/Main.html:470
 msgid "Comments"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94 src/lessons/welcome/Main.html:177 src/lessons/welcome/Main.html:257 src/lessons/welcome/Main.html:338 src/lessons/welcome/Main.html:418 src/lessons/welcome/Main.html:458
+#: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94 src/lessons/welcome/Main.html:177 src/lessons/welcome/Main.html:257 src/lessons/welcome/Main.html:351 src/lessons/welcome/Main.html:431 src/lessons/welcome/Main.html:471
 msgid "Conditionals/ Expressions"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:78 src/lessons/welcome/Main.html:95 src/lessons/welcome/Main.html:178 src/lessons/welcome/Main.html:258 src/lessons/welcome/Main.html:339 src/lessons/welcome/Main.html:419 src/lessons/welcome/Main.html:459 src/lessons/welcome/LoopWhile.html:1
+#: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:78 src/lessons/welcome/Main.html:95 src/lessons/welcome/Main.html:178 src/lessons/welcome/Main.html:258 src/lessons/welcome/Main.html:352 src/lessons/welcome/Main.html:432 src/lessons/welcome/Main.html:472 src/lessons/welcome/LoopWhile.html:1
 msgid "While loops"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:13 src/lessons/welcome/Main.html:96 src/lessons/welcome/Main.html:179 src/lessons/welcome/Main.html:259 src/lessons/welcome/Main.html:340 src/lessons/welcome/Main.html:420 src/lessons/welcome/Main.html:460
+#: src/lessons/welcome/Main.html:13 src/lessons/welcome/Main.html:96 src/lessons/welcome/Main.html:179 src/lessons/welcome/Main.html:259 src/lessons/welcome/Main.html:353 src/lessons/welcome/Main.html:433 src/lessons/welcome/Main.html:473
 msgid "Variables"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:14 src/lessons/welcome/Main.html:97 src/lessons/welcome/Main.html:133 src/lessons/welcome/Main.html:180 src/lessons/welcome/Main.html:260 src/lessons/welcome/Main.html:341 src/lessons/welcome/Main.html:421 src/lessons/welcome/Main.html:461 src/lessons/welcome/LoopFor.html:1
+#: src/lessons/welcome/Main.html:14 src/lessons/welcome/Main.html:97 src/lessons/welcome/Main.html:133 src/lessons/welcome/Main.html:180 src/lessons/welcome/Main.html:260 src/lessons/welcome/Main.html:354 src/lessons/welcome/Main.html:434 src/lessons/welcome/Main.html:474 src/lessons/welcome/LoopFor.html:1
 msgid "For loops"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:15 src/lessons/welcome/Main.html:98 src/lessons/welcome/Main.html:181 src/lessons/welcome/Main.html:261 src/lessons/welcome/Main.html:342 src/lessons/welcome/Main.html:422 src/lessons/welcome/Main.html:462
+#: src/lessons/welcome/Main.html:15 src/lessons/welcome/Main.html:98 src/lessons/welcome/Main.html:181 src/lessons/welcome/Main.html:261 src/lessons/welcome/Main.html:355 src/lessons/welcome/Main.html:435 src/lessons/welcome/Main.html:475
 msgid "Do/While loops"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:16 src/lessons/welcome/Main.html:99 src/lessons/welcome/Main.html:161 src/lessons/welcome/Main.html:182 src/lessons/welcome/Main.html:262 src/lessons/welcome/Main.html:343 src/lessons/welcome/Main.html:423 src/lessons/welcome/Main.html:463 src/lessons/welcome/Methods.html:1
+#: src/lessons/welcome/Main.html:16 src/lessons/welcome/Main.html:99 src/lessons/welcome/Main.html:161 src/lessons/welcome/Main.html:182 src/lessons/welcome/Main.html:262 src/lessons/welcome/Main.html:356 src/lessons/welcome/Main.html:436 src/lessons/welcome/Main.html:476 src/lessons/welcome/Methods.html:1
 msgid "Methods"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:17 src/lessons/welcome/Main.html:100 src/lessons/welcome/Main.html:183 src/lessons/welcome/Main.html:263 src/lessons/welcome/Main.html:344 src/lessons/welcome/Main.html:424 src/lessons/welcome/Main.html:464
+#: src/lessons/welcome/Main.html:17 src/lessons/welcome/Main.html:100 src/lessons/welcome/Main.html:183 src/lessons/welcome/Main.html:263 src/lessons/welcome/Main.html:357 src/lessons/welcome/Main.html:437 src/lessons/welcome/Main.html:477
 msgid "Switch"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:345 src/lessons/welcome/Main.html:425 src/lessons/welcome/Main.html:465
+#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438 src/lessons/welcome/Main.html:478
 msgid "Arrays"
 msgstr ""
 
@@ -1582,62 +1594,67 @@ msgid "Slug Hunting"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:348 src/lessons/welcome/Snake.html:1
+#: src/lessons/welcome/Main.html:335 src/lessons/welcome/SlugTracking.html:1
+msgid "Slug Tracking"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:361 src/lessons/welcome/Snake.html:1
 msgid "Snake World"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/Main.html:362 src/lessons/welcome/Array.html:1
+#: src/lessons/welcome/Main.html:375 src/lessons/welcome/Array.html:1
 msgid "Knitting and Arrays"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/Main.html:376 src/lessons/welcome/Array2.html:1
+#: src/lessons/welcome/Main.html:389 src/lessons/welcome/Array2.html:1
 msgid "Knitting, Arrays and modulos"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:389 src/lessons/welcome/TraversalByColumn.html:1
+#: src/lessons/welcome/Main.html:402 src/lessons/welcome/TraversalByColumn.html:1
 msgid "Traversal by column"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:402 src/lessons/welcome/TraversalByLine.html:1
+#: src/lessons/welcome/Main.html:415 src/lessons/welcome/TraversalByLine.html:1
 msgid "Traversal by line"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:428 src/lessons/welcome/TraversalZigZag.html:1
+#: src/lessons/welcome/Main.html:441 src/lessons/welcome/TraversalZigZag.html:1
 msgid "Zig-zag traversal"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:441 src/lessons/welcome/TraversalDiagonal.html:1
+#: src/lessons/welcome/Main.html:454 src/lessons/welcome/TraversalDiagonal.html:1
 msgid "Diagonal Traversal"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:469
+#: src/lessons/welcome/Main.html:482
 msgid "Meaning of the symbols"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:472
+#: src/lessons/welcome/Main.html:485
 msgid "Introducing the concept"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:475
+#: src/lessons/welcome/Main.html:488
 msgid "Working on the concept"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:478
+#: src/lessons/welcome/Main.html:491
 msgid "Concept assumed mastered"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:481
+#: src/lessons/welcome/Main.html:494
 msgid "Concept not mandated by the exercise"
 msgstr ""
 
@@ -3072,7 +3089,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/welcome/MethodsDogHouse.html:39 src/lessons/welcome/Array.html:166 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:41
+#: src/lessons/welcome/MethodsDogHouse.html:39 src/lessons/welcome/Array.html:161 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:41
 msgid "You're up."
 msgstr ""
 
@@ -4346,11 +4363,6 @@ msgid ""
 "<code>isFacingTrail()</code> method that is provided."
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/SlugTracking.html:1
-msgid "Slug Tracking"
-msgstr ""
-
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/SlugTracking.html:3
 msgid ""
@@ -4559,58 +4571,8 @@ msgid ""
 "kind:"
 msgstr ""
 
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:26
-msgid "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:27
-msgid "3"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:27
-msgid "7"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:27
-msgid "13"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:28
-msgid "8"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:28
-msgid "15"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:28
-msgid "6"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:29
-msgid "11"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:29
-msgid "10"
-msgstr ""
-
-#. type: Content of: <br><table><tr><td>
-#: src/lessons/welcome/Array.html:29
-msgid "9"
-msgstr ""
-
 #. type: Content of: <br><p>
-#: src/lessons/welcome/Array.html:33
+#: src/lessons/welcome/Array.html:28
 msgid ""
 "T is the array's name, T[0] is the name of the first cell, T[1] the name of "
 "the second cell, T[2] the third one, etc. And yes, the first cell in "
@@ -4618,7 +4580,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p>
-#: src/lessons/welcome/Array.html:37
+#: src/lessons/welcome/Array.html:32
 msgid ""
 "We can use an integer variable <i>i</i> to access with T[i] to the array's "
 "cells: when the value of <i>i</i> is 0, then T[i] accesses T[0], when the "
@@ -4627,19 +4589,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><h2>
-#: src/lessons/welcome/Array.html:42
+#: src/lessons/welcome/Array.html:37
 msgid "Initializing an array"
 msgstr ""
 
 #. type: Content of: <br><p>
-#: src/lessons/welcome/Array.html:43
+#: src/lessons/welcome/Array.html:38
 msgid ""
 "Let <code>T</code> be an array of 10 integer elements. It can then be "
 "initialized this way:"
 msgstr ""
 
 #. type: Content of: <br><p><pre>
-#: src/lessons/welcome/Array.html:46
+#: src/lessons/welcome/Array.html:41
 #, no-wrap
 msgid ""
 "for (int i = 0; i&lt;10; i++) {\n"
@@ -4648,34 +4610,34 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p>
-#: src/lessons/welcome/Array.html:51
+#: src/lessons/welcome/Array.html:46
 msgid "<code>T[i]</code> can be used just like a variable. We can set a new value:"
 msgstr ""
 
 #. type: Content of: <br><p><pre>
-#: src/lessons/welcome/Array.html:52
+#: src/lessons/welcome/Array.html:47
 #, no-wrap
 msgid "T[i] = 78;"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/Array.html:54
+#: src/lessons/welcome/Array.html:49
 msgid "We can access its value:"
 msgstr ""
 
 #. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/Array.html:55
+#: src/lessons/welcome/Array.html:50
 #, no-wrap
 msgid "x = T[i];"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/Array.html:57
+#: src/lessons/welcome/Array.html:52
 msgid "We can test this value:"
 msgstr ""
 
 #. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/Array.html:59
+#: src/lessons/welcome/Array.html:54
 #, no-wrap
 msgid ""
 "if (T[i] > 0 ) {\n"
@@ -4684,23 +4646,23 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><h3>
-#: src/lessons/welcome/Array.html:64
+#: src/lessons/welcome/Array.html:59
 msgid "Declaring an array"
 msgstr ""
 
 #. type: Content of: <br><p>
-#: src/lessons/welcome/Array.html:65
+#: src/lessons/welcome/Array.html:60
 msgid "An array can be declared the following way:"
 msgstr ""
 
 #. type: Content of: <br><p><pre>
-#: src/lessons/welcome/Array.html:66
+#: src/lessons/welcome/Array.html:61
 #, no-wrap
 msgid "int[] T;"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/Array.html:68
+#: src/lessons/welcome/Array.html:63
 msgid ""
 "<code>int</code> means that the elements of the array are of type integer; "
 "<code>T</code> is the name of the array and <code>[]</code> means that we "
@@ -4710,18 +4672,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/Array.html:73
+#: src/lessons/welcome/Array.html:68
 #, no-wrap
 msgid "int T[];"
 msgstr ""
 
 #. type: Content of: <br><p><h3>
-#: src/lessons/welcome/Array.html:75
+#: src/lessons/welcome/Array.html:70
 msgid "Allocating an array"
 msgstr ""
 
 #. type: Content of: <br><p>
-#: src/lessons/welcome/Array.html:77
+#: src/lessons/welcome/Array.html:72
 msgid ""
 "Declaring an array <code>T</code> only reserve the name <code>T</code> for "
 "later use. But the array is not initialized yet: it does not have any "
@@ -4730,18 +4692,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/Array.html:82
+#: src/lessons/welcome/Array.html:77
 msgid "First and foremost, we have to give a value to <code>T</code>:"
 msgstr ""
 
 #. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/Array.html:83
+#: src/lessons/welcome/Array.html:78
 #, no-wrap
 msgid "T = new int[10];"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/Array.html:84
+#: src/lessons/welcome/Array.html:79
 msgid ""
 "<code>new</code> means that we want to create something, and "
 "<code>int[10]</code> means that it is an array of 10 integer values. In "
@@ -4750,7 +4712,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:89
+#: src/lessons/welcome/Array.html:84
 msgid ""
 "The size of an array is fixed and cannot be changed after the creation of "
 "the array. To know the size of a <code>T</code> array, we can consult the "
@@ -4758,31 +4720,31 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:94
+#: src/lessons/welcome/Array.html:89
 msgid "It is forbidden to write:"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:95
+#: src/lessons/welcome/Array.html:90
 #, no-wrap
 msgid "int T[10]; // WRONG!!!"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:96
+#: src/lessons/welcome/Array.html:91
 msgid ""
 "You are required to use the <code>new</code> instruction. On the other hand, "
 "you perfectly can specify the size with a variable <code>i</code>."
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:98
+#: src/lessons/welcome/Array.html:93
 #, no-wrap
 msgid "T = new int[i];"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:99
+#: src/lessons/welcome/Array.html:94
 msgid ""
 "In this case, the array's size will be set to the value of <code>i</code> "
 "<b>when <code>new</code> gets called</b>. If the variable changes afterward, "
@@ -4790,34 +4752,34 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><h4>
-#: src/lessons/welcome/Array.html:103
+#: src/lessons/welcome/Array.html:98
 msgid "Declaration and allocation"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:104
+#: src/lessons/welcome/Array.html:99
 #, no-wrap
 msgid "int[] T = new int[10];"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:106
+#: src/lessons/welcome/Array.html:101
 msgid "We declare and allocate the array on the same line."
 msgstr ""
 
 #. type: Content of: <br><p><p><p><h4>
-#: src/lessons/welcome/Array.html:108
+#: src/lessons/welcome/Array.html:103
 msgid "Declaration and initialization"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:109
+#: src/lessons/welcome/Array.html:104
 #, no-wrap
 msgid "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:111
+#: src/lessons/welcome/Array.html:106
 msgid ""
 "We declare, allocate and initialize the array on the same line. To know the "
 "size of the array to allocate, the compiler counts the provided values. This "
@@ -4825,7 +4787,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:115
+#: src/lessons/welcome/Array.html:110
 #, no-wrap
 msgid ""
 "int[] T = new int[10];\n"
@@ -4836,12 +4798,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:122
+#: src/lessons/welcome/Array.html:117
 msgid "It is also equivalent to:"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:124
+#: src/lessons/welcome/Array.html:119
 #, no-wrap
 msgid ""
 "int[] T = new int[10];\n"
@@ -4851,19 +4813,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><h3>
-#: src/lessons/welcome/Array.html:130
+#: src/lessons/welcome/Array.html:125
 msgid "Arrays and method parameters"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:131
+#: src/lessons/welcome/Array.html:126
 msgid ""
 "It is perfectly ok to pass an array to a method as a parameter. The method "
 "must have a prototype similar to:"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:133
+#: src/lessons/welcome/Array.html:128
 #, no-wrap
 msgid ""
 "void myMethod(int[] values) {\n"
@@ -4872,12 +4834,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/Array.html:137
+#: src/lessons/welcome/Array.html:132
 msgid "On the caller side, that also very simple:"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/Array.html:139
+#: src/lessons/welcome/Array.html:134
 #, no-wrap
 msgid ""
 "int[] tab = new int[10];\n"
@@ -4886,12 +4848,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><p>
-#: src/lessons/welcome/Array.html:144
+#: src/lessons/welcome/Array.html:139
 msgid "We can also have methods returns arrays as results:"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><p><pre>
-#: src/lessons/welcome/Array.html:145
+#: src/lessons/welcome/Array.html:140
 #, no-wrap
 msgid ""
 "int[] otherMethod() {\n"
@@ -4902,12 +4864,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Array.html:151 src/lessons/recursion/Square.html:43 src/lessons/recursion/Circle.html:14 src/lessons/recursion/HanoiBoard.html:20
+#: src/lessons/welcome/Array.html:146 src/lessons/recursion/Square.html:43 src/lessons/recursion/Circle.html:14 src/lessons/recursion/HanoiBoard.html:20
 msgid "Goal of this exercise"
 msgstr ""
 
 #. type: Content of: <br><p><p><p><p>
-#: src/lessons/welcome/Array.html:152
+#: src/lessons/welcome/Array.html:147
 msgid ""
 "The <code>run()</code> method that you should write must declare an array of "
 "colors (<code>Color[]</code>) and allocate it. Beware, the first world is "
@@ -4917,7 +4879,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><p><p>
-#: src/lessons/welcome/Array.html:158
+#: src/lessons/welcome/Array.html:153
 msgid ""
 "Once the array allocated, we have to fill it. For each cel of the row, read "
 "the ground color (with <code>getGroundColor()</code>), and store it in the "
@@ -4925,7 +4887,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><p><p>
-#: src/lessons/welcome/Array.html:162
+#: src/lessons/welcome/Array.html:157
 msgid ""
 "Once hte array initialized, you have to reapply the pattern on every rows, "
 "for example by excuting <code>getWorldHeight()</code> times a method written "
