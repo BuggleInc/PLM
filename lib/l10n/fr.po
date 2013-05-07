@@ -9269,7 +9269,7 @@ msgid ""
 msgstr ""
 "Tant que notre buggle n'a pas trouvé la sortie, il doit progresser de la "
 "façon suivante : choisir un entier entre 0 et 2 au hasard à l'aide de la "
-"méthode wcode>random3()</code> et prendre l'une des décisions suivantes "
+"méthode <code>random3()</code> et prendre l'une des décisions suivantes "
 "selon l'entier choisi: avancer si il le peut, tourner à droite ou bien "
 "tourner à gauche)."
 
@@ -9969,7 +9969,7 @@ msgstr "Utilises la Force Luke !"
 #. type: Content of: <h2>
 #: src/lessons/maze/WallFindFollowMaze.html:1
 msgid "Finding the walls to follow"
-msgstr "Longer les murs"
+msgstr "Trouver les murs à longer"
 
 #. type: Content of: <p>
 #: src/lessons/maze/WallFindFollowMaze.html:3
