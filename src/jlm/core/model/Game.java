@@ -94,6 +94,8 @@ public class Game implements IWorldView {
 	private ISessionKit sessionKit = new ZipSessionKit(this);
 
 	private static boolean ongoingInitialization = false;
+	private static String lessonChooser = "lessons.chooser";
+	
 	public static Game getInstance() {
 		if (Game.instance == null) {
 			if (ongoingInitialization)
@@ -122,7 +124,7 @@ public class Game implements IWorldView {
 	 * Load the chooser, stored in jlm.core.ui.chooser
 	 */
 	public void loadChooser() {
-		Game.instance.switchLesson("lessons.chooser");
+		Game.instance.switchLesson(lessonChooser);
 	}
 	
 	
@@ -157,7 +159,9 @@ public class Game implements IWorldView {
 				return getCurrentLesson();
 			}
 		}
-		sessionKit.loadLesson(null, lesson);
+		// Prevent an error message telling us that the JLM couldn't load our code for the chooser -- kinda obvious
+		if ( !lessonName.equals(lessonChooser))
+			sessionKit.loadLesson(null, lesson);
 		setCurrentLesson(lesson);
 		statusArgRemove("Load lesson "+lessonName);
 		return lesson;
@@ -326,6 +330,7 @@ public class Game implements IWorldView {
 		LessonRunner runner = new LessonRunner(Game.getInstance(), this.lessonRunners);
 		runner.start();
 	}
+	@SuppressWarnings("deprecation")
 	public void stopExerciseExecution() {
 		while (this.lessonRunners.size() > 0) {
 			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
