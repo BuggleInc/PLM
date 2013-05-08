@@ -13,6 +13,9 @@ import jlm.universe.bugglequest.exception.BuggleWallException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 public abstract class AbstractBuggle extends Entity {
+	int k_val = 0;
+	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
+	
 	Color color;
 	
 	Color brushColor;
@@ -94,6 +97,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void brushUp() {
+		if (k_seq[k_val]==4) k_val++; else k_val = 0;
 		this.brushDown = false;
 	}
 
@@ -133,10 +137,12 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void turnLeft() {
+		if (k_seq[k_val]==2) k_val++; else k_val = 0;
 		setDirection(direction.left());
 	}
 
 	public void turnRight() {
+		if (k_seq[k_val]==3) k_val++; else k_val = 0;
 		setDirection(direction.right());
 	}
 
@@ -228,6 +234,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void forward() throws BuggleWallException {
+		if (k_seq[k_val]==0) k_val++; else k_val = 0;
 		move(direction.toPoint());
 	}
 
@@ -237,6 +244,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void backward() throws BuggleWallException {
+		if (k_seq[k_val]==1) k_val++; else k_val = 0;
 		move(direction.opposite().toPoint());
 	}
 
@@ -315,6 +323,15 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public void pickUpBaggle() throws NoBaggleUnderBuggleException, AlreadyHaveBaggleException {
+		if (k_seq[k_val]==5) k_val++; else k_val = 0;
+		if (k_val>k_seq.length-1) {
+			setName("Easter "+name);
+			System.out.println("EASTEEEER");
+			((BuggleWorld)world).easter= true;
+			k_val=0;
+			return;
+		}
+
 		if (!isOverBaggle())
 			throw new NoBaggleUnderBuggleException("There is no baggle to pick up");
 		if (isCarryingBaggle())

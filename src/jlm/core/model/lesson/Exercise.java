@@ -91,7 +91,8 @@ public abstract class Exercise  extends Lecture {
 	 * +++++++++++++++++++++++++
 	 * 
 	 */
-	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. I tried to put it as static, but of course strange behaviors happen afterwards
+	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. 
+	//TODO: I tried to put it as static, but of course strange behaviors happen afterwards
 	// Create a compiler of classes (using java 1.6)
 	private final InMemoryCompiler compiler = new InMemoryCompiler(
 			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
@@ -102,27 +103,24 @@ public abstract class Exercise  extends Lecture {
 	 * @throws JLMCompilerException 
 	 */
 	public void compileAll(LogWriter out) throws JLMCompilerException {
-		compiledClasses = new TreeMap<String, Class<Object>>();
-
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";");
 
-		/* Prepare the source files */
-		Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
-		if (sourceFiles.get(Game.JAVA) != null)
-			for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-				if (sf.isCompilable()) 
-					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
-
-		if (sources.isEmpty()) 
-			return;
-		
 		/* Do the compile (but only if the current language is Java: scripts are not compiled of course) */
 		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
+			/* Prepare the source files */
+			Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
+			if (sourceFiles.get(Game.JAVA) != null)
+				for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
+					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
+			
+			if (sources.isEmpty()) 
+				return;
+			
 			try {
 				DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-				compiledClasses = compiler.compile(sources, errs);
+				compiler.compile(sources, errs);
 
 				out.log(errs);
 			} catch (JLMCompilerException e) {
@@ -132,8 +130,7 @@ public abstract class Exercise  extends Lecture {
 
 				if (Game.getInstance().isDebugEnabled() && sourceFiles.get(Game.JAVA) != null)
 					for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-						if (sf.isCompilable()) 
-							System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
+						System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
 
 				throw e;
 			}
@@ -145,8 +142,7 @@ public abstract class Exercise  extends Lecture {
 				Map<String, String> scripts = new TreeMap<String, String>();
 				
 				for (SourceFile sf: sourceFiles.get(lang)) 
-					if (sf.isCompilable()) 
-						scripts.put(className(sf.getName()), sf.getCompilableContent(null)); 
+					scripts.put(className(sf.getName()), sf.getCompilableContent(null)); 
 				
 				scriptSources.put(lang,scripts); 
 			}
@@ -160,7 +156,7 @@ public abstract class Exercise  extends Lecture {
 		return packageName() + "." + name;
 	}
 	/** get the list of source files for a given language, or create it if not existent yet */
-	protected List<SourceFile> getSourceFiles(ProgrammingLanguage lang) {
+	protected List<SourceFile> getSourceFilesList(ProgrammingLanguage lang) {
 		List<SourceFile> res = sourceFiles.get(lang); 
 		if (res == null) {
 			res = new ArrayList<SourceFile>();
@@ -168,74 +164,49 @@ public abstract class Exercise  extends Lecture {
 		}
 		return res;
 	}
-	/** Add a new text file in child classes, ie file that is not going to be compiled  */
-	public void newTextFile(ProgrammingLanguage lang, String name, String content) {
-		SourceFile sf = new SourceFile(name, content);
-		sf.setCompilable(false);
-		getSourceFiles(lang).add(sf);
+	public int sourceFileCount(ProgrammingLanguage lang) {
+		return getSourceFilesList(lang).size();
+	}	
+	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, int i) {
+		return getSourceFilesList(lang).get(i);
 	}
+
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
-		newSource(lang, name, initialContent, template, "");
-	}
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template, String patterns) {
-		Map<String, String> pat = new TreeMap<String, String>();
-		for (String pattern: patterns.split(";")) {
-			String[] parts = pattern.split("/");
-			if (parts.length != 1 || !parts[0].equals("")) {
-				if (parts.length != 3 || !parts[0].equals("s")) 
-					throw new RuntimeException("Malformed pattern for file "+name+": '"+ pattern+"' (from '"+patterns+"')");
-				pat.put(parts[1], parts[2]);
-			}
-		}
-		getSourceFiles(lang).add(new SourceFileRevertable(name, initialContent, template, pat));
-	}
-	public SourceFile getSourceFile(ProgrammingLanguage lang, String name) {
-		for (SourceFile sf: getSourceFiles(lang)) {
-			if (sf.getName().equals(name))
-				return sf;
-		}
-		return null;
+		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template));
 	}
 	
-	protected void mutateEntities(World[] worlds, ArrayList<String> newClasseNames) {
+	protected void mutateEntities(World[] worlds, String newClassName) {
+		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
+		String[] forbidden = new String[] {"'","\""};
+		for (String stringPattern : forbidden) {
+			Pattern pattern = Pattern.compile(stringPattern);
+			Matcher matcher = pattern.matcher(newClassName);
+			
+			if (matcher.matches())
+				throw new RuntimeException(newClassName+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
+						"Does your exercise use a broken tabname or entityname?");
+		}
+		
 		for (World current:worlds) {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
-			Iterator<Entity> entityIterator = current.entities();
-			for (String name : newClasseNames) {
-				/* Check that this is a valid name */
-				String[] forbidden = new String[] {"'","\""};
-				for (String stringPattern : forbidden) {
-					Pattern pattern = Pattern.compile(stringPattern);
-					Matcher matcher = pattern.matcher(name);
-				
-					if (matcher.matches())
-						throw new RuntimeException(name+" is not a valid java identifier (forbidden char: "+stringPattern+"). Does your exercise use a broken tabname?");
-				}
-
-				/* Get the next existing entity */
-				if (!entityIterator.hasNext()) 
-					throw new BrokenLessonException("Too much class names ("+newClasseNames.size()+")"+
-							"provided to mutateEntities compared to the amount of entities found "+
-							"("+current.getEntityCount()+")");
-				Entity old = entityIterator.next();
+			for (Entity old : current.getEntities()) {
 
 				if (Game.getProgrammingLanguage().equals(Game.JAVA) || 
 						Game.getProgrammingLanguage().equals(Game.LIGHTBOT)) {
-					/* Instanciate a new entity of the new type */
+					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
-						ent = (Entity)compiledClasses.get(className(name)).newInstance();
-						//System.out.println("Exercise:mutateEntities to "+className(name));
+						ent = (Entity)compiledClasses.get(className(newClassName)).newInstance();
 					} catch (InstantiationException e) {
-						throw new RuntimeException("Cannot instanciate entity of type "+className(name), e);
+						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
 					} catch (IllegalAccessException e) {
-						throw new RuntimeException("Illegal access while instanciating entity of type "+className(name), e);
+						throw new RuntimeException("Illegal access while instanciating entity of type "+className(newClassName), e);
 					} catch (NullPointerException e) {
 						/* this kind of entity was not written by student. try to get it from default class loader, or complain if it also fails */
 						try {
-							ent = (Entity)compiler.loadClass(name).newInstance(); 
+							ent = (Entity)compiler.loadClass(newClassName).newInstance(); 
 						} catch (Exception e2) {
-							throw new RuntimeException("Cannot find an entity of name "+className(name)+" or "+name+". Broken lesson.", e2);
+							throw new RuntimeException("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 						}
 					}
 
@@ -246,31 +217,19 @@ public abstract class Exercise  extends Lecture {
 					/* Add new entity to the to be returned entities set */
 					newEntities.add(ent);
 				} else { /* In scripting, we don't need to actually mutate the entity, just set the script to be interpreted later */
-					String script = scriptSources.get(Game.getProgrammingLanguage()).get(className(name));
+					String script = scriptSources.get(Game.getProgrammingLanguage()).get(className(newClassName));
 					if (script == null) 
-						throw new RuntimeException("Cannot retrieve the script for "+className(name));
+						throw new RuntimeException("Cannot retrieve the script for "+className(newClassName));
 					old.setScript(Game.getProgrammingLanguage(), script);
 				}
 			}
-			if (entityIterator.hasNext())
-				throw new BrokenLessonException("Not enough arguments provided to mutateEntities");
 			if (Game.getProgrammingLanguage().equals(Game.JAVA)) 
 				current.setEntities(newEntities);
 		}
 	}
-	protected void mutateEntity(World[] worlds, String newClasseName){
-		ArrayList<String> names= new ArrayList<String>();
-		for (int i=0; i<currentWorld[0].getEntityCount(); i++)
-			names.add(newClasseName);
-		mutateEntities(worlds, names);
-	}
 
-	protected void mutateEntities(ArrayList<String> newClasseNames){
-		mutateEntities(currentWorld, newClasseNames);
-	}
-
-	protected void mutateEntity(String newClasseName){		
-		mutateEntity(currentWorld, newClasseName);
+	protected void mutateEntities(String newClasseName){		
+		mutateEntities(currentWorld, newClasseName);
 	}
 
 	
@@ -279,19 +238,6 @@ public abstract class Exercise  extends Lecture {
 		sourceFiles = new HashMap<ProgrammingLanguage, List<SourceFile>>();
 		runtimePatterns = new TreeMap<String, String>();
 	}
-
-	@Deprecated
-	public String[] getSourceFilesNames(ProgrammingLanguage lang) {
-		String[] res = new String[sourceFiles.size()]; // will be too large if not all compilable, but who cares?
-		int i = 0;
-		for (SourceFile sf: getSourceFiles(lang)) {
-			if (sf.isCompilable()) {
-				res[i] = sf.getName();
-				i++;
-			}
-		}
-		return res;
-	}
 			
 	public List<World> getAnswerWorld() {
 		return Arrays.asList(answerWorld);
@@ -299,21 +245,6 @@ public abstract class Exercise  extends Lecture {
 	
 	public List<World> getInitialWorld() {
 		return Arrays.asList(this.initialWorld);
-	}
-
-	public int sourceFileCount(ProgrammingLanguage lang) {
-		return getSourceFiles(lang).size();
-	}
-	
-	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, int i) {
-		return getSourceFiles(lang).get(i);
-	}
-	public SourceFile getPublicSourceFile(ProgrammingLanguage lang, String name) {
-		for (SourceFile sf : getSourceFiles(lang)) {
-			if (sf.getName().equals(name))
-				return sf;
-		}
-		return null; // not found
 	}
 	
 	public int worldCount() {

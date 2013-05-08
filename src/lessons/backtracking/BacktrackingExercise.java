@@ -42,7 +42,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 
 	@Override
 	public void run(List<Thread> runnerVect){
-		mutateEntity(tabName);
+		mutateEntities(tabName);
 		for (World cw:currentWorld) {
 			System.out.println("Run world "+cw.getName()+"; entities:"+cw.getEntities());
 			cw.doDelay();

@@ -7,8 +7,11 @@ import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Iterator;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 import jlm.core.ui.ResourcesCache;
@@ -184,13 +187,26 @@ public class BuggleWorldView extends WorldView {
 		} else
 			g.setColor(b.getColor());
 
-		for (int dy=0; dy<INVADER_SPRITE_SIZE; dy++) {
-			for (int dx=0; dx<INVADER_SPRITE_SIZE; dx++) {
-				int direction = b.getDirection().intValue();
-				if (INVADER_SPRITE[direction][dy][dx] == 1) {
+		if (((BuggleWorld)world).easter) {
+			try {
+				InputStream is = getClass().getResourceAsStream("/jlm/universe/bugglequest/ui/rabbit.png");
+				ImageIcon ic = new ImageIcon(ImageIO.read(is));
+				g.drawImage(ic.getImage(), (int)(padx+ox),(int)(pady+oy), (int)getCellWidth(),(int)getCellWidth(),null);
+			} catch (IOException e) {
+				// Forget it
+				((BuggleWorld)world).easter = false;
+				return;
+			}
+			
+		} else {
+			for (int dy=0; dy<INVADER_SPRITE_SIZE; dy++) {
+				for (int dx=0; dx<INVADER_SPRITE_SIZE; dx++) {
+					int direction = b.getDirection().intValue();
+					if (INVADER_SPRITE[direction][dy][dx] == 1) {
 						g.fill(new Rectangle2D.Double(padx+pad+ox+dx*pixW, pady+pad+oy+dy*pixW, pixW, pixW));
-				}
-			}				
+					}
+				}				
+			}
 		}
 	}
 	
@@ -211,15 +227,27 @@ public class BuggleWorldView extends WorldView {
 		double ox = cell.getX()*getCellWidth(); // x-offset of the cell
 		double oy = cell.getY()*getCellWidth(); // y-offset of the cell
 		
-		
-		g.setColor(Baggle.DEFAULT_COLOR);
-		g.fill(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
-		g.setColor(getCellColor(cell.getX(), cell.getY()));
-		g.fill(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
+		if (((BuggleWorld)world).easter) {
+			try {
+				InputStream is = getClass().getResourceAsStream("/jlm/universe/bugglequest/ui/egg.png");
+				ImageIcon ic = new ImageIcon(ImageIO.read(is));
+				g.drawImage(ic.getImage(), (int)(padx+ox),(int)(pady+oy), (int)getCellWidth(),(int)getCellWidth(),null);
+			} catch (IOException e) {
+				// Forget it
+				((BuggleWorld)world).easter = false;
+				return;
+			}
+			
+		} else {
+			g.setColor(Baggle.DEFAULT_COLOR);
+			g.fill(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
+			g.setColor(getCellColor(cell.getX(), cell.getY()));
+			g.fill(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
 
-		g.setColor(Baggle.DEFAULT_COLOR.darker().darker());
-		g.draw(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
-		g.draw(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
+			g.setColor(Baggle.DEFAULT_COLOR.darker().darker());
+			g.draw(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
+			g.draw(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
+		}
 	}
 	
 	private void drawMessage(Graphics2D g, BuggleWorldCell cell, String msg) {

@@ -39,8 +39,13 @@ import javax.tools.JavaFileObject.Kind;
 
 
 /**
- * This class provides a facade to the javax.tools compiler, to ease its use in
- * our case. It is used in {@link jlm.core.model.lesson.Exercise}, where the student code gets compiled.
+ * This class provides an adapted interface to the javax.tools compiler.
+ * 
+ * Its main methode is compile(), of prototype: 
+ *  INPUT:  Map<String, CharSequence>  : a list of named sourcefiles
+ *  OUTPUT: Map<String, Class<Object>> : a list of named compiled class 
+ * 
+ * It is used in {@link jlm.core.model.lesson.Exercise}, where the student code gets compiled.
  * 
  * See also "Create dynamic applications with javax.tools", David J. Biesack.
  * http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR

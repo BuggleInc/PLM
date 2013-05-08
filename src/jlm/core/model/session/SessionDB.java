@@ -29,7 +29,7 @@ public class SessionDB {
 		
 		bodyLEP.put(sourceName, _body);
 	}
-	public String getCode(String exo, ProgrammingLanguage lang, String sourceName) {
+	public String getBody(String exo, ProgrammingLanguage lang, String sourceName) {
 		if (exo == null)
 			exo = Game.getInstance().getCurrentLesson().getCurrentExercise().getId();
 		if (lang == null)

@@ -1,36 +1,43 @@
+Sorry, this file is in french. It was intended to be personal and
+short lived, but you know how it goes. Most informations should be
+converted to issues on github probably.
+
 
 ***************** BUGS
 * The delay slider is not aware of the exercises changes. That is why it
   fails to get the value of the newly selected exercise.
- * le libération du verrou "step-by-step" ne se passe pas bien lors de l'utilisation de "Reset",
-   un "Run" remet zéro correctement
- * certains tests de countTeen() semblent faux par rapport à l'énoncé
+* le libération du verrou "step-by-step" ne se passe pas bien lors de l'utilisation de "Reset",
+  un "Run" remet zéro correctement
+* certains tests de countTeen() semblent faux par rapport à l'énoncé
 
  * dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
 
 ***************** BASE
 
 Assez urgent :
- * Quand un exo est fait, il faut passer au suivant de la lesson
+ * Quand un exo est fait, il faut passer au suivant de la lesson. 
+   Pour cela, il faudrait repérer quels sont les exos suivants dans le
+   graphe de la leçon, et les montrer dans le dialogue "vous avez
+   réussi". 
+   - Si y'a un seul exo suivant, il faut des boutons "passer à
+     l'exo suivant", "cancel(rester ici)"
+   - Si yen a plusieurs, faut ajouter une liste de radiobuttons pour
+     choisir quel exo suivant on veut.
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
-
+ 
 Une série d'idées bêtes :
- * J'aimerais ajouter une sorte de diff entre le monde attendu et le
-   monde créé s'il y a un problème, avec des ronds rouges autour des
-   cases de la mauvaise couleur, des croix sur les buggles mal
-   placées, etc.
+ * On pourrait représenter graphiquement le diff textuel entre le
+   monde attendu et le monde créé quand y'a des erreurs. Avec des
+   ronds rouges autour des cases de la mauvaise couleur, des croix sur
+   les buggles mal placées, etc.
  * les localisations de fichier dans la console devrait être des liens
    qui déplacent l'éditeur.
  * lors d'exécution pas à pas, j'aimerais afficher le contenu des
-   variables, mais ça semble très très dur. Si c'est des champs
-   d'objets, on peut tenter l'introspection. Sinon, je sais pas.
+   variables, mais ça semble très dur. on peut tenter l'introspection.
    Peut-être qu'en convertissant le tout en plugin eclipse on pourrait
    y arriver, mais pas cette année.
  * Changer le JavaEditor pour suivre le point d'exécution, comme c'est
    fait dans lightbot.
-
- * visualisation interessante pour les algo de tris
-   http://corte.si//posts/code/visualisingsorting/index.html
 
 ***************** LEÇONS          
 Il y a pleins d'idées d'exo sur les pages des gens qui ont
@@ -48,6 +55,6 @@ Ludiques pour programmeurs (nécessitent un mode King of hill?)
  * CodeRobot (combats de robots)
  * CodeRally (courses de voitures)
  * CodeInvaders (combats de vaisseaux spaciaux)
- * MARS (assembleur)
+ * MARS (assembleur) http://courses.missouristate.edu/kenvollmar/mars/
  * Corewars
  

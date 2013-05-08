@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -14,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComponent;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -25,14 +27,16 @@ import javax.swing.JSplitPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
+import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.GameState;
+import jlm.core.model.LessonLoadingException;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.FileUtils;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.action.AbstractGameAction;
@@ -90,9 +94,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent e) {
-		    		String message ;
-		    		String title;
-		    		if ( FileUtils.getLocale().equals("fr"))
+					String message ;
+					String title;
+					if ( FileUtils.getLocale().equals("fr"))
 		    		{
 		    			message = "Voulez-vous vraiment quitter ?";
 		    		 	title = "Quitter la JLM";
@@ -169,12 +173,33 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription("File related functions");
 		
+		menuItem = new JMenuItem(new AbstractGameAction(g, "Load lesson", null, "Load a lesson from file",  "Cannot load a lesson now", KeyEvent.VK_L) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				fc.setFileFilter(new FileNameExtensionFilter("JLM lesson files", "jlm"));
+				fc.setDialogType(JFileChooser.OPEN_DIALOG);
+				fc.showOpenDialog(MainFrame.getInstance());
+				File selectedFile = fc.getSelectedFile();
+
+				try {
+					if (selectedFile != null)
+						game.loadLessonFromJAR(fc.getSelectedFile());
+				} catch (LessonLoadingException lle) {
+					JOptionPane.showMessageDialog(null, lle.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); 
+				}
+			}
+		});
+		menu.add(menuItem);
+		
 		menuItem = new JMenuItem(new AbstractGameAction(g, "Switch lesson", null, "Go to another lesson",  "Cannot switch lesson now", KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.changeLesson("lessons.chooser");
+				game.switchLesson("lessons.chooser");
 			}
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));

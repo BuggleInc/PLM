@@ -12,7 +12,7 @@ public class LightBotExercise extends ExerciseTemplated {
 	public LightBotExercise(Lesson lesson) {
 		super(lesson);
 		setProgLanguages(Game.LIGHTBOT);
-		getSourceFiles(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
+		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
 	}
 
 	@Override

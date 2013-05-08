@@ -1,22 +1,15 @@
 package jlm.core.model.lesson;
 
-import java.util.Map;
-
-
 public class SourceFileRevertable extends SourceFile {
 
 	private String initialBody; 
 	
 	public SourceFileRevertable(String name, String initialBody) {
-		this(name, initialBody, null, null);
+		this(name, initialBody, null);
 	}
 
 	public SourceFileRevertable(String name, String initialBody, String template) {
-		this(name, initialBody, template, null);
-	}
-
-	public SourceFileRevertable(String name, String initialBody, String template, Map<String, String> patterns) {
-		super(name, initialBody, template, patterns);
+		super(name, initialBody, template);
 		this.initialBody = initialBody;
 	}
 	

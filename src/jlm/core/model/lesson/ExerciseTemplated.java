@@ -2,7 +2,6 @@ package jlm.core.model.lesson;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -10,9 +9,9 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -21,9 +20,7 @@ import jlm.universe.World;
 public abstract class ExerciseTemplated extends Exercise {
 
 	protected String tabName = getClass().getSimpleName(); /** Name of the tab in editor -- must be a valid java identifier */
-	protected ArrayList<String> tabsNames = null;
 	protected String entityName = getClass().getCanonicalName()+"Entity"; /** name of the class of entities being solution of this exercise */
-	protected ArrayList<String> entitiesNames = null;
 
 	public ExerciseTemplated(Lesson lesson) {
 		super(lesson);
@@ -226,65 +223,6 @@ public abstract class ExerciseTemplated extends Exercise {
 				debug?debugContent:initialContent,
 						skelContent.length()>0?skelContent:template);
 	}
-	protected void addEntityKind(World w, Entity se, String name) {
-		boolean foundOne = false;		
-		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
-			try {
-				addEntityKind(pl, w, se, name);
-				foundOne = true;
-			} catch (NoSuchEntityException e) {
-				/* Does not work for this exercise. I'd better find a working language */
-			}
-		}
-		if (!foundOne)
-			throw new RuntimeException("Cannot find an entity of name "+name+" for this exercise. You should fix your pathes and such");
-	}
-	protected void addEntityKind(ProgrammingLanguage lang, World w, Entity se, String name) throws NoSuchEntityException {
-		if (entitiesNames == null)  {
-			entitiesNames = new ArrayList<String>();
-			tabsNames = new ArrayList<String>();
-		}
-
-		w.addEntity(se);
-		se.setWorld(w);
-		se.setName(name);
-		entitiesNames.add(se.getClass().getName());
-		tabsNames.add("My"+name);
-		newSourceFromFile(lang, "My"+name, se.getClass().getName(),"java"); 
-	}
-	protected void addEntityKind(World[] ws, Entity se, String name) {
-		boolean foundOne = false;		
-		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
-			try {
-				addEntityKind(pl, ws, se, name);
-				addProgLanguage(pl);
-				foundOne = true;
-				//System.out.println("Found "+name+" in "+pl+" for "+this.name);
-			} catch (NoSuchEntityException e) {
-				if (getProgLanguages().contains(pl)) 
-					throw new RuntimeException("Exercise "+getName()+"is said to be compatible with language "+pl+", but I fail to find an entity of name "+name+" in this language",e);					
-				/* Does not work for this exercise, but nobody said it should. I'd better find a working language */
-			}
-		}
-		if (!foundOne)
-			throw new RuntimeException("Cannot find an entity of name "+name+" for this exercise. You should fix your pathes and such");
-	}
-	protected void addEntityKind(ProgrammingLanguage lang, World[] ws, Entity se, String name) throws NoSuchEntityException {
-		if (entitiesNames == null)  {
-			entitiesNames = new ArrayList<String>();
-			tabsNames = new ArrayList<String>();
-		}
-		for (int i=0;i<ws.length;i++) {
-			if (i==0) {
-				newSourceFromFile(lang, "My"+name, se.getClass().getName()); 
-				entitiesNames.add(se.getClass().getName());
-				tabsNames.add("My"+name);
-			}
-			ws[i].addEntity(se);
-			se.setWorld(ws[i]);
-			se.setName(name);
-		}
-	}
 
 	protected final void setup(World w) {
 		World[] ws = new World[1];
@@ -298,20 +236,15 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			boolean foundThisLanguage = false;
 			String searchedName = null;
-			for (SourceFile sf : getSourceFiles(lang)) {
+			for (SourceFile sf : getSourceFilesList(lang)) {
 				if (searchedName == null) {//lazy initialization
-					if (tabsNames != null) {
-						// If entities were added, use the name of the first one to detect whether this language is valid 
-						searchedName = tabsNames.get(0);
-					} else {
-						Pattern p = Pattern.compile(".*?([^.]*)$");
-						Matcher m = p.matcher(entityName);
-						if (m.matches())
-							searchedName = m.group(1);
-						p = Pattern.compile("Entity$");
-						m = p.matcher(searchedName);
-						searchedName = m.replaceAll("");
-					}
+					Pattern p = Pattern.compile(".*?([^.]*)$");
+					Matcher m = p.matcher(entityName);
+					if (m.matches())
+						searchedName = m.group(1);
+					p = Pattern.compile("Entity$");
+					m = p.matcher(searchedName);
+					searchedName = m.replaceAll("");
 				}
 				if (Game.getInstance().isDebugEnabled())
 					System.out.println("Saw "+sf.name+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
@@ -341,10 +274,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		Thread t = new Thread() {
 			@Override
 			public void run() {
-				if (entitiesNames != null)
-					mutateEntities(answerWorld,entitiesNames);
-				else 
-					mutateEntity(answerWorld,entityName);
+				mutateEntities(answerWorld,entityName);
 				for (World aw : answerWorld) {
 					Iterator<Entity> it = aw.entities();
 					while (it.hasNext())
@@ -365,10 +295,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].doDelay();
 
-		if (tabsNames == null)
-			mutateEntity(tabName);
-		else
-			mutateEntities(tabsNames);
+		mutateEntities(tabName);
 
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].runEntities(runnerVect);
@@ -383,10 +310,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		ProgrammingLanguage current = Game.getProgrammingLanguage();
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
-		if (entitiesNames == null)
-			mutateEntity(answerWorld, entityName);
-		else
-			mutateEntities(answerWorld, entitiesNames);
+		mutateEntities(answerWorld, entityName);
 
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
