@@ -12399,35 +12399,3 @@ msgstr ""
 #: src/lessons/smn/baseball/BaseballGameMorePlayers.html:37
 msgid "There are seven methods provided :"
 msgstr "Sept méthodes vous sont fournies :"
-
-#~ msgid ""
-#~ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
-#~ msgstr ""
-#~ "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;T&nbsp;&nbsp;&nbsp;&nbsp;"
-
-#~ msgid "3"
-#~ msgstr "3"
-
-#~ msgid "7"
-#~ msgstr "7"
-
-#~ msgid "13"
-#~ msgstr "13"
-
-#~ msgid "8"
-#~ msgstr "8"
-
-#~ msgid "15"
-#~ msgstr "15"
-
-#~ msgid "6"
-#~ msgstr "6"
-
-#~ msgid "11"
-#~ msgstr "11"
-
-#~ msgid "10"
-#~ msgstr "10"
-
-#~ msgid "9"
-#~ msgstr "9"

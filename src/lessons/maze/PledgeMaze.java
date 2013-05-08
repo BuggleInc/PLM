@@ -23,11 +23,11 @@ public class PledgeMaze extends ExerciseTemplated {
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
-		loadMap(myWorlds[0],"lib/resources/maze/maps/PledgeMaze");
+		loadMap(myWorlds[0],"resources/maze/maps/PledgeMaze");
 		new Buggle(myWorlds[0], "Thésée", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
 		
 		myWorlds[1] = new BuggleWorld("Trapception", 4, 4); 
-		loadMap(myWorlds[1],"lib/resources/maze/maps/PledgeMaze2");
+		loadMap(myWorlds[1],"resources/maze/maps/PledgeMaze2");
 		new Buggle(myWorlds[1], "Trapception", 9, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);

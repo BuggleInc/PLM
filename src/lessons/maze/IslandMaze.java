@@ -23,12 +23,12 @@ public class IslandMaze extends ExerciseTemplated {
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
-		loadMap(myWorlds[0],"lib/resources/maze/maps/IslandMaze");
+		loadMap(myWorlds[0],"resources/maze/maps/IslandMaze");
 		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		
 		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		loadMap(myWorlds[1],"lib/resources/maze/maps/IslandMaze2");
+		loadMap(myWorlds[1],"resources/maze/maps/IslandMaze2");
 		new Buggle(myWorlds[1], "Luke", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);		
