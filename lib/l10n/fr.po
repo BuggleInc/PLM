@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-07 12:23-0800\n"
+"POT-Creation-Date: 2013-05-09 06:28-0800\n"
 "PO-Revision-Date: 2013-03-26 18:09+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1319,7 +1319,7 @@ msgid ""
 "<a href=\"jlm://lessons.recursion\">Recursion lesson</a> Build some "
 "classical geometric figures through recursion."
 msgstr ""
-"<a href=\"jlm://lessons.recursion\">Recursivité</a> Construisez des figures\n"
+"<a href=\"jlm://lessons.recursion\">Récursivité</a> Construisez des figures\n"
 "géométriques classiques par récursivité."
 
 #. type: Content of: <ul><li>
@@ -9414,8 +9414,8 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/maze/PledgeMaze.html:1
-msgid "Pledge's algorithm"
-msgstr "Algorithmes de Pledge"
+msgid "Pledge algorithm"
+msgstr "Algorithme de Pledge"
 
 #. type: Content of: <p>
 #: src/lessons/maze/PledgeMaze.html:3
