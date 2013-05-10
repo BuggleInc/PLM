@@ -15,14 +15,6 @@ converted to issues on github probably.
 ***************** BASE
 
 Assez urgent :
- * Quand un exo est fait, il faut passer au suivant de la lesson. 
-   Pour cela, il faudrait repérer quels sont les exos suivants dans le
-   graphe de la leçon, et les montrer dans le dialogue "vous avez
-   réussi". 
-   - Si y'a un seul exo suivant, il faut des boutons "passer à
-     l'exo suivant", "cancel(rester ici)"
-   - Si yen a plusieurs, faut ajouter une liste de radiobuttons pour
-     choisir quel exo suivant on veut.
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
  
 Une série d'idées bêtes :

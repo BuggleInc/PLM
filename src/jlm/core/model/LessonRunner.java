@@ -76,10 +76,53 @@ public class LessonRunner extends Thread {
 		}
 		
 		if (exo.lastResult.totalTests == exo.lastResult.passedTests) {
-			JOptionPane.showMessageDialog(null, "Congratulations, you passed this test.", "Exercise passed \\o/", JOptionPane.PLAIN_MESSAGE,
-					ResourcesCache.getIcon("resources/success.png"));
-			
 			Game.getInstance().studentWork.setPassed(exo.getId(), null, true);
+			
+			String message, title ;
+			if ( FileUtils.getLocale().equals("fr"))
+			{
+				message = "Félicitations, vous avez réussi cet exercice.";
+				title = "Exercice réussi \\o/";
+			}
+			else
+			{
+				message = "Congratulations, you passed this test.";
+				title = "Exercise passed \\o/";
+			}
+			
+			Object[] nextExercises =  exo.getLesson().getExercisesGraph().getSuccessors(exo).toArray();	
+			if ( nextExercises.length == 0)
+			{
+				JOptionPane.showMessageDialog(null, message, title, JOptionPane.PLAIN_MESSAGE,
+						ResourcesCache.getIcon("resources/success.png"));
+			}
+			else 
+			{
+				String[] nextExercisesName = new String[nextExercises.length];
+				
+				for ( int i = 0 ; i <  nextExercises.length; i++)
+				{
+					nextExercisesName[i] = ((Lecture) nextExercises[i]).getName();
+				}
+				String selectedValue = (String) JOptionPane.showInputDialog(null, 
+				message, title,JOptionPane.PLAIN_MESSAGE, 
+				ResourcesCache.getIcon("resources/success.png"),nextExercisesName, nextExercisesName[0]);
+				System.out.println(selectedValue);
+				
+				if ( selectedValue != null )
+				{
+					boolean found = false;
+					for ( int i = 0 ; i < nextExercises.length && !found; i++ )
+					{
+						if ( nextExercisesName[i].equals(selectedValue) )
+						{
+							Game.getInstance().setCurrentExercise((Lecture) nextExercises[i]);
+							Game.getInstance().reset();	// In order to refresh the mission
+							found = true;
+						}
+					}
+				}
+			}
 		} else {
 			 SwingUtilities.invokeLater(new Runnable() {
 		            public void run() {
@@ -89,8 +132,8 @@ public class LessonRunner extends Thread {
 
 		}
 		Game.getInstance().fireProgressSpy(exo);									
-		
+
 		runners.remove(this);
 	}
-
+	
 }
