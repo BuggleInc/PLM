@@ -6,19 +6,19 @@ a slug: a green dribbling tracks. If it manage to follow it to its end, it
 will find a baggle representing an appetizing slug (from a buggle point of
 view). 
 
-<p>To reach that goal, the simpler would be to have a boolean method
-<tt>isFacingTrail</tt>, which would help determining whether we are facing a
-green cell or not. Of course, if we are facing a wall, it should return
-false. It would be great if this method could in addition preserve the state
+<p>To reach that goal, you have a boolean method
+<tt>isFacingTrail</tt>, which determine whether we are facing a
+green cell or not. Of course, if we are facing a wall, it returns
+false.In addition, this method preserve the state
 of the calling buggle and of the world. Such a method is said to have no
 <b>side effect</b>.</p>
 
-<p>Then, the best would be if it could take the color of the trail we want to
+<p>It takes the color of the trail we want to
 follow as an argument. Slugs leave green trails, but other prey leave trails
 of other colors. In Java, there is a <i>data type</i> <tt>Color</tt> to
 indicate the colors. The green color is defined by <code>Color.green</code>.</p>
 	
-<p>In order to not mistake the part of the tracks to follow with the one your
+<p>In order to hunt your prey, you should not mistake the part of the tracks to follow with the one your
 buggle comes from, you should ask your buggle to leave a tracks behind
 it. Don't forget to use the <code>brushDown()</code>  method to put your
 brush down and <code>brushUp()</code> to move it up again.</p>
@@ -31,5 +31,5 @@ getGroundColor()</code> method.</p>
 
 
 <h3>Exercise goal</h3><a name="Objectives">Complete the <code>hunt()</code> method (which gets
-called by <code>run()</code> automatically). It should use a
-<code>isFacingTrail()</code> method that you also have to write.
+called by <code>run()</code> automatically). You should use the
+<code>isFacingTrail()</code> method that is provided.

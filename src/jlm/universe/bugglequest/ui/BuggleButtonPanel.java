@@ -1,15 +1,23 @@
 package jlm.universe.bugglequest.ui;
 
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
+import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.bugglequest.AbstractBuggle;
@@ -23,17 +31,31 @@ public class BuggleButtonPanel extends EntityControlPanel {
 	private JButton rButton;
 	private JButton lButton;
 	private JToggleButton brushButton;
+	private JComboBox buggleColorComboBox;
+	private JComboBox brushColorComboBox;
 	
 	public BuggleButtonPanel() {
-		//setFloatable(false);
+		setLayout(new FlowLayout());
+		
+		initializeButtons();
+		initializeColorsBoxes();
 
+		add(createButtonsPanel());
+		add(createColorsBoxes());
+	}
+
+	/**
+	 * Initialize fButton, bButton, rButton, lButton and brushButton
+	 */
+	private void initializeButtons() {
 		fButton = new JButton("forward");
 		fButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
 					((AbstractBuggle)Game.getInstance().getSelectedEntity()).forward();
 				} catch (BuggleWallException e) {
-					 e.printStackTrace();
+					showWallHuggingErrorMessageDialog();
+					// e.printStackTrace();
 					//game.getOutputWriter().log(e);
 				}
 			}
@@ -46,8 +68,9 @@ public class BuggleButtonPanel extends EntityControlPanel {
 				try {
 					((AbstractBuggle)Game.getInstance().getSelectedEntity()).backward();
 				} catch (BuggleWallException e) {
+					showWallHuggingErrorMessageDialog();
 					// e.printStackTrace();
-					Game.getInstance().getOutputWriter().log(e);
+					// Game.getInstance().getOutputWriter().log(e);
 				}
 			}
 		});
@@ -82,10 +105,50 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		});
 		brushButton.setMnemonic(KeyEvent.VK_SPACE);
 		brushButton.setSelected(((AbstractBuggle)(Game.getInstance().getSelectedEntity())).isBrushDown());
+	}
+
+	/**
+	 * Initialize buggleColorComboBox and brushColorComboBox
+	 */
+	private void initializeColorsBoxes() {
+		Color[] colors = {Color.BLUE, Color.BLACK, Color.CYAN, Color.DARK_GRAY,
+				  Color.GRAY, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, 
+				  Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
 		
+		brushColorComboBox=new JComboBox (colors);
+		brushColorComboBox.setRenderer(new BuggleColorCellRenderer());
+		brushColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBrushColor());
+		brushColorComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				JComboBox cb = (JComboBox) event.getSource();
+				Color c = (Color) cb.getSelectedItem();
+				cb.setSelectedItem(c);
+				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBrushColor(c);
+			}
+		});
+		
+		buggleColorComboBox=new JComboBox (colors);
+		buggleColorComboBox.setRenderer(new BuggleColorCellRenderer());
+		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getColor());
+		buggleColorComboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				JComboBox cb = (JComboBox) event.getSource();
+				Color c = (Color) cb.getSelectedItem();
+				cb.setSelectedItem(c);
+				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setColor(c);
+			}
+		});
+	}
+
+	/**
+	 * Add the five buttons to a JPanel and return the JPanel
+	 * @return a JPanel where the five buttons have been added
+	 */
+	private JPanel createButtonsPanel() {
+		JPanel buttonsPanel = new JPanel();
 		
 		GridBagLayout gdLayout = new GridBagLayout();
-		setLayout(gdLayout);
+		buttonsPanel.setLayout(gdLayout);
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.insets = new Insets(3, 3, 3, 3);
@@ -94,31 +157,49 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		c.gridx = 1;
 		c.gridwidth = 1;
 		gdLayout.setConstraints(fButton, c);
-		add(fButton);
+		buttonsPanel.add(fButton);
 
 		c.gridy = 2;
 		c.gridx = 0;
 		gdLayout.setConstraints(lButton, c);
-		add(lButton);
+		buttonsPanel.add(lButton);
 
 		c.gridy = 2;
 		c.gridx = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		gdLayout.setConstraints(brushButton, c);
-		add(brushButton);
+		buttonsPanel.add(brushButton);
 
 		c.gridy = 2;
 		c.gridx = 2;
 		gdLayout.setConstraints(rButton, c);
-		add(rButton);
+		buttonsPanel.add(rButton);
 
 		c.gridy = 3;
 		c.gridx = 1;
 		gdLayout.setConstraints(bButton, c);
-		add(bButton);
+		buttonsPanel.add(bButton);
+		
+		return buttonsPanel;
+	}
+
+	/**
+	 * Add the two combo boxes to a JPanel and return the JPanel
+	 * @return a JPanel where the two combo boxes have been added
+	 */
+	private JPanel createColorsBoxes() {
+		JPanel colorsPanel = new JPanel();
+		colorsPanel.setLayout(new GridLayout(4,1));
+		
+		colorsPanel.add(new JLabel("BrushColor"));
+		colorsPanel.add(brushColorComboBox);
+		
+		colorsPanel.add(new JLabel("BuggleColor"));
+		colorsPanel.add(buggleColorComboBox);
+		
+		return colorsPanel;
 	}
 	
-
 	@Override
 	public void setEnabledControl(boolean enabled) {
 		fButton.setEnabled(enabled);
@@ -126,5 +207,22 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		lButton.setEnabled(enabled);
 		rButton.setEnabled(enabled);
 		brushButton.setEnabled(enabled);
+		buggleColorComboBox.setEnabled(enabled);
+		brushColorComboBox.setEnabled(enabled);
 	}
+	
+	public void showWallHuggingErrorMessageDialog() {
+		String message ;
+		String title = "Wall hugging error";
+		if ( FileUtils.getLocale().equals("fr"))
+		{
+			message = "Votre buggle est rentrée dans un mur, ça fait mal ! ='(";
+		}
+		else
+		{
+			message = "Your buggle has collided with a wall, it hurts a lot ! ='(";
+		}
+		JOptionPane.showMessageDialog(null, message,title, JOptionPane.ERROR_MESSAGE);
+	}
+	
 }

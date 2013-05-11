@@ -9,7 +9,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
+import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.lesson.Lecture;
 
 /** This class is in charge of loading the resources from disk into memory
  * 
@@ -32,6 +34,13 @@ public class FileUtils {
 	/** Specifies the locale that we have to use when looking for translated files */
 	public static void setLocale(String lang) {
 		locale = lang;
+		if (  Game.getInstance() != null && Game.getInstance().getCurrentLesson() != null )
+		{
+			Game.getInstance().getCurrentLesson().resetAboutLoaded();
+			Lecture lect = Game.getInstance().getCurrentLesson().getCurrentExercise();
+			if ( lect instanceof Exercise )
+				((Exercise) lect).getCurrentWorld().get(0).resetAbout();
+		}
 	}
 	public static String getLocale() {
 		return locale;

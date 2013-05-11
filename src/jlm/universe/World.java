@@ -332,8 +332,14 @@ public abstract class World {
 			/* read it */
 			about = "<html>\n" + HTMLMissionHeader + "<body>\n" + sb.toString() + "</body>\n</html>\n";
 		}
-
 		return about;
+	}
+	
+	/**
+	 * Set about to null in order to allows it to be reloaded in the right language
+	 */
+	public void resetAbout() {
+		this.about = null ;
 	}
 
 	protected Object[] parameters = null;

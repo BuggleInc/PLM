@@ -24,11 +24,11 @@ public class ShortestPathMaze extends ExerciseTemplated {
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 	
-		loadMap(myWorlds[0],"lessons/maze/WallFollowerMaze");
+		loadMap(myWorlds[0],"resources/maze/maps/WallFollowerMaze");
         new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
         
 		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		loadMap(myWorlds[1],"lessons/maze/PledgeMaze");
+		loadMap(myWorlds[1],"resources/maze/maps/PledgeMaze");
 		new Buggle(myWorlds[1], "Luke", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
 		
 		//newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");

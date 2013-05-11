@@ -19,7 +19,7 @@ import jlm.universe.bugglequest.ui.BuggleWorldView;
 
 
 public class BuggleWorld extends GridWorld {
-	
+
 	public BuggleWorld(String name, int x, int y) {
 		super(name,x,y);
 	}
