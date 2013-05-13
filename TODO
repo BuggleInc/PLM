@@ -10,7 +10,11 @@ converted to issues on github probably.
   un "Run" remet zéro correctement
 * certains tests de countTeen() semblent faux par rapport à l'énoncé
 
- * dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
+* dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
+
+* try to remove the *sys-package-mgr* processing messages when jython is loading
+
+* say explicity that the combolist that is present in the exercise passed dialog propose different path in the learning process
 
 ***************** BASE
 
