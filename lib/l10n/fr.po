@@ -5057,7 +5057,7 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;takeWater()\n"
 "elif todayIsJuly4th():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()\n"
-"}"
+""
 msgstr ""
 "if ilPleut():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreParapluie()\n"
@@ -5065,7 +5065,7 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau()\n"
 "elif sommes14Juillet():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()\n"
-"}"
+""
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/BDR.html:140

@@ -3745,7 +3745,7 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;takeWater()\n"
 "elif todayIsJuly4th():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()\n"
-"}"
+""
 msgstr ""
 
 #. type: Content of: <p><h3>
