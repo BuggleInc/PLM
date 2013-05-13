@@ -111,6 +111,16 @@ public class Game implements IWorldView {
 		Game.loadProperties();
 		loadSession();
 
+		// set default programming language according to jlm properties
+		// may crash if one exercice do not support the default language
+		String defaultProgrammingLanguage = Game.getProperty("jlm.default.programminglanguage","Java");
+		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
+			if (pl.getLang().equals(defaultProgrammingLanguage)) {
+				setProgramingLanguage(pl);
+				return ;
+			}
+		}
+
 		addProgressSpyListener(new IdenticaSpy());
 		addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new LocalFileSpy());
