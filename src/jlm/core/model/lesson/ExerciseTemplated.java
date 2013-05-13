@@ -9,8 +9,11 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jlm.core.DiscardableGameStateListener;
+import jlm.core.GameStateListener;
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
+import jlm.core.model.GameState;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -308,12 +311,33 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].doDelay();
 		}
-		ProgrammingLanguage current = Game.getProgrammingLanguage();
+		final ProgrammingLanguage current = Game.getProgrammingLanguage();
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
+				
 		mutateEntities(answerWorld, entityName);
 
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
-		Game.getInstance().setProgramingLanguage(current);
+		
+
+		// as demo is launched in several threads, we can restore the current programming language
+		// only when the demo is finished. This is achieved using some kind of hook triggered when DEMO_ENDED.	
+		Game.getInstance().addGameStateListener(
+				new DiscardableGameStateListener() {			
+					private boolean dirty = false;
+					
+					@Override
+					public void stateChanged(GameState type) {
+						if (type == GameState.DEMO_ENDED) {
+							Game.getInstance().setProgramingLanguage(current);
+							this.dirty = true;
+						}
+					}
+
+					@Override
+					public boolean isDirty() {
+						return this.dirty;
+					}
+				});
 	}
 }
