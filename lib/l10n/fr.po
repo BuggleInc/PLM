@@ -2629,11 +2629,11 @@ msgid ""
 "<span class=\"comment\">also ignored  '''</span>\n"
 "yetAnotherCall()\n"
 msgstr ""
-"appelMethodeLuParLeCompilateur(); <span class=\"comment\"> # tout ceci est ignoré</span>\n"
-"autreAppel(); \n"
+"appelMethodeLuParLeCompilateur() <span class=\"comment\"> # tout ceci est ignoré</span>\n"
+"autreAppel() \n"
 "<span class=\"comment\">''' ceci est</span>\n"
 "<span class=\"comment\"> également ignoré '''</span>\n"
-"encoreUnAppel();\n"
+"encoreUnAppel()\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BasicsDrawG.html:47
