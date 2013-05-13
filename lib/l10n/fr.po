@@ -608,8 +608,8 @@ msgstr "Reculer</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-msgid "void turnLeft();"
-msgstr "void turnLeft();"
+msgid "void turnLeft()"
+msgstr "void turnLeft()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
@@ -658,8 +658,8 @@ msgstr "Changer la position</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-msgid "int getX();"
-msgstr "int getX();"
+msgid "int getX()"
+msgstr "int getX()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
@@ -698,8 +698,8 @@ msgstr "Changer la couleur</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-msgid "Color getColor();"
-msgstr "Color getColor();"
+msgid "Color getColor()"
+msgstr "Color getColor()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
@@ -718,8 +718,8 @@ msgstr "Chercher un mur derriere</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-msgid "boolean isFacingWall();"
-msgstr "boolean isFacingWall();"
+msgid "boolean isFacingWall()"
+msgstr "boolean isFacingWall()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
@@ -743,8 +743,8 @@ msgstr "Les directions valides sont :"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-msgid "Direction getDirection();"
-msgstr "Direction getDirection();"
+msgid "Direction getDirection()"
+msgstr "Direction getDirection()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
@@ -778,18 +778,18 @@ msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushUp();"
-msgstr "void brushUp();"
+msgid "void brushUp()"
+msgstr "void brushUp()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushDown();"
-msgstr "void brushDown();"
+msgid "void brushDown()"
+msgstr "void brushDown()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "boolean isBrushDown();"
-msgstr "boolean isBrushDown();"
+msgid "boolean isBrushDown()"
+msgstr "boolean isBrushDown()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
@@ -803,13 +803,13 @@ msgstr "Obtenir la couleur de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "void setBrushColor(Color);"
-msgstr "void setBrushColor(Color);"
+msgid "void setBrushColor(Color)"
+msgstr "void setBrushColor(Color)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "Color getBrushColor();"
-msgstr "Color getBrushColor();"
+msgid "Color getBrushColor()"
+msgstr "Color getBrushColor()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:30
@@ -823,8 +823,8 @@ msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:31
-msgid "Color getGroundColor();"
-msgstr "Color getGroundColor();"
+msgid "Color getGroundColor()"
+msgstr "Color getGroundColor()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
@@ -853,13 +853,13 @@ msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isOverBaggle();"
-msgstr "boolean isOverBaggle();"
+msgid "boolean isOverBaggle()"
+msgstr "boolean isOverBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isCarryingBaggle();"
-msgstr "boolean isCarryingBaggle();"
+msgid "boolean isCarryingBaggle()"
+msgstr "boolean isCarryingBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
@@ -893,13 +893,13 @@ msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "boolean isOverMessage();"
-msgstr "boolean isOverMessage();"
+msgid "boolean isOverMessage()"
+msgstr "boolean isOverMessage()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "void writeMessage(String);"
-msgstr "void writeMessage(String);"
+msgid "void writeMessage(String)"
+msgstr "void writeMessage(String)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38

@@ -507,7 +507,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-msgid "void turnLeft();"
+msgid "void turnLeft()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -557,7 +557,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-msgid "int getX();"
+msgid "int getX()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -597,7 +597,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-msgid "Color getColor();"
+msgid "Color getColor()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -617,7 +617,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-msgid "boolean isFacingWall();"
+msgid "boolean isFacingWall()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -642,7 +642,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-msgid "Direction getDirection();"
+msgid "Direction getDirection()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -677,17 +677,17 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushUp();"
+msgid "void brushUp()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushDown();"
+msgid "void brushDown()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "boolean isBrushDown();"
+msgid "boolean isBrushDown()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -702,12 +702,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "void setBrushColor(Color);"
+msgid "void setBrushColor(Color)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "Color getBrushColor();"
+msgid "Color getBrushColor()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -722,7 +722,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:31
-msgid "Color getGroundColor();"
+msgid "Color getGroundColor()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -752,12 +752,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isOverBaggle();"
+msgid "boolean isOverBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isCarryingBaggle();"
+msgid "boolean isCarryingBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -792,12 +792,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "boolean isOverMessage();"
+msgid "boolean isOverMessage()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "void writeMessage(String);"
+msgid "void writeMessage(String)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
