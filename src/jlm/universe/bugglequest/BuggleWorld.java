@@ -295,8 +295,17 @@ public class BuggleWorld extends GridWorld {
 				"def pickUpBaggle():\n"+
 				"	return entity.pickUpBaggle()\n"+
 				"def dropBaggle():\n"+
-				"	return entity.dropBaggle()\n"
-
+				"	return entity.dropBaggle()\n"+
+				
+				"def isOverMessage():\n"+
+				"	return entity.isOverMessage()\n"+
+				"def readMessage():\n"+
+				"	return entity.readMessage()\n"+
+				"def clearMessage():\n"+
+				"   entity.clearMessage()\n"+
+				"def writeMessage(msg):\n"+
+				"   entity.writeMessage(msg)"
+								
 				;
 			return res;
 		}
