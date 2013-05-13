@@ -2656,7 +2656,7 @@ msgid ""
 msgstr ""
 "Les commentaires sur plusieurs lignes sont souvent utilisés pour documenter\n"
 "comment utiliser le code, tandis que les autres types de commentaires sont\n"
-"souvent utilisé pour documenter comment le code fonctionne."
+"souvent utilisés pour documenter comment le code fonctionne."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Conditions.html:3
