@@ -24,7 +24,9 @@ public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			}
 		}
 		pickUpBaggle();
+		/* END SOLUTION */
 	}
+	/* END TEMPLATE */
 	
 	boolean isFacingTrail(Color trailColor) {
 		if (isFacingWall())
@@ -34,8 +36,8 @@ public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		boolean res = getGroundColor() == trailColor; // equals would be better
 		backward();
 		return res;
-	/* END SOLUTION */
+	
 	}		
-	/* END TEMPLATE */
+	
 	
 }

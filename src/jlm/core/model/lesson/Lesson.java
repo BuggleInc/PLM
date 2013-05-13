@@ -59,10 +59,13 @@ public abstract class Lesson {
 	}
 	
 	private boolean aboutLoaded = false;
+
+	public void resetAboutLoaded() {
+		this.aboutLoaded = false;
+	}
+	
 	private void loadAboutAndName() {
-		aboutLoaded = true;
-		
-		/* read it */
+		aboutLoaded = true;		/* read it */
 		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
 		StringBuffer sb = null;
 		try {
@@ -80,7 +83,6 @@ public abstract class Lesson {
 		if (!m.find())
 			System.out.println("Cannot find the name of mission in "+filename+".html");
 		name = m.group(1);
-		
 		/* get the mission explanation */
 		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";		
 	}
@@ -130,7 +132,6 @@ public abstract class Lesson {
 	public Lecture addExercise(Lecture exo, Lecture dependency) {
 		return addExercise(exo, new Lecture[] {dependency});
 	}
-
 	
 	public Lecture getCurrentExercise() {
 		if (this.currentExercise == null && lectures.size() > 0) {

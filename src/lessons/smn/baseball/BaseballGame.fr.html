@@ -11,10 +11,19 @@ joueur de se déplacer et de remplir le trou, laissant un nouveau trou sur la
 base qu'il vient de quitter.
 </p>
 <p>
-La couleur d'un base est donnée par son index.
-Le trou a -1 comme couleur.
+Notes:
+<ul>
+<li>
+La couleur d'une base est donnée par son index. 
+</li>
+<li>
+Le trou a une couleur de -1.
+</li>
+<li>
 La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i>
 comme index
+</li>
+</ul>
 </p>
 
 <div>
@@ -88,21 +97,21 @@ BEGIN
 	colorWanted &lt;- getBaseColor(baseIndex)
 	IF getPlayerColor(baseIndex, 0) != colorWanted 
 	THEN
-			IF getPlayerColor(baseIndex,1) == colorWanted
-			THEN
-					bringHole(baseIndex, 0, 1)
-					move(baseIndex, 1)
-			ELSE
-					wantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )
-					bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
-					bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
-			END_IF
+		IF getPlayerColor(baseIndex,1) == colorWanted
+		THEN
+			bringHole(baseIndex, 0, 1)
+			move(baseIndex, 1)
+		ELSE
+			wantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )
+			bringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )
+			bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)
+		END_IF
 	END_IF
 	IF getPlayerColor(baseIndex, 1) != colorWanted 
 	THEN
-			wantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)
-			bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
-			bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
+		wantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)
+		bringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )
+		bringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )
 	END_IF
 END
 </pre>
@@ -140,7 +149,9 @@ BEGIN
 END
 </pre>
 </div>
+
 <br/><br/><hr/><br/>
+
 <div class="tip" id="tip-4" alt="Montrer l'indice 4 (le pseudo-code de findNearestPlayer)">
 <p>L'algorithme de la méthode findNearestPlayer est le suivant :</p>
 <pre> 

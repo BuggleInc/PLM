@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -120,7 +119,7 @@ public abstract class Exercise  extends Lecture {
 			
 			try {
 				DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
-				compiler.compile(sources, errs);
+				compiledClasses = compiler.compile(sources, errs);
 
 				out.log(errs);
 			} catch (JLMCompilerException e) {
@@ -174,7 +173,7 @@ public abstract class Exercise  extends Lecture {
 	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
 		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template));
 	}
-	
+
 	protected void mutateEntities(World[] worlds, String newClassName) {
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
 		String[] forbidden = new String[] {"'","\""};
@@ -186,17 +185,16 @@ public abstract class Exercise  extends Lecture {
 				throw new RuntimeException(newClassName+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
 						"Does your exercise use a broken tabname or entityname?");
 		}
-		
+
 		for (World current:worlds) {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			for (Entity old : current.getEntities()) {
-
 				if (Game.getProgrammingLanguage().equals(Game.JAVA) || 
 						Game.getProgrammingLanguage().equals(Game.LIGHTBOT)) {
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
-						ent = (Entity)compiledClasses.get(className(newClassName)).newInstance();
+						ent = (Entity) compiledClasses.get(className(newClassName)).newInstance();
 					} catch (InstantiationException e) {
 						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
 					} catch (IllegalAccessException e) {
@@ -209,11 +207,9 @@ public abstract class Exercise  extends Lecture {
 							throw new RuntimeException("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 						}
 					}
-
 					/* change fields of new entity to copy old one */
 					ent.copy(old);
 					ent.initDone();
-
 					/* Add new entity to the to be returned entities set */
 					newEntities.add(ent);
 				} else { /* In scripting, we don't need to actually mutate the entity, just set the script to be interpreted later */

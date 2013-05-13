@@ -5,11 +5,12 @@ import jlm.universe.World;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
+ * @see BaseballWorld
  */
 public class BaseballEntity extends Entity
 {
 	/**
-	 * Must exist too. Calling BaseballEntity("dummy name") is ok
+	 * Must exist too. Calling BaseballEntity("dummy name") is okay
 	 * Part of the copy process 
 	 * Must call super(name)
 	 * @return A new instance of BaseballEntity
@@ -88,6 +89,14 @@ public class BaseballEntity extends Entity
 	}
 	
 	/**
+	 * Give the amount of players locations available on each base of the field
+	 * @return The amount of players locations available on each base of the field
+	 */
+	public int getLocationsAmount() {
+		return ((BaseballWorld) this.world).getLocationsAmount();
+	}
+	
+	/**
 	 * Return the color of the player in base baseIndex at position playerLocation
 	 * @param baseIndex the index of the wanted base
 	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
@@ -95,7 +104,7 @@ public class BaseballEntity extends Entity
 	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
 	 */
 	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
-		return ((BaseballWorld) world).getPlayerColor(baseIndex,playerLocation);
+		return ((BaseballWorld) this.world).getPlayerColor(baseIndex,playerLocation);
 	}
 	
 	/**

@@ -10,30 +10,13 @@ converted to issues on github probably.
   un "Run" remet zéro correctement
 * certains tests de countTeen() semblent faux par rapport à l'énoncé
 
- 
  * dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
- 
 
 ***************** BASE
 
 Assez urgent :
- * Quand un exo est fait, il faut passer au suivant de la lesson. 
-   Pour cela, il faudrait repérer quels sont les exos suivants dans le
-   graphe de la leçon, et les montrer dans le dialogue "vous avez
-   réussi". 
-   - Si y'a un seul exo suivant, il faut des boutons "passer à
-     l'exo suivant", "cancel(rester ici)"
-   - Si yen a plusieurs, faut ajouter une liste de radiobuttons pour
-     choisir quel exo suivant on veut.
  * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
  
-D'autres points moins urgents :
- * on pourait couper l'exercice sur "la chasse à la limace" en deux :
-   - écrire hunt() en fournissant la méthode isFacingTrail() sans donner le code celle-ci
-   - demander ensuite d'écrire la méthode isFacingTrail()
- * il serait utile de demander une confirmation avant de quitter l'application.
- * pas moyen de changer la couleur d'une buggle interactivement
-
 Une série d'idées bêtes :
  * On pourrait représenter graphiquement le diff textuel entre le
    monde attendu et le monde créé quand y'a des erreurs. Avec des

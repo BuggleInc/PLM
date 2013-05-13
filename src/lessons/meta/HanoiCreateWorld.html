@@ -1,14 +1,15 @@
 <h1>Creating a new JLM world</h1>
 
+<p>
 Welcome to the JLM Meta-Lesson. Its goal is to teach you how to write
 new universes in JLM. For that, we will reimplement the Hanoi world
 (available in the recursion lesson) step-by-step. This lesson covers quite 
 advanced topics and suppose that you are fluent in Java and confident with the use
 of the JLM framework already. If you are not used to the framework already, you 
 probably want to take another lesson before, like the welcome one or 
-(maybe more fun) the maze one.  
+(maybe more fun) the maze one.</p>
 
-<p>Every JLM universe is composed of 4 main components:
+<p>Every JLM universe is composed of 4 main components:</p>
 <ul>
 <li><b>The world</b>: it contains the state of the universe.</li>
 <li><b>The view</b>: it allows to draw the world and the entities on
@@ -24,7 +25,7 @@ the panel will remain blank, preventing the users from interactively
 controlling the entities.</li>
 </ul>
 
-<p>In addition, worlds are used by exercises, themselves sorted in lessons.
+<p>In addition, worlds are used by exercises, themselves sorted in lessons.</p>
 <ul>
 <li><b>Lessons</b> are just a list of exercise. They can be sequential 
 (meaning that the student has to finish one exercise before being allowed to 
@@ -52,18 +53,19 @@ objective world. We will come back on this in a latter exercise of this meta-les
 <p>The very first element you want to write in a new JLM universe is a
 partial world implementation including the internal state. In subsequent exercises, we 
 will complete the World class to provide entities ways to interact and modify their world, 
-and we will also implement the other elements of the universe.
+and we will also implement the other elements of the universe.</p>
 
 <p>Before you jump in writing your World implementation, you should understand the big JLM 
 picture, and how worlds are used internally.</p>
 
 <h2>JLM worlds big picture</h2>
 
+<p>
 As you know, every JLM exercise can contain one or several worlds, each
 containing one or several entities. The code written by the student is
 executed in the entities, which must interact with their world to change 
 it from its initial state to its goal state. 
-
+</p>
 <p>This multiplication of worlds and entities is used to test the student 
 code in several conditions. It can thus be parallelized to test cases, aiming 
 at full testing coverage of the student code.</p>
@@ -75,9 +77,12 @@ protected World [] initialWorld;
 protected World [] currentWorld; 
 protected World [] answerWorld;  
 </pre>
+</p>
 
+<p>
 The line number of the combobox gives the index to use in these arrays. 
 Each <code>initialWorld</code> is created by the exercise constructor. 
+</p>
 
 <p><code>currentWorld</code> is the one 
 displayed in the "World" tab of the interface. At the beginning, it is a plain copy 
@@ -91,7 +96,7 @@ This default behavior can be overloaded by exercises, but you'll probably never 
 to do so. We will come back on this in a subsequent exercise.</p>
 
 <h3>Implementing basic Worlds</h3>
-
+<p>
 The internal use of Worlds hidden, but the important point is that every World object 
 has extend the jlm.universe.World class and define the following methods and constructors:
 <ul>
@@ -123,22 +128,23 @@ into the current world. This is naturally used when you press the "Reset" button
 only 3 slots containing a list of disc so that will be quite easy, but this can be quite complicated for 
 complex worlds such as BuggleWorld.</p></li>
 </ul>
-
+</p>
 <h3>Allowing the graphical rendering of Worlds</h3>
-
+<p>
 Some specific steps naturally must be taken so that JLM can graphically display your world. Usually, you must
 write a specific class extending jlm.universe.WorldView, and provide some protected methods so that the View can
 retrieve the state to display. In this particular exercise, the view is provided (you will write you own one 
 in next exercise), so you only have to implement the right accessor.
-
+</p>
 <h2>Implementing your HanoiWorld</h2>
+<p>
 The main task of this exercise is to modify the provided template to store the state of the world. Since the exercise
 provides a view and automatically instantiate your world, you cannot change the instantiation constructor, nor the 
 rendering accessor (see the code template for there prototype). But you are completely free about how you actually 
 store the state in your object. 
-
+</p>
 <p>During the implementation of the Hanoi world, I changed my internal representation several times, to adapt to 
-the code needs. My first try was only simply three ArrayList<Integer>, for each slots, while the final design used
+the code needs. My first try was only simply three ArrayList&lt;Integer>, for each slots, while the final design used
 an inner class called HanoiSlot, containing an integer array and providing friendly functions such as 
 <code>push()</code>, <code>pop()</code> and <code>top()</code>. Even if it really becomes necessary when 
 implementing the action methods allowing the entities to interact with their world, I advise you to design an 

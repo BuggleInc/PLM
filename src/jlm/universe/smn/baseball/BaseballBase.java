@@ -13,11 +13,14 @@ public class BaseballBase {
 	/**
 	 * BaseballBase constructor
 	 * @param color : the color of the base you are creating
+	 * @param playerLocationAmount the amount of player locations available on the base
 	 */
-	public BaseballBase(int color) {
-		this.players=new BaseballPlayer[2];
-		this.players[0] = new BaseballPlayer(color);
-		this.players[1] = new BaseballPlayer(color);
+	public BaseballBase(int color,int playerLocationsAmount) {
+		this.players=new BaseballPlayer[playerLocationsAmount];
+		for ( int i = 0 ; i < playerLocationsAmount ; i++ )
+		{
+			this.players[i] = new BaseballPlayer(color);
+		}
 		this.color=color;
 	}
 	
@@ -37,10 +40,16 @@ public class BaseballBase {
 		else 
 		{
 			BaseballBase base = (BaseballBase) o;
-			if (this.getPlayer(0).getColor() != base.getPlayer(0).getColor()
-				|| this.getPlayer(1).getColor() != base.getPlayer(1).getColor()
-				|| this.getColor() != base.getColor())
+			int n = this.getLocationsAmount();
+			if (base.getLocationsAmount() == n )
 			{		
+				for ( int i = 0 ; i < n && sw ; i++)
+				{
+					sw = base.getPlayer(i).equals(this.getPlayer(i));
+				}
+			}
+			else
+			{
 				sw = false;
 			}
 		}
@@ -56,9 +65,17 @@ public class BaseballBase {
 	}
 	
 	/**
+	 * Give the amount of players locations available on the base
+	 * @return The amount of players locations available on the base
+	 */
+	public int getLocationsAmount(){
+		return this.players.length;
+	}
+	
+	/**
 	 * Give the wanted player of the base
-	 * @return The player wanted
-	 * @param the index of the player
+	 * @return The wanted player
+	 * @param the index of the wanted player
 	 */
 	public BaseballPlayer getPlayer(int player) {
 		return this.players[player];
@@ -68,14 +85,14 @@ public class BaseballBase {
 	/**
 	 * Return the color of the player in base baseIndex at position playerLocation
 	 * @param baseIndex the index of the wanted base
-	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
+	 * @param playerLocation the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
 	 * @return the color of the player in base baseIndex at position playerLocation
 	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
 	 */
 	public int getPlayerColor(int playerLocation) throws InvalidPositionException {
-		if ( playerLocation < 0 || playerLocation >1)
+		if ( playerLocation < 0 || playerLocation > this.getLocationsAmount()-1 )
 		{
-			throw new InvalidPositionException("The position of a player must be 0 or 1.\nIt's sad but "+playerLocation+" isn't one of these values !");
+			throw new InvalidPositionException("The position of a player must be between 0 and getLocationsAmount()-1.\nIt's sad but "+playerLocation+" isn't one of these values !");
 		}
 		return this.players[playerLocation].getColor();
 	}
@@ -97,10 +114,12 @@ public class BaseballBase {
 	 */
 	public String toString()
 	{
+		int n = getLocationsAmount();
 		String s = "";
-		
-		s+="Player 1 : "+this.getPlayer(0).getColor()+" ; Player 2 : "+this.getPlayer(1).getColor();
-		
+		for ( int i = 0 ; i < n ; i++)
+		{
+			s+="Player "+i+" : "+this.getPlayer(i).getColor()+"\n" ;
+		}
 		return s;
 	}
 

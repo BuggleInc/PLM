@@ -1,0 +1,19 @@
+edited world; name
+4; width
+4; height
+[(255,255,255),false,true,true] ; cell
+[(255,255,255),false,false,true] ; cell
+[(255,255,255),false,false,true] ; cell
+[(204,204,255),false,true,true] ; cell
+[(255,255,255),false,true,false] ; cell
+[(255,255,255),false,true,true] ; cell
+[(255,255,255),false,false,false] ; cell
+[(255,255,255),false,false,false] ; cell
+[(255,255,255),false,true,true] ; cell
+[(255,255,255),false,true,false] ; cell
+[(255,255,255),false,false,true] ; cell
+[(255,255,255),false,false,true] ; cell
+[(255,255,255),false,true,false] ; cell
+[(255,255,255),false,false,true] ; cell
+[(255,255,255),false,false,false] ; cell
+[(255,255,153),true,true,false] ; cell
