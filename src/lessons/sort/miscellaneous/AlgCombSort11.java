@@ -1,12 +1,12 @@
 package lessons.sort.miscellaneous;
 
 import jlm.core.model.Game;
-import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.sort.SortingEntity;
+import jlm.universe.sort.SortingExercise;
 import jlm.universe.sort.SortingWorld;
 
-public class AlgCombSort11 extends ExerciseTemplated {
+public class AlgCombSort11 extends SortingExercise {
 
 	public AlgCombSort11(Lesson lesson) {
 		super(lesson);

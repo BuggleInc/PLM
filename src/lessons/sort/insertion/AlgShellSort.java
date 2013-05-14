@@ -1,12 +1,12 @@
 package lessons.sort.insertion;
 
 import jlm.core.model.Game;
-import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.sort.SortingEntity;
+import jlm.universe.sort.SortingExercise;
 import jlm.universe.sort.SortingWorld;
 
-public class AlgShellSort extends ExerciseTemplated {
+public class AlgShellSort extends SortingExercise {
 
 	public AlgShellSort(Lesson lesson) {
 		super(lesson);

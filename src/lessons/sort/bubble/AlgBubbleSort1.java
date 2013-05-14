@@ -1,12 +1,12 @@
 package lessons.sort.bubble;
 
 import jlm.core.model.Game;
-import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.sort.SortingEntity;
+import jlm.universe.sort.SortingExercise;
 import jlm.universe.sort.SortingWorld;
 
-public class AlgBubbleSort1 extends ExerciseTemplated{
+public class AlgBubbleSort1 extends SortingExercise{
 
 	public AlgBubbleSort1(Lesson lesson) {
 		super(lesson);
