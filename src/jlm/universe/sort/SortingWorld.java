@@ -65,7 +65,7 @@ public class SortingWorld extends World {
 
 	@Override
 	public WorldView[] getView() {
-		return new WorldView[] { new SortingWorldChronoView(this) , new SortingWorldStateView(this)};
+		return new WorldView[] { new SortingWorldView(this) };
 // enabled 'nice and buggy' sorting view for  debugging 
 //		return new WorldView[] { new SortingWorldView(this) };
 	}
@@ -98,6 +98,4 @@ public class SortingWorld extends World {
 	public String diffTo(World world) {
 		return null; // This is not used since SortingExercise overrides check()
 	}
-
-	// TODO Implement world IO
 }
