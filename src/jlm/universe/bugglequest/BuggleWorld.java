@@ -309,7 +309,12 @@ public class BuggleWorld extends GridWorld {
 				"   entity.writeMessage(msg)\n"+
 				
 				"def getDirection():\n"+
-				"   return entity.getDirection()\n"
+				"   return entity.getDirection()\n"+
+				
+				"def setBrushColor(c):\n"+
+				"    entity.setBrushColor(c)\n"+
+				"def getBrushColor():\n"+
+				"    return entity.getBrushColor()\n"
 								
 				;
 			return res;
