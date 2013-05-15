@@ -88,7 +88,13 @@ public class SortingWorld extends World {
 				"def setValue(i,j):\n" +
 				"  entity.setValue(i,j)\n" +
 				"def sorted(i):\n" +
-				"  entity.sorted(i)\n"				
+				"  entity.sorted(i)\n"+
+				"def isSmaller(i,j):\n"+
+				"  return entity.isSmaller(i,j)\n"+
+				"def isSmallerThan(i,j):\n"+
+				"  return entity.isSmallerThan(i,j)\n"+
+				"def checkme():\n"+
+				"  entity.checkme()\n"
 				;
 			return res;
 		}

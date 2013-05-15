@@ -284,6 +284,8 @@ public class BuggleWorld extends GridWorld {
 				"   entity.brushUp()\n" +
 				"def isFacingWall():" +
 				"	return entity.isFacingWall()\n"+
+				"def getGroundColor():\n"+
+				"   return entity.getGroundColor()\n"+
 				
 				"def errorMsg(str):\n"+
 				"  entity.seenError(str)\n"+
