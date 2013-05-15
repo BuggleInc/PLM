@@ -15,7 +15,7 @@ import jlm.universe.EntityControlPanel;
 import jlm.universe.bugglequest.AbstractBuggle;
 import jlm.universe.bugglequest.exception.BuggleWallException;
 
-public class SortButtonPanel extends EntityControlPanel {
+public class SortingButtonPanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton fButton;
@@ -24,7 +24,7 @@ public class SortButtonPanel extends EntityControlPanel {
 	private JButton lButton;
 	private JToggleButton brushButton;
 	
-	public SortButtonPanel() {
+	public SortingButtonPanel() {
 		//setFloatable(false);
 
 		fButton = new JButton("forward");
