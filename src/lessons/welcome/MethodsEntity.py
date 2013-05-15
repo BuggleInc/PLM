@@ -8,11 +8,7 @@ def backward(i=-1):
       entity.backward()
     else:
       errorMsg("Sorry Dave, I cannot let you use backward with argument")
-for i in range(7):
-  goAndGet()
-  turnRight()
-  forward()
-  turnLeft()
+
 # BEGIN SOLUTION
 def goAndGet():
   cpt = 0
@@ -25,3 +21,9 @@ def goAndGet():
     backward()
   dropBaggle()
 # END TEMPLATE 
+
+for i in range(7):
+  goAndGet()
+  turnRight()
+  forward()
+  turnLeft()
