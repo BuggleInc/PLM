@@ -115,6 +115,8 @@ public class TurtleWorld extends World {
 		if (lang.equals(Game.PYTHON)) {
 			String res =  
 					"import java.awt.Color as Color\n"+
+					"def getParam(i):\n"+
+					"  return entity.getParam(i)\n"+
 					"def backward(i):\n"+
 					"  entity.backward(i)\n"+
 					"def forward(i):\n"+

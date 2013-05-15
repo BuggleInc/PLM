@@ -105,7 +105,7 @@ public abstract class Entity {
 	}
 	
 	/** Retrieve one parameter from the world */
-	protected Object getParam(int i) {
+	public Object getParam(int i) {
 		return world.parameters[i];
 	}	
 	protected int getParamsAmount() {
