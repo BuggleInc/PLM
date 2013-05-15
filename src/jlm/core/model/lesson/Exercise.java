@@ -212,6 +212,7 @@ public abstract class Exercise  extends Lecture {
 					for (SourceFile sf : sourceFiles.get(lang)) {
 						if (newClassName.equals(sf.name)) {
 							old.setScript(lang, sf.getCompilableContent());
+							old.setScriptOffset(lang, sf.getOffset());
 							foundScript = true;
 						} 
 					}
