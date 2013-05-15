@@ -1,6 +1,5 @@
 package lessons.sort.bubble;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.sort.SortingEntity;
 import jlm.universe.sort.SortingExercise;

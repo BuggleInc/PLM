@@ -1,17 +1,12 @@
 # BEGIN SOLUTION 
-		for (int i = getValueCount()-1; i>=0; i--) {
-		    boolean swapped = false;
-			for (int j = 0; j<i; j++) {
-				if (!isSmaller(j,j+1)) {
-					swap(j,j+1);
-					swapped=true;
-				}
-			}
-			sorted(i);
-			if (!swapped) {
-				checkme(); /* color everything in blue */
-				return;	
-			}
-		}
-		/* END SOLUTION */
+for i in range(getValueCount()-1,-1,-1):
+  swapped = False
+  for j in range(i):
+    if not isSmaller(j,j+1):
+      swap(j,j+1)
+      swapped = True
+    sorted(i)
+  if not swapped:
+    break
 # END TEMPLATE 
+checkme()
