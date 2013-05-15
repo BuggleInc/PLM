@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
@@ -111,6 +112,26 @@ public class TurtleWorld extends World {
 	}
 	@Override
 	public String getBindings(ProgrammingLanguage lang) {
+		if (lang.equals(Game.PYTHON)) {
+			String res =  
+					"import java.awt.Color as Color\n"+
+					"def backward(i):\n"+
+					"  entity.backward(i)\n"+
+					"def forward(i):\n"+
+					"  entity.forward(i)\n"+
+					"def penUp():\n"+
+					"  entity.penUp()\n"+
+					"def penDown():\n"+
+					"  entity.penDown()\n"+
+					"def turnLeft(i):\n"+
+					"  entity.turnLeft(i)\n"+
+					"def turnRight(i):\n"+
+					"  entity.turnRight(i)\n"+
+					"def setColor(c):\n"+
+					"  entity.setColor(c)\n"
+					;
+			return res;
+		}
 		throw new RuntimeException("No binding of TurtleWorld for "+lang);
 	}
 
