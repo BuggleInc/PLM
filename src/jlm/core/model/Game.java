@@ -113,12 +113,17 @@ public class Game implements IWorldView {
 		loadSession();
 
 		// set default programming language according to jlm properties
-		// may crash if one exercice do not support the default language
+		// may crash if one exercise do not support the default language
 		String defaultProgrammingLanguage = Game.getProperty("jlm.default.programminglanguage","Java");
+		if (!defaultProgrammingLanguage.equals(Game.JAVA)) 
+			System.err.println("Warning, the default programming language is not 'Java' but '"+defaultProgrammingLanguage+"'.\n"+
+					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don't expect it.\n"+
+					"   You can change this variable either in $HOME/.jlm/jlm.properties or resource/jlm.configuration.properties");
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			if (pl.getLang().equals(defaultProgrammingLanguage)) {
 				setProgramingLanguage(pl);
-				return ;
+				System.err.println("Student progression listeners are disabled in this version.");
+				return ; 
 			}
 		}
 
