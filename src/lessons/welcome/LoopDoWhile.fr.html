@@ -1,27 +1,30 @@
 <h2>Boucles jusqu'à<tt> (do ... while)</tt></h2>
 
-<p class="Python">Attention, cette leçon est pour le moment seulement écrite en Java et fait
-appel à une notion qui n'existe pas en Python. Oubliez la.</p>
+<p class="Python">Here is another little exercise about loops. It is slightly more complex as
+we want the action to be executed in any case, even if the condition is
+false right away. Some languages have specific constructs for that, but not
+the Python language. No problem, I'm sure you can do it without them, can't
+you?</p>
 
-
-<p>Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
+<p class="Java">Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
 et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
 parfois que l'on veuille que le corps de la boucle soit évalué au moins une
 fois, même si la condition est initialement fausse. On utilise pour cela une
 variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :
-<pre>do {
+<pre class="Java">do {
 &nbsp;&nbsp;<b>action()</b>;
-} while (<b>condition</b>);</pre>
+} while (<b>condition</b>);</pre></p>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> Certaines cases du monde sont jaunes, mais votre buggle
-ne supporte pas de s'y trouver comme c'est son cas actuellement. Écrivez le
-code lui permettant d'avancer jusqu'à se trouver sur une case blanche. Vous
-utiliserez pour cela la méthode isGroundWhite(), que seule la buggle de cet
-exercice connaît.    
+<h3>Objectif de cet exercice</h3><a name="Objectives"> Some cells of the world are yellow, but your buggle
+cannot stand being in such cells as it is right now. Write the code needed
+to move forward until the ground gets white. You can use for that the
+isGroundWhite() method, that only the buggle of this exercise knows. The
+trick is that even if the ground is white on the first cell, you still want
+to move forward to the next cell.    
 
 <p>L'idée général est donc de faire: 
 <pre>avancer jusqu'à se trouver sur une case blanche</pre>
 
-<p><i>Remarque :</i> il est également possible de résoudre cet exercice avec
+<p class="Java"><i>Remarque :</i> il est également possible de résoudre cet exercice avec
 une boucle <tt>while</tt> classique, mais ce n'est pas l'objectif.</p>
 

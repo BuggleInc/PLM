@@ -1,26 +1,28 @@
 <h2>Do .. while loops</h2>
 
-<p class="Python">Warning, this lesson is currently written in Java only, and deals with a notion that does not exist in Python. Forget about it</p>
+<p class="Python">Here is another little exercise about loops. It is slightly more complex as we want the action 
+to be executed in any case, even if the condition is false right away. Some languages have specific 
+constructs for that, but not the Python language. No problem, I'm sure you can do it without them, can't you?</p>
 
-
-<p>In a <tt>while</tt> loop, the condition is evaluated before anything else,
+<p class="Java">In a <tt>while</tt> loop, the condition is evaluated before anything else,
 and if it's false, the loop body is never evaluated. Sometimes (although not 
 that often), you would prefer the
 loop body to get evaluated at least once, even if the condition is initially
 false. For that, a variation of the <tt>while</tt> loop gets used, using the
 following syntax in Java:
-<pre>do {
+<pre class="Java">do {
 &nbsp;&nbsp;<b>action()</b>;
-} while (<b>condition</b>);</pre>
+} while (<b>condition</b>);</pre></p>
 
 <h3>Exercise goal</h3><a name="Objectives"> Some cells of the world are yellow, but your buggle
 cannot stand being in such cells as it is right now. Write the code needed
 to move forward until the ground gets white. You can use for that the
-isGroundWhite() method, that only the buggle of this exercise knows.    
+isGroundWhite() method, that only the buggle of this exercise knows. The trick is that even if the ground 
+is white on the first cell, you still want to move forward to the next cell.    
 
 <p>The general idea is to do something like: 
 <pre>move forward until located in a white cell</pre>
 
-<p><i>Remark:</i> it is also possible to solve this exercise with a classical
+<p class="Java"><i>Remark:</i> it is also possible to solve this exercise with a classical
 <tt>while</tt> loop, but it's not the goal.</p>
 
