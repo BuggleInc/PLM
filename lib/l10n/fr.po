@@ -608,8 +608,8 @@ msgstr "Reculer</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-msgid "void turnLeft();"
-msgstr "void turnLeft();"
+msgid "void turnLeft()"
+msgstr "void turnLeft()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
@@ -658,8 +658,8 @@ msgstr "Changer la position</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-msgid "int getX();"
-msgstr "int getX();"
+msgid "int getX()"
+msgstr "int getX()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
@@ -698,8 +698,8 @@ msgstr "Changer la couleur</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-msgid "Color getColor();"
-msgstr "Color getColor();"
+msgid "Color getColor()"
+msgstr "Color getColor()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
@@ -718,8 +718,8 @@ msgstr "Chercher un mur derriere</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-msgid "boolean isFacingWall();"
-msgstr "boolean isFacingWall();"
+msgid "boolean isFacingWall()"
+msgstr "boolean isFacingWall()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
@@ -743,8 +743,8 @@ msgstr "Les directions valides sont :"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-msgid "Direction getDirection();"
-msgstr "Direction getDirection();"
+msgid "Direction getDirection()"
+msgstr "Direction getDirection()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
@@ -778,18 +778,18 @@ msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushUp();"
-msgstr "void brushUp();"
+msgid "void brushUp()"
+msgstr "void brushUp()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushDown();"
-msgstr "void brushDown();"
+msgid "void brushDown()"
+msgstr "void brushDown()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "boolean isBrushDown();"
-msgstr "boolean isBrushDown();"
+msgid "boolean isBrushDown()"
+msgstr "boolean isBrushDown()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
@@ -803,13 +803,13 @@ msgstr "Obtenir la couleur de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "void setBrushColor(Color);"
-msgstr "void setBrushColor(Color);"
+msgid "void setBrushColor(Color)"
+msgstr "void setBrushColor(Color)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "Color getBrushColor();"
-msgstr "Color getBrushColor();"
+msgid "Color getBrushColor()"
+msgstr "Color getBrushColor()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:30
@@ -823,8 +823,8 @@ msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:31
-msgid "Color getGroundColor();"
-msgstr "Color getGroundColor();"
+msgid "Color getGroundColor()"
+msgstr "Color getGroundColor()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
@@ -853,13 +853,13 @@ msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isOverBaggle();"
-msgstr "boolean isOverBaggle();"
+msgid "boolean isOverBaggle()"
+msgstr "boolean isOverBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isCarryingBaggle();"
-msgstr "boolean isCarryingBaggle();"
+msgid "boolean isCarryingBaggle()"
+msgstr "boolean isCarryingBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
@@ -893,13 +893,13 @@ msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "boolean isOverMessage();"
-msgstr "boolean isOverMessage();"
+msgid "boolean isOverMessage()"
+msgstr "boolean isOverMessage()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "void writeMessage(String);"
-msgstr "void writeMessage(String);"
+msgid "void writeMessage(String)"
+msgstr "void writeMessage(String)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
@@ -1216,7 +1216,7 @@ msgid ""
 "BSD'ed while JLM is mainly GPL'ed for now -- I'll have to ask them for an "
 "exception). That would be better since their helper interface seem to be "
 "able to deal with several debuggers (eclipse, sun or openjdk). That's quite "
-"a large amount of work I'd like to avoid dupplicating.  * Check wheter I can "
+"a large amount of work I'd like to avoid duplicating.  * Check wheter I can "
 "get tracing info from ASM. It may be more robust to JVM variants than the "
 "debugging approach. On the other hand, debugging is a neat feature for JLM "
 "as is.  * Work on the convergence of JLM and DrJava. Beside of the licencing "
@@ -2629,11 +2629,11 @@ msgid ""
 "<span class=\"comment\">also ignored  '''</span>\n"
 "yetAnotherCall()\n"
 msgstr ""
-"appelMethodeLuParLeCompilateur(); <span class=\"comment\"> # tout ceci est ignoré</span>\n"
-"autreAppel(); \n"
+"appelMethodeLuParLeCompilateur() <span class=\"comment\"> # tout ceci est ignoré</span>\n"
+"autreAppel() \n"
 "<span class=\"comment\">''' ceci est</span>\n"
 "<span class=\"comment\"> également ignoré '''</span>\n"
-"encoreUnAppel();\n"
+"encoreUnAppel()\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/BasicsDrawG.html:47
@@ -2656,7 +2656,7 @@ msgid ""
 msgstr ""
 "Les commentaires sur plusieurs lignes sont souvent utilisés pour documenter\n"
 "comment utiliser le code, tandis que les autres types de commentaires sont\n"
-"souvent utilisé pour documenter comment le code fonctionne."
+"souvent utilisés pour documenter comment le code fonctionne."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Conditions.html:3
@@ -2701,7 +2701,7 @@ msgid ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>"
 msgstr ""
-"if <b>condition</b>\n"
+"if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>"
 
 #. type: Content of: <p>
@@ -2743,9 +2743,9 @@ msgstr ""
 "Python utilise l'indentation pour définir les blocs de code. L'indentation "
 "standard en Python est de quatre espaces. Veuillez noter que les blocs de "
 "code n'ont pas besoin de terminaison. Indenter commence un bloc et "
-"désindenter le termineDans le code suivant, les instructions <b>whatToDo()</"
-"b> et <b>whatToDoNext()</b> seront executées si la condition est vrai, "
-"ensuite l'instruction <b>whatToDoAnyway()</b> sera executée dans tous les "
+"désindenter le termine. Dans le code suivant, les instructions <b>whatToDo()</"
+"b> et <b>whatToDoNext()</b> seront executées si la condition est vraie, "
+"ensuite l'instruction <b>whatToDoAnyway()</b> sera exécutée dans tous les "
 "cas."
 
 #. type: Content of: <p><pre>
@@ -2811,7 +2811,7 @@ msgstr ""
 "for, les boucles while, etc. Indenter commence un bloc et désindenter le "
 "termine. Il n'y a pas de parenthèses, d'accolades, ou de mots clés. Cela "
 "signifie qu'un espace est significatif et doit être cohérent. Dans cet "
-"exemple, le code de la fonction ( en comptant la documentation) est indenté "
+"exemple, le code de la fonction (en comptant la documentation) est indenté "
 "avec quatre espaces. Il n'est pas nécessaire que cela soit quatre espaces, "
 "il faut juste que cela soit cohérent. La première ligne qui n'est pas "
 "indentée est en dehors de la fonction."
@@ -3303,7 +3303,7 @@ msgid ""
 "'5') in the variable (say 'length'), and you can retrieve it latter when you "
 "need it."
 msgstr ""
-"Java permet d'utiliser différents <i>types</i> de données, tels que les "
+"Dans un programme, on peut utiliser différents <i>types</i> de données, tels que les "
 "entiers, les nombres à virgules ou les chaînes de caractères. Si on veut "
 "utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</"
 "i>, qui est une sorte de case contenant une valeur. Ce n'est pas très "
@@ -3333,8 +3333,8 @@ msgid ""
 "such difficulties here."
 msgstr ""
 "Le langage Python est dit <i>non typé</i>, ce qui signifie qu'une variable "
-"donnée peutcontenir n'importe quel type de donnée. D'autres langages ( comme "
-"Java) rende obligatoire que chaque variable  ne puisse contenir que des "
+"donnée peutcontenir n'importe quel type de donnée. D'autres langages (comme "
+"Java) rendent obligatoire que chaque variable  ne puisse contenir que des "
 "données d'un certain type, mais il n'y a pas de telles difficultés ici."
 
 #. type: Content of: <p><p>
@@ -4071,7 +4071,7 @@ msgstr ""
 msgid ""
 "It becomes harder when we want to draw two doghouses: we have to rewrite the "
 "same code twice, which is not really handy. Even worse: it's definitively "
-"not good form to dupplicate code this way. Indeed, if you realize that an "
+"not good form to duplicate code this way. Indeed, if you realize that an "
 "error sneaked into a code that you copied at several locations, you will "
 "have to fix it several times. And mind your back if you forget one of these "
 "locations."
@@ -5057,7 +5057,7 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;takeWater()\n"
 "elif todayIsJuly4th():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()\n"
-"}"
+""
 msgstr ""
 "if ilPleut():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreParapluie()\n"
@@ -5065,7 +5065,7 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau()\n"
 "elif sommes14Juillet():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()\n"
-"}"
+""
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/BDR.html:140
@@ -5325,11 +5325,12 @@ msgstr ""
 #. type: Content of: <p><a><p>
 #: src/lessons/welcome/BDR.html:197
 msgid ""
-"The other subtlety is to keep working as long as there is some work to do, i."
-"e., as long as we did not find a cell which content is not described in the "
-"table. The easier for that is to use an infinite loop (<code>while (true)</"
-"code>) with all the tests in the loop body. If we find a cell not described "
-"in the table, we stop everything using a simple <code>return;</code>."
+"The other subtlety is to keep working as long as there is some work to do,
+i.e., as long as we did not find a cell which content is not described in
+the table. The easier for that is to use a boolean variable (<code>finished</code>)
+that is initialized to <code>false</code> as termination condition for the loop.
+As soon as the buggle find a cell with a value not described in the table, the boolean variable is set to <code>false</code>.
+Thus the loop, will stop and the program will terminate."
 msgstr ""
 "L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant "
 "qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus "

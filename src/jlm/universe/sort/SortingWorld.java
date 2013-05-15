@@ -65,7 +65,7 @@ public class SortingWorld extends World {
 
 	@Override
 	public WorldView[] getView() {
-		return new WorldView[] { new SortingWorldChronoView(this) , new SortingWorldStateView(this)};
+		return new WorldView[] { new SortingWorldView(this) };
 // enabled 'nice and buggy' sorting view for  debugging 
 //		return new WorldView[] { new SortingWorldView(this) };
 	}
@@ -88,7 +88,13 @@ public class SortingWorld extends World {
 				"def setValue(i,j):\n" +
 				"  entity.setValue(i,j)\n" +
 				"def sorted(i):\n" +
-				"  entity.sorted(i)\n"				
+				"  entity.sorted(i)\n"+
+				"def isSmaller(i,j):\n"+
+				"  return entity.isSmaller(i,j)\n"+
+				"def isSmallerThan(i,j):\n"+
+				"  return entity.isSmallerThan(i,j)\n"+
+				"def checkme():\n"+
+				"  entity.checkme()\n"
 				;
 			return res;
 		}
@@ -98,6 +104,4 @@ public class SortingWorld extends World {
 	public String diffTo(World world) {
 		return null; // This is not used since SortingExercise overrides check()
 	}
-
-	// TODO Implement world IO
 }

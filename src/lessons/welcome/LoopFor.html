@@ -1,7 +1,5 @@
 <h2>For loops</h2>
 
-<p class="Python">Warning, this lesson is currently written in Java only. Adapt it yourself</p>
-
 <p>While loops are well adapted to situations where you want to achieve an
 action while a condition stays true, but it is less adapted to achieve a
 given action a predetermined amount of time. For example, when we wanted to
@@ -12,53 +10,63 @@ variable manually at the end of the loop.</p>
 
 <p>In such situations, <code>for</code> loops become handy. Their syntax is the
 following: 
-<pre>for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
+<pre class="Java">for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
 &nbsp;&nbsp;&nbsp;<b>action</b>();
 }</pre>
 
+<pre class="Python">for <b>variable</b> in <b>sequence of values</b>:
+&nbsp;&nbsp;&nbsp;<b>action</b>()
+</pre>
+
 This code is perfectly equivalent to the following:
-<pre><b>initializing</b>;
+<pre class="Java"><b>initializing</b>;
 while (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;<b>action</b>();
 &nbsp;&nbsp;&nbsp;<b>incrementing</b>;
 }</pre>
+<pre class="Python">
+while <b>there is a value in the sequence</b>: 
+&nbsp;&nbsp;&nbsp;<b>set variable to the next unseen value of the sequence</b>
+&nbsp;&nbsp;&nbsp;<b>action</b>()
+</pre>
 
-<p>In such situations, <code>for</code> loops become handy. Their syntax is the
-following: 
-<pre>for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
-&nbsp;&nbsp;&nbsp;<b>action</b>();
-}</pre>
+<p class="Python">Please not that in Python the instructions <code>range(n)</code> allows to get a sequence n integer value from 0 to n-1.</p>
 
-This code is perfectly equivalent to the following:
-<pre><b>initializing</b>;
-while (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;<b>action</b>();
-&nbsp;&nbsp;&nbsp;<b>incrementing</b>;
-}</pre>
 
 <p>For example, both following codes are equivalent. The latter is easier to
 read, don't you think?
 
-<pre>int done = 0;
+<pre class="Java">int done = 0;
 while (done &lt; stepAmount) {
 &nbsp;&nbsp;&nbsp;backward();
 &nbsp;&nbsp;&nbsp;done++;
 }</pre>
-<pre>for (int done = 0; done &lt; stepAmount; done++) {
+<pre class="Java">for (int done = 0; done &lt; stepAmount; done++) {
 &nbsp;&nbsp;&nbsp;backward();
 }</pre>
 
-<p>It is possible to build more advanced <tt>for</tt> loops since any valid
+<pre class="Python">done = 0
+while done &lt; stepAmount:
+&nbsp;&nbsp;&nbsp;backward()
+&nbsp;&nbsp;&nbsp;done = done + 1
+</pre>
+<pre class="Python">for done in range(stepAmount):
+&nbsp;&nbsp;&nbsp;backward()
+</pre>
+
+
+
+<p class="Java">It is possible to build more advanced <tt>for</tt> loops since any valid
 instruction can be used as initialization, condition and incrementation. The
-following example is a bit extrem since it compute the gcd (greatest common
+following example is a bit extreme since it compute the gcd (greatest common
 divisor) of two numbers without loop body and initialization (everything is
 in the condition and incrementation).
 
-<pre>int x=20, y=3, tmp;
+<pre class="Java">int x=20, y=3, tmp;
 for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }
  <span class="comment">/* the gcd is stored in x */</span></pre>
 
-<p>If you don't understand every details of this example, don't panic. That's
+<p class="Java">If you don't understand every details of this example, don't panic. That's
 quite logic since it uses some syntax details that we did not introduce yet.</p>
 
 

@@ -1,17 +1,15 @@
 package lessons.sort.cocktail;
 
 import jlm.core.model.Game;
-import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.sort.SortingEntity;
+import jlm.universe.sort.SortingExercise;
 import jlm.universe.sort.SortingWorld;
 
-public class AlgCocktailSort1 extends ExerciseTemplated{
+public class AlgCocktailSort1 extends SortingExercise{
 	
 	public AlgCocktailSort1(Lesson lesson) {
 		super(lesson);
-		
-		addProgLanguage(Game.PYTHON);
 		
 		SortingWorld[] myWorlds = new SortingWorld[2];
 		myWorlds[0] = new SortingWorld("Functional test",10);

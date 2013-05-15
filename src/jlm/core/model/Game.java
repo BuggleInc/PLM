@@ -24,6 +24,7 @@ import java.util.jar.Manifest;
 
 import javax.swing.JOptionPane;
 
+import jlm.core.DiscardableGameStateListener;
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
@@ -110,6 +111,21 @@ public class Game implements IWorldView {
 	private Game() {
 		Game.loadProperties();
 		loadSession();
+
+		// set default programming language according to jlm properties
+		// may crash if one exercise do not support the default language
+		String defaultProgrammingLanguage = Game.getProperty("jlm.default.programminglanguage","Java");
+		if (!defaultProgrammingLanguage.equals(Game.JAVA)) 
+			System.err.println("Warning, the default programming language is not 'Java' but '"+defaultProgrammingLanguage+"'.\n"+
+					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don't expect it.\n"+
+					"   You can change this variable either in $HOME/.jlm/jlm.properties or resource/jlm.configuration.properties");
+		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
+			if (pl.getLang().equals(defaultProgrammingLanguage)) {
+				setProgramingLanguage(pl);
+				System.err.println("Student progression listeners are disabled in this version.");
+				return ; 
+			}
+		}
 
 		addProgressSpyListener(new IdenticaSpy());
 		addProgressSpyListener(new TwitterSpy());
@@ -629,8 +645,20 @@ public class Game implements IWorldView {
 	}
 
 	protected void fireStateChanged(GameState status) {
+		List<DiscardableGameStateListener> garbage = new ArrayList<DiscardableGameStateListener>();
+		
 		for (GameStateListener l : this.gameStateListeners) {
 			l.stateChanged(status);
+			if (l instanceof DiscardableGameStateListener) {
+				DiscardableGameStateListener dl = (DiscardableGameStateListener) l;
+				if (dl.isDirty()) {
+					garbage.add(dl);
+				}
+			}
+		}
+		
+		for (DiscardableGameStateListener dl : garbage) {
+			this.gameStateListeners.remove(dl);
 		}
 	}
 

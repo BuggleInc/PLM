@@ -20,7 +20,6 @@ public class LoopDoWhile extends ExerciseTemplated {
 		    for (int j=6; j>i; j--)
 		    	myWorld.setColor(i, j,Color.yellow);
 		}
-    	myWorld.setColor(6, 6,Color.yellow);
 
     	setup(myWorld);
 	}

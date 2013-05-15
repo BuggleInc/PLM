@@ -29,7 +29,6 @@ public abstract class Exercise  extends Lecture {
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All source files */
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
-	public Map<ProgrammingLanguage, Map<String, String>> scriptSources = new TreeMap<ProgrammingLanguage, Map<String, String>>(); /* (Lang x scriptName |-> script source) list of scripts that are to be executed by entities when not running Java */
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
 	private static final String packageNamePrefix = "jlm.runtime";
@@ -106,7 +105,9 @@ public abstract class Exercise  extends Lecture {
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";");
 
-		/* Do the compile (but only if the current language is Java: scripts are not compiled of course) */
+		/* Do the compile (but only if the current language is Java: scripts are not compiled of course)
+		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
+		 */
 		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
 			/* Prepare the source files */
 			Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
@@ -135,17 +136,6 @@ public abstract class Exercise  extends Lecture {
 			}
 		}
 		
-		/* Setup the scripts for the other languages */
-		for (ProgrammingLanguage lang: getProgLanguages()) {
-			if (!lang.equals(Game.JAVA) && !lang.equals(Game.LIGHTBOT)) {
-				Map<String, String> scripts = new TreeMap<String, String>();
-				
-				for (SourceFile sf: sourceFiles.get(lang)) 
-					scripts.put(className(sf.getName()), sf.getCompilableContent(null)); 
-				
-				scriptSources.put(lang,scripts); 
-			}
-		}
 	}
 	
 	private String packageName(){
@@ -212,11 +202,28 @@ public abstract class Exercise  extends Lecture {
 					ent.initDone();
 					/* Add new entity to the to be returned entities set */
 					newEntities.add(ent);
-				} else { /* In scripting, we don't need to actually mutate the entity, just set the script to be interpreted later */
-					String script = scriptSources.get(Game.getProgrammingLanguage()).get(className(newClassName));
-					if (script == null) 
-						throw new RuntimeException("Cannot retrieve the script for "+className(newClassName));
-					old.setScript(Game.getProgrammingLanguage(), script);
+				} else { 
+					/* In scripting, we don't need to actually mutate the entity, just set the script to be interpreted later.
+					 * Also, since the classloader don't cross our way, don't mess with package names to force reloads. In other words, don't use className() in here!! 
+					 */	
+					
+					ProgrammingLanguage lang = Game.getProgrammingLanguage();
+					boolean foundScript = false;
+					for (SourceFile sf : sourceFiles.get(lang)) {
+						if (newClassName.equals(sf.name)) {
+							old.setScript(Game.getProgrammingLanguage(), sf.getCompilableContent());
+							foundScript = true;
+						} else {
+							System.err.println(sf.name+" != "+newClassName);
+						}
+					}
+					if (!foundScript) {
+						StringBuffer sb = new StringBuffer();
+						for (SourceFile sf: sourceFiles.get(lang)) {
+							sb.append(sf.name+", ");
+						}
+						throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
+					}
 				}
 			}
 			if (Game.getProgrammingLanguage().equals(Game.JAVA)) 

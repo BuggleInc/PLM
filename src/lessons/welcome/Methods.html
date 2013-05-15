@@ -15,13 +15,13 @@ could obey an <code>goAndGet()</code> order just like it understands a
 
 <p class="Python">The syntax to write a simple method called <code>goAndGet</code> is the
 following:
-<pre>def goAndGet():
+<pre class="Python">def goAndGet():
   actions();
   to();
   do();</pre>
 <p class="Java">The syntax to write a simple method called <code>goAndGet</code> is the
 following:
-<pre>public void goAndGet() {
+<pre class="Java">public void goAndGet() {
   actions();
   to();
   do();
@@ -40,9 +40,9 @@ can use this method.</p>
 previously that the <code>isOverBaggle()</code> method returns a boolean and
 can thus be used as a condition in a if or a while. This means that it is
 declared the following way:
-<pre>public boolean isOverBaggle() { ... }</pre>
+<pre class="Java">public boolean isOverBaggle() { ... }</pre>
 
-   We will introduce in next exercise how to do this kind of tricks. For now,
+<p class="Java">We will introduce in next exercise how to do this kind of tricks. For now,
 let's just write <code>void</code> at this location.</p>
 
 <p class="Java">In Java, the convention is to use lower case for the first letter of a
@@ -69,14 +69,14 @@ baggle).
 code that the buggle should execute, but a method it should use. Actually,
 in any previous exercise, you wrote the body of a specific method called
 <code>run()</code> which gets invoked by the environment when you click on
-</p>
-<b>Start</b>. 
-<p class="Java">Don't try to define this method here, since the buggle already knows
+<b>Start</b>.</p> 
+
+<p>Don't try to define this method here, since the buggle already knows
 it. This would cause trouble to the compiler, which would give you an error
 message in exchange. For your information, here is the <code>run()</code>
 method of this exercise:
 
-<pre>public void run() {
+<pre class="Java">public void run() {
 &nbsp;&nbsp;for (int i=0; i&lt;7; i++) { 
 &nbsp;&nbsp;&nbsp;&nbsp;goAndGet();
 &nbsp;&nbsp;&nbsp;&nbsp;turnRight();
@@ -84,6 +84,16 @@ method of this exercise:
 &nbsp;&nbsp;&nbsp;&nbsp;turnLeft();
 &nbsp;&nbsp;}
 }</pre>
+<pre class="Pyhton">def run():
+&nbsp;&nbsp;for i in range(7): 
+&nbsp;&nbsp;&nbsp;&nbsp;goAndGet()
+&nbsp;&nbsp;&nbsp;&nbsp;turnRight()
+&nbsp;&nbsp;&nbsp;&nbsp;forward()
+&nbsp;&nbsp;&nbsp;&nbsp;turnLeft()
+&nbsp;&nbsp;
+}</pre>
+
+
 </p>
 <p>Your buggle will repeat 7 times (which matches the world's dimension)
 sequence constituted of a call to the <code>goAndGet()</code> method that you should

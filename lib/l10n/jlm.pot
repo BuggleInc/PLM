@@ -507,7 +507,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-msgid "void turnLeft();"
+msgid "void turnLeft()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -557,7 +557,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-msgid "int getX();"
+msgid "int getX()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -597,7 +597,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-msgid "Color getColor();"
+msgid "Color getColor()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -617,7 +617,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-msgid "boolean isFacingWall();"
+msgid "boolean isFacingWall()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -642,7 +642,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-msgid "Direction getDirection();"
+msgid "Direction getDirection()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -677,17 +677,17 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushUp();"
+msgid "void brushUp()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void brushDown();"
+msgid "void brushDown()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "boolean isBrushDown();"
+msgid "boolean isBrushDown()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -702,12 +702,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "void setBrushColor(Color);"
+msgid "void setBrushColor(Color)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "Color getBrushColor();"
+msgid "Color getBrushColor()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -722,7 +722,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:31
-msgid "Color getGroundColor();"
+msgid "Color getGroundColor()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
@@ -752,12 +752,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isOverBaggle();"
+msgid "boolean isOverBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-msgid "boolean isCarryingBaggle();"
+msgid "boolean isCarryingBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -792,12 +792,12 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "boolean isOverMessage();"
+msgid "boolean isOverMessage()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:38
-msgid "void writeMessage(String);"
+msgid "void writeMessage(String)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -1008,7 +1008,7 @@ msgid ""
 "BSD'ed while JLM is mainly GPL'ed for now -- I'll have to ask them for an "
 "exception). That would be better since their helper interface seem to be "
 "able to deal with several debuggers (eclipse, sun or openjdk). That's quite "
-"a large amount of work I'd like to avoid dupplicating.  * Check wheter I can "
+"a large amount of work I'd like to avoid duplicating.  * Check wheter I can "
 "get tracing info from ASM. It may be more robust to JVM variants than the "
 "debugging approach. On the other hand, debugging is a neat feature for JLM "
 "as is.  * Work on the convergence of JLM and DrJava. Beside of the licencing "
@@ -3059,7 +3059,7 @@ msgstr ""
 msgid ""
 "It becomes harder when we want to draw two doghouses: we have to rewrite the "
 "same code twice, which is not really handy. Even worse: it's definitively "
-"not good form to dupplicate code this way. Indeed, if you realize that an "
+"not good form to duplicate code this way. Indeed, if you realize that an "
 "error sneaked into a code that you copied at several locations, you will "
 "have to fix it several times. And mind your back if you forget one of these "
 "locations."
@@ -3745,7 +3745,7 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;takeWater()\n"
 "elif todayIsJuly4th():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()\n"
-"}"
+""
 msgstr ""
 
 #. type: Content of: <p><h3>
@@ -3982,12 +3982,12 @@ msgstr ""
 #. type: Content of: <p><a><p>
 #: src/lessons/welcome/BDR.html:197
 msgid ""
-"The other subtlety is to keep working as long as there is some work to do, "
-"i.e., as long as we did not find a cell which content is not described in "
-"the table. The easier for that is to use an infinite loop (<code>while "
-"(true)</code>) with all the tests in the loop body. If we find a cell not "
-"described in the table, we stop everything using a simple "
-"<code>return;</code>."
+"The other subtlety is to keep working as long as there is some work to do,
+i.e., as long as we did not find a cell which content is not described in
+the table. The easier for that is to use a boolean variable (<code>finished</code>)
+that is initialized to <code>false</code> as termination condition for the loop.
+As soon as the buggle find a cell with a value not described in the table, the boolean variable is set to <code>false</code>.
+Thus the loop, will stop and the program will terminate."
 msgstr ""
 
 #. type: Content of: <p><a><p>

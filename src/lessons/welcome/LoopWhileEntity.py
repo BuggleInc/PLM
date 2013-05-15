@@ -1,4 +1,4 @@
 # BEGIN SOLUTION
-while isFacingWall() == False:
+while not isFacingWall():
   forward()
 # END TEMPLATE
