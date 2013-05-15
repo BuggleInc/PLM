@@ -1,12 +1,10 @@
 # BEGIN SOLUTION
-		boolean swapped;
-		do {
-			swapped = false;
-			for (int i=0; i<getValueCount()-1; i++)
-				if (!isSmaller(i,i+1)) {
-					swap(i,i+1);
-					swapped =true;
-				}
-		} while (swapped);
-		checkme(); /* color everything in blue */
+swapped = True
+while swapped:
+	swapped = False
+	for i in range(getValueCount()-1):
+		if (not isSmaller(i,i+1)):
+			swap(i,i+1)
+			swapped = True
 # END TEMPLATE
+checkme()
