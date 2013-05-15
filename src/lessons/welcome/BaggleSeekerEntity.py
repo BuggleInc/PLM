@@ -1,4 +1,4 @@
 # BEGIN SOLUTION 
-while isOverBaggle() == False:
+while not isOverBaggle():
   forward();
 # END TEMPLATE
