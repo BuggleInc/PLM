@@ -131,6 +131,7 @@ public abstract class World {
 			if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
 				ent.run();
 			} else {
+				/* Fixme: use one engine for everyting and use contexts in there */
 				ScriptEngineManager manager = new ScriptEngineManager();       
 				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
 				if (engine==null) 
