@@ -1,6 +1,5 @@
 package lessons.smn.pancake.raw;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.smn.pancake.raw.PancakeEntity;
