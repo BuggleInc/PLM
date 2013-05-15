@@ -35,7 +35,7 @@ public class AlgShellSortEntity extends SortingEntity {
 				 * if they are out of order continue this loop, moving
 				 * elements "back" to make room for B to be inserted.
 				 */
-				for( j = i; (j >= gap) && (getValue(j-gap) > value); j -= gap) {
+				for(; (j >= gap) && (getValue(j-gap) > value); j -= gap) {
 					copy(j-gap,j);
 				}
 				/*  insert B into the correct place */
