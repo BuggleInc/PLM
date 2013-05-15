@@ -1,35 +1,48 @@
 <h2>Methods with parameters</h2>
 
 Don't you get tired of writing again and again the code to move by a fixed
-amount of steps? On the other hand, writting <tt>forward2()</tt>,
+amount of steps? On the other hand, writing <tt>forward2()</tt>,
 <tt>forward3()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>,
 <tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help
 
 <p>Luckily, it is possible to pass <b>parameters</b> to your methods. You have
-to specifiy their type and name between the parenthesis after the method
+to specify their type and name between the parenthesis after the method
 name. Then, you can use them in the method body as if it were variables
 defined in there, and which initial value is what the caller specified.
 
-<pre>double divideByTwo(double x) {
+<pre class="Java">double divideByTwo(double x) {
 &nbsp;&nbsp;return x / 2;
 }</pre>
 
+<pre class="Python">def divideByTwo(x):
+&nbsp;&nbsp;return x / 2
+</pre>
+
 <p>As caller, you have to specify the initial value of this "variables" between
 the call's parenthesis.
-<pre>double y = divideByTwo(3.14);</pre>
+<pre class="Java">double y = divideByTwo(3.14);</pre>
+
+<pre class="Python">y = divideByTwo(3.14)</pre>
+
 
 <p>If you want several parameters, you need to separate them with comas (,)
 both in the declaration and calls.
 
-<pre>double divide(double x, double y) {
+<pre class="Java">double divide(double x, double y) {
 &nbsp;&nbsp;return x / y;
 }</pre>
-<pre>double y = divide(3.14 , 1.5);</pre>
+<pre class="Java">double y = divide(3.14 , 1.5);</pre>
 
-<p>In Java, you can declare several methods of the same name as long as they
+<pre class="Python">def divide(double x, double y):
+&nbsp;&nbsp;return x / y
+}</pre>
+<pre class="Python">y = divide(3.14 , 1.5)</pre>
+
+
+<p class="Java">In Java, you can declare several methods of the same name as long as they
 don't have the same parameter types and number (they are said to have
 different <b>signature</b>).
-<pre>int max(int x, int y) {
+<pre class="Java">int max(int x, int y) {
   if (x > y) {
     return x;
   }
@@ -45,7 +58,9 @@ int max(int x, int y, int z) {
   return z;
 }</pre>
 
-<p>Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It
+<!-- introduce default value for parameters in Python language -->
+
+<p class="Java">Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It
 works anyway because a <tt>return</tt> interrupts the method execution. If
 we arrive to the last line of <code>max(int,int)</code>, we know that
 <code>x&lt;=y</code> because on the other case, the <tt>return</tt> of line
@@ -64,11 +79,11 @@ change anything for you, since the same code is used for any buggles.</p>
 <p>The code of the method to write should not be really problematic for you.</p>
 
 <h2>What's coming next?</h2>
-<p>You now know the very basics of Java Programming. At least, we introduced all the important 
-concepts, and you should be able to read most Java code by now. If you want to play safe, you 
+<p>You now know the very basics of programming. At least, we introduced all the important 
+concepts, and you should be able to read most code by now. If you want to play safe, you 
 should proceed to the next exercises of this lesson to solidify your knowledge by reusing 
 these concepts in various simple situations. After taking them, you'll master what's called 
-"Tactical programming", meaning that you will master the Java syntax enough to not have any 
+"Tactical programming", meaning that you will master the syntax enough to not have any 
 issue with it, allowing you to focus on the fundamental problems of what you want to solve 
 instead of struggling with syntaxic difficulties. Some of these exercises are even fun to do ;)
 
@@ -76,7 +91,7 @@ instead of struggling with syntaxic difficulties. Some of these exercises are ev
 to more interesting challenges. For example, the <i>Labyrinths</i> lesson will teach you 
 about maze escaping algorithms, which are not rocket science but require several improvements 
 to work for any kind of maze. The <i>Lightbot</i> lesson is a little programming game where 
-you control a little robot wanting to light the world. Since it is not programmed in Java 
+you control a little robot wanting to light the world. Since it is not programmed in a language 
 but graphically, the first exercises can be used as an introduction activity to what 
 programming means for real beginners, but the last exercises constitute challenges and 
 brain teaser even to professional programmers.</p>   

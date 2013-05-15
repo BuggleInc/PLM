@@ -14,25 +14,6 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 		brushUp();
 	}
 
-	void makeV(Color c) {
-		setBrushColor(c);
-		forward();
-		mark();
-
-		forward();
-		turnLeft();
-		forward();
-		mark();
-
-		backward();
-		turnRight();
-		forward();
-		mark();
-
-		forward();
-		turnLeft();
-	}
-
 	void squareA(Color c) {
 		setBrushColor(c);
 		
@@ -50,6 +31,7 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 		forward();
 		turnLeft();
 	}
+	
 	void squareB(Color c) {
 		setBrushColor(c);
 		mark();

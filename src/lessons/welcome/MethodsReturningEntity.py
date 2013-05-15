@@ -1,18 +1,17 @@
-def forward(i):
-	errorMsg("forward(int) forbidden in this exercise")
+def forward(i=-1):
+    if i!=-1:
+        errorMsg("forward(int) forbidden in this exercise")
+    else:
+        entity.forward()
 
-def backward(i):
-	errorMsg("backward(int) forbidden in this exercise")
+def backward(i=-1):
+    if i!=-1:
+        errorMsg("backward(int) forbidden in this exercise")
+    else:
+        entity.backward()
 
-def run():
-	for i in range(7):
-		if haveBaggle():
-			return
-		turnRight()
-		forward()
-		turnLeft()
 
-# BEGIN TEMPLATE 
+# BEGIN SOLUTION 
 def haveBaggle():
     # BEGIN SOLUTION 
 	res = False
@@ -23,6 +22,12 @@ def haveBaggle():
 	for i in range(6):
 		backward()
 	return res
-	# END SOLUTION
 #END TEMPLATE
+
+for i in range(7):
+    if haveBaggle():
+        break
+    turnRight()
+    forward()
+    turnLeft()
 

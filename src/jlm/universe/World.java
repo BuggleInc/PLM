@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -131,6 +133,7 @@ public abstract class World {
 			if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
 				ent.run();
 			} else {
+				/* Fixme: use one engine for everyting and use contexts in there */
 				ScriptEngineManager manager = new ScriptEngineManager();       
 				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
 				if (engine==null) 
@@ -154,7 +157,20 @@ public abstract class World {
 				engine.eval(script);
 			}
 		} catch (ScriptException e) {
-			System.err.println(e.getCause());
+			String msg = e.getCause().toString();
+			
+			if (Game.getInstance().isDebugEnabled())
+				System.err.println(">>> Original error message\n"+msg+"<<<\n");
+			Pattern location = Pattern.compile("File .<script>., line (\\d*), (.*)", Pattern.DOTALL);  
+			Matcher locationMatcher = location.matcher(msg);
+			
+			if (locationMatcher.find()) {
+				System.err.println("Error in entity "+ent.getName()+" at line "+
+						(Integer.parseInt(locationMatcher.group(1)) - ent.getScriptOffset(progLang)+1)+
+						", "+locationMatcher.group(2));
+			} else {
+				System.err.println(e.getCause());
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

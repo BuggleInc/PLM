@@ -2,6 +2,7 @@ package jlm.core.model.lesson;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.regex.Pattern;
 
 import javax.swing.JScrollPane;
 
@@ -118,5 +119,12 @@ public class SourceFile {
 
 	public JScrollPane getEditorPanel(ProgrammingLanguage lang) {
 		return new JavaEditorPanel(this, lang);
+	}
+
+	public int getOffset() {
+		if (template != null) {
+			return template.split("\n").length;
+		}
+		return 0;
 	}
 }

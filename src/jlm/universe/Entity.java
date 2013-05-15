@@ -105,7 +105,7 @@ public abstract class Entity {
 	}
 	
 	/** Retrieve one parameter from the world */
-	protected Object getParam(int i) {
+	public Object getParam(int i) {
 		return world.parameters[i];
 	}	
 	protected int getParamsAmount() {
@@ -117,5 +117,13 @@ public abstract class Entity {
 	}
 	public String getScript(ProgrammingLanguage lang) {
 		return script.get(lang);
+	}
+	
+	private Map<ProgrammingLanguage,Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
+	public void setScriptOffset(ProgrammingLanguage lang, int offset) {
+		scriptOffset.put(lang,  offset);
+	}
+	public Integer getScriptOffset(ProgrammingLanguage lang) {
+		return scriptOffset.get(lang);
 	}
 }
