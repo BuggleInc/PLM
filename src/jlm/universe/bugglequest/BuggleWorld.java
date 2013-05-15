@@ -306,7 +306,10 @@ public class BuggleWorld extends GridWorld {
 				"def clearMessage():\n"+
 				"   entity.clearMessage()\n"+
 				"def writeMessage(msg):\n"+
-				"   entity.writeMessage(msg)"
+				"   entity.writeMessage(msg)\n"+
+				
+				"def getDirection():\n"+
+				"   return entity.getDirection()\n"
 								
 				;
 			return res;
