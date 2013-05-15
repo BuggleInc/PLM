@@ -12,12 +12,16 @@ import java.util.List;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
+import org.python.antlr.PythonParser.print_stmt_return;
+import org.python.core.PySyntaxError;
+
+import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.FileUtils;
 import jlm.core.ui.WorldView;
 
 public abstract class World {
@@ -122,7 +126,43 @@ public abstract class World {
 	public List<Entity> getEntities() {
 		return entities;
 	}
+	
+	public void runEntity(Entity ent) {
+		ProgrammingLanguage progLang = Game.getProgrammingLanguage();
+		ScriptEngine engine ;
+		try {
+			if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
+				ent.run();
+			} else {
+				ScriptEngineManager manager = new ScriptEngineManager();       
+				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
+				if (engine==null) 
+					throw new RuntimeException("Failed to start an interpreter for "+progLang.getLang().toLowerCase());
 
+				/* Ugly hack, but print is currently not working! Ugh, taste my axe, bastard! */
+				if (progLang.equals(Game.PYTHON)) 
+					engine.eval(
+							"import java.lang.System.err\n"+
+							"def log(a):\n"+
+							"  java.lang.System.err.print(a)");									
+					
+				
+				engine.put("entity", ent);
+				engine.eval(ent.getWorld().getBindings(progLang));
+				
+				String script = ent.getScript(progLang);
+				if (script == null) {
+					System.out.println("No script source for entity "+ent);
+				}
+				engine.eval(script);
+			}
+		} catch (ScriptException e) {
+			System.err.println(e.getCause());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 	public void runEntities(List<Thread> runnerVect) {
 		if (Game.getInstance().isDebugEnabled())
 			Logger.log("World:runEntities","Programming language: "+Game.getProgrammingLanguage());
@@ -131,34 +171,12 @@ public abstract class World {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
-					ProgrammingLanguage progLang = Game.getProgrammingLanguage(); 
-					try {
-						if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
-							b.run();
-						} else {
-							ScriptEngineManager manager = new ScriptEngineManager();       
-							ScriptEngine engine = manager.getEngineByName(progLang.getLang().toLowerCase());
-							if (engine==null) 
-								throw new RuntimeException("Failed to start an interpreter for "+progLang.getLang().toLowerCase());
-
-							engine.put("entity", b);
-							engine.eval(b.getWorld().getBindings(progLang));
-							String script = b.getScript(progLang);
-							if (script == null) {
-								System.out.println("no script source for entity "+b);
-								//script = Game.getInstance().getCurrentLesson().getCurrentExercise().scriptSources.get(Game.getProgrammingLanguage()).get(b)
-							}
-							engine.eval(script);
-						}
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+					runEntity(b);
 					Game.getInstance().statusArgRemove(getName());
 				}
 			});
 
-			// in order to be able to stop it from the AWT Thread in case of
-			// an infinite loop
+			// So that we can still stop it from the AWT Thread, even if an infinite loop occures
 			runner.setPriority(Thread.MIN_PRIORITY);
 
 			runner.start();

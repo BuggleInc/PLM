@@ -16,6 +16,9 @@ converted to issues on github probably.
 
 * say explicity that the combolist that is present in the exercise passed dialog propose different path in the learning process
 
+* The print function (and similar) does not work in Python. I've added
+  a log function directly to the bindings, but that's *really* ugly
+
 ***************** BASE
 
 Assez urgent :

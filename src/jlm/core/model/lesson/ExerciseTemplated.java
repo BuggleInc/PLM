@@ -3,14 +3,12 @@ package jlm.core.model.lesson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jlm.core.DiscardableGameStateListener;
-import jlm.core.GameStateListener;
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.GameState;
@@ -45,7 +43,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 		}
 	}
-	
+
 	protected void loadMap(World intoWorld) {
 		loadMap(intoWorld, getClass().getCanonicalName());
 	}
@@ -63,15 +61,15 @@ public abstract class ExerciseTemplated extends Exercise {
 		if (sb==null) {
 			throw new NoSuchEntityException("Source file "+filename+"."+lang.getExt()+" not found.");
 		}
-		*/
+		 */
 		StringBuffer sb = null;
 		try {
 			sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
 		} catch (IOException ex) {
 			throw new NoSuchEntityException("Source file "+filename+"."+lang.getExt()+" not found.");			
 		}
-		
-		
+
+
 		/* Remove line comments since at some point, we put everything on one line only, 
 		 * so this would comment the end of the template and break everything */
 		Pattern lineCommentPattern = Pattern.compile("//.*$");
@@ -174,8 +172,8 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String debugContent = "/* The solution is displayed because we are in debug mode */\n"+
-		templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
-		templateTail.toString();
+				templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
+				templateTail.toString();
 		String skelContent;
 		String headContent;
 		if (lang == Game.PYTHON) { 
@@ -185,7 +183,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			skelContent = skel.toString().replaceAll("\n", " ");
 			headContent = head.toString().replaceAll("\n", " ");
 		}
-		
+
 		String template = (headContent+"$body"+tail);
 
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
@@ -194,7 +192,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			Matcher newLineMatcher = newLinePattern.matcher(template);
 			template = newLineMatcher.replaceAll(" ");
 		}
-		
+
 		/* Apply all requested rewrites, if any */
 		if (patternString != null) {
 			Map<String, String> patterns = new HashMap<String, String>();
@@ -228,19 +226,23 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	protected final void setup(World w) {
-		World[] ws = new World[1];
-		ws[0] = w;
-		setup(ws);
+		setup(new World[] {w});
+	}
+	@Override
+	protected void addProgLanguage(ProgrammingLanguage newL) {
+		System.err.println(getClass().getName()+"::addProgLanguage("+newL+") was called; This is wrong for TemplatedExercises. Please drop this call and write a .py template instead\n"); 
 	}
 	protected void setup(World[] ws) {
 		boolean foundALanguage=false;
 		worldDuplicate(ws);
 
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
+			if (Game.getInstance().isDebugEnabled())
+				System.err.println("Look for a templating entity in "+lang);
 			boolean foundThisLanguage = false;
 			String searchedName = null;
 			for (SourceFile sf : getSourceFilesList(lang)) {
-				if (searchedName == null) {//lazy initialization
+				if (searchedName == null) {//lazy initialization if there is any sourcefile to parse
 					Pattern p = Pattern.compile(".*?([^.]*)$");
 					Matcher m = p.matcher(entityName);
 					if (m.matches())
@@ -257,12 +259,15 @@ public abstract class ExerciseTemplated extends Exercise {
 			if (!foundThisLanguage) {
 				try {
 					newSourceFromFile(lang, tabName, entityName);
-					addProgLanguage(lang);
+					super.addProgLanguage(lang);
 					foundALanguage = true;
+					if (Game.getInstance().isDebugEnabled())
+						System.out.println("Found suitable templating entity "+entityName+" in "+lang);
+
 				} catch (NoSuchEntityException e) {
 					if (getProgLanguages().contains(lang)) 
 						throw new RuntimeException("Exercise "+getName()+" is said to be compatible with language "+lang+", but I fail to find an entity for this language",e);					
-					/* Ok, this language does not work for this exercise but didn't promise anything. I can't deal with it */
+					/* Ok, this language does not work for this exercise but didn't promise anything. I can deal with it */
 				}
 			} else {
 				foundALanguage = true;
@@ -277,16 +282,31 @@ public abstract class ExerciseTemplated extends Exercise {
 		Thread t = new Thread() {
 			@Override
 			public void run() {
-				mutateEntities(answerWorld,entityName);
-				for (World aw : answerWorld) {
-					Iterator<Entity> it = aw.entities();
-					while (it.hasNext())
-						try {
-							it.next().run();
-						} catch (Exception e) {
-							e.printStackTrace();
+				ProgrammingLanguage lang = Game.getProgrammingLanguage();
+
+				if (lang.equals(Game.JAVA) || lang.equals(Game.LIGHTBOT)) {
+					mutateEntities(answerWorld,entityName);
+				} else {
+					for (World aw : answerWorld) {
+						aw.setDelay(0);
+						for (Entity ent: aw.getEntities()) {
+							StringBuffer sb = null;
+							try {
+								sb = FileUtils.readContentAsText(entityName, lang.getExt(), false);
+							} catch (IOException ex) {
+								throw new RuntimeException("Cannot compute the answer from file "+entityName+"."+lang.getExt()+" since it does not exist.");			
+							}
+
+
+							ent.setScript(lang, sb.toString());
 						}
+					}
+
 				}
+
+				for (World aw : answerWorld) 
+					for (Entity ent: aw.getEntities()) 
+						aw.runEntity(ent);
 			}
 		};
 		t.start();
@@ -313,19 +333,19 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		final ProgrammingLanguage current = Game.getProgrammingLanguage();
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
-				
+
 		mutateEntities(answerWorld, entityName);
 
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);
-		
+
 
 		// as demo is launched in several threads, we can restore the current programming language
 		// only when the demo is finished. This is achieved using some kind of hook triggered when DEMO_ENDED.	
 		Game.getInstance().addGameStateListener(
 				new DiscardableGameStateListener() {			
 					private boolean dirty = false;
-					
+
 					@Override
 					public void stateChanged(GameState type) {
 						if (type == GameState.DEMO_ENDED) {
