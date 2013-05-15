@@ -11,7 +11,7 @@ def backward(i=-1):
 # BEGIN SOLUTION
 cpt = 0
 
-while isOverBaggle() == False:
+while not isOverBaggle():
   cpt = cpt+1
   forward()
 pickUpBaggle()
