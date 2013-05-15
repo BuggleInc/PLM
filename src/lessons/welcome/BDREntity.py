@@ -1,13 +1,13 @@
+def getIndication():
+    if isOverMessage():
+        return readMessage()[0]
+    else:
+        return ''
+
 # BEGIN SOLUTION
 finished = False
 while not finished:
-    #c = getIndication()
-
-    if isOverMessage():
-        c = readMessage()[0]
-    else:
-        c = ''
-
+    c = getIndication()
     if c == 'R':
         turnRight()
         forward()

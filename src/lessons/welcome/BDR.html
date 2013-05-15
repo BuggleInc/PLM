@@ -196,10 +196,10 @@ the ground (or ' ' if nothing is written down). </p>
 
 <p>The other subtlety is to keep working as long as there is some work to do,
 i.e., as long as we did not find a cell which content is not described in
-the table. The easier for that is to use an infinite loop (<code>while
-(true)</code>) with all the tests in the loop body. If we find a cell not
-described in the table, we stop everything using a simple
-<code>return;</code>. </p>
+the table. The easier for that is to use a boolean variable (<code>finished</code>)
+that is initialized to <code>false</code> as termination condition for the loop.
+As soon as the buggle find a cell with a value not described in the table, the boolean variable is set to <code>false</code>.
+Thus the loop, will stop and the program will terminate. </p>
 
 <p>The functions having <code>void</code> as return type can contain some
 <tt>return</tt> without any associated value. It interrupts immediately
