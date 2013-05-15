@@ -22,14 +22,23 @@ helps understanding the differences between each of them.
 <tr><td>void sorted(int idx)</td><td>Tells that the cell 'idx' was successfully sorted (only used for display)</td><td>none</td></tr>
 </table>
 
-<h2>Views available</h2>
-A contextual menu allows to switch between a state view and a time
-view. The time view is a bit more complex than the trivial state view
-but much more informative: it displays the history of the data,
-allowing to easily debug your program. 
+<h2>History view</h2>
+<p>It is not enough to sort the array to pass the exercises. Your solution 
+must strictly follow the expected behavior of each exercise. This is
+enforced by checking that your algorithm needs the same amount of read
+and write operations to sort the array. When they don't match,
+understanding the difference between your code and the expected
+solution can reveal very difficult.</p>
 
-The time is represented as abscisse in this graph, each curved line
-representing a given value of the data. When two lines cross, this
-means that two values were swapped at this time stamp. This view is a
-bit hairly at the first glance, but reveals very helpful to understand
-the inner behavior of sorting algorithms.
+<p>To help in this process, it is posible to graphically explore the
+history of your sorting algorithm. Switch to the Objective view and
+use the contextual menu (right clic) to switch from the the view of
+the current state to the view of its history.</p>
+
+<p>The history view is a bit hairly at the first glance, but actually rather
+simple: The time flows from left to right on this graph, and each row
+is a cell of your array. The curved lines that go navigate between
+rows represent a given data value. When two lines cross, this means
+that two values were swapped at this time stamp. This view, first
+introduced by Aldo Cortesi, reveals very helpful understand the inner
+behavior of sorting algorithms.</p> 

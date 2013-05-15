@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-15 11:59+0300\n"
-"PO-Revision-Date: 2013-03-26 18:09+0100\n"
+"POT-Creation-Date: 2013-05-15 12:43+0300\n"
+"PO-Revision-Date: 2013-05-15 12:46+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -431,21 +431,60 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/jlm/universe/sort/SortingWorld.html:25
-msgid "Views available"
-msgstr ""
+msgid "History view"
+msgstr "Vue de l'historique du monde"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:26
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
-"A contextual menu allows to switch between a state view and a time view. The "
-"time view is a bit more complex than the trivial state view but much more "
-"informative: it displays the history of the data, allowing to easily debug "
-"your program.  The time is represented as abscisse in this graph, each "
-"curved line representing a given value of the data. When two lines cross, "
-"this means that two values were swapped at this time stamp. This view is a "
-"bit hairly at the first glance, but reveals very helpful to understand the "
-"inner behavior of sorting algorithms."
+"It is not enough to sort the array to pass the exercises. Your solution must "
+"strictly follow the expected behavior of each exercise. This is enforced by "
+"checking that your algorithm needs the same amount of read and write "
+"operations to sort the array. When they don't match, understanding the "
+"difference between your code and the expected solution can reveal very "
+"difficult."
 msgstr ""
+"Il ne suffit pas de trier le tableau pour passer les exercices. Votre "
+"solution doit suivre scrupuleusement le comportement attendu de chaque "
+"exercice. Ceci est vérifié en comptant le nombre d'opérations de lecture et "
+"d'écriture sur le tableau effectuées lors de ce tri. En cas de problème, il "
+"est souvent assez difficile de comprendre la différence entre le "
+"comportement attendu et le comportement effectif."
+
+#. type: Content of: <p>
+#: src/jlm/universe/sort/SortingWorld.html:33
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
+msgid ""
+"To help in this process, it is posible to graphically explore the history of "
+"your sorting algorithm. Switch to the Objective view and use the contextual "
+"menu (right clic) to switch from the the view of the current state to the "
+"view of its history."
+msgstr ""
+"Pour cela, il est possible d'explorer graphiquement l'historique de "
+"n'importe quel monde de tri. Passez par exemple au monde Objectif et "
+"utilisez son menu contextuel (clic droit) pour choisir entre la vue de "
+"l'état courant du monde et la vue de son histoire."
+
+#. type: Content of: <p>
+#: src/jlm/universe/sort/SortingWorld.html:38
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:19
+msgid ""
+"The history view is a bit hairly at the first glance, but actually rather "
+"simple: The time flows from left to right on this graph, and each row is a "
+"cell of your array. The curved lines that go navigate between rows represent "
+"a given data value. When two lines cross, this means that two values were "
+"swapped at this time stamp. This view, first introduced by Aldo Cortesi, "
+"reveals very helpful understand the inner behavior of sorting algorithms."
+msgstr ""
+"La vue de l'historique n'est pas aussi complexe qu'elle en a l'air à "
+"première vue. Le temps s'écoule de gauche à droite, et les cases du tableau "
+"sont représentée de haut en bas. Les lignes de différentes couleurs qui "
+"serpentent représentent les différentes valeurs contenues dans le tableau. "
+"Quand deux lignes se croises, cela signifie que les valeurs du tableau ont "
+"été échangées à ce moment de l'historique. Cette vue, inventée par Aldo "
+"Cortesi, est très pratique pour comprendre le comportement des algorithmes "
+"de tri."
 
 #. type: Content of: <h1>
 #: src/jlm/universe/turtles/TurtleWorld.html:1
@@ -7780,11 +7819,11 @@ msgstr "Algorithmes de tri"
 #: src/lessons/sort/Main.html:3
 msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
-"some less common variante of them). The goal is two fold: you can first "
-"better understand the idea of these algorithms by writting them yourself. "
-"But even if you don't code the algorithms, you can use the demo mode to "
-"organize \"races\" between these algorithms to experiment in practice what "
-"the different asymptotical complexity mean."
+"some less common variant of them). The goal is two fold: you can first "
+"better understand the idea of these algorithms by writing them yourself. But "
+"even if you don't code the algorithms, you can use the demo mode to organize "
+"\"races\" between these algorithms to experiment in practice what the "
+"different asymptotical complexity mean."
 msgstr ""
 "Cette leçon vous permet d'expérimenter avec les algorithmes de tri "
 "classiques (et certaines optimisations moins courantes de ceux-ci). "
@@ -7814,72 +7853,44 @@ msgstr "Le tri à bulle et variantes"
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:3
 msgid ""
 "Welcome to the sorting world. It allows you to experiment with the existing "
-"sorting algorithms. Please consult the world help (\"Help\"->\"About this "
-"world\") for more information on the available buildins for your algorithms."
-msgstr ""
-"Vous voici dans le monde des tris. Il vous permet d'expérimenter avec les "
-"différents algorithmes de tri existant.  Consultez l'aide du monde (\"Help-"
-">About this world\") pour une aide sur les primitives utilisables par vos "
-"algorithmes."
-
-#. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
-msgid ""
-"In this first exercise, we will explore some of the simpler of them. The tab "
-"\"Source code\" contains several sub-tabs, corresponding to the different "
-"algorithms to write. To succeed in this exercise, your solution must sort "
-"the array using exactly the same amount of read and write than the solution. "
-"That is why you have to follow strictly the pseudo-code of each algorithm."
-msgstr ""
-"Dans ce premier exercice, nous allons voir les plus simples d'entre eux. "
-"L'onglet \"Source code\" est composé de plusieurs sous-onglets, "
-"correspondant aux différents algorithmes à écrire. Pour réussir l'exercice, "
-"il faut que votre solution réalise le même nombre de lectures et écritures "
-"que la solution codée dans l'objectif.  Attention donc à suivre le pseudo-"
-"code de chaque algorithme à la lettre!"
+"sorting algorithms. The list of buildins that you can use in your algorithms "
+"is available in the world reference documentation (\"Help\"-&gt;\"About this "
+"world\")."
+msgstr "Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de tri existants. La liste des primitives que vous pouvez utiliser dans vos programmes est disponible dans la documentation de référence du monde (\"Help\" -&gt; \"About this world\")."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
 msgid "BubbleSort"
 msgstr "BubbleSort"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:16
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
 msgid ""
-"Bubble sort consists in progressively moving up the smaller elements of the "
-"array, as if they were air bubbles moving up to the surface of a liquid. The "
-"algorithm traverse the array, and compare any pair of adjacent elements. If "
-"two adjacent elements are wrongly sorted, they are swapped. Once the array "
-"was completely traversed, the operation starts again from the beginning. "
-"When no elements were sorted after a full traversal, it means that the array "
-"is completely sorted: the algorithm can stop. Bubble sort is studied because "
-"of its simplicity, but it is almost never used in practice because of its "
-"bad performance (O(n^2) on average)."
-msgstr ""
-"Le tri à bulles ou tri par propagation consiste à faire remonter "
-"progressivement les plus petits éléments d'une liste, comme les bulles d'air "
-"remontent à la surface d'un liquide. L'algorithme parcourt la liste, et "
-"compare les couples d'éléments successifs. Lorsque deux éléments successifs "
-"ne sont pas dans l'ordre croissant, ils sont échangés. Après chaque parcours "
-"complet de la liste, l'algorithme recommence l'opération. Lorsqu'aucun "
-"échange n'a lieu pendant un parcours, cela signifie que la liste est triée : "
-"l'algorithme peut s'arrêter.  La simplicité de cet algorithme justifie son "
-"étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est "
-"quasiment jamais utilisé en pratique."
+"This first sorting algorithm is the most simple one: Bubble sort consists in "
+"progressively moving up the smaller elements of the array, as if they were "
+"air bubbles moving up to the surface of a liquid. The algorithm traverse the "
+"array, and compare any pair of adjacent elements. If two adjacent elements "
+"are wrongly sorted, they are swapped. Once the array was completely "
+"traversed, the operation starts again from the beginning. When no elements "
+"were sorted after a full traversal, it means that the array is completely "
+"sorted: the algorithm can stop.  Bubble sort is studied because of its "
+"simplicity, but it is almost never used in practice because of its bad "
+"performance (O(n^2) on average)."
+msgstr "Le premier algorithme de tri est le plus simple existant : le tri à bulles ou tri par propagation consiste à faire remonter progressivement les plus petits éléments d'une liste, comme les bulles d'air remontent à la surface d'un liquide. L'algorithme parcourt la liste, et compare les couples d'éléments successifs. Lorsque deux éléments successifs ne sont pas dans l'ordre croissant, ils sont échangés. Après chaque parcours complet de la liste, l'algorithme recommence l'opération. Lorsqu'aucun échange n'a lieu pendant un parcours, cela signifie que la liste est triée : l'algorithme peut s'arrêter.  La simplicité de cet algorithme justifie son étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est quasiment jamais utilisé en pratique."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:26
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:39
 #: src/lessons/sort/bubble/AlgBubbleSort2.html:13
 msgid "Show Tip (Pseudo-code)"
 msgstr "Montrer l'indice (le pseudo-code)"
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:28
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
@@ -7994,20 +8005,19 @@ msgid ""
 "current loop.  Beware, if you have several embedded loops, this will apply "
 "to the internal one."
 msgstr ""
+"Pour cela, utilisez simplement le mot-clé <code>break></code>, qui coupe\n"
+"l'exécutino de la boucle englobante. Attention, si vous avez plusieurs boucles\n"
+"imbriquées, c'est celle situé tout au fond (au plus près du mot-clé break) qui\n"
+"est cassée."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/bubble/AlgBubbleSort3.html:12
 msgid "If you want, this tip shows the pseudo-code."
-msgstr ""
+msgstr "Si vous le désirez, cet indice montre le pseudo-code."
 
 #. type: Content of: <div><pre>
 #: src/lessons/sort/bubble/AlgBubbleSort3.html:14
-#, fuzzy, no-wrap
-#| msgid ""
-#| "For all i in [len-2,0] (traversing from biggest to smallest)\n"
-#| "       For all j in [0, i]\n"
-#| "          If cells j and j+1 must be swapped, do it\n"
-#| "       If traversal on j did not swap anything, return from the function\n"
+#, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
@@ -8017,7 +8027,7 @@ msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
-"       Si le parcours sur les j n'a rien inversé, quiter la fonction\n"
+"       Si le parcours sur les j n'a rien inversé, casser la boucle\n"
 
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort3.html:21
@@ -12683,6 +12693,35 @@ msgstr ""
 #: src/lessons/smn/baseball/BaseballGameMorePlayers.html:37
 msgid "There are seven methods provided :"
 msgstr "Sept méthodes vous sont fournies :"
+
+#~ msgid "Views available"
+#~ msgstr "Changer la vue du monde"
+
+#~ msgid ""
+#~ "Welcome to the sorting world. It allows you to experiment with the "
+#~ "existing sorting algorithms. Please consult the world help (\"Help\"->"
+#~ "\"About this world\") for more information on the available buildins for "
+#~ "your algorithms."
+#~ msgstr ""
+#~ "Vous voici dans le monde des tris. Il vous permet d'expérimenter avec les "
+#~ "différents algorithmes de tri existant.  Consultez l'aide du monde "
+#~ "(\"Help->About this world\") pour une aide sur les primitives utilisables "
+#~ "par vos algorithmes."
+
+#~ msgid ""
+#~ "In this first exercise, we will explore some of the simpler of them. The "
+#~ "tab \"Source code\" contains several sub-tabs, corresponding to the "
+#~ "different algorithms to write. To succeed in this exercise, your solution "
+#~ "must sort the array using exactly the same amount of read and write than "
+#~ "the solution. That is why you have to follow strictly the pseudo-code of "
+#~ "each algorithm."
+#~ msgstr ""
+#~ "Dans ce premier exercice, nous allons voir les plus simples d'entre eux. "
+#~ "L'onglet \"Source code\" est composé de plusieurs sous-onglets, "
+#~ "correspondant aux différents algorithmes à écrire. Pour réussir "
+#~ "l'exercice, il faut que votre solution réalise le même nombre de lectures "
+#~ "et écritures que la solution codée dans l'objectif.  Attention donc à "
+#~ "suivre le pseudo-code de chaque algorithme à la lettre!"
 
 #~ msgid ""
 #~ "Warning, this lesson is currently written in Java only, and deals with a "

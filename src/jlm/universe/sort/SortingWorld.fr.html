@@ -24,12 +24,24 @@ différences d'efficacité entre eux.
 l'affichage)</td><td>aucun</td></tr>
 </table>
 
-<h2>Views available</h2>
-A contextual menu allows to switch between a state view and a time view. The
-time view is a bit more complex than the trivial state view but much more
-informative: it displays the history of the data, allowing to easily debug
-your program.  The time is represented as abscisse in this graph, each
-curved line representing a given value of the data. When two lines cross,
-this means that two values were swapped at this time stamp. This view is a
-bit hairly at the first glance, but reveals very helpful to understand the
-inner behavior of sorting algorithms.
+<h2>Vue de l'historique du monde</h2>
+<p>Il ne suffit pas de trier le tableau pour passer les exercices. Votre
+solution doit suivre scrupuleusement le comportement attendu de chaque
+exercice. Ceci est vérifié en comptant le nombre d'opérations de lecture et
+d'écriture sur le tableau effectuées lors de ce tri. En cas de problème, il
+est souvent assez difficile de comprendre la différence entre le
+comportement attendu et le comportement effectif.</p>
+
+<p>Pour cela, il est possible d'explorer graphiquement l'historique de
+n'importe quel monde de tri. Passez par exemple au monde Objectif et
+utilisez son menu contextuel (clic droit) pour choisir entre la vue de
+l'état courant du monde et la vue de son histoire.</p>
+
+<p>La vue de l'historique n'est pas aussi complexe qu'elle en a l'air à
+première vue. Le temps s'écoule de gauche à droite, et les cases du tableau
+sont représentée de haut en bas. Les lignes de différentes couleurs qui
+serpentent représentent les différentes valeurs contenues dans le
+tableau. Quand deux lignes se croises, cela signifie que les valeurs du
+tableau ont été échangées à ce moment de l'historique. Cette vue, inventée
+par Aldo Cortesi, est très pratique pour comprendre le comportement des
+algorithmes de tri.</p> 

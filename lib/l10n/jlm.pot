@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-15 11:59+0300\n"
+"POT-Creation-Date: 2013-05-15 12:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -351,20 +351,38 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/jlm/universe/sort/SortingWorld.html:25
-msgid "Views available"
+msgid "History view"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/jlm/universe/sort/SortingWorld.html:26
+#. type: Content of: <p>
+#: src/jlm/universe/sort/SortingWorld.html:26 src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
-"A contextual menu allows to switch between a state view and a time view. The "
-"time view is a bit more complex than the trivial state view but much more "
-"informative: it displays the history of the data, allowing to easily debug "
-"your program.  The time is represented as abscisse in this graph, each "
-"curved line representing a given value of the data. When two lines cross, "
-"this means that two values were swapped at this time stamp. This view is a "
-"bit hairly at the first glance, but reveals very helpful to understand the "
-"inner behavior of sorting algorithms."
+"It is not enough to sort the array to pass the exercises. Your solution must "
+"strictly follow the expected behavior of each exercise. This is enforced by "
+"checking that your algorithm needs the same amount of read and write "
+"operations to sort the array. When they don't match, understanding the "
+"difference between your code and the expected solution can reveal very "
+"difficult."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/jlm/universe/sort/SortingWorld.html:33 src/lessons/sort/bubble/AlgBubbleSort1.html:14
+msgid ""
+"To help in this process, it is posible to graphically explore the history of "
+"your sorting algorithm. Switch to the Objective view and use the contextual "
+"menu (right clic) to switch from the the view of the current state to the "
+"view of its history."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/jlm/universe/sort/SortingWorld.html:38 src/lessons/sort/bubble/AlgBubbleSort1.html:19
+msgid ""
+"The history view is a bit hairly at the first glance, but actually rather "
+"simple: The time flows from left to right on this graph, and each row is a "
+"cell of your array. The curved lines that go navigate between rows represent "
+"a given data value. When two lines cross, this means that two values were "
+"swapped at this time stamp. This view, first introduced by Aldo Cortesi, "
+"reveals very helpful understand the inner behavior of sorting algorithms."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -5715,11 +5733,11 @@ msgstr ""
 #: src/lessons/sort/Main.html:3
 msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
-"some less common variante of them). The goal is two fold: you can first "
-"better understand the idea of these algorithms by writting them "
-"yourself. But even if you don't code the algorithms, you can use the demo "
-"mode to organize \"races\" between these algorithms to experiment in "
-"practice what the different asymptotical complexity mean."
+"some less common variant of them). The goal is two fold: you can first "
+"better understand the idea of these algorithms by writing them yourself. But "
+"even if you don't code the algorithms, you can use the demo mode to organize "
+"\"races\" between these algorithms to experiment in practice what the "
+"different asymptotical complexity mean."
 msgstr ""
 
 #. type: Content of: <p>
@@ -5738,52 +5756,43 @@ msgstr ""
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:3
 msgid ""
 "Welcome to the sorting world. It allows you to experiment with the existing "
-"sorting algorithms. Please consult the world help (\"Help\"->\"About this "
-"world\") for more information on the available buildins for your algorithms."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
-msgid ""
-"In this first exercise, we will explore some of the simpler of them. The tab "
-"\"Source code\" contains several sub-tabs, corresponding to the different "
-"algorithms to write. To succeed in this exercise, your solution must sort "
-"the array using exactly the same amount of read and write than the "
-"solution. That is why you have to follow strictly the pseudo-code of each "
-"algorithm."
+"sorting algorithms. The list of buildins that you can use in your algorithms "
+"is available in the world reference documentation (\"Help\"-&gt;\"About this "
+"world\")."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
 msgid "BubbleSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:16
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
 msgid ""
-"Bubble sort consists in progressively moving up the smaller elements of the "
-"array, as if they were air bubbles moving up to the surface of a liquid. The "
-"algorithm traverse the array, and compare any pair of adjacent elements. If "
-"two adjacent elements are wrongly sorted, they are swapped. Once the array "
-"was completely traversed, the operation starts again from the "
-"beginning. When no elements were sorted after a full traversal, it means "
-"that the array is completely sorted: the algorithm can stop. Bubble sort is "
-"studied because of its simplicity, but it is almost never used in practice "
-"because of its bad performance (O(n^2) on average)."
+"This first sorting algorithm is the most simple one: Bubble sort consists in "
+"progressively moving up the smaller elements of the array, as if they were "
+"air bubbles moving up to the surface of a liquid. The algorithm traverse the "
+"array, and compare any pair of adjacent elements. If two adjacent elements "
+"are wrongly sorted, they are swapped. Once the array was completely "
+"traversed, the operation starts again from the beginning. When no elements "
+"were sorted after a full traversal, it means that the array is completely "
+"sorted: the algorithm can stop.  Bubble sort is studied because of its "
+"simplicity, but it is almost never used in practice because of its bad "
+"performance (O(n^2) on average)."
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:26 src/lessons/sort/bubble/AlgBubbleSort2.html:13
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:39 src/lessons/sort/bubble/AlgBubbleSort2.html:13
 msgid "Show Tip (Pseudo-code)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:28
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
