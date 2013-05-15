@@ -157,7 +157,6 @@ public class ExerciseView extends JPanel implements GameListener {
 				w.setWorld(this.game.getAnswerOfSelectedWorld());
 		} else {
 			tabPane.removeAll();
-			
 			worldView = Game.getInstance().getSelectedWorld().getView();
 			for (WorldView wv: worldView) {
 				tabPane.addTab("World"+wv.getTabName(), null, wv, 
@@ -168,13 +167,12 @@ public class ExerciseView extends JPanel implements GameListener {
 				tabPane.addTab("Objective"+wv.getTabName(), null, wv, 
 						       "Target world"+wv.getTip());
 			}
-			
-			controlPane.removeAll();
-			buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
-			controlPane.add(buttonPanel, "grow");
 		}
+		// To refresh the controlPane in any case ( else the SortingWorldPanel is not refreshed )
+		controlPane.removeAll();
+		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+		controlPane.add(buttonPanel, "grow");
 		
-		// 
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
 		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorld().get(0).getEntityCount() > 1); 
 		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);		
