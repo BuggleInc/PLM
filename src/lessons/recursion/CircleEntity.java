@@ -3,6 +3,7 @@ package lessons.recursion;
 
 public class CircleEntity extends jlm.universe.turtles.Turtle {
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	public void circle(double step) {
 		for (int i=0;i<360;i++) {
@@ -15,5 +16,6 @@ public class CircleEntity extends jlm.universe.turtles.Turtle {
 		circle(1);
 		circle(1.5);
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

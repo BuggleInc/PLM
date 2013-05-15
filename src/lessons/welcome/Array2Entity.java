@@ -2,7 +2,9 @@ package lessons.welcome;
 
 import java.awt.Color;
 
-public class Array2Entity extends jlm.universe.bugglequest.SimpleBuggle {
+import jlm.universe.bugglequest.SimpleBuggle;
+
+public class Array2Entity extends SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
@@ -19,6 +21,7 @@ public class Array2Entity extends jlm.universe.bugglequest.SimpleBuggle {
 			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
 	}
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	void mark(Color c){
 		setBrushColor(c);
@@ -55,5 +58,6 @@ public class Array2Entity extends jlm.universe.bugglequest.SimpleBuggle {
 		}
 		backward(getWorldHeight()-1);
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

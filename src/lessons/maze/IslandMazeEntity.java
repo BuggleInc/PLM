@@ -19,6 +19,7 @@ public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
 	}
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	 public void run() {
 		 int state = 0 ;
@@ -68,8 +69,7 @@ public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		this.setDirection(memorizedD);
 		return isFree;
 	}
-	
-
+	/* END SOLUTION */
 	/* END TEMPLATE */
 	
 }

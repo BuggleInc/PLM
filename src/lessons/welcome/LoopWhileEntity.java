@@ -1,6 +1,8 @@
 package lessons.welcome;
 
-public class LoopWhileEntity extends jlm.universe.bugglequest.SimpleBuggle {
+import jlm.universe.bugglequest.SimpleBuggle;
+
+public class LoopWhileEntity extends SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("forward(int) forbidden in this exercise");
@@ -12,10 +14,12 @@ public class LoopWhileEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	}
 
 	@Override
+	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		while (!isFacingWall())
 			forward();
-		/* END TEMPLATE */
+		/* END SOLUTION */
 	}
+	/* END TEMPLATE */
 }

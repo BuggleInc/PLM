@@ -1,8 +1,9 @@
 package lessons.welcome;
 
 import jlm.universe.Direction;
+import jlm.universe.bugglequest.SimpleBuggle;
 
-public class MethodsArgsEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class MethodsArgsEntity extends SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("forward(int) forbidden in this exercise");
@@ -19,6 +20,7 @@ public class MethodsArgsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		move(getY(),getDirection().equals(Direction.NORTH)); 
 	} 
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	public void move(int nbPas, boolean forward) {
 		if (forward) {
@@ -29,5 +31,6 @@ public class MethodsArgsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				backward();
 		}
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

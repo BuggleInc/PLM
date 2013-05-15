@@ -13,6 +13,7 @@ public class VariablesEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 
 	@Override
+	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		int cpt = 0;
@@ -26,6 +27,7 @@ public class VariablesEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		  cpt--;
 		}
 		dropBaggle();
-		/* END TEMPLATE */
+		/* END SOLUTION */
 	}
+	/* END TEMPLATE */
 }

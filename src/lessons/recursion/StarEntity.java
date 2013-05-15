@@ -4,6 +4,7 @@ import java.awt.Color;
 
 public class StarEntity extends jlm.universe.turtles.Turtle {
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	public void branch(int size) {
 		forward(size);
@@ -30,5 +31,6 @@ public class StarEntity extends jlm.universe.turtles.Turtle {
 		turnRight(45);
 		star(60, Color.red);
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

@@ -4,10 +4,12 @@ import jlm.universe.bugglequest.SimpleBuggle;
 
 public class EnvironmentEntity extends SimpleBuggle {
 	@Override
+	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		forward();
-		/* END TEMPLATE */
+		/* END SOLUTION */
 	}
+	/* END TEMPLATE */
 
 }

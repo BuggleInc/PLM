@@ -1,6 +1,8 @@
 package lessons.welcome;
 
-public class MethodsDogHouseEntity extends jlm.universe.bugglequest.SimpleBuggle {
+import jlm.universe.bugglequest.SimpleBuggle;
+
+public class MethodsDogHouseEntity extends SimpleBuggle {
 
 	private int line = -1;
 	
@@ -24,7 +26,7 @@ public class MethodsDogHouseEntity extends jlm.universe.bugglequest.SimpleBuggle
 				
 		}
 	}
-
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
     void dogHouse() {
 		for (int i=0;i<4;i++) {
@@ -33,6 +35,7 @@ public class MethodsDogHouseEntity extends jlm.universe.bugglequest.SimpleBuggle
 			turnLeft();
 		}
 	}
+    /* END SOLUTION */
 	/* END TEMPLATE */
 
 	@Override

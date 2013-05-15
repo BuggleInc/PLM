@@ -1,11 +1,13 @@
 package lessons.welcome;
 
 import java.awt.Color;
+import jlm.universe.bugglequest.SimpleBuggle;
 
 /* The suppress warning is sometimes mandatory for student code to compile cleanly */
 @SuppressWarnings("unused")
-public class MethodsPicture4Entity extends jlm.universe.bugglequest.SimpleBuggle {
+public class MethodsPicture4Entity extends SimpleBuggle {
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	void mark() {
 		brushDown();
@@ -98,5 +100,6 @@ public class MethodsPicture4Entity extends jlm.universe.bugglequest.SimpleBuggle
 		forward(4);
 		bigSquare();
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

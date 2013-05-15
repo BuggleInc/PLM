@@ -41,7 +41,7 @@ public class TraversalDiagonalEntity extends SimpleBuggle {
 			writeMessage(cpt);
 		}
 	}
-
+	/* END SOLUTION */
 	/* END TEMPLATE */
 	
     @Override

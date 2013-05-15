@@ -14,10 +14,12 @@ public class BaggleSeekerEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() { 
+		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
 		while (!isOverBaggle()) {
 		  forward();
 		}
+		/* END SOLUTION */
 		/* END TEMPLATE */
 	}
 }

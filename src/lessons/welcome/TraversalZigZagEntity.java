@@ -41,7 +41,7 @@ public class TraversalZigZagEntity extends SimpleBuggle {
 			writeMessage(cpt);
 		}
 	}
-
+	/* END SOLUTION */
 	/* END TEMPLATE */	
 	
     @Override

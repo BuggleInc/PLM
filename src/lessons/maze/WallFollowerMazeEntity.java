@@ -30,6 +30,7 @@ public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 	      super.forward();
 	}
 */
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	public void stepHandOnWall() {
 	    // PRE: we have a wall on the left
@@ -54,6 +55,7 @@ public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 	      
 	    pickUpBaggle();
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }
 
