@@ -2,16 +2,20 @@
 
 <h2>BubbleSort3</h2>
 
-<p>Réintroduisons maintenant la petite optimisation que nous avions retiré à
-l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau
-est maintenant trié. Cela nous donne le pseudo-code suivant :</p>
+<p>Let's now reintroduce the little optimization we removed at previous step:
+if a traversal does not swap any element, it means that the array is already
+sorted. In that case, we want to stop the whole sorting process.</p>
 
-<div class="tip" id="tip-3" alt="Montrer l'indice (le pseudo-code)">
-<p>Le pseudo-code de l'algorithme BubbleSort3 est le suivant :</p>
-<pre>Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)
-       Pour tout j dans [0, i]
-          Si les cases j et j+1 doivent être inverser, le faire
-       Si le parcours sur les j n'a rien inversé, quiter la fonction
+<p>For that, simply use the <code>break</code> keyword, which breaks the
+current loop.  Beware, if you have several embedded loops, this will apply
+to the internal one.</p>
+
+<div class="tip" id="tip-3" alt="If you want, this tip shows the pseudo-code.">
+<p></p>
+<pre>For all i in [len-2,0] (traversing from biggest to smallest)
+       For all j in [0, i]
+          If cells j and j+1 must be swapped, do it
+       If traversal on j did not swap anything, break the for loop
 </pre>
 </div>
 

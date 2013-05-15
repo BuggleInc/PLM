@@ -2,11 +2,11 @@
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2009.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-09 06:28-0800\n"
+"POT-Creation-Date: 2013-05-15 11:59+0300\n"
 "PO-Revision-Date: 2013-03-26 18:09+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -428,6 +428,24 @@ msgid ""
 msgstr ""
 "Indique que la case 'idx' a été triée avec succès (utilisé seulement pour "
 "l'affichage)"
+
+#. type: Content of: <h2>
+#: src/jlm/universe/sort/SortingWorld.html:25
+msgid "Views available"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/jlm/universe/sort/SortingWorld.html:26
+msgid ""
+"A contextual menu allows to switch between a state view and a time view. The "
+"time view is a bit more complex than the trivial state view but much more "
+"informative: it displays the history of the data, allowing to easily debug "
+"your program.  The time is represented as abscisse in this graph, each "
+"curved line representing a given value of the data. When two lines cross, "
+"this means that two values were swapped at this time stamp. This view is a "
+"bit hairly at the first glance, but reveals very helpful to understand the "
+"inner behavior of sorting algorithms."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/jlm/universe/turtles/TurtleWorld.html:1
@@ -2477,12 +2495,12 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147
 #: src/lessons/welcome/LoopWhile.html:26
-#: src/lessons/welcome/LoopDoWhile.html:16
+#: src/lessons/welcome/LoopDoWhile.html:17
 #: src/lessons/welcome/BaggleSeeker.html:8
-#: src/lessons/welcome/Variables.html:68 src/lessons/welcome/LoopFor.html:65
+#: src/lessons/welcome/Variables.html:72 src/lessons/welcome/LoopFor.html:73
 #: src/lessons/welcome/Methods.html:59
-#: src/lessons/welcome/MethodsDogHouse.html:34
-#: src/lessons/welcome/MethodsReturning.html:41
+#: src/lessons/welcome/MethodsDogHouse.html:49
+#: src/lessons/welcome/MethodsReturning.html:56
 #: src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157
 #: src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33
 #: src/lessons/welcome/SlugTracking.html:20
@@ -2743,8 +2761,8 @@ msgstr ""
 "Python utilise l'indentation pour définir les blocs de code. L'indentation "
 "standard en Python est de quatre espaces. Veuillez noter que les blocs de "
 "code n'ont pas besoin de terminaison. Indenter commence un bloc et "
-"désindenter le termine. Dans le code suivant, les instructions <b>whatToDo()</"
-"b> et <b>whatToDoNext()</b> seront executées si la condition est vraie, "
+"désindenter le termine. Dans le code suivant, les instructions <b>whatToDo()"
+"</b> et <b>whatToDoNext()</b> seront executées si la condition est vraie, "
 "ensuite l'instruction <b>whatToDoAnyway()</b> sera exécutée dans tous les "
 "cas."
 
@@ -3174,14 +3192,15 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopDoWhile.html:3
 msgid ""
-"Warning, this lesson is currently written in Java only, and deals with a "
-"notion that does not exist in Python. Forget about it"
+"Here is another little exercise about loops. It is slightly more complex as "
+"we want the action to be executed in any case, even if the condition is "
+"false right away. Some languages have specific constructs for that, but not "
+"the Python language. No problem, I'm sure you can do it without them, can't "
+"you?"
 msgstr ""
-"Attention, cette leçon est pour le moment seulement écrite en Java et fait "
-"appel à une notion qui n'existe pas en Python. Oubliez la."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/LoopDoWhile.html:6
+#: src/lessons/welcome/LoopDoWhile.html:7
 msgid ""
 "In a <tt>while</tt> loop, the condition is evaluated before anything else, "
 "and if it's false, the loop body is never evaluated. Sometimes (although not "
@@ -3196,7 +3215,7 @@ msgstr ""
 "variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/LoopDoWhile.html:12
+#: src/lessons/welcome/LoopDoWhile.html:13
 #, no-wrap
 msgid ""
 "do {\n"
@@ -3207,13 +3226,22 @@ msgstr ""
 "&nbsp;&nbsp;<b>action()</b>;\n"
 "} while (<b>condition</b>);"
 
-#. type: Content of: <p><a>
-#: src/lessons/welcome/LoopDoWhile.html:16
+#. type: Content of: <a>
+#: src/lessons/welcome/LoopDoWhile.html:17
+#, fuzzy
+#| msgid ""
+#| "<a name=\"Objectives\"> Some cells of the world are yellow, but your "
+#| "buggle cannot stand being in such cells as it is right now. Write the "
+#| "code needed to move forward until the ground gets white. You can use for "
+#| "that the isGroundWhite() method, that only the buggle of this exercise "
+#| "knows."
 msgid ""
 "<a name=\"Objectives\"> Some cells of the world are yellow, but your buggle "
 "cannot stand being in such cells as it is right now. Write the code needed "
 "to move forward until the ground gets white. You can use for that the "
-"isGroundWhite() method, that only the buggle of this exercise knows."
+"isGroundWhite() method, that only the buggle of this exercise knows. The "
+"trick is that even if the ground is white on the first cell, you still want "
+"to move forward to the next cell."
 msgstr ""
 "<a name=\"Objectifs\"> Certaines cases du monde sont jaunes, mais votre "
 "buggle ne supporte pas de s'y trouver comme c'est son cas actuellement. "
@@ -3221,19 +3249,19 @@ msgstr ""
 "blanche. Vous utiliserez pour cela la méthode isGroundWhite(), que seule la "
 "buggle de cet exercice connaît."
 
-#. type: Content of: <p><a><p>
-#: src/lessons/welcome/LoopDoWhile.html:21
+#. type: Content of: <a><p>
+#: src/lessons/welcome/LoopDoWhile.html:23
 msgid "The general idea is to do something like:"
 msgstr "L'idée général est donc de faire:"
 
-#. type: Content of: <p><a><p><pre>
-#: src/lessons/welcome/LoopDoWhile.html:22
+#. type: Content of: <a><p><pre>
+#: src/lessons/welcome/LoopDoWhile.html:24
 #, no-wrap
 msgid "move forward until located in a white cell"
 msgstr "avancer jusqu'à se trouver sur une case blanche"
 
-#. type: Content of: <p><a><p><p>
-#: src/lessons/welcome/LoopDoWhile.html:24
+#. type: Content of: <a><p><p>
+#: src/lessons/welcome/LoopDoWhile.html:26
 msgid ""
 "<i>Remark:</i> it is also possible to solve this exercise with a classical "
 "<tt>while</tt> loop, but it's not the goal."
@@ -3303,13 +3331,13 @@ msgid ""
 "'5') in the variable (say 'length'), and you can retrieve it latter when you "
 "need it."
 msgstr ""
-"Dans un programme, on peut utiliser différents <i>types</i> de données, tels que les "
-"entiers, les nombres à virgules ou les chaînes de caractères. Si on veut "
-"utiliser une donnée plusieurs fois, il faut la stocker dans une <i>variable</"
-"i>, qui est une sorte de case contenant une valeur. Ce n'est pas très "
-"différent d'une étagère contenant un livre: vous rangez votre donnée (disons "
-"'5') dans la variable (disons 'longueur'), et vous pouvez la retrouver plus "
-"tard quand vous en avez besoin."
+"Dans un programme, on peut utiliser différents <i>types</i> de données, tels "
+"que les entiers, les nombres à virgules ou les chaînes de caractères. Si on "
+"veut utiliser une donnée plusieurs fois, il faut la stocker dans une "
+"<i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est "
+"pas très différent d'une étagère contenant un livre: vous rangez votre "
+"donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la "
+"retrouver plus tard quand vous en avez besoin."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/Variables.html:16
@@ -3503,8 +3531,24 @@ msgstr ""
 "x = 3 * x;\n"
 "hello = \"Salut \"+nom;\n"
 
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/welcome/Variables.html:66
+#, fuzzy, no-wrap
+#| msgid ""
+#| "x = 3 + 2;\n"
+#| "x = 3 * x;\n"
+#| "greeting = \"Hello \"+name;\n"
+msgid ""
+"x = 3 + 2\n"
+"x = 3 * x\n"
+"greeting = \"Hello \"+name\n"
+msgstr ""
+"x = 3 + 2;\n"
+"x = 3 * x;\n"
+"hello = \"Salut \"+nom;\n"
+
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/Variables.html:69
+#: src/lessons/welcome/Variables.html:73
 msgid ""
 "It is now time to do more challenging exercises, don't you think? The "
 "objective is now to move forward until you find a baggle, pick it up, and "
@@ -3515,12 +3559,12 @@ msgstr ""
 "ramasser, revenir à la position initiale, puis de poser le baggle."
 
 #. type: Content of: <p><p><p><p><h3>
-#: src/lessons/welcome/Variables.html:74
+#: src/lessons/welcome/Variables.html:78
 msgid "How to do this?"
 msgstr "Comment faire ?"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:75
+#: src/lessons/welcome/Variables.html:79
 msgid ""
 "To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
@@ -3529,27 +3573,27 @@ msgstr ""
 "résoudre. Par exemple, on peut vouloir faire les étapes suivantes :"
 
 #. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/Variables.html:78
+#: src/lessons/welcome/Variables.html:82
 msgid "Move forward until located over a baggle"
 msgstr "Avancer jusqu'à se trouver sur un baggle"
 
 #. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/Variables.html:79
+#: src/lessons/welcome/Variables.html:83
 msgid "Pickup the baggle"
 msgstr "Ramasser le baggel au sol"
 
 #. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/Variables.html:80
+#: src/lessons/welcome/Variables.html:84
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr "Reculer du même nombre de cases que ce qu'on a avancé"
 
 #. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/Variables.html:81
+#: src/lessons/welcome/Variables.html:85
 msgid "Drop back the baggle"
 msgstr "Reposer le baggel au sol"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:84
+#: src/lessons/welcome/Variables.html:88
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
@@ -3560,7 +3604,7 @@ msgstr ""
 "cela utiliser une variable, que l'on peut nommer <code>nbPas</code>."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:88
+#: src/lessons/welcome/Variables.html:92
 msgid ""
 "Create a variable (of type <code>int</code>) before phase 1, initialize it "
 "to 0, and each time you move one step forward, increment its value by one "
@@ -3573,7 +3617,7 @@ msgstr ""
 "écritures sont équivalentes)."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:92
+#: src/lessons/welcome/Variables.html:96
 msgid ""
 "Create a variable before phase 1, initialize it to 0, and each time you move "
 "one step forward, increment its value by one (<code>stepAmount = stepAmount "
@@ -3585,7 +3629,7 @@ msgstr ""
 "écritures sont équivalentes)."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:96
+#: src/lessons/welcome/Variables.html:100
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward until "
@@ -3598,7 +3642,7 @@ msgstr ""
 "<code>dejaFait</code> à chaque fois."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:101
+#: src/lessons/welcome/Variables.html:105
 msgid ""
 "Please note that it is forbidden to use spaces in variable names. So you can "
 "name you variable <code>stepAmount</code>, but <code>step Amount</code> is "
@@ -3610,20 +3654,12 @@ msgstr ""
 "Fait</code> ne sont des noms valides."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/Variables.html:105
+#: src/lessons/welcome/Variables.html:109
 msgid "It's your turn now!"
 msgstr "À vous de jouer !"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopFor.html:3
-msgid ""
-"Warning, this lesson is currently written in Java only. Adapt it yourself"
-msgstr ""
-"Attention, cette leçon est pour le moment écrite seulement en Java. Adapter "
-"la de vous-même"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/LoopFor.html:5
 msgid ""
 "While loops are well adapted to situations where you want to achieve an "
 "action while a condition stays true, but it is less adapted to achieve a "
@@ -3642,8 +3678,8 @@ msgstr ""
 "<code>nbPas</code>, en incrémentant cette variable à la main à la fin du "
 "corps de la boucle."
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/LoopFor.html:13 src/lessons/welcome/LoopFor.html:26
+#. type: Content of: <p>
+#: src/lessons/welcome/LoopFor.html:11
 msgid ""
 "In such situations, <code>for</code> loops become handy. Their syntax is the "
 "following:"
@@ -3651,8 +3687,8 @@ msgstr ""
 "Dans ce genre de cas, les boucles de type <code>for</code> sont plus "
 "pratique. Leur syntaxe est la suivante :"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/LoopFor.html:15 src/lessons/welcome/LoopFor.html:28
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/LoopFor.html:13
 #, no-wrap
 msgid ""
 "for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
@@ -3663,13 +3699,28 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
 "}"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/LoopFor.html:19 src/lessons/welcome/LoopFor.html:32
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/LoopFor.html:17
+#, fuzzy, no-wrap
+#| msgid ""
+#| "for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
+#| "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+#| "}"
+msgid ""
+"for <b>variable</b> in <b>sequence of values</b>:\n"
+"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
+msgstr ""
+"for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {\n"
+"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"}"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/LoopFor.html:21
 msgid "This code is perfectly equivalent to the following:"
 msgstr "Ce code est parfaitement équivalent à celui-ci :"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/LoopFor.html:20 src/lessons/welcome/LoopFor.html:33
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/LoopFor.html:22
 #, no-wrap
 msgid ""
 "<b>initializing</b>;\n"
@@ -3684,8 +3735,24 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;<b>incrémentation</b>;\n"
 "}"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/LoopFor.html:39
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/LoopFor.html:28
+#, no-wrap
+msgid ""
+"while <b>there is a value in the sequence</b>: \n"
+"&nbsp;&nbsp;&nbsp;<b>set variable to the next unseen value of the sequence</b>\n"
+"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/LoopFor.html:33
+msgid ""
+"Please not that in Python the instructions <code>range(n)</code> allows to "
+"get a sequence n integer value from 0 to n-1."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/LoopFor.html:36
 msgid ""
 "For example, both following codes are equivalent. The latter is easier to "
 "read, don't you think?"
@@ -3693,8 +3760,8 @@ msgstr ""
 "Par exemple, les deux codes suivants sont équivalents. Avouez que la seconde "
 "forme est plus lisible, non ?"
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/LoopFor.html:42
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/LoopFor.html:39
 #, no-wrap
 msgid ""
 "int done = 0;\n"
@@ -3709,8 +3776,8 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;dejaFait++;\n"
 "}"
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/LoopFor.html:47
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/LoopFor.html:44
 #, no-wrap
 msgid ""
 "for (int done = 0; done &lt; stepAmount; done++) {\n"
@@ -3721,12 +3788,55 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;backward();\n"
 "}"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/LoopFor.html:51
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/LoopFor.html:48
+#, fuzzy, no-wrap
+#| msgid ""
+#| "int done = 0;\n"
+#| "while (done &lt; stepAmount) {\n"
+#| "&nbsp;&nbsp;&nbsp;backward();\n"
+#| "&nbsp;&nbsp;&nbsp;done++;\n"
+#| "}"
+msgid ""
+"done = 0\n"
+"while done &lt; stepAmount:\n"
+"&nbsp;&nbsp;&nbsp;backward()\n"
+"&nbsp;&nbsp;&nbsp;done = done + 1\n"
+msgstr ""
+"int dejaFait = 0;\n"
+"while (dejaFait &lt; nbPas) {\n"
+"&nbsp;&nbsp;&nbsp;backward();\n"
+"&nbsp;&nbsp;&nbsp;dejaFait++;\n"
+"}"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/LoopFor.html:53
+#, fuzzy, no-wrap
+#| msgid ""
+#| "for (int done = 0; done &lt; stepAmount; done++) {\n"
+#| "&nbsp;&nbsp;&nbsp;backward();\n"
+#| "}"
+msgid ""
+"for done in range(stepAmount):\n"
+"&nbsp;&nbsp;&nbsp;backward()\n"
+msgstr ""
+"for (int dejaFait = 0; dejaFait &lt; nbPas; dejaFait++) {\n"
+"&nbsp;&nbsp;&nbsp;backward();\n"
+"}"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/LoopFor.html:59
+#, fuzzy
+#| msgid ""
+#| "It is possible to build more advanced <tt>for</tt> loops since any valid "
+#| "instruction can be used as initialization, condition and incrementation. "
+#| "The following example is a bit extrem since it compute the gcd (greatest "
+#| "common divisor) of two numbers without loop body and initialization "
+#| "(everything is in the condition and incrementation)."
 msgid ""
 "It is possible to build more advanced <tt>for</tt> loops since any valid "
 "instruction can be used as initialization, condition and incrementation. The "
-"following example is a bit extrem since it compute the gcd (greatest common "
+"following example is a bit extreme since it compute the gcd (greatest common "
 "divisor) of two numbers without loop body and initialization (everything is "
 "in the condition and incrementation)."
 msgstr ""
@@ -3737,8 +3847,8 @@ msgstr ""
 "tout, ni d'initialisation (tout est fait dans la condition et "
 "l'incrémentation)."
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/LoopFor.html:57
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/LoopFor.html:65
 #, no-wrap
 msgid ""
 "int x=20, y=3, tmp;\n"
@@ -3749,8 +3859,8 @@ msgstr ""
 "for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }\n"
 " <span class=\"comment\">/* le PGCD est stocké dans x */</span>"
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/LoopFor.html:61
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/LoopFor.html:69
 msgid ""
 "If you don't understand every details of this example, don't panic. That's "
 "quite logic since it uses some syntax details that we did not introduce yet."
@@ -3759,8 +3869,8 @@ msgstr ""
 "c'est assez logique puisqu'il utilise des points de syntaxe que nous n'avons "
 "pas encore vu."
 
-#. type: Content of: <p><p><p><p><a>
-#: src/lessons/welcome/LoopFor.html:65
+#. type: Content of: <p><p><p><a>
+#: src/lessons/welcome/LoopFor.html:73
 msgid ""
 "<a name=\"Objectives\"> You now have to redo the same exercise than "
 "previously (move forward until being over a baggle, pick it up, move back to "
@@ -3773,8 +3883,8 @@ msgstr ""
 "<tt>for</tt> pour revenir au point de départ à la place d'une boucle "
 "<tt>while</tt>."
 
-#. type: Content of: <p><p><p><p><a><p>
-#: src/lessons/welcome/LoopFor.html:70
+#. type: Content of: <p><p><p><a><p>
+#: src/lessons/welcome/LoopFor.html:78
 msgid "Once done, proceed to next exercise."
 msgstr "Une fois ceci fait, passez à l'exercice suivant."
 
@@ -3896,7 +4006,7 @@ msgstr ""
 msgid "public boolean isOverBaggle() { ... }"
 msgstr "public boolean isOverBaggle() { ... }"
 
-#. type: Content of: <p><p><p>
+#. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/Methods.html:45
 msgid ""
 "We will introduce in next exercise how to do this kind of tricks. For now, "
@@ -3905,7 +4015,7 @@ msgstr ""
 "Nous verrons dans le prochain exercice comment faire ce genre de chose. Pour "
 "l'instant, contentons nous d'écrire ce <code>void</code> à cet endroit."
 
-#. type: Content of: <p><p><p>
+#. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/Methods.html:48
 msgid ""
 "In Java, the convention is to use lower case for the first letter of a "
@@ -3919,7 +4029,7 @@ msgstr ""
 "espaces ou des accentués dans le nom d'une méthode. C'est pourquoi nous "
 "écrivons \"go and get\" sous la forme \"goAndGet\"."
 
-#. type: Content of: <p><p><a>
+#. type: Content of: <p><p><p><a>
 #: src/lessons/welcome/Methods.html:59
 msgid ""
 "<a name=\"Objectives\"> The goal of this exercise is to write a method "
@@ -3932,7 +4042,7 @@ msgstr ""
 "exercices précédents (avance tant qu'on ne trouve pas de baggle, ramasser le "
 "baggle, reculer à la case départ, poser le baggle)."
 
-#. type: Content of: <p><p><a><p>
+#. type: Content of: <p><p><p><a><p>
 #: src/lessons/welcome/Methods.html:64
 msgid ""
 "One particularity of this exercise is that all your code should be written "
@@ -3943,13 +4053,21 @@ msgstr ""
 "dans cette fonction, avec rien en dehors. Le code qui appelle votre fonction "
 "sera automagiquement ajouté quand vous cliquerez sur <b>Start</b>."
 
-#. type: Content of: <p><p><a><p>
+#. type: Content of: <p><p><p><a><p>
 #: src/lessons/welcome/Methods.html:68
+#, fuzzy
+#| msgid ""
+#| "One particularity of this exercise is that you shouldn't write directly "
+#| "the code that the buggle should execute, but a method it should use. "
+#| "Actually, in any previous exercise, you wrote the body of a specific "
+#| "method called <code>run()</code> which gets invoked by the environment "
+#| "when you click on"
 msgid ""
 "One particularity of this exercise is that you shouldn't write directly the "
 "code that the buggle should execute, but a method it should use. Actually, "
 "in any previous exercise, you wrote the body of a specific method called "
-"<code>run()</code> which gets invoked by the environment when you click on"
+"<code>run()</code> which gets invoked by the environment when you click on "
+"<b>Start</b>."
 msgstr ""
 "La particularité de cet exercice est que vous n'allez donc pas écrire "
 "directement le code que la buggle va exécuter, mais une méthode qu'elle "
@@ -3958,12 +4076,7 @@ msgstr ""
 "qui est invoquée par l'environnement quand on clique sur le bouton <b>Start</"
 "b>."
 
-#. type: Content of: <p><p><a>
-#: src/lessons/welcome/Methods.html:73
-msgid "<b>Start</b>."
-msgstr "<b>Début</b>."
-
-#. type: Content of: <p><p><a><p>
+#. type: Content of: <p><p><p><a><p>
 #: src/lessons/welcome/Methods.html:74
 msgid ""
 "Don't try to define this method here, since the buggle already knows it. "
@@ -3977,7 +4090,7 @@ msgstr ""
 "code> de la buggle de cet exercice:"
 
 # type: Content of: <p><a><p><p><pre>
-#. type: Content of: <p><p><a><p><pre>
+#. type: Content of: <p><p><p><a><p><pre>
 #: src/lessons/welcome/Methods.html:79
 #, no-wrap
 msgid ""
@@ -3999,9 +4112,41 @@ msgstr ""
 "&nbsp;&nbsp;}\n"
 "}"
 
+# type: Content of: <p><a><p><p><pre>
+#. type: Content of: <p><p><p><a><p><pre>
+#: src/lessons/welcome/Methods.html:87
+#, fuzzy, no-wrap
+#| msgid ""
+#| "public void run() {\n"
+#| "&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
+#| "&nbsp;&nbsp;}\n"
+#| "}"
+msgid ""
+"def run():\n"
+"&nbsp;&nbsp;for i in range(7): \n"
+"&nbsp;&nbsp;&nbsp;&nbsp;goAndGet()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnRight()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;forward()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft()\n"
+"&nbsp;&nbsp;\n"
+"}"
+msgstr ""
+"public void run() {\n"
+"&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
+"&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
+"&nbsp;&nbsp;}\n"
+"}"
+
 # type: Content of: <p><a><p><p><p>
-#. type: Content of: <p><p><a><p>
-#: src/lessons/welcome/Methods.html:88
+#. type: Content of: <p><p><p><a><p>
+#: src/lessons/welcome/Methods.html:98
 msgid ""
 "Your buggle will repeat 7 times (which matches the world's dimension)  "
 "sequence constituted of a call to the <code>goAndGet()</code> method that "
@@ -4018,8 +4163,8 @@ msgstr ""
 "bord gauche, car le monde des buggles est torique."
 
 # type: Content of: <p><a><p><p><p>
-#. type: Content of: <p><p><a><p>
-#: src/lessons/welcome/Methods.html:95
+#. type: Content of: <p><p><p><a><p>
+#: src/lessons/welcome/Methods.html:105
 msgid "You should now write this goAndGet() method."
 msgstr "À vous d'écrire cette méthode goAndGet()."
 
@@ -4066,8 +4211,51 @@ msgstr ""
 "forward();\n"
 "turnLeft(); \n"
 
+#. type: Content of: <pre>
+#: src/lessons/welcome/MethodsDogHouse.html:23
+#, fuzzy, no-wrap
+#| msgid ""
+#| "forward();\n"
+#| "forward();\n"
+#| "turnLeft(); \n"
+#| "forward();\n"
+#| "forward();\n"
+#| "turnLeft(); \n"
+#| "forward();\n"
+#| "forward();\n"
+#| "turnLeft(); \n"
+#| "forward();\n"
+#| "forward();\n"
+#| "turnLeft(); \n"
+msgid ""
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
+msgstr ""
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+"forward();\n"
+"forward();\n"
+"turnLeft(); \n"
+
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsDogHouse.html:22
+#: src/lessons/welcome/MethodsDogHouse.html:37
 msgid ""
 "It becomes harder when we want to draw two doghouses: we have to rewrite the "
 "same code twice, which is not really handy. Even worse: it's definitively "
@@ -4084,7 +4272,7 @@ msgstr ""
 "plusieurs fois. Et gare si vous oubliez de corriger un exemplaire."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsDogHouse.html:29
+#: src/lessons/welcome/MethodsDogHouse.html:44
 msgid ""
 "It is good form to <b>factorize your code</b>, ie to write it only once, for "
 "example in a method. This is what you will do now. It is even possible to go "
@@ -4098,7 +4286,7 @@ msgstr ""
 "précédemment."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsDogHouse.html:34
+#: src/lessons/welcome/MethodsDogHouse.html:49
 msgid ""
 "The goal of this exercise is to write a method called <code>dogHouse</code> "
 "achieving the same result than the code above. The buggle will call your "
@@ -4111,7 +4299,7 @@ msgstr ""
 "partout. Pensez à factoriser le code de votre méthode avec une boucle for."
 
 #. type: Content of: <a><p>
-#: src/lessons/welcome/MethodsDogHouse.html:39
+#: src/lessons/welcome/MethodsDogHouse.html:54
 #: src/lessons/welcome/Array.html:161 src/lessons/welcome/Array2.html:26
 #: src/lessons/maze/RandomMouseMaze.html:41
 msgid "You're up."
@@ -4119,11 +4307,19 @@ msgstr "À vous de jouer."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsReturning.html:3
+#, fuzzy
+#| msgid ""
+#| "Writing a method returning a result is not really more work than writing "
+#| "a method without any result. You simply have to specify the data type of "
+#| "expected results before the method name, and then write a <code>return</"
+#| "code> instruction in your method body to specify the actual value to "
+#| "return."
 msgid ""
 "Writing a method returning a result is not really more work than writing a "
-"method without any result. You simply have to specify the data type of "
-"expected results before the method name, and then write a <code>return</"
-"code> instruction in your method body to specify the actual value to return."
+"method without any result. <span class=\"Java\">You simply have to specify "
+"the data type of expected results before the method name</span>. And, then "
+"write a <code>return</code> instruction in your method body to specify the "
+"actual value to return."
 msgstr ""
 "Écrire des méthodes retournant un résultat n'est pas bien plus compliqué "
 "qu'écrire une méthode n'en renvoyant pas. Il suffit d'une part de mettre le "
@@ -4149,13 +4345,43 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
 "}\n"
 
+#. type: Content of: <pre>
+#: src/lessons/welcome/MethodsReturning.html:16
+#, fuzzy, no-wrap
+#| msgid ""
+#| "double pi() {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;\n"
+#| "}\n"
+#| "boolean isNumberTwoEven() {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
+#| "}\n"
+msgid ""
+"def pi():\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159\n"
+"\n"
+"def isNumberTwoEven():\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return True\n"
+msgstr ""
+"double pi() {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;\n"
+"}\n"
+"boolean deuxEstIlPair() {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
+"}\n"
+
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsReturning.html:17
+#: src/lessons/welcome/MethodsReturning.html:23
+#, fuzzy
+#| msgid ""
+#| "It is possible to have several <code>return</code> instructions in "
+#| "several branches of a conditional. It is even forbiden to have one "
+#| "execution path of your body without any <code>return</code>, or to write "
+#| "some code after the <code>return</code> instruction."
 msgid ""
 "It is possible to have several <code>return</code> instructions in several "
-"branches of a conditional. It is even forbiden to have one execution path of "
-"your body without any <code>return</code>, or to write some code after the "
-"<code>return</code> instruction."
+"branches of a conditional. It is even forbidden to have one execution path "
+"of your body without any <code>return</code>, or to write some code after "
+"the <code>return</code> instruction."
 msgstr ""
 "Il est possible d'avoir plusieurs instructions <code>return</code> dans "
 "différentes branches de <code>if</code>. Ce qui est interdit, c'est d'avoir "
@@ -4163,7 +4389,7 @@ msgstr ""
 "d'écrire du code après le <code>return</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsReturning.html:22
+#: src/lessons/welcome/MethodsReturning.html:28
 msgid ""
 "Indeed, if the machine reaches the end of the method without finding any "
 "<code>return</code>, it cannot know what actual value to give back to the "
@@ -4181,7 +4407,7 @@ msgstr ""
 "l'indique."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/MethodsReturning.html:29
+#: src/lessons/welcome/MethodsReturning.html:35
 #, no-wrap
 msgid ""
 "boolean negation(boolean cond) {\n"
@@ -4206,8 +4432,44 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* même ici */</span>\n"
 "}"
 
+#. type: Content of: <pre>
+#: src/lessons/welcome/MethodsReturning.html:45
+#, fuzzy, no-wrap
+#| msgid ""
+#| "boolean negation(boolean cond) {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* no code allowed here */</span>\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;} else {\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* here neither */</span>\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;}\n"
+#| "&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* even here, forget it */</span>\n"
+#| "}"
+msgid ""
+"def negation(cond):\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;if cond == True:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return True\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># no code allowed here</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;else:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return False\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># here neither</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># even here, forget it</span>\n"
+msgstr ""
+"boolean negation(boolean cond) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* interdit d'écrire du code ici */</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* ici aussi */</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;}\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* même ici */</span>\n"
+"}"
+
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/MethodsReturning.html:41
+#: src/lessons/welcome/MethodsReturning.html:56
 msgid ""
 "You will once again write a method that the buggle will use. Its name must "
 "be <code>haveBaggle</code>, and it returns a boolean value indicating "
@@ -4221,7 +4483,7 @@ msgstr ""
 "première colonne contenant un baggle et s'y arrêter."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsReturning.html:46
+#: src/lessons/welcome/MethodsReturning.html:61
 msgid ""
 "The easier for this method is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
@@ -4232,7 +4494,7 @@ msgstr ""
 "jusque là. Initialement, elle contient faux."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsReturning.html:50
+#: src/lessons/welcome/MethodsReturning.html:65
 msgid ""
 "Then, move 6 steps forward (the world contains 7 cells and we already are "
 "one one of them). For each cell, if it contains a baggle, we store true in "
@@ -4244,7 +4506,7 @@ msgstr ""
 "si non)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsReturning.html:54
+#: src/lessons/welcome/MethodsReturning.html:69
 msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
@@ -4253,7 +4515,7 @@ msgstr ""
 "contenu de <tt>vuBaggle</tt> à l'appelant."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsReturning.html:58
+#: src/lessons/welcome/MethodsReturning.html:73
 msgid ""
 "This exercise is a bit different since there is two initial worlds, each "
 "with a specific objective. Your code must work for each of them. Observe "
@@ -4267,7 +4529,7 @@ msgstr ""
 "que vous souhaitez observer."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsReturning.html:63
+#: src/lessons/welcome/MethodsReturning.html:78
 msgid ""
 "When your method <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
@@ -5057,7 +5319,6 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;takeWater()\n"
 "elif todayIsJuly4th():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()\n"
-""
 msgstr ""
 "if ilPleut():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreParapluie()\n"
@@ -5065,7 +5326,6 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau()\n"
 "elif sommes14Juillet():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()\n"
-""
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/BDR.html:140
@@ -5324,13 +5584,24 @@ msgstr ""
 
 #. type: Content of: <p><a><p>
 #: src/lessons/welcome/BDR.html:197
+#, fuzzy
+#| msgid ""
+#| "The other subtlety is to keep working as long as there is some work to "
+#| "do, i.e., as long as we did not find a cell which content is not "
+#| "described in the table. The easier for that is to use a boolean variable "
+#| "(<code>finished</code>) that is initialized to <code>false</code> as "
+#| "termination condition for the loop. As soon as the buggle find a cell "
+#| "with a value not described in the table, the boolean variable is set to "
+#| "<code>false</code>. Thus the loop, will stop and the program will "
+#| "terminate."
 msgid ""
-"The other subtlety is to keep working as long as there is some work to do, "
-"i.e., as long as we did not find a cell which content is not described in "
-"the table. The easier for that is to use a boolean variable (<code>finished</code>) "
-"that is initialized to <code>false</code> as termination condition for the loop. "
-"As soon as the buggle find a cell with a value not described in the table, the boolean variable is set to <code>false</code>. "
-"Thus the loop, will stop and the program will terminate."
+"The other subtlety is to keep working as long as there is some work to do, i."
+"e., as long as we did not find a cell which content is not described in the "
+"table. The easier for that is to use a boolean variable (<code>finished</"
+"code>)  that is initialized to <code>false</code> as termination condition "
+"for the loop.  As soon as the buggle find a cell with a value not described "
+"in the table, the boolean variable is set to <code>false</code>.  Thus the "
+"loop, will stop and the program will terminate."
 msgstr ""
 "L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant "
 "qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus "
@@ -7599,7 +7870,6 @@ msgstr ""
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:26
 #: src/lessons/sort/bubble/AlgBubbleSort2.html:13
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:9
 msgid "Show Tip (Pseudo-code)"
 msgstr "Montrer l'indice (le pseudo-code)"
 
@@ -7703,28 +7973,46 @@ msgstr "BubbleSort3"
 
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort3.html:5
+#, fuzzy
+#| msgid ""
+#| "Let's now reintroduce the little optimization we removed at previous "
+#| "step: if a traversal does not swap any element, it means that the array "
+#| "is already sorted."
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
-"sorted."
+"sorted. In that case, we want to stop the whole sorting process."
 msgstr ""
 "Réintroduisons maintenant la petite optimisation que nous avions retiré à "
 "l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau "
 "est maintenant trié. Cela nous donne le pseudo-code suivant :"
 
-#. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:10
-msgid "The pseudo-code of the BubbleSort3 algorithm is the following:"
-msgstr "Le pseudo-code de l'algorithme BubbleSort3 est le suivant :"
+#. type: Content of: <p>
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:9
+msgid ""
+"For that, simply use the <code>break</code> keyword, which breaks the "
+"current loop.  Beware, if you have several embedded loops, this will apply "
+"to the internal one."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:12
+msgid "If you want, this tip shows the pseudo-code."
+msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:11
-#, no-wrap
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:14
+#, fuzzy, no-wrap
+#| msgid ""
+#| "For all i in [len-2,0] (traversing from biggest to smallest)\n"
+#| "       For all j in [0, i]\n"
+#| "          If cells j and j+1 must be swapped, do it\n"
+#| "       If traversal on j did not swap anything, return from the function\n"
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
 "       For all j in [0, i]\n"
 "          If cells j and j+1 must be swapped, do it\n"
-"       If traversal on j did not swap anything, return from the function\n"
+"       If traversal on j did not swap anything, break the for loop\n"
 msgstr ""
 "Pour tout i dans [lgr-2,0] (parcours du plus grand au plus petit)\n"
 "       Pour tout j dans [0, i]\n"
@@ -7732,7 +8020,7 @@ msgstr ""
 "       Si le parcours sur les j n'a rien inversé, quiter la fonction\n"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:18
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:21
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
@@ -12395,3 +12683,22 @@ msgstr ""
 #: src/lessons/smn/baseball/BaseballGameMorePlayers.html:37
 msgid "There are seven methods provided :"
 msgstr "Sept méthodes vous sont fournies :"
+
+#~ msgid ""
+#~ "Warning, this lesson is currently written in Java only, and deals with a "
+#~ "notion that does not exist in Python. Forget about it"
+#~ msgstr ""
+#~ "Attention, cette leçon est pour le moment seulement écrite en Java et "
+#~ "fait appel à une notion qui n'existe pas en Python. Oubliez la."
+
+#~ msgid ""
+#~ "Warning, this lesson is currently written in Java only. Adapt it yourself"
+#~ msgstr ""
+#~ "Attention, cette leçon est pour le moment écrite seulement en Java. "
+#~ "Adapter la de vous-même"
+
+#~ msgid "<b>Start</b>."
+#~ msgstr "<b>Début</b>."
+
+#~ msgid "The pseudo-code of the BubbleSort3 algorithm is the following:"
+#~ msgstr "Le pseudo-code de l'algorithme BubbleSort3 est le suivant :"

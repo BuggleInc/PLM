@@ -8,9 +8,9 @@ explicitement des données.
 
   <h3 class="Java">Les données en Java</h3>
   <h3 class="Python">Les données en Python</h3>
-  Java permet d'utiliser différents <i>types</i> de données, tels que les
-entiers, les nombres à virgules ou les chaînes de caractères. Si on veut
-utiliser une donnée plusieurs fois, il faut la stocker dans une
+  Dans un programme, on peut utiliser différents <i>types</i> de données, tels
+que les entiers, les nombres à virgules ou les chaînes de caractères. Si on
+veut utiliser une donnée plusieurs fois, il faut la stocker dans une
 <i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est
 pas très différent d'une étagère contenant un livre: vous rangez votre
 donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la
@@ -20,8 +20,8 @@ retrouver plus tard quand vous en avez besoin.
 une valeur que dans une variable du bon type. Pas question de stocker votre
 nom dans une variable entière.</p>
   <p class="Python">Le langage Python est dit <i>non typé</i>, ce qui signifie qu'une variable
-donnée peutcontenir n'importe quel type de donnée. D'autres langages ( comme
-Java) rende obligatoire que chaque variable  ne puisse contenir que des
+donnée peutcontenir n'importe quel type de donnée. D'autres langages (comme
+Java) rendent obligatoire que chaque variable  ne puisse contenir que des
 données d'un certain type, mais il n'y a pas de telles difficultés ici.</p>
   
 <p class="Java">Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type,
@@ -33,13 +33,13 @@ qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes
 de caractères.  Si l'on veut, on peut faire suivre la déclaration du signe =
 suivi de la valeur initiale à donner à la valeur. </p>
 <p class="Java">Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
-écrira : <pre>int x;</pre>
-  Si on veut que sa valeur initiale soit 5, on écrira : <pre>int x = 5;</pre></p>	
+écrira : <pre class="Java">int x;</pre></p>
+<p class="Java">Si on veut que sa valeur initiale soit 5, on écrira : <pre class="Java">int x = 5;</pre></p>	
 <p class="Java">Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle
-valeur à la variable, c'est très simple : <pre>x = 3;</pre>
+valeur à la variable, c'est très simple : <pre class="Java">x = 3;</pre>
 <p class="Java">La syntaxe pour créer une variable entière <code>x</code> de valeur initiale
 4 est la suivante : 
-  <pre>int x = 4;</pre></p>
+  <pre class="Java">int x = 4;</pre></p>
 <p class="Java">C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
   <pre class="Java">String nom = "Martin Quinson";
@@ -50,9 +50,9 @@ boolean marie=true;</pre>
 vous avez juste besoin de lui donner une valeur initiale en écrivant son
 nom, le signe égal et la valeur.</p>  
 <p class="Python">Ainsi, pour créer une variable nommée <b>x</b> dont la valeur initiale sera
-5, on écrira : <pre>x = 5;</pre></p>
+5, on écrira : <pre class="Python">x = 5;</pre></p>
 <p class="Python">Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle
-valeur à la variable, c'est très simple : <pre>x = 3;</pre>
+valeur à la variable, c'est très simple : <pre class="Python">x = 3;</pre>
 <p class="Python">C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
 <pre class="Python">prenom = "Martin"
@@ -65,9 +65,13 @@ marie=True <span class="comment"># le contraire serait marqué False</span></pre
 <p>À droite du signe égal, on peut mettre une expression quelconque, qui peut
 contenir des constantes, des variables et des opérations : 
 
-<pre>x = 3 + 2;
+<pre class="Java">x = 3 + 2;
 x = 3 * x;
 hello = "Salut "+nom;
+</pre> 
+<pre class="Python">x = 3 + 2
+x = 3 * x
+greeting = "Hello "+name
 </pre> 
 
 

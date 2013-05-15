@@ -23,3 +23,13 @@ différences d'efficacité entre eux.
 <tr><td>void sorted(int idx)</td><td>Indique que la case 'idx' a été triée avec succès (utilisé seulement pour
 l'affichage)</td><td>aucun</td></tr>
 </table>
+
+<h2>Views available</h2>
+A contextual menu allows to switch between a state view and a time view. The
+time view is a bit more complex than the trivial state view but much more
+informative: it displays the history of the data, allowing to easily debug
+your program.  The time is represented as abscisse in this graph, each
+curved line representing a given value of the data. When two lines cross,
+this means that two values were swapped at this time stamp. This view is a
+bit hairly at the first glance, but reveals very helpful to understand the
+inner behavior of sorting algorithms.
