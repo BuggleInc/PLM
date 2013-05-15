@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-15 12:43+0300\n"
+"POT-Creation-Date: 2013-05-15 12:22-0800\n"
 "PO-Revision-Date: 2013-05-15 12:46+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2540,14 +2540,14 @@ msgstr ""
 #: src/lessons/welcome/Methods.html:59
 #: src/lessons/welcome/MethodsDogHouse.html:49
 #: src/lessons/welcome/MethodsReturning.html:56
-#: src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157
-#: src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33
+#: src/lessons/welcome/MethodsArgs.html:69 src/lessons/welcome/BDR.html:157
+#: src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:34
 #: src/lessons/welcome/SlugTracking.html:20
-#: src/lessons/maze/RandomMouseMaze.html:23
-#: src/lessons/maze/WallFollowerMaze.html:17
-#: src/lessons/maze/PledgeMaze.html:35
-#: src/lessons/maze/ShortestPathMaze.html:36
-#: src/lessons/maze/WallFindFollowMaze.html:21
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:23
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:17
+#: src/lessons/maze/pledge/PledgeMaze.html:35
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:36
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr "Objectif de cet exercice"
 
@@ -3267,13 +3267,6 @@ msgstr ""
 
 #. type: Content of: <a>
 #: src/lessons/welcome/LoopDoWhile.html:17
-#, fuzzy
-#| msgid ""
-#| "<a name=\"Objectives\"> Some cells of the world are yellow, but your "
-#| "buggle cannot stand being in such cells as it is right now. Write the "
-#| "code needed to move forward until the ground gets white. You can use for "
-#| "that the isGroundWhite() method, that only the buggle of this exercise "
-#| "knows."
 msgid ""
 "<a name=\"Objectives\"> Some cells of the world are yellow, but your buggle "
 "cannot stand being in such cells as it is right now. Write the code needed "
@@ -3286,7 +3279,9 @@ msgstr ""
 "buggle ne supporte pas de s'y trouver comme c'est son cas actuellement. "
 "Écrivez le code lui permettant d'avancer jusqu'à se trouver sur une case "
 "blanche. Vous utiliserez pour cela la méthode isGroundWhite(), que seule la "
-"buggle de cet exercice connaît."
+"buggle de cet exercice connaît. Le piège est que même si le sol est blanc "
+"sur la première case, vous voulez tout de même avancer vers la prochaine "
+"case."
 
 #. type: Content of: <a><p>
 #: src/lessons/welcome/LoopDoWhile.html:23
@@ -3572,19 +3567,15 @@ msgstr ""
 
 #. type: Content of: <p><p><p><p><pre>
 #: src/lessons/welcome/Variables.html:66
-#, fuzzy, no-wrap
-#| msgid ""
-#| "x = 3 + 2;\n"
-#| "x = 3 * x;\n"
-#| "greeting = \"Hello \"+name;\n"
+#, no-wrap
 msgid ""
 "x = 3 + 2\n"
 "x = 3 * x\n"
 "greeting = \"Hello \"+name\n"
 msgstr ""
-"x = 3 + 2;\n"
-"x = 3 * x;\n"
-"hello = \"Salut \"+nom;\n"
+"x = 3 + 2\n"
+"x = 3 * x\n"
+"hello = \"Salut \"+nom\n"
 
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/Variables.html:73
@@ -3740,18 +3731,13 @@ msgstr ""
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/LoopFor.html:17
-#, fuzzy, no-wrap
-#| msgid ""
-#| "for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
-#| "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-#| "}"
+#, no-wrap
 msgid ""
 "for <b>variable</b> in <b>sequence of values</b>:\n"
 "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
 msgstr ""
-"for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"}"
+"for <b>variable</b> in <b>sequence of values</b>:\n"
+"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/LoopFor.html:21
@@ -3829,49 +3815,31 @@ msgstr ""
 
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/LoopFor.html:48
-#, fuzzy, no-wrap
-#| msgid ""
-#| "int done = 0;\n"
-#| "while (done &lt; stepAmount) {\n"
-#| "&nbsp;&nbsp;&nbsp;backward();\n"
-#| "&nbsp;&nbsp;&nbsp;done++;\n"
-#| "}"
+#, no-wrap
 msgid ""
 "done = 0\n"
 "while done &lt; stepAmount:\n"
 "&nbsp;&nbsp;&nbsp;backward()\n"
 "&nbsp;&nbsp;&nbsp;done = done + 1\n"
 msgstr ""
-"int dejaFait = 0;\n"
-"while (dejaFait &lt; nbPas) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"&nbsp;&nbsp;&nbsp;dejaFait++;\n"
+"dejaFait = 0\n"
+"while dejaFait &lt; nbPas:\n"
+"&nbsp;&nbsp;&nbsp;backward()\n"
+"&nbsp;&nbsp;&nbsp;dejaFait=dejaFait+1\n"
 "}"
 
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/LoopFor.html:53
-#, fuzzy, no-wrap
-#| msgid ""
-#| "for (int done = 0; done &lt; stepAmount; done++) {\n"
-#| "&nbsp;&nbsp;&nbsp;backward();\n"
-#| "}"
+#, no-wrap
 msgid ""
 "for done in range(stepAmount):\n"
 "&nbsp;&nbsp;&nbsp;backward()\n"
 msgstr ""
-"for (int dejaFait = 0; dejaFait &lt; nbPas; dejaFait++) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"}"
+"for dejaFait in range(nbPas):\n"
+"&nbsp;&nbsp;&nbsp;backward()\n"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/LoopFor.html:59
-#, fuzzy
-#| msgid ""
-#| "It is possible to build more advanced <tt>for</tt> loops since any valid "
-#| "instruction can be used as initialization, condition and incrementation. "
-#| "The following example is a bit extrem since it compute the gcd (greatest "
-#| "common divisor) of two numbers without loop body and initialization "
-#| "(everything is in the condition and incrementation)."
 msgid ""
 "It is possible to build more advanced <tt>for</tt> loops since any valid "
 "instruction can be used as initialization, condition and incrementation. The "
@@ -3879,8 +3847,8 @@ msgid ""
 "divisor) of two numbers without loop body and initialization (everything is "
 "in the condition and incrementation)."
 msgstr ""
-"On peut imaginer des utilisations bien plus avancées des boucles <tt>for</"
-"tt> car toute instruction valide peut être utilisée comme initialisation, "
+"Il est possible de construire des boucles <tt>for</tt> bien plus complexes "
+"car toute instruction valide peut être utilisée comme initialisation, "
 "condition et incrémentation. L'exemple suivant est un peu extrême, "
 "puisqu'elle calcule le PGCD de deux nombres sans avoir de corps de boucle du "
 "tout, ni d'initialisation (tout est fait dans la condition et "
@@ -4094,13 +4062,6 @@ msgstr ""
 
 #. type: Content of: <p><p><p><a><p>
 #: src/lessons/welcome/Methods.html:68
-#, fuzzy
-#| msgid ""
-#| "One particularity of this exercise is that you shouldn't write directly "
-#| "the code that the buggle should execute, but a method it should use. "
-#| "Actually, in any previous exercise, you wrote the body of a specific "
-#| "method called <code>run()</code> which gets invoked by the environment "
-#| "when you click on"
 msgid ""
 "One particularity of this exercise is that you shouldn't write directly the "
 "code that the buggle should execute, but a method it should use. Actually, "
@@ -4111,9 +4072,8 @@ msgstr ""
 "La particularité de cet exercice est que vous n'allez donc pas écrire "
 "directement le code que la buggle va exécuter, mais une méthode qu'elle "
 "utilisera. En fait, dans tous les exercices précédents, vous avez écrit le "
-"corps d'une méthode particulière de la buggle nommée <code>run()</code> et "
-"qui est invoquée par l'environnement quand on clique sur le bouton <b>Start</"
-"b>."
+"corps d'une méthode particulière nommée <code>run()</code> et qui est "
+"invoquée par l'environnement quand on clique sur le bouton <b>Start</b>."
 
 #. type: Content of: <p><p><p><a><p>
 #: src/lessons/welcome/Methods.html:74
@@ -4154,16 +4114,7 @@ msgstr ""
 # type: Content of: <p><a><p><p><pre>
 #. type: Content of: <p><p><p><a><p><pre>
 #: src/lessons/welcome/Methods.html:87
-#, fuzzy, no-wrap
-#| msgid ""
-#| "public void run() {\n"
-#| "&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
-#| "&nbsp;&nbsp;}\n"
-#| "}"
+#, no-wrap
 msgid ""
 "def run():\n"
 "&nbsp;&nbsp;for i in range(7): \n"
@@ -4174,13 +4125,13 @@ msgid ""
 "&nbsp;&nbsp;\n"
 "}"
 msgstr ""
-"public void run() {\n"
-"&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
-"&nbsp;&nbsp;}\n"
+"def run():\n"
+"&nbsp;&nbsp;for i in range(7): \n"
+"&nbsp;&nbsp;&nbsp;&nbsp;goAndGet()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnRight()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;forward()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft()\n"
+"&nbsp;&nbsp;\n"
 "}"
 
 # type: Content of: <p><a><p><p><p>
@@ -4252,20 +4203,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/MethodsDogHouse.html:23
-#, fuzzy, no-wrap
-#| msgid ""
-#| "forward();\n"
-#| "forward();\n"
-#| "turnLeft(); \n"
-#| "forward();\n"
-#| "forward();\n"
-#| "turnLeft(); \n"
-#| "forward();\n"
-#| "forward();\n"
-#| "turnLeft(); \n"
-#| "forward();\n"
-#| "forward();\n"
-#| "turnLeft(); \n"
+#, no-wrap
 msgid ""
 "forward()\n"
 "forward()\n"
@@ -4280,18 +4218,18 @@ msgid ""
 "forward()\n"
 "turnLeft() \n"
 msgstr ""
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
-"forward();\n"
-"forward();\n"
-"turnLeft(); \n"
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
+"forward()\n"
+"forward()\n"
+"turnLeft() \n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsDogHouse.html:37
@@ -4340,19 +4278,12 @@ msgstr ""
 #. type: Content of: <a><p>
 #: src/lessons/welcome/MethodsDogHouse.html:54
 #: src/lessons/welcome/Array.html:161 src/lessons/welcome/Array2.html:26
-#: src/lessons/maze/RandomMouseMaze.html:41
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:41
 msgid "You're up."
 msgstr "À vous de jouer."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsReturning.html:3
-#, fuzzy
-#| msgid ""
-#| "Writing a method returning a result is not really more work than writing "
-#| "a method without any result. You simply have to specify the data type of "
-#| "expected results before the method name, and then write a <code>return</"
-#| "code> instruction in your method body to specify the actual value to "
-#| "return."
 msgid ""
 "Writing a method returning a result is not really more work than writing a "
 "method without any result. <span class=\"Java\">You simply have to specify "
@@ -4361,10 +4292,10 @@ msgid ""
 "actual value to return."
 msgstr ""
 "Écrire des méthodes retournant un résultat n'est pas bien plus compliqué "
-"qu'écrire une méthode n'en renvoyant pas. Il suffit d'une part de mettre le "
-"type de la donnée renvoyée avant le nom de la méthode, et d'autre part "
-"d'écrire dans le corps de la méthode une instruction <code>return</code> qui "
-"précise ce qu'il faut renvoyer."
+"qu'écrire une méthode n'en renvoyant pas. <span class=\"Java\">Il suffit de "
+"mettre le type de la donnée renvoyée avant le nom de la méthode</span>. Il "
+"fautécrire dans le corps de la méthode une instruction <code>return</code> "
+"qui précise la valeur à renvoyer."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/MethodsReturning.html:9
@@ -4386,14 +4317,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/MethodsReturning.html:16
-#, fuzzy, no-wrap
-#| msgid ""
-#| "double pi() {\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;\n"
-#| "}\n"
-#| "boolean isNumberTwoEven() {\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-#| "}\n"
+#, no-wrap
 msgid ""
 "def pi():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159\n"
@@ -4401,21 +4325,14 @@ msgid ""
 "def isNumberTwoEven():\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;return True\n"
 msgstr ""
-"double pi() {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;\n"
-"}\n"
-"boolean deuxEstIlPair() {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-"}\n"
+"def pi():\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159\n"
+"\n"
+"def deuxEstIlPair():\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;return True\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsReturning.html:23
-#, fuzzy
-#| msgid ""
-#| "It is possible to have several <code>return</code> instructions in "
-#| "several branches of a conditional. It is even forbiden to have one "
-#| "execution path of your body without any <code>return</code>, or to write "
-#| "some code after the <code>return</code> instruction."
 msgid ""
 "It is possible to have several <code>return</code> instructions in several "
 "branches of a conditional. It is even forbidden to have one execution path "
@@ -4423,9 +4340,10 @@ msgid ""
 "the <code>return</code> instruction."
 msgstr ""
 "Il est possible d'avoir plusieurs instructions <code>return</code> dans "
-"différentes branches de <code>if</code>. Ce qui est interdit, c'est d'avoir "
-"une branche du code qui n'est pas terminée par un <code>return</code>, ou "
-"d'écrire du code après le <code>return</code>."
+"différentes branches d'un branchement conditionnel. Il est cependant "
+"interdit, d'avoir une branche du code qui n'est pas terminée par un "
+"<code>return</code>, ou d'écrire du code après l'instruction <code>return</"
+"code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsReturning.html:28
@@ -4473,18 +4391,7 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/MethodsReturning.html:45
-#, fuzzy, no-wrap
-#| msgid ""
-#| "boolean negation(boolean cond) {\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* no code allowed here */</span>\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;} else {\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* here neither */</span>\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;}\n"
-#| "&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* even here, forget it */</span>\n"
-#| "}"
+#, no-wrap
 msgid ""
 "def negation(cond):\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;if cond == True:\n"
@@ -4496,16 +4403,15 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># even here, forget it</span>\n"
 msgstr ""
-"boolean negation(boolean cond) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* interdit d'écrire du code ici */</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;} else {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* ici aussi */</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* même ici */</span>\n"
-"}"
+"def negation(cond):\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;if cond == True:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return True\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># interdit d'écrire du code ici</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;else:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return False\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># ici aussi */</</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># même ici</span>\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsReturning.html:56
@@ -4579,9 +4485,9 @@ msgstr ""
 #: src/lessons/welcome/MethodsArgs.html:3
 msgid ""
 "Don't you get tired of writing again and again the code to move by a fixed "
-"amount of steps? On the other hand, writing <tt>forward2()</tt>, "
-"<tt>forward3()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>, "
-"<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help"
+"amount of steps? On the other hand, writing <tt>forward2()</tt>, <tt>forward3"
+"()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>, <tt>backward3"
+"()</tt>, <tt>backward4()</tt>, and so on does not really help"
 msgstr ""
 "N'êtes vous pas fatigué d'écrire encore et encore le code qui permet "
 "d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les "
@@ -4614,8 +4520,18 @@ msgstr ""
 "&nbsp;&nbsp;return x / 2;\n"
 "}"
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/MethodsArgs.html:17
+#, no-wrap
+msgid ""
+"def divideByTwo(x):\n"
+"&nbsp;&nbsp;return x / 2\n"
+msgstr ""
+"def diviseParDeux(x):\n"
+"&nbsp;&nbsp;return x / 2\n"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/MethodsArgs.html:21
 msgid ""
 "As caller, you have to specify the initial value of this \"variables\" "
 "between the call's parenthesis."
@@ -4624,13 +4540,19 @@ msgstr ""
 "parenthèses de l'appel."
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:19
+#: src/lessons/welcome/MethodsArgs.html:23
 #, no-wrap
 msgid "double y = divideByTwo(3.14);"
 msgstr "double y = diviseParDeux(3.14);"
 
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:25
+#, no-wrap
+msgid "y = divideByTwo(3.14)"
+msgstr "y = diviseParDeux(3.14);"
+
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:21
+#: src/lessons/welcome/MethodsArgs.html:28
 msgid ""
 "If you want several parameters, you need to separate them with comas (,)  "
 "both in the declaration and calls."
@@ -4639,7 +4561,7 @@ msgstr ""
 "lors de la déclaration comme lors de l'appel."
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:24
+#: src/lessons/welcome/MethodsArgs.html:31
 #, no-wrap
 msgid ""
 "double divide(double x, double y) {\n"
@@ -4651,13 +4573,31 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:27
+#: src/lessons/welcome/MethodsArgs.html:34
 #, no-wrap
 msgid "double y = divide(3.14 , 1.5);"
 msgstr "double y = divise(3.14 , 1.5);"
 
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:36
+#, no-wrap
+msgid ""
+"def divide(double x, double y):\n"
+"&nbsp;&nbsp;return x / y\n"
+"}"
+msgstr ""
+"def divise(double x, double y):\n"
+"&nbsp;&nbsp;return x / y\n"
+"}"
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:39
+#, no-wrap
+msgid "y = divide(3.14 , 1.5)"
+msgstr "y = divise(3.14 , 1.5);"
+
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:29
+#: src/lessons/welcome/MethodsArgs.html:42
 msgid ""
 "In Java, you can declare several methods of the same name as long as they "
 "don't have the same parameter types and number (they are said to have "
@@ -4668,7 +4608,7 @@ msgstr ""
 "qu'elles n'ont pas la même <b>signature</b>)."
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:32
+#: src/lessons/welcome/MethodsArgs.html:45
 #, no-wrap
 msgid ""
 "int max(int x, int y) {\n"
@@ -4704,7 +4644,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:48
+#: src/lessons/welcome/MethodsArgs.html:63
 msgid ""
 "Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It "
 "works anyway because a <tt>return</tt> interrupts the method execution. If "
@@ -4720,7 +4660,7 @@ msgstr ""
 "de la fonction."
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:54
+#: src/lessons/welcome/MethodsArgs.html:69
 msgid ""
 "This time, you have to write a <code>move(int stepCount,boolean forward)</"
 "code> method which move forward of <code>stepCount</code> if <code>forward</"
@@ -4738,7 +4678,7 @@ msgstr ""
 "nombre de pas à faire (mais ce n'est pas important ici)."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:61
+#: src/lessons/welcome/MethodsArgs.html:76
 msgid ""
 "This time, there is only one world, and seven buggles. But it does not "
 "change anything for you, since the same code is used for any buggles."
@@ -4747,43 +4687,43 @@ msgstr ""
 "grand chose pour vous, puisque toutes sont ici régies par le même code."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:64
+#: src/lessons/welcome/MethodsArgs.html:79
 msgid ""
 "The code of the method to write should not be really problematic for you."
 msgstr ""
 "Le code de la méthode à proprement parler ne devrait pas poser de problème."
 
 #. type: Content of: <p><p><p><p><h2>
-#: src/lessons/welcome/MethodsArgs.html:66
+#: src/lessons/welcome/MethodsArgs.html:81
 msgid "What's coming next?"
 msgstr "Et ensuite?"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:67
+#: src/lessons/welcome/MethodsArgs.html:82
 msgid ""
-"You now know the very basics of programming. At least, we introduced "
-"all the important concepts, and you should be able to read most code by "
-"now. If you want to play safe, you should proceed to the next exercises of "
-"this lesson to solidify your knowledge by reusing these concepts in various "
-"simple situations. After taking them, you'll master what's called \"Tactical "
-"programming\", meaning that you will master the syntax enough to not "
-"have any issue with it, allowing you to focus on the fundamental problems of "
-"what you want to solve instead of struggling with syntaxic "
-"difficulties. Some of these exercises are even fun to do ;)"
+"You now know the very basics of programming. At least, we introduced all the "
+"important concepts, and you should be able to read most code by now. If you "
+"want to play safe, you should proceed to the next exercises of this lesson "
+"to solidify your knowledge by reusing these concepts in various simple "
+"situations. After taking them, you'll master what's called \"Tactical "
+"programming\", meaning that you will master the syntax enough to not have "
+"any issue with it, allowing you to focus on the fundamental problems of what "
+"you want to solve instead of struggling with syntaxic difficulties. Some of "
+"these exercises are even fun to do ;)"
 msgstr ""
-"Vous connaissez maintenant les bases de la programmation. Disons au "
-"moins que vous avez vu les concepts les plus important et que vous devriez "
-"être capable de lire et comprendre la plupart des programmes écrits. "
-"Pour plus de sécurité, vous devriez faire les autres exercices de cette "
-"leçon pour solidifier vos acquis en les réutilisant dans diverses "
-"situations. Après cela, vous maîtriserez ce qu'on appelle la \"programmation "
-"tactique\", ce qui veut dire que votre maîtrise de la syntaxe vous "
-"permettra de vous concentrer sur les problèmes à résoudre sans vous battre "
-"contre le compilateur à propos de la syntaxe. Certains de ces exercices sont "
-"même amusants à résoudre ;)"
+"Vous connaissez maintenant les bases de la programmation. Disons au moins "
+"que vous avez vu les concepts les plus important et que vous devriez être "
+"capable de lire et comprendre la plupart des programmes écrits. Pour plus de "
+"sécurité, vous devriez faire les autres exercices de cette leçon pour "
+"solidifier vos acquis en les réutilisant dans diverses situations. Après "
+"cela, vous maîtriserez ce qu'on appelle la \"programmation tactique\", ce "
+"qui veut dire que votre maîtrise de la syntaxe vous permettra de vous "
+"concentrer sur les problèmes à résoudre sans vous battre contre le "
+"compilateur à propos de la syntaxe. Certains de ces exercices sont même "
+"amusants à résoudre ;)"
 
 #. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:75
+#: src/lessons/welcome/MethodsArgs.html:90
 msgid ""
 "If you are in a hurry and want more, you can skip these exercises and "
 "proceed directly to more interesting challenges. For example, the "
@@ -4791,10 +4731,10 @@ msgid ""
 "which are not rocket science but require several improvements to work for "
 "any kind of maze. The <i>Lightbot</i> lesson is a little programming game "
 "where you control a little robot wanting to light the world. Since it is not "
-"programmed in a language but graphically, the first exercises can be used as an "
-"introduction activity to what programming means for real beginners, but the "
-"last exercises constitute challenges and brain teaser even to professional "
-"programmers."
+"programmed in a language but graphically, the first exercises can be used as "
+"an introduction activity to what programming means for real beginners, but "
+"the last exercises constitute challenges and brain teaser even to "
+"professional programmers."
 msgstr ""
 "Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et "
 "passer directement à des exercices plus complets et plus intéressants. Par "
@@ -4803,11 +4743,11 @@ msgstr ""
 "serez amenés à améliorer votre code à plusieurs reprises afin de pouvoir "
 "sortir de n'importe quel type de labyrinthe. La leçon <i>LightBot</i> est un "
 "petit jeu de programmation où vous contrôlez un robot voulant éclairer le "
-"monde. Comme il est programmé graphiquement et non dans un language syntaxique, les premiers "
-"exercices peuvent être utilisés comme une introduction à ce que programmer "
-"veut dire pour les débutants. Mais les derniers exercices sont plus "
-"difficiles et devraient constituer des casse-têtes même pour les "
-"programmeurs professionnels."
+"monde. Comme il est programmé graphiquement et non dans un language "
+"syntaxique, les premiers exercices peuvent être utilisés comme une "
+"introduction à ce que programmer veut dire pour les débutants. Mais les "
+"derniers exercices sont plus difficiles et devraient constituer des casse-"
+"têtes même pour les programmeurs professionnels."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture.html:3
@@ -4833,6 +4773,18 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture.html:10
 msgid ""
+"Your goal (here and in any well written program) is to write the simplest "
+"possible main code. For that, you have to decompose your work in sub-steps, "
+"and write a specific method for each sub-step."
+msgstr ""
+"Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire "
+"une méthode principale la plus simple possible. Pour cela, vous devez "
+"décomposer le travail à faire en sous-étape, et écrire une méthode "
+"spécifique chaque sous-étape."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/MethodsPicture.html:14
+msgid ""
 "If you observe carefully the picture to draw, it is constituted of four "
 "parts depicting a sort of V using a different color. A possible "
 "decomposition is to write a method in charge of drawing a V of the specified "
@@ -4845,13 +4797,19 @@ msgstr ""
 "courante. Son prototype peut être :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/MethodsPicture.html:14
+#: src/lessons/welcome/MethodsPicture.html:18
 #, no-wrap
 msgid "void makeV(Color c)"
 msgstr "void makeV(Color c)"
 
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/MethodsPicture.html:19
+#, no-wrap
+msgid "makeV(c)"
+msgstr "makeV(c)"
+
 #. type: Content of: <p><p>
-#: src/lessons/welcome/MethodsPicture.html:16
+#: src/lessons/welcome/MethodsPicture.html:21
 msgid ""
 "The <code>Color</code> data type naturally describes a particular color. "
 "Your <code>run()</code> method should probably call <code>makeV</code> with "
@@ -4863,27 +4821,27 @@ msgstr ""
 "chaque appel) :"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:21
+#: src/lessons/welcome/MethodsPicture.html:26
 msgid "Color.yellow"
 msgstr "Color.yellow"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:22
+#: src/lessons/welcome/MethodsPicture.html:27
 msgid "Color.red"
 msgstr "Color.red"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:23
+#: src/lessons/welcome/MethodsPicture.html:28
 msgid "Color.blue"
 msgstr "Color.blue"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:24
+#: src/lessons/welcome/MethodsPicture.html:29
 msgid "Color.green"
 msgstr "Color.green"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:27
+#: src/lessons/welcome/MethodsPicture.html:32
 msgid ""
 "In <code>makeV()</code>, you should use the <code>setBrushColor()</code> "
 "method (predefined in the buggle) to change the color of the buggle's brush, "
@@ -4896,7 +4854,7 @@ msgstr ""
 "<code>brushDown()</code> pour lever et baisser le pinceau."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:32
+#: src/lessons/welcome/MethodsPicture.html:37
 msgid ""
 "It may be wise to write the <code>makeV()</code> so that it places directly "
 "the buggle in position for the next V."
@@ -4905,7 +4863,7 @@ msgstr ""
 "position pour dessiner le prochain V directement."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:35
+#: src/lessons/welcome/MethodsPicture.html:40
 msgid ""
 "Your turn. The <code>run()</code> method should not be longer than 4 lines..."
 msgstr ""
@@ -4936,19 +4894,33 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture2.html:10
 msgid ""
-"But you want to keep your <code>run()</code> as simple as possible. For "
+"But you want to keep your main<code>run()</code> as simple as possible. For "
 "that, define new methods to deal simply with the repetitions in the pattern. "
 "For example, a method <code>makePattern()</code> achieving the pattern of "
 "previous example seems to be a good idea (but this may not be enough)."
 msgstr ""
-"Mais pour que votre méthode <code>run()</code> reste aussi simple que "
-"possible, il faudra définir de nouvelles méthodes afin de gérer simplement "
-"les repétions du motif. Par exemple, une méthode <code>makePattern()</code> "
+"Mais vous voulez que votre méthode principale <code>run()</code> reste aussi "
+"simple que possible, il vous faudra donc définir de nouvelles méthodes pour "
+"gérer simplement les répétitions dans le motif. Par exemple, une méthode "
+"<code>makePattern()</code> réalisant le motif de l'exercice précédent semble "
+"être un bon départ (mais ce n'est sans doute pas suffisant)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/MethodsPicture2.html:16
+msgid ""
+"But you want to keep your main code as simple as possible. For that, define "
+"new methods to deal simply with the repetitions in the pattern. For example, "
+"a method <code>makePattern()</code> achieving the pattern of previous "
+"example seems to be a good idea (but this may not be enough)."
+msgstr ""
+"Mais vous voulez garder votre code principal aussi simple que possible. Pour "
+"ce faire, définissez de nouvelles méthodes afin de gérer simplement les "
+"répétitions du motif. Par exemple, une méthode <code>makePattern()</code> "
 "réalisant le motif de l'exercice précédent semble être un bon départ (mais "
 "ce n'est sans doute pas suffisant)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsPicture2.html:16
+#: src/lessons/welcome/MethodsPicture2.html:22
 msgid ""
 "Why don't you give it a shot? The <code>run()</code> method shouldn't take "
 "more than 2 lines (included in a for loop)"
@@ -4957,15 +4929,13 @@ msgstr ""
 "de 2 lignes, incluses dans une boucle for..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsPicture2.html:19
+#: src/lessons/welcome/MethodsPicture2.html:25
 msgid ""
-"To proceed to the next exercise, you need to remark that the combobox used "
-"to switch the exercise have a scroll bar that you can use to see the next "
-"exercises of the lesson."
+"Why don't you give it a shot? The main code method shouldn't take more than "
+"2 lines (included in a for loop)"
 msgstr ""
-"Pour passer à l'exercice suivant, remarquez que le menu défilant pour "
-"changer l'exercice est doté d'un ascenseur que vous devez utiliser pour voir "
-"la suite."
+"À vous de jouer. Le code de la méthode principale ne devrait pas prendre "
+"plus de 2 lignes, incluses dans une boucle for..."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture3.html:3
@@ -5623,16 +5593,6 @@ msgstr ""
 
 #. type: Content of: <p><a><p>
 #: src/lessons/welcome/BDR.html:197
-#, fuzzy
-#| msgid ""
-#| "The other subtlety is to keep working as long as there is some work to "
-#| "do, i.e., as long as we did not find a cell which content is not "
-#| "described in the table. The easier for that is to use a boolean variable "
-#| "(<code>finished</code>) that is initialized to <code>false</code> as "
-#| "termination condition for the loop. As soon as the buggle find a cell "
-#| "with a value not described in the table, the boolean variable is set to "
-#| "<code>false</code>. Thus the loop, will stop and the program will "
-#| "terminate."
 msgid ""
 "The other subtlety is to keep working as long as there is some work to do, i."
 "e., as long as we did not find a cell which content is not described in the "
@@ -5644,10 +5604,11 @@ msgid ""
 msgstr ""
 "L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant "
 "qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus "
-"simple pour cela est de faire une boucle infinie (<code>while (true)</"
-"code>), avec tous les tests dans le corps. Si on trouve une case ne "
-"répondant à aucune ligne du tableau, on arrêtera tout d'un simple "
-"<code>return;</code>."
+"simple pour cela est d'utiliser une variable booléenne ( <code>finished</"
+"code>) qui est mise à <code>false</code> pour terminer la boucle. Dès que la "
+"buggle a trouvé une case avec une valeur non décrite dans la table, la "
+"variable booléenne est mise à <code>false</code>. Ainsi, la boucle "
+"s'arrêtera et le programme terminera."
 
 #. type: Content of: <p><a><p>
 #: src/lessons/welcome/BDR.html:204
@@ -6065,8 +6026,8 @@ msgid "When you program works again, proceed to next exercise."
 msgstr ""
 "Quand votre programme fonctionne de nouveau, passez à l'exercice suivant."
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/SlugHunting.html:3
+#. type: Content of: <p>
+#: src/lessons/welcome/SlugHunting.html:4
 msgid ""
 "After all this excitation of dance revolution, we will move on to a slower "
 "activity : the slug hunting. Your buggle just happened to found the trail of "
@@ -6081,7 +6042,7 @@ msgstr ""
 "grosse limace si appétissante (pour une buggle)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:9
+#: src/lessons/welcome/SlugHunting.html:10
 msgid ""
 "To reach that goal, you have a boolean method <tt>isFacingTrail</tt>, which "
 "determine whether we are facing a green cell or not. Of course, if we are "
@@ -6096,7 +6057,7 @@ msgstr ""
 "monde. Une telle méthode est dite <b>sans effet de bord</b>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:16
+#: src/lessons/welcome/SlugHunting.html:17
 msgid ""
 "It takes the color of the trail we want to follow as an argument. Slugs "
 "leave green trails, but other prey leave trails of other colors. In Java, "
@@ -6110,7 +6071,7 @@ msgstr ""
 "green</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:21
+#: src/lessons/welcome/SlugHunting.html:22
 msgid ""
 "In order to hunt your prey, you should not mistake the part of the tracks to "
 "follow with the one your buggle comes from, you should ask your buggle to "
@@ -6124,7 +6085,7 @@ msgstr ""
 "code> pour le relever)"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:26
+#: src/lessons/welcome/SlugHunting.html:27
 msgid ""
 "A buggle can know the color of the cell it is over using the <code>Color "
 "getGroundColor()</code> method."
@@ -6133,7 +6094,7 @@ msgstr ""
 "positionné en utilisant la méthode <code>Color getGroundColor()</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:29
+#: src/lessons/welcome/SlugHunting.html:30
 msgid ""
 "Finally, do not forget to capture your prey once you found it (using "
 "<code>pickUpBaggle()</code>)."
@@ -6142,7 +6103,7 @@ msgstr ""
 "(avec <code>pickUpBaggle()</code>)."
 
 #. type: Content of: <a>
-#: src/lessons/welcome/SlugHunting.html:33
+#: src/lessons/welcome/SlugHunting.html:34
 msgid ""
 "<a name=\"Objectives\">Complete the <code>hunt()</code> method (which gets "
 "called by <code>run()</code> automatically). You should use the "
@@ -6153,10 +6114,10 @@ msgstr ""
 "défaut de votre buggle.  La méthode <tt>hunt()</tt> doit utiliser la méthode "
 "<code>isFacingTrail()</code> décrite précédemment."
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/SlugTracking.html:3
 msgid ""
-"After all this excitation of slug hunting, we will have to learn hot to "
+"After all this excitation of slug hunting, we will have to learn how to "
 "track their trail. Your buggle just happened to found the trail of a slug: a "
 "green dribbling tracks. If it manage to follow it to its end, it will find a "
 "baggle representing an appetizing slug (from a buggle point of view)."
@@ -6197,14 +6158,14 @@ msgstr ""
 "un <i>type</i> <tt>Color</tt> pour désigner les couleurs.  La couleur verte "
 "est définie par <code>Color.green</code>."
 
-#. type: Content of: <a>
-#: src/lessons/welcome/SlugTracking.html:20
+#. type: Content of: <p>
+#: src/lessons/welcome/SlugTracking.html:22
 msgid ""
-"<a name=\"Objectives\">Complete the <code>isFacingTrail()</code> method "
+"<a name=\"Objectives\"/>Complete the <code>isFacingTrail()</code> method "
 "(which gets called by <code>hunt()</code> automatically). You don't have to "
 "write the <code>hunt()</code> method."
 msgstr ""
-"<a name=\"Objectifs\"> Complétez la méthode <code>isFacingTrail()</code> qui "
+"<a name=\"Objectifs\"/> Complétez la méthode <code>isFacingTrail()</code> qui "
 "sera appelée par la méthode <code>hunt()</code> définissant le comportement "
 "par défaut de votre buggle.  Vous n'avez pas à écrire la méthode <tt>hunt()</"
 "tt>."
@@ -7856,7 +7817,11 @@ msgid ""
 "sorting algorithms. The list of buildins that you can use in your algorithms "
 "is available in the world reference documentation (\"Help\"-&gt;\"About this "
 "world\")."
-msgstr "Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de tri existants. La liste des primitives que vous pouvez utiliser dans vos programmes est disponible dans la documentation de référence du monde (\"Help\" -&gt; \"About this world\")."
+msgstr ""
+"Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de "
+"tri existants. La liste des primitives que vous pouvez utiliser dans vos "
+"programmes est disponible dans la documentation de référence du monde (\"Help"
+"\" -&gt; \"About this world\")."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:27
@@ -7876,7 +7841,18 @@ msgid ""
 "sorted: the algorithm can stop.  Bubble sort is studied because of its "
 "simplicity, but it is almost never used in practice because of its bad "
 "performance (O(n^2) on average)."
-msgstr "Le premier algorithme de tri est le plus simple existant : le tri à bulles ou tri par propagation consiste à faire remonter progressivement les plus petits éléments d'une liste, comme les bulles d'air remontent à la surface d'un liquide. L'algorithme parcourt la liste, et compare les couples d'éléments successifs. Lorsque deux éléments successifs ne sont pas dans l'ordre croissant, ils sont échangés. Après chaque parcours complet de la liste, l'algorithme recommence l'opération. Lorsqu'aucun échange n'a lieu pendant un parcours, cela signifie que la liste est triée : l'algorithme peut s'arrêter.  La simplicité de cet algorithme justifie son étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est quasiment jamais utilisé en pratique."
+msgstr ""
+"Le premier algorithme de tri est le plus simple existant : le tri à bulles "
+"ou tri par propagation consiste à faire remonter progressivement les plus "
+"petits éléments d'une liste, comme les bulles d'air remontent à la surface "
+"d'un liquide. L'algorithme parcourt la liste, et compare les couples "
+"d'éléments successifs. Lorsque deux éléments successifs ne sont pas dans "
+"l'ordre croissant, ils sont échangés. Après chaque parcours complet de la "
+"liste, l'algorithme recommence l'opération. Lorsqu'aucun échange n'a lieu "
+"pendant un parcours, cela signifie que la liste est triée : l'algorithme "
+"peut s'arrêter.  La simplicité de cet algorithme justifie son étude, mais "
+"ses piètres performances (O(n2) en moyenne) font qu'il n'est quasiment "
+"jamais utilisé en pratique."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:39
@@ -7984,19 +7960,15 @@ msgstr "BubbleSort3"
 
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort3.html:5
-#, fuzzy
-#| msgid ""
-#| "Let's now reintroduce the little optimization we removed at previous "
-#| "step: if a traversal does not swap any element, it means that the array "
-#| "is already sorted."
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
 "sorted. In that case, we want to stop the whole sorting process."
 msgstr ""
 "Réintroduisons maintenant la petite optimisation que nous avions retiré à "
-"l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau "
-"est maintenant trié. Cela nous donne le pseudo-code suivant :"
+"l'étape précédente : Si un parcours n'a rien inversé, cela signifie que le "
+"tableau est trié. Dans ce cas, nous voulons arrêter le processus de tri dans "
+"son ensemble."
 
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort3.html:9
@@ -8006,8 +7978,10 @@ msgid ""
 "to the internal one."
 msgstr ""
 "Pour cela, utilisez simplement le mot-clé <code>break></code>, qui coupe\n"
-"l'exécutino de la boucle englobante. Attention, si vous avez plusieurs boucles\n"
-"imbriquées, c'est celle situé tout au fond (au plus près du mot-clé break) qui\n"
+"l'exécutino de la boucle englobante. Attention, si vous avez plusieurs "
+"boucles\n"
+"imbriquées, c'est celle situé tout au fond (au plus près du mot-clé break) "
+"qui\n"
 "est cassée."
 
 #. type: Attribute 'alt' of: <div>
@@ -9483,12 +9457,12 @@ msgstr ""
 "des buggles."
 
 #. type: Content of: <h2>
-#: src/lessons/maze/RandomMouseMaze.html:1
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:1
 msgid "The crazy mouse"
 msgstr "La souris folle"
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:3
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:3
 msgid ""
 "The day of your buggle starts badly. Out of luck, it got trapped into a "
 "maze. Help it finding its path out of there."
@@ -9497,7 +9471,7 @@ msgstr ""
 "tombé dans un piège.  Aidez le à sortir de ce labyrinthe."
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:8
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:8
 msgid ""
 "The exit is represented by a baggle and you need to pick this baggle in "
 "order to exit the maze."
@@ -9506,7 +9480,7 @@ msgstr ""
 "vous échapper du labyrinthe."
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:13
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:13
 msgid ""
 "Since the maze is so small, we can write the dumbest possible algorithm to "
 "do so. It relies on randomness and proves quite inefficient."
@@ -9516,7 +9490,7 @@ msgstr ""
 "hasard et est très inefficace."
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:18
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:18
 msgid ""
 "While the buggle didn't find the path to the escape, it must proceed the "
 "following way: pick a random integer between 0 and 2 by using the "
@@ -9530,12 +9504,12 @@ msgstr ""
 "tourner à gauche)."
 
 #. type: Content of: <a>
-#: src/lessons/maze/RandomMouseMaze.html:23
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:23
 msgid "<a name=\"Objectives\">"
 msgstr "<a name=\"Objectifs\">"
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:26
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:26
 msgid ""
 "This exercise's objective is to write an algorithm allowing the buggle to "
 "find its path out of the maze. Do not forget to let your buggle pick up the "
@@ -9546,7 +9520,7 @@ msgstr ""
 "baggle à votre buggle avant la fin de votre programme."
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:32
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:32
 msgid ""
 "Write the <code>run()</code> method so that your buggle takes a random "
 "decision (forward, turn left or turn right). You can use the <code>random3()"
@@ -9558,19 +9532,19 @@ msgstr ""
 "aléatoire la valeur 0, 1 ou 2."
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:38
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:38
 msgid "Don't forget to pick up the baggle once you've reached it."
 msgstr ""
 "N'oubliez pas de faire ramasser le baggle par votre buggle à la fin de votre "
 "code."
 
 #. type: Content of: <h2>
-#: src/lessons/maze/WallFollowerMaze.html:1
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:1
 msgid "Following the walls"
 msgstr "Longer les murs"
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:3
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:3
 msgid ""
 "This time, the maze is a bit more complicated. Random won't be enough, we "
 "ough to be smart!"
@@ -9579,7 +9553,7 @@ msgstr ""
 "pas suffisant, il va falloir être intelligent !"
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:6
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:6
 msgid ""
 "Hopefully, this maze is simpler that it seems at the first glance: every "
 "wall are connected to each other. To get out of this kind of maze, the "
@@ -9595,7 +9569,7 @@ msgstr ""
 "labyrinthe et ce biscuit qu'il apprécie tant."
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:13
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:13
 msgid ""
 "This algorithm works here because there is no island of isolated walls, so "
 "our buggle cannot loop around for ever without encountering the baggle it "
@@ -9606,7 +9580,7 @@ msgstr ""
 "biscuit qu'elle cherche."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/maze/WallFollowerMaze.html:17
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:17
 msgid ""
 "The goal of this exercise is to write an algorithm allowing the buggle to "
 "get out of this maze."
@@ -9615,7 +9589,7 @@ msgstr ""
 "permettant à votre buggle de sortir du labyrinthe."
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:20
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:20
 msgid ""
 "As said in the introduction, it is exactly the same if you decide to follow "
 "the left wall or the right one. Simply, the demo follows the left one, so "
@@ -9628,7 +9602,7 @@ msgstr ""
 "comparaison de votre solution et de la démo."
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:25
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:25
 msgid ""
 "Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
 "move one step forward while keeping the paw on the wall of the selected "
@@ -9646,7 +9620,7 @@ msgstr ""
 "essayer de le faire sans l'indice."
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:32
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:32
 msgid ""
 "Then, write a <code>run()</code> method which traverse the maze step by step "
 "(using <code>void keepHandOnSideWall()</code>) until it finds the biscuit "
@@ -9658,12 +9632,12 @@ msgstr ""
 "la sortie et le biscuit. Enfin il ne faut pas oubliez de prendre la baggle."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/WallFollowerMaze.html:37
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:37
 msgid "I'm lost, please give me some extra indications"
 msgstr "Je suis perdu, je voudrais plus d'indications"
 
 #. type: Content of: <div><p>
-#: src/lessons/maze/WallFollowerMaze.html:38
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:38
 msgid ""
 "When your buggle has a wall on the left, there is three situations to "
 "consider, depending on the surrounding walls. The following table depicts "
@@ -9676,32 +9650,32 @@ msgstr ""
 "buggle à la fin de l'étape."
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:45
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:45
 msgid "Case 1"
 msgstr "Case 1"
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:46
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:46
 msgid "Case 2"
 msgstr "Case 2"
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:47
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:47
 msgid "Case 3"
 msgstr "Case 3"
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:49
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:49
 msgid "Initial situation"
 msgstr "Situation initiale"
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:54
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:54
 msgid "Where is the next step"
 msgstr "Étape suivante"
 
 #. type: Content of: <div><p>
-#: src/lessons/maze/WallFollowerMaze.html:60
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:60
 msgid ""
 "If you do a <code>turnRight()</code> in any case at the end of your "
 "function, it's possible to write it in 3 lines with a <code>while()</code> "
@@ -9712,12 +9686,12 @@ msgstr ""
 "<code>while()</code>."
 
 #. type: Content of: <h2>
-#: src/lessons/maze/PledgeMaze.html:1
+#: src/lessons/maze/pledge/PledgeMaze.html:1
 msgid "Pledge algorithm"
 msgstr "Algorithme de Pledge"
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:3
+#: src/lessons/maze/pledge/PledgeMaze.html:3
 msgid ""
 "Once again, you thought that your algorithm were good enough to escape the "
 "maze, and once again, you buggle is now in a maze where your previous "
@@ -9736,7 +9710,7 @@ msgstr ""
 "retomber dans le piège..."
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:12
+#: src/lessons/maze/pledge/PledgeMaze.html:12
 msgid ""
 "The Pledge's algorithm (named after Jon Pledge of Exeter) can solve this "
 "maze."
@@ -9745,7 +9719,7 @@ msgstr ""
 "labyrinthe."
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:15
+#: src/lessons/maze/pledge/PledgeMaze.html:15
 msgid ""
 "This algorithm is a modification of the previous one thought to avoid "
 "obstacles. It randomly picks a heading and let the buggle move in that "
@@ -9765,7 +9739,7 @@ msgstr ""
 
 # type: Content of: <p><p>
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:23
+#: src/lessons/maze/pledge/PledgeMaze.html:23
 msgid ""
 "Note that the use of \"total turning\" rather than just the \"current "
 "direction\" allows the algorithm to avoid G-shapped traps. If one proceeds "
@@ -9784,7 +9758,7 @@ msgstr ""
 
 # type: Content of: <p><p>
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:30
+#: src/lessons/maze/pledge/PledgeMaze.html:30
 msgid ""
 "The Pledge's algorithm does not leave the rightmost wall due to the total "
 "turning not being zero at that point. It follows the wall all the way "
@@ -9796,7 +9770,7 @@ msgstr ""
 "une fois parvenu sous l'obstacle."
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:37
+#: src/lessons/maze/pledge/PledgeMaze.html:37
 msgid ""
 "<a name=\"Objective\"/>You now have to modify your solution to implement the "
 "Pledge algorithm to escape this maze."
@@ -9806,7 +9780,7 @@ msgstr ""
 "sortir du labyrinthe."
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:40
+#: src/lessons/maze/pledge/PledgeMaze.html:40
 msgid ""
 "Change your <code>void keepHandOnSideWall()</code> method to count the "
 "amount of turns done by the buggle (+1 when it turns left, and -1 when it "
@@ -9820,7 +9794,7 @@ msgstr ""
 "une variable <code>angleSum</code> de type entière à votre programme."
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:45
+#: src/lessons/maze/pledge/PledgeMaze.html:45
 msgid ""
 "Write a <code>boolean isChosenDirectionFree()</code> method indicating if "
 "the arbitrary direction you picked up is free, ie, if you can move in that "
@@ -9844,7 +9818,7 @@ msgstr ""
 "vers sa direction de prédilection pour pouvoir restaurer l'état après coup."
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:55
+#: src/lessons/maze/pledge/PledgeMaze.html:55
 msgid ""
 "You may have to change the rest of your code also, but these changes should "
 "remain limited."
@@ -9853,12 +9827,12 @@ msgstr ""
 "ces changements devraient rester limités."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/PledgeMaze.html:58
+#: src/lessons/maze/pledge/PledgeMaze.html:58
 msgid "Show an additional tip"
 msgstr "Montrer un indice supplémentaire"
 
 #. type: Content of: <div>
-#: src/lessons/maze/PledgeMaze.html:59
+#: src/lessons/maze/pledge/PledgeMaze.html:59
 msgid ""
 "The <code>void run()</code> method should move in your favorite direction "
 "(NORTH is advised). Then, you should write the algorithm main loop. In other "
@@ -9879,12 +9853,12 @@ msgstr ""
 "trouver votre biscuit."
 
 #. type: Content of: <h2>
-#: src/lessons/maze/IslandMaze.html:1
+#: src/lessons/maze/island/IslandMaze.html:1
 msgid "Lost between islands"
 msgstr "Perdu dans les îles"
 
 #. type: Content of: <p>
-#: src/lessons/maze/IslandMaze.html:3
+#: src/lessons/maze/island/IslandMaze.html:3
 msgid ""
 "You thought that your algorithm was enough to escape mazes? Well, not every "
 "mazes..."
@@ -9893,7 +9867,7 @@ msgstr ""
 "labyrinthes ? Et bien, pas tous les labyrinthes..."
 
 #. type: Content of: <p>
-#: src/lessons/maze/IslandMaze.html:7
+#: src/lessons/maze/island/IslandMaze.html:7
 msgid ""
 "The <i>wall follower algorithm</i> we used so far only works if the entry "
 "and the exit are placed near to walls connected to the external wall. But if "
@@ -9906,7 +9880,7 @@ msgstr ""
 "labyrinthe, il peut exister des pans de mur déconnectés du mur externe."
 
 #. type: Content of: <p><p>
-#: src/lessons/maze/IslandMaze.html:12
+#: src/lessons/maze/island/IslandMaze.html:12
 msgid ""
 "That is why the previous strategy would let the buggle round around for "
 "ever. Indeed, the maze you should now escape from contains islands, and the "
@@ -9920,7 +9894,7 @@ msgstr ""
 "et admirez votre solution précédente échouer lamentablement"
 
 #. type: Content of: <p><p>
-#: src/lessons/maze/IslandMaze.html:18
+#: src/lessons/maze/island/IslandMaze.html:18
 msgid ""
 "The method of following a wall is still good and allow to escape very "
 "efficiently some sections of the maze, so we do not want to remove it "
@@ -9938,7 +9912,7 @@ msgstr ""
 "suivre jusqu'au baggle."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/IslandMaze.html:26
+#: src/lessons/maze/island/IslandMaze.html:26
 msgid ""
 "To find the north wall, you simply run to the north as long as it's "
 "possible, and when facing an obstacle, you avoid it (using previous method)."
@@ -9948,12 +9922,12 @@ msgstr ""
 "l'évitez ( en utilisant la méthode précédente )."
 
 #. type: Attribute 'alt' of: <p><p><div>
-#: src/lessons/maze/IslandMaze.html:30
+#: src/lessons/maze/island/IslandMaze.html:30
 msgid "I'm lost now, please give me some extra indications"
 msgstr "Je suis perdu, je voudrais plus d'indications"
 
 #. type: Content of: <p><p><div>
-#: src/lessons/maze/IslandMaze.html:31
+#: src/lessons/maze/island/IslandMaze.html:31
 msgid ""
 "Our new run() method will consist in two modes: our buggle will alternate "
 "between the \"north runner mode\" and the \"left follower mode\". You begin "
@@ -9976,7 +9950,7 @@ msgstr ""
 "chose du type"
 
 #. type: Content of: <p><p><div><pre>
-#: src/lessons/maze/IslandMaze.html:40
+#: src/lessons/maze/island/IslandMaze.html:40
 #, no-wrap
 msgid ""
 "\t<code>int state=0;\n"
@@ -10006,14 +9980,14 @@ msgstr ""
 "</code>\n"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/IslandMaze.html:55
+#: src/lessons/maze/island/IslandMaze.html:55
 msgid "Don't forget to let the buggle pick the baggle at the end of your code."
 msgstr ""
 "N'oubliez pas de faire ramasser le baggle par votre buggle à la fin de votre "
 "code."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/IslandMaze.html:58
+#: src/lessons/maze/island/IslandMaze.html:58
 msgid ""
 "You're up. That should be enough for you to figure out how to escape this "
 "maze, but if not, you can always request for the tip. But you do not need "
@@ -10025,12 +9999,12 @@ msgstr ""
 "pas ?"
 
 #. type: Content of: <h2>
-#: src/lessons/maze/ShortestPathMaze.html:1
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:1
 msgid "Basic Shortest Path algorithm"
-msgstr "Algorithme basique de rechercher du plus court chemin"
+msgstr "Algorithme basique de recherche du plus court chemin"
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:3
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:3
 msgid ""
 "To conclude with this introductory lesson to maze solving algorithms, we "
 "will investigate another way to find the exit. The buggle in this lesson is "
@@ -10043,7 +10017,7 @@ msgstr ""
 "Force. Cela signifie qu'il peut ressentir son environnement."
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:7
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:7
 msgid ""
 "By using method <code>BuggleWorld getMyWorld()</code> he can retrieve "
 "information about the world he is leaving in."
@@ -10052,7 +10026,7 @@ msgstr ""
 "récupérerdes informations à propos du monde où il vit."
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:9
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
 msgid ""
 "A <code>BuggleWorld</code> object is an object on which you can perform the "
 "following operations:"
@@ -10061,17 +10035,17 @@ msgstr ""
 "effectuer les opérations suivantes :"
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:11
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:11
 msgid "<code>int getHeight()</code> to know the height of the world."
 msgstr "<code>int getHeight()</code> pour connaitre la hauteur du monde."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:12
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
 msgid "<code>int getWidth()</code> to know the width of the world."
 msgstr "<code>int getWidth()</code> pour connaitre la largeur du monde"
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:13
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:13
 msgid ""
 "<code>BuggleWorldCell getCell(int x, int y)</code> to retrieve the "
 "<code>BuggleWorldCell</code> object located at a specific position in the "
@@ -10081,7 +10055,7 @@ msgstr ""
 "<code>BuggleWorldCell</code> localisé à une position donnée dans le monde."
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:19
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:19
 msgid ""
 "A <code>BuggleWorldCell</code> is an object that represents a cell of the "
 "world. On an object of this type, it is possible to call the following "
@@ -10092,7 +10066,7 @@ msgstr ""
 "méthodes suivantes :"
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:22
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:22
 msgid ""
 "<code>boolean hasContent()</code> to know if something is written on the "
 "floor of this cell."
@@ -10101,7 +10075,7 @@ msgstr ""
 "le sol de cette case."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:23
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
 msgid ""
 "<code>void setContentFromInt(int v)</code> to write an integer value on the "
 "floor of this cell."
@@ -10110,7 +10084,7 @@ msgstr ""
 "sur le sol de cette case."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:24
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:24
 msgid ""
 "<code>int getContentAsInt()</code> to retrieve the integer value which is "
 "written on the floor of this cell."
@@ -10119,12 +10093,12 @@ msgstr ""
 "sur le sol de cette case."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:25
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:25
 msgid "<code>void emptyContent()</code> to clean the floor of this cell."
 msgstr "<code>void emptyContent()</code> pour nettoyer le sol de cette case."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:26
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:26
 msgid ""
 "<code>boolean hasTopWall()</code> to know if a wall is built on the top edge "
 "of this cell."
@@ -10133,7 +10107,7 @@ msgstr ""
 "le côté supérieur de la case."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:27
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:27
 msgid ""
 "<code>boolean hasLeftWall()</code> to know if a wall is built on the left "
 "edge of this cell."
@@ -10142,7 +10116,7 @@ msgstr ""
 "le côté gauche de la case."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:28
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:28
 msgid ""
 "<code>boolean hasBaggle()</code> to know if a baggle is present on this cell."
 msgstr ""
@@ -10150,7 +10124,7 @@ msgstr ""
 "case."
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:32
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:32
 msgid ""
 "It has to be noted that it is not possible to build a wall on the bottom "
 "edge or on the right edge of a cell.  Therefore when such wall exists, it "
@@ -10165,7 +10139,7 @@ msgstr ""
 "( respectivement sur la droite ) de la case courante."
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:38
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:38
 msgid ""
 "<a name=\"Objective\"/>Write a method <code>evaluatePaths()</code> which "
 "computes a very basic shortest path algorithm. This algorithm will write on "
@@ -10179,7 +10153,7 @@ msgstr ""
 "du labyrinthe."
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:41
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:41
 msgid ""
 "To achieve this objective, your algorithm has to find the exit of the maze "
 "on the map. Then, for every cells next to the cell where the exit is "
@@ -10196,7 +10170,7 @@ msgstr ""
 "se situe le buggle."
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:46
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:46
 msgid ""
 "Write a method <code>followShortestPath()</code> that will make the jedi "
 "buggle to follow the shortest path.  Basically the buggle has only to walk "
@@ -10213,22 +10187,22 @@ msgstr ""
 "<code>Direction.NORTH</code> ou <code>Direction.EAST</code>."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/ShortestPathMaze.html:51
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:51
 msgid "I'm lost now. Please give me some extra indications."
 msgstr "Je suis perdu, je voudrais plus d'indications"
 
 #. type: Content of: <div>
-#: src/lessons/maze/ShortestPathMaze.html:52
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:52
 msgid "Use the Force Luke!"
 msgstr "Utilises la Force Luke !"
 
 #. type: Content of: <h2>
-#: src/lessons/maze/WallFindFollowMaze.html:1
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:1
 msgid "Finding the walls to follow"
 msgstr "Trouver les murs à longer"
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:3
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:3
 msgid ""
 "This is exactly the same maze than before, but the buggle does not start at "
 "the same location. In particular, it does not have any wall to its left at "
@@ -10239,7 +10213,7 @@ msgstr ""
 "gauche dès le départ."
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:7
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:7
 msgid ""
 "As a result, the method you wrote for the previous exercise probably don't "
 "work for this one. If you click on the run button with no modification, your "
@@ -10256,7 +10230,7 @@ msgstr ""
 "chanceux et passez à l'exercice suivant une fois que vous aurez lu ce texte)."
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:14
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:14
 msgid ""
 "This is because your <code>keepHandOnSideWall()</code> method has an "
 "implicit <b>pre-condition</b>: it works well if and only if the buggle has a "
@@ -10273,7 +10247,7 @@ msgstr ""
 "peuvent même parfois prouver que le code marche correctement."
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:24
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:24
 msgid ""
 "Fixing the problem should be very easy. Simply make sure that the pre-"
 "condition of <code>keepHandOnSideWall()</code> is verified before calling "
@@ -12693,51 +12667,3 @@ msgstr ""
 #: src/lessons/smn/baseball/BaseballGameMorePlayers.html:37
 msgid "There are seven methods provided :"
 msgstr "Sept méthodes vous sont fournies :"
-
-#~ msgid "Views available"
-#~ msgstr "Changer la vue du monde"
-
-#~ msgid ""
-#~ "Welcome to the sorting world. It allows you to experiment with the "
-#~ "existing sorting algorithms. Please consult the world help (\"Help\"->"
-#~ "\"About this world\") for more information on the available buildins for "
-#~ "your algorithms."
-#~ msgstr ""
-#~ "Vous voici dans le monde des tris. Il vous permet d'expérimenter avec les "
-#~ "différents algorithmes de tri existant.  Consultez l'aide du monde "
-#~ "(\"Help->About this world\") pour une aide sur les primitives utilisables "
-#~ "par vos algorithmes."
-
-#~ msgid ""
-#~ "In this first exercise, we will explore some of the simpler of them. The "
-#~ "tab \"Source code\" contains several sub-tabs, corresponding to the "
-#~ "different algorithms to write. To succeed in this exercise, your solution "
-#~ "must sort the array using exactly the same amount of read and write than "
-#~ "the solution. That is why you have to follow strictly the pseudo-code of "
-#~ "each algorithm."
-#~ msgstr ""
-#~ "Dans ce premier exercice, nous allons voir les plus simples d'entre eux. "
-#~ "L'onglet \"Source code\" est composé de plusieurs sous-onglets, "
-#~ "correspondant aux différents algorithmes à écrire. Pour réussir "
-#~ "l'exercice, il faut que votre solution réalise le même nombre de lectures "
-#~ "et écritures que la solution codée dans l'objectif.  Attention donc à "
-#~ "suivre le pseudo-code de chaque algorithme à la lettre!"
-
-#~ msgid ""
-#~ "Warning, this lesson is currently written in Java only, and deals with a "
-#~ "notion that does not exist in Python. Forget about it"
-#~ msgstr ""
-#~ "Attention, cette leçon est pour le moment seulement écrite en Java et "
-#~ "fait appel à une notion qui n'existe pas en Python. Oubliez la."
-
-#~ msgid ""
-#~ "Warning, this lesson is currently written in Java only. Adapt it yourself"
-#~ msgstr ""
-#~ "Attention, cette leçon est pour le moment écrite seulement en Java. "
-#~ "Adapter la de vous-même"
-
-#~ msgid "<b>Start</b>."
-#~ msgstr "<b>Début</b>."
-
-#~ msgid "The pseudo-code of the BubbleSort3 algorithm is the following:"
-#~ msgstr "Le pseudo-code de l'algorithme BubbleSort3 est le suivant :"

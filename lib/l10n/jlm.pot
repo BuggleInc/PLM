@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-15 12:43+0300\n"
+"POT-Creation-Date: 2013-05-15 12:22-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1953,7 +1953,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:17 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:72 src/lessons/welcome/LoopFor.html:73 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:49 src/lessons/welcome/MethodsReturning.html:56 src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/welcome/SlugTracking.html:20 src/lessons/maze/RandomMouseMaze.html:23 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35 src/lessons/maze/ShortestPathMaze.html:36 src/lessons/maze/WallFindFollowMaze.html:21
+#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:17 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:72 src/lessons/welcome/LoopFor.html:73 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:49 src/lessons/welcome/MethodsReturning.html:56 src/lessons/welcome/MethodsArgs.html:69 src/lessons/welcome/BDR.html:157 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:34 src/lessons/welcome/SlugTracking.html:20 src/lessons/maze/randommouse/RandomMouseMaze.html:23 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:35 src/lessons/maze/shortestpath/ShortestPathMaze.html:36 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -3200,7 +3200,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/welcome/MethodsDogHouse.html:54 src/lessons/welcome/Array.html:161 src/lessons/welcome/Array2.html:26 src/lessons/maze/RandomMouseMaze.html:41
+#: src/lessons/welcome/MethodsDogHouse.html:54 src/lessons/welcome/Array.html:161 src/lessons/welcome/Array2.html:26 src/lessons/maze/randommouse/RandomMouseMaze.html:41
 msgid "You're up."
 msgstr ""
 
@@ -3367,28 +3367,42 @@ msgid ""
 "}"
 msgstr ""
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/MethodsArgs.html:17
+#, no-wrap
+msgid ""
+"def divideByTwo(x):\n"
+"&nbsp;&nbsp;return x / 2\n"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/MethodsArgs.html:21
 msgid ""
 "As caller, you have to specify the initial value of this \"variables\" "
 "between the call's parenthesis."
 msgstr ""
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:19
+#: src/lessons/welcome/MethodsArgs.html:23
 #, no-wrap
 msgid "double y = divideByTwo(3.14);"
 msgstr ""
 
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:25
+#, no-wrap
+msgid "y = divideByTwo(3.14)"
+msgstr ""
+
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:21
+#: src/lessons/welcome/MethodsArgs.html:28
 msgid ""
 "If you want several parameters, you need to separate them with comas (,)  "
 "both in the declaration and calls."
 msgstr ""
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:24
+#: src/lessons/welcome/MethodsArgs.html:31
 #, no-wrap
 msgid ""
 "double divide(double x, double y) {\n"
@@ -3397,13 +3411,28 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:27
+#: src/lessons/welcome/MethodsArgs.html:34
 #, no-wrap
 msgid "double y = divide(3.14 , 1.5);"
 msgstr ""
 
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:36
+#, no-wrap
+msgid ""
+"def divide(double x, double y):\n"
+"&nbsp;&nbsp;return x / y\n"
+"}"
+msgstr ""
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:39
+#, no-wrap
+msgid "y = divide(3.14 , 1.5)"
+msgstr ""
+
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:29
+#: src/lessons/welcome/MethodsArgs.html:42
 msgid ""
 "In Java, you can declare several methods of the same name as long as they "
 "don't have the same parameter types and number (they are said to have "
@@ -3411,7 +3440,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:32
+#: src/lessons/welcome/MethodsArgs.html:45
 #, no-wrap
 msgid ""
 "int max(int x, int y) {\n"
@@ -3432,7 +3461,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:48
+#: src/lessons/welcome/MethodsArgs.html:63
 msgid ""
 "Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It "
 "works anyway because a <tt>return</tt> interrupts the method execution. If "
@@ -3442,7 +3471,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:54
+#: src/lessons/welcome/MethodsArgs.html:69
 msgid ""
 "This time, you have to write a <code>move(int stepCount,boolean "
 "forward)</code> method which move forward of <code>stepCount</code> if "
@@ -3453,38 +3482,38 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:61
+#: src/lessons/welcome/MethodsArgs.html:76
 msgid ""
 "This time, there is only one world, and seven buggles. But it does not "
 "change anything for you, since the same code is used for any buggles."
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:64
+#: src/lessons/welcome/MethodsArgs.html:79
 msgid "The code of the method to write should not be really problematic for you."
 msgstr ""
 
 #. type: Content of: <p><p><p><p><h2>
-#: src/lessons/welcome/MethodsArgs.html:66
+#: src/lessons/welcome/MethodsArgs.html:81
 msgid "What's coming next?"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:67
+#: src/lessons/welcome/MethodsArgs.html:82
 msgid ""
-"You now know the very basics of programming. At least, we introduced "
-"all the important concepts, and you should be able to read most code by "
-"now. If you want to play safe, you should proceed to the next exercises of "
-"this lesson to solidify your knowledge by reusing these concepts in various "
-"simple situations. After taking them, you'll master what's called \"Tactical "
-"programming\", meaning that you will master the syntax enough to not "
-"have any issue with it, allowing you to focus on the fundamental problems of "
-"what you want to solve instead of struggling with syntaxic "
-"difficulties. Some of these exercises are even fun to do ;)"
+"You now know the very basics of programming. At least, we introduced all the "
+"important concepts, and you should be able to read most code by now. If you "
+"want to play safe, you should proceed to the next exercises of this lesson "
+"to solidify your knowledge by reusing these concepts in various simple "
+"situations. After taking them, you'll master what's called \"Tactical "
+"programming\", meaning that you will master the syntax enough to not have "
+"any issue with it, allowing you to focus on the fundamental problems of what "
+"you want to solve instead of struggling with syntaxic difficulties. Some of "
+"these exercises are even fun to do ;)"
 msgstr ""
 
 #. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:75
+#: src/lessons/welcome/MethodsArgs.html:90
 msgid ""
 "If you are in a hurry and want more, you can skip these exercises and "
 "proceed directly to more interesting challenges. For example, the "
@@ -3492,10 +3521,10 @@ msgid ""
 "which are not rocket science but require several improvements to work for "
 "any kind of maze. The <i>Lightbot</i> lesson is a little programming game "
 "where you control a little robot wanting to light the world. Since it is not "
-"programmed in a language but graphically, the first exercises can be used as an "
-"introduction activity to what programming means for real beginners, but the "
-"last exercises constitute challenges and brain teaser even to professional "
-"programmers."
+"programmed in a language but graphically, the first exercises can be used as "
+"an introduction activity to what programming means for real beginners, but "
+"the last exercises constitute challenges and brain teaser even to "
+"professional programmers."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -3516,6 +3545,14 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture.html:10
 msgid ""
+"Your goal (here and in any well written program) is to write the simplest "
+"possible main code. For that, you have to decompose your work in sub-steps, "
+"and write a specific method for each sub-step."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/MethodsPicture.html:14
+msgid ""
 "If you observe carefully the picture to draw, it is constituted of four "
 "parts depicting a sort of V using a different color. A possible "
 "decomposition is to write a method in charge of drawing a V of the specified "
@@ -3523,13 +3560,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/MethodsPicture.html:14
+#: src/lessons/welcome/MethodsPicture.html:18
 #, no-wrap
 msgid "void makeV(Color c)"
 msgstr ""
 
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/MethodsPicture.html:19
+#, no-wrap
+msgid "makeV(c)"
+msgstr ""
+
 #. type: Content of: <p><p>
-#: src/lessons/welcome/MethodsPicture.html:16
+#: src/lessons/welcome/MethodsPicture.html:21
 msgid ""
 "The <code>Color</code> data type naturally describes a particular "
 "color. Your <code>run()</code> method should probably call "
@@ -3538,27 +3581,27 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:21
+#: src/lessons/welcome/MethodsPicture.html:26
 msgid "Color.yellow"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:22
+#: src/lessons/welcome/MethodsPicture.html:27
 msgid "Color.red"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:23
+#: src/lessons/welcome/MethodsPicture.html:28
 msgid "Color.blue"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:24
+#: src/lessons/welcome/MethodsPicture.html:29
 msgid "Color.green"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:27
+#: src/lessons/welcome/MethodsPicture.html:32
 msgid ""
 "In <code>makeV()</code>, you should use the <code>setBrushColor()</code> "
 "method (predefined in the buggle) to change the color of the buggle's brush, "
@@ -3567,14 +3610,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:32
+#: src/lessons/welcome/MethodsPicture.html:37
 msgid ""
 "It may be wise to write the <code>makeV()</code> so that it places directly "
 "the buggle in position for the next V."
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:35
+#: src/lessons/welcome/MethodsPicture.html:40
 msgid ""
 "Your turn. The <code>run()</code> method should not be longer than 4 "
 "lines..."
@@ -3598,7 +3641,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture2.html:10
 msgid ""
-"But you want to keep your <code>run()</code> as simple as possible. For "
+"But you want to keep your main<code>run()</code> as simple as possible. For "
 "that, define new methods to deal simply with the repetitions in the "
 "pattern. For example, a method <code>makePattern()</code> achieving the "
 "pattern of previous example seems to be a good idea (but this may not be "
@@ -3608,16 +3651,24 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture2.html:16
 msgid ""
+"But you want to keep your main code as simple as possible. For that, define "
+"new methods to deal simply with the repetitions in the pattern. For example, "
+"a method <code>makePattern()</code> achieving the pattern of previous "
+"example seems to be a good idea (but this may not be enough)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/MethodsPicture2.html:22
+msgid ""
 "Why don't you give it a shot? The <code>run()</code> method shouldn't take "
 "more than 2 lines (included in a for loop)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsPicture2.html:19
+#: src/lessons/welcome/MethodsPicture2.html:25
 msgid ""
-"To proceed to the next exercise, you need to remark that the combobox used "
-"to switch the exercise have a scroll bar that you can use to see the next "
-"exercises of the lesson."
+"Why don't you give it a shot? The main code method shouldn't take more than "
+"2 lines (included in a for loop)"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -4443,8 +4494,8 @@ msgstr ""
 msgid "When you program works again, proceed to next exercise."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/SlugHunting.html:3
+#. type: Content of: <p>
+#: src/lessons/welcome/SlugHunting.html:4
 msgid ""
 "After all this excitation of dance revolution, we will move on to a slower "
 "activity : the slug hunting. Your buggle just happened to found the trail of "
@@ -4454,7 +4505,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:9
+#: src/lessons/welcome/SlugHunting.html:10
 msgid ""
 "To reach that goal, you have a boolean method <tt>isFacingTrail</tt>, which "
 "determine whether we are facing a green cell or not. Of course, if we are "
@@ -4464,7 +4515,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:16
+#: src/lessons/welcome/SlugHunting.html:17
 msgid ""
 "It takes the color of the trail we want to follow as an argument. Slugs "
 "leave green trails, but other prey leave trails of other colors. In Java, "
@@ -4473,7 +4524,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:21
+#: src/lessons/welcome/SlugHunting.html:22
 msgid ""
 "In order to hunt your prey, you should not mistake the part of the tracks to "
 "follow with the one your buggle comes from, you should ask your buggle to "
@@ -4483,31 +4534,31 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:26
+#: src/lessons/welcome/SlugHunting.html:27
 msgid ""
 "A buggle can know the color of the cell it is over using the <code>Color "
 "getGroundColor()</code> method."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/SlugHunting.html:29
+#: src/lessons/welcome/SlugHunting.html:30
 msgid ""
 "Finally, do not forget to capture your prey once you found it (using "
 "<code>pickUpBaggle()</code>)."
 msgstr ""
 
 #. type: Content of: <a>
-#: src/lessons/welcome/SlugHunting.html:33
+#: src/lessons/welcome/SlugHunting.html:34
 msgid ""
 "<a name=\"Objectives\">Complete the <code>hunt()</code> method (which gets "
 "called by <code>run()</code> automatically). You should use the "
 "<code>isFacingTrail()</code> method that is provided."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/SlugTracking.html:3
 msgid ""
-"After all this excitation of slug hunting, we will have to learn hot to "
+"After all this excitation of slug hunting, we will have to learn how to "
 "track their trail. Your buggle just happened to found the trail of a slug: a "
 "green dribbling tracks. If it manage to follow it to its end, it will find a "
 "baggle representing an appetizing slug (from a buggle point of view)."
@@ -4532,10 +4583,10 @@ msgid ""
 "colors. The green color is defined by <code>Color.green</code>."
 msgstr ""
 
-#. type: Content of: <a>
-#: src/lessons/welcome/SlugTracking.html:20
+#. type: Content of: <p>
+#: src/lessons/welcome/SlugTracking.html:22
 msgid ""
-"<a name=\"Objectives\">Complete the <code>isFacingTrail()</code> method "
+"<a name=\"Objectives\"/>Complete the <code>isFacingTrail()</code> method "
 "(which gets called by <code>hunt()</code> automatically). You don't have to "
 "write the <code>hunt()</code> method."
 msgstr ""
@@ -6937,33 +6988,33 @@ msgid "This lesson propose several exercises about labyrinths in the buggle worl
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/maze/RandomMouseMaze.html:1
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:1
 msgid "The crazy mouse"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:3
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:3
 msgid ""
 "The day of your buggle starts badly. Out of luck, it got trapped into a "
 "maze. Help it finding its path out of there."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:8
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:8
 msgid ""
 "The exit is represented by a baggle and you need to pick this baggle in "
 "order to exit the maze."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:13
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:13
 msgid ""
 "Since the maze is so small, we can write the dumbest possible algorithm to "
 "do so. It relies on randomness and proves quite inefficient."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/RandomMouseMaze.html:18
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:18
 msgid ""
 "While the buggle didn't find the path to the escape, it must proceed the "
 "following way: pick a random integer between 0 and 2 by using the "
@@ -6972,12 +7023,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <a>
-#: src/lessons/maze/RandomMouseMaze.html:23
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:23
 msgid "<a name=\"Objectives\">"
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:26
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:26
 msgid ""
 "This exercise's objective is to write an algorithm allowing the buggle to "
 "find its path out of the maze. Do not forget to let your buggle pick up the "
@@ -6985,7 +7036,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:32
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:32
 msgid ""
 "Write the <code>run()</code> method so that your buggle takes a random "
 "decision (forward, turn left or turn right). You can use the "
@@ -6993,24 +7044,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/RandomMouseMaze.html:38
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:38
 msgid "Don't forget to pick up the baggle once you've reached it."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/maze/WallFollowerMaze.html:1
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:1
 msgid "Following the walls"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:3
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:3
 msgid ""
 "This time, the maze is a bit more complicated. Random won't be enough, we "
 "ough to be smart!"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:6
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:6
 msgid ""
 "Hopefully, this maze is simpler that it seems at the first glance: every "
 "wall are connected to each other. To get out of this kind of maze, the "
@@ -7020,7 +7071,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:13
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:13
 msgid ""
 "This algorithm works here because there is no island of isolated walls, so "
 "our buggle cannot loop around for ever without encountering the baggle it "
@@ -7028,14 +7079,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/maze/WallFollowerMaze.html:17
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:17
 msgid ""
 "The goal of this exercise is to write an algorithm allowing the buggle to "
 "get out of this maze."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:20
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:20
 msgid ""
 "As said in the introduction, it is exactly the same if you decide to follow "
 "the left wall or the right one. Simply, the demo follows the left one, so "
@@ -7044,7 +7095,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:25
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:25
 msgid ""
 "Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
 "move one step forward while keeping the paw on the wall of the selected "
@@ -7055,7 +7106,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFollowerMaze.html:32
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:32
 msgid ""
 "Then, write a <code>run()</code> method which traverse the maze step by step "
 "(using <code>void keepHandOnSideWall()</code>) until it finds the biscuit "
@@ -7063,12 +7114,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/WallFollowerMaze.html:37
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:37
 msgid "I'm lost, please give me some extra indications"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/maze/WallFollowerMaze.html:38
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:38
 msgid ""
 "When your buggle has a wall on the left, there is three situations to "
 "consider, depending on the surrounding walls. The following table depicts "
@@ -7077,32 +7128,32 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:45
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:45
 msgid "Case 1"
 msgstr ""
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:46
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:46
 msgid "Case 2"
 msgstr ""
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:47
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:47
 msgid "Case 3"
 msgstr ""
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:49
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:49
 msgid "Initial situation"
 msgstr ""
 
 #. type: Content of: <div><table><tr><td>
-#: src/lessons/maze/WallFollowerMaze.html:54
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:54
 msgid "Where is the next step"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/maze/WallFollowerMaze.html:60
+#: src/lessons/maze/wallfollower/WallFollowerMaze.html:60
 msgid ""
 "If you do a <code>turnRight()</code> in any case at the end of your "
 "function, it's possible to write it in 3 lines with a <code>while()</code> "
@@ -7110,12 +7161,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/maze/PledgeMaze.html:1
+#: src/lessons/maze/pledge/PledgeMaze.html:1
 msgid "Pledge algorithm"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:3
+#: src/lessons/maze/pledge/PledgeMaze.html:3
 msgid ""
 "Once again, you thought that your algorithm were good enough to escape the "
 "maze, and once again, you buggle is now in a maze where your previous "
@@ -7126,14 +7177,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:12
+#: src/lessons/maze/pledge/PledgeMaze.html:12
 msgid ""
 "The Pledge's algorithm (named after Jon Pledge of Exeter) can solve this "
 "maze."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:15
+#: src/lessons/maze/pledge/PledgeMaze.html:15
 msgid ""
 "This algorithm is a modification of the previous one thought to avoid "
 "obstacles. It randomly picks a heading and let the buggle move in that "
@@ -7145,7 +7196,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:23
+#: src/lessons/maze/pledge/PledgeMaze.html:23
 msgid ""
 "Note that the use of \"total turning\" rather than just the \"current "
 "direction\" allows the algorithm to avoid G-shapped traps. If one proceeds "
@@ -7156,7 +7207,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:30
+#: src/lessons/maze/pledge/PledgeMaze.html:30
 msgid ""
 "The Pledge's algorithm does not leave the rightmost wall due to the total "
 "turning not being zero at that point. It follows the wall all the way "
@@ -7164,14 +7215,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:37
+#: src/lessons/maze/pledge/PledgeMaze.html:37
 msgid ""
 "<a name=\"Objective\"/>You now have to modify your solution to implement the "
 "Pledge algorithm to escape this maze."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:40
+#: src/lessons/maze/pledge/PledgeMaze.html:40
 msgid ""
 "Change your <code>void keepHandOnSideWall()</code> method to count the "
 "amount of turns done by the buggle (+1 when it turns left, and -1 when it "
@@ -7180,7 +7231,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:45
+#: src/lessons/maze/pledge/PledgeMaze.html:45
 msgid ""
 "Write a <code>boolean isChosenDirectionFree()</code> method indicating if "
 "the arbitrary direction you picked up is free, ie, if you can move in that "
@@ -7194,19 +7245,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/PledgeMaze.html:55
+#: src/lessons/maze/pledge/PledgeMaze.html:55
 msgid ""
 "You may have to change the rest of your code also, but these changes should "
 "remain limited."
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/PledgeMaze.html:58
+#: src/lessons/maze/pledge/PledgeMaze.html:58
 msgid "Show an additional tip"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/maze/PledgeMaze.html:59
+#: src/lessons/maze/pledge/PledgeMaze.html:59
 msgid ""
 "The <code>void run()</code> method should move in your favorite direction "
 "(NORTH is advised). Then, you should write the algorithm main loop. In other "
@@ -7218,19 +7269,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/maze/IslandMaze.html:1
+#: src/lessons/maze/island/IslandMaze.html:1
 msgid "Lost between islands"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/IslandMaze.html:3
+#: src/lessons/maze/island/IslandMaze.html:3
 msgid ""
 "You thought that your algorithm was enough to escape mazes? Well, not every "
 "mazes..."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/IslandMaze.html:7
+#: src/lessons/maze/island/IslandMaze.html:7
 msgid ""
 "The <i>wall follower algorithm</i> we used so far only works if the entry "
 "and the exit are placed near to walls connected to the external wall. But if "
@@ -7239,7 +7290,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/maze/IslandMaze.html:12
+#: src/lessons/maze/island/IslandMaze.html:12
 msgid ""
 "That is why the previous strategy would let the buggle round around for "
 "ever. Indeed, the maze you should now escape from contains islands, and the "
@@ -7249,7 +7300,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/maze/IslandMaze.html:18
+#: src/lessons/maze/island/IslandMaze.html:18
 msgid ""
 "The method of following a wall is still good and allow to escape very "
 "efficiently some sections of the maze, so we do not want to remove it "
@@ -7260,19 +7311,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/IslandMaze.html:26
+#: src/lessons/maze/island/IslandMaze.html:26
 msgid ""
 "To find the north wall, you simply run to the north as long as it's "
 "possible, and when facing an obstacle, you avoid it (using previous method)."
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><p><div>
-#: src/lessons/maze/IslandMaze.html:30
+#: src/lessons/maze/island/IslandMaze.html:30
 msgid "I'm lost now, please give me some extra indications"
 msgstr ""
 
 #. type: Content of: <p><p><div>
-#: src/lessons/maze/IslandMaze.html:31
+#: src/lessons/maze/island/IslandMaze.html:31
 msgid ""
 "Our new run() method will consist in two modes: our buggle will alternate "
 "between the \"north runner mode\" and the \"left follower mode\". You begin "
@@ -7285,7 +7336,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><div><pre>
-#: src/lessons/maze/IslandMaze.html:40
+#: src/lessons/maze/island/IslandMaze.html:40
 #, no-wrap
 msgid ""
 "\t<code>int state=0;\n"
@@ -7303,12 +7354,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/IslandMaze.html:55
+#: src/lessons/maze/island/IslandMaze.html:55
 msgid "Don't forget to let the buggle pick the baggle at the end of your code."
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/IslandMaze.html:58
+#: src/lessons/maze/island/IslandMaze.html:58
 msgid ""
 "You're up. That should be enough for you to figure out how to escape this "
 "maze, but if not, you can always request for the tip. But you do not need "
@@ -7316,12 +7367,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/maze/ShortestPathMaze.html:1
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:1
 msgid "Basic Shortest Path algorithm"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:3
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:3
 msgid ""
 "To conclude with this introductory lesson to maze solving algorithms, we "
 "will investigate another way to find the exit. The buggle in this lesson is "
@@ -7330,31 +7381,31 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:7
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:7
 msgid ""
 "By using method <code>BuggleWorld getMyWorld()</code> he can retrieve "
 "information about the world he is leaving in."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:9
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
 msgid ""
 "A <code>BuggleWorld</code> object is an object on which you can perform the "
 "following operations:"
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:11
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:11
 msgid "<code>int getHeight()</code> to know the height of the world."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:12
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
 msgid "<code>int getWidth()</code> to know the width of the world."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:13
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:13
 msgid ""
 "<code>BuggleWorldCell getCell(int x, int y)</code> to retrieve the "
 "<code>BuggleWorldCell</code> object located at a specific position in the "
@@ -7362,7 +7413,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:19
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:19
 msgid ""
 "A <code>BuggleWorldCell</code> is an object that represents a cell of the "
 "world. On an object of this type, it is possible to call the following "
@@ -7370,54 +7421,54 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:22
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:22
 msgid ""
 "<code>boolean hasContent()</code> to know if something is written on the "
 "floor of this cell."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:23
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
 msgid ""
 "<code>void setContentFromInt(int v)</code> to write an integer value on the "
 "floor of this cell."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:24
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:24
 msgid ""
 "<code>int getContentAsInt()</code> to retrieve the integer value which is "
 "written on the floor of this cell."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:25
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:25
 msgid "<code>void emptyContent()</code> to clean the floor of this cell."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:26
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:26
 msgid ""
 "<code>boolean hasTopWall()</code> to know if a wall is built on the top edge "
 "of this cell."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:27
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:27
 msgid ""
 "<code>boolean hasLeftWall()</code> to know if a wall is built on the left "
 "edge of this cell."
 msgstr ""
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/maze/ShortestPathMaze.html:28
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:28
 msgid ""
 "<code>boolean hasBaggle()</code> to know if a baggle is present on this "
 "cell."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:32
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:32
 msgid ""
 "It has to be noted that it is not possible to build a wall on the bottom "
 "edge or on the right edge of a cell.  Therefore when such wall exists, it "
@@ -7427,7 +7478,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:38
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:38
 msgid ""
 "<a name=\"Objective\"/>Write a method <code>evaluatePaths()</code> which "
 "computes a very basic shortest path algorithm. This algorithm will write on "
@@ -7436,7 +7487,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:41
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:41
 msgid ""
 "To achieve this objective, your algorithm has to find the exit of the maze "
 "on the map. Then, for every cells next to the cell where the exit is "
@@ -7447,7 +7498,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/ShortestPathMaze.html:46
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:46
 msgid ""
 "Write a method <code>followShortestPath()</code> that will make the jedi "
 "buggle to follow the shortest path.  Basically the buggle has only to walk "
@@ -7458,22 +7509,22 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/ShortestPathMaze.html:51
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:51
 msgid "I'm lost now. Please give me some extra indications."
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/maze/ShortestPathMaze.html:52
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:52
 msgid "Use the Force Luke!"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/maze/WallFindFollowMaze.html:1
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:1
 msgid "Finding the walls to follow"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:3
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:3
 msgid ""
 "This is exactly the same maze than before, but the buggle does not start at "
 "the same location. In particular, it does not have any wall to its left at "
@@ -7481,7 +7532,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:7
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:7
 msgid ""
 "As a result, the method you wrote for the previous exercise probably don't "
 "work for this one. If you click on the run button with no modification, your "
@@ -7492,7 +7543,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:14
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:14
 msgid ""
 "This is because your <code>keepHandOnSideWall()</code> method has an "
 "implicit <b>pre-condition</b>: it works well if and only if the buggle has a "
@@ -7503,7 +7554,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/WallFindFollowMaze.html:24
+#: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:24
 msgid ""
 "Fixing the problem should be very easy. Simply make sure that the "
 "pre-condition of <code>keepHandOnSideWall()</code> is verified before "
