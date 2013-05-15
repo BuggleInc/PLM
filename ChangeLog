@@ -1,3 +1,25 @@
+20130515:
+  * Huge python cleanup:
+    - various cleanups, code factorization and bug fixes
+    - Create or improve the bindings of Turtle, Sorting and Buggle
+      worlds
+    - Port many exercises to python, testing that the bindings are
+      sufficients, and [partially] rewriting the mission text to that
+      extend. The templates are not sufficient yet for absolutely all
+      exercises, but many of them are. 
+    - Fix line number computation in error messages coming from python
+    - If python is the default language, use the python entity to
+      compute the answer. Note that it still fails for some exercises.
+    - Add back the jruby jar file, as jython needs it to access POSIX
+  * Merge both views of sorting worlds, toward code simplification
+  * Rewrite most sorting exercises mission texts after recent splitup
+    of our mega exercise into several ones with one entity only each
+  * Refresh the french translation
+  * Simplify Random Mouse exercise, fix the demo of Pledge algorithm
+  * Add a combobox to switch to next exercise in "success" dialog
+  * Add an interactive way to change the buggle color and brush color
+  * Baseball exercise of SMN can now be played with more than 2
+    players per base
 20130416:
   * Kill several seamingly good ideas that complicated the code base:
     - aliased source files: student must keep them synchronized
