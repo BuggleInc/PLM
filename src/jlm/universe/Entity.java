@@ -118,4 +118,12 @@ public abstract class Entity {
 	public String getScript(ProgrammingLanguage lang) {
 		return script.get(lang);
 	}
+	
+	private Map<ProgrammingLanguage,Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
+	public void setScriptOffset(ProgrammingLanguage lang, int offset) {
+		scriptOffset.put(lang,  offset);
+	}
+	public Integer getScriptOffset(ProgrammingLanguage lang) {
+		return scriptOffset.get(lang);
+	}
 }

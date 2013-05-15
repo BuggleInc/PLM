@@ -211,11 +211,10 @@ public abstract class Exercise  extends Lecture {
 					boolean foundScript = false;
 					for (SourceFile sf : sourceFiles.get(lang)) {
 						if (newClassName.equals(sf.name)) {
-							old.setScript(Game.getProgrammingLanguage(), sf.getCompilableContent());
+							old.setScript(lang, sf.getCompilableContent());
+							old.setScriptOffset(lang, sf.getOffset());
 							foundScript = true;
-						} else {
-							System.err.println(sf.name+" != "+newClassName);
-						}
+						} 
 					}
 					if (!foundScript) {
 						StringBuffer sb = new StringBuffer();
