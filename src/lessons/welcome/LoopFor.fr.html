@@ -47,22 +47,23 @@ while (dejaFait &lt; nbPas) {
 &nbsp;&nbsp;&nbsp;backward();
 }</pre>
 
-<pre class="Python">done = 0
-while done &lt; stepAmount:
+<pre class="Python">dejaFait = 0
+while dejaFait &lt; nbPas:
 &nbsp;&nbsp;&nbsp;backward()
-&nbsp;&nbsp;&nbsp;done = done + 1
-</pre>
-<pre class="Python">for done in range(stepAmount):
+&nbsp;&nbsp;&nbsp;dejaFait=dejaFait+1
+}</pre>
+<pre class="Python">for dejaFait in range(nbPas):
 &nbsp;&nbsp;&nbsp;backward()
 </pre>
 
 
 
-<p class="Java">It is possible to build more advanced <tt>for</tt> loops since any valid
-instruction can be used as initialization, condition and incrementation. The
-following example is a bit extreme since it compute the gcd (greatest common
-divisor) of two numbers without loop body and initialization (everything is
-in the condition and incrementation).
+<p class="Java">Il est possible de construire des boucles <tt>for</tt> bien plus complexes
+car toute instruction valide peut être utilisée comme initialisation,
+condition et incrémentation. L'exemple suivant est un peu extrême,
+puisqu'elle calcule le PGCD de deux nombres sans avoir de corps de boucle du
+tout, ni d'initialisation (tout est fait dans la condition et
+l'incrémentation).
 
 <pre class="Java">int x=20, y=3, tmp;
 for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }

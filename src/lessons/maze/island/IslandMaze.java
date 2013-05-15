@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.island;
 
 import java.awt.Color;
 
@@ -14,26 +14,24 @@ import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-public class ShortestPathMaze extends ExerciseTemplated {
+public class IslandMaze extends ExerciseTemplated {
 
-	public ShortestPathMaze(Lesson lesson) {
+	public IslandMaze(Lesson lesson) {
 		super(lesson);
-		tabName = "JediEscaper";
+		tabName = "Escaper";
 				
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
+		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
+		loadMap(myWorlds[0],"lessons/maze/island/IslandMaze");
+		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
-		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 	
-		loadMap(myWorlds[0],"resources/maze/maps/WallFollowerMaze");
-        new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
-        
+		
 		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		loadMap(myWorlds[1],"resources/maze/maps/PledgeMaze");
-		new Buggle(myWorlds[1], "Luke", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
+		loadMap(myWorlds[1],"lessons/maze/island/IslandMaze2");
+		new Buggle(myWorlds[1], "Luke", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
-		//newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
-		
-		setup(myWorlds);
+		setup(myWorlds);		
 	}
 
 	// to shorten loading time	
@@ -41,10 +39,9 @@ public class ShortestPathMaze extends ExerciseTemplated {
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
 		b.setPosFromLesson(11, 5);
-		b.setDirection(Direction.EAST);
-
+		
 		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
-		b2.setPosFromLesson(19, 19);
+		b2.setPosFromLesson(11, 5);
 		b2.setDirection(Direction.EAST);
 		
 		try {
@@ -56,7 +53,6 @@ public class ShortestPathMaze extends ExerciseTemplated {
 			e.printStackTrace();
 		}		
 	}
-	
 	
 	@Override
 	public void check() {
@@ -70,5 +66,4 @@ public class ShortestPathMaze extends ExerciseTemplated {
 					lastResult.passedTests++;
 			}
 	}
-
 }

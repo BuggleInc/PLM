@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.wallfollower;
 
 import jlm.universe.Direction;
 

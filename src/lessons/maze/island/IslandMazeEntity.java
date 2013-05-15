@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.island;
 
 import jlm.universe.Direction;
 

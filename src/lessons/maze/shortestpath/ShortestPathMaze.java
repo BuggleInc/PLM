@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.shortestpath;
 
 import java.awt.Color;
 
@@ -14,35 +14,39 @@ import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-public class WallFindFollowMaze extends ExerciseTemplated {
+public class ShortestPathMaze extends ExerciseTemplated {
 
-	public WallFindFollowMaze(Lesson lesson) {
+	public ShortestPathMaze(Lesson lesson) {
 		super(lesson);
-		tabName = "Escaper";
-		entityName = "lessons.maze.WallFollowerMazeEntity";	
-		
+		tabName = "JediEscaper";
+				
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
-		loadMap(myWorlds[0],"resources/maze/maps/WallFollowerMaze");
-		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
-		myWorlds[1] = new BuggleWorld("Labyrinth2", 1, 1); 
-		loadMap(myWorlds[1],"resources/maze/maps/WallFollowerMaze2");
-		new Buggle(myWorlds[1], "ZoroRorronoa", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
+		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 	
+		loadMap(myWorlds[0],"lessons/maze/shortestpath/WallFollowerMaze");
+        new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
+        
+		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
+		loadMap(myWorlds[1],"lessons/maze/shortestpath/PledgeMaze");
+		new Buggle(myWorlds[1], "Luke", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
+		
+		//newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
 		
 		setup(myWorlds);
 	}
 
-	
-	// to shorten loading time
+	// to shorten loading time	
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
 		b.setPosFromLesson(11, 5);
-		
+		b.setDirection(Direction.EAST);
+
 		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
-		b2.setPosFromLesson(11, 5);
+		b2.setPosFromLesson(19, 19);
+		b2.setDirection(Direction.EAST);
+		
 		try {
 			b.pickUpBaggle();
 			b2.pickUpBaggle();
@@ -52,6 +56,7 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 			e.printStackTrace();
 		}		
 	}
+	
 	
 	@Override
 	public void check() {
@@ -65,4 +70,5 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 					lastResult.passedTests++;
 			}
 	}
+
 }

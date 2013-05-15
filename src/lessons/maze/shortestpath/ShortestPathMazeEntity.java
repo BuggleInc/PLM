@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.shortestpath;
 
 import jlm.universe.Direction;
 import jlm.universe.bugglequest.BuggleWorld;

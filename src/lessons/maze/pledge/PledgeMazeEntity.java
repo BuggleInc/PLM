@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.pledge;
 
 import jlm.universe.Direction;
 

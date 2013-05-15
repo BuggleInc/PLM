@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.randommouse;
 
 public class RandomMouseMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
