@@ -1,9 +1,8 @@
-# BEGIN SOLUTION */
-		for (int i = getValueCount()-1; i>=0; i--) {
-			for (int j = 0; j<i; j++) 
-				if (!isSmaller(j,j+1)) 
-					swap(j,j+1);
-			sorted(i);
-		}
-		checkme(); /* color everything in blue */
+# BEGIN SOLUTION 
+for i in range(getValueCount()-1,-1,-1):
+  for j in range(i):
+    if not isSmaller(j,j+1):
+      swap(j,j+1)
+    sorted(i)
 # END TEMPLATE 
+checkme()

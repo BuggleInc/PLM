@@ -1,7 +1,6 @@
 package jlm.universe.sort;
 
 import java.awt.Color;
-import java.util.Iterator;
 import java.util.Random;
 
 import jlm.core.model.Game;
@@ -53,9 +52,8 @@ public class SortingWorld extends World {
 		color = world2.color.clone();
 		maxValue = world2.maxValue;
 		
-		Iterator<Entity> it = entities();
-		while (it.hasNext()) {
-			SortingEntity se = (SortingEntity) it.next();
+		for (Entity ent: getEntities()) {
+			SortingEntity se = (SortingEntity) ent;
 			se.values = values.clone();
 			se.color = color.clone();
 			se.maxValue = maxValue;

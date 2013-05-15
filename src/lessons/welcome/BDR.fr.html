@@ -140,7 +140,7 @@ elif ilFaitChaud():
 &nbsp;&nbsp;&nbsp;&nbsp;prendreDeLEau()
 elif sommes14Juillet():
 &nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()
-}</pre>
+</pre>
 
 <h3>Les graffitis dans le monde des buggles</h3>
 
@@ -200,12 +200,14 @@ readMessage()</code>. Cette méthode, qui n'est connue que des buggles des
 exercice BDR, renvoie le premier caractère du message au sol (ou ' ' s'il
 n'y a rien d'écrit au sol). </p>
 
-<p>L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant
-qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus
-simple pour cela est de faire une boucle infinie (<code>while
-(true)</code>), avec tous les tests dans le corps. Si on trouve une case ne
-répondant à aucune ligne du tableau, on arrêtera tout d'un simple
-<code>return;</code>. </p>
+<p>The other subtlety is to keep working as long as there is some work to do,
+i.e., as long as we did not find a cell which content is not described in
+the table. The easier for that is to use a boolean variable
+(<code>finished</code>)  that is initialized to <code>false</code> as
+termination condition for the loop.  As soon as the buggle find a cell with
+a value not described in the table, the boolean variable is set to
+<code>false</code>.  Thus the loop, will stop and the program will
+terminate. </p>
 
 <p>Les fonctions dont le type de retour est <tt>void</tt> peuvent contenir des
 <tt>return</tt> sans valeur associée. Cela interrompt immédiatement leur

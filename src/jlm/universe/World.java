@@ -15,9 +15,6 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import org.python.antlr.PythonParser.print_stmt_return;
-import org.python.core.PySyntaxError;
-
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
