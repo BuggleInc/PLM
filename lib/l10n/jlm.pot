@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-16 11:51+0300\n"
+"POT-Creation-Date: 2013-05-16 14:22+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1614,8 +1614,8 @@ msgstr ""
 msgid "Buggle Dance Revolution"
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:308 src/lessons/welcome/BDR2.html:1
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:308
 msgid "Buggle Dance Revolution 2"
 msgstr ""
 
@@ -1953,7 +1953,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:17 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:72 src/lessons/welcome/LoopFor.html:73 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:49 src/lessons/welcome/MethodsReturning.html:56 src/lessons/welcome/MethodsArgs.html:69 src/lessons/welcome/BDR.html:159 src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33 src/lessons/welcome/SlugTracking.html:20 src/lessons/maze/RandomMouseMaze.html:23 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35 src/lessons/maze/ShortestPathMaze.html:36 src/lessons/maze/WallFindFollowMaze.html:21
+#: src/lessons/welcome/Basics.html:77 src/lessons/welcome/Conditions.html:147 src/lessons/welcome/LoopWhile.html:26 src/lessons/welcome/LoopDoWhile.html:17 src/lessons/welcome/BaggleSeeker.html:8 src/lessons/welcome/Variables.html:72 src/lessons/welcome/LoopFor.html:73 src/lessons/welcome/Methods.html:59 src/lessons/welcome/MethodsDogHouse.html:49 src/lessons/welcome/MethodsReturning.html:56 src/lessons/welcome/MethodsArgs.html:69 src/lessons/welcome/BDR.html:159 src/lessons/welcome/BDR2.html:111 src/lessons/welcome/SlugHunting.html:33 src/lessons/welcome/SlugTracking.html:20 src/lessons/maze/RandomMouseMaze.html:23 src/lessons/maze/WallFollowerMaze.html:17 src/lessons/maze/PledgeMaze.html:35 src/lessons/maze/ShortestPathMaze.html:36 src/lessons/maze/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -3998,13 +3998,13 @@ msgid ""
 "following signification:"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:165 src/lessons/welcome/BDR2.html:121
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:165 src/lessons/welcome/BDR2.html:127
 msgid "Message"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:166 src/lessons/welcome/BDR2.html:122
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:166 src/lessons/welcome/BDR2.html:128
 msgid "What to do"
 msgstr ""
 
@@ -4014,12 +4014,12 @@ msgid "Mnemonic"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:124 src/lessons/welcome/cells/TurmiteCreator.html:30 src/lessons/welcome/cells/TurmiteCreator.html:33
+#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:130 src/lessons/welcome/cells/TurmiteCreator.html:30 src/lessons/welcome/cells/TurmiteCreator.html:33
 msgid "R"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:124
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:130
 msgid "Turn right and move one step forward"
 msgstr ""
 
@@ -4028,13 +4028,13 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:170 src/lessons/welcome/BDR2.html:125
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:170 src/lessons/welcome/BDR2.html:131
 msgid "L"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:170 src/lessons/welcome/BDR2.html:125
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:170 src/lessons/welcome/BDR2.html:131
 msgid "Turn left and move one step forward"
 msgstr ""
 
@@ -4043,8 +4043,8 @@ msgstr ""
 msgid "Left"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:171 src/lessons/welcome/BDR2.html:126
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:171 src/lessons/welcome/BDR2.html:132
 msgid "I"
 msgstr ""
 
@@ -4058,13 +4058,13 @@ msgstr ""
 msgid "Inverse"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:128
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:134
 msgid "A"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:128
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:134
 msgid "Move one step forward"
 msgstr ""
 
@@ -4073,13 +4073,13 @@ msgstr ""
 msgid "First letter of the alphabet"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:174 src/lessons/welcome/BDR2.html:129
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:174 src/lessons/welcome/BDR2.html:135
 msgid "B"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:174 src/lessons/welcome/BDR2.html:129
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:174 src/lessons/welcome/BDR2.html:135
 msgid "Move two steps forward"
 msgstr ""
 
@@ -4088,13 +4088,13 @@ msgstr ""
 msgid "Second letter of the alphabet"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:130
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:136
 msgid "C"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:130
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:136
 msgid "Move three steps forward"
 msgstr ""
 
@@ -4103,13 +4103,13 @@ msgstr ""
 msgid "Third letter of the alphabet"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:135
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:141
 msgid "Z"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:135
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:141
 msgid "Move one step backward"
 msgstr ""
 
@@ -4118,13 +4118,13 @@ msgstr ""
 msgid "One letter before the end of the alphabet"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:178 src/lessons/welcome/BDR2.html:136
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:178 src/lessons/welcome/BDR2.html:142
 msgid "Y"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:178 src/lessons/welcome/BDR2.html:136
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:178 src/lessons/welcome/BDR2.html:142
 msgid "Move two steps backward"
 msgstr ""
 
@@ -4133,13 +4133,13 @@ msgstr ""
 msgid "Two letters before the end of the alphabet"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:179 src/lessons/welcome/BDR2.html:137
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:179 src/lessons/welcome/BDR2.html:143
 msgid "X"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:179 src/lessons/welcome/BDR2.html:137
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR.html:179 src/lessons/welcome/BDR2.html:143
 msgid "Move three steps backward"
 msgstr ""
 
@@ -4148,8 +4148,8 @@ msgstr ""
 msgid "Three letters before the end of the alphabet"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><p>
-#: src/lessons/welcome/BDR.html:182 src/lessons/welcome/BDR2.html:143
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><p>
+#: src/lessons/welcome/BDR.html:182 src/lessons/welcome/BDR2.html:149
 msgid "In any other case, you should stop"
 msgstr ""
 
@@ -4241,13 +4241,13 @@ msgstr ""
 msgid "When your program finally works, move on to the next exercise."
 msgstr ""
 
-#. type: Content of: <h3>
-#: src/lessons/welcome/BDR2.html:2
-msgid "(BDR2)"
+#. type: Content of: <h2>
+#: src/lessons/welcome/BDR2.html:1
+msgid "Buggle Dance Revolution 2 (BDR2)"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/BDR2.html:4
+#. type: Content of: <p>
+#: src/lessons/welcome/BDR2.html:3
 msgid ""
 "BDR is cool, but it's a bit chaotic. First, the buggles giggle in any "
 "directions, and then the code you had to write to let them move is rather "
@@ -4256,19 +4256,19 @@ msgid ""
 "thanks to the new constructs we will introduce."
 msgstr ""
 
-#. type: Content of: <h3>
-#: src/lessons/welcome/BDR2.html:10
+#. type: Content of: <p><h3>
+#: src/lessons/welcome/BDR2.html:9
 msgid "<tt>switch</tt> conditionals"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p><p>
 #: src/lessons/welcome/BDR2.html:12
 msgid ""
 "The hardest part of previous code is certainly the conditional "
 "cascading. Somewhere in your code, you certainly had something similar to:"
 msgstr ""
 
-#. type: Content of: <pre>
+#. type: Content of: <p><p><pre>
 #: src/lessons/welcome/BDR2.html:15
 #, no-wrap
 msgid ""
@@ -4287,8 +4287,8 @@ msgid ""
 "}\n"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/BDR2.html:30
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/BDR2.html:31
 msgid ""
 "When you review this code, it may not be clear at the first glance that it "
 "is simply a choice with 4 branches depending on the value of "
@@ -4296,8 +4296,8 @@ msgid ""
 "construct, which Java syntax is the following:"
 msgstr ""
 
-#. type: Content of: <pre>
-#: src/lessons/welcome/BDR2.html:36
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/BDR2.html:37
 #, no-wrap
 msgid ""
 "switch (<b>expression</b>) {\n"
@@ -4316,8 +4316,8 @@ msgid ""
 "}"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/BDR2.html:51
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/BDR2.html:53
 msgid ""
 "Observe that each branch of a <tt>switch</tt> must be ended by a "
 "<code>break</code>. If you forget this, the machine keeps going and execute "
@@ -4325,15 +4325,15 @@ msgid ""
 "some <b>rare</b> cases where this behavior reveals helpful."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/BDR2.html:56
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/BDR2.html:58
 msgid ""
 "It is then possible to rewrite previous BDR code in a cleaner way using the "
 "<tt>switch</tt> construct:"
 msgstr ""
 
-#. type: Content of: <pre>
-#: src/lessons/welcome/BDR2.html:59
+#. type: Content of: <p><p><p><p><pre>
+#: src/lessons/welcome/BDR2.html:61
 #, no-wrap
 msgid ""
 "switch (getIndication()) {\n"
@@ -4354,32 +4354,32 @@ msgid ""
 "}"
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/BDR2.html:77
+#. type: Content of: <p><p><p><p><h2>
+#: src/lessons/welcome/BDR2.html:79
 msgid "Variables shared between methods"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/BDR2.html:79
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/BDR2.html:82
 msgid ""
 "Another issue in your code is that it begins to be a bit long to be written "
 "as a single method. We would like to split it up in two methods:"
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/welcome/BDR2.html:82
+#. type: Content of: <p><p><p><p><p><ul><li>
+#: src/lessons/welcome/BDR2.html:85
 msgid "<code>danceOneStep()</code> would take care of achieving a single dance step"
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/welcome/BDR2.html:83
+#. type: Content of: <p><p><p><p><p><ul><li>
+#: src/lessons/welcome/BDR2.html:86
 msgid ""
 "<code>run()</code> would take care of the dance as a whole. It would do the "
 "steps while we didn't encounter a cell not asking any further move."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/BDR2.html:87
+#. type: Content of: <p><p><p><p><p><p>
+#: src/lessons/welcome/BDR2.html:90
 msgid ""
 "The difficulty is to make sure that <tt>danceOneStep()</tt> keeps "
 "<tt>run()</tt> informed that there is no further dance step to achieve. The "
@@ -4388,35 +4388,35 @@ msgid ""
 "have to write out the following of any method:"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/BDR2.html:92
+#. type: Content of: <p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR2.html:95
 #, no-wrap
 msgid "boolean moreMusic = true;"
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/BDR2.html:94
+#. type: Content of: <p><p><p><p><p><p><p>
+#: src/lessons/welcome/BDR2.html:97
 msgid ""
 "Note that it is possible to write variable declarations out of any methods, "
 "but that instructions must be in a method. In Java such <i>global</i> "
 "variables are called <b>fields</b>."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/BDR2.html:98
+#. type: Content of: <p><p><p><p><p><p><p>
+#: src/lessons/welcome/BDR2.html:101
 msgid ""
 "Then, the <tt>danceOneStep()</tt> must be changed to update this variable to "
 "<tt>false</tt> when there is nothing more to do. For that, simply add "
 "<code>moreMusic = false;</code> before any <tt>return</tt>."
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/BDR2.html:102
+#. type: Content of: <p><p><p><p><p><p><p><p>
+#: src/lessons/welcome/BDR2.html:105
 msgid "It is then possible to use the following <tt>run()</tt> method:"
 msgstr ""
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/BDR2.html:103
+#. type: Content of: <p><p><p><p><p><p><p><p><pre>
+#: src/lessons/welcome/BDR2.html:106
 #, no-wrap
 msgid ""
 "public void run() {\n"
@@ -4425,15 +4425,18 @@ msgid ""
 "}"
 msgstr ""
 
-#. type: Content of: <p><p><p><a>
-#: src/lessons/welcome/BDR2.html:108
-msgid ""
-"<a name=\"Objective\">Apply the improvement we just saw to rewrite your "
-"buggle code."
+#. type: Content of: <a>
+#: src/lessons/welcome/BDR2.html:111 src/lessons/maze/RandomMouseMaze.html:23
+msgid "<a name=\"Objectives\">"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/BDR2.html:111
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p>
+#: src/lessons/welcome/BDR2.html:112
+msgid "Apply the improvement we just saw to rewrite your buggle code."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p>
+#: src/lessons/welcome/BDR2.html:114
 msgid ""
 "You don't have to write the <tt>run()</tt> method since the buggle already "
 "know it. If you put it anyway, the compiler will complain about this "
@@ -4442,80 +4445,87 @@ msgid ""
 "method."
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/BDR2.html:117
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p>
+#: src/lessons/welcome/BDR2.html:120
 msgid ""
-"Here are the ground indications to use for BRD2. Note that we can now move a "
-"bugle up to 6 cells in one dance step."
+"This dance step is slightly more complex but actually better looking. Beside "
+"of that, that's the same old story."
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:126
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p>
+#: src/lessons/welcome/BDR2.html:123
+msgid ""
+"Here are the ground indications to use for BDR2. Note that we can now move a "
+"buggle up to 6 cells in one dance step."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:132
 msgid "Turn back and move one step forward"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:131
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:137
 msgid "D"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:131
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:137
 msgid "Move four cells forward"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:132
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:138
 msgid "E"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:132
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:138
 msgid "Move five cells forward"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:133
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:139
 msgid "F"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:133
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:139
 msgid "Move six cells forward"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:138
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:144
 msgid "W"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:138
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:144
 msgid "Move four cells backward"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:139
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:145
 msgid "V"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:139
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:145
 msgid "Move five cells backward"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:140
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:146
 msgid "U"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR2.html:140
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
+#: src/lessons/welcome/BDR2.html:146
 msgid "Move six cells backward"
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><p>
-#: src/lessons/welcome/BDR2.html:145
+#. type: Content of: <p><p><p><p><p><p><p><p><a><p><p>
+#: src/lessons/welcome/BDR2.html:151
 msgid "When you program works again, proceed to next exercise."
 msgstr ""
 
@@ -7045,11 +7055,6 @@ msgid ""
 "following way: pick a random integer between 0 and 2 by using the "
 "<code>random3()</code> method and make one of the following actions: moving "
 "forward if possible, turn left or turn right."
-msgstr ""
-
-#. type: Content of: <a>
-#: src/lessons/maze/RandomMouseMaze.html:23
-msgid "<a name=\"Objectives\">"
 msgstr ""
 
 #. type: Content of: <a><p>
