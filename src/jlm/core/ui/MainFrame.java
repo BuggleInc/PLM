@@ -608,43 +608,22 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_UP,0), "action pageup" );
 		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke(KeyEvent.VK_PAGE_DOWN,0 ), "action pagedown" );
 		this.getRootPane().getActionMap().put("action pageup", new AbstractAction() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("touche pageup pressée" );
-				System.out.println(met.getTabCount());
 				int index=(met.getSelectedIndex()==0?met.getTabCount()-1:met.getSelectedIndex()-1);
 				met.setSelectedIndex(index);
 			}
 		});
 		this.getRootPane().getActionMap().put("action pagedown", new AbstractAction() {
-			/**
-			 * 
-			 */
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("touche pagedown pressée" );
-				System.out.println(met.getTabCount());
 				int index=(met.getSelectedIndex()==met.getTabCount()-1?0:met.getSelectedIndex()+1);
 				met.setSelectedIndex(index);
 			}
 		});
 		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("left"), "action left" );
-		this.getRootPane().getActionMap().put("action left", new AbstractAction() {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
-			public void actionPerformed(ActionEvent ae) {
-				System.out.println("touche left pressée" );
-			}
-		}
-				);
 		
 		//F1
 		this.getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("F1" ), "action F1" );
