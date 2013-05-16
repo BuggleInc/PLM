@@ -144,7 +144,7 @@ public abstract class World {
 					engine.eval(
 							"import java.lang.System.err\n"+
 							"def log(a):\n"+
-							"  java.lang.System.err.print(a)");									
+							"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))");									
 					
 				
 				engine.put("entity", ent);
