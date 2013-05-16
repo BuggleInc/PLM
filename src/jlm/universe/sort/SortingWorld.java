@@ -98,8 +98,9 @@ public class SortingWorld extends World {
 				"def checkme():\n"+
 				"  entity.checkme()\n"
 				);
+		} else {
+			throw new RuntimeException("No binding of SortingWorld for "+lang);
 		}
-		throw new RuntimeException("No binding of SortingWorld for "+lang);
 	}
 	
 	@Override
