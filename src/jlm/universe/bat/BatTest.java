@@ -1,5 +1,8 @@
 package jlm.universe.bat;
 
+import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
+
 public class BatTest {
 	Object[] parameters;
 	
@@ -85,6 +88,7 @@ public class BatTest {
 
 	
 	public String getName() {
+		ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		if (name == null) {
 			StringBuffer sb=new StringBuffer(funName+"(");
 			
@@ -109,6 +113,13 @@ public class BatTest {
 					}
 					sb.deleteCharAt(sb.length()-1);
 					sb.append("},");					
+				} else if (o instanceof Boolean && pl.equals(Game.PYTHON)){
+					Boolean b = (Boolean) o;
+					if (b) {
+						sb.append("True,");
+					} else {
+						sb.append("False,");
+					}
 				} else {
 					sb.append(o.toString()+",");
 				}
