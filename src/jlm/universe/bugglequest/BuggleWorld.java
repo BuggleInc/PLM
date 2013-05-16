@@ -13,6 +13,7 @@ import javax.script.ScriptException;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.universe.Direction;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
@@ -259,6 +260,8 @@ public class BuggleWorld extends GridWorld {
 	@Override
 	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
 		if (lang.equals(Game.PYTHON)) {
+			engine.put("Direction", Direction.class);
+			engine.put("Color", Color.class);
 			engine.eval(
 				"def forward(steps=1):\n"+
 				"	entity.forward(steps)\n"+
