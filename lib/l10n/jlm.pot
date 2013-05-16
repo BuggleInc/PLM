@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-16 11:18+0300\n"
+"POT-Creation-Date: 2013-05-16 11:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4153,20 +4153,25 @@ msgid ""
 "is already in the editor."
 msgstr ""
 
-#. type: Content of: <p><a><h3>
+#. type: Content of: <p><a><p>
 #: src/lessons/welcome/BDR.html:185
+msgid "Write the code of the dance directly in the editor, out of any function."
+msgstr ""
+
+#. type: Content of: <p><a><h3>
+#: src/lessons/welcome/BDR.html:188
 msgid "Indications"
 msgstr ""
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/BDR.html:187
+#: src/lessons/welcome/BDR.html:190
 msgid ""
 "This exercise may seem a bit complex at the first glance, but it comes down "
 "to summarizing the information above in a sequence of conditionals."
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:192
+#: src/lessons/welcome/BDR.html:195
 msgid ""
 "The first subtlety is that we use the <code>char getIndication()</code> "
 "instead of <code>String readMessage()</code>. This method, only known by the "
@@ -4175,7 +4180,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:197
+#: src/lessons/welcome/BDR.html:200
 msgid ""
 "The other subtlety is to keep working as long as there is some work to do, "
 "i.e., as long as we did not find a cell which content is not described in "
@@ -4188,7 +4193,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:204
+#: src/lessons/welcome/BDR.html:207
 msgid ""
 "The functions having <code>void</code> as return type can contain some "
 "<tt>return</tt> without any associated value. It interrupts immediately "
@@ -4196,12 +4201,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><h3>
-#: src/lessons/welcome/BDR.html:208
+#: src/lessons/welcome/BDR.html:211
 msgid "Tips and Hints"
 msgstr ""
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/BDR.html:210
+#: src/lessons/welcome/BDR.html:213
 msgid ""
 "If you fail understanding why the buggle does not execute the expected "
 "steps, try adding <code>brushDown()</code> in your method. This asks the "
@@ -4212,7 +4217,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:217
+#: src/lessons/welcome/BDR.html:220
 msgid "When your program finally works, move on to the next exercise."
 msgstr ""
 
