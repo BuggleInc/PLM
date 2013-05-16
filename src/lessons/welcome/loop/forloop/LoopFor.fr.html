@@ -26,13 +26,13 @@ while (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;<b>incrémentation</b>;
 }</pre>
 <pre class="Python">
-while <b>there is a value in the sequence</b>: 
-&nbsp;&nbsp;&nbsp;<b>set variable to the next unseen value of the sequence</b>
+while <b> il y a une valeur dans la séquence </b>: 
+&nbsp;&nbsp;&nbsp;<b>mettre la variable à la prochaine valeur non traitée de la séquence</b>
 &nbsp;&nbsp;&nbsp;<b>action</b>()
 </pre>
 
-<p class="Python">Please not that in Python the instructions <code>range(n)</code> allows to
-get a sequence n integer value from 0 to n-1.</p>
+<p class="Python">Veuillez noter qu'en Python, l'instruction <code>range(n)</code> permet
+d'obtenir une séquence de n entiers allant de 0 à n-1.</p>
 
 
 <p>Par exemple, les deux codes suivants sont équivalents. Avouez que la seconde
@@ -58,11 +58,12 @@ while dejaFait &lt; nbPas:
 
 
 
-<p class="Java">It is possible to build more advanced <tt>for</tt> loops since any valid
-instruction can be used as initialization, condition and incrementation. The
-following example is a bit extreme since it compute the gcd (greatest common
-divisor) of two numbers without loop body and initialization (everything is
-in the condition and incrementation).
+<p class="Java">On peut imaginer des utilisations bien plus avancées des boucles
+<tt>for</tt> car toute instruction valide peut être utilisée comme
+initialisation, condition et incrémentation. L'exemple suivant est un peu
+extrême, puisqu'elle calcule le PGCD de deux nombres sans avoir ni de corps
+de boucle, ni d'initialisation (tout est fait dans la condition et
+l'incrémentation).
 
 <pre class="Java">int x=20, y=3, tmp;
 for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }

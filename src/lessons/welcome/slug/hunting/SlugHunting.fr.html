@@ -7,11 +7,14 @@ par hasard la trace d'une limace : une traînée baveuse verte. Si elle
 parvient à la suivre jusqu'au bout, elle trouvera un baggle représentant la
 grosse limace si appétissante (pour une buggle). 
 </p>
-<p>Pour arriver au résultat, vous disposez d'une méthode booléenne
+
+<p>
+Pour arriver au résultat, vous disposez d'une méthode booléenne
 <tt>isFacingTrail</tt>, qui permet de savoir si on est face à une case verte
 ou non. Bien sûr, si on est face à un mur, elle renvoie faux. De plus que
 cette méthode ne modifie ni l'état de la buggle qui l'appelle, ni celui du
-monde. Une telle méthode est dite <b>sans effet de bord</b>.</p>
+monde. Une telle méthode est dite <b>sans effet de bord</b>.
+</p>
 
 <p>Cette méthode prend en argument la couleur de la piste que l'on veut
 suivre. Les limaces laissent des traces vertes, mais d'autres proies
@@ -32,7 +35,8 @@ positionné en utilisant la méthode <code>Color getGroundColor()</code>.</p>
 (avec <code>pickUpBaggle()</code>).</p>
 
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> Complétez la méthode <code>hunt()</code> qui sera
-appelée par la méthode <code>run()</code> définissant le comportement par
-défaut de votre buggle.  La méthode <tt>hunt()</tt> doit utiliser la méthode
-<code>isFacingTrail()</code> décrite précédemment.
+<h3>Objectif de cet exercice</h3>
+<a name="Objectifs"> Complétez la méthode <code>hunt()</code> ( qui sera
+appelée par la méthode <code>run()</code> automatiquement ). La méthode
+<tt>hunt()</tt> doit utiliser la méthode <code>isFacingTrail()</code> qui
+vous est fournie.
