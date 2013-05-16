@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
@@ -111,9 +114,9 @@ public class TurtleWorld extends World {
 		return res;
 	}
 	@Override
-	public String getBindings(ProgrammingLanguage lang) {
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
 		if (lang.equals(Game.PYTHON)) {
-			String res =  
+			e.eval(  
 					"import java.awt.Color as Color\n"+
 					"def getParam(i):\n"+
 					"  return entity.getParam(i)\n"+
@@ -131,10 +134,10 @@ public class TurtleWorld extends World {
 					"  entity.turnRight(i)\n"+
 					"def setColor(c):\n"+
 					"  entity.setColor(c)\n"
-					;
-			return res;
+					);
+		} else {
+			throw new RuntimeException("No binding of TurtleWorld for "+lang);
 		}
-		throw new RuntimeException("No binding of TurtleWorld for "+lang);
 	}
 
 	@Override

@@ -148,7 +148,7 @@ public abstract class World {
 					
 				
 				engine.put("entity", ent);
-				engine.eval(ent.getWorld().getBindings(progLang));
+				ent.getWorld().setupBindings(progLang,engine);
 				
 				String script = ent.getScript(progLang);
 				if (script == null) {
@@ -390,8 +390,9 @@ public abstract class World {
 	/** Returns the script except that must be injected within the environment before running user code
 	 * 
 	 * It should pass all order to the java entity, which were injected independently  
+	 * @throws ScriptException 
 	 */
-	public abstract String getBindings(ProgrammingLanguage lang);
+	public abstract void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException;
 
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);

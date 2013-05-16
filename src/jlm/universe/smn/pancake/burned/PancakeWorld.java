@@ -1,5 +1,8 @@
 package jlm.universe.smn.pancake.burned;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
@@ -93,11 +96,12 @@ public class PancakeWorld extends World {
 	 * It should pass all order to the java entity, which were injected independently  
 	 * @return  the script except that must be injected within the environment before running user code 
 	 * @param the programming language used
+	 * @throws ScriptException 
 	 */
 	@Override
-	public String getBindings(ProgrammingLanguage lang) {
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
 		if (lang.equals(Game.PYTHON)) {
-			String res =
+			e.eval(
 				"def getStackSize():\n" +
 				"  return entity.getStackSize()\n" +
 				"def getPancakeSize(pancakeNumber):\n" +
@@ -106,10 +110,10 @@ public class PancakeWorld extends World {
 				"  return entity.isPancakeUpsideDown(pancakeNumber)\n" +
 				"def flip(numberOfPancakes):\n" +
 				"  entity.flip(numberOfPancakes)\n"	
-				;
-			return res;
+				);
+		} else {
+			throw new RuntimeException("No binding of PancakeWorld for "+lang);
 		}
-		throw new RuntimeException("No binding of PancakeWorld for "+lang);
 	}
 	
 	/**

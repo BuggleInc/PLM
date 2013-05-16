@@ -1,5 +1,7 @@
 package lessons.backtracking;
 
+import javax.script.ScriptEngine;
+
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
@@ -87,7 +89,7 @@ public class BacktrackingWorld extends World {
 		return bestSolution;
 	}
 	@Override
-	public String getBindings(ProgrammingLanguage lang) {
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
 		throw new RuntimeException("No binding of BacktrackingWorld for "+lang);
 	}
 	@Override

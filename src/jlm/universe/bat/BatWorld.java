@@ -66,8 +66,8 @@ public class BatWorld extends World {
 		tests.add(new BatTest(getName(),visible, params));
 	}
 	@Override
-	public String getBindings(ProgrammingLanguage lang) {
-		return ""; /* No need of any binding for this world */
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
+		/* No need of any binding for this world */
 	}
 	@Override
 	public String diffTo(World w) {
