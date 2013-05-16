@@ -16,7 +16,7 @@ import lessons.welcome.bdr.basics.BDR;
 import lessons.welcome.bdr.extended.BDR2;
 import lessons.welcome.bool1.close10.Close10;
 import lessons.welcome.bool1.countteen.CountTeen;
-import lessons.welcome.bool1.dif21.Diff21;
+import lessons.welcome.bool1.diff21.Diff21;
 import lessons.welcome.bool1.hasteen.HasTeen;
 import lessons.welcome.bool1.icyhot.IcyHot;
 import lessons.welcome.bool1.in1020.In1020;

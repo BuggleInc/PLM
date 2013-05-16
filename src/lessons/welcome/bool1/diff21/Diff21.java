@@ -1,4 +1,4 @@
-package lessons.welcome.bool1.dif21;
+package lessons.welcome.bool1.diff21;
 
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
