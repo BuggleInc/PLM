@@ -7,7 +7,7 @@ import lessons.recursion.dragoncurve2.DragonCurve2;
 import lessons.recursion.hanoiboard.HanoiBoard;
 import lessons.recursion.koch.Koch;
 import lessons.recursion.polygonfractal.PolygonFractal;
-import lessons.recursion.sizepinski.Sierpinski;
+import lessons.recursion.sierpinski.Sierpinski;
 import lessons.recursion.spiral.Spiral;
 import lessons.recursion.spiraluse.SpiralUse;
 import lessons.recursion.square.Square;
