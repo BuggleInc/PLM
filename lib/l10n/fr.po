@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-16 08:20-0800\n"
+"POT-Creation-Date: 2013-05-16 12:03-0800\n"
 "PO-Revision-Date: 2013-05-16 14:29+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -436,7 +436,7 @@ msgstr "Vue de l'historique du monde"
 
 #. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:26
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -454,7 +454,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:33
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:14
 msgid ""
 "To help in this process, it is posible to graphically explore the history of "
 "your sorting algorithm. Switch to the Objective view and use the contextual "
@@ -468,7 +468,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:38
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:19
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -7453,14 +7453,14 @@ msgstr ""
 "est prévu à l'avenir."
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:1
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:1
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:1
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:1
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:1
+#: src/lessons/sort/bubble3/AlgBubbleSort3.html:1
 msgid "BubbleSort and variations"
 msgstr "Le tri à bulle et variantes"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:3
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:3
 msgid ""
 "Welcome to the sorting world. It allows you to experiment with the existing "
 "sorting algorithms. The list of buildins that you can use in your algorithms "
@@ -7473,12 +7473,12 @@ msgstr ""
 "\" -&gt; \"About this world\")."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:27
 msgid "BubbleSort"
 msgstr "BubbleSort"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:29
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -7504,18 +7504,18 @@ msgstr ""
 "jamais utilisé en pratique."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:39
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:13
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:39
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:13
 msgid "Show Tip (Pseudo-code)"
 msgstr "Montrer l'indice (le pseudo-code)"
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
+#: src/lessons/sort/bubble1/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
@@ -7529,12 +7529,12 @@ msgstr ""
 "     tant qu'on a inverser des choses lors du dernier parcours\n"
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:3
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:3
 msgid "BubbleSort2"
 msgstr "BubbleSort2"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:5
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:5
 msgid ""
 "If you look carefully at the behavior of BubbleSort, a first easy "
 "optimization appears: after one traversal, the last element of the array "
@@ -7554,12 +7554,12 @@ msgstr ""
 "dans le tableau."
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:14
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:14
 msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
 msgstr "Le pseudo-code de l'algorithme BubbleSort2 est le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:15
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:15
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -7571,7 +7571,7 @@ msgstr ""
 "          Si les cases j et j+1 doivent être inverser, le faire\n"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:21
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:21
 msgid ""
 "When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
@@ -7593,7 +7593,7 @@ msgstr ""
 "plus d'un quart du nombre de lectures, ce qui n'est pas si mal."
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:30
+#: src/lessons/sort/bubble2/AlgBubbleSort2.html:30
 msgid ""
 "From the asymptotic complexity point of view, there is absolutely no "
 "difference: this variation is still in O(n^2) on average (our gain is only "
@@ -7603,12 +7603,12 @@ msgstr ""
 "variante est toujours en O(n2) en moyenne (on ne gagne que sur la constante)."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:3
+#: src/lessons/sort/bubble3/AlgBubbleSort3.html:3
 msgid "BubbleSort3"
 msgstr "BubbleSort3"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:5
+#: src/lessons/sort/bubble3/AlgBubbleSort3.html:5
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
@@ -7619,7 +7619,7 @@ msgstr ""
 "est maintenant trié. Dans ce cas, il faut arrêter le processus de tri."
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:9
+#: src/lessons/sort/bubble3/AlgBubbleSort3.html:9
 msgid ""
 "For that, simply use the <code>break</code> keyword, which breaks the "
 "current loop.  Beware, if you have several embedded loops, this will apply "
@@ -7633,12 +7633,12 @@ msgstr ""
 "est cassée."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:12
+#: src/lessons/sort/bubble3/AlgBubbleSort3.html:12
 msgid "If you want, this tip shows the pseudo-code."
 msgstr "Si vous le désirez, cet indice montre le pseudo-code."
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:14
+#: src/lessons/sort/bubble3/AlgBubbleSort3.html:14
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -7652,7 +7652,7 @@ msgstr ""
 "       Si le parcours sur les j n'a rien inversé, casser la boucle\n"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:21
+#: src/lessons/sort/bubble3/AlgBubbleSort3.html:21
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
@@ -7661,19 +7661,19 @@ msgstr ""
 "pourcents en nombre de lectures sur BubbleSort2."
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:1
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:1
-#: src/lessons/sort/cocktail/AlgCocktailSort3.html:1
+#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:1
+#: src/lessons/sort/cocktail2/AlgCocktailSort2.html:1
+#: src/lessons/sort/cocktail3/AlgCocktailSort3.html:1
 msgid "CocktailSort and variations"
 msgstr "Le tri à bulle et variantes"
 
 #. type: Content of: <h2>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:3
+#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:3
 msgid "CocktailSort"
 msgstr "CocktailSort"
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:5
+#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:5
 msgid ""
 "To improve further the BubbleSort algorithm, we need to look closer its "
 "behavior. One can notice that big elements are moved very quickly in "
@@ -7689,7 +7689,7 @@ msgstr ""
 "valeurs."
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:11
+#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:11
 msgid ""
 "To help the turtles moving faster, the cocktail sort traverse alternatively "
 "the array from right to left and from left to right. Here is the pseudo-code:"
@@ -7699,7 +7699,7 @@ msgstr ""
 "son pseudo-code:"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:16
+#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:16
 #, no-wrap
 msgid ""
 "Do\n"
@@ -7717,7 +7717,7 @@ msgstr ""
 "tant qu'au moins l'un des parcours a inversé un élément\n"
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:24
+#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:24
 msgid ""
 "One can see that cocktail sort achieves exactly the same amount of swaps "
 "than the bubble sort, but improves slightly on read amount. It is however "
@@ -7728,12 +7728,12 @@ msgstr ""
 "de lectures. Il reste cependant moins bon que BubbleSort2 en la matière."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:3
+#: src/lessons/sort/cocktail2/AlgCocktailSort2.html:3
 msgid "CocktailSort2"
 msgstr "CocktailSort2"
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:5
+#: src/lessons/sort/cocktail2/AlgCocktailSort2.html:5
 msgid ""
 "We will now apply to CocktailSort the same optimization than BubbleSort2 did "
 "to BubbleSort. We must remember the limits of the array part not being "
@@ -7745,7 +7745,7 @@ msgstr ""
 "parcourir alternativement de droite à gauche et de gauche à droite:"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:10
+#: src/lessons/sort/cocktail2/AlgCocktailSort2.html:10
 #, no-wrap
 msgid ""
 "beg=0; end=len-2\n"
@@ -7769,12 +7769,12 @@ msgstr ""
 "tant qu'au moins l'un des parcours a inversé un élément\n"
 
 #. type: Content of: <h2>
-#: src/lessons/sort/cocktail/AlgCocktailSort3.html:3
+#: src/lessons/sort/cocktail3/AlgCocktailSort3.html:3
 msgid "CocktailSort3"
 msgstr "CocktailSort3"
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort3.html:5
+#: src/lessons/sort/cocktail3/AlgCocktailSort3.html:5
 msgid ""
 "Even if the asymptotic complexity of CocktailSort2 is the same than the one "
 "of BubbleSort, it seem to perform better in practice. It is even possible to "
@@ -7792,7 +7792,7 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/sort/insertion/AlgInsertionSort.html:1
-#: src/lessons/sort/insertion/AlgShellSort.html:1
+#: src/lessons/sort/shell/AlgShellSort.html:1
 msgid "Insertion algorithms and variations"
 msgstr "Algorithme par insertion et variantes"
 
@@ -7939,12 +7939,12 @@ msgstr ""
 "algorithmes que nous n'avons pas le temps de détailler ici."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/insertion/AlgShellSort.html:3
+#: src/lessons/sort/shell/AlgShellSort.html:3
 msgid "ShellSort"
 msgstr "ShellSort"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/insertion/AlgShellSort.html:5
+#: src/lessons/sort/shell/AlgShellSort.html:5
 msgid ""
 "This algorithm is named after its author, Donald Shell, who published it in "
 "1959. It can be seen as an application of the CombSort idea (let elements "
@@ -7971,7 +7971,7 @@ msgstr ""
 "précédentes."
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgShellSort.html:16
+#: src/lessons/sort/shell/AlgShellSort.html:16
 msgid ""
 "Donald Shell propose <code>len/2</code> as initial value of the gap, and "
 "then to divide it by 2 at each step. The pseudo-code is thus the following:"
@@ -7981,7 +7981,7 @@ msgstr ""
 "suivant:"
 
 #. type: Content of: <p><pre>
-#: src/lessons/sort/insertion/AlgShellSort.html:19
+#: src/lessons/sort/shell/AlgShellSort.html:19
 #, no-wrap
 msgid ""
 "gap=len/2\n"
@@ -7993,7 +7993,7 @@ msgstr ""
 "  appliquer l'algorithme de tri par insertion en comparant i-gap et i, puis i-2gap et i-gap, puis i-3gap et i-2gap, etc.\n"
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/insertion/AlgShellSort.html:24
+#: src/lessons/sort/shell/AlgShellSort.html:24
 msgid ""
 "Just like in CombSort, the sequence of values taken by the gap is crucial "
 "for Shell sort performance. In some rare pathological cases, the sequence we "
@@ -8017,7 +8017,7 @@ msgstr ""
 "est correctement implémenté."
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/insertion/AlgShellSort.html:34
+#: src/lessons/sort/shell/AlgShellSort.html:34
 msgid ""
 "In our case, the array are ways too small to benefit of these optimizations. "
 "If you ever need to do so, take as initial gap the biggest value of the "
@@ -8031,7 +8031,7 @@ msgstr ""
 "descendant ensuite."
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/insertion/AlgShellSort.html:39
+#: src/lessons/sort/shell/AlgShellSort.html:39
 msgid ""
 "Interesingly enough, determining the best gap sequence for shell sort turns "
 "into a contemporary research issue in computer science. For example, an "
@@ -8108,19 +8108,19 @@ msgstr ""
 "algorithme très intéressant en pratique."
 
 #. type: Content of: <h1>
-#: src/lessons/sort/miscellaneous/AlgCombSort.html:1
-#: src/lessons/sort/miscellaneous/AlgCombSort11.html:1
-#: src/lessons/sort/miscellaneous/AlgGnomeSort.html:1
+#: src/lessons/sort/comb/AlgCombSort.html:1
+#: src/lessons/sort/comb11/AlgCombSort11.html:1
+#: src/lessons/sort/gnome/AlgGnomeSort.html:1
 msgid "Miscellaneous sorting"
 msgstr "Tris divers"
 
 #. type: Content of: <h2>
-#: src/lessons/sort/miscellaneous/AlgCombSort.html:3
+#: src/lessons/sort/comb/AlgCombSort.html:3
 msgid "CombSort"
 msgstr "CombSort"
 
 #. type: Content of: <p>
-#: src/lessons/sort/miscellaneous/AlgCombSort.html:5
+#: src/lessons/sort/comb/AlgCombSort.html:5
 msgid ""
 "We saw that CocktailSort improve a bit for turtles (i.e. small values near "
 "to the end of the array), but it is still possible to achieve better. "
@@ -8146,7 +8146,7 @@ msgstr ""
 "chaque fois amène de bons résultats. Voici le pseudo-code correspondant :"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/miscellaneous/AlgCombSort.html:17
+#: src/lessons/sort/comb/AlgCombSort.html:17
 #, no-wrap
 msgid ""
 "gap = len;\n"
@@ -8170,7 +8170,7 @@ msgstr ""
 " tant que l'écart est plus grand que 1 ou que le dernier parcours a inversé au moins un élément\n"
 
 #. type: Content of: <p>
-#: src/lessons/sort/miscellaneous/AlgCombSort.html:28
+#: src/lessons/sort/comb/AlgCombSort.html:28
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
@@ -8181,12 +8181,12 @@ msgstr ""
 "magazine Byte d'avril 1991."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/miscellaneous/AlgCombSort11.html:3
+#: src/lessons/sort/comb11/AlgCombSort11.html:3
 msgid "CombSort11"
 msgstr "CombSort11"
 
 #. type: Content of: <p>
-#: src/lessons/sort/miscellaneous/AlgCombSort11.html:5
+#: src/lessons/sort/comb11/AlgCombSort11.html:5
 msgid ""
 "The authors of this algorithm observed that the performance is increased if "
 "we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, 1)  "
@@ -8201,12 +8201,12 @@ msgstr ""
 "la valeur est 9 ou 10, il faut utiliser 11 à la place."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/miscellaneous/AlgGnomeSort.html:3
+#: src/lessons/sort/gnome/AlgGnomeSort.html:3
 msgid "GnomeSort"
 msgstr "GnomeSort"
 
 #. type: Content of: <p>
-#: src/lessons/sort/miscellaneous/AlgGnomeSort.html:5
+#: src/lessons/sort/gnome/AlgGnomeSort.html:5
 msgid ""
 "The Gnome sort is similar to insertion sort, but the elements are moved in "
 "position by a serie of swaps just like in bubble sort. It is named after the "
@@ -8220,7 +8220,7 @@ msgstr ""
 "auteur:"
 
 #. type: Content of: <p>
-#: src/lessons/sort/miscellaneous/AlgGnomeSort.html:10
+#: src/lessons/sort/gnome/AlgGnomeSort.html:10
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower pots. "
@@ -10048,12 +10048,12 @@ msgid "See the <i>About this world</i> dialog for more details."
 msgstr "Référez vous à l'aide <i>About this world</i> pour plus de détails."
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board01TwoSteps.html:1
+#: src/lessons/lightbot/mission1/Board01TwoSteps.html:1
 msgid "Welcome"
 msgstr "Bienvenue"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board01TwoSteps.html:3
+#: src/lessons/lightbot/mission1/Board01TwoSteps.html:3
 msgid ""
 "Welcome to the lightbot world. This is merely a programmer puzzle rather "
 "than a real lesson (although some use it to teach programming).  The robot "
@@ -10067,7 +10067,7 @@ msgstr ""
 "en utilisant le menu <b>About this world</b>."
 
 #. type: Content of: <p><</p><p>
-#: src/lessons/lightbot/Board01TwoSteps.html:6
+#: src/lessons/lightbot/mission1/Board01TwoSteps.html:6
 msgid ""
 "The goal of each board is simply to switch on every lights of the board "
 "using your little robot."
@@ -10076,7 +10076,7 @@ msgstr ""
 "ampoules du tableau à votre petit robot."
 
 #. type: Content of: <p><</p><p>
-#: src/lessons/lightbot/Board01TwoSteps.html:8
+#: src/lessons/lightbot/mission1/Board01TwoSteps.html:8
 msgid ""
 "This is a introduction exercise, which should be solvable by only moving "
 "forward and switching the light, using respectively"
@@ -10086,49 +10086,49 @@ msgstr ""
 "suivants: "
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board01TwoSteps.html:8
-#: src/lessons/lightbot/Board02Turn.html:3
-#: src/lessons/lightbot/Board06Func.html:3
+#: src/lessons/lightbot/mission1/Board01TwoSteps.html:8
+#: src/lessons/lightbot/mission2/Board02Turn.html:3
+#: src/lessons/lightbot/mission6/Board06Func.html:3
 msgid "and"
 msgstr "et"
 
 #. type: Content of: <p><</p><p>
-#: src/lessons/lightbot/Board01TwoSteps.html:8
+#: src/lessons/lightbot/mission1/Board01TwoSteps.html:8
 msgid "."
 msgstr "."
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board02Turn.html:1
+#: src/lessons/lightbot/mission2/Board02Turn.html:1
 msgid "Turn around"
 msgstr "Se retourner"
 
 # type: Content of: <p>
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board02Turn.html:3
+#: src/lessons/lightbot/mission2/Board02Turn.html:3
 msgid "Now, you probably need to turn in addition (using"
 msgstr "Maintenant, vous avez probablement besoin de tourner (en utilisant "
 
 # type: Content of: <p>
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board02Turn.html:3
+#: src/lessons/lightbot/mission2/Board02Turn.html:3
 msgid ")."
 msgstr ")."
 
 # type: Content of: <h1>
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board03Jump.html:1
+#: src/lessons/lightbot/mission3/Board03Jump.html:1
 msgid "Jump"
 msgstr "Sauter"
 
 # type: Content of: <p>
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board03Jump.html:3
+#: src/lessons/lightbot/mission3/Board03Jump.html:3
 msgid "You can also jump using"
 msgstr "Vous pouvez également sauter en utilisant "
 
 # type: Content of: <p>
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board03Jump.html:3
+#: src/lessons/lightbot/mission3/Board03Jump.html:3
 msgid ""
 "to pass obstacles. You can either jump one level up or any amount of levels "
 "down, but you cannot jump to go on a cell of the same height."
@@ -10138,37 +10138,37 @@ msgstr ""
 "vous déplacer à plat."
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board04Stairs.html:1
+#: src/lessons/lightbot/mission4/Board04Stairs.html:1
 msgid "Stairs"
 msgstr "Escaliers"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board04Stairs.html:3
+#: src/lessons/lightbot/mission4/Board04Stairs.html:3
 msgid "Can you pass these stairs?"
 msgstr "Parviendrez vous à passer ces escaliers ?"
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board05Higher.html:1
+#: src/lessons/lightbot/mission5/Board05Higher.html:1
 msgid "Higher"
 msgstr "Toujours plus haut"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board05Higher.html:3
+#: src/lessons/lightbot/mission5/Board05Higher.html:3
 msgid "Let's go higher"
 msgstr "Il est temps de nous élever de plus en plus haut."
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board06Func.html:1
+#: src/lessons/lightbot/mission6/Board06Func.html:1
 msgid "Functions"
 msgstr "Fonctions"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board06Func.html:3
+#: src/lessons/lightbot/mission6/Board06Func.html:3
 msgid "You can use"
 msgstr "Vous pouvez utiliser"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board06Func.html:3
+#: src/lessons/lightbot/mission6/Board06Func.html:3
 msgid ""
 "to call respectively the first and second functions. Define their code in "
 "their own tab."
@@ -10177,70 +10177,70 @@ msgstr ""
 "leur code dans leur boîte respective."
 
 #. type: Content of: <p><p>
-#: src/lessons/lightbot/Board06Func.html:5
+#: src/lessons/lightbot/mission6/Board06Func.html:5
 msgid "This is great if you get out of space in your main function"
 msgstr ""
 "Cela peut s'avérer pratique si vous n'avez plus assez d'espace dans votre "
 "fonction principale."
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board07Repeat.html:1
+#: src/lessons/lightbot/mission7/Board07Repeat.html:1
 msgid "Repetitive tasks"
 msgstr "Des tâches répétitives"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board07Repeat.html:3
+#: src/lessons/lightbot/mission7/Board07Repeat.html:3
 msgid "Functions are also of great use for repetitive tasks"
 msgstr "Les fonctions sont également très pratique pour les tâches répétitives"
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board08Rec.html:1
+#: src/lessons/lightbot/mission8/Board08Rec.html:1
 msgid "Calling functions from functions"
 msgstr "Invoquer des fonctions depuis les fonctions"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board08Rec.html:3
+#: src/lessons/lightbot/mission8/Board08Rec.html:3
 msgid "It is perfectly okay to call a function from within a function!"
 msgstr ""
 "Rien ne vous interdit d'invoquer une fonction depuis une autre fonction !"
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board09Castle.html:1
+#: src/lessons/lightbot/mission9/Board09Castle.html:1
 msgid "Castle"
 msgstr "Chateau"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board09Castle.html:3
+#: src/lessons/lightbot/mission9/Board09Castle.html:3
 msgid "You're getting good at this..."
 msgstr "Vous vous en sortez de mieux en mieux..."
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board10Wall.html:1
+#: src/lessons/lightbot/mission10/Board10Wall.html:1
 msgid "Wall"
 msgstr "Mur"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board10Wall.html:3
+#: src/lessons/lightbot/mission10/Board10Wall.html:3
 msgid "Ready to climb the wall?"
 msgstr "Etes-vous prêt à escalader ce mur ?"
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board11Sea.html:1
+#: src/lessons/lightbot/mission11/Board11Sea.html:1
 msgid "Sea"
 msgstr "Mer"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board11Sea.html:3
+#: src/lessons/lightbot/mission11/Board11Sea.html:3
 msgid "You now have to surf these waves of lamps."
 msgstr "Vous devez maintenant surfer sur cette mer de lampes."
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/Board12Escher.html:1
+#: src/lessons/lightbot/mission12/Board12Escher.html:1
 msgid "Escher Castle"
 msgstr "Le chateau d'Escher"
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/Board12Escher.html:3
+#: src/lessons/lightbot/mission12/Board12Escher.html:3
 msgid "This one aint easy."
 msgstr "Celui-ci est loin d'être facile."
 
@@ -10312,21 +10312,22 @@ msgstr ""
 #: src/lessons/welcome/bool2/teensum/TeenSum.html:8
 #: src/lessons/welcome/bool2/twoasone/TwoAsOne.html:5
 #: src/lessons/welcome/bool2/withoutdoubles/WithoutDoubles.html:8
-#: src/lessons/bat/string1/AltPairs.html:4
-#: src/lessons/bat/string1/Array123.html:4
-#: src/lessons/bat/string1/Array667.html:7
-#: src/lessons/bat/string1/ArrayCount9.html:4
-#: src/lessons/bat/string1/ArrayFront9.html:4
-#: src/lessons/bat/string1/FrontTimes.html:7
-#: src/lessons/bat/string1/Has271.html:8 src/lessons/bat/string1/Last2.html:7
 #: src/lessons/bat/string1/Main.html:8
-#: src/lessons/bat/string1/NoTriples.html:7
-#: src/lessons/bat/string1/StringBits.html:4
-#: src/lessons/bat/string1/StringMatch.html:8
-#: src/lessons/bat/string1/StringSplosion.html:4
-#: src/lessons/bat/string1/StringTimes.html:4
-#: src/lessons/bat/string1/StringX.html:6
-#: src/lessons/bat/string1/StringYak.html:7
+#: src/lessons/bat/string1/altpairs/AltPairs.html:4
+#: src/lessons/bat/string1/array123/Array123.html:4
+#: src/lessons/bat/string1/array667/Array667.html:7
+#: src/lessons/bat/string1/arraycount9/ArrayCount9.html:4
+#: src/lessons/bat/string1/arrayfront9/ArrayFront9.html:4
+#: src/lessons/bat/string1/fronttimes/FrontTimes.html:7
+#: src/lessons/bat/string1/has271/Has271.html:8
+#: src/lessons/bat/string1/last2/Last2.html:7
+#: src/lessons/bat/string1/notriples/NoTriples.html:7
+#: src/lessons/bat/string1/bits/StringBits.html:4
+#: src/lessons/bat/string1/match/StringMatch.html:8
+#: src/lessons/bat/string1/splosion/StringSplosion.html:4
+#: src/lessons/bat/string1/times/StringTimes.html:4
+#: src/lessons/bat/string1/stringx/StringX.html:6
+#: src/lessons/bat/string1/yak/StringYak.html:7
 msgid ""
 "This exercise was converted to JLM from the excellent exercising site http://"
 "javabat.com/"
@@ -11069,127 +11070,6 @@ msgstr ""
 "opérateurs booléens : http://codingbat.com/doc/ifboolean.html"
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/AltPairs.html:1
-msgid "AltPairs"
-msgstr "Sans les paires"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/AltPairs.html:2
-msgid ""
-"Given a string, return a string made of the chars at indexes 0,1, 4,5, "
-"8,9 ... so \"kittens\" yields \"kien\"."
-msgstr ""
-"Soit une chaîne de caractères, renvoyez la chaîne composée des caractères  "
-"aux index 0,1,4,5,8,9 ... par exemple \"kittens\" devient \"kien\"."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/Array123.html:1
-msgid "Array123"
-msgstr "Tableau123"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/Array123.html:2
-msgid ""
-"Given an array of ints, return true if .. 1, 2, 3, .. appears in the array "
-"somewhere."
-msgstr ""
-"Soit un tableau d'entiers, renvoyez vrai si .. 1, 2, 3, .. apparaissent "
-"quelquepart dans le tableau."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/Array667.html:1
-msgid "Array667"
-msgstr "Tableau667"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/Array667.html:2
-msgid ""
-"Given an array of ints, return the number of times that two 6's are next to "
-"each other in the array. Also count instances where the second \"6\" is "
-"actually a 7."
-msgstr ""
-"Soit un tableau d'entiers, renvoyez le nombre de fois que deux 6 sont l'un à "
-"la suite de l'autre dans le tableau. Comptez également le nombre de fois où "
-"le deuxième \"6\" esten fait un 7."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/ArrayCount9.html:1
-msgid "ArrayCount9"
-msgstr "Comptage de 9"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/ArrayCount9.html:2
-msgid "Given an array of ints, return the number of 9's in the array."
-msgstr "Soit un tableau d'entiers, renvoyez le nombre de 9 dans ce tableau."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/ArrayFront9.html:1
-msgid "ArrayFront9"
-msgstr "Tableau commençant par 9"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/ArrayFront9.html:2
-msgid ""
-"Given an array of ints, return true if one of the first 4 elements in the "
-"array is a 9. The array length may be less than 4."
-msgstr ""
-"Soit un tableau d'entiers, renvoyez vrai si l'un des 4 premiers éléments "
-"dans ce tableau est un 9. Le tableau peut contenir moins de 4 éléments."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/FrontTimes.html:1
-msgid "FrontTimes"
-msgstr "Multiplication de début"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/FrontTimes.html:2
-msgid ""
-"Given a string and a non-negative int n, we'll say that the front of the "
-"string is the first 3 chars, or whatever is there if the string is less than "
-"length 3. Return n copies of the front;"
-msgstr ""
-"Soit une chaîne de caractère et un entier n.\n"
-"On définit le début d'une chaîne de caractère comme les trois premiers "
-"caractères, ou tout ce qu'il y a si la chaîne a une longueur de moins de 3.\n"
-"Renvoyez n copies du début de la chaîne."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/Has271.html:1
-msgid "Has271"
-msgstr "Contient 271"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/Has271.html:2
-msgid ""
-"Given an array of ints, return true if it contains a 2, 7, 1 pattern -- a "
-"value, followed by the value plus 5, followed by the value minus 1.  "
-"Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
-"correct value."
-msgstr ""
-"Soit un tableau d'entiers, renvoyez vrai si il contient schéma 2,7,1 -- une "
-"valeur, suivie de cette valeur plus 5, suivie par cette valeur moins 1. En "
-"outre, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur "
-"correcte."
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/Last2.html:1
-msgid "Last2"
-msgstr "Deux derniers"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/Last2.html:2
-msgid ""
-"Given a string, return the count of the number of times that a substring "
-"length 2 appears in the string and also as the last 2 chars of the string, "
-"so \"hixxxhi\" yields 1 (we won't count the end substring)."
-msgstr ""
-"Soit une chaîne de caractères.\n"
-"Renvoyez combien de fois une sous-chaîne de longueur 2 apparait dans la "
-"chaîne et aussi en tant que 2 derniers caractères de la chaîne.\n"
-"Par exemple, \"hixxxhi\" renvoie 1 ( on ne compte pas le dernière sous-"
-"chaîne )."
-
-#. type: Content of: <h1>
 #: src/lessons/bat/string1/Main.html:1
 msgid "String fun"
 msgstr "String fun"
@@ -11214,12 +11094,133 @@ msgstr ""
 "com/doc/string.html."
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/NoTriples.html:1
+#: src/lessons/bat/string1/altpairs/AltPairs.html:1
+msgid "AltPairs"
+msgstr "Sans les paires"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/altpairs/AltPairs.html:2
+msgid ""
+"Given a string, return a string made of the chars at indexes 0,1, 4,5, "
+"8,9 ... so \"kittens\" yields \"kien\"."
+msgstr ""
+"Soit une chaîne de caractères, renvoyez la chaîne composée des caractères  "
+"aux index 0,1,4,5,8,9 ... par exemple \"kittens\" devient \"kien\"."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/array123/Array123.html:1
+msgid "Array123"
+msgstr "Tableau123"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/array123/Array123.html:2
+msgid ""
+"Given an array of ints, return true if .. 1, 2, 3, .. appears in the array "
+"somewhere."
+msgstr ""
+"Soit un tableau d'entiers, renvoyez vrai si .. 1, 2, 3, .. apparaissent "
+"quelquepart dans le tableau."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/array667/Array667.html:1
+msgid "Array667"
+msgstr "Tableau667"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/array667/Array667.html:2
+msgid ""
+"Given an array of ints, return the number of times that two 6's are next to "
+"each other in the array. Also count instances where the second \"6\" is "
+"actually a 7."
+msgstr ""
+"Soit un tableau d'entiers, renvoyez le nombre de fois que deux 6 sont l'un à "
+"la suite de l'autre dans le tableau. Comptez également le nombre de fois où "
+"le deuxième \"6\" esten fait un 7."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/arraycount9/ArrayCount9.html:1
+msgid "ArrayCount9"
+msgstr "Comptage de 9"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/arraycount9/ArrayCount9.html:2
+msgid "Given an array of ints, return the number of 9's in the array."
+msgstr "Soit un tableau d'entiers, renvoyez le nombre de 9 dans ce tableau."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/arrayfront9/ArrayFront9.html:1
+msgid "ArrayFront9"
+msgstr "Tableau commençant par 9"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/arrayfront9/ArrayFront9.html:2
+msgid ""
+"Given an array of ints, return true if one of the first 4 elements in the "
+"array is a 9. The array length may be less than 4."
+msgstr ""
+"Soit un tableau d'entiers, renvoyez vrai si l'un des 4 premiers éléments "
+"dans ce tableau est un 9. Le tableau peut contenir moins de 4 éléments."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/fronttimes/FrontTimes.html:1
+msgid "FrontTimes"
+msgstr "Multiplication de début"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/fronttimes/FrontTimes.html:2
+msgid ""
+"Given a string and a non-negative int n, we'll say that the front of the "
+"string is the first 3 chars, or whatever is there if the string is less than "
+"length 3. Return n copies of the front;"
+msgstr ""
+"Soit une chaîne de caractère et un entier n.\n"
+"On définit le début d'une chaîne de caractère comme les trois premiers "
+"caractères, ou tout ce qu'il y a si la chaîne a une longueur de moins de 3.\n"
+"Renvoyez n copies du début de la chaîne."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/has271/Has271.html:1
+msgid "Has271"
+msgstr "Contient 271"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/has271/Has271.html:2
+msgid ""
+"Given an array of ints, return true if it contains a 2, 7, 1 pattern -- a "
+"value, followed by the value plus 5, followed by the value minus 1.  "
+"Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
+"correct value."
+msgstr ""
+"Soit un tableau d'entiers, renvoyez vrai si il contient schéma 2,7,1 -- une "
+"valeur, suivie de cette valeur plus 5, suivie par cette valeur moins 1. En "
+"outre, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur "
+"correcte."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/last2/Last2.html:1
+msgid "Last2"
+msgstr "Deux derniers"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/bat/string1/last2/Last2.html:2
+msgid ""
+"Given a string, return the count of the number of times that a substring "
+"length 2 appears in the string and also as the last 2 chars of the string, "
+"so \"hixxxhi\" yields 1 (we won't count the end substring)."
+msgstr ""
+"Soit une chaîne de caractères.\n"
+"Renvoyez combien de fois une sous-chaîne de longueur 2 apparait dans la "
+"chaîne et aussi en tant que 2 derniers caractères de la chaîne.\n"
+"Par exemple, \"hixxxhi\" renvoie 1 ( on ne compte pas le dernière sous-"
+"chaîne )."
+
+#. type: Content of: <h1>
+#: src/lessons/bat/string1/notriples/NoTriples.html:1
 msgid "NoTriples"
 msgstr "Pas de triplet"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/NoTriples.html:2
+#: src/lessons/bat/string1/notriples/NoTriples.html:2
 msgid ""
 "Given an array of ints, we'll say that a triple is a value appearing 3 times "
 "in a row in the array. Return true if the array does not contain any triples."
@@ -11229,12 +11230,12 @@ msgstr ""
 "pas de triplet."
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/StringBits.html:1
+#: src/lessons/bat/string1/bits/StringBits.html:1
 msgid "StringBits"
 msgstr "Éclats de chaîne"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/StringBits.html:2
+#: src/lessons/bat/string1/bits/StringBits.html:2
 msgid ""
 "Given a string, return a new string made of every other char starting with "
 "the first, so \"Hello\" yields \"Hlo\"."
@@ -11246,12 +11247,12 @@ msgstr ""
 "caractère. Ainsi, \"Bonjour\" donne \"Bnor\"."
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/StringMatch.html:1
+#: src/lessons/bat/string1/match/StringMatch.html:1
 msgid "StringMatch"
 msgstr "Comparaison de chaînes"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/StringMatch.html:2
+#: src/lessons/bat/string1/match/StringMatch.html:2
 msgid ""
 "Given 2 strings, a and b, return the number of the positions where they "
 "contain the same length 2 substring. So \"xxcaazz\" and \"xxbaaz\" yields 3, "
@@ -11266,12 +11267,12 @@ msgstr ""
 "chaînes."
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/StringSplosion.html:1
+#: src/lessons/bat/string1/splosion/StringSplosion.html:1
 msgid "StringSplosion"
 msgstr "Explosion de chaîne"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/StringSplosion.html:2
+#: src/lessons/bat/string1/splosion/StringSplosion.html:2
 msgid ""
 "Given a non-empty string like \"Code\" return a string like \"CCoCodCode\"."
 msgstr ""
@@ -11279,12 +11280,12 @@ msgstr ""
 "Renvoyez une chaîne de caractères comme \"CCoCodCode\"."
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/StringTimes.html:1
+#: src/lessons/bat/string1/times/StringTimes.html:1
 msgid "StringTimes"
 msgstr "Multiplication de chaînes"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/StringTimes.html:2
+#: src/lessons/bat/string1/times/StringTimes.html:2
 msgid ""
 "Given a string and a non-negative int n, return a larger string that is n "
 "copies of the original string."
@@ -11294,12 +11295,12 @@ msgstr ""
 "originale."
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/StringX.html:1
+#: src/lessons/bat/string1/stringx/StringX.html:1
 msgid "StringX"
 msgstr "Chaîne X"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/StringX.html:2
+#: src/lessons/bat/string1/stringx/StringX.html:2
 msgid ""
 "Given a string, return a version where all the \"x\" have been removed. "
 "Except an \"x\" at the very start or end should not be removed."
@@ -11309,12 +11310,12 @@ msgstr ""
 "Seuls les \"x\" au tout début ou en toute fin ne doivent pas être supprimés."
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/StringYak.html:1
+#: src/lessons/bat/string1/yak/StringYak.html:1
 msgid "StringYak"
 msgstr "String Yak"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/StringYak.html:2
+#: src/lessons/bat/string1/yak/StringYak.html:2
 msgid ""
 "Suppose the string \"yak\" is unlucky. Given a string, return a version "
 "where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"

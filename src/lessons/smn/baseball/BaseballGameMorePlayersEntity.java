@@ -1,9 +1,8 @@
 package lessons.smn.baseball;
 
 import jlm.universe.smn.baseball.BaseballEntity;
-import jlm.universe.smn.baseball.InvalidPositionException;
-//import jlm.universe.smn.baseball.BaseballWorld;
 import jlm.universe.smn.baseball.InvalidMoveException;
+import jlm.universe.smn.baseball.InvalidPositionException;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
