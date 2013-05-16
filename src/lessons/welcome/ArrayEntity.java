@@ -19,6 +19,7 @@ public class ArrayEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
 	}
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	void mark(Color c){
 		setBrushColor(c);
@@ -51,5 +52,6 @@ public class ArrayEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			forward();
 		}
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

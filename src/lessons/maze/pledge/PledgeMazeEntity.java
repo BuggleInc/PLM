@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.pledge;
 
 import jlm.universe.Direction;
 
@@ -22,6 +22,7 @@ public class PledgeMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		super.setPos(i,j);
 	}
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	 public void run() {
 		 int state = 0 ;
@@ -78,7 +79,6 @@ public class PledgeMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		this.setDirection(memorizedD);
 		return isFree;
 	}
-	
-
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

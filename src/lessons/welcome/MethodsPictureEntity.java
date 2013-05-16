@@ -2,10 +2,12 @@ package lessons.welcome;
 
 import java.awt.Color;
 
+import jlm.universe.bugglequest.SimpleBuggle;
 /* The suppress warning is sometimes mandatory for student code to compile cleanly */
 @SuppressWarnings("unused")
-public class MethodsPictureEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class MethodsPictureEntity extends SimpleBuggle {
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	void mark() {
 		brushDown();
@@ -39,5 +41,6 @@ public class MethodsPictureEntity extends jlm.universe.bugglequest.SimpleBuggle 
 		makeV(Color.blue);
 		makeV(Color.green);
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

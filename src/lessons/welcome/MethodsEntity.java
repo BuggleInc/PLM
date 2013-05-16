@@ -10,7 +10,8 @@ public class MethodsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	public void backward(int i) {
 		throw new RuntimeException("backward(int) forbidden in this exercise");
 	}
-
+	
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	public void goAndGet() {
 		int i = 0;
@@ -25,6 +26,7 @@ public class MethodsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		}
 		dropBaggle();
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 
 	@Override

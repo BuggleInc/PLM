@@ -37,7 +37,7 @@ public class TraversalByColumnEntity extends SimpleBuggle {
 			writeMessage(cpt);
 		}
 	}
-
+	/* END SOLUTION */
 	/* END TEMPLATE */	
 	
     @Override

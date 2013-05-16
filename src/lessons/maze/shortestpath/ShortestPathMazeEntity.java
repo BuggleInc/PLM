@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.shortestpath;
 
 import jlm.universe.Direction;
 import jlm.universe.bugglequest.BuggleWorld;
@@ -28,6 +28,7 @@ public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 		return (BuggleWorld) getWorld();
 	}
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	// tools functions
 	public BuggleWorldCell bottomCell(int x, int y) {

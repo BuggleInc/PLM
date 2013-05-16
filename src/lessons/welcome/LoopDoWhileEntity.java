@@ -7,11 +7,13 @@ public class LoopDoWhileEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		return getGroundColor().equals(Color.white)?true:false;
 	}
 	@Override
+	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		do {
 			forward();
 		} while (!isGroundWhite());
-		/* END TEMPLATE */
+		/* END SOLUTION */
 	}
+	/* END TEMPLATE */
 }

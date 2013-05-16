@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.pledge;
 
 import java.awt.Color;
 
@@ -14,34 +14,34 @@ import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-public class RandomMouseMaze extends ExerciseTemplated {
+public class PledgeMaze extends ExerciseTemplated {
 
-	public RandomMouseMaze(Lesson lesson) {
+	public PledgeMaze(Lesson lesson) {
 		super(lesson);
-		tabName = "RandomMouseMaze";
+		tabName = "Escaper";
 				
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Swiss cheese", 4, 4); 
-		loadMap(myWorlds[0],"resources/maze/maps/RandomMouseMaze");
-		new Buggle(myWorlds[0], "Thésée", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
+		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
+		loadMap(myWorlds[0],"lessons/maze/pledge/PledgeMaze");
+		new Buggle(myWorlds[0], "Thésée", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
 		
-		myWorlds[1] = new BuggleWorld("Blue cheese", 4, 4); 
-		loadMap(myWorlds[1],"resources/maze/maps/RandomMouseMaze2");
-		new Buggle(myWorlds[1], "ZoroRorronoa", 0, 3, Direction.NORTH, Color.black, Color.lightGray);
+		myWorlds[1] = new BuggleWorld("Trapception", 4, 4); 
+		loadMap(myWorlds[1],"lessons/maze/pledge/PledgeMaze2");
+		new Buggle(myWorlds[1], "Trapception", 9, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);
 	}
 
-	// Skip random solver since it might take too much time to find solution.
+	// to shorten loading time	
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
-		b.setPosFromLesson(3, 3);
-		b.turnBack();
+		b.setPosFromLesson(19, 19);
+		b.setDirection(Direction.EAST);
 		
 		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
-		b2.setPosFromLesson(3, 3);
+		b2.setPosFromLesson(19, 19);
 		b2.setDirection(Direction.EAST);
 		
 		try {
@@ -51,7 +51,7 @@ public class RandomMouseMaze extends ExerciseTemplated {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
-		}	
+		}		
 	}
 	
 	@Override
@@ -66,4 +66,5 @@ public class RandomMouseMaze extends ExerciseTemplated {
 					lastResult.passedTests++;
 			}
 	}
+
 }

@@ -7,6 +7,7 @@ import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
+import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 public class SortingWorld extends World {
@@ -98,6 +99,12 @@ public class SortingWorld extends World {
 		}
 		throw new RuntimeException("No binding of SortingWorld for "+lang);
 	}
+	
+	@Override
+	public EntityControlPanel getEntityControlPanel() {
+		return new SortingButtonPanel();
+	}
+	
 	@Override
 	public String diffTo(World world) {
 		return null; // This is not used since SortingExercise overrides check()

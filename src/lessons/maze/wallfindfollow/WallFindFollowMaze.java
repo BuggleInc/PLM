@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.wallfindfollow;
 
 import java.awt.Color;
 
@@ -14,36 +14,35 @@ import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
-public class PledgeMaze extends ExerciseTemplated {
+public class WallFindFollowMaze extends ExerciseTemplated {
 
-	public PledgeMaze(Lesson lesson) {
+	public WallFindFollowMaze(Lesson lesson) {
 		super(lesson);
 		tabName = "Escaper";
-				
+		entityName = "lessons.maze.wallfollower.WallFollowerMazeEntity";	
+		
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
-		loadMap(myWorlds[0],"resources/maze/maps/PledgeMaze");
-		new Buggle(myWorlds[0], "Thésée", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
+		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
+		loadMap(myWorlds[0],"lessons/maze/wallfollower/WallFollowerMaze");
+		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
-		myWorlds[1] = new BuggleWorld("Trapception", 4, 4); 
-		loadMap(myWorlds[1],"resources/maze/maps/PledgeMaze2");
-		new Buggle(myWorlds[1], "Trapception", 9, 10, Direction.NORTH, Color.black, Color.lightGray);
+		myWorlds[1] = new BuggleWorld("Labyrinth2", 1, 1); 
+		loadMap(myWorlds[1],"lessons/maze/wallfollower/WallFollowerMaze2");
+		new Buggle(myWorlds[1], "ZoroRorronoa", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);
 	}
 
-	// to shorten loading time	
+	
+	// to shorten loading time
 	@Override
 	protected void computeAnswer(){
 		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
-		b.setPosFromLesson(19, 19);
-		b.setDirection(Direction.EAST);
+		b.setPosFromLesson(11, 5);
 		
 		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
-		b2.setPosFromLesson(19, 19);
-		b2.setDirection(Direction.EAST);
-		
+		b2.setPosFromLesson(11, 5);
 		try {
 			b.pickUpBaggle();
 			b2.pickUpBaggle();
@@ -66,5 +65,4 @@ public class PledgeMaze extends ExerciseTemplated {
 					lastResult.passedTests++;
 			}
 	}
-
 }

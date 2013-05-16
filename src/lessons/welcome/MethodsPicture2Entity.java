@@ -6,6 +6,7 @@ import java.awt.Color;
 @SuppressWarnings("unused")
 public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle {
 
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	void mark() {
 		brushDown();
@@ -57,5 +58,6 @@ public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle
 			nextLine();
 		}
 	}
+	/* END SOLUTION */
 	/* END TEMPLATE */
 }

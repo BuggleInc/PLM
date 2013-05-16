@@ -1,6 +1,12 @@
 package lessons.maze;
 
 import jlm.core.model.lesson.Lesson;
+import lessons.maze.island.IslandMaze;
+import lessons.maze.pledge.PledgeMaze;
+import lessons.maze.randommouse.RandomMouseMaze;
+import lessons.maze.shortestpath.ShortestPathMaze;
+import lessons.maze.wallfindfollow.WallFindFollowMaze;
+import lessons.maze.wallfollower.WallFollowerMaze;
 
 public class Main extends Lesson {
 

@@ -1,4 +1,4 @@
-package lessons.maze;
+package lessons.maze.wallfollower;
 
 import java.awt.Color;
 
@@ -24,11 +24,11 @@ public class WallFollowerMaze extends ExerciseTemplated {
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
-		loadMap(myWorlds[0],"resources/maze/maps/WallFollowerMaze");
+		loadMap(myWorlds[0],"lessons/maze/wallfollower/WallFollowerMaze");
 		new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		myWorlds[1] = new BuggleWorld("Labyrinth2", 1, 1); 
-		loadMap(myWorlds[1],"resources/maze/maps/WallFollowerMaze2");
+		loadMap(myWorlds[1],"lessons/maze/wallfollower/WallFollowerMaze2");
 		new Buggle(myWorlds[1], "ZoroRorronoa", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);

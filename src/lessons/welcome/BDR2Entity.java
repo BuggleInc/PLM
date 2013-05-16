@@ -9,10 +9,11 @@ public class BDR2Entity extends jlm.universe.bugglequest.SimpleBuggle {
 		} 
 	}
 
-	/* BEGIN SOLUTION */
+	/* BEGIN TEMPLATE */
 	boolean moreMusic = true;
 
 	public void danceOneStep() {
+		/* BEGIN SOLUTION */
 		switch (getIndication()) {
 		case 'R': turnRight(); forward(); break;
 		case 'L': turnLeft();  forward(); break;
@@ -34,11 +35,12 @@ public class BDR2Entity extends jlm.universe.bugglequest.SimpleBuggle {
 
 		default: moreMusic = false;
 		}
+		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 
 	public void run() { 
 		while (moreMusic)
 			danceOneStep();
 	}
+	/* END TEMPLATE */
 }

@@ -37,7 +37,7 @@ public class TraversalByLineEntity extends SimpleBuggle {
 		} while (!endingPosition());
 		writeMessage(cpt);
 	}
-
+	/* END SOLUTION */
 	/* END TEMPLATE */	
 	
     @Override

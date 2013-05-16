@@ -13,6 +13,7 @@ public class LoopForEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 
 	@Override
+	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
 		int cpt = 0;
@@ -25,6 +26,7 @@ public class LoopForEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			backward();
 		}
 		dropBaggle();
-		/* END TEMPLATE */
+		/* END SOLUTION */
 	}
+	/* END TEMPLATE */
 }

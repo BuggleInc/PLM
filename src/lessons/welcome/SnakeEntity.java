@@ -42,6 +42,6 @@ public class SnakeEntity extends SimpleBuggle {
 			snakeStep();
 		}
 	}
-
+	/* END SOLUTION */
 	/* END TEMPLATE */	
 }
