@@ -1,12 +1,10 @@
 package jlm.universe.sort;
 
 import java.awt.Color;
-import java.util.Iterator;
 
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.Entity;
 
 public class SortingExercise extends ExerciseTemplated {
 
@@ -18,12 +16,10 @@ public class SortingExercise extends ExerciseTemplated {
 	public void check() {
 		lastResult = new ExecutionProgress();
 		for (int w=0;w<answerWorld.length;w++) {
-			Iterator<Entity> itAnswer = answerWorld[w].entities();
-			Iterator<Entity> itCurrent = currentWorld[w].entities();
-			while (itAnswer.hasNext()) {
+			for (int rank=0; rank<answerWorld[w].getEntityCount(); rank++) {
 				boolean res = true;
-				SortingEntity ans = (SortingEntity) itAnswer.next();
-				SortingEntity cur = (SortingEntity) itCurrent.next();
+				SortingEntity ans =  (SortingEntity) answerWorld[w].getEntities().get(rank);
+				SortingEntity cur =  (SortingEntity) currentWorld[w].getEntities().get(rank);
 				if (ans.getWriteCount() != cur.getWriteCount()) {
 					lastResult.details += "Algorithm "+ans.getName()+" did "+cur.getWriteCount()+" writes instead of "+ans.getWriteCount()+" in world "+answerWorld[w].getName()+"\n";
 					res = false;

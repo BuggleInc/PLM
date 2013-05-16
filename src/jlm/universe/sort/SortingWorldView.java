@@ -12,7 +12,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
@@ -93,9 +92,8 @@ public class SortingWorldView extends WorldView {
 		}
 		int maxSize = getHeight() / world.getEntityCount();
 		int offset=0;
-		Iterator<Entity> it = world.entities();
-		while (it.hasNext()) {
-			drawAlgoState(g2, (SortingEntity)it.next(), offset, maxSize);
+		for (Entity ent : world.getEntities()) {
+			drawAlgoState(g2, (SortingEntity)ent, offset, maxSize);
 			offset+=maxSize;
 			g2.drawLine(0, offset, getWidth(), offset);
 		}
@@ -142,10 +140,8 @@ public class SortingWorldView extends WorldView {
 		 */
 		int offset = 0;
 		
-		for (Iterator<Entity> it = Game.getInstance().getSelectedWorld().entities();
-			it.hasNext();
-			) {
-			if (it.next().equals(Game.getInstance().getSelectedEntity()))
+		for (Entity ent : Game.getInstance().getSelectedWorld().getEntities()) {
+			if (ent.equals(Game.getInstance().getSelectedEntity()))
 				break;
 			offset++;
 		}		

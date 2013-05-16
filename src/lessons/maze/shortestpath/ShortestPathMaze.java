@@ -39,11 +39,11 @@ public class ShortestPathMaze extends ExerciseTemplated {
 	// to shorten loading time	
 	@Override
 	protected void computeAnswer(){
-		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
+		AbstractBuggle b = (AbstractBuggle)answerWorld[0].getEntities().get(0);
 		b.setPosFromLesson(11, 5);
 		b.setDirection(Direction.EAST);
 
-		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].getEntities().get(0);
 		b2.setPosFromLesson(19, 19);
 		b2.setDirection(Direction.EAST);
 		

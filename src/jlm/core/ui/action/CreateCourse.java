@@ -27,7 +27,7 @@ public class CreateCourse extends AbstractGameAction {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        new CreateCourseDialog().show();
+        new CreateCourseDialog().setVisible(true);
         teacherConsoleDialog.refresh();
     }
 }

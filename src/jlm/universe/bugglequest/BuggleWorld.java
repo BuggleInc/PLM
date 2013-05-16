@@ -8,8 +8,12 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.universe.Direction;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
@@ -254,9 +258,11 @@ public class BuggleWorld extends GridWorld {
 		getCell(x, y).newBaggle();		
 	}
 	@Override
-	public String getBindings(ProgrammingLanguage lang) {
+	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
 		if (lang.equals(Game.PYTHON)) {
-			String res =  
+			engine.put("Direction", Direction.class);
+			engine.put("Color", Color.class);
+			engine.eval(
 				"def forward(steps=1):\n"+
 				"	entity.forward(steps)\n"+
 				"def backward(steps=1):\n"+
@@ -315,58 +321,10 @@ public class BuggleWorld extends GridWorld {
 				"    entity.setBrushColor(c)\n"+
 				"def getBrushColor():\n"+
 				"    return entity.getBrushColor()\n"
-								
-				;
-			return res;
+						);		
+		} else {
+			throw new RuntimeException("No binding of BuggleWorld for "+lang);
 		}
-		if (lang.equals(Game.JAVASCRIPT)) {
-			String res = 
-				"function forward(steps) {\n"+
-				"   if (steps==undefined) steps = 1;"+
-				"	entity.forward(steps)\n"+
-				"}"+
-				"function backward(steps){\n"+
-				"   if (steps==undefined) steps = 1;"+
-				"	entity.backward(steps)\n"+
-				"}"+
-				"function turnLeft(){\n"+
-				"	entity.turnLeft()\n"+
-				"}"+
-				"function turnBack(){\n"+
-				"	entity.turnBack()\n"+
-				"}"+
-				"function turnRight(){\n"+
-				"	entity.turnRight()\n"+
-				"}"+
-				"\n"+
-				"function getX(){\n"+
-				"	return entity.getX()\n"+
-				"}"+
-				"function getY(){\n"+
-				"	return entity.getY()\n"+
-				"}"+
-				"function setX(x){\n"+
-				"	entity.setX(x)\n"+
-				"}"+
-				"function setY(y){\n"+
-				"	entity.setY(y)\n"+
-				"}"+
-				"function setPos(x,y){\n"+
-				"	entity.setPos(x,y)\n"+
-				"}"+
-				"function brushDown(){\n"+
-				"   entity.brushDown()\n"+
-				"}"+
-				"function brushUp(){\n"+
-				"   entity.brushUp()\n"+
-				"}"+
-				"function isFacingWall(){\n"+
-				"  return entity.isFacingWall();\n" +
-				"}"
-				;
-			return res;
-		}
-		throw new RuntimeException("No binding of BuggleWorld for "+lang);
 	}
 	@Override
 	public String diffTo(World world) {

@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -148,7 +147,7 @@ public abstract class World {
 					
 				
 				engine.put("entity", ent);
-				engine.eval(ent.getWorld().getBindings(progLang));
+				ent.getWorld().setupBindings(progLang,engine);
 				
 				String script = ent.getScript(progLang);
 				if (script == null) {
@@ -195,11 +194,6 @@ public abstract class World {
 			runner.start();
 			runnerVect.add(runner);
 		}
-	}
-
-	@Deprecated
-	public Iterator<Entity> entities() {
-		return entities.iterator();
 	}
 
 	/* who's interested in every details of the world changes */
@@ -390,8 +384,9 @@ public abstract class World {
 	/** Returns the script except that must be injected within the environment before running user code
 	 * 
 	 * It should pass all order to the java entity, which were injected independently  
+	 * @throws ScriptException 
 	 */
-	public abstract String getBindings(ProgrammingLanguage lang);
+	public abstract void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException;
 
 	/** Returns a textual representation of the differences from the receiver world to the one in parameter*/
 	public abstract String diffTo(World world);

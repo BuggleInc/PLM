@@ -1,7 +1,6 @@
 package lessons.welcome.bdr.extended;
 
 import java.awt.Color;
-import java.util.Iterator;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
@@ -87,9 +86,8 @@ public class BDR2 extends ExerciseTemplated {
 		/* Change the answer dancers to choregraphy checkers */
 		mutateEntities(answerWorld, "lessons.welcome.bdr.BuggleDancingChecker");
 
-		Iterator<Entity> it;
-		for (it = answerWorld[0].entities(); it.hasNext();) {
-			BuggleDancingChecker bd = (BuggleDancingChecker)it.next();
+		for (Entity ent: answerWorld[0].getEntities()) {
+			BuggleDancingChecker bd = (BuggleDancingChecker)ent;
 			bd.addTODO("ERRLRLRBLLCRLILRRWLULVVLR");
 			bd.run();
 		}

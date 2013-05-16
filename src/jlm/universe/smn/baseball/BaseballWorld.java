@@ -1,5 +1,7 @@
 package jlm.universe.smn.baseball;
 
+import javax.script.ScriptEngine;
+
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
@@ -101,8 +103,8 @@ public class BaseballWorld extends World
 	 * @return  the script except that must be injected within the environment before running user code 
 	 * @param the programming language used
 	 */
-	public String getBindings(ProgrammingLanguage lang)
-	{
+	@Override
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
 		throw new RuntimeException("No binding of BaseballWorld for "+lang);
 	}
 	

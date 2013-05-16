@@ -38,10 +38,10 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 	// to shorten loading time
 	@Override
 	protected void computeAnswer(){
-		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
+		AbstractBuggle b = (AbstractBuggle)answerWorld[0].getEntities().get(0);
 		b.setPosFromLesson(11, 5);
 		
-		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].getEntities().get(0);
 		b2.setPosFromLesson(11, 5);
 		try {
 			b.pickUpBaggle();
