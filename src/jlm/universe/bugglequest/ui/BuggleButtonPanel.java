@@ -21,6 +21,7 @@ import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.bugglequest.AbstractBuggle;
+import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.exception.BuggleWallException;
 
 public class BuggleButtonPanel extends EntityControlPanel {
@@ -117,7 +118,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		
 		brushColorComboBox=new JComboBox (colors);
 		brushColorComboBox.setRenderer(new BuggleColorCellRenderer());
-		brushColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBrushColor());
+		brushColorComboBox.setSelectedItem(((Buggle)Game.getInstance().getSelectedEntity()).getBrushColor());
 		brushColorComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				JComboBox cb = (JComboBox) event.getSource();
@@ -129,7 +130,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		
 		buggleColorComboBox=new JComboBox (colors);
 		buggleColorComboBox.setRenderer(new BuggleColorCellRenderer());
-		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getColor());
+		buggleColorComboBox.setSelectedItem(((Buggle)Game.getInstance().getSelectedEntity()).getColor());
 		buggleColorComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				JComboBox cb = (JComboBox) event.getSource();
@@ -216,7 +217,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		String title = "Wall hugging error";
 		if ( FileUtils.getLocale().equals("fr"))
 		{
-			message = "Votre buggle est rentrée dans un mur, ça fait mal ! ='(";
+			message = "Votre buggle est rentrï¿½e dans un mur, ï¿½a fait mal ! ='(";
 		}
 		else
 		{
