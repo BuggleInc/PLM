@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-16 07:24-0800\n"
+"POT-Creation-Date: 2013-05-16 08:20-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5992,12 +5992,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Square.html:1
+#: src/lessons/recursion/square/Square.html:1
 msgid "The small cousines of Buggles"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Square.html:3
+#. type: Content of: <p>
+#: src/lessons/recursion/square/Square.html:3
 msgid ""
 "Today, we will meet the small cousines of the buggles: the turtles. In fact, "
 "turtles are much olders than the buggles. They were invented in the 70's by "
@@ -6007,7 +6007,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Square.html:9
+#: src/lessons/recursion/square/Square.html:9
 msgid ""
 "Turtles are thus a bit like buggles, but smaller. Just like buggles, you can "
 "order them to move forward, to turn, to move backward, etc. Just like "
@@ -6016,7 +6016,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/recursion/Square.html:14
+#: src/lessons/recursion/square/Square.html:14
 msgid ""
 "The main difference is that where buggles can only move of right angles, "
 "turtles can move of any arbitrary angles specified by a real number (a "
@@ -6027,7 +6027,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:21
+#: src/lessons/recursion/square/Square.html:21
 msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
@@ -6036,17 +6036,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><h3>
-#: src/lessons/recursion/Square.html:26
+#: src/lessons/recursion/square/Square.html:26
 msgid "Doubles? But what is it?"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:27
+#: src/lessons/recursion/square/Square.html:27
 msgid "It's simply a point number. Example:"
 msgstr ""
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/recursion/Square.html:29
+#: src/lessons/recursion/square/Square.html:29
 #, no-wrap
 msgid ""
 "double x = 3.72;\n"
@@ -6065,12 +6065,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><p><h2>
-#: src/lessons/recursion/Square.html:43 src/lessons/recursion/Circle.html:14 src/lessons/recursion/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array.html:146
+#: src/lessons/recursion/square/Square.html:43 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoiboard/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array.html:146
 msgid "Goal of this exercise"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:44
+#: src/lessons/recursion/square/Square.html:44
 msgid ""
 "Even if this is the first exercise on the recursivity lesson, the code you "
 "have to write is not recursive. The goal is to get familiar with the turtle "
@@ -6078,7 +6078,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/recursion/Square.html:48
+#: src/lessons/recursion/square/Square.html:48
 msgid ""
 "You must reproduce a simple geometrical painting constituted of four 100 "
 "steps long squares (see the objective world for more details). It is "
@@ -6088,7 +6088,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/recursion/Square.html:54
+#: src/lessons/recursion/square/Square.html:54
 #, no-wrap
 msgid ""
 "public void run() {\n"
@@ -6097,51 +6097,51 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/PolygonFractal.html:1
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:1
 msgid "Fractal of polygons"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/PolygonFractal.html:3
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:3
 msgid ""
 "The fractal we will now draw is formed of a polygon, with little polygons on "
 "each corner. The prototype of the method drawing it is the following:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/PolygonFractal.html:5
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:5
 #, no-wrap
 msgid "void polygonFractal (int levels, int sides, double length, double shrink)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/PolygonFractal.html:7 src/lessons/recursion/Sierpinski.html:8 src/lessons/recursion/DragonCurve1.html:27 src/lessons/recursion/DragonCurve2.html:50
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7 src/lessons/recursion/sierpinski/Sierpinski.html:8 src/lessons/recursion/dragoncurve1/DragonCurve1.html:27 src/lessons/recursion/dragoncurve2/DragonCurve2.html:50
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Koch.html:1
+#: src/lessons/recursion/koch/Koch.html:1
 msgid "Snow flake"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Koch.html:3
+#: src/lessons/recursion/koch/Koch.html:3
 msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
 "geometrical pattern repeated at every scale."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Koch.html:6
+#: src/lessons/recursion/koch/Koch.html:6
 msgid ""
 "The general form is a triangle, with each side given by a serie of recursive "
 "calls. The general form is given by something like this:"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/Koch.html:8
+#: src/lessons/recursion/koch/Koch.html:8
 #, no-wrap
 msgid ""
 "void snowFlake (int levels, double length) {\n"
@@ -6155,7 +6155,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/recursion/Koch.html:17
+#: src/lessons/recursion/koch/Koch.html:17
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
 "logic, and then reproduce it. You must write the <code>snowSide()</code> "
@@ -6163,12 +6163,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Star.html:1
+#: src/lessons/recursion/star/Star.html:1
 msgid "Turtles in the stars"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Star.html:3
+#: src/lessons/recursion/star/Star.html:3
 msgid ""
 "This is the last hand-on turtles exercise before recursion. The goal is to "
 "draw three 5-branches stars. Like any regular stars with N branches, the "
@@ -6177,7 +6177,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Star.html:8
+#: src/lessons/recursion/star/Star.html:8
 msgid ""
 "The first star to draw is black (<code>Color.black</code>) and its branches "
 "are 100 steps long. The second is blue (<code>Color.blue</code>) and its "
@@ -6187,17 +6187,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Star.html:14
+#: src/lessons/recursion/star/Star.html:14
 msgid "Observe the world's objective to visualize the picture to draw."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Circle.html:1
+#: src/lessons/recursion/circle/Circle.html:1
 msgid "Three little circles"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Circle.html:3
+#: src/lessons/recursion/circle/Circle.html:3
 msgid ""
 "As we saw (and as you can check in the documentation of this world under "
 "\"About this world\"), turtles can only draw straight lines. Despite of "
@@ -6207,7 +6207,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Circle.html:9
+#: src/lessons/recursion/circle/Circle.html:9
 msgid ""
 "Differential calculus would even argue that a circle is the asymptotical "
 "limit of such construct when the size of each segment becomes infinitely "
@@ -6216,7 +6216,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Circle.html:16
+#: src/lessons/recursion/circle/Circle.html:16
 msgid ""
 "Write a function drawing a circle, taking the size of each of the 360 "
 "segments as parameter. Then use it in your <code>run()</code> method to draw "
@@ -6226,25 +6226,25 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Tree.html:1
+#: src/lessons/recursion/tree/Tree.html:1
 msgid "Trees"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Tree.html:3
+#: src/lessons/recursion/tree/Tree.html:3
 msgid ""
 "We will now draw trees. For that, we will write a method using double "
 "recursion following this prototype"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Tree.html:5
+#: src/lessons/recursion/tree/Tree.html:5
 #, no-wrap
 msgid "void tree(int steps, double length, double angle, double shrink)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Tree.html:7
+#: src/lessons/recursion/tree/Tree.html:7
 msgid ""
 "To draw a tree of four levels, you have to draw a trunk of the given length, "
 "turn right of the given angle, draw a tree of level 3, turn left twice of "
@@ -6253,19 +6253,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/recursion/Tree.html:12
+#: src/lessons/recursion/tree/Tree.html:12
 msgid ""
 "If a tree's trunk is of length 'len', the trunk of the next level tree will "
 "be of length 'len*shrink'."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Sierpinski.html:1
+#: src/lessons/recursion/sierpinski/Sierpinski.html:1
 msgid "Sierpinski's Triangle"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Sierpinski.html:3
+#: src/lessons/recursion/sierpinski/Sierpinski.html:3
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
 "several smaller triangles are embeeded. The prototype of the fuction to draw "
@@ -6273,18 +6273,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Sierpinski.html:6
+#: src/lessons/recursion/sierpinski/Sierpinski.html:6
 #, no-wrap
 msgid "void sierpinski(int level, double length)"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Spiral.html:1
+#: src/lessons/recursion/spiral/Spiral.html:1
 msgid "Spirals"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Spiral.html:3
+#: src/lessons/recursion/spiral/Spiral.html:3
 msgid ""
 "We will now draw our first recursive function with the turtle. The goal is "
 "to draw different kind of spirals with the same function, which prototype is "
@@ -6292,20 +6292,20 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Spiral.html:6
+#: src/lessons/recursion/spiral/Spiral.html:6
 #, no-wrap
 msgid "void spiral(int steps, int angle, int length, int increment)"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Spiral.html:8
+#: src/lessons/recursion/spiral/Spiral.html:8
 msgid ""
 "To help you understanding how to write it, here is an example of how the "
 "parameters change during one specific call:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Spiral.html:11
+#: src/lessons/recursion/spiral/Spiral.html:11
 #, no-wrap
 msgid ""
 "spiral(5, 90, 0, 3);\n"
@@ -6327,27 +6327,27 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/DragonCurve1.html:1
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:1
 msgid "Dragon curve (1)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:3
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:3
 msgid "The dragon curve is a classical example of recursive method."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:5
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:5
 msgid "The definition of this curve is the following:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:6
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:6
 msgid "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:7
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order n is the dragon curve of order n-1 between P and "
 "R, followed by the same curve of order n-1 between R and Q (reverse side), "
@@ -6357,7 +6357,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve1.html:13 src/lessons/recursion/DragonCurve2.html:27
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:13 src/lessons/recursion/dragoncurve2/DragonCurve2.html:27
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -6365,18 +6365,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:19
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:19
 msgid "The prototype of the method drawing the curve is the following:"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve1.html:20 src/lessons/recursion/DragonCurve2.html:22
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:20 src/lessons/recursion/dragoncurve2/DragonCurve2.html:22
 #, no-wrap
 msgid "void dragon(int ordre, double x, double y, double z, double t)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:23
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:23
 msgid ""
 "You should use the method <code>setPos(x,y)</code> to put your turtle at "
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
@@ -6384,12 +6384,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/DragonCurve2.html:1
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:1
 msgid "The dragon curve (2)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:3
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:3
 msgid ""
 "Previous solution induce that the turtle teleports to other location, or at "
 "the very least, that it moves its pen up during the drawing. Indeed, the end "
@@ -6399,7 +6399,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:9
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:9
 msgid ""
 "In this lesson, you will write a recursive method allowing to draw the "
 "dragon curve without taking the pen up. For that, we need another recursive "
@@ -6407,7 +6407,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:13
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:13
 msgid ""
 "The method <code>dragon()</code> is then recursively defined using itself "
 "and <code>dragonReverse()</code>. Likewise, the method "
@@ -6416,39 +6416,39 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:20
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:20
 msgid ""
 "The prototype of the <code>dragon()</code> method remains unchanged from "
 "previous exercise:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:24
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:24
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:33
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:33
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve2.html:34
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:34
 #, no-wrap
 msgid "void dragonReverse(int ordre, double x, double y, double z, double t)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:36
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:36
 msgid ""
 "The new point's coordinate (u, v) introduced by the "
 "<code>dragonReverse()</code> are:"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve2.html:39
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:39
 #, no-wrap
 msgid ""
 "u = (x + z)/2 - (t - y)/2\n"
@@ -6456,7 +6456,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:45
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:45
 msgid ""
 "To make the work of each method recursiv more visible, the line painted by "
 "the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
@@ -6465,19 +6465,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/SpiralUse.html:1
+#: src/lessons/recursion/spiraluse/SpiralUse.html:1
 msgid "Drawing spirals"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/SpiralUse.html:3
+#: src/lessons/recursion/spiraluse/SpiralUse.html:3
 msgid ""
 "Can you reproduce the provided patterns of this exercise using the "
 "<code>spiral()</code> method?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/SpiralUse.html:6
+#: src/lessons/recursion/spiraluse/SpiralUse.html:6
 msgid ""
 "You must provide a method called <code>doit(int)</code> taking the number of "
 "the page to draw as parameter. Its code is as following, with A0, B0, etc "
@@ -6486,7 +6486,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/SpiralUse.html:12
+#: src/lessons/recursion/spiraluse/SpiralUse.html:12
 #, no-wrap
 msgid ""
 "void doit(int page) {\n"
@@ -6511,19 +6511,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/SpiralUse.html:34
+#: src/lessons/recursion/spiraluse/SpiralUse.html:34
 msgid ""
 "No need to copy over the method of <code>spiral()</code>, the turtle of this "
 "exercise already knows it."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/HanoiBoard.html:1
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:1
 msgid "Tower of Hanoi"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/HanoiBoard.html:3
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:3
 msgid ""
 "The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or "
 "Towers of Brahma, is a mathematical game or puzzle. It consists of three "
@@ -6535,12 +6535,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:11
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:11
 msgid "Only one disk may be moved at a time."
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:13
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:13
 msgid ""
 "Each move consists of taking the upper disk from one of the rods and sliding "
 "it onto another rod, on top of the other disks that may already be present "
@@ -6548,12 +6548,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:17
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:17
 msgid "No disk may be placed on top of a smaller disk."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/HanoiBoard.html:22
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:22
 msgid ""
 "Write the core of the method: <code>public void solve(int src, int dst, int "
 "height) throws HanoiInvalidMove</code> This method will recursively solve "
@@ -6568,37 +6568,37 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:36
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:36
 msgid "label the pegs A, B, C (these labels may move at different steps)"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:37
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:37
 msgid "let n be the total number of discs (the height of the initial tower)"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:38
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:38
 msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/HanoiBoard.html:41
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:41
 msgid "To move n discs from peg A to peg C:"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:43
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:43
 msgid "move n−1 discs from A to B. This leaves disc #n alone on peg A"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:44
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:44
 msgid "move disc #n from A to C"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:45
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:45
 msgid "move n−1 discs from B to C so they sit on disc #n"
 msgstr ""
 
@@ -7473,7 +7473,7 @@ msgstr ""
 msgid "Close to 10"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/bool1/close10/Close10.html:2
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
@@ -7482,7 +7482,15 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/close10/Close10.html:6 src/lessons/welcome/bool1/diff21/Diff21.html:5 src/lessons/welcome/bool1/hasteen/HasTeen.html:6 src/lessons/welcome/bool1/icyhot/IcyHot.html:5 src/lessons/welcome/bool1/in1020/In1020.html:5 src/lessons/welcome/bool1/in3050/In3050.html:5 src/lessons/welcome/bool1/lastdigit/LastDigit.html:9 src/lessons/welcome/bool1/loneteen/LoneTeen.html:6 src/lessons/welcome/bool1/Main.html:11 src/lessons/welcome/bool1/makes10/Makes10.html:5 src/lessons/welcome/bool1/max1020/Max1020.html:8 src/lessons/welcome/bool1/monkeytrouble/MonkeyTrouble.html:7 src/lessons/welcome/bool1/nearhundred/NearHundred.html:5 src/lessons/welcome/bool1/parottrouble/ParotTrouble.html:8 src/lessons/welcome/bool1/posneg/PosNeg.html:5 src/lessons/welcome/bool1/sleepin/SleepIn.html:7 src/lessons/welcome/bool1/sumdouble/SumDouble.html:5 src/lessons/welcome/bool2/alarmclock/AlarmClock.html:11 src/lessons/welcome/bool2/answercell/AnswerCell.html:8 src/lessons/welcome/bool2/ticket/blue/BlueTicket.html:10 src/lessons/welcome/bool2/caughtspeeding/CaughtSpeeding.html:11 src/lessons/welcome/bool2/party/cigar/CigarParty.html:9 src/lessons/welcome/bool2/datefashion/DateFashion.html:12 src/lessons/welcome/bool2/ticket/green/GreenTicket.html:9 src/lessons/welcome/bool2/in1to10/In1To10.html:8 src/lessons/welcome/bool2/inorderequals/InOrderEqual.html:9 src/lessons/welcome/bool2/inorder/InOrder.html:8 src/lessons/welcome/bool2/lastdigit2/LastDigit2.html:8 src/lessons/welcome/bool2/lessby10/LessBy10.html:5 src/lessons/welcome/bool2/Main.html:4 src/lessons/welcome/bool2/maxmod5/MaxMod5.html:9 src/lessons/welcome/bool2/nearten/NearTen.html:8 src/lessons/welcome/bool2/ticket/red/RedTicket.html:9 src/lessons/welcome/bool2/sharedigit/ShareDigit.html:9 src/lessons/welcome/bool2/sortasum/SortaSum.html:7 src/lessons/welcome/bool2/squirrelplay/SquirrelPlay.html:10 src/lessons/welcome/bool2/party/tea/TeaParty.html:11 src/lessons/welcome/bool2/teensum/TeenSum.html:8 src/lessons/welcome/bool2/twoasone/TwoAsOne.html:5 src/lessons/welcome/bool2/withoutdoubles/WithoutDoubles.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/Array123.html:4 src/lessons/bat/string1/Array667.html:7 src/lessons/bat/string1/ArrayCount9.html:4 src/lessons/bat/string1/ArrayFront9.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Has271.html:8 src/lessons/bat/string1/Last2.html:7 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/NoTriples.html:7 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7
+#: src/lessons/welcome/bool1/close10/Close10.html:5
+msgid ""
+"Given 2 int values, return whichever value is nearest to the value 10, or "
+"return 0 in the event of a tie. Note that math.fabs(n) returns the absolute "
+"value of a number."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/close10/Close10.html:9 src/lessons/welcome/bool1/diff21/Diff21.html:5 src/lessons/welcome/bool1/hasteen/HasTeen.html:6 src/lessons/welcome/bool1/icyhot/IcyHot.html:5 src/lessons/welcome/bool1/in1020/In1020.html:5 src/lessons/welcome/bool1/in3050/In3050.html:5 src/lessons/welcome/bool1/lastdigit/LastDigit.html:9 src/lessons/welcome/bool1/loneteen/LoneTeen.html:6 src/lessons/welcome/bool1/Main.html:11 src/lessons/welcome/bool1/makes10/Makes10.html:5 src/lessons/welcome/bool1/max1020/Max1020.html:8 src/lessons/welcome/bool1/monkeytrouble/MonkeyTrouble.html:7 src/lessons/welcome/bool1/nearhundred/NearHundred.html:5 src/lessons/welcome/bool1/parottrouble/ParotTrouble.html:8 src/lessons/welcome/bool1/posneg/PosNeg.html:5 src/lessons/welcome/bool1/sleepin/SleepIn.html:7 src/lessons/welcome/bool1/sumdouble/SumDouble.html:5 src/lessons/welcome/bool2/alarmclock/AlarmClock.html:11 src/lessons/welcome/bool2/answercell/AnswerCell.html:8 src/lessons/welcome/bool2/ticket/blue/BlueTicket.html:10 src/lessons/welcome/bool2/caughtspeeding/CaughtSpeeding.html:11 src/lessons/welcome/bool2/party/cigar/CigarParty.html:9 src/lessons/welcome/bool2/datefashion/DateFashion.html:12 src/lessons/welcome/bool2/ticket/green/GreenTicket.html:9 src/lessons/welcome/bool2/in1to10/In1To10.html:8 src/lessons/welcome/bool2/inorderequals/InOrderEqual.html:9 src/lessons/welcome/bool2/inorder/InOrder.html:8 src/lessons/welcome/bool2/lastdigit2/LastDigit2.html:8 src/lessons/welcome/bool2/lessby10/LessBy10.html:5 src/lessons/welcome/bool2/Main.html:4 src/lessons/welcome/bool2/maxmod5/MaxMod5.html:9 src/lessons/welcome/bool2/nearten/NearTen.html:8 src/lessons/welcome/bool2/ticket/red/RedTicket.html:9 src/lessons/welcome/bool2/sharedigit/ShareDigit.html:9 src/lessons/welcome/bool2/sortasum/SortaSum.html:7 src/lessons/welcome/bool2/squirrelplay/SquirrelPlay.html:10 src/lessons/welcome/bool2/party/tea/TeaParty.html:11 src/lessons/welcome/bool2/teensum/TeenSum.html:8 src/lessons/welcome/bool2/twoasone/TwoAsOne.html:5 src/lessons/welcome/bool2/withoutdoubles/WithoutDoubles.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/Array123.html:4 src/lessons/bat/string1/Array667.html:7 src/lessons/bat/string1/ArrayCount9.html:4 src/lessons/bat/string1/ArrayFront9.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Has271.html:8 src/lessons/bat/string1/Last2.html:7 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/NoTriples.html:7 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7
 msgid ""
 "This exercise was converted to JLM from the excellent exercising site "
 "http://javabat.com/"

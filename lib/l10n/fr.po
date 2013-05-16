@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-16 07:23-0800\n"
+"POT-Creation-Date: 2013-05-16 08:20-0800\n"
 "PO-Revision-Date: 2013-05-16 14:29+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8262,12 +8262,12 @@ msgstr ""
 "la leçon sur les tris."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Square.html:1
+#: src/lessons/recursion/square/Square.html:1
 msgid "The small cousines of Buggles"
 msgstr "Les petites cousines des Buggles"
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Square.html:3
+#. type: Content of: <p>
+#: src/lessons/recursion/square/Square.html:3
 msgid ""
 "Today, we will meet the small cousines of the buggles: the turtles. In fact, "
 "turtles are much olders than the buggles. They were invented in the 70's by "
@@ -8283,7 +8283,7 @@ msgstr ""
 "Wellesley College plus tard."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Square.html:9
+#: src/lessons/recursion/square/Square.html:9
 msgid ""
 "Turtles are thus a bit like buggles, but smaller. Just like buggles, you can "
 "order them to move forward, to turn, to move backward, etc. Just like "
@@ -8296,7 +8296,7 @@ msgstr ""
 "avancent (simplement, le trait est bien plus fin)."
 
 #. type: Content of: <p><p>
-#: src/lessons/recursion/Square.html:14
+#: src/lessons/recursion/square/Square.html:14
 msgid ""
 "The main difference is that where buggles can only move of right angles, "
 "turtles can move of any arbitrary angles specified by a real number (a "
@@ -8314,7 +8314,7 @@ msgstr ""
 "complètement les tortues."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:21
+#: src/lessons/recursion/square/Square.html:21
 msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
@@ -8328,17 +8328,17 @@ msgstr ""
 "world\" dans le menu pour plus de détails)."
 
 #. type: Content of: <p><p><p><h3>
-#: src/lessons/recursion/Square.html:26
+#: src/lessons/recursion/square/Square.html:26
 msgid "Doubles? But what is it?"
 msgstr "Des doubles ? Mais qu'est ce que c'est ?"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:27
+#: src/lessons/recursion/square/Square.html:27
 msgid "It's simply a point number. Example:"
 msgstr "C'est simplement un nombre à virgule. Exemple:"
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/recursion/Square.html:29
+#: src/lessons/recursion/square/Square.html:29
 #, no-wrap
 msgid ""
 "double x = 3.72;\n"
@@ -8368,14 +8368,15 @@ msgstr ""
 "(double) 17 // Value = 17.0 (“transtypage en double”, converti en double)\n"
 
 #. type: Content of: <br><p><p><p><p><h2>
-#: src/lessons/recursion/Square.html:43 src/lessons/recursion/Circle.html:14
-#: src/lessons/recursion/HanoiBoard.html:20
+#: src/lessons/recursion/square/Square.html:43
+#: src/lessons/recursion/circle/Circle.html:14
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:20
 #: src/lessons/welcome/array/basics/Array.html:146
 msgid "Goal of this exercise"
 msgstr "Objectif de l'exercice"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/recursion/Square.html:44
+#: src/lessons/recursion/square/Square.html:44
 msgid ""
 "Even if this is the first exercise on the recursivity lesson, the code you "
 "have to write is not recursive. The goal is to get familiar with the turtle "
@@ -8386,7 +8387,7 @@ msgstr ""
 "avec le monde des tortues avant d'attaquer les choses sérieuses."
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/recursion/Square.html:48
+#: src/lessons/recursion/square/Square.html:48
 msgid ""
 "You must reproduce a simple geometrical painting constituted of four 100 "
 "steps long squares (see the objective world for more details). It is "
@@ -8402,7 +8403,7 @@ msgstr ""
 "prototype est le suivant:"
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/recursion/Square.html:54
+#: src/lessons/recursion/square/Square.html:54
 #, no-wrap
 msgid ""
 "public void run() {\n"
@@ -8414,12 +8415,12 @@ msgstr ""
 "}"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/PolygonFractal.html:1
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:1
 msgid "Fractal of polygons"
 msgstr "Fractales de polygones"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/PolygonFractal.html:3
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:3
 msgid ""
 "The fractal we will now draw is formed of a polygon, with little polygons on "
 "each corner. The prototype of the method drawing it is the following:"
@@ -8429,16 +8430,16 @@ msgstr ""
 "la fonction le traçant est le suivant:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/PolygonFractal.html:5
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:5
 #, no-wrap
 msgid "void polygonFractal (int levels, int sides, double length, double shrink)"
 msgstr "void polygonFractal (int levels, int sides, double length, double shrink)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/PolygonFractal.html:7
-#: src/lessons/recursion/Sierpinski.html:8
-#: src/lessons/recursion/DragonCurve1.html:27
-#: src/lessons/recursion/DragonCurve2.html:50
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7
+#: src/lessons/recursion/sierpinski/Sierpinski.html:8
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:27
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:50
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
@@ -8447,12 +8448,12 @@ msgstr ""
 "fonction."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Koch.html:1
+#: src/lessons/recursion/koch/Koch.html:1
 msgid "Snow flake"
 msgstr "Flocons de neige"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Koch.html:3
+#: src/lessons/recursion/koch/Koch.html:3
 msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
 "geometrical pattern repeated at every scale."
@@ -8462,7 +8463,7 @@ msgstr ""
 "reproduit à n'importe quelle échelle."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Koch.html:6
+#: src/lessons/recursion/koch/Koch.html:6
 msgid ""
 "The general form is a triangle, with each side given by a serie of recursive "
 "calls. The general form is given by something like this:"
@@ -8472,7 +8473,7 @@ msgstr ""
 "de la façon suivante."
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/Koch.html:8
+#: src/lessons/recursion/koch/Koch.html:8
 #, no-wrap
 msgid ""
 "void snowFlake (int levels, double length) {\n"
@@ -8494,7 +8495,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p>
-#: src/lessons/recursion/Koch.html:17
+#: src/lessons/recursion/koch/Koch.html:17
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
 "logic, and then reproduce it. You must write the <code>snowSide()</code> "
@@ -8505,12 +8506,12 @@ msgstr ""
 "est récursive."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Star.html:1
+#: src/lessons/recursion/star/Star.html:1
 msgid "Turtles in the stars"
 msgstr "Tortues dans les étoiles"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Star.html:3
+#: src/lessons/recursion/star/Star.html:3
 msgid ""
 "This is the last hand-on turtles exercise before recursion. The goal is to "
 "draw three 5-branches stars. Like any regular stars with N branches, the "
@@ -8523,7 +8524,7 @@ msgstr ""
 "tandis que les angles entre les pointes sont de 2*360/N degrés."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Star.html:8
+#: src/lessons/recursion/star/Star.html:8
 msgid ""
 "The first star to draw is black (<code>Color.black</code>) and its branches "
 "are 100 steps long. The second is blue (<code>Color.blue</code>) and its "
@@ -8539,17 +8540,17 @@ msgstr ""
 "45 degrés par rapport à la seconde."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Star.html:14
+#: src/lessons/recursion/star/Star.html:14
 msgid "Observe the world's objective to visualize the picture to draw."
 msgstr "Consultez l'objectif du monde pour visualiser la figure à réaliser."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Circle.html:1
+#: src/lessons/recursion/circle/Circle.html:1
 msgid "Three little circles"
 msgstr "Trois petits cercles"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Circle.html:3
+#: src/lessons/recursion/circle/Circle.html:3
 msgid ""
 "As we saw (and as you can check in the documentation of this world under "
 "\"About this world\"), turtles can only draw straight lines. Despite of "
@@ -8565,7 +8566,7 @@ msgstr ""
 "concaténation de petits segments."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Circle.html:9
+#: src/lessons/recursion/circle/Circle.html:9
 msgid ""
 "Differential calculus would even argue that a circle is the asymptotical "
 "limit of such construct when the size of each segment becomes infinitely "
@@ -8578,7 +8579,7 @@ msgstr ""
 "peut tout de même réussir l'exercice sans maîtriser le calcul différentiel)."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Circle.html:16
+#: src/lessons/recursion/circle/Circle.html:16
 msgid ""
 "Write a function drawing a circle, taking the size of each of the 360 "
 "segments as parameter. Then use it in your <code>run()</code> method to draw "
@@ -8594,12 +8595,12 @@ msgstr ""
 "aucune récursion n'est nécessaire."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Tree.html:1
+#: src/lessons/recursion/tree/Tree.html:1
 msgid "Trees"
 msgstr "Arbres"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Tree.html:3
+#: src/lessons/recursion/tree/Tree.html:3
 msgid ""
 "We will now draw trees. For that, we will write a method using double "
 "recursion following this prototype"
@@ -8608,13 +8609,13 @@ msgstr ""
 "une fonction doublement récursive de prototype"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Tree.html:5
+#: src/lessons/recursion/tree/Tree.html:5
 #, no-wrap
 msgid "void tree(int steps, double length, double angle, double shrink)"
 msgstr "void tree(int steps, double length, double angle, double shrink)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/Tree.html:7
+#: src/lessons/recursion/tree/Tree.html:7
 msgid ""
 "To draw a tree of four levels, you have to draw a trunk of the given length, "
 "turn right of the given angle, draw a tree of level 3, turn left twice of "
@@ -8627,7 +8628,7 @@ msgstr ""
 "à 3 étages, puis revenir à sa position initiale."
 
 #. type: Content of: <p><p>
-#: src/lessons/recursion/Tree.html:12
+#: src/lessons/recursion/tree/Tree.html:12
 msgid ""
 "If a tree's trunk is of length 'len', the trunk of the next level tree will "
 "be of length 'len*shrink'."
@@ -8636,12 +8637,12 @@ msgstr ""
 "l'étage N+1."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Sierpinski.html:1
+#: src/lessons/recursion/sierpinski/Sierpinski.html:1
 msgid "Sierpinski's Triangle"
 msgstr "Triangle de Sierpinski"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Sierpinski.html:3
+#: src/lessons/recursion/sierpinski/Sierpinski.html:3
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
 "several smaller triangles are embeeded. The prototype of the fuction to draw "
@@ -8652,18 +8653,18 @@ msgstr ""
 "fonction le traçant est le suivant :"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Sierpinski.html:6
+#: src/lessons/recursion/sierpinski/Sierpinski.html:6
 #, no-wrap
 msgid "void sierpinski(int level, double length)"
 msgstr "void sierpinski(int level, double length)"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/Spiral.html:1
+#: src/lessons/recursion/spiral/Spiral.html:1
 msgid "Spirals"
 msgstr "Spirales"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Spiral.html:3
+#: src/lessons/recursion/spiral/Spiral.html:3
 msgid ""
 "We will now draw our first recursive function with the turtle. The goal is "
 "to draw different kind of spirals with the same function, which prototype is "
@@ -8674,13 +8675,13 @@ msgstr ""
 "la même fonction, dont le prototype est le suivant:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Spiral.html:6
+#: src/lessons/recursion/spiral/Spiral.html:6
 #, no-wrap
 msgid "void spiral(int steps, int angle, int length, int increment)"
 msgstr "void spiral(int steps, int angle, int length, int increment)"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/Spiral.html:8
+#: src/lessons/recursion/spiral/Spiral.html:8
 msgid ""
 "To help you understanding how to write it, here is an example of how the "
 "parameters change during one specific call:"
@@ -8689,7 +8690,7 @@ msgstr ""
 "des différentes valeurs prises par les paramètres dans un cas:"
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/Spiral.html:11
+#: src/lessons/recursion/spiral/Spiral.html:11
 #, no-wrap
 msgid ""
 "spiral(5, 90, 0, 3);\n"
@@ -8727,22 +8728,22 @@ msgstr ""
 "          spiral(0,90,12,3);\n"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/DragonCurve1.html:1
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:1
 msgid "Dragon curve (1)"
 msgstr "Courbe du Dragon (1)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:3
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:3
 msgid "The dragon curve is a classical example of recursive method."
 msgstr "Un exemple classique de la méthode récursive est la courbe du Dragon."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:5
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:5
 msgid "The definition of this curve is the following:"
 msgstr "La définition de cette courbe est la suivante :"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:6
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:6
 msgid ""
 "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
 msgstr ""
@@ -8750,7 +8751,7 @@ msgstr ""
 "et Q,"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:7
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order n is the dragon curve of order n-1 between P and "
 "R, followed by the same curve of order n-1 between R and Q (reverse side), "
@@ -8765,8 +8766,8 @@ msgstr ""
 "(u, v) de R sont"
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve1.html:13
-#: src/lessons/recursion/DragonCurve2.html:27
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:13
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:27
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -8776,19 +8777,19 @@ msgstr ""
 "v = (y + t)/2 - (z - x)/2\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:19
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:19
 msgid "The prototype of the method drawing the curve is the following:"
 msgstr "Le prototype de la méthode traçant la courbe est le suivant :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve1.html:20
-#: src/lessons/recursion/DragonCurve2.html:22
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:20
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:22
 #, no-wrap
 msgid "void dragon(int ordre, double x, double y, double z, double t)"
 msgstr "void dragon(int ordre, double x, double y, double z, double t)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve1.html:23
+#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:23
 msgid ""
 "You should use the method <code>setPos(x,y)</code> to put your turtle at "
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
@@ -8800,12 +8801,12 @@ msgstr ""
 "de coordonnées (z,t)"
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/DragonCurve2.html:1
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:1
 msgid "The dragon curve (2)"
 msgstr "Courbe du Dragon (2)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:3
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:3
 msgid ""
 "Previous solution induce that the turtle teleports to other location, or at "
 "the very least, that it moves its pen up during the drawing. Indeed, the end "
@@ -8821,7 +8822,7 @@ msgstr ""
 "<code>setPos()</code>"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:9
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:9
 msgid ""
 "In this lesson, you will write a recursive method allowing to draw the "
 "dragon curve without taking the pen up. For that, we need another recursive "
@@ -8832,7 +8833,7 @@ msgstr ""
 "définirez une seconde méthode récursive qui trace la courbe à l'envers."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:13
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:13
 msgid ""
 "The method <code>dragon()</code> is then recursively defined using itself "
 "and <code>dragonReverse()</code>. Likewise, the method <code>dragonReverse()"
@@ -8846,7 +8847,7 @@ msgstr ""
 "exemple de <i>récursivité croisée</i>."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:20
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:20
 msgid ""
 "The prototype of the <code>dragon()</code> method remains unchanged from "
 "previous exercise:"
@@ -8855,7 +8856,7 @@ msgstr ""
 "précédemment :"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:24
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:24
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
 "are:"
@@ -8864,19 +8865,19 @@ msgstr ""
 "()</code> seront :"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:33
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:33
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
 msgstr ""
 "Le prototype de la méthode <code>dragonInverse()</code> est identique : :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve2.html:34
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:34
 #, no-wrap
 msgid "void dragonReverse(int ordre, double x, double y, double z, double t)"
 msgstr "void dragonInverse(int ordre, double x, double y, double z, double t)"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:36
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:36
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragonReverse()</"
 "code> are:"
@@ -8885,7 +8886,7 @@ msgstr ""
 "<code>dragonInverse()</code> seront :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/recursion/DragonCurve2.html:39
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:39
 #, no-wrap
 msgid ""
 "u = (x + z)/2 - (t - y)/2\n"
@@ -8895,7 +8896,7 @@ msgstr ""
 "v = (y + t)/2 + (z - x)/2\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/DragonCurve2.html:45
+#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:45
 msgid ""
 "To make the work of each method recursiv more visible, the line painted by "
 "the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
@@ -8908,12 +8909,12 @@ msgstr ""
 "<code>dragonInverse</code> devra être bleu (<code>Color.blue</code>)."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/SpiralUse.html:1
+#: src/lessons/recursion/spiraluse/SpiralUse.html:1
 msgid "Drawing spirals"
 msgstr "Faire des spirales"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/SpiralUse.html:3
+#: src/lessons/recursion/spiraluse/SpiralUse.html:3
 msgid ""
 "Can you reproduce the provided patterns of this exercise using the "
 "<code>spiral()</code> method?"
@@ -8922,7 +8923,7 @@ msgstr ""
 "méthode <code>spiral()</code>?"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/SpiralUse.html:6
+#: src/lessons/recursion/spiraluse/SpiralUse.html:6
 msgid ""
 "You must provide a method called <code>doit(int)</code> taking the number of "
 "the page to draw as parameter. Its code is as following, with A0, B0, etc "
@@ -8935,7 +8936,7 @@ msgstr ""
 "valeurs convenables pour chaque page."
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/SpiralUse.html:12
+#: src/lessons/recursion/spiraluse/SpiralUse.html:12
 #, no-wrap
 msgid ""
 "void doit(int page) {\n"
@@ -8979,7 +8980,7 @@ msgstr ""
 "}\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/SpiralUse.html:34
+#: src/lessons/recursion/spiraluse/SpiralUse.html:34
 msgid ""
 "No need to copy over the method of <code>spiral()</code>, the turtle of this "
 "exercise already knows it."
@@ -8988,12 +8989,12 @@ msgstr ""
 "exercice connait déjà la méthode."
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/HanoiBoard.html:1
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:1
 msgid "Tower of Hanoi"
 msgstr "Les tours de Hanoï"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/HanoiBoard.html:3
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:3
 msgid ""
 "The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or "
 "Towers of Brahma, is a mathematical game or puzzle. It consists of three "
@@ -9012,12 +9013,12 @@ msgstr ""
 "pile entière jusqu'à une autre tour, en respectant les règles suivantes :"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:11
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:11
 msgid "Only one disk may be moved at a time."
 msgstr "Seul un disque peut être bougé à la fois."
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:13
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:13
 msgid ""
 "Each move consists of taking the upper disk from one of the rods and sliding "
 "it onto another rod, on top of the other disks that may already be present "
@@ -9028,12 +9029,12 @@ msgstr ""
 "déjà être présents sur cette tour."
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:17
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:17
 msgid "No disk may be placed on top of a smaller disk."
 msgstr "Aucun disque ne peut être placé au dessus d'un disque plus petit."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/HanoiBoard.html:22
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:22
 msgid ""
 "Write the core of the method: <code>public void solve(int src, int dst, int "
 "height) throws HanoiInvalidMove</code> This method will recursively solve "
@@ -9058,43 +9059,43 @@ msgstr ""
 "démontre cette approche :"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:36
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:36
 msgid "label the pegs A, B, C (these labels may move at different steps)"
 msgstr ""
 "Etiquetons les tours A, B, C ( ces étiquettes peuvent changer à différentes "
 "étapes )"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:37
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:37
 msgid "let n be the total number of discs (the height of the initial tower)"
 msgstr "Soit n le nombre total de disques ( la hauteur de la tour initiale )"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:38
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:38
 msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
 msgstr ""
 "Numérotez les disques de 1 ( le plus petit, le plus en haut ) à n ( le plus "
 "large, le plus en bas )"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/HanoiBoard.html:41
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:41
 msgid "To move n discs from peg A to peg C:"
 msgstr "Pour déplacer n disques du poteau A au poteau C : "
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:43
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:43
 msgid "move n−1 discs from A to B. This leaves disc #n alone on peg A"
 msgstr ""
 "déplcacer n-1 disques de A vers B. Cela laisse le disque #n seul sur le "
 "poteau A"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:44
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:44
 msgid "move disc #n from A to C"
 msgstr "déplacer le disque #n de A vers C"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/HanoiBoard.html:45
+#: src/lessons/recursion/hanoiboard/HanoiBoard.html:45
 msgid "move n−1 discs from B to C so they sit on disc #n"
 msgstr "deplacer n-1 disques de B vers C afin qu'ils reposent sur le disque #n"
 
@@ -10248,7 +10249,7 @@ msgstr "Celui-ci est loin d'être facile."
 msgid "Close to 10"
 msgstr "Proche de 10"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/bool1/close10/Close10.html:2
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
@@ -10260,7 +10261,18 @@ msgstr ""
 "absolue d'un nombre."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/close10/Close10.html:6
+#: src/lessons/welcome/bool1/close10/Close10.html:5
+msgid ""
+"Given 2 int values, return whichever value is nearest to the value 10, or "
+"return 0 in the event of a tie. Note that math.fabs(n) returns the absolute "
+"value of a number."
+msgstr ""
+"Étant donné deux nombres entiers, retourner la valeur la plus proche de 10, "
+"ou 0 en cas de match nul. Remarquez que math.fabs(n) retourne la valeur "
+"absolue d'un nombre."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/close10/Close10.html:9
 #: src/lessons/welcome/bool1/diff21/Diff21.html:5
 #: src/lessons/welcome/bool1/hasteen/HasTeen.html:6
 #: src/lessons/welcome/bool1/icyhot/IcyHot.html:5
