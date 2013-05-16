@@ -1,7 +1,8 @@
 package lessons.recursion.square;
 
-public class SquareEntity extends jlm.universe.turtles.Turtle {
+import jlm.universe.turtles.Turtle;
 
+public class SquareEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
 	public void run() {
@@ -16,7 +17,7 @@ public class SquareEntity extends jlm.universe.turtles.Turtle {
 			forward(100);
 			turnRight(90);
 		}
-    /* END SOLUTION */
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
 }

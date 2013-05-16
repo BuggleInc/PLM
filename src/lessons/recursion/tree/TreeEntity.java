@@ -1,23 +1,25 @@
 package lessons.recursion.tree;
 
-public class TreeEntity extends jlm.universe.turtles.Turtle {
+import jlm.universe.turtles.Turtle;
+
+public class TreeEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-public void tree(int steps, double length, double angle, double shrink)	{
+	public void tree(int steps, double length, double angle, double shrink)	{
 		/* BEGIN SOLUTION */
-	     if (steps <= 0) {
-	          /* do nothing */
-	     } else {
-	          forward(length);
-	          turnRight(angle);	         
-	          tree(steps-1, length*shrink, angle, shrink);
-	          turnLeft(2*angle);	         
-	          tree(steps-1, length*shrink, angle, shrink);
-	          turnRight(angle);	         
-	          backward(length);
-	     }
-	     /* END SOLUTION */	
-}
+		if (steps <= 0) {
+			/* do nothing */
+		} else {
+			forward(length);
+			turnRight(angle);	         
+			tree(steps-1, length*shrink, angle, shrink);
+			turnLeft(2*angle);	         
+			tree(steps-1, length*shrink, angle, shrink);
+			turnRight(angle);	         
+			backward(length);
+		}
+		/* END SOLUTION */	
+	}
 	/* END TEMPLATE */
 
 	public void run() {

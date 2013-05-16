@@ -1,7 +1,8 @@
 package lessons.recursion.circle;
 
+import jlm.universe.turtles.Turtle;
 
-public class CircleEntity extends jlm.universe.turtles.Turtle {
+public class CircleEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */

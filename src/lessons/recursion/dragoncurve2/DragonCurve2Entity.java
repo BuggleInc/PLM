@@ -7,7 +7,7 @@ import jlm.universe.turtles.Turtle;
 public class DragonCurve2Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-public void dragon(int ordre, double x, double y, double z, double t) {
+	public void dragon(int ordre, double x, double y, double z, double t) {
 		/* BEGIN HIDDEN */
 		double u, v;
 
@@ -21,9 +21,9 @@ public void dragon(int ordre, double x, double y, double z, double t) {
 			dragonInverse(ordre - 1, u, v, z, t);
 		}
 		/* END HIDDEN */
-}
+	}
 
-public void dragonInverse(int ordre, double x, double y, double z, double t) {
+	public void dragonInverse(int ordre, double x, double y, double z, double t) {
 		/* BEGIN HIDDEN */
 		double u, v;
 
@@ -37,7 +37,7 @@ public void dragonInverse(int ordre, double x, double y, double z, double t) {
 			dragonInverse(ordre - 1, u, v, z, t);
 		}
 		/* END HIDDEN */
-}
+	}
 	/* END TEMPLATE */
 
 	public void run() {

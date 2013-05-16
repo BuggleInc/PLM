@@ -1,9 +1,11 @@
 package lessons.recursion.dragoncurve1;
 
-public class DragonCurve1Entity extends jlm.universe.turtles.Turtle {
+import jlm.universe.turtles.Turtle;
+
+public class DragonCurve1Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-public void dragon(int ordre, double x, double y, double z, double t) {
+	public void dragon(int ordre, double x, double y, double z, double t) {
 		/* BEGIN SOLUTION */
 		double u, v;
 
@@ -17,7 +19,7 @@ public void dragon(int ordre, double x, double y, double z, double t) {
 			dragon(ordre - 1, z, t, u, v);
 		}
 		/* END SOLUTION */
-}
+	}
 	/* END TEMPLATE */
 
 	public void run() {

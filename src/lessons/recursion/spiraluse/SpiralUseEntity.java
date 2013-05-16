@@ -1,20 +1,21 @@
 package lessons.recursion.spiraluse;
 
+import jlm.universe.turtles.Turtle;
 
-public class SpiralUseEntity extends jlm.universe.turtles.Turtle {
+public class SpiralUseEntity extends Turtle {
 
 	public void spiral(int steps, int angle, int length, int increment)	{
-	     if (steps <= 0) {
-	    	 return;
-	     } else {
-	          forward(length);
-	          turnLeft(angle);
-	          spiral(steps-1, angle, length+increment, increment);
-	     }
+		if (steps <= 0) {
+			return;
+		} else {
+			forward(length);
+			turnLeft(angle);
+			spiral(steps-1, angle, length+increment, increment);
+		}
 	}
-	
+
 	/* BEGIN TEMPLATE */
-void doit(int page) {
+	void doit(int page) {
 		/* BEGIN SOLUTION */
 		switch (page) {
 		case 0:	spiral(100,90+1,1,2);  break;
@@ -24,9 +25,9 @@ void doit(int page) {
 		case 4: spiral(360,1,1,0);   break;	
 		}
 		/* END SOLUTION */
-}
+	}
 	/* END TEMPLATE */
-	
+
 	public void run() {
 		doit((Integer)getParam(0));
 	}
