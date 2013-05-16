@@ -1,5 +1,5 @@
 # BEGIN SOLUTION 
-def circle(step)
+def circle(step):
   for i in range(360):
     forward(step)
     turnRight(1)
