@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.sizepinski;
 
 public class SierpinskiEntity extends jlm.universe.turtles.Turtle {
 

@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.polygonfractal;
 
 import java.awt.Color;
 

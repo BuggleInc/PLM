@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.tree;
 
 public class TreeEntity extends jlm.universe.turtles.Turtle {
 

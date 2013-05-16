@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.circle;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
@@ -6,15 +6,15 @@ import jlm.universe.World;
 import jlm.universe.turtles.Turtle;
 import jlm.universe.turtles.TurtleWorld;
 
-public class Star extends ExerciseTemplated {
+public class Circle extends ExerciseTemplated {
 
-	public Star(Lesson lesson) {
+	public Circle(Lesson lesson) {
 		super(lesson);
 
 		/* Create initial situation */
 		World myWorld = new TurtleWorld("WhiteBoard", 400, 400);
 
-		new Turtle(myWorld, "Hawksbill", 100, 200);
+		new Turtle(myWorld, "Caretta", 200, 200);
 		setup(myWorld);
 	}
 }

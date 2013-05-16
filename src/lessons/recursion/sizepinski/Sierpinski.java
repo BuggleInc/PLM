@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.sizepinski;
 
 import java.awt.Color;
 

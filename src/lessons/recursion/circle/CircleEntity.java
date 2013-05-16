@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.circle;
 
 
 public class CircleEntity extends jlm.universe.turtles.Turtle {

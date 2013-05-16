@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.dragoncurve1;
 
 public class DragonCurve1Entity extends jlm.universe.turtles.Turtle {
 

@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.hanoiboard;
 
 import jlm.universe.hanoi.HanoiEntity;
 import jlm.universe.hanoi.HanoiInvalidMove;

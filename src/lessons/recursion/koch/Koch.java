@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.koch;
 
 import java.awt.Color;
 

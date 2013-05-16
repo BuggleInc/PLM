@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.polygonfractal;
 
 public class PolygonFractalEntity extends jlm.universe.turtles.Turtle {
 

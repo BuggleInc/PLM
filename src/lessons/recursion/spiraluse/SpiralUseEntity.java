@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.spiraluse;
 
 
 public class SpiralUseEntity extends jlm.universe.turtles.Turtle {

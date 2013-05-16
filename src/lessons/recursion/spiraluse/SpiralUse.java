@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.spiraluse;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;

@@ -1,4 +1,4 @@
-package lessons.recursion;
+package lessons.recursion.dragoncurve1;
 
 import java.awt.Color;
 
