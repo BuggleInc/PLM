@@ -143,7 +143,9 @@ Buggles can write graffitis on the ground of their world. For that, they use
 the four following methods:
 
 <ul>
-  <li><code>boolean isOverMessage()</code>: returns true if and only if there is a
+  <li class="Java"><code>boolean isOverMessage()</code>: returns <code>true</code> if and only if there is a
+message on the ground.</li>
+  <li class="python"><code>boolean isOverMessage()</code>: returns <code>True</code> if and only if there is a
 message on the ground.</li>
   <li><code>String readMessage()</code>: returns the message written on the ground
 (or an empty string if nothing is written).</li>
@@ -179,8 +181,11 @@ following signification:
 
 <p>In any other case, you should stop</p>
 
-<p>Write the code of the dance in the <code>run()</code> method which prototype
+<p class="Java">Write the code of the dance in the <code>run()</code> method which prototype
 is already in the editor.</p>
+
+<p class="python">Write the code of the dance directly in the editor,
+out of any function.</p>
 
 <h3>Indications</h3>
 
@@ -194,11 +199,19 @@ instead of <code>String readMessage()</code>. This method, only known by the
 buggles of this exercise, return the first char of the message written on
 the ground (or ' ' if nothing is written down). </p>
 
-<p>The other subtlety is to keep working as long as there is some work to do,
+<p class="Java">The other subtlety is to keep working as long as there is some work to do,
 i.e., as long as we did not find a cell which content is not described in
 the table. The easier for that is to use a boolean variable (<code>finished</code>)
 that is initialized to <code>false</code> as termination condition for the loop.
 As soon as the buggle find a cell with a value not described in the table, the boolean variable is set to <code>false</code>.
+Thus the loop, will stop and the program will terminate. </p>
+
+<p class="python">The other subtlety is to keep working as long as there is some work to do,
+i.e., as long as we did not find a cell which content is not described in
+the table. The easier for that is to use a boolean variable (<code>finished</code>)
+that is initialized to <code>False</code> as termination condition for the loop.
+As soon as the buggle find a cell with a value not described in the
+table, the boolean variable is set to <code>False</code>.
 Thus the loop, will stop and the program will terminate. </p>
 
 <p>The functions having <code>void</code> as return type can contain some

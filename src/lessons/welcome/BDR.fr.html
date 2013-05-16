@@ -148,8 +148,10 @@ Les buggles peuvent écrire des choses par terre dans leur monde. Pour ce
 faire, elles utilisent les quatre méthodes suivantes:
 
 <ul>
-  <li><code>boolean isOverMessage()</code> : renvoie vrai si et seulement s'il y a
-un message écrit par terre.</li>
+  <li class="Java"><code>boolean isOverMessage()</code> : renvoie vrai (<code>true</code>) si
+et seulement s'il y a un message écrit par terre.</li>
+  <li class="python"><code>boolean isOverMessage()</code> : renvoie vrai (<code>True</code>) si
+et seulement s'il y a un message écrit par terre.</li>
   <li><code>String readMessage()</code> : renvoie le message qu'il y a écrit par
 terre (s'il y a rien, on obtient une chaîne vide).</li>
   <li><code>void writeMessage(String msg)</code> : écrit le message spécifié en
@@ -183,8 +185,10 @@ par terre.  Ces indications sont des messages au sol, avec le code suivant:
 
 <p>Dans tous les autres cas, il faut s'arrêter.</p>
 
-<p>Écrivez le code de la danse dans la méthode <code>run()</code> dont le
+<p class="Java">Écrivez le code de la danse dans la méthode <code>run()</code> dont le
 prototype se trouve déjà dans l'éditeur.</p>
+
+<p class="python">Write the code of the dance directly in the editor, out of any function.</p>
 
 <h3>Indications</h3>
 
@@ -200,13 +204,21 @@ readMessage()</code>. Cette méthode, qui n'est connue que des buggles des
 exercice BDR, renvoie le premier caractère du message au sol (ou ' ' s'il
 n'y a rien d'écrit au sol). </p>
 
-<p>L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant
+<p class="Java">L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant
 qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus
-simple pour cela est d'utiliser une variable booléenne (
-<code>finished</code>) qui est mise à <code>false</code> pour terminer la
-boucle. Dès que la buggle a trouvé une case avec une valeur non décrite dans
-la table, la variable booléenne est mise à <code>false</code>. Ainsi, la
-boucle s'arrêtera et le programme terminera. </p>
+simple pour cela est d'utiliser une variable booléenne (<code>fini</code>)
+en condition d'arrêt d'une boucle. Cette variable est initialisée à la
+valeur faux (<code>false</code>). Si on trouve une case ne répondant à
+aucune ligne du tableau, on change la valeur de cette variable à vrai
+(<code>true</code>. Cela arrête la boucle, et le programme s'arrête. </p>
+
+<p class="python">L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant
+qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus
+simple pour cela est d'utiliser une variable booléenne (<code>fini</code>)
+en condition d'arrêt d'une boucle. Cette variable est initialisée à la
+valeur faux (<code>False</code>). Si on trouve une case ne répondant à
+aucune ligne du tableau, on change la valeur de cette variable à vrai
+(<code>True</code>. Cela arrête la boucle, et le programme s'arrête. </p>
 
 <p>Les fonctions dont le type de retour est <tt>void</tt> peuvent contenir des
 <tt>return</tt> sans valeur associée. Cela interrompt immédiatement leur
