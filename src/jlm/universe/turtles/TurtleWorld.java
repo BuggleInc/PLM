@@ -117,9 +117,7 @@ public class TurtleWorld extends World {
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
 		if (lang.equals(Game.PYTHON)) {
 			e.put("Color", Color.class);
-			e.eval( "def getParam(i):\n"+
-					"  return entity.getParam(i)\n"+
-					"def backward(i):\n"+
+			e.eval( "def backward(i):\n"+
 					"  entity.backward(i)\n"+
 					"def forward(i):\n"+
 					"  entity.forward(i)\n"+
