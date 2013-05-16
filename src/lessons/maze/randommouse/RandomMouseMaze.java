@@ -36,11 +36,11 @@ public class RandomMouseMaze extends ExerciseTemplated {
 	// Skip random solver since it might take too much time to find solution.
 	@Override
 	protected void computeAnswer(){
-		AbstractBuggle b = (AbstractBuggle)answerWorld[0].entities().next();
+		AbstractBuggle b = (AbstractBuggle)answerWorld[0].getEntities().get(0);
 		b.setPosFromLesson(3, 3);
 		b.turnBack();
 		
-		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].entities().next();
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].getEntities().get(0);
 		b2.setPosFromLesson(3, 3);
 		b2.setDirection(Direction.EAST);
 		

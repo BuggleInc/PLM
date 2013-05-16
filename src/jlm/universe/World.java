@@ -197,11 +197,6 @@ public abstract class World {
 		}
 	}
 
-	@Deprecated
-	public Iterator<Entity> entities() {
-		return entities.iterator();
-	}
-
 	/* who's interested in every details of the world changes */
 	private ArrayList<IWorldView> worldUpdatesListeners = new ArrayList<IWorldView>();
 
