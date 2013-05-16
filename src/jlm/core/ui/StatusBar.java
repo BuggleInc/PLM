@@ -73,7 +73,6 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			public void mouseExited(MouseEvent e) {}
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseClicked(MouseEvent e) {
-				System.err.println("Show popup");
                 popup.show(e.getComponent(),
                         e.getX(), e.getY());
 			}
@@ -156,7 +155,6 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 				JMenuItem item = new JMenuItem(pl.getIcon());
 			    item.addActionListener(new SetProgLanguage(g,pl));
 				popup.add(item);
-				System.err.println("Add lang "+pl.getLang());
 			}
 		}
 	}
