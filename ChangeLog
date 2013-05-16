@@ -3,7 +3,7 @@
   * Various polishing of the exercises in Python
   * Fix issue #64: Buggle interactive controls are now properly
     initialized
-  * Package maze, welcome and recursion exercises in their own directories
+  * Package maze, welcome, lightbot, sort and bat.string1 and recursion exercises in their own directories
   * Refresh the french translation
   * Add a control panel for the Sorting World
   * Start porting bat exercises to python
