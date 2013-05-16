@@ -178,8 +178,13 @@ public class ExerciseView extends JPanel implements GameListener {
 		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);		
 	}
 
+	// To refresh the controlPane in the BDR & BDR2 exercise from welcome
 	@Override
-	public void selectedEntityHasChanged() { /* don't care */ }
+	public void selectedEntityHasChanged() { 
+		controlPane.removeAll();
+		buttonPanel = Game.getInstance().getSelectedWorld().getEntityControlPanel();
+		controlPane.add(buttonPanel, "grow");
+	}
 
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
