@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-15 12:43+0300\n"
-"PO-Revision-Date: 2013-05-15 12:46+0200\n"
+"POT-Creation-Date: 2013-05-16 11:18+0300\n"
+"PO-Revision-Date: 2013-05-16 11:19+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2506,21 +2506,21 @@ msgstr ""
 #: src/lessons/welcome/Basics.html:66
 #, no-wrap
 msgid ""
-"brushDown();\n"
 "brushUp();\n"
+"brushDown();\n"
 msgstr ""
-"brushDown();\n"
 "brushUp();\n"
+"brushDown();\n"
 
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/Basics.html:70
 #, no-wrap
 msgid ""
-"brushDown()\n"
 "brushUp()\n"
+"brushDown()\n"
 msgstr ""
-"brushDown()\n"
 "brushUp()\n"
+"brushDown()\n"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/Basics.html:73
@@ -2540,7 +2540,7 @@ msgstr ""
 #: src/lessons/welcome/Methods.html:59
 #: src/lessons/welcome/MethodsDogHouse.html:49
 #: src/lessons/welcome/MethodsReturning.html:56
-#: src/lessons/welcome/MethodsArgs.html:54 src/lessons/welcome/BDR.html:157
+#: src/lessons/welcome/MethodsArgs.html:69 src/lessons/welcome/BDR.html:157
 #: src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33
 #: src/lessons/welcome/SlugTracking.html:20
 #: src/lessons/maze/RandomMouseMaze.html:23
@@ -4579,9 +4579,9 @@ msgstr ""
 #: src/lessons/welcome/MethodsArgs.html:3
 msgid ""
 "Don't you get tired of writing again and again the code to move by a fixed "
-"amount of steps? On the other hand, writing <tt>forward2()</tt>, "
-"<tt>forward3()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>, "
-"<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help"
+"amount of steps? On the other hand, writing <tt>forward2()</tt>, <tt>forward3"
+"()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>, <tt>backward3"
+"()</tt>, <tt>backward4()</tt>, and so on does not really help"
 msgstr ""
 "N'êtes vous pas fatigué d'écrire encore et encore le code qui permet "
 "d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les "
@@ -4614,8 +4614,23 @@ msgstr ""
 "&nbsp;&nbsp;return x / 2;\n"
 "}"
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/MethodsArgs.html:17
+#, fuzzy, no-wrap
+#| msgid ""
+#| "double divideByTwo(double x) {\n"
+#| "&nbsp;&nbsp;return x / 2;\n"
+#| "}"
+msgid ""
+"def divideByTwo(x):\n"
+"&nbsp;&nbsp;return x / 2\n"
+msgstr ""
+"double diviseParDeux(double x) {\n"
+"&nbsp;&nbsp;return x / 2;\n"
+"}"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/MethodsArgs.html:21
 msgid ""
 "As caller, you have to specify the initial value of this \"variables\" "
 "between the call's parenthesis."
@@ -4624,13 +4639,20 @@ msgstr ""
 "parenthèses de l'appel."
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:19
+#: src/lessons/welcome/MethodsArgs.html:23
 #, no-wrap
 msgid "double y = divideByTwo(3.14);"
 msgstr "double y = diviseParDeux(3.14);"
 
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:25
+#, fuzzy, no-wrap
+#| msgid "double y = divideByTwo(3.14);"
+msgid "y = divideByTwo(3.14)"
+msgstr "double y = diviseParDeux(3.14);"
+
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:21
+#: src/lessons/welcome/MethodsArgs.html:28
 msgid ""
 "If you want several parameters, you need to separate them with comas (,)  "
 "both in the declaration and calls."
@@ -4639,7 +4661,7 @@ msgstr ""
 "lors de la déclaration comme lors de l'appel."
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:24
+#: src/lessons/welcome/MethodsArgs.html:31
 #, no-wrap
 msgid ""
 "double divide(double x, double y) {\n"
@@ -4651,13 +4673,36 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:27
+#: src/lessons/welcome/MethodsArgs.html:34
 #, no-wrap
 msgid "double y = divide(3.14 , 1.5);"
 msgstr "double y = divise(3.14 , 1.5);"
 
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:36
+#, fuzzy, no-wrap
+#| msgid ""
+#| "double divide(double x, double y) {\n"
+#| "&nbsp;&nbsp;return x / y;\n"
+#| "}"
+msgid ""
+"def divide(double x, double y):\n"
+"&nbsp;&nbsp;return x / y\n"
+"}"
+msgstr ""
+"double divise(double x, double y) {\n"
+"&nbsp;&nbsp;return x / y;\n"
+"}"
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/MethodsArgs.html:39
+#, fuzzy, no-wrap
+#| msgid "double y = divide(3.14 , 1.5);"
+msgid "y = divide(3.14 , 1.5)"
+msgstr "double y = divise(3.14 , 1.5);"
+
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:29
+#: src/lessons/welcome/MethodsArgs.html:42
 msgid ""
 "In Java, you can declare several methods of the same name as long as they "
 "don't have the same parameter types and number (they are said to have "
@@ -4668,7 +4713,7 @@ msgstr ""
 "qu'elles n'ont pas la même <b>signature</b>)."
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/MethodsArgs.html:32
+#: src/lessons/welcome/MethodsArgs.html:45
 #, no-wrap
 msgid ""
 "int max(int x, int y) {\n"
@@ -4704,7 +4749,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:48
+#: src/lessons/welcome/MethodsArgs.html:63
 msgid ""
 "Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It "
 "works anyway because a <tt>return</tt> interrupts the method execution. If "
@@ -4720,7 +4765,7 @@ msgstr ""
 "de la fonction."
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:54
+#: src/lessons/welcome/MethodsArgs.html:69
 msgid ""
 "This time, you have to write a <code>move(int stepCount,boolean forward)</"
 "code> method which move forward of <code>stepCount</code> if <code>forward</"
@@ -4738,7 +4783,7 @@ msgstr ""
 "nombre de pas à faire (mais ce n'est pas important ici)."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:61
+#: src/lessons/welcome/MethodsArgs.html:76
 msgid ""
 "This time, there is only one world, and seven buggles. But it does not "
 "change anything for you, since the same code is used for any buggles."
@@ -4747,43 +4792,43 @@ msgstr ""
 "grand chose pour vous, puisque toutes sont ici régies par le même code."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:64
+#: src/lessons/welcome/MethodsArgs.html:79
 msgid ""
 "The code of the method to write should not be really problematic for you."
 msgstr ""
 "Le code de la méthode à proprement parler ne devrait pas poser de problème."
 
 #. type: Content of: <p><p><p><p><h2>
-#: src/lessons/welcome/MethodsArgs.html:66
+#: src/lessons/welcome/MethodsArgs.html:81
 msgid "What's coming next?"
 msgstr "Et ensuite?"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:67
+#: src/lessons/welcome/MethodsArgs.html:82
 msgid ""
-"You now know the very basics of programming. At least, we introduced "
-"all the important concepts, and you should be able to read most code by "
-"now. If you want to play safe, you should proceed to the next exercises of "
-"this lesson to solidify your knowledge by reusing these concepts in various "
-"simple situations. After taking them, you'll master what's called \"Tactical "
-"programming\", meaning that you will master the syntax enough to not "
-"have any issue with it, allowing you to focus on the fundamental problems of "
-"what you want to solve instead of struggling with syntaxic "
-"difficulties. Some of these exercises are even fun to do ;)"
+"You now know the very basics of programming. At least, we introduced all the "
+"important concepts, and you should be able to read most code by now. If you "
+"want to play safe, you should proceed to the next exercises of this lesson "
+"to solidify your knowledge by reusing these concepts in various simple "
+"situations. After taking them, you'll master what's called \"Tactical "
+"programming\", meaning that you will master the syntax enough to not have "
+"any issue with it, allowing you to focus on the fundamental problems of what "
+"you want to solve instead of struggling with syntaxic difficulties. Some of "
+"these exercises are even fun to do ;)"
 msgstr ""
-"Vous connaissez maintenant les bases de la programmation. Disons au "
-"moins que vous avez vu les concepts les plus important et que vous devriez "
-"être capable de lire et comprendre la plupart des programmes écrits. "
-"Pour plus de sécurité, vous devriez faire les autres exercices de cette "
-"leçon pour solidifier vos acquis en les réutilisant dans diverses "
-"situations. Après cela, vous maîtriserez ce qu'on appelle la \"programmation "
-"tactique\", ce qui veut dire que votre maîtrise de la syntaxe vous "
-"permettra de vous concentrer sur les problèmes à résoudre sans vous battre "
-"contre le compilateur à propos de la syntaxe. Certains de ces exercices sont "
-"même amusants à résoudre ;)"
+"Vous connaissez maintenant les bases de la programmation. Disons au moins "
+"que vous avez vu les concepts les plus important et que vous devriez être "
+"capable de lire et comprendre la plupart des programmes écrits. Pour plus de "
+"sécurité, vous devriez faire les autres exercices de cette leçon pour "
+"solidifier vos acquis en les réutilisant dans diverses situations. Après "
+"cela, vous maîtriserez ce qu'on appelle la \"programmation tactique\", ce "
+"qui veut dire que votre maîtrise de la syntaxe vous permettra de vous "
+"concentrer sur les problèmes à résoudre sans vous battre contre le "
+"compilateur à propos de la syntaxe. Certains de ces exercices sont même "
+"amusants à résoudre ;)"
 
 #. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/MethodsArgs.html:75
+#: src/lessons/welcome/MethodsArgs.html:90
 msgid ""
 "If you are in a hurry and want more, you can skip these exercises and "
 "proceed directly to more interesting challenges. For example, the "
@@ -4791,10 +4836,10 @@ msgid ""
 "which are not rocket science but require several improvements to work for "
 "any kind of maze. The <i>Lightbot</i> lesson is a little programming game "
 "where you control a little robot wanting to light the world. Since it is not "
-"programmed in a language but graphically, the first exercises can be used as an "
-"introduction activity to what programming means for real beginners, but the "
-"last exercises constitute challenges and brain teaser even to professional "
-"programmers."
+"programmed in a language but graphically, the first exercises can be used as "
+"an introduction activity to what programming means for real beginners, but "
+"the last exercises constitute challenges and brain teaser even to "
+"professional programmers."
 msgstr ""
 "Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et "
 "passer directement à des exercices plus complets et plus intéressants. Par "
@@ -4803,11 +4848,11 @@ msgstr ""
 "serez amenés à améliorer votre code à plusieurs reprises afin de pouvoir "
 "sortir de n'importe quel type de labyrinthe. La leçon <i>LightBot</i> est un "
 "petit jeu de programmation où vous contrôlez un robot voulant éclairer le "
-"monde. Comme il est programmé graphiquement et non dans un language syntaxique, les premiers "
-"exercices peuvent être utilisés comme une introduction à ce que programmer "
-"veut dire pour les débutants. Mais les derniers exercices sont plus "
-"difficiles et devraient constituer des casse-têtes même pour les "
-"programmeurs professionnels."
+"monde. Comme il est programmé graphiquement et non dans un language "
+"syntaxique, les premiers exercices peuvent être utilisés comme une "
+"introduction à ce que programmer veut dire pour les débutants. Mais les "
+"derniers exercices sont plus difficiles et devraient constituer des casse-"
+"têtes même pour les programmeurs professionnels."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture.html:3
@@ -4832,6 +4877,23 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture.html:10
+#, fuzzy
+#| msgid ""
+#| "Your goal (here and in any well written program) is to write the simplest "
+#| "possible <code>run()</code>. For that, you have to decompose your work in "
+#| "sub-steps, and write a specific method for each sub-step."
+msgid ""
+"Your goal (here and in any well written program) is to write the simplest "
+"possible main code. For that, you have to decompose your work in sub-steps, "
+"and write a specific method for each sub-step."
+msgstr ""
+"Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire "
+"une méthode <code>run()</code> la plus simple possible. Pour cela, vous "
+"veillerez à décomposer le travail à faire en sous-étape, et à faire réaliser "
+"chaque sous-étape par une méthode particulière."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/MethodsPicture.html:14
 msgid ""
 "If you observe carefully the picture to draw, it is constituted of four "
 "parts depicting a sort of V using a different color. A possible "
@@ -4845,13 +4907,19 @@ msgstr ""
 "courante. Son prototype peut être :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/MethodsPicture.html:14
+#: src/lessons/welcome/MethodsPicture.html:18
 #, no-wrap
 msgid "void makeV(Color c)"
 msgstr "void makeV(Color c)"
 
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/MethodsPicture.html:19
+#, no-wrap
+msgid "makeV(c)"
+msgstr ""
+
 #. type: Content of: <p><p>
-#: src/lessons/welcome/MethodsPicture.html:16
+#: src/lessons/welcome/MethodsPicture.html:21
 msgid ""
 "The <code>Color</code> data type naturally describes a particular color. "
 "Your <code>run()</code> method should probably call <code>makeV</code> with "
@@ -4863,27 +4931,27 @@ msgstr ""
 "chaque appel) :"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:21
+#: src/lessons/welcome/MethodsPicture.html:26
 msgid "Color.yellow"
 msgstr "Color.yellow"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:22
+#: src/lessons/welcome/MethodsPicture.html:27
 msgid "Color.red"
 msgstr "Color.red"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:23
+#: src/lessons/welcome/MethodsPicture.html:28
 msgid "Color.blue"
 msgstr "Color.blue"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/MethodsPicture.html:24
+#: src/lessons/welcome/MethodsPicture.html:29
 msgid "Color.green"
 msgstr "Color.green"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:27
+#: src/lessons/welcome/MethodsPicture.html:32
 msgid ""
 "In <code>makeV()</code>, you should use the <code>setBrushColor()</code> "
 "method (predefined in the buggle) to change the color of the buggle's brush, "
@@ -4896,7 +4964,7 @@ msgstr ""
 "<code>brushDown()</code> pour lever et baisser le pinceau."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:32
+#: src/lessons/welcome/MethodsPicture.html:37
 msgid ""
 "It may be wise to write the <code>makeV()</code> so that it places directly "
 "the buggle in position for the next V."
@@ -4905,7 +4973,7 @@ msgstr ""
 "position pour dessiner le prochain V directement."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/MethodsPicture.html:35
+#: src/lessons/welcome/MethodsPicture.html:40
 msgid ""
 "Your turn. The <code>run()</code> method should not be longer than 4 lines..."
 msgstr ""
@@ -4935,8 +5003,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture2.html:10
+#, fuzzy
+#| msgid ""
+#| "But you want to keep your <code>run()</code> as simple as possible. For "
+#| "that, define new methods to deal simply with the repetitions in the "
+#| "pattern. For example, a method <code>makePattern()</code> achieving the "
+#| "pattern of previous example seems to be a good idea (but this may not be "
+#| "enough)."
 msgid ""
-"But you want to keep your <code>run()</code> as simple as possible. For "
+"But you want to keep your main<code>run()</code> as simple as possible. For "
 "that, define new methods to deal simply with the repetitions in the pattern. "
 "For example, a method <code>makePattern()</code> achieving the pattern of "
 "previous example seems to be a good idea (but this may not be enough)."
@@ -4949,6 +5024,27 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/MethodsPicture2.html:16
+#, fuzzy
+#| msgid ""
+#| "But you want to keep your <code>run()</code> as simple as possible. For "
+#| "that, define new methods to deal simply with the repetitions in the "
+#| "pattern. For example, a method <code>makePattern()</code> achieving the "
+#| "pattern of previous example seems to be a good idea (but this may not be "
+#| "enough)."
+msgid ""
+"But you want to keep your main code as simple as possible. For that, define "
+"new methods to deal simply with the repetitions in the pattern. For example, "
+"a method <code>makePattern()</code> achieving the pattern of previous "
+"example seems to be a good idea (but this may not be enough)."
+msgstr ""
+"Mais pour que votre méthode <code>run()</code> reste aussi simple que "
+"possible, il faudra définir de nouvelles méthodes afin de gérer simplement "
+"les repétions du motif. Par exemple, une méthode <code>makePattern()</code> "
+"réalisant le motif de l'exercice précédent semble être un bon départ (mais "
+"ce n'est sans doute pas suffisant)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/MethodsPicture2.html:22
 msgid ""
 "Why don't you give it a shot? The <code>run()</code> method shouldn't take "
 "more than 2 lines (included in a for loop)"
@@ -4957,15 +5053,17 @@ msgstr ""
 "de 2 lignes, incluses dans une boucle for..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/MethodsPicture2.html:19
+#: src/lessons/welcome/MethodsPicture2.html:25
+#, fuzzy
+#| msgid ""
+#| "Why don't you give it a shot? The <code>run()</code> method shouldn't "
+#| "take more than 2 lines (included in a for loop)"
 msgid ""
-"To proceed to the next exercise, you need to remark that the combobox used "
-"to switch the exercise have a scroll bar that you can use to see the next "
-"exercises of the lesson."
+"Why don't you give it a shot? The main code method shouldn't take more than "
+"2 lines (included in a for loop)"
 msgstr ""
-"Pour passer à l'exercice suivant, remarquez que le menu défilant pour "
-"changer l'exercice est doté d'un ascenseur que vous devez utiliser pour voir "
-"la suite."
+"À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
+"de 2 lignes, incluses dans une boucle for..."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/MethodsPicture3.html:3
@@ -7856,7 +7954,11 @@ msgid ""
 "sorting algorithms. The list of buildins that you can use in your algorithms "
 "is available in the world reference documentation (\"Help\"-&gt;\"About this "
 "world\")."
-msgstr "Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de tri existants. La liste des primitives que vous pouvez utiliser dans vos programmes est disponible dans la documentation de référence du monde (\"Help\" -&gt; \"About this world\")."
+msgstr ""
+"Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de "
+"tri existants. La liste des primitives que vous pouvez utiliser dans vos "
+"programmes est disponible dans la documentation de référence du monde (\"Help"
+"\" -&gt; \"About this world\")."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:27
@@ -7876,7 +7978,18 @@ msgid ""
 "sorted: the algorithm can stop.  Bubble sort is studied because of its "
 "simplicity, but it is almost never used in practice because of its bad "
 "performance (O(n^2) on average)."
-msgstr "Le premier algorithme de tri est le plus simple existant : le tri à bulles ou tri par propagation consiste à faire remonter progressivement les plus petits éléments d'une liste, comme les bulles d'air remontent à la surface d'un liquide. L'algorithme parcourt la liste, et compare les couples d'éléments successifs. Lorsque deux éléments successifs ne sont pas dans l'ordre croissant, ils sont échangés. Après chaque parcours complet de la liste, l'algorithme recommence l'opération. Lorsqu'aucun échange n'a lieu pendant un parcours, cela signifie que la liste est triée : l'algorithme peut s'arrêter.  La simplicité de cet algorithme justifie son étude, mais ses piètres performances (O(n2) en moyenne) font qu'il n'est quasiment jamais utilisé en pratique."
+msgstr ""
+"Le premier algorithme de tri est le plus simple existant : le tri à bulles "
+"ou tri par propagation consiste à faire remonter progressivement les plus "
+"petits éléments d'une liste, comme les bulles d'air remontent à la surface "
+"d'un liquide. L'algorithme parcourt la liste, et compare les couples "
+"d'éléments successifs. Lorsque deux éléments successifs ne sont pas dans "
+"l'ordre croissant, ils sont échangés. Après chaque parcours complet de la "
+"liste, l'algorithme recommence l'opération. Lorsqu'aucun échange n'a lieu "
+"pendant un parcours, cela signifie que la liste est triée : l'algorithme "
+"peut s'arrêter.  La simplicité de cet algorithme justifie son étude, mais "
+"ses piètres performances (O(n2) en moyenne) font qu'il n'est quasiment "
+"jamais utilisé en pratique."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:39
@@ -8006,8 +8119,10 @@ msgid ""
 "to the internal one."
 msgstr ""
 "Pour cela, utilisez simplement le mot-clé <code>break></code>, qui coupe\n"
-"l'exécutino de la boucle englobante. Attention, si vous avez plusieurs boucles\n"
-"imbriquées, c'est celle situé tout au fond (au plus près du mot-clé break) qui\n"
+"l'exécutino de la boucle englobante. Attention, si vous avez plusieurs "
+"boucles\n"
+"imbriquées, c'est celle situé tout au fond (au plus près du mot-clé break) "
+"qui\n"
 "est cassée."
 
 #. type: Attribute 'alt' of: <div>
@@ -12693,6 +12808,15 @@ msgstr ""
 #: src/lessons/smn/baseball/BaseballGameMorePlayers.html:37
 msgid "There are seven methods provided :"
 msgstr "Sept méthodes vous sont fournies :"
+
+#~ msgid ""
+#~ "To proceed to the next exercise, you need to remark that the combobox "
+#~ "used to switch the exercise have a scroll bar that you can use to see the "
+#~ "next exercises of the lesson."
+#~ msgstr ""
+#~ "Pour passer à l'exercice suivant, remarquez que le menu défilant pour "
+#~ "changer l'exercice est doté d'un ascenseur que vous devez utiliser pour "
+#~ "voir la suite."
 
 #~ msgid "Views available"
 #~ msgstr "Changer la vue du monde"
