@@ -1,3 +1,11 @@
+20130516:
+  * Add an icon depicting the programming language in the status bar
+  * Various polishing of the exercises in Python
+  * Fix issue #64: Buggle interactive controls are now properly
+    initialized
+  * Package maze exercises in their own directories
+  * Add a control panel for the Sorting World
+  * Start porting bat exercises to python
 20130515:
   * Huge python cleanup:
     - various cleanups, code factorization and bug fixes

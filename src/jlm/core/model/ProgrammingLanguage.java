@@ -1,11 +1,15 @@
 package jlm.core.model;
 
+import javax.swing.Icon;
+
 public class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 	String lang;
 	String ext;
-	public ProgrammingLanguage(String l, String ext) {
+	Icon icon;
+	public ProgrammingLanguage(String l, String ext, Icon i) {
 		lang = l;
 		this.ext = ext;
+		this.icon = i;
 	}
 	public boolean equals(Object o) {
 		if (!super.equals(o))
@@ -36,5 +40,8 @@ public class ProgrammingLanguage implements Comparable<ProgrammingLanguage> {
 		if (res != 0)
 			return res;
 		return ext.compareTo(o.ext);
+	}
+	public Icon getIcon() {
+		return icon;
 	}
 }
