@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-16 11:33+0300\n"
-"PO-Revision-Date: 2013-05-16 11:19+0200\n"
+"POT-Creation-Date: 2013-05-16 11:51+0300\n"
+"PO-Revision-Date: 2013-05-16 11:58+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2540,7 +2540,7 @@ msgstr ""
 #: src/lessons/welcome/Methods.html:59
 #: src/lessons/welcome/MethodsDogHouse.html:49
 #: src/lessons/welcome/MethodsReturning.html:56
-#: src/lessons/welcome/MethodsArgs.html:69 src/lessons/welcome/BDR.html:157
+#: src/lessons/welcome/MethodsArgs.html:69 src/lessons/welcome/BDR.html:159
 #: src/lessons/welcome/BDR2.html:108 src/lessons/welcome/SlugHunting.html:33
 #: src/lessons/welcome/SlugTracking.html:20
 #: src/lessons/maze/RandomMouseMaze.html:23
@@ -5481,14 +5481,19 @@ msgstr ""
 #. type: Content of: <p><ul><li>
 #: src/lessons/welcome/BDR.html:146
 msgid ""
-"<code>boolean isOverMessage()</code>: returns true if and only if there is a "
-"message on the ground."
-msgstr ""
-"<code>boolean isOverMessage()</code> : renvoie vrai si et seulement s'il y a "
-"un message écrit par terre."
+"<code>boolean isOverMessage()</code>: returns <code>true</code> if and only "
+"if there is a message on the ground."
+msgstr "<code>boolean isOverMessage()</code> : renvoie vrai (<code>true</code>) si et seulement s'il y a un message écrit par terre."
 
 #. type: Content of: <p><ul><li>
 #: src/lessons/welcome/BDR.html:148
+msgid ""
+"<code>boolean isOverMessage()</code>: returns <code>True</code> if and only "
+"if there is a message on the ground."
+msgstr "<code>boolean isOverMessage()</code> : renvoie vrai (<code>True</code>) si et seulement s'il y a un message écrit par terre."
+
+#. type: Content of: <p><ul><li>
+#: src/lessons/welcome/BDR.html:150
 msgid ""
 "<code>String readMessage()</code>: returns the message written on the ground "
 "(or an empty string if nothing is written)."
@@ -5497,7 +5502,7 @@ msgstr ""
 "terre (s'il y a rien, on obtient une chaîne vide)."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/welcome/BDR.html:150
+#: src/lessons/welcome/BDR.html:152
 msgid ""
 "<code>void writeMessage(String msg)</code>: writes the specified message "
 "down on the ground. If there is already a message on the ground, the new "
@@ -5508,12 +5513,12 @@ msgstr ""
 "le nouveau message à la fin du précédent."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/welcome/BDR.html:153
+#: src/lessons/welcome/BDR.html:155
 msgid "<code>void clearMessage()</code>: clears what is written on the ground."
 msgstr "<code>void clearMessage()</code> : efface ce qui est écrit par terre."
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/BDR.html:157
+#: src/lessons/welcome/BDR.html:159
 msgid ""
 "<a name=\"Objectives\">The goal is then to organize a BDR game between the "
 "buggles by learning them to move according to the instructions written on "
@@ -5526,164 +5531,164 @@ msgstr ""
 "suivant:"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:163 src/lessons/welcome/BDR2.html:121
+#: src/lessons/welcome/BDR.html:165 src/lessons/welcome/BDR2.html:121
 msgid "Message"
 msgstr "Indication"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:164 src/lessons/welcome/BDR2.html:122
+#: src/lessons/welcome/BDR.html:166 src/lessons/welcome/BDR2.html:122
 msgid "What to do"
 msgstr "Quoi faire"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:165
+#: src/lessons/welcome/BDR.html:167
 msgid "Mnemonic"
 msgstr "Mnémotechnique"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/BDR.html:167 src/lessons/welcome/BDR2.html:124
+#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:124
 #: src/lessons/welcome/cells/TurmiteCreator.html:30
 #: src/lessons/welcome/cells/TurmiteCreator.html:33
 msgid "R"
 msgstr "R"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:167 src/lessons/welcome/BDR2.html:124
+#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:124
 msgid "Turn right and move one step forward"
 msgstr "Tourner à droite et avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:167
+#: src/lessons/welcome/BDR.html:169
 msgid "Right"
 msgstr "Right"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:168 src/lessons/welcome/BDR2.html:125
+#: src/lessons/welcome/BDR.html:170 src/lessons/welcome/BDR2.html:125
 msgid "L"
 msgstr "L"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:168 src/lessons/welcome/BDR2.html:125
+#: src/lessons/welcome/BDR.html:170 src/lessons/welcome/BDR2.html:125
 msgid "Turn left and move one step forward"
 msgstr "Tourner à gauche et avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:168
+#: src/lessons/welcome/BDR.html:170
 msgid "Left"
 msgstr "Left"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:169 src/lessons/welcome/BDR2.html:126
+#: src/lessons/welcome/BDR.html:171 src/lessons/welcome/BDR2.html:126
 msgid "I"
 msgstr "I"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:169
+#: src/lessons/welcome/BDR.html:171
 msgid "Turn back (U-turn) and move one step forward"
 msgstr "Tourner en sens inverse (demi tour) et avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:169
+#: src/lessons/welcome/BDR.html:171
 msgid "Inverse"
 msgstr "Inverse"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:171 src/lessons/welcome/BDR2.html:128
+#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:128
 msgid "A"
 msgstr "A"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:171 src/lessons/welcome/BDR2.html:128
+#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:128
 msgid "Move one step forward"
 msgstr "Avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:171
+#: src/lessons/welcome/BDR.html:173
 msgid "First letter of the alphabet"
 msgstr "première lettre de l'alphabet"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:172 src/lessons/welcome/BDR2.html:129
+#: src/lessons/welcome/BDR.html:174 src/lessons/welcome/BDR2.html:129
 msgid "B"
 msgstr "B"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:172 src/lessons/welcome/BDR2.html:129
+#: src/lessons/welcome/BDR.html:174 src/lessons/welcome/BDR2.html:129
 msgid "Move two steps forward"
 msgstr "Avancer de deux cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:172
+#: src/lessons/welcome/BDR.html:174
 msgid "Second letter of the alphabet"
 msgstr "deuxième lettre de l'alphabet"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:130
+#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:130
 msgid "C"
 msgstr "C"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:173 src/lessons/welcome/BDR2.html:130
+#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:130
 msgid "Move three steps forward"
 msgstr "Avancer de trois cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:173
+#: src/lessons/welcome/BDR.html:175
 msgid "Third letter of the alphabet"
 msgstr "troisième lettre de l'alphabet"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:135
+#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:135
 msgid "Z"
 msgstr "Z"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:175 src/lessons/welcome/BDR2.html:135
+#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:135
 msgid "Move one step backward"
 msgstr "Reculer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:175
+#: src/lessons/welcome/BDR.html:177
 msgid "One letter before the end of the alphabet"
 msgstr "A une lettre de la fin de l'alphabet"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:176 src/lessons/welcome/BDR2.html:136
+#: src/lessons/welcome/BDR.html:178 src/lessons/welcome/BDR2.html:136
 msgid "Y"
 msgstr "Y"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:176 src/lessons/welcome/BDR2.html:136
+#: src/lessons/welcome/BDR.html:178 src/lessons/welcome/BDR2.html:136
 msgid "Move two steps backward"
 msgstr "Reculer de deux cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:176
+#: src/lessons/welcome/BDR.html:178
 msgid "Two letters before the end of the alphabet"
 msgstr "à deux lettres de la fin de l'alphabet"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:137
+#: src/lessons/welcome/BDR.html:179 src/lessons/welcome/BDR2.html:137
 msgid "X"
 msgstr "X"
 
 #. type: Content of: <p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/BDR.html:177 src/lessons/welcome/BDR2.html:137
+#: src/lessons/welcome/BDR.html:179 src/lessons/welcome/BDR2.html:137
 msgid "Move three steps backward"
 msgstr "Reculer de trois cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/BDR.html:177
+#: src/lessons/welcome/BDR.html:179
 msgid "Three letters before the end of the alphabet"
 msgstr "A trois lettres de la fin de l'alphabet"
 
 #. type: Content of: <p><p><p><a><p><p>
-#: src/lessons/welcome/BDR.html:180 src/lessons/welcome/BDR2.html:143
+#: src/lessons/welcome/BDR.html:182 src/lessons/welcome/BDR2.html:143
 msgid "In any other case, you should stop"
 msgstr "Dans tous les autres cas, il faut s'arrêter."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:182
+#: src/lessons/welcome/BDR.html:184
 msgid ""
 "Write the code of the dance in the <code>run()</code> method which prototype "
 "is already in the editor."
@@ -5692,18 +5697,18 @@ msgstr ""
 "prototype se trouve déjà dans l'éditeur."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:185
+#: src/lessons/welcome/BDR.html:187
 msgid ""
 "Write the code of the dance directly in the editor, out of any function."
 msgstr ""
 
 #. type: Content of: <p><a><h3>
-#: src/lessons/welcome/BDR.html:188
+#: src/lessons/welcome/BDR.html:190
 msgid "Indications"
 msgstr "Indications"
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/BDR.html:190
+#: src/lessons/welcome/BDR.html:192
 msgid ""
 "This exercise may seem a bit complex at the first glance, but it comes down "
 "to summarizing the information above in a sequence of conditionals."
@@ -5713,7 +5718,7 @@ msgstr ""
 "conditionnelles."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:195
+#: src/lessons/welcome/BDR.html:197
 msgid ""
 "The first subtlety is that we use the <code>char getIndication()</code> "
 "instead of <code>String readMessage()</code>. This method, only known by the "
@@ -5726,17 +5731,7 @@ msgstr ""
 "premier caractère du message au sol (ou ' ' s'il n'y a rien d'écrit au sol)."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:200
-#, fuzzy
-#| msgid ""
-#| "The other subtlety is to keep working as long as there is some work to "
-#| "do, i.e., as long as we did not find a cell which content is not "
-#| "described in the table. The easier for that is to use a boolean variable "
-#| "(<code>finished</code>) that is initialized to <code>false</code> as "
-#| "termination condition for the loop. As soon as the buggle find a cell "
-#| "with a value not described in the table, the boolean variable is set to "
-#| "<code>false</code>. Thus the loop, will stop and the program will "
-#| "terminate."
+#: src/lessons/welcome/BDR.html:202
 msgid ""
 "The other subtlety is to keep working as long as there is some work to do, i."
 "e., as long as we did not find a cell which content is not described in the "
@@ -5745,16 +5740,22 @@ msgid ""
 "for the loop.  As soon as the buggle find a cell with a value not described "
 "in the table, the boolean variable is set to <code>false</code>.  Thus the "
 "loop, will stop and the program will terminate."
-msgstr ""
-"L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant "
-"qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus "
-"simple pour cela est de faire une boucle infinie (<code>while (true)</"
-"code>), avec tous les tests dans le corps. Si on trouve une case ne "
-"répondant à aucune ligne du tableau, on arrêtera tout d'un simple "
-"<code>return;</code>."
+msgstr "L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus simple pour cela est d'utiliser une variable booléenne (<code>fini</code>) en condition d'arrêt d'une boucle. Cette variable est initialisée à la valeur faux (<code>false</code>). Si on trouve une case ne répondant à aucune ligne du tableau, on change la valeur de cette variable à vrai (<code>true</code>. Cela arrête la boucle, et le programme s'arrête."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:207
+#: src/lessons/welcome/BDR.html:209
+msgid ""
+"The other subtlety is to keep working as long as there is some work to do, i."
+"e., as long as we did not find a cell which content is not described in the "
+"table. The easier for that is to use a boolean variable (<code>finished</"
+"code>)  that is initialized to <code>False</code> as termination condition "
+"for the loop.  As soon as the buggle find a cell with a value not described "
+"in the table, the boolean variable is set to <code>False</code>.  Thus the "
+"loop, will stop and the program will terminate."
+msgstr "L'autre subtilité est de travailler tant qu'on du travail à faire, i.e. tant qu'on a pas trouvé une case n'étant pas décrite dans le tableau. Le plus simple pour cela est d'utiliser une variable booléenne (<code>fini</code>) en condition d'arrêt d'une boucle. Cette variable est initialisée à la valeur faux (<code>False</code>). Si on trouve une case ne répondant à aucune ligne du tableau, on change la valeur de cette variable à vrai (<code>True</code>. Cela arrête la boucle, et le programme s'arrête."
+
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/BDR.html:217
 msgid ""
 "The functions having <code>void</code> as return type can contain some "
 "<tt>return</tt> without any associated value. It interrupts immediately "
@@ -5765,12 +5766,12 @@ msgstr ""
 "exécution."
 
 #. type: Content of: <p><a><h3>
-#: src/lessons/welcome/BDR.html:211
+#: src/lessons/welcome/BDR.html:221
 msgid "Tips and Hints"
 msgstr "Trucs et astuces"
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/BDR.html:213
+#: src/lessons/welcome/BDR.html:223
 msgid ""
 "If you fail understanding why the buggle does not execute the expected "
 "steps, try adding <code>brushDown()</code> in your method. This asks the "
@@ -5788,7 +5789,7 @@ msgstr ""
 "buggles, pas de dégrader le dance floor."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/BDR.html:220
+#: src/lessons/welcome/BDR.html:230
 msgid "When your program finally works, move on to the next exercise."
 msgstr "Quand votre programme fonctionne enfin, passez à l'exercice suivant."
 

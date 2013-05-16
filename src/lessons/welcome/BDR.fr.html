@@ -148,8 +148,10 @@ Les buggles peuvent écrire des choses par terre dans leur monde. Pour ce
 faire, elles utilisent les quatre méthodes suivantes:
 
 <ul>
-  <li><code>boolean isOverMessage()</code> : renvoie vrai si et seulement s'il y a
-un message écrit par terre.</li>
+  <li class="Java"><code>boolean isOverMessage()</code>: returns <code>true</code> if and only
+if there is a message on the ground.</li>
+  <li class="python"><code>boolean isOverMessage()</code>: returns <code>True</code> if and only
+if there is a message on the ground.</li>
   <li><code>String readMessage()</code> : renvoie le message qu'il y a écrit par
 terre (s'il y a rien, on obtient une chaîne vide).</li>
   <li><code>void writeMessage(String msg)</code> : écrit le message spécifié en
@@ -202,13 +204,22 @@ readMessage()</code>. Cette méthode, qui n'est connue que des buggles des
 exercice BDR, renvoie le premier caractère du message au sol (ou ' ' s'il
 n'y a rien d'écrit au sol). </p>
 
-<p>The other subtlety is to keep working as long as there is some work to do,
+<p class="Java">The other subtlety is to keep working as long as there is some work to do,
 i.e., as long as we did not find a cell which content is not described in
 the table. The easier for that is to use a boolean variable
 (<code>finished</code>)  that is initialized to <code>false</code> as
 termination condition for the loop.  As soon as the buggle find a cell with
 a value not described in the table, the boolean variable is set to
 <code>false</code>.  Thus the loop, will stop and the program will
+terminate. </p>
+
+<p class="python">The other subtlety is to keep working as long as there is some work to do,
+i.e., as long as we did not find a cell which content is not described in
+the table. The easier for that is to use a boolean variable
+(<code>finished</code>)  that is initialized to <code>False</code> as
+termination condition for the loop.  As soon as the buggle find a cell with
+a value not described in the table, the boolean variable is set to
+<code>False</code>.  Thus the loop, will stop and the program will
 terminate. </p>
 
 <p>Les fonctions dont le type de retour est <tt>void</tt> peuvent contenir des
