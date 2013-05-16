@@ -1,0 +1,49 @@
+<h1>BuggleWorld</h1>
+This world was invented by Lyn Turbak, at Wellesley College. It is full of
+Buggles, little animals understanding simple orders, and offers numerous
+possibilities of interaction with the world: taking or dropping objects,
+paint the ground, hit walls, etc.
+
+<h2>Methods understood by buggles</h2>
+<table border=1>
+<tr><td colspan=2 align=center><b>Moving</b><br/> (See also the note on exceptions, below)</td></tr>
+  <tr><td><b>Turn left<br/>Turn right<br/>Turn back<br/>Moving forward<br/>Moving back</b></td>
+      <td>void turnLeft()<br/>void turnRight()<br/>void turnBack()<br/>
+          void forward() or void forward(int)<br/>void backward() or void backward(int)<br/></td></tr>
+  <tr><td><b>Get X coordinate<br/>Get Y coordinate<br/>Set X coordinate<br/>Set Y coordinate<br/>Set position</b></td>
+      <td>int getX()<br/>int getY()<br/>void setX(int)<br/>void setY(int)<br/>void setPos(int,int)</td></tr>
+
+<tr><td colspan=2 align=center><b>Information on the buggle</b></td></tr>
+  <tr><td><b>Get the color<br/>Set the color</b></td>
+      <td>Color getColor()<br/>void setColor(Color)</td></tr>				
+  <tr><td><b>Look for a wall forward<br/>Look for a wall backward</b></td>
+      <td>boolean isFacingWall()<br/>boolean isBackingWall()</td></tr>				
+  <tr><td><b>Get heading<br/>Set heading</b><br/>valid directions are:</td>
+      <td>Direction getDirection()<br/>void setDirection(Direction)<br/>Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST</td></tr>
+ 
+<tr><td colspan=2 align=center><b>About the brush</b></td></tr>
+  <tr><td><b>Brush down<br/>Brush up<br/>Get brush position</b></td>
+      <td>void brushUp()<br/>void brushDown()<br/>boolean isBrushDown()</td></tr>
+  <tr><td><b>Change the brush color<br/>Get the color of the brush</b></td>
+      <td>void setBrushColor(Color)<br/>Color getBrushColor()</td></tr>
+
+<tr><td colspan=2 align=center><b>Interacting with the world</b></td></tr>
+  <tr><td><b>Get the color of the ground</b></td><td>Color getGroundColor()</td></tr>
+
+  <tr><td><b>Look for a baggle on the ground<br/>Look for a baggle in bag<br/>Pickup a baggle<br/>Drop a baggle</b><br/>
+      (see the note on exceptions)</td>
+      <td>boolean isOverBaggle()<br/>boolean isCarryingBaggle()<br/>void pickUpBaggle()<br/>void dropBaggle()</td></tr>
+
+  <tr><td><b>Look for a message<br/>Add a message<br/>Read the message<br/>Erase the message</b></td>
+      <td>boolean isOverMessage()<br/>void writeMessage(String)<br/>String readMessage()<br/>void clearMessage()</td></tr>
+</table>
+
+<h2>Note on exceptions</h2>
+Regular buggles throw a BuggleWallException exception if you ask them to
+traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you
+ask them to pickup a baggle from an empty cell, or a
+AlreadyHaveBaggleException exception if they already carry a baggle.  Trying
+to drop a baggle on a cell already containing one throws an
+AlreadyHaveBaggleException exception.
+<p>SimpleBuggles (ie, the one used in first exercises) display an error message
+on problem so that you don't need to know what an exception is.</p>
