@@ -1,0 +1,30 @@
+<h2>Boucles jusqu'à<tt> (do ... while)</tt></h2>
+
+<p class="Python">Il y a ici un autre petit exercice sur les boucles. Il est légèrement plus
+complexe comme nous voulons que l'action soit exécutée dans tous les cas,
+même si la condition est directement fausse. Certains langages ont des
+constructions spécifiques pour cela, mais pas le langage Python. Mais il n'y
+a pas de problème, je suis sûr que vous pouvez faire sans, n'est-ce pas ?</p>
+
+<p class="Java">Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
+et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
+parfois que l'on veuille que le corps de la boucle soit évalué au moins une
+fois, même si la condition est initialement fausse. On utilise pour cela une
+variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :
+<pre class="Java">do {
+&nbsp;&nbsp;<b>action()</b>;
+} while (<b>condition</b>);</pre></p>
+
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> Certaines cases du monde sont jaunes, mais votre buggle
+ne supporte pas de s'y trouver comme c'est son cas actuellement. Écrivez le
+code lui permettant d'avancer jusqu'à se trouver sur une case blanche. Vous
+utiliserez pour cela la méthode isGroundWhite(), que seule la buggle de cet
+exercice connaît. Le truc est que même si le sol de la première case est
+blanc, il faut quand même faire avancer la buggle d'un pas.    
+
+<p>L'idée général est donc de faire: 
+<pre>avancer jusqu'à se trouver sur une case blanche</pre>
+
+<p class="Java"><i>Remarque :</i> il est également possible de résoudre cet exercice avec
+une boucle <tt>while</tt> classique, mais ce n'est pas l'objectif.</p>
+

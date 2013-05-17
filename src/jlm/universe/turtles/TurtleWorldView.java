@@ -42,9 +42,8 @@ public class TurtleWorldView extends WorldView {
 			while (it2.hasNext())
 				it2.next().draw(g2);			
 		}
-		Iterator<Entity> it = world.entities();
-		while (it.hasNext())
-			drawTurtle(g2, (Turtle)it.next());
+		for (Entity ent : world.getEntities())
+			drawTurtle(g2, (Turtle)ent);
 		
 		
 	}

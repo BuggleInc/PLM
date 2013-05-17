@@ -1,0 +1,109 @@
+<h2>Méthodes avec paramètres</h2>
+
+N'êtes vous pas fatigué d'écrire encore et encore le code qui permet
+d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les
+méthode <tt>forward2()</tt>, <tt>forward3()</tt>, <tt>forward4()</tt>, et
+<tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt>, et ainsi
+de suite, ça ne constitue pas un réel gain de temps...
+
+<p>Heureusement, il est possible de donner des <b>paramètres</b> à vos
+méthodes. Il faut marquer leur type et leur nom entre les parenthèses qui
+suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de
+la fonction comme s'il s'agissait de variables définies ici.
+
+<pre class="Java">double diviseParDeux(double x) {
+&nbsp;&nbsp;return x / 2;
+}</pre>
+
+<pre class="Python">def diviseParDeux(x):
+&nbsp;&nbsp;return x / 2
+</pre>
+
+<p>À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les
+parenthèses de l'appel.
+<pre class="Java">double y = diviseParDeux(3.14);</pre>
+
+<pre class="Python">y = diviseParDeux(3.14);</pre>
+
+
+<p>Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules,
+lors de la déclaration comme lors de l'appel.
+
+<pre class="Java">double divise(double x, double y) {
+&nbsp;&nbsp;return x / y;
+}</pre>
+<pre class="Java">double y = divise(3.14 , 1.5);</pre>
+
+<pre class="Python">def divise(double x, double y):
+&nbsp;&nbsp;return x / y
+}</pre>
+<pre class="Python">y = divise(3.14 , 1.5);</pre>
+
+
+<p class="Java">En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition
+qu'elles n'aient pas le même nombre et les mêmes types de paramètres (on dit
+qu'elles n'ont pas la même <b>signature</b>).
+<pre class="Java">int max(int x, int y) {
+&nbsp;&nbsp;if (x > y) {
+&nbsp;&nbsp;&nbsp;&nbsp;return x;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;return y;
+}
+int max(int x, int y, int z) {
+&nbsp;&nbsp;if (x > y && x > z) {
+&nbsp;&nbsp;&nbsp;&nbsp;return x;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;if (y > z) {
+&nbsp;&nbsp;&nbsp;&nbsp;return y;
+&nbsp;&nbsp;}
+&nbsp;&nbsp;return z;
+}</pre>
+
+
+
+<!-- introduce default value for parameters in Python language -->
+<p class="Java">Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque
+alternative. Cela fonctionne tout de même car un <tt>return</tt> interrompt
+l'exécution de la méthode. Si on arrive à la dernière ligne de
+<code>max(int,int)</code>, on est donc sur que <code>x&lt;=y</code> car dans
+le cas contraire, le <tt>return</tt> de la deuxième ligne aurait arrêté
+l'exécution de la fonction.</p>
+
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> Il s'agit cette fois d'écrire une méthode
+<code>move(int nbPas, boolean forward)</code> qui avance de
+<code>nbPas</code> si <code>forward</code> est vrai, et recule d'autant de
+pas si le booléen est faux. La buggle s'en servira pour retourner sur la
+ligne du haut. Elle utilisera au passage des méthodes que l'on ne connaît
+pas encore pour deviner sa position et sa direction actuelles afin de
+calculer le sens et le nombre de pas à faire (mais ce n'est pas important
+ici).
+
+<p>Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas
+grand chose pour vous, puisque toutes sont ici régies par le même code.</p>
+
+<p>Le code de la méthode à proprement parler ne devrait pas poser de problème.</p>
+
+<h2>Et ensuite?</h2>
+<p>Vous connaissez maintenant les bases de la programmation. Disons au moins
+que vous avez vu les concepts les plus important et que vous devriez être
+capable de lire et comprendre la plupart des programmes écrits. Pour plus de
+sécurité, vous devriez faire les autres exercices de cette leçon pour
+solidifier vos acquis en les réutilisant dans diverses situations. Après
+cela, vous maîtriserez ce qu'on appelle la "programmation tactique", ce qui
+veut dire que votre maîtrise de la syntaxe vous permettra de vous concentrer
+sur les problèmes à résoudre sans vous battre contre le compilateur à propos
+de la syntaxe. Certains de ces exercices sont même amusants à résoudre ;)
+
+<p>Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et
+passer directement à des exercices plus complets et plus intéressants. Par
+exemple, la leçon sur les <i>Labyrinthes</i> vous apprendra à sortir d'un
+labyrinthe. Les algorithmes impliqués ne sont pas ultra complexes, mais vous
+serez amenés à améliorer votre code à plusieurs reprises afin de pouvoir
+sortir de n'importe quel type de labyrinthe. La leçon <i>LightBot</i> est un
+petit jeu de programmation où vous contrôlez un robot voulant éclairer le
+monde. Comme il est programmé graphiquement et non dans un language
+syntaxique, les premiers exercices peuvent être utilisés comme une
+introduction à ce que programmer veut dire pour les débutants. Mais les
+derniers exercices sont plus difficiles et devraient constituer des
+casse-têtes même pour les programmeurs professionnels.</p>   
+

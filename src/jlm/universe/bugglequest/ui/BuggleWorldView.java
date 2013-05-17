@@ -9,7 +9,6 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -59,9 +58,8 @@ public class BuggleWorldView extends WorldView {
 
 		drawBackground(g2);
 		
-		Iterator<Entity> it = world.entities();
-		while (it.hasNext()) {
-			AbstractBuggle b = (AbstractBuggle)it.next();  	
+		for (Entity ent: world.getEntities()) {
+			AbstractBuggle b = (AbstractBuggle)ent;  	
 			drawBuggle(g2, b);
 		}
 		

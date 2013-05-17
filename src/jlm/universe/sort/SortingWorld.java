@@ -3,6 +3,9 @@ package jlm.universe.sort;
 import java.awt.Color;
 import java.util.Random;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
@@ -69,9 +72,9 @@ public class SortingWorld extends World {
 //		return new WorldView[] { new SortingWorldView(this) };
 	}
 	@Override
-	public String getBindings(ProgrammingLanguage lang) {
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
 		if (lang.equals(Game.PYTHON)) {
-			String res =
+			e.eval(
 				"def getValueCount():\n" +
 				"  return entity.getValueCount()\n" +
 				"def compare(i,j):\n" +
@@ -94,10 +97,10 @@ public class SortingWorld extends World {
 				"  return entity.isSmallerThan(i,j)\n"+
 				"def checkme():\n"+
 				"  entity.checkme()\n"
-				;
-			return res;
+				);
+		} else {
+			throw new RuntimeException("No binding of SortingWorld for "+lang);
 		}
-		throw new RuntimeException("No binding of SortingWorld for "+lang);
 	}
 	
 	@Override

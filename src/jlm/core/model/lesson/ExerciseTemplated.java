@@ -228,10 +228,6 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected final void setup(World w) {
 		setup(new World[] {w});
 	}
-	@Override
-	protected void addProgLanguage(ProgrammingLanguage newL) {
-		System.err.println(getClass().getName()+"::addProgLanguage("+newL+") was called; This is wrong for TemplatedExercises. Please drop this call and write a .py template instead\n"); 
-	}
 	protected void setup(World[] ws) {
 		boolean foundALanguage=false;
 		worldDuplicate(ws);

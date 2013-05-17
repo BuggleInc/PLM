@@ -39,6 +39,10 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		//System.out.println("New template: "+sf.getTemplate());
 		computeAnswer();
 	}
+	protected void langTemplate(ProgrammingLanguage pl, String entName, String initialCode) {
+		newSource(pl, entName, initialCode, "$body");
+		addProgLanguage(pl);
+	}
 	protected void computeAnswer() {
 		for (World aw : answerWorld) 
 			run(aw);

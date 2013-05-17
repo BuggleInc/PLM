@@ -12,7 +12,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
-import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 
@@ -75,10 +74,9 @@ public class LightBotWorldView2D extends WorldView {
 			}
 		}
 		
-		// draw lightBots 
-		Iterator<Entity> it = world.entities();
-		while (it.hasNext())
-			drawBot2D(g2, (LightBotEntity) it.next());
+		// draw lightBots
+		for (Entity ent: world.getEntities())
+			drawBot2D(g2, (LightBotEntity) ent);
 	}
 
 	private void drawWorld2D(Graphics2D g) {
