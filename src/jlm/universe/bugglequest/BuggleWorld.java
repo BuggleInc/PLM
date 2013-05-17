@@ -257,6 +257,7 @@ public class BuggleWorld extends GridWorld {
 	public String getBindings(ProgrammingLanguage lang) {
 		if (lang.equals(Game.PYTHON)) {
 			String res =  
+				"import java.awt.Color as Color\n"+
 				"def forward(steps=1):\n"+
 				"	entity.forward(steps)\n"+
 				"def backward(steps=1):\n"+
