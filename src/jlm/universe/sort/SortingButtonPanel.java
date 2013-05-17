@@ -13,7 +13,7 @@ import jlm.universe.EntityControlPanel;
 
 /**
  * The control panel for the sorting world. 
- * It alows you to use the copy, setValue and swap methods interactively.
+ * It allows you to use the copy, setValue and swap methods interactively.
  * @author Julien BASTIAN
  * @see EntityControlPanel
  * @see SortingWorld
@@ -39,7 +39,7 @@ public class SortingButtonPanel extends EntityControlPanel {
 	/**
 	 * Initialize the command panel of the SortingButtonPanel
 	 * @param se The current sorting Entity
-	 * @return a JPanel containing 
+	 * @return a JPanel containing the command panel
 	 */
 	private JPanel createCommandPanel(SortingEntity se) {
 		JPanel commandPane = new JPanel();
