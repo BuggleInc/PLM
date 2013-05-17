@@ -1,4 +1,5 @@
 package lessons.bat.string1.bits;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -16,6 +17,7 @@ public class StringBits extends BatExercise {
 		myWorld.addTest(INVISIBLE, "Greetings") ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "stringBits", "def stringBits(str):\n");
 	}
 
 	/* BEGIN SKEL */

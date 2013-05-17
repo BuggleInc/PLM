@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.lessby10;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -27,6 +28,7 @@ public class LessBy10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 8, 12) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "lessBy10", "def lessBy10(a, b, c):\n");
 	}
 
 	/* BEGIN SKEL */

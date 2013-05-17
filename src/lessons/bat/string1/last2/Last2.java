@@ -1,4 +1,5 @@
 package lessons.bat.string1.last2;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -23,6 +24,7 @@ public class Last2 extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "last2", "def last2(str):\n");
 	}
 
 	/* BEGIN SKEL */

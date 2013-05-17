@@ -11,14 +11,14 @@ public class MonkeyTrouble extends BatExercise {
 	public MonkeyTrouble(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("MonkeyTrouble");
+		BatWorld myWorld = new BatWorld("monkeyTrouble");
 		myWorld.addTest(VISIBLE, true, true);
 		myWorld.addTest(VISIBLE, false, false);
 		myWorld.addTest(VISIBLE, true, false);
 		myWorld.addTest(INVISIBLE, false, true);
 		
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "MonkeyTrouble", "def MonkeyTrouble(aSmile,bSmile):\n");
+		langTemplate(Game.PYTHON, "monkeyTrouble", "def monkeyTrouble(aSmile, bSmile):\n");
 	}
 
 

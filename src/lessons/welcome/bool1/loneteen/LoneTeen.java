@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.loneteen;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class LoneTeen extends BatExercise {
 	public LoneTeen(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("LoneTeen");
+		BatWorld myWorld = new BatWorld("loneTeen");
 		myWorld.addTest(VISIBLE,  13,42);
 		myWorld.addTest(VISIBLE,  21,19);
 		myWorld.addTest(VISIBLE,  13,13);
@@ -27,6 +28,7 @@ public class LoneTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 42,42);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "loneTeen", "def loneTeen(a, b):\n");
 	}
 
 

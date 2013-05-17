@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.makes10;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class Makes10 extends BatExercise {
 	public Makes10(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("Makes10");
+		BatWorld myWorld = new BatWorld("makes10");
 		myWorld.addTest(VISIBLE,  9,10);
 		myWorld.addTest(VISIBLE,  9,9);
 		myWorld.addTest(VISIBLE,  1,9);
@@ -23,6 +24,7 @@ public class Makes10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 12,-2);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "makes10", "def makes10(a, b):\n");
 	}
 
 

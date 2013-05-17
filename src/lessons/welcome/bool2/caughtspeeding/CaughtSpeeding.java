@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.caughtspeeding;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class CaughtSpeeding extends BatExercise {
 	public CaughtSpeeding(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("CaughtSpeeding");
+		BatWorld myWorld = new BatWorld("caughtSpeeding");
 		myWorld.addTest(VISIBLE, 60, false) ;
 		myWorld.addTest(VISIBLE, 65, false) ;
 		myWorld.addTest(VISIBLE, 65, true) ;
@@ -25,6 +26,7 @@ public class CaughtSpeeding extends BatExercise {
 		myWorld.addTest(INVISIBLE, 90, false) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "caughtSpeeding", "def caughtSpeeding(speed, isBirthday):\n");
 	}
 
 	/* BEGIN SKEL */

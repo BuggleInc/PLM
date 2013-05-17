@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.posneg;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class PosNeg extends BatExercise {
 	public PosNeg(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("PosNeg");
+		BatWorld myWorld = new BatWorld("posNeg");
 		myWorld.addTest(VISIBLE, -1,1,false);
 		myWorld.addTest(VISIBLE, 1,-1,false);
 		myWorld.addTest(VISIBLE, 1,1,false);
@@ -27,6 +28,7 @@ public class PosNeg extends BatExercise {
 		myWorld.addTest(INVISIBLE, -5,-5,true);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "posNeg", "def posNeg(a, b, negative):\n");
 	}
 
 

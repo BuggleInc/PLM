@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.squirrelplay;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -26,6 +27,7 @@ public class SquirrelPlay extends BatExercise {
 		myWorld.addTest(INVISIBLE, 60, false) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "squirrelPlay", "def squirrelPlay(temp, isSummer):\n");
 	}
 
 	/* BEGIN SKEL */

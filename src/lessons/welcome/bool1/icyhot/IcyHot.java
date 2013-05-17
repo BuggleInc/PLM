@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.icyhot;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class IcyHot extends BatExercise {
 	public IcyHot(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("IcyHot");
+		BatWorld myWorld = new BatWorld("icyHot");
 		myWorld.addTest(VISIBLE, 120,-1);
 		myWorld.addTest(VISIBLE, -1,120);
 		myWorld.addTest(VISIBLE, 2,120);
@@ -20,6 +21,7 @@ public class IcyHot extends BatExercise {
 		myWorld.addTest(INVISIBLE, 120,120);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "icyHot", "def icyHot(temp1, temp2):\n");
 	}
 
 

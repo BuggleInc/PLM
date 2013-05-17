@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.in3050;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class In3050 extends BatExercise {
 	public In3050(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("In3050");
+		BatWorld myWorld = new BatWorld("in3050");
 		myWorld.addTest(VISIBLE,  30,31);
 		myWorld.addTest(VISIBLE,  30,41);
 		myWorld.addTest(VISIBLE,  40,50);
@@ -27,6 +28,7 @@ public class In3050 extends BatExercise {
 
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "in3050", "def in3050(a, b):\n");
 	}
 
 

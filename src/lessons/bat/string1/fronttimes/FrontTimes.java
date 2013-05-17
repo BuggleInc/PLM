@@ -1,4 +1,5 @@
 package lessons.bat.string1.fronttimes;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -18,6 +19,7 @@ public class FrontTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "Abc", 0) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "frontTimes", "def frontTimes(str, n):\n");
 	}
 
 	/* BEGIN SKEL */

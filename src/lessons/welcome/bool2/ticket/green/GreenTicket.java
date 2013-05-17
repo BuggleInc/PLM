@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.ticket.green;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class GreenTicket extends BatExercise {
 	public GreenTicket(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("GreenTicket");
+		BatWorld myWorld = new BatWorld("greenTicket");
 		myWorld.addTest(VISIBLE, 1, 2, 3) ;
 		myWorld.addTest(VISIBLE, 2, 2, 2) ;
 		myWorld.addTest(VISIBLE, 1, 1, 2) ;
@@ -25,6 +26,7 @@ public class GreenTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 9, 0, 9) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "greenTicket", "def greenTicket(a, b, c):\n");
 	}
 
 	/* BEGIN SKEL */

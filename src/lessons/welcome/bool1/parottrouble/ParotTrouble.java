@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.parottrouble;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class ParotTrouble extends BatExercise {
 	public ParotTrouble(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("ParotTrouble");
+		BatWorld myWorld = new BatWorld("parotTrouble");
 		myWorld.addTest(VISIBLE,  true,6);
 		myWorld.addTest(VISIBLE,  true,7);
 		myWorld.addTest(VISIBLE,  false,6);
@@ -23,6 +24,7 @@ public class ParotTrouble extends BatExercise {
 
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "parotTrouble", "def parotTrouble(talking, hour):\n");
 	}
 
 

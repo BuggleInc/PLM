@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.teensum;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -29,6 +30,7 @@ public class TeenSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 6, 7) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "teenSum", "def teenSum(a, b):\n");
 	}
 
 	/* BEGIN SKEL */

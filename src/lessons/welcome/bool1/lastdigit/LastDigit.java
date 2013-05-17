@@ -1,4 +1,5 @@
 package lessons.welcome.bool1.lastdigit;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -8,7 +9,7 @@ public class LastDigit extends BatExercise {
   public LastDigit(Lesson lesson) {
     super(lesson);
     
-    BatWorld myWorld = new BatWorld("LastDigit");
+    BatWorld myWorld = new BatWorld("lastDigit");
     myWorld.addTest(VISIBLE, 7, 17) ;
     myWorld.addTest(VISIBLE, 6, 17) ;
     myWorld.addTest(VISIBLE, 3, 113) ;
@@ -18,6 +19,7 @@ public class LastDigit extends BatExercise {
     myWorld.addTest(INVISIBLE, 11, 0) ;
 
     setup(myWorld);
+	langTemplate(Game.PYTHON, "lastDigit", "def lastDigit(a, b):\n");
   }
 
   /* BEGIN SKEL */

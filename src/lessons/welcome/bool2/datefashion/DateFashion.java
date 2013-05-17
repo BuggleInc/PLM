@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.datefashion;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class DateFashion extends BatExercise {
 	public DateFashion(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("DateFashion");
+		BatWorld myWorld = new BatWorld("dateFashion");
 		myWorld.addTest(VISIBLE, 5, 10) ;
 		myWorld.addTest(VISIBLE, 5, 2) ;
 		myWorld.addTest(VISIBLE, 5, 5) ;
@@ -25,6 +26,7 @@ public class DateFashion extends BatExercise {
 		myWorld.addTest(INVISIBLE, 6, 2) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "dateFashion", "def dateFashion(you, date):\n");
 	}
 
 	/* BEGIN SKEL */
