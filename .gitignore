@@ -3,3 +3,4 @@ dist
 keystore.properties
 .settings
 *~
+lib/jython/cachedir
