@@ -1,11 +1,11 @@
 package lessons.sort.gnome;
 
+import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.sort.SortingEntity;
-import jlm.universe.sort.SortingExercise;
 import jlm.universe.sort.SortingWorld;
 
-public class AlgGnomeSort extends SortingExercise {
+public class AlgGnomeSort extends ExerciseTemplated {
 
 	public AlgGnomeSort(Lesson lesson) {
 		super(lesson);

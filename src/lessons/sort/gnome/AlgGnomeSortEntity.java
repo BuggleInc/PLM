@@ -22,7 +22,6 @@ public class AlgGnomeSortEntity extends SortingEntity {
 			if (i==-1)
 				i=0;
 		}
-		checkme(); /* color everything in blue */
 	/* END SOLUTION */
 	}
 	/* END TEMPLATE */

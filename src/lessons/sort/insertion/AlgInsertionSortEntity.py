@@ -7,5 +7,4 @@ for i in range(getValueCount()):
     j = j-1
   setValue(j,value)
 # END TEMPLATE
-checkme()
 

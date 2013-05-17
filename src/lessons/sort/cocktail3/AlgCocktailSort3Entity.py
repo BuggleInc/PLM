@@ -8,10 +8,8 @@
 				if (!isSmaller(i,i+1)) {
 					swap(i,i+1);
 					swapped =true;
-				}	
-			sorted(end+1);
+				}
 			if (!swapped) {
-				checkme();
 				return;
 			}
 			swapped=false;
@@ -21,8 +19,6 @@
 					swap(i,i+1);
 					swapped =true;
 				}
-			sorted(begin);
 			begin++;
 		} while (swapped && end-begin>1);
-		checkme(); /* color everything in blue */
 # END TEMPLATE 

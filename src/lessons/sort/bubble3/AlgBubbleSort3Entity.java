@@ -19,9 +19,7 @@ public class AlgBubbleSort3Entity extends SortingEntity {
 					swapped=true;
 				}
 			}
-			sorted(i);
 			if (!swapped) {
-				checkme(); /* color everything in blue */
 				return;	
 			}
 		}

@@ -15,9 +15,7 @@ public class AlgBubbleSort2Entity extends SortingEntity {
 			for (int j = 0; j<i; j++) 
 				if (!isSmaller(j,j+1)) 
 					swap(j,j+1);
-			sorted(i);
 		}
-		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

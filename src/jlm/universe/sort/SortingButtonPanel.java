@@ -48,7 +48,7 @@ public class SortingButtonPanel extends EntityControlPanel {
 		String operationsAvailable[] = { "swap","setValue","copy"};
 		this.operationsComboBox = new JComboBox(operationsAvailable);
 		
-		int n = se.values.length;
+		int n = se.getValueCount();
 		Integer index[] = new Integer[n];
 		for ( int i = 0 ; i < n ; i++) {
 			index[i] = i; 

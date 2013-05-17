@@ -23,7 +23,6 @@ public class AlgCombSortEntity extends SortingEntity {
 					swapped =true;
 				}	
 		} while (gap>1 || swapped);
-		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

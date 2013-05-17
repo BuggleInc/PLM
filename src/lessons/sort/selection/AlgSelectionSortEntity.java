@@ -23,7 +23,6 @@ public class AlgSelectionSortEntity extends SortingEntity {
 
 			/* Swap the smallest unsorted element into the end of the sorted list. */
 			swap(min,i);
-			sorted(i);
 		}
 		/* END SOLUTION */
 	}

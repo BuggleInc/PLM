@@ -5,8 +5,6 @@ for i in range(getValueCount()-1,-1,-1):
     if not isSmaller(j,j+1):
       swap(j,j+1)
       swapped = True
-    sorted(i)
   if not swapped:
     break
-# END TEMPLATE 
-checkme()
+# END TEMPLATE

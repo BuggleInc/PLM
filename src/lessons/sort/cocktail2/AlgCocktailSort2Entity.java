@@ -20,18 +20,15 @@ public class AlgCocktailSort2Entity extends SortingEntity {
 				if (!isSmaller(i,i+1)) {
 					swap(i,i+1);
 					swapped =true;
-				}	
-			sorted(end+1);
+				}
 			end--;
 			for (int i=end; i>=begin; i--)
 				if (!isSmaller(i,i+1)) {
 					swap(i,i+1);
 					swapped =true;
 				}
-			sorted(begin);
 			begin++;
 		} while (swapped && end-begin>1);
-		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

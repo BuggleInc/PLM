@@ -11,5 +11,4 @@
 					swapped =true;
 				}	
 		} while (gap>1 || swapped);
-		checkme(); /* color everything in blue */
 # END TEMPLATE */

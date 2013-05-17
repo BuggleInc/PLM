@@ -25,7 +25,6 @@ public class AlgCocktailSort1Entity extends SortingEntity {
 					swapped =true;
 				}	
 		} while (swapped);
-		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

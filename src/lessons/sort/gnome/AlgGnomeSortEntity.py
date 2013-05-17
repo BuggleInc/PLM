@@ -10,5 +10,4 @@
 			if (i==-1)
 				i=0;
 		}
-		checkme(); /* color everything in blue */
 # END TEMPLATE */
