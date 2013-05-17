@@ -6,6 +6,7 @@ import javax.script.ScriptException;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
+import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 /**
@@ -40,7 +41,7 @@ public class PancakeWorld extends World {
 		this.stack =  PancakesStack.create(amountOfPancakes,mixed);
 		this.lastModifiedPancake = 0 ;
 	}
-
+	
 	/**
 	 * Make a textual description of the differences between the caller and world
 	 * @param world : the world with which you want to compare your world
@@ -60,7 +61,7 @@ public class PancakeWorld extends World {
 		}
 		return s;
 	}
-	
+
 	/**
 	 * Indicate whether some other object is "equal to" this one
 	 * @return If the two objects are equal
@@ -92,28 +93,11 @@ public class PancakeWorld extends World {
 	}
 	
 	/**
-	 * Return the script except that must be injected within the environment before running user code 
-	 * It should pass all order to the java entity, which were injected independently  
-	 * @return  the script except that must be injected within the environment before running user code 
-	 * @param the programming language used
-	 * @throws ScriptException 
+	 * Return the panel which let the user to interact dynamically with the world
 	 */
 	@Override
-	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
-		if (lang.equals(Game.PYTHON)) {
-			e.eval(
-				"def getStackSize():\n" +
-				"  return entity.getStackSize()\n" +
-				"def getPancakeSize(pancakeNumber):\n" +
-				"  return entity.getPancakeSize(pancakeNumber)\n" +
-				"def isPancakeUpsideDown(pancakeNumber):\n"+
-				"  return entity.isPancakeUpsideDown(pancakeNumber)\n" +
-				"def flip(numberOfPancakes):\n" +
-				"  entity.flip(numberOfPancakes)\n"	
-				);
-		} else {
-			throw new RuntimeException("No binding of PancakeWorld for "+lang);
-		}
+	public EntityControlPanel getEntityControlPanel() {
+		return new PancakeFlipButtonPanel();
 	}
 	
 	/**
@@ -142,7 +126,7 @@ public class PancakeWorld extends World {
 			return this.stack.getPancake(pancakeNumber).getRadius();
 		}
 	}
-
+	
 	/**
 	 * Getter for the stack of pancakes
 	 * @return return the stack of pancakes
@@ -150,7 +134,7 @@ public class PancakeWorld extends World {
 	protected PancakesStack getStack() {
 		return this.stack;
 	}
-	
+
 	/**
 	 * Give the size of the stack of pancakes
 	 * @return The number of pancakes in the stack
@@ -158,7 +142,7 @@ public class PancakeWorld extends World {
 	public int getStackSize() {
 		return this.stack.getSize();
 	}
-
+	
 	/** 
 	 * Return a component able of displaying the world
 	 * @return a component able of displaying the world
@@ -175,7 +159,7 @@ public class PancakeWorld extends World {
 	public boolean isFlipped() {
 		return this.stack.isFlipped();
 	}
-	
+
 	/**
 	 * Tell if a specific pancake, among others, is upside down
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
@@ -202,7 +186,7 @@ public class PancakeWorld extends World {
 	public boolean isSorted() {
 		return this.stack.isSorted();
 	}
-
+	
 	/** 
 	 * Reset the state of the current world to the one passed in argument
 	 * @param the world which must be the new start of your current world
@@ -212,6 +196,31 @@ public class PancakeWorld extends World {
 		PancakeWorld other = (PancakeWorld) world;
 		this.stack = other.stack.copy();
 		super.reset(world);		
+	}
+
+	/**
+	 * Return the script except that must be injected within the environment before running user code 
+	 * It should pass all order to the java entity, which were injected independently  
+	 * @return  the script except that must be injected within the environment before running user code 
+	 * @param the programming language used
+	 * @throws ScriptException 
+	 */
+	@Override
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
+		if (lang.equals(Game.PYTHON)) {
+			e.eval(
+				"def getStackSize():\n" +
+				"  return entity.getStackSize()\n" +
+				"def getPancakeSize(pancakeNumber):\n" +
+				"  return entity.getPancakeSize(pancakeNumber)\n" +
+				"def isPancakeUpsideDown(pancakeNumber):\n"+
+				"  return entity.isPancakeUpsideDown(pancakeNumber)\n" +
+				"def flip(numberOfPancakes):\n" +
+				"  entity.flip(numberOfPancakes)\n"	
+				);
+		} else {
+			throw new RuntimeException("No binding of PancakeWorld for "+lang);
+		}
 	}
 
 	/**
