@@ -17,9 +17,7 @@ public class PancakeEntity extends Entity {
 	 * @return A new instance of PancakeEntity
 	 */
 	public PancakeEntity() {
-		/* BEGIN HIDDEN */
 		super("Pancake Entity");
-		/* END HIDDEN */
 	}
 
 	/**
