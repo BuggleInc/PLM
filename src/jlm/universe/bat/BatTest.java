@@ -120,6 +120,8 @@ public class BatTest {
 					} else {
 						sb.append("False,");
 					}
+				} else if (o instanceof String && pl.equals(Game.PYTHON)) {
+					sb.append("\""+o+"\",");
 				} else {
 					sb.append(o.toString()+",");
 				}
