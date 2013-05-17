@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.sharedigit;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -23,6 +24,7 @@ public class ShareDigit extends BatExercise {
 		myWorld.addTest(INVISIBLE, 55, 44) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "shareDigit", "def shareDigit(a, b):\n");
 	}
 
 	/* BEGIN SKEL */

@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.nearhundred;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class NearHundred extends BatExercise {
 	public NearHundred(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("NearHundred");
+		BatWorld myWorld = new BatWorld("nearHundred");
 		myWorld.addTest(VISIBLE, 93);
 		myWorld.addTest(VISIBLE, 90);
 		myWorld.addTest(VISIBLE, 89);
@@ -24,6 +25,7 @@ public class NearHundred extends BatExercise {
 		myWorld.addTest(INVISIBLE, -100);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "nearHundred", "def nearHundred(n):\n");
 	}
 
 

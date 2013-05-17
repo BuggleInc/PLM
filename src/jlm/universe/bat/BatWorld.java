@@ -111,7 +111,6 @@ public class BatWorld extends World {
 			for (BatTest t:((BatWorld) ent.getWorld()).getTests())
 				try {
 					engine.put("thetest",t);
-					
 					engine.eval("thetest.setResult("+t.getName()+")");
 				} catch (Exception e) {
 					t.setResult("this test raised an exception: "+e.getMessage());

@@ -141,6 +141,9 @@ public abstract class World {
 				/* Ugly hack, but print is currently not working! Ugh, taste my axe, bastard! */
 				if (progLang.equals(Game.PYTHON)) 
 					engine.eval(
+							"def getParam(i):\n"+
+							"  return entity.getParam(i)\n"+
+									
 							"import java.lang.System.err\n"+
 							"def log(a):\n"+
 							"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))");									

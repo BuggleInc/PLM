@@ -21,7 +21,6 @@ import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.bugglequest.AbstractBuggle;
-import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.exception.BuggleWallException;
 
 public class BuggleButtonPanel extends EntityControlPanel {

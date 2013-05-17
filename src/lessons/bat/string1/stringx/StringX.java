@@ -1,4 +1,5 @@
 package lessons.bat.string1.stringx;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -19,6 +20,7 @@ public class StringX extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "stringX", "def stringX(str):\n");
 	}
 
 	/* BEGIN SKEL */

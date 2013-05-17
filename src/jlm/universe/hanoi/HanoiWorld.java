@@ -3,7 +3,9 @@ package jlm.universe.hanoi;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
+import javax.script.ScriptException;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
@@ -144,8 +146,15 @@ public class HanoiWorld extends World {
 		return slots[slot].size();
 	}
 	@Override
-	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
-		throw new RuntimeException("No binding of HanoiWorld for "+lang);
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
+		if (lang.equals(Game.PYTHON)) {
+			e.eval( "def move(src,dst):\n"+
+					"  entity.move(src,dst)\n"+
+					"def getSlotSize(slot):\n"+
+					"  return entity.getSlotSize(slot)\n");
+		} else {
+			throw new RuntimeException("No binding of HanoiWorld for "+lang);
+		}
 	}
 	/* END HIDDEN */
 

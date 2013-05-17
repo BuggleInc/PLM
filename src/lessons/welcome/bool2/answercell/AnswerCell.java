@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.answercell;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class AnswerCell extends BatExercise {
 	public AnswerCell(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("AnswerCell");
+		BatWorld myWorld = new BatWorld("answerCell");
 		myWorld.addTest(VISIBLE, false, false, false) ;
 		myWorld.addTest(VISIBLE, false, false, true) ;
 		myWorld.addTest(VISIBLE, true, false, false) ;
@@ -19,6 +20,7 @@ public class AnswerCell extends BatExercise {
 		myWorld.addTest(INVISIBLE, true, true, true) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "answerCell", "def answerCell(isMorning, isMom, isAsleep):\n");
 	}
 
 	/* BEGIN SKEL */

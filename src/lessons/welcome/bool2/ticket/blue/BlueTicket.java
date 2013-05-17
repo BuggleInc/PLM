@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.ticket.blue;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class BlueTicket extends BatExercise {
 	public BlueTicket(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("BlueTicket");
+		BatWorld myWorld = new BatWorld("blueTicket");
 		myWorld.addTest(VISIBLE, 9, 1, 0) ;
 		myWorld.addTest(VISIBLE, 9, 2, 0) ;
 		myWorld.addTest(VISIBLE, 6, 1, 4) ;
@@ -25,6 +26,7 @@ public class BlueTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 8, 4, 1) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "blueTicket", "def blueTicket(a, b, c):\n");
 	}
 
 	/* BEGIN SKEL */

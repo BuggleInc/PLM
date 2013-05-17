@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.party.cigar;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class CigarParty extends BatExercise {
 	public CigarParty(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("CigarParty");
+		BatWorld myWorld = new BatWorld("cigarParty");
 		myWorld.addTest(VISIBLE, 30, false) ;
 		myWorld.addTest(VISIBLE, 50, false) ;
 		myWorld.addTest(VISIBLE, 70, true) ;
@@ -24,6 +25,7 @@ public class CigarParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 39, true) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "cigarParty", "def cigarParty(cigars, isWeekend):\n");
 	}
 
 	/* BEGIN SKEL */

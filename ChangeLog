@@ -7,6 +7,7 @@
   * Refresh the french translation
   * Add a control panel for the Sorting World
   * Start porting bat exercises to python
+  * Port hanoiWorld to python
 20130515:
   * Huge python cleanup:
     - various cleanups, code factorization and bug fixes

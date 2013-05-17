@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.inorder;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class InOrder extends BatExercise {
 	public InOrder(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("InOrder");
+		BatWorld myWorld = new BatWorld("inOrder");
 		myWorld.addTest(VISIBLE, 1, 2, 4, false) ;
 		myWorld.addTest(VISIBLE, 1, 2, 1, false) ;
 		myWorld.addTest(VISIBLE, 1, 1, 2, true) ;
@@ -25,6 +26,7 @@ public class InOrder extends BatExercise {
 		myWorld.addTest(INVISIBLE, 7, 5, 4, true) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "inOrder", "def inOrder(a, b, c, bOk):\n");
 	}
 
 	/* BEGIN SKEL */

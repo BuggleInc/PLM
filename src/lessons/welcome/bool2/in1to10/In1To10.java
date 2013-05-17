@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.in1to10;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class In1To10 extends BatExercise {
 	public In1To10(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("In1To10");
+		BatWorld myWorld = new BatWorld("in1To10");
 		myWorld.addTest(VISIBLE, 5, false) ;
 		myWorld.addTest(VISIBLE, 11, false) ;
 		myWorld.addTest(VISIBLE, 11, true) ;
@@ -25,6 +26,7 @@ public class In1To10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, -1, false) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "in1To10", "def in1To10(n, outsideMode):\n");
 	}
 
 	/* BEGIN SKEL */

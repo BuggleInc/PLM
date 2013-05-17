@@ -1,4 +1,5 @@
 package lessons.welcome.bool1.max1020;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -8,7 +9,7 @@ public class Max1020 extends BatExercise {
   public Max1020(Lesson lesson) {
     super(lesson);
     
-    BatWorld myWorld = new BatWorld("Max1023");
+    BatWorld myWorld = new BatWorld("max1020");
     myWorld.addTest(VISIBLE, 11, 19) ;
     myWorld.addTest(VISIBLE, 19, 11) ;
     myWorld.addTest(VISIBLE, 11, 9) ;
@@ -22,6 +23,7 @@ public class Max1020 extends BatExercise {
     myWorld.addTest(INVISIBLE, 17, 16) ;
 
     setup(myWorld);
+	langTemplate(Game.PYTHON, "max1020", "def max1020(a, b):\n");
   }
 
   /* BEGIN SKEL */

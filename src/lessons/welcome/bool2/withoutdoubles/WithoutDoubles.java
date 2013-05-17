@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.withoutdoubles;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -25,6 +26,7 @@ public class WithoutDoubles extends BatExercise {
 		myWorld.addTest(INVISIBLE, 6, 1, false) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "withoutDoubles", "def withoutDoubles(die1, die2, noDoubles):\n");
 	}
 
 	/* BEGIN SKEL */

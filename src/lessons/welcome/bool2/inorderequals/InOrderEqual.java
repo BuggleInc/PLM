@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.inorderequals;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -27,6 +28,7 @@ public class InOrderEqual extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, 1, 0, true) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "inOrderEqual", "def inOrderEqual(a, b, c, equalOk):\n");
 	}
 
 	/* BEGIN SKEL */

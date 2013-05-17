@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.alarmclock;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class AlarmClock extends BatExercise {
 	public AlarmClock(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("AlarmClock");
+		BatWorld myWorld = new BatWorld("alarmClock");
 		myWorld.addTest(VISIBLE, 1, false) ;
 		myWorld.addTest(VISIBLE, 5, false) ;
 		myWorld.addTest(VISIBLE, 0, false) ;
@@ -22,6 +23,7 @@ public class AlarmClock extends BatExercise {
 		myWorld.addTest(INVISIBLE, 5, true) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "alarmClock", "def alarmClock(day, vacation):\n");
 	}
 
 	/* BEGIN SKEL */

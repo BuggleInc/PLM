@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.sumdouble;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class SumDouble extends BatExercise {
 	public SumDouble(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("SumDouble");
+		BatWorld myWorld = new BatWorld("sumDouble");
 		myWorld.addTest(VISIBLE,  1,2);
 		myWorld.addTest(VISIBLE,  3,2);
 		myWorld.addTest(VISIBLE,  2,2);
@@ -20,6 +21,7 @@ public class SumDouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,1);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "sumDouble", "def sumDouble(a, b):\n");
 	}
 
 

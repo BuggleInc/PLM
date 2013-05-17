@@ -1,6 +1,7 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.bool2.nearten;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -27,6 +28,7 @@ public class NearTen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 1) ;
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "nearTen", "def nearTen(num):\n");
 	}
 
 	/* BEGIN SKEL */

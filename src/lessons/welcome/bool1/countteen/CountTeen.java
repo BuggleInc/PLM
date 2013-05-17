@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.countteen;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class CountTeen extends BatExercise {
 	public CountTeen(Lesson lesson) {
 		super(lesson);
 		
-		BatWorld myWorld = new BatWorld("CountTeen");
+		BatWorld myWorld = new BatWorld("countTeen");
 		myWorld.addTest(VISIBLE,  13,20,10,54);
 		myWorld.addTest(VISIBLE,  20,19,13,15);
 		myWorld.addTest(VISIBLE,  20,10,13,42);
@@ -26,6 +27,7 @@ public class CountTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 15,15,15,15);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "countTeen", "def countTeen(a, b, c, d):\n");
 	}
 
 

@@ -1,5 +1,6 @@
 package lessons.welcome.bool1.diff21;
 
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -10,7 +11,7 @@ public class Diff21 extends BatExercise {
 	public Diff21(Lesson lesson) {
 		super(lesson);
 
-		BatWorld myWorld = new BatWorld("Diff21");
+		BatWorld myWorld = new BatWorld("diff21");
 		myWorld.addTest(VISIBLE,  2);
 		myWorld.addTest(VISIBLE,  11);
 		myWorld.addTest(VISIBLE,  0);
@@ -24,6 +25,7 @@ public class Diff21 extends BatExercise {
 		myWorld.addTest(INVISIBLE, -21);
 
 		setup(myWorld);
+		langTemplate(Game.PYTHON, "diff21", "def diff21(n):\n");		
 	}
 
 
