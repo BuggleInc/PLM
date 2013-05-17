@@ -1,8 +1,8 @@
 package lessons.smn;
 
 import jlm.core.model.lesson.Lesson;
-import lessons.smn.baseball.BaseballGame;
-import lessons.smn.baseball.BaseballGameMorePlayers;
+import lessons.smn.baseball.easy.BaseballGame;
+import lessons.smn.baseball.medium.BaseballGameMorePlayers;
 import lessons.smn.pancake.burned.BurnedPancakePlate;
 import lessons.smn.pancake.raw.RawPancakePlate;
 
