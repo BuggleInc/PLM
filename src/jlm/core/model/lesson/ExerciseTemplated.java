@@ -83,7 +83,10 @@ public abstract class ExerciseTemplated extends Exercise {
 		StringBuffer templateHead = new StringBuffer(); /* in template before solution (state 1) */
 		StringBuffer solution = new StringBuffer(); /* the solution (state 2) */
 		StringBuffer templateTail = new StringBuffer(); /* in template after solution (state 3) */
-		StringBuffer tail = new StringBuffer(); /* after the template (state 4) */
+		StringBuffer tail = new StringBuffer("\n"); /* after the template (state 4) 
+		                                             *   This contains a preliminar \n to help python understanding that the following is not in the same block.
+		                                             *   Without it, we would have issues if the student puts some empty lines with the indentation marker at tail
+		                                             */
 		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
 
 		for (String line : content.split("\n")) {
