@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake.raw;
+package jlm.universe.smn.pancake;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -11,7 +11,7 @@ import jlm.universe.World;
 public class PancakeEntity extends Entity {
 
 	/**
-	 * Must exist too. Calling PancakeEntity("dummy name") is ok
+	 * Must exist. Calling PancakeEntity("dummy name") is ok
 	 * Part of the copy process 
 	 * Must call super(name)
 	 * @return A new instance of PancakeEntity
@@ -40,7 +40,7 @@ public class PancakeEntity extends Entity {
 	public PancakeEntity(String name, World world) {
 		super(name,world);
 	}
-
+	
 	/** 
 	 * A copy method needed by the JLM
 	 * @return a new PancakeEntity with the same name as the caller
@@ -61,11 +61,11 @@ public class PancakeEntity extends Entity {
 		((PancakeWorld) world).flip(numberOfPancakes);
 		stepUI();
 	}
-	
+
 	/**
 	 * Give the radius of a specific pancake among others
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
-	 * @return The size of the expected pancake
+	 * @return The radius of the expected pancake
 	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
 	public int getPancakeRadius(int pancakeNumber) throws InvalidPancakeNumber{
@@ -81,11 +81,21 @@ public class PancakeEntity extends Entity {
 	}
 	
 	/**
+	 * Tell if a specific pancake, among others, is upside down
+	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
+	 * @return If the specific pancake is upside down or not
+	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
+	 */
+	public boolean isPancakeUpsideDown(int pancakeNumber) throws InvalidPancakeNumber {
+		return ((PancakeWorld) world).isPancakeUpsideDown(pancakeNumber);
+	}
+	
+	/**
 	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
 	 * @return TRUE if the stack is okay <br>FALSE else
 	 */
 	public boolean isSorted() {
-		return ((PancakeWorld) world).isSorted();
+		return ( (PancakeWorld) this.world).isSorted();
 	}
 	
 	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 

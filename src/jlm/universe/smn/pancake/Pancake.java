@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake.burned;
+package jlm.universe.smn.pancake;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
@@ -31,23 +31,16 @@ public class Pancake {
 	}
 	
 	/**
-	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equals
-	 * @param Object o: the reference object with which to compare
+	 * Indicate whether some other pancake is "equal to" this one
+	 * @param burnedMatter if we take care of the position of the burned part
+	 * @param Pancake other: the other pancake with which to compare
+	 * @return If the two pancakes are equals
 	 */
-	public boolean equals(Object o) {
-		boolean sw=true;
-		if (o == null || !(o instanceof Pancake) )
-		{
-			sw = false ;
-		}
-		else
-		{
-			Pancake other = (Pancake) o;
-			sw = (this.getRadius()==other.getRadius() )
-					&& (this.isUpsideDown()==other.isUpsideDown());
-		}
-		return sw;
+	public boolean equals(Pancake other, boolean burnedMatter) {
+		return(
+				this.getRadius()==other.getRadius() )
+			&& (this.isUpsideDown()==other.isUpsideDown()
+				|| !burnedMatter);
 	}
 	
 	/**

@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake.raw;
+package jlm.universe.smn.pancake;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT

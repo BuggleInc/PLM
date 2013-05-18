@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake.raw;
+package jlm.universe.smn.pancake;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
@@ -16,11 +16,12 @@ import jlm.universe.World;
  */
 public class PancakeWorld extends World {
 
-	protected PancakesStack stack; // the stack of pancakes
-	protected int lastModifiedPancake ;
+	private PancakesStack stack; // the stack of pancakes
+	private int lastModifiedPancake;
+	private boolean burnedWorld ;
 	
 	/**
-	 * Constructor of the class WorldPancake
+	 * Constructor of the class PancakeWorld
 	 * @param world : a world
 	 * @return A new PancakeWorld
 	 */
@@ -29,17 +30,18 @@ public class PancakeWorld extends World {
 	}
 	
 	/**
-	 * Constructor of the class WorldPancake
+	 * Constructor of the class PancakeWorld
 	 * @param name : the name of the world
-	 * @param amountOfPancakes : the amount of pancake in the stack
-	 * @param mixed : if the stack shall be mixed or not
+	 * @param amountOfPancakes : the amount of pancakes in the stack
+	 * @param burnedPancake : if we take care of the fact that the pancake is burned on one side
 	 * @return A new PancakeWorld
 	 */
-	public PancakeWorld(String name, int amountOfPancakes, boolean mixed) {
+	public PancakeWorld(String name, int amountOfPancakes, boolean burnedPancake) {
 		super(name);
 		setDelay(200); // Delay (in ms) in default animations
-		this.stack =  PancakesStack.create(amountOfPancakes,mixed);
+		this.stack =  PancakesStack.create(amountOfPancakes,true);
 		this.lastModifiedPancake = 0 ;
+		this.burnedWorld = burnedPancake;
 	}
 	
 	/**
@@ -64,7 +66,7 @@ public class PancakeWorld extends World {
 
 	/**
 	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equals
+	 * @return If the two objects are equal
 	 * @param Object o: the reference object with which to compare
 	 */
 	public boolean equals(Object o) {
@@ -76,7 +78,8 @@ public class PancakeWorld extends World {
 		else
 		{
 			PancakeWorld other = (PancakeWorld) o;
-			sw = this.stack.equals(other.stack);
+			sw = this.burnedWorld == other.burnedWorld
+				&& this.stack.equals(other.stack,this.burnedWorld);
 		}
 		return sw;
 	}
@@ -111,7 +114,7 @@ public class PancakeWorld extends World {
 	/**
 	 * Give the size of a specific pancake among others
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
-	 * @return The size of the expected pancake
+	 * @return The radius of the expected pancake
 	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
 	 */
 	public int getPancakeSize(int pancakeNumber) throws InvalidPancakeNumber{
@@ -144,8 +147,8 @@ public class PancakeWorld extends World {
 	}
 	
 	/** 
-	 * Return a component able at displaying the world
-	 * @return a component able at displaying the world
+	 * Return a component able of displaying the world
+	 * @return a component able of displaying the world
 	 */
 	@Override
 	public WorldView[] getView() {
@@ -161,11 +164,30 @@ public class PancakeWorld extends World {
 	}
 
 	/**
+	 * Tell if a specific pancake, among others, is upside down
+	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
+	 * @return If the specific pancake is upside down or not
+	 * @throws InvalidPancakeNumber : in case you ask an invalid pancake number
+	 */
+	public boolean isPancakeUpsideDown(int pancakeNumber) throws InvalidPancakeNumber {
+		if ( pancakeNumber < 0 || pancakeNumber >= this.stack.getSize())
+		{
+			throw new InvalidPancakeNumber(
+					"The pancake's number you've asked is not between 0 and the stack size -1"
+					);
+		}
+		else
+		{
+			return this.stack.getPancake(pancakeNumber).isUpsideDown();
+		}
+	}
+	
+	/**
 	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
 	 * @return TRUE if the stack is okay <br>FALSE else
 	 */
 	public boolean isSorted() {
-		return this.stack.isSorted();
+		return this.stack.isSorted(this.burnedWorld);
 	}
 	
 	/** 
@@ -176,6 +198,8 @@ public class PancakeWorld extends World {
 	public void reset(World world) {
 		PancakeWorld other = (PancakeWorld) world;
 		this.stack = other.stack.copy();
+		this.burnedWorld = other.burnedWorld;
+		this.lastModifiedPancake = other.lastModifiedPancake;
 		super.reset(world);		
 	}
 
@@ -194,6 +218,8 @@ public class PancakeWorld extends World {
 				"  return entity.getStackSize()\n" +
 				"def getPancakeSize(pancakeNumber):\n" +
 				"  return entity.getPancakeSize(pancakeNumber)\n" +
+				"def isPancakeUpsideDown(pancakeNumber):\n"+
+				"  return entity.isPancakeUpsideDown(pancakeNumber)\n" +
 				"def flip(numberOfPancakes):\n" +
 				"  entity.flip(numberOfPancakes)\n"	
 				);
@@ -203,7 +229,7 @@ public class PancakeWorld extends World {
 	}
 
 	/**
-	 * Returns a string representation of the world
+	 * Return a string representation of the world
 	 * @return A string representation of the world
 	 */
 	public String toString(){
@@ -211,6 +237,14 @@ public class PancakeWorld extends World {
 		sb.append("PancakeWorld "+getName()+": ");
 		sb.append(this.stack.toString());
 		return sb.toString();
+	}
+
+	/**
+	 * tell if we pay attention to the burned side or not
+	 * @return if we pay attention to the burned side or not
+	 */
+	public boolean isBurnedPancake() {
+		return this.burnedWorld;
 	}
 
 }

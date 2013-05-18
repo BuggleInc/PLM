@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake.raw;
+package jlm.universe.smn.pancake;
 
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -14,16 +14,17 @@ import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 
 /**
- * 
+ * The control panel for the burned pancake world. 
+ * It allows you to use to flip the pancake
  * @author Julien BASTIAN
- *
+ * @see EntityControlPanel
+ * @see PancakeWorld
  */
 public class PancakeFlipButtonPanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton validateButton;	// a validate button
 	private JComboBox pancakesAmountComboBox;	// a combobox which let you choose how many pancake you want to flip
-	
 	/**
      * Constructor of PancakeFlipButtonPanel
      * It initializes the command panel
@@ -79,12 +80,25 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 	/**
 	 * Initialize the combo box
 	 * @param pe the current selected PancakeEntity 
+	 * @param burnedPancake 
 	 */
 	private void initPancakesAmountComboBox(PancakeEntity pe) {
 		int n = pe.getStackSize();
-		Integer values[] = new Integer[n-1];
-		for ( int i = 0 ; i < n-1 ; i++) {
-			values[i] = i+2; // since we are in the raw pancakes universe, there no interest in flipping only one pancake
+		Integer values[];
+		boolean burnedPancake = ((PancakeWorld) Game.getInstance().getSelectedWorld()).isBurnedPancake(); 
+		if ( burnedPancake)
+		{
+			values = new Integer[n];
+			for ( int i = 0 ; i < n ; i++) {
+				values[i] = i+1;
+			}
+		}
+		else
+		{
+			values = new Integer[n-1];
+			for ( int i = 0 ; i < n-1 ; i++) {
+				values[i] = i+2;
+			}
 		}
 		this.pancakesAmountComboBox = new JComboBox(values) ;
 	}

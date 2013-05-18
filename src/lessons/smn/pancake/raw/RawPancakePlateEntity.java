@@ -1,7 +1,7 @@
 package lessons.smn.pancake.raw;
 
-import jlm.universe.smn.pancake.raw.InvalidPancakeNumber;
-import jlm.universe.smn.pancake.raw.PancakeEntity;
+import jlm.universe.smn.pancake.InvalidPancakeNumber;
+import jlm.universe.smn.pancake.PancakeEntity;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
