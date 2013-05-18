@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-17 12:46-0800\n"
+"POT-Creation-Date: 2013-05-18 00:37-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -250,7 +250,7 @@ msgid "Returns the amount of values in the array"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:11 src/jlm/universe/sort/SortingWorld.html:22
+#: src/jlm/universe/sort/SortingWorld.html:11
 msgid "none"
 msgstr ""
 
@@ -339,23 +339,13 @@ msgstr ""
 msgid "one write"
 msgstr ""
 
-#. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:22
-msgid "void sorted(int idx)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:22
-msgid "Tells that the cell 'idx' was successfully sorted (only used for display)"
-msgstr ""
-
 #. type: Content of: <h2>
-#: src/jlm/universe/sort/SortingWorld.html:25
+#: src/jlm/universe/sort/SortingWorld.html:24
 msgid "History view"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:26 src/lessons/sort/bubble1/AlgBubbleSort1.html:7
+#: src/jlm/universe/sort/SortingWorld.html:25 src/lessons/sort/bubble1/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -366,7 +356,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:33 src/lessons/sort/bubble1/AlgBubbleSort1.html:14
+#: src/jlm/universe/sort/SortingWorld.html:32 src/lessons/sort/bubble1/AlgBubbleSort1.html:14
 msgid ""
 "To help in this process, it is posible to graphically explore the history of "
 "your sorting algorithm. Switch to the Objective view and use the contextual "
@@ -375,7 +365,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:38 src/lessons/sort/bubble1/AlgBubbleSort1.html:19
+#: src/jlm/universe/sort/SortingWorld.html:37 src/lessons/sort/bubble1/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-17 12:46-0800\n"
+"POT-Creation-Date: 2013-05-18 00:33-0800\n"
 "PO-Revision-Date: 2013-05-16 14:29+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -324,7 +324,6 @@ msgstr "Retourne le nombre de valeurs dans le tableau"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:11
-#: src/jlm/universe/sort/SortingWorld.html:22
 msgid "none"
 msgstr "aucun"
 
@@ -416,26 +415,13 @@ msgstr "Affecte la valeur 'val' à la case 'idx'"
 msgid "one write"
 msgstr "une écriture"
 
-#. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:22
-msgid "void sorted(int idx)"
-msgstr "void sorted(int idx)"
-
-#. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:22
-msgid ""
-"Tells that the cell 'idx' was successfully sorted (only used for display)"
-msgstr ""
-"Indique que la case 'idx' a été triée avec succès (utilisé seulement pour "
-"l'affichage)"
-
 #. type: Content of: <h2>
-#: src/jlm/universe/sort/SortingWorld.html:25
+#: src/jlm/universe/sort/SortingWorld.html:24
 msgid "History view"
 msgstr "Vue de l'historique du monde"
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:26
+#: src/jlm/universe/sort/SortingWorld.html:25
 #: src/lessons/sort/bubble1/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
@@ -453,7 +439,7 @@ msgstr ""
 "comportement attendu et le comportement effectif."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:33
+#: src/jlm/universe/sort/SortingWorld.html:32
 #: src/lessons/sort/bubble1/AlgBubbleSort1.html:14
 msgid ""
 "To help in this process, it is posible to graphically explore the history of "
@@ -467,7 +453,7 @@ msgstr ""
 "l'état courant du monde et la vue de son histoire."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:38
+#: src/jlm/universe/sort/SortingWorld.html:37
 #: src/lessons/sort/bubble1/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
