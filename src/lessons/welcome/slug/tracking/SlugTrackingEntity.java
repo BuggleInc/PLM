@@ -22,19 +22,19 @@ public class SlugTrackingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		}
 		pickUpBaggle();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	boolean isFacingTrail(Color trailColor) {
-		// à compléter
+		// Write your code here
 		/* BEGIN SOLUTION */
 		if (isFacingWall())
 			return false;
 		forward();
-		boolean res = getGroundColor() == trailColor; // equals would be better
+		boolean res = getGroundColor().equals(trailColor); 
 		backward();
 		return res;
 		/* END SOLUTION */
 	}		
 	/* END TEMPLATE */
-	
+
 }

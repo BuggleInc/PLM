@@ -7,10 +7,10 @@ import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class HasTeen extends BatExercise {
-	
+
 	public HasTeen(Lesson lesson) {
 		super(lesson);
-		
+
 		BatWorld myWorld = new BatWorld("hasTeen");
 		myWorld.addTest(VISIBLE,  13,20,10);		
 		myWorld.addTest(VISIBLE,  20,19,10);
@@ -36,12 +36,12 @@ public class HasTeen extends BatExercise {
 		t.setResult( hasTeen((Integer)t.getParameter(0),(Integer)t.getParameter(1),(Integer)t.getParameter(2)) );		
 	}
 	/* END SKEL */
-	
+
 	/* BEGIN TEMPLATE */
-boolean hasTeen(int a, int b, int c) {
-	/* BEGIN SOLUTION */
-		  return a>12&&a<20 || b>12&&b<20 || c>12&&c<20;
-	/* END SOLUTION */
-}
-		/* END TEMPLATE */
+	boolean hasTeen(int a, int b, int c) {
+		/* BEGIN SOLUTION */
+		return a>12&&a<20 || b>12&&b<20 || c>12&&c<20;
+		/* END SOLUTION */
+	}
+	/* END TEMPLATE */
 }

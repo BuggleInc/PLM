@@ -8,10 +8,7 @@
 				if (isSmaller(j,min))
 					min = j;				
 			}
-
 			/* Swap the smallest unsorted element into the end of the sorted list. */
 			swap(min,i);
-			sorted(i);
 		}
-		checkme(); /* color everything in blue */
 # END TEMPLATE */

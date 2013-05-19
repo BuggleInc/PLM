@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake.burned;
+package jlm.universe.smn.pancake;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -117,13 +117,28 @@ public class PancakeWorldView extends WorldView {
 
 	
 	/**
-	 * Draw some pancakes
+	 * Draw a raw pancake
 	 * @param g2 : an entity of the Graphics2D class
 	 * @param xoffset : the horizontal offset 
 	 * @param p: a pancake
 	 * @param pancakeNumber: the number of the pancake draw
 	 */
-	private void drawPancake(Graphics2D g2, double xoffset,Pancake p,int pancakeNumber){
+	private void drawRawPancake(Graphics2D g2, double xoffset,Pancake p,int pancakeNumber) {
+		int psize = p.getRadius();
+		g2.setColor(Color.YELLOW);
+		g2.fill(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 8));
+		g2.setColor(Color.black);
+		g2.draw(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 8));
+	}
+	
+	/**
+	 * Draw a pancake with a burned face
+	 * @param g2 : an entity of the Graphics2D class
+	 * @param xoffset : the horizontal offset 
+	 * @param p: a pancake
+	 * @param pancakeNumber: the number of the pancake draw
+	 */
+	private void drawBurnedPancake(Graphics2D g2, double xoffset,Pancake p,int pancakeNumber) {
 		int psize = p.getRadius();
 		if ( p.isUpsideDown())
 		{
@@ -162,19 +177,31 @@ public class PancakeWorldView extends WorldView {
 	 */
 	private void drawStack(Graphics2D g2, double xoffset) {
 		/* draw bar */
-		PancakesStack stack = ((PancakeWorld) this.world).getStack();
+		PancakeWorld w= (PancakeWorld) this.world;
+		PancakesStack stack = w.getStack();
+		boolean burned = w.isBurnedPancake();
 		if (stack!=null)
 		{
 			/* draw pancakes */
 			int amountOfPancakes = stack.getSize();
 			g2.setColor(Color.black);
 			drawPlate(g2,xoffset,amountOfPancakes);
-			for (int i = 0; i<amountOfPancakes ;i++)
-			{ 
-				Pancake p = stack.getPancake(amountOfPancakes-i-1);
-				drawPancake(g2,xoffset,p,i);
+			if ( burned )
+			{
+				for (int i = 0; i<amountOfPancakes ;i++)
+				{ 
+					Pancake p = stack.getPancake(amountOfPancakes-i-1);
+					drawBurnedPancake(g2,xoffset,p,i);
+				}
 			}
-			
+			else
+			{
+				for (int i = 0; i<amountOfPancakes ;i++)
+				{ 
+					Pancake p = stack.getPancake(amountOfPancakes-i-1);
+					drawRawPancake(g2,xoffset,p,i);
+				}
+			}
 		}
 	}
 	

@@ -19,4 +19,3 @@ while gap>0:
   # all sets gap-sorted, now decrease set size
   gap = gap / 2
 # END TEMPLATE
-checkme()

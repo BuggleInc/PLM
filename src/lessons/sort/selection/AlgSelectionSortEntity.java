@@ -5,9 +5,9 @@ import jlm.universe.sort.SortingEntity;
 public class AlgSelectionSortEntity extends SortingEntity {
 
 	public void run() {
-			this.selectionSort();
+		this.selectionSort();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void selectionSort() {
 		/* BEGIN SOLUTION */
@@ -23,10 +23,9 @@ public class AlgSelectionSortEntity extends SortingEntity {
 
 			/* Swap the smallest unsorted element into the end of the sorted list. */
 			swap(min,i);
-			sorted(i);
 		}
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }

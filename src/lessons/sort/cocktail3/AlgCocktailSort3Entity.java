@@ -3,11 +3,11 @@ package lessons.sort.cocktail3;
 import jlm.universe.sort.SortingEntity;
 
 public class AlgCocktailSort3Entity extends SortingEntity {
-	
+
 	public void run() {
 		this.cocktailSort3();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void cocktailSort3() {
 		/* BEGIN SOLUTION */
@@ -20,10 +20,8 @@ public class AlgCocktailSort3Entity extends SortingEntity {
 				if (!isSmaller(i,i+1)) {
 					swap(i,i+1);
 					swapped =true;
-				}	
-			sorted(end+1);
+				}
 			if (!swapped) {
-				checkme();
 				return;
 			}
 			swapped=false;
@@ -33,13 +31,11 @@ public class AlgCocktailSort3Entity extends SortingEntity {
 					swap(i,i+1);
 					swapped =true;
 				}
-			sorted(begin);
 			begin++;
 		} while (swapped && end-begin>1);
-		checkme(); /* color everything in blue */
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }
 

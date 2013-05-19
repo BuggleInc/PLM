@@ -3,7 +3,7 @@ package lessons.recursion.sierpinski;
 public class SierpinskiEntity extends jlm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
-public void sierpinski(int level, double length) {
+	public void sierpinski(int level, double length) {
 		/* BEGIN SOLUTION */
 		if (level >= 0) {
 			for (int i = 0; i < 3; i++) {
@@ -16,7 +16,7 @@ public void sierpinski(int level, double length) {
 			}
 		}
 		/* END SOLUTION */
-}
+	}
 	/* END TEMPLATE */
 
 	public void run() {

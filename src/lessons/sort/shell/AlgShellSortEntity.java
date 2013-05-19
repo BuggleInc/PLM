@@ -14,11 +14,11 @@ import jlm.universe.sort.SortingEntity;
  */
 
 public class AlgShellSortEntity extends SortingEntity {
-	
+
 	public void run() {
 		this.shellSort();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void shellSort()  {
 		/* BEGIN SOLUTION */
@@ -44,12 +44,9 @@ public class AlgShellSortEntity extends SortingEntity {
 			/* all sets gap-sorted, now decrease set size */
 			gap = gap / 2;
 		}
-		for (int i = 0; i < getValueCount(); i++) 
-			sorted(i);
-		checkme();
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }
 

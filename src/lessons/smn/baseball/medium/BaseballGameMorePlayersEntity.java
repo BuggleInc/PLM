@@ -1,4 +1,4 @@
-package lessons.smn.baseball;
+package lessons.smn.baseball.medium;
 
 import jlm.universe.smn.baseball.BaseballEntity;
 import jlm.universe.smn.baseball.InvalidMoveException;
@@ -24,7 +24,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 			System.out.println(this.world.getName() +" :"+ipe.getMessage());
 		}
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	private void homerun() throws InvalidMoveException, InvalidPositionException {
 		int amountOfBases = this.getAmountOfBases()-1;
@@ -36,11 +36,11 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 			}
 		}
 	}
-	
+
 	private void solve(int baseIndex) throws InvalidMoveException, InvalidPositionException{
 		/* BEGIN SOLUTION */
 		int nbPlayers = this.getLocationsAmount();
-		 
+
 		for ( int i = 0 ; i < nbPlayers ; i++ )	
 		{
 			// Look if the player number i has the good color
@@ -69,7 +69,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 	// Bring the player at (baseDst,playerDst) to (baseSrc,playerDst)
 	private void bringPlayerHome(int baseSrc,int playerSrc,int baseDst,int playerDst) throws InvalidMoveException{
 		move( baseSrc,playerSrc);
@@ -81,7 +81,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 			move(i,playerDst);
 		}
 	}
-	
+
 	// Search for the player closer from his base
 	private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) throws InvalidPositionException {
 		int[] location = new int[2];
@@ -102,7 +102,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 		}
 		return location;
 	}
-	
+
 	// Bring the hole to (baseDst,playerDst) while protecting the position playerToProtect
 	private void bringHole(int baseDst, int playerDst , int playerToProtect) throws InvalidMoveException {
 		int[] holeLocation = { this.getHoleBase(), this.getHolePositionInBase() };
@@ -127,5 +127,5 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 			}
 		}
 	}
-	
+
 }

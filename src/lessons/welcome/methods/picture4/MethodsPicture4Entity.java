@@ -17,7 +17,7 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 
 	void squareA(Color c) {
 		setBrushColor(c);
-		
+
 		forward();
 		mark();
 
@@ -32,7 +32,7 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 		forward();
 		turnLeft();
 	}
-	
+
 	void squareB(Color c) {
 		setBrushColor(c);
 		mark();
@@ -52,33 +52,33 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 	}
 
 	void bigSquare() {
-		squareA(Color.red); 
+		squareA(Color.RED); 
 		forward(2);
-		squareB(Color.blue);
+		squareB(Color.BLUE);
 		backward(2);
 		turnLeft();
 		forward(2);
 		turnRight();
-		squareB(Color.yellow);
+		squareB(Color.YELLOW);
 		forward(2);
-		squareA(Color.green);
-		
+		squareA(Color.GREEN);
+
 		backward(2);
 		turnLeft();
 		backward(2);
 		turnRight();
 	}
-	
+
 	public void run() {
 		bigSquare();
 		forward(4);
 		bigSquare();
-		
+
 		backward(4);
 		turnLeft();
 		forward(4);
 		turnRight();
-		
+
 		bigSquare(); 
 		forward(4);
 		bigSquare();

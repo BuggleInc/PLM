@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake.raw;
+package jlm.universe.smn.pancake;
 
 
 /**
@@ -6,17 +6,16 @@ package jlm.universe.smn.pancake.raw;
  * @see Pancake
  */
 public class PancakesStack {
+	
 	/**
 	 * Create a new stack of pancakes, which can be mixed or not
-	 * @param size : the size of the stack of pancakes 
+	 * @param size : the size of the stack of pancakes
+	 * @param burnedMatter : if we take care of the position of the burned face
 	 * @return A new stack of size pancakes
 	 */
-	public static PancakesStack create(int size, boolean mixed) {
+	public static PancakesStack create(int size, boolean burnedMatter) {
 		PancakesStack pancakesStack = new PancakesStack(size);
-		if (mixed)
-		{
-			pancakesStack.mix();
-		}
+		pancakesStack.mix(burnedMatter);
 		return pancakesStack;
 	}
 	
@@ -85,8 +84,7 @@ public class PancakesStack {
 	 * @return If the two objects are equals
 	 * @param Object o: the reference object with which to compare
 	 */
-	@Override
-	public boolean equals(Object o) {
+	public boolean equals(Object o,boolean burnedMatter) {
 		boolean sw=true;
 		if (o == null || !(o instanceof PancakesStack) )
 		{
@@ -99,7 +97,7 @@ public class PancakesStack {
 			sw = other.getSize() == size;
 			for (int i=0;i<size&&sw;i++) 
 			{
-				sw = this.getPancake(i).equals(other.getPancake(i));
+				sw = this.getPancake(i).equals(other.getPancake(i),burnedMatter);
 			}
 		}
 		return sw;
@@ -127,6 +125,10 @@ public class PancakesStack {
 			firstPancake++;
 			lastPancake--;
 		}
+		for (int i = 0 ;i<numberOfPancakes;i++)
+		{
+			this.getPancake(i).flip();
+		}
 		this.flipped = !this.flipped;
 		return;
 	}
@@ -141,14 +143,14 @@ public class PancakesStack {
 	}
 
 	/**
-	 * Give the size of a specific pancake among others
+	 * Give the radius of a specific pancake among others
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
-	 * @return The size of the expected pancake
+	 * @return The radius of the expected pancake
 	 */
 	public int getPancakeRadius(int pancakeNumber){
 		return this.getPancake(pancakeNumber).getRadius();
 	}
-	
+
 	/**
 	 * Give the size of the stack of pancakes
 	 * @return The number of pancakes in the stack
@@ -157,40 +159,55 @@ public class PancakesStack {
 		return this.pancakeStack.length;
 	}
 	
-
 	/**
 	 * Tell the value of flipped which is used for graphic purpose only
-	 * @return the flipped
+	 * @return flipped
 	 */
 	public boolean isFlipped() {
 		return flipped;
 	}
 	
 	/**
+	 * Tell if a specific pancake, among others, is upside down
+	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
+	 * @return If the specific pancake is upside down or not
+	 */
+	public boolean isPancakeUpsideDown(int pancakeNumber) {
+		return this.getPancake(pancakeNumber).isUpsideDown();
+	}
+
+	/**
 	 * Tell if the stack of pancakes is correctly sorted according to the control freak pancake seller
+	 * @param burnedCare 
 	 * @return TRUE if the stack is okay <br>FALSE else
 	 */
-	public boolean isSorted() {
+	public boolean isSorted(boolean burnedCare) {
 		boolean stackSorted = true;
 		int stackSize = this.getSize();
 		for ( int pancakeNumber = 0 ; stackSorted  && pancakeNumber < stackSize ; pancakeNumber++)
 		{
 			Pancake pancake = this.getPancake(pancakeNumber);
-			stackSorted = ( pancake.getRadius() == pancakeNumber+1);
+			stackSorted = ( pancake.getRadius() == pancakeNumber+1) && ( !pancake.isUpsideDown() || !burnedCare);
 		}
 		return stackSorted;
 	}
 	
 	/**
 	 * Mix the stack in order to screw the pancake seller
+	 * @param burned 
 	 */
-	public void mix() {
+	public void mix(boolean burned) {
 		int stackSize = this.getSize();
 		// Just to be sure that the stack is a bit mixed
-		while( this.isSorted() )
+		while( this.isSorted(burned) )
 		{
 			for ( int pancakeNumber = 0 ; pancakeNumber < stackSize ; pancakeNumber++)
 			{
+				// Flipping time !
+				if ( Math.random() > 0.5)
+				{
+					this.getPancake(pancakeNumber).flip();
+				}
 				// Swapping time !
 				if ( Math.random() > 0.5)
 				{
@@ -211,7 +228,6 @@ public class PancakesStack {
 		return;
 	}
 	
-	
 	/**
 	 * Swap two pancakes
 	 * @param pancakeOne :the first pancake which will be swapped
@@ -223,9 +239,9 @@ public class PancakesStack {
 		this.setPancake(pancakeTwo,flyingPancake);
 		return;
 	}
-	
+
 	/**
-	 * Return a string representation of the stack of pancakes
+	 * Returns a string representation of the stack of pancakes
 	 * @return A string representation of the stack of pancakes
 	 */
 	@Override
