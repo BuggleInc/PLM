@@ -5,12 +5,12 @@ import jlm.universe.bugglequest.SimpleBuggle;
 public class MethodsDogHouseEntity extends SimpleBuggle {
 
 	private int line = -1;
-	
+
 	@Override
 	public void turnRight() {
 		throw new RuntimeException("turnRight() forbidden in this exercise.");
 	}
-	
+
 	@Override
 	public void turnLeft() {
 		for (StackTraceElement s : Thread.currentThread().getStackTrace()) {
@@ -23,19 +23,19 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 					super.turnLeft();
 				}
 			}
-				
+
 		}
 	}
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
-    void dogHouse() {
+	void dogHouse() {
 		for (int i=0;i<4;i++) {
 			forward();
 			forward();
 			turnLeft();
 		}
 	}
-    /* END SOLUTION */
+	/* END SOLUTION */
 	/* END TEMPLATE */
 
 	@Override
@@ -43,25 +43,25 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 		brushDown();
 		dogHouse();
 		brushUp();
-		
+
 		forward(4);
 
 		brushDown();
 		dogHouse();		
 		brushUp();
-		
+
 		forward(2);
 		turnLeft();
 		forward(4);
-		
+
 		brushDown();
 		dogHouse();		
 		brushUp();
-		
+
 		forward(2);
 		turnLeft();
 		forward(4);
-		
+
 		brushDown();
 		dogHouse();		
 	} 

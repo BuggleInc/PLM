@@ -1,4 +1,4 @@
-package lessons.smn.baseball;
+package lessons.smn.baseball.medium;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;

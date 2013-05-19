@@ -12,18 +12,18 @@ public class OccurrenceOfValueEntity extends ArrayEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-// computes the occurrences of the value 'lookingFor' contained in tab variable
-public int occurrences(int[] tab, int lookingFor) {
-	/* BEGIN SOLUTION */
-	int count = 0;
-	for (int i=0; i<tab.length; i++) {
-		if (tab[i] == lookingFor) {
-			count++;
+	// computes the occurrences of the value 'lookingFor' contained in tab variable
+	public int occurrences(int[] tab, int lookingFor) {
+		/* BEGIN SOLUTION */
+		int count = 0;
+		for (int i=0; i<tab.length; i++) {
+			if (tab[i] == lookingFor) {
+				count++;
+			}
 		}
+		return count;
+		/* END SOLUTION */
 	}
-	return count;
-	/* END SOLUTION */
-}
 
 	/* END TEMPLATE */
 

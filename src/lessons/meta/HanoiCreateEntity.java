@@ -32,12 +32,12 @@ public class HanoiCreateEntity extends MetaExercise {
 			solve((HanoiMetaWorld) it);
 		}		
 		System.out.println("Done computing answers");
-		
+
 		/* setup the source files */
-//		newSourceAliased(Game.JAVA,"lessons.meta.Main","jlm.lessons.meta.HanoiCreateWorld","HanoiWorld");
+		//		newSourceAliased(Game.JAVA,"lessons.meta.Main","jlm.lessons.meta.HanoiCreateWorld","HanoiWorld");
 		try {
 			newSourceFromFile(Game.JAVA,"HanoiEntity","src/jlm/universe/hanoi/HanoiEntity",
-			       "s/HanoiCreateEntityAnswer/HanoiEntity/;");
+			"s/HanoiCreateEntityAnswer/HanoiEntity/;");
 		} catch (NoSuchEntityException e) {
 			System.out.println("Cannot find my files. Please go fix your paths and such");
 			e.printStackTrace();
@@ -57,7 +57,7 @@ public class HanoiCreateEntity extends MetaExercise {
 				other=0;
 
 			solve(w,src,other, height-1);
-//			System.out.println("move("+src+","+dst+")");
+			//			System.out.println("move("+src+","+dst+")");
 			w.move(src,dst);
 			solve(w,other,dst,height-1);
 		}
@@ -93,7 +93,7 @@ public class HanoiCreateEntity extends MetaExercise {
 		runner.start();
 		runnerVect.add(runner);
 	}
-	
+
 	@Override 
 	public void runDemo(List<Thread> runnerVect) {
 		Thread runner = new Thread(new Runnable() {
@@ -109,6 +109,6 @@ public class HanoiCreateEntity extends MetaExercise {
 
 		runner.start();
 		runnerVect.add(runner);
-		
+
 	}
 }

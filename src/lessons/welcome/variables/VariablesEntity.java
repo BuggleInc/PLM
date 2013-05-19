@@ -18,13 +18,13 @@ public class VariablesEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN SOLUTION */
 		int cpt = 0;
 		while (!isOverBaggle()) {
-		  cpt++;
-		  forward();
+			cpt++;
+			forward();
 		}
 		pickUpBaggle();
 		while (cpt>0) {
-		  backward();
-		  cpt--;
+			backward();
+			cpt--;
 		}
 		dropBaggle();
 		/* END SOLUTION */

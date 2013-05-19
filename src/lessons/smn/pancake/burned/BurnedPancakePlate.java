@@ -2,8 +2,8 @@ package lessons.smn.pancake.burned;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.smn.pancake.burned.PancakeEntity;
-import jlm.universe.smn.pancake.burned.PancakeWorld;
+import jlm.universe.smn.pancake.PancakeEntity;
+import jlm.universe.smn.pancake.PancakeWorld;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT

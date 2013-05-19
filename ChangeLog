@@ -1,3 +1,6 @@
+20130517:
+  * Package baseball exercises in their own directories
+  * Add a control panel for the Pancake Worlds ( raw & burned )
 20130516:
   * Add an icon depicting the programming language in the status bar
   * Various polishing of the exercises in Python

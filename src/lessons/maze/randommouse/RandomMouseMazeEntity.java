@@ -25,25 +25,25 @@ public class RandomMouseMazeEntity extends jlm.universe.bugglequest.SimpleBuggle
 		{
 			switch(random3()) 
 			{
-				case 0:
-					if (!isFacingWall())
-					{
-						forward();
-					}
-	                break;
-				case 1:
-					turnLeft();
-	                break;
-				case 2:
-	                turnRight();
-	                break;
+			case 0:
+				if (!isFacingWall())
+				{
+					forward();
+				}
+				break;
+			case 1:
+				turnLeft();
+				break;
+			case 2:
+				turnRight();
+				break;
 			}
 		}
 		pickUpBaggle();
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 	public int random3() {
 		double n = Math.random();
 		if (n < 0.33) {

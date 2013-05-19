@@ -120,7 +120,7 @@ public class TurmiteCreatorEntity extends jlm.universe.bugglequest.SimpleBuggle 
 						(int)(Math.random()*255.) );
 				for (int j=0;j<i;j++) {
 					if (colors[j].equals(newColor)) {
-						/* Damn we already picked that color; take another one pliz */
+						/* Damn we already picked that color; take another one please */
 						newColor = null;
 					}
 				}

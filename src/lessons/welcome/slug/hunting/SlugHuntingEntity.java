@@ -12,8 +12,8 @@ public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	public void hunt() {
-		// à completer
-	/* BEGIN SOLUTION */
+		// Write your code here
+		/* BEGIN SOLUTION */
 		while (! isOverBaggle()) {
 			if (isFacingTrail(Color.green)) {
 				brushDown();
@@ -27,17 +27,17 @@ public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 	boolean isFacingTrail(Color trailColor) {
 		if (isFacingWall())
 			return false;
-		
+
 		forward();
-		boolean res = getGroundColor() == trailColor; // equals would be better
+		boolean res = getGroundColor().equals(trailColor);
 		backward();
 		return res;
-	
+
 	}		
-	
-	
+
+
 }

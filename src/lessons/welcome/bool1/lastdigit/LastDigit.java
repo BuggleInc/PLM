@@ -6,33 +6,33 @@ import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class LastDigit extends BatExercise {
-  public LastDigit(Lesson lesson) {
-    super(lesson);
-    
-    BatWorld myWorld = new BatWorld("lastDigit");
-    myWorld.addTest(VISIBLE, 7, 17) ;
-    myWorld.addTest(VISIBLE, 6, 17) ;
-    myWorld.addTest(VISIBLE, 3, 113) ;
-    myWorld.addTest(INVISIBLE, 114, 113) ;
-    myWorld.addTest(INVISIBLE, 114, 4) ;
-    myWorld.addTest(INVISIBLE, 10, 0) ;
-    myWorld.addTest(INVISIBLE, 11, 0) ;
+	public LastDigit(Lesson lesson) {
+		super(lesson);
 
-    setup(myWorld);
-	langTemplate(Game.PYTHON, "lastDigit", "def lastDigit(a, b):\n");
-  }
+		BatWorld myWorld = new BatWorld("lastDigit");
+		myWorld.addTest(VISIBLE, 7, 17) ;
+		myWorld.addTest(VISIBLE, 6, 17) ;
+		myWorld.addTest(VISIBLE, 3, 113) ;
+		myWorld.addTest(INVISIBLE, 114, 113) ;
+		myWorld.addTest(INVISIBLE, 114, 4) ;
+		myWorld.addTest(INVISIBLE, 10, 0) ;
+		myWorld.addTest(INVISIBLE, 11, 0) ;
 
-  /* BEGIN SKEL */
-  public void run(BatTest t) {
-    t.setResult( lastDigit((Integer)t.getParameter(0), (Integer)t.getParameter(1)) );
-  }
-  /* END SKEL */
+		setup(myWorld);
+		langTemplate(Game.PYTHON, "lastDigit", "def lastDigit(a, b):\n");
+	}
 
-  /* BEGIN TEMPLATE */
-boolean lastDigit(int a, int b) {
-  /* BEGIN SOLUTION */
-	  return a%10 == b%10;
-  /* END SOLUTION */
-}
-  /* END TEMPLATE */
+	/* BEGIN SKEL */
+	public void run(BatTest t) {
+		t.setResult( lastDigit((Integer)t.getParameter(0), (Integer)t.getParameter(1)) );
+	}
+	/* END SKEL */
+
+	/* BEGIN TEMPLATE */
+	boolean lastDigit(int a, int b) {
+		/* BEGIN SOLUTION */
+		return a%10 == b%10;
+		/* END SOLUTION */
+	}
+	/* END TEMPLATE */
 }

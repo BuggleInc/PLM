@@ -13,5 +13,4 @@
 					swapped =true;
 				}	
 		} while (swapped);
-		checkme(); /* color everything in blue */
 # END TEMPLATE 

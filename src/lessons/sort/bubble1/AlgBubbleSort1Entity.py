@@ -7,4 +7,3 @@ while swapped:
 			swap(i,i+1)
 			swapped = True
 # END TEMPLATE
-checkme()

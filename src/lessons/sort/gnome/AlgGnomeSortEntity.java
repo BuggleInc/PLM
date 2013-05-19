@@ -3,11 +3,11 @@ package lessons.sort.gnome;
 import jlm.universe.sort.SortingEntity;
 
 public class AlgGnomeSortEntity extends SortingEntity {
-	
+
 	public void run() {
 		this.gnomeSort();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void gnomeSort() {
 		/* BEGIN SOLUTION */
@@ -22,10 +22,9 @@ public class AlgGnomeSortEntity extends SortingEntity {
 			if (i==-1)
 				i=0;
 		}
-		checkme(); /* color everything in blue */
-	/* END SOLUTION */
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }
 

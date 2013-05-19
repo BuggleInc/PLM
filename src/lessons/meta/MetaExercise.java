@@ -14,7 +14,7 @@ public class MetaExercise extends ExerciseTemplated {
 		lastResult = new ExecutionProgress();
 		super.reset();
 	}
-	
+
 	@Override
 	public void check() {
 	}

@@ -13,33 +13,33 @@ public class MethodsPictureEntity extends SimpleBuggle {
 		brushDown();
 		brushUp();
 	}
-		
+
 	void makeV(Color c) {
 		setBrushColor(c);
 		forward();
 		mark();
-		
+
 		forward();
 		turnLeft();
 		forward();
 		mark();
-		
+
 		backward();
 		turnRight();
 		forward();
 		mark();
-		
+
 		forward();
 		turnLeft();
 	}
 
-	
-	
+
+
 	public void run() {
-		makeV(Color.yellow);
-		makeV(Color.red);
-		makeV(Color.blue);
-		makeV(Color.green);
+		makeV(Color.YELLOW);
+		makeV(Color.RED);
+		makeV(Color.BLUE);
+		makeV(Color.GREEN);
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */
