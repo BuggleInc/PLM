@@ -26,16 +26,16 @@ public class ArrayEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		brushDown();
 		brushUp();
 	}
-	
+
 	public void run() {
 		Color[] colors = new Color[getWorldHeight()];
-		
+
 		/* read the colors */
 		for (int i=0;i<getWorldHeight();i++) {
 			colors[i]=getGroundColor();
 			forward();
 		}
-		
+
 		/* duplicate the pattern */
 		for (int i=1; i<getWorldWidth();i++) {
 			turnLeft();
@@ -45,7 +45,7 @@ public class ArrayEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			makeLine(colors);
 		}
 	}
-	
+
 	void makeLine(Color[] colors) {
 		for (int i=0;i<getWorldWidth();i++) {
 			mark(colors[i]);

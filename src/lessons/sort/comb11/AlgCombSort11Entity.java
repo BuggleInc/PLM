@@ -3,11 +3,11 @@ package lessons.sort.comb11;
 import jlm.universe.sort.SortingEntity;
 
 public class AlgCombSort11Entity extends SortingEntity {
-	
+
 	public void run() {
 		this.combSort11();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void combSort11() {
 		/* BEGIN SOLUTION */
@@ -15,9 +15,9 @@ public class AlgCombSort11Entity extends SortingEntity {
 		boolean swapped;
 		do {
 			if (gap>1) {
-	            gap /= 1.3;
-	            if (gap == 10 || gap == 9)
-	                gap = 11;
+				gap /= 1.3;
+				if (gap == 10 || gap == 9)
+					gap = 11;
 			}
 			swapped = false;
 			for (int i=0; i+gap<getValueCount(); i++)
@@ -26,9 +26,9 @@ public class AlgCombSort11Entity extends SortingEntity {
 					swapped =true;
 				}	
 		} while (gap>1 || swapped);
-	/* END SOLUTION */
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }
 

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-18 00:37-0800\n"
+"POT-Creation-Date: 2013-05-19 04:40-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8834,88 +8834,76 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:1 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:1 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:1 src/lessons/smn/pancake/raw/RawPancakePlate.html:1
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:1 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:1 src/lessons/smn/pancake/raw/RawPancakePlate.html:1
 msgid "PancakeWorld"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:3
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:3
 msgid "Functions provided :"
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:5 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:6 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:11 src/lessons/smn/pancake/raw/RawPancakePlate.html:12
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:5 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:11 src/lessons/smn/pancake/raw/RawPancakePlate.html:12
 #, no-wrap
 msgid "int getStackSize()"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:7 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:8 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:13 src/lessons/smn/pancake/raw/RawPancakePlate.html:14
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:7 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:13 src/lessons/smn/pancake/raw/RawPancakePlate.html:14
 msgid ""
 "Returns the size of the stack, in other words the amount of pancakes it "
 "contains."
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:9 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:10 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:15 src/lessons/smn/pancake/raw/RawPancakePlate.html:16
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:9 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:15 src/lessons/smn/pancake/raw/RawPancakePlate.html:16
 #, no-wrap
 msgid "int getPancakeRadius(int pancakeNumber)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:11 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:12 src/lessons/smn/pancake/raw/RawPancakePlate.html:18
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:11 src/lessons/smn/pancake/raw/RawPancakePlate.html:18
 msgid "Returns the radius of the pancake you gave in argument."
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:13 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:19
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:13 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:19
 #, no-wrap
 msgid "boolean isPancakeUpsideDown(int pancakeNumber)"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:15
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:15
 msgid ""
 "Returns true if the burned side of the pancake you gave in argument is up, "
 "false if not."
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:17 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:14 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:23 src/lessons/smn/pancake/raw/RawPancakePlate.html:20
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:17 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:23 src/lessons/smn/pancake/raw/RawPancakePlate.html:20
 #, no-wrap
 msgid "void flip(int numberOfPancakes)"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:19
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:19
 msgid ""
 "Flips the <code>numberOfPancakes</code>code> first pancakes composing the "
 "stack, from the top of it."
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:21 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:18
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:21
 #, no-wrap
 msgid "boolean isSorted()"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/jlm/universe/smn/pancake/burned/PancakeWorld.html:23 src/jlm/universe/smn/pancake/raw/PancakeWorld.html:20
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:23
 msgid ""
 "Tells if the stack of pancakes is correctly sorted according to the control "
 "freak pancake seller"
-msgstr ""
-
-#. type: Content of: <div>
-#: src/jlm/universe/smn/pancake/raw/PancakeWorld.html:4
-msgid "Function provided:"
-msgstr ""
-
-#. type: Content of: <div><p>
-#: src/jlm/universe/smn/pancake/raw/PancakeWorld.html:16 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:25 src/lessons/smn/pancake/raw/RawPancakePlate.html:22
-msgid ""
-"Flips the <code>numberOfPancakes</code> first pancakes composing the stack, "
-"from the top of it."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -9060,6 +9048,13 @@ msgstr ""
 msgid ""
 "Returns true if the burned side of the pancake <code>pancakeNumber</code> is "
 "up, false if not."
+msgstr ""
+
+#. type: Content of: <div><p>
+#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:25 src/lessons/smn/pancake/raw/RawPancakePlate.html:22
+msgid ""
+"Flips the <code>numberOfPancakes</code> first pancakes composing the stack, "
+"from the top of it."
 msgstr ""
 
 #. type: Content of: <p>

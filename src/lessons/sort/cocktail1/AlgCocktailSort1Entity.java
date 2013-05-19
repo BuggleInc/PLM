@@ -3,11 +3,11 @@ package lessons.sort.cocktail1;
 import jlm.universe.sort.SortingEntity;
 
 public class AlgCocktailSort1Entity extends SortingEntity {
-	
+
 	public void run() {
 		this.cocktailSort();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void cocktailSort() {
 		/* BEGIN SOLUTION */
@@ -28,6 +28,6 @@ public class AlgCocktailSort1Entity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }
 

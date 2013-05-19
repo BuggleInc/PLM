@@ -12,16 +12,16 @@ public class AverageValueEntity extends ArrayEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-// computes the average value of the values contained in tab variable
-public int average(int[] tab) {
-	/* BEGIN SOLUTION */
-	int sum = 0;
-	for (int i=0; i<tab.length; i++) {
-		sum += tab[i];
+	// computes the average value of the values contained in tab variable
+	public int average(int[] tab) {
+		/* BEGIN SOLUTION */
+		int sum = 0;
+		for (int i=0; i<tab.length; i++) {
+			sum += tab[i];
+		}
+		return sum / tab.length;
+		/* END SOLUTION */
 	}
-	return sum / tab.length;
-	/* END SOLUTION */
-}
 
 	/* END TEMPLATE */
 

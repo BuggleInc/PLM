@@ -3,11 +3,11 @@ package lessons.sort.insertion;
 import jlm.universe.sort.SortingEntity;
 
 public class AlgInsertionSortEntity extends SortingEntity {
-	
+
 	public void run() {
 		this.insertionSort();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void insertionSort() {
 		/* BEGIN SOLUTION */
@@ -23,6 +23,6 @@ public class AlgInsertionSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }
 

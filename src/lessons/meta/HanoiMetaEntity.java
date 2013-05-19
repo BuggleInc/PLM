@@ -15,7 +15,7 @@ public class HanoiMetaEntity extends HanoiEntity {
 	Entity servant;
 	/* We report errors to the exercise directly */
 	MetaExercise exo;
-	
+
 	public HanoiMetaEntity(String name,World world,MetaExercise exo) {
 		super(name,world);
 		this.exo = exo;
@@ -27,7 +27,7 @@ public class HanoiMetaEntity extends HanoiEntity {
 		other.servant = servant;
 		return other;
 	}
-	
+
 	/* Set tested code in position */
 	protected void setServant(Class<Object> servantClass) {
 		try {
@@ -37,7 +37,7 @@ public class HanoiMetaEntity extends HanoiEntity {
 			exo.error("Cannot instantiate your Entity implementation",e);
 		}
 	}
-	
+
 	/* Intercepting all methods of interest */
 	public void move(int src, int dst) throws HanoiInvalidMove {
 		if (isAnswer) {

@@ -7,15 +7,15 @@ import jlm.universe.bat.BatTest;
 import jlm.universe.bat.BatWorld;
 
 public class NearHundred extends BatExercise {
-	
+
 	public NearHundred(Lesson lesson) {
 		super(lesson);
-		
+
 		BatWorld myWorld = new BatWorld("nearHundred");
 		myWorld.addTest(VISIBLE, 93);
 		myWorld.addTest(VISIBLE, 90);
 		myWorld.addTest(VISIBLE, 89);
-		
+
 		myWorld.addTest(INVISIBLE, 110);
 		myWorld.addTest(INVISIBLE, 191);
 		myWorld.addTest(INVISIBLE, 189);
@@ -34,13 +34,13 @@ public class NearHundred extends BatExercise {
 		t.setResult( nearHundred((Integer)t.getParameter(0)) );		
 	}
 	/* END SKEL */
-	
+
 	/* BEGIN TEMPLATE */
-boolean nearHundred(int n) {
-	
+	boolean nearHundred(int n) {
+
 		/* BEGIN SOLUTION */
-	  return (90<=n && n<=110)||(190<=n&&n<=210);
+		return (90<=n && n<=110)||(190<=n&&n<=210);
 		/* END SOLUTION */
-}
-		/* END TEMPLATE */
+	}
+	/* END TEMPLATE */
 }

@@ -5,9 +5,9 @@ import jlm.universe.sort.SortingEntity;
 public class AlgSelectionSortEntity extends SortingEntity {
 
 	public void run() {
-			this.selectionSort();
+		this.selectionSort();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void selectionSort() {
 		/* BEGIN SOLUTION */
@@ -27,5 +27,5 @@ public class AlgSelectionSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }

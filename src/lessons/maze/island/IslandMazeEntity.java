@@ -21,32 +21,32 @@ public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
-	 public void run() {
-		 int state = 0 ;
-		 this.setDirection(this.chosenDirection);
-		 while ( !isOverBaggle() )
-		 {
-			 switch ( state )
-			 {
-			 case 0: // North runner mode
-				 while ( !isFacingWall() )
-				 {
-					 forward();
-			     }
-				 this.turnRight(); // make sure that we have a left wall
-				 state = 1; // time to enter the Left Follower mode
-			 break;
-			 case 1: // Left Follower Mode
-				 this.stepHandOnWall(); // follow the left wall
-		         if ( this.isChosenDirectionFree() && (this.getDirection() == this.chosenDirection)  ) 
-		         {
-		        	 state =0; // time to enter in North Runner mode
-			     }
-				          break;
-		      }
-		 }
-		 this.pickUpBaggle();
-	 }
+	public void run() {
+		int state = 0 ;
+		this.setDirection(this.chosenDirection);
+		while ( !isOverBaggle() )
+		{
+			switch ( state )
+			{
+			case 0: // North runner mode
+				while ( !isFacingWall() )
+				{
+					forward();
+				}
+				this.turnRight(); // make sure that we have a left wall
+				state = 1; // time to enter the Left Follower mode
+				break;
+			case 1: // Left Follower Mode
+				this.stepHandOnWall(); // follow the left wall
+				if ( this.isChosenDirectionFree() && (this.getDirection() == this.chosenDirection)  ) 
+				{
+					state =0; // time to enter in North Runner mode
+				}
+				break;
+			}
+		}
+		this.pickUpBaggle();
+	}
 
 	private void stepHandOnWall(){
 		while ( ! isFacingWall() )
@@ -71,7 +71,7 @@ public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */
-	
+
 }
 
 

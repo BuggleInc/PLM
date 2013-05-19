@@ -14,11 +14,11 @@ import jlm.universe.sort.SortingEntity;
  */
 
 public class AlgShellSortEntity extends SortingEntity {
-	
+
 	public void run() {
 		this.shellSort();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void shellSort()  {
 		/* BEGIN SOLUTION */
@@ -47,6 +47,6 @@ public class AlgShellSortEntity extends SortingEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }
 

@@ -11,14 +11,14 @@ public class BurnedPancakePlateEntity extends PancakeEntity {
 	public void run() throws InvalidPancakeNumber {
 		try
 		{
-		this.solve();
+			this.solve();
 		}
 		catch( InvalidPancakeNumber pne)
 		{
 			System.out.println(this.world.getName() +" :"+pne.getMessage());
 		}
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void solve() throws InvalidPancakeNumber {
 		/* BEGIN SOLUTION */
@@ -65,5 +65,5 @@ public class BurnedPancakePlateEntity extends PancakeEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
+
 }

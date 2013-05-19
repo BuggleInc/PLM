@@ -3,11 +3,11 @@ package lessons.sort.bubble2;
 import jlm.universe.sort.SortingEntity;
 
 public class AlgBubbleSort2Entity extends SortingEntity {
-	
+
 	public void run() {
 		this.bubbleSort2();
 	}
-	
+
 	/* BEGIN TEMPLATE */
 	public void bubbleSort2() {
 		/* BEGIN SOLUTION */
