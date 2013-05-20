@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.Locale;
 
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.ExerciseTemplated;
@@ -26,14 +27,14 @@ import jlm.core.model.lesson.Lecture;
  *  clean but it just works.
  */
 public class FileUtils {
-	private static String locale;
+	private static Locale locale;
 	
 	private final static String[] directories = { "", "lib/", "src/" };                
 
 	
 	/** Specifies the locale that we have to use when looking for translated files */
-	public static void setLocale(String lang) {
-		locale = lang;
+	public static void setLocale(Locale l) {
+		locale = l;
 		if (  Game.getInstance() != null && Game.getInstance().getCurrentLesson() != null )
 		{
 			Game.getInstance().getCurrentLesson().resetAboutLoaded();
@@ -42,7 +43,7 @@ public class FileUtils {
 				((Exercise) lect).getCurrentWorld().get(0).resetAbout();
 		}
 	}
-	public static String getLocale() {
+	public static Locale getLocale() {
 		return locale;
 	}
 	
@@ -51,8 +52,8 @@ public class FileUtils {
         if (translatable) {
             if (locale == null) 
                 throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
-            if (! locale.equals("en")) {
-                fileName = fileName + "." + locale;
+            if (! locale.getLanguage().equals("en")) {
+                fileName = fileName + "." + locale.getLanguage();
             }
         }
         fileName = fileName + (extension != null ? "." + extension : "");

@@ -1,3 +1,5 @@
+20130521:
+  * Basic i18n infrastructure allowing to translate the user interface. Fixes issue #76.
 20130517:
   * Package baseball exercises in their own directories
   * Add a control panel for the Pancake Worlds ( raw & burned )

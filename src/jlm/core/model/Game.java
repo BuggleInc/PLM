@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
@@ -47,6 +48,9 @@ import jlm.core.ui.ResourcesCache;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 /*
  *  core model which contains all known exercises.
@@ -96,7 +100,8 @@ public class Game implements IWorldView {
 
 	private static boolean ongoingInitialization = false;
 	private static String lessonChooser = "lessons.chooser";
-	
+	I18n i18n;
+
 	public static Game getInstance() {
 		if (Game.instance == null) {
 			if (ongoingInitialization)
@@ -732,8 +737,11 @@ public class Game implements IWorldView {
 			l.stateChanged(str);
 		}
 	}
-	public void setLocale(String lang) {
+	public void setLocale(Locale lang) {
 		FileUtils.setLocale(lang);
+		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+		System.out.println(i18n.tr("Switching language to {0}.", getLocale().getDisplayName()));
+
 		for (Lesson lesson : lessons.values()) {
 			for (Lecture lect:lesson.exercises()) {
 				if (lect instanceof ExerciseTemplated) {
@@ -743,6 +751,9 @@ public class Game implements IWorldView {
 		}
 		setCurrentLesson(getCurrentLesson());
 		currentLesson.setCurrentExercise(currentLesson.getCurrentExercise());
+	}
+	public Locale getLocale(){
+		return FileUtils.getLocale();
 	}
 
 

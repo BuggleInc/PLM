@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.Locale;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -54,6 +55,9 @@ import jlm.core.ui.action.StepExecution;
 import jlm.core.ui.action.StopExecution;
 import jlm.universe.World;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 public class MainFrame extends JFrame implements GameStateListener, GameListener {
 
 	private static final long serialVersionUID = -5022279647890315264L;
@@ -69,6 +73,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
+	I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private JSplitPane mainPanel;
 	
@@ -78,7 +83,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private MainFrame() {
 		super(frameTitle);
-		FileUtils.setLocale(this.getLocale().getLanguage());
+		FileUtils.setLocale(this.getLocale());
 		initComponents(Game.getInstance());
 		this.keyListeners(exerciseView);
 	}
@@ -94,21 +99,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent e) {
-					String message ;
-					String title;
-					if ( FileUtils.getLocale().equals("fr"))
-		    		{
-		    			message = "Voulez-vous vraiment quitter ?";
-		    		 	title = "Quitter la JLM";
-		    		}
-		    		else
-		    		{
-		    			message = "Do you really want to quit ?";
-		    			title = "Exit the JLM";
-		    		}
-		    		int reply = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
-		    		if (reply == JOptionPane.YES_OPTION)
-		    		{
+		    		if (JOptionPane.YES_OPTION == 
+		    				JOptionPane.showConfirmDialog(null, 
+		    						i18n.tr("Do you really want to quit ?"), 
+		    						i18n.tr("Exit the JLM"), JOptionPane.YES_NO_OPTION)) {
 		    			g.quit();
 		    		}
 				}
@@ -171,15 +165,15 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		/* === FILE menu === */
 		menu = new JMenu("File");
 		menu.setMnemonic(KeyEvent.VK_F);
-		menu.getAccessibleContext().setAccessibleDescription("File related functions");
+		menu.getAccessibleContext().setAccessibleDescription(i18n.tr("File related functions"));
 		
-		menuItem = new JMenuItem(new AbstractGameAction(g, "Load lesson", null, "Load a lesson from file",  "Cannot load a lesson now", KeyEvent.VK_L) {
+		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, i18n.tr("Load a lesson from file"),  i18n.tr("Cannot load a lesson now"), KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new FileNameExtensionFilter("JLM lesson files", "jlm"));
+				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("JLM lesson files"), "jlm"));
 				fc.setDialogType(JFileChooser.OPEN_DIALOG);
 				fc.showOpenDialog(MainFrame.getInstance());
 				File selectedFile = fc.getSelectedFile();
@@ -188,13 +182,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 					if (selectedFile != null)
 						game.loadLessonFromJAR(fc.getSelectedFile());
 				} catch (LessonLoadingException lle) {
-					JOptionPane.showMessageDialog(null, lle.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); 
+					JOptionPane.showMessageDialog(null, lle.getMessage(), i18n.tr("Error"), JOptionPane.ERROR_MESSAGE); 
 				}
 			}
 		});
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem(new AbstractGameAction(g, "Switch lesson", null, "Go to another lesson",  "Cannot switch lesson now", KeyEvent.VK_L) {
+		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, i18n.tr("Go to another lesson"),  i18n.tr("Cannot switch lesson now"), KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -207,7 +201,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		
 		// Teacher console menu item (shown only if defined in the JLM properties)
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
-            menuItem = new JMenuItem(new AbstractGameAction(g, "Teacher Console") {
+            menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Teacher Console")) {
 
 				private static final long serialVersionUID = 1L;
 				private TeacherConsoleDialog dialog = null;
@@ -226,7 +220,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         }
         
         // Menu item to change the current Course
-        menuItem = new JMenuItem(new AbstractGameAction(g, "Choose your course") {
+        menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Choose your course")) {
 
 			private static final long serialVersionUID = 1L;
 			private ChooseCourseDialog dialog = null;
@@ -253,25 +247,25 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuBar.add(menu);
 
 		/* === Edit menu === */
-		menu = new JMenu("Session");
+		menu = new JMenu(i18n.tr("Session"));
 		menu.setMnemonic(KeyEvent.VK_S);
-		menu.getAccessibleContext().setAccessibleDescription("Lesson related functions");
+		menu.getAccessibleContext().setAccessibleDescription(i18n.tr("Lesson related functions"));
 		menuBar.add(menu);
 		menu.setEnabled(true);
 
-		JMenuItem revertExerciseCodeSource = new JMenuItem(new RevertExercise(g, "Revert Exercise",
+		JMenuItem revertExerciseCodeSource = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"),
 				null));
 		menu.add(revertExerciseCodeSource);
 
-		JMenuItem exportSessionMenuItem = new JMenuItem(new ExportSession(g, "Export Session Cache",
+		JMenuItem exportSessionMenuItem = new JMenuItem(new ExportSession(g, i18n.tr("Export Session Cache"),
 				null, this));
 		menu.add(exportSessionMenuItem);
 
-		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(g, "Import Session Cache",
+		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(g, i18n.tr("Import Session Cache"),
 				null, this));
 		menu.add(importSessionMenuItem);
 
-		JMenuItem switchDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, "Debug mode", null, "Display more debug message in logs", "Cannot switch debug mode now", KeyEvent.VK_D) {
+		JMenuItem switchDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, i18n.tr("Display more debug message in logs"), i18n.tr("Cannot switch debug mode now"), KeyEvent.VK_D) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -289,12 +283,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuBar.add(menu);
 
 		/* === Programming language changing === */
-		JMenu textLangSubMenu = new JMenu("Human");
+		JMenu textLangSubMenu = new JMenu(i18n.tr("Human"));
 		menu.add(textLangSubMenu);
 		ButtonGroup group = new ButtonGroup();
 
 		for (String[] lang : new String[][] { {"Francais","fr"}, {"English","en"}}) {
-			JMenuItem item = new JRadioButtonMenuItem(new SetLanguage(g, lang[0], lang[1]));
+			JMenuItem item = new JRadioButtonMenuItem(new SetLanguage(g, lang[0], new Locale(lang[1])));
 			if (lang[1].equals(FileUtils.getLocale())) 
 				item.setSelected(true);
 			group.add(item);
@@ -304,7 +298,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.add(new ProgLangSubMenu());
 
 		/* === Help menu === */
-		menu = new JMenu("Help");
+		menu = new JMenu(i18n.tr("Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menu);
 
@@ -324,7 +318,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		}));
 */
-		menuItem = new JMenuItem(new AbstractGameAction(g, "About this lesson") {
+		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("About this lesson")) {
 			private static final long serialVersionUID = 1L;
 			private AbstractAboutDialog dialog = null;
 
@@ -337,7 +331,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		menu.add(menuItem);
 
-		menuItem = new JMenuItem(new AbstractGameAction(g, "About this world", null) {
+		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("About this world"), null) {
 			private static final long serialVersionUID = 1L;
 
 			private AbstractAboutDialog dialog = null;
@@ -353,7 +347,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.add(menuItem);
 
 		if (!System.getProperty("os.name").startsWith("Mac")) {
-			menu.add(new JMenuItem(new AbstractGameAction(g, "About JLM", null) {
+			menu.add(new JMenuItem(new AbstractGameAction(g, i18n.tr("About JLM"), null) {
 				private static final long serialVersionUID = 1L;
 
 				public void actionPerformed(ActionEvent e) {
@@ -386,16 +380,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
 		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
-		startButton = new PropagatingButton(new StartExecution(g, "Run", ii));
+		startButton = new PropagatingButton(new StartExecution(g, i18n.tr("Run"), ii));
 		//shortcut ctrl-r
 		startButton.setMnemonic(KeyEvent.VK_R);
 
-		debugButton = new PropagatingButton(new StepExecution(g, "Step", 
+		debugButton = new PropagatingButton(new StepExecution(g, i18n.tr("Step"), 
 				ResourcesCache.getIcon("resources/debug.png")));
 		//shortcut ctrl-b
 		debugButton.setMnemonic(KeyEvent.VK_B);
 
-		stopButton = new PropagatingButton(new StopExecution(g, "Stop", 
+		stopButton = new PropagatingButton(new StopExecution(g, i18n.tr("Stop"), 
 				ResourcesCache.getIcon("resources/stop.png")));
 		//shortcut ctrl-s
 		stopButton.setMnemonic(KeyEvent.VK_S);
@@ -407,13 +401,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		resetButton.setMnemonic(KeyEvent.VK_Z);
 		resetButton.setEnabled(true);
 
-		demoButton = new PropagatingButton(new PlayDemo(g, "Demo", 
+		demoButton = new PropagatingButton(new PlayDemo(g, i18n.tr("Demo"), 
 				ResourcesCache.getIcon("resources/demo.png")));
 		//shortcut ctrl-d
 		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
-        helpMeButton = new PropagatingToggleButton(new HelpMe(g, "Help",
+        helpMeButton = new PropagatingToggleButton(new HelpMe(g, ("Help"),
                 ResourcesCache.getIcon("resources/alert.png")));
 
 		toolBar.add(startButton);

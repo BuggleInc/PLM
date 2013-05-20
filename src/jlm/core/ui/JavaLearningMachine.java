@@ -15,9 +15,10 @@ public class JavaLearningMachine {
 			System.setProperty("com.apple.mrj.application.apple.menu.about.name", "JLM");
 		}
 		
-		FileUtils.setLocale(new JFrame().getLocale().getLanguage());
+		FileUtils.setLocale(new JFrame().getLocale());
 		
 		Game.getInstance().loadChooser();
 		MainFrame.getInstance().setVisible(true);
+		Game.getInstance().setLocale(MainFrame.getInstance().getLocale());
 	}
 }

@@ -33,6 +33,7 @@
         <delete dir="${classes.dir}"/>
         <delete dir="${dist.dir}"/>
         <delete dir="${site.dir}/lib"/>
+        <delete dir="${site.dir}/po"/>
     </target>
 
     <target name="compile" description="compile all source files">
@@ -40,7 +41,7 @@
         <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" />
     </target>    
     
-    <target name="dist" depends="compile, updateversion" description="build a standalone application jar file">
+    <target name="dist" depends="i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/jlm-${jlm.version}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
@@ -51,6 +52,7 @@
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
             <fileset dir="${src.dir}" includes="**/*.py **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
             <fileset dir="${lib.dir}" excludes="*.jar *.pl l10n/*"/>
+            <fileset dir="${lib.dir}" excludes="*.jar *.pl l10n-engine/*"/>
             <!--<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-2.1.0-SNAPSHOT.jar" /> -->
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />    
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/irclib.jar" />
@@ -89,6 +91,8 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smack.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json-smart-1.1.1.jar" />
             
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jlm-messages.jar" />
+
         </jar>
     </target>
     
@@ -132,7 +136,7 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smackx.jar"/>        
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smack.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json-smart-1.1.1.jar" />
-            
+
         </zip>
     </target>
 
@@ -188,4 +192,26 @@
       </propertyfile>
     </target>
 
+    <property name="gettexttasks.jar" value="lib/gettext-ant-tasks-0.9.3.jar"/>
+    <target name="i18n-init" description="Loads the Ant gettext tasks">
+      <taskdef name="gettext-extract" classname="org.xnap.commons.ant.gettext.GettextExtractKeysTask" classpath="${gettexttasks.jar}"/>
+      <taskdef name="gettext-merge"   classname="org.xnap.commons.ant.gettext.GettextMergeKeysTask"   classpath="${gettexttasks.jar}"/>
+      <taskdef name="gettext-generate-default" classname="org.xnap.commons.ant.gettext.GenerateDefaultBundleTask" classpath="${gettexttasks.jar}"/>
+      <taskdef name="gettext-dist"    classname="org.xnap.commons.ant.gettext.GettextDistTask"        classpath="${gettexttasks.jar}"/>
+    </target>
+    <target name="i18n-extract" description="Extracts message keys from the source code" depends="i18n-init">
+      <gettext-extract keysFile="jlm.pot" poDirectory="lib/l10n-engine">
+        <fileset dir="${src.dir}" includes="**/*.java"/>
+      </gettext-extract>
+    </target>
+    <target name="i18n-update" description="Merges newly extracted messages into existing po files" depends="i18n-extract">
+      <gettext-merge keysFile="jlm.pot" poDirectory="lib/l10n-engine"/>
+    </target>
+    
+    <target name="i18n-generate-jar" description="Generates Java ResourceBundles and jars them up" depends="i18n-update">
+      <mkdir dir="${site.dir}/po"/>
+      <gettext-dist targetBundle="org.jlm.i18n.Messages" poDirectory="lib/l10n-engine" outputDirectory="${site.dir}/po" />
+      <jar destfile="lib/jlm-messages.jar" basedir="${site.dir}/po" includes="org/**"/>
+      <delete dir="${site.dir}/po"/>
+    </target>
 </project>

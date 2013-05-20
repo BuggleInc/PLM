@@ -1,6 +1,7 @@
 package jlm.core.ui.action;
 
 import java.awt.event.ActionEvent;
+import java.util.Locale;
 
 import jlm.core.model.Game;
 
@@ -8,9 +9,9 @@ public class SetLanguage extends AbstractGameAction {
 
 	private static final long serialVersionUID = 5778501209753480269L;
 
-	private String lang;
+	private Locale lang;
 
-	public SetLanguage(Game game, String text, String lang) {
+	public SetLanguage(Game game, String text, Locale lang) {
 		super(game, text, null);
 		this.lang = lang;
 	}

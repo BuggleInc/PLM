@@ -24,5 +24,7 @@
 	<classpathentry kind="lib" path="lib/jython/js-1.7R3.jar"/>
 	<classpathentry kind="lib" path="lib/json-smart-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/jruby-1.5.6-5.jar"/>
+	<classpathentry kind="lib" path="lib/gettext-commons-0.9.6.jar"/>
+	<classpathentry kind="lib" path="lib/jlm-messages.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

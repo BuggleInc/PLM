@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-21 21:38+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/jlm/core/model/Game.java:743
+#, java-format
+msgid "Switching language to {0}."
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:104
+msgid "Do you really want to quit ?"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:105
+msgid "Exit the JLM"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:168
+msgid "File related functions"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:170
+msgid "Load lesson"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:170
+msgid "Load a lesson from file"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:170
+msgid "Cannot load a lesson now"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:176
+msgid "JLM lesson files"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:185
+msgid "Error"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:191
+msgid "Switch lesson"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:191
+msgid "Go to another lesson"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:191
+msgid "Cannot switch lesson now"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:204
+msgid "Teacher Console"
+msgstr ""
+
+#. Menu item to change the current Course
+#: src/jlm/core/ui/MainFrame.java:223
+msgid "Choose your course"
+msgstr ""
+
+#. === Edit menu ===
+#: src/jlm/core/ui/MainFrame.java:250
+msgid "Session"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:252
+msgid "Lesson related functions"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:256
+msgid "Revert Exercise"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:260
+msgid "Export Session Cache"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:264
+msgid "Import Session Cache"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:268
+msgid "Debug mode"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:268
+msgid "Display more debug message in logs"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:268
+msgid "Cannot switch debug mode now"
+msgstr ""
+
+#. === Programming language changing ===
+#: src/jlm/core/ui/MainFrame.java:286
+msgid "Human"
+msgstr ""
+
+#. === Help menu ===
+#: src/jlm/core/ui/MainFrame.java:301
+msgid "Help"
+msgstr ""
+
+#.
+#. TODO: forum to be fixed
+#. menu.add(new JMenuItem(new AbstractGameAction(g, "Join the forum", null) {
+#. private static final long serialVersionUID = 1L;
+#.
+#. private JDialog dialog = null;
+#.
+#. public void actionPerformed(ActionEvent arg0) {
+#. if (this.dialog == null) {
+#. //this.dialog = new JLMForumDialog();
+#. this.dialog = new XMPPDialog();
+#. }
+#. this.dialog.setVisible(true);
+#. }
+#. }));
+#.
+#: src/jlm/core/ui/MainFrame.java:321
+msgid "About this lesson"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:334
+msgid "About this world"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:350
+msgid "About JLM"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:383
+msgid "Run"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:387
+msgid "Step"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:392
+msgid "Stop"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:404
+msgid "Demo"
+msgstr ""
