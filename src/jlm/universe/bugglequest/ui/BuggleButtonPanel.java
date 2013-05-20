@@ -216,7 +216,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		String title = "Wall hugging error";
 		if ( FileUtils.getLocale().equals("fr"))
 		{
-			message = "Votre buggle est rentr�e dans un mur, �a fait mal ! ='(";
+			message = "Votre buggle est rentrée dans un mur, ça fait mal ! ='(";
 		}
 		else
 		{
