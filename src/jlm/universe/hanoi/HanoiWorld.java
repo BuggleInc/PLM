@@ -8,6 +8,7 @@ import javax.script.ScriptException;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
+import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 /* BEGIN TEMPLATE */
@@ -155,6 +156,14 @@ public class HanoiWorld extends World {
 		} else {
 			throw new RuntimeException("No binding of HanoiWorld for "+lang);
 		}
+	}
+	
+	/**
+	 * Return the panel which let the user to interact dynamically with the world
+	 */
+	@Override
+	public EntityControlPanel getEntityControlPanel() {
+		return new HanoiMovePanel();
 	}
 	/* END HIDDEN */
 

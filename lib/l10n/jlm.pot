@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-19 04:40-0800\n"
+"POT-Creation-Date: 2013-05-20 08:37-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8886,11 +8886,11 @@ msgstr ""
 msgid "void flip(int numberOfPancakes)"
 msgstr ""
 
-#. type: Content of: <div>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:19
+#. type: Content of: <div><p>
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:19 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:25 src/lessons/smn/pancake/raw/RawPancakePlate.html:22
 msgid ""
-"Flips the <code>numberOfPancakes</code>code> first pancakes composing the "
-"stack, from the top of it."
+"Flips the <code>numberOfPancakes</code> first pancakes composing the stack, "
+"from the top of it."
 msgstr ""
 
 #. type: Content of: <div><pre>
@@ -9048,13 +9048,6 @@ msgstr ""
 msgid ""
 "Returns true if the burned side of the pancake <code>pancakeNumber</code> is "
 "up, false if not."
-msgstr ""
-
-#. type: Content of: <div><p>
-#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:25 src/lessons/smn/pancake/raw/RawPancakePlate.html:22
-msgid ""
-"Flips the <code>numberOfPancakes</code> first pancakes composing the stack, "
-"from the top of it."
 msgstr ""
 
 #. type: Content of: <p>
