@@ -4,6 +4,7 @@ import javax.script.ScriptEngine;
 
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
+import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 /**
@@ -23,6 +24,14 @@ public class BaseballWorld extends World
 	public BaseballWorld(BaseballWorld world)
 	{
 		super(world);
+	}
+	
+	/**
+	 * Return the panel which let the user to interact dynamically with the world
+	 */
+	@Override
+	public EntityControlPanel getEntityControlPanel() {
+		return new BaseballMovePanel();
 	}
 	
 	/**

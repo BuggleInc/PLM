@@ -41,6 +41,8 @@ public class BuggleColorCellRenderer extends JPanel implements ListCellRenderer{
      */
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
         this.cell.setBackground((Color) value);
+        this.cell.setOpaque(true);
+        this.cell.setBorderPainted(false);
         return this;
     }
 
