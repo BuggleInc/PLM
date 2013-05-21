@@ -52,8 +52,8 @@ public class BatWorld extends World {
 		return true;
 	}
 	@Override
-	public WorldView[] getView() {
-		return new WorldView[] { new BatWorldView(this) };
+	public WorldView getView() {
+		return new BatWorldView(this);
 	}
 	
 	/* So that the view can display them */

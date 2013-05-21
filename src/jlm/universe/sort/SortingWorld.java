@@ -227,8 +227,8 @@ public class SortingWorld extends World {
 	 * @return a component able at displaying the world
 	 */
 	@Override
-	public WorldView[] getView() {
-		return new WorldView[] { new SortingWorldView(this) };
+	public WorldView getView() {
+		return new SortingWorldView(this);
 	}
 	
 	/**

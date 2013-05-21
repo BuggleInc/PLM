@@ -37,10 +37,10 @@ public class HanoiMetaWorld extends HanoiWorld {
 		super.reset(w);		
 	}
 	@Override
-	public WorldView[] getView() {
+	public WorldView getView() {
 		if (view == null)
 			view = new HanoiWorldView(this);
-		return new WorldView[] {view};
+		return view;
 	}
 
 	/* Set tested code in position */

@@ -151,8 +151,8 @@ public class PancakeWorld extends World {
 	 * @return a component able of displaying the world
 	 */
 	@Override
-	public WorldView[] getView() {
-		return new WorldView[] { new PancakeWorldView(this) } ;
+	public WorldView getView() {
+		return new PancakeWorldView(this);
 	}
 
 	/**

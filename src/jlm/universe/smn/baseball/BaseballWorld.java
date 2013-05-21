@@ -164,9 +164,9 @@ public class BaseballWorld extends World
 	 * Return a component able of displaying the world
 	 * @return a component able of displaying the world
 	 */
-	public WorldView[] getView()
+	public WorldView getView()
 	{
-		return new WorldView[] { new BaseballWorldView(this) } ;
+		return new BaseballWorldView(this);
 	}
 	
 	/**

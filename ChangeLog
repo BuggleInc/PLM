@@ -1,5 +1,6 @@
 20130521:
   * Basic i18n infrastructure allowing to translate the user interface. Fixes issue #76.
+  * Kill the ability to have more than one view per world (fix issue #35)
 20130517:
   * Package baseball exercises in their own directories
   * Add a control panel for the Pancake Worlds ( raw & burned )

@@ -61,8 +61,8 @@ public class BuggleWorld extends GridWorld {
 	}	
 
 	@Override
-	public BuggleWorldView[] getView() {
-		return new BuggleWorldView[] { new BuggleWorldView(this) };
+	public BuggleWorldView getView() {
+		return new BuggleWorldView(this);
 	}
 	@Override
 	public EntityControlPanel getEntityControlPanel() {

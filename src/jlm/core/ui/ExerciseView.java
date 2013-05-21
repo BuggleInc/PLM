@@ -26,8 +26,8 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	private static final long serialVersionUID = 6649968807663790018L;
 	private Game game;
-	private WorldView[] worldView;
-	private WorldView[] objectivesView;
+	private WorldView worldView;
+	private WorldView objectivesView;
 
 	private JComboBox entityComboBox;
 	private JComboBox worldComboBox;
@@ -80,17 +80,13 @@ public class ExerciseView extends JPanel implements GameListener {
 		removeControlPage(tabPane);
 		if (Game.getInstance().getSelectedWorld() != null) {
 			worldView = Game.getInstance().getSelectedWorld().getView();
-			for (WorldView wv: worldView) {
-				tabPane.addTab("World"+wv.getTabName(), null, wv, 
-						"Current world"+wv.getTip());
-			}
+			tabPane.addTab("World"+worldView.getTabName(), null, worldView, 
+					"Current world"+worldView.getTip());
 		}
 		if (Game.getInstance().getAnswerOfSelectedWorld() != null) {
 			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-			for (WorldView wv: objectivesView) {
-				tabPane.addTab("Objective"+wv.getTabName(), null, wv, 
-						"Target world"+wv.getTip());
-			}
+			tabPane.addTab("Objective"+objectivesView.getTabName(), null, objectivesView, 
+					"Target world"+objectivesView.getTip());
 		}
 		
 		upperPane.add(tabPane, "grow 100 100,push");
@@ -150,23 +146,17 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	@Override
 	public void selectedWorldHasChanged(World newWorld) {
-		if (worldView != null && worldView[0].isWorldCompatible(this.game.getSelectedWorld())) {
-			for (WorldView w:worldView)
-				w.setWorld(this.game.getSelectedWorld());
-			for (WorldView w:objectivesView)
-				w.setWorld(this.game.getAnswerOfSelectedWorld());
+		if (worldView != null && worldView.isWorldCompatible(this.game.getSelectedWorld())) {
+			worldView.setWorld(this.game.getSelectedWorld());
+			objectivesView.setWorld(this.game.getAnswerOfSelectedWorld());
 		} else {
 			tabPane.removeAll();
 			worldView = Game.getInstance().getSelectedWorld().getView();
-			for (WorldView wv: worldView) {
-				tabPane.addTab("World"+wv.getTabName(), null, wv, 
-						       "Current world"+wv.getTip());
-			}
+			tabPane.addTab("World"+worldView.getTabName(), null, worldView, 
+					"Current world"+worldView.getTip());
 			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
-			for (WorldView wv: objectivesView) {
-				tabPane.addTab("Objective"+wv.getTabName(), null, wv, 
-						       "Target world"+wv.getTip());
-			}
+			tabPane.addTab("Objective"+objectivesView.getTabName(), null, objectivesView, 
+					"Target world"+objectivesView.getTip());
 		}
 		// To refresh the controlPane in any case ( else the SortingWorldPanel is not refreshed )
 		controlPane.removeAll();

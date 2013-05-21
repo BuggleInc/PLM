@@ -85,7 +85,7 @@ public class HanoiCreateEntity extends MetaExercise {
 					((HanoiMetaEntity) w.getEntity(0)).setServant(compiledClasses.get(className("HanoiEntity")));
 					w.doDelay();
 					solve(w);
-					w.getView()[0].repaint();
+					w.getView().repaint();
 				}
 			}
 		});

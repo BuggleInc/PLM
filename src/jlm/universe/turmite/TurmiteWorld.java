@@ -55,8 +55,8 @@ public class TurmiteWorld extends BuggleWorld {
 	/** Returns a component able of displaying the world -- will be used in third exercise 
 	 * You should comment this for the first exercises */
 	@Override
-	public BuggleWorldView[] getView() {
-		return new BuggleWorldView[] { new TurmiteWorldView(this) } ;
+	public BuggleWorldView getView() {
+		return new TurmiteWorldView(this);
 	}
 	
 	/** Used to check whether the student code changed the world in the right state -- see exercise 4 */

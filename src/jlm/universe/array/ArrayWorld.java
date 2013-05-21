@@ -38,8 +38,8 @@ public class ArrayWorld extends World {
 	}
 	
 	@Override
-	public WorldView[] getView() {
-		return new WorldView[] { new ArrayWorldView(this) };
+	public WorldView getView() {
+		return new ArrayWorldView(this);
 	}
 	
 	@Override

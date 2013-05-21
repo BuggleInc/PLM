@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 /**
  * The control panel for the sorting world. 
  * It allows you to use the copy, setValue and swap methods interactively.
@@ -26,6 +29,8 @@ public class SortingButtonPanel extends EntityControlPanel {
 	private JComboBox leftValueComboBox;	// the value for the first parameter of the selected operation
 	private JComboBox rightValueComboBox;	// the value for the second parameter of the selected operation
 	
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+
 	/**
      * Constructor of SortingButtonPanel
      * It initializes the command panel
@@ -56,7 +61,7 @@ public class SortingButtonPanel extends EntityControlPanel {
 		this.leftValueComboBox = new JComboBox(index) ;
 		this.rightValueComboBox = new JComboBox(index) ;
 		
-		this.validateButton = new JButton("Validate");
+		this.validateButton = new JButton(i18n.tr("go"));
 		this.validateButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

@@ -74,8 +74,8 @@ public class HanoiWorld extends World {
 	/** Returns a component able of displaying the world -- will be used in third exercise 
 	 * You should comment this for the first exercises */
 	@Override
-	public WorldView[] getView() {
-		return new WorldView[] { new jlm.universe.hanoi.HanoiWorldView(this) } ;
+	public WorldView getView() {
+		return new jlm.universe.hanoi.HanoiWorldView(this);
 	}
 	/* END HIDDEN */
 	

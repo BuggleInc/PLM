@@ -282,8 +282,8 @@ public abstract class World {
 	}
 
 	/* Find my UI */
-	public WorldView[] getView() {
-		return new WorldView[] { new WorldView(this) {
+	public WorldView getView() {
+		return new WorldView(this) {
 			private static final long serialVersionUID = 1L;
 			@Override
 			public boolean isWorldCompatible(World world) {
@@ -292,9 +292,9 @@ public abstract class World {
 			
 			@Override
 			public ImageIcon getIcon() {
-				return null; // FIXME: not sure about this?
+				return null;
 			}
-		}};
+		};
 	}
 	public EntityControlPanel getEntityControlPanel() {
 		return new EntityControlPanel() {

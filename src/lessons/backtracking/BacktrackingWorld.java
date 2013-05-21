@@ -46,8 +46,8 @@ public class BacktrackingWorld extends World {
 	/** Returns a component able of displaying the world -- will be used in third exercise 
 	 * You should comment this for the first exercises */
 	@Override
-	public WorldView[] getView() {
-		return new WorldView[] { new BacktrackingWorldView(this) } ;
+	public WorldView getView() {
+		return new BacktrackingWorldView(this);
 	}
 	
 	@Override

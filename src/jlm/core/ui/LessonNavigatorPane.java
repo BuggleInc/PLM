@@ -82,7 +82,7 @@ public class LessonNavigatorPane extends JPanel implements GameListener {
 //					if (false) { // FIXME 
 //						ico = ResourcesCache.getStarIcon(exo.getWorld(0).getView()[0].getIcon(), exo.getWorld(0).getView()[0].getClass().getCanonicalName());
 //					} else {
-						ico = exo.getWorld(0).getView()[0].getIcon();
+						ico = exo.getWorld(0).getView().getIcon();
 //					}
 				} else {
 					ico = ResourcesCache.getIcon("resources/IconWorld/lesson.png");
