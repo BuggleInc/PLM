@@ -53,15 +53,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) throws NoSuchEntityException {
 
-		/*
-		StringBuffer sb = Reader.readContentAsText("src"+File.separator+filename,lang.getExt(),false);
-
-		if (sb==null)
-			sb = Reader.readContentAsText(filename,lang.getExt(),false);
-		if (sb==null) {
-			throw new NoSuchEntityException("Source file "+filename+"."+lang.getExt()+" not found.");
-		}
-		 */
+		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;
 		try {
 			sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
@@ -89,6 +81,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		                                             */
 		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
 
+		boolean seenTemplate=false; // whether B/E SOLUTION seems included within B/E TEMPLATE
 		for (String line : content.split("\n")) {
 			//if (this.debug)
 			//	System.out.println(state+"->"+line);
@@ -99,6 +92,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else if (line.contains("package")) {
 					head.append("$package \n");						
 				} else if (line.contains("BEGIN TEMPLATE")) {
+					seenTemplate = true;
 					state = 1;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					state = 2; 
@@ -128,6 +122,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				break;
 			case 2: /* solution */
 				if (line.contains("END TEMPLATE")) {
+					System.out.println(shownFilename+": BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.");
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
 					state = 3;  
@@ -140,9 +135,12 @@ public abstract class ExerciseTemplated extends Exercise {
 				break;
 			case 3: /* template tail */
 				if (line.contains("END TEMPLATE")) {
+					if (!seenTemplate)
+						System.out.println(shownFilename+": END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.");
+						
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
-					throw new RuntimeException("Begin solution in template tail in file "+name+" of "+getName()+". Change it to BEGIN HIDDEN");
+					throw new RuntimeException(shownFilename+": Begin solution in template tail. Change it to BEGIN HIDDEN");
 				} else if (line.contains("BEGIN SKEL")) {
 					savedState = state;
 					state = 6; 
