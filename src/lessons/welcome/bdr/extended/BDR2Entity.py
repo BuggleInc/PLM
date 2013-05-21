@@ -31,4 +31,4 @@ danceOneStep = {
 
 while getIndication() != ' ':
 	danceOneStep[getIndication()]()
-# END TEMPLATE
+# END SOLUTION

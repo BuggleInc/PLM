@@ -26,7 +26,7 @@ def dogHouse():
         forward()
         turnLeft()
 
-# END TEMPLATE
+# END SOLUTION
 
 brushDown()
 dogHouse()

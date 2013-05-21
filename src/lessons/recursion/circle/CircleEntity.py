@@ -7,4 +7,4 @@ def circle(step):
 circle(0.5)
 circle(1)
 circle(1.5)
-# END TEMPLATE
+# END SOLUTION

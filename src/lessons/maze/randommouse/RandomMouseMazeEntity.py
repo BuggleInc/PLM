@@ -52,4 +52,4 @@
 		return junction;
 	}
     
-# END TEMPLATE
+# END SOLUTION

@@ -1,4 +1,4 @@
-# BEGIN SOLUTION */
+# BEGIN SOLUTION
 		int gap = getValueCount();
 		boolean swapped;
 		do {
@@ -11,4 +11,4 @@
 					swapped =true;
 				}	
 		} while (gap>1 || swapped);
-# END TEMPLATE */
+# END SOLUTION

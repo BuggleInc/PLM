@@ -7,4 +7,4 @@ for i in range(getValueCount()-1,-1,-1):
       swapped = True
   if not swapped:
     break
-# END TEMPLATE
+# END SOLUTION

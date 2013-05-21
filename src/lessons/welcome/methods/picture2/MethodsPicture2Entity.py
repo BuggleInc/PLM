@@ -40,4 +40,4 @@ def nextLine():
 for i in range(3):
    makeLine(3)
    nextLine()
-# END TEMPLATE
+# END SOLUTION

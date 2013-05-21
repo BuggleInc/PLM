@@ -1,5 +1,3 @@
-# BEGIN TEMPLATE
-
 # BEGIN SOLUTION
 def endingPosition():
 	if not isFacingWall():
@@ -28,4 +26,4 @@ def snakeStep():
 brushDown()
 while not endingPosition():
 	snakeStep()
-# END TEMPLATE
+# END SOLUTION

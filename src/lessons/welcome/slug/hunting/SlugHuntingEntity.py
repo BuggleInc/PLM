@@ -12,7 +12,7 @@ def isFacingTrail(trailColor):
 # BEGIN TEMPLATE
 
 def hunt():
-   # write your code
+   # write your code here
    # BEGIN SOLUTION
    while not isOverBaggle():
       brushUp()
@@ -23,6 +23,7 @@ def hunt():
       else:
 	     turnLeft()
    pickUpBaggle()
+   # END SOLUTION
 # END TEMPLATE
 
 hunt()

@@ -20,7 +20,7 @@ def goAndGet():
   for i in range(cpt):
     backward()
   dropBaggle()
-# END TEMPLATE 
+# END SOLUTION
 
 for i in range(7):
   goAndGet()

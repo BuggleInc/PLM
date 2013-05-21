@@ -25,4 +25,4 @@ makeV(Color.yellow)
 makeV(Color.red)
 makeV(Color.blue)
 makeV(Color.green)
-# END TEMPLATE
+# END SOLUTION

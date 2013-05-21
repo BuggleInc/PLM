@@ -18,6 +18,6 @@ def move(nbPas, doforward):
     else:
         for i in range(nbPas):
             backward()
-#END TEMPLATE
+# END SOLUTION
 
 move(getY(), entity.getDirection().toString() == "NORTH") 

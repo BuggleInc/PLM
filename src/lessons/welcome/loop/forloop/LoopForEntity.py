@@ -18,4 +18,4 @@ pickUpBaggle()
 for i in range(cpt):
   backward()
 dropBaggle()
-# END TEMPLATE
+# END SOLUTION

@@ -6,5 +6,5 @@ for i in range(getValueCount()):
     copy(j-1,j)
     j = j-1
   setValue(j,value)
-# END TEMPLATE
+# END SOLUTION
 

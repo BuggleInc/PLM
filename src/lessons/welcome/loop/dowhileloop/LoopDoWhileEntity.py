@@ -8,4 +8,4 @@ while more:
   forward()
   if isGroundWhite():
   	more = False 
-# END TEMPLATE
+# END SOLUTION

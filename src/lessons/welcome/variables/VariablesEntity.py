@@ -8,4 +8,4 @@ while cpt>0:
   backward()
   cpt = cpt-1
 dropBaggle()
-# END TEMPLATE 
+# END SOLUTION

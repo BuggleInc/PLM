@@ -1,4 +1,4 @@
 # BEGIN SOLUTION 
 forward()
-# END TEMPLATE
+# END SOLUTION
 

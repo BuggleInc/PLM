@@ -6,4 +6,4 @@ while swapped:
 		if (not isSmaller(i,i+1)):
 			swap(i,i+1)
 			swapped = True
-# END TEMPLATE
+# END SOLUTION

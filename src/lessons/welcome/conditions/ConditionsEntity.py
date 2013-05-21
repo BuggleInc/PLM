@@ -3,5 +3,5 @@ if isFacingWall():
     backward()
 else:
     forward()    
-# END TEMPLATE
+# END SOLUTION
 

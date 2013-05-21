@@ -1,4 +1,4 @@
-# BEGIN SOLUTION */
+# BEGIN SOLUTION 
 gap = getValueCount()/2
 
 # while h remains larger than 0
@@ -18,4 +18,4 @@ while gap>0:
     setValue(j, value)
   # all sets gap-sorted, now decrease set size
   gap = gap / 2
-# END TEMPLATE
+# END SOLUTION

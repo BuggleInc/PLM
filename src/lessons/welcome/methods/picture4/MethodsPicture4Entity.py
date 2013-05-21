@@ -59,5 +59,5 @@ turnRight()
 bigSquare() 
 forward(4)
 bigSquare()
-# END TEMPLATE
+# END SOLUTION
 

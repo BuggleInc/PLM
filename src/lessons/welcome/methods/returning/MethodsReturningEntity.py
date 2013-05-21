@@ -11,7 +11,7 @@ def backward(i=-1):
         entity.backward()
 
 
-# BEGIN SOLUTION 
+# BEGIN TEMPLATE
 def haveBaggle():
     # BEGIN SOLUTION 
 	res = False
@@ -22,6 +22,7 @@ def haveBaggle():
 	for i in range(6):
 		backward()
 	return res
+    # END SOLUTION
 #END TEMPLATE
 
 for i in range(7):

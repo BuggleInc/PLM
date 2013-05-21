@@ -128,4 +128,4 @@
         followShortestPath(); // make the buggle follow the shortest path
         pickUpBaggle(); // enjoy the baggle!           
 	}
-# END TEMPLATE
+# END SOLUTION

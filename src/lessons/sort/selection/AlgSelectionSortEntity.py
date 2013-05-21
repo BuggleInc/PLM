@@ -1,4 +1,4 @@
-# BEGIN SOLUTION */
+# BEGIN SOLUTION
 		for (int i = 0; i < getValueCount(); i++) {
 			int min = i;	
 			int j;
@@ -11,4 +11,4 @@
 			/* Swap the smallest unsorted element into the end of the sorted list. */
 			swap(min,i);
 		}
-# END TEMPLATE */
+# END SOLUTION

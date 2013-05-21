@@ -21,4 +21,4 @@
 				}
 			begin++;
 		} while (swapped && end-begin>1);
-# END TEMPLATE 
+# END SOLUTION

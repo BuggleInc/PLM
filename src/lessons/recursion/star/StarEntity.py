@@ -21,4 +21,4 @@ turnRight(45)
 star(80, Color.blue)
 turnRight(45)
 star(60, Color.red)
-# END TEMPLATE
+# END SOLUTION
