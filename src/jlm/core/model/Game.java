@@ -740,7 +740,6 @@ public class Game implements IWorldView {
 	public void setLocale(Locale lang) {
 		FileUtils.setLocale(lang);
 		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
-		System.out.println(i18n.tr("Switching language to {0}.", getLocale().getDisplayName()));
 
 		for (Lesson lesson : lessons.values()) {
 			for (Lecture lect:lesson.exercises()) {
