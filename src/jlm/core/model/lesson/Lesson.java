@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +21,8 @@ public abstract class Lesson {
 	private String id;
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Lecture> lectures = new ArrayList<Lecture>();
+	
+	protected Vector<Lecture> rootLectures = new Vector<Lecture>(); /* To display the graph */
 	
 	private Graph<Lecture,Integer> exercisesGraph = new DelegateForest<Lecture,Integer>();
 		
@@ -99,11 +102,16 @@ public abstract class Lesson {
 	}
 
 	Lecture rootExo, lastAdded;
+	@Deprecated
 	public Lecture getRootExo() {
 		return rootExo;
 	}
+	public Vector<Lecture> getRootLectures() {
+		return rootLectures;
+	}
 	public Lecture addExercise(Lecture exo) {
 		lectures.add(exo);		
+		rootLectures.add(exo);
 		getExercisesGraph().addVertex(exo);
 		if (lastAdded != null) {
 			getExercisesGraph().addEdge(edgeFactory.create(), lastAdded, exo);
@@ -114,31 +122,24 @@ public abstract class Lesson {
 		lastAdded = exo;
 		return exo;
 	}
-	public Lecture addExercise(Lecture exo, Lecture[] deps) {
+	public Lecture addExercise(Lecture exo, Lecture previousExo) {
 		lectures.add(exo);
 		
 		getExercisesGraph().addVertex(exo);
-		if (deps!=null) {
-			for (Lecture d:deps) {
-				getExercisesGraph().addEdge(edgeFactory.create(), d, exo);				
-			}
-		}
+		getExercisesGraph().addEdge(edgeFactory.create(), previousExo, exo);				
 		if (rootExo == null) {
 			rootExo = exo;
 		}
 		lastAdded = exo;
+		previousExo.dependingLectures.add(exo);
 		return exo;
 	}
-	public Lecture addExercise(Lecture exo, Lecture dependency) {
-		return addExercise(exo, new Lecture[] {dependency});
-	}
-	
 	public Lecture getCurrentExercise() {
 		if (this.currentExercise == null && lectures.size() > 0) {
 			this.currentExercise = lectures.get(0);
 		}
 		if (currentExercise == null)
-			System.out.print("There is only "+lectures.size()+" so far");
+			System.out.print("There is only "+lectures.size()+" lectures so far in the lesson "+getName());
 		return this.currentExercise;
 	}
 
@@ -172,7 +173,8 @@ public abstract class Lesson {
 	}
 
 	/* Methods to retrieve the dependencies so that the lesson navigator can display them */
-	public Graph<Lecture,Integer> getExercisesGraph() {
+	@Deprecated
+	public Graph<Lecture,Integer> getExercisesGraph() { // FIXME: killme
 		return exercisesGraph;
 	}
 }

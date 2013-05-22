@@ -423,7 +423,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         toolBar.addSeparator();
         
-        exoChangeButton = new PropagatingButton(new SwitchExo(g, i18n.tr("Switch exercise"), null));
+        exoChangeButton = new PropagatingButton(new SwitchExo(g, i18n.tr("Switch exercise"), ResourcesCache.getIcon("resources/btn-switch-exo.png")));
         toolBar.add(exoChangeButton);
         
 		getContentPane().add(toolBar, BorderLayout.NORTH);

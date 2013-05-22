@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.swing.tree.DefaultMutableTreeNode;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
@@ -40,7 +43,7 @@ public abstract class Lecture {
 	private String mission = "";                        /** The text to display to present the lesson */
 	private static Map<ProgrammingLanguage,String> css; /** The CSS to use for a given language */
 	private Lesson lesson;
-
+	
 	protected Map<String, String> tips = new HashMap<String, String>();
 	
 	public Lecture(Lesson lesson) {
@@ -150,5 +153,11 @@ public abstract class Lecture {
 		setMission(str);
 	}
 
-	
+	protected Vector<Lecture> dependingLectures = new Vector<Lecture>(); /* To display the graph */
+	public DefaultMutableTreeNode makeNode() {
+		DefaultMutableTreeNode res = new DefaultMutableTreeNode(this);
+		for (Lecture l : dependingLectures)
+			res.add(l.makeNode());
+		return res;
+	}
 }

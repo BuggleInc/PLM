@@ -270,8 +270,8 @@ public class Game implements IWorldView {
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
-		fireCurrentExerciseChanged(lect);
 		this.currentLesson.setCurrentExercise(lect);
+		fireCurrentExerciseChanged(lect);
 		if (lect instanceof Exercise) {
 			Exercise exo = (Exercise) lect;
 			exo.reset();
