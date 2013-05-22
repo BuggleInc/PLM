@@ -295,7 +295,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			textLangSubMenu.add(item);		
 		}
 
-		menu.add(new ProgLangSubMenu());
+		menu.add(new ProgLangSubMenu(i18n.tr("Computer")));
 
 		/* === Help menu === */
 		menu = new JMenu(i18n.tr("Help"));
@@ -638,8 +638,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameListener {
 	private static final long serialVersionUID = 1L;
 
-	public ProgLangSubMenu() {
-		super("Computer");
+	public ProgLangSubMenu(String name) {
+		super(name);
 		Game.getInstance().addGameListener(this);
 		Game.getInstance().addProgLangListener(this);
 		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
