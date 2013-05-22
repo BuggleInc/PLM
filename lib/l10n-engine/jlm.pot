@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-21 21:38+0200\n"
+"POT-Creation-Date: 2013-05-22 13:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,9 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/jlm/core/model/Game.java:743
-#, java-format
-msgid "Switching language to {0}."
+#: src/jlm/core/model/HelpServer.java:27
+msgid "Asking to the teacher for help"
+msgstr ""
+
+#: src/jlm/core/model/HelpServer.java:29
+msgid "Cancel call for help to the teacher"
 msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:104
@@ -28,6 +31,11 @@ msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:105
 msgid "Exit the JLM"
+msgstr ""
+
+#. === FILE menu ===
+#: src/jlm/core/ui/MainFrame.java:166
+msgid "File"
 msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:168
@@ -75,6 +83,10 @@ msgstr ""
 msgid "Choose your course"
 msgstr ""
 
+#: src/jlm/core/ui/MainFrame.java:242
+msgid "Quit"
+msgstr ""
+
 #. === Edit menu ===
 #: src/jlm/core/ui/MainFrame.java:250
 msgid "Session"
@@ -108,9 +120,18 @@ msgstr ""
 msgid "Cannot switch debug mode now"
 msgstr ""
 
+#. === Language menu ===
+#: src/jlm/core/ui/MainFrame.java:281
+msgid "Language"
+msgstr ""
+
 #. === Programming language changing ===
 #: src/jlm/core/ui/MainFrame.java:286
 msgid "Human"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:298
+msgid "Computer"
 msgstr ""
 
 #. === Help menu ===
@@ -150,7 +171,7 @@ msgstr ""
 msgid "Run"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:387
+#: src/jlm/core/ui/MainFrame.java:387 src/jlm/core/ui/MainFrame.java:479
 msgid "Step"
 msgstr ""
 
@@ -158,6 +179,26 @@ msgstr ""
 msgid "Stop"
 msgstr ""
 
+#: src/jlm/core/ui/MainFrame.java:398
+msgid "Reset"
+msgstr ""
+
 #: src/jlm/core/ui/MainFrame.java:404
 msgid "Demo"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:410 src/jlm/core/ui/action/HelpMe.java:36
+msgid "Call for Help"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:465
+msgid "Next"
+msgstr ""
+
+#: src/jlm/core/ui/action/HelpMe.java:36
+msgid "Cancel call"
+msgstr ""
+
+#: src/jlm/universe/sort/SortingButtonPanel.java:64
+msgid "go"
 msgstr ""
