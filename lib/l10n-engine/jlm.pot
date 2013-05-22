@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 15:54+0200\n"
+"POT-Creation-Date: 2013-05-22 17:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,50 @@ msgstr ""
 
 #: src/jlm/core/model/HelpServer.java:29
 msgid "Cancel call for help to the teacher"
+msgstr ""
+
+#: src/jlm/core/ui/AboutJLMDialog.java:34
+msgid "About JLM dialogTitle"
+msgstr ""
+
+#: src/jlm/core/ui/AboutJLMDialog.java:71
+msgid "Close"
+msgstr ""
+
+#: src/jlm/core/ui/AboutLessonDialog.java:24
+msgid "About lesson - "
+msgstr ""
+
+#: src/jlm/core/ui/AboutWorldDialog.java:28
+msgid "About world - "
+msgstr ""
+
+#: src/jlm/core/ui/ExerciseView.java:72
+msgid "Switch the displayed world"
+msgstr ""
+
+#: src/jlm/core/ui/ExerciseView.java:82
+msgid "Change the speed of execution"
+msgstr ""
+
+#: src/jlm/core/ui/ExerciseView.java:89 src/jlm/core/ui/ExerciseView.java:161
+msgid "World"
+msgstr ""
+
+#: src/jlm/core/ui/ExerciseView.java:90 src/jlm/core/ui/ExerciseView.java:162
+msgid "Current world"
+msgstr ""
+
+#: src/jlm/core/ui/ExerciseView.java:94 src/jlm/core/ui/ExerciseView.java:164
+msgid "Objective"
+msgstr ""
+
+#: src/jlm/core/ui/ExerciseView.java:95 src/jlm/core/ui/ExerciseView.java:165
+msgid "Target world"
+msgstr ""
+
+#: src/jlm/core/ui/ExerciseView.java:103
+msgid "Switch the entity"
 msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:108
@@ -175,6 +219,19 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
+#: src/jlm/core/ui/MissionEditorTabs.java:96
+msgid "Mission"
+msgstr ""
+
+#: src/jlm/core/ui/MissionEditorTabs.java:97
+msgid "Description of the work to do"
+msgstr ""
+
+#. Create the tab with the code editor as content
+#: src/jlm/core/ui/MissionEditorTabs.java:169
+msgid "Type your code here"
+msgstr ""
+
 #: src/jlm/core/ui/action/HelpMe.java:36
 msgid "Cancel call"
 msgstr ""
@@ -200,6 +257,7 @@ msgid "Reset your world to the initial state"
 msgstr ""
 
 #: src/jlm/core/ui/action/Reset.java:29
+#: src/jlm/core/ui/action/SwitchExo.java:29
 msgid "World cannot be reset right now"
 msgstr ""
 
@@ -237,10 +295,10 @@ msgstr ""
 msgid "go"
 msgstr ""
 
-#: src/jlm/universe/sort/SortingWorldView.java:52
+#: src/jlm/universe/sort/SortingWorldView.java:53
 msgid "Switch to time view"
 msgstr ""
 
-#: src/jlm/universe/sort/SortingWorldView.java:54
+#: src/jlm/universe/sort/SortingWorldView.java:55
 msgid "Switch to state view"
 msgstr ""

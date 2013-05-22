@@ -4,9 +4,15 @@ import javax.swing.JFrame;
 
 import jlm.core.model.Game;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
+
 public class AboutLessonDialog extends AbstractAboutDialog {
 
 	private static final long serialVersionUID = 1766486738385426108L;
+	
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	public AboutLessonDialog(JFrame parent) {
 		super(parent);
@@ -15,7 +21,7 @@ public class AboutLessonDialog extends AbstractAboutDialog {
 
 	@Override
 	public void currentLessonHasChanged() {
-		setTitle("About lesson - " + Game.getInstance().getCurrentLesson().getName());
+		setTitle(i18n.tr("About lesson - ") + Game.getInstance().getCurrentLesson().getName());
 
 		area.setText(Game.getInstance().getCurrentLesson().getAbout());
 		area.setCaretPosition(0);
