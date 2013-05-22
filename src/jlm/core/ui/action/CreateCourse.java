@@ -1,11 +1,12 @@
 package jlm.core.ui.action;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.ImageIcon;
+
 import jlm.core.model.Game;
 import jlm.core.ui.CreateCourseDialog;
 import jlm.core.ui.TeacherConsoleDialog;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 /**
  * Controller to handle clicks on the create button from the teacher console

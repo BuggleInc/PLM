@@ -53,6 +53,7 @@ import jlm.core.ui.action.SetProgLanguage;
 import jlm.core.ui.action.StartExecution;
 import jlm.core.ui.action.StepExecution;
 import jlm.core.ui.action.StopExecution;
+import jlm.core.ui.action.SwitchExo;
 import jlm.universe.World;
 
 import org.xnap.commons.i18n.I18n;
@@ -71,6 +72,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton resetButton;
 	private JButton demoButton;
     private JToggleButton helpMeButton;
+    
+    private JButton exoChangeButton;
+    
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
@@ -167,7 +171,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription(i18n.tr("File related functions"));
 		
-		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, i18n.tr("Load a lesson from file"),  i18n.tr("Cannot load a lesson now"), KeyEvent.VK_L) {
+		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -188,7 +192,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		menu.add(menuItem);
 		
-		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, i18n.tr("Go to another lesson"),  i18n.tr("Cannot switch lesson now"), KeyEvent.VK_L) {
+		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -265,7 +269,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				null, this));
 		menu.add(importSessionMenuItem);
 
-		JMenuItem switchDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, i18n.tr("Display more debug message in logs"), i18n.tr("Cannot switch debug mode now"), KeyEvent.VK_D) {
+		JMenuItem switchDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
 			private static final long serialVersionUID = 1L;
 
 			@Override
@@ -417,6 +421,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.add(demoButton);
         toolBar.add(helpMeButton);
 
+        toolBar.addSeparator();
+        
+        exoChangeButton = new PropagatingButton(new SwitchExo(g, i18n.tr("Switch exercise"), null));
+        toolBar.add(exoChangeButton);
+        
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 	}
 

@@ -1,7 +1,12 @@
 package jlm.core.ui.action;
 
+import java.util.Locale;
+
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 import jlm.core.model.Game;
 
@@ -12,6 +17,8 @@ public abstract class AbstractGameAction extends AbstractAction {
 	private String descEnabled, descDisabled;
 
 	protected Game game;
+	protected Locale locale;
+	protected I18n i18n;
 
 	public AbstractGameAction(Game game, String text) {
 		super(text);
@@ -21,17 +28,18 @@ public abstract class AbstractGameAction extends AbstractAction {
 	public AbstractGameAction(Game game, String text, ImageIcon icon) {
 		super(text, icon);
 		this.game = game;
+		this.i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",game.getLocale(), I18nFactory.FALLBACK);
+
 	}
 	
-	public AbstractGameAction(Game game, String text, ImageIcon icon, String descEnabled, String descDisabled) {
-		this(game,text,icon);
+	protected void setDescription(String descEnabled, String descDisabled) {
 		putValue(SHORT_DESCRIPTION, descEnabled);
 		this.descEnabled = descEnabled;
-		this.descDisabled = descDisabled;
+		this.descDisabled = descDisabled;		
 	}
 
-	public AbstractGameAction(Game game, String text, ImageIcon icon, String descEnabled,String descDisabled, Integer mnemonic) {
-		this (game,text,icon, descEnabled,descDisabled);
+	public AbstractGameAction(Game game, String text, ImageIcon icon, Integer mnemonic) {
+		this (game,text,icon);
 		putValue(MNEMONIC_KEY, mnemonic);
 	}
 

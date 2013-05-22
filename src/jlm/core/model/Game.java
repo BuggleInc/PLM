@@ -28,6 +28,7 @@ import javax.swing.JOptionPane;
 import jlm.core.DiscardableGameStateListener;
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
+import jlm.core.HumanLangChangesListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
 import jlm.core.model.lesson.Exercise;
@@ -740,6 +741,7 @@ public class Game implements IWorldView {
 	public void setLocale(Locale lang) {
 		FileUtils.setLocale(lang);
 		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+		fireHumanLangChange(lang);
 
 		for (Lesson lesson : lessons.values()) {
 			for (Lecture lect:lesson.exercises()) {
@@ -798,6 +800,18 @@ public class Game implements IWorldView {
 		this.progLangListeners.remove(l);
 	}
 
+	private List<HumanLangChangesListener> humanLangListeners = new Vector<HumanLangChangesListener>();
+	public void addHumanLangListener(HumanLangChangesListener l) {
+		humanLangListeners.add(l);
+	}
+	public void fireHumanLangChange(Locale newLang) {
+		for (HumanLangChangesListener l : humanLangListeners)
+			l.currentHumanLanguageHasChanged(newLang);
+	}
+	public void removeHumanLangListener(HumanLangChangesListener l) {
+		this.humanLangListeners.remove(l);
+	}
+	
 	private boolean doDebug = false;
 	public void switchDebug() {
 		doDebug = !doDebug;

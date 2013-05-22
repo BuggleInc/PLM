@@ -1,14 +1,16 @@
 package jlm.core.ui.action;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 import jlm.core.model.Course;
 import jlm.core.model.CourseAppEngine;
 import jlm.core.model.Game;
 import jlm.core.model.ServerAnswer;
 import jlm.core.ui.MainFrame;
 import jlm.core.ui.TeacherConsoleDialog;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 
 /**
  * Controller to handle clicks on the Delete button from the teacher console

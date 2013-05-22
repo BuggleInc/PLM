@@ -44,7 +44,7 @@ public class FileUtils {
 		}
 	}
 	public static Locale getLocale() {
-		return locale;
+		return locale==null?new Locale("en"):locale;
 	}
 	
 	public static BufferedReader newFileReader(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
