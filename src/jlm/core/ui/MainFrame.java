@@ -73,7 +73,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JToggleButton helpMeButton;
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
-	I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private JSplitPane mainPanel;
 	
@@ -407,7 +407,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
-        helpMeButton = new PropagatingToggleButton(new HelpMe(g, ("Help"),
+        helpMeButton = new PropagatingToggleButton(new HelpMe(g, i18n.tr("Call for Help"),
                 ResourcesCache.getIcon("resources/alert.png")));
 
 		toolBar.add(startButton);

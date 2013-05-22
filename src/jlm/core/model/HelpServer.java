@@ -1,8 +1,6 @@
 package jlm.core.model;
 
-import net.minidev.json.JSONObject;
-
-import javax.swing.*;
+import jlm.core.ui.MainFrame;
 
 /**
  * Abstract class that allows the user to ask help to a teacher by clicking on help button
@@ -10,10 +8,8 @@ import javax.swing.*;
  * For now it's App Engine which is used
  */
 public abstract class HelpServer {
-
-    protected String username;
+	protected String username;
     // the user is already requesting help
-    private boolean isRequestingHelp;
 
 	public HelpServer() {
 		username = System.getenv("USER");
@@ -21,32 +17,17 @@ public abstract class HelpServer {
 			username = System.getenv("USERNAME");
 		if (username == null)
 			username = "John Doe";
-
-        isRequestingHelp = false;
 	}
 
     /**
      * Construct a request to ask teacher help in a course
      */
-    public void requestHelp(){
-
-        JSONObject jsonObject = new JSONObject();
-		jsonObject.put("username", username);
-		jsonObject.put("action", "help");
-        jsonObject.put("course", Game.getInstance().getCourseID());
-        jsonObject.put("password", Game.getInstance().getCoursePassword());
-        jsonObject.put("status", isRequestingHelp ? "true" : "false");
-
-		sendRequest(jsonObject.toString());
-    }
-
-    /**
-     * Enable or disable the help request
-     * @param helpButton button to change
-     */
-    public void switchStatus(JToggleButton helpButton){
-        isRequestingHelp = !isRequestingHelp;
-        helpButton.setText(isRequestingHelp ? "Cancel" : "Help");
+    public void setStatus(boolean isRequestingHelp){
+    	if (isRequestingHelp) {
+    		System.out.println(MainFrame.getInstance().i18n.tr("Asking to the teacher for help"));
+    	} else {
+    		System.out.println(MainFrame.getInstance().i18n.tr("Cancel call for help to the teacher"));
+    	}    
     }
 
    	/**

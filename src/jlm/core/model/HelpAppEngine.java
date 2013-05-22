@@ -8,6 +8,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import net.minidev.json.JSONObject;
+
 /**
  * Implementation of HelpServer that sends requests to an App Engine server
  */
@@ -47,6 +49,23 @@ public class HelpAppEngine extends HelpServer {
             System.out.println("Unable to contact JLMServer to send request " + request);
         }
         return response;
+    }
+    
+    /**
+     * Construct a request to ask teacher help in a course
+     */
+    @Override
+    public void setStatus(boolean isRequestingHelp){
+    	super.setStatus(isRequestingHelp);
+
+        JSONObject jsonObject = new JSONObject();
+		jsonObject.put("username", username);
+		jsonObject.put("action", "help");
+        jsonObject.put("course", Game.getInstance().getCourseID());
+        jsonObject.put("password", Game.getInstance().getCoursePassword());
+        jsonObject.put("status", isRequestingHelp ? "true" : "false");
+
+		sendRequest(jsonObject.toString());
     }
 
 }
