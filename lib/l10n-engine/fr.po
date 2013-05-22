@@ -7,11 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 15:53+0200\n"
-"PO-Revision-Date: 2013-05-22 15:54+0200\n"
+"POT-Creation-Date: 2013-05-22 22:31+0200\n"
+"PO-Revision-Date: 2013-05-22 22:35+0100\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,93 +24,153 @@ msgstr "Demander de l'aide à l'enseignant"
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
-#: src/jlm/core/ui/MainFrame.java:108
+#: src/jlm/core/model/LessonRunner.java:88
+msgid "Congratulations, you passed this test."
+msgstr "Félicitation, vous avez réussi ce test."
+
+#: src/jlm/core/model/LessonRunner.java:88
+#: src/jlm/core/model/LessonRunner.java:94
+msgid "Exercice passed \\o/"
+msgstr "Exercice réussi \\o/"
+
+#: src/jlm/core/model/LessonRunner.java:93
+msgid ""
+"Congratulations, you passed this test. Which exercise will you do now?\n"
+msgstr ""
+"Félicitation, vous avez réussi ce test. Par quel exercice voulez vous "
+"continuer ?\n"
+
+#: src/jlm/core/ui/AboutJLMDialog.java:34
+msgid "About JLM dialogTitle"
+msgstr "À propos de JLM"
+
+#: src/jlm/core/ui/AboutJLMDialog.java:71
+msgid "Close"
+msgstr "Fermer"
+
+#: src/jlm/core/ui/AboutLessonDialog.java:24
+msgid "About lesson - "
+msgstr "À propos de la leçon - "
+
+#: src/jlm/core/ui/AboutWorldDialog.java:28
+msgid "About world - "
+msgstr "À propos du monde - "
+
+#: src/jlm/core/ui/ExerciseView.java:72
+msgid "Switch the displayed world"
+msgstr "Changer le monde affiché"
+
+#: src/jlm/core/ui/ExerciseView.java:82
+msgid "Change the speed of execution"
+msgstr "Changer la vitesse d'exécution"
+
+#: src/jlm/core/ui/ExerciseView.java:89 src/jlm/core/ui/ExerciseView.java:161
+msgid "World"
+msgstr "Monde"
+
+#: src/jlm/core/ui/ExerciseView.java:90 src/jlm/core/ui/ExerciseView.java:162
+msgid "Current world"
+msgstr "Monde courant"
+
+#: src/jlm/core/ui/ExerciseView.java:94 src/jlm/core/ui/ExerciseView.java:164
+msgid "Objective"
+msgstr "Objectif"
+
+#: src/jlm/core/ui/ExerciseView.java:95 src/jlm/core/ui/ExerciseView.java:165
+msgid "Target world"
+msgstr "Monde attendu après exécution du code"
+
+#: src/jlm/core/ui/ExerciseView.java:103
+msgid "Switch the entity"
+msgstr "Changer d'entité"
+
+#: src/jlm/core/ui/MainFrame.java:106
 msgid "Do you really want to quit ?"
 msgstr "Voulez-vous vraiment quitter ?"
 
-#: src/jlm/core/ui/MainFrame.java:109
+#: src/jlm/core/ui/MainFrame.java:107
 msgid "Exit the JLM"
 msgstr "Quitter la JLM"
 
 #. === FILE menu ===
-#: src/jlm/core/ui/MainFrame.java:170
+#: src/jlm/core/ui/MainFrame.java:157
 msgid "File"
 msgstr "Fichier"
 
-#: src/jlm/core/ui/MainFrame.java:172
+#: src/jlm/core/ui/MainFrame.java:159
 msgid "File related functions"
 msgstr "Fonction relatives à la gestion de fichiers"
 
-#: src/jlm/core/ui/MainFrame.java:174
+#: src/jlm/core/ui/MainFrame.java:161
 msgid "Load lesson"
 msgstr "Charger Leçon"
 
-#: src/jlm/core/ui/MainFrame.java:180
+#: src/jlm/core/ui/MainFrame.java:167
 msgid "JLM lesson files"
 msgstr "Fichiers de leçons pour la JLM"
 
-#: src/jlm/core/ui/MainFrame.java:189
+#: src/jlm/core/ui/MainFrame.java:176
 msgid "Error"
 msgstr "Erreur"
 
-#: src/jlm/core/ui/MainFrame.java:195
+#: src/jlm/core/ui/MainFrame.java:182
 msgid "Switch lesson"
 msgstr "Changer de Leçon"
 
-#: src/jlm/core/ui/MainFrame.java:208
+#: src/jlm/core/ui/MainFrame.java:195
 msgid "Teacher Console"
 msgstr "Console enseignant"
 
 #. Menu item to change the current Course
-#: src/jlm/core/ui/MainFrame.java:227
+#: src/jlm/core/ui/MainFrame.java:214
 msgid "Choose your course"
 msgstr "Sélectionner un cours"
 
-#: src/jlm/core/ui/MainFrame.java:246
+#: src/jlm/core/ui/MainFrame.java:233
 msgid "Quit"
 msgstr "Quitter"
 
 #. === Edit menu ===
-#: src/jlm/core/ui/MainFrame.java:254
+#: src/jlm/core/ui/MainFrame.java:241
 msgid "Session"
 msgstr "Session"
 
-#: src/jlm/core/ui/MainFrame.java:256
+#: src/jlm/core/ui/MainFrame.java:243
 msgid "Lesson related functions"
 msgstr "Fonctions relatives aux leçons"
 
-#: src/jlm/core/ui/MainFrame.java:260
+#: src/jlm/core/ui/MainFrame.java:247
 msgid "Revert Exercise"
 msgstr "Recommencer l'exercice"
 
-#: src/jlm/core/ui/MainFrame.java:264
+#: src/jlm/core/ui/MainFrame.java:251
 msgid "Export Session Cache"
 msgstr "Exporter le cache de session"
 
-#: src/jlm/core/ui/MainFrame.java:268
+#: src/jlm/core/ui/MainFrame.java:255
 msgid "Import Session Cache"
 msgstr "Importer le cache de session"
 
-#: src/jlm/core/ui/MainFrame.java:272
+#: src/jlm/core/ui/MainFrame.java:259
 msgid "Debug mode"
 msgstr "Mode débogage"
 
 #. === Language menu ===
-#: src/jlm/core/ui/MainFrame.java:285
+#: src/jlm/core/ui/MainFrame.java:272
 msgid "Language"
 msgstr "Langage"
 
 #. === Programming language changing ===
-#: src/jlm/core/ui/MainFrame.java:290
+#: src/jlm/core/ui/MainFrame.java:277
 msgid "Human"
 msgstr "Humain"
 
-#: src/jlm/core/ui/MainFrame.java:302
+#: src/jlm/core/ui/MainFrame.java:289
 msgid "Computer"
 msgstr "Ordinateur"
 
 #. === Help menu ===
-#: src/jlm/core/ui/MainFrame.java:305
+#: src/jlm/core/ui/MainFrame.java:292
 msgid "Help"
 msgstr "Aide"
 
@@ -131,58 +190,91 @@ msgstr "Aide"
 #. }
 #. }));
 #.
-#: src/jlm/core/ui/MainFrame.java:325
+#: src/jlm/core/ui/MainFrame.java:312
 msgid "About this lesson"
 msgstr "À propos de cette leçon"
 
-#: src/jlm/core/ui/MainFrame.java:338
+#: src/jlm/core/ui/MainFrame.java:325
 msgid "About this world"
 msgstr "À propos de ce monde"
 
-#: src/jlm/core/ui/MainFrame.java:354
+#: src/jlm/core/ui/MainFrame.java:341
 msgid "About JLM"
 msgstr "À propos de JLM"
 
-#: src/jlm/core/ui/MainFrame.java:387
+#: src/jlm/core/ui/MainFrame.java:374
 msgid "Run"
 msgstr "Lancer"
 
-#: src/jlm/core/ui/MainFrame.java:391 src/jlm/core/ui/MainFrame.java:488
+#: src/jlm/core/ui/MainFrame.java:378 src/jlm/core/ui/MainFrame.java:475
 msgid "Step"
 msgstr "Pas"
 
-#: src/jlm/core/ui/MainFrame.java:396
+#: src/jlm/core/ui/MainFrame.java:383
 msgid "Stop"
 msgstr "Stop"
 
-#: src/jlm/core/ui/MainFrame.java:402
+#: src/jlm/core/ui/MainFrame.java:389
 msgid "Reset"
 msgstr "Redémarrer"
 
-#: src/jlm/core/ui/MainFrame.java:408
+#: src/jlm/core/ui/MainFrame.java:395
 msgid "Demo"
 msgstr "Démo"
 
-#: src/jlm/core/ui/MainFrame.java:414 src/jlm/core/ui/action/HelpMe.java:36
+#: src/jlm/core/ui/MainFrame.java:401 src/jlm/core/ui/action/HelpMe.java:37
 msgid "Call for Help"
 msgstr "Appeler à l'aide"
 
-#: src/jlm/core/ui/MainFrame.java:426
-#, fuzzy
+#: src/jlm/core/ui/MainFrame.java:413
 msgid "Switch exercise"
-msgstr "Changer de Leçon"
+msgstr "Changer d'exercice"
 
-#: src/jlm/core/ui/MainFrame.java:474
+#: src/jlm/core/ui/MainFrame.java:461
 msgid "Next"
 msgstr "Suivant"
 
-#: src/jlm/core/ui/action/HelpMe.java:36
+#: src/jlm/core/ui/MissionEditorTabs.java:96
+msgid "Mission"
+msgstr "Mission"
+
+#: src/jlm/core/ui/MissionEditorTabs.java:97
+msgid "Description of the work to do"
+msgstr "Description de la tache à effectuer"
+
+#. Create the tab with the code editor as content
+#: src/jlm/core/ui/MissionEditorTabs.java:169
+msgid "Type your code here"
+msgstr "Composer votre code ici"
+
+#: src/jlm/core/ui/StatusBar.java:114
+msgid "Loading"
+msgstr "Chargement"
+
+#: src/jlm/core/ui/StatusBar.java:118
+msgid "Saving"
+msgstr "Sauvegarde"
+
+#: src/jlm/core/ui/StatusBar.java:122
+msgid "Compiling"
+msgstr "Compilation"
+
+#: src/jlm/core/ui/StatusBar.java:136
+msgid "Running "
+msgstr "Exécution de "
+
+#: src/jlm/core/ui/StatusBar.java:140
+msgid "Playing demo "
+msgstr "Exécution de la démo "
+
+#: src/jlm/core/ui/action/HelpMe.java:37
 msgid "Cancel call"
 msgstr "Annuler l'appel"
 
 #: src/jlm/core/ui/action/PlayDemo.java:27
 msgid "Run the demo of what you should code for this exercise"
 msgstr ""
+"Lancer une démonstration de ce que devrait faire votre code dans cet exercice"
 
 #: src/jlm/core/ui/action/PlayDemo.java:28
 msgid "Impossible to run the demo right now"
@@ -190,11 +282,11 @@ msgstr "Impossible de lançer la démo pour l'instant"
 
 #: src/jlm/core/ui/action/QuitGame.java:28
 msgid "Quit the application"
-msgstr ""
+msgstr "Quitter l'application"
 
 #: src/jlm/core/ui/action/QuitGame.java:28
 msgid "Impossible to quit the application right now"
-msgstr ""
+msgstr "Il est pour l'instant impossible de quitter l'application"
 
 #: src/jlm/core/ui/action/Reset.java:29
 msgid "Reset your world to the initial state"
@@ -206,45 +298,47 @@ msgstr "Le monde ne peut être réinitialisé pour l'instant"
 
 #: src/jlm/core/ui/action/StartExecution.java:33
 msgid "Launch the execution of your code"
-msgstr ""
+msgstr "Démarrer l'exécution de votre code"
 
 #: src/jlm/core/ui/action/StartExecution.java:34
 msgid ""
 "Cannot launch the execution right now. Wait a bit, or interrupt current "
 "activity with the stop button"
 msgstr ""
+"Je ne peux démarrer l'exécution de votre code. Attendez un peu ou "
+"interrompez l'activité courante avec le bouton Stop."
 
 #: src/jlm/core/ui/action/StepExecution.java:23
 msgid "Execute one step of your code"
-msgstr ""
+msgstr "Exécuter un pas de votre code"
 
 #: src/jlm/core/ui/action/StepExecution.java:24
 msgid "Impossible to step your code now. Need to stop the execution first?"
 msgstr ""
+"Impossible de parcourir pas à pas votre code. Il est nécessaire d'arrêter "
+"l'exécution d'abord."
 
 #: src/jlm/core/ui/action/StopExecution.java:22
-#, fuzzy
 msgid "Stop your code"
-msgstr "Sélectionner un cours"
+msgstr "Arrêter l'exécution de votre code"
 
 #: src/jlm/core/ui/action/StopExecution.java:23
 msgid "No execution to stop right now"
-msgstr ""
+msgstr "Il n'y a pas de code en cours d'exécution"
 
-#: src/jlm/core/ui/action/SwitchExo.java:28
-#, fuzzy
+#: src/jlm/core/ui/action/SwitchExo.java:98
 msgid "Switch to another exercise"
-msgstr "Accéder à une autre leçon"
+msgstr "Accéder à un autre exercice"
 
 #: src/jlm/universe/sort/SortingButtonPanel.java:64
 msgid "go"
 msgstr "aller"
 
-#: src/jlm/universe/sort/SortingWorldView.java:52
+#: src/jlm/universe/sort/SortingWorldView.java:53
 msgid "Switch to time view"
 msgstr "Accéder à la vue temporelle"
 
-#: src/jlm/universe/sort/SortingWorldView.java:54
+#: src/jlm/universe/sort/SortingWorldView.java:55
 msgid "Switch to state view"
 msgstr "Accéder à la vue d'état"
 

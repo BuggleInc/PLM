@@ -10,12 +10,18 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 import jlm.core.model.Game;
 
 public class AboutJLMDialog extends JDialog {
 
 	private static final long serialVersionUID = -1800747039420103759L;
 	private static AboutJLMDialog instance = null;
+	
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+
 	
 	public static AboutJLMDialog getInstance() {
 		if (AboutJLMDialog.instance == null)
@@ -25,6 +31,7 @@ public class AboutJLMDialog extends JDialog {
 	
 	private AboutJLMDialog() {
 		super(MainFrame.getInstance(), "About JLM", true);
+		this.setTitle(i18n.tr("About JLM dialogTitle"));
 		initComponent();
 	}
 	
@@ -61,7 +68,7 @@ public class AboutJLMDialog extends JDialog {
 		pane.setLayout(new BorderLayout());
 		pane.add(BorderLayout.CENTER, upperPane);
 		
-		JButton close = new JButton("Close");
+		JButton close = new JButton(i18n.tr("Close"));
 		close.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
