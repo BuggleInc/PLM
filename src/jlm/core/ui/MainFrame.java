@@ -163,7 +163,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		JMenuItem menuItem;
 
 		/* === FILE menu === */
-		menu = new JMenu("File");
+		menu = new JMenu(i18n.tr("File"));
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription(i18n.tr("File related functions"));
 		
@@ -239,7 +239,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         menu.add(menuItem);
         
         
-		menuItem = new JMenuItem(new QuitGame(g, "Quit", null,  KeyEvent.VK_Q));
+		menuItem = new JMenuItem(new QuitGame(g, i18n.tr("Quit"), null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
 		menu.add(menuItem);
@@ -278,7 +278,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 
 		/* === Language menu === */
-		menu = new JMenu("Language");
+		menu = new JMenu(i18n.tr("Language"));
 		menu.setMnemonic(KeyEvent.VK_L);
 		menuBar.add(menu);
 
@@ -395,7 +395,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		stopButton.setMnemonic(KeyEvent.VK_S);
 		stopButton.setEnabled(false);
 
-		resetButton = new PropagatingButton(new Reset(g, "Reset", 
+		resetButton = new PropagatingButton(new Reset(g, i18n.tr("Reset"), 
 				ResourcesCache.getIcon("resources/reset.png")));
 		//shortcut ctrl-z
 		resetButton.setMnemonic(KeyEvent.VK_Z);
@@ -462,7 +462,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			if (Game.getInstance().stepModeEnabled()) {
 				debugButton.setEnabled(true);
 				startButton.setEnabled(true);
-				debugButton.setText("Next");
+				debugButton.setText(i18n.tr("Next"));
 			} else {
 				startButton.setEnabled(false);
 				debugButton.setEnabled(false);				
@@ -476,7 +476,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			stopButton.setEnabled(false);
 			startButton.setEnabled(true);
 			debugButton.setEnabled(true);
-			debugButton.setText("Step");
+			debugButton.setText(i18n.tr("Step"));
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);
