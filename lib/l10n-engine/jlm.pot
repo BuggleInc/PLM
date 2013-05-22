@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 17:08+0200\n"
+"POT-Creation-Date: 2013-05-22 18:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -230,6 +230,26 @@ msgstr ""
 #. Create the tab with the code editor as content
 #: src/jlm/core/ui/MissionEditorTabs.java:169
 msgid "Type your code here"
+msgstr ""
+
+#: src/jlm/core/ui/StatusBar.java:114
+msgid "Loading"
+msgstr ""
+
+#: src/jlm/core/ui/StatusBar.java:118
+msgid "Saving"
+msgstr ""
+
+#: src/jlm/core/ui/StatusBar.java:122
+msgid "Compiling"
+msgstr ""
+
+#: src/jlm/core/ui/StatusBar.java:136
+msgid "Running "
+msgstr ""
+
+#: src/jlm/core/ui/StatusBar.java:140
+msgid "Playing demo "
 msgstr ""
 
 #: src/jlm/core/ui/action/HelpMe.java:36
