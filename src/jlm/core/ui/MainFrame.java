@@ -406,13 +406,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		resetButton.setEnabled(true);
 
 		demoButton = new PropagatingButton(new PlayDemo(g, i18n.tr("Demo"), 
-				ResourcesCache.getIcon("resources/demo.png")));
+				ResourcesCache.getIcon("resources/btn-demo.png")));
 		//shortcut ctrl-d
 		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
         helpMeButton = new PropagatingToggleButton(new HelpMe(g, i18n.tr("Call for Help"),
-                ResourcesCache.getIcon("resources/alert.png")));
+                ResourcesCache.getIcon("resources/btn-alert-off.png")));
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);

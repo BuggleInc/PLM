@@ -9,6 +9,7 @@ import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.HelpAppEngine;
 import jlm.core.model.HelpServer;
+import jlm.core.ui.ResourcesCache;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -34,6 +35,7 @@ public class HelpMe extends AbstractGameAction {
     	isRequestingHelp = ! isRequestingHelp;
         helpServer.setStatus(isRequestingHelp);
         ((JToggleButton)e.getSource()).setText(isRequestingHelp ? i18n.tr("Cancel call") : i18n.tr("Call for Help"));
+        ((JToggleButton)e.getSource()).setIcon(ResourcesCache.getIcon("resources/btn-alert-"+(isRequestingHelp?"on":"off")+".png"));
     }
 
 }
