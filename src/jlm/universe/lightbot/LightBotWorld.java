@@ -107,7 +107,7 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 	
 	@Override
 	public WorldView getView() {
-//		return new WorldView { new LightBotWorldViewIsometric(this), new LightBotWorldView2D(this) };
+//		return new LightBotWorldView2D(this);
 		return new LightBotWorldViewIsometric(this);
 	}
 
