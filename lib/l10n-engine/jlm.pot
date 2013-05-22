@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 13:15+0200\n"
+"POT-Creation-Date: 2013-05-22 13:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,6 +130,10 @@ msgstr ""
 msgid "Human"
 msgstr ""
 
+#: src/jlm/core/ui/MainFrame.java:298
+msgid "Computer"
+msgstr ""
+
 #. === Help menu ===
 #: src/jlm/core/ui/MainFrame.java:301
 msgid "Help"
@@ -167,7 +171,7 @@ msgstr ""
 msgid "Run"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:387
+#: src/jlm/core/ui/MainFrame.java:387 src/jlm/core/ui/MainFrame.java:479
 msgid "Step"
 msgstr ""
 
@@ -185,6 +189,10 @@ msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:410 src/jlm/core/ui/action/HelpMe.java:36
 msgid "Call for Help"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:465
+msgid "Next"
 msgstr ""
 
 #: src/jlm/core/ui/action/HelpMe.java:36
