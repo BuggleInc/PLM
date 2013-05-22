@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 15:25+0200\n"
+"POT-Creation-Date: 2013-05-22 15:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -200,7 +200,6 @@ msgid "Reset your world to the initial state"
 msgstr ""
 
 #: src/jlm/core/ui/action/Reset.java:29
-#: src/jlm/core/ui/action/SwitchExo.java:29
 msgid "World cannot be reset right now"
 msgstr ""
 
@@ -236,4 +235,12 @@ msgstr ""
 
 #: src/jlm/universe/sort/SortingButtonPanel.java:64
 msgid "go"
+msgstr ""
+
+#: src/jlm/universe/sort/SortingWorldView.java:52
+msgid "Switch to time view"
+msgstr ""
+
+#: src/jlm/universe/sort/SortingWorldView.java:54
+msgid "Switch to state view"
 msgstr ""

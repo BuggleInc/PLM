@@ -12,34 +12,51 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
+import java.util.Locale;
 
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
+import jlm.core.HumanLangChangesListener;
+import jlm.core.model.Game;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
-class SortingViewActionListener implements ActionListener {
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
+class SortingViewActionListener implements ActionListener, HumanLangChangesListener {
 	private JMenuItem item;
 	private SortingWorldView view;
+	private I18n i18n;
 
 	public SortingViewActionListener(JMenuItem i, SortingWorldView v) {
 		item=i;
 		view=v;
+		Game.getInstance().addHumanLangListener(this);
+		currentHumanLanguageHasChanged(item.getLocale());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		view.setUseStateView(!view.isUseStateView());
-		if (view.isUseStateView()) {
-			item.setText("Switch to time view");
-		} else {
-			item.setText("Switch to state view");
-		}
+		currentHumanLanguageHasChanged(item.getLocale());
 		view.repaint();
 	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", newLang, I18nFactory.FALLBACK);
+		if (view.isUseStateView()) {
+			item.setText(i18n.tr("Switch to time view"));
+		} else {
+			item.setText(i18n.tr("Switch to state view"));
+		}
+	}
+	
+	
 }
 
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-22 15:24+0200\n"
-"PO-Revision-Date: 2013-05-22 15:25+0200\n"
+"POT-Creation-Date: 2013-05-22 15:53+0200\n"
+"PO-Revision-Date: 2013-05-22 15:54+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -201,7 +201,6 @@ msgid "Reset your world to the initial state"
 msgstr "Réinitialise votre monde à l'état initial"
 
 #: src/jlm/core/ui/action/Reset.java:29
-#: src/jlm/core/ui/action/SwitchExo.java:29
 msgid "World cannot be reset right now"
 msgstr "Le monde ne peut être réinitialisé pour l'instant"
 
@@ -240,6 +239,14 @@ msgstr "Accéder à une autre leçon"
 #: src/jlm/universe/sort/SortingButtonPanel.java:64
 msgid "go"
 msgstr "aller"
+
+#: src/jlm/universe/sort/SortingWorldView.java:52
+msgid "Switch to time view"
+msgstr "Accéder à la vue temporelle"
+
+#: src/jlm/universe/sort/SortingWorldView.java:54
+msgid "Switch to state view"
+msgstr "Accéder à la vue d'état"
 
 #~ msgid "Load a lesson from file"
 #~ msgstr "Charger un leçon depuis un fichier"
