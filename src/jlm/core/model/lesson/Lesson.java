@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,18 +12,14 @@ import jlm.core.model.FileUtils;
 
 import org.apache.commons.collections15.Factory;
 
-import edu.uci.ics.jung.graph.DelegateForest;
-import edu.uci.ics.jung.graph.Graph;
-
-
 public abstract class Lesson {
 	private String name;
 	private String id;
 	protected String about = "(no information provided by the lesson)";
 	protected ArrayList<Lecture> lectures = new ArrayList<Lecture>();
 	
-	private Graph<Lecture,Integer> exercisesGraph = new DelegateForest<Lecture,Integer>();
-		
+	protected Vector<Lecture> rootLectures = new Vector<Lecture>(); /* To display the graph */
+	
 	protected Lecture currentExercise;
 	
 	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
@@ -99,46 +96,38 @@ public abstract class Lesson {
 	}
 
 	Lecture rootExo, lastAdded;
+	@Deprecated
 	public Lecture getRootExo() {
 		return rootExo;
 	}
+	public Vector<Lecture> getRootLectures() {
+		return rootLectures;
+	}
 	public Lecture addExercise(Lecture exo) {
 		lectures.add(exo);		
-		getExercisesGraph().addVertex(exo);
-		if (lastAdded != null) {
-			getExercisesGraph().addEdge(edgeFactory.create(), lastAdded, exo);
-		} 
+		rootLectures.add(exo);
 		if (rootExo == null) {
 			rootExo = exo;
 		}
 		lastAdded = exo;
 		return exo;
 	}
-	public Lecture addExercise(Lecture exo, Lecture[] deps) {
+	public Lecture addExercise(Lecture exo, Lecture previousExo) {
 		lectures.add(exo);
 		
-		getExercisesGraph().addVertex(exo);
-		if (deps!=null) {
-			for (Lecture d:deps) {
-				getExercisesGraph().addEdge(edgeFactory.create(), d, exo);				
-			}
-		}
 		if (rootExo == null) {
 			rootExo = exo;
 		}
 		lastAdded = exo;
+		previousExo.dependingLectures.add(exo);
 		return exo;
 	}
-	public Lecture addExercise(Lecture exo, Lecture dependency) {
-		return addExercise(exo, new Lecture[] {dependency});
-	}
-	
 	public Lecture getCurrentExercise() {
 		if (this.currentExercise == null && lectures.size() > 0) {
 			this.currentExercise = lectures.get(0);
 		}
 		if (currentExercise == null)
-			System.out.print("There is only "+lectures.size()+" so far");
+			System.out.print("There is only "+lectures.size()+" lectures so far in the lesson "+getName());
 		return this.currentExercise;
 	}
 
@@ -169,10 +158,5 @@ public abstract class Lesson {
 	}
 	public int getExerciseCount() {
 		return this.lectures.size();
-	}
-
-	/* Methods to retrieve the dependencies so that the lesson navigator can display them */
-	public Graph<Lecture,Integer> getExercisesGraph() {
-		return exercisesGraph;
 	}
 }

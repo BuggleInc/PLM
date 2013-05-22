@@ -24,7 +24,7 @@ import jlm.universe.World;
 
 
 public abstract class Exercise  extends Lecture {
-	public boolean debug = false; /* whether to debug this particular exo */
+	public boolean debug = false; /* whether to debug this particular exo FIXME: killme*/
 
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All source files */
 	

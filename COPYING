@@ -18,16 +18,28 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 =========================================================================
 
-In addition, the artwork is also free. The artwork we did ourselves
-(such as the wonderful JLM logo) is distributed under the CC-BY-SA
-license. The rest was borowed from open clip art and other project
-gathering free artwork, as follows. For most of the pictures, we did
-unfortunately not write done their source. Here are the info we have:
+The artwork we did ourselves (such as the wonderful JLM logo) is
+distributed under the CC-BY-SA license. 
+
+=========================================================================
+
+The following icons are CC-BY-SA too:
 
 * The turtle was borowed from the kturtle project, from KDE edu.
 * The bunny and egg in BuggleQuest universe come from:
   http://openclipart.org/detail/23052/
   http://openclipart.org/detail/93979/
+* Buttons:
+  - Demo: http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/games-solve.png
+  - Switch exercise: http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/code-class.png
+
+=========================================================================
+
+The following icons are LGPL:
+
+* Call for help buttons:
+  off: http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/irkickoff.png
+  on:  http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/irkickflash.png
 
 We should probably replace the other for which we lost the copyright
 information. But as you can see from the rest of the project, we are
