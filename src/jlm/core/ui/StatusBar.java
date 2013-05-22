@@ -27,6 +27,9 @@ import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.action.SetProgLanguage;
 import jlm.universe.World;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 public class StatusBar extends JPanel implements GameListener,GameStateListener,StatusStateListener, ProgLangChangesListener {
 
 	private static final long serialVersionUID = 8443305863958273495L;
@@ -39,6 +42,8 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	private int busyIconIndex = 0;
 
 	private Timer busyIconTimer;
+
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	public StatusBar(Game game) {
 		super();
@@ -106,15 +111,15 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	public void stateChanged(GameState type) {
 		switch (type) {
 		case LOADING:
-			statusMessageLabel.setText("Loading");
+			statusMessageLabel.setText(i18n.tr("Loading"));
 			busyIconTimer.start();
 			break;
 		case SAVING:
-			statusMessageLabel.setText("Saving");
+			statusMessageLabel.setText(i18n.tr("Saving"));
 			busyIconTimer.start();
 			break;
 		case COMPILATION_STARTED:
-			statusMessageLabel.setText("Compiling");
+			statusMessageLabel.setText(i18n.tr("Compiling"));
 			busyIconTimer.start();
 			break;
 		case LOADING_DONE:
@@ -128,11 +133,11 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			statusAnimationLabel.setIcon(ResourcesCache.getIcon("resources/busyicons/idle-icon.png"));
 			break;
 		case EXECUTION_STARTED:
-			game.statusRootSet("Running ");
+			game.statusRootSet(i18n.tr("Running "));
 			busyIconTimer.start();
 			break;
 		case DEMO_STARTED:
-			game.statusRootSet("Playing demo ");
+			game.statusRootSet(i18n.tr("Playing demo "));
 			busyIconTimer.start();
 			break;		
 		default:

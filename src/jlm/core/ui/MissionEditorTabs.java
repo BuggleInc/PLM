@@ -26,6 +26,10 @@ import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
+
 
 public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener {
 	private static final long serialVersionUID = 1L;
@@ -37,6 +41,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	private Lecture currentExercise;
 //	private Font font = null;
 
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 	
 	public MissionEditorTabs() {
 		super();
@@ -88,8 +93,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 			}
 		});
 		
-		this.addTab("Mission", null, new JScrollPane(missionTab),
-				"Description of the work to do");
+		this.addTab(i18n.tr("Mission"), null, new JScrollPane(missionTab),
+				i18n.tr("Description of the work to do"));
 		
 		/* setup code tabs */
 		DefaultSyntaxKit.initKit();
@@ -161,7 +166,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 				SourceFile srcFile = ((Exercise) currentExercise).getPublicSourceFile(newLang, i);
 
 				/* Create the tab with the code editor as content */
-				this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(newLang), "Type your code here"); 
+				this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(newLang), i18n.tr("Type your code here")); 
 			}		
 			if (getTabCount()>tabPosition)
 				setSelectedIndex(tabPosition);
