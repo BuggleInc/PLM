@@ -160,4 +160,7 @@ public abstract class Lecture {
 			res.add(l.makeNode());
 		return res;
 	}
+	public Vector<Lecture> getDependingLectures() {
+		return dependingLectures;
+	}
 }

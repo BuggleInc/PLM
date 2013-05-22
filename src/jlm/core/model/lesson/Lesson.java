@@ -12,10 +12,6 @@ import jlm.core.model.FileUtils;
 
 import org.apache.commons.collections15.Factory;
 
-import edu.uci.ics.jung.graph.DelegateForest;
-import edu.uci.ics.jung.graph.Graph;
-
-
 public abstract class Lesson {
 	private String name;
 	private String id;
@@ -24,8 +20,6 @@ public abstract class Lesson {
 	
 	protected Vector<Lecture> rootLectures = new Vector<Lecture>(); /* To display the graph */
 	
-	private Graph<Lecture,Integer> exercisesGraph = new DelegateForest<Lecture,Integer>();
-		
 	protected Lecture currentExercise;
 	
 	final static String LessonHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
@@ -112,10 +106,6 @@ public abstract class Lesson {
 	public Lecture addExercise(Lecture exo) {
 		lectures.add(exo);		
 		rootLectures.add(exo);
-		getExercisesGraph().addVertex(exo);
-		if (lastAdded != null) {
-			getExercisesGraph().addEdge(edgeFactory.create(), lastAdded, exo);
-		} 
 		if (rootExo == null) {
 			rootExo = exo;
 		}
@@ -125,8 +115,6 @@ public abstract class Lesson {
 	public Lecture addExercise(Lecture exo, Lecture previousExo) {
 		lectures.add(exo);
 		
-		getExercisesGraph().addVertex(exo);
-		getExercisesGraph().addEdge(edgeFactory.create(), previousExo, exo);				
 		if (rootExo == null) {
 			rootExo = exo;
 		}
@@ -170,11 +158,5 @@ public abstract class Lesson {
 	}
 	public int getExerciseCount() {
 		return this.lectures.size();
-	}
-
-	/* Methods to retrieve the dependencies so that the lesson navigator can display them */
-	@Deprecated
-	public Graph<Lecture,Integer> getExercisesGraph() { // FIXME: killme
-		return exercisesGraph;
 	}
 }

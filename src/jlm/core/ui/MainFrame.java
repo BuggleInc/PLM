@@ -83,8 +83,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	
 	private static final String frameTitle = "Java Learning Machine";
 
-	private LessonNavigatorPane lessonNavigator;
-
 	private MainFrame() {
 		super(frameTitle);
 		FileUtils.setLocale(this.getLocale());
@@ -131,22 +129,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		exerciseView = new ExerciseView(g);
 		mainPanel.setRightComponent(exerciseView);
 
-		/* FIXME CODE ADDED */
-		JSplitPane leftSplitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true); 
-		leftSplitPane.setOneTouchExpandable(true);
-		double leftWeight = 0.2;
-		leftSplitPane.setResizeWeight(leftWeight);
-		leftSplitPane.setRightComponent(mainPanel);
-		lessonNavigator = new LessonNavigatorPane();
-		leftSplitPane.setLeftComponent(lessonNavigator);
-		leftSplitPane.setDividerLocation((int) (1024 * leftWeight)); 
-		logPane.setTopComponent(leftSplitPane);
-		/* END */
+		logPane.setTopComponent(mainPanel);
 		outputArea = new LoggerPanel(g);
 		JScrollPane outputScrollPane = new JScrollPane(outputArea);
 		logPane.setBottomComponent(outputScrollPane);
 		getContentPane().add(logPane, BorderLayout.CENTER);
-		// g.setOutputWriter(outputArea);
 
 		initMenuBar(g);
 		initToolBar(g);
@@ -551,8 +538,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	public void currentExerciseHasChanged(Lecture lecture) {
 		Game g = Game.getInstance();
 		if (lecture instanceof Exercise) {
-			/* FIXME CODE ADDED */
-			lessonNavigator.currentExerciseHasChanged(lecture);
 			showWorldView();
 			Exercise exo = (Exercise) lecture;
 			for (ProgrammingLanguage l:exo.getProgLanguages()) {
