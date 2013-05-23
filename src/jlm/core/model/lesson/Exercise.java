@@ -23,8 +23,8 @@ import jlm.universe.Entity;
 import jlm.universe.World;
 
 
-public abstract class Exercise  extends Lecture {
-	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All source files */
+public abstract class Exercise extends Lecture {
+	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
 
@@ -36,15 +36,15 @@ public abstract class Exercise  extends Lecture {
 	protected World [] initialWorld; /* the one used to reset the previous on each run */
 	protected World [] answerWorld;  /* the one current should look like to pass the test */
 
-	protected Map<String, String> runtimePatterns;
+	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
 	public ExecutionProgress lastResult;
 	
-	public List<World> getCurrentWorld() {
-		return Arrays.asList(currentWorld);
+	public Exercise(Lesson lesson) {
+		super(lesson);
 	}
 	
-	public void worldDuplicate(World[] w) {
+	public void setupWorlds(World[] w) {
 		currentWorld = new World[w.length];
 		initialWorld = new World[w.length];
 		answerWorld  = new World[w.length];
@@ -227,22 +227,18 @@ public abstract class Exercise  extends Lecture {
 				current.setEntities(newEntities);
 		}
 	}
-
-	public Exercise(Lesson lesson) {
-		super(lesson);
-		sourceFiles = new HashMap<ProgrammingLanguage, List<SourceFile>>();
-		runtimePatterns = new TreeMap<String, String>();
-	}
 			
-	public List<World> getAnswerWorld() {
+	public List<World> getAnswerWorldList() {
 		return Arrays.asList(answerWorld);
 	}
-	
-	public List<World> getInitialWorld() {
+	public List<World> getCurrentWorldList() {
+		return Arrays.asList(currentWorld);
+	}
+	public List<World> getInitialWorldList() {
 		return Arrays.asList(this.initialWorld);
 	}
 	
-	public int worldCount() {
+	public int getWorldCount() {
 		return this.initialWorld.length;
 	}
 	

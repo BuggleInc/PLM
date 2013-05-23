@@ -57,7 +57,7 @@ public class RandomMouseMaze extends ExerciseTemplated {
 	@Override
 	public void check() {
 		lastResult = new ExecutionProgress();
-		for (World w: this.getCurrentWorld()) 
+		for (World w: this.getCurrentWorldList()) 
 			for (Entity e:w.getEntities()) {
 				lastResult.totalTests++;
 				if (!((AbstractBuggle) e).isCarryingBaggle())

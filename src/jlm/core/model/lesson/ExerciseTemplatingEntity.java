@@ -20,7 +20,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected void setup(World[] ws, String entName, String template) {
 		boolean foundOne = false;
 		this.tabName=entName;
-		worldDuplicate(ws);
+		setupWorlds(ws);
 		
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			try {

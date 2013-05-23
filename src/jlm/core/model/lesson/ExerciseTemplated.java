@@ -226,7 +226,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 	protected void setup(World[] ws) {
 		boolean foundALanguage=false;
-		worldDuplicate(ws);
+		setupWorlds(ws);
 
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
 			if (Game.getInstance().isDebugEnabled())

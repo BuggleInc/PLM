@@ -40,7 +40,7 @@ public class FileUtils {
 			Game.getInstance().getCurrentLesson().resetAboutLoaded();
 			Lecture lect = Game.getInstance().getCurrentLesson().getCurrentExercise();
 			if ( lect instanceof Exercise )
-				((Exercise) lect).getCurrentWorld().get(0).resetAbout();
+				((Exercise) lect).getCurrentWorldList().get(0).resetAbout();
 		}
 	}
 	public static Locale getLocale() {

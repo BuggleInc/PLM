@@ -23,7 +23,7 @@ public class HanoiCreateEntity extends MetaExercise {
 		new HanoiMetaEntity("Entity",w[1],this);
 		new HanoiMetaEntity("Entity",w[2],this);
 
-		worldDuplicate(w);
+		setupWorlds(w);
 
 		/* compute answer */
 		System.out.println("Compute answers "+answerWorld.length);

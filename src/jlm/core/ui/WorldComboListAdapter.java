@@ -33,7 +33,7 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 
 	@Override
 	public int getSize() {
-		return currentExercise == null?0: currentExercise.worldCount();
+		return currentExercise == null?0: currentExercise.getWorldCount();
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 		if (lect instanceof Exercise) {
 			this.currentExercise = (Exercise) lect;
 			this.selectedWorld = game.getSelectedWorld();
-			fireContentsChanged(this, 0, this.currentExercise.worldCount()-1);
+			fireContentsChanged(this, 0, this.currentExercise.getWorldCount()-1);
 		} else {
 			currentExercise = null;
 			selectedWorld = null;
@@ -71,7 +71,7 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 	@Override
 	public void selectedWorldHasChanged(World w) {
 		this.selectedWorld = w;
-		fireContentsChanged(this, 0, this.currentExercise.worldCount()-1);		
+		fireContentsChanged(this, 0, this.currentExercise.getWorldCount()-1);		
 	}
 	
 	@Override

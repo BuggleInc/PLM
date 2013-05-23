@@ -20,7 +20,7 @@ public class HanoiCreateWorld extends MetaExercise {
 		w[2]=new HanoiMetaWorld("HanoiWorld({},{},{8,7,6,5,4,3,2,1})",this,
 				new Integer[0], new Integer[0], new Integer[] {8,7,6,5,4,3,2,1});
 		
-		worldDuplicate(w);
+		setupWorlds(w);
 
 		try {
 			newSourceFromFile(Game.JAVA,"HanoiWorld","src/jlm/universe/hanoi/HanoiWorld","java");

@@ -129,8 +129,8 @@ public class ExerciseView extends JPanel implements GameListener {
 		this.add(splitPane, "grow");
 		
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
-		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);
-		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorld().get(0).getEntityCount() > 1); 
+		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldCount() > 1);
+		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorldList().get(0).getEntityCount() > 1); 
 	}
 
 	public void selectObjectivePane() {
@@ -144,7 +144,7 @@ public class ExerciseView extends JPanel implements GameListener {
 	@Override
 	public void currentExerciseHasChanged(Lecture lect) {
 		if (worldComboBox != null)
-			worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);
+			worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldCount() > 1);
 	}
 
 	@Override
@@ -170,8 +170,8 @@ public class ExerciseView extends JPanel implements GameListener {
 		controlPane.add(buttonPanel, "grow");
 		
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
-		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorld().get(0).getEntityCount() > 1); 
-		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).worldCount() > 1);		
+		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorldList().get(0).getEntityCount() > 1); 
+		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldCount() > 1);		
 	}
 
 	// To refresh the controlPane in the BDR & BDR2 exercise from welcome
