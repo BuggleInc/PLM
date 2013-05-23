@@ -21,7 +21,7 @@ import jlm.universe.World;
 public abstract class ExerciseTemplated extends Exercise {
 
 	protected String tabName = getClass().getSimpleName(); /** Name of the tab in editor -- must be a valid java identifier */
-	protected String entityName = getClass().getCanonicalName()+"Entity"; /** name of the class of entities being solution of this exercise */
+	protected String nameOfCorrectionentity = getClass().getCanonicalName()+"Entity"; /** name of the entity class computing the answer. Usually no need to redefine this */
 
 	public ExerciseTemplated(Lesson lesson) {
 		super(lesson);
@@ -236,7 +236,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			for (SourceFile sf : getSourceFilesList(lang)) {
 				if (searchedName == null) {//lazy initialization if there is any sourcefile to parse
 					Pattern p = Pattern.compile(".*?([^.]*)$");
-					Matcher m = p.matcher(entityName);
+					Matcher m = p.matcher(nameOfCorrectionentity);
 					if (m.matches())
 						searchedName = m.group(1);
 					p = Pattern.compile("Entity$");
@@ -250,11 +250,11 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 			if (!foundThisLanguage) {
 				try {
-					newSourceFromFile(lang, tabName, entityName);
+					newSourceFromFile(lang, tabName, nameOfCorrectionentity);
 					super.addProgLanguage(lang);
 					foundALanguage = true;
 					if (Game.getInstance().isDebugEnabled())
-						System.out.println("Found suitable templating entity "+entityName+" in "+lang);
+						System.out.println("Found suitable templating entity "+nameOfCorrectionentity+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
 					if (getProgLanguages().contains(lang)) 
@@ -278,16 +278,16 @@ public abstract class ExerciseTemplated extends Exercise {
 
 				/* No need to deal with lightbot here: this method is redefined in LightBotExercise from scratch */
 				if (lang.equals(Game.JAVA)) {
-					mutateEntities(answerWorld,entityName);
+					mutateEntities(answerWorld,nameOfCorrectionentity);
 				} else {
 					for (World aw : answerWorld) {
 						aw.setDelay(0);
 						for (Entity ent: aw.getEntities()) {
 							StringBuffer sb = null;
 							try {
-								sb = FileUtils.readContentAsText(entityName, lang.getExt(), false);
+								sb = FileUtils.readContentAsText(nameOfCorrectionentity, lang.getExt(), false);
 							} catch (IOException ex) {
-								throw new RuntimeException("Cannot compute the answer from file "+entityName+"."+lang.getExt()+" since it does not exist.");			
+								throw new RuntimeException("Cannot compute the answer from file "+nameOfCorrectionentity+"."+lang.getExt()+" since it does not exist.");			
 							}
 
 
@@ -324,7 +324,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		final ProgrammingLanguage current = Game.getProgrammingLanguage();
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
 
-		mutateEntities(answerWorld, entityName);
+		mutateEntities(answerWorld, nameOfCorrectionentity);
 
 		for (int i=0; i<answerWorld.length; i++)
 			answerWorld[i].runEntities(runnerVect);

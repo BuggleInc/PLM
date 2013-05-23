@@ -19,7 +19,7 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 	public WallFindFollowMaze(Lesson lesson) {
 		super(lesson);
 		tabName = "Escaper";
-		entityName = "lessons.maze.wallfollower.WallFollowerMazeEntity";	
+		nameOfCorrectionentity = "lessons.maze.wallfollower.WallFollowerMazeEntity"; // Use the same entity than in previous exercise
 		
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
