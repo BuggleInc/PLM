@@ -5,9 +5,9 @@ import java.awt.Color;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Direction;
+import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.BuggleWorldCell;
-import lessons.welcome.bdr.BuggleDancing;
 
 public class BDR extends ExerciseTemplated {
 
@@ -36,24 +36,16 @@ public class BDR extends ExerciseTemplated {
 		super(lesson);
 		tabName = "BDRBuggle";			
 
-		/*FIXME: well if I'm right some statements in mission are wrong
-		 * "tutu" == "tutu" is true in Java...
-		 * Because String are non-mutable objects.
-		 * 
-		 * the proposed template (while (true) ... return) is not 
-		 * very pedagogical...
-		 */
-		
 		myWorld = new BuggleWorld("Dance Floor",7,7);
 		/* first dancer, plus its steps */
-		new BuggleDancing(myWorld, "John Travolta", 0, 6, Direction.EAST, Color.red, Color.lightGray);
+		new Buggle(myWorld, "John Travolta", 0, 6, Direction.EAST, Color.red, Color.lightGray);
 		plus1(0,6);
 		left(1,6);
 		plus2(1,5);
 		right(1,3);
 		
 		/* second dancer */
-		new BuggleDancing(myWorld, "Break Dancer", 0,0,Direction.WEST, Color.magenta, Color.lightGray);
+		new Buggle(myWorld, "Break Dancer", 0,0,Direction.WEST, Color.magenta, Color.lightGray);
 		minus1(0,0);
 		left(1,0);
 		plus2(1,1);
@@ -61,7 +53,7 @@ public class BDR extends ExerciseTemplated {
 		minus1(3,3);
 		
 		/* third one */
-		new BuggleDancing(myWorld, "Moon Walker", 6,0, Direction.WEST, Color.pink,Color.lightGray);
+		new Buggle(myWorld, "Moon Walker", 6,0, Direction.WEST, Color.pink,Color.lightGray);
 		plus1(6,0);
 		left(5,0);
 		plus2(5,1);
@@ -72,7 +64,7 @@ public class BDR extends ExerciseTemplated {
 		plus2(3,1);
 		
 		/* last one */
-		new BuggleDancing(myWorld, "Elwood Blues", 6,6, Direction.WEST, Color.blue,Color.lightGray);
+		new Buggle(myWorld, "Elwood Blues", 6,6, Direction.WEST, Color.blue,Color.lightGray);
 		plus1(6,6);
 		right(5,6);
 		plus2(5,5);
@@ -84,21 +76,4 @@ public class BDR extends ExerciseTemplated {
 		
 		setup(myWorld);
 	}
-	/*
-		worldDuplicate(myWorld);
-		mutateBuggle(answerWorld, "lessons.welcome.BuggleDancing");
-				
-		Iterator<AbstractBuggle> it;
-		for (it = answerWorld[0].buggles(); it.hasNext();) {
-			BuggleDancing b = (BuggleDancing)it.next();
-			while (b.moreMusic())
-				b.danceOneStep();
-		}
-	}
-
-	@Override
-	public void run(){
-		super.run("Program");
-	}
-	*/
 }
