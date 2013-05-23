@@ -358,13 +358,6 @@ public class InMemoryCompiler {
 			throw new RuntimeException(e);
 		}
 	}
-
-	/**
-	 * @return This compiler's class loader.
-	 */
-	public ClassLoader getClassLoader() {
-		return javaFileManager.getClassLoader();
-	}
 }
 
 /**
