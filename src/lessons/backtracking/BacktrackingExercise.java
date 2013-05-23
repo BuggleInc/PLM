@@ -1,7 +1,5 @@
 package lessons.backtracking;
 
-import java.util.List;
-
 import jlm.core.model.Game;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
@@ -40,16 +38,6 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		}
 	}
 
-	@Override
-	public void run(List<Thread> runnerVect){
-		mutateEntities(currentWorld, tabName);
-		for (World cw:currentWorld) {
-			System.out.println("Run world "+cw.getName()+"; entities:"+cw.getEntities());
-			cw.doDelay();
-			cw.runEntities(runnerVect);
-		}
-	}
-	
 	protected void newBestSolution(BacktrackingPartialSolution sol) {
 		((BacktrackingWorld) getCurrentWorldList().get(0)).newBestSolution(sol);
 	}
