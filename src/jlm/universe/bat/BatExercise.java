@@ -12,7 +12,6 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	
 	public BatExercise(Lesson lesson) {
 		super(lesson);
-		entityName = getClass().getCanonicalName()+".Entity";
 	}
 
 	protected void setup(World[] ws) {
