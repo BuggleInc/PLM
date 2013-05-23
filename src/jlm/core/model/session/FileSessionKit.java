@@ -74,7 +74,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 
 						// save exercise body
 						for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
-							for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
+							for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {
 								SourceFile sf = exercise.getSourceFile(lang,i);
 
 								if (!(sf instanceof SourceFileRevertable))
@@ -130,7 +130,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 							Game.getInstance().studentWork.setPassed(lecture.getId(), lang, true);
 						}
 						
-						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
+						for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getSourceFile(lang,i);
 
 							File of = new File(exerciseDir+"/"+lang, srcFile.getName());
@@ -187,7 +187,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 					}
 
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) 
-						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
+						for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {
 							SourceFile srcFile = exercise.getSourceFile(lang, i);
 
 							File of = new File(exerciseDir, srcFile.getName());

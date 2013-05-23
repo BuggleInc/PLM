@@ -38,7 +38,7 @@ public class RevertExercise extends AbstractGameAction {
 
 		Exercise ex = (Exercise) lect;
 		for (ProgrammingLanguage lang: ex.getProgLanguages())
-			for (int i=0; i<ex.sourceFileCount(lang); i++) {
+			for (int i=0; i<ex.getSourceFileCount(lang); i++) {
 				SourceFile sf = ex.getSourceFile(lang,i);
 				if (sf instanceof SourceFileRevertable)
 					((SourceFileRevertable) sf).revert();

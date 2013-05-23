@@ -151,7 +151,7 @@ public abstract class Exercise  extends Lecture {
 		}
 		return res;
 	}
-	public int sourceFileCount(ProgrammingLanguage lang) {
+	public int getSourceFileCount(ProgrammingLanguage lang) {
 		return getSourceFilesList(lang).size();
 	}	
 	public SourceFile getSourceFile(ProgrammingLanguage lang, int i) {
