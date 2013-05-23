@@ -8,7 +8,7 @@ import jlm.universe.Entity;
 import jlm.universe.GridWorld;
 import jlm.universe.World;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
-import jlm.universe.bugglequest.exception.BuggleInOuterSpace;
+import jlm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 import jlm.universe.bugglequest.exception.BuggleWallException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
@@ -160,19 +160,19 @@ public abstract class AbstractBuggle extends Entity {
 	protected BuggleWorldCell getCell(){
 		return (BuggleWorldCell) ((GridWorld)world).getCell(x, y);
 	}
-	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpace{
+	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpaceException{
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpace("You tried to access a cell with Y="+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+			throw new BuggleInOuterSpaceException("You tried to access a cell with Y="+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
 		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpace("You tried to access a cell with X="+x+", but the maximal X in this world is "+(bw.getWidth()-1));
+			throw new BuggleInOuterSpaceException("You tried to access a cell with X="+x+", but the maximal X in this world is "+(bw.getWidth()-1));
 
 		return (BuggleWorldCell) ((GridWorld)world).getCell(u, v);
 	}
 	protected BuggleWorldCell getCellFromLesson(int u, int v) {
 		try {
 			return getCell(u,v);
-		} catch (BuggleInOuterSpace e) {
+		} catch (BuggleInOuterSpaceException e) {
 			throw new RuntimeException("Broken lesson: you accessed a cell in outer space",e);
 		}
 	}
@@ -181,17 +181,17 @@ public abstract class AbstractBuggle extends Entity {
 		return x;
 	}
 
-	public void setX(int x) throws BuggleInOuterSpace {
+	public void setX(int x) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpace("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
+			throw new BuggleInOuterSpaceException("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
 		this.x = x;
 		stepUI();
 	}
 	public void setXFromLesson(int x)  {
 		try {
 			setX(x);
-		} catch (BuggleInOuterSpace e) {
+		} catch (BuggleInOuterSpaceException e) {
 			throw new RuntimeException("Broken lesson: you moved to outer space",e);
 		}
 	}
@@ -200,27 +200,27 @@ public abstract class AbstractBuggle extends Entity {
 		return y;
 	}
 
-	public void setY(int y) throws BuggleInOuterSpace  {
+	public void setY(int y) throws BuggleInOuterSpaceException  {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpace("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+			throw new BuggleInOuterSpaceException("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
 		this.y = y;
 		stepUI();
 	}
 	public void setYFromLesson(int y)  {
 		try {
 			setY(y);
-		} catch (BuggleInOuterSpace e) {
+		} catch (BuggleInOuterSpaceException e) {
 			throw new RuntimeException("Broken lesson: you moved to outer space",e);
 		}
 	}
 
-	public void setPos(int x, int y) throws BuggleInOuterSpace {
+	public void setPos(int x, int y) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpace("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+			throw new BuggleInOuterSpaceException("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
 		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpace("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
+			throw new BuggleInOuterSpaceException("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
 		this.x = x;
 		this.y = y;
 		stepUI();
@@ -228,7 +228,7 @@ public abstract class AbstractBuggle extends Entity {
 	public void setPosFromLesson(int x, int y)  {
 		try {
 			setPos(x,y);
-		} catch (BuggleInOuterSpace e) {
+		} catch (BuggleInOuterSpaceException e) {
 			throw new RuntimeException("Broken lesson: you moved to outer space",e);
 		}
 	}

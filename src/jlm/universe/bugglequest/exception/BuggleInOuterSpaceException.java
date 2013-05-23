@@ -3,9 +3,9 @@ package jlm.universe.bugglequest.exception;
 import jlm.core.JLMException;
 
 
-public class BuggleInOuterSpace extends JLMException {
+public class BuggleInOuterSpaceException extends JLMException {
 
-	public BuggleInOuterSpace(String msg) {
+	public BuggleInOuterSpaceException(String msg) {
 		super(msg);
 	}
 
