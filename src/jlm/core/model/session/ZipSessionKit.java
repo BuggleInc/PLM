@@ -104,7 +104,7 @@ public class ZipSessionKit implements ISessionKit {
 
 					// save exercise body
 						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
-							SourceFile sf = exercise.getPublicSourceFile(lang,i);
+							SourceFile sf = exercise.getSourceFile(lang,i);
 
 							if (!(sf instanceof SourceFileRevertable))
 								continue;
@@ -176,7 +176,7 @@ public class ZipSessionKit implements ISessionKit {
 						}
 
 						for (int i = 0; i < exercise.sourceFileCount(lang); i++) {
-							SourceFile srcFile = exercise.getPublicSourceFile(lang,i);
+							SourceFile srcFile = exercise.getSourceFile(lang,i);
 
 							ZipEntry srcEntry = zf.getEntry(lang+"/"+exercise.getId() + "/" + srcFile.getName());
 							if (srcEntry == null) /* try to load using the old format (not specifying the programming language) */

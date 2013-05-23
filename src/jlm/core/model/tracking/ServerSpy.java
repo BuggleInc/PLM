@@ -34,7 +34,7 @@ public abstract class ServerSpy implements ProgressSpyListener {
 
 		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exo.lastResult;
-		String exoCode = exo.getPublicSourceFile(lastResult.language, 0)
+		String exoCode = exo.getSourceFile(lastResult.language, 0)
 				.getBody();
 
 		// Retrieve appropriate parameters regarding the current exercise

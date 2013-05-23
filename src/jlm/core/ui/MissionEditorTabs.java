@@ -163,7 +163,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 			int publicSrcFileCount = ((Exercise) currentExercise).sourceFileCount(newLang);
 			for (int i = 0; i < publicSrcFileCount; i++) {
 				/* Create the code editor */
-				SourceFile srcFile = ((Exercise) currentExercise).getPublicSourceFile(newLang, i);
+				SourceFile srcFile = ((Exercise) currentExercise).getSourceFile(newLang, i);
 
 				/* Create the tab with the code editor as content */
 				this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(newLang), i18n.tr("Type your code here")); 
