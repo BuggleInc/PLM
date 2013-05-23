@@ -5,10 +5,9 @@ import java.awt.Color;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Direction;
-import jlm.universe.Entity;
+import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.BuggleWorldCell;
-import lessons.welcome.bdr.BuggleDancingChecker;
 
 public class BDR2 extends ExerciseTemplated {
 
@@ -46,10 +45,10 @@ public class BDR2 extends ExerciseTemplated {
 
 		myWorld = new BuggleWorld("Dance Floor",11,11);
 		/* please applause the dancers*/
-		new BuggleDancingChecker(myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
-		new BuggleDancingChecker(myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);
-		new BuggleDancingChecker(myWorld, "Moon Walker", 0, 10, Direction.NORTH, Color.pink, Color.pink);
-		new BuggleDancingChecker(myWorld, "Elwood Blues", 10, 10, Direction.WEST, Color.blue, Color.blue);
+		new Buggle(myWorld, "John Travolta", 0, 0, Direction.EAST, Color.red, Color.red);
+		new Buggle(myWorld, "Break Dancer", 10, 0, Direction.SOUTH, Color.magenta, Color.magenta);
+		new Buggle(myWorld, "Moon Walker", 0, 10, Direction.NORTH, Color.pink, Color.pink);
+		new Buggle(myWorld, "Elwood Blues", 10, 10, Direction.WEST, Color.blue, Color.blue);
 		
 		/* welcome to the dance floor, each dancer on a column */
 		plus5(0,0);		plus5(10,0);	plus5(0,10);	plus5(10,10);
@@ -77,19 +76,8 @@ public class BDR2 extends ExerciseTemplated {
 		left(8,0);		left(10,8);		left(0,2);		left(2,10);
 		right(9,0);		right(10,9);	right(0,1);		right(1,10);
 
+		myWorld.setParameter(new String[] {"ERRLRLRBLLCRLILRRWLULVVLR"});
 		setup(myWorld);
 		
-	}
-	
-	@Override
-	protected void computeAnswer(){
-		/* Change the answer dancers to choregraphy checkers */
-		mutateEntities(answerWorld, "lessons.welcome.bdr.BuggleDancingChecker");
-
-		for (Entity ent: answerWorld[0].getEntities()) {
-			BuggleDancingChecker bd = (BuggleDancingChecker)ent;
-			bd.addTODO("ERRLRLRBLLCRLILRRWLULVVLR");
-			bd.run();
-		}
 	}
 }
