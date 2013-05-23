@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 
 import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
-import jlm.core.model.GameState;
 
 /** Action launched when the Start button gets hit */
 public class StartExecution extends AbstractGameAction implements HumanLangChangesListener {
@@ -21,7 +20,7 @@ public class StartExecution extends AbstractGameAction implements HumanLangChang
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (game.getState().equals(GameState.EXECUTION_STARTED) && game.stepModeEnabled()) {
+		if (game.getState().equals(Game.GameState.EXECUTION_STARTED) && game.stepModeEnabled()) {
 			game.disableStepMode();
 			game.allowOneStep();
 		} else

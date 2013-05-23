@@ -47,11 +47,11 @@ public class LessonRunner extends Thread {
 		try {
 			game.saveSession(); // for safety reasons;
 			
-			game.setState(GameState.COMPILATION_STARTED);
+			game.setState(Game.GameState.COMPILATION_STARTED);
 			exo.compileAll(this.game.getOutputWriter());
-			game.setState(GameState.COMPILATION_ENDED);
+			game.setState(Game.GameState.COMPILATION_ENDED);
 			
-			game.setState(GameState.EXECUTION_STARTED);
+			game.setState(Game.GameState.EXECUTION_STARTED);
 			exo.reset();
 			exo.run(runners);
 
@@ -63,21 +63,21 @@ public class LessonRunner extends Thread {
 					it.remove();
 				}
 			}
-			game.setState(GameState.EXECUTION_ENDED);
+			game.setState(Game.GameState.EXECUTION_ENDED);
 
 			exo.check();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
-			game.setState(GameState.EXECUTION_ENDED);
+			game.setState(Game.GameState.EXECUTION_ENDED);
 		} catch (JLMCompilerException e) {
-			game.setState(GameState.COMPILATION_ENDED);
-			game.setState(GameState.EXECUTION_ENDED);
+			game.setState(Game.GameState.COMPILATION_ENDED);
+			game.setState(Game.GameState.EXECUTION_ENDED);
 		} catch (Exception e) {
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
-			game.setState(GameState.COMPILATION_ENDED);
-			game.setState(GameState.EXECUTION_ENDED);
+			game.setState(Game.GameState.COMPILATION_ENDED);
+			game.setState(Game.GameState.EXECUTION_ENDED);
 		}
 		
 		if (exo.lastResult.totalTests == exo.lastResult.passedTests) {

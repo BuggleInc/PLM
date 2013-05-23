@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 
 import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
-import jlm.core.model.GameState;
 
 
 public class StepExecution extends AbstractGameAction implements HumanLangChangesListener {
@@ -26,7 +25,7 @@ public class StepExecution extends AbstractGameAction implements HumanLangChange
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (game.getState().equals(GameState.EXECUTION_STARTED))
+		if (game.getState().equals(Game.GameState.EXECUTION_STARTED))
 			game.allowOneStep();
 		else			
 			game.startExerciseStepExecution();		

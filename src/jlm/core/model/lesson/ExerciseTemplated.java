@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 import jlm.core.DiscardableGameStateListener;
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
-import jlm.core.model.GameState;
+import jlm.core.model.Game.GameState;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -309,9 +309,9 @@ public abstract class ExerciseTemplated extends Exercise {
 	public void run(List<Thread> runnerVect){
 		mutateEntities(currentWorld, tabName);
 
-		for (int i=0; i<currentWorld.length; i++) {
-			currentWorld[i].doDelay();
-			currentWorld[i].runEntities(runnerVect);
+		for (World cw: getCurrentWorldList()) {
+			cw.doDelay();
+			cw.runEntities(runnerVect);
 		}
 	}
 
@@ -326,10 +326,10 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		mutateEntities(answerWorld, nameOfCorrectionentity);
 
-		for (int i=0; i<answerWorld.length; i++)
-			answerWorld[i].runEntities(runnerVect);
+		for (World aw:getAnswerWorldList())
+			aw.runEntities(runnerVect);
 
-
+		// FIXME: UGLY HACK. This should disappear as soon as script languages manage to run the demos
 		// as demo is launched in several threads, we can restore the current programming language
 		// only when the demo is finished. This is achieved using some kind of hook triggered when DEMO_ENDED.	
 		Game.getInstance().addGameStateListener(
@@ -338,7 +338,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 					@Override
 					public void stateChanged(GameState type) {
-						if (type == GameState.DEMO_ENDED) {
+						if (type == Game.GameState.DEMO_ENDED) {
 							Game.getInstance().setProgramingLanguage(current);
 							this.dirty = true;
 						}

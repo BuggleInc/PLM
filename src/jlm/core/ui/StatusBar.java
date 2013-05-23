@@ -20,7 +20,6 @@ import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
 import jlm.core.model.Game;
-import jlm.core.model.GameState;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
@@ -108,7 +107,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	}
 
 	@Override
-	public void stateChanged(GameState type) {
+	public void stateChanged(Game.GameState type) {
 		switch (type) {
 		case LOADING:
 			statusMessageLabel.setText(i18n.tr("Loading"));

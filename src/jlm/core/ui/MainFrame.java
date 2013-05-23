@@ -35,7 +35,6 @@ import jlm.core.GameStateListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
-import jlm.core.model.GameState;
 import jlm.core.model.LessonLoadingException;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
@@ -422,7 +421,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	@Override
-	public void stateChanged(GameState type) {
+	public void stateChanged(Game.GameState type) {
 		switch (type) {
 		case LOADING:
 		case SAVING:

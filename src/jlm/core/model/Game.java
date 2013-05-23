@@ -57,6 +57,17 @@ import org.xnap.commons.i18n.I18nFactory;
  *  core model which contains all known exercises.
  */
 public class Game implements IWorldView {
+	/** Current state of the engine: whether we are running the student code, a demo, saving to files, or whatever. 
+	 *  Helps deciding which interface buttons are enabled/disabled for example.
+	 */
+	public enum GameState {
+		IDLE, 
+		SAVING, SAVING_DONE,
+		LOADING, LOADING_DONE,
+		COMPILATION_STARTED, COMPILATION_ENDED, 
+		EXECUTION_STARTED, EXECUTION_ENDED,
+		DEMO_STARTED, DEMO_ENDED,
+	}
 
 	private GameState state = GameState.IDLE;
 

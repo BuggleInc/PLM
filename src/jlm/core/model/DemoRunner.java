@@ -34,7 +34,7 @@ public class DemoRunner extends Thread {
 		boolean stepModeWasActivated = this.game.stepModeEnabled();
 
 		try {
-			game.setState(GameState.DEMO_STARTED);
+			game.setState(Game.GameState.DEMO_STARTED);
 			
 			this.game.disableStepMode();
 			
@@ -56,7 +56,7 @@ public class DemoRunner extends Thread {
 			if (stepModeWasActivated) {
 				this.game.enableStepMode();
 			}
-			game.setState(GameState.DEMO_ENDED);			
+			game.setState(Game.GameState.DEMO_ENDED);			
 		}
 
 		runners.remove(this);

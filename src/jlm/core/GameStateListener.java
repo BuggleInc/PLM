@@ -1,9 +1,9 @@
 package jlm.core;
 
-import jlm.core.model.GameState;
+import jlm.core.model.Game;
 
 public interface GameStateListener {
 
-	public void stateChanged(GameState type) ;
+	public void stateChanged(Game.GameState type) ;
 	
 }
