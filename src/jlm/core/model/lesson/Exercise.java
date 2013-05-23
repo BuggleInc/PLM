@@ -280,15 +280,5 @@ public abstract class Exercise  extends Lecture {
 	protected void addProgLanguage(ProgrammingLanguage newL) {
 		progLanguages.add(newL);
 	}
-	public void addProgLanguage(ProgrammingLanguage[] newL) { 
-		for (ProgrammingLanguage l:newL)
-			addProgLanguage(l);
-	}
-	public void setProgLanguages(ProgrammingLanguage ... languages) {
-		progLanguages = new HashSet<ProgrammingLanguage>();
-		for (ProgrammingLanguage pl:languages) {
-			progLanguages.add(pl);
-		}
-	}
 }
 

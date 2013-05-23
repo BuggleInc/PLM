@@ -11,7 +11,9 @@ import jlm.universe.World;
 public class LightBotExercise extends ExerciseTemplated {
 	public LightBotExercise(Lesson lesson) {
 		super(lesson);
-		setProgLanguages(Game.LIGHTBOT);
+		addProgLanguage(Game.LIGHTBOT);
+		if (getProgLanguages().size()>1) 
+			throw new RuntimeException("More than one language defined in a LightbotExercise. Please report this bug.");
 		getSourceFilesList(Game.LIGHTBOT).add(new LightBotSourceFile("Code"));
 	}
 
