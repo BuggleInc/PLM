@@ -228,11 +228,6 @@ public abstract class Exercise  extends Lecture {
 		}
 	}
 
-	protected void mutateEntities(String newClasseName){		
-		mutateEntities(currentWorld, newClasseName);
-	}
-
-	
 	public Exercise(Lesson lesson) {
 		super(lesson);
 		sourceFiles = new HashMap<ProgrammingLanguage, List<SourceFile>>();

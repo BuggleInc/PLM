@@ -310,7 +310,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].doDelay();
 
-		mutateEntities(tabName);
+		mutateEntities(currentWorld, tabName);
 
 		for (int i=0; i<currentWorld.length; i++)
 			currentWorld[i].runEntities(runnerVect);
