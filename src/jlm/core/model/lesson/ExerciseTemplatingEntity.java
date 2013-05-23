@@ -1,7 +1,5 @@
 package jlm.core.model.lesson;
 
-import java.util.List;
-
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.World;
@@ -48,13 +46,5 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 			run(aw);
 	}
 
-	@Override
-	public void run(List<Thread> runnerVect){
-		mutateEntities(currentWorld, tabName);
-		for (int i=0; i<currentWorld.length; i++) {
-			currentWorld[i].doDelay();
-			currentWorld[i].runEntities(runnerVect);
-		}
-	}
 	public abstract void run(World w);
 }

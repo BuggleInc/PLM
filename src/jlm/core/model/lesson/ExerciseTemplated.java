@@ -307,14 +307,12 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	@Override
 	public void run(List<Thread> runnerVect){
-		for (int i=0; i<currentWorld.length; i++)
-			currentWorld[i].doDelay();
-
 		mutateEntities(currentWorld, tabName);
 
-		for (int i=0; i<currentWorld.length; i++)
+		for (int i=0; i<currentWorld.length; i++) {
+			currentWorld[i].doDelay();
 			currentWorld[i].runEntities(runnerVect);
-
+		}
 	}
 
 	@Override
