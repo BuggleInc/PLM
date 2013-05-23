@@ -11,7 +11,6 @@ import jlm.universe.World;
 public class HanoiCreateWorld extends MetaExercise {
 	public HanoiCreateWorld(Lesson lesson) {
 		super(lesson);
-		debug=true;
 		
 		HanoiMetaWorld[] w = new HanoiMetaWorld[3];
 		w[0]=new HanoiMetaWorld("HanoiWorld({8,7,6,5,4,3,2,1},{},{})",this,
@@ -30,7 +29,6 @@ public class HanoiCreateWorld extends MetaExercise {
 			System.out.println("Cannot find my files. Please go fix your pathes and such");
 			e.printStackTrace();
 		}
-		debug=true;
 
 		/* compute answer */
 		for (World it:answerWorld) 

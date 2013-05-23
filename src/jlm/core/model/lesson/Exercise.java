@@ -24,8 +24,6 @@ import jlm.universe.World;
 
 
 public abstract class Exercise  extends Lecture {
-	public boolean debug = false; /* whether to debug this particular exo FIXME: killme*/
-
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles; /** All source files */
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */

@@ -110,7 +110,7 @@ public abstract class ExerciseTemplated extends Exercise {
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					state = 2; 
-				} else if (line.contains("BEGIN HIDDEN") && !debug) {
+				} else if (line.contains("BEGIN HIDDEN")) {
 					savedState = 1;
 					state = 5; 
 				} else if (line.contains("BEGIN SKEL")) {
@@ -144,7 +144,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else if (line.contains("BEGIN SKEL")) {
 					savedState = state;
 					state = 6; 
-				} else if (line.contains("BEGIN HIDDEN") && !debug) {
+				} else if (line.contains("BEGIN HIDDEN")) {
 					savedState = 4;
 					state = 2; 
 				} else {
@@ -172,9 +172,6 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		String initialContent = templateHead.toString() + templateTail.toString();
-		String debugContent = "/* The solution is displayed because we are in debug mode */\n"+
-				templateHead.toString() +"/* The solution is displayed because we are in debug mode */\n"+solution+ 
-				templateTail.toString();
 		String skelContent;
 		String headContent;
 		if (lang == Game.PYTHON) { 
@@ -203,11 +200,10 @@ public abstract class ExerciseTemplated extends Exercise {
 					if (parts.length != 3 || !parts[0].equals("s")) 
 						throw new RuntimeException("Malformed pattern for file "+name+": '"+ pattern+"' (from '"+patterns+"')");
 
-					if (this.debug)
+					if (Game.getInstance().isDebugEnabled())
 						System.out.println("Replace all "+parts[1]+" to "+parts[2]);
 					template = template.replaceAll(parts[1], parts[2]);
 					initialContent = initialContent.replaceAll(parts[1], parts[2]);
-					debugContent = debugContent.replaceAll(parts[1], parts[2]);
 					skelContent = skelContent.replaceAll(parts[1], parts[2]);
 				}
 			}
@@ -221,8 +217,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		    System.out.println("<<<<<<<<Skel: "+skelContent);
 		}*/
 
-		newSource(lang, name, 
-				debug?debugContent:initialContent,
+		newSource(lang, name, initialContent,
 						skelContent.length()>0?skelContent:template);
 	}
 

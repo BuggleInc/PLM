@@ -518,7 +518,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	public void quit() {
 		MainFrame.getInstance().dispose();
 		Game.getInstance().quit();
-		// event.setHandled(true);
 	}
 
 	public void about() {
@@ -529,7 +528,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 						AboutJLMDialog.getInstance().setVisible(true);
 					}
 				});
-				// event.setHandled(true);
 			}
 		});
 	}
