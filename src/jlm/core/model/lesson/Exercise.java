@@ -177,8 +177,8 @@ public abstract class Exercise  extends Lecture {
 		for (World current:worlds) {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			for (Entity old : current.getEntities()) {
-				if (Game.getProgrammingLanguage().equals(Game.JAVA) || 
-						Game.getProgrammingLanguage().equals(Game.LIGHTBOT)) {
+				/* This is never called with lightbot entities, no need to deal with it here */
+				if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {

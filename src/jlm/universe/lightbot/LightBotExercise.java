@@ -72,4 +72,9 @@ public class LightBotExercise extends ExerciseTemplated {
 	public void runDemo(List<Thread> runnerVect){		
 		/* No demo for lightbot: this is a puzzle game, you have to search for the answer by yourself */
 	}
+	
+	@Override
+	final protected void mutateEntities(World[] worlds, String newClassName) {
+		throw new RuntimeException("Why are you trying to mutate Lightbot entities, you weirdo?! super.mutateEntities() is not ready for that.");
+	}
 }

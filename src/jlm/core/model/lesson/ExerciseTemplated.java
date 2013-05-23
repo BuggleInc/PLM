@@ -276,7 +276,8 @@ public abstract class ExerciseTemplated extends Exercise {
 			public void run() {
 				ProgrammingLanguage lang = Game.getProgrammingLanguage();
 
-				if (lang.equals(Game.JAVA) || lang.equals(Game.LIGHTBOT)) {
+				/* No need to deal with lightbot here: this method is redefined in LightBotExercise from scratch */
+				if (lang.equals(Game.JAVA)) {
 					mutateEntities(answerWorld,entityName);
 				} else {
 					for (World aw : answerWorld) {
@@ -293,7 +294,6 @@ public abstract class ExerciseTemplated extends Exercise {
 							ent.setScript(lang, sb.toString());
 						}
 					}
-
 				}
 
 				for (World aw : answerWorld) 
