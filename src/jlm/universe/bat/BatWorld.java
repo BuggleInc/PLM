@@ -4,13 +4,9 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 
-import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
-import jlm.universe.Entity;
 import jlm.universe.World;
 
 public class BatWorld extends World {
@@ -84,38 +80,5 @@ public class BatWorld extends World {
 			}
 		}
 		return sb.toString();
-	}
-	@Override 
-	public void runEntity(Entity ent) {
-		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (pl.equals(Game.JAVA)) {
-			super.runEntity(ent);
-		} else if (pl.equals(Game.PYTHON)) {
-			ScriptEngine engine ;
-
-			ScriptEngineManager manager = new ScriptEngineManager();       
-			engine = manager.getEngineByName("python");
-			if (engine==null) 
-				throw new RuntimeException("Failed to start an interpreter for python");
-			
-			try {
-				engine.eval(
-						"import java.lang.System.err\n"+
-						"def log(a):\n"+
-						"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))\n");
-				engine.eval(ent.getScript(Game.PYTHON));
-			} catch (ScriptException e1) {
-				e1.printStackTrace();
-			}									
-
-			for (BatTest t:((BatWorld) ent.getWorld()).getTests())
-				try {
-					engine.put("thetest",t);
-					engine.eval("thetest.setResult("+t.getName()+")");
-				} catch (Exception e) {
-					t.setResult("this test raised an exception: "+e.getMessage());
-				}
-
-		}
 	}
 }

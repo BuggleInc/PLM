@@ -8,11 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
@@ -125,59 +122,6 @@ public abstract class World {
 		return entities;
 	}
 	
-	public void runEntity(Entity ent) {
-		ProgrammingLanguage progLang = Game.getProgrammingLanguage();
-		ScriptEngine engine ;
-		try {
-			if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
-				ent.run();
-			} else {
-				/* Fixme: use one engine for everything and use contexts in there */
-				ScriptEngineManager manager = new ScriptEngineManager();       
-				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
-				if (engine==null) 
-					throw new RuntimeException("Failed to start an interpreter for "+progLang.getLang().toLowerCase());
-
-				/* Ugly hack, but print is currently not working! Ugh, taste my axe, bastard! */
-				if (progLang.equals(Game.PYTHON)) 
-					engine.eval(
-							"def getParam(i):\n"+
-							"  return entity.getParam(i)\n"+
-									
-							"import java.lang.System.err\n"+
-							"def log(a):\n"+
-							"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))");									
-					
-				
-				engine.put("entity", ent);
-				ent.getWorld().setupBindings(progLang,engine);
-				
-				String script = ent.getScript(progLang);
-				if (script == null) {
-					System.out.println("No script source for entity "+ent);
-				}
-				engine.eval(script);
-			}
-		} catch (ScriptException e) {
-			String msg = e.getCause().toString();
-			
-			if (Game.getInstance().isDebugEnabled())
-				System.err.println(">>> Original error message\n"+msg+"<<<\n");
-			Pattern location = Pattern.compile("File .<script>., line (\\d*), (.*)", Pattern.DOTALL);  
-			Matcher locationMatcher = location.matcher(msg);
-			
-			if (locationMatcher.find()) {
-				System.err.println("Error in entity "+ent.getName()+" at line "+
-						(Integer.parseInt(locationMatcher.group(1)) - ent.getScriptOffset(progLang)+1)+
-						", "+locationMatcher.group(2));
-			} else {
-				System.err.println(e.getCause());
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 	public void runEntities(List<Thread> runnerVect) {
 		if (Game.getInstance().isDebugEnabled())
 			Logger.log("World:runEntities","Programming language: "+Game.getProgrammingLanguage());
@@ -186,7 +130,7 @@ public abstract class World {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
-					runEntity(b);
+					b.runIt();
 					Game.getInstance().statusArgRemove(getName());
 				}
 			});

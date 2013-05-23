@@ -4,9 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.universe.lightbot.LightBotEntity;
 
 public abstract class Entity {
 	protected String name;
@@ -15,8 +22,8 @@ public abstract class Entity {
 	private Semaphore oneStepSemaphore = new Semaphore(0);
 	
 	
-	public Entity() {
-	}
+	public Entity() {}
+	
 	public Entity(String name) {
 		this.name=name;
 	}
@@ -58,9 +65,12 @@ public abstract class Entity {
 	public void allowOneStep() {
 		this.oneStepSemaphore.release();
 	}
-	
+
+	/** Delays the entity to let the user understand what's going on.
+	 *  
+	 * Calls to this function should be placed in important operation of the entity. There e.g. one such call in BuggleEntity.forward().  
+	 */
 	protected void stepUI() {		
-		// only a trial to see moving steps
 		fireStackListener();
 		world.notifyWorldUpdatesListeners();
 		if (world.isDelayed()) {
@@ -84,10 +94,14 @@ public abstract class Entity {
 	}
 	/** Copy constructor */
 	public abstract Entity copy();
-	public abstract void run() throws Exception;
 
 	
-	/* stuff related to tracing mechanism */
+	/* Stuff related to tracing mechanism.
+	 * 
+	 * This is the ability to highlight the current instruction in step-by-step execution. 
+	 * 
+	 * Right now, this is only used for LightBot because I'm not sure of how to retrieve the current point of execution in java or scripting
+	 */
 	ArrayList<IEntityStackListener> stackListeners = new ArrayList<IEntityStackListener>();
 	public void addStackListener(IEntityStackListener l) {
 		stackListeners.add(l);
@@ -111,6 +125,92 @@ public abstract class Entity {
 	protected int getParamsAmount() {
 		return world.parameters.length;
 	}
+
+	/** Run this specific entity, encoding the student logic to solve a given exercise. 
+	 * 
+	 *  This method is redefined by the leafs of the inheritance tree (the entities involved in exercises)   
+	 *   
+	 *  @see #runIt() that execute an entity depending on the universe and programming language
+	 *    
+	 */
+	protected abstract void run() throws Exception;
+	
+	/** Make the entity run, according to the used universe and programming language.
+	 * 
+	 * This task is not trivial given that it depends on the universe and the programming language:
+	 *  * In most universes, the active part is the entity itself. But in the Bat universe, the 
+	 *    student-provided method (that is not a real entity but part of the world directly) 
+	 *    is run against all testcase, that are not real worlds either.
+	 *    
+	 *  * Java entities are launched by just executing their {@link #run()} method that 
+	 *    was redefined by the student (possibly with some templating)
+	 *  * LightBot entities are launched by executing the {@link LightBotEntity#run()} method, 
+	 *    that is NOT defined by the student, but interprets the code of the students.
+	 *  * Python (and other scripting language) entities are launched by injecting the 
+	 *    student-provided code within a {@link ScriptEngine}. 
+	 *    In this later case, the java entity is injected within the scripting world so that it 
+	 *    can forward the student commands to the world. 
+	 * 
+	 *  @see #run() that encodes the student logic in Java
+	 */
+	public void runIt() {
+		ProgrammingLanguage progLang = Game.getProgrammingLanguage();
+		ScriptEngine engine ;
+		try {
+			if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
+				run();
+			} else {
+				/* We could try to optimize here by not starting one engine for each entity but only one per language, in which the entities would be in separate contexts. 
+				 * On the other hand, the garbage collection would be harder this way and it works as is... */
+				ScriptEngineManager manager = new ScriptEngineManager();       
+				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
+				if (engine==null) 
+					throw new RuntimeException("Failed to start an interpreter for "+progLang.getLang().toLowerCase());
+
+				/* Inject the entity into the scripting world so that it can forward script commands to the world */
+				engine.put("entity", this);
+				/* Inject commands' wrappers that forward the calls to the entity */
+				this.getWorld().setupBindings(progLang,engine);
+				
+				if (progLang.equals(Game.PYTHON)) 
+					engine.eval(
+							/* getParam is in every Entity, so put it here to not request the universe to call super.setupBinding() */
+							"def getParam(i):\n"+
+							"  return entity.getParam(i)\n"+
+									
+							/* Ugly hack, but print is currently not working! Ugh, taste my axe, bastard! */
+							"import java.lang.System.err\n"+
+							"def log(a):\n"+
+							"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))");									
+					
+				
+				String script = getScript(progLang);
+				if (script == null) 
+					System.out.println("No script source for entity "+this);
+				else 
+					engine.eval(script);
+			}
+		} catch (ScriptException e) {
+			String msg = e.getCause().toString();
+			
+			if (Game.getInstance().isDebugEnabled())
+				System.err.println(">>> Original error message\n"+msg+"<<<\n");
+			Pattern location = Pattern.compile("File .<script>., line (\\d*), (.*)", Pattern.DOTALL);  
+			Matcher locationMatcher = location.matcher(msg);
+			
+			if (locationMatcher.find()) {
+				System.err.println("Error in entity "+getName()+" at line "+
+						(Integer.parseInt(locationMatcher.group(1)) - getScriptOffset(progLang)+1)+
+						", "+locationMatcher.group(2));
+			} else {
+				System.err.println(e.getCause());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 	private Map<ProgrammingLanguage,String> script = new HashMap<ProgrammingLanguage, String>(); /* What to execute when running a scripting language */
 	public void setScript(ProgrammingLanguage lang, String s) {
 		script.put(lang,  s);

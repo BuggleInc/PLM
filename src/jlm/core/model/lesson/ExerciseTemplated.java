@@ -298,7 +298,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 				for (World aw : answerWorld) 
 					for (Entity ent: aw.getEntities()) 
-						aw.runEntity(ent);
+						ent.runIt();
 			}
 		};
 		t.start();

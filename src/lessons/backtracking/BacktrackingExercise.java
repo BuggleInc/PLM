@@ -33,7 +33,7 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 		for (World aw : answerWorld) {
 			System.out.println("Compute answer for world "+aw.getName());
 			try {
-				aw.getEntity(0).run();
+				aw.getEntity(0).runIt();
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
