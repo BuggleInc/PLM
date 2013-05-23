@@ -64,7 +64,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 		/* Remove line comments since at some point, we put everything on one line only, 
 		 * so this would comment the end of the template and break everything */
-		Pattern lineCommentPattern = Pattern.compile("//.*$");
+		Pattern lineCommentPattern = Pattern.compile("//.*$", Pattern.MULTILINE);
 		Matcher lineCommentMatcher = lineCommentPattern.matcher(sb.toString());
 		String content = lineCommentMatcher.replaceAll("");
 
@@ -145,8 +145,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					savedState = state;
 					state = 6; 
 				} else if (line.contains("BEGIN HIDDEN")) {
-					savedState = 4;
-					state = 2; 
+					savedState = 3;
+					state = 5; 
 				} else {
 					templateTail.append(line+"\n");	
 				}
