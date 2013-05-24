@@ -186,7 +186,7 @@ public abstract class Entity {
 				
 				String script = getScript(progLang);
 				if (script == null) 
-					System.out.println("No script source for entity "+this);
+					System.err.println("No "+progLang+" script source for entity "+this);
 				else 
 					engine.eval(script);
 			}
