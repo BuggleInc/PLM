@@ -7,7 +7,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.util.List;
 import java.util.Locale;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -74,6 +76,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JToggleButton helpMeButton;
     
     private JButton exoChangeButton;
+    
+	List<MenuContainer> menuContainers = new Vector<MenuContainer>();
+
     
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
@@ -153,11 +158,18 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		JMenu menu;
 		JMenuItem menuItem;
+		
+		MenuContainer menuContainer;
+		MenuItemContainer menuItemContainer;
 
 		/* === FILE menu === */
+		// for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 		menu = new JMenu(i18n.tr("File"));
 		menu.setMnemonic(KeyEvent.VK_F);
 		menu.getAccessibleContext().setAccessibleDescription(i18n.tr("File related functions"));
+
+		menuContainer = new MenuContainer(menu, "File", "File related functions");
+
 		
 		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
@@ -179,6 +191,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		});
 		menu.add(menuItem);
+		menuItemContainer = new MenuItemContainer(menuItem, "Load lesson");
+		menuContainer.add(menuItemContainer);
+		
 		
 		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
@@ -190,10 +205,12 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
+		menuItemContainer = new MenuItemContainer(menuItem, "Switch lesson");
+		menuContainer.add(menuItemContainer);
 		
 		// Teacher console menu item (shown only if defined in the JLM properties)
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
-            menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("Teacher Console")) {
+            menuItem = new JMenuItem(new AbstractGameAction(g,i18n.tr("Teacher Console")) {
 
 				private static final long serialVersionUID = 1L;
 				private TeacherConsoleDialog dialog = null;
@@ -209,6 +226,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
             });
             menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));
             menu.add(menuItem);
+            menuItemContainer = new MenuItemContainer(menuItem, "Teacher Console");
+            menuContainer.add(menuItemContainer);
         }
         
         // Menu item to change the current Course
@@ -229,14 +248,19 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, ActionEvent.CTRL_MASK));
         menu.add(menuItem);
-        
+        menuItemContainer = new MenuItemContainer(menuItem, "Choose your course");
+        menuContainer.add(menuItemContainer);
+       
         
 		menuItem = new JMenuItem(new QuitGame(g, i18n.tr("Quit"), null,  KeyEvent.VK_Q));
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
 
 		menu.add(menuItem);
+        menuItemContainer = new MenuItemContainer(menuItem, "Quit");
+        menuContainer.add(menuItemContainer);
 
 		menuBar.add(menu);
+		menuContainers.add(menuContainer);
 
 		/* === Edit menu === */
 		menu = new JMenu(i18n.tr("Session"));
@@ -244,18 +268,26 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menu.getAccessibleContext().setAccessibleDescription(i18n.tr("Lesson related functions"));
 		menuBar.add(menu);
 		menu.setEnabled(true);
+		
+		menuContainer = new MenuContainer(menu, "Session", "Lesson related functions");
 
 		JMenuItem revertExerciseCodeSource = new JMenuItem(new RevertExercise(g, i18n.tr("Revert Exercise"),
 				null));
 		menu.add(revertExerciseCodeSource);
+        menuItemContainer = new MenuItemContainer(revertExerciseCodeSource, "Revert Exercise");
+        menuContainer.add(menuItemContainer);
 
 		JMenuItem exportSessionMenuItem = new JMenuItem(new ExportSession(g, i18n.tr("Export Session Cache"),
 				null, this));
 		menu.add(exportSessionMenuItem);
+        menuItemContainer = new MenuItemContainer(exportSessionMenuItem, "Export Session Cache");
+        menuContainer.add(menuItemContainer);
 
 		JMenuItem importSessionMenuItem = new JMenuItem(new ImportSession(g, i18n.tr("Import Session Cache"),
 				null, this));
 		menu.add(importSessionMenuItem);
+        menuItemContainer = new MenuItemContainer(importSessionMenuItem, "Import Session Cache");
+        menuContainer.add(menuItemContainer);
 
 		JMenuItem switchDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
 			private static final long serialVersionUID = 1L;
@@ -267,16 +299,24 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		});
 		menu.add(switchDebug);
+	    menuItemContainer = new MenuItemContainer(switchDebug, "Debug mode");
+	    menuContainer.add(menuItemContainer);
+		menuContainers.add(menuContainer);
 
 
 		/* === Language menu === */
 		menu = new JMenu(i18n.tr("Language"));
 		menu.setMnemonic(KeyEvent.VK_L);
 		menuBar.add(menu);
+		menuContainer = new MenuContainer(menu, "Language");
+		menuContainers.add(menuContainer);
 
 		/* === Programming language changing === */
 		JMenu textLangSubMenu = new JMenu(i18n.tr("Human"));
 		menu.add(textLangSubMenu);
+	    menuItemContainer = new MenuItemContainer(textLangSubMenu, "Human");
+	    menuContainer.add(menuItemContainer);
+
 		ButtonGroup group = new ButtonGroup();
 
 		for (String[] lang : new String[][] { {"Francais","fr"}, {"English","en"}}) {
@@ -287,12 +327,19 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			textLangSubMenu.add(item);		
 		}
 
-		menu.add(new ProgLangSubMenu(i18n.tr("Computer")));
+		
+		JMenu progLangSubMenu = new ProgLangSubMenu(i18n.tr("Computer"));
+		
+		menu.add(progLangSubMenu);
+	    menuItemContainer = new MenuItemContainer(progLangSubMenu, "Computer");
+	    menuContainer.add(menuItemContainer);
 
 		/* === Help menu === */
 		menu = new JMenu(i18n.tr("Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menu);
+		menuContainer = new MenuContainer(menu, "Help");
+		menuContainers.add(menuContainer);
 
 /*	
  TODO: forum to be fixed	
@@ -322,6 +369,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}			
 		});
 		menu.add(menuItem);
+	    menuItemContainer = new MenuItemContainer(menuItem, "About this lesson");
+	    menuContainer.add(menuItemContainer);
 
 		menuItem = new JMenuItem(new AbstractGameAction(g, i18n.tr("About this world"), null) {
 			private static final long serialVersionUID = 1L;
@@ -337,6 +386,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
 		menu.add(menuItem);
+	    menuItemContainer = new MenuItemContainer(menuItem, "About this world");
+	    menuContainer.add(menuItemContainer);
 
 		if (!System.getProperty("os.name").startsWith("Mac")) {
 			menu.add(new JMenuItem(new AbstractGameAction(g, i18n.tr("About JLM"), null) {
@@ -629,8 +680,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	@Override
 	public void currentHumanLanguageHasChanged(Locale newLang) {
-		// TODO Auto-generated method stub
-		System.out.println("MainFrame : human languange changed to: "+newLang);
+		// TODO Look at creating a sries of helper classes modelled on MenuContainer et al.
+		
+		//System.out.println("MainFrame : human languange changed to: "+newLang);
 
 		i18n.setLocale(newLang);
 		//Buttons
@@ -643,10 +695,23 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         exoChangeButton.setText(i18n.tr("Switch exercise"));
 
         //Menus
+        JMenu menu;
+        JMenuItem menuItem;
+        for (MenuContainer mC : menuContainers){
+        	menu = mC.menu;
+        	menu.setText(i18n.tr(mC.descriptor));
+         	if (mC.toolDescriptor!="") {
+        		menu.getAccessibleContext().setAccessibleDescription(i18n.tr(mC.toolDescriptor));
+        	}
+        	for (MenuItemContainer mI : mC.menuItemContainers) {
+        		menuItem = mI.menuItem;
+         		menuItem.setText(i18n.tr(mI.descriptor));
+        	}
+        }
 	}
 }
 
-class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameListener, HumanLangChangesListener {
+class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameListener {
 	private static final long serialVersionUID = 1L;
 
 	public ProgLangSubMenu(String name) {
@@ -689,9 +754,43 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 	@Override
 	public void selectedWorldWasUpdated() {   /* don't care */ }
 
-	@Override
-	public void currentHumanLanguageHasChanged(Locale newLang) {
-		// TODO Auto-generated method stub
-		System.out.println("ProgLangSubMenu : human languange changed to"+newLang);
+}
+
+// Helper classes for language switching inside menus
+// Might be folded into one with subclasses to handle every visible item...
+// TODO Look at that refactoring.
+// TODO work on a better encapsulation.
+class MenuContainer {
+	JMenu menu;
+	String descriptor;
+	String toolDescriptor;
+	List<MenuItemContainer> menuItemContainers;
+	
+	public MenuContainer(JMenu m, String d) {
+		this(m, d, "");
+	}
+
+	public MenuContainer(JMenu m, String d, String tD) {
+		this.menu = m;
+		this.descriptor = d;
+		this.toolDescriptor = tD;
+		this.menuItemContainers =  new Vector<MenuItemContainer>();
+		this.menuItemContainers.clear();
+		//System.out.println("Menu "+d+" ("+tD+")");
+	}
+
+	public void add(MenuItemContainer mc) {
+		menuItemContainers.add(mc);
+	}
+}
+
+class MenuItemContainer {
+	JMenuItem menuItem;
+	String descriptor;
+	
+	public MenuItemContainer(JMenuItem mi, String d) {
+		this.menuItem = mi;
+		this.descriptor = d;
+		//System.out.println(mi.getText()+" : "+d);
 	}
 }
