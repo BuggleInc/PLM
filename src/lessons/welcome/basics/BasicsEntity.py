@@ -1,19 +1,16 @@
 # BEGIN SOLUTION
-def side():
-    forward()
-    forward()
-    turnRight()
 
 brushDown()
 
-for i in range(3):
-    side()
+for i in range(4):
+    forward()
+    forward()
+    turnRight()
                 
-forward()
-turnRight()
-
 brushUp()
 forward()
+turnRight()
 forward()
+turnLeft()
 # END SOLUTION
 
