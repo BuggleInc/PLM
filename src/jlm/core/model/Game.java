@@ -275,34 +275,48 @@ public class Game implements IWorldView {
 	}
 
 	public void setCurrentLesson(Lesson lesson) {
-		this.currentLesson = lesson;
-		fireCurrentLessonChanged();
-		setCurrentExercise(this.currentLesson.getCurrentExercise());
+		try {
+			saveSession(); // don't loose user changes 
+			
+			this.currentLesson = lesson;
+			fireCurrentLessonChanged();
+			setCurrentExercise(this.currentLesson.getCurrentExercise());
+			
+		} catch (UserAbortException e) { 
+			System.out.println(i18n.tr("Operation cancelled by the user"));
+		}
 	}
 
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
-		this.currentLesson.setCurrentExercise(lect);
-		fireCurrentExerciseChanged(lect);
-		if (lect instanceof Exercise) {
-			Exercise exo = (Exercise) lect;
-			exo.reset();
-			setSelectedWorld(exo.getWorld(0));
+		try {
+			saveSession(); // don't loose user changes 
 
-			boolean seenJava=false;
-			for (ProgrammingLanguage l:exo.getProgLanguages()) {
-				if (l.equals(programmingLanguage))
-					return; /* The exo accepts the language we currently have */
-				if (l.equals(Game.JAVA))
-					seenJava = true;
+			this.currentLesson.setCurrentExercise(lect);
+			fireCurrentExerciseChanged(lect);
+			if (lect instanceof Exercise) {
+				Exercise exo = (Exercise) lect;
+				exo.reset();
+				setSelectedWorld(exo.getWorld(0));
+
+				boolean seenJava=false;
+				for (ProgrammingLanguage l:exo.getProgLanguages()) {
+					if (l.equals(programmingLanguage))
+						return; /* The exo accepts the language we currently have */
+					if (l.equals(Game.JAVA))
+						seenJava = true;
+				}
+				/* Use java as a fallback programming language (if the exo accepts it)  */
+				if (seenJava)
+					setProgramingLanguage(Game.JAVA);
+				/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
+				setProgramingLanguage( exo.getProgLanguages().iterator().next() );
 			}
-			/* Use java as a fallback programming language (if the exo accepts it)  */
-			if (seenJava)
-				setProgramingLanguage(Game.JAVA);
-			/* The exo don't like our currently set language, nor Java. Let's pick its first selected language */
-			setProgramingLanguage( exo.getProgLanguages().iterator().next() );
+			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
+
+		} catch (UserAbortException e) { 
+			System.out.println(i18n.tr("Operation cancelled by the user"));
 		}
-		MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
 	}
 
 	public World getSelectedWorld() {
