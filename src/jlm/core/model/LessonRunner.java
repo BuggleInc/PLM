@@ -1,6 +1,5 @@
 package jlm.core.model;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 
@@ -55,12 +54,10 @@ public class LessonRunner extends Thread {
 			exo.reset();
 			exo.run(runners);
 
-			Iterator<Thread> it = runners.iterator();
-			while (it.hasNext()) {
-				Thread t = it.next();
+			for (Thread t: runners) {
 				if (!t.equals(this)) { /* do not wait for myself */
 					t.join();
-					it.remove();
+					runners.remove(t);
 				}
 			}
 			game.setState(Game.GameState.EXECUTION_ENDED);
