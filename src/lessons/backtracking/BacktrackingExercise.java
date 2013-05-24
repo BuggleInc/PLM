@@ -9,7 +9,7 @@ import jlm.universe.World;
 public abstract class BacktrackingExercise extends ExerciseTemplated {
 	public BacktrackingExercise(Lesson lesson) {
 		super(lesson);
-		nameOfCorrectionentity = getClass().getCanonicalName()+".java";
+		nameOfCorrectionEntity = getClass().getCanonicalName()+".java";
 	}
 	protected void setup(World[] ws,BacktrackingEntity solver) {
 		for (World w:ws) {
