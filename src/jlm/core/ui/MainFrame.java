@@ -32,6 +32,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
+import jlm.core.HumanLangChangesListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
@@ -58,7 +59,7 @@ import jlm.universe.World;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
-public class MainFrame extends JFrame implements GameStateListener, GameListener {
+public class MainFrame extends JFrame implements GameStateListener, GameListener, HumanLangChangesListener {
 
 	private static final long serialVersionUID = -5022279647890315264L;
 
@@ -87,6 +88,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		FileUtils.setLocale(this.getLocale());
 		initComponents(Game.getInstance());
 		this.keyListeners(exerciseView);
+		Game.getInstance().addHumanLangListener(this);
 	}
 
 	public static MainFrame getInstance() {
@@ -279,7 +281,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		for (String[] lang : new String[][] { {"Francais","fr"}, {"English","en"}}) {
 			JMenuItem item = new JRadioButtonMenuItem(new SetLanguage(g, lang[0], new Locale(lang[1])));
-			if (lang[1].equals(FileUtils.getLocale())) 
+			if (lang[1].equals(FileUtils.getLocale().getLanguage())) 
 				item.setSelected(true);
 			group.add(item);
 			textLangSubMenu.add(item);		
@@ -370,34 +372,34 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
 		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
-		startButton = new PropagatingButton(new StartExecution(g, i18n.tr("Run"), ii));
+		startButton = new PropagatingButton(new StartExecution(g, "RunButton", ii));
 		//shortcut ctrl-r
 		startButton.setMnemonic(KeyEvent.VK_R);
 
-		debugButton = new PropagatingButton(new StepExecution(g, i18n.tr("Step"), 
+		debugButton = new PropagatingButton(new StepExecution(g, "StepButton", 
 				ResourcesCache.getIcon("resources/debug.png")));
 		//shortcut ctrl-b
 		debugButton.setMnemonic(KeyEvent.VK_B);
 
-		stopButton = new PropagatingButton(new StopExecution(g, i18n.tr("Stop"), 
+		stopButton = new PropagatingButton(new StopExecution(g, "StopButton", 
 				ResourcesCache.getIcon("resources/stop.png")));
 		//shortcut ctrl-s
 		stopButton.setMnemonic(KeyEvent.VK_S);
 		stopButton.setEnabled(false);
 
-		resetButton = new PropagatingButton(new Reset(g, i18n.tr("Reset"), 
+		resetButton = new PropagatingButton(new Reset(g, "ResetButton", 
 				ResourcesCache.getIcon("resources/reset.png")));
 		//shortcut ctrl-z
 		resetButton.setMnemonic(KeyEvent.VK_Z);
 		resetButton.setEnabled(true);
 
-		demoButton = new PropagatingButton(new PlayDemo(g, i18n.tr("Demo"), 
+		demoButton = new PropagatingButton(new PlayDemo(g, "DemoButton", 
 				ResourcesCache.getIcon("resources/btn-demo.png")));
 		//shortcut ctrl-d
 		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
-        helpMeButton = new PropagatingToggleButton(new HelpMe(g, i18n.tr("Call for Help"),
+        helpMeButton = new PropagatingToggleButton(new HelpMe(g, "HelpButton",
                 ResourcesCache.getIcon("resources/btn-alert-off.png")));
 
 		toolBar.add(startButton);
@@ -409,7 +411,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         toolBar.addSeparator();
         
-        exoChangeButton = new PropagatingButton(new SwitchExo(g, i18n.tr("Switch exercise"), ResourcesCache.getIcon("resources/btn-switch-exo.png")));
+        exoChangeButton = new PropagatingButton(new SwitchExo(g, "ExerciseButton", ResourcesCache.getIcon("resources/btn-switch-exo.png")));
         toolBar.add(exoChangeButton);
         
 		getContentPane().add(toolBar, BorderLayout.NORTH);
@@ -619,14 +621,32 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("touche F1 pressée" );
+				System.out.println("touche F1 press��e" );
 			}
 		}
 				);
 	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		// TODO Auto-generated method stub
+		System.out.println("MainFrame : human languange changed to: "+newLang);
+
+		i18n.setLocale(newLang);
+		//Buttons
+		startButton.setText(i18n.tr("Run"));
+		debugButton.setText(i18n.tr("Step"));
+		stopButton.setText(i18n.tr("Stop"));
+		resetButton.setText(i18n.tr("Reset"));
+		demoButton.setText(i18n.tr("Demo"));
+        helpMeButton.setText(i18n.tr("Call for Help"));
+        exoChangeButton.setText(i18n.tr("Switch exercise"));
+
+        //Menus
+	}
 }
 
-class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameListener {
+class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameListener, HumanLangChangesListener {
 	private static final long serialVersionUID = 1L;
 
 	public ProgLangSubMenu(String name) {
@@ -668,4 +688,10 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 	public void selectedEntityHasChanged() {  /* don't care */ }
 	@Override
 	public void selectedWorldWasUpdated() {   /* don't care */ }
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		// TODO Auto-generated method stub
+		System.out.println("ProgLangSubMenu : human languange changed to"+newLang);
+	}
 }
