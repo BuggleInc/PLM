@@ -96,21 +96,6 @@ public class LessonRunner extends Thread {
 						nextExercises.toArray(), nextExercises.get(0));
 				if (selectedValue != null) 
 					Game.getInstance().setCurrentExercise(selectedValue);
-				/*
-				if ( selectedValue != null )
-				{
-					boolean found = false;
-					for ( int i = 0 ; i < nextExercises.length && !found; i++ )
-					{
-						if ( nextExercisesName[i].equals(selectedValue) )
-						{
-							Game.getInstance().setCurrentExercise((Lecture) nextExercises[i]);
-							Game.getInstance().reset();	// In order to refresh the mission
-							found = true;
-						}
-					}
-				}
-				*/
 			}
 		} else {
 			 SwingUtilities.invokeLater(new Runnable() {
