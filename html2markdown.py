@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+## Initial source code from https://github.com/denmark/html2markdown/
 
 from HTMLParser import HTMLParser
 
