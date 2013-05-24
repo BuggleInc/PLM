@@ -5,6 +5,9 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 
@@ -12,11 +15,14 @@ import jlm.core.model.LogWriter;
 public class LoggerPanel extends JTextArea implements LogWriter {
 
 	private static final long serialVersionUID = 468774822833769775L;
+	
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+
 
 	public LoggerPanel(Game game) {
 		super();
 		setEditable(false);
-		setToolTipText("Where error and other messages get written");
+		setToolTipText(i18n.tr("Where error and other messages get written"));
 		game.setOutputWriter(this);
 	}
 	
