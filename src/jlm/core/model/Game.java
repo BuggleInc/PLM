@@ -196,6 +196,12 @@ public class Game implements IWorldView {
 		// Prevent an error message telling us that the JLM couldn't load our code for the chooser -- kinda obvious
 		if ( !lessonName.equals(lessonChooser))
 			sessionKit.loadLesson(null, lesson);
+		try {
+			waitInitThreads();
+		} catch (InterruptedException e) {
+			System.err.println("Interrupted while loading the lesson "+lesson.getName());
+			e.printStackTrace();
+		}
 		setCurrentLesson(lesson);
 		statusArgRemove("Load lesson "+lessonName);
 		return lesson;
@@ -261,6 +267,10 @@ public class Game implements IWorldView {
 
 	public static void addInitThread(Thread t) {
 		initRunners.add(t);
+	}
+	public static void waitInitThreads() throws InterruptedException {
+		for (Thread t:initRunners) 
+			t.join();
 	}
 
 	public Collection<Lesson> getLessons() {
