@@ -28,6 +28,7 @@ import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
+import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.mapeditor.Editor;
 import jlm.universe.bugglequest.mapeditor.MapEditorPanel;
 import net.miginfocom.swing.MigLayout;
@@ -210,13 +211,15 @@ public class ExerciseView extends JPanel implements GameListener {
 			}
 		}
 		else{
-			for (WorldView wv: worldView) {
-				String map_path = "src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+".map";
-				
-				Editor edit= new Editor();
-				edit.loadMap(new File(map_path));
-				tabPane.addTab("World"+wv.getTabName(), null, new MapEditorPanel(edit), 
-						"Current world"+wv.getTip());
+			if(Game.getInstance().getSelectedWorld() instanceof BuggleWorld){
+				for (WorldView wv: worldView) {
+					String map_path = "src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+".map";
+
+					Editor edit= new Editor();
+					edit.loadMap(new File(map_path));
+					tabPane.addTab("World"+wv.getTabName(), null, new MapEditorPanel(edit), 
+							"Current world"+wv.getTip());
+				}
 			}
 		}
 
