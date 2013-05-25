@@ -24,6 +24,8 @@ import jlm.universe.World;
 
 
 public abstract class Exercise extends Lecture {
+	public static enum WorldKind {INITIAL,CURRENT, ANSWER}
+
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
@@ -76,6 +78,7 @@ public abstract class Exercise extends Lecture {
 			}
 		}
 	}
+	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {
 		for (int i=0; i<initialWorld.length; i++) 
 			currentWorld[i].reset(initialWorld[i]);

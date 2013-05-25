@@ -274,27 +274,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		Thread t = new Thread() {
 			@Override
 			public void run() {
-				ProgrammingLanguage lang = Game.getProgrammingLanguage();
-
-				/* No need to deal with lightbot here: this method is redefined in LightBotExercise from scratch */
-				if (lang.equals(Game.JAVA)) {
-					mutateEntities(answerWorld,nameOfCorrectionEntity);
-				} else {
-					for (World aw : answerWorld) {
-						aw.setDelay(0);
-						for (Entity ent: aw.getEntities()) {
-							StringBuffer sb = null;
-							try {
-								sb = FileUtils.readContentAsText(nameOfCorrectionEntity, lang.getExt(), false);
-							} catch (IOException ex) {
-								throw new RuntimeException("Cannot compute the answer from file "+nameOfCorrectionEntity+"."+lang.getExt()+" since it does not exist.");			
-							}
-
-
-							ent.setScript(lang, sb.toString());
-						}
-					}
-				}
+				mutateCorrection(WorldKind.ANSWER);
 
 				for (World aw : answerWorld) 
 					for (Entity ent: aw.getEntities()) 
@@ -324,7 +304,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		final ProgrammingLanguage current = Game.getProgrammingLanguage();
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
 
-		mutateEntities(answerWorld, nameOfCorrectionEntity);
+		mutateCorrection(WorldKind.ANSWER);
 
 		for (World aw:getAnswerWorldList())
 			aw.runEntities(runnerVect);
@@ -351,8 +331,34 @@ public abstract class ExerciseTemplated extends Exercise {
 				});
 	}
 	
-	public String getNameOfCorrectionEntity() {
-		return nameOfCorrectionEntity;
-	}
+	public void mutateCorrection(WorldKind kind) {
+		ProgrammingLanguage lang = Game.getProgrammingLanguage();
+		World[] worlds;
+		switch (kind) {
+		case INITIAL: worlds = initialWorld; break;
+		case CURRENT: worlds = currentWorld; break;
+		case ANSWER:  worlds = answerWorld;  break;
+		default: throw new RuntimeException("kind is invalid: "+kind);
+		}
 
+		/* No need to deal with lightbot here: this method is redefined in LightBotExercise from scratch */
+		if (lang.equals(Game.JAVA)) {
+			mutateEntities(worlds,nameOfCorrectionEntity);
+		} else {
+			for (World aw : worlds) {
+				aw.setDelay(0);
+				for (Entity ent: aw.getEntities()) {
+					StringBuffer sb = null;
+					try {
+						sb = FileUtils.readContentAsText(nameOfCorrectionEntity, lang.getExt(), false);
+					} catch (IOException ex) {
+						throw new RuntimeException("Cannot compute the answer from file "+nameOfCorrectionEntity+"."+lang.getExt()+" since it does not exist.");			
+					}
+
+
+					ent.setScript(lang, sb.toString());
+				}
+			}
+		}		
+	}
 }

@@ -26,5 +26,6 @@
 	<classpathentry kind="lib" path="lib/jruby-1.5.6-5.jar"/>
 	<classpathentry kind="lib" path="lib/gettext-commons-0.9.6.jar"/>
 	<classpathentry kind="lib" path="lib/jlm-messages.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

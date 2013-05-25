@@ -430,6 +430,7 @@ public class Game implements IWorldView {
 					e.allowOneStep();
 	}
 
+	/**  Reset the current exercise (see {@link Exercise.reset()} */
 	public void reset() {
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise) {
