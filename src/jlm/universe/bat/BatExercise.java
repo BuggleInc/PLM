@@ -65,4 +65,8 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 			run(currTest);
 	}
 	public abstract void run(BatTest t);
+	@Override 
+	public void mutateCorrection(WorldKind kind) {
+		/* nah, we don't mutate the entities in BatExercises */
+	}
 }

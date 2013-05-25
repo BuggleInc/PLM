@@ -68,8 +68,7 @@ public class ExoTest {
 		Game.getInstance().setCurrentExercise(exo);
 		
 		exo.reset();
-		if (!(exo instanceof BatExercise))
-			exo.mutateCorrection(WorldKind.CURRENT);
+		exo.mutateCorrection(WorldKind.CURRENT);
 		for (World w : exo.getCurrentWorldList()) 
 			for (Entity ent: w.getEntities()) 
 				ent.runIt();
