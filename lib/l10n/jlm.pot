@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-20 08:37-0800\n"
+"POT-Creation-Date: 2013-05-25 09:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -261,7 +261,9 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:13
-msgid "Returns true if the content of cell i is smaller than the one of cell j"
+msgid ""
+"Returns true if the content of cell i is strictly smaller than the one of "
+"cell j"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -276,7 +278,9 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:14
-msgid "Returns true if the content of cell i is smaller than value val"
+msgid ""
+"Returns true if the content of cell i is strictly smaller than value "
+"<code>val</code>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
