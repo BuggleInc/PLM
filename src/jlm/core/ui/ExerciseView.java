@@ -2,7 +2,13 @@ package jlm.core.ui;
 
 import java.awt.AWTKeyStroke;
 import java.awt.KeyboardFocusManager;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,6 +24,7 @@ import javax.swing.KeyStroke;
 import jlm.core.GameListener;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
@@ -204,8 +211,10 @@ public class ExerciseView extends JPanel implements GameListener {
 		}
 		else{
 			for (WorldView wv: worldView) {
+				String map_path = "src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+".map";
+				
 				Editor edit= new Editor();
-				edit.loadMap(new File("src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+".map"));
+				edit.loadMap(new File(map_path));
 				tabPane.addTab("World"+wv.getTabName(), null, new MapEditorPanel(edit), 
 						"Current world"+wv.getTip());
 			}

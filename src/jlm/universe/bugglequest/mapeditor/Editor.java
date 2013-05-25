@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import jlm.core.ui.MarkdownDocument;
 import jlm.universe.IWorldView;
 import jlm.universe.bugglequest.BuggleWorld;
 
@@ -16,6 +17,7 @@ public class Editor {
 	private String command = "topwall";
 	private Color selectedColor = Color.blue;
 	private int selectedColorNumber = 1;
+	private String path;
 	
 	public Editor() {
 		createNewMap(10, 10);
@@ -45,17 +47,26 @@ public class Editor {
 	public void saveMap(File file) {
 		try {
 			this.world.writeToFile(file);
+			System.out.println("Map file "+file.getPath()+" saved.");
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("Map file '"+file.getPath()+"' cannot be saved.");
 		}
 	}
 
 	public void loadMap(File file) {
 		try {
-			this.world.readFromFile(file);
+			//checking if the map file already exists in '.jlm-export/' directory.
+			File f = new File(MarkdownDocument.getSAVE_PATH()+file.getPath().replaceAll("^src", ""));
+			if (!f.exists()) {
+				f=file;
+			}
+			//Loading
+			this.world.readFromFile(f);
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.err.println("Map file '"+file.getPath()+"' not found.");
 		}
+		//Recording location of the map in the jar
+		setPath(file.getPath());
 		notifyMapViews();
 	}
 
@@ -97,6 +108,14 @@ public class Editor {
 
 	public void setSelectedColorNumber(int i) {
 		selectedColorNumber = i;		
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 }

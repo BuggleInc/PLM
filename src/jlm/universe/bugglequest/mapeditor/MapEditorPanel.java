@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
+import jlm.core.model.Logger;
 import jlm.core.ui.ResourcesCache;
 
 
@@ -30,6 +31,10 @@ public class MapEditorPanel extends JPanel {
 	private Editor editor;
 	private ButtonGroup tools;
 	private File path;	
+	private static String HOME_DIR = System.getProperty("user.home");
+	private static String SEP = System.getProperty("file.separator");
+	private static String SAVE_PATH = HOME_DIR + SEP + ".jlm-export";
+	private static File SAVE_DIR = new File(SAVE_PATH);
 	
 	public MapEditorPanel(Editor editor) {
 		this.editor = editor;
@@ -45,6 +50,7 @@ public class MapEditorPanel extends JPanel {
 
 		fileMenu.add(new NewMapAction());
 		fileMenu.add(new LoadMapAction());
+		fileMenu.add(new SaveAsMapAction());
 		fileMenu.add(new SaveMapAction());
 
 		menuBar.add(fileMenu);
@@ -183,10 +189,10 @@ public class MapEditorPanel extends JPanel {
 
 	}
 
-	class SaveMapAction extends AbstractAction {
+	class SaveAsMapAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
 
-		public SaveMapAction() {
+		public SaveAsMapAction() {
 			super("Save As...");
 		}
 
@@ -206,6 +212,57 @@ public class MapEditorPanel extends JPanel {
 		}
 	}
 
+	class SaveMapAction extends AbstractAction {
+		private static final long serialVersionUID = 1L;
+
+		public SaveMapAction() {
+			super("Save");
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(editor.getPath()!=null){
+				String path = SAVE_PATH;
+				if (!SAVE_DIR.exists()){
+					if (! SAVE_DIR.mkdir()) {
+						Logger.log("MapEditor:SaveMapAction", "cannot create session store directory (.jlm-export)");
+						System.err.println("cannot create session store directory (.jlm-export)");
+						return;
+					};
+				}
+				
+				String[] dirs = editor.getPath().replaceAll("^src/", "").split("/");
+				for(int i=0;i<dirs.length-1;i++){
+					path+=SEP + dirs[i];
+					File f = new File(path);
+					if (!f.exists()){
+						if (! f.mkdir()) {
+							Logger.log("MapEditor:SaveMapAction", "cannot create session store directory ("+path+")");
+							System.err.println("cannot create session store directory ("+path+")");
+							return;
+						};
+					}
+				}
+				path+=SEP + dirs[dirs.length-1];
+				File file = new File(path);
+				editor.saveMap(file);
+			}
+			else{
+				JFileChooser fc;
+				if (MapEditorPanel.this.path != null)
+					fc = new JFileChooser(MapEditorPanel.this.path);
+				else
+					fc = new JFileChooser();
+				int status = fc.showSaveDialog(MapEditorPanel.this);
+
+				if (status == JFileChooser.APPROVE_OPTION) {
+					File file = fc.getSelectedFile();
+					editor.saveMap(file);
+				}
+			}
+		}
+	}
+	
 	class LoadMapAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
 
