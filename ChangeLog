@@ -1,10 +1,9 @@
-20130524:
+20130525:
   * New lesson navigator based on JTree
   * Better looking icons, with known licenses
   * Basic testing infrastructure, ensuring that python entities manage
     to solve the Java worlds. Could be extended in many way, including:
-     - this shoud be converted to junit
-     - this should share more code with usual mutation process to catch more issues
+     - The java entity is not compiled, so there is no compilation test
     But at least, we have a testing infrastructure!
   * Basic i18n infrastructure allowing to translate the user interface (fix #76)
   * Kill the ability to have more than one view per world (fix #35)
