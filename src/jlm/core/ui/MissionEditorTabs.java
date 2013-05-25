@@ -37,6 +37,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	MarkdownEditorView editor;
 	String path_md;
 	ProgrammingLanguage newLang;
+	ProgrammingLanguage proglang;
 	
 	/* for code tabs */
 	private Lecture currentExercise;
@@ -180,8 +181,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	
 	public void init(boolean b) {
 		MarkdownDocument md_doc = new MarkdownDocument(path_md);
-		if(!b&&editor!=null&&md_doc.getPath().equals(editor.document.getPath()))
+		if(!b&&editor!=null&&md_doc.getPath().equals(editor.document.getPath())&&Game.getInstance().getProgrammingLanguage()==(proglang))
 			return;
+		proglang=Game.getProgrammingLanguage();
 		editor = new MarkdownEditorView(md_doc);
 
 		editor.view.addHyperlinkListener(new HyperlinkListener() {
