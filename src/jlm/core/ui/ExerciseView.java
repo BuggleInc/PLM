@@ -50,6 +50,7 @@ public class ExerciseView extends JPanel implements GameListener {
 	private JSplitPane splitPane;
 	private boolean admin;
 	private static boolean ok = false; 
+	private WorldComboListAdapter worldcombolistadapter;
 
 	private static ExerciseView instance = null;
 
@@ -79,7 +80,8 @@ public class ExerciseView extends JPanel implements GameListener {
 
 		upperPane.setLayout(new MigLayout("insets 0 0 0 0,wrap","[fill]"));
 
-		worldComboBox = new JComboBox(new WorldComboListAdapter(Game.getInstance()));
+		worldcombolistadapter= new WorldComboListAdapter(Game.getInstance());
+		worldComboBox = new JComboBox(worldcombolistadapter);
 		worldComboBox.setRenderer(new WorldCellRenderer());
 		worldComboBox.setEditable(false);
 		worldComboBox.setToolTipText("Switch the displayed world");
@@ -197,7 +199,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		}
 
 		tabPane.removeAll();
-
+		
 		worldView = Game.getInstance().getSelectedWorld().getView();
 		objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
 		if(!Global.admin){
@@ -213,7 +215,14 @@ public class ExerciseView extends JPanel implements GameListener {
 		else{
 			if(Game.getInstance().getSelectedWorld() instanceof BuggleWorld){
 				for (WorldView wv: worldView) {
-					String map_path = "src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+".map";
+					String number_map = "";
+					if(worldcombolistadapter.getSelectedItem()!=null && worldcombolistadapter.getSelectedItem() instanceof World){
+						int x=worldcombolistadapter.getSelectedItemIndex();
+						if(x>=2){
+							number_map=x+"";
+						}
+					}
+					String map_path = "src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+number_map+".map";
 
 					Editor edit= new Editor();
 					edit.loadMap(new File(map_path));

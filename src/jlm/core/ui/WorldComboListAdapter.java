@@ -25,6 +25,20 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 			this.selectedWorld = this.game.getSelectedWorld();
 		}
 	}
+	
+	public int getSelectedItemIndex(){
+		if(currentExercise == null)
+			return 0;
+		else
+			for(int i=0;i<currentExercise.worldCount();i++){
+				if(getElementAt(i)!=null&&getElementAt(i) instanceof World){
+					World w = (World) getElementAt(i);
+					if(w==selectedWorld)
+						return i+1;
+				}
+			}
+		return 0;
+	}
 
 	@Override
 	public Object getElementAt(int index) {
