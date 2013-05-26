@@ -1,19 +1,18 @@
 package jlm.core.model;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Locale;
 
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
-import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.universe.Entity;
 import jlm.universe.World;
-import jlm.universe.bat.BatExercise;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -79,7 +78,7 @@ public class ExoTest {
 			
 			if (!current.equals(answer))
 				fail(exo.getClass().getSimpleName()+":world["+worldRank+"] differs in "+
-						Game.getProgrammingLanguage()+":\n"+answer.diffTo(current));
+						Game.getProgrammingLanguage()+":\n"+exo.getClass()+"\n"+answer.diffTo(current));
 		}		
 	}
 	

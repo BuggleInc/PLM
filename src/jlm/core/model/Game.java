@@ -25,7 +25,6 @@ import java.util.jar.Manifest;
 
 import javax.swing.JOptionPane;
 
-import jlm.core.DiscardableGameStateListener;
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.HumanLangChangesListener;
@@ -688,21 +687,8 @@ public class Game implements IWorldView {
 	}
 
 	protected void fireStateChanged(GameState status) {
-		List<DiscardableGameStateListener> garbage = new ArrayList<DiscardableGameStateListener>();
-		
-		for (GameStateListener l : this.gameStateListeners) {
+		for (GameStateListener l : this.gameStateListeners) 
 			l.stateChanged(status);
-			if (l instanceof DiscardableGameStateListener) {
-				DiscardableGameStateListener dl = (DiscardableGameStateListener) l;
-				if (dl.isDirty()) {
-					garbage.add(dl);
-				}
-			}
-		}
-		
-		for (DiscardableGameStateListener dl : garbage) {
-			this.gameStateListeners.remove(dl);
-		}
 	}
 
 	private ArrayList<ProgressSpyListener> progressSpyListeners = new ArrayList<ProgressSpyListener>();

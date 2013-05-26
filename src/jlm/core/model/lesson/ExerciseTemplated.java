@@ -8,10 +8,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jlm.core.DiscardableGameStateListener;
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
-import jlm.core.model.Game.GameState;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -301,34 +299,10 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld[i].reset(initialWorld[i]);
 			answerWorld[i].doDelay();
 		}
-		final ProgrammingLanguage current = Game.getProgrammingLanguage();
-		Game.getInstance().setProgramingLanguage(Game.JAVA);
-
 		mutateCorrection(WorldKind.ANSWER);
 
 		for (World aw:getAnswerWorldList())
 			aw.runEntities(runnerVect);
-
-		// FIXME: UGLY HACK. This should disappear as soon as script languages manage to run the demos
-		// as demo is launched in several threads, we can restore the current programming language
-		// only when the demo is finished. This is achieved using some kind of hook triggered when DEMO_ENDED.	
-		Game.getInstance().addGameStateListener(
-				new DiscardableGameStateListener() {			
-					private boolean dirty = false;
-
-					@Override
-					public void stateChanged(GameState type) {
-						if (type == Game.GameState.DEMO_ENDED) {
-							Game.getInstance().setProgramingLanguage(current);
-							this.dirty = true;
-						}
-					}
-
-					@Override
-					public boolean isDirty() {
-						return this.dirty;
-					}
-				});
 	}
 	
 	public void mutateCorrection(WorldKind kind) {
