@@ -1,10 +1,18 @@
 package jlm.core.ui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
@@ -15,6 +23,7 @@ import com.petebevin.markdown.MarkdownProcessor;
 
 import jlm.core.GameListener;
 import jlm.core.ProgLangChangesListener;
+import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
@@ -248,15 +257,21 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		}
 
 		if (currentExercise instanceof Exercise) {
-			/* Add back the right amount of tabs */
-			int publicSrcFileCount = ((Exercise) currentExercise).sourceFileCount(this.newLang);
-			for (int i = 0; i < publicSrcFileCount; i++) {
-				/* Create the code editor */
-				SourceFile srcFile = ((Exercise) currentExercise).getPublicSourceFile(this.newLang, i);
+			if(Global.admin){
+				new EntityFileEditor(this,(Exercise) currentExercise,newLang);
+			}
+			else{
+				/* Add back the right amount of tabs */
+				int publicSrcFileCount = ((Exercise) currentExercise).sourceFileCount(this.newLang);
+				for (int i = 0; i < publicSrcFileCount; i++) {
 
-				/* Create the tab with the code editor as content */
-				this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(this.newLang), "Type your code here"); 
-			}		
+					/* Create the code editor */
+					SourceFile srcFile = ((Exercise) currentExercise).getPublicSourceFile(this.newLang, i);
+
+					/* Create the tab with the code editor as content */
+					this.addTab(srcFile.getName(), null, srcFile.getEditorPanel(this.newLang), "Type your code here"); 
+				}
+			}
 			if (getTabCount()>tabPosition)
 				setSelectedIndex(tabPosition);
 		}
