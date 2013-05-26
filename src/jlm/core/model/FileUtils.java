@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 
@@ -36,11 +37,11 @@ public class FileUtils {
 	public static void setLocale(Locale l) {
 		locale = l;
 		if (  Game.getInstance() != null && Game.getInstance().getCurrentLesson() != null )
-		{
+		{/* FIXME: convert to a humanLanguage listener */
 			Game.getInstance().getCurrentLesson().resetAboutLoaded();
 			Lecture lect = Game.getInstance().getCurrentLesson().getCurrentExercise();
 			if ( lect instanceof Exercise )
-				((Exercise) lect).getCurrentWorldList().get(0).resetAbout();
+				((Exercise) lect).getWorldList(WorldKind.CURRENT).get(0).resetAbout();
 		}
 	}
 	public static Locale getLocale() {

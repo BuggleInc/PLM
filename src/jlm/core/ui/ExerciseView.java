@@ -18,6 +18,7 @@ import jlm.core.GameListener;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
+import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 import net.miginfocom.swing.MigLayout;
@@ -130,7 +131,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
 		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldCount() > 1);
-		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorldList().get(0).getEntityCount() > 1); 
+		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldList(WorldKind.CURRENT).get(0).getEntityCount() > 1); 
 	}
 
 	public void selectObjectivePane() {
@@ -170,7 +171,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		controlPane.add(buttonPanel, "grow");
 		
 		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
-		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getCurrentWorldList().get(0).getEntityCount() > 1); 
+		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldList(WorldKind.CURRENT).get(0).getEntityCount() > 1); 
 		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldCount() > 1);		
 	}
 

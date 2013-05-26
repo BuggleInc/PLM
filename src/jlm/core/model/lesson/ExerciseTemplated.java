@@ -287,7 +287,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	public void run(List<Thread> runnerVect){
 		mutateEntities(currentWorld, tabName);
 
-		for (World cw: getCurrentWorldList()) {
+		for (World cw: getWorldList(WorldKind.CURRENT)) {
 			cw.doDelay();
 			cw.runEntities(runnerVect);
 		}
@@ -301,7 +301,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		mutateCorrection(WorldKind.ANSWER);
 
-		for (World aw:getAnswerWorldList())
+		for (World aw:getWorldList(WorldKind.ANSWER))
 			aw.runEntities(runnerVect);
 	}
 	

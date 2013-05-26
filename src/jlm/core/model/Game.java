@@ -31,6 +31,7 @@ import jlm.core.HumanLangChangesListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
@@ -358,7 +359,7 @@ public class Game implements IWorldView {
 
 			int index = exo.indexOfWorld(this.selectedWorld);
 			this.answerOfSelectedWorld = exo.getAnswerOfWorld(index);
-			this.initialOfSelectedWorld = exo.getInitialWorldList().get(index);
+			this.initialOfSelectedWorld = exo.getWorldList(WorldKind.INITIAL).get(index);
 			if (this.selectedWorld.getEntityCount()>0) {
 				this.selectedEntity = this.selectedWorld.getEntity(0);
 			}
@@ -395,7 +396,7 @@ public class Game implements IWorldView {
 		}
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
-			for (World w : ((Exercise) lecture).getAnswerWorldList())
+			for (World w : ((Exercise) lecture).getWorldList(WorldKind.ANSWER))
 				w.doneDelay();
 
 		setState(GameState.EXECUTION_ENDED);
@@ -424,7 +425,7 @@ public class Game implements IWorldView {
 	public void allowOneStep() {
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
-			for (World w: ((Exercise) lecture).getCurrentWorldList())
+			for (World w: ((Exercise) lecture).getWorldList(WorldKind.CURRENT))
 				for (Entity e : w.getEntities())
 					e.allowOneStep();
 	}

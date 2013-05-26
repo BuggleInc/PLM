@@ -57,7 +57,7 @@ public class PledgeMaze extends ExerciseTemplated {
 	@Override
 	public void check() {
 		lastResult = new ExecutionProgress();
-		for (World w: this.getCurrentWorldList()) 
+		for (World w: this.getWorldList(WorldKind.CURRENT)) 
 			for (Entity e:w.getEntities()) {
 				lastResult.totalTests++;
 				if (!((AbstractBuggle) e).isCarryingBaggle())

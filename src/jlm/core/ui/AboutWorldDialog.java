@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
+import jlm.core.model.lesson.Exercise.WorldKind;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -26,9 +27,9 @@ public class AboutWorldDialog extends AbstractAboutDialog {
 		if (lecture instanceof Exercise) {
 			Exercise exo = (Exercise) lecture;
 			setTitle(i18n.tr("About world - ")
-					+ exo.getCurrentWorldList().get(0).getClass()
+					+ exo.getWorldList(WorldKind.CURRENT).get(0).getClass()
 					.getSimpleName());
-			area.setText(exo.getCurrentWorldList().get(0).getAbout());
+			area.setText(exo.getWorldList(WorldKind.CURRENT).get(0).getAbout());
 			area.setCaretPosition(0);
 		} else {
 			// FIXME: should disable the entry menu when seing a lecture, and close any preexisting window when switching to a lecture

@@ -231,14 +231,13 @@ public abstract class Exercise extends Lecture {
 		}
 	}
 			
-	public List<World> getAnswerWorldList() {
-		return Arrays.asList(answerWorld);
-	}
-	public List<World> getCurrentWorldList() {
-		return Arrays.asList(currentWorld);
-	}
-	public List<World> getInitialWorldList() {
-		return Arrays.asList(this.initialWorld);
+	public List<World> getWorldList(WorldKind kind) {
+		switch (kind) {
+		case INITIAL: return Arrays.asList(initialWorld);
+		case CURRENT: return Arrays.asList(currentWorld);
+		case ANSWER:  return Arrays.asList(answerWorld);
+		default: throw new RuntimeException("Unhandled kind of world: "+kind);
+		}
 	}
 	
 	public int getWorldCount() {
