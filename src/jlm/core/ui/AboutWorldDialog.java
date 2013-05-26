@@ -27,9 +27,9 @@ public class AboutWorldDialog extends AbstractAboutDialog {
 		if (lecture instanceof Exercise) {
 			Exercise exo = (Exercise) lecture;
 			setTitle(i18n.tr("About world - ")
-					+ exo.getWorldList(WorldKind.CURRENT).get(0).getClass()
+					+ exo.getWorlds(WorldKind.CURRENT).get(0).getClass()
 					.getSimpleName());
-			area.setText(exo.getWorldList(WorldKind.CURRENT).get(0).getAbout());
+			area.setText(exo.getWorlds(WorldKind.CURRENT).get(0).getAbout());
 			area.setCaretPosition(0);
 		} else {
 			// FIXME: should disable the entry menu when seing a lecture, and close any preexisting window when switching to a lecture

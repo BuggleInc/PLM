@@ -26,7 +26,7 @@ public class HanoiCreateEntity extends MetaExercise {
 		setupWorlds(w);
 
 		/* compute answer */
-		System.out.println("Compute answers "+answerWorld.length);
+		System.out.println("Compute answers "+answerWorld.size());
 		for (World it:answerWorld) { 
 			((HanoiMetaWorld)it).isAnswer=true;
 			solve((HanoiMetaWorld) it);
@@ -98,11 +98,11 @@ public class HanoiCreateEntity extends MetaExercise {
 	public void runDemo(List<Thread> runnerVect) {
 		Thread runner = new Thread(new Runnable() {
 			public void run() {
-				for (int i=0; i<initialWorld.length; i++) { 
-					answerWorld[i].reset(initialWorld[i]);
-					answerWorld[i].doDelay();
-					((HanoiMetaWorld)answerWorld[i]).isAnswer = true;
-					solve((HanoiMetaWorld) answerWorld[i]);
+				for (int i=0; i<initialWorld.size(); i++) { 
+					answerWorld.get(i).reset(initialWorld.get(i));
+					answerWorld.get(i).doDelay();
+					((HanoiMetaWorld)answerWorld.get(i)).isAnswer = true;
+					solve((HanoiMetaWorld) answerWorld.get(i));
 				}
 			}
 		});

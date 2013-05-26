@@ -1,6 +1,7 @@
 package jlm.universe.lightbot;
 
 import java.util.List;
+import java.util.Vector;
 
 import jlm.core.model.Game;
 import jlm.core.model.lesson.ExecutionProgress;
@@ -31,8 +32,8 @@ public class LightBotExercise extends ExerciseTemplated {
 
 	@Override
 	protected void computeAnswer() {
-		for (int w=0;w<answerWorld.length;w++) {
-			LightBotWorld.CellIterator ci = ((LightBotWorld)answerWorld[w]).new CellIterator();
+		for (int w=0;w<answerWorld.size();w++) {
+			LightBotWorld.CellIterator ci = ((LightBotWorld)answerWorld.get(w)).new CellIterator();
 			while (ci.hasNext()) {
 				ci.next().setLightOn();
 			}
@@ -41,8 +42,8 @@ public class LightBotExercise extends ExerciseTemplated {
 	@Override
 	public void check() {
 		lastResult = new ExecutionProgress();
-		for (int w=0;w<currentWorld.length;w++) {
-			LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld[w]).new CellIterator();
+		for (int w=0;w<currentWorld.size();w++) {
+			LightBotWorld.CellIterator ci = ((LightBotWorld)currentWorld.get(w)).new CellIterator();
 			while (ci.hasNext()) {
 				LightBotWorldCell cell = ci.next();
 				if (cell.isLight()) {
@@ -60,14 +61,14 @@ public class LightBotExercise extends ExerciseTemplated {
 		}
 	}
 	@Override
-	public void run(List<Thread> runnerVect){
+	public void run(List<Thread> runnerVect){ // FIXME: that's a redefinition to the same, right?
 		reset();
 
-		for (int i=0; i<currentWorld.length; i++)
-			currentWorld[i].doDelay();
+		for (int i=0; i<currentWorld.size(); i++)
+			currentWorld.get(i).doDelay();
 
-		for (int i=0; i<currentWorld.length; i++)
-			currentWorld[i].runEntities(runnerVect);
+		for (int i=0; i<currentWorld.size(); i++)
+			currentWorld.get(i).runEntities(runnerVect);
 	}
 
 	@Override
@@ -76,7 +77,7 @@ public class LightBotExercise extends ExerciseTemplated {
 	}
 	
 	@Override
-	final protected void mutateEntities(World[] worlds, String newClassName) {
+	final protected void mutateEntities(Vector<World> worlds, String newClassName) {
 		throw new RuntimeException("Why are you trying to mutate Lightbot entities, you weirdo?! super.mutateEntities() is not ready for that.");
 	}
 }

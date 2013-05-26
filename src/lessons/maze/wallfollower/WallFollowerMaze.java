@@ -38,10 +38,10 @@ public class WallFollowerMaze extends ExerciseTemplated {
 	// to shorten loading time
 	@Override
 	protected void computeAnswer(){
-		AbstractBuggle b = (AbstractBuggle)answerWorld[0].getEntities().get(0);
+		AbstractBuggle b = (AbstractBuggle)answerWorld.get(0).getEntities().get(0);
 		b.setPosFromLesson(11, 5);
 		
-		AbstractBuggle b2 = (AbstractBuggle)answerWorld[1].getEntities().get(0);
+		AbstractBuggle b2 = (AbstractBuggle)answerWorld.get(1).getEntities().get(0);
 		b2.setPosFromLesson(11, 5);
 		try {
 			b.pickUpBaggle();
@@ -56,7 +56,7 @@ public class WallFollowerMaze extends ExerciseTemplated {
 	@Override
 	public void check() {
 		lastResult = new ExecutionProgress();
-		for (World w: this.getWorldList(WorldKind.CURRENT)) 
+		for (World w: this.getWorlds(WorldKind.CURRENT)) 
 			for (Entity e:w.getEntities()) {
 				lastResult.totalTests++;
 				if (!((AbstractBuggle) e).isCarryingBaggle())

@@ -35,9 +35,9 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	@Override
 	protected void computeAnswer() {
 
-		BatWorld answer = (BatWorld) answerWorld[0];
-		BatWorld init = (BatWorld) initialWorld[0];
-		BatWorld curr = (BatWorld) currentWorld[0];
+		BatWorld answer = (BatWorld) answerWorld.get(0);
+		BatWorld init = (BatWorld) initialWorld.get(0);
+		BatWorld curr = (BatWorld) currentWorld.get(0);
 		
 		for (int i=0;i<answer.tests.size();i++) {
 			BatTest currTest = answer.tests.get(i);

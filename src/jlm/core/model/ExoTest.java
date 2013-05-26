@@ -59,7 +59,7 @@ public class ExoTest {
 		Game.getInstance().setCurrentLesson(l);
 		Game.getInstance().setCurrentExercise(exo);
 		for (int worldRank=0; worldRank<exo.getWorldCount(); worldRank++) 
-			exo.getWorldList(WorldKind.INITIAL).get(worldRank).setDelay(0);
+			exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
 	}
 	
 	/** Resets current world, populate it with the correction entity, and rerun it */
@@ -68,13 +68,13 @@ public class ExoTest {
 		
 		exo.reset();
 		exo.mutateCorrection(WorldKind.CURRENT);
-		for (World w : exo.getWorldList(WorldKind.CURRENT)) 
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 			for (Entity ent: w.getEntities()) 
 				ent.runIt();
 		
 		for (int worldRank=0; worldRank<exo.getWorldCount(); worldRank++) {
-			World current = exo.getWorldList(WorldKind.CURRENT).get(worldRank);
-			World answer  = exo.getWorldList(WorldKind.ANSWER).get(worldRank);
+			World current = exo.getWorlds(WorldKind.CURRENT).get(worldRank);
+			World answer  = exo.getWorlds(WorldKind.ANSWER).get(worldRank);
 			
 			if (!current.equals(answer))
 				fail(exo.getClass().getSimpleName()+":world["+worldRank+"] differs in "+

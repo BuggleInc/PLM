@@ -359,7 +359,7 @@ public class Game implements IWorldView {
 
 			int index = exo.indexOfWorld(this.selectedWorld);
 			this.answerOfSelectedWorld = exo.getAnswerOfWorld(index);
-			this.initialOfSelectedWorld = exo.getWorldList(WorldKind.INITIAL).get(index);
+			this.initialOfSelectedWorld = exo.getWorlds(WorldKind.INITIAL).get(index);
 			if (this.selectedWorld.getEntityCount()>0) {
 				this.selectedEntity = this.selectedWorld.getEntity(0);
 			}
@@ -396,7 +396,7 @@ public class Game implements IWorldView {
 		}
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
-			for (World w : ((Exercise) lecture).getWorldList(WorldKind.ANSWER))
+			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
 				w.doneDelay();
 
 		setState(GameState.EXECUTION_ENDED);
@@ -425,7 +425,7 @@ public class Game implements IWorldView {
 	public void allowOneStep() {
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
-			for (World w: ((Exercise) lecture).getWorldList(WorldKind.CURRENT))
+			for (World w: ((Exercise) lecture).getWorlds(WorldKind.CURRENT))
 				for (Entity e : w.getEntities())
 					e.allowOneStep();
 	}

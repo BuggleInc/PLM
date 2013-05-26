@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -287,7 +288,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	public void run(List<Thread> runnerVect){
 		mutateEntities(currentWorld, tabName);
 
-		for (World cw: getWorldList(WorldKind.CURRENT)) {
+		for (World cw: getWorlds(WorldKind.CURRENT)) {
 			cw.doDelay();
 			cw.runEntities(runnerVect);
 		}
@@ -295,19 +296,19 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	@Override
 	public void runDemo(List<Thread> runnerVect){
-		for (int i=0; i<initialWorld.length; i++) { 
-			answerWorld[i].reset(initialWorld[i]);
-			answerWorld[i].doDelay();
+		for (int i=0; i<initialWorld.size(); i++) { 
+			answerWorld.get(i).reset(initialWorld.get(i));
+			answerWorld.get(i).doDelay();
 		}
 		mutateCorrection(WorldKind.ANSWER);
 
-		for (World aw:getWorldList(WorldKind.ANSWER))
+		for (World aw:getWorlds(WorldKind.ANSWER))
 			aw.runEntities(runnerVect);
 	}
 	
 	public void mutateCorrection(WorldKind kind) {
 		ProgrammingLanguage lang = Game.getProgrammingLanguage();
-		World[] worlds;
+		Vector<World> worlds;
 		switch (kind) {
 		case INITIAL: worlds = initialWorld; break;
 		case CURRENT: worlds = currentWorld; break;

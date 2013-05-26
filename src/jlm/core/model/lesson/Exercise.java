@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,9 +35,9 @@ public abstract class Exercise extends Lecture {
 	private static final String packageNamePrefix = "jlm.runtime";
 	private int packageNameSuffix = 0;
 
-	protected World [] currentWorld; /* the one displayed */
-	protected World [] initialWorld; /* the one used to reset the previous on each run */
-	protected World [] answerWorld;  /* the one current should look like to pass the test */
+	protected Vector<World> currentWorld; /* the one displayed */
+	protected Vector<World> initialWorld; /* the one used to reset the previous on each run */
+	protected Vector<World> answerWorld;  /* the one current should look like to pass the test */
 
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
@@ -47,13 +48,13 @@ public abstract class Exercise extends Lecture {
 	}
 	
 	public void setupWorlds(World[] w) {
-		currentWorld = new World[w.length];
-		initialWorld = new World[w.length];
-		answerWorld  = new World[w.length];
+		currentWorld = new Vector<World>(w.length);
+		initialWorld = new Vector<World>(w.length);
+		answerWorld  = new Vector<World>(w.length);
 		for (int i=0; i<w.length; i++) {
-			currentWorld[i] = w[i].copy();
-			initialWorld[i] = w[i].copy();
-			answerWorld[i]  = w[i].copy();
+			currentWorld.add( w[i].copy() );
+			initialWorld.add( w[i].copy() );
+			answerWorld. add( w[i].copy() );
 		}
 	}
 	
@@ -62,14 +63,14 @@ public abstract class Exercise extends Lecture {
 	
 	public void check() throws Exception {
 		lastResult = new ExecutionProgress();
-		for (int i=0; i<currentWorld.length; i++) {
-			currentWorld[i].notifyWorldUpdatesListeners();
+		for (int i=0; i<currentWorld.size(); i++) {
+			currentWorld.get(i).notifyWorldUpdatesListeners();
 			
 			lastResult.totalTests++;
 
-			if (!currentWorld[i].equals(answerWorld[i])) {
-				String diff = answerWorld[i].diffTo(currentWorld[i]);
-				lastResult.details += "The world '"+currentWorld[i].getName()+"' differs";
+			if (!currentWorld.get(i).equals(answerWorld.get(i))) {
+				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
+				lastResult.details += "The world '"+currentWorld.get(i).getName()+"' differs";
 				if (diff != null) 
 					lastResult.details += ":\n"+diff;
 				lastResult.details += "\n";
@@ -80,8 +81,8 @@ public abstract class Exercise extends Lecture {
 	}
 	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {
-		for (int i=0; i<initialWorld.length; i++) 
-			currentWorld[i].reset(initialWorld[i]);
+		for (int i=0; i<initialWorld.size(); i++) 
+			currentWorld.get(i).reset(initialWorld.get(i));
 	}
 
 	/*
@@ -165,7 +166,7 @@ public abstract class Exercise extends Lecture {
 		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template));
 	}
 
-	protected void mutateEntities(World[] worlds, String newClassName) {
+	protected void mutateEntities(Vector<World> worlds, String newClassName) {
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
 		String[] forbidden = new String[] {"'","\""};
 		for (String stringPattern : forbidden) {
@@ -231,39 +232,39 @@ public abstract class Exercise extends Lecture {
 		}
 	}
 			
-	public List<World> getWorldList(WorldKind kind) {
+	public Vector<World> getWorlds(WorldKind kind) {
 		switch (kind) {
-		case INITIAL: return Arrays.asList(initialWorld);
-		case CURRENT: return Arrays.asList(currentWorld);
-		case ANSWER:  return Arrays.asList(answerWorld);
+		case INITIAL: return initialWorld;
+		case CURRENT: return currentWorld;
+		case ANSWER:  return answerWorld;
 		default: throw new RuntimeException("Unhandled kind of world: "+kind);
 		}
 	}
 	
 	public int getWorldCount() {
-		return this.initialWorld.length;
+		return this.initialWorld.size();
 	}
 	
 	/** Returns the current world number index 
 	 * @see #getAnswerOfWorld(int)
 	 */
-	public World getWorld(int index) {
-		return this.currentWorld[index];
+	public World getWorld(int index) {// FIXME: rename to getCurrentWorld or KILLME
+		return this.currentWorld.get(index);
 	}
 	
 	public int indexOfWorld(World w) {
 		int index = 0;
 		do {
-			if (this.currentWorld[index] == w)
+			if (this.currentWorld.get(index) == w)
 				return index;
 			index++;
-		} while (index < this.currentWorld.length);
+		} while (index < this.currentWorld.size());
 		
 		throw new RuntimeException("World not found (please report this bug)");
 	}
 	
-	public World getAnswerOfWorld(int index) {
-		return this.answerWorld[index];
+	public World getAnswerOfWorld(int index) { // FIXME: rename or KILLME
+		return this.answerWorld.get(index);
 	}
 	
 	public String toString() {
