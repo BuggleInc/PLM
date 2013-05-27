@@ -20,6 +20,7 @@ import jlm.universe.World;
 public abstract class AbstractAboutDialog extends JFrame implements GameListener {
 
 	private static final long serialVersionUID = -6550658679688214378L;
+	String path = "";
 	MarkdownDocument md_doc;
 	MarkdownEditorView editor;
 	JPanel main_pane;
@@ -56,7 +57,6 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 	
 	public void maj(){
 		this.main_pane.removeAll();
-		String path = md_doc.getPath();
 		md_doc = new MarkdownDocument(path);
 		editor = new MarkdownEditorView(md_doc);
 		JScrollPane jsp = null;

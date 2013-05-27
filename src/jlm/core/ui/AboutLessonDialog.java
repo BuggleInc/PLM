@@ -20,6 +20,7 @@ public class AboutLessonDialog extends AbstractAboutDialog {
 		//area.setText(Game.getInstance().getCurrentLesson().getAbout());
 		//area.setCaretPosition(0);
 		md_doc.loadMarkDownDocument(Game.getInstance().getCurrentLesson().getAboutFileName());
+		super.path = Game.getInstance().getCurrentLesson().getAboutFileName();
 	}
 
 }
