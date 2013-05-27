@@ -274,6 +274,10 @@ public class BuggleWorld extends GridWorld {
 				"def turnRight():\n"+
 				"	entity.turnRight()\n"+
 				"\n"+
+				"def getWorldHeight():\n"+
+				"	return entity.getWorldHeight()\n"+
+				"def getWorldWidth():\n"+
+				"	return entity.getWorldWidth()\n"+
 				"def getX():\n"+
 				"	return entity.getX()\n"+
 				"def getY():\n"+
