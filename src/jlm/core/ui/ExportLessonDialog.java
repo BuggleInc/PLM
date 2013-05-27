@@ -29,7 +29,7 @@ public class ExportLessonDialog extends AbstractAboutDialog
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel container = new JPanel();
-	private JComboBox combo = new JComboBox<>();
+	private JComboBox combo = new JComboBox();
 	private JLabel labelLesson = new JLabel("Choose a lesson : ");
 	private JButton buttonExport = new JButton("Export");
 	
@@ -44,19 +44,19 @@ public class ExportLessonDialog extends AbstractAboutDialog
 		super(parent);
 		this.setTitle("Export a lesson in a JAR file");
 		this.container.setLayout(new BorderLayout());
-		this.container.setBackground(Color.white);
+		//this.container.setBackground(Color.white);
 		this.combo.setPreferredSize(new Dimension(100, 20));
 		this.buttonExport.addActionListener(new MyListener(this));
 		
 		this.createLessonChooserComboBox();
 		
 		JPanel top = new JPanel();
-		top.setBackground(Color.white);
+		//top.setBackground(Color.white);
 		top.add(labelLesson);
 		top.add(combo);
 		
 		JPanel east = new JPanel();
-		east.setBackground(Color.white);
+		//east.setBackground(Color.white);
 		east.add(buttonExport);
 		
 		container.add(top, BorderLayout.NORTH);
@@ -230,7 +230,8 @@ public class ExportLessonDialog extends AbstractAboutDialog
 		String [] packages = SAVE_DIR.list();
 		for(String s:packages)
 		{
-			combo.addItem(s);
+			if(!s.equals(".DS_Store"))
+				combo.addItem(s);
 		}
 	}
 
