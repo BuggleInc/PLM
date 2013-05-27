@@ -1,7 +1,6 @@
 package jlm.core.ui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,26 +36,23 @@ public class ExportLessonDialog extends AbstractAboutDialog
 	private static String SEP = System.getProperty("file.separator");
 	private static String SAVE_PATH = HOME_DIR + SEP + ".jlm-export" + SEP + "lessons";
 	private static File SAVE_DIR = new File(SAVE_PATH);
-	private static ArrayList<File> filesToBeJared = new ArrayList<File>();
+	private ArrayList<File> filesToBeJared = new ArrayList<File>();
 
 	protected ExportLessonDialog(JFrame parent)
 	{
 		super(parent);
 		this.setTitle("Export a lesson in a JAR file");
 		this.container.setLayout(new BorderLayout());
-		//this.container.setBackground(Color.white);
 		this.combo.setPreferredSize(new Dimension(100, 20));
 		this.buttonExport.addActionListener(new MyListener(this));
 		
 		this.createLessonChooserComboBox();
 		
 		JPanel top = new JPanel();
-		//top.setBackground(Color.white);
 		top.add(labelLesson);
 		top.add(combo);
 		
 		JPanel east = new JPanel();
-		//east.setBackground(Color.white);
 		east.add(buttonExport);
 		
 		container.add(top, BorderLayout.NORTH);
@@ -86,7 +82,7 @@ public class ExportLessonDialog extends AbstractAboutDialog
 				String tab[] = s.split("\\.");
 				if(tab.length > 1)
 				{
-					if(!exercicesEdited.contains(tab[0]) && !tab[0].endsWith("Entity") && !tab[0].endsWith("DS_Store"))
+					if(!exercicesEdited.contains(tab[0]) && !tab[0].endsWith("Entity") && !s.endsWith("DS_Store"))
 					{
 						exercicesEdited.add(tab[0]);
 					}
