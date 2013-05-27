@@ -21,59 +21,31 @@ import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.SourceFile;
 import jlm.universe.World;
 
-public class EntityFileEditor implements ActionListener {
+public class ExerciseFileEditor implements ActionListener {
 	String entity_path;
 	JButton save_btn;
 	SourceFile srcFile;
+	String s ="";
 	private static String HOME_DIR = System.getProperty("user.home");
 	private static String SEP = System.getProperty("file.separator");
 	private static String SAVE_PATH = HOME_DIR + SEP + ".jlm-export";
 	private static File SAVE_DIR = new File(SAVE_PATH);
 
-	public EntityFileEditor(JTabbedPane missioneditortabs,Exercise currentExercise,ProgrammingLanguage newLang) {
+	public ExerciseFileEditor(JTabbedPane missioneditortabs,Exercise currentExercise,ProgrammingLanguage newLang,String s) {
+		this.s=s;
 		int publicSrcFileCount = ((Exercise) currentExercise).sourceFileCount(newLang);
 		for (int i = 0; i < publicSrcFileCount; i++) {
-			BufferedReader br = null;
-			StringBuffer sb = new StringBuffer();
 			
-			this.entity_path = "src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+"Entity.java";;
+			this.entity_path = "src/"+Game.getInstance().getCurrentLesson().getCurrentExercise().getMissionMarkDownFilePath()+s+".java";
 			
-			String path = entity_path;
-			try {
-				//checking if the map file already exists in '.jlm-export/' directory.
-				File f = new File(MarkdownDocument.getSAVE_PATH()+entity_path.replaceAll("^src", ""));
-				if (f.exists()) {
-					path = f.getPath();
-				}
-				br = new BufferedReader(new FileReader(path));
-				String newLine = System.getProperty("line.separator");
-
-				try {
-					String s;
-					s = br.readLine();
-					while (s != null) {
-						sb.append(s);
-						sb.append(newLine);
-						s = br.readLine();
-					}
-
-				} catch (IOException e) {		
-				} finally {
-					try {
-						br.close();
-					} catch (IOException e) {}
-				}
-			} catch (Exception e) {
-				System.err.println("Entity file "+entity_path+" not found.");
-			}
 			
 			
 			JPanel panel = new JPanel(new BorderLayout());
 			
 			/* Create the code editor */
 			SourceFile srcFile0 = ((Exercise) currentExercise).getPublicSourceFile(newLang, i);
-			srcFile = new SourceFile(srcFile0.getName(),"");
-			srcFile.setBody(sb.toString());
+			srcFile = new SourceFile(srcFile0.getName()+s,"");
+			srcFile.setBody(getCode(this.entity_path));
 
 			save_btn = new JButton("Save");
 			save_btn.addActionListener(this);
@@ -85,6 +57,39 @@ public class EntityFileEditor implements ActionListener {
 			missioneditortabs.addTab(srcFile.getName(), null, panel, "Type your code here"); 
 		}
 	}
+	
+	public String getCode(String path){
+		BufferedReader br = null;
+		StringBuffer sb = new StringBuffer();
+		try {
+			//checking if the map file already exists in '.jlm-export/' directory.
+			File f = new File(MarkdownDocument.getSAVE_PATH()+entity_path.replaceAll("^src", ""));
+			if (f.exists()) {
+				path = f.getPath();
+			}
+			br = new BufferedReader(new FileReader(path));
+			String newLine = System.getProperty("line.separator");
+
+			try {
+				String s;
+				s = br.readLine();
+				while (s != null) {
+					sb.append(s);
+					sb.append(newLine);
+					s = br.readLine();
+				}
+
+			} catch (IOException e) {		
+			} finally {
+				try {
+					br.close();
+				} catch (IOException e) {}
+			}
+		} catch (Exception e) {
+			System.err.println(s+" file "+entity_path+" not found.");
+		}
+		return sb.toString();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -94,7 +99,7 @@ public class EntityFileEditor implements ActionListener {
 				String path = SAVE_PATH;
 				if (!SAVE_DIR.exists()){
 					if (! SAVE_DIR.mkdir()) {
-						Logger.log("EntityFileEditor:save", "cannot create session store directory (.jlm-export)");
+						Logger.log(s+"FileEditor:save", "cannot create session store directory (.jlm-export)");
 						System.err.println("cannot create session store directory (.jlm-export)");
 						return;
 					};
@@ -106,7 +111,7 @@ public class EntityFileEditor implements ActionListener {
 					File f = new File(path);
 					if (!f.exists()){
 						if (! f.mkdir()) {
-							Logger.log("EntityFileEditor:save", "cannot create session store directory ("+path+")");
+							Logger.log(s+"FileEditor:save", "cannot create session store directory ("+path+")");
 							System.err.println("cannot create session store directory ("+path+")");
 							return;
 						};
@@ -118,9 +123,9 @@ public class EntityFileEditor implements ActionListener {
 					FileWriter fw = new FileWriter(file);
 					fw.write(srcFile.getBody());
 					fw.close();
-					System.out.println("Entity file "+file.getPath()+" saved.");
+					System.out.println(s+" file "+file.getPath()+" saved.");
 				} catch (IOException ex) {
-					System.err.println("Entity file '"+file.getPath()+"' cannot be saved.");
+					System.err.println(s+" file '"+file.getPath()+"' cannot be saved.");
 				}
 			}
 		}

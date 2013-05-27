@@ -258,7 +258,8 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 
 		if (currentExercise instanceof Exercise) {
 			if(Global.admin){
-				new EntityFileEditor(this,(Exercise) currentExercise,newLang);
+				new ExerciseFileEditor(this,(Exercise) currentExercise,newLang,"");
+				new ExerciseFileEditor(this,(Exercise) currentExercise,newLang,"Entity");
 			}
 			else{
 				/* Add back the right amount of tabs */
