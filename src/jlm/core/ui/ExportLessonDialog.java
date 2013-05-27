@@ -29,13 +29,13 @@ public class ExportLessonDialog extends AbstractAboutDialog
 {
 	private static final long serialVersionUID = 1L;
 	private JPanel container = new JPanel();
-	private JComboBox<String> combo = new JComboBox<String>();
+	private JComboBox combo = new JComboBox<>();
 	private JLabel labelLesson = new JLabel("Choose a lesson : ");
 	private JButton buttonExport = new JButton("Export");
 	
 	private static String HOME_DIR = System.getProperty("user.home");
 	private static String SEP = System.getProperty("file.separator");
-	private static String SAVE_PATH = HOME_DIR + SEP + ".jlm-export";
+	private static String SAVE_PATH = HOME_DIR + SEP + ".jlm-export" + SEP + "lessons";
 	private static File SAVE_DIR = new File(SAVE_PATH);
 	private static ArrayList<File> filesToBeJared = new ArrayList<File>();
 
@@ -63,6 +63,7 @@ public class ExportLessonDialog extends AbstractAboutDialog
 		container.add(east, BorderLayout.EAST);
 		this.setContentPane(container);
 		pack();
+		this.resize((int)this.getSize().getWidth() + 60, (int)this.getSize().getHeight());
 		this.setLocationRelativeTo(null);
 	}
 	
@@ -78,14 +79,14 @@ public class ExportLessonDialog extends AbstractAboutDialog
 		@Override
 		public void actionPerformed(ActionEvent e)
 		{
-			ArrayList<String> exercicesEdited = new ArrayList<>();
+			ArrayList<String> exercicesEdited = new ArrayList<String>();
 			File localDir = new File(SAVE_PATH + SEP + combo.getSelectedItem());
 			for(String s:localDir.list())
 			{
 				String tab[] = s.split("\\.");
 				if(tab.length > 1)
 				{
-					if(!exercicesEdited.contains(tab[0]) && !tab[0].endsWith("Entity"))
+					if(!exercicesEdited.contains(tab[0]) && !tab[0].endsWith("Entity") && !tab[0].endsWith("DS_Store"))
 					{
 						exercicesEdited.add(tab[0]);
 					}
@@ -298,4 +299,12 @@ public class ExportLessonDialog extends AbstractAboutDialog
 	      System.out.println("Error: " + ex.getMessage());
 	    }
 	  }
+	
+	public void show()
+	{
+		if(combo.getItemCount() > 0)
+			super.show();
+		else
+			JOptionPane.showMessageDialog(MainFrame.getInstance(), "No edited lessons to export", "JLM", JOptionPane.ERROR_MESSAGE);
+	}
 }

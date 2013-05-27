@@ -424,7 +424,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			public void actionPerformed(ActionEvent e)
 			{
 				AbstractAboutDialog dialog = new ExportLessonDialog(MainFrame.getInstance());
-				dialog.show();
+				if(Global.admin)
+					dialog.show();
+				else
+					JOptionPane.showMessageDialog(MainFrame.getInstance(), "You must be logged in as teacher to export lessons", "JLM", JOptionPane.ERROR_MESSAGE);
 			}
 		});
         exportButton.setMnemonic(KeyEvent.VK_E);
