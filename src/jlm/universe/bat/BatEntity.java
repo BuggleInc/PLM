@@ -6,6 +6,7 @@ import javax.script.ScriptException;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -54,7 +55,7 @@ public class BatEntity extends Entity {
 	}
 	
 	@Override 
-	public void runIt() {
+	public void runIt(ExecutionProgress progress) {
 		ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		if (pl.equals(Game.JAVA)) {
 			for (BatTest t:((BatWorld) world).getTests())
@@ -78,6 +79,7 @@ public class BatEntity extends Entity {
 						"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))\n");
 				engine.eval(getScript(Game.PYTHON));
 			} catch (ScriptException e1) {
+				progress.setCompilationError( e1.getCause().toString() );
 				e1.printStackTrace();
 			}									
 

@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import jlm.core.JLMCompilerException;
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.ExerciseFailedDialog;
@@ -42,6 +43,8 @@ public class LessonRunner extends Thread {
 		if (! (lect instanceof Exercise))
 			return;
 		final Exercise exo = (Exercise) lect;
+		
+		exo.lastResult = new ExecutionProgress();
 		
 		try {
 			game.saveSession(); // for safety reasons;

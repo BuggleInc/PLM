@@ -17,6 +17,7 @@ import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.ui.WorldView;
 
 public abstract class World {
@@ -122,7 +123,7 @@ public abstract class World {
 		return entities;
 	}
 	
-	public void runEntities(List<Thread> runnerVect) {
+	public void runEntities(List<Thread> runnerVect, final ExecutionProgress progress) {
 		if (Game.getInstance().isDebugEnabled())
 			Logger.log("World:runEntities","Programming language: "+Game.getProgrammingLanguage());
 		
@@ -130,7 +131,7 @@ public abstract class World {
 			Thread runner = new Thread(new Runnable() {
 				public void run() {
 					Game.getInstance().statusArgAdd(getName());
-					b.runIt();
+					b.runIt(progress);
 					Game.getInstance().statusArgRemove(getName());
 				}
 			});

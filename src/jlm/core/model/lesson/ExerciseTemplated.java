@@ -273,11 +273,13 @@ public abstract class ExerciseTemplated extends Exercise {
 		Thread t = new Thread() {
 			@Override
 			public void run() {
+				ExecutionProgress progress = new ExecutionProgress();
+				
 				mutateCorrection(WorldKind.ANSWER);
 
 				for (World aw : answerWorld) 
 					for (Entity ent: aw.getEntities()) 
-						ent.runIt();
+						ent.runIt(progress);
 			}
 		};
 		t.start();
@@ -286,16 +288,21 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	@Override
 	public void run(List<Thread> runnerVect){
+		if (lastResult == null)
+			lastResult = new ExecutionProgress();
+		
 		mutateEntities(currentWorld, tabName);
 
 		for (World cw: getWorlds(WorldKind.CURRENT)) {
 			cw.doDelay();
-			cw.runEntities(runnerVect);
+			cw.runEntities(runnerVect, lastResult);
 		}
 	}
 
 	@Override
 	public void runDemo(List<Thread> runnerVect){
+		ExecutionProgress progress = new ExecutionProgress();
+		
 		for (int i=0; i<initialWorld.size(); i++) { 
 			answerWorld.get(i).reset(initialWorld.get(i));
 			answerWorld.get(i).doDelay();
@@ -303,7 +310,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		mutateCorrection(WorldKind.ANSWER);
 
 		for (World aw:getWorlds(WorldKind.ANSWER))
-			aw.runEntities(runnerVect);
+			aw.runEntities(runnerVect,progress);
 	}
 	
 	public void mutateCorrection(WorldKind kind) {

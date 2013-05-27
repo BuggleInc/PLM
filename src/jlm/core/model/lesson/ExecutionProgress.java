@@ -33,5 +33,10 @@ public class ExecutionProgress {
 			ep.compilationError = "Unknown compilation error";
 		return ep;
 	}
+	
+	public void setCompilationError(String msg) {
+		compilationError = msg;
+		passedTests = -1;
+	}
 
 }

@@ -68,7 +68,7 @@ public class LightBotExercise extends ExerciseTemplated {
 			currentWorld.get(i).doDelay();
 
 		for (int i=0; i<currentWorld.size(); i++)
-			currentWorld.get(i).runEntities(runnerVect);
+			currentWorld.get(i).runEntities(runnerVect, lastResult);
 	}
 
 	@Override

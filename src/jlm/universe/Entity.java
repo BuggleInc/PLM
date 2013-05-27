@@ -13,6 +13,7 @@ import javax.script.ScriptException;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.universe.lightbot.LightBotEntity;
 
 public abstract class Entity {
@@ -153,7 +154,7 @@ public abstract class Entity {
 	 * 
 	 *  @see #run() that encodes the student logic in Java
 	 */
-	public void runIt() {
+	public void runIt(ExecutionProgress progress) {
 		ProgrammingLanguage progLang = Game.getProgrammingLanguage();
 		ScriptEngine engine ;
 		try {
@@ -199,11 +200,11 @@ public abstract class Entity {
 			Matcher locationMatcher = location.matcher(msg);
 			
 			if (locationMatcher.find()) {
-				System.err.println("Error in entity "+getName()+" at line "+
+				progress.setCompilationError( "Error in entity "+getName()+" at line "+
 						(Integer.parseInt(locationMatcher.group(1)) - getScriptOffset(progLang)+1)+
 						", "+locationMatcher.group(2));
 			} else {
-				System.err.println(e.getCause());
+				progress.setCompilationError( e.getCause().toString() );
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

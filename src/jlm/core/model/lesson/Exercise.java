@@ -62,7 +62,6 @@ public abstract class Exercise extends Lecture {
 	public abstract void runDemo(List<Thread> runnerVect);	
 	
 	public void check() throws Exception {
-		lastResult = new ExecutionProgress();
 		for (int i=0; i<currentWorld.size(); i++) {
 			currentWorld.get(i).notifyWorldUpdatesListeners();
 			
@@ -81,6 +80,8 @@ public abstract class Exercise extends Lecture {
 	}
 	/** Reset the current worlds to the state of the initial worlds */
 	public void reset() {
+		lastResult = new ExecutionProgress();
+
 		for (int i=0; i<initialWorld.size(); i++) 
 			currentWorld.get(i).reset(initialWorld.get(i));
 	}
