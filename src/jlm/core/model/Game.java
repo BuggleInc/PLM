@@ -98,7 +98,6 @@ public class Game implements IWorldView {
 	private World answerOfSelectedWorld;
 	private World initialOfSelectedWorld;
 	private Entity selectedEntity;
-	private List<Thread> lessonRunners = new ArrayList<Thread>();
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
 
@@ -384,16 +383,14 @@ public class Game implements IWorldView {
 
 	/* Actions of the toolbar buttons */
 	private boolean stepMode = false;
+	private LessonRunner runner;
 	public void startExerciseExecution() {
-		LessonRunner runner = new LessonRunner(Game.getInstance(), this.lessonRunners);
+		runner = new LessonRunner(Game.getInstance());
 		runner.start();
 	}
-	@SuppressWarnings("deprecation")
 	public void stopExerciseExecution() {
-		while (this.lessonRunners.size() > 0) {
-			Thread t = lessonRunners.remove(lessonRunners.size() - 1);
-			t.stop(); // harmful but who cares ?
-		}
+		runner.stopAll();
+		
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
 			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
@@ -407,8 +404,7 @@ public class Game implements IWorldView {
 	}
 	public void startExerciseStepExecution() {
 		stepMode = true;
-		LessonRunner runner = new LessonRunner(Game.getInstance(), this.lessonRunners);
-		runner.start();
+		startExerciseExecution();
 	}
 
 	public void enableStepMode() {

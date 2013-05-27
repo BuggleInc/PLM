@@ -1,5 +1,6 @@
 package jlm.core.model;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
@@ -27,14 +28,12 @@ import org.xnap.commons.i18n.I18nFactory;
 public class LessonRunner extends Thread {
 	
 	private Game game;
-	private List<Thread> runners = null; // threads who run entities from lesson
+	private List<Thread> runners = new LinkedList<Thread>(); // threads who run entities from lesson
 	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
 
-	public LessonRunner(Game game, List<Thread> list) {
+	public LessonRunner(Game game) {
 		super();
 		this.game = game;
-		this.runners = list;
-		this.runners.add(this);
 	}
 
 	@Override
@@ -57,12 +56,11 @@ public class LessonRunner extends Thread {
 			exo.reset();
 			exo.run(runners);
 
-			for (Thread t: runners) {
-				if (!t.equals(this)) { /* do not wait for myself */
-					t.join();
-					runners.remove(t);
-				}
+			while (runners.size()>0) {
+				Thread t = runners.remove(0);
+				t.join();
 			}
+			
 			game.setState(Game.GameState.EXECUTION_ENDED);
 
 			exo.check();
@@ -108,6 +106,15 @@ public class LessonRunner extends Thread {
 		Game.getInstance().fireProgressSpy(exo);									
 
 		runners.remove(this);
+	}
+	
+	/** Stop all the threads that were already started. Harmful but who cares? */
+	@SuppressWarnings("deprecation")
+	public void stopAll() {
+		while (runners.size()>0) {
+			Thread t = runners.remove(runners.size() - 1);
+			t.stop(); // harmful but who cares ?
+		}
 	}
 	
 }
