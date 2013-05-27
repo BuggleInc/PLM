@@ -231,12 +231,12 @@ msgstr "Suivant"
 
 #: src/jlm/core/ui/MainFrame.java:527 src/jlm/core/ui/MainFrame.java:690
 msgid "Step"
-msgstr "Pas"
+msgstr "Un pas"
 
 #. Buttons
 #: src/jlm/core/ui/MainFrame.java:689
 msgid "Run"
-msgstr "Lancer"
+msgstr "Exécuter"
 
 #: src/jlm/core/ui/MainFrame.java:691
 msgid "Stop"
@@ -244,7 +244,7 @@ msgstr "Stop"
 
 #: src/jlm/core/ui/MainFrame.java:692
 msgid "Reset"
-msgstr "Redémarrer"
+msgstr "Réinitialiser"
 
 #: src/jlm/core/ui/MainFrame.java:693
 msgid "Demo"
