@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Locale;
 
+import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.core.model.lesson.ExerciseTemplated;
@@ -65,12 +66,16 @@ public class ExoTest {
 	/** Resets current world, populate it with the correction entity, and rerun it */
 	private void testCorrectionEntity() {
 		Game.getInstance().setCurrentExercise(exo);
+		ExecutionProgress progress = new ExecutionProgress();
 		
 		exo.reset();
 		exo.mutateCorrection(WorldKind.CURRENT);
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
-			for (Entity ent: w.getEntities()) 
-				ent.runIt();
+			for (Entity ent: w.getEntities()) { 
+				ent.runIt(progress);
+				if (progress.compilationError != null) 
+					fail(exo.getClass().getSimpleName()+": compilation error: "+progress.compilationError);
+			}
 		
 		for (int worldRank=0; worldRank<exo.getWorldCount(); worldRank++) {
 			World current = exo.getWorlds(WorldKind.CURRENT).get(worldRank);
