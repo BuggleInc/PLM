@@ -767,6 +767,14 @@ public class Game implements IWorldView {
 		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 		fireHumanLangChange(lang);
 
+		/* FIXME: convert all this to a humanLanguage listener */
+		if (  Game.getInstance() != null && Game.getInstance().getCurrentLesson() != null ) {
+			Game.getInstance().getCurrentLesson().resetAboutLoaded();
+			Lecture lect = Game.getInstance().getCurrentLesson().getCurrentExercise();
+			if ( lect instanceof Exercise )
+				((Exercise) lect).getWorlds(WorldKind.CURRENT).get(0).resetAbout();
+		}
+
 		for (Lesson lesson : lessons.values()) {
 			for (Lecture lect:lesson.exercises()) {
 				if (lect instanceof ExerciseTemplated) {

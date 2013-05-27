@@ -10,10 +10,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
-import jlm.core.model.lesson.Exercise;
-import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lecture;
 
 /** This class is in charge of loading the resources from disk into memory
  * 
@@ -36,13 +33,6 @@ public class FileUtils {
 	/** Specifies the locale that we have to use when looking for translated files */
 	public static void setLocale(Locale l) {
 		locale = l;
-		if (  Game.getInstance() != null && Game.getInstance().getCurrentLesson() != null )
-		{/* FIXME: convert to a humanLanguage listener */
-			Game.getInstance().getCurrentLesson().resetAboutLoaded();
-			Lecture lect = Game.getInstance().getCurrentLesson().getCurrentExercise();
-			if ( lect instanceof Exercise )
-				((Exercise) lect).getWorlds(WorldKind.CURRENT).get(0).resetAbout();
-		}
 	}
 	public static Locale getLocale() {
 		return locale==null?new Locale("en"):locale;
