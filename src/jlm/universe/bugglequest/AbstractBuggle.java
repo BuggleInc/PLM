@@ -302,7 +302,7 @@ public abstract class AbstractBuggle extends Entity {
 		if (delta.equals(direction.toPoint())            && isFacingWall() ||
 				delta.equals(direction.opposite().toPoint()) && isBackingWall())	
 
-			throw new BuggleWallException("Buggles cannot traverse walls");
+			throw new BuggleWallException();
 
 		x = newx;
 		y = newy;
