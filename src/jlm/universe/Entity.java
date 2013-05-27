@@ -224,6 +224,7 @@ public abstract class Entity {
 		scriptOffset.put(lang,  offset);
 	}
 	public Integer getScriptOffset(ProgrammingLanguage lang) {
-		return scriptOffset.get(lang);
+		Integer res = scriptOffset.get(lang);
+		return res == null ? 0:res;
 	}
 }
