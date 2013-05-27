@@ -105,7 +105,7 @@ public abstract class Lecture {
 	}
 	
 	public String getMissionMarkDownFilePath() {
-		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+		String filename = getClass().getCanonicalName().replace('.','/');
 		return filename;
 	}
 	

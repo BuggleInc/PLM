@@ -65,7 +65,7 @@ public class MarkdownDocument extends Observable
 				return;
 			};
 		}
-		
+
 		String[] dirs = getPath().split("/");
 		for(int i=0;i<dirs.length-1;i++){
 			path+=SEP + dirs[i];
@@ -75,7 +75,7 @@ public class MarkdownDocument extends Observable
 					Logger.log("MarkDownDocument:saveMarkDownDocument", "cannot create session store directory ("+path+")");
 					System.err.println("cannot create session store directory ("+path+")");
 					return;
-				};
+				}
 			}
 		}
 		path+=SEP + dirs[dirs.length-1];
@@ -85,13 +85,14 @@ public class MarkdownDocument extends Observable
 			BufferedWriter buffer = new BufferedWriter(new FileWriter(path));
 			buffer.write(text);
 			buffer.close();
+
+			System.err.println("File "+path+" saved.");
 		}
 		catch (IOException e)
 		{
 			System.err.println("IO Error : cannot write md file ("+path+")");
 		}
 		
-		System.err.println("File "+path+" saved.");
 	}
 
 	public String getText()
