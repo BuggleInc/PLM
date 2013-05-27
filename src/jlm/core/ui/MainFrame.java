@@ -3,6 +3,7 @@ package jlm.core.ui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -28,6 +29,8 @@ import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
@@ -69,6 +72,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	private JButton resetButton;
 	private JButton demoButton;
     private JToggleButton helpMeButton;
+    private JButton exportButton;
 	private LoggerPanel outputArea;
 
 	private JMenuItem menuItem_teach,menuItem_lesson,menuItem_world;
@@ -178,7 +182,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new FileNameExtensionFilter("JLM lesson files", "jlm"));
+				fc.setFileFilter(new FileNameExtensionFilter("JAR file", "jar"));
 				fc.setDialogType(JFileChooser.OPEN_DIALOG);
 				fc.showOpenDialog(MainFrame.getInstance());
 				File selectedFile = fc.getSelectedFile();
@@ -408,6 +412,23 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         helpMeButton = new PropagatingToggleButton(new HelpMe(g, "Help",
                 ResourcesCache.getIcon("resources/alert.png")));
+        
+        // export button
+        exportButton = new JButton();
+        exportButton.setBorderPainted(false);
+        exportButton.setText("Export");
+        exportButton.setIcon(ResourcesCache.getIcon("resources/export.png"));
+        exportButton.addActionListener(new ActionListener()
+		{
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				AbstractAboutDialog dialog = new ExportLessonDialog(MainFrame.getInstance());
+				dialog.show();
+			}
+		});
+        exportButton.setMnemonic(KeyEvent.VK_E);
+        exportButton.setEnabled(true);
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);
@@ -415,6 +436,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.add(resetButton);
 		toolBar.add(demoButton);
         toolBar.add(helpMeButton);
+        toolBar.add(exportButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 	}
