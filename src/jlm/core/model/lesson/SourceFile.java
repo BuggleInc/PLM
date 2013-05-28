@@ -122,7 +122,7 @@ public class SourceFile {
 
 	public int getOffset() {
 		if (template != null) {
-			return template.split("\n").length;
+			return template.split("\n").length -1;
 		}
 		return 0;
 	}
