@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-25 09:14+0200\n"
-"PO-Revision-Date: 2013-05-24 10:32+0100\n"
+"POT-Creation-Date: 2013-05-28 21:45+0200\n"
+"PO-Revision-Date: 2013-05-28 21:46+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
-#: src/jlm/core/model/Game.java:296 src/jlm/core/model/Game.java:328
+#: src/jlm/core/model/Game.java:295 src/jlm/core/model/Game.java:327
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
@@ -29,16 +29,16 @@ msgstr "Demander de l'aide à l'enseignant"
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
-#: src/jlm/core/model/LessonRunner.java:85
+#: src/jlm/core/model/LessonRunner.java:86
 msgid "Congratulations, you passed this test."
 msgstr "Félicitation, vous avez réussi ce test."
 
-#: src/jlm/core/model/LessonRunner.java:85
-#: src/jlm/core/model/LessonRunner.java:91
+#: src/jlm/core/model/LessonRunner.java:86
+#: src/jlm/core/model/LessonRunner.java:92
 msgid "Exercice passed \\o/"
 msgstr "Exercice réussi \\o/"
 
-#: src/jlm/core/model/LessonRunner.java:90
+#: src/jlm/core/model/LessonRunner.java:91
 msgid ""
 "Congratulations, you passed this test. Which exercise will you do now?\n"
 msgstr ""
@@ -58,7 +58,7 @@ msgstr "Fermer"
 msgid "About lesson - "
 msgstr "À propos de la leçon - "
 
-#: src/jlm/core/ui/AboutWorldDialog.java:28
+#: src/jlm/core/ui/AboutWorldDialog.java:29
 msgid "About world - "
 msgstr "À propos du monde - "
 
@@ -74,31 +74,31 @@ msgstr "Vous n'avez pas atteint votre objectif"
 msgid "Compilation error"
 msgstr "Erreur de compilation"
 
-#: src/jlm/core/ui/ExerciseView.java:72
+#: src/jlm/core/ui/ExerciseView.java:73
 msgid "Switch the displayed world"
 msgstr "Changer le monde affiché"
 
-#: src/jlm/core/ui/ExerciseView.java:82
+#: src/jlm/core/ui/ExerciseView.java:83
 msgid "Change the speed of execution"
 msgstr "Changer la vitesse d'exécution"
 
-#: src/jlm/core/ui/ExerciseView.java:89 src/jlm/core/ui/ExerciseView.java:161
+#: src/jlm/core/ui/ExerciseView.java:90 src/jlm/core/ui/ExerciseView.java:162
 msgid "World"
 msgstr "Monde"
 
-#: src/jlm/core/ui/ExerciseView.java:90 src/jlm/core/ui/ExerciseView.java:162
+#: src/jlm/core/ui/ExerciseView.java:91 src/jlm/core/ui/ExerciseView.java:163
 msgid "Current world"
 msgstr "Monde courant"
 
-#: src/jlm/core/ui/ExerciseView.java:94 src/jlm/core/ui/ExerciseView.java:164
+#: src/jlm/core/ui/ExerciseView.java:95 src/jlm/core/ui/ExerciseView.java:165
 msgid "Objective"
 msgstr "Objectif"
 
-#: src/jlm/core/ui/ExerciseView.java:95 src/jlm/core/ui/ExerciseView.java:165
+#: src/jlm/core/ui/ExerciseView.java:96 src/jlm/core/ui/ExerciseView.java:166
 msgid "Target world"
 msgstr "Monde attendu après exécution du code"
 
-#: src/jlm/core/ui/ExerciseView.java:103
+#: src/jlm/core/ui/ExerciseView.java:104
 msgid "Switch the entity"
 msgstr "Changer d'entité"
 
@@ -365,27 +365,3 @@ msgstr "Accéder à la vue temporelle"
 #: src/jlm/universe/sort/SortingWorldView.java:55
 msgid "Switch to state view"
 msgstr "Accéder à la vue d'état"
-
-#~ msgid "Load a lesson from file"
-#~ msgstr "Charger un leçon depuis un fichier"
-
-#, fuzzy
-#~ msgid "Cannot load a lesson now"
-#~ msgstr "Je ne peux pas charger de leçon ????"
-
-#~ msgid "Go to another lesson"
-#~ msgstr "Accéder à une autre leçon"
-
-#, fuzzy
-#~ msgid "Cannot switch lesson now"
-#~ msgstr "Je ne peux pas changer de leçon ????"
-
-#~ msgid "Display more debug message in logs"
-#~ msgstr "Afficher plus de messages de débogage dans les logs"
-
-#, fuzzy
-#~ msgid "Cannot switch debug mode now"
-#~ msgstr "Je ne peux pas changer de mode de débogage ????"
-
-#~ msgid "Switching language to {0}."
-#~ msgstr "Changement de la langue vers {0}."

@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: JLM mission texts\n"
 "POT-Creation-Date: 2013-05-25 09:13+0300\n"
-"PO-Revision-Date: 2013-05-16 14:29+0200\n"
+"PO-Revision-Date: 2013-05-28 21:47+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -334,14 +334,10 @@ msgstr "boolean isSmaller(int i, int j)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:13
-#, fuzzy
-#| msgid ""
-#| "Returns true if the content of cell i is smaller than the one of cell j"
 msgid ""
 "Returns true if the content of cell i is strictly smaller than the one of "
 "cell j"
-msgstr ""
-"Retourne vrai ssi le contenu de la case i est inférieur à celui de la case j"
+msgstr "Retourne vrai ssi le contenu de la case i est strictement inférieur à celui de la case j"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:13
@@ -355,13 +351,10 @@ msgstr "boolean isSmallerThan(int i, int val)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:14
-#, fuzzy
-#| msgid "Returns true if the content of cell i is smaller than value val"
 msgid ""
 "Returns true if the content of cell i is strictly smaller than value "
 "<code>val</code>"
-msgstr ""
-"Retourne vrai ssi le contenu de la case i est inférieur à la valeur val"
+msgstr "Retourne vrai ssi le contenu de la case i est strictement inférieur à la valeur val"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:14
