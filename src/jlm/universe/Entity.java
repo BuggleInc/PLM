@@ -221,6 +221,10 @@ public abstract class Entity {
 					
 					if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
 						msg.append("NameError raised: You seem to use a non-existent identifier; Please check for typos\n");
+						msg.append(cause.value+"\n");
+					} else if (cause.type.toString().equals("<type 'exceptions.TypeError'>")) {
+						msg.append("TypeError raised: you are probably misusing a function or something.\n");
+						msg.append(cause.value+"\n");
 						
 						/* FIXME: how could we factorize the world's error? */ 
 					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
