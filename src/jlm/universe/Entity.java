@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -15,6 +13,9 @@ import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.universe.lightbot.LightBotEntity;
+
+import org.python.core.PyException;
+import org.python.core.PyTraceback;
 
 public abstract class Entity {
 	protected String name;
@@ -186,27 +187,81 @@ public abstract class Entity {
 					
 				
 				String script = getScript(progLang);
+				
+				if (Game.getInstance().isDebugEnabled())
+					System.err.println("Here is the script >>>>"+script+"<<<<");
+				
 				if (script == null) 
 					System.err.println("No "+progLang+" script source for entity "+this);
 				else 
 					engine.eval(script);
 			}
 		} catch (ScriptException e) {
-			String msg = e.getCause().toString();
-			
-			if (Game.getInstance().isDebugEnabled())
-				System.err.println(">>> Original error message\n"+msg+"<<<\n");
-			Pattern location = Pattern.compile("File .<script>., line (\\d*), (.*)", Pattern.DOTALL);  
-			Matcher locationMatcher = location.matcher(msg);
-			
-			if (locationMatcher.find()) {
-				progress.setCompilationError( "Error in entity "+getName()+" at line "+
-						(Integer.parseInt(locationMatcher.group(1)) - getScriptOffset(progLang)+1)+
-						", "+locationMatcher.group(2));
-			} else {
-				progress.setCompilationError( e.getCause().toString() );
+			if (e.getCause() instanceof PyException) { // This seem to be all exceptions raised by python
+				PyException cause = (PyException) e.getCause();
+				
+				StringBuffer msg = new StringBuffer();
+	
+				if (Game.getInstance().isDebugEnabled()) {
+					System.err.println("CAUSE: "+cause.value.toString());
+					System.err.println("MSG: "+e.getMessage());
+					System.err.println("BT: "+msg);
+				}
+				
+				//if (__builtin__.isinstance(cause.value, Py.SyntaxError)) {
+				//	System.err.println("cleanly found a syntaxerror");
+				//}
+				
+				if (cause.type.toString().equals("<type 'exceptions.SyntaxError'>")) {
+					msg.append("Syntax error at line "+((cause.value.__findattr__("lineno").asInt())-getScriptOffset(Game.PYTHON))
+							+": "+cause.value.__findattr__("msg")+"\n");
+					msg.append("In doubt, check your indentation, and that you don't mix tabs and spaces\n");
+					
+				} else { /* It makes sense to display a backtrace for any errors but syntax ones */
+					
+					if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
+						msg.append("NameError raised: You seem to use a non-existent identifier; Please check for typos\n");
+						
+						/* FIXME: how could we factorize the world's error? */ 
+					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
+						msg.append("Error: there is no baggle to pickup under the buggle");
+					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.AlreadyHaveBaggleException'>")) {
+						msg.append("Error: a buggle cannot carry more than one baggle at the same time");
+					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleInOuterSpaceException'>")) {
+						msg.append("Error: your buggle just teleported to the outer space...");
+					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleWallException'>")) {
+						msg.append("Error: your buggle just hit a wall. That hurts.");
+						
+					} else {
+						msg.append("Unknown error (please report): "+cause.type.toString()+"\n");
+						msg.append("Its value is: "+cause.value+"\n");
+
+					}
+				
+
+					/* The following is very inspired from <jython>/src/org/python/core/PyTraceback.java, 
+					 * even if we cannot reuse directly this implementation since we want to change all linenos on the fly. 
+					 */
+					PyTraceback tb = cause.traceback;
+					while (tb != null) {
+						tb.tb_lineno-= getScriptOffset(Game.PYTHON);
+						if (tb.tb_frame == null || tb.tb_frame.f_code == null) {
+							msg.append(String.format("  (no code object) at line %s\n", tb.tb_lineno));
+						} else {
+							msg.append(String.format("  File \"%.500s\", line %d, in %.500s\n",
+									tb.tb_frame.f_code.co_filename, tb.tb_lineno, tb.tb_frame.f_code.co_name));
+						}
+						tb = (PyTraceback) tb.tb_next;
+					}
+				}				
+				progress.setCompilationError(msg.toString());
 			}
 		} catch (Exception e) {
+			String msg = "Script evaluation raised an exception that is not a ScriptEsception but a "+e.getClass()
+							+".\n Please report this as a bug against JLM, with all details allowing to reproduce it.";
+
+			System.err.println(msg);
+			progress.setCompilationError(msg);
 			e.printStackTrace();
 		}
 
