@@ -10,7 +10,7 @@ public class OccurrenceOfValueEntity extends ArrayEntity {
 	}
 
 	/* BEGIN TEMPLATE */
-	// computes the occurrences of the value 'lookingFor' contained in tab variable
+	// counts the occurrences of the value 'lookingFor' contained in tab variable
 	public int occurrences(int[] tab, int lookingFor) {
 		/* BEGIN SOLUTION */
 		int count = 0;
