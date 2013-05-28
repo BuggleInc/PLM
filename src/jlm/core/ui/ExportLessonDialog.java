@@ -224,11 +224,12 @@ public class ExportLessonDialog extends AbstractAboutDialog
 	private void createLessonChooserComboBox()
 	{
 		String [] packages = SAVE_DIR.list();
-		for(String s:packages)
-		{
-			if(!s.equals(".DS_Store"))
-				combo.addItem(s);
-		}
+		if(packages != null && packages.length>0)
+			for(String s:packages)
+			{
+				if(!s.equals(".DS_Store"))
+					combo.addItem(s);
+			}
 	}
 
 	private void copyFile(InputStream input, String localPath, String path, String file)

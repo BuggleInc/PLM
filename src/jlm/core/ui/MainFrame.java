@@ -423,7 +423,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				AbstractAboutDialog dialog = new ExportLessonDialog(MainFrame.getInstance());
+				ExportLessonDialog dialog = new ExportLessonDialog(MainFrame.getInstance());
 				if(Global.admin)
 					dialog.show();
 				else
