@@ -1,14 +1,12 @@
 package lessons.welcome.array.indexof.value;
 
 import jlm.universe.array.ArrayEntity;
-import jlm.universe.array.ArrayWorld;
 
 public class IndexOfValueEntity extends ArrayEntity {
 
 	@Override
 	public void run() {
-		ArrayWorld w = (ArrayWorld) this.getWorld();
-		this.result = this.indexOf(w.getValues(), 17);
+		setResult( indexOf(getValues(), 17) );
 	}
 
 	/* BEGIN TEMPLATE */

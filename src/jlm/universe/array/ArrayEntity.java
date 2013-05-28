@@ -37,6 +37,12 @@ public class ArrayEntity extends Entity {
 	public int getResult() {
 		return this.result;
 	}
+	public void setResult(int r) {
+		result = r;
+	}
+	public int[] getValues() {
+		return ((ArrayWorld) world).getValues();
+	}
 	
 	@Override
 	public boolean equals(Object o) {

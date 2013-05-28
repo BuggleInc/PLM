@@ -1,14 +1,12 @@
 package lessons.welcome.array.occurenceofvalue;
 
 import jlm.universe.array.ArrayEntity;
-import jlm.universe.array.ArrayWorld;
 
 public class OccurrenceOfValueEntity extends ArrayEntity {
 
 	@Override
 	public void run() {
-		ArrayWorld w = (ArrayWorld) this.getWorld();
-		this.result = this.occurrences(w.getValues(), 17);
+		setResult( occurrences(getValues(), 17) );
 	}
 
 	/* BEGIN TEMPLATE */

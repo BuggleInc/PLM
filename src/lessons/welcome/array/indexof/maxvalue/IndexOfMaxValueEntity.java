@@ -1,14 +1,12 @@
 package lessons.welcome.array.indexof.maxvalue;
 
 import jlm.universe.array.ArrayEntity;
-import jlm.universe.array.ArrayWorld;
 
 public class IndexOfMaxValueEntity extends ArrayEntity {
 
 	@Override
 	public void run() {
-		ArrayWorld w = (ArrayWorld) this.getWorld();
-		this.result = this.indexOfMaximum(w.getValues());
+		setResult( indexOfMaximum(getValues()) );
 	}
 
 	/* BEGIN TEMPLATE */

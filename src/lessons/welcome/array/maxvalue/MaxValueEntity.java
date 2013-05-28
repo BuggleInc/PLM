@@ -1,14 +1,12 @@
 package lessons.welcome.array.maxvalue;
 
 import jlm.universe.array.ArrayEntity;
-import jlm.universe.array.ArrayWorld;
 
 public class MaxValueEntity extends ArrayEntity {
 
 	@Override
 	public void run() {
-		ArrayWorld w = (ArrayWorld) this.getWorld();
-		this.result = this.maximum(w.getValues());
+		setResult( maximum(getValues()) );
 	}
 
 	/* BEGIN TEMPLATE */
