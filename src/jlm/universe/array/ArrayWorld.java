@@ -3,7 +3,9 @@ package jlm.universe.array;
 import java.util.Arrays;
 
 import javax.script.ScriptEngine;
+import javax.script.ScriptException;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
@@ -59,8 +61,17 @@ public class ArrayWorld extends World {
 		this.values = newValues;
 	}
 	@Override
-	public void setupBindings(ProgrammingLanguage lang,ScriptEngine e) {
-		throw new RuntimeException("No binding of ArrayWorld for "+lang);
+	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
+		if (lang.equals(Game.PYTHON)) {
+			engine.eval(
+					"def getValues():\n"+
+					"	return entity.getValues()\n"+
+					"def setResult(i):\n"+
+					"	return entity.setResult(i)\n"
+					);
+		} else {
+			throw new RuntimeException("No binding of ArrayWorld for "+lang);
+		}
 	}
 
 	@Override
