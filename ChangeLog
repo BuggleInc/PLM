@@ -1,3 +1,10 @@
+20130529a:
+  * Really kill jung in the source code too so that distributed jar
+    files actually work -- sorry.
+20130529:
+  * Reintroduce the student progression listeners. It was turned off
+    for the debugging process, but that shouldnt be part of a released
+    version.
 20130528:
   * New lesson navigator based on JTree (fix #71)
   * Better looking icons, with known licenses

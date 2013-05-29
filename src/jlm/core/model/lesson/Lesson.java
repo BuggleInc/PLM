@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 
 import jlm.core.model.FileUtils;
 
-import org.apache.commons.collections15.Factory;
 
 public abstract class Lesson {
 	private String name;
@@ -32,12 +31,6 @@ public abstract class Lesson {
 	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
 	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 
-	Factory<Integer> edgeFactory = new Factory<Integer>() {
-		int i=0;
-		public Integer create() {
-			return i++;
-		}};
-	
 	public Lesson() {
 		loadExercises(); /* FIXME: remove this line when session savers can deal with laziness */
 		
