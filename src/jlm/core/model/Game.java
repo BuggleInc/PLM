@@ -139,8 +139,10 @@ public class Game implements IWorldView {
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			if (pl.getLang().equals(defaultProgrammingLanguage)) {
 				setProgramingLanguage(pl);
+				/*
 				System.err.println("Student progression listeners are disabled in this version.");
-				return ; 
+				return ;
+				*/ 
 			}
 		}
 
