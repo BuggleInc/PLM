@@ -86,46 +86,50 @@ public class BatTest {
 	
 	private String name = null;
 
-	
+	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
+		if (o instanceof String[]) {
+			sb.append("{");
+			String[]a = (String[]) o;
+			for (String i:a) {
+				sb.append(i+",");
+			}
+			sb.deleteCharAt(sb.length()-1);
+			sb.append("}");					
+		} else if (o.getClass().isArray()){
+			sb.append("{");
+			if (o.getClass().getComponentType().equals(Integer.TYPE)) {
+				int[]a = (int[]) o;
+				for (int i:a) {
+					sb.append(i+",");
+				}
+			} else {
+				throw new RuntimeException("Unhandled internal type (only integer arrays are handled so far)");
+			}
+			sb.deleteCharAt(sb.length()-1);
+			sb.append("}");					
+		} else if (o instanceof Boolean && pl.equals(Game.PYTHON)){
+			Boolean b = (Boolean) o;
+			if (b) {
+				sb.append("True");
+			} else {
+				sb.append("False");
+			}
+		} else if (o instanceof String && pl.equals(Game.PYTHON)) {
+			sb.append("\""+o+"\"");
+		} else {
+			sb.append(o.toString());
+		}		
+	}
 	public String getName() {
 		ProgrammingLanguage pl = Game.getProgrammingLanguage();
 		if (name == null) {
 			StringBuffer sb=new StringBuffer(funName+"(");
 			
 			for (Object o:parameters) {
-				if (o instanceof String[]) {
-					sb.append("{");
-					String[]a = (String[]) o;
-					for (String i:a) {
-						sb.append(i+",");
-					}
-					sb.deleteCharAt(sb.length()-1);
-					sb.append("},");					
-				} else if (o.getClass().isArray()){
-					sb.append("{");
-					if (o.getClass().getComponentType().equals(Integer.TYPE)) {
-						int[]a = (int[]) o;
-						for (int i:a) {
-							sb.append(i+",");
-						}
-					} else {
-						throw new RuntimeException("Unhandled internal type (only integer arrays are handled so far)");
-					}
-					sb.deleteCharAt(sb.length()-1);
-					sb.append("},");					
-				} else if (o instanceof Boolean && pl.equals(Game.PYTHON)){
-					Boolean b = (Boolean) o;
-					if (b) {
-						sb.append("True,");
-					} else {
-						sb.append("False,");
-					}
-				} else if (o instanceof String && pl.equals(Game.PYTHON)) {
-					sb.append("\""+o+"\",");
-				} else {
-					sb.append(o.toString()+",");
-				}
+				displayParameter(o, sb, pl);
+				sb.append(",");
 			}
+			
 			sb.deleteCharAt(sb.length()-1);
 			sb.append(")");					
 			name=sb.toString();
@@ -138,11 +142,20 @@ public class BatTest {
 	}
 	
 	public String toString() {
-		return name+"="+result+" (expected "+expected+")";
+		ProgrammingLanguage pl = Game.getProgrammingLanguage();
+		StringBuffer res = new StringBuffer(name);
+		res.append("=");
+		displayParameter(result, res, pl);
+		res.append(" (expected ");
+		displayParameter(expected, res, pl);
+		res.append(")");
+		return res.toString();
 	}
 	public String getResult() {
 		if (result !=null) {
-			return result.toString();
+			StringBuffer sb = new StringBuffer();
+			displayParameter(result, sb, Game.getProgrammingLanguage());
+			return sb.toString();
 		} else {
 			return "(null)";
 		}
