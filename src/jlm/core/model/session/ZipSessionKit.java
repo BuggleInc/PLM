@@ -31,17 +31,13 @@ import jlm.core.model.lesson.SourceFileRevertable;
 public class ZipSessionKit implements ISessionKit {
 
 	private Game game;
-
-	private static String HOME_DIR = System.getProperty("user.home");
-	private static String SEP = System.getProperty("file.separator");
-	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".jlm");
-
+	
 	public ZipSessionKit(Game game) {
 		this.game = game;
 	}
 
 	private File openSaveFile(File path, Lesson lesson) {
-		return new File(path==null?SAVE_DIR:path, "jlm-"+lesson.getId()+".zip");
+		return new File(path, "jlm-"+lesson.getId()+".zip");
 	}
 
 	@Override
@@ -57,9 +53,9 @@ public class ZipSessionKit implements ISessionKit {
 	}
 
 	@Override
-	public void cleanAll() {
+	public void cleanAll(File path) {
 		for (Lesson lesson : this.game.getLessons())
-			cleanLesson(lesson);
+			cleanLesson(path, lesson);
 	}
 
 	@Override
@@ -238,29 +234,14 @@ public class ZipSessionKit implements ISessionKit {
 	}
 
 	@Override
-	public void cleanLesson(Lesson lesson) {
-		File saveFile = openSaveFile(null, lesson);
+	public void cleanLesson(File path, Lesson lesson) {
+		File saveFile = openSaveFile(path, lesson);
 
 		if (saveFile.exists()) {
 			if (saveFile.delete()) {
 				Logger.log("ZipSessionKit:cleanup", "cannot remove session store directory");
 			}
 		}
-	}
-
-	@Override
-	public void storeAll() throws UserAbortException {
-		storeAll(null);
-	}
-
-	@Override
-	public void loadAll() {
-		loadAll(null);
-	}
-
-	@Override
-	public String getSavingLocation() {
-		return SAVE_DIR.getAbsolutePath();
 	}
 
 }
