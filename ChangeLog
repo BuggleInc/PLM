@@ -1,3 +1,5 @@
+20130530:
+  * Make sure that jarfiles compiled with Java 6 also work with Java 7
 20130529a:
   * Really kill jung in the source code too so that distributed jar
     files actually work -- sorry.

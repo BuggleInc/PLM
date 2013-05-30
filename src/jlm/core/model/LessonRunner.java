@@ -78,12 +78,16 @@ public class LessonRunner extends Thread {
 			game.setState(Game.GameState.EXECUTION_ENDED);
 		}
 		
-		if (exo.lastResult.totalTests == exo.lastResult.passedTests) {
+		if (   exo.lastResult.totalTests > 0 
+			&& exo.lastResult.totalTests == exo.lastResult.passedTests) {
 			Game.getInstance().studentWork.setPassed(exo.getId(), null, true);
 			
 			Vector<Lecture> nextExercises =  exo.getDependingLectures();	
 			if ( nextExercises.size() == 0) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Congratulations, you passed this test."), i18n.tr("Exercice passed \\o/"), 
+				JOptionPane.showMessageDialog(null, 
+						i18n.tr("Congratulations, you passed this exercise.\n {0} tests passed.\n",
+								exo.lastResult.passedTests) + exo.lastResult.details, 
+						i18n.tr("Exercice passed \\o/"), 
 						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("resources/success.png"));
 			} else {
 				
