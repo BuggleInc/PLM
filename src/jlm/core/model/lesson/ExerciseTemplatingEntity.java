@@ -15,6 +15,7 @@ import jlm.universe.World;
 
 public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	protected Map<ProgrammingLanguage,String> corrections = new HashMap<ProgrammingLanguage, String>();
+	private boolean isSetup = false;
 	
 	public ExerciseTemplatingEntity(Lesson lesson) {
 		super(lesson);
@@ -40,8 +41,14 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		sf.setTemplate("$package "+template+" "+sf.getTemplate()+" $body }");
 		//System.out.println("New template: "+sf.getTemplate());
 		computeAnswer();
+		isSetup  = true;
 	}
 	protected void langTemplate(ProgrammingLanguage pl, String entName, String initialCode, String correction) {
+		/* The following test is intended to make sure that this function is called before setup() right above.
+		 * This is because setup() needs all programming languages to be declared when it runs */
+		if (isSetup)
+			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template");
+		
 		newSource(pl, entName, initialCode, "$body");
 		corrections.put(pl, initialCode+correction);
 		addProgLanguage(pl);
