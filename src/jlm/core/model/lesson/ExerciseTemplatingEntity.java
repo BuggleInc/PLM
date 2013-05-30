@@ -41,10 +41,4 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		newSource(pl, entName, initialCode, "$body");
 		addProgLanguage(pl);
 	}
-	protected void computeAnswer() {
-		for (World aw : answerWorld) 
-			run(aw);
-	}
-
-	public abstract void run(World w);
 }
