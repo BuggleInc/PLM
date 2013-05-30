@@ -84,7 +84,9 @@ public class LessonRunner extends Thread {
 			
 			Vector<Lecture> nextExercises =  exo.getDependingLectures();	
 			if ( nextExercises.size() == 0) {
-				JOptionPane.showMessageDialog(null, i18n.tr("Congratulations, you passed this test."), i18n.tr("Exercice passed \\o/"), 
+				JOptionPane.showMessageDialog(null, 
+						i18n.tr("Congratulations, you passed this test.\n {0} of {0} tests passed.",exo.lastResult.passedTests,exo.lastResult.totalTests), 
+						i18n.tr("Exercice passed \\o/"), 
 						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("resources/success.png"));
 			} else {
 				
