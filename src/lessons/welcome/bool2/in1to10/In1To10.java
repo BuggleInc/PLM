@@ -25,10 +25,10 @@ public class In1To10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, true) ;
 		myWorld.addTest(INVISIBLE, -1, false) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "in1To10", 
 				"def in1To10(n, outsideMode):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

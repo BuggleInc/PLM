@@ -26,10 +26,10 @@ public class HasTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 11,22,22);
 
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "hasTeen", 
 				"def hasTeen(a, b, c):\n",
 				"");
+		setup(myWorld);
 	}
 
 

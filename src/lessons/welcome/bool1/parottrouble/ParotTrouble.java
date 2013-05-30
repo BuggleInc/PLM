@@ -23,10 +23,10 @@ public class ParotTrouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, true,20);
 
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "parotTrouble", 
 				"def parotTrouble(talking, hour):\n",
 				"");
+		setup(myWorld);
 	}
 
 

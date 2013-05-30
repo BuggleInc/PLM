@@ -27,10 +27,10 @@ public class In3050 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 35,45);
 
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "in3050", 
 				"def in3050(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 

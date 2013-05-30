@@ -17,10 +17,10 @@ public class MonkeyTrouble extends BatExercise {
 		myWorld.addTest(VISIBLE, true, false);
 		myWorld.addTest(INVISIBLE, false, true);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "monkeyTrouble", 
 				"def monkeyTrouble(aSmile, bSmile):\n",
 				"   return (aSmile and not bSmile) or (not aSmile and bSmile)\n");
+		setup(myWorld);
 	}
 
 

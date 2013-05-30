@@ -27,10 +27,10 @@ public class PosNeg extends BatExercise {
 		myWorld.addTest(INVISIBLE, -5,5,true);
 		myWorld.addTest(INVISIBLE, -5,-5,true);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "posNeg", 
 				"def posNeg(a, b, negative):\n",
 				"");
+		setup(myWorld);
 	}
 
 

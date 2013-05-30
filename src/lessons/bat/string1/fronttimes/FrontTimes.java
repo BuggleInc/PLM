@@ -18,10 +18,10 @@ public class FrontTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "", 4) ;
 		myWorld.addTest(INVISIBLE, "Abc", 0) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "frontTimes", 
 				"def frontTimes(str, n):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

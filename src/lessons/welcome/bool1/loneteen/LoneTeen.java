@@ -27,10 +27,10 @@ public class LoneTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 42,13);
 		myWorld.addTest(INVISIBLE, 42,42);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "loneTeen", 
 				"def loneTeen(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 

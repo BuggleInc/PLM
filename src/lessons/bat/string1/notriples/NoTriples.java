@@ -20,10 +20,10 @@ public class NoTriples extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "noTriples", 
 				"def noTriples(nums):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

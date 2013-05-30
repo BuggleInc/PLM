@@ -26,10 +26,10 @@ public class TeaParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 4) ;
 		myWorld.addTest(INVISIBLE, 10, 20) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "teaParty", 
 				"def teaParty(tea, candy):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

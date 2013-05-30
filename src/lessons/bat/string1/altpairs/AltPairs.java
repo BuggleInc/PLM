@@ -19,10 +19,10 @@ public class AltPairs extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "ThisThatTheOther") ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "altPairs", 
 				"def altPairs(str):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

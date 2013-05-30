@@ -24,10 +24,10 @@ public class Array667 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 5, 6}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 6, 6}) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "array667", 
 				"def array667(nums):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

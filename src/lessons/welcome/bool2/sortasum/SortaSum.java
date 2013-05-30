@@ -22,10 +22,10 @@ public class SortaSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 14, 7) ;
 		myWorld.addTest(INVISIBLE, 14, 6) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "sortaSum", 
 				"def sortaSum(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

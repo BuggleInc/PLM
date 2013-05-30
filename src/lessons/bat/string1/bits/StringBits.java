@@ -16,10 +16,10 @@ public class StringBits extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "Greetings") ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "stringBits", 
 				"def stringBits(str):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

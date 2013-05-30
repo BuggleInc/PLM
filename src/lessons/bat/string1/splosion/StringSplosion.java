@@ -18,10 +18,10 @@ public class StringSplosion extends BatExercise {
 		myWorld.addTest(INVISIBLE, "Good") ;
 		myWorld.addTest(INVISIBLE, "Bad") ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "stringSplosion", 
 				"def stringSplosion(str):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

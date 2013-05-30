@@ -25,10 +25,10 @@ public class TwoAsOne extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3, 3, 0) ;
 		myWorld.addTest(INVISIBLE, 3, 3, 2) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "twoAsOne", 
 				"def twoAsOne(a, b, c):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

@@ -20,10 +20,10 @@ public class SumDouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,0);
 		myWorld.addTest(INVISIBLE, 0,1);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "sumDouble", 
 				"def sumDouble(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 

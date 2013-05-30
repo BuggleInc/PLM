@@ -27,10 +27,10 @@ public class NearTen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3) ;
 		myWorld.addTest(INVISIBLE, 1) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "nearTen", 
 				"def nearTen(num):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

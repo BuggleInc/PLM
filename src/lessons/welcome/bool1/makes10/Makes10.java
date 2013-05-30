@@ -23,10 +23,10 @@ public class Makes10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10,42);
 		myWorld.addTest(INVISIBLE, 12,-2);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "makes10", 
 				"def makes10(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 

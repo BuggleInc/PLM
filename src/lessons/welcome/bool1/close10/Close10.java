@@ -22,10 +22,10 @@ public class Close10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,20);
 		myWorld.addTest(INVISIBLE, 10,10);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "close10", 
 				"def close10(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 

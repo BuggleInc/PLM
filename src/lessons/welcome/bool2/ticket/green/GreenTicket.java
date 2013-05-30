@@ -25,10 +25,10 @@ public class GreenTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 9, 9, 9) ;
 		myWorld.addTest(INVISIBLE, 9, 0, 9) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "greenTicket", 
 				"def greenTicket(a, b, c):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

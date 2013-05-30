@@ -19,10 +19,10 @@ public class AnswerCell extends BatExercise {
 		myWorld.addTest(INVISIBLE, false, true, false) ;
 		myWorld.addTest(INVISIBLE, true, true, true) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "answerCell", 
 				"def answerCell(isMorning, isMom, isAsleep):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

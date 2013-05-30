@@ -21,10 +21,10 @@ public class StringMatch extends BatExercise {
 		myWorld.addTest(INVISIBLE, "aaxxaaxx", "iaxxai") ;
 		myWorld.addTest(INVISIBLE, "iaxxai", "aaxxaaxx") ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "stringMatch", 
 				"def stringMatch(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

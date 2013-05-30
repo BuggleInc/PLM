@@ -26,10 +26,10 @@ public class CountTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 11,11,11,11);
 		myWorld.addTest(INVISIBLE, 15,15,15,15);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "countTeen", 
 				"def countTeen(a, b, c, d):\n",
 				"");
+		setup(myWorld);
 	}
 
 

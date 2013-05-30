@@ -18,10 +18,10 @@ public class ArrayCount9 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {4, 2, 4, 3, 1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {9, 2, 4, 3, 1}) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "arrayCount9", 
 				"def arrayCount9(nums):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

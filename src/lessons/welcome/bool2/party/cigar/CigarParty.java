@@ -24,10 +24,10 @@ public class CigarParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 40, true) ;
 		myWorld.addTest(INVISIBLE, 39, true) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "cigarParty", 
 				"def cigarParty(cigars, isWeekend):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

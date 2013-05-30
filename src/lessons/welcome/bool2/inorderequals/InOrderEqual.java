@@ -27,10 +27,10 @@ public class InOrderEqual extends BatExercise {
 		myWorld.addTest(INVISIBLE, 9, 2, 2, true) ;
 		myWorld.addTest(INVISIBLE, 0, 1, 0, true) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "inOrderEqual", 
 				"def inOrderEqual(a, b, c, equalOk):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

@@ -17,10 +17,10 @@ public class SleepIn extends BatExercise {
 		myWorld.addTest(INVISIBLE, false,true);
 		myWorld.addTest(INVISIBLE, true,true);
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "sleepIn", 
 				"def sleepIn(weekday, vacation):\n",
 				"    return not weekday or vacation\n");
+		setup(myWorld);
 	}
 
 

@@ -20,10 +20,10 @@ public class StringTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "code", 2) ;
 		myWorld.addTest(INVISIBLE, "code", 3) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "stringTimes", 
 				"def stringTimes(str, n):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

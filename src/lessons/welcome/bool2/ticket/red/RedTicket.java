@@ -24,10 +24,10 @@ public class RedTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, 2, 0) ;
 		myWorld.addTest(INVISIBLE, 1, 1, 2) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "redTicket", 
 				"def redTicket(a, b, c):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

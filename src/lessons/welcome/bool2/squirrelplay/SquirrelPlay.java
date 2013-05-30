@@ -26,10 +26,10 @@ public class SquirrelPlay extends BatExercise {
 		myWorld.addTest(INVISIBLE, 59, true) ;
 		myWorld.addTest(INVISIBLE, 60, false) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "squirrelPlay", 
 				"def squirrelPlay(temp, isSummer):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */

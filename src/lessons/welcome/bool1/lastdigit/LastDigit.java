@@ -18,10 +18,10 @@ public class LastDigit extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 0) ;
 		myWorld.addTest(INVISIBLE, 11, 0) ;
 
-		setup(myWorld);
 		langTemplate(Game.PYTHON, "lastDigit", 
 				"def lastDigit(a, b):\n",
 				"");
+		setup(myWorld);
 	}
 
 	/* BEGIN SKEL */
