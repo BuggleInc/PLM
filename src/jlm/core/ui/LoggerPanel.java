@@ -1,15 +1,18 @@
 package jlm.core.ui;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JTextArea;
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 
 public class LoggerPanel extends JTextArea implements LogWriter {
@@ -37,10 +40,21 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 
 	@Override
 	public void log(DiagnosticCollector<JavaFileObject> diagnostics) {
+		boolean warnedJava6= false;
+		Pattern isJava6Pattern = Pattern.compile("major version 51 is newer than 50, the highest major version supported by this compiler");
+		
 		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
 			String source = diagnostic.getSource() == null ? "(null)" : diagnostic.getSource().getName();
-			append(source+":"+diagnostic.getLineNumber()+":"+ diagnostic.getMessage(getLocale()));
-			append("\n");
+			String msg = diagnostic.getMessage(getLocale());
+			
+			Matcher isJava6Matcher = isJava6Pattern.matcher(msg);
+			if (isJava6Matcher.find()) {
+				if (!warnedJava6 && Game.getInstance().isDebugEnabled())
+					append("You are using a JLM jarfile that was compiled for Java 6, but you have a Java 7 runtime. This is *believed* to work.\n");
+				warnedJava6 = true;
+			} else {
+				append(source+":"+diagnostic.getLineNumber()+":"+ msg+"\n");
+			}
 		}
 	}
 

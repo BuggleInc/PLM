@@ -60,7 +60,7 @@ public class InMemoryCompiler {
 	// The compiler instance that this facade uses.
 	private JavaCompiler compiler;
 
-	// The compiler options (such as "-target" "1.5").
+	// The compiler options (such as "-target" "1.6").
 	private final List<String> options;
 
 	// collect compiler diagnostics in this instance.
