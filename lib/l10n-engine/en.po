@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-28 21:45+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2013-05-30 11:24+0200\n"
+"PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/jlm/core/model/Game.java:295 src/jlm/core/model/Game.java:327
+#: src/jlm/core/model/Game.java:297 src/jlm/core/model/Game.java:329
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
@@ -29,16 +29,21 @@ msgstr "Asking to the teacher for help"
 msgid "Cancel call for help to the teacher"
 msgstr "Cancel call for help to the teacher"
 
-#: src/jlm/core/model/LessonRunner.java:86
-msgid "Congratulations, you passed this test."
-msgstr "Congratulations, you passed this test."
+#: src/jlm/core/model/LessonRunner.java:88
+#, java-format
+msgid ""
+"Congratulations, you passed this exercise.\n"
+" {0} tests passed.\n"
+msgstr ""
+"Congratulations, you passed this exercise.\n"
+" {0} tests passed.\n"
 
-#: src/jlm/core/model/LessonRunner.java:86
-#: src/jlm/core/model/LessonRunner.java:92
+#: src/jlm/core/model/LessonRunner.java:90
+#: src/jlm/core/model/LessonRunner.java:96
 msgid "Exercice passed \\o/"
 msgstr "Exercice passed \\o/"
 
-#: src/jlm/core/model/LessonRunner.java:91
+#: src/jlm/core/model/LessonRunner.java:95
 msgid ""
 "Congratulations, you passed this test. Which exercise will you do now?\n"
 msgstr ""
@@ -101,7 +106,7 @@ msgstr "Target world"
 msgid "Switch the entity"
 msgstr "Switch the entity"
 
-#: src/jlm/core/ui/LoggerPanel.java:25
+#: src/jlm/core/ui/LoggerPanel.java:28
 msgid "Where error and other messages get written"
 msgstr "Where error and other messages get written"
 
