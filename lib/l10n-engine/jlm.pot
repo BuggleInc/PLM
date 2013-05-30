@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-28 22:07+0200\n"
+"POT-Creation-Date: 2013-05-30 10:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/jlm/core/model/Game.java:295 src/jlm/core/model/Game.java:327
+#: src/jlm/core/model/Game.java:297 src/jlm/core/model/Game.java:329
 msgid "Operation cancelled by the user"
 msgstr ""
 
@@ -72,31 +72,31 @@ msgstr ""
 msgid "Compilation error"
 msgstr ""
 
-#: src/jlm/core/ui/ExerciseView.java:73
+#: src/jlm/core/ui/ExerciseView.java:76 src/jlm/core/ui/ExerciseView.java:224
 msgid "Switch the displayed world"
 msgstr ""
 
-#: src/jlm/core/ui/ExerciseView.java:83
+#: src/jlm/core/ui/ExerciseView.java:86 src/jlm/core/ui/ExerciseView.java:225
 msgid "Change the speed of execution"
 msgstr ""
 
-#: src/jlm/core/ui/ExerciseView.java:90 src/jlm/core/ui/ExerciseView.java:162
+#: src/jlm/core/ui/ExerciseView.java:93 src/jlm/core/ui/ExerciseView.java:165
 msgid "World"
 msgstr ""
 
-#: src/jlm/core/ui/ExerciseView.java:91 src/jlm/core/ui/ExerciseView.java:163
+#: src/jlm/core/ui/ExerciseView.java:94 src/jlm/core/ui/ExerciseView.java:166
 msgid "Current world"
 msgstr ""
 
-#: src/jlm/core/ui/ExerciseView.java:95 src/jlm/core/ui/ExerciseView.java:165
+#: src/jlm/core/ui/ExerciseView.java:98 src/jlm/core/ui/ExerciseView.java:168
 msgid "Objective"
 msgstr ""
 
-#: src/jlm/core/ui/ExerciseView.java:96 src/jlm/core/ui/ExerciseView.java:166
+#: src/jlm/core/ui/ExerciseView.java:99 src/jlm/core/ui/ExerciseView.java:169
 msgid "Target world"
 msgstr ""
 
-#: src/jlm/core/ui/ExerciseView.java:104
+#: src/jlm/core/ui/ExerciseView.java:107 src/jlm/core/ui/ExerciseView.java:226
 msgid "Switch the entity"
 msgstr ""
 

@@ -1,5 +1,7 @@
 package jlm.core.ui;
 
+import java.util.Locale;
+
 import javax.swing.JTextArea;
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
@@ -8,11 +10,12 @@ import javax.tools.JavaFileObject;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
+import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 
 
-public class LoggerPanel extends JTextArea implements LogWriter {
+public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChangesListener {
 
 	private static final long serialVersionUID = 468774822833769775L;
 	
@@ -24,6 +27,7 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 		setEditable(false);
 		setToolTipText(i18n.tr("Where error and other messages get written"));
 		game.setOutputWriter(this);
+		game.addHumanLangListener(this);
 	}
 	
 	public void clear() {
@@ -68,6 +72,15 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 			}
 
 		}
+	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		// TODO Auto-generated method stub
+		i18n.setLocale(newLang);
+		
+		setToolTipText(i18n.tr("Where error and other messages get written"));
+		
 	}
 
 }

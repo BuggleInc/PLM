@@ -3,6 +3,7 @@ package jlm.core.ui;
 import java.awt.AWTKeyStroke;
 import java.awt.KeyboardFocusManager;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 import javax.swing.InputMap;
@@ -15,6 +16,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 
 import jlm.core.GameListener;
+import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
@@ -27,7 +29,7 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 
-public class ExerciseView extends JPanel implements GameListener {
+public class ExerciseView extends JPanel implements GameListener, HumanLangChangesListener {
 
 	private static final long serialVersionUID = 6649968807663790018L;
 	private Game game;
@@ -47,6 +49,7 @@ public class ExerciseView extends JPanel implements GameListener {
 		super();
 		this.game = game;
 		this.game.addGameListener(this);
+		this.game.addHumanLangListener(this);
 		initComponents();
 		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
 	}
@@ -209,6 +212,16 @@ public class ExerciseView extends JPanel implements GameListener {
 
 	public JTabbedPane getTabPane() {
 		return tabPane;
+	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		// TODO Auto-generated method stub
+		i18n.setLocale(newLang);
+		
+		worldComboBox.setToolTipText(i18n.tr("Switch the displayed world"));
+		speedSlider.setToolTipText(i18n.tr("Change the speed of execution"));
+		entityComboBox.setToolTipText(i18n.tr("Switch the entity"));
 	}
 	 
 }

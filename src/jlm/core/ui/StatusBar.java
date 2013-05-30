@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Locale;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -17,6 +18,7 @@ import javax.swing.Timer;
 
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
+import jlm.core.HumanLangChangesListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.StatusStateListener;
 import jlm.core.model.Game;
@@ -29,7 +31,7 @@ import jlm.universe.World;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
-public class StatusBar extends JPanel implements GameListener,GameStateListener,StatusStateListener, ProgLangChangesListener {
+public class StatusBar extends JPanel implements GameListener,GameStateListener,StatusStateListener, ProgLangChangesListener, HumanLangChangesListener {
 
 	private static final long serialVersionUID = 8443305863958273495L;
 	private Game game;
@@ -51,6 +53,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		game.addStatusStateListener(this);
 		game.addProgLangListener(this);
 		game.addGameListener(this);
+		this.game.addHumanLangListener(this);
 		initComponents();
 	}
 	
@@ -180,4 +183,11 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	public void selectedEntityHasChanged() { /* tell your mum */ }
 	@Override
 	public void selectedWorldWasUpdated() { /* go away */ }
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		// TODO Auto-generated method stub
+		// TODO Really necessary ? What clutz would want to change human language while working ???
+		
+	}
 }
