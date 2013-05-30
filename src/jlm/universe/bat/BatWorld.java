@@ -24,10 +24,6 @@ public class BatWorld extends World {
 		this.tests = new Vector<BatTest>();
 		for (BatTest t:w2.tests) 
 			tests.add(t.copy());
-		
-		BatEntity e = new BatEntity();
-		addEntity(e);
-		e.setWorld(this);
 	}
 	
 	@Override
