@@ -1,6 +1,7 @@
 package jlm.universe.bat;
 
 import java.util.List;
+import java.util.Vector;
 
 import jlm.core.model.lesson.ExerciseTemplatingEntity;
 import jlm.core.model.lesson.Lesson;
@@ -19,10 +20,10 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 			throw new RuntimeException("Bat exercises must have at most one world");
 		
 		String entName="no name";
-		for (World w : ws) {
-			entName = w.getName();
-			w.addEntity(new BatEntity());
-		}
+		entName = ws[0].getName();
+		
+		for (BatTest t : ((BatWorld)ws[0]).tests)
+			run(t);
 		
 		super.setup(ws,entName,
 				"import jlm.universe.bat.BatEntity; "+
@@ -33,40 +34,23 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	}
 	
 	@Override
-	protected void computeAnswer() {
-
-		BatWorld answer = (BatWorld) answerWorld.get(0);
-		BatWorld init = (BatWorld) initialWorld.get(0);
-		BatWorld curr = (BatWorld) currentWorld.get(0);
-		
-		for (int i=0;i<answer.tests.size();i++) {
-			BatTest currTest = answer.tests.get(i);
-			currTest.objectiveTest = true;
-			
-			run(currTest);
-			currTest.expected = currTest.result;
-			run(currTest); // generate a new result so that expected and result are not the same objects
-			init.tests.get(i).expected = currTest.result;
-			run(currTest); // and clone the result again			
-			curr.tests.get(i).expected = currTest.result;
-			run(currTest); // and clone the result again			
-		}
-		
-	}
-
-	@Override
 	public void runDemo(List<Thread> runnerVect){
 		/* No demo in bat exercises */
 	}
 
-	@Override
-	public void run(World w) {
-		for (BatTest currTest: ((BatWorld) w).tests) 
-			run(currTest);
-	}
 	public abstract void run(BatTest t);
+	
 	@Override 
 	public void mutateCorrection(WorldKind kind) {
-		/* nah, we don't mutate the entities in BatExercises */
+		Vector<World> worlds;
+		switch (kind) {
+		case INITIAL: worlds = initialWorld; break;
+		case CURRENT: worlds = currentWorld; break;
+		case ANSWER:  worlds = answerWorld;  break;
+		default: throw new RuntimeException("kind is invalid: "+kind);
+		}
+
+		for (BatTest t : ((BatWorld)worlds.get(0)).tests) 
+			t.objectiveTest = true;
 	}
 }

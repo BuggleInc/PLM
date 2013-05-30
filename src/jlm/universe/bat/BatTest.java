@@ -34,18 +34,22 @@ public class BatTest {
 	}
 	
 	public void setResult(Object r) {
-		result = r;
-		
-		if (expected != null)
-			correct = expected.equals(result);
-		answered = true;
+		if (expected == null) {
+			expected = r;
+		} else {
+			result = r;
+
+			if (expected != null)
+				correct = expected.equals(result);
+			answered = true;
+		}
 	}
 	public boolean isVisible() {
 		return visible;
 	}
 	
 	@Override
-	public boolean equals(Object o) {
+	public boolean equals(Object o) {  
 		if (!(o instanceof BatTest)) 
 			return false;
 		BatTest other = (BatTest) o;
@@ -58,17 +62,41 @@ public class BatTest {
 				//System.out.println("While comparing a Bat test, the parameter "+i+" differs: "+parameters[i]+" != "+other.parameters[i]);
 				return false;
 			}
-		if (result == null && other.result != null) {
-			//System.out.println("While comparing a Bat test, the result differs: null != "+other.result);
-			return false;			
-		}
-		if (result !=null && !result.equals(other.result)) {
-			//System.out.println("While comparing a Bat test, the result differs: "+result+" != "+other.result);
-			return false;
-		}
-		if (!expected.equals(other.expected)) {
-			//System.out.println("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
-			return false;
+		if (isObjective() && !other.isObjective()) {
+			/* We seem to be called as answer.equals(current) from the check() method. 
+			 * Act accordingly by comparing our expected to their result
+			 */
+			if (expected == null && other.result != null) {
+				return false;			
+			}
+			if (expected !=null && !expected.equals(other.result)) {
+				return false;
+			}
+		} else if (!isObjective() && other.isObjective()) {
+			/* We seem to be called as current.equals(answer). Weird I thought it was impossible. Anyway. */
+			if (result == null && other.expected != null) {
+				return false;			
+			}
+			if (result !=null && !result.equals(other.expected)) {
+				return false;
+			}
+		} else {
+			/* Act as an usual equal method as we don't seem to be called from check(). From the UI maybe? */
+			if (result == null && other.result != null) {
+				//System.out.println("While comparing a Bat test, the result differs: null != "+other.result);
+				return false;			
+			}
+			if (result !=null && !result.equals(other.result)) {
+				//System.out.println("While comparing a Bat test, the result differs: "+result+" != "+other.result);
+				return false;
+			}
+			if (expected == null && other.result != null) {
+				return false;			
+			}
+			if (expected != null && !expected.equals(other.expected)) {
+				//System.out.println("While comparing a Bat test, the expected value differs: "+expected+" != "+other.expected);
+				return false;
+			}
 		}
 		return true;
 	}
@@ -87,7 +115,9 @@ public class BatTest {
 	private String name = null;
 
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
-		if (o instanceof String[]) {
+		if (o == null) {
+			sb.append("null");
+		} else if (o instanceof String[]) {
 			sb.append("{");
 			String[]a = (String[]) o;
 			for (String i:a) {
@@ -143,7 +173,7 @@ public class BatTest {
 	
 	public String toString() {
 		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		StringBuffer res = new StringBuffer(name);
+		StringBuffer res = new StringBuffer(getName());
 		res.append("=");
 		displayParameter(result, res, pl);
 		res.append(" (expected ");
@@ -152,9 +182,13 @@ public class BatTest {
 		return res.toString();
 	}
 	public String getResult() {
-		if (result !=null) {
+		Object o = result;
+		if (isObjective())
+			o = expected;
+		
+		if (o != null) {
 			StringBuffer sb = new StringBuffer();
-			displayParameter(result, sb, Game.getProgrammingLanguage());
+			displayParameter(o, sb, Game.getProgrammingLanguage());
 			return sb.toString();
 		} else {
 			return "(null)";

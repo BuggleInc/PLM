@@ -14,12 +14,20 @@ public class BatWorld extends World {
 	
 	public BatWorld(String funName) {
 		super(funName);
+		
+		BatEntity e = new BatEntity();
+		addEntity(e);
+		e.setWorld(this);
 	}
 	public BatWorld(BatWorld w2) {
 		super(w2);
 		this.tests = new Vector<BatTest>();
 		for (BatTest t:w2.tests) 
 			tests.add(t.copy());
+		
+		BatEntity e = new BatEntity();
+		addEntity(e);
+		e.setWorld(this);
 	}
 	
 	@Override
@@ -42,7 +50,7 @@ public class BatWorld extends World {
 		}
 		for (int i=0;i<tests.size();i++)
 			if (!tests.get(i).equals(other.tests.get(i))) {
-				//System.out.println("Test "+i+" differs: "+tests.get(i)+" != "+other.tests.get(i));
+				//throw new RuntimeException("Test "+i+" differs: "+tests.get(i)+" != "+other.tests.get(i));
 				return false;
 			}
 		return true;
