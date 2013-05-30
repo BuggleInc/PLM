@@ -64,7 +64,7 @@ msgstr "À propos du monde - "
 
 #: src/jlm/core/ui/ExerciseFailedDialog.java:29
 msgid "Exercise failed /o\\"
-msgstr "Exercice raté \\o/"
+msgstr "Exercice raté /o\\"
 
 #: src/jlm/core/ui/ExerciseFailedDialog.java:38
 msgid "You didn't manage to reach your objective."
