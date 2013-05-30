@@ -20,7 +20,9 @@ public class StringX extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "stringX", "def stringX(str):\n");
+		langTemplate(Game.PYTHON, "stringX", 
+				"def stringX(str):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

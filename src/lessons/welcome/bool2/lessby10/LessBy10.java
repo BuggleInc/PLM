@@ -28,7 +28,9 @@ public class LessBy10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 8, 12) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "lessBy10", "def lessBy10(a, b, c):\n");
+		langTemplate(Game.PYTHON, "lessBy10", 
+				"def lessBy10(a, b, c):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

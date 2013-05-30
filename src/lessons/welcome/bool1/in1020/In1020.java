@@ -24,7 +24,9 @@ public class In1020 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 12,-2);
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "in1020", "def in1020(a, b):\n");
+		langTemplate(Game.PYTHON, "in1020", 
+				"def in1020(a, b):\n",
+				"");
 	}
 
 

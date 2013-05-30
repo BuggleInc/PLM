@@ -77,7 +77,10 @@ public class BatEntity extends Entity {
 						"import java.lang.System.err\n"+
 						"def log(a):\n"+
 						"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))\n");
-				engine.eval(getScript(Game.PYTHON));
+				String script = getScript(Game.PYTHON);
+				if (script == null)
+					throw new RuntimeException("No script found for "+Game.getInstance().getCurrentLesson().getCurrentExercise());
+				engine.eval(script);
 			} catch (ScriptException e1) {
 				progress.setCompilationError( e1.getCause().toString() );
 				e1.printStackTrace();

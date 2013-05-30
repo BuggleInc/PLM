@@ -21,7 +21,9 @@ public class IcyHot extends BatExercise {
 		myWorld.addTest(INVISIBLE, 120,120);
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "icyHot", "def icyHot(temp1, temp2):\n");
+		langTemplate(Game.PYTHON, "icyHot", 
+				"def icyHot(temp1, temp2):\n",
+				"");
 	}
 
 

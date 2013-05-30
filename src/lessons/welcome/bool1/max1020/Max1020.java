@@ -23,7 +23,9 @@ public class Max1020 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 17, 16) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "max1020", "def max1020(a, b):\n");
+		langTemplate(Game.PYTHON, "max1020", 
+				"def max1020(a, b):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

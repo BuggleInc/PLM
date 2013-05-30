@@ -28,7 +28,9 @@ public class In3050 extends BatExercise {
 
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "in3050", "def in3050(a, b):\n");
+		langTemplate(Game.PYTHON, "in3050", 
+				"def in3050(a, b):\n",
+				"");
 	}
 
 

@@ -24,7 +24,9 @@ public class Last2 extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "last2", "def last2(str):\n");
+		langTemplate(Game.PYTHON, "last2", 
+				"def last2(str):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

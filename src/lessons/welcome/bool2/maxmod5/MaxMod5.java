@@ -25,7 +25,9 @@ public class MaxMod5 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 1, 2) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "maxMod5", "def maxMod5(a, b):\n");
+		langTemplate(Game.PYTHON, "maxMod5", 
+				"def maxMod5(a, b):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

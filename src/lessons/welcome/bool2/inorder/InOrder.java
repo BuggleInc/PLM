@@ -26,7 +26,9 @@ public class InOrder extends BatExercise {
 		myWorld.addTest(INVISIBLE, 7, 5, 4, true) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "inOrder", "def inOrder(a, b, c, bOk):\n");
+		langTemplate(Game.PYTHON, "inOrder", 
+				"def inOrder(a, b, c, bOk):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

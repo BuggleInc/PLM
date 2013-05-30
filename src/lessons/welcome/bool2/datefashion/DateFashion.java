@@ -26,7 +26,9 @@ public class DateFashion extends BatExercise {
 		myWorld.addTest(INVISIBLE, 6, 2) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "dateFashion", "def dateFashion(you, date):\n");
+		langTemplate(Game.PYTHON, "dateFashion", 
+				"def dateFashion(you, date):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

@@ -25,7 +25,9 @@ public class NearHundred extends BatExercise {
 		myWorld.addTest(INVISIBLE, -100);
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "nearHundred", "def nearHundred(n):\n");
+		langTemplate(Game.PYTHON, "nearHundred", 
+				"def nearHundred(n):\n",
+				"");
 	}
 
 

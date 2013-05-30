@@ -22,7 +22,9 @@ public class Array123 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "array123", "def array123(nums):\n");
+		langTemplate(Game.PYTHON, "array123", 
+				"def array123(nums):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

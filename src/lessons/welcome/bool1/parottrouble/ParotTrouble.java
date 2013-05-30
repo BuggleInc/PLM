@@ -24,7 +24,9 @@ public class ParotTrouble extends BatExercise {
 
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "parotTrouble", "def parotTrouble(talking, hour):\n");
+		langTemplate(Game.PYTHON, "parotTrouble", 
+				"def parotTrouble(talking, hour):\n",
+				"");
 	}
 
 

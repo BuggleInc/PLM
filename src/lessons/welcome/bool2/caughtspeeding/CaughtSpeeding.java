@@ -26,7 +26,9 @@ public class CaughtSpeeding extends BatExercise {
 		myWorld.addTest(INVISIBLE, 90, false) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "caughtSpeeding", "def caughtSpeeding(speed, isBirthday):\n");
+		langTemplate(Game.PYTHON, "caughtSpeeding", 
+				"def caughtSpeeding(speed, isBirthday):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

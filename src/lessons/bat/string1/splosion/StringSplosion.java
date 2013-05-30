@@ -19,7 +19,9 @@ public class StringSplosion extends BatExercise {
 		myWorld.addTest(INVISIBLE, "Bad") ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "stringSplosion", "def stringSplosion(str):\n");
+		langTemplate(Game.PYTHON, "stringSplosion", 
+				"def stringSplosion(str):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

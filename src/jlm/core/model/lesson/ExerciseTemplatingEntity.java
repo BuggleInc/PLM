@@ -1,5 +1,8 @@
 package jlm.core.model.lesson;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.World;
@@ -11,6 +14,7 @@ import jlm.universe.World;
  */
 
 public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
+	protected Map<ProgrammingLanguage,String> corrections = new HashMap<ProgrammingLanguage, String>();
 	
 	public ExerciseTemplatingEntity(Lesson lesson) {
 		super(lesson);
@@ -37,8 +41,9 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		//System.out.println("New template: "+sf.getTemplate());
 		computeAnswer();
 	}
-	protected void langTemplate(ProgrammingLanguage pl, String entName, String initialCode) {
+	protected void langTemplate(ProgrammingLanguage pl, String entName, String initialCode, String correction) {
 		newSource(pl, entName, initialCode, "$body");
+		corrections.put(pl, initialCode+correction);
 		addProgLanguage(pl);
 	}
 }

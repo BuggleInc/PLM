@@ -26,7 +26,9 @@ public class WithoutDoubles extends BatExercise {
 		myWorld.addTest(INVISIBLE, 6, 1, false) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "withoutDoubles", "def withoutDoubles(die1, die2, noDoubles):\n");
+		langTemplate(Game.PYTHON, "withoutDoubles", 
+				"def withoutDoubles(die1, die2, noDoubles):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

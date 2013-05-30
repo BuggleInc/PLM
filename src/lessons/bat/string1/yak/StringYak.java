@@ -19,7 +19,9 @@ public class StringYak extends BatExercise {
 		myWorld.addTest(INVISIBLE, "xxxyakyyyakzzz") ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "stringYak", "def stringYak(str):\n");
+		langTemplate(Game.PYTHON, "stringYak", 
+				"def stringYak(str):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

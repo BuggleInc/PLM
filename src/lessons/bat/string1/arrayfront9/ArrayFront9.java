@@ -24,7 +24,9 @@ public class ArrayFront9 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {3, 9, 2, 3, 3}) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "arrayFront9", "def arrayFront9(nums):\n");
+		langTemplate(Game.PYTHON, "arrayFront9", 
+				"def arrayFront9(nums):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

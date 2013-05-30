@@ -3,6 +3,8 @@ package jlm.universe.bat;
 import java.util.List;
 import java.util.Vector;
 
+import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.ExerciseTemplatingEntity;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.World;
@@ -50,6 +52,11 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		default: throw new RuntimeException("kind is invalid: "+kind);
 		}
 
+		for (ProgrammingLanguage pl : getProgLanguages()) {
+			if (!pl.equals(Game.JAVA)) 
+				worlds.get(0).getEntity(0).setScript(pl, corrections.get(pl));
+		}
+		
 		for (BatTest t : ((BatWorld)worlds.get(0)).tests) 
 			t.objectiveTest = true;
 	}

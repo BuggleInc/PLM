@@ -25,7 +25,9 @@ public class Diff21 extends BatExercise {
 		myWorld.addTest(INVISIBLE, -21);
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "diff21", "def diff21(n):\n");		
+		langTemplate(Game.PYTHON, "diff21", 
+				"def diff21(n):\n",
+				"");		
 	}
 
 

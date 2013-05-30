@@ -23,7 +23,9 @@ public class AlarmClock extends BatExercise {
 		myWorld.addTest(INVISIBLE, 5, true) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "alarmClock", "def alarmClock(day, vacation):\n");
+		langTemplate(Game.PYTHON, "alarmClock", 
+				"def alarmClock(day, vacation):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

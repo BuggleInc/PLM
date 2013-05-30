@@ -24,7 +24,9 @@ public class ShareDigit extends BatExercise {
 		myWorld.addTest(INVISIBLE, 55, 44) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "shareDigit", "def shareDigit(a, b):\n");
+		langTemplate(Game.PYTHON, "shareDigit", 
+				"def shareDigit(a, b):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

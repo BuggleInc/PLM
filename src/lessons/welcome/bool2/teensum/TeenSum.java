@@ -30,7 +30,9 @@ public class TeenSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 6, 7) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "teenSum", "def teenSum(a, b):\n");
+		langTemplate(Game.PYTHON, "teenSum", 
+				"def teenSum(a, b):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

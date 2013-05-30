@@ -27,7 +27,9 @@ public class HasTeen extends BatExercise {
 
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "hasTeen", "def hasTeen(a, b, c):\n");
+		langTemplate(Game.PYTHON, "hasTeen", 
+				"def hasTeen(a, b, c):\n",
+				"");
 	}
 
 

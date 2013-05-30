@@ -21,7 +21,9 @@ public class StringTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "code", 3) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "stringTimes", "def stringTimes(str, n):\n");
+		langTemplate(Game.PYTHON, "stringTimes", 
+				"def stringTimes(str, n):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

@@ -26,7 +26,9 @@ public class BlueTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 8, 4, 1) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "blueTicket", "def blueTicket(a, b, c):\n");
+		langTemplate(Game.PYTHON, "blueTicket", 
+				"def blueTicket(a, b, c):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */

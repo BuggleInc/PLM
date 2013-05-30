@@ -24,7 +24,9 @@ public class Makes10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 12,-2);
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "makes10", "def makes10(a, b):\n");
+		langTemplate(Game.PYTHON, "makes10", 
+				"def makes10(a, b):\n",
+				"");
 	}
 
 

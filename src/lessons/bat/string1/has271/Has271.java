@@ -25,7 +25,9 @@ public class Has271 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {2, 7, -2, 4, 10, 2}) ;
 
 		setup(myWorld);
-		langTemplate(Game.PYTHON, "has271", "def has271(nums):\n");
+		langTemplate(Game.PYTHON, "has271",
+				"def has271(nums):\n",
+				"");
 	}
 
 	/* BEGIN SKEL */
