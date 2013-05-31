@@ -61,7 +61,7 @@ public abstract class Exercise extends Lecture {
 	public abstract void run(List<Thread> runnerVect);	
 	public abstract void runDemo(List<Thread> runnerVect);	
 	
-	public void check() throws Exception {
+	public void check() {
 		for (int i=0; i<currentWorld.size(); i++) {
 			currentWorld.get(i).notifyWorldUpdatesListeners();
 			

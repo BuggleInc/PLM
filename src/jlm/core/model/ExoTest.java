@@ -36,6 +36,8 @@ public class ExoTest {
 		
 		FileUtils.setLocale(new Locale("en"));
 		Game g = Game.getInstance();
+		
+		g.switchDebug();
 
 		/* Compute the answers with the java entities */
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
@@ -66,25 +68,26 @@ public class ExoTest {
 	/** Resets current world, populate it with the correction entity, and rerun it */
 	private void testCorrectionEntity() {
 		Game.getInstance().setCurrentExercise(exo);
-		ExecutionProgress progress = new ExecutionProgress();
+		exo.lastResult = new ExecutionProgress();
 		
 		exo.reset();
 		exo.mutateCorrection(WorldKind.CURRENT);
-		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
-			for (Entity ent: w.getEntities()) { 
-				ent.runIt(progress);
-				if (progress.compilationError != null) 
-					fail(exo.getClass().getSimpleName()+": compilation error: "+progress.compilationError);
-			}
 		
-		for (int worldRank=0; worldRank<exo.getWorldCount(); worldRank++) {
-			World current = exo.getWorlds(WorldKind.CURRENT).get(worldRank);
-			World answer  = exo.getWorlds(WorldKind.ANSWER).get(worldRank);
-			
-			if (!current.equals(answer))
-				fail(exo.getClass().getSimpleName()+":world["+worldRank+"] differs in "+
-						Game.getProgrammingLanguage()+":\n"+exo.getClass()+"\n"+answer.diffTo(current));
-		}		
+		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
+			for (Entity ent: w.getEntities())  
+				ent.runIt(exo.lastResult);
+
+		exo.check();
+		
+		if (exo.lastResult.compilationError != null)
+			fail(exo.getClass().getSimpleName()+": compilation error: "+exo.lastResult.compilationError);
+		
+		if (exo.lastResult.totalTests == 0 
+				|| exo.lastResult.totalTests != exo.lastResult.passedTests 
+				|| !exo.lastResult.details.equals("")) 
+			fail(exo.getClass().getSimpleName()+": failed exercise ("+
+				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.details+"'");
+
 	}
 	
 	@Test

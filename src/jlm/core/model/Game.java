@@ -789,9 +789,10 @@ public class Game implements IWorldView {
 	public void switchDebug() {
 		doDebug = !doDebug;
 		if (doDebug) {
+			Lesson l = Game.getInstance().getCurrentLesson();
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
-			System.out.println("Lesson: "+Game.getInstance().getCurrentLesson().getName());
-			System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
+			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
+			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
 			System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal")+" ("+Game.getProperty("jlm.major.version","internal")+"."+Game.getProperty("jlm.minor.version","")+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");

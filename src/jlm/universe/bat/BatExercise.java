@@ -24,6 +24,7 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		String entName="no name";
 		entName = ws[0].getName();
 		
+		/* Install the corrections: the first time setResult is called, it set 'expected' instead */
 		for (BatTest t : ((BatWorld)ws[0]).tests)
 			run(t);
 		
