@@ -70,7 +70,6 @@ public class Game implements IWorldView {
 	private GameState state = GameState.IDLE;
 
 	private final static String LOCAL_PROPERTIES_FILENAME = "jlm.properties";
-	private final static String LOCAL_PROPERTIES_SUBDIRECTORY = ".jlm";
 
 	private static Properties defaultGameProperties = new Properties();
 	private static Properties localGameProperties = new Properties();
@@ -801,12 +800,6 @@ public class Game implements IWorldView {
 	public boolean isDebugEnabled() {
 		return doDebug;
 	}
-
-    public static String getLocalPropertiesSubdirectory() {
-        return LOCAL_PROPERTIES_SUBDIRECTORY;
-    }
-
-
 
     /*
      * Getter and Setter for the course ID for the current session.
