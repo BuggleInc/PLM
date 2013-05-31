@@ -143,7 +143,7 @@ msgstr "Erreur"
 
 #: src/jlm/core/ui/MainFrame.java:198
 msgid "Switch lesson"
-msgstr "Changer de Leçon"
+msgstr "Sélectionner une leçon"
 
 #: src/jlm/core/ui/MainFrame.java:213
 msgid "Teacher Console"
