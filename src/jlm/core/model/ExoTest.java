@@ -26,8 +26,14 @@ import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class ExoTest {
-	static private String[] lessons = new String[] { "lessons.welcome" };
-	
+	static private String[] lessons = new String[] { 
+		"lessons.welcome", 
+//		"lessons.maze","lessons.bat.string1", 
+//		"lessons.sort", "lessons.recursion",
+		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
+//		"lessons.smn"
+		};
+
 	@BeforeClass
 	static public void setUpClass() {
 	}
@@ -106,8 +112,9 @@ public class ExoTest {
 	@Test
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) {
-			System.out.println("Exercise "+exo.getClass().getName()+" does not support python");
-			return;
+//			System.out.println("Exercise "+exo.getClass().getName()+" does not support python");
+//			return;
+			fail("Exercise "+exo.getClass().getName()+" does not support python");
 		}
 		
 		Game.getInstance().setProgramingLanguage(Game.PYTHON);
