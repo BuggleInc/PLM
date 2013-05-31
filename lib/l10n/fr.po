@@ -1959,11 +1959,11 @@ msgstr "Premiers pas"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Main.html:3
 msgid ""
-"This first lesson will lead your first steps in Java programming. It is "
+"This first lesson will lead your first steps in programming. It is "
 "intended for beginners. List of seen notions per exercise:"
 msgstr ""
-"Cette première leçon va vous guider dans vos premiers pas en programmation "
-"Java. Elle est destinée aux débutants en Java."
+"Cette première leçon va vous guider dans vos premiers pas en programmation. "
+"Elle est destinée aux débutants. Liste des notions vues par exercice :"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91
