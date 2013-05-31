@@ -85,7 +85,8 @@ public class ArrayWorld extends World {
 		for (Integer i : values)
 			sb.append(i+",");
 		sb.deleteCharAt(sb.length()-1);
-		sb.append("]");
+		sb.append("]->");
+		sb.append(((ArrayEntity)getEntity(0)).result);
 		
 		return sb.toString();
 	}

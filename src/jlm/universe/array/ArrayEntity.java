@@ -22,7 +22,9 @@ public class ArrayEntity extends Entity {
 
 	@Override
 	public Entity copy() {
-		return new ArrayEntity(this);
+		ArrayEntity e = new ArrayEntity(this);
+		e.result = result;
+		return e;
 	}
 	
 	
