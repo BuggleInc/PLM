@@ -75,7 +75,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JButton exoChangeButton;
     
     private JMenu menuFile;
-    private JMenuItem miFileLoad,miFileSwitch,miFileConsole=null,miFileCourse,miFileQuit;
+    private JMenuItem miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
     private JMenu menuSession;
     private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionDebug;
 
@@ -199,6 +199,17 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		});
 		miFileSwitch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 		menuFile.add(miFileSwitch);
+		
+		miFileExercise = new JMenuItem(new AbstractGameAction(g, i18n.tr("Switch exercise"), null, KeyEvent.VK_E) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ChooseLectureDialog();
+			}
+		});
+		miFileExercise.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+		menuFile.add(miFileExercise);
 		
 		// Teacher console menu item (shown only if defined in the JLM properties)
         if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
@@ -636,6 +647,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuFile.setText(i18n.tr("File"));
 		miFileLoad.setText(i18n.tr("Load lesson"));
 		miFileSwitch.setText(i18n.tr("Switch lesson"));
+		miFileExercise.setText(i18n.tr("Switch exercise"));
 		if (miFileConsole != null)
 			miFileConsole.setText(i18n.tr("Teacher Console"));
 		miFileCourse.setText(i18n.tr("Choose your course"));
