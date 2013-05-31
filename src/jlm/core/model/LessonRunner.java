@@ -54,16 +54,16 @@ public class LessonRunner extends Thread {
 			
 			game.setState(Game.GameState.EXECUTION_STARTED);
 			exo.reset();
+			
 			exo.run(runners);
-
 			while (runners.size()>0) {
 				Thread t = runners.remove(0);
 				t.join();
 			}
 			
+			exo.check();
 			game.setState(Game.GameState.EXECUTION_ENDED);
 
-			exo.check();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
