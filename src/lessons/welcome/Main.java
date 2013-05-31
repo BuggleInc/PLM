@@ -89,12 +89,15 @@ public class Main extends Lesson {
 		addExercise(new BasicsDrawG(this), basics);
 		
 		Lecture conditions = addExercise(new Conditions(this));
-		addExercise(new BDR(this),conditions);
-		addExercise(new BDR2(this),conditions);
 		
 		Lecture loopWhile = addExercise(new LoopWhile(this));
 		addExercise(new BaggleSeeker(this), loopWhile);
-
+		addExercise(new BDR(this),loopWhile);
+		addExercise(new BDR2(this),loopWhile);
+		addExercise(new SlugHunting(this),loopWhile);
+		addExercise(new SlugTracking(this),loopWhile);
+		
+		
 		addExercise(new Variables(this));
 		
 		Lecture loopFor = addExercise(new LoopFor(this));
@@ -113,11 +116,6 @@ public class Main extends Lesson {
 		
 		addExercise(new MethodsArgs(this));		
 				
-		/* Slug hunting exercises */
-		Lecture slug = addExercise(new SlugHunting(this));
-		addExercise(new SlugTracking(this),slug);
-		addExercise(new Snake(this),slug);
-		
 		/* arrays exercises */
 		Lecture arrays = addExercise(new Array(this));
 		addExercise(new Array2(this),arrays);
@@ -127,20 +125,21 @@ public class Main extends Lesson {
 		addExercise(new MaxValue(this),arrays);
 		addExercise(new IndexOfMaxValue(this),arrays);
 		
-		/* Traversal exercises */
-		Lecture traverse = addExercise(new TraversalByColumn(this));
-		addExercise(new TraversalByLine(this),traverse);
-		addExercise(new TraversalZigZag(this),traverse);
-		addExercise(new TraversalDiagonal(this),traverse);
+		/* 2D traversals */
+		Lecture snake = addExercise(new Snake(this));
+		addExercise(new TraversalByColumn(this),snake);
+		addExercise(new TraversalByLine(this),snake);
+		addExercise(new TraversalZigZag(this),snake);
+		addExercise(new TraversalDiagonal(this),snake);
 		
 		/* Turmites exercises */	
-		Lecture langton = addExercise(new Langton(this));//, arrays);
+		Lecture langton = addExercise(new Langton(this));
 		addExercise(new LangtonColors(this),langton);
 		addExercise(new HelloTurmite(this),langton);
 		addExercise(new TurmiteCreator(this),langton);
 		
 		/* First serie of boolean fun */
-		Lecture bat = addExercise(new SleepIn(this));
+		Lecture bat = addExercise(new SleepIn(this),conditions);
 		addExercise(new MonkeyTrouble(this),bat);
 		addExercise(new NearHundred(this),bat);
 		addExercise(new SumDouble(this),bat);
@@ -159,7 +158,7 @@ public class Main extends Lesson {
 		addExercise(new LastDigit(this),bat);
 
 		/* Second serie of boolean fun */
-		bat = addExercise(new AlarmClock(this));
+		bat = addExercise(new AlarmClock(this),conditions);
 		addExercise(new AnswerCell(this),bat);
 		addExercise(new BlueTicket(this),bat);
 		addExercise(new CaughtSpeeding(this),bat);
