@@ -1,3 +1,5 @@
+20130601:
+  * BatEntities now work within the unit tests too (fix #67)
 20130531:
   * Try harder to find a path where we can save our data
 20130530:
