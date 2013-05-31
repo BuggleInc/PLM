@@ -79,4 +79,15 @@ public class ArrayWorld extends World {
 		return toString()+" is not "+wrong.toString();
 	}
 	
+	public String toString() {
+		StringBuffer sb = new StringBuffer("[");
+		
+		for (Integer i : values)
+			sb.append(i+",");
+		sb.deleteCharAt(sb.length()-1);
+		sb.append("]");
+		
+		return sb.toString();
+	}
+	
 }
