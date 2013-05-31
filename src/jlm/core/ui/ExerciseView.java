@@ -222,6 +222,20 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		worldComboBox.setToolTipText(i18n.tr("Switch the displayed world"));
 		speedSlider.setToolTipText(i18n.tr("Change the speed of execution"));
 		entityComboBox.setToolTipText(i18n.tr("Switch the entity"));
+		if (Game.getInstance().getSelectedWorld() != null) {
+			// TODO Do I really need to fetch worldView?
+			worldView = Game.getInstance().getSelectedWorld().getView();
+			// asuming worldView is on tab 0
+			tabPane.setTitleAt(0, i18n.tr("World")+worldView.getTabName());
+			tabPane.setToolTipTextAt(0, i18n.tr("Current world")+worldView.getTip());
+		}
+		if (Game.getInstance().getAnswerOfSelectedWorld() != null) {
+			// TODO Do I really need to fetch objectiveView?
+			objectivesView = Game.getInstance().getAnswerOfSelectedWorld().getView();
+			// Assuming objectiveView is on tab 1
+			tabPane.setTitleAt(1, i18n.tr("Objective")+objectivesView.getTabName());
+			tabPane.setToolTipTextAt(1, i18n.tr("Target world")+objectivesView.getTip());
+		}
 	}
 	 
 }

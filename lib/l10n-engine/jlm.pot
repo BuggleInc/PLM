@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 09:47+0200\n"
+"POT-Creation-Date: 2013-05-31 15:06+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -245,36 +245,40 @@ msgstr ""
 msgid "Lesson related functions"
 msgstr ""
 
-#: src/jlm/core/ui/MissionEditorTabs.java:96
+#: src/jlm/core/ui/MissionEditorTabs.java:98
+#: src/jlm/core/ui/MissionEditorTabs.java:260
 msgid "Mission"
 msgstr ""
 
-#: src/jlm/core/ui/MissionEditorTabs.java:97
+#: src/jlm/core/ui/MissionEditorTabs.java:99
+#: src/jlm/core/ui/MissionEditorTabs.java:261
 msgid "Description of the work to do"
 msgstr ""
 
 #. Create the tab with the code editor as content
-#: src/jlm/core/ui/MissionEditorTabs.java:169
+#. this.setTitleAt(index,  );
+#: src/jlm/core/ui/MissionEditorTabs.java:172
+#: src/jlm/core/ui/MissionEditorTabs.java:266
 msgid "Type your code here"
 msgstr ""
 
-#: src/jlm/core/ui/StatusBar.java:113
+#: src/jlm/core/ui/StatusBar.java:116
 msgid "Loading"
 msgstr ""
 
-#: src/jlm/core/ui/StatusBar.java:117
+#: src/jlm/core/ui/StatusBar.java:120
 msgid "Saving"
 msgstr ""
 
-#: src/jlm/core/ui/StatusBar.java:121
+#: src/jlm/core/ui/StatusBar.java:124
 msgid "Compiling"
 msgstr ""
 
-#: src/jlm/core/ui/StatusBar.java:135
+#: src/jlm/core/ui/StatusBar.java:138
 msgid "Running "
 msgstr ""
 
-#: src/jlm/core/ui/StatusBar.java:139
+#: src/jlm/core/ui/StatusBar.java:142
 msgid "Playing demo "
 msgstr ""
 
