@@ -14,6 +14,9 @@ import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Entity;
 import jlm.universe.World;
+import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
+import jlm.universe.bat.BatWorld;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -72,6 +75,10 @@ public class ExoTest {
 		
 		exo.reset();
 		exo.mutateCorrection(WorldKind.CURRENT);
+		
+		if (exo instanceof BatExercise)
+			for (BatTest t : ((BatWorld)exo.getWorld(0)).tests) 
+				t.objectiveTest = false; // we want to set the result for real, not the expected
 		
 		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
 			for (Entity ent: w.getEntities())  

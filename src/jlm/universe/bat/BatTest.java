@@ -11,7 +11,7 @@ public class BatTest {
 	
 	private boolean visible;
 	private boolean correct,answered;
-	protected boolean objectiveTest=false;
+	public boolean objectiveTest=false; // ExoTest messes with it, sorry
 	private String funName;
 	
 	public BatTest(String funName, boolean visible,Object parameters) {
@@ -29,21 +29,11 @@ public class BatTest {
 	}
 	public BatTest copy() {
 		BatTest res = new BatTest(funName,visible,parameters.clone());
+		res.result = result;
 		res.expected = expected;
 		return res;
 	}
 	
-	public void setResult(Object r) {
-		if (expected == null) {
-			expected = r;
-		} else {
-			result = r;
-
-			if (expected != null)
-				correct = expected.equals(result);
-			answered = true;
-		}
-	}
 	public boolean isVisible() {
 		return visible;
 	}
@@ -176,9 +166,9 @@ public class BatTest {
 		StringBuffer res = new StringBuffer(getName());
 		res.append("=");
 		displayParameter(result, res, pl);
-		res.append(" (expected ");
+		res.append(" (expected: ");
 		displayParameter(expected, res, pl);
-		res.append(")");
+		res.append("; isObjective: "+isObjective()+")");
 		return res.toString();
 	}
 	public String getResult() {
@@ -192,6 +182,16 @@ public class BatTest {
 			return sb.toString();
 		} else {
 			return "(null)";
+		}
+	}
+	public void setResult(Object r) {
+		result = r;
+		if (expected == null) {
+			expected = r; // The first time we're set, that's an answer which comes in
+		} else {
+			if (expected != null)
+				correct = expected.equals(result);
+			answered = true;
 		}
 	}
 }
