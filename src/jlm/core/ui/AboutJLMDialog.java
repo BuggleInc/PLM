@@ -57,7 +57,7 @@ public class AboutJLMDialog extends JDialog {
 				"<li>Design and code: <i>M. Quinson and G. Oster</i></li>"+
 				"<li>Tests: <i>esial students (class '11, '12, '13, '14)</i></li>"+
 				"</ul><br/>"+
-				"Your code is saved to "+Game.getInstance().getSessionKit().getSavingLocation()+"<br/>"+
+				"Your code is saved to "+Game.getSavingLocation()+"<br/>"+
 				"</html>"
 		);
 		text.setBackground(Color.white);

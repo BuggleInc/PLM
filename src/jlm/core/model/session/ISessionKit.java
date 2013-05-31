@@ -19,16 +19,8 @@ public interface ISessionKit {
 	 * 
 	 *  On error, the user is given an opportunity to cancel the procedure through a dialog window.
 	 */
-	public void storeAll() throws UserAbortException;	
-
-	/** Saves the user content of all loaded lessons
-	 * 
-	 *  On error, the user is given an opportunity to cancel the procedure through a dialog window.
-	 */
 	public void storeAll(File path) throws UserAbortException;	
-	
-	/** Loads saved user content for all loaded lessons */
-	public void loadAll();
+
 	/** Loads saved user content for all loaded lessons */
 	public void loadAll(File path);
 	
@@ -42,11 +34,8 @@ public interface ISessionKit {
 	public void loadLesson(File path, Lesson l);
 	
 	/** Removes all user content for all loaded lessons */
-	public void cleanAll() ;
+	public void cleanAll(File path) ;
 	
 	/** Removes all user content for all loaded lessons */
-	public void cleanLesson(Lesson l);
-
-	/** Returns the path to where the student data are saved */
-	public String getSavingLocation();
+	public void cleanLesson(File path, Lesson l);
 }

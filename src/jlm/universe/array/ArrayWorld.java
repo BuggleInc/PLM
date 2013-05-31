@@ -76,7 +76,7 @@ public class ArrayWorld extends World {
 
 	@Override
 	public String diffTo(World wrong) {
-		return null;
+		return toString()+" is not "+wrong.toString();
 	}
 	
 }

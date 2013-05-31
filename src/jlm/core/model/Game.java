@@ -23,8 +23,6 @@ import java.util.Vector;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
-import javax.swing.JOptionPane;
-
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.HumanLangChangesListener;
@@ -139,16 +137,16 @@ public class Game implements IWorldView {
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			if (pl.getLang().equals(defaultProgrammingLanguage)) {
 				setProgramingLanguage(pl);
-				/*
-				System.err.println("Student progression listeners are disabled in this version.");
-				return ;
-				*/ 
+				break;
 			}
 		}
 
+		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
+		/* System.err.println("Student progression listeners are disabled in this version."); 
+		 * return;
+		 */ 
 		addProgressSpyListener(new IdenticaSpy());
 		addProgressSpyListener(new TwitterSpy());
-        addProgressSpyListener(new LocalFileSpy());
         addProgressSpyListener(new ServerSpyAppEngine());
 
         currentCourse = new CourseAppEngine();
@@ -196,7 +194,7 @@ public class Game implements IWorldView {
 		}
 		// Prevent an error message telling us that the JLM couldn't load our code for the chooser -- kinda obvious
 		if ( !lessonName.equals(lessonChooser))
-			sessionKit.loadLesson(null, lesson);
+			sessionKit.loadLesson(SAVE_DIR, lesson);
 		try {
 			waitInitThreads();
 		} catch (InterruptedException e) {
@@ -481,7 +479,7 @@ public class Game implements IWorldView {
 	}
 
 	public void clearSession() {
-		this.sessionKit.cleanAll();
+		this.sessionKit.cleanAll(SAVE_DIR);
 		for (Lesson l : this.lessons.values())
 			for (Lecture lect : l.exercises())
 				if (lect instanceof Exercise)
@@ -493,13 +491,13 @@ public class Game implements IWorldView {
 
 	public void loadSession() {
 		this.setState(GameState.LOADING);
-		this.sessionKit.loadAll();
+		this.sessionKit.loadAll(SAVE_DIR);
 		this.setState(GameState.LOADING_DONE);
 	}
 
 	public void saveSession() throws UserAbortException {
 		this.setState(GameState.SAVING);
-		this.sessionKit.storeAll();
+		this.sessionKit.storeAll(SAVE_DIR);
 		this.setState(GameState.SAVING_DONE);
 	}
 
@@ -529,95 +527,41 @@ public class Game implements IWorldView {
 				}
 		}
 
-		String value = Game.defaultGameProperties.getProperty("jlm.configuration.file.path");
-		if (value != null) {
-			String paths[] = value.split(",");
-
-			for (String localPath : paths) {
-				localPath = localPath.replace("$HOME$", System.getProperty("user.home"));
-				File localPropertiesFile = new File(localPath + File.separator + Game.LOCAL_PROPERTIES_SUBDIRECTORY,
-						Game.LOCAL_PROPERTIES_FILENAME);
-				if (localPropertiesFile.exists()) {
-					FileInputStream fi = null;
+		File localPropertiesFile = new File(SAVE_DIR + File.separator + Game.LOCAL_PROPERTIES_FILENAME);
+		if (localPropertiesFile.exists()) {
+			FileInputStream fi = null;
+			try {
+				fi = new FileInputStream(localPropertiesFile);
+				Game.localGameProperties.load(fi);
+				Game.localGamePropertiesLoadedFile = localPropertiesFile;
+			} catch (InvalidPropertiesFormatException e) {
+				e.printStackTrace();
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (fi != null)
 					try {
-						fi = new FileInputStream(localPropertiesFile);
-						Game.localGameProperties.load(fi);
-						Game.localGamePropertiesLoadedFile = localPropertiesFile;
-					} catch (InvalidPropertiesFormatException e) {
-						e.printStackTrace();
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
+						fi.close();
 					} catch (IOException e) {
 						e.printStackTrace();
-					} finally {
-						if (fi != null)
-							try {
-								fi.close();
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
 					}
-					System.out.println(String.format("Loading properties [%s]", localPropertiesFile));
-					break;
-				}
 			}
+			System.out.println(String.format("Loading properties [%s]", localPropertiesFile));
 		}
 	}
 
 	public static void storeProperties() throws UserAbortException {
-		FileOutputStream fo = null;
+		Game.localGamePropertiesLoadedFile = new File(SAVE_DIR + File.separator + Game.LOCAL_PROPERTIES_FILENAME);
+		FileOutputStream fo;
 		try {
-
-			// if (Game.localGamePropertiesLoadedFile == null) {
-
-			String value = Game.getProperty("jlm.configuration.file.path");
-			if (value != null) {
-				String paths[] = value.split(",");
-
-				for (String localPath : paths) {
-					localPath = localPath.replace("$HOME$", System.getProperty("user.home"));
-					File localPropertiesFileParentDirectory = new File(localPath);
-					File localPropertiesFileDirectory = new File(localPath, Game.LOCAL_PROPERTIES_SUBDIRECTORY);
-
-					if (!localPropertiesFileParentDirectory.exists()) {
-						continue;
-					} else if (localPropertiesFileDirectory.exists() || localPropertiesFileDirectory.mkdir()) {
-						Game.localGamePropertiesLoadedFile = new File(localPropertiesFileDirectory,
-								Game.LOCAL_PROPERTIES_FILENAME);
-						break;
-					} else {
-						Logger.log("Game:storeProperties", "cannot create local properties store directory ("
-								+ localPropertiesFileDirectory + ")");
-					}
-
-				}
-			} else {
-				int choice = JOptionPane.showConfirmDialog(null,
-						"No path provided in the property file (or property file not found)\n"+
-						"You may want to export your session with the menu 'Session/Export session'\n" +
-						"to save your work manually.\n\n" +
-						"Quit without saving?",
-						"Cannot save your changes. Quit without saving?",
-						JOptionPane.YES_NO_OPTION,JOptionPane.ERROR_MESSAGE);
-				if (choice==JOptionPane.NO_OPTION)
-					throw new UserAbortException("Quit aborded by user.");
-				return;
-			}
-			// }
 			fo = new FileOutputStream(Game.localGamePropertiesLoadedFile);
 			Game.localGameProperties.store(fo, "Java Learning Machine properties");
-			System.out.println("Game:storeProperties: properties stored in " + localGamePropertiesLoadedFile);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			if (fo != null)
-				try {
-					fo.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
 		}
 	}
 
@@ -846,7 +790,7 @@ public class Game implements IWorldView {
 	public void switchDebug() {
 		doDebug = !doDebug;
 		if (doDebug) {
-			System.out.println("Saving location: "+Game.getInstance().getSessionKit().getSavingLocation());
+			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+Game.getInstance().getCurrentLesson().getName());
 			System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
 			System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal")+" ("+Game.getProperty("jlm.major.version","internal")+"."+Game.getProperty("jlm.minor.version","")+")");
@@ -900,4 +844,54 @@ public class Game implements IWorldView {
     public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
 
     public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
+    
+    
+    /* Mechanism to find where to save our data */
+	
+    private static String HOME_DIR = System.getProperty("user.home");
+	
+	/* These names are tested one after the other, searching for one that exist or that we can create */
+	static String[] rootDirNames = new String[] { 
+		HOME_DIR + File.separator + ".jlm", /* preferred, default directory name */
+		HOME_DIR + File.separator + "_jlm", /* Some paranoid administrator refuse directories which name starts with a dot */
+		HOME_DIR + File.separator + "jlm",  /* one day, hidden directories with make trouble... */
+		"z:"     + File.separator + ".jlm", /* windows-preferred directory name */
+		"z:"     + File.separator + "_jlm",
+		"z:"     + File.separator + "jlm",
+	};
+	private static File SAVE_DIR = initializeSaveDir();
+	private static File initializeSaveDir() {
+		StringBuffer sb = new StringBuffer();
+		for (String path : rootDirNames) {
+			File res = new File(path);
+			sb.append(path);
+			sb.append(", ");
+			try {
+				if (res.exists()) {
+					if (res.isDirectory()) {
+						if (res.canWrite()) {
+							return res;
+						} else {
+							System.out.println(res.getAbsolutePath()+" is not writable");
+							continue;
+						}
+					} else {
+						System.out.println(res.getAbsolutePath()+" is not a directory");
+						continue;
+					}
+				}
+				if (res.mkdir())
+					return res;
+				else {
+					System.out.println("Cannot create "+res.getAbsolutePath());
+				}
+			} catch (SecurityException e) {
+				e.getLocalizedMessage();
+			}
+		}
+		throw new RuntimeException("Impossible to find a path for JLM datas. Tested "+sb.toString());
+	}
+	public static String getSavingLocation() {
+		return SAVE_DIR.getPath();
+	}
 }
