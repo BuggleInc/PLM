@@ -1,3 +1,5 @@
+20130531:
+  * Try harder to find a path where we can save our data
 20130530:
   * Make sure that jarfiles compiled with Java 6 also work with Java 7
 20130529a:
