@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import javax.script.ScriptEngine;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
@@ -75,11 +76,12 @@ public class BatWorld extends World {
 		StringBuffer sb = new StringBuffer();
 		boolean foundError = false;
 		for (int i=0;i<tests.size();i++) {
-			if (foundError && !tests.get(i).isVisible()) 
+			if (foundError && !tests.get(i).isVisible() && !Game.getInstance().isDebugEnabled()) 
 				return sb.toString();
 					
 			if (!tests.get(i).equals(other.tests.get(i))) { 
-				sb.append(other.tests.get(i).getName()+" returned "+other.tests.get(i).getResult()+ " while "+tests.get(i).getResult()+" were expected."+"\n");
+				sb.append(other.tests.get(i).getName()+" returned "+other.tests.get(i).getResult()+
+						                               " while "+         tests.get(i).getResult()+" were expected.\n");
 				foundError = true;
 			}
 		}
