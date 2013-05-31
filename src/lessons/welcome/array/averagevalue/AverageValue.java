@@ -29,7 +29,3 @@ public class AverageValue extends ExerciseTemplated {
 		setup(myWorlds);
 	}
 }
-
-
-
-
