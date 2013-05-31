@@ -98,8 +98,10 @@ public class ExoTest {
 	
 	@Test
 	public void testPythonEntity() {
-		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
-			fail("Exercise "+exo.getClass().getName()+" does not support python");
+		if (!exo.getProgLanguages().contains(Game.PYTHON)) {
+			System.out.println("Exercise "+exo.getClass().getName()+" does not support python");
+			return;
+		}
 		
 		Game.getInstance().setProgramingLanguage(Game.PYTHON);
 		testCorrectionEntity();
