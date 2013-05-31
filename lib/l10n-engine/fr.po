@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 09:47+0200\n"
+"POT-Creation-Date: 2013-05-31 15:06+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,13 +30,11 @@ msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
 #: src/jlm/core/model/LessonRunner.java:88
-#, java-format
+#, fuzzy, java-format
 msgid ""
 "Congratulations, you passed this exercise.\n"
 " {0} tests passed.\n"
-msgstr ""
-"Félicitation, vous avez réussi cet exercice.\n"
-" {0} test(s) passés.\n"
+msgstr "Félicitation, vous avez réussi ce test."
 
 #: src/jlm/core/model/LessonRunner.java:90
 #: src/jlm/core/model/LessonRunner.java:96
@@ -79,35 +77,35 @@ msgstr "Vous n'avez pas atteint votre objectif"
 msgid "Compilation error"
 msgstr "Erreur de compilation"
 
-#: src/jlm/core/ui/ExerciseView.java:73
+#: src/jlm/core/ui/ExerciseView.java:76 src/jlm/core/ui/ExerciseView.java:222
 msgid "Switch the displayed world"
 msgstr "Changer le monde affiché"
 
-#: src/jlm/core/ui/ExerciseView.java:83
+#: src/jlm/core/ui/ExerciseView.java:86 src/jlm/core/ui/ExerciseView.java:223
 msgid "Change the speed of execution"
 msgstr "Changer la vitesse d'exécution"
 
-#: src/jlm/core/ui/ExerciseView.java:90 src/jlm/core/ui/ExerciseView.java:162
+#: src/jlm/core/ui/ExerciseView.java:93 src/jlm/core/ui/ExerciseView.java:165
 msgid "World"
 msgstr "Monde"
 
-#: src/jlm/core/ui/ExerciseView.java:91 src/jlm/core/ui/ExerciseView.java:163
+#: src/jlm/core/ui/ExerciseView.java:94 src/jlm/core/ui/ExerciseView.java:166
 msgid "Current world"
 msgstr "Monde courant"
 
-#: src/jlm/core/ui/ExerciseView.java:95 src/jlm/core/ui/ExerciseView.java:165
+#: src/jlm/core/ui/ExerciseView.java:98 src/jlm/core/ui/ExerciseView.java:168
 msgid "Objective"
 msgstr "Objectif"
 
-#: src/jlm/core/ui/ExerciseView.java:96 src/jlm/core/ui/ExerciseView.java:166
+#: src/jlm/core/ui/ExerciseView.java:99 src/jlm/core/ui/ExerciseView.java:169
 msgid "Target world"
 msgstr "Monde attendu après exécution du code"
 
-#: src/jlm/core/ui/ExerciseView.java:104
+#: src/jlm/core/ui/ExerciseView.java:107 src/jlm/core/ui/ExerciseView.java:224
 msgid "Switch the entity"
 msgstr "Changer d'entité"
 
-#: src/jlm/core/ui/LoggerPanel.java:28
+#: src/jlm/core/ui/LoggerPanel.java:31 src/jlm/core/ui/LoggerPanel.java:98
 msgid "Where error and other messages get written"
 msgstr "Endroit ou les erreurs et autres messages sont écrits"
 
@@ -249,36 +247,40 @@ msgstr "Appeler à l'aide"
 msgid "Lesson related functions"
 msgstr "Fonctions relatives aux leçons"
 
-#: src/jlm/core/ui/MissionEditorTabs.java:96
+#: src/jlm/core/ui/MissionEditorTabs.java:98
+#: src/jlm/core/ui/MissionEditorTabs.java:260
 msgid "Mission"
 msgstr "Mission"
 
-#: src/jlm/core/ui/MissionEditorTabs.java:97
+#: src/jlm/core/ui/MissionEditorTabs.java:99
+#: src/jlm/core/ui/MissionEditorTabs.java:261
 msgid "Description of the work to do"
 msgstr "Description de la tache à effectuer"
 
 #. Create the tab with the code editor as content
-#: src/jlm/core/ui/MissionEditorTabs.java:169
+#. this.setTitleAt(index,  );
+#: src/jlm/core/ui/MissionEditorTabs.java:172
+#: src/jlm/core/ui/MissionEditorTabs.java:266
 msgid "Type your code here"
 msgstr "Composer votre code ici"
 
-#: src/jlm/core/ui/StatusBar.java:113
+#: src/jlm/core/ui/StatusBar.java:116
 msgid "Loading"
 msgstr "Chargement"
 
-#: src/jlm/core/ui/StatusBar.java:117
+#: src/jlm/core/ui/StatusBar.java:120
 msgid "Saving"
 msgstr "Sauvegarde"
 
-#: src/jlm/core/ui/StatusBar.java:121
+#: src/jlm/core/ui/StatusBar.java:124
 msgid "Compiling"
 msgstr "Compilation"
 
-#: src/jlm/core/ui/StatusBar.java:135
+#: src/jlm/core/ui/StatusBar.java:138
 msgid "Running "
 msgstr "Exécution de "
 
-#: src/jlm/core/ui/StatusBar.java:139
+#: src/jlm/core/ui/StatusBar.java:142
 msgid "Playing demo "
 msgstr "Exécution de la démo "
 

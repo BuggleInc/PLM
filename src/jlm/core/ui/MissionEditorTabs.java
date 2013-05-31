@@ -2,6 +2,7 @@ package jlm.core.ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.util.Locale;
 
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
@@ -12,6 +13,7 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
 import jlm.core.GameListener;
+import jlm.core.HumanLangChangesListener;
 import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
@@ -31,7 +33,7 @@ import org.xnap.commons.i18n.I18nFactory;
 
 
 
-public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener {
+public class MissionEditorTabs extends JTabbedPane implements GameListener, ProgLangChangesListener, HumanLangChangesListener {
 	private static final long serialVersionUID = 1L;
 
 	private Game game;
@@ -105,6 +107,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.game = Game.getInstance();
 		this.game.addGameListener(this);
 		this.game.addProgLangListener(this);
+		this.game.addHumanLangListener(this);
 		
 		/* add code tabs */
 		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
@@ -243,5 +246,25 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 				}
 		}	
 	*/	
+	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		// TODO Auto-generated method stub
+		int nTabs = this.getTabCount();
+		JComponent tab;
+		
+		i18n.setLocale(newLang);
+		
+		if (nTabs>0) {
+			this.setTitleAt(0, i18n.tr("Mission"));
+			this.setToolTipTextAt(0, i18n.tr("Description of the work to do"));
+		}
+		if (nTabs>1) {
+			for (int i=1; i<nTabs; i++) {
+				//this.setTitleAt(index,  );
+				this.setToolTipTextAt(i, i18n.tr("Type your code here"));
+			}
+		}
 	}
 }

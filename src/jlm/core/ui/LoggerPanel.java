@@ -1,5 +1,6 @@
 package jlm.core.ui;
 
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,6 +9,8 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+
+import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 
@@ -15,7 +18,7 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 
-public class LoggerPanel extends JTextArea implements LogWriter {
+public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChangesListener {
 
 	private static final long serialVersionUID = 468774822833769775L;
 	
@@ -27,6 +30,7 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 		setEditable(false);
 		setToolTipText(i18n.tr("Where error and other messages get written"));
 		game.setOutputWriter(this);
+		game.addHumanLangListener(this);
 	}
 	
 	public void clear() {
@@ -42,11 +46,11 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 	public void log(DiagnosticCollector<JavaFileObject> diagnostics) {
 		boolean warnedJava6= false;
 		Pattern isJava6Pattern = Pattern.compile("major version 51 is newer than 50, the highest major version supported by this compiler");
-		
+
 		for (Diagnostic<? extends JavaFileObject> diagnostic : diagnostics.getDiagnostics()) {
 			String source = diagnostic.getSource() == null ? "(null)" : diagnostic.getSource().getName();
 			String msg = diagnostic.getMessage(getLocale());
-			
+
 			Matcher isJava6Matcher = isJava6Pattern.matcher(msg);
 			if (isJava6Matcher.find()) {
 				if (!warnedJava6 && Game.getInstance().isDebugEnabled())
@@ -57,6 +61,7 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 			}
 		}
 	}
+
 
 	/**
 	 * Add an exception into the text area
@@ -83,6 +88,15 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 			}
 
 		}
+	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		// TODO Auto-generated method stub
+		i18n.setLocale(newLang);
+		
+		setToolTipText(i18n.tr("Where error and other messages get written"));
+		
 	}
 
 }
