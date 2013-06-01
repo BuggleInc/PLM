@@ -3,9 +3,10 @@
 The goal of this serie of exercises is to let the buggle traverse its
 world. It must number the cells it walks on to show its traversal order. 
 
-<p>The main loop of the <code>run()</code> method (that you must write) is
-something like: 
-<pre>
+<p div="Java">The main loop of the <code>run()</code> method (that you must write) is
+something like:<p>
+<p div="python">The main loop of your code should be something like:<p>
+<p><pre>
  while we are not on the final position
    go to the next position
    label the cell with its number
@@ -14,7 +15,7 @@ something like:
 <p>In contrary to the exercises we saw so far, we won't use the
 <code>forward()</code>, <code>backward()</code> and similar
 methods. Instead, we will compute the coordinate of the next buggle position
-and use the <code>setPos(int, int)</code> method to <i>teleport</i> the
+and use the <code>setPos(x, y)</code> method to <i>teleport</i> the
 buggle directly to this position. For example, <code>setPos(3, 5)</code>
 teleports the buggle to the cell where x=3 and y=5.</p>
 
@@ -39,12 +40,14 @@ it has to. Use the <b>stop</b> button if the buggle does not stop correctly.</p>
 <p>It is now time to write done the cell numbers. For that, you will need a
 counter initialiser to zero at the begining of your <code>run()</code>
 method, and incremented by one at each step (for example with
-<code>counter++;</code>). Then, you have to write the value on the ground,
+<code>counter += 1;</code>). Then, you have to write the value on the ground,
 for example with <code>writeMessage(counter);</code>.
 
-<p>You probably need to write the first or last value out of the main loop,
+<p div="Java">You probably need to write the first or last value out of the main loop,
 depending on whether you prefer to use a <code>while {}</code> or a <code>do
 {} while</code>...</p>
+
+<p div="python">You may want to write the first value out of the main <code>while ...:</code> loop.</p>
 
 <p>Your turn...</p>
 
