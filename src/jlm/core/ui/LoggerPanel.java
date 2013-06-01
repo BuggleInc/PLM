@@ -11,11 +11,14 @@ import javax.tools.JavaFileObject;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 
+import java.util.Locale;
+import jlm.core.HumanLangChangesListener;
+
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 
-public class LoggerPanel extends JTextArea implements LogWriter {
+public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChangesListener {
 
 	private static final long serialVersionUID = 468774822833769775L;
 	
@@ -27,6 +30,7 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 		setEditable(false);
 		setToolTipText(i18n.tr("Where error and other messages get written"));
 		game.setOutputWriter(this);
+		game.addHumanLangListener(this);
 	}
 	
 	public void clear() {
@@ -83,6 +87,14 @@ public class LoggerPanel extends JTextArea implements LogWriter {
 			}
 
 		}
+	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		i18n.setLocale(newLang);
+		
+		setToolTipText(i18n.tr("Where error and other messages get written"));
+		
 	}
 
 }
