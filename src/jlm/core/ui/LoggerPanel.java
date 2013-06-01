@@ -30,6 +30,7 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
 		setEditable(false);
 		setToolTipText(i18n.tr("Where error and other messages get written"));
 		game.setOutputWriter(this);
+		game.addHumanLangListener(this);
 	}
 	
 	public void clear() {
