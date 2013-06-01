@@ -1,23 +1,23 @@
 def forward(i):
-	errorMsg("Sorry Dave, I cannot let you use forward() in this exercise")
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use forward() in this exercise.")
 
 def backward(i):
-	errorMsg("Sorry Dave, I cannot let you use backward() in this exercise")
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use backward() in this exercise.")
 
 def turnRight(i):
-	errorMsg("Sorry Dave, I cannot let you use turnRight() in this exercise")
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use turnRight() in this exercise.")
 
 def turnLeft(i):
-	errorMsg("Sorry Dave, I cannot let you use turnLeft() in this exercise")
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use turnLeft() in this exercise.")
 
 def turnBack(i):
-	errorMsg("Sorry Dave, I cannot let you use turnBack() in this exercise")
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use turnBack() in this exercise.")
 
 def isFacingWall(i):
-	errorMsg("Sorry Dave, I cannot let you use isFacingWall() in this exercise")
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use isFacingWall() in this exercise.")
 
 def isBackingWall(i):
-	errorMsg("Sorry Dave, I cannot let you use isFacingWall() in this exercise")
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use isFacingWall() in this exercise.")
 
 # BEGIN TEMPLATE
 # BEGIN SOLUTION
