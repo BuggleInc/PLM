@@ -31,7 +31,10 @@ public class TeenSum extends BatExercise {
 
 		langTemplate(Game.PYTHON, "teenSum", 
 				"def teenSum(a, b):\n",
-				"");
+				"	if ((a >= 13 and a <= 19) or (b >= 13 and b <= 19)):\n"+
+				"		return 19\n"+
+				"	else:\n"+
+				"		return a+b\n");
 		setup(myWorld);
 	}
 

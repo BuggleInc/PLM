@@ -28,7 +28,7 @@ public class HasTeen extends BatExercise {
 
 		langTemplate(Game.PYTHON, "hasTeen", 
 				"def hasTeen(a, b, c):\n",
-				"");
+				"   return (a>12 and a<20) or (b>12 and b<20) or (c>12 and c<20)\n");
 		setup(myWorld);
 	}
 

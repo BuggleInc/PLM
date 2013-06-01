@@ -27,7 +27,13 @@ public class WithoutDoubles extends BatExercise {
 
 		langTemplate(Game.PYTHON, "withoutDoubles", 
 				"def withoutDoubles(die1, die2, noDoubles):\n",
-				"");
+				"	if (noDoubles and (die1 == die2)):\n"+
+				"		if (die1 == 6):\n"+
+				"			return 1 + die2\n"+
+				"		else:\n"+
+				"			return die1 + 1 + die2\n"+
+				"	else:\n"+
+				"		return die1 + die2\n");
 		setup(myWorld);
 	}
 

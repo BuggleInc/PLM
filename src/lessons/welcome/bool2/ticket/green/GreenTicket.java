@@ -27,7 +27,12 @@ public class GreenTicket extends BatExercise {
 
 		langTemplate(Game.PYTHON, "greenTicket", 
 				"def greenTicket(a, b, c):\n",
-				"");
+				"	if (a == b and b == c):\n"+
+				"		return 20\n"+
+				"	elif (a == b or b == c or a == c):\n"+
+				"		return 10\n"+
+				"	else:\n"+
+				"		return 0\n");
 		setup(myWorld);
 	}
 

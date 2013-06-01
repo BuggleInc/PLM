@@ -29,7 +29,9 @@ public class LoneTeen extends BatExercise {
 
 		langTemplate(Game.PYTHON, "loneTeen", 
 				"def loneTeen(a, b):\n",
-				"");
+				"	teenA = a>12 and a<20\n"+
+				"	teenB = b>12 and b<20\n"+
+				"	return  (teenA and not teenB) or (teenB and not teenA)\n");
 		setup(myWorld);
 	}
 

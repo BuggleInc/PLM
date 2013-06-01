@@ -25,7 +25,7 @@ public class In1020 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "in1020", 
 				"def in1020(a, b):\n",
-				"");
+				"   return (a>9 and a<21) or (b>9 and b<21)");
 		setup(myWorld);
 	}
 

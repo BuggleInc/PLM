@@ -23,8 +23,13 @@ public class Close10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10,10);
 
 		langTemplate(Game.PYTHON, "close10", 
-				"def close10(a, b):\n",
-				"");
+				"import math\ndef close10(a, b):\n",
+				"   if math.fabs(10-a) == math.fabs(10-b):\n"+
+				"      return 0\n"+
+				"   elif math.fabs(10-a) < math.fabs(10-b):\n"+
+				"      return a\n"+
+				"   else:\n"+
+				"      return b\n");
 		setup(myWorld);
 	}
 

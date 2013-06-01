@@ -22,7 +22,9 @@ public class SumDouble extends BatExercise {
 
 		langTemplate(Game.PYTHON, "sumDouble", 
 				"def sumDouble(a, b):\n",
-				"");
+				"  if a==b:\n"+
+				"    return (a+b)*2\n"+
+				"  return a+b\n");
 		setup(myWorld);
 	}
 

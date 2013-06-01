@@ -27,7 +27,7 @@ public class In1To10 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "in1To10", 
 				"def in1To10(n, outsideMode):\n",
-				"");
+				"   return (outsideMode and (n <= 1 or n >= 10)) or ((not outsideMode) and (n >= 1 and n <= 10))\n");
 		setup(myWorld);
 	}
 

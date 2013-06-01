@@ -25,7 +25,7 @@ public class ShareDigit extends BatExercise {
 
 		langTemplate(Game.PYTHON, "shareDigit", 
 				"def shareDigit(a, b):\n",
-				"");
+				"   return (a/10 == b/10 or a/10 == b%10 or a%10 == b/10 or a%10 == b%10)");
 		setup(myWorld);
 	}
 

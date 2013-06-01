@@ -29,7 +29,7 @@ public class LessBy10 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "lessBy10", 
 				"def lessBy10(a, b, c):\n",
-				"");
+				"	return ((a - b) >= 10) or ((b - a) >= 10) or ((b - c) >= 10) or ((c - b) >= 10) or ((a - c) >= 10) or ((c - a) >= 10)\n");
 		setup(myWorld);
 	}
 

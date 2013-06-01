@@ -24,7 +24,13 @@ public class Max1020 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "max1020", 
 				"def max1020(a, b):\n",
-				"");
+				"	A = max(a,b)\n"+
+				"	B = min(a,b)\n"+
+				"	if (A<21 and A>9):\n"+
+				"		return A\n"+
+				"	if (B<21 and B>9):\n"+
+				"		return B\n"+
+				"	return 0\n");
 		setup(myWorld);
 	}
 

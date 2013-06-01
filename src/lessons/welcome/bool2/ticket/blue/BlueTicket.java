@@ -27,7 +27,15 @@ public class BlueTicket extends BatExercise {
 
 		langTemplate(Game.PYTHON, "blueTicket", 
 				"def blueTicket(a, b, c):\n",
-				"");
+				"	ab = a + b\n"+
+				"	ac = a + c\n"+
+				"	bc = b + c\n"+
+				"	if (ab == 10 or ac == 10 or bc == 10):\n"+
+				"		return 10\n"+
+				"	elif (ab == (bc + 10) or ab == (ac + 10)):\n"+
+				"		return 5\n"+
+				"	else:\n"+
+				"		return 0\n");
 		setup(myWorld);
 	}
 

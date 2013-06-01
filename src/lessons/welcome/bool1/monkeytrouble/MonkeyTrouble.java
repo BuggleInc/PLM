@@ -19,7 +19,7 @@ public class MonkeyTrouble extends BatExercise {
 
 		langTemplate(Game.PYTHON, "monkeyTrouble", 
 				"def monkeyTrouble(aSmile, bSmile):\n",
-				"   return (aSmile and not bSmile) or (not aSmile and bSmile)\n");
+				"   return (aSmile and bSmile) or (not aSmile and not bSmile)\n");
 		setup(myWorld);
 	}
 

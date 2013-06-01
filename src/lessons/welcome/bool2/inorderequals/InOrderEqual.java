@@ -29,7 +29,7 @@ public class InOrderEqual extends BatExercise {
 
 		langTemplate(Game.PYTHON, "inOrderEqual", 
 				"def inOrderEqual(a, b, c, equalOk):\n",
-				"");
+				"		return (equalOk and ((a <= b) and (b <= c))) or (a < b and b < c)");
 		setup(myWorld);
 	}
 

@@ -26,7 +26,7 @@ public class NearHundred extends BatExercise {
 
 		langTemplate(Game.PYTHON, "nearHundred", 
 				"def nearHundred(n):\n",
-				"");
+				"   return (90<=n and n<=110) or (190<=n and n<=210)\n");
 		setup(myWorld);
 	}
 

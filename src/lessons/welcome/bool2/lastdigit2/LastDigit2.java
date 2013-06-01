@@ -28,7 +28,10 @@ public class LastDigit2 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "lastDigit", 
 				"def lastDigit(a, b, c):\n",
-				"");
+				"	da = a % 10\n"+
+				"	db = b % 10\n"+
+				"	dc = c % 10\n"+
+				"	return da == db or da == dc or dc == db\n");
 		setup(myWorld);
 	}
 

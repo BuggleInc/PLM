@@ -25,7 +25,7 @@ public class Makes10 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "makes10", 
 				"def makes10(a, b):\n",
-				"");
+				"   return a==10 or b==10 or (a+b)==10");
 		setup(myWorld);
 	}
 

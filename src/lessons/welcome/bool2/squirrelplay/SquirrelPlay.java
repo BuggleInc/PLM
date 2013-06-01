@@ -28,7 +28,7 @@ public class SquirrelPlay extends BatExercise {
 
 		langTemplate(Game.PYTHON, "squirrelPlay", 
 				"def squirrelPlay(temp, isSummer):\n",
-				"");
+				"   return (temp >= 60 and ((isSummer and temp <= 100) or temp <= 90))");
 		setup(myWorld);
 	}
 

@@ -27,7 +27,12 @@ public class DateFashion extends BatExercise {
 
 		langTemplate(Game.PYTHON, "dateFashion", 
 				"def dateFashion(you, date):\n",
-				"");
+				"	if (you <= 2 or date <= 2):\n"+
+				"		return 0\n"+
+				"	elif (you >= 8 or date >= 8):\n"+
+				"		return 2\n"+
+				"	else:\n"+
+				"		return 1\n");
 		setup(myWorld);
 	}
 

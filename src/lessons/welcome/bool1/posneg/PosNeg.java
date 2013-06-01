@@ -29,7 +29,9 @@ public class PosNeg extends BatExercise {
 
 		langTemplate(Game.PYTHON, "posNeg", 
 				"def posNeg(a, b, negative):\n",
-				"");
+				"		if (negative):\n"+
+				"			return a<0 and b<0;\n"+
+				"		return (a<0 and b>0) or (a>0 and b<0)");
 		setup(myWorld);
 	}
 

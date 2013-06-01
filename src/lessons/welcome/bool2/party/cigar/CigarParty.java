@@ -26,7 +26,7 @@ public class CigarParty extends BatExercise {
 
 		langTemplate(Game.PYTHON, "cigarParty", 
 				"def cigarParty(cigars, isWeekend):\n",
-				"");
+				"   return (isWeekend and cigars >= 40) or (not isWeekend and (cigars >= 40) and (cigars <= 60))\n");
 		setup(myWorld);
 	}
 

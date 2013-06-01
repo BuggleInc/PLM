@@ -27,7 +27,7 @@ public class TwoAsOne extends BatExercise {
 
 		langTemplate(Game.PYTHON, "twoAsOne", 
 				"def twoAsOne(a, b, c):\n",
-				"");
+				"   return (a + b == c) or (a + c == b) or (b + c == a)");
 		setup(myWorld);
 	}
 

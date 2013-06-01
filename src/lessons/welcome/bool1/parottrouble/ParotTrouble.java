@@ -25,7 +25,7 @@ public class ParotTrouble extends BatExercise {
 
 		langTemplate(Game.PYTHON, "parotTrouble", 
 				"def parotTrouble(talking, hour):\n",
-				"");
+				"   return (talking and (hour<7 or hour>20))\n");
 		setup(myWorld);
 	}
 

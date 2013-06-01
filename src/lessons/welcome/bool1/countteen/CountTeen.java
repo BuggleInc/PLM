@@ -28,7 +28,16 @@ public class CountTeen extends BatExercise {
 
 		langTemplate(Game.PYTHON, "countTeen", 
 				"def countTeen(a, b, c, d):\n",
-				"");
+				"		ret=0\n"+
+				"		if (a>12 and a<20):\n"+
+				"			ret+=1\n"+
+				"		if (b>12 and b<20):\n"+
+				"			ret+=1\n"+
+				"		if (c>12 and c<20):\n"+
+				"			ret+=1\n"+
+				"		if (d>12 and d<20):\n"+
+				"			ret+=1\n"+
+				"		return ret\n");
 		setup(myWorld);
 	}
 

@@ -24,7 +24,16 @@ public class AlarmClock extends BatExercise {
 
 		langTemplate(Game.PYTHON, "alarmClock", 
 				"def alarmClock(day, vacation):\n",
-				"");
+				"	if not vacation:\n"+
+				"		if (day >= 1 and day <= 5):\n"+
+				"			return '7:00'\n"+
+				"		else:\n"+
+				"			return '10:00'\n"+
+				"	else:\n"+
+				"		if (day >= 1 and day <= 5):\n"+
+				"			return '10:00'\n"+
+				"		else:\n"+
+				"			return 'off'\n");
 		setup(myWorld);
 	}
 

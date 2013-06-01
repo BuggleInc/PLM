@@ -24,7 +24,11 @@ public class SortaSum extends BatExercise {
 
 		langTemplate(Game.PYTHON, "sortaSum", 
 				"def sortaSum(a, b):\n",
-				"");
+				"	sum = a+b\n"+
+				"	if (sum >= 10 and sum <= 19):\n"+
+				"		return 20\n"+
+				"	else:\n"+
+				"		return sum\n");
 		setup(myWorld);
 	}
 

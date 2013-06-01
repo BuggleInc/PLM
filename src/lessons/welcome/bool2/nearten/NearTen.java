@@ -29,7 +29,7 @@ public class NearTen extends BatExercise {
 
 		langTemplate(Game.PYTHON, "nearTen", 
 				"def nearTen(num):\n",
-				"");
+				"  return (num % 10) <= 2 or (num % 10) >= 8\n");
 		setup(myWorld);
 	}
 

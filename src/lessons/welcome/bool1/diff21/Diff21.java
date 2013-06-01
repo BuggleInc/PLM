@@ -26,7 +26,9 @@ public class Diff21 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "diff21", 
 				"def diff21(n):\n",
-				"");		
+				"   if (n>21):\n"+
+				"      return 2*(n-21)\n"+
+				"   return 21-n\n");		
 		setup(myWorld);
 	}
 

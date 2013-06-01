@@ -27,7 +27,12 @@ public class CaughtSpeeding extends BatExercise {
 
 		langTemplate(Game.PYTHON, "caughtSpeeding", 
 				"def caughtSpeeding(speed, isBirthday):\n",
-				"");
+				"	if ((isBirthday and speed <= 65) or (speed <= 60)):\n"+
+				"		return 0\n"+
+				"	elif ((isBirthday and speed <= 85) or (speed <= 80)):\n"+
+				"		return 1\n"+
+				"	else:\n"+
+				"		return 2\n");
 		setup(myWorld);
 	}
 

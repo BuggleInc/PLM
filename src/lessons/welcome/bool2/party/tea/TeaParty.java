@@ -28,7 +28,12 @@ public class TeaParty extends BatExercise {
 
 		langTemplate(Game.PYTHON, "teaParty", 
 				"def teaParty(tea, candy):\n",
-				"");
+				"	if (tea < 5 or candy < 5):\n"+
+				"		return 0\n"+
+				"	elif (tea >= 2*candy or candy >= 2*tea):\n"+ 
+				"		return 2\n"+
+				"	else:\n" +
+				"		return 1\n");
 		setup(myWorld);
 	}
 

@@ -26,7 +26,14 @@ public class RedTicket extends BatExercise {
 
 		langTemplate(Game.PYTHON, "redTicket", 
 				"def redTicket(a, b, c):\n",
-				"");
+				"	if (a == b and b == c and c == 2):\n"+
+				"		return 10\n"+
+				"	elif (a == b and b == c):\n"+
+				"		return 5\n"+
+				"	elif (b != a and c != a):\n"+
+				"		return 1\n"+
+				"	else:\n"+
+				"		return 0\n");
 		setup(myWorld);
 	}
 

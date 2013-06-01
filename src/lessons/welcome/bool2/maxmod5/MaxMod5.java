@@ -26,7 +26,19 @@ public class MaxMod5 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "maxMod5", 
 				"def maxMod5(a, b):\n",
-				"");
+				"	if (a == b):\n"+
+				"		return 0\n"+
+				"	elif (a > b):\n"+
+				"		if (a % 5 == b % 5):\n"+
+				"			return b\n"+
+				"		else:\n"+
+				"			return a\n"+
+				"	else:\n"+
+				"		if (a % 5 == b % 5):\n"+
+				"			return a\n"+
+				"		else:\n"+
+				"			return b");  
+
 		setup(myWorld);
 	}
 

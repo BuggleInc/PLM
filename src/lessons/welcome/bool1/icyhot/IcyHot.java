@@ -22,7 +22,7 @@ public class IcyHot extends BatExercise {
 
 		langTemplate(Game.PYTHON, "icyHot", 
 				"def icyHot(temp1, temp2):\n",
-				"");
+				"   return temp1<0 and temp2>100 or temp1>100 and temp2<0\n");
 		setup(myWorld);
 	}
 

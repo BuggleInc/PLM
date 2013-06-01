@@ -21,7 +21,7 @@ public class AnswerCell extends BatExercise {
 
 		langTemplate(Game.PYTHON, "answerCell", 
 				"def answerCell(isMorning, isMom, isAsleep):\n",
-				"");
+				"   return (not isAsleep) and not (isMorning and not isMom)");
 		setup(myWorld);
 	}
 
