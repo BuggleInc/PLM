@@ -177,4 +177,32 @@
       <jar destfile="lib/jlm-messages.jar" basedir="${site.dir}/po" includes="org/**"/>
       <delete dir="${site.dir}/po"/>
     </target>
+    
+    <property name="mac.dir" value="${lib.dir}/mac-resources"/>
+    <property name="fr.lproj.dir" value="${mac.dir}/fr.lproj"/>
+    <property name="mac.app.name" value="JavaLearningMachine"/>
+    <property name="mac.bundle.dir" value="${dist.dir}/${mac.app.name}.app"/>
+
+    <taskdef name="bundleapp"
+             classname="com.oracle.appbundler.AppBundlerTask"   
+             classpath="${lib.dir}/appbundler-1.0.jar" />
+
+    <target name="build-Mac.app-bundle">
+        <bundleapp outputdirectory="dist"
+            name="${mac.app.name}"
+            displayname="Java Learning Machine"
+            identifier="jlm.core.ui.JavaLearningMachine"
+            mainclassname="jlm.core.ui.JavaLearningMachine"
+			icon="${mac.dir}/JLM.icns">
+            <classpath file="dist/jlm-${jlm.version}.jar" />
+        </bundleapp>
+		<copy todir="${mac.bundle.dir}/Contents/Resources/fr.lproj">
+			<fileset dir="${fr.lproj.dir}"/>
+		</copy>
+    </target>
+	
+	
+	<target name="Mac.app" depends="dist, build-Mac.app-bundle">
+	</target>
+	
 </project>
