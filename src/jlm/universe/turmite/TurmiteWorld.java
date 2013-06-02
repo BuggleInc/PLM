@@ -2,6 +2,11 @@ package jlm.universe.turmite;
 
 import java.awt.Color;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptException;
+
+import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.Direction;
 import jlm.universe.World;
 import jlm.universe.bugglequest.Buggle;
@@ -78,5 +83,15 @@ public class TurmiteWorld extends BuggleWorld {
 	@Override
 	public boolean isDelayed() {
 		return super.isDelayed() && ( (getDelay() > 0) || (currStep % 1000 == 0) );
+	}
+	@Override
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException {
+		if (lang.equals(Game.PYTHON)) {
+			super.setupBindings(lang, engine);
+			engine.put("daWorld", this);
+			engine.eval(
+					"def stepDone():\n"+
+					"	daWorld.stepDone()\n");
+		}
 	}
 }
