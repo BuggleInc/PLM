@@ -1,0 +1,3 @@
+"JRELoadError" = "Je ne peux charger l'environnement runtime Java.";
+"MainClassNameRequired" = "Un nom de classe principale est nécessaire.";
+"JavaDirectoryNotFound" = "Je ne peux énumérer le contenu du dossier Java.";
