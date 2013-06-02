@@ -14,11 +14,13 @@ white, turn left and move forward by one cell.</p>
 <p>It's hard to come up with simpler rules isn't it? Well, let's go and code it 
 now. You have to complete the <code>step()</code> method, which encodes the 
 behavior of the ant at each step. You will probably use the <code>getGroundColor()</code> 
-method to retrieve the color of the cell on which the ant is currently. To 
-compare colors, you cannot use the equal sign (=), because these things are not 
+method to retrieve the color of the cell on which the ant is currently. 
+Colors of interest are simply named <code>Color.black</code> and <code>Color.white</code>.</p>
+
+<p class="Java">To compare colors, you cannot use the equal sign (=), because these things are not 
 scalar values but objects. Instead, you need to write something like the following:
 </p> 
-<pre>
+<pre class="Java">
 Color c /* = some initialization */;
 if (c.equals(Color.black)) {
   /* that's equal */
@@ -32,8 +34,7 @@ change the brush color of your buggle, set the brush down (to mark the current
 cell -- with <code>brushDown()</code>), and set the brush back up (with 
 <code>brushUp()</code>) to avoid further issues when the buggle will 
 move. You are naturally free of organizing your code the way you want, but you may
-want to write a <code>void setGroundColor(Color c)</code> method to factorize 
-things a bit.</p>
+want to write a <code>setGroundColor</code> method to factorize things a bit.</p>
 
 <h2>More information on Langton's ant</h2>
 
