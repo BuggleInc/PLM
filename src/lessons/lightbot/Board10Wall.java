@@ -1,4 +1,4 @@
-package lessons.lightbot.mission10;
+package lessons.lightbot;
 
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.Direction;

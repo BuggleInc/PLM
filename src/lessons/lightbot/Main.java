@@ -1,18 +1,6 @@
 package lessons.lightbot;
 
 import jlm.core.model.lesson.Lesson;
-import lessons.lightbot.mission1.Board01TwoSteps;
-import lessons.lightbot.mission10.Board10Wall;
-import lessons.lightbot.mission11.Board11Sea;
-import lessons.lightbot.mission12.Board12Escher;
-import lessons.lightbot.mission2.Board02Turn;
-import lessons.lightbot.mission3.Board03Jump;
-import lessons.lightbot.mission4.Board04Stairs;
-import lessons.lightbot.mission5.Board05Higher;
-import lessons.lightbot.mission6.Board06Func;
-import lessons.lightbot.mission7.Board07Repeat;
-import lessons.lightbot.mission8.Board08Rec;
-import lessons.lightbot.mission9.Board09Castle;
 
 public class Main extends Lesson {
 	@Override
