@@ -107,15 +107,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private void initComponents(final Game g) {
 		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
-			addWindowListener(new WindowAdapter() {
+		addWindowListener(new WindowAdapter() {
 				@Override
 				public void windowClosing(WindowEvent e) {
-		    		if (JOptionPane.YES_OPTION == 
-		    				JOptionPane.showConfirmDialog(null, 
-		    						i18n.tr("Do you really want to quit ?"), 
-		    						i18n.tr("Exit the JLM"), JOptionPane.YES_NO_OPTION)) {
-		    			g.quit();
-		    		}
+					g.quit();
 				}
 			});
 
