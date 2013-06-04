@@ -1,8 +1,8 @@
-def forward(i):
+def forward(i=1):
     if i>1:
         errorMsg("Sorry Dave, I cannot let you use forward(i>1) in this exercise")
 
-def backward(i):
+def backward(i=1):
     if i>1:
         errorMsg("Sorry Dave, I cannot let you use backward(i>1) in this exercise")
 
