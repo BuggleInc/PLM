@@ -93,9 +93,7 @@ public class Main extends Lesson {
 		Lecture basics = addExercise(new Basics(this));
 		
 		addExercise(new BasicsDrawG(this), basics);
-		
 		Lecture conditions = addExercise(new Conditions(this));
-		
 		Lecture loopWhile = addExercise(new LoopWhile(this));
 		addExercise(new BaggleSeeker(this), loopWhile);
 		addExercise(new BDR(this),loopWhile);
@@ -122,7 +120,7 @@ public class Main extends Lesson {
 		
 		addExercise(new MethodsArgs(this));		
 				
-		/* arrays exercises */
+		// arrays exercises 
 		Lecture arrays = addExercise(new Array(this));
 		addExercise(new Array2(this),arrays);
 		addExercise(new IndexOfValue(this),arrays);
@@ -138,20 +136,20 @@ public class Main extends Lesson {
 		addExercise(new Has271(this),arrays);
 
 		
-		/* 2D traversals */
+		// 2D traversals
 		Lecture snake = addExercise(new Snake(this));
 		addExercise(new TraversalByColumn(this),snake);
 		addExercise(new TraversalByLine(this),snake);
 		addExercise(new TraversalZigZag(this),snake);
 		addExercise(new TraversalDiagonal(this),snake);
 		
-		/* Turmites exercises */	
+		// Turmites exercises	
 		Lecture langton = addExercise(new Langton(this));
 		addExercise(new LangtonColors(this),langton);
 		addExercise(new HelloTurmite(this),langton);
 		addExercise(new TurmiteCreator(this),langton);
 		
-		/* First serie of boolean fun */
+		// First serie of boolean fun
 		Lecture bat = addExercise(new SleepIn(this),conditions);
 		addExercise(new MonkeyTrouble(this),bat);
 		addExercise(new NearHundred(this),bat);
@@ -170,7 +168,7 @@ public class Main extends Lesson {
 		addExercise(new Max1020(this),bat);
 		addExercise(new LastDigit(this),bat);
 
-		/* Second serie of boolean fun */
+		// Second serie of boolean fun
 		bat = addExercise(new AlarmClock(this),conditions);
 		addExercise(new AnswerCell(this),bat);
 		addExercise(new BlueTicket(this),bat);
