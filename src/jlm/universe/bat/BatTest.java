@@ -116,17 +116,26 @@ public class BatTest {
 			sb.deleteCharAt(sb.length()-1);
 			sb.append("}");					
 		} else if (o.getClass().isArray()){
-			sb.append("{");
+			if (pl.equals(Game.JAVA)) {
+				sb.append("{");
+			} else { // Python
+				sb.append("[");
+			}
 			if (o.getClass().getComponentType().equals(Integer.TYPE)) {
 				int[]a = (int[]) o;
-				for (int i:a) {
+				for (int i:a) 
 					sb.append(i+",");
-				}
+				
+				if (a.length > 0) // Don't kill the last comma if there is none
+					sb.deleteCharAt(sb.length()-1);
 			} else {
 				throw new RuntimeException("Unhandled internal type (only integer arrays are handled so far)");
 			}
-			sb.deleteCharAt(sb.length()-1);
-			sb.append("}");					
+			if (pl.equals(Game.JAVA)) {
+				sb.append("}");
+			} else { // Python
+				sb.append("]");
+			}
 		} else if (o instanceof Boolean && pl.equals(Game.PYTHON)){
 			Boolean b = (Boolean) o;
 			if (b) {
