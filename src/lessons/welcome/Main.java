@@ -2,12 +2,18 @@ package lessons.welcome;
 
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
+import lessons.welcome.array.array123.Array123;
+import lessons.welcome.array.array667.Array667;
+import lessons.welcome.array.arraycount9.ArrayCount9;
+import lessons.welcome.array.arrayfront9.ArrayFront9;
 import lessons.welcome.array.averagevalue.AverageValue;
 import lessons.welcome.array.basics.Array;
 import lessons.welcome.array.basics2.Array2;
+import lessons.welcome.array.has271.Has271;
 import lessons.welcome.array.indexof.maxvalue.IndexOfMaxValue;
 import lessons.welcome.array.indexof.value.IndexOfValue;
 import lessons.welcome.array.maxvalue.MaxValue;
+import lessons.welcome.array.notriples.NoTriples;
 import lessons.welcome.array.occurenceofvalue.OccurrenceOfValue;
 import lessons.welcome.baggleseeker.BaggleSeeker;
 import lessons.welcome.basics.Basics;
@@ -124,6 +130,13 @@ public class Main extends Lesson {
 		addExercise(new AverageValue(this),arrays);
 		addExercise(new MaxValue(this),arrays);
 		addExercise(new IndexOfMaxValue(this),arrays);
+		addExercise(new ArrayCount9(this),arrays);
+		addExercise(new ArrayFront9(this),arrays);
+		addExercise(new Array123(this),arrays);
+		addExercise(new Array667(this),arrays);
+		addExercise(new NoTriples(this),arrays);
+		addExercise(new Has271(this),arrays);
+
 		
 		/* 2D traversals */
 		Lecture snake = addExercise(new Snake(this));

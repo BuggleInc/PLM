@@ -1,4 +1,4 @@
-package lessons.bat.string1.has271;
+package lessons.welcome.array.has271;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
