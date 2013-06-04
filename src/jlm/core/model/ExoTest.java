@@ -103,13 +103,13 @@ public class ExoTest {
 
 	}
 	
-	@Test
+	@Test(timeout=10000)
 	public void testJavaEntity() {
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
 		testCorrectionEntity();
 	}
 	
-	@Test
+	@Test(timeout=10000)
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) {
 //			System.out.println("Exercise "+exo.getClass().getName()+" does not support python");
