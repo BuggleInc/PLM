@@ -26,7 +26,11 @@ public class Array667 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "array667", 
 				"def array667(nums):\n",
-				"");
+				"  count=0\n"+
+				"  for i in range( len(nums)-1):\n"+
+				"    if (nums[i] == 6) and (nums[i+1]==6 or nums[i+1]==7):\n"+
+				"      count += 1\n"+
+				"  return count\n");
 		setup(myWorld);
 	}
 

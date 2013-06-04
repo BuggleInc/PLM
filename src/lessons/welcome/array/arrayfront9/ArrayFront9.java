@@ -25,7 +25,11 @@ public class ArrayFront9 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "arrayFront9", 
 				"def arrayFront9(nums):\n",
-				"");
+				"  for i in range( min( len(nums), 4) ):\n" +
+				"    if nums[i] == 9:\n" +
+				"      return True\n" +
+				"  return False\n");
+
 		setup(myWorld);
 	}
 

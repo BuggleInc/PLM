@@ -20,7 +20,11 @@ public class ArrayCount9 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "arrayCount9", 
 				"def arrayCount9(nums):\n",
-				"");
+				"  res = 0\n" +
+				"  for value in nums:\n" +
+				"    if value == 9:\n" +
+				"      res += 1\n" +
+				"  return res\n");
 		setup(myWorld);
 	}
 

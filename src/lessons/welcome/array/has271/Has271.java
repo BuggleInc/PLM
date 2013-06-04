@@ -25,8 +25,13 @@ public class Has271 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {2, 7, -2, 4, 10, 2}) ;
 
 		langTemplate(Game.PYTHON, "has271",
-				"def has271(nums):\n",
-				"");
+				"import math\ndef has271(nums):\n",
+				"  count=0\n"+
+				"  for i in range( len(nums)-1):\n"+
+				"    if (nums[i] + 5 == nums[i+1]) and (math.fabs(nums[i+2]-nums[i]+1)<=2):\n"+
+				"      return True\n"+
+				"  return False\n");
+
 		setup(myWorld);
 	}
 

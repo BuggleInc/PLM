@@ -23,7 +23,10 @@ public class Array123 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "array123", 
 				"def array123(nums):\n",
-				"");
+				"  for i in range(len(nums)-2):\n" +
+				"    if nums[i]==1  and  nums[i+1]==2  and  nums[i+2]==3:\n"+
+				"      return True\n"+
+				"  return False\n");
 		setup(myWorld);
 	}
 

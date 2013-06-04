@@ -22,7 +22,11 @@ public class NoTriples extends BatExercise {
 
 		langTemplate(Game.PYTHON, "noTriples", 
 				"def noTriples(nums):\n",
-				"");
+				"  count=0\n"+
+				"  for i in range( len(nums)-2 ):\n"+
+				"    if (nums[i] == nums[i+1]) and (nums[i+1] == nums[i+2]):\n"+
+				"      return False\n"+
+				"  return True\n");
 		setup(myWorld);
 	}
 
