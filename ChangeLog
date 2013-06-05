@@ -1,5 +1,8 @@
-20130601:
+20130605:
   * BatEntities now work within the unit tests too (fix #67)
+  * Integrate the bat exercise using integer arrays into the welcome
+    lesson (fix #21)
+  * Make it possible to port turmite exercises to python
 20130531:
   * Try harder to find a path where we can save our data
 20130530:
