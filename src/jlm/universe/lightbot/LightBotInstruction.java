@@ -58,6 +58,8 @@ public class LightBotInstruction {
 		case LIGHT: lb.light(); break;
 		case F1: lb.runF1(); break;
 		case F2: lb.runF2(); break;
+		case NOOP: /* nothing to do for NOOP :) */
+			break;
 		}
 	}
 	public char toChar() {
@@ -69,6 +71,7 @@ public class LightBotInstruction {
 		case LIGHT: return 'O';
 		case F1: return '1'; 
 		case F2: return '2'; 
+		case NOOP: 
 		}
 		return ' ';
 	}
