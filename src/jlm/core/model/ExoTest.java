@@ -109,7 +109,7 @@ public class ExoTest {
 		testCorrectionEntity();
 	}
 	
-	@Test(timeout=10000)
+	@Test(timeout=30000)
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) {
 //			System.out.println("Exercise "+exo.getClass().getName()+" does not support python");
