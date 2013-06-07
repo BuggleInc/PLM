@@ -73,6 +73,14 @@ public class TurmiteWorld extends BuggleWorld {
 			return false;
 		return super.equals(o);
 	}
+	@Override
+	public String diffTo(World world) {
+		String res = "";
+		if (((TurmiteWorld) world).currStep != currStep)
+			res += "The amount of steps is wrong: "+((TurmiteWorld) world).currStep +" is not "+ currStep+"\n";
+		return res+super.diffTo(world);
+	}
+	
 	
 	/* Here comes the world logic */
 	public int currStep=0;
