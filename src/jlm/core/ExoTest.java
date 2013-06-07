@@ -1,4 +1,4 @@
-package jlm.core.model;
+package jlm.core;
 
 import static org.junit.Assert.fail;
 
@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Locale;
 
+import jlm.core.model.FileUtils;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Exercise.WorldKind;
