@@ -44,7 +44,7 @@ public class LangtonColorsEntity extends SimpleBuggle {
 			colors[i] = allColors[i];
 
 		for (int i=0;i<nbSteps;i++) {
-			((jlm.universe.turmite.TurmiteWorld)world).currStep = i;
+			((jlm.universe.turmite.TurmiteWorld)world).stepDone();
 			step(rule,colors);
 		}
 	}
