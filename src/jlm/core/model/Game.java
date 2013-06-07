@@ -388,7 +388,8 @@ public class Game implements IWorldView {
 		runner.start();
 	}
 	public void stopExerciseExecution() {
-		runner.stopAll();
+		if (runner != null)
+			runner.stopAll();
 		
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
