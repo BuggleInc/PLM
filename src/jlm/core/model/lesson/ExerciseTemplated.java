@@ -301,7 +301,7 @@ public abstract class ExerciseTemplated extends Exercise {
 
 	@Override
 	public void runDemo(List<Thread> runnerVect){
-		ExecutionProgress progress = new ExecutionProgress();
+		ExecutionProgress ignored = new ExecutionProgress();
 		
 		for (int i=0; i<initialWorld.size(); i++) { 
 			answerWorld.get(i).reset(initialWorld.get(i));
@@ -310,7 +310,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		mutateCorrection(WorldKind.ANSWER);
 
 		for (World aw:getWorlds(WorldKind.ANSWER))
-			aw.runEntities(runnerVect,progress);
+			aw.runEntities(runnerVect,ignored);
 	}
 	
 	public void mutateCorrection(WorldKind kind) {
