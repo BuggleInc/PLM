@@ -21,11 +21,9 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 	final static int NEXT_STATE = 2;
 
 
-	Color[] colors; 
-	int[][][] rule; 
 	int state = 0;
 
-	public void step() {
+	public void step(Color[] colors, int[][][] rule ) {
 		int currentColor=0;
 		/* Your code comes here */
 		/* BEGIN SOLUTION */
@@ -57,6 +55,9 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 	@Override
 	public void run() { 
 		int nbSteps = (Integer)getParam(0);
+		Color[] colors; 
+		int[][][] rule; 
+
 		rule = ((int[][][])getParam(1));
 
 		colors = new Color[rule.length];
@@ -64,8 +65,8 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 			colors[i] = allColors[i];
 
 		for (int i=0;i<nbSteps;i++) {
-			((jlm.universe.turmite.TurmiteWorld)world).currStep = i;
-			step();
+			((jlm.universe.turmite.TurmiteWorld)world).stepDone();
+			step(colors,rule);
 		}
 	}
 }

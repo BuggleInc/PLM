@@ -11,15 +11,10 @@ before that).</p>
 
 <p>Once again, you just have to write the <code>step()</code> method, in charge 
 of doing one turmite's step. Once again, you should first find the rank of the 
-current's cell ground color in the color sequence. The <code>colors</code> array 
-is not passed as parameter but declared as global variable. It shouldn't change 
-anything for us since this array was never modified during the execution. This 
-trick to pass constant parameters is not very clean, but it should help 
-performance a bit.</p>   
-
-<p>The second step is to use the <code>rule</code> data depending on the current 
-color and the current state. <code>rule</code> actually contains 3 information in
-each situation: the color to write, the move to do, and the next state value. For 
+current's cell ground color in the color sequence. But this time, the 
+<code>rule</code> data depends both on the current color and the current state. 
+<code>rule</code> actually contains 3 information in each situation: 
+the color to write, the move to do, and the next state value. For 
 example, rule[1][0] contains the informations to use when <code>state==1</code> and 
 <code>color==0</code>. In other worlds, you can retrieve the information relative 
 to your current situation by using <code>rule[state][currentColor]</code>.</p> 
@@ -28,26 +23,49 @@ to your current situation by using <code>rule[state][currentColor]</code>.</p>
 color to write on the ground. The second is the move to do, with the following 
 notation: 0=stop, 1=noturn, 2=right, 4=u-turn, 8=left. Note that if the command is stop, 
 you shouldn't even move forward on that step (but you shouldn't stop your program 
-either: the next steps can do something else). Finally, the third integer is the 
+either: the next steps can do something else in a future state). Finally, the third integer is the 
 next <code>state</code> value to go into after this iteration.</p> 
 
-<p>Since these arbitrary notations are somehow difficult to remember, the template 
+<p class="Java">Since these arbitrary notations are somehow difficult to remember, the template 
 code defines a set of constants that you should use instead of the direct numerical 
 values. Their names are NOTURN, LEFT, RIGHT and so on. The modifiers <code>final 
 static</code> before their type is the way to mark variables as constant in Java 
 (sorry if the notation seems complex). Using such constants greatly help making the 
-code easier to read, since 
-<pre>
+code easier to read. This allows to write things this way:</p> 
+<p class="python">Since these arbitrary notations are somehow difficult to remember, the template 
+code defines a set of constants that you should use instead of the direct numerical 
+values. Their names are NOTURN, LEFT, RIGHT and so on. By convention, such constant variables 
+are written in upper case in python. Technically, you can still modify them, but that would be 
+a very bad idea. Using such constants greatly help making the 
+code easier to read, as it allows to write things this way:</p> 
+<pre class="Java">
   if (rule[state][currentColor][NEXT_MOVE] == LEFT) {
     turnLeft();
   }
 </pre>
-is much more easier to read than
-<pre>
+<pre class="python">
+  if rule[state][currentColor][NEXT_MOVE] == LEFT:
+    turnLeft()
+</pre>
+<p>This is much more easier to read than the following way:</p>
+<pre class="Java">
   if (rule[x][y][1] == 2) {
     turnLeft();
   }
 </pre>
+<pre class="python">
+  if rule[x][y][1] == 2:
+    turnLeft()
+</pre>
+ 
+<p class="python">Finally, you probably want to write a <code>elif</code> branch for the 
+<code>STOP</code> condition too. Having a <code>else</code> branch displaying an error 
+message such as "unknown case" is a good practice: it makes your assumptions about your 
+code more explicit, and you will get an error message if they fall short. When doing so, 
+the next problem is that you have nothing to do in the <code>STOP</code> case, but python 
+do not allows you to write empty <code>elif</code> branches. You should use the <code>pass</code> 
+instruction as a placeholder: it says python that you have a branch here, and that it 
+does not contain anything.</p>
  
 <p>You now should have enough information to succeed.</p>
 
