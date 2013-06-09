@@ -23,6 +23,9 @@ import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 
 public abstract class Exercise extends Lecture {
 	public static enum WorldKind {INITIAL,CURRENT, ANSWER}
@@ -43,6 +46,8 @@ public abstract class Exercise extends Lecture {
 
 	public ExecutionProgress lastResult;
 	
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
+
 	public Exercise(Lesson lesson) {
 		super(lesson);
 	}
@@ -69,7 +74,7 @@ public abstract class Exercise extends Lecture {
 
 			if (!currentWorld.get(i).equals(answerWorld.get(i))) {
 				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
-				lastResult.details += "The world '"+currentWorld.get(i).getName()+"' differs";
+				lastResult.details += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
 				if (diff != null) 
 					lastResult.details += ":\n"+diff;
 				lastResult.details += "\n";

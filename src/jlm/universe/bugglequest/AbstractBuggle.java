@@ -415,21 +415,29 @@ public abstract class AbstractBuggle extends Entity {
 	public String diffTo(AbstractBuggle other) {
 		StringBuffer sb = new StringBuffer();
 		if (getX() != other.getX() || getY() != other.getY()) 
-			sb.append("    Its position is ("+other.getX()+","+other.getY()+"); expected: ("+getX()+","+getY()+").\n");
+			sb.append(i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
+//			sb.append("    Its position is ("+other.getX()+","+other.getY()+"); expected: ("+getX()+","+getY()+").\n");
 		if (getDirection() != other.getDirection()) 
-			sb.append("    Its direction is "+other.getDirection()+"; expected: "+getDirection()+".\n");
+			sb.append(i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
+//			sb.append("    Its direction is "+other.getDirection()+"; expected: "+getDirection()+".\n");
 		if (getColor() != other.getColor()) 
-			sb.append("    Its color is "+other.getColor()+"; expected: "+getColor()+".\n");
+			sb.append(i18n.tr("    Its color is {0}; expected: {1}.\n",other.getColor(),getColor()));
+//			sb.append("    Its color is "+other.getColor()+"; expected: "+getColor()+".\n");
 		if (getBrushColor() != other.getBrushColor())
-			sb.append("    The color of its brush is "+other.getBrushColor()+"; expected: "+getBrushColor()+".\n");
+			sb.append(i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
+//			sb.append("    The color of its brush is "+other.getBrushColor()+"; expected: "+getBrushColor()+".\n");
 		if (isCarryingBaggle() && !other.isCarryingBaggle())
-			sb.append("    It should not carry that baggle.\n");
+			sb.append(i18n.tr("    It should not carry that baggle.\n"));
+//			sb.append("    It should not carry that baggle.\n");
 		if (!isCarryingBaggle() && other.isCarryingBaggle())
-			sb.append("    It is not carrying any baggle.\n");
+			sb.append(i18n.tr("    It is not carrying any baggle.\n"));
+//			sb.append("    It is not carrying any baggle.\n");
 		if (haveSeenError() && !other.haveSeenError())
-			sb.append("    It encountered an issue, such as bumping into a wall.\n");
+			sb.append(i18n.tr("    It encountered an issue, such as bumping into a wall.\n"));
+//			sb.append("    It encountered an issue, such as bumping into a wall.\n");
 		if (!haveSeenError() && other.haveSeenError())
-			sb.append("    It didn't encounter any issue, such as bumping into a wall.\n");
+			sb.append(i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
+//			sb.append("    It didn't encounter any issue, such as bumping into a wall.\n");
 		return sb.toString();
 	}
 }
