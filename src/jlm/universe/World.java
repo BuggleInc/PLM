@@ -13,6 +13,9 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
@@ -27,6 +30,8 @@ public abstract class World {
 	protected ArrayList<Entity> entities = new ArrayList<Entity>();
 
 	private String name;
+
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 
 	public World(String name) {
 		this.name = name;

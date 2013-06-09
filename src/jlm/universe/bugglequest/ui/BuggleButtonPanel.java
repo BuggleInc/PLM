@@ -9,6 +9,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -33,6 +34,8 @@ public class BuggleButtonPanel extends EntityControlPanel {
 	private JToggleButton brushButton;
 	private JComboBox buggleColorComboBox;
 	private JComboBox brushColorComboBox;
+	private JLabel lBuggleColor;
+	private JLabel lBrushColor;
 	
 	public BuggleButtonPanel() {
 		setLayout(new FlowLayout());
@@ -42,13 +45,15 @@ public class BuggleButtonPanel extends EntityControlPanel {
 
 		add(createButtonsPanel());
 		add(createColorsBoxes());
+
+		Game.getInstance().addHumanLangListener(this);
 	}
 
 	/**
 	 * Initialize fButton, bButton, rButton, lButton and brushButton
 	 */
 	private void initializeButtons() {
-		fButton = new JButton("forward");
+		fButton = new JButton(i18n.tr("forward"));
 		fButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
@@ -62,7 +67,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		});
 		fButton.setMnemonic(KeyEvent.VK_UP);
 
-		bButton = new JButton("backward");
+		bButton = new JButton(i18n.tr("backward"));
 		bButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
@@ -76,7 +81,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		});
 		bButton.setMnemonic(KeyEvent.VK_DOWN);
 
-		lButton = new JButton("turn left");
+		lButton = new JButton(i18n.tr("turn left"));
 		lButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).turnLeft();
@@ -84,7 +89,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		});
 		lButton.setMnemonic(KeyEvent.VK_LEFT);
 
-		rButton = new JButton("turn right");
+		rButton = new JButton(i18n.tr("turn right"));
 		rButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).turnRight();
@@ -92,7 +97,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		});
 		rButton.setMnemonic(KeyEvent.VK_RIGHT);
 
-		brushButton = new JToggleButton("mark");
+		brushButton = new JToggleButton(i18n.tr("mark"));
 		brushButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
@@ -191,10 +196,12 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		JPanel colorsPanel = new JPanel();
 		colorsPanel.setLayout(new GridLayout(4,1));
 		
-		colorsPanel.add(new JLabel("BrushColor"));
+		lBrushColor = new JLabel("Brush Color");
+		colorsPanel.add(lBrushColor);
 		colorsPanel.add(brushColorComboBox);
 		
-		colorsPanel.add(new JLabel("BuggleColor"));
+		lBuggleColor = new JLabel("Buggle Color");
+		colorsPanel.add(lBuggleColor);
 		colorsPanel.add(buggleColorComboBox);
 		
 		return colorsPanel;
@@ -213,16 +220,31 @@ public class BuggleButtonPanel extends EntityControlPanel {
 	
 	public void showWallHuggingErrorMessageDialog() {
 		String message ;
-		String title = "Wall hugging error";
-		if ( FileUtils.getLocale().equals("fr"))
-		{
-			message = "Votre buggle est rentrée dans un mur, ça fait mal ! ='(";
-		}
-		else
-		{
-			message = "Your buggle has collided with a wall, it hurts a lot ! ='(";
-		}
+		String title = i18n.tr("Wall hugging error");
+		message = i18n.tr("Your buggle has collided with a wall, it hurts a lot ! ='(");
+//TODO: remove if validated
+//		if ( FileUtils.getLocale().equals("fr"))
+//		{
+//			message = "Votre buggle est rentr��e dans un mur, ��a fait mal ! ='(";
+//		}
+//		else
+//		{
+//			message = "Your buggle has collided with a wall, it hurts a lot ! ='(";
+//		}
 		JOptionPane.showMessageDialog(null, message,title, JOptionPane.ERROR_MESSAGE);
+	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		i18n.setLocale(newLang);
+		
+		bButton.setText(i18n.tr("backward"));
+		fButton.setText(i18n.tr("forward"));
+		lButton.setText(i18n.tr("turn left"));
+		rButton.setText(i18n.tr("turn right"));
+		brushButton.setText(i18n.tr("mark"));
+		lBrushColor.setText(i18n.tr("Brush Color"));
+		lBuggleColor.setText(i18n.tr("Buggle Color"));
 	}
 	
 }

@@ -236,28 +236,28 @@ public class BuggleWorldCell extends GridWorldCell {
 	public String diffTo(BuggleWorldCell current) {
 		StringBuffer sb = new StringBuffer();
 		if (baggle == null && current.baggle != null) 
-			sb.append(", there shouldn't be this baggle");
+			sb.append(this.world.i18n.tr(", there shouldn't be this baggle"));
 		if (baggle != null && current.baggle == null)
-			sb.append(", there should be a baggle");
+			sb.append(this.world.i18n.tr(", there should be a baggle"));
 		if (baggle != null && current.baggle != null && !baggle.equals(current.baggle))
-			sb.append(", the baggle differs");
+			sb.append(this.world.i18n.tr(", the baggle differs"));
 		if (color == null) {
 			if (current.color != null)
-				sb.append(", the ground should not be "+current.color);
+				sb.append(this.world.i18n.tr(", the ground should not be {0}",current.color));
 		} else if (!color.equals(current.color))
-			sb.append(", the ground is expected to be "+color+", but it is "+current.color);
+			sb.append(this.world.i18n.tr(", the ground is expected to be {0}, but it is {1}", color, current.color));
 		if (!content.equals(current.content))
-			sb.append(", the ground reads '"+current.content+"' (expected: '"+content+"')");
+			sb.append(this.world.i18n.tr(", the ground reads ''{0}'' (expected: ''{1}'')", current.content, content));
 		if (leftWall != current.leftWall)
 			if (current.leftWall)
-				sb.append(", there shouldn't be any wall at west");
+				sb.append(this.world.i18n.tr(", there shouldn't be any wall at west"));
 			else
-				sb.append(", there should be a wall at west");
+				sb.append(this.world.i18n.tr(", there should be a wall at west"));
 		if (topWall != current.topWall)
 			if (current.topWall)
-				sb.append(", there shouldn't be any wall at north");
+				sb.append(this.world.i18n.tr(", there shouldn't be any wall at north"));
 			else
-				sb.append(", there should be a wall at north");
+				sb.append(this.world.i18n.tr(", there should be a wall at north"));
 		return sb.toString();
 	}
 }

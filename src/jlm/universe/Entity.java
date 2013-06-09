@@ -17,12 +17,16 @@ import jlm.universe.lightbot.LightBotEntity;
 import org.python.core.PyException;
 import org.python.core.PyTraceback;
 
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
 public abstract class Entity {
 	protected String name;
 	protected World world;
 	
 	private Semaphore oneStepSemaphore = new Semaphore(0);
 	
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 	
 	public Entity() {}
 	
