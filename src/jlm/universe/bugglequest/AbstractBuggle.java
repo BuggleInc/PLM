@@ -3,6 +3,7 @@ package jlm.universe.bugglequest;
 import java.awt.Color;
 import java.awt.Point;
 
+import jlm.core.model.Game;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.GridWorld;
@@ -413,31 +414,27 @@ public abstract class AbstractBuggle extends Entity {
 		return true;
 	}
 	public String diffTo(AbstractBuggle other) {
+		/* We cannot use a i18n defined in our class, as we have to pass the classname to the initialization of i18n, 
+		 *    but gettext don't seem to like the fact that we generate at runtime some package names that it does not know at compile time.
+		 * So, use Game.i18n instead.
+		 */
 		StringBuffer sb = new StringBuffer();
 		if (getX() != other.getX() || getY() != other.getY()) 
-			sb.append(i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
-//			sb.append("    Its position is ("+other.getX()+","+other.getY()+"); expected: ("+getX()+","+getY()+").\n");
+			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
 		if (getDirection() != other.getDirection()) 
-			sb.append(i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
-//			sb.append("    Its direction is "+other.getDirection()+"; expected: "+getDirection()+".\n");
+			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
 		if (getColor() != other.getColor()) 
-			sb.append(i18n.tr("    Its color is {0}; expected: {1}.\n",other.getColor(),getColor()));
-//			sb.append("    Its color is "+other.getColor()+"; expected: "+getColor()+".\n");
+			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getColor(),getColor()));
 		if (getBrushColor() != other.getBrushColor())
-			sb.append(i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
-//			sb.append("    The color of its brush is "+other.getBrushColor()+"; expected: "+getBrushColor()+".\n");
+			sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
 		if (isCarryingBaggle() && !other.isCarryingBaggle())
-			sb.append(i18n.tr("    It should not carry that baggle.\n"));
-//			sb.append("    It should not carry that baggle.\n");
+			sb.append(Game.i18n.tr("    It should not carry that baggle.\n"));
 		if (!isCarryingBaggle() && other.isCarryingBaggle())
-			sb.append(i18n.tr("    It is not carrying any baggle.\n"));
-//			sb.append("    It is not carrying any baggle.\n");
+			sb.append(Game.i18n.tr("    It is not carrying any baggle.\n"));
 		if (haveSeenError() && !other.haveSeenError())
-			sb.append(i18n.tr("    It encountered an issue, such as bumping into a wall.\n"));
-//			sb.append("    It encountered an issue, such as bumping into a wall.\n");
+			sb.append(Game.i18n.tr("    It encountered an issue, such as bumping into a wall.\n"));
 		if (!haveSeenError() && other.haveSeenError())
-			sb.append(i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
-//			sb.append("    It didn't encounter any issue, such as bumping into a wall.\n");
+			sb.append(Game.i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
 		return sb.toString();
 	}
 }

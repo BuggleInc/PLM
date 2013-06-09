@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.bugglequest.AbstractBuggle;

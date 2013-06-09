@@ -109,7 +109,7 @@ public class Game implements IWorldView {
 
 	private static boolean ongoingInitialization = false;
 	private static String lessonChooser = "lessons.chooser";
-	I18n i18n;
+	public  static I18n i18n;
 
 	public static Game getInstance() {
 		if (Game.instance == null) {
