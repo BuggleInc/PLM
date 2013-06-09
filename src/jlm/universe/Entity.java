@@ -17,16 +17,20 @@ import jlm.universe.lightbot.LightBotEntity;
 import org.python.core.PyException;
 import org.python.core.PyTraceback;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
+/* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
+ * 
+ * This is because we have to pass the classname to the I18nFactory, but it seems to break 
+ * stuff that our code generate new package names. This later case being forced by our use 
+ * of the compiler, we cannot initialize an I18n stuff. 
+ * 
+ * Instead, the solution is to use the static field Game.i18n, as it is done in AbstractBuggle::diffTo().
+ */
 
 public abstract class Entity {
 	protected String name;
 	protected World world;
 	
 	private Semaphore oneStepSemaphore = new Semaphore(0);
-	
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 	
 	public Entity() {}
 	
