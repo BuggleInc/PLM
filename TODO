@@ -19,8 +19,8 @@ converted to issues on github probably.
 * The print function (and similar) does not work in Python. I've added
   a log function directly to the bindings, but that's *really* ugly
 
-* Use only one scriptEngine, with contexts in there
-
+* Allow exercises in Scala:
+http://speaking-my-language.blogspot.fr/2009/11/embedded-scala-interpreter.html
 ***************** BASE
 
 Assez urgent :
