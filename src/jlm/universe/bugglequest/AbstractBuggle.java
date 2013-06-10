@@ -414,6 +414,8 @@ public abstract class AbstractBuggle extends Entity {
 		return true;
 	}
 	public String diffTo(AbstractBuggle other) {
+		if (other == null) 
+			return Game.i18n.tr("Its value is 'null', which is never good.");
 		/* We cannot use a i18n defined in our class, as we have to pass the classname to the initialization of i18n, 
 		 *    but gettext don't seem to like the fact that we generate at runtime some package names that it does not know at compile time.
 		 * So, use Game.i18n instead.
