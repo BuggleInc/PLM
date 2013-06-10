@@ -100,9 +100,10 @@ class MyIconView extends View {
 
 
 			try {
-				if (s == null)
+				if (s == null) {
 					c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
-				else
+					System.out.println("Broken image link: "+resourceName);
+				} else
 					c = new ImageIcon(ImageIO.read(s));
 			} catch (IOException e) {
 				e.printStackTrace();
