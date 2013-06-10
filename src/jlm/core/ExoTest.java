@@ -47,7 +47,6 @@ public class ExoTest {
 		
 		FileUtils.setLocale(new Locale("en"));
 		Game g = Game.getInstance();
-		
 		g.switchDebug();
 
 		/* Compute the answers with the java entities */
@@ -62,6 +61,7 @@ public class ExoTest {
 					result.add(new Object[] {Game.getInstance().getCurrentLesson(), l});
 		}
 		
+		g.setLocale(new Locale("en"));
 		return result;
 	}
 
