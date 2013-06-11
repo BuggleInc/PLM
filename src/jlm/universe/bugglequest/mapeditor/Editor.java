@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import jlm.universe.BrokenWorldFileException;
 import jlm.universe.IWorldView;
 import jlm.universe.bugglequest.BuggleWorld;
 
@@ -53,6 +54,8 @@ public class Editor {
 		try {
 			this.world.readFromFile(file);
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (BrokenWorldFileException e) {
 			e.printStackTrace();
 		}
 		notifyMapViews();

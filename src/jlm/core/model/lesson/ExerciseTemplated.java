@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -34,6 +35,8 @@ public abstract class ExerciseTemplated extends Exercise {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Unable to load "+path+".map");	
+		} catch (BrokenWorldFileException e) {
+			throw new RuntimeException("File "+path+".map is broken",e);	
 		} finally {
 			try {
 				br.close();

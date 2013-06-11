@@ -29,7 +29,7 @@ public abstract class GridWorld extends World {
 			}
 	}
 
-	public void create(int width, int height) {
+	protected void create(int width, int height) {
 		this.sizeX = width;
 		this.sizeY = height;
 		this.cells = new GridWorldCell[sizeX][sizeY];

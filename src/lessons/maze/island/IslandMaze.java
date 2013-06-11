@@ -22,7 +22,7 @@ public class IslandMaze extends ExerciseTemplated {
 				
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
+		myWorlds[0] = new BuggleWorld("Island", 1, 1);
 		loadMap(myWorlds[0],"lessons/maze/island/IslandMaze");
 		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
