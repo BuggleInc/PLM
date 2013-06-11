@@ -1,6 +1,5 @@
-edited world; name
-12; width
-12; height
+BuggleWorld: Another labyrinth
+Size: 12x12
 [(255,255,255),false,true,true] ; cell
 [(255,255,255),false,false,true] ; cell
 [(255,255,255),false,false,true] ; cell

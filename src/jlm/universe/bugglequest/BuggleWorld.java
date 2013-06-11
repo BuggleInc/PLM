@@ -13,6 +13,7 @@ import javax.script.ScriptException;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
@@ -28,7 +29,7 @@ public class BuggleWorld extends GridWorld {
 		super(name,x,y);
 	}
 	@Override
-	public void create(int x, int y) {
+	protected void create(int x, int y) {
 		super.create(x,y);
 		for (int i = 0; i < sizeX; i++)
 			for (int j = 0; j < sizeY; j++)
@@ -76,23 +77,29 @@ public class BuggleWorld extends GridWorld {
 	}
 
 	@Override
-	public void readFromFile(BufferedReader reader) throws IOException {
+	public void readFromFile(BufferedReader reader) throws IOException, BrokenWorldFileException {
+		/* Get the world name from the first line */
 		String line = reader.readLine();
-		/* Kill the '; name' part */
-		if (!line.contains("; name"))
-			throw new RuntimeException("Parse error: expected the world name field, got '"+line+"'");
-		Pattern p = Pattern.compile(";.*$");
+		if (line == null)
+			throw new BrokenWorldFileException(Game.i18n.tr("This file does not seem to be a serialized BuggleWorld (the file is empty!)"));
+		
+		Pattern p = Pattern.compile("^BuggleWorld: ");
 		Matcher m = p.matcher(line);
+		if (!m.find())
+			throw new RuntimeException(Game.i18n.tr("This file does not seem to be a serialized BuggleWorld (malformated first line: {0})", line));
 		m.replaceAll("");
-
+		setName(line);
+		
+		/* Get the dimension from the second line that is eg "Size: 20x20" */
 		line = reader.readLine();
-		int width = 0;
-		if (line != null)
-			width = Integer.parseInt(strip(line));
-		line = reader.readLine();
-		int height = 0;
-		if (line != null)
-			height = Integer.parseInt(strip(line));
+		if (line == null)
+			throw new RuntimeException(Game.i18n.tr("Broken world file. End of file reached before file size specification"));
+		p = Pattern.compile("^Size: (\\d+)x(\\d+)$");
+		m = p.matcher(line);
+		if (!m.find()) 
+			throw new RuntimeException(Game.i18n.tr("Broken world file. Expected 'Size: ??x??' but got '{0}'", line));
+		int width = Integer.parseInt(m.group(1)); 
+		int height = Integer.parseInt(m.group(2));
 
 		create(width, height);
 
@@ -145,9 +152,8 @@ public class BuggleWorld extends GridWorld {
 	@Override
 	public void writeToFile(BufferedWriter writer) throws IOException {
 
-		writer.write(getName() + "; name\n");
-		writer.write(getWidth() + "; width\n");
-		writer.write(getHeight() + "; height\n");
+		writer.write("BuggleWorld: "+getName() + "\n");
+		writer.write("Size: "+getWidth() + "x"+ getHeight() + "\n");
 
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {

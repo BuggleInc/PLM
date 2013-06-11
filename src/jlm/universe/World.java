@@ -196,7 +196,7 @@ public abstract class World {
 	}
 
 	/* IO related */
-	public void readFromFile(BufferedReader br) throws IOException {}
+	public void readFromFile(BufferedReader br) throws IOException, BrokenWorldFileException {}
 
 	public void writeToFile(BufferedWriter f) throws IOException {}
 
@@ -215,7 +215,7 @@ public abstract class World {
 		}
 	}
 
-	public void readFromFile(File inputFile) throws IOException {
+	public void readFromFile(File inputFile) throws IOException, BrokenWorldFileException {
 		BufferedReader br = null;
 		FileReader fr = null;
 		try {

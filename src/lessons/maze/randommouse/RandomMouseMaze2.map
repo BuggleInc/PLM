@@ -1,6 +1,5 @@
-edited world; name
-4; width
-4; height
+BuggleWorld: Blue cheese
+Size: 4x4
 [(255,255,255),false,true,true] ; cell
 [(255,255,255),false,false,true] ; cell
 [(255,255,255),false,false,true] ; cell
