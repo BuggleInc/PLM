@@ -50,7 +50,7 @@ public class Editor {
 		}
 	}
 
-	public void loadMap(File file) {
+	public void loadMap(String file) {
 		try {
 			this.world.readFromFile(file);
 		} catch (IOException e) {

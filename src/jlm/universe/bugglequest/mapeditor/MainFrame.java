@@ -27,7 +27,7 @@ public class MainFrame extends JFrame {
 
 	private Editor editor;
 	private ButtonGroup tools;
-	private File path;	
+	private String path;	
 	
 	public MainFrame(Editor editor) {
 		super("BuggleQuest - MapEditor");
@@ -198,7 +198,7 @@ public class MainFrame extends JFrame {
 			int status = fc.showOpenDialog(MainFrame.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {
-				MainFrame.this.path = fc.getSelectedFile();
+				MainFrame.this.path = fc.getSelectedFile().getAbsolutePath();
 				editor.loadMap(MainFrame.this.path);
 			}
 		}

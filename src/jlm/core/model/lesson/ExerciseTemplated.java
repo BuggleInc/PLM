@@ -1,6 +1,5 @@
 package jlm.core.model.lesson;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -28,21 +27,13 @@ public abstract class ExerciseTemplated extends Exercise {
 	}
 
 	protected void loadMap(World intoWorld, String path) {
-		BufferedReader br = null;
 		try {
-			br = FileUtils.newFileReader(path, "map", false);
-			intoWorld.readFromFile(br);
+			intoWorld.readFromFile(path);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Unable to load "+path+".map");	
 		} catch (BrokenWorldFileException e) {
 			throw new RuntimeException("File "+path+".map is broken",e);	
-		} finally {
-			try {
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 

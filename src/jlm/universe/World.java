@@ -1,9 +1,7 @@
 package jlm.universe;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,15 +11,15 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.ui.WorldView;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 public abstract class World {
 	private boolean isDelayed = false; // whether we display interactively or not
@@ -196,7 +194,7 @@ public abstract class World {
 	}
 
 	/* IO related */
-	public void readFromFile(BufferedReader br) throws IOException, BrokenWorldFileException {}
+	public void readFromFile(String path) throws IOException, BrokenWorldFileException {}
 
 	public void writeToFile(BufferedWriter f) throws IOException {}
 
@@ -213,22 +211,6 @@ public abstract class World {
 			if (bw != null)
 				bw.close();
 		}
-	}
-
-	public void readFromFile(File inputFile) throws IOException, BrokenWorldFileException {
-		BufferedReader br = null;
-		FileReader fr = null;
-		try {
-			fr = new FileReader(inputFile);
-			br = new BufferedReader(fr);
-			readFromFile(br);
-		} catch (IOException e) {
-			throw e;
-		} finally {
-			if (br != null)
-				br.close();
-		}
-
 	}
 
 	/* Find my UI */
