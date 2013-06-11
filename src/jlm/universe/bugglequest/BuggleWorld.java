@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
+import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.universe.BrokenWorldFileException;
@@ -77,27 +78,32 @@ public class BuggleWorld extends GridWorld {
 	}
 
 	@Override
-	public void readFromFile(BufferedReader reader) throws IOException, BrokenWorldFileException {
+	public void readFromFile(String path) throws IOException, BrokenWorldFileException {
+		BufferedReader reader = FileUtils.newFileReader(path, "map", false);
+		
 		/* Get the world name from the first line */
 		String line = reader.readLine();
 		if (line == null)
-			throw new BrokenWorldFileException(Game.i18n.tr("This file does not seem to be a serialized BuggleWorld (the file is empty!)"));
+			throw new BrokenWorldFileException(Game.i18n.tr(
+					"{0}.map: this file does not seem to be a serialized BuggleWorld (the file is empty!)",path));
 		
 		Pattern p = Pattern.compile("^BuggleWorld: ");
 		Matcher m = p.matcher(line);
 		if (!m.find())
-			throw new RuntimeException(Game.i18n.tr("This file does not seem to be a serialized BuggleWorld (malformated first line: {0})", line));
+			throw new RuntimeException(Game.i18n.tr(
+					"{0}.map: This file does not seem to be a serialized BuggleWorld (malformated first line: {1})", path, line));
 		m.replaceAll("");
 		setName(line);
 		
 		/* Get the dimension from the second line that is eg "Size: 20x20" */
 		line = reader.readLine();
 		if (line == null)
-			throw new RuntimeException(Game.i18n.tr("Broken world file. End of file reached before file size specification"));
+			throw new RuntimeException(Game.i18n.tr("" +
+					"{0}.map: End of file reached before world size specification",path));
 		p = Pattern.compile("^Size: (\\d+)x(\\d+)$");
 		m = p.matcher(line);
 		if (!m.find()) 
-			throw new RuntimeException(Game.i18n.tr("Broken world file. Expected 'Size: ??x??' but got '{0}'", line));
+			throw new RuntimeException(Game.i18n.tr("{0}.map:1: Expected 'Size: ??x??' but got '{0}'", line));
 		int width = Integer.parseInt(m.group(1)); 
 		int height = Integer.parseInt(m.group(2));
 
