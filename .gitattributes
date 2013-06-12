@@ -1,7 +1,7 @@
 *.png diff=exif
 *.jpg diff=exif
-bin/ export-ignore
-stats/ export-ignore
-dist/ export-ignore
+bin export-ignore
+stats export-ignore
+dist export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore
