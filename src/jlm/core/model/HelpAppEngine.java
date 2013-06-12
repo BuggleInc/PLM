@@ -8,7 +8,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import net.minidev.json.JSONObject;
+import org.json.simple.JSONObject;
 
 /**
  * Implementation of HelpServer that sends requests to an App Engine server
