@@ -178,6 +178,11 @@
       <delete dir="${site.dir}/po"/>
     </target>
     
+<!--  This requires Java7 to work, but I'd prefer to support for Java6
+      a bit longer if possible. Disable this for now, sorry Franck.
+      
+      
+      
     <property name="mac.dir" value="${lib.dir}/mac-resources"/>
     <property name="fr.lproj.dir" value="${mac.dir}/fr.lproj"/>
     <property name="mac.app.name" value="JavaLearningMachine"/>
@@ -204,5 +209,5 @@
 	
 	<target name="Mac.app" depends="dist, build-Mac.app-bundle">
 	</target>
-	
+-->	
 </project>
