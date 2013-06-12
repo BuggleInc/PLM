@@ -1,4 +1,5 @@
 20130611:
+  * Switch our json library to take the one that is in Debian too
   * BatEntities now work within the unit tests too (fix #67)
   * Integrate the bat exercise using integer arrays into the welcome
     lesson (fix #21)

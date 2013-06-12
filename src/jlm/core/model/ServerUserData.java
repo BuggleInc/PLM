@@ -1,10 +1,14 @@
 package jlm.core.model;
 
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import net.minidev.json.JSONValue;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import java.util.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 /**
  * Class that contains the data sent by the server
@@ -75,7 +79,7 @@ public class ServerUserData {
 
         JSONObject dataMap = (JSONObject) JSONValue.parse(answer);
         // for each user
-        for (String user : dataMap.keySet()) {
+        for (Object user : dataMap.keySet()) {
             JSONObject userMap = (JSONObject) dataMap.get(user);
             ServerUserData sud = new ServerUserData();
             sud.setUsername((String) userMap.get("username"));
@@ -104,7 +108,7 @@ public class ServerUserData {
                 sud.getExercises().add(sed);
             }
 
-            data.put(user, sud);
+            data.put((String)user, sud);
         }
 
         return data;
