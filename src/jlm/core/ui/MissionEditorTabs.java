@@ -98,7 +98,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		
 		/* setup code tabs */
 		DefaultSyntaxKit.initKit();
-		loadFont();
 		configureSyntaxStyles();
 
 		/* Register to game engine */
@@ -203,45 +202,5 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		st.put(TokenType.IDENTIFIER, new SyntaxStyle(Color.black, false, false)); // black
 		st.put(TokenType.STRING, new SyntaxStyle(new Color(0x3600ff), false, false)); // blue
 		st.put(TokenType.DEFAULT, new SyntaxStyle(Color.BLACK, false, false)); // black
-	}
-	
-	private void loadFont() {
-		/*
-		 * Font f = new Font("Monaco", Font.PLAIN, 12); 
-		 * if (f != null) {
-		 * editor.setFont(f); 
-		 * }
-		 */
-
-		
-	/*	InputStream is = null;
-		try {
-			// is = getClass().getResourceAsStream("/resources/Monaco.ttf");
-			// FIXME: must try this font on neptune/linux/windows ? it works
-			// well on osx
-			is = getClass().getResourceAsStream("/resources/Envy.Code.R.ttf");
-
-			if (is == null) // give it another try 
-				is = getClass().getResourceAsStream("/Envy.Code.R.ttf");
-			if (is == null)	// really not found	
-				throw new IOException("font file not found");
-			
-			f = Font.createFont(Font.TRUETYPE_FONT, is);
-			f = f.deriveFont((float) 12);
-		} catch (FontFormatException ffe) {
-			// ffe.printStackTrace(); Yeah, that's kinda expected...
-			f = null;
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-			f = null;
-		} finally {
-			if (is != null)
-				try {
-					is.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-		}	
-	*/	
 	}
 }
