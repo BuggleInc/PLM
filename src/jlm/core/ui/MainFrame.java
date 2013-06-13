@@ -140,6 +140,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		pack();
 		setSize(1024, 768);
+		setVisible(true);
 	}
 
 	private void initMenuBar(Game g) {
