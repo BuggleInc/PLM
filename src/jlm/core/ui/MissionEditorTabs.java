@@ -25,6 +25,7 @@ import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
+import jsyntaxpane.util.Configuration;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -96,9 +97,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.addTab(i18n.tr("Mission"), null, new JScrollPane(missionTab),
 				i18n.tr("Description of the work to do"));
 		
-		/* setup code tabs */
-		DefaultSyntaxKit.initKit();
-		configureSyntaxStyles();
+		initJSyntaxPane();
 
 		/* Register to game engine */
 		this.game = Game.getInstance();
@@ -187,7 +186,11 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	public void selectedWorldWasUpdated() { /* don't care */ }
 
 	/* setup methods */
-	private void configureSyntaxStyles() {
+	private void initJSyntaxPane() {
+		DefaultSyntaxKit.initKit();
+        Configuration conf = DefaultSyntaxKit.getConfig(DefaultSyntaxKit.class);
+
+
 		//TODO: can be configured through a property file in the new version of jsyntaxpane
 		SyntaxStyles st = SyntaxStyles.getInstance();
 		st.put(TokenType.OPERATOR, new SyntaxStyle(Color.BLACK, false, false)); // black
