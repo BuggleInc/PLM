@@ -4,49 +4,22 @@ import jlm.universe.Entity;
 import jlm.universe.World;
 
 /**
- * @author Julien BASTIAN & Geoffrey HUMBERT
  * @see BaseballWorld
  */
-public class BaseballEntity extends Entity
-{
-	/**
-	 * Must exist too. Calling BaseballEntity("dummy name") is okay
-	 * Part of the copy process 
-	 * Must call super(name)
-	 * @return A new instance of BaseballEntity
-	 */
+public class BaseballEntity extends Entity {
 	public BaseballEntity() {
-		/* BEGIN HIDDEN */
 		super("Baseball Entity");
-		/* END HIDDEN */
 	}
 	
-	/**
-	 * Part of the copy process 
-	 * Must call super(name)
-	 * @param name : the name of the entity
-	 * @return A new instance of BaseballEntity
-	 */
 	public BaseballEntity(String name) {
 		super(name);
 	}
 	
 	
-	/** 
-	 * Instantiation Constructor (used by exercises to setup the world) 
-	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
-	 * @param name : the name of the entity
-	 * @param world : a world
-	 * @return A new instance of BaseballEntity
-	 */
 	public BaseballEntity(String name, World world) {
 		super(name,world);
 	}
 
-	/** 
-	 * A copy method needed by the JLM
-	 * @return a new PancakeEntity with the same name as the caller
-	 */
 	@Override
 	public Entity copy() {
 		return new BaseballEntity(this.name);
@@ -72,32 +45,23 @@ public class BaseballEntity extends Entity
 		return  ((BaseballWorld) world).getBaseColor(baseIndex);
 	}
 	
-	/**
-	 * Return the index of the base where is hole is located
-	 * @return the index of the base where is hole is located
-	 */
+	/** Returns the index of the base where is hole is located */
 	public int getHoleBase() {
 		return ((BaseballWorld) this.world).getHoleBase();
 	}
 	
-	/**
-	 * Return the position in the base where is hole is located
-	 * @return the position in the base where is hole is located
-	 */
+	/** Returns the position in the base where is hole is located */
 	public int getHolePositionInBase(){
 		return ((BaseballWorld) this.world).getHolePositionInBase();
 	}
 	
-	/**
-	 * Give the amount of players locations available on each base of the field
-	 * @return The amount of players locations available on each base of the field
-	 */
+	/** Returns the amount of players locations available on each base of the field */
 	public int getLocationsAmount() {
 		return ((BaseballWorld) this.world).getLocationsAmount();
 	}
 	
 	/**
-	 * Return the color of the player in base baseIndex at position playerLocation
+	 * Returns the color of the player in base baseIndex at position playerLocation
 	 * @param baseIndex the index of the wanted base
 	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
 	 * @return the color of the player in base baseIndex at position playerLocation
@@ -107,13 +71,8 @@ public class BaseballEntity extends Entity
 		return ((BaseballWorld) this.world).getPlayerColor(baseIndex,playerLocation);
 	}
 	
-	/**
-	 * Tell if the base at baseIndex is sorted
-	 * @param baseIndex the index of the base that we want to check
-	 * @return TRUE if the field is okay <br>FALSE else
-	 */
-	public boolean isBaseSorted( int baseIndex)
-	{
+	/** Returns whether the base at baseIndex is sorted or not */
+	public boolean isBaseSorted(int baseIndex) {
 		return ((BaseballWorld) this.world).isBaseSorted(baseIndex);
 	}
 	

@@ -4,9 +4,8 @@ public class SetVal extends Operation {
 	
 	/**
 	 * Constructor of the class SetVal
-	 * @param source : the source of the operation
-	 * @param destination : the destination of the operation
-	 * @return A new SetVal
+	 * @param source the source of the operation
+	 * @param destination the destination of the operation
 	 */
 	public SetVal(int source, int destination){
 		super(source,destination);
@@ -16,7 +15,7 @@ public class SetVal extends Operation {
 	/**
 	 * Compute an operation on init
 	 * @param init the values on which compute the operation
-	 * @return a new array of values equals to init where the operation had been computed
+	 * @return the array passed as parameter, once the operation is applied to it
 	 */
 	@Override
 	public int[] run(int[] init) {

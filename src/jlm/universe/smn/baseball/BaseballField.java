@@ -106,11 +106,6 @@ public class BaseballField
 		return s;
 	}
 
-	/**
-	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equals
-	 * @param Object o: the reference object with which to compare
-	 */
 	public boolean equals(Object o) {
 		boolean sw=true;
 		if (o == null || !(o instanceof BaseballField) )
@@ -290,10 +285,7 @@ public class BaseballField
 	}
 
 	/**
-	 * Move a player to the hole
-	 * @param base : index of the base where you want to pick a player
-	 * @param playerLocation : index (1 or 2) of the player in the base you want to move
-	 * @param the player player from the base base will be moved to the hole
+	 * Moves the specified player into the hole
 	 * @throws InvalidMoveException in case baseSrc is not near the hole
 	 */
 	public void move(int indexBaseSrc, int playerLocation) throws InvalidMoveException

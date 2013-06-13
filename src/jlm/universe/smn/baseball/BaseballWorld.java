@@ -8,7 +8,6 @@ import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 /**
- * @author Julien BASTIAN & Geoffrey HUMBERT
  * @see BaseballField
  */
 
@@ -16,40 +15,28 @@ public class BaseballWorld extends World
 {
 	protected BaseballField field; // the field of the game
 	
-	/**
-	 * Constructor of the class BaseballWorld
-	 * @param world : a world
-	 * @return A new BaseballWorld
-	 */
-	public BaseballWorld(BaseballWorld world)
-	{
+	/** Copy constructor used internally by JLM */
+	public BaseballWorld(BaseballWorld world) {
 		super(world);
 	}
 	
 	/**
-	 * Return the panel which let the user to interact dynamically with the world
+	 * Returns the panel which let the user to interact dynamically with the world
 	 */
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
 		return new BaseballMovePanel();
 	}
 	
-	/**
-	 * Constructor of the class BaseballWorld
-	 * @param name : the name of the world
-	 * @param numberOfBases : the amount of bases in the field
-	 * @param playerLocationAmount the amount of player locations available on the base
-	 * @return A new BaseballWorld
-	 */
-	public BaseballWorld(String name, int numberOfBases, int playerLocationAmount)
-	{
+	/** Regular constructor used by exercises */
+	public BaseballWorld(String name, int numberOfBases, int playerLocationAmount) {
 		super(name);
 		setDelay(200); // Delay (in milliseconds) in default animations
 		this.field = BaseballField.create(numberOfBases,playerLocationAmount);
 	}
 
 	/**
-	 * Make a textual description of the differences between the caller and world
+	 * Makes a textual description of the differences between the caller and world
 	 * @param world : the world with which you want to compare your world
 	 * @return A textual description of the differences between the caller and world
 	 */
@@ -68,11 +55,6 @@ public class BaseballWorld extends World
 		return s;
 	}
 	
-	/**
-	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equal
-	 * @param Object o: the reference object with which to compare
-	 */
 	public boolean equals(Object o) {
 		boolean sw = true;
 		if (o == null || !(o instanceof BaseballWorld))
@@ -87,19 +69,12 @@ public class BaseballWorld extends World
 		return sw;
 	}
 	
-	/**
-	 * Give the number of bases on your field
-	 * @return the number of bases on your field
-	 */
-	public int getAmountOfBases()
-	{
+	/** Returns the number of bases on your field */
+	public int getAmountOfBases() {
 		return this.field.getAmountOfBases();
 	}
 	
-	/**
-	 * Return the color of the base located at baseIndex
-	 * @param baseIndex the index of the wanted base
-	 * @return the color of the player in base baseIndex at position playerLocation
+	/** Returns the color of the base located at baseIndex
 	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
 	 */
 	public int getBaseColor(int baseIndex) throws InvalidPositionException {

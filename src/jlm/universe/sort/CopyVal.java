@@ -6,7 +6,6 @@ public class CopyVal extends Operation {
 	 * Constructor of the class CopyVal
 	 * @param source : the source of the operation
 	 * @param destination : the destination of the operation
-	 * @return A new CopyVal
 	 */
 	public CopyVal(int source, int destination){
 		super(source,destination);
@@ -15,8 +14,8 @@ public class CopyVal extends Operation {
 
 	/**
 	 * Compute an operation on init
-	 * @param init the values on which compute the operation
-	 * @return a new array of values equals to init where the operation had been computed
+	 * @param init the values on which compute the operation 
+	 * @return the array of values after the operation
 	 */
 	@Override
 	public int[] run(int[] init) {

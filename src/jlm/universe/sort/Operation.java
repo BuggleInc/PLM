@@ -10,9 +10,8 @@ public abstract class Operation {
 	
 	/**
 	 * Constructor of the class Operation
-	 * @param source : the source of the operation
-	 * @param destination : the destination of the operation
-	 * @return A new Operation
+	 * @param source the source of the operation
+	 * @param destination the destination of the operation
 	 */
 	public Operation(int source, int destination){
 		this.source = source;
@@ -21,8 +20,7 @@ public abstract class Operation {
 	
 	/**
 	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equals
-	 * @param Object o: the reference object with which to compare
+	 * @param o the reference object with which to compare
 	 */
 	public boolean equals(Object o) {
 		boolean sw = true;
@@ -41,16 +39,14 @@ public abstract class Operation {
 	}
 
 	/**
-	 * Return the source of the operation
-	 * @return the source of the operation
+	 * Returns the source of the operation
 	 */
 	public int getSource() {
 		return this.source;
 	}
 
 	/**
-	 * Return the destination of the operation
-	 * @return the destination of the operation
+	 * Returns the destination of the operation
 	 */
 	public int getDestination() {
 		return this.destination;
