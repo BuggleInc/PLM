@@ -5,11 +5,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.net.URL;
 
 import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -116,22 +114,12 @@ public class MainFrame extends JFrame {
 		return createButton(name,l); 
 	}
 	private JToggleButton createButton(final String name, ActionListener l) {
-		JToggleButton bt = new JToggleButton(getIcon("resources/editor/"+name+".png"));
+		JToggleButton bt = new JToggleButton(ResourcesCache.getIcon("resources/editor/"+name+".png"));
 		bt.setActionCommand(name);
 		bt.setBorderPainted(false);
 		bt.addActionListener(l);
 		return bt;
 	}
-
-	public ImageIcon getIcon(String path) {
-		URL url = ResourcesCache.class.getClassLoader().getResource(path);
-		try {
-			return new ImageIcon(url);
-		} catch (NullPointerException e) {
-			throw new RuntimeException("Icon "+path+" not found");
-		}
-	}
-
 
 	class NewMapAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
