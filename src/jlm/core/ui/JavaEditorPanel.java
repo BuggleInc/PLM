@@ -8,7 +8,6 @@ import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.SourceFile;
 import jlm.universe.Entity;
 import jlm.universe.IEntityStackListener;
-import jsyntaxpane.SyntaxDocument;
 
 public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntityStackListener {
 	private static final long serialVersionUID = 1L;
@@ -25,7 +24,7 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 		setViewportView(codeEditor);
 		codeEditor.setContentType("text/"+lang.getLang().toLowerCase());
 		codeEditor.setCaretPosition(0);
-		((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(0);
+		//((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(0); TODO: find the new way of doing so in jsyntaxpan 0.9.5
 		
 		/* Create a synchronization element, and connect it to the editor */
 		sync = new SourceFileDocumentSynchronizer(codeEditor.getEditorKit());
@@ -54,9 +53,10 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 	}
 	@Override
 	public void entityTraceChanged(Entity e, StackTraceElement[] trace) {
-		
+		/* TODO: The symbol setCurrentEditedLineNumber() is not in jsyntaxpane anymore. 
+		 * But the following code was not working anyway... 
 		for (StackTraceElement elm:trace) {
-			// TODO: added defenses against NPE because sometimes (launched from a .jar file, a NullPointerException might happen...)
+			// added defenses against NPE because sometimes (launched from a .jar file, a NullPointerException might happen...)
 			if (elm.getFileName() != null && codeEditor != null && (elm.getFileName().equals(srcFile.getName()) || elm.getFileName().equals(srcFile.getName()+".java from JavaFileObjectImpl"))) {				
 				SyntaxDocument sd = ((SyntaxDocument) codeEditor.getDocument());
 				if (sd != null)
@@ -64,6 +64,7 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 				codeEditor.repaint();
 			}
 		}		
+		 */
 	}
 	@Override
 	public void tracedEntityChanged(Entity e) {
