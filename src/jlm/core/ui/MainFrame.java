@@ -4,8 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.Locale;
 
@@ -106,14 +104,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	private void initComponents(final Game g) {
-		this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); 
-		addWindowListener(new WindowAdapter() {
-				@Override
-				public void windowClosing(WindowEvent e) {
-					g.quit();
-				}
-			});
-
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		getContentPane().setLayout(new BorderLayout());
 
 		JSplitPane logPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, true);
