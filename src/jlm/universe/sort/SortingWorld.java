@@ -23,21 +23,12 @@ public class SortingWorld extends World {
 	 */
 	private ArrayList<Operation> operations = new ArrayList<Operation>(1) ;	
 
-	/**
-	 * Constructor of the class SortingWorld
-	 * @param world : a world
-	 * @return A new SortingWorld
-	 */
+	/** Copy constructor used by the JLM internals */
 	public SortingWorld(SortingWorld world) {
 		super(world);
 	}
 
-	/**
-	 * Constructor of the class SortingWorld
-	 * @param name : the name of the world
-	 * @param nbValues : the size of the array that you will have to sort
-	 * @return A new SortingWorld
-	 */
+	/** Constructor used in the exercises */
 	public SortingWorld(String name, int nbValues) {
 		super(name);
 		setDelay(50);
@@ -50,9 +41,6 @@ public class SortingWorld extends World {
 		this.initValues = this.values;
 	}
 
-	/**
-	 * Scramble the values of the array
-	 */
 	private void scramble() {
 		while( this.isSorted() )
 		{
@@ -67,11 +55,6 @@ public class SortingWorld extends World {
 		}
 	}
 
-	/**
-	 * Indicate whether some other object is "equal to" this one
-	 * @return If the two objects are equals
-	 * @param Object o: the reference object with which to compare
-	 */
 	public boolean equals(Object o) {
 		boolean sw = true;
 		if (o == null || !(o instanceof SortingWorld))
@@ -92,7 +75,6 @@ public class SortingWorld extends World {
 
 	/**
 	 * Tells if the array is Sorted or not
-	 * @return
 	 */
 	private boolean isSorted() {
 		boolean sw = true;
@@ -171,8 +153,7 @@ public class SortingWorld extends World {
 	}
 
 	/**
-	 * Return the initial state of the array
-	 * @return the initial state of the array
+	 * Returns the initial state of the array
 	 */
 	public int[] getInitValues() {
 		return initValues;
@@ -180,7 +161,6 @@ public class SortingWorld extends World {
 
 	/**
 	 * Return the list of all the operations made on the world since its initialization/last reset
-	 * @return the list of all the operations made on the world since its initialization/last reset
 	 */
 	public ArrayList<Operation> getOperations() {
 		return this.operations;
@@ -188,7 +168,6 @@ public class SortingWorld extends World {
 
 	/**
 	 * Return the read counter
-	 * @return the read counter
 	 */
 	public int getReadCount() {
 		return this.readCount;
@@ -206,35 +185,23 @@ public class SortingWorld extends World {
 		return values[i];
 	}
 
-	/**
-	 * Return the amount of values in the array
-	 * @return the amount of values in the array
-	 */
+	/** Returns the amount of values in the array */
 	public int getValueCount() {
 		return values.length;
 	}
 
-	/**
-	 * Return the array of values to sort
-	 * @return the array of values that need to be sorted
-	 */
+	/** Returns the array of values that need to be sorted */
 	public int[] getValues() {
 		return this.values;
 	}
 
-	/** 
-	 * Return a component able at displaying the world
-	 * @return a component able at displaying the world
-	 */
+	/** Returns a component able at displaying the world */
 	@Override
 	public WorldView getView() {
 		return new SortingWorldView(this);
 	}
 	
-	/**
-	 * Return the write counter
-	 * @return the write counter
-	 */
+	/** Returns the write counter */
 	public int getWriteCount() {
 		return this.writeCount;
 	}
@@ -273,7 +240,7 @@ public class SortingWorld extends World {
 	
 	/** 
 	 * Reset the state of the current world to the one passed in argument
-	 * @param the world which must be the new start of your current world
+	 * @param w the world which must be the new start of your current world
 	 */
 	@Override
 	public void reset(World w) {
@@ -292,11 +259,10 @@ public class SortingWorld extends World {
 	}
 
 	/**
-	 * Return the script except that must be injected within the environment before running user code 
-	 * It should pass all order to the java entity, which were injected independently  
-	 * @return  the script except that must be injected within the environment before running user code 
-	 * @param the programming language used
-	 * @throws ScriptException 
+	 * Setup the engine so that it's ready to host the user code
+	 *
+	 * @param lang the programming language used
+	 * @throws ScriptException some error reported by the scripting engine itself
 	 */
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {

@@ -5,14 +5,11 @@ import jlm.core.model.lesson.Lesson;
 import jlm.universe.smn.pancake.PancakeEntity;
 import jlm.universe.smn.pancake.PancakeWorld;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class BurnedPancakePlate extends ExerciseTemplated {
 
 	/**
 	 * Constructor of the class BurnedPancakePlate
-	 * @param Lesson : a lesson
+	 * @param lesson the lesson in which this exercise should register itself
 	 */
 	public BurnedPancakePlate(Lesson lesson) {
 		super(lesson);

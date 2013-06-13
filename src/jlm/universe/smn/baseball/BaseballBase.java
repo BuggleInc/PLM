@@ -1,7 +1,6 @@
 package jlm.universe.smn.baseball;
 
 /**
- * @author Julien BASTIAN & Geoffrey HUMBERT
  * @see BaseballPlayer
  */
 
@@ -12,8 +11,8 @@ public class BaseballBase {
 	
 	/**
 	 * BaseballBase constructor
-	 * @param color : the color of the base you are creating
-	 * @param playerLocationAmount the amount of player locations available on the base
+	 * @param color the color of the base you are creating
+	 * @param playerLocationsAmount the amount of player locations available on the base
 	 */
 	public BaseballBase(int color,int playerLocationsAmount) {
 		this.players=new BaseballPlayer[playerLocationsAmount];
@@ -73,9 +72,8 @@ public class BaseballBase {
 	}
 	
 	/**
-	 * Give the wanted player of the base
-	 * @return The wanted player
-	 * @param the index of the wanted player
+	 * Returns the wanted player of this base
+	 * @param player the index of the wanted player
 	 */
 	public BaseballPlayer getPlayer(int player) {
 		return this.players[player];
@@ -84,7 +82,6 @@ public class BaseballBase {
 
 	/**
 	 * Return the color of the player in base baseIndex at position playerLocation
-	 * @param baseIndex the index of the wanted base
 	 * @param playerLocation the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
 	 * @return the color of the player in base baseIndex at position playerLocation
 	 * @throws InvalidPositionException if playerLocation isn't 0 or 1

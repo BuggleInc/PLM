@@ -5,41 +5,21 @@ import jlm.universe.World;
 
 public class SortingEntity extends Entity {
 
-	/**
-	 * Must exist too. Calling SortingEntity("dummy name") is ok
-	 * Part of the copy process 
-	 * Must call super(name)
-	 * @return A new instance of SortingEntity
-	 */
 	public SortingEntity() {
 		super("Sorting Entity");
 	}
 
-	/**
-	 * Part of the copy process 
-	 * Must call super(name)
-	 * @param name : the name of the entity
-	 * @return A new instance of SortingEntity
-	 */
+	/** Part of the copy process; Must call super(name) */
 	public SortingEntity(String name) {
 		super(name);
 	}
 	
-	/** 
-	 * Instantiation Constructor (used by exercises to setup the world) 
-	 * Must call super(name, world). If you had fields to setup, you'd  have to add more parameters
-	 * @param name : the name of the entity
-	 * @param world : a world
-	 * @return A new instance of SortingEntity
-	 */
+	/** Instantiation Constructor (used by exercises to setup the world) */
 	public SortingEntity(String name, World world) {
 		super(name,world);
 	}
 
-	/** 
-	 * A copy method needed by the JLM
-	 * @return a new SortingEntity with the same name as the caller
-	 */
+	/** A copy constructor needed by the JLM */
 	public Entity copy() {
 		return new SortingEntity(this.name);
 	}

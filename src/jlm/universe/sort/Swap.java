@@ -4,9 +4,8 @@ public class Swap extends Operation {
 	
 	/**
 	 * Constructor of the class Swap
-	 * @param source : the source of the operation
-	 * @param destination : the destination of the operation
-	 * @return A new Swap
+	 * @param source the source of the operation
+	 * @param destination the destination of the operation
 	 */
 	public Swap(int source, int destination){
 		super(source,destination);
@@ -16,7 +15,7 @@ public class Swap extends Operation {
 	/**
 	 * Compute an operation on init
 	 * @param init the values on which compute the operation
-	 * @return a new array of values equals to init where the operation had been computed
+	 * @return the array passed as parameter, once the operation has been applied to it
 	 */
 	@Override
 	public int[] run(int[] init) {

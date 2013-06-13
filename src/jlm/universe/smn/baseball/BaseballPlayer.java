@@ -8,9 +8,8 @@ public class BaseballPlayer
 	private int color;
 
 	/**
-	 * BaseballPlayer constructor
-	 * @param color : the color of the player you are creating<br>0 is for no color
-	 * @return a new BaseballPlayer of the wanted color
+	 * Builds a player of the passed color
+	 * @param color : the color of the player you are creating (0 means no color)
 	 */
 	public BaseballPlayer(int color)
 	{
