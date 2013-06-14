@@ -92,15 +92,16 @@ class MyIconView extends View {
 			System.err.println("<img> tag without src attribute");
 			c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
 		} else {
+			c = ResourcesCache.getIcon(filename);
+			if (c != null)
+				return;
+			
 			String resourceName = "/"+filename.replace('.','/');
 			resourceName = resourceName.replaceAll("/png$", ".png").replaceAll("/jpg$", ".jpg");
 			resourceName = resourceName.replaceAll("/jpeg$", ".jpeg").replaceAll("/gif$", ".gif");
 
 			InputStream s = getClass().getResourceAsStream(resourceName);
 			
-			if (s == null) // Give a try to the location where debian packs stuff
-				s = getClass().getResourceAsStream("/src"+resourceName);
-
 			try {
 				if (s == null) {
 					c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
