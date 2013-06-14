@@ -1,5 +1,6 @@
-20130611:
-  * Switch our json library to take the one that is in Debian too
+20130614:
+  * Squeeze a bit our sources so that we can package it for Debian
+  * Add a logo to the distribution (lib/resources/logo.png)
   * BatEntities now work within the unit tests too (fix #67)
   * Integrate the bat exercise using integer arrays into the welcome
     lesson (fix #21)
