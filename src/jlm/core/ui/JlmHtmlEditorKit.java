@@ -97,7 +97,9 @@ class MyIconView extends View {
 			resourceName = resourceName.replaceAll("/jpeg$", ".jpeg").replaceAll("/gif$", ".gif");
 
 			InputStream s = getClass().getResourceAsStream(resourceName);
-
+			
+			if (s == null) // Give a try to the location where debian packs stuff
+				s = getClass().getResourceAsStream("/src"+resourceName);
 
 			try {
 				if (s == null) {

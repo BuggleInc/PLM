@@ -69,9 +69,11 @@ public class FileUtils {
 			resourceName = resourceName.replace('\\', '/'); /* just in case we're passed a windows path */
 
 			InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
+			if (s == null) // Debian jar files are a bit strange here
+				s = ExerciseTemplated.class.getResourceAsStream("/src"+resourceName);
 			if (s == null) {
 				// file not found, give up 
-	        	//System.out.println("[DEBUG] I did not found "+fileName+" as a ressource.");
+	        	System.out.println("[DEBUG] I did not found "+fileName+" as a resource.");
 				throw new FileNotFoundException(file + "with extension " + extension + " could not be found.");
 			}
 
