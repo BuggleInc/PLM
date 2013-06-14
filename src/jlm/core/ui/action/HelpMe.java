@@ -35,7 +35,7 @@ public class HelpMe extends AbstractGameAction {
     	isRequestingHelp = ! isRequestingHelp;
         helpServer.setStatus(isRequestingHelp);
         ((JToggleButton)e.getSource()).setText(isRequestingHelp ? i18n.tr("Cancel call") : i18n.tr("Call for Help"));
-        ((JToggleButton)e.getSource()).setIcon(ResourcesCache.getIcon("resources/btn-alert-"+(isRequestingHelp?"on":"off")+".png"));
+        ((JToggleButton)e.getSource()).setIcon(ResourcesCache.getIcon("img/btn-alert-"+(isRequestingHelp?"on":"off")+".png"));
     }
 
 }

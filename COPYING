@@ -18,8 +18,10 @@ http://creativecommons.org/licenses/by-sa/3.0/
 
 =========================================================================
 
-The artwork we did ourselves (such as the wonderful JLM logo) is
-distributed under the CC-BY-SA license. 
+The artwork we did ourselves is distributed under the CC-BY-SA license. 
+ img/BuggleQuestBack.png
+ img/BuggleQuestBETA.png
+ img/log.png
 
 =========================================================================
 
@@ -47,8 +49,9 @@ The following icons are LGPL:
 
 * menu-locale.png:     nuvola/32x32/apps/locale.png
 
+=========================================================================
+
 We should probably replace the other for which we lost the copyright
 information. But as you can see from the rest of the project, we are
 better programmers than designers... You are welcome if you can help.
 
-=========================================================================
