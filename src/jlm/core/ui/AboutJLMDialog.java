@@ -40,9 +40,9 @@ public class AboutJLMDialog extends JDialog {
 		
 		JPanel upperPane = new JPanel();
 		upperPane.setLayout(new BorderLayout());
-		JLabel icon = new JLabel(ResourcesCache.getIcon("resources/BuggleQuestBack.png"));
+		JLabel icon = new JLabel(ResourcesCache.getIcon("img/BuggleQuestBack.png"));
 		upperPane.add(BorderLayout.NORTH, icon);
-		JLabel iconTitle = new JLabel(ResourcesCache.getIcon("resources/BuggleQuestBETA.png"));
+		JLabel iconTitle = new JLabel(ResourcesCache.getIcon("img/BuggleQuestBETA.png"));
 		upperPane.add(BorderLayout.CENTER, iconTitle);
 		
 		JLabel text = new JLabel(

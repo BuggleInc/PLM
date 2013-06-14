@@ -385,13 +385,13 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		resetButton.setEnabled(true);
 
 		demoButton = new PropagatingButton(new PlayDemo(g, "DemoButton", 
-				ResourcesCache.getIcon("resources/btn-demo.png")));
+				ResourcesCache.getIcon("img/btn-demo.png")));
 		//shortcut ctrl-d
 		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
         helpMeButton = new PropagatingToggleButton(new HelpMe(g, "HelpButton",
-                ResourcesCache.getIcon("resources/btn-alert-off.png")));
+                ResourcesCache.getIcon("img/btn-alert-off.png")));
 
 		toolBar.add(startButton);
 		toolBar.add(debugButton);
@@ -402,7 +402,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         toolBar.addSeparator();
         
-        exoChangeButton = new PropagatingButton(new SwitchExo(g, "ExerciseButton", ResourcesCache.getIcon("resources/btn-switch-exo.png")));
+        exoChangeButton = new PropagatingButton(new SwitchExo(g, "ExerciseButton", ResourcesCache.getIcon("img/btn-switch-exo.png")));
         toolBar.add(exoChangeButton);
         
 		getContentPane().add(toolBar, BorderLayout.NORTH);
