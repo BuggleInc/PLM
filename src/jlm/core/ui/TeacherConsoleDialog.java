@@ -64,15 +64,15 @@ public class TeacherConsoleDialog extends JDialog {
         courseNameLabel = new JLabel(game.getCourseID().isEmpty() ? "No course selected" : "[" + game.getCourseID() + "]");
 
         JButton newButton = new JButton(new CreateCourse(game, "New course",
-                ResourcesCache.getIcon("resources/add.png"), this));
+                ResourcesCache.getIcon("resources/console_add.png"), this));
         newButton.setBorderPainted(false);
 
         JButton refreshButton = new JButton(new RefreshCourse(game, "Refresh",
-                ResourcesCache.getIcon("resources/refresh.png"), this));
+                ResourcesCache.getIcon("resources/console_refresh.png"), this));
         refreshButton.setBorderPainted(false);
 
         JButton deleteButton = new JButton(new DeleteCourse(game, "Delete",
-                ResourcesCache.getIcon("resources/delete.png"), this));
+                ResourcesCache.getIcon("resources/console_delete.png"), this));
         deleteButton.setBorderPainted(false);
 
         toolBar.add(courseNameLabel);
