@@ -18,11 +18,16 @@ public class HelpAppEngine extends HelpServer {
     private static URL helpServer;
 
     public HelpAppEngine() {
-        try {
-            helpServer = new URL(Game.getProperty("jlm.appengine.url") + "/student");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+    	String url = Game.getProperty("jlm.appengine.url");
+    	if (! url.equals("")) { // no configuration were provided
+    		try {
+    			helpServer = new URL(Game.getProperty("jlm.appengine.url") + "/student");
+    		} catch (MalformedURLException e) {
+    			e.printStackTrace();
+    		}
+    	} else {
+    		System.out.println("No course server configured");
+    	}
     }
 
     @Override
