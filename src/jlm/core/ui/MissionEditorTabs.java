@@ -40,7 +40,6 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	
 	/* for code tabs */
 	private Lecture currentExercise;
-//	private Font font = null;
 
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 	
