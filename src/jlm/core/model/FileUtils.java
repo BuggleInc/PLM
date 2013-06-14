@@ -72,8 +72,7 @@ public class FileUtils {
 			if (s == null) // Debian jar files are a bit strange here
 				s = ExerciseTemplated.class.getResourceAsStream("/src"+resourceName);
 			if (s == null) {
-				// file not found, give up 
-	        	System.out.println("[DEBUG] I did not found "+fileName+" as a resource.");
+				// file not found, give up. No logs here, as it is ok that some entities do not exist in some languages 
 				throw new FileNotFoundException(file + "with extension " + extension + " could not be found.");
 			}
 
