@@ -564,7 +564,7 @@ public class Game implements IWorldView {
 	}
 
 	public static String getProperty(String key) {
-		return Game.getProperty(key, null);
+		return Game.getProperty(key, "");
 	}
 
 	public static String getProperty(String key, String defaultValue) {
