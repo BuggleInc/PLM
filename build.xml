@@ -142,13 +142,6 @@
         </javadoc>
     </target>
 
-    <target name="tar" description="Create a tar file containing the sources">
-      <tar destfile="${dist.dir}/jlm-${jlm.version}.tar.gz" compression="gzip"
-           basedir="."
-           includes="ChangeLog build.xml src/**/*.py src/**/*.java src/**/*.html src/**/*.css src/**/*.png src/**/*.map lib/resources/**"
-           excludes="**/.gitignore" />
-    </target>
-
     <target name="updateversion" description="Update the version number in the properties file">
       <propertyfile file="${lib.dir}/resources/jlm.configuration.properties">
         <entry key="jlm.minor.version" value="${jlm.version}" operation="="/>
