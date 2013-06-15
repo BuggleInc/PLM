@@ -267,7 +267,7 @@ public class SortingWorldView extends WorldView {
 	 * @return the icon for the exercise selection
 	 */
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/IconWorld/sorting.png");
+		return ResourcesCache.getIcon("img/world_sorting.png");
 	}
 
 	/**

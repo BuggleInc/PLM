@@ -114,7 +114,7 @@ public class MainFrame extends JFrame {
 		return createButton(name,l); 
 	}
 	private JToggleButton createButton(final String name, ActionListener l) {
-		JToggleButton bt = new JToggleButton(ResourcesCache.getIcon("resources/editor/"+name+".png"));
+		JToggleButton bt = new JToggleButton(ResourcesCache.getIcon("img/edit_"+name+".png"));
 		bt.setActionCommand(name);
 		bt.setBorderPainted(false);
 		bt.addActionListener(l);

@@ -37,7 +37,7 @@ public class LightBotEditorPanel extends JScrollPane implements IEditorPanel,ISo
 		iconList = new Icon[LightBotInstruction.instructionNames.length];
 		int i=0;
 		for (String n:LightBotInstruction.instructionNames) {
-			iconList[i] =ResourcesCache.getIcon("resources/lightbot/"+n+".png");
+			iconList[i] =ResourcesCache.getIcon("img/lightbot_"+n+".png");
 			iconNameByIcons.put(iconList[i],n);
 			iconsByNames.put(n,iconList[i]);
 			i++;
