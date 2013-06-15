@@ -319,6 +319,6 @@ public class BuggleWorldView extends WorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/IconWorld/BuggleQuest.png");
+		return ResourcesCache.getIcon("img/world_buggle.png");
 	}
 }

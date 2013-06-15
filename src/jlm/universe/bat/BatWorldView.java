@@ -73,6 +73,6 @@ public class BatWorldView extends WorldView {
 		
 		@Override
 		public ImageIcon getIcon() {
-			return ResourcesCache.getIcon("resources/IconWorld/bat.png");
+			return ResourcesCache.getIcon("img/world_bat.png");
 		}
 }
