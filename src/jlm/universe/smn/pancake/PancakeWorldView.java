@@ -211,8 +211,9 @@ public class PancakeWorldView extends WorldView {
 	 */
 	// http://omgwtflols.deviantart.com/
 	// http://fc06.deviantart.net/fs71/f/2012/118/5/7/pixel_art__pancakes_with_s236rup_b236_omgwtflols-d4xu72c.gif
+	// http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/IconWorld/pancake.png");
+		return ResourcesCache.getIcon("img/world_pancake.png");
 	}
 
 	/**
