@@ -34,18 +34,27 @@ The artwork we did ourselves is distributed under the CC-BY-SA license.
  img/world_hanoi.png
  img/world_sorting.png
 
+ img/btn-reset.png is a mashup of mine between btn-start.png (CC-BY-SA) and
+ http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/run-rebuild.png
+ (LGPL-2.1). The result can be used under either licence.
+
 =========================================================================
 
 We borrowed the following icons, that are CC-BY-SA too:
 
 * The turtle was borowed from the kturtle project, from KDE edu.
 * The bunny and egg in BuggleQuest universe come from:
-  jlm/universe/bugglequest/ui/egg.png     http://openclipart.org/detail/23052/
-  jlm/universe/bugglequest/ui/rabbit.png  http://openclipart.org/detail/93979/
+  jlm/universe/bugglequest/ui/egg.png     http://openclipart.org/detail/93979/
+  jlm/universe/bugglequest/ui/rabbit.png  http://openclipart.org/detail/23052/
 * Buttons:
   img/btn-demo.png:       http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/games-solve.png
   img/btn-switch-exo.png: http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/code-class.png
-
+  img/btn-debug-step.png: http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/debug-step-instruction.png
+  img/btn-debug.png       http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/go-next-context.png
+  img/btn-start.png       http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/media-playback-start-8.png
+  img/btn-stop.png        http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/media-playback-stop-8.png
+* light for lightbot:
+  img/lightbot_light.png  http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/help-hint.png
 =========================================================================
 
 The following icons are LGPL:
@@ -69,6 +78,30 @@ The following icons are LGPL:
 
   img/menu-locale.png:     nuvola/32x32/apps/locale.png
 
+=========================================================================
+
+The following logos are GPLv2:
+ img/busyicon/*: (gnome) http://openiconlibrary.sourceforge.net/gallery2/?./Icons/animations/process-working.png
+
+ img/world_turtle.png : stollen to the kturtle project, that is GPLv2+
+
+=========================================================================
+
+The logos of the programming languages are certainly free, even if I
+didn't dig for their exact licence.
+
+img/lang_java.png
+img/lang_javascript.png 
+img/lang_python.png
+img/lang_ruby.png
+
+=========================================================================
+
+Public domain images (CC0 PD)
+
+* img/focus_* These images were retrieved from http://openclipart.org/
+              even if I didn't write down the exact URL for them.
+* img/trophy.png http://openclipart.org/detail/48937/trophy-by-sheikh_tuhin	     
 
 =========================================================================
 

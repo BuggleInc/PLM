@@ -314,7 +314,7 @@ public class LightBotWorldViewIsometric extends WorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/IconWorld/lightbot.png");
+		return ResourcesCache.getIcon("img/world_lightbot.png");
 	}
 	
 }

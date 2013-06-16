@@ -61,7 +61,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		statusMessageLabel = new JLabel("");
 		statusAnimationLabel = new JLabel();
 		statusAnimationLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		statusAnimationLabel.setIcon(ResourcesCache.getIcon("resources/busyicons/idle-icon.png"));
+		statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
 		
 		setupLanguages(Game.getInstance().getCurrentLesson().getCurrentExercise());
 		progLangLabel = new JLabel();
@@ -129,7 +129,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			game.statusRootSet("");
 			game.statusArgEmpty();
 			busyIconTimer.stop();
-			statusAnimationLabel.setIcon(ResourcesCache.getIcon("resources/busyicons/idle-icon.png"));
+			statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
 			break;
 		case EXECUTION_STARTED:
 			game.statusRootSet(i18n.tr("Running "));
@@ -141,7 +141,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			break;		
 		default:
 			statusMessageLabel.setText("");
-			statusAnimationLabel.setIcon(ResourcesCache.getIcon("resources/busyicons/idle-icon.png"));
+			statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
 		}
 	}
 

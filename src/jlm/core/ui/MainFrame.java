@@ -362,24 +362,24 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.setFloatable(true);
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
-		ImageIcon ii = ResourcesCache.getIcon("resources/start.png");
+		ImageIcon ii = ResourcesCache.getIcon("img/btn-start.png");
 		startButton = new PropagatingButton(new StartExecution(g, "RunButton", ii));
 		//shortcut ctrl-r
 		startButton.setMnemonic(KeyEvent.VK_R);
 
 		debugButton = new PropagatingButton(new StepExecution(g, "StepButton", 
-				ResourcesCache.getIcon("resources/debug.png")));
+				ResourcesCache.getIcon("img/btn-debug.png")));
 		//shortcut ctrl-b
 		debugButton.setMnemonic(KeyEvent.VK_B);
 
 		stopButton = new PropagatingButton(new StopExecution(g, "StopButton", 
-				ResourcesCache.getIcon("resources/stop.png")));
+				ResourcesCache.getIcon("img/btn-stop.png")));
 		//shortcut ctrl-s
 		stopButton.setMnemonic(KeyEvent.VK_S);
 		stopButton.setEnabled(false);
 
 		resetButton = new PropagatingButton(new Reset(g, "ResetButton", 
-				ResourcesCache.getIcon("resources/reset.png")));
+				ResourcesCache.getIcon("img/btn-reset.png")));
 		//shortcut ctrl-z
 		resetButton.setMnemonic(KeyEvent.VK_Z);
 		resetButton.setEnabled(true);
@@ -451,6 +451,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				debugButton.setEnabled(true);
 				startButton.setEnabled(true);
 				debugButton.setText(i18n.tr("Next"));
+				debugButton.setIcon(ResourcesCache.getIcon("img/btn-debug-step.png"));
 			} else {
 				startButton.setEnabled(false);
 				debugButton.setEnabled(false);				
@@ -465,6 +466,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			startButton.setEnabled(true);
 			debugButton.setEnabled(true);
 			debugButton.setText(i18n.tr("Step"));
+			debugButton.setIcon(ResourcesCache.getIcon("img/btn-debug.png"));
 			resetButton.setEnabled(true);
 			demoButton.setEnabled(true);
 			exerciseView.setEnabledControl(true);

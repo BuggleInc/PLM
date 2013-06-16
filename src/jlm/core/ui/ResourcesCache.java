@@ -17,9 +17,9 @@ public class ResourcesCache {
 	private static ImageIcon[] busyIcons;
 
 	public static void loadBusyIconAnimation() {
-		busyIcons = new ImageIcon[15];
-		for (int i=0 ; i<15; i++) {
-			URL url = ResourcesCache.class.getClassLoader().getResource("resources/busyicons/busy-icon"+i+".png");
+		busyIcons = new ImageIcon[30];
+		for (int i=0 ; i<30; i++) {
+			URL url = ResourcesCache.class.getClassLoader().getResource("img/busyicon/anim-"+(i+1)+".png");
 			if (url == null) {
 				busyIcons[i] =  new ImageIcon();
 			} else {
@@ -38,7 +38,7 @@ public class ResourcesCache {
 		if (!iconsCache.containsKey(path)) {
 			URL url = ResourcesCache.class.getClassLoader().getResource(path);
 			if (url == null) {
-				if (!warnedAboutBrokenPath) {
+				if (true || !warnedAboutBrokenPath) {
 					Logger.log("jlm.ui.ResourcesCache.getIcon()", "Cannot find path "+path+": classloader returned null.");
 					warnedAboutBrokenPath = true;
 				}
