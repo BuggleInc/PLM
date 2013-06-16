@@ -140,6 +140,6 @@ public class LightBotWorldView2D extends WorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/IconWorld/lightbot.png");
+		return ResourcesCache.getIcon("img/lightbot_light.png");
 	}
 }

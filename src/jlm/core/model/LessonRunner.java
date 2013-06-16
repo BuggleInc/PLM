@@ -88,13 +88,13 @@ public class LessonRunner extends Thread {
 						i18n.tr("Congratulations, you passed this exercise.\n {0} tests passed.\n",
 								exo.lastResult.passedTests) + exo.lastResult.details, 
 						i18n.tr("Exercice passed \\o/"), 
-						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("resources/success.png"));
+						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
 			} else {
 				
 				Lecture selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
 						i18n.tr("Congratulations, you passed this test. Which exercise will you do now?\n"), 
 						i18n.tr("Exercice passed \\o/"),
-						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("resources/success.png"),
+						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
 						nextExercises.toArray(), nextExercises.get(0));
 				if (selectedValue != null) 
 					Game.getInstance().setCurrentExercise(selectedValue);

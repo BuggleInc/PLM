@@ -32,6 +32,6 @@ public class TurmiteWorldView extends BuggleWorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/IconWorld/BuggleQuest.png");
+		return ResourcesCache.getIcon("img/world_buggle.png");
 	}
 }
