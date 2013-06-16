@@ -38,7 +38,7 @@ public class ResourcesCache {
 		if (!iconsCache.containsKey(path)) {
 			URL url = ResourcesCache.class.getClassLoader().getResource(path);
 			if (url == null) {
-				if (true || !warnedAboutBrokenPath) {
+				if (!warnedAboutBrokenPath) {
 					Logger.log("jlm.ui.ResourcesCache.getIcon()", "Cannot find path "+path+": classloader returned null.");
 					warnedAboutBrokenPath = true;
 				}
@@ -52,26 +52,6 @@ public class ResourcesCache {
 		return iconsCache.get(path);
 	}
 
-	public static ImageIcon getCombinedIcon(String path1, String path2) {
-		String path = path1+path2;
-		if (!iconsCache.containsKey(path)) {
-
-			ImageIcon img1 = getIcon(path1);			
-			ImageIcon img2 = getIcon(path2);
-			
-			int w = Math.max(img1.getIconWidth(), img2.getIconWidth());
-			int h = Math.max(img1.getIconHeight(), img2.getIconHeight());
-			BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-			Graphics g = combined.getGraphics();
-			g.drawImage(img1.getImage(), 0, 0, null);
-			g.drawImage(img2.getImage(), 0, 0, null);
-			
-			iconsCache.put(path, new ImageIcon(combined));
-		}
-		return iconsCache.get(path);
-	}
-	
-	
 
 	public static int getBusyIconsSize() {
 		return ResourcesCache.busyIcons.length;
