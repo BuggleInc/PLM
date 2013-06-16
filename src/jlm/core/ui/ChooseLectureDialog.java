@@ -50,7 +50,7 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 					icon = exo.getWorld(0).getView().getIcon();
 					//					}
 				} else {
-					icon = ResourcesCache.getIcon("resources/IconWorld/lesson.png");
+					icon = ResourcesCache.getIcon("img/world_lesson.png");
 					if (lect != null && (! (lect instanceof Lecture))) // null may occur -- ignore but don't fail 
 						System.out.println("The exercise chooser contains something that is not a Lecture:"+lect.getClass().getName());
 				}

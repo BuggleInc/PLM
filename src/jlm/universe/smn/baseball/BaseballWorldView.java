@@ -293,7 +293,7 @@ public class BaseballWorldView extends WorldView
 	 */
 	public ImageIcon getIcon()
 	{
-		return ResourcesCache.getIcon("resources/IconWorld/baseball.png");
+		return ResourcesCache.getIcon("img/world_baseball.png");
 	}
 	
 	/**

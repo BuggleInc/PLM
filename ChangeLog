@@ -1,6 +1,9 @@
-20130614:
+20130616:
   * Squeeze a bit our sources so that we can package it for Debian
-  * Add a logo to the distribution (lib/resources/logo.png)
+  * Add a logo to the distribution (img/logo.png)
+  * List the exact license of every image used in COPYING, and replace
+    the ones for which we lost the license on the way. JLM is now
+    perfectly clean wrt the licensing legal consideration.
   * BatEntities now work within the unit tests too (fix #67)
   * Integrate the bat exercise using integer arrays into the welcome
     lesson (fix #21)

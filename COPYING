@@ -101,12 +101,22 @@ Public domain images (CC0 PD)
 
 * img/focus_* These images were retrieved from http://openclipart.org/
               even if I didn't write down the exact URL for them.
-* img/trophy.png http://openclipart.org/detail/48937/trophy-by-sheikh_tuhin	     
+* img/trophy.png         http://openclipart.org/detail/48937/trophy-by-sheikh_tuhin	     
+* img/world_baseball.png http://openclipart.org/detail/76927/baseball2-by-shokunin
 
 =========================================================================
 
-We should probably replace the other for which we lost the copyright
-information. But as you can see from the rest of the project, we are
+The following images are believed to be free, even if I cannot
+remember where they come from. We should maybe play safe and replace
+them. But as you can see from the rest of the project, we are
 better programmers than designers... You are welcome if you can help.
 
-
+* img/world_pancake.png 
+  It was retrieved from 
+  http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
+  It seems rather free, but the exact license is not known.
+* img/world_lesson.png
+  I cannot remember where it comes from. It looks very similar to the
+  logo for education applications in KDE so I guess it's ok. And since
+  I'm planning at removing the whole concept of lessons, it's probably
+  not worth digging any further on this one.

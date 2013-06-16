@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="112.62725" height="195.63248" id="svg3065" version="1.1" inkscape:version="0.47 r22583" sodipodi:docname="baseball.svg">
+  <defs id="defs3067">
+    <inkscape:perspective sodipodi:type="inkscape:persp3d" inkscape:vp_x="0 : 526.18109 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="744.09448 : 526.18109 : 1" inkscape:persp3d-origin="372.04724 : 350.78739 : 1" id="perspective3073"/>
+    <inkscape:perspective id="perspective2848" inkscape:persp3d-origin="0.5 : 0.33333333 : 1" inkscape:vp_z="1 : 0.5 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 0.5 : 1" sodipodi:type="inkscape:persp3d"/>
+    <inkscape:perspective id="perspective2861" inkscape:persp3d-origin="0.5 : 0.33333333 : 1" inkscape:vp_z="1 : 0.5 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 0.5 : 1" sodipodi:type="inkscape:persp3d"/>
+    <inkscape:perspective id="perspective2874" inkscape:persp3d-origin="0.5 : 0.33333333 : 1" inkscape:vp_z="1 : 0.5 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 0.5 : 1" sodipodi:type="inkscape:persp3d"/>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="0.35" inkscape:cx="-60.519357" inkscape:cy="-26.418663" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="false" inkscape:window-width="613" inkscape:window-height="504" inkscape:window-x="0" inkscape:window-y="640" inkscape:window-maximized="0"/>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-435.51936,-310.31102)">
+    <path style="fill:#336699;stroke:none" d="m 461.53483,331.60302 -1.02137,5.92391 3.47264,1.22564 1.02137,2.85983 -1.83846,2.04273 c 0,0 -2.65555,3.06409 -2.45127,4.49401 0.20427,1.42991 3.06409,16.54611 3.06409,16.54611 l 1.42991,5.92392 3.26837,2.04273 4.69828,4.69829 2.65556,6.53673 2.65554,8.98802 c 0,0 -0.81709,2.04273 0.40854,2.85983 1.22564,0.81709 -12.25637,20.01877 -12.25637,20.01877 l -6.53674,8.57947 -9.60084,13.48202 c 0,0 -1.42991,4.28973 -1.02136,5.10683 0.40854,0.81709 2.45127,7.35383 2.45127,7.35383 l 0.81709,15.52475 1.42991,22.26577 -13.07347,11.03074 c 0,0 -6.33247,1.42991 -5.51538,2.85983 0.8171,1.42991 5.10684,2.65555 6.94529,2.45128 1.83846,-0.20428 18.18031,-2.45128 18.18031,-2.45128 l 4.28973,-0.20428 c 0,0 5.51537,-0.40854 5.51537,-1.22564 0,-0.81709 -0.61282,-6.53673 -0.61282,-6.53673 0,0 -3.88118,-5.51538 -3.88118,-6.33247 0,-0.81709 -1.22564,-12.05211 -0.61282,-13.48202 0.61282,-1.42992 1.02136,-5.71965 1.02136,-5.71965 0,0 2.04273,-0.81709 1.83846,-1.63418 -0.20427,-0.8171 -0.20427,-4.08547 -0.61282,-4.90256 -0.40854,-0.81709 -1.02136,-7.5581 -1.02136,-8.3752 0,-0.81709 0.20427,-3.67691 0.20427,-4.494 0,-0.81709 4.90255,-7.14956 5.51537,-7.96665 0.61282,-0.81709 8.988,-8.78374 8.988,-8.78374 l 8.3752,-7.55811 2.85983,-1.42991 -0.40855,9.39656 -0.61282,9.39656 c 0,0 -0.40855,8.57947 -0.40855,9.80511 0,1.22564 1.22564,6.12819 2.65556,6.33247 1.42991,0.20427 17.56748,10.82647 17.56748,10.82647 l 6.74101,5.92392 12.25639,12.8692 -1.42991,6.74102 -6.94529,8.78374 c 0,0 -3.67692,2.04273 -1.63418,2.45128 2.04273,0.40854 11.84784,-0.61282 12.66493,-0.8171 0.81709,-0.20427 8.57947,-1.02136 8.57947,-1.02136 0,0 4.08546,-4.90256 4.69828,-6.33247 0.61282,-1.42991 1.83846,-7.14956 1.83846,-7.14956 0,0 -3.26838,-3.06409 -4.49401,-4.08546 -1.22564,-1.02136 -6.1282,-5.3111 -6.74102,-6.12819 -0.61282,-0.81709 -2.65554,-4.90255 -3.47264,-5.71965 -0.81709,-0.81709 -4.90255,-6.94528 -4.90255,-6.94528 l -4.28973,-7.14956 -13.27776,-12.8692 5.10683,-21.65295 3.67692,-10.6222 1.83846,-11.03075 0.81709,-10.41793 -3.0641,-4.69829 c 0,0 -0.20427,-3.88118 -0.40855,-4.69828 -0.20427,-0.81709 -0.40854,-3.67691 -0.40854,-3.67691 0,0 5.71965,2.247 6.53674,3.06409 0.81709,0.8171 6.94528,0.8171 6.94528,0.8171 l 0.61282,-3.47265 -1.83845,-7.14956 -2.85983,-6.33246 -2.45128,-2.247 0.40855,-2.45128 -4.28973,-2.65555 -2.24701,-3.88119 -1.63419,-1.02137 0.20428,-4.28973 -2.04273,-3.88119 6.94529,-16.54612 1.02136,-3.88119 -2.85982,-3.06409 -3.47265,0.61282 -2.04273,1.83845 c 0,0 -1.22564,5.10683 -1.42991,5.92393 -0.20427,0.81709 -1.63418,13.07347 -1.63418,13.07347 l -5.92392,-2.04273 -8.17093,-2.85982 -7.35383,-2.24701 -3.67691,-1.83846 c 0,0 0,-1.42991 0.61282,-2.247 0.61281,-0.81709 2.45127,-4.08546 2.65554,-4.90255 0.20428,-0.8171 -0.61282,-6.53674 -0.61282,-6.53674 0,0 -2.45127,-7.76238 -3.26836,-8.17092 -0.81709,-0.40855 -6.74102,-3.47264 -8.78373,-3.67691 -2.04273,-0.20427 -8.3752,-1.02137 -10.41793,0.20427 -2.04273,1.22563 -4.90256,2.85982 -5.3111,3.88118 -0.40855,1.02137 -2.45128,3.0641 -2.45128,3.88119 0,0.81709 0.20427,2.24701 0.20427,2.24701 l -4.08546,1.63418 -4.49401,1.42991 -1.42991,0.40855 c 0,0 2.04273,2.04273 3.67692,3.26836 1.63418,1.22564 5.71965,2.04274 5.71965,2.04274 l 2.247,1.83846 z" id="path6039"/>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Open Clip Art Library</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>baseball2</dc:title>
+        <dc:date>2010-08-03T23:23:16</dc:date>
+        <dc:description>Part of set of Silhouettes based on sports, in a nice vibrant colours of Ubuntu palette in Inkscape.</dc:description>
+        <dc:source>http://openclipart.org/detail/76927/baseball2-by-shokunin</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>shokunin</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Olympics</rdf:li>
+            <rdf:li>baseball</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>colours</rdf:li>
+            <rdf:li>silhouette</rdf:li>
+            <rdf:li>sports</rdf:li>
+            <rdf:li>sports2010</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -42,6 +42,6 @@ public class BacktrackingWorldView extends WorldView {
 	
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("resources/IconWorld/backtracking.png");
+		return ResourcesCache.getIcon("img/world_backtracking.png"); // Yeah, does not exists, I know
 	}
 }
