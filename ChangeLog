@@ -1,4 +1,5 @@
 20130616:
+  * RELEASE 1.98
   * Squeeze a bit our sources so that we can package it for Debian
   * Add a logo to the distribution (img/logo.png)
   * List the exact license of every image used in COPYING, and replace
