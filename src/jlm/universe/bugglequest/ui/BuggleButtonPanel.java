@@ -221,15 +221,6 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		String message ;
 		String title = i18n.tr("Wall hugging error");
 		message = i18n.tr("Your buggle has collided with a wall, it hurts a lot ! ='(");
-//TODO: remove if validated
-//		if ( FileUtils.getLocale().equals("fr"))
-//		{
-//			message = "Votre buggle est rentr��e dans un mur, ��a fait mal ! ='(";
-//		}
-//		else
-//		{
-//			message = "Your buggle has collided with a wall, it hurts a lot ! ='(";
-//		}
 		JOptionPane.showMessageDialog(null, message,title, JOptionPane.ERROR_MESSAGE);
 	}
 

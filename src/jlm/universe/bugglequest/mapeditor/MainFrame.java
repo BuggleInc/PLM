@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
+import javax.swing.JSplitPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
 
@@ -57,6 +58,7 @@ public class MainFrame extends JFrame {
 		JToggleButton topButton = createButton("topwall"); 
 		JToggleButton leftButton = createButton("leftwall"); 
 		JToggleButton baggleButton = createButton("baggle");
+		JToggleButton buggleButton = createButton("buggle");
 		JToggleButton textButton = createButton("text");
 		JToggleButton colorButton = createButton("colors",new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,6 +90,7 @@ public class MainFrame extends JFrame {
 		toolBar.add(topButton);
 		toolBar.add(leftButton);
 		toolBar.add(baggleButton);
+		toolBar.add(buggleButton);
 		toolBar.add(colorButton);
 		toolBar.add(textButton);
 
@@ -95,14 +98,21 @@ public class MainFrame extends JFrame {
 		tools.add(topButton);
 		tools.add(leftButton);
 		tools.add(baggleButton);
+		tools.add(buggleButton);
 		tools.add(colorButton);
 		tools.add(textButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 
+		JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
+		sp.setOneTouchExpandable(true);
+
 		MapView mapView = new MapView(editor);
-		editor.addMapView(mapView);
-		getContentPane().add(mapView, BorderLayout.CENTER);
+		editor.addEditionListener(mapView);
+		sp.setLeftComponent(mapView);
+		sp.setRightComponent(new PropertiesEditor(editor));
+		
+		getContentPane().add(sp, BorderLayout.CENTER);
 	}
 
 	private JToggleButton createButton(final String name) {

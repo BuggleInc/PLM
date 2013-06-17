@@ -7,14 +7,15 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JOptionPane;
 
+import jlm.universe.Direction;
+import jlm.universe.Entity;
+import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorldCell;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.ui.BuggleWorldView;
 
 
-
-
-public class MapView extends BuggleWorldView {
+public class MapView extends BuggleWorldView implements EditionListener {
 
 	private static final long serialVersionUID = -8303474674104829723L;
 	private Editor editor;
@@ -56,6 +57,7 @@ public class MapView extends BuggleWorldView {
 						try {
 							cell.newBaggle();
 						} catch (AlreadyHaveBaggleException e1) {
+							System.out.println("The impossible did happen (yet again)");
 							e1.printStackTrace();
 						}
 				} else if (cmd.equals("colors")) {
@@ -73,9 +75,34 @@ public class MapView extends BuggleWorldView {
 						return;
 					cell.emptyContent();
 					cell.addContent(inputValue);
+				} else if (cmd.equals("buggle")) {
+					Buggle thebuggle = null;
+					for (Entity ent:editor.getWorld().getEntities()) {
+						Buggle b = (Buggle) ent;
+						if (b.getX() == x && b.getY() == y) {
+							thebuggle = b;
+							break;
+						}
+					}
+					if (thebuggle == null) {
+						editor.getWorld().addEntity(new Buggle(editor.getWorld(),"buggle"+editor.getWorld().getEntityCount(),
+								x,y,Direction.NORTH,Color.black, Color.black));
+					} else {
+						editor.getWorld().setSelectedEntity(thebuggle);
+					}
 				}
 			}
 		};
 		addMouseListener(mouseListener);
+	}
+
+	@Override
+	public void worldEdited() {
+		worldHasChanged();// use the callbacks of the regular view -- not really clean but efficient
+	}
+
+	@Override
+	public void setSelectedEntity(Entity ent) {
+		/* I'm too lazy to react to this */
 	}
 }
