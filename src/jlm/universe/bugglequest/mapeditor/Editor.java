@@ -52,11 +52,9 @@ public class Editor {
 		}
 	}
 
-	public void loadMap(String file) {
+	public void loadMap(String file) throws IOException {
 		try {
 			this.world.readFromFile(file);
-		} catch (IOException e) {
-			e.printStackTrace();
 		} catch (BrokenWorldFileException e) {
 			e.printStackTrace();
 		}
