@@ -92,8 +92,7 @@ public class BuggleWorld extends GridWorld {
 		if (!m.find())
 			throw new RuntimeException(Game.i18n.tr(
 					"{0}.map: This file does not seem to be a serialized BuggleWorld (malformated first line: {1})", path, line));
-		m.replaceAll("");
-		setName(line);
+		setName(m.replaceAll(""));
 		
 		/* Get the dimension from the second line that is eg "Size: 20x20" */
 		line = reader.readLine();
