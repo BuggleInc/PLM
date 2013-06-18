@@ -17,13 +17,10 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 		super(name,x,y);
 		setDelay(200);
 	}
-	@Override
-	public void create(int x, int y) {
-		super.create(x,y);
-		for (int i = 0; i < sizeX; i++)
-			for (int j = 0; j < sizeY; j++)
-				setCell(new LightBotWorldCell(this, i, j), i, j) ;
+	protected LightBotWorldCell newCell(int x, int y) {
+		return new LightBotWorldCell(this, x, y);
 	}
+
 	/**
 	 * Create a new world being almost a copy of the first one.
 	 * 

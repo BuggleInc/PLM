@@ -33,7 +33,41 @@ public abstract class GridWorld extends World {
 		this.sizeX = width;
 		this.sizeY = height;
 		this.cells = new GridWorldCell[sizeX][sizeY];
+		for (int i = 0; i < sizeX; i++)
+			for (int j = 0; j < sizeY; j++)
+				setCell(newCell(i, j), i, j) ;
 	}
+	protected abstract GridWorldCell newCell(int x, int y);
+	
+	public void setWidth(int width) {
+		GridWorldCell[][] oldCells = cells;
+		this.cells = new GridWorldCell[width][sizeY];
+		for (int i = 0; i< Math.min(width, sizeX); i++) 
+			for (int j = 0; j < sizeY; j++)
+				cells[i][j] = oldCells[i][j];
+		
+		if (width>sizeX) // need to increase the table size
+			for (int i = sizeX; i< width; i++) 
+				for (int j = 0; j < sizeY; j++)
+					cells[i][j] = newCell(i, j);
+			
+		sizeX = width;
+	}
+
+	public void setHeight(int height) {
+		GridWorldCell[][] oldCells = cells;
+		this.cells = new GridWorldCell[sizeX][height];
+		for (int i = 0; i< sizeX; i++)  {
+			for (int j = 0; j < Math.min(height, sizeY); j++)
+				cells[i][j] = oldCells[i][j];
+			if (height>sizeY) // need to increase the table size
+				for (int j = sizeY; j < height; j++)
+					cells[i][j] = newCell(i, j);
+		}
+		
+		sizeY = height;
+	}
+
 	
 	public GridWorldCell getCell(int x, int y) {
 		return this.cells[x][y];

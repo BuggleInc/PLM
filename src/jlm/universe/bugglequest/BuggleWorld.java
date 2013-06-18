@@ -18,6 +18,7 @@ import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
+import jlm.universe.GridWorldCell;
 import jlm.universe.World;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.ui.BuggleButtonPanel;
@@ -30,13 +31,9 @@ public class BuggleWorld extends GridWorld {
 		super(name,x,y);
 	}
 	@Override
-	protected void create(int x, int y) {
-		super.create(x,y);
-		for (int i = 0; i < sizeX; i++)
-			for (int j = 0; j < sizeY; j++)
-				setCell(new BuggleWorldCell(this, i, j), i, j) ;
+	protected GridWorldCell newCell(int x, int y) {
+		return new BuggleWorldCell(this, x, y);
 	}
-
 	/** 
 	 * Create a new world being almost a copy of the first one. Beware, all the buggles of the copy are changed to BuggleRaw. 
 	 * @param world2
