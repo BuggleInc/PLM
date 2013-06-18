@@ -2,6 +2,7 @@ package jlm.universe.bugglequest.mapeditor;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.Vector;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -31,6 +32,9 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 	private JTable table = new JTable(model);
 
 	private Editor editor; 
+
+	Vector<JLMProperty> properties = new Vector<JLMProperty>();
+	
 	public PropertiesEditor(Editor _editor) {
 		editor = _editor;
 		editor.addEditionListener(this);
@@ -45,15 +49,65 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		setVisible(true);
 		setPreferredSize(new Dimension(100, 500));
 
-		model.addTableModelListener(new MyTableModelListener(table,editor));
+		model.addTableModelListener(new MyTableModelListener(editor,table,properties));
 	}
 	private void repopulateTable() {
 		while (model.getRowCount()>0)
 			model.removeRow(0);
+		properties.removeAllElements();
 
-		model.addRow(new Object[] {i18n.tr("World name:"), editor.getWorld().getName()});
-		model.addRow(new Object[] {i18n.tr("World width:"), editor.getWorld().getWidth()});
-		model.addRow(new Object[] {i18n.tr("World height:"), editor.getWorld().getHeight()});
+		/* The editor for the name */
+		model.insertRow(0, new Object[] {i18n.tr("World name"), new JLMProperty(properties) { 
+			@Override
+			public boolean setValue(String value) {
+				editor.getWorld().setName(value);
+				return true;
+			}
+			@Override
+			public String toString() {
+				return editor.getWorld().getName();
+			}
+		}});
+
+		/*---------- world width ---------------*/
+		model.addRow(new Object[] {i18n.tr("World width"), new JLMProperty(properties) {
+			@Override
+			public String toString() {
+				return ""+editor.getWorld().getWidth();
+			}
+			@Override
+			public boolean setValue(String value) {
+				Integer i;
+				try {
+					i = Integer.parseInt(value);
+				} catch (NumberFormatException nfe) {
+					table.setValueAt(""+editor.getWorld().getWidth(),rank,1);
+					return false; // silently ignore invalid values
+				}
+				editor.getWorld().setWidth(i);
+				return true;
+			}
+		}});
+		
+		/*---------- world height ---------------*/
+		model.addRow(new Object[] {i18n.tr("World height"), new JLMProperty(properties) {
+			@Override
+			public String toString() {
+				return ""+editor.getWorld().getHeight();
+			}
+			@Override
+			public boolean setValue(String value) {
+				Integer i;
+				try {
+					i = Integer.parseInt(value);
+				} catch (NumberFormatException nfe) {
+					table.setValueAt(""+editor.getWorld().getHeight(),rank,1);
+					return false; // silently ignore invalid values
+				}
+				editor.getWorld().setHeight(i);
+				return true;
+			}
+		}});
 	}
 	@Override
 	public void setWorld(World w) {
@@ -69,26 +123,41 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		// TODO Auto-generated method stub
 
 	}
-
-
 }
 
 class MyTableModelListener implements TableModelListener {
 	private JTable table;
+	private Vector<JLMProperty> properties;
 	private Editor editor;
-
-	MyTableModelListener(JTable t, Editor e) {
-		table = t;
+	
+	MyTableModelListener(Editor e, JTable t, Vector<JLMProperty> props) {
 		editor = e;
+		table = t;
+		properties = props;
 	}
 	public void tableChanged(TableModelEvent e) {
 		int row = e.getFirstRow(); // selections are SINGLE_SELECTION, so ignore getLastRow
 
-		if (e.getType() == TableModelEvent.UPDATE)
-			switch (row) {
-			case 0:
-				editor.getWorld().setName((String) table.getModel().getValueAt(0, 1));
-				break;
+		if (e.getType() == TableModelEvent.UPDATE) {
+			for (JLMProperty p : properties) {
+				if (p.rank == row) {
+					System.out.println("Property "+row+" edited. Delegation ongoing.");
+					if (p.setValue((String) table.getModel().getValueAt(row, 1)))
+						editor.getWorld().notifyWorldUpdatesListeners();
+					return;
+				}
 			}
+			System.out.println("No property seem to be in charge of row "+row+". Ignoring the edit.");
+		}
 	}
+}
+
+abstract class JLMProperty {
+	public int rank;
+	public JLMProperty(Vector<JLMProperty> props) {
+		rank = props.size();
+		props.add(this);
+	}
+	public abstract boolean setValue(String value);
+	public abstract String toString();
 }
