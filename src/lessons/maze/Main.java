@@ -1,6 +1,9 @@
 package lessons.maze;
 
+import java.io.IOException;
+
 import jlm.core.model.lesson.Lesson;
+import jlm.universe.BrokenWorldFileException;
 import lessons.maze.island.IslandMaze;
 import lessons.maze.pledge.PledgeMaze;
 import lessons.maze.randommouse.RandomMouseMaze;
@@ -14,7 +17,7 @@ public class Main extends Lesson {
 	// see http://en.wikipedia.org/wiki/Maze#Solving_mazes
 	
 	@Override
-	protected void loadExercises() {
+	protected void loadExercises() throws IOException, BrokenWorldFileException {
 		addExercise(new RandomMouseMaze(this));
 		addExercise(new WallFollowerMaze(this));
 		addExercise(new WallFindFollowMaze(this));

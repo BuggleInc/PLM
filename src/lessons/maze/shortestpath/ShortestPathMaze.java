@@ -1,10 +1,12 @@
 package lessons.maze.shortestpath;
 
 import java.awt.Color;
+import java.io.IOException;
 
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
+import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -16,7 +18,7 @@ import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 public class ShortestPathMaze extends ExerciseTemplated {
 
-	public ShortestPathMaze(Lesson lesson) {
+	public ShortestPathMaze(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		tabName = "JediEscaper";
 				
@@ -24,11 +26,11 @@ public class ShortestPathMaze extends ExerciseTemplated {
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 	
-		loadMap(myWorlds[0],"lessons/maze/shortestpath/WallFollowerMaze");
+		myWorlds[0].readFromFile("lessons/maze/shortestpath/WallFollowerMaze");
         new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
         
 		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		loadMap(myWorlds[1],"lessons/maze/shortestpath/PledgeMaze");
+		myWorlds[1].readFromFile("lessons/maze/shortestpath/PledgeMaze");
 		new Buggle(myWorlds[1], "Luke", 12, 14, Direction.NORTH, Color.black, Color.lightGray);
 		
 		//newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");

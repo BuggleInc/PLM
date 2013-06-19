@@ -1,10 +1,12 @@
 package lessons.maze.wallfindfollow;
 
 import java.awt.Color;
+import java.io.IOException;
 
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
+import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -16,7 +18,7 @@ import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 public class WallFindFollowMaze extends ExerciseTemplated {
 
-	public WallFindFollowMaze(Lesson lesson) {
+	public WallFindFollowMaze(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		tabName = "Escaper";
 		nameOfCorrectionEntity = "lessons.maze.wallfollower.WallFollowerMazeEntity"; // Use the same entity than in previous exercise
@@ -24,11 +26,11 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 		/* Create initial situation */
 		BuggleWorld myWorlds[] = new BuggleWorld[2];
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
-		loadMap(myWorlds[0],"lessons/maze/wallfollower/WallFollowerMaze");
+		myWorlds[0].readFromFile("lessons/maze/wallfollower/WallFollowerMaze");
 		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		myWorlds[1] = new BuggleWorld("Labyrinth2", 1, 1); 
-		loadMap(myWorlds[1],"lessons/maze/wallfollower/WallFollowerMaze2");
+		myWorlds[1].readFromFile("lessons/maze/wallfollower/WallFollowerMaze2");
 		new Buggle(myWorlds[1], "ZoroRorronoa", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);

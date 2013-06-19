@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jlm.core.model.FileUtils;
+import jlm.universe.BrokenWorldFileException;
 
 
 public abstract class Lesson {
@@ -32,17 +33,24 @@ public abstract class Lesson {
 	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 
 	public Lesson() {
-		loadExercises(); /* FIXME: remove this line when session savers can deal with laziness */
-		
 		id = getClass().getCanonicalName();
 		Pattern namePattern = Pattern.compile(".Main$");
 		Matcher nameMatcher = namePattern.matcher(id);
 		id = nameMatcher.replaceAll("");
-
+		
 		namePattern = Pattern.compile("^lessons.");
 		nameMatcher = namePattern.matcher(id);
 		id = nameMatcher.replaceAll("");
-
+		
+		try {
+			loadExercises(); /* FIXME: remove this line when session savers can deal with laziness */
+		} catch (IOException e) {
+			System.err.println("Cannot load the exercises. This lesson is severely broken..");
+			e.printStackTrace();
+		} catch (BrokenWorldFileException e) {
+			System.err.println("Cannot load the exercises. This lesson is severely broken..");
+			e.printStackTrace();
+		} 
 	}
 	public String getId() {
 		return id;
@@ -124,7 +132,7 @@ public abstract class Lesson {
 		return this.currentExercise;
 	}
 
-	abstract protected void loadExercises();
+	abstract protected void loadExercises() throws IOException, BrokenWorldFileException;
 
 	public void setCurrentExercise(Lecture exo) {
 		this.currentExercise = exo;
