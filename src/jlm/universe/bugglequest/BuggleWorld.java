@@ -114,7 +114,7 @@ public class BuggleWorld extends GridWorld {
 		Matcher cellMatcher = cellPattern.matcher(line);
 
 		if (cellMatcher.matches() || buggleMatcher.matches()) {
-			System.out.println("This world is using the new syntax");
+			/* This world is using the new syntax */
 			
 			do {
 				cellMatcher = cellPattern.matcher(line);
@@ -177,8 +177,7 @@ public class BuggleWorld extends GridWorld {
 				line = reader.readLine();
 			} while (line != null);
 		} else {
-			System.out.println("This crappy world is using the OLD syntax");
-			/* This world is using the old syntax -- FIXME KILLME after the transition */
+			System.out.println("Warning, the world "+path+" uses the old syntax"); /* FIXME Kill this branch after the transition */
 			
 			/* read each cell, one after the other */
 			for (int x = 0; x < getWidth(); x++) {
