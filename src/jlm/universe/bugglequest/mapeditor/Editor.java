@@ -24,7 +24,7 @@ public class Editor {
 	}
 
 	public void createNewMap(int width, int height) {
-		this.world = new BuggleWorld("edited world",width, height);
+		this.world = new BuggleWorld("Brave new world",width, height);
 		
 		for (EditionListener v : this.editionListeners) {
 			v.setWorld(this.world);
