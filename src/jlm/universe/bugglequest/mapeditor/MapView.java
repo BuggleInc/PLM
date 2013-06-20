@@ -106,6 +106,7 @@ public class MapView extends BuggleWorldView implements EditionListener {
 	@Override
 	public void selectedChanged(int x, int y, Entity ent) {
 		/* I'm too lazy to react to this */
+		this.repaint();
 	}
 	
 	@Override

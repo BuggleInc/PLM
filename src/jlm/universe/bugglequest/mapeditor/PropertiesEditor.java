@@ -132,7 +132,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 					table.setValueAt(""+editor.getWorld().getSelectedCell().getX(),rank,1);
 					return; // silently ignore invalid values
 				}
-				editor.getWorld().setSelectedCell(x, editor.getWorld().getSelectedCell().getY());
+				editor.setSelectedCell(x, editor.getWorld().getSelectedCell().getY());
 			}
 		}});
 
@@ -154,7 +154,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 					table.setValueAt(""+editor.getWorld().getSelectedCell().getY(),rank,1);
 					return; // silently ignore invalid values
 				}
-				editor.getWorld().setSelectedCell(editor.getWorld().getSelectedCell().getX(),y);
+				editor.setSelectedCell(editor.getWorld().getSelectedCell().getX(),y);
 			}
 		}});
 		/*---------- top wall cell ---------------*/
@@ -221,12 +221,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 	}
 	@Override
 	public void selectedChanged(int x, int y, Entity ent) {
-		BuggleWorldCell selected = editor.getWorld().getSelectedCell();
-		
-		table.setValueAt(""+selected.getX(),selectedXRank,1);
-		table.setValueAt(""+selected.getY(),selectedYRank,1);
-		table.setValueAt(selected.hasTopWall() ?i18n.tr("Y"):i18n.tr("N"), topRank, 1);
-		table.setValueAt(selected.hasLeftWall()?i18n.tr("Y"):i18n.tr("N"), leftRank,1);
+		worldEdited();
 		
 		if (selectedBuggle != ent) {
 			selectedBuggle = (AbstractBuggle) ent;
@@ -240,23 +235,28 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 class MyTableModelListener implements TableModelListener {
 	private JTable table;
 	private Vector<JLMProperty> properties;
+
+	private boolean ongoing = false;
 	
 	MyTableModelListener(Editor e, JTable t, Vector<JLMProperty> props) {
 		table = t;
 		properties = props;
 	}
 	public void tableChanged(TableModelEvent e) {
+		if (ongoing) 
+			return;
+		
+		ongoing = true;
 		int row = e.getFirstRow(); // selections are SINGLE_SELECTION anyway, so ignore getLastRow
 
 		if (e.getType() == TableModelEvent.UPDATE) {
 			for (JLMProperty p : properties) {
 				if (p.rank == row) {
 					p.setValue(""+ table.getModel().getValueAt(row, 1));
-					return;
 				}
 			}
-			System.out.println("No property seem to be in charge of row "+row+". Ignoring the edit.");
 		}
+		ongoing = false;
 	}
 }
 
