@@ -1,402 +1,166 @@
 BuggleWorld: Labyrinth
 Size: 20x20
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(0,0,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,0),true,true,false] ; cell
+Cell(0,0): (255,255,255),nobaggle,topwall,leftwall,
+Cell(0,1): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,2): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,3): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,4): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,5): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,6): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,7): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,8): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,9): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,10): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,11): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,12): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,13): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,14): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,15): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,16): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,17): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,18): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,19): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(1,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(2,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(2,2): (255,255,255),nobaggle,topwall,leftwall,
+Cell(2,3): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,4): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,5): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,6): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,7): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,8): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,9): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(2,11): (255,255,255),nobaggle,topwall,leftwall,
+Cell(2,12): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,13): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,14): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,15): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,16): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,17): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,7): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,9): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,11): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,13): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(4,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(4,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(4,7): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(4,8): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(4,11): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(4,12): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(4,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(5,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(5,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(5,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(6,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(6,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(6,5): (255,255,255),nobaggle,topwall,leftwall,
+Cell(6,6): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,7): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,8): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,9): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,10): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,11): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,12): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,13): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,14): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,15): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(6,16): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(6,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(7,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(7,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(7,5): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(7,16): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(7,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(8,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(8,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(8,5): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(8,7): (255,255,255),nobaggle,topwall,leftwall,
+Cell(8,13): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(8,14): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(8,16): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(8,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(9,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(9,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(9,5): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(9,6): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(9,14): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(9,15): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(9,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(10,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(10,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(10,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(11,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(11,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(11,5): (255,255,255),nobaggle,topwall,leftwall,
+Cell(11,6): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(11,7): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(11,14): (255,255,255),nobaggle,topwall,leftwall,
+Cell(11,15): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(11,16): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(11,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(12,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(12,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(12,5): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(12,7): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(12,13): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(12,14): (0,0,255),nobaggle,notopwall,noleftwall,
+Cell(12,16): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(12,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(13,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(13,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(13,5): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(13,16): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(13,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(14,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(14,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(14,5): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,6): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,7): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,8): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,9): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,10): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,11): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,12): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,13): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,14): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,15): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(14,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(15,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(15,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(15,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(16,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(16,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(16,7): (255,255,255),nobaggle,topwall,leftwall,
+Cell(16,8): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(16,9): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(16,11): (255,255,255),nobaggle,topwall,leftwall,
+Cell(16,12): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(16,13): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(16,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(17,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(17,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(17,9): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(17,11): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(17,18): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(18,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(18,2): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,3): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,4): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,5): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,6): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,7): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,8): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,11): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,12): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,13): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,14): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,15): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,16): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,17): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(18,19): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(19,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(19,19): (255,255,0),baggle,topwall,noleftwall,

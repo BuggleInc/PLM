@@ -1,18 +1,16 @@
 BuggleWorld: Swiss cheese
 Size: 4x4
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(204,204,255),false,true,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,true,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,255),false,false,true] ; cell
-[(255,255,255),false,true,false] ; cell
-[(255,255,153),true,false,true] ; cell
+Cell(0,0): (255,255,255),nobaggle,topwall,leftwall,
+Cell(0,1): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,2): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(0,3): (204,204,255),nobaggle,topwall,leftwall,
+Cell(1,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(1,1): (255,255,255),nobaggle,topwall,leftwall,
+Cell(1,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(2,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(2,2): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(2,3): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(3,0): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,1): (255,255,255),nobaggle,notopwall,leftwall,
+Cell(3,2): (255,255,255),nobaggle,topwall,noleftwall,
+Cell(3,3): (255,255,153),baggle,notopwall,leftwall,
