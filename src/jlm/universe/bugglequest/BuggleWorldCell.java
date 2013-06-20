@@ -138,7 +138,7 @@ public class BuggleWorldCell extends GridWorldCell {
 	}
 	
 	public void setBaggle(Baggle b) throws AlreadyHaveBaggleException {
-		if (this.baggle != null) 
+		if (this.baggle != null && b != null) 
 			throw new AlreadyHaveBaggleException("This cell already contains a baggle");
 		this.baggle = b;
 		world.notifyWorldUpdatesListeners();

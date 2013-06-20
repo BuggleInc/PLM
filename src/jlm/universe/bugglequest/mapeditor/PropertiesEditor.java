@@ -15,8 +15,10 @@ import javax.swing.table.DefaultTableModel;
 import jlm.universe.Entity;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
+import jlm.universe.bugglequest.Baggle;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.BuggleWorldCell;
+import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -37,7 +39,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 	private JTable table = new JTable(model);
 
 	private Editor editor; 
-	private int selectedXRank,selectedYRank,topRank,leftRank;
+	private int selectedXRank,selectedYRank,topRank,leftRank,baggleRank;
 
 	Vector<JLMProperty> properties = new Vector<JLMProperty>();
 	
@@ -201,6 +203,35 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 				}
 			}
 		}});
+		/*---------- have baggle ---------------*/
+		model.addRow(new Object[] {i18n.tr("Baggle?"), new JLMProperty(properties) {
+			@Override
+			public String toString() {
+				baggleRank = rank;
+				return editor.getWorld().getSelectedCell().hasBaggle()?"Y":"N";
+			}
+			@Override
+			public void setValue(String value) {
+				BuggleWorldCell selected = editor.getWorld().getSelectedCell();
+				
+				try {
+					if (!value.equalsIgnoreCase("Y") && !value.equalsIgnoreCase("N")) {
+						table.setValueAt(editor.getWorld().getSelectedCell().hasBaggle()?"Y":"N",rank,1);
+						return;
+
+					} else if (value.equalsIgnoreCase("Y")) {
+						if (!selected.hasBaggle()) // only update if needed
+							selected.setBaggle(new Baggle(selected));
+					} else {
+						if (selected.hasBaggle()) // only update if needed
+							selected.setBaggle(null);
+					}
+				} catch (AlreadyHaveBaggleException e) { 
+					System.err.println("The impossible happened (yet again)");
+					e.printStackTrace();
+				}
+			}
+		}});
 		
 	}
 	@Override
@@ -218,6 +249,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		table.setValueAt(""+selected.getY(),selectedYRank,1);
 		table.setValueAt(selected.hasTopWall() ?"Y":"N", topRank, 1);
 		table.setValueAt(selected.hasLeftWall()?"Y":"N", leftRank,1);
+		table.setValueAt(selected.hasBaggle()?"Y":"N", baggleRank,1);
 	}
 	@Override
 	public void selectedChanged(int x, int y, Entity ent) {
