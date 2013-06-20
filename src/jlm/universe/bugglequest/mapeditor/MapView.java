@@ -1,6 +1,7 @@
 package jlm.universe.bugglequest.mapeditor;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -36,8 +37,9 @@ public class MapView extends BuggleWorldView implements EditionListener {
 			void handleMouseEvt(MouseEvent e) {
 				int x = (int) ((e.getX() - getPadX()) / getCellWidth());
 				int y = (int) ((e.getY() - getPadY()) / getCellWidth());
-
-				BuggleWorldCell cell = (BuggleWorldCell) editor.getWorld().getCell(x, y);
+				
+				editor.getWorld().setSelectedCell(x, y);
+				BuggleWorldCell cell = (BuggleWorldCell) editor.getWorld().getSelectedCell();
 				String cmd = editor.getCommand();
 
 				if (cmd.equals("topwall")) {
@@ -104,5 +106,25 @@ public class MapView extends BuggleWorldView implements EditionListener {
 	@Override
 	public void setSelectedEntity(Entity ent) {
 		/* I'm too lazy to react to this */
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		BuggleWorldCell selection = editor.getWorld().getSelectedCell();
+		if (selection != null) {
+			int padx = (int) getPadX();
+			int pady = (int) getPadY();
+			int ox = (int) (selection.getX()*getCellWidth()); // x-offset of the cell
+			int oy = (int) ((selection.getY())*getCellWidth()); // y-offset of the cell
+			int cellW = (int) getCellWidth();
+
+			g.setColor(Color.RED);
+			g.drawRoundRect(padx+ox+2, pady+oy+2, cellW-4,cellW-4, cellW/10, cellW/10);
+			g.setColor(Color.WHITE);
+			g.drawRoundRect(padx+ox+3, pady+oy+3, cellW-6,cellW-6, cellW/10, cellW/10);
+			g.setColor(Color.RED);
+			g.drawRoundRect(padx+ox+4, pady+oy+4, cellW-8,cellW-8, cellW/10, cellW/10);
+		}
 	}
 }

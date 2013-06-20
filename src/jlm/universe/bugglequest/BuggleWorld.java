@@ -306,6 +306,18 @@ public class BuggleWorld extends GridWorld {
 		return super.equals(obj);
 	}
 
+	/* Cell selection is particularly important to world edition */
+	BuggleWorldCell selectedCell=null;
+	public BuggleWorldCell getSelectedCell() {
+		return selectedCell;
+	}
+	public void setSelectedCell(int x, int y) {
+		selectedCell = getCell(x,y);
+	}
+	public void unselectCell() {
+		selectedCell = null;
+	}
+	
 	/* adapters to the cells */
 	public BuggleWorldCell getCell(int x, int y) {
 		return (BuggleWorldCell) super.getCell(x, y);
