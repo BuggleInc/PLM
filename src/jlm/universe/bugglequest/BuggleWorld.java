@@ -104,31 +104,108 @@ public class BuggleWorld extends GridWorld {
 		int height = Integer.parseInt(m.group(2));
 
 		create(width, height);
+		
+		line = reader.readLine();
+		
+		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): ");
+		Matcher buggleMatcher = bugglePattern.matcher(line);
+		String cellFmt = "^Cell\\((\\d+),(\\d+)\\): \\((\\d+),(\\d+),(\\d+)\\),(\\w+),(\\w+),(\\w+),(.*)$";
+		Pattern cellPattern = Pattern.compile(cellFmt);
+		Matcher cellMatcher = cellPattern.matcher(line);
 
-		/* read each cell, one after the other */
-		for (int x = 0; x < getWidth(); x++) {
-			for (int y = 0; y < getHeight(); y++) {
-				BuggleWorldCell cell = new BuggleWorldCell(this, x, y);
+		if (cellMatcher.matches() || buggleMatcher.matches()) {
+			System.out.println("This world is using the new syntax");
+			
+			do {
+				cellMatcher = cellPattern.matcher(line);
+				buggleMatcher = bugglePattern.matcher(line);
+
+				if (buggleMatcher.matches()) { 
+					throw new RuntimeException("Reading buggles is not implemented yet");
+				} else if (cellMatcher.matches()) {
+					/* Get the info */
+					int x=Integer.parseInt( cellMatcher.group(1) );
+					int y=Integer.parseInt( cellMatcher.group(2) );
+					int r=Integer.parseInt( cellMatcher.group(3) );
+					int g=Integer.parseInt( cellMatcher.group(4) );
+					int b=Integer.parseInt( cellMatcher.group(5) );
+					String baggleFlag = cellMatcher.group(6);
+					String topWallFlag = cellMatcher.group(7);
+					String leftWallFlag = cellMatcher.group(8);
+					String content = cellMatcher.group(9);
+
+					/* Make sure that this info makes sense */
+					if (!baggleFlag.equalsIgnoreCase("baggle") && !baggleFlag.equalsIgnoreCase("nobaggle"))
+						throw new BrokenWorldFileException(i18n.tr(
+								"Expecting 'baggle' or 'nobaggle' but got {0} instead",baggleFlag));
+					
+					if (!topWallFlag.equalsIgnoreCase("topwall") && !topWallFlag.equalsIgnoreCase("notopwall"))
+						throw new BrokenWorldFileException(i18n.tr(
+								"Expecting 'topwall' or 'notopwall' but got {0} instead",topWallFlag));
+					
+					if (!leftWallFlag.equalsIgnoreCase("leftwall") && !leftWallFlag.equalsIgnoreCase("noleftwall"))
+						throw new BrokenWorldFileException(i18n.tr(
+								"Expecting 'leftwall' or 'noleftwall' but got {0} instead",leftWallFlag));
+					
+					/* Use the info */
+					BuggleWorldCell cell = new BuggleWorldCell(this, x, y);
+
+					if (baggleFlag.equalsIgnoreCase("baggle"))
+						try {
+							cell.setBaggle(new Baggle(cell));
+						} catch (AlreadyHaveBaggleException e) {
+							throw new BrokenWorldFileException(i18n.tr(
+									"The cell {0},{1} seem to be defined more than once. At least, there is two baggles here, which is not allowed.",x,y));
+						}
+
+					if (topWallFlag.equalsIgnoreCase("topwall"))
+						cell.putTopWall();
+					if (leftWallFlag.equalsIgnoreCase("leftwall"))
+						cell.putLeftWall();		
+
+					cell.setColor(new Color(r,g,b));
+					
+					if (content.length()>0)
+						cell.setContent(content);
+
+					setCell(cell, x, y);
+				} else {
+					throw new BrokenWorldFileException(i18n.tr(
+							"Parse error. I was expecting a cell or a buggle description but got: {0}",line));					
+				}
+				
 				line = reader.readLine();
-				if (line == null) 
-					throw new IOException("File ending before the map was read completely");
+			} while (line != null);
+		} else {
+			System.out.println("This crappy world is using the OLD syntax");
+			/* This world is using the old syntax -- FIXME KILLME after the transition */
+			
+			/* read each cell, one after the other */
+			for (int x = 0; x < getWidth(); x++) {
+				for (int y = 0; y < getHeight(); y++) {
+					BuggleWorldCell cell = new BuggleWorldCell(this, x, y);
+					if (line == null) 
+						throw new IOException("File ending before the map was read completely");
 
-				line = strip(line); // strip '; comment'
+					line = strip(line); // strip '; comment'
 
-				int index1 = line.indexOf("),");
-				int index2 = line.indexOf(',', index1+2);
-				int index3 = line.indexOf(',', index2+1);
-				int index4 = line.length()-2;
 
-				boolean baggleFlag = Boolean.parseBoolean(line.substring(index1+2, index2));
-				boolean topWallFlag = Boolean.parseBoolean(line.substring(index2+1, index3));
-				boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, index4));
-				if (baggleFlag)
-					try {
-						cell.setBaggle(new Baggle(cell));
-					} catch (AlreadyHaveBaggleException e) {
-						e.printStackTrace();
-					}
+
+					int index1 = line.indexOf("),");
+					int index2 = line.indexOf(',', index1+2);
+					int index3 = line.indexOf(',', index2+1);
+					int index4 = line.length()-2;
+
+					boolean baggleFlag = Boolean.parseBoolean(line.substring(index1+2, index2));
+					boolean topWallFlag = Boolean.parseBoolean(line.substring(index2+1, index3));
+					boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, index4));
+					if (baggleFlag)
+						try {
+							cell.setBaggle(new Baggle(cell));
+						} catch (AlreadyHaveBaggleException e) {
+							e.printStackTrace();
+						}
+
 					if (topWallFlag)
 						cell.putTopWall();
 					if (leftWallFlag)
@@ -147,6 +224,8 @@ public class BuggleWorld extends GridWorld {
 					cell.setColor(new Color(r,g,b));
 
 					setCell(cell, x, y);
+					line = reader.readLine();
+				}
 			}
 		}
 	}
@@ -161,17 +240,33 @@ public class BuggleWorld extends GridWorld {
 			for (int y = 0; y < getHeight(); y++) {
 				BuggleWorldCell cell = (BuggleWorldCell) getCell(x, y);
 
-				writer.write("[");
-				Color c = cell.getColor();
-				writer.write("(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue() + ")");
-				writer.write(",");
-				writer.write(Boolean.toString(cell.hasBaggle()));
-				writer.write(",");
-				writer.write(Boolean.toString(cell.hasTopWall()));
-				writer.write(",");
-				writer.write(Boolean.toString(cell.hasLeftWall()));
-				writer.write("] ; cell");
-				writer.write("\n");
+				if ((!cell.getColor().equals(Color.white)) || cell.hasBaggle() || 
+						cell.hasLeftWall() || cell.hasTopWall() || cell.hasContent()
+						) {
+					
+					writer.write("Cell("+x+","+y+"): ");
+					Color c = cell.getColor();
+					writer.write("(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue() + "),");
+					
+					if (cell.hasBaggle()) 
+						writer.write("baggle,");
+					else 
+						writer.write("nobaggle,");
+					
+					if (cell.hasTopWall()) 
+						writer.write("topwall,");
+					else 
+						writer.write("notopwall,");
+
+					if (cell.hasLeftWall()) 
+						writer.write("leftwall,");
+					else 
+						writer.write("noleftwall,");
+					
+					if (cell.hasContent())
+						writer.write(cell.getContent());
+					writer.write("\n");
+				}
 			}
 		}
 	}
