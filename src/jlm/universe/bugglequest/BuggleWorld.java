@@ -58,6 +58,18 @@ public class BuggleWorld extends GridWorld {
 
 		super.reset(initialWorld);
 	}	
+	@Override
+	public void setWidth(int w) {
+		super.setWidth(w);
+		if (selectedCell != null && selectedCell.getX()>=w)
+			selectedCell = null;
+	}
+	@Override
+	public void setHeight(int h) {
+		super.setHeight(h);
+		if (selectedCell != null && selectedCell.getY()>=h)
+			selectedCell = null;
+	}
 
 	@Override
 	public BuggleWorldView getView() {
