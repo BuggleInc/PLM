@@ -162,15 +162,15 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 			@Override
 			public String toString() {
 				topRank = rank;
-				return editor.getWorld().getSelectedCell().hasTopWall()?i18n.tr("Y"):i18n.tr("N");
+				return editor.getWorld().getSelectedCell().hasTopWall()?"Y":"N";
 			}
 			@Override
 			public void setValue(String value) {
-				if (!value.equalsIgnoreCase(i18n.tr("Y")) && !value.equalsIgnoreCase(i18n.tr("N"))) {
-					table.setValueAt(editor.getWorld().getSelectedCell().hasTopWall()?i18n.tr("Y"):i18n.tr("N"),rank,1);
+				if (!value.equalsIgnoreCase("Y") && !value.equalsIgnoreCase("N")) {
+					table.setValueAt(editor.getWorld().getSelectedCell().hasTopWall()?"Y":"N",rank,1);
 					return;
 					
-				} else if (value.equalsIgnoreCase(i18n.tr("Y"))) {
+				} else if (value.equalsIgnoreCase("Y")) {
 					if (!editor.getWorld().getSelectedCell().hasTopWall()) // only update if needed
 						editor.getWorld().getSelectedCell().putTopWall();
 				} else {
@@ -184,15 +184,15 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 			@Override
 			public String toString() {
 				leftRank = rank;
-				return editor.getWorld().getSelectedCell().hasLeftWall()?i18n.tr("Y"):i18n.tr("N");
+				return editor.getWorld().getSelectedCell().hasLeftWall()?"Y":"N";
 			}
 			@Override
 			public void setValue(String value) {
-				if (!value.equalsIgnoreCase(i18n.tr("Y")) && !value.equalsIgnoreCase(i18n.tr("N"))) {
-					table.setValueAt(editor.getWorld().getSelectedCell().hasLeftWall()?i18n.tr("Y"):i18n.tr("N"),rank,1);
+				if (!value.equalsIgnoreCase("Y") && !value.equalsIgnoreCase("N")) {
+					table.setValueAt(editor.getWorld().getSelectedCell().hasLeftWall()?"Y":"N",rank,1);
 					return;
 					
-				} else if (value.equalsIgnoreCase(i18n.tr("Y"))) {
+				} else if (value.equalsIgnoreCase("Y")) {
 					if (!editor.getWorld().getSelectedCell().hasLeftWall()) // only update if needed
 						editor.getWorld().getSelectedCell().putLeftWall();
 				} else {
@@ -216,8 +216,8 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		
 		table.setValueAt(""+selected.getX(),selectedXRank,1);
 		table.setValueAt(""+selected.getY(),selectedYRank,1);
-		table.setValueAt(selected.hasTopWall() ?i18n.tr("Y"):i18n.tr("N"), topRank, 1);
-		table.setValueAt(selected.hasLeftWall()?i18n.tr("Y"):i18n.tr("N"), leftRank,1);
+		table.setValueAt(selected.hasTopWall() ?"Y":"N", topRank, 1);
+		table.setValueAt(selected.hasLeftWall()?"Y":"N", leftRank,1);
 	}
 	@Override
 	public void selectedChanged(int x, int y, Entity ent) {
