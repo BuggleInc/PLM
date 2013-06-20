@@ -273,38 +273,7 @@ public class BuggleWorld extends GridWorld {
 	@Override
 	public String toString() {
 		return super.toString(); 
-		/*	
-		// cell
-		String res = "";
-		for (int j = 0; j < sizeY + 2; j++)
-			res += "-";
-		res += "\n";
-		for (int i = 0; i < sizeX; i++) {
-			res += "|";
-			for (int j = 0; j < sizeY; j++)
-				res += world[i][j].toString();
-			res += "|\n";
-		}
-		for (int j = 0; j < sizeY + 2; j++)
-			res += "-";
-		res += "\n";
-
-		// buggles
-		//res += buggles.toString();
-
-		// buggles
-
-		Iterator<AbstractBuggle> it;
-		for (it = buggles(); it.hasNext();) {
-			AbstractBuggle b = it.next();
-			res += "Buggle: "+b.toString()+"\n";
-		}
-
-
-		return res;
-		 */	
 	}
-
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;
@@ -337,11 +306,10 @@ public class BuggleWorld extends GridWorld {
 		return super.equals(obj);
 	}
 
+	/* adapters to the cells */
 	public BuggleWorldCell getCell(int x, int y) {
 		return (BuggleWorldCell) super.getCell(x, y);
 	}
-
-	/* adapters to the cells */
 	public void setColor(int x, int y, Color c) {
 		getCell(x, y).setColor(c);
 	}
