@@ -9,6 +9,7 @@ import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
+import jlm.universe.bugglequest.AbstractBuggle;
 import jlm.universe.bugglequest.BuggleWorld;
 
 public class Editor {
@@ -21,6 +22,7 @@ public class Editor {
 	
 	public Editor() {
 		createNewMap(10, 10);
+		world.setSelectedCell(0, 0);
 	}
 
 	public void createNewMap(int width, int height) {
@@ -77,10 +79,6 @@ public class Editor {
 		for (EditionListener v : this.editionListeners) 
 			v.setWorld(w);
 	}
-	public void notifySelectedEntity(Entity e) {
-		for (EditionListener el : editionListeners)
-			el.setSelectedEntity(e);
-	}
 	public void notifyWorldEdited(){
 		for (EditionListener el : editionListeners)
 			el.worldEdited();		
@@ -106,6 +104,20 @@ public class Editor {
 
 	public void setSelectedColorNumber(int i) {
 		selectedColorNumber = i;		
+	}
+
+	public void setSelectedCell(int x, int y) {
+		AbstractBuggle buggle = null;
+		for (Entity e : getWorld().getEntities()) {
+			AbstractBuggle b = (AbstractBuggle) e;
+			if (b.getX() == x && b.getY() == y)
+				buggle = b;
+		}
+		getWorld().setSelectedCell(x, y);
+		
+		for (EditionListener el : editionListeners)
+			el.selectedChanged(x, y, buggle);
+		
 	}
 
 }

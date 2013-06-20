@@ -14,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
+import jlm.universe.bugglequest.AbstractBuggle;
+import jlm.universe.bugglequest.BuggleWorld;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -21,6 +23,8 @@ import org.xnap.commons.i18n.I18nFactory;
 public class PropertiesEditor extends JComponent implements EditionListener {
 	private static final long serialVersionUID = 3904327915735497696L;
 	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	
+	private AbstractBuggle selectedBuggle;
 
 	private DefaultTableModel model = new DefaultTableModel() {
 		private static final long serialVersionUID = 1L;
@@ -32,6 +36,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 	private JTable table = new JTable(model);
 
 	private Editor editor; 
+	private int selectedXRank,selectedYRank;
 
 	Vector<JLMProperty> properties = new Vector<JLMProperty>();
 	
@@ -108,10 +113,60 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 				return true;
 			}
 		}});
+
+		/*---------- selected cell ---------------*/
+		model.addRow(new Object[] {i18n.tr("Selected cell X"), new JLMProperty(properties) {
+			@Override
+			public String toString() {
+				selectedXRank = rank;
+				return ""+editor.getWorld().getSelectedCell().getX();
+			}
+			@Override
+			public boolean setValue(String value) {
+				Integer x;
+				try {
+					x = Integer.parseInt(value);
+					if (x>=editor.getWorld().getWidth() || x<0)
+						throw new NumberFormatException("out of world");
+				} catch (NumberFormatException nfe) {
+					table.setValueAt(""+editor.getWorld().getSelectedCell().getX(),rank,1);
+					return false; // silently ignore invalid values
+				}
+				editor.getWorld().setSelectedCell(x, editor.getWorld().getSelectedCell().getY());
+				return true;
+			}
+		}});
+
+		/*---------- selected cell ---------------*/
+		model.addRow(new Object[] {i18n.tr("Selected cell Y"), new JLMProperty(properties) {
+			@Override
+			public String toString() {
+				selectedYRank = rank;
+				return ""+editor.getWorld().getSelectedCell().getY();
+			}
+			@Override
+			public boolean setValue(String value) {
+				Integer y;
+				try {
+					y = Integer.parseInt(value);
+					if (y>=editor.getWorld().getHeight() || y<0)
+						throw new NumberFormatException("out of world");
+				} catch (NumberFormatException nfe) {
+					table.setValueAt(""+editor.getWorld().getSelectedCell().getY(),rank,1);
+					return false; // silently ignore invalid values
+				}
+				editor.getWorld().setSelectedCell(editor.getWorld().getSelectedCell().getX(),y);
+				return true;
+			}
+		}});
+		
 	}
 	@Override
 	public void setWorld(World w) {
+		if (((BuggleWorld) w).getSelectedCell() == null)
+			((BuggleWorld) w).setSelectedCell(0,0);
 		repopulateTable();		
+		
 	}
 	@Override
 	public void worldEdited() {
@@ -119,9 +174,16 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 
 	}
 	@Override
-	public void setSelectedEntity(Entity ent) {
-		// TODO Auto-generated method stub
-
+	public void selectedChanged(int x, int y, Entity ent) {
+		table.setValueAt(""+x,selectedXRank,1);
+		table.setValueAt(""+y,selectedYRank,1);
+		
+		if (selectedBuggle != ent) {
+			selectedBuggle = (AbstractBuggle) ent;
+			repopulateTable();
+		} else {
+			
+		}
 	}
 }
 
@@ -136,12 +198,11 @@ class MyTableModelListener implements TableModelListener {
 		properties = props;
 	}
 	public void tableChanged(TableModelEvent e) {
-		int row = e.getFirstRow(); // selections are SINGLE_SELECTION, so ignore getLastRow
+		int row = e.getFirstRow(); // selections are SINGLE_SELECTION anyway, so ignore getLastRow
 
 		if (e.getType() == TableModelEvent.UPDATE) {
 			for (JLMProperty p : properties) {
 				if (p.rank == row) {
-					System.out.println("Property "+row+" edited. Delegation ongoing.");
 					if (p.setValue((String) table.getModel().getValueAt(row, 1)))
 						editor.getWorld().notifyWorldUpdatesListeners();
 					return;

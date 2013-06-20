@@ -14,8 +14,10 @@ public interface EditionListener {
 	 */
 	void worldEdited();
 	/**
-	 * Event fired when the currently selected entity changes
-	 * @param ent new entity under radar
+	 * Event fired when the currently selection changes
+	 * @param x x-coordinate of selection
+	 * @param y y-coordinate of selection
+	 * @param ent new entity under radar. May be null if there is no entity in selected cell
 	 */
-	void setSelectedEntity(Entity ent);
+	void selectedChanged(int x, int y, Entity ent);
 }

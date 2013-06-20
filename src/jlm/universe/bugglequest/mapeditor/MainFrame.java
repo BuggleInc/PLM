@@ -6,7 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.AbstractAction;
@@ -224,8 +223,6 @@ public class MainFrame extends JFrame {
 				MainFrame.this.path = fc.getSelectedFile().getAbsolutePath();
 				try {
 					editor.loadMap(MainFrame.this.path);
-//				} catch (FileNotFoundException e1) {
-//					JOptionPane.showMessageDialog(null, i18n.tr("{0} not found", path),i18n.tr("File not found"), JOptionPane.ERROR_MESSAGE);
 				} catch (IOException e1) {
 					JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(),i18n.tr("Error while reading {0}",path), JOptionPane.ERROR_MESSAGE);
 				}

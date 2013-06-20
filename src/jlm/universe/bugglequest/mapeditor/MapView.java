@@ -38,7 +38,7 @@ public class MapView extends BuggleWorldView implements EditionListener {
 				int x = (int) ((e.getX() - getPadX()) / getCellWidth());
 				int y = (int) ((e.getY() - getPadY()) / getCellWidth());
 				
-				editor.getWorld().setSelectedCell(x, y);
+				editor.setSelectedCell(x, y);
 				BuggleWorldCell cell = (BuggleWorldCell) editor.getWorld().getSelectedCell();
 				String cmd = editor.getCommand();
 
@@ -104,7 +104,7 @@ public class MapView extends BuggleWorldView implements EditionListener {
 	}
 
 	@Override
-	public void setSelectedEntity(Entity ent) {
+	public void selectedChanged(int x, int y, Entity ent) {
 		/* I'm too lazy to react to this */
 	}
 	
