@@ -21,15 +21,10 @@ public class IslandMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 				
 		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Island", 1, 1);
-		myWorlds[0].readFromFile("lessons/maze/island/IslandMaze");
-		
-		
-		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		myWorlds[1].readFromFile("lessons/maze/island/IslandMaze2");
-		
-		setup(myWorlds);		
+		setup( new World[] {
+				BuggleWorld.readFromFile("lessons/maze/island/IslandMaze"),
+				BuggleWorld.readFromFile("lessons/maze/island/IslandMaze2")
+		});
 	}
 
 	// to shorten loading time	

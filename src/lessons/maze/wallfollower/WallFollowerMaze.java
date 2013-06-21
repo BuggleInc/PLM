@@ -19,16 +19,10 @@ public class WallFollowerMaze extends ExerciseTemplated {
 		super(lesson);
 		tabName = "Escaper";
 				
-		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		
-		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
-		myWorlds[0].readFromFile("lessons/maze/wallfollower/WallFollowerMaze");
-		
-		myWorlds[1] = new BuggleWorld("Labyrinth2", 1, 1); 
-		myWorlds[1].readFromFile("lessons/maze/wallfollower/WallFollowerMaze2");
-		
-		setup(myWorlds);
+		setup(new World[] {
+				BuggleWorld.readFromFile("lessons/maze/wallfollower/WallFollowerMaze"),
+				BuggleWorld.readFromFile("lessons/maze/wallfollower/WallFollowerMaze2")
+		});
 	}
 
 	

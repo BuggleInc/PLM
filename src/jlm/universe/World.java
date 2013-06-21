@@ -199,7 +199,9 @@ public abstract class World {
 	}
 
 	/* IO related */
-	public void readFromFile(String path) throws IOException, BrokenWorldFileException {}
+	public static World readFromFile(String path) throws IOException, BrokenWorldFileException {
+		throw new RuntimeException("This universe does not implement world I/O");
+	}
 
 	public void writeToFile(BufferedWriter f) throws IOException {}
 

@@ -85,12 +85,10 @@ public class BuggleWorld extends GridWorld {
 
 	public boolean easter = false;
 	/* IO related */
-	private String strip(String s) {
-		return s.replaceAll(";.*", "");
-	}
+	public static World readFromFile(String path) throws IOException, BrokenWorldFileException {
 
-	@Override
-	public void readFromFile(String path) throws IOException, BrokenWorldFileException {
+		BuggleWorld res;
+		String name;
 		BufferedReader reader = FileUtils.newFileReader(path, "map", false);
 		
 		/* Get the world name from the first line */
@@ -104,7 +102,7 @@ public class BuggleWorld extends GridWorld {
 		if (!m.find())
 			throw new RuntimeException(Game.i18n.tr(
 					"{0}.map: This file does not seem to be a serialized BuggleWorld (malformated first line: {1})", path, line));
-		setName(m.replaceAll(""));
+		name = m.replaceAll("");
 		
 		/* Get the dimension from the second line that is eg "Size: 20x20" */
 		line = reader.readLine();
@@ -118,9 +116,7 @@ public class BuggleWorld extends GridWorld {
 		int width = Integer.parseInt(m.group(1)); 
 		int height = Integer.parseInt(m.group(2));
 
-		create(width, height);
-		while (!entities.isEmpty())
-			entities.remove(0);
+		res = new BuggleWorld(name, width, height);
 		
 		line = reader.readLine();
 		
@@ -142,7 +138,7 @@ public class BuggleWorld extends GridWorld {
 					int y=Integer.parseInt( buggleMatcher.group(2) );
 					
 					if (x<0 || x > width || y<0 || y>height)
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Cannot put a buggle on coordinate {0},{1}: that's out of the world",x,y));
 					
 					String dirName = buggleMatcher.group(3);
@@ -156,33 +152,33 @@ public class BuggleWorld extends GridWorld {
 					else if (dirName.equalsIgnoreCase("west"))
 						direction = Direction.WEST;
 					else 
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Invalid buggle's direction: {0}", buggleMatcher.group(3)));
 					
 					Color color;
 					try {
 						color = ColorMapper.name2color( buggleMatcher.group(4));
 					} catch (InvalidColorNameException e) {
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Invalid buggle's color name: {0}", buggleMatcher.group(4)));
 					}
 					Color brushColor;
 					try {
 						brushColor = ColorMapper.name2color( buggleMatcher.group(5));
 					} catch (InvalidColorNameException e) {
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Invalid buggle's color name: {0}", buggleMatcher.group(5)));
 					}
-					String name = buggleMatcher.group(6);
+					String buggleName = buggleMatcher.group(6);
 
-					new Buggle(this, name, x, y, direction, color, brushColor);
+					new Buggle(res, buggleName, x, y, direction, color, brushColor);
 				} else if (cellMatcher.matches()) {
 					/* Get the info */
 					int x=Integer.parseInt( cellMatcher.group(1) );
 					int y=Integer.parseInt( cellMatcher.group(2) );
 					
 					if (x<0 || x > width || y<0 || y>height)
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Cannot define a cell on coordinate {0},{1}: that's out of the world",x,y));
 
 					
@@ -196,30 +192,30 @@ public class BuggleWorld extends GridWorld {
 					try {
 						color = ColorMapper.name2color(colorName);
 					} catch (InvalidColorNameException e) {
-						throw new BrokenWorldFileException(i18n.tr("Invalid color name: {0}",colorName));
+						throw new BrokenWorldFileException(Game.i18n.tr("Invalid color name: {0}",colorName));
 					}
 					
 					/* Make sure that this info makes sense */
 					if (!baggleFlag.equalsIgnoreCase("baggle") && !baggleFlag.equalsIgnoreCase("nobaggle"))
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Expecting 'baggle' or 'nobaggle' but got {0} instead",baggleFlag));
 					
 					if (!topWallFlag.equalsIgnoreCase("topwall") && !topWallFlag.equalsIgnoreCase("notopwall"))
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Expecting 'topwall' or 'notopwall' but got {0} instead",topWallFlag));
 					
 					if (!leftWallFlag.equalsIgnoreCase("leftwall") && !leftWallFlag.equalsIgnoreCase("noleftwall"))
-						throw new BrokenWorldFileException(i18n.tr(
+						throw new BrokenWorldFileException(Game.i18n.tr(
 								"Expecting 'leftwall' or 'noleftwall' but got {0} instead",leftWallFlag));
 					
 					/* Use the info */
-					BuggleWorldCell cell = new BuggleWorldCell(this, x, y);
+					BuggleWorldCell cell = new BuggleWorldCell(res, x, y);
 
 					if (baggleFlag.equalsIgnoreCase("baggle"))
 						try {
 							cell.setBaggle(new Baggle(cell));
 						} catch (AlreadyHaveBaggleException e) {
-							throw new BrokenWorldFileException(i18n.tr(
+							throw new BrokenWorldFileException(Game.i18n.tr(
 									"The cell {0},{1} seem to be defined more than once. At least, there is two baggles here, which is not allowed.",x,y));
 						}
 
@@ -233,9 +229,9 @@ public class BuggleWorld extends GridWorld {
 					if (content.length()>0)
 						cell.setContent(content);
 
-					setCell(cell, x, y);
+					res.setCell(cell, x, y);
 				} else {
-					throw new BrokenWorldFileException(i18n.tr(
+					throw new BrokenWorldFileException(Game.i18n.tr(
 							"Parse error. I was expecting a cell or a buggle description but got: {0}",line));					
 				}
 				
@@ -245,13 +241,13 @@ public class BuggleWorld extends GridWorld {
 			System.out.println("Warning, the world "+path+" uses the old syntax\n"+line); /* FIXME Kill this branch after the transition */
 			
 			/* read each cell, one after the other */
-			for (int x = 0; x < getWidth(); x++) {
-				for (int y = 0; y < getHeight(); y++) {
-					BuggleWorldCell cell = new BuggleWorldCell(this, x, y);
+			for (int x = 0; x < res.getWidth(); x++) {
+				for (int y = 0; y < res.getHeight(); y++) {
+					BuggleWorldCell cell = new BuggleWorldCell(res, x, y);
 					if (line == null) 
 						throw new IOException("File ending before the map was read completely");
 
-					line = strip(line); // strip '; comment'
+					line = line.replaceAll(";.*", "");
 
 
 
@@ -287,11 +283,12 @@ public class BuggleWorld extends GridWorld {
 
 					cell.setColor(new Color(r,g,b));
 
-					setCell(cell, x, y);
+					res.setCell(cell, x, y);
 					line = reader.readLine();
 				}
 			}
 		}
+		return res;
 	}
 
 	@Override

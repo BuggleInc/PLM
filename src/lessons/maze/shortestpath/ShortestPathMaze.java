@@ -20,18 +20,11 @@ public class ShortestPathMaze extends ExerciseTemplated {
 		super(lesson);
 		tabName = "JediEscaper";
 				
-		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		
-		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 	
-		myWorlds[0].readFromFile("lessons/maze/shortestpath/WallFollowerMaze");
-        
-		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		myWorlds[1].readFromFile("lessons/maze/shortestpath/PledgeMaze");
-		
+		setup(new World[] {
+				BuggleWorld.readFromFile("lessons/maze/shortestpath/WallFollowerMaze"),
+				BuggleWorld.readFromFile("lessons/maze/shortestpath/PledgeMaze")
+		});
 		//newSourceAliased("lessons.maze.Main","lessons.maze.WallFollowerMaze","Escaper");
-		
-		setup(myWorlds);
 	}
 
 	// to shorten loading time	

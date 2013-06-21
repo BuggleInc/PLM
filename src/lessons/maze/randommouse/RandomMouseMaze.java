@@ -19,16 +19,11 @@ public class RandomMouseMaze extends ExerciseTemplated {
 	public RandomMouseMaze(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		tabName = "RandomMouseMaze";
-				
-		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Swiss cheese", 4, 4); 
-		myWorlds[0].readFromFile("lessons/maze/randommouse/RandomMouseMaze");
 		
-		myWorlds[1] = new BuggleWorld("Blue cheese", 4, 4); 
-		myWorlds[1].readFromFile("lessons/maze/randommouse/RandomMouseMaze2");
-		
-		setup(myWorlds);
+		setup( new World[] {
+				BuggleWorld.readFromFile("lessons/maze/randommouse/RandomMouseMaze"),
+				BuggleWorld.readFromFile("lessons/maze/randommouse/RandomMouseMaze2")
+		});
 	}
 
 	// Skip random solver since it might take too much time to find solution.

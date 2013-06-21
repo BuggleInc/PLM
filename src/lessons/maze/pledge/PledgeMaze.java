@@ -20,15 +20,10 @@ public class PledgeMaze extends ExerciseTemplated {
 		super(lesson);
 		tabName = "Escaper";
 				
-		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Labyrinth", 4, 4); 
-		myWorlds[0].readFromFile("lessons/maze/pledge/PledgeMaze");
-		
-		myWorlds[1] = new BuggleWorld("Trapception", 4, 4); 
-		myWorlds[1].readFromFile("lessons/maze/pledge/PledgeMaze2");
-		
-		setup(myWorlds);
+		setup( new World[] {
+				BuggleWorld.readFromFile("lessons/maze/pledge/PledgeMaze"),	
+				BuggleWorld.readFromFile("lessons/maze/pledge/PledgeMaze2")
+		});
 	}
 
 	// to shorten loading time	

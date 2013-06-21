@@ -4,12 +4,16 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Entity;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
 import jlm.universe.bugglequest.BuggleWorld;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 public class Editor {
 
@@ -18,6 +22,8 @@ public class Editor {
 	private String command = "topwall";
 	private Color selectedColor = Color.blue;
 	private int selectedColorNumber = 1;
+	public I18n	i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", new Locale("fr"), I18nFactory.FALLBACK); // FIXME: ugly: french is hardcoded!!!!!
+
 	
 	public Editor() {
 		createNewMap(10, 10);
@@ -44,7 +50,7 @@ public class Editor {
 
 	public void loadMap(String file) throws IOException {
 		try {
-			this.world.readFromFile(file);
+			world = (BuggleWorld) BuggleWorld.readFromFile(file);
 		} catch (BrokenWorldFileException e) {
 			e.printStackTrace();
 		}
