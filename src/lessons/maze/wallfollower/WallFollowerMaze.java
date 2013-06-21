@@ -1,17 +1,14 @@
 package lessons.maze.wallfollower;
 
-import java.awt.Color;
 import java.io.IOException;
 
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.BrokenWorldFileException;
-import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
-import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
@@ -27,11 +24,9 @@ public class WallFollowerMaze extends ExerciseTemplated {
 		
 		myWorlds[0] = new BuggleWorld("Labyrinth", 1, 1); 
 		myWorlds[0].readFromFile("lessons/maze/wallfollower/WallFollowerMaze");
-		new Buggle(myWorlds[0], "Thésée", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		myWorlds[1] = new BuggleWorld("Labyrinth2", 1, 1); 
 		myWorlds[1].readFromFile("lessons/maze/wallfollower/WallFollowerMaze2");
-		new Buggle(myWorlds[1], "ZoroRorronoa", 7, 10, Direction.NORTH, Color.black, Color.lightGray);
 		
 		setup(myWorlds);
 	}
