@@ -13,6 +13,8 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
+import jlm.core.utils.ColorMapper;
+import jlm.core.utils.InvalidColorNameException;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;

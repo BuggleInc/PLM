@@ -41,6 +41,7 @@ import jlm.core.model.tracking.LocalFileSpy;
 import jlm.core.model.tracking.ProgressSpyListener;
 import jlm.core.ui.MainFrame;
 import jlm.core.ui.ResourcesCache;
+import jlm.core.utils.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;

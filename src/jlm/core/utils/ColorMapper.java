@@ -1,8 +1,9 @@
-package jlm.universe.bugglequest.mapeditor;
+package jlm.core.utils;
 
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 
 public class ColorMapper {
 	static String[] choices = {

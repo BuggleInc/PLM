@@ -3,7 +3,7 @@ package jlm.core.ui;
 import javax.swing.JFrame;
 
 import jlm.core.model.Game;
-import jlm.core.model.FileUtils;
+import jlm.core.utils.FileUtils;
 
 
 public class JavaLearningMachine {

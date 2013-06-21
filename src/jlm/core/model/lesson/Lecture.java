@@ -12,7 +12,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.FileUtils;
+import jlm.core.utils.FileUtils;
 
 /** Represents an element of the pedagogic sequence, be it a lecture or 
  * an exercise. A better name would be useful, but I feel limited in 

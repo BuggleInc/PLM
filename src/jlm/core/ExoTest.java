@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Locale;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
@@ -14,6 +13,7 @@ import jlm.core.model.lesson.Exercise.WorldKind;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
+import jlm.core.utils.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.World;
 import jlm.universe.bat.BatExercise;

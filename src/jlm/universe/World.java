@@ -11,12 +11,12 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.ui.WorldView;
+import jlm.core.utils.FileUtils;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;

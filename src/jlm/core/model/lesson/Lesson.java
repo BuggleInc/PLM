@@ -8,7 +8,7 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jlm.core.model.FileUtils;
+import jlm.core.utils.FileUtils;
 import jlm.universe.BrokenWorldFileException;
 
 

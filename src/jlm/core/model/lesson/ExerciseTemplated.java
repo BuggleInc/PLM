@@ -8,9 +8,9 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.utils.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.World;
 

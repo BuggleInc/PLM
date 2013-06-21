@@ -1,4 +1,4 @@
-package jlm.core.model;
+package jlm.core.utils;
 
 import java.io.BufferedReader;
 import java.io.File;

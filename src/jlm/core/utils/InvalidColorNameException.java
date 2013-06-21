@@ -1,4 +1,4 @@
-package jlm.universe.bugglequest.mapeditor;
+package jlm.core.utils;
 
 public class InvalidColorNameException extends Exception {
 	private static final long serialVersionUID = 1L;

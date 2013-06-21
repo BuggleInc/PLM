@@ -11,9 +11,9 @@ import java.util.regex.Pattern;
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.utils.FileUtils;
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.EntityControlPanel;

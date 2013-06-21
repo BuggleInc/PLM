@@ -5,11 +5,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.HelpAppEngine;
 import jlm.core.model.HelpServer;
 import jlm.core.ui.ResourcesCache;
+import jlm.core.utils.FileUtils;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;

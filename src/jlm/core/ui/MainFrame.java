@@ -32,7 +32,6 @@ import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.HumanLangChangesListener;
 import jlm.core.ProgLangChangesListener;
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.LessonLoadingException;
 import jlm.core.model.ProgrammingLanguage;
@@ -52,6 +51,7 @@ import jlm.core.ui.action.StartExecution;
 import jlm.core.ui.action.StepExecution;
 import jlm.core.ui.action.StopExecution;
 import jlm.core.ui.action.SwitchExo;
+import jlm.core.utils.FileUtils;
 import jlm.universe.World;
 
 import org.xnap.commons.i18n.I18n;
