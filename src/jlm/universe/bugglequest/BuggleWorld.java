@@ -18,6 +18,7 @@ import jlm.core.utils.FileUtils;
 import jlm.core.utils.InvalidColorNameException;
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
+import jlm.universe.Entity;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.GridWorld;
 import jlm.universe.GridWorldCell;
@@ -113,15 +114,17 @@ public class BuggleWorld extends GridWorld {
 		p = Pattern.compile("^Size: (\\d+)x(\\d+)$");
 		m = p.matcher(line);
 		if (!m.find()) 
-			throw new RuntimeException(Game.i18n.tr("{0}.map:1: Expected 'Size: ??x??' but got '{0}'", line));
+			throw new RuntimeException(Game.i18n.tr("{0}.map:1: Expected 'Size: NNxMM' but got '{0}'", line));
 		int width = Integer.parseInt(m.group(1)); 
 		int height = Integer.parseInt(m.group(2));
 
 		create(width, height);
+		while (!entities.isEmpty())
+			entities.remove(0);
 		
 		line = reader.readLine();
 		
-		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): ");
+		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): (\\w+),(\\w+),(\\w+),(.+)$");
 		Matcher buggleMatcher = bugglePattern.matcher(line);
 		String cellFmt = "^Cell\\((\\d+),(\\d+)\\): ([^,]+?),(\\w+),(\\w+),(\\w+),(.*)$";
 		Pattern cellPattern = Pattern.compile(cellFmt);
@@ -135,11 +138,54 @@ public class BuggleWorld extends GridWorld {
 				buggleMatcher = bugglePattern.matcher(line);
 
 				if (buggleMatcher.matches()) { 
-					throw new RuntimeException("Reading buggles is not implemented yet");
+					int x=Integer.parseInt( buggleMatcher.group(1) );
+					int y=Integer.parseInt( buggleMatcher.group(2) );
+					
+					if (x<0 || x > width || y<0 || y>height)
+						throw new BrokenWorldFileException(i18n.tr(
+								"Cannot put a buggle on coordinate {0},{1}: that's out of the world",x,y));
+					
+					String dirName = buggleMatcher.group(3);
+					Direction direction;
+					if (dirName.equalsIgnoreCase("north"))
+						direction = Direction.NORTH;
+					else if (dirName.equalsIgnoreCase("south"))
+						direction = Direction.SOUTH;
+					else if (dirName.equalsIgnoreCase("east"))
+						direction = Direction.EAST;
+					else if (dirName.equalsIgnoreCase("west"))
+						direction = Direction.WEST;
+					else 
+						throw new BrokenWorldFileException(i18n.tr(
+								"Invalid buggle's direction: {0}", buggleMatcher.group(3)));
+					
+					Color color;
+					try {
+						color = ColorMapper.name2color( buggleMatcher.group(4));
+					} catch (InvalidColorNameException e) {
+						throw new BrokenWorldFileException(i18n.tr(
+								"Invalid buggle's color name: {0}", buggleMatcher.group(4)));
+					}
+					Color brushColor;
+					try {
+						brushColor = ColorMapper.name2color( buggleMatcher.group(5));
+					} catch (InvalidColorNameException e) {
+						throw new BrokenWorldFileException(i18n.tr(
+								"Invalid buggle's color name: {0}", buggleMatcher.group(5)));
+					}
+					String name = buggleMatcher.group(6);
+
+					new Buggle(this, name, x, y, direction, color, brushColor);
 				} else if (cellMatcher.matches()) {
 					/* Get the info */
 					int x=Integer.parseInt( cellMatcher.group(1) );
 					int y=Integer.parseInt( cellMatcher.group(2) );
+					
+					if (x<0 || x > width || y<0 || y>height)
+						throw new BrokenWorldFileException(i18n.tr(
+								"Cannot define a cell on coordinate {0},{1}: that's out of the world",x,y));
+
+					
 					String colorName = cellMatcher.group(3);
 					Color color;
 					String baggleFlag = cellMatcher.group(4);
@@ -254,6 +300,26 @@ public class BuggleWorld extends GridWorld {
 		writer.write("BuggleWorld: "+getName() + "\n");
 		writer.write("Size: "+getWidth() + "x"+ getHeight() + "\n");
 
+		for (Entity e : getEntities()) {
+			AbstractBuggle b = (AbstractBuggle) e;
+			writer.write("Buggle("+b.getX()+","+b.getY()+"): ");
+			
+			if (b.getDirection().equals(Direction.NORTH)) 
+				writer.write("north,");
+			if (b.getDirection().equals(Direction.SOUTH)) 
+				writer.write("south,");
+			if (b.getDirection().equals(Direction.EAST)) 
+				writer.write("east,");
+			if (b.getDirection().equals(Direction.WEST)) 
+				writer.write("west,");
+			
+			writer.write(ColorMapper.color2name(b.getColor())+",");
+			writer.write(ColorMapper.color2name(b.getBrushColor())+",");
+			writer.write(b.getName());
+			writer.write("\n");
+		}
+			
+		
 		for (int x = 0; x < getWidth(); x++) {
 			for (int y = 0; y < getHeight(); y++) {
 				BuggleWorldCell cell = (BuggleWorldCell) getCell(x, y);
