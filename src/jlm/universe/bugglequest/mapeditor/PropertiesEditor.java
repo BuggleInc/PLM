@@ -1,6 +1,7 @@
 package jlm.universe.bugglequest.mapeditor;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.util.Vector;
 
@@ -12,6 +13,7 @@ import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 
+import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
@@ -159,6 +161,23 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 				editor.setSelectedCell(editor.getWorld().getSelectedCell().getX(),y);
 			}
 		}});
+		/*---------- Ground color ---------------*/
+		model.addRow(new Object[] {i18n.tr("Ground color (name or r/g/b)"), new JLMProperty(properties) {
+			@Override
+			public String toString() {
+				return ColorMapper.color2name( editor.getWorld().getSelectedCell().getColor() );
+			}
+			@Override
+			public void setValue(String value) {
+				try {
+					Color c = ColorMapper.name2color(value);
+					editor.getWorld().getSelectedCell().setColor(c);
+				} catch (InvalidColorNameException icn) {
+					table.setValueAt(ColorMapper.color2name(editor.getWorld().getSelectedCell().getColor()),rank,1);
+				}
+			}
+		}});
+
 		/*---------- top wall cell ---------------*/
 		model.addRow(new Object[] {i18n.tr("Top wall?"), new JLMProperty(properties) {
 			@Override
@@ -234,7 +253,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		}});
 		
 		if (selectedBuggle != null) {
-			/*---------- have baggle ---------------*/
+			/*---------- Buggle name ---------------*/
 			model.addRow(new Object[] {i18n.tr("Buggle name"), new JLMProperty(properties) {
 				@Override
 				public String toString() {
@@ -243,6 +262,67 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 				@Override
 				public void setValue(String value) {
 					selectedBuggle.setName(value);
+				}
+			}});
+			/*---------- Buggle direction ---------------*/
+			model.addRow(new Object[] {i18n.tr("Buggle direction (N|S|E|W)"), new JLMProperty(properties) {
+				@Override
+				public String toString() {
+					if (selectedBuggle.getDirection().equals(Direction.NORTH)) 
+						return "N";
+					if (selectedBuggle.getDirection().equals(Direction.SOUTH))
+						return "S";
+					if (selectedBuggle.getDirection().equals(Direction.EAST))
+						return "E";
+					if (selectedBuggle.getDirection().equals(Direction.WEST))
+						return "W";
+					return "?";
+				}
+				@Override
+				public void setValue(String value) {
+					if (value.equalsIgnoreCase("N"))
+						selectedBuggle.setDirection(Direction.NORTH);
+					if (value.equalsIgnoreCase("S"))
+						selectedBuggle.setDirection(Direction.SOUTH);
+					if (value.equalsIgnoreCase("E"))
+						selectedBuggle.setDirection(Direction.EAST);
+					if (value.equalsIgnoreCase("W"))
+						selectedBuggle.setDirection(Direction.WEST);
+					else {
+						table.setValueAt(this.toString(),rank,1);
+					}
+				}
+			}});
+			/*---------- Buggle color ---------------*/
+			model.addRow(new Object[] {i18n.tr("Buggle color (name or r/g/b)"), new JLMProperty(properties) {
+				@Override
+				public String toString() {
+					return ColorMapper.color2name( selectedBuggle.getColor() );
+				}
+				@Override
+				public void setValue(String value) {
+					try {
+						Color c = ColorMapper.name2color(value);
+						selectedBuggle.setColor(c);
+					} catch (InvalidColorNameException icn) {
+						table.setValueAt(ColorMapper.color2name(selectedBuggle.getColor()),rank,1);
+					}
+				}
+			}});
+			/*---------- Buggle color ---------------*/
+			model.addRow(new Object[] {i18n.tr("Brush color (name or r/g/b)"), new JLMProperty(properties) {
+				@Override
+				public String toString() {
+					return ColorMapper.color2name( selectedBuggle.getBrushColor() );
+				}
+				@Override
+				public void setValue(String value) {
+					try {
+						Color c = ColorMapper.name2color(value);
+						selectedBuggle.setBrushColor(c);
+					} catch (InvalidColorNameException icn) {
+						table.setValueAt(ColorMapper.color2name(selectedBuggle.getBrushColor()),rank,1);
+					}
 				}
 			}});
 		}
