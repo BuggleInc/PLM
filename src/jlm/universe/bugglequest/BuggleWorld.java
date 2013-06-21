@@ -13,7 +13,9 @@ import javax.script.ScriptException;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.utils.ColorMapper;
 import jlm.core.utils.FileUtils;
+import jlm.core.utils.InvalidColorNameException;
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.EntityControlPanel;
@@ -121,7 +123,7 @@ public class BuggleWorld extends GridWorld {
 		
 		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): ");
 		Matcher buggleMatcher = bugglePattern.matcher(line);
-		String cellFmt = "^Cell\\((\\d+),(\\d+)\\): \\((\\d+),(\\d+),(\\d+)\\),(\\w+),(\\w+),(\\w+),(.*)$";
+		String cellFmt = "^Cell\\((\\d+),(\\d+)\\): ([^,]+?),(\\w+),(\\w+),(\\w+),(.*)$";
 		Pattern cellPattern = Pattern.compile(cellFmt);
 		Matcher cellMatcher = cellPattern.matcher(line);
 
@@ -138,14 +140,19 @@ public class BuggleWorld extends GridWorld {
 					/* Get the info */
 					int x=Integer.parseInt( cellMatcher.group(1) );
 					int y=Integer.parseInt( cellMatcher.group(2) );
-					int r=Integer.parseInt( cellMatcher.group(3) );
-					int g=Integer.parseInt( cellMatcher.group(4) );
-					int b=Integer.parseInt( cellMatcher.group(5) );
-					String baggleFlag = cellMatcher.group(6);
-					String topWallFlag = cellMatcher.group(7);
-					String leftWallFlag = cellMatcher.group(8);
-					String content = cellMatcher.group(9);
-
+					String colorName = cellMatcher.group(3);
+					Color color;
+					String baggleFlag = cellMatcher.group(4);
+					String topWallFlag = cellMatcher.group(5);
+					String leftWallFlag = cellMatcher.group(6);
+					String content = cellMatcher.group(7);
+					
+					try {
+						color = ColorMapper.name2color(colorName);
+					} catch (InvalidColorNameException e) {
+						throw new BrokenWorldFileException(i18n.tr("Invalid color name: {0}",colorName));
+					}
+					
 					/* Make sure that this info makes sense */
 					if (!baggleFlag.equalsIgnoreCase("baggle") && !baggleFlag.equalsIgnoreCase("nobaggle"))
 						throw new BrokenWorldFileException(i18n.tr(
@@ -175,7 +182,7 @@ public class BuggleWorld extends GridWorld {
 					if (leftWallFlag.equalsIgnoreCase("leftwall"))
 						cell.putLeftWall();		
 
-					cell.setColor(new Color(r,g,b));
+					cell.setColor(color);
 					
 					if (content.length()>0)
 						cell.setContent(content);
@@ -189,7 +196,7 @@ public class BuggleWorld extends GridWorld {
 				line = reader.readLine();
 			} while (line != null);
 		} else {
-			System.out.println("Warning, the world "+path+" uses the old syntax"); /* FIXME Kill this branch after the transition */
+			System.out.println("Warning, the world "+path+" uses the old syntax\n"+line); /* FIXME Kill this branch after the transition */
 			
 			/* read each cell, one after the other */
 			for (int x = 0; x < getWidth(); x++) {
@@ -256,8 +263,7 @@ public class BuggleWorld extends GridWorld {
 						) {
 					
 					writer.write("Cell("+x+","+y+"): ");
-					Color c = cell.getColor();
-					writer.write("(" + c.getRed() + "," + c.getGreen() + "," + c.getBlue() + "),");
+					writer.write(ColorMapper.color2name(cell.getColor()));
 					
 					if (cell.hasBaggle()) 
 						writer.write("baggle,");
