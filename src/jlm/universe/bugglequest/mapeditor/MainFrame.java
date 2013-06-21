@@ -81,6 +81,7 @@ public class MainFrame extends JFrame {
 		JToggleButton leftButton = createButton("leftwall"); 
 		JToggleButton baggleButton = createButton("baggle");
 		JToggleButton buggleButton = createButton("buggle");
+		JToggleButton nobuggleButton = createButton("nobuggle");
 		JToggleButton textButton = createButton("text");
 		JToggleButton colorButton = createButton("colors",new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -113,6 +114,7 @@ public class MainFrame extends JFrame {
 		toolBar.add(leftButton);
 		toolBar.add(baggleButton);
 		toolBar.add(buggleButton);
+		toolBar.add(nobuggleButton);
 		toolBar.add(colorButton);
 		toolBar.add(textButton);
 
@@ -121,6 +123,7 @@ public class MainFrame extends JFrame {
 		tools.add(leftButton);
 		tools.add(baggleButton);
 		tools.add(buggleButton);
+		tools.add(nobuggleButton);
 		tools.add(colorButton);
 		tools.add(textButton);
 

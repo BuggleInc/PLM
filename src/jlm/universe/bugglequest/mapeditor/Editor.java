@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Entity;
-import jlm.universe.IWorldView;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
 import jlm.universe.bugglequest.BuggleWorld;
@@ -32,17 +31,6 @@ public class Editor {
 			v.setWorld(this.world);
 		}
 				
-		this.world.addWorldUpdatesListener(new IWorldView() {
-			@Override
-			public void worldHasChanged() {
-				notifyWorldEdited();
-			}
-
-			@Override
-			public void worldHasMoved() {
-				notifyWorldEdited();
-			}
-		});
 		notifySetWorld(world);
 	}
 
@@ -115,6 +103,14 @@ public class Editor {
 		}
 		getWorld().setSelectedCell(x, y);
 		
+		for (EditionListener el : editionListeners)
+			el.selectedChanged(x, y, buggle);
+	}
+	public void setSelectedEntity(AbstractBuggle buggle) {
+		int x = getWorld().getSelectedCell().getX();
+		int y = getWorld().getSelectedCell().getY();
+		
+		getWorld().setSelectedEntity(buggle);
 		for (EditionListener el : editionListeners)
 			el.selectedChanged(x, y, buggle);
 		

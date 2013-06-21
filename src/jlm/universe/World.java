@@ -104,6 +104,11 @@ public abstract class World {
 		entities.add(b);
 		notifyEntityUpdateListeners();
 	}
+	public void removeEntity(Entity b) {
+		if (!entities.remove(b)) 
+			System.out.println("Ignoring a request to remove an unknown entity");
+		notifyEntityUpdateListeners();		
+	}
 
 	public void emptyEntities() {
 		entities = new ArrayList<Entity>();

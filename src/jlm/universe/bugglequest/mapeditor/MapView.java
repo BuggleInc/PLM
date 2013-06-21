@@ -20,16 +20,13 @@ public class MapView extends BuggleWorldView implements EditionListener {
 
 	private static final long serialVersionUID = -8303474674104829723L;
 	private Editor editor;
-
+	private int buggleCount = 0;
+	
 	public MapView(Editor e) {
 		super(e.getWorld());
 		this.editor = e;
 
 		MouseListener mouseListener = new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				//				handleMouseEvt(e);
-			}
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				handleMouseEvt(e);
@@ -77,6 +74,7 @@ public class MapView extends BuggleWorldView implements EditionListener {
 						return;
 					cell.emptyContent();
 					cell.addContent(inputValue);
+					
 				} else if (cmd.equals("buggle")) {
 					Buggle thebuggle = null;
 					for (Entity ent:editor.getWorld().getEntities()) {
@@ -87,11 +85,25 @@ public class MapView extends BuggleWorldView implements EditionListener {
 						}
 					}
 					if (thebuggle == null) {
-						editor.getWorld().addEntity(new Buggle(editor.getWorld(),"buggle"+editor.getWorld().getEntityCount(),
-								x,y,Direction.NORTH,Color.black, Color.black));
-					} else {
-						editor.getWorld().setSelectedEntity(thebuggle);
+						thebuggle = new Buggle(editor.getWorld(),"buggle"+(++buggleCount), x,y,Direction.NORTH,Color.black, Color.black);
+					} 
+					editor.setSelectedEntity(thebuggle);
+				} else if (cmd.equals("nobuggle")) {
+					Buggle thebuggle = null;
+					for (Entity ent:editor.getWorld().getEntities()) {
+						Buggle b = (Buggle) ent;
+						if (b.getX() == x && b.getY() == y) {
+							thebuggle = b;
+							break;
+						}
 					}
+					if (thebuggle != null) {
+						editor.getWorld().removeEntity(thebuggle);
+						if (editor.getWorld().getEntities().contains(thebuggle))
+							System.err.println("The entity is still in "+editor.getWorld().getEntities().indexOf(thebuggle)+"!!");
+
+					}
+					editor.setSelectedEntity(null);
 				}
 			}
 		};

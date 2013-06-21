@@ -233,6 +233,19 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 			}
 		}});
 		
+		if (selectedBuggle != null) {
+			/*---------- have baggle ---------------*/
+			model.addRow(new Object[] {i18n.tr("Buggle name"), new JLMProperty(properties) {
+				@Override
+				public String toString() {
+					return selectedBuggle.getName();
+				}
+				@Override
+				public void setValue(String value) {
+					selectedBuggle.setName(value);
+				}
+			}});
+		}
 	}
 	@Override
 	public void setWorld(World w) {
@@ -253,14 +266,8 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 	}
 	@Override
 	public void selectedChanged(int x, int y, Entity ent) {
-		worldEdited();
-		
-		if (selectedBuggle != ent) {
-			selectedBuggle = (AbstractBuggle) ent;
-			repopulateTable();
-		} else {
-			
-		}
+		selectedBuggle = (AbstractBuggle) ent;
+		repopulateTable();
 	}
 }
 
@@ -281,13 +288,10 @@ class MyTableModelListener implements TableModelListener {
 		ongoing = true;
 		int row = e.getFirstRow(); // selections are SINGLE_SELECTION anyway, so ignore getLastRow
 
-		if (e.getType() == TableModelEvent.UPDATE) {
-			for (JLMProperty p : properties) {
-				if (p.rank == row) {
+		if (e.getType() == TableModelEvent.UPDATE) 
+			for (JLMProperty p : properties) 
+				if (p.rank == row) 
 					p.setValue(""+ table.getModel().getValueAt(row, 1));
-				}
-			}
-		}
 		ongoing = false;
 	}
 }
