@@ -97,10 +97,6 @@ public abstract class Lesson {
 	}
 
 	Lecture rootExo, lastAdded;
-	@Deprecated
-	public Lecture getRootExo() {
-		return rootExo;
-	}
 	public Vector<Lecture> getRootLectures() {
 		return rootLectures;
 	}
@@ -152,10 +148,6 @@ public abstract class Lesson {
 				return l;
 		}
 		return null;
-	}
-	@Deprecated
-	public Lecture getExercise(int index) { // FIXME: killme
-		return this.lectures.get(index); 
 	}
 	public int getExerciseCount() {
 		return this.lectures.size();
