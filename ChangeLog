@@ -1,8 +1,9 @@
-20130619:
+20130621:
   * Improve the BuggleWorld I/O and the BuggleWorldEditor:
     - better detection and error messages of invalid map files
-    - the world's name can now be modified in the editor
-    - the world dimensions can be modified in the editor
+    - every world's characteristic can be edited in the editor
+    - buggles are read from/saved into world files
+  * Update all existing worlds to this formalism
 20130616:
   * RELEASE 1.98
   * Squeeze a bit our sources so that we can package it for Debian
