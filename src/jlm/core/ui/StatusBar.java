@@ -109,10 +109,6 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	@Override
 	public void stateChanged(Game.GameState type) {
 		switch (type) {
-		case LOADING:
-			statusMessageLabel.setText(i18n.tr("Loading"));
-			busyIconTimer.start();
-			break;
 		case SAVING:
 			statusMessageLabel.setText(i18n.tr("Saving"));
 			busyIconTimer.start();
@@ -139,6 +135,10 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			game.statusRootSet(i18n.tr("Playing demo "));
 			busyIconTimer.start();
 			break;		
+		case LOADING:
+			game.statusRootSet(i18n.tr("Loading "));
+			busyIconTimer.start();
+			break;
 		default:
 			statusMessageLabel.setText("");
 			statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
@@ -146,8 +146,10 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	}
 
 	@Override
-	public void stateChanged(String txt) {
-		statusMessageLabel.setText(txt);		
+	public void stateChanged(final String txt) {
+		statusMessageLabel.setText(txt);
+		//RepaintManager.currentManager(statusMessageLabel).markCompletelyDirty(statusMessageLabel);
+		//RepaintManager.currentManager(statusMessageLabel).paintDirtyRegions();
 	}
 
 	public void setupLanguages(Lecture lecture) {

@@ -168,10 +168,11 @@ public class Game implements IWorldView {
 	 */
 	
 	public Lesson switchLesson(String lessonName) {
-		statusArgAdd("Load lesson " + lessonName);
-		
+		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
+		statusArgAdd(lessonName);
+		
 		if (lesson == null) { // we have to load it 
 			try {
 				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
@@ -200,7 +201,9 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		}
 		setCurrentLesson(lesson);
-		statusArgRemove("Load lesson "+lessonName);
+		
+		this.setState(GameState.LOADING_DONE);
+
 		return lesson;
 	}
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
