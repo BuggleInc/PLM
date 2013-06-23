@@ -690,18 +690,19 @@ public class Game implements IWorldView {
 		}
 	}
 	private void statusChanged() {
-		String str = stateTxt;
+		StringBuffer sb = new StringBuffer(stateTxt);
 		boolean first = true;
 		for (String s:statusArgs) {
 			if (first)
 				first = false;
 			else
-				str += ", ";
-			str+= s;
+				sb.append(", ");
+			sb.append(s);
 		}
-		for (StatusStateListener l : this.statusStateListeners) {
-			l.stateChanged(str);
-		}
+		
+		String msg = first ? "" : sb.toString(); // remove everything if no argument at all 
+		for (StatusStateListener l : this.statusStateListeners) 
+			l.stateChanged(msg);
 	}
 	public void setLocale(Locale lang) {
 		FileUtils.setLocale(lang);
