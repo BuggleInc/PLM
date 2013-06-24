@@ -21,8 +21,8 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 		nameOfCorrectionEntity = "lessons.maze.wallfollower.WallFollowerMazeEntity"; // Use the same entity than in previous exercise
 		
 		setup(new World[] {
-				BuggleWorld.readFromFile("lessons/maze/wallfindfollow/WallFollowerMaze"),
-				BuggleWorld.readFromFile("lessons/maze/wallfindfollow/WallFollowerMaze2")
+				BuggleWorld.newFromFile("lessons/maze/wallfindfollow/WallFollowerMaze"),
+				BuggleWorld.newFromFile("lessons/maze/wallfindfollow/WallFollowerMaze2")
 				
 		});
 	}

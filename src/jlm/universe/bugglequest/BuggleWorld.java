@@ -85,7 +85,16 @@ public class BuggleWorld extends GridWorld {
 
 	public boolean easter = false;
 	/* IO related */
-	public static World readFromFile(String path) throws IOException, BrokenWorldFileException {
+	@Override
+	public boolean haveIO() {
+		return true;
+	}
+	public static World newFromFile(String path) throws IOException, BrokenWorldFileException {
+		BuggleWorld res = new BuggleWorld("toto", 1, 1);
+		return res.readFromFile(path);
+	}
+	@Override
+	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
 
 		BuggleWorld res;
 		String name;

@@ -199,7 +199,11 @@ public abstract class World {
 	}
 
 	/* IO related */
-	public static World readFromFile(String path) throws IOException, BrokenWorldFileException {
+	/** Returns whether this universe implements world I/O */
+	public boolean haveIO() { 
+		return false; 
+	}
+	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
 		throw new RuntimeException("This universe does not implement world I/O");
 	}
 

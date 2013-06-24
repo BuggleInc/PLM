@@ -22,8 +22,8 @@ public class IslandMaze extends ExerciseTemplated {
 				
 		/* Create initial situation */
 		setup( new World[] {
-				BuggleWorld.readFromFile("lessons/maze/island/IslandMaze"),
-				BuggleWorld.readFromFile("lessons/maze/island/IslandMaze2")
+				BuggleWorld.newFromFile("lessons/maze/island/IslandMaze"),
+				BuggleWorld.newFromFile("lessons/maze/island/IslandMaze2")
 		});
 	}
 

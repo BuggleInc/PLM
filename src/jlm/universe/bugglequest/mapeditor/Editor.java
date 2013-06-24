@@ -50,7 +50,7 @@ public class Editor {
 
 	public void loadMap(String file) throws IOException {
 		try {
-			world = (BuggleWorld) BuggleWorld.readFromFile(file);
+			world = (BuggleWorld) BuggleWorld.newFromFile(file); 
 		} catch (BrokenWorldFileException e) {
 			e.printStackTrace();
 		}

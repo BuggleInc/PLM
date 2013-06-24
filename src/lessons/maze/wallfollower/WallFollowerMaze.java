@@ -20,8 +20,8 @@ public class WallFollowerMaze extends ExerciseTemplated {
 		tabName = "Escaper";
 				
 		setup(new World[] {
-				BuggleWorld.readFromFile("lessons/maze/wallfollower/WallFollowerMaze"),
-				BuggleWorld.readFromFile("lessons/maze/wallfollower/WallFollowerMaze2")
+				BuggleWorld.newFromFile("lessons/maze/wallfollower/WallFollowerMaze"),
+				BuggleWorld.newFromFile("lessons/maze/wallfollower/WallFollowerMaze2")
 		});
 	}
 
