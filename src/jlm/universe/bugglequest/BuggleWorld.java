@@ -326,7 +326,7 @@ public class BuggleWorld extends GridWorld {
 						) {
 					
 					writer.write("Cell("+x+","+y+"): ");
-					writer.write(ColorMapper.color2name(cell.getColor()));
+					writer.write(ColorMapper.color2name(cell.getColor())+",");
 					
 					if (cell.hasBaggle()) 
 						writer.write("baggle,");
