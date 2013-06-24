@@ -3,7 +3,10 @@
     - better detection and error messages of invalid map files
     - every world's characteristic can be edited in the editor
     - buggles are read from/saved into world files
-  * Update all existing worlds to this formalism
+  * Update all existing worlds on disk to this format
+  * Speedup the lesson loading with a cache of answer worlds:
+    - If a relevant .map file exists, don't execute the answer entity
+    - If not, save the .map file after execution for the next time
 20130616:
   * RELEASE 1.98
   * Squeeze a bit our sources so that we can package it for Debian
