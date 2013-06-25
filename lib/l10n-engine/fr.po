@@ -53,7 +53,7 @@ msgstr ""
 #: src/jlm/core/model/lesson/Exercise.java:77
 #, java-format
 msgid "The world ''{0}'' differs"
-msgstr ""
+msgstr "Le monde ''{0}'' diffère"
 
 #: src/jlm/core/ui/AboutJLMDialog.java:34
 msgid "About JLM dialogTitle"
@@ -365,7 +365,7 @@ msgstr "    Sa couleur est {0} ; attendu : {1}.\n"
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:431
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    La couleur de son pinceau est {0} ; attendu : {1}\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:433
 msgid "    It should not carry that baggle.\n"
@@ -644,8 +644,9 @@ msgid "mark"
 msgstr "marquer"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:222
+#, fuzzy
 msgid "Wall hugging error"
-msgstr ""
+msgstr "Erreur lors du suivi d'un mur"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:223
 msgid "Your buggle has collided with a wall, it hurts a lot ! ='("
