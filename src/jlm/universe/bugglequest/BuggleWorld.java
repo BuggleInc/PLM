@@ -135,168 +135,115 @@ public class BuggleWorld extends GridWorld {
 		Pattern cellPattern = Pattern.compile(cellFmt);
 		Matcher cellMatcher = cellPattern.matcher(line);
 
-		if (cellMatcher.matches() || buggleMatcher.matches()) {
-			/* This world is using the new syntax */
-			
-			do {
-				cellMatcher = cellPattern.matcher(line);
-				buggleMatcher = bugglePattern.matcher(line);
+		do {
+			cellMatcher = cellPattern.matcher(line);
+			buggleMatcher = bugglePattern.matcher(line);
 
-				if (buggleMatcher.matches()) { 
-					int x=Integer.parseInt( buggleMatcher.group(1) );
-					int y=Integer.parseInt( buggleMatcher.group(2) );
-					
-					if (x<0 || x > width || y<0 || y>height)
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Cannot put a buggle on coordinate {0},{1}: that's out of the world",x,y));
-					
-					String dirName = buggleMatcher.group(3);
-					Direction direction;
-					if (dirName.equalsIgnoreCase("north"))
-						direction = Direction.NORTH;
-					else if (dirName.equalsIgnoreCase("south"))
-						direction = Direction.SOUTH;
-					else if (dirName.equalsIgnoreCase("east"))
-						direction = Direction.EAST;
-					else if (dirName.equalsIgnoreCase("west"))
-						direction = Direction.WEST;
-					else 
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Invalid buggle's direction: {0}", buggleMatcher.group(3)));
-					
-					Color color;
-					try {
-						color = ColorMapper.name2color( buggleMatcher.group(4));
-					} catch (InvalidColorNameException e) {
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Invalid buggle's color name: {0}", buggleMatcher.group(4)));
-					}
-					Color brushColor;
-					try {
-						brushColor = ColorMapper.name2color( buggleMatcher.group(5));
-					} catch (InvalidColorNameException e) {
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Invalid buggle's color name: {0}", buggleMatcher.group(5)));
-					}
-					String buggleName = buggleMatcher.group(6);
+			if (buggleMatcher.matches()) { 
+				int x=Integer.parseInt( buggleMatcher.group(1) );
+				int y=Integer.parseInt( buggleMatcher.group(2) );
 
-					new Buggle(res, buggleName, x, y, direction, color, brushColor);
-				} else if (cellMatcher.matches()) {
-					/* Get the info */
-					int x=Integer.parseInt( cellMatcher.group(1) );
-					int y=Integer.parseInt( cellMatcher.group(2) );
-					
-					if (x<0 || x > width || y<0 || y>height)
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Cannot define a cell on coordinate {0},{1}: that's out of the world",x,y));
-
-					
-					String colorName = cellMatcher.group(3);
-					Color color;
-					String baggleFlag = cellMatcher.group(4);
-					String topWallFlag = cellMatcher.group(5);
-					String leftWallFlag = cellMatcher.group(6);
-					String content = cellMatcher.group(7);
-					
-					try {
-						color = ColorMapper.name2color(colorName);
-					} catch (InvalidColorNameException e) {
-						throw new BrokenWorldFileException(Game.i18n.tr("Invalid color name: {0}",colorName));
-					}
-					
-					/* Make sure that this info makes sense */
-					if (!baggleFlag.equalsIgnoreCase("baggle") && !baggleFlag.equalsIgnoreCase("nobaggle"))
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Expecting 'baggle' or 'nobaggle' but got {0} instead",baggleFlag));
-					
-					if (!topWallFlag.equalsIgnoreCase("topwall") && !topWallFlag.equalsIgnoreCase("notopwall"))
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Expecting 'topwall' or 'notopwall' but got {0} instead",topWallFlag));
-					
-					if (!leftWallFlag.equalsIgnoreCase("leftwall") && !leftWallFlag.equalsIgnoreCase("noleftwall"))
-						throw new BrokenWorldFileException(Game.i18n.tr(
-								"Expecting 'leftwall' or 'noleftwall' but got {0} instead",leftWallFlag));
-					
-					/* Use the info */
-					BuggleWorldCell cell = new BuggleWorldCell(res, x, y);
-
-					if (baggleFlag.equalsIgnoreCase("baggle"))
-						try {
-							cell.setBaggle(new Baggle(cell));
-						} catch (AlreadyHaveBaggleException e) {
-							throw new BrokenWorldFileException(Game.i18n.tr(
-									"The cell {0},{1} seem to be defined more than once. At least, there is two baggles here, which is not allowed.",x,y));
-						}
-
-					if (topWallFlag.equalsIgnoreCase("topwall"))
-						cell.putTopWall();
-					if (leftWallFlag.equalsIgnoreCase("leftwall"))
-						cell.putLeftWall();		
-
-					cell.setColor(color);
-					
-					if (content.length()>0)
-						cell.setContent(content);
-
-					res.setCell(cell, x, y);
-				} else {
+				if (x<0 || x > width || y<0 || y>height)
 					throw new BrokenWorldFileException(Game.i18n.tr(
-							"Parse error. I was expecting a cell or a buggle description but got: {0}",line));					
+							"Cannot put a buggle on coordinate {0},{1}: that's out of the world",x,y));
+
+				String dirName = buggleMatcher.group(3);
+				Direction direction;
+				if (dirName.equalsIgnoreCase("north"))
+					direction = Direction.NORTH;
+				else if (dirName.equalsIgnoreCase("south"))
+					direction = Direction.SOUTH;
+				else if (dirName.equalsIgnoreCase("east"))
+					direction = Direction.EAST;
+				else if (dirName.equalsIgnoreCase("west"))
+					direction = Direction.WEST;
+				else 
+					throw new BrokenWorldFileException(Game.i18n.tr(
+							"Invalid buggle's direction: {0}", buggleMatcher.group(3)));
+
+				Color color;
+				try {
+					color = ColorMapper.name2color( buggleMatcher.group(4));
+				} catch (InvalidColorNameException e) {
+					throw new BrokenWorldFileException(Game.i18n.tr(
+							"Invalid buggle's color name: {0}", buggleMatcher.group(4)));
 				}
-				
-				line = reader.readLine();
-			} while (line != null);
-		} else {
-			System.out.println("Warning, the world "+path+" uses the old syntax\n"+line); /* FIXME Kill this branch after the transition */
-			
-			/* read each cell, one after the other */
-			for (int x = 0; x < res.getWidth(); x++) {
-				for (int y = 0; y < res.getHeight(); y++) {
-					BuggleWorldCell cell = new BuggleWorldCell(res, x, y);
-					if (line == null) 
-						throw new IOException("File ending before the map was read completely");
-
-					line = line.replaceAll(";.*", "");
-
-
-
-					int index1 = line.indexOf("),");
-					int index2 = line.indexOf(',', index1+2);
-					int index3 = line.indexOf(',', index2+1);
-					int index4 = line.length()-2;
-
-					boolean baggleFlag = Boolean.parseBoolean(line.substring(index1+2, index2));
-					boolean topWallFlag = Boolean.parseBoolean(line.substring(index2+1, index3));
-					boolean leftWallFlag = Boolean.parseBoolean(line.substring(index3+1, index4));
-					if (baggleFlag)
-						try {
-							cell.setBaggle(new Baggle(cell));
-						} catch (AlreadyHaveBaggleException e) {
-							e.printStackTrace();
-						}
-
-					if (topWallFlag)
-						cell.putTopWall();
-					if (leftWallFlag)
-						cell.putLeftWall();		
-
-					/* parse color */
-					String s =line.substring(1, index1+1); 
-					index1 = s.indexOf(",");
-					index2 = s.indexOf(',', index1+1);
-					index3 = s.length()-1;
-
-					int r = Integer.parseInt(s.substring(1, index1));
-					int g = Integer.parseInt(s.substring(index1+1, index2));
-					int b = Integer.parseInt(s.substring(index2+1, index3));
-
-					cell.setColor(new Color(r,g,b));
-
-					res.setCell(cell, x, y);
-					line = reader.readLine();
+				Color brushColor;
+				try {
+					brushColor = ColorMapper.name2color( buggleMatcher.group(5));
+				} catch (InvalidColorNameException e) {
+					throw new BrokenWorldFileException(Game.i18n.tr(
+							"Invalid buggle's color name: {0}", buggleMatcher.group(5)));
 				}
+				String buggleName = buggleMatcher.group(6);
+
+				new Buggle(res, buggleName, x, y, direction, color, brushColor);
+			} else if (cellMatcher.matches()) {
+				/* Get the info */
+				int x=Integer.parseInt( cellMatcher.group(1) );
+				int y=Integer.parseInt( cellMatcher.group(2) );
+
+				if (x<0 || x > width || y<0 || y>height)
+					throw new BrokenWorldFileException(Game.i18n.tr(
+							"Cannot define a cell on coordinate {0},{1}: that's out of the world",x,y));
+
+
+				String colorName = cellMatcher.group(3);
+				Color color;
+				String baggleFlag = cellMatcher.group(4);
+				String topWallFlag = cellMatcher.group(5);
+				String leftWallFlag = cellMatcher.group(6);
+				String content = cellMatcher.group(7);
+
+				try {
+					color = ColorMapper.name2color(colorName);
+				} catch (InvalidColorNameException e) {
+					throw new BrokenWorldFileException(Game.i18n.tr("Invalid color name: {0}",colorName));
+				}
+
+				/* Make sure that this info makes sense */
+				if (!baggleFlag.equalsIgnoreCase("baggle") && !baggleFlag.equalsIgnoreCase("nobaggle"))
+					throw new BrokenWorldFileException(Game.i18n.tr(
+							"Expecting 'baggle' or 'nobaggle' but got {0} instead",baggleFlag));
+
+				if (!topWallFlag.equalsIgnoreCase("topwall") && !topWallFlag.equalsIgnoreCase("notopwall"))
+					throw new BrokenWorldFileException(Game.i18n.tr(
+							"Expecting 'topwall' or 'notopwall' but got {0} instead",topWallFlag));
+
+				if (!leftWallFlag.equalsIgnoreCase("leftwall") && !leftWallFlag.equalsIgnoreCase("noleftwall"))
+					throw new BrokenWorldFileException(Game.i18n.tr(
+							"Expecting 'leftwall' or 'noleftwall' but got {0} instead",leftWallFlag));
+
+				/* Use the info */
+				BuggleWorldCell cell = new BuggleWorldCell(res, x, y);
+
+				if (baggleFlag.equalsIgnoreCase("baggle"))
+					try {
+						cell.setBaggle(new Baggle(cell));
+					} catch (AlreadyHaveBaggleException e) {
+						throw new BrokenWorldFileException(Game.i18n.tr(
+								"The cell {0},{1} seem to be defined more than once. At least, there is two baggles here, which is not allowed.",x,y));
+					}
+
+				if (topWallFlag.equalsIgnoreCase("topwall"))
+					cell.putTopWall();
+				if (leftWallFlag.equalsIgnoreCase("leftwall"))
+					cell.putLeftWall();		
+
+				cell.setColor(color);
+
+				if (content.length()>0)
+					cell.setContent(content);
+
+				res.setCell(cell, x, y);
+			} else {
+				throw new BrokenWorldFileException(Game.i18n.tr(
+						"Parse error. I was expecting a cell or a buggle description but got: {0}",line));					
 			}
-		}
+
+			line = reader.readLine();
+		} while (line != null);
+
 		return res;
 	}
 
