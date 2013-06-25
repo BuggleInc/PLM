@@ -53,7 +53,7 @@ msgstr ""
 #: src/jlm/core/model/lesson/Exercise.java:77
 #, java-format
 msgid "The world ''{0}'' differs"
-msgstr ""
+msgstr "Le monde ''{0}'' diffère"
 
 #: src/jlm/core/ui/AboutJLMDialog.java:34
 msgid "About JLM dialogTitle"
@@ -260,10 +260,6 @@ msgid "Type your code here"
 msgstr "Composer votre code ici"
 
 #: src/jlm/core/ui/StatusBar.java:113
-msgid "Loading"
-msgstr "Chargement"
-
-#: src/jlm/core/ui/StatusBar.java:117
 msgid "Saving"
 msgstr "Sauvegarde"
 
@@ -278,6 +274,11 @@ msgstr "Exécution de "
 #: src/jlm/core/ui/StatusBar.java:139
 msgid "Playing demo "
 msgstr "Exécution de la démo "
+
+#: src/jlm/core/ui/StatusBar.java:139
+#, fuzzy
+msgid "Loading "
+msgstr "Chargement"
 
 #: src/jlm/core/ui/action/HelpMe.java:37
 msgid "Cancel call"
@@ -344,43 +345,43 @@ msgstr "Accéder à un autre exercice"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:418
 msgid "Its value is 'null', which is never good."
-msgstr ""
+msgstr "Sa valeur est 'null', ce qui n'est jamais bon."
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:425
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
-msgstr ""
+msgstr "    Sa position est ({0},{1}) ; attendu : ({2},{3}).\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:427
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    Sa direction est {0} ; attendu : {1}.\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:429
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    Sa couleur est {0} ; attendu : {1}.\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:431
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
-msgstr ""
+msgstr "    La couleur de son pinceau est {0} ; attendu : {1}\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:433
 msgid "    It should not carry that baggle.\n"
-msgstr ""
+msgstr "    Il de devrait pas porter de baggle.\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:435
 msgid "    It is not carrying any baggle.\n"
-msgstr ""
+msgstr "    Il ne porte pas de baggle.\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:437
 msgid "    It encountered an issue, such as bumping into a wall.\n"
-msgstr ""
+msgstr "    Il a eu un problème tel que rencontrer un mur.\n"
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:439
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
-msgstr ""
+msgstr "    Il n'a pas eu de problème tel que rencontrer un mur.\n"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:88
 #, java-format
@@ -388,6 +389,8 @@ msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty!)"
 msgstr ""
+"{0}.map : ce fichier ne semble pas est un BuggleWorld sérialisé (fichier "
+"vide !)"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:94
 #, java-format
@@ -395,110 +398,267 @@ msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})"
 msgstr ""
+"{0}.map : ce fichier ne semble pas est un BuggleWorld sérialisé (première "
+"ligne malformée : {1})"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:101
 #, java-format
 msgid "{0}.map: End of file reached before world size specification"
 msgstr ""
+"{0}.map : fin de fichier (EOF) rencontré avant la spécification de la taille "
+"du monde."
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:106
 #, java-format
-msgid "{0}.map:1: Expected 'Size: ??x??' but got '{0}'"
+msgid "{0}.map:1: Expected 'Size: NNxMM' but got '{0}'"
+msgstr "{0}.map:1 : 'Size: NNxMM' était attendu, mais on a lu '{0}'"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:151
+#, java-format
+msgid "Cannot put a buggle on coordinate {0},{1}: that's out of the world"
 msgstr ""
+"Je ne peux poser un bouggle aux coordonnées {0},{1} : c'est en dehors du "
+"monde"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:165
+msgid "Invalid buggle's direction: {0}"
+msgstr "direction invalide de buggle : {0}"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:352
+msgid "Invalid buggle's color name: {0}"
+msgstr "Couleur invalide de buggle : {0}"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:191
 #, java-format
-msgid "  In ({0},{1})"
+msgid "Cannot define a cell on coordinate {0},{1}: that's out of the world"
 msgstr ""
+"Je ne peux définir les coordonnées de cellule {0},{1} : c'est en dehors du "
+"monde"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:355
 #, java-format
-msgid "  Something is wrong about buggle \"{0}\":\n"
+msgid "Invalid color name: {0}"
+msgstr "Nom de couleur invalide : {0}"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:210
+#, java-format
+msgid "Expecting 'baggle' or 'nobaggle' but got {0} instead"
+msgstr "'baggle' ou 'nobaggle' était attendu, mais on a {0} à la place"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:214
+#, java-format
+msgid "Expecting 'topwall' or 'notopwall' but got {0} instead"
+msgstr "'topwall' ou 'notopwall' était attendu, mais on a {0} à la place"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:218
+#, java-format
+msgid "Expecting 'leftwall' or 'noleftwall' but got {0} instead"
+msgstr "'leftwall' ou 'noleftwall' était attendu, mais on a {0} à la place"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:228
+#, java-format
+msgid ""
+"The cell {0},{1} seem to be defined more than once. At least, there is two "
+"baggles here, which is not allowed."
 msgstr ""
+"La cellule {0},{1} semble être définie plusieurs fois. Il y a au moins deux "
+"baggles ici ce qui n'est pas permis."
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:244
+#, java-format
+msgid ""
+"Parse error. I was expecting a cell or a buggle description but got: {0}"
+msgstr ""
+"Erreur de syntaxe. J'attendais la description d'une cellule ou d'un buggle "
+"mais j'ai eu : {0}"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:512
+#, java-format
+msgid "  In ({0},{1})"
+msgstr "  En ({0},{1})"
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:515
+#, java-format
+msgid "  Something is wrong about buggle \"{0}\":\n"
+msgstr "  Il y a quelque chose qui cloche avec le buggle \"{0}\":\n"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:239
 msgid ", there shouldn't be this baggle"
-msgstr ""
+msgstr ", il ne devrait pas y avoir ce baggle"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:241
 msgid ", there should be a baggle"
-msgstr ""
+msgstr ", il devrait y avoir un baggle"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:243
 msgid ", the baggle differs"
-msgstr ""
+msgstr ", le baggle est différent"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:246
 #, java-format
 msgid ", the ground should not be {0}"
-msgstr ""
+msgstr ", le sol ne devrait pas être {0}"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:248
 #, java-format
 msgid ", the ground is expected to be {0}, but it is {1}"
-msgstr ""
+msgstr ", le sol devrait être {0}, mais est {1}"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:250
 #, java-format
 msgid ", the ground reads ''{0}'' (expected: ''{1}'')"
-msgstr ""
+msgstr ", on lit \"{0}\" sur le sol (on attendait : \"{1}\")"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:253
 msgid ", there shouldn't be any wall at west"
-msgstr ""
+msgstr ", il ne devrait pas y avoir de mur à l'ouest"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:255
 msgid ", there should be a wall at west"
-msgstr ""
+msgstr ", il devrait y avoir un mur à l'ouest"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:258
 msgid ", there shouldn't be any wall at north"
-msgstr ""
+msgstr ", il ne devrait pas y avoir de mur au nord"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:260
 msgid ", there should be a wall at north"
-msgstr ""
+msgstr ", il devrait y avoir un mur au nord"
+
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:164
+msgid "Create New Map"
+msgstr "Créer une nouvelle carte"
+
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:216
+msgid "Open Map..."
+msgstr "Ouvrir la carte..."
+
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:222
+#, fuzzy
+msgid "JLM map files"
+msgstr "Fichiers de leçons pour la JLM"
+
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:230
+#, java-format
+msgid "Error while reading {0}"
+msgstr "Erreur lors de la lecture de {0}"
+
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:58
+msgid "Property"
+msgstr "Propriété"
+
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:58
+msgid "Value"
+msgstr "Valeur"
+
+#. The editor for the name
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:72
+#, fuzzy
+msgid "World name"
+msgstr "Monde"
+
+#. ---------- world width ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:84
+#, fuzzy
+msgid "World width"
+msgstr "Monde"
+
+#. ---------- world height ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:104
+msgid "World height"
+msgstr "Hauteur du monde"
+
+#. ---------- selected cell ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:124
+msgid "Selected cell X"
+msgstr "Cellule sélectionnée X"
+
+#. ---------- selected cell ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:146
+msgid "Selected cell Y"
+msgstr "Cellule sélectionnée Y"
+
+#. ---------- Ground color ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:167
+msgid "Ground color (name or r/g/b)"
+msgstr "Couleur du sol (nom ou r/g/b)"
+
+#. ---------- top wall cell ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:184
+msgid "Top wall?"
+msgstr "Mur du haut ?"
+
+#. ---------- left wall cell ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:206
+msgid "Left wall?"
+msgstr "Mur de gauche ?"
+
+#. ---------- have baggle ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:228
+msgid "Baggle?"
+msgstr "Baggle ?"
+
+#. ---------- Buggle name ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:259
+msgid "Buggle name"
+msgstr "Nom du buggle"
+
+#. ---------- Buggle direction ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:270
+msgid "Buggle direction (N|S|E|W)"
+msgstr "Direction du buggle (N|S|E|W)"
+
+#. ---------- Buggle color ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:299
+msgid "Buggle color (name or r/g/b)"
+msgstr "Couleur du buggle (nom ou r/g/b)"
+
+#. ---------- Buggle color ---------------
+#: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:315
+msgid "Brush color (name or r/g/b)"
+msgstr "Couleur du pinceau (nom ou r/g/b)"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:55
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:241
 msgid "forward"
-msgstr ""
+msgstr "avancer"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:69
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:240
 msgid "backward"
-msgstr ""
+msgstr "reculer"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:83
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:242
 msgid "turn left"
-msgstr ""
+msgstr "gauche"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:91
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:243
 msgid "turn right"
-msgstr ""
+msgstr "droite"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:99
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:244
 msgid "mark"
-msgstr ""
+msgstr "marquer"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:222
+#, fuzzy
 msgid "Wall hugging error"
-msgstr ""
+msgstr "Erreur lors du suivi d'un mur"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:223
 msgid "Your buggle has collided with a wall, it hurts a lot ! ='("
-msgstr ""
+msgstr "Votre buggle a percuté un mur. Ça fait très mal ! ='( "
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:245
 msgid "Brush Color"
-msgstr ""
+msgstr "Couleur du pinceau"
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:246
 msgid "Buggle Color"
-msgstr ""
+msgstr "Couleur du buggle"
 
 #: src/jlm/universe/sort/SortingButtonPanel.java:64
 msgid "go"
