@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
+import jlm.core.utils.FileUtils;
 import jlm.universe.EntityControlPanel;
 
 /**

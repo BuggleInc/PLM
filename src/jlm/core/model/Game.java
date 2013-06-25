@@ -41,6 +41,7 @@ import jlm.core.model.tracking.LocalFileSpy;
 import jlm.core.model.tracking.ProgressSpyListener;
 import jlm.core.ui.MainFrame;
 import jlm.core.ui.ResourcesCache;
+import jlm.core.utils.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.IWorldView;
 import jlm.universe.World;
@@ -167,10 +168,11 @@ public class Game implements IWorldView {
 	 */
 	
 	public Lesson switchLesson(String lessonName) {
-		statusArgAdd("Load lesson " + lessonName);
-		
+		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
+		statusArgAdd(lessonName);
+		
 		if (lesson == null) { // we have to load it 
 			try {
 				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
@@ -199,7 +201,9 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		}
 		setCurrentLesson(lesson);
-		statusArgRemove("Load lesson "+lessonName);
+		
+		this.setState(GameState.LOADING_DONE);
+
 		return lesson;
 	}
 	private Set<String> usedJARs = new HashSet<String>(); // cache used in loadLessonFromJAR()
@@ -689,18 +693,19 @@ public class Game implements IWorldView {
 		}
 	}
 	private void statusChanged() {
-		String str = stateTxt;
+		StringBuffer sb = new StringBuffer(stateTxt);
 		boolean first = true;
 		for (String s:statusArgs) {
 			if (first)
 				first = false;
 			else
-				str += ", ";
-			str+= s;
+				sb.append(", ");
+			sb.append(s);
 		}
-		for (StatusStateListener l : this.statusStateListeners) {
-			l.stateChanged(str);
-		}
+		
+		String msg = first ? "" : sb.toString(); // remove everything if no argument at all 
+		for (StatusStateListener l : this.statusStateListeners) 
+			l.stateChanged(msg);
 	}
 	public void setLocale(Locale lang) {
 		FileUtils.setLocale(lang);

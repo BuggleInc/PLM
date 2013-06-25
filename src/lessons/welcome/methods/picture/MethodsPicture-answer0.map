@@ -1,0 +1,15 @@
+BuggleWorld: World
+Size: 5x5
+Buggle(0,4): east,black,green,Picasso
+Cell(0,1): green,nobaggle,notopwall,noleftwall,
+Cell(0,3): green,nobaggle,notopwall,noleftwall,
+Cell(1,0): blue,nobaggle,notopwall,noleftwall,
+Cell(1,2): green,nobaggle,notopwall,noleftwall,
+Cell(1,4): yellow,nobaggle,notopwall,noleftwall,
+Cell(2,1): blue,nobaggle,notopwall,noleftwall,
+Cell(2,3): yellow,nobaggle,notopwall,noleftwall,
+Cell(3,0): blue,nobaggle,notopwall,noleftwall,
+Cell(3,2): red,nobaggle,notopwall,noleftwall,
+Cell(3,4): yellow,nobaggle,notopwall,noleftwall,
+Cell(4,1): red,nobaggle,notopwall,noleftwall,
+Cell(4,3): red,nobaggle,notopwall,noleftwall,

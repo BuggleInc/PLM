@@ -1,3 +1,12 @@
+20130621:
+  * Improve the BuggleWorld I/O and the BuggleWorldEditor:
+    - better detection and error messages of invalid map files
+    - every world's characteristic can be edited in the editor
+    - buggles are read from/saved into world files
+  * Update all existing worlds on disk to this format
+  * Speedup the lesson loading with a cache of answer worlds:
+    - If a relevant .map file exists, don't execute the answer entity
+    - If not, save the .map file after execution for the next time
 20130616:
   * RELEASE 1.98
   * Squeeze a bit our sources so that we can package it for Debian
@@ -19,7 +28,7 @@
     version.
 20130528:
   * New lesson navigator based on JTree (fix #71)
-  * Better looking icons, with known licenses
+  * Some better looking icons, with known licenses
   * Basic testing infrastructure (fix #8)
     It ensures that python entities manage to solve the Java worlds. 
     This could be extended in many way, including:

@@ -1,5 +1,6 @@
 package jlm.core.model.lesson;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.utils.FileUtils;
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -20,27 +21,13 @@ import jlm.universe.World;
 public abstract class ExerciseTemplated extends Exercise {
 
 	protected String tabName = getClass().getSimpleName(); /** Name of the tab in editor -- must be a valid java identifier */
+	protected String worldFileName = getClass().getCanonicalName(); /** Name of the save files */
 	protected String nameOfCorrectionEntity = getClass().getCanonicalName()+"Entity"; /** name of the entity class computing the answer. Usually no need to redefine this */
 
 	public ExerciseTemplated(Lesson lesson) {
 		super(lesson);
 	}
-
-	protected void loadMap(World intoWorld, String path) {
-		try {
-			intoWorld.readFromFile(path);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-			throw new RuntimeException("Unable to load "+path+".map");	
-		} catch (BrokenWorldFileException e) {
-			throw new RuntimeException("File "+path+".map is broken",e);	
-		}
-	}
-
-	protected void loadMap(World intoWorld) {
-		loadMap(intoWorld, getClass().getCanonicalName());
-	}
-
+	
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
 		newSourceFromFile(lang, name, filename, "");
 	}
@@ -263,10 +250,43 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		computeAnswer();
 	}
+	
 	protected void computeAnswer() {
 		Thread t = new Thread() {
 			@Override
 			public void run() {
+				Game.getInstance().statusArgAdd(getClass().getSimpleName());
+				boolean allFound = true;
+				if (answerWorld.get(0).haveIO()) {
+					if (Game.getProperty("answers.cache", "true").equals("true")) {
+						Vector<World> newAnswer = new Vector<World>();
+						int rank = 0;
+						for (World aw:answerWorld) {
+							String name = worldFileName+"-answer"+(rank++);
+							try {
+								World nw = aw.readFromFile(name);
+								newAnswer.add(nw);
+							} catch (BrokenWorldFileException bwfe) {
+								System.err.println("World "+name+" is broken ("+bwfe.getLocalizedMessage()+"). Recompute all answer worlds.");
+								allFound = false;
+								break;
+							} catch (IOException ioe) {
+								System.err.println("IO exception while reading world "+name+" ("+ioe.getLocalizedMessage()+"). Recompute all answer worlds.");
+								allFound = false;
+								break;
+							}
+						}
+						if (allFound) {
+							answerWorld = newAnswer;
+							Game.getInstance().statusArgRemove(getClass().getSimpleName());
+							return;
+						}
+					} else {
+						System.out.println("Don't cache the answers of "+worldFileName+", as requested by property answers.cache");
+					}
+				}
+				
+				/* I/O didn't work. We have to load the files manually */
 				ExecutionProgress progress = new ExecutionProgress();
 				
 				mutateCorrection(WorldKind.ANSWER);
@@ -274,6 +294,26 @@ public abstract class ExerciseTemplated extends Exercise {
 				for (World aw : answerWorld) 
 					for (Entity ent: aw.getEntities()) 
 						ent.runIt(progress);
+				
+				/* Try to write all files for next time */
+				if (answerWorld.get(0).haveIO()) {
+					int rank = 0;
+					for (World aw:answerWorld) {
+						String name = "src/"+worldFileName+"-answer"+(rank++);
+						name = name.replaceAll("\\.", "/") + ".map";
+						if (new File(name).getParentFile().canWrite()) {
+							try {
+								aw.writeToFile(new File(name));
+							} catch (Exception e) {
+								System.err.println("Error while writing answer world '"+name+"'");
+								e.printStackTrace();
+							}
+						} else {
+							System.err.println("Cannot write answer world '"+name+"'");
+						}
+					}
+				}
+				Game.getInstance().statusArgRemove(getClass().getSimpleName());
 			}
 		};
 		t.start();

@@ -1,0 +1,16 @@
+BuggleWorld: Kitchen
+Size: 7x7
+Buggle(0,6): north,black,lightGray,Cooker 1
+Buggle(1,5): north,black,lightGray,Cooker 2
+Buggle(2,4): north,black,lightGray,Cooker 3
+Buggle(3,3): north,black,lightGray,Cooker 4
+Buggle(4,2): north,black,lightGray,Cooker 5
+Buggle(5,1): north,black,lightGray,Cooker 6
+Buggle(6,0): north,black,lightGray,Cooker 7
+Cell(0,6): white,baggle,notopwall,noleftwall,
+Cell(1,5): white,baggle,notopwall,noleftwall,
+Cell(2,4): white,baggle,notopwall,noleftwall,
+Cell(3,3): white,baggle,notopwall,noleftwall,
+Cell(4,2): white,baggle,notopwall,noleftwall,
+Cell(5,1): white,baggle,notopwall,noleftwall,
+Cell(6,0): white,baggle,notopwall,noleftwall,

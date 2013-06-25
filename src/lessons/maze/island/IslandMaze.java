@@ -1,37 +1,30 @@
 package lessons.maze.island;
 
-import java.awt.Color;
+import java.io.IOException;
 
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
+import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.Entity;
 import jlm.universe.World;
 import jlm.universe.bugglequest.AbstractBuggle;
-import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 public class IslandMaze extends ExerciseTemplated {
 
-	public IslandMaze(Lesson lesson) {
+	public IslandMaze(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		tabName = "Escaper";
 				
 		/* Create initial situation */
-		BuggleWorld myWorlds[] = new BuggleWorld[2];
-		myWorlds[0] = new BuggleWorld("Island", 1, 1);
-		loadMap(myWorlds[0],"lessons/maze/island/IslandMaze");
-		new Buggle(myWorlds[0], "Thésée", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
-		
-		
-		myWorlds[1] = new BuggleWorld("Labyrinth2", 4, 4); 
-		loadMap(myWorlds[1],"lessons/maze/island/IslandMaze2");
-		new Buggle(myWorlds[1], "Luke", 4, 10, Direction.NORTH, Color.black, Color.lightGray);
-		
-		setup(myWorlds);		
+		setup( new World[] {
+				BuggleWorld.newFromFile("lessons/maze/island/IslandMaze"),
+				BuggleWorld.newFromFile("lessons/maze/island/IslandMaze2")
+		});
 	}
 
 	// to shorten loading time	

@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
@@ -12,11 +14,18 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JSplitPane;
 import javax.swing.JToggleButton;
 import javax.swing.JToolBar;
+import javax.swing.KeyStroke;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.ui.ResourcesCache;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 
 public class MainFrame extends JFrame {
@@ -26,6 +35,8 @@ public class MainFrame extends JFrame {
 	private Editor editor;
 	private ButtonGroup tools;
 	private String path;	
+	
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 	
 	public MainFrame(Editor editor) {
 		super("BuggleQuest - MapEditor");
@@ -41,11 +52,23 @@ public class MainFrame extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 
 		JMenu fileMenu = new JMenu("File");
+		JMenuItem mi;
+		
+		mi = new JMenuItem(new NewMapAction());
+		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
+		fileMenu.add(mi);
+		
+		mi = new JMenuItem(new OpenMapAction());
+		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
+		fileMenu.add(mi);
+		
+		mi = new JMenuItem(new SaveMapAction());
+		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+		fileMenu.add(mi);
 
-		fileMenu.add(new NewMapAction());
-		fileMenu.add(new LoadMapAction());
-		fileMenu.add(new SaveMapAction());
-		fileMenu.add(new QuitAction());
+		mi = new JMenuItem(new QuitAction());
+		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
+		fileMenu.add(mi);
 
 		menuBar.add(fileMenu);
 		this.setJMenuBar(menuBar);
@@ -57,6 +80,8 @@ public class MainFrame extends JFrame {
 		JToggleButton topButton = createButton("topwall"); 
 		JToggleButton leftButton = createButton("leftwall"); 
 		JToggleButton baggleButton = createButton("baggle");
+		JToggleButton buggleButton = createButton("buggle");
+		JToggleButton nobuggleButton = createButton("nobuggle");
 		JToggleButton textButton = createButton("text");
 		JToggleButton colorButton = createButton("colors",new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,6 +113,8 @@ public class MainFrame extends JFrame {
 		toolBar.add(topButton);
 		toolBar.add(leftButton);
 		toolBar.add(baggleButton);
+		toolBar.add(buggleButton);
+		toolBar.add(nobuggleButton);
 		toolBar.add(colorButton);
 		toolBar.add(textButton);
 
@@ -95,14 +122,23 @@ public class MainFrame extends JFrame {
 		tools.add(topButton);
 		tools.add(leftButton);
 		tools.add(baggleButton);
+		tools.add(buggleButton);
+		tools.add(nobuggleButton);
 		tools.add(colorButton);
 		tools.add(textButton);
 
 		getContentPane().add(toolBar, BorderLayout.NORTH);
 
+		JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
+		sp.setOneTouchExpandable(false);
+
 		MapView mapView = new MapView(editor);
-		editor.addMapView(mapView);
-		getContentPane().add(mapView, BorderLayout.CENTER);
+		editor.addEditionListener(mapView);
+		sp.setLeftComponent(mapView);
+		sp.setRightComponent(new PropertiesEditor(editor));
+		sp.setResizeWeight(.6);
+		
+		getContentPane().add(sp, BorderLayout.CENTER);
 	}
 
 	private JToggleButton createButton(final String name) {
@@ -125,7 +161,7 @@ public class MainFrame extends JFrame {
 		private static final long serialVersionUID = 1L;
 
 		public NewMapAction() {
-			super("Create New Map");
+			super(i18n.tr("Create New Map"));
 		}
 
 		@Override
@@ -173,21 +209,26 @@ public class MainFrame extends JFrame {
 		}
 	}
 
-	class LoadMapAction extends AbstractAction {
+	class OpenMapAction extends AbstractAction {
 		private static final long serialVersionUID = 1L;
 
-		public LoadMapAction() {
-			super("Open Map...");
+		public OpenMapAction() {
+			super(i18n.tr("Open Map..."));
 		}
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fc = new JFileChooser();
+			fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("JLM map files"), "map"));
 			int status = fc.showOpenDialog(MainFrame.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {
 				MainFrame.this.path = fc.getSelectedFile().getAbsolutePath();
-				editor.loadMap(MainFrame.this.path);
+				try {
+					editor.loadMap(MainFrame.this.path);
+				} catch (IOException e1) {
+					JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(),i18n.tr("Error while reading {0}",path), JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		}
 

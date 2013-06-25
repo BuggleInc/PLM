@@ -13,6 +13,7 @@ import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.ExerciseFailedDialog;
 import jlm.core.ui.ResourcesCache;
+import jlm.core.utils.FileUtils;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;

@@ -4,42 +4,40 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import jlm.universe.BrokenWorldFileException;
-import jlm.universe.IWorldView;
+import jlm.universe.Entity;
+import jlm.universe.World;
+import jlm.universe.bugglequest.AbstractBuggle;
 import jlm.universe.bugglequest.BuggleWorld;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 public class Editor {
 
 	private BuggleWorld world;
-	private ArrayList<MapView> mapViews = new ArrayList<MapView>();
+	private ArrayList<EditionListener> editionListeners = new ArrayList<EditionListener>();
 	private String command = "topwall";
 	private Color selectedColor = Color.blue;
 	private int selectedColorNumber = 1;
+	public I18n	i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", new Locale("fr"), I18nFactory.FALLBACK); // FIXME: ugly: french is hardcoded!!!!!
+
 	
 	public Editor() {
 		createNewMap(10, 10);
+		world.setSelectedCell(0, 0);
 	}
 
 	public void createNewMap(int width, int height) {
-		this.world = new BuggleWorld("edited world",width, height);
+		this.world = new BuggleWorld("Brave new world",width, height);
 		
-		for (MapView v : this.mapViews) {
+		for (EditionListener v : this.editionListeners) {
 			v.setWorld(this.world);
 		}
 				
-		this.world.addWorldUpdatesListener(new IWorldView() {
-			@Override
-			public void worldHasChanged() {
-				notifyMapViews();
-			}
-
-			@Override
-			public void worldHasMoved() {
-				notifyMapViews();
-			}
-		});
-		notifyMapViews();
+		notifySetWorld(world);
 	}
 
 	public void saveMap(File file) {
@@ -50,33 +48,34 @@ public class Editor {
 		}
 	}
 
-	public void loadMap(String file) {
+	public void loadMap(String file) throws IOException {
 		try {
-			this.world.readFromFile(file);
-		} catch (IOException e) {
-			e.printStackTrace();
+			world = (BuggleWorld) BuggleWorld.newFromFile(file); 
 		} catch (BrokenWorldFileException e) {
 			e.printStackTrace();
 		}
-		notifyMapViews();
+		notifySetWorld(world);
 	}
 
 	public BuggleWorld getWorld() {
 		return this.world;
 	}
 	
-	public void addMapView(MapView v) {
-		this.mapViews.add(v);
+	public void addEditionListener(EditionListener v) {
+		this.editionListeners.add(v);
 	}
 
-	public void removeMapView(MapView v) {
-		this.mapViews.remove(v);
+	public void removeEditionListener(EditionListener v) {
+		this.editionListeners.remove(v);
 	}
 
-	public void notifyMapViews() {
-		for (MapView v : this.mapViews) {
-			v.worldHasMoved();
-		}
+	public void notifySetWorld(World w) {
+		for (EditionListener v : this.editionListeners) 
+			v.setWorld(w);
+	}
+	public void notifyWorldEdited(){
+		for (EditionListener el : editionListeners)
+			el.worldEdited();		
 	}
 
 	public void setCommand(String cmd) {
@@ -99,6 +98,28 @@ public class Editor {
 
 	public void setSelectedColorNumber(int i) {
 		selectedColorNumber = i;		
+	}
+
+	public void setSelectedCell(int x, int y) {
+		AbstractBuggle buggle = null;
+		for (Entity e : getWorld().getEntities()) {
+			AbstractBuggle b = (AbstractBuggle) e;
+			if (b.getX() == x && b.getY() == y)
+				buggle = b;
+		}
+		getWorld().setSelectedCell(x, y);
+		
+		for (EditionListener el : editionListeners)
+			el.selectedChanged(x, y, buggle);
+	}
+	public void setSelectedEntity(AbstractBuggle buggle) {
+		int x = getWorld().getSelectedCell().getX();
+		int y = getWorld().getSelectedCell().getY();
+		
+		getWorld().setSelectedEntity(buggle);
+		for (EditionListener el : editionListeners)
+			el.selectedChanged(x, y, buggle);
+		
 	}
 
 }

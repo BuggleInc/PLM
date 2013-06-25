@@ -11,12 +11,12 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import jlm.core.model.FileUtils;
 import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.ui.WorldView;
+import jlm.core.utils.FileUtils;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -103,6 +103,11 @@ public abstract class World {
 	public void addEntity(Entity b) {
 		entities.add(b);
 		notifyEntityUpdateListeners();
+	}
+	public void removeEntity(Entity b) {
+		if (!entities.remove(b)) 
+			System.out.println("Ignoring a request to remove an unknown entity");
+		notifyEntityUpdateListeners();		
 	}
 
 	public void emptyEntities() {
@@ -194,7 +199,13 @@ public abstract class World {
 	}
 
 	/* IO related */
-	public void readFromFile(String path) throws IOException, BrokenWorldFileException {}
+	/** Returns whether this universe implements world I/O */
+	public boolean haveIO() { 
+		return false; 
+	}
+	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
+		throw new RuntimeException("This universe does not implement world I/O");
+	}
 
 	public void writeToFile(BufferedWriter f) throws IOException {}
 
