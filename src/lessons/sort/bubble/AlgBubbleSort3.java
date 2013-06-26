@@ -1,4 +1,4 @@
-package lessons.sort.bubble3;
+package lessons.sort.bubble;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;

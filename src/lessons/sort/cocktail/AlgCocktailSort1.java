@@ -1,4 +1,4 @@
-package lessons.sort.cocktail1;
+package lessons.sort.cocktail;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;

@@ -1,4 +1,4 @@
-package lessons.sort.cocktail3;
+package lessons.sort.cocktail;
 
 import jlm.universe.sort.SortingEntity;
 

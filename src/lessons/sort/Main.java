@@ -1,12 +1,12 @@
 package lessons.sort;
 
 import jlm.core.model.lesson.Lesson;
-import lessons.sort.bubble1.AlgBubbleSort1;
-import lessons.sort.bubble2.AlgBubbleSort2;
-import lessons.sort.bubble3.AlgBubbleSort3;
+import lessons.sort.bubble.AlgBubbleSort1;
+import lessons.sort.bubble.AlgBubbleSort2;
+import lessons.sort.bubble.AlgBubbleSort3;
+import lessons.sort.cocktail.AlgCocktailSort2;
+import lessons.sort.cocktail.AlgCocktailSort3;
 import lessons.sort.cocktail1.AlgCocktailSort1;
-import lessons.sort.cocktail2.AlgCocktailSort2;
-import lessons.sort.cocktail3.AlgCocktailSort3;
 import lessons.sort.comb.AlgCombSort;
 import lessons.sort.comb11.AlgCombSort11;
 import lessons.sort.gnome.AlgGnomeSort;

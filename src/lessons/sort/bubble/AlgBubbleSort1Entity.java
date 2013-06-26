@@ -1,4 +1,4 @@
-package lessons.sort.bubble1;
+package lessons.sort.bubble;
 
 import jlm.universe.sort.SortingEntity;
 
