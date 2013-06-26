@@ -25,9 +25,6 @@ set boxwidth 7200
 #     "data"    using 1:2 title "Exercises passed" with dots
 
 plot "classes" using 1:2 notitle with boxes fs solid 0.08,\
-     "data"    using 1:2 notitle with dots
+     "data"    using 1:2 notitle with points pt 2
 
 
-
-#linetype 201 title "Total" axis x1y2, \
- #      "stats" using 1:3        linetype 211 title "New messages" axis x1y2
