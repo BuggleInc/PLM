@@ -38,7 +38,7 @@ public class TurtleWorldView extends WorldView {
 		g2.fill(new Rectangle2D.Double(0.,0.,(double)tw.getWidth(),(double)tw.getHeight()));
 		
 		synchronized (((TurtleWorld) world).shapes) {
-			Iterator<ShapeAbstract> it2 = ((TurtleWorld) world).shapes();
+			Iterator<Line> it2 = ((TurtleWorld) world).shapes();
 			while (it2.hasNext())
 				it2.next().draw(g2);			
 		}

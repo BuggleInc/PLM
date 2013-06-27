@@ -5,11 +5,11 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
 
-public class ShapeLine extends ShapeAbstract {
+public class Line {
 	public double x1, y1,  x2, y2;
 	public Color color;
 	
-	public ShapeLine(double x1, double y1, double x2, double y2, Color color) {
+	public Line(double x1, double y1, double x2, double y2, Color color) {
 		this.x1 = x1;
 		this.y1 = y1;
 		this.x2 = x2;
@@ -17,15 +17,13 @@ public class ShapeLine extends ShapeAbstract {
 		this.color = color;
 	}
 	
-	@Override
 	public void draw(Graphics2D g){
 		g.setColor(color);
 		g.draw(new Line2D.Double(x1,y1,x2,y2));
 	}
 
-	@Override
-	public ShapeAbstract copy() {
-		return new ShapeLine(x1,y1,x2,y2,color);
+	public Line copy() {
+		return new Line(x1,y1,x2,y2,color);
 	}
 	private boolean doubleEqual(double a, double b) {
 		return (Math.abs(a-b)<0.000001);
@@ -33,10 +31,10 @@ public class ShapeLine extends ShapeAbstract {
 	
 	@Override
 	public boolean equals(Object obj) {
-		if (! (obj instanceof ShapeLine))
+		if (! (obj instanceof Line))
 			return false;
 		
-		ShapeLine other = (ShapeLine) obj;
+		Line other = (Line) obj;
 		if (!doubleEqual(x1,other.x1))
 			return false;
 		if (!doubleEqual(x2,other.x2))
@@ -48,8 +46,8 @@ public class ShapeLine extends ShapeAbstract {
 				
 		return true;
 	}
-	public String diffTo(ShapeAbstract o) {
-		ShapeLine other = (ShapeLine) o;
+	public String diffTo(Line o) {
+		Line other = (Line) o;
 		if (!doubleEqual(x1,other.x1))
 			return "x1 differs";
 		if (!doubleEqual(x2,other.x2))

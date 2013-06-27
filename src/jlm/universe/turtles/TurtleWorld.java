@@ -17,7 +17,7 @@ import jlm.universe.World;
 
 public class TurtleWorld extends World {
 
-	ArrayList<ShapeAbstract> shapes = new ArrayList<ShapeAbstract>(); 
+	ArrayList<Line> shapes = new ArrayList<Line>(); 
 
 	private double width;
 	private double height;
@@ -39,11 +39,11 @@ public class TurtleWorld extends World {
 	@Override
 	public void reset(World w) {
 		TurtleWorld initialWorld = (TurtleWorld)w;
-		shapes = new ArrayList<ShapeAbstract>();
+		shapes = new ArrayList<Line>();
 		this.height = initialWorld.height;
 		this.width = initialWorld.width;
 
-		Iterator<ShapeAbstract> it = initialWorld.shapes();
+		Iterator<Line> it = initialWorld.shapes();
 		while (it.hasNext()) 
 			shapes.add(it.next().copy());
 		
@@ -53,12 +53,12 @@ public class TurtleWorld extends World {
 	public void addLine(double x, double y, double newX, double newY, Color color) {
 		synchronized (shapes) {
 			//ShapeLine line =new ShapeLine(width/2+x,height/2+y,width/2+newX,height/2+newY,color); 
-			ShapeLine line =new ShapeLine(x,y,newX,newY,color); 
+			Line line =new Line(x,y,newX,newY,color); 
 			shapes.add(line);
 			notifyWorldUpdatesListeners();
 		}
 	}
-	public Iterator<ShapeAbstract> shapes() {
+	public Iterator<Line> shapes() {
 		return shapes.iterator();
 	}
 	
@@ -90,8 +90,8 @@ public class TurtleWorld extends World {
 		TurtleWorld other = (TurtleWorld) obj;
 		if (shapes.size() != other.shapes.size())
 			return false;
-		Collections.sort(shapes, new ShapeComparator());
-		Collections.sort(other.shapes, new ShapeComparator());
+		Collections.sort(shapes, new LineComparator());
+		Collections.sort(other.shapes, new LineComparator());
 		for (int i=0;i<shapes.size();i++)
 			if (! shapes.get(i).equals(other.shapes.get(i)))
 				return false;
@@ -107,7 +107,7 @@ public class TurtleWorld extends World {
 			", size="+width+"x"+height+
 			", parameters: " +parameters+
 			", shapes=[";
-		Iterator<ShapeAbstract> it = shapes();
+		Iterator<Line> it = shapes();
 		while (it.hasNext()) 
 			res += it.next().toString();
 		res += "]";
@@ -146,22 +146,20 @@ public class TurtleWorld extends World {
 		for (int i=0;i<other.shapes.size();i++)
 			if (! other.shapes.get(i).equals(shapes.get(i)))
 				sb.append("  Got "+other.shapes.get(i)+" where "+shapes.get(i)+" were expected ("+
-						((ShapeLine) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
+						((Line) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
 		
 		return sb.toString();
 	}
 }
 
-class ShapeComparator implements Comparator<ShapeAbstract> {
+class LineComparator implements Comparator<Line> {
 
-	public ShapeComparator() {
+	public LineComparator() {
 		super();
 	}
 
 	@Override
-	public int compare(ShapeAbstract o1, ShapeAbstract o2) {
-		ShapeLine l1 = (ShapeLine) o1;
-		ShapeLine l2 = (ShapeLine) o2;
+	public int compare(Line l1, Line l2) {
 		if (l1.x1 < l2.x1)
 			return -1;
 		if (l1.x1 > l2.x1)
