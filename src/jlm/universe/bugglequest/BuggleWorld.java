@@ -407,6 +407,8 @@ public class BuggleWorld extends GridWorld {
 				"	entity.setY(y)\n"+
 				"def setPos(x,y):\n"+
 				"	entity.setPos(x,y)\n"+
+				"def setDirection(d):\n"+
+				"	entity.setDirection(d)\n"+
 				"def brushDown():\n"+
 				"   entity.brushDown()\n"+
 				"def brushUp():\n"+
