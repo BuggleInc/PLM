@@ -7,6 +7,7 @@
   * Speedup the lesson loading with a cache of answer worlds:
     - If a relevant .map file exists, don't execute the answer entity
     - If not, save the .map file after execution for the next time
+  * Pythonize all maze exercises
 20130616:
   * RELEASE 1.98
   * Squeeze a bit our sources so that we can package it for Debian
