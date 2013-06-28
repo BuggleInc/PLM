@@ -9640,7 +9640,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:1
 msgid "Basic Shortest Path algorithm"
-msgstr "Algorithme basique de rechercher du plus court chemin"
+msgstr "Algorithme basique de recherche du plus court chemin"
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:3
@@ -9652,7 +9652,7 @@ msgid ""
 msgstr ""
 "Pour conclure avec cette leçon d'introduction aux algorithmes de sortie de "
 "labyrinthe, nous allons étudier un autre moyen de trouver la sortie. Le "
-"buggle de cette leçon est spécial : c'est un jedi. Il eut ressentir la "
+"buggle de cette leçon est spécial : c'est un jedi. Il peut ressentir la "
 "Force. Cela signifie qu'il peut ressentir son environnement."
 
 #. type: Content of: <p>
