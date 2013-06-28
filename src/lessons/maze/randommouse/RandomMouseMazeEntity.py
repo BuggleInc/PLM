@@ -1,55 +1,30 @@
-# BEGIN SOLUTION 
-  public void turnRandomly() {
-		switch (random2()) {
-		case 0:
-			turnLeft();
-			break;
-		case 1:
-			turnRight();
-			break;
-    }
-	}
-    
-	public void takeRandomDirection() {
-		if (isFacingWall()) {
-			turnRandomly();
-		} else {
-			switch (random3()) {
-			case 0:
-				turnLeft();
-				break;
-			case 1:
-				forward();
-				break;
-			case 2:
-				turnRight();
-				break;
-        }
-    }
-	}
-    
-	public boolean atAJunction() {
-		boolean junction = false;
-        
-		// check left
-		turnLeft();
-		if (!isFacingWall()) {
-			junction = true;
-		}
-		turnRight();
-        
-		// can we skip next check?
-		if (junction) {
-			return true;
-		} else {
-			// check right
-			turnRight();
-			if (!isFacingWall()) {
-				junction = true;
-			}
-			turnLeft();
-		}
-		return junction;
-	}
-    
+import java.util.Random
+rand = java.util.Random()
+
+def random3():
+    n = rand.nextInt(3)
+    if n<0.33:
+        return 0
+    elif n <0.66:
+        return 1
+    return 2
+
+def setX(i):
+        errorMsg("Sorry Dave, I'm afraid I cannot let you use setX(i) in this exercise")
+def setY(i):
+        errorMsg("Sorry Dave, I'm afraid I cannot let you use setY(i) in this exercise")
+def setPos(x,y):
+        errorMsg("Sorry Dave, I'm afraid I cannot let you use setPos(x,y) in this exercise")
+
+# BEGIN SOLUTION
+while not isOverBaggle():
+    n = random3()
+    if n == 0:
+        if not isFacingWall():
+            forward()
+    elif n == 1:
+        turnLeft()
+    else:
+        turnRight()
+pickUpBaggle()
 # END SOLUTION
