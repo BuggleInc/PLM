@@ -210,12 +210,6 @@ public abstract class Entity {
 				
 				StringBuffer msg = new StringBuffer();
 	
-				if (Game.getInstance().isDebugEnabled()) {
-					System.err.println("CAUSE: "+cause.value.toString());
-					System.err.println("MSG: "+e.getMessage());
-					System.err.println("BT: "+msg);
-				}
-				
 				//if (__builtin__.isinstance(cause.value, Py.SyntaxError)) {
 				//	System.err.println("cleanly found a syntaxerror");
 				//}
@@ -266,6 +260,13 @@ public abstract class Entity {
 						tb = (PyTraceback) tb.tb_next;
 					}
 				}				
+				
+				if (Game.getInstance().isDebugEnabled()) {
+					System.err.println("CAUSE: "+cause.value.toString());
+					System.err.println("MSG: "+e.getMessage());
+					System.err.println("BT: "+msg);
+				}
+				
 				progress.setCompilationError(msg.toString());
 			}
 		} catch (Exception e) {
