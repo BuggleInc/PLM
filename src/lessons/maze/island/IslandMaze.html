@@ -37,17 +37,25 @@ mode). You switch to "north runner" as soon as your buggle is facing
 north and is not in front of a wall during its trip around its left
 wall. The easiest way to write such a state machine is something like 
 <pre>
-	<code>int state=0;
+	<code div="Java">int state=0;
 switch (state) {
-  case 0: 
+  case 0: // North runner
      ...
      state = 1;
      break;
-  case 1:
+  case 1: // Left follower
      ...
      state = 0;
      break;
 }
+</code>
+<code div="python">northRunner = True
+if northRunner:
+     ...
+     northRunner = False
+else: # left follower
+     ...
+     northRunner = True
 </code>
 </pre>
 </div>

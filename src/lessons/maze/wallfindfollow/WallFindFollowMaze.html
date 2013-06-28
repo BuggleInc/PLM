@@ -5,11 +5,11 @@ start at the same location. In particular, it does not have any wall
 to its left at the beginning.</p>
 
 <p>As a result, the method you wrote for the previous exercise
-probably don't work for this one. If you click on the run button with
+probably don't work for this one. If you use it here with
 no modification, your buggle probably start looping over the four free
 cells around its start position (if that's not the case, well, you
 didn't really stick to the mission on previous exercise. Feel lucky
-and move to the next one once you've read this text).</p>
+and proceed to the next :)</p>
 
 <p>This is because your <code>keepHandOnSideWall()</code> method has
 an implicit <b>pre-condition</b>: it works well if and only if the
@@ -23,6 +23,6 @@ to prove that the code works correctly.</p>
 <p>
 Fixing the problem should be very easy. Simply make sure that the
 pre-condition of <code>keepHandOnSideWall()</code> is verified before
-calling it. For that, update your run() method to first look for a
+calling it. For that, update your code to first look for a
 wall on its left before the big <code>while</code> loop.
 </p>

@@ -2,7 +2,8 @@
 
 <p>Once again, you thought that your algorithm were good enough to
 escape the maze, and once again, you buggle is now in a maze where
-your previous algorithm fails. Just give it a try: hit the "Run"
+your previous algorithm fails. Just give it a try: copy/paste your
+code and hit the "Run"
 button and see your creation fail. The trap is shaped like an upper
 case "G". The buggle enters the trap and follows the inner border. At
 some point, it finds the north direction free, run into that
@@ -37,30 +38,39 @@ around, finally leaving it heading left on the bottom outside</p>
 <p><a name="Objective"/>You now have to modify your solution to implement the Pledge
 algorithm to escape this maze.</p>
 
-<p>Change your <code>void keepHandOnSideWall()</code> method to count
+<p>Change your <code>keepHandOnSideWall()</code> method to count
 the amount of turns done by the buggle (+1 when it turns left, and -1
 when it turns right). This counting may require the addition of an
 <code>angleSum</code> integer value in your program.</p>
 
-<p>Write a <code>boolean isChosenDirectionFree()</code> method indicating if
-the arbitrary direction you picked up is free, ie, if you can move in
-that direction. (Note that the demo uses the NORTH direction for
+<p>Write a boolean method <code>isDirectionFree(dir)</code> indicating if
+the provided direction is free, ie, if you can move in
+that direction (Note that the demo uses the NORTH direction for
 that).  You can retrieve the current direction of the
-buggle using the <code>Direction getDirection()</code> method. You can
-change your direction (without moving) using <code>void
-setDirection(Direction d)</code>. Don't forget to store the previous
-direction of your buggle (in a variable of type Direction) before checking if your favorite
+buggle using the method <code>getDirection()</code>. You can
+change your direction (without moving) using <code>setDirection(dir)</code>. Don't forget to store the previous
+direction of your buggle (in a dedicated variable) before checking if your favorite
 direction is free in order to restore your state afterward.</p>
 
 <p>You may have to change the rest of your code also, but these
 changes should remain limited.</p>
 
+<p class="python">Don't forget that if you have a method modifying a
+global variable (such as angleSum), you should ensure that it declares
+this variable as global. Without it, the method creates a new variable
+of the same name, and the global never gets modified.</p>
+<code class="python">def myMethod():
+  global angleSum
+  ...
+  angleSum = angleSum + 1
+</code>
+
 <div class="tip" id="tip-1" alt="Show an additional tip">
-The <code>void run()</code> method should move in your favorite
-direction (NORTH is advised). Then, you should write the algorithm main
+You should set your direction to your favorite
+one (NORTH is advised). Then, you should write the algorithm main
 loop. In other words, while your buggle did not find its biscuit, you have
 to move forward until next obstacle in the favorite direction. Then, put a
-paw on a wall (using (<code>void keepHandOnSideWall()</code>) while the sum
+paw on a wall (using (<code>keepHandOnSideWall()</code>) while the sum
 of turns is not null and the favorite direction is not free. Do that until
 you find your baggle.</div>
 	
