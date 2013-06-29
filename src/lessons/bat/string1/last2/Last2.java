@@ -25,7 +25,15 @@ public class Last2 extends BatExercise {
 
 		langTemplate(Game.PYTHON, "last2", 
 				"def last2(str):\n",
-				"");
+				"  l = len(str)\n" +
+				"  if l < 2:\n" +
+				"    return 0\n" +
+				"  end = str[l-2:l]\n" +
+				"  count = 0\n" +
+				"  for i in range(len(str)-2):\n" +
+				"    if str[i:i+2] == end:\n" +
+				"      count += 1\n" +
+				"  return count\n");
 		setup(myWorld);
 	}
 

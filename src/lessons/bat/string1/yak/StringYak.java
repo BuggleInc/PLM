@@ -20,7 +20,15 @@ public class StringYak extends BatExercise {
 
 		langTemplate(Game.PYTHON, "stringYak", 
 				"def stringYak(str):\n",
-				"");
+				"  res = ''\n" +
+				"  i=0\n" +
+				"  while i<len(str):\n"+
+				"    if i+2<len(str)  and str[i] == 'y' and str[i+2]=='k':\n" +
+				"      i += 2\n" +
+				"    else:\n" +
+				"      res += str[i]\n" +
+				"    i+=1\n"+
+				"  return res\n");
 		setup(myWorld);
 	}
 

@@ -21,7 +21,10 @@ public class AltPairs extends BatExercise {
 
 		langTemplate(Game.PYTHON, "altPairs", 
 				"def altPairs(str):\n",
-				"");
+				"  res = ''\n" +
+				"  for i in range(0,len(str),4):\n" +
+				"    res += str[i:i+2]\n" +
+				"  return res\n");
 		setup(myWorld);
 	}
 

@@ -20,7 +20,16 @@ public class FrontTimes extends BatExercise {
 
 		langTemplate(Game.PYTHON, "frontTimes", 
 				"def frontTimes(str, n):\n",
-				"");
+				"  frontLen = 3\n" +
+				"  if frontLen > len(str):\n" +
+				"    frontLen = len(str)\n" +
+				"  front = ''\n" +
+				"  if len(str)>0:\n" +
+				"    front = str[0:frontLen]\n" +
+				"  res = ''\n" +
+				"  for i in range(n):" +
+				"    res += front\n" +
+				"  return res\n");
 		setup(myWorld);
 	}
 

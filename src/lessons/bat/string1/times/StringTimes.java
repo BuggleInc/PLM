@@ -22,7 +22,10 @@ public class StringTimes extends BatExercise {
 
 		langTemplate(Game.PYTHON, "stringTimes", 
 				"def stringTimes(str, n):\n",
-				"");
+				"  res = \"\"\n"+
+				"  for i in range(n):\n"+
+				"    res += str\n"+
+				"  return res\n");
 		setup(myWorld);
 	}
 

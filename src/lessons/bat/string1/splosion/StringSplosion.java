@@ -20,7 +20,10 @@ public class StringSplosion extends BatExercise {
 
 		langTemplate(Game.PYTHON, "stringSplosion", 
 				"def stringSplosion(str):\n",
-				"");
+				"  res = ''\n" +
+				"  for i in range(len(str)):\n" +
+				"    res += str[0:i+1]\n" +
+				"  return res\n");
 		setup(myWorld);
 	}
 

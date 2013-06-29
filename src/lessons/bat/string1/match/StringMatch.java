@@ -23,7 +23,12 @@ public class StringMatch extends BatExercise {
 
 		langTemplate(Game.PYTHON, "stringMatch", 
 				"def stringMatch(a, b):\n",
-				"");
+				"  l = min( len(a), len(b) )\n" +
+				"  count = 0\n" +
+				"  for i in range(l-1):\n" +
+				"    if a[i:i+2] == b[i:i+2]:\n" +
+				"      count += 1\n" +
+				"  return count\n");
 		setup(myWorld);
 	}
 

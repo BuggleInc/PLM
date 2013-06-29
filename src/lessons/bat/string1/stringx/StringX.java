@@ -21,7 +21,11 @@ public class StringX extends BatExercise {
 
 		langTemplate(Game.PYTHON, "stringX", 
 				"def stringX(str):\n",
-				"");
+				"  res = ''\n" +
+				"  for i in range(len(str)):\n" +
+				"    if str[i] != 'x' or i == 0 or i == len(str)-1:" +
+				"      res += str[i:i+1]\n" +
+				"  return res\n");
 		setup(myWorld);
 	}
 

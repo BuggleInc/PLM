@@ -1,3 +1,5 @@
+20130629:
+  * Pythonize all maze and bat/string exercises
 20130621:
   * Improve the BuggleWorld I/O and the BuggleWorldEditor:
     - better detection and error messages of invalid map files
@@ -7,7 +9,6 @@
   * Speedup the lesson loading with a cache of answer worlds:
     - If a relevant .map file exists, don't execute the answer entity
     - If not, save the .map file after execution for the next time
-  * Pythonize all maze exercises
 20130616:
   * RELEASE 1.98
   * Squeeze a bit our sources so that we can package it for Debian

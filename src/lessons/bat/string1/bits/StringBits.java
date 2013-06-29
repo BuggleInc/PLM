@@ -18,7 +18,10 @@ public class StringBits extends BatExercise {
 
 		langTemplate(Game.PYTHON, "stringBits", 
 				"def stringBits(str):\n",
-				"");
+				"  res = ''\n" +
+				"  for i in range(0,len(str),2):\n" +
+				"    res += str[i:i+1]\n" +
+				"  return res\n");
 		setup(myWorld);
 	}
 
