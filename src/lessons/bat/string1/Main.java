@@ -1,15 +1,15 @@
 package lessons.bat.string1;
 
 import jlm.core.model.lesson.Lesson;
-import lessons.bat.string1.altpairs.AltPairs;
-import lessons.bat.string1.bits.StringBits;
-import lessons.bat.string1.fronttimes.FrontTimes;
-import lessons.bat.string1.last2.Last2;
-import lessons.bat.string1.match.StringMatch;
-import lessons.bat.string1.splosion.StringSplosion;
-import lessons.bat.string1.stringx.StringX;
-import lessons.bat.string1.times.StringTimes;
-import lessons.bat.string1.yak.StringYak;
+import lessons.bat.string1.AltPairs;
+import lessons.bat.string1.StringBits;
+import lessons.bat.string1.FrontTimes;
+import lessons.bat.string1.Last2;
+import lessons.bat.string1.StringMatch;
+import lessons.bat.string1.StringSplosion;
+import lessons.bat.string1.StringX;
+import lessons.bat.string1.StringTimes;
+import lessons.bat.string1.StringYak;
 
 public class Main extends Lesson {
 
