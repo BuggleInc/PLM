@@ -130,7 +130,11 @@ public class TurtleWorld extends World {
 					"def turnRight(i):\n"+
 					"  entity.turnRight(i)\n"+
 					"def setColor(c):\n"+
-					"  entity.setColor(c)\n"
+					"  entity.setColor(c)\n" +
+					"def setPos(x,y):\n" +
+					"  entity.setPos(x,y)\n" +
+					"def moveTo(x,y):\n" +
+					"  entity.moveTo(x,y)\n"
 					);
 		} else {
 			throw new RuntimeException("No binding of TurtleWorld for "+lang);
