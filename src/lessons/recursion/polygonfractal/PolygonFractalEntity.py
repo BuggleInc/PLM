@@ -2,10 +2,10 @@
 def polygonFractal (levels, sides, length, shrink):
     # BEGIN SOLUTION
     if (levels == 0):
-      /* do nothing */
+      pass
     else:
       for i in range(sides):
-        forward(length);
+        forward(length)
         
         turnLeft((sides-2)*360/(sides*2))
         polygonFractal(levels-1, sides, length*shrink,shrink)

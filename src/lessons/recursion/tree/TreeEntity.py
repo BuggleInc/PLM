@@ -2,7 +2,7 @@
 def tree(steps, length, angle, shrink):
   # BEGIN SOLUTION
   if (steps <= 0):
-    # do nothing 
+    pass# do nothing 
   else:
     forward(length)
     turnRight(angle)

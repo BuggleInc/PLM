@@ -2,11 +2,11 @@
 def spiral(steps, angle, length, increment):
   # BEGIN SOLUTION
   if (steps <= 0):
-    # do nothing
+    pass# do nothing
   else:
     forward(length)
     turnLeft(angle)
-    spiral(steps-1, angle, length+increment, increment):
+    spiral(steps-1, angle, length+increment, increment)
   # END SOLUTION
 # END TEMPLATE
 

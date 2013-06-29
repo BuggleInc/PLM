@@ -1,5 +1,5 @@
 20130629:
-  * Pythonize all maze and bat/string exercises
+  * Pythonize exercises in lessons: maze, recursion and bat/string
 20130621:
   * Improve the BuggleWorld I/O and the BuggleWorldEditor:
     - better detection and error messages of invalid map files

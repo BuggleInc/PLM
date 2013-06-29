@@ -1,6 +1,6 @@
 def spiral(steps, angle, length, increment):
   if (steps <= 0):
-    return
+    pass
   else:
     forward(length)
     turnLeft(angle)
@@ -9,13 +9,16 @@ def spiral(steps, angle, length, increment):
 # BEGIN TEMPLATE
 def doit(page):
   # BEGIN SOLUTION
-  switch (page):
-    case 0:  spiral(100,90+1,1,2);  break;
-    case 1:  spiral(100,120+1,1,2); break;
-    case 2: spiral(5,360/5,100,0);  break;
-    case 3: spiral(5,2*360/5,150,0); break;
-    case 4: spiral(360,1,1,0);   break;  
-    }
+  if page == 0:
+    spiral(100,90+1,1,2)
+  elif page == 1:
+    spiral(100,120+1,1,2)
+  elif page == 2:
+    spiral(5,360/5,100,0)
+  elif page == 3:
+    spiral(5,2*360/5,150,0)
+  elif page == 4:
+    spiral(360,1,1,0)  
   # END SOLUTION
 # END TEMPLATE
   

@@ -1,7 +1,7 @@
 # BEGIN TEMPLATE
 def dragon(ordre, x, y, z, t):
   # BEGIN SOLUTION 
-    if ordre == 1):
+    if ordre == 1:
       setPos(x, y)
       moveTo(z, t)
     else:
