@@ -99,9 +99,12 @@ public class ExoTest {
 		
 		if (exo.lastResult.totalTests == 0 
 				|| exo.lastResult.totalTests != exo.lastResult.passedTests 
-				|| !exo.lastResult.details.equals("")) 
+				|| !exo.lastResult.details.equals("")) {
+			System.out.println(""+exo.getClass().getName()+" failed in "+Game.getProgrammingLanguage()+": "+exo.lastResult.details);
 			fail(exo.getClass().getSimpleName()+": failed exercise ("+
 				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.details+"'");
+		}
+		System.out.println(""+exo.getClass().getName()+" passed in "+Game.getProgrammingLanguage());
 
 	}
 	
@@ -118,7 +121,6 @@ public class ExoTest {
 //			return;
 			fail("Exercise "+exo.getClass().getName()+" does not support python");
 		}
-		
 		Game.getInstance().setProgramingLanguage(Game.PYTHON);
 		testCorrectionEntity();
 	}
