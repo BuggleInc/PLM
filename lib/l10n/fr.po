@@ -11199,8 +11199,8 @@ msgstr ""
 "Soit une chaîne de caractères.\n"
 "Renvoyez combien de fois une sous-chaîne de longueur 2 apparait dans la "
 "chaîne et aussi en tant que 2 derniers caractères de la chaîne.\n"
-"Par exemple, \"hixxxhi\" renvoie 1 ( on ne compte pas le dernière sous-"
-"chaîne )."
+"Par exemple, \"hixxxhi\" renvoie 1 (on ne compte pas la dernière sous-"
+"chaîne)."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/notriples/NoTriples.html:1
@@ -11309,10 +11309,9 @@ msgid ""
 "where all the \"yak\" are removed, but the \"a\" can be any char. The \"yak"
 "\" strings will not overlap."
 msgstr ""
-"Supposer la chaîne \"yak\" comme malchanceuse.\n"
+"La chaîne \"yak\" n'a pas de chance. "
 "Soit une chaîne de caractères, renvoyez une version où tous les \"yak\" sont "
-"supprimées, mais le \"a\" peut être n'importe quel caractère. La \"yak\" "
-"chaîne ne sera pas pétinée."
+"supprimées (quel que soit le caractère à la place du 'a'). Les différentes chaînes \"yak\" ne se chevauchent pas."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics/Array.html:3
