@@ -23,19 +23,17 @@ public abstract class Operation {
 	 * @param o the reference object with which to compare
 	 */
 	public boolean equals(Object o) {
-		boolean sw = true;
 		if (o == null || !(o instanceof Operation))
-		{
-			sw=false;
-		}
-		else
-		{
-			Operation other = (Operation) o;
-			sw =   this.destination == other.destination
-				&& this.source == other.destination
-				&& this.type == other.type ;
-		}
-		return sw;
+			return false;
+		
+		Operation other = (Operation) o;
+		if (destination != other.destination)
+			return false;
+		if (source != other.source)
+			return false;
+		if (type != other.type)
+			return false;
+		return true;
 	}
 
 	/**

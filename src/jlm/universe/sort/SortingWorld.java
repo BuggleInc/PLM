@@ -56,21 +56,28 @@ public class SortingWorld extends World {
 	}
 
 	public boolean equals(Object o) {
-		boolean sw = true;
 		if (o == null || !(o instanceof SortingWorld))
-		{
-			sw=false;
-		}
-		else
-		{
-			SortingWorld other = (SortingWorld) o;
-			sw =   this.initValues.equals(other.initValues)
-			&& this.operations.equals(other.operations)
-			&& this.readCount == other.readCount
-			&& this.writeCount == other.writeCount
-			&& this.values.equals(other.values) ;
-		}
-		return sw;
+			return false;
+
+		SortingWorld other = (SortingWorld) o;
+		if (values.length != other.values.length)
+			return false;
+		for (int i = 0 ; i < this.values.length ; i++) 
+			if ( this.values[i] != other.values[i] )
+				return false;
+		
+		if (operations.size() != other.operations.size())
+			return false;
+		for (int i = 0 ; i < this.operations.size() ; i++) 
+			if (! operations.get(i).equals( other.operations.get(i)) )
+				return false;
+		
+		if (! (this.readCount == other.readCount) )
+			return false;
+		if (! (this.writeCount == other.writeCount) )
+			return false;
+		
+		return true;
 	}
 
 	/**
@@ -116,7 +123,7 @@ public class SortingWorld extends World {
 	public String diffTo(World world) {
 		String s ;
 		if (world == null || !(world instanceof SortingWorld)) {
-			s="This is not a world of sorting ='(";
+			s="This is not a world of sorting :(";
 		} else {
 			SortingWorld other = (SortingWorld) world;
 			StringBuffer sb = new StringBuffer();
