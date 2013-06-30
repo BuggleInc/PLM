@@ -362,7 +362,6 @@ public abstract class ExerciseTemplated extends Exercise {
 			mutateEntities(worlds,nameOfCorrectionEntity);
 		} else {
 			for (World aw : worlds) {
-				aw.setDelay(0);
 				for (Entity ent: aw.getEntities()) {
 					StringBuffer sb = null;
 					try {
