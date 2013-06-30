@@ -115,29 +115,21 @@ public class SortingWorld extends World {
 	@Override
 	public String diffTo(World world) {
 		String s ;
-		if (world == null || !(world instanceof SortingWorld))
-		{
-			s="This is not a world of sorting ='(...";
-		}
-		else
-		{
+		if (world == null || !(world instanceof SortingWorld)) {
+			s="This is not a world of sorting ='(";
+		} else {
 			SortingWorld other = (SortingWorld) world;
 			StringBuffer sb = new StringBuffer();
 			if ( this.readCount != other.readCount )
-			{
 				sb.append("Invalid read count : expected "+this.readCount+" found "+other.readCount+"\n");
-			}
+			
 			if ( this.writeCount != other.writeCount )
-			{
 				sb.append("Invalid write count : expected "+this.writeCount+" found "+other.writeCount+"\n");
-			}
+			
 			for (int i = 0 ; i < this.values.length ; i++) 
-			{
 				if ( this.values[i] != other.values[i] )
-				{
 					sb.append("Index "+i+": expected "+this.values[i]+" found "+other.values[i]+"\n");
-				}	
-			}
+					
 			s = sb.toString();
 		}
 		return s;
