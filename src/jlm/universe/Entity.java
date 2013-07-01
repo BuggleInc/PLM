@@ -186,12 +186,7 @@ public abstract class Entity {
 					engine.eval(
 							/* getParam is in every Entity, so put it here to not request the universe to call super.setupBinding() */
 							"def getParam(i):\n"+
-							"  return entity.getParam(i)\n"+
-									
-							/* Ugly hack, but print is currently not working! Ugh, taste my axe, bastard! */
-							"import java.lang.System.err\n"+
-							"def log(a):\n"+
-							"  java.lang.System.err.print(\"%s: %s\" %(entity.getName(),a))");									
+							"  return entity.getParam(i)\n");									
 					
 				
 				String script = getScript(progLang);
@@ -201,8 +196,20 @@ public abstract class Entity {
 				
 				if (script == null) 
 					System.err.println("No "+progLang+" script source for entity "+this);
-				else 
-					engine.eval(script);
+				else {
+					/* that's not really clean to get the output working when we 
+					 * redirect to the graphical console, but it works. */
+					setScriptOffset(progLang, getScriptOffset(progLang)+7);
+					engine.eval(
+							"import sys;\n" +
+							"import java.lang;\n" +
+							"class JLMOut:\n" +
+							"  def write(obj,msg):\n" +
+							"    java.lang.System.out.print(str(msg))\n" +
+							"sys.stdout = JLMOut()\n"+
+							"sys.stderr = JLMOut()\n"+
+							script);
+				}
 			}
 		} catch (ScriptException e) {
 			if (e.getCause() instanceof PyException) { // This seem to be all exceptions raised by python
@@ -210,10 +217,6 @@ public abstract class Entity {
 				
 				StringBuffer msg = new StringBuffer();
 	
-				//if (__builtin__.isinstance(cause.value, Py.SyntaxError)) {
-				//	System.err.println("cleanly found a syntaxerror");
-				//}
-				
 				if (cause.type.toString().equals("<type 'exceptions.SyntaxError'>")) {
 					msg.append("Syntax error at line "+((cause.value.__findattr__("lineno").asInt())-getScriptOffset(Game.PYTHON))
 							+": "+cause.value.__findattr__("msg")+"\n");
