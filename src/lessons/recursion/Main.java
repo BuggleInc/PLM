@@ -9,7 +9,7 @@ import lessons.recursion.koch.Koch;
 import lessons.recursion.polygonfractal.PolygonFractal;
 import lessons.recursion.sierpinski.Sierpinski;
 import lessons.recursion.spiral.Spiral;
-import lessons.recursion.spiraluse.SpiralUse;
+import lessons.recursion.spiral.SpiralUse;
 import lessons.recursion.square.Square;
 import lessons.recursion.star.Star;
 import lessons.recursion.tree.Tree;

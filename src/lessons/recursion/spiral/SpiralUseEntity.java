@@ -1,4 +1,4 @@
-package lessons.recursion.spiraluse;
+package lessons.recursion.spiral;
 
 import jlm.universe.turtles.Turtle;
 
