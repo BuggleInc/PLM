@@ -263,7 +263,7 @@ public abstract class World {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if ( !(obj instanceof World))
 			return false;
 		World other = (World) obj;
 		if (entities == null) {

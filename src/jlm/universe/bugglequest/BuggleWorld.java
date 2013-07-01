@@ -328,7 +328,7 @@ public class BuggleWorld extends GridWorld {
 			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if ( !(obj instanceof BuggleWorld) )
 			return false;
 		final BuggleWorld other = (BuggleWorld) obj;
 		if (sizeX != other.sizeX)

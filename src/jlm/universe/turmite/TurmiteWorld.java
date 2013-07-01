@@ -67,6 +67,10 @@ public class TurmiteWorld extends BuggleWorld {
 	/** Used to check whether the student code changed the world in the right state -- see exercise 4 */
 	@Override 
 	public boolean equals(Object o) {
+		// hack hack hack: Avoid false negative with answer worlds that were serialized as BuggleWorlds 
+		if (o instanceof BuggleWorld && !(o instanceof TurmiteWorld))
+			return super.equals(o);
+		
 		if (o == null || !(o instanceof TurmiteWorld))
 			return false;
 		if (((TurmiteWorld) o).currStep != currStep)
@@ -74,11 +78,15 @@ public class TurmiteWorld extends BuggleWorld {
 		return super.equals(o);
 	}
 	@Override
-	public String diffTo(World world) {
+	public String diffTo(World other) {
+		// hack hack hack: Avoid false negative with answer worlds that were serialized as BuggleWorlds 
+		if (other instanceof BuggleWorld && !(other instanceof TurmiteWorld))
+			return "other is not a turmiteWorld, but that's ok\n"+super.diffTo(other);
+		
 		String res = "";
-		if (((TurmiteWorld) world).currStep != currStep)
-			res += "The amount of steps is wrong: "+((TurmiteWorld) world).currStep +" is not "+ currStep+"\n";
-		return res+super.diffTo(world);
+		if (((TurmiteWorld) other).currStep != currStep)
+			res += "The amount of steps is wrong: "+((TurmiteWorld) other).currStep +" is not "+ currStep+"\n";
+		return res+super.diffTo(other);
 	}
 	
 	
