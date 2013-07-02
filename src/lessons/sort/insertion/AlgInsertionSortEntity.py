@@ -1,5 +1,5 @@
 # BEGIN SOLUTION
-for i in range(getValueCount()):
+for i in range(1,getValueCount()):
   value = getValue(i)
   j = i
   while j>0 and not isSmallerThan(j-1,value):

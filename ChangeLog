@@ -1,5 +1,7 @@
 20130629:
-  * Pythonize exercises in lessons: maze, recursion and bat/string
+  * Pythonize all lessons: maze, recursion, sort and bat/string
+  * Fix: demo mode in python was without delay
+  * print() in python was not playing well with graphical console
 20130621:
   * Improve the BuggleWorld I/O and the BuggleWorldEditor:
     - better detection and error messages of invalid map files

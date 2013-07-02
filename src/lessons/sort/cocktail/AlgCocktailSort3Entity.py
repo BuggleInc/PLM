@@ -1,24 +1,19 @@
 # BEGIN SOLUTION 
-		boolean swapped;
-		int begin=0;
-		int end=getValueCount()-2;
-		do {
-			swapped = false;
-			for (int i=begin; i<=end; i++)
-				if (!isSmaller(i,i+1)) {
-					swap(i,i+1);
-					swapped =true;
-				}
-			if (!swapped) {
-				return;
-			}
-			swapped=false;
-			end--;
-			for (int i=end; i>=begin; i--)
-				if (!isSmaller(i,i+1)) {
-					swap(i,i+1);
-					swapped =true;
-				}
-			begin++;
-		} while (swapped && end-begin>1);
+begin = 0
+end = getValueCount()-2
+swapped = True
+while swapped  and   end-begin>1:
+	swapped = False
+	for i in range(begin, (end+1) ):
+		if not isSmaller(i,i+1):
+			swap(i,i+1)
+			swapped = True
+	if not swapped:
+		break;
+	end -= 1
+	for i in range(end,begin-1,-1):
+		if not isSmaller(i,i+1):
+			swap(i,i+1)
+			swapped = True
+	begin += 1
 # END SOLUTION
