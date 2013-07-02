@@ -2,8 +2,8 @@ package lessons.recursion;
 
 import jlm.core.model.lesson.Lesson;
 import lessons.recursion.circle.Circle;
-import lessons.recursion.dragoncurve1.DragonCurve1;
-import lessons.recursion.dragoncurve2.DragonCurve2;
+import lessons.recursion.dragoncurve.DragonCurve1;
+import lessons.recursion.dragoncurve.DragonCurve2;
 import lessons.recursion.hanoiboard.HanoiBoard;
 import lessons.recursion.koch.Koch;
 import lessons.recursion.polygonfractal.PolygonFractal;

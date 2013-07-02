@@ -1,4 +1,4 @@
-package lessons.recursion.dragoncurve2;
+package lessons.recursion.dragoncurve;
 
 import java.awt.Color;
 
@@ -8,9 +8,9 @@ import jlm.universe.World;
 import jlm.universe.turtles.Turtle;
 import jlm.universe.turtles.TurtleWorld;
 
-public class DragonCurve2 extends ExerciseTemplated {
+public class DragonCurve1 extends ExerciseTemplated {
 
-	public DragonCurve2(Lesson lesson) {
+	public DragonCurve1(Lesson lesson) {
 		super(lesson);
 
 		/* Create initial situation */

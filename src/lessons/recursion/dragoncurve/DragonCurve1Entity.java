@@ -1,4 +1,4 @@
-package lessons.recursion.dragoncurve1;
+package lessons.recursion.dragoncurve;
 
 import jlm.universe.turtles.Turtle;
 
