@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-04 00:24+0300\n"
-"PO-Revision-Date: 2013-07-04 00:50+0200\n"
+"POT-Creation-Date: 2013-07-04 01:13+0300\n"
+"PO-Revision-Date: 2013-07-04 01:14+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -7677,7 +7677,8 @@ msgid ""
 msgstr ""
 "Plus d'exercices sont prévus à l'avenir. Certain porteront sur les tris\n"
 "récursifs (en particulier QuickSort et MergeSort) tandis que d'autres\n"
-"s'appuieront sur d'autres micro-mondes pour appliquer ces algorithmes à d'autres\n"
+"s'appuieront sur d'autres micro-mondes pour appliquer ces algorithmes à "
+"d'autres\n"
 "situations."
 
 #. type: Content of: <h1>
@@ -8329,7 +8330,18 @@ msgid ""
 "right gap and how to decrease it is a difficult question, but in practice, "
 "dividing it by 1.3 after each traversal leads to good performance. Here is "
 "the corresponding pseudo-code:"
-msgstr "Nous avons vu que le tri cocktail permet d'améliorer un peu les choses pour les tortues (ie, les petites valeurs près de la fin du tableau), mais on peut faire mieux. Le tri à peigne revient à leur faire prendre un racourci&nbsp;: Au lieu de comparer les valeurs adjacentes, on compare des valeurs séparés par un écart plus grand que 1. Ainsi, les tortues vont se déplacer de <i>ecart</i> cases à chaque parcours. Bien entendu, il faut appliquer l'algorithme avec des écarts de plus en plus petit et terminer avec <i>ecart=1</i> pour s'assurer que le tableau est entièrement trié à la fin. Choisir comment réduire l'écart entre les parcours est une question difficile (voir wikipédia), mais en pratique, le diviser par 1.3 à chaque fois amène de bons résultats. Voici le pseudo-code correspondant :"
+msgstr ""
+"Nous avons vu que le tri cocktail permet d'améliorer un peu les choses pour "
+"les tortues (ie, les petites valeurs près de la fin du tableau), mais on "
+"peut faire mieux. Le tri à peigne revient à leur faire prendre un "
+"racourci&nbsp;: Au lieu de comparer les valeurs adjacentes, on compare des "
+"valeurs séparés par un écart plus grand que 1. Ainsi, les tortues vont se "
+"déplacer de <i>ecart</i> cases à chaque parcours. Bien entendu, il faut "
+"appliquer l'algorithme avec des écarts de plus en plus petit et terminer "
+"avec <i>ecart=1</i> pour s'assurer que le tableau est entièrement trié à la "
+"fin. Choisir comment réduire l'écart entre les parcours est une question "
+"difficile (voir wikipédia), mais en pratique, le diviser par 1.3 à chaque "
+"fois amène de bons résultats. Voici le pseudo-code correspondant :"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/comb/AlgCombSort.html:15
@@ -8379,7 +8391,12 @@ msgid ""
 "rather than (9, 6, 4, 3, 2, 1) or (10, 7, 5, 3, 2, 1). Rework the code of "
 "CombSort to ensure just after the gap update that if it is 9 or 10, we "
 "should use 11 instead."
-msgstr "Les auteurs de l'algorithme du tri à peigne ont constaté que l'on améliore les performances en s'assurant que les dernières valeurs de l'écart sont (11, 8, 6, 4, 3, 2, 1) plutôt que (9, 6, 4, 3, 2, 1) ou (10, 7, 5, 3, 2, 1). Reprenez donc le code du tri à peigne, et indiquez juste après la mise à jour de l'écart que si la valeur est 9 ou 10, il faut utiliser 11 à la place."
+msgstr ""
+"Les auteurs de l'algorithme du tri à peigne ont constaté que l'on améliore "
+"les performances en s'assurant que les dernières valeurs de l'écart sont "
+"(11, 8, 6, 4, 3, 2, 1) plutôt que (9, 6, 4, 3, 2, 1) ou (10, 7, 5, 3, 2, 1). "
+"Reprenez donc le code du tri à peigne, et indiquez juste après la mise à "
+"jour de l'écart que si la valeur est 9 ou 10, il faut utiliser 11 à la place."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/gnome/AlgGnomeSort.html:1
@@ -8411,12 +8428,18 @@ msgid ""
 "previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
 msgstr ""
-"L'algorithme de tri du gnome repose sur la manière habituelle de travailler des\n"
-"nains de jardin pour trier une ligne de pots de fleurs: Le nain regarde le pot\n"
+"L'algorithme de tri du gnome repose sur la manière habituelle de travailler "
+"des\n"
+"nains de jardin pour trier une ligne de pots de fleurs: Le nain regarde le "
+"pot\n"
 "de fleur qui est à côté de lui et il regarde également le pot de fleurs\n"
-"précédent; si ces deux pots sont alignés dans le bon ordre, le nain se déplace\n"
-"en avant d'un pot de fleurs, sinon il les échange et se déplace en arrière d'un\n"
-"pot de fleur. Condition aux limites&nbsp;: si il n'y a pas de pot de fleurs précédent, le nain avance ; si il n'y a pas de pot suivant alors il a terminé sa tâche."
+"précédent; si ces deux pots sont alignés dans le bon ordre, le nain se "
+"déplace\n"
+"en avant d'un pot de fleurs, sinon il les échange et se déplace en arrière "
+"d'un\n"
+"pot de fleur. Condition aux limites&nbsp;: si il n'y a pas de pot de fleurs "
+"précédent, le nain avance ; si il n'y a pas de pot suivant alors il a "
+"terminé sa tâche."
 
 #. type: Content of: <h1>
 #: src/lessons/recursion/Main.html:1
@@ -9325,12 +9348,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:18
-#, fuzzy
-#| msgid ""
-#| "While the buggle didn't find the path to the escape, it must proceed the "
-#| "following way: pick a random integer between 0 and 2 by using the "
-#| "<code>random3()</code> method and make one of the following actions: "
-#| "moving forward if possible, turn left or turn right."
 msgid ""
 "While the buggle didn't find the path to the escape, it must proceed the "
 "following way: pick a random integer between 0 and 2 by using the provided "
@@ -9338,30 +9355,24 @@ msgid ""
 "forward if possible, turn left or turn right."
 msgstr ""
 "Tant que notre buggle n'a pas trouvé la sortie, il doit progresser de la "
-"façon suivante : choisir un entier entre 0 et 2 au hasard à l'aide de la "
-"méthode <code>random3()</code> et prendre l'une des décisions suivantes "
-"selon l'entier choisi: avancer si il le peut, tourner à droite ou bien "
-"tourner à gauche)."
+"façon suivante&nbsp;: choisir un entier entre 0 et 2 au hasard à l'aide de "
+"la méthode <code>random3()</code> fournie et prendre l'une des décisions "
+"suivantes selon l'entier choisi&nbsp;: avancer si il le peut, tourner à "
+"droite ou bien tourner à gauche."
 
 #. type: Content of: <a><p>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:27
-#, fuzzy
-#| msgid ""
-#| "The goal of this exercise is to write an algorithm allowing the buggle to "
-#| "get out of this maze."
 msgid ""
 "This exercise's objective is to write an algorithm allowing the buggle to "
 "find its path out of the maze."
 msgstr ""
-"<a name=\"Objectifs\"> L'objectif de cet exercice est d'écrire un algorithme "
-"permettant à votre buggle de sortir du labyrinthe."
+"L'objectif de cet exercice est d'écrire un algorithme permettant à votre "
+"buggle de sortir du labyrinthe."
 
 #. type: Content of: <a><p>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:32
 msgid "Don't forget to pick up the baggle once you've reached it."
-msgstr ""
-"N'oubliez pas de faire ramasser le baggle par votre buggle à la fin de votre "
-"code."
+msgstr "N'oubliez pas de ramasser le baggle quand vous l'avez trouvé."
 
 #. type: Content of: <h2>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:1
@@ -9379,14 +9390,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:6
-#, fuzzy
-#| msgid ""
-#| "Hopefully, this maze is simpler that it seems at the first glance: every "
-#| "wall are connected to each other. To get out of this kind of maze, the "
-#| "buggle only have to follow a wall (the one on its left or the one on its "
-#| "right, it doesn't matter).  While keeping a paw on the wall, the buggle "
-#| "must move forward until it finds the maze exit and this biscuit it loves "
-#| "so much."
 msgid ""
 "The good news is that this maze is simpler that it seems at the first "
 "glance: every wall are connected to each other. To get out of this kind of "
@@ -9398,17 +9401,12 @@ msgstr ""
 "Heureusement, ce labyrinthe est plus simple qu'il n'y paraît: tous les murs "
 "sont connectés les uns aux autres. Pour sortir de ce genre de labyrinthe, il "
 "suffit à votre buggle de longer un mur (celui à sa droite, ou celui à sa "
-"gauche: c'est sans importance). Et, tout en gardant sa patte posée sur ce "
-"mur, votre buggle doit avancer jusqu'à ce qu'il trouve la sortie du "
-"labyrinthe et ce biscuit qu'il apprécie tant."
+"gauche: c'est sans importance). Tout en gardant sa patte posée sur ce mur, "
+"votre buggle doit avancer jusqu'à ce qu'il trouve la sortie du labyrinthe et "
+"ce biscuit qu'il apprécie tant."
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:13
-#, fuzzy
-#| msgid ""
-#| "This algorithm works here because there is no island of isolated walls, "
-#| "so our buggle cannot loop around for ever without encountering the baggle "
-#| "it looks for."
 msgid ""
 "This works here because there is no island of isolated walls, so our buggle "
 "cannot loop around for ever without encountering its baggle."
@@ -9428,33 +9426,18 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:20
-#, fuzzy
-#| msgid ""
-#| "As said in the introduction, it is exactly the same if you decide to "
-#| "follow the left wall or the right one. Simply, the demo follows the left "
-#| "one, so you should do the same in your solution to ease the comparison of "
-#| "your solution and the demo."
 msgid ""
 "As said earlier, it does not matter whether you decide to follow the left "
 "wall or the right one. Simply, the demo follows the left one, so you should "
 "do the same in your solution to ease the comparison of your solution and the "
 "demo."
 msgstr ""
-"Comme dit dans l'introduction, il est sans importance de décider de suivre "
-"le mur droit ou le mur gauche. Simplement, la démo suit le mur gauche, et il "
-"serait donc avisé d'en faire de même dans votre solution pour simplifier la "
-"comparaison de votre solution et de la démo."
+"Comme dit précédement, le mur choisi n'a pas d'importance. Simplement, la "
+"démo suit le mur gauche, et il serait donc avisé d'en faire de même pour "
+"simplifier la comparaison de votre solution et de la démo."
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:25
-#, fuzzy
-#| msgid ""
-#| "Write a method <code>void keepHandOnSideWall()</code> which lets the "
-#| "buggle move one step forward while keeping the paw on the wall of the "
-#| "selected side. You thus have to ensure that the buggle always keep the "
-#| "paw on the wall, but also that it won't crash into a wall. You can check "
-#| "the tip for more info on this, but only do so if you're stuck. Try to do "
-#| "it without the tip first."
 msgid ""
 "Write a method <code>keepHandOnSideWall()</code> which lets the buggle move "
 "one step forward while keeping the paw on the wall of the selected side. You "
@@ -9462,31 +9445,23 @@ msgid ""
 "it won't crash into a wall. You can check the tip for more info on this, but "
 "only do so if you're stuck. Try to do it without the tip first."
 msgstr ""
-"Écrivez une méthode <code>void keepHandOnSideWall()</code> qui fait avancer\n"
+"Écrivez une méthode <code>keepHandOnSideWall()</code> qui fait avancer\n"
 "votre buggle d'une case tout en gardant la patte sur le mur du côté\n"
-"choisi. Vous devez donc vous assurer que votre buggle garde toujours la "
-"patte\n"
+"choisi. Vous devez vous assurer que votre buggle garde toujours la patte\n"
 "sur le mur et également qu'il ne risque pas de percuter un mur. Vous pouvez\n"
 "regarder l'indice (hint) si vous êtes coincés, mais vous devriez d'abord\n"
-"essayer de le faire sans l'indice."
+"essayer de le faire par vous-même."
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:32
-#, fuzzy
-#| msgid ""
-#| "Then, write a <code>run()</code> method which traverse the maze step by "
-#| "step (using <code>void keepHandOnSideWall()</code>) until it finds the "
-#| "biscuit and the exit. Don't forget to pick the baggle up once you've "
-#| "found it."
 msgid ""
 "Then, write the whole algorithm to traverse the maze step by step (using "
 "<code>keepHandOnSideWall()</code>) until it finds the biscuit and the exit. "
 "Don't forget to pick the baggle up once you've found it."
 msgstr ""
-"Enfin, écrivez la méthode <code>void run()</code> qui cherche le mur le plus "
-"proche (méthode <code>void putHandOnSideWall()</code>), puis parcours le "
-"labyrinthe (méthode <code>void keepHandOnSideWall()</code>) jusqu'à trouver "
-"la sortie et le biscuit. Enfin il ne faut pas oubliez de prendre la baggle."
+"Enfin, écrivez l'algorithme complet qui parcourt le labyrinthe pas à pas "
+"jusqu'à\n"
+"trouver le biscuit et la sortie. N'oubliez pas de prendre le baggle."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:37
@@ -9533,11 +9508,6 @@ msgstr "Étape suivante"
 
 #. type: Content of: <div><p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:60
-#, fuzzy
-#| msgid ""
-#| "If you do a <code>turnRight()</code> in any case at the end of your "
-#| "function, it's possible to write it in 3 lines with a <code>while()</"
-#| "code> loop."
 msgid ""
 "If you do a <code>turnRight()</code> in any case at the end of your "
 "function, it's possible to write it in 3 lines with a <code>while</code> "
@@ -9545,7 +9515,7 @@ msgid ""
 msgstr ""
 "Si vous faites un <code>turnRight()</code> dans tous les cas à la fin de "
 "votre fonction, il est possible de l'écrire en trois lignes avec une boucle "
-"<code>while()</code>."
+"<code>while</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/maze/pledge/PledgeMaze.html:1
@@ -9554,15 +9524,6 @@ msgstr "Algorithme de Pledge"
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:3
-#, fuzzy
-#| msgid ""
-#| "Once again, you thought that your algorithm were good enough to escape "
-#| "the maze, and once again, you buggle is now in a maze where your previous "
-#| "algorithm fails. Just give it a try: hit the \"Run\" button and see your "
-#| "creation fail. The trap is shaped like an upper case \"G\". The buggle "
-#| "enters the trap and follows the inner border. At some point, it finds the "
-#| "north direction free, run into that direction, and falls again in the "
-#| "trap."
 msgid ""
 "Once again, you thought that your algorithm were good enough to escape the "
 "maze, and once again, you buggle is now in a maze where your previous "
@@ -9572,14 +9533,15 @@ msgid ""
 "point, it finds the north direction free, run into that direction, and falls "
 "again in the trap."
 msgstr ""
-"Une fois de plus, vous pensiez que votre algorithme vous permettait de vous "
+"Une fois de plus, vous pensiez que votre algorithme vous permettait de vous\n"
 "échapper des labyrinthes, et une fois de plus, votre buggle est prise dans "
-"un labyrinthe où votre algorithme précédent ne suffit pas. Vous pouvez "
-"tenter de simplement appuyer sur le bouton «Run» et voir votre création "
-"échouer. Le piège a la forme d'un «G» majuscule : la buggle entre dans le "
-"piège, suit le bord interne. Au bout d'un moment, la direction nord est "
-"libre et votre buggle se met donc à courir dans cette direction. Pour "
-"retomber dans le piège..."
+"un\n"
+"labyrinthe mettant votre algorithme en défaut. Vous essayer de copier votre "
+"code\n"
+"et de l'exécuter pour voir votre création échouer. Le piège a la forme d'un "
+"«G» majuscule : la buggle entre dans le piège, suit le bord interne. Au bout "
+"d'un moment, la direction nord est libre et votre buggle se met donc à "
+"courir dans cette direction. Pour retomber dans le piège..."
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:13
@@ -9653,23 +9615,17 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:41
-#, fuzzy
-#| msgid ""
-#| "Change your <code>void keepHandOnSideWall()</code> method to count the "
-#| "amount of turns done by the buggle (+1 when it turns left, and -1 when it "
-#| "turns right). This counting may require the addition of an "
-#| "<code>angleSum</code> integer value in your program."
 msgid ""
 "Change your <code>keepHandOnSideWall()</code> method to count the amount of "
 "turns done by the buggle (+1 when it turns left, and -1 when it turns "
 "right). This counting may require the addition of an <code>angleSum</code> "
 "integer value in your program."
 msgstr ""
-"Reprenez la méthode <code>void keepHandOnSideWall()</code> de l'exercice "
+"Reprenez la méthode <code>keepHandOnSideWall()</code> de l'exercice "
 "précédent. Modifiez cette méthode pour compter les virages pris par votre "
 "buggle (+1 lorsqu'il a tourné à gauche par rapport à son origine, -1 "
 "lorsqu'il a tourné à droite). Pour comptabiliser vous aurez besoin d'ajouter "
-"une variable <code>angleSum</code> de type entière à votre programme."
+"une variable <code>sommeAngle</code> de type entière à votre programme."
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:46
@@ -9722,13 +9678,26 @@ msgid ""
 "Without it, the method creates a new variable of the same name, and the "
 "global never gets modified."
 msgstr ""
+"N'oubliez pas que si l'une de vos méthodes modifie une variable globale "
+"(telle\n"
+"que sommeAngles), vous devez vous assurer qu'elle définie cette globale\n"
+"correctement. Sinon, la méthode crée une nouvelle variable locale de même "
+"nom,\n"
+"et la globale n'est jamais modifiée."
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <div><pre>
 #: src/lessons/maze/pledge/PledgeMaze.html:62
+#, no-wrap
 msgid ""
-"<code class=\"python\">def myMethod(): global angleSum ...  angleSum = "
-"angleSum + 1 </code>"
+"def myMethod():\n"
+"  global angleSum\n"
+"  ...\n"
+"  angleSum = angleSum + 1\n"
 msgstr ""
+"def myMethod():\n"
+"  global sommeAngle\n"
+"  ...\n"
+"  sommeAngle = sommeAngle + 1\n"
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/pledge/PledgeMaze.html:68

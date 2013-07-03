@@ -1,12 +1,14 @@
 <h2>Algorithme de Pledge</h2>
 
-<p>Once again, you thought that your algorithm were good enough to escape the
-maze, and once again, you buggle is now in a maze where your previous
-algorithm fails. Just give it a try: copy/paste your code and hit the "Run"
-button and see your creation fail. The trap is shaped like an upper case
-"G". The buggle enters the trap and follows the inner border. At some point,
-it finds the north direction free, run into that direction, and falls again
-in the trap.
+<p>Une fois de plus, vous pensiez que votre algorithme vous permettait de vous
+échapper des labyrinthes, et une fois de plus, votre buggle est prise dans
+un
+labyrinthe mettant votre algorithme en défaut. Vous essayer de copier votre
+code
+et de l'exécuter pour voir votre création échouer. Le piège a la forme d'un
+«G» majuscule : la buggle entre dans le piège, suit le bord interne. Au bout
+d'un moment, la direction nord est libre et votre buggle se met donc à
+courir dans cette direction. Pour retomber dans le piège...
 </p>
 
 <p>L'algorithme de Pledge (nommé d'après Jon Pledge d'Exeter) peut résoudre ce
@@ -41,10 +43,11 @@ une fois parvenu sous l'obstacle.</p>
 implémentation de l'algorithme de Pledge qui permettra à votre buggle de
 sortir du labyrinthe.</p>
 
-<p>Change your <code>keepHandOnSideWall()</code> method to count the amount of
-turns done by the buggle (+1 when it turns left, and -1 when it turns
-right). This counting may require the addition of an <code>angleSum</code>
-integer value in your program.</p>
+<p>Reprenez la méthode <code>keepHandOnSideWall()</code> de l'exercice
+précédent. Modifiez cette méthode pour compter les virages pris par votre
+buggle (+1 lorsqu'il a tourné à gauche par rapport à son origine, -1
+lorsqu'il a tourné à droite). Pour comptabiliser vous aurez besoin d'ajouter
+une variable <code>sommeAngle</code> de type entière à votre programme.</p>
 
 <p>Write a boolean method <code>isDirectionFree(dir)</code> indicating if the
 provided direction is free, ie, if you can move in that direction (Note that
@@ -58,12 +61,17 @@ direction is free in order to restore your state afterward.</p>
 <p>Vous pouvez être amenés à modifier également le reste de votre code, mais
 ces changements devraient rester limités.</p>
 
-<p class="python">Don't forget that if you have a method modifying a global variable (such as
-angleSum), you should ensure that it declares this variable as
-global. Without it, the method creates a new variable of the same name, and
-the global never gets modified.</p>
-<code class="python">def myMethod(): global angleSum ...  angleSum =
-angleSum + 1 </code>
+<p class="python">N'oubliez pas que si l'une de vos méthodes modifie une variable globale
+(telle
+que sommeAngles), vous devez vous assurer qu'elle définie cette globale
+correctement. Sinon, la méthode crée une nouvelle variable locale de même
+nom,
+et la globale n'est jamais modifiée.</p>
+<div class="python"><pre>def myMethod():
+  global angleSum
+  ...
+  angleSum = angleSum + 1
+</pre></div>
 
 <div class="tip" id="tip-1" alt="Montrer un indice supplémentaire">
 You should set your direction to your favorite one (NORTH is advised). Then,

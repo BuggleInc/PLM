@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-04 00:24+0300\n"
+"POT-Creation-Date: 2013-07-04 01:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6928,11 +6928,14 @@ msgid ""
 "the global never gets modified."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <div><pre>
 #: src/lessons/maze/pledge/PledgeMaze.html:62
+#, no-wrap
 msgid ""
-"<code class=\"python\">def myMethod(): global angleSum ...  angleSum = "
-"angleSum + 1 </code>"
+"def myMethod():\n"
+"  global angleSum\n"
+"  ...\n"
+"  angleSum = angleSum + 1\n"
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
