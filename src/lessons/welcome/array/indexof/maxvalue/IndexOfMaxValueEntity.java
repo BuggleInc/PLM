@@ -16,7 +16,7 @@ public class IndexOfMaxValueEntity extends ArrayEntity {
 		int max = Integer.MIN_VALUE;
 		int index = 0;
 		for (int i=0; i<tab.length; i++) {
-			if (tab[i] >= max) {
+			if (tab[i] > max) { // we are looking for the first occurence
 				max = tab[i];
 				index = i;
 			}
