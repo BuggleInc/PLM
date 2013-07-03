@@ -1,13 +1,12 @@
 <h2>Algorithme de Pledge</h2>
 
-<p>Une fois de plus, vous pensiez que votre algorithme vous permettait de vous
-échapper des labyrinthes, et une fois de plus, votre buggle est prise dans
-un labyrinthe où votre algorithme précédent ne suffit pas. Vous pouvez
-tenter de simplement appuyer sur le bouton «Run» et voir votre création
-échouer. Le piège a la forme d'un «G» majuscule : la buggle entre dans le
-piège, suit le bord interne. Au bout d'un moment, la direction nord est
-libre et votre buggle se met donc à courir dans cette direction. Pour
-retomber dans le piège...
+<p>Once again, you thought that your algorithm were good enough to escape the
+maze, and once again, you buggle is now in a maze where your previous
+algorithm fails. Just give it a try: copy/paste your code and hit the "Run"
+button and see your creation fail. The trap is shaped like an upper case
+"G". The buggle enters the trap and follows the inner border. At some point,
+it finds the north direction free, run into that direction, and falls again
+in the trap.
 </p>
 
 <p>L'algorithme de Pledge (nommé d'après Jon Pledge d'Exeter) peut résoudre ce
@@ -42,34 +41,35 @@ une fois parvenu sous l'obstacle.</p>
 implémentation de l'algorithme de Pledge qui permettra à votre buggle de
 sortir du labyrinthe.</p>
 
-<p>Reprenez la méthode <code>void keepHandOnSideWall()</code> de l'exercice
-précédent. Modifiez cette méthode pour compter les virages pris par votre
-buggle (+1 lorsqu'il a tourné à gauche par rapport à son origine, -1
-lorsqu'il a tourné à droite). Pour comptabiliser vous aurez besoin d'ajouter
-une variable <code>angleSum</code> de type entière à votre programme.</p>
+<p>Change your <code>keepHandOnSideWall()</code> method to count the amount of
+turns done by the buggle (+1 when it turns left, and -1 when it turns
+right). This counting may require the addition of an <code>angleSum</code>
+integer value in your program.</p>
 
-<p>Écrivez une méthode <code>boolean isChosenDirectionFree()</code> indiquant
-si la direction arbitraire que vous avez choisie est libre, c'est-à-dire si
-vous pouvez vous déplacer dans cette direction. Notez que la démo utilise la
-direction NORTH pour cela. Vous pouvez retrouver la direction courante de la
-buggle en utilisant la méthode <code>Direction getDirection()</code>.  Vous
-pouvez diriger (sans se déplacer) votre buggle dans une direction en
-utilisant la méthode <code>void setDirection(Direction d)</code>.  Pensez à
-mémoriser (dans une variable de type <code>Direction</code>) la direction
-courante de votre buggle avant de vérifier si votre buggle peut se diriger
-vers sa direction de prédilection pour pouvoir restaurer l'état après coup.</p>
+<p>Write a boolean method <code>isDirectionFree(dir)</code> indicating if the
+provided direction is free, ie, if you can move in that direction (Note that
+the demo uses the NORTH direction for that).  You can retrieve the current
+direction of the buggle using the method <code>getDirection()</code>. You
+can change your direction (without moving) using
+<code>setDirection(dir)</code>. Don't forget to store the previous direction
+of your buggle (in a dedicated variable) before checking if your favorite
+direction is free in order to restore your state afterward.</p>
 
 <p>Vous pouvez être amenés à modifier également le reste de votre code, mais
 ces changements devraient rester limités.</p>
 
+<p class="python">Don't forget that if you have a method modifying a global variable (such as
+angleSum), you should ensure that it declares this variable as
+global. Without it, the method creates a new variable of the same name, and
+the global never gets modified.</p>
+<code class="python">def myMethod(): global angleSum ...  angleSum =
+angleSum + 1 </code>
+
 <div class="tip" id="tip-1" alt="Montrer un indice supplémentaire">
-La méthode <code>void run()</code> doit déplacer votre buggle dans votre
-direction de prédilection (il est conseillé de choisir le nord pour
-cela). Ensuite, vous devez écrire la boucle principale de
-l'algorithme. Autrement dit, tant que votre buggle n'a pas trouvé son
-biscuit, il faut avancer jusqu'à un obstacle dans la direction de
-prédilection. Quand un obstacle est rencontré, il faut garder la patte sur
-un mur (en utilisant <code>void keepHandOnSideWall()</code>) tant que la
-somme des virages n'est pas nulle et que la direction de prédilection n'est
-pas libre. Faites cela jusqu'à trouver votre biscuit.</div>
+You should set your direction to your favorite one (NORTH is advised). Then,
+you should write the algorithm main loop. In other words, while your buggle
+did not find its biscuit, you have to move forward until next obstacle in
+the favorite direction. Then, put a paw on a wall (using
+(<code>keepHandOnSideWall()</code>) while the sum of turns is not null and
+the favorite direction is not free. Do that until you find your baggle.</div>
 	

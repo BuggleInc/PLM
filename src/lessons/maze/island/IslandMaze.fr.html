@@ -39,17 +39,25 @@ nord et qu'elle n'est pas face à un mur.
 La manière la plus simple d'écrire une telle machine à état est quelque
 chose du type 
 <pre>
-<code>int state=0;
+	<code div="Java">int state=0;
 switch (state) {
-  case 0: 
+  case 0: // North runner
      ...
      state = 1;
      break;
-  case 1:
+  case 1: // Left follower
      ...
      state = 0;
      break;
 }
+</code>
+<code div="python">northRunner = True
+if northRunner:
+     ...
+     northRunner = False
+else: # left follower
+     ...
+     northRunner = True
 </code>
 </pre>
 </div>

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-05-25 09:13+0300\n"
+"POT-Creation-Date: 2013-07-02 23:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -349,7 +349,7 @@ msgid "History view"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:25 src/lessons/sort/bubble1/AlgBubbleSort1.html:7
+#: src/jlm/universe/sort/SortingWorld.html:25 src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -360,7 +360,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:32 src/lessons/sort/bubble1/AlgBubbleSort1.html:14
+#: src/jlm/universe/sort/SortingWorld.html:32 src/lessons/sort/bubble/AlgBubbleSort1.html:14
 msgid ""
 "To help in this process, it is posible to graphically explore the history of "
 "your sorting algorithm. Switch to the Objective view and use the contextual "
@@ -369,7 +369,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:37 src/lessons/sort/bubble1/AlgBubbleSort1.html:19
+#: src/jlm/universe/sort/SortingWorld.html:37 src/lessons/sort/bubble/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -1474,8 +1474,8 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Main.html:3
 msgid ""
-"This first lesson will lead your first steps in Java programming. It is "
-"intended for beginners. List of seen notions per exercise:"
+"This first lesson will lead your first steps in programming. It is intended "
+"for beginners. List of seen notions per exercise:"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -1528,8 +1528,8 @@ msgstr ""
 msgid "Switch"
 msgstr ""
 
-#. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438 src/lessons/welcome/Main.html:478
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438 src/lessons/welcome/Main.html:478 src/lessons/welcome/array/basics/Array.html:18
 msgid "Arrays"
 msgstr ""
 
@@ -1628,13 +1628,13 @@ msgstr ""
 msgid "Snake World"
 msgstr ""
 
-#. type: Content of: <h1>
-#: src/lessons/welcome/Main.html:375 src/lessons/welcome/array/basics/Array.html:1
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:375
 msgid "Knitting and Arrays"
 msgstr ""
 
-#. type: Content of: <h1>
-#: src/lessons/welcome/Main.html:389 src/lessons/welcome/array/basics2/Array2.html:1
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:389
 msgid "Knitting, Arrays and modulos"
 msgstr ""
 
@@ -1947,7 +1947,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/basics/Basics.html:77 src/lessons/welcome/conditions/Conditions.html:147 src/lessons/welcome/baggleseeker/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loop/forloop/LoopFor.html:73 src/lessons/welcome/loop/whileloop/LoopWhile.html:26 src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:17 src/lessons/welcome/methods/basics/Methods.html:59 src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/bdr/basics/BDR.html:159 src/lessons/welcome/bdr/extended/BDR2.html:111 src/lessons/welcome/slug/hunting/SlugHunting.html:37 src/lessons/welcome/slug/tracking/SlugTracking.html:20 src/lessons/maze/randommouse/RandomMouseMaze.html:23 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:35 src/lessons/maze/shortestpath/ShortestPathMaze.html:36 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/basics/Basics.html:77 src/lessons/welcome/conditions/Conditions.html:147 src/lessons/welcome/baggleseeker/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loop/forloop/LoopFor.html:73 src/lessons/welcome/loop/whileloop/LoopWhile.html:26 src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:17 src/lessons/welcome/methods/basics/Methods.html:59 src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/bdr/basics/BDR.html:159 src/lessons/welcome/bdr/extended/BDR2.html:111 src/lessons/welcome/slug/hunting/SlugHunting.html:37 src/lessons/welcome/slug/tracking/SlugTracking.html:20 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -3194,7 +3194,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:54 src/lessons/maze/randommouse/RandomMouseMaze.html:41 src/lessons/welcome/array/basics/Array.html:161 src/lessons/welcome/array/basics2/Array2.html:26
+#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:54 src/lessons/welcome/array/basics/Array.html:229 src/lessons/welcome/array/basics2/Array2.html:30
 msgid "You're up."
 msgstr ""
 
@@ -3682,7 +3682,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture3/MethodsPicture3.html:11 src/lessons/welcome/snake/Snake.html:44 src/lessons/welcome/traversal/column/TraversalByColumn.html:49 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
+#: src/lessons/welcome/methods/picture3/MethodsPicture3.html:11 src/lessons/welcome/snake/Snake.html:44 src/lessons/welcome/traversal/column/TraversalByColumn.html:52 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
 msgid "Your turn..."
 msgstr ""
 
@@ -4445,7 +4445,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <a>
-#: src/lessons/welcome/bdr/extended/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:23
+#: src/lessons/welcome/bdr/extended/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24
 msgid "<a name=\"Objectives\">"
 msgstr ""
 
@@ -4767,8 +4767,13 @@ msgid ""
 "something like:"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:9
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:8
+msgid "The main loop of your code should be something like:"
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><pre>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:10
 #, no-wrap
 msgid ""
 " while we are not on the final position\n"
@@ -4776,19 +4781,19 @@ msgid ""
 "   label the cell with its number\n"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:14
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:15
 msgid ""
 "In contrary to the exercises we saw so far, we won't use the "
 "<code>forward()</code>, <code>backward()</code> and similar "
 "methods. Instead, we will compute the coordinate of the next buggle position "
-"and use the <code>setPos(int, int)</code> method to <i>teleport</i> the "
-"buggle directly to this position. For example, <code>setPos(3, 5)</code> "
-"teleports the buggle to the cell where x=3 and y=5."
+"and use the <code>setPos(x, y)</code> method to <i>teleport</i> the buggle "
+"directly to this position. For example, <code>setPos(3, 5)</code> teleports "
+"the buggle to the cell where x=3 and y=5."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:21
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:22
 msgid ""
 "Your first task is thus to write a boolean function indicating whether the "
 "buggle the final position or not, ie if it reached the bottom right corner "
@@ -4799,13 +4804,13 @@ msgid ""
 "world dimensions."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:28
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:29
 msgid "Beware, the first line and column are numbered 0 and not 1..."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:30
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:31
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
@@ -4813,30 +4818,37 @@ msgid ""
 "to move to the cell below else."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:35
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:36
 msgid ""
 "At this point, you can launch your program to check that the buggle "
 "correctly traverse the world in the expected order, and that it stops when "
 "it has to. Use the <b>stop</b> button if the buggle does not stop correctly."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:39
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:40
 msgid ""
 "It is now time to write done the cell numbers. For that, you will need a "
 "counter initialiser to zero at the begining of your <code>run()</code> "
-"method, and incremented by one at each step (for example with "
-"<code>counter++;</code>). Then, you have to write the value on the ground, "
-"for example with <code>writeMessage(counter);</code>."
+"method, and incremented by one at each step (for example with <code>counter "
+"+= 1;</code>). Then, you have to write the value on the ground, for example "
+"with <code>writeMessage(counter);</code>."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:45
+#. type: Content of: <p><p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:46
 msgid ""
 "You probably need to write the first or last value out of the main loop, "
 "depending on whether you prefer to use a <code>while {}</code> or a <code>do "
 "{} while</code>..."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:50
+msgid ""
+"You may want to write the first value out of the main <code>while "
+"...:</code> loop."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -4904,13 +4916,20 @@ msgid ""
 "now. You have to complete the <code>step()</code> method, which encodes the "
 "behavior of the ant at each step. You will probably use the "
 "<code>getGroundColor()</code> method to retrieve the color of the cell on "
-"which the ant is currently. To compare colors, you cannot use the equal sign "
-"(=), because these things are not scalar values but objects. Instead, you "
-"need to write something like the following:"
+"which the ant is currently.  Colors of interest are simply named "
+"<code>Color.black</code> and <code>Color.white</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/langton/Langton.html:20
+msgid ""
+"To compare colors, you cannot use the equal sign (=), because these things "
+"are not scalar values but objects. Instead, you need to write something like "
+"the following:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/turmites/langton/Langton.html:22
+#: src/lessons/welcome/turmites/langton/Langton.html:24
 #, no-wrap
 msgid ""
 "Color c /* = some initialization */;\n"
@@ -4922,24 +4941,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:30
+#: src/lessons/welcome/turmites/langton/Langton.html:32
 msgid ""
 "Changing the ground color is not difficult, but a bit long: you have to "
 "change the brush color of your buggle, set the brush down (to mark the "
 "current cell -- with <code>brushDown()</code>), and set the brush back up "
 "(with <code>brushUp()</code>) to avoid further issues when the buggle will "
 "move. You are naturally free of organizing your code the way you want, but "
-"you may want to write a <code>void setGroundColor(Color c)</code> method to "
-"factorize things a bit."
+"you may want to write a <code>setGroundColor</code> method to factorize "
+"things a bit."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/turmites/langton/Langton.html:38
+#: src/lessons/welcome/turmites/langton/Langton.html:39
 msgid "More information on Langton's ant"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:40
+#: src/lessons/welcome/turmites/langton/Langton.html:41
 msgid ""
 "As you can see from the execution of this exercise, the interest in this "
 "algorithm is that after about 10000 steps of relative chaotic behavior, the "
@@ -4948,7 +4967,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:45
+#: src/lessons/welcome/turmites/langton/Langton.html:46
 msgid ""
 "This mechanism were invented in 1986 by Chris Langton, and later generalized "
 "in several ways (as we shall see in the next exercises). It was proven in "
@@ -4959,7 +4978,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:51
+#: src/lessons/welcome/turmites/langton/Langton.html:52
 msgid ""
 "Check the corresponding wikipedia web page, of which this exercise is "
 "inspired, for further details."
@@ -5007,45 +5026,57 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:24
+msgid ""
+"Changing your buggle into a generic Langton's ant is not very complicated, "
+"although it is not completely trivial. As previously, you have to write a "
+"<code>step</code> function. But this time, it receives two arrays as "
+"parameters.  The first one defines the rules to follow depending on the "
+"ground color while the second one gives the sequence of colors to use. For "
+"example, the basic ant would have <code>['R', 'L']</code> and "
+"<code>[Color.white, Color.black]</code> as arguments."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:31
 msgid "At each step, you thus have to apply the following pseudo-code:"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:26
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:33
 msgid "Find the position of the ground color in the color sequence;"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:27
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:34
 msgid ""
 "Turn left or right depending on the content of the rule array at that "
 "position;"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:28
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:35
 msgid ""
 "Mark the current ground with the next color in the sequence (the last color "
 "being followed by the first one);"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:29
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:36
 msgid "Move forward by one step."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:32 src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:52
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:39 src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:70
 msgid "You now should have enough information to succeed."
 msgstr ""
 
-#. type: Content of: <p><h2>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:34 src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:54
+#. type: Content of: <h2>
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:41 src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:72
 msgid "Bibliographical notes"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:35
+#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:42
 msgid ""
 "According to wikipedia, multicolor Langton's ants were discovered in 1995 by "
 "Propp et Al. Another funny fact is that the ants which name is a list of "
@@ -5076,50 +5107,54 @@ msgstr ""
 msgid ""
 "Once again, you just have to write the <code>step()</code> method, in charge "
 "of doing one turmite's step. Once again, you should first find the rank of "
-"the current's cell ground color in the color sequence. The "
-"<code>colors</code> array is not passed as parameter but declared as global "
-"variable. It shouldn't change anything for us since this array was never "
-"modified during the execution. This trick to pass constant parameters is not "
-"very clean, but it should help performance a bit."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:20
-msgid ""
-"The second step is to use the <code>rule</code> data depending on the "
-"current color and the current state. <code>rule</code> actually contains 3 "
-"information in each situation: the color to write, the move to do, and the "
-"next state value. For example, rule[1][0] contains the informations to use "
-"when <code>state==1</code> and <code>color==0</code>. In other worlds, you "
-"can retrieve the information relative to your current situation by using "
+"the current's cell ground color in the color sequence. But this time, the "
+"<code>rule</code> data depends both on the current color and the current "
+"state.  <code>rule</code> actually contains 3 information in each situation: "
+"the color to write, the move to do, and the next state value. For example, "
+"rule[1][0] contains the informations to use when <code>state==1</code> and "
+"<code>color==0</code>. In other worlds, you can retrieve the information "
+"relative to your current situation by using "
 "<code>rule[state][currentColor]</code>."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:27
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:22
 msgid ""
 "Each such information set contains 3 values. The first one is the rank of "
 "the color to write on the ground. The second is the move to do, with the "
 "following notation: 0=stop, 1=noturn, 2=right, 4=u-turn, 8=left. Note that "
 "if the command is stop, you shouldn't even move forward on that step (but "
-"you shouldn't stop your program either: the next steps can do something "
-"else). Finally, the third integer is the next <code>state</code> value to go "
-"into after this iteration."
+"you shouldn't stop your program either: the next steps can do something else "
+"in a future state). Finally, the third integer is the next "
+"<code>state</code> value to go into after this iteration."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:34
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:29
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, the "
 "template code defines a set of constants that you should use instead of the "
 "direct numerical values. Their names are NOTURN, LEFT, RIGHT and so on. The "
 "modifiers <code>final static</code> before their type is the way to mark "
 "variables as constant in Java (sorry if the notation seems complex). Using "
-"such constants greatly help making the code easier to read, since"
+"such constants greatly help making the code easier to read. This allows to "
+"write things this way:"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:41
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:35
+msgid ""
+"Since these arbitrary notations are somehow difficult to remember, the "
+"template code defines a set of constants that you should use instead of the "
+"direct numerical values. Their names are NOTURN, LEFT, RIGHT and so on. By "
+"convention, such constant variables are written in upper case in "
+"python. Technically, you can still modify them, but that would be a very bad "
+"idea. Using such constants greatly help making the code easier to read, as "
+"it allows to write things this way:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:42
 #, no-wrap
 msgid ""
 "  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
@@ -5127,13 +5162,21 @@ msgid ""
 "  }\n"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:45
-msgid "is much more easier to read than"
+#. type: Content of: <pre>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:47
+#, no-wrap
+msgid ""
+"  if rule[state][currentColor][NEXT_MOVE] == LEFT:\n"
+"    turnLeft()\n"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:47
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:50
+msgid "This is much more easier to read than the following way:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:52
 #, no-wrap
 msgid ""
 "  if (rule[x][y][1] == 2) {\n"
@@ -5141,8 +5184,30 @@ msgid ""
 "  }\n"
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:55
+#. type: Content of: <pre>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:57
+#, no-wrap
+msgid ""
+"  if rule[x][y][1] == 2:\n"
+"    turnLeft()\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:61
+msgid ""
+"Finally, you probably want to write a <code>elif</code> branch for the "
+"<code>STOP</code> condition too. Having a <code>else</code> branch "
+"displaying an error message such as \"unknown case\" is a good practice: it "
+"makes your assumptions about your code more explicit, and you will get an "
+"error message if they fall short. When doing so, the next problem is that "
+"you have nothing to do in the <code>STOP</code> case, but python do not "
+"allows you to write empty <code>elif</code> branches. You should use the "
+"<code>pass</code> instruction as a placeholder: it says python that you have "
+"a branch here, and that it does not contain anything."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:73
 msgid ""
 "According to wikipedia, turmites were invented independently by the end of "
 "the eighties. It has been shown that turmites in general are exactly "
@@ -5236,93 +5301,113 @@ msgid ""
 "submitting your creations directly to the free encyclopedia."
 msgstr ""
 
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:62
+msgid ""
+"Here are some 2-color turmites, extracted from "
+"http://demonstrations.wolfram.com/Turmites/ They are not written using the "
+"python syntax, but converting them should be easy."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:64
+msgid ""
+"Here are some 2-color turmites, extracted from "
+"http://demonstrations.wolfram.com/Turmites/"
+msgstr ""
+
 #. type: Content of: <pre>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:63
+#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:67
 #, no-wrap
 msgid ""
-"EdPeggJrTurmiteLibrary = [\n"
-"# source: http://demonstrations.wolfram.com/Turmites/\n"
-"# Translated into his later notation: 1=noturn, 2=right, 4=u-turn, 8=left\n"
-"# (all these are 2-color patterns)\n"
-"\"{{{1, 2, 0}, {0, 8, 0}}}\",  # 1: Langton's ant\n"
-"\"{{{1, 2, 0}, {0, 1, 0}}}\",  # 2: binary counter\n"
-"\"{{{0, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}\", # 3: (filled "
-"triangle)\n"
-"\"{{{0, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {0, 1, 1}}}\", # 4: spiral in a box\n"
-"\"{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {0, 2, 0}}}\", # 5: stripe-filled "
-"spiral\n"
-"\"{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {1, 1, 0}}}\", # 6: stepped pyramid\n"
-"\"{{{0, 2, 1}, {0, 1, 1}}, {{1, 2, 1}, {1, 8, 0}}}\", # 7: contoured "
-"island\n"
-"\"{{{0, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {0, 2, 1}}}\", # 8: woven placemat\n"
-"\"{{{0, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {1, 8, 0}}}\", # 9: snowflake-ish\n"
-"\"{{{1, 8, 0}, {0, 1, 1}}, {{0, 8, 0}, {0, 8, 1}}}\", # 10: slow city "
-"builder\n"
-"\"{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 0}, {0, 8, 1}}}\", # 11: framed computer "
-"art\n"
-"\"{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 1}, {1, 8, 0}}}\", # 12: balloon bursting "
-"(makes a spreading highway)\n"
-"\"{{{1, 8, 1}, {0, 8, 0}}, {{1, 1, 0}, {0, 1, 0}}}\", # 13: makes a "
-"horizontal highway\n"
-"\"{{{1, 8, 1}, {0, 8, 0}}, {{1, 2, 1}, {1, 2, 0}}}\", # 14: makes a 45 "
-"degree highway\n"
-"\"{{{1, 8, 1}, {0, 8, 1}}, {{1, 2, 1}, {0, 8, 0}}}\", # 15: makes a 45 "
-"degree highway\n"
-"\"{{{1, 8, 1}, {0, 1, 0}}, {{1, 1, 0}, {1, 2, 0}}}\", # 16: spiral in a "
-"filled box\n"
-"\"{{{1, 8, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 17: glaciers\n"
-"\"{{{1, 8, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 1, 0}}}\", # 18: golden "
-"rectangle!\n"
-"\"{{{1, 8, 1}, {1, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 19: fizzy spill\n"
-"\"{{{1, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {0, 1, 1}}}\", # 20: nested "
-"cabinets\n"
-"\"{{{1, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {1, 1, 1}}}\", # 21: (cross)\n"
-"\"{{{1, 1, 1}, {0, 1, 0}}, {{0, 2, 0}, {1, 8, 0}}}\", # 22: saw-tipped "
-"growth\n"
-"\"{{{1, 1, 1}, {0, 1, 1}}, {{1, 2, 1}, {0, 1, 0}}}\", # 23: curves in blocks "
-"growth\n"
-"\"{{{1, 1, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 24: textured "
-"growth\n"
-"\"{{{1, 1, 1}, {0, 2, 1}}, {{1, 8, 0}, {1, 2, 0}}}\", # 25: (diamond "
-"growth)\n"
-"\"{{{1, 1, 1}, {1, 8, 0}}, {{1, 2, 1}, {0, 1, 0}}}\", # 26: coiled rope\n"
-"\"{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 1, 1}}}\", # 27: (growth)\n"
-"\"{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 2, 1}}}\", # 28: (square "
-"spiral)\n"
-"\"{{{1, 2, 0}, {1, 2, 1}}, {{0, 1, 0}, {0, 1, 1}}}\", # 29: loopy growth "
-"with holes\n"
-"\"{{{1, 2, 1}, {0, 8, 1}}, {{1, 1, 0}, {0, 1, 0}}}\", # 30: Lanton's Ant "
-"drawn with squares\n"
-"\"{{{1, 2, 1}, {0, 2, 0}}, {{0, 8, 1}, {1, 8, 0}}}\", # 31: growth with "
-"curves and blocks\n"
-"\"{{{1, 2, 1}, {0, 2, 0}}, {{0, 1, 0}, {1, 2, 1}}}\", # 32: distracted "
-"spiral builder\n"
-"\"{{{1, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}\", # 33: cauliflower "
-"stalk (45 deg highway)\n"
-"\"{{{1, 2, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 2, 0}}}\", # 34: worm trails "
-"(eventually turns cyclic!)\n"
-"\"{{{1, 2, 1}, {1, 1, 0}}, {{1, 1, 0}, {0, 1, 1}}}\", # 35: eventually makes "
-"a two-way highway!\n"
-"\"{{{1, 2, 1}, {1, 2, 0}}, {{0, 1, 0}, {0, 1, 0}}}\", # 36: almost symmetric "
-"mould bloom\n"
-"\"{{{1, 2, 1}, {1, 2, 0}}, {{0, 2, 0}, {1, 1, 1}}}\", # 37: makes a 1 in 2 "
-"gradient highway\n"
-"\"{{{1, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {0, 2, 0}}}\", # 38: immediately "
-"makes a 1 in 3 highway\n"
-"\"{{{0, 2, 1}, {1, 2, 1}}, {{0, 8, 2}, {0, 8, 0}}, {{1, 2, 2}, {1, 8, "
-"0}}}\", # 39: squares and diagonals growth\n"
-"\"{{{1, 8, 1}, {0, 1, 0}}, {{0, 2, 2}, {1, 8, 0}}, {{1, 2, 1}, {1, 1, "
-"0}}}\", # 40: streak at approx. an 8.1 in 1 gradient\n"
-"\"{{{1, 8, 1}, {0, 1, 2}}, {{0, 2, 2}, {1, 1, 1}}, {{1, 2, 1}, {1, 1, "
-"0}}}\", # 41: streak at approx. a 1.14 in 1 gradient\n"
-"\"{{{1, 8, 1}, {1, 8, 1}}, {{1, 1, 0}, {0, 1, 2}}, {{0, 8, 1}, {1, 1, "
-"1}}}\", # 42: maze-like growth\n"
-"\"{{{1, 8, 2}, {0, 2, 0}}, {{1, 8, 0}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, "
-"1}}}\", # 43: growth by cornices \n"
-"\"{{{1, 2, 0}, {0, 2, 2}}, {{0, 8, 0}, {0, 2, 0}}, {{0, 1, 1}, {1, 8, "
-"0}}}\", # 44: makes a 1 in 7 highway\n"
-"\"{{{1, 2, 1}, {0, 8, 0}}, {{1, 2, 2}, {0, 1, 0}}, {{1, 8, 0}, {0, 8, "
-"0}}}\", # 45: makes a 4 in 1 highway\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant\n"
+"{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: binary counter\n"
+"{{{0, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 3: "
+"(filled triangle)\n"
+"{{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: "
+"spiral in a box\n"
+"{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: "
+"stripe-filled spiral\n"
+"{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: "
+"stepped pyramid\n"
+"{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: "
+"contoured island\n"
+"{{{0, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {0, RIGHT , 1}}} # 8: "
+"woven placemat\n"
+"{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: "
+"snowflake-ish\n"
+"{{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: "
+"slow city builder\n"
+"{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 0}, {0, LEFT  , 1}}} # 11: "
+"framed computer art\n"
+"{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 1}, {1, LEFT  , 0}}} # 12: "
+"balloon bursting (makes a spreading highway)\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 13: "
+"makes a horizontal highway\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 1}, {1, RIGHT , 0}}} # 14: "
+"makes a 45 degree highway\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 1}}, {{1, RIGHT , 1}, {0, LEFT  , 0}}} # 15: "
+"makes a 45 degree highway\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{1, NOTURN, 0}, {1, RIGHT , 0}}} # 16: "
+"spiral in a filled box\n"
+"{{{1, LEFT  , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 17: "
+"glaciers\n"
+"{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 18: "
+"golden rectangle!\n"
+"{{{1, LEFT  , 1}, {1, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 19: "
+"fizzy spill\n"
+"{{{1, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 20: "
+"nested cabinets\n"
+"{{{1, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {1, NOTURN, 1}}} # 21: "
+"(cross)\n"
+"{{{1, NOTURN, 1}, {0, NOTURN, 0}}, {{0, RIGHT , 0}, {1, LEFT  , 0}}} # 22: "
+"saw-tipped growth\n"
+"{{{1, NOTURN, 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 23: "
+"curves in blocks growth\n"
+"{{{1, NOTURN, 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 24: "
+"textured growth\n"
+"{{{1, NOTURN, 1}, {0, RIGHT , 1}}, {{1, LEFT  , 0}, {1, RIGHT , 0}}} # 25: "
+"(diamond growth)\n"
+"{{{1, NOTURN, 1}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 26: "
+"coiled rope\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, NOTURN, 1}}} # 27: "
+"(growth)\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, RIGHT , 1}}} # 28: "
+"(square spiral)\n"
+"{{{1, RIGHT , 0}, {1, RIGHT , 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}} # 29: "
+"loopy growth with holes\n"
+"{{{1, RIGHT , 1}, {0, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 30: "
+"Lanton's Ant drawn with squares\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 1}, {1, LEFT  , 0}}} # 31: "
+"growth with curves and blocks\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, NOTURN, 0}, {1, RIGHT , 1}}} # 32: "
+"distracted spiral builder\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 33: "
+"cauliflower stalk (45 deg highway)\n"
+"{{{1, RIGHT , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, RIGHT , 0}}} # 34: "
+"worm trails (eventually turns cyclic!)\n"
+"{{{1, RIGHT , 1}, {1, NOTURN, 0}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 35: "
+"eventually makes a two-way highway!\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, NOTURN, 0}, {0, NOTURN, 0}}} # 36: "
+"almost symmetric mould bloom\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, RIGHT , 0}, {1, NOTURN, 1}}} # 37: "
+"makes a 1 in 2 gradient highway\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 38: "
+"immediately makes a 1 in 3 highway\n"
+"{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{0, LEFT  , 2}, {0, LEFT  , 0}}, {{1, "
+"RIGHT , 2}, {1, LEFT  , 0}}} # 39: squares and diagonals growth\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{0, RIGHT , 2}, {1, LEFT  , 0}}, {{1, "
+"RIGHT , 1}, {1, NOTURN, 0}}} # 40: streak at approx. an 8.1 in 1 gradient\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 2}}, {{0, RIGHT , 2}, {1, NOTURN, 1}}, {{1, "
+"RIGHT , 1}, {1, NOTURN, 0}}} # 41: streak at approx. a 1.14 in 1 gradient\n"
+"{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 2}}, {{0, "
+"LEFT  , 1}, {1, NOTURN, 1}}} # 42: maze-like growth\n"
+"{{{1, LEFT  , 2}, {0, RIGHT , 0}}, {{1, LEFT  , 0}, {0, RIGHT , 0}}, {{0, "
+"LEFT  , 0}, {0, LEFT  , 1}}} # 43: growth by cornices \n"
+"{{{1, RIGHT , 0}, {0, RIGHT , 2}}, {{0, LEFT  , 0}, {0, RIGHT , 0}}, {{0, "
+"NOTURN, 1}, {1, LEFT  , 0}}} # 44: makes a 1 in 7 highway\n"
+"{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, "
+"LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway\n"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5413,12 +5498,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble1/AlgBubbleSort1.html:1 src/lessons/sort/bubble2/AlgBubbleSort2.html:1 src/lessons/sort/bubble3/AlgBubbleSort3.html:1
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:1 src/lessons/sort/bubble/AlgBubbleSort2.html:1 src/lessons/sort/bubble/AlgBubbleSort3.html:1
 msgid "BubbleSort and variations"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble1/AlgBubbleSort1.html:3
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:3
 msgid ""
 "Welcome to the sorting world. It allows you to experiment with the existing "
 "sorting algorithms. The list of buildins that you can use in your algorithms "
@@ -5427,12 +5512,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble1/AlgBubbleSort1.html:27
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
 msgid "BubbleSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble1/AlgBubbleSort1.html:29
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -5447,17 +5532,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble1/AlgBubbleSort1.html:39 src/lessons/sort/bubble2/AlgBubbleSort2.html:13
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:39 src/lessons/sort/bubble/AlgBubbleSort2.html:13
 msgid "Show Tip (Pseudo-code)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble1/AlgBubbleSort1.html:40
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble1/AlgBubbleSort1.html:41
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
@@ -5467,12 +5552,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble2/AlgBubbleSort2.html:3
+#: src/lessons/sort/bubble/AlgBubbleSort2.html:3
 msgid "BubbleSort2"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble2/AlgBubbleSort2.html:5
+#: src/lessons/sort/bubble/AlgBubbleSort2.html:5
 msgid ""
 "If you look carefully at the behavior of BubbleSort, a first easy "
 "optimization appears: after one traversal, the last element of the array "
@@ -5484,12 +5569,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble2/AlgBubbleSort2.html:14
+#: src/lessons/sort/bubble/AlgBubbleSort2.html:14
 msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble2/AlgBubbleSort2.html:15
+#: src/lessons/sort/bubble/AlgBubbleSort2.html:15
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5498,7 +5583,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble2/AlgBubbleSort2.html:21
+#: src/lessons/sort/bubble/AlgBubbleSort2.html:21
 msgid ""
 "When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
@@ -5511,7 +5596,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble2/AlgBubbleSort2.html:30
+#: src/lessons/sort/bubble/AlgBubbleSort2.html:30
 msgid ""
 "From the asymptotic complexity point of view, there is absolutely no "
 "difference: this variation is still in O(n^2) on average (our gain is only "
@@ -5519,12 +5604,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble3/AlgBubbleSort3.html:3
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:3
 msgid "BubbleSort3"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble3/AlgBubbleSort3.html:5
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:5
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
@@ -5532,7 +5617,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble3/AlgBubbleSort3.html:9
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:9
 msgid ""
 "For that, simply use the <code>break</code> keyword, which breaks the "
 "current loop.  Beware, if you have several embedded loops, this will apply "
@@ -5540,12 +5625,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble3/AlgBubbleSort3.html:12
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:12
 msgid "If you want, this tip shows the pseudo-code."
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble3/AlgBubbleSort3.html:14
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:14
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5555,24 +5640,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble3/AlgBubbleSort3.html:21
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:21
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:1 src/lessons/sort/cocktail2/AlgCocktailSort2.html:1 src/lessons/sort/cocktail3/AlgCocktailSort3.html:1
+#: src/lessons/sort/cocktail/AlgCocktailSort1.html:1 src/lessons/sort/cocktail/AlgCocktailSort2.html:1 src/lessons/sort/cocktail/AlgCocktailSort3.html:1
 msgid "CocktailSort and variations"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:3
+#: src/lessons/sort/cocktail/AlgCocktailSort1.html:3
 msgid "CocktailSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:5
+#: src/lessons/sort/cocktail/AlgCocktailSort1.html:5
 msgid ""
 "To improve further the BubbleSort algorithm, we need to look closer its "
 "behavior. One can notice that big elements are moved very quickly in "
@@ -5582,7 +5667,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:11
+#: src/lessons/sort/cocktail/AlgCocktailSort1.html:11
 msgid ""
 "To help the turtles moving faster, the cocktail sort traverse alternatively "
 "the array from right to left and from left to right. Here is the "
@@ -5590,7 +5675,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:16
+#: src/lessons/sort/cocktail/AlgCocktailSort1.html:16
 #, no-wrap
 msgid ""
 "Do\n"
@@ -5602,7 +5687,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail1/AlgCocktailSort1.html:24
+#: src/lessons/sort/cocktail/AlgCocktailSort1.html:24
 msgid ""
 "One can see that cocktail sort achieves exactly the same amount of swaps "
 "than the bubble sort, but improves slightly on read amount. It is however "
@@ -5610,12 +5695,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/cocktail2/AlgCocktailSort2.html:3
+#: src/lessons/sort/cocktail/AlgCocktailSort2.html:3
 msgid "CocktailSort2"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail2/AlgCocktailSort2.html:5
+#: src/lessons/sort/cocktail/AlgCocktailSort2.html:5
 msgid ""
 "We will now apply to CocktailSort the same optimization than BubbleSort2 did "
 "to BubbleSort. We must remember the limits of the array part not being "
@@ -5624,7 +5709,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail2/AlgCocktailSort2.html:10
+#: src/lessons/sort/cocktail/AlgCocktailSort2.html:10
 #, no-wrap
 msgid ""
 "beg=0; end=len-2\n"
@@ -5639,12 +5724,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/cocktail3/AlgCocktailSort3.html:3
+#: src/lessons/sort/cocktail/AlgCocktailSort3.html:3
 msgid "CocktailSort3"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail3/AlgCocktailSort3.html:5
+#: src/lessons/sort/cocktail/AlgCocktailSort3.html:5
 msgid ""
 "Even if the asymptotic complexity of CocktailSort2 is the same than the one "
 "of BubbleSort, it seem to perform better in practice. It is even possible to "
@@ -6058,8 +6143,8 @@ msgid ""
 "(double) 17 // Value = 17.0 (“casted to double”, converted to double)\n"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><h2>
-#: src/lessons/recursion/square/Square.html:43 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoiboard/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array.html:146
+#. type: Content of: <br><p><p><p><p><p><h2>
+#: src/lessons/recursion/square/Square.html:43 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoiboard/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array.html:210
 msgid "Goal of this exercise"
 msgstr ""
 
@@ -6109,7 +6194,7 @@ msgid "void polygonFractal (int levels, int sides, double length, double shrink)
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7 src/lessons/recursion/sierpinski/Sierpinski.html:8 src/lessons/recursion/dragoncurve1/DragonCurve1.html:27 src/lessons/recursion/dragoncurve2/DragonCurve2.html:50
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7 src/lessons/recursion/sierpinski/Sierpinski.html:8 src/lessons/recursion/dragoncurve/DragonCurve1.html:27 src/lessons/recursion/dragoncurve/DragonCurve2.html:50
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
@@ -6321,157 +6406,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:1
-msgid "Dragon curve (1)"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:3
-msgid "The dragon curve is a classical example of recursive method."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:5
-msgid "The definition of this curve is the following:"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:6
-msgid "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:7
-msgid ""
-"the dragon curve of order n is the dragon curve of order n-1 between P and "
-"R, followed by the same curve of order n-1 between R and Q (reverse side), "
-"where PRQ is an isoscele triangle with angle R being a right angle, and R "
-"being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y)  "
-"and (z, t), the coordinate (u, v) of R are given by:"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:13 src/lessons/recursion/dragoncurve2/DragonCurve2.html:27
-#, no-wrap
-msgid ""
-"u = (x + z)/2 + (t - y)/2\n"
-"v = (y + t)/2 - (z - x)/2\n"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:19
-msgid "The prototype of the method drawing the curve is the following:"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:20 src/lessons/recursion/dragoncurve2/DragonCurve2.html:22
-#, no-wrap
-msgid "void dragon(int ordre, double x, double y, double z, double t)"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve1/DragonCurve1.html:23
-msgid ""
-"You should use the method <code>setPos(x,y)</code> to put your turtle at "
-"coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
-"between the turtle position and the point (z,t)."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:1
-msgid "The dragon curve (2)"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:3
-msgid ""
-"Previous solution induce that the turtle teleports to other location, or at "
-"the very least, that it moves its pen up during the drawing. Indeed, the end "
-"of the drawing of the first recursive call does not match the begining of "
-"the second recursive call. That is why we had to use the method "
-"<code>setPos()</code>"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:9
-msgid ""
-"In this lesson, you will write a recursive method allowing to draw the "
-"dragon curve without taking the pen up. For that, we need another recursive "
-"method drawing the mirror side of the curve."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:13
-msgid ""
-"The method <code>dragon()</code> is then recursively defined using itself "
-"and <code>dragonReverse()</code>. Likewise, the method "
-"<code>dragonReverse()</code> is defined recursively using itself and "
-"<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:20
-msgid ""
-"The prototype of the <code>dragon()</code> method remains unchanged from "
-"previous exercise:"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:24
-msgid ""
-"The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
-"are:"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:33
-msgid "The prototype of the method <code>dragonReverse</code> is similar:"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:34
-#, no-wrap
-msgid "void dragonReverse(int ordre, double x, double y, double z, double t)"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:36
-msgid ""
-"The new point's coordinate (u, v) introduced by the "
-"<code>dragonReverse()</code> are:"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:39
-#, no-wrap
-msgid ""
-"u = (x + z)/2 - (t - y)/2\n"
-"v = (y + t)/2 + (z - x)/2\n"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve2/DragonCurve2.html:45
-msgid ""
-"To make the work of each method recursiv more visible, the line painted by "
-"the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
-"line painted by the <code>dragonReverse()</code> must be blue "
-"(<code>Color.blue</code>)."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/recursion/spiraluse/SpiralUse.html:1
+#: src/lessons/recursion/spiral/SpiralUse.html:1
 msgid "Drawing spirals"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/spiraluse/SpiralUse.html:3
+#: src/lessons/recursion/spiral/SpiralUse.html:3
 msgid ""
 "Can you reproduce the provided patterns of this exercise using the "
 "<code>spiral()</code> method?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiraluse/SpiralUse.html:6
+#: src/lessons/recursion/spiral/SpiralUse.html:6
 msgid ""
 "You must provide a method called <code>doit(int)</code> taking the number of "
 "the page to draw as parameter. Its code is as following, with A0, B0, etc "
@@ -6480,7 +6427,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/spiraluse/SpiralUse.html:12
+#: src/lessons/recursion/spiral/SpiralUse.html:12
 #, no-wrap
 msgid ""
 "void doit(int page) {\n"
@@ -6505,10 +6452,148 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiraluse/SpiralUse.html:34
+#: src/lessons/recursion/spiral/SpiralUse.html:34
 msgid ""
 "No need to copy over the method of <code>spiral()</code>, the turtle of this "
 "exercise already knows it."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:1
+msgid "Dragon curve (1)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:3
+msgid "The dragon curve is a classical example of recursive method."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:5
+msgid "The definition of this curve is the following:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:6
+msgid "the dragon curve of order 1 is a vector between to arbitrary points P and Q,"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:7
+msgid ""
+"the dragon curve of order n is the dragon curve of order n-1 between P and "
+"R, followed by the same curve of order n-1 between R and Q (reverse side), "
+"where PRQ is an isoscele triangle with angle R being a right angle, and R "
+"being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y)  "
+"and (z, t), the coordinate (u, v) of R are given by:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:13 src/lessons/recursion/dragoncurve/DragonCurve2.html:27
+#, no-wrap
+msgid ""
+"u = (x + z)/2 + (t - y)/2\n"
+"v = (y + t)/2 - (z - x)/2\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:19
+msgid "The prototype of the method drawing the curve is the following:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:20 src/lessons/recursion/dragoncurve/DragonCurve2.html:22
+#, no-wrap
+msgid "void dragon(int ordre, double x, double y, double z, double t)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:23
+msgid ""
+"You should use the method <code>setPos(x,y)</code> to put your turtle at "
+"coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
+"between the turtle position and the point (z,t)."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:1
+msgid "The dragon curve (2)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:3
+msgid ""
+"Previous solution induce that the turtle teleports to other location, or at "
+"the very least, that it moves its pen up during the drawing. Indeed, the end "
+"of the drawing of the first recursive call does not match the begining of "
+"the second recursive call. That is why we had to use the method "
+"<code>setPos()</code>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:9
+msgid ""
+"In this lesson, you will write a recursive method allowing to draw the "
+"dragon curve without taking the pen up. For that, we need another recursive "
+"method drawing the mirror side of the curve."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:13
+msgid ""
+"The method <code>dragon()</code> is then recursively defined using itself "
+"and <code>dragonReverse()</code>. Likewise, the method "
+"<code>dragonReverse()</code> is defined recursively using itself and "
+"<code>dragon()</code>. This is thus an example of <i>mutual recursion</i>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:20
+msgid ""
+"The prototype of the <code>dragon()</code> method remains unchanged from "
+"previous exercise:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:24
+msgid ""
+"The new point's coordinate (u, v) introduced by the <code>dragon()</code> "
+"are:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:33
+msgid "The prototype of the method <code>dragonReverse</code> is similar:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:34
+#, no-wrap
+msgid "void dragonReverse(int ordre, double x, double y, double z, double t)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:36
+msgid ""
+"The new point's coordinate (u, v) introduced by the "
+"<code>dragonReverse()</code> are:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:39
+#, no-wrap
+msgid ""
+"u = (x + z)/2 - (t - y)/2\n"
+"v = (y + t)/2 + (z - x)/2\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:45
+msgid ""
+"To make the work of each method recursiv more visible, the line painted by "
+"the <code>dragon()</code> must be red (<code>Color.red</code>) while the "
+"line painted by the <code>dragonReverse()</code> must be blue "
+"(<code>Color.blue</code>)."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6636,29 +6721,20 @@ msgstr ""
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:18
 msgid ""
 "While the buggle didn't find the path to the escape, it must proceed the "
-"following way: pick a random integer between 0 and 2 by using the "
+"following way: pick a random integer between 0 and 2 by using the provided "
 "<code>random3()</code> method and make one of the following actions: moving "
 "forward if possible, turn left or turn right."
 msgstr ""
 
 #. type: Content of: <a><p>
-#: src/lessons/maze/randommouse/RandomMouseMaze.html:26
+#: src/lessons/maze/randommouse/RandomMouseMaze.html:27
 msgid ""
 "This exercise's objective is to write an algorithm allowing the buggle to "
-"find its path out of the maze. Do not forget to let your buggle pick up the "
-"baggle once it found the way out."
+"find its path out of the maze."
 msgstr ""
 
 #. type: Content of: <a><p>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:32
-msgid ""
-"Write the <code>run()</code> method so that your buggle takes a random "
-"decision (forward, turn left or turn right). You can use the "
-"<code>random3()</code> method which returns randomly either 0, 1 or 2."
-msgstr ""
-
-#. type: Content of: <a><p>
-#: src/lessons/maze/randommouse/RandomMouseMaze.html:38
 msgid "Don't forget to pick up the baggle once you've reached it."
 msgstr ""
 
@@ -6677,19 +6753,19 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:6
 msgid ""
-"Hopefully, this maze is simpler that it seems at the first glance: every "
-"wall are connected to each other. To get out of this kind of maze, the "
-"buggle only have to follow a wall (the one on its left or the one on its "
-"right, it doesn't matter).  While keeping a paw on the wall, the buggle must "
-"move forward until it finds the maze exit and this biscuit it loves so much."
+"The good news is that this maze is simpler that it seems at the first "
+"glance: every wall are connected to each other. To get out of this kind of "
+"maze, the buggle only have to follow a wall (the one on its left or the one "
+"on its right, it doesn't matter).  While keeping a paw on the wall, the "
+"buggle must move forward until it finds the maze exit and this biscuit it "
+"loves so much."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:13
 msgid ""
-"This algorithm works here because there is no island of isolated walls, so "
-"our buggle cannot loop around for ever without encountering the baggle it "
-"looks for."
+"This works here because there is no island of isolated walls, so our buggle "
+"cannot loop around for ever without encountering its baggle."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -6702,29 +6778,28 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:20
 msgid ""
-"As said in the introduction, it is exactly the same if you decide to follow "
-"the left wall or the right one. Simply, the demo follows the left one, so "
-"you should do the same in your solution to ease the comparison of your "
-"solution and the demo."
+"As said earlier, it does not matter whether you decide to follow the left "
+"wall or the right one. Simply, the demo follows the left one, so you should "
+"do the same in your solution to ease the comparison of your solution and the "
+"demo."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:25
 msgid ""
-"Write a method <code>void keepHandOnSideWall()</code> which lets the buggle "
-"move one step forward while keeping the paw on the wall of the selected "
-"side. You thus have to ensure that the buggle always keep the paw on the "
-"wall, but also that it won't crash into a wall. You can check the tip for "
-"more info on this, but only do so if you're stuck. Try to do it without the "
-"tip first."
+"Write a method <code>keepHandOnSideWall()</code> which lets the buggle move "
+"one step forward while keeping the paw on the wall of the selected side. You "
+"must ensure that the buggle always keep the paw on the wall, but also that "
+"it won't crash into a wall. You can check the tip for more info on this, but "
+"only do so if you're stuck. Try to do it without the tip first."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:32
 msgid ""
-"Then, write a <code>run()</code> method which traverse the maze step by step "
-"(using <code>void keepHandOnSideWall()</code>) until it finds the biscuit "
-"and the exit. Don't forget to pick the baggle up once you've found it."
+"Then, write the whole algorithm to traverse the maze step by step (using "
+"<code>keepHandOnSideWall()</code>) until it finds the biscuit and the "
+"exit. Don't forget to pick the baggle up once you've found it."
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
@@ -6770,7 +6845,7 @@ msgstr ""
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:60
 msgid ""
 "If you do a <code>turnRight()</code> in any case at the end of your "
-"function, it's possible to write it in 3 lines with a <code>while()</code> "
+"function, it's possible to write it in 3 lines with a <code>while</code> "
 "loop."
 msgstr ""
 
@@ -6784,21 +6859,22 @@ msgstr ""
 msgid ""
 "Once again, you thought that your algorithm were good enough to escape the "
 "maze, and once again, you buggle is now in a maze where your previous "
-"algorithm fails. Just give it a try: hit the \"Run\" button and see your "
-"creation fail. The trap is shaped like an upper case \"G\". The buggle "
-"enters the trap and follows the inner border. At some point, it finds the "
-"north direction free, run into that direction, and falls again in the trap."
+"algorithm fails. Just give it a try: copy/paste your code and hit the "
+"\"Run\" button and see your creation fail. The trap is shaped like an upper "
+"case \"G\". The buggle enters the trap and follows the inner border. At some "
+"point, it finds the north direction free, run into that direction, and falls "
+"again in the trap."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/pledge/PledgeMaze.html:12
+#: src/lessons/maze/pledge/PledgeMaze.html:13
 msgid ""
 "The Pledge's algorithm (named after Jon Pledge of Exeter) can solve this "
 "maze."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/pledge/PledgeMaze.html:15
+#: src/lessons/maze/pledge/PledgeMaze.html:16
 msgid ""
 "This algorithm is a modification of the previous one thought to avoid "
 "obstacles. It randomly picks a heading and let the buggle move in that "
@@ -6810,7 +6886,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/pledge/PledgeMaze.html:23
+#: src/lessons/maze/pledge/PledgeMaze.html:24
 msgid ""
 "Note that the use of \"total turning\" rather than just the \"current "
 "direction\" allows the algorithm to avoid G-shapped traps. If one proceeds "
@@ -6821,7 +6897,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/pledge/PledgeMaze.html:30
+#: src/lessons/maze/pledge/PledgeMaze.html:31
 msgid ""
 "The Pledge's algorithm does not leave the rightmost wall due to the total "
 "turning not being zero at that point. It follows the wall all the way "
@@ -6829,33 +6905,32 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/pledge/PledgeMaze.html:37
+#: src/lessons/maze/pledge/PledgeMaze.html:38
 msgid ""
 "<a name=\"Objective\"/>You now have to modify your solution to implement the "
 "Pledge algorithm to escape this maze."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/pledge/PledgeMaze.html:40
+#: src/lessons/maze/pledge/PledgeMaze.html:41
 msgid ""
-"Change your <code>void keepHandOnSideWall()</code> method to count the "
-"amount of turns done by the buggle (+1 when it turns left, and -1 when it "
-"turns right). This counting may require the addition of an "
-"<code>angleSum</code> integer value in your program."
+"Change your <code>keepHandOnSideWall()</code> method to count the amount of "
+"turns done by the buggle (+1 when it turns left, and -1 when it turns "
+"right). This counting may require the addition of an <code>angleSum</code> "
+"integer value in your program."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/pledge/PledgeMaze.html:45
+#: src/lessons/maze/pledge/PledgeMaze.html:46
 msgid ""
-"Write a <code>boolean isChosenDirectionFree()</code> method indicating if "
-"the arbitrary direction you picked up is free, ie, if you can move in that "
-"direction. (Note that the demo uses the NORTH direction for that).  You can "
-"retrieve the current direction of the buggle using the <code>Direction "
-"getDirection()</code> method. You can change your direction (without moving) "
-"using <code>void setDirection(Direction d)</code>. Don't forget to store the "
-"previous direction of your buggle (in a variable of type Direction) before "
-"checking if your favorite direction is free in order to restore your state "
-"afterward."
+"Write a boolean method <code>isDirectionFree(dir)</code> indicating if the "
+"provided direction is free, ie, if you can move in that direction (Note that "
+"the demo uses the NORTH direction for that).  You can retrieve the current "
+"direction of the buggle using the method <code>getDirection()</code>. You "
+"can change your direction (without moving) using "
+"<code>setDirection(dir)</code>. Don't forget to store the previous direction "
+"of your buggle (in a dedicated variable) before checking if your favorite "
+"direction is free in order to restore your state afterward."
 msgstr ""
 
 #. type: Content of: <p>
@@ -6865,21 +6940,36 @@ msgid ""
 "remain limited."
 msgstr ""
 
-#. type: Attribute 'alt' of: <div>
+#. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:58
+msgid ""
+"Don't forget that if you have a method modifying a global variable (such as "
+"angleSum), you should ensure that it declares this variable as "
+"global. Without it, the method creates a new variable of the same name, and "
+"the global never gets modified."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/maze/pledge/PledgeMaze.html:62
+msgid ""
+"<code class=\"python\">def myMethod(): global angleSum ...  angleSum = "
+"angleSum + 1 </code>"
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/maze/pledge/PledgeMaze.html:68
 msgid "Show an additional tip"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/maze/pledge/PledgeMaze.html:59
+#: src/lessons/maze/pledge/PledgeMaze.html:69
 msgid ""
-"The <code>void run()</code> method should move in your favorite direction "
-"(NORTH is advised). Then, you should write the algorithm main loop. In other "
-"words, while your buggle did not find its biscuit, you have to move forward "
-"until next obstacle in the favorite direction. Then, put a paw on a wall "
-"(using (<code>void keepHandOnSideWall()</code>) while the sum of turns is "
-"not null and the favorite direction is not free. Do that until you find your "
-"baggle."
+"You should set your direction to your favorite one (NORTH is advised). Then, "
+"you should write the algorithm main loop. In other words, while your buggle "
+"did not find its biscuit, you have to move forward until next obstacle in "
+"the favorite direction. Then, put a paw on a wall (using "
+"(<code>keepHandOnSideWall()</code>) while the sum of turns is not null and "
+"the favorite direction is not free. Do that until you find your baggle."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6953,27 +7043,35 @@ msgstr ""
 #: src/lessons/maze/island/IslandMaze.html:40
 #, no-wrap
 msgid ""
-"\t<code>int state=0;\n"
+"\t<code div=\"Java\">int state=0;\n"
 "switch (state) {\n"
-"  case 0: \n"
+"  case 0: // North runner\n"
 "     ...\n"
 "     state = 1;\n"
 "     break;\n"
-"  case 1:\n"
+"  case 1: // Left follower\n"
 "     ...\n"
 "     state = 0;\n"
 "     break;\n"
 "}\n"
 "</code>\n"
+"<code div=\"python\">northRunner = True\n"
+"if northRunner:\n"
+"     ...\n"
+"     northRunner = False\n"
+"else: # left follower\n"
+"     ...\n"
+"     northRunner = True\n"
+"</code>\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/island/IslandMaze.html:55
+#: src/lessons/maze/island/IslandMaze.html:63
 msgid "Don't forget to let the buggle pick the baggle at the end of your code."
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/island/IslandMaze.html:58
+#: src/lessons/maze/island/IslandMaze.html:66
 msgid ""
 "You're up. That should be enough for you to figure out how to escape this "
 "maze, but if not, you can always request for the tip. But you do not need "
@@ -6997,92 +7095,57 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:7
 msgid ""
-"By using method <code>BuggleWorld getMyWorld()</code> he can retrieve "
-"information about the world he is leaving in."
+"Without even leaving his position, he can retrieve information about the "
+"world he is leaving in, with the following functions:"
 msgstr ""
 
-#. type: Content of: <p>
+#. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
-msgid ""
-"A <code>BuggleWorld</code> object is an object on which you can perform the "
-"following operations:"
+msgid "<code>getWorldWidth()</code> gives the width of its world."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
+#. type: Content of: <ul><li>
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:10
+msgid "<code>getWorldHeight()</code> gives the height of its world."
+msgstr ""
+
+#. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:11
-msgid "<code>int getHeight()</code> to know the height of the world."
+msgid ""
+"<code>hasTopWall(x,y)</code> tells whether the cell (x,y) of this world has "
+"a wall on top."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
+#. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
-msgid "<code>int getWidth()</code> to know the width of the world."
+msgid ""
+"<code>hasLeftWall(x,y)</code> tells whether the cell (x,y) of this world has "
+"a wall on the left."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
+#. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:13
 msgid ""
-"<code>BuggleWorldCell getCell(int x, int y)</code> to retrieve the "
-"<code>BuggleWorldCell</code> object located at a specific position in the "
-"world."
+"<code>hasBaggle(x,y)</code> tells whether the cell (x,y) of this world has a "
+"baggle."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:14
+msgid ""
+"<code>setIndication(x,y,i)</code> adds the integer indication <code>i</code> "
+"to the cell (x,y)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:15
+msgid ""
+"<code>getIndication(x,y,i)</code> retrieves the integer indication of the "
+"cell (x,y) (or 9999 if there is no indication)."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:19
-msgid ""
-"A <code>BuggleWorldCell</code> is an object that represents a cell of the "
-"world. On an object of this type, it is possible to call the following "
-"methods:"
-msgstr ""
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:22
-msgid ""
-"<code>boolean hasContent()</code> to know if something is written on the "
-"floor of this cell."
-msgstr ""
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
-msgid ""
-"<code>void setContentFromInt(int v)</code> to write an integer value on the "
-"floor of this cell."
-msgstr ""
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:24
-msgid ""
-"<code>int getContentAsInt()</code> to retrieve the integer value which is "
-"written on the floor of this cell."
-msgstr ""
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:25
-msgid "<code>void emptyContent()</code> to clean the floor of this cell."
-msgstr ""
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:26
-msgid ""
-"<code>boolean hasTopWall()</code> to know if a wall is built on the top edge "
-"of this cell."
-msgstr ""
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:27
-msgid ""
-"<code>boolean hasLeftWall()</code> to know if a wall is built on the left "
-"edge of this cell."
-msgstr ""
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:28
-msgid ""
-"<code>boolean hasBaggle()</code> to know if a baggle is present on this "
-"cell."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:32
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:18
 msgid ""
 "It has to be noted that it is not possible to build a wall on the bottom "
 "edge or on the right edge of a cell.  Therefore when such wall exists, it "
@@ -7092,44 +7155,40 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:38
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:24
 msgid ""
-"<a name=\"Objective\"/>Write a method <code>evaluatePaths()</code> which "
-"computes a very basic shortest path algorithm. This algorithm will write on "
-"each world cell (or at least the one that are useful) the distance from this "
-"cell to the maze exit."
+"Your buggle should first write the distance to the exit on each cell (or at "
+"least the useful ones)."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:41
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:25
 msgid ""
-"To achieve this objective, your algorithm has to find the exit of the maze "
-"on the map. Then, for every cells next to the cell where the exit is "
-"located, it has to mark these cells with a integer value of 1 (indicating "
-"the distance). Then, it has to iterate the same process to mark the cells "
-"which are at a distance of 2 and so on until it marks the cell where the "
-"buggle is located."
+"For that, find the exit and write 0 there.  Then, write 1 on every "
+"neighboring cells that is not separated from the exit with a wall.  And then "
+"mark every cells from which you can reach the exit in 2 steps, and iterate "
+"for all cells until you mark the cell where the buggle is located."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:46
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:30
 msgid ""
-"Write a method <code>followShortestPath()</code> that will make the jedi "
-"buggle to follow the shortest path.  Basically the buggle has only to walk "
-"on each case with the lesser distance from the exit. You can use the method "
-"<code>void setDirection(Direction d)</code> to make your buggle look at the "
+"Once the cells are marked, get your jedi buggle to follow the shortest "
+"path.  Basically the buggle has only to walk on each case with the lesser "
+"distance from the exit. You can use the method "
+"<code>setDirection(direction)</code> to make your buggle look at the "
 "specific direction such as <code>Direction.NORTH</code> or "
 "<code>Direction.EAST</code>."
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:51
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:35
 msgid "I'm lost now. Please give me some extra indications."
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/maze/shortestpath/ShortestPathMaze.html:52
-msgid "Use the Force Luke!"
+#: src/lessons/maze/shortestpath/ShortestPathMaze.html:36
+msgid "Use the Force, Luke!"
 msgstr ""
 
 #. type: Content of: <h2>
@@ -7149,11 +7208,10 @@ msgstr ""
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:7
 msgid ""
 "As a result, the method you wrote for the previous exercise probably don't "
-"work for this one. If you click on the run button with no modification, your "
-"buggle probably start looping over the four free cells around its start "
-"position (if that's not the case, well, you didn't really stick to the "
-"mission on previous exercise. Feel lucky and move to the next one once "
-"you've read this text)."
+"work for this one. If you use it here with no modification, your buggle "
+"probably start looping over the four free cells around its start position "
+"(if that's not the case, well, you didn't really stick to the mission on "
+"previous exercise. Feel lucky and proceed to the next :)"
 msgstr ""
 
 #. type: Content of: <p>
@@ -7172,8 +7230,8 @@ msgstr ""
 msgid ""
 "Fixing the problem should be very easy. Simply make sure that the "
 "pre-condition of <code>keepHandOnSideWall()</code> is verified before "
-"calling it. For that, update your run() method to first look for a wall on "
-"its left before the big <code>while</code> loop."
+"calling it. For that, update your code to first look for a wall on its left "
+"before the big <code>while</code> loop."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -7291,12 +7349,12 @@ msgid "See the <i>About this world</i> dialog for more details."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission1/Board01TwoSteps.html:1
+#: src/lessons/lightbot/Board01TwoSteps.html:1
 msgid "Welcome"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission1/Board01TwoSteps.html:3
+#: src/lessons/lightbot/Board01TwoSteps.html:3
 msgid ""
 "Welcome to the lightbot world. This is merely a programmer puzzle rather "
 "than a real lesson (although some use it to teach programming).  The robot "
@@ -7305,170 +7363,170 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><</p><p>
-#: src/lessons/lightbot/mission1/Board01TwoSteps.html:6
+#: src/lessons/lightbot/Board01TwoSteps.html:6
 msgid ""
 "The goal of each board is simply to switch on every lights of the board "
 "using your little robot."
 msgstr ""
 
 #. type: Content of: <p><</p><p>
-#: src/lessons/lightbot/mission1/Board01TwoSteps.html:8
+#: src/lessons/lightbot/Board01TwoSteps.html:8
 msgid ""
 "This is a introduction exercise, which should be solvable by only moving "
 "forward and switching the light, using respectively"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission1/Board01TwoSteps.html:8 src/lessons/lightbot/mission2/Board02Turn.html:3 src/lessons/lightbot/mission6/Board06Func.html:3
+#: src/lessons/lightbot/Board01TwoSteps.html:10 src/lessons/lightbot/Board02Turn.html:4 src/lessons/lightbot/Board06Func.html:3
 msgid "and"
 msgstr ""
 
 #. type: Content of: <p><</p><p>
-#: src/lessons/lightbot/mission1/Board01TwoSteps.html:8
+#: src/lessons/lightbot/Board01TwoSteps.html:10
 msgid "."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission2/Board02Turn.html:1
+#: src/lessons/lightbot/Board02Turn.html:1
 msgid "Turn around"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission2/Board02Turn.html:3
+#: src/lessons/lightbot/Board02Turn.html:3
 msgid "Now, you probably need to turn in addition (using"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission2/Board02Turn.html:3
+#: src/lessons/lightbot/Board02Turn.html:4
 msgid ")."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission3/Board03Jump.html:1
+#: src/lessons/lightbot/Board03Jump.html:1
 msgid "Jump"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission3/Board03Jump.html:3
+#: src/lessons/lightbot/Board03Jump.html:3
 msgid "You can also jump using"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission3/Board03Jump.html:3
+#: src/lessons/lightbot/Board03Jump.html:3
 msgid ""
 "to pass obstacles. You can either jump one level up or any amount of levels "
 "down, but you cannot jump to go on a cell of the same height."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission4/Board04Stairs.html:1
+#: src/lessons/lightbot/Board04Stairs.html:1
 msgid "Stairs"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission4/Board04Stairs.html:3
+#: src/lessons/lightbot/Board04Stairs.html:3
 msgid "Can you pass these stairs?"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission5/Board05Higher.html:1
+#: src/lessons/lightbot/Board05Higher.html:1
 msgid "Higher"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission5/Board05Higher.html:3
+#: src/lessons/lightbot/Board05Higher.html:3
 msgid "Let's go higher"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission6/Board06Func.html:1
+#: src/lessons/lightbot/Board06Func.html:1
 msgid "Functions"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission6/Board06Func.html:3
+#: src/lessons/lightbot/Board06Func.html:3
 msgid "You can use"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission6/Board06Func.html:3
+#: src/lessons/lightbot/Board06Func.html:3
 msgid ""
 "to call respectively the first and second functions. Define their code in "
 "their own tab."
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/lightbot/mission6/Board06Func.html:5
+#: src/lessons/lightbot/Board06Func.html:5
 msgid "This is great if you get out of space in your main function"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission7/Board07Repeat.html:1
+#: src/lessons/lightbot/Board07Repeat.html:1
 msgid "Repetitive tasks"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission7/Board07Repeat.html:3
+#: src/lessons/lightbot/Board07Repeat.html:3
 msgid "Functions are also of great use for repetitive tasks"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission8/Board08Rec.html:1
+#: src/lessons/lightbot/Board08Rec.html:1
 msgid "Calling functions from functions"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission8/Board08Rec.html:3
+#: src/lessons/lightbot/Board08Rec.html:3
 msgid "It is perfectly okay to call a function from within a function!"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission9/Board09Castle.html:1
+#: src/lessons/lightbot/Board09Castle.html:1
 msgid "Castle"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission9/Board09Castle.html:3
+#: src/lessons/lightbot/Board09Castle.html:3
 msgid "You're getting good at this..."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission10/Board10Wall.html:1
+#: src/lessons/lightbot/Board10Wall.html:1
 msgid "Wall"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission10/Board10Wall.html:3
+#: src/lessons/lightbot/Board10Wall.html:3
 msgid "Ready to climb the wall?"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission11/Board11Sea.html:1
+#: src/lessons/lightbot/Board11Sea.html:1
 msgid "Sea"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission11/Board11Sea.html:3
+#: src/lessons/lightbot/Board11Sea.html:3
 msgid "You now have to surf these waves of lamps."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/lightbot/mission12/Board12Escher.html:1
+#: src/lessons/lightbot/Board12Escher.html:1
 msgid "Escher Castle"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/lightbot/mission12/Board12Escher.html:3
+#: src/lessons/lightbot/Board12Escher.html:3
 msgid "This one aint easy."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/close10/Close10.html:1
+#: src/lessons/welcome/bool1/Close10.html:1
 msgid "Close to 10"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/close10/Close10.html:2
+#: src/lessons/welcome/bool1/Close10.html:2
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that Math.abs(n) returns the absolute "
@@ -7476,104 +7534,100 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/close10/Close10.html:5
+#: src/lessons/welcome/bool1/Close10.html:5
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that math.fabs(n) returns the absolute "
-"value of a number."
+"value of a number. Note also that this function can only be used if you "
+"imported the math module."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/close10/Close10.html:9 src/lessons/welcome/bool1/diff21/Diff21.html:5 src/lessons/welcome/bool1/hasteen/HasTeen.html:6 src/lessons/welcome/bool1/icyhot/IcyHot.html:5 src/lessons/welcome/bool1/in1020/In1020.html:5 src/lessons/welcome/bool1/in3050/In3050.html:5 src/lessons/welcome/bool1/lastdigit/LastDigit.html:9 src/lessons/welcome/bool1/loneteen/LoneTeen.html:6 src/lessons/welcome/bool1/Main.html:11 src/lessons/welcome/bool1/makes10/Makes10.html:5 src/lessons/welcome/bool1/max1020/Max1020.html:8 src/lessons/welcome/bool1/monkeytrouble/MonkeyTrouble.html:7 src/lessons/welcome/bool1/nearhundred/NearHundred.html:5 src/lessons/welcome/bool1/parottrouble/ParotTrouble.html:8 src/lessons/welcome/bool1/posneg/PosNeg.html:5 src/lessons/welcome/bool1/sleepin/SleepIn.html:7 src/lessons/welcome/bool1/sumdouble/SumDouble.html:5 src/lessons/welcome/bool2/alarmclock/AlarmClock.html:11 src/lessons/welcome/bool2/answercell/AnswerCell.html:8 src/lessons/welcome/bool2/ticket/blue/BlueTicket.html:10 src/lessons/welcome/bool2/caughtspeeding/CaughtSpeeding.html:11 src/lessons/welcome/bool2/party/cigar/CigarParty.html:9 src/lessons/welcome/bool2/datefashion/DateFashion.html:12 src/lessons/welcome/bool2/ticket/green/GreenTicket.html:9 src/lessons/welcome/bool2/in1to10/In1To10.html:8 src/lessons/welcome/bool2/inorderequals/InOrderEqual.html:9 src/lessons/welcome/bool2/inorder/InOrder.html:8 src/lessons/welcome/bool2/lastdigit2/LastDigit2.html:8 src/lessons/welcome/bool2/lessby10/LessBy10.html:5 src/lessons/welcome/bool2/Main.html:4 src/lessons/welcome/bool2/maxmod5/MaxMod5.html:9 src/lessons/welcome/bool2/nearten/NearTen.html:8 src/lessons/welcome/bool2/ticket/red/RedTicket.html:9 src/lessons/welcome/bool2/sharedigit/ShareDigit.html:9 src/lessons/welcome/bool2/sortasum/SortaSum.html:7 src/lessons/welcome/bool2/squirrelplay/SquirrelPlay.html:10 src/lessons/welcome/bool2/party/tea/TeaParty.html:11 src/lessons/welcome/bool2/teensum/TeenSum.html:8 src/lessons/welcome/bool2/twoasone/TwoAsOne.html:5 src/lessons/welcome/bool2/withoutdoubles/WithoutDoubles.html:8 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/altpairs/AltPairs.html:4 src/lessons/bat/string1/array123/Array123.html:4 src/lessons/bat/string1/array667/Array667.html:7 src/lessons/bat/string1/arraycount9/ArrayCount9.html:4 src/lessons/bat/string1/arrayfront9/ArrayFront9.html:4 src/lessons/bat/string1/fronttimes/FrontTimes.html:7 src/lessons/bat/string1/has271/Has271.html:8 src/lessons/bat/string1/last2/Last2.html:7 src/lessons/bat/string1/notriples/NoTriples.html:7 src/lessons/bat/string1/bits/StringBits.html:4 src/lessons/bat/string1/match/StringMatch.html:8 src/lessons/bat/string1/splosion/StringSplosion.html:4 src/lessons/bat/string1/times/StringTimes.html:4 src/lessons/bat/string1/stringx/StringX.html:6 src/lessons/bat/string1/yak/StringYak.html:7
+#: src/lessons/welcome/bool1/Close10.html:10 src/lessons/welcome/bool1/Diff21.html:5 src/lessons/welcome/bool1/HasTeen.html:6 src/lessons/welcome/bool1/IcyHot.html:5 src/lessons/welcome/bool1/In1020.html:5 src/lessons/welcome/bool1/In3050.html:5 src/lessons/welcome/bool1/LastDigit.html:9 src/lessons/welcome/bool1/LoneTeen.html:6 src/lessons/welcome/bool1/Main.html:11 src/lessons/welcome/bool1/Makes10.html:5 src/lessons/welcome/bool1/Max1020.html:8 src/lessons/welcome/bool1/MonkeyTrouble.html:7 src/lessons/welcome/bool1/NearHundred.html:5 src/lessons/welcome/bool1/ParotTrouble.html:8 src/lessons/welcome/bool1/PosNeg.html:5 src/lessons/welcome/bool1/SleepIn.html:7 src/lessons/welcome/bool1/SumDouble.html:5 src/lessons/welcome/bool2/AlarmClock.html:11 src/lessons/welcome/bool2/AnswerCell.html:8 src/lessons/welcome/bool2/BlueTicket.html:10 src/lessons/welcome/bool2/CaughtSpeeding.html:11 src/lessons/welcome/bool2/CigarParty.html:9 src/lessons/welcome/bool2/DateFashion.html:12 src/lessons/welcome/bool2/GreenTicket.html:9 src/lessons/welcome/bool2/In1To10.html:8 src/lessons/welcome/bool2/InOrderEqual.html:9 src/lessons/welcome/bool2/InOrder.html:8 src/lessons/welcome/bool2/LastDigit2.html:8 src/lessons/welcome/bool2/LessBy10.html:5 src/lessons/welcome/bool2/Main.html:4 src/lessons/welcome/bool2/MaxMod5.html:9 src/lessons/welcome/bool2/NearTen.html:8 src/lessons/welcome/bool2/RedTicket.html:9 src/lessons/welcome/bool2/ShareDigit.html:9 src/lessons/welcome/bool2/SortaSum.html:7 src/lessons/welcome/bool2/SquirrelPlay.html:10 src/lessons/welcome/bool2/TeaParty.html:11 src/lessons/welcome/bool2/TeenSum.html:8 src/lessons/welcome/bool2/TwoAsOne.html:5 src/lessons/welcome/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Last2.html:8 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7 src/lessons/welcome/array/array123/Array123.html:4 src/lessons/welcome/array/array667/Array667.html:7 src/lessons/welcome/array/arraycount9/ArrayCount9.html:4 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:4 src/lessons/welcome/array/notriples/NoTriples.html:7 src/lessons/welcome/array/has271/Has271.html:8
 msgid ""
 "This exercise was converted to JLM from the excellent exercising site "
 "http://javabat.com/"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/countteen/CountTeen.html:1
+#: src/lessons/welcome/bool1/CountTeen.html:1
 msgid "Count Teen"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/countteen/CountTeen.html:2
+#. type: Content of: <p>
+#: src/lessons/welcome/bool1/CountTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 "
 "inclusive. Given 4 int values, return the amount of teen ones."
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/bool1/countteen/CountTeen.html:5
-msgid "This exercise was written by Martin Quinson."
-msgstr ""
-
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/diff21/Diff21.html:1
+#: src/lessons/welcome/bool1/Diff21.html:1
 msgid "Diff 21"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/diff21/Diff21.html:2
+#: src/lessons/welcome/bool1/Diff21.html:2
 msgid ""
 "Given an int n, return the absolute difference between n and 21, except "
 "return double the absolute difference if n is over 21."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/hasteen/HasTeen.html:1
+#: src/lessons/welcome/bool1/HasTeen.html:1
 msgid "Has Teen"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/hasteen/HasTeen.html:2
+#: src/lessons/welcome/bool1/HasTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 "
 "inclusive. Given 3 int values, return true if 1 or more of them are teen."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/icyhot/IcyHot.html:1
+#: src/lessons/welcome/bool1/IcyHot.html:1
 msgid "Icy Hot"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/icyhot/IcyHot.html:2
+#: src/lessons/welcome/bool1/IcyHot.html:2
 msgid ""
 "Given two temperatures, return true if one is less than 0 and the other is "
 "greater than 100."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/in1020/In1020.html:1
+#: src/lessons/welcome/bool1/In1020.html:1
 msgid "In [10;20]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/in1020/In1020.html:2
+#: src/lessons/welcome/bool1/In1020.html:2
 msgid ""
 "Given 2 int values, return true if either of them is in the range 10..20 "
 "inclusive."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/in3050/In3050.html:1
+#: src/lessons/welcome/bool1/In3050.html:1
 msgid "In [30;50]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/in3050/In3050.html:2
+#: src/lessons/welcome/bool1/In3050.html:2
 msgid ""
 "Given 2 int values, return true if they are both in the range 30..40 "
 "inclusive, or they are both in the range 40..50 inclusive."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/lastdigit/LastDigit.html:1
+#: src/lessons/welcome/bool1/LastDigit.html:1
 msgid "LastDigit"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/lastdigit/LastDigit.html:2
+#: src/lessons/welcome/bool1/LastDigit.html:2
 msgid ""
 "Given two non-negative int values, return true if they have the same last "
 "digit, such as with 27 and 57. Note that the % \"mod\" operator computes "
@@ -7581,12 +7635,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/loneteen/LoneTeen.html:1
+#: src/lessons/welcome/bool1/LoneTeen.html:1
 msgid "Lone Teen"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/loneteen/LoneTeen.html:2
+#: src/lessons/welcome/bool1/LoneTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 "
 "inclusive. Given 2 int values, return true if one or the other is teen, but "
@@ -7614,36 +7668,36 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/makes10/Makes10.html:1
+#: src/lessons/welcome/bool1/Makes10.html:1
 msgid "Makes 10"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/makes10/Makes10.html:2
+#: src/lessons/welcome/bool1/Makes10.html:2
 msgid ""
 "Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
 "10."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/max1020/Max1020.html:1
+#: src/lessons/welcome/bool1/Max1020.html:1
 msgid "Max1020"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/max1020/Max1020.html:2
+#: src/lessons/welcome/bool1/Max1020.html:2
 msgid ""
 "Given 2 positive int values, return the larger value that is in the range "
 "10..20 inclusive, or return 0 if neither is in that range."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/monkeytrouble/MonkeyTrouble.html:1
+#: src/lessons/welcome/bool1/MonkeyTrouble.html:1
 msgid "MonkeyTrouble"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/monkeytrouble/MonkeyTrouble.html:3
+#: src/lessons/welcome/bool1/MonkeyTrouble.html:3
 msgid ""
 "We have two monkeys, a and b, and the parameters aSmile and bSmile indicate "
 "if each is smiling.  We are in trouble if they are both smiling or if "
@@ -7651,24 +7705,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/nearhundred/NearHundred.html:1
+#: src/lessons/welcome/bool1/NearHundred.html:1
 msgid "Near Hundred"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/nearhundred/NearHundred.html:2
+#: src/lessons/welcome/bool1/NearHundred.html:2
 msgid ""
 "Given an int n, return true if it is within 10 of 100 or 200. Note "
 "Math.abs(n) returns the absolute value of a number."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/parottrouble/ParotTrouble.html:1
+#: src/lessons/welcome/bool1/ParotTrouble.html:1
 msgid "Parot Trouble"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/parottrouble/ParotTrouble.html:3
+#: src/lessons/welcome/bool1/ParotTrouble.html:3
 msgid ""
 "We have a loud talking parrot. The \"hour\" parameter is the current hour "
 "time in the range 0..23. We are in trouble if the parrot is talking and the "
@@ -7676,24 +7730,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/posneg/PosNeg.html:1
+#: src/lessons/welcome/bool1/PosNeg.html:1
 msgid "Positive Negative"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/posneg/PosNeg.html:2
+#: src/lessons/welcome/bool1/PosNeg.html:2
 msgid ""
 "Given 2 int values, return true if one is negative and one is "
 "positive. Unless negative is true, then they both must be negative."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/sleepin/SleepIn.html:1
+#: src/lessons/welcome/bool1/SleepIn.html:1
 msgid "SleepDay"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/sleepin/SleepIn.html:3
+#: src/lessons/welcome/bool1/SleepIn.html:3
 msgid ""
 "The parameter weekday is true if it is a weekday, and the parameter vacation "
 "is true if we are on vacation. We sleep in if it is not a weekday or we're "
@@ -7701,24 +7755,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/sumdouble/SumDouble.html:1
+#: src/lessons/welcome/bool1/SumDouble.html:1
 msgid "Sum Double"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/sumdouble/SumDouble.html:2
+#: src/lessons/welcome/bool1/SumDouble.html:2
 msgid ""
 "Given two int values, return their sum. Unless the two values are the same, "
 "then return double their sum."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/alarmclock/AlarmClock.html:1
+#: src/lessons/welcome/bool2/AlarmClock.html:1
 msgid "AlarmClock"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/alarmclock/AlarmClock.html:2
+#: src/lessons/welcome/bool2/AlarmClock.html:2
 msgid ""
 "Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a "
 "boolean indicating if we are on vacation, return a string of the form "
@@ -7729,12 +7783,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/answercell/AnswerCell.html:1
+#: src/lessons/welcome/bool2/AnswerCell.html:1
 msgid "AnswerCell"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/answercell/AnswerCell.html:2
+#: src/lessons/welcome/bool2/AnswerCell.html:2
 msgid ""
 "Your cell phone rings. Return true if you should answer it. Normally you "
 "answer, except in the morning you only answer if it is your mom calling. In "
@@ -7742,12 +7796,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/ticket/blue/BlueTicket.html:1
+#: src/lessons/welcome/bool2/BlueTicket.html:1
 msgid "BlueTicket"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/ticket/blue/BlueTicket.html:2
+#: src/lessons/welcome/bool2/BlueTicket.html:2
 msgid ""
 "You have a blue lottery ticket, with ints a, b, and c on it. This makes "
 "three pairs, which we'll call ab, bc, and ac. Consider the sum of the "
@@ -7757,12 +7811,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/caughtspeeding/CaughtSpeeding.html:1
+#: src/lessons/welcome/bool2/CaughtSpeeding.html:1
 msgid "CaughtSpeeding"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/caughtspeeding/CaughtSpeeding.html:2
+#: src/lessons/welcome/bool2/CaughtSpeeding.html:2
 msgid ""
 "You are driving a little too fast, and a police officer stops you. Write "
 "code to compute the result, encoded as an int value: 0=no ticket, 1=small "
@@ -7773,12 +7827,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/party/cigar/CigarParty.html:1
+#: src/lessons/welcome/bool2/CigarParty.html:1
 msgid "CigarParty"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/party/cigar/CigarParty.html:2
+#: src/lessons/welcome/bool2/CigarParty.html:2
 msgid ""
 "When squirrels get together for a party, they like to have cigars. A "
 "squirrel party is successful when the number of cigars is between 40 and 60, "
@@ -7787,12 +7841,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/datefashion/DateFashion.html:1
+#: src/lessons/welcome/bool2/DateFashion.html:1
 msgid "DateFashion"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/datefashion/DateFashion.html:2
+#: src/lessons/welcome/bool2/DateFashion.html:2
 msgid ""
 "You and your date are trying to get a table at a restaurant. The parameter "
 "\"you\" is the stylishness of your clothes, in the range 0..10, and \"date\" "
@@ -7804,12 +7858,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/ticket/green/GreenTicket.html:1
+#: src/lessons/welcome/bool2/GreenTicket.html:1
 msgid "GreenTicket"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/ticket/green/GreenTicket.html:2
+#: src/lessons/welcome/bool2/GreenTicket.html:2
 msgid ""
 "You have a green lottery ticket, with ints a, b, and c on it. If the numbers "
 "are all different from each other, the result is 0. If all of the numbers "
@@ -7818,12 +7872,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/in1to10/In1To10.html:1
+#: src/lessons/welcome/bool2/In1To10.html:1
 msgid "In1To10"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/in1to10/In1To10.html:2
+#: src/lessons/welcome/bool2/In1To10.html:2
 msgid ""
 "Given a number n, return true if n is in the range 1..10, inclusive. Unless "
 "\"outsideMode\" is true, in which case return true if the number is less or "
@@ -7831,12 +7885,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/inorderequals/InOrderEqual.html:1
+#: src/lessons/welcome/bool2/InOrderEqual.html:1
 msgid "InOrderEqual"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/inorderequals/InOrderEqual.html:2
+#: src/lessons/welcome/bool2/InOrderEqual.html:2
 msgid ""
 "Given three ints, a b c, return true if they are in strict increasing order, "
 "such as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7. However, with the "
@@ -7845,12 +7899,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/inorder/InOrder.html:1
+#: src/lessons/welcome/bool2/InOrder.html:1
 msgid "InOrder"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/inorder/InOrder.html:2
+#: src/lessons/welcome/bool2/InOrder.html:2
 msgid ""
 "Given three ints, a b c, return true if b is greater than a, and c is "
 "greater than b. However, with the exception that if \"bOk\" is true, b does "
@@ -7858,12 +7912,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/lastdigit2/LastDigit2.html:1
+#: src/lessons/welcome/bool2/LastDigit2.html:1
 msgid "LastDigit 2"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/lastdigit2/LastDigit2.html:2
+#: src/lessons/welcome/bool2/LastDigit2.html:2
 msgid ""
 "Given three ints, a b c, return true if two or more of them have the same "
 "rightmost digit. The ints are non-negative. Note: the % \"mod\" operator "
@@ -7871,12 +7925,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/lessby10/LessBy10.html:1
+#: src/lessons/welcome/bool2/LessBy10.html:1
 msgid "LessBy10"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/lessby10/LessBy10.html:2
+#: src/lessons/welcome/bool2/LessBy10.html:2
 msgid ""
 "Given three ints, a b c, return true if one of them is 10 or more less than "
 "one of the others."
@@ -7895,12 +7949,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/maxmod5/MaxMod5.html:1
+#: src/lessons/welcome/bool2/MaxMod5.html:1
 msgid "MaxMod5"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/maxmod5/MaxMod5.html:2
+#: src/lessons/welcome/bool2/MaxMod5.html:2
 msgid ""
 "Given two int values, return whichever value is larger. However if the two "
 "values have the same remainder when divided by 5, then the return the "
@@ -7909,12 +7963,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/nearten/NearTen.html:1
+#: src/lessons/welcome/bool2/NearTen.html:1
 msgid "NearTen"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/nearten/NearTen.html:2
+#: src/lessons/welcome/bool2/NearTen.html:2
 msgid ""
 "Given a non-negative number \"num\", return true if num is within 2 of a "
 "multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
@@ -7922,12 +7976,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/ticket/red/RedTicket.html:1
+#: src/lessons/welcome/bool2/RedTicket.html:1
 msgid "RedTicket"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/ticket/red/RedTicket.html:2
+#: src/lessons/welcome/bool2/RedTicket.html:2
 msgid ""
 "You have a red lottery ticket showing ints a, b, and c, each of which is 0, "
 "1, or 2. If they are all the value 2, the result is 10. Otherwise if they "
@@ -7936,12 +7990,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/sharedigit/ShareDigit.html:1
+#: src/lessons/welcome/bool2/ShareDigit.html:1
 msgid "ShareDigit"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/sharedigit/ShareDigit.html:2
+#: src/lessons/welcome/bool2/ShareDigit.html:2
 msgid ""
 "Given two ints, each in the range 10..99, return true if there is a digit "
 "that appears in both numbers, such as the 2 in 12 and 23. (Note: division, "
@@ -7950,24 +8004,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/sortasum/SortaSum.html:1
+#: src/lessons/welcome/bool2/SortaSum.html:1
 msgid "SortaSum"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/sortasum/SortaSum.html:2
+#: src/lessons/welcome/bool2/SortaSum.html:2
 msgid ""
 "Given 2 ints, a and b, return their sum. However, sums in the range 10..19 "
 "inclusive, are forbidden, so in that case just return 20."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/squirrelplay/SquirrelPlay.html:1
+#: src/lessons/welcome/bool2/SquirrelPlay.html:1
 msgid "SquirrelPlay"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/squirrelplay/SquirrelPlay.html:2
+#: src/lessons/welcome/bool2/SquirrelPlay.html:2
 msgid ""
 "The squirrels in Palo Alto spend most of the day playing. In particular, "
 "they play if the temperature is between 60 and 90 (inclusive). Unless it is "
@@ -7977,12 +8031,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/party/tea/TeaParty.html:1
+#: src/lessons/welcome/bool2/TeaParty.html:1
 msgid "TeaParty"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/party/tea/TeaParty.html:2
+#: src/lessons/welcome/bool2/TeaParty.html:2
 msgid ""
 "We are having a party with amounts of tea and candy. Return the int outcome "
 "of the party encoded as 0=bad, 1=good, or 2=great. A party is good (1) if "
@@ -7993,12 +8047,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/teensum/TeenSum.html:1
+#: src/lessons/welcome/bool2/TeenSum.html:1
 msgid "TeenSum"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/teensum/TeenSum.html:2
+#: src/lessons/welcome/bool2/TeenSum.html:2
 msgid ""
 "Given 2 ints, a and b, return their sum. However, \"teen\" values in the "
 "range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
@@ -8006,24 +8060,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/twoasone/TwoAsOne.html:1
+#: src/lessons/welcome/bool2/TwoAsOne.html:1
 msgid "TwoAsOne"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/twoasone/TwoAsOne.html:2
+#: src/lessons/welcome/bool2/TwoAsOne.html:2
 msgid ""
 "Given three ints, a b c, return true if it is possible to add two of the "
 "ints to get the third."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/withoutdoubles/WithoutDoubles.html:1
+#: src/lessons/welcome/bool2/WithoutDoubles.html:1
 msgid "WithoutDoubles"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/withoutdoubles/WithoutDoubles.html:2
+#: src/lessons/welcome/bool2/WithoutDoubles.html:2
 msgid ""
 "Return the sum of two 6-sided dice rolls, each in the range 1..6. However, "
 "if noDoubles is true, if the two dice show the same value, increment one die "
@@ -8088,71 +8142,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/altpairs/AltPairs.html:1
+#: src/lessons/bat/string1/AltPairs.html:1
 msgid "AltPairs"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/altpairs/AltPairs.html:2
+#: src/lessons/bat/string1/AltPairs.html:2
 msgid ""
 "Given a string, return a string made of the chars at indexes 0,1, 4,5, 8,9 "
 "... so \"kittens\" yields \"kien\"."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/array123/Array123.html:1
-msgid "Array123"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/array123/Array123.html:2
-msgid ""
-"Given an array of ints, return true if .. 1, 2, 3, .. appears in the array "
-"somewhere."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/array667/Array667.html:1
-msgid "Array667"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/array667/Array667.html:2
-msgid ""
-"Given an array of ints, return the number of times that two 6's are next to "
-"each other in the array. Also count instances where the second \"6\" is "
-"actually a 7."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/arraycount9/ArrayCount9.html:1
-msgid "ArrayCount9"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/arraycount9/ArrayCount9.html:2
-msgid "Given an array of ints, return the number of 9's in the array."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/arrayfront9/ArrayFront9.html:1
-msgid "ArrayFront9"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/arrayfront9/ArrayFront9.html:2
-msgid ""
-"Given an array of ints, return true if one of the first 4 elements in the "
-"array is a 9. The array length may be less than 4."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/fronttimes/FrontTimes.html:1
+#: src/lessons/bat/string1/FrontTimes.html:1
 msgid "FrontTimes"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/fronttimes/FrontTimes.html:2
+#: src/lessons/bat/string1/FrontTimes.html:2
 msgid ""
 "Given a string and a non-negative int n, we'll say that the front of the "
 "string is the first 3 chars, or whatever is there if the string is less than "
@@ -8160,64 +8167,37 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/has271/Has271.html:1
-msgid "Has271"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/has271/Has271.html:2
-msgid ""
-"Given an array of ints, return true if it contains a 2, 7, 1 pattern -- a "
-"value, followed by the value plus 5, followed by the value minus 1.  "
-"Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
-"correct value."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/last2/Last2.html:1
+#: src/lessons/bat/string1/Last2.html:1
 msgid "Last2"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/last2/Last2.html:2
+#. type: Content of: <p>
+#: src/lessons/bat/string1/Last2.html:3
 msgid ""
-"Given a string, return the count of the number of times that a substring "
-"length 2 appears in the string and also as the last 2 chars of the string, "
-"so \"hixxxhi\" yields 1 (we won't count the end substring)."
+"Given a string, return the amount of times that the two last letters appear "
+"as a substring of the string. So \"hixxxhi\" yields 1 (we won't count the "
+"end substring) while \"aaaNaa\" yields 2 (substrings may overlap)."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/notriples/NoTriples.html:1
-msgid "NoTriples"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/notriples/NoTriples.html:2
-msgid ""
-"Given an array of ints, we'll say that a triple is a value appearing 3 times "
-"in a row in the array. Return true if the array does not contain any "
-"triples."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/bat/string1/bits/StringBits.html:1
+#: src/lessons/bat/string1/StringBits.html:1
 msgid "StringBits"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/bits/StringBits.html:2
+#: src/lessons/bat/string1/StringBits.html:2
 msgid ""
 "Given a string, return a new string made of every other char starting with "
 "the first, so \"Hello\" yields \"Hlo\"."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/match/StringMatch.html:1
+#: src/lessons/bat/string1/StringMatch.html:1
 msgid "StringMatch"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/match/StringMatch.html:2
+#: src/lessons/bat/string1/StringMatch.html:2
 msgid ""
 "Given 2 strings, a and b, return the number of the positions where they "
 "contain the same length 2 substring. So \"xxcaazz\" and \"xxbaaz\" yields 3, "
@@ -8226,50 +8206,55 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/splosion/StringSplosion.html:1
+#: src/lessons/bat/string1/StringSplosion.html:1
 msgid "StringSplosion"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/splosion/StringSplosion.html:2
+#: src/lessons/bat/string1/StringSplosion.html:2
 msgid "Given a non-empty string like \"Code\" return a string like \"CCoCodCode\"."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/times/StringTimes.html:1
+#: src/lessons/bat/string1/StringTimes.html:1
 msgid "StringTimes"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/times/StringTimes.html:2
+#: src/lessons/bat/string1/StringTimes.html:2
 msgid ""
 "Given a string and a non-negative int n, return a larger string that is n "
 "copies of the original string."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/stringx/StringX.html:1
+#: src/lessons/bat/string1/StringX.html:1
 msgid "StringX"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/stringx/StringX.html:2
+#: src/lessons/bat/string1/StringX.html:2
 msgid ""
 "Given a string, return a version where all the \"x\" have been "
 "removed. Except an \"x\" at the very start or end should not be removed."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/bat/string1/yak/StringYak.html:1
+#: src/lessons/bat/string1/StringYak.html:1
 msgid "StringYak"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/bat/string1/yak/StringYak.html:2
+#: src/lessons/bat/string1/StringYak.html:2
 msgid ""
 "Suppose the string \"yak\" is unlucky. Given a string, return a version "
 "where all the \"yak\" are removed, but the \"a\" can be any char. The "
 "\"yak\" strings will not overlap."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/basics/Array.html:1
+msgid "Knotting and sequences"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -8288,19 +8273,16 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array.html:11
 msgid ""
 "One solution is to read the next cell, and go copy it in position before "
-"comming back to read the second cell. But since it is forbiden to use the "
+"coming back to read the second cell. But since it is forbidden to use the "
 "methods to teleport the buggle to a specific position (<code>setPos()</code> "
 "and similar), this approach will be a pain to implement."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:16
-msgid "The simplest is to store the whole color pattern in an <b>array</b>."
-msgstr ""
-
-#. type: Content of: <p><h2>
-#: src/lessons/welcome/array/basics/Array.html:18
-msgid "Arrays in Java"
+msgid ""
+"The simplest is to store the sequence of colors that constitute the whole "
+"pattern in an <b>array</b>."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8311,8 +8293,30 @@ msgid ""
 "kind:"
 msgstr ""
 
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array.html:24
+msgid ""
+"The simplest is to store the sequence of colors that constitute the whole in "
+"a <b>list</b>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/array/basics/Array.html:26
+msgid "Lists"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array.html:27
+msgid ""
+"A list is an array of positions in which one can store values. Each cell is "
+"a variable on its own. A list is then a sequence of values. Lists can even "
+"mix values of differing types, such as integer values in some cells and "
+"colors in other cells.  At the end, a list is very similar to a storage "
+"shelve, where each level can store a separate value."
+msgstr ""
+
 #. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:28
+#: src/lessons/welcome/array/basics/Array.html:38
 msgid ""
 "T is the array's name, T[0] is the name of the first cell, T[1] the name of "
 "the second cell, T[2] the third one, etc. And yes, the first cell in "
@@ -8320,28 +8324,38 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:32
+#: src/lessons/welcome/array/basics/Array.html:41
 msgid ""
-"We can use an integer variable <i>i</i> to access with T[i] to the array's "
-"cells: when the value of <i>i</i> is 0, then T[i] accesses T[0], when the "
-"value of <i>i</i> is 10, then T[i] accesses T[10]. <i>i</i> is said to be "
-"the indice in the array T."
-msgstr ""
-
-#. type: Content of: <br><p><h2>
-#: src/lessons/welcome/array/basics/Array.html:37
-msgid "Initializing an array"
+"T is the list's name, T[0] is the name of the first cell, T[1] the name of "
+"the second cell, T[2] the third one, etc. And yes, the first cell in "
+"numbered T[0] and the last one of a list of size N is T[N-1]. It may seem "
+"funny to count starting from 0 and not from 1 as usual, but some historical "
+"reasons make it unavoidable here."
 msgstr ""
 
 #. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:38
+#: src/lessons/welcome/array/basics/Array.html:47
 msgid ""
-"Let <code>T</code> be an array of 10 integer elements. It can then be "
-"initialized this way:"
+"We can use an integer variable <i>i</i> to access with T[i] to the cells: "
+"when the value of <i>i</i> is 0, then T[i] accesses T[0], when the value of "
+"<i>i</i> is 10, then T[i] accesses T[10]. <i>i</i> is said to be the index "
+"in T."
+msgstr ""
+
+#. type: Content of: <br><p><h3>
+#: src/lessons/welcome/array/basics/Array.html:52
+msgid "Initialization"
+msgstr ""
+
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:53
+msgid ""
+"If <code>T</code> contains 10 elements, then each cell can be initialized "
+"with a simple loop:"
 msgstr ""
 
 #. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:41
+#: src/lessons/welcome/array/basics/Array.html:56
 #, no-wrap
 msgid ""
 "for (int i = 0; i&lt;10; i++) {\n"
@@ -8349,35 +8363,52 @@ msgid ""
 "}\n"
 msgstr ""
 
-#. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:46
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:61
+#, no-wrap
+msgid ""
+"for i in range(10):\n"
+"   T[i] = 3;\n"
+msgstr ""
+
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:65
+msgid ""
+"Note that <code>range(max)</code> returns the list of all integers that are "
+"smaller than <code>max</code>, starting with 0. There is exactly max such "
+"values. For example, if <code>max</code> is 3, the returned values are 0, 1 "
+"and 2."
+msgstr ""
+
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:70
 msgid "<code>T[i]</code> can be used just like a variable. We can set a new value:"
 msgstr ""
 
 #. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:47
+#: src/lessons/welcome/array/basics/Array.html:71
 #, no-wrap
-msgid "T[i] = 78;"
+msgid "T[i] = 78"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:49
-msgid "We can access its value:"
+#: src/lessons/welcome/array/basics/Array.html:73
+msgid "We can retrieve and use its value:"
 msgstr ""
 
-#. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:50
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:74
 #, no-wrap
-msgid "x = T[i];"
+msgid "x = T[i]"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:52
+#: src/lessons/welcome/array/basics/Array.html:76
 msgid "We can test this value:"
 msgstr ""
 
-#. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:54
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:78
 #, no-wrap
 msgid ""
 "if (T[i] > 0 ) {\n"
@@ -8385,24 +8416,69 @@ msgid ""
 "}\n"
 msgstr ""
 
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:83
+#, no-wrap
+msgid ""
+"if T[i] > 0:\n"
+"    // instructions...\n"
+msgstr ""
+
 #. type: Content of: <br><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:59
+#: src/lessons/welcome/array/basics/Array.html:87
 msgid "Declaring an array"
 msgstr ""
 
-#. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:60
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:88
+msgid ""
+"If you know beforehand the content of your list, you can affect these values "
+"all together.  Just put them between square braces and separated by commas "
+"as follows:"
+msgstr ""
+
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:91
+#, no-wrap
+msgid ""
+"L = [1, 3, 5, 7, 9] \n"
+"# L is now an array of 5 values, all of them being integers\n"
+msgstr ""
+
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:94
+msgid ""
+"Otherwise, you probably want to create an empty list and then append each "
+"values separately:"
+msgstr ""
+
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:96
+#, no-wrap
+msgid ""
+"L2 = [] \n"
+"# L2 is now an empty list\n"
+"L2.append(1)\n"
+"L2.append(3)\n"
+"L2.append(5)\n"
+"L2.append(7)\n"
+"L2.append(9) \n"
+"# Its content is now the same as L previously\n"
+msgstr ""
+
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:106
 msgid "An array can be declared the following way:"
 msgstr ""
 
 #. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:61
+#: src/lessons/welcome/array/basics/Array.html:107
 #, no-wrap
 msgid "int[] T;"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:63
+#: src/lessons/welcome/array/basics/Array.html:109
 msgid ""
 "<code>int</code> means that the elements of the array are of type integer; "
 "<code>T</code> is the name of the array and <code>[]</code> means that we "
@@ -8411,39 +8487,39 @@ msgid ""
 "prefered in Java."
 msgstr ""
 
-#. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:68
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:114
 #, no-wrap
 msgid "int T[];"
 msgstr ""
 
 #. type: Content of: <br><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:70
+#: src/lessons/welcome/array/basics/Array.html:116
 msgid "Allocating an array"
 msgstr ""
 
-#. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:72
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:118
 msgid ""
-"Declaring an array <code>T</code> only reserve the name <code>T</code> for "
-"later use. But the array is not initialized yet: it does not have any "
-"value. What would <code>T[4]</code> mean if we didn't say that the array is "
-"at least 5 cells long?"
+"Declaring a variable <code>T</code> that stores an array only reserve the "
+"name <code>T</code> for later use. But the array is not initialized yet: it "
+"does not have any value. What would <code>T[4]</code> mean if we didn't say "
+"that the array is at least 5 cells long?"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:77
+#: src/lessons/welcome/array/basics/Array.html:123
 msgid "First and foremost, we have to give a value to <code>T</code>:"
 msgstr ""
 
-#. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:78
+#. type: Content of: <br><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:124
 #, no-wrap
 msgid "T = new int[10];"
 msgstr ""
 
 #. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:79
+#: src/lessons/welcome/array/basics/Array.html:126
 msgid ""
 "<code>new</code> means that we want to create something, and "
 "<code>int[10]</code> means that it is an array of 10 integer values. In "
@@ -8451,75 +8527,65 @@ msgid ""
 "<code>T</code> variable reference this array."
 msgstr ""
 
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:84
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:131
 msgid ""
 "The size of an array is fixed and cannot be changed after the creation of "
 "the array. To know the size of a <code>T</code> array, we can consult the "
 "value of the variable <code>T.length</code>."
 msgstr ""
 
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:89
-msgid "It is forbidden to write:"
-msgstr ""
-
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:90
-#, no-wrap
-msgid "int T[10]; // WRONG!!!"
-msgstr ""
-
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:91
+#. type: Content of: <br><p><p>
+#: src/lessons/welcome/array/basics/Array.html:136
 msgid ""
-"You are required to use the <code>new</code> instruction. On the other hand, "
-"you perfectly can specify the size with a variable <code>i</code>."
+"It is forbidden to write something like <code>int T[10];</code> You are "
+"required to use the <code>new</code> instruction. On the other hand, you "
+"perfectly can specify the size with a variable <code>i</code>."
 msgstr ""
 
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:93
+#. type: Content of: <br><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:140
 #, no-wrap
 msgid "T = new int[i];"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:94
+#: src/lessons/welcome/array/basics/Array.html:141
 msgid ""
 "In this case, the array's size will be set to the value of <code>i</code> "
 "<b>when <code>new</code> gets called</b>. If the variable changes afterward, "
 "it won't change the array's size."
 msgstr ""
 
-#. type: Content of: <br><p><p><p><h4>
-#: src/lessons/welcome/array/basics/Array.html:98
+#. type: Content of: <br><p><p><h4>
+#: src/lessons/welcome/array/basics/Array.html:145
 msgid "Declaration and allocation"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:99
+#. type: Content of: <br><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:146
 #, no-wrap
 msgid "int[] T = new int[10];"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:101
+#: src/lessons/welcome/array/basics/Array.html:148
 msgid "We declare and allocate the array on the same line."
 msgstr ""
 
-#. type: Content of: <br><p><p><p><h4>
-#: src/lessons/welcome/array/basics/Array.html:103
+#. type: Content of: <br><p><p><h4>
+#: src/lessons/welcome/array/basics/Array.html:150
 msgid "Declaration and initialization"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:104
+#. type: Content of: <br><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:151
 #, no-wrap
 msgid "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
 msgstr ""
 
 #. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:106
+#: src/lessons/welcome/array/basics/Array.html:153
 msgid ""
 "We declare, allocate and initialize the array on the same line. To know the "
 "size of the array to allocate, the compiler counts the provided values. This "
@@ -8527,7 +8593,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:110
+#: src/lessons/welcome/array/basics/Array.html:157
 #, no-wrap
 msgid ""
 "int[] T = new int[10];\n"
@@ -8537,13 +8603,13 @@ msgid ""
 "T[9] = 10;\n"
 msgstr ""
 
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:117
+#. type: Content of: <br><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:164
 msgid "It is also equivalent to:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:119
+#. type: Content of: <br><p><p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:166
 #, no-wrap
 msgid ""
 "int[] T = new int[10];\n"
@@ -8552,20 +8618,44 @@ msgid ""
 "}\n"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:125
+#. type: Content of: <br><p><p><p><p><h3>
+#: src/lessons/welcome/array/basics/Array.html:176
+msgid "Lists and method parameters"
+msgstr ""
+
+#. type: Content of: <br><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:177
+msgid ""
+"It is perfectly ok to pass a list to a method as a parameter. This method "
+"can then use this parameter as if it were defined there. Methods can also "
+"return lists as result without any complication. As an example, here is a "
+"method doubling every values of the list received as a parameter:"
+msgstr ""
+
+#. type: Content of: <br><p><p><p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:182
+#, no-wrap
+msgid ""
+"L = [1, 3, 5, 7, 9]\n"
+"def doubling(param):\n"
+"  for i in range( len(param) ):\n"
+"    param[i] *= 2\n"
+msgstr ""
+
+#. type: Content of: <br><p><p><p><p><p><h3>
+#: src/lessons/welcome/array/basics/Array.html:189
 msgid "Arrays and method parameters"
 msgstr ""
 
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:126
+#. type: Content of: <br><p><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:190
 msgid ""
 "It is perfectly ok to pass an array to a method as a parameter. The method "
 "must have a prototype similar to:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:128
+#. type: Content of: <br><p><p><p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:192
 #, no-wrap
 msgid ""
 "void myMethod(int[] values) {\n"
@@ -8573,13 +8663,13 @@ msgid ""
 "}"
 msgstr ""
 
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:132
+#. type: Content of: <br><p><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:196
 msgid "On the caller side, that also very simple:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:134
+#. type: Content of: <br><p><p><p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:198
 #, no-wrap
 msgid ""
 "int[] tab = new int[10];\n"
@@ -8587,13 +8677,13 @@ msgid ""
 "myMethod(tab);\n"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:139
+#. type: Content of: <br><p><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:203
 msgid "We can also have methods returns arrays as results:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:140
+#. type: Content of: <br><p><p><p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array.html:204
 #, no-wrap
 msgid ""
 "int[] otherMethod() {\n"
@@ -8603,8 +8693,16 @@ msgid ""
 "}"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:147
+#. type: Content of: <br><p><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:211
+msgid ""
+"Your code should save the color pattern observed on the first row into a "
+"list.  The easiest is to create an empty list, and then "
+"<code>append()</code> the colors one after the others."
+msgstr ""
+
+#. type: Content of: <br><p><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:215
 msgid ""
 "The <code>run()</code> method that you should write must declare an array of "
 "colors (<code>Color[]</code>) and allocate it. Beware, the first world is "
@@ -8613,20 +8711,25 @@ msgid ""
 "current world."
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:153
+#. type: Content of: <br><p><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:221
 msgid ""
 "Once the array allocated, we have to fill it. For each cel of the row, read "
 "the ground color (with <code>getGroundColor()</code>), and store it in the "
 "right cell of the array."
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:157
+#. type: Content of: <br><p><p><p><p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:225
 msgid ""
-"Once hte array initialized, you have to reapply the pattern on every rows, "
-"for example by excuting <code>getWorldHeight()</code> times a method written "
-"specifically for this."
+"Once you managed to read and save the pattern on the first row, you have to "
+"reapply the pattern on every rows, for example by executing "
+"<code>getWorldHeight()</code> times a method written specifically for this."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/basics2/Array2.html:1
+msgid "Knotting, sequences and modulo"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -8668,38 +8771,51 @@ msgid ""
 "<i>reading</i> it."
 msgstr ""
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/array/basics2/Array2.html:21
+#, no-wrap
+msgid "offset = int( readMessage() )"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics2/Array2.html:22
+msgid ""
+"<code>readMessage()</code> gets the message on the ground as a String, while "
+"<code>int()</code> transforms it into an integer value by <i>reading</i> it."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/array/basics2/Array2.html:25
 msgid ""
 "Then, to pick the right color, the easier is to use the <code>%</code> "
 "(modulo) operator. For example, <code>(i + 5) % size</code> allows to "
-"retrieve teh <code>i</code>th cell of an array of size <code>size</code> "
+"retrieve the <code>i</code>th cell of an array of size <code>size</code> "
 "with an offset of <code>5</code>."
 msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:1
-msgid "Searching a given value"
+msgid "Searching for a given value"
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:3
 msgid ""
-"The goal of this exercise is to search the cell of value 17 in an array, and "
-"return its position."
+"The goal of this exercise is to search the cell of a given value, and return "
+"its position."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:5
 msgid ""
-"To that extend, you should fill the method <code>indexOf(int[] tab, int "
-"lookingFor)</code>, which parameters are the array to explore, and the value "
-"to search. If the value <code>lookingFor</code> is not in the array "
-"<code>tab</code>, the method should return -1."
+"To that extend, you should fill the method <code>indexOf()</code>, which "
+"parameters are the array to explore, and the value to search. If the value "
+"<code>lookingFor</code> is not in the array <code>tab</code>, the method "
+"should return -1."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:9
 msgid ""
 "The idea of the algorithm is to sweep over the whole array, checking the "
 "value of each cell. If it's the searched value, you should return the index "
@@ -8707,17 +8823,16 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:13
 msgid ""
-"The first thing to remember about arrays is that their indices begin at "
-"0. So, if there is 3 cells, their indices will be 0, 1 and 2. There would "
-"not be any cell numbered 3."
+"Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
+"their indices will be 0, 1 and 2. There would not be any cell numbered 3."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:18
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:16
 msgid ""
-"Then, remember that the amount of cells in an array can be retrieved using "
+"Remember also that the amount of cells in an array can be retrieved using "
 "the <code>length</code> attribute. So, if your array is called "
 "<code>tab</code>, its size can be retrieved as <code>tab.length</code>.  "
 "Note that there is no () after <code>length</code>. An attribute is a sort "
@@ -8725,8 +8840,21 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:21
 msgid "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:23
+msgid ""
+"Remember also that the amount of cells in an array can be retrieved with the "
+"<code>len()</code> function. So, if your array is called <code>tab</code>, "
+"its size can be retrieved as <code>len(tab)</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:27
+msgid "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8737,16 +8865,16 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:3
 msgid ""
-"In this exercise, you must compute the indice of the tab cell containing the "
+"In this exercise, you must compute the index of the tab cell containing the "
 "biggest value."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:5
 msgid ""
-"For that, fill the <code>indexOfMaximum(int[] tab)</code> method. Its "
-"parameter is the array to explore. Should the array contain the searched "
-"value several times, you should return the indice of the first occurrence."
+"For that, fill the <code>indexOfMaximum()</code> method. Its parameter is "
+"the array to explore. Should the array contain the searched value several "
+"times, you should return the index of the first occurrence."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8773,10 +8901,9 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:6
 msgid ""
-"You have to fill the body of the method <code>average(int[] tab)</code> "
-"which takes as parameter the array of integers of which it computes and "
-"returns the average value. Please note that the return type of the method "
-"has type <code>int</code>."
+"You have to fill the body of the method <code>average()</code> which takes "
+"as parameter the array of integers of which it computes and returns the "
+"average value. Please note that this method must return an integer."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8785,9 +8912,22 @@ msgid ""
 "To compute the average value of an integer, it is necessary to traverse the "
 "whole array and to compute the sum of all its values (so you will need a "
 "variable to store this temporary result), then you have to divide this sum "
-"by the size of the array. In Java, you can get the size of an array "
-"<code>myarray</code> by consulting its <code>length</code> attribute (in "
-"other words, <code>myarray.length</code>)."
+"by the size of the array."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:10
+msgid ""
+"In Java, you can get the size of an array <code>myarray</code> by consulting "
+"its <code>length</code> attribute (in other words, "
+"<code>myarray.length</code>)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:12
+msgid ""
+"In python, retrieving the size of an array <code>myarray</code> is as easy "
+"as calling <code>len(myarray)</code>."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8799,8 +8939,8 @@ msgstr ""
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:3
 msgid ""
 "In this exercise, you must compute the maximal value contained in an array.  "
-"For that, fill the <code>maximum(int[] tab)</code> method, which parameter "
-"is the array to explore."
+"For that, fill the <code>maximum()</code> method, which parameter is the "
+"array to explore."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8809,9 +8949,7 @@ msgid ""
 "To compute this value, sweep over the whole parameter. For each value, if "
 "it's bigger than the biggest value you saw so far, you must save this value "
 "somewhere to remember it afterward. You thus need an extra variable, which "
-"can be initialized to the value of the first array cell. Another possibility "
-"is to initialize it to the smallest integer that Java knows about (which can "
-"be retrieved through <code>Integer.MIN_VALUE</code>)."
+"can be initialized to the value of the first array cell."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8824,9 +8962,9 @@ msgstr ""
 msgid ""
 "In this exercise, you must compute the amount of occurrences of a given "
 "value in an array (that is, the amount of time that this value appears in "
-"the array). For that, fill the <code>occurrences(int[] tab, int "
-"lookingFor)</code> method, which returns the number of occurrence of "
-"<code>lookingFor</code> in <code>tab</code>."
+"the array). For that, fill the <code>occurrences()</code> method, which "
+"returns the number of occurrence of <code>lookingFor</code> in "
+"<code>tab</code>."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8835,6 +8973,80 @@ msgid ""
 "To compute this value, simply sweep over the array counting for the amount "
 "of cells containing the searched value. You thus need an extra variable for "
 "that."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/array123/Array123.html:1
+msgid "Array123"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/array123/Array123.html:2
+msgid ""
+"Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
+"array somewhere."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/array667/Array667.html:1
+msgid "Array667"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/array667/Array667.html:2
+msgid ""
+"Given an array of integers, return the number of times that two 6's are next "
+"to each other in the array. Also count instances where the second \"6\" is "
+"actually a 7."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/arraycount9/ArrayCount9.html:1
+msgid "ArrayCount9"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/arraycount9/ArrayCount9.html:2
+msgid "Given an array of integers, return the number of 9's in the array."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:1
+msgid "ArrayFront9"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:2
+msgid ""
+"Given an array of integers, return true if one of the first 4 elements in "
+"the array is a 9. The array length may be less than 4."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/notriples/NoTriples.html:1
+msgid "NoTriples"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/notriples/NoTriples.html:2
+msgid ""
+"Given an array of integers, we'll say that a triple is a value appearing 3 "
+"times in a row in the array. Return true if the array does not contain any "
+"triples."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/has271/Has271.html:1
+msgid "Has271"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/has271/Has271.html:2
+msgid ""
+"Given an array of integers, return true if it contains a 2, 7, 1 pattern -- "
+"a value, followed by the value plus 5, followed by the value minus 1.  "
+"Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
+"correct value."
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8848,31 +9060,31 @@ msgid "Functions provided :"
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:5 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:11 src/lessons/smn/pancake/raw/RawPancakePlate.html:12
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:5 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:14 src/lessons/smn/pancake/raw/RawPancakePlate.html:15
 #, no-wrap
 msgid "int getStackSize()"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:7 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:13 src/lessons/smn/pancake/raw/RawPancakePlate.html:14
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:7 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:16 src/lessons/smn/pancake/raw/RawPancakePlate.html:17
 msgid ""
 "Returns the size of the stack, in other words the amount of pancakes it "
 "contains."
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:9 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:15 src/lessons/smn/pancake/raw/RawPancakePlate.html:16
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:9 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:18 src/lessons/smn/pancake/raw/RawPancakePlate.html:19
 #, no-wrap
 msgid "int getPancakeRadius(int pancakeNumber)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:11 src/lessons/smn/pancake/raw/RawPancakePlate.html:18
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:11 src/lessons/smn/pancake/raw/RawPancakePlate.html:21
 msgid "Returns the radius of the pancake you gave in argument."
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:13 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:19
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:13 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:22
 #, no-wrap
 msgid "boolean isPancakeUpsideDown(int pancakeNumber)"
 msgstr ""
@@ -8885,13 +9097,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><p><pre>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:17 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:23 src/lessons/smn/pancake/raw/RawPancakePlate.html:20
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:17 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:26 src/lessons/smn/pancake/raw/RawPancakePlate.html:23
 #, no-wrap
 msgid "void flip(int numberOfPancakes)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/jlm/universe/smn/pancake/PancakeWorld.html:19 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:25 src/lessons/smn/pancake/raw/RawPancakePlate.html:22
+#: src/jlm/universe/smn/pancake/PancakeWorld.html:19 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:28 src/lessons/smn/pancake/raw/RawPancakePlate.html:25
 msgid ""
 "Flips the <code>numberOfPancakes</code> first pancakes composing the stack, "
 "from the top of it."
@@ -8929,13 +9141,13 @@ msgid "<u>Functions provided:</u>"
 msgstr ""
 
 #. type: Content of: <p><div><p><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:12 src/lessons/smn/baseball/easy/BaseballGame.html:25 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:39
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:12 src/lessons/smn/baseball/easy/BaseballGame.html:28 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:42
 #, no-wrap
 msgid "void move(int baseSrc, int playerSrc)"
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:14 src/lessons/smn/baseball/easy/BaseballGame.html:27 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:41
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:14 src/lessons/smn/baseball/easy/BaseballGame.html:30 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:44
 msgid ""
 "Move the player on position <code>playerLocation</code> from the base "
 "<code>baseSrc</code> to the hole."
@@ -8961,7 +9173,7 @@ msgid " int getHoleBase() "
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:22 src/lessons/smn/baseball/easy/BaseballGame.html:36 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:50
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:22 src/lessons/smn/baseball/easy/BaseballGame.html:39 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:53
 msgid "Return the index of the base where the hole is located"
 msgstr ""
 
@@ -8972,7 +9184,7 @@ msgid " int getHolePositionInBase()"
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:26 src/lessons/smn/baseball/easy/BaseballGame.html:40 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:54
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:26 src/lessons/smn/baseball/easy/BaseballGame.html:43 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:57
 msgid "Return the player's position in the base where the hole is located"
 msgstr ""
 
@@ -8983,29 +9195,29 @@ msgid " boolean isBaseSorted( int baseIndex)"
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:30 src/lessons/smn/baseball/easy/BaseballGame.html:44 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:58
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:30 src/lessons/smn/baseball/easy/BaseballGame.html:47 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:61
 msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
 msgstr ""
 
 #. type: Content of: <p><div><p><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:32 src/lessons/smn/baseball/easy/BaseballGame.html:46 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:60
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:32 src/lessons/smn/baseball/easy/BaseballGame.html:49 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:63
 #, no-wrap
 msgid "int getAmountOfBases()"
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:34 src/lessons/smn/baseball/easy/BaseballGame.html:48 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:62
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:34 src/lessons/smn/baseball/easy/BaseballGame.html:51 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:65
 msgid "Return the amount of bases in the field."
 msgstr ""
 
 #. type: Content of: <p><div><p><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:36 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:65
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:36 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:68
 #, no-wrap
 msgid "int getLocationsAmount()"
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:38 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:67
+#: src/jlm/universe/smn/baseball/BaseballWorld.html:38 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:70
 msgid "Return the amount of players locations available on each base of the field"
 msgstr ""
 
@@ -9014,13 +9226,25 @@ msgstr ""
 msgid "Computer Science in Real Life"
 msgstr ""
 
+#. type: Content of: <p><font>
+#: src/lessons/smn/Main.html:3 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:2 src/lessons/smn/pancake/raw/RawPancakePlate.html:2 src/lessons/smn/baseball/easy/BaseballGame.html:2 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:2
+msgid ""
+"This material is currently under development in JLM and will soon be "
+"properly integrated"
+msgstr ""
+
 #. type: Content of: <p>
-#: src/lessons/smn/Main.html:3
+#: src/lessons/smn/Main.html:4 src/lessons/smn/pancake/burned/BurnedPancakePlate.html:3 src/lessons/smn/pancake/raw/RawPancakePlate.html:3 src/lessons/smn/baseball/easy/BaseballGame.html:3 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:3
+msgid ". Please be patient with us."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/smn/Main.html:6
 msgid "Few activities developped for Computer Science in Real Life"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:3
+#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:6
 msgid ""
 "This world implements the control freak pancake seller problem, who wants "
 "his pancakes to be sorted on their plate from the biggest to the smallest, "
@@ -9028,7 +9252,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:5 src/lessons/smn/pancake/raw/RawPancakePlate.html:6
+#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:8 src/lessons/smn/pancake/raw/RawPancakePlate.html:9
 msgid ""
 "You are asked to resort a pancakes stack to make him happy. Since it is "
 "obviously forbidden to place a pancake on the dirty table, the only allowed "
@@ -9038,36 +9262,36 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:9
+#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:12
 msgid "Only four functions are provided :"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:17
+#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:20
 msgid "Returns the radius of the pancake <code>pancakeNumber</code>."
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:21
+#: src/lessons/smn/pancake/burned/BurnedPancakePlate.html:24
 msgid ""
 "Returns true if the burned side of the pancake <code>pancakeNumber</code> is "
 "up, false if not."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/pancake/raw/RawPancakePlate.html:3
+#: src/lessons/smn/pancake/raw/RawPancakePlate.html:6
 msgid ""
 "This world implements the control freak pancake seller problem, who wants "
 "his pancakes to be sorted on their plate from the biggest to the smallest."
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/smn/pancake/raw/RawPancakePlate.html:10
+#: src/lessons/smn/pancake/raw/RawPancakePlate.html:13
 msgid "Only three functions are provided :"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:3
+#: src/lessons/smn/baseball/easy/BaseballGame.html:6
 msgid ""
 "This world implements the baseball game, in which several players want to go "
 "back to their bases. The bases make a circle and have their own "
@@ -9080,82 +9304,82 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:8 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:19
+#: src/lessons/smn/baseball/easy/BaseballGame.html:11 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:22
 msgid "Memento:"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:11 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:25
+#: src/lessons/smn/baseball/easy/BaseballGame.html:14 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:28
 msgid "The color of a base is given by its index."
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:14 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:28
+#: src/lessons/smn/baseball/easy/BaseballGame.html:17 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:31
 msgid "The hole has a color of -1."
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:17 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:31
+#: src/lessons/smn/baseball/easy/BaseballGame.html:20 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:34
 msgid ""
 "The base which has only one player on the field has "
 "<i>getAmountOfBases()-1</i> as index"
 msgstr ""
 
 #. type: Content of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:23
+#: src/lessons/smn/baseball/easy/BaseballGame.html:26
 msgid "There are six methods provided :"
 msgstr ""
 
 #. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:29 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:43
+#: src/lessons/smn/baseball/easy/BaseballGame.html:32 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:46
 #, no-wrap
 msgid "int getPlayerColor(int baseIndex, int playerLocation) "
 msgstr ""
 
 #. type: Content of: <p><div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:31 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:45
+#: src/lessons/smn/baseball/easy/BaseballGame.html:34 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:48
 msgid ""
 "Return the color of the player on position <code>playerLocation</code> ( 0 "
 "or 1 ) from the base <code>baseIndex</code>.  The color -1 is the hole."
 msgstr ""
 
 #. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:34 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:48
+#: src/lessons/smn/baseball/easy/BaseballGame.html:37 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:51
 #, no-wrap
 msgid "int getHoleBase() "
 msgstr ""
 
 #. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:38 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:52
+#: src/lessons/smn/baseball/easy/BaseballGame.html:41 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:55
 #, no-wrap
 msgid "int getHolePositionInBase()"
 msgstr ""
 
 #. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:42 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:56
+#: src/lessons/smn/baseball/easy/BaseballGame.html:45 src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:59
 #, no-wrap
 msgid "boolean isBaseSorted( int baseIndex)"
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:53
+#: src/lessons/smn/baseball/easy/BaseballGame.html:56
 msgid "Show Tip 1 ( the methods's prototype)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:54
+#: src/lessons/smn/baseball/easy/BaseballGame.html:57
 msgid "The prototypes of the methods you may use are the followings :"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:58
+#: src/lessons/smn/baseball/easy/BaseballGame.html:61
 msgid ""
 "private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int "
 "playerDst) throws InvalidMoveException"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:60
+#: src/lessons/smn/baseball/easy/BaseballGame.html:63
 msgid ""
 "Move the player in position <code>playerSrc</code> of the base "
 "<code>baseSrc</code> to the position <code>playerDst</code> from the base "
@@ -9163,14 +9387,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:62
+#: src/lessons/smn/baseball/easy/BaseballGame.html:65
 msgid ""
 "private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) "
 "throws InvalidPositionException"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:64
+#: src/lessons/smn/baseball/easy/BaseballGame.html:67
 msgid ""
 "Return the base's number and the position of the nearest player which "
 "has<code>colorWanted</code> as color. It begins the search at the base "
@@ -9178,14 +9402,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:66
+#: src/lessons/smn/baseball/easy/BaseballGame.html:69
 msgid ""
 "private void bringHole(int baseDst, int playerDst , int playerToProtect) "
 "throws InvalidMoveException"
 msgstr ""
 
 #. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:68
+#: src/lessons/smn/baseball/easy/BaseballGame.html:71
 msgid ""
 "Bring the hole to the position <code>playerDst</code> from the base "
 "<code>baseDst</code> while protecting the position "
@@ -9193,17 +9417,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:75
+#: src/lessons/smn/baseball/easy/BaseballGame.html:78
 msgid "Show Tip 2 (Pseudo-code of solve)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:76
+#: src/lessons/smn/baseball/easy/BaseballGame.html:79
 msgid "The algorithm of the solve method is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:78
+#: src/lessons/smn/baseball/easy/BaseballGame.html:81
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -9234,17 +9458,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:104
+#: src/lessons/smn/baseball/easy/BaseballGame.html:107
 msgid "Show Tip 3 ( Pseudo-code of bringHole )"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:105
+#: src/lessons/smn/baseball/easy/BaseballGame.html:108
 msgid "The algorithm of the bringHole method is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:107
+#: src/lessons/smn/baseball/easy/BaseballGame.html:110
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -9275,17 +9499,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:137
+#: src/lessons/smn/baseball/easy/BaseballGame.html:140
 msgid "Show Tip 4 ( Pseudo-code of findNearestPlayer)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:138
+#: src/lessons/smn/baseball/easy/BaseballGame.html:141
 msgid "The algorithm of the findNearestPlayer method is the following :"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:140
+#: src/lessons/smn/baseball/easy/BaseballGame.html:143
 #, no-wrap
 msgid ""
 "BEGIN\n"
@@ -9310,17 +9534,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:162
+#: src/lessons/smn/baseball/easy/BaseballGame.html:165
 msgid "Show tip 5 ( Pseudo-code of bringPlayerHome)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:163
+#: src/lessons/smn/baseball/easy/BaseballGame.html:166
 msgid "The algorithm of the bringPlayerHome method is the following :"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:165
+#: src/lessons/smn/baseball/easy/BaseballGame.html:168
 #, no-wrap
 msgid ""
 "PRECONDITION: the hole is on the base of index baseSrc-1\n"
@@ -9335,7 +9559,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:3
+#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:6
 msgid ""
 "Like the previous world, this world implements a baseball world. But now, "
 "you have more than two players on each base.  Like before, your mission is "
@@ -9343,7 +9567,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:7
+#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:10
 msgid ""
 "This exercise is trying to show you one thing : you have to do a change that "
 "you haven't anticipated, and you need to make this change without breaking "
@@ -9352,7 +9576,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:11
+#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:14
 msgid ""
 "The previous algorithm was only able to deal with two players per base, you "
 "have to change it so you can handle n players per base, with n greater or "
@@ -9360,7 +9584,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:15
+#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:18
 msgid ""
 "You can be wondering why you didn't have to write directly an flawless "
 "algorithm. It's just that sometimes, it's way too hard.  Sometimes, you just "
@@ -9370,13 +9594,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:22
+#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:25
 msgid ""
 "You can have access to the number of locations available on each base by "
 "using the getLocationsAmount() method."
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:37
+#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:40
 msgid "There are seven methods provided :"
 msgstr ""

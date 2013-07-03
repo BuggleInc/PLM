@@ -1,4 +1,4 @@
-<h1>Tricots et tableaux</h1>
+<h1>Knotting and sequences</h1>
 
 L'objectif de cet exercice est de reproduire le motif de la première colonne
 en le décalant d'une case (voir l'onglet Objectives pour plus de
@@ -8,107 +8,153 @@ souhaité, puis le reproduire ensuite. Il est impossible de faire autrement
 car votre programme sera exécuté par trois buggles dans trois mondes
 différents, chacune ayant un motif propre à reproduire.
 
-<p>Une possibilité est de lire la prochaine case, puis d'aller la recopier en
-position, avant de revenir lire la case suivate, etc. Mais comme vous n'avez
-pas le droit d'utiliser les méthodes permettant de téléporter la buggle à
-une case particulière (<code>setPos()</code> et autres), cette façon de
-faire va être très pénible à mettre en place. </p>
+<p>One solution is to read the next cell, and go copy it in position before
+coming back to read the second cell. But since it is forbidden to use the
+methods to teleport the buggle to a specific position (<code>setPos()</code>
+and similar), this approach will be a pain to implement. </p>
  
-<p>Le plus simple est de stocker l'enchainement de couleurs dans un
-<b>tableau</b>.
-
-<h2>Les tableaux en Java</h2> 
-Un tableau est une séquence d'emplacements dans lesquels on peut mettre des
+<p class="Java">The simplest is to store the sequence of colors that constitute the whole
+pattern in an <b>array</b>.</p>
+<h2 class="Java">Tableaux</h2> 
+<p class="Java">Un tableau est une séquence d'emplacements dans lesquels on peut mettre des
 valeurs de même type (une par emplacement). C'est donc une séquence de cases
 de même type :</p>
+
+
+<p class="python">The simplest is to store the sequence of colors that constitute the whole in
+a <b>list</b>.</p>
+<h2 class="python">Lists</h2> 
+<p class="python">A list is an array of positions in which one can store values. Each cell is
+a variable on its own. A list is then a sequence of values. Lists can even
+mix values of differing types, such as integer values in some cells and
+colors in other cells.  At the end, a list is very similar to a storage
+shelve, where each level can store a separate value.</p>
 
 <br>
 <div style="text-align:center">
 	<img src="lessons/welcome/array/array.png"/>
 </div>
 
-<p>T est le nom du tableau, T[0] est le nom de la première case, T[1] de la
+<p class="Java">T est le nom du tableau, T[0] est le nom de la première case, T[1] de la
 deuxième case, T[2] de la troisième case, etc... Et oui, la première case
 est T[0] et la dernière case d'un tableau de dimension N est T[N - 1].</p>
+<p class="python">T is the list's name, T[0] is the name of the first cell, T[1] the name of
+the second cell, T[2] the third one, etc. And yes, the first cell in
+numbered T[0] and the last one of a list of size N is T[N-1]. It may seem
+funny to count starting from 0 and not from 1 as usual, but some historical
+reasons make it unavoidable here.</p>
 
-<p>On peut utiliser une variable entière <i>i</i> pour accéder avec T[i] aux
-cases d'un tableau : lorsque <i>i</i> vaut 0 alors T[i] dénote la case T[0],
-lorsque <i>i</i> vaut 10, T[i] dénote T[10]. On dit alors que <i>i</i> est
-un <b>indice</b> dans le tableau T .
+<p>We can use an integer variable <i>i</i> to access with T[i] to the cells:
+when the value of <i>i</i> is 0, then T[i] accesses T[0], when the value of
+<i>i</i> is 10, then T[i] accesses T[10]. <i>i</i> is said to be the index
+in T.
 
-<h2>Remplissage d'un tableau</h2>
-Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On
-peut alors le remplir de la manière suivante :
-<pre>
+<h3>Initialization</h3>
+<p>If <code>T</code> contains 10 elements, then each cell can be initialized
+with a simple loop:</p>
+<pre class="Java">
 for (int i = 0; i&lt;10; i++) {
    T[i] = 3;
 }
 </pre>
+<pre class="python">
+for i in range(10):
+   T[i] = 3;
+</pre>
 
-<code>T[i]</code> s'utilise comme une variable. On peut l'affecter : 
-<pre>T[i] = 78;</pre>
+<p class="python">Note that <code>range(max)</code> returns the list of all integers that are
+smaller than <code>max</code>, starting with 0. There is exactly max such
+values. For example, if <code>max</code> is 3, the returned values are 0, 1
+and 2.</p>
 
-<p>On peut lire sa valeur : 
-<pre>x = T[i];</pre></p>
+<p><code>T[i]</code> s'utilise comme une variable. On peut l'affecter :</p> 
+<pre>T[i] = 78</pre>
 
-<p>On peut tester cette valeur :
-<pre>
+<p>We can retrieve and use its value: </p>
+<pre>x = T[i]</pre>
+
+<p>On peut tester cette valeur :</p>
+<pre class="Java">
 if (T[i] > 0 ) {
     // instructions...
 }
-</pre></p>
+</pre>
+<pre class="python">
+if T[i] > 0:
+    // instructions...
+</pre>
 
 <h3>Déclaration d'un tableau</h3>
-Un tableau se déclare de la manière suivante :
-<pre>int[] T;</pre>
+<p class="python">If you know beforehand the content of your list, you can affect these values
+all together.  Just put them between square braces and separated by commas
+as follows:</p>
+<pre class="python">
+L = [1, 3, 5, 7, 9] 
+# L is now an array of 5 values, all of them being integers
+</pre>
+<p class="python">Otherwise, you probably want to create an empty list and then append each
+values separately:</p>
+<pre class="python">
+L2 = [] 
+# L2 is now an empty list
+L2.append(1)
+L2.append(3)
+L2.append(5)
+L2.append(7)
+L2.append(9) 
+# Its content is now the same as L previously
+</pre> 
+ 
+<p class="Java">Un tableau se déclare de la manière suivante :</p>
+<pre class="Java">int[] T;</pre>
 
-<p><code>int</code> indique que les éléments du tableau <code>T</code> sont de
+<p class="Java"><code>int</code> indique que les éléments du tableau <code>T</code> sont de
 type entier est le nom du tableau, <code>[]</code> indique qu'il s'agit d'un
 tableau. On peut aussi écrire cette déclaration de la manière suivante. Les
 deux écritures sont syntaxiquement équivalente, mais la première est souvent
-préférée en Java.
-<pre>int T[];</pre></p>
+préférée en Java.</p>
+<pre class="Java">int T[];</pre>
 
-<h3>Allocation d'un tableau</h3>
+<h3 class="Java">Allocation d'un tableau</h3>
 
-Déclarer un tableau <code>T</code> nous réserve juste le nom <code>T</code>
-pour l'utiliser plus tard. Mais le tableau n'est pas initialisé : il n'a pas
-de valeur. Que voudrait dire <code>T[4]</code> si nous n'avons pas encore
-dit que <code>T</code> est un tableau d'au moins 5 éléments ?
+<p class="Java">Declaring a variable <code>T</code> that stores an array only reserve the
+name <code>T</code> for later use. But the array is not initialized yet: it
+does not have any value. What would <code>T[4]</code> mean if we didn't say
+that the array is at least 5 cells long?</p>
 
-<p>Avant tout, il faut donc lui affecter une valeur à <code>T</code>:
-<pre>T = new int[10];</pre>
-<code>new</code> indique qu'il faut créer quelque chose, et
+<p class="Java">Avant tout, il faut donc lui affecter une valeur à <code>T</code>:</p>
+<pre class="Java">T = new int[10];</pre>
+
+<p class="Java"><code>new</code> indique qu'il faut créer quelque chose, et
 <code>int[10]</code> indique qu'il s'agit d'un tableau de 10 valeur
 entières. En réponse, un tableau d'entiers de longueur 10 est crée en
-mémoire, et la variable <code>T</code> référence ce tableau.
+mémoire, et la variable <code>T</code> référence ce tableau.</p>
 
-<p>La taille d'un tableau est fixée et ne peut plus être changée après la
+<p class="Java">La taille d'un tableau est fixée et ne peut plus être changée après la
 création du tableau. Pour connapitre la taille d'un tableau <code>T</code>,
 on peut consulter la valeur de la variable <code>T.length</code>.</p>
 
-<p>
-On ne peut pas écrire :
-<pre>int T[10]; // FAUX !!!</pre>
-Il faut absolument utiliser l'instruction <code>new</code>. Par contre, on
-peut très bien donner la dimension par une variable <code>i</code>.
-<pre>T = new int[i];</pre>
-Dans ce cas, la taille du tableau sera la valeur de <code>i</code> <b>au
+<p class="Java">
+It is forbidden to write something like <code>int T[10];</code> You are
+required to use the <code>new</code> instruction. On the other hand, you
+perfectly can specify the size with a variable <code>i</code>.
+<pre class="Java">T = new int[i];</pre>
+<p class="Java">Dans ce cas, la taille du tableau sera la valeur de <code>i</code> <b>au
 moment où on a fait le</b> <code>new</code>. Si <code>i</code> change après
-coup, cela ne modifie pas la taille du tableau.
+coup, cela ne modifie pas la taille du tableau.</p>
 
-<h4>Déclaration et allocation</h4>
-<pre>int[] T = new int[10];</pre>
+<h4 class="Java">Déclaration et allocation</h4>
+<pre class="Java">int[] T = new int[10];</pre>
 
-On déclare et alloue le tableau en une seule ligne.
+<p class="Java">On déclare et alloue le tableau en une seule ligne.</p>
 
-<h4>Déclaration et initialisation</h4>
-<pre>int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };</pre>
+<h4 class="Java">Déclaration et initialisation</h4>
+<pre class="Java">int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };</pre>
 
-On déclare, alloue et initialise le tableau en une seule ligne. Pour
+<p class="Java">On déclare, alloue et initialise le tableau en une seule ligne. Pour
 connaître la taille du tableau à allouer, le compilateur compte les valeurs
 données.  Ce code est équivalent à :
-<pre>
+<pre class="Java">
 int[] T = new int[10];
 T[0] = 1;
 T[1] = 2;
@@ -116,49 +162,70 @@ T[1] = 2;
 T[9] = 10;
 </pre>
 
-C'est aussi équivalent au code :
-<pre>
+<p class="Java">C'est aussi équivalent au code :
+<pre class="Java">
 int[] T = new int[10];
 for (int i=0; i&lt;T.length; i++) {
   T[i] = i+1;
 }
 </pre>
 
-<h3>Tableaux et paramètres de méthode</h3>
-On peut tout à fait passer un tableau en paramètre d'une méthode. La méthode
-doit l'indiquer dans son prototype de la façon suivante:
-<pre>void maMethode(int[] valeurs) {
+
+
+
+
+<h3 class="python">Lists and method parameters</h3>
+<p class="python">It is perfectly ok to pass a list to a method as a parameter. This method
+can then use this parameter as if it were defined there. Methods can also
+return lists as result without any complication. As an example, here is a
+method doubling every values of the list received as a parameter:
+<pre class="python">
+L = [1, 3, 5, 7, 9]
+def doubling(param):
+  for i in range( len(param) ):
+    param[i] *= 2
+</pre>
+
+
+<h3 class="Java">Tableaux et paramètres de méthode</h3>
+<p class="Java">On peut tout à fait passer un tableau en paramètre d'une méthode. La méthode
+doit l'indiquer dans son prototype de la façon suivante:</p>
+<pre class="Java">void maMethode(int[] valeurs) {
   // faire quelque chose
 }</pre>
 
-Coté appelant, c'est aussi simple :
-<pre>
+<p class="Java">Coté appelant, c'est aussi simple :</p>
+<pre class="Java">
 int[] tab = new int[10];
 // initialiser les valeurs
 maMethode(tab);
 </pre>
 
-<p>On peut également avoir des méthodes renvoyant des tableaux en résultat :
-<pre>int[] autreMethode() {
+<p class="Java">On peut également avoir des méthodes renvoyant des tableaux en résultat :</p>
+<pre class="Java">int[] autreMethode() {
   int[] resultat = new int[10];
   // faire quelque chose
   return resultat;
 }</pre>
 
 <h2>Objectif de l'exercice</h2>
-La méthode <code>run()</code> que vous devez écrire doit commencer par
+<p class="python">Your code should save the color pattern observed on the first row into a
+list.  The easiest is to create an empty list, and then
+<code>append()</code> the colors one after the others.</p>  
+
+
+<p class="Java">La méthode <code>run()</code> que vous devez écrire doit commencer par
 déclarer un tableau de couleurs (<code>Color[]</code>) et
 l'allouer. Attention, le premier monde est de taille 6x6, mais ce n'est pas
 le cas des autres. Utilisez donc la méthode <code>getWorldHeight()</code>
-pour retrouver le nombre de lignes du monde actuel.
+pour retrouver le nombre de lignes du monde actuel.</p>
 
-<p>Une fois le tableau alloué, il faut le remplir. Pour chaque case de la
+<p class="Java">Une fois le tableau alloué, il faut le remplir. Pour chaque case de la
 colonne, lisez la couleur du sol (avec <code>getGroundColor()</code>), et
 stockez le résultat de cette méthode dans la bonne case du tableau.</p>
 
-<p>Une fois le tableau initialisé, il faut répliquer le motif sur toutes les
-colonnes, par exemple en exécutant <code>getWorldWidth()</code> fois une
-méthode écrite tout exprès.</p> 
+<p>Once you managed to read and save the pattern on the first row, you have to
+reapply the pattern on every rows, for example by executing
+<code>getWorldHeight()</code> times a method written specifically for this.</p> 
 
 <p>À vous de jouer.</p>
-
