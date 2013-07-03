@@ -29,7 +29,7 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class ExoTest {
 	static private String[] lessons = new String[] { 
-		//"lessons.welcome", 
+		"lessons.welcome", 
 		"lessons.maze","lessons.bat.string1", 
 		"lessons.sort", "lessons.recursion",
 		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
