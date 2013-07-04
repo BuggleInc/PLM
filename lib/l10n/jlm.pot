@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-04 17:51+0300\n"
+"POT-Creation-Date: 2013-07-05 00:00+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4948,8 +4948,8 @@ msgid ""
 "current cell -- with <code>brushDown()</code>), and set the brush back up "
 "(with <code>brushUp()</code>) to avoid further issues when the buggle will "
 "move. You are naturally free of organizing your code the way you want, but "
-"you may want to write a <code>setGroundColor</code> method to factorize "
-"things a bit."
+"you may want to write a <code>setGroundColor(color)</code> method to "
+"factorize things a bit."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -8902,11 +8902,12 @@ msgstr ""
 msgid ""
 "In Java, you can get the size of an array <code>myarray</code> by consulting "
 "its <code>length</code> attribute (in other words, "
-"<code>myarray.length</code>)."
+"<code>myarray.length</code>). Notice that there is no parenthesis after "
+"<code>length</code>."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:12
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:15
 msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."

@@ -12,16 +12,17 @@ pas, vous devez regarder la couleur actuelle du sol ( en utilisant
 à droite et avancez d'une case. Si la couleur du sol est le noir, changez la
 en blanc, tournez à gauche et avancez d'une case.</p> 
 
-<p>It's hard to come up with simpler rules isn't it? Well, let's go and code it
-now. You have to complete the <code>step()</code> method, which encodes the
-behavior of the ant at each step. You will probably use the
-<code>getGroundColor()</code> method to retrieve the color of the cell on
-which the ant is currently.  Colors of interest are simply named
-<code>Color.black</code> and <code>Color.white</code>.</p>
+<p>Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien,
+allons-y et codons-les maintenant. Vous avez à compléter la méthode
+<code>step()</code>, qui définit le comportement de la fourmi à chaque
+pas. Vous utiliserez probablement la méthode <code>getGroundColor()</code>
+pour récupérer la valeur de la case sur laquelle la fourmi se trouve. Les
+couleurs intéressantes sont tout simplement <code>Color.black</code> pour le
+noir ou <code>Color.white</code> pour le blanc.</p>
 
-<p class="Java">To compare colors, you cannot use the equal sign (=), because these things
-are not scalar values but objects. Instead, you need to write something like
-the following:
+<p class="Java">Pour comparer les couleurs, il n'est pas possible d'utiliser le signe égal
+(=) parce ces choses ne sont pas des valeurs scalaires normales mais des
+objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:
 </p> 
 <pre class="Java">
 Color c /* = une initialisation*/;
@@ -32,13 +33,13 @@ if (c.equals(Color.black)) {
 }
 </pre>
 
-<p>Changing the ground color is not difficult, but a bit long: you have to
-change the brush color of your buggle, set the brush down (to mark the
-current cell -- with <code>brushDown()</code>), and set the brush back up
-(with <code>brushUp()</code>) to avoid further issues when the buggle will
-move. You are naturally free of organizing your code the way you want, but
-you may want to write a <code>setGroundColor</code> method to factorize
-things a bit.</p>
+<p>Changer la couleur du sol n'est pas difficile, seulement un peu long : vous
+avez à changer la couleur de la brosse de votre buggle, l'abaisser (pour
+marquer la case courante -- avec <code>brushDown()</code>), et relever la
+brosse (avec <code>brushUp()</code>) pour éviter des problèmes lorsque la
+buggle va se déplacer. Vous être naturellement libre d'organiser votre code
+comme vous le souhaitez, mais vous pouvez vouloir écrire une méthode
+<code>setGroundColor(couleur)</code> pour factoriser le tout.</p>
 
 <h2>Plus d'informations sur la fourmi de Langton</h2>
 

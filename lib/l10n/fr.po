@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-04 08:53+0300\n"
-"PO-Revision-Date: 2013-07-04 16:57+0200\n"
+"POT-Creation-Date: 2013-07-04 23:18+0300\n"
+"PO-Revision-Date: 2013-07-05 00:00+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -6547,7 +6547,13 @@ msgid ""
 "the <code>setPos(x, y)</code> method to <i>teleport</i> the buggle directly "
 "to this position. For example, <code>setPos(3, 5)</code> teleports the "
 "buggle to the cell where x=3 and y=5."
-msgstr "À la différence des exercices vus jusque là, nous n'allons pas utiliser les méthodes <code>forward()</code>, <code>backward()</code> et autres, mais nous allons calculer les coordonnées de la prochaine position de la buggle, et utiliser la méthode <code>setPos(x, y)</code> pour <i>téléporter</i> la buggle directement à cette position. Par exemple, <code>setPos(3, 5)</code> téléporte la buggle sur la case où x=3 et y=5."
+msgstr ""
+"À la différence des exercices vus jusque là, nous n'allons pas utiliser les "
+"méthodes <code>forward()</code>, <code>backward()</code> et autres, mais "
+"nous allons calculer les coordonnées de la prochaine position de la buggle, "
+"et utiliser la méthode <code>setPos(x, y)</code> pour <i>téléporter</i> la "
+"buggle directement à cette position. Par exemple, <code>setPos(3, 5)</code> "
+"téléporte la buggle sur la case où x=3 et y=5."
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:22
@@ -6609,7 +6615,12 @@ msgid ""
 "method, and incremented by one at each step (for example with <code>counter "
 "+= 1;</code>). Then, you have to write the value on the ground, for example "
 "with <code>writeMessage(counter);</code>."
-msgstr "Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez besoin d'un compteur initialisé à zéro au début de votre méthode <code>run()</code>, et incrémenté de un à chaque pas (par exemple avec <code>cpt += 1;</code>). Ensuite, il faut écrire la valeur de ce compteur au sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>."
+msgstr ""
+"Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez "
+"besoin d'un compteur initialisé à zéro au début de votre méthode "
+"<code>run()</code>, et incrémenté de un à chaque pas (par exemple avec "
+"<code>cpt += 1;</code>). Ensuite, il faut écrire la valeur de ce compteur au "
+"sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>."
 
 #. type: Content of: <p><p><p><p><p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:46
@@ -6627,7 +6638,9 @@ msgstr ""
 msgid ""
 "You may want to write the first value out of the main <code>while ...:</"
 "code> loop."
-msgstr "Si vous le souhaitez, vous pouvez écrire la première valeur en dehors de la boucle <code>while ....:</code>."
+msgstr ""
+"Si vous le souhaitez, vous pouvez écrire la première valeur en dehors de la "
+"boucle <code>while ....:</code>."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:3
@@ -6711,7 +6724,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langton/Langton.html:14
-#, fuzzy
 msgid ""
 "It's hard to come up with simpler rules isn't it? Well, let's go and code it "
 "now. You have to complete the <code>step()</code> method, which encodes the "
@@ -6720,13 +6732,13 @@ msgid ""
 "which the ant is currently.  Colors of interest are simply named <code>Color."
 "black</code> and <code>Color.white</code>."
 msgstr ""
-"Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien,\n"
-"allons-y et codons les maintenant. Vous avez à compléter la méthode\n"
-"<code>step()</code>, qui définit le comportement de la fourmi à chaque pas. Vous\n"
-"utiliserez probablement la méthode <code>getGroundColor()</code> pour récupérer\n"
-"la valeur de la case sur laquelle la fourmi se trouve. Les couleurs\n"
-"intéressantes sont tout simplement <code>Color.black</code> pour le noir ou\n"
-"<code>Color.white</code> pour le blanc."
+"Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien, "
+"allons-y et codons-les maintenant. Vous avez à compléter la méthode "
+"<code>step()</code>, qui définit le comportement de la fourmi à chaque pas. "
+"Vous utiliserez probablement la méthode <code>getGroundColor()</code> pour "
+"récupérer la valeur de la case sur laquelle la fourmi se trouve. Les "
+"couleurs intéressantes sont tout simplement <code>Color.black</code> pour le "
+"noir ou <code>Color.white</code> pour le blanc."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langton/Langton.html:20
@@ -6735,6 +6747,9 @@ msgid ""
 "are not scalar values but objects. Instead, you need to write something like "
 "the following:"
 msgstr ""
+"Pour comparer les couleurs, il n'est pas possible d'utiliser le signe égal "
+"(=) parce ces choses ne sont pas des valeurs scalaires normales mais des "
+"objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/turmites/langton/Langton.html:24
@@ -6756,31 +6771,22 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langton/Langton.html:32
-#, fuzzy
-#| msgid ""
-#| "Changing the ground color is not difficult, but a bit long: you have to "
-#| "change the brush color of your buggle, set the brush down (to mark the "
-#| "current cell -- with <code>brushDown()</code>), and set the brush back up "
-#| "(with <code>brushUp()</code>) to avoid further issues when the buggle "
-#| "will move. You are naturally free of organizing your code the way you "
-#| "want, but you may want to write a <code>void setGroundColor(Color c)</"
-#| "code> method to factorize things a bit."
 msgid ""
 "Changing the ground color is not difficult, but a bit long: you have to "
 "change the brush color of your buggle, set the brush down (to mark the "
 "current cell -- with <code>brushDown()</code>), and set the brush back up "
 "(with <code>brushUp()</code>) to avoid further issues when the buggle will "
 "move. You are naturally free of organizing your code the way you want, but "
-"you may want to write a <code>setGroundColor</code> method to factorize "
-"things a bit."
+"you may want to write a <code>setGroundColor(color)</code> method to "
+"factorize things a bit."
 msgstr ""
 "Changer la couleur du sol n'est pas difficile, seulement un peu long : vous "
-"avez à changer la couleur de la brosse de votre buggle, l'abaisser ( pour "
-"marquer la case courante -- avec <code>brushDown()</code>, et relever la "
+"avez à changer la couleur de la brosse de votre buggle, l'abaisser (pour "
+"marquer la case courante -- avec <code>brushDown()</code>), et relever la "
 "brosse (avec <code>brushUp()</code>) pour éviter des problèmes lorsque la "
 "buggle va se déplacer. Vous être naturellement libre d'organiser votre code "
 "comme vous le souhaitez, mais vous pouvez vouloir écrire une méthode "
-"<code>void setGroundColor(Color c)</code> pour factoriser le tout."
+"<code>setGroundColor(couleur)</code> pour factoriser le tout."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/turmites/langton/Langton.html:39
@@ -6892,15 +6898,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:24
-#, fuzzy
-#| msgid ""
-#| "Changing your buggle into a generic Langton's ant is not very "
-#| "complicated, although it is not completely trivial. As previously, you "
-#| "have to write a <code>step</code> function. But this time, it receives "
-#| "two arrays as parameters.  The first one defines the rules to follow "
-#| "depending on the ground color while the second one gives the sequence of "
-#| "colors to use. For example, the basic ant would have <code>{'R', 'L'}</"
-#| "code> and <code>{Color.white, Color.black}</code> as arguments."
 msgid ""
 "Changing your buggle into a generic Langton's ant is not very complicated, "
 "although it is not completely trivial. As previously, you have to write a "
@@ -6915,8 +6912,8 @@ msgstr ""
 "vous avez à écrire une fonction <code>step</code>. Mais cette fois, elle "
 "reçoit deux tableaux comme paramètres. Le premier définit les règles à "
 "suivre selon la couleur du sol tandis que le deuxième done la séquence de "
-"couleur à utiliser. Par exemple, la fourmi de base aurait <code>{'R', 'L'}</"
-"code> et <code>{Color.white, Color.black}</code> comme arguments."
+"couleur à utiliser. Par exemple, la fourmi de base aurait <code>['R', 'L']</"
+"code> et <code>[Color.white, Color.black]</code> comme arguments."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:31
@@ -6995,25 +6992,16 @@ msgid ""
 msgstr ""
 "Cette exercice explore une nouvelle façon d'étendre le concept de la fourmi "
 "de Langton. Maintenant, le comportement de la fourmi ne dépend plus "
-"seulement de la couleur du sol, mais aussi de son état interne ( représenté "
-"par une valeur entière ). L'idée de changer la fourmi en un automate découle "
+"seulement de la couleur du sol, mais aussi de son état interne (représenté "
+"par une valeur entière). L'idée de changer la fourmi en un automate découle "
 "naturellement du concept de la machine de Turing. Ceci explique le nom de "
 "ces nouveaux animaux, qui est un mélange de <i>Turing</i> et de <i>Termite</"
-"i> ( si vous ne savez pas ce qu'est une machine de Turing, vous devriez vous "
+"i> (si vous ne savez pas ce qu'est une machine de Turing, vous devriez vous "
 "jeter sur Wikipedia parce qu'il est tout simplement impossible d'être un "
 "vrai informaticien sans le savoir)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:12
-#, fuzzy
-#| msgid ""
-#| "The second step is to use the <code>rule</code> data depending on the "
-#| "current color and the current state. <code>rule</code> actually contains "
-#| "3 information in each situation: the color to write, the move to do, and "
-#| "the next state value. For example, rule[1][0] contains the informations "
-#| "to use when <code>state==1</code> and <code>color==0</code>. In other "
-#| "worlds, you can retrieve the information relative to your current "
-#| "situation by using <code>rule[state][currentColor]</code>."
 msgid ""
 "Once again, you just have to write the <code>step()</code> method, in charge "
 "of doing one turmite's step. Once again, you should first find the rank of "
@@ -7026,26 +7014,20 @@ msgid ""
 "relative to your current situation by using <code>rule[state][currentColor]</"
 "code>."
 msgstr ""
-"La deuxième étape est d'utiliser la donnée <code>rule</code> selon la "
-"couleur actuelle et l'état courant.\n"
-"<code>rule</code> contient en fait trois informations dans chaque "
-"situation : la couleur à mettre, le mouvement à effectuer, et la valeur du "
-"prochain état. Par exemple, rule[1][0] contient l'information à utiliser "
-"quand <code>state==1</code> et <code>color==0</code>. En d'autres mots, vous "
-"pouvez récupérer l'information relative à votre situation actuelle en "
-"utilisant <code>rule[etatCourant][couleurActuelle]</code>"
+"Une fois encore, vous devez seulement écrire la méthode <code>step()</code>, "
+"qui s'occupe de faire faire un pas à la turmite. Une fois encore, vous devez "
+"tout d'abord trouver le rang de la couleur actuelle du sol dans la liste des "
+"couleurs. Mais cette fois, <code>rule</code> dépend à la fois de la couleur "
+"courante et de l'état courant. <code>rule</code> contient en fait trois "
+"informations dans chaque situation : la couleur à mettre, le mouvement à "
+"effectuer, et la valeur du prochain état. Par exemple, rule[1][0] contient "
+"l'information à utiliser quand <code>state==1</code> et <code>color==0</"
+"code>. En d'autres mots, vous pouvez récupérer l'information relative à "
+"votre situation actuelle en utilisant <code>rule[etatCourant]"
+"[couleurActuelle]</code>"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:22
-#, fuzzy
-#| msgid ""
-#| "Each such information set contains 3 values. The first one is the rank of "
-#| "the color to write on the ground. The second is the move to do, with the "
-#| "following notation: 0=stop, 1=noturn, 2=right, 4=u-turn, 8=left. Note "
-#| "that if the command is stop, you shouldn't even move forward on that step "
-#| "(but you shouldn't stop your program either: the next steps can do "
-#| "something else). Finally, the third integer is the next <code>state</"
-#| "code> value to go into after this iteration."
 msgid ""
 "Each such information set contains 3 values. The first one is the rank of "
 "the color to write on the ground. The second is the move to do, with the "
@@ -7060,21 +7042,12 @@ msgstr ""
 "La deuxième est le mouvement à effectuer, avec la notation suivante : "
 "0=stop, 1=pas de virage, 2=droite, 4=demi-tour, 8=gauche. Veuillez noter que "
 "si l'instruction est stop, vous ne devez même pas avancer sur cette étape "
-"( mais vous ne devez pas arrêter votre programme pour autant : les prochains "
-"pas peuvent faire quelquechose d'autre). Finalement, le troisième entier est "
-"la valeur du prochain <code>state</code> à avoir après cette itération."
+"(mais vous ne devez pas arrêter votre programme pour autant : les prochains "
+"pas peuvent faire quelque chose d'autre). Finalement, le troisième entier "
+"est la valeur du prochain <code>state</code> à avoir après cette itération."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:29
-#, fuzzy
-#| msgid ""
-#| "Since these arbitrary notations are somehow difficult to remember, the "
-#| "template code defines a set of constants that you should use instead of "
-#| "the direct numerical values. Their names are NOTURN, LEFT, RIGHT and so "
-#| "on. The modifiers <code>final static</code> before their type is the way "
-#| "to mark variables as constant in Java (sorry if the notation seems "
-#| "complex). Using such constants greatly help making the code easier to "
-#| "read, since"
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, the "
 "template code defines a set of constants that you should use instead of the "
@@ -7088,22 +7061,12 @@ msgstr ""
 "code fourni définit un ensemble de constantes que vous pouvez utiliser à la "
 "place des valeurs numériques. Leurs noms sont LEFT, RIGHT, etc.\n"
 "Le modifieur <code>final static</code> avant leur type est la façon "
-"d'indiquer les variables comme constantes en Java ( nous nous excusons si la "
-"notation semble complexe ).\n"
-"Utiliser de telles constantes rend le code beaucoup plus simple à lire, "
-"puisque"
+"d'indiquer les variables comme constantes en Java (désolés si la notation "
+"semble complexe).\n"
+"Utiliser de telles constantes rend le code beaucoup plus simple à lire&nbsp;:"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:35
-#, fuzzy
-#| msgid ""
-#| "Since these arbitrary notations are somehow difficult to remember, the "
-#| "template code defines a set of constants that you should use instead of "
-#| "the direct numerical values. Their names are NOTURN, LEFT, RIGHT and so "
-#| "on. The modifiers <code>final static</code> before their type is the way "
-#| "to mark variables as constant in Java (sorry if the notation seems "
-#| "complex). Using such constants greatly help making the code easier to "
-#| "read, since"
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, the "
 "template code defines a set of constants that you should use instead of the "
@@ -7115,12 +7078,11 @@ msgid ""
 msgstr ""
 "Puisque ces notations arbitraires sont parfois difficiles à se souvenir, le "
 "code fourni définit un ensemble de constantes que vous pouvez utiliser à la "
-"place des valeurs numériques. Leurs noms sont LEFT, RIGHT, etc.\n"
-"Le modifieur <code>final static</code> avant leur type est la façon "
-"d'indiquer les variables comme constantes en Java ( nous nous excusons si la "
-"notation semble complexe ).\n"
-"Utiliser de telles constantes rend le code beaucoup plus simple à lire, "
-"puisque"
+"place des valeurs numériques. Leurs noms sont NOTURN, LEFT, RIGHT, etc. "
+"(pour TOUTDROIT, GAUCHE, DROITE). Par convention, de telles constantes sont "
+"écrites en majuscules en python. Techniquement, vous pouvez modifier la "
+"valeur de ces variables, but ce serait une très mauvause idée.\n"
+"Utiliser de telles constantes rend le code beaucoup plus simple à lire&nbsp;:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:42
@@ -7136,25 +7098,18 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:47
-#, fuzzy, no-wrap
-#| msgid ""
-#| "  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
-#| "    turnLeft();\n"
-#| "  }\n"
+#, no-wrap
 msgid ""
 "  if rule[state][currentColor][NEXT_MOVE] == LEFT:\n"
 "    turnLeft()\n"
 msgstr ""
-"  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
-"    turnLeft();\n"
-"  }\n"
+"  if rule[state][currentColor][NEXT_MOVE] == LEFT:\n"
+"    turnLeft()\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:50
-#, fuzzy
-#| msgid "is much more easier to read than"
 msgid "This is much more easier to read than the following way:"
-msgstr "est beaucoup plus simple à lire que"
+msgstr "C'est beaucoup plus simple à lire que ceci&nbsp;:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:52
@@ -7170,18 +7125,13 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:57
-#, fuzzy, no-wrap
-#| msgid ""
-#| "  if (rule[x][y][1] == 2) {\n"
-#| "    turnLeft();\n"
-#| "  }\n"
+#, no-wrap
 msgid ""
 "  if rule[x][y][1] == 2:\n"
 "    turnLeft()\n"
 msgstr ""
-"  if (rule[x][y][1] == 2) {\n"
-"    turnLeft();\n"
-"  }\n"
+"  if rule[x][y][1] == 2:\n"
+"    turnLeft()\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:61
@@ -7196,6 +7146,16 @@ msgid ""
 "<code>pass</code> instruction as a placeholder: it says python that you have "
 "a branch here, and that it does not contain anything."
 msgstr ""
+"Enfin, vous devriez également écrire une branche <code>elif</code> pour la "
+"condition <code>STOP</code>. Avoir une branche <code>else</code> qui affiche "
+"un message d'erreur tel que \"situation inattendue\" est une bonne pratique. "
+"Celà permet d'expliciter les présuposés du code, et assure un message "
+"d'erreur plus explicite si ces suppositions s'avèrent erronées. Le problème "
+"suivant est que nous n'avons rien à faire faire dans la branche du cas "
+"<code>STOP</code>, mais que python n'autorise pas de branche <code>else</"
+"code> vide. Il faut alors utiliser l'instruction <code>pass</code> là où il "
+"n'y a rien à faire. Cela indique à Python qu'il y a bien une branche à cet "
+"emplacement, mais qu'elle ne fait rien."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:73
@@ -7338,6 +7298,9 @@ msgid ""
 "com/Turmites/ They are not written using the python syntax, but converting "
 "them should be easy."
 msgstr ""
+"Voici quelques turmites bicolores, issues de http://demonstrations.wolfram."
+"com/Turmites/ Elles n'ont pas été écrites avec la syntaxe Python, mais les "
+"convertir ne devrait pas poser beaucoup de problèmes."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:64
@@ -7345,60 +7308,12 @@ msgid ""
 "Here are some 2-color turmites, extracted from http://demonstrations.wolfram."
 "com/Turmites/"
 msgstr ""
+"Voici quelques turmites bicolores, issues de http://demonstrations.wolfram."
+"com/Turmites/"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:67
-#, fuzzy, no-wrap
-#| msgid ""
-#| "EdPeggJrTurmiteLibrary = [\n"
-#| "# source: http://demonstrations.wolfram.com/Turmites/\n"
-#| "# Translated into his later notation: 1=noturn, 2=right, 4=u-turn, 8=left\n"
-#| "# (all these are 2-color patterns)\n"
-#| "\"{{{1, 2, 0}, {0, 8, 0}}}\",  # 1: Langton's ant\n"
-#| "\"{{{1, 2, 0}, {0, 1, 0}}}\",  # 2: binary counter\n"
-#| "\"{{{0, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}\", # 3: (filled triangle)\n"
-#| "\"{{{0, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {0, 1, 1}}}\", # 4: spiral in a box\n"
-#| "\"{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {0, 2, 0}}}\", # 5: stripe-filled spiral\n"
-#| "\"{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {1, 1, 0}}}\", # 6: stepped pyramid\n"
-#| "\"{{{0, 2, 1}, {0, 1, 1}}, {{1, 2, 1}, {1, 8, 0}}}\", # 7: contoured island\n"
-#| "\"{{{0, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {0, 2, 1}}}\", # 8: woven placemat\n"
-#| "\"{{{0, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {1, 8, 0}}}\", # 9: snowflake-ish\n"
-#| "\"{{{1, 8, 0}, {0, 1, 1}}, {{0, 8, 0}, {0, 8, 1}}}\", # 10: slow city builder\n"
-#| "\"{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 0}, {0, 8, 1}}}\", # 11: framed computer art\n"
-#| "\"{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 1}, {1, 8, 0}}}\", # 12: balloon bursting (makes a spreading highway)\n"
-#| "\"{{{1, 8, 1}, {0, 8, 0}}, {{1, 1, 0}, {0, 1, 0}}}\", # 13: makes a horizontal highway\n"
-#| "\"{{{1, 8, 1}, {0, 8, 0}}, {{1, 2, 1}, {1, 2, 0}}}\", # 14: makes a 45 degree highway\n"
-#| "\"{{{1, 8, 1}, {0, 8, 1}}, {{1, 2, 1}, {0, 8, 0}}}\", # 15: makes a 45 degree highway\n"
-#| "\"{{{1, 8, 1}, {0, 1, 0}}, {{1, 1, 0}, {1, 2, 0}}}\", # 16: spiral in a filled box\n"
-#| "\"{{{1, 8, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 17: glaciers\n"
-#| "\"{{{1, 8, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 1, 0}}}\", # 18: golden rectangle!\n"
-#| "\"{{{1, 8, 1}, {1, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 19: fizzy spill\n"
-#| "\"{{{1, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {0, 1, 1}}}\", # 20: nested cabinets\n"
-#| "\"{{{1, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {1, 1, 1}}}\", # 21: (cross)\n"
-#| "\"{{{1, 1, 1}, {0, 1, 0}}, {{0, 2, 0}, {1, 8, 0}}}\", # 22: saw-tipped growth\n"
-#| "\"{{{1, 1, 1}, {0, 1, 1}}, {{1, 2, 1}, {0, 1, 0}}}\", # 23: curves in blocks growth\n"
-#| "\"{{{1, 1, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 24: textured growth\n"
-#| "\"{{{1, 1, 1}, {0, 2, 1}}, {{1, 8, 0}, {1, 2, 0}}}\", # 25: (diamond growth)\n"
-#| "\"{{{1, 1, 1}, {1, 8, 0}}, {{1, 2, 1}, {0, 1, 0}}}\", # 26: coiled rope\n"
-#| "\"{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 1, 1}}}\", # 27: (growth)\n"
-#| "\"{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 2, 1}}}\", # 28: (square spiral)\n"
-#| "\"{{{1, 2, 0}, {1, 2, 1}}, {{0, 1, 0}, {0, 1, 1}}}\", # 29: loopy growth with holes\n"
-#| "\"{{{1, 2, 1}, {0, 8, 1}}, {{1, 1, 0}, {0, 1, 0}}}\", # 30: Lanton's Ant drawn with squares\n"
-#| "\"{{{1, 2, 1}, {0, 2, 0}}, {{0, 8, 1}, {1, 8, 0}}}\", # 31: growth with curves and blocks\n"
-#| "\"{{{1, 2, 1}, {0, 2, 0}}, {{0, 1, 0}, {1, 2, 1}}}\", # 32: distracted spiral builder\n"
-#| "\"{{{1, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}\", # 33: cauliflower stalk (45 deg highway)\n"
-#| "\"{{{1, 2, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 2, 0}}}\", # 34: worm trails (eventually turns cyclic!)\n"
-#| "\"{{{1, 2, 1}, {1, 1, 0}}, {{1, 1, 0}, {0, 1, 1}}}\", # 35: eventually makes a two-way highway!\n"
-#| "\"{{{1, 2, 1}, {1, 2, 0}}, {{0, 1, 0}, {0, 1, 0}}}\", # 36: almost symmetric mould bloom\n"
-#| "\"{{{1, 2, 1}, {1, 2, 0}}, {{0, 2, 0}, {1, 1, 1}}}\", # 37: makes a 1 in 2 gradient highway\n"
-#| "\"{{{1, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {0, 2, 0}}}\", # 38: immediately makes a 1 in 3 highway\n"
-#| "\"{{{0, 2, 1}, {1, 2, 1}}, {{0, 8, 2}, {0, 8, 0}}, {{1, 2, 2}, {1, 8, 0}}}\", # 39: squares and diagonals growth\n"
-#| "\"{{{1, 8, 1}, {0, 1, 0}}, {{0, 2, 2}, {1, 8, 0}}, {{1, 2, 1}, {1, 1, 0}}}\", # 40: streak at approx. an 8.1 in 1 gradient\n"
-#| "\"{{{1, 8, 1}, {0, 1, 2}}, {{0, 2, 2}, {1, 1, 1}}, {{1, 2, 1}, {1, 1, 0}}}\", # 41: streak at approx. a 1.14 in 1 gradient\n"
-#| "\"{{{1, 8, 1}, {1, 8, 1}}, {{1, 1, 0}, {0, 1, 2}}, {{0, 8, 1}, {1, 1, 1}}}\", # 42: maze-like growth\n"
-#| "\"{{{1, 8, 2}, {0, 2, 0}}, {{1, 8, 0}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 1}}}\", # 43: growth by cornices \n"
-#| "\"{{{1, 2, 0}, {0, 2, 2}}, {{0, 8, 0}, {0, 2, 0}}, {{0, 1, 1}, {1, 8, 0}}}\", # 44: makes a 1 in 7 highway\n"
-#| "\"{{{1, 2, 1}, {0, 8, 0}}, {{1, 2, 2}, {0, 1, 0}}, {{1, 8, 0}, {0, 8, 0}}}\", # 45: makes a 4 in 1 highway\n"
+#, no-wrap
 msgid ""
 "{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant\n"
 "{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: binary counter\n"
@@ -7446,55 +7361,51 @@ msgid ""
 "{{{1, RIGHT , 0}, {0, RIGHT , 2}}, {{0, LEFT  , 0}, {0, RIGHT , 0}}, {{0, NOTURN, 1}, {1, LEFT  , 0}}} # 44: makes a 1 in 7 highway\n"
 "{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway\n"
 msgstr ""
-"EdPeggJrTurmiteLibrary = [\n"
-"# source: http://demonstrations.wolfram.com/Turmites/\n"
-"# Translated into his later notation: 1=noturn, 2=right, 4=u-turn, 8=left\n"
-"# (all these are 2-color patterns)\n"
-"\"{{{1, 2, 0}, {0, 8, 0}}}\",  # 1: Langton's ant\n"
-"\"{{{1, 2, 0}, {0, 1, 0}}}\",  # 2: binary counter\n"
-"\"{{{0, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}\", # 3: (filled triangle)\n"
-"\"{{{0, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {0, 1, 1}}}\", # 4: spiral in a box\n"
-"\"{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {0, 2, 0}}}\", # 5: stripe-filled spiral\n"
-"\"{{{0, 2, 1}, {0, 8, 0}}, {{1, 8, 1}, {1, 1, 0}}}\", # 6: stepped pyramid\n"
-"\"{{{0, 2, 1}, {0, 1, 1}}, {{1, 2, 1}, {1, 8, 0}}}\", # 7: contoured island\n"
-"\"{{{0, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {0, 2, 1}}}\", # 8: woven placemat\n"
-"\"{{{0, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {1, 8, 0}}}\", # 9: snowflake-ish\n"
-"\"{{{1, 8, 0}, {0, 1, 1}}, {{0, 8, 0}, {0, 8, 1}}}\", # 10: slow city builder\n"
-"\"{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 0}, {0, 8, 1}}}\", # 11: framed computer art\n"
-"\"{{{1, 8, 0}, {1, 2, 1}}, {{0, 2, 1}, {1, 8, 0}}}\", # 12: balloon bursting (makes a spreading highway)\n"
-"\"{{{1, 8, 1}, {0, 8, 0}}, {{1, 1, 0}, {0, 1, 0}}}\", # 13: makes a horizontal highway\n"
-"\"{{{1, 8, 1}, {0, 8, 0}}, {{1, 2, 1}, {1, 2, 0}}}\", # 14: makes a 45 degree highway\n"
-"\"{{{1, 8, 1}, {0, 8, 1}}, {{1, 2, 1}, {0, 8, 0}}}\", # 15: makes a 45 degree highway\n"
-"\"{{{1, 8, 1}, {0, 1, 0}}, {{1, 1, 0}, {1, 2, 0}}}\", # 16: spiral in a filled box\n"
-"\"{{{1, 8, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 17: glaciers\n"
-"\"{{{1, 8, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 1, 0}}}\", # 18: golden rectangle!\n"
-"\"{{{1, 8, 1}, {1, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 19: fizzy spill\n"
-"\"{{{1, 8, 1}, {1, 2, 1}}, {{1, 1, 0}, {0, 1, 1}}}\", # 20: nested cabinets\n"
-"\"{{{1, 1, 1}, {0, 8, 1}}, {{1, 2, 0}, {1, 1, 1}}}\", # 21: (cross)\n"
-"\"{{{1, 1, 1}, {0, 1, 0}}, {{0, 2, 0}, {1, 8, 0}}}\", # 22: saw-tipped growth\n"
-"\"{{{1, 1, 1}, {0, 1, 1}}, {{1, 2, 1}, {0, 1, 0}}}\", # 23: curves in blocks growth\n"
-"\"{{{1, 1, 1}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 0}}}\", # 24: textured growth\n"
-"\"{{{1, 1, 1}, {0, 2, 1}}, {{1, 8, 0}, {1, 2, 0}}}\", # 25: (diamond growth)\n"
-"\"{{{1, 1, 1}, {1, 8, 0}}, {{1, 2, 1}, {0, 1, 0}}}\", # 26: coiled rope\n"
-"\"{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 1, 1}}}\", # 27: (growth)\n"
-"\"{{{1, 2, 0}, {0, 8, 1}}, {{1, 8, 0}, {0, 2, 1}}}\", # 28: (square spiral)\n"
-"\"{{{1, 2, 0}, {1, 2, 1}}, {{0, 1, 0}, {0, 1, 1}}}\", # 29: loopy growth with holes\n"
-"\"{{{1, 2, 1}, {0, 8, 1}}, {{1, 1, 0}, {0, 1, 0}}}\", # 30: Lanton's Ant drawn with squares\n"
-"\"{{{1, 2, 1}, {0, 2, 0}}, {{0, 8, 1}, {1, 8, 0}}}\", # 31: growth with curves and blocks\n"
-"\"{{{1, 2, 1}, {0, 2, 0}}, {{0, 1, 0}, {1, 2, 1}}}\", # 32: distracted spiral builder\n"
-"\"{{{1, 2, 1}, {0, 2, 1}}, {{1, 1, 0}, {1, 1, 1}}}\", # 33: cauliflower stalk (45 deg highway)\n"
-"\"{{{1, 2, 1}, {1, 8, 1}}, {{1, 2, 1}, {0, 2, 0}}}\", # 34: worm trails (eventually turns cyclic!)\n"
-"\"{{{1, 2, 1}, {1, 1, 0}}, {{1, 1, 0}, {0, 1, 1}}}\", # 35: eventually makes a two-way highway!\n"
-"\"{{{1, 2, 1}, {1, 2, 0}}, {{0, 1, 0}, {0, 1, 0}}}\", # 36: almost symmetric mould bloom\n"
-"\"{{{1, 2, 1}, {1, 2, 0}}, {{0, 2, 0}, {1, 1, 1}}}\", # 37: makes a 1 in 2 gradient highway\n"
-"\"{{{1, 2, 1}, {1, 2, 1}}, {{1, 8, 1}, {0, 2, 0}}}\", # 38: immediately makes a 1 in 3 highway\n"
-"\"{{{0, 2, 1}, {1, 2, 1}}, {{0, 8, 2}, {0, 8, 0}}, {{1, 2, 2}, {1, 8, 0}}}\", # 39: squares and diagonals growth\n"
-"\"{{{1, 8, 1}, {0, 1, 0}}, {{0, 2, 2}, {1, 8, 0}}, {{1, 2, 1}, {1, 1, 0}}}\", # 40: streak at approx. an 8.1 in 1 gradient\n"
-"\"{{{1, 8, 1}, {0, 1, 2}}, {{0, 2, 2}, {1, 1, 1}}, {{1, 2, 1}, {1, 1, 0}}}\", # 41: streak at approx. a 1.14 in 1 gradient\n"
-"\"{{{1, 8, 1}, {1, 8, 1}}, {{1, 1, 0}, {0, 1, 2}}, {{0, 8, 1}, {1, 1, 1}}}\", # 42: maze-like growth\n"
-"\"{{{1, 8, 2}, {0, 2, 0}}, {{1, 8, 0}, {0, 2, 0}}, {{0, 8, 0}, {0, 8, 1}}}\", # 43: growth by cornices \n"
-"\"{{{1, 2, 0}, {0, 2, 2}}, {{0, 8, 0}, {0, 2, 0}}, {{0, 1, 1}, {1, 8, 0}}}\", # 44: makes a 1 in 7 highway\n"
-"\"{{{1, 2, 1}, {0, 8, 0}}, {{1, 2, 2}, {0, 1, 0}}, {{1, 8, 0}, {0, 8, 0}}}\", # 45: makes a 4 in 1 highway\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: La fourmi de Langton\n"
+"{{{1, RIGHT , 0}, {0, NOTURN, 0}}}  # 2: Compteur binaire\n"
+"{{{0, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 3: Triangle rempli\n"
+"{{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: Spirale dans une boite\n"
+"{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: Spirale rayurée\n"
+"{{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: Pyramide à étages\n"
+"{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: Ile entourée\n"
+"{{{0, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {0, RIGHT , 1}}} # 8: Set tissé\n"
+"{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: Sorte de flocon de neige\n"
+"{{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: Constructeur de ville lent\n"
+"{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 0}, {0, LEFT  , 1}}} # 11: Art informatisé en boîte\n"
+"{{{1, LEFT  , 0}, {1, RIGHT , 1}}, {{0, RIGHT , 1}, {1, LEFT  , 0}}} # 12: Décollage de ballon (fait une autoroute)\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 13: Autoroute horizontale\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 1}, {1, RIGHT , 0}}} # 14: Autoroute à 45 degrés\n"
+"{{{1, LEFT  , 1}, {0, LEFT  , 1}}, {{1, RIGHT , 1}, {0, LEFT  , 0}}} # 15: Autoroute à 45 degrés\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{1, NOTURN, 0}, {1, RIGHT , 0}}} # 16: Spirale dans une boîte remplie\n"
+"{{{1, LEFT  , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 17: glaciers\n"
+"{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 18: Rectangle doré!\n"
+"{{{1, LEFT  , 1}, {1, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 19: Fontaine pétillante\n"
+"{{{1, LEFT  , 1}, {1, RIGHT , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 20: Armoires imbriquées\n"
+"{{{1, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {1, NOTURN, 1}}} # 21: Croix\n"
+"{{{1, NOTURN, 1}, {0, NOTURN, 0}}, {{0, RIGHT , 0}, {1, LEFT  , 0}}} # 22: Croissance en dents de scie\n"
+"{{{1, NOTURN, 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 23: Croissance par blocs\n"
+"{{{1, NOTURN, 1}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 0}}} # 24: Croissance texturée\n"
+"{{{1, NOTURN, 1}, {0, RIGHT , 1}}, {{1, LEFT  , 0}, {1, RIGHT , 0}}} # 25: Croissance en diamands\n"
+"{{{1, NOTURN, 1}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {0, NOTURN, 0}}} # 26: Corde enroulée\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, NOTURN, 1}}} # 27: (croissance)\n"
+"{{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, RIGHT , 1}}} # 28: (spirale carrée)\n"
+"{{{1, RIGHT , 0}, {1, RIGHT , 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}} # 29: Croissance ébourifée\n"
+"{{{1, RIGHT , 1}, {0, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 30: La fourmi de Lanton en carrés\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 1}, {1, LEFT  , 0}}} # 31: Croissance avec des courbes et des blocs\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, NOTURN, 0}, {1, RIGHT , 1}}} # 32: Constructeur de spirales distrait\n"
+"{{{1, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 33: Tige de choux-fleur (autoroute à 45 degrés)\n"
+"{{{1, RIGHT , 1}, {1, LEFT  , 1}}, {{1, RIGHT , 1}, {0, RIGHT , 0}}} # 34: Piste de vers (croissance cyclique!)\n"
+"{{{1, RIGHT , 1}, {1, NOTURN, 0}}, {{1, NOTURN, 0}, {0, NOTURN, 1}}} # 35: Fini par faire une autoroute à deux voies!\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, NOTURN, 0}, {0, NOTURN, 0}}} # 36: Éclosion de moisissure presque symétrique\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 0}}, {{0, RIGHT , 0}, {1, NOTURN, 1}}} # 37: Fait un 1 dans une autoroute à deux gradients\n"
+"{{{1, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 38: Fait immédiatement un 1 dans une autoroute à 3\n"
+"{{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{0, LEFT  , 2}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {1, LEFT  , 0}}} # 39: Croissance de carrés et diagonales\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 0}}, {{0, RIGHT , 2}, {1, LEFT  , 0}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 40: streak at approx. an 8.1 in 1 gradient\n"
+"{{{1, LEFT  , 1}, {0, NOTURN, 2}}, {{0, RIGHT , 2}, {1, NOTURN, 1}}, {{1, RIGHT , 1}, {1, NOTURN, 0}}} # 41: streak at approx. a 1.14 in 1 gradient\n"
+"{{{1, LEFT  , 1}, {1, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 2}}, {{0, LEFT  , 1}, {1, NOTURN, 1}}} # 42: Croissance en labyrinthe\n"
+"{{{1, LEFT  , 2}, {0, RIGHT , 0}}, {{1, LEFT  , 0}, {0, RIGHT , 0}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 43: Croissance en corniches\n"
+"{{{1, RIGHT , 0}, {0, RIGHT , 2}}, {{0, LEFT  , 0}, {0, RIGHT , 0}}, {{0, NOTURN, 1}, {1, LEFT  , 0}}} # 44: makes a 1 in 7 highway\n"
+"{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:114
@@ -9588,17 +9499,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:46
-#, fuzzy
-#| msgid ""
-#| "Write a <code>boolean isChosenDirectionFree()</code> method indicating if "
-#| "the arbitrary direction you picked up is free, ie, if you can move in "
-#| "that direction. (Note that the demo uses the NORTH direction for that).  "
-#| "You can retrieve the current direction of the buggle using the "
-#| "<code>Direction getDirection()</code> method. You can change your "
-#| "direction (without moving) using <code>void setDirection(Direction d)</"
-#| "code>. Don't forget to store the previous direction of your buggle (in a "
-#| "variable of type Direction) before checking if your favorite direction is "
-#| "free in order to restore your state afterward."
 msgid ""
 "Write a boolean method <code>isDirectionFree(dir)</code> indicating if the "
 "provided direction is free, ie, if you can move in that direction (Note that "
@@ -9609,16 +9509,16 @@ msgid ""
 "dedicated variable) before checking if your favorite direction is free in "
 "order to restore your state afterward."
 msgstr ""
-"Écrivez une méthode <code>boolean isChosenDirectionFree()</code> indiquant "
-"si la direction arbitraire que vous avez choisie est libre, c'est-à-dire si "
-"vous pouvez vous déplacer dans cette direction. Notez que la démo utilise la "
-"direction NORTH pour cela. Vous pouvez retrouver la direction courante de la "
-"buggle en utilisant la méthode <code>Direction getDirection()</code>.  Vous "
-"pouvez diriger (sans se déplacer) votre buggle dans une direction en "
-"utilisant la méthode <code>void setDirection(Direction d)</code>.  Pensez à "
-"mémoriser (dans une variable de type <code>Direction</code>) la direction "
-"courante de votre buggle avant de vérifier si votre buggle peut se diriger "
-"vers sa direction de prédilection pour pouvoir restaurer l'état après coup."
+"Écrivez une méthode booléenne <code>isDirectionFree(dir)</code> indiquant si "
+"la direction fournie en paramètre est libre, c'est-à-dire si vous pouvez "
+"vous déplacer dans cette direction. Notez que la démo utilise la direction "
+"NORTH pour cela. Vous pouvez retrouver la direction courante de la buggle en "
+"utilisant la méthode <code>Direction getDirection()</code>.  Vous pouvez "
+"diriger (sans se déplacer) votre buggle dans une direction en utilisant la "
+"méthode <code>setDirection(dir)</code>.  Pensez à mémoriser (dans une "
+"variable dédiée) la direction courante de votre buggle avant de vérifier si "
+"votre buggle peut se diriger vers sa direction de prédilection pour pouvoir "
+"restaurer l'état après coup."
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:55
@@ -9718,7 +9618,13 @@ msgid ""
 "buggle does not start along one of the external walls. Just give it a try if "
 "you want: copy your code over, push the run button and see your previous "
 "solution failing miserabily."
-msgstr "Dans cette situation, notre précédente stratégie ferait notre buggle tourner en rond pour toujours sur l'un de ces îlots. En effet, le labyrinthe dont vous devez vous échapper maintenant contient des îles, et le buggle ne commence pas sur un des murs externes. Vous pouvez essayer si vous voulez : Copie/collez votre code et appuyez sur le bouton 'run' pour admirez votre solution précédente échouer lamentablement."
+msgstr ""
+"Dans cette situation, notre précédente stratégie ferait notre buggle tourner "
+"en rond pour toujours sur l'un de ces îlots. En effet, le labyrinthe dont "
+"vous devez vous échapper maintenant contient des îles, et le buggle ne "
+"commence pas sur un des murs externes. Vous pouvez essayer si vous voulez : "
+"Copie/collez votre code et appuyez sur le bouton 'run' pour admirez votre "
+"solution précédente échouer lamentablement."
 
 #. type: Content of: <p><p>
 #: src/lessons/maze/island/IslandMaze.html:18
@@ -9864,7 +9770,9 @@ msgstr ""
 msgid ""
 "Without even leaving his position, he can retrieve information about the "
 "world he is leaving in, with the following functions:"
-msgstr "Sans même changer de place, il peut retrouver des informations sur le monde qui l'entoure, avec les instructions suivantes&nbsp;:"
+msgstr ""
+"Sans même changer de place, il peut retrouver des informations sur le monde "
+"qui l'entoure, avec les instructions suivantes&nbsp;:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
@@ -9946,7 +9854,9 @@ msgstr ""
 msgid ""
 "Your buggle should first write the distance to the exit on each cell (or at "
 "least the useful ones)."
-msgstr "Votre buggle devrait tout d'abord écrire sur chaque case importante la distance qui la sépare de la sortie."
+msgstr ""
+"Votre buggle devrait tout d'abord écrire sur chaque case importante la "
+"distance qui la sépare de la sortie."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:25
@@ -9955,11 +9865,15 @@ msgid ""
 "neighboring cells that is not separated from the exit with a wall.  And then "
 "mark every cells from which you can reach the exit in 2 steps, and iterate "
 "for all cells until you mark the cell where the buggle is located."
-msgstr "Pour cela, trouvez la sortie et écrivez 0 dessus. Ensuite, écrivez 1 sur toutes les cases adjacentes à la sortie qui n'en sont pas séparées par un mur. Ensuite, écrivez 2 sur toutes les cases à partir desquelles on peut atteindre une case marquée 1, puis faites de même pour toutes les cases jusqu'à numéroter la case où se trouve votre buggle."
+msgstr ""
+"Pour cela, trouvez la sortie et écrivez 0 dessus. Ensuite, écrivez 1 sur "
+"toutes les cases adjacentes à la sortie qui n'en sont pas séparées par un "
+"mur. Ensuite, écrivez 2 sur toutes les cases à partir desquelles on peut "
+"atteindre une case marquée 1, puis faites de même pour toutes les cases "
+"jusqu'à numéroter la case où se trouve votre buggle."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:30
-#, fuzzy
 msgid ""
 "Once the cells are marked, get your jedi buggle to follow the shortest "
 "path.  Basically the buggle has only to walk on each case with the lesser "
@@ -9968,14 +9882,18 @@ msgid ""
 "specific direction such as <code>Direction.NORTH</code> or <code>Direction."
 "EAST</code>."
 msgstr ""
-"Une fois que toutes les cases sont marquées, faites en sorte que votre buggle\n"
-"jedi trouve le plus court chemin en suivant les indications écrites au sol. Pour\n"
-"celà, il lui suffit à chaque pas d'aller sur la case de plus petite distance\n"
+"Une fois que toutes les cases sont marquées, faites en sorte que votre "
+"buggle\n"
+"jedi trouve le plus court chemin en suivant les indications écrites au sol. "
+"Pour\n"
+"celà, il lui suffit à chaque pas d'aller sur la case de plus petite "
+"distance\n"
 "parmis celles accessibles. Vous pouvez utiliser la méthode <code>void\n"
 "setDirection(Direction d)</code> pour faire regarder votre buggle dans une\n"
 "direction spécifique comme <code>Direction.NORTH</code>,\n"
 "<code>Direction.SOUTH</code>, <code>Direction.EAST</code> ou\n"
-"<code>Direction.WEST</code>, qui correspondent respectivement au nord, sud, est\n"
+"<code>Direction.WEST</code>, qui correspondent respectivement au nord, sud, "
+"est\n"
 "et ouest."
 
 #. type: Attribute 'alt' of: <div>
@@ -10006,14 +9924,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:7
-#, fuzzy
-#| msgid ""
-#| "As a result, the method you wrote for the previous exercise probably "
-#| "don't work for this one. If you click on the run button with no "
-#| "modification, your buggle probably start looping over the four free cells "
-#| "around its start position (if that's not the case, well, you didn't "
-#| "really stick to the mission on previous exercise. Feel lucky and move to "
-#| "the next one once you've read this text)."
 msgid ""
 "As a result, the method you wrote for the previous exercise probably don't "
 "work for this one. If you use it here with no modification, your buggle "
@@ -10022,11 +9932,11 @@ msgid ""
 "previous exercise. Feel lucky and proceed to the next :)"
 msgstr ""
 "Ceci engendre que la méthode que vous avez écrite à l'exercice précédent ne "
-"fonctionne plus ici. Si vous cliquez sur le bouton 'run' sans modification "
-"du code, votre buggle va probablement commencer à tourner sur les quatres "
-"cases à côté de sa position de départ (si ça n'est pas le cas, et bien, vous "
-"n'avez pas réellement suivi la mission de l'exercice précédent. Sentez vous "
-"chanceux et passez à l'exercice suivant une fois que vous aurez lu ce texte)."
+"fonctionne plus ici. Si vous l'utilisez ici sans modification, votre buggle "
+"va probablement commencer à tourner sur les quatres cases à côté de sa "
+"position de départ (si ça n'est pas le cas, et bien, vous n'avez pas "
+"réellement suivi la mission de l'exercice précédent. Sentez vous chanceux et "
+"passez à l'exercice suivant une fois que vous aurez lu ce texte)."
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:14
@@ -10047,12 +9957,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:24
-#, fuzzy
-#| msgid ""
-#| "Fixing the problem should be very easy. Simply make sure that the pre-"
-#| "condition of <code>keepHandOnSideWall()</code> is verified before calling "
-#| "it. For that, update your run() method to first look for a wall on its "
-#| "left before the big <code>while</code> loop."
 msgid ""
 "Fixing the problem should be very easy. Simply make sure that the pre-"
 "condition of <code>keepHandOnSideWall()</code> is verified before calling "
@@ -10061,7 +9965,7 @@ msgid ""
 msgstr ""
 "Réparer le problème devrait être très facile. Assurez-vous simplement que la "
 "pré-condition de <code>keepHandOnSideWall()</code> est vérifiée avant de "
-"l'appeler Pour ce faire, mettez à jour votre méthode run() pour tout d'abord "
+"l'appeler Pour ce faire, mettez à jour votre code pour tout d'abord "
 "rechercher à avoir un mur à sa gauche avant de rentrer dans la grande boucle "
 "<code>while</code>."
 
@@ -10416,11 +10320,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bool1/Close10.html:5
-#, fuzzy
-#| msgid ""
-#| "Given 2 int values, return whichever value is nearest to the value 10, or "
-#| "return 0 in the event of a tie. Note that math.fabs(n) returns the "
-#| "absolute value of a number."
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that math.fabs(n) returns the absolute "
@@ -10429,7 +10328,8 @@ msgid ""
 msgstr ""
 "Étant donné deux nombres entiers, retourner la valeur la plus proche de 10, "
 "ou 0 en cas de match nul. Remarquez que math.fabs(n) retourne la valeur "
-"absolue d'un nombre."
+"absolue d'un nombre. Remarquez également que vous ne pouvez utiliser cette "
+"fonction que si vous avez importé le module math."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bool1/Close10.html:10
@@ -11285,21 +11185,16 @@ msgstr "Deux derniers"
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Last2.html:3
-#, fuzzy
-#| msgid ""
-#| "Given a string, return the count of the number of times that a substring "
-#| "length 2 appears in the string and also as the last 2 chars of the "
-#| "string, so \"hixxxhi\" yields 1 (we won't count the end substring)."
 msgid ""
 "Given a string, return the amount of times that the two last letters appear "
 "as a substring of the string. So \"hixxxhi\" yields 1 (we won't count the "
 "end substring) while \"aaaNaa\" yields 2 (substrings may overlap)."
 msgstr ""
-"Soit une chaîne de caractères.\n"
-"Renvoyez combien de fois une sous-chaîne de longueur 2 apparait dans la "
-"chaîne et aussi en tant que 2 derniers caractères de la chaîne.\n"
-"Par exemple, \"hixxxhi\" renvoie 1 (on ne compte pas la dernière sous-"
-"chaîne)."
+"Étant donné une chaîne de caractères, retournez le nombre de fois que les "
+"deux\n"
+"dernières lettres apparaissent. Par exemple, \"hixxxhi\" renvoie 1 (on ne "
+"compte pas la dernière sous-chaîne) tandis que \"aaaNaa\" renvoie 2 (les "
+"occurences peuvent se chevaucher partiellement)."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/StringBits.html:1
@@ -11399,10 +11294,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array.html:1
-#, fuzzy
-#| msgid "Knitting and Arrays"
 msgid "Knotting and sequences"
-msgstr "Tricots et tableaux"
+msgstr "Tricots et séquences"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics/Array.html:3
@@ -11424,12 +11317,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:11
-#, fuzzy
-#| msgid ""
-#| "One solution is to read the next cell, and go copy it in position before "
-#| "comming back to read the second cell. But since it is forbiden to use the "
-#| "methods to teleport the buggle to a specific position (<code>setPos()</"
-#| "code> and similar), this approach will be a pain to implement."
 msgid ""
 "One solution is to read the next cell, and go copy it in position before "
 "coming back to read the second cell. But since it is forbidden to use the "
@@ -11437,21 +11324,19 @@ msgid ""
 "and similar), this approach will be a pain to implement."
 msgstr ""
 "Une possibilité est de lire la prochaine case, puis d'aller la recopier en "
-"position, avant de revenir lire la case suivate, etc. Mais comme vous n'avez "
-"pas le droit d'utiliser les méthodes permettant de téléporter la buggle à "
-"une case particulière (<code>setPos()</code> et autres), cette façon de "
-"faire va être très pénible à mettre en place."
+"position, avant de revenir lire la case suivante, etc. Mais comme vous "
+"n'avez pas le droit d'utiliser les méthodes permettant de téléporter la "
+"buggle à une case particulière (<code>setPos()</code> et autres), cette "
+"façon de faire va être très pénible à mettre en place."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:16
-#, fuzzy
-#| msgid "The simplest is to store the whole color pattern in an <b>array</b>."
 msgid ""
 "The simplest is to store the sequence of colors that constitute the whole "
 "pattern in an <b>array</b>."
 msgstr ""
-"Le plus simple est de stocker l'enchainement de couleurs dans un <b>tableau</"
-"b>."
+"Le plus simple est de stocker l'enchainement de couleurs constituant le "
+"motif dans un <b>tableau</b>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:19
@@ -11466,19 +11351,17 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:24
-#, fuzzy
-#| msgid "The simplest is to store the whole color pattern in an <b>array</b>."
 msgid ""
 "The simplest is to store the sequence of colors that constitute the whole in "
 "a <b>list</b>."
 msgstr ""
-"Le plus simple est de stocker l'enchainement de couleurs dans un <b>tableau</"
-"b>."
+"Le plus simple est de stocker l'enchainement de couleurs constituant le "
+"motif dans une <b>liste</b>."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/array/basics/Array.html:26
 msgid "Lists"
-msgstr "Des listes"
+msgstr "Les listes"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:27
@@ -11489,6 +11372,13 @@ msgid ""
 "colors in other cells.  At the end, a list is very similar to a storage "
 "shelve, where each level can store a separate value."
 msgstr ""
+"Une liste est une séquence d'emplacements dans lesquels on peut mettre des "
+"valeurs (une par emplacement). Chaque cellule est une variable à part "
+"entière. La liste est donc une séquence de valeurs. Il est même possible de "
+"stoquer des valeurs de type différentes dans une liste, avec par exemple des "
+"entiers dans certaines cases et des couleurs dans d'autres cases. En quelque "
+"sorte, une liste ressemble un peu à une étagère où chaque étage peut "
+"contenir une valeur donnée."
 
 #. type: Content of: <br><p>
 #: src/lessons/welcome/array/basics/Array.html:38
@@ -11503,11 +11393,6 @@ msgstr ""
 
 #. type: Content of: <br><p>
 #: src/lessons/welcome/array/basics/Array.html:41
-#, fuzzy
-#| msgid ""
-#| "T is the array's name, T[0] is the name of the first cell, T[1] the name "
-#| "of the second cell, T[2] the third one, etc. And yes, the first cell in "
-#| "numbered T[0] and the last one of an array of size N is T[N-1]."
 msgid ""
 "T is the list's name, T[0] is the name of the first cell, T[1] the name of "
 "the second cell, T[2] the third one, etc. And yes, the first cell in "
@@ -11515,18 +11400,14 @@ msgid ""
 "funny to count starting from 0 and not from 1 as usual, but some historical "
 "reasons make it unavoidable here."
 msgstr ""
-"T est le nom du tableau, T[0] est le nom de la première case, T[1] de la "
+"T est le nom de la liste, T[0] est le nom de la première case, T[1] de la "
 "deuxième case, T[2] de la troisième case, etc... Et oui, la première case "
-"est T[0] et la dernière case d'un tableau de dimension N est T[N - 1]."
+"est T[0] et la dernière case d'une liste de taille N est T[N - 1]. Cela peut "
+"sembler étrange de commencer à compter à partir de 0 et non de 1, mais c'est "
+"ainsi (et cela s'explique par des raisons historiques obscures)."
 
 #. type: Content of: <br><p>
 #: src/lessons/welcome/array/basics/Array.html:47
-#, fuzzy
-#| msgid ""
-#| "We can use an integer variable <i>i</i> to access with T[i] to the "
-#| "array's cells: when the value of <i>i</i> is 0, then T[i] accesses T[0], "
-#| "when the value of <i>i</i> is 10, then T[i] accesses T[10]. <i>i</i> is "
-#| "said to be the indice in the array T."
 msgid ""
 "We can use an integer variable <i>i</i> to access with T[i] to the cells: "
 "when the value of <i>i</i> is 0, then T[i] accesses T[0], when the value of "
@@ -11534,29 +11415,24 @@ msgid ""
 "in T."
 msgstr ""
 "On peut utiliser une variable entière <i>i</i> pour accéder avec T[i] aux "
-"cases d'un tableau : lorsque <i>i</i> vaut 0 alors T[i] dénote la case T[0], "
-"lorsque <i>i</i> vaut 10, T[i] dénote T[10]. On dit alors que <i>i</i> est "
-"un <b>indice</b> dans le tableau T ."
+"cases : lorsque <i>i</i> vaut 0 alors T[i] dénote la case T[0], lorsque "
+"<i>i</i> vaut 10, T[i] dénote T[10]. On dit alors que <i>i</i> est un "
+"<b>indice</b> dans le tableau T ."
 
 #. type: Content of: <br><p><h3>
 #: src/lessons/welcome/array/basics/Array.html:52
-#, fuzzy
-#| msgid "Initial situation"
 msgid "Initialization"
-msgstr "Situation initiale"
+msgstr "Initialisation"
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:53
-#, fuzzy
-#| msgid ""
-#| "Let <code>T</code> be an array of 10 integer elements. It can then be "
-#| "initialized this way:"
 msgid ""
 "If <code>T</code> contains 10 elements, then each cell can be initialized "
 "with a simple loop:"
 msgstr ""
-"Supposons que <code>T</code> soit un tableau de 10 éléments entiers.  On "
-"peut alors le remplir de la manière suivante :"
+"Si <code>T</code> contient 10 éléments, on peut alors initialiser son "
+"contenu\n"
+"avec une simple boucle&nbsp;:"
 
 #. type: Content of: <br><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:56
@@ -11572,18 +11448,13 @@ msgstr ""
 
 #. type: Content of: <br><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:61
-#, fuzzy, no-wrap
-#| msgid ""
-#| "for (int i = 0; i&lt;10; i++) {\n"
-#| "   T[i] = 3;\n"
-#| "}\n"
+#, no-wrap
 msgid ""
 "for i in range(10):\n"
 "   T[i] = 3;\n"
 msgstr ""
-"for (int i = 0; i&lt;10; i++) {\n"
+"for i in range(10):\n"
 "   T[i] = 3;\n"
-"}\n"
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:65
@@ -11593,6 +11464,10 @@ msgid ""
 "values. For example, if <code>max</code> is 3, the returned values are 0, 1 "
 "and 2."
 msgstr ""
+"<code>range(max)</code> renvoie la liste de tous les entiers inférieurs à "
+"<code>max</code>, en commençant à 0. Il y a exactement <code>max</code> "
+"valeurs répondant à ces critères. Par exemple, si <code>max</code> est 3, "
+"les valeurs renvoyées seront 0, 1 et 2."
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:70
@@ -11602,24 +11477,20 @@ msgstr "<code>T[i]</code> s'utilise comme une variable. On peut l'affecter :"
 
 #. type: Content of: <br><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:71
-#, fuzzy, no-wrap
-#| msgid "T[i] = 78;"
+#, no-wrap
 msgid "T[i] = 78"
-msgstr "T[i] = 78;"
+msgstr "T[i] = 78"
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:73
-#, fuzzy
-#| msgid "We can test this value:"
 msgid "We can retrieve and use its value:"
-msgstr "On peut tester cette valeur :"
+msgstr "On peut réutiliser et tester cette valeur :"
 
 #. type: Content of: <br><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:74
-#, fuzzy, no-wrap
-#| msgid "x = T[i];"
+#, no-wrap
 msgid "x = T[i]"
-msgstr "x = T[i];"
+msgstr "x = T[i]"
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:76
@@ -11640,18 +11511,13 @@ msgstr ""
 
 #. type: Content of: <br><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:83
-#, fuzzy, no-wrap
-#| msgid ""
-#| "if (T[i] > 0 ) {\n"
-#| "    // instructions...\n"
-#| "}\n"
+#, no-wrap
 msgid ""
 "if T[i] > 0:\n"
 "    // instructions...\n"
 msgstr ""
-"if (T[i] > 0 ) {\n"
+"if T[i] > 0:\n"
 "    // instructions...\n"
-"}\n"
 
 #. type: Content of: <br><p><h3>
 #: src/lessons/welcome/array/basics/Array.html:87
@@ -11665,6 +11531,9 @@ msgid ""
 "all together.  Just put them between square braces and separated by commas "
 "as follows:"
 msgstr ""
+"Si vous connaissez à l'avance le contenu de votre liste, vous pouvez "
+"affecter ces valeurs directement. Placez-les simplement entre crochets et "
+"séparées par des virgules comme ceci&nbsp;:"
 
 #. type: Content of: <br><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:91
@@ -11673,6 +11542,8 @@ msgid ""
 "L = [1, 3, 5, 7, 9] \n"
 "# L is now an array of 5 values, all of them being integers\n"
 msgstr ""
+"L = [1, 3, 5, 7, 9] \n"
+"# L est maintenant une liste de 5 valeurs, toutes des entiers\n"
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:94
@@ -11680,6 +11551,8 @@ msgid ""
 "Otherwise, you probably want to create an empty list and then append each "
 "values separately:"
 msgstr ""
+"Dans le cas contraire, le plus simple est de créer une liste vide puis "
+"d'ajouter chaque valeur séparément&nbsp;:"
 
 #. type: Content of: <br><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:96
@@ -11694,6 +11567,14 @@ msgid ""
 "L2.append(9) \n"
 "# Its content is now the same as L previously\n"
 msgstr ""
+"L2 = [] \n"
+"# L2 est maintenant une liste vide\n"
+"L2.append(1)\n"
+"L2.append(3)\n"
+"L2.append(5)\n"
+"L2.append(7)\n"
+"L2.append(9) \n"
+"# Son contenu est maintenant le même que celui de L ci-dessus\n"
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:106
@@ -11734,12 +11615,6 @@ msgstr "Allocation d'un tableau"
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:118
-#, fuzzy
-#| msgid ""
-#| "Declaring an array <code>T</code> only reserve the name <code>T</code> "
-#| "for later use. But the array is not initialized yet: it does not have any "
-#| "value. What would <code>T[4]</code> mean if we didn't say that the array "
-#| "is at least 5 cells long?"
 msgid ""
 "Declaring a variable <code>T</code> that stores an array only reserve the "
 "name <code>T</code> for later use. But the array is not initialized yet: it "
@@ -11788,17 +11663,14 @@ msgstr ""
 
 #. type: Content of: <br><p><p>
 #: src/lessons/welcome/array/basics/Array.html:136
-#, fuzzy
-#| msgid ""
-#| "You are required to use the <code>new</code> instruction. On the other "
-#| "hand, you perfectly can specify the size with a variable <code>i</code>."
 msgid ""
 "It is forbidden to write something like <code>int T[10];</code> You are "
 "required to use the <code>new</code> instruction. On the other hand, you "
 "perfectly can specify the size with a variable <code>i</code>."
 msgstr ""
-"Il faut absolument utiliser l'instruction <code>new</code>. Par contre, on "
-"peut très bien donner la dimension par une variable <code>i</code>."
+"Il est interdit d'écrire quelque chose comme <code>int T[10]</code>.Il faut "
+"absolument utiliser l'instruction <code>new</code>. Par contre, on peut très "
+"bien donner la dimension par une variable <code>i</code>."
 
 #. type: Content of: <br><p><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:140
@@ -11892,10 +11764,8 @@ msgstr ""
 
 #. type: Content of: <br><p><p><p><p><h3>
 #: src/lessons/welcome/array/basics/Array.html:176
-#, fuzzy
-#| msgid "Arrays and method parameters"
 msgid "Lists and method parameters"
-msgstr "Tableaux et paramètres de méthode"
+msgstr "Listes et paramètres de méthode"
 
 #. type: Content of: <br><p><p><p><p><p>
 #: src/lessons/welcome/array/basics/Array.html:177
@@ -11905,6 +11775,12 @@ msgid ""
 "return lists as result without any complication. As an example, here is a "
 "method doubling every values of the list received as a parameter:"
 msgstr ""
+"Il est parfaitement autorisé de passer une liste en paramètre à une méthode. "
+"Cette méthode peut ensuite utiliser cette liste comme si elle avait été "
+"définie localement. Les méthodes peuvent même renvoyer des listes en guise "
+"de résultats sans complication particulière. Par exemple, voici une méthode "
+"qui double la valeur de toutes les valeurs de la liste qu'elle reçoit en "
+"paramètre&nbsp;:"
 
 #. type: Content of: <br><p><p><p><p><p><pre>
 #: src/lessons/welcome/array/basics/Array.html:182
@@ -11915,6 +11791,10 @@ msgid ""
 "  for i in range( len(param) ):\n"
 "    param[i] *= 2\n"
 msgstr ""
+"L = [1, 3, 5, 7, 9]\n"
+"def doubler(param):\n"
+"  for i in range( len(param) ):\n"
+"    param[i] *= 2\n"
 
 #. type: Content of: <br><p><p><p><p><p><h3>
 #: src/lessons/welcome/array/basics/Array.html:189
@@ -11988,6 +11868,9 @@ msgid ""
 "list.  The easiest is to create an empty list, and then <code>append()</"
 "code> the colors one after the others."
 msgstr ""
+"Votre code devrait sauvegarder dans une liste le motif de couleurs observées "
+"sur la première colonne. Le plus simple est de faire une liste vide, puis "
+"d'ajouter les couleurs les unes après les autres avec <code>append()</code>."
 
 #. type: Content of: <br><p><p><p><p><p><p>
 #: src/lessons/welcome/array/basics/Array.html:215
@@ -12016,26 +11899,19 @@ msgstr ""
 
 #. type: Content of: <br><p><p><p><p><p><p>
 #: src/lessons/welcome/array/basics/Array.html:225
-#, fuzzy
-#| msgid ""
-#| "Once hte array initialized, you have to reapply the pattern on every "
-#| "rows, for example by excuting <code>getWorldHeight()</code> times a "
-#| "method written specifically for this."
 msgid ""
 "Once you managed to read and save the pattern on the first row, you have to "
 "reapply the pattern on every rows, for example by executing "
 "<code>getWorldHeight()</code> times a method written specifically for this."
 msgstr ""
-"Une fois le tableau initialisé, il faut répliquer le motif sur toutes les "
-"colonnes, par exemple en exécutant <code>getWorldWidth()</code> fois une "
-"méthode écrite tout exprès."
+"Une fois le motif de la première colonne lu et sauvegardé, il faut le "
+"répliquer sur toutes les colonnes, par exemple en exécutant "
+"<code>getWorldWidth()</code> fois une méthode écrite tout exprès."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics2/Array2.html:1
-#, fuzzy
-#| msgid "Knitting, Arrays and modulos"
 msgid "Knotting, sequences and modulo"
-msgstr "Tricots, tableaux et modulos"
+msgstr "Tricots, séquences et modulos"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/basics2/Array2.html:3
@@ -12091,34 +11967,19 @@ msgstr ""
 
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/array/basics2/Array2.html:21
-#, fuzzy, no-wrap
-#| msgid "int offset = Integer.parseInt(readMessage())"
+#, no-wrap
 msgid "offset = int( readMessage() )"
-msgstr "int offset = Integer.parseInt(readMessage())"
+msgstr "offset = int( readMessage() )"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics2/Array2.html:22
-#, fuzzy
-#| msgid ""
-#| "<code>readMessage()</code> gets the message on the ground as a String, "
-#| "while <code>Integer.parseInt()</code> transforms a String into an integer "
-#| "by <i>reading</i> it."
 msgid ""
 "<code>readMessage()</code> gets the message on the ground as a String, while "
 "<code>int()</code> transforms it into an integer value by <i>reading</i> it."
-msgstr ""
-"<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine "
-"de caractères, tandis que <code>Integer.parseInt()</code> transforme une "
-"chaine de caractères en entiers en la <i>lisant</i>."
+msgstr "<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine de caractères, tandis que <code>int()</code> transforme le résultat en entier en <i>lisant</i> la chaîne de caractères."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/array/basics2/Array2.html:25
-#, fuzzy
-#| msgid ""
-#| "Then, to pick the right color, the easier is to use the <code>%</code> "
-#| "(modulo) operator. For example, <code>(i + 5) % size</code> allows to "
-#| "retrieve teh <code>i</code>th cell of an array of size <code>size</code> "
-#| "with an offset of <code>5</code>."
 msgid ""
 "Then, to pick the right color, the easier is to use the <code>%</code> "
 "(modulo) operator. For example, <code>(i + 5) % size</code> allows to "
@@ -12133,44 +11994,24 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:1
-#, fuzzy
-#| msgid "Searching a given value"
 msgid "Searching for a given value"
-msgstr "Indice d'une valeur donnée"
+msgstr "Chercher une valeur donnée"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:3
-#, fuzzy
-#| msgid ""
-#| "The goal of this exercise is to search the cell of value 17 in an array, "
-#| "and return its position."
 msgid ""
 "The goal of this exercise is to search the cell of a given value, and return "
 "its position."
-msgstr ""
-"L'objectif de cet exercice est de calculer l'indice d'une valeur donnée (17 "
-"dans cet exercice) dans un tableau."
+msgstr "L'objectif de cet exercice est de chercher la case contenant une valeur donnée, et de retourner sa position."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:5
-#, fuzzy
-#| msgid ""
-#| "To that extend, you should fill the method <code>indexOf(int[] tab, int "
-#| "lookingFor)</code>, which parameters are the array to explore, and the "
-#| "value to search. If the value <code>lookingFor</code> is not in the array "
-#| "<code>tab</code>, the method should return -1."
 msgid ""
 "To that extend, you should fill the method <code>indexOf()</code>, which "
 "parameters are the array to explore, and the value to search. If the value "
 "<code>lookingFor</code> is not in the array <code>tab</code>, the method "
 "should return -1."
-msgstr ""
-"Pour cela, il vous faut remplir le corps de la méthode <code>indexOf(int[] "
-"tab,\n"
-"int lookingFor)</code>. Ses paramètres sont le tableau à explorer et la "
-"valeur\n"
-"à chercher. Si la valeur <code>lookingFor</code> n'est pas dans le tableau\n"
-"<code>tab</code>, la méthode doit renvoyer -1."
+msgstr "Pour cela, il vous faut remplir le corps de la méthode <code>indexOf()</code>. Ses paramètres sont le tableau <code>tab</code> à explorer et la valeur <code>lookingFor</code> à chercher. Si la valeur <code>lookingFor</code> n'est pas dans le tableau <code>tab</code>, la méthode doit renvoyer -1."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:9
@@ -12186,30 +12027,13 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:13
-#, fuzzy
-#| msgid ""
-#| "The first thing to remember about arrays is that their indices begin at "
-#| "0. So, if there is 3 cells, their indices will be 0, 1 and 2. There would "
-#| "not be any cell numbered 3."
 msgid ""
 "Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
 "their indices will be 0, 1 and 2. There would not be any cell numbered 3."
-msgstr ""
-"La première chose dont il faut se souvenir à propos des tableaux est que "
-"leurs\n"
-"indices sont numérotés à partir de 0. Donc, si vous avez 3 cases, leurs "
-"indices\n"
-"seront 0, 1 et 2. Il n'y aura pas de case numérotée 3."
+msgstr "N'oubliez pas que les cases sont sont numérotées à partir de 0. Donc, si vous avez 3 cases, leurs indices seront 0, 1 et 2. Il n'y aura pas de case numérotée 3."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:16
-#, fuzzy
-#| msgid ""
-#| "Then, remember that the amount of cells in an array can be retrieved "
-#| "using the <code>length</code> attribute. So, if your array is called "
-#| "<code>tab</code>, its size can be retrieved as <code>tab.length</code>.  "
-#| "Note that there is no () after <code>length</code>. An attribute is a "
-#| "sort of variable embedded in another object (here, the array)."
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved using "
 "the <code>length</code> attribute. So, if your array is called <code>tab</"
@@ -12235,36 +12059,21 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:23
-#, fuzzy
-#| msgid ""
-#| "Then, remember that the amount of cells in an array can be retrieved "
-#| "using the <code>length</code> attribute. So, if your array is called "
-#| "<code>tab</code>, its size can be retrieved as <code>tab.length</code>.  "
-#| "Note that there is no () after <code>length</code>. An attribute is a "
-#| "sort of variable embedded in another object (here, the array)."
 msgid ""
 "Remember also that the amount of cells in an array can be retrieved with the "
 "<code>len()</code> function. So, if your array is called <code>tab</code>, "
 "its size can be retrieved as <code>len(tab)</code>."
 msgstr ""
-"Ensuite, souvenez vous que le nombre de cases d'un tableau peut être "
-"retrouvé\n"
-"grâce à l'attribut <code>length</code>. Donc, si votre tableau s'appelle\n"
-"<code>tableau</code>, sa taille sera <code>tableau.length</code>. Notez "
-"qu'il\n"
-"n'y a pas de () après <code>length</code>. Un attribut est une sorte de\n"
-"variable embarquée dans un autre objet (ici, le tableau)."
+"Ensuite, souvenez vous que le nombre de cases d'un tableau peut être retrouvé\n"
+"grâce à la fonction <code>len()</code>. Donc, si votre tableau s'appelle\n"
+"<code>tableau</code>, sa taille sera <code>len(tableau)</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:27
-#, fuzzy
-#| msgid ""
-#| "So, the last value of an array is given by <code>tab[tab.length - 1]</"
-#| "code>."
 msgid ""
 "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
 msgstr ""
-"Donc, la dernière valeur d'un tableau est donnée par <code>tab[tab.length "
+"Donc, la dernière valeur d'un tableau est donnée par <code>tab[ len(tab) "
 "-1]</code>."
 
 #. type: Content of: <h1>
@@ -12274,37 +12083,24 @@ msgstr "Indice de la valeur maximale"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:3
-#, fuzzy
-#| msgid ""
-#| "In this exercise, you must compute the indice of the tab cell containing "
-#| "the biggest value."
 msgid ""
 "In this exercise, you must compute the index of the tab cell containing the "
 "biggest value."
 msgstr ""
-"Dans cet exercice, vous devez calculer l'indice de la case contenant la "
-"plus\n"
+"Dans cet exercice, vous devez calculer l'indice de la case contenant la plus "
 "grande valeur du tableau."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:5
-#, fuzzy
-#| msgid ""
-#| "For that, fill the <code>indexOfMaximum(int[] tab)</code> method. Its "
-#| "parameter is the array to explore. Should the array contain the searched "
-#| "value several times, you should return the indice of the first occurrence."
 msgid ""
 "For that, fill the <code>indexOfMaximum()</code> method. Its parameter is "
 "the array to explore. Should the array contain the searched value several "
 "times, you should return the index of the first occurrence."
 msgstr ""
-"Pour cela, remplissez la méthode <code>indexOfMaximum(int[] tab)</code> dont "
-"le\n"
-"paramètre est le tableau à explorer. Si jamais la plus grande des valeurs "
-"du\n"
+"Pour cela, remplissez la méthode <code>indexOfMaximum()</code> dont le "
+"paramètre est le tableau à explorer. Si jamais la plus grande des valeurs du "
 "tableau est répétée plusieurs fois, votre méthode doit renvoyer la position "
-"de\n"
-"la première occurence."
+"de la première occurence."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:9
@@ -12339,60 +12135,38 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:6
-#, fuzzy
-#| msgid ""
-#| "You have to fill the body of the method <code>average(int[] tab)</code> "
-#| "which takes as parameter the array of integers of which it computes and "
-#| "returns the average value. Please note that the return type of the method "
-#| "has type <code>int</code>."
 msgid ""
 "You have to fill the body of the method <code>average()</code> which takes "
 "as parameter the array of integers of which it computes and returns the "
 "average value. Please note that this method must return an integer."
 msgstr ""
-"Vous devez donc remplir le corps de la méthode <code>average(int[] tab)</"
-"code> qui prend en paramètre le tableau, et qui retourne en résultat la "
-"valeur moyenne. Notez bien que le résultat de cette méthode est de type "
-"<code>int</code>"
+"Vous devez donc remplir le corps de la méthode <code>average()</code> qui "
+"prend en paramètre le tableau, et qui retourne en résultat la valeur "
+"moyenne. Notez bien que cette méthode doit renvoyer un entier."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:8
-#, fuzzy
-#| msgid ""
-#| "To compute the average value of an integer, it is necessary to traverse "
-#| "the whole array and to compute the sum of all its values (so you will "
-#| "need a variable to store this temporary result), then you have to divide "
-#| "this sum by the size of the array. In Java, you can get the size of an "
-#| "array <code>myarray</code> by consulting its <code>length</code> "
-#| "attribute (in other words, <code>myarray.length</code>)."
 msgid ""
 "To compute the average value of an integer, it is necessary to traverse the "
 "whole array and to compute the sum of all its values (so you will need a "
 "variable to store this temporary result), then you have to divide this sum "
 "by the size of the array."
-msgstr ""
-"Pour calculer la valeur moyenne d'un tableau, il faut parcourir l'ensemble "
-"des valeurs du tableau, en faire la somme (vous aurez donc besoin d'une "
-"variable pour conserver le résultat intermédiaire), puis diviser cette somme "
-"par le nombre de valeur contenu dans le tableau. On vous rappelle que vous "
-"pouvez obtenir la taille d'un tableau <code>montableau</code> en consultant "
-"la valeur de l'attribut <code>length</code> de ce tableau (autrement dit "
-"<code>montableau.length</code>)."
+msgstr "Pour calculer la valeur moyenne d'un tableau, il faut parcourir l'ensemble des valeurs du tableau, en faire la somme (vous aurez donc besoin d'une variable pour conserver le résultat intermédiaire), puis diviser cette somme par le nombre de valeur contenu dans le tableau."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:10
 msgid ""
 "In Java, you can get the size of an array <code>myarray</code> by consulting "
 "its <code>length</code> attribute (in other words, <code>myarray.length</"
-"code>)."
-msgstr ""
+"code>). Notice that there is no parenthesis after <code>length</code>."
+msgstr "En Java, vous pouvez retrouver la taille d'un tableau <code>monTableau</code> en consultant son attribut <code>length</code> (autrement dit, <code>monTableau.length</code>). Notez qu'il n'y a pas de parenthèses après <code>length</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:12
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:15
 msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."
-msgstr ""
+msgstr "En python, retrouver la taille d'un tableau est aussi simple qu'appeller <code>len(monTableau)</code>."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:1
@@ -12401,32 +12175,14 @@ msgstr "Valeur maximale"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:3
-#, fuzzy
-#| msgid ""
-#| "In this exercise, you must compute the maximal value contained in an "
-#| "array.  For that, fill the <code>maximum(int[] tab)</code> method, which "
-#| "parameter is the array to explore."
 msgid ""
 "In this exercise, you must compute the maximal value contained in an array.  "
 "For that, fill the <code>maximum()</code> method, which parameter is the "
 "array to explore."
-msgstr ""
-"Dans cet exercice, vous devez retrouver le maximum des valeurs stockées dans "
-"un\n"
-"tableau. Pour cela, remplissez le corps de la méthode <code>maximum(int[]\n"
-"tab)</code>, dont le paramètre est le tableau à explorer."
+msgstr "Dans cet exercice, vous devez retrouver le maximum des valeurs stockées dans un tableau. Pour cela, remplissez le corps de la méthode <code>maximum()</code>, dont le paramètre est le tableau à explorer."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:7
-#, fuzzy
-#| msgid ""
-#| "To compute this value, sweep over the whole parameter. For each value, if "
-#| "it's bigger than the biggest value you saw so far, you must save this "
-#| "value somewhere to remember it afterward. You thus need an extra "
-#| "variable, which can be initialized to the value of the first array cell. "
-#| "Another possibility is to initialize it to the smallest integer that Java "
-#| "knows about (which can be retrieved through <code>Integer.MIN_VALUE</"
-#| "code>)."
 msgid ""
 "To compute this value, sweep over the whole parameter. For each value, if "
 "it's bigger than the biggest value you saw so far, you must save this value "
@@ -12434,15 +12190,10 @@ msgid ""
 "can be initialized to the value of the first array cell."
 msgstr ""
 "Pour résoudre cet exercice, parcourez le tableau. Pour chaque case, si sa\n"
-"valeur est plus grande que la plus grande des valeurs que vous avez "
-"rencontré\n"
-"jusque là, sauvegardez cette nouvelle championne pour retrouver sa valeur "
-"plus\n"
-"tard. Il vous faut donc une nouvelle variable; la valeur initiale de la\n"
-"championne pourrait être la valeur rangée dans la première case. Une autre\n"
-"possibilité est d'utiliser pour cela la plus petite valeur entière connue "
-"de\n"
-"Java (qui s'écrit <code>Integer.MIN_VALUE</code>)."
+"valeur est plus grande que la plus grande des valeurs que vous avez rencontré\n"
+"jusque là, sauvegardez cette nouvelle championne pour retrouver sa valeur plus\n"
+"tard. Il vous faut donc une nouvelle variable, dont la valeur initiale peut être\n"
+"la valeur de la première case du tableau."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:1
@@ -12451,27 +12202,13 @@ msgstr "Occurrences d'une valeur"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:3
-#, fuzzy
-#| msgid ""
-#| "In this exercise, you must compute the amount of occurrences of a given "
-#| "value in an array (that is, the amount of time that this value appears in "
-#| "the array). For that, fill the <code>occurrences(int[] tab, int "
-#| "lookingFor)</code> method, which returns the number of occurrence of "
-#| "<code>lookingFor</code> in <code>tab</code>."
 msgid ""
 "In this exercise, you must compute the amount of occurrences of a given "
 "value in an array (that is, the amount of time that this value appears in "
 "the array). For that, fill the <code>occurrences()</code> method, which "
 "returns the number of occurrence of <code>lookingFor</code> in <code>tab</"
 "code>."
-msgstr ""
-"Dans cet exercice, il vous faut calculer le nombre d'occurrences d'une "
-"valeur\n"
-"donnée, c'est à dire le nombre de fois que cette valeur apparaît dans le\n"
-"tableau. Pour cela, remplissez le corps de la méthode "
-"<code>occurrences(int[]\n"
-"tab, int lookingFor)</code>, qui retourne le nombre d'occurrences de\n"
-"<code>lookingFor</code> dans <code>tab</code>."
+msgstr "Dans cet exercice, il vous faut calculer le nombre d'occurrences d'une valeur donnée, c'est à dire le nombre de fois que cette valeur apparaît dans le tableau. Pour cela, remplissez le corps de la méthode <code>occurrences()</code>, qui retourne le nombre d'occurrences de la valeur <code>lookingFor</code> dans le tableau <code>tab</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:8
@@ -12492,10 +12229,6 @@ msgstr "Tableau123"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/array123/Array123.html:2
-#, fuzzy
-#| msgid ""
-#| "Given an array of ints, return true if .. 1, 2, 3, .. appears in the "
-#| "array somewhere."
 msgid ""
 "Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
 "array somewhere."
@@ -12510,19 +12243,11 @@ msgstr "Tableau667"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/array667/Array667.html:2
-#, fuzzy
-#| msgid ""
-#| "Given an array of ints, return the number of times that two 6's are next "
-#| "to each other in the array. Also count instances where the second \"6\" "
-#| "is actually a 7."
 msgid ""
 "Given an array of integers, return the number of times that two 6's are next "
 "to each other in the array. Also count instances where the second \"6\" is "
 "actually a 7."
-msgstr ""
-"Soit un tableau d'entiers, renvoyez le nombre de fois que deux 6 sont l'un à "
-"la suite de l'autre dans le tableau. Comptez également le nombre de fois où "
-"le deuxième \"6\" esten fait un 7."
+msgstr "Soit un tableau d'entiers, renvoyez le nombre de fois que deux 6 sont l'un à la suite de l'autre dans le tableau. Comptez également le nombre de fois où le deuxième \"6\" est en fait un 7."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:1
@@ -12531,8 +12256,6 @@ msgstr "Comptage de 9"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:2
-#, fuzzy
-#| msgid "Given an array of ints, return the number of 9's in the array."
 msgid "Given an array of integers, return the number of 9's in the array."
 msgstr "Soit un tableau d'entiers, renvoyez le nombre de 9 dans ce tableau."
 
@@ -12543,10 +12266,6 @@ msgstr "Tableau commençant par 9"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:2
-#, fuzzy
-#| msgid ""
-#| "Given an array of ints, return true if one of the first 4 elements in the "
-#| "array is a 9. The array length may be less than 4."
 msgid ""
 "Given an array of integers, return true if one of the first 4 elements in "
 "the array is a 9. The array length may be less than 4."
@@ -12561,11 +12280,6 @@ msgstr "Pas de triplet"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/notriples/NoTriples.html:2
-#, fuzzy
-#| msgid ""
-#| "Given an array of ints, we'll say that a triple is a value appearing 3 "
-#| "times in a row in the array. Return true if the array does not contain "
-#| "any triples."
 msgid ""
 "Given an array of integers, we'll say that a triple is a value appearing 3 "
 "times in a row in the array. Return true if the array does not contain any "
@@ -12582,21 +12296,15 @@ msgstr "Contient 271"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/array/has271/Has271.html:2
-#, fuzzy
-#| msgid ""
-#| "Given an array of ints, return true if it contains a 2, 7, 1 pattern -- a "
-#| "value, followed by the value plus 5, followed by the value minus 1.  "
-#| "Additionally the 271 counts even if the \"1\" differs by 2 or less from "
-#| "the correct value."
 msgid ""
 "Given an array of integers, return true if it contains a 2, 7, 1 pattern -- "
 "a value, followed by the value plus 5, followed by the value minus 1.  "
 "Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
 "correct value."
 msgstr ""
-"Soit un tableau d'entiers, renvoyez vrai si il contient schéma 2,7,1 -- une "
-"valeur, suivie de cette valeur plus 5, suivie par cette valeur moins 1. En "
-"outre, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur "
+"Soit un tableau d'entiers, renvoyez vrai si il contient un motif 2,7,1 -- "
+"une valeur, suivie de cette valeur plus 5, suivie par cette valeur moins 1. "
+"En outre, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur "
 "correcte."
 
 #. type: Content of: <h1>
@@ -12838,7 +12546,7 @@ msgstr "Sciences Manuelles du Numérique"
 msgid ""
 "This material is currently under development in JLM and will soon be "
 "properly integrated"
-msgstr ""
+msgstr "Ceci est actuellement en cours de développement, et sera bientôt parfaitement intégré à JLM"
 
 #. type: Content of: <p>
 #: src/lessons/smn/Main.html:4
@@ -12847,7 +12555,7 @@ msgstr ""
 #: src/lessons/smn/baseball/easy/BaseballGame.html:3
 #: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:3
 msgid ". Please be patient with us."
-msgstr ""
+msgstr ". Merci de votre patience."
 
 #. type: Content of: <p>
 #: src/lessons/smn/Main.html:6
@@ -13358,87 +13066,3 @@ msgstr ""
 #: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:40
 msgid "There are seven methods provided :"
 msgstr "Sept méthodes vous sont fournies :"
-
-#~ msgid "Miscellaneous sorting"
-#~ msgstr "Tris divers"
-
-#~ msgid "BubbleSort and variations"
-#~ msgstr "Le tri à bulle et variantes"
-
-#~ msgid "CocktailSort and variations"
-#~ msgstr "Le tri à bulle et variantes"
-
-#~ msgid "Insertion algorithms and variations"
-#~ msgstr "Algorithme par insertion et variantes"
-
-#~ msgid ""
-#~ "This exercise allows you to experiment with the insertion sort and its "
-#~ "major variations."
-#~ msgstr ""
-#~ "Cet exercice vous permet d'expérimenter avec le tri par insertion et ses "
-#~ "variantes les plus classiques."
-
-#~ msgid ""
-#~ "Once again, you just have to write the <code>step()</code> method, in "
-#~ "charge of doing one turmite's step. Once again, you should first find the "
-#~ "rank of the current's cell ground color in the color sequence. The "
-#~ "<code>colors</code> array is not passed as parameter but declared as "
-#~ "global variable. It shouldn't change anything for us since this array was "
-#~ "never modified during the execution. This trick to pass constant "
-#~ "parameters is not very clean, but it should help performance a bit."
-#~ msgstr ""
-#~ "Encore une fois, vous avez seulement à écrire la méthode <code>step()</"
-#~ "code>, dont le but est de réaliser un pas de turmite.\n"
-#~ "Encore une fois, vous devez tout d'abord trouver la rang de la couleur de "
-#~ "la case actuelle dans la séquence de couleur.\n"
-#~ "Le tableau <code>colors</code> n'est pas passé en tant que paramètre mais "
-#~ "est déclaré comme une variable globale. Cela ne devrait rien changer pour "
-#~ "nous pouisque ce tableau n'a jamais été modifié pendant l'exécution. "
-#~ "Cette astuce pour passer des paramètres constants n'est pas très propre, "
-#~ "mais cela devrait améliorer un peu les performances."
-
-#~ msgid ""
-#~ "This exercise's objective is to write an algorithm allowing the buggle to "
-#~ "find its path out of the maze. Do not forget to let your buggle pick up "
-#~ "the baggle once it found the way out."
-#~ msgstr ""
-#~ "<a name=\"Objectifs\"> L'objectif de cet exercice est d'écrire un "
-#~ "algorithme permettant à votre buggle de sortir du labyrinthe. Pensez à "
-#~ "faire prendre le baggle à votre buggle avant la fin de votre programme."
-
-#~ msgid ""
-#~ "Write the <code>run()</code> method so that your buggle takes a random "
-#~ "decision (forward, turn left or turn right). You can use the "
-#~ "<code>random3()</code> method which returns randomly either 0, 1 or 2."
-#~ msgstr ""
-#~ "Ecrivez la méthode <code>run()</code> pour que votre buggle prenne une "
-#~ "décision (avancer, tourner à droite, tourner à gauche) au hasard.  Vous "
-#~ "pouvez utiliser la méthode <code>random3()</code> qui retourne de manière "
-#~ "aléatoire la valeur 0, 1 ou 2."
-
-#~ msgid ""
-#~ "<a name=\"Objective\"/>Write a method <code>evaluatePaths()</code> which "
-#~ "computes a very basic shortest path algorithm. This algorithm will write "
-#~ "on each world cell (or at least the one that are useful) the distance "
-#~ "from this cell to the maze exit."
-#~ msgstr ""
-#~ "<a name=\"Objective\"/>Ecrivez une méthode <code>evaluatePaths()</code> "
-#~ "qui implémente une version basique de l'algorithme de recherche du plus "
-#~ "court chemin. Cet algorithme écrira sur chaque case du monde ( ou au "
-#~ "moins sur celles qui sont nécessaires ) la distance qu'il y a de la case "
-#~ "à la sortie du labyrinthe."
-
-#~ msgid ""
-#~ "To achieve this objective, your algorithm has to find the exit of the "
-#~ "maze on the map. Then, for every cells next to the cell where the exit is "
-#~ "located, it has to mark these cells with a integer value of 1 (indicating "
-#~ "the distance). Then, it has to iterate the same process to mark the cells "
-#~ "which are at a distance of 2 and so on until it marks the cell where the "
-#~ "buggle is located."
-#~ msgstr ""
-#~ "Pour parvenir à cet objectif, votre algorithme devra trouver la sortie du "
-#~ "labyrinthe sur la carte. Ensuite, pour chaque case à côté de la case où "
-#~ "se situe la sortie, il devra marquer cette case avec une valeur entière "
-#~ "de 1 ( indiquant la distance ). Ensuite, il faudra itérer ce processus "
-#~ "pour marquer les cases qui sont à une distance de 2 et jusqu'à marquer la "
-#~ "case où se situe le buggle."

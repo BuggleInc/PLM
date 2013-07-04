@@ -43,12 +43,18 @@ mur. Ensuite, écrivez 2 sur toutes les cases à partir desquelles on peut
 atteindre une case marquée 1, puis faites de même pour toutes les cases
 jusqu'à numéroter la case où se trouve votre buggle.</p>
 
-<p>Once the cells are marked, get your jedi buggle to follow the shortest
-path.  Basically the buggle has only to walk on each case with the lesser
-distance from the exit. You can use the method
-<code>setDirection(direction)</code> to make your buggle look at the
-specific direction such as <code>Direction.NORTH</code> or
-<code>Direction.EAST</code>.</p>
+<p>Une fois que toutes les cases sont marquées, faites en sorte que votre
+buggle
+jedi trouve le plus court chemin en suivant les indications écrites au
+sol. Pour
+celà, il lui suffit à chaque pas d'aller sur la case de plus petite distance
+parmis celles accessibles. Vous pouvez utiliser la méthode <code>void
+setDirection(Direction d)</code> pour faire regarder votre buggle dans une
+direction spécifique comme <code>Direction.NORTH</code>,
+<code>Direction.SOUTH</code>, <code>Direction.EAST</code> ou
+<code>Direction.WEST</code>, qui correspondent respectivement au nord, sud,
+est
+et ouest.</p>
 
 <div class="tip" id="tip-1" alt="Je suis perdu, je voudrais plus d'indications">
 Utilises la Force Luke !

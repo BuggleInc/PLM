@@ -1,4 +1,4 @@
-<h1>Knotting, sequences and modulo</h1>
+<h1>Tricots, séquences et modulos</h1>
 
 Cet exercice ressemble au précédent : il faut reproduire le motif de
 couleurs de la première colonne dans les colonnes suivantes. 
@@ -19,12 +19,14 @@ de caractères, tandis que <code>Integer.parseInt()</code> transforme une
 chaine de caractères en entiers en la <i>lisant</i>.
 
 <pre class="python">offset = int( readMessage() )</pre>
-<code>readMessage()</code> gets the message on the ground as a String, while
-<code>int()</code> transforms it into an integer value by <i>reading</i> it.
+<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine
+de caractères, tandis que <code>int()</code> transforme le résultat en
+entier en <i>lisant</i> la chaîne de caractères.
 
-<p>Then, to pick the right color, the easier is to use the <code>%</code>
-(modulo) operator. For example, <code>(i + 5) % size</code> allows to
-retrieve the <code>i</code>th cell of an array of size <code>size</code>
-with an offset of <code>5</code>.
+<p>Ensuite, pour trouver la bonne couleur à utiliser, le plus simple est
+d'utiliser l'opérateur <code>%</code> (modulo). Par exemple, <code>(i + 5) %
+taille</code> permet de trouver la <code>i</code>ieme case d'un tableau de
+taille <code>taille</code> quand on applique un décalage de <code>5</code>
+cases.
 
 <p>À vous de jouer.</p>
