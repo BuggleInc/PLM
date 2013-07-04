@@ -37,8 +37,11 @@ import jlm.core.model.session.ISessionKit;
 import jlm.core.model.session.SessionDB;
 import jlm.core.model.session.ZipSessionKit;
 import jlm.core.model.tracking.HeartBeatSpy;
+import jlm.core.model.tracking.IdenticaSpy;
 import jlm.core.model.tracking.LocalFileSpy;
 import jlm.core.model.tracking.ProgressSpyListener;
+import jlm.core.model.tracking.ServerSpyAppEngine;
+import jlm.core.model.tracking.TwitterSpy;
 import jlm.core.ui.MainFrame;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.utils.FileUtils;
@@ -139,15 +142,14 @@ public class Game implements IWorldView {
 		}
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
-		System.err.println("Student progression listeners are disabled in this version."); // FIXME: use property files to disable it
-		return;
-		/* 
+		//System.err.println("Student progression listeners are disabled in this version."); // FIXME: use property files to disable it
+		//return;
+		 
 		addProgressSpyListener(new IdenticaSpy());
 		addProgressSpyListener(new TwitterSpy());
         addProgressSpyListener(new ServerSpyAppEngine());
 
         currentCourse = new CourseAppEngine();
-        */
 	}
 	
 	
