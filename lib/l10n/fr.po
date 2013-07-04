@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-04 01:13+0300\n"
-"PO-Revision-Date: 2013-07-04 01:14+0200\n"
+"POT-Creation-Date: 2013-07-04 08:53+0300\n"
+"PO-Revision-Date: 2013-07-04 16:57+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -6523,14 +6523,8 @@ msgstr ""
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:8
-#, fuzzy
-#| msgid ""
-#| "The main loop of the <code>run()</code> method (that you must write) is "
-#| "something like:"
 msgid "The main loop of your code should be something like:"
-msgstr ""
-"La boucle principale de la méthode <code>run()</code> (que vous devez "
-"écrire)  est de la forme :"
+msgstr "La boucle principale du code que vous devez écrire est de la forme :"
 
 #. type: Content of: <p><p><p><p><p><pre>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:10
@@ -6546,14 +6540,6 @@ msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:15
-#, fuzzy
-#| msgid ""
-#| "In contrary to the exercises we saw so far, we won't use the "
-#| "<code>forward()</code>, <code>backward()</code> and similar methods. "
-#| "Instead, we will compute the coordinate of the next buggle position and "
-#| "use the <code>setPos(int, int)</code> method to <i>teleport</i> the "
-#| "buggle directly to this position. For example, <code>setPos(3, 5)</code> "
-#| "teleports the buggle to the cell where x=3 and y=5."
 msgid ""
 "In contrary to the exercises we saw so far, we won't use the "
 "<code>forward()</code>, <code>backward()</code> and similar methods. "
@@ -6561,13 +6547,7 @@ msgid ""
 "the <code>setPos(x, y)</code> method to <i>teleport</i> the buggle directly "
 "to this position. For example, <code>setPos(3, 5)</code> teleports the "
 "buggle to the cell where x=3 and y=5."
-msgstr ""
-"À la différence des exercices vus jusque là, nous n'allons pas utiliser les "
-"méthodes <code>forward()</code>, <code>backward()</code> et autres, mais "
-"nous allons calculer les coordonnées de la prochaine position de la buggle, "
-"et utiliser la méthode <code>setPos(int, int)</code> pour <i>téléporter</i> "
-"la buggle directement à cette position. Par exemple, <code>setPos(3, 5)</"
-"code> téléporte la buggle sur la case où x=3 et y=5."
+msgstr "À la différence des exercices vus jusque là, nous n'allons pas utiliser les méthodes <code>forward()</code>, <code>backward()</code> et autres, mais nous allons calculer les coordonnées de la prochaine position de la buggle, et utiliser la méthode <code>setPos(x, y)</code> pour <i>téléporter</i> la buggle directement à cette position. Par exemple, <code>setPos(3, 5)</code> téléporte la buggle sur la case où x=3 et y=5."
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:22
@@ -6623,25 +6603,13 @@ msgstr ""
 
 #. type: Content of: <p><p><p><p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:40
-#, fuzzy
-#| msgid ""
-#| "It is now time to write done the cell numbers. For that, you will need a "
-#| "counter initialiser to zero at the begining of your <code>run()</code> "
-#| "method, and incremented by one at each step (for example with "
-#| "<code>counter++;</code>). Then, you have to write the value on the "
-#| "ground, for example with <code>writeMessage(counter);</code>."
 msgid ""
 "It is now time to write done the cell numbers. For that, you will need a "
 "counter initialiser to zero at the begining of your <code>run()</code> "
 "method, and incremented by one at each step (for example with <code>counter "
 "+= 1;</code>). Then, you have to write the value on the ground, for example "
 "with <code>writeMessage(counter);</code>."
-msgstr ""
-"Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez "
-"besoin d'un compteur initialisé à zéro au début de votre méthode "
-"<code>run()</code>, et incrémenté de un à chaque pas (par exemple avec "
-"<code>cpt++;</code>). Ensuite, il faut écrire la valeur de ce compteur au "
-"sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>."
+msgstr "Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez besoin d'un compteur initialisé à zéro au début de votre méthode <code>run()</code>, et incrémenté de un à chaque pas (par exemple avec <code>cpt += 1;</code>). Ensuite, il faut écrire la valeur de ce compteur au sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>."
 
 #. type: Content of: <p><p><p><p><p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:46
@@ -6659,7 +6627,7 @@ msgstr ""
 msgid ""
 "You may want to write the first value out of the main <code>while ...:</"
 "code> loop."
-msgstr ""
+msgstr "Si vous le souhaitez, vous pouvez écrire la première valeur en dehors de la boucle <code>while ....:</code>."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:3
@@ -6744,14 +6712,6 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langton/Langton.html:14
 #, fuzzy
-#| msgid ""
-#| "It's hard to come up with simpler rules isn't it? Well, let's go and code "
-#| "it now. You have to complete the <code>step()</code> method, which "
-#| "encodes the behavior of the ant at each step. You will probably use the "
-#| "<code>getGroundColor()</code> method to retrieve the color of the cell on "
-#| "which the ant is currently. To compare colors, you cannot use the equal "
-#| "sign (=), because these things are not scalar values but objects. "
-#| "Instead, you need to write something like the following:"
 msgid ""
 "It's hard to come up with simpler rules isn't it? Well, let's go and code it "
 "now. You have to complete the <code>step()</code> method, which encodes the "
@@ -6760,14 +6720,13 @@ msgid ""
 "which the ant is currently.  Colors of interest are simply named <code>Color."
 "black</code> and <code>Color.white</code>."
 msgstr ""
-"Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien, "
-"allons-y et codons les maintenant. Vous avez à compléter la méthode "
-"<code>step()</code>, qui définit le comportement de la fourmi à chaque pas. "
-"Vous utiliserez probablement la méthode <code>getGroundColor()</code> pour "
-"récupérer la valeur de la case sur laquelle la fourmi se trouve. Pour "
-"comparer des couleurs, vous ne pouvez pas utiliser le signe égal (=), parce "
-"que les couleurs ne sont pas des valeurs scalaires mais des objets. A la "
-"place, vous aurez besoin d'écrire quelquechose comme:"
+"Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien,\n"
+"allons-y et codons les maintenant. Vous avez à compléter la méthode\n"
+"<code>step()</code>, qui définit le comportement de la fourmi à chaque pas. Vous\n"
+"utiliserez probablement la méthode <code>getGroundColor()</code> pour récupérer\n"
+"la valeur de la case sur laquelle la fourmi se trouve. Les couleurs\n"
+"intéressantes sont tout simplement <code>Color.black</code> pour le noir ou\n"
+"<code>Color.white</code> pour le blanc."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/turmites/langton/Langton.html:20
@@ -9706,15 +9665,6 @@ msgstr "Montrer un indice supplémentaire"
 
 #. type: Content of: <div>
 #: src/lessons/maze/pledge/PledgeMaze.html:69
-#, fuzzy
-#| msgid ""
-#| "The <code>void run()</code> method should move in your favorite direction "
-#| "(NORTH is advised). Then, you should write the algorithm main loop. In "
-#| "other words, while your buggle did not find its biscuit, you have to move "
-#| "forward until next obstacle in the favorite direction. Then, put a paw on "
-#| "a wall (using (<code>void keepHandOnSideWall()</code>) while the sum of "
-#| "turns is not null and the favorite direction is not free. Do that until "
-#| "you find your baggle."
 msgid ""
 "You should set your direction to your favorite one (NORTH is advised). Then, "
 "you should write the algorithm main loop. In other words, while your buggle "
@@ -9723,15 +9673,15 @@ msgid ""
 "(<code>keepHandOnSideWall()</code>) while the sum of turns is not null and "
 "the favorite direction is not free. Do that until you find your baggle."
 msgstr ""
-"La méthode <code>void run()</code> doit déplacer votre buggle dans votre "
-"direction de prédilection (il est conseillé de choisir le nord pour cela). "
-"Ensuite, vous devez écrire la boucle principale de l'algorithme. Autrement "
-"dit, tant que votre buggle n'a pas trouvé son biscuit, il faut avancer "
-"jusqu'à un obstacle dans la direction de prédilection. Quand un obstacle est "
-"rencontré, il faut garder la patte sur un mur (en utilisant <code>void "
-"keepHandOnSideWall()</code>) tant que la somme des virages n'est pas nulle "
-"et que la direction de prédilection n'est pas libre. Faites cela jusqu'à "
-"trouver votre biscuit."
+"Vous devez changer votre cap vers votre direction favorite (probablement le "
+"nord\n"
+"-- NORTH). Il vous faut ensuite écrire la boucle principale de votre "
+"algorithme. Tant que votre buggle n'a pas trouvé son biscuit, il faut "
+"avancer jusqu'à un obstacle dans la direction de prédilection. Quand un "
+"obstacle est rencontré, il faut garder la patte sur un mur (en utilisant "
+"<code>keepHandOnSideWall()</code>) tant que la somme des virages n'est pas "
+"nulle et que la direction de prédilection n'est pas libre. Faites cela "
+"jusqu'à trouver votre biscuit."
 
 #. type: Content of: <h2>
 #: src/lessons/maze/island/IslandMaze.html:1
@@ -9755,7 +9705,7 @@ msgid ""
 "the buggle begins in the middle of the maze, it may exist wall sections "
 "disconnected from the external wall."
 msgstr ""
-"L' algorithme du <i>Wall Follower</i> que nous avons utilisé jusqu'à présent "
+"L'algorithme de suivi de mur que nous avons utilisé jusqu'à présent "
 "fonctionne seulement si l'entrée et la sortie sont placées à côté de murs "
 "connectés à un mur externe. Mais si le buggle commence au milieu du "
 "labyrinthe, il peut exister des pans de mur déconnectés du mur externe."
@@ -9766,13 +9716,9 @@ msgid ""
 "That is why the previous strategy would let the buggle round around for "
 "ever. Indeed, the maze you should now escape from contains islands, and the "
 "buggle does not start along one of the external walls. Just give it a try if "
-"you want: push the run button and see your previous solution fail miserabily."
-msgstr ""
-"C'est pourquoi notre stratégie précédente laissera notre buggle tourner en "
-"rond pour toujours. En effet, le labyrinthe dont vous devez vous échapper "
-"maintenant contient des îles, et le buggle ne commence pas sur un des murs "
-"externes. Vous pouvez essayer si vous voulez : appuyez sur le bouton 'run' "
-"et admirez votre solution précédente échouer lamentablement"
+"you want: copy your code over, push the run button and see your previous "
+"solution failing miserabily."
+msgstr "Dans cette situation, notre précédente stratégie ferait notre buggle tourner en rond pour toujours sur l'un de ces îlots. En effet, le labyrinthe dont vous devez vous échapper maintenant contient des îles, et le buggle ne commence pas sur un des murs externes. Vous pouvez essayer si vous voulez : Copie/collez votre code et appuyez sur le bouton 'run' pour admirez votre solution précédente échouer lamentablement."
 
 #. type: Content of: <p><p>
 #: src/lessons/maze/island/IslandMaze.html:18
@@ -9855,6 +9801,26 @@ msgid ""
 "     northRunner = True\n"
 "</code>\n"
 msgstr ""
+"\t<code div=\"Java\">int etat=0;\n"
+"switch (etat) {\n"
+"  case 0: // courir au nord\n"
+"     ...\n"
+"     etat = 1;\n"
+"     break;\n"
+"  case 1: // suivre a gauche\n"
+"     ...\n"
+"     etat = 0;\n"
+"     break;\n"
+"}\n"
+"</code>\n"
+"<code div=\"python\">courirNord = True\n"
+"if courirNord:\n"
+"     ...\n"
+"     courirNord = False\n"
+"else: # suivre a gauche\n"
+"     ...\n"
+"     courirNord = True\n"
+"</code>\n"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/maze/island/IslandMaze.html:63
@@ -9898,21 +9864,17 @@ msgstr ""
 msgid ""
 "Without even leaving his position, he can retrieve information about the "
 "world he is leaving in, with the following functions:"
-msgstr ""
+msgstr "Sans même changer de place, il peut retrouver des informations sur le monde qui l'entoure, avec les instructions suivantes&nbsp;:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
-#, fuzzy
-#| msgid "<code>int getWidth()</code> to know the width of the world."
 msgid "<code>getWorldWidth()</code> gives the width of its world."
-msgstr "<code>int getWidth()</code> pour connaitre la largeur du monde"
+msgstr "<code>getWorldWidth()</code> pour connaitre la largeur du monde"
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:10
-#, fuzzy
-#| msgid "<code>int getHeight()</code> to know the height of the world."
 msgid "<code>getWorldHeight()</code> gives the height of its world."
-msgstr "<code>int getHeight()</code> pour connaitre la hauteur du monde."
+msgstr "<code>getWorldHeight()</code> pour connaitre la hauteur du monde."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:11
@@ -9920,6 +9882,9 @@ msgid ""
 "<code>hasTopWall(x,y)</code> tells whether the cell (x,y) of this world has "
 "a wall on top."
 msgstr ""
+"<code>hasTopWall(x,y)</code> indique si la cellule (x,y) de ce monde est "
+"fermée\n"
+"par un mur en haut."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
@@ -9927,6 +9892,9 @@ msgid ""
 "<code>hasLeftWall(x,y)</code> tells whether the cell (x,y) of this world has "
 "a wall on the left."
 msgstr ""
+"<code>hasLeftWall(x,y)</code> indique si la cellule (x,y) de ce monde est "
+"fermée\n"
+"par un mur à gauche."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:13
@@ -9934,6 +9902,8 @@ msgid ""
 "<code>hasBaggle(x,y)</code> tells whether the cell (x,y) of this world has a "
 "baggle."
 msgstr ""
+"<code>hasBaggle(x,y)</code> indique si un baggle se trouve dans la cellule "
+"(x,y) de ce monde."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:14
@@ -9941,6 +9911,9 @@ msgid ""
 "<code>setIndication(x,y,i)</code> adds the integer indication <code>i</code> "
 "to the cell (x,y)."
 msgstr ""
+"<code>setIndication(x,y,i)</code> ajoute une indication entière <code>i</"
+"code>\n"
+"sur le sol de la cellule (x,y)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:15
@@ -9948,6 +9921,10 @@ msgid ""
 "<code>getIndication(x,y,i)</code> retrieves the integer indication of the "
 "cell (x,y) (or 9999 if there is no indication)."
 msgstr ""
+"<code>getIndication(x,y,i)</code> retourne l'indication entière qui se "
+"trouve\n"
+"dans la cellule (x,y) (ou bien la valeur 9999 s'il n'y a pas d'indication à\n"
+"l'endroit indiqué)."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:18
@@ -9969,7 +9946,7 @@ msgstr ""
 msgid ""
 "Your buggle should first write the distance to the exit on each cell (or at "
 "least the useful ones)."
-msgstr ""
+msgstr "Votre buggle devrait tout d'abord écrire sur chaque case importante la distance qui la sépare de la sortie."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:25
@@ -9978,18 +9955,11 @@ msgid ""
 "neighboring cells that is not separated from the exit with a wall.  And then "
 "mark every cells from which you can reach the exit in 2 steps, and iterate "
 "for all cells until you mark the cell where the buggle is located."
-msgstr ""
+msgstr "Pour cela, trouvez la sortie et écrivez 0 dessus. Ensuite, écrivez 1 sur toutes les cases adjacentes à la sortie qui n'en sont pas séparées par un mur. Ensuite, écrivez 2 sur toutes les cases à partir desquelles on peut atteindre une case marquée 1, puis faites de même pour toutes les cases jusqu'à numéroter la case où se trouve votre buggle."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:30
 #, fuzzy
-#| msgid ""
-#| "Write a method <code>followShortestPath()</code> that will make the jedi "
-#| "buggle to follow the shortest path.  Basically the buggle has only to "
-#| "walk on each case with the lesser distance from the exit. You can use the "
-#| "method <code>void setDirection(Direction d)</code> to make your buggle "
-#| "look at the specific direction such as <code>Direction.NORTH</code> or "
-#| "<code>Direction.EAST</code>."
 msgid ""
 "Once the cells are marked, get your jedi buggle to follow the shortest "
 "path.  Basically the buggle has only to walk on each case with the lesser "
@@ -9998,12 +9968,15 @@ msgid ""
 "specific direction such as <code>Direction.NORTH</code> or <code>Direction."
 "EAST</code>."
 msgstr ""
-"Ecrivez une méthode <code>followShortestPath()</code> qui permettra au "
-"buggle jedi de suivre le plus court chemin. Basiquement, le buggle a "
-"seulement à suivre la case ayant la plus petite distance à la sortie. Vous "
-"pouvez utiliser la méthode <code>void setDirection(Direction d)</code> pour "
-"faire regarder votre buggle dans une direction spécifique comme "
-"<code>Direction.NORTH</code> ou <code>Direction.EAST</code>."
+"Une fois que toutes les cases sont marquées, faites en sorte que votre buggle\n"
+"jedi trouve le plus court chemin en suivant les indications écrites au sol. Pour\n"
+"celà, il lui suffit à chaque pas d'aller sur la case de plus petite distance\n"
+"parmis celles accessibles. Vous pouvez utiliser la méthode <code>void\n"
+"setDirection(Direction d)</code> pour faire regarder votre buggle dans une\n"
+"direction spécifique comme <code>Direction.NORTH</code>,\n"
+"<code>Direction.SOUTH</code>, <code>Direction.EAST</code> ou\n"
+"<code>Direction.WEST</code>, qui correspondent respectivement au nord, sud, est\n"
+"et ouest."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:35
@@ -10012,8 +9985,6 @@ msgstr "Je suis perdu, je voudrais plus d'indications"
 
 #. type: Content of: <div>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:36
-#, fuzzy
-#| msgid "Use the Force Luke!"
 msgid "Use the Force, Luke!"
 msgstr "Utilises la Force Luke !"
 
@@ -11507,7 +11478,7 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/lessons/welcome/array/basics/Array.html:26
 msgid "Lists"
-msgstr ""
+msgstr "Des listes"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:27

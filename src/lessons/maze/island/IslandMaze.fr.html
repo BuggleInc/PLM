@@ -4,16 +4,17 @@
 labyrinthes ? Et bien, pas tous les labyrinthes...
 </p>
 
-<p>L' algorithme du <i>Wall Follower</i> que nous avons utilisé jusqu'à présent
+<p>L'algorithme de suivi de mur que nous avons utilisé jusqu'à présent
 fonctionne seulement si l'entrée et la sortie sont placées à côté de murs
 connectés à un mur externe. Mais si le buggle commence au milieu du
 labyrinthe, il peut exister des pans de mur déconnectés du mur externe.
 
-<p>C'est pourquoi notre stratégie précédente laissera notre buggle tourner en
-rond pour toujours. En effet, le labyrinthe dont vous devez vous échapper
-maintenant contient des îles, et le buggle ne commence pas sur un des murs
-externes. Vous pouvez essayer si vous voulez : appuyez sur le bouton 'run'
-et admirez votre solution précédente échouer lamentablement</p>
+<p>Dans cette situation, notre précédente stratégie ferait notre buggle tourner
+en rond pour toujours sur l'un de ces îlots. En effet, le labyrinthe dont
+vous devez vous échapper maintenant contient des îles, et le buggle ne
+commence pas sur un des murs externes. Vous pouvez essayer si vous voulez :
+Copie/collez votre code et appuyez sur le bouton 'run' pour admirez votre
+solution précédente échouer lamentablement.</p>
 
 <p>Cette méthode de suivre un mur est toujours efficace est permet d'échapper
 de manière assez efficace à certaines parties du labyrinthe, on ne va donc
@@ -39,25 +40,25 @@ nord et qu'elle n'est pas face à un mur.
 La manière la plus simple d'écrire une telle machine à état est quelque
 chose du type 
 <pre>
-	<code div="Java">int state=0;
-switch (state) {
-  case 0: // North runner
+	<code div="Java">int etat=0;
+switch (etat) {
+  case 0: // courir au nord
      ...
-     state = 1;
+     etat = 1;
      break;
-  case 1: // Left follower
+  case 1: // suivre a gauche
      ...
-     state = 0;
+     etat = 0;
      break;
 }
 </code>
-<code div="python">northRunner = True
-if northRunner:
+<code div="python">courirNord = True
+if courirNord:
      ...
-     northRunner = False
-else: # left follower
+     courirNord = False
+else: # suivre a gauche
      ...
-     northRunner = True
+     courirNord = True
 </code>
 </pre>
 </div>

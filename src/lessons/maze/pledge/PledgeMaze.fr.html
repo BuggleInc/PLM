@@ -68,16 +68,19 @@ correctement. Sinon, la méthode crée une nouvelle variable locale de même
 nom,
 et la globale n'est jamais modifiée.</p>
 <div class="python"><pre>def myMethod():
-  global angleSum
+  global sommeAngle
   ...
-  angleSum = angleSum + 1
+  sommeAngle = sommeAngle + 1
 </pre></div>
 
 <div class="tip" id="tip-1" alt="Montrer un indice supplémentaire">
-You should set your direction to your favorite one (NORTH is advised). Then,
-you should write the algorithm main loop. In other words, while your buggle
-did not find its biscuit, you have to move forward until next obstacle in
-the favorite direction. Then, put a paw on a wall (using
-(<code>keepHandOnSideWall()</code>) while the sum of turns is not null and
-the favorite direction is not free. Do that until you find your baggle.</div>
+Vous devez changer votre cap vers votre direction favorite (probablement le
+nord
+-- NORTH). Il vous faut ensuite écrire la boucle principale de votre
+algorithme. Tant que votre buggle n'a pas trouvé son biscuit, il faut
+avancer jusqu'à un obstacle dans la direction de prédilection. Quand un
+obstacle est rencontré, il faut garder la patte sur un mur (en utilisant
+<code>keepHandOnSideWall()</code>) tant que la somme des virages n'est pas
+nulle et que la direction de prédilection n'est pas libre. Faites cela
+jusqu'à trouver votre biscuit.</div>
 	

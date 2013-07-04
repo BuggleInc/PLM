@@ -101,7 +101,7 @@ public class SortingWorldView extends WorldView {
 	 */
 	private void drawAlgoChrono(Graphics2D g2, SortingWorld we) {
 		int operationsAmount = we.getOperations().size();	// little optimization
-		//If the array is small enough, we print the values
+		// If the array is small enough, we print the values
 		boolean drawStr = operationsAmount <= 50 && we.getValues().length <= 50;
 		/* getWidth()-12 to keep the room to display the very left value */
 		float stepX = ((float)getWidth()-(drawStr?12:0)) / ((float)(Math.max(operationsAmount, 1)));
@@ -111,9 +111,7 @@ public class SortingWorldView extends WorldView {
 		int[] vals = new int[we.getInitValues().length];
 		int[] prevVals = new int[we.getInitValues().length];
 		for (int i = 0; i < we.getInitValues().length; i++) 
-		{
 			prevVals[i] = we.getInitValues()[i];
-		}
 
 
 
@@ -152,6 +150,7 @@ public class SortingWorldView extends WorldView {
 
 			if (op.getType() == 2 ) // op is a Swap
 			{
+				System.out.println("Swap "+op.source+" <-> "+op.destination);
 				x1 = (int) (opIdx * stepX);
 				x2 = (int) (x1 + stepX);
 				for (int valueIterator=0; valueIterator<we.getValueCount();valueIterator++)
@@ -165,8 +164,7 @@ public class SortingWorldView extends WorldView {
 						g2.drawLine(x1, y1, x2, y1);
 					}
 
-					if (drawStr) 
-					{
+					if (drawStr) {
 						tone = getValueColor(vals[valueIterator],we.getValueCount());
 						g2.setColor(new Color(tone, tone, 128));
 						g2.drawString("" + vals[valueIterator], x2, y1);							
