@@ -1,4 +1,5 @@
-20130629:
+20130705:
+  * RELEASE 1.99
   * Pythonize all lessons: maze, recursion, sort and bat/string
   * Fix: demo mode in python was without delay
   * print() in python was not playing well with graphical console
