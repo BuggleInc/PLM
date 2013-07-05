@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-04 23:18+0300\n"
-"PO-Revision-Date: 2013-07-05 00:00+0200\n"
+"POT-Creation-Date: 2013-07-05 16:56+0300\n"
+"PO-Revision-Date: 2013-07-05 16:56+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -446,12 +446,11 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:32
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
 msgid ""
-"To help in this process, it is posible to graphically explore the history of "
-"your sorting algorithm. Switch to the Objective view and use the contextual "
-"menu (right clic) to switch from the the view of the current state to the "
-"view of its history."
+"To help in this process, it is possible to graphically explore the history "
+"of your sorting algorithm. Switch to the Objective view and use the "
+"contextual menu (right click) to switch from the the view of the current "
+"state to the view of its history."
 msgstr ""
 "Pour cela, il est possible d'explorer graphiquement l'historique de "
 "n'importe quel monde de tri. Passez par exemple au monde Objectif et "
@@ -466,17 +465,29 @@ msgid ""
 "simple: The time flows from left to right on this graph, and each row is a "
 "cell of your array. The curved lines that go navigate between rows represent "
 "a given data value. When two lines cross, this means that two values were "
-"swapped at this time stamp. This view, first introduced by Aldo Cortesi, "
-"reveals very helpful understand the inner behavior of sorting algorithms."
+"swapped at this time stamp; A line fork represent a value copy; When a value "
+"is magenta and followed by an interrogation mark (?), it was read using "
+"getValue(); If the value is red and followed with an exclamation point (!), "
+"it was written using setValue()."
 msgstr ""
 "La vue de l'historique n'est pas aussi complexe qu'elle en a l'air à "
 "première vue. Le temps s'écoule de gauche à droite, et les cases du tableau "
 "sont représentée de haut en bas. Les lignes de différentes couleurs qui "
 "serpentent représentent les différentes valeurs contenues dans le tableau. "
 "Quand deux lignes se croises, cela signifie que les valeurs du tableau ont "
-"été échangées à ce moment de l'historique. Cette vue, inventée par Aldo "
-"Cortesi, est très pratique pour comprendre le comportement des algorithmes "
-"de tri."
+"été échangées à ce moment de l'historique; un embranchement signifie que la "
+"valeur a été copiée; une valeur en violet suivie d'un point d'interrogation "
+"a été lue avec getValue() et une valeur en rouge suivie d'un point "
+"d'exclamation a été écrite avec setValue()."
+
+#. type: Content of: <p>
+#: src/jlm/universe/sort/SortingWorld.html:46
+msgid ""
+"This view, inspired from Aldo Cortesi, reveals very helpful understand the "
+"inner behavior of sorting algorithms."
+msgstr ""
+"Cette vue, inspirée d'Aldo Cortesi, est très pratique pour comprendre le "
+"comportement des algorithmes de tri."
 
 #. type: Content of: <h1>
 #: src/jlm/universe/turtles/TurtleWorld.html:1
@@ -7569,13 +7580,26 @@ msgstr ""
 "programmes est disponible dans la documentation de référence du monde (\"Help"
 "\" -&gt; \"About this world\")."
 
+#. type: Content of: <p>
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
+msgid ""
+"To help in this process, it is posible to graphically explore the history of "
+"your sorting algorithm. Switch to the Objective view and use the contextual "
+"menu (right click) to switch from the the view of the current state to the "
+"view of its history."
+msgstr ""
+"Pour cela, il est possible d'explorer graphiquement l'historique de "
+"n'importe quel monde de tri. Passez par exemple au monde Objectif et "
+"utilisez son menu contextuel (clic droit) pour choisir entre la vue de "
+"l'état courant du monde et la vue de son histoire."
+
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:28
 msgid "First attempt at BubbleSort"
 msgstr "Première tentative pour le tri à bulle"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:30
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -7601,18 +7625,18 @@ msgstr ""
 "jamais utilisé en pratique."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:39
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
 #: src/lessons/sort/bubble/AlgBubbleSort2.html:11
 msgid "Show Tip (Pseudo-code)"
 msgstr "Montrer l'indice (le pseudo-code)"
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:42
 #, no-wrap
 msgid ""
 "do: \n"
@@ -11976,7 +12000,10 @@ msgstr "offset = int( readMessage() )"
 msgid ""
 "<code>readMessage()</code> gets the message on the ground as a String, while "
 "<code>int()</code> transforms it into an integer value by <i>reading</i> it."
-msgstr "<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine de caractères, tandis que <code>int()</code> transforme le résultat en entier en <i>lisant</i> la chaîne de caractères."
+msgstr ""
+"<code>readMessage()</code> lit l'indication au sol sous forme d'une chaine "
+"de caractères, tandis que <code>int()</code> transforme le résultat en "
+"entier en <i>lisant</i> la chaîne de caractères."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/array/basics2/Array2.html:25
@@ -12002,7 +12029,9 @@ msgstr "Chercher une valeur donnée"
 msgid ""
 "The goal of this exercise is to search the cell of a given value, and return "
 "its position."
-msgstr "L'objectif de cet exercice est de chercher la case contenant une valeur donnée, et de retourner sa position."
+msgstr ""
+"L'objectif de cet exercice est de chercher la case contenant une valeur "
+"donnée, et de retourner sa position."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:5
@@ -12011,7 +12040,12 @@ msgid ""
 "parameters are the array to explore, and the value to search. If the value "
 "<code>lookingFor</code> is not in the array <code>tab</code>, the method "
 "should return -1."
-msgstr "Pour cela, il vous faut remplir le corps de la méthode <code>indexOf()</code>. Ses paramètres sont le tableau <code>tab</code> à explorer et la valeur <code>lookingFor</code> à chercher. Si la valeur <code>lookingFor</code> n'est pas dans le tableau <code>tab</code>, la méthode doit renvoyer -1."
+msgstr ""
+"Pour cela, il vous faut remplir le corps de la méthode <code>indexOf()</"
+"code>. Ses paramètres sont le tableau <code>tab</code> à explorer et la "
+"valeur <code>lookingFor</code> à chercher. Si la valeur <code>lookingFor</"
+"code> n'est pas dans le tableau <code>tab</code>, la méthode doit renvoyer "
+"-1."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:9
@@ -12030,7 +12064,10 @@ msgstr ""
 msgid ""
 "Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
 "their indices will be 0, 1 and 2. There would not be any cell numbered 3."
-msgstr "N'oubliez pas que les cases sont sont numérotées à partir de 0. Donc, si vous avez 3 cases, leurs indices seront 0, 1 et 2. Il n'y aura pas de case numérotée 3."
+msgstr ""
+"N'oubliez pas que les cases sont sont numérotées à partir de 0. Donc, si "
+"vous avez 3 cases, leurs indices seront 0, 1 et 2. Il n'y aura pas de case "
+"numérotée 3."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/indexof/value/IndexOfValue.html:16
@@ -12064,7 +12101,8 @@ msgid ""
 "<code>len()</code> function. So, if your array is called <code>tab</code>, "
 "its size can be retrieved as <code>len(tab)</code>."
 msgstr ""
-"Ensuite, souvenez vous que le nombre de cases d'un tableau peut être retrouvé\n"
+"Ensuite, souvenez vous que le nombre de cases d'un tableau peut être "
+"retrouvé\n"
 "grâce à la fonction <code>len()</code>. Donc, si votre tableau s'appelle\n"
 "<code>tableau</code>, sa taille sera <code>len(tableau)</code>."
 
@@ -12151,7 +12189,11 @@ msgid ""
 "whole array and to compute the sum of all its values (so you will need a "
 "variable to store this temporary result), then you have to divide this sum "
 "by the size of the array."
-msgstr "Pour calculer la valeur moyenne d'un tableau, il faut parcourir l'ensemble des valeurs du tableau, en faire la somme (vous aurez donc besoin d'une variable pour conserver le résultat intermédiaire), puis diviser cette somme par le nombre de valeur contenu dans le tableau."
+msgstr ""
+"Pour calculer la valeur moyenne d'un tableau, il faut parcourir l'ensemble "
+"des valeurs du tableau, en faire la somme (vous aurez donc besoin d'une "
+"variable pour conserver le résultat intermédiaire), puis diviser cette somme "
+"par le nombre de valeur contenu dans le tableau."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:10
@@ -12159,14 +12201,20 @@ msgid ""
 "In Java, you can get the size of an array <code>myarray</code> by consulting "
 "its <code>length</code> attribute (in other words, <code>myarray.length</"
 "code>). Notice that there is no parenthesis after <code>length</code>."
-msgstr "En Java, vous pouvez retrouver la taille d'un tableau <code>monTableau</code> en consultant son attribut <code>length</code> (autrement dit, <code>monTableau.length</code>). Notez qu'il n'y a pas de parenthèses après <code>length</code>."
+msgstr ""
+"En Java, vous pouvez retrouver la taille d'un tableau <code>monTableau</"
+"code> en consultant son attribut <code>length</code> (autrement dit, "
+"<code>monTableau.length</code>). Notez qu'il n'y a pas de parenthèses après "
+"<code>length</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/averagevalue/AverageValue.html:15
 msgid ""
 "In python, retrieving the size of an array <code>myarray</code> is as easy "
 "as calling <code>len(myarray)</code>."
-msgstr "En python, retrouver la taille d'un tableau est aussi simple qu'appeller <code>len(monTableau)</code>."
+msgstr ""
+"En python, retrouver la taille d'un tableau est aussi simple qu'appeller "
+"<code>len(monTableau)</code>."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:1
@@ -12179,7 +12227,10 @@ msgid ""
 "In this exercise, you must compute the maximal value contained in an array.  "
 "For that, fill the <code>maximum()</code> method, which parameter is the "
 "array to explore."
-msgstr "Dans cet exercice, vous devez retrouver le maximum des valeurs stockées dans un tableau. Pour cela, remplissez le corps de la méthode <code>maximum()</code>, dont le paramètre est le tableau à explorer."
+msgstr ""
+"Dans cet exercice, vous devez retrouver le maximum des valeurs stockées dans "
+"un tableau. Pour cela, remplissez le corps de la méthode <code>maximum()</"
+"code>, dont le paramètre est le tableau à explorer."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/maxvalue/MaxValue.html:7
@@ -12190,9 +12241,12 @@ msgid ""
 "can be initialized to the value of the first array cell."
 msgstr ""
 "Pour résoudre cet exercice, parcourez le tableau. Pour chaque case, si sa\n"
-"valeur est plus grande que la plus grande des valeurs que vous avez rencontré\n"
-"jusque là, sauvegardez cette nouvelle championne pour retrouver sa valeur plus\n"
-"tard. Il vous faut donc une nouvelle variable, dont la valeur initiale peut être\n"
+"valeur est plus grande que la plus grande des valeurs que vous avez "
+"rencontré\n"
+"jusque là, sauvegardez cette nouvelle championne pour retrouver sa valeur "
+"plus\n"
+"tard. Il vous faut donc une nouvelle variable, dont la valeur initiale peut "
+"être\n"
 "la valeur de la première case du tableau."
 
 #. type: Content of: <h1>
@@ -12208,7 +12262,12 @@ msgid ""
 "the array). For that, fill the <code>occurrences()</code> method, which "
 "returns the number of occurrence of <code>lookingFor</code> in <code>tab</"
 "code>."
-msgstr "Dans cet exercice, il vous faut calculer le nombre d'occurrences d'une valeur donnée, c'est à dire le nombre de fois que cette valeur apparaît dans le tableau. Pour cela, remplissez le corps de la méthode <code>occurrences()</code>, qui retourne le nombre d'occurrences de la valeur <code>lookingFor</code> dans le tableau <code>tab</code>."
+msgstr ""
+"Dans cet exercice, il vous faut calculer le nombre d'occurrences d'une "
+"valeur donnée, c'est à dire le nombre de fois que cette valeur apparaît dans "
+"le tableau. Pour cela, remplissez le corps de la méthode "
+"<code>occurrences()</code>, qui retourne le nombre d'occurrences de la "
+"valeur <code>lookingFor</code> dans le tableau <code>tab</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:8
@@ -12247,7 +12306,10 @@ msgid ""
 "Given an array of integers, return the number of times that two 6's are next "
 "to each other in the array. Also count instances where the second \"6\" is "
 "actually a 7."
-msgstr "Soit un tableau d'entiers, renvoyez le nombre de fois que deux 6 sont l'un à la suite de l'autre dans le tableau. Comptez également le nombre de fois où le deuxième \"6\" est en fait un 7."
+msgstr ""
+"Soit un tableau d'entiers, renvoyez le nombre de fois que deux 6 sont l'un à "
+"la suite de l'autre dans le tableau. Comptez également le nombre de fois où "
+"le deuxième \"6\" est en fait un 7."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/arraycount9/ArrayCount9.html:1
@@ -12546,7 +12608,9 @@ msgstr "Sciences Manuelles du Numérique"
 msgid ""
 "This material is currently under development in JLM and will soon be "
 "properly integrated"
-msgstr "Ceci est actuellement en cours de développement, et sera bientôt parfaitement intégré à JLM"
+msgstr ""
+"Ceci est actuellement en cours de développement, et sera bientôt "
+"parfaitement intégré à JLM"
 
 #. type: Content of: <p>
 #: src/lessons/smn/Main.html:4

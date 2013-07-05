@@ -13,16 +13,17 @@ solution can reveal very difficult.</p>
 
 <p>To help in this process, it is posible to graphically explore the
 history of your sorting algorithm. Switch to the Objective view and
-use the contextual menu (right clic) to switch from the the view of
+use the contextual menu (right click) to switch from the the view of
 the current state to the view of its history.</p>
 
 <p>The history view is a bit hairly at the first glance, but actually rather
 simple: The time flows from left to right on this graph, and each row
 is a cell of your array. The curved lines that go navigate between
 rows represent a given data value. When two lines cross, this means
-that two values were swapped at this time stamp. This view, first
-introduced by Aldo Cortesi, reveals very helpful understand the inner
-behavior of sorting algorithms.</p> 
+that two values were swapped at this time stamp; A line fork represent a 
+value copy; When a value is magenta and followed by an interrogation 
+mark (?), it was read using getValue(); If the value is red and followed with 
+an exclamation point (!), it was written using setValue().</p> 
 
 <h2>First attempt at BubbleSort</h2>
 
