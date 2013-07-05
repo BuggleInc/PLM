@@ -9,7 +9,6 @@ public class CopyVal extends Operation {
 	 */
 	public CopyVal(int source, int destination){
 		super(source,destination);
-		this.type = 0;
 	}
 
 	/**

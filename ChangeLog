@@ -1,3 +1,5 @@
+20130706: 
+  * Fix the temporal view of the sorting world (plus various cleanups)
 20130705:
   * RELEASE 1.99
   * Pythonize all lessons: maze, recursion, sort and bat/string

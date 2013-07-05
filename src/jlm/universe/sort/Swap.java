@@ -9,7 +9,6 @@ public class Swap extends Operation {
 	 */
 	public Swap(int source, int destination){
 		super(source,destination);
-		this.type = 2;
 	}
 
 	/**

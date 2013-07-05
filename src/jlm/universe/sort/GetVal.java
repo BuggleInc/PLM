@@ -1,17 +1,17 @@
 package jlm.universe.sort;
 
-public class SetVal extends Operation {
+public class GetVal extends Operation {
 	
-	int value;
+	public int position;
 
 	/**
 	 * Constructor of the class SetVal
 	 * @param position the source of the operation
 	 * @param destination the destination of the operation
 	 */
-	public SetVal(int position, int value){
-		super(position,-1);
-		this.value = value; 
+	public GetVal(int position){
+		super(-1,-1);
+		this.position = position; 
 	}
 
 	/**
@@ -21,8 +21,6 @@ public class SetVal extends Operation {
 	 */
 	@Override
 	public int[] run(int[] init) {
-		init[source] = value;
-		
 		return init;
 	}
 	

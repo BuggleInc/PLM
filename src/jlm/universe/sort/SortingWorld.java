@@ -172,18 +172,6 @@ public class SortingWorld extends World {
 		return this.readCount;
 	}
 
-	/**
-	 * Return the value of index i in the array
-	 * @param i the index wanted in the array
-	 * @return the value of index i in the array
-	 */
-	public int getValue(int i) {
-		if (i<0) throw new RuntimeException("Out of bounds in getValue("+i+"): "+i+"<0");
-		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in getValue("+i+"), "+i+">= value count");
-		readCount++;
-		return values[i];
-	}
-
 	/** Returns the amount of values in the array */
 	public int getValueCount() {
 		return values.length;
@@ -290,7 +278,20 @@ public class SortingWorld extends World {
 			throw new RuntimeException("No binding of SortingWorld for "+lang);
 		}
 	}
-	
+
+	/**
+	 * Return the value of index i in the array
+	 * @param i the index wanted in the array
+	 * @return the value of index i in the array
+	 */
+	public int getValue(int i) {
+		if (i<0) throw new RuntimeException("Out of bounds in getValue("+i+"): "+i+"<0");
+		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in getValue("+i+"), "+i+">= value count");
+		this.operations.add(new GetVal(i));
+		readCount++;
+		return values[i];
+	}
+
 	/**
 	 * Set the value of the case number i of the array at val<br>
 	 * It costs only one write.

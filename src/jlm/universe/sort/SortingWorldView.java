@@ -101,20 +101,14 @@ public class SortingWorldView extends WorldView {
 	 */
 	private void drawAlgoChrono(Graphics2D g2, SortingWorld we) {
 		int operationsAmount = we.getOperations().size();	// little optimization
-		// If the array is small enough, we print the values
-		boolean drawStr = operationsAmount <= 50 && we.getValues().length <= 50;
-		/* getWidth()-12 to keep the room to display the very left value */
-		float stepX = ((float)getWidth()-(drawStr?12:0)) / ((float)(Math.max(operationsAmount, 1)));
+		/* getWidth()-12 to keep the room to display the very left value. Do that even if we don't depict them */
+		float stepX = ((float)getWidth()-12) / ((float)(Math.max(operationsAmount, 1)));
 		float stepY = ((float)getHeight()) / ((float)(we.getValueCount()));
 		int x1, y1, x2, y2, tone;
 
-		int[] vals = new int[we.getInitValues().length];
-		int[] prevVals = new int[we.getInitValues().length];
-		for (int i = 0; i < we.getInitValues().length; i++) 
-			prevVals[i] = we.getInitValues()[i];
-
-
-
+		// If the array is small enough, we print the values
+		boolean drawStr = (stepX > 12) && (stepY>12);
+		
 		// Case without any operation to draw: initial view
 		if (operationsAmount == 0) {
 
@@ -133,103 +127,113 @@ public class SortingWorldView extends WorldView {
 			return;
 		}
 
-		// Draw the values at the very left of the figure
-		if (drawStr) 
-			for (int valueIdx = 0; valueIdx < we.getValueCount(); valueIdx++) { 
-				y1 = (int) (valueIdx * stepY + stepY/2);
-				tone = getValueColor(we.getInitValues()[valueIdx],we.getValueCount());
-				g2.setColor(new Color(tone, tone, 128));
-				g2.drawString("" + we.getInitValues()[valueIdx], 0, y1);
-			}
-
+		// Draw the values at the very left of the figure (in any case)
+		for (int valueIdx = 0; valueIdx < we.getValueCount(); valueIdx++) { 
+			y1 = (int) (valueIdx * stepY + stepY/2);
+			tone = getValueColor(we.getInitValues()[valueIdx],we.getValueCount());
+			g2.setColor(new Color(tone, tone, 128));
+			g2.drawString("" + we.getInitValues()[valueIdx], 0, y1);
+		}
+		
+		int[] valuesAfter = new int[we.getInitValues().length];
+		int[] valuesBefore = new int[we.getInitValues().length];
+		for (int i = 0; i < we.getInitValues().length; i++) { 
+			valuesBefore[i] = we.getInitValues()[i];
+			valuesAfter[i] = valuesBefore[i];
+		}
+		
 		// Case with several operations
 		for (int opIdx = 0; opIdx < operationsAmount; opIdx++) {
 			Operation op = we.getOperations().get(opIdx);
 
-			vals = Operation.compute(we.getInitValues(), we.getOperations(), opIdx + 1);
+			valuesAfter = op.run(valuesAfter);
+			
+			x1 = (int) (opIdx * stepX);
+			x2 = (int) (x1 + stepX);
 
-			if (op.getType() == 2 ) // op is a Swap
-			{
-				System.out.println("Swap "+op.source+" <-> "+op.destination);
-				x1 = (int) (opIdx * stepX);
-				x2 = (int) (x1 + stepX);
-				for (int valueIterator=0; valueIterator<we.getValueCount();valueIterator++)
-				{
-					y1 = (int) (valueIterator * stepY + stepY/2);
-
-					if ( op.getSource() != valueIterator && op.getDestination() != valueIterator) {							
-						tone = getValueColor(vals[valueIterator],we.getValueCount());
-						g2.setColor(new Color(tone, tone, 128));
-
-						g2.drawLine(x1, y1, x2, y1);
-					}
-
-					if (drawStr) {
-						tone = getValueColor(vals[valueIterator],we.getValueCount());
-						g2.setColor(new Color(tone, tone, 128));
-						g2.drawString("" + vals[valueIterator], x2, y1);							
-					}
+			/* Draw straight lines for unmodified values */
+			for (int valIdx=0; valIdx<we.getValueCount();valIdx++) {
+				y1 = (int) (valIdx * stepY + stepY/2);
+				
+				if ( op.getSource() != valIdx && op.getDestination() != valIdx) {							
+					tone = getValueColor(valuesAfter[valIdx],we.getValueCount());
+					g2.setColor(new Color(tone, tone, 128));
+					
+					g2.drawLine(x1, y1, x2, y1);
 				}
-
+			}
+			/* Write the values in their new position (if there is not too much values) */
+			if (drawStr) 
+				for (int valIdx=0; valIdx<we.getValueCount();valIdx++) { 
+					y1 = (int) (valIdx * stepY + stepY/2);
+					
+					tone = getValueColor(valuesAfter[valIdx],we.getValueCount());
+					g2.setColor(new Color(tone, tone, 128));
+					g2.drawString("" + valuesAfter[valIdx], x2, y1);		
+				}
+			
+			/* Draw the lines depicting the current operation */
+			if (op instanceof Swap ) { // op is a Swap
+//				System.out.println("Swap "+op.source+" <-> "+op.destination);
+				
 				// draw source->dest
 				y1 = (int) (op.getSource() * stepY + stepY/2);
 				y2 = (int) (op.getDestination() * stepY + stepY/2);
-				tone = getValueColor(vals[op.getDestination()],we.getValueCount());
+				tone = getValueColor(valuesAfter[op.getDestination()],we.getValueCount());
 				g2.setColor(new Color(tone, tone, 128));
 				g2.drawLine(x1, y1, x2, y2);
 
 				// draw dest->source
 				y1 = (int) (op.getDestination() * stepY + stepY/2);
 				y2 = (int) (op.getSource() * stepY + stepY/2);
-				tone = getValueColor(vals[op.getSource()],we.getValueCount());
+				tone = getValueColor(valuesAfter[op.getSource()],we.getValueCount());
 				g2.setColor(new Color(tone, tone, 128));
 				g2.drawLine(x1, y1, x2, y2);
 
-			} 
-			else 
-			{
-				if (!( op.getType() == 0 ) && !(op.getType() == 1 ) )	// op is neither a CopyVal nor a setVal 
-				{
-					System.out.println("Ouch: that's not a swap but a "+op.toString()+" this code was never debugged.");
-				}
-				for (int valueIterator = 0; valueIterator < we.getValueCount(); valueIterator++) 
-				{
-					x1 = (int) (opIdx * stepX);
-					y1 = 0;
-					for (int prevPos = 0; prevPos < prevVals.length; prevPos++) 
-						if (prevVals[prevPos] == valueIterator) 
-							y1 = (int) (prevPos * stepY + stepY/2.);
-
-					x2 = (int) (x1 + stepX);
-					y2 = y1;
-					for (int newPos = 0; newPos < vals.length; newPos++)
-					{
-						if (vals[newPos] == valueIterator)
-						{
-							y2 = (int) (newPos * stepY + stepY/2.);
-						}
-					}
-
-					tone = (int) ((float) ((float) (valueIterator) / ((float) we.getValueCount())) * 255);
-					g2.setColor(new Color(tone, tone, 128));
-
-					g2.drawLine(x1, y1, x2, y2);
-
-					if (drawStr) 
-					{
-						g2.drawString("" + valueIterator, x1, y1);
-
-						//Last array (sorted)
-						if(opIdx==operationsAmount-1)
-							g2.drawString("" + valueIterator, x2, y2);
-					}
+			} else if (op instanceof CopyVal) {
+//				System.out.println("Copy "+op.source+" -> "+op.destination);
+				
+				// draw the value being copied over
+				y1 = (int) (op.getSource() * stepY + stepY/2);
+				y2 = (int) (op.getDestination() * stepY + stepY/2);
+				tone = getValueColor(valuesAfter[op.getDestination()],we.getValueCount());
+				g2.setColor(new Color(tone, tone, 128));
+				g2.drawLine(x1, y1, x2, y2);
+				
+				// draw the old value remaining the same
+				y1 = (int) (op.getSource() * stepY + stepY/2);
+				tone = getValueColor(valuesAfter[op.getDestination()],we.getValueCount());
+				g2.setColor(new Color(tone, tone, 128));
+				g2.drawLine(x1, y1, x2, y1);
+				
+			} else if (op instanceof SetVal) {
+//				System.out.println("Set "+op.source+" (to "+((SetVal)op).value+")");
+				if (drawStr || true) {
+					y1 = (int) (op.source * stepY + stepY/2);
+				
+					tone = getValueColor(valuesAfter[op.source],we.getValueCount());
+					g2.setColor(Color.red);
+					g2.drawString("" + valuesAfter[op.source]+"!", x2, y1);
 				}
 
-				for (int k = 0; k < vals.length; k++) 
-				{
-					prevVals[k] = vals[k];
+				/* Don't draw a line for the modified value, actually */
+			} else if (op instanceof GetVal) {
+//				System.out.println("Get "+((GetVal)op).position);
+				if (drawStr || true) {
+					int pos = ((GetVal) op).position;
+					y1 = (int) (pos * stepY + stepY/2);
+				
+					tone = getValueColor(valuesAfter[pos],we.getValueCount());
+					g2.setColor(Color.MAGENTA);
+					g2.drawString("" + valuesAfter[pos]+"?", x2, y1);
 				}
+			} else {
+				System.out.println("This operation is not depicted because that's a "+op.toString()+"; please report this bug.");
 			}
+			
+
+			for (int k = 0; k < valuesAfter.length; k++) 
+				valuesBefore[k] = valuesAfter[k];
 		}
 	}
 
