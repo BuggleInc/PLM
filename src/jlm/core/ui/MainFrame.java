@@ -79,7 +79,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
-    private JMenuItem miHelpLesson,miHelpWorld,miHelpAbout;
+    private JMenuItem miHelpFeedback, miHelpLesson,miHelpWorld,miHelpAbout;
         
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
@@ -301,6 +301,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuHelp.setMnemonic(KeyEvent.VK_H);
 		menuBar.add(menuHelp);
 
+		miHelpFeedback = new JMenuItem(new AbstractGameAction(g, i18n.tr("Provide feedback")) {
+			private static final long serialVersionUID = 1L;
+
+			public void actionPerformed(ActionEvent arg0) {
+				FeedbackDialog.getInstance().setVisible(true);
+			}			
+		});
+		miHelpFeedback.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, ActionEvent.CTRL_MASK));
+		menuHelp.add(miHelpFeedback);
+		
 		miHelpLesson = new JMenuItem(new AbstractGameAction(g, i18n.tr("About this lesson")) {
 			private static final long serialVersionUID = 1L;
 			private AbstractAboutDialog dialog = null;
@@ -655,6 +665,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuLangProg.setText(i18n.tr("Computer"));
 		
 		menuHelp.setText(i18n.tr("Help"));
+		miHelpFeedback.setText(i18n.tr("Provide feedback"));
 		miHelpLesson.setText(i18n.tr("About this lesson"));
 		miHelpWorld.setText(i18n.tr("About this world"));
 		if (miHelpAbout != null)
