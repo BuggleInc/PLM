@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-05 00:10+0200\n"
-"PO-Revision-Date: 2013-05-30 11:25+0200\n"
+"POT-Creation-Date: 2013-07-07 15:03+0200\n"
+"PO-Revision-Date: 2013-07-07 15:18+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
 
-#: src/jlm/core/model/Game.java:296 src/jlm/core/model/Game.java:328
+#: src/jlm/core/model/Game.java:298 src/jlm/core/model/Game.java:330
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
@@ -112,6 +112,72 @@ msgstr "Monde attendu après exécution du code"
 msgid "Switch the entity"
 msgstr "Changer d'entité"
 
+#: src/jlm/core/ui/FeedbackDialog.java:49
+msgid "Report your feedback"
+msgstr "Rapporter un retour"
+
+#: src/jlm/core/ui/FeedbackDialog.java:59
+msgid ""
+"<html><p>Thanks for your feedback on JLM. We deeply need this to make the "
+"tool match <br>your needs, so please don't hesitate to report any "
+"suggestion, such as typos and <br/>unclear parts in the mission texts, other "
+"improvement to the existing exercises<br/>or prospective exercises. We will "
+"do our best to integrate your suggestions.</p><p>Please write here your "
+"suggestion (if possible in english or french), with all<br/>necessary "
+"details, and then click on 'Send' below.</p><p><b>Please provide your email "
+"address so that we can contact you back</b> but <br/>NEVER DISCLOSE A "
+"PASSWORD while reporting issues.</p><p>Note that some technical information "
+"(such as your version of JLM and Java) will <br/>automatically be added to "
+"your feedback. None of these automatic information <br/>are personal and you "
+"still have to identify yourself if you want to.</p><p>Alternatively, you can "
+"use the <a href='http://github.com/oster/JLM/issues'>github interface</a> "
+"for feedback.</p></html>"
+msgstr ""
+"<html><p>Merci pour votre retour sur JLM. Nous en avons vraiment besoin pour<br/>\n"
+"améliorer notre outil et nous assurer qu'il correspond à vos besoins. N'hésitez<br/>\n"
+"pas à nous signaler toute amélioration possible, telles que des fautes et des<br/>\n"
+"parties peu claires dans les énoncés, d'autres améliorations aux exercices<br/>\n"
+"existants, ou des idées d'exercices supplémentaires. Nous ferons de notre<br/>\n"
+"mieux pour intégrer vos suggestions.</p>\n"
+"<p>Veuillez écrire ici vos suggestions (si possible en français ou anglais),<br/>\n"
+"avec tous les détails nécessaires, et cliquez ensuite sur «envoyer».</p>\n"
+"<p><b>N'oubliez pas d'indiquer votre email si vous voulez que nous vous contactions<br/>\n"
+"en retour</b>, mais NE DONNEZ JAMAIS UN MOT DE PASSE DANS UN FORMULAIRE DE CE GENRE.<br/></p>\n"
+"<p>Notez que certaines données techniques (telles que votre version de JLM ou de Java)<br/>\n"
+"seront jointes à votre envoi, mais nous ne récoltons aucune donnée personnelle<br/>\n"
+"de cette façon, et il faut que vous vous identifiez vous même si vous le souhaitez.</p>\n"
+"<p>Une autre façon de rapporter du feedback sur JLM est d'utiliser \n"
+"<a href='http://github.com/oster/JLM/issues'>l'interface github</a>.</p></html>\n"
+
+#: src/jlm/core/ui/FeedbackDialog.java:78
+msgid "(your feedback comes here)"
+msgstr "(votre retour vient ici)"
+
+#: src/jlm/core/ui/FeedbackDialog.java:89
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/jlm/core/ui/FeedbackDialog.java:94
+msgid "Do you really want to cancel your feedback and lose any edit?"
+msgstr "Voullez vous vraiment annuler votre retour et perdre ce que vous avez écrit ?"
+
+#: src/jlm/core/ui/FeedbackDialog.java:95
+msgid "are you sure?"
+msgstr "êtes vous sûr?"
+
+#: src/jlm/core/ui/FeedbackDialog.java:102
+msgid "Send feedback"
+msgstr "Envoyer"
+
+#: src/jlm/core/ui/FeedbackDialog.java:142
+msgid "Thank you for your feedback"
+msgstr "Merci pour votre retour"
+
+#: src/jlm/core/ui/FeedbackDialog.java:148
+#: src/jlm/core/ui/FeedbackDialog.java:157
+msgid "Error while uploading your feedback"
+msgstr "Erreur lors de l'envoi de votre retour"
+
 #: src/jlm/core/ui/LoggerPanel.java:31 src/jlm/core/ui/LoggerPanel.java:96
 msgid "Where error and other messages get written"
 msgstr "Endroit ou les erreurs et autres messages sont écrits"
@@ -119,7 +185,7 @@ msgstr "Endroit ou les erreurs et autres messages sont écrits"
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/jlm/core/ui/MainFrame.java:152 src/jlm/core/ui/MainFrame.java:636
+#: src/jlm/core/ui/MainFrame.java:152 src/jlm/core/ui/MainFrame.java:646
 msgid "File"
 msgstr "Fichier"
 
@@ -127,7 +193,7 @@ msgstr "Fichier"
 msgid "File related functions"
 msgstr "Fonction relatives à la gestion de fichiers"
 
-#: src/jlm/core/ui/MainFrame.java:157 src/jlm/core/ui/MainFrame.java:637
+#: src/jlm/core/ui/MainFrame.java:157 src/jlm/core/ui/MainFrame.java:647
 msgid "Load lesson"
 msgstr "Charger Leçon"
 
@@ -139,110 +205,114 @@ msgstr "Fichiers de leçons pour la JLM"
 msgid "Error"
 msgstr "Erreur"
 
-#: src/jlm/core/ui/MainFrame.java:179 src/jlm/core/ui/MainFrame.java:638
+#: src/jlm/core/ui/MainFrame.java:179 src/jlm/core/ui/MainFrame.java:648
 msgid "Switch lesson"
 msgstr "Sélectionner une leçon"
 
-#: src/jlm/core/ui/MainFrame.java:190 src/jlm/core/ui/MainFrame.java:633
-#: src/jlm/core/ui/MainFrame.java:639
+#: src/jlm/core/ui/MainFrame.java:190 src/jlm/core/ui/MainFrame.java:643
+#: src/jlm/core/ui/MainFrame.java:649
 msgid "Switch exercise"
 msgstr "Changer d'exercice"
 
-#: src/jlm/core/ui/MainFrame.java:203 src/jlm/core/ui/MainFrame.java:641
+#: src/jlm/core/ui/MainFrame.java:203 src/jlm/core/ui/MainFrame.java:651
 msgid "Teacher Console"
 msgstr "Console enseignant"
 
 #. Menu item to change the current Course
-#: src/jlm/core/ui/MainFrame.java:222 src/jlm/core/ui/MainFrame.java:642
+#: src/jlm/core/ui/MainFrame.java:222 src/jlm/core/ui/MainFrame.java:652
 msgid "Choose your course"
 msgstr "Sélectionner un cours"
 
-#: src/jlm/core/ui/MainFrame.java:241 src/jlm/core/ui/MainFrame.java:643
+#: src/jlm/core/ui/MainFrame.java:241 src/jlm/core/ui/MainFrame.java:653
 msgid "Quit"
 msgstr "Quitter"
 
 #. === Edit menu ===
-#: src/jlm/core/ui/MainFrame.java:249 src/jlm/core/ui/MainFrame.java:645
+#: src/jlm/core/ui/MainFrame.java:249 src/jlm/core/ui/MainFrame.java:655
 msgid "Session"
 msgstr "Session"
 
-#: src/jlm/core/ui/MainFrame.java:254 src/jlm/core/ui/MainFrame.java:647
+#: src/jlm/core/ui/MainFrame.java:254 src/jlm/core/ui/MainFrame.java:657
 msgid "Revert Exercise"
 msgstr "Recommencer l'exercice"
 
-#: src/jlm/core/ui/MainFrame.java:257 src/jlm/core/ui/MainFrame.java:648
+#: src/jlm/core/ui/MainFrame.java:257 src/jlm/core/ui/MainFrame.java:658
 msgid "Export Session Cache"
 msgstr "Exporter le cache de session"
 
-#: src/jlm/core/ui/MainFrame.java:260 src/jlm/core/ui/MainFrame.java:649
+#: src/jlm/core/ui/MainFrame.java:260 src/jlm/core/ui/MainFrame.java:659
 msgid "Import Session Cache"
 msgstr "Importer le cache de session"
 
-#: src/jlm/core/ui/MainFrame.java:264 src/jlm/core/ui/MainFrame.java:650
+#: src/jlm/core/ui/MainFrame.java:264 src/jlm/core/ui/MainFrame.java:660
 msgid "Debug mode"
 msgstr "Mode débogage"
 
 #. === Language menu ===
-#: src/jlm/core/ui/MainFrame.java:277 src/jlm/core/ui/MainFrame.java:653
+#: src/jlm/core/ui/MainFrame.java:277 src/jlm/core/ui/MainFrame.java:663
 msgid "Language"
 msgstr "Langage"
 
 #. === Programming language changing ===
-#: src/jlm/core/ui/MainFrame.java:282 src/jlm/core/ui/MainFrame.java:654
+#: src/jlm/core/ui/MainFrame.java:282 src/jlm/core/ui/MainFrame.java:664
 msgid "Human"
 msgstr "Humain"
 
-#: src/jlm/core/ui/MainFrame.java:296 src/jlm/core/ui/MainFrame.java:655
+#: src/jlm/core/ui/MainFrame.java:296 src/jlm/core/ui/MainFrame.java:665
 msgid "Computer"
 msgstr "Ordinateur"
 
 #. === Help menu ===
-#: src/jlm/core/ui/MainFrame.java:300 src/jlm/core/ui/MainFrame.java:657
+#: src/jlm/core/ui/MainFrame.java:300 src/jlm/core/ui/MainFrame.java:667
 msgid "Help"
 msgstr "Aide"
 
-#: src/jlm/core/ui/MainFrame.java:304 src/jlm/core/ui/MainFrame.java:658
+#: src/jlm/core/ui/MainFrame.java:304 src/jlm/core/ui/MainFrame.java:668
+msgid "Provide feedback"
+msgstr "Faire un retour"
+
+#: src/jlm/core/ui/MainFrame.java:314 src/jlm/core/ui/MainFrame.java:669
 msgid "About this lesson"
 msgstr "À propos de cette leçon"
 
-#: src/jlm/core/ui/MainFrame.java:317 src/jlm/core/ui/MainFrame.java:659
+#: src/jlm/core/ui/MainFrame.java:327 src/jlm/core/ui/MainFrame.java:670
 msgid "About this world"
 msgstr "À propos de ce monde"
 
-#: src/jlm/core/ui/MainFrame.java:333 src/jlm/core/ui/MainFrame.java:661
+#: src/jlm/core/ui/MainFrame.java:343 src/jlm/core/ui/MainFrame.java:672
 msgid "About JLM"
 msgstr "À propos de JLM"
 
-#: src/jlm/core/ui/MainFrame.java:453
+#: src/jlm/core/ui/MainFrame.java:463
 msgid "Next"
 msgstr "Suivant"
 
-#: src/jlm/core/ui/MainFrame.java:468 src/jlm/core/ui/MainFrame.java:628
+#: src/jlm/core/ui/MainFrame.java:478 src/jlm/core/ui/MainFrame.java:638
 msgid "Step"
 msgstr "Un pas"
 
 #. Buttons
-#: src/jlm/core/ui/MainFrame.java:627
+#: src/jlm/core/ui/MainFrame.java:637
 msgid "Run"
 msgstr "Exécuter"
 
-#: src/jlm/core/ui/MainFrame.java:629
+#: src/jlm/core/ui/MainFrame.java:639
 msgid "Stop"
 msgstr "Stop"
 
-#: src/jlm/core/ui/MainFrame.java:630
+#: src/jlm/core/ui/MainFrame.java:640
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: src/jlm/core/ui/MainFrame.java:631
+#: src/jlm/core/ui/MainFrame.java:641
 msgid "Demo"
 msgstr "Démo"
 
-#: src/jlm/core/ui/MainFrame.java:632 src/jlm/core/ui/action/HelpMe.java:37
+#: src/jlm/core/ui/MainFrame.java:642 src/jlm/core/ui/action/HelpMe.java:37
 msgid "Call for Help"
 msgstr "Appeler à l'aide"
 
-#: src/jlm/core/ui/MainFrame.java:646
+#: src/jlm/core/ui/MainFrame.java:656
 msgid "Lesson related functions"
 msgstr "Fonctions relatives aux leçons"
 
@@ -276,9 +346,8 @@ msgid "Playing demo "
 msgstr "Exécution de la démo "
 
 #: src/jlm/core/ui/StatusBar.java:139
-#, fuzzy
 msgid "Loading "
-msgstr "Chargement"
+msgstr "Chargement de "
 
 #: src/jlm/core/ui/action/HelpMe.java:37
 msgid "Cancel call"
@@ -535,9 +604,8 @@ msgid "Open Map..."
 msgstr "Ouvrir la carte..."
 
 #: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:222
-#, fuzzy
 msgid "JLM map files"
-msgstr "Fichiers de leçons pour la JLM"
+msgstr "Fichiers de cartes pour la JLM"
 
 #: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:230
 #, java-format
@@ -554,15 +622,13 @@ msgstr "Valeur"
 
 #. The editor for the name
 #: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:72
-#, fuzzy
 msgid "World name"
-msgstr "Monde"
+msgstr "Nom du monde"
 
 #. ---------- world width ---------------
 #: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:84
-#, fuzzy
 msgid "World width"
-msgstr "Monde"
+msgstr "Largeur du monde"
 
 #. ---------- world height ---------------
 #: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:104
@@ -672,9 +738,3 @@ msgstr "Accéder à la vue temporelle"
 #: src/jlm/universe/sort/SortingWorldView.java:55
 msgid "Switch to state view"
 msgstr "Accéder à la vue d'état"
-
-#~ msgid "Do you really want to quit ?"
-#~ msgstr "Voulez-vous vraiment quitter ?"
-
-#~ msgid "Exit the JLM"
-#~ msgstr "Quitter la JLM"

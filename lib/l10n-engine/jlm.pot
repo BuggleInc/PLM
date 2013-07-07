@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-05 00:10+0200\n"
+"POT-Creation-Date: 2013-07-07 15:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/jlm/core/model/Game.java:296 src/jlm/core/model/Game.java:328
+#: src/jlm/core/model/Game.java:298 src/jlm/core/model/Game.java:330
 msgid "Operation cancelled by the user"
 msgstr ""
 
@@ -108,6 +108,57 @@ msgstr ""
 msgid "Switch the entity"
 msgstr ""
 
+#: src/jlm/core/ui/FeedbackDialog.java:49
+msgid "Report your feedback"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:59
+msgid ""
+"<html><p>Thanks for your feedback on JLM. We deeply need this to make the "
+"tool match <br>your needs, so please don't hesitate to report any "
+"suggestion, such as typos and <br/>unclear parts in the mission texts, other "
+"improvement to the existing exercises<br/>or prospective exercises. We will "
+"do our best to integrate your suggestions.</p><p>Please write here your "
+"suggestion (if possible in english or french), with all<br/>necessary "
+"details, and then click on 'Send' below.</p><p><b>Please provide your email "
+"address so that we can contact you back</b> but <br/>NEVER DISCLOSE A "
+"PASSWORD while reporting issues.</p><p>Note that some technical information "
+"(such as your version of JLM and Java) will <br/>automatically be added to "
+"your feedback. None of these automatic information <br/>are personal and you "
+"still have to identify yourself if you want to.</p><p>Alternatively, you can "
+"use the <a href='http://github.com/oster/JLM/issues'>github interface</a> "
+"for feedback.</p></html>"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:78
+msgid "(your feedback comes here)"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:89
+msgid "Cancel"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:94
+msgid "Do you really want to cancel your feedback and lose any edit?"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:95
+msgid "are you sure?"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:102
+msgid "Send feedback"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:142
+msgid "Thank you for your feedback"
+msgstr ""
+
+#: src/jlm/core/ui/FeedbackDialog.java:148
+#: src/jlm/core/ui/FeedbackDialog.java:157
+msgid "Error while uploading your feedback"
+msgstr ""
+
 #: src/jlm/core/ui/LoggerPanel.java:31 src/jlm/core/ui/LoggerPanel.java:96
 msgid "Where error and other messages get written"
 msgstr ""
@@ -115,7 +166,7 @@ msgstr ""
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/jlm/core/ui/MainFrame.java:152 src/jlm/core/ui/MainFrame.java:636
+#: src/jlm/core/ui/MainFrame.java:152 src/jlm/core/ui/MainFrame.java:646
 msgid "File"
 msgstr ""
 
@@ -123,7 +174,7 @@ msgstr ""
 msgid "File related functions"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:157 src/jlm/core/ui/MainFrame.java:637
+#: src/jlm/core/ui/MainFrame.java:157 src/jlm/core/ui/MainFrame.java:647
 msgid "Load lesson"
 msgstr ""
 
@@ -135,110 +186,114 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:179 src/jlm/core/ui/MainFrame.java:638
+#: src/jlm/core/ui/MainFrame.java:179 src/jlm/core/ui/MainFrame.java:648
 msgid "Switch lesson"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:190 src/jlm/core/ui/MainFrame.java:633
-#: src/jlm/core/ui/MainFrame.java:639
+#: src/jlm/core/ui/MainFrame.java:190 src/jlm/core/ui/MainFrame.java:643
+#: src/jlm/core/ui/MainFrame.java:649
 msgid "Switch exercise"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:203 src/jlm/core/ui/MainFrame.java:641
+#: src/jlm/core/ui/MainFrame.java:203 src/jlm/core/ui/MainFrame.java:651
 msgid "Teacher Console"
 msgstr ""
 
 #. Menu item to change the current Course
-#: src/jlm/core/ui/MainFrame.java:222 src/jlm/core/ui/MainFrame.java:642
+#: src/jlm/core/ui/MainFrame.java:222 src/jlm/core/ui/MainFrame.java:652
 msgid "Choose your course"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:241 src/jlm/core/ui/MainFrame.java:643
+#: src/jlm/core/ui/MainFrame.java:241 src/jlm/core/ui/MainFrame.java:653
 msgid "Quit"
 msgstr ""
 
 #. === Edit menu ===
-#: src/jlm/core/ui/MainFrame.java:249 src/jlm/core/ui/MainFrame.java:645
+#: src/jlm/core/ui/MainFrame.java:249 src/jlm/core/ui/MainFrame.java:655
 msgid "Session"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:254 src/jlm/core/ui/MainFrame.java:647
+#: src/jlm/core/ui/MainFrame.java:254 src/jlm/core/ui/MainFrame.java:657
 msgid "Revert Exercise"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:257 src/jlm/core/ui/MainFrame.java:648
+#: src/jlm/core/ui/MainFrame.java:257 src/jlm/core/ui/MainFrame.java:658
 msgid "Export Session Cache"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:260 src/jlm/core/ui/MainFrame.java:649
+#: src/jlm/core/ui/MainFrame.java:260 src/jlm/core/ui/MainFrame.java:659
 msgid "Import Session Cache"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:264 src/jlm/core/ui/MainFrame.java:650
+#: src/jlm/core/ui/MainFrame.java:264 src/jlm/core/ui/MainFrame.java:660
 msgid "Debug mode"
 msgstr ""
 
 #. === Language menu ===
-#: src/jlm/core/ui/MainFrame.java:277 src/jlm/core/ui/MainFrame.java:653
+#: src/jlm/core/ui/MainFrame.java:277 src/jlm/core/ui/MainFrame.java:663
 msgid "Language"
 msgstr ""
 
 #. === Programming language changing ===
-#: src/jlm/core/ui/MainFrame.java:282 src/jlm/core/ui/MainFrame.java:654
+#: src/jlm/core/ui/MainFrame.java:282 src/jlm/core/ui/MainFrame.java:664
 msgid "Human"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:296 src/jlm/core/ui/MainFrame.java:655
+#: src/jlm/core/ui/MainFrame.java:296 src/jlm/core/ui/MainFrame.java:665
 msgid "Computer"
 msgstr ""
 
 #. === Help menu ===
-#: src/jlm/core/ui/MainFrame.java:300 src/jlm/core/ui/MainFrame.java:657
+#: src/jlm/core/ui/MainFrame.java:300 src/jlm/core/ui/MainFrame.java:667
 msgid "Help"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:304 src/jlm/core/ui/MainFrame.java:658
+#: src/jlm/core/ui/MainFrame.java:304 src/jlm/core/ui/MainFrame.java:668
+msgid "Provide feedback"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:314 src/jlm/core/ui/MainFrame.java:669
 msgid "About this lesson"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:317 src/jlm/core/ui/MainFrame.java:659
+#: src/jlm/core/ui/MainFrame.java:327 src/jlm/core/ui/MainFrame.java:670
 msgid "About this world"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:333 src/jlm/core/ui/MainFrame.java:661
+#: src/jlm/core/ui/MainFrame.java:343 src/jlm/core/ui/MainFrame.java:672
 msgid "About JLM"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:453
+#: src/jlm/core/ui/MainFrame.java:463
 msgid "Next"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:468 src/jlm/core/ui/MainFrame.java:628
+#: src/jlm/core/ui/MainFrame.java:478 src/jlm/core/ui/MainFrame.java:638
 msgid "Step"
 msgstr ""
 
 #. Buttons
-#: src/jlm/core/ui/MainFrame.java:627
+#: src/jlm/core/ui/MainFrame.java:637
 msgid "Run"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:629
+#: src/jlm/core/ui/MainFrame.java:639
 msgid "Stop"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:630
+#: src/jlm/core/ui/MainFrame.java:640
 msgid "Reset"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:631
+#: src/jlm/core/ui/MainFrame.java:641
 msgid "Demo"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:632 src/jlm/core/ui/action/HelpMe.java:37
+#: src/jlm/core/ui/MainFrame.java:642 src/jlm/core/ui/action/HelpMe.java:37
 msgid "Call for Help"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:646
+#: src/jlm/core/ui/MainFrame.java:656
 msgid "Lesson related functions"
 msgstr ""
 
