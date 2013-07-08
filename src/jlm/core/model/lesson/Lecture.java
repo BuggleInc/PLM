@@ -88,13 +88,12 @@ public abstract class Lecture {
 				        "              font-style: italic; }\n";
 			for (ProgrammingLanguage l2 : Game.programmingLanguages) {
 				if (!lang.equals(l2)) {
-					//FIXME: red color for HTML content that are specific to a particular programming language
 					res += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
 					res += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
 				} else {
 					/* DEBUG ONLY, to see the specific elements*/ 
-					//theCSS += "."+l2.getLang()+" {visibility: visible; color:#00AA00;}\n";
-					//theCSS += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#00AA00;}\n";
+					res += "."+l2.getLang()+" {visibility: visible; color:#000000;}\n";
+					res += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#000000;}\n";
 				}
 			}
 			res +=  "  </style>\n";
