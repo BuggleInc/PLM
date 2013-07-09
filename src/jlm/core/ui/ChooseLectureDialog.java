@@ -11,6 +11,8 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import jlm.core.model.Game;
@@ -24,8 +26,9 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 	public ChooseLectureDialog() {
 		Lesson l = Game.getInstance().getCurrentLesson();
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode();
-		for (Lecture lect : l.getRootLectures())  
-			root.add(lect.makeNode());
+		for (Lecture lect : l.getRootLectures()) 
+			root.add(lect.getNode());
+		
 		tree = new JTree(root);
 		tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		tree.setRootVisible(false);
@@ -58,6 +61,14 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 				return this;
 			}
 		});
+		
+		/* Build the selection */
+		tree.setExpandsSelectedPaths(true);
+		TreeNode[] nodes = l.getCurrentExercise().getNode().getPath();
+		TreePath path = new TreePath(nodes);
+        tree.scrollPathToVisible(path);
+		tree.setSelectionPath(path);
+		
 		JScrollPane jsp = new JScrollPane(tree);
 
 		JPanel p = new JPanel();

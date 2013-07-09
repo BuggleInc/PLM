@@ -153,11 +153,14 @@ public abstract class Lecture {
 	}
 
 	protected Vector<Lecture> dependingLectures = new Vector<Lecture>(); /* To display the graph */
-	public DefaultMutableTreeNode makeNode() {
-		DefaultMutableTreeNode res = new DefaultMutableTreeNode(this);
-		for (Lecture l : dependingLectures)
-			res.add(l.makeNode());
-		return res;
+	private DefaultMutableTreeNode myNode;
+	public DefaultMutableTreeNode getNode() {
+		if (myNode == null) {
+			myNode = new DefaultMutableTreeNode(this);
+			for (Lecture l : dependingLectures)
+				myNode.add(l.getNode());
+		}
+		return myNode;
 	}
 	public Vector<Lecture> getDependingLectures() {
 		return dependingLectures;
