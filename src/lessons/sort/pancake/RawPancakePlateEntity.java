@@ -1,11 +1,8 @@
-package lessons.smn.pancake.raw;
+package lessons.sort.pancake;
 
 import jlm.universe.smn.pancake.InvalidPancakeNumber;
 import jlm.universe.smn.pancake.PancakeEntity;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class RawPancakePlateEntity extends PancakeEntity {
 
 	public void run() throws InvalidPancakeNumber {

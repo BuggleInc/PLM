@@ -1,4 +1,4 @@
-package lessons.smn.pancake.burned;
+package lessons.sort.pancake;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;

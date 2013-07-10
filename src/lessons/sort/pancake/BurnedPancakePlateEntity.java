@@ -1,10 +1,7 @@
-package lessons.smn.pancake.burned;
+package lessons.sort.pancake;
 
 import jlm.universe.smn.pancake.InvalidPancakeNumber;
 import jlm.universe.smn.pancake.PancakeEntity;
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class BurnedPancakePlateEntity extends PancakeEntity {
 
 

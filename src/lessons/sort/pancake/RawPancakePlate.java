@@ -1,20 +1,12 @@
-package lessons.smn.pancake.raw;
+package lessons.sort.pancake;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.smn.pancake.PancakeEntity;
 import jlm.universe.smn.pancake.PancakeWorld;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class RawPancakePlate extends ExerciseTemplated {
-
 	
-	/**
-	 * Constructor of the class BurnedPancakePlate
-	 * @param Lesson : a lesson
-	 */
 	public RawPancakePlate(Lesson lesson) {
 		super(lesson);
 	
