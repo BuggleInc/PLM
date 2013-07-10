@@ -91,6 +91,15 @@ public class Game implements IWorldView {
 	};
 	private ProgrammingLanguage programmingLanguage = JAVA;
 
+	/* TODO: document these values elsewhere */
+	public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true
+	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
+	                                                                // Turning to false will slow down the startup process, but avoid out of date files
+	
+	public static final String PROP_APPENGINE_URL = "jlm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
+	
+	public static final String PROP_PROGRAMING_LANGUAGE = "jlm.programingLanguage";
+
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
@@ -129,11 +138,12 @@ public class Game implements IWorldView {
 
 		// set default programming language according to jlm properties
 		// may crash if one exercise do not support the default language
-		String defaultProgrammingLanguage = Game.getProperty("jlm.default.programminglanguage","Java");
-		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang())) 
-			System.err.println("Warning, the default programming language is not 'Java' but '"+defaultProgrammingLanguage+"'.\n"+
+		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java");
+		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
+			!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang())) 
+			System.err.println(i18n.tr("Warning, the default programming language is neither 'Java' or 'python' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don't expect it.\n"+
-					"   You can change this variable either in $HOME/.jlm/jlm.properties or resource/jlm.configuration.properties");
+					"   You can change this variable either in $HOME/.jlm/jlm.properties or resource/jlm.configuration.properties",defaultProgrammingLanguage));
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			if (pl.getLang().equals(defaultProgrammingLanguage)) {
 				setProgramingLanguage(pl);
@@ -450,7 +460,7 @@ public class Game implements IWorldView {
 
 	public void setOutputWriter(LogWriter writer) {
 		this.outputWriter = writer;
-		if (!getProperty("output.capture", "false").equals("true")) {
+		if (!getProperty(PROP_OUTPUT_CAPTURE, "false").equals("true")) {
 			Logger l = new Logger(outputWriter);
 			System.setOut(l);
 			System.setErr(l);
@@ -556,7 +566,7 @@ public class Game implements IWorldView {
 		}
 	}
 
-	public static void storeProperties() throws UserAbortException {
+	public static void storeProperties() {
 		Game.localGamePropertiesLoadedFile = new File(SAVE_DIR + File.separator + Game.LOCAL_PROPERTIES_FILENAME);
 		FileOutputStream fo;
 		try {
@@ -567,6 +577,9 @@ public class Game implements IWorldView {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	public static void setProperty(String key, String value) {
+		Game.localGameProperties.setProperty(key, value);
 	}
 
 	public static String getProperty(String key) {
@@ -746,6 +759,8 @@ public class Game implements IWorldView {
 			//System.out.println("Switch programming language to "+newLanguage);
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
+			// TODO: do that only if the selected language is stable enough as this language will be used to compute all answers at the next startup
+			setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.lang);
 			return;
 		}
 		throw new RuntimeException("Ignoring request to switch the programming language to the unknown "+newLanguage);
@@ -872,24 +887,24 @@ public class Game implements IWorldView {
 						if (res.canWrite()) {
 							return res;
 						} else {
-							System.out.println(res.getAbsolutePath()+" is not writable");
+							System.out.println(i18n.tr("{0} is not writable",res.getAbsolutePath()));
 							continue;
 						}
 					} else {
-						System.out.println(res.getAbsolutePath()+" is not a directory");
+						System.out.println(i18n.tr("{0} is not a directory",res.getAbsolutePath()));
 						continue;
 					}
 				}
 				if (res.mkdir())
 					return res;
 				else {
-					System.out.println("Cannot create "+res.getAbsolutePath());
+					System.out.println(i18n.tr("Cannot create {0}",res.getAbsolutePath()));
 				}
 			} catch (SecurityException e) {
 				e.getLocalizedMessage();
 			}
 		}
-		throw new RuntimeException("Impossible to find a path for JLM datas. Tested "+sb.toString());
+		throw new RuntimeException(i18n.tr("Impossible to find a path for JLM datas. Tested {0}",sb.toString()));
 	}
 	public static String getSavingLocation() {
 		return SAVE_DIR.getPath();

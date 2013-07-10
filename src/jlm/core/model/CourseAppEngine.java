@@ -24,8 +24,8 @@ public class CourseAppEngine extends Course {
     public CourseAppEngine(String id) {
         super(id);
         try {
-            teacherServer = new URL(Game.getProperty("jlm.appengine.url") + "/teacher");
-            courseServer = new URL(Game.getProperty("jlm.appengine.url") + "/course");
+            teacherServer = new URL(Game.getProperty(Game.PROP_APPENGINE_URL) + "/teacher");
+            courseServer = new URL(Game.getProperty(Game.PROP_APPENGINE_URL) + "/course");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -34,8 +34,8 @@ public class CourseAppEngine extends Course {
     public CourseAppEngine(String id, String password) {
         super(id, password);
         try {
-            teacherServer = new URL(Game.getProperty("jlm.appengine.url") + "/teacher");
-            courseServer = new URL(Game.getProperty("jlm.appengine.url") + "/course");
+            teacherServer = new URL(Game.getProperty(Game.PROP_APPENGINE_URL) + "/teacher");
+            courseServer = new URL(Game.getProperty(Game.PROP_APPENGINE_URL) + "/course");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

@@ -23,7 +23,7 @@ public class ServerSpyAppEngine extends ServerSpy {
         super();
 
         try {
-            server = new URL(Game.getProperty("jlm.appengine.url") + "/student");
+            server = new URL(Game.getProperty(Game.PROP_APPENGINE_URL) + "/student");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

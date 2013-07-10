@@ -258,7 +258,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				Game.getInstance().statusArgAdd(getClass().getSimpleName());
 				boolean allFound = true;
 				if (answerWorld.get(0).haveIO()) {
-					if (Game.getProperty("answers.cache", "true").equals("true")) {
+					if (Game.getProperty(Game.PROP_ANSWER_CACHE, "true").equals("true")) {
 						Vector<World> newAnswer = new Vector<World>();
 						int rank = 0;
 						for (World aw:answerWorld) {
@@ -282,7 +282,7 @@ public abstract class ExerciseTemplated extends Exercise {
 							return;
 						}
 					} else {
-						System.out.println("Don't cache the answers of "+worldFileName+", as requested by property answers.cache");
+						System.out.println(i18n.tr("Recompute the answer of {0} despite the cache file, as requested by the property {1}",worldFileName,Game.PROP_ANSWER_CACHE));
 					}
 				}
 				
