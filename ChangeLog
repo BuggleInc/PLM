@@ -1,8 +1,10 @@
-20130706: 
+20130710: 
   * Fix the temporal view of the sorting world (plus various cleanups)
   * Allow to provide feedback easily. One click to open the dialog
     window, type your text, validate, and it's automatically saved
     with an http POST request.
+  * Properly select the current exercise in the lesson navigator
+  * Save the currently used programming language in the property file
 20130705:
   * RELEASE 1.99
   * Pythonize all lessons: maze, recursion, sort and bat/string
