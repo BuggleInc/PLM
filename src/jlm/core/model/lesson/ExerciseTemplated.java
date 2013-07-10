@@ -209,8 +209,6 @@ public abstract class ExerciseTemplated extends Exercise {
 		setupWorlds(ws);
 
 		for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
-			if (Game.getInstance().isDebugEnabled())
-				System.err.println("Look for a templating entity in "+lang);
 			boolean foundThisLanguage = false;
 			String searchedName = null;
 			for (SourceFile sf : getSourceFilesList(lang)) {
