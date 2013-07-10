@@ -124,6 +124,10 @@ public class ZipSessionKit implements ISessionKit {
 					} // foreach lang
 				} // is exercise
 			} // end-for lecture
+			ZipEntry ze = new ZipEntry("currently_selected_exercise");
+			zos.putNextEntry(ze);
+			zos.write(lesson.getCurrentExercise().getClass().getCanonicalName().getBytes());
+			zos.closeEntry();
 
 		} catch (IOException ex) { // FileNotFoundException or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
@@ -209,6 +213,26 @@ public class ZipSessionKit implements ISessionKit {
 				} // is exercise
 			} // end-for lecture
 
+			/* Get the previously selected exercise */
+			ZipEntry entry = zf.getEntry("currently_selected_exercise");
+			if (entry != null) {
+				BufferedReader br = null;
+				try {
+					br = new BufferedReader(new InputStreamReader(zf.getInputStream(entry)));
+					String exoName = br.readLine();
+
+					lesson.setCurrentExercise(exoName);
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally {
+					try {
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
 		} catch (IOException ex) { // ZipExecption or IOException
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();

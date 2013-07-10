@@ -133,6 +133,9 @@ public abstract class Lesson {
 	public void setCurrentExercise(Lecture exo) {
 		this.currentExercise = exo;
 	}
+	public void setCurrentExercise(String exoName) {
+		this.currentExercise = getExercise(exoName);
+	}
 	
 	public int exerciseCount() {
 		return this.lectures.size();
@@ -144,7 +147,8 @@ public abstract class Lesson {
 	public Lecture getExercise(String name) {
 		String searchedName = getClass().getPackage().getName()+"."+name;
 		for (Lecture l: lectures) {
-			if (l.getClass().getCanonicalName().equals(searchedName))
+			if (l.getClass().getCanonicalName().equals(searchedName) ||
+					l.getClass().getCanonicalName().equals(name))
 				return l;
 		}
 		return null;
