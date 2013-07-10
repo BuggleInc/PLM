@@ -102,7 +102,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				break;
 			case 2: /* solution */
 				if (line.contains("END TEMPLATE")) {
-					System.out.println(shownFilename+": BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.");
+					System.out.println(i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
 					state = 3;  
@@ -116,11 +116,11 @@ public abstract class ExerciseTemplated extends Exercise {
 			case 3: /* template tail */
 				if (line.contains("END TEMPLATE")) {
 					if (!seenTemplate)
-						System.out.println(shownFilename+": END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.");
+						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 						
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
-					throw new RuntimeException(shownFilename+": Begin solution in template tail. Change it to BEGIN HIDDEN");
+					throw new RuntimeException(i18n.tr("{0}: Begin solution in template tail. Change it to BEGIN HIDDEN",shownFilename));
 				} else if (line.contains("BEGIN SKEL")) {
 					savedState = state;
 					state = 6; 
@@ -147,7 +147,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			default: 	
-				throw new RuntimeException("Parser error in "+filename+". This is a parser bug (state="+state+"), please report.");	
+				throw new RuntimeException(i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.",filename,state));	
 			}
 		}
 
@@ -267,11 +267,11 @@ public abstract class ExerciseTemplated extends Exercise {
 								World nw = aw.readFromFile(name);
 								newAnswer.add(nw);
 							} catch (BrokenWorldFileException bwfe) {
-								System.err.println("World "+name+" is broken ("+bwfe.getLocalizedMessage()+"). Recompute all answer worlds.");
+								System.err.println(i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
 								allFound = false;
 								break;
 							} catch (IOException ioe) {
-								System.err.println("IO exception while reading world "+name+" ("+ioe.getLocalizedMessage()+"). Recompute all answer worlds.");
+								System.err.println(i18n.tr("IO exception while reading world {1} ({1}). Recompute all answer worlds.",name,ioe.getLocalizedMessage()));
 								allFound = false;
 								break;
 							}
@@ -305,11 +305,11 @@ public abstract class ExerciseTemplated extends Exercise {
 							try {
 								aw.writeToFile(new File(name));
 							} catch (Exception e) {
-								System.err.println("Error while writing answer world '"+name+"'");
+								System.err.println(i18n.tr("Error while writing answer world of {0}:",name));
 								e.printStackTrace();
 							}
 						} else {
-							System.err.println("Cannot write answer world '"+name+"'");
+							System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions",name));
 						}
 					}
 				}
