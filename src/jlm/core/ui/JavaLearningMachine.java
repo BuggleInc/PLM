@@ -18,6 +18,5 @@ public class JavaLearningMachine {
 		FileUtils.setLocale(new JFrame().getLocale());
 		
 		Game.getInstance().loadChooser();
-		Game.getInstance().setLocale(MainFrame.getInstance().getLocale());
 	}
 }

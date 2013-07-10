@@ -256,7 +256,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				Game.getInstance().statusArgAdd(getClass().getSimpleName());
 				boolean allFound = true;
 				if (answerWorld.get(0).haveIO()) {
-					if (Game.getProperty(Game.PROP_ANSWER_CACHE, "true").equals("true")) {
+					if (Game.getProperty(Game.PROP_ANSWER_CACHE, "true",true).equalsIgnoreCase("true")) {
 						Vector<World> newAnswer = new Vector<World>();
 						int rank = 0;
 						for (World aw:answerWorld) {

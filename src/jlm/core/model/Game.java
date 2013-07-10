@@ -96,6 +96,9 @@ public class Game implements IWorldView {
 	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
 	                                                                // Turning to false will slow down the startup process, but avoid out of date files
 	
+	public static final String PROP_PROGRESS_TWITTER = "jlm.progress.twitter";     //  
+	public static final String PROP_PROGRESS_IDENTICA = "jlm.progress.identica";   // Whether the progresses should be posted to identica (default: true)
+	public static final String PROP_PROGRESS_APPENGINE = "jlm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
 	public static final String PROP_APPENGINE_URL = "jlm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
 	
 	public static final String PROP_PROGRAMING_LANGUAGE = "jlm.programingLanguage";
@@ -133,12 +136,11 @@ public class Game implements IWorldView {
 	}
 
 	private Game() {
-		Game.loadProperties();
+		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		loadProperties();
 		loadSession();
 
-		// set default programming language according to jlm properties
-		// may crash if one exercise do not support the default language
-		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java");
+		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 			!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang())) 
 			System.err.println(i18n.tr("Warning, the default programming language is neither 'Java' or 'python' but {0}.\n"+
@@ -152,12 +154,21 @@ public class Game implements IWorldView {
 		}
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
-		//System.err.println("Student progression listeners are disabled in this version."); // FIXME: use property files to disable it
-		//return;
-		 
-		addProgressSpyListener(new IdenticaSpy());
-		addProgressSpyListener(new TwitterSpy());
-        addProgressSpyListener(new ServerSpyAppEngine());
+		
+		if (getProperty(PROP_PROGRESS_IDENTICA, "true",true).equalsIgnoreCase("true")){
+			System.err.println(i18n.tr("Your progress will be posted to http://identi.ca/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_IDENTICA));
+			addProgressSpyListener(new IdenticaSpy());
+		} else {
+			System.err.println(i18n.tr("Your progress will NOT be posted to identica, as requested by property {0}",Game.PROP_PROGRESS_IDENTICA));			
+		}
+		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
+			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
+			addProgressSpyListener(new TwitterSpy());
+		} else {
+			System.err.println(i18n.tr("Your progress will NOT be posted to twitter, as requested by property {0}",Game.PROP_PROGRESS_TWITTER));			
+		}
+		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
+			addProgressSpyListener(new ServerSpyAppEngine());
 
         currentCourse = new CourseAppEngine();
 	}
@@ -460,7 +471,7 @@ public class Game implements IWorldView {
 
 	public void setOutputWriter(LogWriter writer) {
 		this.outputWriter = writer;
-		if (!getProperty(PROP_OUTPUT_CAPTURE, "false").equals("true")) {
+		if (!getProperty(PROP_OUTPUT_CAPTURE, "false",true).equals("true")) {
 			Logger l = new Logger(outputWriter);
 			System.setOut(l);
 			System.setErr(l);
@@ -583,14 +594,21 @@ public class Game implements IWorldView {
 	}
 
 	public static String getProperty(String key) {
-		return Game.getProperty(key, "");
+		return Game.getProperty(key, "", false);
 	}
 
-	public static String getProperty(String key, String defaultValue) {
+	/** 
+	 * Gets the value from either the local properties set (in ~/.jlm) or the global one (in the jar file).
+	 * If the value is not defined in either of them, use the default value. If so and if the save parameter is true, this is saved back to the local properties file. 
+	 */
+	public static String getProperty(String key, String defaultValue, boolean save) {
 		if (Game.localGameProperties.containsKey(key)) {
 			return Game.localGameProperties.getProperty(key);
 		} else {
-			return Game.defaultGameProperties.getProperty(key, defaultValue);
+			String res = Game.defaultGameProperties.getProperty(key, defaultValue);
+			if (save)
+				setProperty(key, res);
+			return res;
 		}
 	}
 
@@ -814,7 +832,7 @@ public class Game implements IWorldView {
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
-			System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal")+" ("+Game.getProperty("jlm.major.version","internal")+"."+Game.getProperty("jlm.minor.version","")+")");
+			System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal",false)+" ("+Game.getProperty("jlm.major.version","internal",false)+"."+Game.getProperty("jlm.minor.version","",false)+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 		}

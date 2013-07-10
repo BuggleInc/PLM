@@ -373,34 +373,34 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		toolBar.setBorder(BorderFactory.createEtchedBorder());
 
 		ImageIcon ii = ResourcesCache.getIcon("img/btn-start.png");
-		startButton = new PropagatingButton(new StartExecution(g, "RunButton", ii));
+		startButton = new PropagatingButton(new StartExecution(g, i18n.tr("Run"), ii));
 		//shortcut ctrl-r
 		startButton.setMnemonic(KeyEvent.VK_R);
 
-		debugButton = new PropagatingButton(new StepExecution(g, "StepButton", 
+		debugButton = new PropagatingButton(new StepExecution(g, i18n.tr("Step"), 
 				ResourcesCache.getIcon("img/btn-debug.png")));
 		//shortcut ctrl-b
 		debugButton.setMnemonic(KeyEvent.VK_B);
 
-		stopButton = new PropagatingButton(new StopExecution(g, "StopButton", 
+		stopButton = new PropagatingButton(new StopExecution(g, i18n.tr("Stop"), 
 				ResourcesCache.getIcon("img/btn-stop.png")));
 		//shortcut ctrl-s
 		stopButton.setMnemonic(KeyEvent.VK_S);
 		stopButton.setEnabled(false);
 
-		resetButton = new PropagatingButton(new Reset(g, "ResetButton", 
+		resetButton = new PropagatingButton(new Reset(g, i18n.tr("Reset"), 
 				ResourcesCache.getIcon("img/btn-reset.png")));
 		//shortcut ctrl-z
 		resetButton.setMnemonic(KeyEvent.VK_Z);
 		resetButton.setEnabled(true);
 
-		demoButton = new PropagatingButton(new PlayDemo(g, "DemoButton", 
+		demoButton = new PropagatingButton(new PlayDemo(g, i18n.tr("Demo"), 
 				ResourcesCache.getIcon("img/btn-demo.png")));
 		//shortcut ctrl-d
 		demoButton.setMnemonic(KeyEvent.VK_D);
 		demoButton.setEnabled(true);
 
-        helpMeButton = new PropagatingToggleButton(new HelpMe(g, "HelpButton",
+        helpMeButton = new PropagatingToggleButton(new HelpMe(g, i18n.tr("Call for Help"),
                 ResourcesCache.getIcon("img/btn-alert-off.png")));
 
 		toolBar.add(startButton);
@@ -412,7 +412,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         toolBar.addSeparator();
         
-        exoChangeButton = new PropagatingButton(new SwitchExo(g, "ExerciseButton", ResourcesCache.getIcon("img/btn-switch-exo.png")));
+        exoChangeButton = new PropagatingButton(new SwitchExo(g, i18n.tr("Switch exercise"), ResourcesCache.getIcon("img/btn-switch-exo.png")));
         toolBar.add(exoChangeButton);
         
 		getContentPane().add(toolBar, BorderLayout.NORTH);

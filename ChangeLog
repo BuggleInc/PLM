@@ -6,6 +6,11 @@
   * Properly select the current exercise in the lesson navigator
   * Save the currently used programming language in the property file
   * Current exercise gets saved in zip files
+  * Speeds initialization by directly building everything in the right
+    locale instead of building it with no locale, and then updating it
+  * Progress spys (twitter/identica) get controled through properties
+  * Default values of properties get saved to local file to ease their
+    discover and tuning by users
 20130705:
   * RELEASE 1.99
   * Pythonize all lessons: maze, recursion, sort and bat/string

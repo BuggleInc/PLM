@@ -116,8 +116,8 @@ public class FeedbackDialog extends JDialog {
 	                formparams.add(new BasicNameValuePair("java", System.getProperty("java.version")+" (VM: "+System.getProperty("java.vm.name")+"; version: "+System.getProperty("java.vm.version")+")"));
 	                
 	                formparams.add(new BasicNameValuePair("os", System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")"));
-	                formparams.add(new BasicNameValuePair("jlm", Game.getProperty("jlm.major.version","internal")+" ("+
-	                		Game.getProperty("jlm.minor.version","internal")+")"));
+	                formparams.add(new BasicNameValuePair("jlm", Game.getProperty("jlm.major.version","internal",false)+" ("+
+	                		Game.getProperty("jlm.minor.version","internal",false)+")"));
 	                
 	                formparams.add(new BasicNameValuePair("text", feedback.getText()));
 

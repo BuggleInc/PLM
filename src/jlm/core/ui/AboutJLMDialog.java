@@ -47,8 +47,8 @@ public class AboutJLMDialog extends JDialog {
 		
 		JLabel text = new JLabel(
 				"<html>"+
-				"<h3 style=\"color:#666666;margin:0px;padding:0px;\">version "+Game.getProperty("jlm.major.version","internal")+"&nbsp;"+
-				"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">("+Game.getProperty("jlm.major.version","internal")+"."+Game.getProperty("jlm.minor.version","")+")</span>"+
+				"<h3 style=\"color:#666666;margin:0px;padding:0px;\">version "+Game.getProperty("jlm.major.version","internal",false)+"&nbsp;"+
+				"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">("+Game.getProperty("jlm.major.version","internal",false)+"."+Game.getProperty("jlm.minor.version","",false)+")</span>"+
 				"</h3>"+
 				"<br/>"+
 				"&copy; 2008-2011 Contributors. All rights reserved.<br/>"+
