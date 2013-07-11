@@ -3,7 +3,7 @@ package lessons.sort.pancake;
 import jlm.universe.smn.pancake.InvalidPancakeNumber;
 import jlm.universe.smn.pancake.PancakeEntity;
 
-public class RawPancakePlateEntity extends PancakeEntity {
+public class BasicPancakeEntity extends PancakeEntity {
 
 	public void run() throws InvalidPancakeNumber {
 		solve();

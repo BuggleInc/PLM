@@ -5,9 +5,9 @@ import jlm.core.model.lesson.Lesson;
 import jlm.universe.smn.pancake.PancakeEntity;
 import jlm.universe.smn.pancake.PancakeWorld;
 
-public class BurnedPancakePlate extends ExerciseTemplated {
+public class BurnedPancake extends ExerciseTemplated {
 
-	public BurnedPancakePlate(Lesson lesson) {
+	public BurnedPancake(Lesson lesson) {
 		super(lesson);
 		
 		PancakeWorld plate[] = new PancakeWorld[4];

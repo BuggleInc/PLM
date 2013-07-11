@@ -2,7 +2,7 @@ package lessons.sort.pancake;
 
 import jlm.universe.smn.pancake.InvalidPancakeNumber;
 import jlm.universe.smn.pancake.PancakeEntity;
-public class BurnedPancakePlateEntity extends PancakeEntity {
+public class BurnedPancakeEntity extends PancakeEntity {
 
 
 	public void run() throws InvalidPancakeNumber {

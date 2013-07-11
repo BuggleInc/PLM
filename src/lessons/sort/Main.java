@@ -12,8 +12,8 @@ import lessons.sort.comb.AlgCombSort;
 import lessons.sort.comb11.AlgCombSort11;
 import lessons.sort.gnome.AlgGnomeSort;
 import lessons.sort.insertion.AlgInsertionSort;
-import lessons.sort.pancake.BurnedPancakePlate;
-import lessons.sort.pancake.RawPancakePlate;
+import lessons.sort.pancake.BasicPancake;
+import lessons.sort.pancake.BurnedPancake;
 import lessons.sort.selection.AlgSelectionSort;
 import lessons.sort.shell.AlgShellSort;
 
@@ -40,7 +40,7 @@ public class Main extends Lesson {
 		addExercise(new AlgCombSort11(this));
 		addExercise(new AlgGnomeSort(this));
 		
-		Lecture pancake = addExercise(new RawPancakePlate(this));
-		addExercise(new BurnedPancakePlate(this), pancake);
+		Lecture pancake = addExercise(new BasicPancake(this));
+		addExercise(new BurnedPancake(this), pancake);
 	}
 }
