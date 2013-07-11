@@ -7,10 +7,6 @@ import jlm.universe.smn.pancake.PancakeWorld;
 
 public class BurnedPancakePlate extends ExerciseTemplated {
 
-	/**
-	 * Constructor of the class BurnedPancakePlate
-	 * @param lesson the lesson in which this exercise should register itself
-	 */
 	public BurnedPancakePlate(Lesson lesson) {
 		super(lesson);
 		

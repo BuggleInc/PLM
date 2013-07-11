@@ -216,8 +216,8 @@ public class PancakeWorld extends World {
 			e.eval(
 				"def getStackSize():\n" +
 				"  return entity.getStackSize()\n" +
-				"def getPancakeSize(pancakeNumber):\n" +
-				"  return entity.getPancakeSize(pancakeNumber)\n" +
+				"def getPancakeRadius(rank):\n" +
+				"  return entity.getPancakeRadius(rank)\n" +
 				"def isPancakeUpsideDown(pancakeNumber):\n"+
 				"  return entity.isPancakeUpsideDown(pancakeNumber)\n" +
 				"def flip(numberOfPancakes):\n" +
