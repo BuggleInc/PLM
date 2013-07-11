@@ -1,8 +1,5 @@
 package jlm.universe.smn.baseball;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class BaseballPlayer
 {
 	private int color;

@@ -12,11 +12,6 @@ import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- * @see PancakeWorld
- * @see WorldView
- */
 public class PancakeWorldView extends WorldView {
 
 	private static final long serialVersionUID = 1L;

@@ -9,11 +9,6 @@ import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- * @see PancakesStack
- * @see World
- */
 public class PancakeWorld extends World {
 
 	private PancakesStack stack; // the stack of pancakes

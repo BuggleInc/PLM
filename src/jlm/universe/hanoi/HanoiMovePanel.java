@@ -15,7 +15,6 @@ import jlm.universe.EntityControlPanel;
 /**
  * The control panel for the burned pancake world. 
  * It allows you to use to flip the pancake
- * @author Julien BASTIAN
  * @see EntityControlPanel
  * @see HanoiWorld
  */

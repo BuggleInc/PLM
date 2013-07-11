@@ -1,9 +1,5 @@
 package lessons.sort.pancake;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- * @see PancakesStack
- */
 public class InvalidPancakeNumber extends Exception {
 
 	private static final long serialVersionUID = 1L;

@@ -10,7 +10,6 @@ import javax.swing.ListCellRenderer;
 
 /**
  * This cell renderer is used by the combo boxes from BuggleButtonPanel in order to show some fancy colored rectangles.
- * @author Julien BASTIAN 
  * @see ListCellRenderer
  * @see BuggleButtonPanel
  */

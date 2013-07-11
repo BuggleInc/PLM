@@ -5,9 +5,6 @@ import jlm.core.model.lesson.Lesson;
 import jlm.universe.smn.baseball.BaseballEntity;
 import jlm.universe.smn.baseball.BaseballWorld;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class BaseballGameMorePlayers extends ExerciseTemplated {
 
 	/**

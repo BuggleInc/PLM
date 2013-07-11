@@ -4,9 +4,6 @@ import jlm.universe.smn.baseball.BaseballEntity;
 import jlm.universe.smn.baseball.InvalidMoveException;
 import jlm.universe.smn.baseball.InvalidPositionException;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class BaseballGameMorePlayersEntity extends BaseballEntity {
 
 

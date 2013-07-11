@@ -5,15 +5,8 @@ import jlm.core.model.lesson.Lesson;
 import jlm.universe.smn.baseball.BaseballEntity;
 import jlm.universe.smn.baseball.BaseballWorld;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class BaseballGame extends ExerciseTemplated {
 
-	/**
-	 * Constructor of the class BaseballGame
-	 * @param Lesson : a lesson
-	 */
 	public BaseballGame(Lesson lesson) {
 		super(lesson);
 		

@@ -17,7 +17,6 @@ import org.xnap.commons.i18n.I18nFactory;
 /**
  * The control panel for the sorting world. 
  * It allows you to use the copy, setValue and swap methods interactively.
- * @author Julien BASTIAN
  * @see EntityControlPanel
  * @see SortingWorld
  */

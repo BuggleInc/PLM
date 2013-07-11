@@ -15,19 +15,10 @@ import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- * @see WorldView
- * @see BaseballWorld
- */
 public class BaseballWorldView extends WorldView
 {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * Constructor of the class BaseballWorldView
-	 * @param w : a world
-	 */
 	public BaseballWorldView(World w){
 		super(w);
 	}

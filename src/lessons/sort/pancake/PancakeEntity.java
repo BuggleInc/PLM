@@ -3,11 +3,6 @@ package lessons.sort.pancake;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- * @see PancakeWorld
- * @see Entity
- */
 public class PancakeEntity extends Entity {
 
 	/**

@@ -1,10 +1,5 @@
 package jlm.universe.smn.baseball;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- * @see BaseballBase
- * @see BaseballPlayer
- */
 public class BaseballField
 {
 	/**
