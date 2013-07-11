@@ -1,6 +1,6 @@
 package lessons.sort.pancake;
 
-public class InvalidPancakeNumber extends Exception {
+public class InvalidPancakeRank extends Exception {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -9,7 +9,7 @@ public class InvalidPancakeNumber extends Exception {
 	 * @param size : the size of the stack of pancakes 
 	 * @return A new stack of size pancakes
 	 */
-	public InvalidPancakeNumber(String errorMessage) {
+	public InvalidPancakeRank(String errorMessage) {
 		super(errorMessage);
 	}
 

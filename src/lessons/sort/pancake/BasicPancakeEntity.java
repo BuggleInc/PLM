@@ -2,12 +2,12 @@ package lessons.sort.pancake;
 
 public class BasicPancakeEntity extends PancakeEntity {
 
-	public void run() throws InvalidPancakeNumber {
+	public void run() throws InvalidPancakeRank {
 		solve();
 	}
 
 	/* BEGIN TEMPLATE */
-	public void solve() throws InvalidPancakeNumber {
+	public void solve() throws InvalidPancakeRank {
 		/* BEGIN SOLUTION */		
 		for ( int pancakesToSort = getStackSize()-1 ; pancakesToSort != -1 && !this.isSorted() ; pancakesToSort-- ) {
 			if ( getPancakeRadius(pancakesToSort) != pancakesToSort+1 ) { // Current pancake is still to be sorted

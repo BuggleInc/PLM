@@ -66,7 +66,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 				{
 					pe.flip(amount);
 				} 
-				catch (InvalidPancakeNumber e1) {
+				catch (InvalidPancakeRank e1) {
 					System.err.println("Wrong initialization forPancakeFlipButtonPanel");
 					e1.printStackTrace();
 				}
