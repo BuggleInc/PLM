@@ -1,8 +1,5 @@
-package jlm.universe.smn.pancake;
+package lessons.sort.pancake;
 
-/**
- * @author Julien BASTIAN & Geoffrey HUMBERT
- */
 public class Pancake {
 
 	private int radius; // Radius of the pancake

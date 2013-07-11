@@ -1,7 +1,5 @@
 package lessons.sort.pancake;
 
-import jlm.universe.smn.pancake.InvalidPancakeNumber;
-import jlm.universe.smn.pancake.PancakeEntity;
 public class BurnedPancakeEntity extends PancakeEntity {
 
 

@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake;
+package lessons.sort.pancake;
 
 import java.awt.Color;
 import java.awt.Graphics;

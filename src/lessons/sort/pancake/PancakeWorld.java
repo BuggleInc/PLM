@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake;
+package lessons.sort.pancake;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;

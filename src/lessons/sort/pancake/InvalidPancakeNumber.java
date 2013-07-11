@@ -1,4 +1,4 @@
-package jlm.universe.smn.pancake;
+package lessons.sort.pancake;
 
 /**
  * @author Julien BASTIAN & Geoffrey HUMBERT
