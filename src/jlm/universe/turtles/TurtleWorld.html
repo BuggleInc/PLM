@@ -1,31 +1,85 @@
 <h1>TurtleWorld</h1>
-This world is directly inspired from the work of the mathematician Seymour
-Papert in the 60's. Inspirated from the swiss psycholog Jean Piaget, he came
+
+<p>This universe is an adaptation of LOGO for the Java Learning Machine.</p>
+
+<p>It is directly inspired from the work of the mathematician Seymour
+Papert in the 60's. Inspired from the swiss psycholog Jean Piaget, he came
 up with a learning method called LOGO to teach programming to young
 childs. The world is full of turtles which leave a painting where they go
-and which respond to simple orders.
+and which respond to simple orders.</p>
 
-<p>This world is an adaptation of LOGO for the Java Learning Machine.</p>
+<h3>Moving</h3>
 
-<h2>Methods understood by turtles</h2>
-<table border=1>
-<tr><td></td></tr>
-<tr><td><b>Moving forward</b> <code>public void forward(double stepAmount);</code><br />
-        <b>Moving backward</b> <code>public void backward(double stepAmount);</code></td></tr>
-<tr><td><b>Turn left</b> <code>public void turnLeft(double angle);</code> (in
-degree)<br/>
-        <b>Turn right</b> <code>public void turnRight(double angle);</code></td></tr>
-<tr><td><b>Pen up</b> <code>public void penUp();</code><br/>
-        <b>Pen down</b> <code>public void penDown();</code><br/>
-        <b>Get pen position</b> <code>public boolean isPenDown();</code><br/>
-        (turtles have pens, not brushes as buggles)</td></tr>
-<tr><td><b>Get heading</b> <code>public double getHeading();</code><br/>
-        <b>Change heading</b> <code>public void setHeading(double angle);</code></td></tr>
-<tr><td><b>Get color</b> <code>public Color getColor();</code><br/>
-        <b>Set color</b> <code>public void setColor(Color color);</code></td></tr>
-<tr><td><b>Get position</b> <code>public double getX();</code> <code>public double
-getY();</code><br/>
-        <b>Set position</b> <code>public void setX(double x);</code> 	 <code>public
-void setY(double y);</code> <code>public void setPos(double x, double
-y);</code></td></tr>
-</table>				
+<pre class="Java">void forward(double steps)</pre>
+<pre class="Java">void backward(double stepAmount)</pre>
+<pre class="python">forward(steps)</pre>
+<pre class="python">backward(stepAmount)</pre>
+
+Moves forward or backward of the requested amount of steps.
+
+<pre class="Java">void turnRight(double angle)</pre>
+<pre class="Java">void turnLeft(double angle)</pre>
+<pre class="python">turnRight(angle)</pre>
+<pre class="python">turnLeft(angle)</pre>
+
+Turns left or right of the given angle (in degrees).
+
+<pre class="Java">double getX()</pre>
+<pre class="Java">double getY()</pre>
+<pre class="python">getX()</pre>
+<pre class="python">getY()</pre>
+
+Returns the current position of the turtle.
+
+<pre class="Java">void setX(double x)</pre>
+<pre class="Java">void setY(double y)</pre>
+<pre class="Java">void setPos(double x, double y)</pre>
+<pre class="python">setX(x)</pre>
+<pre class="python">setY(y)</pre>
+<pre class="python">setPos(x,y)</pre>
+
+Teleports the turtle to a new position.
+
+<pre class="Java">double getHeading()</pre>
+<pre class="python">getHeading()</pre>
+
+Returns the current heading of the turtle (in degrees).
+
+<pre class="Java">void getHeading(double angle)</pre>
+<pre class="python">getHeading(angle)</pre>
+
+Sets a new heading to the turtle (in degrees).
+
+<h3>About the pen</h3>
+
+<pre class="Java">void penUp()</pre>
+<pre class="python">penUp()</pre>
+
+Moves the pen up (turtles have pens, not brushes as buggles). The turtle will not leave a trace afterward.
+
+<pre class="Java">void penDown()</pre>
+<pre class="python">penDown()</pre>
+
+Moves the pen down. The turtle will now leave a trace.
+
+<pre class="Java">boolean isPenDown()</pre>
+<pre class="python">isPenDown()</pre>
+
+Returns the current pen position as a boolean.
+
+<pre class="Java">Color getColor()</pre>
+<pre class="python">getColor()</pre>
+
+Returns the current pen color.
+
+<pre class="Java">void setColor(Color color)</pre>
+<pre class="python">getColor(color)</pre>
+
+Changes the pen color.
+
+<h3>Other</h3>
+<pre class="Java">boolean isSelected()</pre>
+<pre class="python">isSelected()</pre>
+
+Returns whether the current world is selected in the graphical
+interface.
