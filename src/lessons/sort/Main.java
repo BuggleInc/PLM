@@ -9,7 +9,7 @@ import lessons.sort.cocktail.AlgCocktailSort1;
 import lessons.sort.cocktail.AlgCocktailSort2;
 import lessons.sort.cocktail.AlgCocktailSort3;
 import lessons.sort.comb.AlgCombSort;
-import lessons.sort.comb11.AlgCombSort11;
+import lessons.sort.comb.AlgCombSort11;
 import lessons.sort.gnome.AlgGnomeSort;
 import lessons.sort.insertion.AlgInsertionSort;
 import lessons.sort.pancake.BasicPancake;

@@ -1,4 +1,4 @@
-package lessons.sort.comb11;
+package lessons.sort.comb;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;

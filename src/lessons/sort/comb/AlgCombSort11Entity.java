@@ -1,4 +1,4 @@
-package lessons.sort.comb11;
+package lessons.sort.comb;
 
 import jlm.universe.sort.SortingEntity;
 
