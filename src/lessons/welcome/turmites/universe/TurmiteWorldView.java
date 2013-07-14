@@ -1,4 +1,4 @@
-package jlm.universe.turmite;
+package lessons.welcome.turmites.universe;
 
 import java.awt.Color;
 import java.awt.Graphics;

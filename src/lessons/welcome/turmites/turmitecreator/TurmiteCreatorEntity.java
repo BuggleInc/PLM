@@ -131,7 +131,7 @@ public class TurmiteCreatorEntity extends jlm.universe.bugglequest.SimpleBuggle 
 
 		for (int step=0;step<nbSteps;step++) {
 			step();
-			((jlm.universe.turmite.TurmiteWorld)world).stepDone();
+			((lessons.welcome.turmites.universe.TurmiteWorld)world).stepDone();
 		}
 	}
 }

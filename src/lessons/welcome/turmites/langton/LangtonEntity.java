@@ -34,7 +34,7 @@ public class LangtonEntity extends SimpleBuggle {
 		int nbSteps = (Integer)getParam(0); 
 		for (int i=0;i<nbSteps;i++) {
 			step();
-			((jlm.universe.turmite.TurmiteWorld)world).stepDone();
+			((lessons.welcome.turmites.universe.TurmiteWorld)world).stepDone();
 		}
 	}
 }
