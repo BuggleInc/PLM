@@ -51,52 +51,62 @@ public class FileUtils {
 			}
 		}
 		
+		if (translatable && locale == null)
+			throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
 		
-		String fileName = file.replace('.','/');
-        if (translatable) {
-            if (locale == null) 
-                throw new RuntimeException("locale is null: you cannot request for translated material (yet)");
-            if (! locale.getLanguage().equals("en")) {
-                fileName = fileName + "." + locale.getLanguage();
-            }
-        }
+		/* Build the list of filenames we will iterate (translated if any, and raw) */
+		String[] fileNames;
+		if (translatable && ! locale.getLanguage().equals("en")) {
+			fileNames = new String[] {
+					file.replace('.', '/') + "." + locale.getLanguage(),
+					file.replace('.', '/')
+			};
+		} else { // not translatable, or currently in English: only search for non-translated form
+				fileNames = new String[] {
+						file.replace('.', '/')
+				};
+		}
+		/* Do that iteration */
+		for (String fileName : fileNames ) {        
+			/* change class name to directories */
+			fileName = fileName + (extension != null ? "." + extension : "");
+			
+			i = 0;
+			while (i<directories.length) {
+				if ((new File(directories[i] + fileName)).exists()) {
+					return new BufferedReader(new FileReader(directories[i] + fileName));
+				} else {
+					i++;
+				}   	
+			}
         
-        
-        /* change class name to directories */
-        fileName = fileName + (extension != null ? "." + extension : "");
-                               
-        i = 0;
-        while (i<directories.length) {
-        	if ((new File(directories[i] + fileName)).exists()) {
-        		return new BufferedReader(new FileReader(directories[i] + fileName));
-        	} else {
-        		i++;
-        	}   	
-        }
-        
-        // external HTML file of this exercise not found on file system. Give as resource, in case we are in a jar file
-        String resourceName = "/"+fileName;
-        resourceName = resourceName.replace('\\', '/'); /* just in case we're passed a windows path */
+			// external HTML file of this exercise not found on file system. Try as resource, in case we are in a jar file
+			String resourceName =  "/"+fileName;
+        	resourceName = resourceName.replace('\\', '/'); /* just in case we were passed a windows path */
 
-        InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
-        if (s == null) {
-        	// file not found, give up. No logs here, as it is ok that some entities do not exist in some languages
-        	if (extension == null)
-        		throw new FileNotFoundException(file + " (without extension) could not be found.");
-        	throw new FileNotFoundException(file + " with extension " + extension + " could not be found.");
-        }
+        	InputStream s = ExerciseTemplated.class.getResourceAsStream(resourceName);
+        	if (s == null) 
+        		continue; // test next name in the list
 
-        BufferedReader br = null;
-        try {
-        	br = new BufferedReader(new InputStreamReader(s, "UTF-8"));
-        } catch (UnsupportedEncodingException e1) {
-        	e1.printStackTrace();
-        	System.err.println("File encoding of " + fileName + " is not supported on this platform (please report this bug)");
-        	//return null;
-        	throw e1;
-        	//throw new FileNotFoundException(file + "with extension " + extension + " is encoded in an unsupported encoding.");
+        	BufferedReader br = null;
+        	try {
+        		br = new BufferedReader(new InputStreamReader(s, "UTF-8"));
+        	} catch (UnsupportedEncodingException e1) {
+        		e1.printStackTrace();
+        		System.err.println("File encoding of " + fileName + " is not supported on this platform (please report this bug)");
+        		//return null;
+        		throw e1;
+        		//throw new FileNotFoundException(file + "with extension " + extension + " is encoded in an unsupported encoding.");
+        	}
+        	if (br != null) {
+				System.out.println("Found "+resourceName);
+				return br;
+        	}
         }
-        return br;
+		// file not found, give up. No logs here, as it is ok that some entities do not exist in some languages
+		if (extension == null)
+			throw new FileNotFoundException(file + " (without extension) could not be found.");
+		throw new FileNotFoundException(file + " with extension " + extension + " could not be found.");
 	}	
 	
 	public static StringBuffer readContentAsText(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
