@@ -32,7 +32,7 @@ public class PancakeWorld extends World {
 	}
 	
 	/** 
-	 * Regular PancakeWorld constructor
+	 * Regular PancakeWorld constructor that creates a random plate
 	 * @param name : the name of the world
 	 * @param amountOfPancakes : the amount of pancakes in the stack
 	 * @param burnedPancake : if we take care of the fact that the pancake is burned on one side
@@ -47,13 +47,33 @@ public class PancakeWorld extends World {
 			pancakeStack[i] = new Pancake(i + 1);
 		
 		/* Mix them */
-		for ( int rank = 0 ; rank < size ; rank++) {			
-			if ( Math.random() > 0.5) // Flipping time !
-				pancakeStack[rank].flip(); 
-			
-			if ( Math.random() > 0.5) // Swapping time !
-				swap(rank, (int)(Math.random()*size));
-		}
+		while (isSorted()) 
+			for ( int rank = 0 ; rank < size ; rank++) {			
+				if ( Math.random() > 0.5) // Flipping time !
+					pancakeStack[rank].flip(); 
+
+				if ( Math.random() > 0.5) // Swapping time !
+					swap(rank, (int)(Math.random()*size));
+			}
+		
+		this.flipped =false;
+		this.lastModifiedPancake = 0 ;
+		this.burnedWorld = burnedPancake;
+	}
+	/** 
+	 * Regular PancakeWorld constructor that takes the pancake sizes from the provided parameter
+	 * @param name the name of the world
+	 * @param sizes the size of each pancake
+	 * @param burnedPancake if we take care of the fact that the pancake is burned on one side
+	 */
+	public PancakeWorld(String name, int[] sizes, boolean burnedPancake) {
+		super(name);
+		setDelay(200); // Delay (in ms) in default animations
+		
+		/* Create the pancakes */
+		this.pancakeStack =  new Pancake[sizes.length];
+		for (int i = 0; i < sizes.length; i++) 
+			pancakeStack[i] = new Pancake(sizes[i]);
 		
 		this.flipped =false;
 		this.lastModifiedPancake = 0 ;
@@ -149,6 +169,7 @@ public class PancakeWorld extends World {
 		if (numberOfPancakes > this.getStackSize()) 
 			throw new InvalidPancakeRank(Game.i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
 		
+		//System.err.println("Flip("+numberOfPancakes+")");
 		/* Invert the pancakes' position */
 		int firstPancake = 0 ;
 		int lastPancake = numberOfPancakes-1;
