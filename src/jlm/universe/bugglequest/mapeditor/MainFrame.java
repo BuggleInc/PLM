@@ -23,6 +23,8 @@ import javax.swing.KeyStroke;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.ui.ResourcesCache;
+import jlm.core.utils.ColorMapper;
+import jlm.core.utils.InvalidColorNameException;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -87,9 +89,9 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				editor.setCommand("colors");
 				Object[] choices = {
-						"black","blue","cyan","darkGray","gray","green","lightGray","magenta","orange","pink","red","yellow"};
+						"custom", "black","blue","cyan","darkGray","gray","green","lightGray","magenta","orange","pink","red","yellow"};
 				Color[] colors = {
-						Color.black,Color.blue,Color.cyan,Color.darkGray,Color.gray,Color.green,Color.lightGray,Color.magenta,Color.orange,Color.pink,Color.red,Color.yellow};
+						new Color(42,42,42), Color.black,Color.blue,Color.cyan,Color.darkGray,Color.gray,Color.green,Color.lightGray,Color.magenta,Color.orange,Color.pink,Color.red,Color.yellow};
 				
 				Object selectedValue = JOptionPane.showInputDialog(null,
 						"Choose a color", "Change color",
@@ -99,6 +101,16 @@ public class MainFrame extends JFrame {
 				if (selectedValue == null) // cancel pressed
 					return;
 					
+				if (selectedValue.equals("custom")) {
+					String name = JOptionPane.showInputDialog("What color you want (r/g/b)", 
+							colors[0].getRed()+"/"+colors[0].getGreen()+"/"+colors[0].getBlue());
+					try {
+						Color c = ColorMapper.name2color(name);
+						colors[0] = c;
+					} catch (InvalidColorNameException icne) {
+						/* Ignore */
+					}
+				}
 				for (int i=0; i<choices.length;i++) 
 					if (selectedValue.equals(choices[i])) {
 						editor.setSelectedColorNumber(i);
