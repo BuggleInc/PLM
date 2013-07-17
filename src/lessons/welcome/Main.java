@@ -104,8 +104,8 @@ public class Main extends Lesson {
 		
 		addExercise(new Variables(this));
 		
-		Lecture loopFor = addExercise(new LoopFor(this));
-		addExercise(new LoopDoWhile(this), loopFor);
+		addExercise(new LoopFor(this));
+		addExercise(new LoopDoWhile(this));
 		
 		Lecture methodsVoid = addExercise(new Methods(this));
 		
