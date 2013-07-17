@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.ImageIcon;
@@ -16,10 +17,6 @@ public class PancakeWorldView extends WorldView {
 
 	private static final long serialVersionUID = 1L;
 		
-	/**
-	 * Constructor of the class PancakeWorldView
-	 * @param w : a world
-	 */
 	public PancakeWorldView(World w) {
 		super(w);
 	}
@@ -115,40 +112,30 @@ public class PancakeWorldView extends WorldView {
 	 * Draw a raw pancake
 	 * @param g2 : an entity of the Graphics2D class
 	 * @param xoffset : the horizontal offset 
-	 * @param p: a pancake
-	 * @param pancakeNumber: the number of the pancake draw
+	 * @param radius : pancake size
+	 * @param rank : pancake position in the stack
 	 */
-	private void drawRawPancake(Graphics2D g2, double xoffset,int psize,int pancakeNumber) {
+	private void drawPancake(Graphics2D g2, double xoffset, int radius, int rank) {
 		g2.setColor(Color.YELLOW);
-		g2.fill(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 8));
+		g2.fill(new Rectangle2D.Double( xoffset-radius*5-3, 236-(8.*(rank)),  radius*10+3, 8));
 		g2.setColor(Color.black);
-		g2.draw(new Rectangle2D.Double( xoffset-psize*5-3, 236-(8.*(pancakeNumber)),  psize*10+3, 8));
+		g2.draw(new Rectangle2D.Double( xoffset-radius*5-3, 236-(8.*(rank)),  radius*10+3, 8));
 	}
 	
 	/**
 	 * Draw a pancake with a burned face
 	 * @param g2 : an entity of the Graphics2D class
 	 * @param xoffset : the horizontal offset 
-	 * @param p: a pancake
-	 * @param pancakeNumber: the number of the pancake draw
+	 * @param radius : pancake size
+	 * @param rank : pancake position in the stack
 	 */
-	private void drawBurnedPancake(Graphics2D g2, double xoffset,int pancakeRadius,int pancakeNumber, boolean upsideDown) {
-		if (upsideDown) {
-			g2.setColor(Color.YELLOW);
-			g2.fill(new Rectangle2D.Double( xoffset-pancakeRadius*5-3, 239-(8.*(pancakeNumber)),  pancakeRadius*10+3, 5));
-			g2.setColor(new Color(91, 59, 17)); // it's brown
-			g2.fill(new Rectangle2D.Double( xoffset-pancakeRadius*5-3, 236-(8.*(pancakeNumber)),  pancakeRadius*10+3, 3));
-			g2.setColor(Color.black);
-			g2.draw(new Rectangle2D.Double( xoffset-pancakeRadius*5-3, 236-(8.*(pancakeNumber)),  pancakeRadius*10+3, 8));
-
-		} else {
-			g2.setColor(Color.YELLOW);
-			g2.fill(new Rectangle2D.Double( xoffset-pancakeRadius*5-3, 236-(8.*(pancakeNumber)),  pancakeRadius*10+3, 5));
-			g2.setColor(new Color(91, 59, 17)); // it's brown
-			g2.fill(new Rectangle2D.Double( xoffset-pancakeRadius*5-3, 241-(8.*(pancakeNumber)),  pancakeRadius*10+3, 3));
-			g2.setColor(Color.black);
-			g2.draw(new Rectangle2D.Double( xoffset-pancakeRadius*5-3, 236-(8.*(pancakeNumber)),  pancakeRadius*10+3, 8));
-		}
+	private void drawBurnedSide(Graphics2D g2, double xoffset,int radius, int rank, boolean upsideDown) {
+		g2.setColor(new Color(91, 59, 17)); // it's brown
+		
+		if (upsideDown) 
+			g2.fill(new Rectangle2D.Double( xoffset-radius*5-3, 236-(8.*(rank)),  radius*10+3, 3));
+		else 
+			g2.fill(new Rectangle2D.Double( xoffset-radius*5-3, 241-(8.*(rank)),  radius*10+3, 3));
 	}
 	
 	/**
@@ -167,22 +154,26 @@ public class PancakeWorldView extends WorldView {
 	 * @param xoffset : the horizontal offset 
 	 */
 	private void drawStack(Graphics2D g2, double xoffset) {
-		/* draw bar */
 		PancakeWorld w= (PancakeWorld) this.world;
 		boolean burned = w.isBurnedPancake();
-		/* draw pancakes */
 		int amountOfPancakes = w.getStackSize();
+
 		g2.setColor(Color.black);
 		drawPlate(g2,xoffset,amountOfPancakes);
 
 		try {
-			if ( burned )
-				for (int i = 0; i<amountOfPancakes ;i++)
-					drawBurnedPancake(g2,xoffset,w.getPancakeRadius(amountOfPancakes-i-1),i,w.isPancakeUpsideDown(amountOfPancakes-i-1));
-
-			else
-				for (int i = 0; i<amountOfPancakes ;i++)
-					drawRawPancake(g2,xoffset,w.getPancakeRadius(amountOfPancakes-i-1),i);
+			for (int rank = 0; rank<amountOfPancakes ;rank++) {
+				drawPancake(g2,xoffset,w.getPancakeRadius(amountOfPancakes-rank-1),rank);
+				if (burned)
+					drawBurnedSide(g2,xoffset,w.getPancakeRadius(amountOfPancakes-rank-1),rank,w.isPancakeUpsideDown(amountOfPancakes-rank-1));
+			}
+			for (int rank = 0; rank<amountOfPancakes ;rank++) 
+				if (amountOfPancakes-rank-2>=0 
+					&& Math.abs(w.getPancakeRadius(amountOfPancakes-rank-1)-w.getPancakeRadius(amountOfPancakes-rank-2)) == 1  
+					&& (!burned || w.isPancakeUpsideDown(amountOfPancakes-rank-1) == w.isPancakeUpsideDown(amountOfPancakes-rank-2))) {
+					g2.setColor(Color.magenta);
+					g2.fill(new Ellipse2D.Double(xoffset-4, 236-(8.*(rank)+3), 6,6) );
+				}
 		} catch (InvalidPancakeRank ipr) {
 			/* Impossible, but anyway */
 			ipr.printStackTrace();
