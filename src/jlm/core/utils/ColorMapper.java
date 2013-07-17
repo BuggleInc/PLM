@@ -22,6 +22,14 @@ public class ColorMapper {
 				int r=Integer.parseInt( m.group(1) );
 				int g=Integer.parseInt( m.group(2) );
 				int b=Integer.parseInt( m.group(3) );
+				
+				if (r<0 || r>255) 
+					throw new InvalidColorNameException("Name "+name+" is not a valid color name: Red value is not between 0 and 255");
+				if (g<0 || g>255) 
+					throw new InvalidColorNameException("Name "+name+" is not a valid color name: Green value is not between 0 and 255");
+				if (b<0 || b>255) 
+					throw new InvalidColorNameException("Name "+name+" is not a valid color name: Blue value is not between 0 and 255");
+					
 				return new Color(r,g,b);
 			} catch (NumberFormatException nfe) {
 				throw new InvalidColorNameException("Name "+name+" is not a valid color name since one of its component is not a number",nfe);
