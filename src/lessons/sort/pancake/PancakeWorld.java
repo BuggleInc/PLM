@@ -1,5 +1,7 @@
 package lessons.sort.pancake;
 
+import java.security.InvalidParameterException;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
@@ -160,14 +162,12 @@ public class PancakeWorld extends World {
 	/**
 	 * Flip a certain amount of pancakes in the stack
 	 * @param numberOfPancakes : the number of pancakes, beginning from the top of the stack, that you want to flip.
-	 * @throws InvalidPancakeRank : in case you ask to flip less than one or more 
-	 * 									than the total amount of pancakes
 	 */
-	public void flip(int numberOfPancakes) throws InvalidPancakeRank {
+	public void flip(int numberOfPancakes) {
 		if (numberOfPancakes < 1) 
-			throw new InvalidPancakeRank(Game.i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
+			throw new InvalidParameterException(Game.i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
 		if (numberOfPancakes > this.getStackSize()) 
-			throw new InvalidPancakeRank(Game.i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
+			throw new InvalidParameterException(Game.i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
 		
 		//System.err.println("Flip("+numberOfPancakes+")");
 		/* Invert the pancakes' position */
@@ -197,11 +197,10 @@ public class PancakeWorld extends World {
 	 * Give the size of a specific pancake among others
 	 * @param rank : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The radius of the expected pancake
-	 * @throws InvalidPancakeRank : in case you ask an invalid pancake number
 	 */
-	public int getPancakeRadius(int rank) throws InvalidPancakeRank{
+	public int getPancakeRadius(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new InvalidPancakeRank(Game.i18n.tr("Cannot get the radius of pancake #{0} because it's not between 0 and {1}",rank, getStackSize()));
+			throw new InvalidParameterException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it's not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].getRadius();
 	}
@@ -224,11 +223,10 @@ public class PancakeWorld extends World {
 
 	/**
 	 * Returns if the specified pancake (counting from the stack top) is upside down
-	 * @throws InvalidPancakeRank : in case you ask an invalid pancake number
 	 */
-	public boolean isPancakeUpsideDown(int rank) throws InvalidPancakeRank {
+	public boolean isPancakeUpsideDown(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new InvalidPancakeRank(Game.i18n.tr("Cannot get the orientation of pancake #{0} because it's not between 0 and {1}",rank, getStackSize()));
+			throw new InvalidParameterException(Game.i18n.tr("Cannot get the orientation of pancake #{0} because it's not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].isUpsideDown();
 	}

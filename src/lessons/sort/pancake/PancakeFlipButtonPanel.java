@@ -62,16 +62,9 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 			public void actionPerformed(ActionEvent e) {
 				int amount = (Integer) pancakesAmountComboBox.getSelectedItem();
 				PancakeEntity pe = (PancakeEntity) Game.getInstance().getSelectedEntity();
-				try 
-				{
-					pe.flip(amount);
-				} 
-				catch (InvalidPancakeRank e1) {
-					System.err.println("Wrong initialization forPancakeFlipButtonPanel");
-					e1.printStackTrace();
-				}
+				pe.flip(amount);
 			}
-	});
+		});
 	}
 
 	/**

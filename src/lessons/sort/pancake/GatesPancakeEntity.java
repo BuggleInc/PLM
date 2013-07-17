@@ -15,18 +15,18 @@ package lessons.sort.pancake;
 
 public class GatesPancakeEntity extends PancakeEntity {
 
-	public void run() throws InvalidPancakeRank {
+	public void run() {
 		solve();
 	}
 
 	/* BEGIN HIDDEN */
-	int getRankOf(int size) throws InvalidPancakeRank {
+	int getRankOf(int size) {
 		for (int rank=0;rank<getStackSize();rank++)
 			if (getPancakeRadius(rank) == size)
 				return rank;
 		return -99; // Well, be robust to border cases 
 	}
-	boolean isFree(int pos) throws InvalidPancakeRank {
+	boolean isFree(int pos) {
 		if (pos == -99)
 			return false;
 		int radius = getPancakeRadius(pos);
@@ -42,7 +42,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 		}
 		return true;
 	}
-	boolean isFirst(int pos) throws InvalidPancakeRank {
+	boolean isFirst(int pos) {
 		if (pos == -99)
 			return false;
 		int radius = getPancakeRadius(pos);
@@ -58,7 +58,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 		}
 		return false;
 	}
-	boolean isLast(int pos) throws InvalidPancakeRank {
+	boolean isLast(int pos) {
 		if (pos == -99)
 			return false;
 		int radius = getPancakeRadius(pos);
@@ -74,7 +74,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 		}
 		return false;
 	}
-	int blockLength() throws InvalidPancakeRank {
+	int blockLength() {
 		int pos = 0;
 		int radius = getPancakeRadius(pos);
 		int o = getPancakeRadius(pos+1) - radius;
@@ -95,7 +95,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 	/* END HIDDEN */
 	
 	/* BEGIN TEMPLATE */
-	public void solve() throws InvalidPancakeRank {
+	public void solve() {
 		/* BEGIN SOLUTION */	
 		boolean doneA=false;
 		boolean doneB=false;

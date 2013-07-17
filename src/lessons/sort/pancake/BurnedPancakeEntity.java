@@ -3,19 +3,12 @@ package lessons.sort.pancake;
 public class BurnedPancakeEntity extends PancakeEntity {
 
 
-	public void run() throws InvalidPancakeRank {
-		try
-		{
-			this.solve();
-		}
-		catch( InvalidPancakeRank pne)
-		{
-			System.out.println(this.world.getName() +" :"+pne.getMessage());
-		}
+	public void run() {
+		this.solve();
 	}
 
 	/* BEGIN TEMPLATE */
-	public void solve() throws InvalidPancakeRank {
+	public void solve() {
 		/* BEGIN SOLUTION */
 		int stackSize = this.getStackSize();
 		boolean currentPancakeAlreadySorted;

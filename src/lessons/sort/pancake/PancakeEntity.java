@@ -38,10 +38,8 @@ public class PancakeEntity extends Entity {
 	 * Flip a certain amount of pancakes in the stack
 	 * @param numberOfPancakes : the number of pancakes, 
 	 * 			beginning from the top of the stack, that you want to flip.
-	 * @throws InvalidPancakeRank : in case you ask to flip less than one or 
-	 * 									more than the total amount of pancakes
 	 */
-	public void flip(int numberOfPancakes) throws InvalidPancakeRank {
+	public void flip(int numberOfPancakes) {
 		((PancakeWorld) world).flip(numberOfPancakes);
 		stepUI();
 	}
@@ -50,9 +48,8 @@ public class PancakeEntity extends Entity {
 	 * Give the radius of a specific pancake among others
 	 * @param pancakeNumber : the number of the pancake, beginning from the top of the stack, that you want to get.
 	 * @return The radius of the expected pancake
-	 * @throws InvalidPancakeRank : in case you ask an invalid pancake number
 	 */
-	public int getPancakeRadius(int pancakeNumber) throws InvalidPancakeRank{
+	public int getPancakeRadius(int pancakeNumber) {
 		return ((PancakeWorld) world).getPancakeRadius(pancakeNumber);
 	}
 
@@ -63,9 +60,8 @@ public class PancakeEntity extends Entity {
 	
 	/**
 	 * Returns whether the specific pancake (counting from the stack top) is upside down
-	 * @throws InvalidPancakeRank : in case you ask an invalid pancake number
 	 */
-	public boolean isPancakeUpsideDown(int rank) throws InvalidPancakeRank {
+	public boolean isPancakeUpsideDown(int rank) {
 		return ((PancakeWorld) world).isPancakeUpsideDown(rank);
 	}
 	
@@ -77,10 +73,9 @@ public class PancakeEntity extends Entity {
 	}
 	
 	/** Must exist so that exercises can instantiate the entity (Entity is abstract) 
-	 * @throws InvalidPancakeRank : in case you ask to flip less than one or more than the total amount of pancakes
 	 */
 	@Override
-	public void run() throws InvalidPancakeRank {
+	public void run() {
 	}
 	
 	/** Returns a string representation of the world */

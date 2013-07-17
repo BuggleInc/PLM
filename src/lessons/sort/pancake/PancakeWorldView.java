@@ -161,23 +161,18 @@ public class PancakeWorldView extends WorldView {
 		g2.setColor(Color.black);
 		drawPlate(g2,xoffset,amountOfPancakes);
 
-		try {
-			for (int rank = 0; rank<amountOfPancakes ;rank++) {
-				drawPancake(g2,xoffset,w.getPancakeRadius(amountOfPancakes-rank-1),rank);
-				if (burned)
-					drawBurnedSide(g2,xoffset,w.getPancakeRadius(amountOfPancakes-rank-1),rank,w.isPancakeUpsideDown(amountOfPancakes-rank-1));
-			}
-			for (int rank = 0; rank<amountOfPancakes ;rank++) 
-				if (amountOfPancakes-rank-2>=0 
-					&& Math.abs(w.getPancakeRadius(amountOfPancakes-rank-1)-w.getPancakeRadius(amountOfPancakes-rank-2)) == 1  
-					&& (!burned || w.isPancakeUpsideDown(amountOfPancakes-rank-1) == w.isPancakeUpsideDown(amountOfPancakes-rank-2))) {
-					g2.setColor(Color.magenta);
-					g2.fill(new Ellipse2D.Double(xoffset-4, 236-(8.*(rank)+3), 6,6) );
-				}
-		} catch (InvalidPancakeRank ipr) {
-			/* Impossible, but anyway */
-			ipr.printStackTrace();
+		for (int rank = 0; rank<amountOfPancakes ;rank++) {
+			drawPancake(g2,xoffset,w.getPancakeRadius(amountOfPancakes-rank-1),rank);
+			if (burned)
+				drawBurnedSide(g2,xoffset,w.getPancakeRadius(amountOfPancakes-rank-1),rank,w.isPancakeUpsideDown(amountOfPancakes-rank-1));
 		}
+		for (int rank = 0; rank<amountOfPancakes ;rank++) 
+			if (amountOfPancakes-rank-2>=0 
+			&& Math.abs(w.getPancakeRadius(amountOfPancakes-rank-1)-w.getPancakeRadius(amountOfPancakes-rank-2)) == 1  
+			&& (!burned || w.isPancakeUpsideDown(amountOfPancakes-rank-1) == w.isPancakeUpsideDown(amountOfPancakes-rank-2))) {
+				g2.setColor(Color.magenta);
+				g2.fill(new Ellipse2D.Double(xoffset-4, 236-(8.*(rank)+3), 6,6) );
+			}
 	}
 	
 	/**
