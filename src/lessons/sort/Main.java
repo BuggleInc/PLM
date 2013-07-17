@@ -14,6 +14,7 @@ import lessons.sort.gnome.AlgGnomeSort;
 import lessons.sort.insertion.AlgInsertionSort;
 import lessons.sort.pancake.BasicPancake;
 import lessons.sort.pancake.BurnedPancake;
+import lessons.sort.pancake.GatesPancake;
 import lessons.sort.selection.AlgSelectionSort;
 import lessons.sort.shell.AlgShellSort;
 
@@ -42,5 +43,6 @@ public class Main extends Lesson {
 		
 		Lecture pancake = addExercise(new BasicPancake(this));
 		addExercise(new BurnedPancake(this), pancake);
+		addExercise(new GatesPancake(this),pancake);
 	}
 }
