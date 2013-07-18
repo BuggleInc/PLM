@@ -1,7 +1,10 @@
 package lessons.welcome;
 
+import java.io.IOException;
+
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
+import jlm.universe.BrokenWorldFileException;
 import lessons.welcome.array.array123.Array123;
 import lessons.welcome.array.array667.Array667;
 import lessons.welcome.array.arraycount9.ArrayCount9;
@@ -39,8 +42,11 @@ import lessons.welcome.bool1.SleepIn;
 import lessons.welcome.bool1.SumDouble;
 import lessons.welcome.bool2.AlarmClock;
 import lessons.welcome.bool2.AnswerCell;
+import lessons.welcome.bool2.BlueTicket;
 import lessons.welcome.bool2.CaughtSpeeding;
+import lessons.welcome.bool2.CigarParty;
 import lessons.welcome.bool2.DateFashion;
+import lessons.welcome.bool2.GreenTicket;
 import lessons.welcome.bool2.In1To10;
 import lessons.welcome.bool2.InOrder;
 import lessons.welcome.bool2.InOrderEqual;
@@ -48,20 +54,19 @@ import lessons.welcome.bool2.LastDigit2;
 import lessons.welcome.bool2.LessBy10;
 import lessons.welcome.bool2.MaxMod5;
 import lessons.welcome.bool2.NearTen;
-import lessons.welcome.bool2.CigarParty;
-import lessons.welcome.bool2.TeaParty;
+import lessons.welcome.bool2.RedTicket;
 import lessons.welcome.bool2.ShareDigit;
 import lessons.welcome.bool2.SortaSum;
 import lessons.welcome.bool2.SquirrelPlay;
+import lessons.welcome.bool2.TeaParty;
 import lessons.welcome.bool2.TeenSum;
-import lessons.welcome.bool2.BlueTicket;
-import lessons.welcome.bool2.GreenTicket;
-import lessons.welcome.bool2.RedTicket;
 import lessons.welcome.bool2.TwoAsOne;
 import lessons.welcome.bool2.WithoutDoubles;
 import lessons.welcome.conditions.Conditions;
 import lessons.welcome.environment.Environment;
 import lessons.welcome.loop.dowhileloop.LoopDoWhile;
+import lessons.welcome.loop.forloop.LoopCourse;
+import lessons.welcome.loop.forloop.LoopCourseForest;
 import lessons.welcome.loop.forloop.LoopFor;
 import lessons.welcome.loop.whileloop.LoopWhile;
 import lessons.welcome.methods.args.MethodsArgs;
@@ -88,7 +93,7 @@ import lessons.welcome.variables.Variables;
 public class Main extends Lesson {
 
 	@Override
-	protected void loadExercises() {
+	protected void loadExercises() throws IOException, BrokenWorldFileException {
 		addExercise(new Environment(this));
 		Lecture basics = addExercise(new Basics(this));
 		
@@ -104,7 +109,9 @@ public class Main extends Lesson {
 		
 		addExercise(new Variables(this));
 		
-		addExercise(new LoopFor(this));
+		Lecture loopFor = addExercise(new LoopFor(this));
+		addExercise(new LoopCourse(this),loopFor);
+		addExercise(new LoopCourseForest(this),loopFor);
 		addExercise(new LoopDoWhile(this));
 		
 		Lecture methodsVoid = addExercise(new Methods(this));
