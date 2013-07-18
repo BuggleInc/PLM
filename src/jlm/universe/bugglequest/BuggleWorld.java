@@ -129,7 +129,7 @@ public class BuggleWorld extends GridWorld {
 		
 		line = reader.readLine();
 		
-		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): (\\w+),(\\w+),(\\w+),(.+)$"); // direction, color, brush, name
+		Pattern bugglePattern = Pattern.compile("^Buggle\\((\\d+),(\\d+)\\): (\\w+),([^,]+),([^,]+),(.+)$"); // direction, color, brush, name
 		Matcher buggleMatcher = bugglePattern.matcher(line);
 		String cellFmt = "^Cell\\((\\d+),(\\d+)\\): ([^,]+?),(\\w+),(\\w+),(\\w+),(.*)$";
 		Pattern cellPattern = Pattern.compile(cellFmt);
