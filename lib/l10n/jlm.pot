@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-16 15:30+0300\n"
+"POT-Creation-Date: 2013-07-19 00:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2815,6 +2815,53 @@ msgstr ""
 #. type: Content of: <p><p><p><a><p>
 #: src/lessons/welcome/loop/forloop/LoopFor.html:78
 msgid "Once done, proceed to next exercise."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loop/forloop/LoopCourse.html:1
+msgid "Training Buggle"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourse.html:3
+msgid ""
+"Today, your buggle wants to get some serious exercise: It wants to run 'till "
+"the track burns! Its super-shoes are just perfect to run like hell, but "
+"unfortunately, they can actually damage the track on the long run..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourse.html:6
+msgid ""
+"Your goal is to run the track 10 times, no matter what happens.  Even if the "
+"track suffers, you <b>really HAVE</b> to take that run.  Remember, the track "
+"has four sides, that take eight steps each to run along.  Now go, and show "
+"them what these super shoes can do."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:1
+msgid "Outdoor Training Buggle"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:3
+msgid ""
+"Well, our last training didn't went that well. The track actually burned, "
+"and we are now banned from there.  This time, our buggle decided to practice "
+"outdoor, in the middle of the forest, with its good old shoes instead.  The "
+"problem is that you have to be careful to not fall into water. The track on "
+"which you can run is rather narrow: One side is now 4 steps forward, 2 steps "
+"to the left, 4 steps to the right, 2 steps to the right, 4 steps to the "
+"left, and you want to run 7 around."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:9
+msgid ""
+"Oh crap, running on the grass seems to destroy it too! So just take your 7 "
+"loops around the garden, and move along to the next exercise before anyone "
+"notices the damage you made..."
 msgstr ""
 
 #. type: Content of: <p>
@@ -9093,7 +9140,7 @@ msgstr ""
 #: src/lessons/sort/pancake/PancakeWorld.html:13
 msgid ""
 "Returns the radius of the pancake passed as argument, with the rank of the "
-"bottom pancake being 0."
+"top-most pancake being 0."
 msgstr ""
 
 #. type: Content of: <pre>
@@ -9111,8 +9158,8 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/PancakeWorld.html:18
 msgid ""
-"Returns whether the pancake passed as argument (the bottom pancake is of "
-"rank 0) is upside-down, that is, if its burned side is on top."
+"Returns whether the pancake passed as argument upside-down, that is, if its "
+"burned side is on top. As usual, the top-most pancake is of rank 0."
 msgstr ""
 
 #. type: Content of: <pre>
@@ -9283,6 +9330,174 @@ msgid ""
 "Hard blow for the chef! The pancakes got burnt on one side! There is no way "
 "he can deliver a stack of pancakes with visibly burnt pancakes! You've got "
 "to help him ensuring that no pancake is upside-down while sorting his stack."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/GatesPancake.html:1
+msgid "Faster Pancake Sorting"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:3
+msgid ""
+"Unlike others sorting problem, the expensive operation is not the comparison "
+"of values, but the flipping of pancakes. In this exercise, we will explore "
+"another algorithm that attempt to reduce the amount of stack flipping. The "
+"funny side is that this algorithm was first introduced by Bill Gates, before "
+"invented Windows."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:8
+msgid ""
+"The basic idea is to grow sequences of sorted pancakes, not necessarily "
+"starting from the bottom.  We say that a sequence of ordered pancakes "
+"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
+"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
+"radius <code>t</code>) and search for the <code>t+1</code> or "
+"<code>t-1</code> pancakes (the considered neighbor is noted "
+"<code>t+o</code>). Eight cases may happen:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:15
+msgid ""
+"<b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are "
+"then merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:19
+msgid ""
+"<b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of "
+"a block. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:24
+msgid ""
+"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and "
+"<code>t+1</code> are the last elements of blocks.  Both blocs and t are "
+"merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
+"<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
+"two flips are mandated."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:32
+msgid ""
+"<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is "
+"free. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:37
+msgid ""
+"<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
+"first element of a block. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:41
+msgid ""
+"<b>Case f</b>: <code>t</code> is in a block and <code>t-o</code> is the last "
+"element of another block.  They are merged in 3 flips as follows."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:45
+msgid ""
+"<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
+"element of another block. Both blocks are merged in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:48
+msgid ""
+"<b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
+"block (the difference with case g is that <code>t+(k+1)o</code> is now the "
+"<i>first</i> element of its block). Both blocks are merged in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:54
+msgid ""
+"<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
+"block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
+"is fliped. The algorithm then stops."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:57
+msgid ""
+"Each iteration increases the size of the blocks, so the algorithm eventually "
+"halts in all cases. A finer analysis would show that it takes at most "
+"<code>(5n+5)/3</code> steps to sort the stack."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/pancake/GatesPancake.html:60
+msgid "Your turn"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:61
+msgid ""
+"You now have almost enough information to implement this algorithm on your "
+"own. We just have to remove the last remaining ambiguities to ensure that "
+"you implement exactly the same algorithm that the correction. If several "
+"cases apply to your situation, then you should use the first given one. For "
+"example, if both cases a and b apply (with <code>t+1</code> on case <b>a</b> "
+"and <code>t-1</code> on case <b>b</b>), then you should apply the flips of "
+"case <b>a</b>. If a given case applies for both <code>t+1</code> and "
+"<code>t-1</code>, then you should apply it to <code>t+1</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:67
+msgid ""
+"Note that it is somehow harder than the other exercises we did so far, so "
+"don't be surprised if you need more time to achieve this.  But do not give "
+"hope, you can do it!"
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:70
+msgid "Well, I need some help to start."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:71
+msgid ""
+"First write some helper functions such as isFirst() or isFree(). This will "
+"simplify your main algorithm afterward, that can be written very similarly "
+"to the explication above with a bunch of if conditions.  Factorizing code "
+"this way often helps making your code more readable."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:77
+msgid "My code keeps failing and I don't know how to debug it."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:78
+msgid ""
+"To debug one world after the other and avoid that the messages of all worlds "
+"get intermixed, you can write a show() function that displays its parameter "
+"only if the world size is equal to 5 7 or 9, depending on the world you are "
+"currently debugging. This will help breaking the difficulty in parts by "
+"debugging the situation on after the other."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:83
+msgid ""
+"Also, this universe does not have an historical view as the Sorting universe "
+"(yet), so don't hesitate to print textually the state of the world each time "
+"you enter the main loop."
 msgstr ""
 
 #. type: Content of: <h1>

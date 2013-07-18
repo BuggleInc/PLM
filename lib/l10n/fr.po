@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-16 09:50+0300\n"
+"POT-Creation-Date: 2013-07-19 00:06+0300\n"
 "PO-Revision-Date: 2013-07-16 15:30+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3819,6 +3819,53 @@ msgstr ""
 #: src/lessons/welcome/loop/forloop/LoopFor.html:78
 msgid "Once done, proceed to next exercise."
 msgstr "Une fois ceci fait, passez à l'exercice suivant."
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loop/forloop/LoopCourse.html:1
+msgid "Training Buggle"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourse.html:3
+msgid ""
+"Today, your buggle wants to get some serious exercise: It wants to run 'till "
+"the track burns! Its super-shoes are just perfect to run like hell, but "
+"unfortunately, they can actually damage the track on the long run..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourse.html:6
+msgid ""
+"Your goal is to run the track 10 times, no matter what happens.  Even if the "
+"track suffers, you <b>really HAVE</b> to take that run.  Remember, the track "
+"has four sides, that take eight steps each to run along.  Now go, and show "
+"them what these super shoes can do."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:1
+msgid "Outdoor Training Buggle"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:3
+msgid ""
+"Well, our last training didn't went that well. The track actually burned, "
+"and we are now banned from there.  This time, our buggle decided to practice "
+"outdoor, in the middle of the forest, with its good old shoes instead.  The "
+"problem is that you have to be careful to not fall into water. The track on "
+"which you can run is rather narrow: One side is now 4 steps forward, 2 steps "
+"to the left, 4 steps to the right, 2 steps to the right, 4 steps to the "
+"left, and you want to run 7 around."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:9
+msgid ""
+"Oh crap, running on the grass seems to destroy it too! So just take your 7 "
+"loops around the garden, and move along to the next exercise before anyone "
+"notices the damage you made..."
+msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loop/whileloop/LoopWhile.html:3
@@ -12395,7 +12442,9 @@ msgstr "getStackSize()"
 #: src/lessons/sort/pancake/PancakeWorld.html:8
 msgid ""
 "Returns the size of the stack, that is the amount of pancakes it contains."
-msgstr "Renvoie la taille du tas de crêpes, c'est à dire le nombre de crêpes qui le compose."
+msgstr ""
+"Renvoie la taille du tas de crêpes, c'est à dire le nombre de crêpes qui le "
+"compose."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/PancakeWorld.html:10
@@ -12411,10 +12460,16 @@ msgstr "getPancakeRadius(rang)"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/PancakeWorld.html:13
+#, fuzzy
+#| msgid ""
+#| "Returns the radius of the pancake passed as argument, with the rank of "
+#| "the bottom pancake being 0."
 msgid ""
 "Returns the radius of the pancake passed as argument, with the rank of the "
-"bottom pancake being 0."
-msgstr "Renvoie le rayon de la crêpe passée en argument, sachant que le rang de la crêpe du bas est 0."
+"top-most pancake being 0."
+msgstr ""
+"Renvoie le rayon de la crêpe passée en argument, sachant que le rang de la "
+"crêpe du bas est 0."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/PancakeWorld.html:15
@@ -12430,10 +12485,16 @@ msgstr "isPancakeUpsideDown(rang)"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/pancake/PancakeWorld.html:18
+#, fuzzy
+#| msgid ""
+#| "Returns whether the pancake passed as argument (the bottom pancake is of "
+#| "rank 0) is upside-down, that is, if its burned side is on top."
 msgid ""
-"Returns whether the pancake passed as argument (the bottom pancake is of "
-"rank 0) is upside-down, that is, if its burned side is on top."
-msgstr "Renvoie ssi la crêpe passée en paramètre (la crêpe du bas étant de rang 0) est à l'envers, c'est à dire si sa face brulée est en haut."
+"Returns whether the pancake passed as argument upside-down, that is, if its "
+"burned side is on top. As usual, the top-most pancake is of rank 0."
+msgstr ""
+"Renvoie ssi la crêpe passée en paramètre (la crêpe du bas étant de rang 0) "
+"est à l'envers, c'est à dire si sa face brulée est en haut."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/PancakeWorld.html:20
@@ -12452,7 +12513,9 @@ msgstr "flip(quantité)"
 msgid ""
 "Flips the <code>amount</code> first pancakes composing the stack, from the "
 "top of it."
-msgstr "Retourne les <code>quantité</code> premières crêpes de la pile, en partant du sommet de celle-ci."
+msgstr ""
+"Retourne les <code>quantité</code> premières crêpes de la pile, en partant "
+"du sommet de celle-ci."
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/PancakeWorld.html:25
@@ -12483,7 +12546,12 @@ msgid ""
 "the American Mathematical Monthly. The question is not only to sort the "
 "pancakes, but to determine <code>f(n)</code> the <i>minimal</i> amount of "
 "flips mandated to sort any stack of size <code>n</code>."
-msgstr "Il est inspiré d'un problème introduit pour la première fois en 1975 par Harry Dweighter dans le journal de mathématique «American Mathematical Monthly». La question n'est pas tant de trier les crêpes que de déterminer <code>f(n)</code>, le nombre <i>minimal</i> de retournements nécessaires pour trier n'importe quelle pile de taille <code>n</code>. "
+msgstr ""
+"Il est inspiré d'un problème introduit pour la première fois en 1975 par "
+"Harry Dweighter dans le journal de mathématique «American Mathematical "
+"Monthly». La question n'est pas tant de trier les crêpes que de déterminer "
+"<code>f(n)</code>, le nombre <i>minimal</i> de retournements nécessaires "
+"pour trier n'importe quelle pile de taille <code>n</code>. "
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/PancakeWorld.html:35
@@ -12493,7 +12561,12 @@ msgid ""
 "providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ (5n"
 "+5)/3</code>.  This was the only publication of Bill Gates before he "
 "invented Windows and became rich."
-msgstr "Ce problème est maintenant célèbre car Bill Gates a publié son seul article scientifique sur ce sujet (avec C. Papadimitriou). Ils ont proposé un algorithme plus rapide et démontré ainsi que <code>17n/16 ≤ f(n) ≤ (5n+5)</code>. Ce fut la seule publication de Bill Gates avant qu'il n'invente Windows et devienne riche. "
+msgstr ""
+"Ce problème est maintenant célèbre car Bill Gates a publié son seul article "
+"scientifique sur ce sujet (avec C. Papadimitriou). Ils ont proposé un "
+"algorithme plus rapide et démontré ainsi que <code>17n/16 ≤ f(n) ≤ (5n+5)</"
+"code>. Ce fut la seule publication de Bill Gates avant qu'il n'invente "
+"Windows et devienne riche. "
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/PancakeWorld.html:39
@@ -12501,7 +12574,10 @@ msgid ""
 "Then, David X. Cohen, the inventor of the Futurama comics with many "
 "mathematical references, introduced the variant with burnt pancakes and "
 "studied its complexity with Manuel Blum in 1993."
-msgstr "Par la suite, David X. Cohen, l'inventeur du dessin animé Futurama aux nombreuses références mathématiques, introduit en 1993 la variante des crêpes brulées et étudie sa complexité avec Manuel Blum."
+msgstr ""
+"Par la suite, David X. Cohen, l'inventeur du dessin animé Futurama aux "
+"nombreuses références mathématiques, introduit en 1993 la variante des "
+"crêpes brulées et étudie sa complexité avec Manuel Blum."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/PancakeWorld.html:42
@@ -12512,12 +12588,22 @@ msgid ""
 "can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
 "the Gates algorithm.  That's determining the minimal amount of steps that is "
 "NP."
-msgstr "Un article de 2013 (par L. Bulteau, G. Fertin and I. Rusu) a prouvé que ce problème est NP-Complet, c'est à dire qu'il n'existe pas d'algorithme efficace pour déterminer le nombre minimal de retournements pour toute taille de pile. Naturellement, le problème du tri de la pile n'est pas NP-complet en lui-même puisqu'on peut le résoudre en 2n-3 étapes avec l'algorithme naïf et (5n+5)/3 étapes avec l'algorithme de Gates. C'est la détermination du nombre minimal de coups qui est NP."
+msgstr ""
+"Un article de 2013 (par L. Bulteau, G. Fertin and I. Rusu) a prouvé que ce "
+"problème est NP-Complet, c'est à dire qu'il n'existe pas d'algorithme "
+"efficace pour déterminer le nombre minimal de retournements pour toute "
+"taille de pile. Naturellement, le problème du tri de la pile n'est pas NP-"
+"complet en lui-même puisqu'on peut le résoudre en 2n-3 étapes avec "
+"l'algorithme naïf et (5n+5)/3 étapes avec l'algorithme de Gates. C'est la "
+"détermination du nombre minimal de coups qui est NP."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/PancakeWorld.html:47
 msgid "Further information can be found on the wikipedia page."
-msgstr "Pour plus d'information, référez vous à la page anglophone de wikipedia (http://en.wikipedia.org/wiki/Pancake_sorting) ou à cette page, très bien faite: http://eljjdx.canalblog.com/archives/2013/02/03/26309722.html"
+msgstr ""
+"Pour plus d'information, référez vous à la page anglophone de wikipedia "
+"(http://en.wikipedia.org/wiki/Pancake_sorting) ou à cette page, très bien "
+"faite: http://eljjdx.canalblog.com/archives/2013/02/03/26309722.html"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BasicPancake.html:1
@@ -12538,14 +12624,21 @@ msgid ""
 "operation is to flip some pancakes that are on top of the stack."
 msgstr ""
 "Le problème du tri des crêpes est un puzzle simple où vous avez une pile de\n"
-"crêpes, toutes de taille différente. Le crêpier étant légèrement psychorigide,\n"
-"il déteste quand ses crêpes ne sont pas bien ordonnées dans l'assiette. Il ne se\n"
+"crêpes, toutes de taille différente. Le crêpier étant légèrement "
+"psychorigide,\n"
+"il déteste quand ses crêpes ne sont pas bien ordonnées dans l'assiette. Il "
+"ne se\n"
 "sent bien que quand elles sont bien rangées, avec les petites au dessus des\n"
-"grandes. Comme tous les crêpiers, il est passé maître dans l'art du retournement\n"
-"de crêpes à la spatule. Il peut retourner une crêpe au sommet de la pile, ou\n"
-"même plusieurs à la fois. Le truc est qu'il n'a qu'une seule assiette et que la\n"
-"table est trop sale pour poser des crêpes dessus, même temporairement. La seule\n"
-"opération autorisée est alors de retourner un certain nombre de crêpes au sommet\n"
+"grandes. Comme tous les crêpiers, il est passé maître dans l'art du "
+"retournement\n"
+"de crêpes à la spatule. Il peut retourner une crêpe au sommet de la pile, "
+"ou\n"
+"même plusieurs à la fois. Le truc est qu'il n'a qu'une seule assiette et que "
+"la\n"
+"table est trop sale pour poser des crêpes dessus, même temporairement. La "
+"seule\n"
+"opération autorisée est alors de retourner un certain nombre de crêpes au "
+"sommet\n"
 "de la pile."
 
 #. type: Content of: <p>
@@ -12556,7 +12649,8 @@ msgid ""
 "where the bottom pancake is at rank 0, and the one above at rank 1."
 msgstr ""
 "Vous devez aider ce pauvre homme à trier sa pile en retournant des\n"
-"crêpes. Chaque crêpe est définie par son rayon et son rang dans la pile. La pile\n"
+"crêpes. Chaque crêpe est définie par son rayon et son rang dans la pile. La "
+"pile\n"
 "la plus basse est de rang 0, et celle placée au dessus d'elle est de rang 1."
 
 #. type: Content of: <p>
@@ -12568,11 +12662,15 @@ msgid ""
 "concept of algorithm to absolute beginners that wonder about our science. "
 "More information at http://www.loria.fr/~quinson/Mediation/SMN/ (in French)."
 msgstr ""
-"Il est conseillé de commencer par jouer physiquement avec des bouts de papier ou\n"
-"de carton pour bien comprendre le problème. C'est même l'une des activités que\n"
-"j'utilise dans mon projet SMN (Sciences Manuelles du Numérique) pour introduire\n"
+"Il est conseillé de commencer par jouer physiquement avec des bouts de "
+"papier ou\n"
+"de carton pour bien comprendre le problème. C'est même l'une des activités "
+"que\n"
+"j'utilise dans mon projet SMN (Sciences Manuelles du Numérique) pour "
+"introduire\n"
 "le concept d'algorithme aux débutants curieux de notre science. Pour plus\n"
-"d'information, allez visiter le site du projet: http://www.loria.fr/~quinson/Mediation/SMN/ "
+"d'information, allez visiter le site du projet: http://www.loria.fr/~quinson/"
+"Mediation/SMN/ "
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:22
@@ -12585,7 +12683,10 @@ msgid ""
 "You should try to first move the largest pancake to the bottom, and then the "
 "largest but one pancake on top of it, and then the one just smaller on top, "
 "and so on."
-msgstr "Vous devez tout d'abord parvenir à placer la plus grande crêpe en bas de la pile et ensuite placer celle juste plus petite au dessus, puis celle plus petite et ainsi de suite."
+msgstr ""
+"Vous devez tout d'abord parvenir à placer la plus grande crêpe en bas de la "
+"pile et ensuite placer celle juste plus petite au dessus, puis celle plus "
+"petite et ainsi de suite."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:27
@@ -12596,19 +12697,24 @@ msgstr "Ce premier indice n'était pas suffisant, j'ai besoin de plus d'aide."
 #: src/lessons/sort/pancake/BasicPancake.html:28
 msgid ""
 "So first, you need to move the largest pancake at the bottom of the stack."
-msgstr "Il vous faut donc amener la plus grande des crêpes tout en bas de la pile."
+msgstr ""
+"Il vous faut donc amener la plus grande des crêpes tout en bas de la pile."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:29
 msgid ""
 "Can you imagine a situation in which you can easily bring this damn large "
 "pancake to the bottom?"
-msgstr "Est ce que vous pouvez imaginer une situation où il est facile d'emener cette satanée grande crêpe tout en bas ?"
+msgstr ""
+"Est ce que vous pouvez imaginer une situation où il est facile d'emener "
+"cette satanée grande crêpe tout en bas ?"
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:30
 msgid "How could you reach this situation from the current one?"
-msgstr "Et comment pourriez vous parvenir à cette situation à partir de la situation courante?"
+msgstr ""
+"Et comment pourriez vous parvenir à cette situation à partir de la situation "
+"courante?"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BurnedPancake.html:1
@@ -12621,7 +12727,183 @@ msgid ""
 "Hard blow for the chef! The pancakes got burnt on one side! There is no way "
 "he can deliver a stack of pancakes with visibly burnt pancakes! You've got "
 "to help him ensuring that no pancake is upside-down while sorting his stack."
-msgstr "Coup dur pour le crèpier! Les crêpes ont brulé sur une face! Il est strictement impossible qu'il serve une pile de crêpes où l'on voit la face brulée! Vous devez absolument l'aider à s'assurer qu'aucune face visible ne soit brulée tandis qu'il trie sa pile."
+msgstr ""
+"Coup dur pour le crèpier! Les crêpes ont brulé sur une face! Il est "
+"strictement impossible qu'il serve une pile de crêpes où l'on voit la face "
+"brulée! Vous devez absolument l'aider à s'assurer qu'aucune face visible ne "
+"soit brulée tandis qu'il trie sa pile."
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/GatesPancake.html:1
+#, fuzzy
+#| msgid "Pancake Sorting"
+msgid "Faster Pancake Sorting"
+msgstr "Trier des crêpes"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:3
+msgid ""
+"Unlike others sorting problem, the expensive operation is not the comparison "
+"of values, but the flipping of pancakes. In this exercise, we will explore "
+"another algorithm that attempt to reduce the amount of stack flipping. The "
+"funny side is that this algorithm was first introduced by Bill Gates, before "
+"invented Windows."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:8
+msgid ""
+"The basic idea is to grow sequences of sorted pancakes, not necessarily "
+"starting from the bottom.  We say that a sequence of ordered pancakes "
+"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
+"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
+"radius <code>t</code>) and search for the <code>t+1</code> or <code>t-1</"
+"code> pancakes (the considered neighbor is noted <code>t+o</code>). Eight "
+"cases may happen:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:15
+msgid ""
+"<b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are "
+"then merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:19
+msgid ""
+"<b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of "
+"a block. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:24
+msgid ""
+"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t"
+"+1</code> are the last elements of blocks.  Both blocs and t are merged all "
+"together in 4 flips.  Beware, if either <code>t-1</code> or <code>t+1</code> "
+"does not exist (because <code>t</code> is 0 or max), only two flips are "
+"mandated."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:32
+msgid ""
+"<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is free. "
+"They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:37
+msgid ""
+"<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
+"first element of a block. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:41
+msgid ""
+"<b>Case f</b>: <code>t</code> is in a block and <code>t-o</code> is the last "
+"element of another block.  They are merged in 3 flips as follows."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:45
+msgid ""
+"<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
+"element of another block. Both blocks are merged in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:48
+msgid ""
+"<b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
+"block (the difference with case g is that <code>t+(k+1)o</code> is now the "
+"<i>first</i> element of its block). Both blocks are merged in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:54
+msgid ""
+"<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
+"block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
+"is fliped. The algorithm then stops."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:57
+msgid ""
+"Each iteration increases the size of the blocks, so the algorithm eventually "
+"halts in all cases. A finer analysis would show that it takes at most "
+"<code>(5n+5)/3</code> steps to sort the stack."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/pancake/GatesPancake.html:60
+#, fuzzy
+#| msgid "Your turn..."
+msgid "Your turn"
+msgstr "À vous de jouer..."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:61
+msgid ""
+"You now have almost enough information to implement this algorithm on your "
+"own. We just have to remove the last remaining ambiguities to ensure that "
+"you implement exactly the same algorithm that the correction. If several "
+"cases apply to your situation, then you should use the first given one. For "
+"example, if both cases a and b apply (with <code>t+1</code> on case <b>a</b> "
+"and <code>t-1</code> on case <b>b</b>), then you should apply the flips of "
+"case <b>a</b>. If a given case applies for both <code>t+1</code> and "
+"<code>t-1</code>, then you should apply it to <code>t+1</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:67
+msgid ""
+"Note that it is somehow harder than the other exercises we did so far, so "
+"don't be surprised if you need more time to achieve this.  But do not give "
+"hope, you can do it!"
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:70
+msgid "Well, I need some help to start."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:71
+msgid ""
+"First write some helper functions such as isFirst() or isFree(). This will "
+"simplify your main algorithm afterward, that can be written very similarly "
+"to the explication above with a bunch of if conditions.  Factorizing code "
+"this way often helps making your code more readable."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:77
+msgid "My code keeps failing and I don't know how to debug it."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:78
+msgid ""
+"To debug one world after the other and avoid that the messages of all worlds "
+"get intermixed, you can write a show() function that displays its parameter "
+"only if the world size is equal to 5 7 or 9, depending on the world you are "
+"currently debugging. This will help breaking the difficulty in parts by "
+"debugging the situation on after the other."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:83
+msgid ""
+"Also, this universe does not have an historical view as the Sorting universe "
+"(yet), so don't hesitate to print textually the state of the world each time "
+"you enter the main loop."
+msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/smn/Main.html:1
