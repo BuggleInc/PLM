@@ -21,9 +21,9 @@ public class AlgCocktailSort3Entity extends SortingEntity {
 					swap(i,i+1);
 					swapped =true;
 				}
-			if (!swapped) {
+			if (!swapped) 
 				return;
-			}
+			
 			swapped=false;
 			end--;
 			for (int i=end; i>=begin; i--)
