@@ -36,11 +36,11 @@ public class LoopStairsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	/* BEGIN TEMPLATE */
 	public void run() { 
+		/* BEGIN SOLUTION */
 		forward();
 		forward();
 		forward();
 		turnLeft();
-		/* BEGIN SOLUTION */
 		for (int i = 0; i<8;i++) { 
 			forward();
 			turnRight();
