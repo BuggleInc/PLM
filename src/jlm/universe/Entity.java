@@ -239,6 +239,10 @@ public abstract class Entity {
 						} else if (cause.type.toString().equals("<type 'exceptions.TypeError'>")) {
 							msg.append(Game.i18n.tr("TypeError raised: you are probably misusing a function or something.\n"));
 							msg.append(cause.value+"\n");
+						} else if (cause.type.toString().equals("<type 'exceptions.UnboundLocalError'>")) {
+							msg.append(Game.i18n.tr("UnboundLocalError raised: you are probably using a global variable that is not declared as such.\n"));
+							msg.append(cause.value+"\n");
+
 
 							/* FIXME: how could we factorize the world's error? */ 
 						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
