@@ -29,11 +29,11 @@ import org.python.core.PyTraceback;
 public abstract class Entity {
 	protected String name;
 	protected World world;
-	
+
 	private Semaphore oneStepSemaphore = new Semaphore(0);
-	
+
 	public Entity() {}
-	
+
 	public Entity(String name) {
 		this.name=name;
 	}
@@ -44,7 +44,7 @@ public abstract class Entity {
 			world.addEntity(this);
 		}
 	}
-	
+
 	public String getName() {
 		return this.name;
 	}
@@ -52,7 +52,7 @@ public abstract class Entity {
 	public void setName(String name) {
 		this.name = name;
 	}	
-	
+
 	public World getWorld() {
 		return world;
 	}
@@ -96,7 +96,7 @@ public abstract class Entity {
 			}
 		}		
 	}
-	
+
 	/** Copy fields of the entity passed in argument */
 	public void copy(Entity other) {
 		setName(other.getName());
@@ -105,7 +105,7 @@ public abstract class Entity {
 	/** Copy constructor */
 	public abstract Entity copy();
 
-	
+
 	/* Stuff related to tracing mechanism.
 	 * 
 	 * This is the ability to highlight the current instruction in step-by-step execution. 
@@ -127,7 +127,7 @@ public abstract class Entity {
 	public StackTraceElement[] getCurrentStack() {
 		return Thread.currentThread().getStackTrace();
 	}
-	
+
 	/** Retrieve one parameter from the world */
 	public Object getParam(int i) {
 		return world.parameters[i];
@@ -144,7 +144,7 @@ public abstract class Entity {
 	 *    
 	 */
 	protected abstract void run() throws Exception;
-	
+
 	/** Make the entity run, according to the used universe and programming language.
 	 * 
 	 * This task is not trivial given that it depends on the universe and the programming language:
@@ -166,119 +166,129 @@ public abstract class Entity {
 	public void runIt(ExecutionProgress progress) {
 		ProgrammingLanguage progLang = Game.getProgrammingLanguage();
 		ScriptEngine engine ;
-		try {
-			if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
+		if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
+			try {
 				run();
-			} else {
+			} catch (Exception e) {
+				String msg = Game.i18n.tr("The execution of your program raised an exception: {0}\n" + 
+						" Please fix your code.\n",e.getLocalizedMessage());
+
+				System.err.println(msg);
+				progress.setCompilationError(msg);
+				e.printStackTrace();
+			}
+		} else {
+			try {
 				/* We could try to optimize here by not starting one engine for each entity but only one per language, in which the entities would be in separate contexts. 
 				 * On the other hand, the garbage collection would be harder this way and it works as is... */
 				ScriptEngineManager manager = new ScriptEngineManager();       
 				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
 				if (engine==null) 
-					throw new RuntimeException("Failed to start an interpreter for "+progLang.getLang().toLowerCase());
+					throw new RuntimeException(Game.i18n.tr("Failed to start an interpreter for {0}",progLang.getLang().toLowerCase()));
 
 				/* Inject the entity into the scripting world so that it can forward script commands to the world */
 				engine.put("entity", this);
 				/* Inject commands' wrappers that forward the calls to the entity */
 				this.getWorld().setupBindings(progLang,engine);
-				
+
 				if (progLang.equals(Game.PYTHON)) 
 					engine.eval(
 							/* getParam is in every Entity, so put it here to not request the universe to call super.setupBinding() */
 							"def getParam(i):\n"+
 							"  return entity.getParam(i)\n");									
-					
-				
+
+
 				String script = getScript(progLang);
-				
+
 				if (Game.getInstance().isDebugEnabled())
 					System.err.println("Here is the script >>>>"+script+"<<<<");
-				
+
 				if (script == null) 
-					System.err.println("No "+progLang+" script source for entity "+this);
+					System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against JLM.",progLang,this));
 				else {
 					/* that's not really clean to get the output working when we 
 					 * redirect to the graphical console, but it works. */
 					setScriptOffset(progLang, getScriptOffset(progLang)+7);
 					engine.eval(
 							"import sys;\n" +
-							"import java.lang;\n" +
-							"class JLMOut:\n" +
-							"  def write(obj,msg):\n" +
-							"    java.lang.System.out.print(str(msg))\n" +
-							"sys.stdout = JLMOut()\n"+
-							"sys.stderr = JLMOut()\n"+
-							script);
+									"import java.lang;\n" +
+									"class JLMOut:\n" +
+									"  def write(obj,msg):\n" +
+									"    java.lang.System.out.print(str(msg))\n" +
+									"sys.stdout = JLMOut()\n"+
+									"sys.stderr = JLMOut()\n"+
+									script);
 				}
-			}
-		} catch (ScriptException e) {
-			if (e.getCause() instanceof PyException) { // This seem to be all exceptions raised by python
-				PyException cause = (PyException) e.getCause();
-				
-				StringBuffer msg = new StringBuffer();
-	
-				if (cause.type.toString().equals("<type 'exceptions.SyntaxError'>")) {
-					msg.append("Syntax error at line "+((cause.value.__findattr__("lineno").asInt())-getScriptOffset(Game.PYTHON))
-							+": "+cause.value.__findattr__("msg")+"\n");
-					msg.append("In doubt, check your indentation, and that you don't mix tabs and spaces\n");
-					
-				} else { /* It makes sense to display a backtrace for any errors but syntax ones */
-					
-					if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
-						msg.append("NameError raised: You seem to use a non-existent identifier; Please check for typos\n");
-						msg.append(cause.value+"\n");
-					} else if (cause.type.toString().equals("<type 'exceptions.TypeError'>")) {
-						msg.append("TypeError raised: you are probably misusing a function or something.\n");
-						msg.append(cause.value+"\n");
-						
-						/* FIXME: how could we factorize the world's error? */ 
-					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
-						msg.append("Error: there is no baggle to pickup under the buggle");
-					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.AlreadyHaveBaggleException'>")) {
-						msg.append("Error: a buggle cannot carry more than one baggle at the same time");
-					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleInOuterSpaceException'>")) {
-						msg.append("Error: your buggle just teleported to the outer space...");
-					} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleWallException'>")) {
-						msg.append("Error: your buggle just hit a wall. That hurts.");
-						
-					} else {
-						msg.append("Unknown error (please report): "+cause.type.toString()+"\n");
-						msg.append("Its value is: "+cause.value+"\n");
+			} catch (ScriptException e) {
+				if (e.getCause() instanceof PyException) { // This seem to be all exceptions raised by python
+					PyException cause = (PyException) e.getCause();
 
-					}
-				
+					StringBuffer msg = new StringBuffer();
 
-					/* The following is very inspired from <jython>/src/org/python/core/PyTraceback.java, 
-					 * even if we cannot reuse directly this implementation since we want to change all linenos on the fly. 
-					 */
-					PyTraceback tb = cause.traceback;
-					while (tb != null) {
-						tb.tb_lineno-= getScriptOffset(Game.PYTHON);
-						if (tb.tb_frame == null || tb.tb_frame.f_code == null) {
-							msg.append(String.format("  (no code object) at line %s\n", tb.tb_lineno));
+					if (cause.type.toString().equals("<type 'exceptions.SyntaxError'>")) {
+						msg.append(Game.i18n.tr("Syntax error at line {0}: {1}\n" +
+								"In doubt, check your indentation, and that you don't mix tabs and spaces\n",
+								((cause.value.__findattr__("lineno").asInt())-getScriptOffset(Game.PYTHON)),
+								cause.value.__findattr__("msg")));
+
+					} else { /* It makes sense to display a backtrace for any errors but syntax ones */
+
+						if (cause.type.toString().equals("<type 'exceptions.NameError'>")) {
+							msg.append(Game.i18n.tr("NameError raised: You seem to use a non-existent identifier; Please check for typos\n"));
+							msg.append(cause.value+"\n");
+						} else if (cause.type.toString().equals("<type 'exceptions.TypeError'>")) {
+							msg.append(Game.i18n.tr("TypeError raised: you are probably misusing a function or something.\n"));
+							msg.append(cause.value+"\n");
+
+							/* FIXME: how could we factorize the world's error? */ 
+						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
+							msg.append(Game.i18n.tr("Error: there is no baggle to pickup under the buggle"));
+						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.AlreadyHaveBaggleException'>")) {
+							msg.append(Game.i18n.tr("Error: a buggle cannot carry more than one baggle at the same time"));
+						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleInOuterSpaceException'>")) {
+							msg.append(Game.i18n.tr("Error: your buggle just teleported to the outer space..."));
+						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleWallException'>")) {
+							msg.append(Game.i18n.tr("Error: your buggle just hit a wall. That hurts."));
+
 						} else {
-							msg.append(String.format("  File \"%.500s\", line %d, in %.500s\n",
-									tb.tb_frame.f_code.co_filename, tb.tb_lineno, tb.tb_frame.f_code.co_name));
-						}
-						tb = (PyTraceback) tb.tb_next;
-					}
-				}				
-				
-				if (Game.getInstance().isDebugEnabled()) {
-					System.err.println("CAUSE: "+cause.value.toString());
-					System.err.println("MSG: "+e.getMessage());
-					System.err.println("BT: "+msg);
-				}
-				
-				progress.setCompilationError(msg.toString());
-			}
-		} catch (Exception e) {
-			String msg = "Script evaluation raised an exception that is not a ScriptEsception but a "+e.getClass()
-							+".\n Please report this as a bug against JLM, with all details allowing to reproduce it.";
+							msg.append(Game.i18n.tr("Unknown error (please report): {0}\nIts value is: {1}",
+									cause.type.toString(),cause.value+"\n"));
 
-			System.err.println(msg);
-			progress.setCompilationError(msg);
-			e.printStackTrace();
+						}
+
+
+						/* The following is very inspired from <jython>/src/org/python/core/PyTraceback.java, 
+						 * even if we cannot reuse directly this implementation since we want to change all linenos on the fly. 
+						 */
+						PyTraceback tb = cause.traceback;
+						while (tb != null) {
+							tb.tb_lineno-= getScriptOffset(Game.PYTHON);
+							if (tb.tb_frame == null || tb.tb_frame.f_code == null) {
+								msg.append(String.format("  (no code object) at line %s\n", tb.tb_lineno));
+							} else {
+								msg.append(String.format("  File \"%.500s\", line %d, in %.500s\n",
+										tb.tb_frame.f_code.co_filename, tb.tb_lineno, tb.tb_frame.f_code.co_name));
+							}
+							tb = (PyTraceback) tb.tb_next;
+						}
+					}				
+
+					if (Game.getInstance().isDebugEnabled()) {
+						System.err.println("CAUSE: "+cause.value.toString());
+						System.err.println("MSG: "+e.getMessage());
+						System.err.println("BT: "+msg);
+					}
+
+					progress.setCompilationError(msg.toString());
+				}
+			} catch (Exception e) {
+				String msg = Game.i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
+						" Please report this as a bug against JLM, with all details allowing to reproduce it.",e.getClass());
+
+				System.err.println(msg);
+				progress.setCompilationError(msg);
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -290,7 +300,7 @@ public abstract class Entity {
 	public String getScript(ProgrammingLanguage lang) {
 		return script.get(lang);
 	}
-	
+
 	private Map<ProgrammingLanguage,Integer> scriptOffset = new HashMap<ProgrammingLanguage, Integer>(); /* the offset to apply to error messages */
 	public void setScriptOffset(ProgrammingLanguage lang, int offset) {
 		scriptOffset.put(lang,  offset);
