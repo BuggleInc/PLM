@@ -68,7 +68,9 @@ import lessons.welcome.loop.dowhileloop.LoopDoWhile;
 import lessons.welcome.loop.forloop.LoopCourse;
 import lessons.welcome.loop.forloop.LoopCourseForest;
 import lessons.welcome.loop.forloop.LoopFor;
+import lessons.welcome.loop.forloop.LoopStairs;
 import lessons.welcome.loop.whileloop.LoopWhile;
+import lessons.welcome.loop.whileloop.WhileMoria;
 import lessons.welcome.methods.args.MethodsArgs;
 import lessons.welcome.methods.basics.Methods;
 import lessons.welcome.methods.doghouse.MethodsDogHouse;
@@ -105,13 +107,16 @@ public class Main extends Lesson {
 		addExercise(new BDR2(this),loopWhile);
 		addExercise(new SlugHunting(this),loopWhile);
 		addExercise(new SlugTracking(this),loopWhile);
+		addExercise(new WhileMoria(this),loopWhile);
 		
 		
 		addExercise(new Variables(this));
 		
 		Lecture loopFor = addExercise(new LoopFor(this));
+		addExercise(new LoopStairs(this), loopFor);
 		addExercise(new LoopCourse(this),loopFor);
 		addExercise(new LoopCourseForest(this),loopFor);
+		
 		addExercise(new LoopDoWhile(this));
 		
 		Lecture methodsVoid = addExercise(new Methods(this));
