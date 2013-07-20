@@ -19,7 +19,7 @@ public class WhileMoria extends ExerciseTemplated {
 				BuggleWorld.newFromFile("lessons/welcome/loop/forloop/moria"),
 		};
 		for (World w: myWorlds)
-			w.setDelay(50); // movint a bit faster than usual
+			w.setDelay(50); // moving a bit faster than usual
 		
 		setup(myWorlds);
 	}
