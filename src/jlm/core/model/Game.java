@@ -159,13 +159,13 @@ public class Game implements IWorldView {
 			System.err.println(i18n.tr("Your progress will be posted to http://identi.ca/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_IDENTICA));
 			addProgressSpyListener(new IdenticaSpy());
 		} else {
-			System.err.println(i18n.tr("Your progress will NOT be posted to identica, as requested by property {0}",Game.PROP_PROGRESS_IDENTICA));			
+			System.err.println(i18n.tr("Your progress will NOT be posted to identica, as requested by the property {0}",Game.PROP_PROGRESS_IDENTICA));			
 		}
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
 			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
 			addProgressSpyListener(new TwitterSpy());
 		} else {
-			System.err.println(i18n.tr("Your progress will NOT be posted to twitter, as requested by property {0}",Game.PROP_PROGRESS_TWITTER));			
+			System.err.println(i18n.tr("Your progress will NOT be posted to twitter, as requested by the property {0}",Game.PROP_PROGRESS_TWITTER));			
 		}
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
