@@ -486,7 +486,7 @@ msgstr "{0}.map:1 : 'Size: NNxMM' était attendu, mais on a lu '{0}'"
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that's out of the world"
 msgstr ""
-"Je ne peux poser un bouggle aux coordonnées {0},{1} : c'est en dehors du "
+"Je ne peux poser un buggle aux coordonnées {0},{1} : c'est en dehors du "
 "monde"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:162
