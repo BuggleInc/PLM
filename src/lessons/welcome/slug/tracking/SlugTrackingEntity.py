@@ -1,14 +1,14 @@
 import java.awt.Color as Color
 
 # BEGIN TEMPLATE
-def isFacingTrail(trailColor):
+def isFacingTrail():
    # write your code here
    # BEGIN SOLUTION
    if isFacingWall():
       return False
    else:
 	  forward()
-	  res = getGroundColor().toString() == trailColor.toString()
+	  res = (getGroundColor() == Color.green)
 	  backward()
 	  return res
    # END SOLUTION

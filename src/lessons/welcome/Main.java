@@ -108,8 +108,6 @@ public class Main extends Lesson {
 		addExercise(new BaggleSeeker(this), loopWhile);
 		addExercise(new BDR(this),loopWhile);
 		addExercise(new BDR2(this),loopWhile);
-		addExercise(new SlugHunting(this),loopWhile);
-		addExercise(new SlugTracking(this),loopWhile);
 		addExercise(new WhileMoria(this),loopWhile);
 		
 		
@@ -130,11 +128,13 @@ public class Main extends Lesson {
 		  addExercise(new MethodsDogHouse(this),methodsVoid);
 		
   		  Lecture picture = addExercise(new MethodsPicture(this),methodsVoid);
-		  addExercise(new MethodsPicture2(this),picture);
-		  addExercise(new MethodsPicture3(this),picture);
- 	 	  addExercise(new MethodsPicture4(this),picture);
+		    addExercise(new MethodsPicture2(this),picture);
+		    addExercise(new MethodsPicture3(this),picture);
+ 	 	    addExercise(new MethodsPicture4(this),picture);
  	 	  
-		addExercise(new MethodsReturning(this));
+ 	 	Lecture methodReturns = addExercise(new MethodsReturning(this));
+		  addExercise(new SlugTracking(this),methodReturns);
+		  addExercise(new SlugHunting(this),methodReturns);
 		
 		addExercise(new MethodsArgs(this));		
 				

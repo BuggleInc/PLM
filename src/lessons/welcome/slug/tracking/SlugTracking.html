@@ -1,23 +1,18 @@
 <h2>Slug Tracking</h2>
 <p>
-After all this excitation of slug hunting, we will have to learn how to track
-their trail. Your buggle just happened to found the trail of
-a slug: a green dribbling tracks. If it manage to follow it to its end, it
-will find a baggle representing an appetizing slug (from a buggle point of
-view). 
+Your buggle is super happy! It just found the green dribbling trail, leading to a big yummy slug. 
+At its end, the buggle is certain to entertain itself with this appetizing slug (represented as a baggle). 
 </p>
-<p>To reach that goal, you had to write the previously given boolean method
-<tt>isFacingTrail</tt>, which should determine whether we are facing a
-green cell or not. Of course, if we are facing a wall, it should return
-false. It would be great if this method could have no <b>side effect</b>.
-on the calling buggle and on the world.</p>
 
-<p>Remember that this method takes the color of the trail we want to
-follow as an argument. Slugs leave green trails, but other prey leave trails
-of other colors. In Java, there is a <i>data type</i> <tt>Color</tt> to
-indicate the colors. The green color is defined by <code>Color.green</code>.</p>
+<p>To reach that goal, you had to write a boolean method <tt>isFacingTrail</tt>, which determines whether 
+we are facing a green cell or not. Of course, if we are facing a wall, it should return
+false without bumping into it. You should make sure that this method has no <b>side effect</b>, i.e. that
+it does not change the state of the calling buggle nor of its world.</p>
 
+<p class="Java">Your tool to that end is the <code>getGroundColor()</code> that returns the color of the 
+current cell. You cannot test whether this color is equal to <code>Color.green</code> with an <code>==</code> 
+sign but instead you have to write something like <code>getGroundColor().equals(Color.green)</code>. This is 
+because green is an <i>object</i> in Java, and because equality between Java object is a bit annoying.</p>   
+ 
 <h3>Exercise goal</h3>
-<a name="Objectives">Complete the <code>isFacingTrail()</code> method (which gets
-called by <code>hunt()</code> automatically). You don't have to write the
-<code>hunt()</code> method.
+<p>Complete the <code>isFacingTrail()</code> method (which gets called automatically).</p>

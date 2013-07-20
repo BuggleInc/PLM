@@ -6,6 +6,16 @@ même si la condition est directement fausse. Certains langages ont des
 constructions spécifiques pour cela, mais pas le langage Python. Mais il n'y
 a pas de problème, je suis sûr que vous pouvez faire sans, n'est-ce pas ?</p>
 
+<p class="Python">A bad solution would be to duplicate the loop content before the loop, but
+code duplication is a <b>very</b> bad habit, and you should always avoid
+it. A better solution is to have a dedicated variable indicating whether we
+are taking the loop for the first time, as follows:</p>
+<pre class="Python">firstTime = True
+while firstTime or (other conditions):
+  firstTime = False
+  (loop body)
+</pre>
+
 <p class="Java">Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
 et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
 parfois que l'on veuille que le corps de la boucle soit évalué au moins une
@@ -15,12 +25,16 @@ variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :
 &nbsp;&nbsp;<b>action()</b>;
 } while (<b>condition</b>);</pre></p>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> Certaines cases du monde sont jaunes, mais votre buggle
-ne supporte pas de s'y trouver comme c'est son cas actuellement. Écrivez le
-code lui permettant d'avancer jusqu'à se trouver sur une case blanche. Vous
-utiliserez pour cela la méthode isGroundWhite(), que seule la buggle de cet
-exercice connaît. Le truc est que même si le sol de la première case est
-blanc, il faut quand même faire avancer la buggle d'un pas.    
+<h3>Objectif de cet exercice</h3>
+<p>Some cells of the world are yellow, but your buggle cannot stand being in
+such cells. Write the necessary code to move forward until the ground gets
+white. For that, use the provided method <code>isGroundWhite()</code>.</p>
+
+<p>The trick is that most buggles of this world are currently on this yellow
+ground that they dislike so much. That is why they are in panic, and every
+buggle rushes one cell forward, even the buggle that was not on a yellow
+cell at first. In other worlds, even if the ground is white on the first
+cell, you still want to move forward to the next cell.</p>    
 
 <p>L'idée général est donc de faire: 
 <pre>avancer jusqu'à se trouver sur une case blanche</pre>

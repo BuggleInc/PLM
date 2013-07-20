@@ -1,42 +1,22 @@
 <h2>Slug Hunting</h2>
 
-<p>
-After all this excitation of dance revolution, we will move on to a slower
-activity : the slug hunting. Your buggle just happened to found the trail of
-a slug: a green dribbling tracks. If it manage to follow it to its end, it
-will find a baggle representing an appetizing slug (from a buggle point of
-view). 
-</p>
+<p>Now that your <code>isFacingTrail()</code> method is working, it's time 
+to write the code to organize the hunting party. Copy/paste your code from the 
+previous exercise, and complete the <code>hunt()</code> method.</p>
 
-<p>
-To reach that goal, you have a boolean method
-<tt>isFacingTrail</tt>, which determine whether we are facing a
-green cell or not. Of course, if we are facing a wall, it returns
-false.In addition, this method preserve the state
-of the calling buggle and of the world. Such a method is said to have no
-<b>side effect</b>.
-</p>
+<p>Following a track is not very difficult: move forward as long as you have the track in front of you.
+If there is not track in front of you anymore, check if the rest of the track is on your left or on 
+your right, and follow it further.</p>
 
-<p>It takes the color of the trail we want to
-follow as an argument. Slugs leave green trails, but other prey leave trails
-of other colors. In Java, there is a <i>data type</i> <tt>Color</tt> to
-indicate the colors. The green color is defined by <code>Color.green</code>.</p>
-	
-<p>In order to hunt your prey, you should not mistake the part of the tracks to follow with the one your
-buggle comes from, you should ask your buggle to leave a tracks behind
-it. Don't forget to use the <code>brushDown()</code>  method to put your
-brush down and <code>brushUp()</code> to move it up again.</p>
+<p>To ensure that you don't mix the track you come from with the one in front of you, 
+the easier is to erase the track when you follow it. Use the method <code>brushDown()</code> 
+to put your brush down and mark the ground, and <code>brushUp()</code> to move it up again.</p>
 
-<p>A buggle can know the color of the cell it is over using the <code>Color
-getGroundColor()</code> method.</p>
-
-<p>Finally, do not forget to capture your prey once you found it (using
-<code>pickUpBaggle()</code>).</p>
+<p>Finally, do not forget to capture your prey once you found it (using <code>pickUpBaggle()</code>).</p>
 
 
 <h3>Exercise goal</h3>
 <a name="Objectives">
-Complete the <code>hunt()</code> method (which gets
-called by <code>run()</code> automatically). You should use the
-<code>isFacingTrail()</code> method that is provided.
+Complete the <code>hunt()</code> method. You probably want to copy over the 
+<code>isFacingTrail()</code> method that you wrote in previous exercise.
 </a>
