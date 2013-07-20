@@ -1,8 +1,10 @@
 20130720:
   * Integrate the pancake exercises into the sorting lesson
   * New pancake exercise about implementing Gates' algorithm
-  * 3 more exercises about the for loop: Stairs, Course and CourseForest
   * 1 more exercise about the while loop: Moria
+  * 2 more exercises about the variables: Big Buggles's Race (1&2)
+  * 3 more exercises about the for loop: Stairs, Course and CourseForest
+  * 1 more exercise about the do/while loop: Poucet
 20130710: 
   * Fix the temporal view of the sorting world (plus various cleanups)
   * Allow to provide feedback easily. One click to open the dialog
