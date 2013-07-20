@@ -1,21 +1,21 @@
-package lessons.welcome.slug.hunting;
+package lessons.welcome.slug;
 
 import java.awt.Color;
 
 
-public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class SlugSnailEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {
-		hunt(); 
+		hunt((Color) getParam(0)); 
 	}
 
 	/* BEGIN TEMPLATE */
-	public void hunt() {
+	public void hunt(Color c) {
 		// Write your code here
 		/* BEGIN SOLUTION */
 		while (! isOverBaggle()) {
-			if (isFacingTrail()) {
+			if (isFacingTrail(c)) {
 				brushDown();
 				forward();
 				brushUp();
@@ -28,12 +28,12 @@ public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	}
 
 	/* BEGIN HIDDEN */
-	boolean isFacingTrail() {
+	boolean isFacingTrail(Color c) {
 		if (isFacingWall())
 			return false;
 
 		forward();
-		boolean res = getGroundColor().equals(Color.green);
+		boolean res = getGroundColor().equals(c);
 		backward();
 		return res;
 

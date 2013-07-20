@@ -1,4 +1,4 @@
-package lessons.welcome.slug.tracking;
+package lessons.welcome.slug;
 
 import java.awt.Color;
 
@@ -9,14 +9,14 @@ import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
-public class SlugTracking extends ExerciseTemplated {
+public class SlugHunting extends ExerciseTemplated {
 
-	public SlugTracking(Lesson lesson) {
+	public SlugHunting(Lesson lesson) {
 		super(lesson);
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 
-		BuggleWorld myWorld = new BuggleWorld("Forrest", 7, 7);
+		BuggleWorld myWorld = new BuggleWorld("Forrest", 8, 7);
 		for (int i = 5; i >= 2; i--)
 			myWorld.setColor(6, i,Color.green);
 		myWorld.setColor(5, 2,Color.green);
@@ -34,12 +34,12 @@ public class SlugTracking extends ExerciseTemplated {
 		}
 		myWorlds[0] = myWorld;
 
-		myWorld = new BuggleWorld("Desert", 7, 7);
+		myWorld = new BuggleWorld("Desert", 8, 7);
 		for (int i = 5; i >= 2; i--)
 		    myWorld.setColor(6, i,Color.green);
 		myWorld.putTopWall(6, 2);
 		myWorld.putLeftWall(6, 3);
-		myWorld.putLeftWall(0, 2);
+		myWorld.putLeftWall(7, 2);
 		myWorld.setColor(5, 2,Color.green);
 		myWorld.setColor(5, 1,Color.green);
 		myWorld.setColor(5, 0,Color.green);

@@ -1,16 +1,19 @@
-package lessons.welcome.slug.tracking;
+package lessons.welcome.slug;
 
 import java.awt.Color;
 
 
-public class SlugTrackingEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {
 		hunt(); 
 	}
 
+	/* BEGIN TEMPLATE */
 	public void hunt() {
+		// Write your code here
+		/* BEGIN SOLUTION */
 		while (! isOverBaggle()) {
 			if (isFacingTrail()) {
 				brushDown();
@@ -21,20 +24,22 @@ public class SlugTrackingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			}
 		}
 		pickUpBaggle();
+		/* END SOLUTION */
 	}
 
-	/* BEGIN TEMPLATE */
+	/* BEGIN HIDDEN */
 	boolean isFacingTrail() {
-		// Write your code here
-		/* BEGIN SOLUTION */
 		if (isFacingWall())
 			return false;
+
 		forward();
-		boolean res = getGroundColor().equals(Color.green); 
+		boolean res = getGroundColor().equals(Color.green);
 		backward();
 		return res;
-		/* END SOLUTION */
+
 	}		
+	/* END HIDDEN */
 	/* END TEMPLATE */
+
 
 }

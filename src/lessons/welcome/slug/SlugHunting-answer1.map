@@ -1,7 +1,6 @@
 BuggleWorld: Desert
-Size: 7x7
+Size: 8x7
 Buggle(3,4): east,black,lightGray,Hunter
-Cell(0,2): white,nobaggle,notopwall,leftwall,
 Cell(2,0): lightGray,nobaggle,notopwall,noleftwall,
 Cell(2,1): lightGray,nobaggle,notopwall,noleftwall,
 Cell(2,2): lightGray,nobaggle,notopwall,noleftwall,
@@ -19,3 +18,4 @@ Cell(6,3): lightGray,nobaggle,notopwall,leftwall,
 Cell(6,4): lightGray,nobaggle,notopwall,noleftwall,
 Cell(6,5): lightGray,nobaggle,notopwall,noleftwall,
 Cell(6,6): lightGray,nobaggle,notopwall,noleftwall,
+Cell(7,2): white,nobaggle,notopwall,leftwall,

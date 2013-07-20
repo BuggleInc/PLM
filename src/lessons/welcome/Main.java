@@ -80,8 +80,9 @@ import lessons.welcome.methods.picture2.MethodsPicture2;
 import lessons.welcome.methods.picture3.MethodsPicture3;
 import lessons.welcome.methods.picture4.MethodsPicture4;
 import lessons.welcome.methods.returning.MethodsReturning;
-import lessons.welcome.slug.hunting.SlugHunting;
-import lessons.welcome.slug.tracking.SlugTracking;
+import lessons.welcome.slug.SlugHunting;
+import lessons.welcome.slug.SlugSnail;
+import lessons.welcome.slug.SlugTracking;
 import lessons.welcome.snake.Snake;
 import lessons.welcome.traversal.column.TraversalByColumn;
 import lessons.welcome.traversal.diagonal.TraversalDiagonal;
@@ -136,7 +137,8 @@ public class Main extends Lesson {
 		  addExercise(new SlugTracking(this),methodReturns);
 		  addExercise(new SlugHunting(this),methodReturns);
 		
-		addExercise(new MethodsArgs(this));		
+		Lecture methodArg = addExercise(new MethodsArgs(this));
+		  addExercise(new SlugSnail(this), methodArg);
 				
 		// arrays exercises 
 		Lecture arrays = addExercise(new Array(this));

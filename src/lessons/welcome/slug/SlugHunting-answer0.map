@@ -1,5 +1,5 @@
 BuggleWorld: Forrest
-Size: 7x7
+Size: 8x7
 Buggle(0,1): west,black,lightGray,Hunter
 Cell(0,1): lightGray,nobaggle,notopwall,noleftwall,
 Cell(1,1): lightGray,nobaggle,notopwall,noleftwall,

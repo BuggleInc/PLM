@@ -1,4 +1,4 @@
-package lessons.welcome.slug.hunting;
+package lessons.welcome.slug;
 
 import java.awt.Color;
 
@@ -9,24 +9,26 @@ import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
-public class SlugHunting extends ExerciseTemplated {
+public class SlugSnail extends ExerciseTemplated {
 
-	public SlugHunting(Lesson lesson) {
+	public SlugSnail(Lesson lesson) {
 		super(lesson);
 
 		BuggleWorld[] myWorlds = new BuggleWorld[2];
 
-		BuggleWorld myWorld = new BuggleWorld("Forrest", 7, 7);
+		BuggleWorld myWorld = new BuggleWorld("Kitty", 8, 7);
 		for (int i = 5; i >= 2; i--)
-			myWorld.setColor(6, i,Color.green);
-		myWorld.setColor(5, 2,Color.green);
+			myWorld.setColor(6, i,Color.pink);
+		myWorld.setColor(5, 2,Color.pink);
 		for (int i = 2; i <= 4; i++)
-			myWorld.setColor(4, i,Color.green);
-		myWorld.setColor(3, 4,Color.green);
+			myWorld.setColor(4, i,Color.pink);
+		myWorld.setColor(3, 4,Color.pink);
 		for (int i = 4; i >= 1; i--)
-			myWorld.setColor(2, i,Color.green);
-		myWorld.setColor(1, 1,Color.green);
-		myWorld.setColor(0, 1,Color.green);
+			myWorld.setColor(2, i,Color.pink);
+		myWorld.setColor(1, 1,Color.pink);
+		myWorld.setColor(0, 1,Color.pink);
+		myWorld.setParameter(new Object[] {Color.pink});
+		
 		try {
 			myWorld.newBaggle(0, 1);
 		} catch (AlreadyHaveBaggleException e) {
@@ -34,23 +36,24 @@ public class SlugHunting extends ExerciseTemplated {
 		}
 		myWorlds[0] = myWorld;
 
-		myWorld = new BuggleWorld("Desert", 7, 7);
+		myWorld = new BuggleWorld("Snail", 8, 7);
 		for (int i = 5; i >= 2; i--)
-		    myWorld.setColor(6, i,Color.green);
+		    myWorld.setColor(6, i,Color.orange);
 		myWorld.putTopWall(6, 2);
 		myWorld.putLeftWall(6, 3);
-		myWorld.putLeftWall(0, 2);
-		myWorld.setColor(5, 2,Color.green);
-		myWorld.setColor(5, 1,Color.green);
-		myWorld.setColor(5, 0,Color.green);
-		myWorld.setColor(4, 0,Color.green);
-		myWorld.setColor(3, 0,Color.green);
-		myWorld.setColor(2, 0,Color.green);
+		myWorld.putLeftWall(7, 2);
+		myWorld.setColor(5, 2,Color.orange);
+		myWorld.setColor(5, 1,Color.orange);
+		myWorld.setColor(5, 0,Color.orange);
+		myWorld.setColor(4, 0,Color.orange);
+		myWorld.setColor(3, 0,Color.orange);
+		myWorld.setColor(2, 0,Color.orange);
 				       
-		myWorld.setColor(3, 4,Color.green);
+		myWorld.setColor(3, 4,Color.orange);
 		for (int i = 4; i >= 1; i--)
-			myWorld.setColor(2, i,Color.green);
-		myWorld.setColor(4, 4,Color.green);
+			myWorld.setColor(2, i,Color.orange);
+		myWorld.setColor(4, 4,Color.orange);
+		myWorld.setParameter(new Object[] {Color.orange});
 
 		try {
 			myWorld.newBaggle(3, 4);
