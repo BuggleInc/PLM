@@ -65,6 +65,7 @@ import lessons.welcome.bool2.WithoutDoubles;
 import lessons.welcome.conditions.Conditions;
 import lessons.welcome.environment.Environment;
 import lessons.welcome.loop.dowhileloop.LoopDoWhile;
+import lessons.welcome.loop.dowhileloop.Poucet;
 import lessons.welcome.loop.forloop.LoopCourse;
 import lessons.welcome.loop.forloop.LoopCourseForest;
 import lessons.welcome.loop.forloop.LoopFor;
@@ -90,6 +91,8 @@ import lessons.welcome.turmites.helloturmite.HelloTurmite;
 import lessons.welcome.turmites.langton.Langton;
 import lessons.welcome.turmites.langtoncolors.LangtonColors;
 import lessons.welcome.turmites.turmitecreator.TurmiteCreator;
+import lessons.welcome.variables.RunFour;
+import lessons.welcome.variables.RunHalf;
 import lessons.welcome.variables.Variables;
 
 public class Main extends Lesson {
@@ -110,14 +113,17 @@ public class Main extends Lesson {
 		addExercise(new WhileMoria(this),loopWhile);
 		
 		
-		addExercise(new Variables(this));
+		Lecture vars = addExercise(new Variables(this));
+		addExercise(new RunFour(this), vars);
+		addExercise(new RunHalf(this), vars);
 		
 		Lecture loopFor = addExercise(new LoopFor(this));
 		addExercise(new LoopStairs(this), loopFor);
 		addExercise(new LoopCourse(this),loopFor);
 		addExercise(new LoopCourseForest(this),loopFor);
 		
-		addExercise(new LoopDoWhile(this));
+		Lecture loopDoWhile = addExercise(new LoopDoWhile(this));
+		addExercise(new Poucet(this), loopDoWhile);
 		
 		Lecture methodsVoid = addExercise(new Methods(this));
 		
