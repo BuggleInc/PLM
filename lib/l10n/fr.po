@@ -3231,7 +3231,7 @@ msgstr ""
 "cela, elles peuvent utiliser des fonctions spécifiques : "
 "<code>isOverBaggle(), isCarryingBaggle(), pickUpBaggle()</code> et "
 "<code>dropBaggle()</code>. Tous les détails se trouvent dans la "
-"documentation accessible depuis \"Help/About this world\"."
+"documentation accessible depuis «Aide/À propos de ce monde»."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/baggleseeker/BaggleSeeker.html:10
@@ -7979,8 +7979,7 @@ msgid ""
 msgstr ""
 "Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de "
 "tri existants. La liste des primitives que vous pouvez utiliser dans vos "
-"programmes est disponible dans la documentation de référence du monde (\"Help"
-"\" -&gt; \"About this world\")."
+"programmes est disponible dans la documentation de référence du monde (Aide / À propos de ce monde)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:14
@@ -8821,8 +8820,7 @@ msgstr ""
 "D'un point de vue pratique, la plupart des méthodes que vous connaissez à "
 "propos des buggles fonctionnent également avec les tortues, à quelques "
 "variantes près. En particulier, la méthode <code>forward</code> prend en "
-"argument le nombre de pas donné comme un nombre double (voir \"About this "
-"world\" dans le menu pour plus de détails)."
+"argument le nombre de pas donné comme un nombre double (voir «Aide / À propos de ce monde» dans le menu pour plus de détails)."
 
 #. type: Content of: <p><p><p><h3>
 #: src/lessons/recursion/square/Square.html:26
@@ -10529,7 +10527,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lightbot/Main.html:4
 msgid "See the <i>About this world</i> dialog for more details."
-msgstr "Référez vous à l'aide <i>About this world</i> pour plus de détails."
+msgstr "Référez vous à l'aide <i>À propos de ce monde</i> pour plus de détails."
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board01TwoSteps.html:1
@@ -10548,7 +10546,7 @@ msgstr ""
 "pour programmeur que d'une vraie leçon (bien qu'il puisse être utilisé pour "
 "enseigner la programmation). Le robot n'est pas programmé en Java, mais "
 "graphiquement. Vous trouverez les ordres disponibles dans la documentation "
-"en utilisant le menu <b>About this world</b>."
+"en utilisant le menu <b>À propos de ce monde</b>."
 
 #. type: Content of: <p><</p><p>
 #: src/lessons/lightbot/Board01TwoSteps.html:6
