@@ -11,20 +11,20 @@ public class BasicPancakeEntity extends PancakeEntity {
 	/* BEGIN TEMPLATE */
 	public void solve() {
 		/* BEGIN SOLUTION */		
-		for ( int pancakesToSort = getStackSize()-1 ; pancakesToSort != -1 && !this.isSorted() ; pancakesToSort-- ) {
-			if ( getPancakeRadius(pancakesToSort) != pancakesToSort+1 ) { // Current pancake is still to be sorted
+		for ( int rank = getStackSize()-1 ; rank != -1 && !this.isSorted() ; rank-- ) {
+			if ( getPancakeRadius(rank) != rank+1 ) { // Current pancake is still to be sorted
 				int indexBigPancake =-1;
-				for (int currentPancake = 0 ; currentPancake < pancakesToSort+1; currentPancake++)
-					if ( this.getPancakeRadius(currentPancake) == pancakesToSort+1) {
+				for (int currentPancake = 0 ; currentPancake < rank+1; currentPancake++)
+					if ( getPancakeRadius(currentPancake) == rank+1) {
 						indexBigPancake = currentPancake;	// gotcha !
 						break;
 					}
 				
 				if ( indexBigPancake != 0 )
-					this.flip(indexBigPancake+1);	// putting the pancake at the top
+					flip(indexBigPancake+1);	// putting the pancake at the top
 					
-				if ( pancakesToSort != 0 )
-					this.flip(this.getPancakeRadius(0));	// hit the bottom !
+				if ( rank != 0 )
+					flip(getPancakeRadius(0));	// hit the bottom now !
 			}	
 		}
 		/* END SOLUTION */

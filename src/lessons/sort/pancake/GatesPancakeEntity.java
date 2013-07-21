@@ -82,8 +82,8 @@ public class GatesPancakeEntity extends PancakeEntity {
 		int o = getPancakeRadius(pos+1) - radius;
 		
 		if (o != -1 && o != 1) {
-			System.out.println("Asked to compute the  blocklenght, but the step o is "+o+" instead of +1 or -1. " +
-					"The lenght is then 1, but you are violating a precondition somehow");
+			System.out.println("Asked to compute the block length, but the step o is "+o+" instead of +1 or -1. " +
+					"The length is then 1, but you are violating a precondition somehow");
 			return 1;
 		}
 		
@@ -240,7 +240,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 					flip(posTPlus + 1);
 					int newPos = getRankOf(tRadius);
 					if (newPos>0)
-						flip(getRankOf(tRadius));
+						flip(newPos);
 					
 				} else if (isLast(posTMinus) && posTMinus != 1) { /* CASE F-: t in a block, t-1 last element */
 					doneF = true;
