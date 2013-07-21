@@ -95,8 +95,12 @@ public class BuggleWorld extends GridWorld {
 	}
 	@Override
 	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
+		BuggleWorld res = new BuggleWorld("toto", 1, 1);
 
-		BuggleWorld res;
+		return readFromFile(path,"BuggleWorld",res);
+	}
+	
+	public World readFromFile(String path, String classname, BuggleWorld res) throws IOException, BrokenWorldFileException {
 		String name;
 		BufferedReader reader = FileUtils.newFileReader(path, "map", false);
 		
@@ -106,7 +110,7 @@ public class BuggleWorld extends GridWorld {
 			throw new BrokenWorldFileException(Game.i18n.tr(
 					"{0}.map: this file does not seem to be a serialized BuggleWorld (the file is empty!)",path));
 		
-		Pattern p = Pattern.compile("^BuggleWorld: ");
+		Pattern p = Pattern.compile("^"+classname+": ");
 		Matcher m = p.matcher(line);
 		if (!m.find())
 			throw new RuntimeException(Game.i18n.tr(
@@ -125,7 +129,9 @@ public class BuggleWorld extends GridWorld {
 		int width = Integer.parseInt(m.group(1)); 
 		int height = Integer.parseInt(m.group(2));
 
-		res = new BuggleWorld(name, width, height);
+		res.setName(name);
+		res.setWidth(width);
+		res.setHeight(height);
 		
 		line = reader.readLine();
 		

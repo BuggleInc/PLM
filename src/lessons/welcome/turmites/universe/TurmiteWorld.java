@@ -1,12 +1,14 @@
 package lessons.welcome.turmites.universe;
 
 import java.awt.Color;
+import java.io.IOException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.World;
 import jlm.universe.bugglequest.Buggle;
@@ -110,4 +112,12 @@ public class TurmiteWorld extends BuggleWorld {
 					"	daWorld.stepDone()\n");
 		}
 	}
+	
+	@Override
+	public World readFromFile(String path) throws IOException, BrokenWorldFileException {
+		TurmiteWorld res = new TurmiteWorld("toto",1, "",1,1,1,1);
+		res.removeEntity(res.getEntity(0));
+		return res.readFromFile(path,"TurmiteWorld",res);
+	}
+
 }
