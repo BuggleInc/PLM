@@ -22,7 +22,7 @@ neighbor is noted <code>t+o</code>). Eight cases may happen:</p>
 
 <ul>
 <li><b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t+1</code> are the last elements of blocks. 
-Both blocs and t are merged all together in 4 flips. 
+Both blocs and <code>t</code> are merged all together in 4 flips. 
 Beware, if either <code>t-1</code> or <code>t+1</code> does not exist (because <code>t</code> is 0 or max), only two flips are mandated.
 <br/>
 <div align="center"><img src="lessons/sort/pancake/img/gates-c.png"/></div>
@@ -38,7 +38,7 @@ Beware, if either <code>t-1</code> or <code>t+1</code> does not exist (because <
 <div align="center"><img src="lessons/sort/pancake/img/gates-e.png"/></div>
 </li></ul>
 
-<ul><li><b>Case f</b>: <code>t</code> is in a block and <code>t-o</code> is the last element of another block. 
+<ul><li><b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last element of another block. 
 They are merged in 3 flips as follows.<br/>
 <div align="center"><img src="lessons/sort/pancake/img/gates-f.png"/></div></li></ul>
 
@@ -55,12 +55,12 @@ They are merged in 3 flips as follows.<br/>
 If <code>t</code> is not 1, the whole stack is fliped. The algorithm then stops.</li></ul>    
 
 <p>Each iteration increases the size of the blocks, so the algorithm eventually halts in all cases. A finer analysis would show that it takes 
-at most <code>(5n+5)/3</code> steps to sort the stack.</p>
+at most <code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve algorithm, that requires 2n-3 steps.</p>
 
 <h2>Your turn</h2>
 <p>You now have almost enough information to implement this algorithm on your own. We just have to remove the last remaining ambiguities 
 to ensure that you implement exactly the same algorithm that the correction. If several cases apply to your situation, then you 
-should use the first given one. For example, if both cases a and b apply (with <code>t+1</code> on case <b>a</b> and <code>t-1</code> 
+should use the first given one. For example, if both cases a and b apply (e.g., with <code>t-1</code> on case <b>a</b> and <code>t+1</code> 
 on case <b>b</b>), then you should apply the flips of case <b>a</b>. If a given case applies for both <code>t+1</code> and <code>t-1</code>,
 then you should apply it to <code>t+1</code>.</p>
 
@@ -68,15 +68,16 @@ then you should apply it to <code>t+1</code>.</p>
 But do not give hope, you can do it!</p>
 
 <p><div class="tip" id="tip-1" alt="Well, I need some help to start.">
-First write some helper functions such as isFirst() or isFree(). This
-will simplify your main algorithm afterward, that can be written very
-similarly to the explication above with a bunch of if conditions.
-Factorizing code this way often helps making your code more readable. 
+First write some helper functions such as <code>isFirst()</code> or
+<code>isFree()</code>. This will simplify your main algorithm
+afterward, that can be written very similarly to the explication
+above with a bunch of if conditions. Factorizing code this way often
+helps making your code more readable.
 </div></p>
 
 <p><div class="tip" id="tip-2" alt="My code keeps failing and I don't know how to debug it.">
 To debug one world after the other and avoid that the messages of all
-worlds get intermixed, you can write a show() function that displays
+worlds get intermixed, you can write a <code>show()</code> function that displays
 its parameter only if the world size is equal to 5 7 or 9, depending
 on the world you are currently debugging. This will help breaking the
 difficulty in parts by debugging the situation on after the other.<br/>

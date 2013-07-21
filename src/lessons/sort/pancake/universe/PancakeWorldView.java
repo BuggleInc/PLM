@@ -1,4 +1,4 @@
-package lessons.sort.pancake;
+package lessons.sort.pancake.universe;
 
 import java.awt.Color;
 import java.awt.Graphics;

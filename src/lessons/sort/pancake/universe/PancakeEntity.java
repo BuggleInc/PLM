@@ -1,4 +1,4 @@
-package lessons.sort.pancake;
+package lessons.sort.pancake.universe;
 
 import jlm.universe.Entity;
 import jlm.universe.World;

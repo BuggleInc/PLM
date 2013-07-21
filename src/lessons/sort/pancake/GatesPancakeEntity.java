@@ -1,5 +1,7 @@
 package lessons.sort.pancake;
 
+import lessons.sort.pancake.universe.PancakeEntity;
+
 
 
 /* This is not exactly the gates algorithm. Here is the original text:

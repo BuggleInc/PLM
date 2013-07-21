@@ -1,5 +1,7 @@
 package lessons.sort.pancake;
 
+import lessons.sort.pancake.universe.PancakeEntity;
+
 public class BasicPancakeEntity extends PancakeEntity {
 
 	public void run() {

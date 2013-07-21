@@ -2,6 +2,8 @@ package lessons.sort.pancake;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
+import lessons.sort.pancake.universe.PancakeEntity;
+import lessons.sort.pancake.universe.PancakeWorld;
 
 public class BasicPancake extends ExerciseTemplated {
 	
