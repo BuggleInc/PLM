@@ -455,6 +455,8 @@ public class BuggleWorld extends GridWorld {
 	public String diffTo(World world) {
 		BuggleWorld other = (BuggleWorld) world;
 		StringBuffer sb = new StringBuffer();
+		if (! other.getName().equals(getName()))
+			sb.append(i18n.tr("  The world's name is {0}",other.getName()));
 		for (int x=0; x<getWidth(); x++) 
 			for (int y=0; y<getHeight(); y++) 
 				if (!getCell(x, y).equals(other.getCell(x, y))) 
