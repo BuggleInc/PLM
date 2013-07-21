@@ -1,23 +1,23 @@
 <h2>Snake World</h2>
 
-We will now teach the buggle to explore its world. Its initial position is
+<p>We will now teach the buggle to explore its world. Its initial position is
 the bottom left corner, and it should visit any cells up to the top
 (coloring the ground on its path. The main loop of the <code>run()</code>
-method (that you should write) is something like: 
+method (that you should write) is something like:</p>
 <pre>
  move brush down
  while we did not reach the final position
    move like a snake
 </pre>
 
-The prototype of this method (its first line) must be:
+<p>The prototype of this method (its first line) must be:</p>
 <pre>public void run()</pre>
-(we will come back later on the meaning of <code>public</code>). We thus
+<p>(we will come back later on the meaning of <code>public</code>). We thus
 have to write two methods in addition to <code>run()</code>. The former
 returns a boolean indicating whether we are on a final position while the
-latter does not return any result and move one snake step forward.
+latter does not return any result and move one snake step forward.</p>
 
-<p>We reached the final position if and only if:
+<p>We reached the final position if and only if both conditions are true:</p>
 <ul>
   <li>We are facing a wall</li>
   <li>There is a wall on the north of the buggle. So, if the buggle is facing
@@ -28,18 +28,20 @@ buggle is facing west, you should check on the right side.<br/>
 <code>getDirection() == Direction.EAST</code> (WEST for west).<br/>
       For the checking itself, nothing magical: you have to turn the buggle and
 check whether it is facing a wall afterward.</li>
-</ul></p>
+</ul>
 
 <p>Then, a snake step can be achieved by moving one step forward if we are not
 facing a wall, and moving to the upper line else (ie, if you look to the
 west facing a wall, you have to turn right, forward and turn right).</p>
 
 <p>Hint: the main loop of the <code>run()</code> method must continue while the
-testing function returns false. Their is thus two way of writing it:
-<pre>while (testingFunction() == false)</pre>
-or
-<pre>while (! testingFunction())</pre>
-It works because the exclamation mark (!) means in Java a boolean negation. 
+testing function returns false. Their is thus two way of writing it:</p>
+<pre class="Java">while (testingFunction() == false)</pre>
+<pre class="python">while testingFunction() == False:</pre>
+<p>or</p>
+<pre class="Java">while (! testingFunction())</pre>
+<pre class="Python">while not testingFunction():</pre>
+<p class="Java">It works because the exclamation mark (!) means in Java a boolean negation.</p>
 
 <p>Your turn...</p>
 

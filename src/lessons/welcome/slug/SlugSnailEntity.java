@@ -26,6 +26,8 @@ public class SlugSnailEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		pickUpBaggle();
 		/* END SOLUTION */
 	}
+   
+	// here comes your isFacingTrail method   
 
 	/* BEGIN HIDDEN */
 	boolean isFacingTrail(Color c) {
