@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-19 00:06+0300\n"
+"POT-Creation-Date: 2013-07-21 14:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1623,12 +1623,12 @@ msgid "Buggle Dance Revolution 2"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:322 src/lessons/welcome/slug/hunting/SlugHunting.html:1
+#: src/lessons/welcome/Main.html:322 src/lessons/welcome/slug/SlugHunting.html:1
 msgid "Slug Hunting"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:335 src/lessons/welcome/slug/tracking/SlugTracking.html:1
+#: src/lessons/welcome/Main.html:335 src/lessons/welcome/slug/SlugTracking.html:1
 msgid "Slug Tracking"
 msgstr ""
 
@@ -1708,7 +1708,7 @@ msgstr ""
 msgid "In this first lesson, the buggles will lead your first steps in programming."
 msgstr ""
 
-#. type: Content of: <p><h3>
+#. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:11
 msgid "The <i>buggles</i>? What is this??"
 msgstr ""
@@ -1723,16 +1723,16 @@ msgid ""
 "that by checking the difference between the <i>World</i> view and the "
 "<i>Objective</i> one.  Depending on the lessons (and your settings in the "
 "Language menu), your code must be written in either Java, JavaScript, Python "
-"or Ruby."
+"or Ruby (depending on the exercise)."
 msgstr ""
 
-#. type: Content of: <p><h3>
-#: src/lessons/welcome/environment/Environment.html:21
+#. type: Content of: <h3>
+#: src/lessons/welcome/environment/Environment.html:22
 msgid "Working environment"
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/environment/Environment.html:23
+#. type: Content of: <p>
+#: src/lessons/welcome/environment/Environment.html:24
 msgid ""
 "Before going any further, get familiar with the working environment. Have a "
 "look at the several elements composing the main window, move your mouse over "
@@ -1744,8 +1744,8 @@ msgid ""
 "Keep posted to the progress of your friends by following @jlmlovers :)"
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/environment/Environment.html:32
+#. type: Content of: <p>
+#: src/lessons/welcome/environment/Environment.html:33
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -1756,13 +1756,13 @@ msgid ""
 "cryptic messages. You'll see, with a bit of habit, we get used to it."
 msgstr ""
 
-#. type: Content of: <p><p><h3>
-#: src/lessons/welcome/environment/Environment.html:40
+#. type: Content of: <p><h3>
+#: src/lessons/welcome/environment/Environment.html:41
 msgid "What am I supposed to do?"
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/environment/Environment.html:42
+#. type: Content of: <p><p>
+#: src/lessons/welcome/environment/Environment.html:43
 msgid ""
 "It's time to write your first program. Simply ask your buggle to move one "
 "step forward using the Source Code pane. For that, simply write the "
@@ -1771,34 +1771,34 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/environment/Environment.html:46 src/lessons/welcome/basics/Basics.html:50
+#: src/lessons/welcome/environment/Environment.html:47 src/lessons/welcome/basics/Basics.html:50
 #, no-wrap
 msgid "forward();"
 msgstr ""
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/environment/Environment.html:47 src/lessons/welcome/basics/Basics.html:50
+#: src/lessons/welcome/environment/Environment.html:48 src/lessons/welcome/basics/Basics.html:50
 #, no-wrap
 msgid "forward()"
 msgstr ""
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/environment/Environment.html:48
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/environment/Environment.html:49
 msgid ""
 "Do not forget the final <code>;</code> which tells the compiler that the "
 "instruction is over (yes, computers are so dumb that they cannot "
 "<i>guess</i> obvious stuff like this)."
 msgstr ""
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/environment/Environment.html:52
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/environment/Environment.html:53
 msgid ""
 "Once done, clic on run, and proceed to next exercise using the File menu "
 "entry"
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/environment/Environment.html:54
+#. type: Content of: <p><p>
+#: src/lessons/welcome/environment/Environment.html:55
 msgid "(or keep around to experiment further if you feel so)."
 msgstr ""
 
@@ -1956,7 +1956,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/basics/Basics.html:77 src/lessons/welcome/conditions/Conditions.html:147 src/lessons/welcome/baggleseeker/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loop/forloop/LoopFor.html:73 src/lessons/welcome/loop/whileloop/LoopWhile.html:26 src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:17 src/lessons/welcome/methods/basics/Methods.html:59 src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/bdr/basics/BDR.html:159 src/lessons/welcome/bdr/extended/BDR2.html:111 src/lessons/welcome/slug/hunting/SlugHunting.html:37 src/lessons/welcome/slug/tracking/SlugTracking.html:20 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/basics/Basics.html:77 src/lessons/welcome/conditions/Conditions.html:147 src/lessons/welcome/baggleseeker/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loop/forloop/LoopFor.html:73 src/lessons/welcome/loop/whileloop/LoopWhile.html:26 src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:59 src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/bdr/basics/BDR.html:159 src/lessons/welcome/bdr/extended/BDR2.html:111 src/lessons/welcome/slug/SlugHunting.html:18 src/lessons/welcome/slug/SlugTracking.html:21 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -2663,6 +2663,43 @@ msgstr ""
 msgid "It's your turn now!"
 msgstr ""
 
+#. type: Content of: <h2>
+#: src/lessons/welcome/variables/RunFour.html:1
+msgid "Run Four bases"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/variables/RunFour.html:3
+msgid ""
+"Today is a great day for the buggles: the Big Buggles' Race begun. It's a "
+"traditional competition in which young buggles prove their value to the "
+"tribe. Both force and intelligence is exercised: you have to rush forward, "
+"but stop as soon as you reach your fourth baggle.  Please help the buggles "
+"to move forward while counting the baggles and to determine when to stop."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/variables/RunHalf.html:1
+msgid "The Four Halves run"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/variables/RunHalf.html:3
+msgid ""
+"Here is the second day of the Big Buggles' Race.  As previously, you have to "
+"run forward until you reach the right cell to stop on.  But this time, you "
+"have to reach the cell where you saw as much baggles as orange cells plus "
+"1.  In other word, the following condition must become true <code>2 * "
+"baggles = orangeCells + 1</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/variables/RunHalf.html:8
+msgid ""
+"You can determine whether you are over a orange cell with the "
+"<code>isOverOrange()</code> method."
+msgstr ""
+
 #. type: Content of: <p>
 #: src/lessons/welcome/loop/forloop/LoopFor.html:3
 msgid ""
@@ -2818,6 +2855,35 @@ msgid "Once done, proceed to next exercise."
 msgstr ""
 
 #. type: Content of: <h2>
+#: src/lessons/welcome/loop/forloop/LoopStairs.html:1
+msgid "Stairway to Heaven"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopStairs.html:3
+msgid ""
+"Your buggle feels a bit depressed today, but it's currently facing a magic "
+"stair: It leads directly to heaven, and each time you walk on it, joyful "
+"colors spur all around."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopStairs.html:6
+msgid ""
+"Your goal is to take this stair, one step after the other.  First devise the "
+"four instructions you have to give you buggle to take one stair step, and "
+"then put them in a loop to take the whole stair."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/forloop/LoopStairs.html:10
+msgid ""
+"And before that, walk a bit forward to reach that stair, and ensure that you "
+"are in the right situation for your loop content to run properly. And once "
+"you reach the heaven, take some steps in your new home."
+msgstr ""
+
+#. type: Content of: <h2>
 #: src/lessons/welcome/loop/forloop/LoopCourse.html:1
 msgid "Training Buggle"
 msgstr ""
@@ -2938,6 +3004,37 @@ msgid ""
 "&nbsp;&nbsp;moveForward()"
 msgstr ""
 
+#. type: Content of: <h2>
+#: src/lessons/welcome/loop/whileloop/WhileMoria.html:1
+msgid "Lost in the Moria"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/whileloop/WhileMoria.html:3
+msgid ""
+"You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
+"will have to clear your way to the exit. Well of course these are only "
+"baggles and you could simply walk away, but it will be easier to program "
+"your buggle so that it moves those \"rocks\" than convincing your buggle "
+"that it could easily walk away without solving the problem..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/whileloop/WhileMoria.html:9
+msgid ""
+"So, you have to find the first baggle blocking the exit (simply walk to the "
+"east until you are over a baggle), take it and move it back to the other "
+"side of the tunnel (walk to the west while you are not over a baggle, and "
+"then move back one step to the east and drop your baggle), and iterate until "
+"you find the exit (that is, the wall to the east side). Afterward, move out "
+"as in the objective world."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/whileloop/WhileMoria.html:16
+msgid "Once you manage to escape this trap, move forward to the next exercise."
+msgstr ""
+
 #. type: Content of: <p>
 #: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:3
 msgid ""
@@ -2951,6 +3048,25 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:7
 msgid ""
+"A bad solution would be to duplicate the loop content before the loop, but "
+"code duplication is a <b>very</b> bad habit, and you should always avoid "
+"it. A better solution is to have a dedicated variable indicating whether we "
+"are taking the loop for the first time, as follows:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:10
+#, no-wrap
+msgid ""
+"firstTime = True\n"
+"while firstTime or (other conditions):\n"
+"  firstTime = False\n"
+"  (loop body)\n"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:16
+msgid ""
 "In a <tt>while</tt> loop, the condition is evaluated before anything else, "
 "and if it's false, the loop body is never evaluated. Sometimes (although not "
 "that often), you would prefer the loop body to get evaluated at least once, "
@@ -2959,7 +3075,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:13
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:22
 #, no-wrap
 msgid ""
 "do {\n"
@@ -2967,33 +3083,141 @@ msgid ""
 "} while (<b>condition</b>);"
 msgstr ""
 
-#. type: Content of: <a>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:17
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:27
 msgid ""
-"<a name=\"Objectives\"> Some cells of the world are yellow, but your buggle "
-"cannot stand being in such cells as it is right now. Write the code needed "
-"to move forward until the ground gets white. You can use for that the "
-"isGroundWhite() method, that only the buggle of this exercise knows. The "
-"trick is that even if the ground is white on the first cell, you still want "
-"to move forward to the next cell."
+"Some cells of the world are yellow, but your buggle cannot stand being in "
+"such cells. Write the necessary code to move forward until the ground gets "
+"white. For that, use the provided method <code>isGroundWhite()</code>."
 msgstr ""
 
-#. type: Content of: <a><p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:23
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:31
+msgid ""
+"The trick is that most buggles of this world are currently on this yellow "
+"ground that they dislike so much. That is why they are in panic, and every "
+"buggle rushes one cell forward, even the buggle that was not on a yellow "
+"cell at first. In other worlds, even if the ground is white on the first "
+"cell, you still want to move forward to the next cell."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:36
 msgid "The general idea is to do something like:"
 msgstr ""
 
-#. type: Content of: <a><p><pre>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:24
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:37
 #, no-wrap
 msgid "move forward until located in a white cell"
 msgstr ""
 
-#. type: Content of: <a><p><p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:26
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:39
 msgid ""
 "<i>Remark:</i> it is also possible to solve this exercise with a classical "
 "<tt>while</tt> loop, but it's not the goal."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:1
+msgid "Tracks of buggles"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:3
+msgid ""
+"Your buggle got lost in a strange maze, and you must help it finding the "
+"exit that is represented in orange.  You cannot simply explain the path to "
+"the exit in something like "
+"<code>turnRight();forward;forward();forward()</code> because you have to "
+"save two buggles at the same time, that are lost in similar but not "
+"identical worlds.  You can switch to the other world by using the combobox "
+"above the world representation (where it's written 'Deep Forest' right now), "
+"and selecting the other entry (that should read 'Deeper Forest')."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:9
+msgid ""
+"The good news is that the path to the exit is written on the ground. As you "
+"can see, the world is made of several corridors, with baggles on the "
+"ground. After each corridor, you should turn left if the corridor contains "
+"three baggels or more, and you have to turn right if there is only 2 baggles "
+"or less."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:13
+msgid ""
+"So, the general form of your code must be something like \"while I did not "
+"find the exit, take the next corridor to decide whether I should turn left "
+"or right at the next intersection\". You can determine whether you are on "
+"the exit cell (that is orange) with the provided <code>exitReached()</code> "
+"method."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:17
+msgid ""
+"To take one corridor, you simply have to run from one intersection to "
+"another while counting the baggles you see on your path. The method "
+"<code>crossing()</code> tells you whether your buggle currently stands on an "
+"intersection.  The extra complexity is that at the beginning of a corridor, "
+"you obviously stand on an intersection, but you still want to move on."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:22
+msgid ""
+"For that, the easiest is to use a <code>do / while</code> loop instead of a "
+"regular <code>while</code> loop to move until the next intersection."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:25
+msgid ""
+"For that, use an extra variable indicating whether you already entered the "
+"corridor, as follows. This will ensure that you execute the loop body at "
+"least once (when <code>firstTime</code> is true)  before we actually use the "
+"value returned by <code>crossing()</code> to determine to continue or not."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:28
+#, no-wrap
+msgid ""
+"firstTime = True\n"
+"while firstTime or not crossing():\n"
+"  firstTime = False\n"
+"  &lt;your body&gt;  \n"
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:34
+msgid "I cannot imagine how to count the baggles I see."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:35
+msgid ""
+"You need a variable that is initialized to 0, and incremented each time you "
+"see a baggle on the ground. A variable used this way is often called "
+"<i>accumulator</i>."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:37
+msgid ""
+"Don't forget to reset your accumulator to 0 at the beginning of each "
+"corridor!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loop/dowhileloop/Poucet.html:40
+msgid ""
+"Oh, and when you reach the exit, don't forget to take an extra step to "
+"actually exit the maze!"
 msgstr ""
 
 #. type: Content of: <p>
@@ -3738,7 +3962,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture3/MethodsPicture3.html:11 src/lessons/welcome/snake/Snake.html:44 src/lessons/welcome/traversal/column/TraversalByColumn.html:52 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
+#: src/lessons/welcome/methods/picture3/MethodsPicture3.html:11 src/lessons/welcome/snake/Snake.html:46 src/lessons/welcome/traversal/column/TraversalByColumn.html:52 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
 msgid "Your turn..."
 msgstr ""
 
@@ -4605,103 +4829,116 @@ msgid "When you program works again, proceed to next exercise."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/hunting/SlugHunting.html:4
+#: src/lessons/welcome/slug/SlugHunting.html:3
 msgid ""
-"After all this excitation of dance revolution, we will move on to a slower "
-"activity : the slug hunting. Your buggle just happened to found the trail of "
-"a slug: a green dribbling tracks. If it manage to follow it to its end, it "
-"will find a baggle representing an appetizing slug (from a buggle point of "
-"view)."
+"Now that your <code>isFacingTrail()</code> method is working, it's time to "
+"write the code to organize the hunting party. Copy/paste your code from the "
+"previous exercise, and complete the <code>hunt()</code> method."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/hunting/SlugHunting.html:12
+#: src/lessons/welcome/slug/SlugHunting.html:7
 msgid ""
-"To reach that goal, you have a boolean method <tt>isFacingTrail</tt>, which "
-"determine whether we are facing a green cell or not. Of course, if we are "
-"facing a wall, it returns false.In addition, this method preserve the state "
-"of the calling buggle and of the world. Such a method is said to have no "
-"<b>side effect</b>."
+"Following a track is not very difficult: move forward as long as you have "
+"the track in front of you.  If there is not track in front of you anymore, "
+"check if the rest of the track is on your left or on your right, and follow "
+"it further."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/hunting/SlugHunting.html:20
+#: src/lessons/welcome/slug/SlugHunting.html:11
 msgid ""
-"It takes the color of the trail we want to follow as an argument. Slugs "
-"leave green trails, but other prey leave trails of other colors. In Java, "
-"there is a <i>data type</i> <tt>Color</tt> to indicate the colors. The green "
-"color is defined by <code>Color.green</code>."
+"To ensure that you don't mix the track you come from with the one in front "
+"of you, the easier is to erase the track when you follow it. Use the method "
+"<code>brushDown()</code> to put your brush down and mark the ground, and "
+"<code>brushUp()</code> to move it up again."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/hunting/SlugHunting.html:25
-msgid ""
-"In order to hunt your prey, you should not mistake the part of the tracks to "
-"follow with the one your buggle comes from, you should ask your buggle to "
-"leave a tracks behind it. Don't forget to use the <code>brushDown()</code> "
-"method to put your brush down and <code>brushUp()</code> to move it up "
-"again."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/hunting/SlugHunting.html:30
-msgid ""
-"A buggle can know the color of the cell it is over using the <code>Color "
-"getGroundColor()</code> method."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/hunting/SlugHunting.html:33
+#: src/lessons/welcome/slug/SlugHunting.html:15
 msgid ""
 "Finally, do not forget to capture your prey once you found it (using "
 "<code>pickUpBaggle()</code>)."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/slug/hunting/SlugHunting.html:38
+#: src/lessons/welcome/slug/SlugHunting.html:19
 msgid ""
-"<a name=\"Objectives\"> Complete the <code>hunt()</code> method (which gets "
-"called by <code>run()</code> automatically). You should use the "
-"<code>isFacingTrail()</code> method that is provided.  </a>"
+"<a name=\"Objectives\"> Complete the <code>hunt()</code> method. You "
+"probably want to copy over the <code>isFacingTrail()</code> method that you "
+"wrote in previous exercise.  </a>"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/tracking/SlugTracking.html:3
+#: src/lessons/welcome/slug/SlugTracking.html:3
 msgid ""
-"After all this excitation of slug hunting, we will have to learn how to "
-"track their trail. Your buggle just happened to found the trail of a slug: a "
-"green dribbling tracks. If it manage to follow it to its end, it will find a "
-"baggle representing an appetizing slug (from a buggle point of view)."
+"Your buggle is super happy! It just found the green dribbling trail, "
+"certainly left by a big yummy slug.  At its end, the buggle is certain to "
+"entertain itself with this appetizing slug (represented as a baggle)."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/tracking/SlugTracking.html:9
+#: src/lessons/welcome/slug/SlugTracking.html:7
 msgid ""
-"To reach that goal, you had to write the previously given boolean method "
-"<tt>isFacingTrail</tt>, which should determine whether we are facing a green "
-"cell or not. Of course, if we are facing a wall, it should return false. It "
-"would be great if this method could have no <b>side effect</b>.  on the "
-"calling buggle and on the world."
+"To reach that goal, you had to write a boolean method "
+"<tt>isFacingTrail</tt>, which determines whether we are facing a green cell "
+"or not. Of course, if we are facing a wall, it should return false without "
+"bumping into it. You should make sure that this method has no <b>side "
+"effect</b>, i.e. that it does not change the state of the calling buggle nor "
+"of its world."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/tracking/SlugTracking.html:15
+#: src/lessons/welcome/slug/SlugTracking.html:12
 msgid ""
-"Remember that this method takes the color of the trail we want to follow as "
-"an argument. Slugs leave green trails, but other prey leave trails of other "
-"colors. In Java, there is a <i>data type</i> <tt>Color</tt> to indicate the "
-"colors. The green color is defined by <code>Color.green</code>."
+"Your tool to that end is the <code>getGroundColor()</code> that returns the "
+"color of the current cell. Just go to the cell you want to test and run that "
+"function. You cannot test whether this color is equal to "
+"<code>Color.green</code> with an <code>==</code> sign but instead you have "
+"to write something like "
+"<code>getGroundColor().equals(Color.green)</code>. This is because green is "
+"an <i>object</i> in Java, and <code>.equals()</code> is the way to go to "
+"test equality between Java objects."
 msgstr ""
 
-#. type: Content of: <a>
-#: src/lessons/welcome/slug/tracking/SlugTracking.html:21
+#. type: Content of: <p>
+#: src/lessons/welcome/slug/SlugTracking.html:18
 msgid ""
-"<a name=\"Objectives\">Complete the <code>isFacingTrail()</code> method "
-"(which gets called by <code>hunt()</code> automatically). You don't have to "
-"write the <code>hunt()</code> method."
+"Your tool to that end is the <code>getGroundColor()</code> that returns the "
+"color of the current cell. Just go to the cell you want to test and run that "
+"function."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
+#: src/lessons/welcome/slug/SlugTracking.html:22
+msgid ""
+"Complete the <code>isFacingTrail()</code> method (which gets called "
+"automatically)."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/slug/SlugSnail.html:1
+msgid "Slugs and Snails"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/slug/SlugSnail.html:3
+msgid ""
+"Yuhu! This time, your buggle found the tracks of much more preys! In the "
+"first world, that's a yummy Kitty Slug (leaving a pink trail) while on the "
+"second world, that's a big fat snail that awaits your buggle at the end of "
+"the orange trail."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/slug/SlugSnail.html:7
+msgid ""
+"You have to copy/paste your code again, and change it so that your methods "
+"take the color of the trail to follow as a parameter. Beside of this, your "
+"code should work as earlier."
+msgstr ""
+
+#. type: Content of: <p>
 #: src/lessons/welcome/snake/Snake.html:3
 msgid ""
 "We will now teach the buggle to explore its world. Its initial position is "
@@ -4719,7 +4956,7 @@ msgid ""
 "   move like a snake\n"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/snake/Snake.html:13
 msgid "The prototype of this method (its first line) must be:"
 msgstr ""
@@ -4730,7 +4967,7 @@ msgstr ""
 msgid "public void run()"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/snake/Snake.html:15
 msgid ""
 "(we will come back later on the meaning of <code>public</code>). We thus "
@@ -4741,15 +4978,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/snake/Snake.html:20
-msgid "We reached the final position if and only if:"
+msgid "We reached the final position if and only if both conditions are true:"
 msgstr ""
 
-#. type: Content of: <p><ul><li>
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/snake/Snake.html:22
 msgid "We are facing a wall"
 msgstr ""
 
-#. type: Content of: <p><ul><li>
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/snake/Snake.html:23
 msgid ""
 "There is a wall on the north of the buggle. So, if the buggle is facing "
@@ -4757,7 +4994,7 @@ msgid ""
 "buggle is facing west, you should check on the right side."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/snake/Snake.html:26
 msgid ""
 "We can get the current heading of the buggle using the "
@@ -4765,7 +5002,7 @@ msgid ""
 "<code>getDirection() == Direction.EAST</code> (WEST for west)."
 msgstr ""
 
-#. type: Content of: <p><ul><li>
+#. type: Content of: <ul><li>
 #: src/lessons/welcome/snake/Snake.html:29
 msgid ""
 "For the checking itself, nothing magical: you have to turn the buggle and "
@@ -4787,25 +5024,37 @@ msgid ""
 "testing function returns false. Their is thus two way of writing it:"
 msgstr ""
 
-#. type: Content of: <p><pre>
+#. type: Content of: <pre>
 #: src/lessons/welcome/snake/Snake.html:39
 #, no-wrap
 msgid "while (testingFunction() == false)"
 msgstr ""
 
-#. type: Content of: <p>
+#. type: Content of: <pre>
 #: src/lessons/welcome/snake/Snake.html:40
+#, no-wrap
+msgid "while testingFunction() == False:"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/snake/Snake.html:41
 msgid "or"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/snake/Snake.html:41
+#. type: Content of: <pre>
+#: src/lessons/welcome/snake/Snake.html:42
 #, no-wrap
 msgid "while (! testingFunction())"
 msgstr ""
 
+#. type: Content of: <pre>
+#: src/lessons/welcome/snake/Snake.html:43
+#, no-wrap
+msgid "while not testingFunction():"
+msgstr ""
+
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:42
+#: src/lessons/welcome/snake/Snake.html:44
 msgid "It works because the exclamation mark (!) means in Java a boolean negation."
 msgstr ""
 
@@ -9377,10 +9626,10 @@ msgstr ""
 #: src/lessons/sort/pancake/GatesPancake.html:24
 msgid ""
 "<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and "
-"<code>t+1</code> are the last elements of blocks.  Both blocs and t are "
-"merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
-"<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
-"two flips are mandated."
+"<code>t+1</code> are the last elements of blocks.  Both blocs and "
+"<code>t</code> are merged all together in 4 flips.  Beware, if either "
+"<code>t-1</code> or <code>t+1</code> does not exist (because <code>t</code> "
+"is 0 or max), only two flips are mandated."
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -9400,7 +9649,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/sort/pancake/GatesPancake.html:41
 msgid ""
-"<b>Case f</b>: <code>t</code> is in a block and <code>t-o</code> is the last "
+"<b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last "
 "element of another block.  They are merged in 3 flips as follows."
 msgstr ""
 
@@ -9434,7 +9683,8 @@ msgstr ""
 msgid ""
 "Each iteration increases the size of the blocks, so the algorithm eventually "
 "halts in all cases. A finer analysis would show that it takes at most "
-"<code>(5n+5)/3</code> steps to sort the stack."
+"<code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve "
+"algorithm, that requires 2n-3 steps."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -9449,10 +9699,10 @@ msgid ""
 "own. We just have to remove the last remaining ambiguities to ensure that "
 "you implement exactly the same algorithm that the correction. If several "
 "cases apply to your situation, then you should use the first given one. For "
-"example, if both cases a and b apply (with <code>t+1</code> on case <b>a</b> "
-"and <code>t-1</code> on case <b>b</b>), then you should apply the flips of "
-"case <b>a</b>. If a given case applies for both <code>t+1</code> and "
-"<code>t-1</code>, then you should apply it to <code>t+1</code>."
+"example, if both cases a and b apply (e.g., with <code>t-1</code> on case "
+"<b>a</b> and <code>t+1</code> on case <b>b</b>), then you should apply the "
+"flips of case <b>a</b>. If a given case applies for both <code>t+1</code> "
+"and <code>t-1</code>, then you should apply it to <code>t+1</code>."
 msgstr ""
 
 #. type: Content of: <p>
@@ -9471,29 +9721,30 @@ msgstr ""
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:71
 msgid ""
-"First write some helper functions such as isFirst() or isFree(). This will "
-"simplify your main algorithm afterward, that can be written very similarly "
-"to the explication above with a bunch of if conditions.  Factorizing code "
-"this way often helps making your code more readable."
+"First write some helper functions such as <code>isFirst()</code> or "
+"<code>isFree()</code>. This will simplify your main algorithm afterward, "
+"that can be written very similarly to the explication above with a bunch of "
+"if conditions. Factorizing code this way often helps making your code more "
+"readable."
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:77
+#: src/lessons/sort/pancake/GatesPancake.html:78
 msgid "My code keeps failing and I don't know how to debug it."
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:78
+#: src/lessons/sort/pancake/GatesPancake.html:79
 msgid ""
 "To debug one world after the other and avoid that the messages of all worlds "
-"get intermixed, you can write a show() function that displays its parameter "
-"only if the world size is equal to 5 7 or 9, depending on the world you are "
-"currently debugging. This will help breaking the difficulty in parts by "
-"debugging the situation on after the other."
+"get intermixed, you can write a <code>show()</code> function that displays "
+"its parameter only if the world size is equal to 5 7 or 9, depending on the "
+"world you are currently debugging. This will help breaking the difficulty in "
+"parts by debugging the situation on after the other."
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:83
+#: src/lessons/sort/pancake/GatesPancake.html:84
 msgid ""
 "Also, this universe does not have an historical view as the Sorting universe "
 "(yet), so don't hesitate to print textually the state of the world each time "

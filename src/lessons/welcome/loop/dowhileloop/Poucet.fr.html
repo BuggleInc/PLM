@@ -1,0 +1,54 @@
+<h2>La buggle Petite Poucette</h2>
+
+<p>Votre buggle est perdue dans un étrange labyrinthe, et elle a besoin de vous
+pour trouver la sortie (représentée par les cases orange). Vous ne pouvez
+pas lui donner son chemin tout simplement avec quelque chose comme
+<code>turnRight();forward();forward();</code> parce qu'il faut secourir deux
+buggles à la fois, perdues dans des labyrinthes similaires mais
+différents. Vous pouvez passer à l'autre monde en cliquant sur le menu
+défilant au dessus de l'endroit où est dessiné le monde. C'est là où est
+écrit "Deep Forest" pour l'instant (forêt profonde), et si vous passez à
+"Deeper Forest" (forêt encore plus profonde), vous verrez l'autre monde. </p>
+
+<p>La bonne nouvelle est que le chemin vers la sortie est en quelque sorte
+écrit au sol. Ces mondes sont composés de plusieurs corridors, avec des
+baggles par terre. À chaque embranchement, il faut prendre à gauche si le
+corridor qu'on vient de parcourir contient 3 baggles ou plus, ou à droite
+s'il contient 2 baggles ou moins.</p>     
+
+<p>La forme générale de votre code doit donc être quelque chose comme «tant que
+je n'ai pas trouvé la sortie, prendre le prochain couloir pour décider s'il
+faut tourner à gauche ou à droite au prochain embranchement». Vous pouvez
+déterminer si vous avez rejoint la sortie (indiquée en orange) avec la
+méthode <code>exitReached()</code> fournie.</p>
+
+<p>Pour prendre un couloir, il suffit de courir d'une intersection à l'autre
+tout en comptant les baggles en chemin. La méthode <code>crossing()</code>
+indique si vous vous trouvez actuellement à un embranchement. Ce qui
+complique un peu, c'est qu'au début du couloir, vous vous trouvez bien
+entendu à une intersection, mais vous souhaitez avancer quand même.</p> 
+
+<p class="Java">Pour cela, le plus simple est d'utiliser une boucle <code>do / while</code>
+au lieu d'une boucle <code>while</code> pour se déplacer d'une intersection
+à l'autre.</p>
+
+<p class="Python">Pour cela, utilisez une variable supplémentaire indiquant si vous êtes déjà
+entré dans le couloir, comme dans l'exemple suivant. Ainsi, vous exécuterez
+le corps de la boucle au moins une fois (quand <code>premiereFois</code> est
+vrai) tandis qu'aux tours de boucles suivants, c'est la valeur de retour de
+<code>crossing()</code> qui détermine s'il faut s'arrêter ou non.</p>
+<pre class="Python">premiereFois = True
+while premiereFois or not crossing():
+  premiereFois = False
+  &lt;your body&gt;  
+</pre> 
+
+<p><div class="tip" id="tip-1" alt="Je n'arrive pas à imaginer comment compter les baggles que je vois">
+Il vous faut une variable initialisée à zéro et incrémentée à chaque fois
+que vous voyez un baggle. Une variable utilisée ainsi est souvent appelée un
+<i>accumulateur</i>.<br/><br/>
+N'oubliez pas de remettre l'accumulateur à 0 au début de chaque couloir! 
+</div></p>
+
+<p>Oh, et quand vous parviendrez à trouver la sortie, n'oubliez pas de faire un
+pas de plus pour vous échapper effectivement.</p> 

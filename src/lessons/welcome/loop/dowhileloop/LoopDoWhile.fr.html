@@ -6,15 +6,15 @@ même si la condition est directement fausse. Certains langages ont des
 constructions spécifiques pour cela, mais pas le langage Python. Mais il n'y
 a pas de problème, je suis sûr que vous pouvez faire sans, n'est-ce pas ?</p>
 
-<p class="Python">A bad solution would be to duplicate the loop content before the loop, but
-code duplication is a <b>very</b> bad habit, and you should always avoid
-it. A better solution is to have a dedicated variable indicating whether we
-are taking the loop for the first time, as follows:</p>
-<pre class="Python">firstTime = True
-while firstTime or (other conditions):
-  firstTime = False
-  (loop body)
-</pre>
+<p class="Python">Une mauvaise solution serait de dupliquer le contenu de la boucle avant la
+boucle à proprement parlé, mais c'est une <b>très mauvaise</b> habitude de
+dupliquer du code, et il faut toujours éviter. Une meilleure solution est
+d'avoir une variable dédiée qui indique si c'est la première fois que l'on
+rentre dans la boucle :</p>
+<pre class="Python">premiereFois = True
+while premiereFois or (les autres conditions):
+  premiereFois = False
+  (le corps de la boucle)</pre>
 
 <p class="Java">Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
 et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
@@ -26,15 +26,16 @@ variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :
 } while (<b>condition</b>);</pre></p>
 
 <h3>Objectif de cet exercice</h3>
-<p>Some cells of the world are yellow, but your buggle cannot stand being in
-such cells. Write the necessary code to move forward until the ground gets
-white. For that, use the provided method <code>isGroundWhite()</code>.</p>
+<p>Certaines cases du monde sont jaunes, mais les buggles ne supportent pas de
+s'y trouver. Écrivez le code nécessaire pour avancer jusqu'à ce que le sol
+devienne blanc. Vous pourrez utiliser la méthode
+<code>isGroundWhite()</code> qui retourne vrai si le sol est blanc..</p>
 
-<p>The trick is that most buggles of this world are currently on this yellow
-ground that they dislike so much. That is why they are in panic, and every
-buggle rushes one cell forward, even the buggle that was not on a yellow
-cell at first. In other worlds, even if the ground is white on the first
-cell, you still want to move forward to the next cell.</p>    
+<p>Le truc est que la plupart des buggles de ce monde se trouvent actuellement
+sur ce sol jaune qui les énerve tant. Cela explique sans doute leur état de
+panique, et le fait que toutes les buggles se ruent vers l'avant au début,
+même la buggle qui ne se trouve pas sur du jaune. En d'autres mots, même si
+le sol est blanc le premier coup, il faut quand même avancer d'un pas.</p>    
 
 <p>L'idée général est donc de faire: 
 <pre>avancer jusqu'à se trouver sur une case blanche</pre>
