@@ -235,8 +235,11 @@ public abstract class ExerciseTemplated extends Exercise {
 						System.out.println("Found suitable templating entity "+nameOfCorrectionEntity+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
+					if (lang.equals(Game.PYTHON))
+						System.out.println("Cannnot find any suitable templating entity "+nameOfCorrectionEntity+" in "+lang+":\n  "+e);
+						
 					if (getProgLanguages().contains(lang)) 
-						throw new RuntimeException("Exercise "+getName()+" is said to be compatible with language "+lang+", but I fail to find an entity for this language",e);					
+						throw new RuntimeException("Exercise "+getName()+" is said to be compatible with language "+lang+", but I fail to find an entity for this language",e);
 					/* Ok, this language does not work for this exercise but didn't promise anything. I can deal with it */
 				}
 			} else {
@@ -244,7 +247,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 		}
 		if (!foundALanguage) {
-			throw new RuntimeException("Cannot find an entity for this exercise. You should fix your paths and such");
+			throw new RuntimeException("Cannot find an entity for exercise "+getName()+". You should fix your paths and such");
 		}
 		computeAnswer();
 	}
