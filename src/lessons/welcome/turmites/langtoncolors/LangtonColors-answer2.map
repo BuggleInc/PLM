@@ -1,4 +1,4 @@
-BuggleWorld: LRRRRRLLR (9001 steps)
+TurmiteWorld: LRRRRRLLR (9001 steps)
 Size: 25x24
 Buggle(18,8): west,red,blue,ant
 Cell(1,3): black,nobaggle,notopwall,noleftwall,

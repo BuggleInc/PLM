@@ -1,4 +1,4 @@
-BuggleWorld: LLRR (20001 steps)
+TurmiteWorld: LLRR (20001 steps)
 Size: 30x30
 Buggle(16,15): east,red,cyan,ant
 Cell(1,6): blue,nobaggle,notopwall,noleftwall,

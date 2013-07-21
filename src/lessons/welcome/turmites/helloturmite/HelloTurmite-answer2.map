@@ -1,4 +1,4 @@
-BuggleWorld: stepped pyramid (4800 steps)
+TurmiteWorld: stepped pyramid (4800 steps)
 Size: 65x65
 Buggle(13,38): east,red,white,ant
 Cell(3,54): black,nobaggle,notopwall,noleftwall,
