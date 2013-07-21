@@ -94,7 +94,7 @@ public class PancakeWorld extends World {
 
 		StringBuffer res = new StringBuffer();
 		for ( int i = 0;i< pancakeStack.length;i++) 
-			if ( !pancakeStack[i].equals(other.pancakeStack[i])) 
+			if ( !pancakeStack[i].equals(other.pancakeStack[i], burnedWorld)) 
 				res.append(" Pancake #"+(i+1)+" differs: "+pancakeStack[i].toString() +" vs "+other.pancakeStack[i].toString()+"\n");
 
 		return res.toString();
@@ -110,7 +110,7 @@ public class PancakeWorld extends World {
 		if (pancakeStack.length != other.pancakeStack.length)
 			return false;
 		for ( int i = 0;i< pancakeStack.length;i++) 
-			if ( !pancakeStack[i].equals(other.pancakeStack[i]))
+			if ( !pancakeStack[i].equals(other.pancakeStack[i], burnedWorld))
 				return false;
 		return true;
 	}
