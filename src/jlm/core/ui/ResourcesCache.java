@@ -9,7 +9,10 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
+import jlm.core.model.Game;
 import jlm.core.model.Logger;
+import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.lesson.Exercise;
 
 public class ResourcesCache {
 	private static Hashtable<String, ImageIcon> iconsCache = new Hashtable<String, ImageIcon>();
@@ -62,19 +65,45 @@ public class ResourcesCache {
 		return ResourcesCache.busyIcons[busyIconIndex];
 	}
 
-	public static ImageIcon getStarIcon(ImageIcon icon, String name) {
-		String path = name+"-star";
+	public static ImageIcon getStarredIcon(ImageIcon icon, Exercise exo) {
+		String path = exo.getWorld(0).getView().getClass().getCanonicalName();
+		for (ProgrammingLanguage lang : exo.getProgLanguages()) {
+			if (Game.getInstance().studentWork.getPassed(exo.getId(), lang))
+				path += "_"+lang.getLang()+"ok";
+			else 
+				path += "_"+lang.getLang()+"nok";
+		}
 		if (!iconsCache.containsKey(path)) {
-
-			ImageIcon img1 = icon;			
-			ImageIcon img2 = getIcon("resources/star.png");
-			
-			int w = Math.max(img1.getIconWidth(), img2.getIconWidth());
-			int h = Math.max(img1.getIconHeight(), img2.getIconHeight());
-			BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-			Graphics g = combined.getGraphics();
-			g.drawImage(img1.getImage(), 0, 0, null);
-			g.drawImage(img2.getImage(), 0, 0, null);
+			BufferedImage combined;
+			if (exo.getProgLanguages().contains(Game.LIGHTBOT)) {
+				combined = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+				Graphics g = combined.getGraphics();
+				g.drawImage(icon.getImage(), 0, 0, null);
+				
+				ImageIcon star = getIcon("resources/star.png");
+				ImageIcon starNo = getIcon("resources/star_white.png");
+				if (Game.getInstance().studentWork.getPassed(exo.getId(), Game.LIGHTBOT))  
+					g.drawImage(star.getImage(), 0, 0, null);
+				else 
+					g.drawImage(starNo.getImage(), 0, 0, null);
+				
+			} else {
+				combined = new BufferedImage(icon.getIconWidth()+10, icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+				Graphics g = combined.getGraphics();
+				g.drawImage(icon.getImage(), 0, 0, null);
+				
+				if (Game.getInstance().studentWork.getPassed(exo.getId(), Game.JAVA)) { 
+					g.drawImage(Game.JAVA.getIcon().getImage(), 26, 0, null);
+				} else {
+					//g.drawImage(getIcon("img/lang_java_no.png").getImage(), 26,0,null);
+				}
+				if (Game.getInstance().studentWork.getPassed(exo.getId(), Game.PYTHON)) { 
+					g.drawImage(Game.PYTHON.getIcon().getImage(), 26, 16, null);
+				} else {
+					//	g.drawImage(getIcon("img/lang_python_no.png").getImage(), 26,16,null);
+				}
+				
+			}
 			
 			iconsCache.put(path, new ImageIcon(combined));
 		}
