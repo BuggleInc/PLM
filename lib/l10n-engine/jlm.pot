@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-07 15:03+0200\n"
+"POT-Creation-Date: 2013-07-23 12:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,71 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/jlm/core/model/Game.java:298 src/jlm/core/model/Game.java:330
+#: src/jlm/core/model/Game.java:146
+#, java-format
+msgid ""
+"Warning, the default programming language is neither 'Java' or 'python' but "
+"{0}.\n"
+"   This language will be used to setup the worlds, possibly leading to "
+"severe issues for the exercises that don't expect it.\n"
+"   You can change this variable either in $HOME/.jlm/jlm.properties or "
+"resource/jlm.configuration.properties"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:159
+#, java-format
+msgid ""
+"Your progress will be posted to http://identi.ca/jlmlovers This can be "
+"turned off through the property {0}"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:162
+#, java-format
+msgid ""
+"Your progress will NOT be posted to identica, as requested by the property "
+"{0}"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:165
+#, java-format
+msgid ""
+"Your progress will be posted to https://twitter.com/jlmlovers This can be "
+"turned off through the property {0}"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:168
+#, java-format
+msgid ""
+"Your progress will NOT be posted to twitter, as requested by the property {0}"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:319 src/jlm/core/model/Game.java:351
 msgid "Operation cancelled by the user"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:391
+#, java-format
+msgid "The lecture {0} has no world that I can select"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:908
+#, java-format
+msgid "{0} is not writable"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:912
+#, java-format
+msgid "{0} is not a directory"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:919
+#, java-format
+msgid "Cannot create {0}"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:925
+#, java-format
+msgid "Impossible to find a path for JLM datas. Tested {0}"
 msgstr ""
 
 #: src/jlm/core/model/HelpServer.java:27
@@ -49,6 +112,57 @@ msgstr ""
 #: src/jlm/core/model/lesson/Exercise.java:77
 #, java-format
 msgid "The world ''{0}'' differs"
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:105
+#, java-format
+msgid ""
+"{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:119
+#, java-format
+msgid ""
+"{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:123
+#, java-format
+msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:150
+#, java-format
+msgid ""
+"Parser error in file {0}. This is a parser bug (state={1}), please report."
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:271
+#, java-format
+msgid "World {0} is broken ({1}). Recompute all answer worlds."
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:275
+#, java-format
+msgid ""
+"IO exception while reading world {1} ({1}). Recompute all answer worlds."
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:286
+#, java-format
+msgid ""
+"Recompute the answer of {0} despite the cache file, as requested by the "
+"property {1}"
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:309
+#, java-format
+msgid "Error while writing answer world of {0}:"
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:313
+#, java-format
+msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
 
 #: src/jlm/core/ui/AboutJLMDialog.java:34
@@ -190,8 +304,8 @@ msgstr ""
 msgid "Switch lesson"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:190 src/jlm/core/ui/MainFrame.java:643
-#: src/jlm/core/ui/MainFrame.java:649
+#: src/jlm/core/ui/MainFrame.java:190 src/jlm/core/ui/MainFrame.java:415
+#: src/jlm/core/ui/MainFrame.java:643 src/jlm/core/ui/MainFrame.java:649
 msgid "Switch exercise"
 msgstr ""
 
@@ -264,33 +378,35 @@ msgstr ""
 msgid "About JLM"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:463
-msgid "Next"
-msgstr ""
-
-#: src/jlm/core/ui/MainFrame.java:478 src/jlm/core/ui/MainFrame.java:638
-msgid "Step"
-msgstr ""
-
 #. Buttons
-#: src/jlm/core/ui/MainFrame.java:637
+#: src/jlm/core/ui/MainFrame.java:376 src/jlm/core/ui/MainFrame.java:637
 msgid "Run"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:639
+#: src/jlm/core/ui/MainFrame.java:380 src/jlm/core/ui/MainFrame.java:478
+#: src/jlm/core/ui/MainFrame.java:638
+msgid "Step"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:385 src/jlm/core/ui/MainFrame.java:639
 msgid "Stop"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:640
+#: src/jlm/core/ui/MainFrame.java:391 src/jlm/core/ui/MainFrame.java:640
 msgid "Reset"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:641
+#: src/jlm/core/ui/MainFrame.java:397 src/jlm/core/ui/MainFrame.java:641
 msgid "Demo"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:642 src/jlm/core/ui/action/HelpMe.java:37
+#: src/jlm/core/ui/MainFrame.java:403 src/jlm/core/ui/MainFrame.java:642
+#: src/jlm/core/ui/action/HelpMe.java:37
 msgid "Call for Help"
+msgstr ""
+
+#: src/jlm/core/ui/MainFrame.java:463
+msgid "Next"
 msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:656
@@ -388,6 +504,79 @@ msgstr ""
 msgid "Switch to another exercise"
 msgstr ""
 
+#: src/jlm/universe/Entity.java:178
+#, java-format
+msgid ""
+"The execution of your program raised an exception: {0}\n"
+" Please fix your code.\n"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:192
+#, java-format
+msgid "Failed to start an interpreter for {0}"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:214
+#, java-format
+msgid ""
+"No {0} script source for entity {1}. Please report that bug against JLM."
+msgstr ""
+
+#: src/jlm/universe/Entity.java:236
+#, java-format
+msgid ""
+"Syntax error at line {0}: {1}\n"
+"In doubt, check your indentation, and that you don't mix tabs and spaces\n"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:244
+msgid ""
+"NameError raised: You seem to use a non-existent identifier; Please check "
+"for typos\n"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:247
+msgid "TypeError raised: you are probably misusing a function or something.\n"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:250
+msgid ""
+"UnboundLocalError raised: you are probably using a global variable that is "
+"not declared as such.\n"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:256
+msgid "Error: there is no baggle to pickup under the buggle"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:258
+msgid "Error: a buggle cannot carry more than one baggle at the same time"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:260
+msgid "Error: your buggle just teleported to the outer space..."
+msgstr ""
+
+#: src/jlm/universe/Entity.java:262
+msgid "Error: your buggle just hit a wall. That hurts."
+msgstr ""
+
+#: src/jlm/universe/Entity.java:265
+#, java-format
+msgid ""
+"Unknown error (please report): {0}\n"
+"Its value is: {1}"
+msgstr ""
+
+#: src/jlm/universe/Entity.java:296
+#, java-format
+msgid ""
+"Script evaluation raised an exception that is not a ScriptException but a "
+"{0}.\n"
+" Please report this as a bug against JLM, with all details allowing to "
+"reproduce it."
+msgstr ""
+
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:418
 msgid "Its value is 'null', which is never good."
 msgstr ""
@@ -428,88 +617,92 @@ msgstr ""
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:107
+#: src/jlm/universe/bugglequest/BuggleWorld.java:111
 #, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty!)"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:113
+#: src/jlm/universe/bugglequest/BuggleWorld.java:117
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:119
+#: src/jlm/universe/bugglequest/BuggleWorld.java:123
 #, java-format
 msgid "{0}.map: End of file reached before world size specification"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:124
+#: src/jlm/universe/bugglequest/BuggleWorld.java:128
 #, java-format
 msgid "{0}.map:1: Expected 'Size: NNxMM' but got '{0}'"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:148
+#: src/jlm/universe/bugglequest/BuggleWorld.java:154
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that's out of the world"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:162
+#: src/jlm/universe/bugglequest/BuggleWorld.java:168
 msgid "Invalid buggle's direction: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:169
-#: src/jlm/universe/bugglequest/BuggleWorld.java:176
+#: src/jlm/universe/bugglequest/BuggleWorld.java:175
+#: src/jlm/universe/bugglequest/BuggleWorld.java:182
 msgid "Invalid buggle's color name: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:188
+#: src/jlm/universe/bugglequest/BuggleWorld.java:194
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that's out of the world"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:201
+#: src/jlm/universe/bugglequest/BuggleWorld.java:207
 #, java-format
 msgid "Invalid color name: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:207
+#: src/jlm/universe/bugglequest/BuggleWorld.java:213
 #, java-format
 msgid "Expecting 'baggle' or 'nobaggle' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:211
+#: src/jlm/universe/bugglequest/BuggleWorld.java:217
 #, java-format
 msgid "Expecting 'topwall' or 'notopwall' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:215
+#: src/jlm/universe/bugglequest/BuggleWorld.java:221
 #, java-format
 msgid "Expecting 'leftwall' or 'noleftwall' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:225
+#: src/jlm/universe/bugglequest/BuggleWorld.java:231
 #, java-format
 msgid ""
 "The cell {0},{1} seem to be defined more than once. At least, there is two "
 "baggles here, which is not allowed."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:241
+#: src/jlm/universe/bugglequest/BuggleWorld.java:247
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:461
+#: src/jlm/universe/bugglequest/BuggleWorld.java:465
+msgid "  The world's name is {0}"
+msgstr ""
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:469
 #, java-format
 msgid "  In ({0},{1})"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:464
+#: src/jlm/universe/bugglequest/BuggleWorld.java:472
 #, java-format
 msgid "  Something is wrong about buggle \"{0}\":\n"
 msgstr ""
@@ -557,19 +750,19 @@ msgstr ""
 msgid ", there should be a wall at north"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:164
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:176
 msgid "Create New Map"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:216
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:228
 msgid "Open Map..."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:222
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:234
 msgid "JLM map files"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:230
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:242
 #, java-format
 msgid "Error while reading {0}"
 msgstr ""
@@ -688,7 +881,7 @@ msgstr ""
 msgid "Buggle Color"
 msgstr ""
 
-#: src/jlm/universe/sort/SortingButtonPanel.java:64
+#: src/jlm/universe/sort/SortingButtonPanel.java:63
 msgid "go"
 msgstr ""
 
@@ -698,4 +891,35 @@ msgstr ""
 
 #: src/jlm/universe/sort/SortingWorldView.java:55
 msgid "Switch to state view"
+msgstr ""
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:89
+msgid "This is not a world of pancakes :-("
+msgstr ""
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:93
+msgid "The two worlds are of differing size"
+msgstr ""
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:168
+#, java-format
+msgid "Asked to flip {0} pancakes, but you must flip at least one"
+msgstr ""
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:170
+#, java-format
+msgid ""
+"Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
+msgstr ""
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:203
+#, java-format
+msgid ""
+"Cannot get the radius of pancake #{0} because it's not between 0 and {1}"
+msgstr ""
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:229
+#, java-format
+msgid ""
+"Cannot get the orientation of pancake #{0} because it's not between 0 and {1}"
 msgstr ""

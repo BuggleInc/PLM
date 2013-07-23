@@ -310,7 +310,7 @@ public abstract class ExerciseTemplated extends Exercise {
 								e.printStackTrace();
 							}
 						} else {
-							System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions",name));
+							System.err.println(i18n.tr("Cannot write answer world of {0}. Please check the permissions.",name));
 						}
 					}
 				}
