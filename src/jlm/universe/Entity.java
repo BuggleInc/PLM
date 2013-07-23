@@ -135,6 +135,11 @@ public abstract class Entity {
 	protected int getParamsAmount() {
 		return world.parameters.length;
 	}
+	
+	/** Returns whether this is the entity selected in the interface */
+	public boolean isSelected() {
+		return this == Game.getInstance().getSelectedEntity();
+	}
 
 	/** Run this specific entity, encoding the student logic to solve a given exercise. 
 	 * 
@@ -195,7 +200,9 @@ public abstract class Entity {
 					engine.eval(
 							/* getParam is in every Entity, so put it here to not request the universe to call super.setupBinding() */
 							"def getParam(i):\n"+
-							"  return entity.getParam(i)\n");									
+							"  return entity.getParam(i)\n" +
+							"def isSelected():\n" +
+							"  return entity.isSelected()\n");									
 
 
 				String script = getScript(progLang);
