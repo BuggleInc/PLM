@@ -176,11 +176,13 @@ public abstract class ExerciseTemplated extends Exercise {
 					continue;
 				int len = 0;
 				for (char c:line.toCharArray())
-					if (c == ' ')
+					if (c == ' ') {
 						len ++;
-					else
-						if (minAmountOfLeadingSpace == -1 || len<minAmountOfLeadingSpace)
-							minAmountOfLeadingSpace = len;
+					} else { 
+						break;
+					} 
+				if (minAmountOfLeadingSpace == -1 || len<minAmountOfLeadingSpace)
+					minAmountOfLeadingSpace = len;
 			}
 			if (minAmountOfLeadingSpace > 0) {
 				/* Remove that amount of leading spaces on all lines, and rebuilds initialContent */
@@ -188,7 +190,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				for (String line : ctn) 
 					if (line.equals(""))
 						sbCtn.append("\n");
-					else
+					else 
 						sbCtn.append(line.substring(minAmountOfLeadingSpace)+"\n");
 				/* Rebuild the initial content */
 				initialContent = sbCtn.toString();
