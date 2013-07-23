@@ -55,6 +55,10 @@ public class ResourcesCache {
 		return iconsCache.get(path);
 	}
 
+	public static ImageIcon getIcon(Object basePath, String path) {
+		return getIcon(basePath.getClass().getPackage().getName().replaceAll("\\.", "/") 
+				        +"/"+path);
+	}
 
 	public static int getBusyIconsSize() {
 		return ResourcesCache.busyIcons.length;
