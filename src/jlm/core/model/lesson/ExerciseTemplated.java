@@ -163,10 +163,40 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		String template = (headContent+"$body"+tail);
+		
+		/* Remove the unnecessary leading spaces from the initial content */
+		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
+		if (lang != Game.PYTHON) {
+			initialContent = initialContent.replaceAll("\t","    ");
+			String[] ctn = newLinePattern.split(initialContent);
+			/* Compute the minimal amount of leading spaces on all lines */
+			int minAmountOfLeadingSpace = -1;
+			for (String line:ctn) {
+				if (line.equals(""))
+					continue;
+				int len = 0;
+				for (char c:line.toCharArray())
+					if (c == ' ')
+						len ++;
+					else
+						if (minAmountOfLeadingSpace == -1 || len<minAmountOfLeadingSpace)
+							minAmountOfLeadingSpace = len;
+			}
+			if (minAmountOfLeadingSpace > 0) {
+				/* Remove that amount of leading spaces on all lines, and rebuilds initialContent */
+				StringBuffer sbCtn = new StringBuffer();
+				for (String line : ctn) 
+					if (line.equals(""))
+						sbCtn.append("\n");
+					else
+						sbCtn.append(line.substring(minAmountOfLeadingSpace)+"\n");
+				/* Rebuild the initial content */
+				initialContent = sbCtn.toString();
+			}
+		}
 
 		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
 		if (lang != Game.PYTHON) {
-			Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
 			Matcher newLineMatcher = newLinePattern.matcher(template);
 			template = newLineMatcher.replaceAll(" ");
 		}
