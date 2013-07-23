@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-23 12:18+0300\n"
+"POT-Creation-Date: 2013-07-23 14:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -822,7 +822,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37 src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
-msgid "void pickUpBaggle()"
+msgid "void pickupBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -2413,7 +2413,7 @@ msgid ""
 "The buggle world can sometimes contain some <i>baggles</i>, which are little "
 "biscuits that buggles can carry from one point to another. For that, they "
 "have to use specific methods such as <code>isOverBaggle(), "
-"isCarryingBaggle(), pickUpBaggle()</code> or "
+"isCarryingBaggle(), pickupBaggle()</code> or "
 "<code>dropBaggle()</code>. Check their documentation in \"Help/About this "
 "world\" for more details."
 msgstr ""
@@ -4901,7 +4901,7 @@ msgstr ""
 #: src/lessons/welcome/slug/SlugHunting.html:15
 msgid ""
 "Finally, do not forget to capture your prey once you found it (using "
-"<code>pickUpBaggle()</code>)."
+"<code>pickupBaggle()</code>)."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)

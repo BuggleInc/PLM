@@ -138,7 +138,7 @@ public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 	public void run() {
 		evaluatePaths(); // write on each case the distance to the maze exit
 		followShortestPath(); // make the buggle follow the shortest path
-		pickUpBaggle(); // enjoy the baggle!           
+		pickupBaggle(); // enjoy the baggle!           
 	}
 	/* END TEMPLATE */
 }

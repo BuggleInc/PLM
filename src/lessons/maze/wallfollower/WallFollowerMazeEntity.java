@@ -53,7 +53,7 @@ public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 		while (!isOverBaggle())
 			stepHandOnWall();
 
-		pickUpBaggle();
+		pickupBaggle();
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */

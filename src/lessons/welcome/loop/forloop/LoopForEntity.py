@@ -14,7 +14,7 @@ cpt = 0
 while not isOverBaggle():
   cpt = cpt+1
   forward()
-pickUpBaggle()
+pickupBaggle()
 for i in range(cpt):
   backward()
 dropBaggle()

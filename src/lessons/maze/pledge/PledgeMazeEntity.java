@@ -48,7 +48,7 @@ public class PledgeMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				break;
 			}
 		}
-		this.pickUpBaggle();
+		pickupBaggle();
 	}
 
 	int angleSum;

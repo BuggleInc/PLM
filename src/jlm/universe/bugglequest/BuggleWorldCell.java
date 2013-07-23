@@ -144,7 +144,7 @@ public class BuggleWorldCell extends GridWorldCell {
 		world.notifyWorldUpdatesListeners();
 	}
 
-	public Baggle pickUpBaggle() {
+	public Baggle pickupBaggle() {
 		Baggle b = this.baggle;
 		this.baggle.setCell(null);
 		baggle = null;		

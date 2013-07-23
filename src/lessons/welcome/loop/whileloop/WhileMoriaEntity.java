@@ -22,7 +22,7 @@ public class WhileMoriaEntity extends SimpleBuggle {
 			while (!isOverBaggle() && !isFacingWall())
 				forward();
 			if (isOverBaggle()) {
-				pickUpBaggle();
+				pickupBaggle();
 				turnBack();
 				while (!isOverBaggle())
 					forward();

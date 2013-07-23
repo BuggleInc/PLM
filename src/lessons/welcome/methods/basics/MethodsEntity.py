@@ -16,7 +16,7 @@ def goAndGet():
   while isOverBaggle() == False:
     cpt = cpt+1
     forward()
-  pickUpBaggle()
+  pickupBaggle()
   for i in range(cpt):
     backward()
   dropBaggle()

@@ -37,8 +37,8 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 		AbstractBuggle b2 = (AbstractBuggle)answerWorld.get(1).getEntities().get(0);
 		b2.setPosFromLesson(11, 5);
 		try {
-			b.pickUpBaggle();
-			b2.pickUpBaggle();
+			b.pickupBaggle();
+			b2.pickupBaggle();
 		} catch (NoBaggleUnderBuggleException e) {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {

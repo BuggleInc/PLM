@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-23 12:18+0300\n"
-"PO-Revision-Date: 2013-07-23 12:18+0200\n"
+"POT-Creation-Date: 2013-07-23 14:12+0300\n"
+"PO-Revision-Date: 2013-07-23 14:12+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1015,8 +1015,8 @@ msgstr "boolean isCarryingBaggle()"
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
-msgid "void pickUpBaggle()"
-msgstr "void pickUpBaggle()"
+msgid "void pickupBaggle()"
+msgstr "void pickupBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
@@ -3273,13 +3273,13 @@ msgid ""
 "The buggle world can sometimes contain some <i>baggles</i>, which are little "
 "biscuits that buggles can carry from one point to another. For that, they "
 "have to use specific methods such as <code>isOverBaggle(), "
-"isCarryingBaggle(), pickUpBaggle()</code> or <code>dropBaggle()</code>. "
+"isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
 "Check their documentation in \"Help/About this world\" for more details."
 msgstr ""
 "Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
 "biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
 "cela, elles peuvent utiliser des fonctions spécifiques : "
-"<code>isOverBaggle(), isCarryingBaggle(), pickUpBaggle()</code> et "
+"<code>isOverBaggle(), isCarryingBaggle(), pickupBaggle()</code> et "
 "<code>dropBaggle()</code>. Tous les détails se trouvent dans la "
 "documentation accessible depuis «Aide/À propos de ce monde»."
 
@@ -6701,10 +6701,10 @@ msgstr ""
 #: src/lessons/welcome/slug/SlugHunting.html:15
 msgid ""
 "Finally, do not forget to capture your prey once you found it (using "
-"<code>pickUpBaggle()</code>)."
+"<code>pickupBaggle()</code>)."
 msgstr ""
 "Enfin, n'oubliez de capturer votre proie une fois que vous l'aurez débusquée "
-"(avec <code>pickUpBaggle()</code>)."
+"(avec <code>pickupBaggle()</code>)."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/slug/SlugHunting.html:19

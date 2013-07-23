@@ -39,7 +39,7 @@ public class RandomMouseMazeEntity extends jlm.universe.bugglequest.SimpleBuggle
 				break;
 			}
 		}
-		pickUpBaggle();
+		pickupBaggle();
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

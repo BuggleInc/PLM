@@ -22,5 +22,5 @@ turnRight()
 
 while not isOverBaggle():
     stepHandOnWall()
-pickUpBaggle()
+pickupBaggle()
 # END SOLUTION

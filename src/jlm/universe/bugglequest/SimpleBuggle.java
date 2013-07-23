@@ -63,10 +63,15 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 		}
 	}
 
+	@Deprecated
 	@Override
 	public void pickUpBaggle () { 
+		pickupBaggle();
+	}
+	@Override
+	public void pickupBaggle () { 
 		try { 
-			super.pickUpBaggle(); 
+			super.pickupBaggle(); 
 		} catch (NoBaggleUnderBuggleException e) {
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, "No baggle here.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);

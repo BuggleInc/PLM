@@ -4,7 +4,7 @@ while not isFacingWall():
     while (not isOverBaggle()) and (not isFacingWall()):
         forward()
     if isOverBaggle():
-        pickUpBaggle()
+        pickupBaggle()
         turnBack()
         while not isOverBaggle():
             forward()

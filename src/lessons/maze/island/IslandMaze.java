@@ -38,8 +38,8 @@ public class IslandMaze extends ExerciseTemplated {
 		b2.setDirection(Direction.EAST);
 		
 		try {
-			b.pickUpBaggle();
-			b2.pickUpBaggle();
+			b.pickupBaggle();
+			b2.pickupBaggle();
 		} catch (NoBaggleUnderBuggleException e) {
 			e.printStackTrace();
 		} catch (AlreadyHaveBaggleException e) {

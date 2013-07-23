@@ -21,7 +21,7 @@ public class VariablesEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			cpt++;
 			forward();
 		}
-		pickUpBaggle();
+		pickupBaggle();
 		while (cpt>0) {
 			backward();
 			cpt--;

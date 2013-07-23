@@ -41,7 +41,7 @@ public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				break;
 			}
 		}
-		this.pickUpBaggle();
+		this.pickupBaggle();
 	}
 
 	private void stepHandOnWall(){

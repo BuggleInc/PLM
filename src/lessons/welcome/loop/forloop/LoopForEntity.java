@@ -21,7 +21,7 @@ public class LoopForEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			cpt++;
 			forward();
 		}
-		pickUpBaggle();
+		pickupBaggle();
 		for (int cpt2=0 ; cpt2<cpt ; cpt2++) {
 			backward();
 		}

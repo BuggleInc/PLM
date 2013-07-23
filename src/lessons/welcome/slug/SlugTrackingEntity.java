@@ -20,7 +20,7 @@ public class SlugTrackingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				turnLeft();
 			}
 		}
-		pickUpBaggle();
+		pickupBaggle();
 	}
 
 	/* BEGIN TEMPLATE */

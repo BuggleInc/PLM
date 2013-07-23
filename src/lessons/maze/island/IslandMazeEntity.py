@@ -37,6 +37,6 @@ while not isOverBaggle():
         if isDirectionFree(chosenDir) and getDirection() == chosenDir:
             northRunner = True
 
-pickUpBaggle()
+pickupBaggle()
 
 # END SOLUTION

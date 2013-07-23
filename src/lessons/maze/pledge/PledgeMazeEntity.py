@@ -39,6 +39,6 @@ while not isOverBaggle():
         stepHandOnWall()
         if isDirectionFree(chosenDir) and angleSum == 0:
             northRunner = True
-pickUpBaggle()
+pickupBaggle()
     
 # END SOLUTION

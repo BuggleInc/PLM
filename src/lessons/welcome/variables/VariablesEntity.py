@@ -12,7 +12,7 @@ cpt = 0
 while not isOverBaggle():
   cpt += 1 
   forward()
-pickUpBaggle()
+pickupBaggle()
 while cpt>0:
   backward()
   cpt -= 1

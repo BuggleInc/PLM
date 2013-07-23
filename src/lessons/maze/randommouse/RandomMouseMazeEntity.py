@@ -26,5 +26,5 @@ while not isOverBaggle():
         turnLeft()
     else:
         turnRight()
-pickUpBaggle()
+pickupBaggle()
 # END SOLUTION

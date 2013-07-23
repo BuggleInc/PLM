@@ -19,7 +19,7 @@ public class MethodsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			i++;
 			forward();
 		}
-		pickUpBaggle();
+		pickupBaggle();
 		while (i>0) {
 			backward();
 			i--;

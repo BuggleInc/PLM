@@ -23,7 +23,7 @@ public class SlugSnailEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				turnLeft();
 			}
 		}
-		pickUpBaggle();
+		pickupBaggle();
 		/* END SOLUTION */
 	}
    
