@@ -112,7 +112,7 @@ remember where they come from. We should maybe play safe and replace
 them. But as you can see from the rest of the project, we are
 better programmers than designers... You are welcome if you can help.
 
-* img/world_pancake.png 
+* src/lessons/sort/pancake/img/world_pancake.png 
   It was retrieved from 
   http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
   It seems rather free, but the exact license is not known.
