@@ -209,8 +209,8 @@ public class Game implements IWorldView {
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				System.err.println("Cannot switch to lesson "+lessonName+": class Main not found.");
-				statusArgRemove("Load lesson "+lessonName);				
+				System.err.println(Game.i18n.tr("Cannot switch to lesson {0}: class Main not found.",lessonName));
+				statusArgRemove(Game.i18n.tr("Load lesson {0}",lessonName));				
 				return getCurrentLesson();
 			}
 		}

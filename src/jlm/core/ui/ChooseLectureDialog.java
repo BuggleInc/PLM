@@ -76,13 +76,10 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 			if (node != null) {
 				Object selection = node.getUserObject();
 
-				if (selection instanceof Lecture) {
+				if (selection instanceof Lecture) 
 					Game.getInstance().setCurrentExercise((Lecture) selection);
-				}
 				else 
-					System.out.println("selection is no lecture: "+selection);
-			} else {
-				System.out.println("Nothing selected; not switching");
+					System.out.println("selection is not a lecture: "+selection);
 			}
 		}
 

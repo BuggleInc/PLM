@@ -8,6 +8,7 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import jlm.core.model.Game;
 import jlm.core.utils.FileUtils;
 import jlm.universe.BrokenWorldFileException;
 
@@ -33,14 +34,8 @@ public abstract class Lesson {
 	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 
 	public Lesson() {
-		id = getClass().getCanonicalName();
-		Pattern namePattern = Pattern.compile(".Main$");
-		Matcher nameMatcher = namePattern.matcher(id);
-		id = nameMatcher.replaceAll("");
-		
-		namePattern = Pattern.compile("^lessons.");
-		nameMatcher = namePattern.matcher(id);
-		id = nameMatcher.replaceAll("");
+		id = getClass().getCanonicalName().replaceAll(".Main$","");
+		id = id.replaceAll("^lessons.", "");
 		
 		try {
 			loadExercises(); /* FIXME: remove this line when session savers can deal with laziness */
@@ -69,7 +64,7 @@ public abstract class Lesson {
 		try {
 			sb = FileUtils.readContentAsText(filename,"html",true);
 		} catch (IOException ex) {
-			about = "File "+filename+".html not found.";
+			about = Game.i18n.tr("File {0}.html not found.",filename);
 			name = filename;
 			return;
 		}
@@ -79,7 +74,7 @@ public abstract class Lesson {
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			System.out.println("Cannot find the name of mission in "+filename+".html");
+			System.out.println(Game.i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		name = m.group(1);
 		/* get the mission explanation */
 		about = "<html>"+LessonHeader+"<body>\n"+str+"</body>\n</html>\n";		

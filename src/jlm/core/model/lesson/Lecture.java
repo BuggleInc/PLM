@@ -120,7 +120,7 @@ public abstract class Lecture {
 		try {
 			sb = FileUtils.readContentAsText(filename, "html",true);
 		} catch (IOException ex) {
-			setMission("File "+filename+" not found.");
+			setMission(Game.i18n.tr("File {0} not found.",filename));
 			return;			
 		}
 		String str = sb.toString();

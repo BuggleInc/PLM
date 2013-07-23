@@ -38,7 +38,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		try {
 			sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
 		} catch (IOException ex) {
-			throw new NoSuchEntityException("Source file "+filename+"."+lang.getExt()+" not found.");			
+			throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.",filename,lang.getExt()));			
 		}
 
 
