@@ -77,9 +77,10 @@ helps making your code more readable.
 
 <p><div class="tip" id="tip-2" alt="My code keeps failing and I don't know how to debug it.">
 To debug one world after the other and avoid that the messages of all
-worlds get intermixed, you can write a <code>show()</code> function that displays
-its parameter only if the world size is equal to 5 7 or 9, depending
-on the world you are currently debugging. This will help breaking the
+worlds get intermixed, you can write your debug function only if the
+method <code>isSelected()</code> returns true. It will be so only for
+the entity that is currently selected in the graphical interface, that
+is probably the world you are currently debugging. This will help breaking the
 difficulty in parts by debugging the situation on after the other.<br/>
 Also, this universe does not have an historical view as the Sorting
 universe (yet), so don't hesitate to print textually the state of the
