@@ -13,11 +13,11 @@ neighbor is noted <code>t+o</code>). Eight cases may happen:</p>
 
 <ul>
 <li><b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are then merged in one flip.<br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-a.png"/></div>
+<div align="center"><img src="./img/gates-a.png"/></div>
 </li></ul>
 
 <ul><li><b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of a block. They are merged in one flip.<br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-b.png"/></div>
+<div align="center"><img src="./img/gates-b.png"/></div>
 </li></ul>
 
 <ul>
@@ -25,30 +25,30 @@ neighbor is noted <code>t+o</code>). Eight cases may happen:</p>
 Both blocs and <code>t</code> are merged all together in 4 flips. 
 Beware, if either <code>t-1</code> or <code>t+1</code> does not exist (because <code>t</code> is 0 or max), only two flips are mandated.
 <br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-c.png"/></div>
+<div align="center"><img src="./img/gates-c.png"/></div>
 </li></ul>
 
 <ul>
 <li><b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is free. They are merged in one flip.<br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-d.png"/></div>
+<div align="center"><img src="./img/gates-d.png"/></div>
 </li></ul>
 
 <ul>
 <li><b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the first element of a block. They are merged in one flip.<br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-e.png"/></div>
+<div align="center"><img src="./img/gates-e.png"/></div>
 </li></ul>
 
 <ul><li><b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last element of another block. 
 They are merged in 3 flips as follows.<br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-f.png"/></div></li></ul>
+<div align="center"><img src="./img/gates-f.png"/></div></li></ul>
 
 <ul><li><b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last element of another block. Both blocks are merged in 2 flips:<br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-g.png"/></div><br/></li></ul>
+<div align="center"><img src="./img/gates-g.png"/></div><br/></li></ul>
 
 <ul><li><b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element is <code>t+ko</code>), 
   <code>t+(k+1)o</code> is the first element of another block (the difference with case g is that 
   <code>t+(k+1)o</code> is now the <i>first</i> element of its block). Both blocks are merged in 2 flips:<br/>
-<div align="center"><img src="lessons/sort/pancake/img/gates-h.png"/></div>
+<div align="center"><img src="./img/gates-h.png"/></div>
 </li></ul>
 
 <ul><li><b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this block contains all pancakes). 
