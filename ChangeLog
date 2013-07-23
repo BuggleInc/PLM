@@ -1,3 +1,8 @@
+20130730:
+  * Pythonize new exercises
+  * Retranslate every missions back to 100% 
+  * Various cosmetics, small refactoring and little bug fixes
+  * Lesson navigator: Display which exercise are passed in which language
 20130720:
   * Integrate the pancake exercises into the sorting lesson
   * New pancake exercise about implementing Gates' algorithm
