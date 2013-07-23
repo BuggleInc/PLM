@@ -1,20 +1,30 @@
 <h1>HanoiWorld</h1>
 
+<p>
 This world implements the ultra-classical Hanoi problem. You are asked
 to move the disk pile from the stick where they are to the target
 stick (given as second parameter in the world's name -- number 1 for
 the default world). There is some extra constraint: you can only move
-one disk at a time, and you cannot move a big disk over a smaller one.
+one disk at a time, and you cannot move a big disk over a smaller
+one.</p>
 
-Only 2 functions are provided:
+<p>Only 3 functions are provided:</p>
 
-<pre>public void move(int src, int dst) throws HanoiInvalidMove;</pre>
+<pre class="Java">public void move(int src, int dst) throws HanoiInvalidMove;</pre>
+<pre class="python">move(src, dst) throws HanoiInvalidMove</pre>
 
 It moves one disk from the stick <code>src</code> onto the stick
 <code>dst</code>. As you can see, if you try to do an invalid move (like
 laying a disk over a smaller one), an exception is thrown.
 
-<pre>int getSlotSize(int slot);</pre>
+<pre class="Java">int getSlotSize(int slot);</pre>
+<pre class="python">getSlotSize(slot)</pre>
 
 It returns the amount of disks placed on the specified slot. This is mainly 
 used to initialize the recursion and set the amount of recursive call to execute.
+
+<pre class="Java">boolean isSelected()</pre>
+<pre class="python">isSelected()</pre>
+
+Returns whether the current world is selected in the graphical
+interface.
