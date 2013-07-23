@@ -388,7 +388,7 @@ public class Game implements IWorldView {
 			}
 			fireSelectedWorldHasChanged(world);
 		} else {
-			throw new RuntimeException("The lecture "+lect+" has no world that I can select");
+			throw new RuntimeException(Game.i18n.tr("The lecture {0} has no world that I can select",lect));
 		}
 	}
 
