@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-21 14:43+0300\n"
-"PO-Revision-Date: 2013-07-21 14:43+0200\n"
+"POT-Creation-Date: 2013-07-23 12:18+0300\n"
+"PO-Revision-Date: 2013-07-23 12:18+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -421,13 +421,31 @@ msgstr "Affecte la valeur 'val' à la case 'idx'"
 msgid "one write"
 msgstr "une écriture"
 
+#. type: Content of: outside any tag (error?)
+#: src/jlm/universe/sort/SortingWorld.html:22
+#: src/jlm/universe/hanoi/HanoiWorld.html:29
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:33
+msgid ""
+"Returns whether the current world is selected in the graphical interface."
+msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
+
+#. type: Content of: <pre>
+#: src/jlm/universe/sort/SortingWorld.html:23
+#: src/jlm/universe/turtles/TurtleWorld.html:32
+#: src/jlm/universe/bugglequest/BuggleWorld.html:24
+#: src/jlm/universe/hanoi/HanoiWorld.html:26
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:30
+#, no-wrap
+msgid "boolean isSelected()"
+msgstr "boolean isSelected()"
+
 #. type: Content of: <h2>
-#: src/jlm/universe/sort/SortingWorld.html:24
+#: src/jlm/universe/sort/SortingWorld.html:27
 msgid "History view"
 msgstr "Vue de l'historique du monde"
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:25
+#: src/jlm/universe/sort/SortingWorld.html:28
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
@@ -445,7 +463,7 @@ msgstr ""
 "comportement attendu et le comportement effectif."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:32
+#: src/jlm/universe/sort/SortingWorld.html:35
 msgid ""
 "To help in this process, it is possible to graphically explore the history "
 "of your sorting algorithm. Switch to the Objective view and use the "
@@ -458,7 +476,7 @@ msgstr ""
 "l'état courant du monde et la vue de son histoire."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:37
+#: src/jlm/universe/sort/SortingWorld.html:40
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
@@ -481,7 +499,7 @@ msgstr ""
 "d'exclamation a été écrite avec setValue()."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:46
+#: src/jlm/universe/sort/SortingWorld.html:49
 msgid ""
 "This view, inspired from Aldo Cortesi, reveals very helpful understand the "
 "inner behavior of sorting algorithms."
@@ -607,6 +625,12 @@ msgstr ""
 "<b>Changer position</b> <code>public void setX(double x);</code> \t "
 "<code>public void setY(double y);</code> <code>public void setPos(double x, "
 "double y);</code>"
+
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/turtles/TurtleWorld.html:31
+msgid "Check whether the turtle is currently <b>selected in the interface</b>"
+msgstr ""
+"Renvoi si la tortue est actuellement <b>sélectionnée dans l'interface</b>"
 
 #. type: Content of: <h1>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:1
@@ -857,199 +881,205 @@ msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
 msgstr "Direction.NORTH, Direction.EAST, Direction.SOUTH et Direction.WEST"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:24
+#: src/jlm/universe/bugglequest/BuggleWorld.html:23
+msgid "Check whether the buggle is currently <b>selected in the interface</b>"
+msgstr ""
+"Renvoi si la buggle est actuellement <b>sélectionnée dans l'interface</b>"
+
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/bugglequest/BuggleWorld.html:26
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:24
 msgid "<b>About the brush</b>"
 msgstr "<b>À propos de la brosse</b>"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:27
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:25
 msgid "<b>Brush down"
 msgstr "<b>Baisser la brosse"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:27
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:25
 msgid "Brush up"
 msgstr "Lever la brosse"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:27
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:25
 msgid "Get brush position</b>"
 msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:26
+#: src/jlm/universe/bugglequest/BuggleWorld.html:28
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:26
 msgid "void brushUp()"
 msgstr "void brushUp()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:26
+#: src/jlm/universe/bugglequest/BuggleWorld.html:28
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:26
 msgid "void brushDown()"
 msgstr "void brushDown()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:26
+#: src/jlm/universe/bugglequest/BuggleWorld.html:28
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:26
 msgid "boolean isBrushDown()"
 msgstr "boolean isBrushDown()"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:27
+#: src/jlm/universe/bugglequest/BuggleWorld.html:29
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:27
 msgid "<b>Change the brush color"
 msgstr "<b>Modifier la couleur de la brosse"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:27
+#: src/jlm/universe/bugglequest/BuggleWorld.html:29
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:27
 msgid "Get the color of the brush</b>"
 msgstr "Obtenir la couleur de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:28
+#: src/jlm/universe/bugglequest/BuggleWorld.html:30
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:28
 msgid "void setBrushColor(Color)"
 msgstr "void setBrushColor(Color)"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:28
+#: src/jlm/universe/bugglequest/BuggleWorld.html:30
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:28
 msgid "Color getBrushColor()"
 msgstr "Color getBrushColor()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:30
+#: src/jlm/universe/bugglequest/BuggleWorld.html:32
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:30
 msgid "<b>Interacting with the world</b>"
 msgstr "<b>Interagir avec le monde</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:31
+#: src/jlm/universe/bugglequest/BuggleWorld.html:33
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:31
 msgid "<b>Get the color of the ground</b>"
 msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:31
+#: src/jlm/universe/bugglequest/BuggleWorld.html:33
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:31
 msgid "Color getGroundColor()"
 msgstr "Color getGroundColor()"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
 msgid "<b>Look for a baggle on the ground"
 msgstr "<b>Chercher un baggle par terre"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
 msgid "Look for a baggle in bag"
 msgstr "Chercher un baggle dans ses poches"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
 msgid "Pickup a baggle"
 msgstr "Prendre un baggle"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
 msgid "Drop a baggle</b>"
 msgstr "Poser un baggle</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:34
+#: src/jlm/universe/bugglequest/BuggleWorld.html:36
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:34
 msgid "(see the note on exceptions)"
 msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
 msgid "boolean isOverBaggle()"
 msgstr "boolean isOverBaggle()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
 msgid "boolean isCarryingBaggle()"
 msgstr "boolean isCarryingBaggle()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
 msgid "void pickUpBaggle()"
 msgstr "void pickUpBaggle()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:35
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
 msgid "void dropBaggle()"
 msgstr "void dropBaggle()"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:39
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
 msgid "<b>Look for a message"
 msgstr "<b>Chercher un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:39
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
 msgid "Add a message"
 msgstr "Ajouter un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:39
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
 msgid "Read the message"
 msgstr "Lire le message"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:39
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
 msgid "Erase the message</b>"
 msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:40
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
 msgid "boolean isOverMessage()"
 msgstr "boolean isOverMessage()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:40
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
 msgid "void writeMessage(String)"
 msgstr "void writeMessage(String)"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:40
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
 msgid "String readMessage()"
 msgstr "String readMessage()"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38
+#: src/jlm/universe/bugglequest/BuggleWorld.html:40
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
 msgid "void clearMessage()"
 msgstr "void clearMessage()"
 
 #. type: Content of: <h2>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:41
+#: src/jlm/universe/bugglequest/BuggleWorld.html:43
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:41
 msgid "Note on exceptions"
 msgstr "Note sur les exceptions"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/bugglequest/BuggleWorld.html:42
+#: src/jlm/universe/bugglequest/BuggleWorld.html:44
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:42
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
@@ -1068,7 +1098,7 @@ msgstr ""
 "exception AlreadyHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:48
+#: src/jlm/universe/bugglequest/BuggleWorld.html:50
 #: src/lessons/welcome/turmites/universe/TurmiteWorld.html:48
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
@@ -1083,34 +1113,41 @@ msgstr ""
 msgid "HanoiWorld"
 msgstr "Le monde des tours de Hanoï"
 
-#. type: Content of: outside any tag (error?)
-#: src/jlm/universe/hanoi/HanoiWorld.html:3
+#. type: Content of: <p>
+#: src/jlm/universe/hanoi/HanoiWorld.html:4
 msgid ""
 "This world implements the ultra-classical Hanoi problem. You are asked to "
 "move the disk pile from the stick where they are to the target stick (given "
 "as second parameter in the world's name -- number 1 for the default world). "
 "There is some extra constraint: you can only move one disk at a time, and "
-"you cannot move a big disk over a smaller one.  Only 2 functions are "
-"provided:"
+"you cannot move a big disk over a smaller one."
 msgstr ""
 "Ce monde implémente le problème ultra classique de Hanoï. Il vous est "
-"demandé\n"
-"de déplacer une pile de disques du piquet où ils se trouvent vers un piquet\n"
-"cible (passé comme second paramètre dans le nom du monde -- numéro 1 pour "
-"le\n"
-"monde par défaut). Il y a quelques contraintes supplémentaires: il est "
-"interdit\n"
-"de déplacer plus d'un disque à la fois, ainsi que de placer un disque plus\n"
-"grand sur un disque plus petit. Seules deux fonctions sont fournies :"
+"demandé de déplacer une pile de disques du piquet où ils se trouvent vers un "
+"piquet cible (passé comme second paramètre dans le nom du monde -- numéro 1 "
+"pour le monde par défaut). Il y a quelques contraintes supplémentaires: il "
+"est interdit de déplacer plus d'un disque à la fois, ainsi que de placer un "
+"disque plus grand sur un disque plus petit."
+
+#. type: Content of: <p>
+#: src/jlm/universe/hanoi/HanoiWorld.html:11
+msgid "Only 3 functions are provided:"
+msgstr "Seules trois fonctions sont fournies&nbsp;:"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/hanoi/HanoiWorld.html:11
+#: src/jlm/universe/hanoi/HanoiWorld.html:13
 #, no-wrap
 msgid "public void move(int src, int dst) throws HanoiInvalidMove;"
 msgstr "public void move(int src, int dst) throws HanoiInvalidMove;"
 
+#. type: Content of: <pre>
+#: src/jlm/universe/hanoi/HanoiWorld.html:14
+#, no-wrap
+msgid "move(src, dst) throws HanoiInvalidMove"
+msgstr "move(src, dst) throws HanoiInvalidMove"
+
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/hanoi/HanoiWorld.html:13
+#: src/jlm/universe/hanoi/HanoiWorld.html:16
 msgid ""
 "It moves one disk from the stick <code>src</code> onto the stick <code>dst</"
 "code>. As you can see, if you try to do an invalid move (like laying a disk "
@@ -1122,13 +1159,19 @@ msgstr ""
 "exception est levée."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/hanoi/HanoiWorld.html:17
+#: src/jlm/universe/hanoi/HanoiWorld.html:20
 #, no-wrap
 msgid "int getSlotSize(int slot);"
 msgstr "int getSlotSize(int slot);"
 
+#. type: Content of: <pre>
+#: src/jlm/universe/hanoi/HanoiWorld.html:21
+#, no-wrap
+msgid "getSlotSize(slot)"
+msgstr "getSlotSize(slot)"
+
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/hanoi/HanoiWorld.html:19
+#: src/jlm/universe/hanoi/HanoiWorld.html:23
 msgid ""
 "It returns the amount of disks placed on the specified slot. This is mainly "
 "used to initialize the recursion and set the amount of recursive call to "
@@ -1138,6 +1181,13 @@ msgstr ""
 "fonction\n"
 "est surtout utile pour initialiser la récursion et déterminer le nombre\n"
 "d'appels récursifs à réaliser."
+
+#. type: Content of: <pre>
+#: src/jlm/universe/hanoi/HanoiWorld.html:27
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:31
+#, no-wrap
+msgid "isSelected()"
+msgstr "isSelected()"
 
 #. type: Content of: <h1>
 #: src/lessons/backtracking/Main.html:1
@@ -7979,7 +8029,8 @@ msgid ""
 msgstr ""
 "Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de "
 "tri existants. La liste des primitives que vous pouvez utiliser dans vos "
-"programmes est disponible dans la documentation de référence du monde (Aide / À propos de ce monde)."
+"programmes est disponible dans la documentation de référence du monde "
+"(Aide / À propos de ce monde)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:14
@@ -8820,7 +8871,8 @@ msgstr ""
 "D'un point de vue pratique, la plupart des méthodes que vous connaissez à "
 "propos des buggles fonctionnent également avec les tortues, à quelques "
 "variantes près. En particulier, la méthode <code>forward</code> prend en "
-"argument le nombre de pas donné comme un nombre double (voir «Aide / À propos de ce monde» dans le menu pour plus de détails)."
+"argument le nombre de pas donné comme un nombre double (voir «Aide / À "
+"propos de ce monde» dans le menu pour plus de détails)."
 
 #. type: Content of: <p><p><p><h3>
 #: src/lessons/recursion/square/Square.html:26
@@ -10527,7 +10579,8 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lightbot/Main.html:4
 msgid "See the <i>About this world</i> dialog for more details."
-msgstr "Référez vous à l'aide <i>À propos de ce monde</i> pour plus de détails."
+msgstr ""
+"Référez vous à l'aide <i>À propos de ce monde</i> pour plus de détails."
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board01TwoSteps.html:1
@@ -12770,29 +12823,29 @@ msgstr ""
 "correcte."
 
 #. type: Content of: <h1>
-#: src/lessons/sort/pancake/PancakeWorld.html:1
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:1
 msgid "PancakeWorld"
 msgstr "Monde des crêpes"
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/PancakeWorld.html:3
-msgid "This universe is very simple, with only four functions provided."
-msgstr "Cet univers est très simple, avec seulement quatre fonctions fournies."
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:3
+msgid "This universe is very simple, with only five functions provided."
+msgstr "Cet univers est très simple, avec seulement cinq fonctions fournies."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:5
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:5
 #, no-wrap
 msgid "int getStackSize()"
 msgstr "int getStackSize()"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:6
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
 #, no-wrap
 msgid "getStackSize()"
 msgstr "getStackSize()"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/PancakeWorld.html:8
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:8
 msgid ""
 "Returns the size of the stack, that is the amount of pancakes it contains."
 msgstr ""
@@ -12800,19 +12853,19 @@ msgstr ""
 "compose."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:10
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:10
 #, no-wrap
 msgid "int getPancakeRadius(int rank)"
 msgstr "int getPancakeRadius(int rang)"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:11
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:11
 #, no-wrap
 msgid "getPancakeRadius(rank)"
 msgstr "getPancakeRadius(rang)"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/PancakeWorld.html:13
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:13
 msgid ""
 "Returns the radius of the pancake passed as argument, with the rank of the "
 "top-most pancake being 0."
@@ -12821,19 +12874,19 @@ msgstr ""
 "crêpe du haut est 0."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:15
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
 #, no-wrap
 msgid "boolean isPancakeUpsideDown(int rank)"
 msgstr "boolean isPancakeUpsideDown(int rang)"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:16
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:16
 #, no-wrap
 msgid "isPancakeUpsideDown(rank)"
 msgstr "isPancakeUpsideDown(rang)"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/PancakeWorld.html:18
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
 msgid ""
 "Returns whether the pancake passed as argument upside-down, that is, if its "
 "burned side is on top. As usual, the top-most pancake is of rank 0."
@@ -12842,19 +12895,19 @@ msgstr ""
 "est à l'envers, c'est-à-dire si sa face brulée est en haut."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:20
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:20
 #, no-wrap
 msgid "void flip(int amount)"
 msgstr "void flip(int quantité)"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:21
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:21
 #, no-wrap
 msgid "flip(amount)"
 msgstr "flip(quantité)"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/PancakeWorld.html:23
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:23
 msgid ""
 "Flips the <code>amount</code> first pancakes composing the stack, from the "
 "top of it."
@@ -12863,29 +12916,29 @@ msgstr ""
 "du sommet de celle-ci."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:25
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:25
 #, no-wrap
 msgid "boolean isSorted()"
 msgstr "boolean isSorted()"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/PancakeWorld.html:26
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:26
 #, no-wrap
 msgid "isSorted()"
 msgstr "isSorted()"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/PancakeWorld.html:28
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:28
 msgid "Returns whether the pancake stack is correctly sorted."
 msgstr "Renvoie si la pile de crêpes est correctement triée."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/pancake/PancakeWorld.html:30
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:36
 msgid "About this problem"
 msgstr "À propos de ce problème"
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/PancakeWorld.html:31
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:37
 msgid ""
 "It is inspired by a problem first introduced in 1975 by Harry Dweighter in "
 "the American Mathematical Monthly. The question is not only to sort the "
@@ -12899,7 +12952,7 @@ msgstr ""
 "pour trier n'importe quelle pile de taille <code>n</code>. "
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/PancakeWorld.html:35
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:41
 msgid ""
 "This problem is now famous because Bill Gates authored (with C. "
 "Papadimitriou) his only scientific publication in 1979 on this topic, "
@@ -12914,7 +12967,7 @@ msgstr ""
 "Windows et devienne riche. "
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/PancakeWorld.html:39
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:45
 msgid ""
 "Then, David X. Cohen, the inventor of the Futurama comics with many "
 "mathematical references, introduced the variant with burnt pancakes and "
@@ -12925,7 +12978,7 @@ msgstr ""
 "crêpes brulées et étudie sa complexité avec Manuel Blum."
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/PancakeWorld.html:42
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:48
 msgid ""
 "An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
 "determining the minimal amount of flips to sort the stack is a NP-complete "
@@ -12943,7 +12996,7 @@ msgstr ""
 "détermination du nombre minimal de coups qui est NP."
 
 #. type: Content of: <p>
-#: src/lessons/sort/pancake/PancakeWorld.html:47
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:53
 msgid "Further information can be found on the wikipedia page."
 msgstr ""
 "Pour plus d'information, référez vous à la page anglophone de wikipedia "
@@ -13296,20 +13349,20 @@ msgstr "Mon code ne fonctionne pas, et je ne sais pas comment le débugger"
 #: src/lessons/sort/pancake/GatesPancake.html:79
 msgid ""
 "To debug one world after the other and avoid that the messages of all worlds "
-"get intermixed, you can write a <code>show()</code> function that displays "
-"its parameter only if the world size is equal to 5 7 or 9, depending on the "
+"get intermixed, you can write your debug function only if the method "
+"<code>isSelected()</code> returns true. It will be so only for the entity "
+"that is currently selected in the graphical interface, that is probably the "
 "world you are currently debugging. This will help breaking the difficulty in "
 "parts by debugging the situation on after the other."
 msgstr ""
 "Pour débugger un monde après l'autre, il est préférable d'éviter que les "
-"affichages de tous les mondes se mélangent. Pour cela, vous pouvez écrire "
-"une méthode <code>affiche()</code> qui n'affiche son paramètre que si la "
-"taille du mone est 5, 7 ou 9 (selon le monde que vous êtes en train "
-"d'étudier). Cela aidera à réduire la complexité en résolvant les problèmes "
-"les uns après les autres."
+"affichages de tous les mondes se mélangent. Le plus simple pour cela est "
+"d'utiliser la méthode <code>isSelected()</code> qui ne renvoi vrai que si le "
+"monde courant est celui sélectionné dans l'interface. Cela aidera à réduire "
+"la complexité en résolvant les problèmes les uns après les autres."
 
 #. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:84
+#: src/lessons/sort/pancake/GatesPancake.html:85
 msgid ""
 "Also, this universe does not have an historical view as the Sorting universe "
 "(yet), so don't hesitate to print textually the state of the world each time "

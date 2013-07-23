@@ -101,11 +101,10 @@ améliorer la lisibilité du code.
 
 <p><div class="tip" id="tip-2" alt="Mon code ne fonctionne pas, et je ne sais pas comment le débugger">
 Pour débugger un monde après l'autre, il est préférable d'éviter que les
-affichages de tous les mondes se mélangent. Pour cela, vous pouvez écrire
-une méthode <code>affiche()</code> qui n'affiche son paramètre que si la
-taille du mone est 5, 7 ou 9 (selon le monde que vous êtes en train
-d'étudier). Cela aidera à réduire la complexité en résolvant les problèmes
-les uns après les autres.<br/>
+affichages de tous les mondes se mélangent. Le plus simple pour cela est
+d'utiliser la méthode <code>isSelected()</code> qui ne renvoi vrai que si le
+monde courant est celui sélectionné dans l'interface. Cela aidera à réduire
+la complexité en résolvant les problèmes les uns après les autres.<br/>
 Aussi, cet univers n'a pas (encore) de vue historique comme le monde des
 tris. N'hésitez donc pas à afficher sous forme textuelle l'état du monde à
 chaque fois que vous rentrez dans la boucle principale. 
