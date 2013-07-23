@@ -75,7 +75,7 @@ public class TurmiteWorld extends BuggleWorld {
 		
 		if (o == null || !(o instanceof TurmiteWorld))
 			return false;
-		if (((TurmiteWorld) o).currStep != currStep)
+		if (((TurmiteWorld) o).currStep != currStep && ((TurmiteWorld) o).currStep !=0) // allow other world to be a cache from disk
 			return false;
 		return super.equals(o);
 	}
@@ -86,7 +86,7 @@ public class TurmiteWorld extends BuggleWorld {
 			return "other is not a turmiteWorld, but that's ok\n"+super.diffTo(other);
 		
 		String res = "";
-		if (((TurmiteWorld) other).currStep != currStep)
+		if (((TurmiteWorld) other).currStep != currStep && ((TurmiteWorld) other).currStep != 0)// allow other world to be a cache from disk
 			res += "The amount of steps is wrong: "+((TurmiteWorld) other).currStep +" is not "+ currStep+"\n";
 		return res+super.diffTo(other);
 	}
