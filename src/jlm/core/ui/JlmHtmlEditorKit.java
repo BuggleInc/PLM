@@ -21,6 +21,7 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 
 import jlm.core.model.Game;
+import jlm.core.model.lesson.Lecture;
 
 
 public class JlmHtmlEditorKit extends HTMLEditorKit {
@@ -46,10 +47,19 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 			if (tagName instanceof HTML.Tag) {
 				HTML.Tag tag = (HTML.Tag) tagName;
 				if (tag == HTML.Tag.IMG)
-					return new MyIconView(element);
+					return new MyIconView(element, baseExercise);
 			}
 			return super.create(element);
 		}
+	}
+
+	protected static Lecture baseExercise = null;
+	public JlmHtmlEditorKit() {
+		baseExercise = null;
+	}
+
+	public JlmHtmlEditorKit(Lecture _baseExercise) {
+		baseExercise = _baseExercise;
 	}
 
 	@Override
@@ -83,16 +93,21 @@ class MyIconView extends View {
 	 * Creates a new icon view that represents an element.
 	 *
 	 * @param elem the element to create a view for
+	 * @param baseExercise 
 	 * @throws FileNotFoundException 
 	 */
-	public MyIconView(Element elem) {
+	public MyIconView(Element elem, Lecture baseExercise) {
 		super(elem);
 		String filename = (String) elem.getAttributes().getAttribute(HTML.Attribute.SRC);
 		if (filename == null) {
-			System.err.println("<img> tag without src attribute");
+			System.err.println(Game.i18n.tr("<img> tag without src attribute in exercise {0}",baseExercise.getName()));
 			c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");
 		} else {
-			c = ResourcesCache.getIcon(filename);
+			c = ResourcesCache.getIcon(filename,true);
+			if (c != null)
+				return;
+			if (baseExercise != null) 
+				c = ResourcesCache.getIcon(baseExercise, filename);
 			if (c != null)
 				return;
 			

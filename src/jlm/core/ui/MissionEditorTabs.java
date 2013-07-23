@@ -169,6 +169,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 				setSelectedIndex(tabPosition);
 		}
 		/* Change the mission text, because the CSS changed */
+		missionTab.setEditorKit(new JlmHtmlEditorKit(game.getCurrentLesson().getCurrentExercise()));
 		missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(newLang));
 		missionTab.setCaretPosition(0);
 	}

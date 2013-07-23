@@ -34,13 +34,24 @@ public class ResourcesCache {
 	private static Boolean warnedAboutBrokenPath = false;
 	/**
 	 * Lazy loading of ImageIcon resources.
-	 * @param path of the image resource to be loaded. 
+	 * @param path of the image resource to be loaded.
 	 * @return the ImageIcon or a blank ImageIcon when resource is not found.
 	 */
 	public static ImageIcon getIcon(String path) {
+		return getIcon(path, false);
+	}
+	/**
+	 * Lazy loading of ImageIcon resources.
+	 * @param path of the image resource to be loaded.
+	 * @param okNull : whether it's ok to return null (useful to search for several paths) 
+	 * @return the ImageIcon or a blank ImageIcon when resource is not found.
+	 */
+	public static ImageIcon getIcon(String path, boolean okNull) {
 		if (!iconsCache.containsKey(path)) {
 			URL url = ResourcesCache.class.getClassLoader().getResource(path);
 			if (url == null) {
+				if (okNull) 
+					return null;
 				if (!warnedAboutBrokenPath) {
 					Logger.log("jlm.ui.ResourcesCache.getIcon()", "Cannot find path "+path+": classloader returned null.");
 					warnedAboutBrokenPath = true;
@@ -56,8 +67,9 @@ public class ResourcesCache {
 	}
 
 	public static ImageIcon getIcon(Object basePath, String path) {
-		return getIcon(basePath.getClass().getPackage().getName().replaceAll("\\.", "/") 
-				        +"/"+path);
+		String name = basePath.getClass().getPackage().getName().replaceAll("\\.", "/") 
+		        +"/"+path;
+		return getIcon(name);
 	}
 
 	public static int getBusyIconsSize() {
