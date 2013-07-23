@@ -98,7 +98,8 @@ public class GatesPancakeEntity extends PancakeEntity {
 	
 	/* BEGIN TEMPLATE */
 	public void solve() {
-		/* BEGIN SOLUTION */	
+		/* BEGIN SOLUTION */
+		/* cruft to search for an instance exercising all transformations */
 		boolean doneA=false;
 		boolean doneB=false;
 		boolean doneC=false;
@@ -107,6 +108,11 @@ public class GatesPancakeEntity extends PancakeEntity {
 		boolean doneF=false;
 		boolean doneG=false;
 		boolean doneH=false;
+		Integer[] origSizes = new Integer[getStackSize()];
+		for (int i=0;i<getStackSize();i++)
+			origSizes[i] = getPancakeRadius(i);
+		/* end of this cruft */
+		
 		int stackSize = getStackSize();
 		
 		if (debug) {
@@ -202,7 +208,7 @@ public class GatesPancakeEntity extends PancakeEntity {
 						System.out.println("BINGO! This instance is VERY interesting as it experiences every cases of the algorithm.\nPLEASE REPORT IT. PLEASE DONT LOSE IT.");
 						System.out.print("{");
 						for (int rank=0; rank < stackSize; rank++) 
-							System.out.print(""+getPancakeRadius(rank)+", ");
+							System.out.print(""+origSizes[rank]+", ");
 						System.out.println("}");
 					}
 					return;
