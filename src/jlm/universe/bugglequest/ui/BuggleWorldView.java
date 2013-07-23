@@ -39,7 +39,7 @@ public class BuggleWorldView extends WorldView {
 	}
 		
 	protected double getCellWidth() {
-		return (double) Math.min(getHeight(), getWidth()) / Math.max(((BuggleWorld)world).getWidth(), ((BuggleWorld)world).getHeight());
+		return (double) Math.min(getHeight() / ((BuggleWorld)world).getHeight() , getWidth() /  ((BuggleWorld)world).getWidth());
 	}
 	
 	protected double getPadX() {
