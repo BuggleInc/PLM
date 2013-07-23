@@ -1,4 +1,4 @@
-BuggleWorld: Desert
+BuggleWorld: Snail
 Size: 8x7
 Buggle(3,4): east,black,lightGray,Hunter
 Cell(2,0): lightGray,nobaggle,notopwall,noleftwall,

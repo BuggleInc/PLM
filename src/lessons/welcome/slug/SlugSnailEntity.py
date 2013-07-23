@@ -1,29 +1,31 @@
 import java.awt.Color as Color
 
 # BEGIN TEMPLATE
-def isFacingTrail():
+def isFacingTrail(color):
    # write your code here
    # BEGIN SOLUTION
    if isFacingWall():
       return False
    else:
 	  forward()
-	  res = (getGroundColor() == Color.green)
+	  res = (getGroundColor() == color)
 	  backward()
 	  return res
    # END SOLUTION
-# END TEMPLATE
 
-def hunt():
+def hunt(color):
+   # BEGIN HIDDEN
    while not isOverBaggle():
       brushUp()
-      if isFacingTrail():
+      if isFacingTrail(color):
          brushDown()
          forward()
          brushUp()
       else:
 	     turnLeft()
    pickUpBaggle()
+   # END HIDDEN
+# END TEMPLATE
 
-hunt()
+hunt(getParam(0))
 

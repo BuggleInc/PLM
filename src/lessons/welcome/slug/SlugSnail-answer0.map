@@ -1,4 +1,4 @@
-BuggleWorld: Forrest
+BuggleWorld: Kitty
 Size: 8x7
 Buggle(0,1): west,black,lightGray,Hunter
 Cell(0,1): lightGray,nobaggle,notopwall,noleftwall,
