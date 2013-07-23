@@ -15,6 +15,7 @@ public class PancakeWorld extends World {
 
 	private int lastModifiedPancake;
 	private boolean burnedWorld ;
+	public boolean wasRandom = false;
 	
 	/** Copy constructor */ 
 	public PancakeWorld(PancakeWorld world) {
@@ -49,6 +50,7 @@ public class PancakeWorld extends World {
 			pancakeStack[i] = new Pancake(i + 1);
 		
 		/* Mix them */
+		wasRandom = true;
 		while (isSorted()) 
 			for ( int rank = 0 ; rank < size ; rank++) {			
 				if ( Math.random() > 0.5) // Flipping time !

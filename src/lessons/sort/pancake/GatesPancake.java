@@ -15,6 +15,7 @@ public class GatesPancake extends ExerciseTemplated {
 				new PancakeWorld("7 pancakes",new int[] {3,6, 1,2,8,5,4,7},false),  // C  E+ Cbis E+ Cbis
 				new PancakeWorld("8 pancakes",new int[] {5,2,7,4,1,6,8,3,},false),  // A+ A+ A+ E+ A- G H
 				new PancakeWorld("9 pancakes",new int[] {4,2,3,7,9,1,5,6,8},false), // B+ Cbis A- D+ E+ H
+				new PancakeWorld("15 pancackes",new int[] {7, 2, 3, 14, 9, 5, 1, 8, 10, 11, 6, 12, 15, 4, 13, },false), // A+ Cbis A+ D+ E+ G A- B+ E+ F- H
 				new PancakeWorld("random 15 pancakes", 15, false),
 				new PancakeWorld("30 pancakes",new int[] 
 						{1, 5, 17, 8, 24, 27, 14, 4, 11, 10, 28, 2, 29, 25, 15, 20, 3, 18, 19, 7, 21, 12, 23, 22, 16, 26, 6, 9, 13, 30, },
