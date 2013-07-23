@@ -140,7 +140,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		pack();
 		setSize(1024, 768);
-		setVisible(true);
+		setVisible(false);
 	}
 
 	private void initMenuBar(Game g) {
@@ -181,7 +181,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				game.switchLesson("lessons.chooser");
+				new LessonChooser();
+				MainFrame.getInstance().setVisible(false);		
 			}
 		});
 		miFileSwitch.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));

@@ -7,6 +7,7 @@
   * Change Buggle.pickUpBaggle() to pickupBaggle() for consistency
   * ExerciseTemplated: Trim leading spaces of non-python templates
   * Fix BuggleView for non-square worlds
+  * Implement a graphical lesson chooser
 20130720:
   * Integrate the pancake exercises into the sorting lesson
   * New pancake exercise about implementing Gates' algorithm
