@@ -81,7 +81,7 @@ public class LessonRunner extends Thread {
 		
 		if (   exo.lastResult.totalTests > 0 
 			&& exo.lastResult.totalTests == exo.lastResult.passedTests) {
-			Game.getInstance().studentWork.setPassed(exo.getId(), null, true);
+			Game.getInstance().studentWork.setPassed(exo, null, true);
 			
 			Vector<Lecture> nextExercises =  exo.getDependingLectures();	
 			if ( nextExercises.size() == 0) {

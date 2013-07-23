@@ -84,7 +84,7 @@ public class ResourcesCache {
 	public static ImageIcon getStarredIcon(ImageIcon icon, Exercise exo) {
 		String path = exo.getWorld(0).getView().getClass().getCanonicalName();
 		for (ProgrammingLanguage lang : exo.getProgLanguages()) {
-			if (Game.getInstance().studentWork.getPassed(exo.getId(), lang))
+			if (Game.getInstance().studentWork.getPassed(exo, lang))
 				path += "_"+lang.getLang()+"ok";
 			else 
 				path += "_"+lang.getLang()+"nok";
@@ -98,7 +98,7 @@ public class ResourcesCache {
 				
 				ImageIcon star = getIcon("resources/star.png");
 				ImageIcon starNo = getIcon("resources/star_white.png");
-				if (Game.getInstance().studentWork.getPassed(exo.getId(), Game.LIGHTBOT))  
+				if (Game.getInstance().studentWork.getPassed(exo, Game.LIGHTBOT))  
 					g.drawImage(star.getImage(), 0, 0, null);
 				else 
 					g.drawImage(starNo.getImage(), 0, 0, null);
@@ -108,12 +108,12 @@ public class ResourcesCache {
 				Graphics g = combined.getGraphics();
 				g.drawImage(icon.getImage(), 0, 0, null);
 				
-				if (Game.getInstance().studentWork.getPassed(exo.getId(), Game.JAVA)) { 
+				if (Game.getInstance().studentWork.getPassed(exo, Game.JAVA)) { 
 					g.drawImage(Game.JAVA.getIcon().getImage(), 26, 0, null);
 				} else {
 					//g.drawImage(getIcon("img/lang_java_no.png").getImage(), 26,0,null);
 				}
-				if (Game.getInstance().studentWork.getPassed(exo.getId(), Game.PYTHON)) { 
+				if (Game.getInstance().studentWork.getPassed(exo, Game.PYTHON)) { 
 					g.drawImage(Game.PYTHON.getIcon().getImage(), 26, 16, null);
 				} else {
 					//	g.drawImage(getIcon("img/lang_python_no.png").getImage(), 26,16,null);

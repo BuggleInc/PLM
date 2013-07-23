@@ -23,6 +23,10 @@ import jlm.core.model.lesson.Lesson;
 import jlm.core.model.lesson.SourceFile;
 import jlm.core.model.lesson.SourceFileRevertable;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ParseException;
+
 /**
  * Implementation of the {@link ISessionKit} saving the student data in a zip file.
  * 
@@ -40,16 +44,128 @@ public class ZipSessionKit implements ISessionKit {
 		return new File(path, "jlm-"+lesson.getId()+".zip");
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public void storeAll(File path) throws UserAbortException {
-		for (Lesson lesson : this.game.getLessons())
+		/* First save the bodies */
+		for (Lesson lesson : this.game.getLessons()) 
 			storeLesson(path, lesson);
+			
+		/* Save the per lesson summaries */
+		JSONObject allLessons = new JSONObject();
+		for (String lessonName : this.game.studentWork.getLessonsNames()) {
+			JSONObject allLangs = new JSONObject();
+			for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
+				int possible = Game.getInstance().studentWork.getPossibleExercises(lessonName, lang);
+				int passed = Game.getInstance().studentWork.getPassedExercises(lessonName, lang);
+
+				if (possible>0) {
+					JSONObject oneLang = new JSONObject();
+					oneLang.put("possible",possible);
+					oneLang.put("passed",passed);
+					allLangs.put(lang.getLang(),oneLang);
+				}
+			}
+			if (allLangs.size()>0) 
+				allLessons.put(lessonName, allLangs);
+		}
+		//System.out.println("JSON written: "+allLessons.toJSONString());
+		
+
+		ZipOutputStream zos = null;
+		try {
+			zos = new ZipOutputStream(new FileOutputStream(new File(path, "overview.zip")));
+			zos.setMethod(ZipOutputStream.DEFLATED);
+			zos.setLevel(Deflater.BEST_COMPRESSION);
+
+			zos.putNextEntry(new ZipEntry("passed"));
+			zos.write(allLessons.toJSONString().getBytes());
+			zos.closeEntry();
+		} catch (IOException ex) { // FileNotFoundException or IOException
+			// It's ok to loose this data as it will be recomputed when the lessons are actually loaded
+
+		} finally {
+			try {
+				if (zos != null)
+					zos.close();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public void loadAll(File path) {
+		/* First get the bodies */
 		for (Lesson lesson : this.game.getLessons())
 			loadLesson(path, lesson);
+		
+		/* Also get the per lesson summaries */
+		
+		// get the zip content
+		String content = null;
+		ZipFile zf = null;
+		BufferedReader br = null;
+		try {
+			zf = new ZipFile(new File(path, "overview.zip"));
+			ZipEntry entry = zf.getEntry("passed");
+			if (entry == null) 
+				return;
+			
+			InputStream is = zf.getInputStream(entry);
+
+			br = new BufferedReader(new InputStreamReader(is));
+			String s;
+			StringBuffer b = new StringBuffer();
+
+			while ((s = br.readLine()) != null) 
+				b.append(s);
+
+			content = b.toString();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (zf != null)
+					zf.close();
+				if (br != null)
+					br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if (content == null)
+			return;
+		//System.out.println("JSON Read: "+content);
+		
+		// now parse it
+		Object value = null;
+		try {
+			value = JSONValue.parseWithException(content);
+		} catch (ParseException e) {
+			System.err.println("Parse error while reading the scores from disk:");
+			e.printStackTrace();
+		}
+		if (! (value instanceof JSONObject)) {
+			System.err.println("Retrieved passed-values is not a JSONObject: "+value);
+			return;
+		}
+		JSONObject allLessons = (JSONObject) value; 
+		for (Object lessonName: allLessons.keySet()) {
+			JSONObject allLangs = (JSONObject) allLessons.get(lessonName);
+			for (Object langName: allLangs.keySet()) {
+				ProgrammingLanguage lang = null;
+				for (ProgrammingLanguage l:Game.getProgrammingLanguages())
+					if (l.getLang().equals(langName))
+						lang = l;
+				
+				JSONObject oneLang = (JSONObject) allLangs.get(langName);
+				int possible = Integer.parseInt(""+oneLang.get("possible"));
+				int passed = Integer.parseInt(""+oneLang.get("passed"));
+				Game.getInstance().studentWork.setPossibleExercises((String) lessonName, lang, possible);
+				Game.getInstance().studentWork.setPassedExercises((String) lessonName, lang, passed);
+			}
+		}
 	}
 
 	@Override
@@ -88,7 +204,7 @@ public class ZipSessionKit implements ISessionKit {
 					Exercise exercise = (Exercise) lecture;
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						// flag successfully passed exercise
-						if (Game.getInstance().studentWork.getPassed(exercise.getId(), lang)) {
+						if (Game.getInstance().studentWork.getPassed(exercise, lang)) {
 							ZipEntry ze = new ZipEntry(exercise.getId() + "/DONE."+lang.getExt());
 							zos.putNextEntry(ze);
 							byte[] bytes = new byte[1];
@@ -172,7 +288,7 @@ public class ZipSessionKit implements ISessionKit {
 					for (ProgrammingLanguage lang:exercise.getProgLanguages()) {
 						ZipEntry entry = zf.getEntry(exercise.getId() + "/DONE."+lang.getExt());
 						if (entry != null) {
-							Game.getInstance().studentWork.setPassed(exercise.getId(), lang, true);
+							Game.getInstance().studentWork.setPassed(exercise, lang, true);
 						}
 
 						for (int i = 0; i < exercise.getSourceFileCount(lang); i++) {

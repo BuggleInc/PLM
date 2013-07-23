@@ -509,7 +509,7 @@ public class Game implements IWorldView {
 			for (Lecture lect : l.exercises())
 				if (lect instanceof Exercise)
 					for (ProgrammingLanguage lang:((Exercise) lect).getProgLanguages()) 
-						Game.getInstance().studentWork.setPassed(lect.getId(), lang, false);
+						Game.getInstance().studentWork.setPassed(lect, lang, false);
 
 		fireCurrentExerciseChanged(currentLesson.getCurrentExercise());
 	}

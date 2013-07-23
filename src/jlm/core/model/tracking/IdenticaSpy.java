@@ -28,7 +28,7 @@ public class IdenticaSpy implements ProgressSpyListener {
 
     @Override
     public void executed(Exercise exo) {
-        if (Game.getInstance().studentWork.getPassed(exo.getId(), exo.lastResult.language)) {
+        if (Game.getInstance().studentWork.getPassed(exo, exo.lastResult.language)) {
 
             DefaultHttpClient httpclient = new DefaultHttpClient();
             try {
