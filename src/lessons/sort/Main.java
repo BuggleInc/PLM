@@ -1,6 +1,5 @@
 package lessons.sort;
 
-import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import lessons.sort.bubble.AlgBubbleSort1;
 import lessons.sort.bubble.AlgBubbleSort2;
@@ -12,9 +11,6 @@ import lessons.sort.comb.AlgCombSort;
 import lessons.sort.comb.AlgCombSort11;
 import lessons.sort.gnome.AlgGnomeSort;
 import lessons.sort.insertion.AlgInsertionSort;
-import lessons.sort.pancake.BasicPancake;
-import lessons.sort.pancake.BurnedPancake;
-import lessons.sort.pancake.GatesPancake;
 import lessons.sort.selection.AlgSelectionSort;
 import lessons.sort.shell.AlgShellSort;
 
@@ -40,9 +36,5 @@ public class Main extends Lesson {
 		addExercise(new AlgCombSort(this));
 		addExercise(new AlgCombSort11(this));
 		addExercise(new AlgGnomeSort(this));
-		
-		Lecture pancake = addExercise(new BasicPancake(this));
-		addExercise(new BurnedPancake(this), pancake);
-		addExercise(new GatesPancake(this),pancake);
 	}
 }
