@@ -23,6 +23,7 @@ import javax.swing.JSplitPane;
 
 import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.utils.FileUtils;
 
 public class LessonChooser extends JFrame implements HumanLangChangesListener {
@@ -80,7 +81,6 @@ public class LessonChooser extends JFrame implements HumanLangChangesListener {
 		setSize(700, 500);
 		setVisible(true);
 		setResizable(false);
-		System.out.println("width: "+matrix.getWidth()+"; height: "+matrix.getHeight());
 	}
 
 	@Override
@@ -145,7 +145,6 @@ class LessonOverview extends JPanel implements HumanLangChangesListener {
 		btGo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Switch to "+path);
 				Game.getInstance().switchLesson(path.replaceAll("/", "."));
 				MainFrame.getInstance().setVisible(true);
 				lc.dispose();
@@ -170,12 +169,33 @@ class LessonOverview extends JPanel implements HumanLangChangesListener {
 		StringBuffer sb = null;
 		try {
 			sb = FileUtils.readContentAsText(filename, "html",true);
-			desc.setText(sb.toString());
 		} catch (IOException ex) {
-			desc.setText(Game.i18n.tr("File {0} not found.",filename));
+			sb = new StringBuffer(Game.i18n.tr("<p>(unable to display the lesson's short description: file {0}.html not found)</p>",filename));
 		}
 
-		this.desc.setCaretPosition(0);
+		sb.append(Game.i18n.tr("<p><b>Your score:</b> "));
+		String id = path.replaceAll("/", ".").replaceAll("^lessons\\.", "");
+		boolean foundOne = false;
+		for (ProgrammingLanguage lang:Game.programmingLanguages) {
+			int possible = Game.getInstance().studentWork.getPossibleExercises(id, lang);
+			int passed = Game.getInstance().studentWork.getPassedExercises(id, lang);
+			if (possible>0) {
+				if (lang == Game.LIGHTBOT) 
+					sb.append(" "+Game.i18n.tr("{0} out of {1} exercises passed.",passed,possible));
+				else {
+					sb.append("<br/>");
+					sb.append("&nbsp;&nbsp;&nbsp;&nbsp;<img src=\"img/lang_"+lang.getLang().toLowerCase()+".png\">&nbsp;&nbsp;");
+					sb.append(Game.i18n.tr("{0} out of {1} exercises passed in {2}.",passed,possible,lang.getLang()));
+				}
+				foundOne = true;
+			}
+		}
+		if (!foundOne) 
+			sb.append(Game.i18n.tr("You never attempted this lesson."));
+		sb.append("</p>");
+		
+		desc.setText(sb.toString());
+		desc.setCaretPosition(0);
 	}
 
 	@Override
