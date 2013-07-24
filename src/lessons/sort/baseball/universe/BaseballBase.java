@@ -1,12 +1,10 @@
 package lessons.sort.baseball.universe;
 
-/**
- * @see BaseballPlayer
- */
+import jlm.core.model.Game;
 
 public class BaseballBase {
 	
-	private BaseballPlayer[] players; // the players on the base
+	private int[] players; // the players on the base
 	private int color; // the color of the base
 	
 	/**
@@ -15,9 +13,9 @@ public class BaseballBase {
 	 * @param playerLocationsAmount the amount of player locations available on the base
 	 */
 	public BaseballBase(int color,int playerLocationsAmount) {
-		this.players=new BaseballPlayer[playerLocationsAmount];
+		this.players=new int[playerLocationsAmount];
 		for ( int i = 0 ; i < playerLocationsAmount ; i++ )
-			this.players[i] = new BaseballPlayer(color);
+			this.players[i] = color;
 		
 		this.color=color;
 	}
@@ -32,7 +30,7 @@ public class BaseballBase {
 			return false;
 		
 		for (int i=0; i<getLocationsAmount(); i++)
-			if (!otherBase.getPlayer(i).equals(getPlayer(i)))
+			if (otherBase.getPlayerColor(i) != getPlayerColor(i))
 				return false;
 		
 		return true;
@@ -46,34 +44,20 @@ public class BaseballBase {
 		return this.color;
 	}
 	
-	/**
-	 * Give the amount of players locations available on the base
-	 * @return The amount of players locations available on the base
-	 */
+	/** Returns the amount of players locations available on the base */
 	public int getLocationsAmount(){
 		return this.players.length;
 	}
 	
 	/**
-	 * Returns the wanted player of this base
-	 * @param player the index of the wanted player
+	 * Returns the color of the player in this base at the specified location
+	 * @param location the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
 	 */
-	public BaseballPlayer getPlayer(int player) {
-		return this.players[player];
-	}
-
-
-	/**
-	 * Return the color of the player in base baseIndex at position playerLocation
-	 * @param playerLocation the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
-	 * @return the color of the player in base baseIndex at position playerLocation
-	 */
-	public int getPlayerColor(int playerLocation)  {
-		if ( playerLocation < 0 || playerLocation > this.getLocationsAmount()-1 )
-		{
-			throw new IllegalArgumentException("The position of a player must be between 0 and getLocationsAmount()-1.\nIt's sad but "+playerLocation+" isn't one of these values !");
-		}
-		return this.players[playerLocation].getColor();
+	public int getPlayerColor(int location)  {
+		if ( location < 0 || location > this.getLocationsAmount()-1 )
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot retrieve the color of player {0} as it is not a valid location (between 0 and {1})",location,getLocationsAmount()));
+		
+		return this.players[location];
 	}
 
 
@@ -82,7 +66,7 @@ public class BaseballBase {
 	 * @param baseballPlayer : the player that you want to place
 	 * @param position : the position where you want to place the player
 	 */
-	public void setPlayer(int position, BaseballPlayer baseballPlayer) {
+	public void setPlayer(int position, int baseballPlayer) {
 		this.players[position] = baseballPlayer;
 	}
 
@@ -96,9 +80,8 @@ public class BaseballBase {
 		int n = getLocationsAmount();
 		String s = "";
 		for ( int i = 0 ; i < n ; i++)
-		{
-			s+="Player "+i+" : "+this.getPlayer(i).getColor()+"\n" ;
-		}
+			s+="Player "+i+" : "+this.getPlayerColor(i)+"\n" ;
+		
 		return s;
 	}
 

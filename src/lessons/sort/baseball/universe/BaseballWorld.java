@@ -31,7 +31,7 @@ public class BaseballWorld extends World {
 		
 
 		// add the hole
-		this.bases[this.bases.length-1].setPlayer(0,new BaseballPlayer(-1));
+		this.bases[this.bases.length-1].setPlayer(0,-1);
 		
 		// initializing holeContainer
 		holeContainer = new int[] {bases.length-1, 1};
@@ -118,7 +118,7 @@ public class BaseballWorld extends World {
 		for (int i = 0 ; i < bases.length ; i++) {
 			this.bases[i] = new BaseballBase(i,other.getLocationsAmount());
 			for ( int j = 0 ; j < getLocationsAmount();j++)
-				bases[i].setPlayer(j,other.bases[i].getPlayer(j));
+				bases[i].setPlayer(j,other.bases[i].getPlayerColor(j));
 		}
 		
 		setHoleContainer(other.holeContainer);
@@ -139,7 +139,7 @@ public class BaseballWorld extends World {
 			sb.append("- Base "+i+"\n");
 			sb.append("  Color : "+this.bases[i].getColor()+"\n");
 			for ( int j = 0 ; j < getLocationsAmount() ; j++)
-				sb.append("  Player "+j+" : "+this.bases[i].getPlayer(j).getColor()+"\n");
+				sb.append("  Player "+j+" : "+this.bases[i].getPlayerColor(j)+"\n");
 		}
 		return sb.toString();
 	}
@@ -218,15 +218,15 @@ public class BaseballWorld extends World {
 		{
 			for ( int i = 0 ; i < n && sw; i++)
 			{
-				sw =  ( this.bases[baseIndex].getPlayer(i).getColor() == 0 )
-					||( this.bases[baseIndex].getPlayer(i).getColor()== this.bases[baseIndex].getColor() ) ;
+				sw =  ( this.bases[baseIndex].getPlayerColor(i) == 0 )
+					||( this.bases[baseIndex].getPlayerColor(i) == this.bases[baseIndex].getColor() ) ;
 			}
 		}
 		else	// it's a regular base
 		{
 			for ( int i = 0 ; i < n && sw; i++)
 			{
-				sw = ( this.bases[baseIndex].getPlayer(i).getColor() == this.bases[baseIndex].getColor() ) ;
+				sw = ( this.bases[baseIndex].getPlayerColor(i) == this.bases[baseIndex].getColor() ) ;
 			}
 		}
 		return sw;
@@ -337,8 +337,8 @@ public class BaseballWorld extends World {
 	 * @param playerDst : the position of the player that you want to move from the destination base
 	 */
 	private void swap(int indexBaseSrc, int playerSrc, int indexBaseDst, int playerDst) {
-		BaseballPlayer flyingMan = this.bases[indexBaseSrc].getPlayer(playerSrc);
-		this.bases[indexBaseSrc].setPlayer(playerSrc,this.bases[indexBaseDst].getPlayer(playerDst));
+		int flyingMan = this.bases[indexBaseSrc].getPlayerColor(playerSrc);
+		this.bases[indexBaseSrc].setPlayer(playerSrc,this.bases[indexBaseDst].getPlayerColor(playerDst));
 		this.bases[indexBaseDst].setPlayer(playerDst, flyingMan);
 	}
 

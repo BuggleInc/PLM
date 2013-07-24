@@ -163,7 +163,7 @@ public class BaseballWorldView extends WorldView
 			centerPlayer[0] = (int) (middleUpper[0] - (i+.5)*delta[0] ); 
 			centerPlayer[1] = (int) (middleUpper[1] - (i+.5)*delta[1]);  
 			
-			colorPlayer = obtainColor(base.getPlayer(i).getColor());	
+			colorPlayer = obtainColor(base.getPlayerColor(i));	
 			
 			drawDisk(g, centerPlayer, radius, colorPlayer);
 		}
