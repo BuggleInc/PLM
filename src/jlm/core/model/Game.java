@@ -87,7 +87,7 @@ public class Game implements IWorldView {
 	public static final ProgrammingLanguage RUBY =       new ProgrammingLanguage("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
 	public static final ProgrammingLanguage LIGHTBOT =   new ProgrammingLanguage("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
-		JAVA, JAVASCRIPT, PYTHON, RUBY, LIGHTBOT
+		JAVA, PYTHON, RUBY, JAVASCRIPT, LIGHTBOT
 	};
 	private ProgrammingLanguage programmingLanguage = JAVA;
 
@@ -131,6 +131,7 @@ public class Game implements IWorldView {
 			ongoingInitialization = true;
 			Game.instance = new Game();
 			ongoingInitialization = false;
+			Game.instance.loadSession();
 		}
 		return Game.instance;
 	}
@@ -138,7 +139,6 @@ public class Game implements IWorldView {
 	private Game() {
 		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
-		loadSession();
 
 		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
