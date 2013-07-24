@@ -2,6 +2,7 @@ package lessons.sort.baseball.universe;
 
 import javax.script.ScriptEngine;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
@@ -36,37 +37,19 @@ public class BaseballWorld extends World
 	}
 
 	/**
-	 * Makes a textual description of the differences between the caller and world
+	 * Returns a textual description of the differences between the caller and world
 	 * @param world : the world with which you want to compare your world
-	 * @return A textual description of the differences between the caller and world
 	 */
-	public String diffTo(World world)
-	{
-		String s ;
-		if (world == null || !(world instanceof BaseballWorld))
-		{
-			s="This is not a baseball world ='( ..."; // it's truly sad =(
-		}
-		else
-		{
-			BaseballWorld other = (BaseballWorld) world;
-			s = this.field.diffTo(other.field);
-		}
-		return s;
+	public String diffTo(World other) {
+		if (other == null || !(other instanceof BaseballWorld))
+			return Game.i18n.tr("This is not a baseball world :-(");
+		return field.diffTo(((BaseballWorld)other).field);
 	}
 	
-	public boolean equals(Object o) {
-		boolean sw = true;
-		if (o == null || !(o instanceof BaseballWorld))
-		{
-			sw=false;
-		}
-		else
-		{
-			BaseballWorld other = (BaseballWorld) o;
-			sw = this.field.equals(other.field);
-		}
-		return sw;
+	public boolean equals(Object other) {
+		if (other == null || !(other instanceof BaseballWorld))
+			return false;
+		return field.equals(((BaseballWorld)other).field);
 	}
 	
 	/** Returns the number of bases on your field */

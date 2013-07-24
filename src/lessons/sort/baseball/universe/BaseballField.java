@@ -1,5 +1,7 @@
 package lessons.sort.baseball.universe;
 
+import jlm.core.model.Game;
+
 
 public class BaseballField
 {
@@ -66,67 +68,41 @@ public class BaseballField
 	
 	/**
 	 * Make a textual description of the differences between the caller and field
-	 * @param field : the field with which you want to compare your current field 
-	 * @return A textual description of the differences between the caller and field
+	 * @param otherField : the field with which you want to compare your current field 
 	 */
-	public String diffTo(BaseballField field) {
-		String s="These two fields are identical";
-		if ( !this.equals(field))
-		{
-			int numberOfBases = this.getAmountOfBases();
-			int numberOfPlayers = this.getLocationsAmount();
-			if ( numberOfBases != field.getAmountOfBases())
-			{
-				s = "The number of bases are different in the two fields ( "
-						+numberOfBases+" vs "+field.getAmountOfBases()+" )";
-			}
-			if ( numberOfPlayers != field.getLocationsAmount())
-			{
-				s = "The number of players are different in the two fields ( "
-						+numberOfPlayers+" vs "+field.getLocationsAmount()+" )";
-			}
-			else
-			{
-				s="";
-				for ( int i = 0 ; i < numberOfBases ; i++)
-				{
-					if ( !this.getBase(i).equals(field.getBase(i)))
-					{
-						s+=" Base number "+(i+1)+" : "+this.getBase(i).toString()
-								+" vs "+field.getBase(i).toString();
-						s+="\n";
-					}
-				}
-			}
-		}
-		return s;
+	public String diffTo(BaseballField otherField) {
+		
+		if (getAmountOfBases() != otherField.getAmountOfBases())
+			return Game.i18n.tr("Differing amount of bases: {0} vs {1}",getAmountOfBases(),otherField.getAmountOfBases());
+			
+		if (getLocationsAmount() != otherField.getLocationsAmount())
+			return Game.i18n.tr("Differing amount of players: {0} vs {1}", getLocationsAmount(), otherField.getLocationsAmount());
+		
+		StringBuffer sb = new StringBuffer();
+		for ( int i = 0 ; i < getAmountOfBases() ; i++)
+			if ( !this.getBase(i).equals(otherField.getBase(i)))
+			sb.append(Game.i18n.tr("Base #{0} differs: {1} vs {2}",this.getBase(i).toString(),otherField.getBase(i).toString()));
+
+		return sb.toString();
 	}
 
-	public boolean equals(Object o) {
-		boolean sw=true;
-		if (o == null || !(o instanceof BaseballField) )
-		{
-			sw = false ;
-		}
-		else
-		{
-			BaseballField other = (BaseballField) o;
-			if ( this.holeContainer[0] == other.holeContainer[0]
-			     && this.holeContainer[1] == other.holeContainer[1]
-				 && this.getAmountOfBases() == other.getAmountOfBases()
-				 && this.getLocationsAmount() == other.getLocationsAmount() )
-			{
-				for ( int i = 0 ; i< this.bases.length && sw ;i++ )
-				{
-					sw = this.bases[i].equals(other.bases[i]);
-				}
-			}
-			else
-			{
-				sw = false;
-			}
-		}
-		return sw;
+	public boolean equals(Object other) {
+		if (other == null || !(other instanceof BaseballField) )
+			return false;
+		
+		BaseballField otherField = (BaseballField) other;
+		if (   this.holeContainer[0] != otherField.holeContainer[0]
+			|| this.holeContainer[1] != otherField.holeContainer[1]
+			|| this.getAmountOfBases() != otherField.getAmountOfBases()
+			|| this.getLocationsAmount() == otherField.getLocationsAmount())
+			
+			return false;
+
+		for ( int i = 0 ; i< this.bases.length ;i++ )
+			if (! this.bases[i].equals(otherField.bases[i]))
+				return false;
+					
+		return true;
 	}
 	
 	/**

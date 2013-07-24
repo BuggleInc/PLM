@@ -17,42 +17,25 @@ public class BaseballBase {
 	public BaseballBase(int color,int playerLocationsAmount) {
 		this.players=new BaseballPlayer[playerLocationsAmount];
 		for ( int i = 0 ; i < playerLocationsAmount ; i++ )
-		{
 			this.players[i] = new BaseballPlayer(color);
-		}
+		
 		this.color=color;
 	}
 	
 
-	/**
-	 * Indicate whether some other object is "equal to" this one
-	 * @return if the two objects are equals
-	 * @param o the reference object with which to compare
-	 * @return TRUE if the bases are the same <br>FALSE else
-	 */
-	public boolean equals(Object o) {
-		boolean sw=true;
-		if (o == null || !(o instanceof BaseballBase) )
-		{
-			sw = false ;
-		}
-		else 
-		{
-			BaseballBase base = (BaseballBase) o;
-			int n = this.getLocationsAmount();
-			if (base.getLocationsAmount() == n )
-			{		
-				for ( int i = 0 ; i < n && sw ; i++)
-				{
-					sw = base.getPlayer(i).equals(this.getPlayer(i));
-				}
-			}
-			else
-			{
-				sw = false;
-			}
-		}
-		return sw;
+	public boolean equals(Object other) {
+		if (other == null || !(other instanceof BaseballBase) )
+			return false;
+		
+		BaseballBase otherBase = (BaseballBase) other;
+		if (otherBase.getLocationsAmount() != getLocationsAmount())
+			return false;
+		
+		for (int i=0; i<getLocationsAmount(); i++)
+			if (!otherBase.getPlayer(i).equals(getPlayer(i)))
+				return false;
+		
+		return true;
 	}
 	
 	/**
