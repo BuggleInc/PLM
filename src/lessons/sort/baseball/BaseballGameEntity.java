@@ -11,7 +11,7 @@ public class BaseballGameEntity extends BaseballEntity {
 
 	/* BEGIN TEMPLATE */
 	private void homerun() {
-		int amountOfBases = this.getAmountOfBases()-1;
+		int amountOfBases = this.getBasesAmount()-1;
 		for ( int baseIndex = 0 ; baseIndex < amountOfBases ; baseIndex++)
 		{
 			if ( !this.isBaseSorted(baseIndex) )
@@ -73,7 +73,7 @@ public class BaseballGameEntity extends BaseballEntity {
 	// Search for the player closer from his base
 	private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch )  {
 		int[] location = new int[2];
-		int nbBases = this.getAmountOfBases();
+		int nbBases = this.getBasesAmount();
 		boolean found = false;
 		for ( int i = firstBaseToSearch; i < nbBases && !found ; i++)
 		{

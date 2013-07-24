@@ -11,7 +11,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 
 	/* BEGIN TEMPLATE */
 	private void homerun() {
-		int amountOfBases = this.getAmountOfBases()-1;
+		int amountOfBases = this.getBasesAmount()-1;
 		for ( int baseIndex = 0 ; baseIndex < amountOfBases ; baseIndex++)
 		{
 			if ( !this.isBaseSorted(baseIndex) )
@@ -23,7 +23,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 
 	private void solve(int baseIndex) {
 		/* BEGIN SOLUTION */
-		int nbPlayers = this.getLocationsAmount();
+		int nbPlayers = this.getPositionsAmount();
 
 		for ( int i = 0 ; i < nbPlayers ; i++ )	
 		{
@@ -57,7 +57,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 	// Bring the player at (baseDst,playerDst) to (baseSrc,playerDst)
 	private void bringPlayerHome(int baseSrc,int playerSrc,int baseDst,int playerDst) {
 		move( baseSrc,playerSrc);
-		int nbPlayers = this.getLocationsAmount();
+		int nbPlayers = this.getPositionsAmount();
 		for ( int i = baseSrc-1; i > baseDst; i--)
 		{
 			move(i,(1+playerDst)%nbPlayers);
@@ -69,8 +69,8 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 	// Search for the player closer from his base
 	private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) {
 		int[] location = new int[2];
-		int nbBases = this.getAmountOfBases();
-		int nbPlayers = this.getLocationsAmount();
+		int nbBases = this.getBasesAmount();
+		int nbPlayers = this.getPositionsAmount();
 		boolean found = false;
 		for ( int i = firstBaseToSearch; i < nbBases && !found ; i++)
 		{
@@ -90,7 +90,7 @@ public class BaseballGameMorePlayersEntity extends BaseballEntity {
 	// Bring the hole to (baseDst,playerDst) while protecting the position playerToProtect
 	private void bringHole(int baseDst, int playerDst , int playerToProtect) {
 		int[] holeLocation = { this.getHoleBase(), this.getHolePosition() };
-		int nbPlayers = this.getLocationsAmount();
+		int nbPlayers = this.getPositionsAmount();
 		if ( baseDst < holeLocation[0] ) // the hole is after the base where we want it
 		{
 			for ( int i = holeLocation[0]-1; i > baseDst;i--)

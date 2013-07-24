@@ -90,7 +90,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 	 * @param be The current BaseballEntity
 	 */
 	private void initBaseSelector(BaseballEntity be) {
-		int baseAmount = be.getAmountOfBases();
+		int baseAmount = be.getBasesAmount();
 		Integer[] values = new Integer[baseAmount];
 		for (int i = 0 ; i < baseAmount ; i++)
 		{
@@ -104,7 +104,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 	 * @param be The current BaseballEntity
 	 */
 	private void initPlayerSelector(BaseballEntity be) {
-		int playerAmount = be.getLocationsAmount();
+		int playerAmount = be.getPositionsAmount();
 		Integer[] values = new Integer[playerAmount];
 		for (int i = 0 ; i < playerAmount ; i++)
 		{

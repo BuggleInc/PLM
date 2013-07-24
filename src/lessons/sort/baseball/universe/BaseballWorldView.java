@@ -343,7 +343,7 @@ public class BaseballWorldView extends WorldView
 		BaseballWorld myWorld = (BaseballWorld) this.world ;
 		int amountOfBases = myWorld.getBasesAmount(); // amount of bases
 		double theta = 2*Math.PI / amountOfBases; // angle between center of symmetry of two bases
-		int amountOfPlayers = myWorld.getLocationsAmount(); // amount of players on a base
+		int amountOfPlayers = myWorld.getPositionsAmount(); // amount of players on a base
 		int L = Math.max(3*(20-amountOfBases),10); // adapting the size of the base to the total amount of bases
 		radius+=amountOfBases-5; // adapting the position of the base to the total amount of bases
 

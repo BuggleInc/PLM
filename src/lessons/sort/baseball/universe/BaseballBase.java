@@ -28,10 +28,10 @@ public class BaseballBase {
 			return false;
 
 		BaseballBase otherBase = (BaseballBase) other;
-		if (otherBase.getLocationsAmount() != getLocationsAmount())
+		if (otherBase.getPositionsAmount() != getPositionsAmount())
 			return false;
 
-		for (int i=0; i<getLocationsAmount(); i++)
+		for (int i=0; i<getPositionsAmount(); i++)
 			if (otherBase.getPlayerColor(i) != getPlayerColor(i))
 				return false;
 
@@ -47,7 +47,7 @@ public class BaseballBase {
 	}
 
 	/** Returns the amount of players locations available on the base */
-	public int getLocationsAmount(){
+	public int getPositionsAmount(){
 		return this.players.length;
 	}
 
@@ -56,8 +56,8 @@ public class BaseballBase {
 	 * @param location the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
 	 */
 	public int getPlayerColor(int location)  {
-		if ( location < 0 || location > this.getLocationsAmount()-1 )
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot retrieve the color of player {0} as it is not a valid location (between 0 and {1})",location,getLocationsAmount()));
+		if ( location < 0 || location > this.getPositionsAmount()-1 )
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot retrieve the color of player {0} as it is not a valid location (between 0 and {1})",location,getPositionsAmount()));
 
 		return this.players[location];
 	}
@@ -79,7 +79,7 @@ public class BaseballBase {
 	 */
 	public String toString()
 	{
-		int n = getLocationsAmount();
+		int n = getPositionsAmount();
 		String s = "";
 		for ( int i = 0 ; i < n ; i++)
 			s+="Player "+i+" : "+this.getPlayerColor(i)+"\n" ;
@@ -90,7 +90,7 @@ public class BaseballBase {
 	/** Tells if everyone is at home on the specified base */
 	public boolean isSorted() {
 		boolean sw = true;
-		int n = this.getLocationsAmount();
+		int n = this.getPositionsAmount();
 		if (isLast) {
 			for ( int pos = 0 ; pos < n && sw; pos++) 
 				if (getPlayerColor(pos) != 0 && getPlayerColor(pos) != getColor())

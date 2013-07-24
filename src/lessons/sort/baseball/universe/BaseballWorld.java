@@ -51,8 +51,8 @@ public class BaseballWorld extends World {
 		if (getBasesAmount() != other.getBasesAmount())
 			return Game.i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
 
-		if (getLocationsAmount() != ((BaseballWorld) o).getLocationsAmount())
-			return Game.i18n.tr("Differing amount of players: {0} vs {1}", getLocationsAmount(), other.getLocationsAmount());
+		if (getPositionsAmount() != ((BaseballWorld) o).getPositionsAmount())
+			return Game.i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
 
 		StringBuffer sb = new StringBuffer();
 		for ( int i = 0 ; i < getBasesAmount() ; i++)
@@ -70,7 +70,7 @@ public class BaseballWorld extends World {
 		if (   this.holeBase != otherField.holeBase
 				|| this.holePos != otherField.holePos
 				|| this.getBasesAmount() != otherField.getBasesAmount()
-				|| this.getLocationsAmount() == otherField.getLocationsAmount())
+				|| this.getPositionsAmount() == otherField.getPositionsAmount())
 
 			return false;
 
@@ -114,8 +114,8 @@ public class BaseballWorld extends World {
 
 		this.bases = new BaseballBase[other.bases.length];
 		for (int i = 0 ; i < bases.length ; i++) {
-			this.bases[i] = new BaseballBase(i,other.getLocationsAmount(), i!=bases.length-1);
-			for ( int j = 0 ; j < getLocationsAmount();j++)
+			this.bases[i] = new BaseballBase(i,other.getPositionsAmount(), i!=bases.length-1);
+			for ( int j = 0 ; j < getPositionsAmount();j++)
 				bases[i].setPlayerColor(j,other.bases[i].getPlayerColor(j));
 		}
 
@@ -137,7 +137,7 @@ public class BaseballWorld extends World {
 		for (int i = 0 ; i < this.bases.length ; i++) {
 			sb.append("- Base "+i+"\n");
 			sb.append("  Color : "+this.bases[i].getColor()+"\n");
-			for ( int j = 0 ; j < getLocationsAmount() ; j++)
+			for ( int j = 0 ; j < getPositionsAmount() ; j++)
 				sb.append("  Player "+j+" : "+this.bases[i].getPlayerColor(j)+"\n");
 		}
 		return sb.toString();
@@ -148,8 +148,8 @@ public class BaseballWorld extends World {
 		return this.bases.length;
 	}
 	/** Returns the amount of players per base on this field */
-	public int getLocationsAmount() {
-		return this.bases[0].getLocationsAmount();
+	public int getPositionsAmount() {
+		return this.bases[0].getPositionsAmount();
 	}
 
 	/** Returns a specific base of the field */
@@ -214,14 +214,14 @@ public class BaseballWorld extends World {
 	private void mix() {
 		do {
 			for (int base = 0 ; base<getBasesAmount();base++)
-				for (int pos = 0 ; pos<getLocationsAmount();pos++)
+				for (int pos = 0 ; pos<getPositionsAmount();pos++)
 					this.swap(base, pos,
-							(int) (Math.random()*getBasesAmount()), (int) (Math.random()*getLocationsAmount()));
+							(int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
 		} while(this.isSorted());
 
 		// Cache again the hole position 
 		for ( int base = 0 ; base < getBasesAmount(); base++)
-			for ( int pos = 0 ; pos < getLocationsAmount(); pos++)
+			for ( int pos = 0 ; pos < getPositionsAmount(); pos++)
 				if ( this.bases[base].getPlayerColor(pos)==-1) {
 					this.holeBase = base;
 					this.holePos = pos;
@@ -237,7 +237,7 @@ public class BaseballWorld extends World {
 		if ( indexBaseSrc >= this.getBasesAmount() || indexBaseSrc < 0)
 			throw new IllegalArgumentException("The base index must be between 0 and "+(this.getBasesAmount()-1)+".\nUnfortunatly, "+indexBaseSrc+" isn't");
 
-		if ( playerLocation < 0 || playerLocation > this.getLocationsAmount()-1 )
+		if ( playerLocation < 0 || playerLocation > this.getPositionsAmount()-1 )
 			throw new IllegalArgumentException("There isn't a position "+playerLocation+".\nIt must be between 0 and getLocationsAmount()-1.");
 
 		// must work only if the bases are next to each other

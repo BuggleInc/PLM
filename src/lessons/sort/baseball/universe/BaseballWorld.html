@@ -1,41 +1,49 @@
 <h1>Rainbow Baseball</h1>
-<p>
-The color of a base is given by its index. 
+<p>The colors are represented by integers, between <code>0</code> and <code>amount of bases -1</code>. 
+The hole is represented by the special value <code>-1</code>.</p>
 
-The hole has a color of -1.
+<p>Once every players are home on the field, the hole should be in the last base, that is of rank <code>getAmountOfBases()-1</code>.</p>
 
-The base which has only one player on the field has <i>getAmountOfBases()-1</i> as index
-</p>
-<div>
-<u>Functions provided:</u>
+<h2>Functions to retrieve the world's dimensions</h2>
 
-<pre>void move(int baseSrc, int playerSrc)</pre>
+<ul>
+ <li>Retrieve the amount of bases on this field: 
+     <pre class="Java">int getBasesAmount()</pre>
+     <pre class="python">getBasesAmount()</pre></li>
 
-Move the player on position <code>playerLocation</code> from the base <code>baseSrc</code> to the hole.
+ <li>Retrieve the amount of player's positions per base on this field:
+     <pre class="Java">int getPositionsAmount()</pre>
+     <pre class="python">getPositionsAmount()</pre></li>
+</ul>
 
-<pre> int getPlayerColor(int baseIndex, int playerLocation) </pre>
+<h2>Functions to retrieve the world's state</h2>
+<ul>
+ <li>Retrieve the base in which the hole is located:
+     <pre class="Java">int getHoleBase()</pre>
+     <pre class="python">getHoleBase()</pre></li>
 
-Return the color of the player on position <code>playerLocation</code> ( 0 or 1 ) from the base <code>baseIndex</code>.
+ <li>Retrieve the hole position within its base:
+     <pre class="Java"> int getHolePosition()</pre>
+     <pre class="python">getHolePosition()</pre></li>
 
-<pre> int getHoleBase() </pre>
+ <li>Retrieve the color of the player at a given location:
+     <pre class="Java"> int getPlayerColor(int base, int position)</pre>
+     <pre class="python">getPlayerColor(base, position)</pre></li>
 
-Return the index of the base where the hole is located
+ <li>Retrieve the color of a given base:
+     <pre class="Java">int getBaseColor(int base)</pre>
+     <pre class="python">getBaseColor(base)</pre></li>  
 
-<pre> int getHolePositionInBase()</pre>
-
-Return the player's position in the base where the hole is located
-
-<pre> boolean isBaseSorted( int baseIndex)</pre>
-
-Return TRUE if all players of the base <code>baseSrc</code> are home  
-
-<pre>int getAmountOfBases()</pre>
-
-Return the amount of bases in the field.
-
-<pre>int getLocationsAmount()</pre>
-
-Return the amount of players locations available on each base of the field
+ <li>Retrieve whether all players of a given base are at home:
+     <pre class="Java">boolean isBaseSorted(int base)</pre>
+     <pre class="python">isBaseSorted(base)</pre></li>  
+</ul>
 
 
-</div>
+<h2>Functions to change the world</h2>
+
+<ul>
+ <li>Move a given player into the hole. This throws an IllegalArgumentException if the specified player is not near the hole (at most one base away).
+     <pre class="Java">void move(int base, int position)</pre>
+     <pre class="python">move(base, position)</pre></li>
+</ul>

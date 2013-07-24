@@ -3,9 +3,6 @@ package lessons.sort.baseball.universe;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
-/**
- * @see BaseballWorld
- */
 public class BaseballEntity extends Entity {
 	public BaseballEntity() {
 		super("Baseball Entity");
@@ -25,42 +22,40 @@ public class BaseballEntity extends Entity {
 	}
 
 	/** Returns the amount of bases on your field */
-	public int getAmountOfBases() {
+	public int getBasesAmount() {
 		return ((BaseballWorld) this.world).getBasesAmount();
 	}
-
-	/** Returns the color of the specified base */
-	public int getBaseColor( int baseIndex) {
-		return  ((BaseballWorld) world).getBaseColor(baseIndex);
-	}
-
-	/** Returns the base in which the hole is located */
-	public int getHoleBase() {
-		return ((BaseballWorld) this.world).getHoleBase();
-	}
-
-	/** Returns the hole position within its base */
-	public int getHolePosition(){
-		return ((BaseballWorld) this.world).getHolePosition();
-	}
-
 	/** Returns the amount of players locations available on each base of the field */
-	public int getLocationsAmount() {
-		return ((BaseballWorld) this.world).getLocationsAmount();
+	public int getPositionsAmount() {
+		return ((BaseballWorld) this.world).getPositionsAmount();
 	}
 
 	/** Returns the color of the player at the specified coordinate */
 	public int getPlayerColor(int base, int position) {
 		return ((BaseballWorld) this.world).getPlayerColor(base,position);
 	}
-
+	/** Returns the color of the specified base */
+	public int getBaseColor( int base) {
+		return  ((BaseballWorld) world).getBaseColor(base);
+	}
 	/** Returns whether every players of the specified base are at home */
 	public boolean isBaseSorted(int baseIndex) {
 		return ((BaseballWorld) this.world).getBase(baseIndex).isSorted();
 	}
 
+	/** Returns the base in which the hole is located */
+	public int getHoleBase() {
+		return ((BaseballWorld) this.world).getHoleBase();
+	}
+	/** Returns the hole position within its base */
+	public int getHolePosition(){
+		return ((BaseballWorld) this.world).getHolePosition();
+	}
+
+
+
 	/**
-	 * Move the specified player to the hole
+	 * Moves the specified player to the hole
 	 * @throws IllegalArgumentException if the specified player is not near the hole (at most one base away) 
 	 */
 	public void move(int base, int position) {
