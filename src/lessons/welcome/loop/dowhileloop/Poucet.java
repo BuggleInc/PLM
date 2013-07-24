@@ -16,8 +16,8 @@ public class Poucet extends ExerciseTemplated {
 		
 		/* Create initial situation */
 		World[] myWorlds = new World[] {
-				BuggleWorld.newFromFile("lessons/welcome/loop/dowhileloop/poucet"),
-				BuggleWorld.newFromFile("lessons/welcome/loop/dowhileloop/poucet2"),
+				BuggleWorld.newFromFile("lessons/welcome/loop/dowhileloop/Poucet"),
+				BuggleWorld.newFromFile("lessons/welcome/loop/dowhileloop/Poucet2"),
 		};
 		for (World w: myWorlds)
 			w.setDelay(50); // moving a bit faster than usual

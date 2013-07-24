@@ -13,9 +13,8 @@ public class RunHalf extends ExerciseTemplated {
 	public RunHalf(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		
-		/* Create initial situation */
 		World[] myWorlds = new World[] {
-				BuggleWorld.newFromFile("lessons/welcome/variables/HalfTrack.map"),
+				BuggleWorld.newFromFile("lessons/welcome/variables/RunHalf.map"),
 		};
 		for (World w: myWorlds)
 			w.setDelay(50); // moving a bit faster than usual
