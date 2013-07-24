@@ -15,10 +15,8 @@ import jlm.core.model.Game;
 import jlm.universe.EntityControlPanel;
 
 /**
- * The control panel for the burned pancake world. 
- * It allows you to use to flip the pancake
- * @see EntityControlPanel
- * @see BaseballWorld
+ * The control panel for the baseball world. 
+ * It allows you to use to move players interactively
  */
 public class BaseballMovePanel extends EntityControlPanel {
 
@@ -42,7 +40,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 	}
 
 	/**
-	 * Create the panel showing the location of the hole in the world
+	 * Creates the panel showing the location of the hole in the world
 	 * @param be The current BaseballEntity
 	 * @return the panel showing the location of the hole in the world
 	 */
@@ -93,9 +91,8 @@ public class BaseballMovePanel extends EntityControlPanel {
 		int baseAmount = be.getBasesAmount();
 		Integer[] values = new Integer[baseAmount];
 		for (int i = 0 ; i < baseAmount ; i++)
-		{
 			values[i] = i;
-		}
+		
 		this.baseSelector = new JComboBox(values);
 	}
 
@@ -120,17 +117,14 @@ public class BaseballMovePanel extends EntityControlPanel {
 		this.validateButton = new JButton("Validate");
 		this.validateButton.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent evt) {
 				BaseballEntity be = (BaseballEntity) Game.getInstance().getSelectedEntity();
 				int base = baseSelector.getSelectedIndex();
 				int player = playerSelector.getSelectedIndex();
-				try 
-				{
+				try  {
 					be.move(base, player);
 					refreshHoleLocation(be);
-				}
-				catch (IllegalArgumentException e1) 
-				{
+				} catch (IllegalArgumentException e) {
 					showInvalidMoveMessageDialog(base,player);
 				}
 			}

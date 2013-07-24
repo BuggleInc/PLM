@@ -24,19 +24,27 @@ public class BaseballWorld extends World {
 	/** Regular constructor used by exercises */
 	public BaseballWorld(String name, int numberOfBases, int playerLocationAmount) {
 		super(name);
-		setDelay(200); // Delay (in milliseconds) in default animations
 
 		// create the bases
 		this.bases = new BaseballBase[numberOfBases];
 		for (int color = 0 ; color < numberOfBases ; color++)
 			this.bases[color] = new BaseballBase(color,playerLocationAmount, color!=numberOfBases-1);
 
-		holeBase = bases.length-1;
-		holePos = 0;
 		this.bases[this.bases.length-1].setPlayerColor(0, COLOR_HOLE);
 
 		lastMove = null;
-		mix();
+		for (int base = 0 ; base<getBasesAmount();base++)
+			for (int pos = 0 ; pos<getPositionsAmount();pos++)
+				swap(base, pos, (int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
+
+		// Cache the hole position 
+		for ( int base = 0 ; base < getBasesAmount(); base++)
+			for ( int pos = 0 ; pos < getPositionsAmount(); pos++)
+				if ( bases[base].getPlayerColor(pos)== COLOR_HOLE) {
+					holeBase = base;
+					holePos = pos;
+					return;
+				}	
 	}
 
 	/**
@@ -56,8 +64,8 @@ public class BaseballWorld extends World {
 
 		StringBuffer sb = new StringBuffer();
 		for ( int i = 0 ; i < getBasesAmount() ; i++)
-			if ( !this.bases[i].equals(other.bases[i]))
-				sb.append(Game.i18n.tr("Base #{0} differs: {1} vs {2}",this.bases[i].toString(),other.bases[i].toString()));
+			if ( !bases[i].equals(other.bases[i]))
+				sb.append(Game.i18n.tr("Base #{0} differs: {1} vs {2}",bases[i].toString(),other.bases[i].toString()));
 
 		return sb.toString();
 	}
@@ -81,12 +89,7 @@ public class BaseballWorld extends World {
 		return true;
 	}
 
-	/**
-	 * Return the script except that must be injected within the environment before running user code 
-	 * It should pass all order to the java entity, which were injected independently  
-	 * @return  the script except that must be injected within the environment before running user code 
-	 * @param the programming language used
-	 */
+	/** Ensures that the provided script engine can run scripts in the specified programming language */
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
 		throw new RuntimeException("No binding of BaseballWorld for "+lang);
@@ -154,15 +157,15 @@ public class BaseballWorld extends World {
 
 	/**
 	 * Returns the color of the base located at baseIndex
-	 * @param baseIndex the index of the wanted base
+	 * @param base the index of the wanted base
 	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws IllegalArgumentException if you ask for a base which isn't in the range 0 to amountOfBases-1
+	 * @throws IllegalArgumentException if you ask for a non-existent base
 	 */
-	public int getBaseColor(int baseIndex) {
-		if ( baseIndex < 0 || baseIndex >= this.bases.length)
-			throw new IllegalArgumentException("getBaseColor: you ask for a base "+baseIndex+" which isn't in the range 0 to getAmountOfBases()-1.");
+	public int getBaseColor(int base) {
+		if ( base < 0 || base >= this.bases.length)
+			throw new IllegalArgumentException("There is no base #"+base+" from which I could give you the color.");
 
-		return this.bases[baseIndex].getColor();
+		return this.bases[base].getColor();
 	}
 	/**
 	 * Returns the color of the player in base baseIndex at position playerLocation
@@ -197,68 +200,36 @@ public class BaseballWorld extends World {
 		return lastMove;
 	}
 
-	/** Returns if every player of every base is on the right base */
-	private boolean isSorted() {
-		for ( int base = 0 ; base < bases.length ; base++ )
-			if (!(bases[base].isSorted()))
-				return false;
-		return true;
-	}
 	/** Returns if every player of the specified base is on the right base */
 	public boolean isBaseSorted(int base) {
 		return bases[base].isSorted();
-	}
-
-	/** Mix the players between the different bases */
-	private void mix() {
-		do {
-			for (int base = 0 ; base<getBasesAmount();base++)
-				for (int pos = 0 ; pos<getPositionsAmount();pos++)
-					this.swap(base, pos,
-							(int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
-		} while(this.isSorted());
-
-		// Cache again the hole position 
-		for ( int base = 0 ; base < getBasesAmount(); base++)
-			for ( int pos = 0 ; pos < getPositionsAmount(); pos++)
-				if ( this.bases[base].getPlayerColor(pos)==-1) {
-					this.holeBase = base;
-					this.holePos = pos;
-					return;
-				}	
 	}
 
 	/**
 	 * Moves the specified player into the hole
 	 * @throws IllegalArgumentException in case baseSrc is not near the hole
 	 */
-	public void move(int indexBaseSrc, int playerLocation) {
-		if ( indexBaseSrc >= this.getBasesAmount() || indexBaseSrc < 0)
-			throw new IllegalArgumentException("The base index must be between 0 and "+(this.getBasesAmount()-1)+".\nUnfortunatly, "+indexBaseSrc+" isn't");
+	public void move(int base, int position) {
+		if ( base >= this.getBasesAmount() || base < 0)
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from base {0} since it's not between 0 and {1}",base,(getBasesAmount()-1)));
 
-		if ( playerLocation < 0 || playerLocation > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException("There isn't a position "+playerLocation+".\nIt must be between 0 and getLocationsAmount()-1.");
+		if ( position < 0 || position > this.getPositionsAmount()-1 )
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from position {0} since it's not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
-		if (		( this.holeBase == indexBaseSrc+1 )
-				||  ( this.holeBase == indexBaseSrc-1 )
-				||  ( this.holeBase == 0 && indexBaseSrc == this.getBasesAmount()-1 )
-				||  ( this.holeBase == this.getBasesAmount()-1 && indexBaseSrc == 0 )
-				||  ( this.holeBase == indexBaseSrc )
-				)
-		{
-			lastMove  = new BaseballMove(indexBaseSrc, playerLocation, 
-					this.holeBase, this.holePos, 
-					this.getPlayerColor(indexBaseSrc, playerLocation));
-			swap(indexBaseSrc, playerLocation, this.holeBase,this.holePos);
-			this.holeBase = indexBaseSrc;
-			this.holePos = playerLocation;
+		if (	(holeBase != base+1)
+			 && (holeBase != base-1)
+			 && (holeBase != 0                  || base != getBasesAmount()-1 )
+			 && (holeBase != getBasesAmount()-1 || base != 0 )
+			 && (holeBase != base ) )
+			
+			throw new IllegalArgumentException("The player "+position+" from base "+base+" is too far from the hole (at base "+holeBase+") to reach it in one move");
 
-		}
-		else
-		{
-			throw new IllegalArgumentException("The player "+playerLocation+" from base "+indexBaseSrc+" can't move to base "+this.holeBase+" since it's a lazy guy and he doesn't want to travel more than one base length at once");
-		}
+		// All clear. Proceed.
+		lastMove  = new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position));
+		swap(base, position, holeBase,holePos);
+		holeBase = base;
+		holePos = position;
 	}
 
 

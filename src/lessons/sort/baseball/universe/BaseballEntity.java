@@ -68,10 +68,7 @@ public class BaseballEntity extends Entity {
 	public void run() {
 	}
 
-	/**
-	 * Return a string representation of the world
-	 * @return A string representation of the world
-	 */
+	/** Returns a string representation of the world */
 	public String toString(){
 		return "BaseballEntity (" + this.getClass().getName() + ")";
 	}
