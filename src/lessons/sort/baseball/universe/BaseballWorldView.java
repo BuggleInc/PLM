@@ -357,7 +357,7 @@ public class BaseballWorldView extends WorldView
 		// Draw the bases and the players on each base
 		for ( int i=0 ; i < myWorld.getAmountOfBases();i++)
 		{
-			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , myWorld.field.getBase(i),amountOfPlayers);
+			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , myWorld.getBase(i),amountOfPlayers);
 		}
 		// Draw the last move made on the field if it exists
 		if ( myWorld.getLastMove() != null)

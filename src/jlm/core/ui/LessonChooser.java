@@ -61,7 +61,7 @@ public class LessonChooser extends JFrame implements HumanLangChangesListener {
 		
 		LessonMatrix matrix = new LessonMatrix(overview, new String[][] {
 				{"lessons/welcome","lessons/maze", "lessons/bat/string1"},
-				{"lessons/sort", "lessons/sort/pancake", "lessons/smn/baseball"},
+				{"lessons/sort", "lessons/sort/pancake", "lessons/sort	/baseball"},
 				{"lessons/recursion" },
 				{"lessons/lightbot" },
 		    }); 
