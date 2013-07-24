@@ -120,11 +120,12 @@ public class BaseballWorldView extends WorldView
 	 * @param base the base that we want to draw
 	 * @param amountOfPlayers the total amount of players on the base
 	 */
-	private void drawBase(Graphics2D g, int L, int dist, double theta, int xCenter, int yCenter, BaseballBase base, int amountOfPlayers) {
+	private void drawBase(Graphics2D g, int L, int dist, double theta, int xCenter, int yCenter, int base, int amountOfPlayers) {
+		BaseballWorld field = (BaseballWorld) world; 
 		int[][] points = computeCorners( L, dist, theta, xCenter, yCenter, amountOfPlayers );
 
 		// draw the base
-		drawRectangle(g,points,obtainColor(base.getColor()));
+		drawRectangle(g,points,obtainColor(field.getBaseColor(base)));
 
 		// the radius of the disk representing the player
 		int radius = L/amountOfPlayers-1; 
@@ -158,11 +159,11 @@ public class BaseballWorldView extends WorldView
 		// color of the player
 		Color colorPlayer = null;
 		// Loop which computes the coordinates of the center of the disk and draws the resulting disk
-		for ( int i = 0 ; i < amountOfPlayers ; i++) {
-			centerPlayer[0] = (int) (middleUpper[0] - (i+.5)*delta[0] ); 
-			centerPlayer[1] = (int) (middleUpper[1] - (i+.5)*delta[1]);  
+		for ( int pos = 0 ; pos < amountOfPlayers ; pos++) {
+			centerPlayer[0] = (int) (middleUpper[0] - (pos+.5)*delta[0] ); 
+			centerPlayer[1] = (int) (middleUpper[1] - (pos+.5)*delta[1]);  
 
-			colorPlayer = obtainColor(base.getPlayerColor(i));	
+			colorPlayer = obtainColor(field.getPlayerColor(base,pos));	
 
 			drawDisk(g, centerPlayer, radius, colorPlayer);
 		}
@@ -349,7 +350,7 @@ public class BaseballWorldView extends WorldView
 
 		// Draw the bases and the players on each base
 		for ( int i=0 ; i < myWorld.getBasesAmount();i++)
-			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , myWorld.getBase(i),amountOfPlayers);
+			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , i, amountOfPlayers);
 
 		// Draw the last move made on the field if it exists
 		if ( myWorld.getLastMove() != null)

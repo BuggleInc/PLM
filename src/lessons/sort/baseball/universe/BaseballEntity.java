@@ -39,8 +39,8 @@ public class BaseballEntity extends Entity {
 		return  ((BaseballWorld) world).getBaseColor(base);
 	}
 	/** Returns whether every players of the specified base are at home */
-	public boolean isBaseSorted(int baseIndex) {
-		return ((BaseballWorld) this.world).getBase(baseIndex).isSorted();
+	public boolean isBaseSorted(int base) {
+		return ((BaseballWorld) this.world).isBaseSorted(base);
 	}
 
 	/** Returns the base in which the hole is located */
