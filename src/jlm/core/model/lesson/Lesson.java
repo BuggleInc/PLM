@@ -9,6 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.utils.FileUtils;
 import jlm.universe.BrokenWorldFileException;
 
@@ -46,6 +47,22 @@ public abstract class Lesson {
 			System.err.println("Cannot load the exercises. This lesson is severely broken..");
 			e.printStackTrace();
 		} 
+		for (ProgrammingLanguage lang: Game.programmingLanguages) {
+			int possible = 0;
+			int passed = 0;
+			for (Lecture l: lectures) {
+				if (l instanceof Exercise) {
+					Exercise exo = (Exercise) l;
+					if (exo.getProgLanguages().contains(lang)) {
+						possible++;
+						if (Game.getInstance().studentWork.getPassed(l, lang))
+							passed++;
+					}
+				}
+			}
+			Game.getInstance().studentWork.setPassedExercises(id, lang, passed);
+			Game.getInstance().studentWork.setPossibleExercises(id, lang, possible);
+		}
 	}
 	public String getId() {
 		return id;
