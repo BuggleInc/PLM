@@ -304,7 +304,7 @@ public abstract class ExerciseTemplated extends Exercise {
 								allFound = false;
 								break;
 							} catch (IOException ioe) {
-								System.err.println(i18n.tr("IO exception while reading world {1} ({1}). Recompute all answer worlds.",name,ioe.getLocalizedMessage()));
+								System.err.println(i18n.tr("IO exception while reading world {0} ({1}). Recompute all answer worlds.",name,ioe.getLocalizedMessage()));
 								allFound = false;
 								break;
 							}

@@ -143,9 +143,10 @@ public class Game implements IWorldView {
 		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 			!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang())) 
-			System.err.println(i18n.tr("Warning, the default programming language is neither 'Java' or 'python' but {0}.\n"+
-					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don't expect it.\n"+
-					"   You can change this variable either in $HOME/.jlm/jlm.properties or resource/jlm.configuration.properties",defaultProgrammingLanguage));
+			System.err.println(i18n.tr("Warning, the default programming language is neither 'Java' nor 'python' but {0}.\n"+
+					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don't expect it.\n" +
+					"   It is safer to change the current language, and restart JLM before proceeding.\n"+
+					"   Alternatively, the property {1} can be changed in your configuration file ($HOME/.jlm/jlm.properties",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE));
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			if (pl.getLang().equals(defaultProgrammingLanguage)) {
 				setProgramingLanguage(pl);

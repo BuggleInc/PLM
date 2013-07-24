@@ -1,6 +1,6 @@
 20130730:
   * Pythonize new exercises
-  * Retranslate every missions back to 100% 
+  * Retranslate everything back to 100% in French
   * Various cosmetics, small refactoring and little bug fixes
   * Lesson navigator: Display which exercise are passed in which language
   * Entity.isSelected() returns whether /this/ is selected in the UI

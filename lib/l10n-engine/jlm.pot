@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-23 12:35+0200\n"
+"POT-Creation-Date: 2013-07-24 20:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,66 +20,78 @@ msgstr ""
 #: src/jlm/core/model/Game.java:146
 #, java-format
 msgid ""
-"Warning, the default programming language is neither 'Java' or 'python' but "
+"Warning, the default programming language is neither 'Java' nor 'python' but "
 "{0}.\n"
 "   This language will be used to setup the worlds, possibly leading to "
 "severe issues for the exercises that don't expect it.\n"
-"   You can change this variable either in $HOME/.jlm/jlm.properties or "
-"resource/jlm.configuration.properties"
+"   It is safer to change the current language, and restart JLM before "
+"proceeding.\n"
+"   Alternatively, the property {1} can be changed in your configuration file "
+"($HOME/.jlm/jlm.properties"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:159
+#: src/jlm/core/model/Game.java:160
 #, java-format
 msgid ""
 "Your progress will be posted to http://identi.ca/jlmlovers This can be "
 "turned off through the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:162
+#: src/jlm/core/model/Game.java:163
 #, java-format
 msgid ""
 "Your progress will NOT be posted to identica, as requested by the property "
 "{0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:165
+#: src/jlm/core/model/Game.java:166
 #, java-format
 msgid ""
 "Your progress will be posted to https://twitter.com/jlmlovers This can be "
 "turned off through the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:168
+#: src/jlm/core/model/Game.java:169
 #, java-format
 msgid ""
 "Your progress will NOT be posted to twitter, as requested by the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:319 src/jlm/core/model/Game.java:351
+#: src/jlm/core/model/Game.java:213
+#, java-format
+msgid "Cannot switch to lesson {0}: class Main not found."
+msgstr ""
+
+#: src/jlm/core/model/Game.java:214
+#, java-format
+msgid "Load lesson {0}"
+msgstr ""
+
+#: src/jlm/core/model/Game.java:320 src/jlm/core/model/Game.java:352
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:391
+#: src/jlm/core/model/Game.java:392
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:908
+#: src/jlm/core/model/Game.java:909
 #, java-format
 msgid "{0} is not writable"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:912
+#: src/jlm/core/model/Game.java:913
 #, java-format
 msgid "{0} is not a directory"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:919
+#: src/jlm/core/model/Game.java:920
 #, java-format
 msgid "Cannot create {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:925
+#: src/jlm/core/model/Game.java:926
 #, java-format
 msgid "Impossible to find a path for JLM datas. Tested {0}"
 msgstr ""
@@ -114,6 +126,11 @@ msgstr ""
 msgid "The world ''{0}'' differs"
 msgstr ""
 
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:41
+#, java-format
+msgid "Source file {0}.{1} not found."
+msgstr ""
+
 #: src/jlm/core/model/lesson/ExerciseTemplated.java:105
 #, java-format
 msgid ""
@@ -137,32 +154,47 @@ msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:271
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:303
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:275
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:307
 #, java-format
 msgid ""
-"IO exception while reading world {1} ({1}). Recompute all answer worlds."
+"IO exception while reading world {0} ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:286
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:318
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:309
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:341
 #, java-format
 msgid "Error while writing answer world of {0}:"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:313
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:345
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
+msgstr ""
+
+#: src/jlm/core/model/lesson/Lecture.java:123
+#, java-format
+msgid "File {0} not found."
+msgstr ""
+
+#: src/jlm/core/model/lesson/Lesson.java:84
+#, java-format
+msgid "File {0}.html not found."
+msgstr ""
+
+#: src/jlm/core/model/lesson/Lesson.java:94
+#, java-format
+msgid "Cannot find the name of mission in {0}.html"
 msgstr ""
 
 #: src/jlm/core/ui/AboutJLMDialog.java:34
@@ -273,6 +305,44 @@ msgstr ""
 msgid "Error while uploading your feedback"
 msgstr ""
 
+#: src/jlm/core/ui/JlmHtmlEditorKit.java:103
+#, java-format
+msgid "<img> tag without src attribute in exercise {0}"
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:88
+msgid "Choose your lesson"
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:144
+#: src/jlm/core/ui/LessonChooser.java:209
+msgid "Go"
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:173
+msgid ""
+"<p>(unable to display the lesson's short description: file {0}.html not "
+"found)</p>"
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:176
+msgid "<p><b>Your score:</b> "
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:184
+#, java-format
+msgid "{0} out of {1} exercises passed."
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:188
+#, java-format
+msgid "{0} out of {1} exercises passed in {2}."
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:194
+msgid "You never attempted this lesson."
+msgstr ""
+
 #: src/jlm/core/ui/LoggerPanel.java:31 src/jlm/core/ui/LoggerPanel.java:96
 msgid "Where error and other messages get written"
 msgstr ""
@@ -280,7 +350,7 @@ msgstr ""
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/jlm/core/ui/MainFrame.java:152 src/jlm/core/ui/MainFrame.java:646
+#: src/jlm/core/ui/MainFrame.java:152 src/jlm/core/ui/MainFrame.java:647
 msgid "File"
 msgstr ""
 
@@ -288,7 +358,7 @@ msgstr ""
 msgid "File related functions"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:157 src/jlm/core/ui/MainFrame.java:647
+#: src/jlm/core/ui/MainFrame.java:157 src/jlm/core/ui/MainFrame.java:648
 msgid "Load lesson"
 msgstr ""
 
@@ -300,116 +370,116 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:179 src/jlm/core/ui/MainFrame.java:648
+#: src/jlm/core/ui/MainFrame.java:179 src/jlm/core/ui/MainFrame.java:649
 msgid "Switch lesson"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:190 src/jlm/core/ui/MainFrame.java:415
-#: src/jlm/core/ui/MainFrame.java:643 src/jlm/core/ui/MainFrame.java:649
+#: src/jlm/core/ui/MainFrame.java:191 src/jlm/core/ui/MainFrame.java:416
+#: src/jlm/core/ui/MainFrame.java:644 src/jlm/core/ui/MainFrame.java:650
 msgid "Switch exercise"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:203 src/jlm/core/ui/MainFrame.java:651
+#: src/jlm/core/ui/MainFrame.java:204 src/jlm/core/ui/MainFrame.java:652
 msgid "Teacher Console"
 msgstr ""
 
 #. Menu item to change the current Course
-#: src/jlm/core/ui/MainFrame.java:222 src/jlm/core/ui/MainFrame.java:652
+#: src/jlm/core/ui/MainFrame.java:223 src/jlm/core/ui/MainFrame.java:653
 msgid "Choose your course"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:241 src/jlm/core/ui/MainFrame.java:653
+#: src/jlm/core/ui/MainFrame.java:242 src/jlm/core/ui/MainFrame.java:654
 msgid "Quit"
 msgstr ""
 
 #. === Edit menu ===
-#: src/jlm/core/ui/MainFrame.java:249 src/jlm/core/ui/MainFrame.java:655
+#: src/jlm/core/ui/MainFrame.java:250 src/jlm/core/ui/MainFrame.java:656
 msgid "Session"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:254 src/jlm/core/ui/MainFrame.java:657
+#: src/jlm/core/ui/MainFrame.java:255 src/jlm/core/ui/MainFrame.java:658
 msgid "Revert Exercise"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:257 src/jlm/core/ui/MainFrame.java:658
+#: src/jlm/core/ui/MainFrame.java:258 src/jlm/core/ui/MainFrame.java:659
 msgid "Export Session Cache"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:260 src/jlm/core/ui/MainFrame.java:659
+#: src/jlm/core/ui/MainFrame.java:261 src/jlm/core/ui/MainFrame.java:660
 msgid "Import Session Cache"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:264 src/jlm/core/ui/MainFrame.java:660
+#: src/jlm/core/ui/MainFrame.java:265 src/jlm/core/ui/MainFrame.java:661
 msgid "Debug mode"
 msgstr ""
 
 #. === Language menu ===
-#: src/jlm/core/ui/MainFrame.java:277 src/jlm/core/ui/MainFrame.java:663
+#: src/jlm/core/ui/MainFrame.java:278 src/jlm/core/ui/MainFrame.java:664
 msgid "Language"
 msgstr ""
 
 #. === Programming language changing ===
-#: src/jlm/core/ui/MainFrame.java:282 src/jlm/core/ui/MainFrame.java:664
+#: src/jlm/core/ui/MainFrame.java:283 src/jlm/core/ui/MainFrame.java:665
 msgid "Human"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:296 src/jlm/core/ui/MainFrame.java:665
+#: src/jlm/core/ui/MainFrame.java:297 src/jlm/core/ui/MainFrame.java:666
 msgid "Computer"
 msgstr ""
 
 #. === Help menu ===
-#: src/jlm/core/ui/MainFrame.java:300 src/jlm/core/ui/MainFrame.java:667
+#: src/jlm/core/ui/MainFrame.java:301 src/jlm/core/ui/MainFrame.java:668
 msgid "Help"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:304 src/jlm/core/ui/MainFrame.java:668
+#: src/jlm/core/ui/MainFrame.java:305 src/jlm/core/ui/MainFrame.java:669
 msgid "Provide feedback"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:314 src/jlm/core/ui/MainFrame.java:669
+#: src/jlm/core/ui/MainFrame.java:315 src/jlm/core/ui/MainFrame.java:670
 msgid "About this lesson"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:327 src/jlm/core/ui/MainFrame.java:670
+#: src/jlm/core/ui/MainFrame.java:328 src/jlm/core/ui/MainFrame.java:671
 msgid "About this world"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:343 src/jlm/core/ui/MainFrame.java:672
+#: src/jlm/core/ui/MainFrame.java:344 src/jlm/core/ui/MainFrame.java:673
 msgid "About JLM"
 msgstr ""
 
 #. Buttons
-#: src/jlm/core/ui/MainFrame.java:376 src/jlm/core/ui/MainFrame.java:637
+#: src/jlm/core/ui/MainFrame.java:377 src/jlm/core/ui/MainFrame.java:638
 msgid "Run"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:380 src/jlm/core/ui/MainFrame.java:478
-#: src/jlm/core/ui/MainFrame.java:638
+#: src/jlm/core/ui/MainFrame.java:381 src/jlm/core/ui/MainFrame.java:479
+#: src/jlm/core/ui/MainFrame.java:639
 msgid "Step"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:385 src/jlm/core/ui/MainFrame.java:639
+#: src/jlm/core/ui/MainFrame.java:386 src/jlm/core/ui/MainFrame.java:640
 msgid "Stop"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:391 src/jlm/core/ui/MainFrame.java:640
+#: src/jlm/core/ui/MainFrame.java:392 src/jlm/core/ui/MainFrame.java:641
 msgid "Reset"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:397 src/jlm/core/ui/MainFrame.java:641
+#: src/jlm/core/ui/MainFrame.java:398 src/jlm/core/ui/MainFrame.java:642
 msgid "Demo"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:403 src/jlm/core/ui/MainFrame.java:642
+#: src/jlm/core/ui/MainFrame.java:404 src/jlm/core/ui/MainFrame.java:643
 #: src/jlm/core/ui/action/HelpMe.java:37
 msgid "Call for Help"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:463
+#: src/jlm/core/ui/MainFrame.java:464
 msgid "Next"
 msgstr ""
 
-#: src/jlm/core/ui/MainFrame.java:656
+#: src/jlm/core/ui/MainFrame.java:657
 msgid "Lesson related functions"
 msgstr ""
 
@@ -577,43 +647,43 @@ msgid ""
 "reproduce it."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:418
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:422
 msgid "Its value is 'null', which is never good."
-msgstr ""
-
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:425
-#, java-format
-msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
-msgstr ""
-
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:427
-#, java-format
-msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:429
 #, java-format
-msgid "    Its color is {0}; expected: {1}.\n"
+msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:431
 #, java-format
-msgid "    The color of its brush is {0}; expected: {1}.\n"
+msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:433
-msgid "    It should not carry that baggle.\n"
+#, java-format
+msgid "    Its color is {0}; expected: {1}.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:435
-msgid "    It is not carrying any baggle.\n"
+#, java-format
+msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:437
-msgid "    It encountered an issue, such as bumping into a wall.\n"
+msgid "    It should not carry that baggle.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:439
+msgid "    It is not carrying any baggle.\n"
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:441
+msgid "    It encountered an issue, such as bumping into a wall.\n"
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:443
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
@@ -893,32 +963,32 @@ msgstr ""
 msgid "Switch to state view"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:89
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:91
 msgid "This is not a world of pancakes :-("
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:93
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:95
 msgid "The two worlds are of differing size"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:168
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:170
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:170
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:172
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:203
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:205
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it's not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:229
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:231
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it's not between 0 and {1}"
