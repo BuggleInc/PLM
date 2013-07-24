@@ -1,9 +1,9 @@
-package lessons.smn.baseball.easy;
+package lessons.sort.baseball.easy;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.smn.baseball.BaseballEntity;
-import jlm.universe.smn.baseball.BaseballWorld;
+import lessons.sort.baseball.universe.BaseballEntity;
+import lessons.sort.baseball.universe.BaseballWorld;
 
 public class BaseballGame extends ExerciseTemplated {
 

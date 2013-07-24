@@ -1,4 +1,4 @@
-package jlm.universe.smn.baseball;
+package lessons.sort.baseball.universe;
 
 /**
  * @see BaseballPlayer
@@ -84,12 +84,11 @@ public class BaseballBase {
 	 * Return the color of the player in base baseIndex at position playerLocation
 	 * @param playerLocation the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
 	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
 	 */
-	public int getPlayerColor(int playerLocation) throws InvalidPositionException {
+	public int getPlayerColor(int playerLocation)  {
 		if ( playerLocation < 0 || playerLocation > this.getLocationsAmount()-1 )
 		{
-			throw new InvalidPositionException("The position of a player must be between 0 and getLocationsAmount()-1.\nIt's sad but "+playerLocation+" isn't one of these values !");
+			throw new IllegalArgumentException("The position of a player must be between 0 and getLocationsAmount()-1.\nIt's sad but "+playerLocation+" isn't one of these values !");
 		}
 		return this.players[playerLocation].getColor();
 	}

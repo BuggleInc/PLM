@@ -1,4 +1,4 @@
-package jlm.universe.smn.baseball;
+package lessons.sort.baseball.universe;
 
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -38,10 +38,8 @@ public class BaseballEntity extends Entity {
 	 * Return the color of the base located at baseIndex
 	 * @param baseIndex the index of the wanted base
 	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
 	 */
-	public int getBaseColor( int baseIndex) throws InvalidPositionException
-	{
+	public int getBaseColor( int baseIndex) {
 		return  ((BaseballWorld) world).getBaseColor(baseIndex);
 	}
 	
@@ -65,9 +63,8 @@ public class BaseballEntity extends Entity {
 	 * @param baseIndex the index of the wanted base
 	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
 	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
 	 */
-	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
+	public int getPlayerColor(int baseIndex, int playerLocation) {
 		return ((BaseballWorld) this.world).getPlayerColor(baseIndex,playerLocation);
 	}
 	
@@ -82,8 +79,7 @@ public class BaseballEntity extends Entity {
 	 * @param playerSrc : index of the player that you want to pick
 	 * @throws InvalidMoveException in case baseSrc is not near the hole 
 	 */
-	public void move(int baseSrc, int playerSrc) throws InvalidMoveException
-	{
+	public void move(int baseSrc, int playerSrc) {
 		((BaseballWorld) this.world).move(baseSrc,playerSrc);
 		stepUI();
 	}

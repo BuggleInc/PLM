@@ -1,4 +1,4 @@
-package jlm.universe.smn.baseball;
+package lessons.sort.baseball.universe;
 
 import java.awt.Component;
 import java.awt.GridLayout;
@@ -130,7 +130,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 					be.move(base, player);
 					refreshHoleLocation(be);
 				}
-				catch (InvalidMoveException e1) 
+				catch (IllegalArgumentException e1) 
 				{
 					showInvalidMoveMessageDialog(base,player);
 				}

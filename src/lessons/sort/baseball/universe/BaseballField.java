@@ -1,4 +1,5 @@
-package jlm.universe.smn.baseball;
+package lessons.sort.baseball.universe;
+
 
 public class BaseballField
 {
@@ -148,12 +149,12 @@ public class BaseballField
 	 * Return the color of the base located at baseIndex
 	 * @param baseIndex the index of the wanted base
 	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws InvalidPositionException if you ask for a base which isn't in the range 0 to amountOfBases-1
+	 * @throws IllegalArgumentException if you ask for a base which isn't in the range 0 to amountOfBases-1
 	 */
-	public int getBaseColor(int baseIndex) throws InvalidPositionException {
+	public int getBaseColor(int baseIndex) {
 		if ( baseIndex < 0 || baseIndex>= this.bases.length)
 		{
-			throw new InvalidPositionException("getBaseColor: you ask for a base "+baseIndex+" which isn't in the range 0 to getAmountOfBases()-1.");
+			throw new IllegalArgumentException("getBaseColor: you ask for a base "+baseIndex+" which isn't in the range 0 to getAmountOfBases()-1.");
 		}
 		return this.bases[baseIndex].getColor();
 	}
@@ -195,9 +196,9 @@ public class BaseballField
 	 * @param baseIndex the index of the wanted base
 	 * @param playerLocation the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
 	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws InvalidPositionException if playerLocation isn't 0 or 1
+	 * @throws IllegalArgumentException if playerLocation isn't 0 or 1
 	 */
-	public int getPlayerColor(int baseIndex, int playerLocation) throws InvalidPositionException {
+	public int getPlayerColor(int baseIndex, int playerLocation)  {
 		return this.bases[baseIndex].getPlayerColor(playerLocation);
 	}
 	
@@ -258,8 +259,6 @@ public class BaseballField
 		// update the holeContainer
 		int n = this.getAmountOfBases();
 		boolean found = false;
-		try 
-		{
 			for ( int i = 0 ; i < n && !found ; i++)
 			{
 				for ( int j = 0 ; j < m && !found; j++)
@@ -272,26 +271,21 @@ public class BaseballField
 					}
 				}	
 			}	
-		}
-		catch ( InvalidPositionException ipe)
-		{
-			System.out.println("Unexpected InvalidPositionException in getHolePosition: "+ipe.getMessage());
-		}
 	}
 
 	/**
 	 * Moves the specified player into the hole
 	 * @throws InvalidMoveException in case baseSrc is not near the hole
 	 */
-	public void move(int indexBaseSrc, int playerLocation) throws InvalidMoveException
+	public void move(int indexBaseSrc, int playerLocation) 
 	{
 		if ( indexBaseSrc >= this.getAmountOfBases() || indexBaseSrc < 0)
 		{
-			throw new InvalidMoveException("The base index must be between 0 and "+(this.getAmountOfBases()-1)+".\nUnfortunatly, "+indexBaseSrc+" isn't");
+			throw new IllegalArgumentException("The base index must be between 0 and "+(this.getAmountOfBases()-1)+".\nUnfortunatly, "+indexBaseSrc+" isn't");
 		}
 		if ( playerLocation < 0 || playerLocation > this.getLocationsAmount()-1 )
 		{
-			throw new InvalidMoveException("There isn't a position "+playerLocation+".\nIt must be between 0 and getLocationsAmount()-1.");
+			throw new IllegalArgumentException("There isn't a position "+playerLocation+".\nIt must be between 0 and getLocationsAmount()-1.");
 		}
 		// must work only if the bases are next to each other
 		if (		( this.holeContainer[0] == indexBaseSrc+1 )
@@ -301,17 +295,10 @@ public class BaseballField
 				||  ( this.holeContainer[0] == indexBaseSrc )
 			)
 		{
-			try
-			{
 				this.setLastMove(
 						new BaseballMove(indexBaseSrc, playerLocation, 
 								this.holeContainer[0], this.holeContainer[1], 
 								this.getPlayerColor(indexBaseSrc, playerLocation)));
-			}
-			catch (InvalidPositionException ipe)
-			{
-				System.out.println("Unexpected InvalidPositionException in move");
-			}
 			swap(indexBaseSrc, playerLocation, this.holeContainer[0], this.holeContainer[1]);
 			this.holeContainer[0]= indexBaseSrc;
 			this.holeContainer[1]= playerLocation;
@@ -319,7 +306,7 @@ public class BaseballField
 		}
 		else
 		{
-			throw new InvalidMoveException("The player "+playerLocation+" from base "+indexBaseSrc+" can't move to base "+this.holeContainer[0]+" since it's a lazy guy and he doesn't want to travel more than one base length at once");
+			throw new IllegalArgumentException("The player "+playerLocation+" from base "+indexBaseSrc+" can't move to base "+this.holeContainer[0]+" since it's a lazy guy and he doesn't want to travel more than one base length at once");
 		}
 	}
 

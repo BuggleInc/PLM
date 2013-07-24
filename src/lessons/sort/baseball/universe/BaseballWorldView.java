@@ -1,4 +1,4 @@
-package jlm.universe.smn.baseball;
+package lessons.sort.baseball.universe;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
