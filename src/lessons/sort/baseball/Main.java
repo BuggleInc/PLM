@@ -1,8 +1,8 @@
 package lessons.sort.baseball;
 
 import jlm.core.model.lesson.Lesson;
-import lessons.sort.baseball.easy.BaseballGame;
-import lessons.sort.baseball.medium.BaseballGameMorePlayers;
+import lessons.sort.baseball.BaseballGame;
+import lessons.sort.baseball.BaseballGameMorePlayers;
 
 public class Main extends Lesson {
 	

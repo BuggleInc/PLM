@@ -61,7 +61,7 @@ public class LessonChooser extends JFrame implements HumanLangChangesListener {
 		
 		LessonMatrix matrix = new LessonMatrix(overview, new String[][] {
 				{"lessons/welcome","lessons/maze", "lessons/bat/string1"},
-				{"lessons/sort", "lessons/sort/pancake", "lessons/sort	/baseball"},
+				{"lessons/sort", "lessons/sort/pancake", "lessons/sort/baseball"},
 				{"lessons/recursion" },
 				{"lessons/lightbot" },
 		    }); 
@@ -170,7 +170,7 @@ class LessonOverview extends JPanel implements HumanLangChangesListener {
 		try {
 			sb = FileUtils.readContentAsText(filename, "html",true);
 		} catch (IOException ex) {
-			sb = new StringBuffer(Game.i18n.tr("<p>(unable to display the lesson's short description: file {0}.html not found)</p>",filename));
+			sb = new StringBuffer(Game.i18n.tr("<p>(unable to display the lesson's short description: file {0} not found)</p>",filename+".html"));
 		}
 
 		sb.append(Game.i18n.tr("<p><b>Your score:</b> "));

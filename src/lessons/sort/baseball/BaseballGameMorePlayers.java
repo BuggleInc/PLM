@@ -1,4 +1,4 @@
-package lessons.sort.baseball.medium;
+package lessons.sort.baseball;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
