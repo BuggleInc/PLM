@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-23 14:12+0300\n"
-"PO-Revision-Date: 2013-07-23 14:12+0200\n"
+"POT-Creation-Date: 2013-07-24 17:17+0300\n"
+"PO-Revision-Date: 2013-07-24 17:20+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2018,8 +2018,8 @@ msgstr ""
 "Le but de cette leçon est de vous apprendre comment écrire des leçons pour "
 "la JLM."
 
-#. type: Content of: <h1>
-#: src/lessons/welcome/Main.html:1
+#. type: Content of: <h3>
+#: src/lessons/welcome/Main.html:1 src/lessons/welcome/short_desc.html:1
 msgid "First steps"
 msgstr "Premiers pas"
 
@@ -2293,6 +2293,24 @@ msgstr "Le concept est supposé maîtrisé"
 msgid "Concept not mandated by the exercise"
 msgstr "Le concept n'est pas indispensable à l'exercice"
 
+#. type: Content of: <p>
+#: src/lessons/welcome/short_desc.html:2
+msgid ""
+"This first lesson will lead your first steps in programming. It is intended "
+"for beginners."
+msgstr ""
+"Cette première leçon va vous guider dans vos premiers pas en programmation. "
+"Elle est destinée aux débutants. "
+
+#. type: Content of: <p>
+#: src/lessons/welcome/short_desc.html:5
+msgid ""
+"If you are not sure, go for this lesson that will teach you the bases of "
+"programming."
+msgstr ""
+"Dans le doute, faites cette leçon, qui vous enseignera les bases de la "
+"programmation."
+
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/environment/Environment.html:3
 msgid ""
@@ -2303,14 +2321,12 @@ msgid ""
 "environment is configured to be programmed in the Java programming language, "
 "but you can change it from the Language menu if you want."
 msgstr ""
-"Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme\n"
+"Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme "
 "pédagogique destinée à simplifier l'apprentissage de la programmation.  Il "
-"est\n"
-"constitué d'un ensemble d'exercices groupés par leçons, pour vous permettre "
-"de\n"
-"progresser à votre rythme. Par défaut, l'outil est configuré pour vous\n"
-"permettre de programmer en Java, mais vous pouvez changer de langage de\n"
-"programmation grâce au menu Language si vous le désirez."
+"est constitué d'un ensemble d'exercices groupés par leçons, pour vous "
+"permettre de progresser à votre rythme. Par défaut, l'outil est configuré "
+"pour vous permettre de programmer en Java, mais vous pouvez changer de "
+"langage de programmation grâce au menu Langage si vous le désirez."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:9
@@ -7978,8 +7994,8 @@ msgstr ""
 "La page web est ici : http://code.google.com/p/ruletablerepository/wiki/"
 "TwoDimensionalTuringMachines"
 
-#. type: Content of: <h1>
-#: src/lessons/sort/Main.html:1
+#. type: Content of: <h3>
+#: src/lessons/sort/Main.html:1 src/lessons/sort/short_desc.html:1
 msgid "Sorting Algorithms"
 msgstr "Algorithmes de tri"
 
@@ -8013,6 +8029,24 @@ msgstr ""
 "s'appuieront sur d'autres micro-mondes pour appliquer ces algorithmes à "
 "d'autres\n"
 "situations."
+
+#. type: Content of: <p>
+#: src/lessons/sort/short_desc.html:3
+msgid ""
+"This lesson allows to experiment with some classical sorting algorithms (and "
+"some less common variant of them :)"
+msgstr ""
+"Cette leçon vous permet d'expérimenter avec des algorithmes de tri "
+"classiques (ainsi qu'avec certaines variantes moins classiques :)"
+
+#. type: Content of: <p>
+#: src/lessons/sort/short_desc.html:6 src/lessons/recursion/short_desc.html:5
+#: src/lessons/maze/short_desc.html:5
+msgid ""
+"You are supposed to master the bases of programming to take this lesson."
+msgstr ""
+"Vous êtes supposé maîtriser les bases de la programmation avant de tenter "
+"cette leçon."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:1
@@ -8807,6 +8841,20 @@ msgstr ""
 "Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
 "récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir dans "
 "la leçon sur les tris."
+
+#. type: Content of: <h3>
+#: src/lessons/recursion/short_desc.html:1
+msgid "Bases of recursion"
+msgstr "Les bases de la récursion"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/short_desc.html:2
+msgid ""
+"Discover the recursive way of thinking by drawing trees and other figures "
+"with the Logo turtle."
+msgstr ""
+"Découvrez la récursion en dessinant des arbres et d'autres figures avec la "
+"tortue Logo."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/square/Square.html:1
@@ -9646,15 +9694,15 @@ msgstr "déplacer le disque #n de A vers C"
 msgid "move n−1 discs from B to C so they sit on disc #n"
 msgstr "deplacer n-1 disques de B vers C afin qu'ils reposent sur le disque #n"
 
-#. type: Content of: <h1>
-#: src/lessons/maze/Main.html:1
+#. type: Content of: <h3>
+#: src/lessons/maze/Main.html:1 src/lessons/maze/short_desc.html:1
 msgid "Labyrinths"
 msgstr "Labyrinthes"
 
 #. type: Content of: <p>
-#: src/lessons/maze/Main.html:3
+#: src/lessons/maze/Main.html:3 src/lessons/maze/short_desc.html:3
 msgid ""
-"This lesson propose several exercises about labyrinths in the buggle world."
+"This lesson proposes several exercises about labyrinths in the buggle world."
 msgstr ""
 "Cette leçon propose divers exercices à propos des labyrinthes dans le monde "
 "des buggles."
@@ -10562,8 +10610,8 @@ msgstr ""
 "peut par exemple trouver sur kongregate.com. Il a été écrit par Danny "
 "Yaroslavski (Coolio-Niato), d'après une idée originale de Matt Chase."
 
-#. type: Content of: <h1>
-#: src/lessons/lightbot/Main.html:1
+#. type: Content of: <h3>
+#: src/lessons/lightbot/Main.html:1 src/lessons/lightbot/short_desc.html:1
 msgid "LightBot"
 msgstr "LightBot"
 
@@ -10581,6 +10629,24 @@ msgstr ""
 msgid "See the <i>About this world</i> dialog for more details."
 msgstr ""
 "Référez vous à l'aide <i>À propos de ce monde</i> pour plus de détails."
+
+#. type: Content of: <p>
+#: src/lessons/lightbot/short_desc.html:3
+msgid ""
+"This lesson constitutes a little brain teaser for programmers. You have to "
+"instruct your robot to turn off all lights. The trick is that you program "
+"your robot graphically, and that you are limited in the amount of "
+"instructions."
+msgstr ""
+"Cette leçon constitue un casse-tête pour programmeurs, où vous devez "
+"apprendre à votre robot à éteindre toutes les lumières. Le truc est que vous "
+"le programmez graphiquement, et que vous n'avez droit qu'à un nombre limité "
+"d'instructions."
+
+#. type: Content of: <p>
+#: src/lessons/lightbot/short_desc.html:8
+msgid "No previous experience is expected to take this lesson."
+msgstr "Aucune expérience préalable n'est nécessaire pour tenter cette leçon."
 
 #. type: Content of: <h1>
 #: src/lessons/lightbot/Board01TwoSteps.html:1
@@ -11613,7 +11679,7 @@ msgid ""
 msgstr ""
 "Les chaînes de caractères (\"String\") sont les plus simples des types de "
 "données complexes :) Elles fournissent différentes opérations, comme obtenir "
-"la logueur de la chaîne ou une sous-chaîne..."
+"la longueur de la chaîne ou une sous-chaîne..."
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/Main.html:7
@@ -11623,6 +11689,26 @@ msgid ""
 msgstr ""
 "Une très bonne introduction à ce type est disponible ici : http://javabat."
 "com/doc/string.html."
+
+#. type: Content of: <h3>
+#: src/lessons/bat/string1/short_desc.html:1
+msgid "Small exercises about strings"
+msgstr "Petits exercices sur les chaînes"
+
+#. type: Content of: <p>
+#: src/lessons/bat/string1/short_desc.html:3
+msgid ""
+"These are some training exercises around strings. But unfortunately, its "
+"integration within JLM is still ongoing."
+msgstr ""
+"Il s'agit d'exercices d'entraînement au sujet des chaînes de caractères. "
+"Mais malheureusement, leur intégration à JLM est encore en cours."
+
+#. type: Content of: <p>
+#: src/lessons/bat/string1/short_desc.html:6
+#: src/lessons/smn/baseball/short_desc.html:6
+msgid "Please be patient with us."
+msgstr "Merci de votre patience."
 
 #. type: Content of: <h1>
 #: src/lessons/bat/string1/AltPairs.html:1
@@ -13003,6 +13089,27 @@ msgstr ""
 "(http://en.wikipedia.org/wiki/Pancake_sorting) ou à cette page, très bien "
 "faite: http://eljjdx.canalblog.com/archives/2013/02/03/26309722.html"
 
+#. type: Content of: <h3>
+#: src/lessons/sort/pancake/short_desc.html:1
+msgid "The pancake problem"
+msgstr "Le crépier psychorigid"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/short_desc.html:3
+msgid "Help the poor psychorigid pancakes' chef to sort its pancake stack!"
+msgstr "Aidez le pauvre crépier psychorigide à trier sa pile de crêpes !"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/short_desc.html:5
+msgid ""
+"This funny problem leads to algorithms that are somewhat more challenging to "
+"implement. You are supposed to master the bases of programming and some "
+"sorting algorithms to take this lesson."
+msgstr ""
+"Ce problème amusant débouche sur des algorithmes un peu plus compliqués à "
+"implémenter. Vous devez maîtriser les bases de la programmation ainsi que "
+"quelques algorithmes de tri avant de tenter cette leçon."
+
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/BasicPancake.html:1
 msgid "Pancake Sorting"
@@ -13373,12 +13480,12 @@ msgstr ""
 "chaque fois que vous rentrez dans la boucle principale. "
 
 #. type: Content of: <h1>
-#: src/lessons/smn/Main.html:1
+#: src/lessons/smn/baseball/Main.html:1
 msgid "Computer Science in Real Life"
 msgstr "Sciences Manuelles du Numérique"
 
 #. type: Content of: <p><font>
-#: src/lessons/smn/Main.html:3
+#: src/lessons/smn/baseball/Main.html:3
 #: src/lessons/smn/baseball/easy/BaseballGame.html:2
 #: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:2
 msgid ""
@@ -13389,24 +13496,36 @@ msgstr ""
 "parfaitement intégré à JLM"
 
 #. type: Content of: <p>
-#: src/lessons/smn/Main.html:4
+#: src/lessons/smn/baseball/Main.html:4
 #: src/lessons/smn/baseball/easy/BaseballGame.html:3
 #: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:3
 msgid ". Please be patient with us."
 msgstr ". Merci de votre patience."
 
 #. type: Content of: <p>
-#: src/lessons/smn/Main.html:6
+#: src/lessons/smn/baseball/Main.html:6
 msgid "Few activities developped for Computer Science in Real Life"
 msgstr ""
 "Différentes activités développées pour les Sciences Manuelles du Numérique"
 
+#. type: Content of: <h3>
+#: src/lessons/smn/baseball/short_desc.html:1
+msgid "Rainbow baseball"
+msgstr "Baseball multicolore"
+
+#. type: Content of: <p>
+#: src/lessons/smn/baseball/short_desc.html:3
+msgid ""
+"This is another funny variation on the sorting problem, but unfortunately, "
+"its integration within JLM is still ongoing."
+msgstr ""
+"Il s'agit d'un autre problème amusant autour des algorithmes de tri. "
+"Malheureusement, son intégration à JLM n'est pas encore terminée."
+
 #. type: Content of: <h1>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:1
-#: src/lessons/smn/baseball/easy/BaseballGame.html:1
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:1
-msgid "Baseball"
-msgstr "Baseball"
+msgid "Rainbow Baseball"
+msgstr "Baseball multicolore"
 
 #. type: Content of: <p>
 #: src/jlm/universe/smn/baseball/BaseballWorld.html:3
@@ -13530,6 +13649,12 @@ msgid ""
 msgstr ""
 "Renvoie le nombre de positions de joueur disponible sur chaque base du "
 "terrain"
+
+#. type: Content of: <h1>
+#: src/lessons/smn/baseball/easy/BaseballGame.html:1
+#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:1
+msgid "Baseball"
+msgstr "Baseball"
 
 #. type: Content of: <p>
 #: src/lessons/smn/baseball/easy/BaseballGame.html:6
