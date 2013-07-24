@@ -92,7 +92,7 @@ public class BaseballGameEntity extends BaseballEntity {
 
 	// Bring the hole to (baseDst,playerDst) while protecting the position playerToProtect
 	private void bringHole(int baseDst, int playerDst , int playerToProtect) {
-		int[] holeLocation = { this.getHoleBase(), this.getHolePositionInBase() };
+		int[] holeLocation = { this.getHoleBase(), this.getHolePosition() };
 		if ( baseDst < holeLocation[0] ) // the hole is after the base where we want it
 		{
 			for ( int i = holeLocation[0]-1; i > baseDst;i--)

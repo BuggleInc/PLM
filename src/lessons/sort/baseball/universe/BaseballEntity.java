@@ -10,12 +10,11 @@ public class BaseballEntity extends Entity {
 	public BaseballEntity() {
 		super("Baseball Entity");
 	}
-	
+
 	public BaseballEntity(String name) {
 		super(name);
 	}
-	
-	
+
 	public BaseballEntity(String name, World world) {
 		super(name,world);
 	}
@@ -24,73 +23,56 @@ public class BaseballEntity extends Entity {
 	public Entity copy() {
 		return new BaseballEntity(this.name);
 	}
-	
-	/**
-	 * Give the number of bases on your field
-	 * @return the number of bases on your field
-	 */
-	public int getAmountOfBases()
-	{
-		return ((BaseballWorld) this.world).getAmountOfBases();
+
+	/** Returns the amount of bases on your field */
+	public int getAmountOfBases() {
+		return ((BaseballWorld) this.world).getBasesAmount();
 	}
-	
-	/**
-	 * Return the color of the base located at baseIndex
-	 * @param baseIndex the index of the wanted base
-	 * @return the color of the player in base baseIndex at position playerLocation
-	 */
+
+	/** Returns the color of the specified base */
 	public int getBaseColor( int baseIndex) {
 		return  ((BaseballWorld) world).getBaseColor(baseIndex);
 	}
-	
-	/** Returns the index of the base where is hole is located */
+
+	/** Returns the base in which the hole is located */
 	public int getHoleBase() {
 		return ((BaseballWorld) this.world).getHoleBase();
 	}
-	
-	/** Returns the position in the base where is hole is located */
-	public int getHolePositionInBase(){
-		return ((BaseballWorld) this.world).getHolePositionInBase();
+
+	/** Returns the hole position within its base */
+	public int getHolePosition(){
+		return ((BaseballWorld) this.world).getHolePosition();
 	}
-	
+
 	/** Returns the amount of players locations available on each base of the field */
 	public int getLocationsAmount() {
 		return ((BaseballWorld) this.world).getLocationsAmount();
 	}
-	
-	/**
-	 * Returns the color of the player in base baseIndex at position playerLocation
-	 * @param baseIndex the index of the wanted base
-	 * @param playerLocation the location ( 0 or 1 ) of the wanted player
-	 * @return the color of the player in base baseIndex at position playerLocation
-	 */
-	public int getPlayerColor(int baseIndex, int playerLocation) {
-		return ((BaseballWorld) this.world).getPlayerColor(baseIndex,playerLocation);
+
+	/** Returns the color of the player at the specified coordinate */
+	public int getPlayerColor(int base, int position) {
+		return ((BaseballWorld) this.world).getPlayerColor(base,position);
 	}
-	
-	/** Returns whether the base at baseIndex is sorted or not */
+
+	/** Returns whether every players of the specified base are at home */
 	public boolean isBaseSorted(int baseIndex) {
-		return ((BaseballWorld) this.world).isBaseSorted(baseIndex);
+		return ((BaseballWorld) this.world).getBase(baseIndex).isSorted();
 	}
-	
+
 	/**
-	 * Move the player playerSrc of baseSrc to the hole
-	 * @param baseSrc : index of the base you want to pick a player
-	 * @param playerSrc : index of the player that you want to pick
-	 * @throws InvalidMoveException in case baseSrc is not near the hole 
+	 * Move the specified player to the hole
+	 * @throws IllegalArgumentException if the specified player is not near the hole (at most one base away) 
 	 */
-	public void move(int baseSrc, int playerSrc) {
-		((BaseballWorld) this.world).move(baseSrc,playerSrc);
+	public void move(int base, int position) {
+		((BaseballWorld) this.world).move(base,position);
 		stepUI();
 	}
-	
-	/** 
-	 * Must exist so that exercises can instantiate the entity (Entity is abstract) 
-	 */
+
+	/** Must exist so that exercises can instantiate the entity (Entity is abstract) */ 
 	@Override
 	public void run() {
 	}
-	
+
 	/**
 	 * Return a string representation of the world
 	 * @return A string representation of the world

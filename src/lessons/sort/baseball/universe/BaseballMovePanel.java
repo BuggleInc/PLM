@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import jlm.core.model.Game;
-import jlm.core.utils.FileUtils;
 import jlm.universe.EntityControlPanel;
 
 /**
@@ -144,12 +143,12 @@ public class BaseballMovePanel extends EntityControlPanel {
 	 */
 	private void refreshHoleLocation(BaseballEntity be) {
 		holeBaseLocation.setText(""+be.getHoleBase());
-		holePlayerLocation.setText(""+be.getHolePositionInBase());
+		holePlayerLocation.setText(""+be.getHolePosition());
 	}
 
 	/**
 	 * Allow to enable or disable each component of the control panel
-	 * @param enabled if the composants shall be enabled or not
+	 * @param enabled if the components shall be enabled or not
 	 */
 	@Override
 	public void setEnabledControl(boolean enabled) {
@@ -166,16 +165,8 @@ public class BaseballMovePanel extends EntityControlPanel {
 	public void showInvalidMoveMessageDialog(int base,int player) {
 		String message ;
 		String title ;
-		if ( FileUtils.getLocale().equals("fr"))
-		{
-			message = "Le joueur numéro "+player+" de la base numéro "+base+" ne peut pas se déplacer aussi loin !";
-			title = "Déplacement invalide";
-		}
-		else
-		{
-			message = "The player number "+player+" of the base number "+base+" can't move so far on the field !";
-			title = "Invalid move";
-		}
+		message = "The player number "+player+" of the base number "+base+" can't move so far on the field !";
+		title = "Invalid move";
 		JOptionPane.showMessageDialog(null, message,title, JOptionPane.ERROR_MESSAGE);
 	}
 
