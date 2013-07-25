@@ -153,8 +153,11 @@ public abstract class ExerciseTemplated extends Exercise {
 				throw new RuntimeException(i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.",filename,state));	
 			}
 		}
-		if (state != 4)
-			System.out.println(i18n.tr("{0}: End of file unexpected. Did you forget to close your template or solution? Please fix your entity.",shownFilename));
+		if (state == 3) {
+			if (seenTemplate)
+				System.out.println(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
+		} else if (state != 4)
+			System.out.println(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
