@@ -84,7 +84,10 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			case 1: /* template head */
-				if (line.contains("public class "))
+				if (line.contains("BEGIN TEMPLATE")) {
+					System.out.println(i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
+					state = 4;
+				} else if (line.contains("public class "))
 					templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
 				else if (line.contains("END TEMPLATE")) {
 					state = 4;
@@ -150,6 +153,8 @@ public abstract class ExerciseTemplated extends Exercise {
 				throw new RuntimeException(i18n.tr("Parser error in file {0}. This is a parser bug (state={1}), please report.",filename,state));	
 			}
 		}
+		if (state != 4)
+			System.out.println(i18n.tr("{0}: End of file unexpected. Did you forget to close your template or solution? Please fix your entity.",shownFilename));
 
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
