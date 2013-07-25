@@ -1,6 +1,7 @@
 <h1>Rainbow Baseball</h1>
 <p>The colors are represented by integers, between <code>0</code> and <code>amount of bases -1</code>. 
-The hole is represented by the special value <code>-1</code>.</p>
+The hole is represented by the special value <code>-1</code>. 
+The color of each base is its rank. So base <code>1</code> is of color <code>1</code>.</p>
 
 <p>Once every players are home on the field, the hole should be in the last base, that is of rank <code>getAmountOfBases()-1</code>.</p>
 
@@ -29,10 +30,6 @@ The hole is represented by the special value <code>-1</code>.</p>
  <li>Retrieve the color of the player at a given location:
      <pre class="Java"> int getPlayerColor(int base, int position)</pre>
      <pre class="python">getPlayerColor(base, position)</pre></li>
-
- <li>Retrieve the color of a given base:
-     <pre class="Java">int getBaseColor(int base)</pre>
-     <pre class="python">getBaseColor(base)</pre></li>  
 
  <li>Retrieve whether all players of a given base are at home:
      <pre class="Java">boolean isBaseSorted(int base)</pre>

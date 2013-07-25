@@ -34,10 +34,6 @@ public class BaseballEntity extends Entity {
 	public int getPlayerColor(int base, int position) {
 		return ((BaseballWorld) this.world).getPlayerColor(base,position);
 	}
-	/** Returns the color of the specified base */
-	public int getBaseColor( int base) {
-		return  ((BaseballWorld) world).getBaseColor(base);
-	}
 	/** Returns whether every players of the specified base are at home */
 	public boolean isBaseSorted(int base) {
 		return ((BaseballWorld) this.world).isBaseSorted(base);

@@ -125,7 +125,7 @@ public class BaseballWorldView extends WorldView
 		int[][] points = computeCorners( L, dist, theta, xCenter, yCenter, amountOfPlayers );
 
 		// draw the base
-		drawRectangle(g,points,obtainColor(field.getBaseColor(base)));
+		drawRectangle(g,points,obtainColor(base));
 
 		// the radius of the disk representing the player
 		int radius = L/amountOfPlayers-1; 

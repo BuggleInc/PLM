@@ -2,50 +2,93 @@ package lessons.sort.baseball.universe;
 
 import javax.script.ScriptEngine;
 
-import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.WorldView;
+import jlm.core.utils.FileUtils;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 public class BaseballWorld extends World {
 	public int COLOR_HOLE = -1;
 
-	private BaseballBase[] bases; // the bases which composed the field
+	private int[] field; // the bases which composed the field
+	private int baseAmount,posAmount; // field dimensions
 	private int holeBase,holePos; // The coordinate of the hole
 	private BaseballMove lastMove; // the last move made on the field -- used for graphical purpose only
+	private I18n i18n;
 
 	/** Copy constructor used internally by JLM */
 	public BaseballWorld(BaseballWorld world) {
 		super(world);
+		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 	}
 
 
 	/** Regular constructor used by exercises */
-	public BaseballWorld(String name, int numberOfBases, int playerLocationAmount) {
+	public BaseballWorld(String name, int baseAmount, int positionAmount) {
+		this(name,baseAmount,positionAmount,false);
+	}
+
+	public BaseballWorld(String name, int baseAmount, int posAmount, boolean forbidPlayerHome) {
 		super(name);
+		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 
 		// create the bases
-		this.bases = new BaseballBase[numberOfBases];
-		for (int color = 0 ; color < numberOfBases ; color++)
-			this.bases[color] = new BaseballBase(color,playerLocationAmount, color!=numberOfBases-1);
-
-		this.bases[this.bases.length-1].setPlayerColor(0, COLOR_HOLE);
+		this.baseAmount = baseAmount;
+		this.posAmount = posAmount;
+		
+		this.field = new int[baseAmount*posAmount];
+		for (int base = 0 ; base < baseAmount ; base++)
+			for (int pos = 0; pos < posAmount; pos++)
+				setPlayerColor(base, pos, base);
+		setPlayerColor(baseAmount-1, 0, COLOR_HOLE);
+		
 
 		lastMove = null;
 		for (int base = 0 ; base<getBasesAmount();base++)
 			for (int pos = 0 ; pos<getPositionsAmount();pos++)
 				swap(base, pos, (int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
+		
+		// Ensure that nobody's home once it's mixed. 
+		//   We tested that no situation of 4 bases with that condition exposes the bug of the naive algorithm
+		//   We tested it by generating all situations, actually.
+		if (forbidPlayerHome) { 
+			boolean swapped;
+			do {
+				swapped = false;
+				for (int base = 0 ; base<getBasesAmount();base++)
+					for (int pos = 0 ; pos<getPositionsAmount();pos++)
+						if (getPlayerColor(base, pos) == base) {
+							swapped = true;
+							int newBase;
+							do {
+								newBase = (int) (Math.random()*getBasesAmount());
+							} while (newBase == base);
+							int newPos = (int) (Math.random()*getPositionsAmount());
+							System.out.println("Someone's home! "+base+","+pos+" -> "+newBase+","+newPos);
+							System.out.println("   "+toString());
+							swap(base, pos, newBase, newPos);							
+						}
+			} while (swapped);
+		}
 
+		// Add an entity
+		new BaseballEntity("Baseball Player",this);
+		
 		// Cache the hole position 
 		for ( int base = 0 ; base < getBasesAmount(); base++)
 			for ( int pos = 0 ; pos < getPositionsAmount(); pos++)
-				if ( bases[base].getPlayerColor(pos)== COLOR_HOLE) {
+				if ( getPlayerColor(base,pos)== COLOR_HOLE) {
 					holeBase = base;
 					holePos = pos;
 					return;
-				}	
+				}
+		
 	}
+
 
 	/**
 	 * Returns a textual description of the differences between the caller and world
@@ -53,19 +96,20 @@ public class BaseballWorld extends World {
 	 */
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof BaseballWorld))
-			return Game.i18n.tr("This is not a baseball world :-(");
+			return i18n.tr("This is not a baseball world :-(");
 
 		BaseballWorld other = (BaseballWorld) o;
 		if (getBasesAmount() != other.getBasesAmount())
-			return Game.i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
+			return i18n.tr("Differing amount of bases: {0} vs {1}",getBasesAmount(),other.getBasesAmount());
 
 		if (getPositionsAmount() != ((BaseballWorld) o).getPositionsAmount())
-			return Game.i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
+			return i18n.tr("Differing amount of players: {0} vs {1}", getPositionsAmount(), other.getPositionsAmount());
 
 		StringBuffer sb = new StringBuffer();
-		for ( int i = 0 ; i < getBasesAmount() ; i++)
-			if ( !bases[i].equals(other.bases[i]))
-				sb.append(Game.i18n.tr("Base #{0} differs: {1} vs {2}",bases[i].toString(),other.bases[i].toString()));
+		for (int base = 0; base< baseAmount; base++)
+			for (int pos=0; pos<posAmount; pos++)
+				if (getPlayerColor(base, pos) != other.getPlayerColor(base, pos))
+					sb.append(i18n.tr("Player at base {0}, pos {1} differs: {2} vs {3}\n",base,pos,getPlayerColor(base, pos), other.getPlayerColor(base, pos)));
 
 		return sb.toString();
 	}
@@ -82,9 +126,10 @@ public class BaseballWorld extends World {
 
 			return false;
 
-		for ( int i = 0 ; i< this.bases.length ;i++ )
-			if (! this.bases[i].equals(otherField.bases[i]))
-				return false;
+		for (int base = 0; base< baseAmount; base++)
+			for (int pos=0; pos<posAmount; pos++)
+				if (getPlayerColor(base, pos) != otherField.getPlayerColor(base, pos))
+					return false;
 
 		return true;
 	}
@@ -114,66 +159,54 @@ public class BaseballWorld extends World {
 		super.reset(world);		
 
 		BaseballWorld other = (BaseballWorld) world;
-
-		this.bases = new BaseballBase[other.bases.length];
-		for (int i = 0 ; i < bases.length ; i++) {
-			this.bases[i] = new BaseballBase(i,other.getPositionsAmount(), i!=bases.length-1);
-			for ( int j = 0 ; j < getPositionsAmount();j++)
-				bases[i].setPlayerColor(j,other.bases[i].getPlayerColor(j));
-		}
-
+		
+		lastMove = other.lastMove;
+		
 		holeBase = other.holeBase;
 		holePos = other.holePos;
 
-		lastMove = other.lastMove;
+		baseAmount = other.baseAmount;
+		posAmount = other.posAmount;
+		field= new int[other.baseAmount*other.posAmount];
+		for (int base=0; base<baseAmount; base++)
+			for (int pos=0; pos<posAmount; pos++)
+				setPlayerColor(base, pos, other.getPlayerColor(base, pos));
 	}
 
-	/**
-	 * Return a string representation of the world
-	 * @return A string representation of the world
-	 */
-	public String toString()
-	{
+	/** Returns a string representation of the world */
+	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		sb.append("BaseballWorld "+getName()+":\n");
+		sb.append("BaseballWorld "+getName()+": {");
 
-		for (int i = 0 ; i < this.bases.length ; i++) {
-			sb.append("- Base "+i+"\n");
-			sb.append("  Color : "+this.bases[i].getColor()+"\n");
-			for ( int j = 0 ; j < getPositionsAmount() ; j++)
-				sb.append("  Player "+j+" : "+this.bases[i].getPlayerColor(j)+"\n");
+		for (int base = 0 ; base < baseAmount ; base++) {
+			if (base!=0)
+				sb.append(" , ");
+			for (int pos = 0 ; pos < posAmount ; pos++) {
+				if (pos!=0)
+					sb.append(",");
+				sb.append(getPlayerColor(base,pos));
+			}
 		}
+		sb.append("}");
 		return sb.toString();
 	}
 
 	/** Returns the number of bases on your field */
 	public int getBasesAmount() {
-		return this.bases.length;
+		return baseAmount;
 	}
 	/** Returns the amount of players per base on this field */
 	public int getPositionsAmount() {
-		return this.bases[0].getPositionsAmount();
+		return posAmount;
 	}
 
-	/**
-	 * Returns the color of the base located at baseIndex
-	 * @param base the index of the wanted base
-	 * @return the color of the player in base baseIndex at position playerLocation
-	 * @throws IllegalArgumentException if you ask for a non-existent base
-	 */
-	public int getBaseColor(int base) {
-		if ( base < 0 || base >= this.bases.length)
-			throw new IllegalArgumentException("There is no base #"+base+" from which I could give you the color.");
-
-		return this.bases[base].getColor();
-	}
 	/**
 	 * Returns the color of the player in base baseIndex at position playerLocation
 	 * @param base the index of the base we are looking for
 	 * @param pos  the position within that base (between 0 and getLocationsAmount()-1 )
 	 */
 	public int getPlayerColor(int base, int pos)  {
-		return this.bases[base].getPlayerColor(pos);
+		return field[base*posAmount+pos];
 	}
 	/**
 	 * Sets the color of the player in the specified base at the specified position to the specified value 
@@ -182,7 +215,7 @@ public class BaseballWorld extends World {
 	 * @param color the new value
 	 */
 	public void setPlayerColor(int base, int pos, int color)  {
-		bases[base].setPlayerColor(pos, color);
+		field[base*posAmount+pos] = color;
 	}
 
 	/** Returns the index of the base where is hole is located */
@@ -202,7 +235,15 @@ public class BaseballWorld extends World {
 
 	/** Returns if every player of the specified base is on the right base */
 	public boolean isBaseSorted(int base) {
-		return bases[base].isSorted();
+		for (int pos=0;pos<posAmount;pos++)
+			if (base==baseAmount-1) // last base, may contain the hole
+				if (   getPlayerColor(base, pos) != COLOR_HOLE 
+				    && getPlayerColor(base, pos) != base)
+					return false;
+			else if (getPlayerColor(base, pos) != base)
+				return false;
+		
+		return true;
 	}
 
 	/**
@@ -211,10 +252,10 @@ public class BaseballWorld extends World {
 	 */
 	public void move(int base, int position) {
 		if ( base >= this.getBasesAmount() || base < 0)
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from base {0} since it's not between 0 and {1}",base,(getBasesAmount()-1)));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it's not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from position {0} since it's not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it's not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)
@@ -246,109 +287,4 @@ public class BaseballWorld extends World {
 		setPlayerColor(baseSrc, posSrc,   getPlayerColor(baseDst,posDst));
 		setPlayerColor(baseDst, posDst,   flyingMan);
 	}
-}
-
-
-class BaseballBase {
-
-	private int[] players;  // the players on the base
-	private int color;      // the color of the base
-	private boolean isLast; // Whether we should contain the hole once everything is sorted
-
-	/**
-	 * BaseballBase constructor
-	 * @param color the color of the base you are creating
-	 * @param playerLocationsAmount the amount of player locations available on the base
-	 */
-	public BaseballBase(int color,int playerLocationsAmount, boolean isLast) {
-		this.players=new int[playerLocationsAmount];
-		for ( int i = 0 ; i < playerLocationsAmount ; i++ )
-			this.players[i] = color;
-
-		this.color=color;
-		this.isLast = isLast;
-	}
-
-
-	public boolean equals(Object other) {
-		if (other == null || !(other instanceof BaseballBase) )
-			return false;
-
-		BaseballBase otherBase = (BaseballBase) other;
-		if (otherBase.getPositionsAmount() != getPositionsAmount())
-			return false;
-
-		for (int i=0; i<getPositionsAmount(); i++)
-			if (otherBase.getPlayerColor(i) != getPlayerColor(i))
-				return false;
-
-		return true;
-	}
-
-	/**
-	 * Give the color ( in integer ) of the base
-	 * @return The integer corresponding to the color of the base
-	 */
-	public int getColor() {
-		return this.color;
-	}
-
-	/** Returns the amount of players locations available on the base */
-	public int getPositionsAmount(){
-		return this.players.length;
-	}
-
-	/**
-	 * Returns the color of the player in this base at the specified location
-	 * @param location the location ( between 0 and getLocationsAmount()-1 ) of the wanted player
-	 */
-	public int getPlayerColor(int location)  {
-		if ( location < 0 || location > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot retrieve the color of player {0} as it is not a valid location (between 0 and {1})",location,getPositionsAmount()));
-
-		return this.players[location];
-	}
-
-
-	/**
-	 * Place the given baseballPlayer at the position player in the base
-	 * @param baseballPlayer : the player that you want to place
-	 * @param position : the position where you want to place the player
-	 */
-	public void setPlayerColor(int position, int baseballPlayer) {
-		this.players[position] = baseballPlayer;
-	}
-
-
-	/**
-	 * Return a string representation of the base
-	 * @return A string representation of the base
-	 */
-	public String toString()
-	{
-		int n = getPositionsAmount();
-		String s = "";
-		for ( int i = 0 ; i < n ; i++)
-			s+="Player "+i+" : "+this.getPlayerColor(i)+"\n" ;
-
-		return s;
-	}
-
-	/** Tells if everyone is at home on the specified base */
-	public boolean isSorted() {
-		boolean sw = true;
-		int n = this.getPositionsAmount();
-		if (isLast) {
-			for ( int pos = 0 ; pos < n && sw; pos++) 
-				if (getPlayerColor(pos) != 0 && getPlayerColor(pos) != getColor())
-					return false;
-		} else {
-			for ( int pos = 0 ; pos < n && sw; pos++) 
-				if (getPlayerColor(pos) != getColor())
-					return false;
-		}
-
-		return true;
-	}
-
 }
