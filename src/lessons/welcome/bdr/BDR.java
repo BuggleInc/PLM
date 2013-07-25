@@ -1,4 +1,4 @@
-package lessons.welcome.bdr.basics;
+package lessons.welcome.bdr;
 
 import java.awt.Color;
 

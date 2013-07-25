@@ -1,4 +1,4 @@
-package lessons.welcome.bdr.extended;
+package lessons.welcome.bdr;
 
 import java.util.Stack;
 

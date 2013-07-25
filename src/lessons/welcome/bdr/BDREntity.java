@@ -1,4 +1,4 @@
-package lessons.welcome.bdr.basics;
+package lessons.welcome.bdr;
 
 public class BDREntity extends jlm.universe.bugglequest.SimpleBuggle {
 	public char getIndication() { 
