@@ -19,7 +19,6 @@ def isFacingWall(i):
 def isBackingWall(i):
 	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use isFacingWall() in this exercise.")
 
-# BEGIN TEMPLATE
 # BEGIN SOLUTION
 
 def nextStep():
@@ -42,3 +41,4 @@ while not (getX() == getWorldWidth()-1 and getY() == getWorldHeight()-1):
 	nextStep();
 	cpt += 1
 	writeMessage(cpt);
+# END SOLUTION
