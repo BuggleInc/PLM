@@ -155,7 +155,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 		if (state == 3) {
 			if (seenTemplate)
-				System.out.println(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
+				System.out.println(i18n.tr("{0}: End of file unexpected after the solution but within the template. Please fix your entity.",shownFilename,state));
 		} else if (state != 4)
 			System.out.println(i18n.tr("{0}: End of file unexpected (state: {1}). Did you forget to close your template or solution? Please fix your entity.",shownFilename,state));
 
