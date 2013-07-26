@@ -68,8 +68,6 @@ public class BaseballWorld extends World {
 								newBase = (int) (Math.random()*getBasesAmount());
 							} while (newBase == base);
 							int newPos = (int) (Math.random()*getPositionsAmount());
-							System.out.println("Someone's home! "+base+","+pos+" -> "+newBase+","+newPos);
-							System.out.println("   "+toString());
 							swap(base, pos, newBase, newPos);							
 						}
 			} while (swapped);
@@ -122,7 +120,7 @@ public class BaseballWorld extends World {
 		if (   this.holeBase != otherField.holeBase
 				|| this.holePos != otherField.holePos
 				|| this.getBasesAmount() != otherField.getBasesAmount()
-				|| this.getPositionsAmount() == otherField.getPositionsAmount())
+				|| this.getPositionsAmount() != otherField.getPositionsAmount())
 
 			return false;
 
@@ -233,6 +231,18 @@ public class BaseballWorld extends World {
 		return lastMove;
 	}
 
+	/** Returns if every player of the field is on the right base */
+	public boolean isSorted() {
+		for (int base=0; base<baseAmount; base++)
+			for (int pos=0; pos<posAmount; pos++)
+				if (base==baseAmount-1) {// last base, may contain the hole
+					if (   getPlayerColor(base, pos) != COLOR_HOLE 
+					    && getPlayerColor(base, pos) != base)
+						return false;
+				} else if (getPlayerColor(base, pos) != base)
+					return false;
+		return true;
+	}
 	/** Returns if every player of the specified base is on the right base */
 	public boolean isBaseSorted(int base) {
 		for (int pos=0;pos<posAmount;pos++)

@@ -4,10 +4,15 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 
@@ -114,11 +119,11 @@ public class BaseballWorldView extends WorldView
 	 * @param g The Graphics2D context to draw on
 	 * @param L A coefficient which adapt the length of the arrow to the total amount of bases
 	 * @param dist the distance between the symmetry center of the rectangle and the point of Cartesian coordinates ( xCenter , yCenter )
-	 * @param theta the angle made between the x-axis of the two-dimensional Cartesian system of origin ( xCenter , yCenter ) and the symmetry center of the rectange
+	 * @param theta the angle made between the x-axis of the two-dimensional Cartesian system of origin ( xCenter , yCenter ) and the symmetry center of the rectangle
 	 * @param xCenter the x coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
 	 * @param yCenter the y coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
 	 * @param base the base that we want to draw
-	 * @param amountOfPlayers the total amount of players on the base
+	 * @param amountOfPlayers the total amount of players per base
 	 */
 	private void drawBase(Graphics2D g, int L, int dist, double theta, int xCenter, int yCenter, int base, int amountOfPlayers) {
 		BaseballWorld field = (BaseballWorld) world; 
@@ -128,7 +133,7 @@ public class BaseballWorldView extends WorldView
 		drawRectangle(g,points,obtainColor(base));
 
 		// the radius of the disk representing the player
-		int radius = L/amountOfPlayers-1; 
+		int radius = (int) ((L/amountOfPlayers-1) *.8); 
 
 		/* 
 		 * This array will contain the coordinates of the middle of the lower segment ( when theta = 0 ) of the base
@@ -160,12 +165,13 @@ public class BaseballWorldView extends WorldView
 		Color colorPlayer = null;
 		// Loop which computes the coordinates of the center of the disk and draws the resulting disk
 		for ( int pos = 0 ; pos < amountOfPlayers ; pos++) {
+			int player =  field.getPlayerColor(base,pos);
 			centerPlayer[0] = (int) (middleUpper[0] - (pos+.5)*delta[0] ); 
 			centerPlayer[1] = (int) (middleUpper[1] - (pos+.5)*delta[1]);  
 
-			colorPlayer = obtainColor(field.getPlayerColor(base,pos));	
+			colorPlayer = obtainColor(player);	
 
-			drawDisk(g, centerPlayer, radius, colorPlayer);
+			drawPlayer(g, centerPlayer, radius, colorPlayer, theta, base==player || player == -1);
 		}
 	}
 
@@ -175,11 +181,39 @@ public class BaseballWorldView extends WorldView
 	 * @param centerPlayerOne the center of the disk which will represent the player
 	 * @param color the color with which the disk shall be filled
 	 */
-	private void drawDisk(Graphics2D g, int[] center, int radius,Color color) {
-		g.setColor(Color.BLACK);
-		g.drawOval(center[0]-radius, center[1]-radius, radius*2, radius*2);
-		g.setColor(color);
+	private void drawPlayer(Graphics2D g, int[] center, int radius,Color color,double theta,boolean isHome) {
+		g.setColor(Color.WHITE);
 		g.fillOval(center[0]-radius, center[1]-radius, radius*2, radius*2);
+		
+		if (!isHome) {
+			g.setColor(Color.RED);
+			Stroke s = g.getStroke();
+			g.setStroke(new BasicStroke(
+					2f,						// Width
+					BasicStroke.CAP_ROUND,		// End cap
+					BasicStroke.JOIN_BEVEL,		// Join style
+					10.0f,						// Miter limit
+					null,	// Dash pattern
+					0.0f						// Dash phase
+					));
+			g.drawOval(center[0]-radius, center[1]-radius, radius*2, radius*2);
+			g.setStroke(s);
+		} else {
+			g.setColor(Color.BLACK);
+			g.drawOval(center[0]-radius, center[1]-radius, radius*2, radius*2);
+		}
+//			g.drawOval(center[0]-radius+1, center[1]-radius+1, radius*2-1, radius*2-1);
+		
+		if (!color.equals(Color.WHITE)) { // Don't draw a buggle on the hole
+			Image img = getBuggleImage(color);
+			AffineTransform t = new AffineTransform(1.0, 0, 0, 1.0, 
+					center[0]-radius,//((double)img.getWidth(null))/2.,  
+					center[1]-radius);//((double)img.getHeight(null))/2.);
+			double scale = 2*radius/((double)img.getWidth(null));
+			t.scale(scale,scale);
+			t.rotate(theta+Math.PI/2, img.getHeight(null)/2.,img.getHeight(null)/2.);
+			g.drawImage(img, t, null);
+		}
 	}
 
 	/**
@@ -284,22 +318,18 @@ public class BaseballWorldView extends WorldView
 		return ResourcesCache.getIcon("img/world_baseball.png");
 	}
 
-	/**
-	 * Return the color corresponding to colorIndex
-	 * ( from : http://en.wikipedia.org/wiki/List_of_colors )
-	 * @param colorIndex a 
-	 * @return the color corresponding to colorIndex
-	 */
+	/** Returns the color corresponding to colorIndex */
 	private Color obtainColor(int colorIndex) {
 		Color[] colors = {
-				Color.BLACK, Color.RED, Color.BLUE, Color.YELLOW, 
+				Color.WHITE, new Color(255,0,255), Color.BLUE, //Color.YELLOW, 
+				new Color(255,204,0), /* gold */
 				new Color(158,253,56), /* French lime */
 				new Color(255,56,0), /* Coquelicot */ 
 				new Color(204,204,255), /* Lavender blue */
-				new Color(251,206,177), /* Apricot */
 				new Color(0,103,165), /* Blue Persian */
 				new Color(201,0,22), /* Harvard crimson */
 				new Color(111,78,55), /* Coffee */
+				new Color(251,206,177), /* Apricot */
 				new Color(109,7,26), /* Bordeaux */
 				new Color(155,150,10),
 				new Color(75,0,130), 
@@ -338,9 +368,15 @@ public class BaseballWorldView extends WorldView
 		g2.fill(new Rectangle2D.Double(0., 0., renderedX, renderedY));
 
 		int radius = 120 ;
-		int[] fieldCenter = {(int) renderedX/2, (int) renderedY/2};
-		drawDisk(g2, fieldCenter , radius+30, new Color(174,74,52)); // draw the play area
+		
+		// draw the play area
+		g.setColor(Color.BLACK);
+		g.drawOval((int)renderedX/2 - 150, (int)renderedY/2-150, 300, 300);
+		g.setColor(new Color(174,74,52));
+		g.fillOval((int)renderedX/2 - 150, (int)renderedY/2-150, 300, 300);
 
+		
+		
 		BaseballWorld myWorld = (BaseballWorld) this.world ;
 		int amountOfBases = myWorld.getBasesAmount(); // amount of bases
 		double theta = 2*Math.PI / amountOfBases; // angle between center of symmetry of two bases
@@ -355,6 +391,42 @@ public class BaseballWorldView extends WorldView
 		// Draw the last move made on the field if it exists
 		if ( myWorld.getLastMove() != null)
 			drawLastMove(g2, myWorld.getLastMove(), radius-L/amountOfPlayers, theta, renderedX/2, renderedY/2, L, amountOfPlayers);
+	}
+
+	private Map<Color,Image> buggleCache = new HashMap<Color, Image>();
+	private Image getBuggleImage(Color c) {
+		if (buggleCache.containsKey(c))
+			return buggleCache.get(c);
+		
+		BufferedImage res = new BufferedImage(130, 130, BufferedImage.TYPE_INT_ARGB);
+		
+		Graphics2D g = res.createGraphics();
+		g.setColor(new Color(1, 1, 1, 0));
+		g.fillRect(0, 0, 130, 130);		
+		
+		int[][] SPRITE = {
+				{ 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+				{ 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+				{ 0,0,0,1,0,0,0,0,0,1,0,0,0 },
+				{ 0,0,0,0,1,0,0,0,1,0,0,0,0 },
+				{ 0,0,0,1,1,1,1,1,1,1,0,0,0 },
+				{ 0,0,1,1,0,1,1,1,0,1,1,0,0 },
+				{ 0,1,1,1,1,1,1,1,1,1,1,1,0 },
+				{ 0,1,0,1,1,1,1,1,1,1,0,1,0 },
+				{ 0,1,0,1,0,0,0,0,0,1,0,1,0 },
+				{ 0,0,0,0,1,1,0,1,1,0,0,0,0 },
+				{ 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+				{ 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+				{ 0,0,0,0,0,0,0,0,0,0,0,0,0 },
+			};
+		g.setColor(c);
+		for (int dy=0; dy<13; dy++) 
+			for (int dx=0; dx<13; dx++) 
+				if (SPRITE[dy][dx] == 1) 
+					g.fill(new Rectangle2D.Double(dx*10, dy*10, 10,10));
+
+		buggleCache.put(c, res);
+		return res;
 	}
 
 }

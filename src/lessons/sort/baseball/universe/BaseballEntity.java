@@ -38,6 +38,10 @@ public class BaseballEntity extends Entity {
 	public boolean isBaseSorted(int base) {
 		return ((BaseballWorld) this.world).isBaseSorted(base);
 	}
+	/** Returns if every player of the field is on the right base */
+	public boolean isSorted() {
+		return ((BaseballWorld) this.world).isSorted();
+	}
 
 	/** Returns the base in which the hole is located */
 	public int getHoleBase() {
