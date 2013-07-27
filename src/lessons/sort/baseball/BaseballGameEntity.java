@@ -12,48 +12,44 @@ public class BaseballGameEntity extends BaseballEntity {
 	/* BEGIN TEMPLATE */
 	private void homerun() {
 		int amountOfBases = this.getBasesAmount()-1;
-		for ( int baseIndex = 0 ; baseIndex < amountOfBases ; baseIndex++)
-		{
-			if ( !this.isBaseSorted(baseIndex) )
-			{
-				this.solve(baseIndex);
-			}
-		}
+		for (int base = 0 ; base < amountOfBases ; base++)
+			if ( !this.isBaseSorted(base) )
+				this.solve(base);
 	}
 
-	private void solve(int baseIndex) {
+	private void solve(int base) {
 		/* BEGIN SOLUTION */
 		// Look if the first player is sorted
-		if ( this.getPlayerColor(baseIndex, 0) != baseIndex) 
+		if ( this.getPlayerColor(base, 0) != base) 
 		{
 			/*
 			 * Look if maybe the second player has the good color
 			 * so we will swap them
 			 */
-			if ( this.getPlayerColor(baseIndex,1) == baseIndex)
+			if ( this.getPlayerColor(base,1) == base)
 			{	
-				this.bringHole(baseIndex, 0, 1);
-				this.move(baseIndex, 1);
+				this.bringHole(base, 0, 1);
+				this.move(base, 1);
 			}
 			else
 			{
 				// Find the nearest player witch matching color		
-				int[] wantedPlayerLocation = this.findNearestPlayer(baseIndex, baseIndex+1);
+				int[] wantedPlayerLocation = this.findNearestPlayer(base, base+1);
 				// Bring the hole next to him				 
 				this.bringHole(wantedPlayerLocation[0]-1, 0,wantedPlayerLocation[1]);
 				// Bring the player home
-				this.bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0);
+				this.bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], base,0);
 			}
 		}
 		// Look if the second player is sorted
-		if ( this.getPlayerColor(baseIndex, 1) != baseIndex) 
+		if ( this.getPlayerColor(base, 1) != base) 
 		{
 			// Find the nearest player witch matching color		
-			int[] wantedPlayerLocation = this.findNearestPlayer(baseIndex, baseIndex+1);
+			int[] wantedPlayerLocation = this.findNearestPlayer(base, base+1);
 			// Bring the hole next to him		
 			this.bringHole(wantedPlayerLocation[0]-1, 1,wantedPlayerLocation[1]);
 			// Bring the player home
-			this.bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,1);
+			this.bringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], base,1);
 		}
 		/* END SOLUTION */
 	}
