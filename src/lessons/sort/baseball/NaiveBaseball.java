@@ -10,8 +10,8 @@ public class NaiveBaseball extends ExerciseTemplated {
 		super(lesson);
 
 		setup(new BaseballWorld[] {
-				new BaseballWorld("Field 1",4,2,true),
-				new BaseballWorld("Field 2",4,2,true)
+				new BaseballWorld("Field 1",4,2, BaseballWorld.MIX_NOBODY_HOME),
+				new BaseballWorld("Field 2",4,2, BaseballWorld.MIX_NOBODY_HOME)
 		});
 	}
 

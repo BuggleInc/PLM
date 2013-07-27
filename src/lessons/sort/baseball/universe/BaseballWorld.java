@@ -12,7 +12,12 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 public class BaseballWorld extends World {
-	public int COLOR_HOLE = -1;
+	public static final int MIX_SORTED = 0;
+	public static final int MIX_RANDOM = 1;
+	public static final int MIX_NOBODY_HOME = 2;
+	
+	
+	public static final int COLOR_HOLE = -1;
 
 	private int[] field; // the bases which composed the field
 	private int baseAmount,posAmount; // field dimensions
@@ -29,10 +34,10 @@ public class BaseballWorld extends World {
 
 	/** Regular constructor used by exercises */
 	public BaseballWorld(String name, int baseAmount, int positionAmount) {
-		this(name,baseAmount,positionAmount,false);
+		this(name,baseAmount,positionAmount,MIX_RANDOM);
 	}
 
-	public BaseballWorld(String name, int baseAmount, int posAmount, boolean forbidPlayerHome) {
+	public BaseballWorld(String name, int baseAmount, int posAmount, int mix) {
 		super(name);
 		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 
@@ -48,14 +53,16 @@ public class BaseballWorld extends World {
 		
 
 		lastMove = null;
-		for (int base = 0 ; base<getBasesAmount();base++)
-			for (int pos = 0 ; pos<getPositionsAmount();pos++)
-				swap(base, pos, (int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
 		
-		// Ensure that nobody's home once it's mixed. 
-		//   We tested that no situation of 4 bases with that condition exposes the bug of the naive algorithm
-		//   We tested it by generating all situations, actually.
-		if (forbidPlayerHome) { 
+		if (mix == MIX_RANDOM) {
+			for (int base = 0 ; base<getBasesAmount();base++)
+				for (int pos = 0 ; pos<getPositionsAmount();pos++)
+					swap(base, pos, (int) (Math.random()*getBasesAmount()), (int) (Math.random()*getPositionsAmount()));
+		
+		} else if (mix == MIX_NOBODY_HOME) {
+			// Ensure that nobody's home once it's mixed. 
+			//   We tested that no situation of 4 bases with that condition exposes the bug of the naive algorithm
+			//   We tested it by generating all situations, actually.
 			boolean swapped;
 			do {
 				swapped = false;
@@ -71,6 +78,10 @@ public class BaseballWorld extends World {
 							swap(base, pos, newBase, newPos);							
 						}
 			} while (swapped);
+		} else if (mix == MIX_SORTED) {
+			/* nothing to do here */
+		} else {
+			throw new IllegalArgumentException("The mix paramter must be one of the provided constants, not "+mix);
 		}
 
 		// Add an entity
