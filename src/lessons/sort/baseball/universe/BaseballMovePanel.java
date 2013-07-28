@@ -16,7 +16,7 @@ import jlm.universe.EntityControlPanel;
 
 /**
  * The control panel for the baseball world. 
- * It allows you to use to move players interactively
+ * It allows to move the players interactively
  */
 public class BaseballMovePanel extends EntityControlPanel {
 
@@ -24,8 +24,6 @@ public class BaseballMovePanel extends EntityControlPanel {
 	private JButton validateButton;	// a validate button
 	private JComboBox baseSelector;	
 	private JComboBox playerSelector;	
-	private JLabel holeBaseLocation;
-	private JLabel holePlayerLocation;
 
 	/**
 	 * Constructor of BaseballMovePanel
@@ -36,29 +34,6 @@ public class BaseballMovePanel extends EntityControlPanel {
 		this.setLayout(new GridLayout(2,1));
 		BaseballEntity be = (BaseballEntity) Game.getInstance().getSelectedEntity() ;
 		this.add(this.createMovePanel(be));
-		this.add(this.createHolePanel(be));
-	}
-
-	/**
-	 * Creates the panel showing the location of the hole in the world
-	 * @param be The current BaseballEntity
-	 * @return the panel showing the location of the hole in the world
-	 */
-	private Component createHolePanel(BaseballEntity be) {
-		JPanel holePanel = new JPanel();
-
-		this.holeBaseLocation = new JLabel();
-		this.holePlayerLocation = new JLabel();
-
-		this.refreshHoleLocation(be);
-
-		holePanel.add(new JLabel("The hole is located in the base"));
-		holePanel.add(this.holeBaseLocation);
-
-		holePanel.add(new JLabel("at the position"));
-		holePanel.add(this.holePlayerLocation);
-
-		return holePanel;
 	}
 
 	/**
@@ -123,21 +98,11 @@ public class BaseballMovePanel extends EntityControlPanel {
 				int player = playerSelector.getSelectedIndex();
 				try  {
 					be.move(base, player);
-					refreshHoleLocation(be);
 				} catch (IllegalArgumentException e) {
 					showInvalidMoveMessageDialog(base,player);
 				}
 			}
 		});
-	}
-
-	/**
-	 * Refresh the location of the hole
-	 * @param be The current BaseballEntity
-	 */
-	private void refreshHoleLocation(BaseballEntity be) {
-		holeBaseLocation.setText(""+be.getHoleBase());
-		holePlayerLocation.setText(""+be.getHolePosition());
 	}
 
 	/**
