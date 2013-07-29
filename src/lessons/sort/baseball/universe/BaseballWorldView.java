@@ -195,10 +195,10 @@ public class BaseballWorldView extends WorldView
 		// This array will contain the coordinates of the "step" between two disks -- 0 => x step ; 1 => y step
 		int[] delta = new int[2] ;
 
-		middleLower[0] = ( points[1][0] + points[2][0] ) /2 ;
-		middleLower[1] = ( points[1][1] + points[2][1] ) /2 ;
-		middleUpper[0] = ( points[0][0] + points[3][0] ) /2 ;
-		middleUpper[1] = ( points[0][1] + points[3][1] ) /2 ;
+		middleUpper[0] = ( points[1][0] + points[2][0] ) /2 ;
+		middleUpper[1] = ( points[1][1] + points[2][1] ) /2 ;
+		middleLower[0] = ( points[0][0] + points[3][0] ) /2 ;
+		middleLower[1] = ( points[0][1] + points[3][1] ) /2 ;
 
 		delta[0] = (middleUpper[0] - middleLower[0])/amountOfPlayers ;
 		delta[1] = (middleUpper[1] - middleLower[1])/amountOfPlayers ;
@@ -213,7 +213,7 @@ public class BaseballWorldView extends WorldView
 		// Loop which computes the coordinates of the center of the disk, store it for the clicks and draws the resulting disk
 		for ( int pos = 0 ; pos < amountOfPlayers ; pos++) {
 			int player =  field.getPlayerColor(base,pos);
-			centerPlayer[0] = (int) (middleUpper[0] - (pos+.5)*delta[0] ); 
+			centerPlayer[0] = (int) (middleUpper[0] - (pos+.5)*delta[0]); 
 			centerPlayer[1] = (int) (middleUpper[1] - (pos+.5)*delta[1]);  
 
 			colorPlayer = obtainColor(player);	
@@ -316,10 +316,10 @@ public class BaseballWorldView extends WorldView
 		for ( int i = 0 ; i < 3 ; i++) {
 			points = computeCorners(L, radius[i], thetaBase[i] , (int)(xControl),(int) (yControl) );
 
-			middleLower[0] = ( points[1][0] + points[2][0] ) /2 ;
-			middleLower[1] = ( points[1][1] + points[2][1] ) /2 ;
-			middleUpper[0] = ( points[0][0] + points[3][0] ) /2 ;
-			middleUpper[1] = ( points[0][1] + points[3][1] ) /2 ;
+			middleUpper[0] = ( points[1][0] + points[2][0] ) /2 ;
+			middleUpper[1] = ( points[1][1] + points[2][1] ) /2 ;
+			middleLower[0] = ( points[0][0] + points[3][0] ) /2 ;
+			middleLower[1] = ( points[0][1] + points[3][1] ) /2 ;
 
 			delta[0] = (middleUpper[0] - middleLower[0])/amountOfPlayers ;
 			delta[1] = (middleUpper[1] - middleLower[1])/amountOfPlayers ;
