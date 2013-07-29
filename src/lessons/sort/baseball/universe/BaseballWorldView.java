@@ -28,6 +28,8 @@ public class BaseballWorldView extends WorldView
 	private static final long serialVersionUID = 1L;
 	private Vector<Integer[]> playersCoordinate;
 	private double radius;
+	private double displayRatio;
+	private double virtualSize = 300.; // we display on a field that is 300x300 and dynamically resized (to ease our computations)
 
 	public BaseballWorldView(World w){
 		super(w);
@@ -43,17 +45,30 @@ public class BaseballWorldView extends WorldView
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int x=e.getX()-2*(int)radius;
-				int y=e.getY();
+				/* Recompute the coordinates of the click on our strange virtual coordinates system */
+				int x=e.getX()-(int)(Math.abs(getWidth() - displayRatio * virtualSize)/2.);
+				int y=e.getY()-(int)(Math.abs(getHeight() - displayRatio * virtualSize)/2.);
 				
+				x /= displayRatio;
+				y /= displayRatio;
+
+				double minDist = Double.MAX_VALUE;
+				Integer[] min = null;
 				for (Integer[] c : playersCoordinate) {
 					int xComponent = x-c[0];
 					int yComponent = y-c[1];
-					if (Math.sqrt( xComponent*xComponent+yComponent*yComponent ) < radius) {
-						((BaseballWorld) world).setPlayer(c[2],c[3]);
-						if (e.getClickCount()==2)
-							((BaseballWorld) world).doMove();
+					double dist = Math.sqrt( xComponent*xComponent+yComponent*yComponent ); 
+					if (dist < minDist) {
+						minDist = dist;
+						min = c;
 					}
+				}
+				
+				if (minDist < 2*radius) {
+					//System.out.println("Minimal distance: "+minDist+" (radius was: "+radius+"). That's "+min[2]+","+min[3]);
+					((BaseballWorld) world).setPlayer(min[2],min[3]);
+					if (e.getClickCount()==2)
+						((BaseballWorld) world).doMove();
 				}
 			}
 		});
@@ -391,23 +406,21 @@ public class BaseballWorldView extends WorldView
 
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-		double renderedX = 300.;
-		double renderedY = 300.;		
-		double ratio = Math.min(((double) getWidth()) / renderedX, ((double) getHeight()) / renderedY);
-		g2.translate(Math.abs(getWidth() - ratio * renderedX)/2., Math.abs(getHeight() - ratio * renderedY)/2.);
-		g2.scale(ratio, ratio);
+		displayRatio = Math.min(((double) getWidth()) / virtualSize, ((double) getHeight()) / virtualSize);
+		g2.translate(Math.abs(getWidth() - displayRatio * virtualSize)/2., Math.abs(getHeight() - displayRatio * virtualSize)/2.);
+		g2.scale(displayRatio, displayRatio);
 
 		/* drawn the field */
 		g2.setColor(new Color(58,157,35)); // lawn
-		g2.fill(new Rectangle2D.Double(0., 0., renderedX, renderedY));
+		g2.fill(new Rectangle2D.Double(0., 0., virtualSize, virtualSize));
 
 		int radius = 120 ;
 		
 		// draw the play area
 		g.setColor(Color.BLACK);
-		g.drawOval((int)renderedX/2 - 150, (int)renderedY/2-150, 300, 300);
+		g.drawOval((int)virtualSize/2 - 150, (int)virtualSize/2-150, 300, 300);
 		g.setColor(new Color(174,74,52));
-		g.fillOval((int)renderedX/2 - 150, (int)renderedY/2-150, 300, 300);
+		g.fillOval((int)virtualSize/2 - 150, (int)virtualSize/2-150, 300, 300);
 
 		
 		
@@ -421,11 +434,11 @@ public class BaseballWorldView extends WorldView
 		// Draw the bases and the players on each base
 		playersCoordinate = new Vector<Integer[]>();
 		for ( int i=0 ; i < myWorld.getBasesAmount();i++)
-			drawBase(g2, L, radius, theta*i, (int) renderedX/2, (int) renderedY/2 , i, amountOfPlayers);
+			drawBase(g2, L, radius, theta*i, (int) virtualSize/2, (int) virtualSize/2 , i, amountOfPlayers);
 
 		// Draw the last move made on the field if it exists
 		if ( myWorld.getLastMove() != null)
-			drawLastMove(g2, myWorld.getLastMove(), radius-L/amountOfPlayers, theta, renderedX/2, renderedY/2, L, amountOfPlayers);
+			drawLastMove(g2, myWorld.getLastMove(), radius-L/amountOfPlayers, theta, virtualSize/2, virtualSize/2, L, amountOfPlayers);
 	}
 
 	private Map<Color,Image> buggleCache = new HashMap<Color, Image>();
