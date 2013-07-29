@@ -87,10 +87,9 @@ public class BaseballWorldView extends WorldView
 	 * @param theta the angle made between the x-axis of the Cartesian system of origin ( xCenter , yCenter ) and the symmetry center of the rectange
 	 * @param xCenter the x coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
 	 * @param yCenter the y coordinate in the classic coordinate system in graphics of the origin of our Cartesian system
-	 * @param amountOfPlayers the total amount of players on the base
 	 * @return an array containing the coordinates of the four corners of the base
 	 */
-	private int[][] computeCorners(int L, int radius, double theta , int xCenter, int yCenter, int amountOfPlayers ) {
+	private int[][] computeCorners(int L, int radius, double theta , int xCenter, int yCenter ) {
 		int[][] points = new int[4][2];
 		// Prevent some redundancies during the computing
 		double commonPart = L*Math.sin(theta);
@@ -127,7 +126,7 @@ public class BaseballWorldView extends WorldView
 	 */
 	private void drawBase(Graphics2D g, int L, int dist, double theta, int xCenter, int yCenter, int base, int amountOfPlayers) {
 		BaseballWorld field = (BaseballWorld) world; 
-		int[][] points = computeCorners( L, dist, theta, xCenter, yCenter, amountOfPlayers );
+		int[][] points = computeCorners( L, dist, theta, xCenter, yCenter );
 
 		// draw the base
 		drawRectangle(g,points,obtainColor(base));
@@ -264,7 +263,7 @@ public class BaseballWorldView extends WorldView
 		int[] middleUpper = new int[2];
 
 		for ( int i = 0 ; i < 3 ; i++) {
-			points = computeCorners(L, radius[i], thetaBase[i] , (int)(xControl),(int) (yControl), amountOfPlayers );
+			points = computeCorners(L, radius[i], thetaBase[i] , (int)(xControl),(int) (yControl) );
 
 			middleLower[0] = ( points[1][0] + points[2][0] ) /2 ;
 			middleLower[1] = ( points[1][1] + points[2][1] ) /2 ;
