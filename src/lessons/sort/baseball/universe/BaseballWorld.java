@@ -15,6 +15,7 @@ public class BaseballWorld extends World {
 	public static final int MIX_SORTED = 0;
 	public static final int MIX_RANDOM = 1;
 	public static final int MIX_NOBODY_HOME = 2;
+	public static final int MIX_ALMOST_SORTED = 3;
 	
 	
 	public static final int COLOR_HOLE = -1;
@@ -80,6 +81,9 @@ public class BaseballWorld extends World {
 			} while (swapped);
 		} else if (mix == MIX_SORTED) {
 			/* nothing to do here */
+		} else if (mix == MIX_ALMOST_SORTED) {
+			/* Expose the bug of the naive algorithm */
+			swap(0,0,  2,0);
 		} else {
 			throw new IllegalArgumentException("The mix paramter must be one of the provided constants, not "+mix);
 		}
@@ -153,11 +157,22 @@ public class BaseballWorld extends World {
 	public WorldView getView() {
 		return new BaseballWorldView(this);
 	}
-
+	
+	BaseballMovePanel panel = null; 
 	/** Returns a panel allowing to interact dynamically with the world */
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
-		return new BaseballMovePanel();
+		if (panel == null)
+			panel = new BaseballMovePanel();
+		return panel;
+	}
+	/** Passes the mouse selection from view to the control panel */ 
+	public void setPlayer(int base, int pos) {
+		panel.setPlayer(base, pos);
+	}
+	/** Passes the mouse action from the view to the control panel */
+	public void doMove() {
+		panel.doMove();
 	}
 
 	/** 
