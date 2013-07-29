@@ -17,5 +17,6 @@ public abstract class EntityControlPanel extends JPanel implements HumanLangChan
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 	
 	public void currentHumanLanguageHasChanged(Locale newLang) {
+		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",newLang, I18nFactory.FALLBACK);
 	}
 }
