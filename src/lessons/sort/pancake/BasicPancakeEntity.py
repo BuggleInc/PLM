@@ -1,3 +1,4 @@
+# BEGIN SOLUTION
 for pancakeToSort in range(getStackSize()-1, -1, -1):
 	if not getPancakeRadius(pancakeToSort)==pancakeToSort+1: # Current position is not sorted yet
 		indexBigPancake = -1
@@ -9,3 +10,4 @@ for pancakeToSort in range(getStackSize()-1, -1, -1):
 			flip(indexBigPancake+1) # move this large pancake to the top
 		if pancakeToSort != 0:
 			flip(getPancakeRadius(0)) # hit the bottom
+# END SOLUTION
