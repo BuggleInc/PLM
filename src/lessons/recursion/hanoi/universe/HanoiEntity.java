@@ -1,4 +1,4 @@
-package jlm.universe.hanoi;
+package lessons.recursion.hanoi.universe;
 /* BEGIN TEMPLATE */
 import jlm.universe.Entity;
 import jlm.universe.World;

@@ -1,4 +1,4 @@
-package jlm.universe.hanoi;
+package lessons.recursion.hanoi.universe;
 
 public class HanoiInvalidMove extends Exception {
 	public HanoiInvalidMove(String msg) {

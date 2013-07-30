@@ -4,7 +4,6 @@ import jlm.core.model.lesson.Lesson;
 import lessons.recursion.circle.Circle;
 import lessons.recursion.dragoncurve.DragonCurve1;
 import lessons.recursion.dragoncurve.DragonCurve2;
-import lessons.recursion.hanoiboard.HanoiBoard;
 import lessons.recursion.koch.Koch;
 import lessons.recursion.polygonfractal.PolygonFractal;
 import lessons.recursion.sierpinski.Sierpinski;
@@ -28,8 +27,5 @@ public class Main extends Lesson {
 		addExercise(new PolygonFractal(this));
 		addExercise(new DragonCurve1(this));
 		addExercise(new DragonCurve2(this));
-		
-		addExercise(new HanoiBoard(this));
-
 	}
 }

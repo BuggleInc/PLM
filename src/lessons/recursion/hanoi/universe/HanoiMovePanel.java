@@ -1,4 +1,4 @@
-package jlm.universe.hanoi;
+package lessons.recursion.hanoi.universe;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

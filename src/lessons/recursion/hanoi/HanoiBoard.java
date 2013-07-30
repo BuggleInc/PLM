@@ -1,9 +1,9 @@
-package lessons.recursion.hanoiboard;
+package lessons.recursion.hanoi;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.hanoi.HanoiEntity;
-import jlm.universe.hanoi.HanoiWorld;
+import lessons.recursion.hanoi.universe.HanoiEntity;
+import lessons.recursion.hanoi.universe.HanoiWorld;
 
 public class HanoiBoard extends ExerciseTemplated {
 

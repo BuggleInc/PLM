@@ -1,4 +1,4 @@
-package jlm.universe.hanoi;
+package lessons.recursion.hanoi.universe;
 
 import java.util.Vector;
 
@@ -77,7 +77,7 @@ public class HanoiWorld extends World {
 	 * You should comment this for the first exercises */
 	@Override
 	public WorldView getView() {
-		return new jlm.universe.hanoi.HanoiWorldView(this);
+		return new HanoiWorldView(this);
 	}
 	@Override
 	public ImageIcon getIcon() {
