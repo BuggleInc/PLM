@@ -12623,7 +12623,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/sort/pancake/short_desc.html:1
 msgid "The pancake problem"
-msgstr "Le crépier psychorigid"
+msgstr "Le crépier psychorigide"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/short_desc.html:3
