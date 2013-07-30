@@ -1,8 +1,10 @@
 package lessons.backtracking;
 
 import javax.script.ScriptEngine;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -49,7 +51,11 @@ public class BacktrackingWorld extends World {
 	public WorldView getView() {
 		return new BacktrackingWorldView(this);
 	}
-	
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_backtracking.png"); // Yeah, does not exists, I know
+	}
+
 	@Override
 	public String toString(){
 		

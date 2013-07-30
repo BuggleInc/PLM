@@ -232,11 +232,6 @@ public abstract class World {
 			public boolean isWorldCompatible(World world) {
 				return false;
 			}
-			
-			@Override
-			public ImageIcon getIcon() {
-				return null;
-			}
 		};
 	}
 	public EntityControlPanel getEntityControlPanel() {
@@ -247,6 +242,8 @@ public abstract class World {
 			}
 		};
 	}
+	public abstract ImageIcon getIcon();
+
 
 	@Override
 	public int hashCode() {

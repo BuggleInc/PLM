@@ -1,6 +1,5 @@
 package jlm.core.ui;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.SwingUtilities;
 
@@ -59,7 +58,4 @@ public abstract class WorldView extends JComponent  implements IWorldView {
 	public String getTip() {
 		return "";
 	}
-
-	public abstract ImageIcon getIcon();
-
 }

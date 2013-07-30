@@ -47,7 +47,7 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 				ImageIcon icon = null;
 				if (lect instanceof Exercise) {
 					Exercise exo = (Exercise) lect;
-					icon = ResourcesCache.getStarredIcon(exo.getWorld(0).getView().getIcon(), exo);
+					icon = ResourcesCache.getStarredIcon(exo.getWorld(0).getIcon(), exo);
 				} else {
 					icon = ResourcesCache.getIcon("img/world_lesson.png");
 					if (lect != null && (! (lect instanceof Lecture))) // null may occur -- ignore but don't fail 

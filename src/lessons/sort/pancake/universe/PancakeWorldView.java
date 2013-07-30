@@ -7,9 +7,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.ImageIcon;
-
-import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -175,17 +172,6 @@ public class PancakeWorldView extends WorldView {
 			}
 	}
 	
-	/**
-	 * Return the icon of the world
-	 * @return the icon for the exercise selection
-	 */
-	// http://omgwtflols.deviantart.com/
-	// http://fc06.deviantart.net/fs71/f/2012/118/5/7/pixel_art__pancakes_with_s236rup_b236_omgwtflols-d4xu72c.gif
-	// http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon(this,"../img/world_pancake.png");
-	}
-
 	/**
 	 * Draw the component of the world
 	 * @param g : some Graphics

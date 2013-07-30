@@ -10,9 +10,11 @@ import java.util.regex.Pattern;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.utils.ColorMapper;
 import jlm.core.utils.FileUtils;
 import jlm.core.utils.InvalidColorNameException;
@@ -81,6 +83,10 @@ public class BuggleWorld extends GridWorld {
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
 		return new BuggleButtonPanel();
+	}
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_buggle.png");
 	}
 
 	public boolean easter = false;

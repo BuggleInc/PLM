@@ -54,10 +54,4 @@ public class TurtleWorldView extends WorldView {
 		t.rotate(b.getHeadingRadian(), ic.getIconWidth()/2., ic.getIconHeight()/2.);
 		g.drawImage(ic.getImage(), t, null);
 	}
-	
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_turtle.png");
-	}
-
 }

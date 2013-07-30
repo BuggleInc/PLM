@@ -7,9 +7,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 
-import javax.swing.ImageIcon;
-
-import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -88,11 +85,5 @@ public class HanoiCreateViewAnswer extends WorldView {
 		}
 		/* END SOLUTION */
 	}
-	
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_hanoi.png");
-	}
-
 }
 /* END TEMPLATE */

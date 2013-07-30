@@ -4,9 +4,11 @@ import java.security.InvalidParameterException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
@@ -32,6 +34,14 @@ public class PancakeWorld extends World {
 	@Override
 	public WorldView getView() {
 		return new PancakeWorldView(this);
+	}
+	/** Returns the icon of the universe */
+	// http://omgwtflols.deviantart.com/
+	// http://fc06.deviantart.net/fs71/f/2012/118/5/7/pixel_art__pancakes_with_s236rup_b236_omgwtflols-d4xu72c.gif
+	// http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon(this,"../img/world_pancake.png");
 	}
 	
 	/** 

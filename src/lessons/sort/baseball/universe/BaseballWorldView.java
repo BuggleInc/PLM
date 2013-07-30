@@ -17,9 +17,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import javax.swing.ImageIcon;
-
-import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -357,14 +354,6 @@ public class BaseballWorldView extends WorldView
 		// fill this shape
 		g.setColor(baseColor);
 		g.fillPolygon(xPoints, yPoints, 4);
-	}
-
-	/**
-	 * Return the icon of the world
-	 * @return the icon for the exercise selection
-	 */
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_baseball.png");
 	}
 
 	/** Returns the color corresponding to colorIndex */

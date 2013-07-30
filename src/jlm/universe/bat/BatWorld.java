@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -55,6 +57,10 @@ public class BatWorld extends World {
 	@Override
 	public WorldView getView() {
 		return new BatWorldView(this);
+	}
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_bat.png");
 	}
 	
 	/* So that the view can display them */

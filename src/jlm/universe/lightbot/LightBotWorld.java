@@ -4,8 +4,10 @@ import java.util.Arrays;
 import java.util.Iterator;
 
 import javax.script.ScriptEngine;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
 import jlm.universe.GridWorld;
@@ -107,7 +109,11 @@ public class LightBotWorld extends jlm.universe.GridWorld implements Iterable<Li
 //		return new LightBotWorldView2D(this);
 		return new LightBotWorldViewIsometric(this);
 	}
-
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_lightbot.png");
+	}
+	
 	@Override
 	public int hashCode() {
 		final int PRIME = 31;

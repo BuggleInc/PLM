@@ -8,9 +8,11 @@ import java.util.Iterator;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
@@ -78,6 +80,10 @@ public class TurtleWorld extends World {
 	@Override
 	public WorldView getView() {
 		return new TurtleWorldView(this);
+	}
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_turtle.png");
 	}
 	
 	@Override

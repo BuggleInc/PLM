@@ -19,12 +19,10 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import jlm.core.model.Game;
-import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Direction;
 import jlm.universe.GridWorld;
@@ -311,10 +309,4 @@ public class LightBotWorldViewIsometric extends WorldView {
 		setLayout(new BorderLayout());
 		add(BorderLayout.NORTH, buttonsPanel);
 	}
-	
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_lightbot.png");
-	}
-	
 }

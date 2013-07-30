@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
@@ -143,12 +145,15 @@ public class SortingWorld extends World {
 	}
 
 
-	/**
-	 * Return the panel which let the user to interact dynamically with the world
-	 */
+	/** Returns the panel which let the user to interact dynamically with the world */
 	@Override
 	public EntityControlPanel getEntityControlPanel() {
 		return new SortingButtonPanel();
+	}
+	/** Returns the icon of the universe */
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_sorting.png");
 	}
 
 	/**

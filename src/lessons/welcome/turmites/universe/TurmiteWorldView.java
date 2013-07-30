@@ -3,9 +3,6 @@ package lessons.welcome.turmites.universe;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import javax.swing.ImageIcon;
-
-import jlm.core.ui.ResourcesCache;
 import jlm.universe.World;
 import jlm.universe.bugglequest.ui.BuggleWorldView;
 
@@ -30,8 +27,4 @@ public class TurmiteWorldView extends BuggleWorldView {
 		
 	}	
 	
-	@Override
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_buggle.png");
-	}
 }

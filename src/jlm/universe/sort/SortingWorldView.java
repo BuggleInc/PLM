@@ -14,13 +14,11 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Rectangle2D;
 import java.util.Locale;
 
-import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
 import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
-import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -262,14 +260,6 @@ public class SortingWorldView extends WorldView {
 		}
 		g2.setColor(Color.black);
 		g2.drawString(world.getName()+" ("+world.getWriteCount()+" write, "+world.getReadCount()+" read)", 0, 15);
-	}
-
-	/**
-	 * Return the icon of the world
-	 * @return the icon for the exercise selection
-	 */
-	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon("img/world_sorting.png");
 	}
 
 	/**

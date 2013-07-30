@@ -7,9 +7,6 @@ import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 
-import javax.swing.ImageIcon;
-
-import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -69,10 +66,5 @@ public class BatWorldView extends WorldView {
 						, 0, (i+1)*20);
 			}
 				
-		}
-		
-		@Override
-		public ImageIcon getIcon() {
-			return ResourcesCache.getIcon("img/world_bat.png");
 		}
 }

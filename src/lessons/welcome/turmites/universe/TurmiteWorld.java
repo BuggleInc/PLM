@@ -5,9 +5,11 @@ import java.io.IOException;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Direction;
 import jlm.universe.World;
@@ -59,14 +61,17 @@ public class TurmiteWorld extends BuggleWorld {
 		super.reset(w);		
 	}
 
-	/** Returns a component able of displaying the world -- will be used in third exercise 
-	 * You should comment this for the first exercises */
+	/** Returns a component able of displaying the world */
 	@Override
 	public BuggleWorldView getView() {
 		return new TurmiteWorldView(this);
 	}
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_buggle.png");
+	}
 	
-	/** Used to check whether the student code changed the world in the right state -- see exercise 4 */
+	/** Used to check whether the student code changed the world in the right state */
 	@Override 
 	public boolean equals(Object o) {
 		// hack hack hack: Avoid false negative with answer worlds that were serialized as BuggleWorlds 

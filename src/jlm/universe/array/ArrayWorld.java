@@ -4,9 +4,11 @@ import java.util.Arrays;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
@@ -42,6 +44,10 @@ public class ArrayWorld extends World {
 	@Override
 	public WorldView getView() {
 		return new ArrayWorldView(this);
+	}
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_arrays.png");
 	}
 	
 	@Override

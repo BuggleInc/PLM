@@ -3,8 +3,10 @@ package lessons.sort.baseball.universe;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
+import javax.swing.ImageIcon;
 
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.core.utils.FileUtils;
 import jlm.universe.EntityControlPanel;
@@ -157,11 +159,16 @@ public class BaseballWorld extends World {
 		throw new RuntimeException("No binding of BaseballWorld for "+lang);
 	}
 
+	/** Returns the icon of the world */
+	@Override
+	public ImageIcon getIcon() {
+		return ResourcesCache.getIcon("img/world_baseball.png");
+	}
 	/** Returns a component able to display the world */
+	@Override
 	public WorldView getView() {
 		return new BaseballWorldView(this);
 	}
-	
 	BaseballMovePanel panel = null; 
 	/** Returns a panel allowing to interact dynamically with the world */
 	@Override
