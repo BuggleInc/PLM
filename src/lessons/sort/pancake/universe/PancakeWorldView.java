@@ -137,11 +137,7 @@ public class PancakeWorldView extends WorldView {
 						2*markerRadius,2*markerRadius) );
 			}
 
-// TODO: display move count
-//		g2.setColor(Color.black);
-//		g2.drawString(world.getName()+" ("+world.getWriteCount()+" write, "+world.getReadCount()+" read)", 0, 15);
+		g2.setColor(Color.black);
+		g2.drawString(""+stack.moveCount+" moves", 0, 15);
 	}
-	
-	
-	
 }

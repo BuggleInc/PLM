@@ -15,8 +15,9 @@ import jlm.universe.World;
 
 public class PancakeWorld extends World {
 
-	private int lastMove;
-	private int selected;
+	private int lastMove = -1;
+	protected int moveCount = 0;
+	private int selected = -1;
 	private boolean burnedWorld ;
 	public boolean wasRandom = false;
 	
@@ -90,8 +91,6 @@ public class PancakeWorld extends World {
 					swap(rank, (int)(Math.random()*size));
 			}
 		
-		this.lastMove = -1 ;
-		this.selected = -1 ;
 		this.burnedWorld = burnedPancake;
 	}
 	/** 
@@ -109,7 +108,6 @@ public class PancakeWorld extends World {
 		for (int i = 0; i < sizes.length; i++) 
 			pancakeStack[i] = new Pancake(sizes[i]);
 		
-		this.lastMove = 0 ;
 		this.burnedWorld = burnedPancake;
 	}
 	
@@ -211,6 +209,7 @@ public class PancakeWorld extends World {
 		
 		this.lastMove = numberOfPancakes ;
 		this.selected = -1;
+		this.moveCount++;
 	}
 	
 	
