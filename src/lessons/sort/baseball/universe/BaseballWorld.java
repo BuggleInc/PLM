@@ -1,5 +1,7 @@
 package lessons.sort.baseball.universe;
 
+import java.util.Vector;
+
 import javax.script.ScriptEngine;
 
 import jlm.core.model.ProgrammingLanguage;
@@ -23,7 +25,8 @@ public class BaseballWorld extends World {
 	private int[] field; // the bases which composed the field
 	private int baseAmount,posAmount; // field dimensions
 	private int holeBase,holePos; // The coordinate of the hole
-	private BaseballMove lastMove; // the last move made on the field -- used for graphical purpose only
+	private int[] initialField; 
+	private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
 	private I18n i18n;
 
 	/** Copy constructor used internally by JLM */
@@ -51,10 +54,7 @@ public class BaseballWorld extends World {
 			for (int pos = 0; pos < posAmount; pos++)
 				setPlayerColor(base, pos, base);
 		setPlayerColor(baseAmount-1, 0, COLOR_HOLE);
-		
-
-		lastMove = null;
-		
+				
 		if (mix == MIX_RANDOM) {
 			for (int base = 0 ; base<getBasesAmount();base++)
 				for (int pos = 0 ; pos<getPositionsAmount();pos++)
@@ -88,6 +88,10 @@ public class BaseballWorld extends World {
 			throw new IllegalArgumentException("The mix paramter must be one of the provided constants, not "+mix);
 		}
 
+		initialField = new int[field.length];
+		for (int i=0;i<field.length;i++)
+			initialField[i] = field[i];
+		
 		// Add an entity
 		new BaseballEntity("Baseball Player",this);
 		
@@ -184,7 +188,9 @@ public class BaseballWorld extends World {
 
 		BaseballWorld other = (BaseballWorld) world;
 		
-		lastMove = other.lastMove;
+		moves = new Vector<BaseballMove>();
+		for (BaseballMove m : other.moves)
+			moves.add(m);
 		
 		holeBase = other.holeBase;
 		holePos = other.holePos;
@@ -253,8 +259,14 @@ public class BaseballWorld extends World {
 	}
 
 	/** Returns the last move made on the field */
-	public BaseballMove getLastMove() {
-		return lastMove;
+	protected BaseballMove getLastMove() {
+		if (moves.size() == 0)
+			return null;
+		return moves.get(moves.size()-1);
+	}
+	/** Returns the amount of moves done so far */
+	protected int getMoveCount() {
+		return moves.size();
 	}
 
 	/** Returns if every player of the field is on the right base */
@@ -303,7 +315,7 @@ public class BaseballWorld extends World {
 			throw new IllegalArgumentException("The player "+position+" from base "+base+" is too far from the hole (at base "+holeBase+") to reach it in one move");
 
 		// All clear. Proceed.
-		lastMove  = new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position));
+		moves.add(new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position)));
 		swap(base, position, holeBase,holePos);
 		holeBase = base;
 		holePos = position;

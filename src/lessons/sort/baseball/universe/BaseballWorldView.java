@@ -407,6 +407,8 @@ public class BaseballWorldView extends WorldView
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		displayRatio = Math.min(((double) getWidth()) / virtualSize, ((double) getHeight()) / virtualSize);
+
+
 		g2.translate(Math.abs(getWidth() - displayRatio * virtualSize)/2., Math.abs(getHeight() - displayRatio * virtualSize)/2.);
 		g2.scale(displayRatio, displayRatio);
 
@@ -439,6 +441,10 @@ public class BaseballWorldView extends WorldView
 		// Draw the last move made on the field if it exists
 		if ( myWorld.getLastMove() != null)
 			drawLastMove(g2, myWorld.getLastMove(), radius-L/amountOfPlayers, theta, virtualSize/2, virtualSize/2, L, amountOfPlayers);
+		
+		// Display the amount of moves so far
+		g2.setColor(Color.black);
+		g2.drawString(""+((BaseballWorld) world).getMoveCount()+" moves", 0,15);
 	}
 
 	private Map<Color,Image> buggleCache = new HashMap<Color, Image>();
