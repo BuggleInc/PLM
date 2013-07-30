@@ -61,7 +61,7 @@ public class LessonChooser extends JFrame {
 		
 		LessonMatrix matrix = new LessonMatrix(overview, new String[][] {
 				{"lessons/welcome","lessons/maze", "lessons/bat/string1"},
-				{"lessons/sort", "lessons/sort/pancake", "lessons/sort/baseball"},
+				{"lessons/sort", "lessons/sort/baseball", "lessons/sort/pancake"},
 				{"lessons/recursion" },
 				{"lessons/lightbot" },
 		    }); 
