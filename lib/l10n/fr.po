@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-24 17:17+0300\n"
+"POT-Creation-Date: 2013-07-31 00:29+0300\n"
 "PO-Revision-Date: 2013-07-24 17:20+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -423,7 +423,7 @@ msgstr "une écriture"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/sort/SortingWorld.html:22
-#: src/jlm/universe/hanoi/HanoiWorld.html:29
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:29
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:33
 msgid ""
 "Returns whether the current world is selected in the graphical interface."
@@ -433,7 +433,7 @@ msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
 #: src/jlm/universe/sort/SortingWorld.html:23
 #: src/jlm/universe/turtles/TurtleWorld.html:32
 #: src/jlm/universe/bugglequest/BuggleWorld.html:24
-#: src/jlm/universe/hanoi/HanoiWorld.html:26
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:30
 #, no-wrap
 msgid "boolean isSelected()"
@@ -1109,87 +1109,6 @@ msgstr ""
 "une exception."
 
 #. type: Content of: <h1>
-#: src/jlm/universe/hanoi/HanoiWorld.html:1
-msgid "HanoiWorld"
-msgstr "Le monde des tours de Hanoï"
-
-#. type: Content of: <p>
-#: src/jlm/universe/hanoi/HanoiWorld.html:4
-msgid ""
-"This world implements the ultra-classical Hanoi problem. You are asked to "
-"move the disk pile from the stick where they are to the target stick (given "
-"as second parameter in the world's name -- number 1 for the default world). "
-"There is some extra constraint: you can only move one disk at a time, and "
-"you cannot move a big disk over a smaller one."
-msgstr ""
-"Ce monde implémente le problème ultra classique de Hanoï. Il vous est "
-"demandé de déplacer une pile de disques du piquet où ils se trouvent vers un "
-"piquet cible (passé comme second paramètre dans le nom du monde -- numéro 1 "
-"pour le monde par défaut). Il y a quelques contraintes supplémentaires: il "
-"est interdit de déplacer plus d'un disque à la fois, ainsi que de placer un "
-"disque plus grand sur un disque plus petit."
-
-#. type: Content of: <p>
-#: src/jlm/universe/hanoi/HanoiWorld.html:11
-msgid "Only 3 functions are provided:"
-msgstr "Seules trois fonctions sont fournies&nbsp;:"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/hanoi/HanoiWorld.html:13
-#, no-wrap
-msgid "public void move(int src, int dst) throws HanoiInvalidMove;"
-msgstr "public void move(int src, int dst) throws HanoiInvalidMove;"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/hanoi/HanoiWorld.html:14
-#, no-wrap
-msgid "move(src, dst) throws HanoiInvalidMove"
-msgstr "move(src, dst) throws HanoiInvalidMove"
-
-#. type: Content of: outside any tag (error?)
-#: src/jlm/universe/hanoi/HanoiWorld.html:16
-msgid ""
-"It moves one disk from the stick <code>src</code> onto the stick <code>dst</"
-"code>. As you can see, if you try to do an invalid move (like laying a disk "
-"over a smaller one), an exception is thrown."
-msgstr ""
-"Elle déplace un disque d'un piquet <code>src</code> vers le piquet "
-"<code>dst</code>. Comme vous le voyez, si vous demandez un déplacement "
-"invalide (comme le placement d'un disque sur un disque plus petit), une "
-"exception est levée."
-
-#. type: Content of: <pre>
-#: src/jlm/universe/hanoi/HanoiWorld.html:20
-#, no-wrap
-msgid "int getSlotSize(int slot);"
-msgstr "int getSlotSize(int slot);"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/hanoi/HanoiWorld.html:21
-#, no-wrap
-msgid "getSlotSize(slot)"
-msgstr "getSlotSize(slot)"
-
-#. type: Content of: outside any tag (error?)
-#: src/jlm/universe/hanoi/HanoiWorld.html:23
-msgid ""
-"It returns the amount of disks placed on the specified slot. This is mainly "
-"used to initialize the recursion and set the amount of recursive call to "
-"execute."
-msgstr ""
-"Elle retourne le nombre de disques placés sur un piquet donné. Cette "
-"fonction\n"
-"est surtout utile pour initialiser la récursion et déterminer le nombre\n"
-"d'appels récursifs à réaliser."
-
-#. type: Content of: <pre>
-#: src/jlm/universe/hanoi/HanoiWorld.html:27
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:31
-#, no-wrap
-msgid "isSelected()"
-msgstr "isSelected()"
-
-#. type: Content of: <h1>
 #: src/lessons/backtracking/Main.html:1
 msgid "Backtracking lesson"
 msgstr "Leçon sur le \"backtracking\""
@@ -1540,483 +1459,6 @@ msgid ""
 msgstr ""
 "Ce n'est pas une vraie leçon, c'est ici que vous pouvez choisir une leçon "
 "parmis les autres."
-
-#. type: Content of: <h1>
-#: src/lessons/meta/HanoiCreateWorld.html:1
-msgid "Creating a new JLM world"
-msgstr "Créer un nouveau monde JLM (\"World\")"
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:4
-msgid ""
-"Welcome to the JLM Meta-Lesson. Its goal is to teach you how to write new "
-"universes in JLM. For that, we will reimplement the Hanoi world (available "
-"in the recursion lesson) step-by-step. This lesson covers quite advanced "
-"topics and suppose that you are fluent in Java and confident with the use of "
-"the JLM framework already. If you are not used to the framework already, you "
-"probably want to take another lesson before, like the welcome one or (maybe "
-"more fun) the maze one."
-msgstr ""
-"Bienvenue dans la Meta-Leçon JLM. Son but est de vous apprendre comment "
-"écrire de nouveaux univers dans la JLM. Pour ce faire, nous allons "
-"réimplanter le monde des tours de Hanoï ( disponible dans la leçon "
-"récursion ) pas à pas. Cette leçon couvre des sujets assez avancés et "
-"supporse que vous êtes à l'aise en Java et que vous connaissez déjà bien "
-"l'utilisation du framework de la JLM. Si vous n'êtes pas déjà habitué au "
-"frameword, vous voudrez probablement suivre une autre leçon avant, comme "
-"Welcome ou ( sans doute plus amusant ) Maze."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:12
-msgid "Every JLM universe is composed of 4 main components:"
-msgstr "Chaque univers JLM est composé de quatre composants principaux"
-
-#. type: Content of: <ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:14
-msgid "<b>The world</b>: it contains the state of the universe."
-msgstr "<b>Le monde (\"world\")</b> : il contient l'état de l'univers."
-
-#. type: Content of: <ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:15
-msgid ""
-"<b>The view</b>: it allows to draw the world and the entities on the screen."
-msgstr ""
-"<b>La vue (\"View\")</b>: elle permet de dessiner le monde et les entitées à "
-"l'écran."
-
-#. type: Content of: <ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:17
-msgid ""
-"<b>The entity ancestor</b>: the code written by the student will derive from "
-"this class, which contains some state specific to the entity, and every "
-"accessor to let the entity interact with its world."
-msgstr ""
-"<b>L' \"entity ancestor\"</b> :  le code écrit par l'étudiant sera dérivé de "
-"cette classe, qui contient certains états spécifiques à l'entité, et chaque "
-"accesseur pour permettre à l'entité d'intéragir avec le monde."
-
-#. type: Content of: <ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:20
-msgid ""
-"<b>The entity interactive control panel</b>: this is the little panel "
-"displayed under the world view in the JLM interface. It allows to "
-"interactively control the selected entity. As you can see from the existing "
-"universes, this is optional, and if you don't provide any, the panel will "
-"remain blank, preventing the users from interactively controlling the "
-"entities."
-msgstr ""
-"<b>Le panneau de contrôle interactif de l'entité</b> : c'est le petit "
-"panneau affiché en dessous de la vue du monde dans l'interface de la JLM. Il "
-"permet de contrôler interactivement l'entité sélectionnée. Comme vous pouvez "
-"le voir avec les univers existants, c'est optionnel, et si vous n'en "
-"fournissez pas, le panneau restera vide, empêchant l'utilisateur de "
-"controler interactivement l'entité."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:28
-msgid ""
-"In addition, worlds are used by exercises, themselves sorted in lessons."
-msgstr ""
-"De plus, les mondes sont utilisés pas les exercices, eux-mêmes rangés en "
-"leçons."
-
-#. type: Content of: <ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:30
-msgid ""
-"<b>Lessons</b> are just a list of exercise. They can be sequential (meaning "
-"that the student has to finish one exercise before being allowed to see the "
-"next one in the list), altrough most of them are not (ie, students are free "
-"to attempt the exercises in the order they like)."
-msgstr ""
-"<b>Les leçons (\"Lessons\")</b> sont juste une liste d'exercices. Elles "
-"peuvent être séquentielles (ce qui signifie que l'étudiant doit finir "
-"l'exercise avant de pouvoir voir le suivant ), même si la grande majorité "
-"des leçons ne le sont pas ( ie, les étudiants sont libre d'essayer les "
-"exercices dans l'ordre qu'ils souhaitent)."
-
-#. type: Content of: <ul><li><p>
-#: src/lessons/meta/HanoiCreateWorld.html:35
-msgid ""
-"In the future, we would like to have richer exercise ordering schema, where "
-"the requirements to fulfill to be allowed to try an exercise could be more "
-"complex.  The dependencies would probably turn into a graph instead of a "
-"chain.  But this is still to be done."
-msgstr ""
-"A l'avenir, nous aimerions disposer d'un ordonnancement d'exercices plus "
-"riche, où les conditions à remplir pour pouvoir essayer un exercice pourrait "
-"être plus complexes. Les dépendances deviendraient probablement un graphe au "
-"lieu d'être une chaîne. Mais cela reste encore à réaliser."
-
-#. type: Content of: <ul><li><p>
-#: src/lessons/meta/HanoiCreateWorld.html:40
-msgid ""
-"The main element of each lesson is a class classically called Main, which "
-"simply contains a constructor adding each exercise of the lesson in row."
-msgstr ""
-"L'élément principal de chaque leçon est la classe communément appelée Main, "
-"qui contient simplement un constructeur ajoutant chaque exercice de la leçon "
-"l'un à la suite de l'autre."
-
-#. type: Content of: <ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:43
-msgid ""
-"Each <b>exercise</b> object is in charge of instantiating the worlds used, "
-"set them up (adding walls and baggles in BuggleWorld, or changing the "
-"elevation and adding lamps in the LightBotWorld, etc), and populate them "
-"with entities correctly setup (location, color, etc)."
-msgstr ""
-"Chaque objet <b>exercise</b> a pour mission d'instancier les mondes "
-"utilisés, de les initialiser ( ajouter des murs et des baggles dans "
-"BuggleWorld, ou changer l'altitude et ajouter des lampes dans LightBotWorld, "
-"etc), et les peupler avec des correctement initialisées ( emplacement, "
-"couleur, etc) ."
-
-#. type: Content of: <ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:48
-msgid ""
-"Most of the exercises also provide a specific <b>answer entity</b> able to "
-"solve the exercise.  It serve both to compute the initial content of the "
-"code editor, and to compute the objective world. We will come back on this "
-"in a latter exercise of this meta-lesson."
-msgstr ""
-"La plupart des exercices fournissent aussi une <b>entité réponse "
-"<b>(\"answer entity\")</b> capable de résoudre l'exercice. Cela sert à la "
-"fois à afficher le contenu initial de l'éditeur de code, et à calculer le "
-"monde objectif. Nous reviendrons là-dessus plus tard dans un exercice de "
-"cette meta-leçon."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:53
-msgid ""
-"The very first element you want to write in a new JLM universe is a partial "
-"world implementation including the internal state. In subsequent exercises, "
-"we will complete the World class to provide entities ways to interact and "
-"modify their world, and we will also implement the other elements of the "
-"universe."
-msgstr ""
-"Le premier élément que vous voulez écrire dans un nouvel univers de la JLM "
-"est une implémentation partielle du monde incluant l'état interne. Dans des "
-"exercices ultérieurs, nous complèterons la classe World pour fournir aux "
-"entités des moyens d'intéragir et de modifier leur monde, et nous "
-"implémenterons aussi les autres éléments de l'univers."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:58
-msgid ""
-"Before you jump in writing your World implementation, you should understand "
-"the big JLM picture, and how worlds are used internally."
-msgstr ""
-"Avant que vous vous jetiez dans l'écriture de votre implémentation de World, "
-"vous devez comprendre le schéma de la JLM, et comment les mondes sont "
-"utilisés en interne."
-
-#. type: Content of: <h2>
-#: src/lessons/meta/HanoiCreateWorld.html:61
-msgid "JLM worlds big picture"
-msgstr "Schéma des mondes de la JLM"
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:64
-msgid ""
-"As you know, every JLM exercise can contain one or several worlds, each "
-"containing one or several entities. The code written by the student is "
-"executed in the entities, which must interact with their world to change it "
-"from its initial state to its goal state."
-msgstr ""
-"Comme vous le savez, chaque exercice de la JLM peut contenir un ou plusieurs "
-"mondes, chacun contenant une ou plusieures entitées. Le code écrit par les "
-"étudiants est éxécutés dans les entitées, qui doivent intéragir avec leur "
-"monde pour le faire passer de son état initial à l'état objectif."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:69
-msgid ""
-"This multiplication of worlds and entities is used to test the student code "
-"in several conditions. It can thus be parallelized to test cases, aiming at "
-"full testing coverage of the student code."
-msgstr ""
-"La multiplication des mondes et des entitées est utilisé pour tester le code "
-"de l'étudiant dans différentes conditions. Cela peut être comparé à des cas "
-"de tests, cherchant à tester entièrement le code de l'étudiant."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:73
-msgid ""
-"Technically, in a given exercise, for every world accessible from the "
-"relevant combobox, there is three World objects. They live in jlm.lesson."
-"Exercise:"
-msgstr ""
-"Techniquement, dans un exercice donné, pour chaque monde accessible depuis "
-"la liste déroulante, il y a trois objets World. Ils se trouvent dans jlm."
-"lesson.Exercise."
-
-#. type: Content of: <p><pre>
-#: src/lessons/meta/HanoiCreateWorld.html:76
-#, no-wrap
-msgid ""
-"protected World [] initialWorld; \n"
-"protected World [] currentWorld; \n"
-"protected World [] answerWorld;  \n"
-msgstr ""
-"protected World [] initialWorld; \n"
-"protected World [] currentWorld; \n"
-"protected World [] answerWorld;  \n"
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:83
-msgid ""
-"The line number of the combobox gives the index to use in these arrays.  "
-"Each <code>initialWorld</code> is created by the exercise constructor."
-msgstr ""
-"Le numéro de ligne de la liste déroulante donne l'index utilisé dans ces "
-"tableaux. Chaque <code>initialWorld</code> est crée par le constructeur de "
-"l'exercice."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:87
-msgid ""
-"<code>currentWorld</code> is the one displayed in the \"World\" tab of the "
-"interface. At the beginning, it is a plain copy of the initialWorld, but it "
-"gets modified when the student uses the interactive controls or when the "
-"program gets run. The \"Reset\" button reset it to be a perfect copy of the "
-"initial world."
-msgstr ""
-"<code>currentWorld</code> est celui affiché dans l'onglet \"World\" de "
-"l'interface. Au début, il s'agit d'une simple copie de initialWorld, mais il "
-"est modifié quand l'étudiant utilise les contrôles interactifs ou quand le "
-"programme est lancé. Le bouton \"Reset\" le remet à zéro afin qu'il "
-"redevienne une copie parfaite du monde initial."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:93
-msgid ""
-"<code>answerWorld</code> is the one displayed by the \"Objective\" world. "
-"Basically, it's a copy of the initial world, on which we let the specific "
-"answer entity of this exercise run.  This default behavior can be overloaded "
-"by exercises, but you'll probably never have to do so. We will come back on "
-"this in a subsequent exercise."
-msgstr ""
-"<code>answerWorld</code> est celui affiché par le monde \"Objective\". "
-"Concrètement, il s'agit d'une copie du monde initial, sur lequel on a lancé "
-"le programme de l'\"answer entity\" de l'exercice. Ce comportement par "
-"défaut peut être modifié par les exercices, mais vous n'aurez probablement "
-"jamais à le faire. Nous reviendrons là dessus dans un exercice ultérieur."
-
-#. type: Content of: <h3>
-#: src/lessons/meta/HanoiCreateWorld.html:98
-msgid "Implementing basic Worlds"
-msgstr "Implémenter des mondes basiques"
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:100
-msgid ""
-"The internal use of Worlds hidden, but the important point is that every "
-"World object has extend the jlm.universe.World class and define the "
-"following methods and constructors:"
-msgstr ""
-"L'utilisation interne des mondes est cachée, mais le point important est que "
-"chaque objet World hérite de la classe jlm.universe.World et définit les "
-"méthodes et constructeurs suivants :"
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:103
-msgid ""
-"<b>a copy constructor</b> which is used to copy initial worlds into "
-"currentWorld and answerWorld.  Its argument must be of the exact same type "
-"than the class itself, not Object (this is because we use Java introspection "
-"mechanism to search for such a constructor of the class).  For example, if "
-"you create a TotoWorld, your copy constructor must be declared as this:"
-msgstr ""
-"<b>un constructeur copie</b> qui est utilisé pour copier le monde initial en "
-"currentWorld et answerWorld. Son argument doit être du même type que la "
-"classe elle-même, et non pas de type Object ( c'est parce que nous utilisons "
-"le mécanisme d'introspection Java pour rechercher un tel constructeur dans "
-"la classe). Par exemple, si vous créer un TotWorl, votre constructeur votre "
-"constructeur copie doit être déclaré ainsi :"
-
-#. type: Content of: <p><ul><li><pre>
-#: src/lessons/meta/HanoiCreateWorld.html:108
-#, no-wrap
-msgid ""
-"public TotoWorld(TotoWorld other) {...} // Correct\n"
-"public TotoWorld(Object other) {...} // FALSE\n"
-"public TotoWorld(World other) {...} // also FALSE\n"
-msgstr ""
-"public TotoWorld(TotoWorld other) {...} // Correct\n"
-"public TotoWorld(Object other) {...} // Faux\n"
-"public TotoWorld(World other) {...} // Faux\n"
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:112
-msgid ""
-"The content of this constructor is usually a simple call to the "
-"<code>super(World w)</code> constructor, but this constructor cannot be "
-"omitted."
-msgstr ""
-"Le contenu de ce constructeur est généralement un simple appel au "
-"constructeur<code>super(World w)</code>, mais ce constructeur copie doit "
-"exister."
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:115
-msgid ""
-"One or several <b>regular constructors</b> initializing the state of the "
-"object. They will be used by the exercise constructor to instantiate your "
-"world. Since you usually write both the world and the lessons, you are "
-"completely free to specify the parameters you want to your constructor. It "
-"should use the <code>super(String name)</code> constructor to setup the very "
-"basic elements of your world."
-msgstr ""
-"Un ou plusieurs <b>constructeurs normaux</b> initialisant l'état de l'objet. "
-"Ils seront utilisés par le constructeur de l'exercice pour instancier votre "
-"monde. Puisque vous écrivez généralement le monde et les leçons, vous êtes "
-"complètement libre de spécifier les paramètres que vous voulez pour votre "
-"constructeur. Il doit néanmoins utilise le constructeur <code>super(String "
-"name)</code> pour initialiser les éléments basiques de votre monde."
-
-#. type: Content of: <p><ul><li><p>
-#: src/lessons/meta/HanoiCreateWorld.html:120
-msgid ""
-"Optionally, you may also want to use the <code>setDelay(int delay)</code> "
-"method to change the initial animation delay. For example, the SortingWorld "
-"set this to 1 to speed animations up. This is the delay in milliseconds "
-"between each animation step during a continuous run."
-msgstr ""
-"Vous pouvez, de manière facultative, utiliser la méthode <code>setdelay(int "
-"delay)</code> pour changer le délai initial de l'animation. Par exemple, "
-"dans SortingWorld, mettez le à 1 pour accélérer l'animation. C'est le délai "
-"en millisecondes entre chaque pas d'animation durant un programme continu."
-
-#. type: Content of: <p><ul><li>
-#: src/lessons/meta/HanoiCreateWorld.html:124
-msgid ""
-"A <b>reset() method</b> taking one World as parameter, and in charge of "
-"copying the state of the parameter into the current world. This is naturally "
-"used when you press the \"Reset\" button, or at the beginning of each run."
-msgstr ""
-"Une méthode <b>reset()</b> prenant un World en paramètre, et ayant pour "
-"mission d'affecter l'état du paramètre dans le monde courant. C'est "
-"naturellement utilisé quand vous appuyez sur le bouton \"Reset\", ou au "
-"début de chaque lancement de programme."
-
-#. type: Content of: <p><ul><li><p>
-#: src/lessons/meta/HanoiCreateWorld.html:127
-msgid ""
-"The length of this method naturally depends on the complexity of your world "
-"state. In hanoi, there is only 3 slots containing a list of disc so that "
-"will be quite easy, but this can be quite complicated for complex worlds "
-"such as BuggleWorld."
-msgstr ""
-"La longueur de cette méthode dépend naturellemetn de la complexité de l'état "
-"de votre monde. Dans Hanoi, il y a seulement trois tours contenant une liste "
-"de disques, cela sera donc très facile, mais cela peut être bien plus "
-"compliqué avec des mondes complexes comme BuggleWorld."
-
-#. type: Content of: <h3>
-#: src/lessons/meta/HanoiCreateWorld.html:132
-msgid "Allowing the graphical rendering of Worlds"
-msgstr "Permettre le rendu graphique des mondes"
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:134
-msgid ""
-"Some specific steps naturally must be taken so that JLM can graphically "
-"display your world. Usually, you must write a specific class extending jlm."
-"universe.WorldView, and provide some protected methods so that the View can "
-"retrieve the state to display. In this particular exercise, the view is "
-"provided (you will write you own one in next exercise), so you only have to "
-"implement the right accessor."
-msgstr ""
-"Certaines étapes spécifiques doivent naturellement être prise afin que la "
-"JLM puisse afficher graphique votre monde. Usuellement, vous devez écrire "
-"une classe spécifique héritant de jlm.universe.WorldView, et fournissant des "
-"méthodes \"protected\", afin que la vue puisse récupérer l'état à afficher. "
-"Dans cet exercice particulier, la vue vous est fournie ( vous en écrirez une "
-"dans le prochain exercice ), donc vous n'avez qu'à implémenter le bon "
-"accesseur."
-
-#. type: Content of: <h2>
-#: src/lessons/meta/HanoiCreateWorld.html:139
-msgid "Implementing your HanoiWorld"
-msgstr "Implémenter votre HanoiWorld"
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:141
-msgid ""
-"The main task of this exercise is to modify the provided template to store "
-"the state of the world. Since the exercise provides a view and automatically "
-"instantiate your world, you cannot change the instantiation constructor, nor "
-"the rendering accessor (see the code template for there prototype). But you "
-"are completely free about how you actually store the state in your object."
-msgstr ""
-"La tâche principale de cet exercice est de modifié le code fourni pour "
-"sauvegarder l'état du monde. Puisque l'exercice fournit une  vue et "
-"instancie automatiquement le monde, vous ne pouvez pas changer le "
-"constructeur d'instanciation, ni l'accesseur de rendu graphique ( regardez "
-"le code fourni pour leurs prototypes ). Mais vous êtes complètement libre "
-"sur comment vous allez sauvegarder l'état dans votre object."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:146
-msgid ""
-"During the implementation of the Hanoi world, I changed my internal "
-"representation several times, to adapt to the code needs. My first try was "
-"only simply three ArrayList&lt;Integer>, for each slots, while the final "
-"design used an inner class called HanoiSlot, containing an integer array and "
-"providing friendly functions such as <code>push()</code>, <code>pop()</code> "
-"and <code>top()</code>. Even if it really becomes necessary when "
-"implementing the action methods allowing the entities to interact with their "
-"world, I advise you to design an inner class from the beginning."
-msgstr ""
-"Pendant l'implémentation du monde des Tours de Hanoï, j'ai changé ma "
-"représentation interne à plusieures reprises, afin de l'adapter aux besoins "
-"du code. Mon premier essai était simplement trois ArrayList&lt;Integer>, une "
-"pour chaque tour, tandis que la version finale fournit une classe interne, "
-"nommé HanoiSlot, contenant un tableau d'entier et fournissant des fonctions "
-"sympathiques telles que <code>push()</code>, <code>pop()</code> and "
-"<code>top()</code>. Même si cela ne devient réellement nécessaire que quand "
-"vous implémenter les méthodes d'actions permettant aux entitées d'intéragir "
-"avec leur monde, je vous conseille de concevoir une classe interne dès le "
-"départ."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:153
-msgid ""
-"You probably want to add 3 fields to your World, one for each slot (we will "
-"never try to have worlds with more than 3 slots), store the content of each "
-"slot in the instantiation constructor, and retrieve the content of a "
-"specific slot in the rendering accessor (<code>Integer[] values(Integer i)</"
-"code>)."
-msgstr ""
-"Vous voudrez probablement ajouter trois champs à votre monde, un pour chaque "
-"tour (on n'essayera jamais d'avoir des mondes avec plus de trois tours), "
-"sauvegarder le contenu de chaque tour dans le construction d'instanciation, "
-"et récupérer le contenu d'une tour donnée dans l'accesseur de rendu "
-"graphique (<code>Integer[] values(Integer i)</code>)."
-
-#. type: Content of: <p>
-#: src/lessons/meta/HanoiCreateWorld.html:157
-msgid ""
-"That seems quite a lot of code to write compared to the other JLM exercises, "
-"but at the end, my HanoiWorld implementation is less than 100 lines long, "
-"which is not that much."
-msgstr ""
-"Cela semble être beaucoup de code à écrire comparé aux autres exercices de "
-"la JLM, mais en fin de compte, mon implémentation de HanoiWorld fait moints "
-"de cent lignes, ce qui n'est pas beaucoup."
-
-#. type: Content of: <h1>
-#: src/lessons/meta/Main.html:1
-msgid "Meta lesson"
-msgstr "Meta leçon"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/meta/Main.html:2
-msgid ""
-"The purpose of this lesson is to teach you how to write lessons for JLM."
-msgstr ""
-"Le but de cette leçon est de vous apprendre comment écrire des leçons pour "
-"la JLM."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/Main.html:1 src/lessons/welcome/short_desc.html:1
@@ -2696,8 +2138,7 @@ msgstr ""
 #: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:56
 #: src/lessons/welcome/methods/args/MethodsArgs.html:69
-#: src/lessons/welcome/bdr/basics/BDR.html:159
-#: src/lessons/welcome/bdr/extended/BDR2.html:111
+#: src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111
 #: src/lessons/welcome/slug/SlugHunting.html:18
 #: src/lessons/welcome/slug/SlugTracking.html:21
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:24
@@ -5552,12 +4993,12 @@ msgid "Good luck!"
 msgstr "Bon courage !"
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/bdr/basics/BDR.html:1
+#: src/lessons/welcome/bdr/BDR.html:1
 msgid "Buggle Dance Revolution (BDR)"
 msgstr "Buggle Dance Revolution (BDR)"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:3
+#: src/lessons/welcome/bdr/BDR.html:3
 msgid ""
 "Today is a great day: we will learn the buggles to play Dance Revolution, "
 "this game beloved of some students where the player has to move its feet on "
@@ -5571,12 +5012,12 @@ msgstr ""
 "quelques détails à étudier."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/basics/BDR.html:8
+#: src/lessons/welcome/bdr/BDR.html:8
 msgid "Conditionals without curly braces"
 msgstr "Conditionnelles sans accolades"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:10
+#: src/lessons/welcome/bdr/BDR.html:10
 msgid ""
 "There is one detail we omitted about the conditional syntax: if a branch "
 "contains only one instruction, then the curly braces become optional. So, "
@@ -5588,7 +5029,7 @@ msgstr ""
 "équivalents:"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:14
+#: src/lessons/welcome/bdr/BDR.html:14
 #, no-wrap
 msgid ""
 "if (<b>condition</b>) {\n"
@@ -5604,7 +5045,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:19
+#: src/lessons/welcome/bdr/BDR.html:19
 #, no-wrap
 msgid ""
 "if (<b>condition</b>) \n"
@@ -5618,7 +5059,7 @@ msgstr ""
 "    <b>quoiFaireSinon();</b>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:24
+#: src/lessons/welcome/bdr/BDR.html:24
 msgid ""
 "But beware, this becomes dangerous if you chain the <tt>if</tt> instructions "
 "like this:"
@@ -5627,7 +5068,7 @@ msgstr ""
 "comme dans l'exemple suivant."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:26
+#: src/lessons/welcome/bdr/BDR.html:26
 #, no-wrap
 msgid ""
 "if (isOverBaggle())    \n"
@@ -5645,7 +5086,7 @@ msgstr ""
 "forward();"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:33
+#: src/lessons/welcome/bdr/BDR.html:33
 msgid ""
 "In fact, it does not turn right when there is no baggle on the ground AND x "
 "equals 5, but when the buggle found a baggle on the ground and x equals "
@@ -5660,7 +5101,7 @@ msgstr ""
 "précédemment) :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:38
+#: src/lessons/welcome/bdr/BDR.html:38
 #, no-wrap
 msgid ""
 "if (isOverBaggle())    \n"
@@ -5678,7 +5119,7 @@ msgstr ""
 "forward();"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:45
+#: src/lessons/welcome/bdr/BDR.html:45
 msgid ""
 "The first lesson of this is that the indentation is very helpful to help "
 "humans understanding, but it's of no importance for the actual meaning of "
@@ -5697,13 +5138,13 @@ msgstr ""
 "poser une question), ou si vous comptez réutiliser votre code plus tard."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:53
+#: src/lessons/welcome/bdr/BDR.html:53
 #, no-wrap
 msgid "if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();"
 msgstr "if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:55
+#: src/lessons/welcome/bdr/BDR.html:55
 msgid ""
 "The second lesson is that a <tt>else</tt> branch always connects to the "
 "closest <tt>if</tt>. This may be a bit troublesome in some case, and it may "
@@ -5715,18 +5156,18 @@ msgstr ""
 "ambiguïté."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/bdr/basics/BDR.html:59
+#: src/lessons/welcome/bdr/BDR.html:59
 msgid "Chaining conditionals"
 msgstr "Enchaînements de conditionnelles"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:61
+#: src/lessons/welcome/bdr/BDR.html:61
 msgid "You sometimes want to ask the buggle something similar to:"
 msgstr ""
 "Il arrive que l'on veuille demander à la buggle quelque chose similaire à :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:62
+#: src/lessons/welcome/bdr/BDR.html:62
 #, no-wrap
 msgid ""
 "if it's raining, take an umbrella;\n"
@@ -5738,7 +5179,7 @@ msgstr ""
 "si non, si nous sommes le 14 juillet, prend un drapeau français"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:66
+#: src/lessons/welcome/bdr/BDR.html:66
 msgid ""
 "The trap is that we want at most one of these actions to be taken. That is "
 "to say, if it's raining a very hot July 4th, we don't want the buggle to get "
@@ -5751,7 +5192,7 @@ msgstr ""
 "juste avec un parapluie. Le code suivant est donc faux."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:71
+#: src/lessons/welcome/bdr/BDR.html:71
 #, no-wrap
 msgid ""
 "if (rainy()) {\n"
@@ -5775,7 +5216,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:81
+#: src/lessons/welcome/bdr/BDR.html:81
 #, no-wrap
 msgid ""
 "if rainy():\n"
@@ -5793,7 +5234,7 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:90
+#: src/lessons/welcome/bdr/BDR.html:90
 msgid ""
 "Indeed, since the conditions are evaluated one after the other, there is a "
 "risk that you go to the July 4th march on a rainy day. Instead, we should "
@@ -5804,7 +5245,7 @@ msgstr ""
 "écrire quelque chose comme :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:94
+#: src/lessons/welcome/bdr/BDR.html:94
 #, no-wrap
 msgid ""
 "if (rainy()) {\n"
@@ -5832,7 +5273,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:106
+#: src/lessons/welcome/bdr/BDR.html:106
 #, no-wrap
 msgid ""
 "if rainy():\n"
@@ -5854,7 +5295,7 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:117
+#: src/lessons/welcome/bdr/BDR.html:117
 msgid ""
 "Such a cascade of conditionals are quite difficult to read, and it is better "
 "to omit the curly braces for the <tt>else</tt> statements. Some languages "
@@ -5867,7 +5308,7 @@ msgstr ""
 "<tt>else if</tt> (mais pas Java)."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:121
+#: src/lessons/welcome/bdr/BDR.html:121
 #, no-wrap
 msgid ""
 "if (rainy()) {\n"
@@ -5887,7 +5328,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:129
+#: src/lessons/welcome/bdr/BDR.html:129
 msgid ""
 "Such a cascade of conditionals are quite difficult to read, and it is better "
 "to omit extra indentation for the <tt>else</tt> statements. In Python, there "
@@ -5900,7 +5341,7 @@ msgstr ""
 "faire ceci facilement."
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/bdr/basics/BDR.html:132
+#: src/lessons/welcome/bdr/BDR.html:132
 #, no-wrap
 msgid ""
 "if rainy():\n"
@@ -5918,12 +5359,12 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;&nbsp;prendreDrapeau()\n"
 
 #. type: Content of: <p><h3>
-#: src/lessons/welcome/bdr/basics/BDR.html:140
+#: src/lessons/welcome/bdr/BDR.html:140
 msgid "Graffitis in the Buggle World"
 msgstr "Les graffitis dans le monde des buggles"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/basics/BDR.html:142
+#: src/lessons/welcome/bdr/BDR.html:142
 msgid ""
 "Buggles can write graffitis on the ground of their world. For that, they use "
 "the four following methods:"
@@ -5932,7 +5373,7 @@ msgstr ""
 "faire, elles utilisent les quatre méthodes suivantes:"
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/welcome/bdr/basics/BDR.html:146
+#: src/lessons/welcome/bdr/BDR.html:146
 msgid ""
 "<code>boolean isOverMessage()</code>: returns <code>true</code> if and only "
 "if there is a message on the ground."
@@ -5941,7 +5382,7 @@ msgstr ""
 "et seulement s'il y a un message écrit par terre."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/welcome/bdr/basics/BDR.html:148
+#: src/lessons/welcome/bdr/BDR.html:148
 msgid ""
 "<code>boolean isOverMessage()</code>: returns <code>True</code> if and only "
 "if there is a message on the ground."
@@ -5950,7 +5391,7 @@ msgstr ""
 "et seulement s'il y a un message écrit par terre."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/welcome/bdr/basics/BDR.html:150
+#: src/lessons/welcome/bdr/BDR.html:150
 msgid ""
 "<code>String readMessage()</code>: returns the message written on the ground "
 "(or an empty string if nothing is written)."
@@ -5959,7 +5400,7 @@ msgstr ""
 "terre (s'il y a rien, on obtient une chaîne vide)."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/welcome/bdr/basics/BDR.html:152
+#: src/lessons/welcome/bdr/BDR.html:152
 msgid ""
 "<code>void writeMessage(String msg)</code>: writes the specified message "
 "down on the ground. If there is already a message on the ground, the new "
@@ -5970,12 +5411,12 @@ msgstr ""
 "le nouveau message à la fin du précédent."
 
 #. type: Content of: <p><ul><li>
-#: src/lessons/welcome/bdr/basics/BDR.html:155
+#: src/lessons/welcome/bdr/BDR.html:155
 msgid "<code>void clearMessage()</code>: clears what is written on the ground."
 msgstr "<code>void clearMessage()</code> : efface ce qui est écrit par terre."
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/bdr/basics/BDR.html:159
+#: src/lessons/welcome/bdr/BDR.html:159
 msgid ""
 "<a name=\"Objectives\">The goal is then to organize a BDR game between the "
 "buggles by learning them to move according to the instructions written on "
@@ -5988,184 +5429,164 @@ msgstr ""
 "suivant:"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:165
-#: src/lessons/welcome/bdr/extended/BDR2.html:127
+#: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:127
 msgid "Message"
 msgstr "Indication"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:166
-#: src/lessons/welcome/bdr/extended/BDR2.html:128
+#: src/lessons/welcome/bdr/BDR.html:166 src/lessons/welcome/bdr/BDR2.html:128
 msgid "What to do"
 msgstr "Quoi faire"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:167
+#: src/lessons/welcome/bdr/BDR.html:167
 msgid "Mnemonic"
 msgstr "Mnémotechnique"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:169
-#: src/lessons/welcome/bdr/extended/BDR2.html:130
+#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:130
 #: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:30
 #: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:33
 msgid "R"
 msgstr "R"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:169
-#: src/lessons/welcome/bdr/extended/BDR2.html:130
+#: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:130
 msgid "Turn right and move one step forward"
 msgstr "Tourner à droite et avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:169
+#: src/lessons/welcome/bdr/BDR.html:169
 msgid "Right"
 msgstr "Right"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:170
-#: src/lessons/welcome/bdr/extended/BDR2.html:131
+#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:131
 msgid "L"
 msgstr "L"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:170
-#: src/lessons/welcome/bdr/extended/BDR2.html:131
+#: src/lessons/welcome/bdr/BDR.html:170 src/lessons/welcome/bdr/BDR2.html:131
 msgid "Turn left and move one step forward"
 msgstr "Tourner à gauche et avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:170
+#: src/lessons/welcome/bdr/BDR.html:170
 msgid "Left"
 msgstr "Left"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:171
-#: src/lessons/welcome/bdr/extended/BDR2.html:132
+#: src/lessons/welcome/bdr/BDR.html:171 src/lessons/welcome/bdr/BDR2.html:132
 msgid "I"
 msgstr "I"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:171
+#: src/lessons/welcome/bdr/BDR.html:171
 msgid "Turn back (U-turn) and move one step forward"
 msgstr "Tourner en sens inverse (demi tour) et avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:171
+#: src/lessons/welcome/bdr/BDR.html:171
 msgid "Inverse"
 msgstr "Inverse"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:173
-#: src/lessons/welcome/bdr/extended/BDR2.html:134
+#: src/lessons/welcome/bdr/BDR.html:173 src/lessons/welcome/bdr/BDR2.html:134
 msgid "A"
 msgstr "A"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:173
-#: src/lessons/welcome/bdr/extended/BDR2.html:134
+#: src/lessons/welcome/bdr/BDR.html:173 src/lessons/welcome/bdr/BDR2.html:134
 msgid "Move one step forward"
 msgstr "Avancer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:173
+#: src/lessons/welcome/bdr/BDR.html:173
 msgid "First letter of the alphabet"
 msgstr "Première lettre de l'alphabet"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:174
-#: src/lessons/welcome/bdr/extended/BDR2.html:135
+#: src/lessons/welcome/bdr/BDR.html:174 src/lessons/welcome/bdr/BDR2.html:135
 msgid "B"
 msgstr "B"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:174
-#: src/lessons/welcome/bdr/extended/BDR2.html:135
+#: src/lessons/welcome/bdr/BDR.html:174 src/lessons/welcome/bdr/BDR2.html:135
 msgid "Move two steps forward"
 msgstr "Avancer de deux cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:174
+#: src/lessons/welcome/bdr/BDR.html:174
 msgid "Second letter of the alphabet"
 msgstr "Deuxième lettre de l'alphabet"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:175
-#: src/lessons/welcome/bdr/extended/BDR2.html:136
+#: src/lessons/welcome/bdr/BDR.html:175 src/lessons/welcome/bdr/BDR2.html:136
 msgid "C"
 msgstr "C"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:175
-#: src/lessons/welcome/bdr/extended/BDR2.html:136
+#: src/lessons/welcome/bdr/BDR.html:175 src/lessons/welcome/bdr/BDR2.html:136
 msgid "Move three steps forward"
 msgstr "Avancer de trois cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:175
+#: src/lessons/welcome/bdr/BDR.html:175
 msgid "Third letter of the alphabet"
 msgstr "Troisième lettre de l'alphabet"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:177
-#: src/lessons/welcome/bdr/extended/BDR2.html:141
+#: src/lessons/welcome/bdr/BDR.html:177 src/lessons/welcome/bdr/BDR2.html:141
 msgid "Z"
 msgstr "Z"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:177
-#: src/lessons/welcome/bdr/extended/BDR2.html:141
+#: src/lessons/welcome/bdr/BDR.html:177 src/lessons/welcome/bdr/BDR2.html:141
 msgid "Move one step backward"
 msgstr "Reculer d'une case"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:177
+#: src/lessons/welcome/bdr/BDR.html:177
 msgid "One letter before the end of the alphabet"
 msgstr "A une lettre de la fin de l'alphabet"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:178
-#: src/lessons/welcome/bdr/extended/BDR2.html:142
+#: src/lessons/welcome/bdr/BDR.html:178 src/lessons/welcome/bdr/BDR2.html:142
 msgid "Y"
 msgstr "Y"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:178
-#: src/lessons/welcome/bdr/extended/BDR2.html:142
+#: src/lessons/welcome/bdr/BDR.html:178 src/lessons/welcome/bdr/BDR2.html:142
 msgid "Move two steps backward"
 msgstr "Reculer de deux cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:178
+#: src/lessons/welcome/bdr/BDR.html:178
 msgid "Two letters before the end of the alphabet"
 msgstr "A deux lettres de la fin de l'alphabet"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:179
-#: src/lessons/welcome/bdr/extended/BDR2.html:143
+#: src/lessons/welcome/bdr/BDR.html:179 src/lessons/welcome/bdr/BDR2.html:143
 msgid "X"
 msgstr "X"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:179
-#: src/lessons/welcome/bdr/extended/BDR2.html:143
+#: src/lessons/welcome/bdr/BDR.html:179 src/lessons/welcome/bdr/BDR2.html:143
 msgid "Move three steps backward"
 msgstr "Reculer de trois cases"
 
 #. type: Content of: <p><a><table><tr><td>
-#: src/lessons/welcome/bdr/basics/BDR.html:179
+#: src/lessons/welcome/bdr/BDR.html:179
 msgid "Three letters before the end of the alphabet"
 msgstr "A trois lettres de la fin de l'alphabet"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:182
-#: src/lessons/welcome/bdr/extended/BDR2.html:149
+#: src/lessons/welcome/bdr/BDR.html:182 src/lessons/welcome/bdr/BDR2.html:149
 msgid "In any other case, you should stop"
 msgstr "Dans tous les autres cas, il faut s'arrêter."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:184
+#: src/lessons/welcome/bdr/BDR.html:184
 msgid ""
 "Write the code of the dance in the <code>run()</code> method which prototype "
 "is already in the editor."
@@ -6174,7 +5595,7 @@ msgstr ""
 "prototype se trouve déjà dans l'éditeur."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:187
+#: src/lessons/welcome/bdr/BDR.html:187
 msgid ""
 "Write the code of the dance directly in the editor, out of any function."
 msgstr ""
@@ -6182,12 +5603,12 @@ msgstr ""
 "fonction."
 
 #. type: Content of: <p><a><h3>
-#: src/lessons/welcome/bdr/basics/BDR.html:190
+#: src/lessons/welcome/bdr/BDR.html:190
 msgid "Indications"
 msgstr "Indications"
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/bdr/basics/BDR.html:192
+#: src/lessons/welcome/bdr/BDR.html:192
 msgid ""
 "This exercise may seem a bit complex at the first glance, but it comes down "
 "to summarizing the information above in a sequence of conditionals."
@@ -6197,7 +5618,7 @@ msgstr ""
 "conditionnelles."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:197
+#: src/lessons/welcome/bdr/BDR.html:197
 msgid ""
 "The first subtlety is that we use the <code>char getIndication()</code> "
 "instead of <code>String readMessage()</code>. This method, only known by the "
@@ -6210,7 +5631,7 @@ msgstr ""
 "premier caractère du message au sol (ou ' ' s'il n'y a rien d'écrit au sol)."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:202
+#: src/lessons/welcome/bdr/BDR.html:202
 msgid ""
 "The other subtlety is to keep working as long as there is some work to do, i."
 "e., as long as we did not find a cell which content is not described in the "
@@ -6229,7 +5650,7 @@ msgstr ""
 "(<code>true</code>. Cela arrête la boucle, et le programme s'arrête."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:209
+#: src/lessons/welcome/bdr/BDR.html:209
 msgid ""
 "The other subtlety is to keep working as long as there is some work to do, i."
 "e., as long as we did not find a cell which content is not described in the "
@@ -6248,7 +5669,7 @@ msgstr ""
 "(<code>True</code>. Cela arrête la boucle, et le programme s'arrête."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:217
+#: src/lessons/welcome/bdr/BDR.html:217
 msgid ""
 "The functions having <code>void</code> as return type can contain some "
 "<tt>return</tt> without any associated value. It interrupts immediately "
@@ -6259,12 +5680,12 @@ msgstr ""
 "exécution."
 
 #. type: Content of: <p><a><h3>
-#: src/lessons/welcome/bdr/basics/BDR.html:221
+#: src/lessons/welcome/bdr/BDR.html:221
 msgid "Tips and Hints"
 msgstr "Trucs et astuces"
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/bdr/basics/BDR.html:223
+#: src/lessons/welcome/bdr/BDR.html:223
 msgid ""
 "If you fail understanding why the buggle does not execute the expected "
 "steps, try adding <code>brushDown()</code> in your method. This asks the "
@@ -6282,17 +5703,17 @@ msgstr ""
 "buggles, pas de dégrader le dance floor."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/bdr/basics/BDR.html:230
+#: src/lessons/welcome/bdr/BDR.html:230
 msgid "When your program finally works, move on to the next exercise."
 msgstr "Quand votre programme fonctionne enfin, passez à l'exercice suivant."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/bdr/extended/BDR2.html:1
+#: src/lessons/welcome/bdr/BDR2.html:1
 msgid "Buggle Dance Revolution 2 (BDR2)"
 msgstr "Buggle Dance Revolution 2 (BDR2)"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:3
+#: src/lessons/welcome/bdr/BDR2.html:3
 msgid ""
 "BDR is cool, but it's a bit chaotic. First, the buggles giggle in any "
 "directions, and then the code you had to write to let them move is rather "
@@ -6308,12 +5729,12 @@ msgstr ""
 "nouveaux éléments que nous allons maintenant étudier."
 
 #. type: Content of: <p><h3>
-#: src/lessons/welcome/bdr/extended/BDR2.html:9
+#: src/lessons/welcome/bdr/BDR2.html:9
 msgid "<tt>switch</tt> conditionals"
 msgstr "Branchement conditionnel <tt>switch</tt>"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:12
+#: src/lessons/welcome/bdr/BDR2.html:12
 msgid ""
 "The hardest part of previous code is certainly the conditional cascading. "
 "Somewhere in your code, you certainly had something similar to:"
@@ -6323,7 +5744,7 @@ msgstr ""
 "écrit quelque chose comme:"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/bdr/extended/BDR2.html:15
+#: src/lessons/welcome/bdr/BDR2.html:15
 #, no-wrap
 msgid ""
 "if (getIndication() == 'R') {\n"
@@ -6355,7 +5776,7 @@ msgstr ""
 "}\n"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:31
+#: src/lessons/welcome/bdr/BDR2.html:31
 msgid ""
 "When you review this code, it may not be clear at the first glance that it "
 "is simply a choice with 4 branches depending on the value of "
@@ -6368,7 +5789,7 @@ msgstr ""
 "<tt>switch</tt>, dont la syntaxe est la suivante:"
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/bdr/extended/BDR2.html:37
+#: src/lessons/welcome/bdr/BDR2.html:37
 #, no-wrap
 msgid ""
 "switch (<b>expression</b>) {\n"
@@ -6402,7 +5823,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:53
+#: src/lessons/welcome/bdr/BDR2.html:53
 msgid ""
 "Observe that each branch of a <tt>switch</tt> must be ended by a "
 "<code>break</code>. If you forget this, the machine keeps going and execute "
@@ -6416,7 +5837,7 @@ msgstr ""
 "pratique."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:58
+#: src/lessons/welcome/bdr/BDR2.html:58
 msgid ""
 "It is then possible to rewrite previous BDR code in a cleaner way using the "
 "<tt>switch</tt> construct:"
@@ -6425,7 +5846,7 @@ msgstr ""
 "construction <tt>switch</tt> de la façon suivante."
 
 #. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/bdr/extended/BDR2.html:61
+#: src/lessons/welcome/bdr/BDR2.html:61
 #, no-wrap
 msgid ""
 "switch (getIndication()) {\n"
@@ -6463,12 +5884,12 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><p><p><h2>
-#: src/lessons/welcome/bdr/extended/BDR2.html:79
+#: src/lessons/welcome/bdr/BDR2.html:79
 msgid "Variables shared between methods"
 msgstr "Variables partagées par les méthodes"
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:82
+#: src/lessons/welcome/bdr/BDR2.html:82
 msgid ""
 "Another issue in your code is that it begins to be a bit long to be written "
 "as a single method. We would like to split it up in two methods:"
@@ -6477,13 +5898,13 @@ msgstr ""
 "être dans une seule fonction. On voudrait découper en deux méthodes:"
 
 #. type: Content of: <p><p><p><p><p><ul><li>
-#: src/lessons/welcome/bdr/extended/BDR2.html:85
+#: src/lessons/welcome/bdr/BDR2.html:85
 msgid ""
 "<code>danceOneStep()</code> would take care of achieving a single dance step"
 msgstr "<code>danceOneStep()</code> s'occuperait de faire un pas de danse"
 
 #. type: Content of: <p><p><p><p><p><ul><li>
-#: src/lessons/welcome/bdr/extended/BDR2.html:86
+#: src/lessons/welcome/bdr/BDR2.html:86
 msgid ""
 "<code>run()</code> would take care of the dance as a whole. It would do the "
 "steps while we didn't encounter a cell not asking any further move."
@@ -6494,7 +5915,7 @@ msgstr ""
 "demandant pas d'aller plus loin."
 
 #. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:90
+#: src/lessons/welcome/bdr/BDR2.html:90
 msgid ""
 "The difficulty is to make sure that <tt>danceOneStep()</tt> keeps <tt>run()</"
 "tt> informed that there is no further dance step to achieve. The simpler "
@@ -6511,13 +5932,13 @@ msgstr ""
 "de toute méthode :"
 
 #. type: Content of: <p><p><p><p><p><p><pre>
-#: src/lessons/welcome/bdr/extended/BDR2.html:95
+#: src/lessons/welcome/bdr/BDR2.html:95
 #, no-wrap
 msgid "boolean moreMusic = true;"
 msgstr "boolean moreMusic = true;"
 
 #. type: Content of: <p><p><p><p><p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:97
+#: src/lessons/welcome/bdr/BDR2.html:97
 msgid ""
 "Note that it is possible to write variable declarations out of any methods, "
 "but that instructions must be in a method. In Java such <i>global</i> "
@@ -6529,7 +5950,7 @@ msgstr ""
 "méthodes des <b>champs</b>."
 
 #. type: Content of: <p><p><p><p><p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:101
+#: src/lessons/welcome/bdr/BDR2.html:101
 msgid ""
 "Then, the <tt>danceOneStep()</tt> must be changed to update this variable to "
 "<tt>false</tt> when there is nothing more to do. For that, simply add "
@@ -6541,12 +5962,12 @@ msgstr ""
 "tt>."
 
 #. type: Content of: <p><p><p><p><p><p><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:105
+#: src/lessons/welcome/bdr/BDR2.html:105
 msgid "It is then possible to use the following <tt>run()</tt> method:"
 msgstr "On peut alors utiliser la fonction <tt>run()</tt> suivante:"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><pre>
-#: src/lessons/welcome/bdr/extended/BDR2.html:106
+#: src/lessons/welcome/bdr/BDR2.html:106
 #, no-wrap
 msgid ""
 "public void run() {\n"
@@ -6560,20 +5981,20 @@ msgstr ""
 "}"
 
 #. type: Content of: <a>
-#: src/lessons/welcome/bdr/extended/BDR2.html:111
+#: src/lessons/welcome/bdr/BDR2.html:111
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:24
 msgid "<a name=\"Objectives\">"
 msgstr "<a name=\"Objectifs\">"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:112
+#: src/lessons/welcome/bdr/BDR2.html:112
 msgid "Apply the improvement we just saw to rewrite your buggle code."
 msgstr ""
 "Réécrivez le code des buggles en appliquant les améliorations que nous "
 "venons de voir."
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:114
+#: src/lessons/welcome/bdr/BDR2.html:114
 msgid ""
 "You don't have to write the <tt>run()</tt> method since the buggle already "
 "know it. If you put it anyway, the compiler will complain about this "
@@ -6588,7 +6009,7 @@ msgstr ""
 "variable <tt>moreMusic</tt> et la méthode <tt>danceOneStep()</tt>."
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:120
+#: src/lessons/welcome/bdr/BDR2.html:120
 msgid ""
 "This dance step is slightly more complex but actually better looking. Beside "
 "of that, that's the same old story."
@@ -6597,7 +6018,7 @@ msgstr ""
 "dehors de cela, c'est la même chose que précédemment."
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:123
+#: src/lessons/welcome/bdr/BDR2.html:123
 msgid ""
 "Here are the ground indications to use for BDR2. Note that we can now move a "
 "buggle up to 6 cells in one dance step."
@@ -6606,72 +6027,72 @@ msgstr ""
 "maintenant avancer la buggle de 6 cases d'un coup."
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:132
+#: src/lessons/welcome/bdr/BDR2.html:132
 msgid "Turn back and move one step forward"
 msgstr "Tourner en sens inverse (demi-tour) et avancer d'une case"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:137
+#: src/lessons/welcome/bdr/BDR2.html:137
 msgid "D"
 msgstr "D"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:137
+#: src/lessons/welcome/bdr/BDR2.html:137
 msgid "Move four cells forward"
 msgstr "Avancer de quatre cases"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:138
+#: src/lessons/welcome/bdr/BDR2.html:138
 msgid "E"
 msgstr "E"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:138
+#: src/lessons/welcome/bdr/BDR2.html:138
 msgid "Move five cells forward"
 msgstr "Avancer de cinq cases"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:139
+#: src/lessons/welcome/bdr/BDR2.html:139
 msgid "F"
 msgstr "F"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:139
+#: src/lessons/welcome/bdr/BDR2.html:139
 msgid "Move six cells forward"
 msgstr "Avancer de six cases"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:144
+#: src/lessons/welcome/bdr/BDR2.html:144
 msgid "W"
 msgstr "W"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:144
+#: src/lessons/welcome/bdr/BDR2.html:144
 msgid "Move four cells backward"
 msgstr "Reculer de quatre cases"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:145
+#: src/lessons/welcome/bdr/BDR2.html:145
 msgid "V"
 msgstr "V"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:145
+#: src/lessons/welcome/bdr/BDR2.html:145
 msgid "Move five cells backward"
 msgstr "Reculer de cinq cases"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:146
+#: src/lessons/welcome/bdr/BDR2.html:146
 msgid "U"
 msgstr "U"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><table><tr><td>
-#: src/lessons/welcome/bdr/extended/BDR2.html:146
+#: src/lessons/welcome/bdr/BDR2.html:146
 msgid "Move six cells backward"
 msgstr "Reculer de six cases"
 
 #. type: Content of: <p><p><p><p><p><p><p><p><a><p><p>
-#: src/lessons/welcome/bdr/extended/BDR2.html:151
+#: src/lessons/welcome/bdr/BDR2.html:151
 msgid "When you program works again, proceed to next exercise."
 msgstr ""
 "Quand votre programme fonctionne de nouveau, passez à l'exercice suivant."
@@ -8965,7 +8386,7 @@ msgstr ""
 #. type: Content of: <br><p><p><p><p><p><h2>
 #: src/lessons/recursion/square/Square.html:43
 #: src/lessons/recursion/circle/Circle.html:14
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:20
+#: src/lessons/recursion/hanoi/HanoiBoard.html:20
 #: src/lessons/welcome/array/basics/Array.html:210
 msgid "Goal of this exercise"
 msgstr "Objectif de l'exercice"
@@ -9583,13 +9004,41 @@ msgstr ""
 "rouge (<code>Color.red</code>) et le trait tracé par la méthode "
 "<code>dragonInverse</code> devra être bleu (<code>Color.blue</code>)."
 
+#. type: Content of: <h3>
+#: src/lessons/recursion/hanoi/Main.html:1
+#: src/lessons/recursion/hanoi/short_desc.html:1
+#, fuzzy
+#| msgid "HanoiWorld"
+msgid "Hanoi towers"
+msgstr "Le monde des tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/Main.html:2
+msgid ""
+"Here comes the super classical exercise on recursion. It's not very "
+"developped here, I'm not sure of what I could add to this lesson. If you "
+"have any idea, please submit them."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/short_desc.html:2
+msgid "Here comes the super classical exercise on recursion."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/short_desc.html:4
+msgid ""
+"This is an application exercise of recursion, that you should master to take "
+"this lesson."
+msgstr ""
+
 #. type: Content of: <h2>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:1
+#: src/lessons/recursion/hanoi/HanoiBoard.html:1
 msgid "Tower of Hanoi"
 msgstr "Les tours de Hanoï"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:3
+#: src/lessons/recursion/hanoi/HanoiBoard.html:3
 msgid ""
 "The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or "
 "Towers of Brahma, is a mathematical game or puzzle. It consists of three "
@@ -9608,12 +9057,12 @@ msgstr ""
 "pile entière jusqu'à une autre tour, en respectant les règles suivantes :"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:11
+#: src/lessons/recursion/hanoi/HanoiBoard.html:11
 msgid "Only one disk may be moved at a time."
 msgstr "Seul un disque peut être bougé à la fois."
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:13
+#: src/lessons/recursion/hanoi/HanoiBoard.html:13
 msgid ""
 "Each move consists of taking the upper disk from one of the rods and sliding "
 "it onto another rod, on top of the other disks that may already be present "
@@ -9624,12 +9073,12 @@ msgstr ""
 "déjà être présents sur cette tour."
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:17
+#: src/lessons/recursion/hanoi/HanoiBoard.html:17
 msgid "No disk may be placed on top of a smaller disk."
 msgstr "Aucun disque ne peut être placé au dessus d'un disque plus petit."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:22
+#: src/lessons/recursion/hanoi/HanoiBoard.html:22
 msgid ""
 "Write the core of the method: <code>public void solve(int src, int dst, int "
 "height) throws HanoiInvalidMove</code> This method will recursively solve "
@@ -9654,45 +9103,126 @@ msgstr ""
 "démontre cette approche :"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:36
+#: src/lessons/recursion/hanoi/HanoiBoard.html:36
 msgid "label the pegs A, B, C (these labels may move at different steps)"
 msgstr ""
 "Etiquetons les tours A, B, C ( ces étiquettes peuvent changer à différentes "
 "étapes )"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:37
+#: src/lessons/recursion/hanoi/HanoiBoard.html:37
 msgid "let n be the total number of discs (the height of the initial tower)"
 msgstr "Soit n le nombre total de disques ( la hauteur de la tour initiale )"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:38
+#: src/lessons/recursion/hanoi/HanoiBoard.html:38
 msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
 msgstr ""
 "Numérotez les disques de 1 ( le plus petit, le plus en haut ) à n ( le plus "
 "large, le plus en bas )"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:41
+#: src/lessons/recursion/hanoi/HanoiBoard.html:41
 msgid "To move n discs from peg A to peg C:"
 msgstr "Pour déplacer n disques du poteau A au poteau C : "
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:43
+#: src/lessons/recursion/hanoi/HanoiBoard.html:43
 msgid "move n−1 discs from A to B. This leaves disc #n alone on peg A"
 msgstr ""
 "déplcacer n-1 disques de A vers B. Cela laisse le disque #n seul sur le "
 "poteau A"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:44
+#: src/lessons/recursion/hanoi/HanoiBoard.html:44
 msgid "move disc #n from A to C"
 msgstr "déplacer le disque #n de A vers C"
 
 #. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoiboard/HanoiBoard.html:45
+#: src/lessons/recursion/hanoi/HanoiBoard.html:45
 msgid "move n−1 discs from B to C so they sit on disc #n"
 msgstr "deplacer n-1 disques de B vers C afin qu'ils reposent sur le disque #n"
+
+#. type: Content of: <h1>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:1
+msgid "HanoiWorld"
+msgstr "Le monde des tours de Hanoï"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:4
+msgid ""
+"This world implements the ultra-classical Hanoi problem. You are asked to "
+"move the disk pile from the stick where they are to the target stick (given "
+"as second parameter in the world's name -- number 1 for the default world). "
+"There is some extra constraint: you can only move one disk at a time, and "
+"you cannot move a big disk over a smaller one."
+msgstr ""
+"Ce monde implémente le problème ultra classique de Hanoï. Il vous est "
+"demandé de déplacer une pile de disques du piquet où ils se trouvent vers un "
+"piquet cible (passé comme second paramètre dans le nom du monde -- numéro 1 "
+"pour le monde par défaut). Il y a quelques contraintes supplémentaires: il "
+"est interdit de déplacer plus d'un disque à la fois, ainsi que de placer un "
+"disque plus grand sur un disque plus petit."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:11
+msgid "Only 3 functions are provided:"
+msgstr "Seules trois fonctions sont fournies&nbsp;:"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:13
+#, no-wrap
+msgid "public void move(int src, int dst) throws HanoiInvalidMove;"
+msgstr "public void move(int src, int dst) throws HanoiInvalidMove;"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:14
+#, no-wrap
+msgid "move(src, dst) throws HanoiInvalidMove"
+msgstr "move(src, dst) throws HanoiInvalidMove"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:16
+msgid ""
+"It moves one disk from the stick <code>src</code> onto the stick <code>dst</"
+"code>. As you can see, if you try to do an invalid move (like laying a disk "
+"over a smaller one), an exception is thrown."
+msgstr ""
+"Elle déplace un disque d'un piquet <code>src</code> vers le piquet "
+"<code>dst</code>. Comme vous le voyez, si vous demandez un déplacement "
+"invalide (comme le placement d'un disque sur un disque plus petit), une "
+"exception est levée."
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:20
+#, no-wrap
+msgid "int getSlotSize(int slot);"
+msgstr "int getSlotSize(int slot);"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:21
+#, no-wrap
+msgid "getSlotSize(slot)"
+msgstr "getSlotSize(slot)"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+msgid ""
+"It returns the amount of disks placed on the specified slot. This is mainly "
+"used to initialize the recursion and set the amount of recursive call to "
+"execute."
+msgstr ""
+"Elle retourne le nombre de disques placés sur un piquet donné. Cette "
+"fonction\n"
+"est surtout utile pour initialiser la récursion et déterminer le nombre\n"
+"d'appels récursifs à réaliser."
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:31
+#, no-wrap
+msgid "isSelected()"
+msgstr "isSelected()"
 
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:1 src/lessons/maze/short_desc.html:1
@@ -11706,7 +11236,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/bat/string1/short_desc.html:6
-#: src/lessons/smn/baseball/short_desc.html:6
 msgid "Please be patient with us."
 msgstr "Merci de votre patience."
 
@@ -13001,14 +12530,16 @@ msgstr ""
 "Retourne les <code>quantité</code> premières crêpes de la pile, en partant "
 "du sommet de celle-ci."
 
-#. type: Content of: <pre>
+#. type: Content of: <ul><li><pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:25
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:35
 #, no-wrap
 msgid "boolean isSorted()"
 msgstr "boolean isSorted()"
 
-#. type: Content of: <pre>
+#. type: Content of: <ul><li><pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:26
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
 #, no-wrap
 msgid "isSorted()"
 msgstr "isSorted()"
@@ -13480,619 +13011,1408 @@ msgstr ""
 "chaque fois que vous rentrez dans la boucle principale. "
 
 #. type: Content of: <h1>
-#: src/lessons/smn/baseball/Main.html:1
-msgid "Computer Science in Real Life"
-msgstr "Sciences Manuelles du Numérique"
+#: src/lessons/sort/baseball/Main.html:1
+#, fuzzy
+#| msgid "Rainbow Baseball"
+msgid "The Rainbow Baseball Game"
+msgstr "Baseball multicolore"
 
-#. type: Content of: <p><font>
-#: src/lessons/smn/baseball/Main.html:3
-#: src/lessons/smn/baseball/easy/BaseballGame.html:2
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:2
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:3
 msgid ""
-"This material is currently under development in JLM and will soon be "
-"properly integrated"
+"This activity is inspired from the orange game, from the \"Computer Science "
+"Unplugged\" activities repository.  It was however heavily since then, first "
+"for the CSIRL (my repository of <i>free</i> unplugged activities to "
+"introduce computer science) and now for JLM. In the literature, the "
+"generalized form of this problem is known as the pebble motion problem (the "
+"bases can be connected by any kind of graph, and the affinity of pebbles "
+"with bases may be different). Another variant of this problem is the well "
+"known 15-puzzle, with one player per base, and a two dimensional square "
+"grid. Much more information about these problems can be found on wikipedia, "
+"as usual."
 msgstr ""
-"Ceci est actuellement en cours de développement, et sera bientôt "
-"parfaitement intégré à JLM"
-
-#. type: Content of: <p>
-#: src/lessons/smn/baseball/Main.html:4
-#: src/lessons/smn/baseball/easy/BaseballGame.html:3
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:3
-msgid ". Please be patient with us."
-msgstr ". Merci de votre patience."
-
-#. type: Content of: <p>
-#: src/lessons/smn/baseball/Main.html:6
-msgid "Few activities developped for Computer Science in Real Life"
-msgstr ""
-"Différentes activités développées pour les Sciences Manuelles du Numérique"
 
 #. type: Content of: <h3>
-#: src/lessons/smn/baseball/short_desc.html:1
+#: src/lessons/sort/baseball/Main.html:11
+msgid ""
+"How do you know that the naive algorithm won't loop on that initial "
+"situation?"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:13
+msgid ""
+"Well, we simply tested all possible situations to see when this algorithm "
+"loops and when it finds the correct solution. We found that it works for all "
+"situations where no player is at home (there is 84 such situations for 4 "
+"bases, once you take the symmetries into account). It obviously works for "
+"some situations that do not respect this criteria (such as all situations it "
+"encounters from one of those 84 boards to the final state), but that's "
+"another story. Having such a criteria allows us to generate pseudo-random "
+"initial situations for the first exercise for which the algorithm we propose "
+"is guarenteed to work."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:20
+msgid ""
+"We also explored bigger instances of the problem, and unfortunately, we have "
+"no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
+"of the 1824 possible boards where no player is home (that's 1.31%).  With 6 "
+"bases, it fails on 1251 of the 58860 such boards (2.12%). With 7 bases, it "
+"fails for 84444 out of 2633940 (that's 3.2%). I am still looking for a "
+"criteria ensuring that the algorithm won't loop. If you discover one, please "
+"report it. Ideally, it would be simple to enforce manually so that we can "
+"use it during our unplugged activities."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/Main.html:26
+msgid "What can I do to improve this JLM universe"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:28
+msgid ""
+"As usual, there are several things that could be done in the code of this "
+"universe to improve it:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/Main.html:30
+msgid ""
+"Other graphical representations could be proposed, such as a linear one (for "
+"the existing exercises) or other ones (such as a grid or a tree, if an "
+"exercise on this kind of graph proves interesting)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/Main.html:32
+msgid "A temporal view similar to the sorting universe could be helpful"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/Main.html:33
+msgid ""
+"Other exercises on other algorithms on this variant, or on other variants "
+"such as the 15-puzzle."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/short_desc.html:1
 msgid "Rainbow baseball"
 msgstr "Baseball multicolore"
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/short_desc.html:3
+#: src/lessons/sort/baseball/short_desc.html:3
+#, fuzzy
+#| msgid ""
+#| "This is another funny variation on the sorting problem, but "
+#| "unfortunately, its integration within JLM is still ongoing."
 msgid ""
-"This is another funny variation on the sorting problem, but unfortunately, "
-"its integration within JLM is still ongoing."
+"This is another funny variation on the sorting problem, adapting the main "
+"sorting algorithms on an unusual context."
 msgstr ""
 "Il s'agit d'un autre problème amusant autour des algorithmes de tri. "
 "Malheureusement, son intégration à JLM n'est pas encore terminée."
 
 #. type: Content of: <h1>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:1
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:1
 msgid "Rainbow Baseball"
 msgstr "Baseball multicolore"
 
 #. type: Content of: <p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:3
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:2
 msgid ""
-"The color of a base is given by its index.  The hole has a color of -1.  The "
-"base which has only one player on the field has <i>getAmountOfBases()-1</i> "
-"as index"
+"The colors are represented by integers, between <code>0</code> and "
+"<code>amount of bases -1</code>.  The hole is represented by the special "
+"value <code>-1</code>.  The color of each base is its rank. So base <code>1</"
+"code> is of color <code>1</code>."
 msgstr ""
-"La couleur d'un base est donnée par son index.\n"
-"Le trou a -1 comme couleur.\n"
-"La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> "
-"comme index"
 
-#. type: Content of: <div>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:10
-msgid "<u>Functions provided:</u>"
-msgstr "<u>Fonctions fournies :</u>"
-
-#. type: Content of: <p><div><p><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:12
-#: src/lessons/smn/baseball/easy/BaseballGame.html:28
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:42
-#, no-wrap
-msgid "void move(int baseSrc, int playerSrc)"
-msgstr "void move(int baseSrc, int playerSrc)"
-
-#. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:14
-#: src/lessons/smn/baseball/easy/BaseballGame.html:30
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:44
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:6
 msgid ""
-"Move the player on position <code>playerLocation</code> from the base "
-"<code>baseSrc</code> to the hole."
+"Once every players are home on the field, the hole should be in the last "
+"base, that is of rank <code>getAmountOfBases()-1</code>."
 msgstr ""
-"Déplace le joueur de la position <code>playerLocation</code> de la base "
-"<code>baseSrc</code> au trou."
 
-#. type: Content of: <div><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:16
-#, no-wrap
-msgid " int getPlayerColor(int baseIndex, int playerLocation) "
-msgstr "int getPlayerColor(int baseIndex, int playerLocation) "
-
-#. type: Content of: <div>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:18
-msgid ""
-"Return the color of the player on position <code>playerLocation</code> ( 0 "
-"or 1 ) from the base <code>baseIndex</code>."
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:8
+msgid "Functions to retrieve the world's dimensions"
 msgstr ""
-"Renvoie la couleur du joueur de la position <code>playerLocation</code> ( 0 "
-"ou 1 ) de la base <code>baseIndex</code>."
 
-#. type: Content of: <div><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:20
-#, no-wrap
-msgid " int getHoleBase() "
-msgstr "int getHoleBase()"
-
-#. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:22
-#: src/lessons/smn/baseball/easy/BaseballGame.html:39
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:53
-msgid "Return the index of the base where the hole is located"
-msgstr "Renvoie l'index de la base où se trouve le trou"
-
-#. type: Content of: <div><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:24
-#, no-wrap
-msgid " int getHolePositionInBase()"
-msgstr "int getHolePositionInBase()"
-
-#. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:26
-#: src/lessons/smn/baseball/easy/BaseballGame.html:43
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:57
-msgid "Return the player's position in the base where the hole is located"
-msgstr "Renvoie la position de joueur vide dans la base où se situe le trou"
-
-#. type: Content of: <div><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:28
-#, no-wrap
-msgid " boolean isBaseSorted( int baseIndex)"
-msgstr "boolean isBaseSorted( int baseIndex )"
-
-#. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:30
-#: src/lessons/smn/baseball/easy/BaseballGame.html:47
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:61
-msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
-msgstr ""
-"Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur "
-"la bonne base."
-
-#. type: Content of: <p><div><p><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:32
-#: src/lessons/smn/baseball/easy/BaseballGame.html:49
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:63
-#, no-wrap
-msgid "int getAmountOfBases()"
-msgstr "int getAmountOfBases()"
-
-#. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:34
-#: src/lessons/smn/baseball/easy/BaseballGame.html:51
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:65
-msgid "Return the amount of bases in the field."
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:11
+#, fuzzy
+#| msgid "Return the amount of bases in the field."
+msgid "Retrieve the amount of bases on this field:"
 msgstr "Renvoie le nombre de bases dans le terrain"
 
-#. type: Content of: <p><div><p><pre>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:36
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:68
-#, no-wrap
-msgid "int getLocationsAmount()"
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:12
+#, fuzzy, no-wrap
+#| msgid "int getLocationsAmount()"
+msgid "int getBasesAmount()"
 msgstr "int getLocationsAmount()"
 
-#. type: Content of: <p><div><p>
-#: src/jlm/universe/smn/baseball/BaseballWorld.html:38
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:70
-msgid ""
-"Return the amount of players locations available on each base of the field"
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:13
+#, fuzzy, no-wrap
+#| msgid "int getLocationsAmount()"
+msgid "getBasesAmount()"
+msgstr "int getLocationsAmount()"
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:15
+#, fuzzy
+#| msgid ""
+#| "Return the amount of players locations available on each base of the field"
+msgid "Retrieve the amount of player's positions per base on this field:"
 msgstr ""
 "Renvoie le nombre de positions de joueur disponible sur chaque base du "
 "terrain"
 
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:16
+#, fuzzy, no-wrap
+#| msgid "int getLocationsAmount()"
+msgid "int getPositionsAmount()"
+msgstr "int getLocationsAmount()"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
+#, fuzzy, no-wrap
+#| msgid "int getLocationsAmount()"
+msgid "getPositionsAmount()"
+msgstr "int getLocationsAmount()"
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:20
+msgid "Functions to retrieve the world's state"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
+#, fuzzy
+#| msgid "Return the index of the base where the hole is located"
+msgid "Retrieve the base in which the hole is located:"
+msgstr "Renvoie l'index de la base où se trouve le trou"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:23
+#, fuzzy, no-wrap
+#| msgid "int getHoleBase() "
+msgid "int getHoleBase()"
+msgstr "int getHoleBase()"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
+#, fuzzy, no-wrap
+#| msgid "int getHoleBase() "
+msgid "getHoleBase()"
+msgstr "int getHoleBase()"
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:26
+msgid "Retrieve the hole position within its base:"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
+#, fuzzy, no-wrap
+#| msgid " int getHolePositionInBase()"
+msgid " int getHolePosition()"
+msgstr "int getHolePositionInBase()"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
+#, fuzzy, no-wrap
+#| msgid "int getHolePositionInBase()"
+msgid "getHolePosition()"
+msgstr "int getHolePositionInBase()"
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:30
+msgid "Retrieve the color of the player at a given location:"
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
+#, fuzzy, no-wrap
+#| msgid " int getPlayerColor(int baseIndex, int playerLocation) "
+msgid " int getPlayerColor(int base, int position)"
+msgstr "int getPlayerColor(int baseIndex, int playerLocation) "
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:32
+#, fuzzy, no-wrap
+#| msgid "int getPlayerColor(int baseIndex, int playerLocation) "
+msgid "getPlayerColor(base, position)"
+msgstr "int getPlayerColor(int baseIndex, int playerLocation) "
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
+#, fuzzy
+#| msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
+msgid "Retrieve whether all players of the field are at home:"
+msgstr ""
+"Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur "
+"la bonne base."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
+#, fuzzy
+#| msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
+msgid "Retrieve whether all players of a given base are at home:"
+msgstr ""
+"Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur "
+"la bonne base."
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:39
+#, fuzzy, no-wrap
+#| msgid "boolean isBaseSorted( int baseIndex)"
+msgid "boolean isBaseSorted(int base)"
+msgstr "boolean isBaseSorted( int baseIndex )"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:40
+#, fuzzy, no-wrap
+#| msgid "isSorted()"
+msgid "isBaseSorted(base)"
+msgstr "isSorted()"
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:44
+msgid "Functions to change the world"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:47
+msgid ""
+"Move a given player into the hole. This throws an IllegalArgumentException "
+"if the specified player is not near the hole (at most one base away)."
+msgstr ""
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:48
+#, fuzzy, no-wrap
+#| msgid "void move(int baseSrc, int playerSrc)"
+msgid "void move(int base, int position)"
+msgstr "void move(int baseSrc, int playerSrc)"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:49
+#, no-wrap
+msgid "move(base, position)"
+msgstr ""
+
 #. type: Content of: <h1>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:1
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:1
-msgid "Baseball"
+#: src/lessons/sort/baseball/NaiveBaseball.html:1
+#, fuzzy
+#| msgid "Rainbow Baseball"
+msgid "Naive Rainbow Baseball"
+msgstr "Baseball multicolore"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:3
+msgid ""
+"Today, the buggles decided to play a baseball game, but they are rather out "
+"of luck, actually.  First, kinda forgot the rules, and ... well ... they "
+"cannot find the ball and bats again.  So they decided to \"adapt a bit\" the "
+"rules. As the are no ball, the buggles can only running around the field, "
+"what they do happily: for a while, all attending buggle run at full speed in "
+"all directions around the field."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:9
+msgid ""
+"But after a few collisions, they decide to invent new rules to organize a "
+"bit the game: They make one team per base and two players per team. One of "
+"the teams has only one player so that its base has an empty location. Then, "
+"the players are dispatched randomly around the bases, and the game for them "
+"is to reach their home base. The whole game stops when all players are "
+"home.  There is no winning team: either all players win, or they all lose. "
+"Actually, this game is very different from the original baseball. The only "
+"rule that remains is that you can only run around the field, from one base "
+"to the next one, without crossing middle of the field."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:17
+msgid ""
+"Now, they are asking you to help them deciding who should move when so that "
+"each player returns to its base. Only one buggle can move at each round, "
+"from its position to the empty spot.  The maximal distance that a buggle can "
+"cover in one round is of one base."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:21
+msgid ""
+"So, at each round, the empty spot is on one base (say <code>B</code>), and "
+"you should decide which buggle enters that empty spot. There is four "
+"candidates (two from base <code>B-1</code> and two from base <code>B+1</"
+"code>)."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/NaiveBaseball.html:25
+#, fuzzy
+#| msgid "Pledge algorithm"
+msgid "The Naïve algorithm"
+msgstr "Algorithme de Pledge"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:27
+msgid ""
+"In this exercise, we will first explore a very simple algorithm. To decide "
+"which of the four candidate buggles should enter the empty spot, we first "
+"restrict ourselves and decide that buggles can only turn clockwise. Then, "
+"from the two remaining candidates, we pick the one that has the largest "
+"distance to cover to reach its base (turning clockwise). Click on the demo "
+"button: this works rather well in practice."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:33
+msgid ""
+"It's hard to find a simpler algorithm for this problem: While it's not "
+"sorted, search for the base containing the candidate buggles: if the hole is "
+"in base <code>B</code>, it's the base <code>B+1</code>, modulo the amount of "
+"bases. Then, compute the distance that each buggle of that base still has to "
+"run to reach its base (0 if it's already home). Once you found the buggle "
+"that should enter the empty spot, just use the <code>move</code> method on "
+"it, and iterate."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:39
+msgid ""
+"The main difficulty should be to get the few equations right: determining "
+"the base next to the hole should be easy, but determining the distance that "
+"a player has to cover may reveal a bit more challenging. Don't hesitate to "
+"draw pictures on a paper to cover all possible cases. It should not be that "
+"difficult either: there is not that many cases after all."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/SelectBaseball.html:1
+#, fuzzy
+#| msgid "Rainbow Baseball"
+msgid "Select Rainbow Baseball"
+msgstr "Baseball multicolore"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:3
+msgid ""
+"The previous algorithm is very pleasant: it's rather simple and rather fast "
+"to implement, but unfortunately, it is also rather wrong! In some cases, it "
+"never stops, which is obviously bad. If you don't believe it, just copy "
+"paste your previous code, and hit the run button. The first world of this "
+"exercise is one of these unfortunate situations that drives our previous "
+"algorithm crazy."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:9
+msgid ""
+"So we have to find another algorithm, preferably one that works in all cases."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:11
+msgid ""
+"For that, the best solution is to start from a well known algorithm instead "
+"of trying to invent a new one from scratch as we just did. When you think a "
+"bit about this problem, this can is very similar to a sorting problem: Just "
+"make sure that the players are sorted by their colors and you're set. And "
+"while we are at it, let's generalize the game to allow more that 4 bases."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:17
+msgid ""
+"Let's adapt the selection sort to our situation. The big lines of the "
+"algorithm is then \"for each base, select the players that should occupy "
+"this base, make sure that they come to their position, and never change "
+"these players again when you move on to the next base\".  Selecting the "
+"player should be no problem; Do not hesitate to define some methods such as "
+"<code>findPlayer()</code> or <code>findPlayerBase()</code>. This will ensure "
+"that your code remains understandable. Not moving the players once they are "
+"in position is very easy: start with the base 0 and iterate with the bases "
+"1, 2, etc."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:25
+msgid ""
+"The most problematic aspect is to move the selected players into position. "
+"For that, you have to move the hole to the position where the player is, and "
+"then move both the player and the hole to the base that is next to the "
+"player's goal (probably in a loop), and finally put the player in the right "
+"position of its target base."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:30
+msgid ""
+"As often in programming, the devil is in the details: there is a bunch of "
+"corner cases that you should detect and deal with correctly, such as the "
+"cases where the player is already in the base (but not in the position that "
+"you would like), or when the hole is on the right of the player (probably "
+"when you sort the first base). But you will find and hunt these while "
+"debugging your code."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/InsertBaseball.html:1
+#, fuzzy
+#| msgid "Rainbow Baseball"
+msgid "Insertion Baseball"
+msgstr "Baseball multicolore"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:3
+msgid ""
+"The good point of adapting the selection sort to the baseball problem is "
+"that we know that it works (provided that our adaptation is correct). That's "
+"much better than the first naive algorithm, that was unable to converge to "
+"the solution in some situations. But actually, the selection sort is not "
+"perfect either as it requires a lot of swaps: we have to bring the hole to "
+"the selected player and then both the player and hole in position, and more. "
+"We can do better."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:9
+msgid ""
+"For example, each player can run quite a long way from its initial position "
+"to its target solution.  Instead, it may be more interesting to split the "
+"field in two parts: one on the left where all players are sorted relatively "
+"to each others, and one on the right where the players are still at their "
+"initial positions. Then, at each iteration, we take the player at the border "
+"between the sorted and unsorted areas (that is, the left-most player of the "
+"unsorted area) and move it to the left (within the sorted area) until it "
+"reaches its position (that is, until the position where it's bigger that its "
+"left neighbor). This would at least reduce the travel of players to the "
+"sorted area as we use the first one on the border."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:18
+msgid ""
+"Actually, that's exactly what an insertion sort would do: maintain a sorted "
+"area on the left, and put iteratively the player on the border to its "
+"position within the sorted area. This is good, as we know that our algorithm "
+"is not inherently flawed since we adapt a well known one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:22
+msgid ""
+"The easiest to adapt the insertion sort to the baseball problem is to "
+"consider all positions as adjacent and forget about bases. For that, we "
+"define the methods <code>getColor(pos)</code>, <code>move(pos)</code> and "
+"<code>getHole()</code> that all use a unique integer to designate a given "
+"position. These functions simply convert between the way to specify a "
+"position and then call the usual functions to interact with the world. If "
+"you have an <code>index</code> and want to convert it into a <code>base,pos</"
+"code>, then <code>base=index/2</code> and <code>pos=index%2</code>. To "
+"compute the reverse, <code>index=base*2+pos</code> (this works because "
+"<code>getPositionsAmount()</code> always returns 2)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:31
+msgid ""
+"For the algorithm itself, you should first move the hole to the position 1. "
+"The position 0 is considered to be the sorted area (of size 1 for now) while "
+"the area above 2 is the unsorted area.  The comes an iteration to sort each "
+"element of the unsorted area. Since this iteration is a bit complex, you "
+"should think of its loop invariant, that is, the condition that is true "
+"before and after the loop and which explains that the loop fulfills its "
+"goal. Here, the loop invariant is twofold: First, the hole is between the "
+"sorted area and the unsorted area, and then, the every elements of the "
+"sorted area are ... well sorted relatively to their neighbors."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:39
+msgid ""
+"Then, the loop body to sort an element should first descend the hole and the "
+"elements within the sorted area until the element is larger than the element "
+"before in the sorted area (2 moves per position to travel), and then move "
+"the hole back to its position between the sorted and unsorted areas (1 move "
+"per position)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:43
+msgid ""
+"Once you insert the last element within the sorted area, your whole set is "
+"sorted and you're done.  I preserve the surprise of the border cases that "
+"will require some little adjustments to your algorithm to make it work "
+"properly :)"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/BubbleBaseball.html:1
+#, fuzzy
+#| msgid "Baseball"
+msgid "Bubble Baseball"
 msgstr "Baseball"
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:6
+#: src/lessons/sort/baseball/BubbleBaseball.html:3
 msgid ""
-"This world implements the baseball game, in which several players want to go "
-"back to their bases. The bases make a circle and have their own colors. "
-"There are two players for one base, except one, which has only one player in "
-"its team.  You are asked to make the players go on the bases which colors "
-"correspond to theirs. The only allowed move is for one of the two players "
-"standing on one of the two bases which are directly next to the base with "
-"only one player to move and fill the hole, leaving a new one on the base it "
-"just left."
+"Well, we adapted the insertion sort because our selection sort required too "
+"much moves to get the selected players to their position, but the insertion "
+"sort requires an inordinate amount of changes to get the border elements to "
+"their position within the sorted area without mixing the already sorted "
+"elements. At the end of the day, our selection variant was more efficient "
+"with at most <code>3*amountOfBase</code> moves to sort one element (1 to get "
+"the hole alongside with the player, and 2 to get the hole+player in "
+"position) while our insertion variant requires at most "
+"<code>3*amountOfPlayers</code> to sort one element (2 to descend the hole "
+"and player in position, 1 to get the hole back to its position). That's "
+"twice as bad as there is two players per base. It may be possible to improve "
+"the insertion sort by moving by more than one element when descending, but "
+"it seems uneasy (at least, while not mixing the already sorted elements) and "
+"it would probably only ensure that our insertion variant becomes as "
+"efficient as our selection variant, not dramatically better."
 msgstr ""
-"Ce monde implémente le jeu du baseball multicolore, dans lequel plusieurs "
-"joueurs veulent retourner à leur base. Les bases sont dans une disposition "
-"circulaire et ont leur propre couleur. Il y a deux joueurs pour toutes les "
-"bases sauf une, qui ne dispose donc que d'un joueur dans son équipe. Il vous "
-"est demandé de déplacer les joueurs jusqu'à la base qui a la même couleur "
-"que la leur. Le seul mouvement autorisé est, pour l'un des deux joueurs "
-"présents sur l'une des deux bases située à côté de la base ayant un seul "
-"joueur de se déplacer et de remplir le trou, laissant un nouveau trou sur la "
-"base qu'il vient de quitter."
-
-#. type: Content of: <p><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:11
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:22
-msgid "Memento:"
-msgstr "Notes:"
-
-#. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:14
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:28
-msgid "The color of a base is given by its index."
-msgstr "La couleur d'une base est donnée par son index."
-
-#. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:17
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:31
-msgid "The hole has a color of -1."
-msgstr "Le trou a une couleur de -1."
-
-#. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:20
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:34
-msgid ""
-"The base which has only one player on the field has <i>getAmountOfBases()-1</"
-"i> as index"
-msgstr ""
-"La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> "
-"comme index"
-
-#. type: Content of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:26
-msgid "There are six methods provided :"
-msgstr "Six méthodes vous sont fournies :"
-
-#. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:32
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:46
-#, no-wrap
-msgid "int getPlayerColor(int baseIndex, int playerLocation) "
-msgstr "int getPlayerColor(int baseIndex, int playerLocation) "
-
-#. type: Content of: <p><div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:34
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:48
-msgid ""
-"Return the color of the player on position <code>playerLocation</code> ( 0 "
-"or 1 ) from the base <code>baseIndex</code>.  The color -1 is the hole."
-msgstr ""
-"Renvoie la couleur du joueur à la position <code>playerLocation</code> ( 0 "
-"ou 1 ) de la base <code>baseIndex</code>.  La couleur -1 correspond au trou."
-
-#. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:37
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:51
-#, no-wrap
-msgid "int getHoleBase() "
-msgstr "int getHoleBase()"
-
-#. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:41
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:55
-#, no-wrap
-msgid "int getHolePositionInBase()"
-msgstr "int getHolePositionInBase()"
-
-#. type: Content of: <p><div><p><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:45
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:59
-#, no-wrap
-msgid "boolean isBaseSorted( int baseIndex)"
-msgstr "boolean isBaseSorted( int baseIndex )"
-
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:56
-msgid "Show Tip 1 ( the methods's prototype)"
-msgstr "Montrer l'indice 1 ( le prototype des méthodes à utiliser)"
-
-#. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:57
-msgid "The prototypes of the methods you may use are the followings :"
-msgstr ""
-"Les prototypes des méthodes que vous pouvez utiliser sont les suivants :"
-
-#. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:61
-msgid ""
-"private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int "
-"playerDst) throws InvalidMoveException"
-msgstr ""
-"private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int "
-"playerDst) throws InvalidMoveException"
-
-#. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:63
-msgid ""
-"Move the player in position <code>playerSrc</code> of the base "
-"<code>baseSrc</code> to the position <code>playerDst</code> from the base "
-"<code>baseDst</code>"
-msgstr ""
-"Déplace le joueur de la position <code>playerLocation</code> de la base "
-"<code>baseSrc</code> à la position <code>playerDst</code> de la base "
-"<code>baseDst</code>."
-
-#. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:65
-msgid ""
-"private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) "
-"throws InvalidPositionException"
-msgstr ""
-"private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) "
-"throws InvalidPositionException"
-
-#. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:67
-msgid ""
-"Return the base's number and the position of the nearest player which "
-"has<code>colorWanted</code> as color. It begins the search at the base "
-"<code>firstBaseToSearch</code>"
-msgstr ""
-"Renvoie l'index de la base et la position sur celle-ci du joueur le plus "
-"proche ayant <code>colorWanted</code> comme couleur. La recherche commence à "
-"la base d'index <code>firstBaseToSearch</code>"
-
-#. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:69
-msgid ""
-"private void bringHole(int baseDst, int playerDst , int playerToProtect) "
-"throws InvalidMoveException"
-msgstr ""
-"private void bringHole(int baseDst, int playerDst , int playerToProtect) "
-"throws InvalidMoveException"
-
-#. type: Content of: <div><pre><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:71
-msgid ""
-"Bring the hole to the position <code>playerDst</code> from the base "
-"<code>baseDst</code> while protecting the position <code>playerToProtect</"
-"code> during the travel"
-msgstr ""
-"Amène le trou à la position <code>playerDst</code> de la base <code>baseDst</"
-"code> tout en protégeant la position <code>playerToProtect</code> durant le "
-"trajet"
-
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:78
-msgid "Show Tip 2 (Pseudo-code of solve)"
-msgstr "Montrer l'indice 2 (le pseudo-code de la fonction solve)"
-
-#. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:79
-msgid "The algorithm of the solve method is the following:"
-msgstr "L'algorithme de la méthode solve est le suivant :"
-
-#. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:81
-#, no-wrap
-msgid ""
-"BEGIN\n"
-"\tcolorWanted &lt;- getBaseColor(baseIndex)\n"
-"\tIF getPlayerColor(baseIndex, 0) != colorWanted \n"
-"\tTHEN\n"
-"\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
-"\t\tTHEN\n"
-"\t\t\tbringHole(baseIndex, 0, 1)\n"
-"\t\t\tmove(baseIndex, 1)\n"
-"\t\tELSE\n"
-"\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
-"\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
-"\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
-"\t\tEND_IF\n"
-"\tEND_IF\n"
-"\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
-"\tTHEN\n"
-"\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
-"\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
-"\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
-"\tEND_IF\n"
-"END\n"
-msgstr ""
-"BEGIN\n"
-"\tcolorWanted &lt;- getBaseColor(baseIndex)\n"
-"\tIF getPlayerColor(baseIndex, 0) != colorWanted \n"
-"\tTHEN\n"
-"\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
-"\t\tTHEN\n"
-"\t\t\tbringHole(baseIndex, 0, 1)\n"
-"\t\t\tmove(baseIndex, 1)\n"
-"\t\tELSE\n"
-"\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
-"\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
-"\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
-"\t\tEND_IF\n"
-"\tEND_IF\n"
-"\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
-"\tTHEN\n"
-"\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
-"\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
-"\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
-"\tEND_IF\n"
-"END\n"
-
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:107
-msgid "Show Tip 3 ( Pseudo-code of bringHole )"
-msgstr "Montrer l'indice 3 (le pseudo-code de bringHole)"
-
-#. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:108
-msgid "The algorithm of the bringHole method is the following:"
-msgstr "L'algorithme de la méthode bringHole est le suivant :"
-
-#. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:110
-#, no-wrap
-msgid ""
-"BEGIN\n"
-"\tholeBaseLocation[0] &lt;- getHoleBase()\n"
-"\tholeBaseLocation[1] &lt;- getHolePositionInBase()\n"
-"\tIF baseDst > holeLocation[0]\n"
-"\tTHEN\n"
-"\t\tFOR i FROM holeLocation[0]+1 TO baseDst BY 1\n"
-"\t\tDO\n"
-"\t\t\tmove(i, playerDst)\n"
-"\t\tEND_FOR\n"
-"\tELSE \n"
-"\t\tIF baseDst &lt; holeLocation[0]\n"
-"\t\tTHEN\n"
-"\t\t\tFOR i FROM holeLocation[0]-1 DOWNTO baseDst+1 BY -1\n"
-"\t\t\tDO\n"
-"\t\t\t\tmove(i,1-playerToProtect)\n"
-"\t\t\tEND_FOR\n"
-"\t\t\tmove(baseDst,playerDst);\n"
-"\t\tELSE \n"
-"\t\t\tIF baseDst == holeLocation[0] AND playerDst != holeLocation[1]\n"
-"\t\t\tTHEN\n"
-"\t\t\t\tmove(baseDst,playerDst);\n"
-"\t\t\tEND_IF\n"
-"\t\tEND_IF\n"
-"\tEND_IF\n"
-"END\n"
-msgstr ""
-"BEGIN\n"
-"\tholeBaseLocation[0] &lt;- getHoleBase()\n"
-"\tholeBaseLocation[1] &lt;- getHolePositionInBase()\n"
-"\tIF baseDst > holeLocation[0]\n"
-"\tTHEN\n"
-"\t\tFOR i FROM holeLocation[0]+1 TO baseDst BY 1\n"
-"\t\tDO\n"
-"\t\t\tmove(i, playerDst)\n"
-"\t\tEND_FOR\n"
-"\tELSE \n"
-"\t\tIF baseDst &lt; holeLocation[0]\n"
-"\t\tTHEN\n"
-"\t\t\tFOR i FROM holeLocation[0]-1 DOWNTO baseDst+1 BY -1\n"
-"\t\t\tDO\n"
-"\t\t\t\tmove(i,1-playerToProtect)\n"
-"\t\t\tEND_FOR\n"
-"\t\t\tmove(baseDst,playerDst);\n"
-"\t\tELSE \n"
-"\t\t\tIF baseDst == holeLocation[0] AND playerDst != holeLocation[1]\n"
-"\t\t\tTHEN\n"
-"\t\t\t\tmove(baseDst,playerDst);\n"
-"\t\t\tEND_IF\n"
-"\t\tEND_IF\n"
-"\tEND_IF\n"
-"END\n"
-
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:140
-msgid "Show Tip 4 ( Pseudo-code of findNearestPlayer)"
-msgstr "Montrer l'indice 4 (le pseudo-code de findNearestPlayer)"
-
-#. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:141
-msgid "The algorithm of the findNearestPlayer method is the following :"
-msgstr "L'algorithme de la méthode findNearestPlayer est le suivant :"
-
-#. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:143
-#, no-wrap
-msgid ""
-"BEGIN\n"
-"\tnbBases &lt;- getAmountOfBases()\n"
-"\tfound &lt;- false;\n"
-"\ti &lt;- firstBaseToSearch\n"
-"\tWHILE i &lt; nbBases AND !found\n"
-"\tDO\n"
-"\t\tFOR j FROM 0 TO 1 BY 1\n"
-"\t\tDO\n"
-"\t\t\tIF getPlayerColor(i, j)== colorWanted AND !found\n"
-"\t\t\tTHEN\n"
-"\t\t\t\tlocation[0] &lt;- i;\n"
-"\t\t\t\tlocation[1] &lt;- j;\n"
-"\t\t\t\tfound &lt;- true;\n"
-"\t\t\tEND_IF\n"
-"\t\tEND_FOR\n"
-"\t\ti &lt;- i+1\n"
-"\tEND_WHILE\n"
-"\tRETURN location\n"
-"END\n"
-msgstr ""
-"BEGIN\n"
-"\tnbBases &lt;- getAmountOfBases()\n"
-"\tfound &lt;- false;\n"
-"\ti &lt;- firstBaseToSearch\n"
-"\tWHILE i &lt; nbBases AND !found\n"
-"\tDO\n"
-"\t\tFOR j FROM 0 TO 1 BY 1\n"
-"\t\tDO\n"
-"\t\t\tIF getPlayerColor(i, j)== colorWanted AND !found\n"
-"\t\t\tTHEN\n"
-"\t\t\t\tlocation[0] &lt;- i;\n"
-"\t\t\t\tlocation[1] &lt;- j;\n"
-"\t\t\t\tfound &lt;- true;\n"
-"\t\t\tEND_IF\n"
-"\t\tEND_FOR\n"
-"\t\ti &lt;- i+1\n"
-"\tEND_WHILE\n"
-"\tRETURN location\n"
-"END\n"
-
-#. type: Attribute 'alt' of: <div>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:165
-msgid "Show tip 5 ( Pseudo-code of bringPlayerHome)"
-msgstr "Montrer l'indice 5(le pseudo-code de bringPlayerHome)"
-
-#. type: Content of: <div><p>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:166
-msgid "The algorithm of the bringPlayerHome method is the following :"
-msgstr "L'algorithme de la méthode bringPlayerHome est le suivant :"
-
-#. type: Content of: <div><pre>
-#: src/lessons/smn/baseball/easy/BaseballGame.html:168
-#, no-wrap
-msgid ""
-"PRECONDITION: the hole is on the base of index baseSrc-1\n"
-"BEGIN\n"
-"\t\tmove( baseSrc,playerSrc)\n"
-"\t\tFOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1\n"
-"\t\tDO\n"
-"\t\t\tmove(i,1-playerDst)\n"
-"\t\t\tmove(i-1,playerDst)\n"
-"\t\t\tmove(i,playerDst)\n"
-"\t\tEND_FOR\n"
-msgstr ""
-"PRECONDITION: the hole is on the base of index baseSrc-1\n"
-"BEGIN\n"
-"\t\tmove( baseSrc,playerSrc)\n"
-"\t\tFOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1\n"
-"\t\tDO\n"
-"\t\t\tmove(i,1-playerDst)\n"
-"\t\t\tmove(i-1,playerDst)\n"
-"\t\t\tmove(i,playerDst)\n"
-"\t\tEND_FOR\n"
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:6
+#: src/lessons/sort/baseball/BubbleBaseball.html:15
 msgid ""
-"Like the previous world, this world implements a baseball world. But now, "
-"you have more than two players on each base.  Like before, your mission is "
-"to bring everyone home."
+"If we cannot make the sort faster, we can make it easier. If you think about "
+"it, it seems rather natural to adapt the bubble sort to this problem: the "
+"hole becomes the bubble that moves up and down, sorting a bit the array "
+"during each traversal. The big lines are simply: \"while it's not sorted, "
+"move the hole down to base 0 (moving the biggest player of each base at each "
+"step) and then back to the maximal base (moving the smallest player of each "
+"base)\". After a while, <code>isSorted()</code> will return true and your "
+"algorithm will stop."
 msgstr ""
-"A l'instar du monde précédent, ce monde implémente un monde de baseball. "
-"Mais maintenant, vous avez plus de deux joueurs sur chaque base. Comme "
-"auparavant, votre mission est d'amener chaque joueur à sa base."
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:10
+#: src/lessons/sort/baseball/BubbleBaseball.html:21
 msgid ""
-"This exercise is trying to show you one thing : you have to do a change that "
-"you haven't anticipated, and you need to make this change without breaking "
-"your code and without changing too many thing, because the algorithm is "
-"still great."
+"This is so easy that we introduce another variant of the problem, with more "
+"than two players per base.  But actually, that shouldn't block you very "
+"long, should it?"
 msgstr ""
-"Cet exercice essaye de vous montrer une chose : vous avez à faire un "
-"changement que vous n'aviez pas anticipé, et il faut le faire sans casser "
-"votre code et sans le modifier trop en profondeur, puisque votre algorithme "
-"est toujours correct."
 
 #. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:14
+#: src/lessons/sort/baseball/BubbleBaseball.html:24
 msgid ""
-"The previous algorithm was only able to deal with two players per base, you "
-"have to change it so you can handle n players per base, with n greater or "
-"equals at two."
+"Surprisingly, the bubble sort variant requires ways less moves than the "
+"other variants. This is astonishing because usually, the bubble sort "
+"performs much worse than the others sorts, but it comes from the very good "
+"match between its big lines and the baseball universe. It actually happens "
+"rather often that a pleasantly written algorithm performs very decently. But "
+"this is not an universal rule either, as demonstrated by the naive algorithm "
+"of the first exercise, that was nice, simple and wrong ;)"
 msgstr ""
-"L'algorithme précédent était seulement capable de gérer deux joueurs par "
-"base, vous avez à le modifier afin qu'il puisse gérer n joueurs par base, "
-"avec n supérieur ou égal à deux."
 
-#. type: Content of: <p>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:18
-msgid ""
-"You can be wondering why you didn't have to write directly an flawless "
-"algorithm. It's just that sometimes, it's way too hard.  Sometimes, you just "
-"need to take a particular case and generalize your solution. It's sometimes "
-"easier to generalize than to try to find a general algorithm from scratch. "
-"Remember that improving is way more easier than creating."
-msgstr ""
-"Vous pouvez vous demander pourquoi vous n'avez pas eu à écrire directement "
-"un algorithme sans ce défaut. C'est juste que parfois, c'est beaucoup trop "
-"difficile. Parfois, il suffit de prendre un cas particulier et de "
-"généraliser la solution. C'est bien souvent plus simple de généraliser que "
-"de trouver un algorithme général à partir de rien. Souvenez-vous "
-"qu'améliorer est plus facile que créer."
+#~ msgid "Creating a new JLM world"
+#~ msgstr "Créer un nouveau monde JLM (\"World\")"
 
-#. type: Content of: <p><p><ul><li>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:25
-msgid ""
-"You can have access to the number of locations available on each base by "
-"using the getLocationsAmount() method."
-msgstr ""
-"Vous pouvez avoir accès au nombre de positions disponibles sur chaque base "
-"en utilisant la méthode getLocationsAmount()."
+#~ msgid ""
+#~ "Welcome to the JLM Meta-Lesson. Its goal is to teach you how to write new "
+#~ "universes in JLM. For that, we will reimplement the Hanoi world "
+#~ "(available in the recursion lesson) step-by-step. This lesson covers "
+#~ "quite advanced topics and suppose that you are fluent in Java and "
+#~ "confident with the use of the JLM framework already. If you are not used "
+#~ "to the framework already, you probably want to take another lesson "
+#~ "before, like the welcome one or (maybe more fun) the maze one."
+#~ msgstr ""
+#~ "Bienvenue dans la Meta-Leçon JLM. Son but est de vous apprendre comment "
+#~ "écrire de nouveaux univers dans la JLM. Pour ce faire, nous allons "
+#~ "réimplanter le monde des tours de Hanoï ( disponible dans la leçon "
+#~ "récursion ) pas à pas. Cette leçon couvre des sujets assez avancés et "
+#~ "supporse que vous êtes à l'aise en Java et que vous connaissez déjà bien "
+#~ "l'utilisation du framework de la JLM. Si vous n'êtes pas déjà habitué au "
+#~ "frameword, vous voudrez probablement suivre une autre leçon avant, comme "
+#~ "Welcome ou ( sans doute plus amusant ) Maze."
 
-#. type: Content of: <p><div>
-#: src/lessons/smn/baseball/medium/BaseballGameMorePlayers.html:40
-msgid "There are seven methods provided :"
-msgstr "Sept méthodes vous sont fournies :"
+#~ msgid "Every JLM universe is composed of 4 main components:"
+#~ msgstr "Chaque univers JLM est composé de quatre composants principaux"
+
+#~ msgid "<b>The world</b>: it contains the state of the universe."
+#~ msgstr "<b>Le monde (\"world\")</b> : il contient l'état de l'univers."
+
+#~ msgid ""
+#~ "<b>The view</b>: it allows to draw the world and the entities on the "
+#~ "screen."
+#~ msgstr ""
+#~ "<b>La vue (\"View\")</b>: elle permet de dessiner le monde et les "
+#~ "entitées à l'écran."
+
+#~ msgid ""
+#~ "<b>The entity ancestor</b>: the code written by the student will derive "
+#~ "from this class, which contains some state specific to the entity, and "
+#~ "every accessor to let the entity interact with its world."
+#~ msgstr ""
+#~ "<b>L' \"entity ancestor\"</b> :  le code écrit par l'étudiant sera dérivé "
+#~ "de cette classe, qui contient certains états spécifiques à l'entité, et "
+#~ "chaque accesseur pour permettre à l'entité d'intéragir avec le monde."
+
+#~ msgid ""
+#~ "<b>The entity interactive control panel</b>: this is the little panel "
+#~ "displayed under the world view in the JLM interface. It allows to "
+#~ "interactively control the selected entity. As you can see from the "
+#~ "existing universes, this is optional, and if you don't provide any, the "
+#~ "panel will remain blank, preventing the users from interactively "
+#~ "controlling the entities."
+#~ msgstr ""
+#~ "<b>Le panneau de contrôle interactif de l'entité</b> : c'est le petit "
+#~ "panneau affiché en dessous de la vue du monde dans l'interface de la JLM. "
+#~ "Il permet de contrôler interactivement l'entité sélectionnée. Comme vous "
+#~ "pouvez le voir avec les univers existants, c'est optionnel, et si vous "
+#~ "n'en fournissez pas, le panneau restera vide, empêchant l'utilisateur de "
+#~ "controler interactivement l'entité."
+
+#~ msgid ""
+#~ "In addition, worlds are used by exercises, themselves sorted in lessons."
+#~ msgstr ""
+#~ "De plus, les mondes sont utilisés pas les exercices, eux-mêmes rangés en "
+#~ "leçons."
+
+#~ msgid ""
+#~ "<b>Lessons</b> are just a list of exercise. They can be sequential "
+#~ "(meaning that the student has to finish one exercise before being allowed "
+#~ "to see the next one in the list), altrough most of them are not (ie, "
+#~ "students are free to attempt the exercises in the order they like)."
+#~ msgstr ""
+#~ "<b>Les leçons (\"Lessons\")</b> sont juste une liste d'exercices. Elles "
+#~ "peuvent être séquentielles (ce qui signifie que l'étudiant doit finir "
+#~ "l'exercise avant de pouvoir voir le suivant ), même si la grande majorité "
+#~ "des leçons ne le sont pas ( ie, les étudiants sont libre d'essayer les "
+#~ "exercices dans l'ordre qu'ils souhaitent)."
+
+#~ msgid ""
+#~ "In the future, we would like to have richer exercise ordering schema, "
+#~ "where the requirements to fulfill to be allowed to try an exercise could "
+#~ "be more complex.  The dependencies would probably turn into a graph "
+#~ "instead of a chain.  But this is still to be done."
+#~ msgstr ""
+#~ "A l'avenir, nous aimerions disposer d'un ordonnancement d'exercices plus "
+#~ "riche, où les conditions à remplir pour pouvoir essayer un exercice "
+#~ "pourrait être plus complexes. Les dépendances deviendraient probablement "
+#~ "un graphe au lieu d'être une chaîne. Mais cela reste encore à réaliser."
+
+#~ msgid ""
+#~ "The main element of each lesson is a class classically called Main, which "
+#~ "simply contains a constructor adding each exercise of the lesson in row."
+#~ msgstr ""
+#~ "L'élément principal de chaque leçon est la classe communément appelée "
+#~ "Main, qui contient simplement un constructeur ajoutant chaque exercice de "
+#~ "la leçon l'un à la suite de l'autre."
+
+#~ msgid ""
+#~ "Each <b>exercise</b> object is in charge of instantiating the worlds "
+#~ "used, set them up (adding walls and baggles in BuggleWorld, or changing "
+#~ "the elevation and adding lamps in the LightBotWorld, etc), and populate "
+#~ "them with entities correctly setup (location, color, etc)."
+#~ msgstr ""
+#~ "Chaque objet <b>exercise</b> a pour mission d'instancier les mondes "
+#~ "utilisés, de les initialiser ( ajouter des murs et des baggles dans "
+#~ "BuggleWorld, ou changer l'altitude et ajouter des lampes dans "
+#~ "LightBotWorld, etc), et les peupler avec des correctement initialisées "
+#~ "( emplacement, couleur, etc) ."
+
+#~ msgid ""
+#~ "Most of the exercises also provide a specific <b>answer entity</b> able "
+#~ "to solve the exercise.  It serve both to compute the initial content of "
+#~ "the code editor, and to compute the objective world. We will come back on "
+#~ "this in a latter exercise of this meta-lesson."
+#~ msgstr ""
+#~ "La plupart des exercices fournissent aussi une <b>entité réponse "
+#~ "<b>(\"answer entity\")</b> capable de résoudre l'exercice. Cela sert à la "
+#~ "fois à afficher le contenu initial de l'éditeur de code, et à calculer le "
+#~ "monde objectif. Nous reviendrons là-dessus plus tard dans un exercice de "
+#~ "cette meta-leçon."
+
+#~ msgid ""
+#~ "The very first element you want to write in a new JLM universe is a "
+#~ "partial world implementation including the internal state. In subsequent "
+#~ "exercises, we will complete the World class to provide entities ways to "
+#~ "interact and modify their world, and we will also implement the other "
+#~ "elements of the universe."
+#~ msgstr ""
+#~ "Le premier élément que vous voulez écrire dans un nouvel univers de la "
+#~ "JLM est une implémentation partielle du monde incluant l'état interne. "
+#~ "Dans des exercices ultérieurs, nous complèterons la classe World pour "
+#~ "fournir aux entités des moyens d'intéragir et de modifier leur monde, et "
+#~ "nous implémenterons aussi les autres éléments de l'univers."
+
+#~ msgid ""
+#~ "Before you jump in writing your World implementation, you should "
+#~ "understand the big JLM picture, and how worlds are used internally."
+#~ msgstr ""
+#~ "Avant que vous vous jetiez dans l'écriture de votre implémentation de "
+#~ "World, vous devez comprendre le schéma de la JLM, et comment les mondes "
+#~ "sont utilisés en interne."
+
+#~ msgid "JLM worlds big picture"
+#~ msgstr "Schéma des mondes de la JLM"
+
+#~ msgid ""
+#~ "As you know, every JLM exercise can contain one or several worlds, each "
+#~ "containing one or several entities. The code written by the student is "
+#~ "executed in the entities, which must interact with their world to change "
+#~ "it from its initial state to its goal state."
+#~ msgstr ""
+#~ "Comme vous le savez, chaque exercice de la JLM peut contenir un ou "
+#~ "plusieurs mondes, chacun contenant une ou plusieures entitées. Le code "
+#~ "écrit par les étudiants est éxécutés dans les entitées, qui doivent "
+#~ "intéragir avec leur monde pour le faire passer de son état initial à "
+#~ "l'état objectif."
+
+#~ msgid ""
+#~ "This multiplication of worlds and entities is used to test the student "
+#~ "code in several conditions. It can thus be parallelized to test cases, "
+#~ "aiming at full testing coverage of the student code."
+#~ msgstr ""
+#~ "La multiplication des mondes et des entitées est utilisé pour tester le "
+#~ "code de l'étudiant dans différentes conditions. Cela peut être comparé à "
+#~ "des cas de tests, cherchant à tester entièrement le code de l'étudiant."
+
+#~ msgid ""
+#~ "Technically, in a given exercise, for every world accessible from the "
+#~ "relevant combobox, there is three World objects. They live in jlm.lesson."
+#~ "Exercise:"
+#~ msgstr ""
+#~ "Techniquement, dans un exercice donné, pour chaque monde accessible "
+#~ "depuis la liste déroulante, il y a trois objets World. Ils se trouvent "
+#~ "dans jlm.lesson.Exercise."
+
+#~ msgid ""
+#~ "protected World [] initialWorld; \n"
+#~ "protected World [] currentWorld; \n"
+#~ "protected World [] answerWorld;  \n"
+#~ msgstr ""
+#~ "protected World [] initialWorld; \n"
+#~ "protected World [] currentWorld; \n"
+#~ "protected World [] answerWorld;  \n"
+
+#~ msgid ""
+#~ "The line number of the combobox gives the index to use in these arrays.  "
+#~ "Each <code>initialWorld</code> is created by the exercise constructor."
+#~ msgstr ""
+#~ "Le numéro de ligne de la liste déroulante donne l'index utilisé dans ces "
+#~ "tableaux. Chaque <code>initialWorld</code> est crée par le constructeur "
+#~ "de l'exercice."
+
+#~ msgid ""
+#~ "<code>currentWorld</code> is the one displayed in the \"World\" tab of "
+#~ "the interface. At the beginning, it is a plain copy of the initialWorld, "
+#~ "but it gets modified when the student uses the interactive controls or "
+#~ "when the program gets run. The \"Reset\" button reset it to be a perfect "
+#~ "copy of the initial world."
+#~ msgstr ""
+#~ "<code>currentWorld</code> est celui affiché dans l'onglet \"World\" de "
+#~ "l'interface. Au début, il s'agit d'une simple copie de initialWorld, mais "
+#~ "il est modifié quand l'étudiant utilise les contrôles interactifs ou "
+#~ "quand le programme est lancé. Le bouton \"Reset\" le remet à zéro afin "
+#~ "qu'il redevienne une copie parfaite du monde initial."
+
+#~ msgid ""
+#~ "<code>answerWorld</code> is the one displayed by the \"Objective\" world. "
+#~ "Basically, it's a copy of the initial world, on which we let the specific "
+#~ "answer entity of this exercise run.  This default behavior can be "
+#~ "overloaded by exercises, but you'll probably never have to do so. We will "
+#~ "come back on this in a subsequent exercise."
+#~ msgstr ""
+#~ "<code>answerWorld</code> est celui affiché par le monde \"Objective\". "
+#~ "Concrètement, il s'agit d'une copie du monde initial, sur lequel on a "
+#~ "lancé le programme de l'\"answer entity\" de l'exercice. Ce comportement "
+#~ "par défaut peut être modifié par les exercices, mais vous n'aurez "
+#~ "probablement jamais à le faire. Nous reviendrons là dessus dans un "
+#~ "exercice ultérieur."
+
+#~ msgid "Implementing basic Worlds"
+#~ msgstr "Implémenter des mondes basiques"
+
+#~ msgid ""
+#~ "The internal use of Worlds hidden, but the important point is that every "
+#~ "World object has extend the jlm.universe.World class and define the "
+#~ "following methods and constructors:"
+#~ msgstr ""
+#~ "L'utilisation interne des mondes est cachée, mais le point important est "
+#~ "que chaque objet World hérite de la classe jlm.universe.World et définit "
+#~ "les méthodes et constructeurs suivants :"
+
+#~ msgid ""
+#~ "<b>a copy constructor</b> which is used to copy initial worlds into "
+#~ "currentWorld and answerWorld.  Its argument must be of the exact same "
+#~ "type than the class itself, not Object (this is because we use Java "
+#~ "introspection mechanism to search for such a constructor of the class).  "
+#~ "For example, if you create a TotoWorld, your copy constructor must be "
+#~ "declared as this:"
+#~ msgstr ""
+#~ "<b>un constructeur copie</b> qui est utilisé pour copier le monde initial "
+#~ "en currentWorld et answerWorld. Son argument doit être du même type que "
+#~ "la classe elle-même, et non pas de type Object ( c'est parce que nous "
+#~ "utilisons le mécanisme d'introspection Java pour rechercher un tel "
+#~ "constructeur dans la classe). Par exemple, si vous créer un TotWorl, "
+#~ "votre constructeur votre constructeur copie doit être déclaré ainsi :"
+
+#~ msgid ""
+#~ "public TotoWorld(TotoWorld other) {...} // Correct\n"
+#~ "public TotoWorld(Object other) {...} // FALSE\n"
+#~ "public TotoWorld(World other) {...} // also FALSE\n"
+#~ msgstr ""
+#~ "public TotoWorld(TotoWorld other) {...} // Correct\n"
+#~ "public TotoWorld(Object other) {...} // Faux\n"
+#~ "public TotoWorld(World other) {...} // Faux\n"
+
+#~ msgid ""
+#~ "The content of this constructor is usually a simple call to the "
+#~ "<code>super(World w)</code> constructor, but this constructor cannot be "
+#~ "omitted."
+#~ msgstr ""
+#~ "Le contenu de ce constructeur est généralement un simple appel au "
+#~ "constructeur<code>super(World w)</code>, mais ce constructeur copie doit "
+#~ "exister."
+
+#~ msgid ""
+#~ "One or several <b>regular constructors</b> initializing the state of the "
+#~ "object. They will be used by the exercise constructor to instantiate your "
+#~ "world. Since you usually write both the world and the lessons, you are "
+#~ "completely free to specify the parameters you want to your constructor. "
+#~ "It should use the <code>super(String name)</code> constructor to setup "
+#~ "the very basic elements of your world."
+#~ msgstr ""
+#~ "Un ou plusieurs <b>constructeurs normaux</b> initialisant l'état de "
+#~ "l'objet. Ils seront utilisés par le constructeur de l'exercice pour "
+#~ "instancier votre monde. Puisque vous écrivez généralement le monde et les "
+#~ "leçons, vous êtes complètement libre de spécifier les paramètres que vous "
+#~ "voulez pour votre constructeur. Il doit néanmoins utilise le constructeur "
+#~ "<code>super(String name)</code> pour initialiser les éléments basiques de "
+#~ "votre monde."
+
+#~ msgid ""
+#~ "Optionally, you may also want to use the <code>setDelay(int delay)</code> "
+#~ "method to change the initial animation delay. For example, the "
+#~ "SortingWorld set this to 1 to speed animations up. This is the delay in "
+#~ "milliseconds between each animation step during a continuous run."
+#~ msgstr ""
+#~ "Vous pouvez, de manière facultative, utiliser la méthode "
+#~ "<code>setdelay(int delay)</code> pour changer le délai initial de "
+#~ "l'animation. Par exemple, dans SortingWorld, mettez le à 1 pour accélérer "
+#~ "l'animation. C'est le délai en millisecondes entre chaque pas d'animation "
+#~ "durant un programme continu."
+
+#~ msgid ""
+#~ "A <b>reset() method</b> taking one World as parameter, and in charge of "
+#~ "copying the state of the parameter into the current world. This is "
+#~ "naturally used when you press the \"Reset\" button, or at the beginning "
+#~ "of each run."
+#~ msgstr ""
+#~ "Une méthode <b>reset()</b> prenant un World en paramètre, et ayant pour "
+#~ "mission d'affecter l'état du paramètre dans le monde courant. C'est "
+#~ "naturellement utilisé quand vous appuyez sur le bouton \"Reset\", ou au "
+#~ "début de chaque lancement de programme."
+
+#~ msgid ""
+#~ "The length of this method naturally depends on the complexity of your "
+#~ "world state. In hanoi, there is only 3 slots containing a list of disc so "
+#~ "that will be quite easy, but this can be quite complicated for complex "
+#~ "worlds such as BuggleWorld."
+#~ msgstr ""
+#~ "La longueur de cette méthode dépend naturellemetn de la complexité de "
+#~ "l'état de votre monde. Dans Hanoi, il y a seulement trois tours contenant "
+#~ "une liste de disques, cela sera donc très facile, mais cela peut être "
+#~ "bien plus compliqué avec des mondes complexes comme BuggleWorld."
+
+#~ msgid "Allowing the graphical rendering of Worlds"
+#~ msgstr "Permettre le rendu graphique des mondes"
+
+#~ msgid ""
+#~ "Some specific steps naturally must be taken so that JLM can graphically "
+#~ "display your world. Usually, you must write a specific class extending "
+#~ "jlm.universe.WorldView, and provide some protected methods so that the "
+#~ "View can retrieve the state to display. In this particular exercise, the "
+#~ "view is provided (you will write you own one in next exercise), so you "
+#~ "only have to implement the right accessor."
+#~ msgstr ""
+#~ "Certaines étapes spécifiques doivent naturellement être prise afin que la "
+#~ "JLM puisse afficher graphique votre monde. Usuellement, vous devez écrire "
+#~ "une classe spécifique héritant de jlm.universe.WorldView, et fournissant "
+#~ "des méthodes \"protected\", afin que la vue puisse récupérer l'état à "
+#~ "afficher. Dans cet exercice particulier, la vue vous est fournie ( vous "
+#~ "en écrirez une dans le prochain exercice ), donc vous n'avez qu'à "
+#~ "implémenter le bon accesseur."
+
+#~ msgid "Implementing your HanoiWorld"
+#~ msgstr "Implémenter votre HanoiWorld"
+
+#~ msgid ""
+#~ "The main task of this exercise is to modify the provided template to "
+#~ "store the state of the world. Since the exercise provides a view and "
+#~ "automatically instantiate your world, you cannot change the instantiation "
+#~ "constructor, nor the rendering accessor (see the code template for there "
+#~ "prototype). But you are completely free about how you actually store the "
+#~ "state in your object."
+#~ msgstr ""
+#~ "La tâche principale de cet exercice est de modifié le code fourni pour "
+#~ "sauvegarder l'état du monde. Puisque l'exercice fournit une  vue et "
+#~ "instancie automatiquement le monde, vous ne pouvez pas changer le "
+#~ "constructeur d'instanciation, ni l'accesseur de rendu graphique "
+#~ "( regardez le code fourni pour leurs prototypes ). Mais vous êtes "
+#~ "complètement libre sur comment vous allez sauvegarder l'état dans votre "
+#~ "object."
+
+#~ msgid ""
+#~ "During the implementation of the Hanoi world, I changed my internal "
+#~ "representation several times, to adapt to the code needs. My first try "
+#~ "was only simply three ArrayList&lt;Integer>, for each slots, while the "
+#~ "final design used an inner class called HanoiSlot, containing an integer "
+#~ "array and providing friendly functions such as <code>push()</code>, "
+#~ "<code>pop()</code> and <code>top()</code>. Even if it really becomes "
+#~ "necessary when implementing the action methods allowing the entities to "
+#~ "interact with their world, I advise you to design an inner class from the "
+#~ "beginning."
+#~ msgstr ""
+#~ "Pendant l'implémentation du monde des Tours de Hanoï, j'ai changé ma "
+#~ "représentation interne à plusieures reprises, afin de l'adapter aux "
+#~ "besoins du code. Mon premier essai était simplement trois ArrayList&lt;"
+#~ "Integer>, une pour chaque tour, tandis que la version finale fournit une "
+#~ "classe interne, nommé HanoiSlot, contenant un tableau d'entier et "
+#~ "fournissant des fonctions sympathiques telles que <code>push()</code>, "
+#~ "<code>pop()</code> and <code>top()</code>. Même si cela ne devient "
+#~ "réellement nécessaire que quand vous implémenter les méthodes d'actions "
+#~ "permettant aux entitées d'intéragir avec leur monde, je vous conseille de "
+#~ "concevoir une classe interne dès le départ."
+
+#~ msgid ""
+#~ "You probably want to add 3 fields to your World, one for each slot (we "
+#~ "will never try to have worlds with more than 3 slots), store the content "
+#~ "of each slot in the instantiation constructor, and retrieve the content "
+#~ "of a specific slot in the rendering accessor (<code>Integer[] "
+#~ "values(Integer i)</code>)."
+#~ msgstr ""
+#~ "Vous voudrez probablement ajouter trois champs à votre monde, un pour "
+#~ "chaque tour (on n'essayera jamais d'avoir des mondes avec plus de trois "
+#~ "tours), sauvegarder le contenu de chaque tour dans le construction "
+#~ "d'instanciation, et récupérer le contenu d'une tour donnée dans "
+#~ "l'accesseur de rendu graphique (<code>Integer[] values(Integer i)</code>)."
+
+#~ msgid ""
+#~ "That seems quite a lot of code to write compared to the other JLM "
+#~ "exercises, but at the end, my HanoiWorld implementation is less than 100 "
+#~ "lines long, which is not that much."
+#~ msgstr ""
+#~ "Cela semble être beaucoup de code à écrire comparé aux autres exercices "
+#~ "de la JLM, mais en fin de compte, mon implémentation de HanoiWorld fait "
+#~ "moints de cent lignes, ce qui n'est pas beaucoup."
+
+#~ msgid "Meta lesson"
+#~ msgstr "Meta leçon"
+
+#~ msgid ""
+#~ "The purpose of this lesson is to teach you how to write lessons for JLM."
+#~ msgstr ""
+#~ "Le but de cette leçon est de vous apprendre comment écrire des leçons "
+#~ "pour la JLM."
+
+#~ msgid "Computer Science in Real Life"
+#~ msgstr "Sciences Manuelles du Numérique"
+
+#~ msgid ""
+#~ "This material is currently under development in JLM and will soon be "
+#~ "properly integrated"
+#~ msgstr ""
+#~ "Ceci est actuellement en cours de développement, et sera bientôt "
+#~ "parfaitement intégré à JLM"
+
+#~ msgid ". Please be patient with us."
+#~ msgstr ". Merci de votre patience."
+
+#~ msgid "Few activities developped for Computer Science in Real Life"
+#~ msgstr ""
+#~ "Différentes activités développées pour les Sciences Manuelles du Numérique"
+
+#~ msgid ""
+#~ "The color of a base is given by its index.  The hole has a color of -1.  "
+#~ "The base which has only one player on the field has "
+#~ "<i>getAmountOfBases()-1</i> as index"
+#~ msgstr ""
+#~ "La couleur d'un base est donnée par son index.\n"
+#~ "Le trou a -1 comme couleur.\n"
+#~ "La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> "
+#~ "comme index"
+
+#~ msgid "<u>Functions provided:</u>"
+#~ msgstr "<u>Fonctions fournies :</u>"
+
+#~ msgid ""
+#~ "Move the player on position <code>playerLocation</code> from the base "
+#~ "<code>baseSrc</code> to the hole."
+#~ msgstr ""
+#~ "Déplace le joueur de la position <code>playerLocation</code> de la base "
+#~ "<code>baseSrc</code> au trou."
+
+#~ msgid ""
+#~ "Return the color of the player on position <code>playerLocation</code> "
+#~ "( 0 or 1 ) from the base <code>baseIndex</code>."
+#~ msgstr ""
+#~ "Renvoie la couleur du joueur de la position <code>playerLocation</code> "
+#~ "( 0 ou 1 ) de la base <code>baseIndex</code>."
+
+#~ msgid " int getHoleBase() "
+#~ msgstr "int getHoleBase()"
+
+#~ msgid "Return the player's position in the base where the hole is located"
+#~ msgstr "Renvoie la position de joueur vide dans la base où se situe le trou"
+
+#~ msgid " boolean isBaseSorted( int baseIndex)"
+#~ msgstr "boolean isBaseSorted( int baseIndex )"
+
+#~ msgid "int getAmountOfBases()"
+#~ msgstr "int getAmountOfBases()"
+
+#~ msgid ""
+#~ "This world implements the baseball game, in which several players want to "
+#~ "go back to their bases. The bases make a circle and have their own "
+#~ "colors. There are two players for one base, except one, which has only "
+#~ "one player in its team.  You are asked to make the players go on the "
+#~ "bases which colors correspond to theirs. The only allowed move is for one "
+#~ "of the two players standing on one of the two bases which are directly "
+#~ "next to the base with only one player to move and fill the hole, leaving "
+#~ "a new one on the base it just left."
+#~ msgstr ""
+#~ "Ce monde implémente le jeu du baseball multicolore, dans lequel plusieurs "
+#~ "joueurs veulent retourner à leur base. Les bases sont dans une "
+#~ "disposition circulaire et ont leur propre couleur. Il y a deux joueurs "
+#~ "pour toutes les bases sauf une, qui ne dispose donc que d'un joueur dans "
+#~ "son équipe. Il vous est demandé de déplacer les joueurs jusqu'à la base "
+#~ "qui a la même couleur que la leur. Le seul mouvement autorisé est, pour "
+#~ "l'un des deux joueurs présents sur l'une des deux bases située à côté de "
+#~ "la base ayant un seul joueur de se déplacer et de remplir le trou, "
+#~ "laissant un nouveau trou sur la base qu'il vient de quitter."
+
+#~ msgid "Memento:"
+#~ msgstr "Notes:"
+
+#~ msgid "The color of a base is given by its index."
+#~ msgstr "La couleur d'une base est donnée par son index."
+
+#~ msgid "The hole has a color of -1."
+#~ msgstr "Le trou a une couleur de -1."
+
+#~ msgid ""
+#~ "The base which has only one player on the field has "
+#~ "<i>getAmountOfBases()-1</i> as index"
+#~ msgstr ""
+#~ "La base qui a un seul joueur sur le terrain a <i>getAmountOfBases()-1</i> "
+#~ "comme index"
+
+#~ msgid "There are six methods provided :"
+#~ msgstr "Six méthodes vous sont fournies :"
+
+#~ msgid ""
+#~ "Return the color of the player on position <code>playerLocation</code> "
+#~ "( 0 or 1 ) from the base <code>baseIndex</code>.  The color -1 is the "
+#~ "hole."
+#~ msgstr ""
+#~ "Renvoie la couleur du joueur à la position <code>playerLocation</code> "
+#~ "( 0 ou 1 ) de la base <code>baseIndex</code>.  La couleur -1 correspond "
+#~ "au trou."
+
+#~ msgid "Show Tip 1 ( the methods's prototype)"
+#~ msgstr "Montrer l'indice 1 ( le prototype des méthodes à utiliser)"
+
+#~ msgid "The prototypes of the methods you may use are the followings :"
+#~ msgstr ""
+#~ "Les prototypes des méthodes que vous pouvez utiliser sont les suivants :"
+
+#~ msgid ""
+#~ "private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int "
+#~ "playerDst) throws InvalidMoveException"
+#~ msgstr ""
+#~ "private void bringPlayerHome(int baseSrc, int playerSrc, int baseDst, int "
+#~ "playerDst) throws InvalidMoveException"
+
+#~ msgid ""
+#~ "Move the player in position <code>playerSrc</code> of the base "
+#~ "<code>baseSrc</code> to the position <code>playerDst</code> from the base "
+#~ "<code>baseDst</code>"
+#~ msgstr ""
+#~ "Déplace le joueur de la position <code>playerLocation</code> de la base "
+#~ "<code>baseSrc</code> à la position <code>playerDst</code> de la base "
+#~ "<code>baseDst</code>."
+
+#~ msgid ""
+#~ "private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) "
+#~ "throws InvalidPositionException"
+#~ msgstr ""
+#~ "private int[] findNearestPlayer(int colorWanted, int firstBaseToSearch ) "
+#~ "throws InvalidPositionException"
+
+#~ msgid ""
+#~ "Return the base's number and the position of the nearest player which "
+#~ "has<code>colorWanted</code> as color. It begins the search at the base "
+#~ "<code>firstBaseToSearch</code>"
+#~ msgstr ""
+#~ "Renvoie l'index de la base et la position sur celle-ci du joueur le plus "
+#~ "proche ayant <code>colorWanted</code> comme couleur. La recherche "
+#~ "commence à la base d'index <code>firstBaseToSearch</code>"
+
+#~ msgid ""
+#~ "private void bringHole(int baseDst, int playerDst , int playerToProtect) "
+#~ "throws InvalidMoveException"
+#~ msgstr ""
+#~ "private void bringHole(int baseDst, int playerDst , int playerToProtect) "
+#~ "throws InvalidMoveException"
+
+#~ msgid ""
+#~ "Bring the hole to the position <code>playerDst</code> from the base "
+#~ "<code>baseDst</code> while protecting the position <code>playerToProtect</"
+#~ "code> during the travel"
+#~ msgstr ""
+#~ "Amène le trou à la position <code>playerDst</code> de la base "
+#~ "<code>baseDst</code> tout en protégeant la position "
+#~ "<code>playerToProtect</code> durant le trajet"
+
+#~ msgid "Show Tip 2 (Pseudo-code of solve)"
+#~ msgstr "Montrer l'indice 2 (le pseudo-code de la fonction solve)"
+
+#~ msgid "The algorithm of the solve method is the following:"
+#~ msgstr "L'algorithme de la méthode solve est le suivant :"
+
+#~ msgid ""
+#~ "BEGIN\n"
+#~ "\tcolorWanted &lt;- getBaseColor(baseIndex)\n"
+#~ "\tIF getPlayerColor(baseIndex, 0) != colorWanted \n"
+#~ "\tTHEN\n"
+#~ "\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
+#~ "\t\tTHEN\n"
+#~ "\t\t\tbringHole(baseIndex, 0, 1)\n"
+#~ "\t\t\tmove(baseIndex, 1)\n"
+#~ "\t\tELSE\n"
+#~ "\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
+#~ "\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
+#~ "\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
+#~ "\t\tEND_IF\n"
+#~ "\tEND_IF\n"
+#~ "\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
+#~ "\tTHEN\n"
+#~ "\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
+#~ "\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
+#~ "\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
+#~ "\tEND_IF\n"
+#~ "END\n"
+#~ msgstr ""
+#~ "BEGIN\n"
+#~ "\tcolorWanted &lt;- getBaseColor(baseIndex)\n"
+#~ "\tIF getPlayerColor(baseIndex, 0) != colorWanted \n"
+#~ "\tTHEN\n"
+#~ "\t\tIF getPlayerColor(baseIndex,1) == colorWanted\n"
+#~ "\t\tTHEN\n"
+#~ "\t\t\tbringHole(baseIndex, 0, 1)\n"
+#~ "\t\t\tmove(baseIndex, 1)\n"
+#~ "\t\tELSE\n"
+#~ "\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
+#~ "\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
+#~ "\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
+#~ "\t\tEND_IF\n"
+#~ "\tEND_IF\n"
+#~ "\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
+#~ "\tTHEN\n"
+#~ "\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
+#~ "\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
+#~ "\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
+#~ "\tEND_IF\n"
+#~ "END\n"
+
+#~ msgid "Show Tip 3 ( Pseudo-code of bringHole )"
+#~ msgstr "Montrer l'indice 3 (le pseudo-code de bringHole)"
+
+#~ msgid "The algorithm of the bringHole method is the following:"
+#~ msgstr "L'algorithme de la méthode bringHole est le suivant :"
+
+#~ msgid ""
+#~ "BEGIN\n"
+#~ "\tholeBaseLocation[0] &lt;- getHoleBase()\n"
+#~ "\tholeBaseLocation[1] &lt;- getHolePositionInBase()\n"
+#~ "\tIF baseDst > holeLocation[0]\n"
+#~ "\tTHEN\n"
+#~ "\t\tFOR i FROM holeLocation[0]+1 TO baseDst BY 1\n"
+#~ "\t\tDO\n"
+#~ "\t\t\tmove(i, playerDst)\n"
+#~ "\t\tEND_FOR\n"
+#~ "\tELSE \n"
+#~ "\t\tIF baseDst &lt; holeLocation[0]\n"
+#~ "\t\tTHEN\n"
+#~ "\t\t\tFOR i FROM holeLocation[0]-1 DOWNTO baseDst+1 BY -1\n"
+#~ "\t\t\tDO\n"
+#~ "\t\t\t\tmove(i,1-playerToProtect)\n"
+#~ "\t\t\tEND_FOR\n"
+#~ "\t\t\tmove(baseDst,playerDst);\n"
+#~ "\t\tELSE \n"
+#~ "\t\t\tIF baseDst == holeLocation[0] AND playerDst != holeLocation[1]\n"
+#~ "\t\t\tTHEN\n"
+#~ "\t\t\t\tmove(baseDst,playerDst);\n"
+#~ "\t\t\tEND_IF\n"
+#~ "\t\tEND_IF\n"
+#~ "\tEND_IF\n"
+#~ "END\n"
+#~ msgstr ""
+#~ "BEGIN\n"
+#~ "\tholeBaseLocation[0] &lt;- getHoleBase()\n"
+#~ "\tholeBaseLocation[1] &lt;- getHolePositionInBase()\n"
+#~ "\tIF baseDst > holeLocation[0]\n"
+#~ "\tTHEN\n"
+#~ "\t\tFOR i FROM holeLocation[0]+1 TO baseDst BY 1\n"
+#~ "\t\tDO\n"
+#~ "\t\t\tmove(i, playerDst)\n"
+#~ "\t\tEND_FOR\n"
+#~ "\tELSE \n"
+#~ "\t\tIF baseDst &lt; holeLocation[0]\n"
+#~ "\t\tTHEN\n"
+#~ "\t\t\tFOR i FROM holeLocation[0]-1 DOWNTO baseDst+1 BY -1\n"
+#~ "\t\t\tDO\n"
+#~ "\t\t\t\tmove(i,1-playerToProtect)\n"
+#~ "\t\t\tEND_FOR\n"
+#~ "\t\t\tmove(baseDst,playerDst);\n"
+#~ "\t\tELSE \n"
+#~ "\t\t\tIF baseDst == holeLocation[0] AND playerDst != holeLocation[1]\n"
+#~ "\t\t\tTHEN\n"
+#~ "\t\t\t\tmove(baseDst,playerDst);\n"
+#~ "\t\t\tEND_IF\n"
+#~ "\t\tEND_IF\n"
+#~ "\tEND_IF\n"
+#~ "END\n"
+
+#~ msgid "Show Tip 4 ( Pseudo-code of findNearestPlayer)"
+#~ msgstr "Montrer l'indice 4 (le pseudo-code de findNearestPlayer)"
+
+#~ msgid "The algorithm of the findNearestPlayer method is the following :"
+#~ msgstr "L'algorithme de la méthode findNearestPlayer est le suivant :"
+
+#~ msgid ""
+#~ "BEGIN\n"
+#~ "\tnbBases &lt;- getAmountOfBases()\n"
+#~ "\tfound &lt;- false;\n"
+#~ "\ti &lt;- firstBaseToSearch\n"
+#~ "\tWHILE i &lt; nbBases AND !found\n"
+#~ "\tDO\n"
+#~ "\t\tFOR j FROM 0 TO 1 BY 1\n"
+#~ "\t\tDO\n"
+#~ "\t\t\tIF getPlayerColor(i, j)== colorWanted AND !found\n"
+#~ "\t\t\tTHEN\n"
+#~ "\t\t\t\tlocation[0] &lt;- i;\n"
+#~ "\t\t\t\tlocation[1] &lt;- j;\n"
+#~ "\t\t\t\tfound &lt;- true;\n"
+#~ "\t\t\tEND_IF\n"
+#~ "\t\tEND_FOR\n"
+#~ "\t\ti &lt;- i+1\n"
+#~ "\tEND_WHILE\n"
+#~ "\tRETURN location\n"
+#~ "END\n"
+#~ msgstr ""
+#~ "BEGIN\n"
+#~ "\tnbBases &lt;- getAmountOfBases()\n"
+#~ "\tfound &lt;- false;\n"
+#~ "\ti &lt;- firstBaseToSearch\n"
+#~ "\tWHILE i &lt; nbBases AND !found\n"
+#~ "\tDO\n"
+#~ "\t\tFOR j FROM 0 TO 1 BY 1\n"
+#~ "\t\tDO\n"
+#~ "\t\t\tIF getPlayerColor(i, j)== colorWanted AND !found\n"
+#~ "\t\t\tTHEN\n"
+#~ "\t\t\t\tlocation[0] &lt;- i;\n"
+#~ "\t\t\t\tlocation[1] &lt;- j;\n"
+#~ "\t\t\t\tfound &lt;- true;\n"
+#~ "\t\t\tEND_IF\n"
+#~ "\t\tEND_FOR\n"
+#~ "\t\ti &lt;- i+1\n"
+#~ "\tEND_WHILE\n"
+#~ "\tRETURN location\n"
+#~ "END\n"
+
+#~ msgid "Show tip 5 ( Pseudo-code of bringPlayerHome)"
+#~ msgstr "Montrer l'indice 5(le pseudo-code de bringPlayerHome)"
+
+#~ msgid "The algorithm of the bringPlayerHome method is the following :"
+#~ msgstr "L'algorithme de la méthode bringPlayerHome est le suivant :"
+
+#~ msgid ""
+#~ "PRECONDITION: the hole is on the base of index baseSrc-1\n"
+#~ "BEGIN\n"
+#~ "\t\tmove( baseSrc,playerSrc)\n"
+#~ "\t\tFOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1\n"
+#~ "\t\tDO\n"
+#~ "\t\t\tmove(i,1-playerDst)\n"
+#~ "\t\t\tmove(i-1,playerDst)\n"
+#~ "\t\t\tmove(i,playerDst)\n"
+#~ "\t\tEND_FOR\n"
+#~ msgstr ""
+#~ "PRECONDITION: the hole is on the base of index baseSrc-1\n"
+#~ "BEGIN\n"
+#~ "\t\tmove( baseSrc,playerSrc)\n"
+#~ "\t\tFOR i FROM baseSrc-1 DOWNTO baseDst+1 BY -1\n"
+#~ "\t\tDO\n"
+#~ "\t\t\tmove(i,1-playerDst)\n"
+#~ "\t\t\tmove(i-1,playerDst)\n"
+#~ "\t\t\tmove(i,playerDst)\n"
+#~ "\t\tEND_FOR\n"
+
+#~ msgid ""
+#~ "Like the previous world, this world implements a baseball world. But now, "
+#~ "you have more than two players on each base.  Like before, your mission "
+#~ "is to bring everyone home."
+#~ msgstr ""
+#~ "A l'instar du monde précédent, ce monde implémente un monde de baseball. "
+#~ "Mais maintenant, vous avez plus de deux joueurs sur chaque base. Comme "
+#~ "auparavant, votre mission est d'amener chaque joueur à sa base."
+
+#~ msgid ""
+#~ "This exercise is trying to show you one thing : you have to do a change "
+#~ "that you haven't anticipated, and you need to make this change without "
+#~ "breaking your code and without changing too many thing, because the "
+#~ "algorithm is still great."
+#~ msgstr ""
+#~ "Cet exercice essaye de vous montrer une chose : vous avez à faire un "
+#~ "changement que vous n'aviez pas anticipé, et il faut le faire sans casser "
+#~ "votre code et sans le modifier trop en profondeur, puisque votre "
+#~ "algorithme est toujours correct."
+
+#~ msgid ""
+#~ "The previous algorithm was only able to deal with two players per base, "
+#~ "you have to change it so you can handle n players per base, with n "
+#~ "greater or equals at two."
+#~ msgstr ""
+#~ "L'algorithme précédent était seulement capable de gérer deux joueurs par "
+#~ "base, vous avez à le modifier afin qu'il puisse gérer n joueurs par base, "
+#~ "avec n supérieur ou égal à deux."
+
+#~ msgid ""
+#~ "You can be wondering why you didn't have to write directly an flawless "
+#~ "algorithm. It's just that sometimes, it's way too hard.  Sometimes, you "
+#~ "just need to take a particular case and generalize your solution. It's "
+#~ "sometimes easier to generalize than to try to find a general algorithm "
+#~ "from scratch. Remember that improving is way more easier than creating."
+#~ msgstr ""
+#~ "Vous pouvez vous demander pourquoi vous n'avez pas eu à écrire "
+#~ "directement un algorithme sans ce défaut. C'est juste que parfois, c'est "
+#~ "beaucoup trop difficile. Parfois, il suffit de prendre un cas particulier "
+#~ "et de généraliser la solution. C'est bien souvent plus simple de "
+#~ "généraliser que de trouver un algorithme général à partir de rien. "
+#~ "Souvenez-vous qu'améliorer est plus facile que créer."
+
+#~ msgid ""
+#~ "You can have access to the number of locations available on each base by "
+#~ "using the getLocationsAmount() method."
+#~ msgstr ""
+#~ "Vous pouvez avoir accès au nombre de positions disponibles sur chaque "
+#~ "base en utilisant la méthode getLocationsAmount()."
+
+#~ msgid "There are seven methods provided :"
+#~ msgstr "Sept méthodes vous sont fournies :"
