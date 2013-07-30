@@ -22,6 +22,7 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 	private static final long serialVersionUID = 1L;
 	private JButton validateButton;	// a validate button
 	private JComboBox pancakesAmountComboBox;	// a combobox which let you choose how many pancake you want to flip
+	private boolean burnedPancake;
 	/**
      * Constructor of PancakeFlipButtonPanel
      * It initializes the command panel
@@ -75,20 +76,16 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 	private void initPancakesAmountComboBox(PancakeEntity pe) {
 		int n = pe.getStackSize();
 		Integer values[];
-		boolean burnedPancake = ((PancakeWorld) Game.getInstance().getSelectedWorld()).isBurnedPancake(); 
-		if ( burnedPancake)
-		{
+		burnedPancake = ((PancakeWorld) Game.getInstance().getSelectedWorld()).isBurnedPancake(); 
+		if ( burnedPancake) {
 			values = new Integer[n];
-			for ( int i = 0 ; i < n ; i++) {
+			for ( int i = 0 ; i < n ; i++) 
 				values[i] = i+1;
-			}
-		}
-		else
-		{
+			
+		} else {
 			values = new Integer[n-1];
-			for ( int i = 0 ; i < n-1 ; i++) {
+			for ( int i = 0 ; i < n-1 ; i++) 
 				values[i] = i+2;
-			}
 		}
 		this.pancakesAmountComboBox = new JComboBox(values) ;
 	}
@@ -102,4 +99,17 @@ public class PancakeFlipButtonPanel extends EntityControlPanel {
 		this.pancakesAmountComboBox.setEnabled(enabled);
 	}
 
+	boolean canClick = true;
+	public void setSelectedPancake(int amount) {
+		if (amount < 1 || amount > pancakesAmountComboBox.getItemCount()+1 || (amount==1&&!burnedPancake) )
+			canClick = false;
+		else {
+			canClick = true;
+			pancakesAmountComboBox.setSelectedIndex(amount+ (burnedPancake?-1:-2) );
+		}
+	}
+	public void doMove() {
+		if (canClick)
+			validateButton.doClick();
+	}
 }

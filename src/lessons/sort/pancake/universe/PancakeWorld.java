@@ -15,7 +15,8 @@ import jlm.universe.World;
 
 public class PancakeWorld extends World {
 
-	private int lastModifiedPancake;
+	private int lastMove;
+	private int selected;
 	private boolean burnedWorld ;
 	public boolean wasRandom = false;
 	
@@ -23,13 +24,7 @@ public class PancakeWorld extends World {
 	public PancakeWorld(PancakeWorld world) {
 		super(world);
 	}
-	/**
-	 * Returns the panel which let the user to interact dynamically with the world
-	 */
-	@Override
-	public EntityControlPanel getEntityControlPanel() {
-		return new PancakeFlipButtonPanel();
-	}
+	
 	/** Returns a component able of displaying the world */
 	@Override
 	public WorldView getView() {
@@ -43,6 +38,31 @@ public class PancakeWorld extends World {
 	public ImageIcon getIcon() {
 		return ResourcesCache.getIcon(this,"../img/world_pancake.png");
 	}
+	PancakeFlipButtonPanel panel = null;
+	/** Returns the panel which let the user to interact dynamically with the world */
+	@Override
+	public EntityControlPanel getEntityControlPanel() {
+		if (panel == null)
+			panel = new PancakeFlipButtonPanel();
+		return panel;
+	}
+	/** Passes the mouse selection from view to the control panel */ 
+	public void setSelectedPancake(int rank) {
+		if (rank < 1 || rank > getStackSize() || (rank==1&&!burnedWorld) ) {
+			this.selected = -1;
+			panel.setSelectedPancake(selected);
+		} else {
+			this.selected = rank;
+			panel.setSelectedPancake(selected);
+			notifyWorldUpdatesListeners();
+		}
+		
+	}
+	/** Passes the mouse action from the view to the control panel */
+	public void doMove() {
+		panel.doMove();
+	}
+	
 	
 	/** 
 	 * Regular PancakeWorld constructor that creates a random plate
@@ -70,8 +90,8 @@ public class PancakeWorld extends World {
 					swap(rank, (int)(Math.random()*size));
 			}
 		
-		this.flipped =false;
-		this.lastModifiedPancake = 0 ;
+		this.lastMove = -1 ;
+		this.selected = -1 ;
 		this.burnedWorld = burnedPancake;
 	}
 	/** 
@@ -89,8 +109,7 @@ public class PancakeWorld extends World {
 		for (int i = 0; i < sizes.length; i++) 
 			pancakeStack[i] = new Pancake(sizes[i]);
 		
-		this.flipped =false;
-		this.lastModifiedPancake = 0 ;
+		this.lastMove = 0 ;
 		this.burnedWorld = burnedPancake;
 	}
 	
@@ -137,9 +156,8 @@ public class PancakeWorld extends World {
 		for (int i=0;i<pancakeStack.length;i++)
 			pancakeStack[i] = other.pancakeStack[i].copy();
 
-		this.flipped = other.flipped;
 		this.burnedWorld = other.burnedWorld;
-		this.lastModifiedPancake = other.lastModifiedPancake;
+		this.lastMove = other.lastMove;
 		super.reset(world);		
 	}
 
@@ -163,7 +181,6 @@ public class PancakeWorld extends World {
 	}
 
 	/* --------------------------------------- */
-	private boolean flipped; // Used in order to improve the visual of the flipping
 	private Pancake[] pancakeStack; // The stack of pancakes
 
 	private void swap(int from, int to) {
@@ -192,17 +209,17 @@ public class PancakeWorld extends World {
 		for (int i = 0 ;i<numberOfPancakes;i++)
 			pancakeStack[i].flip();
 		
-		this.flipped = !this.flipped;
-		this.lastModifiedPancake = numberOfPancakes ;
+		this.lastMove = numberOfPancakes ;
+		this.selected = -1;
 	}
 	
 	
-	/**
-	 * Give the index of the last modified pancakes
-	 * @return pancakeNumber : the index of the pancake, beginning from the top of the stack, that was modified.
-	 */
-	public int getLastModifiedPancake() {
-		return lastModifiedPancake;
+	/** Returns the index of the last flipped pancake */
+	protected int getLastMove() {
+		return lastMove;
+	}
+	protected int getSelectedPancake() {
+		return selected;
 	}
 	
 	/**
@@ -225,13 +242,6 @@ public class PancakeWorld extends World {
 		return pancakeStack.length;
 	}
 	
-
-	/**
-	 * Tells the parity of the flips, which is used for graphic purpose only
-	 */
-	public boolean isFlipped() {
-		return flipped;
-	}
 
 	/**
 	 * Returns if the specified pancake (counting from the stack top) is upside down
