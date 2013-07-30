@@ -2,30 +2,60 @@ package lessons.welcome.array.averagevalue;
 
 import java.util.Random;
 
-import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.array.ArrayEntity;
-import jlm.universe.array.ArrayWorld;
+import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
+import jlm.universe.bat.BatWorld;
 
-public class AverageValue extends ExerciseTemplated {
+public class AverageValue extends BatExercise {
 
 	public AverageValue(Lesson lesson) {
 		super(lesson);
 		
-		ArrayWorld[] myWorlds = new ArrayWorld[2];
-		myWorlds[0] = new ArrayWorld("Toy array", 10);
-		myWorlds[0].setValues( new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 } );
-		myWorlds[1] = new ArrayWorld("Bigger Array", 1);
-		
-		int[] tab = new int[30];
+		int[] randomTab = new int[30];
 		Random r = new Random();
-		for (int i=0; i<tab.length; i++) {
-			tab[i] = r.nextInt(35);
-		}
-		myWorlds[1].setValues(tab);
-		for (ArrayWorld w:myWorlds)
-			new ArrayEntity("average seeker", w);
+		for (int i=0; i<randomTab.length; i++) 
+			randomTab[i] = r.nextInt(35);
 		
-		setup(myWorlds);
+		BatWorld myWorld = new BatWorld("averageValue");
+		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 });
+		myWorld.addTest(VISIBLE, randomTab);
+		myWorld.addTest(VISIBLE, new int[] {1, 1, 2, 3, 1}) ;
+		myWorld.addTest(VISIBLE, new int[] {1, 1, 2, 4, 1}) ;
+		myWorld.addTest(VISIBLE, new int[] {1, 1, 2, 1, 2, 3}) ;
+		myWorld.addTest(INVISIBLE, new int[] {1, 1, 2, 1, 2, 1}) ;
+		myWorld.addTest(INVISIBLE, new int[] {1, 2, 3, 1, 2, 3}) ;
+		myWorld.addTest(INVISIBLE, new int[] {1, 2, 3}) ;
+		myWorld.addTest(INVISIBLE, new int[] {1, 1, 1}) ;
+		myWorld.addTest(INVISIBLE, new int[] {1, 2}) ;
+		myWorld.addTest(INVISIBLE, new int[] {42}) ;
+
+		langTemplate(Game.PYTHON, "averageValue", 
+				"def averageValue(nums):\n",
+				"  total = 0\n"+
+				"  for i in range(len(nums)):\n" +
+				"    total += nums[i]\n"+
+				"  return total / len(nums)\n");
+		setup(myWorld);		
 	}
+	
+
+	/* BEGIN SKEL */
+	public void run(BatTest t) {
+		t.setResult( averageValue((int[])t.getParameter(0)) );
+	}
+	/* END SKEL */
+
+	/* BEGIN TEMPLATE */
+	int averageValue(int[] nums) {
+		/* BEGIN SOLUTION */
+		int total = 0;
+		for (int i=0; i < nums.length; i++) 
+			total += nums[i];
+		return total / nums.length;
+		/* END SOLUTION */
+	}
+	/* END TEMPLATE */
+
 }
