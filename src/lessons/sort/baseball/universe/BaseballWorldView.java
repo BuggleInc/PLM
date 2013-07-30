@@ -2,11 +2,14 @@ package lessons.sort.baseball.universe;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
@@ -14,27 +17,58 @@ import java.awt.geom.QuadCurve2D;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
+
+import jlm.core.HumanLangChangesListener;
+import jlm.core.model.Game;
 import jlm.core.ui.WorldView;
 import jlm.universe.World;
 
-public class BaseballWorldView extends WorldView
-{
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
+
+public class BaseballWorldView extends WorldView {
+	
 	private static final long serialVersionUID = 1L;
 	private Vector<Integer[]> playersCoordinate;
 	private double radius;
 	private double displayRatio;
 	private double virtualSize = 300.; // we display on a field that is 300x300 and dynamically resized (to ease our computations)
+	
+	private boolean useCircularView = true; // historical view if false
+	private JPopupMenu popup = new JPopupMenu();
 
 	public BaseballWorldView(World w){
 		super(w);
+		
+		JMenuItem menuItem;
+
+		//Create the popup menu allowing to switch between views
+		menuItem = new JMenuItem("Switch to time view");
+		menuItem.addActionListener(new BaseballViewActionListener(menuItem,this));
+		popup.add(menuItem);
+
+		
 		addMouseListener(new MouseListener() {
+			private void maybeShowPopup(MouseEvent e) {
+				if (e.isPopupTrigger()) {
+					popup.show(e.getComponent(),
+							e.getX(), e.getY());
+				}
+			}
 			@Override
-			public void mouseReleased(MouseEvent e) {}
+			public void mouseReleased(MouseEvent e) {
+				maybeShowPopup(e);
+			}
 			@Override
-			public void mousePressed(MouseEvent e) {}
+			public void mousePressed(MouseEvent e) {
+				maybeShowPopup(e);
+			}
 			@Override
 			public void mouseExited(MouseEvent e) {}
 			@Override
@@ -42,30 +76,37 @@ public class BaseballWorldView extends WorldView
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/* Recompute the coordinates of the click on our strange virtual coordinates system */
-				int x=e.getX()-(int)(Math.abs(getWidth() - displayRatio * virtualSize)/2.);
-				int y=e.getY()-(int)(Math.abs(getHeight() - displayRatio * virtualSize)/2.);
-				
-				x /= displayRatio;
-				y /= displayRatio;
-
-				double minDist = Double.MAX_VALUE;
-				Integer[] min = null;
-				for (Integer[] c : playersCoordinate) {
-					int xComponent = x-c[0];
-					int yComponent = y-c[1];
-					double dist = Math.sqrt( xComponent*xComponent+yComponent*yComponent ); 
-					if (dist < minDist) {
-						minDist = dist;
-						min = c;
-					}
+				if (e.isPopupTrigger()) {
+					maybeShowPopup(e);
+					return;
 				}
 				
-				if (minDist < 2*radius) {
-					//System.out.println("Minimal distance: "+minDist+" (radius was: "+radius+"). That's "+min[2]+","+min[3]);
-					((BaseballWorld) world).setPlayer(min[2],min[3]);
-					if (e.getClickCount()==2)
-						((BaseballWorld) world).doMove();
+				if (useCircularView) {
+					/* Recompute the coordinates of the click on our strange virtual coordinates system */
+					int x=e.getX()-(int)(Math.abs(getWidth() - displayRatio * virtualSize)/2.);
+					int y=e.getY()-(int)(Math.abs(getHeight() - displayRatio * virtualSize)/2.);
+
+					x /= displayRatio;
+					y /= displayRatio;
+
+					double minDist = Double.MAX_VALUE;
+					Integer[] min = null;
+					for (Integer[] c : playersCoordinate) {
+						int xComponent = x-c[0];
+						int yComponent = y-c[1];
+						double dist = Math.sqrt( xComponent*xComponent+yComponent*yComponent ); 
+						if (dist < minDist) {
+							minDist = dist;
+							min = c;
+						}
+					}
+
+					if (minDist < 2*radius) {
+						//System.out.println("Minimal distance: "+minDist+" (radius was: "+radius+"). That's "+min[2]+","+min[3]);
+						((BaseballWorld) world).setPlayer(min[2],min[3]);
+						if (e.getClickCount()==2)
+							((BaseballWorld) world).doMove();
+					}
 				}
 			}
 		});
@@ -85,8 +126,8 @@ public class BaseballWorldView extends WorldView
 		float theta = 0.6f ;
 		int[] xPoints = new int[ 3 ] ;
 		int[] yPoints = new int[ 3 ] ;
-		float[] vecLine = new float[ ] {(float)xPoints[ 0 ] - xTail, (float)yPoints[ 0 ] - yTail};
-		float[] vecLeft = new float[ ] {-vecLine[ 1 ],vecLine[ 0 ]} ; // arrow base vector - normal to the line
+		float[] vecLine = new float[] {(float)xHead - xTail, (float)yHead - yTail};
+		float[] vecLeft = new float[] {-vecLine[ 1 ],vecLine[ 0 ]} ; // arrow base vector - normal to the line
 		float fLength;
 		float th;
 		float ta;
@@ -298,21 +339,19 @@ public class BaseballWorldView extends WorldView
 	}
 
 	/** Display the world under its circular form */
-	private void paintCircular(Graphics g) {
+	private void paintCircular(Graphics2D g) {
 
-		Graphics2D g2 = (Graphics2D) g;
-
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
 		displayRatio = Math.min(((double) getWidth()) / virtualSize, ((double) getHeight()) / virtualSize);
 
 
-		g2.translate(Math.abs(getWidth() - displayRatio * virtualSize)/2., Math.abs(getHeight() - displayRatio * virtualSize)/2.);
-		g2.scale(displayRatio, displayRatio);
+		g.translate(Math.abs(getWidth() - displayRatio * virtualSize)/2., Math.abs(getHeight() - displayRatio * virtualSize)/2.);
+		g.scale(displayRatio, displayRatio);
 
 		/* drawn the field */
-		g2.setColor(new Color(58,157,35)); // lawn
-		g2.fill(new Rectangle2D.Double(0., 0., virtualSize, virtualSize));
+		g.setColor(new Color(58,157,35)); // lawn
+		g.fill(new Rectangle2D.Double(0., 0., virtualSize, virtualSize));
 
 		int radius = 120 ;
 		
@@ -334,7 +373,7 @@ public class BaseballWorldView extends WorldView
 		// Draw the bases and the players on each base
 		playersCoordinate = new Vector<Integer[]>();
 		for ( int i=0 ; i < myWorld.getBasesAmount();i++)
-			drawBase(g2, L, radius, theta*i, (int) virtualSize/2, (int) virtualSize/2 , i, amountOfPlayers);
+			drawBase(g, L, radius, theta*i, (int) virtualSize/2, (int) virtualSize/2 , i, amountOfPlayers);
 
 		// Draw the last move made on the field if it exists
 		if ( myWorld.getLastMove() != null) {
@@ -343,11 +382,11 @@ public class BaseballWorldView extends WorldView
 			double xControl = virtualSize/2;
 			double yControl = virtualSize/2;
 			// Save the previous stroke -- we will need it later
-			Stroke s = g2.getStroke();
+			Stroke s = g.getStroke();
 			// Set the color to the color of the player who moved
-			g2.setColor(obtainColor(move.getPlayerColor()));
+			g.setColor(obtainColor(move.getPlayerColor()));
 			// Modifies the stroke so the drawing is a dotted line
-			g2.setStroke(new BasicStroke(
+			g.setStroke(new BasicStroke(
 					3.0f,						// Width
 					BasicStroke.CAP_ROUND,		// End cap
 					BasicStroke.JOIN_BEVEL,		// Join style
@@ -394,15 +433,15 @@ public class BaseballWorldView extends WorldView
 			}
 			
 			// Draw the tail of the arrow
-			g2.draw(new QuadCurve2D.Double(arrow[0][0], arrow[0][1], xControl, yControl, arrow[1][0], arrow[1][1]));
-			g2.setStroke(s);
+			g.draw(new QuadCurve2D.Double(arrow[0][0], arrow[0][1], xControl, yControl, arrow[1][0], arrow[1][1]));
+			g.setStroke(s);
 			// Draw the head of the arrow
-			drawArrow(g2,arrow[1][0], arrow[1][1], arrow[2][0], arrow[2][1]);
+			drawArrow(g,arrow[1][0], arrow[1][1], arrow[2][0], arrow[2][1]);
 		}
 		
 		// Display the amount of moves done so far
-		g2.setColor(Color.black);
-		g2.drawString(""+((BaseballWorld) world).getMoveCount()+" moves", 0,15);
+		g.setColor(Color.black);
+		g.drawString(""+((BaseballWorld) world).getMoveCount()+" moves", 0,15);
 	}
 
 	private Map<Color,Image> buggleCache = new HashMap<Color, Image>();
@@ -442,13 +481,183 @@ public class BaseballWorldView extends WorldView
 	}
 
 
+	private void paintHistory(Graphics2D g) {
+		BaseballWorld field = (BaseballWorld)world;
+		Vector<BaseballMove> moves = field.getMoves();
+		int operationsAmount = moves.size();	// little optimization
+		/* getWidth()-20 to keep the room to display the bases on left and right */
+		float stepX = ((float)getWidth()-20) / ((float)(Math.max(operationsAmount, 1)));
+		float stepY = ((float)getHeight()) / ((float)(field.getBasesAmount()* (field.getPositionsAmount()+1) ));
+		int x1, y1, x2, y2;
 
+		Stroke oldStroke = g.getStroke();
+		Stroke fatLine = new BasicStroke(2f);
+		Stroke dashedLine = new BasicStroke(
+				1.0f,						// Width
+				BasicStroke.CAP_ROUND,		// End cap
+				BasicStroke.JOIN_BEVEL,		// Join style
+				10.0f,						// Miter limit
+				new float[] {5.0f,5.0f},	// Dash pattern
+				0.0f						// Dash phase
+				);
+
+				// Draw the bases
+		for (int base=0; base<field.getBasesAmount(); base++) {
+			g.setColor(obtainColor(base));
+			g.fillRect(0, (int) (stepY*base*(field.getPositionsAmount()+1)), 10, (int) (stepY*field.getPositionsAmount()));
+			g.fillRect(getWidth()-10, (int) (stepY*base*(field.getPositionsAmount()+1)), 10, (int) (stepY*field.getPositionsAmount()));
+		}
+		
+		// Case without any operation to draw: initial view
+		if (operationsAmount == 0) {
+			g.setStroke(fatLine);
+
+			for (int base = 0; base<field.getBasesAmount(); base++)
+				for (int pos = 0; pos<field.getPositionsAmount(); pos++) {
+					int valueIdx = base*(field.getPositionsAmount()+1)+pos; 
+					y1 = (int) (valueIdx * stepY + stepY/2.);
+
+					
+					int player = field.getPlayerColor(base, pos);
+					if (player == -1) {
+						g.setStroke(dashedLine);
+						g.setColor(Color.black);
+						g.drawLine(10, y1, (int)stepX+10, y1);
+						g.setStroke(fatLine);
+					} else {
+						g.setColor(obtainColor(player));
+						g.drawLine(10, y1, (int)stepX+10, y1);
+					}
+				}
+			g.setStroke(oldStroke);
+			return;
+		}
+
+		// Case with several operations
+		int[] valuesAfter = new int[field.initialField.length];
+		int[] valuesBefore = new int[field.initialField.length];
+		for (int i = 0; i < field.initialField.length; i++) { 
+			valuesBefore[i] = field.initialField[i];
+			valuesAfter[i] = valuesBefore[i];
+		}
+
+		g.setStroke(fatLine);
+		for (int opIdx = 0; opIdx < operationsAmount; opIdx++) {
+			BaseballMove op = moves.get(opIdx);
+
+			valuesAfter = op.run(valuesAfter);
+			
+			x1 = (int) (opIdx * stepX)+10;
+			x2 = (int) (x1 + stepX);
+
+			/* Draw straight lines for unmodified values */
+			for (int base=0; base<field.getBasesAmount(); base++)
+				for (int pos=0; pos<field.getPositionsAmount(); pos++) 
+					if (   (op.getBaseSrc() != base || op.getPlayerSrc() != pos)
+						&& (op.getBaseDst() != base || op.getPlayerDst() != pos)) {
+						
+						int valIdx = base*(field.getPositionsAmount()+1)+pos; 
+						y1 = (int) (valIdx * stepY + stepY/2);
+						
+						int player = valuesAfter[base*field.getPositionsAmount()+pos];
+						if (player == -1) {
+							g.setStroke(dashedLine);
+							g.setColor(Color.black);
+							g.drawLine(x1, y1, x2, y1);
+							g.setStroke(fatLine);
+						} else {
+							g.setColor(obtainColor(player));
+							g.drawLine(x1, y1, x2, y1);
+						}
+					}
+			
+			/* Draw the crossing lines representing the move */
+			// draw player->hole
+			y1 = (int) ((op.getBaseSrc()* (field.getPositionsAmount()+1) + op.getPlayerSrc() ) * stepY + stepY/2);
+			y2 = (int) ((op.getBaseDst()* (field.getPositionsAmount()+1) + op.getPlayerDst() ) * stepY + stepY/2);
+			g.setColor(obtainColor(op.getPlayerColor()));
+			g.drawLine(x1, y1, x2, y2);
+
+			// draw hole->player
+			y1 = (int) ((op.getBaseDst()* (field.getPositionsAmount()+1) + op.getPlayerDst() ) * stepY + stepY/2);
+			y2 = (int) ((op.getBaseSrc()* (field.getPositionsAmount()+1) + op.getPlayerSrc() ) * stepY + stepY/2);
+			g.setStroke(dashedLine);
+			g.setColor(Color.black);
+			g.drawLine(x1, y1, x2, y2);
+			g.setStroke(fatLine);
+
+			// compute the next array
+			for (int k = 0; k < valuesAfter.length; k++) 
+				valuesBefore[k] = valuesAfter[k];
+		}
+
+		
+	}
+	
+	
 	/**
 	 * Draw the component of the world
 	 * @param g The Graphics2D context to draw on
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		paintCircular(g);
+		
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+				RenderingHints.VALUE_ANTIALIAS_ON);
+		g2.setColor(Color.white);
+		g2.fill(new Rectangle2D.Double(0., 0., (double) getWidth(),
+				(double) getHeight()));
+
+		g2.setColor(Color.black);
+		g2.setFont(new Font("Monaco", Font.PLAIN, 12));
+
+		if (useCircularView)
+			paintCircular(g2);
+		else
+			paintHistory(g2);
+	}
+	
+	/** Returns if we must use the state view ( else we must use the chrono view ) */
+	protected boolean isUseStateView() {
+		return useCircularView;
+	}
+	protected void setUseStateView(boolean useStateView) {
+		this.useCircularView = useStateView;
 	}
 }
+
+
+
+class BaseballViewActionListener implements ActionListener, HumanLangChangesListener {
+	private JMenuItem item;
+	private BaseballWorldView view;
+	private I18n i18n;
+
+	public BaseballViewActionListener(JMenuItem i, BaseballWorldView v) {
+		item=i;
+		view=v;
+		Game.getInstance().addHumanLangListener(this);
+		currentHumanLanguageHasChanged(item.getLocale());
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		view.setUseStateView(!view.isUseStateView());
+		currentHumanLanguageHasChanged(item.getLocale());
+		view.repaint();
+	}
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", newLang, I18nFactory.FALLBACK);
+		if (view.isUseStateView()) {
+			item.setText(i18n.tr("Switch to time view"));
+		} else {
+			item.setText(i18n.tr("Switch to state view"));
+		}
+	}
+	
+	
+}
+

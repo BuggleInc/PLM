@@ -27,14 +27,17 @@ public class BaseballWorld extends World {
 	private int[] field; // the bases which composed the field
 	private int baseAmount,posAmount; // field dimensions
 	private int holeBase,holePos; // The coordinate of the hole
-	private int[] initialField; 
+	protected int[] initialField; 
 	private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
 	private I18n i18n;
 
 	/** Copy constructor used internally by JLM */
-	public BaseballWorld(BaseballWorld world) {
-		super(world);
+	public BaseballWorld(BaseballWorld other) {
+		super(other);
 		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		initialField = new int[other.initialField.length];
+		for (int i=0;i<initialField.length;i++)
+			initialField[i] = other.initialField[i];
 	}
 
 
@@ -275,6 +278,10 @@ public class BaseballWorld extends World {
 	protected int getMoveCount() {
 		return moves.size();
 	}
+	/** Returns all moves done so far */
+	protected Vector<BaseballMove> getMoves() {
+		return moves;
+	}
 
 	/** Returns if every player of the field is on the right base */
 	public boolean isSorted() {
@@ -322,7 +329,7 @@ public class BaseballWorld extends World {
 			throw new IllegalArgumentException("The player "+position+" from base "+base+" is too far from the hole (at base "+holeBase+") to reach it in one move");
 
 		// All clear. Proceed.
-		moves.add(new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position)));
+		moves.add(new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position),this));
 		swap(base, position, holeBase,holePos);
 		holeBase = base;
 		holePos = position;
