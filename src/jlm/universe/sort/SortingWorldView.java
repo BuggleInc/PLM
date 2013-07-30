@@ -324,18 +324,13 @@ public class SortingWorldView extends WorldView {
 		return (int) ((((float) value) / ((float) valueCount)) * 255.);
 	}
 
-	/**
-	 * @param useStateView the useStateView to set
-	 */
-	public void setUseStateView(boolean useStateView) {
-		this.useStateView = useStateView;
-	}
 
-	/** Return if we must use the state view ( else we must use the chrono view )
-	 * @return if we must use the state view
-	 */
-	public boolean isUseStateView() {
+	/** Returns if we must use the state view ( else we must use the chrono view ) */
+	protected boolean isUseStateView() {
 		return useStateView;
+	}
+	protected void setUseStateView(boolean useStateView) {
+		this.useStateView = useStateView;
 	}
 
 }
