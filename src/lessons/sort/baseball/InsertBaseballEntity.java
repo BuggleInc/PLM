@@ -26,7 +26,7 @@ public class InsertBaseballEntity extends BaseballEntity {
 				move(getHole()+1);
 		}
 		if (!isSorted())
-			System.out.println("IT'S STILL NOT SORTED!! PLEASE REPORT THIS BUG"+world.toString());
+			System.out.println("IT'S STILL NOT SORTED!! PLEASE REPORT THIS BUG. "+world.toString());
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

@@ -6,7 +6,7 @@ public class BubbleBaseballEntity extends BaseballEntity {
 	
 	/* BEGIN TEMPLATE */
 	public void run() {
-		/* BEGI N SOLUTION */
+		/* BEGIN SOLUTION */
 		while (!isSorted()) {
 			while (getHoleBase()>0) {
 				int maxPos = 0;
@@ -34,11 +34,4 @@ public class BubbleBaseballEntity extends BaseballEntity {
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
-	
-	/* BEGIN HIDDEN */	
-	void out(String msg) {
-		if (isSelected())
-			System.out.println(msg);
-	}
-	/* END HIDDEN */
 }
