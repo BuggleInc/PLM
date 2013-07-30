@@ -30,8 +30,8 @@ import org.junit.runners.Parameterized.Parameters;
 public class ExoTest {
 	static private String[] lessons = new String[] { 
 		"lessons.welcome", "lessons.maze","lessons.bat.string1", 
-		"lessons.sort", "lessons/sort/pancake", "lessons/smn/baseball",  
-		"lessons.recursion",
+		"lessons.sort", "lessons/smn/baseball", "lessons/sort/pancake",  
+		"lessons.recursion", "lessons/recursion/hanoi",
 		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
 		};
 
@@ -52,9 +52,12 @@ public class ExoTest {
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
 		for (String lessonName : lessons) { 
 			System.err.println("Loading lesson "+lessonName);
-			g.switchLesson(lessonName);
+			g.switchLesson(lessonName,true);
 			System.err.println("Lesson "+lessonName+" loaded");
-			
+			if (g.getCurrentLesson().getExerciseCount() == 0) {
+				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
+				System.exit(1);
+			}
 			for (Lecture l : g.getCurrentLesson().exercises()) 
 				if (l instanceof Exercise)
 					result.add(new Object[] {Game.getInstance().getCurrentLesson(), l});

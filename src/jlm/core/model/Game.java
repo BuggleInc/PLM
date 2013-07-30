@@ -179,7 +179,7 @@ public class Game implements IWorldView {
 	 * Load the chooser, stored in jlm.core.ui.chooser
 	 */
 	public void loadChooser() {
-		Game.instance.switchLesson(lessonChooser);
+		Game.instance.switchLesson(lessonChooser,false);
 	}
 	
 	
@@ -191,7 +191,7 @@ public class Game implements IWorldView {
 	 * @param lessonName package name of the lesson to load 
 	 */
 	
-	public Lesson switchLesson(String lessonName) {
+	public Lesson switchLesson(String lessonName, boolean failOnError) {
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
@@ -210,6 +210,8 @@ public class Game implements IWorldView {
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
+				if (failOnError)
+					throw new RuntimeException(Game.i18n.tr("Cannot switch to lesson {0}: class Main not found.",lessonName));
 				System.err.println(Game.i18n.tr("Cannot switch to lesson {0}: class Main not found.",lessonName));
 				statusArgRemove(Game.i18n.tr("Load lesson {0}",lessonName));				
 				return getCurrentLesson();
@@ -284,7 +286,7 @@ public class Game implements IWorldView {
 			throw new LessonLoadingException("Invalid lesson file (Attribute 'LessonPackage' not found in Manifest): "+jar.getName());
 		
 		// We are ready to launch this lesson
-		Game.getInstance().switchLesson("lessons." + lessonPackage);
+		Game.getInstance().switchLesson("lessons." + lessonPackage,false);
     }//end method
 
 	

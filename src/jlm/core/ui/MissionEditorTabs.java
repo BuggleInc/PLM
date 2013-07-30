@@ -78,7 +78,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						if (Game.getInstance().isDebugEnabled()) 
 							System.out.println("Following a link to lesson: "+lessonName+( (exoName != null) ? "; exo: "+exoName : " (no exo specified)"));
 								
-						Lesson lesson = Game.getInstance().switchLesson(lessonName);
+						Lesson lesson = Game.getInstance().switchLesson(lessonName,false);
 						Game.getInstance().setCurrentLesson(lesson);
 						if (exoName != null && exoName.length()>0) {
 							Lecture lect = lesson.getExercise(exoName);

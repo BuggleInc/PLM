@@ -59,7 +59,7 @@ public class LessonChooser extends JFrame {
 
 		LessonOverview overview = new LessonOverview(this);
 		
-		LessonMatrix matrix = new LessonMatrix(overview, new String[][] {
+		LessonMatrix matrix = new LessonMatrix(overview, new String[][] { // WARNING, keep ExoTest.lessons synchronized
 				{"lessons/welcome","lessons/maze", "lessons/bat/string1"},
 				{"lessons/sort", "lessons/sort/baseball", "lessons/sort/pancake"},
 				{"lessons/recursion", "lessons/recursion/hanoi" },
@@ -141,7 +141,7 @@ class LessonOverview extends JPanel {
 		btGo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Game.getInstance().switchLesson(path.replaceAll("/", "."));
+				Game.getInstance().switchLesson(path.replaceAll("/", "."),false);
 				MainFrame.getInstance().setVisible(true);
 				lc.dispose();
 			}
