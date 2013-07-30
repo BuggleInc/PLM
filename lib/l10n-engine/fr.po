@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-24 20:28+0200\n"
-"PO-Revision-Date: 2013-07-24 20:31+0200\n"
+"POT-Creation-Date: 2013-07-30 23:51+0200\n"
+"PO-Revision-Date: 2013-07-30 23:52+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -153,7 +153,14 @@ msgstr "Le monde ''{0}'' diffère"
 msgid "Source file {0}.{1} not found."
 msgstr "Le fichier source {0}.{1} est introuvable."
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:105
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:88
+#, java-format
+msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
+msgstr ""
+"{0}: BEGIN TEMPLATE à l'intérieur de la template. Veuillez corriger votre "
+"entité."
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:108
 #, java-format
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
@@ -161,7 +168,7 @@ msgstr ""
 "{0}: BEGIN SOLUTION est clos par END TEMPLATE. Veuillez corriger votre "
 "entité."
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:119
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:122
 #, java-format
 msgid ""
 "{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
@@ -169,13 +176,13 @@ msgstr ""
 "{0}: END TEMPLATE sans BEGIN TEMPLATE correspondant. Veuillez corriger votre "
 "entité."
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:123
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:126
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
 msgstr ""
 "{0}: BEGIN SOLUTION après la fin du template. Changez le en BEGIN HIDDEN."
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:150
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:153
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
@@ -183,30 +190,53 @@ msgstr ""
 "Error d'analyse à la lecture du fichier {0}. C'est un bug de l'analyseur "
 "(état={1}), merci de faire un rapport."
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:303
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:158
+#, java-format
+msgid ""
+"{0}: End of file unexpected after the solution but within the template. "
+"Please fix your entity."
+msgstr ""
+"{0}: Fin de fichier inattendue après la solution mais avant la fin du "
+"template. Veuillez corriger votre entité."
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:160
+#, java-format
+msgid ""
+"{0}: End of file unexpected (state: {1}). Did you forget to close your "
+"template or solution? Please fix your entity."
+msgstr ""
+"{0}: Fin de fichier inattendue (état de l'analyseur: {1}). Peut-être avez-"
+"vous oublié de fermer votre template ou votre solution ? Veuillez corriger "
+"votre entité."
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:311
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgstr "Le monde {0} est cassé ({1}). Recalcul de tous les mondes solutions."
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:307
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:315
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
-msgstr "Exception d'entrée/sortie lors de la lecture du monde {0} ({1}). Recalcul de tous les mondes solutions"
+msgstr ""
+"Exception d'entrée/sortie lors de la lecture du monde {0} ({1}). Recalcul de "
+"tous les mondes solutions"
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:318
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:326
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}"
-msgstr "Recalcul de la solution de {0} malgré le fichier de cache, comme demandé par la propriété {1}."
+msgstr ""
+"Recalcul de la solution de {0} malgré le fichier de cache, comme demandé par "
+"la propriété {1}."
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:341
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:349
 #, java-format
 msgid "Error while writing answer world of {0}:"
 msgstr "Erreur lors de l'écriture du monde de correction de {0}&nbsp;:"
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:345
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:353
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
@@ -359,36 +389,75 @@ msgstr "Erreur lors de l'envoi de votre retour"
 msgid "<img> tag without src attribute in exercise {0}"
 msgstr "Tag <img> sans attribut src dans l'exercice {0}."
 
-#: src/jlm/core/ui/LessonChooser.java:88
+#: src/jlm/core/ui/LessonChooser.java:36
 msgid "Choose your lesson"
 msgstr "Sélectionner une leçon"
 
-#: src/jlm/core/ui/LessonChooser.java:144
-#: src/jlm/core/ui/LessonChooser.java:209
+#: src/jlm/core/ui/LessonChooser.java:50
+msgid ""
+"<table border=\"0\" align=\"center\"><tr>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Java "
+"Learning Machine</font>&nbsp;&nbsp;</td>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"</tr></table>\n"
+"\n"
+"<p><font size=\"+1\">The JLM is a Learning Management System (LMS) aiming at "
+"teaching the art of computer programming through interactive exercises. It "
+"offers an extensive set of varied exercises, allowing you to practice at "
+"your own pace.</font></p><br/>"
+msgstr ""
+"<table border=\"0\" align=\"center\"><tr>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Bienvenus dans la Java "
+"Learning Machine</font>&nbsp;&nbsp;</td>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"</tr></table>\n"
+"\n"
+"<p><font size=\"+1\">JLM est une plate-forme pédagogique destinée à "
+"simplifier l'apprentissage de la programmation au travers d'exercices "
+"interactifs. De nombreux exercices sont proposés, pour vous permettre "
+"d'apprendre à votre rythme.</font></p><br/>"
+
+#: src/jlm/core/ui/LessonChooser.java:128
+msgid ""
+"<h1>Please pick a lesson</h1>\n"
+"<p>Please click on an icon on the left to select a lesson.</p>\n"
+"<p>Lessons located above are generally simpler than the ones located below.</"
+"p>"
+msgstr ""
+"<h1>Veuillez choisir une leçon</h1>\n"
+"<p>Cliquez sur un icône à gauche pour choisir une leçon.</p>\n"
+"<p>Les leçons du haut sont généralement plus simples que celles du bas.</p>"
+
+#. Create the button
+#: src/jlm/core/ui/LessonChooser.java:140
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
 msgid "Go"
 msgstr "Aller"
 
-#: src/jlm/core/ui/LessonChooser.java:173
+#: src/jlm/core/ui/LessonChooser.java:169
 msgid ""
-"<p>(unable to display the lesson's short description: file {0}.html not "
-"found)</p>"
-msgstr "<p>(impossible d'affichier le descriptif court de la leçon: le fichier {0}.html est introuvable)</p>"
+"<p>(unable to display the lesson's short description: file {0} not found)</p>"
+msgstr ""
+"<p>(impossible d'affichier le descriptif court de la leçon: le fichier {0} "
+"est introuvable)</p>"
 
-#: src/jlm/core/ui/LessonChooser.java:176
+#: src/jlm/core/ui/LessonChooser.java:172
 msgid "<p><b>Your score:</b> "
 msgstr "<p><b>Votre score&nbsp;:</b> "
 
-#: src/jlm/core/ui/LessonChooser.java:184
+#: src/jlm/core/ui/LessonChooser.java:180
 #, java-format
 msgid "{0} out of {1} exercises passed."
 msgstr "{0} exercices sur {1} réussis."
 
-#: src/jlm/core/ui/LessonChooser.java:188
+#: src/jlm/core/ui/LessonChooser.java:184
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
-msgstr "{0} exercices sur {1} réussi en {2}."
+msgstr "{0} exercices sur {1} réussis en {2}."
 
-#: src/jlm/core/ui/LessonChooser.java:194
+#: src/jlm/core/ui/LessonChooser.java:190
 msgid "You never attempted this lesson."
 msgstr "Vous n'avez jamais tenté cette leçon."
 
@@ -656,7 +725,7 @@ msgid ""
 msgstr ""
 "Erreur de syntaxe à la ligne {0} : {1}\n"
 "En cas de doute, vérifiez les indentations, et veillez à ne pas mélanger "
-"espaces et tabulations."
+"espaces et tabulations.\n"
 
 #: src/jlm/universe/Entity.java:244
 msgid ""
@@ -664,13 +733,13 @@ msgid ""
 "for typos\n"
 msgstr ""
 "Erreur de nom : vous semblez utiliser un identifiant qui n'existe pas. "
-"Auriez-vous fait une typo ?"
+"Auriez-vous fait une typo ?\n"
 
 #: src/jlm/universe/Entity.java:247
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 "Erreur de type : vous n'utilisez pas correctement une fonction, ou quelque "
-"chose du genre."
+"chose du genre.\n"
 
 #: src/jlm/universe/Entity.java:250
 msgid ""
@@ -678,7 +747,7 @@ msgid ""
 "not declared as such.\n"
 msgstr ""
 "Erreur UnboundLocal : vous utilisez probablement une variable qui n'est pas "
-"déclarée, ou quelque chose du genre."
+"déclarée, ou quelque chose du genre.\n"
 
 #: src/jlm/universe/Entity.java:256
 msgid "Error: there is no baggle to pickup under the buggle"
@@ -758,7 +827,7 @@ msgstr "    Il a eu un problème tel que rencontrer un mur.\n"
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr "    Il n'a pas eu de problème tel que rencontrer un mur.\n"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:111
+#: src/jlm/universe/bugglequest/BuggleWorld.java:117
 #, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
@@ -767,7 +836,7 @@ msgstr ""
 "{0}.map : ce fichier ne semble pas est un BuggleWorld sérialisé (fichier "
 "vide !)"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:117
+#: src/jlm/universe/bugglequest/BuggleWorld.java:123
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
@@ -776,61 +845,61 @@ msgstr ""
 "{0}.map : ce fichier ne semble pas est un BuggleWorld sérialisé (première "
 "ligne malformée : {1})"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:123
+#: src/jlm/universe/bugglequest/BuggleWorld.java:129
 #, java-format
 msgid "{0}.map: End of file reached before world size specification"
 msgstr ""
 "{0}.map : fin de fichier (EOF) rencontré avant la spécification de la taille "
 "du monde."
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:128
+#: src/jlm/universe/bugglequest/BuggleWorld.java:134
 #, java-format
 msgid "{0}.map:1: Expected 'Size: NNxMM' but got '{0}'"
 msgstr "{0}.map:1 : 'Size: NNxMM' était attendu, mais on a lu '{0}'"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:154
+#: src/jlm/universe/bugglequest/BuggleWorld.java:160
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that's out of the world"
 msgstr ""
 "Je ne peux poser un buggle aux coordonnées {0},{1} : c'est en dehors du monde"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:168
+#: src/jlm/universe/bugglequest/BuggleWorld.java:174
 msgid "Invalid buggle's direction: {0}"
 msgstr "direction invalide de buggle : {0}"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:175
-#: src/jlm/universe/bugglequest/BuggleWorld.java:182
+#: src/jlm/universe/bugglequest/BuggleWorld.java:181
+#: src/jlm/universe/bugglequest/BuggleWorld.java:188
 msgid "Invalid buggle's color name: {0}"
 msgstr "Couleur invalide de buggle : {0}"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:194
+#: src/jlm/universe/bugglequest/BuggleWorld.java:200
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that's out of the world"
 msgstr ""
 "Je ne peux définir les coordonnées de cellule {0},{1} : c'est en dehors du "
 "monde"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:207
+#: src/jlm/universe/bugglequest/BuggleWorld.java:213
 #, java-format
 msgid "Invalid color name: {0}"
 msgstr "Nom de couleur invalide : {0}"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:213
+#: src/jlm/universe/bugglequest/BuggleWorld.java:219
 #, java-format
 msgid "Expecting 'baggle' or 'nobaggle' but got {0} instead"
 msgstr "'baggle' ou 'nobaggle' était attendu, mais on a {0} à la place"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:217
+#: src/jlm/universe/bugglequest/BuggleWorld.java:223
 #, java-format
 msgid "Expecting 'topwall' or 'notopwall' but got {0} instead"
 msgstr "'topwall' ou 'notopwall' était attendu, mais on a {0} à la place"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:221
+#: src/jlm/universe/bugglequest/BuggleWorld.java:227
 #, java-format
 msgid "Expecting 'leftwall' or 'noleftwall' but got {0} instead"
 msgstr "'leftwall' ou 'noleftwall' était attendu, mais on a {0} à la place"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:231
+#: src/jlm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
 msgid ""
 "The cell {0},{1} seem to be defined more than once. At least, there is two "
@@ -839,7 +908,7 @@ msgstr ""
 "La cellule {0},{1} semble être définie plusieurs fois. Il y a au moins deux "
 "baggles ici ce qui n'est pas permis."
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:247
+#: src/jlm/universe/bugglequest/BuggleWorld.java:253
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
@@ -847,16 +916,16 @@ msgstr ""
 "Erreur de syntaxe. J'attendais la description d'une cellule ou d'un buggle "
 "mais j'ai eu : {0}"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:465
+#: src/jlm/universe/bugglequest/BuggleWorld.java:471
 msgid "  The world's name is {0}"
 msgstr "  Le nom du monde est {0}"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:469
+#: src/jlm/universe/bugglequest/BuggleWorld.java:475
 #, java-format
 msgid "  In ({0},{1})"
 msgstr "  En ({0},{1})"
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:472
+#: src/jlm/universe/bugglequest/BuggleWorld.java:478
 #, java-format
 msgid "  Something is wrong about buggle \"{0}\":\n"
 msgstr "  Il y a quelque chose qui cloche avec le buggle \"{0}\":\n"
@@ -1039,30 +1108,75 @@ msgstr "Couleur du buggle"
 msgid "go"
 msgstr "aller"
 
-#: src/jlm/universe/sort/SortingWorldView.java:53
+#: src/jlm/universe/sort/SortingWorldView.java:51
+#: src/lessons/sort/baseball/universe/BaseballWorldView.java:655
 msgid "Switch to time view"
 msgstr "Accéder à la vue temporelle"
 
-#: src/jlm/universe/sort/SortingWorldView.java:55
+#: src/jlm/universe/sort/SortingWorldView.java:53
+#: src/lessons/sort/baseball/universe/BaseballWorldView.java:657
 msgid "Switch to state view"
 msgstr "Accéder à la vue d'état"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:91
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:75
+#, java-format
+msgid ""
+"The player {0} of the base {1} cannot reach the hole that is too far from "
+"its position"
+msgstr ""
+"Le joueur {0} de la base {1} ne atteindre le trou, qui se trouve trop loin "
+"de sa position"
+
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
+msgid "Invalid move"
+msgstr "Déplacement invalide"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:121
+msgid "This is not a baseball world :-("
+msgstr "Ce n'est pas un monde de baseball :-("
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:125
+#, java-format
+msgid "Differing amount of bases: {0} vs {1}"
+msgstr "Nombres de bases différents : {0} vs {1}"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:128
+#, java-format
+msgid "Differing amount of players: {0} vs {1}"
+msgstr "Nombres de joueurs différents : {0} vs {1}"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:134
+#, java-format
+msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
+msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:317
+#, java-format
+msgid "Cannot move from base {0} since it's not between 0 and {1}"
+msgstr "Impossible de bouger de la base {0} car ce n'est pas entre 0 et {1}"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:320
+#, java-format
+msgid "Cannot move from position {0} since it's not between 0 and {1})"
+msgstr ""
+"Impossible de bouger de la position {0} car ce n'est pas entre 0 et {1}"
+
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:118
 msgid "This is not a world of pancakes :-("
 msgstr "Ce n'est pas un monde de crêpes :-("
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:95
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:122
 msgid "The two worlds are of differing size"
 msgstr "Les deux mondes ne sont pas de la même taille"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:170
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:195
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr ""
 "Vous avez demandé de retourner {0} crêpes, mais il faut en retourner au "
 "moins une."
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:172
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:197
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
@@ -1070,7 +1184,7 @@ msgstr ""
 "Vous avez demandé de retourner {0} crêpes, mais il n'y a que {1} crêpes sur "
 "la pile."
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:205
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:231
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it's not between 0 and {1}"
@@ -1078,7 +1192,7 @@ msgstr ""
 "Impossible d'obtenir la taille de la crêpe numéro {0} car ce n'est pas entre "
 "0 et {1}"
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:231
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:250
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it's not between 0 and {1}"

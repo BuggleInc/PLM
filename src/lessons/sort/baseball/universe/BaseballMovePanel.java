@@ -72,7 +72,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 				try  {
 					be.move(base, player);
 				} catch (IllegalArgumentException e) {
-					JOptionPane.showMessageDialog(null, i18n.tr("The player {0} of the base {1} can't move so far on the field !", player, base),
+					JOptionPane.showMessageDialog(null, i18n.tr("The player {0} of the base {1} cannot reach the hole that is too far from its position", player, base),
 							i18n.tr("Invalid move"),JOptionPane.ERROR_MESSAGE);
 				}
 			}
