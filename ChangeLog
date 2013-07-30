@@ -6,12 +6,14 @@
   * Entity.isSelected() returns whether /this/ is selected in the UI
   * Change Buggle.pickUpBaggle() to pickupBaggle() for consistency
   * ExerciseTemplated: Trim leading spaces of non-python templates
-  * Fix BuggleView for non-square worlds
-  * Implement a graphical lesson chooser
+  * Fix BuggleView for non-square worlds (Fix: #83)
+  * Implement a graphical lesson chooser (Fix: #19)
   * Rewrite and integrate all of the baseball exercises
   * Give the baseball universe an historical view, as for sorting one
   * PancakeView: Reimplement from scratch; can now be played with mouse
   * Split hanoi towers out in another lesson
+  * Remove the meta lesson. It was not done, seemed difficult to
+    finish, and complicated the code of the universes. (Fix: #2)
 20130720:
   * Integrate the pancake exercises into the sorting lesson
   * New pancake exercise about implementing Gates' algorithm
