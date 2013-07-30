@@ -303,12 +303,11 @@ public class SortingWorldView extends WorldView {
 		g2.setColor(Color.white);
 		g2.fill(new Rectangle2D.Double(0.,0.,(double)getWidth(),(double)getHeight()));
 
-		g2.setColor(Color.black);
 		g2.setFont(new Font("Monaco", Font.PLAIN, 12));
 
-		if (world.getEntityCount() > 1) {
-			System.err.println("Sorting World");
-		}
+		if (world.getEntityCount() > 1) 
+			System.err.println("Sorting World does not accept more than one entity anymore. Please fix your exercise.");
+		
 		int maxSize = getHeight();
 
 		drawAlgoState(g2, (SortingWorld) this.world, maxSize);
