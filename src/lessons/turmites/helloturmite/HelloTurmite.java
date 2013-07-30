@@ -1,9 +1,9 @@
-package lessons.welcome.turmites.helloturmite;
+package lessons.turmites.helloturmite;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bugglequest.BuggleWorld;
-import lessons.welcome.turmites.universe.TurmiteWorld;
+import lessons.turmites.universe.TurmiteWorld;
 
 public class HelloTurmite extends ExerciseTemplated {
 	final static int NOTURN = 1;

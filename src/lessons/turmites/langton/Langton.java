@@ -1,8 +1,8 @@
-package lessons.welcome.turmites.langton;
+package lessons.turmites.langton;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import lessons.welcome.turmites.universe.TurmiteWorld;
+import lessons.turmites.universe.TurmiteWorld;
 
 public class Langton extends ExerciseTemplated {
 

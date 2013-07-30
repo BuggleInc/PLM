@@ -1,4 +1,4 @@
-package lessons.welcome.turmites.helloturmite;
+package lessons.turmites.helloturmite;
 
 import java.awt.Color;
 
@@ -65,7 +65,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 			colors[i] = allColors[i];
 
 		for (int i=0;i<nbSteps;i++) {
-			((lessons.welcome.turmites.universe.TurmiteWorld)world).stepDone();
+			((lessons.turmites.universe.TurmiteWorld)world).stepDone();
 			step(colors,rule);
 		}
 	}

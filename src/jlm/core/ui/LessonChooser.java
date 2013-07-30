@@ -60,7 +60,7 @@ public class LessonChooser extends JFrame {
 		LessonOverview overview = new LessonOverview(this);
 		
 		LessonMatrix matrix = new LessonMatrix(overview, new String[][] { // WARNING, keep ExoTest.lessons synchronized
-				{"lessons/welcome","lessons/maze", "lessons/bat/string1"},
+				{"lessons/welcome","lessons/turmites","lessons/maze", "lessons/bat/string1"},
 				{"lessons/sort", "lessons/sort/baseball", "lessons/sort/pancake"},
 				{"lessons/recursion", "lessons/recursion/hanoi" },
 				{"lessons/lightbot" },

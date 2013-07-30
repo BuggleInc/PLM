@@ -1,8 +1,8 @@
-package lessons.welcome.turmites.turmitecreator;
+package lessons.turmites.turmitecreator;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
-import lessons.welcome.turmites.universe.TurmiteWorld;
+import lessons.turmites.universe.TurmiteWorld;
 
 public class TurmiteCreator extends ExerciseTemplated {
 	

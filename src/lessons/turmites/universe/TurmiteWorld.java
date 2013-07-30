@@ -1,4 +1,4 @@
-package lessons.welcome.turmites.universe;
+package lessons.turmites.universe;
 
 import java.awt.Color;
 import java.io.IOException;

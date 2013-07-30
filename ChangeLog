@@ -11,7 +11,7 @@
   * Rewrite and integrate all of the baseball exercises
   * Give the baseball universe an historical view, as for sorting one
   * PancakeView: Reimplement from scratch; can now be played with mouse
-  * Split hanoi towers out in another lesson
+  * Split hanoi towers and the turmites out in their own lessons
   * Remove the meta lesson. It was not done, seemed difficult to
     finish, and complicated the code of the universes. (Fix: #2)
 20130720:

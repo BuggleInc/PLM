@@ -88,10 +88,6 @@ import lessons.welcome.traversal.column.TraversalByColumn;
 import lessons.welcome.traversal.diagonal.TraversalDiagonal;
 import lessons.welcome.traversal.line.TraversalByLine;
 import lessons.welcome.traversal.zigzag.TraversalZigZag;
-import lessons.welcome.turmites.helloturmite.HelloTurmite;
-import lessons.welcome.turmites.langton.Langton;
-import lessons.welcome.turmites.langtoncolors.LangtonColors;
-import lessons.welcome.turmites.turmitecreator.TurmiteCreator;
 import lessons.welcome.variables.RunFour;
 import lessons.welcome.variables.RunHalf;
 import lessons.welcome.variables.Variables;
@@ -162,12 +158,6 @@ public class Main extends Lesson {
 		addExercise(new TraversalByLine(this),snake);
 		addExercise(new TraversalZigZag(this),snake);
 		addExercise(new TraversalDiagonal(this),snake);
-		
-		// Turmites exercises	
-		Lecture langton = addExercise(new Langton(this));
-		addExercise(new LangtonColors(this),langton);
-		addExercise(new HelloTurmite(this),langton);
-		addExercise(new TurmiteCreator(this),langton);
 		
 		// First serie of boolean fun
 		Lecture bat = addExercise(new SleepIn(this),conditions);

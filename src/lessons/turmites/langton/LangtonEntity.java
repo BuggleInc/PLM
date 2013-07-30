@@ -1,4 +1,4 @@
-package lessons.welcome.turmites.langton;
+package lessons.turmites.langton;
 
 import java.awt.Color;
 
@@ -34,7 +34,7 @@ public class LangtonEntity extends SimpleBuggle {
 		int nbSteps = (Integer)getParam(0); 
 		for (int i=0;i<nbSteps;i++) {
 			step();
-			((lessons.welcome.turmites.universe.TurmiteWorld)world).stepDone();
+			((lessons.turmites.universe.TurmiteWorld)world).stepDone();
 		}
 	}
 }

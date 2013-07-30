@@ -1,9 +1,9 @@
-package lessons.welcome.turmites.langtoncolors;
+package lessons.turmites.langtoncolors;
 
 import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bugglequest.BuggleWorld;
-import lessons.welcome.turmites.universe.TurmiteWorld;
+import lessons.turmites.universe.TurmiteWorld;
 
 public class LangtonColors extends ExerciseTemplated {
 	BuggleWorld createWorld(String rule, int nbSteps, int width, int height, int buggleX, int buggleY) {

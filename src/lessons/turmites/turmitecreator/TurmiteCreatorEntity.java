@@ -1,4 +1,4 @@
-package lessons.welcome.turmites.turmitecreator;
+package lessons.turmites.turmitecreator;
 
 import java.awt.Color;
 
@@ -131,7 +131,7 @@ public class TurmiteCreatorEntity extends jlm.universe.bugglequest.SimpleBuggle 
 
 		for (int step=0;step<nbSteps;step++) {
 			step();
-			((lessons.welcome.turmites.universe.TurmiteWorld)world).stepDone();
+			((lessons.turmites.universe.TurmiteWorld)world).stepDone();
 		}
 	}
 }
