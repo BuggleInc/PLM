@@ -85,8 +85,8 @@ public class BaseballWorldView extends WorldView
 		float theta = 0.6f ;
 		int[] xPoints = new int[ 3 ] ;
 		int[] yPoints = new int[ 3 ] ;
-		float[] vecLine = new float[ 2 ] ;
-		float[] vecLeft = new float[ 2 ] ;
+		float[] vecLine = new float[ ] {(float)xPoints[ 0 ] - xTail, (float)yPoints[ 0 ] - yTail};
+		float[] vecLeft = new float[ ] {-vecLine[ 1 ],vecLine[ 0 ]} ; // arrow base vector - normal to the line
 		float fLength;
 		float th;
 		float ta;
@@ -94,14 +94,6 @@ public class BaseballWorldView extends WorldView
 
 		xPoints[ 0 ] = xHead ;
 		yPoints[ 0 ] = yHead ;
-
-		// build the line vector
-		vecLine[ 0 ] = (float)xPoints[ 0 ] - xTail ;
-		vecLine[ 1 ] = (float)yPoints[ 0 ] - yTail ;
-
-		// build the arrow base vector - normal to the line
-		vecLeft[ 0 ] = -vecLine[ 1 ] ;
-		vecLeft[ 1 ] = vecLine[ 0 ] ;
 
 		// setup length parameters
 		fLength = (float)Math.sqrt( vecLine[0] * vecLine[0] + vecLine[1] * vecLine[1] ) ;
@@ -172,7 +164,21 @@ public class BaseballWorldView extends WorldView
 		int[][] points = computeCorners( L, dist, theta, xCenter, yCenter );
 
 		// draw the base
-		drawRectangle(g,points,obtainColor(base));
+		// will contains the x coordinates of the points
+		int[] xPoints = new int[4];
+		// will contains the y coordinates of the points 
+		int[] yPoints = new int[4];
+		// fill the arrays mentioned earlier
+		for (int i = 0 ; i < 4 ; i++) {
+			xPoints[i] = points[i][0];
+			yPoints[i] = points[i][1];
+		}
+		// draw the shape of the base
+		g.setColor(Color.BLACK);
+		g.drawPolygon(xPoints, yPoints, 4);
+		// fill this shape
+		g.setColor(obtainColor(base));
+		g.fillPolygon(xPoints, yPoints, 4);
 
 		// the radius of the disk representing the player. the graphically depicted is a bit smaller than the clickable
 		this.radius = (L/amountOfPlayers-1); // clickable
@@ -263,99 +269,6 @@ public class BaseballWorldView extends WorldView
 		}
 	}
 
-	/**
-	 * Draw an arrow which represent the last movement
-	 * @param g The Graphics2D context to draw on
-	 * @param move The baseball move that we want to draw
-	 * @param r The distance between the center of the screen and end of the line
-	 * @param theta The default angle between two bases
-	 * @param xControl The center of the screen in x-axis
-	 * @param yControl The center of the screen in y-axis
-	 * @param L A coefficient which adapt the length of the arrow to the total amount of bases
-	 */
-	private void drawLastMove(Graphics2D g, BaseballMove move, int r, double theta, double xControl, double yControl , int L, int amountOfPlayers){
-		// Save the previous stroke -- we will need it later
-		Stroke s = g.getStroke();
-		// Set the color to the color of the player who moved
-		g.setColor(obtainColor(move.getPlayerColor()));
-		// Modifies the stroke so the drawing is a dotted line
-		g.setStroke(new BasicStroke(
-				3.0f,						// Width
-				BasicStroke.CAP_ROUND,		// End cap
-				BasicStroke.JOIN_BEVEL,		// Join style
-				10.0f,						// Miter limit
-				new float[] {5.0f,5.0f},	// Dash pattern
-				0.0f						// Dash phase
-				));
-
-		/*
-		 * This array will contains the coordinates (x,y) of :
-		 * -> the beginning of the arrow ( index 0 )
-		 * -> the end of the tail of the arrow ( index 1 )
-		 * -> the end of the head of the arrow 
-		 */
-		int[][] arrow = new int[3][2];
-		// the step between two players of the same base
-		int[] delta = new int[2] ;
-		// The angle that will be used at each loop iteration
-		double[] thetaBase = { move.getBaseSrc() * theta, move.getBaseDst() * theta, move.getBaseDst() * theta };
-		// The radius that will be used at each loop iteration
-		int[] radius = { r , r-2*L/3, r-L/4};
-		// The players locations within its base
-		int[] players = { move.getPlayerSrc() , move.getPlayerDst() , move.getPlayerDst() } ;
-		// will contains the coordinates of the corners of the current base
-		int[][] points = new int[4][2];
-		// will contains the coordinates of the middle of the lower segment ( when theta = 0 ) of the current base 
-		int[] middleLower = new int[2];
-		// will contains the coordinates of the middle of the upper segment ( when theta = 0 ) of the current base 
-		int[] middleUpper = new int[2];
-
-		for ( int i = 0 ; i < 3 ; i++) {
-			points = computeCorners(L, radius[i], thetaBase[i] , (int)(xControl),(int) (yControl) );
-
-			middleUpper[0] = ( points[1][0] + points[2][0] ) /2 ;
-			middleUpper[1] = ( points[1][1] + points[2][1] ) /2 ;
-			middleLower[0] = ( points[0][0] + points[3][0] ) /2 ;
-			middleLower[1] = ( points[0][1] + points[3][1] ) /2 ;
-
-			delta[0] = (middleUpper[0] - middleLower[0])/amountOfPlayers ;
-			delta[1] = (middleUpper[1] - middleLower[1])/amountOfPlayers ;
-
-			arrow[i][0]= (int) (middleUpper[0] - (players[i]+.5)*delta[0] ); 
-			arrow[i][1]= (int) (middleUpper[1] - (players[i]+.5)*delta[1]) ;  
-		}
-
-		// Draw the tail of the arrow
-		g.draw(new QuadCurve2D.Double(arrow[0][0], arrow[0][1], xControl, yControl, arrow[1][0], arrow[1][1]));
-		g.setStroke(s);
-		// Draw the head of the arrow
-		drawArrow(g,arrow[1][0], arrow[1][1], arrow[2][0], arrow[2][1]);
-	}
-
-	/**
-	 * Draw a rectangle representing the base. We can't use drawRectangle here.
-	 * @param g The Graphics2D context to draw on
-	 * @param points the four points representing the corners of the rectangle 
-	 * @param baseColor the color in which we will draw the base
-	 */
-	private void drawRectangle(Graphics2D g, int[][] points, Color baseColor ) {
-		// will contains the x coordinates of the points
-		int[] xPoints = new int[4];
-		// will contains the y coordinates of the points 
-		int[] yPoints = new int[4];
-		// fill the arrays mentioned earlier
-		for (int i = 0 ; i < 4 ; i++) {
-			xPoints[i] = points[i][0];
-			yPoints[i] = points[i][1];
-		}
-		// draw the shape of the base
-		g.setColor(Color.BLACK);
-		g.drawPolygon(xPoints, yPoints, 4);
-		// fill this shape
-		g.setColor(baseColor);
-		g.fillPolygon(xPoints, yPoints, 4);
-	}
-
 	/** Returns the color corresponding to colorIndex */
 	private Color obtainColor(int colorIndex) {
 		Color[] colors = {
@@ -384,12 +297,8 @@ public class BaseballWorldView extends WorldView
 		return colorSent;
 	}
 
-	/**
-	 * Draw the component of the world
-	 * @param g The Graphics2D context to draw on
-	 */
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
+	/** Display the world under its circular form */
+	private void paintCircular(Graphics g) {
 
 		Graphics2D g2 = (Graphics2D) g;
 
@@ -428,10 +337,70 @@ public class BaseballWorldView extends WorldView
 			drawBase(g2, L, radius, theta*i, (int) virtualSize/2, (int) virtualSize/2 , i, amountOfPlayers);
 
 		// Draw the last move made on the field if it exists
-		if ( myWorld.getLastMove() != null)
-			drawLastMove(g2, myWorld.getLastMove(), radius-L/amountOfPlayers, theta, virtualSize/2, virtualSize/2, L, amountOfPlayers);
+		if ( myWorld.getLastMove() != null) {
+			BaseballMove move = myWorld.getLastMove();
+			int r = radius-L/amountOfPlayers;
+			double xControl = virtualSize/2;
+			double yControl = virtualSize/2;
+			// Save the previous stroke -- we will need it later
+			Stroke s = g2.getStroke();
+			// Set the color to the color of the player who moved
+			g2.setColor(obtainColor(move.getPlayerColor()));
+			// Modifies the stroke so the drawing is a dotted line
+			g2.setStroke(new BasicStroke(
+					3.0f,						// Width
+					BasicStroke.CAP_ROUND,		// End cap
+					BasicStroke.JOIN_BEVEL,		// Join style
+					10.0f,						// Miter limit
+					new float[] {5.0f,5.0f},	// Dash pattern
+					0.0f						// Dash phase
+					));
+			
+			/*
+			 * This array will contains the coordinates (x,y) of :
+			 * -> the beginning of the arrow ( index 0 )
+			 * -> the end of the tail of the arrow ( index 1 )
+			 * -> the end of the head of the arrow 
+			 */
+			int[][] arrow = new int[3][2];
+			// the step between two players of the same base
+			int[] delta = new int[2] ;
+			// The angle that will be used at each loop iteration
+			double[] thetaBase = { move.getBaseSrc() * theta, move.getBaseDst() * theta, move.getBaseDst() * theta };
+			// The radius that will be used at each loop iteration
+			int[] radius1 = { r , r-2*L/3, r-L/4};
+			// The players locations within its base
+			int[] players = { move.getPlayerSrc() , move.getPlayerDst() , move.getPlayerDst() } ;
+			// will contains the coordinates of the corners of the current base
+			int[][] points = new int[4][2];
+			// will contains the coordinates of the middle of the lower segment ( when theta = 0 ) of the current base 
+			int[] middleLower = new int[2];
+			// will contains the coordinates of the middle of the upper segment ( when theta = 0 ) of the current base 
+			int[] middleUpper = new int[2];
+			
+			for ( int i = 0 ; i < 3 ; i++) {
+				points = computeCorners(L, radius1[i], thetaBase[i] , (int)(xControl),(int) (yControl) );
+			
+				middleUpper[0] = ( points[1][0] + points[2][0] ) /2 ;
+				middleUpper[1] = ( points[1][1] + points[2][1] ) /2 ;
+				middleLower[0] = ( points[0][0] + points[3][0] ) /2 ;
+				middleLower[1] = ( points[0][1] + points[3][1] ) /2 ;
+			
+				delta[0] = (middleUpper[0] - middleLower[0])/amountOfPlayers ;
+				delta[1] = (middleUpper[1] - middleLower[1])/amountOfPlayers ;
+			
+				arrow[i][0]= (int) (middleUpper[0] - (players[i]+.5)*delta[0] ); 
+				arrow[i][1]= (int) (middleUpper[1] - (players[i]+.5)*delta[1]) ;  
+			}
+			
+			// Draw the tail of the arrow
+			g2.draw(new QuadCurve2D.Double(arrow[0][0], arrow[0][1], xControl, yControl, arrow[1][0], arrow[1][1]));
+			g2.setStroke(s);
+			// Draw the head of the arrow
+			drawArrow(g2,arrow[1][0], arrow[1][1], arrow[2][0], arrow[2][1]);
+		}
 		
-		// Display the amount of moves so far
+		// Display the amount of moves done so far
 		g2.setColor(Color.black);
 		g2.drawString(""+((BaseballWorld) world).getMoveCount()+" moves", 0,15);
 	}
@@ -472,4 +441,14 @@ public class BaseballWorldView extends WorldView
 		return res;
 	}
 
+
+
+	/**
+	 * Draw the component of the world
+	 * @param g The Graphics2D context to draw on
+	 */
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		paintCircular(g);
+	}
 }
