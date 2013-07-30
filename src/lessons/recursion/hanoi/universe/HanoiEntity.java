@@ -40,11 +40,11 @@ public class HanoiEntity extends Entity {
 
 	/** Must exist so that exercises can instantiate your entity (Entity is abstract) */
 	@Override
-	public void run() throws HanoiInvalidMove {
+	public void run() {
 	}
 
 	/** Part of your world logic */
-	public void move(int src, int dst) throws HanoiInvalidMove {
+	public void move(int src, int dst) {
 		/* BEGIN HIDDEN */
 		((HanoiWorld) world).move(src,dst);
 		stepUI();

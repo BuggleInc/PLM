@@ -1,20 +1,19 @@
 package lessons.recursion.hanoi;
 
 import lessons.recursion.hanoi.universe.HanoiEntity;
-import lessons.recursion.hanoi.universe.HanoiInvalidMove;
 
 public class HanoiBoardEntity extends HanoiEntity {
 
-	public void run() throws HanoiInvalidMove {
+	public void run() {
 		solve((Integer)getParam(0),(Integer) getParam(1));
 	}
 
 	/* BEGIN TEMPLATE */
-	public void solve(int src,int dst) throws HanoiInvalidMove {
+	public void solve(int src,int dst) {
 		solve(src,dst, getSlotSize(src));
 	}
 
-	public void solve(int src, int dst, int height) throws HanoiInvalidMove {
+	public void solve(int src, int dst, int height) {
 		/* BEGIN SOLUTION */
 		if (height!=0) {
 			int other=-1;

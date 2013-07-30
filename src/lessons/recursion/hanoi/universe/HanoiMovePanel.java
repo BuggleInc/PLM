@@ -64,13 +64,10 @@ public class HanoiMovePanel extends EntityControlPanel {
 				HanoiEntity he = (HanoiEntity) Game.getInstance().getSelectedEntity();
 				int src = sourceSelector.getSelectedIndex();
 				int dst = destinationSelector.getSelectedIndex();
-				try 
-				{
+				try {
 					he.move(src, dst);
-				} 
-				catch (HanoiInvalidMove him) 
-				{
-					showInvalidMoveMessageDialog(him);
+				} catch (IllegalArgumentException iae) { 
+					JOptionPane.showMessageDialog(null, iae.getLocalizedMessage(),i18n.tr("Invalid move"), JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
@@ -83,16 +80,15 @@ public class HanoiMovePanel extends EntityControlPanel {
 	private void initSelectors() {
 		Integer[] values = new Integer[3];
 		for (int i = 0 ; i < 3 ; i++)
-		{
 			values[i] = i;
-		}
+		
 		this.sourceSelector = new JComboBox(values);
 		this.destinationSelector = new JComboBox(values);
 	}
 
 	/**
 	 * Allow to enable or disable each component of the control panel
-	 * @param enabled if the composants shall be enabled or not
+	 * @param enabled if the components shall be enabled or not
 	 */
 	@Override
 	public void setEnabledControl(boolean enabled) {
@@ -101,14 +97,5 @@ public class HanoiMovePanel extends EntityControlPanel {
 		this.validateButton.setEnabled(enabled);
 	}
 	
-	/**
-	 * Show a message dialog explaining that the user try to make an invalid move on the field
-	 * @param 
-	 */
-	protected void showInvalidMoveMessageDialog(HanoiInvalidMove him) {
-		String message = him.getLocalizedMessage();;
-		String title = "Invalid move" ;
-		JOptionPane.showMessageDialog(null, message,title, JOptionPane.ERROR_MESSAGE);
-	}
 
 }

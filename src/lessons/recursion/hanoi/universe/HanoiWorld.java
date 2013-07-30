@@ -37,8 +37,6 @@ public class HanoiWorld extends World {
 	public HanoiWorld(String name, Integer[] A, Integer[] B, Integer[] C) {
 		super(name);
 		setDelay(200); /* Delay (in ms) in default animations */
-		/* Your code here */
-		/* BEGIN HIDDEN */
 		slots = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
 		
 		for (int i=0; i<A.length; i++) 
@@ -47,7 +45,6 @@ public class HanoiWorld extends World {
 			slots[1].add(B[i]);
 		for (int i=0; i<C.length; i++) 
 			slots[2].add(C[i]);
-		/* END HIDDEN */
 	}
 	
 	/** Reset the state of the current world to the one passed in argument
@@ -62,13 +59,10 @@ public class HanoiWorld extends World {
 	@Override
 	public void reset(World w) {
 		HanoiWorld other = (HanoiWorld)w;
-		/* Your code here */
-		/* BEGIN HIDDEN */
 		slots = new Vector[] {new Vector<Integer>(), new Vector<Integer>(), new Vector<Integer>()};
 		for (int slot=0;slot<3;slot++)
 			for (int i=0; i<other.slots[slot].size(); i++)
 				slots[slot].add( other.slots[slot].elementAt(i));
-		/* END HIDDEN */
 		super.reset(w);		
 	}
 
@@ -133,19 +127,21 @@ public class HanoiWorld extends World {
 		return slots[i].toArray(new Integer[slots[i].size()]);
 	}
 	
-	/** This is the main function of the public interface */
-	public void move(Integer src, Integer dst) throws HanoiInvalidMove {
-		if (src < 0 || src > 2 || dst < 0 || dst > 2)
-			throw new HanoiInvalidMove("Cannot move from slot #"+src+" to #"+dst+": the only existing slots are 0, 1 and 2");
+	/** This is the main function of the public interface 
+	 * @throws IllegalArgumentException if your move is not valid */
+	public void move(Integer src, Integer dst) {
+		if (src < 0 || src > 2 || dst < 0 || dst > 2) 
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to {1}: the only existing slots are 0, 1 and 2",src,dst));
 		if (src == dst)
-			throw new HanoiInvalidMove("Cannot move from slot #"+src+" to itself");
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot move from slot {0} to itself",src));
 		if (slots[src].size() == 0)
-			throw new HanoiInvalidMove("No disc to move from slot #"+src);
+			throw new IllegalArgumentException(Game.i18n.tr("No disc to move from slot {0}",src));
 		
 		if (slots[dst].size() > 0 &&
 				slots[src].lastElement() > slots[dst].lastElement())
-			throw new HanoiInvalidMove("Cannot move disc from slot #"+src+" to #"+dst+": small disk must remain over large ones but "+
-					slots[src].lastElement() +" > "+slots[dst].lastElement());
+			throw new IllegalArgumentException(
+					Game.i18n.tr("Cannot move disc from slot {0} to {1} small disk must remain over large ones but {2} > {3}",
+							src,dst,slots[src].lastElement(),slots[dst].lastElement()));
 		
 		slots[dst].add( slots[src].remove(slots[src].size()-1) );
 	}
