@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 23:51+0200\n"
+"POT-Creation-Date: 2013-07-31 00:11+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -367,26 +367,28 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:169
+#: src/jlm/core/ui/LessonChooser.java:170
+#, java-format
 msgid ""
-"<p>(unable to display the lesson's short description: file {0} not found)</p>"
+"<p>(unable to display the short description of this lesson: file {0} not "
+"found)</p>"
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:172
+#: src/jlm/core/ui/LessonChooser.java:173
 msgid "<p><b>Your score:</b> "
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:180
+#: src/jlm/core/ui/LessonChooser.java:181
 #, java-format
 msgid "{0} out of {1} exercises passed."
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:184
+#: src/jlm/core/ui/LessonChooser.java:185
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:190
+#: src/jlm/core/ui/LessonChooser.java:191
 #, fuzzy
 msgid "You never attempted this lesson."
 msgstr "About this lesson"

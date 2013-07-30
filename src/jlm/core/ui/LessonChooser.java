@@ -166,7 +166,8 @@ class LessonOverview extends JPanel {
 		try {
 			sb = FileUtils.readContentAsText(filename, "html",true);
 		} catch (IOException ex) {
-			sb = new StringBuffer(i18n.tr("<p>(unable to display the lesson's short description: file {0} not found)</p>",filename+".html"));
+			filename += ".html";
+			sb = new StringBuffer(i18n.tr("<p>(unable to display the short description of this lesson: file {0} not found)</p>",filename));
 		}
 
 		sb.append(i18n.tr("<p><b>Your score:</b> "));

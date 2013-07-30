@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-30 23:51+0200\n"
-"PO-Revision-Date: 2013-07-30 23:52+0200\n"
+"POT-Creation-Date: 2013-07-31 00:11+0200\n"
+"PO-Revision-Date: 2013-07-31 00:16+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -436,28 +436,28 @@ msgstr ""
 msgid "Go"
 msgstr "Aller"
 
-#: src/jlm/core/ui/LessonChooser.java:169
+#: src/jlm/core/ui/LessonChooser.java:170
+#, java-format
 msgid ""
-"<p>(unable to display the lesson's short description: file {0} not found)</p>"
-msgstr ""
-"<p>(impossible d'affichier le descriptif court de la leçon: le fichier {0} "
-"est introuvable)</p>"
+"<p>(unable to display the short description of this lesson: file {0} not "
+"found)</p>"
+msgstr "<p>(impossible d'afficher le descriptif court de cette leçon: le fichier {0} est introuvable)</p>"
 
-#: src/jlm/core/ui/LessonChooser.java:172
+#: src/jlm/core/ui/LessonChooser.java:173
 msgid "<p><b>Your score:</b> "
 msgstr "<p><b>Votre score&nbsp;:</b> "
 
-#: src/jlm/core/ui/LessonChooser.java:180
+#: src/jlm/core/ui/LessonChooser.java:181
 #, java-format
 msgid "{0} out of {1} exercises passed."
 msgstr "{0} exercices sur {1} réussis."
 
-#: src/jlm/core/ui/LessonChooser.java:184
+#: src/jlm/core/ui/LessonChooser.java:185
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
 msgstr "{0} exercices sur {1} réussis en {2}."
 
-#: src/jlm/core/ui/LessonChooser.java:190
+#: src/jlm/core/ui/LessonChooser.java:191
 msgid "You never attempted this lesson."
 msgstr "Vous n'avez jamais tenté cette leçon."
 
