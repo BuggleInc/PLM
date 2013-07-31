@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-07-31 00:29+0300\n"
-"PO-Revision-Date: 2013-07-24 17:20+0200\n"
+"POT-Creation-Date: 2013-07-31 20:39+0300\n"
+"PO-Revision-Date: 2013-07-31 20:42+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -634,13 +634,13 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:1
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:1
+#: src/lessons/turmites/universe/TurmiteWorld.html:1
 msgid "BuggleWorld"
 msgstr "Le monde des Buggles"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/bugglequest/BuggleWorld.html:2
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:2
+#: src/lessons/turmites/universe/TurmiteWorld.html:2
 msgid ""
 "This world was invented by Lyn Turbak, at Wellesley College. It is full of "
 "Buggles, little animals understanding simple orders, and offers numerous "
@@ -654,229 +654,229 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:7
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:7
+#: src/lessons/turmites/universe/TurmiteWorld.html:7
 msgid "Methods understood by buggles"
 msgstr "Méthodes comprises par les buggles"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:9
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:9
+#: src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "<b>Moving</b>"
 msgstr "<b>Bouger</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:9
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:9
+#: src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "(See also the note on exceptions, below)"
 msgstr "(voir aussi la note sur les exceptions, plus bas)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:10
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "<b>Turn left"
 msgstr "<b>Tourner à gauche"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:10
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn right"
 msgstr "Tourner à droite"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:10
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn back"
 msgstr "Se retourner"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:10
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving forward"
 msgstr "Avancer"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:10
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:10
+#: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving back</b>"
 msgstr "Reculer</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "void turnLeft()"
 msgstr "void turnLeft()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "void turnRight()"
 msgstr "void turnRight()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:11
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "void turnBack()"
 msgstr "void turnBack()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:12
+#: src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid "void forward() or void forward(int)"
 msgstr "void forward() ou void forward(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:12
+#: src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid "void backward() or void backward(int)"
 msgstr "void backward() ou void backward(int)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:13
+#: src/lessons/turmites/universe/TurmiteWorld.html:13
 msgid "<b>Get X coordinate"
 msgstr "<b>Obtenir l'abcisse"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:13
+#: src/lessons/turmites/universe/TurmiteWorld.html:13
 msgid "Get Y coordinate"
 msgstr "Obtenir l'ordonnée"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:13
+#: src/lessons/turmites/universe/TurmiteWorld.html:13
 msgid "Set X coordinate"
 msgstr "Changer l'abcisse"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:13
+#: src/lessons/turmites/universe/TurmiteWorld.html:13
 msgid "Set Y coordinate"
 msgstr "Changer l'ordonnée"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:13
+#: src/lessons/turmites/universe/TurmiteWorld.html:13
 msgid "Set position</b>"
 msgstr "Changer la position</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:14
+#: src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "int getX()"
 msgstr "int getX()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:14
+#: src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "int getY()"
 msgstr "int getY()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:14
+#: src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "void setX(int)"
 msgstr "void setX(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:14
+#: src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "void setY(int)"
 msgstr "void setY(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:14
+#: src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "void setPos(int,int)"
 msgstr "void setPos(int,int)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:16
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:16
+#: src/lessons/turmites/universe/TurmiteWorld.html:16
 msgid "<b>Information on the buggle</b>"
 msgstr "<b>Informations sur la buggle</b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:17
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:17
+#: src/lessons/turmites/universe/TurmiteWorld.html:17
 msgid "<b>Get the color"
 msgstr "<b>Obtenir la couleur"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:17
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:17
+#: src/lessons/turmites/universe/TurmiteWorld.html:17
 msgid "Set the color</b>"
 msgstr "Changer la couleur</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:18
+#: src/lessons/turmites/universe/TurmiteWorld.html:18
 msgid "Color getColor()"
 msgstr "Color getColor()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:18
+#: src/lessons/turmites/universe/TurmiteWorld.html:18
 msgid "void setColor(Color)"
 msgstr "void setColor(Color)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:19
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:19
+#: src/lessons/turmites/universe/TurmiteWorld.html:19
 msgid "<b>Look for a wall forward"
 msgstr "<b>Chercher un mur devant"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:19
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:19
+#: src/lessons/turmites/universe/TurmiteWorld.html:19
 msgid "Look for a wall backward</b>"
 msgstr "Chercher un mur derriere</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:20
+#: src/lessons/turmites/universe/TurmiteWorld.html:20
 msgid "boolean isFacingWall()"
 msgstr "boolean isFacingWall()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:20
+#: src/lessons/turmites/universe/TurmiteWorld.html:20
 msgid "boolean isBackingWall()"
 msgstr "boolean isBackingWall()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:21
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:21
+#: src/lessons/turmites/universe/TurmiteWorld.html:21
 msgid "<b>Get heading"
 msgstr "<b>Obtenir la direction"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:21
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:21
+#: src/lessons/turmites/universe/TurmiteWorld.html:21
 msgid "Set heading</b>"
 msgstr "Changer la direction</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:21
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:21
+#: src/lessons/turmites/universe/TurmiteWorld.html:21
 msgid "valid directions are:"
 msgstr "Les directions valides sont :"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:22
+#: src/lessons/turmites/universe/TurmiteWorld.html:22
 msgid "Direction getDirection()"
 msgstr "Direction getDirection()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:22
+#: src/lessons/turmites/universe/TurmiteWorld.html:22
 msgid "void setDirection(Direction)"
 msgstr "void setDirection(Direction)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:22
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:22
+#: src/lessons/turmites/universe/TurmiteWorld.html:22
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
 msgstr "Direction.NORTH, Direction.EAST, Direction.SOUTH et Direction.WEST"
 
@@ -888,199 +888,199 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:24
+#: src/lessons/turmites/universe/TurmiteWorld.html:24
 msgid "<b>About the brush</b>"
 msgstr "<b>À propos de la brosse</b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:25
+#: src/lessons/turmites/universe/TurmiteWorld.html:25
 msgid "<b>Brush down"
 msgstr "<b>Baisser la brosse"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:25
+#: src/lessons/turmites/universe/TurmiteWorld.html:25
 msgid "Brush up"
 msgstr "Lever la brosse"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:25
+#: src/lessons/turmites/universe/TurmiteWorld.html:25
 msgid "Get brush position</b>"
 msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:26
+#: src/lessons/turmites/universe/TurmiteWorld.html:26
 msgid "void brushUp()"
 msgstr "void brushUp()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:26
+#: src/lessons/turmites/universe/TurmiteWorld.html:26
 msgid "void brushDown()"
 msgstr "void brushDown()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:26
+#: src/lessons/turmites/universe/TurmiteWorld.html:26
 msgid "boolean isBrushDown()"
 msgstr "boolean isBrushDown()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:29
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:27
+#: src/lessons/turmites/universe/TurmiteWorld.html:27
 msgid "<b>Change the brush color"
 msgstr "<b>Modifier la couleur de la brosse"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:29
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:27
+#: src/lessons/turmites/universe/TurmiteWorld.html:27
 msgid "Get the color of the brush</b>"
 msgstr "Obtenir la couleur de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:30
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:28
+#: src/lessons/turmites/universe/TurmiteWorld.html:28
 msgid "void setBrushColor(Color)"
 msgstr "void setBrushColor(Color)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:30
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:28
+#: src/lessons/turmites/universe/TurmiteWorld.html:28
 msgid "Color getBrushColor()"
 msgstr "Color getBrushColor()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:32
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:30
+#: src/lessons/turmites/universe/TurmiteWorld.html:30
 msgid "<b>Interacting with the world</b>"
 msgstr "<b>Interagir avec le monde</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:31
+#: src/lessons/turmites/universe/TurmiteWorld.html:31
 msgid "<b>Get the color of the ground</b>"
 msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:31
+#: src/lessons/turmites/universe/TurmiteWorld.html:31
 msgid "Color getGroundColor()"
 msgstr "Color getGroundColor()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
+#: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "<b>Look for a baggle on the ground"
 msgstr "<b>Chercher un baggle par terre"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
+#: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "Look for a baggle in bag"
 msgstr "Chercher un baggle dans ses poches"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
+#: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "Pickup a baggle"
 msgstr "Prendre un baggle"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:33
+#: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "Drop a baggle</b>"
 msgstr "Poser un baggle</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:36
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:34
+#: src/lessons/turmites/universe/TurmiteWorld.html:34
 msgid "(see the note on exceptions)"
 msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "boolean isOverBaggle()"
 msgstr "boolean isOverBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "boolean isCarryingBaggle()"
 msgstr "boolean isCarryingBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "void pickupBaggle()"
 msgstr "void pickupBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:37
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:35
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "void dropBaggle()"
 msgstr "void dropBaggle()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:39
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
+#: src/lessons/turmites/universe/TurmiteWorld.html:37
 msgid "<b>Look for a message"
 msgstr "<b>Chercher un message"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:39
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
+#: src/lessons/turmites/universe/TurmiteWorld.html:37
 msgid "Add a message"
 msgstr "Ajouter un message"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:39
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
+#: src/lessons/turmites/universe/TurmiteWorld.html:37
 msgid "Read the message"
 msgstr "Lire le message"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:39
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:37
+#: src/lessons/turmites/universe/TurmiteWorld.html:37
 msgid "Erase the message</b>"
 msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:40
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
+#: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "boolean isOverMessage()"
 msgstr "boolean isOverMessage()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:40
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
+#: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "void writeMessage(String)"
 msgstr "void writeMessage(String)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:40
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
+#: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "String readMessage()"
 msgstr "String readMessage()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:40
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:38
+#: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "void clearMessage()"
 msgstr "void clearMessage()"
 
 #. type: Content of: <h2>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:43
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:41
+#: src/lessons/turmites/universe/TurmiteWorld.html:41
 msgid "Note on exceptions"
 msgstr "Note sur les exceptions"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/bugglequest/BuggleWorld.html:44
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:42
+#: src/lessons/turmites/universe/TurmiteWorld.html:42
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -1099,7 +1099,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:50
-#: src/lessons/welcome/turmites/universe/TurmiteWorld.html:48
+#: src/lessons/turmites/universe/TurmiteWorld.html:48
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -5445,8 +5445,8 @@ msgstr "Mnémotechnique"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:130
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:30
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:33
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:30
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:33
 msgid "R"
 msgstr "R"
 
@@ -6588,127 +6588,25 @@ msgstr ""
 "Cette fois, il faut parcourir le monde en zig-zag. Regardez le monde "
 "objectif pour voir les détails de l'ordre de parcours demandé."
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/turmites/langton/Langton.html:1
-msgid "Langton's ant"
-msgstr "La fourmi de Langton"
+#. type: Content of: <h3>
+#: src/lessons/turmites/Main.html:1 src/lessons/turmites/short_desc.html:1
+msgid "The turmites"
+msgstr "Les turmites"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:3
+#: src/lessons/turmites/Main.html:3
 msgid ""
-"In this exercise, you will turn your buggle into a <i>Langton's ant</i>. "
-"These artificial little animals are very interesting because they are given "
-"simple rules that depend only on their local environment, and after a period "
-"of apparent chaotic behavior, a general pattern <i>emerges</i>."
+"This set of activities lets you play with Langton's ants, that are 2D turing "
+"machines. They constitute very simple application problems, achievable by "
+"beginners, and open the door to an amazing world."
 msgstr ""
-"Dans cet exercice, vous aller métamorphoser votre buggle en une <i>fourmi de "
-"Langton</i>. Ces petits animaux artificiels sont très intéressants parce "
-"qu'ils suivent des règles simples qui dépendent seulement de leur "
-"environnement local, et qu'après une période d'un comportement d'apparence "
-"chaotique, un schéma général <i>apparaît</i>"
+"Cet ensemble d'activités vous permet de jouer avec les fourmis de Langton, "
+"qui sont des machines de Turing à deux dimensions. Il s'agit d'exercices "
+"d'application très simple, à la portée de débutants, mais ils ouvrent la "
+"porte sur un univers fascinant."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:8
-msgid ""
-"The rules are absolutely trivial: to compute what the next step should be, "
-"you should check the current color of the ground (using "
-"<code>getGroundColor()</code>). If it's white, change it to black, turn "
-"right and move forward by one cell. If the ground is currently black, change "
-"it to white, turn left and move forward by one cell."
-msgstr ""
-"Les règles sont absolument triviales: pour calculer quel sera le prochain "
-"pas, vous devez regarder la couleur actuelle du sol ( en utilisant "
-"<code>getGroundColor()</code>). Si c'est blanc, changez la en noir, tournez "
-"à droite et avancez d'une case. Si la couleur du sol est le noir, changez la "
-"en blanc, tournez à gauche et avancez d'une case."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:14
-msgid ""
-"It's hard to come up with simpler rules isn't it? Well, let's go and code it "
-"now. You have to complete the <code>step()</code> method, which encodes the "
-"behavior of the ant at each step. You will probably use the "
-"<code>getGroundColor()</code> method to retrieve the color of the cell on "
-"which the ant is currently.  Colors of interest are simply named <code>Color."
-"black</code> and <code>Color.white</code>."
-msgstr ""
-"Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien, "
-"allons-y et codons-les maintenant. Vous avez à compléter la méthode "
-"<code>step()</code>, qui définit le comportement de la fourmi à chaque pas. "
-"Vous utiliserez probablement la méthode <code>getGroundColor()</code> pour "
-"récupérer la valeur de la case sur laquelle la fourmi se trouve. Les "
-"couleurs intéressantes sont tout simplement <code>Color.black</code> pour le "
-"noir ou <code>Color.white</code> pour le blanc."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:20
-msgid ""
-"To compare colors, you cannot use the equal sign (=), because these things "
-"are not scalar values but objects. Instead, you need to write something like "
-"the following:"
-msgstr ""
-"Pour comparer les couleurs, il n'est pas possible d'utiliser le signe égal "
-"(=) parce ces choses ne sont pas des valeurs scalaires normales mais des "
-"objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/turmites/langton/Langton.html:24
-#, no-wrap
-msgid ""
-"Color c /* = some initialization */;\n"
-"if (c.equals(Color.black)) {\n"
-"  /* that's equal */\n"
-"} else {\n"
-"  /* that was not equal */\n"
-"}\n"
-msgstr ""
-"Color c /* = une initialisation*/;\n"
-"if (c.equals(Color.black)) {\n"
-"  /* c'était égal */\n"
-"} else {\n"
-"  /* ce n'était pas égal */\n"
-"}\n"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:32
-msgid ""
-"Changing the ground color is not difficult, but a bit long: you have to "
-"change the brush color of your buggle, set the brush down (to mark the "
-"current cell -- with <code>brushDown()</code>), and set the brush back up "
-"(with <code>brushUp()</code>) to avoid further issues when the buggle will "
-"move. You are naturally free of organizing your code the way you want, but "
-"you may want to write a <code>setGroundColor(color)</code> method to "
-"factorize things a bit."
-msgstr ""
-"Changer la couleur du sol n'est pas difficile, seulement un peu long : vous "
-"avez à changer la couleur de la brosse de votre buggle, l'abaisser (pour "
-"marquer la case courante -- avec <code>brushDown()</code>), et relever la "
-"brosse (avec <code>brushUp()</code>) pour éviter des problèmes lorsque la "
-"buggle va se déplacer. Vous être naturellement libre d'organiser votre code "
-"comme vous le souhaitez, mais vous pouvez vouloir écrire une méthode "
-"<code>setGroundColor(couleur)</code> pour factoriser le tout."
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/turmites/langton/Langton.html:39
-msgid "More information on Langton's ant"
-msgstr "Plus d'informations sur la fourmi de Langton"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:41
-msgid ""
-"As you can see from the execution of this exercise, the interest in this "
-"algorithm is that after about 10000 steps of relative chaotic behavior, the "
-"ant start building a regular pattern. This emergence of a regular pattern "
-"from the chaos is rather fascinating, isn't it?"
-msgstr ""
-"Comme vous pouvez le constater avec l'exécution de cet exercice, l'intérêt "
-"dans cet algorithme est qu'après environ 10 000 pas de comportement "
-"relativement chaotique, la fourmi commence à suivre un schéma régulier. "
-"L'émergence de ce schéma régulier à partir du chaos est réellement "
-"fascinant, n'est-ce pas ?"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:46
+#: src/lessons/turmites/Main.html:7
 msgid ""
 "This mechanism were invented in 1986 by Chris Langton, and later generalized "
 "in several ways (as we shall see in the next exercises). It was proven in "
@@ -6726,7 +6624,20 @@ msgstr ""
 "fascination..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langton/Langton.html:52
+#: src/lessons/turmites/Main.html:13
+msgid ""
+"Multicolor Langton's ants were discovered in 1995 by Propp et Al. Another "
+"funny fact is that the ants which name is a list of consecutive pair of "
+"identical letters (LL and RR) produce symmetric patterns. This fact was even "
+"formally proved."
+msgstr ""
+"Les fourmis de Langton multicolores ont été découvertes en 1995 par Propp et "
+"Al. Un fait amusant est que les fourmis dont le nom est une paire de lettres "
+"identiques (LL et RR) produisent des dessins symétriques. Ce fait a même été "
+"prouvé formellement."
+
+#. type: Content of: <p>
+#: src/lessons/turmites/Main.html:18
 msgid ""
 "Check the corresponding wikipedia web page, of which this exercise is "
 "inspired, for further details."
@@ -6734,13 +6645,177 @@ msgstr ""
 "Consultez la page correspondante sur Wikipedia, à partir de laquelle cet "
 "exercice est inspiré, pour d'avantages de détails."
 
+#. type: Content of: <h3>
+#: src/lessons/turmites/Main.html:21 src/lessons/sort/pancake/Main.html:29
+#: src/lessons/sort/baseball/Main.html:27
+msgid "What can I do to improve this JLM universe?"
+msgstr "Que puis-je faire pour améliorer cet univers de JLM?"
+
+#. type: Content of: <p>
+#: src/lessons/turmites/Main.html:23 src/lessons/sort/pancake/Main.html:31
+#: src/lessons/sort/baseball/Main.html:29
+msgid ""
+"As usual, there are several things that could be done in the code of this "
+"universe to improve it:"
+msgstr ""
+"Comme souvent, plusieurs points pourraient être améliorés dans le code de "
+"cet univers pour l'améliorer&nbsp;:"
+
+#. type: Content of: <ul><li>
+#: src/lessons/turmites/Main.html:25
+msgid ""
+"We are probably missing some good exercises. The turmite creator exercise is "
+"a bit harsh: we could introduce the patterns in a more friendly manner."
+msgstr ""
+"Il nous manque probablement quelques exercices progressifs. Celui sur la "
+"création de turmites est particulièrement aride. Nous devrions probablement "
+"introduire les motifs de façon plus pédagogique."
+
+#. type: Content of: <ul><li>
+#: src/lessons/turmites/Main.html:27
+msgid "We may want to write an exercise on the busy beaver, maybe?"
+msgstr ""
+"Il serait peut-être amusant d'introduire un exercice sur les castors occupés "
+"(busy beavers)?"
+
+#. type: Content of: <p>
+#: src/lessons/turmites/short_desc.html:2
+msgid "Discover the Langton's ants, that are 2D turing machines."
+msgstr ""
+"Découvrez les fourmis de Langton, qui sont des machines de Turing à deux "
+"dimensions."
+
+#. type: Content of: <p>
+#: src/lessons/turmites/short_desc.html:4
+msgid ""
+"These activities are very simple application problems, achievable by "
+"beginners, and open the door to an amazing world."
+msgstr ""
+"Ces activités sont très simples, à la portée de débutants, et elles ouvrent "
+"la porte sur un univers fascinant."
+
 #. type: Content of: <h2>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:1
+#: src/lessons/turmites/langton/Langton.html:1
+msgid "Langton's ant"
+msgstr "La fourmi de Langton"
+
+#. type: Content of: <p>
+#: src/lessons/turmites/langton/Langton.html:3
+msgid ""
+"In this exercise, you will turn your buggle into a <i>Langton's ant</i>. "
+"These artificial little animals are very interesting because they are given "
+"simple rules that depend only on their local environment, and after a period "
+"of apparent chaotic behavior, a general pattern <i>emerges</i>."
+msgstr ""
+"Dans cet exercice, vous aller métamorphoser votre buggle en une <i>fourmi de "
+"Langton</i>. Ces petits animaux artificiels sont très intéressants parce "
+"qu'ils suivent des règles simples qui dépendent seulement de leur "
+"environnement local, et qu'après une période d'un comportement d'apparence "
+"chaotique, un schéma général <i>apparaît</i>"
+
+#. type: Content of: <p>
+#: src/lessons/turmites/langton/Langton.html:8
+msgid ""
+"The rules are absolutely trivial: to compute what the next step should be, "
+"you should check the current color of the ground (using "
+"<code>getGroundColor()</code>). If it's white, change it to black, turn "
+"right and move forward by one cell. If the ground is currently black, change "
+"it to white, turn left and move forward by one cell."
+msgstr ""
+"Les règles sont absolument triviales: pour calculer quel sera le prochain "
+"pas, vous devez regarder la couleur actuelle du sol ( en utilisant "
+"<code>getGroundColor()</code>). Si c'est blanc, changez la en noir, tournez "
+"à droite et avancez d'une case. Si la couleur du sol est le noir, changez la "
+"en blanc, tournez à gauche et avancez d'une case."
+
+#. type: Content of: <p>
+#: src/lessons/turmites/langton/Langton.html:14
+msgid ""
+"It's hard to come up with simpler rules isn't it? Well, let's go and code it "
+"now. You have to complete the <code>step()</code> method, which encodes the "
+"behavior of the ant at each step. You will probably use the "
+"<code>getGroundColor()</code> method to retrieve the color of the cell on "
+"which the ant is currently.  Colors of interest are simply named <code>Color."
+"black</code> and <code>Color.white</code>."
+msgstr ""
+"Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien, "
+"allons-y et codons-les maintenant. Vous avez à compléter la méthode "
+"<code>step()</code>, qui définit le comportement de la fourmi à chaque pas. "
+"Vous utiliserez probablement la méthode <code>getGroundColor()</code> pour "
+"récupérer la valeur de la case sur laquelle la fourmi se trouve. Les "
+"couleurs intéressantes sont tout simplement <code>Color.black</code> pour le "
+"noir ou <code>Color.white</code> pour le blanc."
+
+#. type: Content of: <p>
+#: src/lessons/turmites/langton/Langton.html:20
+msgid ""
+"To compare colors, you cannot use the equal sign (=), because these things "
+"are not scalar values but objects. Instead, you need to write something like "
+"the following:"
+msgstr ""
+"Pour comparer les couleurs, il n'est pas possible d'utiliser le signe égal "
+"(=) parce ces choses ne sont pas des valeurs scalaires normales mais des "
+"objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:"
+
+#. type: Content of: <pre>
+#: src/lessons/turmites/langton/Langton.html:24
+#, no-wrap
+msgid ""
+"Color c /* = some initialization */;\n"
+"if (c.equals(Color.black)) {\n"
+"  /* that's equal */\n"
+"} else {\n"
+"  /* that was not equal */\n"
+"}\n"
+msgstr ""
+"Color c /* = une initialisation*/;\n"
+"if (c.equals(Color.black)) {\n"
+"  /* c'était égal */\n"
+"} else {\n"
+"  /* ce n'était pas égal */\n"
+"}\n"
+
+#. type: Content of: <p>
+#: src/lessons/turmites/langton/Langton.html:32
+msgid ""
+"Changing the ground color is not difficult, but a bit long: you have to "
+"change the brush color of your buggle, set the brush down (to mark the "
+"current cell -- with <code>brushDown()</code>), and set the brush back up "
+"(with <code>brushUp()</code>) to avoid further issues when the buggle will "
+"move. You are naturally free of organizing your code the way you want, but "
+"you may want to write a <code>setGroundColor(color)</code> method to "
+"factorize things a bit."
+msgstr ""
+"Changer la couleur du sol n'est pas difficile, seulement un peu long : vous "
+"avez à changer la couleur de la brosse de votre buggle, l'abaisser (pour "
+"marquer la case courante -- avec <code>brushDown()</code>), et relever la "
+"brosse (avec <code>brushUp()</code>) pour éviter des problèmes lorsque la "
+"buggle va se déplacer. Vous être naturellement libre d'organiser votre code "
+"comme vous le souhaitez, mais vous pouvez vouloir écrire une méthode "
+"<code>setGroundColor(couleur)</code> pour factoriser le tout."
+
+#. type: Content of: <p>
+#: src/lessons/turmites/langton/Langton.html:39
+msgid ""
+"As you can see from the execution of this exercise, the interest in this "
+"algorithm is that after about 10000 steps of relative chaotic behavior, the "
+"ant start building a regular pattern. This emergence of a regular pattern "
+"from the chaos is rather fascinating, isn't it? Move on to the next exercise "
+"to see more of them."
+msgstr ""
+"Comme vous pouvez le constater avec l'exécution de cet exercice, l'intérêt "
+"dans cet algorithme est qu'après environ 10 000 pas de comportement "
+"relativement chaotique, la fourmi commence à suivre un schéma régulier. "
+"L'émergence de ce schéma régulier à partir du chaos est réellement "
+"fascinant, n'est-ce pas ? Passez à l'exercice suivant pour en voir plus."
+
+#. type: Content of: <h2>
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:1
 msgid "Multicolor Langton's ant"
 msgstr "La fourmi de Langton multicolore"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:3
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:3
 msgid ""
 "There is several ways to extend the concept of Langton's ant. In this "
 "exercise, we explore first one, using more than two colors. It remains very "
@@ -6764,7 +6839,7 @@ msgstr ""
 "blanches et à gauche sur les noires)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:12
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:12
 msgid ""
 "Some of these ants draw fascinating patterns (switch the world to see them): "
 "LLRR build a symmetric figure resembling loosely to a ball, LRRRRRLLR draws "
@@ -6778,7 +6853,7 @@ msgstr ""
 "RRLLLRLLLRRR semble remplir un sablier..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:17
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:17
 msgid ""
 "Changing your buggle into a generic Langton's ant is not very complicated, "
 "although it is not completely trivial. As previously, you have to write a "
@@ -6797,7 +6872,7 @@ msgstr ""
 "code> et <code>{Color.white, Color.black}</code> comme arguments."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:24
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:24
 msgid ""
 "Changing your buggle into a generic Langton's ant is not very complicated, "
 "although it is not completely trivial. As previously, you have to write a "
@@ -6816,17 +6891,17 @@ msgstr ""
 "code> et <code>[Color.white, Color.black]</code> comme arguments."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:31
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:31
 msgid "At each step, you thus have to apply the following pseudo-code:"
 msgstr "A chaque pas, vous avez toujours à appliquer le pseudo-code suivant :"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:33
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:33
 msgid "Find the position of the ground color in the color sequence;"
 msgstr "Trouver la position de la couleur du sol dans la séquence de couleur;"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:34
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:34
 msgid ""
 "Turn left or right depending on the content of the rule array at that "
 "position;"
@@ -6835,7 +6910,7 @@ msgstr ""
 "position;"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:35
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:35
 msgid ""
 "Mark the current ground with the next color in the sequence (the last color "
 "being followed by the first one);"
@@ -6844,42 +6919,23 @@ msgstr ""
 "séquence ( la dernière couleur est suivie par la première);"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:36
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:36
 msgid "Move forward by one step."
 msgstr "Avancer d'un pas"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:39
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:70
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:39
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:70
 msgid "You now should have enough information to succeed."
 msgstr "Vous devriez maintenant avoir assez d'informations pour réussir."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:41
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:72
-msgid "Bibliographical notes"
-msgstr "Notes bibliographiques"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/turmites/langtoncolors/LangtonColors.html:42
-msgid ""
-"According to wikipedia, multicolor Langton's ants were discovered in 1995 by "
-"Propp et Al. Another funny fact is that the ants which name is a list of "
-"consecutive pair of identical letters (LL and RR) produce symmetric "
-"patterns. This fact was even formally proved."
-msgstr ""
-"Selon Wikipedia, les fourmis de Langton multicolores ont été découvertes en "
-"1995 par Propp et Al. Un autre fait amusant est que les fourmis dont le nom "
-"est une paire de lettres identiques (LL et RR) produisent des dessins "
-"symétriques. Ce fait a même été prouvré formellement."
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:1
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:1
 msgid "Turmites"
 msgstr "Turmites"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:3
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:3
 msgid ""
 "This exercise explores a new way to extend the concept of Langton's ant. "
 "Now, the behavior of the ant not only depends on the color on the ground, "
@@ -6901,7 +6957,7 @@ msgstr ""
 "vrai informaticien sans le savoir)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:12
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:12
 msgid ""
 "Once again, you just have to write the <code>step()</code> method, in charge "
 "of doing one turmite's step. Once again, you should first find the rank of "
@@ -6927,7 +6983,7 @@ msgstr ""
 "[couleurActuelle]</code>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:22
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:22
 msgid ""
 "Each such information set contains 3 values. The first one is the rank of "
 "the color to write on the ground. The second is the move to do, with the "
@@ -6947,7 +7003,7 @@ msgstr ""
 "est la valeur du prochain <code>state</code> à avoir après cette itération."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:29
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:29
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, the "
 "template code defines a set of constants that you should use instead of the "
@@ -6966,7 +7022,7 @@ msgstr ""
 "Utiliser de telles constantes rend le code beaucoup plus simple à lire&nbsp;:"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:35
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:35
 msgid ""
 "Since these arbitrary notations are somehow difficult to remember, the "
 "template code defines a set of constants that you should use instead of the "
@@ -6985,7 +7041,7 @@ msgstr ""
 "Utiliser de telles constantes rend le code beaucoup plus simple à lire&nbsp;:"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:42
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:42
 #, no-wrap
 msgid ""
 "  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
@@ -6997,7 +7053,7 @@ msgstr ""
 "  }\n"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:47
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:47
 #, no-wrap
 msgid ""
 "  if rule[state][currentColor][NEXT_MOVE] == LEFT:\n"
@@ -7007,12 +7063,12 @@ msgstr ""
 "    turnLeft()\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:50
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:50
 msgid "This is much more easier to read than the following way:"
 msgstr "C'est beaucoup plus simple à lire que ceci&nbsp;:"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:52
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:52
 #, no-wrap
 msgid ""
 "  if (rule[x][y][1] == 2) {\n"
@@ -7024,7 +7080,7 @@ msgstr ""
 "  }\n"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:57
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:57
 #, no-wrap
 msgid ""
 "  if rule[x][y][1] == 2:\n"
@@ -7034,7 +7090,7 @@ msgstr ""
 "    turnLeft()\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:61
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:61
 msgid ""
 "Finally, you probably want to write a <code>elif</code> branch for the "
 "<code>STOP</code> condition too. Having a <code>else</code> branch "
@@ -7057,8 +7113,13 @@ msgstr ""
 "n'y a rien à faire. Cela indique à Python qu'il y a bien une branche à cet "
 "emplacement, mais qu'elle ne fait rien."
 
+#. type: Content of: <h2>
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:72
+msgid "Bibliographical notes"
+msgstr "Notes bibliographiques"
+
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/helloturmite/HelloTurmite.html:73
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:73
 msgid ""
 "According to wikipedia, turmites were invented independently by the end of "
 "the eighties. It has been shown that turmites in general are exactly "
@@ -7075,12 +7136,12 @@ msgstr ""
 "théoriquement être calculé sur cet outil."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:1
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:1
 msgid "Creating Turmites"
 msgstr "Créer des Turmites"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:3
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:3
 msgid ""
 "This exercise allows you to build your own turmites. To pass the exercise, "
 "you should simply write a <code>init()</code> method which initializes the "
@@ -7090,65 +7151,65 @@ msgstr ""
 "Cet exercice vous permet de construire vos propres turmites. Pour réussir "
 "cet exercice, vous devez simplement écrire une méthode <code>init()</code> "
 "qui initialise <code>rule</code> pour utiliser les tables de transitions "
-"suivantes ( de Wikipedia ), met la position initiale du buggle à (8;33), et "
+"suivantes (de Wikipedia), met la position initiale du buggle à (8;33), et "
 "demande de faire 8342 pas."
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:10
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:10
 msgid "Current color"
 msgstr "Couleur actuelle"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:13
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:28
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:31
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:39
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:41
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:42
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:13
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:28
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:31
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:39
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:41
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:42
 msgid "0"
 msgstr "0"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:14
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:29
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:32
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:34
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:37
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:44
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:14
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:29
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:32
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:34
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:37
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:44
 msgid "1"
 msgstr "1"
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:18
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:21
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:18
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:21
 msgid "Write color"
 msgstr "Couleur à mettre"
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:19
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:22
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:19
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:22
 msgid "Turn"
 msgstr "Virage"
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:20
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:23
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:20
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:23
 msgid "Next state"
 msgstr "État suivant"
 
 #. type: Content of: <table><tr><th>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:26
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:26
 msgid "Current state"
 msgstr "État courant"
 
 #. type: Content of: <table><tr><td>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:40
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:43
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:40
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:43
 msgid "N"
 msgstr "N"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:48
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:48
 msgid ""
 "where the direction to turn is one of <b>L</b> (90° left), <b>R</b> (90° "
 "right), <b>N</b> (no turn) and <b>U</b> (180° U-turn)."
@@ -7160,12 +7221,12 @@ msgstr ""
 "<b>U</b> (demi tour de 180° -- U-turn)."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:50
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:50
 msgid "Going further"
 msgstr "Aller plus loin"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:51
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:51
 msgid ""
 "This exercise is naturally an excuse to let you experiment with your own "
 "turmites.  Feel free to change the transition table and the amount of steps "
@@ -7181,7 +7242,7 @@ msgstr ""
 "les ajouter à cette liste."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:57
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:57
 msgid ""
 "In addition, wikipedia is desperately missing some good looking colorful "
 "turmites: only black and white ones are depicted.  You should consider "
@@ -7192,7 +7253,7 @@ msgstr ""
 "l'idée de soumettre vos créations directement à l'encyclopédie libre."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:62
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:62
 msgid ""
 "Here are some 2-color turmites, extracted from http://demonstrations.wolfram."
 "com/Turmites/ They are not written using the python syntax, but converting "
@@ -7203,7 +7264,7 @@ msgstr ""
 "convertir ne devrait pas poser beaucoup de problèmes."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:64
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:64
 msgid ""
 "Here are some 2-color turmites, extracted from http://demonstrations.wolfram."
 "com/Turmites/"
@@ -7212,7 +7273,7 @@ msgstr ""
 "com/Turmites/"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:67
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:67
 #, no-wrap
 msgid ""
 "{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant\n"
@@ -7308,7 +7369,7 @@ msgstr ""
 "{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:114
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:114
 msgid ""
 "Langton's ants may not share the expressiveness power of the turmites, but "
 "they remain fascinating too. You can experiment with them using the "
@@ -7329,7 +7390,7 @@ msgstr ""
 "pas !"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:121
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:121
 msgid ""
 "Quite a lot of Langton's ants build highways: RL, of course, but also "
 "RLRLRLLRLR (about 2500 steps).  The chaotic behavior of ants before the "
@@ -7353,7 +7414,7 @@ msgstr ""
 "transcendant avant leur route."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:129
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:129
 msgid ""
 "Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps), "
 "RRLLLRLLLRRR (30,000 steps), RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR "
@@ -7374,7 +7435,7 @@ msgstr ""
 "rapidement son comportement stable (15 000 pas suffisent)."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:136
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:136
 msgid ""
 "Finally, some ants are just build artistic patterns. You should check this "
 "video for some beautiful ones: http://www.youtube.com/watch?v=1X-gtr4pEBU. "
@@ -7390,7 +7451,7 @@ msgstr ""
 "(le premier mouvement visible doit être vu comme le dernier)."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/turmites/turmitecreator/TurmiteCreator.html:141
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:141
 msgid ""
 "As you can see by exploring the above set of turmites, they are usually not "
 "as colorful as the ants, but this may be because very few colors suffice to "
@@ -9007,10 +9068,8 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/recursion/hanoi/Main.html:1
 #: src/lessons/recursion/hanoi/short_desc.html:1
-#, fuzzy
-#| msgid "HanoiWorld"
 msgid "Hanoi towers"
-msgstr "Le monde des tours de Hanoï"
+msgstr "Les tours de Hanoï"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/Main.html:2
@@ -12532,14 +12591,14 @@ msgstr ""
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:25
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:35
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:37
 #, no-wrap
 msgid "boolean isSorted()"
 msgstr "boolean isSorted()"
 
 #. type: Content of: <ul><li><pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:26
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
 #, no-wrap
 msgid "isSorted()"
 msgstr "isSorted()"
@@ -12570,6 +12629,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:41
+#: src/lessons/sort/pancake/Main.html:7
 msgid ""
 "This problem is now famous because Bill Gates authored (with C. "
 "Papadimitriou) his only scientific publication in 1979 on this topic, "
@@ -12585,6 +12645,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:45
+#: src/lessons/sort/pancake/Main.html:11
 msgid ""
 "Then, David X. Cohen, the inventor of the Futurama comics with many "
 "mathematical references, introduced the variant with burnt pancakes and "
@@ -12596,6 +12657,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:48
+#: src/lessons/sort/pancake/Main.html:14
 msgid ""
 "An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
 "determining the minimal amount of flips to sort the stack is a NP-complete "
@@ -12620,6 +12682,59 @@ msgstr ""
 "(http://en.wikipedia.org/wiki/Pancake_sorting) ou à cette page, très bien "
 "faite: http://eljjdx.canalblog.com/archives/2013/02/03/26309722.html"
 
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/Main.html:1
+#: src/lessons/sort/pancake/BasicPancake.html:1
+msgid "Pancake Sorting"
+msgstr "Trier des crêpes"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:3
+msgid ""
+"This activity is inspired by a problem first introduced in 1975 by Harry "
+"Dweighter in the American Mathematical Monthly. The question is not only to "
+"sort the pancakes, but to determine <code>f(n)</code> the <i>minimal</i> "
+"amount of flips mandated to sort any stack of size <code>n</code>."
+msgstr ""
+"Cette activité est inspirée d'un problème introduit pour la première fois en "
+"1975 par Harry Dweighter dans le journal de mathématique «American "
+"Mathematical Monthly». La question n'est pas tant de trier les crêpes que de "
+"déterminer <code>f(n)</code>, le nombre <i>minimal</i> de retournements "
+"nécessaires pour trier n'importe quelle pile de taille <code>n</code>. "
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:19
+msgid "Further information can be found on the wikipedia page, as usual."
+msgstr ""
+"Pour plus d'information, référez vous à la page anglophone de wikipedia "
+"(http://en.wikipedia.org/wiki/Pancake_sorting) ou à cette page, très bien "
+"faite: http://eljjdx.canalblog.com/archives/2013/02/03/26309722.html"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:22
+msgid ""
+"This activity is also integrated to CSIRL (my repository of <i>free</i> "
+"unplugged activities to introduce computer science, available at http://www."
+"loria.fr/~quinson/Mediation/SMN/), and it may be interesting to run the "
+"unplugged activities before implementing these algorithms in JLM."
+msgstr ""
+"Cette activité est également intégrée à SMN (mon dépot d'activités "
+"débranchées <i>libres</i> pour introduire la science informatique, "
+"disponible à l'adresse http://www.loria.fr/~quinson/Mediation/SMN/), et il "
+"peut être intéressant de faire les activités débranchées avant d'implémenter "
+"ces algorithmes dans JLM."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/Main.html:33
+msgid "A temporal view similar to the sorting universe could be helpful"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/Main.html:34
+msgid ""
+"Other exercises, for example on the Cohen's algorithm, or on the other ones."
+msgstr ""
+
 #. type: Content of: <h3>
 #: src/lessons/sort/pancake/short_desc.html:1
 msgid "The pancake problem"
@@ -12640,11 +12755,6 @@ msgstr ""
 "Ce problème amusant débouche sur des algorithmes un peu plus compliqués à "
 "implémenter. Vous devez maîtriser les bases de la programmation ainsi que "
 "quelques algorithmes de tri avant de tenter cette leçon."
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/BasicPancake.html:1
-msgid "Pancake Sorting"
-msgstr "Trier des crêpes"
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/BasicPancake.html:3
@@ -13002,20 +13112,16 @@ msgstr ""
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:85
 msgid ""
-"Also, this universe does not have an historical view as the Sorting universe "
-"(yet), so don't hesitate to print textually the state of the world each time "
-"you enter the main loop."
+"In particular, it may help to print textually the state of the world each "
+"time you enter the main loop."
 msgstr ""
-"Aussi, cet univers n'a pas (encore) de vue historique comme le monde des "
-"tris. N'hésitez donc pas à afficher sous forme textuelle l'état du monde à "
-"chaque fois que vous rentrez dans la boucle principale. "
+"En particulier, afficher l'état du monde sous forme textuelle à chaque fois "
+"que vous rentrez dans la boucle principale peut aider. "
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/Main.html:1
-#, fuzzy
-#| msgid "Rainbow Baseball"
 msgid "The Rainbow Baseball Game"
-msgstr "Baseball multicolore"
+msgstr "Le jeu du baseball multicolore"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:3
@@ -13023,24 +13129,30 @@ msgid ""
 "This activity is inspired from the orange game, from the \"Computer Science "
 "Unplugged\" activities repository.  It was however heavily since then, first "
 "for the CSIRL (my repository of <i>free</i> unplugged activities to "
-"introduce computer science) and now for JLM. In the literature, the "
-"generalized form of this problem is known as the pebble motion problem (the "
-"bases can be connected by any kind of graph, and the affinity of pebbles "
-"with bases may be different). Another variant of this problem is the well "
-"known 15-puzzle, with one player per base, and a two dimensional square "
-"grid. Much more information about these problems can be found on wikipedia, "
-"as usual."
+"introduce computer science, available at http://www.loria.fr/~quinson/"
+"Mediation/SMN/) and now for JLM."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:7
+msgid ""
+"In the literature, the generalized form of this problem is known as the "
+"pebble motion problem (the bases can be connected by any kind of graph, and "
+"the affinity of pebbles with bases may be different). Another variant of "
+"this problem is the well known 15-puzzle, with one player per base, and a "
+"two dimensional square grid. Much more information about these problems can "
+"be found on wikipedia, as usual."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/sort/baseball/Main.html:11
+#: src/lessons/sort/baseball/Main.html:12
 msgid ""
 "How do you know that the naive algorithm won't loop on that initial "
 "situation?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:13
+#: src/lessons/sort/baseball/Main.html:14
 msgid ""
 "Well, we simply tested all possible situations to see when this algorithm "
 "loops and when it finds the correct solution. We found that it works for all "
@@ -13054,7 +13166,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:20
+#: src/lessons/sort/baseball/Main.html:21
 msgid ""
 "We also explored bigger instances of the problem, and unfortunately, we have "
 "no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
@@ -13066,29 +13178,12 @@ msgid ""
 "use it during our unplugged activities."
 msgstr ""
 
-#. type: Content of: <h3>
-#: src/lessons/sort/baseball/Main.html:26
-msgid "What can I do to improve this JLM universe"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:28
-msgid ""
-"As usual, there are several things that could be done in the code of this "
-"universe to improve it:"
-msgstr ""
-
 #. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:30
+#: src/lessons/sort/baseball/Main.html:31
 msgid ""
 "Other graphical representations could be proposed, such as a linear one (for "
 "the existing exercises) or other ones (such as a grid or a tree, if an "
 "exercise on this kind of graph proves interesting)."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:32
-msgid "A temporal view similar to the sorting universe could be helpful"
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -13105,16 +13200,12 @@ msgstr "Baseball multicolore"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/short_desc.html:3
-#, fuzzy
-#| msgid ""
-#| "This is another funny variation on the sorting problem, but "
-#| "unfortunately, its integration within JLM is still ongoing."
 msgid ""
 "This is another funny variation on the sorting problem, adapting the main "
 "sorting algorithms on an unusual context."
 msgstr ""
-"Il s'agit d'un autre problème amusant autour des algorithmes de tri. "
-"Malheureusement, son intégration à JLM n'est pas encore terminée."
+"Il s'agit d'un autre problème amusant autour des algorithmes de tri, "
+"adaptant les principaux algorithmes de tri à un contexte inhabituel."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:1
@@ -13127,193 +13218,175 @@ msgid ""
 "The colors are represented by integers, between <code>0</code> and "
 "<code>amount of bases -1</code>.  The hole is represented by the special "
 "value <code>-1</code>.  The color of each base is its rank. So base <code>1</"
-"code> is of color <code>1</code>."
+"code> is of color <code>1</code>.  In the graphical interface, the base "
+"<code>0</code> is the dark blue one while the base <code>1</code> is the "
+"fuscia one."
 msgstr ""
+"Les couleurs sont représentées comme des entiers, entre <code>0</code> et "
+"<code>nombre de bases - 1</code>. Le trou est représenté par la valeur "
+"spéciale <code>-1</code>. La couleur de chaque base est son rang, ce qui "
+"fait que la base <code>1</code> est de couleur <code>1</code>. Dans "
+"l'interface graphique, la base <code>0</code> est la bleue foncée tandis que "
+"la base <code>1</code> est celle fuscia."
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:6
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:8
 msgid ""
 "Once every players are home on the field, the hole should be in the last "
 "base, that is of rank <code>getAmountOfBases()-1</code>."
 msgstr ""
+"Une fois que tous les joueurs sont chez eux sur le terrain, le trou se "
+"trouve dans la dernière base, celle de rang <code>getAmountOfBases()-1</"
+"code>."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:8
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:10
 msgid "Functions to retrieve the world's dimensions"
-msgstr ""
+msgstr "Fonctions pour découvrir les dimensions du monde"
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:11
-#, fuzzy
-#| msgid "Return the amount of bases in the field."
-msgid "Retrieve the amount of bases on this field:"
-msgstr "Renvoie le nombre de bases dans le terrain"
-
-#. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:12
-#, fuzzy, no-wrap
-#| msgid "int getLocationsAmount()"
-msgid "int getBasesAmount()"
-msgstr "int getLocationsAmount()"
-
-#. type: Content of: <ul><li><pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:13
-#, fuzzy, no-wrap
-#| msgid "int getLocationsAmount()"
+msgid "Retrieve the amount of bases on this field:"
+msgstr "Obtenir le nombre de bases dans le terrain:"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:14
+#, no-wrap
+msgid "int getBasesAmount()"
+msgstr "int getBasesAmount()"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:15
+#, no-wrap
 msgid "getBasesAmount()"
-msgstr "int getLocationsAmount()"
+msgstr "getBasesAmount()"
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:15
-#, fuzzy
-#| msgid ""
-#| "Return the amount of players locations available on each base of the field"
-msgid "Retrieve the amount of player's positions per base on this field:"
-msgstr ""
-"Renvoie le nombre de positions de joueur disponible sur chaque base du "
-"terrain"
-
-#. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:16
-#, fuzzy, no-wrap
-#| msgid "int getLocationsAmount()"
-msgid "int getPositionsAmount()"
-msgstr "int getLocationsAmount()"
-
-#. type: Content of: <ul><li><pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:17
-#, fuzzy, no-wrap
-#| msgid "int getLocationsAmount()"
+msgid "Retrieve the amount of player's positions per base on this field:"
+msgstr "Obtenir le nombre de positions disponibles par base :"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:18
+#, no-wrap
+msgid "int getPositionsAmount()"
+msgstr "int getPositionsAmount()"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:19
+#, no-wrap
 msgid "getPositionsAmount()"
-msgstr "int getLocationsAmount()"
+msgstr "getPositionsAmount()"
 
 #. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:20
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
 msgid "Functions to retrieve the world's state"
-msgstr ""
+msgstr "Fonctions pour découvrir l'état du monde"
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
-#, fuzzy
-#| msgid "Return the index of the base where the hole is located"
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
 msgid "Retrieve the base in which the hole is located:"
-msgstr "Renvoie l'index de la base où se trouve le trou"
+msgstr "Obtenir l'index de la base où se trouve le trou :"
 
 #. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:23
-#, fuzzy, no-wrap
-#| msgid "int getHoleBase() "
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:25
+#, no-wrap
 msgid "int getHoleBase()"
 msgstr "int getHoleBase()"
 
 #. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
-#, fuzzy, no-wrap
-#| msgid "int getHoleBase() "
-msgid "getHoleBase()"
-msgstr "int getHoleBase()"
-
-#. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:26
-msgid "Retrieve the hole position within its base:"
-msgstr ""
+#, no-wrap
+msgid "getHoleBase()"
+msgstr "getHoleBase()"
 
-#. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
-#, fuzzy, no-wrap
-#| msgid " int getHolePositionInBase()"
-msgid " int getHolePosition()"
-msgstr "int getHolePositionInBase()"
-
-#. type: Content of: <ul><li><pre>
+#. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:28
-#, fuzzy, no-wrap
-#| msgid "int getHolePositionInBase()"
-msgid "getHolePosition()"
-msgstr "int getHolePositionInBase()"
+msgid "Retrieve the hole position within its base:"
+msgstr "Obtenir la position du trou dans sa base :"
 
-#. type: Content of: <ul><li>
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:29
+#, no-wrap
+msgid " int getHolePosition()"
+msgstr " int getHolePosition()"
+
+#. type: Content of: <ul><li><pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:30
-msgid "Retrieve the color of the player at a given location:"
-msgstr ""
+#, no-wrap
+msgid "getHolePosition()"
+msgstr "getHolePosition()"
 
-#. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
-#, fuzzy, no-wrap
-#| msgid " int getPlayerColor(int baseIndex, int playerLocation) "
-msgid " int getPlayerColor(int base, int position)"
-msgstr "int getPlayerColor(int baseIndex, int playerLocation) "
-
-#. type: Content of: <ul><li><pre>
+#. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:32
-#, fuzzy, no-wrap
-#| msgid "int getPlayerColor(int baseIndex, int playerLocation) "
-msgid "getPlayerColor(base, position)"
-msgstr "int getPlayerColor(int baseIndex, int playerLocation) "
+msgid "Retrieve the color of the player at a given location:"
+msgstr "Obtenir la couleur d'un joueur donné à partir de sa position :"
 
-#. type: Content of: <ul><li>
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:33
+#, no-wrap
+msgid " int getPlayerColor(int base, int position)"
+msgstr " int getPlayerColor(int base, int position)"
+
+#. type: Content of: <ul><li><pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:34
-#, fuzzy
-#| msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
-msgid "Retrieve whether all players of the field are at home:"
-msgstr ""
-"Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur "
-"la bonne base."
+#, no-wrap
+msgid "getPlayerColor(base, position)"
+msgstr "getPlayerColor(base, position)"
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
-#, fuzzy
-#| msgid "Return TRUE if all players of the base <code>baseSrc</code> are home"
-msgid "Retrieve whether all players of a given base are at home:"
-msgstr ""
-"Renvoie VRAI si tous les joueurs sur la base <code>baseSrc</code> sont sur "
-"la bonne base."
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
+msgid "Retrieve whether all players of the field are at home:"
+msgstr "Savoir si tous les joueurs présents sur le terrain sont chez eux :"
 
-#. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:39
-#, fuzzy, no-wrap
-#| msgid "boolean isBaseSorted( int baseIndex)"
-msgid "boolean isBaseSorted(int base)"
-msgstr "boolean isBaseSorted( int baseIndex )"
-
-#. type: Content of: <ul><li><pre>
+#. type: Content of: <ul><li>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:40
-#, fuzzy, no-wrap
-#| msgid "isSorted()"
+msgid "Retrieve whether all players of a given base are at home:"
+msgstr "Savoir si tous les joueurs d'une base donnée sont chez eux:"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:41
+#, no-wrap
+msgid "boolean isBaseSorted(int base)"
+msgstr "boolean isBaseSorted(int base)"
+
+#. type: Content of: <ul><li><pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:42
+#, no-wrap
 msgid "isBaseSorted(base)"
-msgstr "isSorted()"
+msgstr "isBaseSorted(base)"
 
 #. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:44
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:46
 msgid "Functions to change the world"
-msgstr ""
+msgstr "Fonctions pour changer le monde"
 
 #. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:47
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:49
 msgid ""
 "Move a given player into the hole. This throws an IllegalArgumentException "
 "if the specified player is not near the hole (at most one base away)."
 msgstr ""
+"Déplace un joueur dans le trou. Une exception IllegalArgumentException est "
+"levée si le joueur indiqué n'est pas suffisamment près du trou. Il peut être "
+"au plus à une base du trou."
 
 #. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:48
-#, fuzzy, no-wrap
-#| msgid "void move(int baseSrc, int playerSrc)"
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:50
+#, no-wrap
 msgid "void move(int base, int position)"
-msgstr "void move(int baseSrc, int playerSrc)"
+msgstr "void move(int base, int position)"
 
 #. type: Content of: <ul><li><pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:49
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:51
 #, no-wrap
 msgid "move(base, position)"
-msgstr ""
+msgstr "move(base, position)"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/NaiveBaseball.html:1
-#, fuzzy
-#| msgid "Rainbow Baseball"
 msgid "Naive Rainbow Baseball"
-msgstr "Baseball multicolore"
+msgstr "Baseball multicolore naïf"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:3
@@ -13325,6 +13398,13 @@ msgid ""
 "what they do happily: for a while, all attending buggle run at full speed in "
 "all directions around the field."
 msgstr ""
+"Aujourd'hui, les buggles ont décidé de faire une partie de baseball, mais il "
+"faut avouer que ce n'est pas très bien engagé : elles ne se souviennent plus "
+"très bien des règles, et ... euh ... elles ont perdu les battes et les "
+"balles. Elles ont donc décidé «d'adapter un peu» les règles. Comme il n'y a "
+"plus de balle, la seule chose qu'elles peuvent faire est de courir sur le "
+"terrain. C'est d'ailleurs ce qu'elles ont fait pendant un moment : toutes "
+"les buggles présentes se sont mises à courir en tous sens sur le terrain."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:9
@@ -13339,15 +13419,31 @@ msgid ""
 "rule that remains is that you can only run around the field, from one base "
 "to the next one, without crossing middle of the field."
 msgstr ""
+"Mais après quelques collisions plus ou moins douloureuses, elles décident "
+"d'inventer de nouvelles règles pour organiser la partie. Elles décident de "
+"faire une équipe par base sur le terrain et deux joueurs par équipes. L'une "
+"des équipes n'a qu'un seul joueur pour que l'une des bases ait un "
+"emplacement vide. Ensuite, les joueurs se répartissent aléatoirement sur les "
+"bases, et le jeu est de faire en sorte que chaque joueur retourne sur sa "
+"base. La partie s'arrềte quand tous les joueurs sont chez eux. Il n'y a pas "
+"d'équipe gagnante : soit tous les joueurs remportent la partie, soit ils la "
+"perdent tous. Oui, c'est vrai, ce jeu est très différent du baseball "
+"habituel. La seule règle qui reste est qu'il faut courir autour du terrain, "
+"de base en base, sans jamais passer au centre du terrain."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:17
 msgid ""
-"Now, they are asking you to help them deciding who should move when so that "
-"each player returns to its base. Only one buggle can move at each round, "
-"from its position to the empty spot.  The maximal distance that a buggle can "
-"cover in one round is of one base."
+"Now, they are asking you to help them deciding who and when should move so "
+"that each player returns to its base. Only one buggle can move at each "
+"round, from its position to the empty spot.  The maximal distance that a "
+"buggle can cover in one round is of one base."
 msgstr ""
+"Maintenant, les buggles ont besoin de vous pour décider qui doit bouger à "
+"quel moment de façon à ce que chacune rejoigne sa base. Une seule buggle "
+"peut bouger à chaque tour, de sa position jusqu'à l'emplacement vide. De "
+"plus, la distance maximale qu'une buggle peut parcourir en un tour est de "
+"une seule base."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/NaiveBaseball.html:21
@@ -13355,18 +13451,18 @@ msgid ""
 "So, at each round, the empty spot is on one base (say <code>B</code>), and "
 "you should decide which buggle enters that empty spot. There is four "
 "candidates (two from base <code>B-1</code> and two from base <code>B+1</"
-"code>)."
-msgstr ""
+"code>). Actually, there is a fifth candidate since the buggle that is on the "
+"same base than the empty spot can change its position, but that's not really "
+"helping."
+msgstr "Ainsi, à chaque tour, l'emplacement vide se trouve sur une base (disons <code>B</code>), et vous devez décider quelle buggle occupera cette place. Il y a quatre candidates : deux de la base <code>B-1<code>, et deux de la base <code>B+1</code>. En fait, il y a une cinquième candidate puisque la buggle qui se trouve sur la même base que le trou peut aller l'occuper, mais ça ne fait pas vraiment avancer le problème."
 
 #. type: Content of: <h3>
-#: src/lessons/sort/baseball/NaiveBaseball.html:25
-#, fuzzy
-#| msgid "Pledge algorithm"
+#: src/lessons/sort/baseball/NaiveBaseball.html:26
 msgid "The Naïve algorithm"
-msgstr "Algorithme de Pledge"
+msgstr "Algorithme naïf"
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:27
+#: src/lessons/sort/baseball/NaiveBaseball.html:28
 msgid ""
 "In this exercise, we will first explore a very simple algorithm. To decide "
 "which of the four candidate buggles should enter the empty spot, we first "
@@ -13377,7 +13473,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:33
+#: src/lessons/sort/baseball/NaiveBaseball.html:34
 msgid ""
 "It's hard to find a simpler algorithm for this problem: While it's not "
 "sorted, search for the base containing the candidate buggles: if the hole is "
@@ -13389,7 +13485,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:39
+#: src/lessons/sort/baseball/NaiveBaseball.html:40
 msgid ""
 "The main difficulty should be to get the few equations right: determining "
 "the base next to the hole should be easy, but determining the distance that "
@@ -13400,10 +13496,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/SelectBaseball.html:1
-#, fuzzy
-#| msgid "Rainbow Baseball"
-msgid "Select Rainbow Baseball"
-msgstr "Baseball multicolore"
+msgid "Selection Baseball"
+msgstr "Baseball par selection"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/SelectBaseball.html:3
@@ -13469,10 +13563,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/InsertBaseball.html:1
-#, fuzzy
-#| msgid "Rainbow Baseball"
 msgid "Insertion Baseball"
-msgstr "Baseball multicolore"
+msgstr "Baseball par insertion"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:3
@@ -13560,10 +13652,8 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/BubbleBaseball.html:1
-#, fuzzy
-#| msgid "Baseball"
 msgid "Bubble Baseball"
-msgstr "Baseball"
+msgstr "Baseball à bulle"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:3
@@ -13617,6 +13707,9 @@ msgid ""
 "this is not an universal rule either, as demonstrated by the naive algorithm "
 "of the first exercise, that was nice, simple and wrong ;)"
 msgstr ""
+
+#~ msgid "More information on Langton's ant"
+#~ msgstr "Plus d'informations sur la fourmi de Langton"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"
@@ -14196,16 +14289,20 @@ msgstr ""
 #~ "\t\t\tbringHole(baseIndex, 0, 1)\n"
 #~ "\t\t\tmove(baseIndex, 1)\n"
 #~ "\t\tELSE\n"
-#~ "\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
+#~ "\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex"
+#~ "+1 )\n"
 #~ "\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
-#~ "\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
+#~ "\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], "
+#~ "baseIndex,0)\n"
 #~ "\t\tEND_IF\n"
 #~ "\tEND_IF\n"
 #~ "\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
 #~ "\tTHEN\n"
-#~ "\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
+#~ "\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, "
+#~ "baseIndex+1)\n"
 #~ "\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
-#~ "\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
+#~ "\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , "
+#~ "baseIndex , 1 )\n"
 #~ "\tEND_IF\n"
 #~ "END\n"
 #~ msgstr ""
@@ -14218,16 +14315,20 @@ msgstr ""
 #~ "\t\t\tbringHole(baseIndex, 0, 1)\n"
 #~ "\t\t\tmove(baseIndex, 1)\n"
 #~ "\t\tELSE\n"
-#~ "\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex+1 )\n"
+#~ "\t\t\twantedPlayerLocation &lt;- findNearestPlayer(colorWanted, baseIndex"
+#~ "+1 )\n"
 #~ "\t\t\tbringHole( wantedPlayerLocation[0]-1 , 0,wantedPlayerLocation[1] )\n"
-#~ "\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], baseIndex,0)\n"
+#~ "\t\t\tbringPlayerHome(wantedPlayerLocation[0], wantedPlayerLocation[1], "
+#~ "baseIndex,0)\n"
 #~ "\t\tEND_IF\n"
 #~ "\tEND_IF\n"
 #~ "\tIF getPlayerColor(baseIndex, 1) != colorWanted \n"
 #~ "\tTHEN\n"
-#~ "\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, baseIndex+1)\n"
+#~ "\t\twantedPlayerLocation &lt;- this.findNearestPlayer(colorWanted, "
+#~ "baseIndex+1)\n"
 #~ "\t\tbringHole( wantedPlayerLocation[0]-1 , 1 , wantedPlayerLocation[1] )\n"
-#~ "\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , baseIndex , 1 )\n"
+#~ "\t\tbringPlayerHome( wantedPlayerLocation[0] , wantedPlayerLocation[1] , "
+#~ "baseIndex , 1 )\n"
 #~ "\tEND_IF\n"
 #~ "END\n"
 

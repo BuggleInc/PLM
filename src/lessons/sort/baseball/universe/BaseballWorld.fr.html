@@ -1,53 +1,57 @@
 <h1>Baseball multicolore</h1>
-<p>The colors are represented by integers, between <code>0</code> and
-<code>amount of bases -1</code>.  The hole is represented by the special
-value <code>-1</code>.  The color of each base is its rank. So base
-<code>1</code> is of color <code>1</code>.</p>
+<p>Les couleurs sont représentées comme des entiers, entre <code>0</code> et
+<code>nombre de bases - 1</code>. Le trou est représenté par la valeur
+spéciale <code>-1</code>. La couleur de chaque base est son rang, ce qui
+fait que la base <code>1</code> est de couleur <code>1</code>. Dans
+l'interface graphique, la base <code>0</code> est la bleue foncée tandis que
+la base <code>1</code> est celle fuscia.</p>
 
-<p>Once every players are home on the field, the hole should be in the last
-base, that is of rank <code>getAmountOfBases()-1</code>.</p>
+<p>Une fois que tous les joueurs sont chez eux sur le terrain, le trou se
+trouve dans la dernière base, celle de rang
+<code>getAmountOfBases()-1</code>.</p>
 
-<h2>Functions to retrieve the world's dimensions</h2>
+<h2>Fonctions pour découvrir les dimensions du monde</h2>
 
 <ul>
- <li>Retrieve the amount of bases on this field: 
+ <li>Obtenir le nombre de bases dans le terrain: 
      <pre class="Java">int getBasesAmount()</pre>
      <pre class="python">getBasesAmount()</pre></li>
 
- <li>Retrieve the amount of player's positions per base on this field:
+ <li>Obtenir le nombre de positions disponibles par base :
      <pre class="Java">int getPositionsAmount()</pre>
      <pre class="python">getPositionsAmount()</pre></li>
 </ul>
 
-<h2>Functions to retrieve the world's state</h2>
+<h2>Fonctions pour découvrir l'état du monde</h2>
 <ul>
- <li>Retrieve the base in which the hole is located:
+ <li>Obtenir l'index de la base où se trouve le trou :
      <pre class="Java">int getHoleBase()</pre>
      <pre class="python">getHoleBase()</pre></li>
 
- <li>Retrieve the hole position within its base:
+ <li>Obtenir la position du trou dans sa base :
      <pre class="Java"> int getHolePosition()</pre>
      <pre class="python">getHolePosition()</pre></li>
 
- <li>Retrieve the color of the player at a given location:
+ <li>Obtenir la couleur d'un joueur donné à partir de sa position :
      <pre class="Java"> int getPlayerColor(int base, int position)</pre>
      <pre class="python">getPlayerColor(base, position)</pre></li>
 
- <li>Retrieve whether all players of the field are at home:
+ <li>Savoir si tous les joueurs présents sur le terrain sont chez eux :
      <pre class="Java">boolean isSorted()</pre>
      <pre class="python">isSorted()</pre></li>  
      
- <li>Retrieve whether all players of a given base are at home:
+ <li>Savoir si tous les joueurs d'une base donnée sont chez eux:
      <pre class="Java">boolean isBaseSorted(int base)</pre>
      <pre class="python">isBaseSorted(base)</pre></li>  
 </ul>
 
 
-<h2>Functions to change the world</h2>
+<h2>Fonctions pour changer le monde</h2>
 
 <ul>
- <li>Move a given player into the hole. This throws an IllegalArgumentException
-if the specified player is not near the hole (at most one base away).
+ <li>Déplace un joueur dans le trou. Une exception IllegalArgumentException est
+levée si le joueur indiqué n'est pas suffisamment près du trou. Il peut être
+au plus à une base du trou.
      <pre class="Java">void move(int base, int position)</pre>
      <pre class="python">move(base, position)</pre></li>
 </ul>

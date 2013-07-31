@@ -14,13 +14,14 @@ There is no winning team: either all players win, or they all lose. Actually, th
 different from the original baseball. The only rule that remains is that you can only run around 
 the field, from one base to the next one, without crossing middle of the field.</p>
 
-<p>Now, they are asking you to help them deciding who should move when so that each player 
+<p>Now, they are asking you to help them deciding who and when should move so that each player 
 returns to its base. Only one buggle can move at each round, from its position to the empty spot. 
 The maximal distance that a buggle can cover in one round is of one base.</p>
 
 <p>So, at each round, the empty spot is on one base (say <code>B</code>), and you should decide 
 which buggle enters that empty spot. There is four candidates (two from base <code>B-1</code> 
-and two from base <code>B+1</code>).</p>
+and two from base <code>B+1</code>). Actually, there is a fifth candidate since the buggle that 
+is on the same base than the empty spot can change its position, but that's not really helping.</p>
 
 <h3>The Naïve algorithm</h3>
 
