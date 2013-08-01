@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 00:11+0200\n"
+"POT-Creation-Date: 2013-08-01 18:22+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,10 +20,10 @@ msgstr ""
 #: src/jlm/core/model/Game.java:146
 #, java-format
 msgid ""
-"Warning, the default programming language is neither 'Java' nor 'python' but "
-"{0}.\n"
+"Warning, the default programming language is neither ''Java'' nor ''python'' "
+"but {0}.\n"
 "   This language will be used to setup the worlds, possibly leading to "
-"severe issues for the exercises that don't expect it.\n"
+"severe issues for the exercises that don''t expect it.\n"
 "   It is safer to change the current language, and restart JLM before "
 "proceeding.\n"
 "   Alternatively, the property {1} can be changed in your configuration file "
@@ -57,41 +57,41 @@ msgid ""
 "Your progress will NOT be posted to twitter, as requested by the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:213
+#: src/jlm/core/model/Game.java:214 src/jlm/core/model/Game.java:215
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/jlm/core/model/Game.java:214
+#: src/jlm/core/model/Game.java:216
 #, fuzzy, java-format
 msgid "Load lesson {0}"
 msgstr "Load lesson"
 
-#: src/jlm/core/model/Game.java:320 src/jlm/core/model/Game.java:352
+#: src/jlm/core/model/Game.java:322 src/jlm/core/model/Game.java:354
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
-#: src/jlm/core/model/Game.java:392
+#: src/jlm/core/model/Game.java:394
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:909
+#: src/jlm/core/model/Game.java:911
 #, java-format
 msgid "{0} is not writable"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:913
+#: src/jlm/core/model/Game.java:915
 #, java-format
 msgid "{0} is not a directory"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:920
+#: src/jlm/core/model/Game.java:922
 #, java-format
 msgid "Cannot create {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:926
+#: src/jlm/core/model/Game.java:928
 #, java-format
 msgid "Impossible to find a path for JLM datas. Tested {0}"
 msgstr ""
@@ -761,26 +761,28 @@ msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:134
 #, java-format
-msgid "{0}.map:1: Expected 'Size: NNxMM' but got '{0}'"
+msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:160
 #, java-format
-msgid "Cannot put a buggle on coordinate {0},{1}: that's out of the world"
+msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:174
-msgid "Invalid buggle's direction: {0}"
+#, java-format
+msgid "Invalid buggle''s direction: {0}"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:181
 #: src/jlm/universe/bugglequest/BuggleWorld.java:188
-msgid "Invalid buggle's color name: {0}"
+#, java-format
+msgid "Invalid buggle''s color name: {0}"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:200
 #, java-format
-msgid "Cannot define a cell on coordinate {0},{1}: that's out of the world"
+msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:213
@@ -790,17 +792,17 @@ msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:219
 #, java-format
-msgid "Expecting 'baggle' or 'nobaggle' but got {0} instead"
+msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:223
 #, java-format
-msgid "Expecting 'topwall' or 'notopwall' but got {0} instead"
+msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:227
 #, java-format
-msgid "Expecting 'leftwall' or 'noleftwall' but got {0} instead"
+msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:237
@@ -817,7 +819,8 @@ msgid ""
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:471
-msgid "  The world's name is {0}"
+#, java-format
+msgid "  The world''s name is {0}"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:475
@@ -827,7 +830,7 @@ msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:478
 #, java-format
-msgid "  Something is wrong about buggle \"{0}\":\n"
+msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:230
@@ -1021,6 +1024,34 @@ msgstr "Switch to time view"
 msgid "Switch to state view"
 msgstr "Switch to state view"
 
+#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:70
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
+msgid "Invalid move"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:134
+#, java-format
+msgid ""
+"Cannot move from slot {0} to {1}: the only existing slots are 0, 1 and 2"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:136
+#, java-format
+msgid "Cannot move from slot {0} to itself"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:138
+#, java-format
+msgid "No disc to move from slot {0}"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:143
+#, java-format
+msgid ""
+"Cannot move disc from slot {0} to {1} small disk must remain over large ones "
+"but {2} > {3}"
+msgstr ""
+
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:75
 #, java-format
 msgid ""
@@ -1028,37 +1059,48 @@ msgid ""
 "its position"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
-msgid "Invalid move"
-msgstr ""
-
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:121
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:122
 msgid "This is not a baseball world :-("
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:125
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:126
 #, java-format
 msgid "Differing amount of bases: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:128
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:129
 #, java-format
 msgid "Differing amount of players: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:134
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:135
 #, java-format
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:317
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:305
 #, java-format
-msgid "Cannot move from base {0} since it's not between 0 and {1}"
+msgid ""
+"It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
+"information:\n"
+"Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:320
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:342
 #, java-format
-msgid "Cannot move from position {0} since it's not between 0 and {1})"
+msgid "Cannot move from base {0} since it''s not between 0 and {1}"
+msgstr ""
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:345
+#, java-format
+msgid "Cannot move from position {0} since it''s not between 0 and {1})"
+msgstr ""
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:354
+#, java-format
+msgid ""
+"The player {0} from base {1} is too far from the hole (at base {2}) to reach "
+"it in one move"
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:118
@@ -1083,13 +1125,14 @@ msgstr ""
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:231
 #, java-format
 msgid ""
-"Cannot get the radius of pancake #{0} because it's not between 0 and {1}"
+"Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:250
 #, java-format
 msgid ""
-"Cannot get the orientation of pancake #{0} because it's not between 0 and {1}"
+"Cannot get the orientation of pancake #{0} because it''s not between 0 and "
+"{1}"
 msgstr ""
 
 #~ msgid "Do you really want to quit ?"

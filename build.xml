@@ -163,14 +163,14 @@
     <target name="i18n-update" description="Merges newly extracted messages into existing po files" depends="i18n-extract">
       <gettext-merge keysFile="jlm.pot" poDirectory="lib/l10n-engine"/>
     </target>
-    <target name="i18n-check" description="Checks that the extracted messages are correct" depends="i18n-extract">
+    <target name="i18n-check" description="Checks that the extracted messages are correct" depends="i18n-update">
       <exec executable="msggrep">
            <arg value="-K"/>
 	   <arg value="-e"/>
 	   <arg value="[^']'[^'].*{"/>
 	   <arg value="--sort-by-file"/>
 	   <arg value="lib/l10n-engine/fr.po"/>
-	   <redirector output="errors.txt" alwayslog="true"/>           
+	   <redirector output="errors-msgid.txt" alwayslog="true"/>           
       </exec>
       <exec executable="msggrep">
            <arg value="-T"/>
@@ -178,7 +178,7 @@
 	   <arg value="[^']'[^'].*{"/>
 	   <arg value="--sort-by-file"/>
 	   <arg value="lib/l10n-engine/fr.po"/>
-	   <redirector output="errors.txt" alwayslog="true"/>           
+	   <redirector output="errors-msgstr.txt" alwayslog="true"/>           
       </exec>
     </target>
     

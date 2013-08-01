@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-31 00:11+0200\n"
-"PO-Revision-Date: 2013-07-31 00:16+0200\n"
+"POT-Creation-Date: 2013-08-01 18:22+0200\n"
+"PO-Revision-Date: 2013-08-01 18:35+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -20,23 +20,19 @@ msgstr ""
 #: src/jlm/core/model/Game.java:146
 #, java-format
 msgid ""
-"Warning, the default programming language is neither 'Java' nor 'python' but "
-"{0}.\n"
+"Warning, the default programming language is neither ''Java'' nor ''python'' "
+"but {0}.\n"
 "   This language will be used to setup the worlds, possibly leading to "
-"severe issues for the exercises that don't expect it.\n"
+"severe issues for the exercises that don''t expect it.\n"
 "   It is safer to change the current language, and restart JLM before "
 "proceeding.\n"
 "   Alternatively, the property {1} can be changed in your configuration file "
 "($HOME/.jlm/jlm.properties"
 msgstr ""
-"Attention, le langage de programmation par défaut n'est ni «Java» ni "
-"«python», mais {0}.\n"
-"  Ce langage sera utilisé pour configurer les mondes, ce qui risque de "
-"causer de gros problèmes pour les exercices qui ne sont pas conçus à cet "
-"effet.\n"
+"Attention, le langage de programmation par défaut n''est ni «Java» ni «python», mais {0}.\n"
+"  Ce langage sera utilisé pour configurer les mondes, ce qui risque de causer de gros problèmes pour les exercices qui ne sont pas conçus à cet effet.\n"
 "  Il est plus sûr de changer le langage par défaut puis de redémarrer JLM.\n"
-"  Vous pouvez également changer la propriété {1} de votre fichier de "
-"configuration ($HOME/.jlm/jlm.properties) pour cela."
+"  Vous pouvez également changer la propriété {1} de votre fichier de configuration ($HOME/.jlm/jlm.properties) pour cela."
 
 #: src/jlm/core/model/Game.java:160
 #, java-format
@@ -73,41 +69,41 @@ msgstr ""
 "Vos progrès ne seront PAS postés sur twitter, comme demandé par la propriété "
 "{0}."
 
-#: src/jlm/core/model/Game.java:213
+#: src/jlm/core/model/Game.java:214 src/jlm/core/model/Game.java:215
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr "Impossible de passer à la leçon {0} : la classe Main est introuvable."
 
-#: src/jlm/core/model/Game.java:214
+#: src/jlm/core/model/Game.java:216
 #, java-format
 msgid "Load lesson {0}"
 msgstr "Chargement de la leçon {0}"
 
-#: src/jlm/core/model/Game.java:320 src/jlm/core/model/Game.java:352
+#: src/jlm/core/model/Game.java:322 src/jlm/core/model/Game.java:354
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
-#: src/jlm/core/model/Game.java:392
+#: src/jlm/core/model/Game.java:394
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/jlm/core/model/Game.java:909
+#: src/jlm/core/model/Game.java:911
 #, java-format
 msgid "{0} is not writable"
 msgstr "{0} n'est pas accessible en écriture."
 
-#: src/jlm/core/model/Game.java:913
+#: src/jlm/core/model/Game.java:915
 #, java-format
 msgid "{0} is not a directory"
 msgstr "{0} n'est pas un répertoire."
 
-#: src/jlm/core/model/Game.java:920
+#: src/jlm/core/model/Game.java:922
 #, java-format
 msgid "Cannot create {0}"
 msgstr "Impossible de créer {0}"
 
-#: src/jlm/core/model/Game.java:926
+#: src/jlm/core/model/Game.java:928
 #, java-format
 msgid "Impossible to find a path for JLM datas. Tested {0}"
 msgstr ""
@@ -186,9 +182,7 @@ msgstr ""
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
-msgstr ""
-"Error d'analyse à la lecture du fichier {0}. C'est un bug de l'analyseur "
-"(état={1}), merci de faire un rapport."
+msgstr "Error d''analyse à la lecture du fichier {0}. C''est un bug de l''analyseur (état={1}), merci de faire un rapport."
 
 #: src/jlm/core/model/lesson/ExerciseTemplated.java:158
 #, java-format
@@ -204,10 +198,7 @@ msgstr ""
 msgid ""
 "{0}: End of file unexpected (state: {1}). Did you forget to close your "
 "template or solution? Please fix your entity."
-msgstr ""
-"{0}: Fin de fichier inattendue (état de l'analyseur: {1}). Peut-être avez-"
-"vous oublié de fermer votre template ou votre solution ? Veuillez corriger "
-"votre entité."
+msgstr "{0}: Fin de fichier inattendue (état de l''analyseur: {1}). Peut-être avez-vous oublié de fermer votre template ou votre solution ? Veuillez corriger votre entité."
 
 #: src/jlm/core/model/lesson/ExerciseTemplated.java:311
 #, java-format
@@ -218,9 +209,7 @@ msgstr "Le monde {0} est cassé ({1}). Recalcul de tous les mondes solutions."
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
-msgstr ""
-"Exception d'entrée/sortie lors de la lecture du monde {0} ({1}). Recalcul de "
-"tous les mondes solutions"
+msgstr "Exception d''entrée/sortie lors de la lecture du monde {0} ({1}). Recalcul de tous les mondes solutions."
 
 #: src/jlm/core/model/lesson/ExerciseTemplated.java:326
 #, java-format
@@ -234,14 +223,12 @@ msgstr ""
 #: src/jlm/core/model/lesson/ExerciseTemplated.java:349
 #, java-format
 msgid "Error while writing answer world of {0}:"
-msgstr "Erreur lors de l'écriture du monde de correction de {0}&nbsp;:"
+msgstr "Erreur lors de l''écriture du monde de correction de {0}&nbsp;:"
 
 #: src/jlm/core/model/lesson/ExerciseTemplated.java:353
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
-msgstr ""
-"Impossible d'écrire le monde de correction de {0}. Veuillez vérifier les "
-"permissions."
+msgstr "Impossible d''écrire le monde de correction de {0}. Veuillez vérifier les permissions."
 
 #: src/jlm/core/model/lesson/Lecture.java:123
 #, java-format
@@ -387,7 +374,7 @@ msgstr "Erreur lors de l'envoi de votre retour"
 #: src/jlm/core/ui/JlmHtmlEditorKit.java:103
 #, java-format
 msgid "<img> tag without src attribute in exercise {0}"
-msgstr "Tag <img> sans attribut src dans l'exercice {0}."
+msgstr "Tag <img> sans attribut src dans l''exercice {0}."
 
 #: src/jlm/core/ui/LessonChooser.java:36
 msgid "Choose your lesson"
@@ -441,7 +428,7 @@ msgstr "Aller"
 msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
 "found)</p>"
-msgstr "<p>(impossible d'afficher le descriptif court de cette leçon: le fichier {0} est introuvable)</p>"
+msgstr "<p>(impossible d''afficher le descriptif court de cette leçon: le fichier {0} est introuvable)</p>"
 
 #: src/jlm/core/ui/LessonChooser.java:173
 msgid "<p><b>Your score:</b> "
@@ -703,7 +690,7 @@ msgid ""
 "The execution of your program raised an exception: {0}\n"
 " Please fix your code.\n"
 msgstr ""
-"L'exécution de vontre programme a déclanché une exception : {0}\n"
+"L''exécution de votre programme a déclanché une exception : {0}\n"
 " Merci de corriger votre code.\n"
 
 #: src/jlm/universe/Entity.java:192
@@ -715,7 +702,7 @@ msgstr "Impossible de démarrer un interpréteur pour {0}."
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against JLM."
-msgstr "Pas de script {0} pour l'entité {1}. Merci de rapporter ce bug de JLM."
+msgstr "Pas de script {0} pour l''entité {1}. Merci de rapporter ce bug de JLM."
 
 #: src/jlm/universe/Entity.java:236
 #, java-format
@@ -782,10 +769,8 @@ msgid ""
 " Please report this as a bug against JLM, with all details allowing to "
 "reproduce it."
 msgstr ""
-"L'évaluation du script a levé une exception qui n'est pas une "
-"ScriptException mais une {0}.\n"
-"Merci de faire un rapport de bug contre JLM, avec tous les détails "
-"nécessaires pour reproduire le problème."
+"L''évaluation du script a levé une exception qui n''est pas une ScriptException mais une {0}.\n"
+"Merci de faire un rapport de bug contre JLM, avec tous les détails nécessaires pour reproduire le problème."
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:422
 msgid "Its value is 'null', which is never good."
@@ -854,30 +839,29 @@ msgstr ""
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:134
 #, java-format
-msgid "{0}.map:1: Expected 'Size: NNxMM' but got '{0}'"
-msgstr "{0}.map:1 : 'Size: NNxMM' était attendu, mais on a lu '{0}'"
+msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
+msgstr "{0}.map:1: ''Size: NNxMM'' était attendu, mais on a lu ''{0}''"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:160
 #, java-format
-msgid "Cannot put a buggle on coordinate {0},{1}: that's out of the world"
-msgstr ""
-"Je ne peux poser un buggle aux coordonnées {0},{1} : c'est en dehors du monde"
+msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
+msgstr "Je ne peux poser un buggle aux coordonnées {0},{1} : c''est en dehors du monde"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:174
-msgid "Invalid buggle's direction: {0}"
+#, java-format
+msgid "Invalid buggle''s direction: {0}"
 msgstr "direction invalide de buggle : {0}"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:181
 #: src/jlm/universe/bugglequest/BuggleWorld.java:188
-msgid "Invalid buggle's color name: {0}"
+#, java-format
+msgid "Invalid buggle''s color name: {0}"
 msgstr "Couleur invalide de buggle : {0}"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:200
 #, java-format
-msgid "Cannot define a cell on coordinate {0},{1}: that's out of the world"
-msgstr ""
-"Je ne peux définir les coordonnées de cellule {0},{1} : c'est en dehors du "
-"monde"
+msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
+msgstr "Je ne peux définir les coordonnées de cellule {0},{1} : c''est en dehors du monde"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:213
 #, java-format
@@ -886,18 +870,18 @@ msgstr "Nom de couleur invalide : {0}"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:219
 #, java-format
-msgid "Expecting 'baggle' or 'nobaggle' but got {0} instead"
-msgstr "'baggle' ou 'nobaggle' était attendu, mais on a {0} à la place"
+msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
+msgstr "«baggle» ou «nobaggle» était attendu, mais on a {0} à la place"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:223
 #, java-format
-msgid "Expecting 'topwall' or 'notopwall' but got {0} instead"
-msgstr "'topwall' ou 'notopwall' était attendu, mais on a {0} à la place"
+msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
+msgstr "«topwall» ou «notopwall» était attendu, mais on a {0} à la place"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:227
 #, java-format
-msgid "Expecting 'leftwall' or 'noleftwall' but got {0} instead"
-msgstr "'leftwall' ou 'noleftwall' était attendu, mais on a {0} à la place"
+msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
+msgstr "«leftwall» ou «noleftwall» était attendu, mais on a {0} à la place"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
@@ -912,12 +896,11 @@ msgstr ""
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
-msgstr ""
-"Erreur de syntaxe. J'attendais la description d'une cellule ou d'un buggle "
-"mais j'ai eu : {0}"
+msgstr "Erreur de syntaxe. J''attendais la description d''une cellule ou d''un buggle mais j''ai eu : {0}"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:471
-msgid "  The world's name is {0}"
+#, java-format
+msgid "  The world''s name is {0}"
 msgstr "  Le nom du monde est {0}"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:475
@@ -927,8 +910,8 @@ msgstr "  En ({0},{1})"
 
 #: src/jlm/universe/bugglequest/BuggleWorld.java:478
 #, java-format
-msgid "  Something is wrong about buggle \"{0}\":\n"
-msgstr "  Il y a quelque chose qui cloche avec le buggle \"{0}\":\n"
+msgid "  Something is wrong about buggle ''{0}'':\n"
+msgstr "  Il y a quelque chose qui cloche avec le buggle «{0}»:\n"
 
 #: src/jlm/universe/bugglequest/BuggleWorldCell.java:230
 msgid ", there shouldn't be this baggle"
@@ -1118,6 +1101,34 @@ msgstr "Accéder à la vue temporelle"
 msgid "Switch to state view"
 msgstr "Accéder à la vue d'état"
 
+#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:70
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
+msgid "Invalid move"
+msgstr "Déplacement invalide"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:134
+#, java-format
+msgid ""
+"Cannot move from slot {0} to {1}: the only existing slots are 0, 1 and 2"
+msgstr "Impossible de bouger du piquet {0} au piquet {1} car les seuls piquets existants sont 0, 1 et 2."
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:136
+#, java-format
+msgid "Cannot move from slot {0} to itself"
+msgstr "Impossible de bouger du piquet {0} à lui-même"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:138
+#, java-format
+msgid "No disc to move from slot {0}"
+msgstr "Il n''y a pas de disque à déplacer sur le piquet {0}"
+
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.java:143
+#, java-format
+msgid ""
+"Cannot move disc from slot {0} to {1} small disk must remain over large ones "
+"but {2} > {3}"
+msgstr "Impossible de déplacer un disque du piquet {0} au piquet {1} car les petits disques doivent rester au dessus des gros."
+
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:75
 #, java-format
 msgid ""
@@ -1127,39 +1138,51 @@ msgstr ""
 "Le joueur {0} de la base {1} ne atteindre le trou, qui se trouve trop loin "
 "de sa position"
 
-#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
-msgid "Invalid move"
-msgstr "Déplacement invalide"
-
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:121
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:122
 msgid "This is not a baseball world :-("
 msgstr "Ce n'est pas un monde de baseball :-("
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:125
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:126
 #, java-format
 msgid "Differing amount of bases: {0} vs {1}"
 msgstr "Nombres de bases différents : {0} vs {1}"
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:128
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:129
 #, java-format
 msgid "Differing amount of players: {0} vs {1}"
 msgstr "Nombres de joueurs différents : {0} vs {1}"
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:134
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:135
 #, java-format
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:317
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:305
 #, java-format
-msgid "Cannot move from base {0} since it's not between 0 and {1}"
-msgstr "Impossible de bouger de la base {0} car ce n'est pas entre 0 et {1}"
-
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:320
-#, java-format
-msgid "Cannot move from position {0} since it's not between 0 and {1})"
+msgid ""
+"It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
+"information:\n"
+"Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
-"Impossible de bouger de la position {0} car ce n'est pas entre 0 et {1}"
+"Ce n''est toujours pas trié !! MERCI DE RAPPORTER CE PROBLÈME, avec les informations suivantes:\n"
+"Exercice: {0}; Nombre de bases:: {1}; Situation initiale: {2}"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:342
+#, java-format
+msgid "Cannot move from base {0} since it''s not between 0 and {1}"
+msgstr "Impossible de bouger de la base {0} car ce n''est pas entre 0 et {1}"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:345
+#, java-format
+msgid "Cannot move from position {0} since it''s not between 0 and {1})"
+msgstr "Impossible de bouger de la position {0} car ce n''est pas entre 0 et {1}"
+
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:354
+#, java-format
+msgid ""
+"The player {0} from base {1} is too far from the hole (at base {2}) to reach "
+"it in one move"
+msgstr "Le joueur {0} de la base {1} ne atteindre le trou, qui se trouve à la base {2}, trop loin de sa position"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:118
 msgid "This is not a world of pancakes :-("
@@ -1180,22 +1203,17 @@ msgstr ""
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
-msgstr ""
-"Vous avez demandé de retourner {0} crêpes, mais il n'y a que {1} crêpes sur "
-"la pile."
+msgstr "Vous avez demandé de retourner {0} crêpes, mais il n''y a que {1} crêpes sur la pile."
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:231
 #, java-format
 msgid ""
-"Cannot get the radius of pancake #{0} because it's not between 0 and {1}"
-msgstr ""
-"Impossible d'obtenir la taille de la crêpe numéro {0} car ce n'est pas entre "
-"0 et {1}"
+"Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
+msgstr "Impossible d''obtenir la taille de la crêpe numéro {0} car ce n''est pas entre 0 et {1}"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:250
 #, java-format
 msgid ""
-"Cannot get the orientation of pancake #{0} because it's not between 0 and {1}"
-msgstr ""
-"Impossible d'obtenir l'orientation de la crêpe numéro {0} car ce n'est pas "
-"entre 0 et {1}"
+"Cannot get the orientation of pancake #{0} because it''s not between 0 and "
+"{1}"
+msgstr "Impossible d''obtenir l''orientation de la crêpe numéro {0} car ce n''est pas entre 0 et {1}"

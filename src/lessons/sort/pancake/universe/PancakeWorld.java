@@ -228,7 +228,7 @@ public class PancakeWorld extends World {
 	 */
 	public int getPancakeRadius(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new InvalidParameterException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it's not between 0 and {1}",rank, getStackSize()));
+			throw new InvalidParameterException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].getRadius();
 	}
@@ -247,7 +247,7 @@ public class PancakeWorld extends World {
 	 */
 	public boolean isPancakeUpsideDown(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new InvalidParameterException(Game.i18n.tr("Cannot get the orientation of pancake #{0} because it's not between 0 and {1}",rank, getStackSize()));
+			throw new InvalidParameterException(Game.i18n.tr("Cannot get the orientation of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].isUpsideDown();
 	}
