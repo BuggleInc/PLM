@@ -1,6 +1,7 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
+import lessons.sort.baseball.universe.BaseballWorld;
 
 public class BubbleBaseballEntity extends BaseballEntity {
 	
@@ -29,8 +30,7 @@ public class BubbleBaseballEntity extends BaseballEntity {
 				move(getHoleBase()+1,minPos);				
 			}
 		}
-		if (!isSorted())
-			System.out.println("IT'S STILL NOT SORTED!! PLEASE REPORT THIS BUG"+world.toString());
+		((BaseballWorld) world).assertSorted("bubble sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

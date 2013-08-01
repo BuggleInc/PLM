@@ -5,6 +5,7 @@ import java.util.Vector;
 import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
 
+import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
@@ -283,6 +284,30 @@ public class BaseballWorld extends World {
 		return moves;
 	}
 
+	/** Checks that the world is sorted, and display an helpful error message if not */
+	public void assertSorted(String exercise) {
+		if (isSorted())
+			return;
+		
+		StringBuffer sb = new StringBuffer("{");
+
+		for (int base = 0 ; base < baseAmount ; base++) {
+			if (base!=0)
+				sb.append(" , ");
+			for (int pos = 0 ; pos < posAmount ; pos++) {
+				if (pos!=0)
+					sb.append(",");
+				sb.append(initialField[base*getPositionsAmount()+ pos]);
+			}
+		}
+		sb.append("}");
+
+		String msg =Game.i18n.tr("It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following information:\n" +
+				"Exercise: {0}; Amount of bases: {1}; Initial situation: {2}", exercise, getBasesAmount(),sb.toString());
+		System.err.println(msg);
+		throw new RuntimeException(msg);
+
+	}
 	/** Returns if every player of the field is on the right base */
 	public boolean isSorted() {
 		for (int base=0; base<baseAmount; base++)
@@ -314,10 +339,10 @@ public class BaseballWorld extends World {
 	 */
 	public void move(int base, int position) {
 		if ( base >= this.getBasesAmount() || base < 0)
-			throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it's not between 0 and {1}",base,(getBasesAmount()-1)));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from base {0} since it''s not between 0 and {1}",base,(getBasesAmount()-1)));
 
 		if ( position < 0 || position > this.getPositionsAmount()-1 )
-			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it's not between 0 and {1})",position,(getPositionsAmount()-1)));
+			throw new IllegalArgumentException(i18n.tr("Cannot move from position {0} since it''s not between 0 and {1})",position,(getPositionsAmount()-1)));
 
 		// must work only if the bases are next to each other
 		if (	(holeBase != base+1)
@@ -326,7 +351,8 @@ public class BaseballWorld extends World {
 			 && (holeBase != getBasesAmount()-1 || base != 0 )
 			 && (holeBase != base ) )
 			
-			throw new IllegalArgumentException("The player "+position+" from base "+base+" is too far from the hole (at base "+holeBase+") to reach it in one move");
+			throw new IllegalArgumentException(i18n.tr("The player {0} from base {1} is too far from the hole (at base {2}) to reach it in one move",
+					position,base,holeBase));
 
 		// All clear. Proceed.
 		moves.add(new BaseballMove(base, position, holeBase, holePos, getPlayerColor(base, position),this));

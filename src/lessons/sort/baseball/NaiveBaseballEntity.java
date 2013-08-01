@@ -1,6 +1,7 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
+import lessons.sort.baseball.universe.BaseballWorld;
 
 public class NaiveBaseballEntity extends BaseballEntity {
 
@@ -23,6 +24,7 @@ public class NaiveBaseballEntity extends BaseballEntity {
 //			System.out.println("move "+baseNext+","+posNext);
 			move(baseNext,posNext);
 		}
+		((BaseballWorld) world).assertSorted("naive sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

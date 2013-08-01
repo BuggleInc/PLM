@@ -1,6 +1,7 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
+import lessons.sort.baseball.universe.BaseballWorld;
 
 public class InsertBaseballEntity extends BaseballEntity {
 	
@@ -25,8 +26,7 @@ public class InsertBaseballEntity extends BaseballEntity {
 			while (getHole() != player) 
 				move(getHole()+1);
 		}
-		if (!isSorted())
-			System.out.println("IT'S STILL NOT SORTED!! PLEASE REPORT THIS BUG. "+world.toString());
+		((BaseballWorld) world).assertSorted("insertion sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */

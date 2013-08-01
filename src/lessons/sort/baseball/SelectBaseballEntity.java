@@ -1,6 +1,7 @@
 package lessons.sort.baseball;
 
 import lessons.sort.baseball.universe.BaseballEntity;
+import lessons.sort.baseball.universe.BaseballWorld;
 
 public class SelectBaseballEntity extends BaseballEntity {
 
@@ -11,8 +12,7 @@ public class SelectBaseballEntity extends BaseballEntity {
 		for (int base = 0 ; base < getBasesAmount() -1 ; base++) 
 			bringPlayersHome(base);
 		
-		if (!isSorted())
-			System.out.println("IT'S STILL NOT SORTED!!"+world.toString());
+		((BaseballWorld) world).assertSorted("selection sort");
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
