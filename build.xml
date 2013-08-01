@@ -163,8 +163,26 @@
     <target name="i18n-update" description="Merges newly extracted messages into existing po files" depends="i18n-extract">
       <gettext-merge keysFile="jlm.pot" poDirectory="lib/l10n-engine"/>
     </target>
+    <target name="i18n-check" description="Checks that the extracted messages are correct" depends="i18n-extract">
+      <exec executable="msggrep">
+           <arg value="-K"/>
+	   <arg value="-e"/>
+	   <arg value="[^']'[^'].*{"/>
+	   <arg value="--sort-by-file"/>
+	   <arg value="lib/l10n-engine/fr.po"/>
+	   <redirector output="errors.txt" alwayslog="true"/>           
+      </exec>
+      <exec executable="msggrep">
+           <arg value="-T"/>
+	   <arg value="-e"/>
+	   <arg value="[^']'[^'].*{"/>
+	   <arg value="--sort-by-file"/>
+	   <arg value="lib/l10n-engine/fr.po"/>
+	   <redirector output="errors.txt" alwayslog="true"/>           
+      </exec>
+    </target>
     
-    <target name="i18n-generate-jar" description="Generates Java ResourceBundles and jars them up" depends="i18n-update">
+    <target name="i18n-generate-jar" description="Generates Java ResourceBundles and jars them up" depends="i18n-update, i18n-check">
       <mkdir dir="${site.dir}/po"/>
       <gettext-dist targetBundle="org.jlm.i18n.Messages" poDirectory="lib/l10n-engine" outputDirectory="${site.dir}/po" />
       <jar destfile="lib/jlm-messages.jar" basedir="${site.dir}/po" includes="org/**"/>
