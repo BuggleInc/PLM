@@ -14,6 +14,9 @@
   * Split hanoi towers and the turmites out in their own lessons
   * Remove the meta lesson. It was not done, seemed difficult to
     finish, and complicated the code of the universes. (Fix: #2)
+  * Remove the array world. It was not helping very much when compared
+    to the bat world.
+  * Use '' to get ' in translated strings to please MessageFormat.
 20130720:
   * Integrate the pancake exercises into the sorting lesson
   * New pancake exercise about implementing Gates' algorithm

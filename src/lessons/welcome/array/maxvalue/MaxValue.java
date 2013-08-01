@@ -2,33 +2,71 @@ package lessons.welcome.array.maxvalue;
 
 import java.util.Random;
 
-import jlm.core.model.lesson.ExerciseTemplated;
+import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
-import jlm.universe.array.ArrayEntity;
-import jlm.universe.array.ArrayWorld;
+import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
+import jlm.universe.bat.BatWorld;
 
-public class MaxValue extends ExerciseTemplated {
+public class MaxValue extends BatExercise {
 
 	public MaxValue(Lesson lesson) {
 		super(lesson);
-		
-		ArrayWorld[] myWorlds = new ArrayWorld[2];
-		myWorlds[0] = new ArrayWorld("Toy array", 10);
-		myWorlds[0].setValues( new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 } );
-		myWorlds[1] = new ArrayWorld("Bigger Array", 1);
-		
-		int[] tab = new int[30];
 		Random r = new Random();
-		for (int i=0; i<tab.length; i++) {
+		
+		int[] tab = new int[15];
+		for (int i=0; i<tab.length; i++) 
 			tab[i] = r.nextInt(35);
-		}
-		myWorlds[1].setValues(tab);
-		for (ArrayWorld w:myWorlds)
-			new ArrayEntity("maximum seeker", w);
 
+		int[] tab2 = new int[25];
+		for (int i=0; i<tab2.length; i++) 
+			tab2[i] = r.nextInt(35);
 
-		setup(myWorlds);
+		int[] tab3 = new int[25];
+		for (int i=0; i<tab3.length; i++) 
+			tab3[i] = r.nextInt(35)-15;
+		
+		int[] tab4 = new int[25];
+		for (int i=0; i<tab4.length; i++) 
+			tab4[i] = r.nextInt(35)-15;
+
+		BatWorld myWorld = new BatWorld("indexOfMaxValue");
+		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }) ;
+		myWorld.addTest(VISIBLE, tab) ;
+		myWorld.addTest(VISIBLE, tab2) ;
+		myWorld.addTest(INVISIBLE, tab3) ;
+		myWorld.addTest(INVISIBLE, tab4) ;
+
+		langTemplate(Game.PYTHON, "maxValue", 
+				"def maxValue(nums):\n",
+				"  	max=tab[0]\n"+
+				"   for i in range(len(tab)):\n"+
+				"      if tab[i] > max:\n"+
+				"         max = tab[i]\n"+
+				"   return max\n");
+
+		setup(myWorld);
 	}
+	
+	/* BEGIN SKEL */
+	public void run(BatTest t) {
+		t.setResult( maxValue( (int[])t.getParameter(0) ));
+	}
+	/* END SKEL */
+
+	/* BEGIN TEMPLATE */
+	// computes the index of the maximum of the values contained in tab variable
+	public int maxValue(int[] tab) {
+		/* BEGIN SOLUTION */
+		int max = tab[0];
+		for (int i=1; i<tab.length; i++) 
+			if (tab[i] >= max)  
+				max = tab[i];
+				
+		return max;
+		/* END SOLUTION */
+	}
+	/* END TEMPLATE */
 }
 
 
