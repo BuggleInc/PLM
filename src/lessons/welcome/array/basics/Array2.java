@@ -1,4 +1,4 @@
-package lessons.welcome.array.basics2;
+package lessons.welcome.array.basics;
 
 import java.awt.Color;
 

@@ -11,7 +11,7 @@ import lessons.welcome.array.arraycount9.ArrayCount9;
 import lessons.welcome.array.arrayfront9.ArrayFront9;
 import lessons.welcome.array.averagevalue.AverageValue;
 import lessons.welcome.array.basics.Array;
-import lessons.welcome.array.basics2.Array2;
+import lessons.welcome.array.basics.Array2;
 import lessons.welcome.array.has271.Has271;
 import lessons.welcome.array.indexof.maxvalue.IndexOfMaxValue;
 import lessons.welcome.array.indexof.value.IndexOfValue;
