@@ -1,40 +1,42 @@
 <h1>Baseball par selection</h1>
 
-<p>The previous algorithm is very pleasant: it's rather simple and rather fast
-to implement, but unfortunately, it is also rather wrong! In some cases, it
-never stops, which is obviously bad. If you don't believe it, just copy
-paste your previous code, and hit the run button. The first world of this
-exercise is one of these unfortunate situations that drives our previous
-algorithm crazy.</p>
+<p>L'algorithme précédent est très plaisant : il est plutôt simple, assez
+rapide à implémenter, mais malheureusement, il est également carrément
+faux. Dans certains cas, il ne s'arrête jamais, ce qui n'est pas très
+bon. Si vous ne le croyez pas, copie/collez votre code et appuyez sur le
+bouton «Exécuter». Le premier monde de cet exercice est l'un de ces cas
+malheureux où notre algorithme devient fou.</p>
 
-<p>So we have to find another algorithm, preferably one that works in all
-cases.</p>
+<p>Il nous faut donc trouver un autre algorithme. De préférence un qui marche
+dans tous les cas.</p>
 
-<p>For that, the best solution is to start from a well known algorithm instead
-of trying to invent a new one from scratch as we just did. When you think a
-bit about this problem, this can is very similar to a sorting problem: Just
-make sure that the players are sorted by their colors and you're set. And
-while we are at it, let's generalize the game to allow more that 4 bases.</p>
+<p>Pour cela, la meilleure solution est d'adapter un algorithme connu au lieu
+de tenter de partir de zéro comme nous venons de faire. Quand on réfléchi un
+peu à ce problème, on reconnaît un certain air de famille avec le problème
+du tri : il suffit de <b>trier</b> les joueurs en fonction de leur couleur
+pour le résoudre. Et tant que nous y sommes, nous pouvons généraliser un peu
+le problème en utilisant plus de quatre bases.</p>
 
-<p>Let's adapt the selection sort to our situation. The big lines of the
-algorithm is then "for each base, select the players that should occupy this
-base, make sure that they come to their position, and never change these
-players again when you move on to the next base".  Selecting the player
-should be no problem; Do not hesitate to define some methods such as
-<code>findPlayer()</code> or <code>findPlayerBase()</code>. This will ensure
-that your code remains understandable. Not moving the players once they are
-in position is very easy: start with the base 0 and iterate with the bases
-1, 2, etc.</p>
+<p>Adaptons le tri par sélection à notre situation. Les grandes lignes de cet
+algorithme sont les suivantes : «pour chaque base, trouver dans la zone pas
+encore triée les joueurs qui doivent occuper cette base, puis les y
+placer». De la sorte, on va faire grandir une zone triée qu'on ne modifie
+plus jamais, tout en faisant réduire la taille de la zone pas encore triée.</p>
 
-<p>The most problematic aspect is to move the selected players into
-position. For that, you have to move the hole to the position where the
-player is, and then move both the player and the hole to the base that is
-next to the player's goal (probably in a loop), and finally put the player
-in the right position of its target base.</p>
+<p>Choisir les joueurs à déplacer ne devrait pas poser de problème. N'hésitez
+pas à définir quelques fonctions comme <code>trouveJoueur</code> ou
+<code>trouveBaseJoueur()</code>. Cela améliorera la lisibilité de votre
+code, ce qui est toujours une bonne chose.</p>
 
-<p>As often in programming, the devil is in the details: there is a bunch of
-corner cases that you should detect and deal with correctly, such as the
-cases where the player is already in the base (but not in the position that
-you would like), or when the hole is on the right of the player (probably
-when you sort the first base). But you will find and hunt these while
-debugging your code.</p>
+<p>L'aspect le plus problématique est de déplacer les joueurs sélectionnés
+jusqu'à leur position. Pour cela, il vous faut déplacer le trou jusqu'à la
+base où se trouve le joueur, puis bouger ensuite le trou et le joueur de
+base en base jusqu'à celle avant la cible (au moyen d'une boucle). Enfin, on
+peut mettre le joueur dans la bonne case de sa base de prédilection.</p>
+
+<p>Comme souvent en programmation, le diable est dans les détails, et il y a un
+certain nombre de cas particuliers à détecter et à gérer correctement, comme
+quand le joueur est déjà dans sa base de prédilection (mais pas dans la
+bonne position), ou quand le trou se trouve en fait à droite du joueur
+(probablement quand vous triez la première base). Mais vous allez trouver et
+résoudre ces problèmes quand vous débugguerez votre code.</p>

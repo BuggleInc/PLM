@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-31 20:39+0300\n"
+"POT-Creation-Date: 2013-08-01 18:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9759,8 +9759,8 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:8
 msgid ""
-"Once every players are home on the field, the hole should be in the last "
-"base, that is of rank <code>getAmountOfBases()-1</code>."
+"Once every players on the field are in their home base, the hole should be "
+"in the last base, that is of rank <code>getAmountOfBases()-1</code>."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -10030,17 +10030,22 @@ msgstr ""
 msgid ""
 "Let's adapt the selection sort to our situation. The big lines of the "
 "algorithm is then \"for each base, select the players that should occupy "
-"this base, make sure that they come to their position, and never change "
-"these players again when you move on to the next base\".  Selecting the "
-"player should be no problem; Do not hesitate to define some methods such as "
-"<code>findPlayer()</code> or <code>findPlayerBase()</code>. This will ensure "
-"that your code remains understandable. Not moving the players once they are "
-"in position is very easy: start with the base 0 and iterate with the bases "
-"1, 2, etc."
+"this base and make sure that they come to their position\". This way, we "
+"will grow an sorted area where all players are already sorted (and never "
+"changed) while the unsorted area shrinks."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:25
+#: src/lessons/sort/baseball/SelectBaseball.html:23
+msgid ""
+"Selecting the player should be no problem; Do not hesitate to define some "
+"methods such as <code>findPlayer()</code> or "
+"<code>findPlayerBase()</code>. This will ensure that your code remains "
+"understandable."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:27
 msgid ""
 "The most problematic aspect is to move the selected players into "
 "position. For that, you have to move the hole to the position where the "
@@ -10050,7 +10055,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:30
+#: src/lessons/sort/baseball/SelectBaseball.html:32
 msgid ""
 "As often in programming, the devil is in the details: there is a bunch of "
 "corner cases that you should detect and deal with correctly, such as the "
@@ -10122,12 +10127,12 @@ msgstr ""
 msgid ""
 "For the algorithm itself, you should first move the hole to the position "
 "1. The position 0 is considered to be the sorted area (of size 1 for now) "
-"while the area above 2 is the unsorted area.  The comes an iteration to sort "
-"each element of the unsorted area. Since this iteration is a bit complex, "
-"you should think of its loop invariant, that is, the condition that is true "
-"before and after the loop and which explains that the loop fulfills its "
-"goal. Here, the loop invariant is twofold: First, the hole is between the "
-"sorted area and the unsorted area, and then, the every elements of the "
+"while the area above 2 is the unsorted area.  Then comes an iteration to "
+"sort each element of the unsorted area. Since this iteration is a bit "
+"complex, you should think of its loop invariant, that is, the condition that "
+"is true before and after the loop and which explains that the loop fulfills "
+"its goal. Here, the loop invariant is twofold: First, the hole is between "
+"the sorted area and the unsorted area, and then, the every elements of the "
 "sorted area are ... well sorted relatively to their neighbors."
 msgstr ""
 
@@ -10158,7 +10163,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:3
 msgid ""
-"Well, we adapted the insertion sort because our selection sort required too "
+"Crap, we adapted the insertion sort because our selection sort required too "
 "much moves to get the selected players to their position, but the insertion "
 "sort requires an inordinate amount of changes to get the border elements to "
 "their position within the sorted area without mixing the already sorted "

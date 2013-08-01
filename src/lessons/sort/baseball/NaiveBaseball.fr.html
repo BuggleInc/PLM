@@ -35,23 +35,26 @@ mais ça ne fait pas vraiment avancer le problème.</p>
 
 <h3>Algorithme naïf</h3>
 
-<p>In this exercise, we will first explore a very simple algorithm. To decide
-which of the four candidate buggles should enter the empty spot, we first
-restrict ourselves and decide that buggles can only turn clockwise. Then,
-from the two remaining candidates, we pick the one that has the largest
-distance to cover to reach its base (turning clockwise). Click on the demo
-button: this works rather well in practice.</p>
+<p>Dans cet exercice, nous allons explorer un premier algorithme très
+simple. Pour décider laquelle des quatre candidates doit aller occuper
+l'emplacement vide, nous commençons par nous restreindre à tourner dans le
+sens des aiguilles d'une montre. Ensuite, parmi les deux candidates
+restantes, nous prenons celle qui a encore le plus de chemin à parcourir
+jusqu'à sa base (dans le sens des aiguilles d'une montre). Essayez la
+démonstration : cela marche plutôt bien en pratique.</p>
 
-<p>It's hard to find a simpler algorithm for this problem: While it's not
-sorted, search for the base containing the candidate buggles: if the hole is
-in base <code>B</code>, it's the base <code>B+1</code>, modulo the amount of
-bases. Then, compute the distance that each buggle of that base still has to
-run to reach its base (0 if it's already home). Once you found the buggle
-that should enter the empty spot, just use the <code>move</code> method on
-it, and iterate.</p>   
+<p>Il est difficile d'imaginer un algorithme plus simple pour ce problème :
+tant que ce n'est pas trié, chercher la base contenant les candidates. Si le
+trou est sur la base <code>B</code>, il s'agit de la base <code>B+1</code>
+(modulo le nombre de bases). Ensuite, il faut calculer la distance que
+chacune des buggles de cette base doit encore parcourir (0 si elle est déjà
+chez elle). Une fois que vous avez sélectionné l'heureuse élue, utilisez la
+méthode <code>move</code> pour la faire bouger, avant de passer à
+l'itération suivante.</p>   
 
-<p>The main difficulty should be to get the few equations right: determining
-the base next to the hole should be easy, but determining the distance that
-a player has to cover may reveal a bit more challenging. Don't hesitate to
-draw pictures on a paper to cover all possible cases. It should not be that
-difficult either: there is not that many cases after all.</p>  
+<p>La principale difficulté est peut-être d'écrire les quelques équations
+nécessaires sans se tromper. Trouver quelle est la base après le trou
+devrait être assez facile, mais calculer la distance que chaque joueur doit
+encore parcourir peut s'avérer plus problématique. N'hésitez pas à faire des
+dessins pour vérifier que votre équation marche dans tous les cas, il n'y a
+pas tant de cas possibles que cela après tout.</p>  

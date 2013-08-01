@@ -1,48 +1,54 @@
 <h1>Le jeu du baseball multicolore</h1>
 
-<p>This activity is inspired from the orange game, from the "Computer Science
-Unplugged" activities repository.  It was however heavily since then, first
-for the CSIRL (my repository of <i>free</i> unplugged activities to
-introduce computer science, available at
-http://www.loria.fr/~quinson/Mediation/SMN/) and now for JLM.</p>
+<p>Cette activité est inspirée du jeu de l'orange dans le recueil d'activités
+«Computer Science Unplugged». Elle a cependant été profondément réarrangée
+depuis, d'abord pour SMN (mon recueil d'activités <i>libres</i> pour
+introduire la science informatique, disponible depuis
+http://www.loria.fr/~quinson/Mediation/SMN/), et maintenant pour JLM.</p>
 
-<p>In the literature, the generalized form of this problem is known as the
-pebble motion problem (the bases can be connected by any kind of graph, and
-the affinity of pebbles with bases may be different). Another variant of
-this problem is the well known 15-puzzle, with one player per base, and a
-two dimensional square grid. Much more information about these problems can
-be found on wikipedia, as usual.</p>
+<p>Dans la littérature scientifique, la forme généralisée de ce problème se
+nomme «le problème du déplacement des galets» (Pebble motion problem). Les
+bases peuvent être connectées par un graphe quelconque, et les affinités
+entre les galets et les bases peuvent être différentes. La plus connue des
+variantes de ce problème est le jeu du taquin, avec un seul joueur par base
+et une grille carrée à deux dimensions. On trouve énormément d'informations
+sur ces problèmes sur les pages wikipédia anglophones, comme d'habitude.</p>
 
-<h3>How do you know that the naive algorithm won't loop on that initial
-situation?</h3>
+<h3>Comment pouvez vous être sûr que l'algorithme naïf ne boucle pas sur cette
+situation initiale? </h3>
 
-<p>Well, we simply tested all possible situations to see when this algorithm
-loops and when it finds the correct solution. We found that it works for all
-situations where no player is at home (there is 84 such situations for 4
-bases, once you take the symmetries into account). It obviously works for
-some situations that do not respect this criteria (such as all situations it
-encounters from one of those 84 boards to the final state), but that's
-another story. Having such a criteria allows us to generate pseudo-random
-initial situations for the first exercise for which the algorithm we propose
-is guarenteed to work.</p>
+<p>Et bien, nous avons testé toutes les situations initiales possibles pour
+étudier les cas où l'algorithme boucle et ceux où l'algorithme termine
+correctement. Nous avons trouvé qu'il fonctionne pour toutes les situations
+où aucun joueur ne se trouve dans sa base (il y a 84 situations de ce genre
+pour 4 bases, si on élimine les symétries). Bien entendu, l'algorithme
+fonctionne correctement pour de nombreuses situations ne respectant pas ce
+critère (telles que toutes les situations rencontrées quand on commence de
+l'une de ces 84 situations), mais c'est une autre histoire. Avoir un tel
+critère nous permet de générer des situations initiales pour ce premier
+exercice de manière pseudo-aléatoire tout en étant sûrs que l'algorithme
+proposé se comportera correctement.</p>
 
-<p>We also explored bigger instances of the problem, and unfortunately, we have
-no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24
-of the 1824 possible boards where no player is home (that's 1.31%).  With 6
-bases, it fails on 1251 of the 58860 such boards (2.12%). With 7 bases, it
-fails for 84444 out of 2633940 (that's 3.2%). I am still looking for a
-criteria ensuring that the algorithm won't loop. If you discover one, please
-report it. Ideally, it would be simple to enforce manually so that we can
-use it during our unplugged activities.</p>
+<p>Nous avons également exploré des instances plus grande de ce problème, et
+malheureusement, nous ne connaissons pas de critère sûr dans ce cas. Avec 5
+bases, l'algorithme part en boucle infinie pour 24 des 1824 plateaux
+possibles où aucun joueur n'est à la maison (cela représente 1,31%). Avec 6
+bases, il boucle pour 1251 des 58860 plateaux respectant ce critère
+(2,12%). Avec 7 bases, il boucle dans 84444 cas sur 2633940 (càd 3,2%). Nous
+cherchons encore un critère permettant de garantir que l'algorithme ne
+bouclera pas. Si vous en découvrez un, merci de nous l'indiquer. Ce serait
+encore mieux s'il était possible de vérifier le critère de tête afin que les
+animateurs puissent s'en servir pendant les activités débranchées.</p>
 
 <h3>Que puis-je faire pour améliorer cet univers de JLM?</h3>
 
 <p>Comme souvent, plusieurs points pourraient être améliorés dans le code de
 cet univers pour l'améliorer&nbsp;:</p>
 <ul>
-  <li>Other graphical representations could be proposed, such as a linear one (for
-the existing exercises) or other ones (such as a grid or a tree, if an
-exercise on this kind of graph proves interesting).</li>
-  <li>Other exercises on other algorithms on this variant, or on other variants
-such as the 15-puzzle.</li>
+  <li>D'autres représentations graphiques pourraient être proposées, comme une
+représentation linéaire (pour les exercices proposés) ou d'autres comme une
+grille ou un arbre, si un exercice sur ce type de graphe s'avère
+intéressant.</li>
+  <li>D'autres exercices à propos d'autres algorithmes pour cette variante du
+problème, ou bien d'autres variantes comme le jeu du taquin.</li>
 </ul> 

@@ -1,58 +1,66 @@
 <h1>Baseball par insertion</h1>
 
-<p>The good point of adapting the selection sort to the baseball problem is
-that we know that it works (provided that our adaptation is correct). That's
-much better than the first naive algorithm, that was unable to converge to
-the solution in some situations. But actually, the selection sort is not
-perfect either as it requires a lot of swaps: we have to bring the hole to
-the selected player and then both the player and hole in position, and
-more. We can do better.</p>
+<p>Le coté positif d'adapter le tri par sélection à notre problème est que nous
+savons que cela fonctionne (à condition que notre adaptation soit
+correcte). C'est bien mieux que notre premier algorithme naïf, qui était
+incapable de converger vers la solution dans certains cas. Cependant, le tri
+par sélection n'est pas parfait non plus, puisqu'il requiert beaucoup
+d'échanges : il faut amener le trou jusqu'au joueur sélectionné puis amener
+le joueur ET le trou vers la bonne base. On doit pouvoir faire mieux.</p>
 
-<p>For example, each player can run quite a long way from its initial position
-to its target solution.  Instead, it may be more interesting to split the
-field in two parts: one on the left where all players are sorted relatively
-to each others, and one on the right where the players are still at their
-initial positions. Then, at each iteration, we take the player at the border
-between the sorted and unsorted areas (that is, the left-most player of the
-unsorted area) and move it to the left (within the sorted area) until it
-reaches its position (that is, until the position where it's bigger that its
-left neighbor). This would at least reduce the travel of players to the
-sorted area as we use the first one on the border.</p>
+<p>Par exemple, chaque joueur peut avoir à parcourir un chemin relativement
+long pour arriver à sa position finale. Au lieu de cela, il serait peut-être
+intéressant de couper le terrain en deux parties : l'une à gauche où tous
+les joueurs sont triés relativement les uns aux autres, et une autre à
+droite où les joueurs n'ont pas encore bougé de leur position de
+départ. Ensuite, à chaque itération, on prend le joueur à la frontière entre
+les deux zones (c'est à dire, le joueur le plus à gauche de la zone non
+triée) et on le déplace vers la gauche jusqu'à sa position dans la zone
+triée (c'est à dire, jusqu'à ce qu'il soit plus grand que son voisin de
+gauche). Cela réduirait au moins la distance que les joueurs doivent
+parcourir pour rentrer dans la zone triée, puisqu'on prend systématiquement
+le joueur à la frontière.</p>
 
-<p>Actually, that's exactly what an insertion sort would do: maintain a sorted
-area on the left, and put iteratively the player on the border to its
-position within the sorted area. This is good, as we know that our algorithm
-is not inherently flawed since we adapt a well known one.</p>     
+<p>En fait, c'est exactement ce qu'un tri par insertion ferait: maintenir une
+zone triée à gauche, et y insérer à chaque itération l'élément qui se trouve
+à la frontière en le décalant vers la gauche jusqu'à sa position dans la
+zone triée. C'est une bonne chose, car cela veut dire que notre algorithme
+n'est pas fondamentalement faux, puisqu'il s'agit d'une adaptation d'un
+algorithme connu. </p>     
 
-<p>The easiest to adapt the insertion sort to the baseball problem is to
-consider all positions as adjacent and forget about bases. For that, we
-define the methods <code>getColor(pos)</code>, <code>move(pos)</code> and
-<code>getHole()</code> that all use a unique integer to designate a given
-position. These functions simply convert between the way to specify a
-position and then call the usual functions to interact with the world. If
-you have an <code>index</code> and want to convert it into a
-<code>base,pos</code>, then <code>base=index/2</code> and
-<code>pos=index%2</code>. To compute the reverse,
-<code>index=base*2+pos</code> (this works because
-<code>getPositionsAmount()</code> always returns 2).</p> 
+<p>Le plus simple pour adapter le tri par insertion au problème du baseball est
+de considérer toutes les positions comme adjacentes sans tenir compte des
+différentes bases. Pour cela, il faut définir les méthodes
+<code>couleurJoueur(pos)</code>, <code>deplace(pos)</code> et
+<code>trouveTrou()</code> qui utilisent un seul entier pour désigner une
+position donnée et appellent les fonctions de base de cet univers pour faire
+leur travail. Pour convertir une position encodée sur un seul entier
+<code>index</code> en une position encodée sur deux entiers
+<code>base,pos</code>, il faut appliquer les formules suivantes:
+<code>base=index/2</code> et <code>pos=index%2</code>. Pour faire le calcul
+inverse, il faut utiliser <code>index=base*2+pos</code> (qui fonctionne car
+il y a deux positions par base).</p> 
 
-<p>For the algorithm itself, you should first move the hole to the position
-1. The position 0 is considered to be the sorted area (of size 1 for now)
-while the area above 2 is the unsorted area.  The comes an iteration to sort
-each element of the unsorted area. Since this iteration is a bit complex,
-you should think of its loop invariant, that is, the condition that is true
-before and after the loop and which explains that the loop fulfills its
-goal. Here, the loop invariant is twofold: First, the hole is between the
-sorted area and the unsorted area, and then, the every elements of the
-sorted area are ... well sorted relatively to their neighbors.</p>
+<p>Pour l'algorithme lui-même, vous devriez tout d'abord bouger le trou en
+position 1. On considère alors que la zone triée se limite pour l'instant à
+la position 0 (elle est alors de taille 1) tandis que la zone non triée
+commence à partir de la position 2. Ensuite, on fait une itération par
+élément à trier. Comme le corps de cet itération est un peu plus compliqué
+que ce que nous avons écrit jusque là, vous devriez réfléchir à l'invariant
+de cette boucle, c'est à dire à la condition qui est vraie avant et après un
+passage dans la boucle, et qui fait que la boucle fait son travail. Ici,
+l'invariant a deux parties : tout d'abord, l'emplacement vide se trouve
+entre les parties triées et non triées, et ensuite, la zone triée est
+... triée, c'est à dire que tous les éléments de cette zone sont bien triés
+par rapport à leurs voisins.</p>
 
-<p>Then, the loop body to sort an element should first descend the hole and the
-elements within the sorted area until the element is larger than the element
-before in the sorted area (2 moves per position to travel), and then move
-the hole back to its position between the sorted and unsorted areas (1 move
-per position).</p> 
+<p>Ensuite, le corps de la boucle devrait trier un élément en descendant cet
+élément et le trou dans la zone triée jusqu'au point où l'élément est à sa
+place dans la zone triée (cela demande deux déplacements par case à
+parcourir), avant de remonter le trou à sa place à la frontière (un
+déplacement par case à parcourir).</p> 
 
-<p>Once you insert the last element within the sorted area, your whole set is
-sorted and you're done.  I preserve the surprise of the border cases that
-will require some little adjustments to your algorithm to make it work
-properly :)</p>
+<p>Une fois que vous avez inséré le dernier élément dans la zone triée, tout
+votre ensemble est trié et vous avez fini. Je vous laisse la surprise des
+cas limites nécessitant de petits ajustements à votre algorithme pour lui
+permettre de fonctionner dans tous les cas :)</p>

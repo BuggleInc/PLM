@@ -1,38 +1,42 @@
 <h1>Baseball à bulle</h1>
 
-<p>Well, we adapted the insertion sort because our selection sort required too
-much moves to get the selected players to their position, but the insertion
-sort requires an inordinate amount of changes to get the border elements to
-their position within the sorted area without mixing the already sorted
-elements. At the end of the day, our selection variant was more efficient
-with at most <code>3*amountOfBase</code> moves to sort one element (1 to get
-the hole alongside with the player, and 2 to get the hole+player in
-position) while our insertion variant requires at most
-<code>3*amountOfPlayers</code> to sort one element (2 to descend the hole
-and player in position, 1 to get the hole back to its position). That's
-twice as bad as there is two players per base. It may be possible to improve
-the insertion sort by moving by more than one element when descending, but
-it seems uneasy (at least, while not mixing the already sorted elements) and
-it would probably only ensure that our insertion variant becomes as
-efficient as our selection variant, not dramatically better.</p>
+<p>Zut, nous avions adapté le tri par insertion parce que notre tri par
+sélection nécessitait trop de déplacements pour mener les joueurs
+sélectionnés à leur position, mais le tri par insertion impose une quantité
+déraisonnable de déplacements pour déplacer les joueurs de la frontière
+jusqu'à leur place dans la section triée. Au final, notre variante par
+sélection était plus efficace, avec au pire <code>3*nombre de bases</code>
+déplacement par élément à trier (1 pour apporter le trou jusqu'au joueur à
+bouger, et 2 pour amener le joueur et le trou jusqu'à leur position
+finale).  De son coté, notre variante par insertion nécessite au pire
+<code>3*nombre de joueurs</code> déplacements pour trier un élément (2 pour
+descendre le joueur et le trou à leur place, et 1 pour remonter le
+trou). C'est deux fois pire puisqu'il y a deux joueurs par base. Il serait
+probablement possible d'améliorer un peu notre variante par insertion en
+descendant plus vite le trou et le joueur, mais cela semble assez difficile
+(il ne faut pas mélanger les éléments déjà triés pendant la descente), et
+cela ne permettrait que de rendre cette variante aussi efficace que celle
+par sélection, pas de faire vraiment mieux. </p>
 
-<p>If we cannot make the sort faster, we can make it easier. If you think about
-it, it seems rather natural to adapt the bubble sort to this problem: the
-hole becomes the bubble that moves up and down, sorting a bit the array
-during each traversal. The big lines are simply: "while it's not sorted,
-move the hole down to base 0 (moving the biggest player of each base at each
-step) and then back to the maximal base (moving the smallest player of each
-base)". After a while, <code>isSorted()</code> will return true and your
-algorithm will stop.</p>
+<p>Si nous ne pouvons pas rendre ce tri plus rapide, au moins nous pouvons le
+faire plus simplement. Quand on y pense, il semble assez naturel d'adapter
+le tri à bulle à ce problème : le trou devient la bulle qui monte et qui
+descend, en sortant peu à peu le tableau. Les grandes lignes de l'algorithme
+sont très simples : «tant que ce n'est pas trier, déplacer le trou vers le
+bas puis vers le haut. À chaque pas, c'est le plus petit des deux joueurs de
+la base qui descend, et le plus grand des deux qui monte (en fonction du
+sens de déplacement).». Après un moment, <code>isSorted()</code> devient
+vrai, et votre algorithme s'arrête.</p>
 
-<p>This is so easy that we introduce another variant of the problem, with more
-than two players per base.  But actually, that shouldn't block you very
-long, should it?</p>
+<p>C'est tellement simple que nous pouvons nous payer le luxe d'une autre
+variante du problème, avec plus de deux joueurs par base. Mais cela ne va
+pas vous ralentir longtemps, n'est ce pas?</p>
 
-<p>Surprisingly, the bubble sort variant requires ways less moves than the
-other variants. This is astonishing because usually, the bubble sort
-performs much worse than the others sorts, but it comes from the very good
-match between its big lines and the baseball universe. It actually happens
-rather often that a pleasantly written algorithm performs very decently. But
-this is not an universal rule either, as demonstrated by the naive algorithm
-of the first exercise, that was nice, simple and wrong ;)</p>
+<p>De manière étonnante, la variante à bulle semble nécessiter beaucoup moins
+de déplacements que les autres variantes. C'est assez surprenant car
+habituellement, le tri à bulle est la pire des variantes possibles, mais
+cela s'explique sans peine par les analogies entre cet algorithme et le
+problème du baseball multicolore. Il est relativement courant qu'un
+algorithme écrit simplement et naturellement se comporte bien en
+pratique. Il ne s'agit cependant pas d'une règle absolue, comme prouvé par
+l'algorithme simple et faux du premier exercice !</p>
