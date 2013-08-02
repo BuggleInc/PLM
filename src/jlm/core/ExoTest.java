@@ -3,8 +3,10 @@ package jlm.core;
 import static org.junit.Assert.fail;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Locale;
+import java.util.Set;
 
 import jlm.core.model.Game;
 import jlm.core.model.lesson.ExecutionProgress;
@@ -46,22 +48,29 @@ public class ExoTest {
 		
 		FileUtils.setLocale(new Locale("en"));
 		Game g = Game.getInstance();
-		g.switchDebug();
 
 		/* Compute the answers with the java entities */
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
+		Set<Lecture> allExercises = new HashSet<Lecture>();  
 		for (String lessonName : lessons) { 
-			System.err.println("Loading lesson "+lessonName);
 			g.switchLesson(lessonName,true);
-			System.err.println("Lesson "+lessonName+" loaded");
+			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
 				System.exit(1);
 			}
 			for (Lecture l : g.getCurrentLesson().exercises()) 
-				if (l instanceof Exercise)
+				if (l instanceof Exercise) {
 					result.add(new Object[] {Game.getInstance().getCurrentLesson(), l});
+					if (allExercises.contains(l)) {
+						System.err.println("Warning, I tried to add the exercise "+l.getName()+" twice. Something's wrong here");
+						System.exit(1);
+					}
+					allExercises.add(l);
+				}
 		}
+		System.out.println("There is currently "+result.size()+" exercises in our database. Yes sir.");
+		g.switchDebug();
 		
 		g.setLocale(new Locale("en"));
 		return result;
