@@ -294,8 +294,11 @@ public abstract class Entity {
 				}
 			} catch (Exception e) {
 				String msg = Game.i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
-						" Please report this as a bug against JLM, with all details allowing to reproduce it.",e.getClass());
-
+						" Please report this as a bug against JLM, with all details allowing to reproduce it.\n" +
+						"Exception message: {1}",e.getClass(),e.getLocalizedMessage());
+				for (StackTraceElement elm : e.getStackTrace()) 
+					msg += elm.toString();
+				
 				System.err.println(msg);
 				progress.setCompilationError(msg);
 				e.printStackTrace();
