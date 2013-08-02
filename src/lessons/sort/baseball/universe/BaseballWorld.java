@@ -113,6 +113,28 @@ public class BaseballWorld extends World {
 	}
 
 
+	public BaseballWorld(String name, int baseAmount, int positionAmount, int[] values) {
+		this(name, baseAmount, positionAmount, MIX_SORTED);
+		if (baseAmount*posAmount != values.length)
+			throw new RuntimeException("Your values array is not of the right size");
+		field = values;
+		
+		initialField = new int[field.length];
+		for (int i=0;i<field.length;i++)
+			initialField[i] = field[i];
+		
+		// Cache again the hole position 
+		for ( int base = 0 ; base < getBasesAmount(); base++)
+			for ( int pos = 0 ; pos < getPositionsAmount(); pos++)
+				if ( getPlayerColor(base,pos)== COLOR_HOLE) {
+					holeBase = base;
+					holePos = pos;
+					return;
+				}
+		
+	}
+
+
 	/**
 	 * Returns a textual description of the differences between the caller and world
 	 * @param o the world with which you want to compare your world
