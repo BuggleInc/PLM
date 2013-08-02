@@ -50,10 +50,10 @@ public class OccurrenceOfValue extends BatExercise {
 		
 		
 		langTemplate(Game.PYTHON, "occurrences", 
-				"def occurrences(nums,val):\n",
+				"def occurrences(nums,lookingFor):\n",
 				"  count = 0\n" +
-				"  for i in range(len(tab)):\n" +
-				"    if tab[i] == lookingFor:\n" +
+				"  for i in range(len(nums)):\n" +
+				"    if nums[i] == lookingFor:\n" +
 				"      count += 1\n" +
 				"  return count\n");
 

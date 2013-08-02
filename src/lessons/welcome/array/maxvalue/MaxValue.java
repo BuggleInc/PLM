@@ -30,7 +30,7 @@ public class MaxValue extends BatExercise {
 		for (int i=0; i<tab4.length; i++) 
 			tab4[i] = r.nextInt(35)-15;
 
-		BatWorld myWorld = new BatWorld("indexOfMaxValue");
+		BatWorld myWorld = new BatWorld("maxValue");
 		myWorld.addTest(VISIBLE, new int[] { 2, -3, 1, 17, -13, 5, 3, 1, 9, 18 }) ;
 		myWorld.addTest(VISIBLE, tab) ;
 		myWorld.addTest(VISIBLE, tab2) ;
@@ -39,11 +39,11 @@ public class MaxValue extends BatExercise {
 
 		langTemplate(Game.PYTHON, "maxValue", 
 				"def maxValue(nums):\n",
-				"  	max=tab[0]\n"+
-				"   for i in range(len(tab)):\n"+
-				"      if tab[i] > max:\n"+
-				"         max = tab[i]\n"+
-				"   return max\n");
+				"  max=nums[0]\n"+
+				"  for i in range(len(nums)):\n"+
+				"    if nums[i] > max:\n"+
+				"      max = nums[i]\n"+
+				"  return max\n");
 
 		setup(myWorld);
 	}
