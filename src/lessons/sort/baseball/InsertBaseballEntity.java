@@ -9,10 +9,10 @@ public class InsertBaseballEntity extends BaseballEntity {
 	public void run() {
 		/* BEGIN SOLUTION */
 		/* Bring the hole in 0,1 */
+		if (getHole() == 0) // It is already on base 0, but on another position
+			move(1);
 		while (getHole() > 1)
 			move(getHole()-1);
-		if (getHole() == 0) // It was probably already on base 0, but on another position
-			move(0);
 		
 		for (int player = 2; player < getBasesAmount()*getPositionsAmount(); player ++) {
 			//out("Sort player "+player);
