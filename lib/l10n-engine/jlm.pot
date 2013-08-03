@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-01 18:35+0200\n"
+"POT-Creation-Date: 2013-08-02 22:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -688,7 +688,8 @@ msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
 "{0}.\n"
 " Please report this as a bug against JLM, with all details allowing to "
-"reproduce it."
+"reproduce it.\n"
+"Exception message: {1}"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:422
@@ -1047,26 +1048,26 @@ msgid ""
 "its position"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:122
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:145
 msgid "This is not a baseball world :-("
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:126
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:149
 #, java-format
 msgid "Differing amount of bases: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:129
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:152
 #, java-format
 msgid "Differing amount of players: {0} vs {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:135
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:158
 #, java-format
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:305
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:351
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -1074,17 +1075,17 @@ msgid ""
 "Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:342
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:388
 #, java-format
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:345
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:391
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:354
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:400
 #, java-format
 msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
