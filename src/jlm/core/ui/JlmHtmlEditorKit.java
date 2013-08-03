@@ -5,6 +5,8 @@ import java.awt.Shape;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -21,6 +23,7 @@ import javax.swing.text.html.HTML;
 import javax.swing.text.html.HTMLEditorKit;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Lecture;
 
 
@@ -65,6 +68,42 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	@Override
 	public ViewFactory getViewFactory() {
 		return new HTMLFactoryX();
+	}
+	private static Map<ProgrammingLanguage,String> css; /** The CSS to use for a given language */
+	public static String getCSS(ProgrammingLanguage lang) {
+		if (css==null) 
+			 css = new HashMap<ProgrammingLanguage, String>();
+		String res = css.get(lang);
+		if (res == null) {
+			res =		"  <style type=\"text/css\">\n"+
+				        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+				        "    code { background:#EEEEEE; }\n"+
+				        "    pre { background: #EEEEEE;\n"+
+				        "          margin: 5px;\n"+
+				        "          padding: 6px;\n"+
+				        "          border: 1px inset;\n"+
+				        "          width: 640px;\n"+
+				        "          overflow: auto;\n"+
+				        "          text-align: left;\n"+
+				        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+				        "   .comment { background:#EEEEEE;\n"+
+				        "              font-family: \"Times New Roman\", serif;\n"+
+				        "              color:#00AA00;\n"+
+				        "              font-style: italic; }\n";
+			for (ProgrammingLanguage l2 : Game.programmingLanguages) {
+				if (!lang.equals(l2)) {
+					res += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
+					res += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
+				} else {
+					/* DEBUG ONLY, to see the specific elements*/ 
+					res += "."+l2.getLang()+" {visibility: visible; color:#000000;}\n";
+					res += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#000000;}\n";
+				}
+			}
+			res +=  "  </style>\n";
+			css.put(lang, res);
+		}
+		return res;
 	}
 }
 

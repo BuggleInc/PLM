@@ -12,6 +12,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.ui.JlmHtmlEditorKit;
 import jlm.core.utils.FileUtils;
 
 /** Represents an element of the pedagogic sequence, be it a lecture or 
@@ -41,7 +42,6 @@ public abstract class Lecture {
 			"</head>\n";
 	private String name = "<no name>";                     /** indicate whether this Exercise was successfully done or not */
 	private String mission = "";                        /** The text to display to present the lesson */
-	private static Map<ProgrammingLanguage,String> css; /** The CSS to use for a given language */
 	private Lesson lesson;
 	
 	protected Map<String, String> tips = new HashMap<String, String>();
@@ -66,44 +66,9 @@ public abstract class Lecture {
 		return this.lesson;
 	}
 
-	protected static String getCSS(ProgrammingLanguage lang) {
-		if (css==null) 
-			 css = new HashMap<ProgrammingLanguage, String>();
-		String res = css.get(lang);
-		if (res == null) {
-			res =		"  <style type=\"text/css\">\n"+
-				        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
-				        "    code { background:#EEEEEE; }\n"+
-				        "    pre { background: #EEEEEE;\n"+
-				        "          margin: 5px;\n"+
-				        "          padding: 6px;\n"+
-				        "          border: 1px inset;\n"+
-				        "          width: 640px;\n"+
-				        "          overflow: auto;\n"+
-				        "          text-align: left;\n"+
-				        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
-				        "   .comment { background:#EEEEEE;\n"+
-				        "              font-family: \"Times New Roman\", serif;\n"+
-				        "              color:#00AA00;\n"+
-				        "              font-style: italic; }\n";
-			for (ProgrammingLanguage l2 : Game.programmingLanguages) {
-				if (!lang.equals(l2)) {
-					res += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
-					res += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
-				} else {
-					/* DEBUG ONLY, to see the specific elements*/ 
-					res += "."+l2.getLang()+" {visibility: visible; color:#000000;}\n";
-					res += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#000000;}\n";
-				}
-			}
-			res +=  "  </style>\n";
-			css.put(lang, res);
-		}
-		return res;
-	}
 
 	public String getMission(ProgrammingLanguage lang) {
-		String res = "<html><head>"+getCSS(lang)+"</head><body>"+this.mission+"</body></html>";
+		String res = "<html><head>"+JlmHtmlEditorKit.getCSS(lang)+"</head><body>"+this.mission+"</body></html>";
 		return res;
 	}
 	public void setMission(String mission) {
@@ -120,7 +85,7 @@ public abstract class Lecture {
 		try {
 			sb = FileUtils.readContentAsText(filename, "html",true);
 		} catch (IOException ex) {
-			setMission(Game.i18n.tr("File {0} not found.",filename));
+			setMission(Game.i18n.tr("File {0}.html not found.",filename));
 			return;			
 		}
 		String str = sb.toString();
@@ -129,7 +94,7 @@ public abstract class Lecture {
 		Pattern p =  Pattern.compile("<h[123]>([^<]*)<");
 		Matcher m = p.matcher(str);
 		if (!m.find())
-			System.out.println("Cannot find the name of mission in "+filename+".html");
+			System.out.println(Game.i18n.tr("Cannot find the name of mission in {0}.html",filename));
 		setName( m.group(1) );
 	
 		/* prepare the tips, if any */
