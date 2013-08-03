@@ -15,6 +15,7 @@ import jlm.core.model.Game;
 import jlm.core.model.Logger;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.ExecutionProgress;
+import jlm.core.ui.JlmHtmlEditorKit;
 import jlm.core.ui.WorldView;
 import jlm.core.utils.FileUtils;
 
@@ -276,15 +277,6 @@ public abstract class World {
 		return true;
 	}
 
-	final static String HTMLMissionHeader = "<head>\n" + "  <meta content=\"text/html; charset=UTF-8\" />\n"
-	+ "  <style>\n"
-	+ "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"
-	+ "    code { background:#EEEEEE; }\n" + "    pre { background: #EEEEEE;\n" + "          margin: 5px;\n"
-	+ "          padding: 6px;\n" + "          border: 1px inset;\n" + "          width: 640px;\n"
-	+ "          overflow: auto;\n" + "          text-align: left;\n"
-	+ "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"
-	+ "   .comment { background:#EEEEEE;\n" + "              font-family: \"Times New Roman\", serif;\n"
-	+ "              color:#00AA00;\n" + "              font-style: italic; }\n" + "  </style>\n" + "</head>\n";
 	String about = null;
 
 	public String getAbout() {
@@ -298,9 +290,9 @@ public abstract class World {
 				return about;
 			}
 			/* read it */
-			about = "<html>\n" + HTMLMissionHeader + "<body>\n" + sb.toString() + "</body>\n</html>\n";
+			about = sb.toString();
 		}
-		return about;
+		return "<html>\n" + JlmHtmlEditorKit.getCSS(Game.getProgrammingLanguage()) + "<body>\n" + about + "</body>\n</html>\n";
 	}
 	
 	/**
