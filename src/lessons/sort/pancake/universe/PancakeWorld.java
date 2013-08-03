@@ -1,7 +1,5 @@
 package lessons.sort.pancake.universe;
 
-import java.security.InvalidParameterException;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
@@ -192,9 +190,9 @@ public class PancakeWorld extends World {
 	 */
 	public void flip(int numberOfPancakes) {
 		if (numberOfPancakes < 1) 
-			throw new InvalidParameterException(Game.i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
+			throw new IllegalArgumentException(Game.i18n.tr("Asked to flip {0} pancakes, but you must flip at least one", numberOfPancakes));
 		if (numberOfPancakes > this.getStackSize()) 
-			throw new InvalidParameterException(Game.i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
+			throw new IllegalArgumentException(Game.i18n.tr("Asked to flip {0} pancakes, but there is only {1} pancakes on this stack", numberOfPancakes,getStackSize()));
 		
 		//System.err.println("Flip("+numberOfPancakes+")");
 		/* Invert the pancakes' position */
@@ -228,7 +226,7 @@ public class PancakeWorld extends World {
 	 */
 	public int getPancakeRadius(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new InvalidParameterException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].getRadius();
 	}
@@ -247,7 +245,7 @@ public class PancakeWorld extends World {
 	 */
 	public boolean isPancakeUpsideDown(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new InvalidParameterException(Game.i18n.tr("Cannot get the orientation of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot get the orientation of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
 
 		return pancakeStack[rank].isUpsideDown();
 	}
