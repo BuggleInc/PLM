@@ -3,6 +3,7 @@ package lessons.sort.baseball.universe;
 import java.util.Vector;
 
 import javax.script.ScriptEngine;
+import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
 import jlm.core.model.Game;
@@ -179,10 +180,33 @@ public class BaseballWorld extends World {
 		return true;
 	}
 
-	/** Ensures that the provided script engine can run scripts in the specified programming language */
+	/** Ensures that the provided script engine can run scripts in the specified programming language 
+	 * @throws ScriptException */
 	@Override
-	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) {
-		throw new RuntimeException("No binding of BaseballWorld for "+lang);
+	public void setupBindings(ProgrammingLanguage lang, ScriptEngine engine) throws ScriptException {
+		if (lang.equals(Game.PYTHON)) {
+			engine.eval(
+					"def getBasesAmount():\n" +
+					"  return entity.getBasesAmount()\n" +
+					"def getPositionsAmount():\n" +
+					"  return entity.getPositionsAmount()\n" +
+					"def getHoleBase():\n" +
+					"  return entity.getHoleBase()\n" +
+					"def getHolePosition():\n" +
+					"  return entity.getHolePosition()\n" +
+					"def isSorted():\n" +
+					"  return entity.isSorted()\n" +
+					"def isBaseSorted():\n" +
+					"  return entity.isBaseSorted()\n" +
+					"def getPlayerColor(base,pos):\n" +
+					"  return entity.getPlayerColor(base,pos)\n" +
+					"def move(base,pos):\n" +
+					"  entity.move(base,pos)\n" +
+					""
+					);
+		} else {
+			throw new RuntimeException("No binding of BaseballWorld for "+lang);
+		}
 	}
 
 	/** Returns the icon of the world */
