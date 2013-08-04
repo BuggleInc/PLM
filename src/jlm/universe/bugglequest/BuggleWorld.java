@@ -68,12 +68,22 @@ public class BuggleWorld extends GridWorld {
 		super.setWidth(w);
 		if (selectedCell != null && selectedCell.getX()>=w)
 			selectedCell = null;
+		for (int i=0; i<entities.size();i++) {
+			AbstractBuggle b = (AbstractBuggle) entities.get(i);
+			if (b.getX()>w)
+				entities.remove(i--); // -- to counter the effect of ++ at the  end of body loop
+		}
 	}
 	@Override
 	public void setHeight(int h) {
 		super.setHeight(h);
 		if (selectedCell != null && selectedCell.getY()>=h)
 			selectedCell = null;
+		for (int i=0; i<entities.size();i++) {
+			AbstractBuggle b = (AbstractBuggle) entities.get(i);
+			if (b.getY()>h)
+				entities.remove(i--); // -- to counter the effect of ++ at the  end of body loop
+		}
 	}
 
 	@Override

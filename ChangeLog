@@ -4,6 +4,9 @@
   * Use '' to get ' in translated strings to please MessageFormat.
   * Pythonize the documentation of all universes
   * add a button to lessonChooser to load lessons from disk
+  * Disable the step-by-step mode when stopping or swichting
+    the lesson or the exercise (fix #1)
+  * Editor: kill buggles that are in outer space after world resizing.
 20130730:
   * Pythonize new exercises
   * Retranslate everything back to 100% in French
