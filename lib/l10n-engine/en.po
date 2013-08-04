@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-04 16:32+0200\n"
+"POT-Creation-Date: 2013-08-04 21:21+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -759,95 +759,95 @@ msgstr ""
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:117
+#: src/jlm/universe/bugglequest/BuggleWorld.java:127
 #, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty!)"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:123
+#: src/jlm/universe/bugglequest/BuggleWorld.java:133
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:129
+#: src/jlm/universe/bugglequest/BuggleWorld.java:139
 #, java-format
 msgid "{0}.map: End of file reached before world size specification"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:134
+#: src/jlm/universe/bugglequest/BuggleWorld.java:144
 #, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:160
+#: src/jlm/universe/bugglequest/BuggleWorld.java:170
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:174
+#: src/jlm/universe/bugglequest/BuggleWorld.java:184
 #, java-format
 msgid "Invalid buggle''s direction: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:181
-#: src/jlm/universe/bugglequest/BuggleWorld.java:188
+#: src/jlm/universe/bugglequest/BuggleWorld.java:191
+#: src/jlm/universe/bugglequest/BuggleWorld.java:198
 #, java-format
 msgid "Invalid buggle''s color name: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:200
+#: src/jlm/universe/bugglequest/BuggleWorld.java:210
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:213
+#: src/jlm/universe/bugglequest/BuggleWorld.java:223
 #, java-format
 msgid "Invalid color name: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:219
+#: src/jlm/universe/bugglequest/BuggleWorld.java:229
 #, java-format
 msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:223
+#: src/jlm/universe/bugglequest/BuggleWorld.java:233
 #, java-format
 msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:227
+#: src/jlm/universe/bugglequest/BuggleWorld.java:237
 #, java-format
 msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:237
+#: src/jlm/universe/bugglequest/BuggleWorld.java:247
 #, java-format
 msgid ""
 "The cell {0},{1} seem to be defined more than once. At least, there is two "
 "baggles here, which is not allowed."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:253
+#: src/jlm/universe/bugglequest/BuggleWorld.java:263
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:471
+#: src/jlm/universe/bugglequest/BuggleWorld.java:481
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:475
+#: src/jlm/universe/bugglequest/BuggleWorld.java:485
 #, java-format
 msgid "  In ({0},{1})"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:478
+#: src/jlm/universe/bugglequest/BuggleWorld.java:488
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr ""
