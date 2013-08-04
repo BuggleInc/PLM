@@ -1,4 +1,5 @@
 20130804:
+  * RELEASE 2.0, the revolutionary night.
   * Remove the array world. It was not helping very much when compared
     to the bat world.
   * Use '' to get ' in translated strings to please MessageFormat.
