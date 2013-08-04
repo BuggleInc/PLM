@@ -20,8 +20,8 @@ import jlm.core.model.lesson.ExerciseTemplated;
  *  with the windows/unix incompatibilities about directory separators (/ or \).
  * 
  *  The second problem it deals with is about translations. When looking for a help file, 
- *  it first seach for a suitable translated version. If not found, it fallbacks to the 
- *  english version. This is done through the locale static variable. Yeah, that's not 
+ *  it first search for a suitable translated version. If not found, it fallbacks to the 
+ *  English version. This is done through the locale static variable. Yeah, that's not 
  *  clean but it just works.
  */
 public class FileUtils {
@@ -41,7 +41,7 @@ public class FileUtils {
 	public static BufferedReader newFileReader(String file, String extension, boolean translatable) throws FileNotFoundException, UnsupportedEncodingException {
 		/* first check if we can find it unmodified */
 		int i = 0;
-		if (!translatable) { // extension is ignored in this case. That's useful to get it from a filechoser
+		if (!translatable) { // extension is ignored in this case. That's useful to get it from a file chooser
 			while (i<directories.length) {
 				if ((new File(directories[i] + file)).exists()) {
 					return new BufferedReader(new FileReader(directories[i] + file));
