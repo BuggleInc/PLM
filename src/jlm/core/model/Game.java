@@ -87,8 +87,8 @@ public class Game implements IWorldView {
 	public static final ProgrammingLanguage RUBY =       new ProgrammingLanguage("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
 	public static final ProgrammingLanguage LIGHTBOT =   new ProgrammingLanguage("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
-		JAVA, PYTHON, RUBY, JAVASCRIPT, LIGHTBOT
-	};
+		JAVA, PYTHON, RUBY, LIGHTBOT // TODO: re-add JAVASCRIPT to this list once it works at least a bit
+	}; 
 	private ProgrammingLanguage programmingLanguage = JAVA;
 
 	/* TODO: document these values elsewhere */

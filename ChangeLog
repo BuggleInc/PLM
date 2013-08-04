@@ -8,6 +8,7 @@
   * Disable the step-by-step mode when stopping or swichting
     the lesson or the exercise (fix #1)
   * Editor: kill buggles that are in outer space after world resizing.
+  * Disable JavaScript, it's really not ready for the big night.
 20130730:
   * Pythonize new exercises
   * Retranslate everything back to 100% in French
