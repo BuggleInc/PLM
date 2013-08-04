@@ -85,18 +85,36 @@ public class LessonRunner extends Thread {
 			
 			Vector<Lecture> nextExercises =  exo.getDependingLectures();	
 			if ( nextExercises.size() == 0) {
-				JOptionPane.showMessageDialog(null, 
-						i18n.tr("Congratulations, you passed this exercise.\n {0} tests passed.\n",
-								exo.lastResult.passedTests) + exo.lastResult.details, 
-						i18n.tr("Exercice passed \\o/"), 
-						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
+				if (exo.lastResult.passedTests > 1) {
+					JOptionPane.showMessageDialog(null, 
+							i18n.tr("Congratulations, you passed this exercise.\n{0} tests passed.",
+									exo.lastResult.passedTests) + exo.lastResult.details, 
+									i18n.tr("Exercice passed \\o/"), 
+									JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
+				} else {
+					JOptionPane.showMessageDialog(null, 
+							i18n.tr("Congratulations, you passed this exercise.",
+									exo.lastResult.passedTests) + exo.lastResult.details, 
+									i18n.tr("Exercice passed \\o/"), 
+									JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
+				}
 			} else {
-				
-				Lecture selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
-						i18n.tr("Congratulations, you passed this test. Which exercise will you do now?\n"), 
-						i18n.tr("Exercice passed \\o/"),
-						JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
-						nextExercises.toArray(), nextExercises.get(0));
+				Lecture selectedValue;
+				if (exo.lastResult.passedTests > 1) {
+
+					selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
+							i18n.tr("Congratulations, you passed this exercise.\n({0} tests passed)\nWhich exercise will you do now?"), 
+							i18n.tr("Exercice passed \\o/"),
+							JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
+							nextExercises.toArray(), nextExercises.get(0));
+				} else {
+					selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
+							i18n.tr("Congratulations, you passed this exercise.\nWhich exercise will you do now?"), 
+							i18n.tr("Exercice passed \\o/"),
+							JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
+							nextExercises.toArray(), nextExercises.get(0));
+					
+				}
 				if (selectedValue != null) 
 					Game.getInstance().setCurrentExercise(selectedValue);
 			}

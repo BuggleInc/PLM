@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-04 16:12+0200\n"
+"POT-Creation-Date: 2013-08-04 16:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,21 +104,36 @@ msgstr ""
 msgid "Cancel call for help to the teacher"
 msgstr ""
 
-#: src/jlm/core/model/LessonRunner.java:89
+#: src/jlm/core/model/LessonRunner.java:90
 #, java-format
 msgid ""
 "Congratulations, you passed this exercise.\n"
-" {0} tests passed.\n"
+"{0} tests passed."
 msgstr ""
 
-#: src/jlm/core/model/LessonRunner.java:91
-#: src/jlm/core/model/LessonRunner.java:97
+#: src/jlm/core/model/LessonRunner.java:92
+#: src/jlm/core/model/LessonRunner.java:98
+#: src/jlm/core/model/LessonRunner.java:107
+#: src/jlm/core/model/LessonRunner.java:113
 msgid "Exercice passed \\o/"
 msgstr ""
 
 #: src/jlm/core/model/LessonRunner.java:96
+msgid "Congratulations, you passed this exercise."
+msgstr ""
+
+#: src/jlm/core/model/LessonRunner.java:106
+#, java-format
 msgid ""
-"Congratulations, you passed this test. Which exercise will you do now?\n"
+"Congratulations, you passed this exercise.\n"
+"({0} tests passed)\n"
+"Which exercise will you do now?"
+msgstr ""
+
+#: src/jlm/core/model/LessonRunner.java:112
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"Which exercise will you do now?"
 msgstr ""
 
 #: src/jlm/core/model/lesson/Exercise.java:77

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-04 16:12+0200\n"
-"PO-Revision-Date: 2013-08-04 16:13+0200\n"
+"POT-Creation-Date: 2013-08-04 16:32+0200\n"
+"PO-Revision-Date: 2013-08-04 16:34+0200\n"
 "Last-Translator: Frank STENGEL <fstengel@mac.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -122,26 +122,44 @@ msgstr "Demander de l'aide à l'enseignant"
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
-#: src/jlm/core/model/LessonRunner.java:89
+#: src/jlm/core/model/LessonRunner.java:90
 #, java-format
 msgid ""
 "Congratulations, you passed this exercise.\n"
-" {0} tests passed.\n"
+"{0} tests passed."
 msgstr ""
 "Félicitation, vous avez réussi cet exercice.\n"
-" {0} test(s) passés.\n"
+"{0} tests passés."
 
-#: src/jlm/core/model/LessonRunner.java:91
-#: src/jlm/core/model/LessonRunner.java:97
+#: src/jlm/core/model/LessonRunner.java:92
+#: src/jlm/core/model/LessonRunner.java:98
+#: src/jlm/core/model/LessonRunner.java:107
+#: src/jlm/core/model/LessonRunner.java:113
 msgid "Exercice passed \\o/"
 msgstr "Exercice réussi \\o/"
 
 #: src/jlm/core/model/LessonRunner.java:96
+msgid "Congratulations, you passed this exercise."
+msgstr "Félicitation, vous avez réussi cet exercice."
+
+#: src/jlm/core/model/LessonRunner.java:106
+#, java-format
 msgid ""
-"Congratulations, you passed this test. Which exercise will you do now?\n"
+"Congratulations, you passed this exercise.\n"
+"({0} tests passed)\n"
+"Which exercise will you do now?"
 msgstr ""
-"Félicitation, vous avez réussi ce test. Par quel exercice voulez vous "
-"continuer ?\n"
+"Félicitation, vous avez réussi cet exercice.\n"
+"({0} tests passés)\n"
+"Par quel exercice voulez vous continuer ?"
+
+#: src/jlm/core/model/LessonRunner.java:112
+msgid ""
+"Congratulations, you passed this exercise.\n"
+"Which exercise will you do now?"
+msgstr ""
+"Félicitation, vous avez réussi cet exercice.\n"
+"Par quel exercice voulez vous continuer ?"
 
 #: src/jlm/core/model/lesson/Exercise.java:77
 #, java-format
