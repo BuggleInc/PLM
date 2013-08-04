@@ -15,12 +15,16 @@ import java.io.IOException;
 import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import jlm.core.model.Game;
+import jlm.core.model.LessonLoadingException;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.utils.FileUtils;
 
@@ -86,6 +90,8 @@ public class LessonChooser extends JFrame {
 
 
 class LessonMatrix extends JPanel {
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+
 	private static final long serialVersionUID = 1L;
 
 	public LessonMatrix(LessonOverview overview, String[][] lessons) {
@@ -97,6 +103,7 @@ class LessonMatrix extends JPanel {
         c.insets = new Insets(3, 3, 3, 3);
         c.gridwidth = 1;
 
+        int maxCol=0;
         for (int row = 0; row < lessons.length; row++) {
         	for (int col=0; col < lessons[row].length; col++) {
         		LessonButton btLesson = new LessonButton(overview, lessons[row][col]);
@@ -106,8 +113,41 @@ class LessonMatrix extends JPanel {
         		gl.setConstraints(btLesson, c);
         		add(btLesson);
         	}
+        	if (row < lessons.length) {
+        		if (lessons[row].length>maxCol)
+        			maxCol = lessons[row].length-1;
+        	} else if (lessons[row].length>maxCol) // React correctly to when the last line is longer than the others
+    			maxCol = lessons[row].length;
         }
+        /* add a load lesson button */
+        JButton btLoadLesson = new JButton();
+        btLoadLesson.setIcon(ResourcesCache.getIcon("img/bt-load-lesson.png")); 
+		btLoadLesson.setSize(50,50);
+		btLoadLesson.setBackground(Color.white);
+		btLoadLesson.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("JLM lesson files"), "jlm"));
+				fc.setDialogType(JFileChooser.OPEN_DIALOG);
+				fc.showOpenDialog(MainFrame.getInstance());
+				File selectedFile = fc.getSelectedFile();
+
+				try {
+					if (selectedFile != null)
+						Game.getInstance().loadLessonFromJAR(fc.getSelectedFile());
+				} catch (LessonLoadingException lle) {
+					JOptionPane.showMessageDialog(null, lle.getMessage(), i18n.tr("Error"), JOptionPane.ERROR_MESSAGE); 
+				}
+			}
+		});
+		c.gridy = lessons.length-1;
+		c.gridx = maxCol;
+		gl.setConstraints(btLoadLesson, c);
+		add(btLoadLesson);
 	}
+	
 }
 
 class LessonOverview extends JPanel {
