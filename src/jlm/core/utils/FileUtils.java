@@ -98,10 +98,8 @@ public class FileUtils {
         		throw e1;
         		//throw new FileNotFoundException(file + "with extension " + extension + " is encoded in an unsupported encoding.");
         	}
-        	if (br != null) {
-				System.out.println("Found "+resourceName);
+        	if (br != null) 
 				return br;
-        	}
         }
 		// file not found, give up. No logs here, as it is ok that some entities do not exist in some languages
 		if (extension == null)
