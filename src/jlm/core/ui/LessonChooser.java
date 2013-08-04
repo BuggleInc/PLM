@@ -157,8 +157,8 @@ class LessonOverview extends JPanel {
 	}
 	
 	public void setPath(String path) {
-		// FIXME: give the focus to the btGo
-		this.btGo.setEnabled(true);
+		btGo.setEnabled(true);
+		btGo.requestFocusInWindow();
 		this.path = path;
 		
 		String filename = path.replace('.',File.separatorChar)+"/short_desc";
