@@ -192,6 +192,9 @@ public class Game implements IWorldView {
 	 */
 	
 	public Lesson switchLesson(String lessonName, boolean failOnError) {
+		if (stepModeEnabled())
+			disableStepMode();
+		
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
@@ -416,6 +419,9 @@ public class Game implements IWorldView {
 		runner.start();
 	}
 	public void stopExerciseExecution() {
+		if (stepModeEnabled()) 
+			disableStepMode();
+
 		if (runner != null)
 			runner.stopAll();
 		
@@ -630,6 +636,9 @@ public class Game implements IWorldView {
 	}
 
     protected void fireCurrentExerciseChanged(Lecture lect) {
+		if (stepModeEnabled())
+			disableStepMode();
+
         for (GameListener v : this.listeners) {
             v.currentExerciseHasChanged(lect);
         }
