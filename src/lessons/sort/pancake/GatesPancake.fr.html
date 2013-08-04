@@ -18,12 +18,12 @@ considéré est noté <code>t+o</code>). Huit cas sont possibles alors&nbsp;:</p
 <ul>
 <li><b>Cas a</b>: <code>t</code> et <code>t+o</code> sont tous les deux
 libres. Ils sont alors fusionnés en un retournement.<br/>
-<div align="center"><img src="./img/gates-a.png"/></div>
+<div align="center"><img src="img/gates-a.png"/></div>
 </li></ul>
 
 <ul><li><b>Cas b</b>: <code>t</code> est libre, et <code>t+o</code> est le premier
 élément d'un bloc. Ils sont fusionnés en un bloc.<br/>
-<div align="center"><img src="./img/gates-b.png"/></div>
+<div align="center"><img src="img/gates-b.png"/></div>
 </li></ul>
 
 <ul>
@@ -34,38 +34,38 @@ retournements. Prenez garde, si <code>t-1</code> ou <code>t+1</code>
 n'existe pas (parce que <code>t</code> est 0 ou max), seulement deux de ces
 retournements sont nécessaires.
 <br/>
-<div align="center"><img src="./img/gates-c.png"/></div>
+<div align="center"><img src="img/gates-c.png"/></div>
 </li></ul>
 
 <ul>
 <li><b>Cas d</b>: <code>t</code> est dans un bloc, mais <code>t+o</code> est
 libre. Ils sont fusionnés en un retournement.<br/>
-<div align="center"><img src="./img/gates-d.png"/></div>
+<div align="center"><img src="img/gates-d.png"/></div>
 </li></ul>
 
 <ul>
 <li><b>Cas e</b>: <code>t</code> est dans un bloc, et <code>t+o</code> est le
 premier élément d'un bloc. Ils sont fusionnés en un retournement.<br/>
-<div align="center"><img src="./img/gates-e.png"/></div>
+<div align="center"><img src="img/gates-e.png"/></div>
 </li></ul>
 
 <ul><li><b>Cas f</b>: <code>t</code> est dans un bloc, et <code>t+o</code> est le
 dernier élément d'un autre bloc. Ils sont fusionnés en trois retournements
 comme suit.<br/>
-<div align="center"><img src="./img/gates-f.png"/></div></li></ul>
+<div align="center"><img src="img/gates-f.png"/></div></li></ul>
 
 <ul><li><b>Cas g</b>: <code>t</code> est dans un bloc de taille k+1 (le dernier
 élément est <code>t+ko</code>), <code>t+(k+1)o</code> est soit libre soit le
 dernier élément d'un autre bloc. Les deux blocs sont fusionnés en deux
 retournements:<br/>
-<div align="center"><img src="./img/gates-g.png"/></div><br/></li></ul>
+<div align="center"><img src="img/gates-g.png"/></div><br/></li></ul>
 
 <ul><li><b>Cas h</b>: <code>t</code> est dans un bloc de taille k+1 (le dernier
 élément est <code>t+ko</code>), <code>t+(k+1)o</code> est le premier élément
 d'un autre bloc (la différence avec le cas g est que <code>t+(k+1)o</code>
 est maintenant le <i>premier</i> élément de son bloc). Les deux blocs sont
 fusionnés en deux retournements:<br/>
-<div align="center"><img src="./img/gates-h.png"/></div>
+<div align="center"><img src="img/gates-h.png"/></div>
 </li></ul>
 
 <ul><li><b>Cas i</b>: <code>t</code> est dans un bloc de taille <code>n</code>, qui
