@@ -1,59 +1,52 @@
-Sorry, this file is in french. It was intended to be personal and
-short lived, but you know how it goes. Most informations should be
-converted to issues on github probably.
-
+Most informations presented in this file should probably be converted
+to github issues.
 
 ***************** BUGS
-* The delay slider is not aware of the exercises changes. That is why it
-  fails to get the value of the newly selected exercise.
-* le libération du verrou "step-by-step" ne se passe pas bien lors de l'utilisation de "Reset",
-  un "Run" remet zéro correctement
-* certains tests de countTeen() semblent faux par rapport à l'énoncé
 
-* dans lightbot, la dernière instruction exécutée ne déclenche pas de rafraichissement de la vue du monde.
+* Some tests of countTeen() seem wrong when compared to the mission text
+
+* In lightbot, the last instruction does not refresh the world when executed.
 
 * try to remove the *sys-package-mgr* processing messages when jython is loading
 
-* say explicity that the combolist that is present in the exercise passed dialog propose different path in the learning process
-
 * Allow exercises in Scala:
 http://speaking-my-language.blogspot.fr/2009/11/embedded-scala-interpreter.html
-***************** BASE
 
-Assez urgent :
- * L'éditeur n'utilise pas les mêmes raccourcis qu'eclipse   
- 
-Une série d'idées bêtes :
- * On pourrait représenter graphiquement le diff textuel entre le
-   monde attendu et le monde créé quand y'a des erreurs. Avec des
-   ronds rouges autour des cases de la mauvaise couleur, des croix sur
-   les buggles mal placées, etc.
- * les localisations de fichier dans la console devrait être des liens
-   qui déplacent l'éditeur.
- * lors d'exécution pas à pas, j'aimerais afficher le contenu des
-   variables, mais ça semble très dur. on peut tenter l'introspection.
-   Peut-être qu'en convertissant le tout en plugin eclipse on pourrait
-   y arriver, mais pas cette année.
- * Changer le JavaEditor pour suivre le point d'exécution, comme c'est
-   fait dans lightbot.
+***************** ENGINE IMPROVEMENT
 
-***************** LEÇONS          
-Il y a pleins d'idées d'exo sur les pages des gens qui ont
-inventé le concept. Par exemple:
+ * We could use the same shortcuts than eclipse
+ * We could represent graphically the textual diff between the
+   expected world and the actual one. We would have red circles on
+   cells that have an error (either wrong color or wrong message), red
+   crosses on badly located buggles, etc.
+ * Locations displayed in the console should be links that move the editor.
+ * During step-by-step execution, it'd be great to display the content
+   of values, but I'm not sure of how to do that. Introspection could
+   be a way, but I think that it's not possible. We could also convert
+   everything to an eclipse plugin, but it seems to be a rather massive
+   amount of work.
+ * We should modify the JavaEditor so that it follows the execution
+   point, just like the lightbot editor does.
+
+***************** LESSONS
+
+There is a bunch of ideas on the pages of people that invented the
+buggle concept. For example:
 
 http://cs.wellesley.edu/~cs111/fall98/assignments.html
 
-***************** MONDES
-Micro-mondes pédagogiques
- * Karel the robot (peut-être qu'un chargeur de mondes karel dans les
-   buggles suffit)
+***************** UNIVERSES
+
+Pedagogical micro-worlds
+ * Karel the robot (it may be sufficient to build a loader of karel
+   worlds within the buggle world)
  * PatchWorld
-Ludiques pour programmeurs (nécessitent un mode King of hill?)
- * CodeRuler (stratégie)
- * CodeRobot (combats de robots)
- * CodeRally (courses de voitures)
- * CodeInvaders (combats de vaisseaux spaciaux)
- * MARS (assembleur) http://courses.missouristate.edu/kenvollmar/mars/
+Programmer games (may require a King of Hill mode?)
+ * CodeRuler (strategy)
+ * CodeRobot (fights between robots)
+ * CodeRally (racing cars)
+ * CodeInvaders (fight between spaceships)
+ * MARS (assembly) http://courses.missouristate.edu/kenvollmar/mars/
  * Corewars
 
 http://www.essentialmath.com/tutorial.htm
