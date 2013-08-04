@@ -10,23 +10,20 @@ disque plus grand sur un disque plus petit.</p>
 
 <p>Seules trois fonctions sont fournies&nbsp;:</p>
 
-<pre class="Java">public void move(int src, int dst) throws HanoiInvalidMove;</pre>
+<pre class="Java">void move(int src, int dst)</pre>
 <pre class="python">move(src, dst) throws HanoiInvalidMove</pre>
 
 Elle déplace un disque d'un piquet <code>src</code> vers le piquet
-<code>dst</code>. Comme vous le voyez, si vous demandez un déplacement
-invalide (comme le placement d'un disque sur un disque plus petit), une
-exception est levée.
+<code>dst</code>. Si vous demandez un déplacement invalide (comme le
+placement d'un disque sur un disque plus petit), une exception
+IllegalArgumentException est levée. 
 
 <pre class="Java">int getSlotSize(int slot);</pre>
 <pre class="python">getSlotSize(slot)</pre>
-
-Elle retourne le nombre de disques placés sur un piquet donné. Cette
-fonction
-est surtout utile pour initialiser la récursion et déterminer le nombre
-d'appels récursifs à réaliser.
+Retourne le nombre de disques placés sur un piquet donné. Cette fonction est
+surtout utile pour initialiser la récursion et déterminer le nombre d'appels
+récursifs à réaliser.
 
 <pre class="Java">boolean isSelected()</pre>
 <pre class="python">isSelected()</pre>
-
 Renvoi si le monde actuel est sélectionné dans l'interface graphique.

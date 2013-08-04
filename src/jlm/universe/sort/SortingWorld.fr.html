@@ -9,21 +9,36 @@ différences d'efficacité entre eux.
 <h2>Méthodes disponibles pour les algorithmes de tri</h2>
 <table border=1>
 <tr><td><b>Méthode</b></td><td><b>Action</b></td><td><b>Coût</b></td></tr>
-<tr><td>int getValueCount()</td><td>Retourne le nombre de valeurs dans le tableau</td><td>aucun</td></tr>
+<tr><td><div class="Java">int getValueCount()</div>
+        <div class="python">getValueCount()</div></td>
+    <td>Retourne le nombre de valeurs dans le tableau</td><td>aucun</td></tr>
 
-<tr><td>boolean isSmaller(int i, int j)</td><td>Retourne vrai ssi le contenu de la case i est strictement inférieur à celui
+<tr><td><div class="Java">boolean isSmaller(int i, int j)</div>
+        <div class="python">isSmaller(i, j)</div></td>
+    <td>Retourne vrai ssi le contenu de la case i est strictement inférieur à celui
 de la case j</td><td>deux lectures</td></tr>
-<tr><td>boolean isSmallerThan(int i, int val)</td><td>Retourne vrai ssi le contenu de la case i est strictement inférieur à la
+<tr><td><div class="Java">boolean isSmallerThan(int i, int val)</div>
+        <div class="python">isSmallerThan(i, val)</div></td>
+    <td>Retourne vrai ssi le contenu de la case i est strictement inférieur à la
 valeur val</td><td>une lecture</td></tr>
 
-<tr><td>void swap(int i, int j)</td><td>Echange le contenu de la case i avec celui de la case j</td><td>deux lectures, deux écritures</td></tr>
-<tr><td>void copy(int from, int to)</td><td>Copie le contenu de la case 'from' dans la case 'to'</td><td>une lecture, une écriture</td></tr>
+<tr><td><div class="Java">void swap(int i, int j)</div>
+        <div class="python">swap(i, j)</div></td>
+     <td>Echange le contenu de la case i avec celui de la case j</td><td>deux lectures, deux écritures</td></tr>
+<tr><td><div class="Java">void copy(int from, int to)</div>
+        <div class="python">copy(from, to)</div></td>
+    <td>Copie le contenu de la case 'from' dans la case 'to'</td><td>une lecture, une écriture</td></tr>
 
-<tr><td>int getValue(int idx)</td><td>Retourne la valeur de la case idx</td><td>une lecture</td></tr>
-<tr><td>void setValue(int idx,int val)</td><td>Affecte la valeur 'val' à la case 'idx'</td><td>une écriture</td></tr>
+<tr><td><div class="Java">int getValue(int idx)</div>
+        <div class="python">getValue(idx)</div></td>
+    <td>Retourne la valeur de la case idx</td><td>une lecture</td></tr>
+<tr><td><div class="Java">void setValue(int idx, int val)</div>
+        <div class="python">setValue(idx, val)</div></td>
+    <td>Affecte la valeur 'val' à la case 'idx'</td><td>une écriture</td></tr>
 
-<tr><td>Renvoi si le monde actuel est sélectionné dans l'interface graphique.</td>
-    <td>boolean isSelected()</td></tr>
+<tr><td><div class="Java">boolean isSelected()</div>
+        <div class="python">isSelected()</div></td>
+    <td>Renvoi si le monde actuel est sélectionné dans l'interface graphique.</td><td>aucun</td></tr>
 
 </table>
 

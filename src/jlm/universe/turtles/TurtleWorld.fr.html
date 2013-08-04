@@ -1,34 +1,77 @@
 <h1>Monde des tortues</h1>
-Ce monde est directement inspiré des travaux du mathématicien Seymour Papert
-dans les années 60. Inspiré par le psychologue suisse Jean Piaget, il a
-inventé une méthode d'apprentissage de la programmation accessible aux
-jeunes enfants nommée LOGO. Le monde est peuplé de tortues qui laissent une
-trace là où elles marchent et à qui on peut donner des ordres simples.
 
-<p>Ce monde est une adaptation de LOGO pour la Java Learning Machine.</p>
+<p>Cet univers est une adaptation de LOGO pour la Java Learning Machine.</p>
 
-<h2>Méthodes comprises par les tortues</h2>
-<table border=1>
-<tr><td></td></tr>
-<tr><td><b>Avancer</b> <code>public void forward(double nbPas);</code><br />
-        <b>Reculer</b> <code>public void backward(double nbPas);</code></td></tr>
-<tr><td><b>Tourner à gauche</b> <code>public void turnLeft(double angle);</code> (en
-degré)<br/>
-        <b>Tourner à droite</b> <code>public void turnRight(double angle);</code></td></tr>
-<tr><td><b>Lever le stylo</b> <code>public void penUp();</code><br/>
-        <b>Baisser le stylo</b> <code>public void penDown();</code><br/>
-        <b>Obtenir la position du stylo</b> <code>public boolean isPenDown();</code><br/>
-        (les tortues ont des stylos, pas des brosses comme les buggles)</td></tr>
-<tr><td><b>Obtenir direction</b> <code>public double getHeading();</code><br/>
-        <b>Changer direction</b> <code>public void setHeading(double angle);</code></td></tr>
-<tr><td><b>Obtenir couleur</b> <code>public Color getColor();</code><br/>
-        <b>Changer couleur</b> <code>public void setColor(Color color);</code></td></tr>
-<tr><td><b>Obtenir position</b> <code>public double getX();</code> <code>public
-double getY();</code><br/>
-        <b>Changer position</b> <code>public void setX(double x);</code> 	
-<code>public void setY(double y);</code> <code>public void setPos(double x,
-double y);</code></td></tr>
-  <tr><td>Renvoi si la tortue est actuellement <b>sélectionnée dans l'interface</b></td>
-      <td>boolean isSelected()</td></tr>
+<p>Il est directement inspiré des travaux du mathématicien Seymour Papert dans
+les années 60. Inspiré par le psychologue suisse Jean Piaget, il a inventé
+une méthode d'apprentissage de la programmation accessible aux jeunes
+enfants nommée LOGO. Le monde est peuplé de tortues qui laissent une trace
+là où elles marchent et à qui on peut donner des ordres simples.</p>
 
-</table>				
+<h2>Fonctions pour déplacer la tortue</h2>
+
+<pre class="Java">void forward(double nbPas)
+void backward(double nbPas)</pre>
+<pre class="python">forward(nbPas)
+backward(nbPas)</pre>
+Avance (forward) ou recule (backward) du nombre de pas demandés.
+
+<pre class="Java">void turnRight(double angle)
+void turnLeft(double angle)</pre>
+<pre class="python">turnRight(angle)
+turnLeft(angle)</pre>
+Tourne à gauche (left) ou à droite (right) du nombre de l'angle indiqué (en
+degrés).
+
+<pre class="Java">double getX()
+double getY()</pre>
+<pre class="python">getX()
+getY()</pre>
+Retourne la position acutelle de la tortue.
+
+<pre class="Java">void setX(double x)
+void setY(double y)
+void setPos(double x, double y)</pre>
+<pre class="python">setX(x)
+setY(y)
+setPos(x,y)</pre>
+Téléporte la tortue à une nouvelle position.
+
+<pre class="Java">double getHeading()</pre>
+<pre class="python">getHeading()</pre>
+Retourne le cap actuel de la tortue (en degrés).
+
+<pre class="Java">void getHeading(double angle)</pre>
+<pre class="python">getHeading(angle)</pre>
+Change le cap de la tortue à l'angle indiqué (en degrés).
+
+<h2>Fonctions à propos du stylo</h2>
+
+<pre class="Java">void penUp()</pre>
+<pre class="python">penUp()</pre>
+Remonte le stylo de la tortue (les tortues ont des stylos, pas des brosses
+comme les buggles). La tortue ne laissera plus de trace lors de ses
+déplacements suivants.
+
+<pre class="Java">void penDown()</pre>
+<pre class="python">penDown()</pre>
+Descend le stylo. La tortue laissera une trace lors de ses prochains
+déplacements.
+
+<pre class="Java">boolean isPenDown()</pre>
+<pre class="python">isPenDown()</pre>
+Retourne si le stylo est actuellement baissé ou non.
+
+<pre class="Java">Color getColor()</pre>
+<pre class="python">getColor()</pre>
+Retourne la couleur actuelle du stylo.
+
+<pre class="Java">void setColor(Color color)</pre>
+<pre class="python">getColor(color)</pre>
+Modifier la couleur du stylo.
+
+<h2>Autres fonctions</h2>
+
+<pre class="Java">boolean isSelected()</pre>
+<pre class="python">isSelected()</pre>
+Renvoie si la tortue actuelle est sélectionnée dans l'interface graphique.
