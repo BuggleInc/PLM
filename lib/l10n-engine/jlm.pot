@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-02 22:12+0200\n"
+"POT-Creation-Date: 2013-08-04 16:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,41 +57,41 @@ msgid ""
 "Your progress will NOT be posted to twitter, as requested by the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:214 src/jlm/core/model/Game.java:215
+#: src/jlm/core/model/Game.java:217 src/jlm/core/model/Game.java:218
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/jlm/core/model/Game.java:216
+#: src/jlm/core/model/Game.java:219
 #, java-format
 msgid "Load lesson {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:322 src/jlm/core/model/Game.java:354
+#: src/jlm/core/model/Game.java:325 src/jlm/core/model/Game.java:357
 msgid "Operation cancelled by the user"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:394
+#: src/jlm/core/model/Game.java:397
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:911
+#: src/jlm/core/model/Game.java:920
 #, java-format
 msgid "{0} is not writable"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:915
+#: src/jlm/core/model/Game.java:924
 #, java-format
 msgid "{0} is not a directory"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:922
+#: src/jlm/core/model/Game.java:931
 #, java-format
 msgid "Cannot create {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:928
+#: src/jlm/core/model/Game.java:937
 #, java-format
 msgid "Impossible to find a path for JLM datas. Tested {0}"
 msgstr ""
@@ -201,16 +201,13 @@ msgstr ""
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
 
-#: src/jlm/core/model/lesson/Lecture.java:123
-#, java-format
-msgid "File {0} not found."
-msgstr ""
-
+#: src/jlm/core/model/lesson/Lecture.java:88
 #: src/jlm/core/model/lesson/Lesson.java:84
 #, java-format
 msgid "File {0}.html not found."
 msgstr ""
 
+#: src/jlm/core/model/lesson/Lecture.java:97
 #: src/jlm/core/model/lesson/Lesson.java:94
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
@@ -229,8 +226,9 @@ msgstr ""
 msgid "About lesson - "
 msgstr ""
 
-#: src/jlm/core/ui/AboutWorldDialog.java:29
-msgid "About world - "
+#: src/jlm/core/ui/AboutWorldDialog.java:32
+#, java-format
+msgid "About world - {0}"
 msgstr ""
 
 #: src/jlm/core/ui/ExerciseFailedDialog.java:29
@@ -324,16 +322,16 @@ msgstr ""
 msgid "Error while uploading your feedback"
 msgstr ""
 
-#: src/jlm/core/ui/JlmHtmlEditorKit.java:103
+#: src/jlm/core/ui/JlmHtmlEditorKit.java:142
 #, java-format
 msgid "<img> tag without src attribute in exercise {0}"
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:36
+#: src/jlm/core/ui/LessonChooser.java:40
 msgid "Choose your lesson"
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:50
+#: src/jlm/core/ui/LessonChooser.java:54
 msgid ""
 "<table border=\"0\" align=\"center\"><tr>\n"
 "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
@@ -348,7 +346,15 @@ msgid ""
 "your own pace.</font></p><br/>"
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:128
+#: src/jlm/core/ui/LessonChooser.java:132 src/jlm/core/ui/MainFrame.java:163
+msgid "JLM lesson files"
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:141 src/jlm/core/ui/MainFrame.java:172
+msgid "Error"
+msgstr ""
+
+#: src/jlm/core/ui/LessonChooser.java:168
 msgid ""
 "<h1>Please pick a lesson</h1>\n"
 "<p>Please click on an icon on the left to select a lesson.</p>\n"
@@ -357,33 +363,33 @@ msgid ""
 msgstr ""
 
 #. Create the button
-#: src/jlm/core/ui/LessonChooser.java:140
+#: src/jlm/core/ui/LessonChooser.java:180
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
 msgid "Go"
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:170
+#: src/jlm/core/ui/LessonChooser.java:210
 #, java-format
 msgid ""
 "<p>(unable to display the short description of this lesson: file {0} not "
 "found)</p>"
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:173
+#: src/jlm/core/ui/LessonChooser.java:213
 msgid "<p><b>Your score:</b> "
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:181
+#: src/jlm/core/ui/LessonChooser.java:221
 #, java-format
 msgid "{0} out of {1} exercises passed."
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:185
+#: src/jlm/core/ui/LessonChooser.java:225
 #, java-format
 msgid "{0} out of {1} exercises passed in {2}."
 msgstr ""
 
-#: src/jlm/core/ui/LessonChooser.java:191
+#: src/jlm/core/ui/LessonChooser.java:231
 msgid "You never attempted this lesson."
 msgstr ""
 
@@ -404,14 +410,6 @@ msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:157 src/jlm/core/ui/MainFrame.java:648
 msgid "Load lesson"
-msgstr ""
-
-#: src/jlm/core/ui/MainFrame.java:163
-msgid "JLM lesson files"
-msgstr ""
-
-#: src/jlm/core/ui/MainFrame.java:172
-msgid "Error"
 msgstr ""
 
 #: src/jlm/core/ui/MainFrame.java:179 src/jlm/core/ui/MainFrame.java:649
@@ -1092,32 +1090,32 @@ msgid ""
 "it in one move"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:118
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:116
 msgid "This is not a world of pancakes :-("
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:122
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
 msgid "The two worlds are of differing size"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:195
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:193
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:197
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:195
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:231
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:229
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:250
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:248
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
