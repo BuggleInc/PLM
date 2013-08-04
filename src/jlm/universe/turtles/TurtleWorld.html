@@ -8,79 +8,67 @@ up with a learning method called LOGO to teach programming to young
 childs. The world is full of turtles which leave a painting where they go
 and which respond to simple orders.</p>
 
-<h3>Moving</h3>
+<h2>Functions to move the turtle</h2>
 
-<pre class="Java">void forward(double steps)</pre>
-<pre class="Java">void backward(double stepAmount)</pre>
-<pre class="python">forward(steps)</pre>
-<pre class="python">backward(stepAmount)</pre>
-
+<pre class="Java">void forward(double steps)
+void backward(double steps)</pre>
+<pre class="python">forward(steps)
+backward(steps)</pre>
 Moves forward or backward of the requested amount of steps.
 
-<pre class="Java">void turnRight(double angle)</pre>
-<pre class="Java">void turnLeft(double angle)</pre>
-<pre class="python">turnRight(angle)</pre>
-<pre class="python">turnLeft(angle)</pre>
-
+<pre class="Java">void turnRight(double angle)
+void turnLeft(double angle)</pre>
+<pre class="python">turnRight(angle)
+turnLeft(angle)</pre>
 Turns left or right of the given angle (in degrees).
 
-<pre class="Java">double getX()</pre>
-<pre class="Java">double getY()</pre>
-<pre class="python">getX()</pre>
-<pre class="python">getY()</pre>
-
+<pre class="Java">double getX()
+double getY()</pre>
+<pre class="python">getX()
+getY()</pre>
 Returns the current position of the turtle.
 
-<pre class="Java">void setX(double x)</pre>
-<pre class="Java">void setY(double y)</pre>
-<pre class="Java">void setPos(double x, double y)</pre>
-<pre class="python">setX(x)</pre>
-<pre class="python">setY(y)</pre>
-<pre class="python">setPos(x,y)</pre>
-
+<pre class="Java">void setX(double x)
+void setY(double y)
+void setPos(double x, double y)</pre>
+<pre class="python">setX(x)
+setY(y)
+setPos(x,y)</pre>
 Teleports the turtle to a new position.
 
 <pre class="Java">double getHeading()</pre>
 <pre class="python">getHeading()</pre>
-
 Returns the current heading of the turtle (in degrees).
 
 <pre class="Java">void getHeading(double angle)</pre>
 <pre class="python">getHeading(angle)</pre>
-
 Sets a new heading to the turtle (in degrees).
 
-<h3>About the pen</h3>
+<h2>Functions about the pen</h2>
 
 <pre class="Java">void penUp()</pre>
 <pre class="python">penUp()</pre>
-
-Moves the pen up (turtles have pens, not brushes as buggles). The turtle will not leave a trace afterward.
+Moves the pen up (turtles have pens, not brushes as buggles). The
+turtle will not leave any trace during its subsequent moves.
 
 <pre class="Java">void penDown()</pre>
 <pre class="python">penDown()</pre>
-
-Moves the pen down. The turtle will now leave a trace.
+Moves the pen down. The turtle will leave a trace during its subsequent moves.
 
 <pre class="Java">boolean isPenDown()</pre>
 <pre class="python">isPenDown()</pre>
-
 Returns the current pen position as a boolean.
 
 <pre class="Java">Color getColor()</pre>
 <pre class="python">getColor()</pre>
-
 Returns the current pen color.
 
 <pre class="Java">void setColor(Color color)</pre>
 <pre class="python">getColor(color)</pre>
-
 Changes the pen color.
 
-<h3>Other</h3>
+<h2>Other functions</h2>
+
 <pre class="Java">boolean isSelected()</pre>
 <pre class="python">isSelected()</pre>
-
-Returns whether the current world is selected in the graphical
-interface.
-
+Returns whether the current turtle is selected in the graphical interface.

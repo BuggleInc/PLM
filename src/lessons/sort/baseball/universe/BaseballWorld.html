@@ -9,44 +9,38 @@ one while the base <code>1</code> is the fuscia one.</p>
 
 <h2>Functions to retrieve the world's dimensions</h2>
 
-<ul>
- <li>Retrieve the amount of bases on this field: 
-     <pre class="Java">int getBasesAmount()</pre>
-     <pre class="python">getBasesAmount()</pre></li>
+<pre class="Java">int getBasesAmount()</pre>
+<pre class="python">getBasesAmount()</pre>
+Returns the amount of bases on this field.
 
- <li>Retrieve the amount of player's positions per base on this field:
-     <pre class="Java">int getPositionsAmount()</pre>
-     <pre class="python">getPositionsAmount()</pre></li>
-</ul>
+<pre class="Java">int getPositionsAmount()</pre>
+<pre class="python">getPositionsAmount()</pre>
+Returns the amount of player's positions per base on this field:
 
 <h2>Functions to retrieve the world's state</h2>
-<ul>
- <li>Retrieve the base in which the hole is located:
-     <pre class="Java">int getHoleBase()</pre>
-     <pre class="python">getHoleBase()</pre></li>
 
- <li>Retrieve the hole position within its base:
-     <pre class="Java"> int getHolePosition()</pre>
-     <pre class="python">getHolePosition()</pre></li>
+<pre class="Java">int getHoleBase()</pre>
+<pre class="python">getHoleBase()</pre>
+Returns the base in which the hole is located.
 
- <li>Retrieve the color of the player at a given location:
-     <pre class="Java"> int getPlayerColor(int base, int position)</pre>
-     <pre class="python">getPlayerColor(base, position)</pre></li>
+<pre class="Java"> int getHolePosition()</pre>
+<pre class="python">getHolePosition()</pre>
+Returns the hole position within its base
 
- <li>Retrieve whether all players of the field are at home:
-     <pre class="Java">boolean isSorted()</pre>
-     <pre class="python">isSorted()</pre></li>  
+<pre class="Java"> int getPlayerColor(int base, int position)</pre>
+<pre class="python">getPlayerColor(base, position)</pre>
+Returns the color of the player at a given location.
+
+<pre class="Java">boolean isSorted()</pre>
+<pre class="python">isSorted()</pre>  
+Returns whether all players of the field are at home.
      
- <li>Retrieve whether all players of a given base are at home:
-     <pre class="Java">boolean isBaseSorted(int base)</pre>
-     <pre class="python">isBaseSorted(base)</pre></li>  
-</ul>
-
+<pre class="Java">boolean isBaseSorted(int base)</pre>
+<pre class="python">isBaseSorted(base)</pre>
+Returns whether all players of a given base are at home.
 
 <h2>Functions to change the world</h2>
 
-<ul>
- <li>Move a given player into the hole. This throws an IllegalArgumentException if the specified player is not near the hole (at most one base away).
-     <pre class="Java">void move(int base, int position)</pre>
-     <pre class="python">move(base, position)</pre></li>
-</ul>
+<pre class="Java">void move(int base, int position)</pre>
+<pre class="python">move(base, position)</pre>
+Moves a given player into the hole. This throws an IllegalArgumentException if the specified player is not near the hole (at most one base away).
