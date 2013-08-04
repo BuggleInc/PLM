@@ -1,3 +1,9 @@
+20130804:
+  * Remove the array world. It was not helping very much when compared
+    to the bat world.
+  * Use '' to get ' in translated strings to please MessageFormat.
+  * Pythonize the documentation of all universes
+  * add a button to lessonChooser to load lessons from disk
 20130730:
   * Pythonize new exercises
   * Retranslate everything back to 100% in French
@@ -14,14 +20,11 @@
   * Split hanoi towers and the turmites out in their own lessons
   * Remove the meta lesson. It was not done, seemed difficult to
     finish, and complicated the code of the universes. (Fix: #2)
-  * Remove the array world. It was not helping very much when compared
-    to the bat world.
-  * Use '' to get ' in translated strings to please MessageFormat.
 20130720:
   * Integrate the pancake exercises into the sorting lesson
   * New pancake exercise about implementing Gates' algorithm
   * 1 more exercise about the while loop: Moria
-  * 2 more exercises about the variables: Big Buggles's Race (1&2)
+  * 2 more exercises about variables: Big Buggles's Race (1&2)
   * 3 more exercises about the for loop: Stairs, Course and CourseForest
   * 1 more exercise about the do/while loop: Poucet
   * Better integrate the slug hunting exercises; add new one (on parameters)
@@ -32,7 +35,7 @@
     with an http POST request.
   * Properly select the current exercise in the lesson navigator
   * Save the currently used programming language in the property file
-  * Current exercise gets saved in zip files
+  * Current exercise gets saved in zip files and reselected when loading
   * Speeds initialization by directly building everything in the right
     locale instead of building it with no locale, and then updating it
   * Progress spys (twitter/identica) get controled through properties
