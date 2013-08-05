@@ -118,6 +118,9 @@ public class BuggleWorld extends GridWorld {
 	
 	public World readFromFile(String path, String classname, BuggleWorld res) throws IOException, BrokenWorldFileException {
 		String name;
+		if (path.endsWith(".map"))
+			System.err.println(Game.i18n.tr("{0}: The path to the map on disk should not include the .map extension (or it won''t work in jarfiles). Please fix your exercise.",path));
+		
 		BufferedReader reader = FileUtils.newFileReader(path, "map", false);
 		
 		/* Get the world name from the first line */
