@@ -57,6 +57,7 @@ public class ExerciseFailedDialog extends JDialog {
 		
 		
 		pack();
+		close.requestFocusInWindow();
 		setVisible(true);
 	}
 }
