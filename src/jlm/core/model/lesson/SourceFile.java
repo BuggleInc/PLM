@@ -15,15 +15,17 @@ public class SourceFile {
 	protected String name;
 	private String template;
 	private String body;
+	private int offset;
 	private ISourceFileListener listener = null;
 
 	public SourceFile(String name, String initialBody) {
-		this(name, initialBody, null);
+		this(name, initialBody, null,0);
 	}
 
-	public SourceFile(String name, String initialBody, String template) {
+	public SourceFile(String name, String initialBody, String template, int _offset) {
 		this.name = name;
 		this.body = initialBody;
+		this.offset = _offset;
 		setTemplate( template );
 	}
 
@@ -121,9 +123,6 @@ public class SourceFile {
 	}
 
 	public int getOffset() {
-		if (template != null) {
-			return template.split("\n").length -1;
-		}
-		return 0;
+		return offset;
 	}
 }

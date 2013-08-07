@@ -41,12 +41,16 @@ public abstract class ExerciseTemplated extends Exercise {
 			throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.",filename,lang.getExt()));			
 		}
 
-
-		/* Remove line comments since at some point, we put everything on one line only, 
-		 * so this would comment the end of the template and break everything */
-		Pattern lineCommentPattern = Pattern.compile("//.*$", Pattern.MULTILINE);
-		Matcher lineCommentMatcher = lineCommentPattern.matcher(sb.toString());
-		String content = lineCommentMatcher.replaceAll("");
+		String content;
+		if (lang.equals(Game.JAVA)) {
+			/* Remove line comments since at some point, we put everything on one line only, 
+			 * so this would comment the end of the template and break everything */
+			Pattern lineCommentPattern = Pattern.compile("//.*$", Pattern.MULTILINE);
+			Matcher lineCommentMatcher = lineCommentPattern.matcher(sb.toString());
+			content = lineCommentMatcher.replaceAll("");
+		} else {
+			content = sb.toString();
+		}
 
 		/* Extract the template, the initial content and the solution out of the file */
 		int state = 0;
@@ -67,8 +71,8 @@ public abstract class ExerciseTemplated extends Exercise {
 			//	System.out.println(state+"->"+line);
 			switch (state) {
 			case 0: /* initial content */
-				if (line.contains("public class ")) {
-					head.append(line.replaceAll("public class \\S*", "public class "+name));
+				if (line.contains("class ")) {
+					head.append(line.replaceAll("class \\S*", "class "+name));
 				} else if (line.contains("package")) {
 					head.append("$package \n");						
 				} else if (line.contains("BEGIN TEMPLATE")) {
@@ -162,7 +166,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
 		String headContent;
-		if (lang == Game.PYTHON) { 
+		if (lang == Game.PYTHON || lang == Game.SCALA) { 
 			skelContent = skel.toString();
 			headContent = head.toString();
 		} else {
@@ -171,6 +175,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}
 
 		String template = (headContent+"$body"+tail);
+		int offset = headContent.split("\n").length;
 		
 		/* Remove the unnecessary leading spaces from the initial content */
 		Pattern newLinePattern = Pattern.compile("\n",Pattern.MULTILINE);
@@ -205,8 +210,10 @@ public abstract class ExerciseTemplated extends Exercise {
 			}
 		}
 
-		/* remove any \n from template to not desynchronize line numbers between compiler and editor */ 
-		if (lang != Game.PYTHON) {
+		/* remove any \n from template to not desynchronize line numbers between compiler and editor 
+		 * Python: We should obviously not change blank signs in Python
+		 * Scala: no need since our compiler's front-end is aware of these offsets */ 
+		if (lang == Game.JAVA) {
 			Matcher newLineMatcher = newLinePattern.matcher(template);
 			template = newLineMatcher.replaceAll(" ");
 		}
@@ -238,7 +245,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}*/
 
 		newSource(lang, name, initialContent,
-						skelContent.length()>0?skelContent:template);
+						skelContent.length()>0?skelContent:template,offset);
 	}
 
 	protected final void setup(World w) {
@@ -275,7 +282,7 @@ public abstract class ExerciseTemplated extends Exercise {
 						System.out.println("Found suitable templating entity "+nameOfCorrectionEntity+" in "+lang);
 
 				} catch (NoSuchEntityException e) {
-					if (lang.equals(Game.PYTHON))
+					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
 						System.out.println("Cannnot find any suitable templating entity "+nameOfCorrectionEntity+" in "+lang+":\n  "+e);
 						
 					if (getProgLanguages().contains(lang)) 

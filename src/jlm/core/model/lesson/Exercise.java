@@ -17,6 +17,7 @@ import javax.tools.JavaFileObject;
 
 import jlm.core.InMemoryCompiler;
 import jlm.core.JLMCompilerException;
+import jlm.core.ScalaCompiler;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 import jlm.core.model.ProgrammingLanguage;
@@ -100,8 +101,7 @@ public abstract class Exercise extends Lecture {
 	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. 
 	//TODO: I tried to put it as static, but of course strange behaviors happen afterwards
 	// Create a compiler of classes (using java 1.6)
-	private final InMemoryCompiler compiler = new InMemoryCompiler(
-			getClass().getClassLoader(), Arrays.asList(new String[] { "-target", "1.6" }));
+	private final InMemoryCompiler compiler = new InMemoryCompiler(Arrays.asList(new String[] { "-target", "1.6" }));
 
 
 	/**
@@ -113,12 +113,12 @@ public abstract class Exercise extends Lecture {
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";");
 
-		/* Do the compile (but only if the current language is Java: scripts are not compiled of course)
+		/* Do the compile (but only if the current language is Java or Scala: scripts are not compiled of course)
 		 * Instead, scripting languages get the source code as text directly from the sourceFiles 
 		 */
 		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
 			/* Prepare the source files */
-			Map<String, CharSequence> sources = new TreeMap<String, CharSequence>();
+			Map<String, String> sources = new TreeMap<String, String>();
 			if (sourceFiles.get(Game.JAVA) != null)
 				for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
 					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
@@ -132,7 +132,7 @@ public abstract class Exercise extends Lecture {
 
 				out.log(errs);
 			} catch (JLMCompilerException e) {
-				System.err.println("Compilation error:");
+				System.err.println(Game.i18n.tr("Compilation error:"));
 				out.log(e.getDiagnostics());
 				lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
 
@@ -140,6 +140,21 @@ public abstract class Exercise extends Lecture {
 					for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
 						System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
 
+				throw e;
+			}
+		} else if (Game.getProgrammingLanguage().equals(Game.SCALA)) {
+			List<SourceFile> sfs = sourceFiles.get(Game.SCALA);
+			if (sfs == null || sfs.isEmpty())
+				return;
+			try {
+				ScalaCompiler.getInstance().reset();
+				for (SourceFile sf : sfs) 
+					ScalaCompiler.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns), sf.getOffset());
+			} catch (JLMCompilerException e) {
+				System.err.println(Game.i18n.tr("Compilation error:"));
+				out.log(e.getMessage());
+				lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+				
 				throw e;
 			}
 		}
@@ -168,11 +183,12 @@ public abstract class Exercise extends Lecture {
 		return getSourceFilesList(lang).get(i);
 	}
 
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template));
+	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset) {
+		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset));
 	}
 
 	protected void mutateEntities(Vector<World> worlds, String newClassName) {
+		ProgrammingLanguage lang = Game.getProgrammingLanguage();
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
 		String[] forbidden = new String[] {"'","\""};
 		for (String stringPattern : forbidden) {
@@ -188,11 +204,15 @@ public abstract class Exercise extends Lecture {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			for (Entity old : current.getEntities()) {
 				/* This is never called with lightbot entities, no need to deal with it here */
-				if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
+				if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA)) {
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
-						ent = (Entity) compiledClasses.get(className(newClassName)).newInstance();
+						if (lang.equals(Game.JAVA))
+							ent = (Entity) compiledClasses.get(className(newClassName)).newInstance();
+						else
+							ent = (Entity)ScalaCompiler.getInstance().findClass(className(newClassName)).newInstance();
+							
 					} catch (InstantiationException e) {
 						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
 					} catch (IllegalAccessException e) {
@@ -215,7 +235,6 @@ public abstract class Exercise extends Lecture {
 					 * Also, since the classloader don't cross our way, don't mess with package names to force reloads. In other words, don't use className() in here!! 
 					 */	
 					
-					ProgrammingLanguage lang = Game.getProgrammingLanguage();
 					boolean foundScript = false;
 					for (SourceFile sf : sourceFiles.get(lang)) {
 						if (newClassName.equals(sf.name)) {
@@ -233,7 +252,7 @@ public abstract class Exercise extends Lecture {
 					}
 				}
 			}
-			if (Game.getProgrammingLanguage().equals(Game.JAVA)) 
+			if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA)) 
 				current.setEntities(newEntities);
 		}
 	}

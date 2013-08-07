@@ -37,6 +37,8 @@ import javax.tools.ToolProvider;
 import javax.tools.JavaCompiler.CompilationTask;
 import javax.tools.JavaFileObject.Kind;
 
+import jlm.core.model.Game;
+
 
 /**
  * This class provides an adapted interface to the javax.tools compiler.
@@ -72,17 +74,15 @@ public class InMemoryCompiler {
 	/**
 	 * Construct a new instance which delegates to the named class loader.
 	 * 
-	 * @param loader
-	 *            the application ClassLoader. The compiler will look through to
-	 *            this class loader for dependent classes
 	 * @param options
 	 *            The compiler options (such as "-target" "1.5"). See the usage
 	 *            for javac
 	 * @throws IllegalStateException
 	 *             if the Java compiler cannot be loaded.
 	 */
-	public InMemoryCompiler(final ClassLoader loader, Iterable<String> options) {
-
+	public InMemoryCompiler(Iterable<String> options) {
+		final ClassLoader loader = getClass().getClassLoader();
+		
 		compiler = ToolProvider.getSystemJavaCompiler();
 		if (compiler == null) {
 			try {
@@ -213,14 +213,14 @@ public class InMemoryCompiler {
 	 *             if the generated class is not assignable to all the optional
 	 *             <var>types</var>.
 	 */
-	public synchronized Class<Object> compile(final String qualifiedClassName, final CharSequence javaSource,
+	public synchronized Class<Object> compile(final String qualifiedClassName, final String javaSource,
 			final DiagnosticCollector<JavaFileObject> diagnosticsList, final Class<?>... types)
 			throws JLMCompilerException, ClassCastException {
 		if (diagnosticsList != null)
 			diagnostics = diagnosticsList;
 		else
 			diagnostics = new DiagnosticCollector<JavaFileObject>();
-		Map<String, CharSequence> classes = new HashMap<String, CharSequence>(1);
+		Map<String, String> classes = new HashMap<String, String>(1);
 		classes.put(qualifiedClassName, javaSource);
 		Map<String, Class<Object>> compiled = compile(classes, diagnosticsList);
 		Class<Object> newClass = compiled.get(qualifiedClassName);
@@ -250,7 +250,7 @@ public class InMemoryCompiler {
 	 * @throws CharSequenceCompilerException
 	 *             if the source cannot be compiled
 	 */
-	public synchronized Map<String, Class<Object>> compile(final Map<String, CharSequence> classes,
+	public synchronized Map<String, Class<Object>> compile(final Map<String, String> classes,
 			final DiagnosticCollector<JavaFileObject> diagnosticsList) throws JLMCompilerException {
 
 		if (diagnosticsList != null)
@@ -259,9 +259,9 @@ public class InMemoryCompiler {
 			diagnostics = new DiagnosticCollector<JavaFileObject>();
 
 		List<JavaFileObject> sources = new ArrayList<JavaFileObject>();
-		for (Entry<String, CharSequence> entry : classes.entrySet()) {
+		for (Entry<String, String> entry : classes.entrySet()) {
 			String qualifiedClassName = entry.getKey();
-			CharSequence javaSource = entry.getValue();
+			String javaSource = entry.getValue();
 			if (javaSource != null) {
 				final int dotPos = qualifiedClassName.lastIndexOf('.');
 				final String className = dotPos == -1 ? qualifiedClassName : qualifiedClassName.substring(dotPos + 1);
@@ -286,7 +286,7 @@ public class InMemoryCompiler {
 			 //for (String n:classes.keySet()) 
 			 // System.out.println("File "+n+":\n"+classes.get(n));
 			 
-			throw new JLMCompilerException("Compilation failed.", classes.keySet(), diagnostics);
+			throw new JLMCompilerException(Game.i18n.tr("Compilation failed."), classes.keySet(), diagnostics);
 		}
 		try {
 			// For each class name in the input map, get its compiled
@@ -534,7 +534,7 @@ final class JavaFileObjectImpl extends SimpleJavaFileObject {
 	 * @param source
 	 *            the source code
 	 */
-	JavaFileObjectImpl(final String baseName, final CharSequence source) {
+	JavaFileObjectImpl(final String baseName, final String source) {
 		super(InMemoryCompiler.toURI(baseName + InMemoryCompiler.JAVA_EXTENSION), Kind.SOURCE);
 		this.source = source;
 	}

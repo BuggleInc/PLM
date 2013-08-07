@@ -170,8 +170,8 @@ public abstract class Entity {
 	 */
 	public void runIt(ExecutionProgress progress) {
 		ProgrammingLanguage progLang = Game.getProgrammingLanguage();
-		ScriptEngine engine ;
-		if (progLang.equals(Game.JAVA)||progLang.equals(Game.LIGHTBOT)) {
+		ScriptEngine engine = null;
+		if (progLang.equals(Game.JAVA)||progLang.equals(Game.SCALA)||progLang.equals(Game.LIGHTBOT)) {
 			try {
 				run();
 			} catch (Exception e) {
@@ -184,48 +184,49 @@ public abstract class Entity {
 			}
 		} else {
 			try {
-				/* We could try to optimize here by not starting one engine for each entity but only one per language, in which the entities would be in separate contexts. 
-				 * On the other hand, the garbage collection would be harder this way and it works as is... */
 				ScriptEngineManager manager = new ScriptEngineManager();       
 				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
-				if (engine==null) 
-					throw new RuntimeException(Game.i18n.tr("Failed to start an interpreter for {0}",progLang.getLang().toLowerCase()));
+				if (engine==null)
+					throw new RuntimeException(Game.i18n.tr("Failed to start an interpreter for {0}",progLang.getLang()));
 
 				/* Inject the entity into the scripting world so that it can forward script commands to the world */
 				engine.put("entity", this);
+				
+				
 				/* Inject commands' wrappers that forward the calls to the entity */
 				this.getWorld().setupBindings(progLang,engine);
 
+				/* getParam is in every Entity, so put it here to not request the universe to call super.setupBinding() */
 				if (progLang.equals(Game.PYTHON)) 
 					engine.eval(
-							/* getParam is in every Entity, so put it here to not request the universe to call super.setupBinding() */
 							"def getParam(i):\n"+
 							"  return entity.getParam(i)\n" +
 							"def isSelected():\n" +
-							"  return entity.isSelected()\n");									
-
+							"  return entity.isSelected()\n");		
 
 				String script = getScript(progLang);
 
 				if (Game.getInstance().isDebugEnabled())
 					System.err.println("Here is the script >>>>"+script+"<<<<");
-
-				if (script == null) 
+				if (script == null) { 
 					System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against JLM.",progLang,this));
-				else {
+					return;
+				}
+				if (progLang.equals(Game.PYTHON)) {
 					/* that's not really clean to get the output working when we 
 					 * redirect to the graphical console, but it works. */
 					setScriptOffset(progLang, getScriptOffset(progLang)+7);
-					engine.eval(
-							"import sys;\n" +
-									"import java.lang;\n" +
-									"class JLMOut:\n" +
-									"  def write(obj,msg):\n" +
-									"    java.lang.System.out.print(str(msg))\n" +
-									"sys.stdout = JLMOut()\n"+
-									"sys.stderr = JLMOut()\n"+
-									script);
+					script= "import sys;\n" +
+							"import java.lang;\n" +
+							"class JLMOut:\n" +
+							"  def write(obj,msg):\n" +
+							"    java.lang.System.out.print(str(msg))\n" +
+							"sys.stdout = JLMOut()\n" +
+							"sys.stderr = JLMOut()\n" +
+							script;
 				}
+				engine.eval(script);
+				
 			} catch (ScriptException e) {
 				if (e.getCause() instanceof PyException) { // This seem to be all exceptions raised by python
 					PyException cause = (PyException) e.getCause();
@@ -291,6 +292,9 @@ public abstract class Entity {
 					}
 
 					progress.setCompilationError(msg.toString());
+				} else {
+					System.err.println("Script exception that does not come from python: "+e);
+					e.printStackTrace();
 				}
 			} catch (Exception e) {
 				String msg = Game.i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+

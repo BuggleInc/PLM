@@ -47,10 +47,10 @@ public class JLMCompilerException extends Exception {
 	   }
 
 	   private void setClassNames(Set<String> qualifiedClassNames) {
-	      // create a new HashSet because the set passed in may not
-	      // be Serializable. For example, Map.keySet() returns a non-Serializable
-	      // set.
-	      classNames = new HashSet<String>(qualifiedClassNames);
+	      // Creates a new HashSet because the set passed in may not be Serializable.
+	      // For example, Map.keySet() returns a non-Serializable set.
+		   if (qualifiedClassNames != null)
+			   classNames = new HashSet<String>(qualifiedClassNames);
 	   }
 
 	   private void setDiagnostics(DiagnosticCollector<JavaFileObject> diagnostics) {

@@ -49,7 +49,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		if (isSetup)
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template");
 		
-		newSource(pl, entName, initialCode, "$body");
+		newSource(pl, entName, initialCode, "$body",0);
 		corrections.put(pl, initialCode+correction);
 		addProgLanguage(pl);
 	}
