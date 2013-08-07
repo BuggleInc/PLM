@@ -77,9 +77,9 @@ public class BDR2Entity extends SimpleBuggle {
 		}
 
 		switch (read) {
-		case 'R': turnRight(); forward(); break;
-		case 'L': turnLeft();  forward(); break;
-		case 'I': turnBack();  forward(); break;
+		case 'R': right(); forward(); break;
+		case 'L': left();  forward(); break;
+		case 'I': back();  forward(); break;
 
 		case 'A': forward(1); break;
 		case 'B': forward(2); break;

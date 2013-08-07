@@ -8,33 +8,33 @@ public class BasicsDrawGEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		/* BEGIN TEMPLATE */
 		/* BEGIN SOLUTION */
 		brushDown();
-		turnLeft();
+		left();
 		forward();
 		forward();
 		forward();
 		forward();
-		turnLeft();
+		left();
 		forward();
 		forward();
 		forward();
 		forward();
-		turnLeft();
+		left();
 		forward();
 		forward();
 		forward();
 		forward();
-		turnLeft();
+		left();
 		forward();
 		forward();
-		turnLeft();
+		left();
 		forward();
 		/* back home */
 		brushUp();
-		turnRight();
+		right();
 		forward(2);
-		turnRight();
+		right();
 		forward();
-		turnLeft();
+		left();
 		/* END SOLUTION */
 		/* END TEMPLATE */
 	}

@@ -20,7 +20,7 @@ public class SlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				forward();
 				brushUp();
 			} else {
-				turnLeft();
+				left();
 			}
 		}
 		pickupBaggle();

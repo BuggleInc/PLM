@@ -19,17 +19,17 @@ public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle
 		mark();
 
 		forward();
-		turnLeft();
+		left();
 		forward();
 		mark();
 
 		backward();
-		turnRight();
+		right();
 		forward();
 		mark();
 
 		forward();
-		turnLeft();
+		left();
 	}
 
 	void makePattern() {
@@ -47,9 +47,9 @@ public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle
 	}
 
 	void nextLine() {
-		turnLeft();
+		left();
 		forward(5);
-		turnRight();	
+		right();	
 	}
 
 	public void run() {

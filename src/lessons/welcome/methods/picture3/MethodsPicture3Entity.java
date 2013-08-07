@@ -21,17 +21,17 @@ public class MethodsPicture3Entity extends SimpleBuggle {
 		mark();
 
 		forward();
-		turnLeft();
+		left();
 		forward();
 		mark();
 
 		backward();
-		turnRight();
+		right();
 		forward();
 		mark();
 
 		forward();
-		turnLeft();
+		left();
 	}
 
 	void makePattern() {
@@ -49,9 +49,9 @@ public class MethodsPicture3Entity extends SimpleBuggle {
 	}
 
 	void nextLine() {
-		turnLeft();
+		left();
 		forward(5);
-		turnRight();	
+		right();	
 	}
 
 	public void run() {

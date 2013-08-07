@@ -40,14 +40,14 @@ public class LoopStairsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		forward();
 		forward();
 		forward();
-		turnLeft();
+		left();
 		for (int i = 0; i<8;i++) { 
 			forward();
-			turnRight();
+			right();
 			forward();
-			turnLeft();
+			left();
 		}
-		turnRight();
+		right();
 		forward();
 		forward();
 		forward();

@@ -31,7 +31,7 @@ public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				while ( !isFacingWall() )
 					forward();
 				
-				this.turnRight(); // make sure that we have a left wall
+				this.right(); // make sure that we have a left wall
 				state = 1; // time to enter the Left Follower mode
 				break;
 			case 1: // Left Follower Mode
@@ -48,9 +48,9 @@ public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		while ( ! isFacingWall() )
 		{
 			forward();
-			turnLeft();
+			left();
 		}
-		turnRight();
+		right();
 	}
 
 	Direction chosenDirection = Direction.NORTH;

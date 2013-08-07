@@ -18,9 +18,9 @@ public class MethodsReturningEntity extends jlm.universe.bugglequest.SimpleBuggl
 		for (int i=0; i<7; i++) {
 			if (haveBaggle()) 
 				return;
-			turnRight();
+			right();
 			forward();
-			turnLeft();
+			left();
 		}
 	}
 	/* BEGIN TEMPLATE */

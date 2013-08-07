@@ -11,11 +11,11 @@ public class TreeEntity extends Turtle {
 			/* do nothing */
 		} else {
 			forward(length);
-			turnRight(angle);	         
+			right(angle);	         
 			tree(steps-1, length*shrink, angle, shrink);
-			turnLeft(2*angle);	         
+			left(2*angle);	         
 			tree(steps-1, length*shrink, angle, shrink);
-			turnRight(angle);	         
+			right(angle);	         
 			backward(length);
 		}
 		/* END SOLUTION */	

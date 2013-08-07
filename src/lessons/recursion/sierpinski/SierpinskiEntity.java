@@ -8,11 +8,11 @@ public class SierpinskiEntity extends jlm.universe.turtles.Turtle {
 		if (level >= 0) {
 			for (int i = 0; i < 3; i++) {
 				forward(length / 2.);
-				turnRight(360. / 3.);
+				right(360. / 3.);
 				sierpinski(level-1, length / 2.);
-				turnLeft(360. / 3.);
+				left(360. / 3.);
 				forward(length / 2.);
-				turnRight(360. / 3.);
+				right(360. / 3.);
 			}
 		}
 		/* END SOLUTION */

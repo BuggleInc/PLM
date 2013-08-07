@@ -38,9 +38,9 @@ public class ArrayEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 		/* duplicate the pattern */
 		for (int i=1; i<getWorldWidth();i++) {
-			turnLeft();
+			left();
 			forward();
-			turnRight();
+			right();
 			forward();
 			makeLine(colors);
 		}

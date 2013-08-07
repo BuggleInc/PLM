@@ -83,7 +83,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		lButton = new JButton(i18n.tr("turn left"));
 		lButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				((AbstractBuggle)Game.getInstance().getSelectedEntity()).turnLeft();
+				((AbstractBuggle)Game.getInstance().getSelectedEntity()).left();
 			}
 		});
 		lButton.setMnemonic(KeyEvent.VK_LEFT);
@@ -91,7 +91,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		rButton = new JButton(i18n.tr("turn right"));
 		rButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				((AbstractBuggle)Game.getInstance().getSelectedEntity()).turnRight();
+				((AbstractBuggle)Game.getInstance().getSelectedEntity()).right();
 			}
 		});
 		rButton.setMnemonic(KeyEvent.VK_RIGHT);

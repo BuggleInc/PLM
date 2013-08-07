@@ -31,9 +31,9 @@ public class TurmiteCreatorEntity extends jlm.universe.bugglequest.SimpleBuggle 
 		switch (rule[state][currentColor][NEXT_MOVE]) {
 		case STOP:   /* nothing */;            break;
 		case NOTURN: /* no turn */; forward(); break;
-		case LEFT:   turnLeft();   	forward(); break;
-		case RIGHT:  turnRight();   forward(); break;
-		case BACK:   turnBack();    forward(); break;
+		case LEFT:   left();   	forward(); break;
+		case RIGHT:  right();   forward(); break;
+		case BACK:   back();    forward(); break;
 		default:
 			System.out.println("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
 		}

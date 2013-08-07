@@ -38,17 +38,17 @@ public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 
 		while (!isFacingWall()) {
 			forward();
-			turnLeft(); // change to turnRight to get a right follower
+			left(); // change to turnRight to get a right follower
 		}
-		turnRight(); // change to turnLeft to get a right follower
+		right(); // change to turnLeft to get a right follower
 	}
 
 	public void run() {
 		// Make sure we have a wall to the left
-		turnLeft();
+		left();
 		while (!isFacingWall())
 			forward();
-		turnRight();
+		right();
 
 		while (!isOverBaggle())
 			stepHandOnWall();

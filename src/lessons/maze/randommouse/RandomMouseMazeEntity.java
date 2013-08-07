@@ -32,10 +32,10 @@ public class RandomMouseMazeEntity extends jlm.universe.bugglequest.SimpleBuggle
 				}
 				break;
 			case 1:
-				turnLeft();
+				left();
 				break;
 			case 2:
-				turnRight();
+				right();
 				break;
 			}
 		}

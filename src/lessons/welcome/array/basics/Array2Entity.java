@@ -42,9 +42,9 @@ public class Array2Entity extends SimpleBuggle {
 
 		/* Duplicate the pattern */
 		for (int i=1; i<getWorldWidth();i++) {
-			turnLeft();
+			left();
 			forward();
-			turnRight();
+			right();
 			makeLine(colors);
 		}
 	}

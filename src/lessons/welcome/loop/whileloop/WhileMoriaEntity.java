@@ -17,24 +17,24 @@ public class WhileMoriaEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	public void run() { 
 		/* BEGIN SOLUTION */
-		turnBack();
+		back();
 		while (!isFacingWall()) {
 			while (!isOverBaggle() && !isFacingWall())
 				forward();
 			if (isOverBaggle()) {
 				pickupBaggle();
-				turnBack();
+				back();
 				while (!isOverBaggle())
 					forward();
 				backward();
 				dropBaggle();
-				turnBack();
+				back();
 				forward();
 			}
 		}
-		turnRight();
+		right();
 		forward();
-		turnLeft();
+		left();
 		forward();
 		/* END SOLUTION */
 	}

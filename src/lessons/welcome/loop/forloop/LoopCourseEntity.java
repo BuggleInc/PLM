@@ -42,7 +42,7 @@ public class LoopCourseEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			for (int side=0;side<4;side++){
 				for (int step=0;step<8;step++)
 					forward();
-				turnLeft();
+				left();
 			}
 		/* END SOLUTION */
 	}

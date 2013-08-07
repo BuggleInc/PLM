@@ -20,17 +20,17 @@ public class MethodsPictureEntity extends SimpleBuggle {
 		mark();
 
 		forward();
-		turnLeft();
+		left();
 		forward();
 		mark();
 
 		backward();
-		turnRight();
+		right();
 		forward();
 		mark();
 
 		forward();
-		turnLeft();
+		left();
 	}
 
 

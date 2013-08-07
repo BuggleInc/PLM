@@ -21,16 +21,16 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 		forward();
 		mark();
 
-		turnLeft();
+		left();
 		forward();
 
-		turnLeft();
+		left();
 		forward();
 		mark();
 
-		turnLeft();
+		left();
 		forward();
-		turnLeft();
+		left();
 	}
 
 	void squareB(Color c) {
@@ -39,16 +39,16 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 
 		forward();
 
-		turnLeft();
+		left();
 		forward();
 		mark();
 
-		turnLeft();
+		left();
 		forward();
 
-		turnLeft();
+		left();
 		forward();
-		turnLeft();
+		left();
 	}
 
 	void bigSquare() {
@@ -56,17 +56,17 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 		forward(2);
 		squareB(Color.BLUE);
 		backward(2);
-		turnLeft();
+		left();
 		forward(2);
-		turnRight();
+		right();
 		squareB(Color.YELLOW);
 		forward(2);
 		squareA(Color.GREEN);
 
 		backward(2);
-		turnLeft();
+		left();
 		backward(2);
-		turnRight();
+		right();
 	}
 
 	public void run() {
@@ -75,9 +75,9 @@ public class MethodsPicture4Entity extends SimpleBuggle {
 		bigSquare();
 
 		backward(4);
-		turnLeft();
+		left();
 		forward(4);
-		turnRight();
+		right();
 
 		bigSquare(); 
 		forward(4);

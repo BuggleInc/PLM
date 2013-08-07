@@ -61,17 +61,17 @@ public class TraversalByColumnEntity extends SimpleBuggle {
 			throw new RuntimeException("backward(int step) forbidden in this exercise");
 	}
 	@Override
-	public void turnLeft()  {
+	public void left()  {
 		if (isInited())
 			throw new RuntimeException("turnLeft() forbidden in this exercise");
 	}
 	@Override
-	public void turnRight()  {
+	public void right()  {
 		if (isInited())
 			throw new RuntimeException("turnRight() forbidden in this exercise");
 	}
 	@Override
-	public void turnBack()  {
+	public void back()  {
 		if (isInited())
 			throw new RuntimeException("turnBack() forbidden in this exercise");
 	}

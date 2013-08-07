@@ -16,11 +16,11 @@ public class BDREntity extends jlm.universe.bugglequest.SimpleBuggle {
 			char c = getIndication();
 
 			if (c == 'R') { 
-				turnRight(); forward();
+				right(); forward();
 			} else if (c == 'L') {
-				turnLeft(); forward();
+				left(); forward();
 			} else if (c == 'I') {
-				turnBack(); forward(); 
+				back(); forward(); 
 			} else if (c == 'A')
 				forward();
 			else if (c == 'B')

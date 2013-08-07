@@ -7,12 +7,12 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 	private int line = -1;
 
 	@Override
-	public void turnRight() {
+	public void right() {
 		throw new RuntimeException("turnRight() forbidden in this exercise.");
 	}
 
 	@Override
-	public void turnLeft() {
+	public void left() {
 		for (StackTraceElement s : Thread.currentThread().getStackTrace()) {
 			if (s.getMethodName().contains("turnLeft")) {
 				if (line != -1 && line != s.getLineNumber()) {
@@ -20,7 +20,7 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 					throw new RuntimeException("Forbiden to use turnLeft() more than once in this exercise.");
 				} else {
 					line = s.getLineNumber();
-					super.turnLeft();
+					super.left();
 				}
 			}
 
@@ -32,7 +32,7 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 		for (int i=0;i<4;i++) {
 			forward();
 			forward();
-			turnLeft();
+			left();
 		}
 	}
 	/* END SOLUTION */
@@ -51,7 +51,7 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 		brushUp();
 
 		forward(2);
-		turnLeft();
+		left();
 		forward(4);
 
 		brushDown();
@@ -59,7 +59,7 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 		brushUp();
 
 		forward(2);
-		turnLeft();
+		left();
 		forward(4);
 
 		brushDown();

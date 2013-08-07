@@ -36,7 +36,7 @@ public class PledgeMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 				while ( !isFacingWall() )
 					forward();
 				
-				turnRight(); // make sure that we have a left wall
+				right(); // make sure that we have a left wall
 				angleSum--;
 				state = 1; // time to enter the Left Follower mode
 				break;
@@ -57,10 +57,10 @@ public class PledgeMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		while ( ! isFacingWall() )
 		{
 			forward();
-			turnLeft();
+			left();
 			this.angleSum++;
 		}
-		turnRight();
+		right();
 		this.angleSum--;
 	}
 

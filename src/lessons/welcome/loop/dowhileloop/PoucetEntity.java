@@ -34,9 +34,9 @@ public class PoucetEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			} while (! crossing());
 			
 			if (seen>2)
-				turnLeft();
+				left();
 			else
-				turnRight();
+				right();
 		}
 		forward();
 		/* END SOLUTION */

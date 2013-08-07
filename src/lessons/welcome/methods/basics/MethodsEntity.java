@@ -33,9 +33,9 @@ public class MethodsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	public void run() { 
 		for (int i=0; i<7; i++) {
 			goAndGet();
-			turnRight();
+			right();
 			forward();
-			turnLeft();
+			left();
 		}
 	} 
 }

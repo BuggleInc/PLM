@@ -9,7 +9,7 @@ public class LangtonEntity extends SimpleBuggle {
 	public void step() {
 		/* BEGIN SOLUTION */
 		if (getGroundColor().equals(Color.white)) {
-			turnRight();
+			right();
 
 			setBrushColor(Color.black);
 			brushDown();
@@ -17,7 +17,7 @@ public class LangtonEntity extends SimpleBuggle {
 
 			forward();
 		} else {
-			turnLeft();
+			left();
 
 			setBrushColor(Color.white);
 			brushDown();

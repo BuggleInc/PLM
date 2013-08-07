@@ -11,13 +11,13 @@ public class BasicsEntity extends SimpleBuggle {
 		brushDown();
 		for (int i=0;i<4;i++) {
 			forward(2);
-			turnRight();
+			right();
 		}
 		brushUp();
 		forward();
-		turnRight();
+		right();
 		forward();
-		turnLeft();
+		left();
 		/* END SOLUTION */
 		/* END TEMPLATE */
 	}

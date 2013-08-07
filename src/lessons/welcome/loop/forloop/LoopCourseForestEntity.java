@@ -52,19 +52,19 @@ public class LoopCourseForestEntity extends jlm.universe.bugglequest.SimpleBuggl
 			for (int side=0;side<4;side++){
 				for (int step=0;step<4;step++)
 					forward();
-				turnLeft();
+				left();
 				for (int step=0;step<2;step++)
 					forward();
-				turnRight();
+				right();
 				for (int step=0;step<4;step++)
 					forward();
-				turnRight();
+				right();
 				forward();
 				forward();
-				turnLeft();
+				left();
 				for (int step=0;step<4;step++)
 					forward();
-				turnLeft();
+				left();
 			}
 		/* END SOLUTION */
 	}

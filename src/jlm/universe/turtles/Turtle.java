@@ -206,11 +206,11 @@ public class Turtle extends Entity {
 		stepUI();
 	}
 
-	public void turnLeft(double angle) {
+	public void left(double angle) {
 		setHeadingRadian(heading - fromAngularUnit(angle));
 	}
 
-	public void turnRight(double angle) {
+	public void right(double angle) {
 		setHeadingRadian(heading + fromAngularUnit(angle));
 	}
 
@@ -311,11 +311,11 @@ public class Turtle extends Entity {
 	}
 
 	public void turnLeft(int a) {
-		turnLeft((double) a);
+		left((double) a);
 	}
 
 	public void turnRight(int a) {
-		turnRight((double) a);
+		right((double) a);
 	}
 
 	public void setHeading(int heading) {

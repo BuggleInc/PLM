@@ -11,23 +11,23 @@ public class SnakeEntity extends SimpleBuggle {
 			return false;
 
 		boolean res = false;
-		turnLeft();
+		left();
 		if (isFacingWall()) 
 			res = true;
-		turnRight();		
+		right();		
 		return res;
 	}
 
 	void snakeStep() {
 		if (isFacingWall()) {
 			if (getDirection() == Direction.EAST) {
-				turnLeft();
+				left();
 				forward();
-				turnLeft();
+				left();
 			} else {
-				turnRight();
+				right();
 				forward();
-				turnRight();
+				right();
 			}
 		} else {
 			forward();

@@ -15,8 +15,8 @@ public class LangtonColorsEntity extends SimpleBuggle {
 		for (int i=0;i<colors.length;i++) {
 			if (current.equals(colors[i])) {
 				switch (rule[i]) {
-				case 'L': turnLeft(); break;
-				case 'R': turnRight(); break;
+				case 'L': left(); break;
+				case 'R': right(); break;
 				default:
 					System.out.println("Unknown command associated to i="+i+": "+rule[i]);
 				}

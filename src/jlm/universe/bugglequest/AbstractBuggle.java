@@ -137,17 +137,17 @@ public abstract class AbstractBuggle extends Entity {
 		}
 	}
 
-	public void turnLeft() {
+	public void left() {
 		if (k_seq[k_val]==2) k_val++; else k_val = 0;
 		setDirection(direction.left());
 	}
 
-	public void turnRight() {
+	public void right() {
 		if (k_seq[k_val]==3) k_val++; else k_val = 0;
 		setDirection(direction.right());
 	}
 
-	public void turnBack() {
+	public void back() {
 		setDirection(direction.opposite());
 	}
 	
