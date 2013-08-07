@@ -1,37 +1,33 @@
 <h2>Algorithme basique de recherche du plus court chemin</h2>
 
 <p>Pour conclure avec cette leçon d'introduction aux algorithmes de sortie de
-labyrinthe, nous allons étudier un autre moyen de trouver la sortie. Le
+labyrinthe, nous allons étudier un autre moyen de trouver la sortie. La
 buggle de cette leçon est spécial : c'est un jedi. Il peut ressentir la
-Force. Cela signifie qu'il peut ressentir son environnement.</p>
+Force. Cela signifie qu'elle peut ressentir son environnement.</p>
 
-<p>Sans même changer de place, il peut retrouver des informations sur le monde
-qui l'entoure, avec les instructions suivantes&nbsp;:</p>
+<p>Sans même changer de place, elle peut retrouver des informations sur le
+monde qui l'entoure, avec les instructions suivantes&nbsp;:</p>
 <ul>
   <li><code>getWorldWidth()</code> pour connaitre la largeur du monde</li>
   <li><code>getWorldHeight()</code> pour connaitre la hauteur du monde.</li>
   <li><code>hasTopWall(x,y)</code> indique si la cellule (x,y) de ce monde est
-fermée
-par un mur en haut.</li>
+fermée par un mur en haut.</li>
   <li><code>hasLeftWall(x,y)</code> indique si la cellule (x,y) de ce monde est
-fermée
-par un mur à gauche.</li>
+fermée par un mur à gauche.</li>
   <li><code>hasBaggle(x,y)</code> indique si un baggle se trouve dans la cellule
 (x,y) de ce monde.</li>
   <li><code>setIndication(x,y,i)</code> ajoute une indication entière
-<code>i</code>
-sur le sol de la cellule (x,y).</li>  
+<code>i</code> sur le sol de la cellule (x,y).</li>  
   <li><code>getIndication(x,y,i)</code> retourne l'indication entière qui se
-trouve
-dans la cellule (x,y) (ou bien la valeur 9999 s'il n'y a pas d'indication à
-l'endroit indiqué).</li>  
+trouve dans la cellule (x,y) (ou bien la valeur 9999 s'il n'y a pas
+d'indication à l'endroit indiqué).</li>  
 </ul>
 
 <p>Il est bon de noter qu'il n'est pas possible de construire un mur sur la
-côté inférieur ou droit d'une case.Néanmoins, quand de tels murs existents,
+côté inférieur ou droit d'une case. Néanmoins, quand de tels murs existent,
 cela signifie qu'il a été construit sur une case voisine -- comme mur
-supérieur ( respectivement gauche ) sur la case qui est située en dessous (
-respectivement sur la droite ) de la case courante.</p>
+supérieur (respectivement gauche) sur la case qui est située en dessous
+(respectivement sur à droite) de la case courante.</p>
 
 <h3>Objectif de cet exercice</h3>
 
@@ -44,17 +40,14 @@ atteindre une case marquée 1, puis faites de même pour toutes les cases
 jusqu'à numéroter la case où se trouve votre buggle.</p>
 
 <p>Une fois que toutes les cases sont marquées, faites en sorte que votre
-buggle
-jedi trouve le plus court chemin en suivant les indications écrites au
-sol. Pour
-celà, il lui suffit à chaque pas d'aller sur la case de plus petite distance
-parmis celles accessibles. Vous pouvez utiliser la méthode <code>void
-setDirection(Direction d)</code> pour faire regarder votre buggle dans une
-direction spécifique comme <code>Direction.NORTH</code>,
+buggle jedi trouve le plus court chemin en suivant les indications écrites
+au sol. Pour celà, il lui suffit à chaque pas d'aller sur la case de plus
+petite distance parmis celles accessibles. Vous pouvez utiliser la méthode
+<code>void setDirection(Direction d)</code> pour faire regarder votre buggle
+dans une direction spécifique comme <code>Direction.NORTH</code>,
 <code>Direction.SOUTH</code>, <code>Direction.EAST</code> ou
 <code>Direction.WEST</code>, qui correspondent respectivement au nord, sud,
-est
-et ouest.</p>
+est et ouest.</p>
 
 <div class="tip" id="tip-1" alt="Je suis perdu, je voudrais plus d'indications">
 Utilises la Force Luke !
