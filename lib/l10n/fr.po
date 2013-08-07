@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-04 11:21+0300\n"
+"POT-Creation-Date: 2013-08-08 01:40+0300\n"
 "PO-Revision-Date: 2013-08-04 11:27+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -459,7 +459,7 @@ msgstr "une écriture"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/sort/SortingWorld.html:36
-#: src/jlm/universe/turtles/TurtleWorld.html:72
+#: src/jlm/universe/turtles/TurtleWorld.html:76
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:25
@@ -469,7 +469,7 @@ msgstr "boolean isSelected()"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/sort/SortingWorld.html:37
-#: src/jlm/universe/turtles/TurtleWorld.html:73
+#: src/jlm/universe/turtles/TurtleWorld.html:77
 #: src/jlm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:26
@@ -686,105 +686,134 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:37
-msgid "Teleports the turtle to a new position."
+#, fuzzy
+#| msgid "Teleports the turtle to a new position."
+msgid "Teleports the turtle to a new position (without leaving any trace)."
 msgstr "Téléporte la tortue à une nouvelle position."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:39
 #, no-wrap
+msgid "void moveTo(double x, double y)"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/jlm/universe/turtles/TurtleWorld.html:40
+#, fuzzy, no-wrap
+#| msgid "setPos(x,y)"
+msgid "moveTo(x,y)"
+msgstr "setPos(x,y)"
+
+#. type: Content of: outside any tag (error?)
+#: src/jlm/universe/turtles/TurtleWorld.html:41
+#, fuzzy
+#| msgid "Teleports the turtle to a new position."
+msgid "Moves the turtle to a new position."
+msgstr "Téléporte la tortue à une nouvelle position."
+
+#. type: Content of: <pre>
+#: src/jlm/universe/turtles/TurtleWorld.html:43
+#, no-wrap
 msgid "double getHeading()"
 msgstr "double getHeading()"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:40
+#: src/jlm/universe/turtles/TurtleWorld.html:44
 #, no-wrap
 msgid "getHeading()"
 msgstr "getHeading()"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:41
+#: src/jlm/universe/turtles/TurtleWorld.html:45
 msgid "Returns the current heading of the turtle (in degrees)."
 msgstr "Retourne le cap actuel de la tortue (en degrés)."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:43
-#, no-wrap
-msgid "void getHeading(double angle)"
+#: src/jlm/universe/turtles/TurtleWorld.html:47
+#, fuzzy, no-wrap
+#| msgid "void getHeading(double angle)"
+msgid "void setHeading(double angle)"
 msgstr "void getHeading(double angle)"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:44
-#, no-wrap
-msgid "getHeading(angle)"
+#: src/jlm/universe/turtles/TurtleWorld.html:48
+#, fuzzy, no-wrap
+#| msgid "getHeading(angle)"
+msgid "setHeading(angle)"
 msgstr "getHeading(angle)"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:45
+#: src/jlm/universe/turtles/TurtleWorld.html:49
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr "Change le cap de la tortue à l'angle indiqué (en degrés)."
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:47
+#: src/jlm/universe/turtles/TurtleWorld.html:51
 msgid "Functions about the pen"
 msgstr "Fonctions à propos du stylo"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:49
+#: src/jlm/universe/turtles/TurtleWorld.html:53
 #, no-wrap
 msgid "void penUp()"
 msgstr "void penUp()"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:50
+#: src/jlm/universe/turtles/TurtleWorld.html:54
 #, no-wrap
 msgid "penUp()"
 msgstr "penUp()"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:51
+#: src/jlm/universe/turtles/TurtleWorld.html:55
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
-msgstr "Remonte le stylo de la tortue (les tortues ont des stylos, pas des brosses comme les buggles). La tortue ne laissera plus de trace lors de ses déplacements suivants."
+msgstr ""
+"Remonte le stylo de la tortue (les tortues ont des stylos, pas des brosses "
+"comme les buggles). La tortue ne laissera plus de trace lors de ses "
+"déplacements suivants."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:54
+#: src/jlm/universe/turtles/TurtleWorld.html:58
 #, no-wrap
 msgid "void penDown()"
 msgstr "void penDown()"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:55
+#: src/jlm/universe/turtles/TurtleWorld.html:59
 #, no-wrap
 msgid "penDown()"
 msgstr "penDown()"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:56
+#: src/jlm/universe/turtles/TurtleWorld.html:60
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
-msgstr "Descend le stylo. La tortue laissera une trace lors de ses prochains déplacements."
+msgstr ""
+"Descend le stylo. La tortue laissera une trace lors de ses prochains "
+"déplacements."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:58
+#: src/jlm/universe/turtles/TurtleWorld.html:62
 #, no-wrap
 msgid "boolean isPenDown()"
 msgstr "boolean isPenDown()"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:59
+#: src/jlm/universe/turtles/TurtleWorld.html:63
 #, no-wrap
 msgid "isPenDown()"
 msgstr "isPenDown()"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:60
+#: src/jlm/universe/turtles/TurtleWorld.html:64
 msgid "Returns the current pen position as a boolean."
 msgstr "Retourne si le stylo est actuellement baissé ou non."
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/turtles/TurtleWorld.html:62
+#: src/jlm/universe/turtles/TurtleWorld.html:66
 #: src/jlm/universe/bugglequest/BuggleWorld.html:25
 #: src/lessons/turmites/universe/TurmiteWorld.html:18
 #, no-wrap
@@ -792,44 +821,46 @@ msgid "Color getColor()"
 msgstr "Color getColor()"
 
 #. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/turtles/TurtleWorld.html:63
+#: src/jlm/universe/turtles/TurtleWorld.html:67
 #: src/jlm/universe/bugglequest/BuggleWorld.html:25
 #, no-wrap
 msgid "getColor()"
 msgstr "getColor()"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:64
+#: src/jlm/universe/turtles/TurtleWorld.html:68
 msgid "Returns the current pen color."
 msgstr "Retourne la couleur actuelle du stylo."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:66
+#: src/jlm/universe/turtles/TurtleWorld.html:70
 #, no-wrap
 msgid "void setColor(Color color)"
 msgstr "void setColor(Color color)"
 
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:67
+#. type: Content of: <table><tr><td><div>
+#: src/jlm/universe/turtles/TurtleWorld.html:71
+#: src/jlm/universe/bugglequest/BuggleWorld.html:26
 #, no-wrap
-msgid "getColor(color)"
-msgstr "getColor(color)"
+msgid "setColor(color)"
+msgstr "setColor(color)"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:68
+#: src/jlm/universe/turtles/TurtleWorld.html:72
 msgid "Changes the pen color."
 msgstr "Modifier la couleur du stylo."
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:70
+#: src/jlm/universe/turtles/TurtleWorld.html:74
 msgid "Other functions"
 msgstr "Autres fonctions"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:74
+#: src/jlm/universe/turtles/TurtleWorld.html:78
 msgid ""
 "Returns whether the current turtle is selected in the graphical interface."
-msgstr "Renvoie si la tortue actuelle est sélectionnée dans l'interface graphique."
+msgstr ""
+"Renvoie si la tortue actuelle est sélectionnée dans l'interface graphique."
 
 #. type: Content of: <h1>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:1
@@ -1056,11 +1087,6 @@ msgstr "Changer la couleur</b>"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
 msgid "void setColor(Color c)"
 msgstr "void setColor(Color c)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "setColor(color)"
-msgstr "setColor(color)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
@@ -1815,7 +1841,8 @@ msgstr "&nbsp;"
 #: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
 #: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
 #: src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429
-#: src/lessons/welcome/Main.html:469 src/lessons/welcome/basics/Basics.html:1
+#: src/lessons/welcome/Main.html:469
+#: src/lessons/welcome/instructions/Instructions.html:1
 msgid "Instructions"
 msgstr "Instructions"
 
@@ -1840,7 +1867,7 @@ msgstr "Instructions conditionnelles et expressions"
 #: src/lessons/welcome/Main.html:95 src/lessons/welcome/Main.html:178
 #: src/lessons/welcome/Main.html:258 src/lessons/welcome/Main.html:352
 #: src/lessons/welcome/Main.html:432 src/lessons/welcome/Main.html:472
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:1
+#: src/lessons/welcome/loopwhile/LoopWhile.html:1
 msgid "While loops"
 msgstr "Boucles tant que <tt>(while)</tt>"
 
@@ -1857,7 +1884,7 @@ msgstr "Variables"
 #: src/lessons/welcome/Main.html:133 src/lessons/welcome/Main.html:180
 #: src/lessons/welcome/Main.html:260 src/lessons/welcome/Main.html:354
 #: src/lessons/welcome/Main.html:434 src/lessons/welcome/Main.html:474
-#: src/lessons/welcome/loop/forloop/LoopFor.html:1
+#: src/lessons/welcome/loopfor/LoopFor.html:1
 msgid "For loops"
 msgstr "Boucles pour <tt>(for)</tt>"
 
@@ -1908,7 +1935,7 @@ msgstr "Les instructions Java"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:50
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:1
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:1
 msgid "Writing more complex programs"
 msgstr "Écrire des programmes plus complexes"
 
@@ -1920,7 +1947,7 @@ msgstr "Instructions conditionnelles"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:105
-#: src/lessons/welcome/baggleseeker/BaggleSeeker.html:1
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:1
 msgid "Baggle Seeking"
 msgstr "Chercheur de baggles"
 
@@ -1932,7 +1959,7 @@ msgstr "Stocker et manipuler des données"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:147
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:1
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:1
 msgid "Do .. while loops"
 msgstr "Boucles jusqu'à<tt> (do ... while)</tt>"
 
@@ -2200,14 +2227,14 @@ msgstr ""
 
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/environment/Environment.html:47
-#: src/lessons/welcome/basics/Basics.html:50
+#: src/lessons/welcome/instructions/Instructions.html:50
 #, no-wrap
 msgid "forward();"
 msgstr "forward();"
 
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/environment/Environment.html:48
-#: src/lessons/welcome/basics/Basics.html:50
+#: src/lessons/welcome/instructions/Instructions.html:50
 #, no-wrap
 msgid "forward()"
 msgstr "forward()"
@@ -2239,7 +2266,7 @@ msgid "(or keep around to experiment further if you feel so)."
 msgstr "(ou restez ici pour expérimenter un peu si vous le voulez)."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/basics/Basics.html:3
+#: src/lessons/welcome/instructions/Instructions.html:3
 msgid ""
 "Congratulations! You just wrote your first program! You got the idea now: "
 "programming is nothing more than giving simple instructions to the computer "
@@ -2253,7 +2280,7 @@ msgstr ""
 "l'ordinateur..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/basics/Basics.html:8
+#: src/lessons/welcome/instructions/Instructions.html:8
 msgid ""
 "Programs are mainly suites of method calls, which are no more than a list of "
 "simple order given to the machine. It is very similar to a recipe stating "
@@ -2271,13 +2298,13 @@ msgstr ""
 "méthodes, et vous devez les doter de parenthèses comme dans"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/basics/Basics.html:13
+#: src/lessons/welcome/instructions/Instructions.html:13
 #, no-wrap
 msgid "nameOfTheMethod()"
 msgstr "nomDeLaMethode()"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:16
+#: src/lessons/welcome/instructions/Instructions.html:16
 msgid ""
 "Java want to have the instructions separated by semi-columns (;).  The "
 "previous example would thus be written in a similar way:"
@@ -2286,7 +2313,7 @@ msgstr ""
 "L'exemple ci-dessus de recette s'écrirait donc à peu près ainsi:"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/basics/Basics.html:19
+#: src/lessons/welcome/instructions/Instructions.html:19
 #, no-wrap
 msgid ""
 "meltTheChocolatePieces();\n"
@@ -2300,7 +2327,7 @@ msgstr ""
 "faireCuire();\n"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:25
+#: src/lessons/welcome/instructions/Instructions.html:25
 msgid ""
 "Python want to have the instructions separated by either semi-columns (;) or "
 "by new lines. The previous example would thus be written the following way."
@@ -2311,7 +2338,7 @@ msgstr ""
 "L'exemple ci-dessus de recette s'écrirait donc à peu près ainsi:"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/basics/Basics.html:29
+#: src/lessons/welcome/instructions/Instructions.html:29
 #, no-wrap
 msgid ""
 "meltTheChocolatePieces()\n"
@@ -2325,7 +2352,7 @@ msgstr ""
 "faireCuire()\n"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:35
+#: src/lessons/welcome/instructions/Instructions.html:35
 msgid ""
 "It could also be written in the following way, but it's generally considered "
 "as a bad practice to group several instructions on the same line since it "
@@ -2340,13 +2367,13 @@ msgstr ""
 "coup."
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/basics/Basics.html:39
+#: src/lessons/welcome/instructions/Instructions.html:39
 #, no-wrap
 msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:42
+#: src/lessons/welcome/instructions/Instructions.html:42
 msgid ""
 "Of course, these specific methods do not exist in Java, but it may be "
 "possible to define them by yourself (we'll see later how to define your how "
@@ -2358,7 +2385,7 @@ msgstr ""
 "propres méthodes)."
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:44
+#: src/lessons/welcome/instructions/Instructions.html:44
 msgid ""
 "Of course, these specific methods do not exist in Python, but it may be "
 "possible to define them by yourself (we'll see later how to define your how "
@@ -2370,7 +2397,7 @@ msgstr ""
 "propres méthodes)."
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:46
+#: src/lessons/welcome/instructions/Instructions.html:46
 msgid ""
 "For now, we'll simply go for the buggle instructions. There is a method for "
 "each button of the interactive control panel. To achieve the same effect "
@@ -2385,7 +2412,7 @@ msgstr ""
 "écrire dans l'éditeur :"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:51
+#: src/lessons/welcome/instructions/Instructions.html:51
 msgid ""
 "Likewise, to achieve the same effect than the <b>backward</b>, <b>turn left</"
 "b> and <b>turn right</b> buttons, you need to use respectively:"
@@ -2394,7 +2421,7 @@ msgstr ""
 "b> et <b>turn right</b>, il faut utiliser respectivement :"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/basics/Basics.html:54
+#: src/lessons/welcome/instructions/Instructions.html:54
 #, no-wrap
 msgid ""
 "backward();\n"
@@ -2406,7 +2433,7 @@ msgstr ""
 "right();\n"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/basics/Basics.html:59
+#: src/lessons/welcome/instructions/Instructions.html:59
 #, no-wrap
 msgid ""
 "backward()\n"
@@ -2418,7 +2445,7 @@ msgstr ""
 "right()\n"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/basics/Basics.html:63
+#: src/lessons/welcome/instructions/Instructions.html:63
 msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
@@ -2427,7 +2454,7 @@ msgstr ""
 "méthodes : la première lève le crayon, tandis que la seconde le baisse."
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/basics/Basics.html:66
+#: src/lessons/welcome/instructions/Instructions.html:66
 #, no-wrap
 msgid ""
 "brushUp();\n"
@@ -2437,7 +2464,7 @@ msgstr ""
 "brushDown();\n"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/basics/Basics.html:70
+#: src/lessons/welcome/instructions/Instructions.html:70
 #, no-wrap
 msgid ""
 "brushUp()\n"
@@ -2447,7 +2474,7 @@ msgstr ""
 "brushDown()\n"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/basics/Basics.html:73
+#: src/lessons/welcome/instructions/Instructions.html:73
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
@@ -2456,13 +2483,13 @@ msgstr ""
 "world\". Elles seront introduites au fur et à mesure des besoins."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/basics/Basics.html:77
+#: src/lessons/welcome/instructions/Instructions.html:77
 #: src/lessons/welcome/conditions/Conditions.html:147
-#: src/lessons/welcome/baggleseeker/BaggleSeeker.html:8
 #: src/lessons/welcome/variables/Variables.html:72
-#: src/lessons/welcome/loop/forloop/LoopFor.html:73
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:26
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:26
+#: src/lessons/welcome/loopfor/LoopFor.html:73
+#: src/lessons/welcome/loopwhile/LoopWhile.html:26
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
 #: src/lessons/welcome/methods/basics/Methods.html:59
 #: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:56
@@ -2479,7 +2506,7 @@ msgid "Exercise goal"
 msgstr "Objectif de cet exercice"
 
 #. type: Content of: <p><p><a>
-#: src/lessons/welcome/basics/Basics.html:77
+#: src/lessons/welcome/instructions/Instructions.html:77
 msgid ""
 "<a name=\"Objectives\"> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
@@ -2491,7 +2518,7 @@ msgstr ""
 "pour voir exactement ce que cela veut dire."
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:2
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:2
 msgid ""
 "Now that we know how to draw things on the board, we'll enjoy this ability "
 "and draw a beautiful G on the board (check Objective panel for details on "
@@ -2502,7 +2529,7 @@ msgstr ""
 "panneau d'objectif pour les détails de ce qui est attendu."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:6
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:6
 msgid ""
 "When you write a quite complex program, it is sometimes useful to <b>add "
 "comments</b> to simplify the code reviews afterward. Here for example, it's "
@@ -2530,7 +2557,7 @@ msgstr ""
 "<i>overcommenting</i>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:14
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:14
 msgid ""
 "There is three types of comments in Java, instructing the compiler to not "
 "read the text you add for humans:"
@@ -2540,7 +2567,7 @@ msgstr ""
 "doit pas lire le texte ajouté pour les humains."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:16
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:16
 msgid ""
 "There is two types of comments in Python, instructing the compiler to not "
 "read the text you add for humans:"
@@ -2550,7 +2577,7 @@ msgstr ""
 "doit pas lire le texte ajouté pour les humains."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:20
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:20
 msgid ""
 "<b>Comments on a single line</b>. When the compiler encounters the "
 "symbols //, it ignores the end of the line."
@@ -2559,7 +2586,7 @@ msgstr ""
 "les symboles //, il ignore la fin de la ligne."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:22
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:22
 msgid ""
 "<b>Comments on several lines</b>. The compiler ignores anything placed "
 "between the symbols /* and */ even if they are placed on differing lines."
@@ -2569,7 +2596,7 @@ msgstr ""
 "différentes"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:27
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:27
 msgid ""
 "<b>Comments on a single line</b>. When the compiler encounters the symbol #, "
 "it ignores the end of the line."
@@ -2579,7 +2606,7 @@ msgstr ""
 "symbole #, il ignore la fin de la ligne."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:29
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:29
 msgid ""
 "<b>Comments on several lines</b>. The compiler ignores anything placed "
 "between a line beginning with ''' and the next line ending with '''."
@@ -2590,7 +2617,7 @@ msgstr ""
 "par '''."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:34
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:34
 #, no-wrap
 msgid ""
 "methodCallReadByTheCompiler(); <span class=\"comment\">// all this is ignored</span>\n"
@@ -2604,7 +2631,7 @@ msgstr ""
 "encoreUnAppel();\n"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:40
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:40
 #, no-wrap
 msgid ""
 "methodCallReadByTheCompiler() <span class=\"comment\"># all this is ignored</span>\n"
@@ -2620,7 +2647,7 @@ msgstr ""
 "encoreUnAppel()\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:47
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:47
 msgid ""
 "There is a third kind of comments in Java, between /** and */, which are "
 "read by a specific program called JavaDoc to generate automatically the "
@@ -2633,7 +2660,7 @@ msgstr ""
 "suivre un formalisme précis."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/basicsdrawg/BasicsDrawG.html:52
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:52
 msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."
@@ -3049,35 +3076,9 @@ msgstr ""
 
 #. type: Content of: <p><a><p>
 #: src/lessons/welcome/conditions/Conditions.html:155
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:32
+#: src/lessons/welcome/loopwhile/LoopWhile.html:32
 msgid "When your program works, move forward to the next exercise."
 msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/baggleseeker/BaggleSeeker.html:2
-msgid ""
-"The buggle world can sometimes contain some <i>baggles</i>, which are little "
-"biscuits that buggles can carry from one point to another. For that, they "
-"have to use specific methods such as <code>isOverBaggle(), "
-"isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
-"Check their documentation in \"Help/About this world\" for more details."
-msgstr ""
-"Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
-"biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
-"cela, elles peuvent utiliser des fonctions spécifiques : "
-"<code>isOverBaggle(), isCarryingBaggle(), pickupBaggle()</code> et "
-"<code>dropBaggle()</code>. Tous les détails se trouvent dans la "
-"documentation accessible depuis «Aide/À propos de ce monde»."
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/baggleseeker/BaggleSeeker.html:10
-msgid ""
-"Let each buggle find its baggle by adapting the code you wrote in previous "
-"exercise (copy/paste what you've done before to save time)."
-msgstr ""
-"Faites en sorte que chaque buggle trouve son baggle en adaptant le code que "
-"vous aviez écrit pour l'exercice précédent (faites un copie/colle de ce que "
-"vous aviez fait pour gagner du temps)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:2
@@ -3492,7 +3493,7 @@ msgstr ""
 "méthode <code>isOverOrange()</code>."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:3
+#: src/lessons/welcome/loopfor/LoopFor.html:3
 msgid ""
 "While loops are well adapted to situations where you want to achieve an "
 "action while a condition stays true, but it is less adapted to achieve a "
@@ -3512,7 +3513,7 @@ msgstr ""
 "corps de la boucle."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:11
+#: src/lessons/welcome/loopfor/LoopFor.html:11
 msgid ""
 "In such situations, <code>for</code> loops become handy. Their syntax is the "
 "following:"
@@ -3521,7 +3522,7 @@ msgstr ""
 "pratique. Leur syntaxe est la suivante :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:13
+#: src/lessons/welcome/loopfor/LoopFor.html:13
 #, no-wrap
 msgid ""
 "for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
@@ -3533,7 +3534,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:17
+#: src/lessons/welcome/loopfor/LoopFor.html:17
 #, no-wrap
 msgid ""
 "for <b>variable</b> in <b>sequence of values</b>:\n"
@@ -3543,12 +3544,12 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:21
+#: src/lessons/welcome/loopfor/LoopFor.html:21
 msgid "This code is perfectly equivalent to the following:"
 msgstr "Ce code est parfaitement équivalent à celui-ci :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:22
+#: src/lessons/welcome/loopfor/LoopFor.html:22
 #, no-wrap
 msgid ""
 "<b>initializing</b>;\n"
@@ -3564,7 +3565,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:28
+#: src/lessons/welcome/loopfor/LoopFor.html:28
 #, no-wrap
 msgid ""
 "while <b>there is a value in the sequence</b>: \n"
@@ -3576,7 +3577,7 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:33
+#: src/lessons/welcome/loopfor/LoopFor.html:33
 msgid ""
 "Please note that in Python the instruction <code>range(n)</code> allows to "
 "get a sequence n integer value from 0 to n-1."
@@ -3585,7 +3586,7 @@ msgstr ""
 "d'obtenir une séquence de n entiers allant de 0 à n-1."
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:36
+#: src/lessons/welcome/loopfor/LoopFor.html:36
 msgid ""
 "For example, both following codes are equivalent. The latter is easier to "
 "read, don't you think?"
@@ -3594,7 +3595,7 @@ msgstr ""
 "forme est plus lisible, non ?"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:39
+#: src/lessons/welcome/loopfor/LoopFor.html:39
 #, no-wrap
 msgid ""
 "int done = 0;\n"
@@ -3610,7 +3611,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:44
+#: src/lessons/welcome/loopfor/LoopFor.html:44
 #, no-wrap
 msgid ""
 "for (int done = 0; done &lt; stepAmount; done++) {\n"
@@ -3622,7 +3623,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:48
+#: src/lessons/welcome/loopfor/LoopFor.html:48
 #, no-wrap
 msgid ""
 "done = 0\n"
@@ -3636,7 +3637,7 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;dejaFait = dejaFait + 1\n"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:53
+#: src/lessons/welcome/loopfor/LoopFor.html:53
 #, no-wrap
 msgid ""
 "for done in range(stepAmount):\n"
@@ -3646,7 +3647,7 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;backward()\n"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:59
+#: src/lessons/welcome/loopfor/LoopFor.html:59
 msgid ""
 "It is possible to build more advanced <tt>for</tt> loops since any valid "
 "instruction can be used as initialization, condition and incrementation. The "
@@ -3662,7 +3663,7 @@ msgstr ""
 "l'incrémentation)."
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:65
+#: src/lessons/welcome/loopfor/LoopFor.html:65
 #, no-wrap
 msgid ""
 "int x=20, y=3, tmp;\n"
@@ -3674,7 +3675,7 @@ msgstr ""
 " <span class=\"comment\">/* le PGCD est stocké dans x */</span>"
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:69
+#: src/lessons/welcome/loopfor/LoopFor.html:69
 msgid ""
 "If you don't understand every details of this example, don't panic. That's "
 "quite logic since it uses some syntax details that we did not introduce yet."
@@ -3684,7 +3685,7 @@ msgstr ""
 "pas encore vu."
 
 #. type: Content of: <p><p><p><a>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:73
+#: src/lessons/welcome/loopfor/LoopFor.html:73
 msgid ""
 "<a name=\"Objectives\"> You now have to redo the same exercise than "
 "previously (move forward until being over a baggle, pick it up, move back to "
@@ -3698,17 +3699,17 @@ msgstr ""
 "<tt>while</tt>."
 
 #. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/loop/forloop/LoopFor.html:78
+#: src/lessons/welcome/loopfor/LoopFor.html:78
 msgid "Once done, proceed to next exercise."
 msgstr "Une fois ceci fait, passez à l'exercice suivant."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loop/forloop/LoopStairs.html:1
+#: src/lessons/welcome/loopfor/LoopStairs.html:1
 msgid "Stairway to Heaven"
 msgstr "la voie du paradis"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopStairs.html:3
+#: src/lessons/welcome/loopfor/LoopStairs.html:3
 msgid ""
 "Your buggle feels a bit depressed today, but it's currently facing a magic "
 "stair: It leads directly to heaven, and each time you walk on it, joyful "
@@ -3719,7 +3720,7 @@ msgstr ""
 "joyeuses jaillissent de partout quand on l'emprunte."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopStairs.html:6
+#: src/lessons/welcome/loopfor/LoopStairs.html:6
 msgid ""
 "Your goal is to take this stair, one step after the other.  First devise the "
 "four instructions you have to give you buggle to take one stair step, and "
@@ -3730,7 +3731,7 @@ msgstr ""
 "marche, puis placez-les dans une boucle pour gravir toutes les marches."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopStairs.html:10
+#: src/lessons/welcome/loopfor/LoopStairs.html:10
 msgid ""
 "And before that, walk a bit forward to reach that stair, and ensure that you "
 "are in the right situation for your loop content to run properly. And once "
@@ -3742,12 +3743,12 @@ msgstr ""
 "faites quelques pas dans votre nouvelle demeure."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loop/forloop/LoopCourse.html:1
+#: src/lessons/welcome/loopfor/LoopCourse.html:1
 msgid "Training Buggle"
 msgstr "Entraînement de buggle"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopCourse.html:3
+#: src/lessons/welcome/loopfor/LoopCourse.html:3
 msgid ""
 "Today, your buggle wants to get some serious exercise: It wants to run 'till "
 "the track burns! Its super-shoes are just perfect to run like hell, but "
@@ -3759,7 +3760,7 @@ msgstr ""
 "longue..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopCourse.html:6
+#: src/lessons/welcome/loopfor/LoopCourse.html:6
 msgid ""
 "Your goal is to run the track 10 times, no matter what happens.  Even if the "
 "track suffers, you <b>really HAVE</b> to take that run.  Remember, the track "
@@ -3772,12 +3773,12 @@ msgstr ""
 "y et montrez-leur ce dont ces super-chaussures sont capables."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:1
+#: src/lessons/welcome/loopfor/LoopCourseForest.html:1
 msgid "Outdoor Training Buggle"
 msgstr "Course en forêt"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:3
+#: src/lessons/welcome/loopfor/LoopCourseForest.html:3
 msgid ""
 "Well, our last training didn't went that well. The track actually burned, "
 "and we are now banned from there.  This time, our buggle decided to practice "
@@ -3797,7 +3798,7 @@ msgstr ""
 "gauche. Il faut faire 7 tours de circuit."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/forloop/LoopCourseForest.html:9
+#: src/lessons/welcome/loopfor/LoopCourseForest.html:9
 msgid ""
 "Oh crap, running on the grass seems to destroy it too! So just take your 7 "
 "loops around the garden, and move along to the next exercise before anyone "
@@ -3808,7 +3809,7 @@ msgstr ""
 "quelqu'un ne constate les dégâts que vous avez fait..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:3
+#: src/lessons/welcome/loopwhile/LoopWhile.html:3
 msgid ""
 "In addition to conditionals, another handy construction is the ability to "
 "repeat an action while a specific condition does not appear. A while loop is "
@@ -3820,7 +3821,7 @@ msgstr ""
 "<tt>while</tt>, dont la syntaxe est la suivante :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:6
+#: src/lessons/welcome/loopwhile/LoopWhile.html:6
 #, no-wrap
 msgid ""
 "while (<b>condition</b>) {\n"
@@ -3832,7 +3833,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:9
+#: src/lessons/welcome/loopwhile/LoopWhile.html:9
 #, no-wrap
 msgid ""
 "while <b>condition</b>:\n"
@@ -3843,7 +3844,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:12
+#: src/lessons/welcome/loopwhile/LoopWhile.html:12
 msgid ""
 "Naturally, if the chosen action does not modify the value of the condition, "
 "the buggle will do the action endlessly. The <b>stop</b> button of the "
@@ -3856,7 +3857,7 @@ msgstr ""
 "pouvez essayer de taper le code suivant dans l'éditeur :"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:17
+#: src/lessons/welcome/loopwhile/LoopWhile.html:17
 #, no-wrap
 msgid ""
 "while (true) {\n"
@@ -3868,7 +3869,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:20
+#: src/lessons/welcome/loopwhile/LoopWhile.html:20
 #, no-wrap
 msgid ""
 "while True:\n"
@@ -3879,7 +3880,7 @@ msgstr ""
 "}"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:23
+#: src/lessons/welcome/loopwhile/LoopWhile.html:23
 msgid ""
 "The buggle will turn left while true is true (ie, endlessly), or until you "
 "stop it manually using the stop button."
@@ -3889,7 +3890,7 @@ msgstr ""
 "stop."
 
 #. type: Content of: <p><a>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:26
+#: src/lessons/welcome/loopwhile/LoopWhile.html:26
 msgid ""
 "<a name=\"Objective\">You now have to write some code so that your buggles "
 "move forward until they encounter a wall. The idea is thus to do something "
@@ -3900,7 +3901,7 @@ msgstr ""
 "faire :"
 
 #. type: Content of: <p><a><pre>
-#: src/lessons/welcome/loop/whileloop/LoopWhile.html:29
+#: src/lessons/welcome/loopwhile/LoopWhile.html:29
 #, no-wrap
 msgid ""
 "while we are not facing a wall, do:\n"
@@ -3909,13 +3910,39 @@ msgstr ""
 "tant que l'on est pas face à un mur, faire :\n"
 "&nbsp;&nbsp;avancer();"
 
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
+msgid ""
+"The buggle world can sometimes contain some <i>baggles</i>, which are little "
+"biscuits that buggles can carry from one point to another. For that, they "
+"have to use specific methods such as <code>isOverBaggle(), "
+"isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
+"Check their documentation in \"Help/About this world\" for more details."
+msgstr ""
+"Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
+"biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
+"cela, elles peuvent utiliser des fonctions spécifiques : "
+"<code>isOverBaggle(), isCarryingBaggle(), pickupBaggle()</code> et "
+"<code>dropBaggle()</code>. Tous les détails se trouvent dans la "
+"documentation accessible depuis «Aide/À propos de ce monde»."
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
+msgid ""
+"Let each buggle find its baggle by adapting the code you wrote in previous "
+"exercise (copy/paste what you've done before to save time)."
+msgstr ""
+"Faites en sorte que chaque buggle trouve son baggle en adaptant le code que "
+"vous aviez écrit pour l'exercice précédent (faites un copie/colle de ce que "
+"vous aviez fait pour gagner du temps)."
+
 #. type: Content of: <h2>
-#: src/lessons/welcome/loop/whileloop/WhileMoria.html:1
+#: src/lessons/welcome/loopwhile/WhileMoria.html:1
 msgid "Lost in the Moria"
 msgstr "Perdu dans la Moria"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/whileloop/WhileMoria.html:3
+#: src/lessons/welcome/loopwhile/WhileMoria.html:3
 msgid ""
 "You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
 "will have to clear your way to the exit. Well of course these are only "
@@ -3932,7 +3959,7 @@ msgstr ""
 "problème..."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/whileloop/WhileMoria.html:9
+#: src/lessons/welcome/loopwhile/WhileMoria.html:9
 msgid ""
 "So, you have to find the first baggle blocking the exit (simply walk to the "
 "east until you are over a baggle), take it and move it back to the other "
@@ -3950,13 +3977,13 @@ msgstr ""
 "comme dans le monde objectif."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/whileloop/WhileMoria.html:16
+#: src/lessons/welcome/loopwhile/WhileMoria.html:16
 msgid "Once you manage to escape this trap, move forward to the next exercise."
 msgstr ""
 "Quand vous serez parvenu à sortir de ce piège, passez à l'exercice suivant."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:3
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:3
 msgid ""
 "Here is another little exercise about loops. It is slightly more complex as "
 "we want the action to be executed in any case, even if the condition is "
@@ -3971,7 +3998,7 @@ msgstr ""
 "a pas de problème, je suis sûr que vous pouvez faire sans, n'est-ce pas ?"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:7
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:7
 msgid ""
 "A bad solution would be to duplicate the loop content before the loop, but "
 "code duplication is a <b>very</b> bad habit, and you should always avoid it. "
@@ -3985,7 +4012,7 @@ msgstr ""
 "rentre dans la boucle :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:10
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:10
 #, no-wrap
 msgid ""
 "firstTime = True\n"
@@ -3999,7 +4026,7 @@ msgstr ""
 "  (le corps de la boucle)"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:16
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:16
 msgid ""
 "In a <tt>while</tt> loop, the condition is evaluated before anything else, "
 "and if it's false, the loop body is never evaluated. Sometimes (although not "
@@ -4014,7 +4041,7 @@ msgstr ""
 "variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:22
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:22
 #, no-wrap
 msgid ""
 "do {\n"
@@ -4026,7 +4053,7 @@ msgstr ""
 "} while (<b>condition</b>);"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:27
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:27
 msgid ""
 "Some cells of the world are yellow, but your buggle cannot stand being in "
 "such cells. Write the necessary code to move forward until the ground gets "
@@ -4038,7 +4065,7 @@ msgstr ""
 "code> qui retourne vrai si le sol est blanc.."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:31
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:31
 msgid ""
 "The trick is that most buggles of this world are currently on this yellow "
 "ground that they dislike so much. That is why they are in panic, and every "
@@ -4053,18 +4080,18 @@ msgstr ""
 "le sol est blanc le premier coup, il faut quand même avancer d'un pas."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:36
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:36
 msgid "The general idea is to do something like:"
 msgstr "L'idée général est donc de faire:"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:37
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:37
 #, no-wrap
 msgid "move forward until located in a white cell"
 msgstr "avancer jusqu'à se trouver sur une case blanche"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/loop/dowhileloop/LoopDoWhile.html:39
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:39
 msgid ""
 "<i>Remark:</i> it is also possible to solve this exercise with a classical "
 "<tt>while</tt> loop, but it's not the goal."
@@ -4073,18 +4100,18 @@ msgstr ""
 "une boucle <tt>while</tt> classique, mais ce n'est pas l'objectif."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:1
+#: src/lessons/welcome/loopdowhile/Poucet.html:1
 msgid "Tracks of buggles"
 msgstr "La buggle Petite Poucette"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:3
+#: src/lessons/welcome/loopdowhile/Poucet.html:3
 msgid ""
 "Your buggle got lost in a strange maze, and you must help it finding the "
 "exit that is represented in orange.  You cannot simply explain the path to "
-"the exit in something like <code>right();forward;forward();forward()</"
-"code> because you have to save two buggles at the same time, that are lost "
-"in similar but not identical worlds.  You can switch to the other world by "
+"the exit in something like <code>right();forward;forward();forward()</code> "
+"because you have to save two buggles at the same time, that are lost in "
+"similar but not identical worlds.  You can switch to the other world by "
 "using the combobox above the world representation (where it's written 'Deep "
 "Forest' right now), and selecting the other entry (that should read 'Deeper "
 "Forest')."
@@ -4100,7 +4127,7 @@ msgstr ""
 "\" (forêt encore plus profonde), vous verrez l'autre monde. "
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:9
+#: src/lessons/welcome/loopdowhile/Poucet.html:9
 msgid ""
 "The good news is that the path to the exit is written on the ground. As you "
 "can see, the world is made of several corridors, with baggles on the ground. "
@@ -4115,7 +4142,7 @@ msgstr ""
 "s'il contient 2 baggles ou moins."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:13
+#: src/lessons/welcome/loopdowhile/Poucet.html:13
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -4130,7 +4157,7 @@ msgstr ""
 "méthode <code>exitReached()</code> fournie."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet.html:17
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
 "another while counting the baggles you see on your path. The method "
@@ -4145,7 +4172,7 @@ msgstr ""
 "entendu à une intersection, mais vous souhaitez avancer quand même."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:22
+#: src/lessons/welcome/loopdowhile/Poucet.html:22
 msgid ""
 "For that, the easiest is to use a <code>do / while</code> loop instead of a "
 "regular <code>while</code> loop to move until the next intersection."
@@ -4155,7 +4182,7 @@ msgstr ""
 "à l'autre."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:25
+#: src/lessons/welcome/loopdowhile/Poucet.html:25
 msgid ""
 "For that, use an extra variable indicating whether you already entered the "
 "corridor, as follows. This will ensure that you execute the loop body at "
@@ -4169,7 +4196,7 @@ msgstr ""
 "<code>crossing()</code> qui détermine s'il faut s'arrêter ou non."
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:28
+#: src/lessons/welcome/loopdowhile/Poucet.html:28
 #, no-wrap
 msgid ""
 "firstTime = True\n"
@@ -4183,12 +4210,12 @@ msgstr ""
 "  &lt;your body&gt;  \n"
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:34
+#: src/lessons/welcome/loopdowhile/Poucet.html:34
 msgid "I cannot imagine how to count the baggles I see."
 msgstr "Je n'arrive pas à imaginer comment compter les baggles que je vois"
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:35
+#: src/lessons/welcome/loopdowhile/Poucet.html:35
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -4199,7 +4226,7 @@ msgstr ""
 "<i>accumulateur</i>."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:37
+#: src/lessons/welcome/loopdowhile/Poucet.html:37
 msgid ""
 "Don't forget to reset your accumulator to 0 at the beginning of each "
 "corridor!"
@@ -4207,7 +4234,7 @@ msgstr ""
 "N'oubliez pas de remettre l'accumulateur à 0 au début de chaque couloir!"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loop/dowhileloop/Poucet.html:40
+#: src/lessons/welcome/loopdowhile/Poucet.html:40
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
@@ -9756,8 +9783,8 @@ msgstr ""
 "sont connectés les uns aux autres. Pour sortir de ce genre de labyrinthe, il "
 "suffit à votre buggle de longer un mur (celui à sa droite, ou celui à sa "
 "gauche: c'est sans importance). Tout en gardant sa patte posée sur ce mur, "
-"votre buggle doit avancer jusqu'à ce qu'elle trouve la sortie du labyrinthe et "
-"ce biscuit qu'il apprécie tant."
+"votre buggle doit avancer jusqu'à ce qu'elle trouve la sortie du labyrinthe "
+"et ce biscuit qu'il apprécie tant."
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:13
@@ -9799,12 +9826,12 @@ msgid ""
 "it won't crash into a wall. You can check the tip for more info on this, but "
 "only do so if you're stuck. Try to do it without the tip first."
 msgstr ""
-"Écrivez une méthode <code>keepHandOnSideWall()</code> qui fait avancer "
-"votre buggle d'une case tout en gardant la patte sur le mur du côté "
-"choisi. Vous devez vous assurer que votre buggle garde toujours la patte "
-"sur le mur et également qu'elle ne risque pas de percuter un mur. Vous pouvez "
-"regarder l'indice (hint) si vous êtes coincé, mais vous devriez d'abord "
-"essayer de le faire par vous-même."
+"Écrivez une méthode <code>keepHandOnSideWall()</code> qui fait avancer votre "
+"buggle d'une case tout en gardant la patte sur le mur du côté choisi. Vous "
+"devez vous assurer que votre buggle garde toujours la patte sur le mur et "
+"également qu'elle ne risque pas de percuter un mur. Vous pouvez regarder "
+"l'indice (hint) si vous êtes coincé, mais vous devriez d'abord essayer de le "
+"faire par vous-même."
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:32
@@ -9814,8 +9841,7 @@ msgid ""
 "Don't forget to pick the baggle up once you've found it."
 msgstr ""
 "Enfin, écrivez l'algorithme complet qui parcourt le labyrinthe pas à pas "
-"jusqu'à "
-"trouver le biscuit et la sortie. N'oubliez pas de prendre le baggle."
+"jusqu'à trouver le biscuit et la sortie. N'oubliez pas de prendre le baggle."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:37
@@ -9863,12 +9889,11 @@ msgstr "Étape suivante"
 #. type: Content of: <div><p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:60
 msgid ""
-"If you do a <code>right()</code> in any case at the end of your "
-"function, it's possible to write it in 3 lines with a <code>while</code> "
-"loop."
+"If you do a <code>right()</code> in any case at the end of your function, "
+"it's possible to write it in 3 lines with a <code>while</code> loop."
 msgstr ""
-"Si vous faites un <code>right()</code> dans tous les cas à la fin de "
-"votre fonction, il est possible de l'écrire en trois lignes avec une boucle "
+"Si vous faites un <code>right()</code> dans tous les cas à la fin de votre "
+"fonction, il est possible de l'écrire en trois lignes avec une boucle "
 "<code>while</code>."
 
 #. type: Content of: <h2>
@@ -9889,13 +9914,12 @@ msgid ""
 msgstr ""
 "Une fois de plus, vous pensiez que votre algorithme vous permettait de vous "
 "échapper des labyrinthes, et une fois de plus, votre buggle est prise dans "
-"un "
-"labyrinthe mettant votre algorithme en défaut. Essayez de copier votre "
-"code "
-"et de l'exécuter pour voir : votre création précédente échoue lamentablement. Le piège a la forme d'un "
-"«G» majuscule : la buggle entre dans le piège, suit le bord interne. Au bout "
-"d'un moment, la direction nord est libre et votre buggle se met donc à "
-"courir dans cette direction. Pour retomber dans le piège..."
+"un labyrinthe mettant votre algorithme en défaut. Essayez de copier votre "
+"code et de l'exécuter pour voir : votre création précédente échoue "
+"lamentablement. Le piège a la forme d'un «G» majuscule : la buggle entre "
+"dans le piège, suit le bord interne. Au bout d'un moment, la direction nord "
+"est libre et votre buggle se met donc à courir dans cette direction. Pour "
+"retomber dans le piège..."
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:13
@@ -10022,11 +10046,9 @@ msgid ""
 "global never gets modified."
 msgstr ""
 "N'oubliez pas que si l'une de vos méthodes modifie une variable globale "
-"(telle "
-"que sommeAngles), vous devez vous assurer qu'elle définie cette globale "
-"correctement. Sinon, la méthode crée une nouvelle variable locale de même "
-"nom, "
-"et la globale n'est jamais modifiée."
+"(telle que sommeAngles), vous devez vous assurer qu'elle définie cette "
+"globale correctement. Sinon, la méthode crée une nouvelle variable locale de "
+"même nom, et la globale n'est jamais modifiée."
 
 #. type: Content of: <div><pre>
 #: src/lessons/maze/pledge/PledgeMaze.html:62
@@ -10058,8 +10080,7 @@ msgid ""
 "the favorite direction is not free. Do that until you find your baggle."
 msgstr ""
 "Vous devez changer votre cap vers votre direction favorite (probablement le "
-"nord "
-"-- NORTH). Il vous faut ensuite écrire la boucle principale de votre "
+"nord -- NORTH). Il vous faut ensuite écrire la boucle principale de votre "
 "algorithme. Tant que votre buggle n'a pas trouvé son biscuit, il faut "
 "avancer jusqu'à un obstacle dans la direction de prédilection. Quand un "
 "obstacle est rencontré, il faut garder la patte sur un mur (en utilisant "
@@ -10107,8 +10128,8 @@ msgstr ""
 "en rond pour toujours sur l'un de ces îlots. En effet, le labyrinthe dont "
 "vous devez vous échapper maintenant contient des îles, et la buggle ne "
 "commence pas sur un des murs externes. Vous pouvez essayer si vous voulez : "
-"Copie/collez votre code et appuyez sur le bouton 'Exécuter' pour admirez votre "
-"solution précédente échouer lamentablement."
+"Copie/collez votre code et appuyez sur le bouton 'Exécuter' pour admirez "
+"votre solution précédente échouer lamentablement."
 
 #. type: Content of: <p><p>
 #: src/lessons/maze/island/IslandMaze.html:18
@@ -10156,15 +10177,13 @@ msgid ""
 "is something like"
 msgstr ""
 "Notre nouvelle méthode run() va consister en deux états: notre buggle va "
-"alterner entre le mode «coureur au nord» et le mode «suiveur à gauche». "
-"Vous commencerz dans le mode «coureur au nord», et vous passerez au mode "
-"«suiveur à gauche» quand il y aura un mur au nord (n'oubliez pas de vous "
-"assurez d'avoir un mur à votre gauche avant de changer de passer au mode "
-"«suiveur à gauche»). "
-"Vous repasserez au mode «coureur au nord» dès que votre buggle fera face au "
-"nord et qu'elle n'est pas face à un mur. "
-"La manière la plus simple d'écrire une telle machine à état est quelque "
-"chose de ce type:"
+"alterner entre le mode «coureur au nord» et le mode «suiveur à gauche». Vous "
+"commencerz dans le mode «coureur au nord», et vous passerez au mode «suiveur "
+"à gauche» quand il y aura un mur au nord (n'oubliez pas de vous assurez "
+"d'avoir un mur à votre gauche avant de changer de passer au mode «suiveur à "
+"gauche»). Vous repasserez au mode «coureur au nord» dès que votre buggle "
+"fera face au nord et qu'elle n'est pas face à un mur. La manière la plus "
+"simple d'écrire une telle machine à état est quelque chose de ce type:"
 
 #. type: Content of: <p><p><div><pre>
 #: src/lessons/maze/island/IslandMaze.html:40
@@ -10255,8 +10274,8 @@ msgid ""
 "Without even leaving his position, he can retrieve information about the "
 "world he is leaving in, with the following functions:"
 msgstr ""
-"Sans même changer de place, elle peut retrouver des informations sur le monde "
-"qui l'entoure, avec les instructions suivantes&nbsp;:"
+"Sans même changer de place, elle peut retrouver des informations sur le "
+"monde qui l'entoure, avec les instructions suivantes&nbsp;:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
@@ -10275,8 +10294,7 @@ msgid ""
 "a wall on top."
 msgstr ""
 "<code>hasTopWall(x,y)</code> indique si la cellule (x,y) de ce monde est "
-"fermée "
-"par un mur en haut."
+"fermée par un mur en haut."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
@@ -10285,8 +10303,7 @@ msgid ""
 "a wall on the left."
 msgstr ""
 "<code>hasLeftWall(x,y)</code> indique si la cellule (x,y) de ce monde est "
-"fermée "
-"par un mur à gauche."
+"fermée par un mur à gauche."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:13
@@ -10304,8 +10321,7 @@ msgid ""
 "to the cell (x,y)."
 msgstr ""
 "<code>setIndication(x,y,i)</code> ajoute une indication entière <code>i</"
-"code> "
-"sur le sol de la cellule (x,y)."
+"code> sur le sol de la cellule (x,y)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:15
@@ -10314,9 +10330,8 @@ msgid ""
 "cell (x,y) (or 9999 if there is no indication)."
 msgstr ""
 "<code>getIndication(x,y,i)</code> retourne l'indication entière qui se "
-"trouve "
-"dans la cellule (x,y) (ou bien la valeur 9999 s'il n'y a pas d'indication à "
-"l'endroit indiqué)."
+"trouve dans la cellule (x,y) (ou bien la valeur 9999 s'il n'y a pas "
+"d'indication à l'endroit indiqué)."
 
 #. type: Content of: <p>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:18
@@ -10367,18 +10382,13 @@ msgid ""
 "EAST</code>."
 msgstr ""
 "Une fois que toutes les cases sont marquées, faites en sorte que votre "
-"buggle "
-"jedi trouve le plus court chemin en suivant les indications écrites au sol. "
-"Pour "
-"celà, il lui suffit à chaque pas d'aller sur la case de plus petite "
-"distance "
-"parmis celles accessibles. Vous pouvez utiliser la méthode <code>void "
-"setDirection(Direction d)</code> pour faire regarder votre buggle dans une "
-"direction spécifique comme <code>Direction.NORTH</code>, "
-"<code>Direction.SOUTH</code>, <code>Direction.EAST</code> ou "
-"<code>Direction.WEST</code>, qui correspondent respectivement au nord, sud, "
-"est "
-"et ouest."
+"buggle jedi trouve le plus court chemin en suivant les indications écrites "
+"au sol. Pour celà, il lui suffit à chaque pas d'aller sur la case de plus "
+"petite distance parmis celles accessibles. Vous pouvez utiliser la méthode "
+"<code>void setDirection(Direction d)</code> pour faire regarder votre buggle "
+"dans une direction spécifique comme <code>Direction.NORTH</code>, "
+"<code>Direction.SOUTH</code>, <code>Direction.EAST</code> ou <code>Direction."
+"WEST</code>, qui correspondent respectivement au nord, sud, est et ouest."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:35
@@ -10415,12 +10425,12 @@ msgid ""
 "(if that's not the case, well, you didn't really stick to the mission on "
 "previous exercise. Feel lucky and proceed to the next :)"
 msgstr ""
-"Ceci fait que la méthode écrite à l'exercice précédent ne "
-"fonctionne plus. Si vous l'utilisez ici sans modification, votre buggle "
-"va probablement commencer à tourner sur les quatres cases à côté de sa "
-"position de départ (si ça n'est pas le cas, et bien, vous n'avez pas "
-"réellement suivi la mission de l'exercice précédent. Sentez vous chanceux et "
-"passez à l'exercice suivant une fois que vous aurez lu ce texte)."
+"Ceci fait que la méthode écrite à l'exercice précédent ne fonctionne plus. "
+"Si vous l'utilisez ici sans modification, votre buggle va probablement "
+"commencer à tourner sur les quatres cases à côté de sa position de départ "
+"(si ça n'est pas le cas, et bien, vous n'avez pas réellement suivi la "
+"mission de l'exercice précédent. Sentez vous chanceux et passez à l'exercice "
+"suivant une fois que vous aurez lu ce texte)."
 
 #. type: Content of: <p>
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:14
@@ -10453,16 +10463,23 @@ msgstr ""
 "rechercher à avoir un mur à sa gauche avant de rentrer dans la grande boucle "
 "<code>while</code>."
 
-#. type: Content of: <h1>
+#. type: Content of: <h3>
 #: src/jlm/universe/lightbot/LightBotWorld.html:1
-msgid "LightBotWorld"
-msgstr "LightBotWorld"
+#: src/lessons/lightbot/Main.html:1 src/lessons/lightbot/short_desc.html:1
+msgid "LightBot"
+msgstr "LightBot"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/lightbot/LightBotWorld.html:3
+#, fuzzy
+#| msgid ""
+#| "This world introduces a little programming puzzle which can somehow be "
+#| "used to introduce programmation to non-reading kids since it is "
+#| "programmed graphically.  The goal of each board is to light up all the "
+#| "lights. Your robot understands the following orders:"
 msgid ""
-"This world introduces a little programming puzzle which can somehow be used "
-"to introduce programmation to non-reading kids since it is programmed "
+"This universe introduces a little programming puzzle which can somehow be "
+"used to introduce programmation to non-reading kids since it is programmed "
 "graphically.  The goal of each board is to light up all the lights. Your "
 "robot understands the following orders:"
 msgstr ""
@@ -10492,8 +10509,8 @@ msgstr "<b>Avancer</b>"
 msgid ""
 "Cannot be done if the destination cell is of another height than source cell"
 msgstr ""
-"Ne peut être utilisé que si la case d'arrivée est à la même altitude que "
-"la case de départ."
+"Ne peut être utilisé que si la case d'arrivée est à la même altitude que la "
+"case de départ."
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/lightbot/LightBotWorld.html:9
@@ -10507,7 +10524,8 @@ msgid ""
 "cell, or if destination is lower than source. Cannot be used for plain moves."
 msgstr ""
 "Ne peut être utilisé que si la case d'arrivée est un étage plus haute que la "
-"case de départ, ou si l'arrivée est plus basse que le départ. Il est impossible de sauter sur un terrain plat."
+"case de départ, ou si l'arrivée est plus basse que le départ. Il est "
+"impossible de sauter sur un terrain plat."
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/lightbot/LightBotWorld.html:10
@@ -10568,11 +10586,6 @@ msgstr ""
 "Ce jeu est très largement inspiré d'un jeu en flash du même nom, que l'on "
 "peut par exemple trouver sur kongregate.com. Il a été écrit par Danny "
 "Yaroslavski (Coolio-Niato), d'après une idée originale de Matt Chase."
-
-#. type: Content of: <h3>
-#: src/lessons/lightbot/Main.html:1 src/lessons/lightbot/short_desc.html:1
-msgid "LightBot"
-msgstr "LightBot"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/lightbot/Main.html:2
@@ -10805,12 +10818,12 @@ msgid "This one aint easy."
 msgstr "Celui-ci est loin d'être facile."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/Close10.html:1
+#: src/lessons/welcome/conditions/bool1/Close10.html:1
 msgid "Close to 10"
 msgstr "Proche de 10"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/Close10.html:2
+#: src/lessons/welcome/conditions/bool1/Close10.html:2
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that Math.abs(n) returns the absolute "
@@ -10821,7 +10834,7 @@ msgstr ""
 "absolue d'un nombre."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/Close10.html:5
+#: src/lessons/welcome/conditions/bool1/Close10.html:5
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that math.fabs(n) returns the absolute "
@@ -10834,46 +10847,46 @@ msgstr ""
 "fonction que si vous avez importé le module math."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/Close10.html:10
-#: src/lessons/welcome/bool1/Diff21.html:5
-#: src/lessons/welcome/bool1/HasTeen.html:6
-#: src/lessons/welcome/bool1/IcyHot.html:5
-#: src/lessons/welcome/bool1/In1020.html:5
-#: src/lessons/welcome/bool1/In3050.html:5
-#: src/lessons/welcome/bool1/LastDigit.html:9
-#: src/lessons/welcome/bool1/LoneTeen.html:6
-#: src/lessons/welcome/bool1/Main.html:11
-#: src/lessons/welcome/bool1/Makes10.html:5
-#: src/lessons/welcome/bool1/Max1020.html:8
-#: src/lessons/welcome/bool1/MonkeyTrouble.html:7
-#: src/lessons/welcome/bool1/NearHundred.html:5
-#: src/lessons/welcome/bool1/ParotTrouble.html:8
-#: src/lessons/welcome/bool1/PosNeg.html:5
-#: src/lessons/welcome/bool1/SleepIn.html:7
-#: src/lessons/welcome/bool1/SumDouble.html:5
-#: src/lessons/welcome/bool2/AlarmClock.html:11
-#: src/lessons/welcome/bool2/AnswerCell.html:8
-#: src/lessons/welcome/bool2/BlueTicket.html:10
-#: src/lessons/welcome/bool2/CaughtSpeeding.html:11
-#: src/lessons/welcome/bool2/CigarParty.html:9
-#: src/lessons/welcome/bool2/DateFashion.html:12
-#: src/lessons/welcome/bool2/GreenTicket.html:9
-#: src/lessons/welcome/bool2/In1To10.html:8
-#: src/lessons/welcome/bool2/InOrderEqual.html:9
-#: src/lessons/welcome/bool2/InOrder.html:8
-#: src/lessons/welcome/bool2/LastDigit2.html:8
-#: src/lessons/welcome/bool2/LessBy10.html:5
-#: src/lessons/welcome/bool2/Main.html:4
-#: src/lessons/welcome/bool2/MaxMod5.html:9
-#: src/lessons/welcome/bool2/NearTen.html:8
-#: src/lessons/welcome/bool2/RedTicket.html:9
-#: src/lessons/welcome/bool2/ShareDigit.html:9
-#: src/lessons/welcome/bool2/SortaSum.html:7
-#: src/lessons/welcome/bool2/SquirrelPlay.html:10
-#: src/lessons/welcome/bool2/TeaParty.html:11
-#: src/lessons/welcome/bool2/TeenSum.html:8
-#: src/lessons/welcome/bool2/TwoAsOne.html:5
-#: src/lessons/welcome/bool2/WithoutDoubles.html:8
+#: src/lessons/welcome/conditions/bool1/Close10.html:10
+#: src/lessons/welcome/conditions/bool1/Diff21.html:5
+#: src/lessons/welcome/conditions/bool1/HasTeen.html:6
+#: src/lessons/welcome/conditions/bool1/IcyHot.html:5
+#: src/lessons/welcome/conditions/bool1/In1020.html:5
+#: src/lessons/welcome/conditions/bool1/In3050.html:5
+#: src/lessons/welcome/conditions/bool1/LastDigit.html:9
+#: src/lessons/welcome/conditions/bool1/LoneTeen.html:6
+#: src/lessons/welcome/conditions/bool1/Main.html:11
+#: src/lessons/welcome/conditions/bool1/Makes10.html:5
+#: src/lessons/welcome/conditions/bool1/Max1020.html:8
+#: src/lessons/welcome/conditions/bool1/MonkeyTrouble.html:7
+#: src/lessons/welcome/conditions/bool1/NearHundred.html:5
+#: src/lessons/welcome/conditions/bool1/ParotTrouble.html:8
+#: src/lessons/welcome/conditions/bool1/PosNeg.html:5
+#: src/lessons/welcome/conditions/bool1/SleepIn.html:7
+#: src/lessons/welcome/conditions/bool1/SumDouble.html:5
+#: src/lessons/welcome/conditions/bool2/AlarmClock.html:11
+#: src/lessons/welcome/conditions/bool2/AnswerCell.html:8
+#: src/lessons/welcome/conditions/bool2/BlueTicket.html:10
+#: src/lessons/welcome/conditions/bool2/CaughtSpeeding.html:11
+#: src/lessons/welcome/conditions/bool2/CigarParty.html:9
+#: src/lessons/welcome/conditions/bool2/DateFashion.html:12
+#: src/lessons/welcome/conditions/bool2/GreenTicket.html:9
+#: src/lessons/welcome/conditions/bool2/In1To10.html:8
+#: src/lessons/welcome/conditions/bool2/InOrderEqual.html:9
+#: src/lessons/welcome/conditions/bool2/InOrder.html:8
+#: src/lessons/welcome/conditions/bool2/LastDigit2.html:8
+#: src/lessons/welcome/conditions/bool2/LessBy10.html:5
+#: src/lessons/welcome/conditions/bool2/Main.html:4
+#: src/lessons/welcome/conditions/bool2/MaxMod5.html:9
+#: src/lessons/welcome/conditions/bool2/NearTen.html:8
+#: src/lessons/welcome/conditions/bool2/RedTicket.html:9
+#: src/lessons/welcome/conditions/bool2/ShareDigit.html:9
+#: src/lessons/welcome/conditions/bool2/SortaSum.html:7
+#: src/lessons/welcome/conditions/bool2/SquirrelPlay.html:10
+#: src/lessons/welcome/conditions/bool2/TeaParty.html:11
+#: src/lessons/welcome/conditions/bool2/TeenSum.html:8
+#: src/lessons/welcome/conditions/bool2/TwoAsOne.html:5
+#: src/lessons/welcome/conditions/bool2/WithoutDoubles.html:8
 #: src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4
 #: src/lessons/bat/string1/FrontTimes.html:7
 #: src/lessons/bat/string1/Last2.html:8
@@ -10897,12 +10910,12 @@ msgstr ""
 "com/ pour JLM."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/CountTeen.html:1
+#: src/lessons/welcome/conditions/bool1/CountTeen.html:1
 msgid "Count Teen"
 msgstr "Compter les ados"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/CountTeen.html:2
+#: src/lessons/welcome/conditions/bool1/CountTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 4 int values, return the amount of teen ones."
@@ -10911,12 +10924,12 @@ msgstr ""
 "Étant donné quatre nombres entiers, retournez combien d'entre eux sont ados."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/Diff21.html:1
+#: src/lessons/welcome/conditions/bool1/Diff21.html:1
 msgid "Diff 21"
 msgstr "Diff 21"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/Diff21.html:2
+#: src/lessons/welcome/conditions/bool1/Diff21.html:2
 msgid ""
 "Given an int n, return the absolute difference between n and 21, except "
 "return double the absolute difference if n is over 21."
@@ -10925,12 +10938,12 @@ msgstr ""
 "si n est plus grand que 21. Dans ce cas, doublez la différence absolue."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/HasTeen.html:1
+#: src/lessons/welcome/conditions/bool1/HasTeen.html:1
 msgid "Has Teen"
 msgstr "A des ados"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/HasTeen.html:2
+#: src/lessons/welcome/conditions/bool1/HasTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 3 int values, return true if 1 or more of them are teen."
@@ -10940,12 +10953,12 @@ msgstr ""
 "d'entre eux sont ados."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/IcyHot.html:1
+#: src/lessons/welcome/conditions/bool1/IcyHot.html:1
 msgid "Icy Hot"
 msgstr "Feu glacé"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/IcyHot.html:2
+#: src/lessons/welcome/conditions/bool1/IcyHot.html:2
 msgid ""
 "Given two temperatures, return true if one is less than 0 and the other is "
 "greater than 100."
@@ -10954,12 +10967,12 @@ msgstr ""
 "et l'autre supérieure à 100."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/In1020.html:1
+#: src/lessons/welcome/conditions/bool1/In1020.html:1
 msgid "In [10;20]"
 msgstr "Dans [10;20]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/In1020.html:2
+#: src/lessons/welcome/conditions/bool1/In1020.html:2
 msgid ""
 "Given 2 int values, return true if either of them is in the range 10..20 "
 "inclusive."
@@ -10968,12 +10981,12 @@ msgstr ""
 "l'intervale [10;20]."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/In3050.html:1
+#: src/lessons/welcome/conditions/bool1/In3050.html:1
 msgid "In [30;50]"
 msgstr "Dans [30;50]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/In3050.html:2
+#: src/lessons/welcome/conditions/bool1/In3050.html:2
 msgid ""
 "Given 2 int values, return true if they are both in the range 30..40 "
 "inclusive, or they are both in the range 40..50 inclusive."
@@ -10983,12 +10996,12 @@ msgstr ""
 "[40;50]."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/LastDigit.html:1
+#: src/lessons/welcome/conditions/bool1/LastDigit.html:1
 msgid "LastDigit"
 msgstr "Dernier chiffre"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/LastDigit.html:2
+#: src/lessons/welcome/conditions/bool1/LastDigit.html:2
 msgid ""
 "Given two non-negative int values, return true if they have the same last "
 "digit, such as with 27 and 57. Note that the % \"mod\" operator computes "
@@ -10999,12 +11012,12 @@ msgstr ""
 "calcule le reste de la division entière (donc 17 % 10 vaut 7)."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/LoneTeen.html:1
+#: src/lessons/welcome/conditions/bool1/LoneTeen.html:1
 msgid "Lone Teen"
 msgstr "Ado solitaire"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/LoneTeen.html:2
+#: src/lessons/welcome/conditions/bool1/LoneTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 2 int values, return true if one or the other is teen, but not both."
@@ -11014,12 +11027,12 @@ msgstr ""
 "ado, mais pas les deux."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/Main.html:1
+#: src/lessons/welcome/conditions/bool1/Main.html:1
 msgid "Boolean fun"
 msgstr "Jeux booléens"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/Main.html:3
+#: src/lessons/welcome/conditions/bool1/Main.html:3
 msgid ""
 "Boolean operations are one of the very basic task in programming.  As long "
 "as you cannot write a not so simple boolean test under the minute, you "
@@ -11030,7 +11043,7 @@ msgstr ""
 "en moins d'une minute, il vous sera difficile d'écrire un vrai programme."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/Main.html:8
+#: src/lessons/welcome/conditions/bool1/Main.html:8
 msgid ""
 "That is why this lesson provides you a bunch of such exercises, so that you "
 "can get trained in this."
@@ -11039,12 +11052,12 @@ msgstr ""
 "exercices pour vous permettre de vous entrainer."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/Makes10.html:1
+#: src/lessons/welcome/conditions/bool1/Makes10.html:1
 msgid "Makes 10"
 msgstr "Font 10"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/Makes10.html:2
+#: src/lessons/welcome/conditions/bool1/Makes10.html:2
 msgid ""
 "Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
 "10."
@@ -11053,12 +11066,12 @@ msgstr ""
 "10, ou si leur somme vaut 10."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/Max1020.html:1
+#: src/lessons/welcome/conditions/bool1/Max1020.html:1
 msgid "Max1020"
 msgstr "Max1020"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/Max1020.html:2
+#: src/lessons/welcome/conditions/bool1/Max1020.html:2
 msgid ""
 "Given 2 positive int values, return the larger value that is in the range "
 "10..20 inclusive, or return 0 if neither is in that range."
@@ -11068,12 +11081,12 @@ msgstr ""
 "intervale."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/MonkeyTrouble.html:1
+#: src/lessons/welcome/conditions/bool1/MonkeyTrouble.html:1
 msgid "MonkeyTrouble"
 msgstr "Problème de singe"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/MonkeyTrouble.html:3
+#: src/lessons/welcome/conditions/bool1/MonkeyTrouble.html:3
 msgid ""
 "We have two monkeys, a and b, and the parameters aSmile and bSmile indicate "
 "if each is smiling.  We are in trouble if they are both smiling or if "
@@ -11085,12 +11098,12 @@ msgstr ""
 "problème."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/NearHundred.html:1
+#: src/lessons/welcome/conditions/bool1/NearHundred.html:1
 msgid "Near Hundred"
 msgstr "Presque 100"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool1/NearHundred.html:2
+#: src/lessons/welcome/conditions/bool1/NearHundred.html:2
 msgid ""
 "Given an int n, return true if it is within 10 of 100 or 200. Note Math."
 "abs(n) returns the absolute value of a number."
@@ -11099,12 +11112,12 @@ msgstr ""
 "Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/ParotTrouble.html:1
+#: src/lessons/welcome/conditions/bool1/ParotTrouble.html:1
 msgid "Parot Trouble"
 msgstr "Problème de perroquet"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/ParotTrouble.html:3
+#: src/lessons/welcome/conditions/bool1/ParotTrouble.html:3
 msgid ""
 "We have a loud talking parrot. The \"hour\" parameter is the current hour "
 "time in the range 0..23. We are in trouble if the parrot is talking and the "
@@ -11115,12 +11128,12 @@ msgstr ""
 "parle avant 7h ou après 20h. Retournez vrai si nous avons un problème."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/PosNeg.html:1
+#: src/lessons/welcome/conditions/bool1/PosNeg.html:1
 msgid "Positive Negative"
 msgstr "Positif Negatif"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/PosNeg.html:2
+#: src/lessons/welcome/conditions/bool1/PosNeg.html:2
 msgid ""
 "Given 2 int values, return true if one is negative and one is positive. "
 "Unless negative is true, then they both must be negative."
@@ -11130,12 +11143,12 @@ msgstr ""
 "que les deux nombres soient négatifs."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/SleepIn.html:1
+#: src/lessons/welcome/conditions/bool1/SleepIn.html:1
 msgid "SleepDay"
 msgstr "Grasse matinée"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/SleepIn.html:3
+#: src/lessons/welcome/conditions/bool1/SleepIn.html:3
 msgid ""
 "The parameter weekday is true if it is a weekday, and the parameter vacation "
 "is true if we are on vacation. We sleep in if it is not a weekday or we're "
@@ -11147,12 +11160,12 @@ msgstr ""
 "vacances. Retournez vrai si nous pouvons faire la grasse matinée."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool1/SumDouble.html:1
+#: src/lessons/welcome/conditions/bool1/SumDouble.html:1
 msgid "Sum Double"
 msgstr "Somme doublée"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool1/SumDouble.html:2
+#: src/lessons/welcome/conditions/bool1/SumDouble.html:2
 msgid ""
 "Given two int values, return their sum. Unless the two values are the same, "
 "then return double their sum."
@@ -11161,12 +11174,12 @@ msgstr ""
 "égales, auquel cas vous devez retourner le double de leur somme."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/AlarmClock.html:1
+#: src/lessons/welcome/conditions/bool2/AlarmClock.html:1
 msgid "AlarmClock"
 msgstr "Radio réveil"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/AlarmClock.html:2
+#: src/lessons/welcome/conditions/bool2/AlarmClock.html:2
 msgid ""
 "Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a "
 "boolean indicating if we are on vacation, return a string of the form "
@@ -11185,12 +11198,12 @@ msgstr ""
 "week-end."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/AnswerCell.html:1
+#: src/lessons/welcome/conditions/bool2/AnswerCell.html:1
 msgid "AnswerCell"
 msgstr "Répondeur"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/AnswerCell.html:2
+#: src/lessons/welcome/conditions/bool2/AnswerCell.html:2
 msgid ""
 "Your cell phone rings. Return true if you should answer it. Normally you "
 "answer, except in the morning you only answer if it is your mom calling. In "
@@ -11201,12 +11214,12 @@ msgstr ""
 "Dans tous les cas, vous ne répondez pas si vous dormez."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/BlueTicket.html:1
+#: src/lessons/welcome/conditions/bool2/BlueTicket.html:1
 msgid "BlueTicket"
 msgstr "Ticket bleu"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/BlueTicket.html:2
+#: src/lessons/welcome/conditions/bool2/BlueTicket.html:2
 msgid ""
 "You have a blue lottery ticket, with ints a, b, and c on it. This makes "
 "three pairs, which we'll call ab, bc, and ac. Consider the sum of the "
@@ -11221,12 +11234,12 @@ msgstr ""
 "de plus que les sommes bc ou ac, le résultat est 5. Sinon, le résultat est 0."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/CaughtSpeeding.html:1
+#: src/lessons/welcome/conditions/bool2/CaughtSpeeding.html:1
 msgid "CaughtSpeeding"
 msgstr "Radar de vitesse"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/CaughtSpeeding.html:2
+#: src/lessons/welcome/conditions/bool2/CaughtSpeeding.html:2
 msgid ""
 "You are driving a little too fast, and a police officer stops you. Write "
 "code to compute the result, encoded as an int value: 0=no ticket, 1=small "
@@ -11244,12 +11257,12 @@ msgstr ""
 "sinon, votre vitesse peut être supérieure de 5 dans tous les cas."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/CigarParty.html:1
+#: src/lessons/welcome/conditions/bool2/CigarParty.html:1
 msgid "CigarParty"
 msgstr "Cigares de fête"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/CigarParty.html:2
+#: src/lessons/welcome/conditions/bool2/CigarParty.html:2
 msgid ""
 "When squirrels get together for a party, they like to have cigars. A "
 "squirrel party is successful when the number of cigars is between 40 and 60, "
@@ -11262,12 +11275,12 @@ msgstr ""
 "nombre de cigares. Renvoyez vrai si la fête est réussie. "
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/DateFashion.html:1
+#: src/lessons/welcome/conditions/bool2/DateFashion.html:1
 msgid "DateFashion"
 msgstr "Rendez-vous élégant"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/DateFashion.html:2
+#: src/lessons/welcome/conditions/bool2/DateFashion.html:2
 msgid ""
 "You and your date are trying to get a table at a restaurant. The parameter "
 "\"you\" is the stylishness of your clothes, in the range 0..10, and \"date\" "
@@ -11287,12 +11300,12 @@ msgstr ""
 "résultat est 1 (peut-être)."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/GreenTicket.html:1
+#: src/lessons/welcome/conditions/bool2/GreenTicket.html:1
 msgid "GreenTicket"
 msgstr "Ticket vert"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/GreenTicket.html:2
+#: src/lessons/welcome/conditions/bool2/GreenTicket.html:2
 msgid ""
 "You have a green lottery ticket, with ints a, b, and c on it. If the numbers "
 "are all different from each other, the result is 0. If all of the numbers "
@@ -11305,12 +11318,12 @@ msgstr ""
 "nombres sont les mêmes, le résultat est 10."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/In1To10.html:1
+#: src/lessons/welcome/conditions/bool2/In1To10.html:1
 msgid "In1To10"
 msgstr "De 1 à 10"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/In1To10.html:2
+#: src/lessons/welcome/conditions/bool2/In1To10.html:2
 msgid ""
 "Given a number n, return true if n is in the range 1..10, inclusive. Unless "
 "\"outsideMode\" is true, in which case return true if the number is less or "
@@ -11321,12 +11334,12 @@ msgstr ""
 "petit ou égal à 1 ou bien s'il est plus grand ou égal à 10"
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/InOrderEqual.html:1
+#: src/lessons/welcome/conditions/bool2/InOrderEqual.html:1
 msgid "InOrderEqual"
 msgstr "Dans l'ordre croissant"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/InOrderEqual.html:2
+#: src/lessons/welcome/conditions/bool2/InOrderEqual.html:2
 msgid ""
 "Given three ints, a b c, return true if they are in strict increasing order, "
 "such as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7. However, with the "
@@ -11339,12 +11352,12 @@ msgstr ""
 "5 5 7 ou 5 5 5."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/InOrder.html:1
+#: src/lessons/welcome/conditions/bool2/InOrder.html:1
 msgid "InOrder"
 msgstr "Dans l'ordre"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/InOrder.html:2
+#: src/lessons/welcome/conditions/bool2/InOrder.html:2
 msgid ""
 "Given three ints, a b c, return true if b is greater than a, and c is "
 "greater than b. However, with the exception that if \"bOk\" is true, b does "
@@ -11355,12 +11368,12 @@ msgstr ""
 "n'a pas besoin d'être plus grand que a."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/LastDigit2.html:1
+#: src/lessons/welcome/conditions/bool2/LastDigit2.html:1
 msgid "LastDigit 2"
 msgstr "L'autre dernier chiffre"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/LastDigit2.html:2
+#: src/lessons/welcome/conditions/bool2/LastDigit2.html:2
 msgid ""
 "Given three ints, a b c, return true if two or more of them have the same "
 "rightmost digit. The ints are non-negative. Note: the % \"mod\" operator "
@@ -11371,12 +11384,12 @@ msgstr ""
 "% \"mod\" calcule le reste, i.e. 17 % 10 vaut 7."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/LessBy10.html:1
+#: src/lessons/welcome/conditions/bool2/LessBy10.html:1
 msgid "LessBy10"
 msgstr "Plus petit par 10"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/LessBy10.html:2
+#: src/lessons/welcome/conditions/bool2/LessBy10.html:2
 msgid ""
 "Given three ints, a b c, return true if one of them is 10 or more less than "
 "one of the others."
@@ -11385,12 +11398,12 @@ msgstr ""
 "de 10 ou plus que l'un des autres."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/Main.html:1
+#: src/lessons/welcome/conditions/bool2/Main.html:1
 msgid "Boolean (even more) fun"
 msgstr "Encore des jeux booléens"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bool2/Main.html:3
+#: src/lessons/welcome/conditions/bool2/Main.html:3
 msgid ""
 "A very good introduction to this type is available here: http://javabat.com/"
 "doc/ifboolean.html."
@@ -11399,12 +11412,12 @@ msgstr ""
 "com/doc/ifboolean.html."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/MaxMod5.html:1
+#: src/lessons/welcome/conditions/bool2/MaxMod5.html:1
 msgid "MaxMod5"
 msgstr "Maximum Mod 5"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/MaxMod5.html:2
+#: src/lessons/welcome/conditions/bool2/MaxMod5.html:2
 msgid ""
 "Given two int values, return whichever value is larger. However if the two "
 "values have the same remainder when divided by 5, then the return the "
@@ -11418,12 +11431,12 @@ msgstr ""
 "reste, i.e. 7 % 5 vaut 2."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/NearTen.html:1
+#: src/lessons/welcome/conditions/bool2/NearTen.html:1
 msgid "NearTen"
 msgstr "Près de dix"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/NearTen.html:2
+#: src/lessons/welcome/conditions/bool2/NearTen.html:2
 msgid ""
 "Given a non-negative number \"num\", return true if num is within 2 of a "
 "multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
@@ -11434,12 +11447,12 @@ msgstr ""
 "(7 % 5) vaut 2."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/RedTicket.html:1
+#: src/lessons/welcome/conditions/bool2/RedTicket.html:1
 msgid "RedTicket"
 msgstr "Ticket rouge"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/RedTicket.html:2
+#: src/lessons/welcome/conditions/bool2/RedTicket.html:2
 msgid ""
 "You have a red lottery ticket showing ints a, b, and c, each of which is 0, "
 "1, or 2. If they are all the value 2, the result is 10. Otherwise if they "
@@ -11453,12 +11466,12 @@ msgstr ""
 "0."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/ShareDigit.html:1
+#: src/lessons/welcome/conditions/bool2/ShareDigit.html:1
 msgid "ShareDigit"
 msgstr "Chiffre partagé"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/ShareDigit.html:2
+#: src/lessons/welcome/conditions/bool2/ShareDigit.html:2
 msgid ""
 "Given two ints, each in the range 10..99, return true if there is a digit "
 "that appears in both numbers, such as the 2 in 12 and 23. (Note: division, e."
@@ -11471,12 +11484,12 @@ msgstr ""
 "\" n%10 renvoye le bon chiffre.)"
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/SortaSum.html:1
+#: src/lessons/welcome/conditions/bool2/SortaSum.html:1
 msgid "SortaSum"
 msgstr "Sommes d'entiers"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/SortaSum.html:2
+#: src/lessons/welcome/conditions/bool2/SortaSum.html:2
 msgid ""
 "Given 2 ints, a and b, return their sum. However, sums in the range 10..19 "
 "inclusive, are forbidden, so in that case just return 20."
@@ -11485,12 +11498,12 @@ msgstr ""
 "10 et 19 inclus sont interdites, dans ce cas, renvoyez 20."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/SquirrelPlay.html:1
+#: src/lessons/welcome/conditions/bool2/SquirrelPlay.html:1
 msgid "SquirrelPlay"
 msgstr "Jeu de l'écureuil"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/SquirrelPlay.html:2
+#: src/lessons/welcome/conditions/bool2/SquirrelPlay.html:2
 msgid ""
 "The squirrels in Palo Alto spend most of the day playing. In particular, "
 "they play if the temperature is between 60 and 90 (inclusive). Unless it is "
@@ -11505,12 +11518,12 @@ msgstr ""
 "Renvoyez vrai si les écureuils jouent et faux sinon."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/TeaParty.html:1
+#: src/lessons/welcome/conditions/bool2/TeaParty.html:1
 msgid "TeaParty"
 msgstr "Goûter"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/TeaParty.html:2
+#: src/lessons/welcome/conditions/bool2/TeaParty.html:2
 msgid ""
 "We are having a party with amounts of tea and candy. Return the int outcome "
 "of the party encoded as 0=bad, 1=good, or 2=great. A party is good (1) if "
@@ -11528,12 +11541,12 @@ msgstr ""
 "(0)."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/TeenSum.html:1
+#: src/lessons/welcome/conditions/bool2/TeenSum.html:1
 msgid "TeenSum"
 msgstr "Somme d'ados"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/TeenSum.html:2
+#: src/lessons/welcome/conditions/bool2/TeenSum.html:2
 msgid ""
 "Given 2 ints, a and b, return their sum. However, \"teen\" values in the "
 "range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
@@ -11544,12 +11557,12 @@ msgstr ""
 "Donc, si l'un des nombres est ado, retournez simplement 19."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/TwoAsOne.html:1
+#: src/lessons/welcome/conditions/bool2/TwoAsOne.html:1
 msgid "TwoAsOne"
 msgstr "Deux pour un"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/TwoAsOne.html:2
+#: src/lessons/welcome/conditions/bool2/TwoAsOne.html:2
 msgid ""
 "Given three ints, a b c, return true if it is possible to add two of the "
 "ints to get the third."
@@ -11558,12 +11571,12 @@ msgstr ""
 "deux d'entre eux pour obtenir le troisième."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/bool2/WithoutDoubles.html:1
+#: src/lessons/welcome/conditions/bool2/WithoutDoubles.html:1
 msgid "WithoutDoubles"
 msgstr "Sans double"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bool2/WithoutDoubles.html:2
+#: src/lessons/welcome/conditions/bool2/WithoutDoubles.html:2
 msgid ""
 "Return the sum of two 6-sided dice rolls, each in the range 1..6. However, "
 "if noDoubles is true, if the two dice show the same value, increment one die "
@@ -14248,6 +14261,12 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
+
+#~ msgid "getColor(color)"
+#~ msgstr "getColor(color)"
+
+#~ msgid "LightBotWorld"
+#~ msgstr "LightBotWorld"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"
