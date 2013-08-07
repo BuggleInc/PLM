@@ -112,7 +112,10 @@ public abstract class ExerciseTemplated extends Exercise {
 					System.out.println(i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
 				} else if (line.contains("END SOLUTION")) {
-					state = 3;  
+					if (seenTemplate)
+						state = 3;  
+					else 
+						state = 4; // Jump directly to end of template
 				} else if (line.contains("BEGIN SKEL")) {
 					savedState = state;
 					state = 6; 
@@ -139,6 +142,10 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			case 4: /* end of file */
+				if (line.contains("END TEMPLATE")) 
+					if (!seenTemplate)
+						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+					
 				tail.append(line+"\n");
 				break;
 			case 5: /* Hidden but not bodied */
