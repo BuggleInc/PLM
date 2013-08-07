@@ -1,5 +1,6 @@
 package jlm.core.ui;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.net.URL;
@@ -104,21 +105,23 @@ public class ResourcesCache {
 					g.drawImage(starNo.getImage(), 0, 0, null);
 				
 			} else {
-				combined = new BufferedImage(icon.getIconWidth()+10, icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+				combined = new BufferedImage(icon.getIconWidth()+26, icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
 				Graphics g = combined.getGraphics();
 				g.drawImage(icon.getImage(), 0, 0, null);
+				Dimension[] positions = new Dimension[] {new Dimension(26,0), new Dimension(26,16), 
+						                                 new Dimension(42,0), new Dimension(42,16)};
+				int curPos=0;
 				
-				if (Game.getInstance().studentWork.getPassed(exo, Game.JAVA)) { 
-					g.drawImage(Game.JAVA.getIcon().getImage(), 26, 0, null);
-				} else {
-					//g.drawImage(getIcon("img/lang_java_no.png").getImage(), 26,0,null);
+				Game.getInstance();
+				for (ProgrammingLanguage lang: Game.getProgrammingLanguages()) {
+					if (lang.equals(Game.LIGHTBOT))
+						continue;
+					
+					if (Game.getInstance().studentWork.getPassed(exo, lang)) {
+						g.drawImage(lang.getIcon().getImage(), positions[curPos].width, positions[curPos].height, null);
+						curPos++;
+					}
 				}
-				if (Game.getInstance().studentWork.getPassed(exo, Game.PYTHON)) { 
-					g.drawImage(Game.PYTHON.getIcon().getImage(), 26, 16, null);
-				} else {
-					//	g.drawImage(getIcon("img/lang_python_no.png").getImage(), 26,16,null);
-				}
-				
 			}
 			
 			iconsCache.put(path, new ImageIcon(combined));
