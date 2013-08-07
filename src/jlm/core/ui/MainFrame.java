@@ -181,7 +181,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new LessonChooser();
+				new ChooseLessonDialog();
 				MainFrame.getInstance().setVisible(false);		
 			}
 		});

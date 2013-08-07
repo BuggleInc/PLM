@@ -31,11 +31,11 @@ import jlm.core.utils.FileUtils;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
-public class LessonChooser extends JFrame {
+public class ChooseLessonDialog extends JFrame {
 	private static final long serialVersionUID = 1L;
 	I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
-	public LessonChooser() {
+	public ChooseLessonDialog() {
 		super();
 		setTitle(i18n.tr("Choose your lesson"));
 		FileUtils.setLocale(this.getLocale());
@@ -158,7 +158,7 @@ class LessonOverview extends JPanel {
 	private JEditorPane desc;
 	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
-	public LessonOverview(final LessonChooser lc) {
+	public LessonOverview(final ChooseLessonDialog lc) {
 		setLayout(new BorderLayout());
 		
 		setBackground(Color.white);

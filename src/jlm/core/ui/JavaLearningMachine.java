@@ -20,7 +20,7 @@ public class JavaLearningMachine {
 		
 		Game.getInstance().loadChooser();
 		MainFrame.getInstance().setVisible(false);		
-		new LessonChooser();
+		new ChooseLessonDialog();
 		
 	}
 }
