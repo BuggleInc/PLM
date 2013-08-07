@@ -1,20 +1,20 @@
 line = -1
 
-def turnRight():
-	raise java.lang.RuntimeException("turnRight() forbidden in this exercise.");
+def right():
+	raise java.lang.RuntimeException("right() forbidden in this exercise.");
 
 # does not work as Java stacktrace does not contain python function name ;(
-#def turnLeft():
+#def left():
 #    global line
 #    errorMsg(str(line))
 #    for s in java.lang.Thread.currentThread().getStackTrace():
-#        if "turnLeft" in s.getMethodName():
+#        if "left" in s.getMethodName():
 #            if line != -1 and line != s.getLineNumber():
-#                errorMsg("Forbidden to use turnLeft() more than once in this exercise.")
-#                # throw new RuntimeException("Forbidden to use turnLeft() more than once in this exercise.");
+#                errorMsg("Forbidden to use left() more than once in this exercise.")
+#                # throw new RuntimeException("Forbidden to use left() more than once in this exercise.");
 #            else:
 #                line = s.getLineNumber()
-#                entity.turnLeft()	
+#                entity.left()	
 	
 def dogHouse():
 	raise java.lang.RuntimeException("You must define a dogHouse() method.");
@@ -24,7 +24,7 @@ def dogHouse():
     for i in range(4):
         forward()
         forward()
-        turnLeft()
+        left()
 
 # END SOLUTION
 
@@ -36,13 +36,13 @@ brushDown()
 dogHouse()		
 brushUp()
 forward(2)
-turnLeft()
+left()
 forward(4)
 brushDown()
 dogHouse()		
 brushUp()
 forward(2)
-turnLeft()
+left()
 forward(4)
 brushDown()
 dogHouse()

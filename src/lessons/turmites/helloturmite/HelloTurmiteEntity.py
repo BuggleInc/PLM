@@ -31,13 +31,13 @@ def step(rule, colors):
 	elif (rule[state][currentColor][NEXT_MOVE] == NOTURN):
 		forward()
 	elif (rule[state][currentColor][NEXT_MOVE] == LEFT):
-		turnLeft()
+		left()
 		forward()
 	elif (rule[state][currentColor][NEXT_MOVE] == RIGHT):
-		turnRight()
+		right()
 		forward()
 	elif (rule[state][currentColor][NEXT_MOVE] == BACK):
-		turnBack()
+		back()
 		forward()
 	else:
 		log("Unknown turn command associated to i=%d: %d" % (currentColor, rule[state][currentColor][NEXT_MOVE]))

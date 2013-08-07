@@ -5,9 +5,9 @@ def getIndication():
 		return ' '
 	
 # BEGIN SOLUTION
-def doR(): turnRight(); forward()
-def doL(): turnLeft();  forward()
-def doI(): turnBack();  forward()
+def doR(): right(); forward()
+def doL(): left();  forward()
+def doI(): back();  forward()
 
 
 finished = False

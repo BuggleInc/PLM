@@ -13,13 +13,13 @@ The hardest part of previous code is certainly the conditional
 cascading. Somewhere in your code, you certainly had something similar to:
 
 <pre class="Java">if (getIndication() == 'R') {
-  turnRight();
+  right();
   forward();
 } else if (getIndication() == 'L') {
-  turnLeft();
+  left();
   forward();
 } else if (getIndication() == 'I') {
-  turnBack();
+  back();
   forward();
 /* other else if */
 } else {
@@ -60,15 +60,15 @@ some <b>rare</b> cases where this behavior reveals helpful.
 
 <pre class="Java">switch (getIndication()) {
   case 'R':
-    turnRight(); 
+    right(); 
     forward(); 
     break;
   case 'L':
-    turnLeft();
+    left();
     forward(); 
     break;
   case 'U':
-    turnBack();
+    back();
     forward();
     break;
   default: 

@@ -4,22 +4,22 @@ def endingPosition():
 		return False
 	else:
 		res = False
-		turnLeft()
+		left()
 		if isFacingWall():
 			res = True
-		turnRight()
+		right()
 		return res
 
 def snakeStep():
 	if isFacingWall():
 		if getDirection().toString() == "EAST":
-			turnLeft()
+			left()
 			forward()
-			turnLeft()
+			left()
 		else:
-			turnRight()
+			right()
 			forward()
-			turnRight()
+			right()
 	else:
 		forward()
 

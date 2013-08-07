@@ -10,11 +10,11 @@ public class StarEntity extends Turtle {
 	/* BEGIN SOLUTION */
 	public void branch(int size) {
 		forward(size);
-		turnRight(360 / BRANCH_COUNT);
+		right(360 / BRANCH_COUNT);
 		forward(size);
 
 		for (int i = 0; i < 2; i++)
-			turnLeft(360 / BRANCH_COUNT);
+			left(360 / BRANCH_COUNT);
 	}
 
 	public void star(int size, Color c) {
@@ -28,9 +28,9 @@ public class StarEntity extends Turtle {
 
 	public void run() {
 		star(100, Color.black);
-		turnRight(45);
+		right(45);
 		star(80, Color.blue);
-		turnRight(45);
+		right(45);
 		star(60, Color.red);
 	}
 	/* END SOLUTION */

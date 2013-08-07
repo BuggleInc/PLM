@@ -40,22 +40,22 @@ a very bad idea. Using such constants greatly help making the
 code easier to read, as it allows to write things this way:</p> 
 <pre class="Java">
   if (rule[state][currentColor][NEXT_MOVE] == LEFT) {
-    turnLeft();
+    left();
   }
 </pre>
 <pre class="python">
   if rule[state][currentColor][NEXT_MOVE] == LEFT:
-    turnLeft()
+    left()
 </pre>
 <p>This is much more easier to read than the following way:</p>
 <pre class="Java">
   if (rule[x][y][1] == 2) {
-    turnLeft();
+    left();
   }
 </pre>
 <pre class="python">
   if rule[x][y][1] == 2:
-    turnLeft()
+    left()
 </pre>
  
 <p class="python">Finally, you probably want to write a <code>elif</code> branch for the 

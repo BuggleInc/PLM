@@ -310,11 +310,11 @@ public class Turtle extends Entity {
 		backward((double) steps);
 	}
 
-	public void turnLeft(int a) {
+	public void left(int a) {
 		left((double) a);
 	}
 
-	public void turnRight(int a) {
+	public void right(int a) {
 		right((double) a);
 	}
 
@@ -389,4 +389,19 @@ public class Turtle extends Entity {
 		// Overriden by childs
 	}
 
+	/* BINDINGS TRANSLATION: French */
+	public void avance(double steps) { forward(steps); }
+	public void recule(double steps) { backward(steps); }
+	public void gauche(double angle) { left(angle); }
+	public void droite(double angle) { right(angle); }
+	// get/set X/Y/Pos are not translated as they happen to be the same in French
+	public void allerVers(double x, double y) {moveTo(x,y);}
+	public double getCap()           { return getHeading(); }
+	public void setCap(double cap)   { setHeading(cap);     }
+	public void leveCrayon()         { penUp(); }
+	public void baisseCrayon()       { penDown(); }
+	public boolean estCrayonBaisse() { return isPenDown();}
+	public Color getCouleur()        { return getColor(); }
+	public void setCouleur(Color c)  { setColor(c); }
+	public boolean estChoisie()      { return isSelected(); }
 }

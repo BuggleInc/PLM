@@ -49,22 +49,22 @@ Utiliser de telles constantes rend le code beaucoup plus simple à
 lire&nbsp;:</p> 
 <pre class="Java">
   if (rule[state][currentColor][NEXT_MOVE] == LEFT) {
-    turnLeft();
+    left();
   }
 </pre>
 <pre class="python">
   if rule[state][currentColor][NEXT_MOVE] == LEFT:
-    turnLeft()
+    left()
 </pre>
 <p>C'est beaucoup plus simple à lire que ceci&nbsp;:</p>
 <pre class="Java">
   if (rule[x][y][1] == 2) {
-    turnLeft();
+    left();
   }
 </pre>
 <pre class="python">
   if rule[x][y][1] == 2:
-    turnLeft()
+    left()
 </pre>
  
 <p class="python">Enfin, vous devriez également écrire une branche <code>elif</code> pour la

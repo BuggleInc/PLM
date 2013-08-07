@@ -9,7 +9,7 @@ public class SpiralEntity extends jlm.universe.turtles.Turtle {
 			// do nothing
 		} else {
 			forward(length);
-			turnLeft(angle);
+			left(angle);
 			spiral(steps-1, angle, length+increment, increment);
 		}
 		/* END SOLUTION */	

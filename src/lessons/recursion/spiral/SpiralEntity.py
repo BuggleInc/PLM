@@ -5,7 +5,7 @@ def spiral(steps, angle, length, increment):
     pass# do nothing
   else:
     forward(length)
-    turnLeft(angle)
+    left(angle)
     spiral(steps-1, angle, length+increment, increment)
   # END SOLUTION
 # END TEMPLATE

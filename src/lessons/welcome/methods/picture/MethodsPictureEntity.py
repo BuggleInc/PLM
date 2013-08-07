@@ -10,15 +10,15 @@ def makeV(c):
    forward()
    mark()
    forward()
-   turnLeft()
+   left()
    forward()
    mark()
    backward()
-   turnRight()
+   right()
    forward()
    mark()   
    forward()
-   turnLeft()
+   left()
 
 
 makeV(Color.yellow)

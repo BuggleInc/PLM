@@ -27,9 +27,9 @@ def makeLine (colors):
 
 # duplicate the pattern
 for i in range(getWorldWidth()-1):
-	turnLeft()
+	left()
 	forward()
-	turnRight()
+	right()
 	forward()
 	makeLine(colors)
 

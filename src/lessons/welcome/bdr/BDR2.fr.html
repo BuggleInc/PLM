@@ -15,13 +15,13 @@ conditionnelles. Quelque part dans votre programme, vous avez sans doute
 écrit quelque chose comme:
 
 <pre class="Java">if (getIndication() == 'R') {
-  turnRight();
+  right();
   forward();
 } else if (getIndication() == 'L') {
-  turnLeft();
+  left();
   forward();
 } else if (getIndication() == 'I') {
-  turnBack();
+  back();
   forward();
 /* d'autres else if */
 } else {
@@ -63,15 +63,15 @@ construction <tt>switch</tt> de la façon suivante.</p>
 
 <pre class="Java">switch (getIndication()) {
   case 'R':
-    turnRight(); 
+    right(); 
     forward(); 
     break;
   case 'L':
-    turnLeft();
+    left();
     forward(); 
     break;
   case 'U':
-    turnBack();
+    back();
     forward();
     break;
   default: 

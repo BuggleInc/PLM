@@ -30,14 +30,14 @@ def backward(i=-1):
 forward()
 forward()
 forward()
-turnLeft()
+left()
 for i in range(8): 
     forward()   
-    turnRight()
+    right()
     forward()
-    turnLeft()
+    left()
         
-turnRight()
+right()
 forward()
 forward()
 forward()

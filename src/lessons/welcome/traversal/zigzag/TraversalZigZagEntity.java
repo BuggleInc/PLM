@@ -67,17 +67,17 @@ public class TraversalZigZagEntity extends SimpleBuggle {
 	@Override
 	public void left()  {
 		if (isInited())
-			throw new RuntimeException("turnLeft() forbidden in this exercise");
+			throw new RuntimeException("left() forbidden in this exercise");
 	}
 	@Override
 	public void right()  {
 		if (isInited())
-			throw new RuntimeException("turnRight() forbidden in this exercise");
+			throw new RuntimeException("right() forbidden in this exercise");
 	}
 	@Override
 	public void back()  {
 		if (isInited())
-			throw new RuntimeException("turnBack() forbidden in this exercise");
+			throw new RuntimeException("back() forbidden in this exercise");
 	}
 	@Override
 	public boolean isFacingWall()  {

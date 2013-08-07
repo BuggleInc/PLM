@@ -2,7 +2,7 @@
 function side(){
     forward()
     forward()
-    turnRight()
+    right()
 }
 
 brushDown()
@@ -11,7 +11,7 @@ for (var i=0;i<3;i++)
     side()
                 
 forward()
-turnRight()
+right()
 
 brushUp()
 forward()

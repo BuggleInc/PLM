@@ -4,13 +4,13 @@
 def step():
 	# BEGIN SOLUTION
 	if getGroundColor() == Color.white:
-		turnRight()
+		right()
 		setBrushColor(Color.black)
 		brushDown()
 		brushUp()
 		forward()
 	else:
-		turnLeft()
+		left()
 		setBrushColor(Color.white)
 		brushDown()
 		brushUp()

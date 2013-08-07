@@ -27,8 +27,8 @@ while not exitReached() :
             seen += 1
     
     if seen > 2:
-        turnLeft()
+        left()
     else:
-        turnRight()
+        right()
 forward()
 # END SOLUTION

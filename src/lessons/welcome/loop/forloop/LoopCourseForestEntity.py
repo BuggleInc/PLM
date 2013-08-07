@@ -32,17 +32,17 @@ for i in range(7):
     for side in range(4):
         for step in range(4):
             forward()
-        turnLeft();
+        left();
         for step in range(2):
             forward()
-        turnRight();
+        right();
         for step in range(4):
             forward()
-        turnRight()
+        right()
         forward()
         forward()
-        turnLeft()
+        left()
         for step in range(4):
             forward()
-        turnLeft()
+        left()
 # END SOLUTION

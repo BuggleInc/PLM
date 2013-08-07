@@ -4,14 +4,14 @@ def forward(i):
 def backward(i):
 	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use backward() in this exercise.")
 
-def turnRight(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use turnRight() in this exercise.")
+def right(i):
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use right() in this exercise.")
 
-def turnLeft(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use turnLeft() in this exercise.")
+def left(i):
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use left() in this exercise.")
 
-def turnBack(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use turnBack() in this exercise.")
+def back(i):
+	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use back() in this exercise.")
 
 def isFacingWall(i):
 	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use isFacingWall() in this exercise.")

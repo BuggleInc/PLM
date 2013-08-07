@@ -19,8 +19,8 @@ def stepHandOnWall():
     # POST: we still have the same wall on the left, are one step ahead
     while not isFacingWall():
         forward()
-        turnLeft() # change to turnRight to get a right follower
-    turnRight() # change to turnLeft to get a right follower
+        left() # change to right to get a right follower
+    right() # change to left to get a right follower
 
 northRunner = True
 chosenDir = Direction.NORTH
@@ -30,7 +30,7 @@ while not isOverBaggle():
     if northRunner:
         while not isFacingWall():
             forward()
-        turnRight()
+        right()
         northRunner = False
     else: # left follower mode
         stepHandOnWall()

@@ -9,7 +9,7 @@ public class SpiralUseEntity extends Turtle {
 			return;
 		} else {
 			forward(length);
-			turnLeft(angle);
+			left(angle);
 			spiral(steps-1, angle, length+increment, increment);
 		}
 	}

@@ -1,19 +1,19 @@
 # BEGIN SOLUTION
-turnBack()
+back()
 while not isFacingWall():
     while (not isOverBaggle()) and (not isFacingWall()):
         forward()
     if isOverBaggle():
         pickupBaggle()
-        turnBack()
+        back()
         while not isOverBaggle():
             forward()
         backward()
         dropBaggle()
-        turnBack()
+        back()
         forward()
-turnRight()
+right()
 forward()
-turnLeft()
+left()
 forward()
 # END SOLUTION

@@ -10,13 +10,13 @@ class ScalaBasicsEntity extends SimpleBuggle {
 		brushDown();
 		for (i <- 0 to 3) {
 			forward(2);
-			turnRight();
+			right();
 		}
 		brushUp();
 		forward();
-		turnRight();
+		right();
 		forward();
-		turnLeft();
+		left();
 		/* END SOLUTION */
 		/* END TEMPLATE */
 	}

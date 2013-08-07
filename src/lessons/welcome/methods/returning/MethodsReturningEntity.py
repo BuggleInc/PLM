@@ -28,7 +28,7 @@ def haveBaggle():
 for i in range(7):
     if haveBaggle():
         break
-    turnRight()
+    right()
     forward()
-    turnLeft()
+    left()
 

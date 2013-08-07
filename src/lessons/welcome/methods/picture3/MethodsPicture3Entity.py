@@ -10,15 +10,15 @@ def makeV(c):
    forward()
    mark()
    forward()
-   turnLeft()
+   left()
    forward()
    mark()
    backward()
-   turnRight()
+   right()
    forward()
    mark()   
    forward()
-   turnLeft()
+   left()
 
 def makePattern():
    makeV(Color.yellow)
@@ -33,9 +33,9 @@ def makeLine(count):
    backward(count*5)
 
 def nextLine():
-   turnLeft()
+   left()
    forward(5)
-   turnRight()
+   right()
 
 for i in range(9):
    makeLine(9)

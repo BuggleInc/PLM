@@ -164,9 +164,9 @@ public abstract class AbstractBuggle extends Entity {
 	protected BuggleWorldCell getCell(int u, int v) throws BuggleInOuterSpaceException{
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException("You tried to access a cell with Y="+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to access a cell with Y={0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
 		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException("You tried to access a cell with X="+x+", but the maximal X in this world is "+(bw.getWidth()-1));
+			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to access a cell with X={0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
 
 		return (BuggleWorldCell) ((GridWorld)world).getCell(u, v);
 	}
@@ -185,7 +185,7 @@ public abstract class AbstractBuggle extends Entity {
 	public void setX(int x) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
+			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
 		this.x = x;
 		stepUI();
 	}
@@ -204,7 +204,7 @@ public abstract class AbstractBuggle extends Entity {
 	public void setY(int y) throws BuggleInOuterSpaceException  {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
 		this.y = y;
 		stepUI();
 	}
@@ -219,9 +219,9 @@ public abstract class AbstractBuggle extends Entity {
 	public void setPos(int x, int y) throws BuggleInOuterSpaceException {
 		BuggleWorld bw = (BuggleWorld) world;
 		if (y>=bw.getHeight())
-			throw new BuggleInOuterSpaceException("You tried to set Y to "+y+", but the maximal Y in this world is "+(bw.getHeight()-1));
+			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set Y to {0}, but the maximal Y in this world is {1}.",y,(bw.getHeight()-1)));
 		if (x>=bw.getWidth())
-			throw new BuggleInOuterSpaceException("You tried to set X to "+x+", but the maximal X in this world is "+(bw.getWidth()-1));
+			throw new BuggleInOuterSpaceException(Game.i18n.tr("You tried to set X to {0}, but the maximal X in this world is {1}.",x,(bw.getWidth()-1)));
 		this.x = x;
 		this.y = y;
 		stepUI();
@@ -338,9 +338,9 @@ public abstract class AbstractBuggle extends Entity {
 		}
 
 		if (!isOverBaggle())
-			throw new NoBaggleUnderBuggleException("There is no baggle to pick up");
+			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
 		if (isCarryingBaggle())
-			throw new AlreadyHaveBaggleException("Your buggle is already carrying a baggle");
+			throw new AlreadyHaveBaggleException(Game.i18n.tr("Your are already carrying a baggle."));
 		baggle = getCellFromLesson(this.x, this.y).pickupBaggle();
 	}
 
@@ -443,4 +443,37 @@ public abstract class AbstractBuggle extends Entity {
 			sb.append(Game.i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
 		return sb.toString();
 	}
+	
+	/* BINDINGS TRANSLATION: French */
+	public void gauche()   { left(); }
+	public void droite()   { right(); }
+	public void retourne() { back(); }
+	public void avance()          throws BuggleWallException { forward(); }
+	public void avance(int steps) throws BuggleWallException { forward(steps); }
+	public void recule()          throws BuggleWallException { backward(); }
+	public void recule(int steps) throws BuggleWallException { backward(steps); }
+	public Color getCouleur()             { return getColor(); }
+	public void setCouleur(Color c)       { setColor(c); }
+	public boolean estFaceMur()           { return isFacingWall(); }
+	public boolean estDosMur()            { return isBackingWall(); }
+	public void leveBrosse()              { brushUp(); }
+	public void baisseBrosse()            { brushDown(); }
+	public boolean estBrosseBaissee()     { return isBrushDown(); }
+	public Color getCouleurBrosse()       { return getBrushColor(); }
+	public void setCouleurBrosse(Color c) { setBrushColor(c); }
+	public Color getCouleurSol()          { return getGroundColor(); }
+	public boolean estSurBiscuit()        { return isOverBaggle(); }
+	public boolean porteBiscuit()         { return isCarryingBaggle(); }
+	public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
+	public void poseBiscuit()  throws AlreadyHaveBaggleException                               { dropBaggle(); }
+	public boolean estSurMessage()        { return isOverMessage(); }
+	public String litMessage()            { return readMessage(); }
+	public void ecritMessage(String s)    { writeMessage(s); }
+	public void ecritMessage(int i)       { writeMessage(i); }
+	public void effaceMessage()           { clearMessage(); }
+	public int getMondeHauteur()          { return getWorldHeight(); }
+	public int getMondeLargeur()          { return getWorldWidth(); }
+	// get/set X/Y/Pos are not translated as they happen to be the same in French
+	public boolean estChoisie()           { return isSelected(); }
+	
 }

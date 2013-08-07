@@ -2,6 +2,7 @@ package jlm.universe.bugglequest;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
 import jlm.universe.GridWorld;
 import jlm.universe.GridWorldCell;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
@@ -125,21 +126,21 @@ public class BuggleWorldCell extends GridWorldCell {
 	public void newBaggle() throws AlreadyHaveBaggleException {
 		//Logger.log("WorldCell:newBaggle", "");
 		if (this.baggle != null) 
-			throw new AlreadyHaveBaggleException("This cell already contains a baggle");
+			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
 		this.baggle = new Baggle(this);
 		world.notifyWorldUpdatesListeners();		
 	}
 	
 	public void newBaggle(Color c) throws AlreadyHaveBaggleException {
 		if (this.baggle != null) 
-			throw new AlreadyHaveBaggleException("This cell already contains a baggle");
+			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
 		this.baggle = new Baggle(this,c);
 		world.notifyWorldUpdatesListeners();
 	}
 	
 	public void setBaggle(Baggle b) throws AlreadyHaveBaggleException {
 		if (this.baggle != null && b != null) 
-			throw new AlreadyHaveBaggleException("This cell already contains a baggle");
+			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
 		this.baggle = b;
 		world.notifyWorldUpdatesListeners();
 	}

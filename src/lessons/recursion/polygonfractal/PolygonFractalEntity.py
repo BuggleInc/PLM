@@ -7,10 +7,10 @@ def polygonFractal (levels, sides, length, shrink):
       for i in range(sides):
         forward(length)
         
-        turnLeft((sides-2)*360/(sides*2))
+        left((sides-2)*360/(sides*2))
         polygonFractal(levels-1, sides, length*shrink,shrink)
-        turnRight((sides-2)*360/(sides*2))
-        turnRight(360/sides)
+        right((sides-2)*360/(sides*2))
+        right(360/sides)
     # END SOLUTION
 # END TEMPLATE 
 

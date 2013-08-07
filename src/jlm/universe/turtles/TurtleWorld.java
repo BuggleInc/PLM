@@ -131,15 +131,46 @@ public class TurtleWorld extends World {
 					"  entity.penUp()\n"+
 					"def penDown():\n"+
 					"  entity.penDown()\n"+
-					"def turnLeft(i):\n"+
-					"  entity.turnLeft(i)\n"+
-					"def turnRight(i):\n"+
-					"  entity.turnRight(i)\n"+
+					"def isPenDown():\n"+
+					"  return entity.isPenDown()\n"+
+					"def left(i):\n"+
+					"  entity.left(i)\n"+
+					"def right(i):\n"+
+					"  entity.right(i)\n"+
 					"def setColor(c):\n"+
 					"  entity.setColor(c)\n" +
+					"def getColor():\n"+
+					"  return entity.getColor()\n" +
 					"def setPos(x,y):\n" +
 					"  entity.setPos(x,y)\n" +
+					"def setX(x):\n" +
+					"  entity.setX(x)\n" +
+					"def setY(y):\n" +
+					"  entity.setY(y)\n" +
+					"def getX():\n" +
+					"  return entity.getX()\n" +
+					"def getY():\n" +
+					"  entity.getY()\n" +
 					"def moveTo(x,y):\n" +
+					"  entity.moveTo(x,y)\n"+
+					/* BINDINGS TRANSLATION: French */
+					"def recule(i):\n"+
+					"  entity.backward(i)\n"+
+					"def avance(i):\n"+
+					"  entity.forward(i)\n"+
+					"def leveCrayon():\n"+
+					"  entity.penUp()\n"+
+					"def baisseCrayon():\n"+
+					"  entity.penDown()\n"+
+					"def estCrayonBaisse():\n"+
+					"  return entity.isPenDown()\n"+
+					"def gauche(i):\n"+
+					"  entity.left(i)\n"+
+					"def droite(i):\n"+
+					"  entity.right(i)\n"+
+					"def setCouleur(c):\n"+
+					"  entity.setColor(c)\n" +
+					"def allerVers(x,y):\n" +
 					"  entity.moveTo(x,y)\n"
 					);
 		} else {

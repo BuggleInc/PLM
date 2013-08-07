@@ -490,16 +490,16 @@ msgstr ""
 #: src/jlm/universe/turtles/TurtleWorld.html:19
 #, no-wrap
 msgid ""
-"void turnRight(double angle)\n"
-"void turnLeft(double angle)"
+"void right(double angle)\n"
+"void left(double angle)"
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:21
 #, no-wrap
 msgid ""
-"turnRight(angle)\n"
-"turnLeft(angle)"
+"right(angle)\n"
+"left(angle)"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -745,32 +745,32 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void turnLeft()"
+msgid "void left()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-msgid "turnLeft()"
+msgid "left()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12 src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void turnRight()"
+msgid "void right()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
-msgid "turnRight()"
+msgid "right()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13 src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void turnBack()"
+msgid "void back()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-msgid "turnBack()"
+msgid "back()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><div>
@@ -1895,8 +1895,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "backward();\n"
-"turnLeft();\n"
-"turnRight();\n"
+"left();\n"
+"right();\n"
 msgstr ""
 
 #. type: Content of: <p><p><pre>
@@ -1904,8 +1904,8 @@ msgstr ""
 #, no-wrap
 msgid ""
 "backward()\n"
-"turnLeft()\n"
-"turnRight()\n"
+"left()\n"
+"right()\n"
 msgstr ""
 
 #. type: Content of: <p><p>
@@ -2952,7 +2952,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "while (true) {\n"
-"&nbsp;&nbsp;turnLeft();\n"
+"&nbsp;&nbsp;left();\n"
 "}"
 msgstr ""
 
@@ -2961,7 +2961,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "while True:\n"
-"&nbsp;&nbsp;turnLeft()"
+"&nbsp;&nbsp;left()"
 msgstr ""
 
 #. type: Content of: <p><p>
@@ -3113,7 +3113,7 @@ msgid ""
 "Your buggle got lost in a strange maze, and you must help it finding the "
 "exit that is represented in orange.  You cannot simply explain the path to "
 "the exit in something like "
-"<code>turnRight();forward;forward();forward()</code> because you have to "
+"<code>right();forward;forward();forward()</code> because you have to "
 "save two buggles at the same time, that are lost in similar but not "
 "identical worlds.  You can switch to the other world by using the combobox "
 "above the world representation (where it's written 'Deep Forest' right now), "
@@ -3346,9 +3346,9 @@ msgid ""
 "public void run() {\n"
 "&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
 "&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnRight();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;right();\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
 "&nbsp;&nbsp;}\n"
 "}"
 msgstr ""
@@ -3360,9 +3360,9 @@ msgid ""
 "def run():\n"
 "&nbsp;&nbsp;for i in range(7): \n"
 "&nbsp;&nbsp;&nbsp;&nbsp;goAndGet()\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnRight()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;right()\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;forward()\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;turnLeft()\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left()\n"
 "&nbsp;&nbsp;\n"
 "}"
 msgstr ""
@@ -3397,16 +3397,16 @@ msgstr ""
 msgid ""
 "forward();\n"
 "forward();\n"
-"turnLeft(); \n"
+"left(); \n"
 "forward();\n"
 "forward();\n"
-"turnLeft(); \n"
+"left(); \n"
 "forward();\n"
 "forward();\n"
-"turnLeft(); \n"
+"left(); \n"
 "forward();\n"
 "forward();\n"
-"turnLeft(); \n"
+"left(); \n"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -3415,16 +3415,16 @@ msgstr ""
 msgid ""
 "forward()\n"
 "forward()\n"
-"turnLeft() \n"
+"left() \n"
 "forward()\n"
 "forward()\n"
-"turnLeft() \n"
+"left() \n"
 "forward()\n"
 "forward()\n"
-"turnLeft() \n"
+"left() \n"
 "forward()\n"
 "forward()\n"
-"turnLeft() \n"
+"left() \n"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4035,9 +4035,9 @@ msgstr ""
 msgid ""
 "if (isOverBaggle())    \n"
 "     if (x == 5)\n"
-"          turnLeft();\n"
+"          left();\n"
 "else\n"
-"     turnRight();\n"
+"     right();\n"
 "forward();"
 msgstr ""
 
@@ -4057,9 +4057,9 @@ msgstr ""
 msgid ""
 "if (isOverBaggle())    \n"
 "        if (x == 5)\n"
-"            turnLeft();\n"
+"            left();\n"
 "        else\n"
-"            turnRight();\n"
+"            right();\n"
 "forward();"
 msgstr ""
 
@@ -4078,7 +4078,7 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/welcome/bdr/BDR.html:53
 #, no-wrap
-msgid "if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();"
+msgid "if (isOverBaggle()) if (x == 5) left(); else right(); forward();"
 msgstr ""
 
 #. type: Content of: <p>
@@ -4555,13 +4555,13 @@ msgstr ""
 #, no-wrap
 msgid ""
 "if (getIndication() == 'R') {\n"
-"  turnRight();\n"
+"  right();\n"
 "  forward();\n"
 "} else if (getIndication() == 'L') {\n"
-"  turnLeft();\n"
+"  left();\n"
 "  forward();\n"
 "} else if (getIndication() == 'I') {\n"
-"  turnBack();\n"
+"  back();\n"
 "  forward();\n"
 "/* other else if */\n"
 "} else {\n"
@@ -4620,15 +4620,15 @@ msgstr ""
 msgid ""
 "switch (getIndication()) {\n"
 "  case 'R':\n"
-"    turnRight(); \n"
+"    right(); \n"
 "    forward(); \n"
 "    break;\n"
 "  case 'L':\n"
-"    turnLeft();\n"
+"    left();\n"
 "    forward(); \n"
 "    break;\n"
 "  case 'U':\n"
-"    turnBack();\n"
+"    back();\n"
 "    forward();\n"
 "    break;\n"
 "  default: \n"
@@ -5486,7 +5486,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
-"    turnLeft();\n"
+"    left();\n"
 "  }\n"
 msgstr ""
 
@@ -5495,7 +5495,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "  if rule[state][currentColor][NEXT_MOVE] == LEFT:\n"
-"    turnLeft()\n"
+"    left()\n"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5508,7 +5508,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "  if (rule[x][y][1] == 2) {\n"
-"    turnLeft();\n"
+"    left();\n"
 "  }\n"
 msgstr ""
 
@@ -5517,7 +5517,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "  if rule[x][y][1] == 2:\n"
-"    turnLeft()\n"
+"    left()\n"
 msgstr ""
 
 #. type: Content of: <p>
@@ -6615,11 +6615,11 @@ msgstr ""
 msgid ""
 "void snowFlake (int levels, double length) {\n"
 "   snowSide(levels, length);\n"
-"   turnRight(120);\n"
+"   right(120);\n"
 "   snowSide(levels, length);\n"
-"   turnRight(120);\n"
+"   right(120);\n"
 "   snowSide(levels, length);\n"
-"   turnRight(120);\n"
+"   right(120);\n"
 "}"
 msgstr ""
 
@@ -6779,19 +6779,19 @@ msgstr ""
 msgid ""
 "spiral(5, 90, 0, 3);\n"
 "  forward(0);\n"
-"  turnLeft(90);\n"
+"  left(90);\n"
 "  spiral(4,90,3,3);\n"
 "    forward(3);\n"
-"    turnLeft(90);\n"
+"    left(90);\n"
 "    spiral(3,90,6,3);\n"
 "      forward(6);\n"
-"      turnLeft(90);\n"
+"      left(90);\n"
 "      spiral(2,90,9,3);\n"
 "        forward(9);\n"
-"        turnLeft(90);\n"
+"        left(90);\n"
 "        spiral(1,90,12,3);\n"
 "          forward(12);\n"
-"          turnLeft(90);\n"
+"          left(90);\n"
 "          spiral(0,90,12,3);\n"
 msgstr ""
 
@@ -7319,7 +7319,7 @@ msgstr ""
 #. type: Content of: <div><p>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:60
 msgid ""
-"If you do a <code>turnRight()</code> in any case at the end of your "
+"If you do a <code>right()</code> in any case at the end of your "
 "function, it's possible to write it in 3 lines with a <code>while</code> "
 "loop."
 msgstr ""

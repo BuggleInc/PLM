@@ -9,13 +9,13 @@ public class SquareEntity extends Turtle {
 		/* BEGIN SOLUTION */
 		for (int i = 0; i < 4; i++) {
 			square();
-			turnRight(90);
+			right(90);
 		}
 	}
 	public void square() {
 		for (int i = 0; i < 4; i++) {
 			forward(100);
-			turnRight(90);
+			right(90);
 		}
 		/* END SOLUTION */
 	}

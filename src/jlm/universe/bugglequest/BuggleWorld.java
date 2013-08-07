@@ -411,12 +411,12 @@ public class BuggleWorld extends GridWorld {
 				"	entity.forward(steps)\n"+
 				"def backward(steps=1):\n"+
 				"	entity.backward(steps)\n"+
-				"def turnLeft():\n"+
-				"	entity.turnLeft()\n"+
-				"def turnBack():\n"+
-				"	entity.turnBack()\n"+
-				"def turnRight():\n"+
-				"	entity.turnRight()\n"+
+				"def left():\n"+
+				"	entity.left()\n"+
+				"def back():\n"+
+				"	entity.back()\n"+
+				"def right():\n"+
+				"	entity.right()\n"+
 				"\n"+
 				"def getWorldHeight():\n"+
 				"	return entity.getWorldHeight()\n"+
@@ -438,8 +438,12 @@ public class BuggleWorld extends GridWorld {
 				"   entity.brushDown()\n"+
 				"def brushUp():\n"+
 				"   entity.brushUp()\n" +
+				"def isBrushDown():\n"+
+				"   entity.isBrushDown()\n" +
 				"def isFacingWall():" +
 				"	return entity.isFacingWall()\n"+
+				"def isBackingWall():" +
+				"	return entity.isBackingWall()\n"+
 				"def getGroundColor():\n"+
 				"   return entity.getGroundColor()\n"+
 				
@@ -470,6 +474,61 @@ public class BuggleWorld extends GridWorld {
 				"def setBrushColor(c):\n"+
 				"    entity.setBrushColor(c)\n"+
 				"def getBrushColor():\n"+
+				"    return entity.getBrushColor()\n"+
+				
+				/* BINDINGS TRANSLATION: French */
+				"def avance(pas=1):\n"+
+				"	entity.forward(pas)\n"+
+				"def recule(pas=1):\n"+
+				"	entity.backward(pas)\n"+
+				"def gauche():\n"+
+				"	entity.left()\n"+
+				"def retourne():\n"+
+				"	entity.back()\n"+
+				"def droite():\n"+
+				"	entity.right()\n"+
+				"\n"+
+				"def getMondeHauteur():\n"+
+				"	return entity.getWorldHeight()\n"+
+				"def getMondeLargeur():\n"+
+				"	return entity.getWorldWidth()\n"+
+				"def baisseBrosse():\n"+
+				"   entity.brushDown()\n"+
+				"def leveBrosse():\n"+
+				"   entity.brushUp()\n" +
+				"def estBrosseBaissee():\n"+
+				"   entity.isBrushDown()\n" +
+				"def estFaceMur():" +
+				"	return entity.isFacingWall()\n"+
+				"def estDosMur():" +
+				"	return entity.isBackingWall()\n"+
+				"def getCouleurSol():\n"+
+				"   return entity.getGroundColor()\n"+
+				
+				"def errorMsg(str):\n"+
+				"  entity.seenError(str)\n"+
+				
+				"def estSurBiscuit():\n"+
+				"	return entity.isOverBaggle()\n"+
+				"def porteBiscuit():\n"+
+				"	return entity.isCarryingBaggle()\n"+
+				"def prendBiscuit():\n"+
+				"	return entity.pickupBaggle()\n"+
+				"def poseBiscuit():\n"+
+				"	return entity.dropBaggle()\n"+
+				
+				"def estSurMessage():\n"+
+				"	return entity.isOverMessage()\n"+
+				"def litMessage():\n"+
+				"	return entity.readMessage()\n"+
+				"def effaceMessage():\n"+
+				"   entity.clearMessage()\n"+
+				"def ecritMessage(msg):\n"+
+				"   entity.writeMessage(msg)\n"+
+				
+				"def setBrossehCouleur(c):\n"+
+				"    entity.setBrushColor(c)\n"+
+				"def getBrosseCouleur():\n"+
 				"    return entity.getBrushColor()\n"
 						);		
 		} else {

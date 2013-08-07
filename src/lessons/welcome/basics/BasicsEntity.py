@@ -5,12 +5,12 @@ brushDown()
 for i in range(4):
     forward()
     forward()
-    turnRight()
+    right()
                 
 brushUp()
 forward()
-turnRight()
+right()
 forward()
-turnLeft()
+left()
 # END SOLUTION
 

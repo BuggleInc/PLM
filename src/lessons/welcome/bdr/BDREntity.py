@@ -9,13 +9,13 @@ finished = False
 while not finished:
     c = getIndication()
     if c == 'R':
-        turnRight()
+        right()
         forward()
     elif c == 'L':
-        turnLeft()
+        left()
         forward()
     elif c == 'I':
-        turnBack()
+        back()
         forward()
     elif c == 'A':
         forward()

@@ -4,9 +4,9 @@ def step(rule, colors):
 	for i in range( len(colors) ):
 		if getGroundColor() == colors[i]:
 			if rule[i] == 'L':
-				turnLeft()
+				left()
 			elif rule[i] == 'R':
-				turnRight()
+				right()
 			else:
 				log("Unknown command associated to i=%d: %s" %(i,rule[i]))
 			newrank = (i+1) % (len(colors))

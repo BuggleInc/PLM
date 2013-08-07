@@ -11,9 +11,9 @@ def stepHandOnWall():
     global angleSum
     while not isFacingWall():
         forward()
-        turnLeft()
+        left()
         angleSum += 1
-    turnRight()
+    right()
     angleSum -= 1
 
 def isDirectionFree(dir):
@@ -32,7 +32,7 @@ while not isOverBaggle():
     if northRunner:
         while not isFacingWall():
             forward()
-        turnRight()
+        right()
         angleSum -= 1
         northRunner = False
     else :

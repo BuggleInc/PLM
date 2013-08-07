@@ -22,7 +22,7 @@ def hunt():
          forward()
          brushUp()
       else:
-	     turnLeft()
+	     left()
    pickupBaggle()
 
 hunt()

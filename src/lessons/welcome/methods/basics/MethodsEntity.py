@@ -24,6 +24,6 @@ def goAndGet():
 
 for i in range(7):
   goAndGet()
-  turnRight()
+  right()
   forward()
-  turnLeft()
+  left()

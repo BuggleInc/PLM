@@ -2,6 +2,7 @@ package jlm.universe.bugglequest;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
 import jlm.universe.Direction;
 import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import jlm.universe.bugglequest.exception.BuggleInOuterSpaceException;
@@ -25,7 +26,7 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.forward(); 
 		} catch (BuggleWallException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "You hit a wall.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
@@ -36,7 +37,7 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.forward(count); 
 		} catch (BuggleWallException e) { 
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "You hit a wall.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
@@ -47,7 +48,7 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.backward(); 
 		} catch (BuggleWallException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "You hit a wall.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
@@ -58,7 +59,7 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.backward(count); 
 		} catch (BuggleWallException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "You hit a wall.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
@@ -74,11 +75,11 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.pickupBaggle(); 
 		} catch (NoBaggleUnderBuggleException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "No baggle here.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		} catch (AlreadyHaveBaggleException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "You are already carrying a baggle.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
@@ -89,7 +90,7 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.dropBaggle(); 
 		} catch (AlreadyHaveBaggleException e) { 
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "Buggle already carry a baggle.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}	
@@ -99,7 +100,7 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.setX(x);
 		} catch (BuggleInOuterSpaceException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "The buggle moved to the outer space.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
@@ -109,7 +110,7 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.setY(y);
 		} catch (BuggleInOuterSpaceException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "The buggle moved to the outer space.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
@@ -119,8 +120,17 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			super.setPos(x,y);
 		} catch (BuggleInOuterSpaceException e) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "The buggle moved to the outer space.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 	}
+	
+	/* BINDINGS TRANSLATION: French (get/set X/Y/Pos are not translated as they happen to be the same in French) */
+	public void avance()          { forward(); }
+	public void avance(int steps) { forward(steps); }
+	public void recule()          { backward(); }
+	public void recule(int steps) { backward(steps); }
+	public void prendBiscuit()    { pickupBaggle(); }
+	public void poseBiscuit()     { dropBaggle(); }
+
 }

@@ -8,16 +8,16 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 
 	@Override
 	public void right() {
-		throw new RuntimeException("turnRight() forbidden in this exercise.");
+		throw new RuntimeException("right() forbidden in this exercise.");
 	}
 
 	@Override
 	public void left() {
 		for (StackTraceElement s : Thread.currentThread().getStackTrace()) {
-			if (s.getMethodName().contains("turnLeft")) {
+			if (s.getMethodName().contains("left")) {
 				if (line != -1 && line != s.getLineNumber()) {
-					System.out.println("Forbiden to use turnLeft() more than once in this exercise.");
-					throw new RuntimeException("Forbiden to use turnLeft() more than once in this exercise.");
+					System.out.println("Forbiden to use left() more than once in this exercise.");
+					throw new RuntimeException("Forbiden to use left() more than once in this exercise.");
 				} else {
 					line = s.getLineNumber();
 					super.left();

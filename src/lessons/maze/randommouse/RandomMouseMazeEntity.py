@@ -23,8 +23,8 @@ while not isOverBaggle():
         if not isFacingWall():
             forward()
     elif n == 1:
-        turnLeft()
+        left()
     else:
-        turnRight()
+        right()
 pickupBaggle()
 # END SOLUTION

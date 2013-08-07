@@ -25,9 +25,9 @@ else
 like this: </p>
 <pre class="Java">if (isOverBaggle())    
      if (x == 5)
-          turnLeft();
+          left();
 else
-     turnRight();
+     right();
 forward();</pre>
 
 <p class="Java">In fact, it does not turn right when there is no baggle on the ground AND x
@@ -37,9 +37,9 @@ code as if it were written the following way (note that the <tt>else</tt>
 were moved to the right):</p>
 <pre class="Java">if (isOverBaggle())    
         if (x == 5)
-            turnLeft();
+            left();
         else
-            turnRight();
+            right();
 forward();</pre>
 
 <p class="Java">The first lesson of this is that the indentation is very helpful to help
@@ -50,7 +50,7 @@ really want to indent it correctly. That's for example the case if you want
 a professor to read it (to grade it or to answer a question about it), or if
 you want to reuse your code later.</p> 
 
-<pre class="Java">if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
+<pre class="Java">if (isOverBaggle()) if (x == 5) left(); else right(); forward();</pre>
 
 <p class="Java">The second lesson is that a <tt>else</tt> branch always connects to the
 closest <tt>if</tt>. This may be a bit troublesome in some case, and it may

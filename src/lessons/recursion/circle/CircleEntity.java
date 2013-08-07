@@ -9,7 +9,7 @@ public class CircleEntity extends Turtle {
 	public void circle(double step) {
 		for (int i=0;i<360;i++) {
 			forward(step);
-			turnRight(1);
+			right(1);
 		}		
 	}
 	public void run() {

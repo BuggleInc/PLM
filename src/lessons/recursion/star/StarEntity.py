@@ -4,11 +4,11 @@ BRANCH_COUNT = 5
 
 def branch(size):
 	forward(size);
-	turnRight(360 / BRANCH_COUNT)
+	right(360 / BRANCH_COUNT)
 	forward(size)
 
 	for i in range(2):
-		turnLeft(360 / BRANCH_COUNT)
+		left(360 / BRANCH_COUNT)
 
 
 def star(size, c):
@@ -17,8 +17,8 @@ def star(size, c):
 		branch(size)
 
 star(100, Color.black)
-turnRight(45)
+right(45)
 star(80, Color.blue)
-turnRight(45)
+right(45)
 star(60, Color.red)
 # END SOLUTION

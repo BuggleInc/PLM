@@ -27,9 +27,9 @@ else
 comme dans l'exemple suivant. </p>
 <pre class="Java">if (isOverBaggle())    
      if (x == 5)
-          turnLeft();
+          left();
 else
-     turnRight();
+     right();
 forward();</pre>
 
 <p class="Java">En fait, ça ne tourne pas à droite quand il n'y a pas un baggle par terre ET
@@ -39,9 +39,9 @@ autre valeur. Autrement dit, la buggle lit le code précédent comme suit
 précédemment) :</p>
 <pre class="Java">if (isOverBaggle())    
         if (x == 5)
-            turnLeft();
+            left();
         else
-            turnRight();
+            right();
 forward();</pre>
 
 <p class="Java">La première leçon, c'est que l'indentation aide les humains à comprendre,
@@ -52,7 +52,7 @@ devient très importante voire indispensable. C'est par exemple le cas si
 votre code doit être relu par un professeur (pour qu'il le note ou pour lui
 poser une question), ou si vous comptez réutiliser votre code plus tard.</p> 
 
-<pre class="Java">if (isOverBaggle()) if (x == 5) turnLeft(); else turnRight(); forward();</pre>
+<pre class="Java">if (isOverBaggle()) if (x == 5) left(); else right(); forward();</pre>
 
 <p class="Java">La seconde leçon, c'est qu'une branche <tt>else</tt> se raccroche toujours
 au <tt>if</tt> le plus proche. C'est parfois un peu contre-intuitif, et il
