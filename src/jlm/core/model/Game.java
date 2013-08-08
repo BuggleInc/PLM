@@ -481,7 +481,7 @@ public class Game implements IWorldView {
 
 	public void setOutputWriter(LogWriter writer) {
 		this.outputWriter = writer;
-		if (!getProperty(PROP_OUTPUT_CAPTURE, "false",true).equals("true")) {
+		if (getProperty(PROP_OUTPUT_CAPTURE, "true",true).equals("true")) {
 			Logger l = new Logger(outputWriter);
 			System.setOut(l);
 			System.setErr(l);
