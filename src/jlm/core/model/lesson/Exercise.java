@@ -1,5 +1,6 @@
 package jlm.core.model.lesson;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ import jlm.core.JLMCompilerException;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.utils.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.World;
 
@@ -30,7 +32,12 @@ import org.xnap.commons.i18n.I18nFactory;
 
 public abstract class Exercise extends Lecture {
 	public static enum WorldKind {INITIAL,CURRENT, ANSWER}
+	public static enum StudentOrCorrection {STUDENT, CORRECTION}
 
+	protected String nameOfCorrectionEntity = getClass().getCanonicalName()+"Entity"; /* name of the entity class computing the answer. Don't change! */
+	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
+
+	
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
 	
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
@@ -106,9 +113,13 @@ public abstract class Exercise extends Lecture {
 
 	/**
 	 * Generate Java source from the user function
+	 * @param out 
+	 * 			where to display our errors
+	 * @param whatToCompile
+	 * 			either STUDENT's provided data or CORRECTION entity 
 	 * @throws JLMCompilerException 
 	 */
-	public void compileAll(LogWriter out) throws JLMCompilerException {
+	public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws JLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";");
@@ -121,7 +132,7 @@ public abstract class Exercise extends Lecture {
 			Map<String, String> sources = new TreeMap<String, String>();
 			if (sourceFiles.get(Game.JAVA) != null)
 				for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns)); 
+					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile)); 
 			
 			if (sources.isEmpty()) 
 				return;
@@ -130,35 +141,44 @@ public abstract class Exercise extends Lecture {
 				DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 				compiledClasses = compiler.compile(sources, errs);
 
-				out.log(errs);
+				if (out != null)
+					out.log(errs);
 			} catch (JLMCompilerException e) {
 				System.err.println(Game.i18n.tr("Compilation error:"));
-				out.log(e.getDiagnostics());
+				if (out != null)
+					out.log(e.getDiagnostics());
 				lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
 
 				if (Game.getInstance().isDebugEnabled() && sourceFiles.get(Game.JAVA) != null)
 					for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
-						System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns)); 
+						System.out.println("Source file "+sf.getName()+":"+sf.getCompilableContent(runtimePatterns,whatToCompile)); 
 
 				throw e;
 			}
 		} else if (Game.getProgrammingLanguage().equals(Game.SCALA)) {
 			List<SourceFile> sfs = sourceFiles.get(Game.SCALA);
-			if (sfs == null || sfs.isEmpty())
-				return;
+			if (sfs == null || sfs.isEmpty()) {
+				String msg = getName()+": No source to compile";
+				System.err.println(msg);
+				JLMCompilerException e = new JLMCompilerException(msg, null, null);
+				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+				throw e;
+			} else {
+				System.err.println("Got "+sfs.size()+" files to compile");				
+			}
+				
 			try {
 				CompilerScala.getInstance().reset();
 				for (SourceFile sf : sfs) 
-					CompilerScala.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns), sf.getOffset());
+					CompilerScala.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
 			} catch (JLMCompilerException e) {
 				System.err.println(Game.i18n.tr("Compilation error:"));
-				out.log(e.getMessage());
+				System.err.println(e.getMessage());
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage());
 				
 				throw e;
 			}
-		}
-		
+		} 
 	}
 	
 	private String packageName(){
@@ -183,12 +203,23 @@ public abstract class Exercise extends Lecture {
 		return getSourceFilesList(lang).get(i);
 	}
 
-	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset) {
-		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset));
+	public void newSource(ProgrammingLanguage lang, String name, String initialContent, String template,int offset,String correctionCtn) {
+		getSourceFilesList(lang).add(new SourceFileRevertable(name, initialContent, template, offset,correctionCtn));
 	}
 
-	protected void mutateEntities(Vector<World> worlds, String newClassName) {
+	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
+		
+		String newClassName= (whatToMutate == StudentOrCorrection.STUDENT ? tabName : nameOfCorrectionEntity);
+		
 		ProgrammingLanguage lang = Game.getProgrammingLanguage();
+		Vector<World> worlds;
+		switch (kind) {
+		case INITIAL: worlds = initialWorld; break;
+		case CURRENT: worlds = currentWorld; break;
+		case ANSWER:  worlds = answerWorld;  break;
+		default: throw new RuntimeException("kind is invalid: "+kind);
+		}
+
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
 		String[] forbidden = new String[] {"'","\""};
 		for (String stringPattern : forbidden) {
@@ -235,20 +266,38 @@ public abstract class Exercise extends Lecture {
 					 * Also, since the classloader don't cross our way, don't mess with package names to force reloads. In other words, don't use className() in here!! 
 					 */	
 					
-					boolean foundScript = false;
-					for (SourceFile sf : sourceFiles.get(lang)) {
-						if (newClassName.equals(sf.name)) {
-							old.setScript(lang, sf.getCompilableContent());
-							old.setScriptOffset(lang, sf.getOffset());
-							foundScript = true;
-						} 
-					}
-					if (!foundScript) {
-						StringBuffer sb = new StringBuffer();
-						for (SourceFile sf: sourceFiles.get(lang)) {
-							sb.append(sf.name+", ");
+					if (whatToMutate == StudentOrCorrection.STUDENT) {
+						boolean foundScript = false;
+
+						for (SourceFile sf : sourceFiles.get(lang)) {
+							if (newClassName.equals(sf.name)) {
+								old.setScript(lang, sf.getCompilableContent(whatToMutate));
+								old.setScriptOffset(lang, sf.getOffset());
+								foundScript = true;
+							} 
 						}
-						throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
+						if (!foundScript) {
+							StringBuffer sb = new StringBuffer();
+							for (SourceFile sf: sourceFiles.get(lang)) 
+								sb.append(sf.name+", ");
+
+							System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
+							throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						
+						}
+					} else { // whatToMutate == StudentOrCorrection.CORRECTION
+						for (World aw : worlds) {
+							for (Entity ent: aw.getEntities()) {
+								StringBuffer sb = null;
+								try {
+									sb = FileUtils.readContentAsText(nameOfCorrectionEntity, lang.getExt(), false);
+								} catch (IOException ex) {
+									throw new RuntimeException(Game.i18n.tr("Cannot compute the answer from file {0}.{1} since I cannot read it (error was: {2}).",nameOfCorrectionEntity,lang.getExt(),ex.getLocalizedMessage()));			
+								}
+
+
+								ent.setScript(lang, sb.toString());
+							}
+						}
 					}
 				}
 			}
@@ -298,6 +347,7 @@ public abstract class Exercise extends Lecture {
 
 	/* setters and getter of the programming language that this exercise accepts */ 
 	private Set<ProgrammingLanguage> progLanguages = new HashSet<ProgrammingLanguage>();
+
 	public Set<ProgrammingLanguage> getProgLanguages() {
 		return progLanguages;
 	}

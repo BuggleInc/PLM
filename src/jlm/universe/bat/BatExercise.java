@@ -44,7 +44,13 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 	public abstract void run(BatTest t);
 	
 	@Override 
-	public void mutateCorrection(WorldKind kind) {
+	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
+		if (whatToMutate == StudentOrCorrection.STUDENT) {
+			super.mutateEntities(kind, whatToMutate);
+			return;
+		}
+		/* compute the correction */
+			
 		Vector<World> worlds;
 		switch (kind) {
 		case INITIAL: worlds = initialWorld; break;
@@ -54,7 +60,7 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		}
 
 		for (ProgrammingLanguage pl : getProgLanguages()) {
-			if (!pl.equals(Game.JAVA)) 
+			if (!pl.equals(Game.JAVA) && !pl.equals(Game.SCALA)) 
 				worlds.get(0).getEntity(0).setScript(pl, corrections.get(pl));
 		}
 		

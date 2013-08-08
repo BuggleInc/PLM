@@ -35,7 +35,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 			} 
 		}
 		if (!foundOne)
-			throw new RuntimeException("Cannot find an entity of name "+entName+" for this exercise. You should fix your pathes and such");
+			throw new RuntimeException("Cannot find an entity of name "+entName+" for this exercise. You should fix your paths and/or use langTemplate().");
 
 		SourceFile sf = sourceFiles.get(Game.JAVA).get(0);
 		sf.setTemplate("$package "+template+" "+sf.getTemplate()+" $body }");
@@ -49,7 +49,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		if (isSetup)
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template");
 		
-		newSource(pl, entName, initialCode, "$body",0);
+		newSource(pl, entName, initialCode, "$body",0,"(templating entity)");
 		corrections.put(pl, initialCode+correction);
 		addProgLanguage(pl);
 	}

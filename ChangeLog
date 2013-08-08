@@ -4,6 +4,8 @@
   * Translate all builtins of buggles and turtles to French:
     It is now possible to write avance() instead of forward()
   * Review all translations for uniformity and to iron out some typos
+  * Test the compilation process in our JUnit tests, for Java and Scala.
+  * Mark many more strings for translation in the engine.
 20130804:
   * RELEASE 2.0, the revolutionary night.
   * Remove the array world. It was not helping very much when compared

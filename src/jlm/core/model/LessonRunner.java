@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 import jlm.core.JLMCompilerException;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Exercise.StudentOrCorrection;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.ui.ExerciseFailedDialog;
 import jlm.core.ui.ResourcesCache;
@@ -50,7 +51,7 @@ public class LessonRunner extends Thread {
 			game.saveSession(); // for safety reasons;
 			
 			game.setState(Game.GameState.COMPILATION_STARTED);
-			exo.compileAll(this.game.getOutputWriter());
+			exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.STUDENT);
 			game.setState(Game.GameState.COMPILATION_ENDED);
 			
 			game.setState(Game.GameState.EXECUTION_STARTED);

@@ -9,10 +9,11 @@ import java.util.Locale;
 import java.util.Set;
 
 import jlm.core.model.Game;
+import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.ExecutionProgress;
 import jlm.core.model.lesson.Exercise;
+import jlm.core.model.lesson.Exercise.StudentOrCorrection;
 import jlm.core.model.lesson.Exercise.WorldKind;
-import jlm.core.model.lesson.ExerciseTemplated;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.utils.FileUtils;
@@ -77,8 +78,8 @@ public class ExoTest {
 	}
 
 	
-	private ExerciseTemplated exo;
-	public ExoTest(Lesson l, ExerciseTemplated e) {
+	private Exercise exo;
+	public ExoTest(Lesson l, Exercise e) {
 		this.exo = e;
 
 		Game.getInstance().setCurrentLesson(l);
@@ -89,21 +90,39 @@ public class ExoTest {
 	
 	/** Resets current world, populate it with the correction entity, and rerun it */
 	private void testCorrectionEntity() {
+		ProgrammingLanguage lang = Game.getProgrammingLanguage();
 		Game.getInstance().setCurrentExercise(exo);
+		Game.getInstance().setProgramingLanguage(lang); // This stupid Game.setCurrentExercise tries to be cleaver if the current progLang is not avail in the requested exercise
+		
+		System.out.flush();
+		System.err.println("XXXXXXX "+exo.getName()+" in "+lang.getLang()+" XXXXXXX");
 		exo.lastResult = new ExecutionProgress();
 		
-		exo.reset();
-		exo.mutateCorrection(WorldKind.CURRENT);
-		
-		if (exo instanceof BatExercise)
-			for (BatTest t : ((BatWorld)exo.getWorld(0)).tests) 
-				t.objectiveTest = false; // we want to set the result for real, not the expected
-		
-		for (World w : exo.getWorlds(WorldKind.CURRENT)) 
-			for (Entity ent: w.getEntities())  
-				ent.runIt(exo.lastResult);
+		try {
+			exo.compileAll(null,StudentOrCorrection.CORRECTION);
+			if (exo.lastResult.compilationError != null)
+				fail(exo.getClass().getSimpleName()+": compilation error: "+exo.lastResult.compilationError);
 
-		exo.check();
+			exo.reset();
+			// For compiled languages, we mutate to the compiled entity. 
+			// For script languages, we mutate to the correction entity.
+			StudentOrCorrection what = StudentOrCorrection.CORRECTION;
+			if (lang == Game.JAVA || lang == Game.SCALA)
+				what = StudentOrCorrection.STUDENT;
+			exo.mutateEntities(WorldKind.CURRENT, what);
+			
+			if (exo instanceof BatExercise)
+				for (BatTest t : ((BatWorld)exo.getWorld(0)).tests) 
+					t.objectiveTest = false; // we want to set the result for real, not the expected
+			
+			for (World w : exo.getWorlds(WorldKind.CURRENT)) 
+				for (Entity ent: w.getEntities())  
+					ent.runIt(exo.lastResult);
+			
+			exo.check();
+		} catch (JLMCompilerException e) {
+			// compileAll already setup the error message; we just needed to not run the entity in that case
+		}
 		
 		if (exo.lastResult.compilationError != null)
 			fail(exo.getClass().getSimpleName()+": compilation error: "+exo.lastResult.compilationError);
@@ -124,13 +143,15 @@ public class ExoTest {
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
 		testCorrectionEntity();
 	}
-	@Test(timeout=10000)
+	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testScalaEntity() {
 		Game.getInstance().setProgramingLanguage(Game.SCALA);
+		if (Game.getProgrammingLanguage() != Game.SCALA)
+			throw new RuntimeException("DAFUQ?! Asked for SCALA and got "+Game.getProgrammingLanguage());
 		testCorrectionEntity();
 	}
 	
-	@Test(timeout=30000)
+	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) {
 //			System.out.println("Exercise "+exo.getClass().getName()+" does not support python");

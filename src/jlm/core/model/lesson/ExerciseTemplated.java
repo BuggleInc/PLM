@@ -20,9 +20,7 @@ import jlm.universe.World;
 
 public abstract class ExerciseTemplated extends Exercise {
 
-	protected String tabName = getClass().getSimpleName(); /** Name of the tab in editor -- must be a valid java identifier */
-	protected String worldFileName = getClass().getCanonicalName(); /** Name of the save files */
-	protected String nameOfCorrectionEntity = getClass().getCanonicalName()+"Entity"; /** name of the entity class computing the answer. Usually no need to redefine this */
+	protected String worldFileName = getClass().getCanonicalName(); /* Name of the save files */
 
 	public ExerciseTemplated(Lesson lesson) {
 		super(lesson);
@@ -38,7 +36,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		try {
 			sb = FileUtils.readContentAsText(filename, lang.getExt(), false);
 		} catch (IOException ex) {
-			throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.",filename,lang.getExt()));			
+			throw new NoSuchEntityException(Game.i18n.tr("Source file {0}.{1} not found.",filename.replaceAll("\\.","/"),lang.getExt()));			
 		}
 
 		String content;
@@ -64,6 +62,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		                                             *   Not doing Without it, we would have issues if the student puts some empty lines with the indentation marker at tail
 		                                             */
 		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
+		StringBuffer correction = new StringBuffer(); /* the unchanged content, but the package and className modification */
 
 		boolean seenTemplate=false; // whether B/E SOLUTION seems included within B/E TEMPLATE
 		for (String line : content.split("\n")) {
@@ -72,22 +71,30 @@ public abstract class ExerciseTemplated extends Exercise {
 			switch (state) {
 			case 0: /* initial content */
 				if (line.contains("class ")) {
-					head.append(line.replaceAll("class \\S*", "class "+name));
+					String modified = line.replaceAll("class \\S*", "class "+name);
+					head.append(modified);
+					correction.append(modified+"\n");
 				} else if (line.contains("package")) {
-					head.append("$package \n");						
+					head.append("$package \n");	
+					correction.append("$package \n");
 				} else if (line.contains("BEGIN TEMPLATE")) {
+					correction.append(line+"\n");
 					seenTemplate = true;
 					state = 1;
 				} else if (line.contains("BEGIN SOLUTION")) {
+					correction.append(line+"\n");
 					state = 2; 
 				} else if (line.contains("BEGIN SKEL")) {
+					correction.append(line+"\n");
 					savedState = state;
 					state = 6; 
 				} else {
+					correction.append(line+"\n");
 					head.append(line+"\n");
 				}
 				break;
 			case 1: /* template head */
+				correction.append(line+"\n");
 				if (line.contains("BEGIN TEMPLATE")) {
 					System.out.println(i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
 					state = 4;
@@ -108,6 +115,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			case 2: /* solution */
+				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
 					System.out.println(i18n.tr("{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity.",shownFilename));
 					state = 4;
@@ -124,6 +132,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			case 3: /* template tail */
+				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) {
 					if (!seenTemplate)
 						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
@@ -142,6 +151,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				}
 				break;
 			case 4: /* end of file */
+				correction.append(line+"\n");
 				if (line.contains("END TEMPLATE")) 
 					if (!seenTemplate)
 						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
@@ -149,11 +159,13 @@ public abstract class ExerciseTemplated extends Exercise {
 				tail.append(line+"\n");
 				break;
 			case 5: /* Hidden but not bodied */
+				correction.append(line+"\n");
 				if (line.contains("END HIDDEN")) {
 					state = savedState;
 				} 
 				break;
 			case 6: /* skeleton */
+				correction.append(line+"\n");
 				if (line.contains("END SKEL")) {
 					state = savedState;
 				} else {
@@ -252,7 +264,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		}*/
 
 		newSource(lang, name, initialContent,
-						skelContent.length()>0?skelContent:template,offset);
+						skelContent.length()>0?skelContent:template,offset,correction.toString());
 	}
 
 	protected final void setup(World w) {
@@ -290,19 +302,21 @@ public abstract class ExerciseTemplated extends Exercise {
 
 				} catch (NoSuchEntityException e) {
 					if (lang.equals(Game.PYTHON) || lang.equals(Game.SCALA) || lang.equals(Game.JAVA)) 
-						System.out.println("Cannnot find any suitable templating entity "+nameOfCorrectionEntity+" in "+lang+":\n  "+e);
+						System.out.println("No templating entity found: "+e);
 						
 					if (getProgLanguages().contains(lang)) 
-						throw new RuntimeException("Exercise "+getName()+" is said to be compatible with language "+lang+", but I fail to find an entity for this language",e);
+						throw new RuntimeException(
+								Game.i18n.tr("Exercise {0} is said to be compatible with language {1}, but there is no entity for this language: {2}",
+								getName(),lang,e.toString()));
 					/* Ok, this language does not work for this exercise but didn't promise anything. I can deal with it */
 				}
 			} else {
 				foundALanguage = true;
 			}
 		}
-		if (!foundALanguage) {
-			throw new RuntimeException("Cannot find an entity for exercise "+getName()+". You should fix your paths and such");
-		}
+		if (!foundALanguage) 
+			throw new RuntimeException(Game.i18n.tr("{0}: No entity found. You should fix your paths and such",getName()));
+				
 		computeAnswer();
 	}
 	
@@ -344,7 +358,7 @@ public abstract class ExerciseTemplated extends Exercise {
 				/* I/O didn't work. We have to load the files manually */
 				ExecutionProgress progress = new ExecutionProgress();
 				
-				mutateCorrection(WorldKind.ANSWER);
+				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 				for (World aw : answerWorld) 
 					for (Entity ent: aw.getEntities()) 
@@ -380,7 +394,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		if (lastResult == null)
 			lastResult = new ExecutionProgress();
 		
-		mutateEntities(currentWorld, tabName);
+		mutateEntities(WorldKind.CURRENT, StudentOrCorrection.STUDENT);
 
 		for (World cw: getWorlds(WorldKind.CURRENT)) {
 			cw.doDelay();
@@ -396,39 +410,9 @@ public abstract class ExerciseTemplated extends Exercise {
 			answerWorld.get(i).reset(initialWorld.get(i));
 			answerWorld.get(i).doDelay();
 		}
-		mutateCorrection(WorldKind.ANSWER);
+		mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 		for (World aw:getWorlds(WorldKind.ANSWER))
 			aw.runEntities(runnerVect,ignored);
-	}
-	
-	public void mutateCorrection(WorldKind kind) {
-		ProgrammingLanguage lang = Game.getProgrammingLanguage();
-		Vector<World> worlds;
-		switch (kind) {
-		case INITIAL: worlds = initialWorld; break;
-		case CURRENT: worlds = currentWorld; break;
-		case ANSWER:  worlds = answerWorld;  break;
-		default: throw new RuntimeException("kind is invalid: "+kind);
-		}
-
-		/* No need to deal with lightbot here: this method is redefined in LightBotExercise from scratch */
-		if (lang.equals(Game.JAVA)) {
-			mutateEntities(worlds,nameOfCorrectionEntity);
-		} else {
-			for (World aw : worlds) {
-				for (Entity ent: aw.getEntities()) {
-					StringBuffer sb = null;
-					try {
-						sb = FileUtils.readContentAsText(nameOfCorrectionEntity, lang.getExt(), false);
-					} catch (IOException ex) {
-						throw new RuntimeException("Cannot compute the answer from file "+nameOfCorrectionEntity+"."+lang.getExt()+" since it does not exist.");			
-					}
-
-
-					ent.setScript(lang, sb.toString());
-				}
-			}
-		}		
 	}
 }

@@ -11,7 +11,7 @@ public class LightBotSourceFile extends SourceFileRevertable {
 	private LightBotInstruction[] func2;
 
 	public LightBotSourceFile(String name) {
-		super(name, "");
+		super(name);
 		resetBody();
 	}
 	@Override

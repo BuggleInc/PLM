@@ -1,7 +1,6 @@
 package jlm.universe.lightbot;
 
 import java.util.List;
-import java.util.Vector;
 
 import jlm.core.model.Game;
 import jlm.core.model.lesson.ExecutionProgress;
@@ -77,7 +76,7 @@ public class LightBotExercise extends ExerciseTemplated {
 	}
 	
 	@Override
-	final protected void mutateEntities(Vector<World> worlds, String newClassName) {
+	final public void mutateEntities(WorldKind kind, StudentOrCorrection what) {
 		throw new RuntimeException("Why are you trying to mutate Lightbot entities, you weirdo?! super.mutateEntities() is not ready for that.");
 	}
 }
