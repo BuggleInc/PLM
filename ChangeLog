@@ -1,9 +1,9 @@
 20130815:
-  * Introduce Scala as a new programing language. 
-    Scala 2.10+ is required.
+  * Introduce Scala as a new programing language (version 2.10+ required)
   * Change turnLeft()/turnRight() to left()/right() in buggles & turtles
   * Translate all builtins of buggles and turtles to French:
     It is now possible to write avance() instead of forward()
+  * Review all translations for uniformity and to iron out some typos
 20130804:
   * RELEASE 2.0, the revolutionary night.
   * Remove the array world. It was not helping very much when compared
