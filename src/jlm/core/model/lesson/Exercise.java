@@ -15,9 +15,9 @@ import java.util.regex.Pattern;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
-import jlm.core.InMemoryCompiler;
+import jlm.core.CompilerJava;
+import jlm.core.CompilerScala;
 import jlm.core.JLMCompilerException;
-import jlm.core.ScalaCompiler;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 import jlm.core.model.ProgrammingLanguage;
@@ -101,7 +101,7 @@ public abstract class Exercise extends Lecture {
 	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. 
 	//TODO: I tried to put it as static, but of course strange behaviors happen afterwards
 	// Create a compiler of classes (using java 1.6)
-	private final InMemoryCompiler compiler = new InMemoryCompiler(Arrays.asList(new String[] { "-target", "1.6" }));
+	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] { "-target", "1.6" }));
 
 
 	/**
@@ -147,9 +147,9 @@ public abstract class Exercise extends Lecture {
 			if (sfs == null || sfs.isEmpty())
 				return;
 			try {
-				ScalaCompiler.getInstance().reset();
+				CompilerScala.getInstance().reset();
 				for (SourceFile sf : sfs) 
-					ScalaCompiler.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns), sf.getOffset());
+					CompilerScala.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns), sf.getOffset());
 			} catch (JLMCompilerException e) {
 				System.err.println(Game.i18n.tr("Compilation error:"));
 				out.log(e.getMessage());
@@ -211,7 +211,7 @@ public abstract class Exercise extends Lecture {
 						if (lang.equals(Game.JAVA))
 							ent = (Entity) compiledClasses.get(className(newClassName)).newInstance();
 						else
-							ent = (Entity)ScalaCompiler.getInstance().findClass(className(newClassName)).newInstance();
+							ent = (Entity)CompilerScala.getInstance().findClass(className(newClassName)).newInstance();
 							
 					} catch (InstantiationException e) {
 						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);

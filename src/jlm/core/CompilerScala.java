@@ -22,12 +22,12 @@ import scala.tools.nsc.Settings;
 import scala.tools.nsc.interpreter.AbstractFileClassLoader;
 import scala.tools.nsc.reporters.AbstractReporter;
 
-public class ScalaCompiler {
+public class CompilerScala {
 	
-	static private ScalaCompiler instance;
-	public static ScalaCompiler getInstance() {
+	static private CompilerScala instance;
+	public static CompilerScala getInstance() {
 		if (instance == null)
-			instance = new ScalaCompiler();
+			instance = new CompilerScala();
 		return instance;
 	}
 	
@@ -38,7 +38,7 @@ public class ScalaCompiler {
 	private VirtualDirectory target;
 	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 	
-	public ScalaCompiler() {
+	public CompilerScala() {
 		super();
 		settings = new Settings();
 		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us

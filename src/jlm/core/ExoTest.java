@@ -124,6 +124,11 @@ public class ExoTest {
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
 		testCorrectionEntity();
 	}
+	@Test(timeout=10000)
+	public void testScalaEntity() {
+		Game.getInstance().setProgramingLanguage(Game.SCALA);
+		testCorrectionEntity();
+	}
 	
 	@Test(timeout=30000)
 	public void testPythonEntity() {

@@ -43,8 +43,8 @@ import jlm.core.model.Game;
 /**
  * This class provides an adapted interface to the javax.tools compiler.
  * 
- * Its main methode is compile(), of prototype: 
- *  INPUT:  Map<String, CharSequence>  : a list of named sourcefiles
+ * Its main method is compile(), of prototype: 
+ *  INPUT:  Map<String, String>  : a list of named sourcefiles
  *  OUTPUT: Map<String, Class<Object>> : a list of named compiled class 
  * 
  * It is used in {@link jlm.core.model.lesson.Exercise}, where the student code gets compiled.
@@ -53,7 +53,7 @@ import jlm.core.model.Game;
  * http://www.ibm.com/developerworks/java/library/j-jcomp/index.html?ca=dgr-lnxw82jvaxtools&S_TACT=105AGX59&S_CMP=GR
  */
 
-public class InMemoryCompiler {
+public class CompilerJava {
 	// Compiler requires source files with a ".java" extension:
 	static final String JAVA_EXTENSION = ".java";
 
@@ -80,7 +80,7 @@ public class InMemoryCompiler {
 	 * @throws IllegalStateException
 	 *             if the Java compiler cannot be loaded.
 	 */
-	public InMemoryCompiler(Iterable<String> options) {
+	public CompilerJava(Iterable<String> options) {
 		final ClassLoader loader = getClass().getClassLoader();
 		
 		compiler = ToolProvider.getSystemJavaCompiler();
@@ -439,7 +439,7 @@ final class FileManagerImpl extends ForwardingJavaFileManager<JavaFileManager> {
 	 * Convert a location and class name to a URI
 	 */
 	private URI uri(Location location, String packageName, String relativeName) {
-		return InMemoryCompiler.toURI(location.getName() + '/' + packageName + '/' + relativeName);
+		return CompilerJava.toURI(location.getName() + '/' + packageName + '/' + relativeName);
 	}
 
 	/**
@@ -535,7 +535,7 @@ final class JavaFileObjectImpl extends SimpleJavaFileObject {
 	 *            the source code
 	 */
 	JavaFileObjectImpl(final String baseName, final String source) {
-		super(InMemoryCompiler.toURI(baseName + InMemoryCompiler.JAVA_EXTENSION), Kind.SOURCE);
+		super(CompilerJava.toURI(baseName + CompilerJava.JAVA_EXTENSION), Kind.SOURCE);
 		this.source = source;
 	}
 
@@ -548,7 +548,7 @@ final class JavaFileObjectImpl extends SimpleJavaFileObject {
 	 *            the kind of file
 	 */
 	JavaFileObjectImpl(final String name, final Kind kind) {
-		super(InMemoryCompiler.toURI(name), kind);
+		super(CompilerJava.toURI(name), kind);
 		source = null;
 	}
 
