@@ -23,6 +23,9 @@ import java.util.Vector;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
+import javax.script.ScriptEngineFactory;
+import javax.script.ScriptEngineManager;
+
 import jlm.core.GameListener;
 import jlm.core.GameStateListener;
 import jlm.core.HumanLangChangesListener;
@@ -848,6 +851,19 @@ public class Game implements IWorldView {
 			System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal",false)+" ("+Game.getProperty("jlm.major.version","internal",false)+"."+Game.getProperty("jlm.minor.version","",false)+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
+			for (ScriptEngineFactory sef : new ScriptEngineManager().getEngineFactories()) {
+				  System.out.println(sef);
+				  System.out.append("  Engine: ")
+				      .append(sef.getEngineName())
+				      .append(" ")
+				      .println(sef.getEngineVersion());
+				  System.out.append("  Language: ")
+				      .append(sef.getLanguageName())
+				      .append(" ")
+				      .println(sef.getLanguageVersion());
+				  System.out.append("  Names: ")
+				      .println(sef.getNames());
+				}
 		}
 	}
 	public boolean isDebugEnabled() {
