@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-04 21:21+0200\n"
+"POT-Creation-Date: 2013-08-08 23:47+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/jlm/core/model/Game.java:146
+#.
+#. * FIXME: provide a way to debug
+#. * when templates are broken
+#.
+#. for (String n:classes.keySet())
+#. System.out.println("File "+n+":\n"+classes.get(n));
+#: src/jlm/core/CompilerJava.java:289
+#, fuzzy
+msgid "Compilation failed."
+msgstr "Compilation error"
+
+#: src/jlm/core/model/Game.java:150
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -30,68 +41,76 @@ msgid ""
 "($HOME/.jlm/jlm.properties"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:160
+#: src/jlm/core/model/Game.java:164
 #, java-format
 msgid ""
 "Your progress will be posted to http://identi.ca/jlmlovers This can be "
 "turned off through the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:163
+#: src/jlm/core/model/Game.java:167
 #, java-format
 msgid ""
 "Your progress will NOT be posted to identica, as requested by the property "
 "{0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:166
+#: src/jlm/core/model/Game.java:170
 #, java-format
 msgid ""
 "Your progress will be posted to https://twitter.com/jlmlovers This can be "
 "turned off through the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:169
+#: src/jlm/core/model/Game.java:173
 #, java-format
 msgid ""
 "Your progress will NOT be posted to twitter, as requested by the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:217 src/jlm/core/model/Game.java:218
+#: src/jlm/core/model/Game.java:221 src/jlm/core/model/Game.java:222
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/jlm/core/model/Game.java:219
+#: src/jlm/core/model/Game.java:223
 #, fuzzy, java-format
 msgid "Load lesson {0}"
 msgstr "Load lesson"
 
-#: src/jlm/core/model/Game.java:325 src/jlm/core/model/Game.java:357
+#: src/jlm/core/model/Game.java:329 src/jlm/core/model/Game.java:363
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
-#: src/jlm/core/model/Game.java:397
+#: src/jlm/core/model/Game.java:354
+#, java-format
+msgid ""
+"Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
+"consider contributing to this project by adapting this exercise to this "
+"language."
+msgstr ""
+
+#: src/jlm/core/model/Game.java:403
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:920
+#: src/jlm/core/model/Game.java:939
 #, java-format
 msgid "{0} is not writable"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:924
+#: src/jlm/core/model/Game.java:943
 #, java-format
 msgid "{0} is not a directory"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:931
+#: src/jlm/core/model/Game.java:950
 #, java-format
 msgid "Cannot create {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:937
+#: src/jlm/core/model/Game.java:956
 #, java-format
 msgid "Impossible to find a path for JLM datas. Tested {0}"
 msgstr ""
@@ -104,7 +123,7 @@ msgstr "Asking to the teacher for help"
 msgid "Cancel call for help to the teacher"
 msgstr "Cancel call for help to the teacher"
 
-#: src/jlm/core/model/LessonRunner.java:90
+#: src/jlm/core/model/LessonRunner.java:91
 #, fuzzy, java-format
 msgid ""
 "Congratulations, you passed this exercise.\n"
@@ -113,21 +132,21 @@ msgstr ""
 "Congratulations, you passed this exercise.\n"
 " {0} tests passed.\n"
 
-#: src/jlm/core/model/LessonRunner.java:92
-#: src/jlm/core/model/LessonRunner.java:98
-#: src/jlm/core/model/LessonRunner.java:107
-#: src/jlm/core/model/LessonRunner.java:113
+#: src/jlm/core/model/LessonRunner.java:93
+#: src/jlm/core/model/LessonRunner.java:99
+#: src/jlm/core/model/LessonRunner.java:108
+#: src/jlm/core/model/LessonRunner.java:114
 msgid "Exercice passed \\o/"
 msgstr "Exercice passed \\o/"
 
-#: src/jlm/core/model/LessonRunner.java:96
+#: src/jlm/core/model/LessonRunner.java:97
 #, fuzzy
 msgid "Congratulations, you passed this exercise."
 msgstr ""
 "Congratulations, you passed this exercise.\n"
 " {0} tests passed.\n"
 
-#: src/jlm/core/model/LessonRunner.java:106
+#: src/jlm/core/model/LessonRunner.java:107
 #, fuzzy, java-format
 msgid ""
 "Congratulations, you passed this exercise.\n"
@@ -136,7 +155,7 @@ msgid ""
 msgstr ""
 "Congratulations, you passed this test. Which exercise will you do now?\n"
 
-#: src/jlm/core/model/LessonRunner.java:112
+#: src/jlm/core/model/LessonRunner.java:113
 #, fuzzy
 msgid ""
 "Congratulations, you passed this exercise.\n"
@@ -144,82 +163,108 @@ msgid ""
 msgstr ""
 "Congratulations, you passed this test. Which exercise will you do now?\n"
 
-#: src/jlm/core/model/lesson/Exercise.java:77
+#: src/jlm/core/model/lesson/Exercise.java:85
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:41
+#: src/jlm/core/model/lesson/Exercise.java:147
+#: src/jlm/core/model/lesson/Exercise.java:175
+#, fuzzy
+msgid "Compilation error:"
+msgstr "Compilation error"
+
+#: src/jlm/core/model/lesson/Exercise.java:294
+#, java-format
+msgid ""
+"Cannot compute the answer from file {0}.{1} since I cannot read it (error "
+"was: {2})."
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:39
 #, java-format
 msgid "Source file {0}.{1} not found."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:88
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:99
 #, java-format
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:108
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:120
 #, java-format
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:122
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:138
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:157
 #, java-format
 msgid ""
 "{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:126
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:142
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:153
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:176
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:158
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:181
 #, java-format
 msgid ""
 "{0}: End of file unexpected after the solution but within the template. "
 "Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:160
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:183
 #, java-format
 msgid ""
 "{0}: End of file unexpected (state: {1}). Did you forget to close your "
 "template or solution? Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:311
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:309
+#, java-format
+msgid ""
+"Exercise {0} is said to be compatible with language {1}, but there is no "
+"entity for this language: {2}"
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:318
+#, java-format
+msgid "{0}: No entity found. You should fix your paths and such"
+msgstr ""
+
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:339
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:315
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:343
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:326
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:354
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:349
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:377
 #, java-format
 msgid "Error while writing answer world of {0}:"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:353
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:381
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
@@ -253,6 +298,76 @@ msgstr "About lesson - "
 #, fuzzy, java-format
 msgid "About world - {0}"
 msgstr "About world - "
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:40
+#, fuzzy
+msgid "Choose your lesson"
+msgstr "Choose your course"
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:54
+msgid ""
+"<table border=\"0\" align=\"center\"><tr>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Java "
+"Learning Machine</font>&nbsp;&nbsp;</td>\n"
+"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
+"</tr></table>\n"
+"\n"
+"<p><font size=\"+1\">The JLM is a Learning Management System (LMS) aiming at "
+"teaching the art of computer programming through interactive exercises. It "
+"offers an extensive set of varied exercises, allowing you to practice at "
+"your own pace.</font></p><br/>"
+msgstr ""
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:132
+#: src/jlm/core/ui/MainFrame.java:163
+msgid "JLM lesson files"
+msgstr "JLM lesson files"
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:141
+#: src/jlm/core/ui/MainFrame.java:172
+msgid "Error"
+msgstr "Error"
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:168
+msgid ""
+"<h1>Please pick a lesson</h1>\n"
+"<p>Please click on an icon on the left to select a lesson.</p>\n"
+"<p>Lessons located above are generally simpler than the ones located below.</"
+"p>"
+msgstr ""
+
+#. Create the button
+#: src/jlm/core/ui/ChooseLessonDialog.java:180
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
+msgid "Go"
+msgstr ""
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:210
+#, java-format
+msgid ""
+"<p>(unable to display the short description of this lesson: file {0} not "
+"found)</p>"
+msgstr ""
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:213
+msgid "<p><b>Your score:</b> "
+msgstr ""
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:221
+#, java-format
+msgid "{0} out of {1} exercises passed."
+msgstr ""
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:225
+#, java-format
+msgid "{0} out of {1} exercises passed in {2}."
+msgstr ""
+
+#: src/jlm/core/ui/ChooseLessonDialog.java:231
+#, fuzzy
+msgid "You never attempted this lesson."
+msgstr "About this lesson"
 
 #: src/jlm/core/ui/ExerciseFailedDialog.java:29
 msgid "Exercise failed /o\\"
@@ -350,74 +465,6 @@ msgstr ""
 #, java-format
 msgid "<img> tag without src attribute in exercise {0}"
 msgstr ""
-
-#: src/jlm/core/ui/LessonChooser.java:40
-#, fuzzy
-msgid "Choose your lesson"
-msgstr "Choose your course"
-
-#: src/jlm/core/ui/LessonChooser.java:54
-msgid ""
-"<table border=\"0\" align=\"center\"><tr>\n"
-"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
-"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Java "
-"Learning Machine</font>&nbsp;&nbsp;</td>\n"
-"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
-"</tr></table>\n"
-"\n"
-"<p><font size=\"+1\">The JLM is a Learning Management System (LMS) aiming at "
-"teaching the art of computer programming through interactive exercises. It "
-"offers an extensive set of varied exercises, allowing you to practice at "
-"your own pace.</font></p><br/>"
-msgstr ""
-
-#: src/jlm/core/ui/LessonChooser.java:132 src/jlm/core/ui/MainFrame.java:163
-msgid "JLM lesson files"
-msgstr "JLM lesson files"
-
-#: src/jlm/core/ui/LessonChooser.java:141 src/jlm/core/ui/MainFrame.java:172
-msgid "Error"
-msgstr "Error"
-
-#: src/jlm/core/ui/LessonChooser.java:168
-msgid ""
-"<h1>Please pick a lesson</h1>\n"
-"<p>Please click on an icon on the left to select a lesson.</p>\n"
-"<p>Lessons located above are generally simpler than the ones located below.</"
-"p>"
-msgstr ""
-
-#. Create the button
-#: src/jlm/core/ui/LessonChooser.java:180
-#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:65
-msgid "Go"
-msgstr ""
-
-#: src/jlm/core/ui/LessonChooser.java:210
-#, java-format
-msgid ""
-"<p>(unable to display the short description of this lesson: file {0} not "
-"found)</p>"
-msgstr ""
-
-#: src/jlm/core/ui/LessonChooser.java:213
-msgid "<p><b>Your score:</b> "
-msgstr ""
-
-#: src/jlm/core/ui/LessonChooser.java:221
-#, java-format
-msgid "{0} out of {1} exercises passed."
-msgstr ""
-
-#: src/jlm/core/ui/LessonChooser.java:225
-#, java-format
-msgid "{0} out of {1} exercises passed in {2}."
-msgstr ""
-
-#: src/jlm/core/ui/LessonChooser.java:231
-#, fuzzy
-msgid "You never attempted this lesson."
-msgstr "About this lesson"
 
 #: src/jlm/core/ui/LoggerPanel.java:31 src/jlm/core/ui/LoggerPanel.java:96
 msgid "Where error and other messages get written"
@@ -652,64 +699,64 @@ msgid ""
 " Please fix your code.\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:192
+#: src/jlm/universe/Entity.java:190
 #, java-format
 msgid "Failed to start an interpreter for {0}"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:214
+#: src/jlm/universe/Entity.java:212
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against JLM."
 msgstr ""
 
-#: src/jlm/universe/Entity.java:236
+#: src/jlm/universe/Entity.java:237
 #, java-format
 msgid ""
 "Syntax error at line {0}: {1}\n"
 "In doubt, check your indentation, and that you don't mix tabs and spaces\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:244
+#: src/jlm/universe/Entity.java:245
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:247
+#: src/jlm/universe/Entity.java:248
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:250
+#: src/jlm/universe/Entity.java:251
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:256
+#: src/jlm/universe/Entity.java:257
 msgid "Error: there is no baggle to pickup under the buggle"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:258
+#: src/jlm/universe/Entity.java:259
 msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:260
+#: src/jlm/universe/Entity.java:261
 msgid "Error: your buggle just teleported to the outer space..."
 msgstr ""
 
-#: src/jlm/universe/Entity.java:262
+#: src/jlm/universe/Entity.java:263
 msgid "Error: your buggle just hit a wall. That hurts."
 msgstr ""
 
-#: src/jlm/universe/Entity.java:265
+#: src/jlm/universe/Entity.java:266
 #, java-format
 msgid ""
 "Unknown error (please report): {0}\n"
 "Its value is: {1}"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:296
+#: src/jlm/universe/Entity.java:300
 #, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
@@ -717,6 +764,40 @@ msgid ""
 " Please report this as a bug against JLM, with all details allowing to "
 "reproduce it.\n"
 "Exception message: {1}"
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:167
+#, java-format
+msgid ""
+"You tried to access a cell with Y={0}, but the maximal Y in this world is "
+"{1}."
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:169
+#, java-format
+msgid ""
+"You tried to access a cell with X={0}, but the maximal X in this world is "
+"{1}."
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:188
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:224
+#, java-format
+msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:207
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:222
+#, java-format
+msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:341
+msgid "There is no baggle to pick up here."
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:343
+msgid "Your are already carrying a baggle."
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:422
@@ -759,140 +840,171 @@ msgstr ""
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:127
+#: src/jlm/universe/bugglequest/BuggleWorld.java:122
+#, java-format
+msgid ""
+"{0}: The path to the map on disk should not include the .map extension (or "
+"it won''t work in jarfiles). Please fix your exercise."
+msgstr ""
+
+#: src/jlm/universe/bugglequest/BuggleWorld.java:130
 #, java-format
 msgid ""
 "{0}.map: this file does not seem to be a serialized BuggleWorld (the file is "
 "empty!)"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:133
+#: src/jlm/universe/bugglequest/BuggleWorld.java:136
 #, java-format
 msgid ""
 "{0}.map: This file does not seem to be a serialized BuggleWorld (malformated "
 "first line: {1})"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:139
+#: src/jlm/universe/bugglequest/BuggleWorld.java:142
 #, java-format
 msgid "{0}.map: End of file reached before world size specification"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:144
+#: src/jlm/universe/bugglequest/BuggleWorld.java:147
 #, java-format
 msgid "{0}.map:1: Expected ''Size: NNxMM'' but got ''{0}''"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:170
+#: src/jlm/universe/bugglequest/BuggleWorld.java:173
 #, java-format
 msgid "Cannot put a buggle on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:184
+#: src/jlm/universe/bugglequest/BuggleWorld.java:187
 #, java-format
 msgid "Invalid buggle''s direction: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:191
-#: src/jlm/universe/bugglequest/BuggleWorld.java:198
+#: src/jlm/universe/bugglequest/BuggleWorld.java:194
+#: src/jlm/universe/bugglequest/BuggleWorld.java:201
 #, java-format
 msgid "Invalid buggle''s color name: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:210
+#: src/jlm/universe/bugglequest/BuggleWorld.java:213
 #, java-format
 msgid "Cannot define a cell on coordinate {0},{1}: that''s out of the world"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:223
+#: src/jlm/universe/bugglequest/BuggleWorld.java:226
 #, java-format
 msgid "Invalid color name: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:229
+#: src/jlm/universe/bugglequest/BuggleWorld.java:232
 #, java-format
 msgid "Expecting ''baggle'' or ''nobaggle'' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:233
+#: src/jlm/universe/bugglequest/BuggleWorld.java:236
 #, java-format
 msgid "Expecting ''topwall'' or ''notopwall'' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:237
+#: src/jlm/universe/bugglequest/BuggleWorld.java:240
 #, java-format
 msgid "Expecting ''leftwall'' or ''noleftwall'' but got {0} instead"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:247
+#: src/jlm/universe/bugglequest/BuggleWorld.java:250
 #, java-format
 msgid ""
 "The cell {0},{1} seem to be defined more than once. At least, there is two "
 "baggles here, which is not allowed."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:263
+#: src/jlm/universe/bugglequest/BuggleWorld.java:266
 #, java-format
 msgid ""
 "Parse error. I was expecting a cell or a buggle description but got: {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:481
+#: src/jlm/universe/bugglequest/BuggleWorld.java:543
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:485
+#: src/jlm/universe/bugglequest/BuggleWorld.java:547
 #, java-format
 msgid "  In ({0},{1})"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorld.java:488
+#: src/jlm/universe/bugglequest/BuggleWorld.java:550
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:230
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:129
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:136
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:143
+msgid "There is already a baggle here."
+msgstr ""
+
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:231
 msgid ", there shouldn't be this baggle"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:232
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:233
 msgid ", there should be a baggle"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:234
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:235
 msgid ", the baggle differs"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:237
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:238
 #, java-format
 msgid ", the ground should not be {0}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:239
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:240
 #, java-format
 msgid ", the ground is expected to be {0}, but it is {1}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:241
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:242
 #, java-format
 msgid ", the ground reads ''{0}'' (expected: ''{1}'')"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:244
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:245
 msgid ", there shouldn't be any wall at west"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:246
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:247
 msgid ", there should be a wall at west"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:249
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:250
 msgid ", there shouldn't be any wall at north"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/BuggleWorldCell.java:251
+#: src/jlm/universe/bugglequest/BuggleWorldCell.java:252
 msgid ", there should be a wall at north"
+msgstr ""
+
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:29
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:40
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:51
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:62
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:78
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:82
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:93
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:103
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:113
+#: src/jlm/universe/bugglequest/SimpleBuggle.java:123
+#, fuzzy
+msgid "Test failed"
+msgstr "Exercise failed /o\\"
+
+#: src/jlm/universe/bugglequest/exception/BuggleWallException.java:10
+msgid "Buggles cannot traverse walls"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:176

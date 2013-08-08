@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-08 01:40+0300\n"
+"POT-Creation-Date: 2013-08-08 23:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1559,7 +1559,7 @@ msgid "Do .. while loops"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:187 src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:1
+#: src/lessons/welcome/Main.html:187 src/lessons/welcome/methods/basics/MethodsDogHouse.html:1
 msgid "Building methodically"
 msgstr ""
 
@@ -1579,17 +1579,17 @@ msgid "Methodically drawing"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:241 src/lessons/welcome/methods/picture2/MethodsPicture2.html:1
+#: src/lessons/welcome/Main.html:241 src/lessons/welcome/methods/picture/MethodsPicture2.html:1
 msgid "Methodically drawing (only bigger)"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:267 src/lessons/welcome/methods/picture3/MethodsPicture3.html:1
+#: src/lessons/welcome/Main.html:267 src/lessons/welcome/methods/picture/MethodsPicture3.html:1
 msgid "Drawing bigger and bigger"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:280 src/lessons/welcome/methods/picture4/MethodsPicture4.html:1
+#: src/lessons/welcome/Main.html:280 src/lessons/welcome/methods/picture/MethodsPicture4.html:1
 msgid "Even more pattern to draw"
 msgstr ""
 
@@ -1604,17 +1604,17 @@ msgid "Buggle Dance Revolution 2"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:322 src/lessons/welcome/slug/SlugHunting.html:1
+#: src/lessons/welcome/Main.html:322 src/lessons/welcome/methods/slug/SlugHunting.html:1
 msgid "Slug Hunting"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:335 src/lessons/welcome/slug/SlugTracking.html:1
+#: src/lessons/welcome/Main.html:335 src/lessons/welcome/methods/slug/SlugTracking.html:1
 msgid "Slug Tracking"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:361 src/lessons/welcome/snake/Snake.html:1
+#: src/lessons/welcome/Main.html:361 src/lessons/welcome/traversal/Snake.html:1
 msgid "Snake World"
 msgstr ""
 
@@ -1951,7 +1951,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:77 src/lessons/welcome/conditions/Conditions.html:147 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopwhile/LoopWhile.html:26 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:59 src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/welcome/slug/SlugHunting.html:18 src/lessons/welcome/slug/SlugTracking.html:21 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/instructions/Instructions.html:77 src/lessons/welcome/conditions/Conditions.html:147 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopwhile/LoopWhile.html:26 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:59 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -3396,7 +3396,7 @@ msgid "You should now write this goAndGet() method."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:3
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:3
 msgid ""
 "We now would like to learn the buggle to build a doghouse. The seamingly "
 "simpler approach consists in directly writing the needed code as follows (it "
@@ -3404,7 +3404,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:8
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:8
 #, no-wrap
 msgid ""
 "forward();\n"
@@ -3422,7 +3422,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:23
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:23
 #, no-wrap
 msgid ""
 "forward()\n"
@@ -3440,7 +3440,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:37
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:37
 msgid ""
 "It becomes harder when we want to draw two doghouses: we have to rewrite the "
 "same code twice, which is not really handy. Even worse: it's definitively "
@@ -3451,7 +3451,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:44
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:44
 msgid ""
 "It is good form to <b>factorize your code</b>, ie to write it only once, for "
 "example in a method. This is what you will do now. It is even possible to go "
@@ -3460,7 +3460,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:49
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:49
 msgid ""
 "The goal of this exercise is to write a method called <code>dogHouse</code> "
 "achieving the same result than the code above. The buggle will call your "
@@ -3469,7 +3469,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/doghouse/MethodsDogHouse.html:54 src/lessons/welcome/array/basics/Array.html:229 src/lessons/welcome/array/basics/Array2.html:30
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:54 src/lessons/welcome/array/basics/Array.html:229 src/lessons/welcome/array/basics/Array2.html:30
 msgid "You're up."
 msgstr ""
 
@@ -3893,14 +3893,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture2/MethodsPicture2.html:3
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:3
 msgid ""
 "We will now reproduce an even bigger geometrical drawing. Once again, you "
 "can see the model by clicking on the \"Objective\" tab."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture2/MethodsPicture2.html:6
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:6
 msgid ""
 "You can naturally reuse all the code you typed in previous exercise (select "
 "the other exercise, do Ctrl-C, come back to the code of this exercise, do "
@@ -3908,7 +3908,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture2/MethodsPicture2.html:10
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:10
 msgid ""
 "But you want to keep your main<code>run()</code> as simple as possible. For "
 "that, define new methods to deal simply with the repetitions in the "
@@ -3918,7 +3918,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture2/MethodsPicture2.html:16
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:16
 msgid ""
 "But you want to keep your main code as simple as possible. For that, define "
 "new methods to deal simply with the repetitions in the pattern. For example, "
@@ -3927,21 +3927,21 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture2/MethodsPicture2.html:22
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:22
 msgid ""
 "Why don't you give it a shot? The <code>run()</code> method shouldn't take "
 "more than 2 lines (included in a for loop)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture2/MethodsPicture2.html:25
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:25
 msgid ""
 "Why don't you give it a shot? The main code method shouldn't take more than "
 "2 lines (included in a for loop)"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture3/MethodsPicture3.html:3
+#: src/lessons/welcome/methods/picture/MethodsPicture3.html:3
 msgid ""
 "As you can imagine, you have to reproduce the geometric drawing depicted in "
 "the \"Objectives\" tab. As you can see, it is even bigger than the previous "
@@ -3949,7 +3949,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture3/MethodsPicture3.html:7
+#: src/lessons/welcome/methods/picture/MethodsPicture3.html:7
 msgid ""
 "You thus have to declare even more methods to use the repetitions of the "
 "pattern and factorize your code. Another solution is to <i>parametrize</i> "
@@ -3957,24 +3957,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture3/MethodsPicture3.html:11 src/lessons/welcome/snake/Snake.html:46 src/lessons/welcome/traversal/column/TraversalByColumn.html:52 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
+#: src/lessons/welcome/methods/picture/MethodsPicture3.html:11 src/lessons/welcome/traversal/Snake.html:46 src/lessons/welcome/traversal/column/TraversalByColumn.html:52 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
 msgid "Your turn..."
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/methods/picture4/MethodsPicture4.html:2
+#: src/lessons/welcome/methods/picture/MethodsPicture4.html:2
 msgid "(and methods to write)"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture4/MethodsPicture4.html:4
+#: src/lessons/welcome/methods/picture/MethodsPicture4.html:4
 msgid ""
 "Here is yet another exercise where you have to reproduce the pattern "
 "provided in the \"Objective\" tab."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture4/MethodsPicture4.html:7
+#: src/lessons/welcome/methods/picture/MethodsPicture4.html:7
 msgid ""
 "This one is a bit more difficult than the one seen previously. Look for "
 "repeating patterns, even if the color changes, and write a method drawing "
@@ -3982,8 +3982,118 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture4/MethodsPicture4.html:11
+#: src/lessons/welcome/methods/picture/MethodsPicture4.html:11
 msgid "Good luck!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugHunting.html:3
+msgid ""
+"Now that your <code>isFacingTrail()</code> method is working, it's time to "
+"write the code to organize the hunting party. Copy/paste your code from the "
+"previous exercise, and complete the <code>hunt()</code> method."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugHunting.html:7
+msgid ""
+"Following a track is not very difficult: move forward as long as you have "
+"the track in front of you.  If there is not track in front of you anymore, "
+"check if the rest of the track is on your left or on your right, and follow "
+"it further."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugHunting.html:11
+msgid ""
+"To ensure that you don't mix the track you come from with the one in front "
+"of you, the easier is to erase the track when you follow it. Use the method "
+"<code>brushDown()</code> to put your brush down and mark the ground, and "
+"<code>brushUp()</code> to move it up again."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugHunting.html:15
+msgid ""
+"Finally, do not forget to capture your prey once you found it (using "
+"<code>pickupBaggle()</code>)."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/slug/SlugHunting.html:19
+msgid ""
+"<a name=\"Objectives\"> Complete the <code>hunt()</code> method. You "
+"probably want to copy over the <code>isFacingTrail()</code> method that you "
+"wrote in previous exercise.  </a>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugTracking.html:3
+msgid ""
+"Your buggle is super happy! It just found the green dribbling trail, "
+"certainly left by a big yummy slug.  At its end, the buggle is certain to "
+"entertain itself with this appetizing slug (represented as a baggle)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugTracking.html:7
+msgid ""
+"To reach that goal, you had to write a boolean method "
+"<tt>isFacingTrail</tt>, which determines whether we are facing a green cell "
+"or not. Of course, if we are facing a wall, it should return false without "
+"bumping into it. You should make sure that this method has no <b>side "
+"effect</b>, i.e. that it does not change the state of the calling buggle nor "
+"of its world."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugTracking.html:12
+msgid ""
+"Your tool to that end is the <code>getGroundColor()</code> that returns the "
+"color of the current cell. Just go to the cell you want to test and run that "
+"function. You cannot test whether this color is equal to "
+"<code>Color.green</code> with an <code>==</code> sign but instead you have "
+"to write something like "
+"<code>getGroundColor().equals(Color.green)</code>. This is because green is "
+"an <i>object</i> in Java, and <code>.equals()</code> is the way to go to "
+"test equality between Java objects."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugTracking.html:18
+msgid ""
+"Your tool to that end is the <code>getGroundColor()</code> that returns the "
+"color of the current cell. Just go to the cell you want to test and run that "
+"function."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugTracking.html:22
+msgid ""
+"Complete the <code>isFacingTrail()</code> method (which gets called "
+"automatically)."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:1
+msgid "Slugs and Snails"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:3
+msgid ""
+"Yuhu! This time, your buggle found the tracks of much more preys! In the "
+"first world, that's a yummy Kitty Slug (leaving a pink trail) while on the "
+"second world, that's a big fat snail that awaits your buggle at the end of "
+"the orange trail."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/slug/SlugSnail.html:7
+msgid ""
+"You have to copy/paste your code again, and change it so that your methods "
+"take the color of the trail to follow as a parameter. Beside of this, your "
+"code should work as earlier."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -4824,117 +4934,7 @@ msgid "When you program works again, proceed to next exercise."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugHunting.html:3
-msgid ""
-"Now that your <code>isFacingTrail()</code> method is working, it's time to "
-"write the code to organize the hunting party. Copy/paste your code from the "
-"previous exercise, and complete the <code>hunt()</code> method."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugHunting.html:7
-msgid ""
-"Following a track is not very difficult: move forward as long as you have "
-"the track in front of you.  If there is not track in front of you anymore, "
-"check if the rest of the track is on your left or on your right, and follow "
-"it further."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugHunting.html:11
-msgid ""
-"To ensure that you don't mix the track you come from with the one in front "
-"of you, the easier is to erase the track when you follow it. Use the method "
-"<code>brushDown()</code> to put your brush down and mark the ground, and "
-"<code>brushUp()</code> to move it up again."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugHunting.html:15
-msgid ""
-"Finally, do not forget to capture your prey once you found it (using "
-"<code>pickupBaggle()</code>)."
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/slug/SlugHunting.html:19
-msgid ""
-"<a name=\"Objectives\"> Complete the <code>hunt()</code> method. You "
-"probably want to copy over the <code>isFacingTrail()</code> method that you "
-"wrote in previous exercise.  </a>"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugTracking.html:3
-msgid ""
-"Your buggle is super happy! It just found the green dribbling trail, "
-"certainly left by a big yummy slug.  At its end, the buggle is certain to "
-"entertain itself with this appetizing slug (represented as a baggle)."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugTracking.html:7
-msgid ""
-"To reach that goal, you had to write a boolean method "
-"<tt>isFacingTrail</tt>, which determines whether we are facing a green cell "
-"or not. Of course, if we are facing a wall, it should return false without "
-"bumping into it. You should make sure that this method has no <b>side "
-"effect</b>, i.e. that it does not change the state of the calling buggle nor "
-"of its world."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugTracking.html:12
-msgid ""
-"Your tool to that end is the <code>getGroundColor()</code> that returns the "
-"color of the current cell. Just go to the cell you want to test and run that "
-"function. You cannot test whether this color is equal to "
-"<code>Color.green</code> with an <code>==</code> sign but instead you have "
-"to write something like "
-"<code>getGroundColor().equals(Color.green)</code>. This is because green is "
-"an <i>object</i> in Java, and <code>.equals()</code> is the way to go to "
-"test equality between Java objects."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugTracking.html:18
-msgid ""
-"Your tool to that end is the <code>getGroundColor()</code> that returns the "
-"color of the current cell. Just go to the cell you want to test and run that "
-"function."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugTracking.html:22
-msgid ""
-"Complete the <code>isFacingTrail()</code> method (which gets called "
-"automatically)."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/slug/SlugSnail.html:1
-msgid "Slugs and Snails"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugSnail.html:3
-msgid ""
-"Yuhu! This time, your buggle found the tracks of much more preys! In the "
-"first world, that's a yummy Kitty Slug (leaving a pink trail) while on the "
-"second world, that's a big fat snail that awaits your buggle at the end of "
-"the orange trail."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/slug/SlugSnail.html:7
-msgid ""
-"You have to copy/paste your code again, and change it so that your methods "
-"take the color of the trail to follow as a parameter. Beside of this, your "
-"code should work as earlier."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:3
+#: src/lessons/welcome/traversal/Snake.html:3
 msgid ""
 "We will now teach the buggle to explore its world. Its initial position is "
 "the bottom left corner, and it should visit any cells up to the top "
@@ -4943,7 +4943,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/snake/Snake.html:8
+#: src/lessons/welcome/traversal/Snake.html:8
 #, no-wrap
 msgid ""
 " move brush down\n"
@@ -4952,18 +4952,18 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:13
+#: src/lessons/welcome/traversal/Snake.html:13
 msgid "The prototype of this method (its first line) must be:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/snake/Snake.html:14
+#: src/lessons/welcome/traversal/Snake.html:14
 #, no-wrap
 msgid "public void run()"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:15
+#: src/lessons/welcome/traversal/Snake.html:15
 msgid ""
 "(we will come back later on the meaning of <code>public</code>). We thus "
 "have to write two methods in addition to <code>run()</code>. The former "
@@ -4972,17 +4972,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:20
+#: src/lessons/welcome/traversal/Snake.html:20
 msgid "We reached the final position if and only if both conditions are true:"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/snake/Snake.html:22
+#: src/lessons/welcome/traversal/Snake.html:22
 msgid "We are facing a wall"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/snake/Snake.html:23
+#: src/lessons/welcome/traversal/Snake.html:23
 msgid ""
 "There is a wall on the north of the buggle. So, if the buggle is facing "
 "east, you should check whether there is a wall on the left, and if the "
@@ -4990,7 +4990,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/snake/Snake.html:26
+#: src/lessons/welcome/traversal/Snake.html:26
 msgid ""
 "We can get the current heading of the buggle using the "
 "<code>getDirection()</code>, and we know whether it looks east using "
@@ -4998,14 +4998,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/snake/Snake.html:29
+#: src/lessons/welcome/traversal/Snake.html:29
 msgid ""
 "For the checking itself, nothing magical: you have to turn the buggle and "
 "check whether it is facing a wall afterward."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:33
+#: src/lessons/welcome/traversal/Snake.html:33
 msgid ""
 "Then, a snake step can be achieved by moving one step forward if we are not "
 "facing a wall, and moving to the upper line else (ie, if you look to the "
@@ -5013,43 +5013,43 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:37
+#: src/lessons/welcome/traversal/Snake.html:37
 msgid ""
 "Hint: the main loop of the <code>run()</code> method must continue while the "
 "testing function returns false. Their is thus two way of writing it:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/snake/Snake.html:39
+#: src/lessons/welcome/traversal/Snake.html:39
 #, no-wrap
 msgid "while (testingFunction() == false)"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/snake/Snake.html:40
+#: src/lessons/welcome/traversal/Snake.html:40
 #, no-wrap
 msgid "while testingFunction() == False:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:41
+#: src/lessons/welcome/traversal/Snake.html:41
 msgid "or"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/snake/Snake.html:42
+#: src/lessons/welcome/traversal/Snake.html:42
 #, no-wrap
 msgid "while (! testingFunction())"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/snake/Snake.html:43
+#: src/lessons/welcome/traversal/Snake.html:43
 #, no-wrap
 msgid "while not testingFunction():"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/snake/Snake.html:44
+#: src/lessons/welcome/traversal/Snake.html:44
 msgid "It works because the exclamation mark (!) means in Java a boolean negation."
 msgstr ""
 
