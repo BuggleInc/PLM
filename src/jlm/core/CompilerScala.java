@@ -38,7 +38,7 @@ public class CompilerScala {
 	private VirtualDirectory target;
 	private ClassLoader classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 	
-	public CompilerScala() {
+	private CompilerScala() {
 		super();
 		settings = new Settings();
 		settings.nowarnings().tryToSetFromPropertyValue("true"); // warnings seem to be exceptions, and we don't want them to mess with us
