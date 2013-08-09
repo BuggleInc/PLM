@@ -7,55 +7,39 @@ panneau d'objectif pour les détails de ce qui est attendu.
 d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après
 coup. Ici par exemple, il est assez facile de se perdre dans les ordres
 nécessaires au dessin. Il peut être pratique d'ajouter des commentaires
-comme
-<i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. Retournons à
-la
-position initiale</i>. Documenter votre code est presque toujours nécessaire
-si
-quelqu'un (vous ou quelqu'un d'autre) veut le lire après coup. Cependant,
-commenter des
-choses triviales est une mauvaise idée car cela dilue les informations
-dans des commentaires trop verbeux. En anglais, ce travers s'appelle
-<i>overcommenting</i>.</p>
+comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le
+G. Retournons à la position initiale</i>. Documenter votre code est presque
+toujours nécessaire si quelqu'un (vous ou quelqu'un d'autre) veut le lire
+après coup. Cependant, commenter des choses triviales est une mauvaise idée
+car cela dilue les informations dans des commentaires trop verbeux. En
+anglais, ce travers s'appelle <i>over-commenting</i>.</p>
    
-  <p class="Java">Il y a trois sortes de commentaires en Java, indiquant au compilateur qu'il
-ne
-doit pas lire le texte ajouté pour les humains.</p>
-  <p class="Python">Il y a deux sortes de commentaires en Python, indiquant au compilateur qu'il
-ne
-doit pas lire le texte ajouté pour les humains.</p>
+  <p>Il y a [!java]three[/!][!python|scala]two[/!] sortes de commentaires en
+[!thelang], indiquant au
+[!java|scala]compilateur[/!][!python]interpréteur[/!] qu'il ne doit pas lire
+le texte ajouté pour les humains.</p>
    
-  <ul class="Java">
-    <li class="Java"><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre
-les symboles //, il ignore la fin de la ligne.</li>      
-    <li class="Java"><b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui
-se trouve entre les symboles /* et */, même s'ils sont sur des lignes
-différentes</li>
+  <ul>
+    <li><b>Commentaires sur une seule ligne</b>. Quand le
+[!java|scala]compilateur[/!][!python]interpréteur[/!] rencontre le symbole
+[!java|scala]//[/!][!python]#[/!], il ignore la fin de la ligne.</li>      
+    <li><b>Commentaires sur plusieurs lignes</b>. [!java|scala]Le
+compilateur[/!][!python]L'interpréteur[/!] ignore tout ce qui se trouve
+entre [!java|scala]les symboles /* et */, même s'ils sont sur des lignes
+différentes.[/!]
+[!python]une ligne commençant par ''' et la prochaine ligne terminant par
+'''.[/!]
+</li>
   </ul>
 
-  <ul class="Python">
-    <li class="Python"><b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre le
-symbole #, il ignore la fin de la ligne.</li>
-    <li class="Python"><b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui
-se
-trouve entre une ligne commençant par ''' et la prochaine ligne terminant
-par '''.</li>      
-  </ul>
-
-<pre class="Java">
-appelMethodeLuParLeCompilateur(); <span class="comment"> // tout ceci est ignoré</span>
-autreAppel(); <span class="comment">/* ceci est</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> également ignoré */</span>
-encoreUnAppel();
+<pre>
+methodCallReadByThe[!java|scala]Compilateur[/!][!python]Interpreteur[/!]()[!java];[/!] <span class="comment">[!java|scala]//[/!][!python]#[/!] tout ceci est ignoré</span>
+otherCall()[!java];[/!] [!java|scala]<span class="comment">/* Ceci est</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> également ignoré */</span>[/!]
+[!python]<span class="comment">''' Ceci est</span>
+<span class="comment">également ignoré '''</span>[/!]
+yetAnotherCall()[!java];[/!]
 </pre>  
-<pre class="Python">
-appelMethodeLuParLeCompilateur() <span class="comment"> # tout ceci est ignoré</span>
-autreAppel() 
-<span class="comment">''' ceci est</span>
-<span class="comment"> également ignoré '''</span>
-encoreUnAppel()
-</pre>  
-  
   <p class="Java">Il existe une troisième forme de commentaires en Java, entre /** et */, qui
 sont lus par un programme nommé JavaDoc pour générer automatiquement la
 documentation expliquant comment utiliser le code. Ces commentaires doivent

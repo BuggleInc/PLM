@@ -9,6 +9,7 @@
   * Allow [!java]...[/!] constructs in mission texts to adapt to progLang
   * In debug mode, all adaptations of all progLangs are displayed, with
     a color code for each. This was mandatory with a third main progLang
+  * Port 3 exercises of the welcome lesson to scala.
 20130804:
   * RELEASE 2.0, the revolutionary night.
   * Remove the array world. It was not helping very much when compared

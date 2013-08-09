@@ -1,74 +1,61 @@
-  <h2>Instructions</h2>
+<h2>Instructions</h2>
 
-  Congratulations! You just wrote your first program! You got the idea now: 
-  programming is nothing more than giving simple instructions to the computer that 
-  blindly apply them. The main difficulty is to explain stuff to someone as stupid 
-  as a computer...  
+Congratulations! You just wrote your first program! You got the idea now: 
+programming is nothing more than giving simple instructions to the computer that 
+blindly apply them. The main difficulty is to explain stuff to something as stupid 
+as a computer...  
   
   <p>Programs are mainly suites of method calls, which are no more than a list of
    simple order given to the machine. It is very similar to a recipe stating
    <i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>. 
    In your programs, such built instructions are called functions or methods, and you 
-   should add parenthesis to invoke them, as in  
+   should add parenthesis to invoke them:</p>  
 		<pre>nameOfTheMethod()</pre>
 		
-   <p class="Java">
-   Java want to have the instructions separated by semi-columns (;). 
-    The previous example would thus be written in a similar way:</p>
-<pre class="Java">
-meltTheChocolatePieces();
-addSugar();
-coolMix();
-serve();
+   <p>[!java]Java[/!][!scala]Scala[/!][!python]Python[/!]
+   wants to have the instructions separated by semi-columns (;)[!python|scala] or by new lines[/!]. 
+    The previous example would thus be written in the following way
+    [!python|scala] (you can also add semi-columns at the end of the lines, but this is not mandatory)[/!].</p>
+    
+<pre>
+meltTheChocolatePieces()[!java];[/!]
+addSugar()[!java];[/!]
+coolMix()[!java];[/!]
+serve()[!java];[/!]
 </pre>
     
-   <p class="Python">Python want to have the instructions  
-   separated by either semi-columns (;) or by new lines. The previous example would thus 
-   be written the following way.</p>
-<pre class="Python">
-meltTheChocolatePieces()
-addSugar()
-coolMix()
-serve()
-</pre>
-   <p class="Python">
-   It could also be written in the following way, but it's generally considered as a bad 
+[!python|scala]
+   <p>It could also be written in the following way, but it's generally considered as a bad 
    practice to group several instructions on the same line since it greatly hinders the 
    readability.</p>
-<pre class="Python">
+<pre>
 meltTheChocolatePieces(); addSugar(); coolMix(); serve()
 </pre>
+[/!]
 
-  <p class="Java">Of course, these specific methods do not exist in Java, but it may be possible 
+  <p>Of course, these specific methods do not exist by default in [!java]Java[/!][!scala]Scala[/!][!python]Python[/!], 
+  but it may be possible 
   to define them by yourself (we'll see later how to define your how methods).</p>
-  <p class="Python">Of course, these specific methods do not exist in Python, but it may be possible 
-  to define them by yourself (we'll see later how to define your how methods).</p>
+  
   <p>For now, 
   we'll simply go for the buggle instructions. There is a method for each button of the 
   interactive control panel. To achieve the same effect than the <b>forward</b> button 
   (making the buggle moving one step forward), you need to write the following in the
-  editor: <pre class="Java">forward();</pre> <pre class="Python">forward()</pre>
-  Likewise, to achieve the same effect than the <b>backward</b>, <b>turn
-  left</b> and <b>turn right</b> buttons, you need to use respectively: 
-<pre class="Java">
-backward();
-left();
-right();
+  editor: 
+  <pre>forward()[!java];[/!]</pre>
+  Likewise, to achieve the same effect than the <b>backward</b>, <b>left</b>
+  and <b>right</b> buttons, you need to use respectively: 
+<pre>
+backward()[!java];[/!]
+left()[!java];[/!]
+right()[!java];[/!]
 </pre>
-<pre class="Python">
-backward()
-left()
-right()
-</pre>
+
 	 The <b>mark</b> button is a bit particular, since it correspond to two
 methods: the first one moves the pen up while the second moves it down.
-<pre class="Java">
-brushUp();
-brushDown();
-</pre>
-<pre class="Python">
-brushUp()
-brushDown()
+<pre>
+brushUp()[!java];[/!]
+brushDown()[!java];[/!]
 </pre>
   <p>The buggle offers other methods, that are presented from the "Help/about
    this world" menu and will be introduced on need.</p>

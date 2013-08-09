@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-08 23:49+0300\n"
-"PO-Revision-Date: 2013-08-04 11:27+0200\n"
+"POT-Creation-Date: 2013-08-10 02:05+0300\n"
+"PO-Revision-Date: 2013-08-10 02:06+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -600,13 +600,13 @@ msgid ""
 "forward(steps)\n"
 "backward(steps)"
 msgstr ""
-"forward(nbPas)\n"
-"backward(nbPas)"
+"avance(nbPas)\n"
+"recule(nbPas)"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:17
 msgid "Moves forward or backward of the requested amount of steps."
-msgstr "Avance (forward) ou recule (backward) du nombre de pas demandés."
+msgstr "Avance ou recule du nombre de pas demandé."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:19
@@ -615,8 +615,8 @@ msgid ""
 "void right(double angle)\n"
 "void left(double angle)"
 msgstr ""
-"void right(double angle)\n"
-"void left(double angle)"
+"void droite(double angle)\n"
+"void gauche(double angle)"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:21
@@ -625,15 +625,13 @@ msgid ""
 "right(angle)\n"
 "left(angle)"
 msgstr ""
-"right(angle)\n"
-"left(angle)"
+"droite(angle)\n"
+"gauche(angle)"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:23
 msgid "Turns left or right of the given angle (in degrees)."
-msgstr ""
-"Tourne à gauche (left) ou à droite (right) du nombre de l'angle indiqué (en "
-"degrés)."
+msgstr "Tourne à gauche ou à droite de l'angle indiqué (en degrés)."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:25
@@ -686,10 +684,8 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:37
-#, fuzzy
-#| msgid "Teleports the turtle to a new position."
 msgid "Teleports the turtle to a new position (without leaving any trace)."
-msgstr "Téléporte la tortue à une nouvelle position."
+msgstr "Téléporte la tortue à une nouvelle position (sans laisser de trace)."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:39
@@ -699,29 +695,26 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:40
-#, fuzzy, no-wrap
-#| msgid "setPos(x,y)"
+#, no-wrap
 msgid "moveTo(x,y)"
-msgstr "setPos(x,y)"
+msgstr "allerVers(x,y)"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:41
-#, fuzzy
-#| msgid "Teleports the turtle to a new position."
 msgid "Moves the turtle to a new position."
-msgstr "Téléporte la tortue à une nouvelle position."
+msgstr "Déplace la tortue à une nouvelle position."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:43
 #, no-wrap
 msgid "double getHeading()"
-msgstr "double getHeading()"
+msgstr "double getCap()"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:44
 #, no-wrap
 msgid "getHeading()"
-msgstr "getHeading()"
+msgstr "getCap()"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:45
@@ -730,17 +723,15 @@ msgstr "Retourne le cap actuel de la tortue (en degrés)."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:47
-#, fuzzy, no-wrap
-#| msgid "void getHeading(double angle)"
+#, no-wrap
 msgid "void setHeading(double angle)"
-msgstr "void getHeading(double angle)"
+msgstr "void setCap(double angle)"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:48
-#, fuzzy, no-wrap
-#| msgid "getHeading(angle)"
+#, no-wrap
 msgid "setHeading(angle)"
-msgstr "getHeading(angle)"
+msgstr "setCap(angle)"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:49
@@ -756,13 +747,13 @@ msgstr "Fonctions à propos du stylo"
 #: src/jlm/universe/turtles/TurtleWorld.html:53
 #, no-wrap
 msgid "void penUp()"
-msgstr "void penUp()"
+msgstr "void leveCrayon()"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:54
 #, no-wrap
 msgid "penUp()"
-msgstr "penUp()"
+msgstr "leveCrayon()"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:55
@@ -770,7 +761,7 @@ msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
 msgstr ""
-"Remonte le stylo de la tortue (les tortues ont des stylos, pas des brosses "
+"Remonte le crayon de la tortue (les tortues ont des crayons, pas des brosses "
 "comme les buggles). La tortue ne laissera plus de trace lors de ses "
 "déplacements suivants."
 
@@ -778,13 +769,13 @@ msgstr ""
 #: src/jlm/universe/turtles/TurtleWorld.html:58
 #, no-wrap
 msgid "void penDown()"
-msgstr "void penDown()"
+msgstr "void baisseCrayon()"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:59
 #, no-wrap
 msgid "penDown()"
-msgstr "penDown()"
+msgstr "baisseCrayon()"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:60
@@ -799,13 +790,13 @@ msgstr ""
 #: src/jlm/universe/turtles/TurtleWorld.html:62
 #, no-wrap
 msgid "boolean isPenDown()"
-msgstr "boolean isPenDown()"
+msgstr "boolean estCrayonBaisse()"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:63
 #, no-wrap
 msgid "isPenDown()"
-msgstr "isPenDown()"
+msgstr "estCrayonBaisse()"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:64
@@ -818,14 +809,14 @@ msgstr "Retourne si le stylo est actuellement baissé ou non."
 #: src/lessons/turmites/universe/TurmiteWorld.html:18
 #, no-wrap
 msgid "Color getColor()"
-msgstr "Color getColor()"
+msgstr "Color getCouleur()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/turtles/TurtleWorld.html:67
 #: src/jlm/universe/bugglequest/BuggleWorld.html:25
 #, no-wrap
 msgid "getColor()"
-msgstr "getColor()"
+msgstr "getCouleur()"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:68
@@ -836,14 +827,14 @@ msgstr "Retourne la couleur actuelle du stylo."
 #: src/jlm/universe/turtles/TurtleWorld.html:70
 #, no-wrap
 msgid "void setColor(Color color)"
-msgstr "void setColor(Color color)"
+msgstr "void setCouleur(Color couleur)"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/turtles/TurtleWorld.html:71
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
 #, no-wrap
 msgid "setColor(color)"
-msgstr "setColor(color)"
+msgstr "setCouleur(couleur)"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:72
@@ -1165,7 +1156,9 @@ msgstr "setDirection(direction)"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
 #: src/lessons/turmites/universe/TurmiteWorld.html:22
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
-msgstr "Direction.NORTH, Direction.EAST, Direction.SOUTH et Direction.WEST"
+msgstr ""
+"Direction.NORTH (le nord), Direction.EAST (l'est), Direction.SOUTH (le sud) "
+"et Direction.WEST (l'ouest)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:34
@@ -2110,25 +2103,28 @@ msgstr ""
 "Dans le doute, faites cette leçon, qui vous enseignera les bases de la "
 "programmation."
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:3
 msgid ""
 "You just started the Java Learning Machine. This is a Learning Management "
-"System (LMS) aiming at teaching the art of computer programming through "
+"System aiming at teaching the art of computer programming through "
 "interactive exercises. It is constituted by a set of exercises grouped by "
-"lessons, allowing you to practice at your own pace. By default, the "
-"environment is configured to be programmed in the Java programming language, "
-"but you can change it from the Language menu if you want."
+"lessons, allowing you to practice at your own pace. Currently, the "
+"environment is configured to be programmed in the [!thelang/] programming "
+"language, but you can change it from the Language menu if you want, or by "
+"clicking on the [!thelang/] icon at the right of the status bar below."
 msgstr ""
 "Vous venez de lancer la Java Learning Machine.  Il s'agit d'une plate-forme "
 "pédagogique destinée à simplifier l'apprentissage de la programmation.  Il "
 "est constitué d'un ensemble d'exercices groupés par leçons, pour vous "
-"permettre de progresser à votre rythme. Par défaut, l'outil est configuré "
-"pour vous permettre de programmer en Java, mais vous pouvez changer de "
-"langage de programmation grâce au menu Langage si vous le désirez."
+"permettre de progresser à votre rythme. Pour l'instant, l'outil est "
+"configuré pour vous permettre de programmer en [!thelang/], mais vous pouvez "
+"changer de langage de programmation grâce au menu Langage si vous le "
+"désirez, ou en cliquant sur l'icône du [!thelang/] à droite de la barre "
+"d'état (en bas de la fenêtre)."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:9
+#: src/lessons/welcome/environment/Environment.html:10
 msgid ""
 "In this first lesson, the buggles will lead your first steps in programming."
 msgstr ""
@@ -2136,12 +2132,12 @@ msgstr ""
 "programmation."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/environment/Environment.html:11
+#: src/lessons/welcome/environment/Environment.html:12
 msgid "The <i>buggles</i>? What is this??"
 msgstr "Les <i>buggles</i> ? Qu'est ce que c'est ??"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:13
+#: src/lessons/welcome/environment/Environment.html:14
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
@@ -2149,18 +2145,17 @@ msgid ""
 "exercise, you show instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
 "<i>Objective</i> one.  Depending on the lessons (and your settings in the "
-"Language menu), your code must be written in either Java, JavaScript, Python "
-"or Ruby (depending on the exercise)."
+"Language menu), your code must be written in either Java, Python or Scala "
+"(depending on the exercise)."
 msgstr ""
 "Les buggles sont de petites bêtes qui obéissent aux ordres que vous leur "
 "donnez. Dans chaque exercice, vous devez donner des ordres à vos buggles "
 "pour faire en sorte que le monde ressemble à l'objectif de l'exercice. Par "
 "exemple dans cet exercice, vous devez instruire votre buggle pour qu'elle "
 "avance d'un pas. Observez la différence entre l'état initial et l'objectif "
-"en utilisant les panneaux à droite. Selon la leçon (et vos réglages dans le "
-"menu Language), vous devez écrire vos programme dans l'un des langages de "
-"programmation suivant : Java, JavaScript, Python ou Ruby (en fonction de "
-"l'exercice)."
+"en utilisant les panneaux à droite. Selon la leçon (et vos réglages), vous "
+"devez écrire vos programme dans l'un des langages de programmation suivant : "
+"Java, Python ou Scala (en fonction de l'exercice)."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:22
@@ -2174,10 +2169,9 @@ msgid ""
 "look at the several elements composing the main window, move your mouse over "
 "them to show the tooltip, and experiment with the elements to see what they "
 "do.  The white area below is the console: this is where errors and messages "
-"get displayed. If you have access to the net, try to open the forum in the "
-"help menu to check if other people are connected right now. Note that when "
-"you successfully solve an exercise, the good news is spread on twitter.  "
-"Keep posted to the progress of your friends by following @jlmlovers :)"
+"get displayed. Note that when you successfully solve an exercise, the good "
+"news is spread on twitter and identica.  Keep posted to the progress of your "
+"friends by following @jlmlovers :)"
 msgstr ""
 "Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez "
 "les différents éléments composant la fenêtre, et placez la souris sur dessus "
@@ -2189,7 +2183,17 @@ msgstr ""
 "Suivez les progrès de vos amis en suivant #jlmlovers :)"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/environment/Environment.html:33
+#: src/lessons/welcome/environment/Environment.html:32
+msgid ""
+"If you prefer not to post your successes online, just change the relevant "
+"properties in your config file, that is [!configfile] in your case."
+msgstr ""
+"Si vous préférez ne pas poster vos progrès sur internet, changez simplement "
+"la propriété correspondante dans votre fichier de configuration, qui est [!"
+"configfile] dans votre cas."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/environment/Environment.html:35
 msgid ""
 "If your code contains errors (and code always do at some point), the "
 "computer will display error messages in the console. You obviously have to "
@@ -2197,7 +2201,7 @@ msgid ""
 "sound scary at first glance, but don't panic. The compiler is only somehow "
 "limited in its communication abilities, but he's not mean. If you look "
 "closer, the solution to solve your issue is written in the middle of those "
-"cryptic messages. You'll see, with a bit of habit, we get used to it."
+"cryptic messages. You will see, with a bit of habit, we get used to it."
 msgstr ""
 "Si votre code contient des erreurs (et les programmes finissent toujours par "
 "en contenir), l'ordinateur affichera les messages d'erreur sur la console. "
@@ -2208,13 +2212,13 @@ msgstr ""
 "pour corriger les problèmes est inscrite dans ces messages cryptiques. Vous "
 "verrez, avec un peu d'entraînement, vous vous y habituerez."
 
-#. type: Content of: <p><h3>
-#: src/lessons/welcome/environment/Environment.html:41
+#. type: Content of: <h3>
+#: src/lessons/welcome/environment/Environment.html:43
 msgid "What am I supposed to do?"
 msgstr "Que dois-je faire ?"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/environment/Environment.html:43
+#. type: Content of: <p>
+#: src/lessons/welcome/environment/Environment.html:45
 msgid ""
 "It's time to write your first program. Simply ask your buggle to move one "
 "step forward using the Source Code pane. For that, simply write the "
@@ -2226,22 +2230,15 @@ msgstr ""
 "simplement le code suivant. Cliquer sur les contrôles interactifs ne suffit "
 "pas. Il faut écrire le code après avoir expérimenté interactivement."
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/environment/Environment.html:47
-#: src/lessons/welcome/instructions/Instructions.html:50
-#, no-wrap
-msgid "forward();"
-msgstr "forward();"
-
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/environment/Environment.html:48
-#: src/lessons/welcome/instructions/Instructions.html:50
-#, no-wrap
-msgid "forward()"
-msgstr "forward()"
-
-#. type: Content of: <p><p><p>
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/environment/Environment.html:49
+#: src/lessons/welcome/instructions/Instructions.html:45
+#, no-wrap
+msgid "forward()[!java];[/!]"
+msgstr "avance()[!java];[/!]"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/environment/Environment.html:50
 msgid ""
 "Do not forget the final <code>;</code> which tells the compiler that the "
 "instruction is over (yes, computers are so dumb that they cannot <i>guess</"
@@ -2251,33 +2248,25 @@ msgstr ""
 "l'instruction est terminée (oui, les ordinateurs sont si stupides qu'il faut "
 "leur préciser des choses aussi simples)."
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/environment/Environment.html:53
-msgid ""
-"Once done, clic on run, and proceed to next exercise using the File menu "
-"entry"
-msgstr ""
-"Une fois terminé, cliquez sur \"run\", et passez à l'exercice suivant avec "
-"le\n"
-"menu File."
-
 #. type: Content of: <p><p>
-#: src/lessons/welcome/environment/Environment.html:55
-msgid "(or keep around to experiment further if you feel so)."
-msgstr "(ou restez ici pour expérimenter un peu si vous le voulez)."
+#: src/lessons/welcome/environment/Environment.html:54
+msgid "Once done, clic on run. You can proceed to next exercise once it works."
+msgstr ""
+"Une fois terminé, cliquez sur «Exécuter». Quand cela fonctionne, vous pouvez "
+"passer à l'exercice suivant."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:3
 msgid ""
 "Congratulations! You just wrote your first program! You got the idea now: "
 "programming is nothing more than giving simple instructions to the computer "
-"that blindly apply them. The main difficulty is to explain stuff to someone "
-"as stupid as a computer..."
+"that blindly apply them. The main difficulty is to explain stuff to "
+"something as stupid as a computer..."
 msgstr ""
 "Félicitations ! Vous venez d'écrire votre premier programme ! Vous avez "
 "compris l'idée maintenant : programmer, c'est simplement donner des "
 "instructions à l'ordinateur, qui les applique aveuglément. La plus grande "
-"difficulté est d'expliquer quoi faire à quelqu'un d'aussi bête que "
+"difficulté est d'expliquer quoi faire à quelque chose d'aussi bête que "
 "l'ordinateur..."
 
 #. type: Content of: <p>
@@ -2287,118 +2276,92 @@ msgid ""
 "simple order given to the machine. It is very similar to a recipe stating "
 "<i>Melt the chocolate pieces, add sugar, cool the mix and serve</i>.  In "
 "your programs, such built instructions are called functions or methods, and "
-"you should add parenthesis to invoke them, as in"
+"you should add parenthesis to invoke them:"
 msgstr ""
 "Le programme le plus simple est formé d'une suite d'ordres simples donnés à "
-"la\n"
-"machine. C'est assez comparable à une recette de cuisine où l'on dit "
-"<i>cassez\n"
-"les oeufs puis ajoutez du sel puis mélangez le tout puis faites cuire</i>. "
-"Dans\n"
-"les programmes, de tels instructions  sont appellées fonctions ou\n"
-"méthodes, et vous devez les doter de parenthèses comme dans"
+"la machine. C'est assez comparable à une recette de cuisine où l'on dit "
+"<i>cassez les oeufs puis ajoutez du sel puis mélangez le tout puis faites "
+"cuire</i>. Dans les programmes, de tels instructions  sont appellées "
+"fonctions ou méthodes, et vous devez les doter de parenthèses:"
 
-#. type: Content of: <p><pre>
+#. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:13
 #, no-wrap
 msgid "nameOfTheMethod()"
 msgstr "nomDeLaMethode()"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:16
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:15
 msgid ""
-"Java want to have the instructions separated by semi-columns (;).  The "
-"previous example would thus be written in a similar way:"
+"[!java]Java[/!][!scala]Scala[/!][!python]Python[/!] wants to have the "
+"instructions separated by semi-columns (;)[!python|scala] or by new "
+"lines[/!].  The previous example would thus be written in the following way "
+"[!python|scala] (you can also add semi-columns at the end of the lines, but "
+"this is not mandatory)[/!]."
 msgstr ""
-"Java veut que les instructions soient séparées par des points-virgules (;).\n"
-"L'exemple ci-dessus de recette s'écrirait donc à peu près ainsi:"
+"[!java]Java[/!][!scala]Scala[/!][!python]Python[/!] veut que les "
+"instructions soient séparées [!python|scala]soit [/!]par des points-virgules "
+"(;)[!python|scala], soit par des retours à la ligne[/!].\n"
+"L'exemple ci-dessus de recette s'écrirait donc à peu près comme ci-"
+"dessous. \n"
+"[!python|scala] (vous pouvez aussi ajouter des points-virgules en fin de "
+"lignes, mais ce n'est pas indispensable)[/!]."
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/instructions/Instructions.html:19
+#. type: Content of: <pre>
+#: src/lessons/welcome/instructions/Instructions.html:21
 #, no-wrap
 msgid ""
-"meltTheChocolatePieces();\n"
-"addSugar();\n"
-"coolMix();\n"
-"serve();\n"
+"meltTheChocolatePieces()[!java];[/!]\n"
+"addSugar()[!java];[/!]\n"
+"coolMix()[!java];[/!]\n"
+"serve()[!java];[/!]\n"
 msgstr ""
-"casserLesOeufs();\n"
-"ajouterDuSel();\n"
-"melangerLeTout();\n"
-"faireCuire();\n"
+"casserLesOeufs()[!java];[/!]\n"
+"ajouterDuSel()[!java];[/!]\n"
+"melangerLeTout()[!java];[/!]\n"
+"faireCuire()[!java];[/!]\n"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:25
-msgid ""
-"Python want to have the instructions separated by either semi-columns (;) or "
-"by new lines. The previous example would thus be written the following way."
-msgstr ""
-"Python veut que les instructions soient séparées soit par des points-"
-"virgules\n"
-"(;), soit par des retours à la ligne.\n"
-"L'exemple ci-dessus de recette s'écrirait donc à peu près ainsi:"
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/instructions/Instructions.html:27
+msgid "[!python|scala]"
+msgstr "[!python|scala]"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/instructions/Instructions.html:29
-#, no-wrap
-msgid ""
-"meltTheChocolatePieces()\n"
-"addSugar()\n"
-"coolMix()\n"
-"serve()\n"
-msgstr ""
-"casserLesOeufs()\n"
-"ajouterDuSel()\n"
-"melangerLeTout()\n"
-"faireCuire()\n"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:35
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:28
 msgid ""
 "It could also be written in the following way, but it's generally considered "
 "as a bad practice to group several instructions on the same line since it "
 "greatly hinders the readability."
 msgstr ""
-"Il serait également possible de l'écrire sous la forme suivante, mais "
-"placer\n"
+"Il serait également possible de l'écrire sous la forme suivante, mais placer "
 "plusieurs instructions sur la même ligne est généralement considéré comme "
-"une\n"
-"très mauvaise habitude car cela complique grandement la relecture du code "
-"après\n"
-"coup."
+"une très mauvaise habitude car cela complique grandement la relecture du "
+"code après coup."
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/instructions/Instructions.html:39
+#. type: Content of: <pre>
+#: src/lessons/welcome/instructions/Instructions.html:32
 #, no-wrap
 msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:42
-msgid ""
-"Of course, these specific methods do not exist in Java, but it may be "
-"possible to define them by yourself (we'll see later how to define your how "
-"methods)."
-msgstr ""
-"Bien entendu, ces méthodes n'existent pas en Java, mais il serait possible "
-"de\n"
-"les définir par vous même (nous verrons plus tard comment définir vos "
-"propres méthodes)."
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/instructions/Instructions.html:34
+msgid "[/!]"
+msgstr "[/!]"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:44
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:36
 msgid ""
-"Of course, these specific methods do not exist in Python, but it may be "
-"possible to define them by yourself (we'll see later how to define your how "
-"methods)."
+"Of course, these specific methods do not exist by default in [!java]Java[/!]"
+"[!scala]Scala[/!][!python]Python[/!], but it may be possible to define them "
+"by yourself (we'll see later how to define your how methods)."
 msgstr ""
-"Bien entendu, ces méthodes n'existent pas en Python, mais il serait possible "
-"de\n"
-"les définir par vous même (nous verrons plus tard comment définir vos "
-"propres méthodes)."
+"Bien entendu, ces méthodes n'existent pas en [!java]Java[/!][!scala]Scala[/!]"
+"[!python]Python[/!], mais il serait possible de les définir par vous même "
+"(nous verrons plus tard comment définir vos propres méthodes)."
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:46
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:40
 msgid ""
 "For now, we'll simply go for the buggle instructions. There is a method for "
 "each button of the interactive control panel. To achieve the same effect "
@@ -2408,83 +2371,61 @@ msgstr ""
 "Pour l'instant, nous allons utiliser les instructions de la buggle. Il\n"
 "y a une méthode pour chaque bouton du contrôle interactif.  Pour faire la "
 "même\n"
-"chose que le bouton <b>forward</b> (faire avancer la buggle d'un pas), il "
+"chose que le bouton <b>avance</b> (faire avancer la buggle d'un pas), il "
 "faut\n"
 "écrire dans l'éditeur :"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:51
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:46
 msgid ""
-"Likewise, to achieve the same effect than the <b>backward</b>, <b>turn left</"
-"b> and <b>turn right</b> buttons, you need to use respectively:"
+"Likewise, to achieve the same effect than the <b>backward</b>, <b>left</b> "
+"and <b>right</b> buttons, you need to use respectively:"
 msgstr ""
-"De même, pour faire l'équivalent des boutons <b>backward</b>, <b>turn left</"
-"b> et <b>turn right</b>, il faut utiliser respectivement :"
+"De même, pour faire l'équivalent des boutons <b>recule</b>, <b>gauche</b> et "
+"<b>droite</b>, il faut utiliser respectivement :"
 
-#. type: Content of: <p><p><pre>
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/instructions/Instructions.html:49
+#, no-wrap
+msgid ""
+"backward()[!java];[/!]\n"
+"left()[!java];[/!]\n"
+"right()[!java];[/!]\n"
+msgstr ""
+"recule()[!java];[/!]\n"
+"gauche()[!java];[/!]\n"
+"droite()[!java];[/!]\n"
+
+#. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:54
-#, no-wrap
-msgid ""
-"backward();\n"
-"left();\n"
-"right();\n"
-msgstr ""
-"backward();\n"
-"left();\n"
-"right();\n"
-
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/instructions/Instructions.html:59
-#, no-wrap
-msgid ""
-"backward()\n"
-"left()\n"
-"right()\n"
-msgstr ""
-"backward()\n"
-"left()\n"
-"right()\n"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:63
 msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
 msgstr ""
-"Le bouton <b>mark</b> est un peu particulier, puisqu'il correspond à deux "
+"Le bouton <b>marquer</b> est un peu particulier, puisqu'il correspond à deux "
 "méthodes : la première lève le crayon, tandis que la seconde le baisse."
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/instructions/Instructions.html:66
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/instructions/Instructions.html:57
 #, no-wrap
 msgid ""
-"brushUp();\n"
-"brushDown();\n"
+"brushUp()[!java];[/!]\n"
+"brushDown()[!java];[/!]\n"
 msgstr ""
-"brushUp();\n"
-"brushDown();\n"
+"leveCrayon()[!java];[/!]\n"
+"baisseCrayon()[!java];[/!]\n"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/instructions/Instructions.html:70
-#, no-wrap
-msgid ""
-"brushUp()\n"
-"brushDown()\n"
-msgstr ""
-"brushUp()\n"
-"brushDown()\n"
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:73
+#. type: Content of: <p><p>
+#: src/lessons/welcome/instructions/Instructions.html:60
 msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
 msgstr ""
-"La buggle offre d'autres méthodes, présentées dans le menu \"Help/about this "
-"world\". Elles seront introduites au fur et à mesure des besoins."
+"La buggle offre d'autres méthodes, présentées dans le menu \"Aide/À propos "
+"de ce monde\". Elles seront introduites au fur et à mesure des besoins."
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:77
+#: src/lessons/welcome/instructions/Instructions.html:64
 #: src/lessons/welcome/conditions/Conditions.html:147
 #: src/lessons/welcome/variables/Variables.html:72
 #: src/lessons/welcome/loopfor/LoopFor.html:73
@@ -2506,8 +2447,8 @@ msgstr ""
 msgid "Exercise goal"
 msgstr "Objectif de cet exercice"
 
-#. type: Content of: <p><p><a>
-#: src/lessons/welcome/instructions/Instructions.html:77
+#. type: Content of: <p><a>
+#: src/lessons/welcome/instructions/Instructions.html:64
 msgid ""
 "<a name=\"Objectives\"> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
@@ -2523,7 +2464,7 @@ msgstr ""
 msgid ""
 "Now that we know how to draw things on the board, we'll enjoy this ability "
 "and draw a beautiful G on the board (check Objective panel for details on "
-"what's expected)."
+"what is expected)."
 msgstr ""
 "Maintenant que vous savez écrire des choses sur le sol, nous allons utiliser "
 "cette compétence pour dessiner un merveilleux G par terre. Consultez le "
@@ -2537,118 +2478,78 @@ msgid ""
 "quite easy to get lost in the drawing process, and you may want to add "
 "comments like <i>vertical bar done</i> or <i>finished drawing the G. Time to "
 "move back to initial position</i>. Commenting your code is almost mandatory "
-"if you (or someone else) want to read it afterward, although overcommenting "
+"if you (or someone else) want to read it afterward, although over-commenting "
 "(describing obvious stuff) is a bad idea as the important idea get lost in "
 "the noise."
 msgstr ""
-"Quand vous écrivez un programme un peu complexe, il est souvent pratique\n"
-"d'ajouter des <b>commentaires</b> pour simplifier la relecture du code "
-"après\n"
+"Quand vous écrivez un programme un peu complexe, il est souvent pratique "
+"d'ajouter des <b>commentaires</b> pour simplifier la relecture du code après "
 "coup. Ici par exemple, il est assez facile de se perdre dans les ordres\n"
 "nécessaires au dessin. Il peut être pratique d'ajouter des commentaires "
-"comme\n"
-"<i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. Retournons à "
-"la\n"
-"position initiale</i>. Documenter votre code est presque toujours nécessaire "
-"si\n"
-"quelqu'un (vous ou quelqu'un d'autre) veut le lire après coup. Cependant, "
-"commenter des\n"
-"choses triviales est une mauvaise idée car cela dilue les informations\n"
-"dans des commentaires trop verbeux. En anglais, ce travers s'appelle\n"
-"<i>overcommenting</i>."
+"comme <i>fin de la barre verticale</i> ou <i>Fini de dessiner le G. "
+"Retournons à la position initiale</i>. Documenter votre code est presque "
+"toujours nécessaire si quelqu'un (vous ou quelqu'un d'autre) veut le lire "
+"après coup. Cependant, commenter des choses triviales est une mauvaise idée "
+"car cela dilue les informations dans des commentaires trop verbeux. En "
+"anglais, ce travers s'appelle <i>over-commenting</i>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:14
 msgid ""
-"There is three types of comments in Java, instructing the compiler to not "
-"read the text you add for humans:"
+"There is [!java]three[/!][!python|scala]two[/!] types of comments in [!"
+"thelang], instructing the [!java|scala]compiler[/!][!python]interpreter[/!] "
+"to not read the text you add for humans:"
 msgstr ""
-"Il y a trois sortes de commentaires en Java, indiquant au compilateur qu'il "
-"ne\n"
-"doit pas lire le texte ajouté pour les humains."
+"Il y a [!java]three[/!][!python|scala]two[/!] sortes de commentaires en [!"
+"thelang], indiquant au [!java|scala]compilateur[/!][!python]interpréteur[/!] "
+"qu'il ne doit pas lire le texte ajouté pour les humains."
 
-#. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:16
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:18
 msgid ""
-"There is two types of comments in Python, instructing the compiler to not "
-"read the text you add for humans:"
+"<b>Comments on a single line</b>. When the [!java|scala]compiler[/!][!"
+"python]interpreter[/!] encounters the symbol [!java|scala]//[/!][!"
+"python]#[/!], it ignores the end of the line."
 msgstr ""
-"Il y a deux sortes de commentaires en Python, indiquant au compilateur qu'il "
-"ne\n"
-"doit pas lire le texte ajouté pour les humains."
+"<b>Commentaires sur une seule ligne</b>. Quand le [!java|"
+"scala]compilateur[/!][!python]interpréteur[/!] rencontre le symbole [!java|"
+"scala]//[/!][!python]#[/!], il ignore la fin de la ligne."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:20
 msgid ""
-"<b>Comments on a single line</b>. When the compiler encounters the "
-"symbols //, it ignores the end of the line."
+"<b>Comments on several lines</b>. The [!java|scala]compiler[/!][!"
+"python]interpreter[/!] ignores anything placed between [!java|scala]the "
+"symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
+"line beginning with ''' and the next line ending with '''.[/!]"
 msgstr ""
-"<b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre "
-"les symboles //, il ignore la fin de la ligne."
+"<b>Commentaires sur plusieurs lignes</b>. [!java|scala]Le compilateur[/!][!"
+"python]L'interpréteur[/!] ignore tout ce qui se trouve entre [!java|"
+"scala]les symboles /* et */, même s'ils sont sur des lignes différentes."
+"[/!]\n"
+"[!python]une ligne commençant par ''' et la prochaine ligne terminant par "
+"'''.[/!]\n"
 
-#. type: Content of: <ul><li>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:22
-msgid ""
-"<b>Comments on several lines</b>. The compiler ignores anything placed "
-"between the symbols /* and */ even if they are placed on differing lines."
-msgstr ""
-"<b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui "
-"se trouve entre les symboles /* et */, même s'ils sont sur des lignes "
-"différentes"
-
-#. type: Content of: <ul><li>
+#. type: Content of: <pre>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:27
-msgid ""
-"<b>Comments on a single line</b>. When the compiler encounters the symbol #, "
-"it ignores the end of the line."
-msgstr ""
-"<b>Commentaires sur une seule ligne</b>. Dès que le compilateur rencontre "
-"le\n"
-"symbole #, il ignore la fin de la ligne."
-
-#. type: Content of: <ul><li>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:29
-msgid ""
-"<b>Comments on several lines</b>. The compiler ignores anything placed "
-"between a line beginning with ''' and the next line ending with '''."
-msgstr ""
-"<b>Commentaires sur plusieurs lignes</b>. Le compilateur ignore tout ce qui "
-"se\n"
-"trouve entre une ligne commençant par ''' et la prochaine ligne terminant "
-"par '''."
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:34
 #, no-wrap
 msgid ""
-"methodCallReadByTheCompiler(); <span class=\"comment\">// all this is ignored</span>\n"
-"otherCall(); <span class=\"comment\">/* This is</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> also ignored */</span>\n"
-"yetAnotherCall();\n"
+"methodCallReadByThe[!java|scala]Compiler[/!][!python]Interpreter[/!]()[!java];[/!] <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] all this is ignored</span>\n"
+"otherCall()[!java];[/!] [!java|scala]<span class=\"comment\">/* This is</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> also ignored */</span>[/!]\n"
+"[!python]<span class=\"comment\">''' This is</span>\n"
+"<span class=\"comment\">also ignored  '''</span>[/!]\n"
+"yetAnotherCall()[!java];[/!]\n"
 msgstr ""
-"appelMethodeLuParLeCompilateur(); <span class=\"comment\"> // tout ceci est ignoré</span>\n"
-"autreAppel(); <span class=\"comment\">/* ceci est</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> également ignoré */</span>\n"
-"encoreUnAppel();\n"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:40
-#, no-wrap
-msgid ""
-"methodCallReadByTheCompiler() <span class=\"comment\"># all this is ignored</span>\n"
-"otherCall() \n"
-"<span class=\"comment\">''' This is</span>\n"
-"<span class=\"comment\">also ignored  '''</span>\n"
-"yetAnotherCall()\n"
-msgstr ""
-"appelMethodeLuParLeCompilateur() <span class=\"comment\"> # tout ceci est ignoré</span>\n"
-"autreAppel() \n"
-"<span class=\"comment\">''' ceci est</span>\n"
-"<span class=\"comment\"> également ignoré '''</span>\n"
-"encoreUnAppel()\n"
+"methodCallReadByThe[!java|scala]Compilateur[/!][!python]Interpreteur[/!]()[!java];[/!] <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] tout ceci est ignoré</span>\n"
+"otherCall()[!java];[/!] [!java|scala]<span class=\"comment\">/* Ceci est</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class=\"comment\"> également ignoré */</span>[/!]\n"
+"[!python]<span class=\"comment\">''' Ceci est</span>\n"
+"<span class=\"comment\">également ignoré '''</span>[/!]\n"
+"yetAnotherCall()[!java];[/!]\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:47
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:34
 msgid ""
 "There is a third kind of comments in Java, between /** and */, which are "
 "read by a specific program called JavaDoc to generate automatically the "
@@ -2661,7 +2562,7 @@ msgstr ""
 "suivre un formalisme précis."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/instructions/InstructionsDrawG.html:52
+#: src/lessons/welcome/instructions/InstructionsDrawG.html:39
 msgid ""
 "The comments on several lines are often used to document how to use the "
 "code, while others are more used to describe how this code works."
@@ -10484,7 +10385,7 @@ msgid ""
 "graphically.  The goal of each board is to light up all the lights. Your "
 "robot understands the following orders:"
 msgstr ""
-"Ce monde introduit un petit puzzle de programmation qui peut être utilisé "
+"Cet univers introduit un petit puzzle de programmation qui peut être utilisé "
 "pour introduire la programmation aux enfants ne sachant pas lire. En effet, "
 "il est programmé de manière graphique. L'objectif de chaque niveau est "
 "d'allumer toutes les lumières du plateau en utilisant le petit robot. Celui-"
@@ -14262,6 +14163,51 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
+
+#~ msgid ""
+#~ "Java want to have the instructions separated by semi-columns (;).  The "
+#~ "previous example would thus be written in a similar way:"
+#~ msgstr ""
+#~ "Java veut que les instructions soient séparées par des points-virgules "
+#~ "(;).\n"
+#~ "L'exemple ci-dessus de recette s'écrirait donc à peu près ainsi:"
+
+#~ msgid ""
+#~ "meltTheChocolatePieces()\n"
+#~ "addSugar()\n"
+#~ "coolMix()\n"
+#~ "serve()\n"
+#~ msgstr ""
+#~ "casserLesOeufs()\n"
+#~ "ajouterDuSel()\n"
+#~ "melangerLeTout()\n"
+#~ "faireCuire()\n"
+
+#~ msgid ""
+#~ "Of course, these specific methods do not exist in Java, but it may be "
+#~ "possible to define them by yourself (we'll see later how to define your "
+#~ "how methods)."
+#~ msgstr ""
+#~ "Bien entendu, ces méthodes n'existent pas en Java, mais il serait "
+#~ "possible de\n"
+#~ "les définir par vous même (nous verrons plus tard comment définir vos "
+#~ "propres méthodes)."
+
+#~ msgid ""
+#~ "backward()\n"
+#~ "left()\n"
+#~ "right()\n"
+#~ msgstr ""
+#~ "backward()\n"
+#~ "left()\n"
+#~ "right()\n"
+
+#~ msgid ""
+#~ "brushUp()\n"
+#~ "brushDown()\n"
+#~ msgstr ""
+#~ "brushUp()\n"
+#~ "brushDown()\n"
 
 #~ msgid "getColor(color)"
 #~ msgstr "getColor(color)"

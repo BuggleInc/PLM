@@ -1,6 +1,6 @@
 <h2>Writing more complex programs</h2>
   Now that we know how to draw things on the board, we'll enjoy this ability and 
-  draw a beautiful G on the board (check Objective panel for details on what's 
+  draw a beautiful G on the board (check Objective panel for details on what is 
   expected). 
 
   <p>When you write a quite complex program, it is sometimes useful to <b>add
@@ -8,42 +8,29 @@
    quite easy to get lost in the drawing process, and you may want to add 
    comments like <i>vertical bar done</i> or <i>finished drawing the G. Time to 
    move back to initial position</i>. Commenting your code is almost mandatory if you 
-   (or someone else) want to read it afterward, although overcommenting 
+   (or someone else) want to read it afterward, although over-commenting 
    (describing obvious stuff) is a bad idea as the important idea get lost in the noise.</p>
    
-  <p class="Java">There is three types of comments in Java, instructing the compiler 
-   to not read the text you add for humans:</p>
-  <p class="Python">There is two types of comments in Python, instructing the compiler 
-   to not read the text you add for humans:</p>
+  <p>There is [!java]three[/!][!python|scala]two[/!] types of comments in [!thelang], instructing 
+  the [!java|scala]compiler[/!][!python]interpreter[/!] to not read the text you add for humans:</p>
    
-  <ul class="Java">
-    <li class="Java"><b>Comments on a single line</b>. When the compiler encounters the symbols //,
-      it ignores the end of the line.</li>      
-    <li class="Java"><b>Comments on several lines</b>. The compiler ignores anything placed
-      between the symbols /* and */ even if they are placed on differing lines.</li>
+  <ul>
+    <li><b>Comments on a single line</b>. When the [!java|scala]compiler[/!][!python]interpreter[/!]
+      encounters the symbol [!java|scala]//[/!][!python]#[/!], it ignores the end of the line.</li>      
+    <li><b>Comments on several lines</b>. The [!java|scala]compiler[/!][!python]interpreter[/!]
+      ignores anything placed between 
+      [!java|scala]the symbols /* and */ even if they are placed on differing lines.[/!]
+      [!python]a line beginning with ''' and the next line ending with '''.[/!]</li>
   </ul>
 
-  <ul class="Python">
-    <li class="Python"><b>Comments on a single line</b>. When the compiler encounters the symbol #,
-      it ignores the end of the line.</li>
-    <li class="Python"><b>Comments on several lines</b>. The compiler ignores anything placed
-      between a line beginning with ''' and the next line ending with '''.</li>      
-  </ul>
-
-<pre class="Java">
-methodCallReadByTheCompiler(); <span class="comment">// all this is ignored</span>
-otherCall(); <span class="comment">/* This is</span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>
-yetAnotherCall();
+<pre>
+methodCallReadByThe[!java|scala]Compiler[/!][!python]Interpreter[/!]()[!java];[/!] <span class="comment">[!java|scala]//[/!][!python]#[/!] all this is ignored</span>
+otherCall()[!java];[/!] [!java|scala]<span class="comment">/* This is</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>[/!]
+[!python]<span class="comment">''' This is</span>
+<span class="comment">also ignored  '''</span>[/!]
+yetAnotherCall()[!java];[/!]
 </pre>  
-<pre class="Python">
-methodCallReadByTheCompiler() <span class="comment"># all this is ignored</span>
-otherCall() 
-<span class="comment">''' This is</span>
-<span class="comment">also ignored  '''</span>
-yetAnotherCall()
-</pre>  
-  
   <p class="Java">There is a third kind of comments in Java, between /** and */, which are read by a
 specific program called JavaDoc to generate automatically the documentation
 explaining how to use the code. These comments must follow a very precise
