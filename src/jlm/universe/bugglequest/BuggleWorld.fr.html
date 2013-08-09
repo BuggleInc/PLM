@@ -8,11 +8,11 @@ objets, colorier le sol, se cogner à des murs, etc.
 <table border=1>
 <tr><td colspan=2 align=center><b>Bouger</b><br/> (voir aussi la note sur les exceptions, plus bas)</td></tr>
   <tr><td><b>Tourner à gauche<br/>Tourner à droite<br/>Se retourner<br/>Avancer<br/>Reculer</b></td>
-      <td><div class="Java">void left()</div><div class="python">left()</div>
-          <div class="Java">void right()</div><div class="python">right()</div>
-          <div class="Java">void back()</div><div class="python">back()</div>
-          <div class="Java">void forward() ou void forward(nbPas)</div><div class="python">forward() ou forward(nbPas)</div>
-          <div class="Java">void backward() ou void backward(nbPas)</div><div class="python">backward() ou backward(nbPas)</div></td></tr>
+      <td><div class="Java">void gauche()</div><div class="python">gauche()</div>
+          <div class="Java">void droite()</div><div class="python">droite()</div>
+          <div class="Java">void retourne()</div><div class="python">retourne()</div>
+          <div class="Java">void avance() ou void avance(int nbPas)</div><div class="python">avance() ou avance(nbPas)</div>
+          <div class="Java">void recule() ou void recule(int nbPas)</div><div class="python">recule() ou recule(nbPas)</div></td></tr>
   <tr><td><b>Obtenir l'abcisse<br/>Obtenir l'ordonnée<br/>Changer l'abcisse<br/>Changer l'ordonnée<br/>Changer la position</b></td>
       <td><div class="Java">int getX()</div><div class="python">getX()</div>
           <div class="Java">int getY()</div><div class="python">getY()</div>
@@ -22,43 +22,44 @@ objets, colorier le sol, se cogner à des murs, etc.
 
 <tr><td colspan=2 align=center><b>Informations sur la buggle</b></td></tr>
   <tr><td><b>Obtenir la couleur<br/>Changer la couleur</b></td>
-      <td><div class="Java">Color getColor()</div><div class="python">getColor()</div>
-          <div class="Java">void setColor(Color c)</div><div class="python">setColor(color)</div></td></tr>				
+      <td><div class="Java">Color getCouleur()</div><div class="python">getCouleur()</div>
+          <div class="Java">void setCouleur(Color c)</div><div class="python">setCouleur(couleur)</div></td></tr>				
   <tr><td><b>Chercher un mur devant<br/>Chercher un mur derriere</b></td>
-      <td><div class="Java">boolean isFacingWall()</div><div class="python">isFacingWall()</div>
-          <div class="Java">boolean isBackingWall()</div><div class="python">isBackingWall()</div></td></tr>				
+      <td><div class="Java">boolean estFaceMur()</div><div class="python">estFaceMur()</div>
+          <div class="Java">boolean estDosMur()</div><div class="python">estDosMur()</div></td></tr>				
   <tr><td><b>Obtenir la direction<br/>Changer la direction</b><br/>Les directions valides sont :</td>
       <td><div class="Java">Direction getDirection()</div><div class="python">getDirection()</div>
           <div class="Java">void setDirection(Direction dir)</div><div class="python">setDirection(direction)</div>
-          Direction.NORTH, Direction.EAST, Direction.SOUTH et Direction.WEST</td></tr>
+          Direction.NORTH (le nord), Direction.EAST (l'est), Direction.SOUTH (le sud)
+et Direction.WEST (l'ouest)</td></tr>
   <tr><td>Renvoi si la buggle est actuellement <b>sélectionnée dans l'interface</b></td>
-      <td><div class="Java">boolean isSelected()</div><div class="python">isSelected()</div></td></tr>
+      <td><div class="Java">boolean estChoisi()</div><div class="python">isSelected()</div></td></tr>
  
 <tr><td colspan=2 align=center><b>À propos de la brosse</b></td></tr>
   <tr><td><b>Baisser la brosse<br/>Lever la brosse<br/>Obtenir la position de la brosse</b></td>
-      <td><div class="Java">void brushUp()</div><div class="python">brushUp()</div>
-          <div class="Java">void brushDown()</div><div class="python">brushDown()</div>
-          <div class="Java">boolean isBrushDown()</div><div class="python">isBrushDown()</div></td></tr>
+      <td><div class="Java">void leveBrosse()</div><div class="python">leveBrosse()</div>
+          <div class="Java">void baisseBrosse()</div><div class="python">baisseBrosse()</div>
+          <div class="Java">boolean estBrosseBaissee()</div><div class="python">estBrosseBaissee()</div></td></tr>
   <tr><td><b>Modifier la couleur de la brosse<br/>Obtenir la couleur de la brosse</b></td>
-      <td><div class="Java">void setBrushColor(Color c)</div><div class="python">setBrushColor(color)</div>
-          <div class="Java">Color getBrushColor()</div><div class="python">getBrushColor()</div></td></tr>
+      <td><div class="Java">void setBrosseCouleur(Color c)</div><div class="python">setBrosseCouleur(couleur)</div>
+          <div class="Java">Color getBrosseCouleur()</div><div class="python">getBrosseCouleur()</div></td></tr>
 
 <tr><td colspan=2 align=center><b>Interagir avec le monde</b></td></tr>
   <tr><td><b>Obtenir la couleur du sol</b></td>
-      <td><div class="Java">Color getGroundColor()</div><div class="python">getGroundColor()</div></td></tr>
+      <td><div class="Java">Color getSolCouleur()</div><div class="python">getSolCouleur()</div></td></tr>
 
-  <tr><td><b>Chercher un baggle par terre<br/>Chercher un baggle dans ses poches<br/>Prendre un baggle<br/>Poser un baggle</b><br/>
+  <tr><td><b>Chercher un biscuit par terre<br/>Chercher un biscuit dans ses poches<br/>Prendre un biscuit<br/>Poser un biscuit</b><br/>
       (voir la note sur les exceptions)</td>
-      <td><div class="Java">boolean isOverBaggle()</div><div class="python">isOverBaggle()</div>
-          <div class="Java">boolean isCarryingBaggle()</div><div class="python">isCarryingBaggle()</div>
-          <div class="Java">void pickupBaggle()</div><div class="python">pickupBaggle()</div>
-          <div class="Java">void dropBaggle()</div><div class="python">dropBaggle()</div></td></tr>
+      <td><div class="Java">boolean estSurBiscuit()</div><div class="python">estSurBiscuit()</div>
+          <div class="Java">boolean porteBiscuit()</div><div class="python">porteBiscuit()</div>
+          <div class="Java">void prendBiscuit()</div><div class="python">prendBiscuit()</div>
+          <div class="Java">void poseBiscuit()</div><div class="python">poseBiscuit()</div></td></tr>
 
   <tr><td><b>Chercher un message<br/>Ajouter un message<br/>Lire le message<br/>Effacer le message</b></td>
-      <td><div class="Java">boolean isOverMessage()</div><div class="python">isOverMessage()</div>
-          <div class="Java">void writeMessage(String msg)</div><div class="python">writeMessage(msg)</div>
-          <div class="Java">String readMessage()</div><div class="python">readMessage()</div>
-          <div class="Java">void clearMessage()</div><div class="python">clearMessage()</div></td></tr>
+      <td><div class="Java">boolean estSurMessage()</div><div class="python">estSurMessage()</div>
+          <div class="Java">void ecritMessage(String msg)</div><div class="python">ecritMessage(msg)</div>
+          <div class="Java">String litMessage()</div><div class="python">litMessage()</div>
+          <div class="Java">void effaceMessage()</div><div class="python">effaceMessage()</div></td></tr>
 </table>
 
 <h2>Note sur les exceptions</h2>

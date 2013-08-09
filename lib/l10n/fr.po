@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-10 02:05+0300\n"
-"PO-Revision-Date: 2013-08-10 02:06+0200\n"
+"POT-Creation-Date: 2013-08-10 00:16+0300\n"
+"PO-Revision-Date: 2013-08-10 01:03+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -465,7 +465,7 @@ msgstr "une écriture"
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:25
 #, no-wrap
 msgid "boolean isSelected()"
-msgstr "boolean isSelected()"
+msgstr "boolean estChoisi()"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/sort/SortingWorld.html:37
@@ -590,8 +590,8 @@ msgid ""
 "void forward(double steps)\n"
 "void backward(double steps)"
 msgstr ""
-"void forward(double nbPas)\n"
-"void backward(double nbPas)"
+"void avance(double nbPas)\n"
+"void recule(double nbPas)"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:15
@@ -691,7 +691,7 @@ msgstr "Téléporte la tortue à une nouvelle position (sans laisser de trace)."
 #: src/jlm/universe/turtles/TurtleWorld.html:39
 #, no-wrap
 msgid "void moveTo(double x, double y)"
-msgstr ""
+msgstr "void allerVers(double x, double y)"
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:40
@@ -925,54 +925,54 @@ msgstr "Reculer</b>"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "void left()"
-msgstr "void left()"
+msgstr "void gauche()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
 msgid "left()"
-msgstr "left()"
+msgstr "gauche()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "void right()"
-msgstr "void right()"
+msgstr "void droite()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
 msgid "right()"
-msgstr "right()"
+msgstr "droite()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "void back()"
-msgstr "void back()"
+msgstr "void retourne()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
 msgid "back()"
-msgstr "back()"
+msgstr "retourne()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
 msgid "void forward() or void forward(int steps)"
-msgstr "void forward() ou void forward(nbPas)"
+msgstr "void avance() ou void avance(int nbPas)"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
 msgid "forward() or forward(steps)"
-msgstr "forward() ou forward(nbPas)"
+msgstr "avance() ou avance(nbPas)"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:15
 msgid "void backward() or void backward(int steps)"
-msgstr "void backward() ou void backward(nbPas)"
+msgstr "void recule() ou void recule(int nbPas)"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:15
 msgid "backward() or backward(steps)"
-msgstr "backward() ou backward(nbPas)"
+msgstr "recule() ou recule(nbPas)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:16
@@ -1077,7 +1077,7 @@ msgstr "Changer la couleur</b>"
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
 msgid "void setColor(Color c)"
-msgstr "void setColor(Color c)"
+msgstr "void setCouleur(Color c)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
@@ -1095,23 +1095,23 @@ msgstr "Chercher un mur derriere</b>"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
 #: src/lessons/turmites/universe/TurmiteWorld.html:20
 msgid "boolean isFacingWall()"
-msgstr "boolean isFacingWall()"
+msgstr "boolean estFaceMur()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
 msgid "isFacingWall()"
-msgstr "isFacingWall()"
+msgstr "estFaceMur()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:29
 #: src/lessons/turmites/universe/TurmiteWorld.html:20
 msgid "boolean isBackingWall()"
-msgstr "boolean isBackingWall()"
+msgstr "boolean estDosMur()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:29
 msgid "isBackingWall()"
-msgstr "isBackingWall()"
+msgstr "estDosMur()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:30
@@ -1194,34 +1194,34 @@ msgstr "Obtenir la position de la brosse</b>"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:39
 #: src/lessons/turmites/universe/TurmiteWorld.html:26
 msgid "void brushUp()"
-msgstr "void brushUp()"
+msgstr "void leveBrosse()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:39
 msgid "brushUp()"
-msgstr "brushUp()"
+msgstr "leveBrosse()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:40
 #: src/lessons/turmites/universe/TurmiteWorld.html:26
 msgid "void brushDown()"
-msgstr "void brushDown()"
+msgstr "void baisseBrosse()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:40
 msgid "brushDown()"
-msgstr "brushDown()"
+msgstr "baisseBrosse()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:41
 #: src/lessons/turmites/universe/TurmiteWorld.html:26
 msgid "boolean isBrushDown()"
-msgstr "boolean isBrushDown()"
+msgstr "boolean estBrosseBaissee()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:41
 msgid "isBrushDown()"
-msgstr "isBrushDown()"
+msgstr "estBrosseBaissee()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:42
@@ -1238,23 +1238,23 @@ msgstr "Obtenir la couleur de la brosse</b>"
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:43
 msgid "void setBrushColor(Color c)"
-msgstr "void setBrushColor(Color c)"
+msgstr "void setBrosseCouleur(Color c)"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:43
 msgid "setBrushColor(color)"
-msgstr "setBrushColor(color)"
+msgstr "setBrosseCouleur(couleur)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:44
 #: src/lessons/turmites/universe/TurmiteWorld.html:28
 msgid "Color getBrushColor()"
-msgstr "Color getBrushColor()"
+msgstr "Color getBrosseCouleur()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:44
 msgid "getBrushColor()"
-msgstr "getBrushColor()"
+msgstr "getBrosseCouleur()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:46
@@ -1272,36 +1272,36 @@ msgstr "<b>Obtenir la couleur du sol</b>"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:48
 #: src/lessons/turmites/universe/TurmiteWorld.html:31
 msgid "Color getGroundColor()"
-msgstr "Color getGroundColor()"
+msgstr "Color getSolCouleur()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:48
 msgid "getGroundColor()"
-msgstr "getGroundColor()"
+msgstr "getSolCouleur()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:50
 #: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "<b>Look for a baggle on the ground"
-msgstr "<b>Chercher un baggle par terre"
+msgstr "<b>Chercher un biscuit par terre"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:50
 #: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "Look for a baggle in bag"
-msgstr "Chercher un baggle dans ses poches"
+msgstr "Chercher un biscuit dans ses poches"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:50
 #: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "Pickup a baggle"
-msgstr "Prendre un baggle"
+msgstr "Prendre un biscuit"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:50
 #: src/lessons/turmites/universe/TurmiteWorld.html:33
 msgid "Drop a baggle</b>"
-msgstr "Poser un baggle</b>"
+msgstr "Poser un biscuit</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:51
@@ -1313,45 +1313,45 @@ msgstr "(voir la note sur les exceptions)"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:52
 #: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "boolean isOverBaggle()"
-msgstr "boolean isOverBaggle()"
+msgstr "boolean estSurBiscuit()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:52
 msgid "isOverBaggle()"
-msgstr "isOverBaggle()"
+msgstr "estSurBiscuit()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:53
 #: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "boolean isCarryingBaggle()"
-msgstr "boolean isCarryingBaggle()"
+msgstr "boolean porteBiscuit()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:53
 msgid "isCarryingBaggle()"
-msgstr "isCarryingBaggle()"
+msgstr "porteBiscuit()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:54
 #: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "void pickupBaggle()"
-msgstr "void pickupBaggle()"
+msgstr "void prendBiscuit()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:54
 msgid "pickupBaggle()"
-msgstr "pickupBaggle()"
+msgstr "prendBiscuit()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:55
 #: src/lessons/turmites/universe/TurmiteWorld.html:35
 msgid "void dropBaggle()"
-msgstr "void dropBaggle()"
+msgstr "void poseBiscuit()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:55
 msgid "dropBaggle()"
-msgstr "dropBaggle()"
+msgstr "poseBiscuit()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:57
@@ -1381,44 +1381,44 @@ msgstr "Effacer le message</b>"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:58
 #: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "boolean isOverMessage()"
-msgstr "boolean isOverMessage()"
+msgstr "boolean estSurMessage()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:58
 msgid "isOverMessage()"
-msgstr "isOverMessage()"
+msgstr "estSurMessage()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:59
 msgid "void writeMessage(String msg)"
-msgstr "void writeMessage(String msg)"
+msgstr "void ecritMessage(String msg)"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:59
 msgid "writeMessage(msg)"
-msgstr "writeMessage(msg)"
+msgstr "ecritMessage(msg)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:60
 #: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "String readMessage()"
-msgstr "String readMessage()"
+msgstr "String litMessage()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:60
 msgid "readMessage()"
-msgstr "readMessage()"
+msgstr "litMessage()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:61
 #: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "void clearMessage()"
-msgstr "void clearMessage()"
+msgstr "void effaceMessage()"
 
 #. type: Content of: <table><tr><td><div>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:61
 msgid "clearMessage()"
-msgstr "clearMessage()"
+msgstr "effaceMessage()"
 
 #. type: Content of: <h2>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:64
@@ -10373,12 +10373,6 @@ msgstr "LightBot"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/lightbot/LightBotWorld.html:3
-#, fuzzy
-#| msgid ""
-#| "This world introduces a little programming puzzle which can somehow be "
-#| "used to introduce programmation to non-reading kids since it is "
-#| "programmed graphically.  The goal of each board is to light up all the "
-#| "lights. Your robot understands the following orders:"
 msgid ""
 "This universe introduces a little programming puzzle which can somehow be "
 "used to introduce programmation to non-reading kids since it is programmed "
@@ -14163,57 +14157,6 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
-
-#~ msgid ""
-#~ "Java want to have the instructions separated by semi-columns (;).  The "
-#~ "previous example would thus be written in a similar way:"
-#~ msgstr ""
-#~ "Java veut que les instructions soient séparées par des points-virgules "
-#~ "(;).\n"
-#~ "L'exemple ci-dessus de recette s'écrirait donc à peu près ainsi:"
-
-#~ msgid ""
-#~ "meltTheChocolatePieces()\n"
-#~ "addSugar()\n"
-#~ "coolMix()\n"
-#~ "serve()\n"
-#~ msgstr ""
-#~ "casserLesOeufs()\n"
-#~ "ajouterDuSel()\n"
-#~ "melangerLeTout()\n"
-#~ "faireCuire()\n"
-
-#~ msgid ""
-#~ "Of course, these specific methods do not exist in Java, but it may be "
-#~ "possible to define them by yourself (we'll see later how to define your "
-#~ "how methods)."
-#~ msgstr ""
-#~ "Bien entendu, ces méthodes n'existent pas en Java, mais il serait "
-#~ "possible de\n"
-#~ "les définir par vous même (nous verrons plus tard comment définir vos "
-#~ "propres méthodes)."
-
-#~ msgid ""
-#~ "backward()\n"
-#~ "left()\n"
-#~ "right()\n"
-#~ msgstr ""
-#~ "backward()\n"
-#~ "left()\n"
-#~ "right()\n"
-
-#~ msgid ""
-#~ "brushUp()\n"
-#~ "brushDown()\n"
-#~ msgstr ""
-#~ "brushUp()\n"
-#~ "brushDown()\n"
-
-#~ msgid "getColor(color)"
-#~ msgstr "getColor(color)"
-
-#~ msgid "LightBotWorld"
-#~ msgstr "LightBotWorld"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"

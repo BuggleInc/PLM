@@ -10,18 +10,17 @@ là où elles marchent et à qui on peut donner des ordres simples.</p>
 
 <h2>Fonctions pour déplacer la tortue</h2>
 
-<pre class="Java">void forward(double nbPas)
-void backward(double nbPas)</pre>
-<pre class="python">forward(nbPas)
-backward(nbPas)</pre>
-Avance (forward) ou recule (backward) du nombre de pas demandés.
+<pre class="Java">void avance(double nbPas)
+void recule(double nbPas)</pre>
+<pre class="python">avance(nbPas)
+recule(nbPas)</pre>
+Avance ou recule du nombre de pas demandé.
 
-<pre class="Java">void right(double angle)
-void left(double angle)</pre>
-<pre class="python">right(angle)
-left(angle)</pre>
-Tourne à gauche (left) ou à droite (right) du nombre de l'angle indiqué (en
-degrés).
+<pre class="Java">void droite(double angle)
+void gauche(double angle)</pre>
+<pre class="python">droite(angle)
+gauche(angle)</pre>
+Tourne à gauche ou à droite de l'angle indiqué (en degrés).
 
 <pre class="Java">double getX()
 double getY()</pre>
@@ -35,47 +34,47 @@ void setPos(double x, double y)</pre>
 <pre class="python">setX(x)
 setY(y)
 setPos(x,y)</pre>
-Teleports the turtle to a new position (without leaving any trace).
+Téléporte la tortue à une nouvelle position (sans laisser de trace).
 
-<pre class="Java">void moveTo(double x, double y)</pre>
-<pre class="python">moveTo(x,y)</pre>
-Moves the turtle to a new position.
+<pre class="Java">void allerVers(double x, double y)</pre>
+<pre class="python">allerVers(x,y)</pre>
+Déplace la tortue à une nouvelle position.
 
-<pre class="Java">double getHeading()</pre>
-<pre class="python">getHeading()</pre>
+<pre class="Java">double getCap()</pre>
+<pre class="python">getCap()</pre>
 Retourne le cap actuel de la tortue (en degrés).
 
-<pre class="Java">void setHeading(double angle)</pre>
-<pre class="python">setHeading(angle)</pre>
+<pre class="Java">void setCap(double angle)</pre>
+<pre class="python">setCap(angle)</pre>
 Change le cap de la tortue à l'angle indiqué (en degrés).
 
 <h2>Fonctions à propos du stylo</h2>
 
-<pre class="Java">void penUp()</pre>
-<pre class="python">penUp()</pre>
-Remonte le stylo de la tortue (les tortues ont des stylos, pas des brosses
+<pre class="Java">void leveCrayon()</pre>
+<pre class="python">leveCrayon()</pre>
+Remonte le crayon de la tortue (les tortues ont des crayons, pas des brosses
 comme les buggles). La tortue ne laissera plus de trace lors de ses
 déplacements suivants.
 
-<pre class="Java">void penDown()</pre>
-<pre class="python">penDown()</pre>
+<pre class="Java">void baisseCrayon()</pre>
+<pre class="python">baisseCrayon()</pre>
 Descend le stylo. La tortue laissera une trace lors de ses prochains
 déplacements.
 
-<pre class="Java">boolean isPenDown()</pre>
-<pre class="python">isPenDown()</pre>
+<pre class="Java">boolean estCrayonBaisse()</pre>
+<pre class="python">estCrayonBaisse()</pre>
 Retourne si le stylo est actuellement baissé ou non.
 
-<pre class="Java">Color getColor()</pre>
-<pre class="python">getColor()</pre>
+<pre class="Java">Color getCouleur()</pre>
+<pre class="python">getCouleur()</pre>
 Retourne la couleur actuelle du stylo.
 
-<pre class="Java">void setColor(Color color)</pre>
-<pre class="python">setColor(color)</pre>
+<pre class="Java">void setCouleur(Color couleur)</pre>
+<pre class="python">setCouleur(couleur)</pre>
 Modifier la couleur du stylo.
 
 <h2>Autres fonctions</h2>
 
-<pre class="Java">boolean isSelected()</pre>
+<pre class="Java">boolean estChoisi()</pre>
 <pre class="python">isSelected()</pre>
 Renvoie si la tortue actuelle est sélectionnée dans l'interface graphique.

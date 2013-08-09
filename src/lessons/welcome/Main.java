@@ -202,5 +202,4 @@ public class Main extends Lesson {
 		addExercise(new TwoAsOne(this),bat);
 		addExercise(new WithoutDoubles(this),bat);
 	}
-
 }
