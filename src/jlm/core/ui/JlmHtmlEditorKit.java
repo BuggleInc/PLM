@@ -41,8 +41,9 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 				if (iterElem != null)
 					theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
 			}
-			if (theCSSClass != null && 
-				!theCSSClass.toLowerCase().equals(Game.getProgrammingLanguage().getLang().toLowerCase())) {
+			if (!Game.getInstance().isDebugEnabled() // Display everything when in debug mode 
+				&& theCSSClass != null 
+				&& !theCSSClass.toLowerCase().equals(Game.getProgrammingLanguage().getLang().toLowerCase())) {
 				return new EmptyView(element);
 			}
 			
@@ -71,31 +72,45 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	}
 	private static Map<ProgrammingLanguage,String> css; /** The CSS to use for a given language */
 	public static String getCSS(ProgrammingLanguage lang) {
+		String header = "  <style type=\"text/css\">\n"+
+		        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+		        "    code { background:#EEEEEE; }\n"+
+		        "    pre { background: #EEEEEE;\n"+
+		        "          margin: 5px;\n"+
+		        "          padding: 6px;\n"+
+		        "          border: 1px inset;\n"+
+		        "          width: 640px;\n"+
+		        "          overflow: auto;\n"+
+		        "          text-align: left;\n"+
+		        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+		        "   .comment { background:#EEEEEE;\n"+
+		        "              font-family: \"Times New Roman\", serif;\n"+
+		        "              color:#00AA00;\n"+
+		        "              font-style: italic; }\n";
+		String res;
+		if (Game.getInstance().isDebugEnabled()) {
+			/* In debugging mode, all languages are displayed, with differing colors */
+			res = header;
+			res += ".Java   {visibility: visible; display: inline; color:#FF0000}\n";
+			res += ".java   {visibility: visible; display: inline; color:#FF0000}\n";
+			res += ".python {visibility: visible; display: inline; color:#008000}\n";
+			res += ".Python {visibility: visible; display: inline; color:#008000}\n";
+			res += ".scala  {visibility: visible; display: inline; color:#0000FF}\n";
+			res += ".Scala  {visibility: visible; display: inline; color:#0000FF}\n";
+			res +=  "  </style>\n";
+			return res;
+		}
+		
 		if (css==null) 
 			 css = new HashMap<ProgrammingLanguage, String>();
-		String res = css.get(lang);
+		res = css.get(lang);
 		if (res == null) {
-			res =		"  <style type=\"text/css\">\n"+
-				        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
-				        "    code { background:#EEEEEE; }\n"+
-				        "    pre { background: #EEEEEE;\n"+
-				        "          margin: 5px;\n"+
-				        "          padding: 6px;\n"+
-				        "          border: 1px inset;\n"+
-				        "          width: 640px;\n"+
-				        "          overflow: auto;\n"+
-				        "          text-align: left;\n"+
-				        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
-				        "   .comment { background:#EEEEEE;\n"+
-				        "              font-family: \"Times New Roman\", serif;\n"+
-				        "              color:#00AA00;\n"+
-				        "              font-style: italic; }\n";
+			res = header;
 			for (ProgrammingLanguage l2 : Game.programmingLanguages) {
 				if (!lang.equals(l2)) {
 					res += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
 					res += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
 				} else {
-					/* DEBUG ONLY, to see the specific elements*/ 
 					res += "."+l2.getLang()+" {visibility: visible; color:#000000;}\n";
 					res += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#000000;}\n";
 				}
