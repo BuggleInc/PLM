@@ -13,8 +13,9 @@ import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 
 
+
 import jlm.core.model.Game;
-import jlm.core.model.lesson.ISourceFileListener;
+import jlm.core.model.session.ISourceFileListener;
 import jlm.core.ui.IEditorPanel;
 import jlm.core.ui.ResourcesCache;
 import jlm.universe.Entity;

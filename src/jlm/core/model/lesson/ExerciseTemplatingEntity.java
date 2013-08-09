@@ -5,6 +5,7 @@ import java.util.Map;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.session.SourceFile;
 import jlm.universe.World;
 
 /** This class of Exercises are useful to merge the entity and world within the same class.

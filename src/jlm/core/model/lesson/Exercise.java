@@ -22,6 +22,8 @@ import jlm.core.JLMCompilerException;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.session.SourceFile;
+import jlm.core.model.session.SourceFileRevertable;
 import jlm.core.utils.FileUtils;
 import jlm.universe.Entity;
 import jlm.universe.World;
@@ -270,7 +272,7 @@ public abstract class Exercise extends Lecture {
 						boolean foundScript = false;
 
 						for (SourceFile sf : sourceFiles.get(lang)) {
-							if (newClassName.equals(sf.name)) {
+							if (newClassName.equals(sf.getName())) {
 								old.setScript(lang, sf.getCompilableContent(whatToMutate));
 								old.setScriptOffset(lang, sf.getOffset());
 								foundScript = true;
@@ -279,7 +281,7 @@ public abstract class Exercise extends Lecture {
 						if (!foundScript) {
 							StringBuffer sb = new StringBuffer();
 							for (SourceFile sf: sourceFiles.get(lang)) 
-								sb.append(sf.name+", ");
+								sb.append(sf.getName()+", ");
 
 							System.err.println(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");
 							throw new RuntimeException(getClass().getName()+": Cannot retrieve the script for "+newClassName+". Known scripts: "+sb+"(EOL)");						

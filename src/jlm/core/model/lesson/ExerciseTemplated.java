@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.session.SourceFile;
 import jlm.core.utils.FileUtils;
 import jlm.universe.BrokenWorldFileException;
 import jlm.universe.Entity;
@@ -288,8 +289,8 @@ public abstract class ExerciseTemplated extends Exercise {
 					searchedName = m.replaceAll("");
 				}
 				if (Game.getInstance().isDebugEnabled())
-					System.out.println("Saw "+sf.name+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
-				if (sf.name.equals(searchedName)||sf.name.equals(tabName))
+					System.out.println("Saw "+sf.getName()+" in "+lang.getLang()+", searched for "+searchedName+" or "+tabName+" while checking for the need of creating a new tab");
+				if (sf.getName().equals(searchedName)||sf.getName().equals(tabName))
 					foundThisLanguage=true;
 			}
 			if (!foundThisLanguage) {

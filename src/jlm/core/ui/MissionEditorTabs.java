@@ -18,7 +18,7 @@ import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
-import jlm.core.model.lesson.SourceFile;
+import jlm.core.model.session.SourceFile;
 import jlm.universe.IEntityStackListener;
 import jlm.universe.World;
 import jsyntaxpane.DefaultSyntaxKit;

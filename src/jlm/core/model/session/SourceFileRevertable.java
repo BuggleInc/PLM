@@ -1,4 +1,4 @@
-package jlm.core.model.lesson;
+package jlm.core.model.session;
 
 public class SourceFileRevertable extends SourceFile {
 

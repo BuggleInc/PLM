@@ -10,8 +10,8 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.EditorKit;
 
-import jlm.core.model.lesson.ISourceFileListener;
-import jlm.core.model.lesson.SourceFile;
+import jlm.core.model.session.ISourceFileListener;
+import jlm.core.model.session.SourceFile;
 
 
 /*

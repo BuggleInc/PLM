@@ -1,4 +1,4 @@
-package jlm.core.model.lesson;
+package jlm.core.model.session;
 
 import java.util.Map;
 import java.util.Map.Entry;
@@ -7,6 +7,7 @@ import javax.swing.JScrollPane;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
+import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Exercise.StudentOrCorrection;
 import jlm.core.ui.JavaEditorPanel;
 

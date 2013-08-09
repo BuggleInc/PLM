@@ -9,8 +9,8 @@ import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
-import jlm.core.model.lesson.SourceFile;
-import jlm.core.model.lesson.SourceFileRevertable;
+import jlm.core.model.session.SourceFile;
+import jlm.core.model.session.SourceFileRevertable;
 
 public class RevertExercise extends AbstractGameAction {
 

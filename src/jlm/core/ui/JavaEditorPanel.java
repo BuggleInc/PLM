@@ -5,7 +5,7 @@ import javax.swing.JScrollPane;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.lesson.SourceFile;
+import jlm.core.model.session.SourceFile;
 import jlm.universe.Entity;
 import jlm.universe.IEntityStackListener;
 

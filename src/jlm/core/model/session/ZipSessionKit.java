@@ -20,8 +20,6 @@ import jlm.core.model.UserAbortException;
 import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
-import jlm.core.model.lesson.SourceFile;
-import jlm.core.model.lesson.SourceFileRevertable;
 
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;

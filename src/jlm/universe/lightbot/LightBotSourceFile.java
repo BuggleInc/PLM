@@ -3,7 +3,7 @@ package jlm.universe.lightbot;
 import javax.swing.JScrollPane;
 
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.lesson.SourceFileRevertable;
+import jlm.core.model.session.SourceFileRevertable;
 
 public class LightBotSourceFile extends SourceFileRevertable {
 	private LightBotInstruction[] main;
