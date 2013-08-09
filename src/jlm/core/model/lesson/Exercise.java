@@ -165,8 +165,6 @@ public abstract class Exercise extends Lecture {
 				JLMCompilerException e = new JLMCompilerException(msg, null, null);
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
 				throw e;
-			} else {
-				System.err.println("Got "+sfs.size()+" files to compile");				
 			}
 				
 			try {
