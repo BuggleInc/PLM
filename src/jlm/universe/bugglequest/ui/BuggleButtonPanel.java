@@ -80,7 +80,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		});
 		bButton.setMnemonic(KeyEvent.VK_DOWN);
 
-		lButton = new JButton(i18n.tr("turn left"));
+		lButton = new JButton(i18n.tr("left"));
 		lButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).left();
@@ -88,7 +88,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		});
 		lButton.setMnemonic(KeyEvent.VK_LEFT);
 
-		rButton = new JButton(i18n.tr("turn right"));
+		rButton = new JButton(i18n.tr("right"));
 		rButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).right();
@@ -230,8 +230,8 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		
 		bButton.setText(i18n.tr("backward"));
 		fButton.setText(i18n.tr("forward"));
-		lButton.setText(i18n.tr("turn left"));
-		rButton.setText(i18n.tr("turn right"));
+		lButton.setText(i18n.tr("left"));
+		rButton.setText(i18n.tr("right"));
 		brushButton.setText(i18n.tr("mark"));
 		lBrushColor.setText(i18n.tr("Brush Color"));
 		lBuggleColor.setText(i18n.tr("Buggle Color"));
