@@ -30,20 +30,109 @@ import jlm.core.model.lesson.Lecture;
 public class JlmHtmlEditorKit extends HTMLEditorKit {
 	private static final long serialVersionUID = 1L;
 
+	private static Map<String,String> langColors = null;
+	/** Filters out the part that should not be displayed in the current programming language
+	 * 
+	 *  If current language is java, then we will:
+	 *    - keep parts such as [!java] ... [/!]  (that is, replace the whole group by what's within the tag)
+	 *    - remove parts such as [!python] ... [/!] 
+	 *    - remove parts such as [!scala] ... [/!]
+	 *     
+	 *    - keep parts such as [!java|python] ... [/!] 
+	 *    - keep parts such as [!python|java] ... [/!] 
+	 *    - keep parts such as [!java|scala] ... [/!] 
+	 *    - keep parts such as [!scala|java] ... [/!] 
+	 *    - remove parts such as [!scala|python] ... [/!] 
+	 *    - remove parts such as [!python|scala] ... [/!] 
+	 * 
+	 */
+	public static String filterHTML(String in) {
+		if (langColors == null) {
+			langColors = new HashMap<String, String>();
+			langColors.put("java", "FF0000");
+			langColors.put("python", "008000");
+			langColors.put("scala",  "0000FF");
+			
+			langColors.put("java|python", "FF8000");
+			langColors.put("java|scala",  "FF00FF");
+			langColors.put("python|java", "FF8000");
+			langColors.put("python|scala", "0080FF");
+			langColors.put("scala|java",  "FF00FF");
+			langColors.put("scala|python", "0080FF");
+		}
+		
+		String res = in;
+		
+		/* Display everything when in debug mode, with shiny colors */
+		if (Game.getInstance().isDebugEnabled()) {
+			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+				String l = lang.getLang().toLowerCase();
+				res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]",
+						"<font color=\""+langColors.get(l)+"\">$1</font>");
+				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
+					if (!lang2.equals(lang)) {
+						String l2 = lang2.getLang().toLowerCase();
+						res = res.replaceAll("(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]",
+								"<font color=\""+langColors.get(l+"|"+l2)+"\">$1</font>");
+
+					}
+				}
+			}
+			return res;
+		}
+		
+		/* filter out irrelevant stuff when not in debug */
+		ProgrammingLanguage currLang = Game.getProgrammingLanguage();
+		String cl = currLang.getLang().toLowerCase();
+		
+		res = res.replaceAll(      "(?s)\\[!"+cl+"\\](.*?)\\[/!\\]","$1");
+		//System.out.println("Keep "+"(?s)\\[!"+cl+"\\](.*?)\\[/!\\]");
+		for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+			if (!lang.equals(currLang)) {
+				String l = lang.getLang().toLowerCase();
+				
+				res = res.replaceAll(      "(?s)\\[!"+l +"\\|"+cl+"\\](.*?)\\[/!\\]",   "$1");
+				//System.out.println("Keep "+"(?s)\\[!"+l +"\\|"+cl+"\\](.*?)\\[/!\\]");
+				res = res.replaceAll(      "(?s)\\[!"+cl+"\\|"+l +"\\](.*?)\\[/!\\]",   "$1");
+				//System.out.println("Keep "+"(?s)\\[!"+cl+"\\|"+l +"\\](.*?)\\[/!\\]");
+				
+				res = res.replaceAll(      "(?s)\\[!"+l+"\\](.*?)\\[/!\\]",   "");
+				//System.out.println("Kill "+"(?s)\\[!"+l+"\\](.*?)\\[/!\\]");
+				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
+					if (!lang2.equals(currLang) && !lang2.equals(lang)) {
+						String l2 = lang2.getLang().toLowerCase();
+						res = res.replaceAll(   "(?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]",    "");
+						//System.out.println("Kill (?s)\\[!"+l+"\\|"+l2+"\\](.*?)\\[/!\\]");
+					}
+				}
+			}
+		}
+		return res;
+	}
+	
+	private static boolean hideLang(String cssClass) {
+		if (cssClass == null)
+			return false;
+		if (cssClass.toLowerCase().equals(Game.getProgrammingLanguage().getLang().toLowerCase())) 
+			return false;
+		return true;
+	}
+	
 	public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
 		boolean visible=false;
 		@Override
 		public View create(Element element) {
 			Element iterElem = element;
 			String theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
+			/*
 			while (theCSSClass == null && iterElem != null) {
 				iterElem = iterElem.getParentElement();
 				if (iterElem != null)
 					theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
 			}
+			*/
 			if (!Game.getInstance().isDebugEnabled() // Display everything when in debug mode 
-				&& theCSSClass != null 
-				&& !theCSSClass.toLowerCase().equals(Game.getProgrammingLanguage().getLang().toLowerCase())) {
+				&& hideLang(theCSSClass)) {
 				return new EmptyView(element);
 			}
 			
@@ -70,8 +159,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	public ViewFactory getViewFactory() {
 		return new HTMLFactoryX();
 	}
-	private static Map<ProgrammingLanguage,String> css; /** The CSS to use for a given language */
-	public static String getCSS(ProgrammingLanguage lang) {
+	public static String getCSS() {
 		String header = "  <style type=\"text/css\">\n"+
 		        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
 		        "    code { background:#EEEEEE; }\n"+
@@ -91,34 +179,16 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 		if (Game.getInstance().isDebugEnabled()) {
 			/* In debugging mode, all languages are displayed, with differing colors */
 			res = header;
-			res += ".Java   {visibility: visible; display: inline; color:#FF0000}\n";
-			res += ".java   {visibility: visible; display: inline; color:#FF0000}\n";
-			res += ".python {visibility: visible; display: inline; color:#008000}\n";
-			res += ".Python {visibility: visible; display: inline; color:#008000}\n";
-			res += ".scala  {visibility: visible; display: inline; color:#0000FF}\n";
-			res += ".Scala  {visibility: visible; display: inline; color:#0000FF}\n";
+			res += ".Java   {visibility: visible; color:#FF0000}\n";
+			res += ".java   {visibility: visible; color:#FF0000}\n";
+			res += ".python {visibility: visible; color:#008000}\n";
+			res += ".Python {visibility: visible; color:#008000}\n";
+			res += ".scala  {visibility: visible; color:#0000FF}\n";
+			res += ".Scala  {visibility: visible; color:#0000FF}\n";
 			res +=  "  </style>\n";
 			return res;
 		}
-		
-		if (css==null) 
-			 css = new HashMap<ProgrammingLanguage, String>();
-		res = css.get(lang);
-		if (res == null) {
-			res = header;
-			for (ProgrammingLanguage l2 : Game.programmingLanguages) {
-				if (!lang.equals(l2)) {
-					res += "."+l2.getLang()+" {display: none; color:#FF0000;}\n";
-					res += "."+l2.getLang().toLowerCase()+" {display: none; color:#FF0000;}\n";
-				} else {
-					res += "."+l2.getLang()+" {visibility: visible; color:#000000;}\n";
-					res += "."+l2.getLang().toLowerCase()+" {visibility: visible; color:#000000;}\n";
-				}
-			}
-			res +=  "  </style>\n";
-			css.put(lang, res);
-		}
-		return res;
+		return header+"  </style>\n";
 	}
 }
 
