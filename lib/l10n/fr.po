@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-10 22:16+0300\n"
-"PO-Revision-Date: 2013-08-10 22:21+0200\n"
+"POT-Creation-Date: 2013-08-10 23:06+0300\n"
+"PO-Revision-Date: 2013-08-10 23:06+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2426,7 +2426,7 @@ msgstr ""
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:64
-#: src/lessons/welcome/conditions/Conditions.html:107
+#: src/lessons/welcome/conditions/Conditions.html:108
 #: src/lessons/welcome/variables/Variables.html:72
 #: src/lessons/welcome/loopfor/LoopFor.html:73
 #: src/lessons/welcome/loopwhile/LoopWhile.html:26
@@ -2458,6 +2458,28 @@ msgstr ""
 "mais pas tellement. L'objectif de votre buggle est simplement de se dessiner "
 "une maison (une boîte), et de se cacher dedans. Vérifiez le monde objectif "
 "pour voir exactement ce que cela veut dire."
+
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/instructions/Instructions.html:69
+msgid ""
+"When switching to the next exercise, please note that there is a sub-"
+"exercise following this one.  By default, it is hidden in the menu and you "
+"have to open the sub-menu to see it.  When you switch the exercise, most of "
+"the exercises are hidden because the tree is folded, as follows:"
+msgstr ""
+"Quand vous changerez d'exercice, n'oubliez pas l'exercice d'application qui "
+"suit. Par défaut, il n'est pas visible dans la fenêtre de sélection, et il "
+"faut ouvrir le sous-arbre pour le voir. Lorsque vous ouvrez la fenêtre de "
+"sélection des exercices, la plupart d'entre eux sont cachés, comme cela:"
+
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/instructions/Instructions.html:74
+msgid ""
+"You have to click on the little symbol to the left of the buggle to unfold "
+"the tree, as follows:"
+msgstr ""
+"Vous devez cliquer sur le petit symbole à gauche de la buggle pour déplier "
+"l'arbre, comme cela :"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:2
@@ -2654,7 +2676,7 @@ msgid ""
 "The end of Python code blocks are not marked by any specific char.  "
 "Indenting lines starts a block and unindenting ends it. Do not forget the "
 "colon (:) at the end of the <code>if</code> line, python needs it to know "
-"where the condition stops. The fact that python relies on indentation to "
+"that a new block begins. The fact that python relies on indentation to "
 "delimit blocks is a very good property for beginners: it will force your to "
 "adhere to strict code presentation standards.[/!] It is very easy to get "
 "lost in your own code if it's not properly indented, so you want to clean it "
@@ -2676,7 +2698,7 @@ msgstr ""
 "La fin des blocs de code n'est pas marquée par un symbole particulier: il "
 "s'arrête dès que les lignes ne sont plus indentées. N'oubliez pas les deux "
 "points (:) à la fin de la ligne <code>if</code>, python en a besoin pour "
-"savoir où s'arrête la condition.\n"
+"savoir qu'un nouveau bloc commence.\n"
 "Le fait que python utilise l'indentation pour maquer les blocs est un "
 "avantage pour les débutants: cela vous forcera à respecter des critères "
 "stricts de mise en forme de votre code.[/!] \n"
@@ -2721,7 +2743,7 @@ msgstr ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>\n"
 "<b>quoiFaireDansTousLesCas()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\\\"comment\\\"># Ce bloc n'est rataché à aucune ligne de condition</span>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\"comment\"># Ce bloc n'est rataché à aucune ligne de condition</span>\n"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/conditions/Conditions.html:57
@@ -2778,7 +2800,7 @@ msgstr ""
 "signale, mais pas tout le temps. Si la variable est de type booléen, il peut "
 "se faire prendre au piège, et il convient donc d'être attentif..."
 
-#. type: Content of: <p><p><p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/conditions/Conditions.html:75
 msgid ""
 "The condition can also be a call to some particular methods returning a "
@@ -2787,10 +2809,10 @@ msgid ""
 msgstr ""
 "La condition peut également être un appel à certaines méthodes "
 "particulières, dont le résultat est un booléen. Par exemple, la méthode "
-"<tt>isFacingWall()</tt> de la buggle renvoie vrai si la buggle est face à un "
+"<tt>estFaceMur()</tt> de la buggle renvoie vrai si la buggle est face à un "
 "mur, et faux sinon."
 
-#. type: Content of: <p><p><p><p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/conditions/Conditions.html:79
 msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
@@ -2799,50 +2821,69 @@ msgstr ""
 "Enfin, il est possible de construire une condition composée de plusieurs "
 "sous-conditions reliées par des opérations booléennes:"
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:82
 msgid ""
 "<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when "
 "<tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is "
 "false, <tt>cond2</tt> is not even evaluated as we already know that the "
 "conjunction of both propositions cannot be true)."
-msgstr "<tt>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (d'ailleurs, si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas évaluée puisqu'on sait déjà que la conjonction des deux propositions ne peut pas être vraie)."
+msgstr ""
+"<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> est vraie si "
+"<tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (d'ailleurs, si <tt>cond1</"
+"tt> est fausse, <tt>cond2</tt> n'est même pas évaluée puisqu'on sait déjà "
+"que la conjonction des deux propositions ne peut pas être vraie)."
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:85
 msgid ""
 "<code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> is true if "
 "<tt>cond1</tt> <b>or</b> <tt>cond2</tt> is true (if <tt>cond1</tt> is true, "
 "<tt>cond2</tt> is not even evaluated as we already know that the disjunction "
 "of both propositions cannot be true)."
-msgstr "<tt>cond1 [!java|scala]||[/!][!python]or[/!] cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on sait déjà que la disjonction des deux propositions est vraie)."
+msgstr ""
+"<code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> est vraie si "
+"<tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si <tt>cond1</"
+"tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on sait déjà que "
+"la disjonction des deux propositions est vraie)."
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:88
 msgid ""
 "<code>[!java|scala]![/!][!python]not [/!]cond</code> is true if <tt>cond</"
 "tt> is false."
-msgstr "<tt>[!java|scala]![/!][!python]not [/!]cond</code> cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
+msgstr ""
+"<code>[!java|scala]![/!][!python]not [/!]cond</code> est vraie si <tt>cond</"
+"tt> ne l'est pas."
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:89
 msgid ""
 "When the expression becomes complicated, it is better to add parenthesis to "
 "force the order of evaluation.  Do not hesitate to add more parenthesis to "
 "remove any ambiguities that may appear in an expression."
-msgstr "Quand les expressions deviennent compliquées, il est préférable d'ajouter quelques parenthèses pour lever toute ambiguïté sur l'ordre d'évaluation. N'hésitez pas à mettre suffisamment de parenthèses pour la rendre plus lisible."
+msgstr ""
+"Quand les expressions deviennent compliquées, il est préférable d'ajouter "
+"quelques parenthèses pour lever toute ambiguïté sur l'ordre d'évaluation. "
+"N'hésitez pas à mettre suffisamment de parenthèses pour la rendre plus "
+"lisible."
 
-#. type: Content of: <p><p><p><p><p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/conditions/Conditions.html:93
 msgid ""
-"Finally, it is possible to specify what to do when the condition is false "
-"using the following syntax:"
+"Last, it is possible to specify what to do when the condition is false using "
+"the following syntax. In this case, the instruction "
+"<code>whatToDoIfItsFalse</code> will be executed only if the condition is "
+"false."
 msgstr ""
 "Pour finir, il est possible de spécifier ce qu'il faut faire quand la "
-"condition est fausse, en utilisant la syntaxe suivante :"
+"condition est fausse, en utilisant la syntaxe suivante («else» signifie "
+"«sinon» en anglais). Dans ce cas, l'instruction "
+"<code>aFaireSiLaConditionEstFausse()</code> ne sera exécutée que si la "
+"condition est fausse."
 
-#. type: Content of: <p><p><p><p><p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:95
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/conditions/Conditions.html:96
 #, no-wrap
 msgid ""
 "[!java|scala]if (<b>condition</b>) {\n"
@@ -2863,26 +2904,30 @@ msgstr ""
 "else:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]"
 
-#. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/conditions/Conditions.html:104
+#. type: Content of: <p><p>
+#: src/lessons/welcome/conditions/Conditions.html:105
 msgid ""
 "Don't forget the colon (:) after the else, it is indicating that a new block "
 "is beginning."
-msgstr "N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau bloc débute."
+msgstr ""
+"N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau "
+"bloc débute."
 
-#. type: Content of: <p><p><p><p><p><a>
-#: src/lessons/welcome/conditions/Conditions.html:107
+#. type: Content of: <p><a>
+#: src/lessons/welcome/conditions/Conditions.html:108
 msgid ""
 "<a name=\"Objectives\">If the buggle is facing a wall, you must move one "
 "step back. If not, you must move one step forward. To detect whether you are "
 "facing a wall, simply use the <code>isFacingWall()</code> built-in, that "
 "every buggle understands."
 msgstr ""
-"<a name=\"Objectifs\"> Si la buggle est face à un mur, il faut reculer d'un pas; Sinon, il faut avancer d'un pas.\n"
-"Pour savoir si on est face à un mur, il suffit d'utiliser la méthode prédéfinie des buggles nommée <code>estFaceMur()</code>."
+"<a name=\"Objectifs\"> Si la buggle est face à un mur, il faut reculer d'un "
+"pas; Sinon, il faut avancer d'un pas.\n"
+"Pour savoir si on est face à un mur, il suffit d'utiliser la méthode "
+"prédéfinie des buggles nommée <code>estFaceMur()</code>."
 
-#. type: Content of: <p><p><p><p><p><a><p>
-#: src/lessons/welcome/conditions/Conditions.html:112
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/conditions/Conditions.html:113
 msgid ""
 "This exercise is a bit different: your code has to work for several buggles, "
 "each of them being in a specific initial condition. The same code will be "
@@ -2893,10 +2938,11 @@ msgstr ""
 "différente. Le même code sera utilisé pour chacune d'entre elles."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/conditions/Conditions.html:116
-#: src/lessons/welcome/loopwhile/LoopWhile.html:32
-msgid "When your program works, move forward to the next exercise."
-msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
+#: src/lessons/welcome/conditions/Conditions.html:117
+msgid ""
+"When your program works, move forward to the next exercise, that is hidden "
+"in a sub-tree of the selection window."
+msgstr "Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché par défaut dans un sous-arbre de la fenêtre de sélection)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:2
@@ -3727,6 +3773,11 @@ msgid ""
 msgstr ""
 "tant que l'on est pas face à un mur, faire :\n"
 "&nbsp;&nbsp;avancer();"
+
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:32
+msgid "When your program works, move forward to the next exercise."
+msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:2

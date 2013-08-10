@@ -46,7 +46,7 @@ toutes les lignes d'un bloc donné doivent utiliser le même nombre de
 blancs. La fin des blocs de code n'est pas marquée par un symbole
 particulier: il s'arrête dès que les lignes ne sont plus
 indentées. N'oubliez pas les deux points (:) à la fin de la ligne
-<code>if</code>, python en a besoin pour savoir où s'arrête la condition.
+<code>if</code>, python en a besoin pour savoir qu'un nouveau bloc commence.
 Le fait que python utilise l'indentation pour maquer les blocs est un
 avantage pour les débutants: cela vous forcera à respecter des critères
 stricts de mise en forme de votre code.[/!]
@@ -67,7 +67,7 @@ sont incorrects et vont générer des erreurs.</p>
 <pre class="python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
 <b>quoiFaireDansTousLesCas()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\"comment\"># Ce bloc n'est rataché à aucune ligne de condition</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class="comment"># Ce bloc n'est rataché à aucune ligne de condition</span>
 </pre>
 
 <p>La condition doit être une expression de type
@@ -93,25 +93,25 @@ avec = au lieu de ==. Heureusement, [!java|scala]le
 compilateur[/!][!python]l'interpréteur[/!] détecte le plus souvent ce
 problème et vous le signale, mais pas tout le temps. Si la variable est de
 type booléen, il peut se faire prendre au piège, et il convient donc d'être
-attentif...
+attentif...</p>
 
 <p>La condition peut également être un appel à certaines méthodes
 particulières, dont le résultat est un booléen. Par exemple, la méthode
-<tt>isFacingWall()</tt> de la buggle renvoie vrai si la buggle est face à un
-mur, et faux sinon.
+<tt>estFaceMur()</tt> de la buggle renvoie vrai si la buggle est face à un
+mur, et faux sinon.</p>
 
 <p>Enfin, il est possible de construire une condition composée de plusieurs
-sous-conditions reliées par des opérations booléennes:
+sous-conditions reliées par des opérations booléennes:</p>
 <ul>
-  <li><tt>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</tt> est vraie si
+  <li><code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> est vraie si
 <tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (d'ailleurs, si
 <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas évaluée puisqu'on
 sait déjà que la conjonction des deux propositions ne peut pas être vraie).</li> 
-  <li><tt>cond1 [!java|scala]||[/!][!python]or[/!] cond2</tt> est vraie si
+  <li><code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> est vraie si
 <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si
 <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on
 sait déjà que la disjonction des deux propositions est vraie).</li>
-  <li><tt>[!java|scala]![/!][!python]not [/!]cond</code> cond</tt> est vraie si
+  <li><code>[!java|scala]![/!][!python]not [/!]cond</code> est vraie si
 <tt>cond</tt> ne l'est pas.</li>
   <li>Quand les expressions deviennent compliquées, il est préférable d'ajouter
 quelques parenthèses pour lever toute ambiguïté sur l'ordre
@@ -120,7 +120,10 @@ rendre plus lisible.</li>
 </ul> 
 
 <p>Pour finir, il est possible de spécifier ce qu'il faut faire quand la
-condition est fausse, en utilisant la syntaxe suivante :
+condition est fausse, en utilisant la syntaxe suivante («else» signifie
+«sinon» en anglais). Dans ce cas, l'instruction
+<code>aFaireSiLaConditionEstFausse()</code> ne sera exécutée que si la
+condition est fausse.</p>
  <pre>[!java|scala]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie();</b>
 } else {
@@ -142,4 +145,5 @@ prédéfinie des buggles nommée <code>estFaceMur()</code>.
 pour plusieurs buggles, chacune étant dans une situation initiale
 différente. Le même code sera utilisé pour chacune d'entre elles.</p>
 
-<p>Quand votre programme fonctionne, passez à l'exercice suivant.</p>
+<p>Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché
+par défaut dans un sous-arbre de la fenêtre de sélection).</p>

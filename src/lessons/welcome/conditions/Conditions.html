@@ -33,7 +33,7 @@ white spaces belong to the block. Quite often, people use 4 spaces for indentati
 but it works if you use more or less spaces. Simply, any lines of the block must use the same amount of spaces.
 The end of Python code blocks are not marked by any specific char.
 Indenting lines starts a block and unindenting ends it. Do not forget the colon (:) at the end of 
-the <code>if</code> line, python needs it to know where the condition stops. The fact that python relies on 
+the <code>if</code> line, python needs it to know that a new block begins. The fact that python relies on 
 indentation to delimit blocks is a very good property for beginners: it will force your to adhere to strict 
 code presentation standards.[/!]
 It is very easy to get lost in your own code if it's not properly indented, so you want to clean it up so that 
@@ -70,14 +70,14 @@ only if the left hand-side is different from the right hand-side), <b>&lt;</b> (
 <p>Beware of the classical trap, which consists in testing the equality of a
 variable using = instead of ==. Hopefully, the [!java|scala]compiler[/!][!python]interpreter[/!] 
 detects this problem most of the time, but it could get trapped is some cases (such as when you are 
-affecting a boolean variable). So you'd better to be careful...
+affecting a boolean variable). So you'd better to be careful...</p>
 
 <p>The condition can also be a call to some particular methods returning a
 boolean. For example, the <code>isFacingWall()</code> method of the buggle
-returns true if the buggle is facing a wall, and false in the other case.
+returns true if the buggle is facing a wall, and false in the other case.</p>
 
 <p>Finally, a condition can be composed of several sub-conditions connected by
-boolean operations:
+boolean operations:</p>
 <ul>
   <li><code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when <tt>cond1</tt> <b>and</b>
       <tt>cond2</tt> are both true (if <tt>cond1</tt> is false,
@@ -90,8 +90,9 @@ boolean operations:
       Do not hesitate to add more parenthesis to remove any ambiguities that may appear in an expression.</li>
 </ul> 
 
-<p>Finally, it is possible to specify what to do when the condition is false
-using the following syntax:
+<p>Last, it is possible to specify what to do when the condition is false
+using the following syntax. In this case, the instruction <code>whatToDoIfItsFalse</code>
+will be executed only if the condition is false.</p>
  <pre>[!java|scala]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
 } else {
@@ -113,4 +114,4 @@ that every buggle understands.
 each of them being in a specific initial condition. The same code will be
 executed for each of them.</p>
 
-<p>When your program works, move forward to the next exercise.</p>
+<p>When your program works, move forward to the next exercise, that is hidden in a sub-tree of the selection window.</p>

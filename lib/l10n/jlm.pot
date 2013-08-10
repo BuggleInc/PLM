@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-10 22:16+0300\n"
+"POT-Creation-Date: 2013-08-10 23:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1916,7 +1916,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:107 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopwhile/LoopWhile.html:26 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:66 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopwhile/LoopWhile.html:26 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:66 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -1926,6 +1926,22 @@ msgid ""
 "<a name=\"Objectives\"> Our second program will be a bit more complicated, "
 "but not much. The goal for your buggle is simply to draw a house (a box), "
 "and hide inside. Check the objective world to see exactly what this means."
+msgstr ""
+
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/instructions/Instructions.html:69
+msgid ""
+"When switching to the next exercise, please note that there is a "
+"sub-exercise following this one.  By default, it is hidden in the menu and "
+"you have to open the sub-menu to see it.  When you switch the exercise, most "
+"of the exercises are hidden because the tree is folded, as follows:"
+msgstr ""
+
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/instructions/Instructions.html:74
+msgid ""
+"You have to click on the little symbol to the left of the buggle to unfold "
+"the tree, as follows:"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -2069,7 +2085,7 @@ msgid ""
 "spaces.  The end of Python code blocks are not marked by any specific char.  "
 "Indenting lines starts a block and unindenting ends it. Do not forget the "
 "colon (:) at the end of the <code>if</code> line, python needs it to know "
-"where the condition stops. The fact that python relies on indentation to "
+"that a new block begins. The fact that python relies on indentation to "
 "delimit blocks is a very good property for beginners: it will force your to "
 "adhere to strict code presentation standards.[/!] It is very easy to get "
 "lost in your own code if it's not properly indented, so you want to clean it "
@@ -2142,7 +2158,7 @@ msgid ""
 "affecting a boolean variable). So you'd better to be careful..."
 msgstr ""
 
-#. type: Content of: <p><p><p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/conditions/Conditions.html:75
 msgid ""
 "The condition can also be a call to some particular methods returning a "
@@ -2150,14 +2166,14 @@ msgid ""
 "returns true if the buggle is facing a wall, and false in the other case."
 msgstr ""
 
-#. type: Content of: <p><p><p><p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/conditions/Conditions.html:79
 msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
 "boolean operations:"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:82
 msgid ""
 "<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when "
@@ -2166,7 +2182,7 @@ msgid ""
 "conjunction of both propositions cannot be true)."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:85
 msgid ""
 "<code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> is true if "
@@ -2175,14 +2191,14 @@ msgid ""
 "of both propositions cannot be true)."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:88
 msgid ""
 "<code>[!java|scala]![/!][!python]not [/!]cond</code> is true if "
 "<tt>cond</tt> is false."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><ul><li>
+#. type: Content of: <p><ul><li>
 #: src/lessons/welcome/conditions/Conditions.html:89
 msgid ""
 "When the expression becomes complicated, it is better to add parenthesis to "
@@ -2190,15 +2206,17 @@ msgid ""
 "remove any ambiguities that may appear in an expression."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/conditions/Conditions.html:93
 msgid ""
-"Finally, it is possible to specify what to do when the condition is false "
-"using the following syntax:"
+"Last, it is possible to specify what to do when the condition is false using "
+"the following syntax. In this case, the instruction "
+"<code>whatToDoIfItsFalse</code> will be executed only if the condition is "
+"false."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:95
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/conditions/Conditions.html:96
 #, no-wrap
 msgid ""
 "[!java|scala]if (<b>condition</b>) {\n"
@@ -2211,15 +2229,15 @@ msgid ""
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/conditions/Conditions.html:104
+#. type: Content of: <p><p>
+#: src/lessons/welcome/conditions/Conditions.html:105
 msgid ""
 "Don't forget the colon (:) after the else, it is indicating that a new block "
 "is beginning."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><a>
-#: src/lessons/welcome/conditions/Conditions.html:107
+#. type: Content of: <p><a>
+#: src/lessons/welcome/conditions/Conditions.html:108
 msgid ""
 "<a name=\"Objectives\">If the buggle is facing a wall, you must move one "
 "step back. If not, you must move one step forward. To detect whether you are "
@@ -2227,8 +2245,8 @@ msgid ""
 "every buggle understands."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><a><p>
-#: src/lessons/welcome/conditions/Conditions.html:112
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/conditions/Conditions.html:113
 msgid ""
 "This exercise is a bit different: your code has to work for several buggles, "
 "each of them being in a specific initial condition. The same code will be "
@@ -2236,8 +2254,10 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/conditions/Conditions.html:116 src/lessons/welcome/loopwhile/LoopWhile.html:32
-msgid "When your program works, move forward to the next exercise."
+#: src/lessons/welcome/conditions/Conditions.html:117
+msgid ""
+"When your program works, move forward to the next exercise, that is hidden "
+"in a sub-tree of the selection window."
 msgstr ""
 
 #. type: Content of: <p>
@@ -2860,6 +2880,11 @@ msgstr ""
 msgid ""
 "while we are not facing a wall, do:\n"
 "&nbsp;&nbsp;moveForward()"
+msgstr ""
+
+#. type: Content of: <p><a><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:32
+msgid "When your program works, move forward to the next exercise."
 msgstr ""
 
 #. type: Content of: <p>
