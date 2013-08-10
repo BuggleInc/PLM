@@ -27,6 +27,13 @@ la suivante:
   actions();
   aFaire();
 }</pre>
+<pre>
+def buildConnectionString(params):
+    """Construit une connection string à partir d'un dictionnaire de paramètres.
+
+    Renvoie une chaîne de caractères."""
+    return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
+</pre>
 
 <p class="Java">Le corps de la méthode (entre les accolades) peut contenir autant
 d'instructions que vous le souhaitez, et toutes les constructions vues

@@ -6,95 +6,93 @@ ne peuvent pas réagir aux conditions extérieurs. Une <b>instruction
 conditionnelle</b> permet au programme de s'adapter en disant quelque chose
 comme <i>S'il pleut, prend un parapluie</i>. 
 
-<p class="Java">La syntaxe Java est la suivante :</p>
-<p class="Python">La syntaxe Python est la suivante :</p>
- <pre class="Java">if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>
-}</pre>
- <pre class="Python">if <b>condition</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b></pre>
+<p>La syntaxe en [!thelang] est la suivante :</p>
 
-<p class="Java">Si la condition est vraie, tout le code compris entre le { et le }
-correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est
-possible d'écrire plusieurs instructions entre les deux accolades (voire un
-autre test).</p>
-<p class="Python">Si la condition est vraie, tout le code du bloc placé après les deux points
-(:)
-sera exécuté. Si non, il sera ignoré. Bien entendu, il est possible d'écrire
-plusieurs instructions dans le sous-bloc (voire un autre test).</p>
+<pre>[!java|scala]if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie();</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie();</b>
+}[/!][!python]if <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie()</b>[/!]
+<b>aFaireDansTousLesCas()[!java];[/!]</b></pre>
 
-<p class="Python">
-Python utilise l'indentation pour définir les blocs de code. L'indentation
-standard en Python est de quatre espaces. Veuillez noter que les blocs de
-code n'ont pas besoin de terminaison. Indenter commence un bloc et
-désindenter le termine. Dans le code suivant, les instructions
-<b>whatToDo()</b> et <b>whatToDoNext()</b> seront executées si la condition
-est vraie, ensuite l'instruction <b>whatToDoAnyway()</b> sera exécutée dans
-tous les cas.
+<p>Le mot <code>if</code> signifie «si» en anglais. Si la condition est vraie,
+alors le code du bloc suivant sera exécuté, puis l'exécution se poursuivra
+avec la suite du code, après le bloc. Sinon, si la condition est fausse, le
+bloc suivant sera ignoré et l'exécution passera directement au code placé
+après lui. Le bloc conditionnel peut contenir plusieurs instructions. Il
+peut même contenir d'autre tests, avec leurs sous-blocs associés.</p>
 
-<pre class="Python">if <b>condition</b>:
+<p>Dans cet exemple, les instructions <code>aFaireSiVraie()</code> et
+<code>aFaireSiVraie()</code> seront exécutée si (et seulement si) la
+condition est vraie tandis que l'instruction
+<code>aFaireDansTousLesCas()</code> sera exécutée que la condition soit
+vraie ou fausse. 
+</p>
+
+<p>En [!thelang], les blocs sont
+[!java|scala]délimités par des accolades : le symbole { commence un bloc
+tandis
+que le symbole } le ferme.  Les caractères blancs ne sont pas pris en
+compte[/!][!java].[/!][!scala], tant que les instructions restent séparées
+soit par des points-virgules, soit par des retour à la ligne.[/!]
+[!java|scala]Il reste très important d'indenter correctement votre code pour
+qu'il reste lisible.[/!]
+[!python]marqués par l'indentation : toutes les lignes indentés (=décalées
+vers la droite par des espaces) font partie du bloc. Il est assez courant
+d'utiliser quatre espaces pour indenter le code, mais cela fonctionne quel
+que soit le nombre de caractères blancs utilisés pour celà. Simplement,
+toutes les lignes d'un bloc donné doivent utiliser le même nombre de
+blancs. La fin des blocs de code n'est pas marquée par un symbole
+particulier: il s'arrête dès que les lignes ne sont plus
+indentées. N'oubliez pas les deux points (:) à la fin de la ligne
+<code>if</code>, python en a besoin pour savoir où s'arrête la condition.
+Le fait que python utilise l'indentation pour maquer les blocs est un
+avantage pour les débutants: cela vous forcera à respecter des critères
+stricts de mise en forme de votre code.[/!]
+Il est très facile de se perdre dans un code qui n'est pas correctement
+indenté. Il est donc important que vous fassiez en sorte que votre code
+reste clair et lisible pour que le relire et le modifier reste plaisant et
+productif.
+
+
+<p class="python">Toutes les instructions d'un bloc doivent avoir la même indentation, et il
+n'est pas possible de couper un bloc. Les deux exemples suivants de code
+sont incorrects et vont générer des erreurs.</p>
+<pre class="python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class="comment"># une espace de trop</span>
 <b>quoiFaireDansTousLesCas()</b>
 </pre>
-
-<p class="Python">Les fonctions Pythons n'ont pas de début ou de fin explicite, ni d'accolade
-pour indiquer où le code commence et où il se termine. Le seul délimiteur
-est un double points (:) et l'indentation du code lui même.</p>
-
-<p class="Python">Exemple 2.5. Indenter la fonction buildConnectionString</p>
-
-<pre class="Python">
-def buildConnectionString(params):
-    """Construit une connection string à partir d'un dictionnaire de paramètres.
-
-    Renvoie une chaîne de caractères."""
-    return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
-</pre>
-
-<p class="Python">Les blocs de code sont définis par leur indentation. Par "bloc de code", je
-veux dire les fonctions, les branchements conditionnels if, les boucles for,
-les boucles while, etc. Indenter commence un bloc et désindenter le
-termine. Il n'y a pas de parenthèses, d'accolades, ou de mots clés. Cela
-signifie qu'un espace est significatif et doit être cohérent. Dans cet
-exemple, le code de la fonction (en comptant la documentation) est indenté
-avec quatre espaces. Il n'est pas nécessaire que cela soit quatre espaces,
-il faut juste que cela soit cohérent. La première ligne qui n'est pas
-indentée est en dehors de la fonction.</p>
-
-<p class="Python">Il est important que l'indentation de toutes les instructions d'un bloc soit
-cohérente, et il n'est pas possible de couper un bloc. Les deux exemples
-suivants de code sont incorrects et vont générer des erreurs.</p>
-<pre class="Python">if <b>condition</b>:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>
-<b>quoiFaireDansTousLesCas()</b>
-</pre>
-<pre class="Python">if <b>condition</b>:
+<pre class="python">if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>
 <b>quoiFaireDansTousLesCas()</b>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\"comment\"># Ce bloc n'est rataché à aucune ligne de condition</span>
 </pre>
 
-<p class="Java">Une condition peut être une variable de type <tt>boolean</tt>. Le code entre
-accolades sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai),
-et il sera ignoré si elle vaut <tt>false</tt> (faux).</p>
+<p>La condition doit être une expression de type
+<code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> (expression
+booléenne).  Le sous-bloc sera exécuté seulement si cette expression vaut
+<code>[!java|scala]true[/!][!python]True[/!]</code> (vrai), et il sera
+ignoré si sa valeur est
+<code>[!java|scala]false[/!][!python]False[/!]</code> (faux).
+<code>[!java|scala]true[/!][!python]True[/!]</code> et
+<code>[!java|scala]false[/!][!python]False[/!]</code> sont des constantes
+définies directement par [!thelang], tout comme 0 ou 1 en mathématiques.</p>
 
-<p class="Python">Une condition peut être une variable de type <tt>boolean</tt>. Le code dans
-le
-bloc indenté sera exécuté si la variable vaut la valeur <tt>True</tt>
-(vrai), et il sera ignoré si elle vaut <tt>False</tt> (faux).</p> 
-
-<p>La condition peut aussi être un test arithmétique, comme <tt>x</tt>
-<b>==</b> <tt>5</tt>, qui vérifie si la valeur actuelle de <tt>x</tt> est 5,
-ou bien comme <b>!=</b> (teste l'inégalité), <b>&lt;</b> (inférieur à),
-<b>&gt;</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal à), <b>&gt;=</b>
-(supérieur ou égal à).</p>
+<p>La condition peut aussi être une variable booléenne (nous reviendrons sur
+les variables dans un autre exercice, pas de panique) ou un test
+arithmétique,comme <code>x == 5</code>, qui teste si la valeur actuelle de
+<tt>x</tt> est 5, ou bien comme <b>!=</b> (teste l'inégalité, càd si le
+membre gauche a une valeur différente du membre droit), <b>&lt;</b>
+(inférieur à), <b>&gt;</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal
+à), <b>&gt;=</b> (supérieur ou égal à).</p>
 
 <p>Attention au piège classique, qui consiste à tester l'égalité d'une variable
-avec = au lieu de ==. Heureusement, le compilateur vous indique le plus
-souvent ce problème, mais pas tout le temps. Si la variable est de type
-booléen, il peut se faire prendre au piège, et il convient donc d'être
+avec = au lieu de ==. Heureusement, [!java|scala]le
+compilateur[/!][!python]l'interpréteur[/!] détecte le plus souvent ce
+problème et vous le signale, mais pas tout le temps. Si la variable est de
+type booléen, il peut se faire prendre au piège, et il convient donc d'être
 attentif...
 
 <p>La condition peut également être un appel à certaines méthodes
@@ -103,53 +101,42 @@ particulières, dont le résultat est un booléen. Par exemple, la méthode
 mur, et faux sinon.
 
 <p>Enfin, il est possible de construire une condition composée de plusieurs
-sous-conditions reliées par des opérations booléennes.
-<ul class="Java">
-  <li><tt>cond1 && cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt>
-est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas
-évaluée).</li> 
-  <li><tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt>
-est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas
-évaluée).</li>
-  <li><tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas.</li>
-  <li>On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de
-doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever
-les ambiguïtés sur l'ordre d'évaluation.</li>
-</ul> 
-
-<ul class="Python">
-  <li><tt>cond1 and cond2</tt> est vraie si <tt>cond1</tt> <b>et</b>
-<tt>cond2</tt> est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est
-même pas évaluée).</li> 
-  <li><tt>cond1 or cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt>
-est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas
-évaluée).</li> 
-  <li><tt>not cond</tt> est vraie si <tt>cond</tt> ne l'est pas.</li>
-  <li>On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de
-doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever
-les ambiguïtés sur l'ordre d'évaluation.</li>
+sous-conditions reliées par des opérations booléennes:
+<ul>
+  <li><tt>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</tt> est vraie si
+<tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (d'ailleurs, si
+<tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas évaluée puisqu'on
+sait déjà que la conjonction des deux propositions ne peut pas être vraie).</li> 
+  <li><tt>cond1 [!java|scala]||[/!][!python]or[/!] cond2</tt> est vraie si
+<tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si
+<tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on
+sait déjà que la disjonction des deux propositions est vraie).</li>
+  <li><tt>[!java|scala]![/!][!python]not [/!]cond</code> cond</tt> est vraie si
+<tt>cond</tt> ne l'est pas.</li>
+  <li>Quand les expressions deviennent compliquées, il est préférable d'ajouter
+quelques parenthèses pour lever toute ambiguïté sur l'ordre
+d'évaluation. N'hésitez pas à mettre suffisamment de parenthèses pour la
+rendre plus lisible.</li>
 </ul> 
 
 <p>Pour finir, il est possible de spécifier ce qu'il faut faire quand la
 condition est fausse, en utilisant la syntaxe suivante :
- <pre class="Java">if (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>
+ <pre>[!java|scala]if (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie();</b>
 } else {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>
-}</pre>
-
- <pre class="Python">if (<b>condition</b>):
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie()</b>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse();</b>
+}[/!][!python]if (<b>condition</b>):
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie()</b>
 else:
-&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon()</b>
-</pre>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]</pre>
 
 <p class="Python">N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau
 bloc débute.</p>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> Si la buggle est face à un mur (prédicat
-<tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer
-d'un pas.
+<h3>Objectif de cet exercice</h3><a name="Objectifs"> Si la buggle est face à un mur, il faut reculer d'un
+pas; Sinon, il faut avancer d'un pas.
+Pour savoir si on est face à un mur, il suffit d'utiliser la méthode
+prédéfinie des buggles nommée <code>estFaceMur()</code>. 
 
 <p>Cet exercice est un peu particulier : il faut que votre programme fonctionne
 pour plusieurs buggles, chacune étant dans une situation initiale

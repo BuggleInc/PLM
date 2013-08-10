@@ -26,6 +26,13 @@ following:
   to();
   do();
 }</pre>
+<pre>
+def buildConnectionString(params):
+    """Build a connection string from a dictionary of parameters.
+
+    Returns string."""
+    return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
+</pre>
 
 <p class="Java">The method body (between curly braces) can contain as many instructions as
 you want, and any construction we saw so far (for, while, if, etc).</p>

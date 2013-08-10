@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-10 00:16+0300\n"
-"PO-Revision-Date: 2013-08-10 01:03+0200\n"
+"POT-Creation-Date: 2013-08-10 22:16+0300\n"
+"PO-Revision-Date: 2013-08-10 22:21+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2426,13 +2426,13 @@ msgstr ""
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:64
-#: src/lessons/welcome/conditions/Conditions.html:147
+#: src/lessons/welcome/conditions/Conditions.html:107
 #: src/lessons/welcome/variables/Variables.html:72
 #: src/lessons/welcome/loopfor/LoopFor.html:73
 #: src/lessons/welcome/loopwhile/LoopWhile.html:26
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
-#: src/lessons/welcome/methods/basics/Methods.html:59
+#: src/lessons/welcome/methods/basics/Methods.html:66
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:49
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:56
 #: src/lessons/welcome/methods/args/MethodsArgs.html:69
@@ -2587,244 +2587,202 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/conditions/Conditions.html:8
-msgid "The Java syntax is the following:"
-msgstr "La syntaxe Java est la suivante :"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/conditions/Conditions.html:9
-msgid "The Python syntax is the following:"
-msgstr "La syntaxe Python est la suivante :"
+msgid "The [!thelang] syntax is the following:"
+msgstr "La syntaxe en [!thelang] est la suivante :"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/conditions/Conditions.html:10
 #, no-wrap
 msgid ""
-"if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo();</b>\n"
-"}"
+"[!java|scala]if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>\n"
+"}[/!][!python]if <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]\n"
+"<b>whatToDoAnyway()[!java];[/!]</b>"
 msgstr ""
-"if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire();</b>\n"
-"}"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/conditions/Conditions.html:13
-#, no-wrap
-msgid ""
-"if <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>"
-msgstr ""
-"if <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>"
+"[!java|scala]if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie();</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie();</b>\n"
+"}[/!][!python]if <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiVraie()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireEnsuiteSiVraie()</b>[/!]\n"
+"<b>aFaireDansTousLesCas()[!java];[/!]</b>"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/Conditions.html:16
+#: src/lessons/welcome/conditions/Conditions.html:18
 msgid ""
-"If the condition is true, any code enclosed between the { and the "
-"corresponding } will be executed. If not, it will be ignored. Of course, it "
-"is possible to write more than one instruction between the curly brackets "
-"(even another test)."
+"If the condition is true, the code of the next block will be executed and "
+"then it will continue with the rest of the code.  If the condition is false, "
+"the next block is ignored and the execution continues after it.  The "
+"conditional block can contain several instructions, it can even contain "
+"other tests, along with their sub-blocks."
 msgstr ""
-"Si la condition est vraie, tout le code compris entre le { et le } "
-"correspondant sera exécuté. Si non, il sera ignoré. Bien entendu, il est "
-"possible d'écrire plusieurs instructions entre les deux accolades (voire un "
-"autre test)."
+"Le mot <code>if</code> signifie «si» en anglais. Si la condition est vraie, "
+"alors le code du bloc suivant sera exécuté, puis l'exécution se poursuivra "
+"avec la suite du code, après le bloc. Sinon, si la condition est fausse, le "
+"bloc suivant sera ignoré et l'exécution passera directement au code placé "
+"après lui. Le bloc conditionnel peut contenir plusieurs instructions. Il "
+"peut même contenir d'autre tests, avec leurs sous-blocs associés."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/Conditions.html:20
+#: src/lessons/welcome/conditions/Conditions.html:22
 msgid ""
-"If the condition is true, any code in the block following the colon symbol "
-"will be executed. If not, it will be ignored. Of course, it is possible to "
-"write more than one instruction in the sub-block (even another test)."
+"In this example, the instructions <code>whatToDoIfTrue()</code> and "
+"<code>whatToDoNextIfTrue()</code> will be executed if and only if the "
+"condition is true, while the instruction <code>whatToDoAnyway()</code> will "
+"be executed whether or not the condition is true."
 msgstr ""
-"Si la condition est vraie, tout le code du bloc placé après les deux points "
-"(:)\n"
-"sera exécuté. Si non, il sera ignoré. Bien entendu, il est possible "
-"d'écrire\n"
-"plusieurs instructions dans le sous-bloc (voire un autre test)."
+"Dans cet exemple, les instructions <code>aFaireSiVraie()</code> et "
+"<code>aFaireSiVraie()</code> seront exécutée si (et seulement si) la "
+"condition est vraie tandis que l'instruction <code>aFaireDansTousLesCas()</"
+"code> sera exécutée que la condition soit vraie ou fausse."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/Conditions.html:26
+#: src/lessons/welcome/conditions/Conditions.html:27
 msgid ""
-"Python uses indentation to define code blocks. The standard Python "
-"indentation is 4 spaces. Notice that code blocks do not need any "
-"termination. Indenting starts a block and unindenting ends it. In the "
-"following code the instructions <b>whatToDo()</b> and <b>whatToDoNext()</b> "
-"will be exectuded if the condition is true, then the instruction "
-"<b>whatToDoAnyway()</b> will be executed anyway."
+"In [!thelang], the blocks of code are [!java|scala]enclosed between curly "
+"brackets: a { sign opens the block, while a } sign closes it.  White spaces "
+"are not important[/!][!java].[/!][!scala], provided that your instructions "
+"are still separated with a semi-column or an end of line.[/!] [!java|"
+"scala]It is still very important to correctly indent your code to keep it "
+"readable.[/!] [!python]marked by the indentation: every lines that are a bit "
+"shifted to the right with white spaces belong to the block. Quite often, "
+"people use 4 spaces for indentation, but it works if you use more or less "
+"spaces. Simply, any lines of the block must use the same amount of spaces.  "
+"The end of Python code blocks are not marked by any specific char.  "
+"Indenting lines starts a block and unindenting ends it. Do not forget the "
+"colon (:) at the end of the <code>if</code> line, python needs it to know "
+"where the condition stops. The fact that python relies on indentation to "
+"delimit blocks is a very good property for beginners: it will force your to "
+"adhere to strict code presentation standards.[/!] It is very easy to get "
+"lost in your own code if it's not properly indented, so you want to clean it "
+"up so that working on your code remains pleasant and productive."
 msgstr ""
-"Python utilise l'indentation pour définir les blocs de code. L'indentation "
-"standard en Python est de quatre espaces. Veuillez noter que les blocs de "
-"code n'ont pas besoin de terminaison. Indenter commence un bloc et "
-"désindenter le termine. Dans le code suivant, les instructions "
-"<b>whatToDo()</b> et <b>whatToDoNext()</b> seront executées si la condition "
-"est vraie, ensuite l'instruction <b>whatToDoAnyway()</b> sera exécutée dans "
-"tous les cas."
+"En [!thelang], les blocs sont \n"
+"[!java|scala]délimités par des accolades : le symbole { commence un bloc "
+"tandis\n"
+"que le symbole } le ferme.  Les caractères blancs ne sont pas pris en \n"
+"compte[/!][!java].[/!][!scala], tant que les instructions restent séparées "
+"soit par des points-virgules, soit par des retour à la ligne.[/!] \n"
+"[!java|scala]Il reste très important d'indenter correctement votre code pour "
+"qu'il reste lisible.[/!] \n"
+"[!python]marqués par l'indentation : toutes les lignes indentés (=décalées "
+"vers la droite par des espaces) font partie du bloc. Il est assez courant "
+"d'utiliser quatre espaces pour indenter le code, mais cela fonctionne quel "
+"que soit le nombre de caractères blancs utilisés pour celà. Simplement, "
+"toutes les lignes d'un bloc donné doivent utiliser le même nombre de blancs. "
+"La fin des blocs de code n'est pas marquée par un symbole particulier: il "
+"s'arrête dès que les lignes ne sont plus indentées. N'oubliez pas les deux "
+"points (:) à la fin de la ligne <code>if</code>, python en a besoin pour "
+"savoir où s'arrête la condition.\n"
+"Le fait que python utilise l'indentation pour maquer les blocs est un "
+"avantage pour les débutants: cela vous forcera à respecter des critères "
+"stricts de mise en forme de votre code.[/!] \n"
+"Il est très facile de se perdre dans un code qui n'est pas correctement "
+"indenté. Il est donc important que vous fassiez en sorte que votre code "
+"reste clair et lisible pour que le relire et le modifier reste plaisant et "
+"productif."
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/conditions/Conditions.html:43
+msgid ""
+"All indentations of a given block must be consistent, and it is not possible "
+"to cut a block. The two following codes are incorrect and will raise errors."
+msgstr ""
+"Toutes les instructions d'un bloc doivent avoir la même indentation, et il "
+"n'est pas possible de couper un bloc. Les deux exemples suivants de code "
+"sont incorrects et vont générer des erreurs."
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:33
+#: src/lessons/welcome/conditions/Conditions.html:46
 #, no-wrap
 msgid ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># one space too much </span>\n"
 "<b>whatToDoAnyway()</b>\n"
 msgstr ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>\n"
-"<b>quoiFaireDansTousLesCas()</b>\n"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:39
-msgid ""
-"Python functions have no explicit begin or end, and no curly braces to mark "
-"where the function code starts and stops. The only delimiter is a colon (:) "
-"and the indentation of the code itself."
-msgstr ""
-"Les fonctions Pythons n'ont pas de début ou de fin explicite, ni d'accolade "
-"pour indiquer où le code commence et où il se termine. Le seul délimiteur "
-"est un double points (:) et l'indentation du code lui même."
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:44
-msgid "Example 2.5. Indenting the buildConnectionString Function"
-msgstr "Exemple 2.5. Indenter la fonction buildConnectionString"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:48
-#, no-wrap
-msgid ""
-"def buildConnectionString(params):\n"
-"    \"\"\"Build a connection string from a dictionary of parameters.\n"
-"\n"
-"    Returns string.\"\"\"\n"
-"    return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items()])\n"
-msgstr ""
-"def buildConnectionString(params):\n"
-"    \"\"\"Construit une connection string à partir d'un dictionnaire de paramètres.\n"
-"\n"
-"    Renvoie une chaîne de caractères.\"\"\"\n"
-"    return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items()])\n"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:55
-msgid ""
-"Code blocks are defined by their indentation. By \"code block\", I mean "
-"functions, if statements, for loops, while loops, and so forth. Indenting "
-"starts a block and unindenting ends it. There are no explicit braces, "
-"brackets, or keywords. This means that whitespace is significant, and must "
-"be consistent. In this example, the function code (including the doc string) "
-"is indented four spaces.  It doesn't need to be four spaces, it just needs "
-"to be consistent. The first line that is not indented is outside the "
-"function."
-msgstr ""
-"Les blocs de code sont définis par leur indentation. Par \"bloc de code\", "
-"je veux dire les fonctions, les branchements conditionnels if, les boucles "
-"for, les boucles while, etc. Indenter commence un bloc et désindenter le "
-"termine. Il n'y a pas de parenthèses, d'accolades, ou de mots clés. Cela "
-"signifie qu'un espace est significatif et doit être cohérent. Dans cet "
-"exemple, le code de la fonction (en comptant la documentation) est indenté "
-"avec quatre espaces. Il n'est pas nécessaire que cela soit quatre espaces, "
-"il faut juste que cela soit cohérent. La première ligne qui n'est pas "
-"indentée est en dehors de la fonction."
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:64
-msgid ""
-"It is important that the indentations of all the instructions of a block are "
-"consistent, and it is not possible to cut a block. The two following codes "
-"are incorrect and will raise errors."
-msgstr ""
-"Il est important que l'indentation de toutes les instructions d'un bloc soit "
-"cohérente, et il n'est pas possible de couper un bloc. Les deux exemples "
-"suivants de code sont incorrects et vont générer des erreurs."
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:68
-#, no-wrap
-msgid ""
-"if <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>\n"
-"<b>whatToDoAnyway()</b>\n"
-msgstr ""
-"if <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\"comment\"># une espace de trop</span>\n"
 "<b>quoiFaireDansTousLesCas()</b>\n"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:73
+#: src/lessons/welcome/conditions/Conditions.html:51
 #, no-wrap
 msgid ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDo()</b>\n"
 "<b>whatToDoAnyway()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class=\"comment\"># this block is not hanging to a condition line</span>\n"
 msgstr ""
 "if <b>condition</b>:\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaire()</b>\n"
 "<b>quoiFaireDansTousLesCas()</b>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireEnsuite()</b> <span class=\\\"comment\\\"># Ce bloc n'est rataché à aucune ligne de condition</span>\n"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:79
+#: src/lessons/welcome/conditions/Conditions.html:57
 msgid ""
-"A condition can be a variable of type <tt>boolean</tt>. The code between "
-"curly braces will get executed if the variable is <tt>true</tt> and it will "
-"be ignored if it is <tt>false</tt>."
+"The condition must be a <code>[!java]boolean[/!][!scala|python]Boolean[/!]</"
+"code> expression.  The inner block of code will get executed if the "
+"expression is evaluated to <code>[!java|scala]true[/!][!python]True[/!]</"
+"code> and it will be ignored if it is <code>[!java|scala]false[/!][!"
+"python]False[/!]</code>.  <code>[!java|scala]true[/!][!python]True[/!]</"
+"code> and <code>[!java|scala]false[/!][!python]False[/!]</code> are constant "
+"values defined by [!thelang] directly, just as 0 or 1 in mathematics."
 msgstr ""
-"Une condition peut être une variable de type <tt>boolean</tt>. Le code entre "
-"accolades sera exécuté si la variable vaut la valeur <tt>true</tt> (vrai), "
-"et il sera ignoré si elle vaut <tt>false</tt> (faux)."
+"La condition doit être une expression de type <code>[!java]boolean[/!][!"
+"scala|python]Boolean[/!]</code> (expression booléenne).  Le sous-bloc sera "
+"exécuté seulement si cette expression vaut <code>[!java|scala]true[/!][!"
+"python]True[/!]</code> (vrai), et il sera ignoré si sa valeur est <code>[!"
+"java|scala]false[/!][!python]False[/!]</code> (faux).\n"
+"<code>[!java|scala]true[/!][!python]True[/!]</code> et <code>[!java|"
+"scala]false[/!][!python]False[/!]</code> sont des constantes définies "
+"directement par [!thelang], tout comme 0 ou 1 en mathématiques."
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:83
+#: src/lessons/welcome/conditions/Conditions.html:63
 msgid ""
-"A condition can be a variable of type <tt>boolean</tt>. The code in the "
-"inner bloc will get executed if the variable is <tt>True</tt> and it will be "
-"ignored if it is <tt>False</tt>."
+"The condition can be a <code>[!java]boolean[/!][!scala|python]Boolean[/!]</"
+"code> variable (we will come back on variables in a latter exercise, don't "
+"worry) or an arithmetic test, such as <code>x == 5</code>, which checks "
+"whether the current value of <code>x</code> is 5, or such as <b>!=</b> "
+"(checking inequality, that is, returning [!java|scala]true[/!][!"
+"python]True[/!] only if the left hand-side is different from the right hand-"
+"side), <b>&lt;</b> (smaller than), <b>&gt;</b> (larger than), <b>&lt;=</b> "
+"(smaller or equal to), <b>&gt;=</b> (larger or equal to)."
 msgstr ""
-"Une condition peut être une variable de type <tt>boolean</tt>. Le code dans "
-"le\n"
-"bloc indenté sera exécuté si la variable vaut la valeur <tt>True</tt> "
-"(vrai), et il sera ignoré si elle vaut <tt>False</tt> (faux)."
+"La condition peut aussi être une variable booléenne (nous reviendrons sur "
+"les variables dans un autre exercice, pas de panique) ou un test "
+"arithmétique,comme <code>x == 5</code>, qui teste si la valeur actuelle de "
+"<tt>x</tt> est 5, ou bien comme <b>!=</b> (teste l'inégalité, càd si le "
+"membre gauche a une valeur différente du membre droit), <b>&lt;</b> "
+"(inférieur à), <b>&gt;</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal "
+"à), <b>&gt;=</b> (supérieur ou égal à)."
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:88
-msgid ""
-"The condition can also be an arithmetic test, such as <tt>x</tt> <b>==</b> "
-"<tt>5</tt>, which checks whether the current value of <tt>x</tt> is 5, or "
-"such as <b>!=</b> (checking inequality), <b>&lt;</b> (smaller than), <b>&gt;"
-"</b> (larger than), <b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> (larger "
-"or equal to)."
-msgstr ""
-"La condition peut aussi être un test arithmétique, comme <tt>x</tt> <b>==</"
-"b> <tt>5</tt>, qui vérifie si la valeur actuelle de <tt>x</tt> est 5, ou "
-"bien comme <b>!=</b> (teste l'inégalité), <b>&lt;</b> (inférieur à), <b>&gt;"
-"</b> (supérieur à), <b>&lt;=</b> (inférieur ou égal à), <b>&gt;=</b> "
-"(supérieur ou égal à)."
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/conditions/Conditions.html:94
+#: src/lessons/welcome/conditions/Conditions.html:70
 msgid ""
 "Beware of the classical trap, which consists in testing the equality of a "
-"variable using = instead of ==. Hopefully, the compiler detects this problem "
-"most of the time, but not always. If the variable is of type boolean, it can "
-"get trapped, so you have to be careful..."
+"variable using = instead of ==. Hopefully, the [!java|scala]compiler[/!][!"
+"python]interpreter[/!] detects this problem most of the time, but it could "
+"get trapped is some cases (such as when you are affecting a boolean "
+"variable). So you'd better to be careful..."
 msgstr ""
 "Attention au piège classique, qui consiste à tester l'égalité d'une variable "
-"avec = au lieu de ==. Heureusement, le compilateur vous indique le plus "
-"souvent ce problème, mais pas tout le temps. Si la variable est de type "
-"booléen, il peut se faire prendre au piège, et il convient donc d'être "
-"attentif..."
+"avec = au lieu de ==. Heureusement, [!java|scala]le compilateur[/!][!"
+"python]l'interpréteur[/!] détecte le plus souvent ce problème et vous le "
+"signale, mais pas tout le temps. Si la variable est de type booléen, il peut "
+"se faire prendre au piège, et il convient donc d'être attentif..."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/conditions/Conditions.html:99
+#: src/lessons/welcome/conditions/Conditions.html:75
 msgid ""
-"The condition can also be a call to some perticular methods returning a "
-"boolean. For example, the <tt>isFacingWall()</tt> method of the buggle "
+"The condition can also be a call to some particular methods returning a "
+"boolean. For example, the <code>isFacingWall()</code> method of the buggle "
 "returns true if the buggle is facing a wall, and false in the other case."
 msgstr ""
 "La condition peut également être un appel à certaines méthodes "
@@ -2833,80 +2791,49 @@ msgstr ""
 "mur, et faux sinon."
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/conditions/Conditions.html:103
+#: src/lessons/welcome/conditions/Conditions.html:79
 msgid ""
 "Finally, a condition can be composed of several sub-conditions connected by "
-"boolean operations."
+"boolean operations:"
 msgstr ""
 "Enfin, il est possible de construire une condition composée de plusieurs "
-"sous-conditions reliées par des opérations booléennes."
+"sous-conditions reliées par des opérations booléennes:"
 
 #. type: Content of: <p><p><p><p><ul><li>
-#: src/lessons/welcome/conditions/Conditions.html:106
+#: src/lessons/welcome/conditions/Conditions.html:82
 msgid ""
-"<tt>cond1 && cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</"
-"tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even "
-"evaluated)."
-msgstr ""
-"<tt>cond1 && cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt> "
-"est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas "
-"évaluée)."
+"<code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when "
+"<tt>cond1</tt> <b>and</b> <tt>cond2</tt> are both true (if <tt>cond1</tt> is "
+"false, <tt>cond2</tt> is not even evaluated as we already know that the "
+"conjunction of both propositions cannot be true)."
+msgstr "<tt>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</tt> est vraie (d'ailleurs, si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas évaluée puisqu'on sait déjà que la conjonction des deux propositions ne peut pas être vraie)."
 
 #. type: Content of: <p><p><p><p><ul><li>
-#: src/lessons/welcome/conditions/Conditions.html:109
+#: src/lessons/welcome/conditions/Conditions.html:85
 msgid ""
-"<tt>cond1 || cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> "
-"are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
-msgstr ""
-"<tt>cond1 || cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
-"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
-"évaluée)."
+"<code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> is true if "
+"<tt>cond1</tt> <b>or</b> <tt>cond2</tt> is true (if <tt>cond1</tt> is true, "
+"<tt>cond2</tt> is not even evaluated as we already know that the disjunction "
+"of both propositions cannot be true)."
+msgstr "<tt>cond1 [!java|scala]||[/!][!python]or[/!] cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> est vraie (d'ailleurs, si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas évaluée puisqu'on sait déjà que la disjonction des deux propositions est vraie)."
 
 #. type: Content of: <p><p><p><p><ul><li>
-#: src/lessons/welcome/conditions/Conditions.html:111
-msgid "<tt>!cond</tt> is true if <tt>cond</tt> is false."
-msgstr "<tt>!cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
-
-#. type: Content of: <p><p><p><p><ul><li>
-#: src/lessons/welcome/conditions/Conditions.html:112
-#: src/lessons/welcome/conditions/Conditions.html:125
+#: src/lessons/welcome/conditions/Conditions.html:88
 msgid ""
-"It is possible to force the order of evaluation by adding parenthesis. In "
-"ambigous cases, do not hesitate to add more parenthesis to remove any "
-"ambiguities on evaluation order."
-msgstr ""
-"On peut forcer l'ordre d'évaluation en ajoutant des parenthèses. En cas de "
-"doute, n'hésitez pas à mettre plus de parenthèses que nécessaire pour lever "
-"les ambiguïtés sur l'ordre d'évaluation."
+"<code>[!java|scala]![/!][!python]not [/!]cond</code> is true if <tt>cond</"
+"tt> is false."
+msgstr "<tt>[!java|scala]![/!][!python]not [/!]cond</code> cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
 
 #. type: Content of: <p><p><p><p><ul><li>
-#: src/lessons/welcome/conditions/Conditions.html:118
+#: src/lessons/welcome/conditions/Conditions.html:89
 msgid ""
-"<tt>cond1 and cond2</tt> is true when <tt>cond1</tt> <b>and</b> <tt>cond2</"
-"tt> are both true (if <tt>cond1</tt> is false, <tt>cond2</tt> is not even "
-"evaluated)."
-msgstr ""
-"<tt>cond1 and cond2</tt> est vraie si <tt>cond1</tt> <b>et</b> <tt>cond2</"
-"tt> est vraie (si <tt>cond1</tt> est fausse, <tt>cond2</tt> n'est même pas "
-"évaluée)."
-
-#. type: Content of: <p><p><p><p><ul><li>
-#: src/lessons/welcome/conditions/Conditions.html:121
-msgid ""
-"<tt>cond1 or cond2</tt> is true if <tt>cond1</tt> <b>or</b> <tt>cond2</tt> "
-"are true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated)."
-msgstr ""
-"<tt>cond1 or cond2</tt> est vraie si <tt>cond1</tt> <b>ou</b> <tt>cond2</tt> "
-"est vraie (si <tt>cond1</tt> est vraie, <tt>cond2</tt> n'est même pas "
-"évaluée)."
-
-#. type: Content of: <p><p><p><p><ul><li>
-#: src/lessons/welcome/conditions/Conditions.html:124
-msgid "<tt>not cond</tt> is true if <tt>cond</tt> is false."
-msgstr "<tt>not cond</tt> est vraie si <tt>cond</tt> ne l'est pas."
+"When the expression becomes complicated, it is better to add parenthesis to "
+"force the order of evaluation.  Do not hesitate to add more parenthesis to "
+"remove any ambiguities that may appear in an expression."
+msgstr "Quand les expressions deviennent compliquées, il est préférable d'ajouter quelques parenthèses pour lever toute ambiguïté sur l'ordre d'évaluation. N'hésitez pas à mettre suffisamment de parenthèses pour la rendre plus lisible."
 
 #. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/conditions/Conditions.html:130
+#: src/lessons/welcome/conditions/Conditions.html:93
 msgid ""
 "Finally, it is possible to specify what to do when the condition is false "
 "using the following syntax:"
@@ -2915,58 +2842,47 @@ msgstr ""
 "condition est fausse, en utilisant la syntaxe suivante :"
 
 #. type: Content of: <p><p><p><p><p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:132
+#: src/lessons/welcome/conditions/Conditions.html:95
 #, no-wrap
 msgid ""
-"if (<b>condition</b>) {\n"
+"[!java|scala]if (<b>condition</b>) {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>\n"
 "} else {\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>\n"
-"}"
-msgstr ""
-"if (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie();</b>\n"
-"} else {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon();</b>\n"
-"}"
-
-#. type: Content of: <p><p><p><p><p><pre>
-#: src/lessons/welcome/conditions/Conditions.html:138
-#, no-wrap
-msgid ""
-"if (<b>condition</b>):\n"
+"}[/!][!python]if (<b>condition</b>):\n"
 "&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue()</b>\n"
 "else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse()</b>[/!]"
 msgstr ""
-"if (<b>condition</b>):\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSiLaConditionEstVraie()</b>\n"
+"[!java|scala]if (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie();</b>\n"
+"} else {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse();</b>\n"
+"}[/!][!python]if (<b>condition</b>):\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiLaConditionEstVraie()</b>\n"
 "else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>quoiFaireSinon()</b>\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>aFaireSiElleEstFausse()</b>[/!]"
 
 #. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/conditions/Conditions.html:144
+#: src/lessons/welcome/conditions/Conditions.html:104
 msgid ""
 "Don't forget the colon (:) after the else, it is indicating that a new block "
 "is beginning."
-msgstr ""
-"N'oubliez pas les deux points (:) après le else, ils indiquent qu'un "
-"nouveau\n"
-"bloc débute."
+msgstr "N'oubliez pas les deux points (:) après le else, ils indiquent qu'un nouveau bloc débute."
 
 #. type: Content of: <p><p><p><p><p><a>
-#: src/lessons/welcome/conditions/Conditions.html:147
+#: src/lessons/welcome/conditions/Conditions.html:107
 msgid ""
-"<a name=\"Objectives\">If the buggle is facing a wall (predicate "
-"<tt>isFacingWall()</tt>), you must move one step back. If not, you must move "
-"one step forward."
+"<a name=\"Objectives\">If the buggle is facing a wall, you must move one "
+"step back. If not, you must move one step forward. To detect whether you are "
+"facing a wall, simply use the <code>isFacingWall()</code> built-in, that "
+"every buggle understands."
 msgstr ""
-"<a name=\"Objectifs\"> Si la buggle est face à un mur (prédicat "
-"<tt>isFacingWall()</tt>), il faut reculer d'un pas. Sinon, il faut avancer "
-"d'un pas."
+"<a name=\"Objectifs\"> Si la buggle est face à un mur, il faut reculer d'un pas; Sinon, il faut avancer d'un pas.\n"
+"Pour savoir si on est face à un mur, il suffit d'utiliser la méthode prédéfinie des buggles nommée <code>estFaceMur()</code>."
 
 #. type: Content of: <p><p><p><p><p><a><p>
-#: src/lessons/welcome/conditions/Conditions.html:151
+#: src/lessons/welcome/conditions/Conditions.html:112
 msgid ""
 "This exercise is a bit different: your code has to work for several buggles, "
 "each of them being in a specific initial condition. The same code will be "
@@ -2977,7 +2893,7 @@ msgstr ""
 "différente. Le même code sera utilisé pour chacune d'entre elles."
 
 #. type: Content of: <p><a><p>
-#: src/lessons/welcome/conditions/Conditions.html:155
+#: src/lessons/welcome/conditions/Conditions.html:116
 #: src/lessons/welcome/loopwhile/LoopWhile.html:32
 msgid "When your program works, move forward to the next exercise."
 msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
@@ -4213,8 +4129,24 @@ msgstr ""
 "  aFaire();\n"
 "}"
 
-#. type: Content of: <p><p><p>
+#. type: Content of: <p><p><pre>
 #: src/lessons/welcome/methods/basics/Methods.html:30
+#, no-wrap
+msgid ""
+"def buildConnectionString(params):\n"
+"    \"\"\"Build a connection string from a dictionary of parameters.\n"
+"\n"
+"    Returns string.\"\"\"\n"
+"    return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items()])\n"
+msgstr ""
+"def buildConnectionString(params):\n"
+"    \"\"\"Construit une connection string à partir d'un dictionnaire de paramètres.\n"
+"\n"
+"    Renvoie une chaîne de caractères.\"\"\"\n"
+"    return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items()])\n"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/methods/basics/Methods.html:37
 msgid ""
 "The method body (between curly braces) can contain as many instructions as "
 "you want, and any construction we saw so far (for, while, if, etc)."
@@ -4224,7 +4156,7 @@ msgstr ""
 "jusque là (for, while, if, etc)."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:32
+#: src/lessons/welcome/methods/basics/Methods.html:39
 msgid ""
 "The method body (the code that is indended) can contain as many instructions "
 "as you want, and any construction we saw so far (for, while, if, etc)."
@@ -4234,7 +4166,7 @@ msgstr ""
 "jusque là (for, while, if, etc)."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:35
+#: src/lessons/welcome/methods/basics/Methods.html:42
 msgid ""
 "We will come back later on the exact signification of the <code>public</"
 "code> keyword. Let's say for now that it means that everybody can use this "
@@ -4245,7 +4177,7 @@ msgstr ""
 "d'utiliser cette méthode."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:39
+#: src/lessons/welcome/methods/basics/Methods.html:46
 msgid ""
 "<code>void</code> means that the method does not return any result. We said "
 "previously that the <code>isOverBaggle()</code> method returns a boolean and "
@@ -4258,13 +4190,13 @@ msgstr ""
 "while. Cela signifie qu'elle a été déclarée de la façon suivante :"
 
 #. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:43
+#: src/lessons/welcome/methods/basics/Methods.html:50
 #, no-wrap
 msgid "public boolean isOverBaggle() { ... }"
 msgstr "public boolean isOverBaggle() { ... }"
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:45
+#: src/lessons/welcome/methods/basics/Methods.html:52
 msgid ""
 "We will introduce in next exercise how to do this kind of tricks. For now, "
 "let's just write <code>void</code> at this location."
@@ -4273,7 +4205,7 @@ msgstr ""
 "l'instant, contentons nous d'écrire ce <code>void</code> à cet endroit."
 
 #. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:48
+#: src/lessons/welcome/methods/basics/Methods.html:55
 msgid ""
 "In Java, the convention is to use lower case for the first letter of a "
 "method name and concatenate every word describing the method using a upper "
@@ -4287,7 +4219,7 @@ msgstr ""
 "écrivons \"go and get\" sous la forme \"goAndGet\"."
 
 #. type: Content of: <p><p><p><a>
-#: src/lessons/welcome/methods/basics/Methods.html:59
+#: src/lessons/welcome/methods/basics/Methods.html:66
 msgid ""
 "<a name=\"Objectives\"> The goal of this exercise is to write a method "
 "called <code>goAndGet()</code> which does the same than in previous "
@@ -4300,7 +4232,7 @@ msgstr ""
 "baggle, reculer à la case départ, poser le baggle)."
 
 #. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:64
+#: src/lessons/welcome/methods/basics/Methods.html:71
 msgid ""
 "One particularity of this exercise is that all your code should be written "
 "in this function, with nothing out of it. The code that calls your function "
@@ -4311,7 +4243,7 @@ msgstr ""
 "sera automagiquement ajouté quand vous cliquerez sur <b>Start</b>."
 
 #. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:68
+#: src/lessons/welcome/methods/basics/Methods.html:75
 msgid ""
 "One particularity of this exercise is that you shouldn't write directly the "
 "code that the buggle should execute, but a method it should use. Actually, "
@@ -4327,7 +4259,7 @@ msgstr ""
 "b>."
 
 #. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:74
+#: src/lessons/welcome/methods/basics/Methods.html:81
 msgid ""
 "Don't try to define this method here, since the buggle already knows it. "
 "This would cause trouble to the compiler, which would give you an error "
@@ -4341,7 +4273,7 @@ msgstr ""
 
 # type: Content of: <p><a><p><p><pre>
 #. type: Content of: <p><p><p><a><p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:79
+#: src/lessons/welcome/methods/basics/Methods.html:86
 #, no-wrap
 msgid ""
 "public void run() {\n"
@@ -4364,7 +4296,7 @@ msgstr ""
 
 # type: Content of: <p><a><p><p><pre>
 #. type: Content of: <p><p><p><a><p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:87
+#: src/lessons/welcome/methods/basics/Methods.html:94
 #, no-wrap
 msgid ""
 "def run():\n"
@@ -4387,7 +4319,7 @@ msgstr ""
 
 # type: Content of: <p><a><p><p><p>
 #. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:98
+#: src/lessons/welcome/methods/basics/Methods.html:105
 msgid ""
 "Your buggle will repeat 7 times (which matches the world's dimension)  "
 "sequence constituted of a call to the <code>goAndGet()</code> method that "
@@ -4405,7 +4337,7 @@ msgstr ""
 
 # type: Content of: <p><a><p><p><p>
 #. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:105
+#: src/lessons/welcome/methods/basics/Methods.html:112
 msgid "You should now write this goAndGet() method."
 msgstr "À vous d'écrire cette méthode goAndGet()."
 
