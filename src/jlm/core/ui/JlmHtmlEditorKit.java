@@ -2,6 +2,7 @@ package jlm.core.ui;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Shape;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,6 +46,10 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	 *    - remove parts such as [!scala|python] ... [/!] 
 	 *    - remove parts such as [!python|scala] ... [/!] 
 	 * 
+	 * Other automagic conversions:
+	 *  [!thelang] displays the name of the current programming language.
+	 *  [!configfile] displays where the JLM config file is stored on disk.
+	 * 
 	 */
 	public static String filterHTML(String in) {
 		if (langColors == null) {
@@ -61,7 +66,8 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 			langColors.put("scala|python", "0080FF");
 		}
 		
-		String res = in;
+		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!]");
+		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"jlm.properties");
 		
 		/* Display everything when in debug mode, with shiny colors */
 		if (Game.getInstance().isDebugEnabled()) {
