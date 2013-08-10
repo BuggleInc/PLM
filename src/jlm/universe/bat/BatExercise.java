@@ -21,8 +21,7 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		if (ws.length > 1)
 			throw new RuntimeException("Bat exercises must have at most one world");
 		
-		String entName="no name";
-		entName = ws[0].getName();
+		String entName = ws[0].getName();
 		
 		/* Install the corrections: the first time setResult is called, it set 'expected' instead */
 		for (BatTest t : ((BatWorld)ws[0]).tests)
