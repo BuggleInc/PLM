@@ -206,8 +206,6 @@ public abstract class Entity {
 
 				String script = getScript(progLang);
 
-				if (Game.getInstance().isDebugEnabled()) 
-					System.err.println("Here is the script in "+progLang.getLang()+" >>>>"+script+"<<<<");
 				if (script == null) { 
 					System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against JLM.",progLang,this));
 					return;
@@ -228,6 +226,8 @@ public abstract class Entity {
 				engine.eval(script);
 				
 			} catch (ScriptException e) {
+				if (Game.getInstance().isDebugEnabled()) 
+					System.err.println("Here is the script in "+progLang.getLang()+" >>>>"+script+"<<<<");
 				if (e.getCause() instanceof PyException) { // This seem to be all exceptions raised by python
 					PyException cause = (PyException) e.getCause();
 
