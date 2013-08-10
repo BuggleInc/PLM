@@ -153,11 +153,17 @@ public abstract class ExerciseTemplated extends Exercise {
 				break;
 			case 4: /* end of file */
 				correction.append(line+"\n");
-				if (line.contains("END TEMPLATE")) 
-					if (!seenTemplate)
-						System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
+				if (line.contains("BEGIN SKEL")) {
+					savedState = state;
+					state = 6; 
+
+				} else {
+					if (line.contains("END TEMPLATE"))  
+						if (!seenTemplate)
+							System.out.println(i18n.tr("{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity.",shownFilename));
 					
-				tail.append(line+"\n");
+					tail.append(line+"\n");
+				}
 				break;
 			case 5: /* Hidden but not bodied */
 				correction.append(line+"\n");
