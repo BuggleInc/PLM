@@ -47,7 +47,12 @@ public class SourceFile {
 	public String getTemplate() {
 		return template;
 	}
-
+	public void setCorrection(String c) {
+		this.correction = c;
+	}
+	public String getCorrection() {
+		return this.correction;
+	}
 
 	public String getCompilableContent(StudentOrCorrection whatToRetrieve) {
 		return getCompilableContent(null,whatToRetrieve);
