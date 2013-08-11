@@ -71,10 +71,14 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 		
 		/* Display everything when in debug mode, with shiny colors */
 		if (Game.getInstance().isDebugEnabled()) {
+			// Process any block with one language first so that they can be nested in blocks with more than one language.
 			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
 				String l = lang.getLang().toLowerCase();
 				res = res.replaceAll("(?s)\\[!"+l+"\\](.*?)\\[/!\\]",
 						"<font color=\""+langColors.get(l)+"\">$1</font>");
+			}
+			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+				String l = lang.getLang().toLowerCase();
 				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
 					if (!lang2.equals(lang)) {
 						String l2 = lang2.getLang().toLowerCase();
@@ -91,8 +95,17 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 		ProgrammingLanguage currLang = Game.getProgrammingLanguage();
 		String cl = currLang.getLang().toLowerCase();
 		
+		// Process any block with one language first so that they can be nested in blocks with more than one language.
 		res = res.replaceAll(      "(?s)\\[!"+cl+"\\](.*?)\\[/!\\]","$1");
 		//System.out.println("Keep "+"(?s)\\[!"+cl+"\\](.*?)\\[/!\\]");
+		for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+			if (!lang.equals(currLang)) {
+				String l = lang.getLang().toLowerCase();
+				
+				res = res.replaceAll(      "(?s)\\[!"+l+"\\](.*?)\\[/!\\]",   "");
+				//System.out.println("Kill "+"(?s)\\[!"+l+"\\](.*?)\\[/!\\]");
+			}
+		}
 		for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
 			if (!lang.equals(currLang)) {
 				String l = lang.getLang().toLowerCase();
@@ -102,8 +115,6 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 				res = res.replaceAll(      "(?s)\\[!"+cl+"\\|"+l +"\\](.*?)\\[/!\\]",   "$1");
 				//System.out.println("Keep "+"(?s)\\[!"+cl+"\\|"+l +"\\](.*?)\\[/!\\]");
 				
-				res = res.replaceAll(      "(?s)\\[!"+l+"\\](.*?)\\[/!\\]",   "");
-				//System.out.println("Kill "+"(?s)\\[!"+l+"\\](.*?)\\[/!\\]");
 				for (ProgrammingLanguage lang2 : Game.getProgrammingLanguages()) {
 					if (!lang2.equals(currLang) && !lang2.equals(lang)) {
 						String l2 = lang2.getLang().toLowerCase();
