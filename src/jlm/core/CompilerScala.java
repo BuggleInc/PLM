@@ -61,8 +61,6 @@ public class CompilerScala {
 	}
 
 	public void compile(String name,String content,int offset) throws JLMCompilerException {
-		if (Game.getInstance().isDebugEnabled())
-			System.out.println("Here is the scala source code of "+name+" (offset:"+offset+"): "+content);
 		
 		Run compiler = global.new Run();
 		List<SourceFile> sources = new LinkedList<SourceFile>();
@@ -71,6 +69,9 @@ public class CompilerScala {
 		reporter.setOffset(offset);
 		
 		compiler.compileSources(JavaConverters.asScalaBufferConverter(sources).asScala().toList());
+		
+		if (Game.getInstance().isDebugEnabled() && reporter.hasErrors())
+			System.out.println("Here is the scala source code of "+name+" (offset:"+offset+"): "+content);
 		reporter.throwExceptionOnNeed();
 	}
 	public Class<?> findClass(String className) {
