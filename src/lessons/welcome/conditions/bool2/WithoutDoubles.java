@@ -37,11 +37,11 @@ public class WithoutDoubles extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( withoutDoubles((Integer)t.getParameter(0), (Integer)t.getParameter(1), (Boolean)t.getParameter(2)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int withoutDoubles(int die1, int die2, boolean noDoubles) {

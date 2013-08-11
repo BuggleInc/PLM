@@ -28,11 +28,11 @@ public class AltPairs extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( altPairs((String)t.getParameter(0)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	String altPairs(String str) {

@@ -29,11 +29,11 @@ public class ShareDigit extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( shareDigit((Integer)t.getParameter(0), (Integer)t.getParameter(1)) ); 
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean shareDigit(int a, int b) {

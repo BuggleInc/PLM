@@ -32,11 +32,11 @@ public class StringYak extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( stringYak((String)t.getParameter(0)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	String stringYak(String str) {

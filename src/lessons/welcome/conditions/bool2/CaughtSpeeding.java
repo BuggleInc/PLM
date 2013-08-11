@@ -36,11 +36,11 @@ public class CaughtSpeeding extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( caughtSpeeding((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int caughtSpeeding(int speed, boolean isBirthday) {

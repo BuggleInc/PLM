@@ -37,11 +37,11 @@ public class AlarmClock extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( alarmClock((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	String alarmClock(int day, boolean vacation) {

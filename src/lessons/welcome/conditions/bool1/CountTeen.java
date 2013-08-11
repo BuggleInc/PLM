@@ -42,11 +42,11 @@ public class CountTeen extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( countTeen((Integer)t.getParameter(0),(Integer)t.getParameter(1),(Integer)t.getParameter(2),(Integer)t.getParameter(3)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int countTeen(int a, int b, int c,int d) {

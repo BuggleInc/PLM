@@ -33,11 +33,11 @@ public class FrontTimes extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( frontTimes((String)t.getParameter(0), (Integer)t.getParameter(1)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	String frontTimes(String str, int n) {

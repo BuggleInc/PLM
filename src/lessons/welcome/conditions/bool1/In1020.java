@@ -30,12 +30,12 @@ public class In1020 extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	@Override
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( in1020((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean in1020(int a, int b) {

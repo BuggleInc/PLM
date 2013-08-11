@@ -30,11 +30,11 @@ public class Makes10 extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( makes10((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean makes10(int a, int b) {

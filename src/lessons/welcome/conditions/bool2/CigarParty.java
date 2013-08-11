@@ -30,11 +30,11 @@ public class CigarParty extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( cigarParty((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean cigarParty(int cigars, boolean isWeekend) {

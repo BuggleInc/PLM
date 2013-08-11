@@ -75,11 +75,11 @@ public class OccurrenceOfValue extends BatExercise {
 	}
 
 	/* END TEMPLATE */
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( occurrences( (int[])t.getParameter(0), (Integer)t.getParameter(1) ) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 }
 

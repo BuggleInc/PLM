@@ -32,11 +32,11 @@ public class StringMatch extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( stringMatch((String)t.getParameter(0), (String)t.getParameter(1)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int stringMatch(String a, String b) {

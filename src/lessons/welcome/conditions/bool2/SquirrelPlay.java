@@ -32,11 +32,11 @@ public class SquirrelPlay extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( squirrelPlay((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean squirrelPlay(int temp, boolean isSummer) {

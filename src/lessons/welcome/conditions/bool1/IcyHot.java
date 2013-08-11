@@ -27,11 +27,11 @@ public class IcyHot extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( icyHot((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean icyHot(int temp1, int temp2) {

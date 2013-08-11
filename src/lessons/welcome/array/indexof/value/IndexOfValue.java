@@ -56,11 +56,11 @@ public class IndexOfValue extends BatExercise {
 		
 		setup(myWorld);
 	}
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( indexOf( (int[])t.getParameter(0), (Integer)t.getParameter(1) ) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	// computes the index of the first value equals to 'lookingFor' contained in tab variable

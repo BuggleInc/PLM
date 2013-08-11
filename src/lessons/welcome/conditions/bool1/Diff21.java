@@ -33,11 +33,11 @@ public class Diff21 extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( diff21((Integer)t.getParameter(0)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int diff21(int n) {

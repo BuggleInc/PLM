@@ -36,11 +36,11 @@ public class LoneTeen extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( loneTeen((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean loneTeen(int a, int b) {

@@ -29,11 +29,11 @@ public class SumDouble extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( sumDouble((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int sumDouble(int a, int b) {

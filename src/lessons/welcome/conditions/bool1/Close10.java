@@ -34,11 +34,11 @@ public class Close10 extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult(close10((Integer)t.getParameter(0),(Integer)t.getParameter(1)));
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int close10(int a, int b) {

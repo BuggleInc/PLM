@@ -31,11 +31,11 @@ public class In1To10 extends BatExercise {
 		setup(myWorld);
 	}
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( in1To10((Integer)t.getParameter(0), (Boolean)t.getParameter(1)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean in1To10(int n, boolean outsideMode) {

@@ -41,11 +41,11 @@ public class AverageValue extends BatExercise {
 	}
 	
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( averageValue((int[])t.getParameter(0)) );
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	int averageValue(int[] nums) {

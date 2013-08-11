@@ -7,6 +7,7 @@ import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.session.SourceFile;
 import jlm.universe.World;
+import jlm.universe.bat.BatTest;
 
 /** This class of Exercises are useful to merge the entity and world within the same class.
  * #BatExercice is a known implementation 
@@ -78,7 +79,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		}
 		
 		SourceFile sf = sourceFiles.get(Game.JAVA).get(0);
-		sf.setCorrection("$package "+template+" "+sf.getTemplate()+sf.getCorrection()+" }");
+		sf.setCorrection("$package "+template+" public void run(BatTest t) {\n"+sf.getTemplate()+"}\n"+sf.getCorrection()+" }");
 		sf.setTemplate("$package "+template+" "+sf.getTemplate()+" $body }");
 		//System.out.println("New template: "+sf.getTemplate());
 		

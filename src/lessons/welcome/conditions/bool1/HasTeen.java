@@ -33,11 +33,11 @@ public class HasTeen extends BatExercise {
 	}
 
 
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( hasTeen((Integer)t.getParameter(0),(Integer)t.getParameter(1),(Integer)t.getParameter(2)) );		
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	boolean hasTeen(int a, int b, int c) {

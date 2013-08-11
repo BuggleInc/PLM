@@ -48,11 +48,11 @@ public class MaxValue extends BatExercise {
 		setup(myWorld);
 	}
 	
-	/* BEGIN SKEL */
 	public void run(BatTest t) {
+		/* BEGIN SKEL */
 		t.setResult( maxValue( (int[])t.getParameter(0) ));
+		/* END SKEL */
 	}
-	/* END SKEL */
 
 	/* BEGIN TEMPLATE */
 	// computes the index of the maximum of the values contained in tab variable
