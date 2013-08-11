@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -17,7 +16,7 @@ public class SleepIn extends BatExercise {
 		myWorld.addTest(INVISIBLE, false,true);
 		myWorld.addTest(INVISIBLE, true,true);
 
-		langTemplate(Game.PYTHON, "sleepIn", 
+		templatePython("sleepIn", 
 				"def sleepIn(weekday, vacation):\n",
 				"    return not weekday or vacation\n");
 		setup(myWorld);

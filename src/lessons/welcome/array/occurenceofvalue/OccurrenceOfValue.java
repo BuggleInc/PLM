@@ -2,7 +2,6 @@ package lessons.welcome.array.occurenceofvalue;
 
 import java.util.Random;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -49,7 +48,7 @@ public class OccurrenceOfValue extends BatExercise {
 
 		
 		
-		langTemplate(Game.PYTHON, "occurrences", 
+		templatePython("occurrences", 
 				"def occurrences(nums,lookingFor):\n",
 				"  count = 0\n" +
 				"  for i in range(len(nums)):\n" +

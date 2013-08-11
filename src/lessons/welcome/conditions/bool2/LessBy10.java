@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -27,7 +26,7 @@ public class LessBy10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 2, -8) ;
 		myWorld.addTest(INVISIBLE, 2, 8, 12) ;
 
-		langTemplate(Game.PYTHON, "lessBy10", 
+		templatePython("lessBy10", 
 				"def lessBy10(a, b, c):\n",
 				"	return ((a - b) >= 10) or ((b - a) >= 10) or ((b - c) >= 10) or ((c - b) >= 10) or ((a - c) >= 10) or ((c - a) >= 10)\n");
 		setup(myWorld);

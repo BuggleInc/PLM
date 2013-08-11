@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -23,7 +22,7 @@ public class ParotTrouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, true,20);
 
 
-		langTemplate(Game.PYTHON, "parotTrouble", 
+		templatePython("parotTrouble", 
 				"def parotTrouble(talking, hour):\n",
 				"   return (talking and (hour<7 or hour>20))\n");
 		setup(myWorld);

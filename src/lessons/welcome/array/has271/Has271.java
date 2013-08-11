@@ -1,5 +1,4 @@
 package lessons.welcome.array.has271;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -24,7 +23,7 @@ public class Has271 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {2, 7, 5, 10, 1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {2, 7, -2, 4, 10, 2}) ;
 
-		langTemplate(Game.PYTHON, "has271",
+		templatePython("has271",
 				"import math\ndef has271(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-1):\n"+

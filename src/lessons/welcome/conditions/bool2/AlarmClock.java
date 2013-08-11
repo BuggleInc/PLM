@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -22,7 +21,7 @@ public class AlarmClock extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3, true) ;
 		myWorld.addTest(INVISIBLE, 5, true) ;
 
-		langTemplate(Game.PYTHON, "alarmClock", 
+		templatePython("alarmClock", 
 				"def alarmClock(day, vacation):\n",
 				"	if not vacation:\n"+
 				"		if (day >= 1 and day <= 5):\n"+

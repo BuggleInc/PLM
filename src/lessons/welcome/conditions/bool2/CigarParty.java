@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -24,7 +23,7 @@ public class CigarParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 40, true) ;
 		myWorld.addTest(INVISIBLE, 39, true) ;
 
-		langTemplate(Game.PYTHON, "cigarParty", 
+		templatePython("cigarParty", 
 				"def cigarParty(cigars, isWeekend):\n",
 				"   return (isWeekend and cigars >= 40) or (not isWeekend and (cigars >= 40) and (cigars <= 60))\n");
 		setup(myWorld);

@@ -1,5 +1,4 @@
 package lessons.welcome.conditions.bool1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -22,7 +21,7 @@ public class Max1020 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 7, 20) ;
 		myWorld.addTest(INVISIBLE, 17, 16) ;
 
-		langTemplate(Game.PYTHON, "max1020", 
+		templatePython("max1020", 
 				"def max1020(a, b):\n",
 				"	A = max(a,b)\n"+
 				"	B = min(a,b)\n"+

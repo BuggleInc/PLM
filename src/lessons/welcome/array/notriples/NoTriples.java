@@ -1,5 +1,4 @@
 package lessons.welcome.array.notriples;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -20,7 +19,7 @@ public class NoTriples extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 
-		langTemplate(Game.PYTHON, "noTriples", 
+		templatePython("noTriples", 
 				"def noTriples(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-2 ):\n"+

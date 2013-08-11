@@ -1,5 +1,4 @@
 package lessons.welcome.array.arraycount9;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -18,7 +17,7 @@ public class ArrayCount9 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {4, 2, 4, 3, 1}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {9, 2, 4, 3, 1}) ;
 
-		langTemplate(Game.PYTHON, "arrayCount9", 
+		templatePython("arrayCount9", 
 				"def arrayCount9(nums):\n",
 				"  res = 0\n" +
 				"  for value in nums:\n" +

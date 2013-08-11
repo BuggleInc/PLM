@@ -2,7 +2,6 @@ package lessons.welcome.array.indexof.maxvalue;
 
 import java.util.Random;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -27,7 +26,7 @@ public class IndexOfMaxValue extends BatExercise {
 		myWorld.addTest(VISIBLE, tab) ;
 		myWorld.addTest(INVISIBLE, tab2) ;
 
-		langTemplate(Game.PYTHON, "indexOfMaxValue", 
+		templatePython("indexOfMaxValue", 
 				"def indexOfMaxValue(nums):\n",
 				"  max=nums[0]\n" +
 				"  maxIdx = 0\n" +

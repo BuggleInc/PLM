@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -24,7 +23,7 @@ public class MaxMod5 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 9, 14) ;
 		myWorld.addTest(INVISIBLE, 1, 2) ;
 
-		langTemplate(Game.PYTHON, "maxMod5", 
+		templatePython("maxMod5", 
 				"def maxMod5(a, b):\n",
 				"	if (a == b):\n"+
 				"		return 0\n"+

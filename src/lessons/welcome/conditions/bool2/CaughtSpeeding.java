@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -25,7 +24,7 @@ public class CaughtSpeeding extends BatExercise {
 		myWorld.addTest(INVISIBLE, 40, true) ;
 		myWorld.addTest(INVISIBLE, 90, false) ;
 
-		langTemplate(Game.PYTHON, "caughtSpeeding", 
+		templatePython("caughtSpeeding", 
 				"def caughtSpeeding(speed, isBirthday):\n",
 				"	if ((isBirthday and speed <= 65) or (speed <= 60)):\n"+
 				"		return 0\n"+

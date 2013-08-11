@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -20,18 +19,27 @@ public class SumDouble extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,0);
 		myWorld.addTest(INVISIBLE, 0,1);
 
-		langTemplate(Game.PYTHON, "sumDouble", 
+		templatePython("sumDouble", 
 				"def sumDouble(a, b):\n",
 				"  if a==b:\n"+
 				"    return (a+b)*2\n"+
 				"  return a+b\n");
+		
+		templateScala("sumDouble", new String[]{"Integer","Integer"}, 
+				"def sumDouble(a: Integer, b: Integer): Integer = {\n",
+				"  if (a==b) {\n"+
+				"    return (a+b)*2\n"+
+				"  }\n"+
+				"  return a+b\n"+
+				"}");
+			//"t.setResult( sumDouble( t.getParameter(0).asInstanceOf[Integer], t.getParameter(1).asInstanceOf[Integer] ) )");
 		setup(myWorld);
 	}
 
 
 	public void run(BatTest t) {
 		/* BEGIN SKEL */
-		t.setResult( sumDouble((Integer)t.getParameter(0),(Integer)t.getParameter(1)) );		
+		t.setResult( sumDouble( ((Integer)(t.getParameter(0))),((Integer)(t.getParameter(1)))) );		
 		/* END SKEL */
 	}
 

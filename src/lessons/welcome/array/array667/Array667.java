@@ -1,5 +1,4 @@
 package lessons.welcome.array.array667;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -24,7 +23,7 @@ public class Array667 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 5, 6}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {1, 2, 3, 6, 6}) ;
 
-		langTemplate(Game.PYTHON, "array667", 
+		templatePython("array667", 
 				"def array667(nums):\n",
 				"  count=0\n"+
 				"  for i in range( len(nums)-1):\n"+

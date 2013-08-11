@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -17,7 +16,7 @@ public class MonkeyTrouble extends BatExercise {
 		myWorld.addTest(VISIBLE, true, false);
 		myWorld.addTest(INVISIBLE, false, true);
 
-		langTemplate(Game.PYTHON, "monkeyTrouble", 
+		templatePython("monkeyTrouble", 
 				"def monkeyTrouble(aSmile, bSmile):\n",
 				"   return (aSmile and bSmile) or (not aSmile and not bSmile)\n");
 		setup(myWorld);

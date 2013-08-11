@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -25,7 +24,7 @@ public class BlueTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 8, 4, 2) ;
 		myWorld.addTest(INVISIBLE, 8, 4, 1) ;
 
-		langTemplate(Game.PYTHON, "blueTicket", 
+		templatePython("blueTicket", 
 				"def blueTicket(a, b, c):\n",
 				"	ab = a + b\n"+
 				"	ac = a + c\n"+

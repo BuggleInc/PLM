@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -27,7 +26,7 @@ public class LoneTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 42,13);
 		myWorld.addTest(INVISIBLE, 42,42);
 
-		langTemplate(Game.PYTHON, "loneTeen", 
+		templatePython("loneTeen", 
 				"def loneTeen(a, b):\n",
 				"	teenA = a>12 and a<20\n"+
 				"	teenB = b>12 and b<20\n"+

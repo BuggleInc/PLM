@@ -1,5 +1,4 @@
 package lessons.bat.string1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -18,7 +17,7 @@ public class StringYak extends BatExercise {
 		myWorld.addTest(INVISIBLE, "HiyakHi") ;
 		myWorld.addTest(INVISIBLE, "xxxyakyyyakzzz") ;
 
-		langTemplate(Game.PYTHON, "stringYak", 
+		templatePython("stringYak", 
 				"def stringYak(str):\n",
 				"  res = ''\n" +
 				"  i=0\n" +

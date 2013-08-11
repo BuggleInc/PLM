@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -24,7 +23,7 @@ public class RedTicket extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, 2, 0) ;
 		myWorld.addTest(INVISIBLE, 1, 1, 2) ;
 
-		langTemplate(Game.PYTHON, "redTicket", 
+		templatePython("redTicket", 
 				"def redTicket(a, b, c):\n",
 				"	if (a == b and b == c and c == 2):\n"+
 				"		return 10\n"+

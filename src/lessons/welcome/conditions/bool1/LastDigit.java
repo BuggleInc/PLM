@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -19,7 +18,7 @@ public class LastDigit extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 0) ;
 		myWorld.addTest(INVISIBLE, 11, 0) ;
 
-		langTemplate(Game.PYTHON, "lastDigit", 
+		templatePython("lastDigit", 
 				"def lastDigit(a, b):\n",
 				"   return a%10 == b%10\n");
 		setup(myWorld);

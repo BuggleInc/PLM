@@ -1,5 +1,4 @@
 package lessons.bat.string1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -21,7 +20,7 @@ public class StringMatch extends BatExercise {
 		myWorld.addTest(INVISIBLE, "aaxxaaxx", "iaxxai") ;
 		myWorld.addTest(INVISIBLE, "iaxxai", "aaxxaaxx") ;
 
-		langTemplate(Game.PYTHON, "stringMatch", 
+		templatePython("stringMatch", 
 				"def stringMatch(a, b):\n",
 				"  l = min( len(a), len(b) )\n" +
 				"  count = 0\n" +

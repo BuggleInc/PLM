@@ -1,5 +1,4 @@
 package lessons.bat.string1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -18,7 +17,7 @@ public class FrontTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "", 4) ;
 		myWorld.addTest(INVISIBLE, "Abc", 0) ;
 
-		langTemplate(Game.PYTHON, "frontTimes", 
+		templatePython("frontTimes", 
 				"def frontTimes(str, n):\n",
 				"  frontLen = 3\n" +
 				"  if frontLen > len(str):\n" +

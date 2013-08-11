@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -26,7 +25,7 @@ public class CountTeen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 11,11,11,11);
 		myWorld.addTest(INVISIBLE, 15,15,15,15);
 
-		langTemplate(Game.PYTHON, "countTeen", 
+		templatePython("countTeen", 
 				"def countTeen(a, b, c, d):\n",
 				"		ret=0\n"+
 				"		if (a>12 and a<20):\n"+

@@ -1,5 +1,4 @@
 package lessons.bat.string1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -18,7 +17,7 @@ public class StringSplosion extends BatExercise {
 		myWorld.addTest(INVISIBLE, "Good") ;
 		myWorld.addTest(INVISIBLE, "Bad") ;
 
-		langTemplate(Game.PYTHON, "stringSplosion", 
+		templatePython("stringSplosion", 
 				"def stringSplosion(str):\n",
 				"  res = ''\n" +
 				"  for i in range(len(str)):\n" +

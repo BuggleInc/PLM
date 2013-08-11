@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -26,7 +25,7 @@ public class TeaParty extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 4) ;
 		myWorld.addTest(INVISIBLE, 10, 20) ;
 
-		langTemplate(Game.PYTHON, "teaParty", 
+		templatePython("teaParty", 
 				"def teaParty(tea, candy):\n",
 				"	if (tea < 5 or candy < 5):\n"+
 				"		return 0\n"+

@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -24,7 +23,7 @@ public class NearHundred extends BatExercise {
 		myWorld.addTest(INVISIBLE, 211);
 		myWorld.addTest(INVISIBLE, -100);
 
-		langTemplate(Game.PYTHON, "nearHundred", 
+		templatePython("nearHundred", 
 				"def nearHundred(n):\n",
 				"   return (90<=n and n<=110) or (190<=n and n<=210)\n");
 		setup(myWorld);

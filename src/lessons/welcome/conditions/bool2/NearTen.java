@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -27,7 +26,7 @@ public class NearTen extends BatExercise {
 		myWorld.addTest(INVISIBLE, 3) ;
 		myWorld.addTest(INVISIBLE, 1) ;
 
-		langTemplate(Game.PYTHON, "nearTen", 
+		templatePython("nearTen", 
 				"def nearTen(num):\n",
 				"  return (num % 10) <= 2 or (num % 10) >= 8\n");
 		setup(myWorld);

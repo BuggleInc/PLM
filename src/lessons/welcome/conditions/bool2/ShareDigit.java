@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -23,7 +22,7 @@ public class ShareDigit extends BatExercise {
 		myWorld.addTest(INVISIBLE, 55, 55) ;
 		myWorld.addTest(INVISIBLE, 55, 44) ;
 
-		langTemplate(Game.PYTHON, "shareDigit", 
+		templatePython("shareDigit", 
 				"def shareDigit(a, b):\n",
 				"   return (a/10 == b/10 or a/10 == b%10 or a%10 == b/10 or a%10 == b%10)");
 		setup(myWorld);

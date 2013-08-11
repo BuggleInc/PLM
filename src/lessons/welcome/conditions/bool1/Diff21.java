@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -24,7 +23,7 @@ public class Diff21 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 30);
 		myWorld.addTest(INVISIBLE, -21);
 
-		langTemplate(Game.PYTHON, "diff21", 
+		templatePython("diff21", 
 				"def diff21(n):\n",
 				"   if (n>21):\n"+
 				"      return 2*(n-21)\n"+

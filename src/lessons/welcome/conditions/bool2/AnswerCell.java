@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -19,7 +18,7 @@ public class AnswerCell extends BatExercise {
 		myWorld.addTest(INVISIBLE, false, true, false) ;
 		myWorld.addTest(INVISIBLE, true, true, true) ;
 
-		langTemplate(Game.PYTHON, "answerCell", 
+		templatePython("answerCell", 
 				"def answerCell(isMorning, isMom, isAsleep):\n",
 				"   return (not isAsleep) and not (isMorning and not isMom)");
 		setup(myWorld);

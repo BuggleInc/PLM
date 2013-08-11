@@ -7,7 +7,6 @@ import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.session.SourceFile;
 import jlm.universe.World;
-import jlm.universe.bat.BatTest;
 
 /** This class of Exercises are useful to merge the entity and world within the same class.
  * #BatExercice is a known implementation 
@@ -53,9 +52,9 @@ import jlm.universe.bat.BatTest;
  * and its return value is passed to the BatTest that was injected in the scripting world for that. 
  *  
  * This becomes particularly hairy for scala, that is both typed and compiled.  
- * Part of the initial content comes from the langTemplate parameters (what's in the template in Java, ie the user function template) 
- * while the rest comes from the SKEL section of Java (how to invoke this user function from what's in a BatTest).
- * This works because this little code is both valid Java and valid Scala. Ouf! 
+ * We would like to reuse the skeleton from Java so that the parameters are properly casted,
+ * but the syntax of type casting is very different in Scala and Java, so we provide the types to templateScala and it does the casting on its own. 
+ * The user function's template is provided to templateScala just as in Python. 
  *  
  * One limitation is that every such entity must be written in Java, but I can live with it for now.
  */
@@ -71,6 +70,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		this.tabName=entName;
 		setupWorlds(ws);
 		
+		
 		try {
 			newSourceFromFile(Game.JAVA, entName, getClass().getCanonicalName());
 			addProgLanguage(Game.JAVA);
@@ -78,23 +78,55 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 			throw new RuntimeException("ExerciseTemplatingEntities must be templated in Java for now, and use langTemplate afterward. Sorry -- patch warmly welcome if you manage to improve that piece of mess.");
 		}
 		
-		SourceFile sf = sourceFiles.get(Game.JAVA).get(0);
-		sf.setCorrection("$package "+template+" public void run(BatTest t) {\n"+sf.getTemplate()+"}\n"+sf.getCorrection()+" }");
-		sf.setTemplate("$package "+template+" "+sf.getTemplate()+" $body }");
+		SourceFile javaFile = sourceFiles.get(Game.JAVA).get(0);
+		
+		javaFile.setCorrection("$package "+template+" public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
+		javaFile.setTemplate("$package "+template+" "+javaFile.getTemplate()+" $body }");
 		//System.out.println("New template: "+sf.getTemplate());
 		
+		if (getProgLanguages().contains(Game.SCALA)) {
+			SourceFile scalaFile = sourceFiles.get(Game.SCALA).get(0);
+			String header = "$package\n"
+					+ "import jlm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
+					+ "import jlm.universe.World; \n"
+					+ "class "+entName+" extends BatEntity { ";
+			
+			scalaFile.setCorrection(header+scalaFile.getCorrection()+" }");
+			scalaFile.setTemplate(header+" "+javaFile.getTemplate()+" $body }");
+		}
 		
 		computeAnswer();
 		isSetup  = true;
 	}
-	protected void langTemplate(ProgrammingLanguage pl, String entName, String initialCode, String correction) {
+	protected void templatePython(String entName, String initialCode, String correction) {
 		/* The following test is intended to make sure that this function is called before setup() right above.
 		 * This is because setup() needs all programming languages to be declared when it runs */
 		if (isSetup)
 			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template");
 		
-		newSource(pl, entName, initialCode, "$body",0,"(templating entity)");
-		corrections.put(pl, initialCode+correction);
-		addProgLanguage(pl);
+		newSource(Game.PYTHON, entName, initialCode, "$body",0,"");
+		corrections.put(Game.PYTHON, initialCode+correction);
+		addProgLanguage(Game.PYTHON);
+	}
+	protected void templateScala(String entName, String[] types, String initialCode, String correction) {
+		if (isSetup)
+			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template");
+		
+		StringBuffer skeleton = new StringBuffer("   t.setResult( ");
+		skeleton.append(entName);
+		skeleton.append("( ");
+		for (int i=0;i<types.length;i++) {
+			if (i>0)
+				skeleton.append(", ");
+			skeleton.append("t.getParameter(");
+			skeleton.append(i);
+			skeleton.append(").asInstanceOf[");
+			skeleton.append(types[i]);
+			skeleton.append("]");
+		}
+		skeleton.append(") )");
+		
+		newSource(Game.SCALA, entName, initialCode, "$body",7,"\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
+		addProgLanguage(Game.SCALA);
 	}
 }

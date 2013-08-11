@@ -1,5 +1,4 @@
 package lessons.bat.string1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -19,7 +18,7 @@ public class AltPairs extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "ThisThatTheOther") ;
 
-		langTemplate(Game.PYTHON, "altPairs", 
+		templatePython("altPairs", 
 				"def altPairs(str):\n",
 				"  res = ''\n" +
 				"  for i in range(0,len(str),4):\n" +

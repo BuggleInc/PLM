@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -26,7 +25,7 @@ public class LastDigit2 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10, 11, 20) ;
 		myWorld.addTest(INVISIBLE, 0, 11, 0) ;
 
-		langTemplate(Game.PYTHON, "lastDigit", 
+		templatePython("lastDigit", 
 				"def lastDigit(a, b, c):\n",
 				"	da = a % 10\n"+
 				"	db = b % 10\n"+

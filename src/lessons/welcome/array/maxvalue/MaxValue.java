@@ -2,7 +2,6 @@ package lessons.welcome.array.maxvalue;
 
 import java.util.Random;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -37,7 +36,7 @@ public class MaxValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, tab3) ;
 		myWorld.addTest(INVISIBLE, tab4) ;
 
-		langTemplate(Game.PYTHON, "maxValue", 
+		templatePython("maxValue", 
 				"def maxValue(nums):\n",
 				"  max=nums[0]\n"+
 				"  for i in range(len(nums)):\n"+

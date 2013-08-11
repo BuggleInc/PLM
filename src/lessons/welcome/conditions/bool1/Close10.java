@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -22,7 +21,7 @@ public class Close10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0,20);
 		myWorld.addTest(INVISIBLE, 10,10);
 
-		langTemplate(Game.PYTHON, "close10", 
+		templatePython("close10", 
 				"import math\ndef close10(a, b):\n",
 				"   if math.fabs(10-a) == math.fabs(10-b):\n"+
 				"      return 0\n"+

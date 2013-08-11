@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -22,7 +21,7 @@ public class SortaSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 14, 7) ;
 		myWorld.addTest(INVISIBLE, 14, 6) ;
 
-		langTemplate(Game.PYTHON, "sortaSum", 
+		templatePython("sortaSum", 
 				"def sortaSum(a, b):\n",
 				"	sum = a+b\n"+
 				"	if (sum >= 10 and sum <= 19):\n"+

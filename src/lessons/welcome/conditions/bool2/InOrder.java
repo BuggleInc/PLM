@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -25,7 +24,7 @@ public class InOrder extends BatExercise {
 		myWorld.addTest(INVISIBLE, 7, 5, 6, true) ;
 		myWorld.addTest(INVISIBLE, 7, 5, 4, true) ;
 
-		langTemplate(Game.PYTHON, "inOrder", 
+		templatePython("inOrder", 
 				"def inOrder(a, b, c, bOk):\n",
 				"		return (bOk or (b > a)) and (c > b)\n");
 		setup(myWorld);

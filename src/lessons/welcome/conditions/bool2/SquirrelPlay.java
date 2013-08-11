@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -26,7 +25,7 @@ public class SquirrelPlay extends BatExercise {
 		myWorld.addTest(INVISIBLE, 59, true) ;
 		myWorld.addTest(INVISIBLE, 60, false) ;
 
-		langTemplate(Game.PYTHON, "squirrelPlay", 
+		templatePython("squirrelPlay", 
 				"def squirrelPlay(temp, isSummer):\n",
 				"   return (temp >= 60 and ((isSummer and temp <= 100) or temp <= 90))");
 		setup(myWorld);

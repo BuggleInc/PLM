@@ -2,7 +2,6 @@ package lessons.welcome.array.averagevalue;
 
 import java.util.Random;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -31,7 +30,7 @@ public class AverageValue extends BatExercise {
 		myWorld.addTest(INVISIBLE, new int[] {1, 2}) ;
 		myWorld.addTest(INVISIBLE, new int[] {42}) ;
 
-		langTemplate(Game.PYTHON, "averageValue", 
+		templatePython("averageValue", 
 				"def averageValue(nums):\n",
 				"  total = 0\n"+
 				"  for i in range(len(nums)):\n" +

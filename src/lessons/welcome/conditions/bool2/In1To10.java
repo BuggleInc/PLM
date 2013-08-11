@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -25,7 +24,7 @@ public class In1To10 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 0, true) ;
 		myWorld.addTest(INVISIBLE, -1, false) ;
 
-		langTemplate(Game.PYTHON, "in1To10", 
+		templatePython("in1To10", 
 				"def in1To10(n, outsideMode):\n",
 				"   return (outsideMode and (n <= 1 or n >= 10)) or ((not outsideMode) and (n >= 1 and n <= 10))\n");
 		setup(myWorld);

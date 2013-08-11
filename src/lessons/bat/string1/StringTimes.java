@@ -1,5 +1,4 @@
 package lessons.bat.string1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -20,7 +19,7 @@ public class StringTimes extends BatExercise {
 		myWorld.addTest(INVISIBLE, "code", 2) ;
 		myWorld.addTest(INVISIBLE, "code", 3) ;
 
-		langTemplate(Game.PYTHON, "stringTimes", 
+		templatePython("stringTimes", 
 				"def stringTimes(str, n):\n",
 				"  res = \"\"\n"+
 				"  for i in range(n):\n"+

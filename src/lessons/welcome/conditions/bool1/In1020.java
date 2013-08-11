@@ -1,6 +1,5 @@
 package lessons.welcome.conditions.bool1;
 
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -23,7 +22,7 @@ public class In1020 extends BatExercise {
 		myWorld.addTest(INVISIBLE, 10,42);
 		myWorld.addTest(INVISIBLE, 12,-2);
 
-		langTemplate(Game.PYTHON, "in1020", 
+		templatePython("in1020", 
 				"def in1020(a, b):\n",
 				"   return (a>9 and a<21) or (b>9 and b<21)");
 		setup(myWorld);

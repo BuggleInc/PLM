@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -29,7 +28,7 @@ public class TeenSum extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 16) ;
 		myWorld.addTest(INVISIBLE, 6, 7) ;
 
-		langTemplate(Game.PYTHON, "teenSum", 
+		templatePython("teenSum", 
 				"def teenSum(a, b):\n",
 				"	if ((a >= 13 and a <= 19) or (b >= 13 and b <= 19)):\n"+
 				"		return 19\n"+

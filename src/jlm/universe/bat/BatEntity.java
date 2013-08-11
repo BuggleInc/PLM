@@ -57,7 +57,7 @@ public class BatEntity extends Entity {
 	@Override 
 	public void runIt(ExecutionProgress progress) {
 		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (pl.equals(Game.JAVA)) {
+		if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA)) {
 			for (BatTest t:((BatWorld) world).getTests())
 				try {
 					run(t);

@@ -1,7 +1,6 @@
 /* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */
 
 package lessons.welcome.conditions.bool2;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -25,7 +24,7 @@ public class DateFashion extends BatExercise {
 		myWorld.addTest(INVISIBLE, 2, 7) ;
 		myWorld.addTest(INVISIBLE, 6, 2) ;
 
-		langTemplate(Game.PYTHON, "dateFashion", 
+		templatePython("dateFashion", 
 				"def dateFashion(you, date):\n",
 				"	if (you <= 2 or date <= 2):\n"+
 				"		return 0\n"+

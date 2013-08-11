@@ -7,7 +7,6 @@ import javax.swing.JScrollPane;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
-import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Exercise.StudentOrCorrection;
 import jlm.core.ui.JavaEditorPanel;
 

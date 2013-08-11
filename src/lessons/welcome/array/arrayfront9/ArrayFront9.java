@@ -1,5 +1,4 @@
 package lessons.welcome.array.arrayfront9;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -23,7 +22,7 @@ public class ArrayFront9 extends BatExercise {
 		myWorld.addTest(INVISIBLE, (Object)new int[] {}) ;
 		myWorld.addTest(INVISIBLE, (Object)new int[] {3, 9, 2, 3, 3}) ;
 
-		langTemplate(Game.PYTHON, "arrayFront9", 
+		templatePython("arrayFront9", 
 				"def arrayFront9(nums):\n",
 				"  for i in range( min( len(nums), 4) ):\n" +
 				"    if nums[i] == 9:\n" +

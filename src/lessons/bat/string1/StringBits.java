@@ -1,5 +1,4 @@
 package lessons.bat.string1;
-import jlm.core.model.Game;
 import jlm.core.model.lesson.Lesson;
 import jlm.universe.bat.BatExercise;
 import jlm.universe.bat.BatTest;
@@ -16,7 +15,7 @@ public class StringBits extends BatExercise {
 		myWorld.addTest(INVISIBLE, "") ;
 		myWorld.addTest(INVISIBLE, "Greetings") ;
 
-		langTemplate(Game.PYTHON, "stringBits", 
+		templatePython("stringBits", 
 				"def stringBits(str):\n",
 				"  res = ''\n" +
 				"  for i in range(0,len(str),2):\n" +
