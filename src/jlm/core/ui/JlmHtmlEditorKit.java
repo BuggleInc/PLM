@@ -178,7 +178,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	}
 	public static String getCSS() {
 		String header = "  <style type=\"text/css\">\n"+
-		        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:10px; margin:10px; }\n"+
+		        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:"+Game.getProperty(Game.PROP_FONT_SIZE, "10px", true)+"; margin:10px; }\n"+
 		        "    code { background:#EEEEEE; }\n"+
 		        "    pre { background: #EEEEEE;\n"+
 		        "          margin: 5px;\n"+

@@ -107,6 +107,8 @@ public class Game implements IWorldView {
 	
 	public static final String PROP_PROGRAMING_LANGUAGE = "jlm.programingLanguage";
 
+	public static final String PROP_FONT_SIZE = "jlm.display.fontsize"; // the CSS property of the font size
+
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
 	private World answerOfSelectedWorld;
