@@ -102,7 +102,50 @@ public class Main extends Lesson {
 		addExercise(new InstructionsDrawG(this), instructions);
 		
 		Lecture conditions = addExercise(new Conditions(this));
-		
+
+		// First serie of boolean fun
+		Lecture bat = addExercise(new SleepIn(this),conditions);
+		addExercise(new MonkeyTrouble(this),bat);
+		addExercise(new NearHundred(this),bat);
+		addExercise(new SumDouble(this),bat);
+		addExercise(new Diff21(this),bat);
+		addExercise(new ParotTrouble(this),bat);
+		addExercise(new Makes10(this),bat);
+		addExercise(new PosNeg(this),bat);
+		addExercise(new IcyHot(this),bat);
+		addExercise(new In1020(this),bat);
+		addExercise(new HasTeen(this),bat);
+		addExercise(new LoneTeen(this),bat);
+		addExercise(new CountTeen(this),bat);
+		addExercise(new Close10(this),bat);
+		addExercise(new In3050(this),bat);
+		addExercise(new Max1020(this),bat);
+		addExercise(new LastDigit(this),bat);
+
+		// Second serie of boolean fun
+		bat = addExercise(new AlarmClock(this),conditions);
+		addExercise(new AnswerCell(this),bat);
+		addExercise(new BlueTicket(this),bat);
+		addExercise(new CaughtSpeeding(this),bat);
+		addExercise(new CigarParty(this),bat);
+		addExercise(new DateFashion(this),bat);
+		addExercise(new GreenTicket(this),bat);
+		addExercise(new In1To10(this),bat);
+		addExercise(new InOrder(this),bat);
+		addExercise(new InOrderEqual(this),bat);
+		addExercise(new LastDigit2(this),bat);
+		addExercise(new LessBy10(this),bat);
+		addExercise(new MaxMod5(this),bat);
+		addExercise(new NearTen(this),bat);
+		addExercise(new RedTicket(this),bat);
+		addExercise(new ShareDigit(this),bat);
+		addExercise(new SortaSum(this),bat);
+		addExercise(new SquirrelPlay(this),bat);
+		addExercise(new TeaParty(this),bat);
+		addExercise(new TeenSum(this),bat);
+		addExercise(new TwoAsOne(this),bat);
+		addExercise(new WithoutDoubles(this),bat);
+
 		Lecture loopWhile = addExercise(new LoopWhile(this));
 		addExercise(new BaggleSeeker(this), loopWhile);
 		addExercise(new BDR(this),loopWhile);
@@ -159,47 +202,5 @@ public class Main extends Lesson {
 		addExercise(new TraversalZigZag(this),snake);
 		addExercise(new TraversalDiagonal(this),snake);
 		
-		// First serie of boolean fun
-		Lecture bat = addExercise(new SleepIn(this),conditions);
-		addExercise(new MonkeyTrouble(this),bat);
-		addExercise(new NearHundred(this),bat);
-		addExercise(new SumDouble(this),bat);
-		addExercise(new Diff21(this),bat);
-		addExercise(new ParotTrouble(this),bat);
-		addExercise(new Makes10(this),bat);
-		addExercise(new PosNeg(this),bat);
-		addExercise(new IcyHot(this),bat);
-		addExercise(new In1020(this),bat);
-		addExercise(new HasTeen(this),bat);
-		addExercise(new LoneTeen(this),bat);
-		addExercise(new CountTeen(this),bat);
-		addExercise(new Close10(this),bat);
-		addExercise(new In3050(this),bat);
-		addExercise(new Max1020(this),bat);
-		addExercise(new LastDigit(this),bat);
-
-		// Second serie of boolean fun
-		bat = addExercise(new AlarmClock(this),conditions);
-		addExercise(new AnswerCell(this),bat);
-		addExercise(new BlueTicket(this),bat);
-		addExercise(new CaughtSpeeding(this),bat);
-		addExercise(new CigarParty(this),bat);
-		addExercise(new DateFashion(this),bat);
-		addExercise(new GreenTicket(this),bat);
-		addExercise(new In1To10(this),bat);
-		addExercise(new InOrder(this),bat);
-		addExercise(new InOrderEqual(this),bat);
-		addExercise(new LastDigit2(this),bat);
-		addExercise(new LessBy10(this),bat);
-		addExercise(new MaxMod5(this),bat);
-		addExercise(new NearTen(this),bat);
-		addExercise(new RedTicket(this),bat);
-		addExercise(new ShareDigit(this),bat);
-		addExercise(new SortaSum(this),bat);
-		addExercise(new SquirrelPlay(this),bat);
-		addExercise(new TeaParty(this),bat);
-		addExercise(new TeenSum(this),bat);
-		addExercise(new TwoAsOne(this),bat);
-		addExercise(new WithoutDoubles(this),bat);
 	}
 }
