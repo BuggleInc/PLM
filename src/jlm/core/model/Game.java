@@ -225,7 +225,7 @@ public class Game implements IWorldView {
 			}
 		}
 		// Prevent an error message telling us that the JLM couldn't load our code for the chooser -- kinda obvious
-		if ( !lessonName.equals(lessonChooser))
+		if ( !lessonName.equals(lessonChooser) && sessionKit != null)
 			sessionKit.loadLesson(SAVE_DIR, lesson);
 		try {
 			waitInitThreads();
@@ -519,6 +519,8 @@ public class Game implements IWorldView {
 	}
 
 	public void clearSession() {
+		if (sessionKit == null)
+			return;
 		this.sessionKit.cleanAll(SAVE_DIR);
 		for (Lesson l : this.lessons.values())
 			for (Lecture lect : l.exercises())
@@ -530,12 +532,16 @@ public class Game implements IWorldView {
 	}
 
 	public void loadSession() {
+		if (sessionKit == null)
+			return;
 		this.setState(GameState.LOADING);
 		this.sessionKit.loadAll(SAVE_DIR);
 		this.setState(GameState.LOADING_DONE);
 	}
 
 	public void saveSession() throws UserAbortException {
+		if (sessionKit == null)
+			return;
 		this.setState(GameState.SAVING);
 		this.sessionKit.storeAll(SAVE_DIR);
 		this.setState(GameState.SAVING_DONE);
@@ -544,7 +550,11 @@ public class Game implements IWorldView {
 	public ISessionKit getSessionKit() {
 		return this.sessionKit;
 	}
-
+	public void removeSessionKit() {
+		sessionKit = null;
+		System.out.println("Disabling the session kit on disk.");
+	}
+	
 	public static void loadProperties() {
 		InputStream is = null;
 		try {

@@ -72,6 +72,7 @@ public class ExoTest {
 		}
 		System.out.println("There is currently "+result.size()+" exercises in our database. Yes sir.");
 		g.switchDebug();
+		g.removeSessionKit();
 		
 		g.setLocale(new Locale("en"));
 		return result;
