@@ -1,28 +1,21 @@
 package lessons.welcome.loopwhile;
 
-import jlm.core.model.Game;
 import jlm.universe.bugglequest.SimpleBuggle;
+import jlm.core.model.Game
 
-public class BaggleSeekerEntity extends SimpleBuggle {
-	@Override
-	public void forward(int i)  { 
+class ScalaLoopWhileEntity extends SimpleBuggle {
+	override def forward(i: Int)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument"));
 	}
 
-	@Override
-	public void backward(int i) {
+	override def backward(i: Int) {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument"));
 	}
 
-
-	@Override
-	public void run() { 
-		/* BEGIN TEMPLATE */
+	override def run() { 
 		/* BEGIN SOLUTION */
-		while (!isOverBaggle()) {
+		while (!isFacingWall())
 			forward();
-		}
 		/* END SOLUTION */
-		/* END TEMPLATE */
 	}
 }

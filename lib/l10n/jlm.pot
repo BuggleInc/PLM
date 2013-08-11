@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-11 17:25+0300\n"
+"POT-Creation-Date: 2013-08-11 18:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1916,7 +1916,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopwhile/LoopWhile.html:26 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:66 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:72 src/lessons/welcome/loopfor/LoopFor.html:73 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:66 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -2258,6 +2258,135 @@ msgstr ""
 msgid ""
 "When your program works, move forward to the next exercise, that is hidden "
 "in a sub-tree of the selection window."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:3
+msgid ""
+"In addition to conditionals, another handy construction is the ability to "
+"repeat an action while a specific condition does not appear. A while loop is "
+"used for that, with the following syntax."
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:7
+#, no-wrap
+msgid ""
+"[!java|scala]while (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
+"}[/!][!python]while <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:12
+msgid ""
+"The inner bloc is then executed again and again, as long as the condition "
+"remains true.  More specifically, the buggle tests the value of the "
+"condition. If it's false, it ignores the bloc and continue below.  If it's "
+"true, it executes the bloc.  After that, it tests the condition. If it's now "
+"false (for example because the moves of the block made us facing the wall), "
+"it now ignores the bloc and continue.  If it's still true, it execute the "
+"bloc and reevaluate the condition. It does so as long as the condition "
+"remains true."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:19
+msgid ""
+"Naturally, if the chosen action does not modify the value of the condition, "
+"the buggle will do the action endlessly. The <b>stop</b> button of the "
+"interface becomes then handy. To test this, you can try to type the "
+"following code in the editor:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:24
+#, no-wrap
+msgid ""
+"[!java|scala]while (true) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
+"}[/!][!python]while True:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:29
+msgid ""
+"This will let the buggle turn left as long as "
+"<code>[!java|scala]true[/!][!python]True[/!]</code> remains true (ie, "
+"endlessly), or until you stop it manually using the stop button."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:32
+msgid ""
+"You now have to write some code so that your buggles move forward until they "
+"encounter a wall. The idea is thus to do something like:"
+msgstr ""
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:35
+#, no-wrap
+msgid ""
+"while we are not facing a wall, do:\n"
+"&nbsp;&nbsp;moveForward()"
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:38
+msgid "When your program works, move forward to the next exercise."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
+msgid ""
+"The buggle world can sometimes contain some <i>baggles</i>, which are little "
+"biscuits that buggles can carry from one point to another. For that, they "
+"have to use specific methods such as <code>isOverBaggle(), "
+"isCarryingBaggle(), pickupBaggle()</code> or "
+"<code>dropBaggle()</code>. Check their documentation in \"Help/About this "
+"world\" for more details."
+msgstr ""
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
+msgid ""
+"Let each buggle find its baggle by adapting the code you wrote in previous "
+"exercise (copy/paste what you've done before if you want)."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:1
+msgid "Lost in the Moria"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:3
+msgid ""
+"You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
+"will have to clear your way to the exit. Well of course these are only "
+"baggles and you could simply walk away, but it will be easier to program "
+"your buggle so that it moves those \"rocks\" than convincing your buggle "
+"that it could easily walk away without solving the problem..."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:9
+msgid ""
+"So, you have to find the first baggle blocking the exit (simply walk to the "
+"east until you are over a baggle), take it and move it back to the other "
+"side of the tunnel (walk to the west while you are not over a baggle, and "
+"then move back one step to the east and drop your baggle), and iterate until "
+"you find the exit (that is, the wall to the east side). Afterward, move out "
+"as in the objective world."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:16
+msgid ""
+"Once you manage to escape this trap, you can move forward to the next "
+"exercise."
 msgstr ""
 
 #. type: Content of: <p>
@@ -2806,120 +2935,6 @@ msgid ""
 "Oh crap, running on the grass seems to destroy it too! So just take your 7 "
 "loops around the garden, and move along to the next exercise before anyone "
 "notices the damage you made..."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:3
-msgid ""
-"In addition to conditionals, another handy construction is the ability to "
-"repeat an action while a specific condition does not appear. A while loop is "
-"used for that, with the following syntax."
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:7
-#, no-wrap
-msgid ""
-"[!java|scala]while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
-"}[/!][!python]while <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:12
-msgid ""
-"The inner bloc is then executed again and again, as long as the condition "
-"remains true.  Naturally, if the chosen action does not modify the value of "
-"the condition, the buggle will do the action endlessly. The <b>stop</b> "
-"button of the interface becomes then handy. To test this, you can try to "
-"type the following code in the editor:"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:18
-#, no-wrap
-msgid ""
-"[!java|scala]while (true) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
-"}[/!][!python]while True:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:23
-msgid ""
-"This will let the buggle turn left as long as <code>true</code> remains true "
-"(ie, endlessly), or until you stop it manually using the stop button."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:26
-msgid ""
-"You now have to write some code so that your buggles move forward until they "
-"encounter a wall. The idea is thus to do something like:"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:29
-#, no-wrap
-msgid ""
-"while we are not facing a wall, do:\n"
-"&nbsp;&nbsp;moveForward()"
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:32
-msgid "When your program works, move forward to the next exercise."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
-msgid ""
-"The buggle world can sometimes contain some <i>baggles</i>, which are little "
-"biscuits that buggles can carry from one point to another. For that, they "
-"have to use specific methods such as <code>isOverBaggle(), "
-"isCarryingBaggle(), pickupBaggle()</code> or "
-"<code>dropBaggle()</code>. Check their documentation in \"Help/About this "
-"world\" for more details."
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
-msgid ""
-"Let each buggle find its baggle by adapting the code you wrote in previous "
-"exercise (copy/paste what you've done before to save time)."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:1
-msgid "Lost in the Moria"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:3
-msgid ""
-"You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
-"will have to clear your way to the exit. Well of course these are only "
-"baggles and you could simply walk away, but it will be easier to program "
-"your buggle so that it moves those \"rocks\" than convincing your buggle "
-"that it could easily walk away without solving the problem..."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:9
-msgid ""
-"So, you have to find the first baggle blocking the exit (simply walk to the "
-"east until you are over a baggle), take it and move it back to the other "
-"side of the tunnel (walk to the west while you are not over a baggle, and "
-"then move back one step to the east and drop your baggle), and iterate until "
-"you find the exit (that is, the wall to the east side). Afterward, move out "
-"as in the objective world."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:16
-msgid "Once you manage to escape this trap, move forward to the next exercise."
 msgstr ""
 
 #. type: Content of: <p>

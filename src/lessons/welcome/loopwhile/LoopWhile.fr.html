@@ -1,37 +1,42 @@
 <h2>Boucles tant que <tt>(while)</tt></h2>
 		
 <p>En plus des instructions conditionnelles, une autre construction pratique
-est de pouvoir demander à la buggle de répéter une action tant qu'une
-condition particulière n'est pas arrivée. On utilise pour cela une boucle
-<tt>while</tt>, dont la syntaxe est la suivante :
- <pre class="Java">while (<b>condition</b>) {
-&nbsp;&nbsp;<b>action()</b>;
-}</pre>
- <pre class="Python">while (<b>condition</b>) {
-&nbsp;&nbsp;<b>action()</b>;
-}</pre>
+est de pouvoir répéter une action tant qu'une condition particulière n'est
+pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe
+est la suivante :
+ 
+<pre>[!java|scala]while (<b>condition</b>) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;
+}[/!][!python]while <b>condition</b>:
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]</pre>
+
+<p>Le bloc est alors exécuté encore et encore, tant que la condition est
+vraie. Plus précisément, la buggle teste la valeur de la condition. Si elle
+est fausse, le bloc est ignoré et l'exécution continue avec la suite. Si la
+condition est vraie, le bloc est exécuté. Ensuite, la buggle réévalue la
+condition. Si elle est devenue fausse (par exemple parce que les
+déplacements du bloc nous ont mis face au mur), le bloc est maintenant
+ignoré et on continue avec la suite. Mais si la condition est toujours
+vraie, on exécute une nouvelle fois le bloc avant de réévaluer une fois de
+plus la condition. Cela continue ainsi tant que la condition reste vraie.</p>
 
 <p>Evidement, si l'action en question ne modifie pas la valeur de la condition,
 la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le
 bouton <b>stop</b> de l'interface devient utile. Pour tester cela, vous
-pouvez essayer de taper le code suivant dans l'éditeur :
+pouvez essayer de taper le code suivant dans l'éditeur :</p>
 
- <pre class="Java">while (true) {
-&nbsp;&nbsp;left();
-}</pre>
- <pre class="Python">while (true) {
-&nbsp;&nbsp;left();
-}</pre>
+<pre>[!java|scala]while (true) {
+&nbsp;&nbsp;&nbsp;&nbsp;gauche();
+}[/!][!python]while True:
+&nbsp;&nbsp;&nbsp;&nbsp;gauche()[/!]</pre>
 
-La buggle va tourner vers la gauche tant que <code>true</code> est vrai
-(sans fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton
-stop.</p>
+<p>La buggle va tourner vers la gauche tant que
+<code>[!java|scala]true[/!][!python]True[/!]</code> est vrai (sans fin donc)
+jusqu'à ce que vous l'arrêtiez manuellement avec le bouton stop.</p>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> Il vous faut maintenant écrire le code nécessaire pour
-que vos buggles avancent jusqu'à rencontrer un mur. L'idée est donc de faire
-:
+<h3>Objectif de cet exercice</h3>Il vous faut maintenant écrire le code nécessaire pour que vos buggles
+avancent jusqu'à rencontrer un mur. L'idée est donc de faire :
 <pre>tant que l'on est pas face à un mur, faire :
 &nbsp;&nbsp;avancer();</pre>
 
 <p>Quand votre programme fonctionne, passez à l'exercice suivant.</p>
-

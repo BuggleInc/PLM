@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-11 17:25+0300\n"
-"PO-Revision-Date: 2013-08-10 23:06+0200\n"
+"POT-Creation-Date: 2013-08-11 18:04+0300\n"
+"PO-Revision-Date: 2013-08-11 18:07+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2427,10 +2427,10 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:64
 #: src/lessons/welcome/conditions/Conditions.html:108
+#: src/lessons/welcome/loopwhile/LoopWhile.html:32
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
 #: src/lessons/welcome/variables/Variables.html:72
 #: src/lessons/welcome/loopfor/LoopFor.html:73
-#: src/lessons/welcome/loopwhile/LoopWhile.html:26
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
 #: src/lessons/welcome/methods/basics/Methods.html:66
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:49
@@ -2945,6 +2945,166 @@ msgid ""
 msgstr ""
 "Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché "
 "par défaut dans un sous-arbre de la fenêtre de sélection)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:3
+msgid ""
+"In addition to conditionals, another handy construction is the ability to "
+"repeat an action while a specific condition does not appear. A while loop is "
+"used for that, with the following syntax."
+msgstr ""
+"En plus des instructions conditionnelles, une autre construction pratique "
+"est de pouvoir répéter une action tant qu'une condition particulière n'est "
+"pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe "
+"est la suivante :"
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:7
+#, no-wrap
+msgid ""
+"[!java|scala]while (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
+"}[/!][!python]while <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
+msgstr ""
+"[!java|scala]while (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
+"}[/!][!python]while <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:12
+msgid ""
+"The inner bloc is then executed again and again, as long as the condition "
+"remains true.  More specifically, the buggle tests the value of the "
+"condition. If it's false, it ignores the bloc and continue below.  If it's "
+"true, it executes the bloc.  After that, it tests the condition. If it's now "
+"false (for example because the moves of the block made us facing the wall), "
+"it now ignores the bloc and continue.  If it's still true, it execute the "
+"bloc and reevaluate the condition. It does so as long as the condition "
+"remains true."
+msgstr ""
+"Le bloc est alors exécuté encore et encore, tant que la condition est vraie. "
+"Plus précisément, la buggle teste la valeur de la condition. Si elle est "
+"fausse, le bloc est ignoré et l'exécution continue avec la suite. Si la "
+"condition est vraie, le bloc est exécuté. Ensuite, la buggle réévalue la "
+"condition. Si elle est devenue fausse (par exemple parce que les "
+"déplacements du bloc nous ont mis face au mur), le bloc est maintenant "
+"ignoré et on continue avec la suite. Mais si la condition est toujours "
+"vraie, on exécute une nouvelle fois le bloc avant de réévaluer une fois de "
+"plus la condition. Cela continue ainsi tant que la condition reste vraie."
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:19
+msgid ""
+"Naturally, if the chosen action does not modify the value of the condition, "
+"the buggle will do the action endlessly. The <b>stop</b> button of the "
+"interface becomes then handy. To test this, you can try to type the "
+"following code in the editor:"
+msgstr ""
+"Evidement, si l'action en question ne modifie pas la valeur de la condition, "
+"la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le "
+"bouton <b>stop</b> de l'interface devient utile. Pour tester cela, vous "
+"pouvez essayer de taper le code suivant dans l'éditeur :"
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:24
+#, no-wrap
+msgid ""
+"[!java|scala]while (true) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
+"}[/!][!python]while True:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
+msgstr ""
+"[!java|scala]while (true) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;gauche();\n"
+"}[/!][!python]while True:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;gauche()[/!]"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:29
+msgid ""
+"This will let the buggle turn left as long as <code>[!java|scala]true[/!][!"
+"python]True[/!]</code> remains true (ie, endlessly), or until you stop it "
+"manually using the stop button."
+msgstr ""
+"La buggle va tourner vers la gauche tant que <code>[!java|scala]true[/!][!"
+"python]True[/!]</code> est vrai (sans fin donc) jusqu'à ce que vous "
+"l'arrêtiez manuellement avec le bouton stop."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:32
+msgid ""
+"You now have to write some code so that your buggles move forward until they "
+"encounter a wall. The idea is thus to do something like:"
+msgstr ""
+"Il vous faut maintenant écrire le code nécessaire pour que vos buggles "
+"avancent jusqu'à rencontrer un mur. L'idée est donc de faire :"
+
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:35
+#, no-wrap
+msgid ""
+"while we are not facing a wall, do:\n"
+"&nbsp;&nbsp;moveForward()"
+msgstr ""
+"tant que l'on est pas face à un mur, faire :\n"
+"&nbsp;&nbsp;avancer();"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:38
+msgid "When your program works, move forward to the next exercise."
+msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
+msgid ""
+"The buggle world can sometimes contain some <i>baggles</i>, which are little "
+"biscuits that buggles can carry from one point to another. For that, they "
+"have to use specific methods such as <code>isOverBaggle(), "
+"isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
+"Check their documentation in \"Help/About this world\" for more details."
+msgstr "Le monde des buggles contient parfois des petits biscuits ronds que les buggles peuvent déplacer d'un endroit à un autre. Pour cela, elles peuvent utiliser des fonctions spécifiques : <code>estSurBiscuit(), porteBiscuit(), prendBiscuit()<code> et <code>poseBiscuit()</code>. Tous les détails se trouvent dans la documentation accessible depuis «Aide/À propos de ce monde»."
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
+msgid ""
+"Let each buggle find its baggle by adapting the code you wrote in previous "
+"exercise (copy/paste what you've done before if you want)."
+msgstr "Faites en sorte que chaque buggle trouve son baggle en adaptant le code que vous aviez écrit pour l'exercice précédent (vous êtes libre de faire un copie/colle de ce que vous aviez fait si vous le souhaitez)."
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:1
+msgid "Lost in the Moria"
+msgstr "Perdu dans la Moria"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:3
+msgid ""
+"You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
+"will have to clear your way to the exit. Well of course these are only "
+"baggles and you could simply walk away, but it will be easier to program "
+"your buggle so that it moves those \"rocks\" than convincing your buggle "
+"that it could easily walk away without solving the problem..."
+msgstr "Votre buggle est coincée dans une mine ! Des rochers bloquent la sortie, et il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont pas vraiment des rochers mais juste des biscuits, et votre buggle pourrait facilement passer au dessus sans se fatiguer. Mais il est probablement plus simple de programmer votre buggle pour qu'elle déplace ces «rochers» plutôt que de tenter de la convaincre de passer à la suite sans avoir résolu le problème..."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:9
+msgid ""
+"So, you have to find the first baggle blocking the exit (simply walk to the "
+"east until you are over a baggle), take it and move it back to the other "
+"side of the tunnel (walk to the west while you are not over a baggle, and "
+"then move back one step to the east and drop your baggle), and iterate until "
+"you find the exit (that is, the wall to the east side). Afterward, move out "
+"as in the objective world."
+msgstr "Donc, il vous faut trouver le premier biscuit en travers de votre chemin (marchez vers l'est jusqu'à vous trouver au dessus d'un biscuit), le ramasser, et retourner à l'autre extrémité du couloir pour le déposer (marchez vers l'ouest jusqu'à vous trouver au dessus d'un biscuit puis reculez d'un pas). Il faut ensuite faire de même pour tous les biscuits jusqu'à trouver la sortie. Une fois ceci fait, marchez vers l'air frais comme dans le monde objectif."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopwhile/WhileMoria.html:16
+msgid ""
+"Once you manage to escape this trap, you can move forward to the next "
+"exercise."
+msgstr "Quand vous serez parvenu à sortir de ce piège, vous pouvez passez à l'exercice suivant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:2
@@ -3673,190 +3833,6 @@ msgstr ""
 "Raaah, mince. Courir sur l'herbe semble l'endommager également ! Bon, tant "
 "pis. Faites vos 7 tours, et passez vite à l'exercice suivant avant que "
 "quelqu'un ne constate les dégâts que vous avez fait..."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:3
-#, fuzzy
-#| msgid ""
-#| "In addition to conditionals, another handy construction is the ability to "
-#| "repeat an action while a specific condition does not appear. A while loop "
-#| "is used for that, with the following syntax:"
-msgid ""
-"In addition to conditionals, another handy construction is the ability to "
-"repeat an action while a specific condition does not appear. A while loop is "
-"used for that, with the following syntax."
-msgstr ""
-"En plus des instructions conditionnelles, une autre construction pratique "
-"est de pouvoir demander à la buggle de répéter une action tant qu'une "
-"condition particulière n'est pas arrivée. On utilise pour cela une boucle "
-"<tt>while</tt>, dont la syntaxe est la suivante :"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:7
-#, fuzzy, no-wrap
-#| msgid ""
-#| "<b>initializing</b>;\n"
-#| "while (<b>condition</b>) {\n"
-#| "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-#| "&nbsp;&nbsp;&nbsp;<b>incrementing</b>;\n"
-#| "}"
-msgid ""
-"[!java|scala]while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
-"}[/!][!python]while <b>condition</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
-msgstr ""
-"<b>initialisation</b>;\n"
-"while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"&nbsp;&nbsp;&nbsp;<b>incrémentation</b>;\n"
-"}"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:12
-#, fuzzy
-#| msgid ""
-#| "Naturally, if the chosen action does not modify the value of the "
-#| "condition, the buggle will do the action endlessly. The <b>stop</b> "
-#| "button of the interface becomes then handy. To test this, you can try to "
-#| "type the following code in the editor:"
-msgid ""
-"The inner bloc is then executed again and again, as long as the condition "
-"remains true.  Naturally, if the chosen action does not modify the value of "
-"the condition, the buggle will do the action endlessly. The <b>stop</b> "
-"button of the interface becomes then handy. To test this, you can try to "
-"type the following code in the editor:"
-msgstr ""
-"Evidement, si l'action en question ne modifie pas la valeur de la condition, "
-"la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le "
-"bouton <b>stop</b> de l'interface devient utile. Pour tester cela, vous "
-"pouvez essayer de taper le code suivant dans l'éditeur :"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:18
-#, no-wrap
-msgid ""
-"[!java|scala]while (true) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
-"}[/!][!python]while True:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:23
-#, fuzzy
-#| msgid ""
-#| "The buggle will turn left while true is true (ie, endlessly), or until "
-#| "you stop it manually using the stop button."
-msgid ""
-"This will let the buggle turn left as long as <code>true</code> remains true "
-"(ie, endlessly), or until you stop it manually using the stop button."
-msgstr ""
-"La buggle va tourner vers la gauche tant que <code>true</code> est vrai "
-"(sans fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton "
-"stop."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:26
-#, fuzzy
-#| msgid ""
-#| "<a name=\"Objective\">You now have to write some code so that your "
-#| "buggles move forward until they encounter a wall. The idea is thus to do "
-#| "something like:"
-msgid ""
-"You now have to write some code so that your buggles move forward until they "
-"encounter a wall. The idea is thus to do something like:"
-msgstr ""
-"<a name=\"Objectifs\"> Il vous faut maintenant écrire le code nécessaire "
-"pour que vos buggles avancent jusqu'à rencontrer un mur. L'idée est donc de "
-"faire :"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:29
-#, no-wrap
-msgid ""
-"while we are not facing a wall, do:\n"
-"&nbsp;&nbsp;moveForward()"
-msgstr ""
-"tant que l'on est pas face à un mur, faire :\n"
-"&nbsp;&nbsp;avancer();"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:32
-msgid "When your program works, move forward to the next exercise."
-msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
-msgid ""
-"The buggle world can sometimes contain some <i>baggles</i>, which are little "
-"biscuits that buggles can carry from one point to another. For that, they "
-"have to use specific methods such as <code>isOverBaggle(), "
-"isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
-"Check their documentation in \"Help/About this world\" for more details."
-msgstr ""
-"Le monde des buggles contient parfois des <i>baggles</i>, sorte de petits "
-"biscuits que les buggles peuvent déplacer d'un endroit à un autre. Pour "
-"cela, elles peuvent utiliser des fonctions spécifiques : "
-"<code>isOverBaggle(), isCarryingBaggle(), pickupBaggle()</code> et "
-"<code>dropBaggle()</code>. Tous les détails se trouvent dans la "
-"documentation accessible depuis «Aide/À propos de ce monde»."
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
-msgid ""
-"Let each buggle find its baggle by adapting the code you wrote in previous "
-"exercise (copy/paste what you've done before to save time)."
-msgstr ""
-"Faites en sorte que chaque buggle trouve son baggle en adaptant le code que "
-"vous aviez écrit pour l'exercice précédent (faites un copie/colle de ce que "
-"vous aviez fait pour gagner du temps)."
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:1
-msgid "Lost in the Moria"
-msgstr "Perdu dans la Moria"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:3
-msgid ""
-"You buggle got stuck in a mine! Some rocks are blocking the exit, and you "
-"will have to clear your way to the exit. Well of course these are only "
-"baggles and you could simply walk away, but it will be easier to program "
-"your buggle so that it moves those \"rocks\" than convincing your buggle "
-"that it could easily walk away without solving the problem..."
-msgstr ""
-"Votre buggle est coincée dans une mine ! Des rochers bloquent la sortie, et "
-"il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont pas "
-"vraiment des rochers mais juste des baggles, et votre buggle pourrait "
-"facilement passer au dessus sans se fatiguer. Mais il est probablement plus "
-"simple de programmer votre buggle pour qu'elle déplace ces «rochers» plutôt "
-"que de tenter de la convaincre de passer à la suite sans avoir résolu le "
-"problème..."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:9
-msgid ""
-"So, you have to find the first baggle blocking the exit (simply walk to the "
-"east until you are over a baggle), take it and move it back to the other "
-"side of the tunnel (walk to the west while you are not over a baggle, and "
-"then move back one step to the east and drop your baggle), and iterate until "
-"you find the exit (that is, the wall to the east side). Afterward, move out "
-"as in the objective world."
-msgstr ""
-"Donc, il vous faut trouver le premier baggle en travers de votre chemin "
-"(marchez vers l'est jusqu'à vous trouver au dessus d'un baggle), le "
-"ramasser, et retourner à l'autre extrémité du couloir pour le déposer "
-"(marchez vers l'ouest jusqu'à vous trouver au dessus d'un baggle puis "
-"reculez d'un pas). Il faut ensuite faire de même pour tous les baggles "
-"jusqu'à trouver la sortie. Une fois ceci fait, marchez vers l'air frais "
-"comme dans le monde objectif."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopwhile/WhileMoria.html:16
-msgid "Once you manage to escape this trap, move forward to the next exercise."
-msgstr ""
-"Quand vous serez parvenu à sortir de ce piège, passez à l'exercice suivant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:3
@@ -14147,40 +14123,6 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
-
-#~ msgid ""
-#~ "while (<b>condition</b>) {\n"
-#~ "&nbsp;&nbsp;<b>action()</b>;\n"
-#~ "}"
-#~ msgstr ""
-#~ "while (<b>condition</b>) {\n"
-#~ "&nbsp;&nbsp;<b>action()</b>;\n"
-#~ "}"
-
-#~ msgid ""
-#~ "while <b>condition</b>:\n"
-#~ "&nbsp;&nbsp;<b>action()</b>"
-#~ msgstr ""
-#~ "while (<b>condition</b>) {\n"
-#~ "&nbsp;&nbsp;<b>action()</b>;\n"
-#~ "}"
-
-#~ msgid ""
-#~ "while (true) {\n"
-#~ "&nbsp;&nbsp;left();\n"
-#~ "}"
-#~ msgstr ""
-#~ "while (true) {\n"
-#~ "&nbsp;&nbsp;left();\n"
-#~ "}"
-
-#~ msgid ""
-#~ "while True:\n"
-#~ "&nbsp;&nbsp;left()"
-#~ msgstr ""
-#~ "while (true) {\n"
-#~ "&nbsp;&nbsp;left();\n"
-#~ "}"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"
