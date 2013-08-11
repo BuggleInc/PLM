@@ -125,8 +125,11 @@ public class ExoTest {
 			// compileAll already setup the error message; we just needed to not run the entity in that case
 		}
 		
-		if (exo.lastResult.compilationError != null)
-			fail(exo.getClass().getSimpleName()+": compilation error: "+exo.lastResult.compilationError);
+		if (exo.lastResult.compilationError != null) 
+				fail(exo.getClass().getSimpleName()+": compilation error: "+exo.lastResult.compilationError+". Compiled file:\n"+
+						((exo.getSourceFileCount(lang)>0) ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION))
+							                              : "none"));
+		
 		
 		if (exo.lastResult.totalTests == 0 
 				|| exo.lastResult.totalTests != exo.lastResult.passedTests 
