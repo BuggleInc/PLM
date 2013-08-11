@@ -270,8 +270,37 @@ public abstract class ExerciseTemplated extends Exercise {
 		    System.out.println("<<<<<<<<Skel: "+skelContent);
 		}*/
 
-		newSource(lang, name, initialContent,
-						skelContent.length()>0?skelContent:template,offset,correction.toString());
+		if (skelContent.length()>0) {
+			if (! (this instanceof ExerciseTemplatingEntity)) 
+				throw new RuntimeException(getName()+": You provided an exercise skeleton, but this is not an ExerciseTemplatingEntity. Are you trying to drive me nuts??");
+			
+			/* 
+			 * HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK
+			 *  
+			 * A skeleton was provided! this means that we are in a ExerciseTemplating, for sure. 
+			 * Use the skeleton as a template and correction; ExerciseTemplatingEntity::setup() will do the right thing.
+			 * 
+			 * FIXME: this is a particularly awful design, and I'm ashamed to commit this.
+			 *  
+			 * We should split this function in two parts, one (in charge of the parsing) would remain the same 
+			 * in ExerciseTemplated and ExerciseTemplatingEntity while the other (in charge of using the result of this parsing)
+			 * would be overridden in ExerciseTemplatingEntity.
+			 * 
+			 * As it is now (abusing some fields of the sourceFile structure to pass some values to ExerciseTemplatingEntity::setup), 
+			 * this's half-way between the uber-crude HACK and a plain old troll to object-orientation defenders... 
+			 * 
+			 * Polux would be proud of me. Or maybe not ;)
+			 * 
+			 * HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK 
+			 * 
+			 * See the comment at the beginning of  ExerciseTemplatingEntities for the motivation of this mess 
+			 * (TL;DR: entities in ExerciseTemplatingEntities are Frankenstein monsters built manually from scratch) 
+			 */
+			newSource(lang, name, initialContent, skelContent,offset,
+					/* correction: */ templateHead.toString()+solution.toString()+templateTail.toString());
+		} else {
+			newSource(lang, name, initialContent, template,offset,correction.toString());
+		}
 	}
 
 	protected final void setup(World w) {
