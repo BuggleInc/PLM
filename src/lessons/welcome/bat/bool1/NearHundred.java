@@ -1,0 +1,47 @@
+package lessons.welcome.bat.bool1;
+
+import jlm.core.model.lesson.Lesson;
+import jlm.universe.bat.BatExercise;
+import jlm.universe.bat.BatTest;
+import jlm.universe.bat.BatWorld;
+
+public class NearHundred extends BatExercise {
+
+	public NearHundred(Lesson lesson) {
+		super(lesson);
+
+		BatWorld myWorld = new BatWorld("nearHundred");
+		myWorld.addTest(VISIBLE, 93);
+		myWorld.addTest(VISIBLE, 90);
+		myWorld.addTest(VISIBLE, 89);
+
+		myWorld.addTest(INVISIBLE, 110);
+		myWorld.addTest(INVISIBLE, 191);
+		myWorld.addTest(INVISIBLE, 189);
+		myWorld.addTest(INVISIBLE, 200);
+		myWorld.addTest(INVISIBLE, 210);
+		myWorld.addTest(INVISIBLE, 211);
+		myWorld.addTest(INVISIBLE, -100);
+
+		templatePython("nearHundred", 
+				"def nearHundred(n):\n",
+				"   return (90<=n and n<=110) or (190<=n and n<=210)\n");
+		setup(myWorld);
+	}
+
+
+	public void run(BatTest t) {
+		/* BEGIN SKEL */
+		t.setResult( nearHundred((Integer)t.getParameter(0)) );		
+		/* END SKEL */
+	}
+
+	/* BEGIN TEMPLATE */
+	boolean nearHundred(int n) {
+
+		/* BEGIN SOLUTION */
+		return (90<=n && n<=110)||(190<=n&&n<=210);
+		/* END SOLUTION */
+	}
+	/* END TEMPLATE */
+}

@@ -12,8 +12,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.BevelBorder;
 
-
-
 import jlm.core.model.Game;
 import jlm.core.model.session.ISourceFileListener;
 import jlm.core.ui.IEditorPanel;

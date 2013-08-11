@@ -1,7 +1,12 @@
 package jlm.core.model.tracking;
 
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+
 import jlm.core.model.Game;
 import jlm.core.model.lesson.Exercise;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -9,10 +14,6 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
-
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 
 public class IdenticaSpy implements ProgressSpyListener {
     private String username;

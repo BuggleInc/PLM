@@ -6,8 +6,8 @@ import jlm.core.ProgLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.model.lesson.Exercise;
-import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Exercise.WorldKind;
+import jlm.core.model.lesson.Lecture;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;

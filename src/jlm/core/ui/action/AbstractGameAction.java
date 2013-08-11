@@ -5,10 +5,10 @@ import java.util.Locale;
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 
+import jlm.core.model.Game;
+
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
-
-import jlm.core.model.Game;
 
 
 public abstract class AbstractGameAction extends AbstractAction {

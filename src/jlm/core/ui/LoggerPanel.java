@@ -1,5 +1,6 @@
 package jlm.core.ui;
 
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,11 +9,9 @@ import javax.tools.Diagnostic;
 import javax.tools.DiagnosticCollector;
 import javax.tools.JavaFileObject;
 
+import jlm.core.HumanLangChangesListener;
 import jlm.core.model.Game;
 import jlm.core.model.LogWriter;
-
-import java.util.Locale;
-import jlm.core.HumanLangChangesListener;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;

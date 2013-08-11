@@ -1,10 +1,16 @@
 package jlm.core.ui;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import jlm.core.model.ServerExerciseData;
 import jlm.core.model.ServerUserData;
-
-import javax.swing.*;
-import java.awt.*;
 
 /**
  * Dialog to display detailed data about a student in a course

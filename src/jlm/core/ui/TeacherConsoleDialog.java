@@ -1,15 +1,24 @@
 package jlm.core.ui;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JToolBar;
+
 import jlm.core.model.Course;
 import jlm.core.model.Game;
 import jlm.core.model.ServerAnswer;
 import jlm.core.ui.action.CreateCourse;
 import jlm.core.ui.action.DeleteCourse;
 import jlm.core.ui.action.RefreshCourse;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyEvent;
 
 /**
  * Dialog to display all options available to the teacher

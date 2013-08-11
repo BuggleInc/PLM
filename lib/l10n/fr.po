@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-10 23:06+0300\n"
+"POT-Creation-Date: 2013-08-11 17:25+0300\n"
 "PO-Revision-Date: 2013-08-10 23:06+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2942,7 +2942,9 @@ msgstr ""
 msgid ""
 "When your program works, move forward to the next exercise, that is hidden "
 "in a sub-tree of the selection window."
-msgstr "Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché par défaut dans un sous-arbre de la fenêtre de sélection)."
+msgstr ""
+"Quand votre programme fonctionne, passez à l'exercice suivant (qui est caché "
+"par défaut dans un sous-arbre de la fenêtre de sélection)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:2
@@ -3674,10 +3676,15 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:3
+#, fuzzy
+#| msgid ""
+#| "In addition to conditionals, another handy construction is the ability to "
+#| "repeat an action while a specific condition does not appear. A while loop "
+#| "is used for that, with the following syntax:"
 msgid ""
 "In addition to conditionals, another handy construction is the ability to "
 "repeat an action while a specific condition does not appear. A while loop is "
-"used for that, with the following syntax:"
+"used for that, with the following syntax."
 msgstr ""
 "En plus des instructions conditionnelles, une autre construction pratique "
 "est de pouvoir demander à la buggle de répéter une action tant qu'une "
@@ -3685,86 +3692,86 @@ msgstr ""
 "<tt>while</tt>, dont la syntaxe est la suivante :"
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:6
-#, no-wrap
+#: src/lessons/welcome/loopwhile/LoopWhile.html:7
+#, fuzzy, no-wrap
+#| msgid ""
+#| "<b>initializing</b>;\n"
+#| "while (<b>condition</b>) {\n"
+#| "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+#| "&nbsp;&nbsp;&nbsp;<b>incrementing</b>;\n"
+#| "}"
 msgid ""
-"while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;<b>action()</b>;\n"
-"}"
+"[!java|scala]while (<b>condition</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;\n"
+"}[/!][!python]while <b>condition</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>[/!]"
 msgstr ""
+"<b>initialisation</b>;\n"
 "while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;<b>action()</b>;\n"
-"}"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:9
-#, no-wrap
-msgid ""
-"while <b>condition</b>:\n"
-"&nbsp;&nbsp;<b>action()</b>"
-msgstr ""
-"while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;<b>action()</b>;\n"
+"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"&nbsp;&nbsp;&nbsp;<b>incrémentation</b>;\n"
 "}"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:12
+#, fuzzy
+#| msgid ""
+#| "Naturally, if the chosen action does not modify the value of the "
+#| "condition, the buggle will do the action endlessly. The <b>stop</b> "
+#| "button of the interface becomes then handy. To test this, you can try to "
+#| "type the following code in the editor:"
 msgid ""
-"Naturally, if the chosen action does not modify the value of the condition, "
-"the buggle will do the action endlessly. The <b>stop</b> button of the "
-"interface becomes then handy. To test this, you can try to type the "
-"following code in the editor:"
+"The inner bloc is then executed again and again, as long as the condition "
+"remains true.  Naturally, if the chosen action does not modify the value of "
+"the condition, the buggle will do the action endlessly. The <b>stop</b> "
+"button of the interface becomes then handy. To test this, you can try to "
+"type the following code in the editor:"
 msgstr ""
 "Evidement, si l'action en question ne modifie pas la valeur de la condition, "
 "la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le "
 "bouton <b>stop</b> de l'interface devient utile. Pour tester cela, vous "
 "pouvez essayer de taper le code suivant dans l'éditeur :"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:17
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopwhile/LoopWhile.html:18
 #, no-wrap
 msgid ""
-"while (true) {\n"
-"&nbsp;&nbsp;left();\n"
-"}"
+"[!java|scala]while (true) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
+"}[/!][!python]while True:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;left()[/!]"
 msgstr ""
-"while (true) {\n"
-"&nbsp;&nbsp;left();\n"
-"}"
-
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopwhile/LoopWhile.html:20
-#, no-wrap
-msgid ""
-"while True:\n"
-"&nbsp;&nbsp;left()"
-msgstr ""
-"while (true) {\n"
-"&nbsp;&nbsp;left();\n"
-"}"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:23
+#, fuzzy
+#| msgid ""
+#| "The buggle will turn left while true is true (ie, endlessly), or until "
+#| "you stop it manually using the stop button."
 msgid ""
-"The buggle will turn left while true is true (ie, endlessly), or until you "
-"stop it manually using the stop button."
+"This will let the buggle turn left as long as <code>true</code> remains true "
+"(ie, endlessly), or until you stop it manually using the stop button."
 msgstr ""
 "La buggle va tourner vers la gauche tant que <code>true</code> est vrai "
 "(sans fin donc) jusqu'à ce que vous l'arrêtiez manuellement avec le bouton "
 "stop."
 
-#. type: Content of: <p><a>
+#. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:26
+#, fuzzy
+#| msgid ""
+#| "<a name=\"Objective\">You now have to write some code so that your "
+#| "buggles move forward until they encounter a wall. The idea is thus to do "
+#| "something like:"
 msgid ""
-"<a name=\"Objective\">You now have to write some code so that your buggles "
-"move forward until they encounter a wall. The idea is thus to do something "
-"like:"
+"You now have to write some code so that your buggles move forward until they "
+"encounter a wall. The idea is thus to do something like:"
 msgstr ""
 "<a name=\"Objectifs\"> Il vous faut maintenant écrire le code nécessaire "
 "pour que vos buggles avancent jusqu'à rencontrer un mur. L'idée est donc de "
 "faire :"
 
-#. type: Content of: <p><a><pre>
+#. type: Content of: <p><pre>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:29
 #, no-wrap
 msgid ""
@@ -3774,7 +3781,7 @@ msgstr ""
 "tant que l'on est pas face à un mur, faire :\n"
 "&nbsp;&nbsp;avancer();"
 
-#. type: Content of: <p><a><p>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/loopwhile/LoopWhile.html:32
 msgid "When your program works, move forward to the next exercise."
 msgstr "Quand votre programme fonctionne, passez à l'exercice suivant."
@@ -10697,12 +10704,12 @@ msgid "This one aint easy."
 msgstr "Celui-ci est loin d'être facile."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/Close10.html:1
+#: src/lessons/welcome/bat/bool1/Close10.html:1
 msgid "Close to 10"
 msgstr "Proche de 10"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool1/Close10.html:2
+#: src/lessons/welcome/bat/bool1/Close10.html:2
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that Math.abs(n) returns the absolute "
@@ -10713,7 +10720,7 @@ msgstr ""
 "absolue d'un nombre."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool1/Close10.html:5
+#: src/lessons/welcome/bat/bool1/Close10.html:5
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
 "return 0 in the event of a tie. Note that math.fabs(n) returns the absolute "
@@ -10726,46 +10733,46 @@ msgstr ""
 "fonction que si vous avez importé le module math."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool1/Close10.html:10
-#: src/lessons/welcome/conditions/bool1/Diff21.html:5
-#: src/lessons/welcome/conditions/bool1/HasTeen.html:6
-#: src/lessons/welcome/conditions/bool1/IcyHot.html:5
-#: src/lessons/welcome/conditions/bool1/In1020.html:5
-#: src/lessons/welcome/conditions/bool1/In3050.html:5
-#: src/lessons/welcome/conditions/bool1/LastDigit.html:9
-#: src/lessons/welcome/conditions/bool1/LoneTeen.html:6
-#: src/lessons/welcome/conditions/bool1/Main.html:11
-#: src/lessons/welcome/conditions/bool1/Makes10.html:5
-#: src/lessons/welcome/conditions/bool1/Max1020.html:8
-#: src/lessons/welcome/conditions/bool1/MonkeyTrouble.html:7
-#: src/lessons/welcome/conditions/bool1/NearHundred.html:5
-#: src/lessons/welcome/conditions/bool1/ParotTrouble.html:8
-#: src/lessons/welcome/conditions/bool1/PosNeg.html:5
-#: src/lessons/welcome/conditions/bool1/SleepIn.html:7
-#: src/lessons/welcome/conditions/bool1/SumDouble.html:5
-#: src/lessons/welcome/conditions/bool2/AlarmClock.html:11
-#: src/lessons/welcome/conditions/bool2/AnswerCell.html:8
-#: src/lessons/welcome/conditions/bool2/BlueTicket.html:10
-#: src/lessons/welcome/conditions/bool2/CaughtSpeeding.html:11
-#: src/lessons/welcome/conditions/bool2/CigarParty.html:9
-#: src/lessons/welcome/conditions/bool2/DateFashion.html:12
-#: src/lessons/welcome/conditions/bool2/GreenTicket.html:9
-#: src/lessons/welcome/conditions/bool2/In1To10.html:8
-#: src/lessons/welcome/conditions/bool2/InOrderEqual.html:9
-#: src/lessons/welcome/conditions/bool2/InOrder.html:8
-#: src/lessons/welcome/conditions/bool2/LastDigit2.html:8
-#: src/lessons/welcome/conditions/bool2/LessBy10.html:5
-#: src/lessons/welcome/conditions/bool2/Main.html:4
-#: src/lessons/welcome/conditions/bool2/MaxMod5.html:9
-#: src/lessons/welcome/conditions/bool2/NearTen.html:8
-#: src/lessons/welcome/conditions/bool2/RedTicket.html:9
-#: src/lessons/welcome/conditions/bool2/ShareDigit.html:9
-#: src/lessons/welcome/conditions/bool2/SortaSum.html:7
-#: src/lessons/welcome/conditions/bool2/SquirrelPlay.html:10
-#: src/lessons/welcome/conditions/bool2/TeaParty.html:11
-#: src/lessons/welcome/conditions/bool2/TeenSum.html:8
-#: src/lessons/welcome/conditions/bool2/TwoAsOne.html:5
-#: src/lessons/welcome/conditions/bool2/WithoutDoubles.html:8
+#: src/lessons/welcome/bat/bool1/Close10.html:10
+#: src/lessons/welcome/bat/bool1/Diff21.html:5
+#: src/lessons/welcome/bat/bool1/HasTeen.html:6
+#: src/lessons/welcome/bat/bool1/IcyHot.html:5
+#: src/lessons/welcome/bat/bool1/In1020.html:5
+#: src/lessons/welcome/bat/bool1/In3050.html:5
+#: src/lessons/welcome/bat/bool1/LastDigit.html:9
+#: src/lessons/welcome/bat/bool1/LoneTeen.html:6
+#: src/lessons/welcome/bat/bool1/Main.html:11
+#: src/lessons/welcome/bat/bool1/Makes10.html:5
+#: src/lessons/welcome/bat/bool1/Max1020.html:8
+#: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:7
+#: src/lessons/welcome/bat/bool1/NearHundred.html:5
+#: src/lessons/welcome/bat/bool1/ParotTrouble.html:8
+#: src/lessons/welcome/bat/bool1/PosNeg.html:5
+#: src/lessons/welcome/bat/bool1/SleepIn.html:7
+#: src/lessons/welcome/bat/bool1/SumDouble.html:5
+#: src/lessons/welcome/bat/bool2/AlarmClock.html:11
+#: src/lessons/welcome/bat/bool2/AnswerCell.html:8
+#: src/lessons/welcome/bat/bool2/BlueTicket.html:10
+#: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:11
+#: src/lessons/welcome/bat/bool2/CigarParty.html:9
+#: src/lessons/welcome/bat/bool2/DateFashion.html:12
+#: src/lessons/welcome/bat/bool2/GreenTicket.html:9
+#: src/lessons/welcome/bat/bool2/In1To10.html:8
+#: src/lessons/welcome/bat/bool2/InOrderEqual.html:9
+#: src/lessons/welcome/bat/bool2/InOrder.html:8
+#: src/lessons/welcome/bat/bool2/LastDigit2.html:8
+#: src/lessons/welcome/bat/bool2/LessBy10.html:5
+#: src/lessons/welcome/bat/bool2/Main.html:4
+#: src/lessons/welcome/bat/bool2/MaxMod5.html:9
+#: src/lessons/welcome/bat/bool2/NearTen.html:8
+#: src/lessons/welcome/bat/bool2/RedTicket.html:9
+#: src/lessons/welcome/bat/bool2/ShareDigit.html:9
+#: src/lessons/welcome/bat/bool2/SortaSum.html:7
+#: src/lessons/welcome/bat/bool2/SquirrelPlay.html:10
+#: src/lessons/welcome/bat/bool2/TeaParty.html:11
+#: src/lessons/welcome/bat/bool2/TeenSum.html:8
+#: src/lessons/welcome/bat/bool2/TwoAsOne.html:5
+#: src/lessons/welcome/bat/bool2/WithoutDoubles.html:8
 #: src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4
 #: src/lessons/bat/string1/FrontTimes.html:7
 #: src/lessons/bat/string1/Last2.html:8
@@ -10789,12 +10796,12 @@ msgstr ""
 "com/ pour JLM."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/CountTeen.html:1
+#: src/lessons/welcome/bat/bool1/CountTeen.html:1
 msgid "Count Teen"
 msgstr "Compter les ados"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool1/CountTeen.html:2
+#: src/lessons/welcome/bat/bool1/CountTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 4 int values, return the amount of teen ones."
@@ -10803,12 +10810,12 @@ msgstr ""
 "Étant donné quatre nombres entiers, retournez combien d'entre eux sont ados."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/Diff21.html:1
+#: src/lessons/welcome/bat/bool1/Diff21.html:1
 msgid "Diff 21"
 msgstr "Diff 21"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/Diff21.html:2
+#: src/lessons/welcome/bat/bool1/Diff21.html:2
 msgid ""
 "Given an int n, return the absolute difference between n and 21, except "
 "return double the absolute difference if n is over 21."
@@ -10817,12 +10824,12 @@ msgstr ""
 "si n est plus grand que 21. Dans ce cas, doublez la différence absolue."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/HasTeen.html:1
+#: src/lessons/welcome/bat/bool1/HasTeen.html:1
 msgid "Has Teen"
 msgstr "A des ados"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/HasTeen.html:2
+#: src/lessons/welcome/bat/bool1/HasTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 3 int values, return true if 1 or more of them are teen."
@@ -10832,12 +10839,12 @@ msgstr ""
 "d'entre eux sont ados."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/IcyHot.html:1
+#: src/lessons/welcome/bat/bool1/IcyHot.html:1
 msgid "Icy Hot"
 msgstr "Feu glacé"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/IcyHot.html:2
+#: src/lessons/welcome/bat/bool1/IcyHot.html:2
 msgid ""
 "Given two temperatures, return true if one is less than 0 and the other is "
 "greater than 100."
@@ -10846,12 +10853,12 @@ msgstr ""
 "et l'autre supérieure à 100."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/In1020.html:1
+#: src/lessons/welcome/bat/bool1/In1020.html:1
 msgid "In [10;20]"
 msgstr "Dans [10;20]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/In1020.html:2
+#: src/lessons/welcome/bat/bool1/In1020.html:2
 msgid ""
 "Given 2 int values, return true if either of them is in the range 10..20 "
 "inclusive."
@@ -10860,12 +10867,12 @@ msgstr ""
 "l'intervale [10;20]."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/In3050.html:1
+#: src/lessons/welcome/bat/bool1/In3050.html:1
 msgid "In [30;50]"
 msgstr "Dans [30;50]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/In3050.html:2
+#: src/lessons/welcome/bat/bool1/In3050.html:2
 msgid ""
 "Given 2 int values, return true if they are both in the range 30..40 "
 "inclusive, or they are both in the range 40..50 inclusive."
@@ -10875,12 +10882,12 @@ msgstr ""
 "[40;50]."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/LastDigit.html:1
+#: src/lessons/welcome/bat/bool1/LastDigit.html:1
 msgid "LastDigit"
 msgstr "Dernier chiffre"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/LastDigit.html:2
+#: src/lessons/welcome/bat/bool1/LastDigit.html:2
 msgid ""
 "Given two non-negative int values, return true if they have the same last "
 "digit, such as with 27 and 57. Note that the % \"mod\" operator computes "
@@ -10891,12 +10898,12 @@ msgstr ""
 "calcule le reste de la division entière (donc 17 % 10 vaut 7)."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/LoneTeen.html:1
+#: src/lessons/welcome/bat/bool1/LoneTeen.html:1
 msgid "Lone Teen"
 msgstr "Ado solitaire"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/LoneTeen.html:2
+#: src/lessons/welcome/bat/bool1/LoneTeen.html:2
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 2 int values, return true if one or the other is teen, but not both."
@@ -10906,12 +10913,12 @@ msgstr ""
 "ado, mais pas les deux."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/Main.html:1
+#: src/lessons/welcome/bat/bool1/Main.html:1
 msgid "Boolean fun"
 msgstr "Jeux booléens"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool1/Main.html:3
+#: src/lessons/welcome/bat/bool1/Main.html:3
 msgid ""
 "Boolean operations are one of the very basic task in programming.  As long "
 "as you cannot write a not so simple boolean test under the minute, you "
@@ -10922,7 +10929,7 @@ msgstr ""
 "en moins d'une minute, il vous sera difficile d'écrire un vrai programme."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool1/Main.html:8
+#: src/lessons/welcome/bat/bool1/Main.html:8
 msgid ""
 "That is why this lesson provides you a bunch of such exercises, so that you "
 "can get trained in this."
@@ -10931,12 +10938,12 @@ msgstr ""
 "exercices pour vous permettre de vous entrainer."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/Makes10.html:1
+#: src/lessons/welcome/bat/bool1/Makes10.html:1
 msgid "Makes 10"
 msgstr "Font 10"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/Makes10.html:2
+#: src/lessons/welcome/bat/bool1/Makes10.html:2
 msgid ""
 "Given 2 ints, a and b, return true if one if them is 10 or if their sum is "
 "10."
@@ -10945,12 +10952,12 @@ msgstr ""
 "10, ou si leur somme vaut 10."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/Max1020.html:1
+#: src/lessons/welcome/bat/bool1/Max1020.html:1
 msgid "Max1020"
 msgstr "Max1020"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/Max1020.html:2
+#: src/lessons/welcome/bat/bool1/Max1020.html:2
 msgid ""
 "Given 2 positive int values, return the larger value that is in the range "
 "10..20 inclusive, or return 0 if neither is in that range."
@@ -10960,12 +10967,12 @@ msgstr ""
 "intervale."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/MonkeyTrouble.html:1
+#: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:1
 msgid "MonkeyTrouble"
 msgstr "Problème de singe"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/MonkeyTrouble.html:3
+#: src/lessons/welcome/bat/bool1/MonkeyTrouble.html:3
 msgid ""
 "We have two monkeys, a and b, and the parameters aSmile and bSmile indicate "
 "if each is smiling.  We are in trouble if they are both smiling or if "
@@ -10977,12 +10984,12 @@ msgstr ""
 "problème."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/NearHundred.html:1
+#: src/lessons/welcome/bat/bool1/NearHundred.html:1
 msgid "Near Hundred"
 msgstr "Presque 100"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool1/NearHundred.html:2
+#: src/lessons/welcome/bat/bool1/NearHundred.html:2
 msgid ""
 "Given an int n, return true if it is within 10 of 100 or 200. Note Math."
 "abs(n) returns the absolute value of a number."
@@ -10991,12 +10998,12 @@ msgstr ""
 "Remarquez que Math.abs(n) retourne la valeur absolue d'un nombre."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/ParotTrouble.html:1
+#: src/lessons/welcome/bat/bool1/ParotTrouble.html:1
 msgid "Parot Trouble"
 msgstr "Problème de perroquet"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/ParotTrouble.html:3
+#: src/lessons/welcome/bat/bool1/ParotTrouble.html:3
 msgid ""
 "We have a loud talking parrot. The \"hour\" parameter is the current hour "
 "time in the range 0..23. We are in trouble if the parrot is talking and the "
@@ -11007,12 +11014,12 @@ msgstr ""
 "parle avant 7h ou après 20h. Retournez vrai si nous avons un problème."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/PosNeg.html:1
+#: src/lessons/welcome/bat/bool1/PosNeg.html:1
 msgid "Positive Negative"
 msgstr "Positif Negatif"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/PosNeg.html:2
+#: src/lessons/welcome/bat/bool1/PosNeg.html:2
 msgid ""
 "Given 2 int values, return true if one is negative and one is positive. "
 "Unless negative is true, then they both must be negative."
@@ -11022,12 +11029,12 @@ msgstr ""
 "que les deux nombres soient négatifs."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/SleepIn.html:1
+#: src/lessons/welcome/bat/bool1/SleepIn.html:1
 msgid "SleepDay"
 msgstr "Grasse matinée"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/SleepIn.html:3
+#: src/lessons/welcome/bat/bool1/SleepIn.html:3
 msgid ""
 "The parameter weekday is true if it is a weekday, and the parameter vacation "
 "is true if we are on vacation. We sleep in if it is not a weekday or we're "
@@ -11039,12 +11046,12 @@ msgstr ""
 "vacances. Retournez vrai si nous pouvons faire la grasse matinée."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool1/SumDouble.html:1
+#: src/lessons/welcome/bat/bool1/SumDouble.html:1
 msgid "Sum Double"
 msgstr "Somme doublée"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool1/SumDouble.html:2
+#: src/lessons/welcome/bat/bool1/SumDouble.html:2
 msgid ""
 "Given two int values, return their sum. Unless the two values are the same, "
 "then return double their sum."
@@ -11053,12 +11060,12 @@ msgstr ""
 "égales, auquel cas vous devez retourner le double de leur somme."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/AlarmClock.html:1
+#: src/lessons/welcome/bat/bool2/AlarmClock.html:1
 msgid "AlarmClock"
 msgstr "Radio réveil"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/AlarmClock.html:2
+#: src/lessons/welcome/bat/bool2/AlarmClock.html:2
 msgid ""
 "Given a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a "
 "boolean indicating if we are on vacation, return a string of the form "
@@ -11077,12 +11084,12 @@ msgstr ""
 "week-end."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/AnswerCell.html:1
+#: src/lessons/welcome/bat/bool2/AnswerCell.html:1
 msgid "AnswerCell"
 msgstr "Répondeur"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/AnswerCell.html:2
+#: src/lessons/welcome/bat/bool2/AnswerCell.html:2
 msgid ""
 "Your cell phone rings. Return true if you should answer it. Normally you "
 "answer, except in the morning you only answer if it is your mom calling. In "
@@ -11093,12 +11100,12 @@ msgstr ""
 "Dans tous les cas, vous ne répondez pas si vous dormez."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/BlueTicket.html:1
+#: src/lessons/welcome/bat/bool2/BlueTicket.html:1
 msgid "BlueTicket"
 msgstr "Ticket bleu"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/BlueTicket.html:2
+#: src/lessons/welcome/bat/bool2/BlueTicket.html:2
 msgid ""
 "You have a blue lottery ticket, with ints a, b, and c on it. This makes "
 "three pairs, which we'll call ab, bc, and ac. Consider the sum of the "
@@ -11113,12 +11120,12 @@ msgstr ""
 "de plus que les sommes bc ou ac, le résultat est 5. Sinon, le résultat est 0."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/CaughtSpeeding.html:1
+#: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:1
 msgid "CaughtSpeeding"
 msgstr "Radar de vitesse"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/CaughtSpeeding.html:2
+#: src/lessons/welcome/bat/bool2/CaughtSpeeding.html:2
 msgid ""
 "You are driving a little too fast, and a police officer stops you. Write "
 "code to compute the result, encoded as an int value: 0=no ticket, 1=small "
@@ -11136,12 +11143,12 @@ msgstr ""
 "sinon, votre vitesse peut être supérieure de 5 dans tous les cas."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/CigarParty.html:1
+#: src/lessons/welcome/bat/bool2/CigarParty.html:1
 msgid "CigarParty"
 msgstr "Cigares de fête"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/CigarParty.html:2
+#: src/lessons/welcome/bat/bool2/CigarParty.html:2
 msgid ""
 "When squirrels get together for a party, they like to have cigars. A "
 "squirrel party is successful when the number of cigars is between 40 and 60, "
@@ -11154,12 +11161,12 @@ msgstr ""
 "nombre de cigares. Renvoyez vrai si la fête est réussie. "
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/DateFashion.html:1
+#: src/lessons/welcome/bat/bool2/DateFashion.html:1
 msgid "DateFashion"
 msgstr "Rendez-vous élégant"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/DateFashion.html:2
+#: src/lessons/welcome/bat/bool2/DateFashion.html:2
 msgid ""
 "You and your date are trying to get a table at a restaurant. The parameter "
 "\"you\" is the stylishness of your clothes, in the range 0..10, and \"date\" "
@@ -11179,12 +11186,12 @@ msgstr ""
 "résultat est 1 (peut-être)."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/GreenTicket.html:1
+#: src/lessons/welcome/bat/bool2/GreenTicket.html:1
 msgid "GreenTicket"
 msgstr "Ticket vert"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/GreenTicket.html:2
+#: src/lessons/welcome/bat/bool2/GreenTicket.html:2
 msgid ""
 "You have a green lottery ticket, with ints a, b, and c on it. If the numbers "
 "are all different from each other, the result is 0. If all of the numbers "
@@ -11197,12 +11204,12 @@ msgstr ""
 "nombres sont les mêmes, le résultat est 10."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/In1To10.html:1
+#: src/lessons/welcome/bat/bool2/In1To10.html:1
 msgid "In1To10"
 msgstr "De 1 à 10"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/In1To10.html:2
+#: src/lessons/welcome/bat/bool2/In1To10.html:2
 msgid ""
 "Given a number n, return true if n is in the range 1..10, inclusive. Unless "
 "\"outsideMode\" is true, in which case return true if the number is less or "
@@ -11213,12 +11220,12 @@ msgstr ""
 "petit ou égal à 1 ou bien s'il est plus grand ou égal à 10"
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/InOrderEqual.html:1
+#: src/lessons/welcome/bat/bool2/InOrderEqual.html:1
 msgid "InOrderEqual"
 msgstr "Dans l'ordre croissant"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/InOrderEqual.html:2
+#: src/lessons/welcome/bat/bool2/InOrderEqual.html:2
 msgid ""
 "Given three ints, a b c, return true if they are in strict increasing order, "
 "such as 2 5 11, or 5 6 7, but not 6 5 7 or 5 5 7. However, with the "
@@ -11231,12 +11238,12 @@ msgstr ""
 "5 5 7 ou 5 5 5."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/InOrder.html:1
+#: src/lessons/welcome/bat/bool2/InOrder.html:1
 msgid "InOrder"
 msgstr "Dans l'ordre"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/InOrder.html:2
+#: src/lessons/welcome/bat/bool2/InOrder.html:2
 msgid ""
 "Given three ints, a b c, return true if b is greater than a, and c is "
 "greater than b. However, with the exception that if \"bOk\" is true, b does "
@@ -11247,12 +11254,12 @@ msgstr ""
 "n'a pas besoin d'être plus grand que a."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/LastDigit2.html:1
+#: src/lessons/welcome/bat/bool2/LastDigit2.html:1
 msgid "LastDigit 2"
 msgstr "L'autre dernier chiffre"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/LastDigit2.html:2
+#: src/lessons/welcome/bat/bool2/LastDigit2.html:2
 msgid ""
 "Given three ints, a b c, return true if two or more of them have the same "
 "rightmost digit. The ints are non-negative. Note: the % \"mod\" operator "
@@ -11263,12 +11270,12 @@ msgstr ""
 "% \"mod\" calcule le reste, i.e. 17 % 10 vaut 7."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/LessBy10.html:1
+#: src/lessons/welcome/bat/bool2/LessBy10.html:1
 msgid "LessBy10"
 msgstr "Plus petit par 10"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/LessBy10.html:2
+#: src/lessons/welcome/bat/bool2/LessBy10.html:2
 msgid ""
 "Given three ints, a b c, return true if one of them is 10 or more less than "
 "one of the others."
@@ -11277,12 +11284,12 @@ msgstr ""
 "de 10 ou plus que l'un des autres."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/Main.html:1
+#: src/lessons/welcome/bat/bool2/Main.html:1
 msgid "Boolean (even more) fun"
 msgstr "Encore des jeux booléens"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/conditions/bool2/Main.html:3
+#: src/lessons/welcome/bat/bool2/Main.html:3
 msgid ""
 "A very good introduction to this type is available here: http://javabat.com/"
 "doc/ifboolean.html."
@@ -11291,12 +11298,12 @@ msgstr ""
 "com/doc/ifboolean.html."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/MaxMod5.html:1
+#: src/lessons/welcome/bat/bool2/MaxMod5.html:1
 msgid "MaxMod5"
 msgstr "Maximum Mod 5"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/MaxMod5.html:2
+#: src/lessons/welcome/bat/bool2/MaxMod5.html:2
 msgid ""
 "Given two int values, return whichever value is larger. However if the two "
 "values have the same remainder when divided by 5, then the return the "
@@ -11310,12 +11317,12 @@ msgstr ""
 "reste, i.e. 7 % 5 vaut 2."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/NearTen.html:1
+#: src/lessons/welcome/bat/bool2/NearTen.html:1
 msgid "NearTen"
 msgstr "Près de dix"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/NearTen.html:2
+#: src/lessons/welcome/bat/bool2/NearTen.html:2
 msgid ""
 "Given a non-negative number \"num\", return true if num is within 2 of a "
 "multiple of 10. Note: (a % b) is the remainder of dividing a by b, so (7 % "
@@ -11326,12 +11333,12 @@ msgstr ""
 "(7 % 5) vaut 2."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/RedTicket.html:1
+#: src/lessons/welcome/bat/bool2/RedTicket.html:1
 msgid "RedTicket"
 msgstr "Ticket rouge"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/RedTicket.html:2
+#: src/lessons/welcome/bat/bool2/RedTicket.html:2
 msgid ""
 "You have a red lottery ticket showing ints a, b, and c, each of which is 0, "
 "1, or 2. If they are all the value 2, the result is 10. Otherwise if they "
@@ -11345,12 +11352,12 @@ msgstr ""
 "0."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/ShareDigit.html:1
+#: src/lessons/welcome/bat/bool2/ShareDigit.html:1
 msgid "ShareDigit"
 msgstr "Chiffre partagé"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/ShareDigit.html:2
+#: src/lessons/welcome/bat/bool2/ShareDigit.html:2
 msgid ""
 "Given two ints, each in the range 10..99, return true if there is a digit "
 "that appears in both numbers, such as the 2 in 12 and 23. (Note: division, e."
@@ -11363,12 +11370,12 @@ msgstr ""
 "\" n%10 renvoye le bon chiffre.)"
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/SortaSum.html:1
+#: src/lessons/welcome/bat/bool2/SortaSum.html:1
 msgid "SortaSum"
 msgstr "Sommes d'entiers"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/SortaSum.html:2
+#: src/lessons/welcome/bat/bool2/SortaSum.html:2
 msgid ""
 "Given 2 ints, a and b, return their sum. However, sums in the range 10..19 "
 "inclusive, are forbidden, so in that case just return 20."
@@ -11377,12 +11384,12 @@ msgstr ""
 "10 et 19 inclus sont interdites, dans ce cas, renvoyez 20."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/SquirrelPlay.html:1
+#: src/lessons/welcome/bat/bool2/SquirrelPlay.html:1
 msgid "SquirrelPlay"
 msgstr "Jeu de l'écureuil"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/SquirrelPlay.html:2
+#: src/lessons/welcome/bat/bool2/SquirrelPlay.html:2
 msgid ""
 "The squirrels in Palo Alto spend most of the day playing. In particular, "
 "they play if the temperature is between 60 and 90 (inclusive). Unless it is "
@@ -11397,12 +11404,12 @@ msgstr ""
 "Renvoyez vrai si les écureuils jouent et faux sinon."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/TeaParty.html:1
+#: src/lessons/welcome/bat/bool2/TeaParty.html:1
 msgid "TeaParty"
 msgstr "Goûter"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/TeaParty.html:2
+#: src/lessons/welcome/bat/bool2/TeaParty.html:2
 msgid ""
 "We are having a party with amounts of tea and candy. Return the int outcome "
 "of the party encoded as 0=bad, 1=good, or 2=great. A party is good (1) if "
@@ -11420,12 +11427,12 @@ msgstr ""
 "(0)."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/TeenSum.html:1
+#: src/lessons/welcome/bat/bool2/TeenSum.html:1
 msgid "TeenSum"
 msgstr "Somme d'ados"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/TeenSum.html:2
+#: src/lessons/welcome/bat/bool2/TeenSum.html:2
 msgid ""
 "Given 2 ints, a and b, return their sum. However, \"teen\" values in the "
 "range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
@@ -11436,12 +11443,12 @@ msgstr ""
 "Donc, si l'un des nombres est ado, retournez simplement 19."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/TwoAsOne.html:1
+#: src/lessons/welcome/bat/bool2/TwoAsOne.html:1
 msgid "TwoAsOne"
 msgstr "Deux pour un"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/TwoAsOne.html:2
+#: src/lessons/welcome/bat/bool2/TwoAsOne.html:2
 msgid ""
 "Given three ints, a b c, return true if it is possible to add two of the "
 "ints to get the third."
@@ -11450,12 +11457,12 @@ msgstr ""
 "deux d'entre eux pour obtenir le troisième."
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/conditions/bool2/WithoutDoubles.html:1
+#: src/lessons/welcome/bat/bool2/WithoutDoubles.html:1
 msgid "WithoutDoubles"
 msgstr "Sans double"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/conditions/bool2/WithoutDoubles.html:2
+#: src/lessons/welcome/bat/bool2/WithoutDoubles.html:2
 msgid ""
 "Return the sum of two 6-sided dice rolls, each in the range 1..6. However, "
 "if noDoubles is true, if the two dice show the same value, increment one die "
@@ -14140,6 +14147,40 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
+
+#~ msgid ""
+#~ "while (<b>condition</b>) {\n"
+#~ "&nbsp;&nbsp;<b>action()</b>;\n"
+#~ "}"
+#~ msgstr ""
+#~ "while (<b>condition</b>) {\n"
+#~ "&nbsp;&nbsp;<b>action()</b>;\n"
+#~ "}"
+
+#~ msgid ""
+#~ "while <b>condition</b>:\n"
+#~ "&nbsp;&nbsp;<b>action()</b>"
+#~ msgstr ""
+#~ "while (<b>condition</b>) {\n"
+#~ "&nbsp;&nbsp;<b>action()</b>;\n"
+#~ "}"
+
+#~ msgid ""
+#~ "while (true) {\n"
+#~ "&nbsp;&nbsp;left();\n"
+#~ "}"
+#~ msgstr ""
+#~ "while (true) {\n"
+#~ "&nbsp;&nbsp;left();\n"
+#~ "}"
+
+#~ msgid ""
+#~ "while True:\n"
+#~ "&nbsp;&nbsp;left()"
+#~ msgstr ""
+#~ "while (true) {\n"
+#~ "&nbsp;&nbsp;left();\n"
+#~ "}"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"

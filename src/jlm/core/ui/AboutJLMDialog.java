@@ -10,10 +10,10 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import jlm.core.model.Game;
+
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
-
-import jlm.core.model.Game;
 
 public class AboutJLMDialog extends JDialog {
 

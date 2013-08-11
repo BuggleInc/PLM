@@ -1,10 +1,10 @@
 package jlm.core.model.tracking;
 
+import jlm.core.model.Game;
+import jlm.core.model.lesson.Exercise;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.http.AccessToken;
-import jlm.core.model.Game;
-import jlm.core.model.lesson.Exercise;
 
 public class TwitterSpy implements ProgressSpyListener {
 	private String username;

@@ -1,19 +1,32 @@
 package jlm.core.ui;
 
-import jlm.core.model.*;
-import jlm.core.model.tracking.HeartBeatSpy;
-import jlm.core.model.tracking.ProgressSpyListener;
-import jlm.core.model.tracking.ServerSpy;
-
-import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import jlm.core.model.Course;
+import jlm.core.model.CourseAppEngine;
+import jlm.core.model.Game;
+import jlm.core.model.ServerAnswer;
+import jlm.core.model.tracking.HeartBeatSpy;
+import jlm.core.model.tracking.ProgressSpyListener;
+import jlm.core.model.tracking.ServerSpy;
 
 
 /**

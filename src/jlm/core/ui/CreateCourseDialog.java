@@ -1,16 +1,24 @@
 package jlm.core.ui;
 
-import jlm.core.model.Course;
-import jlm.core.model.CourseAppEngine;
-import jlm.core.model.Game;
-import jlm.core.model.ServerAnswer;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+import jlm.core.model.Course;
+import jlm.core.model.CourseAppEngine;
+import jlm.core.model.Game;
+import jlm.core.model.ServerAnswer;
 
 /**
  * Dialog to create a course on the server, with a name, a user password and an administrator password

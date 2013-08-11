@@ -11,11 +11,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
-
 import jlm.core.model.lesson.ExecutionProgress;
 import net.miginfocom.swing.MigLayout;
+
+import org.xnap.commons.i18n.I18n;
+import org.xnap.commons.i18n.I18nFactory;
 
 public class ExerciseFailedDialog extends JDialog {
 	private static final long serialVersionUID = 1L;
