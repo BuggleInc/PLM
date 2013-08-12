@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-11 18:04+0300\n"
-"PO-Revision-Date: 2013-08-11 18:07+0200\n"
+"POT-Creation-Date: 2013-08-11 23:02+0300\n"
+"PO-Revision-Date: 2013-08-11 23:04+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2321,8 +2321,9 @@ msgstr ""
 "melangerLeTout()[!java];[/!]\n"
 "faireCuire()[!java];[/!]\n"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p><p>
 #: src/lessons/welcome/instructions/Instructions.html:27
+#: src/lessons/welcome/variables/Variables.html:123
 msgid "[!python|scala]"
 msgstr "[!python|scala]"
 
@@ -2344,8 +2345,11 @@ msgstr ""
 msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p><p>
 #: src/lessons/welcome/instructions/Instructions.html:34
+#: src/lessons/welcome/variables/Variables.html:31
+#: src/lessons/welcome/variables/Variables.html:61
+#: src/lessons/welcome/variables/Variables.html:130
 msgid "[/!]"
 msgstr "[/!]"
 
@@ -2429,8 +2433,8 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:108
 #: src/lessons/welcome/loopwhile/LoopWhile.html:32
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
-#: src/lessons/welcome/variables/Variables.html:72
-#: src/lessons/welcome/loopfor/LoopFor.html:73
+#: src/lessons/welcome/variables/Variables.html:97
+#: src/lessons/welcome/loopfor/LoopFor.html:71
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
 #: src/lessons/welcome/methods/basics/Methods.html:66
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:49
@@ -3064,14 +3068,22 @@ msgid ""
 "have to use specific methods such as <code>isOverBaggle(), "
 "isCarryingBaggle(), pickupBaggle()</code> or <code>dropBaggle()</code>. "
 "Check their documentation in \"Help/About this world\" for more details."
-msgstr "Le monde des buggles contient parfois des petits biscuits ronds que les buggles peuvent déplacer d'un endroit à un autre. Pour cela, elles peuvent utiliser des fonctions spécifiques : <code>estSurBiscuit(), porteBiscuit(), prendBiscuit()<code> et <code>poseBiscuit()</code>. Tous les détails se trouvent dans la documentation accessible depuis «Aide/À propos de ce monde»."
+msgstr ""
+"Le monde des buggles contient parfois des petits biscuits ronds que les "
+"buggles peuvent déplacer d'un endroit à un autre. Pour cela, elles peuvent "
+"utiliser des fonctions spécifiques : <code>estSurBiscuit(), porteBiscuit(), "
+"prendBiscuit()<code> et <code>poseBiscuit()</code>. Tous les détails se "
+"trouvent dans la documentation accessible depuis «Aide/À propos de ce monde»."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:10
 msgid ""
 "Let each buggle find its baggle by adapting the code you wrote in previous "
 "exercise (copy/paste what you've done before if you want)."
-msgstr "Faites en sorte que chaque buggle trouve son baggle en adaptant le code que vous aviez écrit pour l'exercice précédent (vous êtes libre de faire un copie/colle de ce que vous aviez fait si vous le souhaitez)."
+msgstr ""
+"Faites en sorte que chaque buggle trouve son baggle en adaptant le code que "
+"vous aviez écrit pour l'exercice précédent (vous êtes libre de faire un "
+"copie/colle de ce que vous aviez fait si vous le souhaitez)."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:1
@@ -3086,7 +3098,14 @@ msgid ""
 "baggles and you could simply walk away, but it will be easier to program "
 "your buggle so that it moves those \"rocks\" than convincing your buggle "
 "that it could easily walk away without solving the problem..."
-msgstr "Votre buggle est coincée dans une mine ! Des rochers bloquent la sortie, et il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont pas vraiment des rochers mais juste des biscuits, et votre buggle pourrait facilement passer au dessus sans se fatiguer. Mais il est probablement plus simple de programmer votre buggle pour qu'elle déplace ces «rochers» plutôt que de tenter de la convaincre de passer à la suite sans avoir résolu le problème..."
+msgstr ""
+"Votre buggle est coincée dans une mine ! Des rochers bloquent la sortie, et "
+"il va falloir dégager le chemin pour passer. Bon, ok, ce ne sont pas "
+"vraiment des rochers mais juste des biscuits, et votre buggle pourrait "
+"facilement passer au dessus sans se fatiguer. Mais il est probablement plus "
+"simple de programmer votre buggle pour qu'elle déplace ces «rochers» plutôt "
+"que de tenter de la convaincre de passer à la suite sans avoir résolu le "
+"problème..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:9
@@ -3097,14 +3116,26 @@ msgid ""
 "then move back one step to the east and drop your baggle), and iterate until "
 "you find the exit (that is, the wall to the east side). Afterward, move out "
 "as in the objective world."
-msgstr "Donc, il vous faut trouver le premier biscuit en travers de votre chemin (marchez vers l'est jusqu'à vous trouver au dessus d'un biscuit), le ramasser, et retourner à l'autre extrémité du couloir pour le déposer (marchez vers l'ouest jusqu'à vous trouver au dessus d'un biscuit puis reculez d'un pas). Il faut ensuite faire de même pour tous les biscuits jusqu'à trouver la sortie. Une fois ceci fait, marchez vers l'air frais comme dans le monde objectif."
+msgstr ""
+"Donc, il vous faut trouver le premier biscuit en travers de votre chemin "
+"(marchez vers l'est jusqu'à vous trouver au dessus d'un biscuit), le "
+"ramasser, et retourner à l'autre extrémité du couloir pour le déposer "
+"(marchez vers l'ouest jusqu'à vous trouver au dessus d'un biscuit puis "
+"reculez d'un pas). Il faut ensuite faire de même pour tous les biscuits "
+"jusqu'à trouver la sortie. Une fois ceci fait, marchez vers l'air frais "
+"comme dans le monde objectif."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopwhile/WhileMoria.html:16
 msgid ""
 "Once you manage to escape this trap, you can move forward to the next "
-"exercise."
-msgstr "Quand vous serez parvenu à sortir de ce piège, vous pouvez passez à l'exercice suivant."
+"exercise.  This exercise is a bit more complex, so you can also leave it for "
+"now and come back later if you don't get it right now."
+msgstr ""
+"Quand vous serez parvenu à sortir de ce piège, vous pouvez passez à "
+"l'exercice suivant. Cet exercice est un peu plus difficile que les autres, "
+"et vous pouvez tout à fait le laisser momentanément de coté pour y revenir "
+"plus tard si vous n'y parvenez pas pour l'instant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:2
@@ -3124,256 +3155,311 @@ msgstr ""
 
 #. type: Content of: <p><h3>
 #: src/lessons/welcome/variables/Variables.html:8
-msgid "Data in Java"
-msgstr "Les données en Java"
+msgid "Data in [!thelang]"
+msgstr "Les données en [!thelang]"
 
-#. type: Content of: <p><h3>
+#. type: Content of: <p><p>
 #: src/lessons/welcome/variables/Variables.html:9
-msgid "Data in Python"
-msgstr "Les données en Python"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/variables/Variables.html:10
 msgid ""
 "In a program, you can use several <i>types</i> of data, such as integers or "
 "strings of chars. If you want to use a data several times, you need to store "
-"it within a <i>variable</i>, which is a memory cell containing a value. It's "
-"not very different from a shelve containing a book: you put your data (say "
-"'5') in the variable (say 'length'), and you can retrieve it latter when you "
-"need it."
+"it within a <i>variable</i>, which is a memory cell containing a value: you "
+"put your data (say the value '5') in the variable (say 'length'), and you "
+"can retrieve it latter when you need it. That's very similar to a box of "
+"label 'gift' in which you would put some stuff, like a bottle of perfume "
+"\"Channel N°5\"."
 msgstr ""
 "Dans un programme, on peut utiliser différents <i>types</i> de données, tels "
 "que les entiers, les nombres à virgules ou les chaînes de caractères. Si on "
 "veut utiliser une donnée plusieurs fois, il faut la stocker dans une "
-"<i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est "
-"pas très différent d'une étagère contenant un livre: vous rangez votre "
-"donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la "
-"retrouver plus tard quand vous en avez besoin."
+"<i>variable</i>, qui est une sorte de case contenant une valeur: vous rangez "
+"votre donnée (disons '5') dans la variable (disons «longueur»), et vous "
+"pouvez la retrouver plus tard quand vous en avez besoin. C'est exactement "
+"comme prendre une boîte avec une étiquette (disons «cadeau») et d'y ranger "
+"quelque chose dedans (disons, un flacon de Channel Numéro 5)."
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><p><h3>
 #: src/lessons/welcome/variables/Variables.html:16
+msgid "Variable declarations"
+msgstr "Déclaration de Variables"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:18
 msgid ""
-"Java is said to be a <i>typed</i> language, which means that it is only "
-"possible to store a value in a variable of the right type. Don't think about "
-"storing the letters of your name into an integer variable. In other "
-"languages (such as Python)  allow you to store any kind of data in any "
-"variable without such restriction, but not in Java."
+"<b>Declaring</b> (ie, creating) a variable in [!thelang], is very simple. "
+"You just need to write [!java]its type, a space, and the variable name.[/!] "
+"[!scala]the <code>var</code> keyword, the variable name, a column (:) and "
+"the variable type.[/!] [!python]the variable name, an equal sign (=) and an "
+"initial value.[/!] The variable name is the label to retrieve it afterward[!"
+"python].[/!] [!java|scala] while the type is the kind of data that this "
+"variable accepts to store.[/!] It is forbidden to use spaces in variable "
+"names. So you can name a variable <code>stepAmount</code> if you want, but "
+"<code>step amount</code> is not a valid name."
 msgstr ""
-"Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker "
-"une valeur que dans une variable du bon type. Pas question de stocker votre "
-"nom dans une variable entière."
+"Il est très simple de <b>déclarer</b> (c'est-à-dire, créer) une variable en "
+"[!thelang]. Il suffit d'écrire\n"
+"[!java]son type, une espace et le nom de la variable.[/!] \n"
+"[!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:) "
+"et le type de la variable.[/!] \n"
+"[!python]le nom de la variable, un signe égal (=) et sa valeur initiale."
+"[/!] \n"
+"Le nom de la variable est un label pour la retrouver plus tard[!python]."
+"[/!] \n"
+"[!java|scala] tandis que son type est le genre de données qu'on va pouvoir "
+"stoker dans cette variable.[/!] \n"
+"Il est interdit de mettre des espaces et des accents dans les noms de "
+"variable. \n"
+"Ainsi, on peut nommer une variable <code>dejaFait</code>, mais ni <code>deja "
+"fait</code> ni <code>déjaFait</code> ne sont des identificateurs de "
+"variables valides."
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/variables/Variables.html:20
-msgid ""
-"The Python language is said to <i>not typed</i>, which means you can store "
-"any type of data into a given variable. Other languages (such as Java) "
-"mandate that each variable store only data of a given type, but there is no "
-"such difficulties here."
-msgstr ""
-"Le langage Python est dit <i>non typé</i>, ce qui signifie qu'une variable "
-"donnée peutcontenir n'importe quel type de donnée. D'autres langages (comme "
-"Java) rendent obligatoire que chaque variable  ne puisse contenir que des "
-"données d'un certain type, mais il n'y a pas de telles difficultés ici."
+#: src/lessons/welcome/variables/Variables.html:28
+#: src/lessons/welcome/variables/Variables.html:40
+msgid "[!java|scala]"
+msgstr "[!java|scala]"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/variables/Variables.html:25
-msgid ""
-"To <i>declare</i> (ie, create) a variable, you just need to write its type, "
-"a space, and the variable name. From the existing types, we can speak of "
-"<b>int</b> (for integers), <b>double</b> for dot numbers, <b>boolean</b> for "
-"booleans (ie, values being either true or false) and <b>String</b> for char "
-"strings. If you want, you can specify the initial value of the variable by "
-"adding a equal sign (=) followed by the value after the declaration."
-msgstr ""
-"Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type, "
-"un espace et le nom de la variable. Notez qu'il n'est pas possible "
-"d'utiliser d'accents dans les noms de variables, malheureusement. Parmi les "
-"types existants, on trouve: <b>int</b> pour les entiers, <b>double</b> pour "
-"les nombres à virgule, <b>boolean</b> pour les booléens (i.e. les variables "
-"qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes "
-"de caractères.  Si l'on veut, on peut faire suivre la déclaration du signe = "
-"suivi de la valeur initiale à donner à la valeur."
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/variables/Variables.html:31
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:29
 msgid ""
 "So, to create a variable named <b>x</b> intended to contain integers, one "
-"can write:"
+"should write:"
 msgstr ""
 "Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on "
 "écrira :"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:32
+#: src/lessons/welcome/variables/Variables.html:30
 #, no-wrap
-msgid "int x;"
-msgstr "int x;"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/variables/Variables.html:33
-msgid ""
-"If you want that the variable contains 5 as initial value, you should type:"
-msgstr "Si on veut que sa valeur initiale soit 5, on écrira :"
-
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:33
-#, no-wrap
-msgid "int x = 5;"
-msgstr "int x = 5;"
+msgid "[!java]int x;[/!][!scala]var x: Int[/!]"
+msgstr "[!java]int x;[/!][!scala]var x: Int[/!]"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:34
+#: src/lessons/welcome/variables/Variables.html:33
+msgid ""
+"[!java|scala]If you want, you can specify the initial value of the variable "
+"by adding a equal sign (=) followed by the value after the declaration.[/!] "
+"[!scala]If you specify a value, you don't have to specify the type of the "
+"variable, since Scala manages to guess it alone in most cases.  You are "
+"still free to specify the type if you prefer (or if the compiler fail to "
+"determine the type for some reason), but it's optional.[/!] So you want that "
+"the variable contains 5 as initial value, you should type:"
+msgstr ""
+"[!java|scala]Si vous le souhaitez, vous pouvez spécifier une valeur initiale "
+"en faisant suivre la déclaration d'un symbole égal (=) suivi de la valeur à "
+"utiliser.[/!] \n"
+"[!scala]Si vous spécifiez une valeur, il n'est alors plus indispensable de "
+"spécifier le type de la variable, puisque Scala parvient à le deviner tout "
+"seul. Vous êtes libre de le spécifier quand même si vous le désirez (ou si "
+"le compilateur se trompe, comme cela arrive parfois par exemple entre les "
+"différents types de nombres), mais c'est optionnel.[/!]\n"
+"Donc, si vous voulez utiliser 5 comme valeur initiale, il faut écrire:"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:37
+#, no-wrap
+msgid ""
+"[!java]int x=5;[/!][!python]x = 5[/!][!scala]var x: Int =  5 <span class=\"comment\">// I can define the type if I want to</span>\n"
+"var y =  10      <span class=\"comment\">// or I can omit the type if I prefer</span>[/!]"
+msgstr ""
+"[!java]int x=5;[/!][!python]x = 5[/!][!scala]var x: Int =  5 <span class=\"comment\">// je peux quand même donner le type si je veux</span>\n"
+"var y = 10       <span class=\"comment\">// ou bien je peux l'omettre</span>[/!]"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:41
+msgid ""
+"As you can see, the variables are <b>typed</b> in [!thelang], which means "
+"that they are somehow specialized: A given variable can only store data of a "
+"given type; Don't even think of storing numbers in a variable that is "
+"tailored for letters! Other languages (such as Python) are less picky and "
+"allow you to store any kind of data in any variable without restriction.  "
+"This seems easier at the first glance, but this kind of restriction allows "
+"the compiler to catch more logic errors for you, which is also good. In some "
+"sense, Python is easier to write but errors can sneak in more easily than in "
+"[!thelang].  Here are some of the existing types:"
+msgstr ""
+"Comme vous pouvez le voir, les variables sont <b>typées</b> en[!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées: une variable donnée ne peut stocker qu'un type de données spécifique. N'essayez même pas de rancher des nombres dans une variable faite pour recevoir des lettres ! \n"
+"D'autres langages (comme le python) sont moins regardants, et on peut ranger n'importe quel type de données dans n'importe quelle variable sans restriction. À première vue, cela semble plus simple, mais ce genre de restriction permet au compilateur de détecter plus d'erreurs de logiques pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile d'écrire du python, mais le typage empêche certaines erreurs de se glisser dans vos programmes. \n"
+"Voici quelque uns des types de données existants en [!thelang] :\n"
+
+#. type: Content of: <p><p><ul><li>
 #: src/lessons/welcome/variables/Variables.html:48
-msgid ""
-"Later in the program, if you want to <i>affect</i> a new value to the "
-"variable, that's really easy:"
+msgid "<b>[!java]int[/!][!scala]Int[/!]</b>, for integers;"
+msgstr "<b>[!java]int[/!][!scala]Int[/!]</b>, pour les entiers;"
+
+#. type: Content of: <p><p><ul><li>
+#: src/lessons/welcome/variables/Variables.html:49
+msgid "<b>[!java]double[/!][!scala]Double[/!]</b>, for dot numbers;"
 msgstr ""
-"Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle "
-"valeur à la variable, c'est très simple :"
+"<b>[!java]double[/!][!scala]Double[/!]</b>, pour les nombres à virgule;"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:35
-#, no-wrap
-msgid "x = 3;"
-msgstr "x = 3;"
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:36
-msgid ""
-"The syntax to create an integer variable <code>x</code> with 4 as initial "
-"value is the following:"
-msgstr ""
-"La syntaxe pour créer une variable entière <code>x</code> de valeur initiale "
-"4 est la suivante :"
-
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:38
-#, no-wrap
-msgid "int x = 4;"
-msgstr "int x = 4;"
-
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:39
+#. type: Content of: <p><p><ul><li>
 #: src/lessons/welcome/variables/Variables.html:50
 msgid ""
-"This quite the same story for strings, floating point numbers and boolean "
-"values."
+"<b>[!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that are values "
+"being either true or false;"
+msgstr ""
+"<b>[!java]boolean[/!][!scala]Boolean[/!]</b>, pour les booléens, c'est-à-"
+"dire les variables dont la valeur est soit \"vrai\" soit \"faux\";"
+
+#. type: Content of: <p><p><ul><li>
+#: src/lessons/welcome/variables/Variables.html:51
+msgid "<b>String</b>, for char strings."
+msgstr "<b>String</b>, pour les chaînes de caractères."
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/variables/Variables.html:53
+msgid "[/!] [!python]"
+msgstr "[/!] [!python]"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:56
+msgid ""
+"As you can see, the variables are not <b>typed</b> in Python, which means "
+"that they are not specialized in any type of data.  A given variable store "
+"any type of data of a given type: you can store a number in a variable and "
+"latter on store a number in the same variable.  Other languages (such as "
+"Java or Scala) are much more picky and prevent you to mix data types in a "
+"given variable.  This seems annoying at the first glance, but this kind of "
+"restriction allows the compiler to catch more logic errors for you, which is "
+"also good. In some sense, Python is easier to write but errors can sneak in "
+"more easily."
+msgstr ""
+"Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en Python, ce qui veut dire qu'elles ne sont pas spécialisées sur un type de données particulier. Il est tout à fait envisageable de stocker des nombres dans une variable, puis d'y mettre des lettres un peu plus tard.\n"
+"D'autres langages (comme le Java ou le Scala) sont plus restrictifs et imposent de spécialiser chaque variable pour un type donné. Cela semble bien plus contraignant à première vue, mais ce genre de restriction permet au compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine manière, il est plus facile d'écrire du Python, mais le typage de ces langages empêche certaines erreurs de se glisser dans les programmes."
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:64
+msgid ""
+"If you know that the value of your \"variable\" will never change (eg "
+"because it contains the screen size or some other constant value), then you "
+"should make it a <b>value</b> instead of a variable. Simply change the "
+"<code>var</code> keyword with the <code>val</code> one. The compiler can "
+"then perform more verifications and catch when you inadvertently modify the "
+"value. More interestingly, the compiler can produce faster code in some "
+"cases."
+msgstr ""
+"Si vous savez que votre «variable» ne va jamais changer de valeur (par "
+"exemple parce qu'il s'agit de la taille de l'écran ou une autre constante du "
+"genre), alors vous devriez en faire une <b>valeur</b> plutôt qu'une "
+"variable.\n"
+"Utilisez simplement le mot-clé <code>val</code> au lieu de <code>var</"
+"code>. \n"
+"Le compilateur pourra alors faire plus de vérifications pour aider les "
+"étourdis cherchant à modifier les constantes. Plus intéressant, le "
+"compilateur parvient également à produire du code plus rapide dans certains "
+"cas."
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:69
+msgid ""
+"Variables work very similarly for strings, floating point numbers and "
+"boolean values."
 msgstr ""
 "C'est la même histoire pour les chaînes, nombres à virgule flottante et les "
 "booléens."
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:41
+#: src/lessons/welcome/variables/Variables.html:71
 #, no-wrap
 msgid ""
 "String name = \"Martin Quinson\";\n"
 "double height=1.77; <span class=\"comment\">// in meters</span>\n"
-"boolean married=true;"
+"boolean married=true;<span class=\"comment\">// the contrary would be written \"false\"</span>"
 msgstr ""
 "String nom = \"Martin Quinson\";\n"
 "double taille=1.77; <span class=\"comment\">// en mètres</span>\n"
-"boolean marie=true;"
+"boolean marie=true; <span class=\"comment\">// Signifie vrai; le contraire (faux) s'écrirait \"false\"</span>"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:45
-msgid ""
-"<i>Declaring</i> (ie, creating) a variable in Python is dead simple: you "
-"just need to give it an initial value by writing its name, the equal sign "
-"and the value."
-msgstr ""
-"<i>Déclarer</i> (ie créer) une variable en Python est extrèmement simple: "
-"vous avez juste besoin de lui donner une valeur initiale en écrivant son "
-"nom, le signe égal et la valeur."
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:47
-msgid ""
-"So, to create a variable named <b>x</b> which initial value should be 5, you "
-"should type:"
-msgstr ""
-"Ainsi, pour créer une variable nommée <b>x</b> dont la valeur initiale sera "
-"5, on écrira :"
-
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:47
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:75
 #, no-wrap
-msgid "x = 5"
-msgstr "x = 5;"
+msgid ""
+"val name:String = \"Martin Quinson\"; <span class=\"comment\">// this cannot be modified (it's a value)</span>\n"
+"var height: Double = 1.77; <span class=\"comment\">// in meters</span>\n"
+"var married = true; <span class=\"comment\">// the contrary would be written \"false\"</span>\n"
+"<span class=\"comment\">// Scala knows that 'true' is a Boolean value, no need to repeat it here</span>"
+msgstr ""
+"val nom:String = \"Martin Quinson\"; <span class=\"comment\">// impossible de le modifier (c'est une valeur)</span>\n"
+"var taille: Double = 1.77; <span class=\"comment\">// en metre</span>\n"
+"var marie = true; <span class=\"comment\">// Signifie vrai; le contraire (faux) s'écrirait \"false\"</span>\n"
+"<span class=\"comment\">// Scala sait que 'true' est une valeur de type Boolean, pas besoin de le répéter</span>"
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:49
-#, no-wrap
-msgid "x = 3"
-msgstr "x = 3;"
-
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:52
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:80
 #, no-wrap
 msgid ""
 "firstName = \"Martin\"\n"
 "lastName = 'Quinson' <span class=\"comment\"># both single and double quote work here</span>\n"
 "motto = \"I never finish anyth' (but I keep trying)\" <span class=\"comment\"># having single quote within double quote is fine</span> \n"
 "height=1.77 <span class=\"comment\"># in meters</span>\n"
-"married=True <span class=\"comment\"># the contrary would be written False</span>"
+"married=True <span class=\"comment\"># the contrary would be written \"False\"</span>"
 msgstr ""
 "prenom = \"Martin\"\n"
 "nom = 'Quinson' <span class=\"comment\"># les simples et les doubles quotes fonctionnent ici</span>\n"
 "devise = \"Je ne finis jam' (mais je continue d'essayer)\" <span class=\"comment\"># avoir des quotes simples dans des doubles quotes fonctionne</span> \n"
 "taille=1.77 <span class=\"comment\"># en mètre</span>\n"
-"marie=True <span class=\"comment\"># le contraire serait marqué False</span>"
+"marie=True <span class=\"comment\"># Signifie 'vrai'; le contraire (faux) serait marqué 'False'</span>"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:59
+#. type: Content of: <p><p><h3>
+#: src/lessons/welcome/variables/Variables.html:86
+msgid "Affectations"
+msgstr "Affectations"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:88
 msgid ""
-"To the right of the equal symbol, you can put an expression containing "
-"constants, variables and operations:"
+"Once your variable is declared, you can <b>affect</b> a new value to it "
+"later in the program. That's really easy:"
+msgstr ""
+"Une fois que votre variable est déclarée, vous pouvez y <i>affecter</i> une "
+"nouvelle valeur plus tard dans votre programme. C'est vraiment très simple :"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:89
+#, no-wrap
+msgid "x = 3[!java];[/!]"
+msgstr "x = 3[!java];[/!]"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:91
+msgid ""
+"To the right of the equal symbol, you can put an arithmetic expression "
+"containing constants, variables and operations."
 msgstr ""
 "À droite du signe égal, on peut mettre une expression quelconque, qui peut "
 "contenir des constantes, des variables et des opérations :"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:62
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:93
 #, no-wrap
 msgid ""
-"x = 3 + 2;\n"
-"x = 3 * x;\n"
-"greeting = \"Hello \"+name;\n"
+"x = 3 + 2[!java];[/!]\n"
+"x = 3 * x[!java];[/!]\n"
+"greeting = \"Hello \"+name[!java];[/!] <span class=\"comment\">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings</span>"
 msgstr ""
-"x = 3 + 2;\n"
-"x = 3 * x;\n"
-"hello = \"Salut \"+nom;\n"
+"x = 3 + 2[!java];[/!]\n"
+"x = 3 * x[!java];[/!]\n"
+"greeting = \"Hello \"+name[!java];[/!] <span class=\"comment\">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner</span>"
 
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:66
-#, no-wrap
-msgid ""
-"x = 3 + 2\n"
-"x = 3 * x\n"
-"greeting = \"Hello \"+name\n"
-msgstr ""
-"x = 3 + 2\n"
-"x = 3 * x\n"
-"hello = \"Salut \"+nom\n"
-
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:73
+#. type: Content of: <p><p>
+#: src/lessons/welcome/variables/Variables.html:98
 msgid ""
 "It is now time to do more challenging exercises, don't you think? The "
 "objective is now to move forward until you find a baggle, pick it up, and "
 "then move back to your initial location before dropping the baggle."
 msgstr ""
 "Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif "
-"cette fois est d'avancer jusqu'au baggle qui se trouve devant la buggle, le "
-"ramasser, revenir à la position initiale, puis de poser le baggle."
+"cette fois est d'avancer jusqu'au biscuit qui se trouve devant la buggle, le "
+"ramasser, revenir à la position initiale, puis de poser le biscuit."
 
-#. type: Content of: <p><p><p><p><h3>
-#: src/lessons/welcome/variables/Variables.html:78
+#. type: Content of: <p><p><h3>
+#: src/lessons/welcome/variables/Variables.html:103
 msgid "How to do this?"
 msgstr "Comment faire ?"
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:79
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:104
 msgid ""
 "To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
@@ -3381,28 +3467,28 @@ msgstr ""
 "Pour résoudre ce problème, il faut le décomposer en parties que vous savez "
 "résoudre. Par exemple, on peut vouloir faire les étapes suivantes :"
 
-#. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:82
+#. type: Content of: <p><p><p><ol><li>
+#: src/lessons/welcome/variables/Variables.html:107
 msgid "Move forward until located over a baggle"
-msgstr "Avancer jusqu'à se trouver sur un baggle"
+msgstr "Avancer jusqu'à se trouver sur un biscuit"
 
-#. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:83
+#. type: Content of: <p><p><p><ol><li>
+#: src/lessons/welcome/variables/Variables.html:108
 msgid "Pickup the baggle"
-msgstr "Ramasser le baggel au sol"
+msgstr "Ramasser le biscuit au sol"
 
-#. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:84
+#. type: Content of: <p><p><p><ol><li>
+#: src/lessons/welcome/variables/Variables.html:109
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr "Reculer du même nombre de cases que ce qu'on a avancé"
 
-#. type: Content of: <p><p><p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:85
+#. type: Content of: <p><p><p><ol><li>
+#: src/lessons/welcome/variables/Variables.html:110
 msgid "Drop back the baggle"
-msgstr "Reposer le baggel au sol"
+msgstr "Reposer le biscuit au sol"
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:88
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:113
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
@@ -3412,33 +3498,42 @@ msgstr ""
 "si l'on a pas compté le nombre de pas faits à la première étape. On va pour "
 "cela utiliser une variable, que l'on peut nommer <code>nbPas</code>."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:92
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:117
 msgid ""
-"Create a variable (of type <code>int</code>) before phase 1, initialize it "
-"to 0, and each time you move one step forward, increment its value by one "
-"(<code>stepAmount = stepAmount + 1;</code> or <code>stepAmount++;</code>, "
-"both syntaxes being equivalent)."
+"Create an integer variable before phase 1, initialize it to 0, and each time "
+"you move one step forward, increment its value by one (<code>stepAmount = "
+"stepAmount + 1;</code>[!java] or <code>stepAmount++;</code>, both syntaxes "
+"being equivalent[/!]).  Such variable which takes every values of a given "
+"range is often called a <b>stepper</b>."
 msgstr ""
 "On crée cette variable (de type <code>int</code>) avant l'étape 1, on "
 "l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1 "
-"(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux "
-"écritures sont équivalentes)."
+"(<code>nbPas = nbPas + 1;</code>[!java] ou <code>nbPas++;</code>, les deux "
+"écritures sont équivalentes[/!])."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:96
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:124
 msgid ""
-"Create a variable before phase 1, initialize it to 0, and each time you move "
-"one step forward, increment its value by one (<code>stepAmount = stepAmount "
-"+ 1</code>)."
+"If you know Java or other languages, you will probably try to use the <code>+"
+"+</code> operator to increment the variable, but it's not allowed in [!"
+"thelang].  This is because it would be difficult to define this operator for "
+"every data types.  For example, what should ++ do when applied to a Complex "
+"value or to a String? The problem does not occur in Java as <code>int</code> "
+"is not an object but a primitive type.  (if you don't know the <code>++</"
+"code>, just ignore this paragraph: it does not exist in [!thelang])"
 msgstr ""
-"On crée cette variable (de type <code>int</code>) avant l'étape 1, on "
-"l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1 "
-"(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux "
-"écritures sont équivalentes)."
+"Si vous connaissez le Java ou d'autres langages du genre, vous serez "
+"probablement tenté d'utiliser l'opérateur <code>++</code> pour incrémenter "
+"la variable. Malheureusement, cet opérateur n'existe pas en [!thelang]. "
+"C'est parce qu'il serait difficile de savoir quoi faire quand on l'applique "
+"à un nombre complexe ou à une chaîne de caractères. Le problème ne se pose "
+"pas en Java, où ++ est défini pour le type <code>int</code> qui n'est pas un "
+"type d'objet mais un type primitif (si vous ne connaissez pas l'opérateur +"
+"+, ignorez simplement ce paragraphe : cela n'existe pas en [!thelang])."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:100
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:132
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward until "
@@ -3450,20 +3545,8 @@ msgstr ""
 "<code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant "
 "<code>dejaFait</code> à chaque fois."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:105
-msgid ""
-"Please note that it is forbidden to use spaces in variable names. So you can "
-"name you variable <code>stepAmount</code>, but <code>step Amount</code> is "
-"not a valid name."
-msgstr ""
-"Attention, il est interdit d'utiliser des caractères accentués ou des "
-"espaces dans les noms de variables Java. Vous pouvez donc nommer votre "
-"variable <code>dejaFait</code>, mais ni <code>déjaFait</code> ni <code>deja "
-"Fait</code> ne sont des noms valides."
-
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/variables/Variables.html:109
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:137
 msgid "It's your turn now!"
 msgstr "À vous de jouer !"
 
@@ -3485,8 +3568,8 @@ msgstr ""
 "C'est une compétition traditionnelle par laquelle les jeunes buggles "
 "prouvent leur valeur à la tribu. C'est à la fois une épreuve de force et "
 "d'intelligence puisqu'il faut courir le plus vite possible, mais s'arrêter "
-"dès que vous avez rejoint votre quatrième baggle. Il faut que vous aidiez "
-"les buggles à avancer tout en comptant les baggles pour déterminer quand "
+"dès que vous avez rejoint votre quatrième biscuit. Il faut que vous aidiez "
+"les buggles à avancer tout en comptant les biscuits pour déterminer quand "
 "s'arrêter."
 
 #. type: Content of: <h2>
@@ -3506,8 +3589,8 @@ msgstr ""
 "C'est le second jour de la Grande Course des Buggles. Comme d'habitude, il "
 "faut courir jusqu'à trouver la case où vous devez vous arrêter. Mais cette "
 "fois, vous devez vous arrêter quand vous aurez compté deux fois plus de "
-"baggles que de cases oranges plus une. En d'autres termes, la condition "
-"d'arrêt est la suivante : <code>2 * baggles = caseOrange + 1</code>."
+"biscuits que de cases oranges plus une. En d'autres termes, la condition "
+"d'arrêt est la suivante : <code>2 * biscuits = caseOrange + 1</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/RunHalf.html:8
@@ -3516,18 +3599,26 @@ msgid ""
 "<code>isOverOrange()</code> method."
 msgstr ""
 "Vous pouvez déterminer si vous vous trouvez sur une case orange avec la "
-"méthode <code>isOverOrange()</code>."
+"méthode <code>estSurOrange()</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:3
+#, fuzzy
+#| msgid ""
+#| "While loops are well adapted to situations where you want to achieve an "
+#| "action while a condition stays true, but it is less adapted to achieve a "
+#| "given action a predetermined amount of time. For example, when we wanted "
+#| "to move <code>stepAmount</code> steps backward in previous exercise, you "
+#| "had to create a new variable, initialize it, and move backward until the "
+#| "new variable became equal to <code>stepAmount</code>, incrementing the "
+#| "new variable manually at the end of the loop."
 msgid ""
 "While loops are well adapted to situations where you want to achieve an "
 "action while a condition stays true, but it is less adapted to achieve a "
 "given action a predetermined amount of time. For example, when we wanted to "
-"move <code>stepAmount</code> steps backward in previous exercise, you had to "
-"create a new variable, initialize it, and move backward until the new "
-"variable became equal to <code>stepAmount</code>, incrementing the new "
-"variable manually at the end of the loop."
+"move <code>stepAmount</code> steps backward in a previous exercise, we had "
+"to create a new variable, initialize it, and move backward while "
+"incrementing this variable until it became equal to <code>stepAmount</code>."
 msgstr ""
 "Les boucles <tt>while</tt> sont bien adaptées aux situations où l'on veut "
 "réaliser une action tant qu'une condition est réalisée, mais elles sont "
@@ -3539,7 +3630,7 @@ msgstr ""
 "corps de la boucle."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:11
+#: src/lessons/welcome/loopfor/LoopFor.html:10
 msgid ""
 "In such situations, <code>for</code> loops become handy. Their syntax is the "
 "following:"
@@ -3547,35 +3638,25 @@ msgstr ""
 "Dans ce genre de cas, les boucles de type <code>for</code> sont plus "
 "pratique. Leur syntaxe est la suivante :"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:13
+#. type: Content of: <pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:12
 #, no-wrap
 msgid ""
-"for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"}"
+"[!java]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"}[/!][!python]for <b>variable</b> in <b>sequence of values</b>:\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>first value</b> to <b>last value</b>) { \n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"}[/!]"
 msgstr ""
-"for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"}"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:17
-#, no-wrap
-msgid ""
-"for <b>variable</b> in <b>sequence of values</b>:\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
-msgstr ""
-"for <b>variable</b> in <b>séquence de valeurs</b>:\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:21
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/loopfor/LoopFor.html:19
 msgid "This code is perfectly equivalent to the following:"
 msgstr "Ce code est parfaitement équivalent à celui-ci :"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:22
+#. type: Content of: <pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:20
 #, no-wrap
 msgid ""
 "<b>initializing</b>;\n"
@@ -3590,8 +3671,8 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;<b>incrémentation</b>;\n"
 "}"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:28
+#. type: Content of: <pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:26
 #, no-wrap
 msgid ""
 "while <b>there is a value in the sequence</b>: \n"
@@ -3602,8 +3683,8 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;<b>mettre la variable à la prochaine valeur non traitée de la séquence</b>\n"
 "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:33
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:31
 msgid ""
 "Please note that in Python the instruction <code>range(n)</code> allows to "
 "get a sequence n integer value from 0 to n-1."
@@ -3611,8 +3692,8 @@ msgstr ""
 "Veuillez noter qu'en Python, l'instruction <code>range(n)</code> permet "
 "d'obtenir une séquence de n entiers allant de 0 à n-1."
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:36
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:34
 msgid ""
 "For example, both following codes are equivalent. The latter is easier to "
 "read, don't you think?"
@@ -3620,8 +3701,8 @@ msgstr ""
 "Par exemple, les deux codes suivants sont équivalents. Avouez que la seconde "
 "forme est plus lisible, non ?"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:39
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:37
 #, no-wrap
 msgid ""
 "int done = 0;\n"
@@ -3636,8 +3717,8 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;dejaFait++;\n"
 "}"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:44
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:42
 #, no-wrap
 msgid ""
 "for (int done = 0; done &lt; stepAmount; done++) {\n"
@@ -3648,8 +3729,8 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;backward();\n"
 "}"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:48
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:46
 #, no-wrap
 msgid ""
 "done = 0\n"
@@ -3662,8 +3743,8 @@ msgstr ""
 "&nbsp;&nbsp;&nbsp;backward()\n"
 "&nbsp;&nbsp;&nbsp;dejaFait = dejaFait + 1\n"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:53
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:51
 #, no-wrap
 msgid ""
 "for done in range(stepAmount):\n"
@@ -3672,8 +3753,8 @@ msgstr ""
 "for done in range(nbPas):\n"
 "&nbsp;&nbsp;&nbsp;backward()\n"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:59
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopfor/LoopFor.html:57
 msgid ""
 "It is possible to build more advanced <tt>for</tt> loops since any valid "
 "instruction can be used as initialization, condition and incrementation. The "
@@ -3688,8 +3769,8 @@ msgstr ""
 "boucle, ni d'initialisation (tout est fait dans la condition et "
 "l'incrémentation)."
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:65
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:63
 #, no-wrap
 msgid ""
 "int x=20, y=3, tmp;\n"
@@ -3700,8 +3781,8 @@ msgstr ""
 "for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }\n"
 " <span class=\"comment\">/* le PGCD est stocké dans x */</span>"
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:69
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/loopfor/LoopFor.html:67
 msgid ""
 "If you don't understand every details of this example, don't panic. That's "
 "quite logic since it uses some syntax details that we did not introduce yet."
@@ -3710,8 +3791,8 @@ msgstr ""
 "c'est assez logique puisqu'il utilise des points de syntaxe que nous n'avons "
 "pas encore vu."
 
-#. type: Content of: <p><p><p><a>
-#: src/lessons/welcome/loopfor/LoopFor.html:73
+#. type: Content of: <p><p><a>
+#: src/lessons/welcome/loopfor/LoopFor.html:71
 msgid ""
 "<a name=\"Objectives\"> You now have to redo the same exercise than "
 "previously (move forward until being over a baggle, pick it up, move back to "
@@ -3724,8 +3805,8 @@ msgstr ""
 "<tt>for</tt> pour revenir au point de départ à la place d'une boucle "
 "<tt>while</tt>."
 
-#. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:78
+#. type: Content of: <p><p><a><p>
+#: src/lessons/welcome/loopfor/LoopFor.html:76
 msgid "Once done, proceed to next exercise."
 msgstr "Une fois ceci fait, passez à l'exercice suivant."
 
@@ -14123,6 +14204,22 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
+
+#~ msgid ""
+#~ "for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
+#~ "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+#~ "}"
+#~ msgstr ""
+#~ "for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {\n"
+#~ "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+#~ "}"
+
+#~ msgid ""
+#~ "for <b>variable</b> in <b>sequence of values</b>:\n"
+#~ "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
+#~ msgstr ""
+#~ "for <b>variable</b> in <b>séquence de valeurs</b>:\n"
+#~ "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"

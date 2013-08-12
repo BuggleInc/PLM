@@ -6,111 +6,171 @@ des buggles, les principales données sont cachées derrière la représentation
 graphique, mais ce n'est pas une raison pour ne jamais manipuler
 explicitement des données. 
 
-  <h3 class="Java">Les données en Java</h3>
-  <h3 class="Python">Les données en Python</h3>
-  Dans un programme, on peut utiliser différents <i>types</i> de données, tels
+  <h3>Les données en [!thelang]</h3>
+<p>Dans un programme, on peut utiliser différents <i>types</i> de données, tels
 que les entiers, les nombres à virgules ou les chaînes de caractères. Si on
 veut utiliser une donnée plusieurs fois, il faut la stocker dans une
-<i>variable</i>, qui est une sorte de case contenant une valeur. Ce n'est
-pas très différent d'une étagère contenant un livre: vous rangez votre
-donnée (disons '5') dans la variable (disons 'longueur'), et vous pouvez la
-retrouver plus tard quand vous en avez besoin.
+<i>variable</i>, qui est une sorte de case contenant une valeur: vous rangez
+votre donnée (disons '5') dans la variable (disons «longueur»), et vous
+pouvez la retrouver plus tard quand vous en avez besoin. C'est exactement
+comme prendre une boîte avec une étiquette (disons «cadeau») et d'y ranger
+quelque chose dedans (disons, un flacon de Channel Numéro 5).  
 
-  <p class="Java">Java est un langage <i>typé</i>, ce qui veut dire que l'on ne peut stocker
-une valeur que dans une variable du bon type. Pas question de stocker votre
-nom dans une variable entière.</p>
-  <p class="Python">Le langage Python est dit <i>non typé</i>, ce qui signifie qu'une variable
-donnée peutcontenir n'importe quel type de donnée. D'autres langages (comme
-Java) rendent obligatoire que chaque variable  ne puisse contenir que des
-données d'un certain type, mais il n'y a pas de telles difficultés ici.</p>
+<h3>Déclaration de Variables</h3>  
+
+<p>Il est très simple de <b>déclarer</b> (c'est-à-dire, créer) une variable en
+[!thelang]. Il suffit d'écrire
+[!java]son type, une espace et le nom de la variable.[/!]
+[!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:)
+et le type de la variable.[/!]
+[!python]le nom de la variable, un signe égal (=) et sa valeur initiale.[/!]
+
+Le nom de la variable est un label pour la retrouver plus tard[!python].[/!]
+
+[!java|scala] tandis que son type est le genre de données qu'on va pouvoir
+stoker dans cette variable.[/!]
+Il est interdit de mettre des espaces et des accents dans les noms de
+variable.
+Ainsi, on peut nommer une variable <code>dejaFait</code>, mais ni <code>deja
+fait</code> ni <code>déjaFait</code> ne sont des identificateurs de
+variables valides.
+  </p>
+
+[!java|scala]
+  <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
+écrira :</p> 
+  <pre>[!java]int x;[/!][!scala]var x: Int[/!]</pre>
+[/!]
+
+<p>[!java|scala]Si vous le souhaitez, vous pouvez spécifier une valeur initiale
+en faisant suivre la déclaration d'un symbole égal (=) suivi de la valeur à
+utiliser.[/!]
+[!scala]Si vous spécifiez une valeur, il n'est alors plus indispensable de
+spécifier le type de la variable, puisque Scala parvient à le deviner tout
+seul. Vous êtes libre de le spécifier quand même si vous le désirez (ou si
+le compilateur se trompe, comme cela arrive parfois par exemple entre les
+différents types de nombres), mais c'est optionnel.[/!]
+Donc, si vous voulez utiliser 5 comme valeur initiale, il faut écrire: </p>
+<pre>[!java]int x=5;[/!][!python]x = 5[/!][!scala]var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
+var y = 10       <span class="comment">// ou bien je peux l'omettre</span>[/!]</pre>
   
-<p class="Java">Pour <i>déclarer</i> (i.e. créer) une variable, il suffit d'écrire son type,
-un espace et le nom de la variable. Notez qu'il n'est pas possible
-d'utiliser d'accents dans les noms de variables, malheureusement. Parmi les
-types existants, on trouve: <b>int</b> pour les entiers, <b>double</b> pour
-les nombres à virgule, <b>boolean</b> pour les booléens (i.e. les variables
-qui peuvent être soit vraies soit fausses) et <b>String</b> pour les chaînes
-de caractères.  Si l'on veut, on peut faire suivre la déclaration du signe =
-suivi de la valeur initiale à donner à la valeur. </p>
-<p class="Java">Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
-écrira : <pre class="Java">int x;</pre></p>
-<p class="Java">Si on veut que sa valeur initiale soit 5, on écrira : <pre class="Java">int x = 5;</pre></p>	
-<p class="Java">Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle
-valeur à la variable, c'est très simple : <pre class="Java">x = 3;</pre>
-<p class="Java">La syntaxe pour créer une variable entière <code>x</code> de valeur initiale
-4 est la suivante : 
-  <pre class="Java">int x = 4;</pre></p>
-<p class="Java">C'est la même histoire pour les chaînes, nombres à virgule flottante et les
-booléens.</p>
-  <pre class="Java">String nom = "Martin Quinson";
-double taille=1.77; <span class="comment">// en mètres</span>
-boolean marie=true;</pre>
+[!java|scala]
+<p>Comme vous pouvez le voir, les variables sont <b>typées</b>
+en[!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées:
+une variable donnée ne peut stocker qu'un type de données
+spécifique. N'essayez même pas de rancher des nombres dans une variable
+faite pour recevoir des lettres !
+D'autres langages (comme le python) sont moins regardants, et on peut ranger
+n'importe quel type de données dans n'importe quelle variable sans
+restriction. À première vue, cela semble plus simple, mais ce genre de
+restriction permet au compilateur de détecter plus d'erreurs de logiques
+pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile
+d'écrire du python, mais le typage empêche certaines erreurs de se glisser
+dans vos programmes.
+Voici quelque uns des types de données existants en [!thelang] :
+</p>
+<ul>
+  <li><b>[!java]int[/!][!scala]Int[/!]</b>, pour les entiers;</li>
+  <li><b>[!java]double[/!][!scala]Double[/!]</b>, pour les nombres à virgule;</li> 
+  <li><b>[!java]boolean[/!][!scala]Boolean[/!]</b>, pour les booléens,
+c'est-à-dire les variables dont la valeur est soit "vrai" soit "faux";</li>
+  <li><b>String</b>, pour les chaînes de caractères.</li>
+</ul>
+[/!] [!python]
+<p>Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en
+Python, ce qui veut dire qu'elles ne sont pas spécialisées sur un type de
+données particulier. Il est tout à fait envisageable de stocker des nombres
+dans une variable, puis d'y mettre des lettres un peu plus tard.
+D'autres langages (comme le Java ou le Scala) sont plus restrictifs et
+imposent de spécialiser chaque variable pour un type donné. Cela semble bien
+plus contraignant à première vue, mais ce genre de restriction permet au
+compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine
+manière, il est plus facile d'écrire du Python, mais le typage de ces
+langages empêche certaines erreurs de se glisser dans les programmes.</p>
+[/!]
+  
 
-<p class="Python"><i>Déclarer</i> (ie créer) une variable en Python est extrèmement simple:
-vous avez juste besoin de lui donner une valeur initiale en écrivant son
-nom, le signe égal et la valeur.</p>  
-<p class="Python">Ainsi, pour créer une variable nommée <b>x</b> dont la valeur initiale sera
-5, on écrira : <pre class="Python">x = 5;</pre></p>
-<p class="Python">Plus tard dans le programme, si l'on souhaite <i>affecter</i> une nouvelle
-valeur à la variable, c'est très simple : <pre class="Python">x = 3;</pre>
-<p class="Python">C'est la même histoire pour les chaînes, nombres à virgule flottante et les
+<p class="scala">Si vous savez que votre «variable» ne va jamais changer de valeur (par
+exemple parce qu'il s'agit de la taille de l'écran ou une autre constante du
+genre), alors vous devriez en faire une <b>valeur</b> plutôt qu'une
+variable.
+Utilisez simplement le mot-clé <code>val</code> au lieu de
+<code>var</code>.
+Le compilateur pourra alors faire plus de vérifications pour aider les
+étourdis cherchant à modifier les constantes. Plus intéressant, le
+compilateur parvient également à produire du code plus rapide dans certains
+cas.</p>
+
+<p>C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
-<pre class="Python">prenom = "Martin"
+
+<pre class="java">String nom = "Martin Quinson";
+double taille=1.77; <span class="comment">// en mètres</span>
+boolean marie=true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span></pre>
+
+<pre class="scala">val nom:String = "Martin Quinson"; <span class="comment">// impossible de le modifier (c'est une valeur)</span>
+var taille: Double = 1.77; <span class="comment">// en metre</span>
+var marie = true; <span class="comment">// Signifie vrai; le contraire (faux) s'écrirait "false"</span>
+<span class="comment">// Scala sait que 'true' est une valeur de type Boolean, pas besoin de le répéter</span></pre>
+
+<pre class="python">prenom = "Martin"
 nom = 'Quinson' <span class="comment"># les simples et les doubles quotes fonctionnent ici</span>
 devise = "Je ne finis jam' (mais je continue d'essayer)" <span class="comment"># avoir des quotes simples dans des doubles quotes fonctionne</span> 
 taille=1.77 <span class="comment"># en mètre</span>
-marie=True <span class="comment"># le contraire serait marqué False</span></pre>
+marie=True <span class="comment"># Signifie 'vrai'; le contraire (faux) serait marqué 'False'</span></pre>
 
-      
+<h3>Affectations</h3>
+
+<p>Une fois que votre variable est déclarée, vous pouvez y <i>affecter</i> une
+nouvelle valeur plus tard dans votre programme. C'est vraiment très simple :</p> 
+<pre>x = 3[!java];[/!]</pre>
+
 <p>À droite du signe égal, on peut mettre une expression quelconque, qui peut
-contenir des constantes, des variables et des opérations : 
+contenir des constantes, des variables et des opérations :</p>
 
-<pre class="Java">x = 3 + 2;
-x = 3 * x;
-hello = "Salut "+nom;
-</pre> 
-<pre class="Python">x = 3 + 2
-x = 3 * x
-hello = "Salut "+nom
-</pre> 
-
+<pre>x = 3 + 2[!java];[/!]
+x = 3 * x[!java];[/!]
+greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner</span></pre> 
 
 <h3>Objectif de cet exercice</h3>
 Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif
-cette fois est d'avancer jusqu'au baggle qui se trouve devant la buggle, le
-ramasser, revenir à la position initiale, puis de poser le baggle.
+cette fois est d'avancer jusqu'au biscuit qui se trouve devant la buggle, le
+ramasser, revenir à la position initiale, puis de poser le biscuit.
 
 <h3>Comment faire ?</h3> 
 <p>Pour résoudre ce problème, il faut le décomposer en parties que vous savez
 résoudre. Par exemple, on peut vouloir faire les étapes suivantes :
 <ol>
-  <li>Avancer jusqu'à se trouver sur un baggle</li>
-  <li>Ramasser le baggel au sol</li>
+  <li>Avancer jusqu'à se trouver sur un biscuit</li>
+  <li>Ramasser le biscuit au sol</li>
   <li>Reculer du même nombre de cases que ce qu'on a avancé</li>
-  <li>Reposer le baggel au sol</li>
+  <li>Reposer le biscuit au sol</li>
 </ol></p>
 
 <p>Bien entendu, il est impossible de reculer du bon nombre de case à l'étape 3
 si l'on a pas compté le nombre de pas faits à la première étape. On va pour
 cela utiliser une variable, que l'on peut nommer <code>nbPas</code>.</p>
 
-<p class="Java">On crée cette variable (de type <code>int</code>) avant l'étape 1, on
+<p>On crée cette variable (de type <code>int</code>) avant l'étape 1, on
 l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1
-(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux
-écritures sont équivalentes).</p>
-<p class="Python">On crée cette variable (de type <code>int</code>) avant l'étape 1, on
-l'initialise à 0, et chaque fois qu'on avance d'un pas, on l'incrémente de 1
-(<code>nbPas = nbPas + 1;</code> ou <code>nbPas++;</code>, les deux
-écritures sont équivalentes).</p>
+(<code>nbPas = nbPas + 1;</code>[!java] ou <code>nbPas++;</code>, les deux
+écritures sont équivalentes[/!]).</p>
+  
+[!python|scala]
+<p>Si vous connaissez le Java ou d'autres langages du genre, vous serez
+probablement tenté d'utiliser l'opérateur <code>++</code> pour incrémenter
+la variable. Malheureusement, cet opérateur n'existe pas en
+[!thelang]. C'est parce qu'il serait difficile de savoir quoi faire quand on
+l'applique à un nombre complexe ou à une chaîne de caractères. Le problème
+ne se pose pas en Java, où ++ est défini pour le type <code>int</code> qui
+n'est pas un type d'objet mais un type primitif (si vous ne connaissez pas
+l'opérateur ++, ignorez simplement ce paragraphe : cela n'existe pas en
+[!thelang]).</p>
+[/!]
 
 <p>Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière
 <code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que
 <code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant
 <code>dejaFait</code> à chaque fois.</p>
-
-<p>Attention, il est interdit d'utiliser des caractères accentués ou des
-espaces dans les noms de variables Java. Vous pouvez donc nommer votre
-variable <code>dejaFait</code>, mais ni <code>déjaFait</code> ni <code>deja
-Fait</code> ne sont des noms valides.</p>
 
 <p>À vous de jouer !</p>
