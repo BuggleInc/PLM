@@ -37,6 +37,19 @@ public class CountTeen extends BatExercise {
 				"		if (d>12 and d<20):\n"+
 				"			ret+=1\n"+
 				"		return ret\n");
+		templateScala("countTeen", new String[] {"Integer","Integer","Integer","Integer","Integer"}, 
+			"def countTeen(a:Int, b:Int,c:Int,d:Int): Int = {\n",
+			  "  int ret=0;\n"
+			+ "  if (a>12&&a<20)\n"
+			+ "	   ret+=1;\n"
+			+ "  if (b>12&&b<20)\n"
+			+ "	   ret+=1;\n"
+			+ "  if (c>12&&c<20)\n"
+			+ "	   ret+=1;\n"
+			+ "  if (d>12&&d<20)\n"
+			+ "	   ret+=1;\n"
+			+ "  return ret\n"
+			+ "}");
 		setup(myWorld);
 	}
 
