@@ -9,9 +9,6 @@ to github issues.
 
 * try to remove the *sys-package-mgr* processing messages when jython is loading
 
-* Allow exercises in Scala:
-http://speaking-my-language.blogspot.fr/2009/11/embedded-scala-interpreter.html
-
 ***************** ENGINE IMPROVEMENT
 
  * We could use the same shortcuts than eclipse
