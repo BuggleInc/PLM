@@ -19,7 +19,7 @@ class ScalaLoopForEntity extends SimpleBuggle {
 			forward();
 		}
 		pickupBaggle();
-		for (cpt2 <- 0  to cpt) {
+		for (cpt2 <- 0  to cpt-1) {
 			backward();
 		}
 		dropBaggle();
