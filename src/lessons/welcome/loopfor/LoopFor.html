@@ -22,21 +22,21 @@ following:</p>
 <pre>[!java]for (int stepper=0; stepper&lt;n; stepper++) {
     <b>action</b>();
 }[/!][!python]for <b>stepper</b> in <b>range(n)</b>:
-    <b>action</b>()[/!][!scala] for (var <b>stepper</b> &lt;- <b>0</b> to <b>10</b>) { 
+    <b>action</b>()[/!][!scala] for (var <b>stepper</b> &lt;- <b>1</b> to <b>n</b>) { 
     <b>action</b>();
 }[/!]</pre>
 
 <p>This code is then perfectly equivalent to the following one.</p>
 <pre>[!java]int stepper = 0;
-while (stepper &lt; 10) {
+while (stepper &lt; n) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
 &nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
 }[/!][!python]stepper=0
-while stepper &lt; 10: 
+while stepper &lt; n: 
     action()
     stepper = stepper + 1[/!][!scala]
-var stepper = 0
-while (stepper &lt; 10) {
+var stepper = 1
+while (stepper &lt;= n) {
     <b>action</b>()
     stepper = stepper + 1
 }[/!]</pre>
@@ -54,6 +54,18 @@ done in the condition and incrementing instruction.
    <span class="comment">/* nothing in the loop body */</span>
 }
 <span class="comment">/* the buggle now faces a wall */</span></pre>
+[/!]
+
+[!scala]
+<p>If you want to nest several loops, you can do it on one line in Scala. This means that the two following chunks are equivalent:</p>
+<pre>for (stepper1 <- 1 to n) {
+    for (stepper2 <- 1 to m) {
+       actions()
+    }
+}</pre> 
+<pre>for (stepper1 <- 1 to n; stepper2 <- 1 to m) { <span class="comment">// Simply separate both loop conditions with a semi-column  
+    actions()
+}</pre> 
 [/!]
 
 <h3>Exercise goal</h3>
