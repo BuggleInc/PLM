@@ -38,7 +38,7 @@ class ScalaLoopStairsEntity extends SimpleBuggle {
 		forward();
 		forward();
 		left();
-		for (i <- 0 to 8) { 
+		for (i <- 1 to 8) { 
 			forward();
 			right();
 			forward();

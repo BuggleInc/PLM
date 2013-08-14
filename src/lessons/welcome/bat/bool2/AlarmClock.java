@@ -36,14 +36,18 @@ public class AlarmClock extends BatExercise {
 		templateScala("alarmClock", new String[] {"Int","Boolean"},
 				"def alarmClock(day:Int, vacation:Boolean): String = {\n",
 				  "  if (! vacation) {\n"
-				+ "    if (day >= 1 && day <= 5)\n"
+				+ "    if (day >= 1 && day <= 5) {\n"
 				+ "      return \"7:00\"\n"
-				+ "    else\n"
+				+ "    } else {\n"
 				+ "      return \"10:00\"\n"
+				+ "    }\n"
 				+ "  } else {\n"
+				+ "    if (day >= 1 && day <= 5) {\n"
 				+ "      return \"10:00\"\n"
-				+ "    else\n"
+				+ "    } else {\n"
 				+ "      return \"off\"\n"
+				+ "    }\n"
+				+ "  }\n"
 				+ "}");
 
 		setup(myWorld);

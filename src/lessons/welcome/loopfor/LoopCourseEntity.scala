@@ -27,15 +27,15 @@ class ScalaLoopCourseEntity extends SimpleBuggle {
 			if (colors(i).equals(c)) { 
 				nextColor = colors(i+1);
 			}
-		setBrushColor(c);
+		setBrushColor(nextColor);
 		brushDown();
 		brushUp();
 	}
 
 	override def run() {
 		/* BEGIN SOLUTION */
-		for (i <- 0 to 10; side <- 0 to 4) {
-			for (step <- 0 to 8) {
+		for (i <- 1 to 10; side <- 1 to 4) {
+			for (step <- 1 to 8) {
 				forward()
 			}
 			left()
