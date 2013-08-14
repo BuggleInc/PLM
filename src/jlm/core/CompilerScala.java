@@ -57,6 +57,7 @@ public class CompilerScala {
 		reporter.reset();
 		reporter.setOffset(0);
 		target.clear();
+		cache = new HashMap<String, Class<?>>();
 		classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 	}
 
