@@ -9,7 +9,6 @@ public class BDREntity extends jlm.universe.bugglequest.SimpleBuggle {
 		} 
 	}
 
-	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
 		while (true) {
@@ -38,5 +37,4 @@ public class BDREntity extends jlm.universe.bugglequest.SimpleBuggle {
 		}		
 		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 }

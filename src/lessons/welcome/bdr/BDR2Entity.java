@@ -56,61 +56,56 @@ public class BDR2Entity extends SimpleBuggle {
 		return func+"("+getX()+","+getY()+")";
 	}
 
-
-	/* BEGIN TEMPLATE */
-	boolean moreMusic = true;
-
-	public void danceOneStep() {
-		/* BEGIN SOLUTION */
-		char read = getIndication();
-		if (checking) {
-			char todo = ' ';
-			if (todoList.size() == 0) { 
-				if (read != ' ')
-					complain(name+" reads "+fmt(read)+", but it's supposed to be done.");
-			} else
-				todo = todoList.pop();
-
-			if (todo != read) {
-				complain(name+" reads "+fmt(read)+", but it was supposed to do "+fmt(todo)+". Invalid TODO.");			
-			}
-		}
-
-		switch (read) {
-		case 'R': right(); forward(); break;
-		case 'L': left();  forward(); break;
-		case 'I': back();  forward(); break;
-
-		case 'A': forward(1); break;
-		case 'B': forward(2); break;
-		case 'C': forward(3); break;
-		case 'D': forward(4); break;
-		case 'E': forward(5); break;
-		case 'F': forward(6); break;
-
-		case 'Z': backward(1); break;
-		case 'Y': backward(2); break;
-		case 'X': backward(3); break;
-		case 'W': backward(4); break;
-		case 'V': backward(5); break;
-		case 'U': backward(6); break;
-
-		default: moreMusic = false;
-		}
-		/* END SOLUTION */
-	}
-
 	public void run() { 
-		/* BEGIN HIDDEN */
+		/* BEGIN HIDDEN (don't put that is student's code) */ 
 		addTODO((String) world.getParameter(0));			
 		/* END HIDDEN */
 		
-		while (moreMusic)
-			danceOneStep();
-		/* BEGIN HIDDEN */
+		/* BEGIN SOLUTION */
+		boolean moreMusic = true;
+
+		while (moreMusic) {
+			char read = getIndication();
+			if (checking) {
+				char todo = ' ';
+				if (todoList.size() == 0) { 
+					if (read != ' ')
+						complain(name+" reads "+fmt(read)+", but it's supposed to be done.");
+				} else
+					todo = todoList.pop();
+
+				if (todo != read) {
+					complain(name+" reads "+fmt(read)+", but it was supposed to do "+fmt(todo)+". Invalid TODO.");			
+				}
+			}
+
+			switch (read) {
+			case 'R': right(); forward(); break;
+			case 'L': left();  forward(); break;
+			case 'I': back();  forward(); break;
+
+			case 'A': forward(1); break;
+			case 'B': forward(2); break;
+			case 'C': forward(3); break;
+			case 'D': forward(4); break;
+			case 'E': forward(5); break;
+			case 'F': forward(6); break;
+
+			case 'Z': backward(1); break;
+			case 'Y': backward(2); break;
+			case 'X': backward(3); break;
+			case 'W': backward(4); break;
+			case 'V': backward(5); break;
+			case 'U': backward(6); break;
+
+			default: moreMusic = false;
+			}
+		}
+		/* END SOLUTION */
+		
+		/* BEGIN HIDDEN (don't put that is student's code) */
 		if (checking && todoList.size() != 0) 
 			complain(name+"I'm done, but I was supposed to do "+fmt(todoList.pop())+";");
 		/* END HIDDEN */
 	}
-	/* END TEMPLATE */
 }

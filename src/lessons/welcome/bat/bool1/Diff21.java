@@ -27,7 +27,14 @@ public class Diff21 extends BatExercise {
 				"def diff21(n):\n",
 				"   if (n>21):\n"+
 				"      return 2*(n-21)\n"+
-				"   return 21-n\n");		
+				"   return 21-n\n");
+		templateScala("diff21", new String[] {"Integer"}, 
+				"def diff21(n:Int): Int = {\n",
+				"  if (n>21)\n"
+			  + "    return 2*(n-21)\n"
+			  + "  return 21-n\n"
+			  + "}");
+
 		setup(myWorld);
 	}
 

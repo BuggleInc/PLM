@@ -5,158 +5,148 @@ this game beloved of some students where the player has to move its feet on
 the carpet according to the instructions presented on the screen, and following
 the music. But before that, we have some details to study first.</p>
 
-<h3 class="Java">Conditionals without curly braces</h3>
-<p class="Java">
+[!java|scala]
+<h3>Conditionals without curly braces</h3>
+<p>
 There is one detail we omitted about the conditional syntax: if a branch
 contains only one instruction, then the curly braces become optional. So,
 the two chunk of code are equivalent:</p>
 
- <pre class="Java">if (<b>condition</b>) {
+ <pre>if (<b>condition</b>) {
     <b>whatToDoIfTheConditionIsTrue();</b>
 } else {
     <b>whatToDoElse();</b>
 }</pre>
- <pre class="Java">if (<b>condition</b>) 
+ <pre>if (<b>condition</b>) 
     <b>whatToDoIfTheConditionIsTrue();</b>
 else
     <b>whatToDoElse();</b></pre>
 
-<p class="Java">But beware, this becomes dangerous if you chain the <tt>if</tt> instructions
-like this: </p>
-<pre class="Java">if (isOverBaggle())    
+<p>Actually, you can do the same for loops body that are reduced to one instruction only. 
+But beware, this becomes dangerous if you chain the <tt>if</tt> instructions like this: </p>
+<pre>if (isOverBaggle())    
      if (x == 5)
           left();
 else
      right();
 forward();</pre>
 
-<p class="Java">In fact, it does not turn right when there is no baggle on the ground AND x
+<p>In fact, it does not turn right when there is no baggle on the ground AND x
 equals 5, but when the buggle found a baggle on the ground and x equals
 anything but 5. Putting this otherwise, the buggle understands the previous
 code as if it were written the following way (note that the <tt>else</tt>
 were moved to the right):</p>
-<pre class="Java">if (isOverBaggle())    
+<pre>if (isOverBaggle())    
         if (x == 5)
             left();
         else
             right();
 forward();</pre>
 
-<p class="Java">The first lesson of this is that the indentation is very helpful to help
-humans understanding, but it's of no importance for the actual meaning of
+<p>The first lesson of this is that the indentation is very important to help
+humans understanding, even if it does not change the actual meaning of
 the code. We could have written the following code and obtain the same
-result. But beware, if you want a human to read and review your code, you
+result. But if you want a human to read and review your code, you
 really want to indent it correctly. That's for example the case if you want
 a professor to read it (to grade it or to answer a question about it), or if
-you want to reuse your code later.</p> 
+you want to reuse your code later, or even if you need to debug your code yourself.</p> 
 
-<pre class="Java">if (isOverBaggle()) if (x == 5) left(); else right(); forward();</pre>
+<pre>if (isOverBaggle()) if (x == 5) left(); else right(); forward();</pre>
 
-<p class="Java">The second lesson is that a <tt>else</tt> branch always connects to the
+<p>The second lesson is that a <tt>else</tt> branch always connects to the
 closest <tt>if</tt>. This may be a bit troublesome in some case, and it may
 be easier to add more braces than strictly needed to remove any ambiguity.</p>
+[/!]
 
 <h3>Chaining conditionals</h3>
 
 <p>You sometimes want to ask the buggle something similar to:</p> 
 <pre>if it's raining, take an umbrella;
 if not, and if it's a hot day, take a bottle of water;
-if not and if it's July 4th, take an american flag</pre>
+if not and if it's July 4th, take an American flag</pre>
 
 <p>The trap is that we want at most one of these actions to be taken. That is
 to say, if it's raining a very hot July 4th, we don't want the buggle to get
 outside with an umbrella, some water and a flag, but simply with an
 umbrella. The following code is thus WRONG.</p>
 
-<pre class="Java">if (rainy()) {
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella();
-}
-if (hot()) {
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater();
-} 
-if (todayIsJuly4th()) {
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag();
-}</pre>
-
-<pre class="Python">if rainy():
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()
+<pre>[!java|scala]if (rainy())
+    takeUmbrella();
+if (hot())
+    takeWater();
+if (todayIsJuly4th())
+    takeFlag();[/!][!python]if rainy():
+    takeUmbrella()
 if hot():
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater()
+    takeWater()
 if todayIsJuly4th():
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()
-</pre>
+    takeFlag()[/!]</pre>
 
 
 <p>Indeed, since the conditions are evaluated one after the other, there is a
 risk that you go to the July 4th march on a rainy day. Instead, we should
-use something like this:</p>
+use something like this to ensure that once we found a true condition, we won't
+evaluate the next ones.</p>
 
-<pre class="Java">if (rainy()) {
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella();
+<pre>[!java|scala]if (rainy()) {
+    takeUmbrella();
 } else {
-&nbsp;&nbsp;&nbsp;&nbsp;if (hotDay()) {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeWater();
-&nbsp;&nbsp;&nbsp;&nbsp;} else {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (todayIsJuly4th()) {
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeFlag();
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
-&nbsp;&nbsp;&nbsp;&nbsp;}
-}</pre>
-
-<pre class="Python">if rainy():
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()
+    if (hotDay()) {
+        takeWater();
+    } else {
+        if (todayIsJuly4th()) {
+            takeFlag();
+        }
+    }
+}[/!][!python]if rainy():
+    takeUmbrella()
 else:
-&nbsp;&nbsp;&nbsp;&nbsp;if hotDay():
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeWater()
-&nbsp;&nbsp;&nbsp;&nbsp;else:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if todayIsJuly4th():
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()
-</pre>
+    if hotDay():
+        takeWater()
+    else:
+        if todayIsJuly4th():
+            takeFlag()[/!]</pre>
 
 
-<p class="Java">Such a cascade of conditionals are quite difficult to read, and it is better
-to omit the curly braces for the <tt>else</tt> statements. Some languages
-even introduce a specific construct for these <tt>else if</tt> (but Java
-doesn't).</p>
-<pre class="Java">if (rainy()) {
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella();
+<p>Unfortunately, such a cascade of conditionals is quite difficult to read. It is better to 
+[!java|scala]omit the curly braces for the <tt>else</tt> statements. Some languages
+even introduce a specific construct for these <tt>else if</tt>, but not [!thelang].[/!]
+[!python]change the sub-blocks using the <code>elif</code> keyword to mark
+explicitly these "else if" branches.[/!]
+</p>
+
+<pre>[!java|scala]if (rainy()) { 
+    takeUmbrella();
 } else if (hotDay()) {
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater();
+    takeWater();
 } else if (todayIsJuly4th()) {
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag();
-}</pre>
-
-<p class="Python">Such a cascade of conditionals are quite difficult to read, and it is better
-to omit extra indentation for the <tt>else</tt> statements. In Python, there is a specific 
-construct for this: <tt>elif</tt>.
-<pre class="Python">if rainy():
-&nbsp;&nbsp;&nbsp;&nbsp;takeUmbrella()
+    takeFlag();
+}[/!][!python]if rainy():
+    takeUmbrella()
 elif hotDay():
-&nbsp;&nbsp;&nbsp;&nbsp;takeWater()
+    takeWater()
 elif todayIsJuly4th():
-&nbsp;&nbsp;&nbsp;&nbsp;takeFlag()
-</pre>
+    takeFlag()[/!]</pre>
 
-<h3>Graffitis in the Buggle World</h3>
+<h3>Graffiti in the Buggle World</h3>
 
-Buggles can write graffitis on the ground of their world. For that, they use
-the four following methods:
+<p>Buggles can tag graffitis on the ground of their world. For that, they use
+the four following methods:</p>
 
 <ul>
-  <li class="Java"><code>boolean isOverMessage()</code>: returns <code>true</code> if and only if there is a
-message on the ground.</li>
-  <li class="python"><code>boolean isOverMessage()</code>: returns <code>True</code> if and only if there is a
-message on the ground.</li>
-  <li><code>String readMessage()</code>: returns the message written on the ground
-(or an empty string if nothing is written).</li>
-  <li><code>void writeMessage(String msg)</code>: writes the specified message
-down on the ground. If there is already a message on the ground, the new
-content is added at the end of the existing message.</li>
-  <li><code>void clearMessage()</code>: clears what is written on the ground.</li>
+  <li><code>[!java]boolean[/!] isOverMessage()[!scala]:Boolean[/!]</code>: 
+    returns <code>[!java|scala]true[/!][!python]True[/!]</code> if and only if there is a
+    message on the ground.</li>
+  <li><code>[!java]String[/!] readMessage()[!scala]: String[/!]</code>: 
+    returns the message written on the ground (or an empty string if nothing is written).</li>
+  <li><code>[!java]void[/!] writeMessage([!java]String [/!]msg[!scala]: String[/!])</code>:
+    writes the specified message down on the ground. If there is already a message on the
+    ground, the new content is added at the end of the existing message.</li>
+  <li><code>[!java]void [/!]clearMessage()</code>: clears what is written on the ground.</li>
 </ul>
 
 
-<h3>Exercise goal</h3><a name="Objectives">The goal is then to organize a BDR game between the
+<h3>Exercise goal</h3>The goal is then to organize a BDR game between the
 buggles by learning them to move according to the instructions written on
 the ground. These instructions are messages written on the ground, with the
 following signification:
@@ -177,50 +167,34 @@ following signification:
  <tr><td>Z</td><td>Move one step backward</td><td>One letter before the end of the alphabet</td></tr>
  <tr><td>Y</td><td>Move two steps backward</td><td>Two letters before the end of the alphabet</td></tr>
  <tr><td>X</td><td>Move three steps backward</td><td>Three letters before the end of the alphabet</td></tr>
+ <tr><td><i>(anything else)</i></td><td>Stop dancing.</td><td></td></tr>
 </table>
-
-<p>In any other case, you should stop</p>
-
-<p class="Java">Write the code of the dance in the <code>run()</code> method which prototype
-is already in the editor.</p>
-
-<p class="python">Write the code of the dance directly in the editor,
-out of any function.</p>
 
 <h3>Indications</h3>
 
 This exercise may seem a bit complex at the first glance, but it comes down
-to summarizing the information above in a sequence of conditionals.
+to summarizing the information of the table in a sequence of conditionals.
 
-
-
-<p>The first subtlety is that we use the <code>char getIndication()</code>
-instead of <code>String readMessage()</code>. This method, only known by the
-buggles of this exercise, return the first char of the message written on
-the ground (or ' ' if nothing is written down). </p>
-
-<p class="Java">The other subtlety is to keep working as long as there is some work to do,
-i.e., as long as we did not find a cell which content is not described in
-the table. The easier for that is to use a boolean variable (<code>finished</code>)
-that is initialized to <code>false</code> as termination condition for the loop.
-As soon as the buggle find a cell with a value not described in the table, the boolean variable is set to <code>false</code>.
+<p>You have to keep dancing as long as there is some dancing steps to do,
+i.e., as long as we are not in cell which content is not described in the table. 
+The easier for that is to use a boolean variable (<code>finished</code>)
+as termination condition to a <code>while</code> loop.
+It should be initialized to <code>[!java|scala]false[/!][!python]False[/!]</code>, and 
+switched to <code>[!java|scala]true[/!][!python]True[/!]</code>
+as soon as the buggle find a cell with a value not described in the table.
 Thus the loop, will stop and the program will terminate. </p>
 
-<p class="python">The other subtlety is to keep working as long as there is some work to do,
-i.e., as long as we did not find a cell which content is not described in
-the table. The easier for that is to use a boolean variable (<code>finished</code>)
-that is initialized to <code>False</code> as termination condition for the loop.
-As soon as the buggle find a cell with a value not described in the
-table, the boolean variable is set to <code>False</code>.
-Thus the loop, will stop and the program will terminate. </p>
-
-<p>The functions having <code>void</code> as return type can contain some
-<tt>return</tt> without any associated value. It interrupts immediately
-their execution.</p>
+[!java]
+<p>Another subtlety is that detecting if strings are equals is a bit annoying in Java.
+So, we use the <code>char getIndication()</code> instead of <code>String readMessage()</code>. 
+This method, only known by the buggles of this exercise, returns the first char of the message written on the ground 
+(or ' ' -- the space char --  if nothing is written down). It enables to work with chars instead of strings, that is 
+much simpler in Java.</p>
+[/!]
 
 <h3>Tips and Hints</h3>
 
-If you fail understanding why the buggle does not execute the expected
+If you fail to understand why the buggle does not execute the expected
 steps, try adding <code>brushDown()</code> in your method. This asks the
 buggle to put down a brush leaving a trail when it moves. It should help you
 understanding its trajectory, but do not forget to remove this call when you

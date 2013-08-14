@@ -58,12 +58,12 @@ done in the condition and incrementing instruction.
 
 [!scala]
 <p>If you want to nest several loops, you can do it on one line in Scala. This means that the two following chunks are equivalent:</p>
-<pre>for (stepper1 <- 1 to n) {
-    for (stepper2 <- 1 to m) {
+<pre>for (stepper1 &lt;- 1 to n) {
+    for (stepper2 &lt;- 1 to m) {
        actions()
     }
 }</pre> 
-<pre>for (stepper1 <- 1 to n; stepper2 <- 1 to m) { <span class="comment">// Simply separate both loop conditions with a semi-column  
+<pre>for (stepper1 &lt;- 1 to n; stepper2 &lt;- 1 to m) { <span class="comment">// Simply separate both loop conditions with a semi-column</span>
     actions()
 }</pre> 
 [/!]

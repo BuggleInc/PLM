@@ -1,41 +1,47 @@
 <h2>Buggle Dance Revolution 2 (BDR2)</h2>
 
-<p class="Java">Le BDR, c'est cool, mais c'est un peu le chaos. Tout d'abord, les buggles
+[!java|scala]
+<p>Le BDR, c'est cool, mais c'est un peu le chaos. Tout d'abord, les buggles
 gigotent en tout sens, et en plus, le code que vous avez écrit pour les
 faire bouger est très difficile à lire. Voici un nouveau monde de BDR, où
 les buggles vont faire une gentille petite ronde plus reposante. Nous
 profiterons de cette accalmie pour nettoyer un peu le code grâce aux
-nouveaux éléments que nous allons maintenant étudier.
+nouveaux éléments que nous allons maintenant étudier.</p>
 
-<h3 class="Java">Branchement conditionnel <tt>switch</tt></h3>
+<h3>[!java]Conditionnelle <code>switch</code>[/!][!scala]Le pattern matching[/!]</h3>
 
-<p class="Java">
-Le plus difficile à lire du code précédent est certainement la cascade de
+<p>Le plus difficile à lire du code précédent est certainement la cascade de
 conditionnelles. Quelque part dans votre programme, vous avez sans doute
 écrit quelque chose comme:
 
-<pre class="Java">if (getIndication() == 'R') {
-  right();
-  forward();
-} else if (getIndication() == 'L') {
-  left();
-  forward();
-} else if (getIndication() == 'I') {
-  back();
-  forward();
-/* d'autres else if */
+<pre>if ([!java]getIndication() == 'R'[/!][!scala]litMessage() == "R"[/!]) {
+  droite();
+  avance();
+} else if ([!java]getIndication() == 'L'[/!][!scala]litMessage() == "L"[/!]) {
+  gauche();
+  avance();
+} else if ([!java]getIndication() == 'I'[/!][!scala]litMessage() == "I"[/!]) {
+  retourne();
+  avance();
+<span class="comment">/* d'autre if */</span>
 } else {
-  return;
+  fini = true;
 }
 </pre>
 
-<p class="Java">
-Quand on relit ce programme, on ne voit pas forcément tout de suite qu'il
-s'agit simplement d'un choix à 4 branches selon la valeur de
-getIndication(). Pour faire mieux, on va utiliser la construction
-<tt>switch</tt>, dont la syntaxe est la suivante:
-
-<pre class="Java">
+<p>À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un
+choix avec 4 branches en fonction du résultat de
+[!java]getIndication()[/!][!scala]readMessage()[/!].
+Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>,
+dont la syntaxe est la suivante en Java.[/!]
+[!scala] un pattern matching, qui est une construction très agréable (malgré
+au nom barbare) qui généralise le <code>if</code>. Il s'agit sans aucun
+doute de l'un des avantages majeurs du langage Scala par rapport à d'autres
+tels que le Java ou le Python. Cette construction n'est cependant pas
+révolutionnaire puisqu'elle existe depuis assez longtemps dans des langages
+comme OCaml ou Haskell, mais il n'empêche. Elle est carrément cool![/!]</p>
+[/!] [!java]
+<pre>
 switch (<b>expression</b>) {
   case <b>premierValeur</b>: 
     <b>queFaireSiExpressionVautPremiereValeur();</b>
@@ -51,86 +57,96 @@ switch (<b>expression</b>) {
     <b>queFaireSiExpressionVautAucuneDesValeursProposees();</b>
 }</pre>
 
-<p class="Java">
-Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un
+<p>Remarquez que chaque branche du <tt>switch</tt> doit être terminée par un
 <code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas
 suivant dans la liste quand elle a fini le code du cas où elle a sauté dans
 le switch. Il y a même quelques <b>très rares</b> cas où ce comportement est
 pratique.
 
-<p class="Java">On peut réécrire le code BDR précédent bien plus clairement grâce à la
+<p>On peut réécrire le code BDR précédent bien plus clairement grâce à la
 construction <tt>switch</tt> de la façon suivante.</p>
 
-<pre class="Java">switch (getIndication()) {
+<pre>switch (getIndication()) {
   case 'R':
-    right(); 
-    forward(); 
+    droite(); 
+    avance(); 
     break;
   case 'L':
-    left();
-    forward(); 
+    gauche();
+    avance(); 
     break;
-  case 'U':
-    back();
-    forward();
+  case 'I':
+    retourne();
+    avance();
     break;
   default: 
     return;
 }</pre>
-
-
-<h2 class="Java">Variables partagées par les méthodes</h2>
-
-<p class="Java">
-Un autre problème de votre code est qu'il commence à être un peu long pour
-être dans une seule fonction. On voudrait découper en deux méthodes:
-<ul class="Java">
- <li><code>danceOneStep()</code> s'occuperait de faire un pas de danse</li>
- <li><code>run()</code> s'occuperait de faire la danse en entier, c'est à dire de
-faire des pas de danse tant que l'on n'est pas arrivé à une case ne
-demandant pas d'aller plus loin.</li>
-</ul>
-
-<p class="Java">Le problème est de faire en sorte que <tt>danceOneStep()</tt> prévienne
-<tt>run()</tt> qu'il n'y a plus de pas possible. La solution la plus simple
-est
-encore d'avoir une variable booléenne visible depuis les deux fonctions
-indiquant s'il reste des pas à faire, ou si on a fini. On écrira donc en
-dehors
-de toute méthode :
-<pre class="Java">boolean moreMusic = true;</pre>
-
-<p class="Java">Notez que s'il est possible d'écrire des déclarations en dehors des
-méthodes, les instructions doivent obligatoirement être placées dans des
-méthodes. En Java, on appelle ces variables <i>globales</i> à plusieurs
-méthodes des <b>champs</b>.</p>
-
-<p class="Java">Ensuite, la fonction <tt>danceOneStep()</tt> doit être modifiée pour mettre
-cette valeur à <tt>false</tt> quand il n'y a plus rien à faire. Pour cela,
-ajoutez simplement <code>moreMusic = false;</code> avant tout
-<tt>return</tt>.
-
-<p class="Java">On peut alors utiliser la fonction <tt>run()</tt> suivante:
-<pre class="Java">public void run() {
-  while (moreMusic)
-    danceOneStep();
+[/!] [!scala]
+<pre><i>expression</i> <b>match</b> {
+  <b>case</b> <i>valeur possible</i>  <b>=></b> instructions
+  <b>case</b> <i>autre valeur</i>     <b>=></b> d'autres instructions
+  <b>case</b> <i>troisieme valeur</i> <b>=></b> encore d'autres instructions
+  <b>case _                 =></b> instructions par défaut
+}
+</pre>
+<p>L'expression fournie avant le mot-clé <code>match</code> est évaluée, et
+ensuite, les branches sont évaluées les unes après les autres jusqu'à en
+trouver une où la valeur entre le <code>case</code> et le <code>=&gt;</code>
+correspond à la valeur de l'expression. Le symbole <code>_</code> agit comme
+un joker qui correspond à tout. Cela veut dire que la dernière ligne telle
+qu'elle est écrite correspond toujours à la valeur fournie, quelle qu'elle
+soit. Voici un petit exemple où une variable <code>nom</code> est mis en
+correspondance.
+<pre>non match {
+  case "Martin" => println("Salut Martin, comment vas-tu?")
+  case "Gerald" => println("He Gerald! Ça va?")
+  case _            => println("Bonjour, étranger.")
 }</pre>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs">
-<p class="Java">Réécrivez le code des buggles en appliquant les améliorations que nous
-venons de voir.</p>
+<p>Il est aussi possible d'avoir plusieurs instructions par branches, et même
+d'avoir plusieurs valeurs sur une branche donnée, séparées par le caractère
+<code>|</code>.</p>
+<pre>nom match {
+  case "Martin" | "Gerald" => println("Bonjour "+nom+", entre."); ouvreLaPorte()
+  case _                            => println("Bonjour étranger. Passe ton chemin sans entrer."); fermeLaPorte()
+}</pre>
 
-<p class="Java">Vous n'avez pas à écrire la fonction <tt>run</tt>, que les buggles
-connaissent déjà. Si vous tentez de la définir malgré tout, le compilateur
-se plaindra de trouver deux définitions de la même fonction, sans se rendre
-compte qu'il s'agit de la même fonction. Contentez vous de déclarer la
-variable <tt>moreMusic</tt> et la méthode <tt>danceOneStep()</tt>.</p>
+<p>Il est même possible d'ajouter des gardes à vos branches. Il s'agit de
+conditions supplémentaires qui doivent être respectées pour que la branche
+soit appliquée. C'est par exemple pratique pour faire du pattern matching
+sur un ensemble de valeurs.</p>
+<pre>age match {
+  case i if i&lt;10 => println("Salut gamin!")
+  case i if i&lt;20 => println("Salut mec")
+  case i if i&lt;30 => println("Bonjour jeune home")
+  case _           => println("Bonjour monsieur")
+}</pre>
+<p>Remarquez qu'il n'est pas nécessaire de vérifier à la seconde ligne que la
+valeur est supérieure à 10 puisque les lignes sont considérées dans
+l'ordre. Si la seconde ligne est considérée, c'est que la première ne
+correspondait pas.</p>
 
-<p class="python">Ce pas de danse est légèrement plus compliqué mais il est plus beau. En
-dehors de cela, c'est la même chose que précédemment.</p>
+<p>Enfin, il est même possible d'apparier plusieurs variables à la fois!</p>
+<pre>(x,y) match {
+ case (0,0) => println("C'est le point origine")
+ case (_,0) => println("C'est un point de l'ordonée")
+ case (0,_) => println("C'est un point de l'abscisse")
+ case (_,_) => println("C'est un point quelconque")
+}</pre>
 
-<p>Voici les indications au sol à utiliser pour BDR2. Remarquez qu'on peut
-maintenant avancer la buggle de 6 cases d'un coup.
+<p>Je vous avais bien dit que cette construction scala était surpuissante ! Je
+l'adore !</p>
+[/!]
+
+<h3>Objectif de cet exercice</h3>
+<p>[!java|scala]Appliquez les améliorations que nous venons de voir pour
+adapter le code de votre buggle au nouveau pas de danse explicité
+ci-dessous.[/!]
+[!python]Nous allons maintenant apprendre un nouveau pas de dance à nos
+buggles. Il est un peu plus complexe, mais sinon, c'est toujours la même
+histoire.[/!]
+Remarquez qu'il est maintenant possible d'avancer jusqu'à 6 cases à la fois.</p>
 
 <table border="1">
  <tr><td>Indication</td>
@@ -138,7 +154,7 @@ maintenant avancer la buggle de 6 cases d'un coup.
 
  <tr><td>R</td><td>Tourner à droite et avancer d'une case</td></tr>
  <tr><td>L</td><td>Tourner à gauche et avancer d'une case</td></tr>
- <tr><td>I</td><td>Tourner en sens inverse (demi-tour) et avancer d'une case</td></tr>
+ <tr><td>I</td><td>Se retourner (faire demi-tour) et avancer d'une case</td></tr>
 
  <tr><td>A</td><td>Avancer d'une case</td></tr>
  <tr><td>B</td><td>Avancer de deux cases</td></tr>
@@ -153,8 +169,8 @@ maintenant avancer la buggle de 6 cases d'un coup.
  <tr><td>W</td><td>Reculer de quatre cases</td></tr>
  <tr><td>V</td><td>Reculer de cinq cases</td></tr>
  <tr><td>U</td><td>Reculer de six cases</td></tr>
-</table>
+ <tr><td><i>(n'importe quoi d'autre)</i></td><td>Arrêter de dancer.</td></tr>
 
-<p>Dans tous les autres cas, il faut s'arrêter.</p>
+</table>
 
 <p>Quand votre programme fonctionne de nouveau, passez à l'exercice suivant.</p>

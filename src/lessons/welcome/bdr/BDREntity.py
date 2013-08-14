@@ -1,13 +1,7 @@
-def getIndication():
-    if isOverMessage():
-        return readMessage()[0]
-    else:
-        return ''
-
 # BEGIN SOLUTION
-finished = False
-while not finished:
-    c = getIndication()
+done = False
+while not done:
+    c = readMessage()
     if c == 'R':
         right()
         forward()
@@ -30,6 +24,6 @@ while not finished:
     elif c == 'X':
         backward(3)
     else:        
-        finished = True
+        done = True
 # END SOLUTION
 

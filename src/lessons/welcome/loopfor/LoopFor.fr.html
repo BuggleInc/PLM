@@ -26,21 +26,21 @@ pratique. Leur syntaxe est la suivante :</p>
 <pre>[!java]for (int compteur=0; compteur&lt;n; compteur++) {
     <b>action</b>();
 }[/!][!python]for <b>compteur</b> in <b>range(n)</b>:
-    <b>action</b>()[/!][!scala] for (var <b>compteur</b> &lt;- <b>0</b> to <b>10</b>) { 
+    <b>action</b>()[/!][!scala] for (var <b>compteur</b> &lt;- <b>1</b> to <b>10</b>) { 
     <b>action</b>();
 }[/!]</pre>
 
 <p>Ce code est parfaitement équivalent à celui-ci :</p>
 <pre>[!java]int compteur = 0;
-while (compteur &lt; 10) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
-&nbsp;&nbsp;&nbsp;&nbsp;<b>compteur++</b>;
+while (compteur &lt; n) {
+    <b>action</b>();
+    <b>compteur++</b>;
 }[/!][!python]compteur=0
-while compteur &lt; 10: 
+while compteur &lt; n: 
     action()
     compteur = compteur + 1[/!][!scala]
 var compteur = 0
-while (compteur &lt; 10) {
+while (compteur &lt; n) {
     <b>action</b>()
     compteur = compteur + 1
 }[/!]</pre>
@@ -58,6 +58,18 @@ jusqu'à se retrouver face au mur dans la condition et l'incrémentation.
    <span class="comment">/* rien dans le corps de boucle */</span>
 }
 <span class="comment">/* la buggle est maintenant face à un mur */</span></pre>
+[/!] [!scala]
+<p>Si vous avez l'intention d'imbriquer plusieurs boucles, il est possible de
+l'écrire en une seule ligne en Scala. Les deux morceaux de code sont
+équivalents:</p>
+<pre>for (compteur1 &lt;- 1 to n) {
+    for (compteur2 &lt;- 1 to m) {
+       actions()
+    }
+}</pre> 
+<pre>for (compteur1 &lt;- 1 to n; compteur2 &lt;- 1 to m) { <span class="comment">// Séparez simplement les deux conditions de boucle par un point-virgule (;)</span>
+    actions()
+}</pre> 
 [/!]
 
 <h3>Objectif de cet exercice</h3>
