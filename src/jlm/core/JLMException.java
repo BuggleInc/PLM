@@ -1,6 +1,6 @@
 package jlm.core;
 
-public class JLMException extends Exception {
+public class JLMException extends RuntimeException {
 
 	private static final long serialVersionUID = 5763400564033977767L;
 
