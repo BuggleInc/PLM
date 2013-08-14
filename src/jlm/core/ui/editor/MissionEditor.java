@@ -73,6 +73,9 @@ public class MissionEditor extends JFrame {
 		mi = new JMenuItem(new SaveMissionAction());
 		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		fileMenu.add(mi);
+		
+		mi = new JMenuItem(new SaveAsMissionAction());
+		fileMenu.add(mi);
 
 		mi = new JMenuItem(new QuitAction());
 		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
@@ -153,6 +156,45 @@ public class MissionEditor extends JFrame {
 		private static final long serialVersionUID = 1L;
 
 		public SaveMissionAction() {
+			super("Save");
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if (lastPathSelected == null) {
+				SaveAsMissionAction act = new SaveAsMissionAction();
+				act.actionPerformed(e);
+				return;
+			}
+			File file = new File(lastPathSelected);
+
+			BufferedWriter bw = null;
+			FileWriter fw = null;
+			try {
+				fw = new FileWriter(file);
+				bw = new BufferedWriter(fw);
+				bw.write(editor.getText());
+				bw.close();
+				fw.close();
+			} catch (IOException ex) {
+				// TODO: error dialog
+				System.err.println(ex);
+			} finally {
+				try {
+					if (bw != null)
+						bw.close();
+				} catch (IOException e1) {
+					// TODO: error dialog
+					e1.printStackTrace();
+				}
+			}
+		}
+	}
+	class SaveAsMissionAction extends AbstractAction {
+		private static final long serialVersionUID = 1L;
+
+		public SaveAsMissionAction() {
 			super("Save As...");
 		}
 
