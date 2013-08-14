@@ -3,76 +3,63 @@
 <p>While loops are well adapted to situations where you want to achieve an
 action while a condition stays true, but it is less adapted to achieve a
 given action a predetermined amount of time. For example, when we wanted to
-move <code>stepAmount</code> steps backward in previous exercise, you had to
-create a new variable, initialize it, and move backward until the new
-variable became equal to <code>stepAmount</code>, incrementing the new
-variable manually at the end of the loop.</p> 
+move <code>stepAmount</code> steps backward in a previous exercise, we had to
+create a new variable, initialize it, and move backward while incrementing 
+this variable until it became equal to <code>stepAmount</code>.</p> 
 
 <p>In such situations, <code>for</code> loops become handy. Their syntax is the
-following: 
-<pre class="Java">for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
-&nbsp;&nbsp;&nbsp;<b>action</b>();
-}</pre>
+following:</p> 
+<pre>[!java]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {
+    <b>action</b>();
+}[/!][!python]for <b>variable</b> in <b>sequence of values</b>:
+    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>firstValue</b> to <b>lastValue</b>) { 
+    <b>action</b>();
+}[/!]</pre>
 
-<pre class="Python">for <b>variable</b> in <b>sequence of values</b>:
-&nbsp;&nbsp;&nbsp;<b>action</b>()
-</pre>
+<p>For example to repeat the the loop body <code>n</code> times, 
+[!python] it is handy to use the instruction <code>range(n)</code> to generate the sequence n integer value from 0 to n-1.[/!]
+[!java|scala] one should write:[/!]</p>
+<pre>[!java]for (int stepper=0; stepper&lt;n; stepper++) {
+    <b>action</b>();
+}[/!][!python]for <b>stepper</b> in <b>range(n)</b>:
+    <b>action</b>()[/!][!scala] for (var <b>stepper</b> &lt;- <b>0</b> to <b>10</b>) { 
+    <b>action</b>();
+}[/!]</pre>
 
-This code is perfectly equivalent to the following:
-<pre class="Java"><b>initializing</b>;
-while (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;<b>action</b>();
-&nbsp;&nbsp;&nbsp;<b>incrementing</b>;
-}</pre>
-<pre class="Python">
-while <b>there is a value in the sequence</b>: 
-&nbsp;&nbsp;&nbsp;<b>set variable to the next unseen value of the sequence</b>
-&nbsp;&nbsp;&nbsp;<b>action</b>()
-</pre>
+<p>This code is then perfectly equivalent to the following one.</p>
+<pre>[!java]int stepper = 0;
+while (stepper < 10) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
+&nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
+}[/!][!python]stepper=0
+while stepper<10: 
+    action()
+    stepper = stepper + 1[/!][!scala]
+var stepper = 0
+while (stepper<10) {
+    <b>action</b>()
+    stepper = stepper + 1
+}[/!]</pre>
 
-<p class="Python">Please note that in Python the instruction <code>range(n)</code> allows to get a sequence n integer value from 0 to n-1.</p>
+<p>The <code>for</code> loop is easier to read, don't you think?</p>
 
-
-<p>For example, both following codes are equivalent. The latter is easier to
-read, don't you think?
-
-<pre class="Java">int done = 0;
-while (done &lt; stepAmount) {
-&nbsp;&nbsp;&nbsp;backward();
-&nbsp;&nbsp;&nbsp;done++;
-}</pre>
-<pre class="Java">for (int done = 0; done &lt; stepAmount; done++) {
-&nbsp;&nbsp;&nbsp;backward();
-}</pre>
-
-<pre class="Python">done = 0
-while done &lt; stepAmount:
-&nbsp;&nbsp;&nbsp;backward()
-&nbsp;&nbsp;&nbsp;done = done + 1
-</pre>
-<pre class="Python">for done in range(stepAmount):
-&nbsp;&nbsp;&nbsp;backward()
-</pre>
-
-
-
-<p class="Java">It is possible to build more advanced <tt>for</tt> loops since any valid
+[!java]
+<p>It is possible to build more advanced <tt>for</tt> loops since any valid
 instruction can be used as initialization, condition and incrementation. The
-following example is a bit extreme since it compute the gcd (greatest common
-divisor) of two numbers without loop body and initialization (everything is
-in the condition and incrementation).
+following example is a bit extreme there is no need for a loop body to move 
+the buggle forward until it reaches the wall, but it works well: all the work is 
+done in the condition and incrementation.
 
-<pre class="Java">int x=20, y=3, tmp;
-for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }
- <span class="comment">/* the gcd is stored in x */</span></pre>
+<pre>for (; !isFacingWall() ; forward()) { 
+   <span class="comment">/* nothing in the loop body */</span>
+}
+<span class="comment">/* the buggle now faces a wall */</span></pre>
+[/!]
 
-<p class="Java">If you don't understand every details of this example, don't panic. That's
-quite logic since it uses some syntax details that we did not introduce yet.</p>
-
-
-<h3>Exercise goal</h3><a name="Objectives"> You now have to redo the same exercise than previously
+<h3>Exercise goal</h3>
+<p> You now have to redo the same exercise than previously
 (move forward until being over a baggle, pick it up, move back to your
-original location, drop the baggle), but using a <tt>for</tt> loop instead
-of a <tt>while</tt> loop to move back to the initial location.
+original location, drop the baggle), but using a <code>for</code> loop instead
+of a <code>while</code> loop to move back to the initial location.</p
 
-<p>Once done, proceed to next exercise.</p>
+<p>Once done, you can proceed to next exercise.</p>
