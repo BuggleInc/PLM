@@ -1,26 +1,23 @@
 package lessons.welcome.loopfor;
 
 import java.awt.Color;
+import jlm.universe.bugglequest.SimpleBuggle
+import jlm.core.model.Game
 
-import jlm.core.model.Game;
-
-public class LoopStairsEntity extends jlm.universe.bugglequest.SimpleBuggle {
-	@Override
-	public void forward(int i)  { 
+class ScalaLoopStairsEntity extends SimpleBuggle {
+	override def forward(i: Int)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}
-	@Override
-	public void backward(int i) {
+	override def backward(i: Int) {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
 	}
 
-	Color[] colors = new Color[] {
+	var colors = Array(
 			Color.blue,    Color.cyan, Color.green,  Color.yellow,
-			Color.orange,  Color.red,  Color.magenta,Color.pink,};
+			Color.orange,  Color.red,  Color.magenta,Color.pink)
 	
-	int step = -3;
-	@Override
-	public void forward()  {
+	var step = -3
+	override def forward() {
 		super.forward();
 		if (step<0 || step%2 == 1 || (step/2)>=colors.length) {
 			if (step < 0)
@@ -28,22 +25,20 @@ public class LoopStairsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 			else if ((step/2)>=colors.length)
 				setBrushColor(Color.pink);
 			else
-				setBrushColor(colors[(step/2)%colors.length]);
+				setBrushColor(colors((step/2)%colors.length));
 			brushDown();
 			brushUp();
 		}
-		step++;
+		step += 1; 
 	}
 
-	@Override
-	/* BEGIN TEMPLATE */
-	public void run() { 
+	override def run() {
 		/* BEGIN SOLUTION */
 		forward();
 		forward();
 		forward();
 		left();
-		for (int i = 0; i<8;i++) { 
+		for (i <- 0 to 8) { 
 			forward();
 			right();
 			forward();
@@ -55,5 +50,4 @@ public class LoopStairsEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		forward();
 		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 }

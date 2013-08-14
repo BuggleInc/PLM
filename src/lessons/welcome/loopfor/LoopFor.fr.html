@@ -10,73 +10,60 @@ demander à reculer tant que la nouvelle variable n'était pas égale à
 corps de la boucle.</p> 
 
 <p>Dans ce genre de cas, les boucles de type <code>for</code> sont plus
-pratique. Leur syntaxe est la suivante : 
-<pre class="Java">for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {
-&nbsp;&nbsp;&nbsp;<b>action</b>();
-}</pre>
+pratique. Leur syntaxe est la suivante :</p> 
+<pre>[!java]for (<b>initialisation</b>; <b>condition</b>; <b>increment</b>) {
+    <b>action</b>();
+}[/!][!python]for <b>variable</b> in <b>sequence de valeurs</b>:
+    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>premiereValeur</b> to <b>derniereValeur</b>) { 
+    <b>action</b>();
+}[/!]</pre>
 
-<pre class="Python">for <b>variable</b> in <b>séquence de valeurs</b>:
-&nbsp;&nbsp;&nbsp;<b>action</b>()
-</pre>
+<p>Par exemple, pour répéter le corps de boucle <code>n</code> fois,
+[!python]il est pratique d'utiliser l'instruction <code>range(n)</code>
+  pour générer la séquence de n entiers allant de 0 à n-1.[/!]
+[!java|scala]il faut écrire:[/!]
+</p>
+<pre>[!java]for (int compteur=0; compteur&lt;n; compteur++) {
+    <b>action</b>();
+}[/!][!python]for <b>compteur</b> in <b>range(n)</b>:
+    <b>action</b>()[/!][!scala] for (var <b>compteur</b> &lt;- <b>0</b> to <b>10</b>) { 
+    <b>action</b>();
+}[/!]</pre>
 
-Ce code est parfaitement équivalent à celui-ci :
-<pre class="Java"><b>initialisation</b>;
-while (<b>condition</b>) {
-&nbsp;&nbsp;&nbsp;<b>action</b>();
-&nbsp;&nbsp;&nbsp;<b>incrémentation</b>;
-}</pre>
-<pre class="Python">
-while <b> il y a une valeur dans la séquence </b>: 
-&nbsp;&nbsp;&nbsp;<b>mettre la variable à la prochaine valeur non traitée de la séquence</b>
-&nbsp;&nbsp;&nbsp;<b>action</b>()
-</pre>
+<p>Ce code est parfaitement équivalent à celui-ci :</p>
+<pre>[!java]int compteur = 0;
+while (compteur &lt; 10) {
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
+&nbsp;&nbsp;&nbsp;&nbsp;<b>compteur++</b>;
+}[/!][!python]compteur=0
+while compteur &lt; 10: 
+    action()
+    compteur = compteur + 1[/!][!scala]
+var compteur = 0
+while (compteur &lt; 10) {
+    <b>action</b>()
+    compteur = compteur + 1
+}[/!]</pre>
 
-<p class="Python">Veuillez noter qu'en Python, l'instruction <code>range(n)</code> permet
-d'obtenir une séquence de n entiers allant de 0 à n-1.</p>
+<p>Le code avec une boucle <code>for</code> est plus simple à lire, non?</p>
 
-
-<p>Par exemple, les deux codes suivants sont équivalents. Avouez que la seconde
-forme est plus lisible, non ?
-
-<pre class="Java">int dejaFait = 0;
-while (dejaFait &lt; nbPas) {
-&nbsp;&nbsp;&nbsp;backward();
-&nbsp;&nbsp;&nbsp;dejaFait++;
-}</pre>
-<pre class="Java">for (int dejaFait = 0; dejaFait &lt; nbPas; dejaFait++) {
-&nbsp;&nbsp;&nbsp;backward();
-}</pre>
-
-<pre class="Python">dejaFait = 0
-while dejaFait &lt; nbPas:
-&nbsp;&nbsp;&nbsp;backward()
-&nbsp;&nbsp;&nbsp;dejaFait = dejaFait + 1
-</pre>
-<pre class="Python">for done in range(nbPas):
-&nbsp;&nbsp;&nbsp;backward()
-</pre>
-
-
-
-<p class="Java">On peut imaginer des utilisations bien plus avancées des boucles
+[!java]
+<p>On peut imaginer des utilisations bien plus avancées des boucles
 <tt>for</tt> car toute instruction valide peut être utilisée comme
 initialisation, condition et incrémentation. L'exemple suivant est un peu
-extrême, puisqu'elle calcule le PGCD de deux nombres sans avoir ni de corps
-de boucle, ni d'initialisation (tout est fait dans la condition et
-l'incrémentation).
+extrême, puisqu'il n'y a même pas de corps de boucle. La buggle est avancée
+jusqu'à se retrouver face au mur dans la condition et l'incrémentation.
 
-<pre class="Java">int x=20, y=3, tmp;
-for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }
- <span class="comment">/* le PGCD est stocké dans x */</span></pre>
+<pre>for (; !estFaceMur() ; avance()) { 
+   <span class="comment">/* rien dans le corps de boucle */</span>
+}
+<span class="comment">/* la buggle est maintenant face à un mur */</span></pre>
+[/!]
 
-<p class="Java">Si vous ne comprenez pas tous les détails de cet exemple, pas de panique,
-c'est assez logique puisqu'il utilise des points de syntaxe que nous n'avons
-pas encore vu.</p>
+<h3>Objectif de cet exercice</h3>
+<p> Il s'agit maintenant de refaire le même exercice que précédemment (avancer
+jusqu'à trouver un baggle, le ramasser, revenir là où on était au début puis
+reposer le baggle), mais en utilisant une boucle <tt>for</tt> pour revenir
+au point de départ à la place d'une boucle <code>while</code>.</p
 
-
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> Il s'agit de refaire le même exercice que précédemment
-(avancer jusqu'à trouver un baggle, le ramasser, revenir là où on était au
-début puis reposer le baggle), mais en utilisant une boucle <tt>for</tt>
-pour revenir au point de départ à la place d'une boucle <tt>while</tt>.
-
-<p>Une fois ceci fait, passez à l'exercice suivant.</p>
+<p>Une fois ceci fait, vous pouvez passez à l'exercice suivant.</p>

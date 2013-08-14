@@ -2,7 +2,17 @@ package lessons.welcome.loopfor;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
+
 public class LoopCourseForestEntity extends jlm.universe.bugglequest.SimpleBuggle {
+	@Override
+	public void forward(int i)  { 
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
+	}
+	@Override
+	public void backward(int i) {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
+	}
 	Color[] colors = new Color[] {
 			new Color(0,155,0),
 			new Color(50,155,0),
@@ -14,17 +24,13 @@ public class LoopCourseForestEntity extends jlm.universe.bugglequest.SimpleBuggl
 			new Color(210,155,0),
 	};
 	@Override
-	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
-	}
-	@Override
 	public void forward()  {
 		if (!haveSeenError())
 			super.forward();
 		Color c = getGroundColor();
 		if (c.equals(Color.blue)) {
 			if (!haveSeenError())
-				javax.swing.JOptionPane.showMessageDialog(null, "You fall into water.", "Test failed", javax.swing.JOptionPane.ERROR_MESSAGE);
+				javax.swing.JOptionPane.showMessageDialog(null, Game.i18n.tr("You fall into water."), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
 		}
 		for (int i=0;i<colors.length-1;i++)
@@ -37,10 +43,6 @@ public class LoopCourseForestEntity extends jlm.universe.bugglequest.SimpleBuggl
 		brushUp();
 	}
 
-	@Override
-	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
-	}
 	
 
 

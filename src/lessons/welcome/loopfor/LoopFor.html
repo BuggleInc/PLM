@@ -28,15 +28,15 @@ following:</p>
 
 <p>This code is then perfectly equivalent to the following one.</p>
 <pre>[!java]int stepper = 0;
-while (stepper < 10) {
+while (stepper &lt; 10) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
 &nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
 }[/!][!python]stepper=0
-while stepper<10: 
+while stepper &lt; 10: 
     action()
     stepper = stepper + 1[/!][!scala]
 var stepper = 0
-while (stepper<10) {
+while (stepper &lt; 10) {
     <b>action</b>()
     stepper = stepper + 1
 }[/!]</pre>
@@ -45,10 +45,10 @@ while (stepper<10) {
 
 [!java]
 <p>It is possible to build more advanced <tt>for</tt> loops since any valid
-instruction can be used as initialization, condition and incrementation. The
-following example is a bit extreme there is no need for a loop body to move 
+instruction can be used as initialization, condition and incrementing instruction. The
+following example is a bit extreme as there is no need for a loop body to move 
 the buggle forward until it reaches the wall, but it works well: all the work is 
-done in the condition and incrementation.
+done in the condition and incrementing instruction.
 
 <pre>for (; !isFacingWall() ; forward()) { 
    <span class="comment">/* nothing in the loop body */</span>

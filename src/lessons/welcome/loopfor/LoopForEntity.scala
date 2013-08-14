@@ -1,34 +1,28 @@
 package lessons.welcome.loopfor;
 
-import jlm.core.model.Game;
+import jlm.universe.bugglequest.SimpleBuggle
+import jlm.core.model.Game
 
-public class LoopForEntity extends jlm.universe.bugglequest.SimpleBuggle {
-	@Override
-	public void forward(int i)  { 
+class ScalaLoopForEntity extends SimpleBuggle {
+	override def forward(i: Int)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}
-
-	@Override
-	public void backward(int i) {
+	override def backward(i: Int) {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
 	}
 
-
-	@Override
-	/* BEGIN TEMPLATE */
-	public void run() { 
+	override def run() {
 		/* BEGIN SOLUTION */
-		int cpt = 0;
+		var cpt = 0
 		while (!isOverBaggle()) {
-			cpt++;
+			cpt+=1;
 			forward();
 		}
 		pickupBaggle();
-		for (int cpt2=0 ; cpt2<cpt ; cpt2++) {
+		for (cpt2 <- 0  to cpt) {
 			backward();
 		}
 		dropBaggle();
 		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 }

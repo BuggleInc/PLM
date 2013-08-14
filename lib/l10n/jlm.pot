@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-11 23:02+0300\n"
+"POT-Creation-Date: 2013-08-14 17:12+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1855,8 +1855,8 @@ msgstr ""
 msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130
+#. type: Content of: <p>
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:57
 msgid "[/!]"
 msgstr ""
 
@@ -1916,7 +1916,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:71 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:66 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:59 src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/methods/basics/Methods.html:66 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:111 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -2769,130 +2769,103 @@ msgstr ""
 #, no-wrap
 msgid ""
 "[!java]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"    <b>action</b>();\n"
 "}[/!][!python]for <b>variable</b> in <b>sequence of values</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>()[/!][!scala] for (<b>variable</b> "
-"&lt;- <b>first value</b> to <b>last value</b>) { \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>firstValue</b> "
+"to <b>lastValue</b>) { \n"
+"    <b>action</b>();\n"
 "}[/!]"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:19
-msgid "This code is perfectly equivalent to the following:"
+msgid ""
+"For example to repeat the the loop body <code>n</code> times, [!python] it "
+"is handy to use the instruction <code>range(n)</code> to generate the "
+"sequence n integer value from 0 to n-1.[/!] [!java|scala] one should "
+"write:[/!]"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:20
+#: src/lessons/welcome/loopfor/LoopFor.html:22
 #, no-wrap
 msgid ""
-"<b>initializing</b>;\n"
-"while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"&nbsp;&nbsp;&nbsp;<b>incrementing</b>;\n"
-"}"
+"[!java]for (int stepper=0; stepper&lt;n; stepper++) {\n"
+"    <b>action</b>();\n"
+"}[/!][!python]for <b>stepper</b> in <b>range(n)</b>:\n"
+"    <b>action</b>()[/!][!scala] for (var <b>stepper</b> &lt;- <b>0</b> to "
+"<b>10</b>) { \n"
+"    <b>action</b>();\n"
+"}[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:29
+msgid "This code is then perfectly equivalent to the following one."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:26
+#: src/lessons/welcome/loopfor/LoopFor.html:30
 #, no-wrap
 msgid ""
-"while <b>there is a value in the sequence</b>: \n"
-"&nbsp;&nbsp;&nbsp;<b>set variable to the next unseen value of the "
-"sequence</b>\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
+"[!java]int stepper = 0;\n"
+"while (stepper &lt; 10) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;\n"
+"}[/!][!python]stepper=0\n"
+"while stepper &lt; 10: \n"
+"    action()\n"
+"    stepper = stepper + 1[/!][!scala]\n"
+"var stepper = 0\n"
+"while (stepper &lt; 10) {\n"
+"    <b>action</b>()\n"
+"    stepper = stepper + 1\n"
+"}[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:31
-msgid ""
-"Please note that in Python the instruction <code>range(n)</code> allows to "
-"get a sequence n integer value from 0 to n-1."
+#: src/lessons/welcome/loopfor/LoopFor.html:44
+msgid "The <code>for</code> loop is easier to read, don't you think?"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:34
-msgid ""
-"For example, both following codes are equivalent. The latter is easier to "
-"read, don't you think?"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:37
-#, no-wrap
-msgid ""
-"int done = 0;\n"
-"while (done &lt; stepAmount) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"&nbsp;&nbsp;&nbsp;done++;\n"
-"}"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:42
-#, no-wrap
-msgid ""
-"for (int done = 0; done &lt; stepAmount; done++) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"}"
-msgstr ""
-
-#. type: Content of: <p><pre>
+#. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopfor/LoopFor.html:46
-#, no-wrap
+msgid "[!java]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:47
 msgid ""
-"done = 0\n"
-"while done &lt; stepAmount:\n"
-"&nbsp;&nbsp;&nbsp;backward()\n"
-"&nbsp;&nbsp;&nbsp;done = done + 1\n"
+"It is possible to build more advanced <tt>for</tt> loops since any valid "
+"instruction can be used as initialization, condition and incrementing "
+"instruction. The following example is a bit extreme as there is no need for "
+"a loop body to move the buggle forward until it reaches the wall, but it "
+"works well: all the work is done in the condition and incrementing "
+"instruction."
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:51
+#: src/lessons/welcome/loopfor/LoopFor.html:53
 #, no-wrap
 msgid ""
-"for done in range(stepAmount):\n"
-"&nbsp;&nbsp;&nbsp;backward()\n"
+"for (; !isFacingWall() ; forward()) { \n"
+"   <span class=\"comment\">/* nothing in the loop body */</span>\n"
+"}\n"
+"<span class=\"comment\">/* the buggle now faces a wall */</span>"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:57
+#: src/lessons/welcome/loopfor/LoopFor.html:60
 msgid ""
-"It is possible to build more advanced <tt>for</tt> loops since any valid "
-"instruction can be used as initialization, condition and incrementation. The "
-"following example is a bit extreme since it compute the gcd (greatest common "
-"divisor) of two numbers without loop body and initialization (everything is "
-"in the condition and incrementation)."
+"You now have to redo the same exercise than previously (move forward until "
+"being over a baggle, pick it up, move back to your original location, drop "
+"the baggle), but using a <code>for</code> loop instead of a "
+"<code>while</code> loop to move back to the initial location."
 msgstr ""
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:63
-#, no-wrap
-msgid ""
-"int x=20, y=3, tmp;\n"
-"for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }\n"
-" <span class=\"comment\">/* the gcd is stored in x */</span>"
-msgstr ""
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:67
-msgid ""
-"If you don't understand every details of this example, don't panic. That's "
-"quite logic since it uses some syntax details that we did not introduce yet."
-msgstr ""
-
-#. type: Content of: <p><p><a>
-#: src/lessons/welcome/loopfor/LoopFor.html:71
-msgid ""
-"<a name=\"Objectives\"> You now have to redo the same exercise than "
-"previously (move forward until being over a baggle, pick it up, move back to "
-"your original location, drop the baggle), but using a <tt>for</tt> loop "
-"instead of a <tt>while</tt> loop to move back to the initial location."
-msgstr ""
-
-#. type: Content of: <p><p><a><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:76
-msgid "Once done, proceed to next exercise."
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:65
+msgid "Once done, you can proceed to next exercise."
 msgstr ""
 
 #. type: Content of: <h2>

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-11 23:02+0300\n"
-"PO-Revision-Date: 2013-08-13 22:27+0200\n"
+"POT-Creation-Date: 2013-08-14 17:12+0300\n"
+"PO-Revision-Date: 2013-08-14 17:19+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2345,11 +2345,12 @@ msgstr ""
 msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 
-#. type: Content of: <p><p>
+#. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:34
 #: src/lessons/welcome/variables/Variables.html:31
 #: src/lessons/welcome/variables/Variables.html:61
 #: src/lessons/welcome/variables/Variables.html:130
+#: src/lessons/welcome/loopfor/LoopFor.html:57
 msgid "[/!]"
 msgstr "[/!]"
 
@@ -2434,7 +2435,7 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/LoopWhile.html:32
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
 #: src/lessons/welcome/variables/Variables.html:97
-#: src/lessons/welcome/loopfor/LoopFor.html:71
+#: src/lessons/welcome/loopfor/LoopFor.html:59
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26
 #: src/lessons/welcome/methods/basics/Methods.html:66
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:49
@@ -3278,8 +3279,17 @@ msgid ""
 "sense, Python is easier to write but errors can sneak in more easily than in "
 "[!thelang].  Here are some of the existing types:"
 msgstr ""
-"Comme vous pouvez le voir, les variables sont <b>typées</b> en[!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées: une variable donnée ne peut stocker qu'un type de données spécifique. N'essayez même pas de rancher des nombres dans une variable faite pour recevoir des lettres ! \n"
-"D'autres langages (comme le python) sont moins regardants, et on peut ranger n'importe quel type de données dans n'importe quelle variable sans restriction. À première vue, cela semble plus simple, mais ce genre de restriction permet au compilateur de détecter plus d'erreurs de logiques pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile d'écrire du python, mais le typage empêche certaines erreurs de se glisser dans vos programmes. \n"
+"Comme vous pouvez le voir, les variables sont <b>typées</b> en[!thelang]. "
+"Cela veut dire qu'elles sont en quelque sorte spécialisées: une variable "
+"donnée ne peut stocker qu'un type de données spécifique. N'essayez même pas "
+"de rancher des nombres dans une variable faite pour recevoir des lettres ! \n"
+"D'autres langages (comme le python) sont moins regardants, et on peut ranger "
+"n'importe quel type de données dans n'importe quelle variable sans "
+"restriction. À première vue, cela semble plus simple, mais ce genre de "
+"restriction permet au compilateur de détecter plus d'erreurs de logiques "
+"pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile "
+"d'écrire du python, mais le typage empêche certaines erreurs de se glisser "
+"dans vos programmes. \n"
 "Voici quelque uns des types de données existants en [!thelang] :\n"
 
 #. type: Content of: <p><p><ul><li>
@@ -3325,8 +3335,16 @@ msgid ""
 "also good. In some sense, Python is easier to write but errors can sneak in "
 "more easily."
 msgstr ""
-"Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en Python, ce qui veut dire qu'elles ne sont pas spécialisées sur un type de données particulier. Il est tout à fait envisageable de stocker des nombres dans une variable, puis d'y mettre des lettres un peu plus tard.\n"
-"D'autres langages (comme le Java ou le Scala) sont plus restrictifs et imposent de spécialiser chaque variable pour un type donné. Cela semble bien plus contraignant à première vue, mais ce genre de restriction permet au compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine manière, il est plus facile d'écrire du Python, mais le typage de ces langages empêche certaines erreurs de se glisser dans les programmes."
+"Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en "
+"Python, ce qui veut dire qu'elles ne sont pas spécialisées sur un type de "
+"données particulier. Il est tout à fait envisageable de stocker des nombres "
+"dans une variable, puis d'y mettre des lettres un peu plus tard.\n"
+"D'autres langages (comme le Java ou le Scala) sont plus restrictifs et "
+"imposent de spécialiser chaque variable pour un type donné. Cela semble bien "
+"plus contraignant à première vue, mais ce genre de restriction permet au "
+"compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine "
+"manière, il est plus facile d'écrire du Python, mais le typage de ces "
+"langages empêche certaines erreurs de se glisser dans les programmes."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/variables/Variables.html:64
@@ -3603,15 +3621,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:3
-#, fuzzy
-#| msgid ""
-#| "While loops are well adapted to situations where you want to achieve an "
-#| "action while a condition stays true, but it is less adapted to achieve a "
-#| "given action a predetermined amount of time. For example, when we wanted "
-#| "to move <code>stepAmount</code> steps backward in previous exercise, you "
-#| "had to create a new variable, initialize it, and move backward until the "
-#| "new variable became equal to <code>stepAmount</code>, incrementing the "
-#| "new variable manually at the end of the loop."
 msgid ""
 "While loops are well adapted to situations where you want to achieve an "
 "action while a condition stays true, but it is less adapted to achieve a "
@@ -3643,172 +3652,135 @@ msgstr ""
 #, no-wrap
 msgid ""
 "[!java]for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"    <b>action</b>();\n"
 "}[/!][!python]for <b>variable</b> in <b>sequence of values</b>:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>first value</b> to <b>last value</b>) { \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>firstValue</b> to <b>lastValue</b>) { \n"
+"    <b>action</b>();\n"
 "}[/!]"
 msgstr ""
+"[!java]for (<b>initialisation</b>; <b>condition</b>; <b>increment</b>) {\n"
+"    <b>action</b>();\n"
+"}[/!][!python]for <b>variable</b> in <b>sequence de valeurs</b>:\n"
+"    <b>action</b>()[/!][!scala] for (<b>variable</b> &lt;- <b>premiereValeur</b> to <b>derniereValeur</b>) { \n"
+"    <b>action</b>();\n"
+"}[/!]"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:19
-msgid "This code is perfectly equivalent to the following:"
+msgid ""
+"For example to repeat the the loop body <code>n</code> times, [!python] it "
+"is handy to use the instruction <code>range(n)</code> to generate the "
+"sequence n integer value from 0 to n-1.[/!] [!java|scala] one should write:"
+"[/!]"
+msgstr ""
+"Par exemple, pour répéter le corps de boucle <code>n</code> fois, \n"
+"[!python]il est pratique d'utiliser l'instruction <code>range(n)</code>\n"
+"  pour générer la séquence de n entiers allant de 0 à n-1.[/!]\n"
+"[!java|scala]il faut écrire:[/!]\n"
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:22
+#, no-wrap
+msgid ""
+"[!java]for (int stepper=0; stepper&lt;n; stepper++) {\n"
+"    <b>action</b>();\n"
+"}[/!][!python]for <b>stepper</b> in <b>range(n)</b>:\n"
+"    <b>action</b>()[/!][!scala] for (var <b>stepper</b> &lt;- <b>0</b> to <b>10</b>) { \n"
+"    <b>action</b>();\n"
+"}[/!]"
+msgstr ""
+"[!java]for (int compteur=0; compteur&lt;n; compteur++) {\n"
+"    <b>action</b>();\n"
+"}[/!][!python]for <b>compteur</b> in <b>range(n)</b>:\n"
+"    <b>action</b>()[/!][!scala] for (var <b>compteur</b> &lt;- <b>0</b> to <b>10</b>) { \n"
+"    <b>action</b>();\n"
+"}[/!]"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:29
+msgid "This code is then perfectly equivalent to the following one."
 msgstr "Ce code est parfaitement équivalent à celui-ci :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:20
+#: src/lessons/welcome/loopfor/LoopFor.html:30
 #, no-wrap
 msgid ""
-"<b>initializing</b>;\n"
-"while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"&nbsp;&nbsp;&nbsp;<b>incrementing</b>;\n"
-"}"
+"[!java]int stepper = 0;\n"
+"while (stepper &lt; 10) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;\n"
+"}[/!][!python]stepper=0\n"
+"while stepper &lt; 10: \n"
+"    action()\n"
+"    stepper = stepper + 1[/!][!scala]\n"
+"var stepper = 0\n"
+"while (stepper &lt; 10) {\n"
+"    <b>action</b>()\n"
+"    stepper = stepper + 1\n"
+"}[/!]"
 msgstr ""
-"<b>initialisation</b>;\n"
-"while (<b>condition</b>) {\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-"&nbsp;&nbsp;&nbsp;<b>incrémentation</b>;\n"
-"}"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:26
-#, no-wrap
-msgid ""
-"while <b>there is a value in the sequence</b>: \n"
-"&nbsp;&nbsp;&nbsp;<b>set variable to the next unseen value of the sequence</b>\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
-msgstr ""
-"while <b> il y a une valeur dans la séquence </b>: \n"
-"&nbsp;&nbsp;&nbsp;<b>mettre la variable à la prochaine valeur non traitée de la séquence</b>\n"
-"&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
+"[!java]int compteur = 0;\n"
+"while (compteur &lt; 10) {\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
+"&nbsp;&nbsp;&nbsp;&nbsp;<b>compteur++</b>;\n"
+"}[/!][!python]compteur=0\n"
+"while compteur &lt; 10: \n"
+"    action()\n"
+"    compteur = compteur + 1[/!][!scala]\n"
+"var compteur = 0\n"
+"while (compteur &lt; 10) {\n"
+"    <b>action</b>()\n"
+"    compteur = compteur + 1\n"
+"}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:31
-msgid ""
-"Please note that in Python the instruction <code>range(n)</code> allows to "
-"get a sequence n integer value from 0 to n-1."
-msgstr ""
-"Veuillez noter qu'en Python, l'instruction <code>range(n)</code> permet "
-"d'obtenir une séquence de n entiers allant de 0 à n-1."
+#: src/lessons/welcome/loopfor/LoopFor.html:44
+msgid "The <code>for</code> loop is easier to read, don't you think?"
+msgstr "Le code avec une boucle <code>for</code> est plus simple à lire, non?"
 
-#. type: Content of: <p>
-#: src/lessons/welcome/loopfor/LoopFor.html:34
-msgid ""
-"For example, both following codes are equivalent. The latter is easier to "
-"read, don't you think?"
-msgstr ""
-"Par exemple, les deux codes suivants sont équivalents. Avouez que la seconde "
-"forme est plus lisible, non ?"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:37
-#, no-wrap
-msgid ""
-"int done = 0;\n"
-"while (done &lt; stepAmount) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"&nbsp;&nbsp;&nbsp;done++;\n"
-"}"
-msgstr ""
-"int dejaFait = 0;\n"
-"while (dejaFait &lt; nbPas) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"&nbsp;&nbsp;&nbsp;dejaFait++;\n"
-"}"
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:42
-#, no-wrap
-msgid ""
-"for (int done = 0; done &lt; stepAmount; done++) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"}"
-msgstr ""
-"for (int dejaFait = 0; dejaFait &lt; nbPas; dejaFait++) {\n"
-"&nbsp;&nbsp;&nbsp;backward();\n"
-"}"
-
-#. type: Content of: <p><pre>
+#. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/loopfor/LoopFor.html:46
-#, no-wrap
-msgid ""
-"done = 0\n"
-"while done &lt; stepAmount:\n"
-"&nbsp;&nbsp;&nbsp;backward()\n"
-"&nbsp;&nbsp;&nbsp;done = done + 1\n"
-msgstr ""
-"dejaFait = 0\n"
-"while dejaFait &lt; nbPas:\n"
-"&nbsp;&nbsp;&nbsp;backward()\n"
-"&nbsp;&nbsp;&nbsp;dejaFait = dejaFait + 1\n"
+msgid "[!java]"
+msgstr "[!java]"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:51
-#, no-wrap
-msgid ""
-"for done in range(stepAmount):\n"
-"&nbsp;&nbsp;&nbsp;backward()\n"
-msgstr ""
-"for done in range(nbPas):\n"
-"&nbsp;&nbsp;&nbsp;backward()\n"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:57
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:47
 msgid ""
 "It is possible to build more advanced <tt>for</tt> loops since any valid "
-"instruction can be used as initialization, condition and incrementation. The "
-"following example is a bit extreme since it compute the gcd (greatest common "
-"divisor) of two numbers without loop body and initialization (everything is "
-"in the condition and incrementation)."
-msgstr ""
-"On peut imaginer des utilisations bien plus avancées des boucles <tt>for</"
-"tt> car toute instruction valide peut être utilisée comme initialisation, "
-"condition et incrémentation. L'exemple suivant est un peu extrême, "
-"puisqu'elle calcule le PGCD de deux nombres sans avoir ni de corps de "
-"boucle, ni d'initialisation (tout est fait dans la condition et "
-"l'incrémentation)."
+"instruction can be used as initialization, condition and incrementing "
+"instruction. The following example is a bit extreme as there is no need for "
+"a loop body to move the buggle forward until it reaches the wall, but it "
+"works well: all the work is done in the condition and incrementing "
+"instruction."
+msgstr "On peut imaginer des utilisations bien plus avancées des boucles <tt>for</tt> car toute instruction valide peut être utilisée comme initialisation, condition et incrémentation. L'exemple suivant est un peu extrême, puisqu'il n'y a même pas de corps de boucle. La buggle est avancée jusqu'à se retrouver face au mur dans la condition et l'incrémentation."
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/loopfor/LoopFor.html:63
+#. type: Content of: <p><pre>
+#: src/lessons/welcome/loopfor/LoopFor.html:53
 #, no-wrap
 msgid ""
-"int x=20, y=3, tmp;\n"
-"for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }\n"
-" <span class=\"comment\">/* the gcd is stored in x */</span>"
+"for (; !isFacingWall() ; forward()) { \n"
+"   <span class=\"comment\">/* nothing in the loop body */</span>\n"
+"}\n"
+"<span class=\"comment\">/* the buggle now faces a wall */</span>"
 msgstr ""
-"int x=20, y=3, tmp;\n"
-"for (; y!=0 ; tmp=x, x=y, y=tmp%y) { }\n"
-" <span class=\"comment\">/* le PGCD est stocké dans x */</span>"
+"for (; !estFaceMur() ; avance()) { \n"
+"   <span class=\"comment\">/* rien dans le corps de boucle */</span>\n"
+"}\n"
+"<span class=\"comment\">/* la buggle est maintenant face à un mur */</span>"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:67
+#. type: Content of: <p><p>
+#: src/lessons/welcome/loopfor/LoopFor.html:60
 msgid ""
-"If you don't understand every details of this example, don't panic. That's "
-"quite logic since it uses some syntax details that we did not introduce yet."
-msgstr ""
-"Si vous ne comprenez pas tous les détails de cet exemple, pas de panique, "
-"c'est assez logique puisqu'il utilise des points de syntaxe que nous n'avons "
-"pas encore vu."
+"You now have to redo the same exercise than previously (move forward until "
+"being over a baggle, pick it up, move back to your original location, drop "
+"the baggle), but using a <code>for</code> loop instead of a <code>while</"
+"code> loop to move back to the initial location."
+msgstr "Il s'agit maintenant de refaire le même exercice que précédemment (avancer jusqu'à trouver un baggle, le ramasser, revenir là où on était au début puis reposer le baggle), mais en utilisant une boucle <tt>for</tt> pour revenir au point de départ à la place d'une boucle <code>while</code>."
 
-#. type: Content of: <p><p><a>
-#: src/lessons/welcome/loopfor/LoopFor.html:71
-msgid ""
-"<a name=\"Objectives\"> You now have to redo the same exercise than "
-"previously (move forward until being over a baggle, pick it up, move back to "
-"your original location, drop the baggle), but using a <tt>for</tt> loop "
-"instead of a <tt>while</tt> loop to move back to the initial location."
-msgstr ""
-"<a name=\"Objectifs\"> Il s'agit de refaire le même exercice que "
-"précédemment (avancer jusqu'à trouver un baggle, le ramasser, revenir là où "
-"on était au début puis reposer le baggle), mais en utilisant une boucle "
-"<tt>for</tt> pour revenir au point de départ à la place d'une boucle "
-"<tt>while</tt>."
-
-#. type: Content of: <p><p><a><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:76
-msgid "Once done, proceed to next exercise."
-msgstr "Une fois ceci fait, passez à l'exercice suivant."
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopFor.html:65
+msgid "Once done, you can proceed to next exercise."
+msgstr "Une fois ceci fait, vous pouvez passez à l'exercice suivant."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopStairs.html:1
@@ -10862,7 +10834,10 @@ msgstr "Compter les ados"
 msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 4 int values, return the amount of teen ones."
-msgstr "On dira qu'un nombre est \"ado\" s'il appartient est entre 13 et 19 (inclus). Étant donné quatre nombres entiers, retournez combien d'entre eux sont ados."
+msgstr ""
+"On dira qu'un nombre est \"ado\" s'il appartient est entre 13 et 19 "
+"(inclus). Étant donné quatre nombres entiers, retournez combien d'entre eux "
+"sont ados."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/Diff21.html:1
@@ -14202,22 +14177,6 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
-
-#~ msgid ""
-#~ "for (<b>initializing</b>; <b>condition</b>; <b>incrementing</b>) {\n"
-#~ "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-#~ "}"
-#~ msgstr ""
-#~ "for (<b>initialisation</b>; <b>condition</b>; <b>incrémentation</b>) {\n"
-#~ "&nbsp;&nbsp;&nbsp;<b>action</b>();\n"
-#~ "}"
-
-#~ msgid ""
-#~ "for <b>variable</b> in <b>sequence of values</b>:\n"
-#~ "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
-#~ msgstr ""
-#~ "for <b>variable</b> in <b>séquence de valeurs</b>:\n"
-#~ "&nbsp;&nbsp;&nbsp;<b>action</b>()\n"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"
