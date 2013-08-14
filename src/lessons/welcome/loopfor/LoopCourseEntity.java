@@ -2,17 +2,24 @@ package lessons.welcome.loopfor;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
+
 public class LoopCourseEntity extends jlm.universe.bugglequest.SimpleBuggle {
+	@Override
+	public void forward(int i)  { 
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
+	}
+	@Override
+	public void backward(int i) {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
+	}
+
 	Color[] colors = new Color[] {
 			Color.white,
 			new Color(255,240,240),new Color(255,220,220),new Color(255,205,205),
 			new Color(255,190,190),new Color(255,170,170),new Color(255,150,150),
 			new Color(255,130,130),new Color(255,110,110),new Color(255,45,45),
 			new Color(255,5,5)};
-	@Override
-	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
-	}
 	@Override
 	public void forward()  {
 		super.forward();
@@ -26,13 +33,6 @@ public class LoopCourseEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		brushDown();
 		brushUp();
 	}
-
-	@Override
-	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
-	}
-	
-
 
 	@Override
 	/* BEGIN TEMPLATE */
