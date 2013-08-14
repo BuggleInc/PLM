@@ -69,6 +69,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		for (String line : content.split("\n")) {
 			//if (this.debug)
 			//	System.out.println(state+"->"+line);
+			
 			switch (state) {
 			case 0: /* initial content */
 				if (line.contains("class ")) {
@@ -269,7 +270,7 @@ public abstract class ExerciseTemplated extends Exercise {
 			System.out.println("<<<<<<<<initialContent:"+initialContent);
 		    System.out.println("<<<<<<<<Skel: "+skelContent);
 		}*/
-
+		
 		if (skelContent.length()>0) {
 			if (! (this instanceof ExerciseTemplatingEntity)) 
 				throw new RuntimeException(getName()+": You provided an exercise skeleton, but this is not an ExerciseTemplatingEntity. Are you trying to drive me nuts??");
@@ -299,7 +300,8 @@ public abstract class ExerciseTemplated extends Exercise {
 			newSource(lang, name, initialContent, skelContent,offset,
 					/* correction: */ templateHead.toString()+solution.toString()+templateTail.toString());
 		} else {
-			newSource(lang, name, initialContent, template,offset,correction.toString());
+			newSource(lang, name, initialContent, template,offset,
+					correction.toString().replaceAll("SimpleBuggle","AbstractBuggle")); // We don't want to have little dialogs when testing
 		}
 	}
 
