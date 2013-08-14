@@ -25,7 +25,6 @@ import jsyntaxpane.DefaultSyntaxKit;
 import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
-import jsyntaxpane.util.Configuration;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -188,7 +187,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	/* setup methods */
 	private void initJSyntaxPane() {
 		DefaultSyntaxKit.initKit();
-        Configuration conf = DefaultSyntaxKit.getConfig(DefaultSyntaxKit.class);
+        //Configuration conf = DefaultSyntaxKit.getConfig(DefaultSyntaxKit.class);
 
 
 		//TODO: can be configured through a property file in the new version of jsyntaxpane
