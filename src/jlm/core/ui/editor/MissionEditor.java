@@ -3,6 +3,8 @@ package jlm.core.ui.editor;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -26,6 +28,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import jlm.core.model.Game;
 import jlm.core.ui.JlmHtmlEditorKit;
 import jlm.core.utils.FileUtils;
 import jsyntaxpane.DefaultSyntaxKit;
@@ -42,11 +45,23 @@ public class MissionEditor extends JFrame {
 	private JTextPane editor =  new JTextPane();
 	
 	private String lastPathSelected;
+	private boolean modified = false;
+	
+	private String TITLE_MODIFIED = i18n.tr("JLM - Mission Editor (modified)");
+	private String TITLE_NOT_MODIFIED = i18n.tr("JLM - Mission Editor");
 	
 	public MissionEditor() {
 		super();
-		setTitle(i18n.tr("JLM - Mission Editor"));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle(TITLE_NOT_MODIFIED);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+	    addWindowListener(new WindowAdapter() {
+	    	@Override
+	        public void windowOpened(WindowEvent e) {}
+	    	@Override
+	        public void windowClosing(WindowEvent e) {
+	        	confirmQuit();
+	        }
+	    });
 		setSize(1200, 800);
 		initComponents();
 		DefaultSyntaxKit.initKit();
@@ -106,6 +121,10 @@ public class MissionEditor extends JFrame {
 		display.setEditable(false);
 		editor.getDocument().addDocumentListener(new DocumentListener() {
 			private void updateHTML() {
+				if (!modified) {
+					setTitle(TITLE_MODIFIED);
+					modified = true;
+				}
 				String ctn = "<html><head>"+JlmHtmlEditorKit.getCSS()+"</head><body>"+
 						JlmHtmlEditorKit.filterHTML(editor.getText(),true)+
 						"</body></html>";
@@ -130,9 +149,7 @@ public class MissionEditor extends JFrame {
 			public void changedUpdate(DocumentEvent e) {
 				updateHTML();
 			}
-		});
-		
-		
+		});		
 	}
 	
 	public void loadMission(String path) {
@@ -147,9 +164,32 @@ public class MissionEditor extends JFrame {
 			}
 
 			editor.setText(content.toString());
+			modified = false;
 		} catch (IOException e1) {
 			JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(),i18n.tr("Error while reading {0}",lastPathSelected), JOptionPane.ERROR_MESSAGE);
 		}
+	}
+	
+	public void confirmQuit() {
+		if (modified) {
+			int choice = JOptionPane.showConfirmDialog(MissionEditor.this, 
+					Game.i18n.tr("You did not save you changes. Do you want to save it before quiting?"), 
+					Game.i18n.tr("Save or loose your change?"),
+					JOptionPane.YES_NO_CANCEL_OPTION,
+					JOptionPane.QUESTION_MESSAGE);
+
+			switch (choice) {
+			case JOptionPane.CANCEL_OPTION: 
+				return;
+			case JOptionPane.YES_OPTION:
+				SaveMissionAction act = new SaveMissionAction();
+				act.actionPerformed(null);
+				break;
+			case JOptionPane.NO_OPTION:
+				System.out.println("Your changes were lost as you requested.");
+			}
+		}
+		System.exit(0);
 	}
 
 	class SaveMissionAction extends AbstractAction {
@@ -161,6 +201,8 @@ public class MissionEditor extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (!modified)
+				return;
 			
 			if (lastPathSelected == null) {
 				SaveAsMissionAction act = new SaveAsMissionAction();
@@ -189,6 +231,8 @@ public class MissionEditor extends JFrame {
 					e1.printStackTrace();
 				}
 			}
+			setTitle(TITLE_NOT_MODIFIED);
+			modified = false;
 		}
 	}
 	class SaveAsMissionAction extends AbstractAction {
@@ -200,6 +244,9 @@ public class MissionEditor extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (!modified)
+				return;
+			
 			JFileChooser fc;
 			if (lastPathSelected != null)
 				fc = new JFileChooser(lastPathSelected);
@@ -231,6 +278,9 @@ public class MissionEditor extends JFrame {
 					}
 				}
 			}
+			
+			setTitle(TITLE_NOT_MODIFIED);
+			modified = false;
 		}
 	}
 
@@ -243,6 +293,25 @@ public class MissionEditor extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			if (modified) {
+				int choice = JOptionPane.showConfirmDialog(MissionEditor.this, 
+						Game.i18n.tr("You did not save you changes. Do you want to save it before opening another file?"), 
+						Game.i18n.tr("Save or loose your change?"),
+						JOptionPane.YES_NO_CANCEL_OPTION,
+						JOptionPane.QUESTION_MESSAGE);
+
+				switch (choice) {
+				case JOptionPane.CANCEL_OPTION: 
+					return;
+				case JOptionPane.YES_OPTION:
+					SaveMissionAction act = new SaveMissionAction();
+					act.actionPerformed(e);
+					break;
+				case JOptionPane.NO_OPTION:
+					System.out.println("Your changes were lost as you requested.");
+				}
+				modified = false;	
+			}
 			JFileChooser fc = new JFileChooser();
 			fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("HTML files"), "html"));
 			int status = fc.showOpenDialog(MissionEditor.this);
@@ -264,7 +333,7 @@ public class MissionEditor extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			dispose();
+			confirmQuit();
 		}
 
 	}
