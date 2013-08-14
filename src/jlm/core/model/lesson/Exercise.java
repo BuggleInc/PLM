@@ -221,14 +221,16 @@ public abstract class Exercise extends Lecture {
 		}
 
 		/* Sanity check for broken lessons: the entity name must be a valid Java identifier */
-		String[] forbidden = new String[] {"'","\""};
-		for (String stringPattern : forbidden) {
-			Pattern pattern = Pattern.compile(stringPattern);
-			Matcher matcher = pattern.matcher(newClassName);
-			
-			if (matcher.matches())
-				throw new RuntimeException(newClassName+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
-						"Does your exercise use a broken tabname or entityname?");
+		if (Game.getProgrammingLanguage().equals(Game.JAVA)) {
+			String[] forbidden = new String[] {"'","\""};
+			for (String stringPattern : forbidden) {
+				Pattern pattern = Pattern.compile(stringPattern);
+				Matcher matcher = pattern.matcher(newClassName);
+
+				if (matcher.matches())
+					throw new RuntimeException(newClassName+" is not a valid java identifier (forbidden char: "+stringPattern+"). "+
+							"Does your exercise use a broken tabname or entityname?");
+			}
 		}
 
 		for (World current:worlds) {
