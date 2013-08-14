@@ -292,7 +292,7 @@ public abstract class World {
 			/* read it */
 			about = sb.toString();
 		}
-		return "<html>\n" + JlmHtmlEditorKit.getCSS() + "<body>\n" + JlmHtmlEditorKit.filterHTML(about) + "</body>\n</html>\n";
+		return "<html>\n" + JlmHtmlEditorKit.getCSS() + "<body>\n" + JlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
 	}
 	
 	/**

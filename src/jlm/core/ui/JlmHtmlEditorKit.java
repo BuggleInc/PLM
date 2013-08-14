@@ -51,7 +51,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	 *  [!configfile] displays where the JLM config file is stored on disk.
 	 * 
 	 */
-	public static String filterHTML(String in) {
+	public static String filterHTML(String in, boolean showAll) {
 		if (langColors == null) {
 			langColors = new HashMap<String, String>();
 			langColors.put("java", "FF0000");
@@ -70,7 +70,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"jlm.properties");
 		
 		/* Display everything when in debug mode, with shiny colors */
-		if (Game.getInstance().isDebugEnabled()) {
+		if (showAll) {
 			// Process any block with one language first so that they can be nested in blocks with more than one language.
 			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
 				String l = lang.getLang().toLowerCase();
