@@ -177,7 +177,10 @@ public abstract class Entity {
 			} catch (Exception e) {
 				String msg = Game.i18n.tr("The execution of your program raised an exception: {0}\n" + 
 						" Please fix your code.\n",e.getLocalizedMessage());
-
+				
+				for (StackTraceElement elm : e.getStackTrace())
+					msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
+				
 				System.err.println(msg);
 				progress.setCompilationError(msg);
 				e.printStackTrace();
