@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-15 17:17+0300\n"
+"POT-Creation-Date: 2013-08-15 17:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1916,7 +1916,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:71 src/lessons/welcome/methods/basics/Methods.html:95 src/lessons/welcome/methods/basics/MethodsDogHouse.html:37 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:71 src/lessons/welcome/methods/basics/Methods.html:95 src/lessons/welcome/methods/basics/MethodsDogHouse.html:37 src/lessons/welcome/methods/returning/MethodsReturning.html:48 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -3544,98 +3544,79 @@ msgid ""
 "pattern and factorize your code.  Your turn..."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:3
 msgid ""
 "Writing a method returning a result is not really more work than writing a "
-"method without any result. <span class=\"Java\">You simply have to specify "
-"the data type of expected results before the method name</span>. And, then "
-"write a <code>return</code> instruction in your method body to specify the "
-"actual value to return."
+"method without any result.  [!java]You simply have to specify the data type "
+"of expected results before the method name (where we previously had "
+"<code>void</code>).[/!] [!scala]You simply have to add a column (:) after "
+"the parenthesis and write the type of data that your method will return, and "
+"add an equal sign (=). This syntax is actually rather close to defining a "
+"variable, with its type, that is actually a function.[/!] You can use the "
+"<code>return</code> instruction anywhere in your method body to specify that "
+"the computation is done (the method is not further executed), and that the "
+"result is the the value following the <code>return</code> keyword."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:9
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:12
 #, no-wrap
 msgid ""
-"double pi() {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159;\n"
-"}\n"
-"boolean isNumberTwoEven() {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-"}\n"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:16
-#, no-wrap
-msgid ""
-"def pi():\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return 3.14159\n"
-"\n"
-"def isNumberTwoEven():\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return True\n"
+"[!java]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def "
+"pi():[/!]\n"
+"    return 3.14159[!java];[/!]\n"
+"[!java|scala]}[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:23
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:16
+msgid ""
+"Actually, you can also use that <code>return</code> keyword in methods that "
+"do not return any result, to interupt the computation. Of course, you should "
+"not provide any value to return in that case."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:19
 msgid ""
 "It is possible to have several <code>return</code> instructions in several "
-"branches of a conditional. It is even forbidden to have one execution path "
-"of your body without any <code>return</code>, or to write some code after "
-"the <code>return</code> instruction."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:28
-msgid ""
-"Indeed, if the machine reaches the end of the method without finding any "
-"<code>return</code>, it cannot know what actual value to give back to the "
-"method caller. Moreover, <code>return</code> interrupts immediately the "
-"method execution (why bother looking further when you know the method "
-"result?). So, if there is some code after a <code>return</code>, it must be "
-"an error and the compiler warns you."
+"branches of a conditional. In fac, it is forbidden to have any execution "
+"path of your body without any <code>return</code>, or to write some code "
+"after the <code>return</code> instruction. Indeed, if the machine reaches "
+"the end of the method without finding any <code>return</code>, it cannot "
+"know what actual value to give back to the method caller.  Moreover, "
+"<code>return</code> interrupts immediately the method execution (why bother "
+"looking further when you know the method result?). So, if there is some code "
+"after a <code>return</code>, it must be an error and the compiler warns you."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:35
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:30
 #, no-wrap
 msgid ""
-"boolean negation(boolean cond) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;if (cond == true) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return true;\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* "
-"no code allowed here */</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;} else {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return false;\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* "
-"here neither */</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\">/* even here, forget it "
-"*/</span>\n"
-"}"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:45
-#, no-wrap
-msgid ""
-"def negation(cond):\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;if cond == True:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return True\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># no "
-"code allowed here</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;else:\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return False\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># "
-"here neither</span>\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"comment\"># even here, forget "
-"it</span>\n"
+"[!java|scala][!java]boolean [/!][!scala]def "
+"[/!]isFrontFree()[!scala]:Boolean =[/!] {\n"
+"    if (isFacingWall() == true) {\n"
+"        return false;\n"
+"        <span class=\"comment\">/* no code allowed here */</span>\n"
+"    } else {\n"
+"        return true;\n"
+"        <span class=\"comment\">/* here neither */</span>\n"
+"    }\n"
+"    <span class=\"comment\">/* even here, forget it */</span>\n"
+"}[/!][!python]def isFrontFree():\n"
+"    if isFacingWall() == True:\n"
+"        return False\n"
+"        <span class=\"comment\"># no code allowed here</span>\n"
+"    else\n"
+"        return True\n"
+"        <span class=\"comment\"># here neither</span>\n"
+"<span class=\"comment\"># even here, forget it</span>[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:56
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:48
 msgid ""
 "You will once again write a method that the buggle will use. Its name must "
 "be <code>haveBaggle</code>, and it returns a boolean value indicating "
@@ -3644,7 +3625,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:61
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:53
 msgid ""
 "The easier for this method is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
@@ -3652,7 +3633,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:65
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:57
 msgid ""
 "Then, move 6 steps forward (the world contains 7 cells and we already are "
 "one one of them). For each cell, if it contains a baggle, we store true in "
@@ -3660,14 +3641,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:69
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:61
 msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:73
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:65
 msgid ""
 "This exercise is a bit different since there is two initial worlds, each "
 "with a specific objective. Your code must work for each of them. Observe "
@@ -3676,7 +3657,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/returning/MethodsReturning.html:78
+#: src/lessons/welcome/methods/returning/MethodsReturning.html:70
 msgid "When your method <code>haveBaggle</code> works, proceed to next exercise."
 msgstr ""
 

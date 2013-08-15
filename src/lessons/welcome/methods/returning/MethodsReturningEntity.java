@@ -1,17 +1,18 @@
 package lessons.welcome.methods.returning;
 
+import jlm.core.model.Game;
+
 
 public class MethodsReturningEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument"));
 	}
 
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument"));
 	}
-
 
 	@Override
 	public void run() { 
@@ -24,7 +25,7 @@ public class MethodsReturningEntity extends jlm.universe.bugglequest.SimpleBuggl
 		}
 	}
 	/* BEGIN TEMPLATE */
-	public boolean haveBaggle() {
+	boolean haveBaggle() {
 		/* BEGIN SOLUTION */
 		boolean res = false;
 		for (int i=0; i<6; i++) {
