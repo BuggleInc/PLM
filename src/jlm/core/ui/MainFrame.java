@@ -285,7 +285,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		ButtonGroup group = new ButtonGroup();
 
-		for (String[] lang : new String[][] { {"Francais","fr"}, {"English","en"}}) {
+		for (String[] lang : Game.humanLangs) {
 			JMenuItem item = new JRadioButtonMenuItem(new SetLanguage(g, lang[0], new Locale(lang[1])));
 			if (lang[1].equals(FileUtils.getLocale().getLanguage())) 
 				item.setSelected(true);

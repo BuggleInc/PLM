@@ -84,6 +84,8 @@ public class Game implements IWorldView {
 	private Lesson currentLesson;
 	private Course currentCourse;
 
+	public static final String [][] humanLangs = { {"Francais","fr"}, {"English","en"}};
+	
 	public static final ProgrammingLanguage JAVA =       new ProgrammingLanguage("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
 	public static final ProgrammingLanguage PYTHON =     new ProgrammingLanguage("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
 	public static final ProgrammingLanguage SCALA =      new ProgrammingLanguage("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));

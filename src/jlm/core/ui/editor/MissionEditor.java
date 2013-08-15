@@ -317,7 +317,21 @@ public class MissionEditor extends JFrame {
 			int status = fc.showOpenDialog(MissionEditor.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {
-				lastPathSelected = fc.getSelectedFile().getAbsolutePath();
+				String path = fc.getSelectedFile().getAbsolutePath();
+				for (String[] lang : Game.humanLangs) 
+					if (path.endsWith("."+lang[1]+".html")) { 
+						int choice = JOptionPane.showConfirmDialog(MissionEditor.this, 
+								Game.i18n.tr("You chose a translated mission text for edition ({0}).\n"
+										+ "This is wrong. The translations should be handled with po4a in JLM.\n"
+										+ "Please refer to https://github.com/oster/JLM/wiki/Working-with-the-translations for more information.\n\n"
+										+ "Proceed anyway?",path), 
+										Game.i18n.tr("This is a translated mission text"),
+										JOptionPane.YES_NO_OPTION,
+										JOptionPane.ERROR_MESSAGE);
+						if (choice == JOptionPane.NO_OPTION)
+							return;
+					}
+				lastPathSelected = path;
 				loadMission(lastPathSelected);
 			}
 		}
