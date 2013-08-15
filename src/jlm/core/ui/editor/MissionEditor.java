@@ -312,7 +312,7 @@ public class MissionEditor extends JFrame {
 				}
 				modified = false;	
 			}
-			JFileChooser fc = new JFileChooser();
+			JFileChooser fc = new JFileChooser(lastPathSelected);
 			fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("HTML files"), "html"));
 			int status = fc.showOpenDialog(MissionEditor.this);
 
