@@ -2,23 +2,29 @@ package lessons.welcome.loopdowhile;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
+
 public class PoucetEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}
-
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
 	}
-
+	
 	public boolean crossing() {
 		return getX()%5== 1 && getY()%5==1;
 	}
 	public boolean exitReached() {
 		return getGroundColor().equals(Color.orange);
-	}
+	}	
+	/* BINDINGS TRANSLATION */
+	boolean sortieTrouvee() { return exitReached(); }
+	boolean croisement() { return crossing(); }
+
+	
 
 	@Override
 	/* BEGIN TEMPLATE */

@@ -2,20 +2,23 @@ package lessons.welcome.variables;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
+
 public class RunHalfEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}
-
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
 	}
 	public boolean isOverOrange() {
 		return getGroundColor().equals(Color.orange);
 	}
-
+	/* BINDINGS TRANSLATION */
+	public boolean estSurOrange() { return isOverOrange(); }
+	
 	@Override
 	/* BEGIN TEMPLATE */
 	public void run() { 

@@ -15,6 +15,13 @@ def crossing():
 def exitReached():
     return getGroundColor().equals(Color.orange)
 
+# BINDINGS TRANSLATION 
+def croisement():
+    return crossing()
+def sortieTrouvee():
+    return exitReached()
+
+
 # BEGIN SOLUTION
 while not exitReached() :
     seen = 0

@@ -1,17 +1,19 @@
 package lessons.welcome.variables;
 
 import java.awt.Color;
+import jlm.core.model.Game
 
 class ScalaRunHalfEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	override def forward(i: Int)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}
 	override def backward(i: Int) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
 	}
 	def isOverOrange():Boolean = {
 		return getGroundColor().equals(Color.orange);
 	}
+	/* BINDINGS TRANSLATION */
 	def estSurOrange():Boolean = { return isOverOrange(); }
 
 	override def run() {

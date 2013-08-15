@@ -6,6 +6,9 @@ public class LoopDoWhileEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	boolean isGroundWhite() { 
 		return getGroundColor().equals(Color.white)?true:false;
 	}
+	/* BINDINGS TRANSLATION */
+	boolean estSurBlanc() { return isGroundWhite() ; }
+	
 	@Override
 	/* BEGIN TEMPLATE */
 	public void run() { 

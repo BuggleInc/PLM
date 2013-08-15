@@ -1,29 +1,23 @@
 package lessons.welcome.variables;
 
-import jlm.core.model.Game;
+import jlm.core.model.Game
 
-public class RunFourEntity extends jlm.universe.bugglequest.SimpleBuggle {
-	@Override
-	public void forward(int i)  { 
+class ScalaRunFourEntity extends jlm.universe.bugglequest.SimpleBuggle {
+	override def forward(i: Int)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}
-	@Override
-	public void backward(int i) {
+	override def backward(i: Int) {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument."));
 	}
 
-
-	@Override
-	/* BEGIN TEMPLATE */
-	public void run() { 
+	override def run() {
 		/* BEGIN SOLUTION */
-		int cpt = 0;
+		var cpt = 0;
 		while (cpt != 4) {
 			forward();
 			if (isOverBaggle())
-				cpt++;
+				cpt += 1
 		}
 		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 }

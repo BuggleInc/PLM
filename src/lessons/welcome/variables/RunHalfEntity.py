@@ -9,6 +9,9 @@ def backward(i=1):
 def isOverOrange():
     return getGroundColor() == Color.orange
 
+def estSurOrange(): # BINDINGS TRANSLATION
+    return isOverOrange()
+
 # BEGIN SOLUTION
 baggle = 0
 orange = 0

@@ -1,31 +1,5 @@
 <h2>Boucles jusqu'à<tt> (do ... while)</tt></h2>
 
-<p class="Python">Il y a ici un autre petit exercice sur les boucles. Il est légèrement plus
-complexe comme nous voulons que l'action soit exécutée dans tous les cas,
-même si la condition est directement fausse. Certains langages ont des
-constructions spécifiques pour cela, mais pas le langage Python. Mais il n'y
-a pas de problème, je suis sûr que vous pouvez faire sans, n'est-ce pas ?</p>
-
-<p class="Python">Une mauvaise solution serait de dupliquer le contenu de la boucle avant la
-boucle à proprement parlé, mais c'est une <b>très mauvaise</b> habitude de
-dupliquer du code, et il faut toujours éviter. Une meilleure solution est
-d'avoir une variable dédiée qui indique si c'est la première fois que l'on
-rentre dans la boucle :</p>
-<pre class="Python">premiereFois = True
-while premiereFois or (les autres conditions):
-  premiereFois = False
-  (le corps de la boucle)</pre>
-
-<p class="Java">Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
-et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
-parfois que l'on veuille que le corps de la boucle soit évalué au moins une
-fois, même si la condition est initialement fausse. On utilise pour cela une
-variante de la boucle <tt>while</tt>, dont la syntaxe Java est la suivante :
-<pre class="Java">do {
-&nbsp;&nbsp;<b>action()</b>;
-} while (<b>condition</b>);</pre></p>
-
-<h3>Objectif de cet exercice</h3>
 <p>Certaines cases du monde sont jaunes, mais les buggles ne supportent pas de
 s'y trouver. Écrivez le code nécessaire pour avancer jusqu'à ce que le sol
 devienne blanc. Vous pourrez utiliser la méthode
@@ -37,9 +11,48 @@ panique, et le fait que toutes les buggles se ruent vers l'avant au début,
 même la buggle qui ne se trouve pas sur du jaune. En d'autres mots, même si
 le sol est blanc le premier coup, il faut quand même avancer d'un pas.</p>    
 
-<p>L'idée général est donc de faire: 
+<p>L'idée général est donc de faire: </p>
 <pre>avancer jusqu'à se trouver sur une case blanche</pre>
 
-<p class="Java"><i>Remarque :</i> il est également possible de résoudre cet exercice avec
-une boucle <tt>while</tt> classique, mais ce n'est pas l'objectif.</p>
+<p>La principale difficulté est que nous voulons exécuter le corps de boucle au
+moins une fois, même si la buggle se trouve déjà sur une case blanche. Il
+serait facile de dupliquer le corps de la boucle avant la boucle pour cela,
+mais  ça serait une <b>très mauvaise idée</b>. Dupliquer du code est une
+<b>très mauvaise habitude</b> et il faut toujours éviter de le faire.</p>
 
+<p>Quand on duplique le code, sa maintenance tourne facilement au cauchemar :
+la lecture du code est très pénible puisque le lecteur doit s'assurer qu'il
+n'y a effectivement aucune différence, même minime, entre les versions du
+même code. Debugger le code devient plus long, puisqu'il faut corriger
+toutes les versions. En fait, toutes les modifications deviennent
+pénibles. Alors, vraiment, vous devrez <b>toujours</b> vous efforcer
+d'éviter la duplication du code quand c'est possible. Et la bonne nouvelle
+est que c'est toujours possible...</p>
+
+<h3>Exécuter le corps de boucle au moins une fois</h3>
+[!python]
+<p>Certain langage ont une construction spécifique pour cela, mais pas
+Python. Qu'à cela ne tienne, on s'en sort très bien sans. Une bonne manière
+est d'avoir une variable dédiée indiquant si c'est la première fois que l'on
+rentre dans la boucle :</p>
+<pre>premiereFois = True
+while premiereFois or (les autres conditions):
+  premiereFois = False
+  (le corps de la boucle)</pre>
+
+<p>Quand <code>premiereFois</code> est vraie, le corps de la boucle est exécuté
+même si les autres conditions impliqueraient le contraire. Une fois que le
+corps de boucle a été exécuté, <code>premiereFois</code> est mis à faux et
+n'influe plus jamais la décision d'entrer dans le corps de boucle.</p>
+[/!] [!java|scala]
+<p>Dans une boucle <tt>while</tt>, la condition est évaluée avant toute chose,
+et si elle est fausse, le corps de la boucle n'est jamais exécuté. Il arrive
+parfois que l'on veuille que le corps de la boucle soit évalué au moins une
+fois, même si la condition est initialement fausse. On utilise pour cela une
+variante de la boucle <tt>while</tt>, dont la syntaxe est la suivante en
+[!thelang].
+
+<pre>do {
+    <b>action()</b>[!java];[/!]
+} while (<b>condition</b>)[!java];[/!]</pre></p>
+[/!]
