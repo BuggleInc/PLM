@@ -4,7 +4,10 @@ keystore.properties
 .settings
 *~
 lib/jython/cachedir
+lib/cachedir/
 *.mo
 .DS_Store
+.cache
+.pydevproject
 # The next file contains the translated messages (generated on ant i18n-generate-jar)
 lib/jlm-messages.jar
