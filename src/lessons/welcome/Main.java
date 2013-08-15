@@ -79,6 +79,9 @@ import lessons.welcome.methods.picture.MethodsPicture;
 import lessons.welcome.methods.picture.MethodsPicture2;
 import lessons.welcome.methods.picture.MethodsPicture3;
 import lessons.welcome.methods.picture.MethodsPicture4;
+import lessons.welcome.methods.picture.PictureMono;
+import lessons.welcome.methods.picture.PictureMono2;
+import lessons.welcome.methods.picture.PictureMono3;
 import lessons.welcome.methods.returning.MethodsReturning;
 import lessons.welcome.methods.slug.SlugHunting;
 import lessons.welcome.methods.slug.SlugSnail;
@@ -124,19 +127,21 @@ public class Main extends Lesson {
 		
 		Lecture methodsVoid = addExercise(new Methods(this));
 		  addExercise(new MethodsDogHouse(this),methodsVoid);
-		
-  		  Lecture picture = addExercise(new MethodsPicture(this),methodsVoid);
-		    addExercise(new MethodsPicture2(this),picture);
-		    addExercise(new MethodsPicture3(this),picture);
- 	 	    addExercise(new MethodsPicture4(this),picture);
- 	 	  
+  		  addExercise(new PictureMono(this),methodsVoid);
+		  addExercise(new PictureMono2(this),methodsVoid);
+		  addExercise(new PictureMono3(this),methodsVoid);
+		 	 	  
  	 	Lecture methodReturns = addExercise(new MethodsReturning(this));
 		  addExercise(new SlugTracking(this),methodReturns);
 		  addExercise(new SlugHunting(this),methodReturns);
 		
 		Lecture methodArg = addExercise(new MethodsArgs(this));
 		  addExercise(new SlugSnail(this), methodArg);
-			
+  		  addExercise(new MethodsPicture(this),methodArg);
+		  addExercise(new MethodsPicture2(this),methodArg);
+		  addExercise(new MethodsPicture3(this),methodArg);
+ 	 	  addExercise(new MethodsPicture4(this),methodArg);
+	
 		  // First serie of boolean fun
 		  Lecture bat = addExercise(new SleepIn(this));
 		  addExercise(new MonkeyTrouble(this),bat);

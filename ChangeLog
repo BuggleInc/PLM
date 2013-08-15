@@ -16,6 +16,9 @@
     (default: 10px; must be valid in a CSS)
   * MissionEditorApp: little application to edit the mission texts with
     realtime rendering after applying our pseudo-markdown directives
+  * lessons/welcome/methods/picture/PictureMono*: new exercises on drawing, 
+    but without the color so that it can come early in the learning
+    process, when we don't have methods parameters yet
 20130804:
   * RELEASE 2.0, the revolutionary night.
   * Remove the array world. It was not helping very much when compared

@@ -1,19 +1,15 @@
 package lessons.welcome.methods.picture;
 
-import java.awt.Color;
-
 import jlm.universe.bugglequest.SimpleBuggle;
-public class MethodsPictureEntity extends SimpleBuggle {
+public class PictureMonoEntity extends SimpleBuggle {
 
-	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	void mark() {
 		brushDown();
 		brushUp();
 	}
 
-	void makeV(Color c) {
-		setBrushColor(c);
+	void makeV() {
 		forward();
 		mark();
 
@@ -34,11 +30,10 @@ public class MethodsPictureEntity extends SimpleBuggle {
 
 
 	public void run() {
-		makeV(Color.YELLOW);
-		makeV(Color.RED);
-		makeV(Color.BLUE);
-		makeV(Color.GREEN);
+		makeV();
+		makeV();
+		makeV();
+		makeV();
 	}
 	/* END SOLUTION */
-	/* END TEMPLATE */
 }

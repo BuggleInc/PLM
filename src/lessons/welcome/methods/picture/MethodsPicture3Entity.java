@@ -4,8 +4,6 @@ import java.awt.Color;
 
 import jlm.universe.bugglequest.SimpleBuggle;
 
-/* The suppress warning is sometimes mandatory for student code to compile cleanly */
-@SuppressWarnings("unused")
 public class MethodsPicture3Entity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */

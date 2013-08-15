@@ -1,18 +1,17 @@
 package lessons.welcome.methods.picture;
 
-import java.awt.Color;
+import jlm.universe.bugglequest.SimpleBuggle;
 
-public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaPictureMono3Entity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
-	void mark() {
+	def mark() {
 		brushDown();
 		brushUp();
 	}
 
-	void makeV(Color c) {
-		setBrushColor(c);
+	def makeV() {
 		forward();
 		mark();
 
@@ -30,29 +29,29 @@ public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle
 		left();
 	}
 
-	void makePattern() {
-		makeV(Color.YELLOW);
-		makeV(Color.RED);
-		makeV(Color.BLUE);
-		makeV(Color.GREEN);
+	def makePattern() {
+		makeV();
+		makeV();
+		makeV();
+		makeV();
 		forward(5);
 	}
 
-	void makeLine(int count){
-		for (int i=0; i<count;i++)
+	def makeLine(count: Int){
+		for (i <- 1 to count)
 			makePattern();
 		backward(count*5);
 	}
 
-	void nextLine() {
+	def nextLine() {
 		left();
 		forward(5);
 		right();	
 	}
 
-	public void run() {
-		for (int i=0; i<3;i++) {
-			makeLine(3);
+	def run() {
+		for (i <- 1 to 9) {
+			makeLine(9);
 			nextLine();
 		}
 	}

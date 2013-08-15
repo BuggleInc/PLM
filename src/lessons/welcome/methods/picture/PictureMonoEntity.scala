@@ -3,17 +3,16 @@ package lessons.welcome.methods.picture;
 import java.awt.Color;
 
 import jlm.universe.bugglequest.SimpleBuggle;
-public class MethodsPictureEntity extends SimpleBuggle {
+class ScalaMethodsPictureEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
-	void mark() {
+	def mark() {
 		brushDown();
 		brushUp();
 	}
 
-	void makeV(Color c) {
-		setBrushColor(c);
+	def makeV() {
 		forward();
 		mark();
 
@@ -33,11 +32,10 @@ public class MethodsPictureEntity extends SimpleBuggle {
 
 
 
-	public void run() {
-		makeV(Color.YELLOW);
-		makeV(Color.RED);
-		makeV(Color.BLUE);
-		makeV(Color.GREEN);
+	override def run() {
+		for (i <- 1 to 4) {
+			makeV();
+		}
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */

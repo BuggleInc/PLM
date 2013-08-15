@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-15 16:20+0300\n"
+"POT-Creation-Date: 2013-08-15 17:17+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1574,22 +1574,22 @@ msgid "Methods with parameters"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:228 src/lessons/welcome/methods/picture/MethodsPicture.html:1
+#: src/lessons/welcome/Main.html:228 src/lessons/welcome/methods/picture/PictureMono.html:1
 msgid "Methodically drawing"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:241 src/lessons/welcome/methods/picture/MethodsPicture2.html:1
+#: src/lessons/welcome/Main.html:241 src/lessons/welcome/methods/picture/PictureMono2.html:1
 msgid "Methodically drawing (only bigger)"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:267 src/lessons/welcome/methods/picture/MethodsPicture3.html:1
+#: src/lessons/welcome/Main.html:267 src/lessons/welcome/methods/picture/PictureMono3.html:1
 msgid "Drawing bigger and bigger"
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:280 src/lessons/welcome/methods/picture/MethodsPicture4.html:1
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:280
 msgid "Even more pattern to draw"
 msgstr ""
 
@@ -3459,6 +3459,92 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/picture/PictureMono.html:3 src/lessons/welcome/methods/picture/MethodsPicture.html:3
+msgid ""
+"In this exercise, we will reproduce the geometric drawing that you can see "
+"in the \"Objective\" tab."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:6 src/lessons/welcome/methods/picture/MethodsPicture.html:6
+msgid ""
+"Your goal (here and in any well written program) is to write the simplest "
+"possible code. For that, you have to decompose your work in sub-steps, and "
+"write a specific method for each sub-step."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:10
+msgid ""
+"If you observe carefully the picture to draw, it is constituted of four "
+"parts depicting a sort of V. A possible decomposition is to write a method "
+"in charge of drawing a V from the current position. Its prototype can be: "
+"<code>[!java]void [/!]makeV()</code>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:15
+msgid ""
+"In this method, you should use the methods <code>brushUp()</code> and "
+"<code>brushDown()</code> to mark the ground (you may want to factorize this "
+"in another method). It may be wise to write the <code>makeV()</code> so that "
+"it places directly the buggle in position for the next V."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:20
+msgid ""
+"Your turn. Your code of should not be longer than 4 lines (not counting "
+"<code>makeV</code>)..."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/picture/PictureMono2.html:3 src/lessons/welcome/methods/picture/MethodsPicture2.html:3
+msgid ""
+"We will now reproduce an even bigger geometrical drawing. Once again, you "
+"can see the model by clicking on the \"Objective\" tab."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono2.html:6 src/lessons/welcome/methods/picture/MethodsPicture2.html:6
+msgid ""
+"You can naturally reuse all the code you typed in previous exercise (select "
+"the other exercise, do Ctrl-C, come back to the code of this exercise, do "
+"Ctrl-V)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono2.html:10
+msgid ""
+"But you want to keep your code as simple as possible. For that, define new "
+"methods to deal simply with the repetitions in the pattern. For example, a "
+"method <code>makePattern()</code> achieving the pattern of previous example "
+"seems to be a good idea (but this may not be enough)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono2.html:15 src/lessons/welcome/methods/picture/MethodsPicture2.html:25
+msgid ""
+"Why don't you give it a shot? The main code method shouldn't take more than "
+"2 lines (included in a for loop)"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/picture/PictureMono3.html:3 src/lessons/welcome/methods/picture/MethodsPicture3.html:3
+msgid ""
+"As you can imagine, you have to reproduce the geometric drawing depicted in "
+"the \"Objectives\" tab. As you can see, it is even bigger than the previous "
+"one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono3.html:7
+msgid ""
+"You thus have to declare even more methods to use the repetitions of the "
+"pattern and factorize your code.  Your turn..."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:3
 msgid ""
 "Writing a method returning a result is not really more work than writing a "
@@ -3781,19 +3867,9 @@ msgid ""
 "professional programmers."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:3
-msgid ""
-"In this exercise, we will reproduce the geometric drawing that you can see "
-"in the \"Objective\" tab."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:6
-msgid ""
-"Your goal (here and in any well written program) is to write the simplest "
-"possible code. For that, you have to decompose your work in sub-steps, and "
-"write a specific method for each sub-step."
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:1
+msgid "Methodically drawing (in color)"
 msgstr ""
 
 #. type: Content of: <p>
@@ -3862,19 +3938,9 @@ msgstr ""
 msgid "Your turn. Your code should not be longer than 4 lines..."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:3
-msgid ""
-"We will now reproduce an even bigger geometrical drawing. Once again, you "
-"can see the model by clicking on the \"Objective\" tab."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:6
-msgid ""
-"You can naturally reuse all the code you typed in previous exercise (select "
-"the other exercise, do Ctrl-C, come back to the code of this exercise, do "
-"Ctrl-V)."
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:1
+msgid "Methodically drawing in color (only bigger)"
 msgstr ""
 
 #. type: Content of: <p>
@@ -3903,19 +3969,9 @@ msgid ""
 "more than 2 lines (included in a for loop)"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:25
-msgid ""
-"Why don't you give it a shot? The main code method shouldn't take more than "
-"2 lines (included in a for loop)"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/MethodsPicture3.html:3
-msgid ""
-"As you can imagine, you have to reproduce the geometric drawing depicted in "
-"the \"Objectives\" tab. As you can see, it is even bigger than the previous "
-"one."
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture3.html:1
+msgid "Drawing bigger and bigger, always in color"
 msgstr ""
 
 #. type: Content of: <p>
@@ -3929,6 +3985,11 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture3.html:11 src/lessons/welcome/traversal/Snake.html:46 src/lessons/welcome/traversal/column/TraversalByColumn.html:52 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
 msgid "Your turn..."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture4.html:1
+msgid "Even more colorful pattern to draw"
 msgstr ""
 
 #. type: Content of: <h3>

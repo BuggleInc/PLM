@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-15 16:20+0300\n"
-"PO-Revision-Date: 2013-08-15 16:27+0200\n"
+"POT-Creation-Date: 2013-08-15 17:17+0300\n"
+"PO-Revision-Date: 2013-08-15 17:22+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -214,9 +214,7 @@ msgstr ""
 msgid ""
 "An <b>Objective</b> tab displaying the world as it must be by the end of the "
 "exercise."
-msgstr ""
-"Un onglet <b>Objective</b> qui permet d'afficher la vue du monde tel qu'il "
-"doit être à la fin de l'exercice."
+msgstr "Un onglet <b>Objectif</b> qui permet d'afficher la vue du monde tel qu'il doit être à la fin de l'exercice."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:83
@@ -1976,25 +1974,24 @@ msgstr "Méthodes avec paramètres"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:228
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:1
+#: src/lessons/welcome/methods/picture/PictureMono.html:1
 msgid "Methodically drawing"
 msgstr "Dessiner avec méthode"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:241
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:1
+#: src/lessons/welcome/methods/picture/PictureMono2.html:1
 msgid "Methodically drawing (only bigger)"
 msgstr "Dessiner avec méthode (en plus grand)"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:267
-#: src/lessons/welcome/methods/picture/MethodsPicture3.html:1
+#: src/lessons/welcome/methods/picture/PictureMono3.html:1
 msgid "Drawing bigger and bigger"
 msgstr "Dessiner de plus en plus grand"
 
-#. type: Content of: <h2>
+#. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:280
-#: src/lessons/welcome/methods/picture/MethodsPicture4.html:1
 msgid "Even more pattern to draw"
 msgstr "Encore des motifs à dessiner"
 
@@ -4316,9 +4313,17 @@ msgstr ""
 "Le corps de la méthode\n"
 "[!java|scala](c'est-à-dire le bloc entre accolades)[/!]\n"
 "[!python](c'est-à-dire le bloc indenté)[/!]\n"
-"sera exécuté à chaque appel de cette méthode (c'est-à-dire à chaque fois que nous écrirons <code>vaChercher()</code> quelque part dans notre code).\n"
-"Ce corps de boucle peut contenir autant d'instructions que l'on veut, et toutes les constructions que nous avions vu jusque là (comme lesboucles et les conditionnelles).\n"
-"[!java]Le mot-clé <code>void</code> («néant» en anglais) signifie que cette méthode ne renvoie pas de résultat. Au contraire, la méthode <code>estSurBiscuit()</code> renvoie un résultat booleen indiquant si nous nous trouvons oui ou non sur un biscuit. Nous apprendrons bientôt à faire de telles méthodes. En attendant, écrivez juste <code>void</code> à cet endroit.[/!]"
+"sera exécuté à chaque appel de cette méthode (c'est-à-dire à chaque fois que "
+"nous écrirons <code>vaChercher()</code> quelque part dans notre code).\n"
+"Ce corps de boucle peut contenir autant d'instructions que l'on veut, et "
+"toutes les constructions que nous avions vu jusque là (comme lesboucles et "
+"les conditionnelles).\n"
+"[!java]Le mot-clé <code>void</code> («néant» en anglais) signifie que cette "
+"méthode ne renvoie pas de résultat. Au contraire, la méthode "
+"<code>estSurBiscuit()</code> renvoie un résultat booleen indiquant si nous "
+"nous trouvons oui ou non sur un biscuit. Nous apprendrons bientôt à faire de "
+"telles méthodes. En attendant, écrivez juste <code>void</code> à cet endroit."
+"[/!]"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/basics/Methods.html:38
@@ -4654,6 +4659,117 @@ msgstr ""
 "code> et ayant un comportement identique au code ci-dessus. La buggle "
 "invoquera plusieurs fois votre œuvre afin de dessiner des cabanes un peu "
 "partout."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/picture/PictureMono.html:3
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:3
+msgid ""
+"In this exercise, we will reproduce the geometric drawing that you can see "
+"in the \"Objective\" tab."
+msgstr "Dans cet exercice, nous allons reproduire un dessin géométrique, que vous pouvez voir en cliquant sur l'onglet «Objectif»."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:6
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:6
+msgid ""
+"Your goal (here and in any well written program) is to write the simplest "
+"possible code. For that, you have to decompose your work in sub-steps, and "
+"write a specific method for each sub-step."
+msgstr ""
+"Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire le "
+"code le plus simple possible. Pour cela, vous veillerez à décomposer le "
+"travail à faire en sous-étape, et à faire réaliser chaque sous-étape par une "
+"méthode particulière."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:10
+msgid ""
+"If you observe carefully the picture to draw, it is constituted of four "
+"parts depicting a sort of V. A possible decomposition is to write a method "
+"in charge of drawing a V from the current position. Its prototype can be: "
+"<code>[!java]void [/!]makeV()</code>"
+msgstr "Si on observe attentivement le modèle à dessiner, on remarque qu'il est composé de quatre formes en sorte de V à des positions différentes.  Un découpage possible est d'écrire une fonction chargée de faire un V à partir de la position courante. Son prototype peut être : <code>[!java]void [/!]faireV()</code>"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:15
+msgid ""
+"In this method, you should use the methods <code>brushUp()</code> and "
+"<code>brushDown()</code> to mark the ground (you may want to factorize this "
+"in another method). It may be wise to write the <code>makeV()</code> so that "
+"it places directly the buggle in position for the next V."
+msgstr "Dans cette méthode, vous devez utiliser les méthodes <code>baisseBrosse()</code> et <code>leveBrosse()</code> pour marquer le sol. Peut-être que marquer le sol devrait faire l'objet d'une méthode séparée? Il faudrait également que  méthode <code>faireV()</code> place directement la buggle en position pour dessiner le prochain V."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono.html:20
+msgid ""
+"Your turn. Your code of should not be longer than 4 lines (not counting "
+"<code>makeV</code>)..."
+msgstr ""
+"À vous de jouer. Votre code ne devrait pas prendre plus de quatre lignes "
+"(sans compter <code>faireV</code>)..."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/picture/PictureMono2.html:3
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:3
+msgid ""
+"We will now reproduce an even bigger geometrical drawing. Once again, you "
+"can see the model by clicking on the \"Objective\" tab."
+msgstr "Nous allons maintenant reproduire un dessin géométrique plus grand. Encore une fois, vous pouvez voir le modèle en cliquant sur l'onglet «Objectif»."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono2.html:6
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:6
+msgid ""
+"You can naturally reuse all the code you typed in previous exercise (select "
+"the other exercise, do Ctrl-C, come back to the code of this exercise, do "
+"Ctrl-V)."
+msgstr ""
+"Vous pouvez bien entendu réutiliser tout le code que vous aviez tapé à "
+"l'exercice précédent (sélectionnez l'autre exercice, allez dans le code, "
+"sélectionner tout, faites Ctrl-C, revenez dans le code de l'exercice "
+"courant, faites Ctrl-V)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono2.html:10
+msgid ""
+"But you want to keep your code as simple as possible. For that, define new "
+"methods to deal simply with the repetitions in the pattern. For example, a "
+"method <code>makePattern()</code> achieving the pattern of previous example "
+"seems to be a good idea (but this may not be enough)."
+msgstr ""
+"Mais pour que votre méthode principale reste aussi simple que possible, il "
+"faudra définir de nouvelles méthodes afin de gérer simplement les répétions "
+"du motif. Par exemple, une méthode <code>faireMotif()</code> réalisant le "
+"motif de l'exercice précédent semble être un bon départ (mais ce n'est sans "
+"doute pas suffisant)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono2.html:15
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:25
+msgid ""
+"Why don't you give it a shot? The main code method shouldn't take more than "
+"2 lines (included in a for loop)"
+msgstr ""
+"À vous de jouer. Le code principal ne devrait pas prendre plus de 2 lignes "
+"( incluses dans une boucle for)."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/picture/PictureMono3.html:3
+#: src/lessons/welcome/methods/picture/MethodsPicture3.html:3
+msgid ""
+"As you can imagine, you have to reproduce the geometric drawing depicted in "
+"the \"Objectives\" tab. As you can see, it is even bigger than the previous "
+"one."
+msgstr "Vous vous en doutez, il vous faut encore une fois reproduire un dessin géométrique dont le modèle se trouve dans l'onglet «Objectif». Comme vous le voyez, il est encore plus grand que le précédent."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/picture/PictureMono3.html:7
+msgid ""
+"You thus have to declare even more methods to use the repetitions of the "
+"pattern and factorize your code.  Your turn..."
+msgstr ""
+"Il va donc falloir définir encore plus de méthodes afin de tirer partie des "
+"répétitions du motif pour factoriser votre code. À vous de jouer..."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:3
@@ -5121,26 +5237,10 @@ msgstr ""
 "derniers exercices sont plus difficiles et devraient constituer des casse-"
 "têtes même pour les programmeurs professionnels."
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:3
-msgid ""
-"In this exercise, we will reproduce the geometric drawing that you can see "
-"in the \"Objective\" tab."
-msgstr ""
-"Dans cet exercice, nous allons reproduire un dessin géométrique, que vous "
-"pouvez voir en cliquant sur l'onglet \"Objective\"."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:6
-msgid ""
-"Your goal (here and in any well written program) is to write the simplest "
-"possible code. For that, you have to decompose your work in sub-steps, and "
-"write a specific method for each sub-step."
-msgstr ""
-"Votre objectif (ici, et dans tous les programmes bien faits) est d'écrire le "
-"code le plus simple possible. Pour cela, vous veillerez à décomposer le "
-"travail à faire en sous-étape, et à faire réaliser chaque sous-étape par une "
-"méthode particulière."
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:1
+msgid "Methodically drawing (in color)"
+msgstr "Dessiner avec méthode (en couleur)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:10
@@ -5221,26 +5321,10 @@ msgid "Your turn. Your code should not be longer than 4 lines..."
 msgstr ""
 "À vous de jouer. Votre code ne devrait pas prendre plus de quatre lignes..."
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:3
-msgid ""
-"We will now reproduce an even bigger geometrical drawing. Once again, you "
-"can see the model by clicking on the \"Objective\" tab."
-msgstr ""
-"Nous allons maintenant reproduire un dessin géométrique plus grand. Encore "
-"une fois, vous pouvez voir le modèle en cliquant sur l'onglet \"Objective\"."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:6
-msgid ""
-"You can naturally reuse all the code you typed in previous exercise (select "
-"the other exercise, do Ctrl-C, come back to the code of this exercise, do "
-"Ctrl-V)."
-msgstr ""
-"Vous pouvez bien entendu réutiliser tout le code que vous aviez tapé à "
-"l'exercice précédent (sélectionnez l'autre exercice, allez dans le code, "
-"sélectionner tout, faites Ctrl-C, revenez dans le code de l'exercice "
-"courant, faites Ctrl-V)."
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture2.html:1
+msgid "Methodically drawing in color (only bigger)"
+msgstr "Dessiner en couleur avec méthode (en plus grand)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture2.html:10
@@ -5279,25 +5363,10 @@ msgstr ""
 "À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
 "de 2 lignes, incluses dans une boucle for..."
 
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:25
-msgid ""
-"Why don't you give it a shot? The main code method shouldn't take more than "
-"2 lines (included in a for loop)"
-msgstr ""
-"À vous de jouer. Le code de la méthode principale ne devrait pas prendre "
-"plus de 2 lignes ( incluses dans une boucle for)"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/MethodsPicture3.html:3
-msgid ""
-"As you can imagine, you have to reproduce the geometric drawing depicted in "
-"the \"Objectives\" tab. As you can see, it is even bigger than the previous "
-"one."
-msgstr ""
-"Vous vous en doutez, il vous faut encore une fois reproduire un dessin "
-"géométrique dont le modèle se trouve dans l'onglet \"Objective\". Comme vous "
-"le voyez, il est encore plus grand que le précédent."
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture3.html:1
+msgid "Drawing bigger and bigger, always in color"
+msgstr "Dessiner de plus en plus grand, toujours en couleur"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture3.html:7
@@ -5321,6 +5390,11 @@ msgstr ""
 msgid "Your turn..."
 msgstr "À vous de jouer..."
 
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/picture/MethodsPicture4.html:1
+msgid "Even more colorful pattern to draw"
+msgstr "Encore des motifs colorés à dessiner"
+
 #. type: Content of: <h3>
 #: src/lessons/welcome/methods/picture/MethodsPicture4.html:2
 msgid "(and methods to write)"
@@ -5331,9 +5405,7 @@ msgstr "(et des méthodes à écrire)"
 msgid ""
 "Here is yet another exercise where you have to reproduce the pattern "
 "provided in the \"Objective\" tab."
-msgstr ""
-"Voici de nouveau un exercice où il faut reproduire un motif donné dans "
-"l'onglet \"Objective\"."
+msgstr "Voici de nouveau un exercice où il faut reproduire un motif donné dans l'onglet «Objectif»."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture4.html:7
@@ -11819,14 +11891,7 @@ msgid ""
 "patterns is that you have to read the pattern (on first row) before "
 "reproducing it. You cannot do otherwise because the same code will be "
 "executed on three different worlds, each of them having its specific pattern."
-msgstr ""
-"L'objectif de cet exercice est de reproduire le motif de la première colonne "
-"en le décalant d'une case (voir l'onglet Objectives pour plus de détails). "
-"La grande différence entre cet exercice et les précédents sur les motifs, "
-"c'est qu'il faut maintenant lire (sur la première colonne) le motif "
-"souhaité, puis le reproduire ensuite. Il est impossible de faire autrement "
-"car votre programme sera exécuté par trois buggles dans trois mondes "
-"différents, chacune ayant un motif propre à reproduire."
+msgstr "L'objectif de cet exercice est de reproduire le motif de la première colonne en le décalant d'une case (voir l'onglet «Objectif» pour plus de détails). La grande différence entre cet exercice et les précédents sur les motifs, c'est qu'il faut maintenant lire (sur la première colonne) le motif souhaité, puis le reproduire ensuite. Il est impossible de faire autrement car votre programme sera exécuté par trois buggles dans trois mondes différents, chacune ayant un motif propre à reproduire."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array.html:11
