@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-15 17:53+0300\n"
-"PO-Revision-Date: 2013-08-15 18:06+0200\n"
+"POT-Creation-Date: 2013-08-16 00:25+0300\n"
+"PO-Revision-Date: 2013-08-16 00:26+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2444,7 +2444,7 @@ msgstr ""
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:48
 #: src/lessons/welcome/methods/args/MethodsArgs.html:69
 #: src/lessons/welcome/methods/slug/SlugHunting.html:18
-#: src/lessons/welcome/methods/slug/SlugTracking.html:21
+#: src/lessons/welcome/methods/slug/SlugTracking.html:19
 #: src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:24
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:17
@@ -4804,10 +4804,19 @@ msgid ""
 "the computation is done (the method is not further executed), and that the "
 "result is the the value following the <code>return</code> keyword."
 msgstr ""
-"Écrire une méthode retournant un résultat n'est pas tellement plus dur que pour les méthodes sans résultat.\n"
-"[!java]Il suffit d'écrire le type de données renvoyées par votre méthode avant son nom (là où nous écrivions <code>void</code> avant).[/!] \n"
-"[!scala]Il suffit d'ajouter deux points (:), le type de données renvoyées par votre méthode et le signe égal (=) entre  les parenthèses de la déclaration et l'accolade du bloc. Cette syntaxe est assez proche de la définition d'une variable (avec son type) dont la valeur serait une fonction.[/!]\n"
-"Vous pouvez utiliser l'instruction <code>return</code> n'importe ou dans le corps de votre méthode pour spécifier que le calcul est fini (la suite de la méthode n'est pas exécutée) et donner la valeur à donner à l'appelant après le mot-clé <code>return</code>."
+"Écrire une méthode retournant un résultat n'est pas tellement plus dur que "
+"pour les méthodes sans résultat.\n"
+"[!java]Il suffit d'écrire le type de données renvoyées par votre méthode "
+"avant son nom (là où nous écrivions <code>void</code> avant).[/!] \n"
+"[!scala]Il suffit d'ajouter deux points (:), le type de données renvoyées "
+"par votre méthode et le signe égal (=) entre  les parenthèses de la "
+"déclaration et l'accolade du bloc. Cette syntaxe est assez proche de la "
+"définition d'une variable (avec son type) dont la valeur serait une fonction."
+"[/!]\n"
+"Vous pouvez utiliser l'instruction <code>return</code> n'importe ou dans le "
+"corps de votre méthode pour spécifier que le calcul est fini (la suite de la "
+"méthode n'est pas exécutée) et donner la valeur à donner à l'appelant après "
+"le mot-clé <code>return</code>."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:12
@@ -4827,7 +4836,11 @@ msgid ""
 "Actually, you can also use that <code>return</code> keyword in methods that "
 "do not return any result, to interupt the computation. Of course, you should "
 "not provide any value to return in that case."
-msgstr "En fait, vous pouvez également utiliser le mot-clé <code>return</code> dans les méthodes ne renvoyant pas de résultat, pour interrompre leur exécution. Dans ce cas, il ne faut bien entendu pas donner de valeur à droite du <code>return</code>."
+msgstr ""
+"En fait, vous pouvez également utiliser le mot-clé <code>return</code> dans "
+"les méthodes ne renvoyant pas de résultat, pour interrompre leur exécution. "
+"Dans ce cas, il ne faut bien entendu pas donner de valeur à droite du "
+"<code>return</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:19
@@ -4842,8 +4855,17 @@ msgid ""
 "looking further when you know the method result?). So, if there is some code "
 "after a <code>return</code>, it must be an error and the compiler warns you."
 msgstr ""
-"Il est possible d'avoir plusieurs instructions <code>return</code> dans différentes branches de <code>if</code>. Ce qui est interdit, c'est d'avoir une branche du code qui n'est pas terminée par un <code>return</code>, ou d'écrire du code après le <code>return</code>.\n"
-"En effet, si la machine arrive à la fin de la méthode sans avoir rencontré de <tt>return</tt>, elle ne peut pas savoir quelle valeur communiquer à celui qui a appelé la méthode. De plus, le <tt>return</tt> interrompt immédiatement l'exécution de la méthode (pourquoi continuer à chercher quand on a déjà trouvé le résultat de la méthode?). Donc, s'il y a du code après un <tt>return</tt>, c'est sans doute une erreur, et le compilateur vous l'indique."
+"Il est possible d'avoir plusieurs instructions <code>return</code> dans "
+"différentes branches de <code>if</code>. Ce qui est interdit, c'est d'avoir "
+"une branche du code qui n'est pas terminée par un <code>return</code>, ou "
+"d'écrire du code après le <code>return</code>.\n"
+"En effet, si la machine arrive à la fin de la méthode sans avoir rencontré "
+"de <tt>return</tt>, elle ne peut pas savoir quelle valeur communiquer à "
+"celui qui a appelé la méthode. De plus, le <tt>return</tt> interrompt "
+"immédiatement l'exécution de la méthode (pourquoi continuer à chercher quand "
+"on a déjà trouvé le résultat de la méthode?). Donc, s'il y a du code après "
+"un <tt>return</tt>, c'est sans doute une erreur, et le compilateur vous "
+"l'indique."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:30
@@ -4892,7 +4914,12 @@ msgid ""
 "be <code>haveBaggle</code>, and it returns a boolean value indicating "
 "whether the row in front of the buggle contains a baggle or not. The buggle "
 "will use it to search the first row containing a baggle, and stop here."
-msgstr "<a name=\"Objectifs\"> Vous allez encore une fois écrire une méthode qui sera utilisée par la buggle. Son nom doit être <code>haveBaggle</code>, et elle doit renvoyer un booléen indiquant si la colonne face à la buggle contient un biscuit ou non. Votre buggle va s'en servir pour chercher la première colonne contenant un biscuit et s'y arrêter."
+msgstr ""
+"<a name=\"Objectifs\"> Vous allez encore une fois écrire une méthode qui "
+"sera utilisée par la buggle. Son nom doit être <code>haveBaggle</code>, et "
+"elle doit renvoyer un booléen indiquant si la colonne face à la buggle "
+"contient un biscuit ou non. Votre buggle va s'en servir pour chercher la "
+"première colonne contenant un biscuit et s'y arrêter."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:53
@@ -4900,7 +4927,10 @@ msgid ""
 "The easier for this method is to use a boolean variable called "
 "<code>seenBaggle</code> indicating whether or not we saw a baggle so far. It "
 "initial value is 'false'."
-msgstr "Le plus simple pour écrire cette méthode est peut être d'utiliser une variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit jusque là. Initialement, elle contient faux."
+msgstr ""
+"Le plus simple pour écrire cette méthode est peut être d'utiliser une "
+"variable booléenne <code>vuBiscuit</code> indiquant si on a vu un biscuit "
+"jusque là. Initialement, elle contient faux."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:57
@@ -4908,14 +4938,20 @@ msgid ""
 "Then, move 6 steps forward (the world contains 7 cells and we already are "
 "one one of them). For each cell, if it contains a baggle, we store true in "
 "<code>sawBaggle</code> (and we don't do anything but moving forward if not)."
-msgstr "Ensuite, on avance de 6 cases (le monde contient 7 cases, et on est déjà sur l'une d'entre elles). Pour chaque case, si elle contient un biscuit, on range la valeur vrai dans <tt>vuBiscuit</tt> (et on ne fait rien d'autre qu'avancer si non)."
+msgstr ""
+"Ensuite, on avance de 6 cases (le monde contient 7 cases, et on est déjà sur "
+"l'une d'entre elles). Pour chaque case, si elle contient un biscuit, on "
+"range la valeur vrai dans <tt>vuBiscuit</tt> (et on ne fait rien d'autre "
+"qu'avancer si non)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:61
 msgid ""
 "At the end, we move back by 6 steps, and we return the value of "
 "<code>seenBaggle</code> to the caller."
-msgstr "Quand on est arrivé à la fin, on recule de 6 cases, et on retourne le contenu de <tt>vuBiscuit</tt> à l'appelant."
+msgstr ""
+"Quand on est arrivé à la fin, on recule de 6 cases, et on retourne le "
+"contenu de <tt>vuBiscuit</tt> à l'appelant."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:65
@@ -4924,7 +4960,12 @@ msgid ""
 "with a specific objective. Your code must work for each of them. Observe "
 "that the world selection scrolling menu (right below the speed slider)  "
 "allows to switch the observed world."
-msgstr "Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux, chacun ayant un objectif particulier. Votre code doit fonctionner pour chacun d'entre eux. Remarquez que le menu déroulant de sélection du monde (juste sous la barre de réglage de la vitesse) permet de spécifier le monde que vous souhaitez observer."
+msgstr ""
+"Cet exercice est un peu particulier, puisqu'il a deux mondes initiaux, "
+"chacun ayant un objectif particulier. Votre code doit fonctionner pour "
+"chacun d'entre eux. Remarquez que le menu déroulant de sélection du monde "
+"(juste sous la barre de réglage de la vitesse) permet de spécifier le monde "
+"que vous souhaitez observer."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:70
@@ -5480,34 +5521,17 @@ msgstr ""
 msgid ""
 "Your tool to that end is the <code>getGroundColor()</code> that returns the "
 "color of the current cell. Just go to the cell you want to test and run that "
-"function. You cannot test whether this color is equal to <code>Color.green</"
-"code> with an <code>==</code> sign but instead you have to write something "
-"like <code>getGroundColor().equals(Color.green)</code>. This is because "
-"green is an <i>object</i> in Java, and <code>.equals()</code> is the way to "
-"go to test equality between Java objects."
+"function.  [!java]You cannot test whether this color is equal to <code>Color."
+"green</code> with an <code>==</code> sign but instead you have to write "
+"something like <code>getGroundColor().equals(Color.green)</code>. This is "
+"because green is an <i>object</i> in Java, and <code>.equals()</code> is the "
+"way to go to test equality between Java objects.[/!]"
 msgstr ""
-"Votre outil pour cela est la méthode <code>getGroundColor()</code> qui "
-"retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut "
-"vous rendre dans la case à tester avant d'appeler cette méthode. Vous ne "
-"pouvez pas simplement utiliser <code>==</code> pour tester si la couleur "
-"retournée est le vert, mais vous devez plutôt écrire quelque chose comme "
-"<code>getGroundColor().equals(Color.green)</code>. C'est parce que les "
-"couleurs sont des <i>objets</i> en Java, et que <code>.equals()</code> est "
-"la marche à suivre pour tester l'égalité d'objets Java."
+"Votre outil pour cela est la méthode <code>getGroundColor()</code> qui retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut vous rendre dans la case à tester avant d'appeler cette méthode. \n"
+"[!java]Vous ne pouvez pas simplement utiliser <code>==</code> pour tester si la couleur retournée est le vert, mais vous devez plutôt écrire quelque chose comme <code>getGroundColor().equals(Color.green)</code>. C'est parce que les couleurs sont des <i>objets</i> en Java, et que <code>.equals()</code> est la marche à suivre pour tester l'égalité d'objets Java.[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/slug/SlugTracking.html:18
-msgid ""
-"Your tool to that end is the <code>getGroundColor()</code> that returns the "
-"color of the current cell. Just go to the cell you want to test and run that "
-"function."
-msgstr ""
-"Votre outil pour cela est la méthode <code>getGroundColor()</code> qui "
-"retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut "
-"vous rendre dans la case à tester avant d'appeler cette méthode."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/slug/SlugTracking.html:22
+#: src/lessons/welcome/methods/slug/SlugTracking.html:20
 msgid ""
 "Complete the <code>isFacingTrail()</code> method (which gets called "
 "automatically)."

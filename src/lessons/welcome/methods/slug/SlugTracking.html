@@ -9,14 +9,12 @@ we are facing a green cell or not. Of course, if we are facing a wall, it should
 false without bumping into it. You should make sure that this method has no <b>side effect</b>, i.e. that
 it does not change the state of the calling buggle nor of its world.</p>
 
-<p class="Java">Your tool to that end is the <code>getGroundColor()</code> that returns the color of the 
-current cell. Just go to the cell you want to test and run that function. You cannot test whether this 
-color is equal to <code>Color.green</code> with an <code>==</code> sign but instead you have to write 
-something like <code>getGroundColor().equals(Color.green)</code>. This is because green is an 
-<i>object</i> in Java, and <code>.equals()</code> is the way to go to test equality between Java objects.</p>   
-
-<p class="python">Your tool to that end is the <code>getGroundColor()</code> that returns the color of the 
-current cell. Just go to the cell you want to test and run that function.</p>
+<p>Your tool to that end is the <code>getGroundColor()</code> that returns the color of
+the current cell. Just go to the cell you want to test and run that function. 
+[!java]You cannot test whether this color is equal to <code>Color.green</code> with an
+<code>==</code> sign but instead you have to write something like
+<code>getGroundColor().equals(Color.green)</code>. This is because green is an 
+<i>object</i> in Java, and <code>.equals()</code> is the way to go to test equality between Java objects.[/!]</p>   
 
 <h3>Exercise goal</h3>
 <p>Complete the <code>isFacingTrail()</code> method (which gets called automatically).</p>

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-15 17:53+0300\n"
+"POT-Creation-Date: 2013-08-16 00:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1916,7 +1916,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:71 src/lessons/welcome/methods/basics/Methods.html:95 src/lessons/welcome/methods/basics/MethodsDogHouse.html:37 src/lessons/welcome/methods/returning/MethodsReturning.html:48 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:71 src/lessons/welcome/methods/basics/Methods.html:95 src/lessons/welcome/methods/basics/MethodsDogHouse.html:37 src/lessons/welcome/methods/returning/MethodsReturning.html:48 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:19 src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -4063,24 +4063,16 @@ msgstr ""
 msgid ""
 "Your tool to that end is the <code>getGroundColor()</code> that returns the "
 "color of the current cell. Just go to the cell you want to test and run that "
-"function. You cannot test whether this color is equal to "
+"function.  [!java]You cannot test whether this color is equal to "
 "<code>Color.green</code> with an <code>==</code> sign but instead you have "
 "to write something like "
 "<code>getGroundColor().equals(Color.green)</code>. This is because green is "
 "an <i>object</i> in Java, and <code>.equals()</code> is the way to go to "
-"test equality between Java objects."
+"test equality between Java objects.[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/slug/SlugTracking.html:18
-msgid ""
-"Your tool to that end is the <code>getGroundColor()</code> that returns the "
-"color of the current cell. Just go to the cell you want to test and run that "
-"function."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/slug/SlugTracking.html:22
+#: src/lessons/welcome/methods/slug/SlugTracking.html:20
 msgid ""
 "Complete the <code>isFacingTrail()</code> method (which gets called "
 "automatically)."
