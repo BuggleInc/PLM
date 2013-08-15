@@ -5,112 +5,134 @@ Nous allons maintenant voir comment écrire nos propres méthodes. Il s'agit
 en quelque sorte d'étendre le vocabulaire de la buggle en lui apprenant à
 faire de nouvelles choses. 
 </p>
-<p>Par exemple, nous avons vu à l'exercice précédent comment demander à la
-buggle d'aller chercher la buggle qui se trouve devant elle, et la ramener à
-sa position initiale. S'il y a maintenant plusieurs baggles sur le plateau,
-et que nous voulons tous les ramener sur la ligne du bas, il faut soit
-répéter ce code plusieurs fois, soit l'inclure dans une boucle. Dans les
-deux cas, le code résultant n'est pas très lisible, et il serait mieux que
-la buggle comprenne un ordre de type <code>goAndGet()</code> tout comme elle
-comprend un <code>forward()</code>.</p>
+<p>Par exemple, nous avons vu dans un exercice précédent comment demander à la
+buggle d'aller chercher le biscuit qui se trouve devant elle, et la ramener
+à sa position initiale. S'il y a maintenant plusieurs biscuits sur le
+plateau, et que nous voulons tous les ramener sur la ligne du bas, il faut
+soit répéter ce code plusieurs fois, soit l'inclure dans une boucle. Dans
+les deux cas, il faut que vous évitiez de dupliquer votre code pour qu'il
+reste simple et lisible. Il serait mieux que la buggle comprenne un ordre de
+type <code>vaChercher()</code> tout comme elle comprend un
+<code>avance()</code>.</p>
 
+<h3>Définir des méthodes</h3>
 
-<p class="Python">La syntaxe pour écrire une méthode simple nommée <code>goAndGet</code> est
-la suivante:
-<pre class="Python">public void goAndGet() {
-  actions();
-  aFaire();
-}</pre>
-<p class="Java">La syntaxe pour écrire une méthode simple nommée <code>goAndGet</code> est
-la suivante:
-<pre class="Java">public void goAndGet() {
-  actions();
-  aFaire();
-}</pre>
-<pre>
-def buildConnectionString(params):
-    """Construit une connection string à partir d'un dictionnaire de paramètres.
+<p>La syntaxe [!thelang] pour écrire une méthode simple nommée
+<code>vaChercher</code> est la suivante:</p>
+<pre>[!java]void vaChercher() {[/!][!python]def vaChercher():[/!][!scala]def vaChercher() {[/!]
+  actions()[!java];[/!]
+  encoreDesActions()[!java];[/!]
+  dautresTrucs()[!java];[/!]
+[!java|scala]}[/!]</pre>
 
-    Renvoie une chaîne de caractères."""
-    return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
-</pre>
-
-<p class="Java">Le corps de la méthode (entre les accolades) peut contenir autant
-d'instructions que vous le souhaitez, et toutes les constructions vues
-jusque là (for, while, if, etc).</p>
-<p class="Python">Le corps de la méthode (entre les accolades) peut contenir autant
-d'instructions que vous le souhaitez, et toutes les constructions vues
-jusque là (for, while, if, etc).</p>
-
-<p class="Java">Nous reviendrons plus tard sur le sens exact du mot-clé
-<code>public</code>. Disons simplement pour l'instant qu'il indique que tout
-le monde a le droit d'utiliser cette méthode.</p>
-
-<p class="Java"><code>void</code> indique quant à lui que la méthode ne donne pas de
-résultat. Nous avions vu que la méthode <code>isOverBaggle()</code> renvoie
-un booléen, et peut donc être utilisé comme une condition dans un if ou un
-while. Cela signifie qu'elle a été déclarée de la façon suivante :
-<pre class="Java">public boolean isOverBaggle() { ... }</pre>
-
-<p class="Java">Nous verrons dans le prochain exercice comment faire ce genre de chose. Pour
-l'instant, contentons nous d'écrire ce <code>void</code> à cet endroit.</p>
-
-<p class="Java">En Java, il est d'usage de mettre la première lettre du nom d'une méthode en
-minuscules, et de coller tous les mots décrivant la méthode les uns aux
-autres en mettant une majuscule à chacun. Il est interdit de mettre des
-espaces ou des accentués dans le nom d'une méthode. C'est pourquoi nous
-écrivons "go and get" sous la forme "goAndGet".</p>
-
- 
-<p class="Python">
-	 
-	<!--FIXME: add here a word about the variable naming schema. Either caseBased or as_in_C -->
+<p>Le corps de la méthode
+[!java|scala](c'est-à-dire le bloc entre accolades)[/!]
+[!python](c'est-à-dire le bloc indenté)[/!]
+sera exécuté à chaque appel de cette méthode (c'est-à-dire à chaque fois que
+nous écrirons <code>vaChercher()</code> quelque part dans notre code).
+Ce corps de boucle peut contenir autant d'instructions que l'on veut, et
+toutes les constructions que nous avions vu jusque là (comme lesboucles et
+les conditionnelles).
+[!java]Le mot-clé <code>void</code> («néant» en anglais) signifie que cette
+méthode ne renvoie pas de résultat. Au contraire, la méthode
+<code>estSurBiscuit()</code> renvoie un résultat booleen indiquant si nous
+nous trouvons oui ou non sur un biscuit. Nous apprendrons bientôt à faire de
+telles méthodes. En attendant, écrivez juste <code>void</code> à cet
+endroit.[/!]
 </p>
 
+<h3>Documenter les méthodes</h3>
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> L'objectif de cet exercice est donc d'écrire une
-méthode nommée <code>goAndGet()</code> et qui fait la même chose qu'aux
-exercices précédents (avance tant qu'on ne trouve pas de baggle, ramasser le
-baggle, reculer à la case départ, poser le baggle).
+<p>Vous devez toujours vous efforcer de documenter votre code pour qu'il reste
+lisible. À l'instant où vous l'écrivez, son objectif et ses limitations vous
+semblent clairs, mais la plupart du temps, ça ne dure pas. On oublie vite
+les détails d'une méthode particulier, et quand cela arrive, on est content
+de pouvoir lire sa documentation.
+Dans l'exemple ci-dessous, nous utilisons le formalisme spécifique de
+[!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], un programme qui
+extrait la documentation du code source pour en faire de belles pages
+web. Le principal avantage de cette approche est que la documentation se
+trouve à coté du code. Donc, quand on change le code, il y a un peu plus de
+chance pour qu'on pense à mettre la documentation à jour.</p>
 
-<p class="Python">La particularité de cet exercice est que tout votre code doit être écrit
-dans cette fonction, avec rien en dehors. Le code qui appelle votre fonction
-sera automagiquement ajouté quand vous cliquerez sur <b>Start</b>.</p>  
+<p>[!java|scala]Les commentaires [!java]javadoc[/!][!scala]scaladoc[/!]
+commencent avec le marqueur <code>/**</code> (avec deux étoiles). Ces
+commentaires doivent être placés juste avant la méthode qu'ils documentent
+pour que l'outil les trouve[/!]
+[!python]Les commentaire pydoc doivent être placés au début du corps de la
+méthode pour que l'outil les trouve. Ils doivent être placés entre
+<code>"""</code>, qui marquent les chaînes de caractères sur plusieurs
+lignes en python.[/!]
+La première ligne devrait décrire brièvement la méthode tandis que le reste
+de la documentation devrait donner tous les points importants de la méthode.</p>
+
+<pre>[!java|scala]/**
+ *  Avance, récupère le biscuit, et le ramène à la position d'origine
+ *
+ *  Ne vérifie pas la présence de mur; à ne pas l'utiliser en cas de risques de mur.
+ */[/!]
+[!java]void goAndGet() {[/!]
+[!scala]def goAndGet() {[/!]
+[!python]def goAndGet():
+  """Avance, récupère le biscuit, et le ramène à la position d'origine
+
+  Ne vérifie pas la présence de mur; à ne pas l'utiliser en cas de risques de mur."""[/!]
+  actions()[!java];[/!]
+  to()[!java];[/!]
+  do()[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<h3>Conventions de nommage</h3>
+<p>La plupart des langages de programmation interdisent d'utiliser des espaces
+dans les noms de variables et de méthodes. Certains langages (comme le
+[!thelang]) autorisent l'usage des caractères accentués dans ces
+identificateurs, mais cela pose parfois des problèmes de portabilité entre
+les systèmes d'exploitation. C'est pourquoi JLM n'utilise pas d'accents dans
+les identificateurs, même si c'est parfois désagréable en français.</p>
+
+<p>Parmi tous les langages de programmation, il y a deux conventions de nomage
+majeures. La première consiste à concaténer tous les mots en ne laissant que
+la première lettre de chaque mot en majuscule. «va chercher le biscuit»
+devient VaChercherLeBiscuit(). Cette convention est nommée CamelCase en
+anglais, c'est-à-dire casse du chameau, car les identificateurs écrits de
+cette façon font un peu penser au dos d'un chameau. L'autre convention,
+nommée snake_case (casse du serpent), consiste à concaténer tous les mots en
+minuscule en les séparant du caractère souligné (_). «va chercher le
+biscuit» devient va_chercher_le_biscuit().</p>
+
+<p>Le choix de la convention de nommage est le sujet de «discussions» très
+animées entre programmeurs, mais certaines habitudes prédominent pour chaque
+langage. En Python, Ruby, Perl ou en langage C, la casse_du_serpent
+prédomine pour les noms de variables et de méthodes. En Java et en Scala, on
+préfère habituellement la casseDuChameau, en laissant la toute première
+lettre en minuscule.</p> 
+<p>La casseDuChameau est utilisé partout dans JLM car c'est un programme écrit
+en Java à la base, et que nous avons gardé nos habitudes en écrivant le
+support pour d'autres langages. Mais nous considérons le fait Python ne soit
+pas en casse_du_serpent comme un bug, que nous corrigerons dans une version
+future.</p>
+
+<h3>Objectif de cet exercice</h3>
+<p>L'objectif de cet exercice est donc d'écrire une méthode nommée
+<code>goAndGet()</code> (va chercher) et qui fait la même chose que dans un
+exercice précédent (avance tant qu'on ne trouve pas de baggle, ramasser le
+baggle, reculer à la case départ, poser le baggle).</p>
+
+<p>La particularité de cet exercice est que vous n'écrivez pas directement le
+code que votre buggle va exécuter, mais une méthode qui sera appelée quand
+vous appuyez sur <b>Exécuter</b>. Pour votre information, le code appelant a
+la forme suivante:</p>
   
-<p class="Java">La particularité de cet exercice est que vous n'allez donc pas écrire
-directement le code que la buggle va exécuter, mais une méthode qu'elle
-utilisera. En fait, dans tous les exercices précédents, vous avez écrit le
-corps d'une méthode particulière de la buggle nommée <code>run()</code> et
-qui est invoquée par l'environnement quand on clique sur le bouton
-<b>Start</b>.</p> 
+<pre>[!java]for (int i=0; i&lt;7; i++) {[/!][!python]for i in range(7):[/!][!scala]for (i &lt;- 1 to 7) {[/!]
+    goAndGet()[!java];[/!]
+    droite()[!java];[/!]
+    avance()[!java];[/!]
+    gauche()[!java];[/!]
+[!java|scala]}[/!]</pre>
 
-<p>N'essayez pas de définir ici cette méthode, puisque la buggle la connaît
-déjà. Cela troublerait le compilateur qui vous donnerait un message d'erreur
-en échange. Pour information, voici le corps de la méthode
-<code>run()</code> de la buggle de cet exercice:
-
-<pre class="Java">public void run() {
-&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { 
-&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();
-&nbsp;&nbsp;&nbsp;&nbsp;right();
-&nbsp;&nbsp;&nbsp;&nbsp;forward();
-&nbsp;&nbsp;&nbsp;&nbsp;left();
-&nbsp;&nbsp;}
-}</pre>
-<pre class="Pyhton">def run():
-&nbsp;&nbsp;for i in range(7): 
-&nbsp;&nbsp;&nbsp;&nbsp;goAndGet()
-&nbsp;&nbsp;&nbsp;&nbsp;right()
-&nbsp;&nbsp;&nbsp;&nbsp;forward()
-&nbsp;&nbsp;&nbsp;&nbsp;left()
-&nbsp;&nbsp;
-}</pre>
-
-
-</p>
 <p>Donc, votre buggle va répéter 7 fois (la taille du monde)  l'opération
 <code>goAndGet()</code> que vous allez écrire, plus les opérations
-nécessaire à se décaler d'une colonne vers la droite (tourner à droite,
+nécessaires pour se décaler d'une colonne vers la droite (tourner à droite,
 avancer, tourner à gauche). Notez que la buggle va donc faire un pas vers la
 droite alors qu'elle sera tout à droite du monde. Cela la ramènera sur le
 bord gauche, car le monde des buggles est torique.</p>

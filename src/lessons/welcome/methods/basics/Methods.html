@@ -4,107 +4,114 @@
 We will now write our own methods. It somehow comes down to extending the
 buggle vocabulary by learning it new tricks. 
 </p>
-<p>For example, we saw in previous exercise how to ask the buggle to go get the
+<p>For example, we saw in a previous exercise how to ask the buggle to go get the
 baggle in front of it, and bring it back. If there is several baggles on the
 board, and if we want to bring all of them on the bottom line, you have to
-repeate this code several times, or include it in a loop. In any case, the
-result may reveal unpleasant to read, and it would be better if the buggle
-could obey an <code>goAndGet()</code> order just like it understands a
-<code>forward()</code> one.</p>
+repeat this code several times, or include it in a loop. In any case, you should avoid
+to duplicate your code to keep it pleasant to read and easily understandable.
+It would be better if the buggle could obey an <code>goAndGet()</code> order 
+just like it understands a <code>forward()</code> one.</p>
 
+<h3>Defining methods</h3>
 
-<p class="Python">The syntax to write a simple method called <code>goAndGet</code> is the
-following:
-<pre class="Python">def goAndGet():
-  actions();
-  to();
-  do();</pre>
-<p class="Java">The syntax to write a simple method called <code>goAndGet</code> is the
-following:
-<pre class="Java">public void goAndGet() {
-  actions();
-  to();
-  do();
-}</pre>
-<pre>
-def buildConnectionString(params):
-    """Build a connection string from a dictionary of parameters.
+<p>The [!thelang] syntax to write a simple method called <code>goAndGet</code> is the
+following:</p>
+<pre>[!java]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]
+  actions()[!java];[/!]
+  to()[!java];[/!]
+  do()[!java];[/!]
+[!java|scala]}[/!]</pre>
 
-    Returns string."""
-    return ";".join(["%s=%s" % (k, v) for k, v in params.items()])
-</pre>
-
-<p class="Java">The method body (between curly braces) can contain as many instructions as
-you want, and any construction we saw so far (for, while, if, etc).</p>
-<p class="Python">The method body (the code that is indended) can contain as many instructions as
-you want, and any construction we saw so far (for, while, if, etc).</p>
-
-<p class="Java">We will come back later on the exact signification of the
-<code>public</code> keyword. Let's say for now that it means that everybody
-can use this method.</p>
-
-<p class="Java"><code>void</code> means that the method does not return any result. We said
-previously that the <code>isOverBaggle()</code> method returns a boolean and
-can thus be used as a condition in a if or a while. This means that it is
-declared the following way:
-<pre class="Java">public boolean isOverBaggle() { ... }</pre>
-
-<p class="Java">We will introduce in next exercise how to do this kind of tricks. For now,
-let's just write <code>void</code> at this location.</p>
-
-<p class="Java">In Java, the convention is to use lower case for the first letter of a
-method name and concatenate every word describing the method using a upper
-case for each first letter. It is forbidden to use spaces or accentuated
-letters in a method name. That is why we write "go and get" as goAndGet().</p>
-
- 
-<p class="Python">
-	<!--FIXME: add here a word about the variable naming schema. Either caseBased or as_in_C --> 
-	</p>
-
-
-<h3>Exercise goal</h3><a name="Objectives"> The goal of this exercise is to write a method called
-<code>goAndGet()</code> which does the same than in previous exercises (move
-forward until over a baggle, pick it up, move back to initial position, drop
-baggle).
-
-<p class="Python">One particularity of this exercise is that all your code should be written in 
-  this function, with nothing out of it. The code that calls your function will be automagically added 
-  when you click on <b>Start</b>.</p>  
-  
-<p class="Java">One particularity of this exercise is that you shouldn't write directly the
-code that the buggle should execute, but a method it should use. Actually,
-in any previous exercise, you wrote the body of a specific method called
-<code>run()</code> which gets invoked by the environment when you click on
-<b>Start</b>.</p> 
-
-<p>Don't try to define this method here, since the buggle already knows
-it. This would cause trouble to the compiler, which would give you an error
-message in exchange. For your information, here is the <code>run()</code>
-method of this exercise:
-
-<pre class="Java">public void run() {
-&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { 
-&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();
-&nbsp;&nbsp;&nbsp;&nbsp;right();
-&nbsp;&nbsp;&nbsp;&nbsp;forward();
-&nbsp;&nbsp;&nbsp;&nbsp;left();
-&nbsp;&nbsp;}
-}</pre>
-<pre class="Pyhton">def run():
-&nbsp;&nbsp;for i in range(7): 
-&nbsp;&nbsp;&nbsp;&nbsp;goAndGet()
-&nbsp;&nbsp;&nbsp;&nbsp;right()
-&nbsp;&nbsp;&nbsp;&nbsp;forward()
-&nbsp;&nbsp;&nbsp;&nbsp;left()
-&nbsp;&nbsp;
-}</pre>
-
-
+<p>The method body 
+[!java|scala](between curly braces)[/!][!python](the indented block)[/!] will be
+executed when we call the method later on (that is, when we write
+<code>goAndGet()</code> somewhere in our code). This method body  
+can contain as many instructions as you want, and any construction we saw so far 
+(for, while, if, etc). 
+[!java]The <code>void</code> keyword means that this method does not return any
+result. For example, the <code>isOverBaggle()</code> method does return a result,
+which is a boolean indicating whether or not the buggle is located over a baggle. We
+will soon learn to define such methods too. For now, just write <code>void</code> at
+this location.[/!]
 </p>
+
+<h3>Documenting methods</h3>
+
+<p>You should strive to document your code to keep it readable. When you
+write it, its purpose and limitations are clear to you, but most of the time, this does not
+last for long. You will soon forget about the details of every specific method, and this day
+you will be happy to read its documentation. In the following example, we use the 
+specific formalism of [!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], a program 
+that extracts the documentation of [!thelang] source code to produce html pages. The
+main advantage is that it allows to keep the documentation near to the code.  So, when
+you change your code, you have less chances to forget to update the documentation.</p>
+
+<p>[!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] comments begin with the
+<code>/**</code> marker (with two asterisks). They must be placed right before the
+method they document for the tool to find them.[/!]
+[!python]pydoc comments should be placed at the beginning of the method body so that
+the tool finds them. They should be placed between <code>"""</code>, which mark 
+multi-line strings in python.[/!]
+The first line should  be a brief description of what this method does while any subsequent
+lines should provide any important details about the method.</p>
+
+<pre>[!java|scala]/**
+ *  Go, retrieves the baggle in front of the buggle, and brings it back 
+ *
+ *   Does not check for walls, so be careful to not call it when walls are present.
+ */[/!]
+[!java]void goAndGet() {[/!]
+[!scala]def goAndGet() {[/!]
+[!python]def goAndGet():
+  """Go, retrieves the baggle in front of the buggle, and brings it back.
+
+  Does not check for walls, so be careful to not call it when walls are present."""[/!]
+  actions()[!java];[/!]
+  to()[!java];[/!]
+  do()[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<h3>Naming conventions</h3>
+<p>Most programming language forbid the use of spaces in method and variable identifiers (=their names).  
+Accented letters are sometimes allowed (as in [!thelang]), but they can lead to
+portability issues between operating systems and should thus be avoided when possible.</p>
+
+<p>Across all programming languages, there is two main conventions to
+name variables and methods. The first one, consists in concatenating all words with 
+only the first letter of each word in upper case. "go and get" becomes goAndGet(). 
+It is called CamelCase because identifiers written this way graphically remind of a camel
+back. The other convention, called snake_case, is to write every words in lower case,
+separated with underscores symbols (_). "go and get" becomes go_and_get().</p>
+
+<p>Which convention to use is the topic of heated discussion across developers, but
+each programming language has its own habits. In Python, Perl and the C language, the 
+snake_case is often used for methods and variables. Java and Scala prefer the
+lowerCamelCase (the very first letter is lower case) for that.</p> 
+<p>The CamelCase convention is used everywhere in JLM because this program is written
+in Java itself, so we kept our habits when adding new languages. But the fact that the
+Python bindings of JLM use the CamelCase instead of the snake_case is considered as a
+bug that we will fix in further releases.</p>
+
+<h3>Exercise goal</h3>
+<p>The goal of this exercise is to write a method called <code>goAndGet()</code>
+which does the same than in a previous exercises (move forward until over a baggle, 
+pick it up, move back to initial position, drop baggle).</p>
+
+<p>One specificity of this exercise is that you shouldn't write directly the
+code that the buggle should execute, but a method it should use. The code that calls 
+your function will be automagically added when you click on <b>Start</b>. 
+For your information, this calling code will look like this:</p>
+  
+<pre>[!java]for (int i=0; i&lt;7; i++) {[/!][!python]for i in range(7):[/!][!scala]for (i &lt;- 1 to 7) {[/!]
+    goAndGet()[!java];[/!]
+    right()[!java];[/!]
+    forward()[!java];[/!]
+    left()[!java];[/!]
+[!java|scala]}[/!]</pre>
+
 <p>Your buggle will repeat 7 times (which matches the world's dimension)
-sequence constituted of a call to the <code>goAndGet()</code> method that you should
-write, plus a move to get to the next row (turn right, move
+the sequence constituted of a call to the <code>goAndGet()</code> method that you
+should write, plus a move to get to the next row (turn right, move
 forward, turn left). As you can see, the buggle will do one step right from
 the right border of the world. It will bring it back to the left side since
 its world is a torus.</p>

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-15 03:20+0300\n"
+"POT-Creation-Date: 2013-08-15 16:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1916,7 +1916,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:71 src/lessons/welcome/methods/basics/Methods.html:66 src/lessons/welcome/methods/basics/MethodsDogHouse.html:49 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
+#: src/lessons/welcome/instructions/Instructions.html:64 src/lessons/welcome/conditions/Conditions.html:108 src/lessons/welcome/loopwhile/LoopWhile.html:32 src/lessons/welcome/loopwhile/BaggleSeeker.html:8 src/lessons/welcome/variables/Variables.html:97 src/lessons/welcome/loopfor/LoopFor.html:71 src/lessons/welcome/methods/basics/Methods.html:95 src/lessons/welcome/methods/basics/MethodsDogHouse.html:37 src/lessons/welcome/methods/returning/MethodsReturning.html:56 src/lessons/welcome/methods/args/MethodsArgs.html:69 src/lessons/welcome/methods/slug/SlugHunting.html:18 src/lessons/welcome/methods/slug/SlugTracking.html:21 src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131 src/lessons/maze/randommouse/RandomMouseMaze.html:24 src/lessons/maze/wallfollower/WallFollowerMaze.html:17 src/lessons/maze/pledge/PledgeMaze.html:36 src/lessons/maze/shortestpath/ShortestPathMaze.html:22 src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:21
 msgid "Exercise goal"
 msgstr ""
 
@@ -3193,175 +3193,192 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:7
 msgid ""
-"For example, we saw in previous exercise how to ask the buggle to go get the "
-"baggle in front of it, and bring it back. If there is several baggles on the "
-"board, and if we want to bring all of them on the bottom line, you have to "
-"repeate this code several times, or include it in a loop. In any case, the "
-"result may reveal unpleasant to read, and it would be better if the buggle "
-"could obey an <code>goAndGet()</code> order just like it understands a "
+"For example, we saw in a previous exercise how to ask the buggle to go get "
+"the baggle in front of it, and bring it back. If there is several baggles on "
+"the board, and if we want to bring all of them on the bottom line, you have "
+"to repeat this code several times, or include it in a loop. In any case, you "
+"should avoid to duplicate your code to keep it pleasant to read and easily "
+"understandable.  It would be better if the buggle could obey an "
+"<code>goAndGet()</code> order just like it understands a "
 "<code>forward()</code> one."
 msgstr ""
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:16 src/lessons/welcome/methods/basics/Methods.html:22
-msgid ""
-"The syntax to write a simple method called <code>goAndGet</code> is the "
-"following:"
+#. type: Content of: <h3>
+#: src/lessons/welcome/methods/basics/Methods.html:15
+msgid "Defining methods"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:18
-#, no-wrap
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:17
 msgid ""
-"def goAndGet():\n"
-"  actions();\n"
-"  to();\n"
-"  do();"
+"The [!thelang] syntax to write a simple method called <code>goAndGet</code> "
+"is the following:"
 msgstr ""
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:24
+#. type: Content of: <pre>
+#: src/lessons/welcome/methods/basics/Methods.html:19
 #, no-wrap
 msgid ""
-"public void goAndGet() {\n"
-"  actions();\n"
-"  to();\n"
-"  do();\n"
-"}"
+"[!java]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def "
+"goAndGet() {[/!]\n"
+"  actions()[!java];[/!]\n"
+"  to()[!java];[/!]\n"
+"  do()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 msgstr ""
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:30
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:25
+msgid ""
+"The method body [!java|scala](between curly braces)[/!][!python](the "
+"indented block)[/!] will be executed when we call the method later on (that "
+"is, when we write <code>goAndGet()</code> somewhere in our code). This "
+"method body can contain as many instructions as you want, and any "
+"construction we saw so far (for, while, if, etc).  [!java]The "
+"<code>void</code> keyword means that this method does not return any "
+"result. For example, the <code>isOverBaggle()</code> method does return a "
+"result, which is a boolean indicating whether or not the buggle is located "
+"over a baggle. We will soon learn to define such methods too. For now, just "
+"write <code>void</code> at this location.[/!]"
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/methods/basics/Methods.html:38
+msgid "Documenting methods"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:40
+msgid ""
+"You should strive to document your code to keep it readable. When you write "
+"it, its purpose and limitations are clear to you, but most of the time, this "
+"does not last for long. You will soon forget about the details of every "
+"specific method, and this day you will be happy to read its "
+"documentation. In the following example, we use the specific formalism of "
+"[!java]javadoc[/!][!scala]scaladoc[/!][!python]pydoc[/!], a program that "
+"extracts the documentation of [!thelang] source code to produce html "
+"pages. The main advantage is that it allows to keep the documentation near "
+"to the code.  So, when you change your code, you have less chances to forget "
+"to update the documentation."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:49
+msgid ""
+"[!java|scala][!java]javadoc[/!][!scala]scaladoc[/!] comments begin with the "
+"<code>/**</code> marker (with two asterisks). They must be placed right "
+"before the method they document for the tool to find them.[/!] "
+"[!python]pydoc comments should be placed at the beginning of the method body "
+"so that the tool finds them. They should be placed between "
+"<code>\"\"\"</code>, which mark multi-line strings in python.[/!] The first "
+"line should be a brief description of what this method does while any "
+"subsequent lines should provide any important details about the method."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/methods/basics/Methods.html:58
 #, no-wrap
 msgid ""
-"def buildConnectionString(params):\n"
-"    \"\"\"Build a connection string from a dictionary of parameters.\n"
+"[!java|scala]/**\n"
+" *  Go, retrieves the baggle in front of the buggle, and brings it back \n"
+" *\n"
+" *   Does not check for walls, so be careful to not call it when walls are "
+"present.\n"
+" */[/!]\n"
+"[!java]void goAndGet() {[/!]\n"
+"[!scala]def goAndGet() {[/!]\n"
+"[!python]def goAndGet():\n"
+"  \"\"\"Go, retrieves the baggle in front of the buggle, and brings it "
+"back.\n"
 "\n"
-"    Returns string.\"\"\"\n"
-"    return \";\".join([\"%s=%s\" % (k, v) for k, v in params.items()])\n"
+"  Does not check for walls, so be careful to not call it when walls are "
+"present.\"\"\"[/!]\n"
+"  actions()[!java];[/!]\n"
+"  to()[!java];[/!]\n"
+"  do()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:37
-msgid ""
-"The method body (between curly braces) can contain as many instructions as "
-"you want, and any construction we saw so far (for, while, if, etc)."
+#. type: Content of: <h3>
+#: src/lessons/welcome/methods/basics/Methods.html:74
+msgid "Naming conventions"
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:39
-msgid ""
-"The method body (the code that is indended) can contain as many instructions "
-"as you want, and any construction we saw so far (for, while, if, etc)."
-msgstr ""
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:42
-msgid ""
-"We will come back later on the exact signification of the "
-"<code>public</code> keyword. Let's say for now that it means that everybody "
-"can use this method."
-msgstr ""
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:46
-msgid ""
-"<code>void</code> means that the method does not return any result. We said "
-"previously that the <code>isOverBaggle()</code> method returns a boolean and "
-"can thus be used as a condition in a if or a while. This means that it is "
-"declared the following way:"
-msgstr ""
-
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:50
-#, no-wrap
-msgid "public boolean isOverBaggle() { ... }"
-msgstr ""
-
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:52
-msgid ""
-"We will introduce in next exercise how to do this kind of tricks. For now, "
-"let's just write <code>void</code> at this location."
-msgstr ""
-
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/methods/basics/Methods.html:55
-msgid ""
-"In Java, the convention is to use lower case for the first letter of a "
-"method name and concatenate every word describing the method using a upper "
-"case for each first letter. It is forbidden to use spaces or accentuated "
-"letters in a method name. That is why we write \"go and get\" as goAndGet()."
-msgstr ""
-
-#. type: Content of: <p><p><p><a>
-#: src/lessons/welcome/methods/basics/Methods.html:66
-msgid ""
-"<a name=\"Objectives\"> The goal of this exercise is to write a method "
-"called <code>goAndGet()</code> which does the same than in previous "
-"exercises (move forward until over a baggle, pick it up, move back to "
-"initial position, drop baggle)."
-msgstr ""
-
-#. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:71
-msgid ""
-"One particularity of this exercise is that all your code should be written "
-"in this function, with nothing out of it. The code that calls your function "
-"will be automagically added when you click on <b>Start</b>."
-msgstr ""
-
-#. type: Content of: <p><p><p><a><p>
+#. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:75
 msgid ""
-"One particularity of this exercise is that you shouldn't write directly the "
-"code that the buggle should execute, but a method it should use. Actually, "
-"in any previous exercise, you wrote the body of a specific method called "
-"<code>run()</code> which gets invoked by the environment when you click on "
-"<b>Start</b>."
+"Most programming language forbid the use of spaces in method and variable "
+"identifiers (=their names).  Accented letters are sometimes allowed (as in "
+"[!thelang]), but they can lead to portability issues between operating "
+"systems and should thus be avoided when possible."
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:81
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:79
 msgid ""
-"Don't try to define this method here, since the buggle already knows "
-"it. This would cause trouble to the compiler, which would give you an error "
-"message in exchange. For your information, here is the <code>run()</code> "
-"method of this exercise:"
+"Across all programming languages, there is two main conventions to name "
+"variables and methods. The first one, consists in concatenating all words "
+"with only the first letter of each word in upper case. \"go and get\" "
+"becomes goAndGet().  It is called CamelCase because identifiers written this "
+"way graphically remind of a camel back. The other convention, called "
+"snake_case, is to write every words in lower case, separated with "
+"underscores symbols (_). \"go and get\" becomes go_and_get()."
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><pre>
+#. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:86
-#, no-wrap
 msgid ""
-"public void run() {\n"
-"&nbsp;&nbsp;for (int i=0; i&lt;7; i++) { \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;goAndGet();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;right();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;forward();\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left();\n"
-"&nbsp;&nbsp;}\n"
-"}"
+"Which convention to use is the topic of heated discussion across developers, "
+"but each programming language has its own habits. In Python, Perl and the C "
+"language, the snake_case is often used for methods and variables. Java and "
+"Scala prefer the lowerCamelCase (the very first letter is lower case) for "
+"that."
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p><pre>
-#: src/lessons/welcome/methods/basics/Methods.html:94
-#, no-wrap
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:90
 msgid ""
-"def run():\n"
-"&nbsp;&nbsp;for i in range(7): \n"
-"&nbsp;&nbsp;&nbsp;&nbsp;goAndGet()\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;right()\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;forward()\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;left()\n"
-"&nbsp;&nbsp;\n"
-"}"
+"The CamelCase convention is used everywhere in JLM because this program is "
+"written in Java itself, so we kept our habits when adding new languages. But "
+"the fact that the Python bindings of JLM use the CamelCase instead of the "
+"snake_case is considered as a bug that we will fix in further releases."
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p>
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:96
+msgid ""
+"The goal of this exercise is to write a method called "
+"<code>goAndGet()</code> which does the same than in a previous exercises "
+"(move forward until over a baggle, pick it up, move back to initial "
+"position, drop baggle)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:100
+msgid ""
+"One specificity of this exercise is that you shouldn't write directly the "
+"code that the buggle should execute, but a method it should use. The code "
+"that calls your function will be automagically added when you click on "
+"<b>Start</b>.  For your information, this calling code will look like this:"
+msgstr ""
+
+#. type: Content of: <pre>
 #: src/lessons/welcome/methods/basics/Methods.html:105
+#, no-wrap
 msgid ""
-"Your buggle will repeat 7 times (which matches the world's dimension)  "
+"[!java]for (int i=0; i&lt;7; i++) {[/!][!python]for i in "
+"range(7):[/!][!scala]for (i &lt;- 1 to 7) {[/!]\n"
+"    goAndGet()[!java];[/!]\n"
+"    right()[!java];[/!]\n"
+"    forward()[!java];[/!]\n"
+"    left()[!java];[/!]\n"
+"[!java|scala]}[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:112
+msgid ""
+"Your buggle will repeat 7 times (which matches the world's dimension)  the "
 "sequence constituted of a call to the <code>goAndGet()</code> method that "
 "you should write, plus a move to get to the next row (turn right, move "
 "forward, turn left). As you can see, the buggle will do one step right from "
@@ -3369,87 +3386,76 @@ msgid ""
 "its world is a torus."
 msgstr ""
 
-#. type: Content of: <p><p><p><a><p>
-#: src/lessons/welcome/methods/basics/Methods.html:112
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/Methods.html:119
 msgid "You should now write this goAndGet() method."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:3
 msgid ""
-"We now would like to learn the buggle to build a doghouse. The seamingly "
-"simpler approach consists in directly writing the needed code as follows (it "
-"works because the buggle of this exercise leaves a red path as it moves)."
+"We now would like to learn the buggle to build a doghouse. The naive "
+"approach consists in directly writing the needed code as follows.  This "
+"works because the buggle of this exercise leaves a red path as it moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:8
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:7
 #, no-wrap
 msgid ""
-"forward();\n"
-"forward();\n"
-"left(); \n"
-"forward();\n"
-"forward();\n"
-"left(); \n"
-"forward();\n"
-"forward();\n"
-"left(); \n"
-"forward();\n"
-"forward();\n"
-"left(); \n"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:23
-#, no-wrap
-msgid ""
-"forward()\n"
-"forward()\n"
-"left() \n"
-"forward()\n"
-"forward()\n"
-"left() \n"
-"forward()\n"
-"forward()\n"
-"left() \n"
-"forward()\n"
-"forward()\n"
-"left() \n"
+"forward()[!java];[/!]\n"
+"forward()[!java];[/!]\n"
+"left()[!java];[/!]\n"
+"forward()[!java];[/!]\n"
+"forward()[!java];[/!]\n"
+"left()[!java];[/!]\n"
+"forward()[!java];[/!]\n"
+"forward()[!java];[/!]\n"
+"left()[!java];[/!]\n"
+"forward()[!java];[/!]\n"
+"forward()[!java];[/!]\n"
+"left()[!java];[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:37
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:20
 msgid ""
 "It becomes harder when we want to draw two doghouses: we have to rewrite the "
-"same code twice, which is not really handy. Even worse: it's definitively "
-"not good form to duplicate code this way. Indeed, if you realize that an "
-"error sneaked into a code that you copied at several locations, you will "
+"same code twice, which is not really handy. When the code becomes a bit long "
+"as this one, it becomes easier to see why we insist since a while on the "
+"pure evilness that code duplication represents. Indeed, if you realize that "
+"an error sneaked into a code that you copied at several locations, you will "
 "have to fix it several times. And mind your back if you forget one of these "
 "locations."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:44
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:26
 msgid ""
-"It is good form to <b>factorize your code</b>, ie to write it only once, for "
-"example in a method. This is what you will do now. It is even possible to go "
-"further by factorizing the method body with a <code>for</code> loop, as seen "
-"previously."
+"There is even a name to this good principle in programming: DRY/SPOT, which "
+"means \"Don't Repeat Yourself / Single Point Of Truth\". The latter part "
+"means that each information must be written in only one location of your "
+"program to avoid the differing locations to get out of synch when you modify "
+"your code."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:49
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:31
 msgid ""
-"The goal of this exercise is to write a method called <code>dogHouse</code> "
-"achieving the same result than the code above. The buggle will call your "
-"creation to create several dog houses around its world. Remind to factorize "
-"your method with a for loop."
+"So, let's apply this good principle and <b>factorize our code</b>, ie to "
+"write it only once, for example in a method. You should even to go further "
+"by factorizing the method body with a <code>for</code> loop, as seen "
+"previously.  If you do it correctly (what you should), you can use the "
+"method <code>left()</code> only once."
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:54 src/lessons/welcome/array/basics/Array.html:229 src/lessons/welcome/array/basics/Array2.html:30
-msgid "You're up."
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/basics/MethodsDogHouse.html:38
+msgid ""
+"The goal of this exercise is to write a method called <code>dogHouse</code> "
+"achieving the same result than the code above, but with a for loop to keep "
+"it short.  The buggle will call your creation to create several dog houses "
+"around its world."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -3786,20 +3792,12 @@ msgstr ""
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:6
 msgid ""
 "Your goal (here and in any well written program) is to write the simplest "
-"possible <code>run()</code>. For that, you have to decompose your work in "
-"sub-steps, and write a specific method for each sub-step."
+"possible code. For that, you have to decompose your work in sub-steps, and "
+"write a specific method for each sub-step."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:10
-msgid ""
-"Your goal (here and in any well written program) is to write the simplest "
-"possible main code. For that, you have to decompose your work in sub-steps, "
-"and write a specific method for each sub-step."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:14
 msgid ""
 "If you observe carefully the picture to draw, it is constituted of four "
 "parts depicting a sort of V using a different color. A possible "
@@ -3808,48 +3806,43 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:18
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:14
 #, no-wrap
-msgid "void makeV(Color c)"
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:19
-#, no-wrap
-msgid "makeV(c)"
+msgid ""
+"[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span "
+"class=\"comment\"># parameter c is of type Color</span>"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:21
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:16
 msgid ""
 "The <code>Color</code> data type naturally describes a particular "
-"color. Your <code>run()</code> method should probably call "
-"<code>makeV</code> with the following arguments (a different color for each "
-"call):"
+"color. Your code should probably call <code>makeV</code> with the following "
+"arguments (a different color for each call):"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:26
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:20
 msgid "Color.yellow"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:27
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:21
 msgid "Color.red"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:28
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:22
 msgid "Color.blue"
 msgstr ""
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:29
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:23
 msgid "Color.green"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:32
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:26
 msgid ""
 "In <code>makeV()</code>, you should use the <code>setBrushColor()</code> "
 "method (predefined in the buggle) to change the color of the buggle's brush, "
@@ -3858,17 +3851,15 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:37
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:31
 msgid ""
 "It may be wise to write the <code>makeV()</code> so that it places directly "
 "the buggle in position for the next V."
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:40
-msgid ""
-"Your turn. The <code>run()</code> method should not be longer than 4 "
-"lines..."
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:34
+msgid "Your turn. Your code should not be longer than 4 lines..."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -9191,6 +9182,11 @@ msgid ""
 "Once you managed to read and save the pattern on the first row, you have to "
 "reapply the pattern on every rows, for example by executing "
 "<code>getWorldHeight()</code> times a method written specifically for this."
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/array/basics/Array.html:229 src/lessons/welcome/array/basics/Array2.html:30
+msgid "You're up."
 msgstr ""
 
 #. type: Content of: <h1>
