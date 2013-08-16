@@ -23,7 +23,7 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 			if (s.getMethodName().equals("dogHouse")) {
 				if (line != -1 && line != s.getLineNumber()) {
 					int offset = ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.JAVA, 0).getOffset();
-				    String msg = Game.i18n.tr("I'm sorry Dave, I'm affraid I cant let you use left() both in lines {0} and {1}.",
+				    String msg = Game.i18n.tr("I''m sorry Dave, I''m affraid I cant let you use left() both in lines {0} and {1}.",
 					        (line-offset+1),(s.getLineNumber()-offset+1));
 
 					throw new RuntimeException(msg);
