@@ -244,9 +244,6 @@ public class MissionEditor extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			if (!modified)
-				return;
-			
 			JFileChooser fc;
 			if (lastPathSelected != null)
 				fc = new JFileChooser(lastPathSelected);
