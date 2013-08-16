@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-16 01:49+0300\n"
-"PO-Revision-Date: 2013-08-16 01:49+0200\n"
+"POT-Creation-Date: 2013-08-16 22:02+0300\n"
+"PO-Revision-Date: 2013-08-16 22:11+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -4726,7 +4726,6 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/picture/PictureMono2.html:3
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:3
 msgid ""
 "We will now reproduce an even bigger geometrical drawing. Once again, you "
 "can see the model by clicking on the \"Objective\" tab."
@@ -4736,7 +4735,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono2.html:6
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:6
 msgid ""
 "You can naturally reuse all the code you typed in previous exercise (select "
 "the other exercise, do Ctrl-C, come back to the code of this exercise, do "
@@ -4763,7 +4761,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono2.html:15
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:25
 msgid ""
 "Why don't you give it a shot? The main code method shouldn't take more than "
 "2 lines (included in a for loop)"
@@ -4773,7 +4770,7 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/picture/PictureMono3.html:3
-#: src/lessons/welcome/methods/picture/MethodsPicture3.html:3
+#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:3
 msgid ""
 "As you can imagine, you have to reproduce the geometric drawing depicted in "
 "the \"Objectives\" tab. As you can see, it is even bigger than the previous "
@@ -5224,9 +5221,91 @@ msgstr ""
 "têtes même pour les programmeurs professionnels."
 
 #. type: Content of: <h2>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:1
+msgid "Flower Pot"
+msgstr "Pot de fleur"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:3
+msgid ""
+"Your buggle decided to flower a bit the pot it lives in. You have to help it "
+"reproducing the drawing of its dreams (check the \"Objective\" tab to see "
+"it)."
+msgstr "Votre buggle a décidé de fleurir un peu le pot de fleur dans lequel elle vit. Vous devez l'aider à reproduire le motif dont elle rêve (vous pouvez le voir dans l'onglet «Objectif»)."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:6
+msgid ""
+"For that, you have to write a <code>growFlowers()</code> method that does "
+"not take any parameter and does not return any result. As the pattern is a "
+"bit complex, you should try to decompose this drawing in sub-steps so that "
+"your code remains short and easy to read. A method to draw one flower of the "
+"color passed in parameter sounds like a good start, but it is probably not "
+"enough."
+msgstr "Pour cela, vous devez écrire une méthode nommée <code>growFlower()</code> («fait pousser les fleurs» en anglais). Cette méthode ne prend aucun paramètre et ne renvoie aucun résultat. Comme le motif est un peu complexe, il faut que vous le décomposiez en sous-motifs pour que votre code reste simple et agréable à lire. Une méthode dessinant une fleur est un bon début, même si ce n'est probablement pas assez."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:12
+msgid ""
+"For your information, this drawing uses five colors that are listed below.  "
+"[!java|scala]The data type of these constants is <code>Color</code>, that "
+"naturally describes a particular color.[/!]"
+msgstr ""
+"Pour information, ce dessin utilise les cinq couleurs ci-dessous. \n"
+"[!java|scala]Le type de données de ces constantes est <code>Color</code>, qui décrit naturellement une couleur donnée[/!]"
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:17
+msgid "<tt>Color.RED</tt>"
+msgstr "<tt>Color.RED</tt> pour le rouge"
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:18
+msgid "<tt>Color.PINK</tt>"
+msgstr "<tt>Color.PINK</tt> pour le rose"
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:19
+msgid "<tt>Color.CYAN</tt>"
+msgstr "<tt>Color.CYAN</tt> pour le bleu clair"
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:20
+msgid "<tt>Color.ORANGE</tt>"
+msgstr "<tt>Color.ORANGE</tt> pour le orange"
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:21
+msgid "<tt>Color.GREEN</tt>"
+msgstr "<tt>Color.GREEN</tt> pour le vert"
+
+#. type: Content of: <ul><li>
+#: src/lessons/welcome/methods/flowerpot/FlowerPot.html:22
+msgid "<tt>Color.YELLOW</tt>"
+msgstr "<tt>Color.YELLOW</tt> pour le jaune"
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/methods/flowerpot/FlowerCase.html:1
+msgid "Flower Display Case"
+msgstr "Jardinière de fleurs"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/flowerpot/FlowerCase.html:3
+msgid ""
+"Whao! That's not a little pot anymore! That's a huge large flower display "
+"case! Your buggle can't help but starts flowering this gorgeous place. You "
+"should help it to prevent that it bumps into a wall..."
+msgstr "Whaou! Ce n'est plus un petit pot de fleurs, c'est carrément une énorme jardinière! Votre buggle est déjà partie la fleurir, et vous devriez aller l'aider pour éviter qu'elle ne se cogne à une bordure..."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/flowerpot/FlowerCase.html:7
+msgid "PS: the newly used color is <code>Color.BLUE</code>."
+msgstr "PS: La nouvelle couleur utilisée (pour le bleu) est <code>Color.BLUE</code>"
+
+#. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:1
-msgid "Methodically drawing (in color)"
-msgstr "Dessiner avec méthode (en couleur)"
+msgid "Colorful drawing"
+msgstr "Dessins colorés"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:10
@@ -5261,23 +5340,23 @@ msgstr ""
 
 #. type: Content of: <p><p><ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:20
-msgid "Color.yellow"
-msgstr "Color.yellow (jaune)"
+msgid "Color.YELLOW"
+msgstr "Color.YELLOW (jaune)"
 
 #. type: Content of: <p><p><ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:21
-msgid "Color.red"
-msgstr "Color.red (rouge)"
+msgid "Color.RED"
+msgstr "Color.RED (rouge)"
 
 #. type: Content of: <p><p><ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:22
-msgid "Color.blue"
-msgstr "Color.blue (bleu)"
+msgid "Color.BLUE"
+msgstr "Color.BLUE (bleu)"
 
 #. type: Content of: <p><p><ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:23
-msgid "Color.green"
-msgstr "Color.green (vert)"
+msgid "Color.GREEN"
+msgstr "Color.GREEN (vert)"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:26
@@ -5303,59 +5382,18 @@ msgstr ""
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:34
-msgid "Your turn. Your code should not be longer than 4 lines..."
-msgstr ""
-"À vous de jouer. Votre code ne devrait pas prendre plus de quatre lignes..."
+msgid ""
+"Your turn. I'm sure you can imagine the other methods you need to keep your "
+"code simple and pleasant to read."
+msgstr "À vous de jouer. Je suis sûr que vous parviendrez à trouver d'autres méthodes à ajouter pour décomposer ce problème et faire en sorte que votre code reste simple et agréable à lire."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:1
-msgid "Methodically drawing in color (only bigger)"
-msgstr "Dessiner en couleur avec méthode (en plus grand)"
+#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:1
+msgid "Larger colorful drawing"
+msgstr "Grand dessin coloré"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:10
-msgid ""
-"But you want to keep your main<code>run()</code> as simple as possible. For "
-"that, define new methods to deal simply with the repetitions in the pattern. "
-"For example, a method <code>makePattern()</code> achieving the pattern of "
-"previous example seems to be a good idea (but this may not be enough)."
-msgstr ""
-"Mais pour que votre méthode principale <code>run()</code> reste aussi simple "
-"que possible, il faudra définir de nouvelles méthodes afin de gérer "
-"simplement les répétions du motif. Par exemple, une méthode "
-"<code>makePattern()</code> réalisant le motif de l'exercice précédent semble "
-"être un bon départ (mais ce n'est sans doute pas suffisant)."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:16
-msgid ""
-"But you want to keep your main code as simple as possible. For that, define "
-"new methods to deal simply with the repetitions in the pattern. For example, "
-"a method <code>makePattern()</code> achieving the pattern of previous "
-"example seems to be a good idea (but this may not be enough)."
-msgstr ""
-"Mais pour que votre méthode principale reste aussi simple que possible, il "
-"faudra définir de nouvelles méthodes afin de gérer simplement les répétions "
-"du motif. Par exemple, une méthode <code>makePattern()</code> réalisant le "
-"motif de l'exercice précédent semble être un bon départ (mais ce n'est sans "
-"doute pas suffisant)."
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture2.html:22
-msgid ""
-"Why don't you give it a shot? The <code>run()</code> method shouldn't take "
-"more than 2 lines (included in a for loop)"
-msgstr ""
-"À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre plus "
-"de 2 lignes, incluses dans une boucle for..."
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/methods/picture/MethodsPicture3.html:1
-msgid "Drawing bigger and bigger, always in color"
-msgstr "Dessiner de plus en plus grand, toujours en couleur"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture3.html:7
+#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:7
 msgid ""
 "You thus have to declare even more methods to use the repetitions of the "
 "pattern and factorize your code. Another solution is to <i>parametrize</i> "
@@ -5367,7 +5405,7 @@ msgstr ""
 "changant les tailles."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture3.html:11
+#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:11
 #: src/lessons/welcome/traversal/Snake.html:46
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:52
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:10
@@ -5377,17 +5415,12 @@ msgid "Your turn..."
 msgstr "À vous de jouer..."
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/methods/picture/MethodsPicture4.html:1
-msgid "Even more colorful pattern to draw"
-msgstr "Encore des motifs colorés à dessiner"
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/methods/picture/MethodsPicture4.html:2
-msgid "(and methods to write)"
-msgstr "(et des méthodes à écrire)"
+#: src/lessons/welcome/methods/picture/PatternPicture.html:1
+msgid "Another Colorful Pattern"
+msgstr "Autre motif coloré"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/methods/picture/MethodsPicture4.html:4
+#: src/lessons/welcome/methods/picture/PatternPicture.html:3
 msgid ""
 "Here is yet another exercise where you have to reproduce the pattern "
 "provided in the \"Objective\" tab."
@@ -5396,7 +5429,7 @@ msgstr ""
 "l'onglet «Objectif»."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture4.html:7
+#: src/lessons/welcome/methods/picture/PatternPicture.html:6
 msgid ""
 "This one is a bit more difficult than the one seen previously. Look for "
 "repeating patterns, even if the color changes, and write a method drawing "
@@ -5407,7 +5440,7 @@ msgstr ""
 "dessinant chacun d'entre eux."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPicture4.html:11
+#: src/lessons/welcome/methods/picture/PatternPicture.html:10
 msgid "Good luck!"
 msgstr "Bon courage !"
 
@@ -14295,6 +14328,64 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
+
+#~ msgid "Methodically drawing (in color)"
+#~ msgstr "Dessiner avec méthode (en couleur)"
+
+#~ msgid "Color.yellow"
+#~ msgstr "Color.yellow (jaune)"
+
+#~ msgid "Color.blue"
+#~ msgstr "Color.blue (bleu)"
+
+#~ msgid "Color.green"
+#~ msgstr "Color.green (vert)"
+
+#~ msgid "Your turn. Your code should not be longer than 4 lines..."
+#~ msgstr ""
+#~ "À vous de jouer. Votre code ne devrait pas prendre plus de quatre "
+#~ "lignes..."
+
+#~ msgid "Methodically drawing in color (only bigger)"
+#~ msgstr "Dessiner en couleur avec méthode (en plus grand)"
+
+#~ msgid ""
+#~ "But you want to keep your main<code>run()</code> as simple as possible. "
+#~ "For that, define new methods to deal simply with the repetitions in the "
+#~ "pattern. For example, a method <code>makePattern()</code> achieving the "
+#~ "pattern of previous example seems to be a good idea (but this may not be "
+#~ "enough)."
+#~ msgstr ""
+#~ "Mais pour que votre méthode principale <code>run()</code> reste aussi "
+#~ "simple que possible, il faudra définir de nouvelles méthodes afin de "
+#~ "gérer simplement les répétions du motif. Par exemple, une méthode "
+#~ "<code>makePattern()</code> réalisant le motif de l'exercice précédent "
+#~ "semble être un bon départ (mais ce n'est sans doute pas suffisant)."
+
+#~ msgid ""
+#~ "But you want to keep your main code as simple as possible. For that, "
+#~ "define new methods to deal simply with the repetitions in the pattern. "
+#~ "For example, a method <code>makePattern()</code> achieving the pattern of "
+#~ "previous example seems to be a good idea (but this may not be enough)."
+#~ msgstr ""
+#~ "Mais pour que votre méthode principale reste aussi simple que possible, "
+#~ "il faudra définir de nouvelles méthodes afin de gérer simplement les "
+#~ "répétions du motif. Par exemple, une méthode <code>makePattern()</code> "
+#~ "réalisant le motif de l'exercice précédent semble être un bon départ "
+#~ "(mais ce n'est sans doute pas suffisant)."
+
+#~ msgid ""
+#~ "Why don't you give it a shot? The <code>run()</code> method shouldn't "
+#~ "take more than 2 lines (included in a for loop)"
+#~ msgstr ""
+#~ "À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre "
+#~ "plus de 2 lignes, incluses dans une boucle for..."
+
+#~ msgid "Drawing bigger and bigger, always in color"
+#~ msgstr "Dessiner de plus en plus grand, toujours en couleur"
+
+#~ msgid "(and methods to write)"
+#~ msgstr "(et des méthodes à écrire)"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"

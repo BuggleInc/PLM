@@ -2,8 +2,7 @@ package lessons.welcome.methods.picture;
 
 import java.awt.Color;
 
-import jlm.universe.bugglequest.SimpleBuggle;
-public class MethodsPictureEntity extends SimpleBuggle {
+public class MethodsPictureEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
@@ -31,13 +30,31 @@ public class MethodsPictureEntity extends SimpleBuggle {
 		left();
 	}
 
-
-
-	public void run() {
+	void makePattern() {
 		makeV(Color.YELLOW);
 		makeV(Color.RED);
 		makeV(Color.BLUE);
 		makeV(Color.GREEN);
+		forward(5);
+	}
+
+	void makeLine(int count){
+		for (int i=0; i<count;i++)
+			makePattern();
+		backward(count*5);
+	}
+
+	void nextLine() {
+		left();
+		forward(5);
+		right();	
+	}
+
+	public void run() {
+		for (int i=0; i<3;i++) {
+			makeLine(3);
+			nextLine();
+		}
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */

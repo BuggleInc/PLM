@@ -75,10 +75,11 @@ import lessons.welcome.loopwhile.WhileMoria;
 import lessons.welcome.methods.args.MethodsArgs;
 import lessons.welcome.methods.basics.Methods;
 import lessons.welcome.methods.basics.MethodsDogHouse;
+import lessons.welcome.methods.flowerpot.FlowerCase;
+import lessons.welcome.methods.flowerpot.FlowerPot;
 import lessons.welcome.methods.picture.MethodsPicture;
-import lessons.welcome.methods.picture.MethodsPicture2;
-import lessons.welcome.methods.picture.MethodsPicture3;
-import lessons.welcome.methods.picture.MethodsPicture4;
+import lessons.welcome.methods.picture.MethodsPictureLarge;
+import lessons.welcome.methods.picture.PatternPicture;
 import lessons.welcome.methods.picture.PictureMono;
 import lessons.welcome.methods.picture.PictureMono2;
 import lessons.welcome.methods.picture.PictureMono3;
@@ -137,10 +138,11 @@ public class Main extends Lesson {
 		
 		Lecture methodArg = addExercise(new MethodsArgs(this));
 		  addExercise(new SlugSnail(this), methodArg);
-  		  addExercise(new MethodsPicture(this),methodArg);
-		  addExercise(new MethodsPicture2(this),methodArg);
-		  addExercise(new MethodsPicture3(this),methodArg);
- 	 	  addExercise(new MethodsPicture4(this),methodArg);
+		  addExercise(new MethodsPicture(this), methodArg);
+		  addExercise(new MethodsPictureLarge(this), methodArg);
+ 	 	  addExercise(new PatternPicture(this), methodArg);
+ 	 	  addExercise(new FlowerPot(this), methodArg);
+ 	 	  addExercise(new FlowerCase(this), methodArg);
 	
 		  // First serie of boolean fun
 		  Lecture bat = addExercise(new SleepIn(this));

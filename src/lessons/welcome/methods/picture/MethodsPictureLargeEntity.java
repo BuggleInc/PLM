@@ -2,7 +2,9 @@ package lessons.welcome.methods.picture;
 
 import java.awt.Color;
 
-public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle {
+import jlm.universe.bugglequest.SimpleBuggle;
+
+public class MethodsPictureLargeEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
@@ -51,8 +53,8 @@ public class MethodsPicture2Entity extends jlm.universe.bugglequest.SimpleBuggle
 	}
 
 	public void run() {
-		for (int i=0; i<3;i++) {
-			makeLine(3);
+		for (int i=0; i<9; i++) {
+			makeLine(9);
 			nextLine();
 		}
 	}

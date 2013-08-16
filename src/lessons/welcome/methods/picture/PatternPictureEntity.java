@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import jlm.universe.bugglequest.SimpleBuggle;
 
-public class MethodsPicture4Entity extends SimpleBuggle {
+public class PatternPictureEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */

@@ -12,9 +12,10 @@ public class MethodsPicture extends ExerciseTemplated {
 
 	public MethodsPicture(Lesson lesson) {
 		super(lesson);
-		BuggleWorld myWorld =  new BuggleWorld("World",5,5);
-		new Buggle(myWorld, "Picasso", 0, 4, Direction.EAST, Color.black, Color.lightGray);
-		
+		BuggleWorld myWorld =  new BuggleWorld("World",15,15);
+		myWorld.setDelay(20);
+		new Buggle(myWorld, "Picasso", 0, 14, Direction.EAST, Color.black, Color.lightGray);
+
 		setup(myWorld);
 	}
 }

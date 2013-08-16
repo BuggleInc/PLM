@@ -20,9 +20,24 @@ def makeV(c):
    forward()
    left()
 
+def makePattern():
+   makeV(Color.yellow)
+   makeV(Color.red)
+   makeV(Color.blue)
+   makeV(Color.green)
+   forward(5)
 
-makeV(Color.yellow)
-makeV(Color.red)
-makeV(Color.blue)
-makeV(Color.green)
+def makeLine(count):
+   for i in range(count):
+      makePattern()
+   backward(count*5)
+
+def nextLine():
+   left()
+   forward(5)
+   right()
+
+for i in range(3):
+   makeLine(3)
+   nextLine()
 # END SOLUTION
