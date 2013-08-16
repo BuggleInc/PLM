@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-16 00:25+0300\n"
-"PO-Revision-Date: 2013-08-16 00:26+0200\n"
+"POT-Creation-Date: 2013-08-16 01:49+0300\n"
+"PO-Revision-Date: 2013-08-16 01:49+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2352,6 +2352,7 @@ msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 #: src/lessons/welcome/loopfor/LoopFor.html:69
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:53
 #: src/lessons/welcome/loopdowhile/Poucet.html:33
+#: src/lessons/welcome/methods/args/MethodsArgs.html:65
 #: src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193
 #: src/lessons/welcome/bdr/BDR2.html:129
 msgid "[/!]"
@@ -3219,6 +3220,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/variables/Variables.html:28
 #: src/lessons/welcome/variables/Variables.html:40
+#: src/lessons/welcome/methods/args/MethodsArgs.html:34
 #: src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3
 msgid "[!java|scala]"
 msgstr "[!java|scala]"
@@ -4975,22 +4977,24 @@ msgstr ""
 "Quand votre méthode <tt>haveBaggle</tt> fonctionne, passez à l'exercice "
 "suivant."
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:3
 msgid ""
 "Don't you get tired of writing again and again the code to move by a fixed "
 "amount of steps? On the other hand, writing <tt>forward2()</tt>, "
 "<tt>forward3()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>, "
-"<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help"
+"<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help, "
+"to say the less."
 msgstr ""
 "N'êtes vous pas fatigué d'écrire encore et encore le code qui permet "
-"d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les "
-"méthode <tt>forward2()</tt>, <tt>forward3()</tt>, <tt>forward4()</tt>, et "
-"<tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt>, et ainsi "
-"de suite, ça ne constitue pas un réel gain de temps..."
+"d'avancer ou de reculer d'un nombre prédéterminé de pas ? Oui, mais écrire "
+"les méthode <tt>avance2()</tt>, <tt>avance3()</tt>, <tt>avance4()</tt>, et "
+"<tt>recule2()</tt>, <tt>recule3()</tt>, <tt>recule4()</tt>, et ainsi de "
+"suite, ça ne constitue pas un réel gain de temps. Et puis, c'est carrément "
+"moche !"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:8
+#: src/lessons/welcome/methods/args/MethodsArgs.html:9
 msgid ""
 "Luckily, it is possible to pass <b>parameters</b> to your methods. You have "
 "to specify their type and name between the parenthesis after the method "
@@ -5002,30 +5006,20 @@ msgstr ""
 "suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de "
 "la fonction comme s'il s'agissait de variables définies ici."
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:13
+#. type: Content of: <pre>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:14
 #, no-wrap
 msgid ""
-"double divideByTwo(double x) {\n"
-"&nbsp;&nbsp;return x / 2;\n"
-"}"
+"[!java]double [/!]divideByTwo([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+"     return x / 2[!java];[/!]\n"
+"[!scala|java]}[/!]"
 msgstr ""
-"double diviseParDeux(double x) {\n"
-"&nbsp;&nbsp;return x / 2;\n"
-"}"
+"[!java]double [/!]diviseParDeux([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]\n"
+"     return x / 2[!java];[/!]\n"
+"[!scala|java]}[/!]"
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:17
-#, no-wrap
-msgid ""
-"def divideByTwo(x):\n"
-"&nbsp;&nbsp;return x / 2\n"
-msgstr ""
-"def diviseParDeux(x):\n"
-"&nbsp;&nbsp;return x / 2\n"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:21
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:18
 msgid ""
 "As caller, you have to specify the initial value of this \"variables\" "
 "between the call's parenthesis."
@@ -5033,20 +5027,14 @@ msgstr ""
 "À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les "
 "parenthèses de l'appel."
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:23
+#. type: Content of: <pre>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:20
 #, no-wrap
-msgid "double y = divideByTwo(3.14);"
-msgstr "double y = diviseParDeux(3.14);"
+msgid "[!java]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java];[/!]"
+msgstr "[!java]double [/!][!scala]val [/!]result = diviseParDeux(3.14)[!java];[/!]"
 
-#. type: Content of: <p><p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:25
-#, no-wrap
-msgid "y = divideByTwo(3.14)"
-msgstr "y = diviseParDeux(3.14);"
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:28
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:22
 msgid ""
 "If you want several parameters, you need to separate them with comas (,)  "
 "both in the declaration and calls."
@@ -5054,64 +5042,61 @@ msgstr ""
 "Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules, "
 "lors de la déclaration comme lors de l'appel."
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:31
+#. type: Content of: <pre>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:25
 #, no-wrap
 msgid ""
-"double divide(double x, double y) {\n"
-"&nbsp;&nbsp;return x / y;\n"
-"}"
+"[!java]double divide(double x, double y) {[/!]\n"
+"[!scala]def divide(x:Double, y:Double): Double = {[/!]\n"
+"[!python]def divide(x, y):[/!]\n"
+"     return x / y[!java];[/!]\n"
+"[!java|scala]}[/!]"
 msgstr ""
-"double divise(double x, double y) {\n"
-"&nbsp;&nbsp;return x / y;\n"
-"}"
+"[!java]double divise(double x, double y) {[/!]\n"
+"[!scala]def divise(x:Double, y:Double): Double = {[/!]\n"
+"[!python]def divise(x, y):[/!]\n"
+"     return x / y[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:34
-#, no-wrap
-msgid "double y = divide(3.14 , 1.5);"
-msgstr "double y = divise(3.14 , 1.5);"
-
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:36
+#. type: Content of: <pre>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:30
 #, no-wrap
 msgid ""
-"def divide(double x, double y):\n"
-"&nbsp;&nbsp;return x / y\n"
-"}"
+"[!java]double res = divide(3.14 , 1.5);[/!]\n"
+"[!scala]val res = divide(3.14 , 1.5)[/!]\n"
+"[!python]res = divide(3.14 , 1.5)[/!]"
 msgstr ""
-"def divise(double x, double y):\n"
-"&nbsp;&nbsp;return x / y\n"
-"}"
+"[!java]double res = divise(3.14 , 1.5);[/!]\n"
+"[!scala]val res = divise(3.14 , 1.5)[/!]\n"
+"[!python]res = divise(3.14 , 1.5)[/!]"
 
-#. type: Content of: <p><p><p><pre>
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:35
+msgid ""
+"In [!thelang], you can declare several methods of the same name as long as "
+"they don't have the same <b>signature</b>, that is, the same amount of "
+"parameters and the same parameters' types."
+msgstr ""
+"En [!thelang], il est possible d'avoir plusieurs méthodes du même nom, à "
+"condition qu'elles n'aient pas la même <b>signature</b>, c'est à dire le "
+"même nombre de paramètres et les mêmes types de paramètres."
+
+#. type: Content of: <pre>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:39
 #, no-wrap
-msgid "y = divide(3.14 , 1.5)"
-msgstr "y = divise(3.14 , 1.5);"
-
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:42
 msgid ""
-"In Java, you can declare several methods of the same name as long as they "
-"don't have the same parameter types and number (they are said to have "
-"different <b>signature</b>)."
-msgstr ""
-"En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition "
-"qu'elles n'aient pas le même nombre et les mêmes types de paramètres (on dit "
-"qu'elles n'ont pas la même <b>signature</b>)."
-
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:45
-#, no-wrap
-msgid ""
-"int max(int x, int y) {\n"
+"[!java]double max(double x, double y)[/!][!scala]def max(x:Double, int y:Double): Double =[/!] {\n"
+"  if (x > y) {\n"
+"    return x;\n"
+"  }\n"
+"  return y;\n"
+"}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, int y:Int): Int =[/!] {\n"
 "  if (x > y) {\n"
 "    return x;\n"
 "  }\n"
 "  return y;\n"
 "}\n"
-"int max(int x, int y, int z) {\n"
+"[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, int y:Int, int z:Int): Int =[/!] {\n"
 "  if (x > y && x > z) {\n"
 "    return x;\n"
 "  }\n"
@@ -5121,113 +5106,108 @@ msgid ""
 "  return z;\n"
 "}"
 msgstr ""
-"int max(int x, int y) {\n"
-"&nbsp;&nbsp;if (x > y) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return x;\n"
-"&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;return y;\n"
+"[!java]double max(double x, double y)[/!][!scala]def max(x:Double, int y:Double): Double =[/!] {\n"
+"  if (x > y) {\n"
+"    return x;\n"
+"  }\n"
+"  return y;\n"
+"}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, int y:Int): Int =[/!] {\n"
+"  if (x > y) {\n"
+"    return x;\n"
+"  }\n"
+"  return y;\n"
 "}\n"
-"int max(int x, int y, int z) {\n"
-"&nbsp;&nbsp;if (x > y && x > z) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return x;\n"
-"&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;if (y > z) {\n"
-"&nbsp;&nbsp;&nbsp;&nbsp;return y;\n"
-"&nbsp;&nbsp;}\n"
-"&nbsp;&nbsp;return z;\n"
+"[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, int y:Int, int z:Int): Int =[/!] {\n"
+"  if (x > y && x > z) {\n"
+"    return x;\n"
+"  }\n"
+"  if (y > z) {\n"
+"    return y;\n"
+"  }\n"
+"  return z;\n"
 "}"
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:63
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:60
 msgid ""
 "Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It "
 "works anyway because a <tt>return</tt> interrupts the method execution. If "
-"we arrive to the last line of <code>max(int,int)</code>, we know that "
-"<code>x&lt;=y</code> because on the other case, the <tt>return</tt> of line "
-"2 would have stopped the execution."
+"we arrive to the last line of <code>[!java]max(int,int)[/!][!scala]max(Int,"
+"Int):Int[/!]</code>, we know that <code>x&lt;=y</code> because otherwise, "
+"the <tt>return</tt> of line 2 would have stopped the execution."
 msgstr ""
 "Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque "
 "alternative. Cela fonctionne tout de même car un <tt>return</tt> interrompt "
-"l'exécution de la méthode. Si on arrive à la dernière ligne de <code>max(int,"
-"int)</code>, on est donc sur que <code>x&lt;=y</code> car dans le cas "
-"contraire, le <tt>return</tt> de la deuxième ligne aurait arrêté l'exécution "
-"de la fonction."
+"l'exécution de la méthode. Si on arrive à la dernière ligne de <code>[!"
+"java]max(int,int)[/!][!scala]max(Int,Int):Int[/!]</code>, on est donc sûr "
+"que <code>x&lt;=y</code> car dans le cas contraire, le <tt>return</tt> de la "
+"deuxième ligne aurait arrêté l'exécution de la fonction."
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:69
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:70
 msgid ""
-"This time, you have to write a <code>move(int stepCount,boolean forward)</"
-"code> method which move forward of <code>stepCount</code> if <code>forward</"
-"code> is true, and move back of that amount of steps if the boolean is "
-"false. The buggle will use some methods we did not introduce yet to guess "
-"its position and orientation in order to determine the amount of steps to do "
-"and their direction, but it is not relevant here."
+"This time, you have to write a <code> [!java]move(int stepCount,boolean "
+"forward)[/!] [!scala]move(stepCount: Int,forward: Boolean)[/!] [!"
+"python]move(stepCount,forward)[/!] </code> method which moves forward by "
+"<code>stepCount</code> steps if <code>forward</code> is true, and moves back "
+"of that amount of steps if the boolean is false."
 msgstr ""
-"<a name=\"Objectifs\"> Il s'agit cette fois d'écrire une méthode "
-"<code>move(int nbPas, boolean forward)</code> qui avance de <code>nbPas</"
-"code> si <code>forward</code> est vrai, et recule d'autant de pas si le "
-"booléen est faux. La buggle s'en servira pour retourner sur la ligne du "
-"haut. Elle utilisera au passage des méthodes que l'on ne connaît pas encore "
-"pour deviner sa position et sa direction actuelles afin de calculer le sens "
-"et le nombre de pas à faire (mais ce n'est pas important ici)."
+"Cette fois, vous devez écrire une méthode \n"
+"<code>[!java]move(int nbPas,boolean versLAvant)[/!] [!scala]move(nbPas: Int,"
+"versLAvant: Boolean)[/!] [!python]move(nbPas,versLAvant)[/!] </code> qui se "
+"déplace de <code>nbPas</code> pas. Si <code>versLAvant</code> est vrai, il "
+"faut avancer de ce nombre de pas; dans le cas contraire, il faut reculer."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:76
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:78
 msgid ""
-"This time, there is only one world, and seven buggles. But it does not "
-"change anything for you, since the same code is used for any buggles."
+"This time, there is only one world but seven buggles, all sharing the same "
+"code.  This code should not be really problematic for you to write, actually."
 msgstr ""
-"Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas "
-"grand chose pour vous, puisque toutes sont ici régies par le même code."
+"Cette fois, il y a un seul monde, et sept buggles, qui exécutent toutes le "
+"code que vous allez écrire.\n"
+"Cet exercice ne devrait pas vous poser de problème particulier."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:79
-msgid ""
-"The code of the method to write should not be really problematic for you."
-msgstr ""
-"Le code de la méthode à proprement parler ne devrait pas poser de problème."
-
-#. type: Content of: <p><p><p><p><h2>
+#. type: Content of: <h2>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:81
-msgid "What's coming next?"
+msgid "What is coming next?"
 msgstr "Et ensuite?"
 
-#. type: Content of: <p><p><p><p><p>
+#. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:82
 msgid ""
 "You now know the very basics of programming. At least, we introduced all the "
-"important concepts, and you should be able to read most code by now. If you "
-"want to play safe, you should proceed to the next exercises of this lesson "
-"to solidify your knowledge by reusing these concepts in various simple "
-"situations. After taking them, you'll master what's called \"Tactical "
-"programming\", meaning that you will master the syntax enough to not have "
-"any issue with it, allowing you to focus on the fundamental problems of what "
-"you want to solve instead of struggling with syntaxic difficulties. Some of "
-"these exercises are even fun to do ;)"
+"important concepts, and you should be able to read most simple codes by now. "
+"If you want to play safe, you should proceed to the next exercises of this "
+"lesson to solidify your knowledge by reusing these concepts in various "
+"simple situations. After taking them, you will master what is called "
+"\"Tactical programming\", meaning that you will master the syntax enough to "
+"not have any issue with it, allowing you to focus on the fundamental "
+"problems of what you want to solve instead of struggling with syntaxic "
+"difficulties.  Some of these exercises are even fun to do ;)"
 msgstr ""
 "Vous connaissez maintenant les bases de la programmation. Disons au moins "
 "que vous avez vu les concepts les plus important et que vous devriez être "
-"capable de lire et comprendre la plupart des programmes écrits. Pour plus de "
-"sécurité, vous devriez faire les autres exercices de cette leçon pour "
+"capable de lire et comprendre la plupart des programmes simples. Pour plus "
+"de sécurité, vous devriez faire les autres exercices de cette leçon pour "
 "solidifier vos acquis en les réutilisant dans diverses situations. Après "
-"cela, vous maîtriserez ce qu'on appelle la \"programmation tactique\", ce "
-"qui veut dire que votre maîtrise de la syntaxe vous permettra de vous "
-"concentrer sur les problèmes à résoudre sans vous battre contre le "
-"compilateur à propos de la syntaxe. Certains de ces exercices sont même "
-"amusants à résoudre ;)"
+"cela, vous maîtriserez ce qu'on appelle la «programmation tactique», ce qui "
+"veut dire que votre maîtrise de la syntaxe vous permettra de vous concentrer "
+"sur les problèmes à résoudre sans vous battre contre le compilateur à propos "
+"de la syntaxe. Certains de ces exercices sont même amusants à résoudre ;)"
 
-#. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:90
+#. type: Content of: <p>
+#: src/lessons/welcome/methods/args/MethodsArgs.html:92
 msgid ""
 "If you are in a hurry and want more, you can skip these exercises and "
 "proceed directly to more interesting challenges. For example, the "
 "<i>Labyrinths</i> lesson will teach you about maze escaping algorithms, "
 "which are not rocket science but require several improvements to work for "
-"any kind of maze. The <i>Lightbot</i> lesson is a little programming game "
-"where you control a little robot wanting to light the world. Since it is not "
-"programmed in a language but graphically, the first exercises can be used as "
-"an introduction activity to what programming means for real beginners, but "
-"the last exercises constitute challenges and brain teaser even to "
+"any kind of maze. The <i>Lightbot</i> lesson is a little programmer's brain "
+"teaser where you control a little robot wanting to light the world.  Since "
+"it is not programmed in a language but graphically, the first exercises can "
+"be used as an introduction activity to what programming means for real "
+"beginners, but the last exercises may constitute challenges even to "
 "professional programmers."
 msgstr ""
 "Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et "
@@ -5527,8 +5507,14 @@ msgid ""
 "because green is an <i>object</i> in Java, and <code>.equals()</code> is the "
 "way to go to test equality between Java objects.[/!]"
 msgstr ""
-"Votre outil pour cela est la méthode <code>getGroundColor()</code> qui retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut vous rendre dans la case à tester avant d'appeler cette méthode. \n"
-"[!java]Vous ne pouvez pas simplement utiliser <code>==</code> pour tester si la couleur retournée est le vert, mais vous devez plutôt écrire quelque chose comme <code>getGroundColor().equals(Color.green)</code>. C'est parce que les couleurs sont des <i>objets</i> en Java, et que <code>.equals()</code> est la marche à suivre pour tester l'égalité d'objets Java.[/!]"
+"Votre outil pour cela est la méthode <code>getGroundColor()</code> qui "
+"retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut "
+"vous rendre dans la case à tester avant d'appeler cette méthode. \n"
+"[!java]Vous ne pouvez pas simplement utiliser <code>==</code> pour tester si "
+"la couleur retournée est le vert, mais vous devez plutôt écrire quelque "
+"chose comme <code>getGroundColor().equals(Color.green)</code>. C'est parce "
+"que les couleurs sont des <i>objets</i> en Java, et que <code>.equals()</"
+"code> est la marche à suivre pour tester l'égalité d'objets Java.[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugTracking.html:20

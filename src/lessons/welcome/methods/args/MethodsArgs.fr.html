@@ -1,98 +1,96 @@
 <h2>Méthodes avec paramètres</h2>
 
-N'êtes vous pas fatigué d'écrire encore et encore le code qui permet
-d'avancer ou de reculer d'un nombre prédéterminé pas ? Oui, mais écrire les
-méthode <tt>forward2()</tt>, <tt>forward3()</tt>, <tt>forward4()</tt>, et
-<tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt>, et ainsi
-de suite, ça ne constitue pas un réel gain de temps...
+<p>N'êtes vous pas fatigué d'écrire encore et encore le code qui permet
+d'avancer ou de reculer d'un nombre prédéterminé de pas ? Oui, mais écrire
+les méthode <tt>avance2()</tt>, <tt>avance3()</tt>, <tt>avance4()</tt>, et
+<tt>recule2()</tt>, <tt>recule3()</tt>, <tt>recule4()</tt>, et ainsi de
+suite, ça ne constitue pas un réel gain de temps. Et puis, c'est carrément
+moche !</p>
 
 <p>Heureusement, il est possible de donner des <b>paramètres</b> à vos
 méthodes. Il faut marquer leur type et leur nom entre les parenthèses qui
 suivent le nom de la méthode. Ensuite, on peut les utiliser dans le corps de
-la fonction comme s'il s'agissait de variables définies ici.
+la fonction comme s'il s'agissait de variables définies ici.</p>
 
-<pre class="Java">double diviseParDeux(double x) {
-&nbsp;&nbsp;return x / 2;
-}</pre>
-
-<pre class="Python">def diviseParDeux(x):
-&nbsp;&nbsp;return x / 2
-</pre>
+<pre>[!java]double [/!]diviseParDeux([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]
+     return x / 2[!java];[/!]
+[!scala|java]}[/!]</pre>
 
 <p>À l'usage, il faut indiquer les valeurs qu'elles doivent prendre entre les
-parenthèses de l'appel.
-<pre class="Java">double y = diviseParDeux(3.14);</pre>
-
-<pre class="Python">y = diviseParDeux(3.14);</pre>
-
+parenthèses de l'appel.</p>
+<pre>[!java]double [/!][!scala]val [/!]result = diviseParDeux(3.14)[!java];[/!]</pre>
 
 <p>Si on veut avoir plusieurs paramètres, il faut les séparer par des virgules,
-lors de la déclaration comme lors de l'appel.
+lors de la déclaration comme lors de l'appel.</p>
 
-<pre class="Java">double divise(double x, double y) {
-&nbsp;&nbsp;return x / y;
-}</pre>
-<pre class="Java">double y = divise(3.14 , 1.5);</pre>
+<pre>[!java]double divise(double x, double y) {[/!]
+[!scala]def divise(x:Double, y:Double): Double = {[/!]
+[!python]def divise(x, y):[/!]
+     return x / y[!java];[/!]
+[!java|scala]}[/!]</pre>
+<pre>[!java]double res = divise(3.14 , 1.5);[/!]
+[!scala]val res = divise(3.14 , 1.5)[/!]
+[!python]res = divise(3.14 , 1.5)[/!]</pre>
 
-<pre class="Python">def divise(double x, double y):
-&nbsp;&nbsp;return x / y
-}</pre>
-<pre class="Python">y = divise(3.14 , 1.5);</pre>
+[!java|scala]
+<p>En [!thelang], il est possible d'avoir plusieurs méthodes du même nom, à
+condition qu'elles n'aient pas la même <b>signature</b>, c'est à dire le
+même nombre de paramètres et les mêmes types de paramètres.</p>
 
-
-<p class="Java">En Java, il est possible d'avoir plusieurs méthodes du même nom, à condition
-qu'elles n'aient pas le même nombre et les mêmes types de paramètres (on dit
-qu'elles n'ont pas la même <b>signature</b>).
-<pre class="Java">int max(int x, int y) {
-&nbsp;&nbsp;if (x > y) {
-&nbsp;&nbsp;&nbsp;&nbsp;return x;
-&nbsp;&nbsp;}
-&nbsp;&nbsp;return y;
+<pre>[!java]double max(double x, double y)[/!][!scala]def max(x:Double, int y:Double): Double =[/!] {
+  if (x > y) {
+    return x;
+  }
+  return y;
+}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, int y:Int): Int =[/!] {
+  if (x > y) {
+    return x;
+  }
+  return y;
 }
-int max(int x, int y, int z) {
-&nbsp;&nbsp;if (x > y && x > z) {
-&nbsp;&nbsp;&nbsp;&nbsp;return x;
-&nbsp;&nbsp;}
-&nbsp;&nbsp;if (y > z) {
-&nbsp;&nbsp;&nbsp;&nbsp;return y;
-&nbsp;&nbsp;}
-&nbsp;&nbsp;return z;
+[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, int y:Int, int z:Int): Int =[/!] {
+  if (x > y && x > z) {
+    return x;
+  }
+  if (y > z) {
+    return y;
+  }
+  return z;
 }</pre>
 
-
-
-<!-- introduce default value for parameters in Python language -->
-<p class="Java">Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque
+<p>Remarquez que nous avons ici laissé de coté les <tt>else</tt> de chaque
 alternative. Cela fonctionne tout de même car un <tt>return</tt> interrompt
 l'exécution de la méthode. Si on arrive à la dernière ligne de
-<code>max(int,int)</code>, on est donc sur que <code>x&lt;=y</code> car dans
-le cas contraire, le <tt>return</tt> de la deuxième ligne aurait arrêté
-l'exécution de la fonction.</p>
+<code>[!java]max(int,int)[/!][!scala]max(Int,Int):Int[/!]</code>, on est
+donc sûr que <code>x&lt;=y</code> car dans le cas contraire, le
+<tt>return</tt> de la deuxième ligne aurait arrêté l'exécution de la
+fonction.</p>
+<!-- introduce default value for parameters in Python language -->
+[/!]
 
-<h3>Objectif de cet exercice</h3><a name="Objectifs"> Il s'agit cette fois d'écrire une méthode
-<code>move(int nbPas, boolean forward)</code> qui avance de
-<code>nbPas</code> si <code>forward</code> est vrai, et recule d'autant de
-pas si le booléen est faux. La buggle s'en servira pour retourner sur la
-ligne du haut. Elle utilisera au passage des méthodes que l'on ne connaît
-pas encore pour deviner sa position et sa direction actuelles afin de
-calculer le sens et le nombre de pas à faire (mais ce n'est pas important
-ici).
 
-<p>Cette fois, il y a un seul monde, et sept buggles. Mais ça ne change pas
-grand chose pour vous, puisque toutes sont ici régies par le même code.</p>
 
-<p>Le code de la méthode à proprement parler ne devrait pas poser de problème.</p>
+<h3>Objectif de cet exercice</h3>
+<p>Cette fois, vous devez écrire une méthode
+<code>[!java]move(int nbPas,boolean versLAvant)[/!] [!scala]move(nbPas:
+Int,versLAvant: Boolean)[/!] [!python]move(nbPas,versLAvant)[/!] </code> qui
+se déplace de <code>nbPas</code> pas. Si <code>versLAvant</code> est vrai,
+il faut avancer de ce nombre de pas; dans le cas contraire, il faut reculer.</p>
+
+<p>Cette fois, il y a un seul monde, et sept buggles, qui exécutent toutes le
+code que vous allez écrire.
+Cet exercice ne devrait pas vous poser de problème particulier.</p>
 
 <h2>Et ensuite?</h2>
-<p>Vous connaissez maintenant les bases de la programmation. Disons au moins
-que vous avez vu les concepts les plus important et que vous devriez être
-capable de lire et comprendre la plupart des programmes écrits. Pour plus de
-sécurité, vous devriez faire les autres exercices de cette leçon pour
-solidifier vos acquis en les réutilisant dans diverses situations. Après
-cela, vous maîtriserez ce qu'on appelle la "programmation tactique", ce qui
-veut dire que votre maîtrise de la syntaxe vous permettra de vous concentrer
-sur les problèmes à résoudre sans vous battre contre le compilateur à propos
-de la syntaxe. Certains de ces exercices sont même amusants à résoudre ;)
+<p>You now know the very basics of programming. At least, we introduced all the
+important concepts, and you should be able to read most simple codes by
+now. If you want to play safe, you should proceed to the next exercises of
+this lesson to solidify your knowledge by reusing these concepts in various
+simple situations. After taking them, you will master what is called
+"Tactical programming", meaning that you will master the syntax enough to
+not have any issue with it, allowing you to focus on the fundamental
+problems of what you want to solve instead of struggling with syntaxic
+difficulties.  Some of these exercises are even fun to do ;)</p>
 
 <p>Si vous êtes pressés et voulez plus, vous pouvez sauter ces exercices et
 passer directement à des exercices plus complets et plus intéressants. Par
@@ -106,4 +104,3 @@ syntaxique, les premiers exercices peuvent être utilisés comme une
 introduction à ce que programmer veut dire pour les débutants. Mais les
 derniers exercices sont plus difficiles et devraient constituer des
 casse-têtes même pour les programmeurs professionnels.</p>   
-

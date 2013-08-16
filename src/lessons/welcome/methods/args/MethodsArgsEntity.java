@@ -1,17 +1,17 @@
 package lessons.welcome.methods.args;
 
+import jlm.core.model.Game;
 import jlm.universe.Direction;
 import jlm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsArgsEntity extends SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument"));
 	}
-
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument"));
 	}
 
 

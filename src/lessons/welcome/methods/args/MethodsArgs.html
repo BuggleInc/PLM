@@ -1,54 +1,53 @@
 <h2>Methods with parameters</h2>
 
-Don't you get tired of writing again and again the code to move by a fixed
+<p>Don't you get tired of writing again and again the code to move by a fixed
 amount of steps? On the other hand, writing <tt>forward2()</tt>,
 <tt>forward3()</tt>, <tt>forward4()</tt>, as well as <tt>backward2()</tt>,
-<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help
+<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help, 
+to say the less.</p>
 
 <p>Luckily, it is possible to pass <b>parameters</b> to your methods. You have
 to specify their type and name between the parenthesis after the method
 name. Then, you can use them in the method body as if it were variables
-defined in there, and which initial value is what the caller specified.
+defined in there, and which initial value is what the caller specified.</p>
 
-<pre class="Java">double divideByTwo(double x) {
-&nbsp;&nbsp;return x / 2;
-}</pre>
-
-<pre class="Python">def divideByTwo(x):
-&nbsp;&nbsp;return x / 2
-</pre>
+<pre>[!java]double [/!]divideByTwo([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]
+     return x / 2[!java];[/!]
+[!scala|java]}[/!]</pre>
 
 <p>As caller, you have to specify the initial value of this "variables" between
-the call's parenthesis.
-<pre class="Java">double y = divideByTwo(3.14);</pre>
-
-<pre class="Python">y = divideByTwo(3.14)</pre>
-
+the call's parenthesis.</p>
+<pre>[!java]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java];[/!]</pre>
 
 <p>If you want several parameters, you need to separate them with comas (,)
-both in the declaration and calls.
+both in the declaration and calls.</p>
 
-<pre class="Java">double divide(double x, double y) {
-&nbsp;&nbsp;return x / y;
-}</pre>
-<pre class="Java">double y = divide(3.14 , 1.5);</pre>
+<pre>[!java]double divide(double x, double y) {[/!]
+[!scala]def divide(x:Double, y:Double): Double = {[/!]
+[!python]def divide(x, y):[/!]
+     return x / y[!java];[/!]
+[!java|scala]}[/!]</pre>
+<pre>[!java]double res = divide(3.14 , 1.5);[/!]
+[!scala]val res = divide(3.14 , 1.5)[/!]
+[!python]res = divide(3.14 , 1.5)[/!]</pre>
 
-<pre class="Python">def divide(double x, double y):
-&nbsp;&nbsp;return x / y
-}</pre>
-<pre class="Python">y = divide(3.14 , 1.5)</pre>
+[!java|scala]
+<p>In [!thelang], you can declare several methods of the same name as long as
+they don't have the same <b>signature</b>, that is, the same amount of 
+parameters and the same parameters' types.</p>
 
-
-<p class="Java">In Java, you can declare several methods of the same name as long as they
-don't have the same parameter types and number (they are said to have
-different <b>signature</b>).
-<pre class="Java">int max(int x, int y) {
+<pre>[!java]double max(double x, double y)[/!][!scala]def max(x:Double, int y:Double): Double =[/!] {
+  if (x > y) {
+    return x;
+  }
+  return y;
+}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, int y:Int): Int =[/!] {
   if (x > y) {
     return x;
   }
   return y;
 }
-int max(int x, int y, int z) {
+[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, int y:Int, int z:Int): Int =[/!] {
   if (x > y && x > z) {
     return x;
   }
@@ -58,41 +57,42 @@ int max(int x, int y, int z) {
   return z;
 }</pre>
 
+<p>Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It
+works anyway because a <tt>return</tt> interrupts the method execution. If
+we arrive to the last line of <code>[!java]max(int,int)[/!][!scala]max(Int,Int):Int[/!]</code>,
+we know that <code>x&lt;=y</code> because otherwise, the <tt>return</tt> of line
+2 would have stopped the execution.</p>
+[/!]
+
 <!-- introduce default value for parameters in Python language -->
 
-<p class="Java">Observe that we omitted the <tt>else</tt> branches of each <tt>if</tt>. It
-works anyway because a <tt>return</tt> interrupts the method execution. If
-we arrive to the last line of <code>max(int,int)</code>, we know that
-<code>x&lt;=y</code> because on the other case, the <tt>return</tt> of line
-2 would have stopped the execution.</p>
+<h3>Exercise goal</h3>
+<p>This time, you have to write a <code>
+[!java]move(int stepCount,boolean forward)[/!]
+[!scala]move(stepCount: Int,forward: Boolean)[/!]
+[!python]move(stepCount,forward)[/!]
+</code> method which moves forward by <code>stepCount</code> steps if
+<code>forward</code> is true, and moves back of that amount of steps if the
+boolean is false.</p>
 
-<h3>Exercise goal</h3>This time, you have to write a <code>move(int stepCount,boolean
-forward)</code> method which move forward of <code>stepCount</code> if
-<code>forward</code> is true, and move back of that amount of steps if the
-boolean is false. The buggle will use some methods we did not introduce yet
-to guess its position and orientation in order to determine the amount of
-steps to do and their direction, but it is not relevant here.
+<p>This time, there is only one world but seven buggles, all sharing the same code.
+This code should not be really problematic for you to write, actually.</p>
 
-<p>This time, there is only one world, and seven buggles. But it does not
-change anything for you, since the same code is used for any buggles.</p>
-
-<p>The code of the method to write should not be really problematic for you.</p>
-
-<h2>What's coming next?</h2>
+<h2>What is coming next?</h2>
 <p>You now know the very basics of programming. At least, we introduced all the important 
-concepts, and you should be able to read most code by now. If you want to play safe, you 
+concepts, and you should be able to read most simple codes by now. If you want to play
+safe, you 
 should proceed to the next exercises of this lesson to solidify your knowledge by reusing 
-these concepts in various simple situations. After taking them, you'll master what's called 
-"Tactical programming", meaning that you will master the syntax enough to not have any 
-issue with it, allowing you to focus on the fundamental problems of what you want to solve 
-instead of struggling with syntaxic difficulties. Some of these exercises are even fun to do ;)
+these concepts in various simple situations. After taking them, you will master what is
+called "Tactical programming", meaning that you will master the syntax enough to not 
+have any issue with it, allowing you to focus on the fundamental problems of what you
+want to solve instead of struggling with syntaxic difficulties. 
+Some of these exercises are even fun to do ;)</p>
 
 <p>If you are in a hurry and want more, you can skip these exercises and proceed directly 
 to more interesting challenges. For example, the <i>Labyrinths</i> lesson will teach you 
-about maze escaping algorithms, which are not rocket science but require several improvements 
-to work for any kind of maze. The <i>Lightbot</i> lesson is a little programming game where 
-you control a little robot wanting to light the world. Since it is not programmed in a language 
-but graphically, the first exercises can be used as an introduction activity to what 
-programming means for real beginners, but the last exercises constitute challenges and 
-brain teaser even to professional programmers.</p>   
-
+about maze escaping algorithms, which are not rocket science but require several
+improvements to work for any kind of maze. The <i>Lightbot</i> lesson is a little
+programmer's brain teaser where  you control a little robot wanting to light the world.
+Since it is not programmed in a language but graphically, the first exercises can be used
+as an introduction activity to what programming means for real beginners, but the last exercises may constitute challenges even to professional programmers.</p>   
