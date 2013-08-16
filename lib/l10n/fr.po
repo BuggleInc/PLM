@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-16 22:02+0300\n"
-"PO-Revision-Date: 2013-08-16 22:11+0200\n"
+"POT-Creation-Date: 2013-08-16 22:31+0300\n"
+"PO-Revision-Date: 2013-08-16 23:03+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2353,6 +2353,7 @@ msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:53
 #: src/lessons/welcome/loopdowhile/Poucet.html:33
 #: src/lessons/welcome/methods/args/MethodsArgs.html:65
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:39
 #: src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193
 #: src/lessons/welcome/bdr/BDR2.html:129
 msgid "[/!]"
@@ -3221,6 +3222,7 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:28
 #: src/lessons/welcome/variables/Variables.html:40
 #: src/lessons/welcome/methods/args/MethodsArgs.html:34
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:34
 #: src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3
 msgid "[!java|scala]"
 msgstr "[!java|scala]"
@@ -5231,7 +5233,10 @@ msgid ""
 "Your buggle decided to flower a bit the pot it lives in. You have to help it "
 "reproducing the drawing of its dreams (check the \"Objective\" tab to see "
 "it)."
-msgstr "Votre buggle a décidé de fleurir un peu le pot de fleur dans lequel elle vit. Vous devez l'aider à reproduire le motif dont elle rêve (vous pouvez le voir dans l'onglet «Objectif»)."
+msgstr ""
+"Votre buggle a décidé de fleurir un peu le pot de fleur dans lequel elle "
+"vit. Vous devez l'aider à reproduire le motif dont elle rêve (vous pouvez le "
+"voir dans l'onglet «Objectif»)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:6
@@ -5242,7 +5247,13 @@ msgid ""
 "your code remains short and easy to read. A method to draw one flower of the "
 "color passed in parameter sounds like a good start, but it is probably not "
 "enough."
-msgstr "Pour cela, vous devez écrire une méthode nommée <code>growFlower()</code> («fait pousser les fleurs» en anglais). Cette méthode ne prend aucun paramètre et ne renvoie aucun résultat. Comme le motif est un peu complexe, il faut que vous le décomposiez en sous-motifs pour que votre code reste simple et agréable à lire. Une méthode dessinant une fleur est un bon début, même si ce n'est probablement pas assez."
+msgstr ""
+"Pour cela, vous devez écrire une méthode nommée <code>growFlower()</code> "
+"(«fait pousser les fleurs» en anglais). Cette méthode ne prend aucun "
+"paramètre et ne renvoie aucun résultat. Comme le motif est un peu complexe, "
+"il faut que vous le décomposiez en sous-motifs pour que votre code reste "
+"simple et agréable à lire. Une méthode dessinant une fleur est un bon début, "
+"même si ce n'est probablement pas assez."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:12
@@ -5252,7 +5263,8 @@ msgid ""
 "naturally describes a particular color.[/!]"
 msgstr ""
 "Pour information, ce dessin utilise les cinq couleurs ci-dessous. \n"
-"[!java|scala]Le type de données de ces constantes est <code>Color</code>, qui décrit naturellement une couleur donnée[/!]"
+"[!java|scala]Le type de données de ces constantes est <code>Color</code>, "
+"qui décrit naturellement une couleur donnée[/!]"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/methods/flowerpot/FlowerPot.html:17
@@ -5295,12 +5307,16 @@ msgid ""
 "Whao! That's not a little pot anymore! That's a huge large flower display "
 "case! Your buggle can't help but starts flowering this gorgeous place. You "
 "should help it to prevent that it bumps into a wall..."
-msgstr "Whaou! Ce n'est plus un petit pot de fleurs, c'est carrément une énorme jardinière! Votre buggle est déjà partie la fleurir, et vous devriez aller l'aider pour éviter qu'elle ne se cogne à une bordure..."
+msgstr ""
+"Whaou! Ce n'est plus un petit pot de fleurs, c'est carrément une énorme "
+"jardinière! Votre buggle est déjà partie la fleurir, et vous devriez aller "
+"l'aider pour éviter qu'elle ne se cogne à une bordure..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/flowerpot/FlowerCase.html:7
 msgid "PS: the newly used color is <code>Color.BLUE</code>."
-msgstr "PS: La nouvelle couleur utilisée (pour le bleu) est <code>Color.BLUE</code>"
+msgstr ""
+"PS: La nouvelle couleur utilisée (pour le bleu) est <code>Color.BLUE</code>"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:1
@@ -5324,8 +5340,8 @@ msgstr ""
 #. type: Content of: <p><pre>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:14
 #, no-wrap
-msgid "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># parameter c is of type Color</span>"
-msgstr "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># le paramètre c est de type Color</span>"
+msgid "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># parameter c is of type Color</span>[/!]"
+msgstr "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># le paramètre c est de type Color</span>[/!]"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:16
@@ -5381,11 +5397,16 @@ msgstr ""
 "position pour dessiner le prochain V directement."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:34
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:35
 msgid ""
-"Your turn. I'm sure you can imagine the other methods you need to keep your "
-"code simple and pleasant to read."
-msgstr "À vous de jouer. Je suis sûr que vous parviendrez à trouver d'autres méthodes à ajouter pour décomposer ce problème et faire en sorte que votre code reste simple et agréable à lire."
+"Your turn now. I'm sure you can imagine the other methods you need to keep "
+"your code simple and pleasant to read.  Complete the run which prototype is "
+"already given. It will be called automatically (once).  [!java]the public "
+"keyword means more or less that anybody can call this method, which is good "
+"because the JLM infrastructure calls it directly.[/!]"
+msgstr ""
+"À vous de jouer. Je suis sûr que vous parviendrez à trouver d'autres méthodes à ajouter pour décomposer ce problème et faire en sorte que votre code reste simple et agréable à lire. Complétez la méthode <code>run()</code> qui sera appelée automatiquement une fois. \n"
+"[!java]Le mot-clé <code>public</code> signifie plus ou moins que tout le monde a le droit d'invoquer cette méthode. Ça tombe bien, l'infrastructure de la JLM va l'invoquer directement.[/!]"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:1
@@ -14328,64 +14349,6 @@ msgstr ""
 "algorithme écrit simplement et naturellement se comporte bien en pratique. "
 "Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
 "l'algorithme simple et faux du premier exercice !"
-
-#~ msgid "Methodically drawing (in color)"
-#~ msgstr "Dessiner avec méthode (en couleur)"
-
-#~ msgid "Color.yellow"
-#~ msgstr "Color.yellow (jaune)"
-
-#~ msgid "Color.blue"
-#~ msgstr "Color.blue (bleu)"
-
-#~ msgid "Color.green"
-#~ msgstr "Color.green (vert)"
-
-#~ msgid "Your turn. Your code should not be longer than 4 lines..."
-#~ msgstr ""
-#~ "À vous de jouer. Votre code ne devrait pas prendre plus de quatre "
-#~ "lignes..."
-
-#~ msgid "Methodically drawing in color (only bigger)"
-#~ msgstr "Dessiner en couleur avec méthode (en plus grand)"
-
-#~ msgid ""
-#~ "But you want to keep your main<code>run()</code> as simple as possible. "
-#~ "For that, define new methods to deal simply with the repetitions in the "
-#~ "pattern. For example, a method <code>makePattern()</code> achieving the "
-#~ "pattern of previous example seems to be a good idea (but this may not be "
-#~ "enough)."
-#~ msgstr ""
-#~ "Mais pour que votre méthode principale <code>run()</code> reste aussi "
-#~ "simple que possible, il faudra définir de nouvelles méthodes afin de "
-#~ "gérer simplement les répétions du motif. Par exemple, une méthode "
-#~ "<code>makePattern()</code> réalisant le motif de l'exercice précédent "
-#~ "semble être un bon départ (mais ce n'est sans doute pas suffisant)."
-
-#~ msgid ""
-#~ "But you want to keep your main code as simple as possible. For that, "
-#~ "define new methods to deal simply with the repetitions in the pattern. "
-#~ "For example, a method <code>makePattern()</code> achieving the pattern of "
-#~ "previous example seems to be a good idea (but this may not be enough)."
-#~ msgstr ""
-#~ "Mais pour que votre méthode principale reste aussi simple que possible, "
-#~ "il faudra définir de nouvelles méthodes afin de gérer simplement les "
-#~ "répétions du motif. Par exemple, une méthode <code>makePattern()</code> "
-#~ "réalisant le motif de l'exercice précédent semble être un bon départ "
-#~ "(mais ce n'est sans doute pas suffisant)."
-
-#~ msgid ""
-#~ "Why don't you give it a shot? The <code>run()</code> method shouldn't "
-#~ "take more than 2 lines (included in a for loop)"
-#~ msgstr ""
-#~ "À vous de jouer. La méthode <code>run()</code> ne devrait pas prendre "
-#~ "plus de 2 lignes, incluses dans une boucle for..."
-
-#~ msgid "Drawing bigger and bigger, always in color"
-#~ msgstr "Dessiner de plus en plus grand, toujours en couleur"
-
-#~ msgid "(and methods to write)"
-#~ msgstr "(et des méthodes à écrire)"
 
 #~ msgid "Creating a new JLM world"
 #~ msgstr "Créer un nouveau monde JLM (\"World\")"

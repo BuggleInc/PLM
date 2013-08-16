@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-16 22:02+0300\n"
+"POT-Creation-Date: 2013-08-16 23:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1856,7 +1856,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129
 msgid "[/!]"
 msgstr ""
 
@@ -2437,7 +2437,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:28 src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/methods/args/MethodsArgs.html:34 src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3
+#: src/lessons/welcome/variables/Variables.html:28 src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/methods/args/MethodsArgs.html:34 src/lessons/welcome/methods/picture/MethodsPicture.html:34 src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3
 msgid "[!java|scala]"
 msgstr ""
 
@@ -3929,7 +3929,7 @@ msgstr ""
 #, no-wrap
 msgid ""
 "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span "
-"class=\"comment\"># parameter c is of type Color</span>"
+"class=\"comment\"># parameter c is of type Color</span>[/!]"
 msgstr ""
 
 #. type: Content of: <p><p>
@@ -3977,10 +3977,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:34
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:35
 msgid ""
-"Your turn. I'm sure you can imagine the other methods you need to keep your "
-"code simple and pleasant to read."
+"Your turn now. I'm sure you can imagine the other methods you need to keep "
+"your code simple and pleasant to read.  Complete the run which prototype is "
+"already given. It will be called automatically (once).  [!java]the public "
+"keyword means more or less that anybody can call this method, which is good "
+"because the JLM infrastructure calls it directly.[/!]"
 msgstr ""
 
 #. type: Content of: <h2>

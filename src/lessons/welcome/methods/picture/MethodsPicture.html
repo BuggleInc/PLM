@@ -11,7 +11,7 @@ sub-steps, and write a specific method for each sub-step.</p>
 parts depicting a sort of V using a different color. A possible
 decomposition is to write a method in charge of drawing a V of the specified
 color from the current position. Its prototype can be: 
-<pre>[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># parameter c is of type Color</span></pre>
+<pre>[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># parameter c is of type Color</span>[/!]</pre>
 
 <p>The <code>Color</code> data type naturally describes a particular
 color. Your code should probably call <code>makeV</code> with the following arguments 
@@ -31,4 +31,9 @@ brush position.</p>
 <p>It may be wise to write the <code>makeV()</code> so that it places directly
 the buggle in position for the next V.</p>
  
-<p>Your turn. I'm sure you can imagine the other methods you need to keep your code simple and pleasant to read.</p>
+[!java|scala]
+<p>Your turn now. I'm sure you can imagine the other methods you need to keep your code simple and pleasant to read. 
+Complete the run which prototype is already given. It will be called automatically (once). 
+[!java]the public keyword means more or less that anybody can call this method, which is good because the JLM 
+infrastructure calls it directly.[/!] </p>
+[/!]

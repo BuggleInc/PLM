@@ -40,5 +40,4 @@ class ScalaPoucetEntity extends jlm.universe.bugglequest.SimpleBuggle {
 		forward();
 		/* END SOLUTION */
 	}
-	/* END TEMPLATE */
 }

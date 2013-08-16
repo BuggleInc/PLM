@@ -5,7 +5,13 @@ import java.awt.Color;
 public class MethodsPictureEntity extends jlm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
+	public void run() {
+		/* BEGIN SOLUTION */
+		for (int i=0; i<3;i++) {
+			makeLine(3);
+			nextLine();
+		}
+	}
 	void mark() {
 		brushDown();
 		brushUp();
@@ -48,14 +54,7 @@ public class MethodsPictureEntity extends jlm.universe.bugglequest.SimpleBuggle 
 		left();
 		forward(5);
 		right();	
+		/* END SOLUTION */
 	}
-
-	public void run() {
-		for (int i=0; i<3;i++) {
-			makeLine(3);
-			nextLine();
-		}
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 }

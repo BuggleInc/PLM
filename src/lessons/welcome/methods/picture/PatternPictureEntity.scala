@@ -4,10 +4,10 @@ import java.awt.Color;
 
 import jlm.universe.bugglequest.SimpleBuggle;
 
-public class PatternPictureEntity extends SimpleBuggle {
+class ScalaPatternPictureEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	public void run() {
+	def run() {
 		/* BEGIN SOLUTION */
 		bigSquare();
 		forward(4);
@@ -22,12 +22,12 @@ public class PatternPictureEntity extends SimpleBuggle {
 		forward(4);
 		bigSquare();
 	}
-	void mark() {
+	def mark() {
 		brushDown();
 		brushUp();
 	}
 
-	void squareA(Color c) {
+	def squareA(c:Color) {
 		setBrushColor(c);
 
 		forward();
@@ -45,7 +45,7 @@ public class PatternPictureEntity extends SimpleBuggle {
 		left();
 	}
 
-	void squareB(Color c) {
+	def squareB(c: Color) {
 		setBrushColor(c);
 		mark();
 
@@ -63,7 +63,7 @@ public class PatternPictureEntity extends SimpleBuggle {
 		left();
 	}
 
-	void bigSquare() {
+	def bigSquare() {
 		squareA(Color.RED); 
 		forward(2);
 		squareB(Color.BLUE);
@@ -79,7 +79,7 @@ public class PatternPictureEntity extends SimpleBuggle {
 		left();
 		backward(2);
 		right();
-		/* END SOLUTION */
+	/* END SOLUTION */
 	}
 	/* END TEMPLATE */
 }

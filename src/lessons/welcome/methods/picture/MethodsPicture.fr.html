@@ -13,7 +13,7 @@ composé de quatre formes en sorte de V de couleurs différentes, et à des
 positions différentes.  Un découpage possible est d'écrire une fonction
 chargée de faire un V de la couleur indiquée à partir de la position
 courante. Son prototype peut être : 
-<pre>[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># le paramètre c est de type Color</span></pre>
+<pre>[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># le paramètre c est de type Color</span>[/!]</pre>
 
 <p>Le type de données <code>Color</code> représente naturellement une couleur
 en particulier.  Votre code invoquera sans doute <code>makeV</code> avec les
@@ -33,6 +33,12 @@ changer la couleur du pinceau, ainsi que <code>brushUp()</code> et
 <p>Il faudrait également que la méthode <code>makeV()</code> place la buggle en
 position pour dessiner le prochain V directement.</p>
  
+[!java|scala]
 <p>À vous de jouer. Je suis sûr que vous parviendrez à trouver d'autres
 méthodes à ajouter pour décomposer ce problème et faire en sorte que votre
-code reste simple et agréable à lire.</p>
+code reste simple et agréable à lire. Complétez la méthode
+<code>run()</code> qui sera appelée automatiquement une fois.
+[!java]Le mot-clé <code>public</code> signifie plus ou moins que tout le
+monde a le droit d'invoquer cette méthode. Ça tombe bien, l'infrastructure
+de la JLM va l'invoquer directement.[/!] </p>
+[/!]

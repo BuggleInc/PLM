@@ -3,7 +3,7 @@ package lessons.welcome.methods.picture;
 import java.awt.Color;
 
 import jlm.universe.bugglequest.SimpleBuggle;
-class ScalaMethodsPictureEntity extends SimpleBuggle {
+class ScalaPictureMonoEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */

@@ -4,22 +4,22 @@ import java.awt.Color;
 
 import jlm.universe.bugglequest.SimpleBuggle;
 
-public class MethodsPictureLargeEntity extends SimpleBuggle {
+class ScalaMethodsPictureLargeEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	public void run() {
+	def run() {
 		/* BEGIN SOLUTION */
-		for (int i=0; i<9; i++) {
+		for (i <- 1 to 9) {
 			makeLine(9);
 			nextLine();
 		}
 	}
-	void mark() {
+	def mark() {
 		brushDown();
 		brushUp();
 	}
 
-	void makeV(Color c) {
+	def makeV(c:Color) {
 		setBrushColor(c);
 		forward();
 		mark();
@@ -38,7 +38,7 @@ public class MethodsPictureLargeEntity extends SimpleBuggle {
 		left();
 	}
 
-	void makePattern() {
+	def makePattern() {
 		makeV(Color.YELLOW);
 		makeV(Color.RED);
 		makeV(Color.BLUE);
@@ -46,13 +46,13 @@ public class MethodsPictureLargeEntity extends SimpleBuggle {
 		forward(5);
 	}
 
-	void makeLine(int count){
-		for (int i=0; i<count;i++)
+	def makeLine(count: Int){
+		for (i<- 1 to count)
 			makePattern();
 		backward(count*5);
 	}
 
-	void nextLine() {
+	def nextLine() {
 		left();
 		forward(5);
 		right();	
