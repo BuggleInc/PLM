@@ -149,19 +149,18 @@ public class ExoTest {
 	}
 	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testScalaEntity() {
+		if (!exo.getProgLanguages().contains(Game.SCALA)) 
+			fail("Exercise "+exo.getClass().getName()+" does not support scala");
+		
 		Game.getInstance().setProgramingLanguage(Game.SCALA);
-		if (Game.getProgrammingLanguage() != Game.SCALA)
-			throw new RuntimeException("DAFUQ?! Asked for SCALA and got "+Game.getProgrammingLanguage());
 		testCorrectionEntity();
 	}
 	
 	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntity() {
-		if (!exo.getProgLanguages().contains(Game.PYTHON)) {
-//			System.out.println("Exercise "+exo.getClass().getName()+" does not support python");
-//			return;
+		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
 			fail("Exercise "+exo.getClass().getName()+" does not support python");
-		}
+	
 		Game.getInstance().setProgramingLanguage(Game.PYTHON);
 		testCorrectionEntity();
 	}
