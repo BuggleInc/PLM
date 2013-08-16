@@ -33,6 +33,17 @@ public class RedTicket extends BatExercise {
 				"		return 1\n"+
 				"	else:\n"+
 				"		return 0\n");
+		templateScala("redTicket",new String[]{"Int","Int","Int"}, 
+				"def redTicket(a:Int, b:Int, c:Int):Int = {\n",
+				"	if (a == b && b == c && c == 2)\n"+
+				"		return 10\n"+
+				"	else if (a == b && b == c)\n"+
+				"		return 5\n"+
+				"	else if (b != a && c != a)\n"+
+				"		return 1\n"+
+				"	else\n"+
+				"		return 0\n"+
+				"}");
 		setup(myWorld);
 	}
 

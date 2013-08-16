@@ -21,6 +21,10 @@ public class LastDigit extends BatExercise {
 		templatePython("lastDigit", 
 				"def lastDigit(a, b):\n",
 				"   return a%10 == b%10\n");
+		templateScala("lastDigit", new String[] {"Int", "Int"},
+				"def lastDigit(a:Int, b:Int):Boolean = {\n",
+				"   return a%10 == b%10\n"+
+				"}");
 		setup(myWorld);
 	}
 

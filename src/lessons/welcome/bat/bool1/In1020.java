@@ -25,6 +25,10 @@ public class In1020 extends BatExercise {
 		templatePython("in1020", 
 				"def in1020(a, b):\n",
 				"   return (a>9 and a<21) or (b>9 and b<21)");
+		templateScala("in1020", new String[] {"Int","Int"},
+				"def in1020(a:Int, b:Int):Boolean = {\n",
+				"   return (a>9 && a<21) || (b>9 && b<21)\n"+
+				"}");
 		setup(myWorld);
 	}
 

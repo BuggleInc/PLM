@@ -19,6 +19,11 @@ public class MonkeyTrouble extends BatExercise {
 		templatePython("monkeyTrouble", 
 				"def monkeyTrouble(aSmile, bSmile):\n",
 				"   return (aSmile and bSmile) or (not aSmile and not bSmile)\n");
+		templateScala("monkeyTrouble", new String[] {"Boolean","Boolean"}, 
+				"def monkeyTrouble(aSmile:Boolean, bSmile:Boolean): Boolean = {\n",
+				"   return ((aSmile && bSmile) || (!aSmile && !bSmile))\n"
+		  	  + "}");
+
 		setup(myWorld);
 	}
 

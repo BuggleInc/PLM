@@ -22,6 +22,10 @@ public class IcyHot extends BatExercise {
 		templatePython("icyHot", 
 				"def icyHot(temp1, temp2):\n",
 				"   return temp1<0 and temp2>100 or temp1>100 and temp2<0\n");
+		templateScala("icyHot",new String[]{"Int","Int"}, 
+				"def icyHot(temp1:Int, temp2:Int):Boolean = {\n",
+				"   return temp1<0 && temp2>100 || temp1>100 && temp2<0\n"+
+				"}");
 		setup(myWorld);
 	}
 

@@ -27,6 +27,10 @@ public class InOrder extends BatExercise {
 		templatePython("inOrder", 
 				"def inOrder(a, b, c, bOk):\n",
 				"		return (bOk or (b > a)) and (c > b)\n");
+		templateScala("inOrder",new String[] {"Int","Int","Int","Boolean"}, 
+				"def inOrder(a:Int, b:Int, c:Int, bOk:Boolean):Boolean = {\n",
+				"		return (bOk || (b > a)) && (c > b)\n"+
+				"}");
 		setup(myWorld);
 	}
 

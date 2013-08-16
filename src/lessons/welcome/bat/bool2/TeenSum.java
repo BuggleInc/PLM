@@ -34,6 +34,13 @@ public class TeenSum extends BatExercise {
 				"		return 19\n"+
 				"	else:\n"+
 				"		return a+b\n");
+		templateScala("teenSum", new String[]{"Int","Int"},
+				"def teenSum(a:Int, b:Int):Int = {\n",
+				"	if ((a >= 13 && a <= 19) || (b >= 13 && b <= 19))\n"+
+				"		return 19\n"+
+				"	else\n"+
+				"		return a+b\n"+
+				"}");
 		setup(myWorld);
 	}
 

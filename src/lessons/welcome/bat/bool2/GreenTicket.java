@@ -32,6 +32,15 @@ public class GreenTicket extends BatExercise {
 				"		return 10\n"+
 				"	else:\n"+
 				"		return 0\n");
+		templateScala("greenTicket",new String[] {"Int","Int","Int"}, 
+				"def greenTicket(a:Int, b:Int, c:Int):Int = {\n",
+				"	if (a == b && b == c)\n"+
+				"		return 20\n"+
+				"	else if (a == b || b == c || a == c)\n"+
+				"		return 10\n"+
+				"	else\n"+
+				"		return 0\n"+
+				"}");
 		setup(myWorld);
 	}
 

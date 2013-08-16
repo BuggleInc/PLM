@@ -33,6 +33,15 @@ public class TeaParty extends BatExercise {
 				"		return 2\n"+
 				"	else:\n" +
 				"		return 1\n");
+		templateScala("teaParty", new String[]{"Int","Int"}, 
+				"def teaParty(tea:Int, candy:Int): Int = {\n",
+				"	if (tea < 5 || candy < 5)\n"+
+				"		return 0\n"+
+				"	else if (tea >= 2*candy || candy >= 2*tea)\n"+ 
+				"		return 2\n"+
+				"	else\n" +
+				"		return 1\n"+
+				"}");
 		setup(myWorld);
 	}
 

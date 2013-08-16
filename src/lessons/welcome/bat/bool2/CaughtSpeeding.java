@@ -32,6 +32,15 @@ public class CaughtSpeeding extends BatExercise {
 				"		return 1\n"+
 				"	else:\n"+
 				"		return 2\n");
+		templateScala("caughtSpeeding",new String[] {"Int","Boolean"}, 
+				"def caughtSpeeding(speed:Int, isBirthday:Boolean):Int = {\n",
+				"	if ((isBirthday && speed <= 65) || (speed <= 60))\n"+
+				"		return 0\n"+
+				"	else if ((isBirthday && speed <= 85) || (speed <= 80))\n"+
+				"		return 1\n"+
+				"	else\n"+
+				"		return 2\n"+
+				"}");
 		setup(myWorld);
 	}
 

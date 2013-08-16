@@ -31,6 +31,12 @@ public class PosNeg extends BatExercise {
 				"		if (negative):\n"+
 				"			return a<0 and b<0;\n"+
 				"		return (a<0 and b>0) or (a>0 and b<0)");
+		templateScala("posNeg", new String[] { "Int","Int","Boolean"},
+				"def posNeg(a:Int, b:Int, negative:Boolean):Boolean = {\n",
+				"	if (negative)\n"
+			  + "      return a<0&&b<0;\n"
+			  + "	return (a<0&&b>0) || (a>0&&b<0);\n"
+			  + "}");
 		setup(myWorld);
 	}
 

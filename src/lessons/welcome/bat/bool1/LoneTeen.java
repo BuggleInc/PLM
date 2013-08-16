@@ -31,6 +31,12 @@ public class LoneTeen extends BatExercise {
 				"	teenA = a>12 and a<20\n"+
 				"	teenB = b>12 and b<20\n"+
 				"	return  (teenA and not teenB) or (teenB and not teenA)\n");
+		templateScala("loneTeen",new String[] {"Int","Int"}, 
+				"def loneTeen(a:Int, b:Int):Boolean = {\n",
+				"	val teenA = a>12 && a<20\n"+
+				"	val teenB = b>12 && b<20\n"+
+				"	return  (teenA && !teenB) || (teenB && !teenA)\n"+
+				"}");
 		setup(myWorld);
 	}
 

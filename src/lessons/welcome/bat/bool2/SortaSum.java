@@ -28,6 +28,14 @@ public class SortaSum extends BatExercise {
 				"		return 20\n"+
 				"	else:\n"+
 				"		return sum\n");
+		templateScala("sortaSum", new String[]{"Int","Int"},
+				"def sortaSum(a:Int, b:Int):Int = {\n",
+				"	val sum = a+b\n"+
+				"	if (sum >= 10 && sum <= 19)\n"+
+				"		return 20\n"+
+				"	else\n"+
+				"		return sum\n"+
+				"}");
 		setup(myWorld);
 	}
 

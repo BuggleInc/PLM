@@ -37,6 +37,21 @@ public class MaxMod5 extends BatExercise {
 				"			return a\n"+
 				"		else:\n"+
 				"			return b");  
+		templateScala("maxMod5",new String[]{"Int","Int"}, 
+				"def maxMod5(a:Int, b:Int):Int = {\n",
+				"	if (a == b)\n"+
+				"		return 0\n"+
+				"	else if (a > b) {\n"+
+				"		if (a % 5 == b % 5)\n"+
+				"			return b\n"+
+				"		else\n"+
+				"			return a\n"+
+				"	} else\n"+
+				"		if (a % 5 == b % 5)\n"+
+				"			return a\n"+
+				"		else\n"+
+				"			return b\n"+
+				"}");  
 
 		setup(myWorld);
 	}

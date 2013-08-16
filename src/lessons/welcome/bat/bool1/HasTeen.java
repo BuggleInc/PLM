@@ -28,9 +28,9 @@ public class HasTeen extends BatExercise {
 		templatePython("hasTeen", 
 				"def hasTeen(a, b, c):\n",
 				"   return (a>12 and a<20) or (b>12 and b<20) or (c>12 and c<20)\n");
-		templateScala("hasTeen", new String[] {"Integer"}, 
+		templateScala("hasTeen", new String[] {"Int","Int","Int"}, 
 				"def hasTeen(a:Int, b:Int, c:Int): Boolean = {\n",
-				"   return (a>12 and a<20) or (b>12 and b<20) or (c>12 and c<20)\n"
+				"   return (a>12 && a<20) || (b>12 && b<20) || (c>12 && c<20)\n"
 		  	  + "}");
 
 		setup(myWorld);

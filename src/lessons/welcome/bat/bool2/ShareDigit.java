@@ -25,6 +25,10 @@ public class ShareDigit extends BatExercise {
 		templatePython("shareDigit", 
 				"def shareDigit(a, b):\n",
 				"   return (a/10 == b/10 or a/10 == b%10 or a%10 == b/10 or a%10 == b%10)");
+		templateScala("shareDigit",new String[]{"Int","Int"}, 
+				"def shareDigit(a:Int, b:Int):Boolean = {\n",
+				"   return (a/10 == b/10 || a/10 == b%10 || a%10 == b/10 || a%10 == b%10)\n"+
+				"}");
 		setup(myWorld);
 	}
 

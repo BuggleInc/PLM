@@ -21,6 +21,10 @@ public class AnswerCell extends BatExercise {
 		templatePython("answerCell", 
 				"def answerCell(isMorning, isMom, isAsleep):\n",
 				"   return (not isAsleep) and not (isMorning and not isMom)");
+		templateScala("answerCell",new String[] {"Boolean","Boolean","Boolean"}, 
+				"def answerCell(isMorning:Boolean, isMom:Boolean, isAsleep:Boolean):Boolean = {\n",
+				"   return (! isAsleep) && !(isMorning && !isMom)\n"+
+				"}");
 		setup(myWorld);
 	}
 

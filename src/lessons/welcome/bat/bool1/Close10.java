@@ -29,6 +29,15 @@ public class Close10 extends BatExercise {
 				"      return a\n"+
 				"   else:\n"+
 				"      return b\n");
+		templateScala("close10",new String[] {"Int","Int"},
+				"def close10(a:Int, b:Int): Int = {\n",
+				"   if (Math.abs(10-a) == Math.abs(10-b))\n"+
+				"      return 0\n"+
+				"   else if (Math.abs(10-a) < Math.abs(10-b))\n"+
+				"      return a\n"+
+				"   else\n"+
+				"      return b\n"+
+				"}");
 		setup(myWorld);
 	}
 

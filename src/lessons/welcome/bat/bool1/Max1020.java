@@ -30,6 +30,16 @@ public class Max1020 extends BatExercise {
 				"	if (B<21 and B>9):\n"+
 				"		return B\n"+
 				"	return 0\n");
+		templateScala("max1020",new String[] {"Int","Int"}, 
+				"def max1020(a:Int, b:Int):Int = {\n",
+				"	val A = Math.max(a,b)\n"+
+				"	val B = Math.min(a,b)\n"+
+				"	if (A<21 && A>9)\n"+
+				"		return A\n"+
+				"	if (B<21 && B>9)\n"+
+				"		return B\n"+
+				"	return 0\n"+
+				"}");
 		setup(myWorld);
 	}
 

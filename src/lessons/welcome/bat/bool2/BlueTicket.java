@@ -35,6 +35,18 @@ public class BlueTicket extends BatExercise {
 				"		return 5\n"+
 				"	else:\n"+
 				"		return 0\n");
+		templateScala("blueTicket",new String[]{"Int","Int","Int"}, 
+				"def blueTicket(a:Int, b:Int, c:Int):Int = {\n",
+				"	val ab = a + b\n"+
+				"	val ac = a + c\n"+
+				"	val bc = b + c\n"+
+				"	if (ab == 10 || ac == 10 || bc == 10)\n"+
+				"		return 10\n"+
+				"	else if (ab == (bc + 10) || ab == (ac + 10))\n"+
+				"		return 5\n"+
+				"	else\n"+
+				"		return 0\n"+
+				"}");
 		setup(myWorld);
 	}
 

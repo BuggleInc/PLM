@@ -31,6 +31,13 @@ public class LastDigit2 extends BatExercise {
 				"	db = b % 10\n"+
 				"	dc = c % 10\n"+
 				"	return da == db or da == dc or dc == db\n");
+		templateScala("lastDigit",new String[]{"Int","Int","Int"}, 
+				"def lastDigit(a:Int, b:Int, c:Int):Boolean = {\n",
+				"	val da = a % 10\n"+
+				"	val db = b % 10\n"+
+				"	val dc = c % 10\n"+
+				"	return da == db || da == dc || dc == db\n"+
+				"}");
 		setup(myWorld);
 	}
 

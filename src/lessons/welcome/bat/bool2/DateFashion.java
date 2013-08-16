@@ -32,6 +32,15 @@ public class DateFashion extends BatExercise {
 				"		return 2\n"+
 				"	else:\n"+
 				"		return 1\n");
+		templateScala("dateFashion",new String[]{"Int","Int"}, 
+				"def dateFashion(you:Int, date:Int):Int = {\n",
+				"	if (you <= 2 || date <= 2) \n"+
+				"		return 0\n"+
+				"	else if (you >= 8 || date >= 8)\n"+
+				"		return 2\n"+
+				"	else\n"+
+				"		return 1\n"+
+				"}");
 		setup(myWorld);
 	}
 

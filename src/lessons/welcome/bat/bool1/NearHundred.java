@@ -26,6 +26,10 @@ public class NearHundred extends BatExercise {
 		templatePython("nearHundred", 
 				"def nearHundred(n):\n",
 				"   return (90<=n and n<=110) or (190<=n and n<=210)\n");
+		templateScala("nearHundred",new String[]{"Int"},
+				"def nearHundred(n:Int): Boolean = {\n",
+				"  return (90<=n && n<=110)||(190<=n&&n<=210);\n"
+			  + "}");
 		setup(myWorld);
 	}
 

@@ -33,6 +33,16 @@ public class WithoutDoubles extends BatExercise {
 				"			return die1 + 1 + die2\n"+
 				"	else:\n"+
 				"		return die1 + die2\n");
+		templateScala("withoutDoubles", new String[]{"Int","Int","Boolean"},
+				"def withoutDoubles(die1:Int, die2:Int, noDoubles:Boolean):Int = {\n",
+				"	if (noDoubles && (die1 == die2)) {\n"+
+				"		if (die1 == 6)\n"+
+				"			return 1 + die2\n"+
+				"		else\n"+
+				"			return die1 + 1 + die2\n"+
+				"	} else\n"+
+				"		return die1 + die2\n"+
+				"}");
 		setup(myWorld);
 	}
 

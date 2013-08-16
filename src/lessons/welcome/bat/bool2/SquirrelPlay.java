@@ -28,6 +28,10 @@ public class SquirrelPlay extends BatExercise {
 		templatePython("squirrelPlay", 
 				"def squirrelPlay(temp, isSummer):\n",
 				"   return (temp >= 60 and ((isSummer and temp <= 100) or temp <= 90))");
+		templateScala("squirrelPlay",new String[]{"Int","Boolean"}, 
+				"def squirrelPlay(temp:Int, isSummer:Boolean):Boolean = {\n",
+				"   return (temp >= 60 && ((isSummer && temp <= 100) || temp <= 90))\n"+
+				"}");
 		setup(myWorld);
 	}
 

@@ -25,6 +25,10 @@ public class ParotTrouble extends BatExercise {
 		templatePython("parotTrouble", 
 				"def parotTrouble(talking, hour):\n",
 				"   return (talking and (hour<7 or hour>20))\n");
+		templateScala("parotTrouble", new String[] {"Boolean","Int"},
+				"def parotTrouble(talking:Boolean, hour:Int):Boolean = {\n",
+				"  return (talking && (hour<7||hour>20))\n"
+			  + "}");
 		setup(myWorld);
 	}
 
