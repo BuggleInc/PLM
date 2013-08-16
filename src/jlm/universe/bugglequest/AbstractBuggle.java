@@ -113,6 +113,8 @@ public abstract class AbstractBuggle extends Entity {
 	public void setBrushColor(Color c) {
 		if (c != null)
 			brushColor = c;
+		if (brushDown) // mark the ground
+			brushDown();
 	}
 
 	public Color getColor() {
