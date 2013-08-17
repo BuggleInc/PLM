@@ -59,7 +59,7 @@ public abstract class Lecture {
 		name = n;
 	}
 	public String getName() {
-		return this.name;
+		return JlmHtmlEditorKit.filterHTML(name, false);
 	}
 
 	public Lesson getLesson() {
