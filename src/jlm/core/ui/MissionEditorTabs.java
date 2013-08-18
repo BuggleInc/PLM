@@ -1,6 +1,5 @@
 package jlm.core.ui;
 
-import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JComponent;
@@ -19,12 +18,9 @@ import jlm.core.model.lesson.Exercise;
 import jlm.core.model.lesson.Lecture;
 import jlm.core.model.lesson.Lesson;
 import jlm.core.model.session.SourceFile;
+import jlm.core.utils.JlmSyntaxPane;
 import jlm.universe.IEntityStackListener;
 import jlm.universe.World;
-import jsyntaxpane.DefaultSyntaxKit;
-import jsyntaxpane.SyntaxStyle;
-import jsyntaxpane.SyntaxStyles;
-import jsyntaxpane.TokenType;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -95,7 +91,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.addTab(i18n.tr("Mission"), null, new JScrollPane(missionTab),
 				i18n.tr("Description of the work to do"));
 		
-		initJSyntaxPane();
+		JlmSyntaxPane.initKits();
 
 		/* Register to game engine */
 		this.game = Game.getInstance();
@@ -183,26 +179,4 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	}
 	@Override
 	public void selectedWorldWasUpdated() { /* don't care */ }
-
-	/* setup methods */
-	private void initJSyntaxPane() {
-		DefaultSyntaxKit.initKit();
-        //Configuration conf = DefaultSyntaxKit.getConfig(DefaultSyntaxKit.class);
-
-
-		//TODO: can be configured through a property file in the new version of jsyntaxpane
-		SyntaxStyles st = SyntaxStyles.getInstance();
-		st.put(TokenType.OPERATOR, new SyntaxStyle(Color.BLACK, false, false)); // black
-		st.put(TokenType.KEYWORD, new SyntaxStyle(new Color(0x8d0056), true, false)); // violet,
-																						// bold
-		st.put(TokenType.TYPE, new SyntaxStyle(Color.BLACK, false, false)); // black
-		st.put(TokenType.COMMENT, new SyntaxStyle(new Color(0x29825e), false, false)); // dark
-																						// green
-		st.put(TokenType.NUMBER, new SyntaxStyle(Color.BLACK, false, false)); // black
-		// st.add(TokenType.REGEX, new SyntaxStyle(new Color(0xcc6600), false, false)); // not used in Java
-		// st.add(TokenType.IDENT, new SyntaxStyle(new Color(0x1300c5), false, false)); // dark blue
-		st.put(TokenType.IDENTIFIER, new SyntaxStyle(Color.black, false, false)); // black
-		st.put(TokenType.STRING, new SyntaxStyle(new Color(0x3600ff), false, false)); // blue
-		st.put(TokenType.DEFAULT, new SyntaxStyle(Color.BLACK, false, false)); // black
-	}
 }
