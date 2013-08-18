@@ -3,21 +3,21 @@ package lessons.welcome.traversal;
 import jlm.universe.Direction;
 import jlm.universe.bugglequest.SimpleBuggle;
 
-public class SnakeEntity extends SimpleBuggle {
-	@Override
+class ScalaSnakeEntity extends SimpleBuggle {
+
 	/* BEGIN TEMPLATE */
-	public void run() {
+	def run() {
 		/* BEGIN SOLUTION */
 		brushDown();
 		while (!endingPosition()) {
 			snakeStep();
 		}
 	}
-	boolean endingPosition() {
+	def endingPosition():Boolean = {
 		if (! isFacingWall()) 
 			return false;
 
-		boolean res = false;
+		var res = false;
 		left();
 		if (isFacingWall()) 
 			res = true;
@@ -25,7 +25,7 @@ public class SnakeEntity extends SimpleBuggle {
 		return res;
 	}
 
-	void snakeStep() {
+	def snakeStep() {
 		if (isFacingWall()) {
 			if (getDirection() == Direction.EAST) {
 				left();

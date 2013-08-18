@@ -1,5 +1,6 @@
 package lessons.welcome.traversal.column;
 
+import jlm.core.model.Game;
 import jlm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalByColumnEntity extends SimpleBuggle {
@@ -39,53 +40,41 @@ public class TraversalByColumnEntity extends SimpleBuggle {
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */	
-
+	@Override
+	public void forward(int i)  { 
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward() in this exercise."));
+	}
 	@Override
 	public void forward()  {
 		if (isInited())
-			throw new RuntimeException("forward() forbidden in this exercise");
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward() in this exercise."));
 	}
 	@Override
-	public void forward(int step)  {
-		if (isInited())
-			throw new RuntimeException("forward(int step) forbidden in this exercise");
+	public void backward(int i) {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward() in this exercise."));
 	}
 	@Override
-	public void backward()  {
-		if (isInited())
-			throw new RuntimeException("backward() forbidden in this exercise");
+	public void backward() {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward() in this exercise."));
 	}
 	@Override
-	public void backward(int step)  {
-		if (isInited())
-			throw new RuntimeException("backward(int step) forbidden in this exercise");
+	public void left() {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use left() in this exercise."));
 	}
 	@Override
-	public void left()  {
-		if (isInited())
-			throw new RuntimeException("left() forbidden in this exercise");
+	public void right() {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use right() in this exercise."));
 	}
 	@Override
-	public void right()  {
-		if (isInited())
-			throw new RuntimeException("right() forbidden in this exercise");
+	public void back() {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use back() in this exercise."));
 	}
 	@Override
-	public void back()  {
-		if (isInited())
-			throw new RuntimeException("back() forbidden in this exercise");
+	public boolean isFacingWall() {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use isFacingWall() in this exercise."));
 	}
 	@Override
-	public boolean isFacingWall()  {
-		if (isInited())
-			throw new RuntimeException("isFacingWall() forbidden in this exercise");
-		return false;
+	public boolean isBackingWall() {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use isBackingWall() in this exercise."));
 	}
-	@Override
-	public boolean isBackingWall()  {
-		if (isInited())
-			throw new RuntimeException("isBackingWall() forbidden in this exercise");
-		return false;
-	}    
-
 }

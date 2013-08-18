@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-18 22:40+0300\n"
+"POT-Creation-Date: 2013-08-19 00:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4000,7 +4000,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:11 src/lessons/welcome/traversal/Snake.html:46 src/lessons/welcome/traversal/column/TraversalByColumn.html:52 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
+#: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:11 src/lessons/welcome/traversal/Snake.html:39 src/lessons/welcome/traversal/column/TraversalByColumn.html:46 src/lessons/welcome/traversal/line/TraversalByLine.html:10 src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10 src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
 msgid "Your turn..."
 msgstr ""
 
@@ -4940,12 +4940,12 @@ msgstr ""
 msgid ""
 "We will now teach the buggle to explore its world. Its initial position is "
 "the bottom left corner, and it should visit any cells up to the top "
-"(coloring the ground on its path. The main loop of the <code>run()</code> "
-"method (that you should write) is something like:"
+"(coloring the ground on its path. The main loop of your code is something "
+"like:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:8
+#: src/lessons/welcome/traversal/Snake.html:7
 #, no-wrap
 msgid ""
 " move brush down\n"
@@ -4954,37 +4954,25 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:13
-msgid "The prototype of this method (its first line) must be:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:14
-#, no-wrap
-msgid "public void run()"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:15
+#: src/lessons/welcome/traversal/Snake.html:12
 msgid ""
-"(we will come back later on the meaning of <code>public</code>). We thus "
-"have to write two methods in addition to <code>run()</code>. The former "
-"returns a boolean indicating whether we are on a final position while the "
-"latter does not return any result and move one snake step forward."
+"We thus have to write two specific methods: The first one returns a boolean "
+"indicating whether we are on a final position while the second moves one "
+"snake step forward."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:20
+#: src/lessons/welcome/traversal/Snake.html:16
 msgid "We reached the final position if and only if both conditions are true:"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:22
+#: src/lessons/welcome/traversal/Snake.html:18
 msgid "We are facing a wall"
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:23
+#: src/lessons/welcome/traversal/Snake.html:19
 msgid ""
 "There is a wall on the north of the buggle. So, if the buggle is facing "
 "east, you should check whether there is a wall on the left, and if the "
@@ -4992,7 +4980,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:26
+#: src/lessons/welcome/traversal/Snake.html:22
 msgid ""
 "We can get the current heading of the buggle using the "
 "<code>getDirection()</code>, and we know whether it looks east using "
@@ -5000,62 +4988,50 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:29
+#: src/lessons/welcome/traversal/Snake.html:25
 msgid ""
-"For the checking itself, nothing magical: you have to turn the buggle and "
-"check whether it is facing a wall afterward."
+"To check, nothing magical: you have to turn the buggle and check whether it "
+"is facing a wall afterward."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:33
+#: src/lessons/welcome/traversal/Snake.html:28
 msgid ""
 "Then, a snake step can be achieved by moving one step forward if we are not "
-"facing a wall, and moving to the upper line else (ie, if you look to the "
+"facing a wall, and moving to the upper line else (i.e., if you look to the "
 "west facing a wall, you have to turn right, forward and turn right)."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:37
+#: src/lessons/welcome/traversal/Snake.html:32
 msgid ""
-"Hint: the main loop of the <code>run()</code> method must continue while the "
-"testing function returns false. Their is thus two way of writing it:"
+"Hint: the main loop of your code must continue while the testing function "
+"returns false. Their is thus two way of writing it:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:39
+#: src/lessons/welcome/traversal/Snake.html:34
 #, no-wrap
-msgid "while (testingFunction() == false)"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:40
-#, no-wrap
-msgid "while testingFunction() == False:"
+msgid "while (testingFunction() == [!java|scala]false) {[/!][!python]False):[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:41
-msgid "or"
+#: src/lessons/welcome/traversal/Snake.html:35
+msgid ""
+"[!python]You may prefer to write it as:[/!] [!java|scala]Since the "
+"exclamation mark (!) denotes the boolean negation in [!thelang], you may "
+"write it as:[/!]"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:42
+#: src/lessons/welcome/traversal/Snake.html:37
 #, no-wrap
-msgid "while (! testingFunction())"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:43
-#, no-wrap
-msgid "while not testingFunction():"
+msgid ""
+"while ([!java|scala]![/!][!python]not [/!]testingFunction())[!java|scala] "
+"{[/!][!python]:[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:44
-msgid "It works because the exclamation mark (!) means in Java a boolean negation."
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:3
 msgid ""
 "The goal of this serie of exercises is to let the buggle traverse its "
@@ -5064,18 +5040,11 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:6
-msgid ""
-"The main loop of the <code>run()</code> method (that you must write) is "
-"something like:"
-msgstr ""
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:8
 msgid "The main loop of your code should be something like:"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><pre>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:10
+#. type: Content of: <pre>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:8
 #, no-wrap
 msgid ""
 " while we are not on the final position\n"
@@ -5083,8 +5052,8 @@ msgid ""
 "   label the cell with its number\n"
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:15
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:13
 msgid ""
 "In contrary to the exercises we saw so far, we won't use the "
 "<code>forward()</code>, <code>backward()</code> and similar "
@@ -5094,25 +5063,25 @@ msgid ""
 "the buggle to the cell where x=3 and y=5."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:22
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:20
 msgid ""
 "Your first task is thus to write a boolean function indicating whether the "
-"buggle the final position or not, ie if it reached the bottom right corner "
-"of the world. For this, you can use <code>getWorldWidth()</code> and "
+"buggle reached the final position or not, ie if it reached the bottom right "
+"corner of the world. For this, you can use <code>getWorldWidth()</code> and "
 "<code>getWorldHeight()</code> which return respectively the world's width "
 "and height. Your test is about comparing the buggle's current position (that "
 "you can access with <code>getX()</code> and <code>getY()</code>) to the "
 "world dimensions."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:29
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:27
 msgid "Beware, the first line and column are numbered 0 and not 1..."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:31
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:29
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
@@ -5120,37 +5089,29 @@ msgid ""
 "to move to the cell below else."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:36
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:34
 msgid ""
 "At this point, you can launch your program to check that the buggle "
 "correctly traverse the world in the expected order, and that it stops when "
 "it has to. Use the <b>stop</b> button if the buggle does not stop correctly."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:40
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:38
 msgid ""
-"It is now time to write done the cell numbers. For that, you will need a "
-"counter initialiser to zero at the begining of your <code>run()</code> "
-"method, and incremented by one at each step (for example with <code>counter "
-"+= 1;</code>). Then, you have to write the value on the ground, for example "
-"with <code>writeMessage(counter);</code>."
+"It is now time to write down the cell numbers. For that, you will need a "
+"counter initialiser to zero at the begining of your code, and incremented by "
+"one at each step (for example with <code>counter += 1;</code>).  Then, you "
+"have to use <code>writeMessage()</code> to write the value on the ground."
 msgstr ""
 
-#. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:46
+#. type: Content of: <p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:43
 msgid ""
-"You probably need to write the first or last value out of the main loop, "
-"depending on whether you prefer to use a <code>while {}</code> or a <code>do "
-"{} while</code>..."
-msgstr ""
-
-#. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:50
-msgid ""
-"You may want to write the first value out of the main <code>while "
-"...:</code> loop."
+"You probably need to write the first [!java|scala]or last [/!]value out of "
+"the main loop [!java|scala], depending on whether you prefer to use a "
+"<code>while</code> or a <code>do/while</code> one[/!]."
 msgstr ""
 
 #. type: Content of: outside any tag (error?)

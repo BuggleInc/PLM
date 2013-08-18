@@ -1,17 +1,15 @@
 <h2>Parcours en colonne</h2>
 
-L'objectif de cette série d'exercices est de faire parcourir le monde à la
+<p>L'objectif de cette série d'exercices est de faire parcourir le monde à la
 buggle.  Elle doit de plus numéroter les différentes cases rencontrées pour
-montrer son ordre de parcours. 
+montrer son ordre de parcours.</p>
 
-<p div="Java">La boucle principale de la méthode <code>run()</code> (que vous devez
-écrire)  est de la forme :<p>
-<p div="python">La boucle principale du code que vous devez écrire est de la forme :<p>
-<p><pre>
+<p>La boucle principale du code que vous devez écrire est de la forme :</p>
+<pre>
  tant que l'on n'est pas à la position finale
    aller à la prochaine position
    marquer le numéro de case au sol 
-</pre></p>
+</pre>
 
 <p>À la différence des exercices vus jusque là, nous n'allons pas utiliser les
 méthodes <code>forward()</code>, <code>backward()</code> et autres, mais
@@ -23,9 +21,9 @@ téléporte la buggle sur la case où x=3 et y=5.</p>
 <p>Le premier objectif est donc d'écrire une fonction booléenne indiquant si la
 buggle a atteint la position finale ou non, càd si elle est arrivée en bas à
 droite du monde.  Vous utiliserez pour cela les méthodes
-<code>getWorldWidth()</code> et <code>getWorldHeight()</code> qui retournent
-respectivement la largeur et la hauteur du monde.  Votre test est de
-comparer les coordonnées actuelles de votre buggle (que vous pouvez
+<code>getMondeHauteur()</code> et <code>getMondeLargueur()</code> qui
+retournent respectivement la hauteur et la largeur du monde.  Votre test est
+de comparer les coordonnées actuelles de votre buggle (que vous pouvez
 retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux
 dimensions du monde.<br/>
 Attention, la première ligne et la première colonne sont numérotées 0 et non
@@ -42,17 +40,14 @@ faut. Pensez à utiliser le bouton <b>stop</b> pour arrêter l'exécution si
 votre programme ne se termine pas correctement.</p>
 
 <p>Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez
-besoin d'un compteur initialisé à zéro au début de votre méthode
-<code>run()</code>, et incrémenté de un à chaque pas (par exemple avec
-<code>cpt += 1;</code>). Ensuite, il faut écrire la valeur de ce compteur au
-sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>.
+besoin d'un compteur initialisé à zéro au début de votre code, et incrémenté
+à chaque pas (par exemple avec <code>cpt += 1;</code>). Ensuite, il faut
+écrire cette valeur au sol (avec <code>ecritMessage()</code>).
 
-<p div="Java">Il est sans doute nécessaire d'écrire la valeur de la première ou dernière
-case en dehors de la boucle principale, selon que vous utilisez un
-<code>while {}</code> ou un <code>do {} while</code>...</p>
-
-<p div="python">Si vous le souhaitez, vous pouvez écrire la première valeur en dehors de la
-boucle <code>while ....:</code>.</p>
+<p>Il est sans doute nécessaire d'écrire la valeur de la première[!java|scala]
+ou dernière[/!] case en dehors de la boucle principale[!java|scala], selon
+que vous utilisez une boucle <code>while</code> ou
+<code>do/while</code>[/!].</p>
 
 <p>À vous de jouer...</p>
 

@@ -1,16 +1,14 @@
 <h2>Traversal by column</h2>
 
-The goal of this serie of exercises is to let the buggle traverse its
-world. It must number the cells it walks on to show its traversal order. 
+<p>The goal of this serie of exercises is to let the buggle traverse its
+world. It must number the cells it walks on to show its traversal order.</p>
 
-<p div="Java">The main loop of the <code>run()</code> method (that you must write) is
-something like:<p>
-<p div="python">The main loop of your code should be something like:<p>
-<p><pre>
+<p>The main loop of your code should be something like:</p>
+<pre>
  while we are not on the final position
    go to the next position
    label the cell with its number
-</pre></p>
+</pre>
 
 <p>In contrary to the exercises we saw so far, we won't use the
 <code>forward()</code>, <code>backward()</code> and similar
@@ -20,7 +18,7 @@ buggle directly to this position. For example, <code>setPos(3, 5)</code>
 teleports the buggle to the cell where x=3 and y=5.</p>
 
 <p>Your first task is thus to write a boolean function indicating whether the
-buggle the final position or not, ie if it reached the bottom right corner
+buggle reached the final position or not, ie if it reached the bottom right corner
 of the world. For this, you can use <code>getWorldWidth()</code> and
 <code>getWorldHeight()</code> which return respectively the world's width
 and height. Your test is about comparing the buggle's current position (that
@@ -37,17 +35,13 @@ to move to the cell below else.</p>
 correctly traverse the world in the expected order, and that it stops when
 it has to. Use the <b>stop</b> button if the buggle does not stop correctly.</p>
 
-<p>It is now time to write done the cell numbers. For that, you will need a
-counter initialiser to zero at the begining of your <code>run()</code>
-method, and incremented by one at each step (for example with
-<code>counter += 1;</code>). Then, you have to write the value on the ground,
-for example with <code>writeMessage(counter);</code>.
+<p>It is now time to write down the cell numbers. For that, you will need a
+counter initialiser to zero at the begining of your code, and incremented by 
+one at each step (for example with <code>counter += 1;</code>). 
+Then, you have to use <code>writeMessage()</code> to write the value on the ground.
 
-<p div="Java">You probably need to write the first or last value out of the main loop,
-depending on whether you prefer to use a <code>while {}</code> or a <code>do
-{} while</code>...</p>
-
-<p div="python">You may want to write the first value out of the main <code>while ...:</code> loop.</p>
+<p>You probably need to write the first [!java|scala]or last [/!]value out of the main loop
+[!java|scala], depending on whether you prefer to use a <code>while</code> or a <code>do/while</code> one[/!].</p>
 
 <p>Your turn...</p>
 

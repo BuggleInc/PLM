@@ -1,85 +1,71 @@
-package lessons.welcome.traversal.diagonal;
+package lessons.welcome.traversal.line;
 
 import jlm.core.model.Game;
 import jlm.universe.bugglequest.SimpleBuggle;
 
-public class TraversalDiagonalEntity extends SimpleBuggle {
+class ScalaTraversalByLineEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
-	int diag = 0;
 
-	public void nextStep() {
-		int x = getX();
-		int y = getY();
-
-		if ((x + 1 < getWorldWidth()) && (y > 0)) {
-			x++;
-			y--;
-		} else if (diag + 1 < getWorldHeight()) {
-			diag++;
-			y = diag;
-			x = 0;
+	def nextStep() {
+		var x=getX();
+		var y=getY();
+		if (x < getWorldWidth()-1) {
+			x+=1;
 		} else {
-			diag++;
-			x = diag - (getWorldWidth() - 1);
-			y = diag - x;
+			x = 0; 
+			if (y < getWorldHeight()-1) {
+				y+=1; 
+			} else {
+				y = 0;
+			}
 		}
-
-		setPos(x, y);
+		setPos(x,y);
 	}
 
-	public boolean endingPosition() {
-		return (getX() == getWorldWidth() - 1) && (getY() == getWorldHeight() - 1);
+	def endingPosition():Boolean = {
+		return (getX() == getWorldWidth()-1) && (getY() == getWorldHeight()-1);
 	}
 
-	@Override
-	public void run() {
-		int cpt = 0;
-		writeMessage(cpt);
-		while (!endingPosition()) {
-			nextStep();
-			cpt++;
+
+	def run() {
+		var cpt=0;
+		do {
 			writeMessage(cpt);
-		}
+			nextStep();
+			cpt+=1;
+		} while (!endingPosition());
+		writeMessage(cpt);
 	}
 	/* END SOLUTION */
-	/* END TEMPLATE */
+	/* END TEMPLATE */	
 
-	@Override
-	public void forward(int i)  { 
+
+	override def forward(i:Int)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward() in this exercise."));
 	}
-	@Override
-	public void forward()  {
-		if (isInited())
-			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward() in this exercise."));
+	override def forward()  {
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward() in this exercise."));
 	}
-	@Override
-	public void backward(int i) {
+	override def backward(i:Int) {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward() in this exercise."));
 	}
-	@Override
-	public void backward() {
+	override def backward() {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward() in this exercise."));
 	}
-	@Override
-	public void left() {
+	override def left() {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use left() in this exercise."));
 	}
-	@Override
-	public void right() {
+	override def right() {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use right() in this exercise."));
 	}
-	@Override
-	public void back() {
+	override def back() {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use back() in this exercise."));
 	}
-	@Override
-	public boolean isFacingWall() {
+	override def isFacingWall():Boolean = {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use isFacingWall() in this exercise."));
 	}
-	@Override
-	public boolean isBackingWall() {
+	override def isBackingWall():Boolean = {
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use isBackingWall() in this exercise."));
 	}
 }

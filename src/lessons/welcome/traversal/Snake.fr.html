@@ -3,20 +3,16 @@
 <p>Nous allons maintenant apprendre à la buggle à explorer son monde. Sa
 position de départ est en bas à gauche, et elle doit visiter toutes les
 cases juqu'en haut (en coloriant le sol sur son passage).  La boucle
-principale de la méthode <code>run()</code> (que vous devez écrire)  est de
-la forme :</p>
+principale de votre code doit être de la forme :</p>
 <pre>
  baisser le crayon
  tant que l'on est pas à la position finale
    avancer comme un serpent
 </pre>
 
-<p>Le prototype de cette méthode (sa première ligne) doit être :</p>
-<pre>public void run()</pre>
-<p>(nous verrons plus tard ce que ce <code>public</code> signifie).  Il faut
-donc écrire deux méthodes en plus de <code>run()</code>. L'une renvoit un
-booléen et indique si l'on se trouve à une position finale, tandis que
-l'autre ne renvoit pas de résultat et avance d'un pas.</p>
+<p>Il faut donc écrire deux méthodes spécifiques. L'une renvoie un booléen
+indiquant si l'on se trouve à la position finale, tandis que l'autre avance
+d'un pas de serpent.</p>
 
 <p>On se trouve sur une position finale si et seulement si les deux conditions
 suivantes sont vraies.:</p>
@@ -36,16 +32,13 @@ regarder si on est face à un mur une fois tourné.</li>
 à un mur, et en montant à la ligne du dessus sinon (càd, si on regarde à
 l'ouest face à un mur, il faut tourner à droite, avancer, tourner à droite).</p>
 
-<p>Indication: la boucle principale de la méthode <code>run()</code> doit
-continuer tant que la fonction adéquate renvoie faux. On peut l'écrire de
-deux façons:</p>
-<pre class="Java">while (fonctionTest() == false)</pre>
-<pre class="python">while fonctionTest() == false:</pre>
-<p>ou bien</p>
-<pre class="Java">while (! fonctionTest())</pre>
-<pre class="Python">while not fonctionTest():</pre>
-<p class="Java">Cela fonctionne car le point d'exclamation en java indique une négation
-booléenne.</p>
+<p>Indication: la boucle principale de votre code doit continuer tant que la
+fonction adéquate renvoie faux. On peut l'écrire de deux façons:</p>
+<pre>while (fonctionTest() == [!java|scala]false) {[/!][!python]False):[/!]</pre>
+<p>[!python]Vous pouvez préférer l'écrire ainsi:[/!]
+[!java|scala]Comme le point d'exclamation (!) dénote la négation booléenne
+en [!thelang], vous pouvez aussi l'écrire:[/!]</p>
+<pre>while ([!java|scala]![/!][!python]not [/!]fonctionTest())[!java|scala] {[/!][!python]:[/!]</pre>
 
 <p>À vous de jouer...</p>
 

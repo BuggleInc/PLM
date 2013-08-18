@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-18 22:39+0300\n"
-"PO-Revision-Date: 2013-08-18 22:40+0200\n"
+"POT-Creation-Date: 2013-08-19 00:00+0300\n"
+"PO-Revision-Date: 2013-08-19 00:09+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -5437,8 +5437,8 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPictureLarge.html:11
-#: src/lessons/welcome/traversal/Snake.html:46
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:52
+#: src/lessons/welcome/traversal/Snake.html:39
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:46
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:10
 #: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:10
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:6
@@ -6704,17 +6704,12 @@ msgstr ""
 msgid ""
 "We will now teach the buggle to explore its world. Its initial position is "
 "the bottom left corner, and it should visit any cells up to the top "
-"(coloring the ground on its path. The main loop of the <code>run()</code> "
-"method (that you should write) is something like:"
-msgstr ""
-"Nous allons maintenant apprendre à la buggle à explorer son monde. Sa "
-"position de départ est en bas à gauche, et elle doit visiter toutes les "
-"cases juqu'en haut (en coloriant le sol sur son passage).  La boucle "
-"principale de la méthode <code>run()</code> (que vous devez écrire)  est de "
-"la forme :"
+"(coloring the ground on its path. The main loop of your code is something "
+"like:"
+msgstr "Nous allons maintenant apprendre à la buggle à explorer son monde. Sa position de départ est en bas à gauche, et elle doit visiter toutes les cases juqu'en haut (en coloriant le sol sur son passage).  La boucle principale de votre code doit être de la forme :"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:8
+#: src/lessons/welcome/traversal/Snake.html:7
 #, no-wrap
 msgid ""
 " move brush down\n"
@@ -6726,43 +6721,27 @@ msgstr ""
 "   avancer comme un serpent\n"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:13
-msgid "The prototype of this method (its first line) must be:"
-msgstr "Le prototype de cette méthode (sa première ligne) doit être :"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:14
-#, no-wrap
-msgid "public void run()"
-msgstr "public void run()"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:15
+#: src/lessons/welcome/traversal/Snake.html:12
 msgid ""
-"(we will come back later on the meaning of <code>public</code>). We thus "
-"have to write two methods in addition to <code>run()</code>. The former "
-"returns a boolean indicating whether we are on a final position while the "
-"latter does not return any result and move one snake step forward."
-msgstr ""
-"(nous verrons plus tard ce que ce <code>public</code> signifie).  Il faut "
-"donc écrire deux méthodes en plus de <code>run()</code>. L'une renvoit un "
-"booléen et indique si l'on se trouve à une position finale, tandis que "
-"l'autre ne renvoit pas de résultat et avance d'un pas."
+"We thus have to write two specific methods: The first one returns a boolean "
+"indicating whether we are on a final position while the second moves one "
+"snake step forward."
+msgstr "Il faut donc écrire deux méthodes spécifiques. L'une renvoie un booléen indiquant si l'on se trouve à la position finale, tandis que l'autre avance d'un pas de serpent."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:20
+#: src/lessons/welcome/traversal/Snake.html:16
 msgid "We reached the final position if and only if both conditions are true:"
 msgstr ""
 "On se trouve sur une position finale si et seulement si les deux conditions "
 "suivantes sont vraies.:"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:22
+#: src/lessons/welcome/traversal/Snake.html:18
 msgid "We are facing a wall"
 msgstr "On est face à un mur"
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:23
+#: src/lessons/welcome/traversal/Snake.html:19
 msgid ""
 "There is a wall on the north of the buggle. So, if the buggle is facing "
 "east, you should check whether there is a wall on the left, and if the "
@@ -6773,7 +6752,7 @@ msgstr ""
 "il faut vérifier s'il y a un mur à droite."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:26
+#: src/lessons/welcome/traversal/Snake.html:22
 msgid ""
 "We can get the current heading of the buggle using the <code>getDirection()</"
 "code>, and we know whether it looks east using <code>getDirection() == "
@@ -6784,19 +6763,19 @@ msgstr ""
 "<code>getDirection() == Direction.EAST</code> (WEST pour ouest)."
 
 #. type: Content of: <ul><li>
-#: src/lessons/welcome/traversal/Snake.html:29
+#: src/lessons/welcome/traversal/Snake.html:25
 msgid ""
-"For the checking itself, nothing magical: you have to turn the buggle and "
-"check whether it is facing a wall afterward."
+"To check, nothing magical: you have to turn the buggle and check whether it "
+"is facing a wall afterward."
 msgstr ""
 "Pour la vérification elle-même, rien de magique : il faut se tourner et "
 "regarder si on est face à un mur une fois tourné."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:33
+#: src/lessons/welcome/traversal/Snake.html:28
 msgid ""
 "Then, a snake step can be achieved by moving one step forward if we are not "
-"facing a wall, and moving to the upper line else (ie, if you look to the "
+"facing a wall, and moving to the upper line else (i.e., if you look to the "
 "west facing a wall, you have to turn right, forward and turn right)."
 msgstr ""
 "Ensuite un pas de serpent se fait en avancant d'un pas si l'on est pas face "
@@ -6804,53 +6783,35 @@ msgstr ""
 "l'ouest face à un mur, il faut tourner à droite, avancer, tourner à droite)."
 
 #. type: Content of: <p>
+#: src/lessons/welcome/traversal/Snake.html:32
+msgid ""
+"Hint: the main loop of your code must continue while the testing function "
+"returns false. Their is thus two way of writing it:"
+msgstr "Indication: la boucle principale de votre code doit continuer tant que la fonction adéquate renvoie faux. On peut l'écrire de deux façons:"
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/traversal/Snake.html:34
+#, no-wrap
+msgid "while (testingFunction() == [!java|scala]false) {[/!][!python]False):[/!]"
+msgstr "while (fonctionTest() == [!java|scala]false) {[/!][!python]False):[/!]"
+
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/Snake.html:35
+msgid ""
+"[!python]You may prefer to write it as:[/!] [!java|scala]Since the "
+"exclamation mark (!) denotes the boolean negation in [!thelang], you may "
+"write it as:[/!]"
+msgstr ""
+"[!python]Vous pouvez préférer l'écrire ainsi:[/!] \n"
+"[!java|scala]Comme le point d'exclamation (!) dénote la négation booléenne en [!thelang], vous pouvez aussi l'écrire:[/!]"
+
+#. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:37
-msgid ""
-"Hint: the main loop of the <code>run()</code> method must continue while the "
-"testing function returns false. Their is thus two way of writing it:"
-msgstr ""
-"Indication: la boucle principale de la méthode <code>run()</code> doit "
-"continuer tant que la fonction adéquate renvoie faux. On peut l'écrire de "
-"deux façons:"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:39
 #, no-wrap
-msgid "while (testingFunction() == false)"
-msgstr "while (fonctionTest() == false)"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:40
-#, no-wrap
-msgid "while testingFunction() == False:"
-msgstr "while fonctionTest() == false:"
+msgid "while ([!java|scala]![/!][!python]not [/!]testingFunction())[!java|scala] {[/!][!python]:[/!]"
+msgstr "while ([!java|scala]![/!][!python]not [/!]fonctionTest())[!java|scala] {[/!][!python]:[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:41
-msgid "or"
-msgstr "ou bien"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:42
-#, no-wrap
-msgid "while (! testingFunction())"
-msgstr "while (! fonctionTest())"
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/traversal/Snake.html:43
-#, no-wrap
-msgid "while not testingFunction():"
-msgstr "while not fonctionTest():"
-
-#. type: Content of: <p>
-#: src/lessons/welcome/traversal/Snake.html:44
-msgid ""
-"It works because the exclamation mark (!) means in Java a boolean negation."
-msgstr ""
-"Cela fonctionne car le point d'exclamation en java indique une négation "
-"booléenne."
-
-#. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:3
 msgid ""
 "The goal of this serie of exercises is to let the buggle traverse its world. "
@@ -6862,20 +6823,11 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:6
-msgid ""
-"The main loop of the <code>run()</code> method (that you must write) is "
-"something like:"
-msgstr ""
-"La boucle principale de la méthode <code>run()</code> (que vous devez "
-"écrire)  est de la forme :"
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:8
 msgid "The main loop of your code should be something like:"
 msgstr "La boucle principale du code que vous devez écrire est de la forme :"
 
-#. type: Content of: <p><p><p><p><p><pre>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:10
+#. type: Content of: <pre>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:8
 #, no-wrap
 msgid ""
 " while we are not on the final position\n"
@@ -6886,8 +6838,8 @@ msgstr ""
 "   aller à la prochaine position\n"
 "   marquer le numéro de case au sol \n"
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:15
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:13
 msgid ""
 "In contrary to the exercises we saw so far, we won't use the "
 "<code>forward()</code>, <code>backward()</code> and similar methods. "
@@ -6903,35 +6855,27 @@ msgstr ""
 "buggle directement à cette position. Par exemple, <code>setPos(3, 5)</code> "
 "téléporte la buggle sur la case où x=3 et y=5."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:22
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:20
 msgid ""
 "Your first task is thus to write a boolean function indicating whether the "
-"buggle the final position or not, ie if it reached the bottom right corner "
-"of the world. For this, you can use <code>getWorldWidth()</code> and "
+"buggle reached the final position or not, ie if it reached the bottom right "
+"corner of the world. For this, you can use <code>getWorldWidth()</code> and "
 "<code>getWorldHeight()</code> which return respectively the world's width "
 "and height. Your test is about comparing the buggle's current position (that "
 "you can access with <code>getX()</code> and <code>getY()</code>) to the "
 "world dimensions."
-msgstr ""
-"Le premier objectif est donc d'écrire une fonction booléenne indiquant si la "
-"buggle a atteint la position finale ou non, càd si elle est arrivée en bas à "
-"droite du monde.  Vous utiliserez pour cela les méthodes "
-"<code>getWorldWidth()</code> et <code>getWorldHeight()</code> qui retournent "
-"respectivement la largeur et la hauteur du monde.  Votre test est de "
-"comparer les coordonnées actuelles de votre buggle (que vous pouvez "
-"retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux "
-"dimensions du monde."
+msgstr "Le premier objectif est donc d'écrire une fonction booléenne indiquant si la buggle a atteint la position finale ou non, càd si elle est arrivée en bas à droite du monde.  Vous utiliserez pour cela les méthodes <code>getMondeHauteur()</code> et <code>getMondeLargueur()</code> qui retournent respectivement la hauteur et la largeur du monde.  Votre test est de comparer les coordonnées actuelles de votre buggle (que vous pouvez retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux dimensions du monde."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:29
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:27
 msgid "Beware, the first line and column are numbered 0 and not 1..."
 msgstr ""
 "Attention, la première ligne et la première colonne sont numérotées 0 et non "
 "1..."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:31
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:29
 msgid ""
 "Then, you have to write the code to reach the next position. In this "
 "exercise, you have to traverse the world row after row. So, if you are at "
@@ -6943,8 +6887,8 @@ msgstr ""
 "tout en bas d'une colonne, il faut aller en haut de la colonne suivante et "
 "sinon, il faut aller à la case du dessous."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:36
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:34
 msgid ""
 "At this point, you can launch your program to check that the buggle "
 "correctly traverse the world in the expected order, and that it stops when "
@@ -6955,40 +6899,22 @@ msgstr ""
 "faut. Pensez à utiliser le bouton <b>stop</b> pour arrêter l'exécution si "
 "votre programme ne se termine pas correctement."
 
-#. type: Content of: <p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:40
+#. type: Content of: <p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:38
 msgid ""
-"It is now time to write done the cell numbers. For that, you will need a "
-"counter initialiser to zero at the begining of your <code>run()</code> "
-"method, and incremented by one at each step (for example with <code>counter "
-"+= 1;</code>). Then, you have to write the value on the ground, for example "
-"with <code>writeMessage(counter);</code>."
-msgstr ""
-"Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez "
-"besoin d'un compteur initialisé à zéro au début de votre méthode "
-"<code>run()</code>, et incrémenté de un à chaque pas (par exemple avec "
-"<code>cpt += 1;</code>). Ensuite, il faut écrire la valeur de ce compteur au "
-"sol à chaque pas, par exemple avec <code>writeMessage(cpt);</code>."
+"It is now time to write down the cell numbers. For that, you will need a "
+"counter initialiser to zero at the begining of your code, and incremented by "
+"one at each step (for example with <code>counter += 1;</code>).  Then, you "
+"have to use <code>writeMessage()</code> to write the value on the ground."
+msgstr "Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez besoin d'un compteur initialisé à zéro au début de votre code, et incrémenté à chaque pas (par exemple avec <code>cpt += 1;</code>). Ensuite, il faut écrire cette valeur au sol (avec <code>ecritMessage()</code>)."
 
-#. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:46
+#. type: Content of: <p><p>
+#: src/lessons/welcome/traversal/column/TraversalByColumn.html:43
 msgid ""
-"You probably need to write the first or last value out of the main loop, "
-"depending on whether you prefer to use a <code>while {}</code> or a <code>do "
-"{} while</code>..."
-msgstr ""
-"Il est sans doute nécessaire d'écrire la valeur de la première ou dernière "
-"case en dehors de la boucle principale, selon que vous utilisez un "
-"<code>while {}</code> ou un <code>do {} while</code>..."
-
-#. type: Content of: <p><p><p><p><p><p>
-#: src/lessons/welcome/traversal/column/TraversalByColumn.html:50
-msgid ""
-"You may want to write the first value out of the main <code>while ...:</"
-"code> loop."
-msgstr ""
-"Si vous le souhaitez, vous pouvez écrire la première valeur en dehors de la "
-"boucle <code>while ....:</code>."
+"You probably need to write the first [!java|scala]or last [/!]value out of "
+"the main loop [!java|scala], depending on whether you prefer to use a "
+"<code>while</code> or a <code>do/while</code> one[/!]."
+msgstr "Il est sans doute nécessaire d'écrire la valeur de la première[!java|scala] ou dernière[/!] case en dehors de la boucle principale[!java|scala], selon que vous utilisez une boucle <code>while</code> ou <code>do/while</code>[/!]."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:3
