@@ -21,6 +21,8 @@
     process, when we don't have methods parameters yet
   * lessons/welcome/methods/flowerpot/*: two new exercises training on
     methods (and decomposition)
+  * New lib/jsyntaxpane.jar, from debian package fixing some upstream bugs
+    - Contextual menu now works, as well as Ctrl-Z/Ctrl-Y, etc
 20130804:
   * RELEASE 2.0, the revolutionary night.
   * Remove the array world. It was not helping very much when compared
