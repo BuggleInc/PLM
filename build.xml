@@ -51,8 +51,7 @@
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
             <fileset dir="${src.dir}" includes="**/*.py **/*.scala **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
-            <fileset dir="${lib.dir}" excludes="*.jar *.pl lib/l10n/*"/>
-            <fileset dir="${lib.dir}" excludes="**/*.jar *.pl lib/l10n-engine/*"/>
+            <fileset dir="${lib.dir}" excludes="**/*.jar *.pl lib/l10n/* lib/l10n-engine/*"/>
             <!--<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-2.1.0-SNAPSHOT.jar" /> -->
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />    
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />

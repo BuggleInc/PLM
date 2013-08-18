@@ -66,7 +66,7 @@ public class JlmSyntaxPane {
 				out.write("Action.redo = jsyntaxpane.actions.RedoAction, control Y\n");
 				out.write("complete-word = jsyntaxpane.actions.CompleteWordAction, control SPACE\n");
 				out.write("Action.toggle-comments = jsyntaxpane.actions.ToggleCommentsAction, control SEMICOLON\n");
-				out.write("PopupMenu = cut-to-clipboard,copy-to-clipboard,paste-from-clipboard,-,select-all,-,undo,redo,-,find,find-next,goto-line,jump-to-pair,-,complete-word,-,toggle-comments");
+				out.write("PopupMenu = cut-to-clipboard,copy-to-clipboard,paste-from-clipboard,-,select-all,-,undo,redo,-,find,find-next,goto-line,jump-to-pair,-,complete-word,-,toggle-comments\n");
 				out.close();
 			}
 			props.load(new FileReader(bindings));				
