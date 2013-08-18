@@ -1,7 +1,10 @@
 package jlm.core.ui;
 
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
+import javax.swing.KeyStroke;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
@@ -23,8 +26,16 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 		codeEditor = new JEditorPane();
 		setViewportView(codeEditor);
 		codeEditor.setContentType("text/"+lang.getLang().toLowerCase());
+
+		/*
+		InputMap imap = codeEditor.getInputMap();
+		ActionMap amap = codeEditor.getActionMap();		
+		for (KeyStroke ks:imap.allKeys()) 
+			System.out.println("key: "+ks+" -> "+imap.get(ks)+" -> "+amap.get(imap.get(ks)));
+		 */
+		
 		codeEditor.setCaretPosition(0);
-		//((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(0); TODO: find the new way of doing so in jsyntaxpan 0.9.5
+		//((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(0); TODO: find the new way of doing so in jsyntaxpane 0.9.5
 		
 		/* Create a synchronization element, and connect it to the editor */
 		sync = new SourceFileDocumentSynchronizer(codeEditor.getEditorKit());
@@ -36,6 +47,7 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 		sync.setSourceFile(srcFile);
 		
 		codeEditor.setText(srcFile.getBody());
+		((jsyntaxpane.SyntaxDocument) codeEditor.getDocument()).clearUndos();
 		
 		/* Highlighting stuff, to trace entities */
 		tracedEntity = Game.getInstance().getSelectedEntity();
