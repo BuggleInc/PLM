@@ -35,6 +35,17 @@ public class IndexOfMaxValue extends BatExercise {
 				"      max = nums[i]\n" +
 				"      maxIdx = i\n"+
 				"  return maxIdx\n");
+		templateScala("indexOfMaxValue", new String[]{"Array[Int]"},
+				"def indexOfMaxValue(nums:Array[Int]):Int = {\n",
+				"  var max=nums(0)\n" +
+				"  var maxIdx = 0\n" +
+				"  for (i <- 0 to nums.length-1)\n" +
+				"    if (nums(i)>max) {\n"+
+				"      max = nums(i)\n" +
+				"      maxIdx = i\n"+
+				"    }\n"+
+				"  return maxIdx\n"+
+				"}");
 
 		setup(myWorld);
 	}

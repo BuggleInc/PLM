@@ -30,6 +30,14 @@ public class Has271 extends BatExercise {
 				"    if (nums[i] + 5 == nums[i+1]) and (math.fabs(nums[i+2]-nums[i]+1)<=2):\n"+
 				"      return True\n"+
 				"  return False\n");
+		templateScala("has271", new String[] {"Array[Int]"},
+				"def has271(nums:Array[Int]): Boolean = {\n",
+				"  var count=0\n"+
+				"  for (i <- 0 to nums.length-2)\n"+
+				"    if ((nums(i) + 5 == nums(i+1)) && (Math.abs(nums(i+2)-nums(i)+1)<=2))\n"+
+				"      return true\n"+
+				"  return false\n"+
+				"}");
 
 		setup(myWorld);
 	}

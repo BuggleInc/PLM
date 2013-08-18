@@ -24,6 +24,14 @@ public class ArrayCount9 extends BatExercise {
 				"    if value == 9:\n" +
 				"      res += 1\n" +
 				"  return res\n");
+		templateScala("arrayCount9", new String[]{"Array[Int]"},
+				"def arrayCount9(nums:Array[Int]): Int = {\n",
+				"  var res = 0\n" +
+				"  for (value <- nums)\n" +
+				"    if (value == 9)\n" +
+				"      res += 1\n" +
+				"  return res\n"+
+				"}");
 		setup(myWorld);
 	}
 

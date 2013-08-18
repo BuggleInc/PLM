@@ -4,12 +4,12 @@
   * Translate all builtins of buggles and turtles to French:
     It is now possible to write avance() instead of forward()
   * Review all translations for uniformity and to iron out some typos
+  * Port most exercises of the welcome lesson to scala.
   * Test the compilation process in our JUnit tests, for Java and Scala.
   * Mark many more strings for translation in the engine.
   * Allow [!java]...[/!] constructs in mission texts to adapt to progLang
   * In debug mode, all adaptations of all progLangs are displayed, with
     a color code for each. This was mandatory with a third main progLang
-  * Port some exercises of the welcome lesson to scala.
   * Partially document the black magic fueling ExerciseTemplatingEntity 
     Erk, this class is based on ... inventive hacks ;)
   * Property jlm.display.fontsize sets the size of the mission texts

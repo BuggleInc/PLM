@@ -43,6 +43,14 @@ public class MaxValue extends BatExercise {
 				"    if nums[i] > max:\n"+
 				"      max = nums[i]\n"+
 				"  return max\n");
+		templateScala("maxValue",new String[] {"Array[Int]"}, 
+				"def maxValue(nums:Array[Int]): Int = {\n",
+				"  var max=nums(0)\n"+
+				"  for (i <- 0 to nums.length-1)\n"+
+				"    if (nums(i) > max)\n"+
+				"      max = nums(i)\n"+
+				"  return max\n"+
+				"}");
 
 		setup(myWorld);
 	}

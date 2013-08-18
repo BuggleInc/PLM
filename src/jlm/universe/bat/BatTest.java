@@ -107,19 +107,42 @@ public class BatTest {
 	private void displayParameter(Object o, StringBuffer sb, ProgrammingLanguage pl) {
 		if (o == null) {
 			sb.append("null");
+			
 		} else if (o instanceof String[]) {
-			sb.append("{");
+			if (pl.equals(Game.JAVA)) {
+				sb.append("{");
+			} else if (pl.equals(Game.SCALA)) {
+				sb.append("Array(");
+			} else if (pl.equals(Game.PYTHON)) { 
+				sb.append("[");
+			} else {
+				throw new RuntimeException("Please port me to "+pl.getLang());
+			}
+			
 			String[]a = (String[]) o;
 			for (String i:a) {
 				sb.append(i+",");
 			}
+			
 			sb.deleteCharAt(sb.length()-1);
-			sb.append("}");					
+			if (pl.equals(Game.JAVA)) {
+				sb.append("}");
+			} else if (pl.equals(Game.SCALA)) {
+				sb.append(")");
+			} else if (pl.equals(Game.PYTHON)) { 
+				sb.append("]");
+			} else {
+				throw new RuntimeException("Please port me to "+pl.getLang());
+			}
 		} else if (o.getClass().isArray()){
 			if (pl.equals(Game.JAVA)) {
 				sb.append("{");
-			} else { // Python
+			} else if (pl.equals(Game.SCALA)) {
+				sb.append("Array(");
+			} else if (pl.equals(Game.PYTHON)) { // Python
 				sb.append("[");
+			} else {
+				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
 			if (o.getClass().getComponentType().equals(Integer.TYPE)) {
 				int[]a = (int[]) o;
@@ -133,15 +156,21 @@ public class BatTest {
 			}
 			if (pl.equals(Game.JAVA)) {
 				sb.append("}");
-			} else { // Python
+			} else if (pl.equals(Game.SCALA)) {
+				sb.append(")");
+			} else if (pl.equals(Game.PYTHON)) { 
 				sb.append("]");
-			}
-		} else if (o instanceof Boolean && pl.equals(Game.PYTHON)){
-			Boolean b = (Boolean) o;
-			if (b) {
-				sb.append("True");
 			} else {
-				sb.append("False");
+				throw new RuntimeException("Please port me to "+pl.getLang());
+			}
+		} else if (o instanceof Boolean) {
+			Boolean b = (Boolean) o;
+			if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA)) {
+				sb.append(b ? "true":"false");
+			} else if (pl.equals(Game.PYTHON)) { 
+				sb.append(b ? "True" : "False");
+			} else {
+				throw new RuntimeException("Please port me to "+pl.getLang());
 			}
 		} else if (o instanceof String && pl.equals(Game.PYTHON)) {
 			sb.append("\""+o+"\"");

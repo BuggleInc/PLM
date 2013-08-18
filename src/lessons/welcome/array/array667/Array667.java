@@ -30,6 +30,14 @@ public class Array667 extends BatExercise {
 				"    if (nums[i] == 6) and (nums[i+1]==6 or nums[i+1]==7):\n"+
 				"      count += 1\n"+
 				"  return count\n");
+		templateScala("array667", new String[] {"Array[Int]"},
+				"def array667(nums:Array[Int]): Int = {\n",
+				"  var count=0\n"+
+				"  for (i <- 0 to nums.length-2)\n"+
+				"    if ((nums(i) == 6) && (nums(i+1)==6 || nums(i+1)==7))\n"+
+				"      count += 1\n"+
+				"  return count\n"+
+				"}");
 		setup(myWorld);
 	}
 

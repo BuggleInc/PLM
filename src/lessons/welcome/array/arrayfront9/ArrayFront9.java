@@ -28,6 +28,13 @@ public class ArrayFront9 extends BatExercise {
 				"    if nums[i] == 9:\n" +
 				"      return True\n" +
 				"  return False\n");
+		templateScala("arrayFront9", new String[]{"Array[Int]"},
+				"def arrayFront9(nums:Array[Int]): Boolean = {\n",
+				"  for (i <- 0 to Math.min(nums.length,4)-1)\n"+
+				"    if (nums(i) == 9)\n" +
+				"      return true\n" +
+				"  return false\n"+
+				"}");
 
 		setup(myWorld);
 	}

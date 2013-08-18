@@ -55,6 +55,14 @@ public class OccurrenceOfValue extends BatExercise {
 				"    if nums[i] == lookingFor:\n" +
 				"      count += 1\n" +
 				"  return count\n");
+		templateScala("occurrences", new String[]{"Array[Int]","Int"},
+				"def occurrences(nums:Array[Int],lookingFor:Int):Int = {\n",
+				"  var count = 0\n" +
+				"  for (i <- 0 to nums.length-1)\n" +
+				"    if (nums(i) == lookingFor)\n" +
+				"      count += 1\n" +
+				"  return count\n"+
+				"}");
 
 		setup(myWorld);
 	}
