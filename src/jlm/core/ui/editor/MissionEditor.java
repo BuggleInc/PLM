@@ -21,7 +21,6 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.JTextPane;
 import javax.swing.JToolBar;
 import javax.swing.KeyStroke;
 import javax.swing.event.DocumentEvent;
@@ -31,7 +30,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import jlm.core.model.Game;
 import jlm.core.ui.JlmHtmlEditorKit;
 import jlm.core.utils.FileUtils;
-import jsyntaxpane.DefaultSyntaxKit;
+import jlm.core.utils.JlmSyntaxPane;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -42,7 +41,7 @@ public class MissionEditor extends JFrame {
 	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private JEditorPane display = new JEditorPane("text/html", "");
-	private JTextPane editor =  new JTextPane();
+	private JEditorPane editor;
 	
 	private String lastPathSelected;
 	private boolean modified = false;
@@ -63,8 +62,9 @@ public class MissionEditor extends JFrame {
 	        }
 	    });
 		setSize(1200, 800);
+		Game.getInstance();
+		JlmSyntaxPane.initKits();
 		initComponents();
-		DefaultSyntaxKit.initKit();
 		setVisible(true);
 	}
 
@@ -99,6 +99,8 @@ public class MissionEditor extends JFrame {
 		menuBar.add(fileMenu);
 		this.setJMenuBar(menuBar);
 
+		editor = new JEditorPane();
+		
 		getContentPane().setLayout(new BorderLayout());
 		JToolBar toolBar = new JToolBar();
 		// TODO: add buttons
@@ -113,8 +115,8 @@ public class MissionEditor extends JFrame {
 		sp.setDividerLocation((int) (((double)getWidth()) * weight));
 
 		getContentPane().add(sp, BorderLayout.CENTER);
-
-		editor.setContentType("text/plain");
+		
+		editor.setContentType("text/xhtml");
 		editor.setEditable(true);
 		
 		display.setEditorKit(new JlmHtmlEditorKit());
@@ -164,7 +166,9 @@ public class MissionEditor extends JFrame {
 			}
 
 			editor.setText(content.toString());
+			((jsyntaxpane.SyntaxDocument) editor.getDocument()).clearUndos();
 			modified = false;
+			setTitle(TITLE_NOT_MODIFIED);
 		} catch (IOException e1) {
 			JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(),i18n.tr("Error while reading {0}",lastPathSelected), JOptionPane.ERROR_MESSAGE);
 		}
