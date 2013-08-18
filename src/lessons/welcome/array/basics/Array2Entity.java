@@ -2,23 +2,24 @@ package lessons.welcome.array.basics;
 
 import java.awt.Color;
 
+import jlm.core.model.Game;
 import jlm.universe.bugglequest.SimpleBuggle;
 
 public class Array2Entity extends SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
-			throw new RuntimeException("setX(int) forbidden in this exercise");
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX()."));
 	}
 	@Override
 	public void setY(int i)  { 
 		if (isInited())
-			throw new RuntimeException("setY(int) forbidden in this exercise");
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setY()."));
 	}
 	@Override
 	public void setPos(int i,int j)  { 
 		if (isInited())
-			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setPos()."));
 	}
 
 	/* BEGIN TEMPLATE */

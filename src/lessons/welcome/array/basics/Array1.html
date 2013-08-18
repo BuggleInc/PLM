@@ -1,8 +1,8 @@
-<h1>Knotting and sequences</h1>
+<h1>[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting</h1>
 
 The goal of this exercise is to reproduce the pattern of the first row in
 the other rows with a shift of one cell (see the Objective tab for
-details). The biggest difference between this exercise and the other we had
+details). The biggest difference between this exercise and the others we had
 on patterns is that you have to read the pattern (on first row) before
 reproducing it. You cannot do otherwise because the same code will be
 executed on three different worlds, each of them having its specific
@@ -13,27 +13,26 @@ coming back to read the second cell. But since it is forbidden to use the
 methods to teleport the buggle to a specific position (<code>setPos()</code>
 and similar), this approach will be a pain to implement. </p>
  
-<p class="Java">The simplest is to store the sequence of colors that constitute 
-the whole pattern in an <b>array</b>.</p>
-<h2 class="Java">Arrays</h2> 
-<p class="Java">An array is a sequence of positions in which one can store values of the
+<p>The simplest is to store the sequence of colors that constitute 
+the whole pattern in an [!java|scala]<b>array</b>[/!][!python]<b>list[/!]</b>.</p>
+
+<h2>[!java|scala]Arrays[/!][!python]List[/!]</h2> 
+
+<p>[!java|scala]An array[/!][!python]A list[/!] is an ordered sequence of variables.
+It is somehow similar to a shelve where each level can store a separate value.
+
+<p>
+positions, each cell acting as a variable on its own.  in which one can store values of the
 same kind (one value per cell). It is thus a sequence of values of the same
 kind:</p>
 
-
-<p class="python">The simplest is to store the sequence of colors that constitute 
-the whole in a <b>list</b>.</p>
-<h2 class="python">Lists</h2> 
 <p class="python">A list is an array of positions in which one can store values. Each  
 cell is a variable on its own. A list is then a sequence of values. Lists can even mix 
 values of differing types, such as integer values in some cells and colors in other cells.
 At the end, a list is very similar to a storage shelve, where each level can store a 
 separate value.</p>
 
-<br>
-<div style="text-align:center">
-	<img src="lessons/welcome/array/array.png"/>
-</div>
+<p><div style="text-align:center"><img src="array.png"/></div>
 
 <p class="Java">T is the array's name, T[0] is the name of the first cell, T[1] the name of
 the second cell, T[2] the third one, etc. And yes, the first cell in

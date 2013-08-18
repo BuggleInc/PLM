@@ -1,39 +1,35 @@
 package lessons.welcome.array.basics;
 
 import java.awt.Color;
+import jlm.core.model.Game
 
-import jlm.core.model.Game;
-
-public class Array1Entity extends jlm.universe.bugglequest.SimpleBuggle {
-	@Override
-	public void setX(int i)  {
-		if (isInited())
+class ScalaArray1Entity extends jlm.universe.bugglequest.SimpleBuggle {
+	override def setX(i: Int)  {
+		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX()."));
 	}
-	@Override
-	public void setY(int i)  { 
-		if (isInited())
+	override def setY(i: Int)  { 
+		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setY()."));
 	}
-	@Override
-	public void setPos(int i,int j)  { 
-		if (isInited())
+	override def setPos(x: Int, y:Int)  { 
+		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setPos()."));
 	}
 
 	/* BEGIN TEMPLATE */
-	public void run() {
+	def run() {
 		/* BEGIN SOLUTION */
-		Color[] colors = new Color[getWorldHeight()];
+		val colors = new Array[Color](getWorldHeight());
 
 		/* read the colors */
-		for (int i=0;i<getWorldHeight();i++) {
-			colors[i]=getGroundColor();
-			forward();
+		for (i <- 0 to getWorldHeight()-1) {
+			colors(i) = getGroundColor()
+					forward();
 		}
 
 		/* duplicate the pattern */
-		for (int i=1; i<getWorldWidth();i++) {
+		for (col <- 1 to getWorldWidth()-1) {
 			left();
 			forward();
 			right();
@@ -41,13 +37,15 @@ public class Array1Entity extends jlm.universe.bugglequest.SimpleBuggle {
 			makeLine(colors);
 		}
 	}
-	void makeLine(Color[] colors) {
-		for (int i=0;i<getWorldWidth();i++) {
-			mark(colors[i]);
+
+	def makeLine(colors:Array[Color]) {
+		for (i <- 0 to getWorldWidth()-1) {
+			mark(colors(i));
 			forward();
 		}
 	}
-	void mark(Color c){
+	
+	def mark(c:Color){
 		setBrushColor(c);
 		brushDown();
 		brushUp();

@@ -8,9 +8,9 @@ import jlm.universe.Direction;
 import jlm.universe.bugglequest.Buggle;
 import jlm.universe.bugglequest.BuggleWorld;
 
-public class Array extends ExerciseTemplated {
+public class Array1 extends ExerciseTemplated {
 
-	public Array(Lesson lesson) {
+	public Array1(Lesson lesson) {
 		super(lesson);
 		BuggleWorld[] myWorlds = new BuggleWorld[3];
 				
