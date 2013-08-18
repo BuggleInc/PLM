@@ -1,10 +1,7 @@
 package jlm.core.ui;
 
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
-import javax.swing.KeyStroke;
 
 import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
