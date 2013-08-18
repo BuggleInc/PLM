@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-16 23:03+0300\n"
+"POT-Creation-Date: 2013-08-18 22:40+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1518,8 +1518,8 @@ msgstr ""
 msgid "Switch"
 msgstr ""
 
-#. type: Content of: <h2>
-#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438 src/lessons/welcome/Main.html:478 src/lessons/welcome/array/basics/Array.html:18
+#. type: Content of: <table><tr><td>
+#: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101 src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264 src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438 src/lessons/welcome/Main.html:478
 msgid "Arrays"
 msgstr ""
 
@@ -1856,7 +1856,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
 msgid "[/!]"
 msgstr ""
 
@@ -2828,8 +2828,8 @@ msgstr ""
 msgid "The <code>for</code> loop is easier to read, don't you think?"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopfor/LoopFor.html:46 src/lessons/welcome/bdr/BDR.html:187
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/loopfor/LoopFor.html:46 src/lessons/welcome/bdr/BDR.html:187 src/lessons/welcome/array/basics/Array1.html:200
 msgid "[!java]"
 msgstr ""
 
@@ -3034,8 +3034,8 @@ msgstr ""
 msgid "Executing the loop body at least once"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25 src/lessons/welcome/loopdowhile/Poucet.html:27
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25 src/lessons/welcome/loopdowhile/Poucet.html:27 src/lessons/welcome/array/basics/Array1.html:98
 msgid "[!python]"
 msgstr ""
 
@@ -3067,8 +3067,8 @@ msgid ""
 "enter the body or not."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:38
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:38 src/lessons/welcome/array/basics/Array1.html:114
 msgid "[/!] [!java|scala]"
 msgstr ""
 
@@ -6547,8 +6547,8 @@ msgid ""
 "(double) 17 // Value = 17.0 (“casted to double”, converted to double)\n"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><h2>
-#: src/lessons/recursion/square/Square.html:43 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array.html:210
+#. type: Content of: <p><p><p><h2>
+#: src/lessons/recursion/square/Square.html:43 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array1.html:229
 msgid "Goal of this exercise"
 msgstr ""
 
@@ -8034,21 +8034,14 @@ msgstr ""
 #: src/lessons/welcome/bat/bool1/Close10.html:2
 msgid ""
 "Given 2 int values, return whichever value is nearest to the value 10, or "
-"return 0 in the event of a tie. Note that Math.abs(n) returns the absolute "
-"value of a number."
+"return 0 in the event of a tie.  [!java|scala]Note that Math.abs(n) returns "
+"the absolute value of a number.[/!] [!python]Note that math.fabs(n) returns "
+"the absolute value of a number.  This function can only be used if you "
+"imported the math module.[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Close10.html:5
-msgid ""
-"Given 2 int values, return whichever value is nearest to the value 10, or "
-"return 0 in the event of a tie. Note that math.fabs(n) returns the absolute "
-"value of a number. Note also that this function can only be used if you "
-"imported the math module."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Close10.html:10 src/lessons/welcome/bat/bool1/Diff21.html:5 src/lessons/welcome/bat/bool1/HasTeen.html:6 src/lessons/welcome/bat/bool1/IcyHot.html:5 src/lessons/welcome/bat/bool1/In1020.html:5 src/lessons/welcome/bat/bool1/In3050.html:5 src/lessons/welcome/bat/bool1/LastDigit.html:9 src/lessons/welcome/bat/bool1/LoneTeen.html:6 src/lessons/welcome/bat/bool1/Main.html:11 src/lessons/welcome/bat/bool1/Makes10.html:5 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:7 src/lessons/welcome/bat/bool1/NearHundred.html:5 src/lessons/welcome/bat/bool1/ParotTrouble.html:8 src/lessons/welcome/bat/bool1/PosNeg.html:5 src/lessons/welcome/bat/bool1/SleepIn.html:7 src/lessons/welcome/bat/bool1/SumDouble.html:5 src/lessons/welcome/bat/bool2/AlarmClock.html:11 src/lessons/welcome/bat/bool2/AnswerCell.html:8 src/lessons/welcome/bat/bool2/BlueTicket.html:10 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:11 src/lessons/welcome/bat/bool2/CigarParty.html:9 src/lessons/welcome/bat/bool2/DateFashion.html:12 src/lessons/welcome/bat/bool2/GreenTicket.html:9 src/lessons/welcome/bat/bool2/In1To10.html:8 src/lessons/welcome/bat/bool2/InOrderEqual.html:9 src/lessons/welcome/bat/bool2/InOrder.html:8 src/lessons/welcome/bat/bool2/LastDigit2.html:8 src/lessons/welcome/bat/bool2/LessBy10.html:5 src/lessons/welcome/bat/bool2/Main.html:4 src/lessons/welcome/bat/bool2/MaxMod5.html:9 src/lessons/welcome/bat/bool2/NearTen.html:8 src/lessons/welcome/bat/bool2/RedTicket.html:9 src/lessons/welcome/bat/bool2/ShareDigit.html:9 src/lessons/welcome/bat/bool2/SortaSum.html:7 src/lessons/welcome/bat/bool2/SquirrelPlay.html:10 src/lessons/welcome/bat/bool2/TeaParty.html:11 src/lessons/welcome/bat/bool2/TeenSum.html:8 src/lessons/welcome/bat/bool2/TwoAsOne.html:5 src/lessons/welcome/bat/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Last2.html:8 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7 src/lessons/welcome/array/array123/Array123.html:4 src/lessons/welcome/array/array667/Array667.html:7 src/lessons/welcome/array/arraycount9/ArrayCount9.html:4 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:4 src/lessons/welcome/array/notriples/NoTriples.html:7 src/lessons/welcome/array/has271/Has271.html:8
+#: src/lessons/welcome/bat/bool1/Close10.html:7 src/lessons/welcome/bat/bool1/Diff21.html:5 src/lessons/welcome/bat/bool1/HasTeen.html:6 src/lessons/welcome/bat/bool1/IcyHot.html:5 src/lessons/welcome/bat/bool1/In1020.html:5 src/lessons/welcome/bat/bool1/In3050.html:5 src/lessons/welcome/bat/bool1/LastDigit.html:9 src/lessons/welcome/bat/bool1/LoneTeen.html:6 src/lessons/welcome/bat/bool1/Main.html:11 src/lessons/welcome/bat/bool1/Makes10.html:5 src/lessons/welcome/bat/bool1/Max1020.html:7 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:7 src/lessons/welcome/bat/bool1/NearHundred.html:7 src/lessons/welcome/bat/bool1/ParotTrouble.html:8 src/lessons/welcome/bat/bool1/PosNeg.html:5 src/lessons/welcome/bat/bool1/SleepIn.html:7 src/lessons/welcome/bat/bool1/SumDouble.html:5 src/lessons/welcome/bat/bool2/AlarmClock.html:11 src/lessons/welcome/bat/bool2/AnswerCell.html:8 src/lessons/welcome/bat/bool2/BlueTicket.html:10 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:11 src/lessons/welcome/bat/bool2/CigarParty.html:9 src/lessons/welcome/bat/bool2/DateFashion.html:12 src/lessons/welcome/bat/bool2/GreenTicket.html:9 src/lessons/welcome/bat/bool2/In1To10.html:8 src/lessons/welcome/bat/bool2/InOrderEqual.html:9 src/lessons/welcome/bat/bool2/InOrder.html:8 src/lessons/welcome/bat/bool2/LastDigit2.html:8 src/lessons/welcome/bat/bool2/LessBy10.html:5 src/lessons/welcome/bat/bool2/Main.html:4 src/lessons/welcome/bat/bool2/MaxMod5.html:9 src/lessons/welcome/bat/bool2/NearTen.html:8 src/lessons/welcome/bat/bool2/RedTicket.html:9 src/lessons/welcome/bat/bool2/ShareDigit.html:9 src/lessons/welcome/bat/bool2/SortaSum.html:7 src/lessons/welcome/bat/bool2/SquirrelPlay.html:10 src/lessons/welcome/bat/bool2/TeaParty.html:11 src/lessons/welcome/bat/bool2/TeenSum.html:8 src/lessons/welcome/bat/bool2/TwoAsOne.html:5 src/lessons/welcome/bat/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Last2.html:8 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7 src/lessons/welcome/array/array123/Array123.html:4 src/lessons/welcome/array/array667/Array667.html:7 src/lessons/welcome/array/arraycount9/ArrayCount9.html:4 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:4 src/lessons/welcome/array/notriples/NoTriples.html:7 src/lessons/welcome/array/has271/Has271.html:8
 msgid ""
 "This exercise was converted to JLM from the excellent exercising site "
 "http://javabat.com/"
@@ -8189,11 +8182,23 @@ msgstr ""
 msgid "Max1020"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Max1020.html:2
 msgid ""
 "Given 2 positive int values, return the larger value that is in the range "
 "10..20 inclusive, or return 0 if neither is in that range."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/bat/bool1/Max1020.html:5
+msgid "[!scala]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool1/Max1020.html:5
+msgid ""
+"Note that Math.max(Int,Int):Int and Math.min(Int,Int):Int return the maximum "
+"and minimum of two integers"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8217,8 +8222,10 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/NearHundred.html:2
 msgid ""
-"Given an int n, return true if it is within 10 of 100 or 200. Note "
-"Math.abs(n) returns the absolute value of a number."
+"Given an int n, return true if it is within 10 of 100 or 200.  "
+"[!java|scala]Note that Math.abs(n) returns the absolute value of a "
+"number.[/!] [!python]Note that math.fabs(n) returns the absolute value of a "
+"number.  This function can only be used if you imported the math module.[/!]"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -8775,24 +8782,23 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/welcome/array/basics/Array.html:1
-msgid "Knotting and sequences"
+#: src/lessons/welcome/array/basics/Array1.html:1
+msgid "[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/basics/Array.html:3
+#: src/lessons/welcome/array/basics/Array1.html:3
 msgid ""
 "The goal of this exercise is to reproduce the pattern of the first row in "
 "the other rows with a shift of one cell (see the Objective tab for "
-"details). The biggest difference between this exercise and the other we had "
+"details). The biggest difference between this exercise and the others we had "
 "on patterns is that you have to read the pattern (on first row) before "
 "reproducing it. You cannot do otherwise because the same code will be "
-"executed on three different worlds, each of them having its specific "
-"pattern."
+"executed on three different worlds, each of them having a specific pattern."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array.html:11
+#: src/lessons/welcome/array/basics/Array1.html:11
 msgid ""
 "One solution is to read the next cell, and go copy it in position before "
 "coming back to read the second cell. But since it is forbidden to use the "
@@ -8801,465 +8807,480 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array.html:16
+#: src/lessons/welcome/array/basics/Array1.html:16
 msgid ""
 "The simplest is to store the sequence of colors that constitute the whole "
-"pattern in an <b>array</b>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array.html:19
-msgid ""
-"An array is a sequence of positions in which one can store values of the "
-"same kind (one value per cell). It is thus a sequence of values of the same "
-"kind:"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array.html:24
-msgid ""
-"The simplest is to store the sequence of colors that constitute the whole in "
-"a <b>list</b>."
+"pattern in an [!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  But "
+"before we can do so, we should learn a bit what "
+"[!java|scala]arrays[/!][!python]lists[/!] are."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/welcome/array/basics/Array.html:26
-msgid "Lists"
+#: src/lessons/welcome/array/basics/Array1.html:20
+msgid "[!java|scala]Arrays[/!][!python]List[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array.html:27
+#: src/lessons/welcome/array/basics/Array1.html:22
 msgid ""
-"A list is an array of positions in which one can store values. Each cell is "
-"a variable on its own. A list is then a sequence of values. Lists can even "
-"mix values of differing types, such as integer values in some cells and "
-"colors in other cells.  At the end, a list is very similar to a storage "
-"shelve, where each level can store a separate value."
+"[!java|scala]An array[/!][!python]A list[/!] is an ordered sequence of "
+"variables that go together.  It is somehow similar to a shelve where each "
+"level can store a separate value. Each variable of the sequence is "
+"identified by its position, and can store a specific value. [!java|scala]All "
+"cells of the array must store values of the same type because arrays are "
+"homogeneous in [!thelang]. It is possible to trick this restriction by using "
+"the datatype <code>[!java]Object[/!][!scala]Any[/!]</code> that can contain "
+"[!java]almost[/!] any other datatype. [!java]Primitive types such as the "
+"ones we saw so far (int, boolean, double, char, etc) cannot be stored in an "
+"Object variable, but their objectified counter-part (Integer, Boolean, "
+"Double, Char, Boolean, etc) can.[/!] It is however a good practice to make "
+"the type of an array as specific as possible, i.e., if you plan to store "
+"some integers in your array, make it an array of integers, not of "
+"[!java]Object[/!][!scala]Any[/!].[/!] [!python]Lists can even mix values of "
+"differing types, such as integer values in some cells and colors in other "
+"cells.[/!]"
 msgstr ""
 
-#. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:38
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:38
 msgid ""
-"T is the array's name, T[0] is the name of the first cell, T[1] the name of "
-"the second cell, T[2] the third one, etc. And yes, the first cell in "
-"numbered T[0] and the last one of an array of size N is T[N-1]."
+"T is the [!java|scala]array[/!][!python]list[/!]'s name, "
+"[!java|python]T[0][/!][!scala]T(0)[/!] is the name of the first cell, "
+"[!java|python]T[1][/!][!scala]T(1)[/!] the name of the second cell, "
+"[!java|python]T[2][/!][!scala]T(2)[/!] the third one, etc. And yes, the "
+"first cell is numbered [!java|python]T[0][/!][!scala]T(0)[/!] while the last "
+"one of [!java|scala]an array[/!][!python]a list[/!] of size N is "
+"[!java|python]T[N-1][/!][!scala]T(N-1)[/!]. It may seem funny to count "
+"starting from 0 and not from 1 as usual, but some historical reasons make it "
+"unavoidable here."
 msgstr ""
 
-#. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:41
+#. type: Content of: <p><p><h3>
+#: src/lessons/welcome/array/basics/Array1.html:46
+msgid "Basic usage"
+msgstr ""
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:48
 msgid ""
-"T is the list's name, T[0] is the name of the first cell, T[1] the name of "
-"the second cell, T[2] the third one, etc. And yes, the first cell in "
-"numbered T[0] and the last one of a list of size N is T[N-1]. It may seem "
-"funny to count starting from 0 and not from 1 as usual, but some historical "
-"reasons make it unavoidable here."
+"We can use an integer variable <i>i</i> to access with "
+"[!java|python]T[i][/!][!scala]T(i)[/!] to the cells: when the value of "
+"<i>i</i> is 0, then [!java|python]T[i][/!][!scala]T(i)[/!] accesses "
+"[!java|python]T[0][/!][!scala]T(0)[/!]; when the value of <i>i</i> is 10, "
+"then [!java|python]T[i][/!][!scala]T(i)[/!] accesses "
+"[!java|python]T[10][/!][!scala]T(10)[/!].  <i>i</i> is said to be the "
+"<b>index</b> in T.  <code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> can "
+"be used just like any variable. We can set a new value:"
 msgstr ""
 
-#. type: Content of: <br><p>
-#: src/lessons/welcome/array/basics/Array.html:47
-msgid ""
-"We can use an integer variable <i>i</i> to access with T[i] to the cells: "
-"when the value of <i>i</i> is 0, then T[i] accesses T[0], when the value of "
-"<i>i</i> is 10, then T[i] accesses T[10]. <i>i</i> is said to be the index "
-"in T."
-msgstr ""
-
-#. type: Content of: <br><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:52
-msgid "Initialization"
-msgstr ""
-
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:53
-msgid ""
-"If <code>T</code> contains 10 elements, then each cell can be initialized "
-"with a simple loop:"
-msgstr ""
-
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:56
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:56
 #, no-wrap
-msgid ""
-"for (int i = 0; i&lt;10; i++) {\n"
-"   T[i] = 3;\n"
-"}\n"
+msgid "[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:61
-#, no-wrap
-msgid ""
-"for i in range(10):\n"
-"   T[i] = 3;\n"
-msgstr ""
-
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:65
-msgid ""
-"Note that <code>range(max)</code> returns the list of all integers that are "
-"smaller than <code>max</code>, starting with 0. There is exactly max such "
-"values. For example, if <code>max</code> is 3, the returned values are 0, 1 "
-"and 2."
-msgstr ""
-
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:70
-msgid "<code>T[i]</code> can be used just like a variable. We can set a new value:"
-msgstr ""
-
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:71
-#, no-wrap
-msgid "T[i] = 78"
-msgstr ""
-
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:73
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:58
 msgid "We can retrieve and use its value:"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:74
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:59
 #, no-wrap
-msgid "x = T[i]"
+msgid "x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:76
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:61
 msgid "We can test this value:"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:78
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:62
 #, no-wrap
 msgid ""
-"if (T[i] > 0 ) {\n"
-"    // instructions...\n"
-"}\n"
+"if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) "
+"[!scala|java]{[/!][!python]:[/!]\n"
+"    [!java|scala]//[/!][!python]#[/!] instructions...\n"
+"[!java|scala]}[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:83
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:66
+msgid ""
+"It is very easy to traverse the whole "
+"[!scala|java]array[/!][!python]list[/!], for example to initialize each "
+"cells."
+msgstr ""
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:69
 #, no-wrap
 msgid ""
-"if T[i] > 0:\n"
-"    // instructions...\n"
+"[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in "
+"range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]\n"
+"   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]\n"
+"[!java|scala]}[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:87
-msgid "Declaring an array"
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:73
+msgid ""
+"[!java|scala]The notation <code>T.length</code> retrieves the length of the "
+"array T,[/!] [!python]The function <code>len()</code> retrieves the length "
+"of the list T,[/!] allowing to build a classical for loop easily.  "
+"[!python]Actually, the <code>len()</code> function is much more generic and "
+"can be used to retrieve the length of many objects.  Applied to strings for "
+"example, it returns the amount of chars in this string.[/!] [!scala]Don't "
+"forget to start at <code>0</code> and stop at <code>T.length-1</code> "
+"instead of <code>1 to T.length</code> however.[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:88
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:81
+msgid ""
+"If you just want to iterate over the values of T without keeping track of "
+"their index, you can simply write:"
+msgstr ""
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:82
+#, no-wrap
+msgid ""
+"[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in "
+"T:[/!]\n"
+"  action()[!java];[/!]\n"
+"[!java|scala]}[/!]"
+msgstr ""
+
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:85
+msgid ""
+"[!java]This construct is called an <i>extended loop</i> in Java. The "
+"variable <i>i</i> takes all values of the set located to the right of the "
+"colon (:), one after the other.[/!] [!python|scala]This is actually very "
+"similar to the previous construct.  Simply, "
+"<code>[!python]range(n)[/!][!scala]i to j[/!]</code> returns a set of "
+"integers over which the for construct iterates.  Actually, [!thelang] offers "
+"much more elegant ways to traverse [!python]lists[/!][!scala]arrays[/!] and "
+"other data collections, but this should be the topic of a specific set of "
+"exercises (that are still to be written in JLM).[/!]"
+msgstr ""
+
+#. type: Content of: <p><p><p><h3>
+#: src/lessons/welcome/array/basics/Array1.html:96
+msgid "Declaring [!python]a list[/!][!java|scala]an array[/!]"
+msgstr ""
+
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:99
 msgid ""
 "If you know beforehand the content of your list, you can affect these values "
 "all together.  Just put them between square braces and separated by commas "
 "as follows:"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:91
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:102
 #, no-wrap
 msgid ""
 "L = [1, 3, 5, 7, 9] \n"
-"# L is now an array of 5 values, all of them being integers\n"
+"<span class=\"comment\"># L is now an array of 5 values, all of them being "
+"integers</span>"
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:94
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:104
 msgid ""
 "Otherwise, you probably want to create an empty list and then append each "
-"values separately:"
+"values separately to the list:"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:96
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:106
 #, no-wrap
 msgid ""
 "L2 = [] \n"
-"# L2 is now an empty list\n"
+"<span class=\"comment\"># L2 is now an empty list</span>\n"
 "L2.append(1)\n"
 "L2.append(3)\n"
 "L2.append(5)\n"
 "L2.append(7)\n"
 "L2.append(9) \n"
-"# Its content is now the same as L previously\n"
+"<span class=\"comment\"># Its content is now the same as L previously</span>"
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:106
-msgid "An array can be declared the following way:"
-msgstr ""
-
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:107
-#, no-wrap
-msgid "int[] T;"
-msgstr ""
-
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:109
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:117
 msgid ""
-"<code>int</code> means that the elements of the array are of type integer; "
-"<code>T</code> is the name of the array and <code>[]</code> means that we "
-"are speaking of an array. It is also possible to declare the same array the "
-"following way. Both writings are equivalent, but the first one is often "
-"prefered in Java."
+"To declare a variable named <b>T</b> that can store arrays of integers, one "
+"should write:"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:114
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:118
 #, no-wrap
-msgid "int T[];"
+msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
 msgstr ""
 
-#. type: Content of: <br><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:116
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:120
+msgid ""
+"[!java]<code>int</code> means that the elements of the array are of type "
+"integer; <code>[]</code> means that we are speaking of an array and "
+"<code>T</code> is the name of the variable.  For historical reasons, this "
+"can also be written as <code>int T[]</code> (with the [] after the variable "
+"name), but this is less readable and should probably be avoided.[/!] "
+"[!scala]The <code>[Int]</code> notation specializes the Array type (that is "
+"generic), specifying that each cell of this array is an integer. An array of "
+"booleans would simply by written <code>Array[Boolean]</code>.[/!]"
+msgstr ""
+
+#. type: Content of: <p><p><p><h3>
+#: src/lessons/welcome/array/basics/Array1.html:128
 msgid "Allocating an array"
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:118
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:130
 msgid ""
 "Declaring a variable <code>T</code> that stores an array only reserve the "
-"name <code>T</code> for later use. But the array is not initialized yet: it "
-"does not have any value. What would <code>T[4]</code> mean if we didn't say "
-"that the array is at least 5 cells long?"
+"<b>name</b> <code>T</code> for later use, but not the memory area to store "
+"the cells. The array is not initialized yet: it does not have any "
+"value. What would <code>[!java]T[4][/!][!scala]T(4)[/!]</code> mean if we "
+"didn't say that the array is 5 cells long?"
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:123
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:135
 msgid "First and foremost, we have to give a value to <code>T</code>:"
 msgstr ""
 
-#. type: Content of: <br><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:124
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:136
 #, no-wrap
-msgid "T = new int[10];"
+msgid "[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:126
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:138
 msgid ""
 "<code>new</code> means that we want to create something, and "
-"<code>int[10]</code> means that it is an array of 10 integer values. In "
-"return, an array of 10 integer cells is created in memory, and the "
-"<code>T</code> variable reference this array."
+"<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> means that it is "
+"an array of 10 integer values.  In return, an array of 10 integer cells is "
+"created in memory, and the <code>T</code> variable <b>references</b> this "
+"array."
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:131
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:143
 msgid ""
 "The size of an array is fixed and cannot be changed after the creation of "
-"the array. To know the size of a <code>T</code> array, we can consult the "
-"value of the variable <code>T.length</code>."
+"the array. The size of a <code>T</code> array can be retrieve by consulting "
+"the variable <code>T.length</code>."
 msgstr ""
 
-#. type: Content of: <br><p><p>
-#: src/lessons/welcome/array/basics/Array.html:136
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:147
 msgid ""
-"It is forbidden to write something like <code>int T[10];</code> You are "
-"required to use the <code>new</code> instruction. On the other hand, you "
-"perfectly can specify the size with a variable <code>i</code>."
+"While allocating, you can specify the size with a variable: "
+"<code>[!java]int[] T = new int[i];[/!][!scala]var T = new "
+"Array[Int](i);[/!]</code> In this case, the array's size will be set to the "
+"value of <code>i</code> <i>when <code>new</code> gets called</i>.  The size "
+"of the array still cannot be modified : even if the variable <code>i</code> "
+"changes afterward, the size remains to the value given when it was "
+"allocated.  [!java]Also, it is forbidden to write something like <code>int "
+"T[10];</code> when declaring the variable.  You are required to use the "
+"<code>new</code> instruction to allocate it, as in <code>int[] T = new "
+"int[10];</code> [/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:140
-#, no-wrap
-msgid "T = new int[i];"
-msgstr ""
-
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:141
-msgid ""
-"In this case, the array's size will be set to the value of <code>i</code> "
-"<b>when <code>new</code> gets called</b>. If the variable changes afterward, "
-"it won't change the array's size."
-msgstr ""
-
-#. type: Content of: <br><p><p><h4>
-#: src/lessons/welcome/array/basics/Array.html:145
-msgid "Declaration and allocation"
-msgstr ""
-
-#. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:146
-#, no-wrap
-msgid "int[] T = new int[10];"
-msgstr ""
-
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:148
-msgid "We declare and allocate the array on the same line."
-msgstr ""
-
-#. type: Content of: <br><p><p><h4>
-#: src/lessons/welcome/array/basics/Array.html:150
+#. type: Content of: <p><p><p><h4>
+#: src/lessons/welcome/array/basics/Array1.html:155
 msgid "Declaration and initialization"
 msgstr ""
 
-#. type: Content of: <br><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:151
-#, no-wrap
-msgid "int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };"
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:156
+msgid ""
+"If you know beforehand the content of your array, you can declare, allocate "
+"and initialize it in one shoot:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:153
-msgid ""
-"We declare, allocate and initialize the array on the same line. To know the "
-"size of the array to allocate, the compiler counts the provided values. This "
-"code is equivalent to:"
-msgstr ""
-
-#. type: Content of: <br><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:157
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:157
 #, no-wrap
 msgid ""
-"int[] T = new int[10];\n"
+"[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = "
+"Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]"
+msgstr ""
+
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:159
+msgid ""
+"To know the size of the array to allocate, the compiler counts the provided "
+"values.  This code is equivalent to:"
+msgstr ""
+
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:161
+#, no-wrap
+msgid ""
+"[!java]int[] T = new int[10];\n"
 "T[0] = 1;\n"
 "T[1] = 2;\n"
 "...\n"
-"T[9] = 10;\n"
+"T[9] = 10;[/!][!scala]var T = new Array[Int](10);\n"
+"T(0) = 1\n"
+"T(1) = 2\n"
+"...\n"
+"T(9) = 10[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:164
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:171
 msgid "It is also equivalent to:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:166
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:172
 #, no-wrap
 msgid ""
-"int[] T = new int[10];\n"
+"[!java]int[] T = new int[10];\n"
 "for (int i=0; i&lt;T.length; i++) {\n"
 "  T[i] = i+1;\n"
-"}\n"
+"}[/!][!scala]var T = new Array[Int](10);\n"
+"for (i &lt;- 0 to T.length-1) {\n"
+"  T(i) = i+1\n"
+"}[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:176
-msgid "Lists and method parameters"
+#. type: Content of: <p><p><p><h3>
+#: src/lessons/welcome/array/basics/Array1.html:183
+msgid "[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:177
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:184
 msgid ""
-"It is perfectly ok to pass a list to a method as a parameter. This method "
-"can then use this parameter as if it were defined there. Methods can also "
-"return lists as result without any complication. As an example, here is a "
-"method doubling every values of the list received as a parameter:"
+"It is perfectly OK to pass [!python]a list[/!][!java|scala]an array[/!] to a "
+"method as a parameter.  This method can then use this parameter as if it "
+"were defined locally:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:182
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:186
 #, no-wrap
 msgid ""
-"L = [1, 3, 5, 7, 9]\n"
-"def doubling(param):\n"
-"  for i in range( len(param) ):\n"
-"    param[i] *= 2\n"
+"[!java]boolean has42First(int[] array) {\n"
+"    return array[0] == 42;\n"
+"}[/!][!python]def has42First(list):\n"
+"  return list[0] == 42[/!][!scala]def has42First(array:Array[Int]):Boolean = "
+"{\n"
+"  return array(0) == 42\n"
+"}[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><h3>
-#: src/lessons/welcome/array/basics/Array.html:189
-msgid "Arrays and method parameters"
-msgstr ""
-
-#. type: Content of: <br><p><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:190
-msgid ""
-"It is perfectly ok to pass an array to a method as a parameter. The method "
-"must have a prototype similar to:"
-msgstr ""
-
-#. type: Content of: <br><p><p><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:192
-#, no-wrap
-msgid ""
-"void myMethod(int[] values) {\n"
-"  // do something\n"
-"}"
-msgstr ""
-
-#. type: Content of: <br><p><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:196
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:193
 msgid "On the caller side, that also very simple:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:198
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:194
 #, no-wrap
 msgid ""
-"int[] tab = new int[10];\n"
-"// initalize the values\n"
-"myMethod(tab);\n"
+"[!java]int[] tab = new int[10];[/!][!scala]var tab = new Array[Int] "
+"(10)[/!][!python]tab = [1, 3, 5, 7, 9][/!]\n"
+"[!java|scala]<span class=\"comment\">// Values initialization "
+"omitted</span>\n"
+"[/!]if (has42First(tab))[!java|scala] {[/!][!python]:[/!]\n"
+"   <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] do "
+"something</span>\n"
+"[!java|scala]}[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:203
-msgid "We can also have methods returns arrays as results:"
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:201
+msgid ""
+"If you want to allocate and initialize the array in one shoot, that's a bit "
+"more complicated as the compiler has to know the type of the parameter you "
+"are creating.  For that, use the following (ugly) construct:"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><pre>
-#: src/lessons/welcome/array/basics/Array.html:204
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:204
 #, no-wrap
 msgid ""
-"int[] otherMethod() {\n"
-"  int[] result = new int[10];\n"
-"  // do something\n"
-"  return result;\n"
+"if (has42First(   new int[] {1, 3, 5, 7, 9}   ) {\n"
+"   <span class=\"comment\">// do something</span>\n"
 "}"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:211
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:209
 msgid ""
-"Your code should save the color pattern observed on the first row into a "
-"list.  The easiest is to create an empty list, and then "
-"<code>append()</code> the colors one after the others."
+"Methods can also return [!java|scala]arrays[/!][!python]lists[/!] as result "
+"without any complication.  Here is a method that returns [!java|scala]an "
+"array[/!][!python]a list[/!] of the requested size, filled with 42s."
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:215
+#. type: Content of: <p><p><p><pre>
+#: src/lessons/welcome/array/basics/Array1.html:212
+#, no-wrap
 msgid ""
-"The <code>run()</code> method that you should write must declare an array of "
-"colors (<code>Color[]</code>) and allocate it. Beware, the first world is "
-"6x6, but this is not the case of the others. Use the "
-"<code>getWorldHeight()</code> method to retrieve the amount of lines in the "
-"current world."
+"[!java]int[] fill42(int size) {\n"
+"    int[] res = new int[size];\n"
+"    for (int i=0; i&lt;size; i++) \n"
+"        res[i] = 42;\n"
+"    return res;\n"
+"}[/!][!scala]def fill42(size:Int):Array[Int] = {\n"
+"    var res = new Array[int] (size)\n"
+"    for (i &lt;- 0 to size -1) {\n"
+"        res(i) = 42;\n"
+"    }\n"
+"    return res;\n"
+"}[/!][!python]def fill42(size):\n"
+"    res = []\n"
+"    for i in range(size):\n"
+"        res.append(42)\n"
+"    return res[/!]"
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:221
-msgid ""
-"Once the array allocated, we have to fill it. For each cel of the row, read "
-"the ground color (with <code>getGroundColor()</code>), and store it in the "
-"right cell of the array."
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:231
+msgid "At least! After this long explanation, we can come back to the exercise."
 msgstr ""
 
-#. type: Content of: <br><p><p><p><p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:225
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:232
+msgid ""
+"Your mission is rather simple actually.  Your code should save the color "
+"pattern observed on the first row into [!java|scala]an array[/!][!python]a "
+"list[/!].  [!python]The easiest is to create an empty list, and then "
+"<code>append()</code> the colors one after the others as you read them (with "
+"<code>getGroundColor()</code>).[/!] [!java|scala]For that, you should "
+"declare and allocate an array of <code>Color</code>. Beware, there is "
+"several worlds, of differing size; use <code>getWorldHeight()</code> to "
+"retrieve the size of the current world.  Once the array allocated, fill it "
+"by reading the ground color in each locations (with "
+"<code>getGroundColor()</code>).[/!]"
+msgstr ""
+
+#. type: Content of: <p><p><p><p>
+#: src/lessons/welcome/array/basics/Array1.html:240
 msgid ""
 "Once you managed to read and save the pattern on the first row, you have to "
 "reapply the pattern on every rows, for example by executing "
 "<code>getWorldHeight()</code> times a method written specifically for this."
 msgstr ""
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/array/basics/Array.html:229 src/lessons/welcome/array/basics/Array2.html:30
-msgid "You're up."
-msgstr ""
-
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/basics/Array2.html:1
-msgid "Knotting, sequences and modulo"
+msgid "[!java|scala]Arrays[/!][!python]Lists[/!], Knotting and Modulos"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:3
 msgid ""
 "This exercise is similar to the previous one: you have to reproduce the "
@@ -9284,40 +9305,35 @@ msgid ""
 "integer, we can use:"
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/array/basics/Array2.html:15
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array2.html:16
 #, no-wrap
-msgid "int offset = Integer.parseInt(readMessage())"
+msgid ""
+"[!java]int offset = Integer.parseInt(readMessage())[/!][!python]offset = "
+"int( readMessage() )[/!][!scala]val offset = readMessage().toInt[/!]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array2.html:17
+#: src/lessons/welcome/array/basics/Array2.html:18
 msgid ""
-"<code>readMessage()</code> gets the message on the ground as a String, while "
-"<code>Integer.parseInt()</code> transforms a String into an integer by "
-"<i>reading</i> it."
-msgstr ""
-
-#. type: Content of: <p><pre>
-#: src/lessons/welcome/array/basics/Array2.html:21
-#, no-wrap
-msgid "offset = int( readMessage() )"
+"<code>readMessage()</code> gets the message on the ground as a "
+"[!java|scala]String[/!][!python]string[/!], while "
+"<code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> "
+"transforms the string <code>str</code> into an integer by <i>reading</i> it."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:22
 msgid ""
-"<code>readMessage()</code> gets the message on the ground as a String, while "
-"<code>int()</code> transforms it into an integer value by <i>reading</i> it."
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/array/basics/Array2.html:25
-msgid ""
 "Then, to pick the right color, the easier is to use the <code>%</code> "
 "(modulo) operator. For example, <code>(i + 5) % size</code> allows to "
 "retrieve the <code>i</code>th cell of an array of size <code>size</code> "
 "with an offset of <code>5</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array2.html:27
+msgid "You're up."
 msgstr ""
 
 #. type: Content of: <h1>

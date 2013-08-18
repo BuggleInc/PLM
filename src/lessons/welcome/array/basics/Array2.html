@@ -1,7 +1,7 @@
-<h1>Knotting, sequences and modulo</h1>
+<h1>[!java|scala]Arrays[/!][!python]Lists[/!], Knotting and Modulos</h1>
 
-This exercise is similar to the previous one: you have to reproduce the
-color pattern of the first cell into the other ones. 
+<p>This exercise is similar to the previous one: you have to reproduce the
+color pattern of the first cell into the other ones.</p>
 
 <p>The first difference is that the world is bordered of walls: you thus have
 to slightly modify your trajectory to ensure that the buggle does not crash
@@ -11,20 +11,17 @@ the loop.</p>
 
 <p>The other difference is that the offset to apply between columns is not
 fixed, but written on the first cell of each column. To get the info as an
-integer, we can use:
-<pre class="Java">int offset = Integer.parseInt(readMessage())</pre>
+integer, we can use:</p>
 
-<code>readMessage()</code> gets the message on the ground as a String, while
-<code>Integer.parseInt()</code> transforms a String into an integer by
-<i>reading</i> it.
+<pre>[!java]int offset = Integer.parseInt(readMessage())[/!][!python]offset = int( readMessage() )[/!][!scala]val offset = readMessage().toInt[/!]</pre>
 
-<pre class="python">offset = int( readMessage() )</pre>
-<code>readMessage()</code> gets the message on the ground as a String, while
-<code>int()</code> transforms it into an integer value by <i>reading</i> it.
+<p><code>readMessage()</code> gets the message on the ground as a [!java|scala]String[/!][!python]string[/!], 
+while <code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> 
+transforms the string <code>str</code> into an integer by <i>reading</i> it.</p>
 
 <p>Then, to pick the right color, the easier is to use the <code>%</code>
 (modulo) operator. For example, <code>(i + 5) % size</code> allows to
 retrieve the <code>i</code>th cell of an array of size <code>size</code>
-with an offset of <code>5</code>.
+with an offset of <code>5</code>.</p>
 
 <p>You're up.</p>
