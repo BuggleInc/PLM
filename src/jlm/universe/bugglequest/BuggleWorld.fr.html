@@ -8,58 +8,61 @@ objets, colorier le sol, se cogner à des murs, etc.
 <table border=1>
 <tr><td colspan=2 align=center><b>Bouger</b><br/> (voir aussi la note sur les exceptions, plus bas)</td></tr>
   <tr><td><b>Tourner à gauche<br/>Tourner à droite<br/>Se retourner<br/>Avancer<br/>Reculer</b></td>
-      <td><div class="Java">void gauche()</div><div class="python">gauche()</div>
-          <div class="Java">void droite()</div><div class="python">droite()</div>
-          <div class="Java">void retourne()</div><div class="python">retourne()</div>
-          <div class="Java">void avance() ou void avance(int nbPas)</div><div class="python">avance() ou avance(nbPas)</div>
-          <div class="Java">void recule() ou void recule(int nbPas)</div><div class="python">recule() ou recule(nbPas)</div></td></tr>
+      <td>[!java]void [/!]gauche()<br/>
+          [!java]void [/!]droite()<br/>
+          [!java]void [/!]retourne()<br/>
+          [!java]void [/!]avance() ou [!java]void [/!]avance([!java]int
+[/!]steps[!scala]:Int[/!])<br/>
+          [!java]void [/!]recule() or [!java]void [/!]recule([!java]int
+[/!]steps[!scala]:Int[/!])<br/></td></tr>
   <tr><td><b>Obtenir l'abcisse<br/>Obtenir l'ordonnée<br/>Changer l'abcisse<br/>Changer l'ordonnée<br/>Changer la position</b></td>
-      <td><div class="Java">int getX()</div><div class="python">getX()</div>
-          <div class="Java">int getY()</div><div class="python">getY()</div>
-          <div class="Java">void setX(int x)</div><div class="python">setX(x)</div>
-          <div class="Java">void setY(int y)</div><div class="python">setY(y)</div>
-          <div class="Java">void setPos(int x,int y)</div><div class="python">setPos(x,y)</div></td></tr>
+      <td>[!java]int [/!]getX()[!scala]:Int[/!]<br/>
+          [!java]int [/!]getY()[!scala]:Int[/!]<br/>
+          [!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])<br/>
+          [!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])<br/>
+          [!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int
+[/!]y[!scala]:Int[/!])</td></tr>
 
 <tr><td colspan=2 align=center><b>Informations sur la buggle</b></td></tr>
   <tr><td><b>Obtenir la couleur<br/>Changer la couleur</b></td>
-      <td><div class="Java">Color getCouleur()</div><div class="python">getCouleur()</div>
-          <div class="Java">void setCouleur(Color c)</div><div class="python">setCouleur(couleur)</div></td></tr>				
+      <td>[!java]Color [/!]getCouleur()[!scala]:Color[/!]<br/>
+          [!java]void [/!]setCouleur([!java]Color [/!]c[!scala]:Color[/!])</td></tr>				
   <tr><td><b>Chercher un mur devant<br/>Chercher un mur derriere</b></td>
-      <td><div class="Java">boolean estFaceMur()</div><div class="python">estFaceMur()</div>
-          <div class="Java">boolean estDosMur()</div><div class="python">estDosMur()</div></td></tr>				
+      <td>[!java]boolean [/!]estFaceMur()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]estDosMur()[!scala]:Boolean[/!]</td></tr>				
   <tr><td><b>Obtenir la direction<br/>Changer la direction</b><br/>Les directions valides sont :</td>
-      <td><div class="Java">Direction getDirection()</div><div class="python">getDirection()</div>
-          <div class="Java">void setDirection(Direction dir)</div><div class="python">setDirection(direction)</div>
+      <td>[!java]Direction [/!]getDirection()[!scala]:Direction[/!]<br/>
+          [!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])<br/>
           Direction.NORTH (le nord), Direction.EAST (l'est), Direction.SOUTH (le sud)
 et Direction.WEST (l'ouest)</td></tr>
   <tr><td>Renvoi si la buggle est actuellement <b>sélectionnée dans l'interface</b></td>
-      <td><div class="Java">boolean estChoisi()</div><div class="python">isSelected()</div></td></tr>
+      <td>[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]</td></tr>
  
 <tr><td colspan=2 align=center><b>À propos de la brosse</b></td></tr>
   <tr><td><b>Baisser la brosse<br/>Lever la brosse<br/>Obtenir la position de la brosse</b></td>
-      <td><div class="Java">void leveBrosse()</div><div class="python">leveBrosse()</div>
-          <div class="Java">void baisseBrosse()</div><div class="python">baisseBrosse()</div>
-          <div class="Java">boolean estBrosseBaissee()</div><div class="python">estBrosseBaissee()</div></td></tr>
+      <td>[!java]void [/!]leveBrosse()<br/>
+          [!java]void [/!]baisseBrosse()<br/>
+          [!java]boolean [/!]estBrosseLevee()[!scala]:Boolean[/!]</td></tr>
   <tr><td><b>Modifier la couleur de la brosse<br/>Obtenir la couleur de la brosse</b></td>
-      <td><div class="Java">void setBrosseCouleur(Color c)</div><div class="python">setBrosseCouleur(couleur)</div>
-          <div class="Java">Color getBrosseCouleur()</div><div class="python">getBrosseCouleur()</div></td></tr>
+      <td>[!java]void [/!]setCouleurBrosse([!java]Color [/!]c[!scala]:Color[/!])<br/>
+          [!java]Color [/!]getCouleurBrosse()[!scala]:Color[/!]</td></tr>
 
 <tr><td colspan=2 align=center><b>Interagir avec le monde</b></td></tr>
   <tr><td><b>Obtenir la couleur du sol</b></td>
-      <td><div class="Java">Color getSolCouleur()</div><div class="python">getSolCouleur()</div></td></tr>
+      <td>[!java]Color [/!]getCouleurSol()[!scala]:Color[/!]</td></tr>
 
   <tr><td><b>Chercher un biscuit par terre<br/>Chercher un biscuit dans ses poches<br/>Prendre un biscuit<br/>Poser un biscuit</b><br/>
       (voir la note sur les exceptions)</td>
-      <td><div class="Java">boolean estSurBiscuit()</div><div class="python">estSurBiscuit()</div>
-          <div class="Java">boolean porteBiscuit()</div><div class="python">porteBiscuit()</div>
-          <div class="Java">void prendBiscuit()</div><div class="python">prendBiscuit()</div>
-          <div class="Java">void poseBiscuit()</div><div class="python">poseBiscuit()</div></td></tr>
+      <td>[!java]boolean [/!]estSurBiscuit()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]porteBiscuit()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]prendBiscuit()<br/>
+          [!java]void [/!]poseBiscuit()</td></tr>
 
   <tr><td><b>Chercher un message<br/>Ajouter un message<br/>Lire le message<br/>Effacer le message</b></td>
-      <td><div class="Java">boolean estSurMessage()</div><div class="python">estSurMessage()</div>
-          <div class="Java">void ecritMessage(String msg)</div><div class="python">ecritMessage(msg)</div>
-          <div class="Java">String litMessage()</div><div class="python">litMessage()</div>
-          <div class="Java">void effaceMessage()</div><div class="python">effaceMessage()</div></td></tr>
+      <td>[!java]boolean [/!]estSurMessage()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]ecritMessage([!java]String [/!]msg[!scala]:String[/!])<br/>
+          [!java]String [/!]litMessage()[!scala]:String[/!]<br/>
+          [!java]void [/!]effaceMessage()</td></tr>
 </table>
 
 <h2>Note sur les exceptions</h2>

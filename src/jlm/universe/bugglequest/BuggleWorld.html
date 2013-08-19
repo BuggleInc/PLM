@@ -8,57 +8,57 @@ paint the ground, hit walls, etc.
 <table border=1>
 <tr><td colspan=2 align=center><b>Moving</b><br/> (See also the note on exceptions, below)</td></tr>
   <tr><td><b>Turn left<br/>Turn right<br/>Turn back<br/>Moving forward<br/>Moving back</b></td>
-      <td><div class="Java">void left()</div><div class="python">left()</div>
-          <div class="Java">void right()</div><div class="python">right()</div>
-          <div class="Java">void back()</div><div class="python">back()</div>
-          <div class="Java">void forward() or void forward(int steps)</div><div class="python">forward() or forward(steps)</div>
-          <div class="Java">void backward() or void backward(int steps)</div><div class="python">backward() or backward(steps)</div></td></tr>
+      <td>[!java]void [/!]left()<br/>
+          [!java]void [/!]right()<br/>
+          [!java]void [/!]back()<br/>
+          [!java]void [/!]forward() or [!java]void [/!]forward([!java]int [/!]steps[!scala]:Int[/!])<br/>
+          [!java]void [/!]backward() or [!java]void [/!]backward([!java]int [/!]steps[!scala]:Int[/!])<br/></td></tr>
   <tr><td><b>Get X coordinate<br/>Get Y coordinate<br/>Set X coordinate<br/>Set Y coordinate<br/>Set position</b></td>
-      <td><div class="Java">int getX()</div><div class="python">getX()</div>
-          <div class="Java">int getY()</div><div class="python">getY()</div>
-          <div class="Java">void setX(int x)</div><div class="python">setX(x)</div>
-          <div class="Java">void setY(int y)</div><div class="python">setY(y)</div>
-          <div class="Java">void setPos(int x,int y)</div><div class="python">setPos(x,y)</div></td></tr>
+      <td>[!java]int [/!]getX()[!scala]:Int[/!]<br/>
+          [!java]int [/!]getY()[!scala]:Int[/!]<br/>
+          [!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])<br/>
+          [!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])<br/>
+          [!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])</td></tr>
 
 <tr><td colspan=2 align=center><b>Information on the buggle</b></td></tr>
   <tr><td><b>Get the color<br/>Set the color</b></td>
-      <td><div class="Java">Color getColor()</div><div class="python">getColor()</div>
-          <div class="Java">void setColor(Color c)</div><div class="python">setColor(color)</div></td></tr>				
+      <td>[!java]Color [/!]getColor()[!scala]:Color[/!]<br/>
+          [!java]void [/!]setColor([!java]Color [/!]c[!scala]:Color[/!])</td></tr>				
   <tr><td><b>Look for a wall forward<br/>Look for a wall backward</b></td>
-      <td><div class="Java">boolean isFacingWall()</div><div class="python">isFacingWall()</div>
-          <div class="Java">boolean isBackingWall()</div><div class="python">isBackingWall()</div></td></tr>				
+      <td>[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]</td></tr>				
   <tr><td><b>Get heading<br/>Set heading</b><br/>valid directions are:</td>
-      <td><div class="Java">Direction getDirection()</div><div class="python">getDirection()</div>
-          <div class="Java">void setDirection(Direction dir)</div><div class="python">setDirection(direction)</div>
+      <td>[!java]Direction [/!]getDirection()[!scala]:Direction[/!]<br/>
+          [!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])<br/>
           Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST</td></tr>
   <tr><td>Check whether the buggle is currently <b>selected in the interface</b></td>
-      <td><div class="Java">boolean isSelected()</div><div class="python">isSelected()</div></td></tr>
+      <td>[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]</td></tr>
  
 <tr><td colspan=2 align=center><b>About the brush</b></td></tr>
   <tr><td><b>Brush down<br/>Brush up<br/>Get brush position</b></td>
-      <td><div class="Java">void brushUp()</div><div class="python">brushUp()</div>
-          <div class="Java">void brushDown()</div><div class="python">brushDown()</div>
-          <div class="Java">boolean isBrushDown()</div><div class="python">isBrushDown()</div></td></tr>
+      <td>[!java]void [/!]brushUp()<br/>
+          [!java]void [/!]brushDown()<br/>
+          [!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]</td></tr>
   <tr><td><b>Change the brush color<br/>Get the color of the brush</b></td>
-      <td><div class="Java">void setBrushColor(Color c)</div><div class="python">setBrushColor(color)</div>
-          <div class="Java">Color getBrushColor()</div><div class="python">getBrushColor()</div></td></tr>
+      <td>[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])<br/>
+          [!java]Color [/!]getBrushColor()[!scala]:Color[/!]</td></tr>
 
 <tr><td colspan=2 align=center><b>Interacting with the world</b></td></tr>
   <tr><td><b>Get the color of the ground</b></td>
-      <td><div class="Java">Color getGroundColor()</div><div class="python">getGroundColor()</div></td></tr>
+      <td>[!java]Color [/!]getGroundColor()[!scala]:Color[/!]</td></tr>
 
   <tr><td><b>Look for a baggle on the ground<br/>Look for a baggle in bag<br/>Pickup a baggle<br/>Drop a baggle</b><br/>
       (see the note on exceptions)</td>
-      <td><div class="Java">boolean isOverBaggle()</div><div class="python">isOverBaggle()</div>
-          <div class="Java">boolean isCarryingBaggle()</div><div class="python">isCarryingBaggle()</div>
-          <div class="Java">void pickupBaggle()</div><div class="python">pickupBaggle()</div>
-          <div class="Java">void dropBaggle()</div><div class="python">dropBaggle()</div></td></tr>
+      <td>[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]isCarryingBaggle()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]pickupBaggle()<br/>
+          [!java]void [/!]dropBaggle()</td></tr>
 
   <tr><td><b>Look for a message<br/>Add a message<br/>Read the message<br/>Erase the message</b></td>
-      <td><div class="Java">boolean isOverMessage()</div><div class="python">isOverMessage()</div>
-          <div class="Java">void writeMessage(String msg)</div><div class="python">writeMessage(msg)</div>
-          <div class="Java">String readMessage()</div><div class="python">readMessage()</div>
-          <div class="Java">void clearMessage()</div><div class="python">clearMessage()</div></td></tr>
+      <td>[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])<br/>
+          [!java]String [/!]readMessage()[!scala]:String[/!]<br/>
+          [!java]void [/!]clearMessage()</td></tr>
 </table>
 
 <h2>Note on exceptions</h2>

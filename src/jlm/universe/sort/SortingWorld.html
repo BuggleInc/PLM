@@ -8,33 +8,25 @@ helps understanding the differences between each of them.
 <h2>Methods available to sorting algorithms</h2>
 <table border=1>
 <tr><td><b>Method</b></td><td><b>Action</b></td><td><b>Cost</b></td></tr>
-<tr><td><div class="Java">int getValueCount()</div>
-        <div class="python">getValueCount()</div></td>
+<tr><td>[!java]int [/!]getValueCount() [!scala]:Int[/!]</td>
     <td>Returns the amount of values in the array</td><td>none</td></tr>
 
-<tr><td><div class="Java">boolean isSmaller(int i, int j)</div>
-        <div class="python">isSmaller(i, j)</div></td>
+<tr><td>[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]</td>
     <td>Returns true if the content of cell i is strictly smaller than the one of cell j</td><td>two reads</td></tr>
-<tr><td><div class="Java">boolean isSmallerThan(int i, int val)</div>
-        <div class="python">isSmallerThan(i, val)</div></td>
-    <td>Returns true if the content of cell i is strictly smaller than value <code>val</code></td><td>one read</td></tr>
+<tr><td>[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]</td>
+    <td>Returns true if the content of cell i is strictly smaller than the <code>value</code></td><td>one read</td></tr>
 
-<tr><td><div class="Java">void swap(int i, int j)</div>
-        <div class="python">swap(i, j)</div></td>
+<tr><td>[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!])</td>
      <td>Swaps the content of cell i and the one of cell j</td><td>two reads, two writes</td></tr>
-<tr><td><div class="Java">void copy(int from, int to)</div>
-        <div class="python">copy(from, to)</div></td>
+<tr><td>[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int [/!]to[!scala]:Int[/!])</td>
     <td>Copy the content of cell 'from' into the cell 'to'</td><td>one read, one write</td></tr>
 
-<tr><td><div class="Java">int getValue(int idx)</div>
-        <div class="python">getValue(idx)</div></td>
+<tr><td>[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])</td>
     <td>Returns the value of cell idx</td><td>one read</td></tr>
-<tr><td><div class="Java">void setValue(int idx, int val)</div>
-        <div class="python">setValue(idx, val)</div></td>
-    <td>Sets cell 'idx' to the value 'val'</td><td>one write</td></tr>
+<tr><td>[!java]void [/!]setValue([!java]int [/!]idx[!scala]:Int[/!], [!java]int [/!]value[!scala]:Int[/!])</td>
+    <td>Sets cell 'idx' to the <code>value</code> </td><td>one write</td></tr>
 
-<tr><td><div class="Java">boolean isSelected()</div>
-        <div class="python">isSelected()</div></td>
+<tr><td>[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]</td>
     <td>Returns whether the current world is selected in the graphical interface.</td><td>none</td></tr>
 
 </table>

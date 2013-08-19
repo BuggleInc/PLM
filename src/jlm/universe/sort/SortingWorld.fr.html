@@ -9,35 +9,32 @@ différences d'efficacité entre eux.
 <h2>Méthodes disponibles pour les algorithmes de tri</h2>
 <table border=1>
 <tr><td><b>Méthode</b></td><td><b>Action</b></td><td><b>Coût</b></td></tr>
-<tr><td><div class="Java">int getValueCount()</div>
-        <div class="python">getValueCount()</div></td>
+<tr><td>[!java]int [/!]getNombreValeurs() [!scala]:Int[/!]</td>
     <td>Retourne le nombre de valeurs dans le tableau</td><td>aucun</td></tr>
 
-<tr><td><div class="Java">boolean isSmaller(int i, int j)</div>
-        <div class="python">isSmaller(i, j)</div></td>
+<tr><td>[!java]boolean [/!]plusPetit([!java]int [/!]i[!scala]:Int[/!], [!java]int
+[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]</td>
     <td>Retourne vrai ssi le contenu de la case i est strictement inférieur à celui
 de la case j</td><td>deux lectures</td></tr>
-<tr><td><div class="Java">boolean isSmallerThan(int i, int val)</div>
-        <div class="python">isSmallerThan(i, val)</div></td>
+<tr><td>[!java]boolean [/!]plusPetitQue([!java]int [/!]i[!scala]:Int[/!], [!java]int
+[/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]</td>
     <td>Retourne vrai ssi le contenu de la case i est strictement inférieur à la
-valeur val</td><td>une lecture</td></tr>
+valeur <code>value</code></td><td>une lecture</td></tr>
 
-<tr><td><div class="Java">void swap(int i, int j)</div>
-        <div class="python">swap(i, j)</div></td>
+<tr><td>[!java]void [/!]echange([!java]int [/!]i[!scala]:Int[/!], [!java]int
+[/!]j[!scala]:Int[/!])</td>
      <td>Echange le contenu de la case i avec celui de la case j</td><td>deux lectures, deux écritures</td></tr>
-<tr><td><div class="Java">void copy(int from, int to)</div>
-        <div class="python">copy(from, to)</div></td>
-    <td>Copie le contenu de la case 'from' dans la case 'to'</td><td>une lecture, une écriture</td></tr>
+<tr><td>[!java]void [/!]copie([!java]int [/!]depuis[!scala]:Int[/!], [!java]int
+[/!]vers[!scala]:Int[/!])</td>
+    <td>Copie le contenu de la case 'depuis' dans la case 'vers'</td><td>une lecture, une écriture</td></tr>
 
-<tr><td><div class="Java">int getValue(int idx)</div>
-        <div class="python">getValue(idx)</div></td>
+<tr><td>[!java]int [/!]getValeur([!java]int [/!]idx[!scala]:Int[/!])</td>
     <td>Retourne la valeur de la case idx</td><td>une lecture</td></tr>
-<tr><td><div class="Java">void setValue(int idx, int val)</div>
-        <div class="python">setValue(idx, val)</div></td>
-    <td>Affecte la valeur 'val' à la case 'idx'</td><td>une écriture</td></tr>
+<tr><td>[!java]void [/!]setValeur([!java]int [/!]idx[!scala]:Int[/!], [!java]int
+[/!]valeur[!scala]:Int[/!])</td>
+    <td>Affecte la valeur 'valeur' à la case 'idx' </td><td>une écriture</td></tr>
 
-<tr><td><div class="Java">boolean estChoisi()</div>
-        <div class="python">isSelected()</div></td>
+<tr><td>[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]</td>
     <td>Renvoi si le monde actuel est sélectionné dans l'interface graphique.</td><td>aucun</td></tr>
 
 </table>

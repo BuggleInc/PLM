@@ -1,6 +1,6 @@
-<h1>TurtleWorld</h1>
+<h1>The universe of turtles</h1>
 
-<p>This universe is an adaptation of LOGO for the Java Learning Machine.</p>
+<p>This is an adaptation of LOGO for the Java Learning Machine.</p>
 
 <p>It is directly inspired from the work of the mathematician Seymour
 Papert in the 60's. Inspired from the swiss psycholog Jean Piaget, he came
@@ -10,69 +10,51 @@ and which respond to simple orders.</p>
 
 <h2>Functions to move the turtle</h2>
 
-<pre class="Java">void forward(double steps)
-void backward(double steps)</pre>
-<pre class="python">forward(steps)
-backward(steps)</pre>
+<pre>[!java]void [/!]forward([!java]double [/!]steps[!scala]:Double[/!])
+[!java]void [/!]backward([!java]double [/!]steps[!scala]:Double[/!])</pre>
 Moves forward or backward of the requested amount of steps.
 
-<pre class="Java">void right(double angle)
-void left(double angle)</pre>
-<pre class="python">right(angle)
-left(angle)</pre>
+<pre>[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])
+[!java]void [/!]left([!java]double [/!]angle[!scala]:Double[/!])</pre>
 Turns left or right of the given angle (in degrees).
 
-<pre class="Java">double getX()
-double getY()</pre>
-<pre class="python">getX()
-getY()</pre>
+<pre>[!java]double [/!]getX()[!scala]:Double[/!]
+[!java]double [/!]getY()[!scala]:Double[/!]</pre>
 Returns the current position of the turtle.
 
-<pre class="Java">void setX(double x)
-void setY(double y)
-void setPos(double x, double y)</pre>
-<pre class="python">setX(x)
-setY(y)
-setPos(x,y)</pre>
+<pre>[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])
+[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])
+[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])</pre>
 Teleports the turtle to a new position (without leaving any trace).
 
-<pre class="Java">void moveTo(double x, double y)</pre>
-<pre class="python">moveTo(x,y)</pre>
+<pre>[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])</pre>
 Moves the turtle to a new position.
 
-<pre class="Java">double getHeading()</pre>
-<pre class="python">getHeading()</pre>
+<pre>[!java]double [/!]getHeading()[!scala]:Double[/!]</pre>
 Returns the current heading of the turtle (in degrees).
 
-<pre class="Java">void setHeading(double angle)</pre>
-<pre class="python">setHeading(angle)</pre>
+<pre>[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])</pre>
 Sets a new heading to the turtle (in degrees).
 
 <h2>Functions about the pen</h2>
 
-<pre class="Java">void penUp()</pre>
-<pre class="python">penUp()</pre>
+<pre>[!java]void [/!]penUp()</pre>
 Moves the pen up (turtles have pens, not brushes as buggles). The
 turtle will not leave any trace during its subsequent moves.
 
-<pre class="Java">void penDown()</pre>
-<pre class="python">penDown()</pre>
+<pre>[!java]void [/!]penDown()</pre>
 Moves the pen down. The turtle will leave a trace during its subsequent moves.
 
-<pre class="Java">boolean isPenDown()</pre>
-<pre class="python">isPenDown()</pre>
+<pre>[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]</pre>
 Returns the current pen position as a boolean.
 
-<pre class="Java">Color getColor()</pre>
-<pre class="python">getColor()</pre>
+<pre>[!java]Color [/!]getColor()[!scala]:Color[/!]</pre>
 Returns the current pen color.
 
-<pre class="Java">void setColor(Color color)</pre>
-<pre class="python">setColor(color)</pre>
+<pre>[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])</pre>
 Changes the pen color.
 
 <h2>Other functions</h2>
 
-<pre class="Java">boolean isSelected()</pre>
-<pre class="python">isSelected()</pre>
+<pre>[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]</pre>
 Returns whether the current turtle is selected in the graphical interface.

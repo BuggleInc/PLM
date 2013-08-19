@@ -58,5 +58,19 @@ public class SortingEntity extends Entity {
 		((SortingWorld) this.world).swap(i,j);
 		stepUI();
 	}
+	
+	/* BINDINGS TRANSLATION: French */
+	public int getNombreValeurs() { return getValueCount(); }
 
+	public int getValeur(int i)   { return getValue(i);}
+	public void setValeur(int i,int val) { setValue(i, val); }
+	
+	public boolean plusPetit(int i, int j) { return isSmaller(i, j); }	
+	public boolean plusPetitQue(int i, int value) { return isSmallerThan(i, value); }
+	
+	public void echange(int i, int j) { swap(i,j); }
+	public void copie(int from,int to) { copy(from,to);}
+
+	
+	public boolean estSelectionne() {return isSelected();}
 }

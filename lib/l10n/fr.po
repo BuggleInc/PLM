@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-19 19:30+0300\n"
-"PO-Revision-Date: 2013-08-19 20:57+0200\n"
+"POT-Creation-Date: 2013-08-19 22:56+0300\n"
+"PO-Revision-Date: 2013-08-19 23:16+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -312,39 +312,31 @@ msgstr "<b>Action</b>"
 msgid "<b>Cost</b>"
 msgstr "<b>Coût</b>"
 
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:11
-msgid "int getValueCount()"
-msgstr "int getValueCount()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:12
-msgid "getValueCount()"
-msgstr "getValueCount()"
+msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getNombreValeurs() [!scala]:Int[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:13
+#: src/jlm/universe/sort/SortingWorld.html:12
 msgid "Returns the amount of values in the array"
 msgstr "Retourne le nombre de valeurs dans le tableau"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:13
-#: src/jlm/universe/sort/SortingWorld.html:38
+#: src/jlm/universe/sort/SortingWorld.html:12
+#: src/jlm/universe/sort/SortingWorld.html:30
 msgid "none"
 msgstr "aucun"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:15
-msgid "boolean isSmaller(int i, int j)"
-msgstr "boolean isSmaller(int i, int j)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:16
-msgid "isSmaller(i, j)"
-msgstr "isSmaller(i, j)"
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/sort/SortingWorld.html:14
+msgid ""
+"[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int "
+"[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]plusPetit([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:17
+#: src/jlm/universe/sort/SortingWorld.html:15
 msgid ""
 "Returns true if the content of cell i is strictly smaller than the one of "
 "cell j"
@@ -353,132 +345,98 @@ msgstr ""
 "de la case j"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:17
+#: src/jlm/universe/sort/SortingWorld.html:15
 msgid "two reads"
 msgstr "deux lectures"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:18
-msgid "boolean isSmallerThan(int i, int val)"
-msgstr "boolean isSmallerThan(int i, int val)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:19
-msgid "isSmallerThan(i, val)"
-msgstr "isSmallerThan(i, val)"
-
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:20
+#: src/jlm/universe/sort/SortingWorld.html:16
 msgid ""
-"Returns true if the content of cell i is strictly smaller than value "
-"<code>val</code>"
-msgstr ""
-"Retourne vrai ssi le contenu de la case i est strictement inférieur à la "
-"valeur val"
+"[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], [!"
+"java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
+msgstr "[!java]boolean [/!]plusPetitQue([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:20
-#: src/jlm/universe/sort/SortingWorld.html:31
+#: src/jlm/universe/sort/SortingWorld.html:17
+msgid ""
+"Returns true if the content of cell i is strictly smaller than the "
+"<code>value</code>"
+msgstr "Retourne vrai ssi le contenu de la case i est strictement inférieur à la valeur <code>value</code>"
+
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/sort/SortingWorld.html:17
+#: src/jlm/universe/sort/SortingWorld.html:25
 msgid "one read"
 msgstr "une lecture"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:22
-msgid "void swap(int i, int j)"
-msgstr "void swap(int i, int j)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:23
-msgid "swap(i, j)"
-msgstr "swap(i, j)"
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/sort/SortingWorld.html:19
+msgid ""
+"[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!"
+"scala]:Int[/!])"
+msgstr "[!java]void [/!]echange([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:24
+#: src/jlm/universe/sort/SortingWorld.html:20
 msgid "Swaps the content of cell i and the one of cell j"
 msgstr "Echange le contenu de la case i avec celui de la case j"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:24
+#: src/jlm/universe/sort/SortingWorld.html:20
 msgid "two reads, two writes"
 msgstr "deux lectures, deux écritures"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:25
-msgid "void copy(int from, int to)"
-msgstr "void copy(int from, int to)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:26
-msgid "copy(from, to)"
-msgstr "copy(from, to)"
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/sort/SortingWorld.html:21
+msgid ""
+"[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int [/!]to[!"
+"scala]:Int[/!])"
+msgstr "[!java]void [/!]copie([!java]int [/!]depuis[!scala]:Int[/!], [!java]int [/!]vers[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:27
+#: src/jlm/universe/sort/SortingWorld.html:22
 msgid "Copy the content of cell 'from' into the cell 'to'"
-msgstr "Copie le contenu de la case 'from' dans la case 'to'"
+msgstr "Copie le contenu de la case 'depuis' dans la case 'vers'"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:27
+#: src/jlm/universe/sort/SortingWorld.html:22
 msgid "one read, one write"
 msgstr "une lecture, une écriture"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:29
-msgid "int getValue(int idx)"
-msgstr "int getValue(int idx)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:30
-msgid "getValue(idx)"
-msgstr "getValue(idx)"
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/sort/SortingWorld.html:24
+msgid "[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])"
+msgstr "[!java]int [/!]getValeur([!java]int [/!]idx[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:31
+#: src/jlm/universe/sort/SortingWorld.html:25
 msgid "Returns the value of cell idx"
 msgstr "Retourne la valeur de la case idx"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:32
-msgid "void setValue(int idx, int val)"
-msgstr "void setValue(int idx, int val)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/sort/SortingWorld.html:33
-msgid "setValue(idx, val)"
-msgstr "setValue(idx, val)"
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/sort/SortingWorld.html:26
+msgid ""
+"[!java]void [/!]setValue([!java]int [/!]idx[!scala]:Int[/!], [!java]int "
+"[/!]value[!scala]:Int[/!])"
+msgstr "[!java]void [/!]setValeur([!java]int [/!]idx[!scala]:Int[/!], [!java]int [/!]valeur[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:34
-msgid "Sets cell 'idx' to the value 'val'"
-msgstr "Affecte la valeur 'val' à la case 'idx'"
+#: src/jlm/universe/sort/SortingWorld.html:27
+msgid "Sets cell 'idx' to the <code>value</code>"
+msgstr "Affecte la valeur 'valeur' à la case 'idx'"
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:34
+#: src/jlm/universe/sort/SortingWorld.html:27
 msgid "one write"
 msgstr "une écriture"
 
-#. type: Content of: <pre>
-#: src/jlm/universe/sort/SortingWorld.html:36
-#: src/jlm/universe/turtles/TurtleWorld.html:76
-#: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:25
-#, no-wrap
-msgid "boolean isSelected()"
-msgstr "boolean estChoisi()"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/sort/SortingWorld.html:37
-#: src/jlm/universe/turtles/TurtleWorld.html:77
-#: src/jlm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:26
-#, no-wrap
-msgid "isSelected()"
-msgstr "isSelected()"
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/sort/SortingWorld.html:29
+msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/sort/SortingWorld.html:38
+#: src/jlm/universe/sort/SortingWorld.html:30
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:27
 msgid ""
@@ -486,12 +444,12 @@ msgid ""
 msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
 
 #. type: Content of: <h2>
-#: src/jlm/universe/sort/SortingWorld.html:42
+#: src/jlm/universe/sort/SortingWorld.html:34
 msgid "History view"
 msgstr "Vue de l'historique du monde"
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:43
+#: src/jlm/universe/sort/SortingWorld.html:35
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
@@ -509,7 +467,7 @@ msgstr ""
 "comportement attendu et le comportement effectif."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:50
+#: src/jlm/universe/sort/SortingWorld.html:42
 msgid ""
 "To help in this process, it is possible to graphically explore the history "
 "of your sorting algorithm. Switch to the Objective view and use the "
@@ -522,7 +480,7 @@ msgstr ""
 "l'état courant du monde et la vue de son histoire."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:55
+#: src/jlm/universe/sort/SortingWorld.html:47
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:19
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
@@ -545,7 +503,7 @@ msgstr ""
 "d'exclamation a été écrite avec setValue()."
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:64
+#: src/jlm/universe/sort/SortingWorld.html:56
 msgid ""
 "This view, inspired from Aldo Cortesi, reveals very helpful understand the "
 "inner behavior of sorting algorithms."
@@ -555,12 +513,12 @@ msgstr ""
 
 #. type: Content of: <h1>
 #: src/jlm/universe/turtles/TurtleWorld.html:1
-msgid "TurtleWorld"
-msgstr "Monde des tortues"
+msgid "The universe of turtles"
+msgstr "L'univers des tortues"
 
 #. type: Content of: <p>
 #: src/jlm/universe/turtles/TurtleWorld.html:3
-msgid "This universe is an adaptation of LOGO for the Java Learning Machine."
+msgid "This is an adaptation of LOGO for the Java Learning Machine."
 msgstr "Cet univers est une adaptation de LOGO pour la Java Learning Machine."
 
 #. type: Content of: <p>
@@ -587,176 +545,110 @@ msgstr "Fonctions pour déplacer la tortue"
 #: src/jlm/universe/turtles/TurtleWorld.html:13
 #, no-wrap
 msgid ""
-"void forward(double steps)\n"
-"void backward(double steps)"
+"[!java]void [/!]forward([!java]double [/!]steps[!scala]:Double[/!])\n"
+"[!java]void [/!]backward([!java]double [/!]steps[!scala]:Double[/!])"
 msgstr ""
-"void avance(double nbPas)\n"
-"void recule(double nbPas)"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:15
-#, no-wrap
-msgid ""
-"forward(steps)\n"
-"backward(steps)"
-msgstr ""
-"avance(nbPas)\n"
-"recule(nbPas)"
+"[!java]void [/!]avance([!java]double [/!]steps[!scala]:Double[/!])\n"
+"[!java]void [/!]recule([!java]double [/!]steps[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:17
+#: src/jlm/universe/turtles/TurtleWorld.html:15
 msgid "Moves forward or backward of the requested amount of steps."
 msgstr "Avance ou recule du nombre de pas demandé."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:19
+#: src/jlm/universe/turtles/TurtleWorld.html:17
 #, no-wrap
 msgid ""
-"void right(double angle)\n"
-"void left(double angle)"
+"[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])\n"
+"[!java]void [/!]left([!java]double [/!]angle[!scala]:Double[/!])"
 msgstr ""
-"void droite(double angle)\n"
-"void gauche(double angle)"
+"[!java]void [/!]droite([!java]double [/!]angle[!scala]:Double[/!])\n"
+"[!java]void [/!]gauche([!java]double [/!]angle[!scala]:Double[/!])"
+
+#. type: Content of: outside any tag (error?)
+#: src/jlm/universe/turtles/TurtleWorld.html:19
+msgid "Turns left or right of the given angle (in degrees)."
+msgstr "Tourne à gauche ou à droite de l'angle indiqué (en degrés)."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:21
 #, no-wrap
 msgid ""
-"right(angle)\n"
-"left(angle)"
+"[!java]double [/!]getX()[!scala]:Double[/!]\n"
+"[!java]double [/!]getY()[!scala]:Double[/!]"
 msgstr ""
-"droite(angle)\n"
-"gauche(angle)"
+"[!java]double [/!]getX()[!scala]:Double[/!]\n"
+"[!java]double [/!]getY()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:23
-msgid "Turns left or right of the given angle (in degrees)."
-msgstr "Tourne à gauche ou à droite de l'angle indiqué (en degrés)."
+msgid "Returns the current position of the turtle."
+msgstr "Retourne la position acutelle de la tortue."
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:25
 #, no-wrap
 msgid ""
-"double getX()\n"
-"double getY()"
+"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
+"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
+"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
 msgstr ""
-"double getX()\n"
-"double getY()"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:27
-#, no-wrap
-msgid ""
-"getX()\n"
-"getY()"
-msgstr ""
-"getX()\n"
-"getY()"
+"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
+"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
+"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:29
-msgid "Returns the current position of the turtle."
-msgstr "Retourne la position acutelle de la tortue."
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:31
-#, no-wrap
-msgid ""
-"void setX(double x)\n"
-"void setY(double y)\n"
-"void setPos(double x, double y)"
-msgstr ""
-"void setX(double x)\n"
-"void setY(double y)\n"
-"void setPos(double x, double y)"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:34
-#, no-wrap
-msgid ""
-"setX(x)\n"
-"setY(y)\n"
-"setPos(x,y)"
-msgstr ""
-"setX(x)\n"
-"setY(y)\n"
-"setPos(x,y)"
-
-#. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:37
+#: src/jlm/universe/turtles/TurtleWorld.html:28
 msgid "Teleports the turtle to a new position (without leaving any trace)."
 msgstr "Téléporte la tortue à une nouvelle position (sans laisser de trace)."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:39
+#: src/jlm/universe/turtles/TurtleWorld.html:30
 #, no-wrap
-msgid "void moveTo(double x, double y)"
-msgstr "void allerVers(double x, double y)"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:40
-#, no-wrap
-msgid "moveTo(x,y)"
-msgstr "allerVers(x,y)"
+msgid "[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
+msgstr "[!java]void [/!]allerVers([!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:41
+#: src/jlm/universe/turtles/TurtleWorld.html:31
 msgid "Moves the turtle to a new position."
 msgstr "Déplace la tortue à une nouvelle position."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:43
+#: src/jlm/universe/turtles/TurtleWorld.html:33
 #, no-wrap
-msgid "double getHeading()"
-msgstr "double getCap()"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:44
-#, no-wrap
-msgid "getHeading()"
-msgstr "getCap()"
+msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+msgstr "[!java]double [/!]getCap()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:45
+#: src/jlm/universe/turtles/TurtleWorld.html:34
 msgid "Returns the current heading of the turtle (in degrees)."
 msgstr "Retourne le cap actuel de la tortue (en degrés)."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:47
+#: src/jlm/universe/turtles/TurtleWorld.html:36
 #, no-wrap
-msgid "void setHeading(double angle)"
-msgstr "void setCap(double angle)"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:48
-#, no-wrap
-msgid "setHeading(angle)"
-msgstr "setCap(angle)"
+msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgstr "[!java]void [/!]setCap([!java]double [/!]angle[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:49
+#: src/jlm/universe/turtles/TurtleWorld.html:37
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr "Change le cap de la tortue à l'angle indiqué (en degrés)."
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:51
+#: src/jlm/universe/turtles/TurtleWorld.html:39
 msgid "Functions about the pen"
 msgstr "Fonctions à propos du stylo"
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:53
+#: src/jlm/universe/turtles/TurtleWorld.html:41
 #, no-wrap
-msgid "void penUp()"
-msgstr "void leveCrayon()"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:54
-#, no-wrap
-msgid "penUp()"
-msgstr "leveCrayon()"
+msgid "[!java]void [/!]penUp()"
+msgstr "[!java]void [/!]leveCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:55
+#: src/jlm/universe/turtles/TurtleWorld.html:42
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
@@ -766,19 +658,13 @@ msgstr ""
 "déplacements suivants."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:58
+#: src/jlm/universe/turtles/TurtleWorld.html:45
 #, no-wrap
-msgid "void penDown()"
-msgstr "void baisseCrayon()"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:59
-#, no-wrap
-msgid "penDown()"
-msgstr "baisseCrayon()"
+msgid "[!java]void [/!]penDown()"
+msgstr "[!java]void [/!]baisseCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:60
+#: src/jlm/universe/turtles/TurtleWorld.html:46
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
@@ -787,67 +673,53 @@ msgstr ""
 "déplacements."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:62
+#: src/jlm/universe/turtles/TurtleWorld.html:48
 #, no-wrap
-msgid "boolean isPenDown()"
-msgstr "boolean estCrayonBaisse()"
-
-#. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:63
-#, no-wrap
-msgid "isPenDown()"
-msgstr "estCrayonBaisse()"
+msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estCrayonBaisse()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:64
+#: src/jlm/universe/turtles/TurtleWorld.html:49
 msgid "Returns the current pen position as a boolean."
 msgstr "Retourne si le stylo est actuellement baissé ou non."
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/turtles/TurtleWorld.html:66
-#: src/jlm/universe/bugglequest/BuggleWorld.html:25
-#: src/lessons/turmites/universe/TurmiteWorld.html:18
-#, no-wrap
-msgid "Color getColor()"
-msgstr "Color getCouleur()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/turtles/TurtleWorld.html:67
+#: src/jlm/universe/turtles/TurtleWorld.html:51
 #: src/jlm/universe/bugglequest/BuggleWorld.html:25
 #, no-wrap
-msgid "getColor()"
-msgstr "getCouleur()"
+msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
+msgstr "[!java]Color [/!]getCouleur()[!scala]:Color[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:68
+#: src/jlm/universe/turtles/TurtleWorld.html:52
 msgid "Returns the current pen color."
 msgstr "Retourne la couleur actuelle du stylo."
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:70
+#: src/jlm/universe/turtles/TurtleWorld.html:54
 #, no-wrap
-msgid "void setColor(Color color)"
-msgstr "void setCouleur(Color couleur)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/turtles/TurtleWorld.html:71
-#: src/jlm/universe/bugglequest/BuggleWorld.html:26
-#, no-wrap
-msgid "setColor(color)"
-msgstr "setCouleur(couleur)"
+msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
+msgstr "[!java]void [/!]setCouleur([!java]Color [/!]couleur[!scala]:Color[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:72
+#: src/jlm/universe/turtles/TurtleWorld.html:55
 msgid "Changes the pen color."
 msgstr "Modifier la couleur du stylo."
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:74
+#: src/jlm/universe/turtles/TurtleWorld.html:57
 msgid "Other functions"
 msgstr "Autres fonctions"
 
+#. type: Content of: <table><tr><td>
+#: src/jlm/universe/turtles/TurtleWorld.html:59
+#: src/jlm/universe/bugglequest/BuggleWorld.html:35
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
+
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:78
+#: src/jlm/universe/turtles/TurtleWorld.html:60
 msgid ""
 "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
@@ -923,56 +795,32 @@ msgstr "Reculer</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:11
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void left()"
-msgstr "void gauche()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:11
-msgid "left()"
-msgstr "gauche()"
+msgid "[!java]void [/!]left()"
+msgstr "[!java]void [/!]gauche()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:12
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void right()"
-msgstr "void droite()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:12
-msgid "right()"
-msgstr "droite()"
+msgid "[!java]void [/!]right()"
+msgstr "[!java]void [/!]droite()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:13
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void back()"
-msgstr "void retourne()"
+msgid "[!java]void [/!]back()"
+msgstr "[!java]void [/!]retourne()"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:13
-msgid "back()"
-msgstr "retourne()"
-
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:14
-msgid "void forward() or void forward(int steps)"
-msgstr "void avance() ou void avance(int nbPas)"
+msgid ""
+"[!java]void [/!]forward() or [!java]void [/!]forward([!java]int [/!]steps[!"
+"scala]:Int[/!])"
+msgstr "[!java]void [/!]avance() ou [!java]void [/!]avance([!java]int [/!]steps[!scala]:Int[/!])"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:14
-msgid "forward() or forward(steps)"
-msgstr "avance() ou avance(nbPas)"
-
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:15
-msgid "void backward() or void backward(int steps)"
-msgstr "void recule() ou void recule(int nbPas)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:15
-msgid "backward() or backward(steps)"
-msgstr "recule() ou recule(nbPas)"
+msgid ""
+"[!java]void [/!]backward() or [!java]void [/!]backward([!java]int [/!]steps[!"
+"scala]:Int[/!])"
+msgstr "[!java]void [/!]recule() or [!java]void [/!]recule([!java]int [/!]steps[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:16
@@ -1006,55 +854,30 @@ msgstr "Changer la position</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:17
-#: src/lessons/turmites/universe/TurmiteWorld.html:14
-msgid "int getX()"
-msgstr "int getX()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:17
-msgid "getX()"
-msgstr "getX()"
+msgid "[!java]int [/!]getX()[!scala]:Int[/!]"
+msgstr "[!java]int [/!]getX()[!scala]:Int[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:18
-#: src/lessons/turmites/universe/TurmiteWorld.html:14
-msgid "int getY()"
-msgstr "int getY()"
+msgid "[!java]int [/!]getY()[!scala]:Int[/!]"
+msgstr "[!java]int [/!]getY()[!scala]:Int[/!]"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:18
-msgid "getY()"
-msgstr "getY()"
-
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:19
-msgid "void setX(int x)"
-msgstr "void setX(int x)"
+msgid "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
+msgstr "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:19
-msgid "setX(x)"
-msgstr "setX(x)"
-
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:20
-msgid "void setY(int y)"
-msgstr "void setY(int y)"
+msgid "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
+msgstr "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:20
-msgid "setY(y)"
-msgstr "setY(y)"
-
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:21
-msgid "void setPos(int x,int y)"
-msgstr "void setPos(int x,int y)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:21
-msgid "setPos(x,y)"
-msgstr "setPos(x,y)"
+msgid ""
+"[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!"
+"scala]:Int[/!])"
+msgstr "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:23
@@ -1074,10 +897,10 @@ msgstr "<b>Obtenir la couleur"
 msgid "Set the color</b>"
 msgstr "Changer la couleur</b>"
 
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:26
-msgid "void setColor(Color c)"
-msgstr "void setCouleur(Color c)"
+msgid "[!java]void [/!]setColor([!java]Color [/!]c[!scala]:Color[/!])"
+msgstr "[!java]void [/!]setCouleur([!java]Color [/!]c[!scala]:Color[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:27
@@ -1093,25 +916,13 @@ msgstr "Chercher un mur derriere</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:28
-#: src/lessons/turmites/universe/TurmiteWorld.html:20
-msgid "boolean isFacingWall()"
-msgstr "boolean estFaceMur()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:28
-msgid "isFacingWall()"
-msgstr "estFaceMur()"
+msgid "[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estFaceMur()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:29
-#: src/lessons/turmites/universe/TurmiteWorld.html:20
-msgid "boolean isBackingWall()"
-msgstr "boolean estDosMur()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:29
-msgid "isBackingWall()"
-msgstr "estDosMur()"
+msgid "[!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estDosMur()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:30
@@ -1133,24 +944,14 @@ msgstr "Les directions valides sont :"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:31
-#: src/lessons/turmites/universe/TurmiteWorld.html:22
-msgid "Direction getDirection()"
-msgstr "Direction getDirection()"
+msgid "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
+msgstr "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:31
-msgid "getDirection()"
-msgstr "getDirection()"
-
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:32
-msgid "void setDirection(Direction dir)"
-msgstr "void setDirection(Direction dir)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:32
-msgid "setDirection(direction)"
-msgstr "setDirection(direction)"
+msgid ""
+"[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
+msgstr "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
@@ -1192,36 +993,18 @@ msgstr "Obtenir la position de la brosse</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:39
-#: src/lessons/turmites/universe/TurmiteWorld.html:26
-msgid "void brushUp()"
-msgstr "void leveBrosse()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:39
-msgid "brushUp()"
-msgstr "leveBrosse()"
+msgid "[!java]void [/!]brushUp()"
+msgstr "[!java]void [/!]leveBrosse()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:40
-#: src/lessons/turmites/universe/TurmiteWorld.html:26
-msgid "void brushDown()"
-msgstr "void baisseBrosse()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:40
-msgid "brushDown()"
-msgstr "baisseBrosse()"
+msgid "[!java]void [/!]brushDown()"
+msgstr "[!java]void [/!]baisseBrosse()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:41
-#: src/lessons/turmites/universe/TurmiteWorld.html:26
-msgid "boolean isBrushDown()"
-msgstr "boolean estBrosseBaissee()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:41
-msgid "isBrushDown()"
-msgstr "estBrosseBaissee()"
+msgid "[!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estBrosseLevee()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:42
@@ -1235,26 +1018,15 @@ msgstr "<b>Modifier la couleur de la brosse"
 msgid "Get the color of the brush</b>"
 msgstr "Obtenir la couleur de la brosse</b>"
 
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:43
-msgid "void setBrushColor(Color c)"
-msgstr "void setBrosseCouleur(Color c)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:43
-msgid "setBrushColor(color)"
-msgstr "setBrosseCouleur(couleur)"
+msgid "[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])"
+msgstr "[!java]void [/!]setCouleurBrosse([!java]Color [/!]c[!scala]:Color[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:44
-#: src/lessons/turmites/universe/TurmiteWorld.html:28
-msgid "Color getBrushColor()"
-msgstr "Color getBrosseCouleur()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:44
-msgid "getBrushColor()"
-msgstr "getBrosseCouleur()"
+msgid "[!java]Color [/!]getBrushColor()[!scala]:Color[/!]"
+msgstr "[!java]Color [/!]getCouleurBrosse()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:46
@@ -1270,14 +1042,8 @@ msgstr "<b>Obtenir la couleur du sol</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:48
-#: src/lessons/turmites/universe/TurmiteWorld.html:31
-msgid "Color getGroundColor()"
-msgstr "Color getSolCouleur()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:48
-msgid "getGroundColor()"
-msgstr "getSolCouleur()"
+msgid "[!java]Color [/!]getGroundColor()[!scala]:Color[/!]"
+msgstr "[!java]Color [/!]getCouleurSol()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:50
@@ -1311,47 +1077,23 @@ msgstr "(voir la note sur les exceptions)"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:52
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "boolean isOverBaggle()"
-msgstr "boolean estSurBiscuit()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:52
-msgid "isOverBaggle()"
-msgstr "estSurBiscuit()"
+msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estSurBiscuit()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:53
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "boolean isCarryingBaggle()"
-msgstr "boolean porteBiscuit()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:53
-msgid "isCarryingBaggle()"
-msgstr "porteBiscuit()"
+msgid "[!java]boolean [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]porteBiscuit()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:54
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "void pickupBaggle()"
-msgstr "void prendBiscuit()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:54
-msgid "pickupBaggle()"
-msgstr "prendBiscuit()"
+msgid "[!java]void [/!]pickupBaggle()"
+msgstr "[!java]void [/!]prendBiscuit()"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:55
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "void dropBaggle()"
-msgstr "void poseBiscuit()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:55
-msgid "dropBaggle()"
-msgstr "poseBiscuit()"
+msgid "[!java]void [/!]dropBaggle()"
+msgstr "[!java]void [/!]poseBiscuit()"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:57
@@ -1379,46 +1121,23 @@ msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:58
-#: src/lessons/turmites/universe/TurmiteWorld.html:38
-msgid "boolean isOverMessage()"
-msgstr "boolean estSurMessage()"
+msgid "[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estSurMessage()[!scala]:Boolean[/!]"
 
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:58
-msgid "isOverMessage()"
-msgstr "estSurMessage()"
-
-#. type: Content of: <table><tr><td><div>
+#. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:59
-msgid "void writeMessage(String msg)"
-msgstr "void ecritMessage(String msg)"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:59
-msgid "writeMessage(msg)"
-msgstr "ecritMessage(msg)"
+msgid "[!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])"
+msgstr "[!java]void [/!]ecritMessage([!java]String [/!]msg[!scala]:String[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:60
-#: src/lessons/turmites/universe/TurmiteWorld.html:38
-msgid "String readMessage()"
-msgstr "String litMessage()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:60
-msgid "readMessage()"
-msgstr "litMessage()"
+msgid "[!java]String [/!]readMessage()[!scala]:String[/!]"
+msgstr "[!java]String [/!]litMessage()[!scala]:String[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:61
-#: src/lessons/turmites/universe/TurmiteWorld.html:38
-msgid "void clearMessage()"
-msgstr "void effaceMessage()"
-
-#. type: Content of: <table><tr><td><div>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:61
-msgid "clearMessage()"
-msgstr "effaceMessage()"
+msgid "[!java]void [/!]clearMessage()"
+msgstr "[!java]void [/!]effaceMessage()"
 
 #. type: Content of: <h2>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:64
@@ -7865,6 +7584,21 @@ msgstr ""
 "TwoDimensionalTuringMachines"
 
 #. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
+msgid "void left()"
+msgstr "void gauche()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
+msgid "void right()"
+msgstr "void droite()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:11
+msgid "void back()"
+msgstr "void retourne()"
+
+#. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid "void forward() or void forward(int)"
 msgstr "void forward() ou void forward(int)"
@@ -7873,6 +7607,16 @@ msgstr "void forward() ou void forward(int)"
 #: src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid "void backward() or void backward(int)"
 msgstr "void backward() ou void backward(int)"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:14
+msgid "int getX()"
+msgstr "int getX()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:14
+msgid "int getY()"
+msgstr "int getY()"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:14
@@ -7891,8 +7635,28 @@ msgstr "void setPos(int,int)"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:18
+msgid "Color getColor()"
+msgstr "Color getCouleur()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:18
 msgid "void setColor(Color)"
 msgstr "void setColor(Color)"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:20
+msgid "boolean isFacingWall()"
+msgstr "boolean estFaceMur()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:20
+msgid "boolean isBackingWall()"
+msgstr "boolean estDosMur()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:22
+msgid "Direction getDirection()"
+msgstr "Direction getDirection()"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:22
@@ -7900,14 +7664,74 @@ msgid "void setDirection(Direction)"
 msgstr "void setDirection(Direction)"
 
 #. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:26
+msgid "void brushUp()"
+msgstr "void leveBrosse()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:26
+msgid "void brushDown()"
+msgstr "void baisseBrosse()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:26
+msgid "boolean isBrushDown()"
+msgstr "boolean estBrosseBaissee()"
+
+#. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:28
 msgid "void setBrushColor(Color)"
 msgstr "void setBrushColor(Color)"
 
 #. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:28
+msgid "Color getBrushColor()"
+msgstr "Color getBrosseCouleur()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:31
+msgid "Color getGroundColor()"
+msgstr "Color getSolCouleur()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
+msgid "boolean isOverBaggle()"
+msgstr "boolean estSurBiscuit()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
+msgid "boolean isCarryingBaggle()"
+msgstr "boolean porteBiscuit()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
+msgid "void pickupBaggle()"
+msgstr "void prendBiscuit()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:35
+msgid "void dropBaggle()"
+msgstr "void poseBiscuit()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:38
+msgid "boolean isOverMessage()"
+msgstr "boolean estSurMessage()"
+
+#. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:38
 msgid "void writeMessage(String)"
 msgstr "void writeMessage(String)"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:38
+msgid "String readMessage()"
+msgstr "String litMessage()"
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/universe/TurmiteWorld.html:38
+msgid "void clearMessage()"
+msgstr "void effaceMessage()"
 
 #. type: Content of: <h3>
 #: src/lessons/sort/Main.html:1 src/lessons/sort/short_desc.html:1
@@ -9713,6 +9537,20 @@ msgstr ""
 "surtout utile pour initialiser la récursion et déterminer le nombre d'appels "
 "récursifs à réaliser."
 
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:25
+#, no-wrap
+msgid "boolean isSelected()"
+msgstr "boolean estChoisi()"
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:26
+#, no-wrap
+msgid "isSelected()"
+msgstr "isSelected()"
+
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:1 src/lessons/maze/short_desc.html:1
 msgid "Labyrinths"
@@ -9779,7 +9617,8 @@ msgid ""
 "You don't believe that it could work? Well, give it a try, you will see...  "
 "Don't forget to pick up the baggle once you've reached it."
 msgstr ""
-"Vous ne croyez pas qu'une méthode aussi stupide puisse fonctionner ? Et bien, essayez, vous verrez bien.\n"
+"Vous ne croyez pas qu'une méthode aussi stupide puisse fonctionner ? Et "
+"bien, essayez, vous verrez bien.\n"
 "N'oubliez pas de ramasser le biscuit quand vous l'avez trouvé."
 
 #. type: Content of: <h2>
@@ -10281,7 +10120,9 @@ msgstr "[!scala]"
 msgid ""
 "Don't forget the default case (matching _), or scala will issue an error "
 "since your matching would be incomplete.[/!]"
-msgstr "N'oubliez pas le cas par défaut (qui accepte _), ou scala vous donnera un message d'erreur en échange de votre filtrage incomplet."
+msgstr ""
+"N'oubliez pas le cas par défaut (qui accepte _), ou scala vous donnera un "
+"message d'erreur en échange de votre filtrage incomplet."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/maze/island/IslandMaze.html:69
@@ -10344,21 +10185,27 @@ msgstr "<code>getMondeHauteur()</code> pour connaitre la hauteur du monde."
 msgid ""
 "<code>hasTopWall(x,y)</code> tells whether the cell (x,y) of this world has "
 "a wall on top."
-msgstr "<code>aMurNord(x,y)</code> indique si la cellule (x,y) de ce monde est fermée par un mur en haut."
+msgstr ""
+"<code>aMurNord(x,y)</code> indique si la cellule (x,y) de ce monde est "
+"fermée par un mur en haut."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
 msgid ""
 "<code>hasLeftWall(x,y)</code> tells whether the cell (x,y) of this world has "
 "a wall on the left."
-msgstr "<code>aMurOuest(x,y)</code> indique si la cellule (x,y) de ce monde est fermée par un mur à gauche."
+msgstr ""
+"<code>aMurOuest(x,y)</code> indique si la cellule (x,y) de ce monde est "
+"fermée par un mur à gauche."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:13
 msgid ""
 "<code>hasBaggle(x,y)</code> tells whether the cell (x,y) of this world has a "
 "baggle."
-msgstr "<code>aBiscuit(x,y)</code> indique si un baggle se trouve dans la cellule (x,y) de ce monde."
+msgstr ""
+"<code>aBiscuit(x,y)</code> indique si un baggle se trouve dans la cellule (x,"
+"y) de ce monde."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:14
