@@ -3,28 +3,24 @@ package lessons.maze.wallfollower;
 import jlm.core.model.Game;
 import jlm.universe.Direction;
 
-@SuppressWarnings("unused")
-public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
-	private Direction uselessVariableExistingJustToMakeSureThatEclipseWontRemoveTheImport; /* If removed, user code can't use directions easily */
-	@Override
-	public void setX(int i)  {
-		if (isInited())
+class ScalaWallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+	val uselessVariableExistingJustToMakeSureThatEclipseWontRemoveTheImport:Direction=null; /* If removed, user code can't use directions easily */
+	override def setX(i: Int)  {
+		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."));
 	}
-	@Override
-	public void setY(int i)  { 
-		if (isInited())
+	override def setY(i: Int)  { 
+		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setY() in this exercise."));
 	}
-	@Override
-	public void setPos(int i,int j)  { 
-		if (isInited())
+	override def setPos(x: Int, y:Int)  { 
+		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setPos() in this exercise."));
 	}
 	 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
-	public void stepHandOnWall() {
+	def stepHandOnWall() {
 		// PRE: we have a wall on the left
 		// POST: we still have the same wall on the left, are one step ahead
 
@@ -35,7 +31,7 @@ public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 		right(); // change to left to get a right follower
 	}
 
-	public void run() {
+	def run() {
 		// Make sure we have a wall to the left
 		left();
 		while (!isFacingWall())

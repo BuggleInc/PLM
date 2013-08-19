@@ -37,28 +37,35 @@ d'avoir un mur à votre gauche avant de changer de passer au mode «suiveur à
 gauche»). Vous repasserez au mode «coureur au nord» dès que votre buggle
 fera face au nord et qu'elle n'est pas face à un mur. La manière la plus
 simple d'écrire une telle machine à état est quelque chose de ce type: 
-<pre>
-	<code div="Java">int etat=0;
+<pre>[!scala]var etat=0;
+etat match  {
+  case 0 => // courir au nord
+     ...
+     etat = 1;
+  case 1 => // suivre à gauche
+     ...
+     etat = 0;
+  case _ => println("Ce cas ne devrait pas arriver. Corrigez ce problème svp.")
+}[/!][!java]int etat=0;
 switch (etat) {
   case 0: // courir au nord
      ...
      etat = 1;
      break;
-  case 1: // suivre a gauche
+  case 1: // suivre à gauche
      ...
      etat = 0;
      break;
-}
-</code>
-<code div="python">courirNord = True
-if courirNord:
+}[/!][!python]coureurNord = True
+if coureurNord:
      ...
-     courirNord = False
-else: # suivre a gauche
+     coureurNord = False
+else: # suiveur à gauche
      ...
-     courirNord = True
-</code>
-</pre>
+     coureurNord = True[/!]</pre>
+     
+[!scala]<br/>N'oubliez pas le cas par défaut (qui accepte _), ou scala vous donnera un
+message d'erreur en échange de votre filtrage incomplet.
 </div>
 	
 <p>N'oubliez pas de faire ramasser le baggle par votre buggle à la fin de votre

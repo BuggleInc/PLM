@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-19 11:27+0300\n"
-"PO-Revision-Date: 2013-08-19 11:47+0200\n"
+"POT-Creation-Date: 2013-08-19 19:30+0300\n"
+"PO-Revision-Date: 2013-08-19 20:57+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2452,7 +2452,6 @@ msgstr ""
 #: src/lessons/welcome/methods/slug/SlugHunting.html:18
 #: src/lessons/welcome/methods/slug/SlugTracking.html:19
 #: src/lessons/welcome/bdr/BDR.html:149 src/lessons/welcome/bdr/BDR2.html:131
-#: src/lessons/maze/randommouse/RandomMouseMaze.html:24
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:17
 #: src/lessons/maze/pledge/PledgeMaze.html:36
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:22
@@ -6352,9 +6351,17 @@ msgid ""
 "python.  It is not new either, as other languages such as OCaml or Haskell "
 "offer this feature since long, but still.  It's really cool![/!]"
 msgstr ""
-"À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un choix avec 4 branches en fonction du résultat de [!java]getIndication()[/!][!scala]litMessage()[/!].\n"
-"Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>, dont la syntaxe est la suivante en Java.[/!]\n"
-"[!scala] un filtrage (pattern matching en anglais), qui est une construction très agréable qui généralisant le <code>if</code>. Il s'agit sans aucun doute de l'un des avantages majeurs du langage Scala par rapport à d'autres tels que le Java ou le Python. Cette construction n'est cependant pas révolutionnaire puisqu'elle existe depuis assez longtemps dans des langages comme OCaml ou Haskell, mais il n'empêche. Elle est carrément cool![/!]"
+"À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un "
+"choix avec 4 branches en fonction du résultat de [!java]getIndication()[/!][!"
+"scala]litMessage()[/!].\n"
+"Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>, "
+"dont la syntaxe est la suivante en Java.[/!]\n"
+"[!scala] un filtrage (pattern matching en anglais), qui est une construction "
+"très agréable qui généralisant le <code>if</code>. Il s'agit sans aucun "
+"doute de l'un des avantages majeurs du langage Scala par rapport à d'autres "
+"tels que le Java ou le Python. Cette construction n'est cependant pas "
+"révolutionnaire puisqu'elle existe depuis assez longtemps dans des langages "
+"comme OCaml ou Haskell, mais il n'empêche. Elle est carrément cool![/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:39
@@ -6539,7 +6546,11 @@ msgid ""
 "You can even add guards to your branches. These are extra conditions that "
 "must be respected for the branch to get applied. This is handy if you want "
 "match on value ranges, as follows."
-msgstr "Il est même possible d'ajouter des gardes à vos branches. Il s'agit de conditions supplémentaires qui doivent être respectées pour que la branche soit appliquée. C'est par exemple pratique pour faire du filtrage sur un ensemble de valeurs."
+msgstr ""
+"Il est même possible d'ajouter des gardes à vos branches. Il s'agit de "
+"conditions supplémentaires qui doivent être respectées pour que la branche "
+"soit appliquée. C'est par exemple pratique pour faire du filtrage sur un "
+"ensemble de valeurs."
 
 #. type: Content of: <p><p><p><pre>
 #: src/lessons/welcome/bdr/BDR2.html:111
@@ -6574,7 +6585,8 @@ msgstr ""
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/bdr/BDR2.html:120
 msgid "Finally, it is possible also to match several variables in one shoot!"
-msgstr "Enfin, il est même possible de filtrer sur plusieurs variables à la fois!"
+msgstr ""
+"Enfin, il est même possible de filtrer sur plusieurs variables à la fois!"
 
 #. type: Content of: <p><p><p><pre>
 #: src/lessons/welcome/bdr/BDR2.html:121
@@ -6599,7 +6611,9 @@ msgstr ""
 msgid ""
 "I told you that scala's pattern matching is very powerful! I actually love "
 "this feature!"
-msgstr "Je vous avais bien dit que le filtrage scala était une construction surpuissante ! Je l'adore !"
+msgstr ""
+"Je vous avais bien dit que le filtrage scala était une construction "
+"surpuissante ! Je l'adore !"
 
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/bdr/BDR2.html:132
@@ -7351,9 +7365,19 @@ msgid ""
 "by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
 "(currentColor)[/!]</code>."
 msgstr ""
-"Une fois encore, vous devez seulement écrire la méthode <code>step()</code>, qui s'occupe de faire faire un pas à la turmite. Une fois encore, vous devez tout d'abord trouver le rang de la couleur actuelle du sol dans la liste des couleurs. Mais cette fois, <code>rule</code> dépend à la fois de la couleur courante et de l'état courant. <code>rule</code> contient en fait trois informations dans chaque situation : la couleur à mettre, le mouvement à effectuer, et la valeur du prochain état. \n"
-"Par exemple, [!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contient l'information à utiliser quand <code>state==1</code> et <code>color==0</code>. En d'autres mots, vous pouvez récupérer l'information relative à votre situation actuelle en utilisant \n"
-"<code>[!java|python]rule[etatCourant][couleurActuelle][/!][!scala]rule(etatCourant)(couleurActuelle)[/!]</code>"
+"Une fois encore, vous devez seulement écrire la méthode <code>step()</code>, "
+"qui s'occupe de faire faire un pas à la turmite. Une fois encore, vous devez "
+"tout d'abord trouver le rang de la couleur actuelle du sol dans la liste des "
+"couleurs. Mais cette fois, <code>rule</code> dépend à la fois de la couleur "
+"courante et de l'état courant. <code>rule</code> contient en fait trois "
+"informations dans chaque situation : la couleur à mettre, le mouvement à "
+"effectuer, et la valeur du prochain état. \n"
+"Par exemple, [!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contient "
+"l'information à utiliser quand <code>state==1</code> et <code>color==0</"
+"code>. En d'autres mots, vous pouvez récupérer l'information relative à "
+"votre situation actuelle en utilisant \n"
+"<code>[!java|python]rule[etatCourant][couleurActuelle][/!][!"
+"scala]rule(etatCourant)(couleurActuelle)[/!]</code>"
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:24
@@ -7416,7 +7440,8 @@ msgid ""
 "Using such constants greatly help making the code easier to read. Compare "
 "the next two code chunks:"
 msgstr ""
-"Utilisez de telles constantes aident beaucoup à rendre le code plus lisible.\n"
+"Utilisez de telles constantes aident beaucoup à rendre le code plus "
+"lisible.\n"
 "Comparez les deux morceaux de code suivant:"
 
 #. type: Content of: <pre>
@@ -7479,8 +7504,10 @@ msgid ""
 "construct to keep your code readable.  If you can't remember what it is, "
 "check <a href=\"jlm://lessons.welcome/bdr.BDR2\">this exercise</a>."
 msgstr ""
-"Vous devriez probablement utiliser un [!java]switch[/!][!scala]filtrage[/!] pour que votre code reste lisible. \n"
-"Si vous avez oublié ce que c'est, retournez à <a href=\\\"jlm://lessons.welcome/bdr.BDR2\\\">cet exercice</a>."
+"Vous devriez probablement utiliser un [!java]switch[/!][!scala]filtrage[/!] "
+"pour que votre code reste lisible. \n"
+"Si vous avez oublié ce que c'est, retournez à <a href=\\\"jlm://lessons."
+"welcome/bdr.BDR2\\\">cet exercice</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:68
@@ -7628,8 +7655,10 @@ msgid ""
 "com/Turmites/ [!python|scala]They are not written using the [!thelang] "
 "syntax, but converting them should be easy.[/!]"
 msgstr ""
-"Voici quelques turmites bicolores, issues de http://demonstrations.wolfram.com/Turmites/ \n"
-"[!scala|python]Elles n'ont pas été écrites avec la syntaxe [!thelang], mais les convertir ne devrait pas poser beaucoup de problèmes.[/!]"
+"Voici quelques turmites bicolores, issues de http://demonstrations.wolfram."
+"com/Turmites/ \n"
+"[!scala|python]Elles n'ont pas été écrites avec la syntaxe [!thelang], mais "
+"les convertir ne devrait pas poser beaucoup de problèmes.[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:66
@@ -9744,24 +9773,14 @@ msgstr ""
 "suivantes selon l'entier choisi&nbsp;: avancer si elle le peut, tourner à "
 "droite ou bien tourner à gauche."
 
-#. type: Content of: <a>
+#. type: Content of: <p>
 #: src/lessons/maze/randommouse/RandomMouseMaze.html:24
-msgid "<a name=\"Objectives\">"
-msgstr "<a name=\"Objectifs\">"
-
-#. type: Content of: <a><p>
-#: src/lessons/maze/randommouse/RandomMouseMaze.html:27
 msgid ""
-"This exercise's objective is to write an algorithm allowing the buggle to "
-"find its path out of the maze."
+"You don't believe that it could work? Well, give it a try, you will see...  "
+"Don't forget to pick up the baggle once you've reached it."
 msgstr ""
-"L'objectif de cet exercice est d'écrire un algorithme permettant à votre "
-"buggle de sortir du labyrinthe."
-
-#. type: Content of: <a><p>
-#: src/lessons/maze/randommouse/RandomMouseMaze.html:32
-msgid "Don't forget to pick up the baggle once you've reached it."
-msgstr "N'oubliez pas de ramasser le baggle quand vous l'avez trouvé."
+"Vous ne croyez pas qu'une méthode aussi stupide puisse fonctionner ? Et bien, essayez, vous verrez bien.\n"
+"N'oubliez pas de ramasser le biscuit quand vous l'avez trouvé."
 
 #. type: Content of: <h2>
 #: src/lessons/maze/wallfollower/WallFollowerMaze.html:1
@@ -10194,10 +10213,19 @@ msgstr ""
 "simple d'écrire une telle machine à état est quelque chose de ce type:"
 
 #. type: Content of: <p><p><div><pre>
-#: src/lessons/maze/island/IslandMaze.html:40
+#: src/lessons/maze/island/IslandMaze.html:39
 #, no-wrap
 msgid ""
-"\t<code div=\"Java\">int state=0;\n"
+"[!scala]var state=0;\n"
+"state match  {\n"
+"  case 0 => // North runner\n"
+"     ...\n"
+"     state = 1;\n"
+"  case 1 => // Left follower\n"
+"     ...\n"
+"     state = 0;\n"
+"  case _ => println(\"This case should not happen. Please fix me\")\n"
+"}[/!][!java]int state=0;\n"
 "switch (state) {\n"
 "  case 0: // North runner\n"
 "     ...\n"
@@ -10207,47 +10235,63 @@ msgid ""
 "     ...\n"
 "     state = 0;\n"
 "     break;\n"
-"}\n"
-"</code>\n"
-"<code div=\"python\">northRunner = True\n"
+"}[/!][!python]northRunner = True\n"
 "if northRunner:\n"
 "     ...\n"
 "     northRunner = False\n"
 "else: # left follower\n"
 "     ...\n"
-"     northRunner = True\n"
-"</code>\n"
+"     northRunner = True[/!]"
 msgstr ""
-"\t<code div=\"Java\">int etat=0;\n"
+"[!scala]var etat=0;\n"
+"etat match  {\n"
+"  case 0 => // courir au nord\n"
+"     ...\n"
+"     etat = 1;\n"
+"  case 1 => // suivre à gauche\n"
+"     ...\n"
+"     etat = 0;\n"
+"  case _ => println(\"Ce cas ne devrait pas arriver. Corrigez ce problème svp.\")\n"
+"}[/!][!java]int etat=0;\n"
 "switch (etat) {\n"
 "  case 0: // courir au nord\n"
 "     ...\n"
 "     etat = 1;\n"
 "     break;\n"
-"  case 1: // suivre a gauche\n"
+"  case 1: // suivre à gauche\n"
 "     ...\n"
 "     etat = 0;\n"
 "     break;\n"
-"}\n"
-"</code>\n"
-"<code div=\"python\">courirNord = True\n"
-"if courirNord:\n"
+"}[/!][!python]coureurNord = True\n"
+"if coureurNord:\n"
 "     ...\n"
-"     courirNord = False\n"
-"else: # suivre a gauche\n"
+"     coureurNord = False\n"
+"else: # suiveur à gauche\n"
 "     ...\n"
-"     courirNord = True\n"
-"</code>\n"
+"     coureurNord = True[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/maze/island/IslandMaze.html:66
+#: src/lessons/welcome/bat/bool1/Max1020.html:5
+msgid "[!scala]"
+msgstr "[!scala]"
+
+#. type: Content of: <p><p><div>
+#: src/lessons/maze/island/IslandMaze.html:66
+msgid ""
+"Don't forget the default case (matching _), or scala will issue an error "
+"since your matching would be incomplete.[/!]"
+msgstr "N'oubliez pas le cas par défaut (qui accepte _), ou scala vous donnera un message d'erreur en échange de votre filtrage incomplet."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/island/IslandMaze.html:63
+#: src/lessons/maze/island/IslandMaze.html:69
 msgid "Don't forget to let the buggle pick the baggle at the end of your code."
 msgstr ""
 "N'oubliez pas de faire ramasser le baggle par votre buggle à la fin de votre "
 "code."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/maze/island/IslandMaze.html:66
+#: src/lessons/maze/island/IslandMaze.html:72
 msgid ""
 "You're up. That should be enough for you to figure out how to escape this "
 "maze, but if not, you can always request for the tip. But you do not need "
@@ -10288,39 +10332,33 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
 msgid "<code>getWorldWidth()</code> gives the width of its world."
-msgstr "<code>getWorldWidth()</code> pour connaitre la largeur du monde"
+msgstr "<code>getMondeLargueur()</code> pour connaitre la largeur du monde"
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:10
 msgid "<code>getWorldHeight()</code> gives the height of its world."
-msgstr "<code>getWorldHeight()</code> pour connaitre la hauteur du monde."
+msgstr "<code>getMondeHauteur()</code> pour connaitre la hauteur du monde."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:11
 msgid ""
 "<code>hasTopWall(x,y)</code> tells whether the cell (x,y) of this world has "
 "a wall on top."
-msgstr ""
-"<code>hasTopWall(x,y)</code> indique si la cellule (x,y) de ce monde est "
-"fermée par un mur en haut."
+msgstr "<code>aMurNord(x,y)</code> indique si la cellule (x,y) de ce monde est fermée par un mur en haut."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:12
 msgid ""
 "<code>hasLeftWall(x,y)</code> tells whether the cell (x,y) of this world has "
 "a wall on the left."
-msgstr ""
-"<code>hasLeftWall(x,y)</code> indique si la cellule (x,y) de ce monde est "
-"fermée par un mur à gauche."
+msgstr "<code>aMurOuest(x,y)</code> indique si la cellule (x,y) de ce monde est fermée par un mur à gauche."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:13
 msgid ""
 "<code>hasBaggle(x,y)</code> tells whether the cell (x,y) of this world has a "
 "baggle."
-msgstr ""
-"<code>hasBaggle(x,y)</code> indique si un baggle se trouve dans la cellule "
-"(x,y) de ce monde."
+msgstr "<code>aBiscuit(x,y)</code> indique si un baggle se trouve dans la cellule (x,y) de ce monde."
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:14
@@ -11075,11 +11113,6 @@ msgstr ""
 "Étant donné deux nombres entiers, retournez la plus grande valeur dans "
 "l'intervale 10..20 inclus, ou retournez 0 si aucun des nombres n'est dans "
 "cet intervale."
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/bat/bool1/Max1020.html:5
-msgid "[!scala]"
-msgstr "[!scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Max1020.html:5

@@ -1,20 +1,22 @@
 package lessons.maze.randommouse;
 
+import jlm.core.model.Game;
+
 public class RandomMouseMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())
-			throw new RuntimeException("setX(int) forbidden in this exercise");
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."));
 	}
 	@Override
 	public void setY(int i)  { 
 		if (isInited())
-			throw new RuntimeException("setY(int) forbidden in this exercise");
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setY() in this exercise."));
 	}
 	@Override
 	public void setPos(int i,int j)  { 
 		if (isInited())
-			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setPos() in this exercise."));
 	}
 
 	/* BEGIN TEMPLATE */ 

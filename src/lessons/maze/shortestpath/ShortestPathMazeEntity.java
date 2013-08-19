@@ -1,5 +1,6 @@
 package lessons.maze.shortestpath;
 
+import jlm.core.model.Game;
 import jlm.universe.Direction;
 import jlm.universe.bugglequest.BuggleWorld;
 import jlm.universe.bugglequest.BuggleWorldCell;
@@ -8,20 +9,17 @@ public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 	@Override
 	public void setX(int i)  {
 		if (isInited())
-			throw new RuntimeException("setX(int) forbidden in this exercise");
-		super.setX(i);
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."));
 	}
 	@Override
 	public void setY(int i)  { 
 		if (isInited())
-			throw new RuntimeException("setY(int) forbidden in this exercise");
-		super.setY(i);
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setY() in this exercise."));
 	}
 	@Override
 	public void setPos(int i,int j)  { 
 		if (isInited())
-			throw new RuntimeException("setPos(int,int) forbidden in this exercise");
-		super.setPos(i,j);
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setPos() in this exercise."));
 	}
 
 	void setIndication(int x, int y, int i) {
@@ -45,7 +43,12 @@ public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 	}
 
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
+	public void run() {
+		/* BEGIN SOLUTION */
+		evaluatePaths(); // write on each case the distance to the maze exit
+		followShortestPath(); // make the buggle follow the shortest path
+		pickupBaggle(); // enjoy the baggle!           
+	}
 	// tools functions
 	public boolean hasRightWall(int x, int y) {
 		return hasLeftWall((x + 1) % getWorldWidth(), y); 
@@ -132,13 +135,12 @@ public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggl
 
 			forward();
 		}    
-	}
-	/* END SOLUTION */
-
-	public void run() {
-		evaluatePaths(); // write on each case the distance to the maze exit
-		followShortestPath(); // make the buggle follow the shortest path
-		pickupBaggle(); // enjoy the baggle!           
+		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	
+	/* BINDINGS TRANSLATION to French: Don't translate getIndication */
+	boolean aBiscuit(int x, int y) { return hasBaggle(x,y); }
+	boolean aMurNord(int x, int y) { return hasTopWall(x,y); }
+	boolean aMurOuest(int x, int y){ return hasLeftWall(x, y); }
 }
