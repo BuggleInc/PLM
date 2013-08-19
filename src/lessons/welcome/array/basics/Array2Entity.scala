@@ -7,15 +7,15 @@ import jlm.core.model.Game
 class ScalaArray2Entity extends SimpleBuggle {
 	override def setX(i: Int)  {
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX()."));
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."));
 	}
 	override def setY(i: Int)  { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setY()."));
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setY() in this exercise."));
 	}
 	override def setPos(x: Int, y:Int)  { 
 		if (isInited)
-			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setPos()."));
+			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setPos() in this exercise."));
 	}
 
 	/* BEGIN TEMPLATE */
