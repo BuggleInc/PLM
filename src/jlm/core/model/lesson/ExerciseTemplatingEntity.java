@@ -102,7 +102,9 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		/* The following test is intended to make sure that this function is called before setup() right above.
 		 * This is because setup() needs all programming languages to be declared when it runs */
 		if (isSetup)
-			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template");
+			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
+		if (this.getProgLanguages().contains(Game.PYTHON))
+			throw new RuntimeException("The exercise "+getName()+" has two Python templates. Please fix this bug.");
 		
 		newSource(Game.PYTHON, entName, initialCode, "$body",0,"");
 		corrections.put(Game.PYTHON, initialCode+correction);
@@ -110,7 +112,9 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 	}
 	protected void templateScala(String entName, String[] types, String initialCode, String correction) {
 		if (isSetup)
-			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template");
+			throw new RuntimeException("The exercise "+getName()+" is already setup, too late to add a programming language template.");
+		if (this.getProgLanguages().contains(Game.SCALA))
+			throw new RuntimeException("The exercise "+getName()+" has two Scala templates. Please fix this bug.");
 		
 		StringBuffer skeleton = new StringBuffer("   t.setResult( ");
 		skeleton.append(entName);
