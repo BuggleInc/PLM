@@ -25,6 +25,14 @@ public class StringX extends BatExercise {
 				"    if str[i] != 'x' or i == 0 or i == len(str)-1:" +
 				"      res += str[i:i+1]\n" +
 				"  return res\n");
+		templateScala("stringX", new String[] {"String"},
+				"def stringX(str:String):String = {\n",
+				"  var res = \"\"\n" +
+				"  for (i <- 0 to str.length-1)\n" +
+				"    if (str(i) != 'x' || i == 0 || i == str.length-1)" +
+				"      res += str.substring(i,i+1)\n" +
+				"  return res\n"+
+				"}");
 		setup(myWorld);
 	}
 

@@ -28,6 +28,15 @@ public class StringMatch extends BatExercise {
 				"    if a[i:i+2] == b[i:i+2]:\n" +
 				"      count += 1\n" +
 				"  return count\n");
+		templateScala("stringMatch", new String[]{"String","String"},
+				"def stringMatch(a:String, b:String):Int = {\n",
+				"  val l = Math.min( a.length, b.length )\n" +
+				"  var count = 0\n" +
+				"  for (i <- 0 to l-2)\n" +
+				"    if (a.substring(i,i+2) == b.substring(i,i+2))\n" +
+				"      count += 1\n" +
+				"  return count\n"+
+				"}");
 		setup(myWorld);
 	}
 

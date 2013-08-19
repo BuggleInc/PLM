@@ -25,6 +25,13 @@ public class StringTimes extends BatExercise {
 				"  for i in range(n):\n"+
 				"    res += str\n"+
 				"  return res\n");
+		templateScala("stringTimes", new String[]{"String","Int"}, 
+				"def stringTimes(str:String, n:Int):String = {\n",
+				"  var res = \"\"\n"+
+				"  for (i <- 1 to n)\n"+
+				"    res ++= str\n"+
+				"  return res\n"+
+				"}");
 		setup(myWorld);
 	}
 

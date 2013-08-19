@@ -28,6 +28,19 @@ public class StringYak extends BatExercise {
 				"      res += str[i]\n" +
 				"    i+=1\n"+
 				"  return res\n");
+		templateScala("stringYak",new String[]{"String"}, 
+				"def stringYak(str:String):String = { \n",
+				"  var res = \"\"\n" +
+				"  var i=0\n" +
+				"  while (i<str.length) {\n"+
+				"    if (i+2<str.length  && str(i) == 'y' && str(i+2)=='k')\n" +
+				"      i += 2\n" +
+				"    else\n" +
+				"      res += str(i)\n" +
+				"    i+=1\n"+
+				"  }\n"+
+				"  return res\n"+
+				"}");
 		setup(myWorld);
 	}
 

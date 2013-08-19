@@ -24,6 +24,13 @@ public class AltPairs extends BatExercise {
 				"  for i in range(0,len(str),4):\n" +
 				"    res += str[i:i+2]\n" +
 				"  return res\n");
+		templateScala("altPairs",new String[]{"String"}, 
+				"def altPairs(str:String):String={\n",
+				"  var res = \"\"\n" +
+				"  for (i <- 0 to (str.length-1) by 4)\n" +
+				"    res ++= str.substring(i, Math.min(i+2,str.length))\n" +
+				"  return res\n"+
+				"}\n");
 		setup(myWorld);
 	}
 

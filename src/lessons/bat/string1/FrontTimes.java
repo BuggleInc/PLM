@@ -29,6 +29,16 @@ public class FrontTimes extends BatExercise {
 				"  for i in range(n):" +
 				"    res += front\n" +
 				"  return res\n");
+		templateScala("frontTimes",new String[]{"String","Int"}, 
+				"def frontTimes(str:String, n:Int):String = {\n",
+				"  var frontLen = 3\n" +
+				"  if (frontLen > str.length)\n" +
+				"    frontLen = str.length\n" +
+				"  var front = \"\"\n" +
+				"  if (str.length >0)\n" +
+				"    front = str.substring(0,frontLen)\n" +
+				"  return front * n\n"+
+				"}");
 		setup(myWorld);
 	}
 

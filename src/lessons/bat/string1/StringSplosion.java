@@ -23,6 +23,13 @@ public class StringSplosion extends BatExercise {
 				"  for i in range(len(str)):\n" +
 				"    res += str[0:i+1]\n" +
 				"  return res\n");
+		templateScala("stringSplosion",new String[]{"String"}, 
+				"def stringSplosion(str:String):String = {\n",
+				"  var res = \"\"\n" +
+				"  for (i <- 0 to str.length-1) \n" +
+				"    res ++= str.substring(0,i+1)\n" +
+				"  return res\n"+
+				"}");
 		setup(myWorld);
 	}
 

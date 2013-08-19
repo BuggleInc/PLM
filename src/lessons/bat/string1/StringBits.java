@@ -21,6 +21,13 @@ public class StringBits extends BatExercise {
 				"  for i in range(0,len(str),2):\n" +
 				"    res += str[i:i+1]\n" +
 				"  return res\n");
+		templateScala("stringBits",new String[] {"String"}, 
+				"def stringBits(str:String):String = {\n",
+				"  var res:String = \"\"\n" +
+				"  for (i <- 0 to str.length-1 by 2)\n" +
+				"    res += str.substring(i,i+1)\n" +
+				"  return res\n"+
+				"}");
 		setup(myWorld);
 	}
 

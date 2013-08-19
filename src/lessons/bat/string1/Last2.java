@@ -33,6 +33,18 @@ public class Last2 extends BatExercise {
 				"    if str[i:i+2] == end:\n" +
 				"      count += 1\n" +
 				"  return count\n");
+		templateScala("last2", new String[]{"String"},
+				"def last2(str:String):Int = {\n",
+				"  val l = str.length\n" +
+				"  if (l < 2)\n" +
+				"    return 0\n" +
+				"  val end = str.substring(l-2,l)\n" +
+				"  var count = 0\n" +
+				"  for (i <- 0 to str.length-3)\n" +
+				"    if (str.substring(i,i+2) == end)\n" +
+				"      count += 1\n" +
+				"  return count\n"+
+				"}");
 		setup(myWorld);
 	}
 
