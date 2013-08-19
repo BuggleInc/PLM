@@ -20,11 +20,11 @@ pour récupérer la valeur de la case sur laquelle la fourmi se trouve. Les
 couleurs intéressantes sont tout simplement <code>Color.black</code> pour le
 noir ou <code>Color.white</code> pour le blanc.</p>
 
-<p class="Java">Pour comparer les couleurs, il n'est pas possible d'utiliser le signe égal
-(=) parce ces choses ne sont pas des valeurs scalaires normales mais des
-objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:
-</p> 
-<pre class="Java">
+[!java]
+<p>Pour comparer les couleurs, il n'est pas possible d'utiliser le double signe
+égal (==) parce ces choses ne sont pas des valeurs scalaires normales mais
+des objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:</p> 
+<pre>
 Color c /* = une initialisation*/;
 if (c.equals(Color.black)) {
   /* c'était égal */
@@ -32,6 +32,7 @@ if (c.equals(Color.black)) {
   /* ce n'était pas égal */
 }
 </pre>
+[/!]
 
 <p>Changer la couleur du sol n'est pas difficile, seulement un peu long : vous
 avez à changer la couleur de la brosse de votre buggle, l'abaisser (pour

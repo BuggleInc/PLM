@@ -9,8 +9,8 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray};
 
 	/* BEGIN TEMPLATE */
-	/* Do not change these definitions */
-	final static int STOP   = 0;
+	final static int STOP   = 0; /* for example */ 
+	/* BEGIN HIDDEN */
 	final static int NOTURN = 1;
 	final static int LEFT   = 2;
 	final static int BACK   = 4;
@@ -19,7 +19,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 	final static int NEXT_COLOR = 0;
 	final static int NEXT_MOVE  = 1;
 	final static int NEXT_STATE = 2;
-
+	/* END HIDDEN */
 
 	int state = 0;
 

@@ -17,21 +17,19 @@ une balle. LRRRRRLLR dessine un carré, LLRRRLRLRLLR dessine un schéma
 régulier tordu après une période ressemblant à un comportement chaotique, et
 RRLLLRLLLRRR semble remplir un sablier...</p>  
 
-<p class="Java">Métamorphoser votre buggle en une fourmi de Langton générique n'est pas très
+<p>Métamorphoser votre buggle en une fourmi de Langton générique n'est pas très
 compliqué, même si ce n'est pas complètement trivial. Comme précédemment,
 vous avez à écrire une fonction <code>step</code>. Mais cette fois, elle
 reçoit deux tableaux comme paramètres. Le premier définit les règles à
 suivre selon la couleur du sol tandis que le deuxième done la séquence de
-couleur à utiliser. Par exemple, la fourmi de base aurait <code>{'R',
-'L'}</code> et <code>{Color.white, Color.black}</code> comme arguments.</p>
-
-<p class="python">Métamorphoser votre buggle en une fourmi de Langton générique n'est pas très
-compliqué, même si ce n'est pas complètement trivial. Comme précédemment,
-vous avez à écrire une fonction <code>step</code>. Mais cette fois, elle
-reçoit deux tableaux comme paramètres. Le premier définit les règles à
-suivre selon la couleur du sol tandis que le deuxième done la séquence de
-couleur à utiliser. Par exemple, la fourmi de base aurait <code>['R',
-'L']</code> et <code>[Color.white, Color.black]</code> comme arguments.</p>
+couleur à utiliser. Par exemple, la fourmi de base aurait
+[!java]<code>{'R', 'L'}</code> et <code>{Color.white,
+Color.black}</code>[/!]
+[!python]<code>['R', 'L']</code> et <code>[Color.white,
+Color.black]</code>[/!]
+[!scala]<code>Array('R', 'L')</code> et <code>Array(Color.white,
+Color.black)</code>[/!]
+comme arguments.</p>
 
 <p>A chaque pas, vous avez toujours à appliquer le pseudo-code suivant :</p>
 <ul>

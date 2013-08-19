@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-19 00:00+0300\n"
-"PO-Revision-Date: 2013-08-19 00:09+0200\n"
+"POT-Creation-Date: 2013-08-19 11:27+0300\n"
+"PO-Revision-Date: 2013-08-19 11:47+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2355,6 +2355,8 @@ msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:39
 #: src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193
 #: src/lessons/welcome/bdr/BDR2.html:129
+#: src/lessons/turmites/langton/Langton.html:31
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:64
 #: src/lessons/welcome/bat/bool1/Max1020.html:5
 #: src/lessons/welcome/array/basics/Array1.html:181
 #: src/lessons/welcome/array/basics/Array1.html:207
@@ -3750,6 +3752,7 @@ msgstr "Le code avec une boucle <code>for</code> est plus simple à lire, non?"
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/loopfor/LoopFor.html:46
 #: src/lessons/welcome/bdr/BDR.html:187
+#: src/lessons/turmites/langton/Langton.html:20
 #: src/lessons/welcome/array/basics/Array1.html:200
 msgid "[!java]"
 msgstr "[!java]"
@@ -4032,6 +4035,7 @@ msgstr "Exécuter le corps de boucle au moins une fois"
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25
 #: src/lessons/welcome/loopdowhile/Poucet.html:27
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:53
 #: src/lessons/welcome/array/basics/Array1.html:98
 msgid "[!python]"
 msgstr "[!python]"
@@ -4078,6 +4082,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:38
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:60
 #: src/lessons/welcome/array/basics/Array1.html:114
 msgid "[/!] [!java|scala]"
 msgstr "[/!] [!java|scala]"
@@ -6290,8 +6295,7 @@ msgstr ""
 #. type: Content of: <h3>
 #: src/lessons/welcome/bdr/BDR2.html:10
 msgid "[!java]<code>switch</code> conditionals[/!][!scala]Pattern matching[/!]"
-msgstr ""
-"[!java]Conditionnelle <code>switch</code>[/!][!scala]Le pattern matching[/!]"
+msgstr "[!java]Conditionnelle <code>switch</code>[/!][!scala]Les filtrages[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:12
@@ -6348,17 +6352,9 @@ msgid ""
 "python.  It is not new either, as other languages such as OCaml or Haskell "
 "offer this feature since long, but still.  It's really cool![/!]"
 msgstr ""
-"À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un "
-"choix avec 4 branches en fonction du résultat de [!java]getIndication()[/!][!"
-"scala]readMessage()[/!].\n"
-"Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>, "
-"dont la syntaxe est la suivante en Java.[/!]\n"
-"[!scala] un pattern matching, qui est une construction très agréable (malgré "
-"au nom barbare) qui généralise le <code>if</code>. Il s'agit sans aucun "
-"doute de l'un des avantages majeurs du langage Scala par rapport à d'autres "
-"tels que le Java ou le Python. Cette construction n'est cependant pas "
-"révolutionnaire puisqu'elle existe depuis assez longtemps dans des langages "
-"comme OCaml ou Haskell, mais il n'empêche. Elle est carrément cool![/!]"
+"À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un choix avec 4 branches en fonction du résultat de [!java]getIndication()[/!][!scala]litMessage()[/!].\n"
+"Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>, dont la syntaxe est la suivante en Java.[/!]\n"
+"[!scala] un filtrage (pattern matching en anglais), qui est une construction très agréable qui généralisant le <code>if</code>. Il s'agit sans aucun doute de l'un des avantages majeurs du langage Scala par rapport à d'autres tels que le Java ou le Python. Cette construction n'est cependant pas révolutionnaire puisqu'elle existe depuis assez longtemps dans des langages comme OCaml ou Haskell, mais il n'empêche. Elle est carrément cool![/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR2.html:39
@@ -6507,7 +6503,7 @@ msgid ""
 "  case _            => println(\"Welcome stranger.\")\n"
 "}"
 msgstr ""
-"non match {\n"
+"nom match {\n"
 "  case \"Martin\" => println(\"Salut Martin, comment vas-tu?\")\n"
 "  case \"Gerald\" => println(\"He Gerald! Ça va?\")\n"
 "  case _            => println(\"Bonjour, étranger.\")\n"
@@ -6543,11 +6539,7 @@ msgid ""
 "You can even add guards to your branches. These are extra conditions that "
 "must be respected for the branch to get applied. This is handy if you want "
 "match on value ranges, as follows."
-msgstr ""
-"Il est même possible d'ajouter des gardes à vos branches. Il s'agit de "
-"conditions supplémentaires qui doivent être respectées pour que la branche "
-"soit appliquée. C'est par exemple pratique pour faire du pattern matching "
-"sur un ensemble de valeurs."
+msgstr "Il est même possible d'ajouter des gardes à vos branches. Il s'agit de conditions supplémentaires qui doivent être respectées pour que la branche soit appliquée. C'est par exemple pratique pour faire du filtrage sur un ensemble de valeurs."
 
 #. type: Content of: <p><p><p><pre>
 #: src/lessons/welcome/bdr/BDR2.html:111
@@ -6582,7 +6574,7 @@ msgstr ""
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/bdr/BDR2.html:120
 msgid "Finally, it is possible also to match several variables in one shoot!"
-msgstr "Enfin, il est même possible d'apparier plusieurs variables à la fois!"
+msgstr "Enfin, il est même possible de filtrer sur plusieurs variables à la fois!"
 
 #. type: Content of: <p><p><p><pre>
 #: src/lessons/welcome/bdr/BDR2.html:121
@@ -6607,9 +6599,7 @@ msgstr ""
 msgid ""
 "I told you that scala's pattern matching is very powerful! I actually love "
 "this feature!"
-msgstr ""
-"Je vous avais bien dit que cette construction scala était surpuissante ! Je "
-"l'adore !"
+msgstr "Je vous avais bien dit que le filtrage scala était une construction surpuissante ! Je l'adore !"
 
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/bdr/BDR2.html:132
@@ -6706,7 +6696,11 @@ msgid ""
 "the bottom left corner, and it should visit any cells up to the top "
 "(coloring the ground on its path. The main loop of your code is something "
 "like:"
-msgstr "Nous allons maintenant apprendre à la buggle à explorer son monde. Sa position de départ est en bas à gauche, et elle doit visiter toutes les cases juqu'en haut (en coloriant le sol sur son passage).  La boucle principale de votre code doit être de la forme :"
+msgstr ""
+"Nous allons maintenant apprendre à la buggle à explorer son monde. Sa "
+"position de départ est en bas à gauche, et elle doit visiter toutes les "
+"cases juqu'en haut (en coloriant le sol sur son passage).  La boucle "
+"principale de votre code doit être de la forme :"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:7
@@ -6726,7 +6720,10 @@ msgid ""
 "We thus have to write two specific methods: The first one returns a boolean "
 "indicating whether we are on a final position while the second moves one "
 "snake step forward."
-msgstr "Il faut donc écrire deux méthodes spécifiques. L'une renvoie un booléen indiquant si l'on se trouve à la position finale, tandis que l'autre avance d'un pas de serpent."
+msgstr ""
+"Il faut donc écrire deux méthodes spécifiques. L'une renvoie un booléen "
+"indiquant si l'on se trouve à la position finale, tandis que l'autre avance "
+"d'un pas de serpent."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:16
@@ -6787,7 +6784,9 @@ msgstr ""
 msgid ""
 "Hint: the main loop of your code must continue while the testing function "
 "returns false. Their is thus two way of writing it:"
-msgstr "Indication: la boucle principale de votre code doit continuer tant que la fonction adéquate renvoie faux. On peut l'écrire de deux façons:"
+msgstr ""
+"Indication: la boucle principale de votre code doit continuer tant que la "
+"fonction adéquate renvoie faux. On peut l'écrire de deux façons:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:34
@@ -6803,7 +6802,8 @@ msgid ""
 "write it as:[/!]"
 msgstr ""
 "[!python]Vous pouvez préférer l'écrire ainsi:[/!] \n"
-"[!java|scala]Comme le point d'exclamation (!) dénote la négation booléenne en [!thelang], vous pouvez aussi l'écrire:[/!]"
+"[!java|scala]Comme le point d'exclamation (!) dénote la négation booléenne "
+"en [!thelang], vous pouvez aussi l'écrire:[/!]"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/traversal/Snake.html:37
@@ -6865,7 +6865,15 @@ msgid ""
 "and height. Your test is about comparing the buggle's current position (that "
 "you can access with <code>getX()</code> and <code>getY()</code>) to the "
 "world dimensions."
-msgstr "Le premier objectif est donc d'écrire une fonction booléenne indiquant si la buggle a atteint la position finale ou non, càd si elle est arrivée en bas à droite du monde.  Vous utiliserez pour cela les méthodes <code>getMondeHauteur()</code> et <code>getMondeLargueur()</code> qui retournent respectivement la hauteur et la largeur du monde.  Votre test est de comparer les coordonnées actuelles de votre buggle (que vous pouvez retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux dimensions du monde."
+msgstr ""
+"Le premier objectif est donc d'écrire une fonction booléenne indiquant si la "
+"buggle a atteint la position finale ou non, càd si elle est arrivée en bas à "
+"droite du monde.  Vous utiliserez pour cela les méthodes "
+"<code>getMondeHauteur()</code> et <code>getMondeLargueur()</code> qui "
+"retournent respectivement la hauteur et la largeur du monde.  Votre test est "
+"de comparer les coordonnées actuelles de votre buggle (que vous pouvez "
+"retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux "
+"dimensions du monde."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:27
@@ -6906,7 +6914,11 @@ msgid ""
 "counter initialiser to zero at the begining of your code, and incremented by "
 "one at each step (for example with <code>counter += 1;</code>).  Then, you "
 "have to use <code>writeMessage()</code> to write the value on the ground."
-msgstr "Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez besoin d'un compteur initialisé à zéro au début de votre code, et incrémenté à chaque pas (par exemple avec <code>cpt += 1;</code>). Ensuite, il faut écrire cette valeur au sol (avec <code>ecritMessage()</code>)."
+msgstr ""
+"Il est temps d'écrire au sol les numéros de case. Pour cela, vous aurez "
+"besoin d'un compteur initialisé à zéro au début de votre code, et incrémenté "
+"à chaque pas (par exemple avec <code>cpt += 1;</code>). Ensuite, il faut "
+"écrire cette valeur au sol (avec <code>ecritMessage()</code>)."
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:43
@@ -6914,7 +6926,10 @@ msgid ""
 "You probably need to write the first [!java|scala]or last [/!]value out of "
 "the main loop [!java|scala], depending on whether you prefer to use a "
 "<code>while</code> or a <code>do/while</code> one[/!]."
-msgstr "Il est sans doute nécessaire d'écrire la valeur de la première[!java|scala] ou dernière[/!] case en dehors de la boucle principale[!java|scala], selon que vous utilisez une boucle <code>while</code> ou <code>do/while</code>[/!]."
+msgstr ""
+"Il est sans doute nécessaire d'écrire la valeur de la première[!java|scala] "
+"ou dernière[/!] case en dehors de la boucle principale[!java|scala], selon "
+"que vous utilisez une boucle <code>while</code> ou <code>do/while</code>[/!]."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:3
@@ -6983,17 +6998,18 @@ msgstr ""
 #: src/lessons/turmites/Main.html:7
 msgid ""
 "This mechanism were invented in 1986 by Chris Langton, and later generalized "
-"in several ways (as we shall see in the next exercises). It was proven in "
-"2000 that the ant's trajectory can be used to compute any boolean circuit, "
-"and thus that the ant is capable of universal computation (ie, any possible "
-"computation can be achieved using the ant as a computing device). Yet "
-"another subject of fascination..."
+"in several ways (as we shall see in the next exercises). It was proven that "
+"Turmites and Turing machines are of equal power: An ant's trajectory can be "
+"used to compute any boolean circuit, and thus that an ant is capable of "
+"universal computation. Put simply, any possible computation can be achieved "
+"using a turmite as a computing device. Yet another subject of fascination..."
 msgstr ""
 "Ce mécanisme a été inventé en 1986 par Chris Langton, et généralisé après de "
 "plusieures façons (comme nous le verrons dans les prochains exercices). Il a "
-"été prouvé en 2000 que la trajectoire de la fourmi peut être utilisée pour "
-"calculer n'importe quel circuit booléen, et que la fourmi est capable de "
-"calcul universel ( ie, n'importe quel calcul possible peut être réalisé en "
+"été prouvé que les turmites et les machines de Turing sont aussi puissantes "
+"les unes que les autres : une trajectoire de  fourmi peut être utilisée pour "
+"calculer n'importe quel circuit booléen, et la fourmi est donc capable de "
+"calcul universel (càd, n'importe quel calcul possible peut être réalisé en "
 "utilisant la fourmi comme instrument de calcul). Encore un autre sujet de "
 "fascination..."
 
@@ -7121,15 +7137,15 @@ msgstr ""
 "noir ou <code>Color.white</code> pour le blanc."
 
 #. type: Content of: <p>
-#: src/lessons/turmites/langton/Langton.html:20
+#: src/lessons/turmites/langton/Langton.html:21
 msgid ""
-"To compare colors, you cannot use the equal sign (=), because these things "
+"To compare colors, you cannot use the equal signs (==), because these things "
 "are not scalar values but objects. Instead, you need to write something like "
 "the following:"
 msgstr ""
-"Pour comparer les couleurs, il n'est pas possible d'utiliser le signe égal "
-"(=) parce ces choses ne sont pas des valeurs scalaires normales mais des "
-"objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:"
+"Pour comparer les couleurs, il n'est pas possible d'utiliser le double signe "
+"égal (==) parce ces choses ne sont pas des valeurs scalaires normales mais "
+"des objets. À la place, vous devez écrire quelque chose comme cela&nbsp;:"
 
 #. type: Content of: <pre>
 #: src/lessons/turmites/langton/Langton.html:24
@@ -7150,7 +7166,7 @@ msgstr ""
 "}\n"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/langton/Langton.html:32
+#: src/lessons/turmites/langton/Langton.html:33
 msgid ""
 "Changing the ground color is not difficult, but a bit long: you have to "
 "change the brush color of your buggle, set the brush down (to mark the "
@@ -7169,7 +7185,7 @@ msgstr ""
 "<code>setGroundColor(couleur)</code> pour factoriser le tout."
 
 #. type: Content of: <p>
-#: src/lessons/turmites/langton/Langton.html:39
+#: src/lessons/turmites/langton/Langton.html:40
 msgid ""
 "As you can see from the execution of this exercise, the interest in this "
 "algorithm is that after about 10000 steps of relative chaotic behavior, the "
@@ -7234,48 +7250,38 @@ msgid ""
 "<code>step</code> function. But this time, it receives two arrays as "
 "parameters.  The first one defines the rules to follow depending on the "
 "ground color while the second one gives the sequence of colors to use. For "
-"example, the basic ant would have <code>{'R', 'L'}</code> and <code>{Color."
-"white, Color.black}</code> as arguments."
+"example, the basic ant would have [!java]<code>{'R', 'L'}</code> and "
+"<code>{Color.white, Color.black}</code>[/!] [!python]<code>['R', 'L']</code> "
+"and <code>[Color.white, Color.black]</code>[/!] [!scala]<code>Array('R', "
+"'L')</code> and <code>Array(Color.white, Color.black)</code>[/!] as "
+"arguments."
 msgstr ""
 "Métamorphoser votre buggle en une fourmi de Langton générique n'est pas très "
 "compliqué, même si ce n'est pas complètement trivial. Comme précédemment, "
 "vous avez à écrire une fonction <code>step</code>. Mais cette fois, elle "
 "reçoit deux tableaux comme paramètres. Le premier définit les règles à "
 "suivre selon la couleur du sol tandis que le deuxième done la séquence de "
-"couleur à utiliser. Par exemple, la fourmi de base aurait <code>{'R', 'L'}</"
-"code> et <code>{Color.white, Color.black}</code> comme arguments."
+"couleur à utiliser. Par exemple, la fourmi de base aurait \n"
+"[!java]<code>{'R', 'L'}</code> et <code>{Color.white, Color.black}</"
+"code>[/!]\n"
+"[!python]<code>['R', 'L']</code> et <code>[Color.white, Color.black]</"
+"code>[/!]\n"
+"[!scala]<code>Array('R', 'L')</code> et <code>Array(Color.white, Color."
+"black)</code>[/!]\n"
+"comme arguments."
 
 #. type: Content of: <p>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:24
-msgid ""
-"Changing your buggle into a generic Langton's ant is not very complicated, "
-"although it is not completely trivial. As previously, you have to write a "
-"<code>step</code> function. But this time, it receives two arrays as "
-"parameters.  The first one defines the rules to follow depending on the "
-"ground color while the second one gives the sequence of colors to use. For "
-"example, the basic ant would have <code>['R', 'L']</code> and <code>[Color."
-"white, Color.black]</code> as arguments."
-msgstr ""
-"Métamorphoser votre buggle en une fourmi de Langton générique n'est pas très "
-"compliqué, même si ce n'est pas complètement trivial. Comme précédemment, "
-"vous avez à écrire une fonction <code>step</code>. Mais cette fois, elle "
-"reçoit deux tableaux comme paramètres. Le premier définit les règles à "
-"suivre selon la couleur du sol tandis que le deuxième done la séquence de "
-"couleur à utiliser. Par exemple, la fourmi de base aurait <code>['R', 'L']</"
-"code> et <code>[Color.white, Color.black]</code> comme arguments."
-
-#. type: Content of: <p>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:31
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:28
 msgid "At each step, you thus have to apply the following pseudo-code:"
 msgstr "A chaque pas, vous avez toujours à appliquer le pseudo-code suivant :"
 
 #. type: Content of: <ul><li>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:33
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:30
 msgid "Find the position of the ground color in the color sequence;"
 msgstr "Trouver la position de la couleur du sol dans la séquence de couleur;"
 
 #. type: Content of: <ul><li>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:34
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:31
 msgid ""
 "Turn left or right depending on the content of the rule array at that "
 "position;"
@@ -7284,7 +7290,7 @@ msgstr ""
 "position;"
 
 #. type: Content of: <ul><li>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:35
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:32
 msgid ""
 "Mark the current ground with the next color in the sequence (the last color "
 "being followed by the first one);"
@@ -7293,13 +7299,13 @@ msgstr ""
 "séquence ( la dernière couleur est suivie par la première);"
 
 #. type: Content of: <ul><li>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:36
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:33
 msgid "Move forward by one step."
 msgstr "Avancer d'un pas"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/langtoncolors/LangtonColors.html:39
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:70
+#: src/lessons/turmites/langtoncolors/LangtonColors.html:36
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:66
 msgid "You now should have enough information to succeed."
 msgstr "Vous devriez maintenant avoir assez d'informations pour réussir."
 
@@ -7338,26 +7344,19 @@ msgid ""
 "the current's cell ground color in the color sequence. But this time, the "
 "<code>rule</code> data depends both on the current color and the current "
 "state.  <code>rule</code> actually contains 3 information in each situation: "
-"the color to write, the move to do, and the next state value. For example, "
-"rule[1][0] contains the informations to use when <code>state==1</code> and "
-"<code>color==0</code>. In other worlds, you can retrieve the information "
-"relative to your current situation by using <code>rule[state][currentColor]</"
-"code>."
+"the color to write, the move to do, and the next state value. For example, [!"
+"java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contains the informations "
+"to use when <code>state==1</code> and <code>color==0</code>.  In other "
+"worlds, you can retrieve the information relative to your current situation "
+"by using <code>[!java|python]rule[state][currentColor][/!][!scala]rule(state)"
+"(currentColor)[/!]</code>."
 msgstr ""
-"Une fois encore, vous devez seulement écrire la méthode <code>step()</code>, "
-"qui s'occupe de faire faire un pas à la turmite. Une fois encore, vous devez "
-"tout d'abord trouver le rang de la couleur actuelle du sol dans la liste des "
-"couleurs. Mais cette fois, <code>rule</code> dépend à la fois de la couleur "
-"courante et de l'état courant. <code>rule</code> contient en fait trois "
-"informations dans chaque situation : la couleur à mettre, le mouvement à "
-"effectuer, et la valeur du prochain état. Par exemple, rule[1][0] contient "
-"l'information à utiliser quand <code>state==1</code> et <code>color==0</"
-"code>. En d'autres mots, vous pouvez récupérer l'information relative à "
-"votre situation actuelle en utilisant <code>rule[etatCourant]"
-"[couleurActuelle]</code>"
+"Une fois encore, vous devez seulement écrire la méthode <code>step()</code>, qui s'occupe de faire faire un pas à la turmite. Une fois encore, vous devez tout d'abord trouver le rang de la couleur actuelle du sol dans la liste des couleurs. Mais cette fois, <code>rule</code> dépend à la fois de la couleur courante et de l'état courant. <code>rule</code> contient en fait trois informations dans chaque situation : la couleur à mettre, le mouvement à effectuer, et la valeur du prochain état. \n"
+"Par exemple, [!java|python]rule[1][0][/!][!scala]rule(1)(0)[/!] contient l'information à utiliser quand <code>state==1</code> et <code>color==0</code>. En d'autres mots, vous pouvez récupérer l'information relative à votre situation actuelle en utilisant \n"
+"<code>[!java|python]rule[etatCourant][couleurActuelle][/!][!scala]rule(etatCourant)(couleurActuelle)[/!]</code>"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:22
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:24
 msgid ""
 "Each such information set contains 3 values. The first one is the rank of "
 "the color to write on the ground. The second is the move to do, with the "
@@ -7377,94 +7376,80 @@ msgstr ""
 "est la valeur du prochain <code>state</code> à avoir après cette itération."
 
 #. type: Content of: <p>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:29
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:31
 msgid ""
-"Since these arbitrary notations are somehow difficult to remember, the "
-"template code defines a set of constants that you should use instead of the "
-"direct numerical values. Their names are NOTURN, LEFT, RIGHT and so on. The "
-"modifiers <code>final static</code> before their type is the way to mark "
-"variables as constant in Java (sorry if the notation seems complex). Using "
-"such constants greatly help making the code easier to read. This allows to "
-"write things this way:"
+"Since these arbitrary notations are somehow difficult to remember, you "
+"should define a set of constants that you should use instead of the direct "
+"numerical values.  Their names could be NOTURN, LEFT, RIGHT and so on.  [!"
+"scala]Just declare them using the keyword <code>val</code> instead of "
+"<code>var</code>.  You should always use <code>val</code> instead of "
+"<code>var</code> when possible anyway.[/!] [!java]The modifiers <code>final "
+"static</code> before their type is the way to mark variables as constant in "
+"Java.  You should write for example <code>static final int NOTURN=1;</code> "
+"Sorry for the complexity of this notation. [/!] [!python]By convention, such "
+"constant variables are written in upper case in python.  Technically, you "
+"can still modify them, but that would be a very bad idea.[/!] You should "
+"write them out of any method so that they are globally visible."
 msgstr ""
-"Puisque ces notations arbitraires sont parfois difficiles à se souvenir, le "
-"code fourni définit un ensemble de constantes que vous pouvez utiliser à la "
-"place des valeurs numériques. Leurs noms sont LEFT, RIGHT, etc.\n"
-"Le modifieur <code>final static</code> avant leur type est la façon "
-"d'indiquer les variables comme constantes en Java (désolés si la notation "
-"semble complexe).\n"
-"Utiliser de telles constantes rend le code beaucoup plus simple à lire&nbsp;:"
+"Puisque ces notations arbitraires sont parfois difficiles à se souvenir, "
+"vous devriez définir un ensemble de constantes que vous pouvez utiliser à la "
+"place des valeurs numériques. Leurs noms pourraient être GAUCHE, DROITE, "
+"etc.\n"
+"[!scala]Déclarez simplement ces valeurs avec le mot-clé <code>val</code> au "
+"lieu de <code>var</code>. De toute façon, on devrait toujours utiliser "
+"<code>val</code> au lieu de <code>var</code> quand on peut.[/!]\n"
+"[!java]Les modificateurs <code>final static</code> devant le nom du type est "
+"la façon Java de marquer des constant en Java. \n"
+"  Vous devriez écrire par exemple <code>static final int TOUTDROIT=1;</"
+"code>\n"
+"  Désolé de la complexité de cette notation. [/!]\n"
+"[!python]Par convention, de telles «variables constantes» sont écrites tout "
+"en majuscule en Python.\n"
+"  Rien ne vous empêche d'un point de vue technique de les modifier, mais ca "
+"serait une très mauvaise idée.[/!]\n"
+"Vous devriez les écrire en dehors de toute méthode pour les rendre visible "
+"de partout."
 
 #. type: Content of: <p>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:35
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:43
 msgid ""
-"Since these arbitrary notations are somehow difficult to remember, the "
-"template code defines a set of constants that you should use instead of the "
-"direct numerical values. Their names are NOTURN, LEFT, RIGHT and so on. By "
-"convention, such constant variables are written in upper case in python. "
-"Technically, you can still modify them, but that would be a very bad idea. "
-"Using such constants greatly help making the code easier to read, as it "
-"allows to write things this way:"
+"Using such constants greatly help making the code easier to read. Compare "
+"the next two code chunks:"
 msgstr ""
-"Puisque ces notations arbitraires sont parfois difficiles à se souvenir, le "
-"code fourni définit un ensemble de constantes que vous pouvez utiliser à la "
-"place des valeurs numériques. Leurs noms sont NOTURN, LEFT, RIGHT, etc. "
-"(pour TOUTDROIT, GAUCHE, DROITE). Par convention, de telles constantes sont "
-"écrites en majuscules en python. Techniquement, vous pouvez modifier la "
-"valeur de ces variables, but ce serait une très mauvause idée.\n"
-"Utiliser de telles constantes rend le code beaucoup plus simple à lire&nbsp;:"
+"Utilisez de telles constantes aident beaucoup à rendre le code plus lisible.\n"
+"Comparez les deux morceaux de code suivant:"
 
 #. type: Content of: <pre>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:42
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:45
 #, no-wrap
 msgid ""
-"  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
-"    left();\n"
-"  }\n"
+"[!java]if (rule[state][currentColor][NEXT_MOVE] == LEFT) {[/!][!python]if rule[state][currentColor][NEXT_MOVE] == LEFT:[/!][!scala]if (rule(state)(currentColor)(NEXT_MOVE) == LEFT) {[/!]\n"
+"    left()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 msgstr ""
-"  if (rule[state][currentColor][NEXT_MOVE] == LEFT) {\n"
-"    left();\n"
-"  }\n"
-
-#. type: Content of: <pre>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:47
-#, no-wrap
-msgid ""
-"  if rule[state][currentColor][NEXT_MOVE] == LEFT:\n"
-"    left()\n"
-msgstr ""
-"  if rule[state][currentColor][NEXT_MOVE] == LEFT:\n"
-"    left()\n"
+"[!java]if (rule[etat][couleurActuelle][MVT_SUIVANT] == GAUCHE) {[/!][!python]if rule[etat][couleurActuelle][MVT_SUIVANT] == GAUCHE:[/!][!scala]if (rule(etat)(couleurActuelle)(MVT_SUIVANT) == GAUCHE) {[/!]\n"
+"    gauche()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:50
-msgid "This is much more easier to read than the following way:"
-msgstr "C'est beaucoup plus simple à lire que ceci&nbsp;:"
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:48
+msgid "This is much more easier to read (although longer) than the following:"
+msgstr "C'est un peu plus long, mais bien plus agréable à lire que ceci&nbsp;:"
 
 #. type: Content of: <pre>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:52
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:49
 #, no-wrap
 msgid ""
-"  if (rule[x][y][1] == 2) {\n"
-"    left();\n"
-"  }\n"
+"[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
+"    left()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 msgstr ""
-"  if (rule[x][y][1] == 2) {\n"
-"    left();\n"
-"  }\n"
-
-#. type: Content of: <pre>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:57
-#, no-wrap
-msgid ""
-"  if rule[x][y][1] == 2:\n"
-"    left()\n"
-msgstr ""
-"  if rule[x][y][1] == 2:\n"
-"    left()\n"
+"[!java]if (rule[i][j][1] == 2) {[/!][!python]if rule[i][j][1] == 2:[/!][!scala]if (rule(i)(j)(1) == 2) {[/!]\n"
+"    gauche()[!java];[/!]\n"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:61
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:53
 msgid ""
 "Finally, you probably want to write a <code>elif</code> branch for the "
 "<code>STOP</code> condition too. Having a <code>else</code> branch "
@@ -7487,13 +7472,23 @@ msgstr ""
 "n'y a rien à faire. Cela indique à Python qu'il y a bien une branche à cet "
 "emplacement, mais qu'elle ne fait rien."
 
+#. type: Content of: <p>
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:62
+msgid ""
+"You should probably use a [!java]switch case[/!][!scala]pattern matching[/!] "
+"construct to keep your code readable.  If you can't remember what it is, "
+"check <a href=\"jlm://lessons.welcome/bdr.BDR2\">this exercise</a>."
+msgstr ""
+"Vous devriez probablement utiliser un [!java]switch[/!][!scala]filtrage[/!] pour que votre code reste lisible. \n"
+"Si vous avez oublié ce que c'est, retournez à <a href=\\\"jlm://lessons.welcome/bdr.BDR2\\\">cet exercice</a>."
+
 #. type: Content of: <h2>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:72
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:68
 msgid "Bibliographical notes"
 msgstr "Notes bibliographiques"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:73
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:69
 msgid ""
 "According to wikipedia, turmites were invented independently by the end of "
 "the eighties. It has been shown that turmites in general are exactly "
@@ -7630,24 +7625,14 @@ msgstr ""
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:62
 msgid ""
 "Here are some 2-color turmites, extracted from http://demonstrations.wolfram."
-"com/Turmites/ They are not written using the python syntax, but converting "
-"them should be easy."
+"com/Turmites/ [!python|scala]They are not written using the [!thelang] "
+"syntax, but converting them should be easy.[/!]"
 msgstr ""
-"Voici quelques turmites bicolores, issues de http://demonstrations.wolfram."
-"com/Turmites/ Elles n'ont pas été écrites avec la syntaxe Python, mais les "
-"convertir ne devrait pas poser beaucoup de problèmes."
-
-#. type: Content of: <p>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:64
-msgid ""
-"Here are some 2-color turmites, extracted from http://demonstrations.wolfram."
-"com/Turmites/"
-msgstr ""
-"Voici quelques turmites bicolores, issues de http://demonstrations.wolfram."
-"com/Turmites/"
+"Voici quelques turmites bicolores, issues de http://demonstrations.wolfram.com/Turmites/ \n"
+"[!scala|python]Elles n'ont pas été écrites avec la syntaxe [!thelang], mais les convertir ne devrait pas poser beaucoup de problèmes.[/!]"
 
 #. type: Content of: <pre>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:67
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:66
 #, no-wrap
 msgid ""
 "{{{1, RIGHT , 0}, {0, LEFT  , 0}}}  # 1: Langton's ant\n"
@@ -7743,7 +7728,7 @@ msgstr ""
 "{{{1, RIGHT , 1}, {0, LEFT  , 0}}, {{1, RIGHT , 2}, {0, NOTURN, 0}}, {{1, LEFT  , 0}, {0, LEFT  , 0}}} # 45: makes a 4 in 1 highway\n"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:114
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:113
 msgid ""
 "Langton's ants may not share the expressiveness power of the turmites, but "
 "they remain fascinating too. You can experiment with them using the "
@@ -7764,7 +7749,7 @@ msgstr ""
 "pas !"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:121
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:120
 msgid ""
 "Quite a lot of Langton's ants build highways: RL, of course, but also "
 "RLRLRLLRLR (about 2500 steps).  The chaotic behavior of ants before the "
@@ -7788,7 +7773,7 @@ msgstr ""
 "transcendant avant leur route."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:129
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:128
 msgid ""
 "Some ants fill solid sectors, such as RRLLLRLLLRRR (16,000 steps), "
 "RRLLLRLLLRRR (30,000 steps), RRLLLRRRRRLR (125,000 steps) or RRLRLLRRRRRR "
@@ -7809,7 +7794,7 @@ msgstr ""
 "rapidement son comportement stable (15 000 pas suffisent)."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:136
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:135
 msgid ""
 "Finally, some ants are just build artistic patterns. You should check this "
 "video for some beautiful ones: http://www.youtube.com/watch?v=1X-gtr4pEBU. "
@@ -7825,7 +7810,7 @@ msgstr ""
 "(le premier mouvement visible doit être vu comme le dernier)."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:141
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:140
 msgid ""
 "As you can see by exploring the above set of turmites, they are usually not "
 "as colorful as the ants, but this may be because very few colors suffice to "

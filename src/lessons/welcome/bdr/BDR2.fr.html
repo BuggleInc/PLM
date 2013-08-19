@@ -8,7 +8,7 @@ les buggles vont faire une gentille petite ronde plus reposante. Nous
 profiterons de cette accalmie pour nettoyer un peu le code grâce aux
 nouveaux éléments que nous allons maintenant étudier.</p>
 
-<h3>[!java]Conditionnelle <code>switch</code>[/!][!scala]Le pattern matching[/!]</h3>
+<h3>[!java]Conditionnelle <code>switch</code>[/!][!scala]Les filtrages[/!]</h3>
 
 <p>Le plus difficile à lire du code précédent est certainement la cascade de
 conditionnelles. Quelque part dans votre programme, vous avez sans doute
@@ -31,11 +31,11 @@ conditionnelles. Quelque part dans votre programme, vous avez sans doute
 
 <p>À la première lecture du code, il n'est pas évident qu'il ne s'agit que d'un
 choix avec 4 branches en fonction du résultat de
-[!java]getIndication()[/!][!scala]readMessage()[/!].
+[!java]getIndication()[/!][!scala]litMessage()[/!].
 Pour améliorer ceci, nous allons utiliser [!java]un <code>switch</code>,
 dont la syntaxe est la suivante en Java.[/!]
-[!scala] un pattern matching, qui est une construction très agréable (malgré
-au nom barbare) qui généralise le <code>if</code>. Il s'agit sans aucun
+[!scala] un filtrage (pattern matching en anglais), qui est une construction
+très agréable qui généralisant le <code>if</code>. Il s'agit sans aucun
 doute de l'un des avantages majeurs du langage Scala par rapport à d'autres
 tels que le Java ou le Python. Cette construction n'est cependant pas
 révolutionnaire puisqu'elle existe depuis assez longtemps dans des langages
@@ -98,7 +98,7 @@ un joker qui correspond à tout. Cela veut dire que la dernière ligne telle
 qu'elle est écrite correspond toujours à la valeur fournie, quelle qu'elle
 soit. Voici un petit exemple où une variable <code>nom</code> est mis en
 correspondance.
-<pre>non match {
+<pre>nom match {
   case "Martin" => println("Salut Martin, comment vas-tu?")
   case "Gerald" => println("He Gerald! Ça va?")
   case _            => println("Bonjour, étranger.")
@@ -114,8 +114,8 @@ d'avoir plusieurs valeurs sur une branche donnée, séparées par le caractère
 
 <p>Il est même possible d'ajouter des gardes à vos branches. Il s'agit de
 conditions supplémentaires qui doivent être respectées pour que la branche
-soit appliquée. C'est par exemple pratique pour faire du pattern matching
-sur un ensemble de valeurs.</p>
+soit appliquée. C'est par exemple pratique pour faire du filtrage sur un
+ensemble de valeurs.</p>
 <pre>age match {
   case i if i&lt;10 => println("Salut gamin!")
   case i if i&lt;20 => println("Salut mec")
@@ -127,7 +127,7 @@ valeur est supérieure à 10 puisque les lignes sont considérées dans
 l'ordre. Si la seconde ligne est considérée, c'est que la première ne
 correspondait pas.</p>
 
-<p>Enfin, il est même possible d'apparier plusieurs variables à la fois!</p>
+<p>Enfin, il est même possible de filtrer sur plusieurs variables à la fois!</p>
 <pre>(x,y) match {
  case (0,0) => println("C'est le point origine")
  case (_,0) => println("C'est un point de l'ordonée")
@@ -135,8 +135,8 @@ correspondait pas.</p>
  case (_,_) => println("C'est un point quelconque")
 }</pre>
 
-<p>Je vous avais bien dit que cette construction scala était surpuissante ! Je
-l'adore !</p>
+<p>Je vous avais bien dit que le filtrage scala était une construction
+surpuissante ! Je l'adore !</p>
 [/!]
 
 <h3>Objectif de cet exercice</h3>
