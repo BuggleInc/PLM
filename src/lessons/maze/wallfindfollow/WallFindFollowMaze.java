@@ -13,7 +13,6 @@ public class WallFindFollowMaze extends ExerciseTemplated {
 	public WallFindFollowMaze(Lesson lesson) throws IOException, BrokenWorldFileException {
 		super(lesson);
 		tabName = "Escaper";
-		nameOfCorrectionEntity = "lessons.maze.wallfollower.WallFollowerMazeEntity"; // Use the same entity than in previous exercise
 		
 		setup(new World[] {
 				BuggleWorld.newFromFile("lessons/maze/wallfindfollow/WallFindFollowMaze"),
