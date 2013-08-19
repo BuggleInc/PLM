@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-19 22:56+0300\n"
-"PO-Revision-Date: 2013-08-19 23:16+0200\n"
+"POT-Creation-Date: 2013-08-20 01:33+0300\n"
+"PO-Revision-Date: 2013-08-20 01:36+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -333,7 +333,9 @@ msgstr "aucun"
 msgid ""
 "[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int "
 "[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]plusPetit([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!]plusPetit([!java]int [/!]i[!scala]:Int[/!], [!java]int "
+"[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:15
@@ -354,14 +356,18 @@ msgstr "deux lectures"
 msgid ""
 "[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], [!"
 "java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
-msgstr "[!java]boolean [/!]plusPetitQue([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
+msgstr ""
+"[!java]boolean [/!]plusPetitQue([!java]int [/!]i[!scala]:Int[/!], [!java]int "
+"[/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:17
 msgid ""
 "Returns true if the content of cell i is strictly smaller than the "
 "<code>value</code>"
-msgstr "Retourne vrai ssi le contenu de la case i est strictement inférieur à la valeur <code>value</code>"
+msgstr ""
+"Retourne vrai ssi le contenu de la case i est strictement inférieur à la "
+"valeur <code>value</code>"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:17
@@ -374,7 +380,9 @@ msgstr "une lecture"
 msgid ""
 "[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]echange([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]echange([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!"
+"scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:20
@@ -391,7 +399,9 @@ msgstr "deux lectures, deux écritures"
 msgid ""
 "[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int [/!]to[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]copie([!java]int [/!]depuis[!scala]:Int[/!], [!java]int [/!]vers[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]copie([!java]int [/!]depuis[!scala]:Int[/!], [!java]int "
+"[/!]vers[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:22
@@ -418,7 +428,9 @@ msgstr "Retourne la valeur de la case idx"
 msgid ""
 "[!java]void [/!]setValue([!java]int [/!]idx[!scala]:Int[/!], [!java]int "
 "[/!]value[!scala]:Int[/!])"
-msgstr "[!java]void [/!]setValeur([!java]int [/!]idx[!scala]:Int[/!], [!java]int [/!]valeur[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]setValeur([!java]int [/!]idx[!scala]:Int[/!], [!java]int "
+"[/!]valeur[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/sort/SortingWorld.html:27
@@ -450,7 +462,6 @@ msgstr "Vue de l'historique du monde"
 
 #. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:35
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -481,7 +492,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:47
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:19
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:18
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -813,14 +824,18 @@ msgstr "[!java]void [/!]retourne()"
 msgid ""
 "[!java]void [/!]forward() or [!java]void [/!]forward([!java]int [/!]steps[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]avance() ou [!java]void [/!]avance([!java]int [/!]steps[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]avance() ou [!java]void [/!]avance([!java]int [/!]steps[!"
+"scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:15
 msgid ""
 "[!java]void [/!]backward() or [!java]void [/!]backward([!java]int [/!]steps[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]recule() or [!java]void [/!]recule([!java]int [/!]steps[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]recule() or [!java]void [/!]recule([!java]int [/!]steps[!"
+"scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:16
@@ -877,7 +892,9 @@ msgstr "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
 msgid ""
 "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!"
+"scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:23
@@ -951,7 +968,8 @@ msgstr "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
 #: src/jlm/universe/bugglequest/BuggleWorld.html:32
 msgid ""
 "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
-msgstr "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
+msgstr ""
+"[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/jlm/universe/bugglequest/BuggleWorld.html:33
@@ -2076,6 +2094,7 @@ msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 #: src/lessons/welcome/bdr/BDR2.html:129
 #: src/lessons/turmites/langton/Langton.html:31
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:64
+#: src/lessons/sort/comb/AlgCombSort.html:34
 #: src/lessons/welcome/bat/bool1/Max1020.html:5
 #: src/lessons/welcome/array/basics/Array1.html:181
 #: src/lessons/welcome/array/basics/Array1.html:207
@@ -7795,36 +7814,53 @@ msgstr "Tri à bulle"
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:3
 msgid ""
-"Welcome to the sorting world. It allows you to experiment with the existing "
-"sorting algorithms. The list of buildins that you can use in your algorithms "
-"is available in the world reference documentation (\"Help\"-&gt;\"About this "
-"world\")."
+"Welcome to the sorting universe. It allows you to experiment with the "
+"existing sorting algorithms. The list of buildins that you can use in your "
+"algorithms is available in the world reference documentation (\"Help\"-&gt;"
+"\"About this world\")."
 msgstr ""
-"Bienvenu au monde des tris. Il permet d'expérimenter avec les algorithmes de "
-"tri existants. La liste des primitives que vous pouvez utiliser dans vos "
-"programmes est disponible dans la documentation de référence du monde "
-"(Aide / À propos de ce monde)."
+"Bienvenu dans l'univers des tris. Il permet d'expérimenter avec les "
+"algorithmes de tri existants. La liste des primitives que vous pouvez "
+"utiliser dans vos programmes est disponible dans la documentation de "
+"référence du monde (Aide / À propos de cet univers)."
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
-"To help in this process, it is posible to graphically explore the history of "
-"your sorting algorithm. Switch to the Objective view and use the contextual "
-"menu (right click) to switch from the the view of the current state to the "
-"view of its history."
+"It is not enough to sort the array to pass the exercises. Your solution must "
+"strictly follow the expected behavior of each exercise. This is enforced by "
+"checking that your algorithm needs the same amount of read and write "
+"operations to sort the array."
 msgstr ""
-"Pour cela, il est possible d'explorer graphiquement l'historique de "
-"n'importe quel monde de tri. Passez par exemple au monde Objectif et "
-"utilisez son menu contextuel (clic droit) pour choisir entre la vue de "
-"l'état courant du monde et la vue de son histoire."
+"Il ne suffit pas de trier le tableau pour passer les exercices. Votre "
+"solution doit suivre scrupuleusement le comportement attendu de chaque "
+"exercice. Ceci est vérifié en comptant le nombre d'opérations de lecture et "
+"d'écriture sur le tableau effectuées lors de ce tri."
+
+#. type: Content of: <p>
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:12
+msgid ""
+"When your algorithm diverges from the expectation, understanding the "
+"difference between your code and the expected solution can reveal very "
+"difficult. To help in this process, it is posible to graphically explore the "
+"history of your sorting algorithm. Switch to the Objective view and use the "
+"contextual menu (right click)  to switch from the the view of the current "
+"state to the view of its history."
+msgstr ""
+"Quand votre algorithme diverge de l'attendu, il peut être difficile de "
+"comprendre la différence de comportement. Pour cela, il est possible "
+"d'explorer graphiquement l'historique de n'importe quel monde de tri. Passez "
+"par exemple au monde Objectif et utilisez son menu contextuel (clic droit) "
+"pour choisir entre la vue de l'état courant du monde et la vue de son "
+"histoire."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:28
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
 msgid "First attempt at BubbleSort"
 msgstr "Première tentative pour le tri à bulle"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:30
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -7850,18 +7886,18 @@ msgstr ""
 "jamais utilisé en pratique."
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:39
 #: src/lessons/sort/bubble/AlgBubbleSort2.html:11
 msgid "Show Tip (Pseudo-code)"
 msgstr "Montrer l'indice (le pseudo-code)"
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr "Le pseudo-code de l'algorithme du tri à bulles est donc le suivant :"
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:42
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
@@ -8357,8 +8393,8 @@ msgstr ""
 #. type: Content of: <p><p>
 #: src/lessons/sort/shell/AlgShellSort.html:37
 msgid ""
-"Interesingly enough, determining the best gap sequence for shell sort turns "
-"into a contemporary research issue in computer science. For example, an "
+"Interestingly enough, determining the best gap sequence for shell sort turns "
+"into a research issue of our century in computer science. For example, an "
 "article of 2001 introduces the following sequence, which seems to be optimal "
 "in practice for arrays of size up to 10^5: {1, 4, 10, 23, 57, 132, 301, 701, "
 "1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th "
@@ -8366,8 +8402,8 @@ msgid ""
 "Vol. 2138)."
 msgstr ""
 "De façon intéressante, déterminer la meilleure séquence de gap pour le shell "
-"sort s'avère être un problème de recherche actuel en informatique. Par "
-"exemple, un article publié en 2001 propose la suite suivante, qui semble "
+"sort s'avère être un problème de recherche de notre siècle en informatique. "
+"Par exemple, un article publié en 2001 propose la suite suivante, qui semble "
 "optimale en pratique pour des tailles de tableau allant jusqu'à 10^5: {1, 4, "
 "10, 23, 57, 132, 301, 701, 1750} (Marcin Ciura, Best Increments for the "
 "Average Case of Shellsort, 13th International Symposium on Fundamentals of "
@@ -8486,8 +8522,49 @@ msgstr ""
 "     ajouter ecart à i\n"
 " tant que l'écart est plus grand que 1 ou que le dernier parcours a inversé au moins un élément\n"
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/comb/AlgCombSort.html:26
+#: src/lessons/maze/island/IslandMaze.html:66
+#: src/lessons/welcome/bat/bool1/Max1020.html:5
+msgid "[!scala]"
+msgstr "[!scala]"
+
 #. type: Content of: <p>
 #: src/lessons/sort/comb/AlgCombSort.html:26
+msgid ""
+"One tricky part is that we want to divide gap, that is an integer, by 1.3, "
+"that is a double.  The type system of scala won't let us do this, because "
+"such discrepency usually denotes a programmer error.  As this is not an "
+"error this time, we have to convert gap to Double for the time of the "
+"operation, and then convert the result back to Int to store it into gap. "
+"This should be written this way:"
+msgstr ""
+"L'un des problèmes à résoudre est que la variable <code>ecart</code> est "
+"entière, et que nous voulons la diviser par 1.3, qui est un double. Le "
+"système de types de scala ne vous laissera pas faire une chose pareil sans "
+"broncher. C'est que ce genre de disparité est souvent le signe de problèmes "
+"que le programmeur n'a pas vu. Comme ce n'est pas une erreur dans notre cas, "
+"nous allons devoir convertir <code>ecart</code> en double pour le temps de "
+"l'opération, puis convertir le résultat de retour en entier pour le stocker "
+"dans <code>ecart</code>. Cela s'écrit de la manière suivante:"
+
+#. type: Content of: <pre>
+#: src/lessons/sort/comb/AlgCombSort.html:30
+#, no-wrap
+msgid "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
+msgstr "ecart = (ecart.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
+
+#. type: Content of: <p>
+#: src/lessons/sort/comb/AlgCombSort.html:31
+msgid ""
+"This is rather verbose, but actually, this notation is not very complex. And "
+"remember that the type checker is your friend. It's picky and sometimes "
+"annoying (as on this one), but it often catches weird bugs that would have "
+"been a pain to debug if not catched by the type checker."
+msgstr "C'est un peu bavard, mais finalement, cette écriture n'est pas très complexe. Et n'oubliez pas que le système de types est votre ami. Il est un peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il trouve souvent des bugs bizarres qui auraient été très pénibles à débugger s'il ne les avait pas attrapé à la source."
+
+#. type: Content of: <p>
+#: src/lessons/sort/comb/AlgCombSort.html:36
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
@@ -10108,12 +10185,6 @@ msgstr ""
 "else: # suiveur à gauche\n"
 "     ...\n"
 "     coureurNord = True[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/maze/island/IslandMaze.html:66
-#: src/lessons/welcome/bat/bool1/Max1020.html:5
-msgid "[!scala]"
-msgstr "[!scala]"
 
 #. type: Content of: <p><p><div>
 #: src/lessons/maze/island/IslandMaze.html:66

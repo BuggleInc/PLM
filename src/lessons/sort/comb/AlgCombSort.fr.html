@@ -24,6 +24,22 @@ fois amène de bons résultats. Voici le pseudo-code correspondant :</p>
  tant que l'écart est plus grand que 1 ou que le dernier parcours a inversé au moins un élément
 </pre>
 
+[!scala]<p>L'un des problèmes à résoudre est que la variable <code>ecart</code> est
+entière, et que nous voulons la diviser par 1.3, qui est un double. Le
+système de types de scala ne vous laissera pas faire une chose pareil sans
+broncher. C'est que ce genre de disparité est souvent le signe de problèmes
+que le programmeur n'a pas vu. Comme ce n'est pas une erreur dans notre cas,
+nous allons devoir convertir <code>ecart</code> en double pour le temps de
+l'opération, puis convertir le résultat de retour en entier pour le stocker
+dans <code>ecart</code>. Cela s'écrit de la manière suivante:</p>
+<pre>ecart = (ecart.asInstanceOf[Double] / 1.3).asInstanceOf[Int]</pre>
+<p>C'est un peu bavard, mais finalement, cette écriture n'est pas très
+complexe. Et n'oubliez pas que le système de types est votre ami. Il est un
+peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il
+trouve souvent des bugs bizarres qui auraient été très pénibles à débugger
+s'il ne les avait pas attrapé à la source.</p>
+[/!]
+
 <p>Cet algorithme a été inventé par Wlodek Dobosiewicz en 1980 et redécouvert
 et popularisé par Stephen Lacey et Richard Box, qui l'ont décrit dans le
 magazine Byte d'avril 1991.</p>

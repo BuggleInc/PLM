@@ -24,17 +24,19 @@ public class Main extends Lesson {
 		addExercise(new AlgBubbleSort2(this));
 		addExercise(new AlgBubbleSort3(this));
 		
+		addExercise(new AlgCocktailSort1(this));
+		addExercise(new AlgCocktailSort2(this));
+		addExercise(new AlgCocktailSort3(this));
+
+		addExercise(new AlgCombSort(this));
+		addExercise(new AlgCombSort11(this));
+
+		addExercise(new AlgGnomeSort(this));
+		
 		addExercise(new AlgInsertionSort(this));
 		addExercise(new AlgShellSort(this));
 		
 		addExercise(new AlgSelectionSort(this));
-
-		addExercise(new AlgCocktailSort1(this));
-		addExercise(new AlgCocktailSort2(this));
-		addExercise(new AlgCocktailSort3(this));
 		
-		addExercise(new AlgCombSort(this));
-		addExercise(new AlgCombSort11(this));
-		addExercise(new AlgGnomeSort(this));
 	}
 }

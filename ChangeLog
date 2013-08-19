@@ -1,10 +1,10 @@
-20130815:
+20130820:
   * Introduce Scala as a new programing language (version 2.10+ required)
+  * Port all exercises to scala.
   * Change turnLeft()/turnRight() to left()/right() in buggles & turtles
-  * Translate all builtins of buggles and turtles to French:
+  * Translate all builtins of buggles, turtles and sorts to French:
     It is now possible to write avance() instead of forward()
   * Review all translations for uniformity and to iron out some typos
-  * Port most exercises of the welcome lesson to scala.
   * Test the compilation process in our JUnit tests, for Java and Scala.
   * Mark many more strings for translation in the engine.
   * Allow [!java]...[/!] constructs in mission texts to adapt to progLang

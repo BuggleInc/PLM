@@ -13,30 +13,31 @@ import jlm.universe.sort.SortingEntity;
  *  Then, use gap[h] instead of gap, and decrease by h--
  */
 
-public class AlgShellSortEntity extends SortingEntity {
+class ScalaAlgShellSortEntity extends SortingEntity {
 
-	public void run() {
+	override def run() {
 		shellSort();
 	}
 
 	/* BEGIN TEMPLATE */
-	public void shellSort()  {
+	def shellSort()  {
 		/* BEGIN SOLUTION */
-		int gap = getValueCount()/2;
+		var gap = getValueCount()/2;
 
 		/* while h remains larger than 0 */
 		while( gap > 0 ) {
 			/* for each set of elements (there are h sets) */
-			for (int i = gap - 1; i < getValueCount(); i++) {
+			for (i <- gap - 1 to getValueCount()-1) {
 				/* pick the last element in the set */
-				int value = getValue(i);
-				int j = i;
+				var value = getValue(i);
+				var j = i;
 				/* compare the element at B to the one before it in the set
 				 * if they are out of order continue this loop, moving
 				 * elements "back" to make room for B to be inserted.
 				 */
-				for(; (j >= gap) && (getValue(j-gap) > value); j -= gap) {
+				while(j >= gap && (getValue(j-gap) > value)) {
 					copy(j-gap,j);
+					j -= gap;
 				}
 				/*  insert B into the correct place */
 				setValue(j, value);

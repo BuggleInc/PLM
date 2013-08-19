@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-19 23:17+0300\n"
+"POT-Creation-Date: 2013-08-20 01:36+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -369,7 +369,7 @@ msgid "History view"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:35 src/lessons/sort/bubble/AlgBubbleSort1.html:7
+#: src/jlm/universe/sort/SortingWorld.html:35
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -389,7 +389,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:47 src/lessons/sort/bubble/AlgBubbleSort1.html:19
+#: src/jlm/universe/sort/SortingWorld.html:47 src/lessons/sort/bubble/AlgBubbleSort1.html:18
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -1618,7 +1618,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:34 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
 msgid "[/!]"
 msgstr ""
 
@@ -5718,28 +5718,39 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/sort/bubble/AlgBubbleSort1.html:3
 msgid ""
-"Welcome to the sorting world. It allows you to experiment with the existing "
-"sorting algorithms. The list of buildins that you can use in your algorithms "
-"is available in the world reference documentation (\"Help\"-&gt;\"About this "
-"world\")."
+"Welcome to the sorting universe. It allows you to experiment with the "
+"existing sorting algorithms. The list of buildins that you can use in your "
+"algorithms is available in the world reference documentation "
+"(\"Help\"-&gt;\"About this world\")."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:14
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
 msgid ""
-"To help in this process, it is posible to graphically explore the history of "
-"your sorting algorithm. Switch to the Objective view and use the contextual "
-"menu (right click) to switch from the the view of the current state to the "
-"view of its history."
+"It is not enough to sort the array to pass the exercises. Your solution must "
+"strictly follow the expected behavior of each exercise. This is enforced by "
+"checking that your algorithm needs the same amount of read and write "
+"operations to sort the array."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:12
+msgid ""
+"When your algorithm diverges from the expectation, understanding the "
+"difference between your code and the expected solution can reveal very "
+"difficult. To help in this process, it is posible to graphically explore the "
+"history of your sorting algorithm. Switch to the Objective view and use the "
+"contextual menu (right click)  to switch from the the view of the current "
+"state to the view of its history."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:28
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
 msgid "First attempt at BubbleSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:30
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -5754,17 +5765,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:40 src/lessons/sort/bubble/AlgBubbleSort2.html:11
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:39 src/lessons/sort/bubble/AlgBubbleSort2.html:11
 msgid "Show Tip (Pseudo-code)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:42
+#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
@@ -6114,8 +6125,8 @@ msgstr ""
 #. type: Content of: <p><p>
 #: src/lessons/sort/shell/AlgShellSort.html:37
 msgid ""
-"Interesingly enough, determining the best gap sequence for shell sort turns "
-"into a contemporary research issue in computer science. For example, an "
+"Interestingly enough, determining the best gap sequence for shell sort turns "
+"into a research issue of our century in computer science. For example, an "
 "article of 2001 introduces the following sequence, which seems to be optimal "
 "in practice for arrays of size up to 10^5: {1, 4, 10, 23, 57, 132, 301, 701, "
 "1750} (Marcin Ciura, Best Increments for the Average Case of Shellsort, 13th "
@@ -6203,8 +6214,39 @@ msgid ""
 "pair\n"
 msgstr ""
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/comb/AlgCombSort.html:26 src/lessons/maze/island/IslandMaze.html:66 src/lessons/welcome/bat/bool1/Max1020.html:5
+msgid "[!scala]"
+msgstr ""
+
 #. type: Content of: <p>
 #: src/lessons/sort/comb/AlgCombSort.html:26
+msgid ""
+"One tricky part is that we want to divide gap, that is an integer, by 1.3, "
+"that is a double.  The type system of scala won't let us do this, because "
+"such discrepency usually denotes a programmer error.  As this is not an "
+"error this time, we have to convert gap to Double for the time of the "
+"operation, and then convert the result back to Int to store it into "
+"gap. This should be written this way:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/comb/AlgCombSort.html:30
+#, no-wrap
+msgid "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/comb/AlgCombSort.html:31
+msgid ""
+"This is rather verbose, but actually, this notation is not very complex. And "
+"remember that the type checker is your friend. It's picky and sometimes "
+"annoying (as on this one), but it often catches weird bugs that would have "
+"been a pain to debug if not catched by the type checker."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/comb/AlgCombSort.html:36
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
@@ -7375,11 +7417,6 @@ msgid ""
 "else: # left follower\n"
 "     ...\n"
 "     northRunner = True[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/maze/island/IslandMaze.html:66 src/lessons/welcome/bat/bool1/Max1020.html:5
-msgid "[!scala]"
 msgstr ""
 
 #. type: Content of: <p><p><div>
