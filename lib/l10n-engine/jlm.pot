@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-20 22:55+0200\n"
+"POT-Creation-Date: 2013-08-20 23:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -789,7 +789,7 @@ msgstr ""
 
 #: src/jlm/universe/Entity.java:193
 #, java-format
-msgid "Failed to start an interpreter for {0}"
+msgid "No ScriptEngine for {0}. Please check your classpath and such."
 msgstr ""
 
 #: src/jlm/universe/Entity.java:213
@@ -851,7 +851,7 @@ msgid ""
 "{0}.\n"
 " Please report this as a bug against JLM, with all details allowing to "
 "reproduce it.\n"
-"Exception message: {1}"
+"Exception message: {1}\n"
 msgstr ""
 
 #: src/jlm/universe/bat/BatEntity.java:65

@@ -190,7 +190,7 @@ public abstract class Entity {
 				ScriptEngineManager manager = new ScriptEngineManager();       
 				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
 				if (engine==null)
-					throw new RuntimeException(Game.i18n.tr("Failed to start an interpreter for {0}",progLang.getLang()));
+					throw new RuntimeException(Game.i18n.tr("No ScriptEngine for {0}. Please check your classpath and such.",progLang.getLang()));
 
 				/* Inject the entity into the scripting world so that it can forward script commands to the world */
 				engine.put("entity", this);
@@ -302,11 +302,11 @@ public abstract class Entity {
 			} catch (Exception e) {
 				String msg = Game.i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
 						" Please report this as a bug against JLM, with all details allowing to reproduce it.\n" +
-						"Exception message: {1}",e.getClass(),e.getLocalizedMessage());
-				for (StackTraceElement elm : e.getStackTrace()) 
-					msg += elm.toString();
-				
+						"Exception message: {1}\n",e.getClass(),e.getLocalizedMessage());
 				System.err.println(msg);
+				for (StackTraceElement elm : e.getStackTrace()) 
+					msg += elm.toString()+"\n";
+				
 				progress.setCompilationError(msg);
 				e.printStackTrace();
 			}
