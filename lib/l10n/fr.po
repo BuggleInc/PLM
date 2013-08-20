@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-20 01:59+0300\n"
-"PO-Revision-Date: 2013-08-20 02:07+0200\n"
+"POT-Creation-Date: 2013-08-20 02:27+0300\n"
+"PO-Revision-Date: 2013-08-20 02:33+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -450,7 +450,7 @@ msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/sort/SortingWorld.html:30
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:27
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:21
 msgid ""
 "Returns whether the current world is selected in the graphical interface."
 msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
@@ -9621,14 +9621,12 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:25
 #, no-wrap
 msgid "boolean isSelected()"
 msgstr "boolean estChoisi()"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:26
 #, no-wrap
 msgid "isSelected()"
 msgstr "isSelected()"
@@ -12951,17 +12949,11 @@ msgstr "Cet univers est très simple, avec seulement cinq fonctions fournies."
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:5
 #, no-wrap
-msgid "int getStackSize()"
-msgstr "int getStackSize()"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
-#, no-wrap
-msgid "getStackSize()"
-msgstr "getStackSize()"
+msgid "[!java]int [/!]getStackSize()  [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTaillePile()  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:7
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
 msgid ""
 "Returns the size of the stack, that is the amount of pancakes it contains."
 msgstr ""
@@ -12969,19 +12961,13 @@ msgstr ""
 "compose."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:9
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:8
 #, no-wrap
-msgid "int getPancakeRadius(int rank)"
-msgstr "int getPancakeRadius(int rang)"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:10
-#, no-wrap
-msgid "getPancakeRadius(rank)"
-msgstr "getPancakeRadius(rang)"
+msgid "[!java]int [/!]getPancakeRadius([!java]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getRayonCrepe([!java]int [/!]rang[!scala]:Int[/!])  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:11
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:9
 msgid ""
 "Returns the radius of the pancake passed as argument, with the rank of the "
 "top-most pancake being 0."
@@ -12990,19 +12976,13 @@ msgstr ""
 "crêpe du haut est 0."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:13
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:11
 #, no-wrap
-msgid "boolean isPancakeUpsideDown(int rank)"
-msgstr "boolean isPancakeUpsideDown(int rang)"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:14
-#, no-wrap
-msgid "isPancakeUpsideDown(rank)"
-msgstr "isPancakeUpsideDown(rang)"
+msgid "[!java]boolean [/!]isPancakeUpsideDown([!java]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estCrepeRetournee([!java]int [/!]rang[!scala]:Int[/!])   [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:12
 msgid ""
 "Returns whether the pancake passed as argument upside-down, that is, if its "
 "burned side is on top. As usual, the top-most pancake is of rank 0."
@@ -13011,19 +12991,13 @@ msgstr ""
 "est à l'envers, c'est-à-dire si sa face brulée est en haut."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:17
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:14
 #, no-wrap
-msgid "void flip(int amount)"
-msgstr "void flip(int quantité)"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
-#, no-wrap
-msgid "flip(amount)"
-msgstr "flip(quantité)"
+msgid "[!java]void [/!]flip([!java]int [/!]amount[!scala]:Int[/!])"
+msgstr "[!java]void [/!]retourne([!java]int [/!]quantité[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:19
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
 msgid ""
 "Flips the <code>amount</code> first pancakes composing the stack, from the "
 "top of it."
@@ -13032,21 +13006,21 @@ msgstr ""
 "du sommet de celle-ci."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:21
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:17
 #, no-wrap
-msgid "boolean isSorted()"
-msgstr "boolean isSorted()"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:22
-#, no-wrap
-msgid "isSorted()"
-msgstr "isSorted()"
+msgid "[!java]boolean [/!]isSorted()   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estTrie()   [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:23
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
 msgid "Returns whether the pancake stack is correctly sorted."
 msgstr "Renvoie si la pile de crêpes est correctement triée."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:20
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/Main.html:1

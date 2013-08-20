@@ -2,30 +2,24 @@
 
 <p>Cet univers est très simple, avec seulement cinq fonctions fournies.</p>
 
-<pre class="Java">int getStackSize()</pre>
-<pre class="python">getStackSize()</pre>
+<pre>[!java]int [/!]getTaillePile()  [!scala]:Int[/!]</pre>
 Renvoie la taille du tas de crêpes, c'est à dire le nombre de crêpes qui le
 compose.
 
-<pre class="Java">int getPancakeRadius(int rang)</pre>
-<pre class="python">getPancakeRadius(rang)</pre>
+<pre>[!java]int [/!]getRayonCrepe([!java]int [/!]rang[!scala]:Int[/!])  [!scala]:Int[/!]</pre>
 Renvoie le rayon de la crêpe passée en argument, sachant que le rang de la
 crêpe du haut est 0.
 
-<pre class="Java">boolean isPancakeUpsideDown(int rang)</pre>
-<pre class="python">isPancakeUpsideDown(rang)</pre>
+<pre>[!java]boolean [/!]estCrepeRetournee([!java]int [/!]rang[!scala]:Int[/!])   [!scala]:Boolean[/!]</pre>
 Renvoie ssi la crêpe passée en paramètre (la crêpe du haut étant de rang 0)
 est à l'envers, c'est-à-dire si sa face brulée est en haut.
 
-<pre class="Java">void flip(int quantité)</pre>
-<pre class="python">flip(quantité)</pre>
+<pre>[!java]void [/!]retourne([!java]int [/!]quantité[!scala]:Int[/!])</pre>
 Retourne les <code>quantité</code> premières crêpes de la pile, en partant
 du sommet de celle-ci.
 
-<pre class="Java">boolean isSorted()</pre>
-<pre class="python">isSorted()</pre>
+<pre>[!java]boolean [/!]estTrie()   [!scala]:Boolean[/!]</pre>
 Renvoie si la pile de crêpes est correctement triée.
 
-<pre class="Java">boolean estChoisi()</pre>
-<pre class="python">isSelected()</pre>
+<pre>[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]</pre>
 Renvoi si le monde actuel est sélectionné dans l'interface graphique.  
