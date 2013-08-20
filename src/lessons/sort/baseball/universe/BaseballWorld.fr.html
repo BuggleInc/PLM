@@ -11,40 +11,34 @@ dans la dernière base, celle de rang <code>getAmountOfBases()-1</code>.</p>
 
 <h2>Fonctions pour découvrir les dimensions du monde</h2>
 
-<pre class="Java">int getBasesAmount()</pre>
-<pre class="python">getBasesAmount()</pre>
+<pre>[!java]int [/!]getNombreBases() [!scala]:Int[/!]</pre>
 Retourne le nombre de bases dans le terrain.
 
-<pre class="Java">int getPositionsAmount()</pre>
-<pre class="python">getPositionsAmount()</pre>
+<pre>[!java]int [/!]getNombrePositions() [!scala]:Int[/!]</pre>
 Retourne le nombre de positions disponibles par base.
 
 <h2>Fonctions pour découvrir l'état du monde</h2>
 
-<pre class="Java">int getHoleBase()</pre>
-<pre class="python">getHoleBase()</pre>
+<pre>[!java]int [/!]getTrouBase() [!scala]:Int[/!]</pre>
 Retourne l'index de la base où se trouve le trou.
 
-<pre class="Java"> int getHolePosition()</pre>
-<pre class="python">getHolePosition()</pre>
+<pre>[!java]int [/!]getTrouPosition() [!scala]:Int[/!]</pre>
 Retourne la position du trou dans sa base.
 
-<pre class="Java"> int getPlayerColor(int base, int position)</pre>
-<pre class="python">getPlayerColor(base, position)</pre>
+<pre>[!java]int [/!]getCouleurJoueur([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]</pre>
 Retourne la couleur d'un joueur donné à partir de sa position.
 
-<pre class="Java">boolean isSorted()</pre>
-<pre class="python">isSorted()</pre>  
+<pre>[!java]boolean [/!]estTrie() [!scala]:Boolean[/!]</pre>
 Retourne si tous les joueurs présents sur le terrain sont chez eux.
      
-<pre class="Java">boolean isBaseSorted(int base)</pre>
-<pre class="python">isBaseSorted(base)</pre>
+<pre>[!java]boolean [/!]estBaseTriee([!java]int [/!]base)  [!scala]:Boolean[/!]</pre>
 Retourne si tous les joueurs d'une base donnée sont chez eux.
 
+<pre>[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]</pre>
+Renvoi si le monde actuel est sélectionné dans l'interface graphique.
 <h2>Fonctions pour changer le monde</h2>
 
-<pre class="Java">void move(int base, int position)</pre>
-<pre class="python">move(base, position)</pre>
+<pre>[!java]void [/!]deplace([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])</pre>
 Déplace un joueur dans le trou. Une exception IllegalArgumentException est
 levée si le joueur indiqué n'est pas suffisamment près du trou. Il peut être
 au plus à une base du trou.

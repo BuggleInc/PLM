@@ -72,4 +72,17 @@ public class BaseballEntity extends Entity {
 	public String toString(){
 		return "BaseballEntity (" + this.getClass().getName() + ")";
 	}
+	
+	/* BINDINGS TRANSLATION: French */
+	public int getNombreBases()     { return getBasesAmount(); }
+	public int getNombrePositions() { return getPositionsAmount(); }
+	public int getCouleurJoueur(int base, int position) { return getPlayerColor(base,position); }
+	public boolean estBaseTriee(int base) { return isBaseSorted(base); }
+	public boolean estTrie()              { return isSorted(); }
+
+	public int getTrouBase()     { return getHoleBase(); }
+	public int getTrouPosition() { return getHolePosition(); }
+	public void deplace(int base, int position) { move(base, position); }
+	
+	public boolean estSelectionne() { return isSelected(); }
 }

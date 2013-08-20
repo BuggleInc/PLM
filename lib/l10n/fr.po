@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-20 01:33+0300\n"
-"PO-Revision-Date: 2013-08-20 01:36+0200\n"
+"POT-Creation-Date: 2013-08-20 01:59+0300\n"
+"PO-Revision-Date: 2013-08-20 02:07+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -8561,7 +8561,12 @@ msgid ""
 "remember that the type checker is your friend. It's picky and sometimes "
 "annoying (as on this one), but it often catches weird bugs that would have "
 "been a pain to debug if not catched by the type checker."
-msgstr "C'est un peu bavard, mais finalement, cette écriture n'est pas très complexe. Et n'oubliez pas que le système de types est votre ami. Il est un peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il trouve souvent des bugs bizarres qui auraient été très pénibles à débugger s'il ne les avait pas attrapé à la source."
+msgstr ""
+"C'est un peu bavard, mais finalement, cette écriture n'est pas très "
+"complexe. Et n'oubliez pas que le système de types est votre ami. Il est un "
+"peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il "
+"trouve souvent des bugs bizarres qui auraient été très pénibles à débugger "
+"s'il ne les avait pas attrapé à la source."
 
 #. type: Content of: <p>
 #: src/lessons/sort/comb/AlgCombSort.html:36
@@ -13028,14 +13033,12 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
 #, no-wrap
 msgid "boolean isSorted()"
 msgstr "boolean isSorted()"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:22
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:35
 #, no-wrap
 msgid "isSorted()"
 msgstr "isSorted()"
@@ -13688,21 +13691,15 @@ msgstr ""
 "dans la dernière base, celle de rang <code>getAmountOfBases()-1</code>."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:10
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:11
 msgid "Functions to retrieve the world's dimensions"
 msgstr "Fonctions pour découvrir les dimensions du monde"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:12
-#, no-wrap
-msgid "int getBasesAmount()"
-msgstr "int getBasesAmount()"
-
-#. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:13
 #, no-wrap
-msgid "getBasesAmount()"
-msgstr "getBasesAmount()"
+msgid "[!java]int [/!]getBasesAmount() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getNombreBases() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:14
@@ -13712,117 +13709,98 @@ msgstr "Retourne le nombre de bases dans le terrain."
 #. type: Content of: <pre>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:16
 #, no-wrap
-msgid "int getPositionsAmount()"
-msgstr "int getPositionsAmount()"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
-#, no-wrap
-msgid "getPositionsAmount()"
-msgstr "getPositionsAmount()"
+msgid "[!java]int [/!]getPositionsAmount() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getNombrePositions() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:18
-msgid "Returns the amount of player's positions per base on this field:"
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
+msgid "Returns the amount of player's positions per base on this field."
 msgstr "Retourne le nombre de positions disponibles par base."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:20
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:19
 msgid "Functions to retrieve the world's state"
 msgstr "Fonctions pour découvrir l'état du monde"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:21
 #, no-wrap
-msgid "int getHoleBase()"
-msgstr "int getHoleBase()"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:23
-#, no-wrap
-msgid "getHoleBase()"
-msgstr "getHoleBase()"
+msgid "[!java]int [/!]getHoleBase() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTrouBase() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
 msgid "Returns the base in which the hole is located."
 msgstr "Retourne l'index de la base où se trouve le trou."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:26
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
 #, no-wrap
-msgid " int getHolePosition()"
-msgstr " int getHolePosition()"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
-#, no-wrap
-msgid "getHolePosition()"
-msgstr "getHolePosition()"
+msgid "[!java]int [/!]getHolePosition() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTrouPosition() [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:25
 msgid "Returns the hole position within its base"
 msgstr "Retourne la position du trou dans sa base."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:30
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
 #, no-wrap
-msgid " int getPlayerColor(int base, int position)"
-msgstr " int getPlayerColor(int base, int position)"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
-#, no-wrap
-msgid "getPlayerColor(base, position)"
-msgstr "getPlayerColor(base, position)"
+msgid "[!java]int [/!]getPlayerColor([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getCouleurJoueur([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:32
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
 msgid "Returns the color of the player at a given location."
 msgstr "Retourne la couleur d'un joueur donné à partir de sa position."
 
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:30
+#, no-wrap
+msgid "[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estTrie() [!scala]:Boolean[/!]"
+
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
 msgid "Returns whether all players of the field are at home."
 msgstr "Retourne si tous les joueurs présents sur le terrain sont chez eux."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:33
 #, no-wrap
-msgid "boolean isBaseSorted(int base)"
-msgstr "boolean isBaseSorted(int base)"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:39
-#, no-wrap
-msgid "isBaseSorted(base)"
-msgstr "isBaseSorted(base)"
+msgid "[!java]boolean [/!]isBaseSorted([!java]int [/!]base)  [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estBaseTriee([!java]int [/!]base)  [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:40
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
 msgid "Returns whether all players of a given base are at home."
 msgstr "Retourne si tous les joueurs d'une base donnée sont chez eux."
 
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:37
+msgid "Returns whether the current world is selected in the interface."
+msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
+
 #. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:42
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
 msgid "Functions to change the world"
 msgstr "Fonctions pour changer le monde"
 
 #. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:44
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:40
 #, no-wrap
-msgid "void move(int base, int position)"
-msgstr "void move(int base, int position)"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:45
-#, no-wrap
-msgid "move(base, position)"
-msgstr "move(base, position)"
+msgid "[!java]void [/!]move([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])"
+msgstr "[!java]void [/!]deplace([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:46
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:41
 msgid ""
 "Moves a given player into the hole. This throws an IllegalArgumentException "
 "if the specified player is not near the hole (at most one base away)."
