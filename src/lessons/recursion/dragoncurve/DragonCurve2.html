@@ -18,29 +18,23 @@ and <code>dragonReverse()</code>. Likewise, the method
 
 <p>
 The prototype of the <code>dragon()</code> method remains unchanged from
-previous exercise:
-<pre>void dragon(int ordre, double x, double y, double z, double t)</pre>
+previous exercise:</p>
+<pre>[!java]void [/!]dragon([!java]int [/!]order[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])</pre>
 
-The new point's coordinate (u, v) introduced by the <code>dragon()</code>
-are:
+<p>The new point's coordinate (u, v) introduced by the <code>dragon()</code> are:</p>
 <pre>
 u = (x + z)/2 + (t - y)/2
 v = (y + t)/2 - (z - x)/2
 </pre>
-</p>
 
-<p>
-The prototype of the method <code>dragonReverse</code> is similar:
-<pre>void dragonReverse(int ordre, double x, double y, double z, double t)</pre>
+<p>The prototype of the method <code>dragonReverse</code> is similar:</p>
+<pre>[!java]void [/!]dragonReverse([!java]int [/!]order[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])</pre>
 
-The new point's coordinate (u, v) introduced by the
-<code>dragonReverse()</code> are:
+<p>The new point's coordinate (u, v) introduced by the <code>dragonReverse()</code> are:</p>
 <pre>
 u = (x + z)/2 - (t - y)/2
 v = (y + t)/2 + (z - x)/2
 </pre>
-</p>
-
 
 <p>To make the work of each method recursiv more visible, the line painted by
 the <code>dragon()</code> must be red (<code>Color.red</code>) while the

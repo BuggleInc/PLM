@@ -4,10 +4,10 @@ import java.awt.Color;
 
 import jlm.universe.turtles.Turtle;
 
-public class StarEntity extends Turtle {
+class ScalaStarEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		star(100, Color.black);
 		right(45);
@@ -15,19 +15,19 @@ public class StarEntity extends Turtle {
 		right(45);
 		star(60, Color.red);
 	}
-	public void branch(int size) {
+	def branch(size:Int) {
 		forward(size);
 		right(360 / BRANCH_COUNT);
 		forward(size);
 
-		for (int i = 0; i < 2; i++)
+		for (i <- 1 to 2)
 			left(360 / BRANCH_COUNT);
 	}
 
-	public static final int BRANCH_COUNT = 5;
-	public void star(int size, Color c) {
+	val BRANCH_COUNT = 5;
+	def star(size:Int, c:Color) {
 		setColor(c);
-		for (int i = 0; i < BRANCH_COUNT; i++) {
+		for (i <- 1 to BRANCH_COUNT) {
 			branch(size);
 		}
 		/* END SOLUTION */

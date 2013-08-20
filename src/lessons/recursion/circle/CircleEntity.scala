@@ -2,17 +2,17 @@ package lessons.recursion.circle;
 
 import jlm.universe.turtles.Turtle;
 
-public class CircleEntity extends Turtle {
+class ScalaCircleEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void run() {
+	override def run() {
 		/* BEGIN SOLUTION */
 		circle(0.5);
 		circle(1);
 		circle(1.5);
 	}
-	public void circle(double step) {
-		for (int i=0;i<360;i++) {
+	def circle(step:Double) {
+		for (i <- 1 to 360) {
 			forward(step);
 			right(1);
 		}		

@@ -8,21 +8,19 @@ the dragon curve of order n is the dragon curve of order n-1 between P and
 R, followed by the same curve of order n-1 between R and Q (reverse side),
 where PRQ is an isoscele triangle with angle R being a right angle, and R
 being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y)
-and (z, t), the coordinate (u, v) of R are given by:
+and (z, t), the coordinate (u, v) of R are given by:</p>
 <pre>
 u = (x + z)/2 + (t - y)/2
 v = (y + t)/2 - (z - x)/2
 </pre>
-</p>
 
-<p>
-The prototype of the method drawing the curve is the following:
-<pre>void dragon(int ordre, double x, double y, double z, double t)</pre>
-</p>
+<p>The prototype of the method drawing the curve is the following:</p>
+<pre>[!java]void [/!]dragon([!java]int [/!]order[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])</pre>
+
 
 <p>You should use the method <code>setPos(x,y)</code> to put your turtle at
 coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line
-between the turtle position and the point (z,t).</p>
+between the turtle position and the point(z,t).</p>
 
 <p>Have a look at each world's objective view to understand how to write the
 function.</p> 

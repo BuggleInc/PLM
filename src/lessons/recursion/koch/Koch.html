@@ -5,14 +5,14 @@ geometrical pattern repeated at every scale.
 
 <p>The general form is a triangle, with each side given by a serie of recursive
 calls. The general form is given by something like this:
-<pre>void snowFlake (int levels, double length) {
+<pre>[!java]void [/!]snowFlake ([!java]int [/!]levels[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!])[!python]:[/!][!java|scala] {[/!]
    snowSide(levels, length);
    right(120);
    snowSide(levels, length);
    right(120);
    snowSide(levels, length);
    right(120);
-}</pre>
+[!java|scala]}[/!]</pre>
 
 <p>Observe the drawing in each world's objective to understand the pattern's
 logic, and then reproduce it. You must write the <code>snowSide()</code>
