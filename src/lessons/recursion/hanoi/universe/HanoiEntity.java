@@ -60,5 +60,10 @@ public class HanoiEntity extends Entity {
 		return "HanoiEntity (" + this.getClass().getName() + ")";
 	}
 	/* END HIDDEN */
+	
+	
+	/* BINDINGS TRANSLATION: French */
+	public void deplace(int src,int dst) { move(src, dst); }
+	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
 }
 /* END TEMPLATE */

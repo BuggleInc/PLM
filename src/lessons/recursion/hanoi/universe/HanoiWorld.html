@@ -10,18 +10,15 @@ one.</p>
 
 <p>Only 3 functions are provided:</p>
 
-<pre class="Java">void move(int src, int dst)</pre>
-<pre class="python">move(src, dst) throws HanoiInvalidMove</pre>
+<pre>[!java]void [/!]move([!java]int [/!]src, [!java]int [/!]dst)</pre>
 
 Moves one disk from the stick <code>src</code> onto the stick
 <code>dst</code>. If you try to do an invalid move (like laying a disk
 over a smaller one), an IllegalArgumentException is thrown. 
 
-<pre class="Java">int getSlotSize(int slot);</pre>
-<pre class="python">getSlotSize(slot)</pre>
+<pre>[!java]int [/!]getSlotSize([!java]int [/!]slot)[!scala]:Int[/!]</pre>
 Returns the amount of disks placed on the specified slot. This is mainly 
 used to initialize the recursion and set the amount of recursive call to execute.
 
-<pre class="Java">boolean isSelected()</pre>
-<pre class="python">isSelected()</pre>
+<pre>[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]</pre>
 Returns whether the current world is selected in the graphical interface.

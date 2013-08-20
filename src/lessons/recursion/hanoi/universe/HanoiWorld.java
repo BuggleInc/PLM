@@ -154,6 +154,11 @@ public class HanoiWorld extends World {
 			e.eval( "def move(src,dst):\n"+
 					"  entity.move(src,dst)\n"+
 					"def getSlotSize(slot):\n"+
+					"  return entity.getSlotSize(slot)\n"+
+					/* BINDINGS TRANSLATION: French */
+					"def deplace(src,dst):\n"+
+					"  entity.move(src,dst)\n"+
+					"def getTaillePiquet(slot):\n"+
 					"  return entity.getSlotSize(slot)\n");
 		} else {
 			throw new RuntimeException("No binding of HanoiWorld for "+lang);

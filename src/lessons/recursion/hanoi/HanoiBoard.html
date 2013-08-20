@@ -20,7 +20,7 @@ The objective of the puzzle is to move the entire stack to another rod, obeying 
 <h3>Goal of this exercise</h3> 
 
 Write the core of the method: 
-<code>public void solve(int src, int dst, int height) throws HanoiInvalidMove</code>
+<code>[!java]void [/!]solve([!java]int [/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!], [!java]int [/!]height[!scala]:Int[/!])</code>
 
 This method will recursively solve the presented problem. First parameter
 named <code>src</code> is the index of the initial tower, second parameter
@@ -40,7 +40,7 @@ The following procedure demonstrates this approach:
 
 To move n discs from peg A to peg C:
 <ul>
-  <li>move n−1 discs from A to B. This leaves disc #n alone on peg A</li>
+  <li>move n−1 discs from A to B. This leaves disc number n alone on peg A</li>
   <li>move disc #n from A to C</li>
-  <li>move n−1 discs from B to C so they sit on disc #n</li>
+  <li>move n−1 discs from B to C so they sit on disc number n</li>
 </ul>
