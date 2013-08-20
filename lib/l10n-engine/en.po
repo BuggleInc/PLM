@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-08 23:47+0200\n"
+"POT-Creation-Date: 2013-08-20 22:49+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Compilation failed."
 msgstr "Compilation error"
 
-#: src/jlm/core/model/Game.java:150
+#: src/jlm/core/model/Game.java:154
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -41,48 +41,48 @@ msgid ""
 "($HOME/.jlm/jlm.properties"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:164
+#: src/jlm/core/model/Game.java:168
 #, java-format
 msgid ""
 "Your progress will be posted to http://identi.ca/jlmlovers This can be "
 "turned off through the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:167
+#: src/jlm/core/model/Game.java:171
 #, java-format
 msgid ""
 "Your progress will NOT be posted to identica, as requested by the property "
 "{0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:170
+#: src/jlm/core/model/Game.java:174
 #, java-format
 msgid ""
 "Your progress will be posted to https://twitter.com/jlmlovers This can be "
 "turned off through the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:173
+#: src/jlm/core/model/Game.java:177
 #, java-format
 msgid ""
 "Your progress will NOT be posted to twitter, as requested by the property {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:221 src/jlm/core/model/Game.java:222
+#: src/jlm/core/model/Game.java:225 src/jlm/core/model/Game.java:226
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/jlm/core/model/Game.java:223
+#: src/jlm/core/model/Game.java:227
 #, fuzzy, java-format
 msgid "Load lesson {0}"
 msgstr "Load lesson"
 
-#: src/jlm/core/model/Game.java:329 src/jlm/core/model/Game.java:363
+#: src/jlm/core/model/Game.java:333 src/jlm/core/model/Game.java:367
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
-#: src/jlm/core/model/Game.java:354
+#: src/jlm/core/model/Game.java:358
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -90,27 +90,27 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/jlm/core/model/Game.java:403
+#: src/jlm/core/model/Game.java:407
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:939
+#: src/jlm/core/model/Game.java:953
 #, java-format
 msgid "{0} is not writable"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:943
+#: src/jlm/core/model/Game.java:957
 #, java-format
 msgid "{0} is not a directory"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:950
+#: src/jlm/core/model/Game.java:964
 #, java-format
 msgid "Cannot create {0}"
 msgstr ""
 
-#: src/jlm/core/model/Game.java:956
+#: src/jlm/core/model/Game.java:970
 #, java-format
 msgid "Impossible to find a path for JLM datas. Tested {0}"
 msgstr ""
@@ -163,108 +163,108 @@ msgid ""
 msgstr ""
 "Congratulations, you passed this test. Which exercise will you do now?\n"
 
-#: src/jlm/core/model/lesson/Exercise.java:85
+#: src/jlm/core/model/lesson/Exercise.java:87
 #, java-format
 msgid "The world ''{0}'' differs"
 msgstr ""
 
-#: src/jlm/core/model/lesson/Exercise.java:147
+#: src/jlm/core/model/lesson/Exercise.java:149
 #: src/jlm/core/model/lesson/Exercise.java:175
 #, fuzzy
 msgid "Compilation error:"
 msgstr "Compilation error"
 
-#: src/jlm/core/model/lesson/Exercise.java:294
+#: src/jlm/core/model/lesson/Exercise.java:296
 #, java-format
 msgid ""
 "Cannot compute the answer from file {0}.{1} since I cannot read it (error "
 "was: {2})."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:39
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:40
 #, java-format
 msgid "Source file {0}.{1} not found."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:99
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:101
 #, java-format
 msgid "{0}: BEGIN TEMPLATE within the template. Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:120
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:122
 #, java-format
 msgid ""
 "{0}: BEGIN SOLUTION is closed with END TEMPLATE. Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:138
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:157
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:140
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:164
 #, java-format
 msgid ""
 "{0}: END TEMPLATE with no matching BEGIN TEMPLATE. Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:142
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:144
 #, java-format
 msgid "{0}: Begin solution in template tail. Change it to BEGIN HIDDEN"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:176
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:184
 #, java-format
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:181
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:189
 #, java-format
 msgid ""
 "{0}: End of file unexpected after the solution but within the template. "
 "Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:183
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:191
 #, java-format
 msgid ""
 "{0}: End of file unexpected (state: {1}). Did you forget to close your "
 "template or solution? Please fix your entity."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:309
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:347
 #, java-format
 msgid ""
 "Exercise {0} is said to be compatible with language {1}, but there is no "
 "entity for this language: {2}"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:318
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:356
 #, java-format
 msgid "{0}: No entity found. You should fix your paths and such"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:339
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:377
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:343
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:381
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:354
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:392
 #, java-format
 msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:377
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:415
 #, java-format
 msgid "Error while writing answer world of {0}:"
 msgstr ""
 
-#: src/jlm/core/model/lesson/ExerciseTemplated.java:381
+#: src/jlm/core/model/lesson/ExerciseTemplated.java:419
 #, java-format
 msgid "Cannot write answer world of {0}. Please check the permissions."
 msgstr ""
@@ -279,6 +279,54 @@ msgstr ""
 #: src/jlm/core/model/lesson/Lesson.java:94
 #, java-format
 msgid "Cannot find the name of mission in {0}.html"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:249
+msgid "Ok, quit and lose my data"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:249
+msgid "Please stop! I'll save it myself first"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:250
+#, java-format
+msgid ""
+"JLM were unable to save your session file for lesson {0} ({1}:{2}).\n"
+"\n"
+" Would you like proceed anyway (and lose any solution typed so far)?"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:253
+msgid "Your changes are NOT saved"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:256
+msgid "User aborted saving on system error"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:353
+msgid "Proceed"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:353
+msgid "Abort"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:354
+#, java-format
+msgid ""
+"JLM were unable to load your code for lesson {0} ({1}:{2}).\n"
+"\n"
+" Would you like proceed anyway (and lose any solution typed previously)?"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:357
+msgid "Error while loading your session"
+msgstr ""
+
+#: src/jlm/core/model/session/ZipSessionKit.java:360
+msgid "Abording on user request"
 msgstr ""
 
 #: src/jlm/core/ui/AboutJLMDialog.java:34
@@ -461,12 +509,12 @@ msgstr ""
 msgid "Error while uploading your feedback"
 msgstr ""
 
-#: src/jlm/core/ui/JlmHtmlEditorKit.java:142
+#: src/jlm/core/ui/JlmHtmlEditorKit.java:244
 #, java-format
 msgid "<img> tag without src attribute in exercise {0}"
 msgstr ""
 
-#: src/jlm/core/ui/LoggerPanel.java:31 src/jlm/core/ui/LoggerPanel.java:96
+#: src/jlm/core/ui/LoggerPanel.java:30 src/jlm/core/ui/LoggerPanel.java:95
 msgid "Where error and other messages get written"
 msgstr "Where error and other messages get written"
 
@@ -598,16 +646,16 @@ msgstr "Next"
 msgid "Lesson related functions"
 msgstr "Lesson related functions"
 
-#: src/jlm/core/ui/MissionEditorTabs.java:96
+#: src/jlm/core/ui/MissionEditorTabs.java:91
 msgid "Mission"
 msgstr "Mission"
 
-#: src/jlm/core/ui/MissionEditorTabs.java:97
+#: src/jlm/core/ui/MissionEditorTabs.java:92
 msgid "Description of the work to do"
 msgstr "Description of the work to do"
 
 #. Create the tab with the code editor as content
-#: src/jlm/core/ui/MissionEditorTabs.java:166
+#: src/jlm/core/ui/MissionEditorTabs.java:161
 msgid "Type your code here"
 msgstr "Type your code here"
 
@@ -692,71 +740,129 @@ msgstr "No execution to stop right now"
 msgid "Switch to another exercise"
 msgstr "Switch to another exercise"
 
+#: src/jlm/core/ui/editor/MissionEditor.java:49
+msgid "JLM - Mission Editor (modified)"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:50
+msgid "JLM - Mission Editor"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:173
+#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:242
+#, java-format
+msgid "Error while reading {0}"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:180
+msgid "You did not save you changes. Do you want to save it before quiting?"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:181
+#: src/jlm/core/ui/editor/MissionEditor.java:300
+msgid "Save or loose your change?"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:292
+#, fuzzy
+msgid "Open Mission..."
+msgstr "Mission"
+
+#: src/jlm/core/ui/editor/MissionEditor.java:299
+msgid ""
+"You did not save you changes. Do you want to save it before opening another "
+"file?"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:317
+#, fuzzy
+msgid "HTML files"
+msgstr "JLM lesson files"
+
+#: src/jlm/core/ui/editor/MissionEditor.java:325
+#, java-format
+msgid ""
+"You chose a translated mission text for edition ({0}).\n"
+"This is wrong. The translations should be handled with po4a in JLM.\n"
+"Please refer to https://github.com/oster/JLM/wiki/Working-with-the-"
+"translations for more information.\n"
+"\n"
+"Proceed anyway?"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:329
+msgid "This is a translated mission text"
+msgstr ""
+
+#: src/jlm/core/ui/editor/MissionEditor.java:346
+msgid "Quit Map Editor"
+msgstr ""
+
 #: src/jlm/universe/Entity.java:178
 #, java-format
 msgid ""
-"The execution of your program raised an exception: {0}\n"
+"The execution of your program raised a {0} exception: {1}\n"
 " Please fix your code.\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:190
+#: src/jlm/universe/Entity.java:193
 #, java-format
 msgid "Failed to start an interpreter for {0}"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:212
+#: src/jlm/universe/Entity.java:213
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against JLM."
 msgstr ""
 
-#: src/jlm/universe/Entity.java:237
+#: src/jlm/universe/Entity.java:240
 #, java-format
 msgid ""
 "Syntax error at line {0}: {1}\n"
 "In doubt, check your indentation, and that you don't mix tabs and spaces\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:245
+#: src/jlm/universe/Entity.java:248
 msgid ""
 "NameError raised: You seem to use a non-existent identifier; Please check "
 "for typos\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:248
+#: src/jlm/universe/Entity.java:251
 msgid "TypeError raised: you are probably misusing a function or something.\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:251
+#: src/jlm/universe/Entity.java:254
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:257
+#: src/jlm/universe/Entity.java:260
 msgid "Error: there is no baggle to pickup under the buggle"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:259
+#: src/jlm/universe/Entity.java:262
 msgid "Error: a buggle cannot carry more than one baggle at the same time"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:261
+#: src/jlm/universe/Entity.java:264
 msgid "Error: your buggle just teleported to the outer space..."
 msgstr ""
 
-#: src/jlm/universe/Entity.java:263
+#: src/jlm/universe/Entity.java:266
 msgid "Error: your buggle just hit a wall. That hurts."
 msgstr ""
 
-#: src/jlm/universe/Entity.java:266
+#: src/jlm/universe/Entity.java:269
 #, java-format
 msgid ""
 "Unknown error (please report): {0}\n"
 "Its value is: {1}"
 msgstr ""
 
-#: src/jlm/universe/Entity.java:300
+#: src/jlm/universe/Entity.java:303
 #, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
@@ -766,77 +872,83 @@ msgid ""
 "Exception message: {1}"
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:167
+#: src/jlm/universe/bat/BatEntity.java:65
+#: src/jlm/universe/bat/BatEntity.java:94
+#, java-format
+msgid "This test raised an exception: {0}"
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:169
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:169
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:171
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:188
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:224
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:190
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:226
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:207
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:222
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:209
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:224
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:341
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:343
 msgid "There is no baggle to pick up here."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:343
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:345
 msgid "Your are already carrying a baggle."
 msgstr ""
 
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:422
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:424
 msgid "Its value is 'null', which is never good."
-msgstr ""
-
-#: src/jlm/universe/bugglequest/AbstractBuggle.java:429
-#, java-format
-msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:431
 #, java-format
-msgid "    Its direction is {0}; expected: {1}.\n"
+msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:433
 #, java-format
-msgid "    Its color is {0}; expected: {1}.\n"
+msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:435
 #, java-format
-msgid "    The color of its brush is {0}; expected: {1}.\n"
+msgid "    Its color is {0}; expected: {1}.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:437
-msgid "    It should not carry that baggle.\n"
+#, java-format
+msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:439
-msgid "    It is not carrying any baggle.\n"
+msgid "    It should not carry that baggle.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:441
-msgid "    It encountered an issue, such as bumping into a wall.\n"
+msgid "    It is not carrying any baggle.\n"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/AbstractBuggle.java:443
+msgid "    It encountered an issue, such as bumping into a wall.\n"
+msgstr ""
+
+#: src/jlm/universe/bugglequest/AbstractBuggle.java:445
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
@@ -999,6 +1111,7 @@ msgstr ""
 #: src/jlm/universe/bugglequest/SimpleBuggle.java:103
 #: src/jlm/universe/bugglequest/SimpleBuggle.java:113
 #: src/jlm/universe/bugglequest/SimpleBuggle.java:123
+#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:33
 #, fuzzy
 msgid "Test failed"
 msgstr "Exercise failed /o\\"
@@ -1019,11 +1132,6 @@ msgstr ""
 #, fuzzy
 msgid "JLM map files"
 msgstr "JLM lesson files"
-
-#: src/jlm/universe/bugglequest/mapeditor/MainFrame.java:242
-#, java-format
-msgid "Error while reading {0}"
-msgstr ""
 
 #: src/jlm/universe/bugglequest/mapeditor/PropertiesEditor.java:58
 msgid "Property"
@@ -1112,12 +1220,12 @@ msgstr ""
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:83
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:233
-msgid "turn left"
+msgid "left"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:91
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:234
-msgid "turn right"
+msgid "right"
 msgstr ""
 
 #: src/jlm/universe/bugglequest/ui/BuggleButtonPanel.java:99
@@ -1154,6 +1262,42 @@ msgstr "Switch to time view"
 #: src/lessons/sort/baseball/universe/BaseballWorldView.java:657
 msgid "Switch to state view"
 msgstr "Switch to state view"
+
+#: src/lessons/maze/island/IslandMazeEntity.java:10
+#: src/lessons/maze/pledge/PledgeMazeEntity.java:10
+#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:9
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:12
+#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:12
+#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:12
+#: src/lessons/welcome/array/basics/Array1Entity.java:11
+#: src/lessons/welcome/array/basics/Array2Entity.java:12
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."
+msgstr ""
+
+#: src/lessons/maze/island/IslandMazeEntity.java:15
+#: src/lessons/maze/pledge/PledgeMazeEntity.java:15
+#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:14
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:17
+#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:17
+#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:17
+#: src/lessons/welcome/array/basics/Array1Entity.java:16
+#: src/lessons/welcome/array/basics/Array2Entity.java:17
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use setY() in this exercise."
+msgstr ""
+
+#: src/lessons/maze/island/IslandMazeEntity.java:20
+#: src/lessons/maze/pledge/PledgeMazeEntity.java:20
+#: src/lessons/maze/randommouse/RandomMouseMazeEntity.java:19
+#: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:22
+#: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:22
+#: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:22
+#: src/lessons/welcome/array/basics/Array1Entity.java:21
+#: src/lessons/welcome/array/basics/Array2Entity.java:22
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use setPos() in this exercise."
+msgstr ""
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:70
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
@@ -1209,7 +1353,7 @@ msgstr ""
 msgid "Player at base {0}, pos {1} differs: {2} vs {3}\n"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:351
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:371
 #, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
@@ -1217,17 +1361,17 @@ msgid ""
 "Exercise: {0}; Amount of bases: {1}; Initial situation: {2}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:388
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:408
 #, java-format
 msgid "Cannot move from base {0} since it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:391
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:411
 #, java-format
 msgid "Cannot move from position {0} since it''s not between 0 and {1})"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballWorld.java:400
+#: src/lessons/sort/baseball/universe/BaseballWorld.java:420
 #, java-format
 msgid ""
 "The player {0} from base {1} is too far from the hole (at base {2}) to reach "
@@ -1242,28 +1386,149 @@ msgstr ""
 msgid "The two worlds are of differing size"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:193
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:202
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:195
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:204
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:229
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:238
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:248
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:257
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
 "{1}"
+msgstr ""
+
+#: src/lessons/welcome/loopdowhile/PoucetEntity.java:10
+#: src/lessons/welcome/loopfor/LoopCourseEntity.java:10
+#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:10
+#: src/lessons/welcome/loopfor/LoopForEntity.java:8
+#: src/lessons/welcome/loopfor/LoopStairsEntity.java:10
+#: src/lessons/welcome/variables/RunFourEntity.java:8
+#: src/lessons/welcome/variables/RunHalfEntity.java:10
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use forward with an argument."
+msgstr ""
+
+#: src/lessons/welcome/loopdowhile/PoucetEntity.java:14
+#: src/lessons/welcome/loopfor/LoopCourseEntity.java:14
+#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:14
+#: src/lessons/welcome/loopfor/LoopForEntity.java:13
+#: src/lessons/welcome/loopfor/LoopStairsEntity.java:14
+#: src/lessons/welcome/variables/RunFourEntity.java:12
+#: src/lessons/welcome/variables/RunHalfEntity.java:14
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use backward with an argument."
+msgstr ""
+
+#: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:33
+msgid "You fall into water."
+msgstr ""
+
+#: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:9
+#: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
+#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:9
+#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:10
+#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use forward with an argument"
+msgstr ""
+
+#: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:14
+#: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
+#: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:14
+#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:14
+#: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use backward with an argument"
+msgstr ""
+
+#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
+msgid "I'm sorry Dave, I'm affraid I can't let you use right."
+msgstr ""
+
+#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
+#, java-format
+msgid ""
+"I''m sorry Dave, I''m affraid I cant let you use left() both in lines {0} "
+"and {1}."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:45
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:50
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:50
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:55
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:46
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:51
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:50
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:55
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use forward() in this exercise."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:54
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:58
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:59
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:63
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:55
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:59
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:59
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:63
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use backward() in this exercise."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:62
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:67
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:63
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:67
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use left() in this exercise."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:66
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:71
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:67
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:71
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use right() in this exercise."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:70
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:75
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:71
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:75
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use back() in this exercise."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:74
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:79
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:75
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:79
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use isFacingWall() in this "
+"exercise."
+msgstr ""
+
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:78
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:83
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:79
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:83
+msgid ""
+"I'm sorry Dave, I'm affraid I can't let you use isBackingWall() in this "
+"exercise."
 msgstr ""
 
 #~ msgid "Do you really want to quit ?"
