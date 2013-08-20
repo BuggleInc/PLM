@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-20 22:03+0300\n"
+"POT-Creation-Date: 2013-08-20 22:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -603,12 +603,12 @@ msgid "Returns whether the current turtle is selected in the graphical interface
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:1 src/lessons/turmites/universe/TurmiteWorld.html:1
+#: src/jlm/universe/bugglequest/BuggleWorld.html:1
 msgid "BuggleWorld"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/bugglequest/BuggleWorld.html:2 src/lessons/turmites/universe/TurmiteWorld.html:2
+#: src/jlm/universe/bugglequest/BuggleWorld.html:2
 msgid ""
 "This world was invented by Lyn Turbak, at Wellesley College. It is full of "
 "Buggles, little animals understanding simple orders, and offers numerous "
@@ -617,96 +617,96 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:7 src/lessons/turmites/universe/TurmiteWorld.html:7
+#: src/jlm/universe/bugglequest/BuggleWorld.html:7
 msgid "Methods understood by buggles"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:9 src/lessons/turmites/universe/TurmiteWorld.html:9
+#: src/jlm/universe/bugglequest/BuggleWorld.html:9
 msgid "<b>Moving</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:9 src/lessons/turmites/universe/TurmiteWorld.html:9
+#: src/jlm/universe/bugglequest/BuggleWorld.html:9
 msgid "(See also the note on exceptions, below)"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "<b>Turn left"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Turn right"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Turn back"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Moving forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Moving back</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:11
+#: src/jlm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "[!java]void [/!]left()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:12
+#: src/jlm/universe/bugglequest/BuggleWorld.html:12 src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "[!java]void [/!]right()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:13 src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "[!java]void [/!]back()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:14
+#: src/jlm/universe/bugglequest/BuggleWorld.html:14 src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid ""
 "[!java]void [/!]forward() or [!java]void [/!]forward([!java]int "
 "[/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:15
+#: src/jlm/universe/bugglequest/BuggleWorld.html:15 src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid ""
 "[!java]void [/!]backward() or [!java]void [/!]backward([!java]int "
 "[/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16 src/lessons/turmites/universe/TurmiteWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:16
 msgid "<b>Get X coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16 src/lessons/turmites/universe/TurmiteWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:16
 msgid "Get Y coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16 src/lessons/turmites/universe/TurmiteWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:16
 msgid "Set X coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16 src/lessons/turmites/universe/TurmiteWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:16
 msgid "Set Y coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16 src/lessons/turmites/universe/TurmiteWorld.html:13
+#: src/jlm/universe/bugglequest/BuggleWorld.html:16
 msgid "Set position</b>"
 msgstr ""
 
@@ -738,17 +738,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:23 src/lessons/turmites/universe/TurmiteWorld.html:16
+#: src/jlm/universe/bugglequest/BuggleWorld.html:23
 msgid "<b>Information on the buggle</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:24 src/lessons/turmites/universe/TurmiteWorld.html:17
+#: src/jlm/universe/bugglequest/BuggleWorld.html:24
 msgid "<b>Get the color"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:24 src/lessons/turmites/universe/TurmiteWorld.html:17
+#: src/jlm/universe/bugglequest/BuggleWorld.html:24
 msgid "Set the color</b>"
 msgstr ""
 
@@ -758,12 +758,12 @@ msgid "[!java]void [/!]setColor([!java]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:27 src/lessons/turmites/universe/TurmiteWorld.html:19
+#: src/jlm/universe/bugglequest/BuggleWorld.html:27
 msgid "<b>Look for a wall forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:27 src/lessons/turmites/universe/TurmiteWorld.html:19
+#: src/jlm/universe/bugglequest/BuggleWorld.html:27
 msgid "Look for a wall backward</b>"
 msgstr ""
 
@@ -778,17 +778,17 @@ msgid "[!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:30 src/lessons/turmites/universe/TurmiteWorld.html:21
+#: src/jlm/universe/bugglequest/BuggleWorld.html:30
 msgid "<b>Get heading"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:30 src/lessons/turmites/universe/TurmiteWorld.html:21
+#: src/jlm/universe/bugglequest/BuggleWorld.html:30
 msgid "Set heading</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:30 src/lessons/turmites/universe/TurmiteWorld.html:21
+#: src/jlm/universe/bugglequest/BuggleWorld.html:30
 msgid "valid directions are:"
 msgstr ""
 
@@ -803,7 +803,7 @@ msgid "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:33 src/lessons/turmites/universe/TurmiteWorld.html:22
+#: src/jlm/universe/bugglequest/BuggleWorld.html:33
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
 msgstr ""
 
@@ -813,22 +813,22 @@ msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:37 src/lessons/turmites/universe/TurmiteWorld.html:24
+#: src/jlm/universe/bugglequest/BuggleWorld.html:37
 msgid "<b>About the brush</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38 src/lessons/turmites/universe/TurmiteWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:38
 msgid "<b>Brush down"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38 src/lessons/turmites/universe/TurmiteWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:38
 msgid "Brush up"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38 src/lessons/turmites/universe/TurmiteWorld.html:25
+#: src/jlm/universe/bugglequest/BuggleWorld.html:38
 msgid "Get brush position</b>"
 msgstr ""
 
@@ -848,12 +848,12 @@ msgid "[!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:42 src/lessons/turmites/universe/TurmiteWorld.html:27
+#: src/jlm/universe/bugglequest/BuggleWorld.html:42
 msgid "<b>Change the brush color"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:42 src/lessons/turmites/universe/TurmiteWorld.html:27
+#: src/jlm/universe/bugglequest/BuggleWorld.html:42
 msgid "Get the color of the brush</b>"
 msgstr ""
 
@@ -868,42 +868,42 @@ msgid "[!java]Color [/!]getBrushColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:46 src/lessons/turmites/universe/TurmiteWorld.html:30
+#: src/jlm/universe/bugglequest/BuggleWorld.html:46
 msgid "<b>Interacting with the world</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:47 src/lessons/turmites/universe/TurmiteWorld.html:31
+#: src/jlm/universe/bugglequest/BuggleWorld.html:47 src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "<b>Get the color of the ground</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:48
+#: src/jlm/universe/bugglequest/BuggleWorld.html:48 src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "[!java]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50 src/lessons/turmites/universe/TurmiteWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:50
 msgid "<b>Look for a baggle on the ground"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50 src/lessons/turmites/universe/TurmiteWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:50
 msgid "Look for a baggle in bag"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50 src/lessons/turmites/universe/TurmiteWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:50
 msgid "Pickup a baggle"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50 src/lessons/turmites/universe/TurmiteWorld.html:33
+#: src/jlm/universe/bugglequest/BuggleWorld.html:50
 msgid "Drop a baggle</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:51 src/lessons/turmites/universe/TurmiteWorld.html:34
+#: src/jlm/universe/bugglequest/BuggleWorld.html:51
 msgid "(see the note on exceptions)"
 msgstr ""
 
@@ -928,22 +928,22 @@ msgid "[!java]void [/!]dropBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57 src/lessons/turmites/universe/TurmiteWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:57
 msgid "<b>Look for a message"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57 src/lessons/turmites/universe/TurmiteWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:57
 msgid "Add a message"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57 src/lessons/turmites/universe/TurmiteWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:57
 msgid "Read the message"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57 src/lessons/turmites/universe/TurmiteWorld.html:37
+#: src/jlm/universe/bugglequest/BuggleWorld.html:57
 msgid "Erase the message</b>"
 msgstr ""
 
@@ -968,12 +968,12 @@ msgid "[!java]void [/!]clearMessage()"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:64 src/lessons/turmites/universe/TurmiteWorld.html:41
+#: src/jlm/universe/bugglequest/BuggleWorld.html:64
 msgid "Note on exceptions"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/bugglequest/BuggleWorld.html:65 src/lessons/turmites/universe/TurmiteWorld.html:42
+#: src/jlm/universe/bugglequest/BuggleWorld.html:65
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -984,7 +984,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:71 src/lessons/turmites/universe/TurmiteWorld.html:48
+#: src/jlm/universe/bugglequest/BuggleWorld.html:71
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -5524,154 +5524,17 @@ msgid ""
 "http://code.google.com/p/ruletablerepository/wiki/TwoDimensionalTuringMachines"
 msgstr ""
 
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void left()"
+#. type: Content of: <h1>
+#: src/lessons/turmites/universe/TurmiteWorld.html:1
+msgid "Turmite universe"
 msgstr ""
 
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void right()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:11
-msgid "void back()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:12
-msgid "void forward() or void forward(int)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:12
-msgid "void backward() or void backward(int)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:14
-msgid "int getX()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:14
-msgid "int getY()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:14
-msgid "void setX(int)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:14
-msgid "void setY(int)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:14
-msgid "void setPos(int,int)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:18
-msgid "Color getColor()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:18
-msgid "void setColor(Color)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:20
-msgid "boolean isFacingWall()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:20
-msgid "boolean isBackingWall()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:22
-msgid "Direction getDirection()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:22
-msgid "void setDirection(Direction)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:26
-msgid "void brushUp()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:26
-msgid "void brushDown()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:26
-msgid "boolean isBrushDown()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:28
-msgid "void setBrushColor(Color)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:28
-msgid "Color getBrushColor()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:31
-msgid "Color getGroundColor()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "boolean isOverBaggle()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "boolean isCarryingBaggle()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "void pickupBaggle()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:35
-msgid "void dropBaggle()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:38
-msgid "boolean isOverMessage()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:38
-msgid "void writeMessage(String)"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:38
-msgid "String readMessage()"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/turmites/universe/TurmiteWorld.html:38
-msgid "void clearMessage()"
+#. type: Content of: <p>
+#: src/lessons/turmites/universe/TurmiteWorld.html:3
+msgid ""
+"This universe is very similar to the buggle one, but you will probably not "
+"use all buggles methods.  So, this page only recap the buggle methods that "
+"you will use."
 msgstr ""
 
 #. type: Content of: <h3>
