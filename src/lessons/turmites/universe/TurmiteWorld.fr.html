@@ -9,13 +9,13 @@ objets, colorier le sol, se cogner à des murs, etc.
 <tr><td colspan=2 align=center><b>Bouger</b><br/> (voir aussi la note sur les exceptions, plus bas)</td></tr>
   <tr><td><b>Tourner à gauche<br/>Tourner à droite<br/>Se retourner<br/>Avancer<br/>Reculer</b></td>
       <td>void gauche()<br/>void droite()<br/>void retourne()<br/>
-          void forward() ou void forward(int)<br/>void backward() ou void backward(int)<br/></td></tr>
+          void avance() ou void avance(int)<br/>void recule() ou void recule(int)<br/></td></tr>
   <tr><td><b>Obtenir l'abcisse<br/>Obtenir l'ordonnée<br/>Changer l'abcisse<br/>Changer l'ordonnée<br/>Changer la position</b></td>
       <td>int getX()<br/>int getY()<br/>void setX(int)<br/>void setY(int)<br/>void setPos(int,int)</td></tr>
 
 <tr><td colspan=2 align=center><b>Informations sur la buggle</b></td></tr>
   <tr><td><b>Obtenir la couleur<br/>Changer la couleur</b></td>
-      <td>Color getCouleur()<br/>void setColor(Color)</td></tr>				
+      <td>Color getCouleur()<br/>void setCouleur(Color)</td></tr>				
   <tr><td><b>Chercher un mur devant<br/>Chercher un mur derriere</b></td>
       <td>boolean estFaceMur()<br/>boolean estDosMur()</td></tr>				
   <tr><td><b>Obtenir la direction<br/>Changer la direction</b><br/>Les directions valides sont :</td>
@@ -26,10 +26,10 @@ et Direction.WEST (l'ouest)</td></tr>
   <tr><td><b>Baisser la brosse<br/>Lever la brosse<br/>Obtenir la position de la brosse</b></td>
       <td>void leveBrosse()<br/>void baisseBrosse()<br/>boolean estBrosseBaissee()</td></tr>
   <tr><td><b>Modifier la couleur de la brosse<br/>Obtenir la couleur de la brosse</b></td>
-      <td>void setBrushColor(Color)<br/>Color getBrosseCouleur()</td></tr>
+      <td>void setCouleurBrosse(Color)<br/>Color getCouleurBrosse()</td></tr>
 
 <tr><td colspan=2 align=center><b>Interagir avec le monde</b></td></tr>
-  <tr><td><b>Obtenir la couleur du sol</b></td><td>Color getSolCouleur()</td></tr>
+  <tr><td><b>Obtenir la couleur du sol</b></td><td>Color getCouleurSol()</td></tr>
 
   <tr><td><b>Chercher un biscuit par terre<br/>Chercher un biscuit dans ses poches<br/>Prendre un biscuit<br/>Poser un biscuit</b><br/>
       (voir la note sur les exceptions)</td>

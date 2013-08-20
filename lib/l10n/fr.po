@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-20 20:57+0300\n"
-"PO-Revision-Date: 2013-08-20 21:23+0200\n"
+"POT-Creation-Date: 2013-08-20 22:03+0300\n"
+"PO-Revision-Date: 2013-08-20 22:03+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -510,8 +510,8 @@ msgstr ""
 "Quand deux lignes se croises, cela signifie que les valeurs du tableau ont "
 "été échangées à ce moment de l'historique; un embranchement signifie que la "
 "valeur a été copiée; une valeur en violet suivie d'un point d'interrogation "
-"a été lue avec getValue() et une valeur en rouge suivie d'un point "
-"d'exclamation a été écrite avec setValue()."
+"a été lue avec getValeur() et une valeur en rouge suivie d'un point "
+"d'exclamation a été écrite avec setValeur()."
 
 #. type: Content of: <p>
 #: src/jlm/universe/sort/SortingWorld.html:56
@@ -3702,8 +3702,8 @@ msgid ""
 msgstr ""
 "Certaines cases du monde sont jaunes, mais les buggles ne supportent pas de "
 "s'y trouver. Écrivez le code nécessaire pour avancer jusqu'à ce que le sol "
-"devienne blanc. Vous pourrez utiliser la méthode <code>isGroundWhite()</"
-"code> qui retourne vrai si le sol est blanc.."
+"devienne blanc. Vous pourrez utiliser la méthode <code>estSurBlanc()</code> "
+"qui retourne vrai si le sol est blanc.."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:7
@@ -4901,10 +4901,11 @@ msgid ""
 "of that amount of steps if the boolean is false."
 msgstr ""
 "Cette fois, vous devez écrire une méthode \n"
-"<code>[!java]move(int nbPas,boolean versLAvant)[/!] [!scala]move(nbPas: Int,"
-"versLAvant: Boolean)[/!] [!python]move(nbPas,versLAvant)[/!] </code> qui se "
-"déplace de <code>nbPas</code> pas. Si <code>versLAvant</code> est vrai, il "
-"faut avancer de ce nombre de pas; dans le cas contraire, il faut reculer."
+"<code>[!java]deplace(int nbPas,boolean versLAvant)[/!] [!"
+"scala]deplace(nbPas: Int,versLAvant: Boolean)[/!] [!python]deplace(nbPas,"
+"versLAvant)[/!] </code> qui se déplace de <code>nbPas</code> pas. Si "
+"<code>versLAvant</code> est vrai, il faut avancer de ce nombre de pas; dans "
+"le cas contraire, il faut reculer."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:78
@@ -5090,7 +5091,7 @@ msgstr ""
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:14
 #, no-wrap
 msgid "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># parameter c is of type Color</span>[/!]"
-msgstr "[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># le paramètre c est de type Color</span>[/!]"
+msgstr "[!java]void [/!]faireV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class=\"comment\"># le paramètre c est de type Color</span>[/!]"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:16
@@ -5100,8 +5101,8 @@ msgid ""
 "arguments (a different color for each call):"
 msgstr ""
 "Le type de données <code>Color</code> représente naturellement une couleur "
-"en particulier.  Votre code invoquera sans doute <code>makeV</code> avec les "
-"arguments suivants (une couleur différente à chaque appel) :"
+"en particulier.  Votre code invoquera sans doute <code>faireV</code> avec "
+"les arguments suivants (une couleur différente à chaque appel) :"
 
 #. type: Content of: <p><p><ul><li>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:20
@@ -5131,10 +5132,10 @@ msgid ""
 "as well as <code>brushUp()</code> and <code>brushDown()</code> to change the "
 "brush position."
 msgstr ""
-"Dans la méthode <code>makeV()</code>, il faut utiliser la méthode "
-"<code>setBrushColor()</code>, qui est prédéfinie dans la buggle, pour "
-"changer la couleur du pinceau, ainsi que <code>brushUp()</code> et "
-"<code>brushDown()</code> pour lever et baisser le pinceau."
+"Dans la méthode <code>faireV()</code>, il faut utiliser la méthode "
+"<code>setCouleurBrosse()</code>, qui est prédéfinie dans la buggle, pour "
+"changer la couleur du pinceau, ainsi que <code>leveBrosse()</code> et "
+"<code>baisseBrosse()</code> pour lever et baisser le pinceau."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:31
@@ -5142,8 +5143,8 @@ msgid ""
 "It may be wise to write the <code>makeV()</code> so that it places directly "
 "the buggle in position for the next V."
 msgstr ""
-"Il faudrait également que la méthode <code>makeV()</code> place la buggle en "
-"position pour dessiner le prochain V directement."
+"Il faudrait également que la méthode <code>faireV()</code> place la buggle "
+"en position pour dessiner le prochain V directement."
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:35
@@ -5253,8 +5254,8 @@ msgid ""
 msgstr ""
 "Pour ne pas confondre la partie de la trace à suivre avec celle que votre "
 "buggle a déjà suivie, il est conseillé d'effacer la piste derrière vous. "
-"Pour cela, utilisez la méthode <code>brushDown()</code> pour baisser votre "
-"crayon, et <code>brushUp()</code> pour le relever."
+"Pour cela, utilisez la méthode <code>baisseBrosse()</code> pour baisser "
+"votre brosse, et <code>leveBrosse()</code> pour la relever."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugHunting.html:15
@@ -5263,7 +5264,7 @@ msgid ""
 "<code>pickupBaggle()</code>)."
 msgstr ""
 "Enfin, n'oubliez de capturer votre proie une fois que vous l'aurez débusquée "
-"(avec <code>pickupBaggle()</code>)."
+"(avec <code>prendBiscuit()</code>)."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/slug/SlugHunting.html:19
@@ -5315,12 +5316,12 @@ msgid ""
 "because green is an <i>object</i> in Java, and <code>.equals()</code> is the "
 "way to go to test equality between Java objects.[/!]"
 msgstr ""
-"Votre outil pour cela est la méthode <code>getGroundColor()</code> qui "
+"Votre outil pour cela est la méthode <code>getCouleurSol()</code> qui "
 "retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut "
 "vous rendre dans la case à tester avant d'appeler cette méthode. \n"
 "[!java]Vous ne pouvez pas simplement utiliser <code>==</code> pour tester si "
 "la couleur retournée est le vert, mais vous devez plutôt écrire quelque "
-"chose comme <code>getGroundColor().equals(Color.green)</code>. C'est parce "
+"chose comme <code>getCouleurSol().equals(Color.green)</code>. C'est parce "
 "que les couleurs sont des <i>objets</i> en Java, et que <code>.equals()</"
 "code> est la marche à suivre pour tester l'égalité d'objets Java.[/!]"
 
@@ -5515,7 +5516,7 @@ msgstr ""
 #: src/lessons/welcome/bdr/BDR.html:54
 #, no-wrap
 msgid "if (isOverBaggle()) if (x == 5) left(); else right(); forward();"
-msgstr "if (isOverBaggle()) if (x == 5) left(); else right(); forward();"
+msgstr "if (estSurBiscuit()) if (x == 5) gauche(); else droite(); avance();"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:56
@@ -6603,9 +6604,9 @@ msgid ""
 "buggle to the cell where x=3 and y=5."
 msgstr ""
 "À la différence des exercices vus jusque là, nous n'allons pas utiliser les "
-"méthodes <code>forward()</code>, <code>backward()</code> et autres, mais "
-"nous allons calculer les coordonnées de la prochaine position de la buggle, "
-"et utiliser la méthode <code>setPos(x, y)</code> pour <i>téléporter</i> la "
+"méthodes <code>avance()</code>, <code>recule()</code> et autres, mais nous "
+"allons calculer les coordonnées de la prochaine position de la buggle, et "
+"utiliser la méthode <code>setPos(x, y)</code> pour <i>téléporter</i> la "
 "buggle directement à cette position. Par exemple, <code>setPos(3, 5)</code> "
 "téléporte la buggle sur la case où x=3 et y=5."
 
@@ -6868,8 +6869,8 @@ msgid ""
 msgstr ""
 "Les règles sont absolument triviales: pour calculer quel sera le prochain "
 "pas, vous devez regarder la couleur actuelle du sol ( en utilisant "
-"<code>getGroundColor()</code>). Si c'est blanc, changez la en noir, tournez "
-"à droite et avancez d'une case. Si la couleur du sol est le noir, changez la "
+"<code>getCouleurSol()</code>). Si c'est blanc, changez la en noir, tournez à "
+"droite et avancez d'une case. Si la couleur du sol est le noir, changez la "
 "en blanc, tournez à gauche et avancez d'une case."
 
 #. type: Content of: <p>
@@ -6885,7 +6886,7 @@ msgstr ""
 "Il est difficile de trouver des règles plus simples, n'est-ce pas ? Et bien, "
 "allons-y et codons-les maintenant. Vous avez à compléter la méthode "
 "<code>step()</code>, qui définit le comportement de la fourmi à chaque pas. "
-"Vous utiliserez probablement la méthode <code>getGroundColor()</code> pour "
+"Vous utiliserez probablement la méthode <code>getCouleurSol()</code> pour "
 "récupérer la valeur de la case sur laquelle la fourmi se trouve. Les "
 "couleurs intéressantes sont tout simplement <code>Color.black</code> pour le "
 "noir ou <code>Color.white</code> pour le blanc."
@@ -6932,11 +6933,11 @@ msgid ""
 msgstr ""
 "Changer la couleur du sol n'est pas difficile, seulement un peu long : vous "
 "avez à changer la couleur de la brosse de votre buggle, l'abaisser (pour "
-"marquer la case courante -- avec <code>brushDown()</code>), et relever la "
-"brosse (avec <code>brushUp()</code>) pour éviter des problèmes lorsque la "
+"marquer la case courante -- avec <code>baisseBrosse()</code>), et relever la "
+"brosse (avec <code>leveBrosse()</code>) pour éviter des problèmes lorsque la "
 "buggle va se déplacer. Vous être naturellement libre d'organiser votre code "
 "comme vous le souhaitez, mais vous pouvez vouloir écrire une méthode "
-"<code>setGroundColor(couleur)</code> pour factoriser le tout."
+"<code>setCouleurSol(couleur)</code> pour factoriser le tout."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:40
@@ -7622,12 +7623,12 @@ msgstr "void retourne()"
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid "void forward() or void forward(int)"
-msgstr "void forward() ou void forward(int)"
+msgstr "void avance() ou void avance(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid "void backward() or void backward(int)"
-msgstr "void backward() ou void backward(int)"
+msgstr "void recule() ou void recule(int)"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:14
@@ -7662,7 +7663,7 @@ msgstr "Color getCouleur()"
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:18
 msgid "void setColor(Color)"
-msgstr "void setColor(Color)"
+msgstr "void setCouleur(Color)"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:20
@@ -7702,17 +7703,17 @@ msgstr "boolean estBrosseBaissee()"
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:28
 msgid "void setBrushColor(Color)"
-msgstr "void setBrushColor(Color)"
+msgstr "void setCouleurBrosse(Color)"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:28
 msgid "Color getBrushColor()"
-msgstr "Color getBrosseCouleur()"
+msgstr "Color getCouleurBrosse()"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:31
 msgid "Color getGroundColor()"
-msgstr "Color getSolCouleur()"
+msgstr "Color getCouleurSol()"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/turmites/universe/TurmiteWorld.html:35
@@ -8739,7 +8740,13 @@ msgid ""
 "<code>forward()</code> method takes the amount of steps to do not as an "
 "integer, but as a [!python]point number[/!][!java|scala]double[/!] (see "
 "\"About this world\" for more details)."
-msgstr "D'un point de vue pratique, la plupart des méthodes que vous connaissez à propos des buggles fonctionnent également avec les tortues, à quelques variantes près. En particulier, la méthode <code>avance</code> prend en argument le nombre de pas donné comme un [!python]nombre à virgule[/!][!scala|java]double[/!] (voir «Aide / À propos de ce monde» dans le menu pour plus de détails)."
+msgstr ""
+"D'un point de vue pratique, la plupart des méthodes que vous connaissez à "
+"propos des buggles fonctionnent également avec les tortues, à quelques "
+"variantes près. En particulier, la méthode <code>avance</code> prend en "
+"argument le nombre de pas donné comme un [!python]nombre à virgule[/!][!"
+"scala|java]double[/!] (voir «Aide / À propos de ce monde» dans le menu pour "
+"plus de détails)."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/square/Square.html:28
@@ -8809,7 +8816,11 @@ msgid ""
 "steps long squares (see the objective world for more details). It is "
 "obviously a good idea to write a method to draw a square, and then use it in "
 "your code."
-msgstr "Vous devez reproduire une forme géométrique simple faite de quatre carrés de longueur 100 de coté (voir le monde objectif pour plus de détails). C'est sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la réutiliser lors de l'écriture de votre code."
+msgstr ""
+"Vous devez reproduire une forme géométrique simple faite de quatre carrés de "
+"longueur 100 de coté (voir le monde objectif pour plus de détails). C'est "
+"sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la "
+"réutiliser lors de l'écriture de votre code."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:1
@@ -8969,7 +8980,12 @@ msgid ""
 "limit of such construct when the size of each segment becomes infinitely "
 "small while their amount becomes infinitely large, but you can definitely "
 "solve this exercise without understanding differential calculus :)"
-msgstr "Les amateurs de calcul différentiel diraient même sans doute qu'un cercle est la limite asymptotique d'une telle construction quand la taille des segments tend vers zéro alors que leur nombre tend vers l'infini, mais il est tout à fait possible de réussir cet exercice sans maîtriser le calcul différentiel :)"
+msgstr ""
+"Les amateurs de calcul différentiel diraient même sans doute qu'un cercle "
+"est la limite asymptotique d'une telle construction quand la taille des "
+"segments tend vers zéro alors que leur nombre tend vers l'infini, mais il "
+"est tout à fait possible de réussir cet exercice sans maîtriser le calcul "
+"différentiel :)"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/circle/Circle.html:16
@@ -8979,7 +8995,13 @@ msgid ""
 "The first circle is obtained with segments of size 0.5, the second with "
 "segments of size 1 and the last one with 1.5-long segments.  Once again, "
 "this is a warming exercise, no recursion is needed."
-msgstr "Écrivez une fonction dessinant un cercle, avec la taille de chacun des 360 pas passée en paramètre. Utilisez la ensuite dans votre code pour réaliser la figure dans son ensemble. Le premier cercle s'obtient avec des pas de 0.5, le second avec des pas de 1 et le troisième avec des pas de 1.5. Encore une fois, il s'agit d'un exercice de prise en main, et aucune récursion n'est nécessaire."
+msgstr ""
+"Écrivez une fonction dessinant un cercle, avec la taille de chacun des 360 "
+"pas passée en paramètre. Utilisez la ensuite dans votre code pour réaliser "
+"la figure dans son ensemble. Le premier cercle s'obtient avec des pas de "
+"0.5, le second avec des pas de 1 et le troisième avec des pas de 1.5. Encore "
+"une fois, il s'agit d'un exercice de prise en main, et aucune récursion "
+"n'est nécessaire."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/tree/Tree.html:1
@@ -9098,20 +9120,20 @@ msgid ""
 "          spiral(0,90,12,3);\n"
 msgstr ""
 "spiral(5, 90, 0, 3);\n"
-"  forward(0);\n"
-"  left(90);\n"
+"  avance(0);\n"
+"  gauche(90);\n"
 "  spiral(4,90,3,3);\n"
-"    forward(3);\n"
-"    left(90);\n"
+"    avance(3);\n"
+"    gauche(90);\n"
 "    spiral(3,90,6,3);\n"
-"      forward(6);\n"
-"      left(90);\n"
+"      avance(6);\n"
+"      gauche(90);\n"
 "      spiral(2,90,9,3);\n"
-"        forward(9);\n"
-"        left(90);\n"
+"        avance(9);\n"
+"        gauche(90);\n"
 "        spiral(1,90,12,3);\n"
-"          forward(12);\n"
-"          left(90);\n"
+"          avance(12);\n"
+"          gauche(90);\n"
 "          spiral(0,90,12,3);\n"
 
 #. type: Content of: <h2>
@@ -9136,7 +9158,11 @@ msgid ""
 "being integers.  The goal of this exercise is to find the good values for "
 "each page, which requires to correctly understand how the spiral method "
 "works."
-msgstr "Vous devez écrire une méthode <code>doit(page)</code> qui prend en paramètre le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0, etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les valeurs convenables pour chaque page."
+msgstr ""
+"Vous devez écrire une méthode <code>doit(page)</code> qui prend en paramètre "
+"le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0, "
+"etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les "
+"valeurs convenables pour chaque page."
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/spiral/SpiralUse.html:12
@@ -9258,7 +9284,11 @@ msgid ""
 "You should use the method <code>setPos(x,y)</code> to put your turtle at "
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
 "between the turtle position and the point(z,t)."
-msgstr "Vous utiliserez la méthode <code>setPos(x,y)</code> pour déplacer votre tortue aux coordonnées (x,y) et la méthode <code>allerVers(z,t)</code> pour tracer un trait depuis le point où la tortue est positionnée vers le point de coordonnées (z,t)"
+msgstr ""
+"Vous utiliserez la méthode <code>setPos(x,y)</code> pour déplacer votre "
+"tortue aux coordonnées (x,y) et la méthode <code>allerVers(z,t)</code> pour "
+"tracer un trait depuis le point où la tortue est positionnée vers le point "
+"de coordonnées (z,t)"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:1
@@ -9540,13 +9570,13 @@ msgstr "Seules trois fonctions sont fournies&nbsp;:"
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:13
 #, no-wrap
 msgid "void move(int src, int dst)"
-msgstr "void move(int src, int dst)"
+msgstr "void deplace(int src, int dst)"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:14
 #, no-wrap
 msgid "move(src, dst) throws HanoiInvalidMove"
-msgstr "move(src, dst) throws HanoiInvalidMove"
+msgstr "deplace(src, dst) throws HanoiInvalidMove"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:16
@@ -9564,13 +9594,13 @@ msgstr ""
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:20
 #, no-wrap
 msgid "int getSlotSize(int slot);"
-msgstr "int getSlotSize(int slot);"
+msgstr "int getTaillePiquet(int piquet);"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:21
 #, no-wrap
 msgid "getSlotSize(slot)"
-msgstr "getSlotSize(slot)"
+msgstr "getTaillePiquet(slot)"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:22
@@ -13623,10 +13653,10 @@ msgstr ""
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:8
 msgid ""
 "Once every players on the field are in their home base, the hole should be "
-"in the last base, that is of rank <code>getAmountOfBases()-1</code>."
+"in the last base, that is of rank <code>getBasesAmount()-1</code>."
 msgstr ""
 "Une fois que tous les joueurs du terrain sont chez eux, le trou se trouve "
-"dans la dernière base, celle de rang <code>getAmountOfBases()-1</code>."
+"dans la dernière base, celle de rang <code>getNombreBases()-1</code>."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:11
@@ -13866,7 +13896,7 @@ msgstr ""
 "(modulo le nombre de bases). Ensuite, il faut calculer la distance que "
 "chacune des buggles de cette base doit encore parcourir (0 si elle est déjà "
 "chez elle). Une fois que vous avez sélectionné l'heureuse élue, utilisez la "
-"méthode <code>move</code> pour la faire bouger, avant de passer à "
+"méthode <code>deplace</code> pour la faire bouger, avant de passer à "
 "l'itération suivante."
 
 #. type: Content of: <p>
@@ -14198,7 +14228,7 @@ msgstr ""
 "sont très simples : «tant que ce n'est pas trier, déplacer le trou vers le "
 "bas puis vers le haut. À chaque pas, c'est le plus petit des deux joueurs de "
 "la base qui descend, et le plus grand des deux qui monte (en fonction du "
-"sens de déplacement).». Après un moment, <code>isSorted()</code> devient "
+"sens de déplacement).». Après un moment, <code>estTrie()</code> devient "
 "vrai, et votre algorithme s'arrête."
 
 #. type: Content of: <p>

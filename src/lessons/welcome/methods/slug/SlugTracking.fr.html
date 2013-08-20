@@ -13,12 +13,12 @@ sans se cogner. Il faudrait de plus que cette méthode soit <b>sans effet de
 bord</b>, c'est-à-dire qu'elle ne modifie ni la buggle qui l'appelle, ni le
 monde environnant.</p>
 
-<p>Votre outil pour cela est la méthode <code>getGroundColor()</code> qui
+<p>Votre outil pour cela est la méthode <code>getCouleurSol()</code> qui
 retourne la couleur du sol dans la case où se trouve la buggle. Il vous faut
 vous rendre dans la case à tester avant d'appeler cette méthode.
 [!java]Vous ne pouvez pas simplement utiliser <code>==</code> pour tester si
 la couleur retournée est le vert, mais vous devez plutôt écrire quelque
-chose comme <code>getGroundColor().equals(Color.green)</code>. C'est parce
+chose comme <code>getCouleurSol().equals(Color.green)</code>. C'est parce
 que les couleurs sont des <i>objets</i> en Java, et que
 <code>.equals()</code> est la marche à suivre pour tester l'égalité d'objets
 Java.[/!]</p>   

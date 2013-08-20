@@ -13,11 +13,11 @@ composé de quatre formes en sorte de V de couleurs différentes, et à des
 positions différentes.  Un découpage possible est d'écrire une fonction
 chargée de faire un V de la couleur indiquée à partir de la position
 courante. Son prototype peut être : 
-<pre>[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># le paramètre c est de type Color</span>[/!]</pre>
+<pre>[!java]void [/!]faireV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># le paramètre c est de type Color</span>[/!]</pre>
 
 <p>Le type de données <code>Color</code> représente naturellement une couleur
-en particulier.  Votre code invoquera sans doute <code>makeV</code> avec les
-arguments suivants (une couleur différente à chaque appel) :
+en particulier.  Votre code invoquera sans doute <code>faireV</code> avec
+les arguments suivants (une couleur différente à chaque appel) :
 <ul>
 <li>Color.YELLOW (jaune)</li>
 <li>Color.RED (rouge)</li>
@@ -25,13 +25,13 @@ arguments suivants (une couleur différente à chaque appel) :
 <li>Color.GREEN (vert)</li>
 </ul>
 
-<p>Dans la méthode <code>makeV()</code>, il faut utiliser la méthode
-<code>setBrushColor()</code>, qui est prédéfinie dans la buggle, pour
-changer la couleur du pinceau, ainsi que <code>brushUp()</code> et
-<code>brushDown()</code> pour lever et baisser le pinceau.</p>
+<p>Dans la méthode <code>faireV()</code>, il faut utiliser la méthode
+<code>setCouleurBrosse()</code>, qui est prédéfinie dans la buggle, pour
+changer la couleur du pinceau, ainsi que <code>leveBrosse()</code> et
+<code>baisseBrosse()</code> pour lever et baisser le pinceau.</p>
  
-<p>Il faudrait également que la méthode <code>makeV()</code> place la buggle en
-position pour dessiner le prochain V directement.</p>
+<p>Il faudrait également que la méthode <code>faireV()</code> place la buggle
+en position pour dessiner le prochain V directement.</p>
  
 [!java|scala]
 <p>À vous de jouer. Je suis sûr que vous parviendrez à trouver d'autres
