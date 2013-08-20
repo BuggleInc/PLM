@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JLM mission texts\n"
-"POT-Creation-Date: 2013-08-20 02:27+0300\n"
-"PO-Revision-Date: 2013-08-20 02:33+0200\n"
+"POT-Creation-Date: 2013-08-20 20:57+0300\n"
+"PO-Revision-Date: 2013-08-20 21:23+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2095,6 +2095,7 @@ msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 #: src/lessons/turmites/langton/Langton.html:31
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:64
 #: src/lessons/sort/comb/AlgCombSort.html:34
+#: src/lessons/recursion/square/Square.html:45
 #: src/lessons/welcome/bat/bool1/Max1020.html:5
 #: src/lessons/welcome/array/basics/Array1.html:181
 #: src/lessons/welcome/array/basics/Array1.html:207
@@ -2965,6 +2966,7 @@ msgstr ""
 #: src/lessons/welcome/methods/args/MethodsArgs.html:34
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:34
 #: src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3
+#: src/lessons/recursion/square/Square.html:27
 msgid "[!java|scala]"
 msgstr "[!java|scala]"
 
@@ -8711,7 +8713,7 @@ msgstr ""
 "Comme les buggles, elles laissent une trace sur leur passage quand elles "
 "avancent (simplement, le trait est bien plus fin)."
 
-#. type: Content of: <p><p>
+#. type: Content of: <p>
 #: src/lessons/recursion/square/Square.html:14
 msgid ""
 "The main difference is that where buggles can only move of right angles, "
@@ -8729,70 +8731,68 @@ msgstr ""
 "objets, et il y a parfois des murs dans leur univers, mais tout cela dépasse "
 "complètement les tortues."
 
-#. type: Content of: <p><p><p>
+#. type: Content of: <p>
 #: src/lessons/recursion/square/Square.html:21
 msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
-"<code>forward()</code> method takes the amount of steps to do as a double "
-"(see \"About this world\" for more details)."
-msgstr ""
-"D'un point de vue pratique, la plupart des méthodes que vous connaissez à "
-"propos des buggles fonctionnent également avec les tortues, à quelques "
-"variantes près. En particulier, la méthode <code>forward</code> prend en "
-"argument le nombre de pas donné comme un nombre double (voir «Aide / À "
-"propos de ce monde» dans le menu pour plus de détails)."
+"<code>forward()</code> method takes the amount of steps to do not as an "
+"integer, but as a [!python]point number[/!][!java|scala]double[/!] (see "
+"\"About this world\" for more details)."
+msgstr "D'un point de vue pratique, la plupart des méthodes que vous connaissez à propos des buggles fonctionnent également avec les tortues, à quelques variantes près. En particulier, la méthode <code>avance</code> prend en argument le nombre de pas donné comme un [!python]nombre à virgule[/!][!scala|java]double[/!] (voir «Aide / À propos de ce monde» dans le menu pour plus de détails)."
 
-#. type: Content of: <p><p><p><h3>
-#: src/lessons/recursion/square/Square.html:26
+#. type: Content of: <h3>
+#: src/lessons/recursion/square/Square.html:28
 msgid "Doubles? But what is it?"
 msgstr "Des doubles ? Mais qu'est ce que c'est ?"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/recursion/square/Square.html:27
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/square/Square.html:29
 msgid "It's simply a point number. Example:"
 msgstr "C'est simplement un nombre à virgule. Exemple:"
 
-#. type: Content of: <p><p><p><pre>
-#: src/lessons/recursion/square/Square.html:29
+#. type: Content of: <pre>
+#: src/lessons/recursion/square/Square.html:31
 #, no-wrap
 msgid ""
 "double x = 3.72;\n"
 "x + 1.234 // Value = 4.954\n"
-"x + 2 // Value = 5.72 (2 converted to 2.0 automatically)\n"
-"x * 2 // Value = 7.44 (2 converted to 2.0 automatically)\n"
-"x / 2 // Value = 1.86 (2 converted to 2.0 automatically)\n"
-"(int) x // Value = 1 (“casting to int”, converted to integer by truncating)\n"
+"x + 2. // Value = 5.72 (2. means 2.0)\n"
+"x + 2 // [!java]Value = 5.72 (2 automatically converted to 2.0)[/!][!scala]Type error (+ operator don't mix Double and Int); manual conversion mandatory[/!]\n"
+"x * 2. // Value = 7.44 \n"
+"x / 2. // Value = 1.86 \n"
+"[!java](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Value = 1 (“casting to int”, converted to integer by truncating)\n"
 "Math.round(x) // Value = 2 (1.86 rounded to nearest integer)\n"
 "Math.floor(x) // Value = 1 (1.86 rounded toward minus infinity)\n"
 "Math.floor(-5.12) // Value = -6 (rounded toward minus infinity)\n"
 "Math.ceiling(x) // Value = 2 (1.86 rounded toward plus infinity)\n"
 "Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)\n"
-"(double) 17 // Value = 17.0 (“casted to double”, converted to double)\n"
+"[!java](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 (“casted to double”, converted to double)\n"
 msgstr ""
 "double x = 3.72;\n"
 "x + 1.234 // Valeur = 4.954\n"
-"x + 2 // Valeur = 5.72 (2 converti en 2.0 automatiquement)\n"
-"x * 2 // Valeur = 7.44 (2 converti en 2.0 automatiquement)\n"
-"x / 2 // Valeur = 1.86 (2 converti en 2.0 automatiquement)\n"
-"(int) x // Valeur = 1 (“transtypage en int”, converti en entier en tronquant)\n"
+"x + 2. // Valeur = 5.72 (2. signifie 2.0)\n"
+"x + 2 // [!java]Valeur = 5.72 (2 converti en 2.0 automatiquement)[/!][!scala]Erreur de typage (l'opérateur + operator ne mélange pas les Double avec les Int). Il faut convertir explicitement[/!]\n"
+"x * 2. // Valeur = 7.44\n"
+"x / 2. // Valeur = 1.86 (2 converti en 2.0 automatiquement)\n"
+"[!java](int) x[/!][!scala]x.asInstanceOf[Int][/!] // Valeur = 1 (“transtypage en int”, converti en entier en tronquant)\n"
 "Math.round(x) // Valeur = 2 (1.86 arrondi à l'entier le plus proche)\n"
 "Math.floor(x) // Valeur = 1 (1.86 arrondi en direction de moins l'infini)\n"
 "Math.floor(-5.12) // Vale = -6 (Arrondi en direction de moins l'infini)\n"
 "Math.ceiling(x) // Value = 2 (1.86 arrondi en direction de plus l'infini)\n"
 "Math.ceiling(-5.12) // Value = -5 (Arrondi en direction de plus l'infini)\n"
-"(double) 17 // Value = 17.0 (“transtypage en double”, converti en double)\n"
+"[!java](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 (“transtypage en double”, converti en double)\n"
 
 #. type: Content of: <p><p><p><h2>
-#: src/lessons/recursion/square/Square.html:43
+#: src/lessons/recursion/square/Square.html:47
 #: src/lessons/recursion/circle/Circle.html:14
 #: src/lessons/recursion/hanoi/HanoiBoard.html:20
 #: src/lessons/welcome/array/basics/Array1.html:229
 msgid "Goal of this exercise"
 msgstr "Objectif de l'exercice"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/recursion/square/Square.html:44
+#. type: Content of: <p>
+#: src/lessons/recursion/square/Square.html:48
 msgid ""
 "Even if this is the first exercise on the recursivity lesson, the code you "
 "have to write is not recursive. The goal is to get familiar with the turtle "
@@ -8802,33 +8802,14 @@ msgstr ""
 "que vous devez écrire n'est pas récursif. L'objectif est de se familiariser "
 "avec le monde des tortues avant d'attaquer les choses sérieuses."
 
-#. type: Content of: <p><p><p><p>
-#: src/lessons/recursion/square/Square.html:48
+#. type: Content of: <p>
+#: src/lessons/recursion/square/Square.html:52
 msgid ""
 "You must reproduce a simple geometrical painting constituted of four 100 "
 "steps long squares (see the objective world for more details). It is "
 "obviously a good idea to write a method to draw a square, and then use it in "
-"your <code>run()</code> in charge of doing the work. You must absolutely "
-"write at least the run method, which prototype is the following:"
-msgstr ""
-"Vous devez reproduire une forme géométrique simple faite de quatre carrés de "
-"longueur 100 de coté (voir le monde objectif pour plus de détails). C'est "
-"sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la "
-"réutiliser lors de l'écriture de la méthode <code>run()</code> qui fait le "
-"travail. Il est indispensable d'écrire au moins la méthode run, dont le "
-"prototype est le suivant:"
-
-#. type: Content of: <p><p><p><p><pre>
-#: src/lessons/recursion/square/Square.html:54
-#, no-wrap
-msgid ""
-"public void run() {\n"
-"  // write here what your turtle is supposed to do\n"
-"}"
-msgstr ""
-"public void run() {\n"
-"  // ecrivez ici ce que doit faire votre tortue\n"
-"}"
+"your code."
+msgstr "Vous devez reproduire une forme géométrique simple faite de quatre carrés de longueur 100 de coté (voir le monde objectif pour plus de détails). C'est sans doute une bonne idée d'écrire une méthode pour faire un carré, et de la réutiliser lors de l'écriture de votre code."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:1
@@ -8848,14 +8829,14 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:5
 #, no-wrap
-msgid "void polygonFractal (int levels, int sides, double length, double shrink)"
-msgstr "void polygonFractal (int levels, int sides, double length, double shrink)"
+msgid "[!java]void [/!]polygonFractal ([!java]int [/!]levels[!scala]:Int[/!], [!java]int [/!]sides[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!], [!java]double [/!]shrink[!scala]:Double[/!])"
+msgstr "[!java]void [/!]polygonFractal ([!java]int [/!]niveaux[!scala]:Int[/!], [!java]int [/!]cotés[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!], [!java]double [/!]multiplicateur[!scala]:Double[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:7
 #: src/lessons/recursion/sierpinski/Sierpinski.html:8
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:27
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:50
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:25
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:44
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
@@ -8892,23 +8873,23 @@ msgstr ""
 #: src/lessons/recursion/koch/Koch.html:8
 #, no-wrap
 msgid ""
-"void snowFlake (int levels, double length) {\n"
+"[!java]void [/!]snowFlake ([!java]int [/!]levels[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!])[!python]:[/!][!java|scala] {[/!]\n"
 "   snowSide(levels, length);\n"
 "   right(120);\n"
 "   snowSide(levels, length);\n"
 "   right(120);\n"
 "   snowSide(levels, length);\n"
 "   right(120);\n"
-"}"
+"[!java|scala]}[/!]"
 msgstr ""
-"void snowFlake (int levels, double length) {\n"
-"   snowSide(levels, length);\n"
+"[!java]void [/!]snowFlake ([!java]int [/!]niveaux[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!])[!python]:[/!][!java|scala] {[/!]\n"
+"   snowSide(niveaux, longueur);\n"
 "   right(120);\n"
-"   snowSide(levels, length);\n"
+"   snowSide(niveaux, longueur);\n"
 "   right(120);\n"
-"   snowSide(levels, length);\n"
+"   snowSide(niveaux, longueur);\n"
 "   right(120);\n"
-"}"
+"[!java|scala]}[/!]"
 
 #. type: Content of: <p><p>
 #: src/lessons/recursion/koch/Koch.html:17
@@ -8986,29 +8967,19 @@ msgstr ""
 msgid ""
 "Differential calculus would even argue that a circle is the asymptotical "
 "limit of such construct when the size of each segment becomes infinitely "
-"small while their amount becomes infinitely large (but it is still possible "
-"to solve this exercise without understanding differential calculus)."
-msgstr ""
-"Les amateurs de calcul différentiel diraient même sans doute qu'un cercle "
-"est la limite asymptotique d'une telle construction quand la taille des "
-"segments tend vers zéro alors que leur nombre tend vers l'infini (mais on "
-"peut tout de même réussir l'exercice sans maîtriser le calcul différentiel)."
+"small while their amount becomes infinitely large, but you can definitely "
+"solve this exercise without understanding differential calculus :)"
+msgstr "Les amateurs de calcul différentiel diraient même sans doute qu'un cercle est la limite asymptotique d'une telle construction quand la taille des segments tend vers zéro alors que leur nombre tend vers l'infini, mais il est tout à fait possible de réussir cet exercice sans maîtriser le calcul différentiel :)"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/circle/Circle.html:16
 msgid ""
 "Write a function drawing a circle, taking the size of each of the 360 "
-"segments as parameter. Then use it in your <code>run()</code> method to draw "
-"the whole picture. The first circle is obtained with segments of size 0.5, "
-"the second with segments of size 1 and the last one with 1.5-long segments. "
-"Once again, this is a hand-on exercise, no recursion is needed."
-msgstr ""
-"Écrivez une fonction dessinant un cercle, avec la taille de chacun des 360 "
-"pas passée en paramètre. Utilisez la ensuite dans votre méthode <code>run()</"
-"code> pour réaliser la figure dans son ensemble. Le premier cercle s'obtient "
-"avec des pas de 0.5, le second avec des pas de 1 et le troisième avec des "
-"pas de 1.5. Encore une fois, il s'agit d'un exercice de prise en main, et "
-"aucune récursion n'est nécessaire."
+"segments as parameter. Then use it in your code to draw the whole picture.  "
+"The first circle is obtained with segments of size 0.5, the second with "
+"segments of size 1 and the last one with 1.5-long segments.  Once again, "
+"this is a warming exercise, no recursion is needed."
+msgstr "Écrivez une fonction dessinant un cercle, avec la taille de chacun des 360 pas passée en paramètre. Utilisez la ensuite dans votre code pour réaliser la figure dans son ensemble. Le premier cercle s'obtient avec des pas de 0.5, le second avec des pas de 1 et le troisième avec des pas de 1.5. Encore une fois, il s'agit d'un exercice de prise en main, et aucune récursion n'est nécessaire."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/tree/Tree.html:1
@@ -9027,8 +8998,8 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/recursion/tree/Tree.html:5
 #, no-wrap
-msgid "void tree(int steps, double length, double angle, double shrink)"
-msgstr "void tree(int steps, double length, double angle, double shrink)"
+msgid "[!java]void [/!]tree([!java]int [/!]steps[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!], [!java]double [/!]angle[!scala]:Double[/!], [!java]double [/!]shrink[!scala]:Double[/!])"
+msgstr "[!java]void [/!]tree([!java]int [/!]nbPas[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!], [!java]double [/!]angle[!scala]:Double[/!], [!java]double [/!]multiplicateur[!scala]:Double[/!])"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/tree/Tree.html:7
@@ -9057,7 +9028,7 @@ msgstr ""
 msgid "Sierpinski's Triangle"
 msgstr "Triangle de Sierpinski"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/recursion/sierpinski/Sierpinski.html:3
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
@@ -9071,8 +9042,8 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/recursion/sierpinski/Sierpinski.html:6
 #, no-wrap
-msgid "void sierpinski(int level, double length)"
-msgstr "void sierpinski(int level, double length)"
+msgid "[!java]void [/!]sierpinski([!java]int [/!]level[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!])"
+msgstr "[!java]void [/!]sierpinski([!java]int [/!]niveau[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!])"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/spiral/Spiral.html:1
@@ -9093,8 +9064,8 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/recursion/spiral/Spiral.html:6
 #, no-wrap
-msgid "void spiral(int steps, int angle, int length, int increment)"
-msgstr "void spiral(int steps, int angle, int length, int increment)"
+msgid "[!java]void [/!]spiral([!java]int [/!]steps[!scala]:Int[/!], [!java]int [/!]angle[!scala]:Int[/!], [!java]int [/!]length[!scala]:Int[/!], [!java]int [/!]increment[!scala]:Int[/!])"
+msgstr "[!java]void [/!]spiral([!java]int [/!]nbPas[!scala]:Int[/!], [!java]int [/!]angle[!scala]:Int[/!], [!java]int [/!]longueur[!scala]:Int[/!], [!java]int [/!]increment[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/spiral/Spiral.html:8
@@ -9160,62 +9131,59 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/spiral/SpiralUse.html:6
 msgid ""
-"You must provide a method called <code>doit(int)</code> taking the number of "
-"the page to draw as parameter. Its code is as following, with A0, B0, etc "
-"being integers. The goal of this exercise is to find the good values for "
-"each page."
-msgstr ""
-"Vous devez écrire une méthode <code>doit(int)</code> qui prend en paramètre "
-"le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0, "
-"etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les "
-"valeurs convenables pour chaque page."
+"You must provide a method called <code>doit(page)</code> taking the page "
+"number to draw as parameter. Its code is as following, with A0, B0, etc "
+"being integers.  The goal of this exercise is to find the good values for "
+"each page, which requires to correctly understand how the spiral method "
+"works."
+msgstr "Vous devez écrire une méthode <code>doit(page)</code> qui prend en paramètre le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0, etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les valeurs convenables pour chaque page."
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/spiral/SpiralUse.html:12
 #, no-wrap
 msgid ""
-"void doit(int page) {\n"
-"  switch (page) {\n"
-"    case 0: /* Drawing of the first page, dubbed \"One\" */\n"
+"[!java]void [/!]doit([!java]int [/!]page[!scala]:Int[/!])[!python]:[/!][!java|scala] {[/!]\n"
+"  [!java]switch (page) {[/!][!scala]page match {[/!][!python]  # select on the value of page[/!]\n"
+"    [!java]case 0:[/!][!scala]case 0 =>[/!][!python]if page==0:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the first page, dubbed \"One\"</span>\n"
 "      spiral(A0,B0,C0,D0);\n"
-"      break;\n"
-"    case 1: /* Drawing of the second page, dubbed \"Two\" */\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 1:[/!][!scala]case 1 =>[/!][!python]if page==1:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the second page, dubbed \"Two\"</span>\n"
 "      spiral(A1,B1,C1,D1);\n"
-"      break;\n"
-"    case 2: /* Drawing of the page dubbed \"Three\" */\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 2:[/!][!scala]case 2 =>[/!][!python]if page==2:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the page dubbed \"Three\"</span> \n"
 "      spiral(A2,B2,C2,D2);\n"
-"      break;\n"
-"    case 3: /* Drawing of the page dubbed \"Four\" */\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 3:[/!][!scala]case 3 =>[/!][!python]if page==3:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the page dubbed \"Four\"</span> \n"
 "      spiral(A3,B3,C3,D3);\n"
-"      break;\n"
-"    case 4: /* Drawing of the page dubbed \"Five\" */\n"
-"      spiral(A4,B4,C4,D4);\n"
-"      break;\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 4:[/!][!scala]case 4 =>[/!][!python]if page==4:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the page dubbed \"Five\"</span>\n"
+"      spiral(A4,B4,C4,D4);[!java|scala]\n"
+"[!java]      break;[/!]\n"
 "  }\n"
-"}\n"
+"}[/!]"
 msgstr ""
-"void doit(int page) {\n"
-"  switch (page) {\n"
-"    case 0: /* Dessin de la première page, marquée \"One\" */\n"
+"[!java]void [/!]doit([!java]int [/!]page[!scala]:Int[/!])[!python]:[/!][!java|scala] {[/!]\n"
+"  [!java]switch (page) {[/!][!scala]page match {[/!][!python]  # Choix en fonction de la valeur de page[/!]\n"
+"    [!java]case 0:[/!][!scala]case 0 =>[/!][!python]if page==0:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Dessin sur la première page, nommée \"One\"</span>\n"
 "      spiral(A0,B0,C0,D0);\n"
-"      break;\n"
-"    case 1: /* Dessin de la seconde page, marquée \"Two\" */\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 1:[/!][!scala]case 1 =>[/!][!python]if page==1:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Dessin sur la seconde page, nommée \"Two\"</span>\n"
 "      spiral(A1,B1,C1,D1);\n"
-"      break;\n"
-"    case 2: /* Dessin de la page marquée \"Three\" */\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 2:[/!][!scala]case 2 =>[/!][!python]if page==2:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Dessin sur la troisième page, nommée \"Three\"</span> \n"
 "      spiral(A2,B2,C2,D2);\n"
-"      break;\n"
-"    case 3: /* Dessin de la page marquée \"Four\" */\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 3:[/!][!scala]case 3 =>[/!][!python]if page==3:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Dessin sur la quatrième page, nommée \"Four\"</span> \n"
 "      spiral(A3,B3,C3,D3);\n"
-"      break;\n"
-"    case 4: /* Dessin de la page marquée \"Five\" */\n"
-"      spiral(A4,B4,C4,D4);\n"
-"      break;\n"
+"[!java]      break;[/!]\n"
+"    [!java]case 4:[/!][!scala]case 4 =>[/!][!python]if page==4:[/!] <span class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Dessin sur la cinquième page, nommée \"Five\"</span>\n"
+"      spiral(A4,B4,C4,D4);[!java|scala]\n"
+"[!java]      break;[/!]\n"
 "  }\n"
-"}\n"
+"}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:34
+#: src/lessons/recursion/spiral/SpiralUse.html:33
 msgid ""
 "No need to copy over the method of <code>spiral()</code>, the turtle of this "
 "exercise already knows it."
@@ -9261,9 +9229,9 @@ msgstr ""
 "si P et Q sont les points de coordonnées (x, y) et (z,t), les coordonnées "
 "(u, v) de R sont"
 
-#. type: Content of: <p><pre>
+#. type: Content of: <pre>
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:13
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:27
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:26
 #, no-wrap
 msgid ""
 "u = (x + z)/2 + (t - y)/2\n"
@@ -9273,28 +9241,24 @@ msgstr ""
 "v = (y + t)/2 - (z - x)/2\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:19
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:17
 msgid "The prototype of the method drawing the curve is the following:"
 msgstr "Le prototype de la méthode traçant la courbe est le suivant :"
 
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:20
+#. type: Content of: <pre>
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:18
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:22
 #, no-wrap
-msgid "void dragon(int ordre, double x, double y, double z, double t)"
-msgstr "void dragon(int ordre, double x, double y, double z, double t)"
+msgid "[!java]void [/!]dragon([!java]int [/!]order[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])"
+msgstr "[!java]void [/!]dragon([!java]int [/!]ordre[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve1.html:23
+#: src/lessons/recursion/dragoncurve/DragonCurve1.html:21
 msgid ""
 "You should use the method <code>setPos(x,y)</code> to put your turtle at "
 "coordinates (x,y) and the method <code>moveTo(z,t)</code> to draw a line "
-"between the turtle position and the point (z,t)."
-msgstr ""
-"Vous utiliserez la méthode <code>setPos(x,y)</code> pour déplacer votre "
-"tortue aux coordonnées (x,y) et la méthode <code>moveTo(z,t)</code> pour "
-"tracer un trait depuis le point où la tortue est positionnée vers le point "
-"de coordonnées (z,t)"
+"between the turtle position and the point(z,t)."
+msgstr "Vous utiliserez la méthode <code>setPos(x,y)</code> pour déplacer votre tortue aux coordonnées (x,y) et la méthode <code>allerVers(z,t)</code> pour tracer un trait depuis le point où la tortue est positionnée vers le point de coordonnées (z,t)"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:1
@@ -9361,19 +9325,19 @@ msgstr ""
 "<code>dragon()</code> seront :"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:33
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:30
 msgid "The prototype of the method <code>dragonReverse</code> is similar:"
 msgstr ""
 "Le prototype de la méthode <code>dragonInverse()</code> est identique : :"
 
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:34
+#. type: Content of: <pre>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:31
 #, no-wrap
-msgid "void dragonReverse(int ordre, double x, double y, double z, double t)"
-msgstr "void dragonInverse(int ordre, double x, double y, double z, double t)"
+msgid "[!java]void [/!]dragonReverse([!java]int [/!]order[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])"
+msgstr "[!java]void [/!]dragonReverse([!java]int [/!]ordre[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:36
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:33
 msgid ""
 "The new point's coordinate (u, v) introduced by the <code>dragonReverse()</"
 "code> are:"
@@ -9381,8 +9345,8 @@ msgstr ""
 "Les coordonnées (u, v) du nouveau point introduit par la méthode "
 "<code>dragonInverse()</code> seront :"
 
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:39
+#. type: Content of: <pre>
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:35
 #, no-wrap
 msgid ""
 "u = (x + z)/2 - (t - y)/2\n"
@@ -9392,7 +9356,7 @@ msgstr ""
 "v = (y + t)/2 + (z - x)/2\n"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/dragoncurve/DragonCurve2.html:45
+#: src/lessons/recursion/dragoncurve/DragonCurve2.html:39
 msgid ""
 "To make the work of each method recursiv more visible, the line painted by "
 "the <code>dragon()</code> must be red (<code>Color.red</code>) while the "

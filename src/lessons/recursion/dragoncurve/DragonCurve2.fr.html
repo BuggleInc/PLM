@@ -20,29 +20,25 @@ exemple de <i>récursivité croisée</i>.
 
 <p>
 Le prototype de la méthode <code>dragon()</code> reste le même que
-précédemment :
-<pre>void dragon(int ordre, double x, double y, double z, double t)</pre>
+précédemment :</p>
+<pre>[!java]void [/!]dragon([!java]int [/!]ordre[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])</pre>
 
-Les coordonnées (u, v) du nouveau point introduit par la méthode
-<code>dragon()</code> seront :
+<p>Les coordonnées (u, v) du nouveau point introduit par la méthode
+<code>dragon()</code> seront :</p>
 <pre>
 u = (x + z)/2 + (t - y)/2
 v = (y + t)/2 - (z - x)/2
 </pre>
-</p>
 
-<p>
-Le prototype de la méthode <code>dragonInverse()</code> est identique : :
-<pre>void dragonInverse(int ordre, double x, double y, double z, double t)</pre>
+<p>Le prototype de la méthode <code>dragonInverse()</code> est identique : :</p>
+<pre>[!java]void [/!]dragonReverse([!java]int [/!]ordre[!scala]:Int[/!], [!java]double [/!]x[!scala]:Double[/!], [!java]double [/!]y[!scala]:Double[/!], [!java]double [/!]z[!scala]:Double[/!], [!java]double [/!]t[!scala]:Double[/!])</pre>
 
-Les coordonnées (u, v) du nouveau point introduit par la méthode
-<code>dragonInverse()</code> seront :
+<p>Les coordonnées (u, v) du nouveau point introduit par la méthode
+<code>dragonInverse()</code> seront :</p>
 <pre>
 u = (x + z)/2 - (t - y)/2
 v = (y + t)/2 + (z - x)/2
 </pre>
-</p>
-
 
 <p>Afin de rendre, plus visible le travail de chacune des deux méthodes
 récursives, le trait tracé par la méthode <code>dragon()</code> devra être

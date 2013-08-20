@@ -7,14 +7,14 @@ reproduit à n'importe quelle échelle.
 <p>La forme générale est un triangle dont chaque coté est donné par une série
 d'appels récursifs.  La forme générale est obtenue en enchainant trois cotés
 de la façon suivante.
-<pre>void snowFlake (int levels, double length) {
-   snowSide(levels, length);
+<pre>[!java]void [/!]snowFlake ([!java]int [/!]niveaux[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!])[!python]:[/!][!java|scala] {[/!]
+   snowSide(niveaux, longueur);
    right(120);
-   snowSide(levels, length);
+   snowSide(niveaux, longueur);
    right(120);
-   snowSide(levels, length);
+   snowSide(niveaux, longueur);
    right(120);
-}</pre>
+[!java|scala]}[/!]</pre>
 
 <p>Observez le dessin dans chaque monde objectif pour comprendre la logique de
 ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui
