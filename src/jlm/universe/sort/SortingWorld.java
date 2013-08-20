@@ -262,10 +262,6 @@ public class SortingWorld extends World {
 			e.eval(
 					"def getValueCount():\n" +
 					"  return entity.getValueCount()\n" +
-					"def compare(i,j):\n" +
-					"  return entity.compare(i,j)\n" +
-					"def compareTo(i,j):\n"+
-					"  return entity.compareTo(i,j)\n" +
 					"def swap(i,j):\n" +
 					"  entity.swap(i,j)\n" +
 					"def copy(i,j):\n" +
@@ -277,7 +273,23 @@ public class SortingWorld extends World {
 					"def isSmaller(i,j):\n"+
 					"  return entity.isSmaller(i,j)\n"+
 					"def isSmallerThan(i,j):\n"+
+					"  return entity.isSmallerThan(i,j)\n"+
+					/* BINDINGS TRANSLATION: French */
+					"def getNombreValeurs():\n" +
+					"  return entity.getValueCount()\n" +
+					"def echange(i,j):\n" +
+					"  entity.swap(i,j)\n" +
+					"def copie(i,j):\n" +
+					"  entity.copy(i,j)\n" +
+					"def getValeur(i):\n" +
+					"  return entity.getValue(i)\n" +
+					"def setValeur(i,j):\n" +
+					"  entity.setValue(i,j)\n" +
+					"def plusPetit(i,j):\n"+
+					"  return entity.isSmaller(i,j)\n"+
+					"def plusPetitQue(i,j):\n"+
 					"  return entity.isSmallerThan(i,j)\n"
+
 			);
 		} else {
 			throw new RuntimeException("No binding of SortingWorld for "+lang);

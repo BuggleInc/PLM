@@ -202,6 +202,26 @@ public class BaseballWorld extends World {
 					"  return entity.getPlayerColor(base,pos)\n" +
 					"def move(base,pos):\n" +
 					"  entity.move(base,pos)\n" +
+					/* BINDINGS TRANSLATION: French */
+					"def getNombreBases():\n" +
+					"  return entitygetBasesAmount()\n" +
+					"def getNombrePositions():\n" +
+					"  return entity.getPositionsAmount()\n" +
+					"def getTrouBase():\n" +
+					"  return entity.getHoleBase()\n" +
+					"def getTrouPosition():\n" +
+					"  return entity.getHolePosition()\n" +
+					"def estTrie():\n" +
+					"  return entity.isSorted()\n" +
+					"def estBaseTriee():\n" +
+					"  return entity.isBaseSorted()\n" +
+					"def getCouleurJoueur(base,pos):\n" +
+					"  return entity.getPlayerColor(base,pos)\n" +
+					"def deplace(base,pos):\n" +
+					"  (base,pos)\n" +
+					"def estSelectionne():\n"+
+					"  return isSelected()\n"+
+
 					""
 					);
 		} else {

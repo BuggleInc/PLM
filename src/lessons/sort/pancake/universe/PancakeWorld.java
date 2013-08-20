@@ -169,7 +169,16 @@ public class PancakeWorld extends World {
 				"def isPancakeUpsideDown(pancakeNumber):\n"+
 				"  return entity.isPancakeUpsideDown(pancakeNumber)\n" +
 				"def flip(numberOfPancakes):\n" +
-				"  entity.flip(numberOfPancakes)\n"	
+				"  entity.flip(numberOfPancakes)\n"	+
+				/* BINDINGS TRANSLATION: French */
+				"def getTaillePile():\n"+
+				"  return getStackSize()\n"+
+				"def getRayonCrepe(rank):\n"+
+				"  return getPancakeRadius(rank)\n"+
+				"def estCrepeRetournee(rank):\n"+
+				"  return isPancakeUpsideDown(rank)\n"+
+				"def retourne(nb):\n"+
+				"  return flip(nb)\n"
 				);
 		} else {
 			throw new RuntimeException("No binding of PancakeWorld for "+lang);
