@@ -1,52 +1,18 @@
-<h1>Le monde des Buggles</h1>
-Ce monde a été inventé par Lyn Turbak, du Wellesley College. Il est peuplé
-de Buggles, petites bêtes qui comprennent des ordres simples, et offre de
-nombreuses possibilités d'interaction avec le monde: prendre ou poser des
-objets, colorier le sol, se cogner à des murs, etc.
+<h1>L'univers des turmites</h1>
 
-<h2>Méthodes comprises par les buggles</h2>
+<p>Cet univers est très semblable à celui des buggles, mais vous n'utiliserez
+probablement pas toutes les méthodes des buggles. Cette page résume donc les
+quelques méthodes que vous serez amenés à utiliser.</p>
+
+<p></p>
+
 <table border=1>
-<tr><td colspan=2 align=center><b>Bouger</b><br/> (voir aussi la note sur les exceptions, plus bas)</td></tr>
   <tr><td><b>Tourner à gauche<br/>Tourner à droite<br/>Se retourner<br/>Avancer<br/>Reculer</b></td>
-      <td>void gauche()<br/>void droite()<br/>void retourne()<br/>
-          void avance() ou void avance(int)<br/>void recule() ou void recule(int)<br/></td></tr>
-  <tr><td><b>Obtenir l'abcisse<br/>Obtenir l'ordonnée<br/>Changer l'abcisse<br/>Changer l'ordonnée<br/>Changer la position</b></td>
-      <td>int getX()<br/>int getY()<br/>void setX(int)<br/>void setY(int)<br/>void setPos(int,int)</td></tr>
+      <td>[!java]void [/!]gauche()<br/>[!java]void [/!]droite()<br/>[!java]void [/!]retourne()<br/>
+          [!java]void [/!]avance() ou [!java]void [/!]avance([!java]int
+[/!]steps[!scala]:Int[/!])<br/>
+          [!java]void [/!]recule() or [!java]void [/!]recule([!java]int
+[/!]steps[!scala]:Int[/!])<br/></td></tr>
 
-<tr><td colspan=2 align=center><b>Informations sur la buggle</b></td></tr>
-  <tr><td><b>Obtenir la couleur<br/>Changer la couleur</b></td>
-      <td>Color getCouleur()<br/>void setCouleur(Color)</td></tr>				
-  <tr><td><b>Chercher un mur devant<br/>Chercher un mur derriere</b></td>
-      <td>boolean estFaceMur()<br/>boolean estDosMur()</td></tr>				
-  <tr><td><b>Obtenir la direction<br/>Changer la direction</b><br/>Les directions valides sont :</td>
-      <td>Direction getDirection()<br/>void setDirection(Direction)<br/>Direction.NORTH (le nord), Direction.EAST (l'est), Direction.SOUTH (le sud)
-et Direction.WEST (l'ouest)</td></tr>
- 
-<tr><td colspan=2 align=center><b>À propos de la brosse</b></td></tr>
-  <tr><td><b>Baisser la brosse<br/>Lever la brosse<br/>Obtenir la position de la brosse</b></td>
-      <td>void leveBrosse()<br/>void baisseBrosse()<br/>boolean estBrosseBaissee()</td></tr>
-  <tr><td><b>Modifier la couleur de la brosse<br/>Obtenir la couleur de la brosse</b></td>
-      <td>void setCouleurBrosse(Color)<br/>Color getCouleurBrosse()</td></tr>
-
-<tr><td colspan=2 align=center><b>Interagir avec le monde</b></td></tr>
-  <tr><td><b>Obtenir la couleur du sol</b></td><td>Color getCouleurSol()</td></tr>
-
-  <tr><td><b>Chercher un biscuit par terre<br/>Chercher un biscuit dans ses poches<br/>Prendre un biscuit<br/>Poser un biscuit</b><br/>
-      (voir la note sur les exceptions)</td>
-      <td>boolean estSurBiscuit()<br/>boolean porteBiscuit()<br/>void prendBiscuit()<br/>void poseBiscuit()</td></tr>
-
-  <tr><td><b>Chercher un message<br/>Ajouter un message<br/>Lire le message<br/>Effacer le message</b></td>
-      <td>boolean estSurMessage()<br/>void writeMessage(String)<br/>String litMessage()<br/>void effaceMessage()</td></tr>
+  <tr><td><b>Obtenir la couleur du sol</b></td><td>[!java]Color [/!]getCouleurSol()[!scala]:Color[/!]</td></tr>
 </table>
-
-<h2>Note sur les exceptions</h2>
-Les buggles normales lèvent une exception BuggleWallException si on cherche
-à leur faire traverser un mur.
-Elles lèvent une exception NoBaggleUnderBuggleException si vous cherchez à
-prendre un baggle dans une case qui n'en contient pas, ou une exception
-AlreadyHaveBaggleException si vous portez déjà un baggel.
-Tenter de déposer un baggel sur une case qui en contient déjà lève une
-exception AlreadyHaveBaggleException.
-<p>Les "SimpleBuggles" (ie, celles utilisées dans les premiers exercices)
-affiche un message d'erreur sans que vous ayez à vous soucier de ce qu'est
-une exception.</p>

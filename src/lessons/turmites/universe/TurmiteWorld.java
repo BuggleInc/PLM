@@ -114,7 +114,11 @@ public class TurmiteWorld extends BuggleWorld {
 			engine.put("daWorld", this);
 			engine.eval(
 					"def stepDone():\n"+
-					"	daWorld.stepDone()\n");
+					"	daWorld.stepDone()\n"+
+					/* BINDINGS TRANSLATION: French */
+					"def pasFait():\n"+
+					"	daWorld.stepDone()\n"
+					);
 		}
 	}
 	
