@@ -10,20 +10,17 @@ disque plus grand sur un disque plus petit.</p>
 
 <p>Seules trois fonctions sont fournies&nbsp;:</p>
 
-<pre class="Java">void deplace(int src, int dst)</pre>
-<pre class="python">deplace(src, dst) throws HanoiInvalidMove</pre>
+<pre>[!java]void [/!]deplace([!java]int [/!]src, [!java]int [/!]dst)</pre>
 
 Elle déplace un disque d'un piquet <code>src</code> vers le piquet
 <code>dst</code>. Si vous demandez un déplacement invalide (comme le
 placement d'un disque sur un disque plus petit), une exception
 IllegalArgumentException est levée. 
 
-<pre class="Java">int getTaillePiquet(int piquet);</pre>
-<pre class="python">getTaillePiquet(slot)</pre>
+<pre>[!java]int [/!]getTaillePiquet([!java]int [/!]slot)[!scala]:Int[/!]</pre>
 Retourne le nombre de disques placés sur un piquet donné. Cette fonction est
 surtout utile pour initialiser la récursion et déterminer le nombre d'appels
 récursifs à réaliser.
 
-<pre class="Java">boolean estChoisi()</pre>
-<pre class="python">isSelected()</pre>
+<pre>[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]</pre>
 Renvoi si le monde actuel est sélectionné dans l'interface graphique.

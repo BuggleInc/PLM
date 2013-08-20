@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-20 22:20+0300\n"
+"POT-Creation-Date: 2013-08-20 22:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -359,7 +359,7 @@ msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/sort/SortingWorld.html:30 src/lessons/recursion/hanoi/universe/HanoiWorld.html:27 src/lessons/sort/pancake/universe/PancakeWorld.html:21
+#: src/jlm/universe/sort/SortingWorld.html:30 src/lessons/recursion/hanoi/universe/HanoiWorld.html:24 src/lessons/sort/pancake/universe/PancakeWorld.html:21
 msgid "Returns whether the current world is selected in the graphical interface."
 msgstr ""
 
@@ -591,8 +591,8 @@ msgstr ""
 msgid "Other functions"
 msgstr ""
 
-#. type: Content of: <table><tr><td>
-#: src/jlm/universe/turtles/TurtleWorld.html:59 src/jlm/universe/bugglequest/BuggleWorld.html:35
+#. type: Content of: <pre>
+#: src/jlm/universe/turtles/TurtleWorld.html:59 src/jlm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
@@ -1433,6 +1433,24 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:494
 msgid "Concept not mandated by the exercise"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/Main.html:500
+msgid "What will I learn?"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/Main.html:501
+msgid ""
+"You will learn the very basics of programming. At least, you will be "
+"presented the most important concepts, allowing you to read most simple "
+"algorithms. You will not be able to write or read full programs because you "
+"will still not know about objects, but you will master what is called "
+"\"Tactical programming\", meaning that you will master the syntax enough to "
+"not have any issue with it, allowing you to focus on the fundamental "
+"problems of what you want to solve instead of struggling with syntaxic "
+"difficulties."
 msgstr ""
 
 #. type: Content of: <p>
@@ -3556,40 +3574,6 @@ msgid ""
 "This time, there is only one world but seven buggles, all sharing the same "
 "code.  This code should not be really problematic for you to write, "
 "actually."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:81
-msgid "What is coming next?"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:82
-msgid ""
-"You now know the very basics of programming. At least, we introduced all the "
-"important concepts, and you should be able to read most simple codes by "
-"now. If you want to play safe, you should proceed to the next exercises of "
-"this lesson to solidify your knowledge by reusing these concepts in various "
-"simple situations. After taking them, you will master what is called "
-"\"Tactical programming\", meaning that you will master the syntax enough to "
-"not have any issue with it, allowing you to focus on the fundamental "
-"problems of what you want to solve instead of struggling with syntaxic "
-"difficulties.  Some of these exercises are even fun to do ;)"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/args/MethodsArgs.html:92
-msgid ""
-"If you are in a hurry and want more, you can skip these exercises and "
-"proceed directly to more interesting challenges. For example, the "
-"<i>Labyrinths</i> lesson will teach you about maze escaping algorithms, "
-"which are not rocket science but require several improvements to work for "
-"any kind of maze. The <i>Lightbot</i> lesson is a little programmer's brain "
-"teaser where you control a little robot wanting to light the world.  Since "
-"it is not programmed in a language but graphically, the first exercises can "
-"be used as an introduction activity to what programming means for real "
-"beginners, but the last exercises may constitute challenges even to "
-"professional programmers."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6805,10 +6789,11 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/HanoiBoard.html:22
 msgid ""
-"Write the core of the method: <code>public void solve(int src, int dst, int "
-"height) throws HanoiInvalidMove</code> This method will recursively solve "
-"the presented problem. First parameter named <code>src</code> is the index "
-"of the initial tower, second parameter <code>dst</code> is the index of the "
+"Write the core of the method: <code>[!java]void [/!]solve([!java]int "
+"[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!], [!java]int "
+"[/!]height[!scala]:Int[/!])</code> This method will recursively solve the "
+"presented problem. First parameter named <code>src</code> is the index of "
+"the initial tower, second parameter <code>dst</code> is the index of the "
 "expected final tower, and the third parameter <code>height</code> is the "
 "height of the tower.  A key to solving this puzzle is to recognize that it "
 "can be solved by breaking the problem down into a collection of smaller "
@@ -6839,17 +6824,17 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:43
-msgid "move n−1 discs from A to B. This leaves disc #n alone on peg A"
+msgid "move n−1 discs from A to B. This leaves disc number n alone on peg A"
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:44
-msgid "move disc #n from A to C"
+msgid "move disc number n from A to C"
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:45
-msgid "move n−1 discs from B to C so they sit on disc #n"
+msgid "move n−1 discs from B to C so they sit on disc number n"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -6875,17 +6860,11 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:13
 #, no-wrap
-msgid "void move(int src, int dst)"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:14
-#, no-wrap
-msgid "move(src, dst) throws HanoiInvalidMove"
+msgid "[!java]void [/!]move([!java]int [/!]src, [!java]int [/!]dst)"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:16
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:15
 msgid ""
 "Moves one disk from the stick <code>src</code> onto the stick "
 "<code>dst</code>. If you try to do an invalid move (like laying a disk over "
@@ -6893,35 +6872,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:20
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:19
 #, no-wrap
-msgid "int getSlotSize(int slot);"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:21
-#, no-wrap
-msgid "getSlotSize(slot)"
+msgid "[!java]int [/!]getSlotSize([!java]int [/!]slot)[!scala]:Int[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:22
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:20
 msgid ""
 "Returns the amount of disks placed on the specified slot. This is mainly "
 "used to initialize the recursion and set the amount of recursive call to "
 "execute."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:25
-#, no-wrap
-msgid "boolean isSelected()"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
-#, no-wrap
-msgid "isSelected()"
 msgstr ""
 
 #. type: Content of: <h3>
