@@ -89,7 +89,7 @@ public class Game implements IWorldView {
 	public static final ProgrammingLanguage JAVA =       new ProgrammingLanguage("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
 	public static final ProgrammingLanguage PYTHON =     new ProgrammingLanguage("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
 	public static final ProgrammingLanguage SCALA =      new ProgrammingLanguage("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
-	public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
+	//public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
 	public static final ProgrammingLanguage RUBY =       new ProgrammingLanguage("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
 	public static final ProgrammingLanguage LIGHTBOT =   new ProgrammingLanguage("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
