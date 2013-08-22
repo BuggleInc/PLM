@@ -809,8 +809,8 @@ public class Game implements IWorldView {
 			//System.out.println("Switch programming language to "+newLanguage);
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
-			// TODO: do that only if the selected language is stable enough as this language will be used to compute all answers at the next startup
-			setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.lang);
+			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA)) // Only save it if it's stable enough
+				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.lang);
 			return;
 		}
 		throw new RuntimeException("Ignoring request to switch the programming language to the unknown "+newLanguage);
