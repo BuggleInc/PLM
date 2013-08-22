@@ -372,6 +372,7 @@ public abstract class ExerciseTemplated extends Exercise {
 							String name = worldFileName+"-answer"+(rank++);
 							try {
 								World nw = aw.readFromFile(name);
+								nw.setAnswerWorld();
 								newAnswer.add(nw);
 							} catch (BrokenWorldFileException bwfe) {
 								System.err.println(i18n.tr("World {0} is broken ({1}). Recompute all answer worlds.",name,bwfe.getLocalizedMessage()) );
@@ -398,9 +399,11 @@ public abstract class ExerciseTemplated extends Exercise {
 				
 				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
-				for (World aw : answerWorld) 
+				for (World aw : answerWorld) {
 					for (Entity ent: aw.getEntities()) 
 						ent.runIt(progress);
+					aw.setAnswerWorld();
+				}
 				
 				/* Try to write all files for next time */
 				if (answerWorld.get(0).haveIO()) {

@@ -24,6 +24,7 @@ import org.xnap.commons.i18n.I18nFactory;
 
 public abstract class World {
 	private boolean isDelayed = false; // whether we display interactively or not
+	private boolean isAnswer = false;
 	private int delay = 100; // delay between two instruction executions of an entity.
 
 	protected ArrayList<Entity> entities = new ArrayList<Entity>();
@@ -99,6 +100,12 @@ public abstract class World {
 	/** set current UI delay to 0 */
 	public void doneDelay() {
 		isDelayed = false;
+	}
+	public void setAnswerWorld() {
+		isAnswer = true;
+	}
+	public boolean isAnswerWorld() {
+		return isAnswer;
 	}
 
 	public void addEntity(Entity b) {
