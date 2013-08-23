@@ -38,6 +38,13 @@ public class Main extends Lesson {
 		addExercise(new TurtleGraphicalExercise(this,"Polygon15",    300,300, 55,165));
 		addExercise(new TurtleGraphicalExercise(this,"Polygon360",   300,300, 35,149));
 		addExercise(new TurtleGraphicalExercise(this,"CircleTwo",    300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(this,"CircleYing",   300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(this,"CircleSquare", 300,300, 50,200));
+		addExercise(new TurtleGraphicalExercise(this,"CircleTen",    300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"DiskFourth",   300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"DiskFour",     300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"DiskTwo",      300,300, 150,150));
+		addExercise(new TurtleGraphicalExercise(this,"Star",         300,300, 150,200));
 		
 		setCurrentExercise(currentExercise); // recompute the missions
 	}

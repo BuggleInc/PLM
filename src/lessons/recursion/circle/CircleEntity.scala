@@ -11,7 +11,7 @@ class ScalaCircleEntity extends Turtle {
 		circle(1);
 		circle(1.5);
 	}
-	def circle(step:Double) {
+	override def circle(step:Double) {
 		for (i <- 1 to 360) {
 			forward(step);
 			right(1);
