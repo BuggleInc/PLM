@@ -41,6 +41,9 @@ public class ResourcesCache {
 	public static ImageIcon getIcon(String path) {
 		return getIcon(path, false);
 	}
+	public static void setIcon(String path, ImageIcon icon) {
+		iconsCache.put(path,icon);
+	}
 	/**
 	 * Lazy loading of ImageIcon resources.
 	 * @param path of the image resource to be loaded.
