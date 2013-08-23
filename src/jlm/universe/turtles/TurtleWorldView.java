@@ -1,9 +1,11 @@
 package jlm.universe.turtles;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Stroke;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.util.Iterator;
@@ -38,11 +40,21 @@ public class TurtleWorldView extends WorldView {
 		g2.setColor(Color.white);
 		g2.fill(new Rectangle2D.Double(0.,0.,(double)tw.getWidth(),(double)tw.getHeight()));
 		
-		synchronized (((TurtleWorld) world).shapes) {
-			Iterator<Line> it2 = ((TurtleWorld) world).shapes();
-			while (it2.hasNext())
-				it2.next().draw(g2);			
+		g2.setColor(Color.BLACK);
+		Stroke oldStroke = g2.getStroke();
+	    g2.setStroke(new BasicStroke(1.0f,
+	                        BasicStroke.CAP_BUTT,
+	                        BasicStroke.JOIN_MITER,
+	                        10.0f, new float[]{2f,10.0f}, 0.0f));
+
+		if (Game.getInstance().isDebugEnabled()) {
+			for (int x=50;x<tw.getWidth();x+=50) 
+				g2.drawLine(x, 1, x, (int) tw.getHeight()-1);
+			for (int y=50;y<tw.getHeight();y+=50) 
+				g2.drawLine(1, y, (int)tw.getWidth()-1,y);
 		}
+		g2.setStroke(oldStroke);
+		
 		if (world.isAnswerWorld() || Game.getInstance().isDebugEnabled()) {
 			for (Entity e: world.getEntities()) {
 				Turtle t = (Turtle) e;
@@ -50,13 +62,20 @@ public class TurtleWorldView extends WorldView {
 				g2.fillOval((int)(t.startX-5), (int)(t.startY-5), 10, 10);
 			}
 				
-			synchronized (((TurtleWorld) world).sizeHints) {
-				for (SizeHint indic : ((TurtleWorld) world).sizeHints)
+			synchronized (tw.sizeHints) {
+				for (SizeHint indic : tw.sizeHints)
 					indic.draw(g2);			
 			}
 		}
 		for (Entity ent : world.getEntities())
 			drawTurtle(g2, (Turtle)ent);
+		
+		
+		synchronized (((TurtleWorld) world).shapes) {
+			Iterator<Line> it2 = ((TurtleWorld) world).shapes();
+			while (it2.hasNext())
+				it2.next().draw(g2);			
+		}
 		
 		
 	}
