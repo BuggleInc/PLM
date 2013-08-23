@@ -19,7 +19,8 @@ import jlm.core.utils.FileUtils;
  * an exercise. A better name would be useful, but I feel limited in 
  * English today. Sorry. */
 public abstract class Lecture {
-	private String id; // used in session to identify this lecture or exercise
+	private String base_id; // lecture's identifier WITHIN THE LESSON 
+	private String id; // global lecture's identifier 
 	
 	public static final String HTMLTipHeader = "<head>\n"+
 			"  <meta content=\"text/html; charset=UTF-8\" />\n"+	
@@ -46,10 +47,11 @@ public abstract class Lecture {
 	
 	protected Map<String, String> tips = new HashMap<String, String>();
 	
-	public Lecture(Lesson lesson) {
+	public Lecture(Lesson lesson,String basename) {
 		this.lesson = lesson;
+		base_id = (basename!=null?basename:getClass().getName());
+		id = lesson.getId()+"."+ base_id;
 		loadHTMLMission();
-		id = lesson.getId()+getClass().getName();
 	}
 	public String getId() {
 		return id;
@@ -79,7 +81,7 @@ public abstract class Lecture {
 	}
 
 	public void loadHTMLMission() {
-		String filename = getClass().getCanonicalName().replace('.',File.separatorChar);
+		String filename = base_id.replace('.',File.separatorChar);
 	
 		StringBuffer sb = null;
 		try {

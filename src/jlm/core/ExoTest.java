@@ -102,7 +102,7 @@ public class ExoTest {
 		try {
 			exo.compileAll(null,StudentOrCorrection.CORRECTION);
 			if (exo.lastResult.compilationError != null)
-				fail(exo.getClass().getSimpleName()+": compilation error: "+exo.lastResult.compilationError);
+				fail(exo.getId()+": compilation error: "+exo.lastResult.compilationError);
 
 			exo.reset();
 			// For compiled languages, we mutate to the compiled entity. 
@@ -126,7 +126,7 @@ public class ExoTest {
 		}
 		
 		if (exo.lastResult.compilationError != null) 
-				fail(exo.getClass().getSimpleName()+": compilation error: "+exo.lastResult.compilationError+". Compiled file:\n"+
+				fail(exo.getId()+": compilation error: "+exo.lastResult.compilationError+". Compiled file:\n"+
 						((exo.getSourceFileCount(lang)>0) ? (exo.getSourceFile(lang, 0).getCompilableContent(StudentOrCorrection.CORRECTION))
 							                              : "none"));
 		
@@ -134,11 +134,11 @@ public class ExoTest {
 		if (exo.lastResult.totalTests == 0 
 				|| exo.lastResult.totalTests != exo.lastResult.passedTests 
 				|| !exo.lastResult.details.equals("")) {
-			System.out.println(""+exo.getClass().getName()+" failed in "+Game.getProgrammingLanguage()+": "+exo.lastResult.details);
-			fail(exo.getClass().getSimpleName()+": failed exercise ("+
+			System.out.println(""+exo.getId()+" failed in "+Game.getProgrammingLanguage()+": "+exo.lastResult.details);
+			fail(exo.getId()+": failed exercise ("+
 				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.details+"'");
 		}
-		System.out.println(""+exo.getClass().getName()+" passed in "+Game.getProgrammingLanguage());
+		System.out.println(""+exo.getId()+" passed in "+Game.getProgrammingLanguage());
 
 	}
 	
@@ -150,7 +150,7 @@ public class ExoTest {
 	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testScalaEntity() {
 		if (!exo.getProgLanguages().contains(Game.SCALA)) 
-			fail("Exercise "+exo.getClass().getName()+" does not support scala");
+			fail("Exercise "+exo.getId()+" does not support scala");
 		
 		Game.getInstance().setProgramingLanguage(Game.SCALA);
 		testCorrectionEntity();
@@ -159,7 +159,7 @@ public class ExoTest {
 	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
-			fail("Exercise "+exo.getClass().getName()+" does not support python");
+			fail("Exercise "+exo.getId()+" does not support python");
 	
 		Game.getInstance().setProgramingLanguage(Game.PYTHON);
 		testCorrectionEntity();

@@ -24,7 +24,10 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected String worldFileName = getClass().getCanonicalName(); /* Name of the save files */
 
 	public ExerciseTemplated(Lesson lesson) {
-		super(lesson);
+		super(lesson,null);
+	}
+	public ExerciseTemplated(Lesson lesson, String basename) {
+		super(lesson,basename);
 	}
 	
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename) throws NoSuchEntityException {
