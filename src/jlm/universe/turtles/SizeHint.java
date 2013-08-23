@@ -33,7 +33,7 @@ public class SizeHint implements ImageObserver {
 		int cy = (int) ((y1+y2)/2.);
 		
 		double hyp = Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
-		double theta = Math.acos((y2-y1)/hyp) + Math.PI/2;
+		double theta = Math.acos((y2-y1)/hyp) - Math.PI/2;
 		
 		drawString(g2, text, cx, cy, theta);
 		
