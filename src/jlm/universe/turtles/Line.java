@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
 
-public class Line {
+public class Line implements Shape {
 	public double x1, y1,  x2, y2;
 	public Color color;
 	
@@ -46,17 +46,20 @@ public class Line {
 				
 		return true;
 	}
-	public String diffTo(Line o) {
-		Line other = (Line) o;
-		if (!doubleEqual(x1,other.x1))
-			return "x1 differs";
-		if (!doubleEqual(x2,other.x2))
-			return "x2 differs";
-		if (!doubleEqual(y1,other.y1))
-			return "y1 differs";
-		if (!doubleEqual(y2,other.y2))
-			return "y2 differs";
-		return "I dont see the difference";
+	public String diffTo(Shape o) {
+		if (o instanceof Line) {
+			Line other = (Line) o;
+			if (!doubleEqual(x1,other.x1))
+				return "x1 differs";
+			if (!doubleEqual(x2,other.x2))
+				return "x2 differs";
+			if (!doubleEqual(y1,other.y1))
+				return "y1 differs";
+			if (!doubleEqual(y2,other.y2))
+				return "y2 differs";
+			return "I dont see the difference";
+		} else 
+			return "That's not a line";
 	}
 	
 	@Override

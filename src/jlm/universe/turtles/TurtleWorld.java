@@ -20,7 +20,7 @@ import jlm.universe.World;
 
 public class TurtleWorld extends World {
 
-	ArrayList<Line> shapes = new ArrayList<Line>();
+	ArrayList<Shape> shapes = new ArrayList<Shape>();
 	ArrayList<SizeHint> sizeHints = new ArrayList<SizeHint>();
 
 	private double width;
@@ -51,11 +51,11 @@ public class TurtleWorld extends World {
 	@Override
 	public void reset(World w) {
 		TurtleWorld initialWorld = (TurtleWorld)w;
-		shapes = new ArrayList<Line>();
+		shapes = new ArrayList<Shape>();
 		this.height = initialWorld.height;
 		this.width = initialWorld.width;
 
-		Iterator<Line> it = initialWorld.shapes();
+		Iterator<Shape> it = initialWorld.shapes();
 		while (it.hasNext()) 
 			shapes.add(it.next().copy());
 		
@@ -81,7 +81,14 @@ public class TurtleWorld extends World {
 			notifyWorldUpdatesListeners();
 		}
 	}
-	public Iterator<Line> shapes() {
+	public void addCircle(double x, double y, double radius, Color color) {
+		synchronized (shapes) {
+			shapes.add(new Circle(x,y,radius,color));
+			notifyWorldUpdatesListeners();
+		}
+	}
+
+	public Iterator<Shape> shapes() {
 		return shapes.iterator();
 	}
 	
@@ -117,8 +124,8 @@ public class TurtleWorld extends World {
 		TurtleWorld other = (TurtleWorld) obj;
 		if (shapes.size() != other.shapes.size())
 			return false;
-		Collections.sort(shapes, new LineComparator());
-		Collections.sort(other.shapes, new LineComparator());
+		Collections.sort(shapes, new ShapeComparator());
+		Collections.sort(other.shapes, new ShapeComparator());
 		for (int i=0;i<shapes.size();i++)
 			if (! shapes.get(i).equals(other.shapes.get(i)))
 				return false;
@@ -134,7 +141,7 @@ public class TurtleWorld extends World {
 			", size="+width+"x"+height+
 			", parameters: " +parameters+
 			", shapes=[";
-		Iterator<Line> it = shapes();
+		Iterator<Shape> it = shapes();
 		while (it.hasNext()) 
 			res += it.next().toString();
 		res += "]";
@@ -214,34 +221,51 @@ public class TurtleWorld extends World {
 	}
 }
 
-class LineComparator implements Comparator<Line> {
+class ShapeComparator implements Comparator<Shape> {
 
-	public LineComparator() {
+	public ShapeComparator() {
 		super();
 	}
 
 	@Override
-	public int compare(Line l1, Line l2) {
-		if (l1.x1 < l2.x1)
+	public int compare(Shape s1, Shape s2) {
+		if (s1 instanceof Line && s2 instanceof Circle)
 			return -1;
-		if (l1.x1 > l2.x1)
-			return 1;
-
-		if (l1.x2 < l2.x2)
-			return -1;
-		if (l1.x2 > l2.x2)
-			return 1;
-
-		if (l1.y1 < l2.y1)
-			return -1;
-		if (l1.y1 > l2.y1)
-			return 1;
-
-		if (l1.y2 < l2.y2)
-			return -1;
-		if (l1.y2 > l2.y2)
+		if (s1 instanceof Circle && s2 instanceof Line)
 			return 1;
 		
+		if (s1 instanceof Line) {
+			Line l1 = (Line) s1;
+			Line l2 = (Line) s2;
+			if (l1.x1 < l2.x1)
+				return -1;
+			if (l1.x1 > l2.x1)
+				return 1;
+
+			if (l1.x2 < l2.x2)
+				return -1;
+			if (l1.x2 > l2.x2)
+				return 1;
+
+			if (l1.y1 < l2.y1)
+				return -1;
+			if (l1.y1 > l2.y1)
+				return 1;
+
+			if (l1.y2 < l2.y2)
+				return -1;
+			if (l1.y2 > l2.y2)
+				return 1;
+			return 0;
+		}
+		if (s1 instanceof Circle) {
+			Circle c1 = (Circle) s1;
+			Circle c2 = (Circle) s2;
+			if (c1.x < c2.x)
+				return -1;
+			if (c1.x > c2.x)
+				return 1;
+		}
 		return 0;
 	}
 	

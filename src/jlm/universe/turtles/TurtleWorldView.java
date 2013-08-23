@@ -76,7 +76,7 @@ public class TurtleWorldView extends WorldView {
 		
 		
 		synchronized (((TurtleWorld) world).shapes) {
-			Iterator<Line> it2 = ((TurtleWorld) world).shapes();
+			Iterator<Shape> it2 = ((TurtleWorld) world).shapes();
 			while (it2.hasNext())
 				it2.next().draw(g2);			
 		}

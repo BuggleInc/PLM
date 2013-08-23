@@ -93,7 +93,7 @@ public class Turtle extends Entity {
 
 	public void backward(double dist) {
 		moveTo(x + dist * Math.cos(heading + Math.PI), y + dist * Math.sin(heading + Math.PI));
-	}	
+	}
 	
 	public Direction getHeadingDirection() {
 		final double w = getWorld().getWidth();
@@ -129,6 +129,10 @@ public class Turtle extends Entity {
 				return Direction.WEST;
 			}
 		}
+	}
+	public void circle(double radius) {
+		if (penDown)
+			getWorld().addCircle(x, y, radius, color);
 	}
 	
 	public void moveTo(double newX, double newY) {
@@ -407,6 +411,7 @@ public class Turtle extends Entity {
 	public void recule(double steps) { backward(steps); }
 	public void gauche(double angle) { left(angle); }
 	public void droite(double angle) { right(angle); }
+	public void cercle(double radius){ circle(radius); }
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
 	public void allerVers(double x, double y) {moveTo(x,y);}
 	public double getCap()           { return getHeading(); }
