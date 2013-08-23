@@ -39,7 +39,7 @@ public abstract class Lesson {
 		id = id.replaceAll("^lessons.", "");
 		
 		try {
-			loadExercises(); /* FIXME: remove this line when session savers can deal with laziness */
+			loadExercises();
 		} catch (IOException e) {
 			System.err.println("Cannot load the exercises. This lesson is severely broken..");
 			e.printStackTrace();
@@ -146,7 +146,7 @@ public abstract class Lesson {
 		this.currentExercise = exo;
 	}
 	public void setCurrentExercise(String exoName) {
-		this.currentExercise = getExercise(exoName);
+		setCurrentExercise(getExercise(exoName));
 	}
 	
 	public int exerciseCount() {
@@ -160,7 +160,9 @@ public abstract class Lesson {
 		String searchedName = getClass().getPackage().getName()+"."+name;
 		for (Lecture l: lectures) {
 			if (l.getClass().getCanonicalName().equals(searchedName) ||
-					l.getClass().getCanonicalName().equals(name))
+					l.getClass().getCanonicalName().equals(name)||
+					l.getId().equals(searchedName) || l.getId().equals(name)||
+					l.getLocalId().equals(searchedName) || l.getLocalId().equals(name))
 				return l;
 		}
 		return null;
