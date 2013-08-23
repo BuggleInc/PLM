@@ -7,6 +7,8 @@ public class SquareEntity extends Turtle {
 	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
+        addSizeHint(90,100, 90,200);
+
 		for (int i = 0; i < 4; i++) {
 			square();
 			right(90);
