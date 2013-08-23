@@ -6,9 +6,9 @@ import jlm.universe.World;
 import jlm.universe.turtles.Turtle;
 import jlm.universe.turtles.TurtleWorld;
 
-public class Square extends ExerciseTemplated {
+public class FourSquare extends ExerciseTemplated {
 
-	public Square(Lesson lesson) {
+	public FourSquare(Lesson lesson) {
 		super(lesson);
 
 		/* Create initial situation */

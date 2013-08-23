@@ -2,20 +2,18 @@ package lessons.recursion.square;
 
 import jlm.universe.turtles.Turtle;
 
-public class SquareEntity extends Turtle {
+class ScalaFourSquareEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void run() {
+	override def run() {
 		/* BEGIN SOLUTION */
-        addSizeHint(90,100, 90,200);
-
-		for (int i = 0; i < 4; i++) {
+		for (i <- 1 to 4) {
 			square();
 			right(90);
 		}
 	}
-	public void square() {
-		for (int i = 0; i < 4; i++) {
+	def square() {
+		for (i <- 1 to 4) {
 			forward(100);
 			right(90);
 		}
