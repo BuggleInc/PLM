@@ -17,6 +17,8 @@ public class Turtle extends Entity {
 	private double x = 0.;
 	private double y = 0.;
 
+	protected double startX,startY;
+	
 	private double heading = 0.;
 	private boolean penDown = true;
 	private int angularUnit = Turtle.DEGREE;
@@ -28,11 +30,11 @@ public class Turtle extends Entity {
 	 * used ASAP.
 	 */
 	public Turtle() {
-		this(null, "John Doe", 0., 0., 0., Color.red);
+		this(null, "John Doe", 0., 0., 0., Color.black);
 	}
 
 	public Turtle(World w) {
-		this(w, "John Doe", 0., 0., 0., Color.red);
+		this(w, "John Doe", 0., 0., 0., Color.black);
 	}
 
 	public Turtle(World w, String name) {
@@ -40,7 +42,7 @@ public class Turtle extends Entity {
 	}
 
 	public Turtle(World w, String name, double x, double y) {
-		this(w, name, x, y, 0., Color.red);
+		this(w, name, x, y, 0., Color.black);
 	}
 
 	public Turtle(World world, String name, double x, double y, double heading, Color c) {
@@ -48,6 +50,8 @@ public class Turtle extends Entity {
 		this.color = c;
 		this.x = x;
 		this.y = y;
+		this.startX = x;
+		this.startY = y;
 		this.heading = heading;
 		setHeading(heading);
 	}
@@ -59,8 +63,9 @@ public class Turtle extends Entity {
 		this.color = t.color;
 		this.x = t.x;
 		this.y = t.y;
+		this.startX = t.startX;
+		this.startY = t.startY;
 		this.heading = t.heading;
-		//this.angularUnit = t.angularUnit;
 		this.penDown = t.penDown;
 	}
 
@@ -71,8 +76,9 @@ public class Turtle extends Entity {
 		this.color = other.color;
 		this.x = other.x;
 		this.y = other.y;
+		this.startX = other.startX;
+		this.startY = other.startY;
 		this.heading = other.heading;
-		//this.angularUnit = other.angularUnit;
 		this.penDown = other.penDown;
 	}
 
@@ -95,7 +101,7 @@ public class Turtle extends Entity {
 		final double angleHeading = 2*Math.PI - this.heading;
 		
 		if (this.heading >=0 && this.heading < Math.PI) {
-			// bottom semi-circle
+			// bottom half-circle
 			final double tangenteAngleToBottomLeftCorner = (this.x>EPSILON)?((h-this.y) / this.x):Double.POSITIVE_INFINITY;
 			final double angleToBottomLeftCorner = Math.PI+Math.atan(tangenteAngleToBottomLeftCorner);
 			final double tangenteAngleToBottomRightCorner = ((w-this.x)>EPSILON)?((h-this.y) / (w-this.x)):Double.POSITIVE_INFINITY;
@@ -109,7 +115,7 @@ public class Turtle extends Entity {
 				return Direction.EAST;
 			}
 		} else {
-			// bottom semi-circle			
+			// bottom half-circle			
 			final double tangenteAngleToTopRightCorner = ((w-this.x)>EPSILON)?((this.y) / (w-this.x)):Double.POSITIVE_INFINITY;
 			final double angleToTopRightCorner = Math.atan(tangenteAngleToTopRightCorner);
 			final double tangenteAngleToTopLeftCorner = (this.x>EPSILON)?(this.y / this.x):Double.POSITIVE_INFINITY;
@@ -340,6 +346,13 @@ public class Turtle extends Entity {
 
 	public void setPos(int x, double y) {
 		setPos((double) x, (double) y);
+	}
+	
+	public void addSizeHint(int x1, int y1, int x2, int y2,String txt){
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,txt);
+	}
+	public void addSizeHint(int x1, int y1, int x2, int y2){
+		((TurtleWorld) world).addSizeHint(x1,y1,x2,y2,null);
 	}
 	
 	@Override

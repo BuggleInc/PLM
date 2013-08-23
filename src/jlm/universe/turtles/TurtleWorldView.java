@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 
+import jlm.core.model.Game;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
 import jlm.universe.Entity;
@@ -41,6 +42,18 @@ public class TurtleWorldView extends WorldView {
 			Iterator<Line> it2 = ((TurtleWorld) world).shapes();
 			while (it2.hasNext())
 				it2.next().draw(g2);			
+		}
+		if (world.isAnswerWorld() || Game.getInstance().isDebugEnabled()) {
+			for (Entity e: world.getEntities()) {
+				Turtle t = (Turtle) e;
+				g2.setColor(SizeHint.color);
+				g2.fillOval((int)(t.startX-5), (int)(t.startY-5), 10, 10);
+			}
+				
+			synchronized (((TurtleWorld) world).sizeHints) {
+				for (SizeHint indic : ((TurtleWorld) world).sizeHints)
+					indic.draw(g2);			
+			}
 		}
 		for (Entity ent : world.getEntities())
 			drawTurtle(g2, (Turtle)ent);

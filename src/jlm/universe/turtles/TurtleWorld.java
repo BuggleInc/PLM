@@ -14,12 +14,14 @@ import jlm.core.model.Game;
 import jlm.core.model.ProgrammingLanguage;
 import jlm.core.ui.ResourcesCache;
 import jlm.core.ui.WorldView;
+import jlm.universe.Entity;
 import jlm.universe.EntityControlPanel;
 import jlm.universe.World;
 
 public class TurtleWorld extends World {
 
-	ArrayList<Line> shapes = new ArrayList<Line>(); 
+	ArrayList<Line> shapes = new ArrayList<Line>();
+	ArrayList<SizeHint> sizeHints = new ArrayList<SizeHint>();
 
 	private double width;
 	private double height;
@@ -34,8 +36,16 @@ public class TurtleWorld extends World {
 		this.height = height;
 	}
 	
-	public TurtleWorld(TurtleWorld world2) {
-		super(world2);
+	public TurtleWorld(TurtleWorld original) {
+		super(original);
+		sizeHints = new ArrayList<SizeHint>();
+		for (SizeHint sh :original.sizeHints)
+			sizeHints.add(sh);
+		for (Entity e: getEntities()){
+			Turtle t = (Turtle) e;
+			t.startX = t.getX();
+			t.startY = t.getY();
+		}
 	}
 
 	@Override
@@ -49,14 +59,25 @@ public class TurtleWorld extends World {
 		while (it.hasNext()) 
 			shapes.add(it.next().copy());
 		
+		sizeHints = new ArrayList<SizeHint>();
+		for (SizeHint sh : initialWorld.sizeHints)
+			sizeHints.add(sh);
+		
 		super.reset(w);		
 	}
 	
+	public void addSizeHint(int x1, int y1, int x2, int y2) {
+		addSizeHint(x1, y1, x2, y2, null);
+	}
+	public void addSizeHint(int x1, int y1, int x2, int y2, String text) {
+		synchronized (sizeHints) {
+			sizeHints.add(new SizeHint(x1, y1, x2, y2, text));
+			notifyWorldUpdatesListeners();
+		}
+	}
 	public void addLine(double x, double y, double newX, double newY, Color color) {
 		synchronized (shapes) {
-			//ShapeLine line =new ShapeLine(width/2+x,height/2+y,width/2+newX,height/2+newY,color); 
-			Line line =new Line(x,y,newX,newY,color); 
-			shapes.add(line);
+			shapes.add(new Line(x,y,newX,newY,color));
 			notifyWorldUpdatesListeners();
 		}
 	}
