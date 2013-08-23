@@ -27,13 +27,16 @@ public class TurtleWorldView extends WorldView {
 	
 	@Override
 	public void paintComponent(Graphics g) {
+		doPaint(g,getWidth(),getHeight(),true);
+	}
+	public void doPaint(Graphics g, int sizeX, int sizeY, boolean showTurtle) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D) g;
 		
 		TurtleWorld tw = (TurtleWorld) this.world;
 		
-		double ratio = Math.min(((double) getWidth())/tw.getWidth(), ((double)getHeight())/tw.getHeight());
-		g2.translate(Math.abs((getWidth()-ratio*tw.getWidth())/2.), Math.abs((getHeight()-ratio*tw.getHeight())/2.));
+		double ratio = Math.min(((double) sizeX)/tw.getWidth(), ((double)sizeY)/tw.getHeight());
+		g2.translate(Math.abs((sizeX-ratio*tw.getWidth())/2.), Math.abs((sizeY-ratio*tw.getHeight())/2.));
 		g2.scale(ratio, ratio);
 
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -67,8 +70,9 @@ public class TurtleWorldView extends WorldView {
 					indic.draw(g2);			
 			}
 		}
-		for (Entity ent : world.getEntities())
-			drawTurtle(g2, (Turtle)ent);
+		if (showTurtle)
+			for (Entity ent : world.getEntities())
+				drawTurtle(g2, (Turtle)ent);
 		
 		
 		synchronized (((TurtleWorld) world).shapes) {
