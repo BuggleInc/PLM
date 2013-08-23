@@ -64,10 +64,10 @@ public class ChooseLessonDialog extends JFrame {
 		LessonOverview overview = new LessonOverview(this);
 		
 		LessonMatrix matrix = new LessonMatrix(overview, new String[][] { // WARNING, keep ExoTest.lessons synchronized
-				{"lessons/welcome","lessons/maze","lessons/turmites", "lessons/bat/string1"},
+				{"lessons/welcome", "lessons/maze", "lessons/turmites", "lessons/turtleart"},
 				{"lessons/sort", "lessons/sort/baseball", "lessons/sort/pancake"},
 				{"lessons/recursion", "lessons/recursion/hanoi" },
-				{"lessons/lightbot" },
+				{"lessons/lightbot", "lessons/bat/string1" },
 		    }); 
 	
 
