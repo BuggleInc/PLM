@@ -14,7 +14,19 @@ public class Main extends Lesson {
 	@Override
 	protected void loadExercises() throws IOException, BrokenWorldFileException {
 		System.out.println("Load lesson turtleart");
-		addExercise(new TurtleGraphicalExercise(this,"Square", 400,400,200,200));
+		addExercise(new TurtleGraphicalExercise(this,"Square",       300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"SmallSquare",  300,300, 50,150));
+		addExercise(new TurtleGraphicalExercise(this,"Stairs",       300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"TriangleFlat", 300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"Triangle",     300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"House",        300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"HouseThree",   300,300, 50,150));
+		addExercise(new TurtleGraphicalExercise(this,"HouseMany",    300,300, 50,250));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon6",     300,300, 81,190));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon7",     300,300, 65,190));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon15",    300,300, 55,165));
+		addExercise(new TurtleGraphicalExercise(this,"Polygon360",   300,300, 35,149));
+		addExercise(new TurtleGraphicalExercise(this,"CircleTwo",    300,300, 35,149));
 	}
 
 	
@@ -31,7 +43,8 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 		tabName = "Source";
 		nameOfCorrectionEntity = lesson.getClass().getName().replace(".Main","")+"."+name+"Entity";
 		World myWorld = new TurtleWorld("WhiteBoard", worldWidth, worldHeight);
-		new Turtle(myWorld, "Hawksbill", tx, ty);
+		Turtle t = new Turtle(myWorld, "Hawksbill", tx, ty);
+		t.setHeading(-90);
 		System.err.println("correctionEntitiy: "+nameOfCorrectionEntity);
 		setup(myWorld);
 	}

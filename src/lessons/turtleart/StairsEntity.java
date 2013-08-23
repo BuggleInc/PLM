@@ -2,17 +2,18 @@ package lessons.turtleart;
 
 import jlm.universe.turtles.Turtle;
 
-public class SquareEntity extends Turtle {
+public class StairsEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
-        addSizeHint(35,50, 35,250);
-        addSizeHint(250,35, 50,35);
+        addSizeHint(50,170, 85,170);
 
-        for (int i = 0; i < 4; i++) {
-        	forward(200);
+        for (int i = 0; i < 6; i++) {
+        	forward(35);
         	right(90);
+            forward(35);
+            left(90);
         }
 		/* END SOLUTION */
 	}
