@@ -245,9 +245,7 @@ public class SortingWorld extends World {
 		this.writeCount = world.writeCount;
 		this.operations = new ArrayList<Operation>(1);
 		for ( Operation o: world.operations)
-		{
 			this.operations.add(o);
-		}
 	}
 
 	/**
