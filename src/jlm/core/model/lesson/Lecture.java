@@ -19,7 +19,7 @@ import jlm.core.utils.FileUtils;
  * an exercise. A better name would be useful, but I feel limited in 
  * English today. Sorry. */
 public abstract class Lecture {
-	private String base_id; // lecture's identifier WITHIN THE LESSON 
+	private String localId; // lecture's identifier WITHIN THE LESSON 
 	private String id; // global lecture's identifier 
 	
 	public static final String HTMLTipHeader = "<head>\n"+
@@ -49,8 +49,8 @@ public abstract class Lecture {
 	
 	public Lecture(Lesson lesson,String basename) {
 		this.lesson = lesson;
-		base_id = (basename!=null?basename:getClass().getName());
-		id = lesson.getId()+"."+ base_id;
+		localId = (basename!=null?basename:getClass().getName());
+		id = lesson.getId()+"."+ getLocalId();
 		loadHTMLMission();
 	}
 	public String getId() {
@@ -81,7 +81,7 @@ public abstract class Lecture {
 	}
 
 	public void loadHTMLMission() {
-		String filename = base_id.replace('.',File.separatorChar);
+		String filename = getLocalId().replace('.',File.separatorChar);
 	
 		StringBuffer sb = null;
 		try {
@@ -131,5 +131,8 @@ public abstract class Lecture {
 	}
 	public Vector<Lecture> getDependingLectures() {
 		return dependingLectures;
+	}
+	public String getLocalId() {
+		return localId;
 	}
 }
