@@ -429,8 +429,8 @@ public abstract class ExerciseTemplated extends Exercise {
 				Game.getInstance().statusArgRemove(getClass().getSimpleName());
 			}
 		};
-		t.start();
 		Game.addInitThread(t);
+		t.start();
 	}
 
 	@Override
