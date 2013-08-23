@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-20 22:41+0300\n"
+"POT-Creation-Date: 2013-08-23 23:07+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -503,102 +503,113 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:33
 #, no-wrap
-msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+msgid "[!java]void [/!]circle([!java]double [/!]radius[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:34
-msgid "Returns the current heading of the turtle (in degrees)."
+msgid "Draw a circle of the specified radius centered on the turtle."
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/jlm/universe/turtles/TurtleWorld.html:36
 #, no-wrap
-msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/jlm/universe/turtles/TurtleWorld.html:37
+msgid "Returns the current heading of the turtle (in degrees)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/jlm/universe/turtles/TurtleWorld.html:39
+#, no-wrap
+msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/jlm/universe/turtles/TurtleWorld.html:40
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:39
+#: src/jlm/universe/turtles/TurtleWorld.html:42
 msgid "Functions about the pen"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:41
+#: src/jlm/universe/turtles/TurtleWorld.html:44
 #, no-wrap
 msgid "[!java]void [/!]penUp()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:42
+#: src/jlm/universe/turtles/TurtleWorld.html:45
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:45
+#: src/jlm/universe/turtles/TurtleWorld.html:48
 #, no-wrap
 msgid "[!java]void [/!]penDown()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:46
+#: src/jlm/universe/turtles/TurtleWorld.html:49
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:48
+#: src/jlm/universe/turtles/TurtleWorld.html:51
 #, no-wrap
 msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:49
+#: src/jlm/universe/turtles/TurtleWorld.html:52
 msgid "Returns the current pen position as a boolean."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/turtles/TurtleWorld.html:51 src/jlm/universe/bugglequest/BuggleWorld.html:25
+#: src/jlm/universe/turtles/TurtleWorld.html:54 src/jlm/universe/bugglequest/BuggleWorld.html:25
 #, no-wrap
 msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:52
+#: src/jlm/universe/turtles/TurtleWorld.html:55
 msgid "Returns the current pen color."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:54
+#: src/jlm/universe/turtles/TurtleWorld.html:57
 #, no-wrap
 msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:55
+#: src/jlm/universe/turtles/TurtleWorld.html:58
 msgid "Changes the pen color."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:57
+#: src/jlm/universe/turtles/TurtleWorld.html:60
 msgid "Other functions"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:59 src/jlm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#: src/jlm/universe/turtles/TurtleWorld.html:62 src/jlm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:60
+#: src/jlm/universe/turtles/TurtleWorld.html:63
 msgid "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
 
@@ -1636,7 +1647,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:34 src/lessons/recursion/square/Square.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:34 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
 msgid "[/!]"
 msgstr ""
 
@@ -2217,7 +2228,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:28 src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/methods/args/MethodsArgs.html:34 src/lessons/welcome/methods/picture/MethodsPicture.html:34 src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3 src/lessons/recursion/square/Square.html:27
+#: src/lessons/welcome/variables/Variables.html:28 src/lessons/welcome/variables/Variables.html:40 src/lessons/welcome/methods/args/MethodsArgs.html:34 src/lessons/welcome/methods/picture/MethodsPicture.html:34 src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3 src/lessons/recursion/square/FourSquare.html:27
 msgid "[!java|scala]"
 msgstr ""
 
@@ -6172,12 +6183,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/square/Square.html:1
+#: src/lessons/recursion/square/FourSquare.html:1
 msgid "The small cousines of Buggles"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/Square.html:3
+#: src/lessons/recursion/square/FourSquare.html:3
 msgid ""
 "Today, we will meet the small cousines of the buggles: the turtles. In fact, "
 "turtles are much olders than the buggles. They were invented in the 70's by "
@@ -6187,7 +6198,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/Square.html:9
+#: src/lessons/recursion/square/FourSquare.html:9
 msgid ""
 "Turtles are thus a bit like buggles, but smaller. Just like buggles, you can "
 "order them to move forward, to turn, to move backward, etc. Just like "
@@ -6196,7 +6207,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/Square.html:14
+#: src/lessons/recursion/square/FourSquare.html:14
 msgid ""
 "The main difference is that where buggles can only move of right angles, "
 "turtles can move of any arbitrary angles specified by a real number (a "
@@ -6207,7 +6218,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/Square.html:21
+#: src/lessons/recursion/square/FourSquare.html:21
 msgid ""
 "From a practical point of view, most of the methods you knew about buggles "
 "still work with turtles, with some minor adaptations. In particular, the "
@@ -6217,17 +6228,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/square/Square.html:28
+#: src/lessons/recursion/square/FourSquare.html:28
 msgid "Doubles? But what is it?"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/square/Square.html:29
+#: src/lessons/recursion/square/FourSquare.html:29
 msgid "It's simply a point number. Example:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/square/Square.html:31
+#: src/lessons/recursion/square/FourSquare.html:31
 #, no-wrap
 msgid ""
 "double x = 3.72;\n"
@@ -6250,12 +6261,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><h2>
-#: src/lessons/recursion/square/Square.html:47 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array1.html:229
+#: src/lessons/recursion/square/FourSquare.html:47 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array1.html:229
 msgid "Goal of this exercise"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/Square.html:48
+#: src/lessons/recursion/square/FourSquare.html:48
 msgid ""
 "Even if this is the first exercise on the recursivity lesson, the code you "
 "have to write is not recursive. The goal is to get familiar with the turtle "
@@ -6263,7 +6274,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/square/Square.html:52
+#: src/lessons/recursion/square/FourSquare.html:52
 msgid ""
 "You must reproduce a simple geometrical painting constituted of four 100 "
 "steps long squares (see the objective world for more details). It is "
