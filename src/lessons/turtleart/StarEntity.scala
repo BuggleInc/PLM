@@ -1,0 +1,25 @@
+package lessons.turtleart;
+
+import jlm.universe.turtles.Turtle;
+
+class ScalaStarEntity extends Turtle {
+
+	/* BEGIN TEMPLATE */
+	override def run() {
+		/* BEGIN SOLUTION */
+		for (i <- 1 to BRANCH_COUNT) 
+			branch(50);
+		
+	}
+	val BRANCH_COUNT = 5;
+	def branch(size:Int) {
+		forward(size);
+		right(360 / BRANCH_COUNT);
+		forward(size);
+
+		for (i <- 1 to 2)
+			left(360 / BRANCH_COUNT);
+		/* END SOLUTION */
+	}
+	/* END TEMPLATE */
+}
