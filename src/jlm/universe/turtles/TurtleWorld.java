@@ -181,6 +181,10 @@ public class TurtleWorld extends World {
 					"  entity.getY()\n" +
 					"def moveTo(x,y):\n" +
 					"  entity.moveTo(x,y)\n"+
+					"def addSizeHint(x,y,z,t):\n"+
+					"  entity.addSizeHint(x,y,z,t)\n"+
+					"def circle(radius):\n"+
+					"  entity.circle(radius)\n"+
 					/* BINDINGS TRANSLATION: French */
 					"def recule(i):\n"+
 					"  entity.backward(i)\n"+
@@ -199,7 +203,9 @@ public class TurtleWorld extends World {
 					"def setCouleur(c):\n"+
 					"  entity.setColor(c)\n" +
 					"def allerVers(x,y):\n" +
-					"  entity.moveTo(x,y)\n"
+					"  entity.moveTo(x,y)\n"+
+					"def cercle(radius):\n"+
+					"  entity.circle(radius)\n"
 					);
 		} else {
 			throw new RuntimeException("No binding of TurtleWorld for "+lang);
