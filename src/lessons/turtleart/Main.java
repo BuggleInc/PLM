@@ -123,7 +123,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 				ResourcesCache.setIcon(path,new ImageIcon(bImg));
 			}
 			    
-			String lessonPart = getLesson().getName().replace("/",".").replace(".Main","");
+			String lessonPart = "lessons."+getLesson().getId().replace("/",".").replace(".Main","");
 			String exoPart = exo.getLocalId(); 
 			res.append("<a href=\"jlm://"+lessonPart+"/"+exoPart+"\">");
 			res.append("<img src=\"");
