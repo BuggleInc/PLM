@@ -102,10 +102,13 @@ public class ZipSessionKit implements ISessionKit {
 		
 		// get the zip content
 		String content = null;
+		File file = new File(path, "overview.zip");
+		if (!file.exists())
+			return;
 		ZipFile zf = null;
 		BufferedReader br = null;
 		try {
-			zf = new ZipFile(new File(path, "overview.zip"));
+			zf = new ZipFile(file);
 			ZipEntry entry = zf.getEntry("passed");
 			if (entry == null) 
 				return;
