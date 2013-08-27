@@ -74,8 +74,7 @@ public class FeedbackDialog extends JDialog {
 		explain.setEditable(false);
 		add(explain, BorderLayout.NORTH);
 		
-		final JEditorPane feedback = new JEditorPane("text/plain",
-				i18n.tr("(your feedback comes here)"));
+		final JEditorPane feedback = new JEditorPane();
 		
 		feedback.setBackground(Color.white);
 		feedback.setOpaque(true);
@@ -85,6 +84,8 @@ public class FeedbackDialog extends JDialog {
 		jsp.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		add(jsp,BorderLayout.CENTER);
 		
+		feedback.setContentType("text/plain");
+		feedback.setText(i18n.tr("(your feedback comes here)"));
 		
 		final JButton cancelBtn = new JButton(i18n.tr("Cancel"));
 		cancelBtn.addActionListener(new ActionListener() {
