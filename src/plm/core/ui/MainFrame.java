@@ -87,7 +87,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 	private JSplitPane mainPanel;
 	
-	private static final String frameTitle = "Java Learning Machine";
+	private static final String frameTitle = "Programmer's Learning Machine";
 
 	private MainFrame() {
 		super(frameTitle);
