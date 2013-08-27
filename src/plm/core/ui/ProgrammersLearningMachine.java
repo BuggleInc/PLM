@@ -6,7 +6,7 @@ import plm.core.model.Game;
 import plm.core.utils.FileUtils;
 
 
-public class JavaLearningMachine {
+public class ProgrammersLearningMachine {
 	
 	public static void main(String args[]) {
 		
