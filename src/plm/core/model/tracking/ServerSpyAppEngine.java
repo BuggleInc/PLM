@@ -50,7 +50,7 @@ public class ServerSpyAppEngine extends ServerSpy {
             br.close();
 
         } catch (IOException e) {
-            System.out.println("Unable to contact JLMServer to send request " + request);
+            System.out.println("Unable to contact PLMServer to send request " + request);
         }
 
         return response;

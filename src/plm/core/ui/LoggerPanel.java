@@ -21,7 +21,7 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
 
 	private static final long serialVersionUID = 468774822833769775L;
 	
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 
 	public LoggerPanel(Game game) {
@@ -53,7 +53,7 @@ public class LoggerPanel extends JTextArea implements LogWriter, HumanLangChange
 			Matcher isJava6Matcher = isJava6Pattern.matcher(msg);
 			if (isJava6Matcher.find()) {
 				if (!warnedJava6 && Game.getInstance().isDebugEnabled())
-					append("You are using a JLM jarfile that was compiled for Java 6, but you have a Java 7 runtime. This is *believed* to work.\n");
+					append("You are using a PLM jarfile that was compiled for Java 6, but you have a Java 7 runtime. This is believed to work.\n");
 				warnedJava6 = true;
 			} else {
 				append(source+":"+diagnostic.getLineNumber()+":"+ msg+"\n");

@@ -38,7 +38,7 @@ public class TeacherConsoleDialog extends JDialog {
     private ResultsPanel goodPanel;
 
     public TeacherConsoleDialog() {
-        super(MainFrame.getInstance(), "JLM Teacher Console", false);
+        super(MainFrame.getInstance(), "PLM Teacher Console", false);
 
         Game game = Game.getInstance();
         Course course = game.getCurrentCourse();

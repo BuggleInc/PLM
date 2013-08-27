@@ -13,7 +13,7 @@ import javax.tools.JavaFileObject;
  * 
  * @author <a href="mailto:David.Biesack@sas.com">David J. Biesack</a>
  */
-public class JLMCompilerException extends Exception {
+public class PLMCompilerException extends Exception {
 	   private static final long serialVersionUID = 1L;
 	   /**
 	    * The fully qualified name of the class that was being compiled.
@@ -23,7 +23,7 @@ public class JLMCompilerException extends Exception {
 	   // serialize the collector.
 	   transient private DiagnosticCollector<JavaFileObject> diagnostics;
 
-	   public JLMCompilerException(String message,
+	   public PLMCompilerException(String message,
 	         Set<String> qualifiedClassNames, Throwable cause,
 	         DiagnosticCollector<JavaFileObject> diagnostics) {
 	      super(message, cause);
@@ -31,7 +31,7 @@ public class JLMCompilerException extends Exception {
 	      setDiagnostics(diagnostics);
 	   }
 
-	   public JLMCompilerException(String message,
+	   public PLMCompilerException(String message,
 	         Set<String> qualifiedClassNames,
 	         DiagnosticCollector<JavaFileObject> diagnostics) {
 	      super(message);
@@ -39,7 +39,7 @@ public class JLMCompilerException extends Exception {
 	      setDiagnostics(diagnostics);
 	   }
 
-	   public JLMCompilerException(Set<String> qualifiedClassNames,
+	   public PLMCompilerException(Set<String> qualifiedClassNames,
 	         Throwable cause, DiagnosticCollector<JavaFileObject> diagnostics) {
 	      super(cause);
 	      setClassNames(qualifiedClassNames);

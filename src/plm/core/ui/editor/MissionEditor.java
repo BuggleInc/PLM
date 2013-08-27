@@ -31,14 +31,14 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
-import plm.core.ui.JlmHtmlEditorKit;
+import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
-import plm.core.utils.JlmSyntaxPane;
+import plm.core.utils.PlmSyntaxPane;
 
 public class MissionEditor extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private JEditorPane display = new JEditorPane("text/html", "");
 	private JEditorPane editor;
@@ -46,8 +46,8 @@ public class MissionEditor extends JFrame {
 	private String lastPathSelected;
 	private boolean modified = false;
 	
-	private String TITLE_MODIFIED = i18n.tr("JLM - Mission Editor (modified)");
-	private String TITLE_NOT_MODIFIED = i18n.tr("JLM - Mission Editor");
+	private String TITLE_MODIFIED = i18n.tr("PLM - Mission Editor (modified)");
+	private String TITLE_NOT_MODIFIED = i18n.tr("PLM - Mission Editor");
 	
 	public MissionEditor() {
 		super();
@@ -63,7 +63,7 @@ public class MissionEditor extends JFrame {
 	    });
 		setSize(1200, 800);
 		Game.getInstance();
-		JlmSyntaxPane.initKits();
+		PlmSyntaxPane.initKits();
 		initComponents();
 		setVisible(true);
 	}
@@ -119,7 +119,7 @@ public class MissionEditor extends JFrame {
 		editor.setContentType("text/xhtml");
 		editor.setEditable(true);
 		
-		display.setEditorKit(new JlmHtmlEditorKit());
+		display.setEditorKit(new PlmHtmlEditorKit());
 		display.setEditable(false);
 		editor.getDocument().addDocumentListener(new DocumentListener() {
 			private void updateHTML() {
@@ -127,8 +127,8 @@ public class MissionEditor extends JFrame {
 					setTitle(TITLE_MODIFIED);
 					modified = true;
 				}
-				String ctn = "<html><head>"+JlmHtmlEditorKit.getCSS()+"</head><body>"+
-						JlmHtmlEditorKit.filterHTML(editor.getText(),true)+
+				String ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
+						PlmHtmlEditorKit.filterHTML(editor.getText(),true)+
 						"</body></html>";
 				display.setText(ctn);
 				javax.swing.text.Document doc = display.getDocument();
@@ -323,7 +323,7 @@ public class MissionEditor extends JFrame {
 					if (path.endsWith("."+lang[1]+".html")) { 
 						int choice = JOptionPane.showConfirmDialog(MissionEditor.this, 
 								Game.i18n.tr("You chose a translated mission text for edition ({0}).\n"
-										+ "This is wrong. The translations should be handled with po4a in JLM.\n"
+										+ "This is wrong. The translations should be handled with po4a in PLM.\n"
 										+ "Please refer to https://github.com/oster/JLM/wiki/Working-with-the-translations for more information.\n\n"
 										+ "Proceed anyway?",path), 
 										Game.i18n.tr("This is a translated mission text"),

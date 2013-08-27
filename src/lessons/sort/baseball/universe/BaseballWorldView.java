@@ -650,7 +650,7 @@ class BaseballViewActionListener implements ActionListener, HumanLangChangesList
 
 	@Override
 	public void currentHumanLanguageHasChanged(Locale newLang) {
-		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", newLang, I18nFactory.FALLBACK);
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", newLang, I18nFactory.FALLBACK);
 		if (view.isUseStateView()) {
 			item.setText(i18n.tr("Switch to time view"));
 		} else {

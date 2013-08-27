@@ -25,7 +25,7 @@ public class SortingWorld extends World {
 	 */
 	private ArrayList<Operation> operations = new ArrayList<Operation>(1) ;	
 
-	/** Copy constructor used by the JLM internals */
+	/** Copy constructor used by the PLM internals */
 	public SortingWorld(SortingWorld world) {
 		super(world);
 	}

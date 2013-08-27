@@ -28,7 +28,7 @@ import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.Lecture;
 
 
-public class JlmHtmlEditorKit extends HTMLEditorKit {
+public class PlmHtmlEditorKit extends HTMLEditorKit {
 	private static final long serialVersionUID = 1L;
 
 	private static Map<String,String> langColors = null;
@@ -48,7 +48,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	 * 
 	 * Other automagic conversions:
 	 *  [!thelang] displays the name of the current programming language.
-	 *  [!configfile] displays where the JLM config file is stored on disk.
+	 *  [!configfile] displays where the PLM config file is stored on disk.
 	 * 
 	 */
 	public static String filterHTML(String in, boolean showAll) {
@@ -67,7 +67,7 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 		}
 		
 		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!]");
-		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"jlm.properties");
+		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"plm.properties");
 		
 		/* Display everything when in debug mode, with shiny colors */
 		if (showAll) {
@@ -164,11 +164,11 @@ public class JlmHtmlEditorKit extends HTMLEditorKit {
 	}
 
 	protected static Lecture baseExercise = null;
-	public JlmHtmlEditorKit() {
+	public PlmHtmlEditorKit() {
 		baseExercise = null;
 	}
 
-	public JlmHtmlEditorKit(Lecture _baseExercise) {
+	public PlmHtmlEditorKit(Lecture _baseExercise) {
 		baseExercise = _baseExercise;
 	}
 

@@ -42,7 +42,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 
 	private Timer busyIconTimer;
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	public StatusBar(Game game) {
 		super();

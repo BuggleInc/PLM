@@ -1,9 +1,9 @@
 package plm.universe.bugglequest.exception;
 
-import plm.core.JLMException;
+import plm.core.PLMException;
 
 
-public class AlreadyHaveBaggleException extends JLMException {
+public class AlreadyHaveBaggleException extends PLMException {
 
 	private static final long serialVersionUID = -4857249506281940595L;
 

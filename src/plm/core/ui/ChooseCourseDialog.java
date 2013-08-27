@@ -48,7 +48,7 @@ public class ChooseCourseDialog extends JDialog {
 
 
     public ChooseCourseDialog() {
-        super(MainFrame.getInstance(), "JLM Course", false);
+        super(MainFrame.getInstance(), "PLM Course", false);
         isChoosen = false;
 
         initComponent(this.getContentPane());
@@ -140,7 +140,7 @@ public class ChooseCourseDialog extends JDialog {
         passwordsPanel.add(passwordPanel, BorderLayout.NORTH);
         
         	//Teacher password field
-        if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
+        if(Game.getProperty("plm.configuration.teacher").equals("true")) {
             JLabel teacherPasswordLabel = new JLabel("Teacher password: ");
             teacherPasswordField = new JPasswordField(10);
             teacherPasswordField.addKeyListener(new KeyAdapter() {

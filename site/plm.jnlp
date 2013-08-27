@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jnlp codebase="http://www.loria.fr/~oster/jlm/" href="jlm.jnlp">
+<jnlp codebase="http://www.loria.fr/~oster/plm/" href="plm.jnlp">
 	<information>
 		<title>Java Learning Machine</title>
-		<homepage href="http://www.assembla.com/spaces/JLM"/>
-		<description>Java Learning Machine (JLM) - a learning platform dedicated to Java and other programming concepts</description>
+		<homepage href="http://www.github.com/oster/JLM"/>
+		<description>Programmer's Learning Machine (PLM) - a learning platform dedicated to programming concepts</description>
 		<vendor>ESIAL / Nancy-Université</vendor>
-		<!-- <icon href="jlm.png"/> -->
+		<!-- <icon href="plm.png"/> -->
 		<icon kind="splash" href="splash.png"/>
 		<offline-allowed/>
 	</information>
@@ -14,7 +14,7 @@
 	</security>
 	<resources>
 		<j2se href="http://java.sun.com/products/autodl/j2se" version="1.6+" max-heap-size="128m"/>
-		<jar href="lib/jlm-webstart.jar"/>
+		<jar href="lib/plm-webstart.jar"/>
 		<jar href="lib/twitter4j-core-2.1.4-SNAPSHOT.jar"/>
 		<jar href="lib/jsyntaxpane-0.9.4.jar"/>
 		<jar href="lib/simple-xml-1.7.2.jar"/>
@@ -49,7 +49,7 @@
 		
 		<property name="twitter4j.loggerFactory" value="twitter4j.internal.logging.NullLoggerFactory"/>
 	</resources>
-	<application-desc main-class="jlm.core.ui.JavaLearningMachine"/>
+	<application-desc main-class="plm.core.ui.JavaLearningMachine"/>
 </jnlp>
 
 

@@ -46,7 +46,7 @@ public class ExerciseView extends JPanel implements GameListener {
 	private JPanel controlPane;
 	private JSlider speedSlider;
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	public ExerciseView(Game game) {
 		super();

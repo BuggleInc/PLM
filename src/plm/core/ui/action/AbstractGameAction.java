@@ -28,7 +28,7 @@ public abstract class AbstractGameAction extends AbstractAction {
 	public AbstractGameAction(Game game, String text, ImageIcon icon) {
 		super(text, icon);
 		this.game = game;
-		this.i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",game.getLocale(), I18nFactory.FALLBACK);
+		this.i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",game.getLocale(), I18nFactory.FALLBACK);
 
 	}
 	

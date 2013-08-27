@@ -15,7 +15,7 @@ import plm.core.model.lesson.ExerciseTemplated;
 /** This class is in charge of loading the resources from disk into memory
  * 
  * 	It solves 2 main difficulties. The first one is to find the files in any case, be 
- *  them in the distributed jar file, or on the disk (as it happens when we develop JLM: 
+ *  them in the distributed jar file, or on the disk (as it happens when we develop PLM: 
  *  we don't build a jar for each run, we directly from our source tree). It also deals 
  *  with the windows/unix incompatibilities about directory separators (/ or \).
  * 

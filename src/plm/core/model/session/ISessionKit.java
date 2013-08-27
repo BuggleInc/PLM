@@ -9,7 +9,7 @@ import plm.core.model.lesson.Lesson;
  * This interface is to be implemented by every session kits, aka mecanisms able to 
  * save and restore the state of the code written by the students. 
  * 
- * For now, 2 sessions kits are implemented in JLM: {@link FileSessionKit} and {@link ZipSessionKit}. 
+ * For now, 2 sessions kits are implemented in PLM: {@link FileSessionKit} and {@link ZipSessionKit}. 
  * The one used is hardcoded in the variable {@link plm.core.model.Game#sessionKit}. 
  * There is no way to switch from the interface.
  */

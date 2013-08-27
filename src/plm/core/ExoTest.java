@@ -122,7 +122,7 @@ public class ExoTest {
 					ent.runIt(exo.lastResult);
 			
 			exo.check();
-		} catch (JLMCompilerException e) {
+		} catch (PLMCompilerException e) {
 			// compileAll already setup the error message; we just needed to not run the entity in that case
 		}
 		

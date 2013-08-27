@@ -186,7 +186,7 @@ public class BuggleWorldView extends WorldView {
 
 		if (((BuggleWorld)world).easter) {
 			try {
-				InputStream is = getClass().getResourceAsStream("/jlm/universe/bugglequest/ui/rabbit.png");
+				InputStream is = getClass().getResourceAsStream("/plm/universe/bugglequest/ui/rabbit.png");
 				ImageIcon ic = new ImageIcon(ImageIO.read(is));
 				g.drawImage(ic.getImage(), (int)(padx+ox),(int)(pady+oy), (int)getCellWidth(),(int)getCellWidth(),null);
 			} catch (IOException e) {
@@ -226,7 +226,7 @@ public class BuggleWorldView extends WorldView {
 		
 		if (((BuggleWorld)world).easter) {
 			try {
-				InputStream is = getClass().getResourceAsStream("/jlm/universe/bugglequest/ui/egg.png");
+				InputStream is = getClass().getResourceAsStream("/plm/universe/bugglequest/ui/egg.png");
 				ImageIcon ic = new ImageIcon(ImageIO.read(is));
 				g.drawImage(ic.getImage(), (int)(padx+ox),(int)(pady+oy), (int)getCellWidth(),(int)getCellWidth(),null);
 			} catch (IOException e) {

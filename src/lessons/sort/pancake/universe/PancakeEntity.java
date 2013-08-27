@@ -26,7 +26,7 @@ public class PancakeEntity extends Entity {
 	}
 	
 	/** 
-	 * A copy method needed by the JLM
+	 * A copy method needed by the PLM
 	 * @return a new PancakeEntity with the same name as the caller
 	 */
 	@Override

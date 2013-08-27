@@ -37,8 +37,8 @@ public class IdenticaSpy implements ProgressSpyListener {
 
                 httpclient.getCredentialsProvider().setCredentials(
                         new AuthScope("identi.ca", 80),
-                        new UsernamePasswordCredentials(Game.getProperty("jlm.identica.username"),
-                                Game.getProperty("jlm.identica.password")));
+                        new UsernamePasswordCredentials(Game.getProperty("plm.identica.username"),
+                                Game.getProperty("plm.identica.password")));
 
                 List<NameValuePair> formparams = new ArrayList<NameValuePair>();
                 formparams.add(new BasicNameValuePair("status", username + " solved " + exo.getName() + " in " + exo.lastResult.language + "!"));

@@ -18,7 +18,7 @@ import plm.core.model.Game;
 import plm.core.model.Logger;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
-import plm.core.ui.JlmHtmlEditorKit;
+import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.ui.WorldView;
 import plm.core.utils.FileUtils;
 
@@ -31,7 +31,7 @@ public abstract class World {
 
 	private String name;
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 
 	public World(String name) {
 		this.name = name;
@@ -299,7 +299,7 @@ public abstract class World {
 			/* read it */
 			about = sb.toString();
 		}
-		return "<html>\n" + JlmHtmlEditorKit.getCSS() + "<body>\n" + JlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
+		return "<html>\n" + PlmHtmlEditorKit.getCSS() + "<body>\n" + PlmHtmlEditorKit.filterHTML(about,Game.getInstance().isDebugEnabled()) + "</body>\n</html>\n";
 	}
 	
 	/**

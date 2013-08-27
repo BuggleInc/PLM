@@ -14,9 +14,9 @@ public abstract class EntityControlPanel extends JPanel implements HumanLangChan
 	private static final long serialVersionUID = 1L;
 	public abstract void setEnabledControl(boolean enabled);
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 	
 	public void currentHumanLanguageHasChanged(Locale newLang) {
-		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",newLang, I18nFactory.FALLBACK);
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",newLang, I18nFactory.FALLBACK);
 	}
 }

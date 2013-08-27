@@ -10,7 +10,7 @@ import javax.swing.SwingUtilities;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
-import plm.core.JLMCompilerException;
+import plm.core.PLMCompilerException;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
@@ -31,7 +31,7 @@ public class LessonRunner extends Thread {
 	
 	private Game game;
 	private List<Thread> runners = new LinkedList<Thread>(); // threads who run entities from lesson
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", FileUtils.getLocale(), I18nFactory.FALLBACK);
 
 	public LessonRunner(Game game) {
 		super();
@@ -70,7 +70,7 @@ public class LessonRunner extends Thread {
 			e.printStackTrace();
 //			game.getOutputWriter().log(e);
 			game.setState(Game.GameState.EXECUTION_ENDED);
-		} catch (JLMCompilerException e) {
+		} catch (PLMCompilerException e) {
 			game.setState(Game.GameState.COMPILATION_ENDED);
 			game.setState(Game.GameState.EXECUTION_ENDED);
 		} catch (Exception e) {

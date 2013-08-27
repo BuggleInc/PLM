@@ -28,7 +28,7 @@ public class SortingButtonPanel extends EntityControlPanel {
 	private JComboBox leftValueComboBox;	// the value for the first parameter of the selected operation
 	private JComboBox rightValueComboBox;	// the value for the second parameter of the selected operation
 	
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	/**
      * Constructor of SortingButtonPanel

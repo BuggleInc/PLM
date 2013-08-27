@@ -21,7 +21,7 @@ import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.CompilerJava;
 import plm.core.CompilerScala;
-import plm.core.JLMCompilerException;
+import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.LogWriter;
 import plm.core.model.ProgrammingLanguage;
@@ -45,7 +45,7 @@ public abstract class Exercise extends Lecture {
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
-	private static final String packageNamePrefix = "jlm.runtime";
+	private static final String packageNamePrefix = "plm.runtime";
 	private int packageNameSuffix = 0;
 
 	protected Vector<World> currentWorld; /* the one displayed */
@@ -56,7 +56,7 @@ public abstract class Exercise extends Lecture {
 
 	public ExecutionProgress lastResult;
 	
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 
 	public Exercise(Lesson lesson,String basename) {
 		super(lesson,basename);
@@ -119,9 +119,9 @@ public abstract class Exercise extends Lecture {
 	 * 			where to display our errors
 	 * @param whatToCompile
 	 * 			either STUDENT's provided data or CORRECTION entity 
-	 * @throws JLMCompilerException 
+	 * @throws PLMCompilerException 
 	 */
-	public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws JLMCompilerException {
+	public void compileAll(LogWriter out, StudentOrCorrection whatToCompile) throws PLMCompilerException {
 		/* Make sure each run generate a new package to avoid that the loader cache prevent the reloading of the newly generated class */
 		packageNameSuffix++;
 		runtimePatterns.put("\\$package", "package "+packageName()+";");
@@ -145,7 +145,7 @@ public abstract class Exercise extends Lecture {
 
 				if (out != null)
 					out.log(errs);
-			} catch (JLMCompilerException e) {
+			} catch (PLMCompilerException e) {
 				System.err.println(Game.i18n.tr("Compilation error:"));
 				if (out != null)
 					out.log(e.getDiagnostics());
@@ -162,7 +162,7 @@ public abstract class Exercise extends Lecture {
 			if (sfs == null || sfs.isEmpty()) {
 				String msg = getName()+": No source to compile";
 				System.err.println(msg);
-				JLMCompilerException e = new JLMCompilerException(msg, null, null);
+				PLMCompilerException e = new PLMCompilerException(msg, null, null);
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
 				throw e;
 			}
@@ -171,7 +171,7 @@ public abstract class Exercise extends Lecture {
 				CompilerScala.getInstance().reset();
 				for (SourceFile sf : sfs) 
 					CompilerScala.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
-			} catch (JLMCompilerException e) {
+			} catch (PLMCompilerException e) {
 				System.err.println(Game.i18n.tr("Compilation error:"));
 				System.err.println(e.getMessage());
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage());

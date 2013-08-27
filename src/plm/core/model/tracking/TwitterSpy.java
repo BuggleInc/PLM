@@ -18,9 +18,9 @@ public class TwitterSpy implements ProgressSpyListener {
 			username = "John Doe";
 
 		twitter = new TwitterFactory().getOAuthAuthorizedInstance(
-				Game.getProperty("jlm.oauth.consumerKey"), 
-				Game.getProperty("jlm.oauth.consumerSecret"), 
-				new AccessToken(Game.getProperty("jlm.oauth.accessToken"), Game.getProperty("jlm.oauth.tokenSecret")));
+				Game.getProperty("plm.oauth.consumerKey"), 
+				Game.getProperty("plm.oauth.consumerSecret"), 
+				new AccessToken(Game.getProperty("plm.oauth.accessToken"), Game.getProperty("plm.oauth.tokenSecret")));
 	}
 
 	@Override

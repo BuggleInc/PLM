@@ -21,7 +21,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.session.SourceFile;
-import plm.core.utils.JlmSyntaxPane;
+import plm.core.utils.PlmSyntaxPane;
 import plm.universe.IEntityStackListener;
 import plm.universe.World;
 
@@ -36,14 +36,14 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 	/* for code tabs */
 	private Lecture currentExercise;
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 	
 	public MissionEditorTabs() {
 		super();
 		
 		/* Setup the mission tab */
 		missionTab.setEditable(false);
-		missionTab.setEditorKit(new JlmHtmlEditorKit());
+		missionTab.setEditorKit(new PlmHtmlEditorKit());
 
 		missionTab.addHyperlinkListener(new HyperlinkListener() {
 			TipsDialog tipsDialog = null;
@@ -59,9 +59,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 						this.tipsDialog.setText("<html>\n"+Lecture.HTMLTipHeader+"<body>\n"+currentExercise.getTip(desc)+"</body>\n</html>\n");
 						this.tipsDialog.setVisible(true);
 					}
-					if (desc.startsWith("jlm://")) {
+					if (desc.startsWith("plm://")) {
 						//Load a regular lesson
-						String lessonName = desc.substring(new String("jlm://").length());
+						String lessonName = desc.substring(new String("plm://").length());
 						String exoName = null;
 						int sep = lessonName.indexOf("/");
 						if (sep != -1) {
@@ -91,7 +91,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.addTab(i18n.tr("Mission"), null, new JScrollPane(missionTab),
 				i18n.tr("Description of the work to do"));
 		
-		JlmSyntaxPane.initKits();
+		PlmSyntaxPane.initKits();
 
 		/* Register to game engine */
 		this.game = Game.getInstance();
@@ -164,7 +164,7 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 				setSelectedIndex(tabPosition);
 		}
 		/* Change the mission text, because the CSS changed */
-		missionTab.setEditorKit(new JlmHtmlEditorKit(game.getCurrentLesson().getCurrentExercise()));
+		missionTab.setEditorKit(new PlmHtmlEditorKit(game.getCurrentLesson().getCurrentExercise()));
 		missionTab.setText(this.game.getCurrentLesson().getCurrentExercise().getMission(newLang));
 		missionTab.setCaretPosition(0);
 	}

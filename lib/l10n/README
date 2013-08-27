@@ -4,7 +4,7 @@ are located in the ../l10n-engine directory, updated from the main ant
 build.xml file.
 
 Files used to translate the missions:
-- jlm.pot: master file of missions text
+- plm.pot: master file of missions text
 - XX.po: translations of missions into language XX
 Simply run "po4a po4a.conf" from the root directory to update the
 translated html files (check the wiki for more info).

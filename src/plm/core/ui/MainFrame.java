@@ -83,7 +83,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private JSplitPane mainPanel;
 	
@@ -160,7 +160,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("JLM lesson files"), "jlm"));
+				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PLM lesson files"), "plm"));
 				fc.setDialogType(JFileChooser.OPEN_DIALOG);
 				fc.showOpenDialog(MainFrame.getInstance());
 				File selectedFile = fc.getSelectedFile();
@@ -199,8 +199,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miFileExercise.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
 		menuFile.add(miFileExercise);
 		
-		// Teacher console menu item (shown only if defined in the JLM properties)
-        if(Game.getProperty("jlm.configuration.teacher").equals("true")) {
+		// Teacher console menu item (shown only if defined in the PLM properties)
+        if(Game.getProperty("plm.configuration.teacher").equals("true")) {
             miFileConsole = new JMenuItem(new AbstractGameAction(g,i18n.tr("Teacher Console")) {
 
 				private static final long serialVersionUID = 1L;
@@ -341,11 +341,11 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuHelp.add(miHelpWorld);
 
 		if (!System.getProperty("os.name").startsWith("Mac")) {
-			miHelpAbout = new JMenuItem(new AbstractGameAction(g, i18n.tr("About JLM"), null) {
+			miHelpAbout = new JMenuItem(new AbstractGameAction(g, i18n.tr("About PLM"), null) {
 				private static final long serialVersionUID = 1L;
 
 				public void actionPerformed(ActionEvent e) {
-					AboutJLMDialog.getInstance().setVisible(true);
+					AboutPLMDialog.getInstance().setVisible(true);
 				}
 			});
 			menuHelp.add(miHelpAbout);
@@ -530,7 +530,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			public void run() {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
-						AboutJLMDialog.getInstance().setVisible(true);
+						AboutPLMDialog.getInstance().setVisible(true);
 					}
 				});
 			}
@@ -545,7 +545,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			Exercise exo = (Exercise) lecture;
 			for (ProgrammingLanguage l:exo.getProgLanguages()) {
 				if (!g.isValidProgLanguage(l)) 
-					System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your JLM.");
+					System.err.println("Request to add the programming language '"+l+"' to exercise "+exo.getName()+" ignored. Fix your exercise or upgrade your PLM.");
 			}
 		} else {
 			hideWorldView();
@@ -670,7 +670,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miHelpLesson.setText(i18n.tr("About this lesson"));
 		miHelpWorld.setText(i18n.tr("About this world"));
 		if (miHelpAbout != null)
-			miHelpAbout.setText(i18n.tr("About JLM"));
+			miHelpAbout.setText(i18n.tr("About PLM"));
 
 
 

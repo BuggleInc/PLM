@@ -61,7 +61,7 @@ DrJava. Cela semble être une bonne idée parce qu'il dispose de plusieurs
 interfaces d'aide pour le débuggage et la compilation. Il y a aussi un bon
 éditeur que l'on pourrait réutiliser. Finallement, ils ont un infrastructure
 solide de tests avec junit assurant que leur outil fonctionne toujours après
-modifications ( c'est quelquechose qui manque sérieusement dans la JLM). Je
+modifications (c'est quelquechose qui manque sérieusement dans la PLM). Je
 pense vraiment que les deux outils devriaent fusionner en quelquechose de
 plus fort. Le seul argument pour ne pas le faire ( en plus de la quantité de
 travail nécessaire ) est que chacun d'entre nous reçoit les honneurs pour
@@ -91,7 +91,7 @@ d'envoyer un email à martin.quinson#loria.fr.</p>
 Cela me donne lesactions à faire suivantes: * Vérifier quel tools.jar donne
 un package com.sun.jdi qui fonctionne * Trouver le bug de DrJava au niveau
 du débuggage pour les aider, et ainsi je pourrai réutiliser des parties de
-leur code à ce propos dans la JLM ( c'est un projet BSD tandis que ja JLM
+leur code à ce propos dans la PLM ( c'est un projet BSD tandis que ja PLM
 est majoritairement GPL jusqu'à présent -- il faudra que je leur demande de
 faire une exception). Cela serait mieux puisque leur interface d'aide semble
 être capable de travailler avec différents débuggers (eclipse, sun ou
@@ -99,9 +99,9 @@ openjdk ). C'est une quantité importante de travail que j'aimerai éviter
 d'avoir à dupliquer. * Trouver comment je peux obtenir les informations de
 traçage d'ASM. Cela semble être plus robuste aux variations de la JVM que
 l'approchage via débuggage. D'un autre côté, le débuggage est une
-fonctionnalité bien tenue dans la JLM.* Travailler sur la fusion entre JLM
+fonctionnalité bien tenue dans la PLM.* Travailler sur la fusion entre PLM
 et DrJava. En plus du problème de license, cela compliquera l'intégration
-actuelle de JLM dans Debian puisque DrJava est composé de [[5 modules
+actuelle de PLM dans Debian puisque DrJava est composé de [[5 modules
 séparés|http://drjava.org/docs/developer/ch02s03.html]] qui peuvent
 seulement être intégré en tant que source package distincts. Comme tout
 package java, aucune source n'est distribuée et ils doivent les récupérer

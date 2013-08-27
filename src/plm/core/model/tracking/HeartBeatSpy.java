@@ -7,7 +7,7 @@ import java.util.TimerTask;
 /**
  * Class that report the heartbeat of the user
  * Every minute, the presence of the user on the soft is sent to the server
- * This allows to know who is still connected on a specific course on JLM
+ * This allows to know who is still connected on a specific course on PLM
  */
 public class HeartBeatSpy extends TimerTask{
 

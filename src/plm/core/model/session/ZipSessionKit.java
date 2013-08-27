@@ -39,7 +39,7 @@ public class ZipSessionKit implements ISessionKit {
 	}
 
 	private File openSaveFile(File path, Lesson lesson) {
-		return new File(path, "jlm-"+lesson.getId()+".zip");
+		return new File(path, "plm-"+lesson.getId()+".zip");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -193,7 +193,7 @@ public class ZipSessionKit implements ISessionKit {
 			zos.setLevel(Deflater.BEST_COMPRESSION);
 
 			zos.putNextEntry(new ZipEntry("README"));
-			String text = "This file is a JLM session file. Please see http://www.loria.fr/~quinson/Teaching/JLM/ for more details";
+			String text = "This file is a PLM session file. Please see http://www.loria.fr/~quinson/Teaching/PLM/ for more details";
 			zos.write(text.getBytes());
 			zos.closeEntry();
 			
@@ -247,7 +247,7 @@ public class ZipSessionKit implements ISessionKit {
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
 			Object[] options = { Game.i18n.tr("Ok, quit and lose my data"), Game.i18n.tr("Please stop! I'll save it myself first") };
-			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("JLM were unable to save your session file for lesson {0} ({1}:{2}).\n\n"
+			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("PLM were unable to save your session file for lesson {0} ({1}:{2}).\n\n"
 					+ " Would you like proceed anyway (and lose any solution typed so far)?",
 					lesson.getName(),ex.getClass().getSimpleName(),ex.getLocalizedMessage()),
 					Game.i18n.tr("Your changes are NOT saved"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,
@@ -351,7 +351,7 @@ public class ZipSessionKit implements ISessionKit {
 			// FIXME: should raise an exception and not show a dialog (it is not a UI class)
 			ex.printStackTrace();
 			Object[] options = { Game.i18n.tr("Proceed"), Game.i18n.tr("Abort") };
-			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("JLM were unable to load your code for lesson {0} ({1}:{2}).\n\n"
+			int n = JOptionPane.showOptionDialog(null, Game.i18n.tr("PLM were unable to load your code for lesson {0} ({1}:{2}).\n\n"
 					+ " Would you like proceed anyway (and lose any solution typed previously)?",
 					lesson.getName(), ex.getClass().getSimpleName(), ex.getMessage()),
 					Game.i18n.tr("Error while loading your session"), JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE,

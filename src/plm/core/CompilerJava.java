@@ -215,7 +215,7 @@ public class CompilerJava {
 	 */
 	public synchronized Class<Object> compile(final String qualifiedClassName, final String javaSource,
 			final DiagnosticCollector<JavaFileObject> diagnosticsList, final Class<?>... types)
-			throws JLMCompilerException, ClassCastException {
+			throws PLMCompilerException, ClassCastException {
 		if (diagnosticsList != null)
 			diagnostics = diagnosticsList;
 		else
@@ -251,7 +251,7 @@ public class CompilerJava {
 	 *             if the source cannot be compiled
 	 */
 	public synchronized Map<String, Class<Object>> compile(final Map<String, String> classes,
-			final DiagnosticCollector<JavaFileObject> diagnosticsList) throws JLMCompilerException {
+			final DiagnosticCollector<JavaFileObject> diagnosticsList) throws PLMCompilerException {
 
 		if (diagnosticsList != null)
 			diagnostics = diagnosticsList;
@@ -286,7 +286,7 @@ public class CompilerJava {
 			 //for (String n:classes.keySet()) 
 			 // System.out.println("File "+n+":\n"+classes.get(n));
 			 
-			throw new JLMCompilerException(Game.i18n.tr("Compilation failed."), classes.keySet(), diagnostics);
+			throw new PLMCompilerException(Game.i18n.tr("Compilation failed."), classes.keySet(), diagnostics);
 		}
 		try {
 			// For each class name in the input map, get its compiled
@@ -298,11 +298,11 @@ public class CompilerJava {
 			}
 			return compiled;
 		} catch (ClassNotFoundException e) {
-			throw new JLMCompilerException(classes.keySet(), e, diagnostics);
+			throw new PLMCompilerException(classes.keySet(), e, diagnostics);
 		} catch (IllegalArgumentException e) {
-			throw new JLMCompilerException(classes.keySet(), e, diagnostics);
+			throw new PLMCompilerException(classes.keySet(), e, diagnostics);
 		} catch (SecurityException e) {
-			throw new JLMCompilerException(classes.keySet(), e, diagnostics);
+			throw new PLMCompilerException(classes.keySet(), e, diagnostics);
 		}
 	}
 

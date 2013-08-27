@@ -31,7 +31,7 @@ public class CompilerScala {
 		return instance;
 	}
 	
-	private JLMReporter reporter;
+	private PLMReporter reporter;
 	private Settings settings;
 	private Map<String, Class<?>> cache = new HashMap<String, Class<?>>();
 	private Global global;
@@ -49,7 +49,7 @@ public class CompilerScala {
 		
 		settings.usejavacp().tryToSetFromPropertyValue("true");
 		//settings.usemanifestcp().tryToSetFromPropertyValue("true");
-		reporter = new JLMReporter(settings);
+		reporter = new PLMReporter(settings);
 		global = new Global(settings,reporter);
 	}
 
@@ -61,7 +61,7 @@ public class CompilerScala {
 		classLoader = new AbstractFileClassLoader(target, this.getClass().getClassLoader());
 	}
 
-	public void compile(String name,String content,int offset) throws JLMCompilerException {
+	public void compile(String name,String content,int offset) throws PLMCompilerException {
 		
 		Run compiler = global.new Run();
 		List<SourceFile> sources = new LinkedList<SourceFile>();
@@ -91,7 +91,7 @@ public class CompilerScala {
 		}
 	}
 	
-	class JLMReporter extends AbstractReporter {
+	class PLMReporter extends AbstractReporter {
 		final static int INFO = 0;
 		final static int WARNING = 1;
 		final static int ERROR = 2;
@@ -99,7 +99,7 @@ public class CompilerScala {
 		Vector<String> messages = new Vector<String>();
 		Settings settings;
 
-		public JLMReporter(Settings s) {
+		public PLMReporter(Settings s) {
 			settings = s;
 		}
 		public void setOffset(int _offset) {
@@ -129,7 +129,7 @@ public class CompilerScala {
 				label = "error: ";
 			}
 			if (severity == -1)
-				throw new RuntimeException("Got an unknown severity: "+severityName+". Please adapt JLM to this new version of scala (or whatever).");
+				throw new RuntimeException("Got an unknown severity: "+severityName+". Please adapt the PLM to this new version of scala (or whatever).");
 			if (severity == INFO && !Game.getInstance().isDebugEnabled()) 
 				return;
 
@@ -156,12 +156,12 @@ public class CompilerScala {
 
 			messages.add(msg);
 		}
-		public void throwExceptionOnNeed() throws JLMCompilerException {
+		public void throwExceptionOnNeed() throws PLMCompilerException {
 			if (hasErrors()) {
 				StringBuffer sb = new StringBuffer();
 				for (String s : messages)
 					sb.append(s);
-				throw new JLMCompilerException(sb.toString(), null, null);
+				throw new PLMCompilerException(sb.toString(), null, null);
 			}
 		}
 		@Override

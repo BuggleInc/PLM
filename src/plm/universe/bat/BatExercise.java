@@ -28,10 +28,10 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 			run(t);
 		
 		super.setup(ws,entName,
-				"import jlm.universe.bat.BatEntity; "+
-		        "import jlm.universe.bat.BatWorld; "+
-		        "import jlm.universe.bat.BatTest; "+
-		        "import jlm.universe.World; "+
+				"import plm.universe.bat.BatEntity; "+
+		        "import plm.universe.bat.BatWorld; "+
+		        "import plm.universe.bat.BatTest; "+
+		        "import plm.universe.World; "+
 		        "public class "+entName+" extends BatEntity { ");
 	}
 	

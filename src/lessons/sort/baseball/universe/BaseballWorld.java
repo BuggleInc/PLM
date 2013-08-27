@@ -33,10 +33,10 @@ public class BaseballWorld extends World {
 	private Vector<BaseballMove> moves = new Vector<BaseballMove>(); // all moves made on the field -- used for graphical purpose only
 	private I18n i18n;
 
-	/** Copy constructor used internally by JLM */
+	/** Copy constructor used internally by PLM */
 	public BaseballWorld(BaseballWorld other) {
 		super(other);
-		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		initialField = new int[other.initialField.length];
 		for (int i=0;i<initialField.length;i++)
 			initialField[i] = other.initialField[i];
@@ -50,7 +50,7 @@ public class BaseballWorld extends World {
 
 	public BaseballWorld(String name, int baseAmount, int posAmount, int mix) {
 		super(name);
-		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 
 		// create the bases
 		this.baseAmount = baseAmount;

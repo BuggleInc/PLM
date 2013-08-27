@@ -17,7 +17,7 @@ public class AboutWorldDialog extends AbstractAboutDialog implements ProgLangCha
 
 	private static final long serialVersionUID = 1766486738385426108L;
 
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	public AboutWorldDialog(JFrame parent) {
 		super(parent);

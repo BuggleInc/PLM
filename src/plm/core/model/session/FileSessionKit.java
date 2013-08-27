@@ -25,7 +25,7 @@ public class FileSessionKit /* FIXME implements ISessionKit  */ {
 
 	private static String HOME_DIR = System.getProperty("user.home");
 	private static String SEP = System.getProperty("file.separator");
-	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".jlm");
+	private static File SAVE_DIR = new File(HOME_DIR + SEP + ".plm");
 
 	public FileSessionKit(Game game) {
 		this.game = game;

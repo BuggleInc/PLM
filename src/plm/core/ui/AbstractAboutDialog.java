@@ -28,7 +28,7 @@ public abstract class AbstractAboutDialog extends JFrame implements GameListener
 		
 		setMinimumSize(new Dimension(600,400));
 		
-		area.setEditorKit(new JlmHtmlEditorKit());
+		area.setEditorKit(new PlmHtmlEditorKit());
 		area.setEditable(false);
 		
 		setLayout(new MigLayout("fill"));

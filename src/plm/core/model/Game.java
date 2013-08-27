@@ -73,7 +73,7 @@ public class Game implements IWorldView {
 
 	private GameState state = GameState.IDLE;
 
-	private final static String LOCAL_PROPERTIES_FILENAME = "jlm.properties";
+	private final static String LOCAL_PROPERTIES_FILENAME = "plm.properties";
 
 	private static Properties defaultGameProperties = new Properties();
 	private static Properties localGameProperties = new Properties();
@@ -102,14 +102,14 @@ public class Game implements IWorldView {
 	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
 	                                                                // Turning to false will slow down the startup process, but avoid out of date files
 	
-	public static final String PROP_PROGRESS_TWITTER = "jlm.progress.twitter";     //  
-	public static final String PROP_PROGRESS_IDENTICA = "jlm.progress.identica";   // Whether the progresses should be posted to identica (default: true)
-	public static final String PROP_PROGRESS_APPENGINE = "jlm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
-	public static final String PROP_APPENGINE_URL = "jlm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
+	public static final String PROP_PROGRESS_TWITTER = "plm.progress.twitter";     //  
+	public static final String PROP_PROGRESS_IDENTICA = "plm.progress.identica";   // Whether the progresses should be posted to identica (default: true)
+	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
+	public static final String PROP_APPENGINE_URL = "plm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
 	
-	public static final String PROP_PROGRAMING_LANGUAGE = "jlm.programingLanguage";
+	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
 
-	public static final String PROP_FONT_SIZE = "jlm.display.fontsize"; // the CSS property of the font size
+	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
 
 	private List<GameListener> listeners = new ArrayList<GameListener>();
 	private World selectedWorld;
@@ -135,7 +135,7 @@ public class Game implements IWorldView {
 	public static Game getInstance() {
 		if (Game.instance == null) {
 			if (ongoingInitialization)
-				throw new RuntimeException("Loop in initialization process. This is a JLM bug.");
+				throw new RuntimeException("Loop in initialization process. This is a PLM bug.");
 			ongoingInitialization = true;
 			Game.instance = new Game();
 			ongoingInitialization = false;
@@ -145,7 +145,7 @@ public class Game implements IWorldView {
 	}
 
 	private Game() {
-		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
 
 		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
@@ -154,8 +154,8 @@ public class Game implements IWorldView {
 			!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang())) 
 			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
-					"   It is safer to change the current language, and restart JLM before proceeding.\n"+
-					"   Alternatively, the property {1} can be changed in your configuration file ($HOME/.jlm/jlm.properties",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE));
+					"   It is safer to change the current language, and restart PLM before proceeding.\n"+
+					"   Alternatively, the property {1} can be changed in your configuration file ($HOME/.plm/plm.properties",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE));
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			if (pl.getLang().equals(defaultProgrammingLanguage)) {
 				setProgramingLanguage(pl);
@@ -185,7 +185,7 @@ public class Game implements IWorldView {
 	
 	
 	/**
-	 * Load the chooser, stored in jlm.core.ui.chooser
+	 * Load the chooser, stored in plm.core.ui.chooser
 	 */
 	public void loadChooser() {
 		Game.instance.switchLesson(lessonChooser,false);
@@ -229,7 +229,7 @@ public class Game implements IWorldView {
 				return getCurrentLesson();
 			}
 		}
-		// Prevent an error message telling us that the JLM couldn't load our code for the chooser -- kinda obvious
+		// Prevent an error message telling us that the PLM couldn't load our code for the chooser -- kinda obvious
 		if ( !lessonName.equals(lessonChooser) && sessionKit != null)
 			sessionKit.loadLesson(SAVE_DIR, lesson);
 		try {
@@ -510,7 +510,7 @@ public class Game implements IWorldView {
             for(ProgressSpyListener spyListener: progressSpyListeners){
                 spyListener.leave();
             }
-            // stop the heartbeat report to JLMServer
+            // stop the heartbeat report to PLMServer
             if(heartBeatSpy != null)
                 heartBeatSpy.die();
 
@@ -563,16 +563,16 @@ public class Game implements IWorldView {
 	public static void loadProperties() {
 		InputStream is = null;
 		try {
-			is = Game.class.getClassLoader().getResourceAsStream("resources/jlm.configuration.properties");
+			is = Game.class.getClassLoader().getResourceAsStream("resources/plm.configuration.properties");
 			if (is==null) // try to find the file in the debian package
-				is = Game.class.getClassLoader().getResourceAsStream("/etc/jlm.configuration.properties");
+				is = Game.class.getClassLoader().getResourceAsStream("/etc/plm.configuration.properties");
 			Game.defaultGameProperties.load(is);
 		} catch (InvalidPropertiesFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
-			// resources/jlm.configuration.properties not found. Try jlm.configuration.properties afterward
+			// resources/plm.configuration.properties not found. Try plm.configuration.properties afterward
 		} finally {
 			if (is != null)
 				try {
@@ -628,7 +628,7 @@ public class Game implements IWorldView {
 	}
 
 	/** 
-	 * Gets the value from either the local properties set (in ~/.jlm) or the global one (in the jar file).
+	 * Gets the value from either the local properties set (in ~/.plm) or the global one (in the jar file).
 	 * If the value is not defined in either of them, use the default value. If so and if the save parameter is true, this is saved back to the local properties file. 
 	 */
 	public static String getProperty(String key, String defaultValue, boolean save) {
@@ -775,7 +775,7 @@ public class Game implements IWorldView {
 	}
 	public void setLocale(Locale lang) {
 		FileUtils.setLocale(lang);
-		i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 		fireHumanLangChange(lang);
 
 		/* FIXME: convert all this to a humanLanguage listener */
@@ -865,7 +865,7 @@ public class Game implements IWorldView {
 			System.out.println("Saving location: "+SAVE_DIR.getAbsolutePath());
 			System.out.println("Lesson: "+(l==null?"None loaded yet":l.getName()));
 			System.out.println("Exercise: "+(l==null?"None loaded yet":l.getCurrentExercise().getName()));
-			System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal",false)+" ("+Game.getProperty("jlm.major.version","internal",false)+"."+Game.getProperty("jlm.minor.version","",false)+")");
+			System.out.println("PLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 			for (ScriptEngineFactory sef : new ScriptEngineManager().getEngineFactories()) {
@@ -890,7 +890,7 @@ public class Game implements IWorldView {
     /*
      * Getter and Setter for the course ID for the current session.
      * This ID will be used by the ServerSpy, to associate this
-     * JLM student with a course started by a teacher on the server
+     * PLM student with a course started by a teacher on the server
      */
     public String getCourseID() {
     	if (this.currentCourse == null)
@@ -931,12 +931,12 @@ public class Game implements IWorldView {
 	
 	/* These names are tested one after the other, searching for one that exist or that we can create */
 	static String[] rootDirNames = new String[] { 
-		HOME_DIR + File.separator + ".jlm", /* preferred, default directory name */
-		HOME_DIR + File.separator + "_jlm", /* Some paranoid administrator refuse directories which name starts with a dot */
-		HOME_DIR + File.separator + "jlm",  /* one day, hidden directories with make trouble... */
-		"z:"     + File.separator + ".jlm", /* windows-preferred directory name */
-		"z:"     + File.separator + "_jlm",
-		"z:"     + File.separator + "jlm",
+		HOME_DIR + File.separator + ".plm", /* preferred, default directory name */
+		HOME_DIR + File.separator + "_plm", /* Some paranoid administrator refuse directories which name starts with a dot */
+		HOME_DIR + File.separator + "plm",  /* one day, hidden directories with make trouble... */
+		"z:"     + File.separator + ".plm", /* windows-preferred directory name */
+		"z:"     + File.separator + "_plm",
+		"z:"     + File.separator + "plm",
 	};
 	private static File SAVE_DIR = initializeSaveDir();
 	private static File initializeSaveDir() {
@@ -968,7 +968,7 @@ public class Game implements IWorldView {
 				e.getLocalizedMessage();
 			}
 		}
-		throw new RuntimeException(i18n.tr("Impossible to find a path for JLM datas. Tested {0}",sb.toString()));
+		throw new RuntimeException(i18n.tr("Impossible to find a path for PLM data. Tested {0}",sb.toString()));
 	}
 	public static String getSavingLocation() {
 		return SAVE_DIR.getPath();

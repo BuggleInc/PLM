@@ -57,7 +57,7 @@ public class ResourcesCache {
 				if (okNull) 
 					return null;
 				if (!warnedAboutBrokenPath) {
-					Logger.log("jlm.ui.ResourcesCache.getIcon()", "Cannot find path "+path+": classloader returned null.");
+					Logger.log("plm.ui.ResourcesCache.getIcon()", "Cannot find path "+path+": classloader returned null.");
 					warnedAboutBrokenPath = true;
 				}
 				ImageIcon c = (ImageIcon) UIManager.getLookAndFeelDefaults().get("html.missingImage");

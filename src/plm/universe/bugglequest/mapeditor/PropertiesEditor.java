@@ -29,7 +29,7 @@ import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class PropertiesEditor extends JComponent implements EditionListener {
 	private static final long serialVersionUID = 3904327915735497696L;
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 	
 	private AbstractBuggle selectedBuggle;
 
@@ -45,7 +45,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 	private Editor editor; 
 	private int selectedXRank,selectedYRank,topRank,leftRank,baggleRank;
 
-	Vector<JLMProperty> properties = new Vector<JLMProperty>();
+	Vector<PLMProperty> properties = new Vector<PLMProperty>();
 	
 	public PropertiesEditor(Editor _editor) {
 		editor = _editor;
@@ -69,7 +69,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		properties.removeAllElements();
 
 		/* The editor for the name */
-		model.insertRow(0, new Object[] {i18n.tr("World name"), new JLMProperty(properties) { 
+		model.insertRow(0, new Object[] {i18n.tr("World name"), new PLMProperty(properties) { 
 			@Override
 			public void setValue(String value) {
 				editor.getWorld().setName(value);
@@ -81,7 +81,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		}});
 
 		/*---------- world width ---------------*/
-		model.addRow(new Object[] {i18n.tr("World width"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("World width"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				return ""+editor.getWorld().getWidth();
@@ -101,7 +101,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		}});
 		
 		/*---------- world height ---------------*/
-		model.addRow(new Object[] {i18n.tr("World height"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("World height"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				return ""+editor.getWorld().getHeight();
@@ -121,7 +121,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		}});
 
 		/*---------- selected cell ---------------*/
-		model.addRow(new Object[] {i18n.tr("Selected cell X"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("Selected cell X"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				selectedXRank = rank;
@@ -143,7 +143,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		}});
 
 		/*---------- selected cell ---------------*/
-		model.addRow(new Object[] {i18n.tr("Selected cell Y"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("Selected cell Y"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				selectedYRank = rank;
@@ -164,7 +164,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 			}
 		}});
 		/*---------- Ground color ---------------*/
-		model.addRow(new Object[] {i18n.tr("Ground color (name or r/g/b)"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("Ground color (name or r/g/b)"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				return ColorMapper.color2name( editor.getWorld().getSelectedCell().getColor() );
@@ -181,7 +181,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		}});
 
 		/*---------- top wall cell ---------------*/
-		model.addRow(new Object[] {i18n.tr("Top wall?"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("Top wall?"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				topRank = rank;
@@ -203,7 +203,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 			}
 		}});
 		/*---------- left wall cell ---------------*/
-		model.addRow(new Object[] {i18n.tr("Left wall?"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("Left wall?"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				leftRank = rank;
@@ -225,7 +225,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 			}
 		}});
 		/*---------- have baggle ---------------*/
-		model.addRow(new Object[] {i18n.tr("Baggle?"), new JLMProperty(properties) {
+		model.addRow(new Object[] {i18n.tr("Baggle?"), new PLMProperty(properties) {
 			@Override
 			public String toString() {
 				baggleRank = rank;
@@ -256,7 +256,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 		
 		if (selectedBuggle != null) {
 			/*---------- Buggle name ---------------*/
-			model.addRow(new Object[] {i18n.tr("Buggle name"), new JLMProperty(properties) {
+			model.addRow(new Object[] {i18n.tr("Buggle name"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					return selectedBuggle.getName();
@@ -267,7 +267,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 				}
 			}});
 			/*---------- Buggle direction ---------------*/
-			model.addRow(new Object[] {i18n.tr("Buggle direction (N|S|E|W)"), new JLMProperty(properties) {
+			model.addRow(new Object[] {i18n.tr("Buggle direction (N|S|E|W)"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					if (selectedBuggle.getDirection().equals(Direction.NORTH)) 
@@ -296,7 +296,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 				}
 			}});
 			/*---------- Buggle color ---------------*/
-			model.addRow(new Object[] {i18n.tr("Buggle color (name or r/g/b)"), new JLMProperty(properties) {
+			model.addRow(new Object[] {i18n.tr("Buggle color (name or r/g/b)"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					return ColorMapper.color2name( selectedBuggle.getColor() );
@@ -312,7 +312,7 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 				}
 			}});
 			/*---------- Buggle color ---------------*/
-			model.addRow(new Object[] {i18n.tr("Brush color (name or r/g/b)"), new JLMProperty(properties) {
+			model.addRow(new Object[] {i18n.tr("Brush color (name or r/g/b)"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
 					return ColorMapper.color2name( selectedBuggle.getBrushColor() );
@@ -355,11 +355,11 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 
 class MyTableModelListener implements TableModelListener {
 	private JTable table;
-	private Vector<JLMProperty> properties;
+	private Vector<PLMProperty> properties;
 
 	private boolean ongoing = false;
 	
-	MyTableModelListener(Editor e, JTable t, Vector<JLMProperty> props) {
+	MyTableModelListener(Editor e, JTable t, Vector<PLMProperty> props) {
 		table = t;
 		properties = props;
 	}
@@ -371,16 +371,16 @@ class MyTableModelListener implements TableModelListener {
 		int row = e.getFirstRow(); // selections are SINGLE_SELECTION anyway, so ignore getLastRow
 
 		if (e.getType() == TableModelEvent.UPDATE) 
-			for (JLMProperty p : properties) 
+			for (PLMProperty p : properties) 
 				if (p.rank == row) 
 					p.setValue(""+ table.getModel().getValueAt(row, 1));
 		ongoing = false;
 	}
 }
 
-abstract class JLMProperty {
+abstract class PLMProperty {
 	public int rank;
-	public JLMProperty(Vector<JLMProperty> props) {
+	public PLMProperty(Vector<PLMProperty> props) {
 		rank = props.size();
 		props.add(this);
 	}

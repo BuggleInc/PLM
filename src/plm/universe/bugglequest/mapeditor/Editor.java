@@ -22,7 +22,7 @@ public class Editor {
 	private String command = "topwall";
 	private Color selectedColor = Color.blue;
 	private int selectedColorNumber = 1;
-	public I18n	i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages", new Locale("fr"), I18nFactory.FALLBACK); // FIXME: ugly: french is hardcoded!!!!!
+	public I18n	i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages", new Locale("fr"), I18nFactory.FALLBACK); // FIXME: ugly: french is hardcoded!!!!!
 
 	
 	public Editor() {

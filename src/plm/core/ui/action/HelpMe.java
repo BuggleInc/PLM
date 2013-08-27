@@ -16,11 +16,11 @@ import plm.core.utils.FileUtils;
 
 /**
  * Class that handle clicks on HELP button
- * It sends a request to the JLM server
+ * It sends a request to the PLM server
  */
 public class HelpMe extends AbstractGameAction {
 	private static final long serialVersionUID = 1L;
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 
     private HelpServer helpServer;
     private boolean isRequestingHelp = false;

@@ -19,7 +19,7 @@ public class SortingEntity extends Entity {
 		super(name,world);
 	}
 
-	/** A copy constructor needed by the JLM */
+	/** A copy constructor needed by the PLM */
 	public Entity copy() {
 		return new SortingEntity(this.name);
 	}

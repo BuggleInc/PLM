@@ -210,7 +210,7 @@ public abstract class Entity {
 				String script = getScript(progLang);
 
 				if (script == null) { 
-					System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against JLM.",progLang,this));
+					System.err.println(Game.i18n.tr("No {0} script source for entity {1}. Please report that bug against PLM.",progLang,this));
 					return;
 				}
 				if (progLang.equals(Game.PYTHON)) {
@@ -219,11 +219,11 @@ public abstract class Entity {
 					setScriptOffset(progLang, getScriptOffset(progLang)+7);
 					script= "import sys;\n" +
 							"import java.lang;\n" +
-							"class JLMOut:\n" +
+							"class PLMOut:\n" +
 							"  def write(obj,msg):\n" +
 							"    java.lang.System.out.print(str(msg))\n" +
-							"sys.stdout = JLMOut()\n" +
-							"sys.stderr = JLMOut()\n" +
+							"sys.stdout = PLMOut()\n" +
+							"sys.stderr = PLMOut()\n" +
 							script;
 				}
 				engine.eval(script);
@@ -256,13 +256,13 @@ public abstract class Entity {
 
 
 							/* FIXME: how could we factorize the world's error? */ 
-						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
+						} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.NoBaggleUnderBuggleException'>")) {
 							msg.append(Game.i18n.tr("Error: there is no baggle to pickup under the buggle"));
-						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.AlreadyHaveBaggleException'>")) {
+						} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.AlreadyHaveBaggleException'>")) {
 							msg.append(Game.i18n.tr("Error: a buggle cannot carry more than one baggle at the same time"));
-						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleInOuterSpaceException'>")) {
+						} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.BuggleInOuterSpaceException'>")) {
 							msg.append(Game.i18n.tr("Error: your buggle just teleported to the outer space..."));
-						} else if (cause.type.toString().equals("<type 'jlm.universe.bugglequest.exception.BuggleWallException'>")) {
+						} else if (cause.type.toString().equals("<type 'plm.universe.bugglequest.exception.BuggleWallException'>")) {
 							msg.append(Game.i18n.tr("Error: your buggle just hit a wall. That hurts."));
 
 						} else {
@@ -301,7 +301,7 @@ public abstract class Entity {
 				}
 			} catch (Exception e) {
 				String msg = Game.i18n.tr("Script evaluation raised an exception that is not a ScriptException but a {0}.\n"+
-						" Please report this as a bug against JLM, with all details allowing to reproduce it.\n" +
+						" Please report this as a bug against PLM, with all details allowing to reproduce it.\n" +
 						"Exception message: {1}\n",e.getClass(),e.getLocalizedMessage());
 				System.err.println(msg);
 				for (StackTraceElement elm : e.getStackTrace()) 

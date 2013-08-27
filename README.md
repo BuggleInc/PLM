@@ -1,7 +1,7 @@
-Java Learning Machine (JLM)
+Programmer's Learning Machine (PLM)
 =========
 
-The Java Learning Machine (JLM) is a platform dedicated to computer
+The Programmer's Learning Machine (PLM) is a platform dedicated to computer
 programming education. This generic platform offers support to teachers for
 creating programming microworlds suitable to teaching courses. It features an
 integrated and graphical environment, providing a short feedback loop to
@@ -9,11 +9,11 @@ students in order to improve the effectiveness of the autonomous learning
 process.
 
 
-For more information, [visit the JLM web site](http://www.loria.fr/~quinson/Teaching/JLM/).
+For more information, [visit the PLM web site](http://www.loria.fr/~quinson/Teaching/PLM/).
 
 ## License
 
-JLM is licensed under the GNU General Public License 3.
+PLM is licensed under the GNU General Public License 3.
 
 This program is free software: you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free Software

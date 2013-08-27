@@ -1,10 +1,10 @@
 package plm.universe.bugglequest.exception;
 
-import plm.core.JLMException;
+import plm.core.PLMException;
 import plm.core.model.Game;
 
 
-public class BuggleWallException extends JLMException {
+public class BuggleWallException extends PLMException {
 
 	public BuggleWallException() {
 		super(Game.i18n.tr("Buggles cannot traverse walls"));

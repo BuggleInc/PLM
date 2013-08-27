@@ -33,7 +33,7 @@ import plm.core.utils.FileUtils;
 
 public class ChooseLessonDialog extends JFrame {
 	private static final long serialVersionUID = 1L;
-	I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	public ChooseLessonDialog() {
 		super();
@@ -50,14 +50,14 @@ public class ChooseLessonDialog extends JFrame {
 
 		JEditorPane blurb = new JEditorPane("text/html", "");
 		blurb.setEditable(false);
-		blurb.setEditorKit(new JlmHtmlEditorKit());
+		blurb.setEditorKit(new PlmHtmlEditorKit());
 		blurb.setText(i18n.tr("<table border=\"0\" align=\"center\"><tr>\n" +
 				"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n" +
-				"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Java Learning Machine</font>&nbsp;&nbsp;</td>\n" +
+				"<td valign=\"center\">&nbsp;&nbsp;<font size=\"+2\">Welcome to the Programmer's Learning Machine</font>&nbsp;&nbsp;</td>\n" +
 				"<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n" +
 				"</tr></table>\n" +
 				"\n" +
-				"<p><font size=\"+1\">The JLM is a Learning Management System (LMS) aiming at teaching the art of computer " +
+				"<p><font size=\"+1\">The PLM is a Learning Management System (LMS) aiming at teaching the art of computer " +
 				"programming through interactive exercises. It offers an extensive set of varied " +
 				"exercises, allowing you to practice at your own pace.</font></p><br/>"));
 
@@ -90,7 +90,7 @@ public class ChooseLessonDialog extends JFrame {
 
 
 class LessonMatrix extends JPanel {
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private static final long serialVersionUID = 1L;
 
@@ -129,7 +129,7 @@ class LessonMatrix extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JFileChooser fc = new JFileChooser();
-				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("JLM lesson files"), "jlm"));
+				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PLM lesson files"), "plm"));
 				fc.setDialogType(JFileChooser.OPEN_DIALOG);
 				fc.showOpenDialog(MainFrame.getInstance());
 				File selectedFile = fc.getSelectedFile();
@@ -156,7 +156,7 @@ class LessonOverview extends JPanel {
 	private JButton btGo;
 	private String path;
 	private JEditorPane desc;
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	public LessonOverview(final ChooseLessonDialog lc) {
 		setLayout(new BorderLayout());
@@ -164,7 +164,7 @@ class LessonOverview extends JPanel {
 		setBackground(Color.white);
 		desc = new JEditorPane("text/html", "");
 		desc.setEditable(false);
-		desc.setEditorKit(new JlmHtmlEditorKit());
+		desc.setEditorKit(new PlmHtmlEditorKit());
 		desc.setText(i18n.tr("<h1>Please pick a lesson</h1>\n" +
 				"<p>Please click on an icon on the left to select a lesson.</p>\n" +
 				"<p>Lessons located above are generally simpler than the ones located below.</p>"));

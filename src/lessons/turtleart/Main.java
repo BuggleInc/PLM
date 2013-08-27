@@ -125,7 +125,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 			    
 			String lessonPart = "lessons."+getLesson().getId().replace("/",".").replace(".Main","");
 			String exoPart = exo.getLocalId(); 
-			res.append("<a href=\"jlm://"+lessonPart+"/"+exoPart+"\">");
+			res.append("<a href=\"plm://"+lessonPart+"/"+exoPart+"\">");
 			res.append("<img src=\"");
 			res.append(path);
 			res.append("\"></a> ");

@@ -8,7 +8,7 @@ public class MissionEditorApp {
 
 	public static void main(String[] args) {
 		MissionEditor editor = new MissionEditor();
-		Game.getInstance().switchDebug(); // Forces the JlmHTMLEditorKit to also display all blocks marked with a class
+		Game.getInstance().switchDebug(); // Forces the PlmHTMLEditorKit to also display all blocks marked with a class
 		if (args.length>0)
 			editor.loadMission(args[0]);
 		else {

@@ -19,7 +19,7 @@ import jsyntaxpane.syntaxkits.ScalaSyntaxKit;
 import jsyntaxpane.syntaxkits.XHTMLSyntaxKit;
 import jsyntaxpane.util.Configuration;
 
-public class JlmSyntaxPane {
+public class PlmSyntaxPane {
 
 	public static void initKits() {
 		DefaultSyntaxKit.initKit();
@@ -72,7 +72,7 @@ public class JlmSyntaxPane {
 			props.load(new FileReader(bindings));				
 			conf.putAll(props);				
 		} catch (Exception e) {
-			System.out.println("Error while reading the jlm bindings: "+e.getLocalizedMessage());
+			System.out.println("Error while reading the plm bindings: "+e.getLocalizedMessage());
 		} finally {
 			if (out != null)
 				try {

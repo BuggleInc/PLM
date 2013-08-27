@@ -12,7 +12,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
-import plm.core.ui.JlmHtmlEditorKit;
+import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 
 /** Represents an element of the pedagogic sequence, be it a lecture or 
@@ -61,7 +61,7 @@ public abstract class Lecture {
 		name = n;
 	}
 	public String getName() {
-		return JlmHtmlEditorKit.filterHTML(name, false);
+		return PlmHtmlEditorKit.filterHTML(name, false);
 	}
 
 	public Lesson getLesson() {
@@ -70,7 +70,7 @@ public abstract class Lecture {
 
 
 	public String getMission(ProgrammingLanguage lang) {
-		String res = "<html><head>"+JlmHtmlEditorKit.getCSS()+"</head><body>"+JlmHtmlEditorKit.filterHTML(this.mission,Game.getInstance().isDebugEnabled())+"</body></html>";
+		String res = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+PlmHtmlEditorKit.filterHTML(this.mission,Game.getInstance().isDebugEnabled())+"</body></html>";
 		return res;
 	}
 	public void setMission(String mission) {

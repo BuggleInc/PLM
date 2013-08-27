@@ -38,7 +38,7 @@ public class MainFrame extends JFrame {
 	private ButtonGroup tools;
 	private String path;	
 	
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 	
 	public MainFrame(Editor editor) {
 		super("BuggleQuest - MapEditor");
@@ -231,7 +231,7 @@ public class MainFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JFileChooser fc = new JFileChooser();
-			fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("JLM map files"), "map"));
+			fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PLM map files"), "map"));
 			int status = fc.showOpenDialog(MainFrame.this);
 
 			if (status == JFileChooser.APPROVE_OPTION) {

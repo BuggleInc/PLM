@@ -25,11 +25,11 @@ import plm.core.model.Game;
 public class XMPPDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	private static String XMPP_HOSTNAME = Game.getProperty("jlm.xmpp.hostname");
-	private static final int XMPP_PORT = Integer.parseInt(Game.getProperty("jlm.xmpp.port"));
+	private static String XMPP_HOSTNAME = Game.getProperty("plm.xmpp.hostname");
+	private static final int XMPP_PORT = Integer.parseInt(Game.getProperty("plm.xmpp.port"));
 	
-	private String USERNAME = Game.getProperty("jlm.xmpp.username");
-	private String PASSWORD = Game.getProperty("jlm.xmpp.password");
+	private String USERNAME = Game.getProperty("plm.xmpp.username");
+	private String PASSWORD = Game.getProperty("plm.xmpp.password");
 		
 	private String login;
 	
@@ -41,7 +41,7 @@ public class XMPPDialog extends JDialog {
 	private JTextField input = new JTextField();
 
 	public XMPPDialog() {
-		super(MainFrame.getInstance(), "The JLM XMPP Chat", false);
+		super(MainFrame.getInstance(), "The PLM XMPP Chat", false);
 		
 		this.login = System.getenv("USER");
 		if (this.login  == null)

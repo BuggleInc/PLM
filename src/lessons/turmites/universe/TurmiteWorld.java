@@ -48,7 +48,7 @@ public class TurmiteWorld extends BuggleWorld {
 	
 	/** Reset the state of the current world to the one passed in argument
 	 * 
-	 * This is mandatory for the JLM good working. Even if the prototype says that the passed object can be 
+	 * This is mandatory for the PLM good working. Even if the prototype says that the passed object can be 
 	 * any kind of world, you can be sure that it's of the same type than the current world. So, there is 
 	 * no need to check before casting your argument.
 	 * 

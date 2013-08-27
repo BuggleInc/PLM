@@ -15,23 +15,23 @@ import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
 
-public class AboutJLMDialog extends JDialog {
+public class AboutPLMDialog extends JDialog {
 
 	private static final long serialVersionUID = -1800747039420103759L;
-	private static AboutJLMDialog instance = null;
+	private static AboutPLMDialog instance = null;
 	
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	
-	public static AboutJLMDialog getInstance() {
-		if (AboutJLMDialog.instance == null)
-			AboutJLMDialog.instance = new AboutJLMDialog();
-		return AboutJLMDialog.instance;
+	public static AboutPLMDialog getInstance() {
+		if (AboutPLMDialog.instance == null)
+			AboutPLMDialog.instance = new AboutPLMDialog();
+		return AboutPLMDialog.instance;
 	}
 	
-	private AboutJLMDialog() {
-		super(MainFrame.getInstance(), "About JLM", true);
-		this.setTitle(i18n.tr("About JLM dialogTitle"));
+	private AboutPLMDialog() {
+		super(MainFrame.getInstance(), "About PLM", true);
+		this.setTitle(i18n.tr("About PLM dialogTitle"));
 		initComponent();
 	}
 	
@@ -47,8 +47,8 @@ public class AboutJLMDialog extends JDialog {
 		
 		JLabel text = new JLabel(
 				"<html>"+
-				"<h3 style=\"color:#666666;margin:0px;padding:0px;\">version "+Game.getProperty("jlm.major.version","internal",false)+"&nbsp;"+
-				"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">("+Game.getProperty("jlm.major.version","internal",false)+"."+Game.getProperty("jlm.minor.version","",false)+")</span>"+
+				"<h3 style=\"color:#666666;margin:0px;padding:0px;\">version "+Game.getProperty("plm.major.version","internal",false)+"&nbsp;"+
+				"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")</span>"+
 				"</h3>"+
 				"<br/>"+
 				"&copy; 2008-2011 Contributors. All rights reserved.<br/>"+

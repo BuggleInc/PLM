@@ -52,8 +52,8 @@ open J,">$upname.java" || die "Cannot open $upname.java: $!\n";
 
 print J "/* automatically converted from the Nick Parlante's excellent exercising site http://javabat.com/ */\n\n";	
 print J "package lessons.bat.$package;\n";
-print J "import jlm.lesson.Lesson;\n";
-print J "import jlm.universe.World;\n";
+print J "import plm.lesson.Lesson;\n";
+print J "import plm.universe.World;\n";
 print J "import universe.bat.BatExercise;\n";
 print J "import universe.bat.BatWorld;\n\n";
 print J "public class $upname extends BatExercise {\n";
@@ -104,6 +104,6 @@ print "Write $upname.html\n";
 open H,">$upname.html" || die "Cannot open $upname.html: $!\n";
 print H "<h1>$upname</h1>\n";
 print H "$mission\n";
-print H "\n<p>This exercise was converted to JLM from the excellent exercising site http://javabat.com/</p>\n";
+print H "\n<p>This exercise was converted to PLM from the excellent exercising site http://javabat.com/</p>\n";
 close H;
 

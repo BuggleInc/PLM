@@ -18,13 +18,13 @@ msgstr ""
 
 #. type: Content of: <h2>
 #: lib/doc/MainWindow.html:1
-msgid "The JLM Main Window"
+msgid "The PLM Main Window"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: lib/doc/MainWindow.html:3
 msgid ""
-"The JLM working environment should be self-explanatory, in particular with "
+"The PLM working environment should be self-explanatory, in particular with "
 "the tool tips appearing when your mouse is over the elements.  Here is a "
 "little explanation of the components in case you fail to understand "
 "something. The main window is made of 5 main components:"
@@ -205,12 +205,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/jlm/universe/sort/SortingWorld.html:1
+#: src/plm/universe/sort/SortingWorld.html:1
 msgid "Sorting World"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/sort/SortingWorld.html:2
+#: src/plm/universe/sort/SortingWorld.html:2
 msgid ""
 "This world provides tools to experiment with the sorting algorithms. It can "
 "be used in two different ways: the first one is naturally to write the "
@@ -220,156 +220,156 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/sort/SortingWorld.html:8
+#: src/plm/universe/sort/SortingWorld.html:8
 msgid "Methods available to sorting algorithms"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:10
+#: src/plm/universe/sort/SortingWorld.html:10
 msgid "<b>Method</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:10
+#: src/plm/universe/sort/SortingWorld.html:10
 msgid "<b>Action</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:10
+#: src/plm/universe/sort/SortingWorld.html:10
 msgid "<b>Cost</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:11
+#: src/plm/universe/sort/SortingWorld.html:11
 msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:12
+#: src/plm/universe/sort/SortingWorld.html:12
 msgid "Returns the amount of values in the array"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:12 src/jlm/universe/sort/SortingWorld.html:30
+#: src/plm/universe/sort/SortingWorld.html:12 src/plm/universe/sort/SortingWorld.html:30
 msgid "none"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:14
+#: src/plm/universe/sort/SortingWorld.html:14
 msgid ""
 "[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int "
 "[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:15
+#: src/plm/universe/sort/SortingWorld.html:15
 msgid ""
 "Returns true if the content of cell i is strictly smaller than the one of "
 "cell j"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:15
+#: src/plm/universe/sort/SortingWorld.html:15
 msgid "two reads"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:16
+#: src/plm/universe/sort/SortingWorld.html:16
 msgid ""
 "[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], "
 "[!java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:17
+#: src/plm/universe/sort/SortingWorld.html:17
 msgid ""
 "Returns true if the content of cell i is strictly smaller than the "
 "<code>value</code>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:17 src/jlm/universe/sort/SortingWorld.html:25
+#: src/plm/universe/sort/SortingWorld.html:17 src/plm/universe/sort/SortingWorld.html:25
 msgid "one read"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:19
+#: src/plm/universe/sort/SortingWorld.html:19
 msgid ""
 "[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int "
 "[/!]j[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:20
+#: src/plm/universe/sort/SortingWorld.html:20
 msgid "Swaps the content of cell i and the one of cell j"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:20
+#: src/plm/universe/sort/SortingWorld.html:20
 msgid "two reads, two writes"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:21
+#: src/plm/universe/sort/SortingWorld.html:21
 msgid ""
 "[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int "
 "[/!]to[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:22
+#: src/plm/universe/sort/SortingWorld.html:22
 msgid "Copy the content of cell 'from' into the cell 'to'"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:22
+#: src/plm/universe/sort/SortingWorld.html:22
 msgid "one read, one write"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:24
+#: src/plm/universe/sort/SortingWorld.html:24
 msgid "[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:25
+#: src/plm/universe/sort/SortingWorld.html:25
 msgid "Returns the value of cell idx"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:26
+#: src/plm/universe/sort/SortingWorld.html:26
 msgid ""
 "[!java]void [/!]setValue([!java]int [/!]idx[!scala]:Int[/!], [!java]int "
 "[/!]value[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:27
+#: src/plm/universe/sort/SortingWorld.html:27
 msgid "Sets cell 'idx' to the <code>value</code>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:27
+#: src/plm/universe/sort/SortingWorld.html:27
 msgid "one write"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/sort/SortingWorld.html:29
+#: src/plm/universe/sort/SortingWorld.html:29
 msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/sort/SortingWorld.html:30 src/lessons/recursion/hanoi/universe/HanoiWorld.html:24 src/lessons/sort/pancake/universe/PancakeWorld.html:21
+#: src/plm/universe/sort/SortingWorld.html:30 src/lessons/recursion/hanoi/universe/HanoiWorld.html:24 src/lessons/sort/pancake/universe/PancakeWorld.html:21
 msgid "Returns whether the current world is selected in the graphical interface."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/sort/SortingWorld.html:34
+#: src/plm/universe/sort/SortingWorld.html:34
 msgid "History view"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:35
+#: src/plm/universe/sort/SortingWorld.html:35
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -380,7 +380,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:42
+#: src/plm/universe/sort/SortingWorld.html:42
 msgid ""
 "To help in this process, it is possible to graphically explore the history "
 "of your sorting algorithm. Switch to the Objective view and use the "
@@ -389,7 +389,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:47 src/lessons/sort/bubble/AlgBubbleSort1.html:18
+#: src/plm/universe/sort/SortingWorld.html:47 src/lessons/sort/bubble/AlgBubbleSort1.html:18
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -402,24 +402,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/sort/SortingWorld.html:56
+#: src/plm/universe/sort/SortingWorld.html:56
 msgid ""
 "This view, inspired from Aldo Cortesi, reveals very helpful understand the "
 "inner behavior of sorting algorithms."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/jlm/universe/turtles/TurtleWorld.html:1
+#: src/plm/universe/turtles/TurtleWorld.html:1
 msgid "The universe of turtles"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/turtles/TurtleWorld.html:3
+#: src/plm/universe/turtles/TurtleWorld.html:3
 msgid "This is an adaptation of LOGO for the Java Learning Machine."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/turtles/TurtleWorld.html:5
+#: src/plm/universe/turtles/TurtleWorld.html:5
 msgid ""
 "It is directly inspired from the work of the mathematician Seymour Papert in "
 "the 60's. Inspired from the swiss psycholog Jean Piaget, he came up with a "
@@ -429,12 +429,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:11
+#: src/plm/universe/turtles/TurtleWorld.html:11
 msgid "Functions to move the turtle"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:13
+#: src/plm/universe/turtles/TurtleWorld.html:13
 #, no-wrap
 msgid ""
 "[!java]void [/!]forward([!java]double [/!]steps[!scala]:Double[/!])\n"
@@ -442,12 +442,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:15
+#: src/plm/universe/turtles/TurtleWorld.html:15
 msgid "Moves forward or backward of the requested amount of steps."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:17
+#: src/plm/universe/turtles/TurtleWorld.html:17
 #, no-wrap
 msgid ""
 "[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])\n"
@@ -455,12 +455,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:19
+#: src/plm/universe/turtles/TurtleWorld.html:19
 msgid "Turns left or right of the given angle (in degrees)."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:21
+#: src/plm/universe/turtles/TurtleWorld.html:21
 #, no-wrap
 msgid ""
 "[!java]double [/!]getX()[!scala]:Double[/!]\n"
@@ -468,12 +468,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:23
+#: src/plm/universe/turtles/TurtleWorld.html:23
 msgid "Returns the current position of the turtle."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:25
+#: src/plm/universe/turtles/TurtleWorld.html:25
 #, no-wrap
 msgid ""
 "[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
@@ -483,12 +483,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:28
+#: src/plm/universe/turtles/TurtleWorld.html:28
 msgid "Teleports the turtle to a new position (without leaving any trace)."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:30
+#: src/plm/universe/turtles/TurtleWorld.html:30
 #, no-wrap
 msgid ""
 "[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double "
@@ -496,130 +496,130 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:31
+#: src/plm/universe/turtles/TurtleWorld.html:31
 msgid "Moves the turtle to a new position."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:33
+#: src/plm/universe/turtles/TurtleWorld.html:33
 #, no-wrap
 msgid "[!java]void [/!]circle([!java]double [/!]radius[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:34
+#: src/plm/universe/turtles/TurtleWorld.html:34
 msgid "Draw a circle of the specified radius centered on the turtle."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:36
+#: src/plm/universe/turtles/TurtleWorld.html:36
 #, no-wrap
 msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:37
 msgid "Returns the current heading of the turtle (in degrees)."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:39
+#: src/plm/universe/turtles/TurtleWorld.html:39
 #, no-wrap
 msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:40
+#: src/plm/universe/turtles/TurtleWorld.html:40
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:42
+#: src/plm/universe/turtles/TurtleWorld.html:42
 msgid "Functions about the pen"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:44
+#: src/plm/universe/turtles/TurtleWorld.html:44
 #, no-wrap
 msgid "[!java]void [/!]penUp()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:45
+#: src/plm/universe/turtles/TurtleWorld.html:45
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:48
+#: src/plm/universe/turtles/TurtleWorld.html:48
 #, no-wrap
 msgid "[!java]void [/!]penDown()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:49
+#: src/plm/universe/turtles/TurtleWorld.html:49
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:51
+#: src/plm/universe/turtles/TurtleWorld.html:51
 #, no-wrap
 msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:52
+#: src/plm/universe/turtles/TurtleWorld.html:52
 msgid "Returns the current pen position as a boolean."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/turtles/TurtleWorld.html:54 src/jlm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/turtles/TurtleWorld.html:54 src/plm/universe/bugglequest/BuggleWorld.html:25
 #, no-wrap
 msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:55
+#: src/plm/universe/turtles/TurtleWorld.html:55
 msgid "Returns the current pen color."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:57
+#: src/plm/universe/turtles/TurtleWorld.html:57
 #, no-wrap
 msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:58
+#: src/plm/universe/turtles/TurtleWorld.html:58
 msgid "Changes the pen color."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/turtles/TurtleWorld.html:60
+#: src/plm/universe/turtles/TurtleWorld.html:60
 msgid "Other functions"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/jlm/universe/turtles/TurtleWorld.html:62 src/jlm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#: src/plm/universe/turtles/TurtleWorld.html:62 src/plm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/turtles/TurtleWorld.html:63
+#: src/plm/universe/turtles/TurtleWorld.html:63
 msgid "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:1
+#: src/plm/universe/bugglequest/BuggleWorld.html:1
 msgid "BuggleWorld"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/bugglequest/BuggleWorld.html:2
+#: src/plm/universe/bugglequest/BuggleWorld.html:2
 msgid ""
 "This world was invented by Lyn Turbak, at Wellesley College. It is full of "
 "Buggles, little animals understanding simple orders, and offers numerous "
@@ -628,363 +628,363 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:7
+#: src/plm/universe/bugglequest/BuggleWorld.html:7
 msgid "Methods understood by buggles"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:9
+#: src/plm/universe/bugglequest/BuggleWorld.html:9
 msgid "<b>Moving</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:9
+#: src/plm/universe/bugglequest/BuggleWorld.html:9
 msgid "(See also the note on exceptions, below)"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
+#: src/plm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "<b>Turn left"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
+#: src/plm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Turn right"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
+#: src/plm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Turn back"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
+#: src/plm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Moving forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
+#: src/plm/universe/bugglequest/BuggleWorld.html:10 src/lessons/turmites/universe/TurmiteWorld.html:9
 msgid "Moving back</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:11 src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "[!java]void [/!]left()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:12 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:12 src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "[!java]void [/!]right()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:13 src/lessons/turmites/universe/TurmiteWorld.html:10
+#: src/plm/universe/bugglequest/BuggleWorld.html:13 src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "[!java]void [/!]back()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:14 src/lessons/turmites/universe/TurmiteWorld.html:11
+#: src/plm/universe/bugglequest/BuggleWorld.html:14 src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid ""
 "[!java]void [/!]forward() or [!java]void [/!]forward([!java]int "
 "[/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:15 src/lessons/turmites/universe/TurmiteWorld.html:12
+#: src/plm/universe/bugglequest/BuggleWorld.html:15 src/lessons/turmites/universe/TurmiteWorld.html:12
 msgid ""
 "[!java]void [/!]backward() or [!java]void [/!]backward([!java]int "
 "[/!]steps[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
 msgid "<b>Get X coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
 msgid "Get Y coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
 msgid "Set X coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
 msgid "Set Y coordinate"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:16
+#: src/plm/universe/bugglequest/BuggleWorld.html:16
 msgid "Set position</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:17
+#: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "[!java]int [/!]getX()[!scala]:Int[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:18
+#: src/plm/universe/bugglequest/BuggleWorld.html:18
 msgid "[!java]int [/!]getY()[!scala]:Int[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:19
+#: src/plm/universe/bugglequest/BuggleWorld.html:19
 msgid "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:20
+#: src/plm/universe/bugglequest/BuggleWorld.html:20
 msgid "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:21
+#: src/plm/universe/bugglequest/BuggleWorld.html:21
 msgid ""
 "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int "
 "[/!]y[!scala]:Int[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:23
+#: src/plm/universe/bugglequest/BuggleWorld.html:23
 msgid "<b>Information on the buggle</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:24
+#: src/plm/universe/bugglequest/BuggleWorld.html:24
 msgid "<b>Get the color"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:24
+#: src/plm/universe/bugglequest/BuggleWorld.html:24
 msgid "Set the color</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:26
+#: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "[!java]void [/!]setColor([!java]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:27
+#: src/plm/universe/bugglequest/BuggleWorld.html:27
 msgid "<b>Look for a wall forward"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:27
+#: src/plm/universe/bugglequest/BuggleWorld.html:27
 msgid "Look for a wall backward</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:28
+#: src/plm/universe/bugglequest/BuggleWorld.html:28
 msgid "[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:29
+#: src/plm/universe/bugglequest/BuggleWorld.html:29
 msgid "[!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:30
+#: src/plm/universe/bugglequest/BuggleWorld.html:30
 msgid "<b>Get heading"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:30
+#: src/plm/universe/bugglequest/BuggleWorld.html:30
 msgid "Set heading</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:30
+#: src/plm/universe/bugglequest/BuggleWorld.html:30
 msgid "valid directions are:"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:31
+#: src/plm/universe/bugglequest/BuggleWorld.html:31
 msgid "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:32
+#: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:33
+#: src/plm/universe/bugglequest/BuggleWorld.html:33
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:34
+#: src/plm/universe/bugglequest/BuggleWorld.html:34
 msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:37
+#: src/plm/universe/bugglequest/BuggleWorld.html:37
 msgid "<b>About the brush</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38
+#: src/plm/universe/bugglequest/BuggleWorld.html:38
 msgid "<b>Brush down"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38
+#: src/plm/universe/bugglequest/BuggleWorld.html:38
 msgid "Brush up"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:38
+#: src/plm/universe/bugglequest/BuggleWorld.html:38
 msgid "Get brush position</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:39
+#: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "[!java]void [/!]brushUp()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:40
+#: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "[!java]void [/!]brushDown()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:41
+#: src/plm/universe/bugglequest/BuggleWorld.html:41
 msgid "[!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:42
+#: src/plm/universe/bugglequest/BuggleWorld.html:42
 msgid "<b>Change the brush color"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:42
+#: src/plm/universe/bugglequest/BuggleWorld.html:42
 msgid "Get the color of the brush</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:43
+#: src/plm/universe/bugglequest/BuggleWorld.html:43
 msgid "[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:44
+#: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "[!java]Color [/!]getBrushColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:46
+#: src/plm/universe/bugglequest/BuggleWorld.html:46
 msgid "<b>Interacting with the world</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:47 src/lessons/turmites/universe/TurmiteWorld.html:14
+#: src/plm/universe/bugglequest/BuggleWorld.html:47 src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "<b>Get the color of the ground</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:48 src/lessons/turmites/universe/TurmiteWorld.html:14
+#: src/plm/universe/bugglequest/BuggleWorld.html:48 src/lessons/turmites/universe/TurmiteWorld.html:14
 msgid "[!java]Color [/!]getGroundColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50
+#: src/plm/universe/bugglequest/BuggleWorld.html:50
 msgid "<b>Look for a baggle on the ground"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50
+#: src/plm/universe/bugglequest/BuggleWorld.html:50
 msgid "Look for a baggle in bag"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50
+#: src/plm/universe/bugglequest/BuggleWorld.html:50
 msgid "Pickup a baggle"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:50
+#: src/plm/universe/bugglequest/BuggleWorld.html:50
 msgid "Drop a baggle</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:51
+#: src/plm/universe/bugglequest/BuggleWorld.html:51
 msgid "(see the note on exceptions)"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:52
+#: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:53
+#: src/plm/universe/bugglequest/BuggleWorld.html:53
 msgid "[!java]boolean [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:54
+#: src/plm/universe/bugglequest/BuggleWorld.html:54
 msgid "[!java]void [/!]pickupBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:55
+#: src/plm/universe/bugglequest/BuggleWorld.html:55
 msgid "[!java]void [/!]dropBaggle()"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "<b>Look for a message"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "Add a message"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "Read the message"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:57
 msgid "Erase the message</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:58
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "[!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:60
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "[!java]String [/!]readMessage()[!scala]:String[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:61
+#: src/plm/universe/bugglequest/BuggleWorld.html:61
 msgid "[!java]void [/!]clearMessage()"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:64
+#: src/plm/universe/bugglequest/BuggleWorld.html:64
 msgid "Note on exceptions"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/bugglequest/BuggleWorld.html:65
+#: src/plm/universe/bugglequest/BuggleWorld.html:65
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -995,7 +995,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/bugglequest/BuggleWorld.html:71
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -1086,7 +1086,7 @@ msgid ""
 "and compiling. Also, they have a good editor that we could reuse. Finally, "
 "they have a strong testing infrastructure with junit ensuring that their "
 "tool still work after modifications (that's something we are seriously "
-"missing in JLM). I'm really thinking that the two tools should converge to "
+"missing in PLM). I'm really thinking that the two tools should converge to "
 "something stronger. The only argument for not doing so (beside the amount of "
 "work it'll take) is that each of us get the credit for each tool where "
 "things would be more fuzzy on a mixed tool. But I don't care, the mixed tool "
@@ -1128,15 +1128,15 @@ msgstr ""
 msgid ""
 "This gives me the following todo actions: * Check whether tools.jar gives a "
 "working com.sun.jdi package * Find the DrJava bug around debugging to help "
-"them, and so that I can steal parts of their code about it for JLM (it's "
-"BSD'ed while JLM is mainly GPL'ed for now -- I'll have to ask them for an "
+"them, and so that I can steal parts of their code about it for PLM (it's "
+"BSD'ed while PLM is mainly GPL'ed for now -- I'll have to ask them for an "
 "exception). That would be better since their helper interface seem to be "
 "able to deal with several debuggers (eclipse, sun or openjdk). That's quite "
 "a large amount of work I'd like to avoid duplicating.  * Check wheter I can "
 "get tracing info from ASM. It may be more robust to JVM variants than the "
-"debugging approach. On the other hand, debugging is a neat feature for JLM "
-"as is.  * Work on the convergence of JLM and DrJava. Beside of the licencing "
-"issue, it will also complicate the ongoing integration of JLM within Debian, "
+"debugging approach. On the other hand, debugging is a neat feature for PLM "
+"as is.  * Work on the convergence of PLM and DrJava. Beside of the licencing "
+"issue, it will also complicate the ongoing integration of PLM within Debian, "
 "since DrJava is composed of [[5 separated "
 "modules|http://drjava.org/docs/developer/ch02s03.html]] that can only be "
 "integrated as separated source packages. As every java package, no source "
@@ -1157,7 +1157,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/chooser/LessonChooser.html:7
 msgid ""
-"The JLM is a Learning Management System (LMS) aiming at teaching the art of "
+"The PLM is a Learning Management System (LMS) aiming at teaching the art of "
 "computer programming through interactive exercises. It offers an extensive "
 "set of varied exercises, allowing you to practice at your own pace."
 msgstr ""
@@ -1170,42 +1170,42 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:13
 msgid ""
-"<a href=\"jlm://lessons.welcome\">Welcome lesson</a> This lesson is intended "
+"<a href=\"plm://lessons.welcome\">Welcome lesson</a> This lesson is intended "
 "to lead the first steps in programming of absolute beginners."
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:16
 msgid ""
-"<a href=\"jlm://lessons.maze\">Escape the maze</a> Will you escape the "
+"<a href=\"plm://lessons.maze\">Escape the maze</a> Will you escape the "
 "mazes?"
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:18
 msgid ""
-"<a href=\"jlm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
+"<a href=\"plm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
 "on strings."
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:20
 msgid ""
-"<a href=\"jlm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
+"<a href=\"plm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
 "to discover the classical sorting algorithms by practice."
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:23
 msgid ""
-"<a href=\"jlm://lessons.recursion\">Recursion lesson</a> Build some "
+"<a href=\"plm://lessons.recursion\">Recursion lesson</a> Build some "
 "classical geometric figures through recursion."
 msgstr ""
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:26
 msgid ""
-"<a href=\"jlm://lessons.lightbot\">LightBot</a> In this little game, you "
+"<a href=\"plm://lessons.lightbot\">LightBot</a> In this little game, you "
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
@@ -1213,7 +1213,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:30
 msgid ""
-"<a href=\"jlm://lessons.smn\">Digital Manual Science</a> Some activities "
+"<a href=\"plm://lessons.smn\">Digital Manual Science</a> Some activities "
 "developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
 msgstr ""
 
@@ -1527,7 +1527,7 @@ msgid ""
 "do.  The white area below is the console: this is where errors and messages "
 "get displayed. Note that when you successfully solve an exercise, the good "
 "news is spread on twitter and identica.  Keep posted to the progress of your "
-"friends by following @jlmlovers :)"
+"friends by following @plmlovers :)"
 msgstr ""
 
 #. type: Content of: <p>
@@ -3129,9 +3129,9 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:90
 msgid ""
-"The CamelCase convention is used everywhere in JLM because this program is "
+"The CamelCase convention is used everywhere in PLM because this program is "
 "written in Java itself, so we kept our habits when adding new languages. But "
-"the fact that the Python bindings of JLM use the CamelCase instead of the "
+"the fact that the Python bindings of PLM use the CamelCase instead of the "
 "snake_case is considered as a bug that we will fix in further releases."
 msgstr ""
 
@@ -3740,7 +3740,7 @@ msgid ""
 "your code simple and pleasant to read.  Complete the run which prototype is "
 "already given. It will be called automatically (once).  [!java]the public "
 "keyword means more or less that anybody can call this method, which is good "
-"because the JLM infrastructure calls it directly.[/!]"
+"because the PLM infrastructure calls it directly.[/!]"
 msgstr ""
 
 #. type: Content of: <h2>
@@ -4946,7 +4946,7 @@ msgstr ""
 
 #. type: Content of: <h3>
 #: src/lessons/turmites/Main.html:21 src/lessons/sort/pancake/Main.html:29 src/lessons/sort/baseball/Main.html:27 src/lessons/turtleart/Main.html:11
-msgid "What can I do to improve this JLM universe?"
+msgid "What can I do to improve this PLM universe?"
 msgstr ""
 
 #. type: Content of: <p>
@@ -5250,7 +5250,7 @@ msgstr ""
 msgid ""
 "You should probably use a [!java]switch case[/!][!scala]pattern matching[/!] "
 "construct to keep your code readable.  If you can't remember what it is, "
-"check <a href=\"jlm://lessons.welcome/bdr.BDR2\">this exercise</a>."
+"check <a href=\"plm://lessons.welcome/bdr.BDR2\">this exercise</a>."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -7460,12 +7460,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/jlm/universe/lightbot/LightBotWorld.html:1 src/lessons/lightbot/Main.html:1 src/lessons/lightbot/short_desc.html:1
+#: src/plm/universe/lightbot/LightBotWorld.html:1 src/lessons/lightbot/Main.html:1 src/lessons/lightbot/short_desc.html:1
 msgid "LightBot"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/jlm/universe/lightbot/LightBotWorld.html:3
+#: src/plm/universe/lightbot/LightBotWorld.html:3
 msgid ""
 "This universe introduces a little programming puzzle which can somehow be "
 "used to introduce programmation to non-reading kids since it is programmed "
@@ -7474,32 +7474,32 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:7
+#: src/plm/universe/lightbot/LightBotWorld.html:7
 msgid "<b>Order</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:7
+#: src/plm/universe/lightbot/LightBotWorld.html:7
 msgid "<b>Meaning</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:8
+#: src/plm/universe/lightbot/LightBotWorld.html:8
 msgid "<b>Move forward</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:8
+#: src/plm/universe/lightbot/LightBotWorld.html:8
 msgid "Cannot be done if the destination cell is of another height than source cell"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:9
+#: src/plm/universe/lightbot/LightBotWorld.html:9
 msgid "<b>Jump forward</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:9
+#: src/plm/universe/lightbot/LightBotWorld.html:9
 msgid ""
 "Can only be done if the destination cell is one step higher than source "
 "cell, or if destination is lower than source. Cannot be used for plain "
@@ -7507,39 +7507,39 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:10
+#: src/plm/universe/lightbot/LightBotWorld.html:10
 msgid "<b>Turn left</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:11
+#: src/plm/universe/lightbot/LightBotWorld.html:11
 msgid "<b>Turn right</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:12
+#: src/plm/universe/lightbot/LightBotWorld.html:12
 msgid "<b>Switch the light</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:12
+#: src/plm/universe/lightbot/LightBotWorld.html:12
 msgid ""
 "Turn it on if it was off, and off if it was on. No effect if the cell does "
 "not contain any light."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:13
+#: src/plm/universe/lightbot/LightBotWorld.html:13
 msgid "<b>Call function 1</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/jlm/universe/lightbot/LightBotWorld.html:14
+#: src/plm/universe/lightbot/LightBotWorld.html:14
 msgid "<b>Call function 2</b>."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/lightbot/LightBotWorld.html:17
+#: src/plm/universe/lightbot/LightBotWorld.html:17
 msgid ""
 "Please note that this world is not completely suited to small kids since the "
 "main difficulty comes from the fact that your are highly limited in the "
@@ -7549,7 +7549,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/lightbot/LightBotWorld.html:19
+#: src/plm/universe/lightbot/LightBotWorld.html:19
 msgid ""
 "This game is heavily inspirated from a flash game of the same name, which "
 "can for example be played on kongregate.com. It was written by Danny "
@@ -7772,7 +7772,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Close10.html:7 src/lessons/welcome/bat/bool1/Diff21.html:5 src/lessons/welcome/bat/bool1/HasTeen.html:6 src/lessons/welcome/bat/bool1/IcyHot.html:5 src/lessons/welcome/bat/bool1/In1020.html:5 src/lessons/welcome/bat/bool1/In3050.html:5 src/lessons/welcome/bat/bool1/LastDigit.html:9 src/lessons/welcome/bat/bool1/LoneTeen.html:6 src/lessons/welcome/bat/bool1/Main.html:11 src/lessons/welcome/bat/bool1/Makes10.html:5 src/lessons/welcome/bat/bool1/Max1020.html:7 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:7 src/lessons/welcome/bat/bool1/NearHundred.html:7 src/lessons/welcome/bat/bool1/ParotTrouble.html:8 src/lessons/welcome/bat/bool1/PosNeg.html:5 src/lessons/welcome/bat/bool1/SleepIn.html:7 src/lessons/welcome/bat/bool1/SumDouble.html:5 src/lessons/welcome/bat/bool2/AlarmClock.html:11 src/lessons/welcome/bat/bool2/AnswerCell.html:8 src/lessons/welcome/bat/bool2/BlueTicket.html:10 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:11 src/lessons/welcome/bat/bool2/CigarParty.html:9 src/lessons/welcome/bat/bool2/DateFashion.html:12 src/lessons/welcome/bat/bool2/GreenTicket.html:9 src/lessons/welcome/bat/bool2/In1To10.html:8 src/lessons/welcome/bat/bool2/InOrderEqual.html:9 src/lessons/welcome/bat/bool2/InOrder.html:8 src/lessons/welcome/bat/bool2/LastDigit2.html:8 src/lessons/welcome/bat/bool2/LessBy10.html:5 src/lessons/welcome/bat/bool2/Main.html:4 src/lessons/welcome/bat/bool2/MaxMod5.html:9 src/lessons/welcome/bat/bool2/NearTen.html:8 src/lessons/welcome/bat/bool2/RedTicket.html:9 src/lessons/welcome/bat/bool2/ShareDigit.html:9 src/lessons/welcome/bat/bool2/SortaSum.html:7 src/lessons/welcome/bat/bool2/SquirrelPlay.html:10 src/lessons/welcome/bat/bool2/TeaParty.html:11 src/lessons/welcome/bat/bool2/TeenSum.html:8 src/lessons/welcome/bat/bool2/TwoAsOne.html:5 src/lessons/welcome/bat/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Last2.html:8 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7 src/lessons/welcome/array/array123/Array123.html:4 src/lessons/welcome/array/array667/Array667.html:7 src/lessons/welcome/array/arraycount9/ArrayCount9.html:4 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:4 src/lessons/welcome/array/notriples/NoTriples.html:7 src/lessons/welcome/array/has271/Has271.html:8
 msgid ""
-"This exercise was converted to JLM from the excellent exercising site "
+"This exercise was converted to PLM from the excellent exercising site "
 "http://javabat.com/"
 msgstr ""
 
@@ -8321,19 +8321,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/jlm/universe/bat/BatWorld.html:1
+#: src/plm/universe/bat/BatWorld.html:1
 msgid "BatWorld"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/bat/BatWorld.html:3
+#: src/plm/universe/bat/BatWorld.html:3
 msgid ""
 "This world is a simplistic testing environment largely inspired from the "
 "http://codingbat.com invented by Nick Parlente."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/bat/BatWorld.html:6
+#: src/plm/universe/bat/BatWorld.html:6
 msgid ""
 "The typical exercises are very short ones, aiming at improving the tactical "
 "programming abilities of the students. That is to say that you will be "
@@ -8343,7 +8343,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/bat/BatWorld.html:12
+#: src/plm/universe/bat/BatWorld.html:12
 msgid ""
 "In contrary to the other worlds, the BatWorld does not provide any fancy "
 "abstraction nor visualization. You have to fill a function, which gets "
@@ -8351,7 +8351,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/jlm/universe/bat/BatWorld.html:16
+#: src/plm/universe/bat/BatWorld.html:16
 msgid ""
 "For more information, you should refer to the CodingBat.com documentation, "
 "which contains for example a very useful documentation on boolean operators: "
@@ -8386,7 +8386,7 @@ msgstr ""
 #: src/lessons/bat/string1/short_desc.html:3
 msgid ""
 "These are some training exercises around strings. But unfortunately, its "
-"integration within JLM is still ongoing."
+"integration within PLM is still ongoing."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8688,7 +8688,7 @@ msgid ""
 "integers over which the for construct iterates.  Actually, [!thelang] offers "
 "much more elegant ways to traverse [!python]lists[/!][!scala]arrays[/!] and "
 "other data collections, but this should be the topic of a specific set of "
-"exercises (that are still to be written in JLM).[/!]"
+"exercises (that are still to be written in PLM).[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><h3>
@@ -9452,7 +9452,7 @@ msgid ""
 "This activity is also integrated to CSIRL (my repository of <i>free</i> "
 "unplugged activities to introduce computer science, available at "
 "http://www.loria.fr/~quinson/Mediation/SMN/), and it may be interesting to "
-"run the unplugged activities before implementing these algorithms in JLM."
+"run the unplugged activities before implementing these algorithms in PLM."
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -9746,7 +9746,7 @@ msgid ""
 "Unplugged\" activities repository.  It was however heavily since then, first "
 "for the CSIRL (my repository of <i>free</i> unplugged activities to "
 "introduce computer science, available at "
-"http://www.loria.fr/~quinson/Mediation/SMN/) and now for JLM."
+"http://www.loria.fr/~quinson/Mediation/SMN/) and now for PLM."
 msgstr ""
 
 #. type: Content of: <p>
@@ -10306,7 +10306,7 @@ msgstr ""
 msgid ""
 "When you don't want to follow the proposed exercises but draw your own "
 "stuff, the \"you failed\" message really gets annoying.  We should have a "
-"\"Creative mode\" in JLM, where the world is not checked against the "
+"\"Creative mode\" in PLM, where the world is not checked against the "
 "answer.  Also, we should not clean the board automatically in this mode."
 msgstr ""
 

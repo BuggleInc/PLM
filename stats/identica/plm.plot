@@ -1,8 +1,8 @@
 #set terminal pdf color
-#set output "jlmlovers.pdf"
+#set output "plmlovers.pdf"
 
 set terminal png 
-set output "jlmlovers.png"
+set output "plmlovers.png"
   
 set xlabel "" 
 #Time"

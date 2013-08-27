@@ -71,7 +71,7 @@ public class CourseAppEngine extends Course {
             wr.close();
             br.close();
         } catch (IOException e) {
-            System.out.println("Unable to contact JLMServer to send request " + request);
+            System.out.println("Unable to contact PLMServer to send request " + request);
             throw new IOException(e);
         }
         return response;

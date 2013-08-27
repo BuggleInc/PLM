@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="dist" name="JLM">
+<project default="dist" name="PLM">
 	
-    <!-- load ChangeLog and set property jlm.version accordingly -->
-    <loadfile property="jlm.version" srcFile="ChangeLog">
+    <!-- load ChangeLog and set property plm.version accordingly -->
+    <loadfile property="plm.version" srcFile="ChangeLog">
         <filterchain>
             <linecontainsregexp>
               <regexp pattern="[0-9]+:"/>
@@ -43,10 +43,10 @@
     
     <target name="dist" depends="i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">
         <mkdir dir="${dist.dir}"/>
-        <jar destfile="${dist.dir}/jlm-${jlm.version}.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="${dist.dir}/plm-${plm.version}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Built-By" value="M. Quinson and G. Oster" />
-                <attribute name="Main-Class" value="jlm.core.ui.JavaLearningMachine" />
+                <attribute name="Main-Class" value="plm.core.ui.JavaLearningMachine" />
                 <attribute name="Class-Path" value="." />
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
@@ -77,14 +77,14 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smack.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
             
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jlm-messages.jar" />
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
 
         </jar>
     </target>
     
     <target name="dist-src" depends="compile, updateversion" description="build a standalone application jar file">
         <mkdir dir="${dist.dir}"/>
-        <zip destfile="${dist.dir}/jlm-src-${jlm.version}.zip">
+        <zip destfile="${dist.dir}/plm-src-${plm.version}.zip">
             <fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/> 
             <fileset dir="${lib.dir}" excludes="*.jar *.pl"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-2.1.4-SNAPSHOT.jar" />    
@@ -113,10 +113,10 @@
 
     <target name="dist-web" depends="compile, updateversion" description="build webstart application jar files">
         <mkdir dir="${site.dir}/lib"/>
-        <jar destfile="${site.dir}/lib/jlm-webstart.jar" filesetmanifest="mergewithoutmain">
+        <jar destfile="${site.dir}/lib/plm-webstart.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Built-By" value="M. Quinson and G. Oster" />
-                <attribute name="Main-Class" value="jlm.ui.JavaLearningMachine" />
+                <attribute name="Main-Class" value="plm.ui.JavaLearningMachine" />
                 <attribute name="Class-Path" value="." />
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
@@ -139,14 +139,14 @@
         <mkdir dir="${site.dir}/javadoc/"/>
         <javadoc 
             destdir="${site.dir}/javadoc/">
-            <fileset dir="${src.dir}/jlm" includes="**/*.java" />
+            <fileset dir="${src.dir}/plm" includes="**/*.java" />
             <fileset dir="${src.dir}/universe" includes="**/*.java" />
         </javadoc>
     </target>
 
     <target name="updateversion" description="Update the version number in the properties file">
-      <propertyfile file="${lib.dir}/resources/jlm.configuration.properties">
-        <entry key="jlm.minor.version" value="${jlm.version}" operation="="/>
+      <propertyfile file="${lib.dir}/resources/plm.configuration.properties">
+        <entry key="plm.minor.version" value="${plm.version}" operation="="/>
       </propertyfile>
     </target>
 
@@ -158,12 +158,12 @@
       <taskdef name="gettext-dist"    classname="org.xnap.commons.ant.gettext.GettextDistTask"        classpath="${gettexttasks.jar}"/>
     </target>
     <target name="i18n-extract" description="Extracts message keys from the source code" depends="i18n-init">
-      <gettext-extract keysFile="jlm.pot" poDirectory="lib/l10n-engine">
+      <gettext-extract keysFile="plm.pot" poDirectory="lib/l10n-engine">
         <fileset dir="${src.dir}" includes="**/*.java"/>
       </gettext-extract>
     </target>
     <target name="i18n-update" description="Merges newly extracted messages into existing po files" depends="i18n-extract">
-      <gettext-merge keysFile="jlm.pot" poDirectory="lib/l10n-engine"/>
+      <gettext-merge keysFile="plm.pot" poDirectory="lib/l10n-engine"/>
     </target>
     <target name="i18n-check" description="Checks that the extracted messages are correct" depends="i18n-update">
       <!-- single quote sign is used to escape the format strings in MessageFormat;
@@ -191,8 +191,8 @@
     
     <target name="i18n-generate-jar" description="Generates Java ResourceBundles and jars them up" depends="i18n-update, i18n-check">
       <mkdir dir="${site.dir}/po"/>
-      <gettext-dist targetBundle="org.jlm.i18n.Messages" poDirectory="lib/l10n-engine" outputDirectory="${site.dir}/po" />
-      <jar destfile="lib/jlm-messages.jar" basedir="${site.dir}/po" includes="org/**"/>
+      <gettext-dist targetBundle="org.plm.i18n.Messages" poDirectory="lib/l10n-engine" outputDirectory="${site.dir}/po" />
+      <jar destfile="lib/plm-messages.jar" basedir="${site.dir}/po" includes="org/**"/>
       <delete dir="${site.dir}/po"/>
     </target>
     
@@ -214,10 +214,10 @@
         <bundleapp outputdirectory="dist"
             name="${mac.app.name}"
             displayname="Java Learning Machine"
-            identifier="jlm.core.ui.JavaLearningMachine"
-            mainclassname="jlm.core.ui.JavaLearningMachine"
-			icon="${mac.dir}/JLM.icns">
-            <classpath file="dist/jlm-${jlm.version}.jar" />
+            identifier="plm.core.ui.JavaLearningMachine"
+            mainclassname="plm.core.ui.JavaLearningMachine"
+			icon="${mac.dir}/PLM.icns">
+            <classpath file="dist/plm-${plm.version}.jar" />
         </bundleapp>
 		<copy todir="${mac.bundle.dir}/Contents/Resources/fr.lproj">
 			<fileset dir="${fr.lproj.dir}"/>

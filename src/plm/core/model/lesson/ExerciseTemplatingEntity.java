@@ -87,8 +87,8 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		if (getProgLanguages().contains(Game.SCALA)) {
 			SourceFile scalaFile = sourceFiles.get(Game.SCALA).get(0);
 			String header = "$package\n"
-					+ "import jlm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
-					+ "import jlm.universe.World; \n"
+					+ "import plm.universe.bat.{BatEntity,BatWorld,BatTest}; \n"
+					+ "import plm.universe.World; \n"
 					+ "class "+entName+" extends BatEntity { ";
 			
 			scalaFile.setCorrection(header+scalaFile.getCorrection()+" }");

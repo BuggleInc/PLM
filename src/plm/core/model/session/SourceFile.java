@@ -85,7 +85,7 @@ public class SourceFile {
 					System.out.println("pattern key: "+pattern.getKey());
 					System.out.println("pattern value: "+pattern.getValue());
 					System.out.println("Exercise: "+Game.getInstance().getCurrentLesson().getCurrentExercise().getName());
-					System.out.println("JLM version: "+Game.getProperty("jlm.major.version","internal",false)+" ("+Game.getProperty("jlm.major.version","internal",false)+"."+Game.getProperty("jlm.minor.version","",false)+")");
+					System.out.println("JLM version: "+Game.getProperty("plm.major.version","internal",false)+" ("+Game.getProperty("plm.major.version","internal",false)+"."+Game.getProperty("plm.minor.version","",false)+")");
 					System.out.println("Java version: "+System.getProperty("java.version")+" (VM version: "+ System.getProperty("java.vm.version")+")");
 					System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 				}

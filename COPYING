@@ -1,4 +1,4 @@
-Most of the JLM software was written internally by the team. This
+Most of the PLM software was written internally by the team. This
 software is distributed under the GNU general public license version
 3, which you can find in the archive under the name LICENSE-GPL-3.
 
@@ -12,7 +12,7 @@ their license.
 
 =========================================================================
 
-The pedagogical material distributed with JLM is also covered by the
+The pedagogical material distributed with PLM is also covered by the
 CC-BY-SA license, that you can find at:
 http://creativecommons.org/licenses/by-sa/3.0/
 
@@ -44,8 +44,8 @@ We borrowed the following icons, that are CC-BY-SA too:
 
 * The turtle was borowed from the kturtle project, from KDE edu.
 * The bunny and egg in BuggleQuest universe come from:
-  jlm/universe/bugglequest/ui/egg.png     http://openclipart.org/detail/93979/
-  jlm/universe/bugglequest/ui/rabbit.png  http://openclipart.org/detail/23052/
+  plm/universe/bugglequest/ui/egg.png     http://openclipart.org/detail/93979/
+  plm/universe/bugglequest/ui/rabbit.png  http://openclipart.org/detail/23052/
 * Buttons:
   img/btn-demo.png:       http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/games-solve.png
   img/btn-switch-exo.png: http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/code-class.png

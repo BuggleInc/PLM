@@ -35,7 +35,7 @@ public class FeedbackDialog extends JDialog {
 	private static final long serialVersionUID = 0;
 	private static FeedbackDialog instance = null;
 	
-	public I18n i18n = I18nFactory.getI18n(getClass(),"org.jlm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
+	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	
 	public static FeedbackDialog getInstance() {
@@ -56,7 +56,7 @@ public class FeedbackDialog extends JDialog {
 		setLayout(new BorderLayout());
 		JEditorPane explain = new JEditorPane("text/html", "");
 		explain.setText(i18n.tr(
-				"<html><p>Thanks for your feedback on JLM. We deeply need this to make the tool match <br>" +
+				"<html><p>Thanks for your feedback on PLM. We deeply need this to make the tool match <br>" +
 				"your needs, so please don't hesitate to report any suggestion, such as typos and <br/>" +
 				"unclear parts in the mission texts, other improvement to the existing exercises<br/>" +
 				"or prospective exercises. We will do our best to integrate your suggestions.</p>" +
@@ -64,7 +64,7 @@ public class FeedbackDialog extends JDialog {
 				"necessary details, and then click on 'Send' below.</p>" +
 				"<p><b>Please provide your email address so that we can contact you back</b> but <br/>" +
 				"NEVER DISCLOSE A PASSWORD while reporting issues.</p>" +
-				"<p>Note that some technical information (such as your version of JLM and Java) will <br/>" +
+				"<p>Note that some technical information (such as your version of PLM and Java) will <br/>" +
 				"automatically be added to your feedback. None of these automatic information <br/>" +
 				"are personal and you still have to identify yourself if you want to.</p>" +
 
@@ -107,7 +107,7 @@ public class FeedbackDialog extends JDialog {
 				
 	            DefaultHttpClient httpclient = new DefaultHttpClient();
 	            try {
-	                HttpPost post = new HttpPost(new URI("http://www.loria.fr/~quinson/JLM-feedback/report.php"));
+	                HttpPost post = new HttpPost(new URI("http://www.loria.fr/~quinson/PLM-feedback/report.php"));
 
 	                List<NameValuePair> formparams = new ArrayList<NameValuePair>();
 	                formparams.add(new BasicNameValuePair("lesson", Game.getInstance().getCurrentLesson().getId()));
@@ -117,8 +117,8 @@ public class FeedbackDialog extends JDialog {
 	                formparams.add(new BasicNameValuePair("java", System.getProperty("java.version")+" (VM: "+System.getProperty("java.vm.name")+"; version: "+System.getProperty("java.vm.version")+")"));
 	                
 	                formparams.add(new BasicNameValuePair("os", System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")"));
-	                formparams.add(new BasicNameValuePair("jlm", Game.getProperty("jlm.major.version","internal",false)+" ("+
-	                		Game.getProperty("jlm.minor.version","internal",false)+")"));
+	                formparams.add(new BasicNameValuePair("plm", Game.getProperty("plm.major.version","internal",false)+" ("+
+	                		Game.getProperty("plm.minor.version","internal",false)+")"));
 	                
 	                formparams.add(new BasicNameValuePair("text", feedback.getText()));
 
