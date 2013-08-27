@@ -2,9 +2,10 @@ package plm.core.model.tracking;
 
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
+import twitter4j.Status;
 import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
-import twitter4j.http.AccessToken;
+import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterSpy implements ProgressSpyListener {
 	private String username;
@@ -17,20 +18,27 @@ public class TwitterSpy implements ProgressSpyListener {
 		if (username == null)
 			username = "John Doe";
 
-		twitter = new TwitterFactory().getOAuthAuthorizedInstance(
-				Game.getProperty("plm.oauth.consumerKey"), 
-				Game.getProperty("plm.oauth.consumerSecret"), 
-				new AccessToken(Game.getProperty("plm.oauth.accessToken"), Game.getProperty("plm.oauth.tokenSecret")));
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setDebugEnabled(true)
+		  .setOAuthConsumerKey(Game.getProperty("plm.oauth.consumerKey"))
+		  .setOAuthConsumerSecret(Game.getProperty("plm.oauth.consumerSecret"))
+		  .setOAuthAccessToken(Game.getProperty("plm.oauth.accessToken"))
+		  .setOAuthAccessTokenSecret(Game.getProperty("plm.oauth.tokenSecret"));
+		TwitterFactory tf = new TwitterFactory(cb.build());
+	    twitter = tf.getInstance();
 	}
 
 	@Override
 	public void executed(Exercise exo) {
 		if (Game.getInstance().studentWork.getPassed(exo, exo.lastResult.language)) {
 			try {
-				twitter.updateStatus(username+" solved "+exo.getName()+" in "+exo.lastResult.language+"!");
+				Status status = twitter.updateStatus(username+" solved "+exo.getName()+" in "+exo.lastResult.language+"!");
+				if (Game.getInstance().isDebugEnabled()) 
+					System.out.println("Twitted! Status: "+status.toString());
 			} catch (Exception e) {
 				// silently ignore network unavailability ;)
-				//e.printStackTrace();
+				if (Game.getInstance().isDebugEnabled())
+					e.printStackTrace();
 			}
 		}
 	}
