@@ -46,13 +46,12 @@
         <jar destfile="${dist.dir}/plm-${plm.version}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Built-By" value="M. Quinson and G. Oster" />
-                <attribute name="Main-Class" value="plm.core.ui.JavaLearningMachine" />
+                <attribute name="Main-Class" value="plm.core.ui.ProgrammersLearningMachine" />
                 <attribute name="Class-Path" value="." />
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
             <fileset dir="${src.dir}" includes="**/*.py **/*.scala **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl lib/l10n/* lib/l10n-engine/*"/>
-            <!--<zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-3.0.3.jar" /> -->
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-3.0.3.jar" />    
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.4.jar" />
@@ -116,7 +115,7 @@
         <jar destfile="${site.dir}/lib/plm-webstart.jar" filesetmanifest="mergewithoutmain">
             <manifest>
                 <attribute name="Built-By" value="M. Quinson and G. Oster" />
-                <attribute name="Main-Class" value="plm.ui.JavaLearningMachine" />
+                <attribute name="Main-Class" value="plm.ui.ProgrammersLearningMachine" />
                 <attribute name="Class-Path" value="." />
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>

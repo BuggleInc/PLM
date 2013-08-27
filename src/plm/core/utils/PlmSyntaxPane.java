@@ -46,6 +46,10 @@ public class PlmSyntaxPane {
 		Configuration scalaConf = ScalaSyntaxKit.getConfig(ScalaSyntaxKit.class);
 		Configuration xhtmlConf = XHTMLSyntaxKit.getConfig(XHTMLSyntaxKit.class);
 
+		javaConf.put("DefaultFont", "monospaced 12");
+		pyConf.put("DefaultFont", "monospaced 12");
+		scalaConf.put("DefaultFont", "monospaced 12");
+
 		setupKit(javaConf);
 		setupKit(pyConf);
 		setupKit(scalaConf);
