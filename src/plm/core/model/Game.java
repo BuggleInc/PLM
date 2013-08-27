@@ -35,15 +35,14 @@ import plm.core.HumanLangChangesListener;
 import plm.core.ProgLangChangesListener;
 import plm.core.StatusStateListener;
 import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
-import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.session.ZipSessionKit;
 import plm.core.model.tracking.HeartBeatSpy;
-import plm.core.model.tracking.IdenticaSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
 import plm.core.model.tracking.ServerSpyAppEngine;
@@ -103,7 +102,6 @@ public class Game implements IWorldView {
 	                                                                // Turning to false will slow down the startup process, but avoid out of date files
 	
 	public static final String PROP_PROGRESS_TWITTER = "plm.progress.twitter";     //  
-	public static final String PROP_PROGRESS_IDENTICA = "plm.progress.identica";   // Whether the progresses should be posted to identica (default: true)
 	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
 	public static final String PROP_APPENGINE_URL = "plm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
 	
@@ -165,12 +163,6 @@ public class Game implements IWorldView {
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
-		if (getProperty(PROP_PROGRESS_IDENTICA, "true",true).equalsIgnoreCase("true")){
-			System.err.println(i18n.tr("Your progress will be posted to http://identi.ca/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_IDENTICA));
-			addProgressSpyListener(new IdenticaSpy());
-		} else {
-			System.err.println(i18n.tr("Your progress will NOT be posted to identica, as requested by the property {0}",Game.PROP_PROGRESS_IDENTICA));			
-		}
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
 			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
 			addProgressSpyListener(new TwitterSpy());
