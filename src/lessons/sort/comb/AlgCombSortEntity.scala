@@ -1,6 +1,6 @@
 package lessons.sort.comb;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 class ScalaAlgCombSortEntity extends SortingEntity {
 

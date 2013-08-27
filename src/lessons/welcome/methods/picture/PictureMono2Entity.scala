@@ -1,7 +1,7 @@
 package lessons.welcome.methods.picture;
 
 
-class ScalaPictureMono2Entity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaPictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */

@@ -1,7 +1,7 @@
 package lessons.welcome.traversal.column;
 
-import jlm.core.model.Game;
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.core.model.Game;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalByColumnEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */

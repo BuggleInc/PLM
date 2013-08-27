@@ -9,17 +9,17 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 
-import jlm.core.model.Game;
-import jlm.core.model.lesson.Exercise;
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lecture;
-import jlm.core.model.lesson.Lesson;
-import jlm.core.ui.ResourcesCache;
-import jlm.universe.BrokenWorldFileException;
-import jlm.universe.World;
-import jlm.universe.turtles.Turtle;
-import jlm.universe.turtles.TurtleWorld;
-import jlm.universe.turtles.TurtleWorldView;
+import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.Lesson;
+import plm.core.ui.ResourcesCache;
+import plm.universe.BrokenWorldFileException;
+import plm.universe.World;
+import plm.universe.turtles.Turtle;
+import plm.universe.turtles.TurtleWorld;
+import plm.universe.turtles.TurtleWorldView;
 
 public class Main extends Lesson {
 	

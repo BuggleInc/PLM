@@ -1,7 +1,7 @@
 package lessons.chooser;
 
-import jlm.core.model.lesson.Lecture;
-import jlm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.Lesson;
 
 public class LessonChooser extends Lecture {
 

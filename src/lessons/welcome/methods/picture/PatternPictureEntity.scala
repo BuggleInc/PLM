@@ -2,7 +2,7 @@ package lessons.welcome.methods.picture;
 
 import java.awt.Color;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaPatternPictureEntity extends SimpleBuggle {
 

@@ -2,7 +2,7 @@ package lessons.welcome.methods.slug;
 
 import java.awt.Color;
 
-class ScalaSlugHuntingEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaSlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	override def run() {
 		hunt(); 

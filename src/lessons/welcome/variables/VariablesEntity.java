@@ -1,6 +1,6 @@
 package lessons.welcome.variables;
 
-public class VariablesEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("forward(int) forbidden in this exercise");

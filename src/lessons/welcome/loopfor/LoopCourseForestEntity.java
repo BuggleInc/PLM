@@ -2,9 +2,9 @@ package lessons.welcome.loopfor;
 
 import java.awt.Color;
 
-import jlm.core.model.Game;
+import plm.core.model.Game;
 
-public class LoopCourseForestEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class LoopCourseForestEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));

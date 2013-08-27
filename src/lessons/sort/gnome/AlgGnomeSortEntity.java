@@ -1,6 +1,6 @@
 package lessons.sort.gnome;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 public class AlgGnomeSortEntity extends SortingEntity {
 

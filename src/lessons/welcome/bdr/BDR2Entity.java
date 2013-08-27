@@ -2,7 +2,7 @@ package lessons.welcome.bdr;
 
 import java.util.Stack;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class BDR2Entity extends SimpleBuggle {
 	public char getIndication() { 

@@ -6,12 +6,12 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptException;
 import javax.swing.ImageIcon;
 
-import jlm.core.model.Game;
-import jlm.core.model.ProgrammingLanguage;
-import jlm.core.ui.ResourcesCache;
-import jlm.core.ui.WorldView;
-import jlm.universe.EntityControlPanel;
-import jlm.universe.World;
+import plm.core.model.Game;
+import plm.core.model.ProgrammingLanguage;
+import plm.core.ui.ResourcesCache;
+import plm.core.ui.WorldView;
+import plm.universe.EntityControlPanel;
+import plm.universe.World;
 
 /* BEGIN TEMPLATE */
 public class HanoiWorld extends World {	

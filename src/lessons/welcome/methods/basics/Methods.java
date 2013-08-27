@@ -2,12 +2,12 @@ package lessons.welcome.methods.basics;
 
 import java.awt.Color;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.Direction;
-import jlm.universe.bugglequest.Buggle;
-import jlm.universe.bugglequest.BuggleWorld;
-import jlm.universe.bugglequest.exception.AlreadyHaveBaggleException;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
+import plm.universe.Direction;
+import plm.universe.bugglequest.Buggle;
+import plm.universe.bugglequest.BuggleWorld;
+import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 
 public class Methods extends ExerciseTemplated {
 

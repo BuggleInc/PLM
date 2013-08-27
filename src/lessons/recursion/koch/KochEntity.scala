@@ -1,6 +1,6 @@
 package lessons.recursion.koch;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 class ScalaKochEntity extends Turtle {
 

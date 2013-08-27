@@ -1,6 +1,6 @@
 package lessons.sort.cocktail;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 class ScalaAlgCocktailSort1Entity extends SortingEntity {
 

@@ -2,8 +2,8 @@ package lessons.maze;
 
 import java.io.IOException;
 
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.BrokenWorldFileException;
+import plm.core.model.lesson.Lesson;
+import plm.universe.BrokenWorldFileException;
 import lessons.maze.island.IslandMaze;
 import lessons.maze.pledge.PledgeMaze;
 import lessons.maze.randommouse.RandomMouseMaze;

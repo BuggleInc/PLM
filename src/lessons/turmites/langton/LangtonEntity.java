@@ -2,7 +2,7 @@ package lessons.turmites.langton;
 
 import java.awt.Color;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class LangtonEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */

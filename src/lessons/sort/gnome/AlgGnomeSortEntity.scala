@@ -1,6 +1,6 @@
 package lessons.sort.gnome;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 class ScalaAlgGnomeSortEntity extends SortingEntity {
 

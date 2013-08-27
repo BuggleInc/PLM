@@ -2,7 +2,7 @@ package lessons.welcome.loopdowhile;
 
 import java.awt.Color;
 
-public class LoopDoWhileEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class LoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 	boolean isGroundWhite() { 
 		return getGroundColor().equals(Color.white)?true:false;
 	}

@@ -1,6 +1,6 @@
 package lessons.welcome.methods.basics;
 
-public class MethodsEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
 		throw new RuntimeException("forward(int) forbidden in this exercise");

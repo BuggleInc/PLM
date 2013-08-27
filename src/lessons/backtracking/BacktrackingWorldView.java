@@ -6,8 +6,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Rectangle2D;
 
-import jlm.core.ui.WorldView;
-import jlm.universe.World;
+import plm.core.ui.WorldView;
+import plm.universe.World;
 
 public class BacktrackingWorldView extends WorldView {
 	private static final long serialVersionUID = 1L;

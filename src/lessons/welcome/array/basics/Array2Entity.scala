@@ -1,8 +1,8 @@
 package lessons.welcome.array.basics;
 
 import java.awt.Color
-import jlm.universe.bugglequest.SimpleBuggle;
-import jlm.core.model.Game
+import plm.universe.bugglequest.SimpleBuggle;
+import plm.core.model.Game
 
 class ScalaArray2Entity extends SimpleBuggle {
 	override def setX(i: Int)  {

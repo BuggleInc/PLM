@@ -1,6 +1,6 @@
 package lessons.sort.pancake;
 
-import jlm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lesson;
 
 // see http://www.cs.ubc.ca/~harrison/Java/sorting-demo.html
 

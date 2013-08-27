@@ -1,7 +1,7 @@
 package lessons.sort.baseball;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
 import lessons.sort.baseball.universe.BaseballWorld;
 
 public class BubbleBaseball extends ExerciseTemplated {

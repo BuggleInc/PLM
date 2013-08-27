@@ -2,7 +2,7 @@ package lessons.welcome.methods.picture;
 
 import java.awt.Color;
 
-public class MethodsPictureEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class MethodsPictureEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
 	public void run() {

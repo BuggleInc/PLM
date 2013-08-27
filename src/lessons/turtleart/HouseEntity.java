@@ -1,6 +1,6 @@
 package lessons.turtleart;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 public class HouseEntity extends Turtle {
 

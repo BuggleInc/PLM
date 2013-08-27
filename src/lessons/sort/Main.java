@@ -1,6 +1,6 @@
 package lessons.sort;
 
-import jlm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lesson;
 import lessons.sort.bubble.AlgBubbleSort1;
 import lessons.sort.bubble.AlgBubbleSort2;
 import lessons.sort.bubble.AlgBubbleSort3;

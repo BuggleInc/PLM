@@ -1,7 +1,7 @@
 package lessons.recursion.hanoi;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
 import lessons.recursion.hanoi.universe.HanoiEntity;
 import lessons.recursion.hanoi.universe.HanoiWorld;
 

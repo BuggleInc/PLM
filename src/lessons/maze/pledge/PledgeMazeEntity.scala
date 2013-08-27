@@ -1,9 +1,9 @@
 package lessons.maze.pledge;
 
-import jlm.universe.Direction;
-import jlm.core.model.Game
+import plm.universe.Direction;
+import plm.core.model.Game
 
-class ScalaPledgeMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaPledgeMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def setX(i: Int)  {
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."));

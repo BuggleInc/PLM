@@ -1,6 +1,6 @@
 package lessons.recursion.dragoncurve;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 public class DragonCurve1Entity extends Turtle {
 

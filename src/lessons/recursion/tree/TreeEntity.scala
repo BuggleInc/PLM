@@ -1,6 +1,6 @@
 package lessons.recursion.tree;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 class ScalaTreeEntity extends Turtle {
 

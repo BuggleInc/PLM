@@ -1,10 +1,10 @@
 package lessons.recursion.star;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.World;
-import jlm.universe.turtles.Turtle;
-import jlm.universe.turtles.TurtleWorld;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
+import plm.universe.World;
+import plm.universe.turtles.Turtle;
+import plm.universe.turtles.TurtleWorld;
 
 public class Star extends ExerciseTemplated {
 

@@ -1,6 +1,6 @@
 package lessons.welcome.instructions;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class InstructionsEntity extends SimpleBuggle {
 

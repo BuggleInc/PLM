@@ -2,7 +2,7 @@ package lessons.turmites.langtoncolors;
 
 import java.awt.Color;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class LangtonColorsEntity extends SimpleBuggle {
 	Color[] allColors = {Color.white, Color.black, Color.blue, Color.cyan, Color.green, Color.orange, Color.red, 

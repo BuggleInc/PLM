@@ -1,10 +1,10 @@
 package lessons.maze.wallfollower;
 
-import jlm.core.model.Game;
-import jlm.universe.Direction;
+import plm.core.model.Game;
+import plm.universe.Direction;
 
 @SuppressWarnings("unused")
-public class WallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class WallFollowerMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	private Direction uselessVariableExistingJustToMakeSureThatEclipseWontRemoveTheImport; /* If removed, user code can't use directions easily */
 	@Override
 	public void setX(int i)  {

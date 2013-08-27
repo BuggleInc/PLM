@@ -1,6 +1,6 @@
 package lessons.recursion.circle;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 class ScalaCircleEntity extends Turtle {
 

@@ -1,8 +1,8 @@
 package lessons.welcome.methods.basics;
 
-import jlm.core.model.Game;
-import jlm.core.model.lesson.Exercise;
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.core.model.Game;
+import plm.core.model.lesson.Exercise;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsDogHouseEntity extends SimpleBuggle {
 	@Override

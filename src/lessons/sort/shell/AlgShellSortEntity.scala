@@ -1,6 +1,6 @@
 package lessons.sort.shell;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 /* Variant with precomputed gap:
  *

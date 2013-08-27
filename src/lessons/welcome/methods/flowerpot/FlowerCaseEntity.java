@@ -2,7 +2,7 @@ package lessons.welcome.methods.flowerpot;
 
 import java.awt.Color;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 public class FlowerCaseEntity extends SimpleBuggle {
 
 	public void run() {

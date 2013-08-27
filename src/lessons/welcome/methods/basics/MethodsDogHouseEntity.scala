@@ -1,9 +1,9 @@
 package lessons.welcome.methods.basics;
 
-import jlm.universe.bugglequest.SimpleBuggle
-import jlm.core.model.Game
+import plm.universe.bugglequest.SimpleBuggle
+import plm.core.model.Game
 import scala.collection.JavaConversions
-import jlm.core.model.lesson.Exercise
+import plm.core.model.lesson.Exercise
 
 class ScalaMethodsDogHouseEntity extends SimpleBuggle {
 	override def right()  { 

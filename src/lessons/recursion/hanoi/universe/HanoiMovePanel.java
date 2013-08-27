@@ -9,8 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import jlm.core.model.Game;
-import jlm.universe.EntityControlPanel;
+import plm.core.model.Game;
+import plm.universe.EntityControlPanel;
 
 /**
  * The control panel for the burned pancake world. 

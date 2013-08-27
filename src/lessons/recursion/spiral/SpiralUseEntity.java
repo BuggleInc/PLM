@@ -1,6 +1,6 @@
 package lessons.recursion.spiral;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 public class SpiralUseEntity extends Turtle {
 

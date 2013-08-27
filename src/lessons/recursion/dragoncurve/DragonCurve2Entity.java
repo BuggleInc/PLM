@@ -2,7 +2,7 @@ package lessons.recursion.dragoncurve;
 
 import java.awt.Color;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 public class DragonCurve2Entity extends Turtle {
 

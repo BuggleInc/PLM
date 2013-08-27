@@ -1,8 +1,8 @@
 package lessons.turmites.langtoncolors;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.bugglequest.BuggleWorld;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
+import plm.universe.bugglequest.BuggleWorld;
 import lessons.turmites.universe.TurmiteWorld;
 
 public class LangtonColors extends ExerciseTemplated {

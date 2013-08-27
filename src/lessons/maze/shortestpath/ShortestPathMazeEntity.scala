@@ -1,11 +1,11 @@
 package lessons.maze.shortestpath;
 
-import jlm.universe.Direction
-import jlm.universe.bugglequest.BuggleWorld
-import jlm.universe.bugglequest.BuggleWorldCell;
-import jlm.core.model.Game
+import plm.universe.Direction
+import plm.universe.bugglequest.BuggleWorld
+import plm.universe.bugglequest.BuggleWorldCell;
+import plm.core.model.Game
 
-class ScalaShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def setX(i: Int)  {
 		if (isInited)
 			throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."));

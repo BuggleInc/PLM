@@ -2,7 +2,7 @@ package lessons.recursion.star;
 
 import java.awt.Color;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 class ScalaStarEntity extends Turtle {
 

@@ -1,7 +1,7 @@
 package lessons.welcome.traversal;
 
-import jlm.universe.Direction;
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.Direction;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class SnakeEntity extends SimpleBuggle {
 	@Override

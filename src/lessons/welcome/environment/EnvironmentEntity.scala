@@ -1,6 +1,6 @@
 package lessons.welcome.environment;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaEnvironmentEntity extends SimpleBuggle {
 	protected def run() { 

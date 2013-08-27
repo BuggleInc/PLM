@@ -1,6 +1,6 @@
 package lessons.recursion.dragoncurve;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 class ScalaDragonCurve1Entity extends Turtle {
 

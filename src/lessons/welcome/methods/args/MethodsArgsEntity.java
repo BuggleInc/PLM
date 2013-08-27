@@ -1,8 +1,8 @@
 package lessons.welcome.methods.args;
 
-import jlm.core.model.Game;
-import jlm.universe.Direction;
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.core.model.Game;
+import plm.universe.Direction;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class MethodsArgsEntity extends SimpleBuggle {
 	@Override

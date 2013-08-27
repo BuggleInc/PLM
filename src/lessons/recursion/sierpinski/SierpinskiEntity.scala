@@ -1,6 +1,6 @@
 package lessons.recursion.sierpinski;
 
-class ScalaSierpinskiEntity extends jlm.universe.turtles.Turtle {
+class ScalaSierpinskiEntity extends plm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 	def sierpinski(level:Int, length:Double) {

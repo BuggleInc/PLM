@@ -1,6 +1,6 @@
 package lessons.sort.selection;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 public class AlgSelectionSortEntity extends SortingEntity {
 

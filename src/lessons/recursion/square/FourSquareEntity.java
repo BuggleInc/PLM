@@ -1,6 +1,6 @@
 package lessons.recursion.square;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 public class FourSquareEntity extends Turtle {
 

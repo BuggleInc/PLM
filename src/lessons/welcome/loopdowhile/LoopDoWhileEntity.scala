@@ -2,7 +2,7 @@ package lessons.welcome.loopdowhile;
 
 import java.awt.Color;
 
-class ScalaLoopDoWhileEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaLoopDoWhileEntity extends plm.universe.bugglequest.SimpleBuggle {
 	def isGroundWhite():Boolean = {
 	  if (getGroundColor() == Color.white)
 	    return true;

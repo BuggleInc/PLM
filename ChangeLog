@@ -1,4 +1,5 @@
 20130830:
+  * Rebrand JLM into PLM (Programmer's Learning Machine)
   * Turtles: Allow for hints on segment sizes
   * New lesson turtleart on the classical Logo geometric figures
   * Turtle.circle(): New primitive to draw circles directly.

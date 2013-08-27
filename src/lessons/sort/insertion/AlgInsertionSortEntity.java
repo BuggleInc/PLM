@@ -1,6 +1,6 @@
 package lessons.sort.insertion;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 public class AlgInsertionSortEntity extends SortingEntity {
 

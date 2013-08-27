@@ -1,9 +1,9 @@
 package lessons.maze.island;
 
-import jlm.core.model.Game;
-import jlm.universe.Direction;
+import plm.core.model.Game;
+import plm.universe.Direction;
 
-public class IslandMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class IslandMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

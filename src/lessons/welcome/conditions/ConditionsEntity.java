@@ -1,6 +1,6 @@
 package lessons.welcome.conditions;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class ConditionsEntity extends SimpleBuggle {
 	@Override

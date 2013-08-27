@@ -1,6 +1,6 @@
 package lessons.recursion.spiral;
 
-class ScalaSpiralEntity extends jlm.universe.turtles.Turtle {
+class ScalaSpiralEntity extends plm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 	def spiral(steps:Int, angle:Int, length:Int, increment:Int)	{

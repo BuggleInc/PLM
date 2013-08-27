@@ -1,6 +1,6 @@
 package lessons.recursion.spiral;
 
-public class SpiralEntity extends jlm.universe.turtles.Turtle {
+public class SpiralEntity extends plm.universe.turtles.Turtle {
 
 	/* BEGIN TEMPLATE */
 	public void spiral(int steps, int angle, int length, int increment)	{

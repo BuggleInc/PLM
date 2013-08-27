@@ -24,13 +24,13 @@ import java.util.Vector;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import jlm.core.HumanLangChangesListener;
-import jlm.core.model.Game;
-import jlm.core.ui.WorldView;
-import jlm.universe.World;
-
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
+
+import plm.core.HumanLangChangesListener;
+import plm.core.model.Game;
+import plm.core.ui.WorldView;
+import plm.universe.World;
 
 public class BaseballWorldView extends WorldView {
 	

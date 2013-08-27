@@ -1,6 +1,6 @@
 package lessons.recursion;
 
-import jlm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lesson;
 import lessons.recursion.circle.Circle;
 import lessons.recursion.dragoncurve.DragonCurve1;
 import lessons.recursion.dragoncurve.DragonCurve2;

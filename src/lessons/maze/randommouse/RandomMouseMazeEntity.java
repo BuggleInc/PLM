@@ -1,8 +1,8 @@
 package lessons.maze.randommouse;
 
-import jlm.core.model.Game;
+import plm.core.model.Game;
 
-public class RandomMouseMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class RandomMouseMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

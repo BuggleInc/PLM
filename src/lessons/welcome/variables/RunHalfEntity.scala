@@ -1,9 +1,9 @@
 package lessons.welcome.variables;
 
 import java.awt.Color;
-import jlm.core.model.Game
+import plm.core.model.Game
 
-class ScalaRunHalfEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaRunHalfEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def forward(i: Int)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}

@@ -1,11 +1,11 @@
 package lessons.backtracking;
 
-import jlm.core.model.Game;
-import jlm.core.model.lesson.ExecutionProgress;
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
-import jlm.core.model.lesson.NoSuchEntityException;
-import jlm.universe.World;
+import plm.core.model.Game;
+import plm.core.model.lesson.ExecutionProgress;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
+import plm.core.model.lesson.NoSuchEntityException;
+import plm.universe.World;
 
 public abstract class BacktrackingExercise extends ExerciseTemplated {
 	public BacktrackingExercise(Lesson lesson) {

@@ -1,6 +1,6 @@
 package lessons.welcome.basics;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaInstructionsEntity extends SimpleBuggle {
 

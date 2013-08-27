@@ -13,8 +13,8 @@ import java.awt.event.MouseListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-import jlm.core.ui.WorldView;
-import jlm.universe.World;
+import plm.core.ui.WorldView;
+import plm.universe.World;
 
 public class PancakeWorldView extends WorldView {
 

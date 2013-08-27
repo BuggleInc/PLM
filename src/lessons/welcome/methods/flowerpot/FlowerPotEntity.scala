@@ -1,8 +1,8 @@
 package lessons.welcome.methods.flowerpot;
 
 import java.awt.Color;
+import plm.universe.bugglequest.SimpleBuggle;
 
-import jlm.universe.bugglequest.SimpleBuggle;
 class ScalaFlowerPotEntity extends SimpleBuggle {
 
 	def run() {

@@ -1,6 +1,6 @@
 package lessons.chooser;
 
-import jlm.core.model.lesson.Lesson;
+import plm.core.model.lesson.Lesson;
 
 public class Main extends Lesson {
 

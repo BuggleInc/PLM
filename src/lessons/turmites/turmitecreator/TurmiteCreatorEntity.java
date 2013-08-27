@@ -2,7 +2,7 @@ package lessons.turmites.turmitecreator;
 
 import java.awt.Color;
 
-public class TurmiteCreatorEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle {
 	Color[] allColors = {Color.white, Color.yellow, Color.red, Color.cyan, Color.green, Color.orange, 
 			Color.blue, Color.black,
 			Color.gray, Color.magenta, Color.darkGray, Color.pink, Color.lightGray};

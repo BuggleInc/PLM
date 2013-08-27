@@ -2,8 +2,8 @@ package lessons.turmites;
 
 import java.io.IOException;
 
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.BrokenWorldFileException;
+import plm.core.model.lesson.Lesson;
+import plm.universe.BrokenWorldFileException;
 import lessons.turmites.helloturmite.HelloTurmite;
 import lessons.turmites.langton.Langton;
 import lessons.turmites.langtoncolors.LangtonColors;

@@ -1,6 +1,6 @@
 package lessons.welcome.methods.picture;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class PictureMono3Entity extends SimpleBuggle {
 

@@ -1,9 +1,9 @@
 package lessons.sort.selection;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.sort.SortingEntity;
-import jlm.universe.sort.SortingWorld;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
+import plm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingWorld;
 
 public class AlgSelectionSort extends ExerciseTemplated {
 

@@ -1,6 +1,6 @@
 package lessons.sort.insertion;
 
-import jlm.universe.sort.SortingEntity;
+import plm.universe.sort.SortingEntity;
 
 class ScalaAlgInsertionSortEntity extends SortingEntity {
 

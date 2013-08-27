@@ -2,8 +2,8 @@ package lessons.welcome.array.basics;
 
 import java.awt.Color;
 
-import jlm.core.model.Game;
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.core.model.Game;
+import plm.universe.bugglequest.SimpleBuggle;
 
 public class Array2Entity extends SimpleBuggle {
 	@Override

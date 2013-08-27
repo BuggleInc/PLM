@@ -2,9 +2,9 @@ package lessons.welcome.array.basics;
 
 import java.awt.Color;
 
-import jlm.core.model.Game;
+import plm.core.model.Game;
 
-public class Array1Entity extends jlm.universe.bugglequest.SimpleBuggle {
+public class Array1Entity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

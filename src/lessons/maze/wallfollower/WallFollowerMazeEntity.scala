@@ -1,9 +1,9 @@
 package lessons.maze.wallfollower;
 
-import jlm.core.model.Game;
-import jlm.universe.Direction;
+import plm.core.model.Game;
+import plm.universe.Direction;
 
-class ScalaWallFollowerMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaWallFollowerMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	val uselessVariableExistingJustToMakeSureThatEclipseWontRemoveTheImport:Direction=null; /* If removed, user code can't use directions easily */
 	override def setX(i: Int)  {
 		if (isInited)

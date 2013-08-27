@@ -1,7 +1,7 @@
 package lessons.welcome.loopwhile;
 
-import jlm.universe.bugglequest.SimpleBuggle;
-import jlm.core.model.Game
+import plm.universe.bugglequest.SimpleBuggle;
+import plm.core.model.Game
 
 class ScalaBaggleSeekerEntity extends SimpleBuggle {
 	override def forward(i: Int)  { 

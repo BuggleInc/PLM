@@ -2,7 +2,7 @@ package lessons.welcome.bdr;
 
 import java.util.Stack;
 
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaBDR2Entity extends SimpleBuggle {
 	override def run() { 

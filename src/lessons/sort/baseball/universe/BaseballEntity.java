@@ -1,7 +1,7 @@
 package lessons.sort.baseball.universe;
 
-import jlm.universe.Entity;
-import jlm.universe.World;
+import plm.universe.Entity;
+import plm.universe.World;
 
 public class BaseballEntity extends Entity {
 	public BaseballEntity() {

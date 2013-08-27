@@ -3,8 +3,8 @@ package lessons.turmites.universe;
 import java.awt.Color;
 import java.awt.Graphics;
 
-import jlm.universe.World;
-import jlm.universe.bugglequest.ui.BuggleWorldView;
+import plm.universe.World;
+import plm.universe.bugglequest.ui.BuggleWorldView;
 
 
 

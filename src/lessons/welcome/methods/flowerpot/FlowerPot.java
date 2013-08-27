@@ -3,12 +3,12 @@ package lessons.welcome.methods.flowerpot;
 import java.awt.Color;
 import java.io.IOException;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.BrokenWorldFileException;
-import jlm.universe.Direction;
-import jlm.universe.bugglequest.Buggle;
-import jlm.universe.bugglequest.BuggleWorld;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
+import plm.universe.BrokenWorldFileException;
+import plm.universe.Direction;
+import plm.universe.bugglequest.Buggle;
+import plm.universe.bugglequest.BuggleWorld;
 
 public class FlowerPot extends ExerciseTemplated {
 

@@ -1,7 +1,7 @@
 package lessons.welcome.instructions;
 
 
-class ScalaInstructionsDrawGEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaInstructionsDrawGEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	protected def run() {
 		/* BEGIN SOLUTION */

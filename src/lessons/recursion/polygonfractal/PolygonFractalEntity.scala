@@ -1,6 +1,6 @@
 package lessons.recursion.polygonfractal;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 class ScalaPolygonFractalEntity extends Turtle {
 

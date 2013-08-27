@@ -1,7 +1,7 @@
 package lessons.recursion.hanoi.universe;
 /* BEGIN TEMPLATE */
-import jlm.universe.Entity;
-import jlm.universe.World;
+import plm.universe.Entity;
+import plm.universe.World;
 
 public class HanoiEntity extends Entity {
 	/** Instantiation Constructor (used by exercises to setup the world) 

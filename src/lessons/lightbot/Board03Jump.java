@@ -1,10 +1,10 @@
 package lessons.lightbot;
 
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.Direction;
-import jlm.universe.lightbot.LightBotEntity;
-import jlm.universe.lightbot.LightBotExercise;
-import jlm.universe.lightbot.LightBotWorld;
+import plm.core.model.lesson.Lesson;
+import plm.universe.Direction;
+import plm.universe.lightbot.LightBotEntity;
+import plm.universe.lightbot.LightBotExercise;
+import plm.universe.lightbot.LightBotWorld;
 
 public class Board03Jump extends LightBotExercise {
 

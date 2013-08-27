@@ -3,10 +3,10 @@ package lessons.backtracking;
 import javax.script.ScriptEngine;
 import javax.swing.ImageIcon;
 
-import jlm.core.model.ProgrammingLanguage;
-import jlm.core.ui.ResourcesCache;
-import jlm.core.ui.WorldView;
-import jlm.universe.World;
+import plm.core.model.ProgrammingLanguage;
+import plm.core.ui.ResourcesCache;
+import plm.core.ui.WorldView;
+import plm.universe.World;
 
 public class BacktrackingWorld extends World {	
 	/** A copy constructor (mandatory for the internal compilation mechanism to work)

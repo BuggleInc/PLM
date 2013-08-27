@@ -2,9 +2,9 @@ package lessons.welcome;
 
 import java.io.IOException;
 
-import jlm.core.model.lesson.Lecture;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.BrokenWorldFileException;
+import plm.core.model.lesson.Lecture;
+import plm.core.model.lesson.Lesson;
+import plm.universe.BrokenWorldFileException;
 import lessons.welcome.array.array123.Array123;
 import lessons.welcome.array.array667.Array667;
 import lessons.welcome.array.arraycount9.ArrayCount9;

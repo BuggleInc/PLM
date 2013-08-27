@@ -1,11 +1,11 @@
 package lessons.maze.shortestpath;
 
-import jlm.core.model.Game;
-import jlm.universe.Direction;
-import jlm.universe.bugglequest.BuggleWorld;
-import jlm.universe.bugglequest.BuggleWorldCell;
+import plm.core.model.Game;
+import plm.universe.Direction;
+import plm.universe.bugglequest.BuggleWorld;
+import plm.universe.bugglequest.BuggleWorldCell;
 
-public class ShortestPathMazeEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void setX(int i)  {
 		if (isInited())

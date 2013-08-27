@@ -1,6 +1,6 @@
 package lessons.welcome.bdr;
 
-class ScalaBDREntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaBDREntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	override def run() {
 		/* BEGIN SOLUTION */

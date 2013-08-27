@@ -2,11 +2,11 @@ package lessons.maze.pledge;
 
 import java.io.IOException;
 
-import jlm.core.model.lesson.ExerciseTemplated;
-import jlm.core.model.lesson.Lesson;
-import jlm.universe.BrokenWorldFileException;
-import jlm.universe.World;
-import jlm.universe.bugglequest.BuggleWorld;
+import plm.core.model.lesson.ExerciseTemplated;
+import plm.core.model.lesson.Lesson;
+import plm.universe.BrokenWorldFileException;
+import plm.universe.World;
+import plm.universe.bugglequest.BuggleWorld;
 
 public class PledgeMaze extends ExerciseTemplated {
 

@@ -2,7 +2,7 @@ package lessons.turtleart;
 
 import java.awt.Color;
 
-import jlm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle;
 
 public class DiskTwoEntity extends Turtle {
 

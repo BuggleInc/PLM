@@ -3,7 +3,7 @@ package lessons.welcome.methods.slug;
 import java.awt.Color;
 
 
-public class SlugSnailEntity extends jlm.universe.bugglequest.SimpleBuggle {
+public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {

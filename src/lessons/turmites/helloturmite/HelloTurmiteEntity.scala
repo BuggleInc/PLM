@@ -1,7 +1,7 @@
 package lessons.turmites.helloturmite;
 
 import java.awt.Color
-import jlm.universe.bugglequest.SimpleBuggle;
+import plm.universe.bugglequest.SimpleBuggle;
 import lessons.turmites.universe.TurmiteWorld
 
 class ScalaHelloTurmiteEntity extends SimpleBuggle {

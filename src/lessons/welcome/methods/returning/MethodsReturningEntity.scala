@@ -1,10 +1,10 @@
 package lessons.welcome.methods.returning;
 
 import com.sun.org.apache.xpath.internal.operations.Bool
-import jlm.core.model.Game
+import plm.core.model.Game
 
 
-class ScalaMethodsReturningEntity extends jlm.universe.bugglequest.SimpleBuggle {
+class ScalaMethodsReturningEntity extends plm.universe.bugglequest.SimpleBuggle {
 	override def forward(i: Int)  { 
 		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument."));
 	}
