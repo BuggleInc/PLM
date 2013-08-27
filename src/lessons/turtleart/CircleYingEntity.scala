@@ -2,7 +2,7 @@ package lessons.turtleart;
 
 import jlm.universe.turtles.Turtle;
 
-class CircleYingEntity extends Turtle {
+class ScalaCircleYingEntity extends Turtle {
 
 	/* BEGIN TEMPLATE */
 	override def run() {
