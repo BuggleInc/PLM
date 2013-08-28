@@ -10,4 +10,4 @@ lib/cachedir/
 .cache
 .pydevproject
 # The next file contains the translated messages (generated on ant i18n-generate-jar)
-lib/jlm-messages.jar
+lib/plm-messages.jar
