@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-27 12:02+0300\n"
+"POT-Creation-Date: 2013-08-28 21:02+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1151,7 +1151,7 @@ msgstr ""
 
 #. type: Content of: <table><tr><td><font>
 #: src/lessons/chooser/LessonChooser.html:3
-msgid "Welcome to the Java Learning Machine"
+msgid "Welcome to the Programmer's Learning Machine"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
@@ -1481,8 +1481,8 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:3
 msgid ""
-"You just started the Java Learning Machine. This is a Learning Management "
-"System aiming at teaching the art of computer programming through "
+"You just started the Programmer's Learning Machine. This is a Learning "
+"Management System aiming at teaching the art of computer programming through "
 "interactive exercises. It is constituted by a set of exercises grouped by "
 "lessons, allowing you to practice at your own pace. Currently, the "
 "environment is configured to be programmed in the [!thelang/] programming "
@@ -1526,8 +1526,8 @@ msgid ""
 "them to show the tooltip, and experiment with the elements to see what they "
 "do.  The white area below is the console: this is where errors and messages "
 "get displayed. Note that when you successfully solve an exercise, the good "
-"news is spread on twitter and identica.  Keep posted to the progress of your "
-"friends by following @plmlovers :)"
+"news is spread on twitter.  Keep posted to the progress of your friends by "
+"following @jlmlovers :)"
 msgstr ""
 
 #. type: Content of: <p>
@@ -1610,11 +1610,10 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:15
 msgid ""
-"[!java]Java[/!][!scala]Scala[/!][!python]Python[/!] wants to have the "
-"instructions separated by semi-columns (;)[!python|scala] or by new "
-"lines[/!].  The previous example would thus be written in the following way "
-"[!python|scala] (you can also add semi-columns at the end of the lines, but "
-"this is not mandatory)[/!]."
+"[!thelang] wants to have the instructions separated by semi-columns "
+"(;)[!python|scala] or by new lines[/!].  The previous example would thus be "
+"written in the following way[!python|scala] (you can also add semi-columns "
+"at the end of the lines, but this is not mandatory)[/!]."
 msgstr ""
 
 #. type: Content of: <pre>
