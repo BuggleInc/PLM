@@ -153,7 +153,7 @@ public class Game implements IWorldView {
 			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
 					"   It is safer to change the current language, and restart PLM before proceeding.\n"+
-					"   Alternatively, the property {1} can be changed in your configuration file ($HOME/.plm/plm.properties",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE));
+					"   Alternatively, the property {1} can be changed in your configuration file ($HOME/.plm/plm.properties)",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE));
 		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
 			if (pl.getLang().equals(defaultProgrammingLanguage)) {
 				setProgramingLanguage(pl);

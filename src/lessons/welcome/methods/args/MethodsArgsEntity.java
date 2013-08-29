@@ -7,11 +7,11 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class MethodsArgsEntity extends SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument"));
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument in this exercise."));
 	}
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument"));
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument in this exercise."));
 	}
 
 

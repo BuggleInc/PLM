@@ -3,12 +3,12 @@ package lessons.welcome.methods.basics;
 public class MethodsEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
+		throw new RuntimeException("I'm sorry Dave, I'm affraid I can't let you use forward with an argument in this exercise.");
 	}
 
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
+		throw new RuntimeException("I'm sorry Dave, I'm affraid I can't let you use backward with an argument in this exercise.");
 	}
 
 	/* BEGIN TEMPLATE */

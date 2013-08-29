@@ -3,12 +3,12 @@ package lessons.welcome.variables;
 public class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
-		throw new RuntimeException("forward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use forward with an argument in this exercise."));
 	}
 
 	@Override
 	public void backward(int i) {
-		throw new RuntimeException("backward(int) forbidden in this exercise");
+		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use backward with an argument in this exercise."));
 	}
 
 

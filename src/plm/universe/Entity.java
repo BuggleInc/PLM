@@ -190,7 +190,7 @@ public abstract class Entity {
 				ScriptEngineManager manager = new ScriptEngineManager();       
 				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
 				if (engine==null)
-					throw new RuntimeException(Game.i18n.tr("No ScriptEngine for {0}. Please check your classpath and such.",progLang.getLang()));
+					throw new RuntimeException(Game.i18n.tr("No ScriptEngine for {0}. Please check your classpath and similar settings.",progLang.getLang()));
 
 				/* Inject the entity into the scripting world so that it can forward script commands to the world */
 				engine.put("entity", this);
