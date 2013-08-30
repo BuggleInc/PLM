@@ -78,32 +78,6 @@
         </jar>
     </target>
     
-    <target name="dist-src" depends="compile, updateversion" description="build a standalone application jar file">
-        <mkdir dir="${dist.dir}"/>
-        <zip destfile="${dist.dir}/plm-src-${plm.version}.zip">
-            <fileset dir="${src.dir}" includes="**/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/> 
-            <fileset dir="${lib.dir}" excludes="*.jar *.pl"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-3.0.3.jar" />    
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.4.jar" />
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
-            
-	    
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/antlr3-runtime.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/asm3-3.2.jar"/>
-             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jruby-1.5.6-5.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/js-1.7R3.jar"/>
-            
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.1.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.1.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
-            
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
-
-        </zip>
-    </target>
-
     <target name="dist-web" depends="compile, updateversion" description="build webstart application jar files">
         <mkdir dir="${site.dir}/lib"/>
         <jar destfile="${site.dir}/lib/plm-webstart.jar" filesetmanifest="mergewithoutmain">
