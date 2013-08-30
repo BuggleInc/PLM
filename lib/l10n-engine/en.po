@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-29 14:58+0200\n"
+"POT-Creation-Date: 2013-08-30 14:08+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,8 +192,7 @@ msgstr ""
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
-#: src/lessons/welcome/variables/VariablesEntity.java:6
-#: src/lessons/welcome/variables/VariablesEntity.java:11
+#: src/lessons/welcome/variables/VariablesEntity.java:8
 msgid ""
 "I'm sorry Dave, I'm affraid I can't let you use forward with an argument in "
 "this exercise."
@@ -211,6 +210,7 @@ msgstr ""
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
+#: src/lessons/welcome/variables/VariablesEntity.java:13
 msgid ""
 "I'm sorry Dave, I'm affraid I can't let you use backward with an argument in "
 "this exercise."
@@ -320,7 +320,69 @@ msgstr ""
 msgid "Compilation failed."
 msgstr "Compilation error"
 
+#: src/plm/core/PythonExceptionDecipher.java:24
+#, java-format
+msgid ""
+"Syntax error at line {0}: {1}\n"
+"In doubt, check your indentation, and that you don't mix tabs and spaces\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:32
+msgid ""
+"NameError raised: You seem to use a non-existent identifier; Please check "
+"for typos\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:35
+msgid "TypeError raised: you are probably misusing a function or something.\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:38
+msgid ""
+"UnboundLocalError raised: you are probably using a global variable that is "
+"not declared as such.\n"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:44
+msgid "Error: there is no baggle to pickup under the buggle"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:46
+msgid "Error: a buggle cannot carry more than one baggle at the same time"
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:48
+msgid "Error: your buggle just teleported to the outer space..."
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:50
+msgid "Error: your buggle just hit a wall. That hurts."
+msgstr ""
+
+#: src/plm/core/PythonExceptionDecipher.java:53
+#, java-format
+msgid ""
+"Unknown error (please report): {0}\n"
+"Its value is: {1}"
+msgstr ""
+
+#: src/plm/core/model/Game.java:151
+msgid "Scala is usable on your machine. Congratulations."
+msgstr ""
+
 #: src/plm/core/model/Game.java:153
+msgid "Please install Scala version 2.10 or higher to use it in PLM."
+msgstr ""
+
+#: src/plm/core/model/Game.java:155
+msgid "Jython is usable on your machine. Congratulations."
+msgstr ""
+
+#: src/plm/core/model/Game.java:157
+msgid "Please install jython to use the python programming language in PLM."
+msgstr ""
+
+#: src/plm/core/model/Game.java:163
 #, java-format
 msgid ""
 "Warning, the default programming language is neither ''Java'' nor ''python'' "
@@ -333,34 +395,79 @@ msgid ""
 "($HOME/.plm/plm.properties)"
 msgstr ""
 
-#: src/plm/core/model/Game.java:167
+#: src/plm/core/model/Game.java:169
+msgid ""
+"The default programming language is Scala, but your scala installation is "
+"not usable. Switching to Java instead.\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:172
+msgid ""
+"The default programming language is python, but your python installation is "
+"not usable. Switching to Java instead.\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:185
 #, java-format
 msgid ""
 "Your progress will be posted to https://twitter.com/jlmlovers This can be "
 "turned off through the property {0}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:170
+#: src/plm/core/model/Game.java:188
 #, java-format
 msgid ""
 "Your progress will NOT be posted to twitter, as requested by the property {0}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:218 src/plm/core/model/Game.java:219
+#: src/plm/core/model/Game.java:217
+#, java-format
+msgid "Error {0} while retrieving the Scala version: {1}"
+msgstr ""
+
+#: src/plm/core/model/Game.java:226
+#, java-format
+msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
+msgstr ""
+
+#: src/plm/core/model/Game.java:251
+msgid ""
+"Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
+"in the classpath?"
+msgstr ""
+
+#: src/plm/core/model/Game.java:262
+#, java-format
+msgid ""
+"Resource {0} not found in the classpath.\n"
+"Is {1} in your classpath?"
+msgstr ""
+
+#: src/plm/core/model/Game.java:268
+#, java-format
+msgid "Found path ''{0}'' does not seem to contain the resource ''{1}''."
+msgstr ""
+
+#: src/plm/core/model/Game.java:271
+#, java-format
+msgid "{0} received while searching for resource {1}: {2}"
+msgstr ""
+
+#: src/plm/core/model/Game.java:316 src/plm/core/model/Game.java:317
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/plm/core/model/Game.java:220
+#: src/plm/core/model/Game.java:318
 #, fuzzy, java-format
 msgid "Load lesson {0}"
 msgstr "Load lesson"
 
-#: src/plm/core/model/Game.java:326 src/plm/core/model/Game.java:360
+#: src/plm/core/model/Game.java:424 src/plm/core/model/Game.java:458
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
-#: src/plm/core/model/Game.java:351
+#: src/plm/core/model/Game.java:449
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -368,27 +475,48 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:400
+#: src/plm/core/model/Game.java:498
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:946
+#: src/plm/core/model/Game.java:902
+msgid ""
+"Please install Scala version 2.10 or higher to use it in PLM.\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:903
+msgid "Scala is missing"
+msgstr ""
+
+#: src/plm/core/model/Game.java:907
+msgid ""
+"Please install jython and its dependencies to use the python programming "
+"language in PLM.\n"
+"\n"
+msgstr ""
+
+#: src/plm/core/model/Game.java:908
+msgid "Python is missing"
+msgstr ""
+
+#: src/plm/core/model/Game.java:1054
 #, java-format
 msgid "{0} is not writable"
 msgstr ""
 
-#: src/plm/core/model/Game.java:950
+#: src/plm/core/model/Game.java:1058
 #, java-format
 msgid "{0} is not a directory"
 msgstr ""
 
-#: src/plm/core/model/Game.java:957
+#: src/plm/core/model/Game.java:1065
 #, java-format
 msgid "Cannot create {0}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:963
+#: src/plm/core/model/Game.java:1071
 #, java-format
 msgid "Impossible to find a path for PLM data. Tested {0}"
 msgstr ""
@@ -1070,72 +1198,30 @@ msgstr ""
 msgid "Quit Map Editor"
 msgstr ""
 
-#: src/plm/universe/Entity.java:178
+#: src/plm/universe/Entity.java:176
 #, java-format
 msgid ""
 "The execution of your program raised a {0} exception: {1}\n"
 " Please fix your code.\n"
 msgstr ""
 
-#: src/plm/universe/Entity.java:193
+#: src/plm/universe/Entity.java:191
 #, java-format
 msgid ""
 "No ScriptEngine for {0}. Please check your classpath and similar settings."
 msgstr ""
 
-#: src/plm/universe/Entity.java:213
+#: src/plm/universe/Entity.java:211
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against PLM."
 msgstr ""
 
+#: src/plm/universe/Entity.java:235
+msgid "Received a ScriptException that does not come from Python.\n"
+msgstr ""
+
 #: src/plm/universe/Entity.java:240
-#, java-format
-msgid ""
-"Syntax error at line {0}: {1}\n"
-"In doubt, check your indentation, and that you don't mix tabs and spaces\n"
-msgstr ""
-
-#: src/plm/universe/Entity.java:248
-msgid ""
-"NameError raised: You seem to use a non-existent identifier; Please check "
-"for typos\n"
-msgstr ""
-
-#: src/plm/universe/Entity.java:251
-msgid "TypeError raised: you are probably misusing a function or something.\n"
-msgstr ""
-
-#: src/plm/universe/Entity.java:254
-msgid ""
-"UnboundLocalError raised: you are probably using a global variable that is "
-"not declared as such.\n"
-msgstr ""
-
-#: src/plm/universe/Entity.java:260
-msgid "Error: there is no baggle to pickup under the buggle"
-msgstr ""
-
-#: src/plm/universe/Entity.java:262
-msgid "Error: a buggle cannot carry more than one baggle at the same time"
-msgstr ""
-
-#: src/plm/universe/Entity.java:264
-msgid "Error: your buggle just teleported to the outer space..."
-msgstr ""
-
-#: src/plm/universe/Entity.java:266
-msgid "Error: your buggle just hit a wall. That hurts."
-msgstr ""
-
-#: src/plm/universe/Entity.java:269
-#, java-format
-msgid ""
-"Unknown error (please report): {0}\n"
-"Its value is: {1}"
-msgstr ""
-
-#: src/plm/universe/Entity.java:303
 #, java-format
 msgid ""
 "Script evaluation raised an exception that is not a ScriptException but a "
