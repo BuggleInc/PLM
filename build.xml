@@ -69,7 +69,6 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.1.2.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.1.2.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-codec-1.4.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
             
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smackx.jar"/>
@@ -101,7 +100,6 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.1.2.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.1.2.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-codec-1.4.jar"/>
             
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smackx.jar"/>        
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/smack.jar"/>
