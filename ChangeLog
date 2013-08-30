@@ -1,12 +1,18 @@
 20130830:
   * Rebrand JLM into PLM (Programmer's Learning Machine)
   * Turtles: Allow for hints on segment sizes
-  * New lesson turtleart on the classical Logo geometric figures
   * Turtle.circle(): New primitive to draw circles directly.
+  * New lesson turtleart on the classical Logo geometric figures
   * Upgrade our twitter4j dependency to use the new twitter API 1.1
     Twitter dropped support for the 1.0 API a while ago.
   * Drop the identi.ca spy. It does not work since the upstream move
     from status.net to pump.io, and I fail fixing it.
+  * Drop our prototypal jabber chat dialog. It was not activated
+    because it's not adapted: student only use it to try to cheat and
+    get easy answers. A forum would be better. Students are
+    authenticated, and the messages moderated (France IOI does that)
+  * Build a plm-light jarfile, without scala and python dependencies.
+    These langs remain usable if the deps are independently installed.
 20130820:
   * RELEASE 2.1, the 100th day.
   * Introduce Scala as a new programing language (version 2.10+ required)
