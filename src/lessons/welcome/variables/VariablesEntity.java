@@ -1,5 +1,7 @@
 package lessons.welcome.variables;
 
+import plm.core.model.Game;
+
 public class VariablesEntity extends plm.universe.bugglequest.SimpleBuggle {
 	@Override
 	public void forward(int i)  { 
