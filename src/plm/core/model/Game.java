@@ -198,8 +198,8 @@ public class Game implements IWorldView {
 	
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private boolean checkScala() {
-		String[] resources = new String[] {"/scala/tools/nsc/Interpreter.class", "/scala/ScalaObject.class", "/scala/reflect/io/AbstractFile.class"};
-		String[] hints     = new String[] {"scala-compiler.jar",                 "scala-library.jar",        "scala-reflect.jar"};
+		String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/ScalaObject", "/scala/reflect/io/AbstractFile"};
+		String[] hints     = new String[] {"scala-compiler.jar",           "scala-library.jar",  "scala-reflect.jar"};
 		for (int i=0;i<resources.length;i++) {
 			scalaError = canResolve(resources[i],hints[i]);
 			if (!scalaError.isEmpty()) {
@@ -233,8 +233,8 @@ public class Game implements IWorldView {
 	String pythonError = "";
 	private boolean checkPython() {
 		String[] resources = new String[] {
-				"/org/python/jsr223/PyScriptEngineFactory.class", "/org/jruby/ext/posix/util/Platform.class","/org/antlr/runtime/CharStream.class",
-				"/org/objectweb/asm/Opcodes.class"
+				"/org/python/jsr223/PyScriptEngineFactory", "/org/jruby/ext/posix/util/Platform","/org/antlr/runtime/CharStream",
+				"/org/objectweb/asm/Opcodes"
 				};
 		String[] hints     = new String[] {"jython.jar", "jruby.jar","antlr3-runtime.jar",
 				"asm3.jar"};
@@ -257,20 +257,24 @@ public class Game implements IWorldView {
 
 	private String canResolve(String resource, String hint) {
 		try {
-			URL path = getClass().getResource(resource);
-			if (path == null) {
-				return i18n.tr("Resource {0} not found in the classpath.\nIs {1} in your classpath?",resource,hint);
-			}
-			if (path.getPath().indexOf("file:") >= 0 ||
-					path.getPath().endsWith(resource)) {
-				// this one is cool, check the next one
-			} else {
-				return i18n.tr("Found path ''{0}'' does not seem to contain the resource ''{1}''.",path.getPath(),resource);
-			}
+			URL path = getClass().getResource(resource+".class");
+			if (path != null)
+				return ""; // Cool, found it.
+				
+			path = ClassLoader.getSystemResource(resource+".class");
+			if (path != null)
+				return ""; // Cool, found it.
+			
+			resource = resource.replaceAll("/", ".");
+			resource = resource.substring(1);
+			Class.forName(resource).newInstance();
+			return ""; // That's cool if I manage to create one such object
+			
+		} catch (ClassNotFoundException ce) {
+			return i18n.tr("Resource {0} not found in the classpath.\nIs {1} in your classpath?",resource,hint);
 		} catch (Exception e) {
 			return i18n.tr("{0} received while searching for resource {1}: {2}",e.getClass().getName(),resource,e.getLocalizedMessage());
 		}
-		return ""; // found all resources, no error message
 	}
 		
 	

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-30 14:08+0200\n"
-"PO-Revision-Date: 2013-08-30 14:13+0200\n"
+"POT-Creation-Date: 2013-08-30 14:51+0200\n"
+"PO-Revision-Date: 2013-08-30 14:54+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -439,7 +439,7 @@ msgstr "Jython est utilisable sur votre machine. Félicitations."
 #: src/plm/core/model/Game.java:157
 msgid "Please install jython to use the python programming language in PLM."
 msgstr ""
-"Veuillez utiliser jython afin d'utiliser le langage python dans la PLM."
+"Veuillez installer jython afin d'utiliser le langage python dans la PLM."
 
 #: src/plm/core/model/Game.java:163
 #, java-format
@@ -466,13 +466,17 @@ msgstr ""
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
-msgstr "Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. Utilisation de Java à la place."
+msgstr ""
+"Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. "
+"Utilisation de Java à la place.\n"
 
 #: src/plm/core/model/Game.java:172
 msgid ""
 "The default programming language is python, but your python installation is "
 "not usable. Switching to Java instead.\n"
-msgstr "Vous utilisez python par défaut, mais votre installation de python est cassée. Utilisation de Java à la place."
+msgstr ""
+"Vous utilisez python par défaut, mais votre installation de python est "
+"cassée. Utilisation de Java à la place.\n"
 
 #: src/plm/core/model/Game.java:185
 #, java-format
@@ -499,15 +503,19 @@ msgstr "Erreur {0} lors de l''obtention du numéro de version de Scala: {1}"
 #: src/plm/core/model/Game.java:226
 #, java-format
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
-msgstr "Scala est trop vieux. PLM nécessite la version 2.10 ou supérieure, mais la version trouvée est : {0}"
+msgstr ""
+"Scala est trop vieux. PLM nécessite la version 2.10 ou supérieure, mais la "
+"version trouvée est : {0}"
 
 #: src/plm/core/model/Game.java:251
 msgid ""
 "Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies "
 "in the classpath?"
-msgstr "Impossible de démarrer un engin de script pour python. Est ce que jython.jar et ses dépendences sont dans le classpath?"
+msgstr ""
+"Impossible de démarrer un engin de script pour python. Est ce que jython.jar "
+"et ses dépendences sont dans le classpath?"
 
-#: src/plm/core/model/Game.java:262
+#: src/plm/core/model/Game.java:274
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
@@ -516,31 +524,26 @@ msgstr ""
 "La ressource {0} est introuvable dans le classpath.\n"
 "Vous devriez peut-être ajouter {1} à votre classpath pour y remédier."
 
-#: src/plm/core/model/Game.java:268
-#, java-format
-msgid "Found path ''{0}'' does not seem to contain the resource ''{1}''."
-msgstr "Le chemin trouvé «{0}» ne semble pas contenir la ressource «{1}."
-
-#: src/plm/core/model/Game.java:271
+#: src/plm/core/model/Game.java:276
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr "{0} reçue lors de la recherche de la ressource {1}: {2}"
 
-#: src/plm/core/model/Game.java:316 src/plm/core/model/Game.java:317
+#: src/plm/core/model/Game.java:320 src/plm/core/model/Game.java:321
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr "Impossible de passer à la leçon {0} : la classe Main est introuvable."
 
-#: src/plm/core/model/Game.java:318
+#: src/plm/core/model/Game.java:322
 #, java-format
 msgid "Load lesson {0}"
 msgstr "Chargement de la leçon {0}"
 
-#: src/plm/core/model/Game.java:424 src/plm/core/model/Game.java:458
+#: src/plm/core/model/Game.java:428 src/plm/core/model/Game.java:462
 msgid "Operation cancelled by the user"
 msgstr "Opération annulée par l'utilisateur"
 
-#: src/plm/core/model/Game.java:449
+#: src/plm/core/model/Game.java:453
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -551,48 +554,54 @@ msgstr ""
 "à la place.\n"
 "Vous pourriez contribuer au projet en ajoutant votre langage à cet exercice."
 
-#: src/plm/core/model/Game.java:498
+#: src/plm/core/model/Game.java:502
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/plm/core/model/Game.java:902
+#: src/plm/core/model/Game.java:906
 msgid ""
 "Please install Scala version 2.10 or higher to use it in PLM.\n"
 "\n"
-msgstr "Veuillez installer Scala version 2.10 ou supérieure pour l'utiliser dans PLM.\n\n"
+msgstr ""
+"Veuillez installer Scala version 2.10 ou supérieure pour l'utiliser dans "
+"PLM.\n"
+"\n"
 
-#: src/plm/core/model/Game.java:903
+#: src/plm/core/model/Game.java:907
 msgid "Scala is missing"
 msgstr "Scala est manquant"
 
-#: src/plm/core/model/Game.java:907
+#: src/plm/core/model/Game.java:911
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in PLM.\n"
 "\n"
-msgstr "Veuillez installer jython et ses dépendences pour utiliser la PLM en python.\n\n"
+msgstr ""
+"Veuillez installer jython et ses dépendences pour utiliser la PLM en "
+"python.\n"
+"\n"
 
-#: src/plm/core/model/Game.java:908
+#: src/plm/core/model/Game.java:912
 msgid "Python is missing"
 msgstr "Python est manquant"
 
-#: src/plm/core/model/Game.java:1054
+#: src/plm/core/model/Game.java:1058
 #, java-format
 msgid "{0} is not writable"
 msgstr "{0} n'est pas accessible en écriture."
 
-#: src/plm/core/model/Game.java:1058
+#: src/plm/core/model/Game.java:1062
 #, java-format
 msgid "{0} is not a directory"
 msgstr "{0} n'est pas un répertoire."
 
-#: src/plm/core/model/Game.java:1065
+#: src/plm/core/model/Game.java:1069
 #, java-format
 msgid "Cannot create {0}"
 msgstr "Impossible de créer {0}"
 
-#: src/plm/core/model/Game.java:1071
+#: src/plm/core/model/Game.java:1075
 #, java-format
 msgid "Impossible to find a path for PLM data. Tested {0}"
 msgstr ""

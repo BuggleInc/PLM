@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-30 14:08+0200\n"
+"POT-Creation-Date: 2013-08-30 14:51+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -436,38 +436,33 @@ msgid ""
 "in the classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:262
+#: src/plm/core/model/Game.java:274
 #, java-format
 msgid ""
 "Resource {0} not found in the classpath.\n"
 "Is {1} in your classpath?"
 msgstr ""
 
-#: src/plm/core/model/Game.java:268
-#, java-format
-msgid "Found path ''{0}'' does not seem to contain the resource ''{1}''."
-msgstr ""
-
-#: src/plm/core/model/Game.java:271
+#: src/plm/core/model/Game.java:276
 #, java-format
 msgid "{0} received while searching for resource {1}: {2}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:316 src/plm/core/model/Game.java:317
+#: src/plm/core/model/Game.java:320 src/plm/core/model/Game.java:321
 #, java-format
 msgid "Cannot switch to lesson {0}: class Main not found."
 msgstr ""
 
-#: src/plm/core/model/Game.java:318
+#: src/plm/core/model/Game.java:322
 #, fuzzy, java-format
 msgid "Load lesson {0}"
 msgstr "Load lesson"
 
-#: src/plm/core/model/Game.java:424 src/plm/core/model/Game.java:458
+#: src/plm/core/model/Game.java:428 src/plm/core/model/Game.java:462
 msgid "Operation cancelled by the user"
 msgstr "Operation cancelled by the user"
 
-#: src/plm/core/model/Game.java:449
+#: src/plm/core/model/Game.java:453
 #, java-format
 msgid ""
 "Exercise {0} does not support language {1}. Fallback to {2} instead. Please "
@@ -475,48 +470,48 @@ msgid ""
 "language."
 msgstr ""
 
-#: src/plm/core/model/Game.java:498
+#: src/plm/core/model/Game.java:502
 #, java-format
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:902
+#: src/plm/core/model/Game.java:906
 msgid ""
 "Please install Scala version 2.10 or higher to use it in PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:903
+#: src/plm/core/model/Game.java:907
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:907
+#: src/plm/core/model/Game.java:911
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:908
+#: src/plm/core/model/Game.java:912
 msgid "Python is missing"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1054
-#, java-format
-msgid "{0} is not writable"
 msgstr ""
 
 #: src/plm/core/model/Game.java:1058
 #, java-format
+msgid "{0} is not writable"
+msgstr ""
+
+#: src/plm/core/model/Game.java:1062
+#, java-format
 msgid "{0} is not a directory"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1065
+#: src/plm/core/model/Game.java:1069
 #, java-format
 msgid "Cannot create {0}"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1071
+#: src/plm/core/model/Game.java:1075
 #, java-format
 msgid "Impossible to find a path for PLM data. Tested {0}"
 msgstr ""
