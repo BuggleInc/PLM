@@ -21,6 +21,6 @@ public class ProgrammersLearningMachine {
 		Game.getInstance().loadChooser();
 		MainFrame.getInstance().setVisible(false);		
 		new ChooseLessonDialog();
-		
+
 	}
 }

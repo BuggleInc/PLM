@@ -25,6 +25,7 @@ import java.util.jar.Manifest;
 
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
+import javax.swing.JOptionPane;
 
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
@@ -146,6 +147,15 @@ public class Game implements IWorldView {
 		i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 		loadProperties();
 
+		if (checkScala())
+			System.err.println(i18n.tr("Scala is usable on your machine. Congratulations."));
+		else
+			System.err.println(i18n.tr("Please install Scala version 2.10 or higher to use it in PLM."));
+		if (checkPython())
+			System.err.println(i18n.tr("Jython is usable on your machine. Congratulations."));
+		else
+			System.err.println(i18n.tr("Please install jython to use the python programming language in PLM."));
+		
 		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
 			!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
@@ -154,13 +164,18 @@ public class Game implements IWorldView {
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
 					"   It is safer to change the current language, and restart PLM before proceeding.\n"+
 					"   Alternatively, the property {1} can be changed in your configuration file ($HOME/.plm/plm.properties)",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE));
-		for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) {
-			if (pl.getLang().equals(defaultProgrammingLanguage)) {
-				setProgramingLanguage(pl);
-				break;
-			}
+		
+		if (defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && !canScala) {
+			System.err.println(i18n.tr("The default programming language is Scala, but your scala installation is not usable. Switching to Java instead.\n"));
+			setProgramingLanguage(JAVA);
+		} else {
+			for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) 
+				if (pl.getLang().equals(defaultProgrammingLanguage)) {
+					setProgramingLanguage(pl);
+					break;
+				}
 		}
-
+				
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
@@ -175,6 +190,86 @@ public class Game implements IWorldView {
         currentCourse = new CourseAppEngine();
 	}
 	
+	boolean canScala = false;
+	String scalaError = "";
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private boolean checkScala() {
+		String[] resources = new String[] {"/scala/tools/nsc/Interpreter.class", "/scala/ScalaObject.class", "/scala/reflect/io/AbstractFile.class"};
+		String[] hints     = new String[] {"scala-compiler.jar",                 "scala-library.jar",        "scala-reflect.jar"};
+		for (int i=0;i<resources.length;i++) {
+			scalaError = canResolve(resources[i],hints[i]);
+			if (!scalaError.isEmpty()) {
+				System.err.println(scalaError);
+				return canScala;
+			}
+		}
+
+		String version = null;
+		try {
+			Class props = Class.forName("scala.util.Properties");
+			Method meth = props.getMethod("versionString", new Class[] {});
+			version = (String) meth.invoke(props);
+		} catch (Exception e) {
+			scalaError = i18n.tr("Error {0} while retrieving the Scala version: {1}", e.getClass().getName() ,e.getLocalizedMessage());
+			System.err.println( scalaError );
+			return canScala;
+		}
+
+		if (version.contains("version 2.10") || version.contains("version 2.11")) {
+			canScala = true;
+			return canScala;
+		} else {
+			scalaError = i18n.tr("Scala is too ancient. Found {0} while I need 2.10 or higher.",version);
+			System.err.println(scalaError);
+			return canScala;
+		}
+	}
+	
+	public boolean canPython = false;
+	String pythonError = "";
+	private boolean checkPython() {
+		String[] resources = new String[] {
+				"/org/python/jsr223/PyScriptEngineFactory.class", "/org/jruby/ext/posix/util/Platform.class","/org/antlr/runtime/CharStream.class",
+				"/org/objectweb/asm/Opcodes.class"
+				};
+		String[] hints     = new String[] {"jython.jar", "jruby.jar","antlr3-runtime.jar",
+				"asm3.jar"};
+		for (int i=0;i<resources.length;i++) {
+			pythonError = canResolve(resources[i],hints[i]);
+			if (!pythonError.isEmpty()) {
+				System.err.println(pythonError);
+				return canPython;
+			}
+		}
+		
+		ScriptEngineManager manager = new ScriptEngineManager();       
+		if (manager.getEngineByName("python") == null) {
+			pythonError = i18n.tr("Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies in the classpath?");
+		}
+
+		canPython = true;
+		return true;
+	}
+
+	private String canResolve(String resource, String hint) {
+		try {
+			URL path = getClass().getResource(resource);
+			if (path == null) {
+				return i18n.tr("Resource {0} not found in the classpath.\nIs {1} in your classpath?",resource,hint);
+			}
+			if (path.getPath().indexOf("file:") >= 0 ||
+					path.getPath().endsWith(resource)) {
+				// this one is cool, check the next one
+			} else {
+				return i18n.tr("Found path ''{0}'' does not seem to contain the resource ''{1}''.",path.getPath(),resource);
+			}
+		} catch (Exception e) {
+			return i18n.tr("{0} received while searching for resource {1}: {2}",e.getClass().getName(),resource,e.getLocalizedMessage());
+		}
+		return ""; // found all resources, no error message
+	}
+		
 	
 	/**
 	 * Load the chooser, stored in plm.core.ui.chooser
@@ -556,7 +651,7 @@ public class Game implements IWorldView {
 		InputStream is = null;
 		try {
 			is = Game.class.getClassLoader().getResourceAsStream("resources/plm.configuration.properties");
-			if (is==null) // try to find the file in the debian package
+			if (is==null) // try to find the file in the Debian package
 				is = Game.class.getClassLoader().getResourceAsStream("/etc/plm.configuration.properties");
 			Game.defaultGameProperties.load(is);
 		} catch (InvalidPropertiesFormatException e) {
@@ -800,6 +895,16 @@ public class Game implements IWorldView {
 
 		if (isValidProgLanguage(newLanguage)) {
 			//System.out.println("Switch programming language to "+newLanguage);
+			if (newLanguage.equals(Game.SCALA) && !canScala) {
+				JOptionPane.showMessageDialog(null, i18n.tr("Please install Scala version 2.10 or higher to use it in PLM.\n\n")+scalaError ,
+						i18n.tr("Scala is missing"), JOptionPane.ERROR_MESSAGE); 
+				return;
+			}
+			if (newLanguage.equals(Game.PYTHON) && !canPython) {
+				JOptionPane.showMessageDialog(null, i18n.tr("Please install jython and its dependencies to use the python programming language in PLM.\n\n")+pythonError,
+						i18n.tr("Python is missing"), JOptionPane.ERROR_MESSAGE); 
+				return;
+			}
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
 			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA)) // Only save it if it's stable enough
