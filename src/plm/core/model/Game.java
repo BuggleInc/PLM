@@ -168,6 +168,9 @@ public class Game implements IWorldView {
 		if (defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && !canScala) {
 			System.err.println(i18n.tr("The default programming language is Scala, but your scala installation is not usable. Switching to Java instead.\n"));
 			setProgramingLanguage(JAVA);
+		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) && !canPython) {
+			System.err.println(i18n.tr("The default programming language is python, but your python installation is not usable. Switching to Java instead.\n"));
+			setProgramingLanguage(JAVA);
 		} else {
 			for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) 
 				if (pl.getLang().equals(defaultProgrammingLanguage)) {
