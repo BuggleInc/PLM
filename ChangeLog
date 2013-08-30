@@ -1,4 +1,5 @@
-20130830:
+20130830: Release 2.2. The funny times are over
+
   * Rebrand JLM into PLM (Programmer's Learning Machine)
   * Turtles: Allow for hints on segment sizes
   * Turtle.circle(): New primitive to draw circles directly.
@@ -13,6 +14,8 @@
     authenticated, and the messages moderated (France IOI does that)
   * Build a plm-light jarfile, without scala and python dependencies.
     These langs remain usable if the deps are independently installed.
+  * Specify a sain font as default to help Mac users (fix #100)
+
 20130820:
   * RELEASE 2.1, the 100th day.
   * Introduce Scala as a new programing language (version 2.10+ required)
