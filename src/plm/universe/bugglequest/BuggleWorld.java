@@ -244,7 +244,7 @@ public class BuggleWorld extends GridWorld {
 
 				if (baggleFlag.equalsIgnoreCase("baggle"))
 					try {
-						cell.setBaggle(new Baggle(cell));
+						cell.dropBaggle();
 					} catch (AlreadyHaveBaggleException e) {
 						throw new BrokenWorldFileException(Game.i18n.tr(
 								"The cell {0},{1} seem to be defined more than once. At least, there is two baggles here, which is not allowed.",x,y));
@@ -390,16 +390,15 @@ public class BuggleWorld extends GridWorld {
 	public void addContent(int x, int y, String string) {
 		getCell(x, y).addContent(string);
 	}
-
+	public void addBaggle(int x, int y) {
+		getCell(x, y).dropBaggle();
+	}
 	public void putTopWall(int x, int y) {
 		getCell(x, y).putTopWall();		
 	}
 
 	public void putLeftWall(int x, int y) {
 		getCell(x, y).putLeftWall();		
-	}
-	public void newBaggle(int x, int y) throws AlreadyHaveBaggleException {
-		getCell(x, y).newBaggle();		
 	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang,ScriptEngine engine) throws ScriptException {
@@ -417,7 +416,7 @@ public class BuggleWorld extends GridWorld {
 				"	entity.back()\n"+
 				"def right():\n"+
 				"	entity.right()\n"+
-				"\n"+
+				
 				"def getWorldHeight():\n"+
 				"	return entity.getWorldHeight()\n"+
 				"def getWorldWidth():\n"+

@@ -28,7 +28,7 @@ public class SlugHunting extends ExerciseTemplated {
 		myWorld.setColor(1, 1,Color.green);
 		myWorld.setColor(0, 1,Color.green);
 		try {
-			myWorld.newBaggle(0, 1);
+			myWorld.addBaggle(0, 1);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}
@@ -53,7 +53,7 @@ public class SlugHunting extends ExerciseTemplated {
 		myWorld.setColor(4, 4,Color.green);
 
 		try {
-			myWorld.newBaggle(3, 4);
+			myWorld.addBaggle(3, 4);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}

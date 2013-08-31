@@ -6,6 +6,7 @@ import plm.core.model.Game;
 import plm.universe.GridWorld;
 import plm.universe.GridWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
+import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 
 
@@ -16,8 +17,9 @@ public class BuggleWorldCell extends GridWorldCell {
 	
 	public static final Color DEFAULT_COLOR = Color.white;
 	public static final Color DEFAULT_MSG_COLOR = new Color(0.5f,0.5f,0.9f);
+	public static final Color DEFAULT_BAGGLE_COLOR = new Color(0.82f,0.41f,0.12f);
 
-	private Baggle baggle;
+	private boolean hasBaggle;
 	
 	private String content = "";
 	
@@ -26,32 +28,27 @@ public class BuggleWorldCell extends GridWorldCell {
 	private boolean topWall;
 
 	public BuggleWorldCell(BuggleWorld w, int x, int y) {
-		this(w, x, y, DEFAULT_COLOR, false, false, null, "");
+		this(w, x, y, DEFAULT_COLOR, false, false, false, "");
 	}
 
 	public BuggleWorldCell(BuggleWorldCell c, GridWorld w) {
-		this((BuggleWorld) w, c.x, c.y, c.color, c.leftWall, c.topWall, null, null);
-		if (c.hasBaggle()) {
-			Baggle b = new Baggle(c.getBaggle());
-			b.setCell(this);
-			this.baggle = b;
-		}
-		this.content = c.content;
+		this((BuggleWorld) w, c.x, c.y, c.color, c.leftWall, c.topWall, c.hasBaggle(), null);
+		this.content = new String(c.content);
 	}
 	public BuggleWorldCell copy(GridWorld w) {
 		return new BuggleWorldCell(this,w);
 	}
 
 	public BuggleWorldCell(BuggleWorld w, int x, int y, Color color, boolean leftWall, boolean topWall) {
-		this(w, x, y, color, leftWall, topWall, null, "");
+		this(w, x, y, color, leftWall, topWall, false, "");
 	}
 
-	public BuggleWorldCell(BuggleWorld w, int x, int y, Color c, boolean leftWall, boolean topWall, Baggle baggle, String content) {
+	public BuggleWorldCell(BuggleWorld w, int x, int y, Color c, boolean leftWall, boolean topWall, boolean baggle, String content) {
 		super(w,x,y);
 		this.color = c;
 		this.leftWall = leftWall;
 		this.topWall = topWall;
-		this.baggle = baggle;
+		this.hasBaggle = baggle;
 		this.content = content;
 	}
 
@@ -116,41 +113,20 @@ public class BuggleWorldCell extends GridWorldCell {
 	}
 
 	public boolean hasBaggle() {
-		return this.baggle != null;
+		return hasBaggle;
 	}
 
-	public Baggle getBaggle() {
-		return this.baggle;
-	}
-
-	public void newBaggle() throws AlreadyHaveBaggleException {
-		//Logger.log("WorldCell:newBaggle", "");
-		if (this.baggle != null) 
+	public void dropBaggle() throws AlreadyHaveBaggleException {
+		if (hasBaggle) 
 			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
-		this.baggle = new Baggle(this);
+		hasBaggle = true;
 		world.notifyWorldUpdatesListeners();		
 	}
 	
-	public void newBaggle(Color c) throws AlreadyHaveBaggleException {
-		if (this.baggle != null) 
-			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
-		this.baggle = new Baggle(this,c);
-		world.notifyWorldUpdatesListeners();
-	}
-	
-	public void setBaggle(Baggle b) throws AlreadyHaveBaggleException {
-		if (this.baggle != null && b != null) 
-			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
-		this.baggle = b;
-		world.notifyWorldUpdatesListeners();
-	}
-
-	public Baggle pickupBaggle() {
-		Baggle b = this.baggle;
-		this.baggle.setCell(null);
-		baggle = null;		
-		world.notifyWorldUpdatesListeners();
-		return b;
+	public void pickupBaggle() {
+		if (!hasBaggle)
+			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
+		hasBaggle = false;
 	}
 	
 	public boolean hasContent() {
@@ -199,12 +175,7 @@ public class BuggleWorldCell extends GridWorldCell {
 		if (getClass() != obj.getClass())
 			return false;
 		BuggleWorldCell other = (BuggleWorldCell) obj;
-		//if (hasBaggle() != other.hasBaggle())
-		//	return false;
-		if (baggle == null) {
-			if (other.baggle != null)
-				return false;
-		} else if (!baggle.equals(other.baggle))
+		if (hasBaggle() != other.hasBaggle())
 			return false;
 		if (color == null) {
 			if (other.color != null)
@@ -227,12 +198,10 @@ public class BuggleWorldCell extends GridWorldCell {
 	/* This function is called as answer.diffTo(current) */
 	public String diffTo(BuggleWorldCell current) {
 		StringBuffer sb = new StringBuffer();
-		if (baggle == null && current.baggle != null) 
+		if (! hasBaggle && current.hasBaggle) 
 			sb.append(this.world.i18n.tr(", there shouldn't be this baggle"));
-		if (baggle != null && current.baggle == null)
+		if (  hasBaggle && ! current.hasBaggle)
 			sb.append(this.world.i18n.tr(", there should be a baggle"));
-		if (baggle != null && current.baggle != null && !baggle.equals(current.baggle))
-			sb.append(this.world.i18n.tr(", the baggle differs"));
 		if (color == null) {
 			if (current.color != null)
 				sb.append(this.world.i18n.tr(", the ground should not be {0}",current.color));

@@ -22,9 +22,9 @@ public class MethodsReturning extends ExerciseTemplated {
 		}
 
 		try {
-			myWorld[0].newBaggle(3, 2);
-			myWorld[1].newBaggle(5, 1);
-			myWorld[2].newBaggle(2, 6);
+			myWorld[0].addBaggle(3, 2);
+			myWorld[1].addBaggle(5, 1);
+			myWorld[2].addBaggle(2, 6);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}

@@ -22,7 +22,6 @@ import plm.universe.Direction;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.bugglequest.AbstractBuggle;
-import plm.universe.bugglequest.Baggle;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
@@ -242,10 +241,10 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 
 					} else if (value.equalsIgnoreCase("Y")) {
 						if (!selected.hasBaggle()) // only update if needed
-							selected.setBaggle(new Baggle(selected));
+							selected.dropBaggle();
 					} else {
 						if (selected.hasBaggle()) // only update if needed
-							selected.setBaggle(null);
+							selected.pickupBaggle();
 					}
 				} catch (AlreadyHaveBaggleException e) { 
 					System.err.println("The impossible happened (yet again)");

@@ -17,7 +17,6 @@ import plm.core.ui.WorldView;
 import plm.universe.Entity;
 import plm.universe.World;
 import plm.universe.bugglequest.AbstractBuggle;
-import plm.universe.bugglequest.Baggle;
 import plm.universe.bugglequest.BuggleWorld;
 import plm.universe.bugglequest.BuggleWorldCell;
 
@@ -102,7 +101,7 @@ public class BuggleWorldView extends WorldView {
 				g.fill(new Rectangle2D.Double(padx+x*cellW, pady+y*cellW, cellW, cellW));	
 				
 				if (cell.hasBaggle())
-					drawBaggle(g, cell, cell.getBaggle());
+					drawBaggle(g, cell);
 				if (cell.hasContent())
 					drawMessage(g, cell, cell.getContent());
 			}
@@ -207,7 +206,7 @@ public class BuggleWorldView extends WorldView {
 		}
 	}
 	
-	private void drawBaggle(Graphics2D g, BuggleWorldCell cell, Baggle b) {
+	private void drawBaggle(Graphics2D g, BuggleWorldCell cell) {
 		double padx = getPadX();
 		double pady = getPadY();
 	
@@ -236,12 +235,12 @@ public class BuggleWorldView extends WorldView {
 			}
 			
 		} else {
-			g.setColor(Baggle.DEFAULT_COLOR);
+			g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR);
 			g.fill(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
 			g.setColor(getCellColor(cell.getX(), cell.getY()));
 			g.fill(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
 
-			g.setColor(Baggle.DEFAULT_COLOR.darker().darker());
+			g.setColor(BuggleWorldCell.DEFAULT_BAGGLE_COLOR.darker().darker());
 			g.draw(new Arc2D.Double(padx+ox+pad, pady+oy+pad, d, d, 0, 360, Arc2D.CHORD));
 			g.draw(new Arc2D.Double(padx+ox+pad2, pady+oy+pad2, d2, d2, 0, 360, Arc2D.CHORD));
 		}

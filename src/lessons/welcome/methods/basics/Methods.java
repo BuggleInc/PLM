@@ -19,7 +19,7 @@ public class Methods extends ExerciseTemplated {
 
 		try {
 			for (int i=0;i<7;i++) 
-				myWorld.newBaggle(i,i);
+				myWorld.addBaggle(i,i);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}

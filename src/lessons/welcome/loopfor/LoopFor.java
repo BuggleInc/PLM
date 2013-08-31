@@ -20,7 +20,7 @@ public class LoopFor extends ExerciseTemplated {
 			new Buggle(myWorld, "Hungry"+(i+1), i, 6, Direction.NORTH, Color.black, Color.lightGray);
 		    
 		    try {
-				myWorld.newBaggle(i, 6-i);
+				myWorld.addBaggle(i, 6-i);
 			} catch (AlreadyHaveBaggleException e) {
 				e.printStackTrace();
 			}

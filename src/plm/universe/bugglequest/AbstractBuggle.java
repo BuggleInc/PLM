@@ -28,7 +28,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	boolean brushDown;
 
-	private Baggle baggle;
+	private boolean carryBaggle;
 
 	/* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
 	 * candidate for exercise completion.
@@ -322,7 +322,7 @@ public abstract class AbstractBuggle extends Entity {
 	}
 
 	public boolean isCarryingBaggle() {
-		return this.baggle != null;
+		return this.carryBaggle;
 	}
 
 	@Deprecated
@@ -343,12 +343,13 @@ public abstract class AbstractBuggle extends Entity {
 			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
 		if (isCarryingBaggle())
 			throw new AlreadyHaveBaggleException(Game.i18n.tr("Your are already carrying a baggle."));
-		baggle = getCellFromLesson(this.x, this.y).pickupBaggle();
+		getCellFromLesson(this.x, this.y).pickupBaggle();
+		carryBaggle = true;
 	}
 
 	public void dropBaggle() throws AlreadyHaveBaggleException {
-		getCellFromLesson(this.x, this.y).setBaggle(this.baggle);
-		baggle = null;
+		getCellFromLesson(this.x, this.y).dropBaggle();
+		carryBaggle = false;
 	}
 
 	public boolean isOverMessage() {

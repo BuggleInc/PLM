@@ -30,7 +30,7 @@ public class SlugSnail extends ExerciseTemplated {
 		myWorld.setParameter(new Object[] {Color.pink});
 		
 		try {
-			myWorld.newBaggle(0, 1);
+			myWorld.addBaggle(0, 1);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}
@@ -56,7 +56,7 @@ public class SlugSnail extends ExerciseTemplated {
 		myWorld.setParameter(new Object[] {Color.orange});
 
 		try {
-			myWorld.newBaggle(3, 4);
+			myWorld.addBaggle(3, 4);
 		} catch (AlreadyHaveBaggleException e) {
 			e.printStackTrace();
 		}

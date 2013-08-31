@@ -248,7 +248,6 @@ public abstract class Entity {
 				e.printStackTrace();
 			}
 		}
-
 	}
 
 	private Map<ProgrammingLanguage,String> script = new HashMap<ProgrammingLanguage, String>(); /* What to execute when running a scripting language */
