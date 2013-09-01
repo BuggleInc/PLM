@@ -51,10 +51,10 @@ public class MapView extends BuggleWorldView implements EditionListener {
 						cell.putLeftWall();
 				} else if (cmd.equals("baggle")) {
 					if (cell.hasBaggle()) 
-						cell.pickupBaggle();
+						cell.baggleRemove();
 					else
 						try {
-							cell.dropBaggle();
+							cell.baggleAdd();
 						} catch (AlreadyHaveBaggleException e1) {
 							System.out.println("The impossible did happen (yet again)");
 							e1.printStackTrace();

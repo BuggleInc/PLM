@@ -116,14 +116,14 @@ public class BuggleWorldCell extends GridWorldCell {
 		return hasBaggle;
 	}
 
-	public void dropBaggle() throws AlreadyHaveBaggleException {
+	public void baggleAdd() throws AlreadyHaveBaggleException {
 		if (hasBaggle) 
 			throw new AlreadyHaveBaggleException(Game.i18n.tr("There is already a baggle here."));
 		hasBaggle = true;
 		world.notifyWorldUpdatesListeners();		
 	}
 	
-	public void pickupBaggle() {
+	public void baggleRemove() {
 		if (!hasBaggle)
 			throw new NoBaggleUnderBuggleException(Game.i18n.tr("There is no baggle to pick up here."));
 		hasBaggle = false;
