@@ -1,3 +1,7 @@
+20130902:
+
+  * Fix the dist build to not take all files copied by eclipse (fix #101)
+
 20130830: Release 2.2. The funny times are over
 
   * Rebrand JLM into PLM (Programmer's Learning Machine)

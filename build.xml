@@ -31,9 +31,9 @@
     <property name="base.dir" value="."/>
     <property name="dist.dir" value="${base.dir}/dist"/>
     <property name="lib.dir" value="${base.dir}/lib"/>
-    <property name="classes.dir" value="${base.dir}/bin"/>
     <property name="src.dir" value="${base.dir}/src"/>
     <property name="site.dir" value="${base.dir}/site"/>
+    <property name="classes.dir" value="${site.dir}/bin"/>
 
     <property file="${base.dir}/keystore.properties"/>
 
@@ -45,10 +45,9 @@
     </path>
 
     <target name="clean" description="clean project">
-        <delete dir="${classes.dir}"/>
-        <delete dir="${dist.dir}"/>
         <delete dir="${site.dir}/lib"/>
         <delete dir="${site.dir}/po"/>
+        <delete dir="${site.dir}/bin"/>
     </target>
 
     <target name="compile" description="compile all source files">
@@ -66,6 +65,7 @@
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
             <fileset dir="${src.dir}" includes="**/*.py **/*.scala **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
+            <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl lib/l10n/* lib/l10n-engine/*"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-3.0.3.jar" />    
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
@@ -100,6 +100,7 @@
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
             <fileset dir="${src.dir}" includes="**/*.py **/*.scala **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
+            <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl lib/l10n/* lib/l10n-engine/*"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-3.0.3.jar" />    
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
@@ -129,6 +130,7 @@
             </manifest>
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
             <fileset dir="${src.dir}" includes="**/*.java **/*.py **/*.html **/*.css **/*.map **/*.png" excludes="**/.gitignore"/> 
+            <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${lib.dir}" excludes="*.jar"/>
         </jar>
         <copy todir="${site.dir}/lib">
