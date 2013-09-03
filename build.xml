@@ -150,7 +150,7 @@
         <javadoc 
             destdir="${site.dir}/javadoc/">
             <fileset dir="${src.dir}/plm" includes="**/*.java" />
-            <fileset dir="${src.dir}/universe" includes="**/*.java" />
+            <fileset dir="${src.dir}/lessons" includes="**/*.java" />
         </javadoc>
     </target>
 
