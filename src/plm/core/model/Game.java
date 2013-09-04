@@ -991,7 +991,15 @@ public class Game implements IWorldView {
 		return doDebug;
 	}
 
-    /*
+	private boolean doCreative = false;		
+	public void switchCreative() {
+		doCreative =  !doCreative;
+	}
+	public boolean isCreativeEnabled() {
+		return doCreative;
+	}
+
+	/*
      * Getter and Setter for the course ID for the current session.
      * This ID will be used by the ServerSpy, to associate this
      * PLM student with a course started by a teacher on the server

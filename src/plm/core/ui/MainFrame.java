@@ -75,7 +75,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenu menuFile;
     private JMenuItem miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
     private JMenu menuSession;
-    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionDebug;
+    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionDebug, miSessionCreative;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -272,6 +272,17 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		});
 		menuSession.add(miSessionDebug);
+
+		miSessionCreative = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Creative mode"), null, KeyEvent.VK_C) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				game.switchCreative();
+
+			}
+		});
+		menuSession.add(miSessionCreative);
 
 
 		/* === Language menu === */
@@ -659,6 +670,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionExport.setText(i18n.tr("Export Session Cache"));
 		miSessionImport.setText(i18n.tr("Import Session Cache"));
 		miSessionDebug.setText(i18n.tr("Debug mode"));
+		miSessionDebug.setText(i18n.tr("Creative mode"));
 
 		
 		menuLanguage.setText(i18n.tr("Language"));

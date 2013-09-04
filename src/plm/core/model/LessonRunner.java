@@ -55,7 +55,8 @@ public class LessonRunner extends Thread {
 			game.setState(Game.GameState.COMPILATION_ENDED);
 			
 			game.setState(Game.GameState.EXECUTION_STARTED);
-			exo.reset();
+			if (!game.isCreativeEnabled())
+				exo.reset();
 			
 			exo.run(runners);
 			while (runners.size()>0) {
@@ -63,7 +64,8 @@ public class LessonRunner extends Thread {
 				t.join();
 			}
 			
-			exo.check();
+			if (!game.isCreativeEnabled())
+				exo.check();
 			game.setState(Game.GameState.EXECUTION_ENDED);
 
 		} catch (InterruptedException e) {
@@ -80,55 +82,56 @@ public class LessonRunner extends Thread {
 			game.setState(Game.GameState.EXECUTION_ENDED);
 		}
 		
-		if (   exo.lastResult.totalTests > 0 
-			&& exo.lastResult.totalTests == exo.lastResult.passedTests) {
-			Game.getInstance().studentWork.setPassed(exo, null, true);
-			
-			Vector<Lecture> nextExercises =  exo.getDependingLectures();	
-			if ( nextExercises.size() == 0) {
-				if (exo.lastResult.passedTests > 1) {
-					JOptionPane.showMessageDialog(null, 
-							i18n.tr("Congratulations, you passed this exercise.\n{0} tests passed.",
-									exo.lastResult.passedTests) + exo.lastResult.details, 
-									i18n.tr("Exercice passed \\o/"), 
-									JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
+		if (!game.isCreativeEnabled()) {
+			if (   exo.lastResult.totalTests > 0 
+				&& exo.lastResult.totalTests == exo.lastResult.passedTests) {
+				Game.getInstance().studentWork.setPassed(exo, null, true);
+
+				Vector<Lecture> nextExercises =  exo.getDependingLectures();	
+				if ( nextExercises.size() == 0) {
+					if (exo.lastResult.passedTests > 1) {
+						JOptionPane.showMessageDialog(null, 
+								i18n.tr("Congratulations, you passed this exercise.\n{0} tests passed.",
+										exo.lastResult.passedTests) + exo.lastResult.details, 
+										i18n.tr("Exercice passed \\o/"), 
+										JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
+					} else {
+						JOptionPane.showMessageDialog(null, 
+								i18n.tr("Congratulations, you passed this exercise.",
+										exo.lastResult.passedTests) + exo.lastResult.details, 
+										i18n.tr("Exercice passed \\o/"), 
+										JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
+					}
 				} else {
-					JOptionPane.showMessageDialog(null, 
-							i18n.tr("Congratulations, you passed this exercise.",
-									exo.lastResult.passedTests) + exo.lastResult.details, 
-									i18n.tr("Exercice passed \\o/"), 
-									JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"));
+					Lecture selectedValue;
+					if (exo.lastResult.passedTests > 1) {
+
+						selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
+								i18n.tr("Congratulations, you passed this exercise.\n({0} tests passed)\nWhich exercise will you do now?"), 
+								i18n.tr("Exercice passed \\o/"),
+								JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
+								nextExercises.toArray(), nextExercises.get(0));
+					} else {
+						selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
+								i18n.tr("Congratulations, you passed this exercise.\nWhich exercise will you do now?"), 
+								i18n.tr("Exercice passed \\o/"),
+								JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
+								nextExercises.toArray(), nextExercises.get(0));
+
+					}
+					if (selectedValue != null) 
+						Game.getInstance().setCurrentExercise(selectedValue);
 				}
 			} else {
-				Lecture selectedValue;
-				if (exo.lastResult.passedTests > 1) {
+				SwingUtilities.invokeLater(new Runnable() {
+					public void run() {
+						new ExerciseFailedDialog(exo.lastResult);
+					}
+				});
 
-					selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
-							i18n.tr("Congratulations, you passed this exercise.\n({0} tests passed)\nWhich exercise will you do now?"), 
-							i18n.tr("Exercice passed \\o/"),
-							JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
-							nextExercises.toArray(), nextExercises.get(0));
-				} else {
-					selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
-							i18n.tr("Congratulations, you passed this exercise.\nWhich exercise will you do now?"), 
-							i18n.tr("Exercice passed \\o/"),
-							JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
-							nextExercises.toArray(), nextExercises.get(0));
-					
-				}
-				if (selectedValue != null) 
-					Game.getInstance().setCurrentExercise(selectedValue);
 			}
-		} else {
-			 SwingUtilities.invokeLater(new Runnable() {
-		            public void run() {
-		            	new ExerciseFailedDialog(exo.lastResult);
-		            }
-		        });
-
+			Game.getInstance().fireProgressSpy(exo);									
 		}
-		Game.getInstance().fireProgressSpy(exo);									
-
 		runners.remove(this);
 	}
 	
