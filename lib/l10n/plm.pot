@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-08-28 21:02+0300\n"
+"POT-Creation-Date: 2013-09-06 09:33+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4179,9 +4179,9 @@ msgstr ""
 msgid "Mnemonic"
 msgstr ""
 
-#. type: Content of: <table><tr><td>
-#: src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:141 src/lessons/turmites/turmitecreator/TurmiteCreator.html:30 src/lessons/turmites/turmitecreator/TurmiteCreator.html:33
-msgid "R"
+#. type: Content of: <p><p><p><table><tr><td>
+#: src/lessons/welcome/bdr/BDR.html:159 src/lessons/welcome/bdr/BDR2.html:141
+msgid "[!java]'R'[/!][!scala|python]\"R\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4196,7 +4196,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:160 src/lessons/welcome/bdr/BDR2.html:142
-msgid "L"
+msgid "[!java]'L'[/!][!scala|python]\"L\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4211,7 +4211,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:161 src/lessons/welcome/bdr/BDR2.html:143
-msgid "I"
+msgid "[!java]'I'[/!][!scala|python]\"I\"[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
@@ -4226,7 +4226,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:163 src/lessons/welcome/bdr/BDR2.html:145
-msgid "A"
+msgid "[!java]'A'[/!][!scala|python]\"A\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4241,7 +4241,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:164 src/lessons/welcome/bdr/BDR2.html:146
-msgid "B"
+msgid "[!java]'B'[/!][!scala|python]\"B\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4256,7 +4256,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:165 src/lessons/welcome/bdr/BDR2.html:147
-msgid "C"
+msgid "[!java]'C'[/!][!scala|python]\"C\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4271,7 +4271,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:167 src/lessons/welcome/bdr/BDR2.html:152
-msgid "Z"
+msgid "[!java]'Z'[/!][!scala|python]\"Z\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4286,7 +4286,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:168 src/lessons/welcome/bdr/BDR2.html:153
-msgid "Y"
+msgid "[!java]'Y'[/!][!scala|python]\"Y\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4301,7 +4301,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR.html:169 src/lessons/welcome/bdr/BDR2.html:154
-msgid "X"
+msgid "[!java]'X'[/!][!scala|python]\"X\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4628,7 +4628,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:148
-msgid "D"
+msgid "[!java]'D'[/!][!scala|python]\"D\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4638,7 +4638,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:149
-msgid "E"
+msgid "[!java]'E'[/!][!scala|python]\"E\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4648,7 +4648,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:150
-msgid "F"
+msgid "[!java]'F'[/!][!scala|python]\"F\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4658,7 +4658,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:155
-msgid "W"
+msgid "[!java]'W'[/!][!scala|python]\"W\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4668,7 +4668,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:156
-msgid "V"
+msgid "[!java]'V'[/!][!scala|python]\"V\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -4678,7 +4678,7 @@ msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
 #: src/lessons/welcome/bdr/BDR2.html:157
-msgid "U"
+msgid "[!java]'U'[/!][!scala|python]\"U\"[/!]"
 msgstr ""
 
 #. type: Content of: <p><p><p><table><tr><td>
@@ -5315,6 +5315,11 @@ msgstr ""
 #. type: Content of: <table><tr><th>
 #: src/lessons/turmites/turmitecreator/TurmiteCreator.html:26
 msgid "Current state"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/lessons/turmites/turmitecreator/TurmiteCreator.html:30 src/lessons/turmites/turmitecreator/TurmiteCreator.html:33
+msgid "R"
 msgstr ""
 
 #. type: Content of: <table><tr><td>

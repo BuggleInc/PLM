@@ -148,7 +148,7 @@ un message écrit par terre.</li>
   <li><code>[!java]String [/!]readMessage()[!java]: String[/!]</code> : renvoie le
 message qu'il y a écrit par terre (s'il y a rien, on obtient une chaîne
 vide).</li>
-  <li><code>[!java]void[/!] writeMessage([!java]String [/!]msg[!java]:
+  <li><code>[!java]void[/!] ecritMessage([!java]String [/!]msg[!java]:
 String[/!])</code> : écrit le message spécifié en argument par terre. S'il y
 a déjà quelque chose écrit par terre, on ajoute le nouveau message à la fin
 du précédent.</li>
@@ -166,17 +166,17 @@ indications sont des messages au sol, avec le code suivant:
      <td>Quoi faire</td>
      <td>Mnémotechnique</td></tr>
 
- <tr><td>R</td><td>Tourner à droite et avancer d'une case</td><td>Right</td></tr>
- <tr><td>L</td><td>Tourner à gauche et avancer d'une case</td><td>Left</td></tr>
- <tr><td>I</td><td>Se retourner (demi-tour) et avancer d'une case</td><td>Inverse</td></tr>
+ <tr><td>[!java]'R'[/!][!scala|python]"R"[/!]</td><td>Tourner à droite et avancer d'une case</td><td>Right</td></tr>
+ <tr><td>[!java]'L'[/!][!scala|python]"L"[/!]</td><td>Tourner à gauche et avancer d'une case</td><td>Left</td></tr>
+ <tr><td>[!java]'I'[/!][!scala|python]"I"[/!]</td><td>Se retourner (demi-tour) et avancer d'une case</td><td>Inverse</td></tr>
 
- <tr><td>A</td><td>Avancer d'une case</td><td>Première lettre de l'alphabet</td></tr>
- <tr><td>B</td><td>Avancer de deux cases</td><td>Deuxième lettre de l'alphabet</td></tr>
- <tr><td>C</td><td>Avancer de trois cases</td><td>Troisième lettre de l'alphabet</td></tr>
+ <tr><td>[!java]'A'[/!][!scala|python]"A"[/!]</td><td>Avancer d'une case</td><td>Première lettre de l'alphabet</td></tr>
+ <tr><td>[!java]'B'[/!][!scala|python]"B"[/!]</td><td>Avancer de deux cases</td><td>Deuxième lettre de l'alphabet</td></tr>
+ <tr><td>[!java]'C'[/!][!scala|python]"C"[/!]</td><td>Avancer de trois cases</td><td>Troisième lettre de l'alphabet</td></tr>
 
- <tr><td>Z</td><td>Reculer d'une case</td><td>A une lettre de la fin de l'alphabet</td></tr>
- <tr><td>Y</td><td>Reculer de deux cases</td><td>A deux lettres de la fin de l'alphabet</td></tr>
- <tr><td>X</td><td>Reculer de trois cases</td><td>A trois lettres de la fin de l'alphabet</td></tr>
+ <tr><td>[!java]'Z'[/!][!scala|python]"Z"[/!]</td><td>Reculer d'une case</td><td>A une lettre de la fin de l'alphabet</td></tr>
+ <tr><td>[!java]'Y'[/!][!scala|python]"Y"[/!]</td><td>Reculer de deux cases</td><td>A deux lettres de la fin de l'alphabet</td></tr>
+ <tr><td>[!java]'X'[/!][!scala|python]"X"[/!]</td><td>Reculer de trois cases</td><td>A trois lettres de la fin de l'alphabet</td></tr>
  <tr><td><i>(n'importe quoi d'autre)</i></td><td>Arrêter de dancer.</td><td></td></tr>
 </table>
 
