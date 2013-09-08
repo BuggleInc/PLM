@@ -14,7 +14,10 @@ the current cell. Just go to the cell you want to test and run that function.
 [!java]You cannot test whether this color is equal to <code>Color.green</code> with an
 <code>==</code> sign but instead you have to write something like
 <code>getGroundColor().equals(Color.green)</code>. This is because green is an 
-<i>object</i> in Java, and <code>.equals()</code> is the way to go to test equality between Java objects.[/!]</p>   
+<i>object</i> in Java, and <code>.equals()</code> is the way to go to test equality between Java objects.[/!]
+[!python|scala]So you just have to test whether the returned color is
+equal to the value <code>Color.green</code>, that represents the 
+green color.[/!]</p>   
 
 <h3>Exercise goal</h3>
 <p>Complete the <code>isFacingTrail()</code> method (which gets called automatically).</p>
