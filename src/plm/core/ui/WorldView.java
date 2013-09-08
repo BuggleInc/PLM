@@ -48,14 +48,4 @@ public abstract class WorldView extends JComponent  implements IWorldView {
 	public boolean isWorldCompatible(World world) {
 		return world.getClass().equals(this.world.getClass());
 	}
-
-	/** Returns what should be added to the tab name */
-	public String getTabName() {
-		return ""; 
-	}
-
-	/** Returns what should be added to the tooltip */
-	public String getTip() {
-		return "";
-	}
 }
