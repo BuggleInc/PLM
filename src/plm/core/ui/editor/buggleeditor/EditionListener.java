@@ -1,4 +1,4 @@
-package plm.universe.bugglequest.mapeditor;
+package plm.core.ui.editor.buggleeditor;
 
 import plm.universe.Entity;
 import plm.universe.World;
