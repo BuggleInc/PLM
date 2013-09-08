@@ -1,8 +1,9 @@
-20130908:
+20130908: Release 2.2.1: C'mon, dudes. Break that one if you dare.
 
-  * Fix the dist build to not take all files copied by eclipse (fix #101)
   * Allow a creative mode, perfectly adapted to open LOGO exercises.
     The world is never reset nor compared to the "expected" output.
+    
+  * Fix the dist build to not take all files copied by eclipse (fix #101)
   * welcome.PictureMono*: fix the templating of run() (fix #102)
   * welcome.Instructions: Fix a translation error (fix #103)
   * welcome.slugTracking: Mention also in scala and python how to test
