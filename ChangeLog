@@ -8,6 +8,7 @@
   * welcome.slugTracking: Mention also in scala and python how to test
     whether the ground color is green (fix #104)
   * Bat templating didn't even compile in Java and Scala, oops (fix #105)
+  * turmite.hello: fix mission text: left=2; right=8
 
 20130830: Release 2.2. The funny times are over
 
