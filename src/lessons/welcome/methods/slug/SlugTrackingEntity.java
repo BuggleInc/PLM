@@ -7,10 +7,6 @@ public class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	@Override
 	public void run() {
-		hunt(); 
-	}
-
-	public void hunt() {
 		while (! isOverBaggle()) {
 			if (isFacingTrail()) {
 				brushDown();
@@ -36,5 +32,4 @@ public class SlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		/* END SOLUTION */
 	}		
 	/* END TEMPLATE */
-
 }

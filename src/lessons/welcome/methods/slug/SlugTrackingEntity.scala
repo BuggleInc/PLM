@@ -6,10 +6,6 @@ import java.awt.Color;
 class ScalaSlugTrackingEntity extends plm.universe.bugglequest.SimpleBuggle {
 
 	override def run() {
-		hunt(); 
-	}
-
-	def hunt() {
 		while (! isOverBaggle()) {
 			if (isFacingTrail()) {
 				brushDown();
