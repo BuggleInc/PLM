@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-08 22:13+0300\n"
-"PO-Revision-Date: 2013-09-08 22:14+0200\n"
+"POT-Creation-Date: 2013-09-08 22:21+0300\n"
+"PO-Revision-Date: 2013-09-08 22:23+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -2092,7 +2092,7 @@ msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 #: src/lessons/welcome/variables/Variables.html:130
 #: src/lessons/welcome/loopfor/LoopFor.html:69
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:53
-#: src/lessons/welcome/loopdowhile/Poucet.html:33
+#: src/lessons/welcome/loopdowhile/Poucet.html:36
 #: src/lessons/welcome/methods/args/MethodsArgs.html:65
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:39
 #: src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193
@@ -3778,7 +3778,7 @@ msgstr "Exécuter le corps de boucle au moins une fois"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25
-#: src/lessons/welcome/loopdowhile/Poucet.html:27
+#: src/lessons/welcome/loopdowhile/Poucet.html:30
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:53
 #: src/lessons/welcome/array/basics/Array1.html:98
 msgid "[!python]"
@@ -3896,15 +3896,18 @@ msgid ""
 "After each corridor, you should turn left if the corridor contains three "
 "baggels or more, and you have to turn right if there is only 2 baggles or "
 "less."
-msgstr ""
-"La bonne nouvelle est que le chemin vers la sortie est en quelque sorte "
-"écrit au sol. Ces mondes sont composés de plusieurs corridors, avec des "
-"baggles par terre. À chaque embranchement, il faut prendre à gauche si le "
-"corridor qu'on vient de parcourir contient 3 baggles ou plus, ou à droite "
-"s'il contient 2 baggles ou moins."
+msgstr "La bonne nouvelle est que le chemin vers la sortie est en quelque sorte écrit au sol. Ces mondes sont composés de plusieurs corridors, avec des baggles par terre. À chaque embranchement, il faut prendre à gauche si le corridor qu'on vient de parcourir contient 3 baggles ou plus, ou à droite s'il contient 2 baggles ou moins."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:13
+msgid ""
+"You should count exactly 5 cells per corridor, the one at the intersection "
+"counting as the last cell of the previous corridor, not as the first cell "
+"after your turn."
+msgstr "Vous devez compter exactement 5 cases par couloir. Les cases aux intersections doivent être comptées comme les dernières de leur couloir, pas comme les premières après avoir tourné."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet.html:16
 msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
@@ -3919,7 +3922,7 @@ msgstr ""
 "méthode <code>sortieTrouvee()</code> fournie."
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet.html:20
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
 "another while counting the baggles you see on your path. The method "
@@ -3950,7 +3953,7 @@ msgstr ""
 "faut s'arrêter ou non.[/!]"
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopdowhile/Poucet.html:28
+#: src/lessons/welcome/loopdowhile/Poucet.html:31
 #, no-wrap
 msgid ""
 "firstTime = True\n"
@@ -3964,12 +3967,12 @@ msgstr ""
 "  (le corps de votre boucle)\n"
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:35
+#: src/lessons/welcome/loopdowhile/Poucet.html:38
 msgid "I cannot imagine how to count the baggles I see."
 msgstr "Je n'arrive pas à imaginer comment compter les baggles que je vois"
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:36
+#: src/lessons/welcome/loopdowhile/Poucet.html:39
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -3980,13 +3983,13 @@ msgstr ""
 "<i>compteur</i>."
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:38
+#: src/lessons/welcome/loopdowhile/Poucet.html:41
 msgid ""
 "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr "N'oubliez pas de remettre le compteur à 0 au début de chaque couloir!"
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:41
+#: src/lessons/welcome/loopdowhile/Poucet.html:44
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
@@ -7085,7 +7088,12 @@ msgid ""
 msgstr ""
 "Chaque ensemble d'informations contient trois valeurs.\n"
 "La première est le rang de la couleur à mettre sur le sol.\n"
-"La deuxième est le mouvement à effectuer, avec la notation suivante : 0=stop, 1=pas de virage, 2=gauche, 4=demi-tour, 8=left. Veuillez noter que si l'instruction est stop, vous ne devez même pas avancer sur cette étape (mais vous ne devez pas arrêter votre programme pour autant : les prochains pas peuvent faire quelque chose d'autre). Finalement, le troisième entier est la valeur du prochain <code>state</code> à avoir après cette itération."
+"La deuxième est le mouvement à effectuer, avec la notation suivante : "
+"0=stop, 1=pas de virage, 2=gauche, 4=demi-tour, 8=left. Veuillez noter que "
+"si l'instruction est stop, vous ne devez même pas avancer sur cette étape "
+"(mais vous ne devez pas arrêter votre programme pour autant : les prochains "
+"pas peuvent faire quelque chose d'autre). Finalement, le troisième entier "
+"est la valeur du prochain <code>state</code> à avoir après cette itération."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/helloturmite/HelloTurmite.html:31

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-08 22:13+0300\n"
+"POT-Creation-Date: 2013-09-08 22:21+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1646,7 +1646,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:33 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:34 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:31 src/lessons/welcome/variables/Variables.html:61 src/lessons/welcome/variables/Variables.html:130 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:36 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:34 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
 msgid "[/!]"
 msgstr ""
 
@@ -2825,7 +2825,7 @@ msgid "Executing the loop body at least once"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25 src/lessons/welcome/loopdowhile/Poucet.html:27 src/lessons/turmites/helloturmite/HelloTurmite.html:53 src/lessons/welcome/array/basics/Array1.html:98
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:25 src/lessons/welcome/loopdowhile/Poucet.html:30 src/lessons/turmites/helloturmite/HelloTurmite.html:53 src/lessons/welcome/array/basics/Array1.html:98
 msgid "[!python]"
 msgstr ""
 
@@ -2914,6 +2914,14 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:13
 msgid ""
+"You should count exactly 5 cells per corridor, the one at the intersection "
+"counting as the last cell of the previous corridor, not as the first cell "
+"after your turn."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopdowhile/Poucet.html:16
+msgid ""
 "So, the general form of your code must be something like \"while I did not "
 "find the exit, take the next corridor to decide whether I should turn left "
 "or right at the next intersection\". You can determine whether you are on "
@@ -2922,7 +2930,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:17
+#: src/lessons/welcome/loopdowhile/Poucet.html:20
 msgid ""
 "To take one corridor, you simply have to run from one intersection to "
 "another while counting the baggles you see on your path. The method "
@@ -2939,7 +2947,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/welcome/loopdowhile/Poucet.html:28
+#: src/lessons/welcome/loopdowhile/Poucet.html:31
 #, no-wrap
 msgid ""
 "firstTime = True\n"
@@ -2949,12 +2957,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:35
+#: src/lessons/welcome/loopdowhile/Poucet.html:38
 msgid "I cannot imagine how to count the baggles I see."
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:36
+#: src/lessons/welcome/loopdowhile/Poucet.html:39
 msgid ""
 "You need a variable that is initialized to 0, and incremented each time you "
 "see a baggle on the ground. A variable used this way is often called "
@@ -2962,12 +2970,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><div>
-#: src/lessons/welcome/loopdowhile/Poucet.html:38
+#: src/lessons/welcome/loopdowhile/Poucet.html:41
 msgid "Don't forget to reset your counter to 0 at the beginning of each corridor!"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/loopdowhile/Poucet.html:41
+#: src/lessons/welcome/loopdowhile/Poucet.html:44
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
