@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-08 22:21+0300\n"
-"PO-Revision-Date: 2013-09-08 22:23+0200\n"
+"POT-Creation-Date: 2013-09-08 22:37+0300\n"
+"PO-Revision-Date: 2013-09-08 22:38+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -3623,14 +3623,14 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:10
 msgid ""
-"And before that, walk a bit forward to reach that stair, and ensure that you "
-"are in the right situation for your loop content to run properly. And once "
-"you reach the heaven, take some steps in your new home."
+"Before that, walk a bit forward to reach that stair, and ensure that you are "
+"in the right situation for your loop content to run properly. And once you "
+"reach the heaven, take some steps in your new home.  Meanwhile, you just "
+"have to walk your way, the colors appear automagically."
 msgstr ""
-"Avant cela, vous devez marcher un peu pour atteindre l'escalier et vous "
-"assurer que vous êtes dans la bonne position pour que le contenu de votre "
-"boucle s'exécute correctement. Et une fois que vous avez atteint le paradis, "
-"faites quelques pas dans votre nouvelle demeure."
+"Avant cela, vous devez marcher un peu pour atteindre l'escalier et vous assurer que vous êtes dans la bonne position pour que le contenu de votre boucle s'exécute correctement. \n"
+"Une fois que vous avez atteint le paradis, faites quelques pas dans votre nouvelle demeure.\n"
+"Chemin faisant, les couleurs apparaissent d'elles-mêmes sans que vous n'ayez rien à faire."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourse.html:1
@@ -3896,7 +3896,12 @@ msgid ""
 "After each corridor, you should turn left if the corridor contains three "
 "baggels or more, and you have to turn right if there is only 2 baggles or "
 "less."
-msgstr "La bonne nouvelle est que le chemin vers la sortie est en quelque sorte écrit au sol. Ces mondes sont composés de plusieurs corridors, avec des baggles par terre. À chaque embranchement, il faut prendre à gauche si le corridor qu'on vient de parcourir contient 3 baggles ou plus, ou à droite s'il contient 2 baggles ou moins."
+msgstr ""
+"La bonne nouvelle est que le chemin vers la sortie est en quelque sorte "
+"écrit au sol. Ces mondes sont composés de plusieurs corridors, avec des "
+"baggles par terre. À chaque embranchement, il faut prendre à gauche si le "
+"corridor qu'on vient de parcourir contient 3 baggles ou plus, ou à droite "
+"s'il contient 2 baggles ou moins."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:13
@@ -3904,7 +3909,10 @@ msgid ""
 "You should count exactly 5 cells per corridor, the one at the intersection "
 "counting as the last cell of the previous corridor, not as the first cell "
 "after your turn."
-msgstr "Vous devez compter exactement 5 cases par couloir. Les cases aux intersections doivent être comptées comme les dernières de leur couloir, pas comme les premières après avoir tourné."
+msgstr ""
+"Vous devez compter exactement 5 cases par couloir. Les cases aux "
+"intersections doivent être comptées comme les dernières de leur couloir, pas "
+"comme les premières après avoir tourné."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:16

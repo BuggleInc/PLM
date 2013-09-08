@@ -10,6 +10,8 @@
   * Bat templating didn't even compile in Java and Scala, oops (fix #105)
   * turmite.hello: fix mission text: left=2; right=8
   * welcome.Poucet: specify how intersection cells must be counted
+  * welcome.LoopStairs: say that there is no need to manually fiddle
+    with the colors. 
 
 20130830: Release 2.2. The funny times are over
 

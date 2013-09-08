@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-08 22:21+0300\n"
+"POT-Creation-Date: 2013-09-08 22:37+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2716,9 +2716,10 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopStairs.html:10
 msgid ""
-"And before that, walk a bit forward to reach that stair, and ensure that you "
-"are in the right situation for your loop content to run properly. And once "
-"you reach the heaven, take some steps in your new home."
+"Before that, walk a bit forward to reach that stair, and ensure that you are "
+"in the right situation for your loop content to run properly. And once you "
+"reach the heaven, take some steps in your new home.  Meanwhile, you just "
+"have to walk your way, the colors appear automagically."
 msgstr ""
 
 #. type: Content of: <h2>
