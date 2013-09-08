@@ -32,29 +32,37 @@ public class SortingWorld extends World {
 
 	/** Constructor used in the exercises */
 	public SortingWorld(String name, int nbValues) {
+		this(name, nbValues, true);
+	}
+	public SortingWorld(String name, int nbValues, boolean someoneHomeOk) {
 		super(name);
 		setDelay(50);
 		this.values = new int[nbValues];
 		for (int i=0 ; i< this.values.length ; i++) 
-		{
 			this.values[i] = i;
-		}
+		
 		scramble();
+		// If instructed so, scramble the values until none is @home
+		if (! someoneHomeOk) {	
+			boolean someoneHome;
+			do {
+				someoneHome = false;
+				for (int i=0;i<values.length;i++) 
+					if (values[i] == i)
+						someoneHome = true;
+				if (someoneHome)
+					scramble();
+			} while (!someoneHome);
+		}
 		this.initValues = this.values;
 	}
 
 	private void scramble() {
 		while( this.isSorted() )
-		{
 			for ( int caseNumber = 0 ; caseNumber < this.values.length ; caseNumber++)
-			{
 				// Swapping time !
 				if ( Math.random() > 0.5)
-				{
 					this.exchangeValues(caseNumber,(int)(Math.random()*this.values.length));
-				}
-			}
-		}
 	}
 
 	public boolean equals(Object o) {
