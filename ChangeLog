@@ -3,6 +3,7 @@
   * Fix the dist build to not take all files copied by eclipse (fix #101)
   * Allow a creative mode, perfectly adapted to open LOGO exercises.
     The world is never reset nor compared to the "expected" output.
+  * welcome.PictureMono*: fix the templating of run() (fix #102)
   * welcome.Instructions: Fix a translation error (fix #103)
   * welcome.slugTracking: Mention also in scala and python how to test
     whether the ground color is green (fix #104)

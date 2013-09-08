@@ -3,7 +3,14 @@ package lessons.welcome.methods.picture;
 import plm.universe.bugglequest.SimpleBuggle;
 public class PictureMonoEntity extends SimpleBuggle {
 
-	/* BEGIN SOLUTION */
+	/* BEGIN TEMPLATE */
+	public void run() {
+		/* BEGIN SOLUTION */
+		makeV();
+		makeV();
+		makeV();
+		makeV();
+	}
 	void mark() {
 		brushDown();
 		brushUp();
@@ -25,15 +32,7 @@ public class PictureMonoEntity extends SimpleBuggle {
 
 		forward();
 		left();
+		/* END SOLUTION */
 	}
-
-
-
-	public void run() {
-		makeV();
-		makeV();
-		makeV();
-		makeV();
-	}
-	/* END SOLUTION */
+	/* END TEMPLATE */
 }

@@ -5,7 +5,13 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class PictureMono3Entity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
+	public void run() {
+		/* BEGIN SOLUTION */
+		for (int i=0; i<9; i++) {
+			makeLine(9);
+			nextLine();
+		}
+	}
 	void mark() {
 		brushDown();
 		brushUp();
@@ -47,14 +53,7 @@ public class PictureMono3Entity extends SimpleBuggle {
 		left();
 		forward(5);
 		right();	
+		/* END SOLUTION */
 	}
-
-	public void run() {
-		for (int i=0; i<9; i++) {
-			makeLine(9);
-			nextLine();
-		}
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 }

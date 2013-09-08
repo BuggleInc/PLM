@@ -6,7 +6,12 @@ import plm.universe.bugglequest.SimpleBuggle;
 class ScalaPictureMonoEntity extends SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
+	def run() {
+		/* BEGIN SOLUTION */
+		for (i <- 1 to 4) {
+			makeV();
+		}
+	}
 	def mark() {
 		brushDown();
 		brushUp();
@@ -28,15 +33,7 @@ class ScalaPictureMonoEntity extends SimpleBuggle {
 
 		forward();
 		left();
+		/* END SOLUTION */
 	}
-
-
-
-	override def run() {
-		for (i <- 1 to 4) {
-			makeV();
-		}
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 }

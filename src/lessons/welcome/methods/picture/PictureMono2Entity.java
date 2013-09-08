@@ -4,7 +4,13 @@ package lessons.welcome.methods.picture;
 public class PictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
+	public void run() {
+		/* BEGIN SOLUTION */
+		for (int i=0; i<3;i++) {
+			makeLine(3);
+			nextLine();
+		}
+	}
 	void mark() {
 		brushDown();
 		brushUp();
@@ -46,14 +52,7 @@ public class PictureMono2Entity extends plm.universe.bugglequest.SimpleBuggle {
 		left();
 		forward(5);
 		right();	
+		/* END SOLUTION */
 	}
-
-	public void run() {
-		for (int i=0; i<3;i++) {
-			makeLine(3);
-			nextLine();
-		}
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 }
