@@ -81,7 +81,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		SourceFile javaFile = sourceFiles.get(Game.JAVA).get(0);
 		
 		javaFile.setCorrection("$package "+template+" public void run(BatTest t) {\n"+javaFile.getTemplate()+"}\n"+javaFile.getCorrection()+" }");
-		javaFile.setTemplate("$package "+template+" "+javaFile.getTemplate()+" $body }");
+		javaFile.setTemplate  ("$package "+template+" public void run(BatTest t) {  "+javaFile.getTemplate()+"}    $body }");
 		//System.out.println("New template: "+sf.getTemplate());
 		
 		if (getProgLanguages().contains(Game.SCALA)) {
@@ -92,7 +92,7 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 					+ "class "+entName+" extends BatEntity { ";
 			
 			scalaFile.setCorrection(header+scalaFile.getCorrection()+" }");
-			scalaFile.setTemplate(header+" "+javaFile.getTemplate()+" $body }");
+			scalaFile.setTemplate  (header+scalaFile.getTemplate()  +" }");
 		}
 		
 		computeAnswer();
@@ -130,7 +130,8 @@ public abstract class ExerciseTemplatingEntity extends ExerciseTemplated {
 		}
 		skeleton.append(") )");
 		
-		newSource(Game.SCALA, entName, initialCode, "$body",7,"\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
+		newSource(Game.SCALA, entName, initialCode, "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n$body",7,
+				                                    "\n   override def run(t: BatTest) {\n"+skeleton+"\n   }\n"+initialCode+correction);
 		addProgLanguage(Game.SCALA);
 	}
 }
