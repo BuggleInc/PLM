@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-09-08 22:40+0200\n"
-"PO-Revision-Date: 2013-09-04 10:43+0200\n"
+"PO-Revision-Date: 2013-09-08 22:42+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -966,9 +966,8 @@ msgstr "Monde"
 
 #: src/plm/core/ui/ExerciseView.java:92 src/plm/core/ui/ExerciseView.java:161
 #: src/plm/core/ui/ExerciseView.java:219
-#, fuzzy
 msgid "The world as it is right now"
-msgstr "Le monde ne peut être réinitialisé pour l'instant"
+msgstr "Le monde tel qu'il est"
 
 #: src/plm/core/ui/ExerciseView.java:96 src/plm/core/ui/ExerciseView.java:163
 #: src/plm/core/ui/ExerciseView.java:220
@@ -978,7 +977,7 @@ msgstr "Objectif"
 #: src/plm/core/ui/ExerciseView.java:96 src/plm/core/ui/ExerciseView.java:163
 #: src/plm/core/ui/ExerciseView.java:221
 msgid "The world as it should be"
-msgstr ""
+msgstr "Le monde tel qu'il devrait être"
 
 #: src/plm/core/ui/ExerciseView.java:215
 msgid "Switch the displayed world"
@@ -1125,7 +1124,7 @@ msgstr "Mode débogage"
 
 #: src/plm/core/ui/MainFrame.java:276 src/plm/core/ui/MainFrame.java:673
 msgid "Creative mode"
-msgstr ""
+msgstr "Mode créatif"
 
 #. === Language menu ===
 #: src/plm/core/ui/MainFrame.java:289 src/plm/core/ui/MainFrame.java:676
