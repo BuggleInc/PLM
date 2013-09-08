@@ -110,7 +110,7 @@ public abstract class Exercise extends Lecture {
 	//TODO: why do we instantiate a compiler per exercise ? is there any way to re-use the same compiler. 
 	//TODO: I tried to put it as static, but of course strange behaviors happen afterwards
 	// Create a compiler of classes (using java 1.6)
-	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] { "-target", "1.6" }));
+	private final CompilerJava compiler = new CompilerJava(Arrays.asList(new String[] { }));
 
 
 	/**
