@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-08 22:37+0300\n"
-"PO-Revision-Date: 2013-09-08 22:38+0200\n"
+"POT-Creation-Date: 2013-09-09 10:10+0300\n"
+"PO-Revision-Date: 2013-09-09 10:11+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -3628,9 +3628,13 @@ msgid ""
 "reach the heaven, take some steps in your new home.  Meanwhile, you just "
 "have to walk your way, the colors appear automagically."
 msgstr ""
-"Avant cela, vous devez marcher un peu pour atteindre l'escalier et vous assurer que vous êtes dans la bonne position pour que le contenu de votre boucle s'exécute correctement. \n"
-"Une fois que vous avez atteint le paradis, faites quelques pas dans votre nouvelle demeure.\n"
-"Chemin faisant, les couleurs apparaissent d'elles-mêmes sans que vous n'ayez rien à faire."
+"Avant cela, vous devez marcher un peu pour atteindre l'escalier et vous "
+"assurer que vous êtes dans la bonne position pour que le contenu de votre "
+"boucle s'exécute correctement. \n"
+"Une fois que vous avez atteint le paradis, faites quelques pas dans votre "
+"nouvelle demeure.\n"
+"Chemin faisant, les couleurs apparaissent d'elles-mêmes sans que vous n'ayez "
+"rien à faire."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourse.html:1
@@ -3661,6 +3665,13 @@ msgstr ""
 "Même si la piste souffre un peu, vous <b>DEVEZ</b> le faire. Souvenez vous, "
 "la piste a 4 cotés, qui prennent chacun 8 pas à parcourir. Maintenant allez-"
 "y et montrez-leur ce dont ces super-chaussures sont capables."
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopCourse.html:11
+msgid ""
+"You don't have to do anything particular with regard of the colors: your "
+"shoes will do it for you. Just take that run!"
+msgstr "Vous n'avez rien à faire de particulier à propos de la couleur de la piste : vos chaussures la changeront pour vous. Contentez vous de courir."
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/loopfor/LoopCourseForest.html:1

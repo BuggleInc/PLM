@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-08 22:37+0300\n"
+"POT-Creation-Date: 2013-09-09 10:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2742,6 +2742,13 @@ msgid ""
 "track suffers, you <b>really HAVE</b> to take that run.  Remember, the track "
 "has four sides, that take eight steps each to run along.  Now go, and show "
 "them what these super shoes can do."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/loopfor/LoopCourse.html:11
+msgid ""
+"You don't have to do anything particular with regard of the colors: your "
+"shoes will do it for you. Just take that run!"
 msgstr ""
 
 #. type: Content of: <h2>
