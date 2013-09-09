@@ -24,10 +24,8 @@ public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 			}
 		}
 		pickupBaggle();
-		/* END SOLUTION */
 	}
 
-	/* BEGIN HIDDEN */
 	boolean isFacingTrail() {
 		if (isFacingWall())
 			return false;
@@ -37,8 +35,9 @@ public class SlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		backward();
 		return res;
 
+		/* END SOLUTION */
 	}		
-	/* END HIDDEN */
+	// Copy your isFacingTrail here
 	/* END TEMPLATE */
 
 

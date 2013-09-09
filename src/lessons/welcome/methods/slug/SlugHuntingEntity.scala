@@ -12,7 +12,7 @@ class ScalaSlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 	def hunt() {
 		// Write your code here
 		/* BEGIN SOLUTION */
-	  while (! isOverBaggle()) {
+		while (! isOverBaggle()) {
 			if (isFacingTrail()) {
 				brushDown();
 				forward();
@@ -22,13 +22,8 @@ class ScalaSlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 			}
 		}
 		pickupBaggle();
-		/* END SOLUTION */
 	}
 	
-	// Copy your isFacingTrail() here
-	/* END TEMPLATE */
-
-	/* BEGIN HIDDEN */
 	def isFacingTrail():Boolean = {
 		if (isFacingWall())
 			return false;
@@ -38,7 +33,9 @@ class ScalaSlugHuntingEntity extends plm.universe.bugglequest.SimpleBuggle {
 		backward();
 		return res;
 
-	}		
-	/* END HIDDEN */
-
+		/* END SOLUTION */
+	}
+	
+	// Copy your isFacingTrail() here
+	/* END TEMPLATE */
 }
