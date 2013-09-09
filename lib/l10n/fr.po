@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-09 11:14+0300\n"
-"PO-Revision-Date: 2013-09-09 11:15+0200\n"
+"POT-Creation-Date: 2013-09-09 12:19+0300\n"
+"PO-Revision-Date: 2013-09-09 13:36+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -2063,7 +2063,7 @@ msgstr ""
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/instructions/Instructions.html:27
-#: src/lessons/welcome/variables/Variables.html:123
+#: src/lessons/welcome/variables/Variables.html:139
 msgid "[!python|scala]"
 msgstr "[!python|scala]"
 
@@ -2087,9 +2087,8 @@ msgstr "casserLesOeufs(); ajouterDuSel(); melangerLeTout(); faireCuire();\n"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/instructions/Instructions.html:34
-#: src/lessons/welcome/variables/Variables.html:31
-#: src/lessons/welcome/variables/Variables.html:61
-#: src/lessons/welcome/variables/Variables.html:130
+#: src/lessons/welcome/variables/Variables.html:77
+#: src/lessons/welcome/variables/Variables.html:146
 #: src/lessons/welcome/loopfor/LoopFor.html:69
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:53
 #: src/lessons/welcome/loopdowhile/Poucet.html:36
@@ -2187,7 +2186,7 @@ msgstr ""
 #: src/lessons/welcome/conditions/Conditions.html:108
 #: src/lessons/welcome/loopwhile/LoopWhile.html:32
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:8
-#: src/lessons/welcome/variables/Variables.html:97
+#: src/lessons/welcome/variables/Variables.html:113
 #: src/lessons/welcome/loopfor/LoopFor.html:71
 #: src/lessons/welcome/methods/basics/Methods.html:95
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:37
@@ -2941,39 +2940,37 @@ msgid ""
 "<b>Declaring</b> (ie, creating) a variable in [!thelang], is very simple. "
 "You just need to write [!java]its type, a space, and the variable name.[/!] "
 "[!scala]the <code>var</code> keyword, the variable name, a column (:) and "
-"the variable type.[/!] [!python]the variable name, an equal sign (=) and an "
-"initial value.[/!] The variable name is the label to retrieve it afterward[!"
-"python].[/!] [!java|scala] while the type is the kind of data that this "
-"variable accepts to store.[/!] It is forbidden to use spaces in variable "
-"names. So you can name a variable <code>stepAmount</code> if you want, but "
-"<code>step amount</code> is not a valid name."
+"the variable type an equal sign (=) and an initial value.[/!] [!python]the "
+"variable name, an equal sign (=) and an initial value.[/!] The variable name "
+"is the label to retrieve it afterward[!python].[/!] [!java|scala] while the "
+"type is the kind of data that this variable accepts to store.[/!] It is "
+"forbidden to use spaces in variable names. You can name a variable "
+"<code>stepAmount</code> if you want, but <code>step amount</code> is not a "
+"valid name."
 msgstr ""
 "Il est très simple de <b>déclarer</b> (c'est-à-dire, créer) une variable en "
 "[!thelang]. Il suffit d'écrire\n"
 "[!java]son type, une espace et le nom de la variable.[/!] \n"
-"[!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:) "
-"et le type de la variable.[/!] \n"
+"[!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:), "
+"le type de la variable, un signe égal (=) et une valeur intiale.[/!] \n"
 "[!python]le nom de la variable, un signe égal (=) et sa valeur initiale."
 "[/!] \n"
 "Le nom de la variable est un label pour la retrouver plus tard[!python]."
 "[/!] \n"
 "[!java|scala] tandis que son type est le genre de données qu'on va pouvoir "
 "stoker dans cette variable.[/!] \n"
-"Il est interdit de mettre des espaces et des accents dans les noms de "
-"variable. \n"
-"Ainsi, on peut nommer une variable <code>dejaFait</code>, mais ni <code>deja "
-"fait</code> ni <code>déjaFait</code> ne sont des identificateurs de "
-"variables valides."
+"Il est interdit de mettre des espaces dans les noms de variable. \n"
+"On peut nommer une variable <code>dejaFait</code>, mais <code>deja fait</"
+"code> n'est pas un identificateur de variable valide."
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p><p><p>
 #: src/lessons/welcome/variables/Variables.html:28
-#: src/lessons/welcome/variables/Variables.html:40
-#: src/lessons/welcome/methods/args/MethodsArgs.html:34
-#: src/lessons/welcome/methods/picture/MethodsPicture.html:34
-#: src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3
-#: src/lessons/recursion/square/FourSquare.html:27
-msgid "[!java|scala]"
-msgstr "[!java|scala]"
+#: src/lessons/welcome/loopfor/LoopFor.html:46
+#: src/lessons/welcome/bdr/BDR.html:187
+#: src/lessons/turmites/langton/Langton.html:20
+#: src/lessons/welcome/array/basics/Array1.html:200
+msgid "[!java]"
+msgstr "[!java]"
 
 #. type: Content of: <p><p><p>
 #: src/lessons/welcome/variables/Variables.html:29
@@ -2987,79 +2984,155 @@ msgstr ""
 #. type: Content of: <p><p><pre>
 #: src/lessons/welcome/variables/Variables.html:30
 #, no-wrap
-msgid "[!java]int x;[/!][!scala]var x: Int[/!]"
-msgstr "[!java]int x;[/!][!scala]var x: Int[/!]"
+msgid "int x;"
+msgstr "int x;"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:33
+#: src/lessons/welcome/variables/Variables.html:31
 msgid ""
-"[!java|scala]If you want, you can specify the initial value of the variable "
-"by adding a equal sign (=) followed by the value after the declaration.[/!] "
-"[!scala]If you specify a value, you don't have to specify the type of the "
-"variable, since Scala manages to guess it alone in most cases.  You are "
-"still free to specify the type if you prefer (or if the compiler fail to "
-"determine the type for some reason), but it's optional.[/!] So you want that "
-"the variable contains 5 as initial value, you should type:"
+"If you want, you can specify the initial value of the variable by adding a "
+"equal sign (=) followed by the value after the declaration."
 msgstr ""
-"[!java|scala]Si vous le souhaitez, vous pouvez spécifier une valeur initiale "
-"en faisant suivre la déclaration d'un symbole égal (=) suivi de la valeur à "
-"utiliser.[/!] \n"
-"[!scala]Si vous spécifiez une valeur, il n'est alors plus indispensable de "
-"spécifier le type de la variable, puisque Scala parvient à le deviner tout "
-"seul. Vous êtes libre de le spécifier quand même si vous le désirez (ou si "
-"le compilateur se trompe, comme cela arrive parfois par exemple entre les "
-"différents types de nombres), mais c'est optionnel.[/!]\n"
-"Donc, si vous voulez utiliser 5 comme valeur initiale, il faut écrire:"
+"Si vous le souhaitez, vous pouvez donner une valeur initiale à votre "
+"variable en ajoutant le symbole égal (=) suivi d'une valeur après la "
+"déclaration."
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:37
+#: src/lessons/welcome/variables/Variables.html:33
 #, no-wrap
-msgid ""
-"[!java]int x=5;[/!][!python]x = 5[/!][!scala]var x: Int =  5 <span class=\"comment\">// I can define the type if I want to</span>\n"
-"var y =  10      <span class=\"comment\">// or I can omit the type if I prefer</span>[/!]"
-msgstr ""
-"[!java]int x=5;[/!][!python]x = 5[/!][!scala]var x: Int =  5 <span class=\"comment\">// je peux quand même donner le type si je veux</span>\n"
-"var y = 10       <span class=\"comment\">// ou bien je peux l'omettre</span>[/!]"
+msgid "int x=5;"
+msgstr "int x=5;"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/variables/Variables.html:34
+#: src/lessons/welcome/variables/Variables.html:68
+msgid "[/!] [!python]"
+msgstr "[/!] [!python]"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:41
+#: src/lessons/welcome/variables/Variables.html:37
+msgid ""
+"So you want that the variable contains 5 as initial value, you should type:"
+msgstr "Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire: "
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:38
+#, no-wrap
+msgid "x = 5"
+msgstr "x = 5"
+
+#. type: Content of: <p><p>
+#: src/lessons/welcome/variables/Variables.html:39
+#: src/lessons/welcome/loopfor/LoopFor.html:57
+#: src/lessons/welcome/bdr/BDR2.html:82
+msgid "[/!] [!scala]"
+msgstr "[/!] [!scala]"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:42
+msgid ""
+"So, to create a variable named <b>x</b> intended to contain integers with 42 "
+"as initial value, one should write:"
+msgstr ""
+"Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers avec 42 "
+"en valeur initiale, on écrira :"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:43
+#, no-wrap
+msgid "var x:Int = 42"
+msgstr "var x:Int = 42"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:44
+msgid ""
+"In most cases, the compiler is able to guess the type of the variable from "
+"the initialization value, and you can omit it:"
+msgstr ""
+"Dans la plupart des cas, le compilateur est capable de deviner le type de la "
+"variable d'après la valeur initiale. On peut alors omettre le type de la "
+"variable:"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:45
+#, no-wrap
+msgid "var x = 42"
+msgstr "var x = 42"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:46
+msgid ""
+"You still have to specify the if you use some generic values as an "
+"initialization, such as the very particular value <code>null</code>, which "
+"type happens to be ambigous. Even when the type is clear, you can still "
+"specify it if you prefer.  So you want that the variable contains 5 as "
+"initial value, you should type:"
+msgstr ""
+"Il est nécessaire de spécifier le type de la variable lorsque l'on "
+"initialise ses variables avec des valeurs génériques, telles que la valeur "
+"très particulière <code>null</code>, dont le type se trouve être ambigu. "
+"Même quand le type est clair, vous pouvez le spécifier si vous le souhaitez. "
+"Ainsi, pour une variable contenant 5 en valeur initiale, on peut écrire:"
+
+#. type: Content of: <p><p><pre>
+#: src/lessons/welcome/variables/Variables.html:49
+#, no-wrap
+msgid ""
+"var x: Int =  5 <span class=\"comment\">// I can define the type if I want to</span>\n"
+"var y =  10      <span class=\"comment\">// or I can omit the type if I prefer</span>"
+msgstr ""
+"var x: Int =  5 <span class=\"comment\">// je peux quand même donner le type si je veux</span>\n"
+"var y = 10       <span class=\"comment\">// ou bien je peux l'omettre</span>"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:51
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:38
+#: src/lessons/turmites/helloturmite/HelloTurmite.html:60
+#: src/lessons/welcome/array/basics/Array1.html:114
+msgid "[/!] [!java|scala]"
+msgstr "[/!] [!java|scala]"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:54
 msgid ""
 "As you can see, the variables are <b>typed</b> in [!thelang], which means "
 "that they are somehow specialized: A given variable can only store data of a "
 "given type; Don't even think of storing numbers in a variable that is "
-"tailored for letters! Other languages (such as Python) are less picky and "
-"allow you to store any kind of data in any variable without restriction.  "
-"This seems easier at the first glance, but this kind of restriction allows "
-"the compiler to catch more logic errors for you, which is also good. In some "
-"sense, Python is easier to write but errors can sneak in more easily than in "
-"[!thelang].  Here are some of the existing types:"
+"tailored for letters! The [!thelang] language is said to be <b>statically "
+"typed</b>."
 msgstr ""
-"Comme vous pouvez le voir, les variables sont <b>typées</b> en[!thelang]. "
-"Cela veut dire qu'elles sont en quelque sorte spécialisées: une variable "
-"donnée ne peut stocker qu'un type de données spécifique. N'essayez même pas "
-"de rancher des nombres dans une variable faite pour recevoir des lettres ! \n"
-"D'autres langages (comme le python) sont moins regardants, et on peut ranger "
-"n'importe quel type de données dans n'importe quelle variable sans "
-"restriction. À première vue, cela semble plus simple, mais ce genre de "
-"restriction permet au compilateur de détecter plus d'erreurs de logiques "
-"pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile "
-"d'écrire du python, mais le typage empêche certaines erreurs de se glisser "
-"dans vos programmes. \n"
-"Voici quelque uns des types de données existants en [!thelang] :"
+"Comme vous pouvez le voir, les variables sont <b>typées</b> en [!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées: une variable donnée ne peut stocker qu'un type de données spécifique. N'essayez même pas de ranger des nombres dans une variable faite pour recevoir des lettres ! \n"
+"On dit que [!thelang] est un langage <b>typé statiquement</b>.\n"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:57
+msgid ""
+"Other languages (such as Python) are less picky and allow you to store any "
+"kind of data in any variable, without restriction (those languages are said "
+"to be <b>dynamically typed</b>).  This seems easier at the first glance, but "
+"this kind of restriction allows the compiler to catch more logic errors for "
+"you, which is also good. In some sense, Python is easier to write but errors "
+"can sneak in more easily than in [!thelang]."
+msgstr "D'autres langages (comme le python) sont moins regardants, et on peut ranger n'importe quel type de données dans n'importe quelle variable sans restriction. À première vue, cela semble plus simple, mais ce genre de restriction permet au compilateur de détecter plus d'erreurs de logiques pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile d'écrire du python, mais le typage empêche certaines erreurs de se glisser dans vos programmes. "
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:61
+msgid "Here are some existing types in [!thelang]:"
+msgstr "Voici quelque uns des types de données existants en [!thelang] :"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/variables/Variables.html:48
+#: src/lessons/welcome/variables/Variables.html:63
 msgid "<b>[!java]int[/!][!scala]Int[/!]</b>, for integers;"
 msgstr "<b>[!java]int[/!][!scala]Int[/!]</b>, pour les entiers;"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/variables/Variables.html:49
+#: src/lessons/welcome/variables/Variables.html:64
 msgid "<b>[!java]double[/!][!scala]Double[/!]</b>, for dot numbers;"
 msgstr ""
 "<b>[!java]double[/!][!scala]Double[/!]</b>, pour les nombres à virgule;"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/variables/Variables.html:50
+#: src/lessons/welcome/variables/Variables.html:65
 msgid ""
 "<b>[!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that are values "
 "being either true or false;"
@@ -3068,41 +3141,47 @@ msgstr ""
 "dire les variables dont la valeur est soit \"vrai\" soit \"faux\";"
 
 #. type: Content of: <p><p><ul><li>
-#: src/lessons/welcome/variables/Variables.html:51
+#: src/lessons/welcome/variables/Variables.html:66
 msgid "<b>String</b>, for char strings."
 msgstr "<b>String</b>, pour les chaînes de caractères."
 
-#. type: Content of: <p><p>
-#: src/lessons/welcome/variables/Variables.html:53
-msgid "[/!] [!python]"
-msgstr "[/!] [!python]"
-
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:56
+#: src/lessons/welcome/variables/Variables.html:71
 msgid ""
 "As you can see, the variables are not <b>typed</b> in Python, which means "
 "that they are not specialized in any type of data.  A given variable store "
 "any type of data of a given type: you can store a number in a variable and "
-"latter on store a number in the same variable.  Other languages (such as "
-"Java or Scala) are much more picky and prevent you to mix data types in a "
-"given variable.  This seems annoying at the first glance, but this kind of "
-"restriction allows the compiler to catch more logic errors for you, which is "
-"also good. In some sense, Python is easier to write but errors can sneak in "
-"more easily."
+"latter on store a number in the same variable.  The values themselves are "
+"still typed, but not the variable. Python is said to be <b>dynamically "
+"typed</b>."
 msgstr ""
 "Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en "
 "Python, ce qui veut dire qu'elles ne sont pas spécialisées sur un type de "
 "données particulier. Il est tout à fait envisageable de stocker des nombres "
-"dans une variable, puis d'y mettre des lettres un peu plus tard.\n"
+"dans une variable, puis d'y mettre des lettres un peu plus tard. Les valeurs "
+"elles-mêmes ont bien entendu un type, mais pas les variables. On dit alors "
+"que python est un langage <b>dynamiquement typé</b>.\n"
+
+#. type: Content of: <p><p><p>
+#: src/lessons/welcome/variables/Variables.html:74
+msgid ""
+"Other languages (such as Java or Scala) are much more picky and prevent you "
+"to mix data types in a given variable (they are said to be <b>statically "
+"typed</b>).  This seems annoying at the first glance, but this kind of "
+"restriction allows the compiler to catch more logic errors for you, which is "
+"also good. In some sense, Python is easier to write but errors can sneak in "
+"more easily."
+msgstr ""
 "D'autres langages (comme le Java ou le Scala) sont plus restrictifs et "
-"imposent de spécialiser chaque variable pour un type donné. Cela semble bien "
-"plus contraignant à première vue, mais ce genre de restriction permet au "
+"imposent de spécialiser chaque variable pour un type donné (on dit que ce "
+"sont des langages <b>statiquement typés</b>). Cela semble bien plus "
+"contraignant à première vue, mais ce genre de restriction permet au "
 "compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine "
 "manière, il est plus facile d'écrire du Python, mais le typage de ces "
 "langages empêche certaines erreurs de se glisser dans les programmes."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:64
+#: src/lessons/welcome/variables/Variables.html:80
 msgid ""
 "If you know that the value of your \"variable\" will never change (eg "
 "because it contains the screen size or some other constant value), then you "
@@ -3124,7 +3203,7 @@ msgstr ""
 "cas."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:69
+#: src/lessons/welcome/variables/Variables.html:85
 msgid ""
 "Variables work very similarly for strings, floating point numbers and "
 "boolean values."
@@ -3133,7 +3212,7 @@ msgstr ""
 "booléens."
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:71
+#: src/lessons/welcome/variables/Variables.html:87
 #, no-wrap
 msgid ""
 "String name = \"Martin Quinson\";\n"
@@ -3145,7 +3224,7 @@ msgstr ""
 "boolean marie=true; <span class=\"comment\">// Signifie vrai; le contraire (faux) s'écrirait \"false\"</span>"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:75
+#: src/lessons/welcome/variables/Variables.html:91
 #, no-wrap
 msgid ""
 "val name:String = \"Martin Quinson\"; <span class=\"comment\">// this cannot be modified (it's a value)</span>\n"
@@ -3159,7 +3238,7 @@ msgstr ""
 "<span class=\"comment\">// Scala sait que 'true' est une valeur de type Boolean, pas besoin de le répéter</span>"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:80
+#: src/lessons/welcome/variables/Variables.html:96
 #, no-wrap
 msgid ""
 "firstName = \"Martin\"\n"
@@ -3175,12 +3254,12 @@ msgstr ""
 "marie=True <span class=\"comment\"># Signifie 'vrai'; le contraire (faux) serait marqué 'False'</span>"
 
 #. type: Content of: <p><p><h3>
-#: src/lessons/welcome/variables/Variables.html:86
+#: src/lessons/welcome/variables/Variables.html:102
 msgid "Affectations"
 msgstr "Affectations"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:88
+#: src/lessons/welcome/variables/Variables.html:104
 msgid ""
 "Once your variable is declared, you can <b>affect</b> a new value to it "
 "later in the program. That's really easy:"
@@ -3189,13 +3268,13 @@ msgstr ""
 "nouvelle valeur plus tard dans votre programme. C'est vraiment très simple :"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:89
+#: src/lessons/welcome/variables/Variables.html:105
 #, no-wrap
 msgid "x = 3[!java];[/!]"
 msgstr "x = 3[!java];[/!]"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:91
+#: src/lessons/welcome/variables/Variables.html:107
 msgid ""
 "To the right of the equal symbol, you can put an arithmetic expression "
 "containing constants, variables and operations."
@@ -3204,7 +3283,7 @@ msgstr ""
 "contenir des constantes, des variables et des opérations :"
 
 #. type: Content of: <p><p><pre>
-#: src/lessons/welcome/variables/Variables.html:93
+#: src/lessons/welcome/variables/Variables.html:109
 #, no-wrap
 msgid ""
 "x = 3 + 2[!java];[/!]\n"
@@ -3213,10 +3292,10 @@ msgid ""
 msgstr ""
 "x = 3 + 2[!java];[/!]\n"
 "x = 3 * x[!java];[/!]\n"
-"greeting = \"Hello \"+name[!java];[/!] <span class=\"comment\">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner</span>"
+"greeting = \"Hello \"+name[!java];[/!] <span class=\"comment\">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner)</span>"
 
 #. type: Content of: <p><p>
-#: src/lessons/welcome/variables/Variables.html:98
+#: src/lessons/welcome/variables/Variables.html:114
 msgid ""
 "It is now time to do more challenging exercises, don't you think? The "
 "objective is now to move forward until you find a baggle, pick it up, and "
@@ -3227,12 +3306,12 @@ msgstr ""
 "ramasser, revenir à la position initiale, puis de poser le biscuit."
 
 #. type: Content of: <p><p><h3>
-#: src/lessons/welcome/variables/Variables.html:103
+#: src/lessons/welcome/variables/Variables.html:119
 msgid "How to do this?"
 msgstr "Comment faire ?"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:104
+#: src/lessons/welcome/variables/Variables.html:120
 msgid ""
 "To solve this problem, you have to decompose it in easier sub-parts. For "
 "example, you may want to do the following steps:"
@@ -3241,27 +3320,27 @@ msgstr ""
 "résoudre. Par exemple, on peut vouloir faire les étapes suivantes :"
 
 #. type: Content of: <p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:107
+#: src/lessons/welcome/variables/Variables.html:123
 msgid "Move forward until located over a baggle"
 msgstr "Avancer jusqu'à se trouver sur un biscuit"
 
 #. type: Content of: <p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:108
+#: src/lessons/welcome/variables/Variables.html:124
 msgid "Pickup the baggle"
 msgstr "Ramasser le biscuit au sol"
 
 #. type: Content of: <p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:109
+#: src/lessons/welcome/variables/Variables.html:125
 msgid "Move backward of the same amount of steps than done in first step"
 msgstr "Reculer du même nombre de cases que ce qu'on a avancé"
 
 #. type: Content of: <p><p><p><ol><li>
-#: src/lessons/welcome/variables/Variables.html:110
+#: src/lessons/welcome/variables/Variables.html:126
 msgid "Drop back the baggle"
 msgstr "Reposer le biscuit au sol"
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:113
+#: src/lessons/welcome/variables/Variables.html:129
 msgid ""
 "Naturally, it is impossible to do the right amount of steps backward at step "
 "3 if you didn't count the amount of steps done in the first phase. You can "
@@ -3272,7 +3351,7 @@ msgstr ""
 "cela utiliser une variable, que l'on peut nommer <code>nbPas</code>."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:117
+#: src/lessons/welcome/variables/Variables.html:133
 msgid ""
 "Create an integer variable before phase 1, initialize it to 0, and each time "
 "you move one step forward, increment its value by one (<code>stepAmount = "
@@ -3286,7 +3365,7 @@ msgstr ""
 "écritures sont équivalentes[/!])."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:124
+#: src/lessons/welcome/variables/Variables.html:140
 msgid ""
 "If you know Java or other languages, you will probably try to use the <code>+"
 "+</code> operator to increment the variable, but it's not allowed in [!"
@@ -3306,7 +3385,7 @@ msgstr ""
 "+, ignorez simplement ce paragraphe : cela n'existe pas en [!thelang])."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:132
+#: src/lessons/welcome/variables/Variables.html:148
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
 "<code>doneSteps</code> initialized to 0, and do one step backward until "
@@ -3319,7 +3398,7 @@ msgstr ""
 "<code>dejaFait</code> à chaque fois."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:137
+#: src/lessons/welcome/variables/Variables.html:153
 msgid "It's your turn now!"
 msgstr "À vous de jouer !"
 
@@ -3493,14 +3572,6 @@ msgstr ""
 msgid "The <code>for</code> loop is easier to read, don't you think?"
 msgstr "Le code avec une boucle <code>for</code> est plus simple à lire, non?"
 
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:46
-#: src/lessons/welcome/bdr/BDR.html:187
-#: src/lessons/turmites/langton/Langton.html:20
-#: src/lessons/welcome/array/basics/Array1.html:200
-msgid "[!java]"
-msgstr "[!java]"
-
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:47
 msgid ""
@@ -3530,12 +3601,6 @@ msgstr ""
 "   <span class=\"comment\">/* rien dans le corps de boucle */</span>\n"
 "}\n"
 "<span class=\"comment\">/* la buggle est maintenant face à un mur */</span>"
-
-#. type: Content of: <p><p>
-#: src/lessons/welcome/loopfor/LoopFor.html:57
-#: src/lessons/welcome/bdr/BDR2.html:82
-msgid "[/!] [!scala]"
-msgstr "[/!] [!scala]"
 
 #. type: Content of: <p><p>
 #: src/lessons/welcome/loopfor/LoopFor.html:60
@@ -3836,13 +3901,6 @@ msgstr ""
 "même si les autres conditions impliqueraient le contraire. Une fois que le "
 "corps de boucle a été exécuté, <code>premiereFois</code> est mis à faux et "
 "n'influe plus jamais la décision d'entrer dans le corps de boucle."
-
-#. type: Content of: <p><p><p>
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:38
-#: src/lessons/turmites/helloturmite/HelloTurmite.html:60
-#: src/lessons/welcome/array/basics/Array1.html:114
-msgid "[/!] [!java|scala]"
-msgstr "[/!] [!java|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:42
@@ -4846,6 +4904,14 @@ msgstr ""
 "[!java]double res = divise(3.14 , 1.5);[/!]\n"
 "[!scala]val res = divise(3.14 , 1.5)[/!]\n"
 "[!python]res = divise(3.14 , 1.5)[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/methods/args/MethodsArgs.html:34
+#: src/lessons/welcome/methods/picture/MethodsPicture.html:34
+#: src/lessons/welcome/bdr/BDR.html:8 src/lessons/welcome/bdr/BDR2.html:3
+#: src/lessons/recursion/square/FourSquare.html:27
+msgid "[!java|scala]"
+msgstr "[!java|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:35

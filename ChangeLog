@@ -3,6 +3,8 @@
   * welcome.LoopCourse: specify that the colors get updated automatically
   * welcome.NearHundred: fix french translation (was plainly wrong)
   * welcome.SlugHunting: align templating and mission: isFacingTrail must be copied
+  * welcome.Variables: scala mandates an initial value (fix #109)
+    plus various small improvements
 
 20130908: Release 2.2.1: C'mon, dudes. Break that one if you dare.
 

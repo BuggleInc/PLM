@@ -17,33 +17,48 @@ some stuff, like a bottle of perfume "Channel N°5".
 
 <p><b>Declaring</b> (ie, creating) a variable in [!thelang], is very simple. You just need to write
   [!java]its type, a space, and the variable name.[/!]
-  [!scala]the <code>var</code> keyword, the variable name, a column (:) and the variable type.[/!]
+  [!scala]the <code>var</code> keyword, the variable name, a column (:) and the variable type an equal sign (=) and an initial value.[/!]
   [!python]the variable name, an equal sign (=) and an initial value.[/!]
   The variable name is the label to retrieve it afterward[!python].[/!]
   [!java|scala] while the type is the kind of data that this variable accepts to store.[/!]
-  It is forbidden to use spaces in variable names. So you can name a variable <code>stepAmount</code> if you want, 
+  It is forbidden to use spaces in variable names. You can name a variable <code>stepAmount</code> if you want, 
   but <code>step amount</code> is not a valid name.
   </p>
 
-[!java|scala]
+[!java]
   <p>So, to create a variable named <b>x</b> intended to contain integers, one should write:</p> 
-  <pre>[!java]int x;[/!][!scala]var x: Int[/!]</pre>
+  <pre>int x;</pre>
+  <p>If you want, you can specify the initial value of the variable by adding a equal sign (=) followed by the value 
+     after the declaration.</p>
+  <pre>int x=5;</pre>
 [/!]
 
-<p>[!java|scala]If you want, you can specify the initial value of the variable by adding a equal sign (=) followed by the value after the declaration.[/!] 
-   [!scala]If you specify a value, you don't have to specify the type of the variable, since Scala manages to guess it alone in most cases.
-   You are still free to specify the type if you prefer (or if the compiler fail to determine the type for some reason), but it's optional.[/!] 
+[!python]
+  <p>So you want that the variable contains 5 as initial value, you should type: </p>
+  <pre>x = 5</pre>
+[/!]
+
+[!scala]
+  <p>So, to create a variable named <b>x</b> intended to contain integers with 42 as initial value, one should write:</p> 
+  <pre>var x:Int = 42</pre>
+  <p>In most cases, the compiler is able to guess the type of the variable from the initialization value, and you can omit it:</p>
+  <pre>var x = 42</pre>
+  <p>You still have to specify the if you use some generic values as an initialization, such as the very particular 
+     value <code>null</code>, which type happens to be ambigous. Even when the type is clear, you can still specify it if you prefer.
    So you want that the variable contains 5 as initial value, you should type: </p>
-<pre>[!java]int x=5;[/!][!python]x = 5[/!][!scala]var x: Int =  5 <span class="comment">// I can define the type if I want to</span>
-var y =  10      <span class="comment">// or I can omit the type if I prefer</span>[/!]</pre>
+  <pre>var x: Int =  5 <span class="comment">// I can define the type if I want to</span>
+var y =  10      <span class="comment">// or I can omit the type if I prefer</span></pre>
+[/!]
   
 [!java|scala]
 <p>As you can see, the variables are <b>typed</b> in [!thelang], which means that they are somehow specialized: 
   A given variable can only store data of a given type; Don't even think of storing numbers in a variable that is tailored for letters!  
-  Other languages (such as Python) are less picky and allow you to store any kind of data in any variable without restriction.
+  The [!thelang] language is said to be <b>statically typed</b>.</p>
+<p>Other languages (such as Python) are less picky and allow you to store any kind of data in any variable, without restriction 
+  (those languages are said to be <b>dynamically typed</b>).
   This seems easier at the first glance, but this kind of restriction allows the compiler to catch 
-  more logic errors for you, which is also good. In some sense, Python is easier to write but errors can sneak in more easily than in [!thelang]. 
-  Here are some of the existing types:</p>
+  more logic errors for you, which is also good. In some sense, Python is easier to write but errors can sneak in more easily than in [!thelang].</p>
+<p>Here are some existing types in [!thelang]:</p>
 <ul>
   <li><b>[!java]int[/!][!scala]Int[/!]</b>, for integers;</li>
   <li><b>[!java]double[/!][!scala]Double[/!]</b>, for dot numbers;</li> 
@@ -55,7 +70,8 @@ var y =  10      <span class="comment">// or I can omit the type if I prefer</sp
 [!python]
 <p>As you can see, the variables are not <b>typed</b> in Python, which means that they are not specialized in any type of data.
   A given variable store any type of data of a given type: you can store a number in a variable and latter on store a number in the same variable.  
-  Other languages (such as Java or Scala) are much more picky and prevent you to mix data types in a given variable.
+  The values themselves are still typed, but not the variable. Python is said to be <b>dynamically typed</b>.</p>
+<p>Other languages (such as Java or Scala) are much more picky and prevent you to mix data types in a given variable (they are said to be <b>statically typed</b>).
   This seems annoying at the first glance, but this kind of restriction allows the compiler to catch 
   more logic errors for you, which is also good. In some sense, Python is easier to write but errors can sneak in more easily.</p>
 [/!]

@@ -21,53 +21,62 @@ quelque chose dedans (disons, un flacon de Channel Numéro 5).
 <p>Il est très simple de <b>déclarer</b> (c'est-à-dire, créer) une variable en
 [!thelang]. Il suffit d'écrire
 [!java]son type, une espace et le nom de la variable.[/!]
-[!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:)
-et le type de la variable.[/!]
+[!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:),
+le type de la variable, un signe égal (=) et une valeur intiale.[/!]
 [!python]le nom de la variable, un signe égal (=) et sa valeur initiale.[/!]
 
 Le nom de la variable est un label pour la retrouver plus tard[!python].[/!]
 
 [!java|scala] tandis que son type est le genre de données qu'on va pouvoir
 stoker dans cette variable.[/!]
-Il est interdit de mettre des espaces et des accents dans les noms de
-variable.
-Ainsi, on peut nommer une variable <code>dejaFait</code>, mais ni <code>deja
-fait</code> ni <code>déjaFait</code> ne sont des identificateurs de
-variables valides.
+Il est interdit de mettre des espaces dans les noms de variable.
+On peut nommer une variable <code>dejaFait</code>, mais <code>deja
+fait</code> n'est pas un identificateur de variable valide.
   </p>
 
-[!java|scala]
+[!java]
   <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
 écrira :</p> 
-  <pre>[!java]int x;[/!][!scala]var x: Int[/!]</pre>
-[/!]
-
-<p>[!java|scala]Si vous le souhaitez, vous pouvez spécifier une valeur initiale
-en faisant suivre la déclaration d'un symbole égal (=) suivi de la valeur à
-utiliser.[/!]
-[!scala]Si vous spécifiez une valeur, il n'est alors plus indispensable de
-spécifier le type de la variable, puisque Scala parvient à le deviner tout
-seul. Vous êtes libre de le spécifier quand même si vous le désirez (ou si
-le compilateur se trompe, comme cela arrive parfois par exemple entre les
-différents types de nombres), mais c'est optionnel.[/!]
-Donc, si vous voulez utiliser 5 comme valeur initiale, il faut écrire: </p>
-<pre>[!java]int x=5;[/!][!python]x = 5[/!][!scala]var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
-var y = 10       <span class="comment">// ou bien je peux l'omettre</span>[/!]</pre>
-  
-[!java|scala]
-<p>Comme vous pouvez le voir, les variables sont <b>typées</b>
-en[!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées:
-une variable donnée ne peut stocker qu'un type de données
-spécifique. N'essayez même pas de rancher des nombres dans une variable
-faite pour recevoir des lettres !
-D'autres langages (comme le python) sont moins regardants, et on peut ranger
+  <pre>int x;</pre>
+  <p>Si vous le souhaitez, vous pouvez donner une valeur initiale à votre
+variable en ajoutant le symbole égal (=) suivi d'une valeur après la
+déclaration.</p>
+  <pre>int x=5;</pre>
+[/!] [!python]
+  <p>Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire:  </p>
+  <pre>x = 5</pre>
+[/!] [!scala]
+  <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers avec 42
+en valeur initiale, on écrira :</p> 
+  <pre>var x:Int = 42</pre>
+  <p>Dans la plupart des cas, le compilateur est capable de deviner le type de la
+variable d'après la valeur initiale. On peut alors omettre le type de la
+variable:</p>
+  <pre>var x = 42</pre>
+  <p>Il est nécessaire de spécifier le type de la variable lorsque l'on
+initialise ses variables avec des valeurs génériques, telles que la valeur
+très particulière <code>null</code>, dont le type se trouve être
+ambigu. Même quand le type est clair, vous pouvez le spécifier si vous le
+souhaitez. Ainsi, pour une variable contenant 5 en valeur initiale, on peut
+écrire: </p>
+  <pre>var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
+var y = 10       <span class="comment">// ou bien je peux l'omettre</span></pre>
+[/!] [!java|scala]
+<p>Comme vous pouvez le voir, les variables sont <b>typées</b> en
+[!thelang]. Cela veut dire qu'elles sont en quelque sorte spécialisées: une
+variable donnée ne peut stocker qu'un type de données spécifique. N'essayez
+même pas de ranger des nombres dans une variable faite pour recevoir des
+lettres !
+On dit que [!thelang] est un langage <b>typé statiquement</b>.
+</p>
+<p>D'autres langages (comme le python) sont moins regardants, et on peut ranger
 n'importe quel type de données dans n'importe quelle variable sans
 restriction. À première vue, cela semble plus simple, mais ce genre de
 restriction permet au compilateur de détecter plus d'erreurs de logiques
 pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile
 d'écrire du python, mais le typage empêche certaines erreurs de se glisser
-dans vos programmes.
-Voici quelque uns des types de données existants en [!thelang] :</p>
+dans vos programmes. </p>
+<p>Voici quelque uns des types de données existants en [!thelang] :</p>
 <ul>
   <li><b>[!java]int[/!][!scala]Int[/!]</b>, pour les entiers;</li>
   <li><b>[!java]double[/!][!scala]Double[/!]</b>, pour les nombres à virgule;</li> 
@@ -79,10 +88,14 @@ c'est-à-dire les variables dont la valeur est soit "vrai" soit "faux";</li>
 <p>Comme vous pouvez le voir, les variables ne sont pas <b>typées</b> en
 Python, ce qui veut dire qu'elles ne sont pas spécialisées sur un type de
 données particulier. Il est tout à fait envisageable de stocker des nombres
-dans une variable, puis d'y mettre des lettres un peu plus tard.
-D'autres langages (comme le Java ou le Scala) sont plus restrictifs et
-imposent de spécialiser chaque variable pour un type donné. Cela semble bien
-plus contraignant à première vue, mais ce genre de restriction permet au
+dans une variable, puis d'y mettre des lettres un peu plus tard. Les valeurs
+elles-mêmes ont bien entendu un type, mais pas les variables. On dit alors
+que python est un langage <b>dynamiquement typé</b>.
+</p>
+<p>D'autres langages (comme le Java ou le Scala) sont plus restrictifs et
+imposent de spécialiser chaque variable pour un type donné (on dit que ce
+sont des langages <b>statiquement typés</b>). Cela semble bien plus
+contraignant à première vue, mais ce genre de restriction permet au
 compilateur de détecter plus d'erreurs de logique pour vous. D'une certaine
 manière, il est plus facile d'écrire du Python, mais le typage de ces
 langages empêche certaines erreurs de se glisser dans les programmes.</p>
@@ -129,7 +142,7 @@ contenir des constantes, des variables et des opérations :</p>
 
 <pre>x = 3 + 2[!java];[/!]
 x = 3 * x[!java];[/!]
-greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner</span></pre> 
+greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + est (également) l'opérateur pour concaténer les chaînes (càd pour les fusionner)</span></pre> 
 
 <h3>Objectif de cet exercice</h3>
 Il est temps de faire un exercice un peu plus dur, n'est ce pas ? L'objectif
