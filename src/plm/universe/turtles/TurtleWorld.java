@@ -87,6 +87,12 @@ public class TurtleWorld extends World {
 			notifyWorldUpdatesListeners();
 		}
 	}
+	public void clear() {
+		synchronized (shapes) {
+			shapes.clear();
+			notifyWorldUpdatesListeners();
+		}
+	}
 
 	public Iterator<Shape> shapes() {
 		return shapes.iterator();
@@ -185,6 +191,8 @@ public class TurtleWorld extends World {
 					"  entity.addSizeHint(x,y,z,t)\n"+
 					"def circle(radius):\n"+
 					"  entity.circle(radius)\n"+
+					"def clear():\n"+
+					"  entity.clear()\n"+
 					/* BINDINGS TRANSLATION: French */
 					"def recule(i):\n"+
 					"  entity.backward(i)\n"+
@@ -205,7 +213,9 @@ public class TurtleWorld extends World {
 					"def allerVers(x,y):\n" +
 					"  entity.moveTo(x,y)\n"+
 					"def cercle(radius):\n"+
-					"  entity.circle(radius)\n"
+					"  entity.circle(radius)\n"+
+					"def efface():\n"+
+					"  entity.clear()\n"
 					);
 		} else {
 			throw new RuntimeException("No binding of TurtleWorld for "+lang);

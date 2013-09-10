@@ -1,5 +1,6 @@
 20130911: Release 2.2.3: How many bugs did I put in this code!?
 
+  * TurtleWorld: add a new clear() primitive that clears the sheet
   * welcome.BlueTicket: Fix typo in French
   
 20130910: Release 2.2.2: the 2s release.

@@ -235,6 +235,9 @@ public class Turtle extends Entity {
 	public void penUp() {
 		this.penDown = false;
 	}
+	public void clear() {
+		getWorld().clear();
+	}
 
 	private double fromAngularUnit(double angle) {
 		switch (angularUnit) {
@@ -423,4 +426,5 @@ public class Turtle extends Entity {
 	public void setCouleur(Color c)  { setColor(c); }
 	public boolean estChoisi()       { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
 	public boolean estChoisie()      { return isSelected(); } // But we want to have the grammatically correct form also possible (turtles are feminine)
+	public void efface()             { clear(); } 
 }

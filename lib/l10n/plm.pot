@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-10 13:32+0300\n"
+"POT-Creation-Date: 2013-09-10 16:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -514,102 +514,113 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:36
 #, no-wrap
-msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+msgid "[!java]void [/!]clear()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:37
-msgid "Returns the current heading of the turtle (in degrees)."
+msgid "Removes any trail on the sheet."
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:39
 #, no-wrap
-msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:40
+msgid "Returns the current heading of the turtle (in degrees)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:42
+#, no-wrap
+msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:43
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:42
+#: src/plm/universe/turtles/TurtleWorld.html:45
 msgid "Functions about the pen"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:44
+#: src/plm/universe/turtles/TurtleWorld.html:47
 #, no-wrap
 msgid "[!java]void [/!]penUp()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:45
+#: src/plm/universe/turtles/TurtleWorld.html:48
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:48
+#: src/plm/universe/turtles/TurtleWorld.html:51
 #, no-wrap
 msgid "[!java]void [/!]penDown()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:49
+#: src/plm/universe/turtles/TurtleWorld.html:52
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:51
+#: src/plm/universe/turtles/TurtleWorld.html:54
 #, no-wrap
 msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:52
+#: src/plm/universe/turtles/TurtleWorld.html:55
 msgid "Returns the current pen position as a boolean."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:54 src/plm/universe/bugglequest/BuggleWorld.html:25
+#: src/plm/universe/turtles/TurtleWorld.html:57 src/plm/universe/bugglequest/BuggleWorld.html:25
 #, no-wrap
 msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:55
+#: src/plm/universe/turtles/TurtleWorld.html:58
 msgid "Returns the current pen color."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:57
+#: src/plm/universe/turtles/TurtleWorld.html:60
 #, no-wrap
 msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:58
+#: src/plm/universe/turtles/TurtleWorld.html:61
 msgid "Changes the pen color."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:60
+#: src/plm/universe/turtles/TurtleWorld.html:63
 msgid "Other functions"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:62 src/plm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#: src/plm/universe/turtles/TurtleWorld.html:65 src/plm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:63
+#: src/plm/universe/turtles/TurtleWorld.html:66
 msgid "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
 

@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-10 13:32+0300\n"
-"PO-Revision-Date: 2013-09-10 13:33+0200\n"
+"POT-Creation-Date: 2013-09-10 16:51+0300\n"
+"PO-Revision-Date: 2013-09-10 16:56+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -639,38 +639,49 @@ msgstr "Dessine un cercle du rayon demandé et centré sur la tortue."
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:36
 #, no-wrap
+msgid "[!java]void [/!]clear()"
+msgstr "[!java]void [/!]efface()"
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:37
+msgid "Removes any trail on the sheet."
+msgstr "Efface toutes les traces de la feuille."
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:39
+#, no-wrap
 msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr "[!java]double [/!]getCap()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:40
 msgid "Returns the current heading of the turtle (in degrees)."
 msgstr "Retourne le cap actuel de la tortue (en degrés)."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:39
+#: src/plm/universe/turtles/TurtleWorld.html:42
 #, no-wrap
 msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
 msgstr "[!java]void [/!]setCap([!java]double [/!]angle[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:40
+#: src/plm/universe/turtles/TurtleWorld.html:43
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr "Change le cap de la tortue à l'angle indiqué (en degrés)."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:42
+#: src/plm/universe/turtles/TurtleWorld.html:45
 msgid "Functions about the pen"
 msgstr "Fonctions à propos du stylo"
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:44
+#: src/plm/universe/turtles/TurtleWorld.html:47
 #, no-wrap
 msgid "[!java]void [/!]penUp()"
 msgstr "[!java]void [/!]leveCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:45
+#: src/plm/universe/turtles/TurtleWorld.html:48
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
@@ -680,13 +691,13 @@ msgstr ""
 "déplacements suivants."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:48
+#: src/plm/universe/turtles/TurtleWorld.html:51
 #, no-wrap
 msgid "[!java]void [/!]penDown()"
 msgstr "[!java]void [/!]baisseCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:49
+#: src/plm/universe/turtles/TurtleWorld.html:52
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
@@ -695,46 +706,46 @@ msgstr ""
 "déplacements."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:51
+#: src/plm/universe/turtles/TurtleWorld.html:54
 #, no-wrap
 msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estCrayonBaisse()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:52
+#: src/plm/universe/turtles/TurtleWorld.html:55
 msgid "Returns the current pen position as a boolean."
 msgstr "Retourne si le stylo est actuellement baissé ou non."
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:54
+#: src/plm/universe/turtles/TurtleWorld.html:57
 #: src/plm/universe/bugglequest/BuggleWorld.html:25
 #, no-wrap
 msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr "[!java]Color [/!]getCouleur()[!scala]:Color[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:55
+#: src/plm/universe/turtles/TurtleWorld.html:58
 msgid "Returns the current pen color."
 msgstr "Retourne la couleur actuelle du stylo."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:57
+#: src/plm/universe/turtles/TurtleWorld.html:60
 #, no-wrap
 msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
 msgstr "[!java]void [/!]setCouleur([!java]Color [/!]couleur[!scala]:Color[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:58
+#: src/plm/universe/turtles/TurtleWorld.html:61
 msgid "Changes the pen color."
 msgstr "Modifier la couleur du stylo."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:60
+#: src/plm/universe/turtles/TurtleWorld.html:63
 msgid "Other functions"
 msgstr "Autres fonctions"
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:62
+#: src/plm/universe/turtles/TurtleWorld.html:65
 #: src/plm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
 #, no-wrap
@@ -742,7 +753,7 @@ msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:63
+#: src/plm/universe/turtles/TurtleWorld.html:66
 msgid ""
 "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
@@ -3447,7 +3458,12 @@ msgid ""
 "have to reach the cell where the amount of baggles you saw is the double of "
 "the orange cells plus 1.  In other word, the following condition must become "
 "true <code>2 * baggles = orangeCells + 1</code>."
-msgstr "C'est le second jour de la Grande Course des Buggles. Comme d'habitude, il faut courir jusqu'à trouver la case où vous devez vous arrêter. Mais cette fois, vous devez vous arrêter quand vous aurez compté deux fois moins de biscuits que de cases oranges plus une. En d'autres termes, la condition d'arrêt est la suivante : <code>2 * biscuits = caseOrange + 1</code>."
+msgstr ""
+"C'est le second jour de la Grande Course des Buggles. Comme d'habitude, il "
+"faut courir jusqu'à trouver la case où vous devez vous arrêter. Mais cette "
+"fois, vous devez vous arrêter quand vous aurez compté deux fois moins de "
+"biscuits que de cases oranges plus une. En d'autres termes, la condition "
+"d'arrêt est la suivante : <code>2 * biscuits = caseOrange + 1</code>."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/RunHalf.html:9
