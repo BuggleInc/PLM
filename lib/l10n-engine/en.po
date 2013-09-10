@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-10 23:59+0200\n"
+"POT-Creation-Date: 2013-09-11 00:31+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1279,6 +1279,22 @@ msgstr ""
 #. ---------- Buggle color ---------------
 #: src/plm/core/ui/editor/buggleeditor/PropertiesEditor.java:314
 msgid "Brush color (name or r/g/b)"
+msgstr ""
+
+#: src/plm/universe/Direction.java:59
+msgid "NORTH"
+msgstr ""
+
+#: src/plm/universe/Direction.java:61
+msgid "EAST"
+msgstr ""
+
+#: src/plm/universe/Direction.java:63
+msgid "SOUTH"
+msgstr ""
+
+#: src/plm/universe/Direction.java:65
+msgid "WEST"
 msgstr ""
 
 #: src/plm/universe/Entity.java:176

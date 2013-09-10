@@ -3,8 +3,9 @@
   * Let every interactive control issue the source code doing the same
     thing when they are clicked, so that the students can copy/paste.
     Thanks to Laurent Guittet for suggesting this change, I love it.
-
+  * Buggle: Translate the direction names
   * TurtleWorld: add a new clear() primitive that clears the sheet
+  
   * BuggleWorld: dropping a baggle was possible even if you had none
   * welcome.BlueTicket: Fix typo in French
   * BatEntity: more informative error message when an exception is raised

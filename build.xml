@@ -183,7 +183,11 @@
            '' has to be used to get a single quote displayed. 
 	   That's unfortunate given the amount of ' we have in french and english but anyway.
 	   In addition, the strings without {0} are not passed to MessageFormat by i18n.tr().
-	   See: https://code.google.com/p/gettext-commons/issues/detail?id=55 -->
+	   See: https://code.google.com/p/gettext-commons/issues/detail?id=55 
+
+           Rq: check that a word does not appear in translations:
+           msggrep -T -e  theworld  - -sort-by-file  lib/l10n/fr.po
+	   -->
       <exec executable="msggrep">
            <arg value="-K"/>
 	   <arg value="-e"/>

@@ -2,6 +2,8 @@ package plm.universe;
 
 import java.awt.Point;
 
+import plm.core.model.Game;
+
 
 // TODO: rewrite using enumeration
 public class Direction {
@@ -16,11 +18,8 @@ public class Direction {
 	public static final int WEST_VALUE = 3;
 
 	public static final Direction NORTH = new Direction(NORTH_VALUE);
-
 	public static final Direction EAST = new Direction(EAST_VALUE);
-
 	public static final Direction SOUTH = new Direction(SOUTH_VALUE);
-
 	public static final Direction WEST = new Direction(WEST_VALUE);
 
 	private static final Direction rights[] = { EAST, SOUTH, WEST, NORTH };
@@ -57,13 +56,13 @@ public class Direction {
 	public String toString() {
 		switch (value) {
 		case NORTH_VALUE:
-			return "NORTH";
+			return Game.i18n.tr("NORTH");
 		case EAST_VALUE:
-			return "EAST";
+			return Game.i18n.tr("EAST");
 		case SOUTH_VALUE:
-			return "SOUTH";
+			return Game.i18n.tr("SOUTH");
 		case WEST_VALUE:
-			return "WEST";
+			return Game.i18n.tr("WEST");
 		default:
 			return "Unknown direction";
 		}
@@ -109,4 +108,10 @@ public class Direction {
 			return false;
 		return true;
 	}
+	
+	/* BINDINGS TRANSLATION: French */
+	public static final Direction NORD = NORTH;
+	public static final Direction EST = EAST;
+	public static final Direction SUD = SOUTH;
+	public static final Direction OUEST = WEST;
 }
