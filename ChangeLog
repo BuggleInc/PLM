@@ -1,9 +1,9 @@
-20130911: Release 2.2.3: Let's start again adding new bu^Wfeatures
+20130911: Release 2.2.3: Let's start adding new bu^Wfeatures again.
 
   * Let every interactive control issue the source code doing the same
     thing when they are clicked, so that the students can copy/paste.
     Thanks to Laurent Guittet for suggesting this change, I love it.
-  * Buggle: Translate the direction names
+  * Buggle: Translate the direction names, too
   * TurtleWorld: add a new clear() primitive that clears the sheet
   * New feature: import/export session to the cloud.
     You don't have to struggle with a bunch of zip files anymore.
@@ -12,7 +12,7 @@
   * welcome.BlueTicket: Fix typo in French
   * BatEntity: more informative error message when an exception is raised
   
-20130910: Release 2.2.2: the 2s release.
+20130910: Release 2.2.2: the 2 cts release.
 
   * welcome.LoopCourse: specify that the colors get updated automatically
   * welcome.NearHundred: fix french translation (was plainly wrong)

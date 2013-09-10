@@ -681,6 +681,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionRevert.setText(i18n.tr("Revert Exercise"));
 		miSessionExport.setText(i18n.tr("Export Session Cache"));
 		miSessionImport.setText(i18n.tr("Import Session Cache"));
+		miSessionExportToCloud.setText(i18n.tr("Export Session Cache to Cloud"));
+		miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));
+		
 		miSessionDebug.setText(i18n.tr("Debug mode"));
 		miSessionDebug.setText(i18n.tr("Creative mode"));
 

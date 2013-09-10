@@ -73,10 +73,10 @@ public class ExportCloudSession extends AbstractGameAction {
 			client.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 
 			String sessionCloudProviderURL = Game.getProperty(
-					Game.SESSION_CLOUD_PROVIDER_URL, null, false);
-			if (sessionCloudProviderURL == null)
-				throw new IOException(
-						"Session cloud provider not provided. Please update your property file");
+					Game.SESSION_CLOUD_PROVIDER_URL, "none", false);
+			if (sessionCloudProviderURL == null || sessionCloudProviderURL.equals("none"))
+				throw new IOException(Game.i18n.tr("No session cloud provider provided (property {0} is {1}). Please update your property file.",
+						Game.SESSION_CLOUD_PROVIDER_URL,sessionCloudProviderURL));
 			HttpPost post = new HttpPost(sessionCloudProviderURL + "/upload.php");
 			MultipartEntity entity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
 
@@ -122,14 +122,14 @@ public class ExportCloudSession extends AbstractGameAction {
 			String fileID = uploadSessionPackage(tmpFile);
 
 			JOptionPane.showMessageDialog(this.parent,
-					"<html>Please remember the following code:<br/><h1>"+fileID+"</h1><br/>You will need it to import your session.</html>",
-					"Export success",
+					Game.i18n.tr("<html>Please remember the following code:<br/><h1>{0}</h1><br/>You will need it to import your session.</html>",fileID),
+					Game.i18n.tr("Export success"),
 					JOptionPane.INFORMATION_MESSAGE
 					);			
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this.parent,
-				    "<html>Export to cloud failed.<br/>"+ex.getMessage()+"<br/>Caution! Your session is not saved yet.</html>",
-				    "Export error",
+					Game.i18n.tr("<html>Export to cloud failed.<br/>{0}<br/>Caution! Your session is not saved yet.</html>",ex.getMessage()),
+				    Game.i18n.tr("Export error"),
 				    JOptionPane.ERROR_MESSAGE);	
 		} finally {
 			if (tmpDir != null)

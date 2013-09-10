@@ -23,8 +23,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.CoreProtocolPNames;
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
 import plm.core.model.session.ZipSessionKit;
@@ -34,8 +32,6 @@ public class ImportCloudSession extends AbstractGameAction {
 
 	private static final long serialVersionUID = -2811343885543779962L;
 	private Component parent;
-
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",FileUtils.getLocale(), I18nFactory.FALLBACK);
 
 	public ImportCloudSession(Game game, String text, ImageIcon icon,
 			Component parent) {
@@ -52,9 +48,10 @@ public class ImportCloudSession extends AbstractGameAction {
 					CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 
 			String sessionCloudProviderURL = Game.getProperty(
-					Game.SESSION_CLOUD_PROVIDER_URL, null, false);
-			if (sessionCloudProviderURL == null)
-				throw new IOException(i18n.tr("Session cloud provider not provided. Please update your property file"));
+					Game.SESSION_CLOUD_PROVIDER_URL, "none", false);
+			if (sessionCloudProviderURL == null || sessionCloudProviderURL.equals("none"))
+				throw new IOException(Game.i18n.tr("No session cloud provider provided (property {0} is {1}). Please update your property file.",
+						Game.SESSION_CLOUD_PROVIDER_URL,sessionCloudProviderURL));
 
 			HttpGet get = new HttpGet(sessionCloudProviderURL + "/download/"
 					+ fileID);
@@ -131,7 +128,7 @@ public class ImportCloudSession extends AbstractGameAction {
 		String fileID = JOptionPane
 				.showInputDialog(
 						this.parent,
-						i18n.tr("Please enter your personal code in order to retrieve your session"),
+						i18n.tr("Please enter your personal code to retrieve your session"),
 						i18n.tr("Session code"), JOptionPane.WARNING_MESSAGE);
 		if (fileID == null) {
 			return;
@@ -155,7 +152,8 @@ public class ImportCloudSession extends AbstractGameAction {
 
 		} catch (IOException ex) {
 			JOptionPane.showMessageDialog(this.parent,
-					i18n.tr("Could not import your session."), i18n.tr("Importation error"),
+					i18n.tr("A {0} exception occured while importing your session: {1}"+ex.getClass().getName(),ex.getLocalizedMessage()), 
+					i18n.tr("Importation error"),
 					JOptionPane.ERROR_MESSAGE);
 			// TODO: we should log the real exception message in order to be
 			// able to debug the failure.
