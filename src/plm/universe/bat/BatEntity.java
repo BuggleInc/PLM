@@ -62,7 +62,7 @@ public class BatEntity extends Entity {
 				try {
 					run(t);
 				} catch (Exception e) {
-					t.setResult(Game.i18n.tr("This test raised a {0} exception: {0}",e.getClass().getName(), e.getMessage()));
+					t.setResult(Game.i18n.tr("This test raised a {0} exception: {1}",e.getClass().getName(), e.getMessage()));
 				}
 		} else if (pl.equals(Game.PYTHON)) {
 			ScriptEngine engine ;
@@ -91,7 +91,7 @@ public class BatEntity extends Entity {
 					engine.put("thetest",t);
 					engine.eval("thetest.setResult("+t.getName()+")");
 				} catch (Exception e) {
-					t.setResult(Game.i18n.tr("This test raised a {0} exception: {0}",e.getClass().getName(), e.getMessage()));
+					t.setResult(Game.i18n.tr("This test raised a {0} exception: {1}",e.getClass().getName(), e.getMessage()));
 				}
 		} else {
 			throw new RuntimeException("BatWorld was not ported to "+pl.getLang()+" yet.");
