@@ -41,8 +41,10 @@ import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.ui.action.AbstractGameAction;
+import plm.core.ui.action.ExportCloudSession;
 import plm.core.ui.action.ExportSession;
 import plm.core.ui.action.HelpMe;
+import plm.core.ui.action.ImportCloudSession;
 import plm.core.ui.action.ImportSession;
 import plm.core.ui.action.PlayDemo;
 import plm.core.ui.action.QuitGame;
@@ -75,7 +77,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenu menuFile;
     private JMenuItem miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
     private JMenu menuSession;
-    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionDebug, miSessionCreative;
+    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -262,6 +264,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 				null, this));
 		menuSession.add(miSessionImport);
 
+		
+		miSessionExportToCloud = new JMenuItem(new ExportCloudSession(g, i18n.tr("Export Session Cache to Cloud"),	null, this));
+		menuSession.add(miSessionExportToCloud);
+
+		miSessionImportFromCloud = new JMenuItem(new ImportCloudSession(g, i18n.tr("Import Session Cache from Cloud"),
+				null, this));
+		menuSession.add(miSessionImportFromCloud);
+
+		
+		
 		miSessionDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
 			private static final long serialVersionUID = 1L;
 
