@@ -81,8 +81,9 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jruby-1.5.6-5.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jython/jython-2.5.1.jar"/>
 
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.1.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.1.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.2.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.2.5.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
             
@@ -107,8 +108,10 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.4.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/langtools-beta.jar" />
                         
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.1.2.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.1.2.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpclient-4.2.5.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpcore-4.2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/httpmime-4.2.5.jar"/>
+
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/commons-logging-1.1.1.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gettext-commons-0.9.6.jar"/>
             

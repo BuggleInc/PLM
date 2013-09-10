@@ -132,4 +132,35 @@ public class FileUtils {
 		}
 		return sb;
 	}
+	
+	
+	/**
+	 * Create a temporary directory in a temp dir.
+	 * 
+	 * @return The File referring to the newly created temp directory. 
+	 * @throws IOException
+	 */
+	public static File createTemporaryDirectory() throws IOException {
+		File tmpDir = File.createTempFile("plm-", ".dir");
+		if(!(tmpDir.delete()))
+	        throw new IOException("Could not delete temp file: " + tmpDir.getAbsolutePath());
+	    if(!(tmpDir.mkdir()))
+	        throw new IOException("Could not create temp directory: " + tmpDir.getAbsolutePath());			
+	    return tmpDir;		
+	}
+	
+	/**
+	 * Create a temporary file then remove it. 
+	 * Therefore the temporary filename (and path) can be reused.
+	 * 
+	 * @return The File which is located in a temp.
+	 * @throws IOException
+	 */
+	public static File createTemporaryFilename() throws IOException {
+		File tmpFile = File.createTempFile("full-plm", ".sfs");
+		if(!(tmpFile.delete()))
+	        throw new IOException("Could not delete temp file: " + tmpFile.getAbsolutePath());
+		return tmpFile;
+	}
+
 }
