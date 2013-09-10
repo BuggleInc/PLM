@@ -3806,7 +3806,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:12
 msgid "The general idea is to do something like:"
-msgstr "L'idée général est donc de faire:"
+msgstr "L'idée générale est donc de faire:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:13
@@ -7176,7 +7176,7 @@ msgstr ""
 "Chaque ensemble d'informations contient trois valeurs.\n"
 "La première est le rang de la couleur à mettre sur le sol.\n"
 "La deuxième est le mouvement à effectuer, avec la notation suivante : "
-"0=stop, 1=pas de virage, 2=gauche, 4=demi-tour, 8=left. Veuillez noter que "
+"0=stop, 1=pas de virage, 2=gauche, 4=demi-tour, 8=droite. Veuillez noter que "
 "si l'instruction est stop, vous ne devez même pas avancer sur cette étape "
 "(mais vous ne devez pas arrêter votre programme pour autant : les prochains "
 "pas peuvent faire quelque chose d'autre). Finalement, le troisième entier "
