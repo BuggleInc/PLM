@@ -1,10 +1,12 @@
-20130911: Release 2.2.3: How many bugs did I put in this code!?
+20130911: Release 2.2.3: Let's start again adding new bu^Wfeatures
 
   * Let every interactive control issue the source code doing the same
     thing when they are clicked, so that the students can copy/paste.
     Thanks to Laurent Guittet for suggesting this change, I love it.
   * Buggle: Translate the direction names
   * TurtleWorld: add a new clear() primitive that clears the sheet
+  * New feature: import/export session to the cloud.
+    You don't have to struggle with a bunch of zip files anymore.
   
   * BuggleWorld: dropping a baggle was possible even if you had none
   * welcome.BlueTicket: Fix typo in French
