@@ -15,6 +15,7 @@
   * FeedbackDialog: reset the text on each invocation
   * welcome.MethodsArgs: Fix a faulty copy/paste in scala prototypes
   * welcome.LoopFor: Fix the scala syntax of for loops
+  * welcome.RunHalf: the description and the given condition did not match
 
 20130908: Release 2.2.1: C'mon, dudes. Break that one if you dare.
 

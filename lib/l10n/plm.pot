@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-10 12:20+0300\n"
+"POT-Creation-Date: 2013-09-10 13:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2603,13 +2603,13 @@ msgstr ""
 msgid ""
 "Here is the second day of the Big Buggles' Race.  As previously, you have to "
 "run forward until you reach the right cell to stop on.  But this time, you "
-"have to reach the cell where you saw as much baggles as orange cells plus "
-"1.  In other word, the following condition must become true <code>2 * "
-"baggles = orangeCells + 1</code>."
+"have to reach the cell where the amount of baggles you saw is the double of "
+"the orange cells plus 1.  In other word, the following condition must become "
+"true <code>2 * baggles = orangeCells + 1</code>."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/variables/RunHalf.html:8
+#: src/lessons/welcome/variables/RunHalf.html:9
 msgid ""
 "You can determine whether you are over a orange cell with the "
 "<code>isOverOrange()</code> method."
