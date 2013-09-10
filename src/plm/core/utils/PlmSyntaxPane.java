@@ -14,6 +14,7 @@ import jsyntaxpane.SyntaxStyle;
 import jsyntaxpane.SyntaxStyles;
 import jsyntaxpane.TokenType;
 import jsyntaxpane.syntaxkits.JavaSyntaxKit;
+import jsyntaxpane.syntaxkits.PlainSyntaxKit;
 import jsyntaxpane.syntaxkits.PythonSyntaxKit;
 import jsyntaxpane.syntaxkits.ScalaSyntaxKit;
 import jsyntaxpane.syntaxkits.XHTMLSyntaxKit;
@@ -41,15 +42,18 @@ public class PlmSyntaxPane {
 		st.put(TokenType.STRING, new SyntaxStyle(new Color(0x3600ff), false, false)); // blue
 		st.put(TokenType.DEFAULT, new SyntaxStyle(Color.BLACK, false, false)); // black
 
+		Configuration plainConf = PlainSyntaxKit.getConfig(PlainSyntaxKit.class);
 		Configuration javaConf = JavaSyntaxKit.getConfig(JavaSyntaxKit.class);
 		Configuration pyConf = PythonSyntaxKit.getConfig(PythonSyntaxKit.class);
 		Configuration scalaConf = ScalaSyntaxKit.getConfig(ScalaSyntaxKit.class);
 		Configuration xhtmlConf = XHTMLSyntaxKit.getConfig(XHTMLSyntaxKit.class);
 
+		plainConf.put("DefaultFont", "monospaced 12");
 		javaConf.put("DefaultFont", "monospaced 12");
 		pyConf.put("DefaultFont", "monospaced 12");
 		scalaConf.put("DefaultFont", "monospaced 12");
 
+		setupKit(plainConf);
 		setupKit(javaConf);
 		setupKit(pyConf);
 		setupKit(scalaConf);
