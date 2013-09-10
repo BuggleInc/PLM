@@ -1,5 +1,9 @@
 20130911: Release 2.2.3: How many bugs did I put in this code!?
 
+  * Let every interactive control issue the source code doing the same
+    thing when they are clicked, so that the students can copy/paste.
+    Thanks to Laurent Guittet for suggesting this change, I love it.
+
   * TurtleWorld: add a new clear() primitive that clears the sheet
   * BuggleWorld: dropping a baggle was possible even if you had none
   * welcome.BlueTicket: Fix typo in French

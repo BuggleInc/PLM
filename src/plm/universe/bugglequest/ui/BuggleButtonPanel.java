@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 
 import plm.core.model.Game;
+import plm.core.utils.ColorMapper;
 import plm.universe.EntityControlPanel;
 import plm.universe.bugglequest.AbstractBuggle;
 import plm.universe.bugglequest.exception.BuggleWallException;
@@ -56,6 +57,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		fButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
+					echo(i18n.tr("forward()"));
 					((AbstractBuggle)Game.getInstance().getSelectedEntity()).forward();
 				} catch (BuggleWallException e) {
 					showWallHuggingErrorMessageDialog();
@@ -70,6 +72,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		bButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				try {
+					echo(i18n.tr("backward()"));
 					((AbstractBuggle)Game.getInstance().getSelectedEntity()).backward();
 				} catch (BuggleWallException e) {
 					showWallHuggingErrorMessageDialog();
@@ -83,6 +86,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		lButton = new JButton(i18n.tr("left"));
 		lButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				echo(i18n.tr("left()"));
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).left();
 			}
 		});
@@ -91,6 +95,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		rButton = new JButton(i18n.tr("right"));
 		rButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
+				echo(i18n.tr("right()"));
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).right();
 			}
 		});
@@ -101,8 +106,10 @@ public class BuggleButtonPanel extends EntityControlPanel {
 			public void actionPerformed(ActionEvent event) {
 				AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
 				if (b.isBrushDown()) {
+					echo(i18n.tr("brushUp()"));
 					b.brushUp();
 				} else {
+					echo(i18n.tr("brushDown()"));
 					b.brushDown();
 				}
 			}
@@ -127,6 +134,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 				JComboBox cb = (JComboBox) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
 				cb.setSelectedItem(c);
+				echo(i18n.tr("setBrushColor(Color.{0})",ColorMapper.color2name(c)));
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBrushColor(c);
 			}
 		});
@@ -139,6 +147,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 				JComboBox cb = (JComboBox) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
 				cb.setSelectedItem(c);
+				echo(i18n.tr("setColor(Color.{0})",ColorMapper.color2name(c)));
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setColor(c);
 			}
 		});

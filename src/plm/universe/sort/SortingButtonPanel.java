@@ -3,13 +3,11 @@ package plm.universe.sort;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-
-import org.xnap.commons.i18n.I18n;
-import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
 import plm.universe.EntityControlPanel;
@@ -24,12 +22,10 @@ public class SortingButtonPanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton validateButton;	// a validate button
-	private JComboBox operationsComboBox;	// the available operations on the array ( setValue, copy and swap )
+	private JComboBox operationsComboBox = new JComboBox();	// the available operations on the array ( setValue, copy and swap )
 	private JComboBox leftValueComboBox;	// the value for the first parameter of the selected operation
 	private JComboBox rightValueComboBox;	// the value for the second parameter of the selected operation
 	
-	private I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
-
 	/**
      * Constructor of SortingButtonPanel
      * It initializes the command panel
@@ -37,6 +33,7 @@ public class SortingButtonPanel extends EntityControlPanel {
 	public SortingButtonPanel() {
 		super();
 		SortingEntity se = (SortingEntity) Game.getInstance().getSelectedEntity();
+		Game.getInstance().addHumanLangListener(this);
 		this.add(this.createCommandPanel(se));
 	}
 	
@@ -48,9 +45,8 @@ public class SortingButtonPanel extends EntityControlPanel {
 	private JPanel createCommandPanel(SortingEntity se) {
 		JPanel commandPane = new JPanel();
 		commandPane.setLayout(new FlowLayout());
-		
-		String operationsAvailable[] = { "swap","setValue","copy"};
-		this.operationsComboBox = new JComboBox(operationsAvailable);
+
+		currentHumanLanguageHasChanged(null);
 		
 		int n = se.getValueCount();
 		Integer index[] = new Integer[n];
@@ -71,12 +67,15 @@ public class SortingButtonPanel extends EntityControlPanel {
 				switch (selectedOperation)
 				{
 					case 0:
+						echo(i18n.tr("swap({0},{1})",i,j));
 						se.swap(i,j);
 						break;
 					case 1:
+						echo(i18n.tr("setValue({0},{1})",i,j));
 						se.setValue(i,j);
 						break;
 					case 2:
+						echo(i18n.tr("copy({0},{1})",i,j));
 						se.copy(i, j);
 						break;
 					default:
@@ -100,5 +99,14 @@ public class SortingButtonPanel extends EntityControlPanel {
 		this.operationsComboBox.setEnabled(enabled);
 		this.leftValueComboBox.setEnabled(enabled);
 		this.rightValueComboBox.setEnabled(enabled);
+	}
+	
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		super.currentHumanLanguageHasChanged(newLang);
+		operationsComboBox.removeAllItems();
+		for (String s : new String[] { i18n.tr("swap"),i18n.tr("setValue"),i18n.tr("copy")}) 
+			operationsComboBox.addItem(s);
+		
 	}
 }

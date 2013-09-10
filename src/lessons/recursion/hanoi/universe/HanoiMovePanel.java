@@ -65,6 +65,7 @@ public class HanoiMovePanel extends EntityControlPanel {
 				int src = sourceSelector.getSelectedIndex();
 				int dst = destinationSelector.getSelectedIndex();
 				try {
+					echo(i18n.tr("move({0},{1})",src,dst));
 					he.move(src, dst);
 				} catch (IllegalArgumentException iae) { 
 					JOptionPane.showMessageDialog(null, iae.getLocalizedMessage(),i18n.tr("Invalid move"), JOptionPane.ERROR_MESSAGE);

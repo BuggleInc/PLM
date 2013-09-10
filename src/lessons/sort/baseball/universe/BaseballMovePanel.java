@@ -70,6 +70,7 @@ public class BaseballMovePanel extends EntityControlPanel {
 				int base = baseSelector.getSelectedIndex();
 				int player = playerSelector.getSelectedIndex();
 				try  {
+					echo(i18n.tr("move({0},{1})",base,player));
 					be.move(base, player);
 				} catch (IllegalArgumentException e) {
 					JOptionPane.showMessageDialog(null, i18n.tr("The player {0} of the base {1} cannot reach the hole that is too far from its position", player, base),

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-10 17:44+0200\n"
+"POT-Creation-Date: 2013-09-10 23:59+0200\n"
 "PO-Revision-Date: 2013-05-30 11:25+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,8 +56,14 @@ msgid ""
 "goal instead."
 msgstr ""
 
-#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:70
-#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
+#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:68
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:73
+#, java-format
+msgid "move({0},{1})"
+msgstr ""
+
+#: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:71
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:77
 msgid "Invalid move"
 msgstr ""
 
@@ -90,7 +96,7 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
-#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:75
+#: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
 #, java-format
 msgid ""
 "The player {0} of the base {1} cannot reach the hole that is too far from "
@@ -150,6 +156,11 @@ msgstr "Switch to time view"
 #: src/plm/universe/sort/SortingWorldView.java:53
 msgid "Switch to state view"
 msgstr "Switch to state view"
+
+#: src/lessons/sort/pancake/universe/PancakeFlipButtonPanel.java:66
+#, java-format
+msgid "flip({0})"
+msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:116
 msgid "This is not a world of pancakes :-("
@@ -1535,50 +1546,111 @@ msgstr ""
 msgid "You have no baggle to drop"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:55
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:232
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:56
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:241
 msgid "forward"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:69
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:231
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:60
+msgid "forward()"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:71
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:240
 msgid "backward"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:83
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:233
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:75
+msgid "backward()"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:86
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:242
 msgid "left"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:91
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:234
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:89
+msgid "left()"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:95
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:243
 msgid "right"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:99
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:235
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:98
+msgid "right()"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:104
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:244
 msgid "mark"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:222
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:109
+msgid "brushUp()"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:112
+msgid "brushDown()"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:137
+#, java-format
+msgid "setBrushColor(Color.{0})"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:150
+#, java-format
+msgid "setColor(Color.{0})"
+msgstr ""
+
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:231
 msgid "Wall hugging error"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:223
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:232
 msgid "Your buggle has collided with a wall, it hurts a lot ! ='("
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:236
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:245
 msgid "Brush Color"
 msgstr ""
 
-#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:237
+#: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:246
 msgid "Buggle Color"
 msgstr ""
 
-#: src/plm/universe/sort/SortingButtonPanel.java:63
+#: src/plm/universe/sort/SortingButtonPanel.java:59
 msgid "go"
 msgstr "go"
+
+#: src/plm/universe/sort/SortingButtonPanel.java:70
+#, java-format
+msgid "swap({0},{1})"
+msgstr ""
+
+#: src/plm/universe/sort/SortingButtonPanel.java:74
+#, java-format
+msgid "setValue({0},{1})"
+msgstr ""
+
+#: src/plm/universe/sort/SortingButtonPanel.java:78
+#, java-format
+msgid "copy({0},{1})"
+msgstr ""
+
+#: src/plm/universe/sort/SortingButtonPanel.java:108
+msgid "swap"
+msgstr ""
+
+#: src/plm/universe/sort/SortingButtonPanel.java:108
+msgid "setValue"
+msgstr ""
+
+#: src/plm/universe/sort/SortingButtonPanel.java:108
+msgid "copy"
+msgstr ""
 
 #~ msgid "Current world"
 #~ msgstr "Current world"
