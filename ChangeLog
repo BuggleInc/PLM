@@ -13,6 +13,7 @@
   * welcome.RunHalf: fix the scala templating
   * welcome.FlowerPot: fix the french translation (growFlowers with a s)
   * FeedbackDialog: reset the text on each invocation
+  * welcome.MethodsArgs: Fix a faulty copy/paste in scala prototypes
 
 20130908: Release 2.2.1: C'mon, dudes. Break that one if you dare.
 

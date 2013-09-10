@@ -37,18 +37,18 @@ lors de la déclaration comme lors de l'appel.</p>
 condition qu'elles n'aient pas la même <b>signature</b>, c'est à dire le
 même nombre de paramètres et les mêmes types de paramètres.</p>
 
-<pre>[!java]double max(double x, double y)[/!][!scala]def max(x:Double, int y:Double): Double =[/!] {
+<pre>[!java]double max(double x, double y)[/!][!scala]def max(x:Double, y:Double): Double =[/!] {
   if (x > y) {
     return x;
   }
   return y;
-}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, int y:Int): Int =[/!] {
+}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, y:Int): Int =[/!] {
   if (x > y) {
     return x;
   }
   return y;
 }
-[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, int y:Int, int z:Int): Int =[/!] {
+[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, y:Int, z:Int): Int =[/!] {
   if (x > y && x > z) {
     return x;
   }

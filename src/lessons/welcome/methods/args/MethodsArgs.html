@@ -36,18 +36,18 @@ both in the declaration and calls.</p>
 they don't have the same <b>signature</b>, that is, the same amount of 
 parameters and the same parameters' types.</p>
 
-<pre>[!java]double max(double x, double y)[/!][!scala]def max(x:Double, int y:Double): Double =[/!] {
+<pre>[!java]double max(double x, double y)[/!][!scala]def max(x:Double, y:Double): Double =[/!] {
   if (x > y) {
     return x;
   }
   return y;
-}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, int y:Int): Int =[/!] {
+}[!java]int max(int x, int y)[/!][!scala]def max(x:Int, y:Int): Int =[/!] {
   if (x > y) {
     return x;
   }
   return y;
 }
-[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, int y:Int, int z:Int): Int =[/!] {
+[!java]int max(int x, int y; int z)[/!][!scala]def max(x:Int, y:Int, z:Int): Int =[/!] {
   if (x > y && x > z) {
     return x;
   }
