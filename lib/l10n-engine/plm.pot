@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-08 22:40+0200\n"
+"POT-Creation-Date: 2013-09-10 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,8 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array1Entity.java:11
 #: src/lessons/welcome/array/basics/Array2Entity.java:12
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use setX() in this exercise."
+"Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal "
+"instead."
 msgstr ""
 
 #: src/lessons/maze/island/IslandMazeEntity.java:15
@@ -38,7 +39,8 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array1Entity.java:16
 #: src/lessons/welcome/array/basics/Array2Entity.java:17
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use setY() in this exercise."
+"Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal "
+"instead."
 msgstr ""
 
 #: src/lessons/maze/island/IslandMazeEntity.java:20
@@ -50,7 +52,8 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array1Entity.java:21
 #: src/lessons/welcome/array/basics/Array2Entity.java:22
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use setPos() in this exercise."
+"Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your "
+"goal instead."
 msgstr ""
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:70
@@ -188,14 +191,13 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:9
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:9
 #: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:9
-#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:10
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:9
 #: src/lessons/welcome/variables/RunFourEntity.java:8
 #: src/lessons/welcome/variables/RunHalfEntity.java:10
 #: src/lessons/welcome/variables/VariablesEntity.java:8
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use forward with an argument in "
-"this exercise."
+"Sorry Dave, I cannot let you use forward with an argument in this exercise. "
+"Use a loop instead."
 msgstr ""
 
 #: src/lessons/welcome/loopdowhile/PoucetEntity.java:14
@@ -206,14 +208,13 @@ msgstr ""
 #: src/lessons/welcome/loopwhile/BaggleSeekerEntity.java:14
 #: src/lessons/welcome/loopwhile/LoopWhileEntity.java:14
 #: src/lessons/welcome/loopwhile/WhileMoriaEntity.java:14
-#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:14
 #: src/lessons/welcome/methods/returning/MethodsReturningEntity.java:14
 #: src/lessons/welcome/variables/RunFourEntity.java:12
 #: src/lessons/welcome/variables/RunHalfEntity.java:14
 #: src/lessons/welcome/variables/VariablesEntity.java:13
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use backward with an argument in "
-"this exercise."
+"Sorry Dave, I cannot let you use backward with an argument in this exercise. "
+"Use a loop instead."
 msgstr ""
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:33
@@ -234,20 +235,29 @@ msgstr ""
 msgid "Test failed"
 msgstr ""
 
-#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:66
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:71
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:67
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:71
+#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:10
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use right() in this exercise."
+"I cannot let you use forward with an argument in this exercise. Use a loop "
+"instead."
+msgstr ""
+
+#: src/lessons/welcome/methods/args/MethodsArgsEntity.java:14
+msgid ""
+"I cannot let you use backward with an argument in this exercise. Use a loop "
+"instead."
+msgstr ""
+
+#: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
+msgid ""
+"Sorry Dave, I cannot let you use right() in this exercise. Use left() "
+"instead."
 msgstr ""
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
 #, java-format
 msgid ""
-"I''m sorry Dave, I''m affraid I cant let you use left() both in lines {0} "
-"and {1} in this exercise."
+"Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
+"exercise. You can write left() only once in this exercise."
 msgstr ""
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:45
@@ -259,7 +269,8 @@ msgstr ""
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:50
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:55
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use forward() in this exercise."
+"Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
+"instead."
 msgstr ""
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:54
@@ -271,41 +282,8 @@ msgstr ""
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:59
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:63
 msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use backward() in this exercise."
-msgstr ""
-
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:62
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:67
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:63
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:67
-msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use left() in this exercise."
-msgstr ""
-
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:70
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:75
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:71
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:75
-msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use back() in this exercise."
-msgstr ""
-
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:74
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:79
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:75
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:79
-msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use isFacingWall() in this "
-"exercise."
-msgstr ""
-
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:78
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:83
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:79
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:83
-msgid ""
-"I'm sorry Dave, I'm affraid I can't let you use isBackingWall() in this "
-"exercise."
+"Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
+"y) instead."
 msgstr ""
 
 #.
@@ -843,11 +821,16 @@ msgstr ""
 msgid "Switch the entity"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:49
+#: src/plm/core/ui/FeedbackDialog.java:44
+#: src/plm/core/ui/FeedbackDialog.java:88
+msgid "(your feedback comes here)"
+msgstr ""
+
+#: src/plm/core/ui/FeedbackDialog.java:51
 msgid "Report your feedback"
 msgstr ""
 
-#: src/plm/core/ui/FeedbackDialog.java:59
+#: src/plm/core/ui/FeedbackDialog.java:61
 msgid ""
 "<html><p>Thanks for your feedback on PLM. We deeply need this to make the "
 "tool match <br>your needs, so please don't hesitate to report any "
@@ -863,10 +846,6 @@ msgid ""
 "still have to identify yourself if you want to.</p><p>Alternatively, you can "
 "use the <a href='http://github.com/oster/JLM/issues'>github interface</a> "
 "for feedback.</p></html>"
-msgstr ""
-
-#: src/plm/core/ui/FeedbackDialog.java:88
-msgid "(your feedback comes here)"
 msgstr ""
 
 #: src/plm/core/ui/FeedbackDialog.java:90
