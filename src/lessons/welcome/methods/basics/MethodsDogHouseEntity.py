@@ -1,7 +1,7 @@
 line = -1
 
 def right():
-	raise java.lang.RuntimeException("right() forbidden in this exercise.");
+	raise java.lang.RuntimeException("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead.");
 
 # does not work as Java stacktrace does not contain python function name ;(
 #def left():

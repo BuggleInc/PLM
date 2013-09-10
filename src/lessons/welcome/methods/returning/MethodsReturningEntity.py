@@ -1,12 +1,12 @@
 def forward(i=-1):
     if i!=-1:
-        errorMsg("forward(int) forbidden in this exercise")
+        errorMsg("Sorry Dave, I cannot let you use forward with an argument in this exercise. Use a loop instead.")
     else:
         entity.forward()
 
 def backward(i=-1):
     if i!=-1:
-        errorMsg("backward(int) forbidden in this exercise")
+        errorMsg("Sorry Dave, I cannot let you use backward with an argument in this exercise. Use a loop instead.")
     else:
         entity.backward()
 

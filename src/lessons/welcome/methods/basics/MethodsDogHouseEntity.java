@@ -7,7 +7,7 @@ import plm.universe.bugglequest.SimpleBuggle;
 public class MethodsDogHouseEntity extends SimpleBuggle {
 	@Override
 	public void right() {
-		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use right() in this exercise."));
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead."));
 	}
 
 	private int line = -1;
@@ -23,7 +23,7 @@ public class MethodsDogHouseEntity extends SimpleBuggle {
 			if (s.getMethodName().equals("dogHouse")) {
 				if (line != -1 && line != s.getLineNumber()) {
 					int offset = ((Exercise)Game.getInstance().getCurrentLesson().getCurrentExercise()).getSourceFile(Game.JAVA, 0).getOffset();
-				    String msg = Game.i18n.tr("I''m sorry Dave, I''m affraid I cant let you use left() both in lines {0} and {1} in this exercise.",
+				    String msg = Game.i18n.tr("Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this exercise. You can write left() only once in this exercise.",
 					        (line-offset+1),(s.getLineNumber()-offset+1));
 
 					throw new RuntimeException(msg);

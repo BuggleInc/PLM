@@ -1,23 +1,8 @@
 def forward(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use forward() in this exercise.")
+	errorMsg("Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) instead.")
 
 def backward(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use backward() in this exercise.")
-
-def right(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use right() in this exercise.")
-
-def left(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use left() in this exercise.")
-
-def back(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use back() in this exercise.")
-
-def isFacingWall(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use isFacingWall() in this exercise.")
-
-def isBackingWall(i):
-	errorMsg("I'm sorry Dave, I'm afraid I cannot let you use isFacingWall() in this exercise.")
+	errorMsg("Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,y) instead.")
 
 # BEGIN TEMPLATE
 # BEGIN SOLUTION

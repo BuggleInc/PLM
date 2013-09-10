@@ -7,7 +7,7 @@ import plm.core.model.lesson.Exercise
 
 class ScalaMethodsDogHouseEntity extends SimpleBuggle {
 	override def right()  { 
-		throw new RuntimeException(Game.i18n.tr("I'm sorry Dave, I'm affraid I can't let you use right."));
+		throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use right() in this exercise. Use left() instead."));
 	}
 
 	var savedLine = -1
@@ -34,7 +34,7 @@ class ScalaMethodsDogHouseEntity extends SimpleBuggle {
 	    savedLine = usedLine
 	  } else if (savedLine != usedLine) {
 	    var offset = Game.getInstance().getCurrentLesson().getCurrentExercise().asInstanceOf[Exercise].getSourceFile(Game.SCALA, 0).getOffset()
-	    var msg = Game.i18n.tr("I'm sorry Dave, I'm affraid I cant let you use left() both in lines {0} and {1}.",
+	    var msg = Game.i18n.tr("Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this exercise. You can write left() only once in this exercise.",
 	        (savedLine-offset),(usedLine-offset));
 		  System.out.println(msg);
 		  throw new RuntimeException(msg);

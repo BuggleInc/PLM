@@ -5,6 +5,10 @@
   * welcome.SlugHunting: align templating and mission: isFacingTrail must be copied
   * welcome.Variables: scala mandates an initial value (fix #109)
     plus various small improvements
+  * Unify all Dave messages (marking functions that are forbidden in a
+    given exercise -- like setPos in maze exercises), to ensure that
+    they are properly translated despite the fact that gettext don't
+    dig into scala and python files for string to translate.
 
 20130908: Release 2.2.1: C'mon, dudes. Break that one if you dare.
 
