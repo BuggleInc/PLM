@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-10 14:05+0200\n"
-"PO-Revision-Date: 2013-09-10 16:57+0200\n"
+"POT-Creation-Date: 2013-09-10 16:59+0200\n"
+"PO-Revision-Date: 2013-09-10 16:59+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -29,7 +29,9 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal "
 "instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser setX(x) dans cet exercice. Marche jusqu'à ton objectif."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser setX(x) dans cet exercice. "
+"Marche jusqu'à ton objectif."
 
 #: src/lessons/maze/island/IslandMazeEntity.java:15
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:15
@@ -42,7 +44,9 @@ msgstr "Désolé Dave, je ne peux pas te laisser utiliser setX(x) dans cet exerc
 msgid ""
 "Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal "
 "instead."
-msgstr "Désolé Dave, je ne peux paste laisser utiliser setY(y) dans cet exercice.  Marche jusqu'à ton objectif."
+msgstr ""
+"Désolé Dave, je ne peux paste laisser utiliser setY(y) dans cet exercice.  "
+"Marche jusqu'à ton objectif."
 
 #: src/lessons/maze/island/IslandMazeEntity.java:20
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:20
@@ -55,7 +59,9 @@ msgstr "Désolé Dave, je ne peux paste laisser utiliser setY(y) dans cet exerci
 msgid ""
 "Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your "
 "goal instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser setPos(x,y) dans cet exercice. Marche jusqu'à ton objectif."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser setPos(x,y) dans cet "
+"exercice. Marche jusqu'à ton objectif."
 
 #: src/lessons/recursion/hanoi/universe/HanoiMovePanel.java:70
 #: src/lessons/sort/baseball/universe/BaseballMovePanel.java:76
@@ -219,7 +225,9 @@ msgstr ""
 msgid ""
 "Sorry Dave, I cannot let you use forward with an argument in this exercise. "
 "Use a loop instead."
-msgstr "Je suis désolé Dave, je ne peux pas te laisser utiliser avance() avec un argument dans cet exercice. Utilise plutôt une boucle."
+msgstr ""
+"Je suis désolé Dave, je ne peux pas te laisser utiliser avance() avec un "
+"argument dans cet exercice. Utilise plutôt une boucle."
 
 #: src/lessons/welcome/loopdowhile/PoucetEntity.java:14
 #: src/lessons/welcome/loopfor/LoopCourseEntity.java:14
@@ -236,7 +244,9 @@ msgstr "Je suis désolé Dave, je ne peux pas te laisser utiliser avance() avec 
 msgid ""
 "Sorry Dave, I cannot let you use backward with an argument in this exercise. "
 "Use a loop instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser recule() avec un argument dans cet exercice. Utilise plutôt une boucle."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser recule() avec un argument "
+"dans cet exercice. Utilise plutôt une boucle."
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:33
 msgid "You fall into water."
@@ -260,26 +270,35 @@ msgstr "Test raté"
 msgid ""
 "I cannot let you use forward with an argument in this exercise. Use a loop "
 "instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser avance() avec un argument dans cet exercice. Utilise plutôt une boucle."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser avance() avec un argument "
+"dans cet exercice. Utilise plutôt une boucle."
 
 #: src/lessons/welcome/methods/args/MethodsArgsEntity.java:14
 msgid ""
 "I cannot let you use backward with an argument in this exercise. Use a loop "
 "instead."
-msgstr "Désolé Dave, je ne peux pas pouvoir te laisser utiliser recule() avec un argument dans cet exercice. Utilise plutôt une boucle."
+msgstr ""
+"Désolé Dave, je ne peux pas pouvoir te laisser utiliser recule() avec un "
+"argument dans cet exercice. Utilise plutôt une boucle."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:10
 msgid ""
 "Sorry Dave, I cannot let you use right() in this exercise. Use left() "
 "instead."
-msgstr "Désolé Dave, je ne peux pas pouvoir te laisser utiliser droite() dans cet exercice. Utilise plutôt gauche()."
+msgstr ""
+"Désolé Dave, je ne peux pas pouvoir te laisser utiliser droite() dans cet "
+"exercice. Utilise plutôt gauche()."
 
 #: src/lessons/welcome/methods/basics/MethodsDogHouseEntity.java:26
 #, java-format
 msgid ""
 "Sorry Dave, I cannot let you use left() both in lines {0} and {1} in this "
 "exercise. You can write left() only once in this exercise."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser gauche() à la fois aux lignes {0} et {1} dans cet exercice. Tu ne peux utiliser cette fonction qu'une fois dans ton source."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser gauche() à la fois aux "
+"lignes {0} et {1} dans cet exercice. Tu ne peux utiliser cette fonction "
+"qu'une fois dans ton source."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:45
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:50
@@ -292,7 +311,9 @@ msgstr "Désolé Dave, je ne peux pas te laisser utiliser gauche() à la fois au
 msgid ""
 "Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
 "instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser avance() dans cet exercice. Utilise plutôt setPos(x,y)."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser avance() dans cet exercice. "
+"Utilise plutôt setPos(x,y)."
 
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:54
 #: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:58
@@ -305,7 +326,9 @@ msgstr "Désolé Dave, je ne peux pas te laisser utiliser avance() dans cet exer
 msgid ""
 "Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
 "y) instead."
-msgstr "Désolé Dave, je ne peux pas te laisser utiliser recule() dans cet exercice. Utilise plutôt setPos(x,y)."
+msgstr ""
+"Désolé Dave, je ne peux pas te laisser utiliser recule() dans cet exercice. "
+"Utilise plutôt setPos(x,y)."
 
 #.
 #. * FIXME: provide a way to debug
@@ -1448,8 +1471,8 @@ msgstr ""
 #: src/plm/universe/bat/BatEntity.java:65
 #: src/plm/universe/bat/BatEntity.java:94
 #, java-format
-msgid "This test raised an exception: {0}"
-msgstr "Ce test a levé une exception : {0}"
+msgid "This test raised a {0} exception: {0}"
+msgstr "Ce test a levé une exception {0} : {1}"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:169
 #, java-format

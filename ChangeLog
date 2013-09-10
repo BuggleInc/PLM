@@ -2,6 +2,7 @@
 
   * TurtleWorld: add a new clear() primitive that clears the sheet
   * welcome.BlueTicket: Fix typo in French
+  * BatEntity: more informative error message when an exception is raised
   
 20130910: Release 2.2.2: the 2s release.
 
