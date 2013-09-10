@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-10 16:59+0200\n"
+"POT-Creation-Date: 2013-09-10 17:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -222,16 +222,17 @@ msgid "You fall into water."
 msgstr ""
 
 #: src/lessons/welcome/loopfor/LoopCourseForestEntity.java:33
-#: src/plm/universe/bugglequest/SimpleBuggle.java:29
-#: src/plm/universe/bugglequest/SimpleBuggle.java:40
-#: src/plm/universe/bugglequest/SimpleBuggle.java:51
-#: src/plm/universe/bugglequest/SimpleBuggle.java:62
-#: src/plm/universe/bugglequest/SimpleBuggle.java:78
-#: src/plm/universe/bugglequest/SimpleBuggle.java:82
-#: src/plm/universe/bugglequest/SimpleBuggle.java:93
-#: src/plm/universe/bugglequest/SimpleBuggle.java:103
-#: src/plm/universe/bugglequest/SimpleBuggle.java:113
-#: src/plm/universe/bugglequest/SimpleBuggle.java:123
+#: src/plm/universe/bugglequest/SimpleBuggle.java:30
+#: src/plm/universe/bugglequest/SimpleBuggle.java:41
+#: src/plm/universe/bugglequest/SimpleBuggle.java:52
+#: src/plm/universe/bugglequest/SimpleBuggle.java:63
+#: src/plm/universe/bugglequest/SimpleBuggle.java:79
+#: src/plm/universe/bugglequest/SimpleBuggle.java:83
+#: src/plm/universe/bugglequest/SimpleBuggle.java:94
+#: src/plm/universe/bugglequest/SimpleBuggle.java:97
+#: src/plm/universe/bugglequest/SimpleBuggle.java:106
+#: src/plm/universe/bugglequest/SimpleBuggle.java:116
+#: src/plm/universe/bugglequest/SimpleBuggle.java:126
 msgid "Test failed"
 msgstr ""
 
@@ -1282,81 +1283,81 @@ msgstr ""
 #: src/plm/universe/bat/BatEntity.java:65
 #: src/plm/universe/bat/BatEntity.java:94
 #, java-format
-msgid "This test raised a {0} exception: {0}"
+msgid "This test raised a {0} exception: {1}"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:169
+#: src/plm/universe/bugglequest/AbstractBuggle.java:170
 #, java-format
 msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:171
+#: src/plm/universe/bugglequest/AbstractBuggle.java:172
 #, java-format
 msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:190
-#: src/plm/universe/bugglequest/AbstractBuggle.java:226
+#: src/plm/universe/bugglequest/AbstractBuggle.java:191
+#: src/plm/universe/bugglequest/AbstractBuggle.java:227
 #, java-format
 msgid "You tried to set X to {0}, but the maximal X in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:209
-#: src/plm/universe/bugglequest/AbstractBuggle.java:224
+#: src/plm/universe/bugglequest/AbstractBuggle.java:210
+#: src/plm/universe/bugglequest/AbstractBuggle.java:225
 #, java-format
 msgid "You tried to set Y to {0}, but the maximal Y in this world is {1}."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:343
+#: src/plm/universe/bugglequest/AbstractBuggle.java:344
 #: src/plm/universe/bugglequest/BuggleWorldCell.java:128
 msgid "There is no baggle to pick up here."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:345
+#: src/plm/universe/bugglequest/AbstractBuggle.java:346
 msgid "Your are already carrying a baggle."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:425
+#: src/plm/universe/bugglequest/AbstractBuggle.java:428
 msgid "Its value is 'null', which is never good."
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:432
+#: src/plm/universe/bugglequest/AbstractBuggle.java:435
 #, java-format
 msgid "    Its position is ({0},{1}); expected: ({2},{3}).\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:434
+#: src/plm/universe/bugglequest/AbstractBuggle.java:437
 #, java-format
 msgid "    Its direction is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:436
+#: src/plm/universe/bugglequest/AbstractBuggle.java:439
 #, java-format
 msgid "    Its color is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:438
+#: src/plm/universe/bugglequest/AbstractBuggle.java:441
 #, java-format
 msgid "    The color of its brush is {0}; expected: {1}.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:440
+#: src/plm/universe/bugglequest/AbstractBuggle.java:443
 msgid "    It should not carry that baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:442
+#: src/plm/universe/bugglequest/AbstractBuggle.java:445
 msgid "    It is not carrying any baggle.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:444
+#: src/plm/universe/bugglequest/AbstractBuggle.java:447
 msgid "    It encountered an issue, such as bumping into a wall.\n"
 msgstr ""
 
-#: src/plm/universe/bugglequest/AbstractBuggle.java:446
+#: src/plm/universe/bugglequest/AbstractBuggle.java:449
 msgid "    It didn't encounter any issue, such as bumping into a wall.\n"
 msgstr ""
 
@@ -1505,6 +1506,10 @@ msgstr ""
 
 #: src/plm/universe/bugglequest/exception/BuggleWallException.java:10
 msgid "Buggles cannot traverse walls"
+msgstr ""
+
+#: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:9
+msgid "You have no baggle to drop"
 msgstr ""
 
 #: src/plm/universe/bugglequest/ui/BuggleButtonPanel.java:55
