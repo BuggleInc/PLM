@@ -7,6 +7,7 @@ import plm.universe.Direction;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 import plm.universe.bugglequest.exception.BuggleWallException;
+import plm.universe.bugglequest.exception.DontHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 
@@ -92,6 +93,8 @@ public abstract class SimpleBuggle extends AbstractBuggle  {
 			if (!haveSeenError())
 				javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 			seenError();
+		} catch (DontHaveBaggleException e) {
+			javax.swing.JOptionPane.showMessageDialog(null, e.getLocalizedMessage(), Game.i18n.tr("Test failed"), javax.swing.JOptionPane.ERROR_MESSAGE);
 		}
 	}	
 	@Override 

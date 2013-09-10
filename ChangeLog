@@ -1,6 +1,7 @@
 20130911: Release 2.2.3: How many bugs did I put in this code!?
 
   * TurtleWorld: add a new clear() primitive that clears the sheet
+  * BuggleWorld: dropping a baggle was possible even if you had none
   * welcome.BlueTicket: Fix typo in French
   * BatEntity: more informative error message when an exception is raised
   

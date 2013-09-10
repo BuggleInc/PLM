@@ -11,6 +11,7 @@ import plm.universe.World;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 import plm.universe.bugglequest.exception.BuggleWallException;
+import plm.universe.bugglequest.exception.DontHaveBaggleException;
 import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 public abstract class AbstractBuggle extends Entity {
@@ -347,7 +348,9 @@ public abstract class AbstractBuggle extends Entity {
 		carryBaggle = true;
 	}
 
-	public void dropBaggle() throws AlreadyHaveBaggleException {
+	public void dropBaggle() throws AlreadyHaveBaggleException, DontHaveBaggleException {
+		if (! isCarryingBaggle())
+			throw new DontHaveBaggleException();
 		getCellFromLesson(this.x, this.y).baggleAdd();
 		carryBaggle = false;
 	}
@@ -468,7 +471,7 @@ public abstract class AbstractBuggle extends Entity {
 	public boolean estSurBiscuit()        { return isOverBaggle(); }
 	public boolean porteBiscuit()         { return isCarryingBaggle(); }
 	public void prendBiscuit() throws AlreadyHaveBaggleException, NoBaggleUnderBuggleException { pickupBaggle(); }
-	public void poseBiscuit()  throws AlreadyHaveBaggleException                               { dropBaggle(); }
+	public void poseBiscuit()  throws AlreadyHaveBaggleException, DontHaveBaggleException      { dropBaggle(); }
 	public boolean estSurMessage()        { return isOverMessage(); }
 	public String litMessage()            { return readMessage(); }
 	public void ecritMessage(String s)    { writeMessage(s); }
