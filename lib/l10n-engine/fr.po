@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-09-10 14:05+0200\n"
-"PO-Revision-Date: 2013-09-10 14:46+0200\n"
+"PO-Revision-Date: 2013-09-10 16:57+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -1449,7 +1449,7 @@ msgstr ""
 #: src/plm/universe/bat/BatEntity.java:94
 #, java-format
 msgid "This test raised an exception: {0}"
-msgstr "Ce teste a levé une exception : {0}"
+msgstr "Ce test a levé une exception : {0}"
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:169
 #, java-format
