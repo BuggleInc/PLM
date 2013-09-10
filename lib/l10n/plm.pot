@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-10 16:51+0300\n"
+"POT-Creation-Date: 2013-09-10 17:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1002,11 +1002,12 @@ msgid ""
 "ask them to pickup a baggle from an empty cell, or a "
 "AlreadyHaveBaggleException exception if they already carry a baggle.  Trying "
 "to drop a baggle on a cell already containing one throws an "
-"AlreadyHaveBaggleException exception."
+"AlreadyHaveBaggleException exception.  Dropping a baggle when you have none "
+"throws a DontHaveBaggleException."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/bugglequest/BuggleWorld.html:72
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."

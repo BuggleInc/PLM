@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-10 16:51+0300\n"
+"POT-Creation-Date: 2013-09-10 17:30+0300\n"
 "PO-Revision-Date: 2013-09-10 16:56+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
@@ -1158,13 +1158,22 @@ msgstr "Note sur les exceptions"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/bugglequest/BuggleWorld.html:65
+#, fuzzy
+#| msgid ""
+#| "Regular buggles throw a BuggleWallException exception if you ask them to "
+#| "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if "
+#| "you ask them to pickup a baggle from an empty cell, or a "
+#| "AlreadyHaveBaggleException exception if they already carry a baggle.  "
+#| "Trying to drop a baggle on a cell already containing one throws an "
+#| "AlreadyHaveBaggleException exception."
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
 "ask them to pickup a baggle from an empty cell, or a "
 "AlreadyHaveBaggleException exception if they already carry a baggle.  Trying "
 "to drop a baggle on a cell already containing one throws an "
-"AlreadyHaveBaggleException exception."
+"AlreadyHaveBaggleException exception.  Dropping a baggle when you have none "
+"throws a DontHaveBaggleException."
 msgstr ""
 "Les buggles normales lèvent une exception BuggleWallException si on cherche "
 "à leur faire traverser un mur.\n"
@@ -1175,7 +1184,7 @@ msgstr ""
 "exception AlreadyHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/bugglequest/BuggleWorld.html:72
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -11431,9 +11440,9 @@ msgid ""
 "range 13..19 inclusive, are extra lucky. So if either value is a teen, just "
 "return 19."
 msgstr ""
-"Étant donné deux nombres entiers (a et b), retournez leur somme. Cependant, "
-"les valeurs ados (dans l'intervale [13;19]) sont particulièrement chanceuse. "
-"Donc, si l'un des nombres est ado, retournez simplement 19."
+"Étant donné deux nombres entiers (a et b), renvoyez leur somme. Cependant, "
+"les valeurs ados (dans l'intervale [13;19]) sont particulièrement "
+"chanceuses. Donc, si l'un des nombres est ado, renvoyez simplement 19."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/TwoAsOne.html:1
