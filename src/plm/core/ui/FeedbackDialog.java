@@ -36,11 +36,13 @@ public class FeedbackDialog extends JDialog {
 	private static FeedbackDialog instance = null;
 	
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
-
+	final JEditorPane feedback = new JEditorPane();
 	
 	public static FeedbackDialog getInstance() {
 		if (FeedbackDialog.instance == null)
 			FeedbackDialog.instance = new FeedbackDialog();
+		FeedbackDialog.instance.feedback.setText(FeedbackDialog.instance.i18n.tr("(your feedback comes here)"));
+
 		return FeedbackDialog.instance;
 	}
 	
@@ -73,8 +75,6 @@ public class FeedbackDialog extends JDialog {
 		explain.setOpaque(true);
 		explain.setEditable(false);
 		add(explain, BorderLayout.NORTH);
-		
-		final JEditorPane feedback = new JEditorPane();
 		
 		feedback.setBackground(Color.white);
 		feedback.setOpaque(true);
