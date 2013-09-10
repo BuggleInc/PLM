@@ -67,7 +67,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 		}
 		
 		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!]");
-		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"plm.properties");
+		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"plm.properties".replaceAll("\\\\", "\\\\"));
 		
 		/* Display everything when in debug mode, with shiny colors */
 		if (showAll) {
