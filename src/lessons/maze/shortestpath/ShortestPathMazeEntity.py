@@ -22,6 +22,14 @@ def hasTopWall(x, y):
 def hasLeftWall(x, y):
     return entity.getWorld().getCell(x,y).hasLeftWall() 
 
+# BINDINGS TRANSLATION to French: Don't translate getIndication
+def aBiscuit(x, y):
+    return hasBaggle(x,y)
+def aMurNord(x, y):
+    hasTopWall(x,y)
+def aMurOuest(x, y):
+    hasLeftWall(x, y)
+
 # BEGIN SOLUTION
 def hasRightWall(x,y):
     return hasLeftWall((x + 1) % getWorldWidth(), y) 

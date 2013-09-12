@@ -120,4 +120,9 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 		/* END SOLUTION */
 	}
 	/* END TEMPLATE */
+	
+	/* BINDINGS TRANSLATION to French: Don't translate getIndication */
+	def aBiscuit(x:Int, y:Int):Boolean = hasBaggle(x,y)
+	def aMurNord(x:Int, y:Int):Boolean = hasTopWall(x,y)
+	def aMurOuest(x:Int, y:Int):Boolean = hasLeftWall(x, y)
 }

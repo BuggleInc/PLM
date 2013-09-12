@@ -16,6 +16,8 @@
   * BatEntity: more informative error message when an exception is raised
   * FeedbackDialog: should not be modal to enable copy/paste
   * maze.island: move the initial positions to make cheating harder
+  * maze.shortestpath: also translate the helper methods in scala and
+    python
   * Search windows directories first as the user.home property cannot
     be trusted here at Telecom Nancy.
   * welcome.basic.meth: reword the mission to make clear that the
