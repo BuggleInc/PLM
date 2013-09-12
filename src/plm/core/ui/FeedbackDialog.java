@@ -47,7 +47,7 @@ public class FeedbackDialog extends JDialog {
 	}
 	
 	private FeedbackDialog() {
-		super(MainFrame.getInstance(), "Report your feedback", true);
+		super(MainFrame.getInstance(), "Report your feedback", false);
 		this.setTitle(i18n.tr("Report your feedback"));
 		initComponent();
 	}
