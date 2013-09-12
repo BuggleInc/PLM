@@ -118,24 +118,12 @@ future.</p>
 exercice précédent (avance tant qu'on ne trouve pas de baggle, ramasser le
 baggle, reculer à la case départ, poser le baggle).</p>
 
-<p>La particularité de cet exercice est que vous n'écrivez pas directement le
-code que votre buggle va exécuter, mais une méthode qui sera appelée quand
-vous appuyez sur <b>Exécuter</b>. Pour votre information, le code appelant a
-la forme suivante:</p>
-  
-<pre>[!java]for (int i=0; i&lt;7; i++) {[/!][!python]for i in range(7):[/!][!scala]for (i &lt;- 1 to 7) {[/!]
-    goAndGet()[!java];[/!]
-    droite()[!java];[/!]
-    avance()[!java];[/!]
-    gauche()[!java];[/!]
-[!java|scala]}[/!]</pre>
+<p>Cet exercice est un peu différent : vous n'allez pas écrire tout le code
+exécuté par la buggle, mais juste une méthode qui sera invoquée
+automagiquement quand vous exécutez l'exercice. Votre buggle va alors
+appeller votre méthode <code>goAndGet()</code> sur chaque colonne du monde,
+jusqu'à trouver le biscuit.</p> 
 
-<p>Donc, votre buggle va répéter 7 fois (la taille du monde)  l'opération
-<code>goAndGet()</code> que vous allez écrire, plus les opérations
-nécessaires pour se décaler d'une colonne vers la droite (tourner à droite,
-avancer, tourner à gauche). Notez que la buggle va donc faire un pas vers la
-droite alors qu'elle sera tout à droite du monde. Cela la ramènera sur le
-bord gauche, car le monde des buggles est torique.</p>
-
-<p>À vous d'écrire cette méthode goAndGet().</p>
+<p>Mais pour que cela fonctionne, il faut que vous écriviez maintenant cette
+fonction <code>goAndGet()</code>...</p>
 

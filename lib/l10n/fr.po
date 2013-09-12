@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-12 15:30+0300\n"
-"PO-Revision-Date: 2013-09-11 00:35+0200\n"
+"POT-Creation-Date: 2013-09-12 17:04+0300\n"
+"PO-Revision-Date: 2013-09-12 17:08+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -4368,57 +4368,18 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/basics/Methods.html:100
 msgid ""
-"One specificity of this exercise is that you shouldn't write directly the "
-"code that the buggle should execute, but a method it should use. The code "
-"that calls your function will be automagically added when you click on "
-"<b>Start</b>.  For your information, this calling code will look like this:"
-msgstr ""
-"La particularité de cet exercice est que vous n'écrivez pas directement le "
-"code que votre buggle va exécuter, mais une méthode qui sera appelée quand "
-"vous appuyez sur <b>Exécuter</b>. Pour votre information, le code appelant a "
-"la forme suivante:"
+"This exercise is a bit different because you will not write all of the code "
+"executed by the buggle. Instead, you should only write one method that is "
+"called automagically added when you click on <b>Start</b>. Your buggle calls "
+"your <code>goAndGet()</code> method on each row, until the baggle is found."
+msgstr "Cet exercice est un peu différent : vous n'allez pas écrire tout le code exécuté par la buggle, mais juste une méthode qui sera invoquée automagiquement quand vous exécutez l'exercice. Votre buggle va alors appeller votre méthode <code>goAndGet()</code> sur chaque colonne du monde, jusqu'à trouver le biscuit."
 
-#. type: Content of: <pre>
-#: src/lessons/welcome/methods/basics/Methods.html:105
-#, no-wrap
-msgid ""
-"[!java]for (int i=0; i&lt;7; i++) {[/!][!python]for i in range(7):[/!][!scala]for (i &lt;- 1 to 7) {[/!]\n"
-"    goAndGet()[!java];[/!]\n"
-"    right()[!java];[/!]\n"
-"    forward()[!java];[/!]\n"
-"    left()[!java];[/!]\n"
-"[!java|scala]}[/!]"
-msgstr ""
-"[!java]for (int i=0; i&lt;7; i++) {[/!][!python]for i in range(7):[/!][!scala]for (i &lt;- 1 to 7) {[/!]\n"
-"    goAndGet()[!java];[/!]\n"
-"    droite()[!java];[/!]\n"
-"    avance()[!java];[/!]\n"
-"    gauche()[!java];[/!]\n"
-"[!java|scala]}[/!]"
-
-# type: Content of: <p><a><p><p><p>
 #. type: Content of: <p>
-#: src/lessons/welcome/methods/basics/Methods.html:112
+#: src/lessons/welcome/methods/basics/Methods.html:106
 msgid ""
-"Your buggle will repeat 7 times (which matches the world's dimension)  the "
-"sequence constituted of a call to the <code>goAndGet()</code> method that "
-"you should write, plus a move to get to the next row (turn right, move "
-"forward, turn left). As you can see, the buggle will do one step right from "
-"the right border of the world. It will bring it back to the left side since "
-"its world is a torus."
-msgstr ""
-"Donc, votre buggle va répéter 7 fois (la taille du monde)  l'opération "
-"<code>goAndGet()</code> que vous allez écrire, plus les opérations "
-"nécessaires pour se décaler d'une colonne vers la droite (tourner à droite, "
-"avancer, tourner à gauche). Notez que la buggle va donc faire un pas vers la "
-"droite alors qu'elle sera tout à droite du monde. Cela la ramènera sur le "
-"bord gauche, car le monde des buggles est torique."
-
-# type: Content of: <p><a><p><p><p>
-#. type: Content of: <p>
-#: src/lessons/welcome/methods/basics/Methods.html:119
-msgid "You should now write this goAndGet() method."
-msgstr "À vous d'écrire cette méthode goAndGet()."
+"But for that to work, you have to actually write this <code>goAndGet()</"
+"code> method now."
+msgstr "Mais pour que cela fonctionne, il faut que vous écriviez maintenant cette fonction <code>goAndGet()</code>..."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:3

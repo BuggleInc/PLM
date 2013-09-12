@@ -97,24 +97,12 @@ bug that we will fix in further releases.</p>
 which does the same than in a previous exercises (move forward until over a baggle, 
 pick it up, move back to initial position, drop baggle).</p>
 
-<p>One specificity of this exercise is that you shouldn't write directly the
-code that the buggle should execute, but a method it should use. The code that calls 
-your function will be automagically added when you click on <b>Start</b>. 
-For your information, this calling code will look like this:</p>
-  
-<pre>[!java]for (int i=0; i&lt;7; i++) {[/!][!python]for i in range(7):[/!][!scala]for (i &lt;- 1 to 7) {[/!]
-    goAndGet()[!java];[/!]
-    right()[!java];[/!]
-    forward()[!java];[/!]
-    left()[!java];[/!]
-[!java|scala]}[/!]</pre>
+<p>This exercise is a bit different because you will not write all of
+the code executed by the buggle. Instead, you should only write one 
+method that is called automagically added when you click on
+<b>Start</b>. Your buggle calls your <code>goAndGet()</code> method on
+each row, until the baggle is found.</p> 
 
-<p>Your buggle will repeat 7 times (which matches the world's dimension)
-the sequence constituted of a call to the <code>goAndGet()</code> method that you
-should write, plus a move to get to the next row (turn right, move
-forward, turn left). As you can see, the buggle will do one step right from
-the right border of the world. It will bring it back to the left side since
-its world is a torus.</p>
-
-<p>You should now write this goAndGet() method.</p>
+<p>But for that to work, you have to actually write this
+<code>goAndGet()</code> method now.</p>
 
