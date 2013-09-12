@@ -60,8 +60,9 @@ public class LessonRunner extends Thread {
 			
 			exo.run(runners);
 			while (runners.size()>0) {
-				Thread t = runners.remove(0);
+				Thread t = runners.get(0); // leave the thread into the set so that it remains interruptible
 				t.join();
+				runners.remove(t);
 			}
 			
 			if (!game.isCreativeEnabled())

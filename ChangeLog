@@ -22,6 +22,8 @@
     be trusted here at Telecom Nancy.
   * welcome.basic.meth: reword the mission to make clear that the
     code will get called automatically.
+  * Don't remove runner threads too early from their set so that
+    "Stop" still find them to stop them (fix #108)
   
 20130910: Release 2.2.2: the 2 cts release.
 
