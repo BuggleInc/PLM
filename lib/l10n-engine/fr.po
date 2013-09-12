@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 17:15+0200\n"
+"POT-Creation-Date: 2013-09-12 18:00+0200\n"
 "PO-Revision-Date: 2013-09-12 12:51+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
@@ -546,7 +546,7 @@ msgstr ""
 msgid "The lecture {0} has no world that I can select"
 msgstr "La lecture {0} n'a aucun monde que je puisse sélectionner."
 
-#: src/plm/core/model/Game.java:908
+#: src/plm/core/model/Game.java:909
 msgid ""
 "Please install Scala version 2.10 or higher to use it in PLM.\n"
 "\n"
@@ -555,11 +555,11 @@ msgstr ""
 "PLM.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:909
+#: src/plm/core/model/Game.java:910
 msgid "Scala is missing"
 msgstr "Scala est manquant"
 
-#: src/plm/core/model/Game.java:913
+#: src/plm/core/model/Game.java:914
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in PLM.\n"
@@ -569,19 +569,9 @@ msgstr ""
 "python.\n"
 "\n"
 
-#: src/plm/core/model/Game.java:914
+#: src/plm/core/model/Game.java:915
 msgid "Python is missing"
 msgstr "Python est manquant"
-
-#: src/plm/core/model/Game.java:1069
-#, java-format
-msgid "{0} is not writable"
-msgstr "{0} n'est pas accessible en écriture."
-
-#: src/plm/core/model/Game.java:1073
-#, java-format
-msgid "{0} is not a directory"
-msgstr "{0} n'est pas un répertoire."
 
 #: src/plm/core/model/HelpServer.java:27
 msgid "Asking to the teacher for help"
@@ -1945,6 +1935,12 @@ msgstr "setValeur"
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "copy"
 msgstr "copie"
+
+#~ msgid "{0} is not writable"
+#~ msgstr "{0} n'est pas accessible en écriture."
+
+#~ msgid "{0} is not a directory"
+#~ msgstr "{0} n'est pas un répertoire."
 
 #~ msgid "Cannot create {0}"
 #~ msgstr "Impossible de créer {0}"

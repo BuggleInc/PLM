@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 17:15+0200\n"
+"POT-Creation-Date: 2013-09-12 18:00+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -463,35 +463,25 @@ msgstr ""
 msgid "The lecture {0} has no world that I can select"
 msgstr ""
 
-#: src/plm/core/model/Game.java:908
+#: src/plm/core/model/Game.java:909
 msgid ""
 "Please install Scala version 2.10 or higher to use it in PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:909
+#: src/plm/core/model/Game.java:910
 msgid "Scala is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:913
+#: src/plm/core/model/Game.java:914
 msgid ""
 "Please install jython and its dependencies to use the python programming "
 "language in PLM.\n"
 "\n"
 msgstr ""
 
-#: src/plm/core/model/Game.java:914
+#: src/plm/core/model/Game.java:915
 msgid "Python is missing"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1069
-#, java-format
-msgid "{0} is not writable"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1073
-#, java-format
-msgid "{0} is not a directory"
 msgstr ""
 
 #: src/plm/core/model/HelpServer.java:27
