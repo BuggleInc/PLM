@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-11 01:25+0200\n"
-"PO-Revision-Date: 2013-05-30 11:25+0200\n"
+"POT-Creation-Date: 2013-09-12 11:59+0200\n"
+"PO-Revision-Date: 2013-09-12 13:06+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -729,7 +729,7 @@ msgid "About PLM dialogTitle"
 msgstr "About PLM dialogTitle"
 
 #: src/plm/core/ui/AboutPLMDialog.java:71
-#: src/plm/core/ui/ExerciseFailedDialog.java:49
+#: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid "Close"
 msgstr "Close"
 
@@ -802,17 +802,35 @@ msgstr ""
 msgid "You never attempted this lesson."
 msgstr "About this lesson"
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:30
-msgid "Exercise failed /o\\"
-msgstr "Exercise failed /o\\"
+#: src/plm/core/ui/ExerciseFailedDialog.java:33
+msgid "Mmm, not quite /o\\"
+msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:39
-msgid "You didn't manage to reach your objective."
-msgstr "You didn't manage to reach your objective."
+#: src/plm/core/ui/ExerciseFailedDialog.java:51
+msgid ""
+"<html>You didn't manage to reach your objective. <br>\n"
+"You should graphically compare the final state of your world <br>\n"
+"with the objective to understand the problem. <br>\n"
+"If you don't see the error, check the details below to for a <br>\n"
+"textual description of this difference between both worlds.</html>"
+msgstr ""
 
-#: src/plm/core/ui/ExerciseFailedDialog.java:42
-msgid "Compilation error"
-msgstr "Compilation error"
+#: src/plm/core/ui/ExerciseFailedDialog.java:59
+#, java-format
+msgid ""
+"<html>Compilation error.<br>\n"
+"You can find below the detailed error message (as given by {0}).<br>\n"
+"Please read it carfully to understand the problem, and fix your code.</html>"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:71
+#: src/plm/core/ui/ExerciseFailedDialog.java:78
+msgid "Details >>"
+msgstr ""
+
+#: src/plm/core/ui/ExerciseFailedDialog.java:81
+msgid "Details <<"
+msgstr ""
 
 #: src/plm/core/ui/ExerciseView.java:92 src/plm/core/ui/ExerciseView.java:161
 #: src/plm/core/ui/ExerciseView.java:218
@@ -1735,15 +1753,3 @@ msgstr ""
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "copy"
 msgstr ""
-
-#~ msgid "Current world"
-#~ msgstr "Current world"
-
-#~ msgid "Target world"
-#~ msgstr "Target world"
-
-#~ msgid "Do you really want to quit ?"
-#~ msgstr "Do you really want to quit ?"
-
-#~ msgid "Exit the PLM"
-#~ msgstr "Exit the PLM"

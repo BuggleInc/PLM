@@ -7,6 +7,9 @@
   * TurtleWorld: add a new clear() primitive that clears the sheet
   * New feature: import/export session to the cloud.
     You don't have to struggle with a bunch of zip files anymore.
+  * Rewamp the ExerciseFailedDialog to be more user friendly. Its
+    title is less demotival, it hints about how to fix the issue, and
+    the textual diff (that can be big and ugly) is hidden by default.
   
   * BuggleWorld: dropping a baggle was possible even if you had none
   * welcome.BlueTicket: Fix typo in French
