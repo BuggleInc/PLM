@@ -5758,7 +5758,7 @@ msgid ""
 "<code>[!java]String[/!] readMessage()[!scala]: String[/!]</code>: returns "
 "the message written on the ground (or an empty string if nothing is written)."
 msgstr ""
-"<code>[!java]String [/!]readMessage()[!java]: String[/!]</code> : renvoie le "
+"<code>[!java]String [/!]litMessage()[!java]: String[/!]</code> : renvoie le "
 "message qu'il y a écrit par terre (s'il y a rien, on obtient une chaîne "
 "vide)."
 
