@@ -5,8 +5,17 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalDiagonalEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
 	int diag = 0;
+	public void run() {
+		/* BEGIN SOLUTION */
+		int cpt = 0;
+		writeMessage(cpt);
+		while (!endingPosition()) {
+			nextStep();
+			cpt++;
+			writeMessage(cpt);
+		}
+	}
 
 	public void nextStep() {
 		int x = getX();
@@ -30,19 +39,8 @@ public class TraversalDiagonalEntity extends SimpleBuggle {
 
 	public boolean endingPosition() {
 		return (getX() == getWorldWidth() - 1) && (getY() == getWorldHeight() - 1);
+		/* END SOLUTION */
 	}
-
-	@Override
-	public void run() {
-		int cpt = 0;
-		writeMessage(cpt);
-		while (!endingPosition()) {
-			nextStep();
-			cpt++;
-			writeMessage(cpt);
-		}
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */
 
 	@Override

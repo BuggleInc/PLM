@@ -5,7 +5,16 @@ import plm.core.model.Game
 
 class ScalaTraversalByColumnEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */	
+	def run() {
+		/* BEGIN SOLUTION */	
+		var cpt=0;
+		writeMessage(cpt);
+		while (!endingPosition()) {
+			nextStep();
+			cpt+=1;
+			writeMessage(cpt);
+		}
+	}
 	def nextStep() {	
 		var x=getX();
 		var y=getY();
@@ -25,19 +34,8 @@ class ScalaTraversalByColumnEntity extends SimpleBuggle {
 
 	def endingPosition(): Boolean = {
 		return (getX() == getWorldWidth() -1) && (getY() == getWorldHeight()-1);
+		/* END SOLUTION */
 	}
-
-
-	def run() {
-		var cpt=0;
-		writeMessage(cpt);
-		while (!endingPosition()) {
-			nextStep();
-			cpt+=1;
-			writeMessage(cpt);
-		}
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */	
 
 	override def forward(i:Int)  { 

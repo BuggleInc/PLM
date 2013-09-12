@@ -5,7 +5,16 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 public class TraversalByLineEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
+	public void run() {
+		/* BEGIN SOLUTION */
+		int cpt=0;
+		do {
+			writeMessage(cpt);
+			nextStep();
+			cpt++;
+		} while (!endingPosition());
+		writeMessage(cpt);
+	}
 
 	public void nextStep() {
 		int x=getX();
@@ -25,20 +34,8 @@ public class TraversalByLineEntity extends SimpleBuggle {
 
 	public boolean endingPosition() {
 		return (getX() == getWorldWidth()-1) && (getY() == getWorldHeight()-1);
+		/* END SOLUTION */
 	}
-
-
-	@Override
-	public void run() {
-		int cpt=0;
-		do {
-			writeMessage(cpt);
-			nextStep();
-			cpt++;
-		} while (!endingPosition());
-		writeMessage(cpt);
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */	
 
 	@Override

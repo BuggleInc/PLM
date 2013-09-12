@@ -5,7 +5,16 @@ import plm.universe.bugglequest.SimpleBuggle;
 
 class ScalaTraversalByLineEntity extends SimpleBuggle {
 	/* BEGIN TEMPLATE */
-	/* BEGIN SOLUTION */
+	def run() {
+		/* BEGIN SOLUTION */
+		var cpt=0;
+		do {
+			writeMessage(cpt);
+			nextStep();
+			cpt+=1;
+		} while (!endingPosition());
+		writeMessage(cpt);
+	}
 
 	def nextStep() {
 		var x=getX();
@@ -25,19 +34,8 @@ class ScalaTraversalByLineEntity extends SimpleBuggle {
 
 	def endingPosition():Boolean = {
 		return (getX() == getWorldWidth()-1) && (getY() == getWorldHeight()-1);
+		/* END SOLUTION */
 	}
-
-
-	def run() {
-		var cpt=0;
-		do {
-			writeMessage(cpt);
-			nextStep();
-			cpt+=1;
-		} while (!endingPosition());
-		writeMessage(cpt);
-	}
-	/* END SOLUTION */
 	/* END TEMPLATE */	
 
 
