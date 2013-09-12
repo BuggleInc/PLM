@@ -12422,7 +12422,7 @@ msgstr ""
 #: src/lessons/welcome/array/basics/Array2.html:16
 #, no-wrap
 msgid "[!java]int offset = Integer.parseInt(readMessage())[/!][!python]offset = int( readMessage() )[/!][!scala]val offset = readMessage().toInt[/!]"
-msgstr "[!java]int decalage = Integer.parseInt(readMessage())[/!][!python]decalage = int( readMessage() )[/!][!scala]val decalage = readMessage().toInt[/!]"
+msgstr "[!java]int decalage = Integer.parseInt(litMessage())[/!][!python]decalage = int( litMessage() )[/!][!scala]val decalage = litMessage().toInt[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/basics/Array2.html:18
