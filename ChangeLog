@@ -14,7 +14,8 @@
   * BuggleWorld: dropping a baggle was possible even if you had none
   * welcome.BlueTicket: Fix typo in French
   * BatEntity: more informative error message when an exception is raised
-  * FeedbackDialog: should not be modal to enable copy/paste 
+  * FeedbackDialog: should not be modal to enable copy/paste
+  * maze.island: move the initial positions to make cheating harder
   
 20130910: Release 2.2.2: the 2 cts release.
 
