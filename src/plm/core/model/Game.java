@@ -1045,12 +1045,13 @@ public class Game implements IWorldView {
 	
 	/* These names are tested one after the other, searching for one that exist or that we can create */
 	static String[] rootDirNames = new String[] { 
+		"h:"     + File.separator + "_plm", /* windows-preferred directory name */
+		"h:"     + File.separator + "plm",
+		"z:"     + File.separator + "_plm", /* windows-preferred directory name */
+		"z:"     + File.separator + "plm",
 		HOME_DIR + File.separator + ".plm", /* preferred, default directory name */
 		HOME_DIR + File.separator + "_plm", /* Some paranoid administrator refuse directories which name starts with a dot */
 		HOME_DIR + File.separator + "plm",  /* one day, hidden directories with make trouble... */
-		"z:"     + File.separator + ".plm", /* windows-preferred directory name */
-		"z:"     + File.separator + "_plm",
-		"z:"     + File.separator + "plm",
 	};
 	private static File SAVE_DIR = initializeSaveDir();
 	private static File initializeSaveDir() {
@@ -1075,14 +1076,11 @@ public class Game implements IWorldView {
 				}
 				if (res.mkdir())
 					return res;
-				else {
-					System.out.println(i18n.tr("Cannot create {0}",res.getAbsolutePath()));
-				}
 			} catch (SecurityException e) {
 				e.getLocalizedMessage();
 			}
 		}
-		throw new RuntimeException(i18n.tr("Impossible to find a path for PLM data. Tested {0}",sb.toString()));
+		throw new RuntimeException("Impossible to find a path for PLM data. Tested "+sb.toString());
 	}
 	public static String getSavingLocation() {
 		return SAVE_DIR.getPath();

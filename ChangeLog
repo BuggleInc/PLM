@@ -16,6 +16,8 @@
   * BatEntity: more informative error message when an exception is raised
   * FeedbackDialog: should not be modal to enable copy/paste
   * maze.island: move the initial positions to make cheating harder
+  * Search windows directories first as the user.home property cannot
+    be trusted here at Telecom Nancy.
   
 20130910: Release 2.2.2: the 2 cts release.
 
