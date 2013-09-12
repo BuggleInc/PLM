@@ -6676,7 +6676,7 @@ msgstr ""
 "Le premier objectif est donc d'écrire une fonction booléenne indiquant si la "
 "buggle a atteint la position finale ou non, càd si elle est arrivée en bas à "
 "droite du monde.  Vous utiliserez pour cela les méthodes "
-"<code>getMondeHauteur()</code> et <code>getMondeLargueur()</code> qui "
+"<code>getMondeHauteur()</code> et <code>getMondeLargeur()</code> qui "
 "retournent respectivement la hauteur et la largeur du monde.  Votre test est "
 "de comparer les coordonnées actuelles de votre buggle (que vous pouvez "
 "retrouver avec les méthodes <code>getX()</code> et <code>getY()</code>) aux "
@@ -10126,7 +10126,7 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:9
 msgid "<code>getWorldWidth()</code> gives the width of its world."
-msgstr "<code>getMondeLargueur()</code> pour connaitre la largeur du monde"
+msgstr "<code>getMondeLargeur()</code> pour connaitre la largeur du monde"
 
 #. type: Content of: <ul><li>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:10
