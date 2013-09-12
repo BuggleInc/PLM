@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 18:00+0200\n"
-"PO-Revision-Date: 2013-09-12 12:51+0200\n"
+"POT-Creation-Date: 2013-09-12 21:44+0200\n"
+"PO-Revision-Date: 2013-09-12 21:47+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -312,14 +312,14 @@ msgstr ""
 "lignes {0} et {1} dans cet exercice. Tu ne peux utiliser cette fonction "
 "qu'une fois dans ton source."
 
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:45
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:50
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:50
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:55
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:46
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:51
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:50
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:55
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:42
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:47
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:48
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:53
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:43
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:48
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:48
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:53
 msgid ""
 "Sorry Dave, I cannot let you use forward() in this exercise. Use setPos(x,y) "
 "instead."
@@ -327,14 +327,14 @@ msgstr ""
 "Désolé Dave, je ne peux pas te laisser utiliser avance() dans cet exercice. "
 "Utilise plutôt setPos(x,y)."
 
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:54
-#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:58
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:59
-#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:63
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:55
-#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:59
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:59
-#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:63
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:51
+#: src/lessons/welcome/traversal/column/TraversalByColumnEntity.java:55
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:57
+#: src/lessons/welcome/traversal/diagonal/TraversalDiagonalEntity.java:61
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:52
+#: src/lessons/welcome/traversal/line/TraversalByLineEntity.java:56
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:57
+#: src/lessons/welcome/traversal/zigzag/TraversalZigZagEntity.java:61
 msgid ""
 "Sorry Dave, I cannot let you use backward() in this exercise. Use setPos(x,"
 "y) instead."
@@ -581,7 +581,7 @@ msgstr "Demander de l'aide à l'enseignant"
 msgid "Cancel call for help to the teacher"
 msgstr "Annuler la demande d'aide"
 
-#: src/plm/core/model/LessonRunner.java:94
+#: src/plm/core/model/LessonRunner.java:95
 #, java-format
 msgid ""
 "Congratulations, you passed this exercise.\n"
@@ -590,18 +590,18 @@ msgstr ""
 "Félicitation, vous avez réussi cet exercice.\n"
 "{0} tests passés."
 
-#: src/plm/core/model/LessonRunner.java:96
-#: src/plm/core/model/LessonRunner.java:102
-#: src/plm/core/model/LessonRunner.java:111
-#: src/plm/core/model/LessonRunner.java:117
+#: src/plm/core/model/LessonRunner.java:97
+#: src/plm/core/model/LessonRunner.java:103
+#: src/plm/core/model/LessonRunner.java:112
+#: src/plm/core/model/LessonRunner.java:118
 msgid "Exercice passed \\o/"
 msgstr "Exercice réussi \\o/"
 
-#: src/plm/core/model/LessonRunner.java:100
+#: src/plm/core/model/LessonRunner.java:101
 msgid "Congratulations, you passed this exercise."
 msgstr "Félicitation, vous avez réussi cet exercice."
 
-#: src/plm/core/model/LessonRunner.java:110
+#: src/plm/core/model/LessonRunner.java:111
 #, java-format
 msgid ""
 "Congratulations, you passed this exercise.\n"
@@ -612,7 +612,7 @@ msgstr ""
 "({0} tests passés)\n"
 "Par quel exercice voulez vous continuer ?"
 
-#: src/plm/core/model/LessonRunner.java:116
+#: src/plm/core/model/LessonRunner.java:117
 msgid ""
 "Congratulations, you passed this exercise.\n"
 "Which exercise will you do now?"
@@ -1826,7 +1826,7 @@ msgstr ", il devrait y avoir un mur au nord"
 msgid "Buggles cannot traverse walls"
 msgstr "Les buggles ne peuvent pas traverser les murs"
 
-#: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:9
+#: src/plm/universe/bugglequest/exception/DontHaveBaggleException.java:10
 msgid "You have no baggle to drop"
 msgstr "Vous n'avez pas de biscuit à poser"
 
@@ -1935,17 +1935,3 @@ msgstr "setValeur"
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "copy"
 msgstr "copie"
-
-#~ msgid "{0} is not writable"
-#~ msgstr "{0} n'est pas accessible en écriture."
-
-#~ msgid "{0} is not a directory"
-#~ msgstr "{0} n'est pas un répertoire."
-
-#~ msgid "Cannot create {0}"
-#~ msgstr "Impossible de créer {0}"
-
-#~ msgid "Impossible to find a path for PLM data. Tested {0}"
-#~ msgstr ""
-#~ "Impossible de trouver un emplacement pour sauvegarder les données de PLM. "
-#~ "Emplacements testés: {0}"
