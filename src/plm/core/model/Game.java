@@ -646,6 +646,7 @@ public class Game implements IWorldView {
 		this.setState(GameState.SAVING);
 		this.sessionKit.storeAll(SAVE_DIR);
 		this.setState(GameState.SAVING_DONE);
+		storeProperties();
 	}
 
 	public ISessionKit getSessionKit() {
@@ -1045,13 +1046,13 @@ public class Game implements IWorldView {
 	
 	/* These names are tested one after the other, searching for one that exist or that we can create */
 	static String[] rootDirNames = new String[] { 
+		HOME_DIR + File.separator + ".plm", /* preferred, default directory name */
+		HOME_DIR + File.separator + "_plm", /* Some paranoid administrator refuse directories which name starts with a dot */
+		HOME_DIR + File.separator + "plm",  /* one day, hidden directories with make trouble... */
 		"h:"     + File.separator + "_plm", /* windows-preferred directory name */
 		"h:"     + File.separator + "plm",
 		"z:"     + File.separator + "_plm", /* windows-preferred directory name */
 		"z:"     + File.separator + "plm",
-		HOME_DIR + File.separator + ".plm", /* preferred, default directory name */
-		HOME_DIR + File.separator + "_plm", /* Some paranoid administrator refuse directories which name starts with a dot */
-		HOME_DIR + File.separator + "plm",  /* one day, hidden directories with make trouble... */
 	};
 	private static File SAVE_DIR = initializeSaveDir();
 	private static File initializeSaveDir() {
@@ -1066,11 +1067,11 @@ public class Game implements IWorldView {
 						if (res.canWrite()) {
 							return res;
 						} else {
-							System.out.println(res.getAbsolutePath()+" is not writable");
+							System.out.println(res.getAbsolutePath()+" is not writable.");
 							continue;
 						}
 					} else {
-						System.out.println(res.getAbsolutePath()+"{0} is not a directory");
+						System.out.println(res.getAbsolutePath()+" is not a directory.");
 						continue;
 					}
 				}
