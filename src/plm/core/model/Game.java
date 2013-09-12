@@ -1066,11 +1066,11 @@ public class Game implements IWorldView {
 						if (res.canWrite()) {
 							return res;
 						} else {
-							System.out.println(i18n.tr("{0} is not writable",res.getAbsolutePath()));
+							System.out.println(res.getAbsolutePath()+" is not writable");
 							continue;
 						}
 					} else {
-						System.out.println(i18n.tr("{0} is not a directory",res.getAbsolutePath()));
+						System.out.println(res.getAbsolutePath()+"{0} is not a directory");
 						continue;
 					}
 				}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 13:05+0200\n"
+"POT-Creation-Date: 2013-09-12 17:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -484,24 +484,14 @@ msgstr ""
 msgid "Python is missing"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1068
+#: src/plm/core/model/Game.java:1069
 #, java-format
 msgid "{0} is not writable"
 msgstr ""
 
-#: src/plm/core/model/Game.java:1072
+#: src/plm/core/model/Game.java:1073
 #, java-format
 msgid "{0} is not a directory"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1079
-#, java-format
-msgid "Cannot create {0}"
-msgstr ""
-
-#: src/plm/core/model/Game.java:1085
-#, java-format
-msgid "Impossible to find a path for PLM data. Tested {0}"
 msgstr ""
 
 #: src/plm/core/model/HelpServer.java:27

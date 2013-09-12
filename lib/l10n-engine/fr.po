@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 11:59+0200\n"
+"POT-Creation-Date: 2013-09-12 17:15+0200\n"
 "PO-Revision-Date: 2013-09-12 12:51+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
@@ -573,27 +573,15 @@ msgstr ""
 msgid "Python is missing"
 msgstr "Python est manquant"
 
-#: src/plm/core/model/Game.java:1068
+#: src/plm/core/model/Game.java:1069
 #, java-format
 msgid "{0} is not writable"
 msgstr "{0} n'est pas accessible en écriture."
 
-#: src/plm/core/model/Game.java:1072
+#: src/plm/core/model/Game.java:1073
 #, java-format
 msgid "{0} is not a directory"
 msgstr "{0} n'est pas un répertoire."
-
-#: src/plm/core/model/Game.java:1079
-#, java-format
-msgid "Cannot create {0}"
-msgstr "Impossible de créer {0}"
-
-#: src/plm/core/model/Game.java:1085
-#, java-format
-msgid "Impossible to find a path for PLM data. Tested {0}"
-msgstr ""
-"Impossible de trouver un emplacement pour sauvegarder les données de PLM. "
-"Emplacements testés: {0}"
 
 #: src/plm/core/model/HelpServer.java:27
 msgid "Asking to the teacher for help"
@@ -960,7 +948,8 @@ msgid ""
 "Please read it carfully to understand the problem, and fix your code.</html>"
 msgstr ""
 "<html>Erreur de compilation.<br>\n"
-"Vous trouverez ci dessous le message d''erreur détaillé renvoyé par {0}.<br>\n"
+"Vous trouverez ci dessous le message d''erreur détaillé renvoyé par {0}."
+"<br>\n"
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
 
@@ -1956,3 +1945,11 @@ msgstr "setValeur"
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "copy"
 msgstr "copie"
+
+#~ msgid "Cannot create {0}"
+#~ msgstr "Impossible de créer {0}"
+
+#~ msgid "Impossible to find a path for PLM data. Tested {0}"
+#~ msgstr ""
+#~ "Impossible de trouver un emplacement pour sauvegarder les données de PLM. "
+#~ "Emplacements testés: {0}"
