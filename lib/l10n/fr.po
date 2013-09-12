@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-10 17:30+0300\n"
+"POT-Creation-Date: 2013-09-12 15:30+0300\n"
 "PO-Revision-Date: 2013-09-11 00:35+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
@@ -846,7 +846,9 @@ msgstr "[!java]void [/!]retourne()"
 msgid ""
 "[!java]void [/!]forward() or [!java]void [/!]forward([!java]int [/!]steps[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]avance() ou [!java]void [/!]avance([!java]int [/!]nbPas[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]avance() ou [!java]void [/!]avance([!java]int [/!]nbPas[!"
+"scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:15
@@ -854,7 +856,9 @@ msgstr "[!java]void [/!]avance() ou [!java]void [/!]avance([!java]int [/!]nbPas[
 msgid ""
 "[!java]void [/!]backward() or [!java]void [/!]backward([!java]int [/!]steps[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]recule() or [!java]void [/!]recule([!java]int [/!]nbPas[!scala]:Int[/!])"
+msgstr ""
+"[!java]void [/!]recule() or [!java]void [/!]recule([!java]int [/!]nbPas[!"
+"scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:16
@@ -980,7 +984,9 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:33
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
-msgstr "Direction.NORD (le nord), Direction.EST (l'est), Direction.SUD (le sud) et Direction.OUEST (l'ouest)"
+msgstr ""
+"Direction.NORD (le nord), Direction.EST (l'est), Direction.SUD (le sud) et "
+"Direction.OUEST (l'ouest)"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:34
@@ -1105,53 +1111,62 @@ msgstr "[!java]void [/!]prendBiscuit()"
 msgid "[!java]void [/!]dropBaggle()"
 msgstr "[!java]void [/!]poseBiscuit()"
 
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:56
+#: src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91
+#: src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254
+#: src/lessons/welcome/Main.html:348 src/lessons/welcome/Main.html:428
+#: src/lessons/welcome/Main.html:468
+msgid "&nbsp;"
+msgstr "&nbsp;"
+
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "<b>Look for a message"
 msgstr "<b>Chercher un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "Add a message"
 msgstr "Ajouter un message"
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "Read the message"
 msgstr "Lire le message"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "Erase the message</b>"
 msgstr "Effacer le message</b>"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:58
+#: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estSurMessage()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "[!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])"
 msgstr "[!java]void [/!]ecritMessage([!java]String [/!]msg[!scala]:String[/!])"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
+#: src/plm/universe/bugglequest/BuggleWorld.html:61
 msgid "[!java]String [/!]readMessage()[!scala]:String[/!]"
 msgstr "[!java]String [/!]litMessage()[!scala]:String[/!]"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:61
+#: src/plm/universe/bugglequest/BuggleWorld.html:62
 msgid "[!java]void [/!]clearMessage()"
 msgstr "[!java]void [/!]effaceMessage()"
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:64
+#: src/plm/universe/bugglequest/BuggleWorld.html:65
 msgid "Note on exceptions"
 msgstr "Note sur les exceptions"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/bugglequest/BuggleWorld.html:65
+#: src/plm/universe/bugglequest/BuggleWorld.html:66
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -1161,13 +1176,18 @@ msgid ""
 "AlreadyHaveBaggleException exception.  Dropping a baggle when you have none "
 "throws a DontHaveBaggleException."
 msgstr ""
-"Les buggles normales lèvent une exception BuggleWallException si on cherche à leur faire traverser un mur.\n"
-"Elles lèvent une exception NoBaggleUnderBuggleException si vous cherchez à prendre un biscuit dans une case qui n'en contient pas, ou une exception AlreadyHaveBaggleException si vous portez déjà un biscuit.\n"
-"Tenter de déposer un biscuit sur une case qui en contient déjà lève une exception AlreadyHaveBaggleException.\n"
-"Tenter de poser un biscuit alors qu'on n'en a pas lève une exception DontHaveBaggleException."
+"Les buggles normales lèvent une exception BuggleWallException si on cherche "
+"à leur faire traverser un mur.\n"
+"Elles lèvent une exception NoBaggleUnderBuggleException si vous cherchez à "
+"prendre un biscuit dans une case qui n'en contient pas, ou une exception "
+"AlreadyHaveBaggleException si vous portez déjà un biscuit.\n"
+"Tenter de déposer un biscuit sur une case qui en contient déjà lève une "
+"exception AlreadyHaveBaggleException.\n"
+"Tenter de poser un biscuit alors qu'on n'en a pas lève une exception "
+"DontHaveBaggleException."
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:72
+#: src/plm/universe/bugglequest/BuggleWorld.html:73
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -1542,14 +1562,6 @@ msgstr ""
 "Cette première leçon va vous guider dans vos premiers pas en programmation. "
 "Elle est destinée aux débutants. Liste des notions vues par exercice :"
 
-#. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91
-#: src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254
-#: src/lessons/welcome/Main.html:348 src/lessons/welcome/Main.html:428
-#: src/lessons/welcome/Main.html:468
-msgid "&nbsp;"
-msgstr "&nbsp;"
-
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92
 #: src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255
@@ -1919,11 +1931,11 @@ msgid ""
 "by following @jlmlovers :)"
 msgstr ""
 "Avant d'aller plus loin, familiarisez vous avec l'environnement. Observez "
-"les différents éléments composant la fenêtre, placez la souris dessus "
-"pour voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La "
-"zone blanche en bas est la console : c'est là que les erreurs et messages "
-"sont affichés.  Notez que quand vous réussissez un exercice, la bonne "
-"nouvelle est envoyée sur twitter. Suivez les progrès de vos amis en suivant "
+"les différents éléments composant la fenêtre, placez la souris dessus pour "
+"voir les bulles d'aide, et essayez les pour voir ce qu'ils font. La zone "
+"blanche en bas est la console : c'est là que les erreurs et messages sont "
+"affichés.  Notez que quand vous réussissez un exercice, la bonne nouvelle "
+"est envoyée sur twitter. Suivez les progrès de vos amis en suivant "
 "@jlmlovers :)"
 
 #. type: Content of: <p>
@@ -2281,8 +2293,8 @@ msgid ""
 "to not read the text you add for humans:"
 msgstr ""
 "Il y a [!java]trois[/!][!python|scala]deux[/!] sortes de commentaires en [!"
-"thelang], indiquant [!java|scala]au compilateur[/!][!python]à l'interpréteur[/!] "
-"qu'il ne doit pas lire le texte ajouté pour les humains."
+"thelang], indiquant [!java|scala]au compilateur[/!][!python]à "
+"l'interpréteur[/!] qu'il ne doit pas lire le texte ajouté pour les humains."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:18
@@ -6564,7 +6576,10 @@ msgid ""
 "We can get the current heading of the buggle using the <code>getDirection()</"
 "code>, and we know whether it looks east using <code>getDirection() == "
 "Direction.EAST</code> (WEST for west)."
-msgstr "On obtient la direction actuelle de la buggle avec la méthode <code>getDirection()</code>, et on sait si elle regarde à l'est avec le test <code>getDirection() == Direction.EST</code> (ou bien Direction.OUEST)."
+msgstr ""
+"On obtient la direction actuelle de la buggle avec la méthode "
+"<code>getDirection()</code>, et on sait si elle regarde à l'est avec le test "
+"<code>getDirection() == Direction.EST</code> (ou bien Direction.OUEST)."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/traversal/Snake.html:25
@@ -9859,7 +9874,17 @@ msgid ""
 "code>. Don't forget to store the previous direction of your buggle (in a "
 "dedicated variable) before checking if your favorite direction is free in "
 "order to restore your state afterward."
-msgstr "Écrivez une méthode booléenne <code>isDirectionFree(dir)</code> indiquant si la direction fournie en paramètre est libre, c'est-à-dire si vous pouvez vous déplacer dans cette direction. Notez que la démo utilise la direction NORD pour cela. Vous pouvez retrouver la direction courante de la buggle en utilisant la méthode <code>Direction getDirection()</code>.  Vous pouvez diriger (sans se déplacer) votre buggle dans une direction en utilisant la méthode <code>setDirection(dir)</code>.  Pensez à mémoriser (dans une variable dédiée) la direction courante de votre buggle avant de vérifier si votre buggle peut se diriger vers sa direction de prédilection pour pouvoir restaurer l'état après coup."
+msgstr ""
+"Écrivez une méthode booléenne <code>isDirectionFree(dir)</code> indiquant si "
+"la direction fournie en paramètre est libre, c'est-à-dire si vous pouvez "
+"vous déplacer dans cette direction. Notez que la démo utilise la direction "
+"NORD pour cela. Vous pouvez retrouver la direction courante de la buggle en "
+"utilisant la méthode <code>Direction getDirection()</code>.  Vous pouvez "
+"diriger (sans se déplacer) votre buggle dans une direction en utilisant la "
+"méthode <code>setDirection(dir)</code>.  Pensez à mémoriser (dans une "
+"variable dédiée) la direction courante de votre buggle avant de vérifier si "
+"votre buggle peut se diriger vers sa direction de prédilection pour pouvoir "
+"restaurer l'état après coup."
 
 #. type: Content of: <p>
 #: src/lessons/maze/pledge/PledgeMaze.html:55
@@ -9911,7 +9936,15 @@ msgid ""
 "the favorite direction. Then, put a paw on a wall (using "
 "(<code>keepHandOnSideWall()</code>) while the sum of turns is not null and "
 "the favorite direction is not free. Do that until you find your baggle."
-msgstr "Vous devez changer votre cap vers votre direction favorite (probablement le nord -- Direction.NORD). Il vous faut ensuite écrire la boucle principale de votre algorithme. Tant que votre buggle n'a pas trouvé son biscuit, il faut avancer jusqu'à un obstacle dans la direction de prédilection. Quand un obstacle est rencontré, il faut garder la patte sur un mur (en utilisant <code>keepHandOnSideWall()</code>) tant que la somme des virages n'est pas nulle et que la direction de prédilection n'est pas libre. Faites cela jusqu'à trouver votre biscuit."
+msgstr ""
+"Vous devez changer votre cap vers votre direction favorite (probablement le "
+"nord -- Direction.NORD). Il vous faut ensuite écrire la boucle principale de "
+"votre algorithme. Tant que votre buggle n'a pas trouvé son biscuit, il faut "
+"avancer jusqu'à un obstacle dans la direction de prédilection. Quand un "
+"obstacle est rencontré, il faut garder la patte sur un mur (en utilisant "
+"<code>keepHandOnSideWall()</code>) tant que la somme des virages n'est pas "
+"nulle et que la direction de prédilection n'est pas libre. Faites cela "
+"jusqu'à trouver votre biscuit."
 
 #. type: Content of: <h2>
 #: src/lessons/maze/island/IslandMaze.html:1
@@ -10226,7 +10259,15 @@ msgid ""
 "<code>setDirection(direction)</code> to make your buggle look at the "
 "specific direction such as <code>Direction.NORTH</code> or <code>Direction."
 "EAST</code>."
-msgstr "Une fois que toutes les cases sont marquées, faites en sorte que votre buggle jedi trouve le plus court chemin en suivant les indications écrites au sol. Pour celà, il lui suffit à chaque pas d'aller sur la case de plus petite distance parmis celles accessibles. Vous pouvez utiliser la méthode <code>void setDirection(Direction d)</code> pour faire regarder votre buggle dans une direction spécifique comme <code>Direction.NORD</code>, <code>Direction.SUD</code>, <code>Direction.EST</code> ou <code>Direction.OUEST</code>, qui correspondent respectivement au nord, sud, est et ouest."
+msgstr ""
+"Une fois que toutes les cases sont marquées, faites en sorte que votre "
+"buggle jedi trouve le plus court chemin en suivant les indications écrites "
+"au sol. Pour celà, il lui suffit à chaque pas d'aller sur la case de plus "
+"petite distance parmis celles accessibles. Vous pouvez utiliser la méthode "
+"<code>void setDirection(Direction d)</code> pour faire regarder votre buggle "
+"dans une direction spécifique comme <code>Direction.NORD</code>, "
+"<code>Direction.SUD</code>, <code>Direction.EST</code> ou <code>Direction."
+"OUEST</code>, qui correspondent respectivement au nord, sud, est et ouest."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:35
@@ -11135,11 +11176,11 @@ msgstr ""
 "Vous et votre compagne/compagnon essayez d'obtenir une table au restaurant. "
 "Le paramètre \"you\" est l'élégance de vos vêtements, dans l'intervalle "
 "[0,10], et \"date\" est l'élégance des vêtements de votre compagne/"
-"compagnon. Le résultat à obtenir la table est encodé comme une valeur entière "
-"avec 0=non, 1=peut-être et 2=oui. Si l'un de vous deux est très élégant (8 "
-"ou plus) alors le résultat est 2 (oui). Avec l'exception que si l'un de vous "
-"deux a un style de 2 ou moins, alors le résultat est 0 (no). Sinon, le "
-"résultat est 1 (peut-être)."
+"compagnon. Le résultat à obtenir la table est encodé comme une valeur "
+"entière avec 0=non, 1=peut-être et 2=oui. Si l'un de vous deux est très "
+"élégant (8 ou plus) alors le résultat est 2 (oui). Avec l'exception que si "
+"l'un de vous deux a un style de 2 ou moins, alors le résultat est 0 (no). "
+"Sinon, le résultat est 1 (peut-être)."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/GreenTicket.html:1

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-10 17:30+0300\n"
+"POT-Creation-Date: 2013-09-12 15:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -949,53 +949,58 @@ msgstr ""
 msgid "[!java]void [/!]dropBaggle()"
 msgstr ""
 
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:56 src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91 src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254 src/lessons/welcome/Main.html:348 src/lessons/welcome/Main.html:428 src/lessons/welcome/Main.html:468
+msgid "&nbsp;"
+msgstr ""
+
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "<b>Look for a message"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "Add a message"
 msgstr ""
 
 #. type: Content of: <table><tr><td><b>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "Read the message"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:57
+#: src/plm/universe/bugglequest/BuggleWorld.html:58
 msgid "Erase the message</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:58
+#: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:59
+#: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "[!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:60
+#: src/plm/universe/bugglequest/BuggleWorld.html:61
 msgid "[!java]String [/!]readMessage()[!scala]:String[/!]"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/bugglequest/BuggleWorld.html:61
+#: src/plm/universe/bugglequest/BuggleWorld.html:62
 msgid "[!java]void [/!]clearMessage()"
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/bugglequest/BuggleWorld.html:64
+#: src/plm/universe/bugglequest/BuggleWorld.html:65
 msgid "Note on exceptions"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/bugglequest/BuggleWorld.html:65
+#: src/plm/universe/bugglequest/BuggleWorld.html:66
 msgid ""
 "Regular buggles throw a BuggleWallException exception if you ask them to "
 "traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you "
@@ -1007,7 +1012,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/bugglequest/BuggleWorld.html:72
+#: src/plm/universe/bugglequest/BuggleWorld.html:73
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
@@ -1251,11 +1256,6 @@ msgstr ""
 msgid ""
 "This first lesson will lead your first steps in programming. It is intended "
 "for beginners. List of seen notions per exercise:"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91 src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254 src/lessons/welcome/Main.html:348 src/lessons/welcome/Main.html:428 src/lessons/welcome/Main.html:468
-msgid "&nbsp;"
 msgstr ""
 
 #. type: Content of: <h2>
