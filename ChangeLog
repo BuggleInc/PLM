@@ -18,6 +18,9 @@
   * maze.island: move the initial positions to make cheating harder
   * maze.shortestpath: also translate the helper methods in scala and
     python
+  * maze.shortestpath: put the distance on every cell, not just until
+    we found the buggle. Otherwise, the student must do exactly the
+    same traversal, which is not part of the spec, making it harder.
   * Search windows directories first as the user.home property cannot
     be trusted here at Telecom Nancy.
   * welcome.basic.meth: reword the mission to make clear that the

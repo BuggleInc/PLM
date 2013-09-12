@@ -51,12 +51,13 @@ def evaluatePaths():
             if hasBaggle(x,y):
                 setIndication(x, y, 0);
 
-    while (True):
+    changed = True
+    while (changed):
+        changed = False
         for x in range(getWorldWidth()):
             for y in range(getWorldHeight()):
                 indication = getIndication(x, y)
                 
-                changed = False
                 if indication != 9999 :
 
                     if not hasBottomWall(x,y):
@@ -71,8 +72,6 @@ def evaluatePaths():
                     if not hasLeftWall(x,y) :
                         changed = setValueIfLess((x +getWorldWidth() - 1) % getWorldWidth(), y, indication + 1) or changed
 
-                    if changed and x == getX() and y == getY():
-                        return # reached the buggle, that's enough
 
 def followShortestPath():
     while not isOverBaggle():

@@ -59,10 +59,11 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 			if (hasBaggle(x,y))
 				setIndication(x, y, 0);
 
-		while (true) {   
+		var changed = true;
+		while (changed) { 
+			changed = false
 			for (x <- 0 to getWorldWidth() -1; y <- 0 to getWorldHeight()-1) {
 				var indication = getIndication(x, y);
-				var changed = false;
 				if (indication != 9999) {
 					if (! hasBottomWall(x,y))
 						changed |= setValueIfLess(x, (y + 1) % getWorldHeight(), indication + 1);
@@ -76,8 +77,6 @@ class ScalaShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggle 
 					if (! hasLeftWall(x,y))
 						changed |= setValueIfLess((x +getWorldWidth() - 1) % getWorldWidth(), y, indication + 1);
 
-					if (changed && x == getX() && y == getY())
-						return ; // reached the buggle, that's enough
 				}    
 			}
 		}
