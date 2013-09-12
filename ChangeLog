@@ -24,6 +24,7 @@
     code will get called automatically.
   * Don't remove runner threads too early from their set so that
     "Stop" still find them to stop them (fix #108)
+  * welcome.array.has271: improve the mission text
   
 20130910: Release 2.2.2: the 2 cts release.
 

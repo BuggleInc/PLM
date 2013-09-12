@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-12 17:04+0300\n"
+"POT-Creation-Date: 2013-09-12 21:10+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7851,7 +7851,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Close10.html:7 src/lessons/welcome/bat/bool1/Diff21.html:5 src/lessons/welcome/bat/bool1/HasTeen.html:6 src/lessons/welcome/bat/bool1/IcyHot.html:5 src/lessons/welcome/bat/bool1/In1020.html:5 src/lessons/welcome/bat/bool1/In3050.html:5 src/lessons/welcome/bat/bool1/LastDigit.html:9 src/lessons/welcome/bat/bool1/LoneTeen.html:6 src/lessons/welcome/bat/bool1/Main.html:11 src/lessons/welcome/bat/bool1/Makes10.html:5 src/lessons/welcome/bat/bool1/Max1020.html:7 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:7 src/lessons/welcome/bat/bool1/NearHundred.html:7 src/lessons/welcome/bat/bool1/ParotTrouble.html:8 src/lessons/welcome/bat/bool1/PosNeg.html:5 src/lessons/welcome/bat/bool1/SleepIn.html:7 src/lessons/welcome/bat/bool1/SumDouble.html:5 src/lessons/welcome/bat/bool2/AlarmClock.html:11 src/lessons/welcome/bat/bool2/AnswerCell.html:8 src/lessons/welcome/bat/bool2/BlueTicket.html:10 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:11 src/lessons/welcome/bat/bool2/CigarParty.html:9 src/lessons/welcome/bat/bool2/DateFashion.html:12 src/lessons/welcome/bat/bool2/GreenTicket.html:9 src/lessons/welcome/bat/bool2/In1To10.html:8 src/lessons/welcome/bat/bool2/InOrderEqual.html:9 src/lessons/welcome/bat/bool2/InOrder.html:8 src/lessons/welcome/bat/bool2/LastDigit2.html:8 src/lessons/welcome/bat/bool2/LessBy10.html:5 src/lessons/welcome/bat/bool2/Main.html:4 src/lessons/welcome/bat/bool2/MaxMod5.html:9 src/lessons/welcome/bat/bool2/NearTen.html:8 src/lessons/welcome/bat/bool2/RedTicket.html:9 src/lessons/welcome/bat/bool2/ShareDigit.html:9 src/lessons/welcome/bat/bool2/SortaSum.html:7 src/lessons/welcome/bat/bool2/SquirrelPlay.html:10 src/lessons/welcome/bat/bool2/TeaParty.html:11 src/lessons/welcome/bat/bool2/TeenSum.html:8 src/lessons/welcome/bat/bool2/TwoAsOne.html:5 src/lessons/welcome/bat/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Last2.html:8 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7 src/lessons/welcome/array/array123/Array123.html:4 src/lessons/welcome/array/array667/Array667.html:7 src/lessons/welcome/array/arraycount9/ArrayCount9.html:4 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:4 src/lessons/welcome/array/notriples/NoTriples.html:7 src/lessons/welcome/array/has271/Has271.html:8
+#: src/lessons/welcome/bat/bool1/Close10.html:7 src/lessons/welcome/bat/bool1/Diff21.html:5 src/lessons/welcome/bat/bool1/HasTeen.html:6 src/lessons/welcome/bat/bool1/IcyHot.html:5 src/lessons/welcome/bat/bool1/In1020.html:5 src/lessons/welcome/bat/bool1/In3050.html:5 src/lessons/welcome/bat/bool1/LastDigit.html:9 src/lessons/welcome/bat/bool1/LoneTeen.html:6 src/lessons/welcome/bat/bool1/Main.html:11 src/lessons/welcome/bat/bool1/Makes10.html:5 src/lessons/welcome/bat/bool1/Max1020.html:7 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:7 src/lessons/welcome/bat/bool1/NearHundred.html:7 src/lessons/welcome/bat/bool1/ParotTrouble.html:8 src/lessons/welcome/bat/bool1/PosNeg.html:5 src/lessons/welcome/bat/bool1/SleepIn.html:7 src/lessons/welcome/bat/bool1/SumDouble.html:5 src/lessons/welcome/bat/bool2/AlarmClock.html:11 src/lessons/welcome/bat/bool2/AnswerCell.html:8 src/lessons/welcome/bat/bool2/BlueTicket.html:10 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:11 src/lessons/welcome/bat/bool2/CigarParty.html:9 src/lessons/welcome/bat/bool2/DateFashion.html:12 src/lessons/welcome/bat/bool2/GreenTicket.html:9 src/lessons/welcome/bat/bool2/In1To10.html:8 src/lessons/welcome/bat/bool2/InOrderEqual.html:9 src/lessons/welcome/bat/bool2/InOrder.html:8 src/lessons/welcome/bat/bool2/LastDigit2.html:8 src/lessons/welcome/bat/bool2/LessBy10.html:5 src/lessons/welcome/bat/bool2/Main.html:4 src/lessons/welcome/bat/bool2/MaxMod5.html:9 src/lessons/welcome/bat/bool2/NearTen.html:8 src/lessons/welcome/bat/bool2/RedTicket.html:9 src/lessons/welcome/bat/bool2/ShareDigit.html:9 src/lessons/welcome/bat/bool2/SortaSum.html:7 src/lessons/welcome/bat/bool2/SquirrelPlay.html:10 src/lessons/welcome/bat/bool2/TeaParty.html:11 src/lessons/welcome/bat/bool2/TeenSum.html:8 src/lessons/welcome/bat/bool2/TwoAsOne.html:5 src/lessons/welcome/bat/bool2/WithoutDoubles.html:8 src/lessons/bat/string1/Main.html:8 src/lessons/bat/string1/AltPairs.html:4 src/lessons/bat/string1/FrontTimes.html:7 src/lessons/bat/string1/Last2.html:8 src/lessons/bat/string1/StringBits.html:4 src/lessons/bat/string1/StringMatch.html:8 src/lessons/bat/string1/StringSplosion.html:4 src/lessons/bat/string1/StringTimes.html:4 src/lessons/bat/string1/StringX.html:6 src/lessons/bat/string1/StringYak.html:7 src/lessons/welcome/array/array123/Array123.html:4 src/lessons/welcome/array/array667/Array667.html:7 src/lessons/welcome/array/arraycount9/ArrayCount9.html:4 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:4 src/lessons/welcome/array/notriples/NoTriples.html:7 src/lessons/welcome/array/has271/Has271.html:9
 msgid ""
 "This exercise was converted to PLM from the excellent exercising site "
 "http://javabat.com/"
@@ -9389,11 +9389,18 @@ msgstr ""
 msgid "Has271"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/welcome/array/has271/Has271.html:2
 msgid ""
 "Given an array of integers, return true if it contains a 2, 7, 1 pattern -- "
-"a value, followed by the value plus 5, followed by the value minus 1.  "
+"a value, followed by the value plus 5, followed by the initial value minus "
+"1.  So, 2,7,1 is such a pattern because 7 is 5+2 and 1 is 2-1. 3,8,2 is also "
+"such a pattern."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/has271/Has271.html:6
+msgid ""
 "Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
 "correct value."
 msgstr ""
