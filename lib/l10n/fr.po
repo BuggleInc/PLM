@@ -12787,8 +12787,8 @@ msgid ""
 "times in a row in the array. Return true if the array does not contain any "
 "triples."
 msgstr ""
-"Soit un tableau d'entiers, on dire qu'un triplet est une valeur qui apparait "
-"3 fois  à la suite dans le tableau. Renvoyez vrai si le tableau ne contient "
+"Soit un tableau d'entiers, on dira qu'un triplet est une valeur qui apparait "
+"3 fois à la suite dans le tableau. Renvoyez vrai si le tableau ne contient "
 "pas de triplet."
 
 #. type: Content of: <h1>
