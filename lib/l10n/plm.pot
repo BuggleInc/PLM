@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-12 21:10+0300\n"
+"POT-Creation-Date: 2013-09-12 21:41+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2580,13 +2580,14 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:148
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
-"<code>doneSteps</code> initialized to 0, and do one step backward until "
-"<code>doneSteps</code> equals <code>stepAmount</code>, incrementing "
-"<code>doneSteps</code> each time."
+"<code>doneSteps</code> initialized to 0, and do one step backward as long as "
+"<code>doneSteps</code> is not equal to <code>stepAmount</code>, incrementing "
+"<code>doneSteps</code> each time. The <code>!=</code> operator should be "
+"used to test the inequality (whether some values are NOT equal)."
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:153
+#: src/lessons/welcome/variables/Variables.html:155
 msgid "It's your turn now!"
 msgstr ""
 

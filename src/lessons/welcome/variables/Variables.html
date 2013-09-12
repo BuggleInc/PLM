@@ -146,8 +146,10 @@ use a variable for that, which can be named <code>stepAmount</code>.</p>
 [/!]
 
 <p>Then, phase 3 consists in simply creating a new integer variable
-<code>doneSteps</code> initialized to 0, and do one step backward until
-<code>doneSteps</code> equals <code>stepAmount</code>, incrementing
-<code>doneSteps</code> each time.</p>
+<code>doneSteps</code> initialized to 0, and do one step backward as
+long as <code>doneSteps</code> is not equal to
+<code>stepAmount</code>, incrementing <code>doneSteps</code> each
+time. The <code>!=</code> operator should be used to test the
+inequality (whether some values are NOT equal).</p> 
 
 <p>It's your turn now!</p>

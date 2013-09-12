@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-12 21:10+0300\n"
-"PO-Revision-Date: 2013-09-12 21:12+0200\n"
+"POT-Creation-Date: 2013-09-12 21:41+0300\n"
+"PO-Revision-Date: 2013-09-12 21:42+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -3413,17 +3413,14 @@ msgstr ""
 #: src/lessons/welcome/variables/Variables.html:148
 msgid ""
 "Then, phase 3 consists in simply creating a new integer variable "
-"<code>doneSteps</code> initialized to 0, and do one step backward until "
-"<code>doneSteps</code> equals <code>stepAmount</code>, incrementing "
-"<code>doneSteps</code> each time."
-msgstr ""
-"Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière "
-"<code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que "
-"<code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant "
-"<code>dejaFait</code> à chaque fois."
+"<code>doneSteps</code> initialized to 0, and do one step backward as long as "
+"<code>doneSteps</code> is not equal to <code>stepAmount</code>, incrementing "
+"<code>doneSteps</code> each time. The <code>!=</code> operator should be "
+"used to test the inequality (whether some values are NOT equal)."
+msgstr "Ensuite, l'étape 3 consiste simplement à créer une nouvelle variable entière <code>dejaFait</code> initialisée à zéro, et reculer d'un pas tant que <code>dejaFait</code> n'est pas égal à <code>nbPas</code>, en incrémentant <code>dejaFait</code> à chaque fois. Il faut utiliser l'opérateur <code>!=</code> pour tester l'inégalité entre deux valeurs."
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/variables/Variables.html:153
+#: src/lessons/welcome/variables/Variables.html:155
 msgid "It's your turn now!"
 msgstr "À vous de jouer !"
 
@@ -12811,15 +12808,20 @@ msgid ""
 "1.  So, 2,7,1 is such a pattern because 7 is 5+2 and 1 is 2-1. 3,8,2 is also "
 "such a pattern."
 msgstr ""
-"Soit un tableau d'entiers, renvoyez vrai si il contient un motif 2,7,1 -- une valeur, suivie de cette valeur plus 5, suivie par cette valeur moins 1. \n"
-"Par exemple, 2,7,1 est un tel motif car 7=5+2 et 1=2-1. 3,8,2 est un autre motif correspondant.\n"
+"Soit un tableau d'entiers, renvoyez vrai si il contient un motif 2,7,1 -- "
+"une valeur, suivie de cette valeur plus 5, suivie par cette valeur moins "
+"1. \n"
+"Par exemple, 2,7,1 est un tel motif car 7=5+2 et 1=2-1. 3,8,2 est un autre "
+"motif correspondant.\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/array/has271/Has271.html:6
 msgid ""
 "Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
 "correct value."
-msgstr "De plus, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur correcte.<"
+msgstr ""
+"De plus, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur "
+"correcte.<"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:1
