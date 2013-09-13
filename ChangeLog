@@ -1,5 +1,7 @@
 20130913: Release 2.2.4b
 
+  * Disable the "help me" button if the appengine is disabled
+
 20130912: Release 2.2.3: Let's start adding new bu^Wfeatures again.
 
   * Let every interactive control issue the source code doing the same
