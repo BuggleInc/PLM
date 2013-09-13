@@ -11,7 +11,7 @@ public final class Buggle extends AbstractBuggle {
 		super();
 		setWorld(b.getWorld());
 		setName(b.getName());
-		setColor(b.color);
+		setBodyColor(b.bodyColor);
 		setBrushColor(b.brushColor);
 		setPosFromLesson(b.getX(), b.getY());
 		setDirection(b.direction);

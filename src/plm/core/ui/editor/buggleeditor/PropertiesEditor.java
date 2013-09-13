@@ -298,15 +298,15 @@ public class PropertiesEditor extends JComponent implements EditionListener {
 			model.addRow(new Object[] {i18n.tr("Buggle color (name or r/g/b)"), new PLMProperty(properties) {
 				@Override
 				public String toString() {
-					return ColorMapper.color2name( selectedBuggle.getColor() );
+					return ColorMapper.color2name( selectedBuggle.getBodyColor() );
 				}
 				@Override
 				public void setValue(String value) {
 					try {
 						Color c = ColorMapper.name2color(value);
-						selectedBuggle.setColor(c);
+						selectedBuggle.setBodyColor(c);
 					} catch (InvalidColorNameException icn) {
-						table.setValueAt(ColorMapper.color2name(selectedBuggle.getColor()),rank,1);
+						table.setValueAt(ColorMapper.color2name(selectedBuggle.getBodyColor()),rank,1);
 					}
 				}
 			}});

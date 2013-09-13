@@ -18,7 +18,7 @@ public abstract class AbstractBuggle extends Entity {
 	int k_val = 0;
 	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
 	
-	Color color;
+	Color bodyColor;
 	
 	Color brushColor;
 
@@ -66,7 +66,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	public AbstractBuggle(World world, String name, int x, int y, Direction direction, Color color, Color brushColor) {
 		super(name,world);
-		this.color = color;
+		this.bodyColor = color;
 		this.brushColor = brushColor;
 		this.x = x;
 		this.y = y;
@@ -76,7 +76,7 @@ public abstract class AbstractBuggle extends Entity {
 	public void copy(Entity e) {
 		super.copy(e);
 		AbstractBuggle other = (AbstractBuggle)e;
-		this.color = other.color;
+		this.bodyColor = other.bodyColor;
 		this.brushColor = other.brushColor;
 		this.x = other.x;
 		this.y = other.y;
@@ -118,13 +118,13 @@ public abstract class AbstractBuggle extends Entity {
 			brushDown();
 	}
 
-	public Color getColor() {
-		return color;
+	public Color getBodyColor() {
+		return bodyColor;
 	}
 
-	public void setColor(Color c) {
+	public void setBodyColor(Color c) {
 		if (c != null) {
-			this.color = c;
+			this.bodyColor = c;
 			world.notifyWorldUpdatesListeners();
 		}
 	}
@@ -379,7 +379,7 @@ public abstract class AbstractBuggle extends Entity {
 	@Override
 	public String toString() {
 		return "Buggle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Direction:" + direction + " Color:"
-		+ color;
+		+ bodyColor;
 	}
 
 	@Override
@@ -388,7 +388,7 @@ public abstract class AbstractBuggle extends Entity {
 		int result = 1;
 		result = PRIME * result + ((brushColor == null) ? 0 : brushColor.hashCode());
 		result = PRIME * result + (brushDown ? 1231 : 1237);
-		result = PRIME * result + ((color == null) ? 0 : color.hashCode());
+		result = PRIME * result + ((bodyColor == null) ? 0 : bodyColor.hashCode());
 		result = PRIME * result + ((direction == null) ? 0 : direction.hashCode());
 		result = PRIME * result + x;
 		result = PRIME * result + y;
@@ -405,10 +405,10 @@ public abstract class AbstractBuggle extends Entity {
 			return false;
 		
 		final AbstractBuggle other = (AbstractBuggle) obj;
-		if (color == null) {
-			if (other.color != null)
+		if (bodyColor == null) {
+			if (other.bodyColor != null)
 				return false;
-		} else if (!color.equals(other.color))
+		} else if (!bodyColor.equals(other.bodyColor))
 			return false;
 		if (direction == null) {
 			if (other.direction != null)
@@ -435,8 +435,8 @@ public abstract class AbstractBuggle extends Entity {
 			sb.append(Game.i18n.tr("    Its position is ({0},{1}); expected: ({2},{3}).\n",other.getX(),other.getY(),getX(),getY()));
 		if (getDirection() != other.getDirection()) 
 			sb.append(Game.i18n.tr("    Its direction is {0}; expected: {1}.\n",other.getDirection(),getDirection()));
-		if (getColor() != other.getColor()) 
-			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getColor(),getColor()));
+		if (getBodyColor() != other.getBodyColor()) 
+			sb.append(Game.i18n.tr("    Its color is {0}; expected: {1}.\n",other.getBodyColor(),getBodyColor()));
 		if (getBrushColor() != other.getBrushColor())
 			sb.append(Game.i18n.tr("    The color of its brush is {0}; expected: {1}.\n",other.getBrushColor(),getBrushColor()));
 		if (isCarryingBaggle() && !other.isCarryingBaggle())
@@ -458,8 +458,8 @@ public abstract class AbstractBuggle extends Entity {
 	public void avance(int steps) throws BuggleWallException { forward(steps); }
 	public void recule()          throws BuggleWallException { backward(); }
 	public void recule(int steps) throws BuggleWallException { backward(steps); }
-	public Color getCouleur()             { return getColor(); }
-	public void setCouleur(Color c)       { setColor(c); }
+	public Color getCouleurCorps()        { return getBodyColor(); }
+	public void setCouleurCorps(Color c)  { setBodyColor(c); }
 	public boolean estFaceMur()           { return isFacingWall(); }
 	public boolean estDosMur()            { return isBackingWall(); }
 	public void leveBrosse()              { brushUp(); }

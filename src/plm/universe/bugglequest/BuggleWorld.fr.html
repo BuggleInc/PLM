@@ -24,9 +24,9 @@ objets, colorier le sol, se cogner à des murs, etc.
 [/!]y[!scala]:Int[/!])</td></tr>
 
 <tr><td colspan=2 align=center><b>Informations sur la buggle</b></td></tr>
-  <tr><td><b>Obtenir la couleur<br/>Changer la couleur</b></td>
-      <td>[!java]Color [/!]getCouleur()[!scala]:Color[/!]<br/>
-          [!java]void [/!]setCouleur([!java]Color [/!]c[!scala]:Color[/!])</td></tr>				
+  <tr><td><b>Obtenir la couleur de la buggle</b><br/>Changer la couleur de la buggle</b></td>
+      <td>[!java]Color [/!]getCouleurCorps()[!scala]:Color[/!]<br/>
+          [!java]void [/!]setCouleurCorps([!java]Color [/!]c[!scala]:Color[/!])</td></tr>				
   <tr><td><b>Chercher un mur devant<br/>Chercher un mur derriere</b></td>
       <td>[!java]boolean [/!]estFaceMur()[!scala]:Boolean[/!]<br/>
           [!java]boolean [/!]estDosMur()[!scala]:Boolean[/!]</td></tr>				
@@ -64,6 +64,24 @@ Direction.OUEST (l'ouest)</td></tr>
           [!java]void [/!]ecritMessage([!java]String [/!]msg[!scala]:String[/!])<br/>
           [!java]String [/!]litMessage()[!scala]:String[/!]<br/>
           [!java]void [/!]effaceMessage()</td></tr>
+</table>
+
+<h2>Couleurs valides</h2>
+<table border=1>
+<tr><td>Nom</td><td>Couleur</td></tr>
+<tr><td>Color.black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
+<tr><td>Color.blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
+<tr><td>Color.cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
+<tr><td>Color.darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
+<tr><td>Color.gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
+<tr><td>Color.green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
+<tr><td>Color.lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
+<tr><td>Color.magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
+<tr><td>Color.orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
+<tr><td>Color.pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
+<tr><td>Color.red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
+<tr><td>Color.white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
+<tr><td>Color.yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
 </table>
 
 <h2>Note sur les exceptions</h2>

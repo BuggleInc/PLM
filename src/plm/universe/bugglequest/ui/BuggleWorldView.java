@@ -181,7 +181,7 @@ public class BuggleWorldView extends WorldView {
 			else
 				g.setColor(Color.BLACK);
 		} else
-			g.setColor(b.getColor());
+			g.setColor(b.getBodyColor());
 
 		if (((BuggleWorld)world).easter) {
 			try {

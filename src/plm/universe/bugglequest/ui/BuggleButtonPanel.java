@@ -141,14 +141,14 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		
 		buggleColorComboBox=new JComboBox (colors);
 		buggleColorComboBox.setRenderer(new BuggleColorCellRenderer());
-		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getColor());
+		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBodyColor());
 		buggleColorComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
 				JComboBox cb = (JComboBox) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
 				cb.setSelectedItem(c);
 				echo(i18n.tr("setColor(Color.{0})",ColorMapper.color2name(c)));
-				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setColor(c);
+				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBodyColor(c);
 			}
 		});
 	}

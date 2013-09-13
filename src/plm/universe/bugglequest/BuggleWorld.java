@@ -291,7 +291,7 @@ public class BuggleWorld extends GridWorld {
 			if (b.getDirection().equals(Direction.WEST)) 
 				writer.write("west,");
 			
-			writer.write(ColorMapper.color2name(b.getColor())+",");
+			writer.write(ColorMapper.color2name(b.getBodyColor())+",");
 			writer.write(ColorMapper.color2name(b.getBrushColor())+",");
 			writer.write(b.getName());
 			writer.write("\n");
@@ -443,6 +443,10 @@ public class BuggleWorld extends GridWorld {
 				"	return entity.isFacingWall()\n"+
 				"def isBackingWall():" +
 				"	return entity.isBackingWall()\n"+
+				"def getBodyColor():\n"+
+				"   return entity.getBodyColor()\n"+
+				"def setBodyColor(c):\n"+
+				"   return setBodyColor(c)\n"+
 				"def getGroundColor():\n"+
 				"   return entity.getGroundColor()\n"+
 				
@@ -525,9 +529,14 @@ public class BuggleWorld extends GridWorld {
 				"def ecritMessage(msg):\n"+
 				"   entity.writeMessage(msg)\n"+
 				
-				"def setBrossehCouleur(c):\n"+
+				"def getCouleurCorps():\n"+
+				"   return entity.getBodyColor()\n"+
+				"def setCouleurCorps(c):\n"+
+				"   return setBodyColor(c)\n"+
+				
+				"def setCouleurBrosse(c):\n"+
 				"    entity.setBrushColor(c)\n"+
-				"def getBrosseCouleur():\n"+
+				"def getCouleurBrosse():\n"+
 				"    return entity.getBrushColor()\n"
 						);		
 		} else {
