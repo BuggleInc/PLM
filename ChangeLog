@@ -2,6 +2,7 @@
 
   * Disable the "help me" button if the appengine is disabled
   * Document the existing colors in Buggle&Turtle worlds
+  * Update "About world" dialog's title changed on Human lang switches
 
 20130912: Release 2.2.3: Let's start adding new bu^Wfeatures again.
 
