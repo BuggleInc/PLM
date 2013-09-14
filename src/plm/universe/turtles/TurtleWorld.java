@@ -226,6 +226,8 @@ public class TurtleWorld extends World {
 	public String diffTo(World world) {
 		StringBuffer sb = new StringBuffer();
 		TurtleWorld other = (TurtleWorld) world;
+		Collections.sort(shapes, new ShapeComparator());
+		Collections.sort(other.shapes, new ShapeComparator());
 		if (shapes.size() != other.shapes.size())
 			sb.append("  There is only "+other.shapes.size()+" lines where "+shapes.size()+" were expected.\n");
 		for (int i=0;i<other.shapes.size();i++)
@@ -243,6 +245,14 @@ class ShapeComparator implements Comparator<Shape> {
 		super();
 	}
 
+	int cmp(double a, double b) {
+		if (Math.abs(a-b)<0.000001)
+			return 0;
+		if (a<b)
+			return 1;
+		return -1;
+	}
+	
 	@Override
 	public int compare(Shape s1, Shape s2) {
 		if (s1 instanceof Line && s2 instanceof Circle)
@@ -253,34 +263,38 @@ class ShapeComparator implements Comparator<Shape> {
 		if (s1 instanceof Line) {
 			Line l1 = (Line) s1;
 			Line l2 = (Line) s2;
-			if (l1.x1 < l2.x1)
-				return -1;
-			if (l1.x1 > l2.x1)
-				return 1;
+			
+			int cmp = cmp(l1.x1, l2.x1);
+			if (cmp != 0)
+				return cmp;
+			
+			cmp = cmp(l1.y1, l2.y1);
+			if (cmp != 0)
+				return cmp;
+			
+			cmp = cmp(l1.x2, l2.x2);
+			if (cmp != 0)
+				return cmp;
 
-			if (l1.x2 < l2.x2)
-				return -1;
-			if (l1.x2 > l2.x2)
-				return 1;
-
-			if (l1.y1 < l2.y1)
-				return -1;
-			if (l1.y1 > l2.y1)
-				return 1;
-
-			if (l1.y2 < l2.y2)
-				return -1;
-			if (l1.y2 > l2.y2)
-				return 1;
-			return 0;
+			cmp = cmp(l1.y2, l2.y2);
+			return cmp;
 		}
+		
 		if (s1 instanceof Circle) {
 			Circle c1 = (Circle) s1;
 			Circle c2 = (Circle) s2;
-			if (c1.x < c2.x)
-				return -1;
-			if (c1.x > c2.x)
-				return 1;
+		
+			int cmp = cmp(c1.x, c2.x);
+			if (cmp != 0)
+				return cmp;
+			
+			cmp = cmp(c1.y, c2.y);
+			if (cmp != 0)
+				return cmp;
+			
+			cmp = cmp(c1.radius, c2.radius);
+			if (cmp != 0)
+				return cmp;
 		}
 		return 0;
 	}

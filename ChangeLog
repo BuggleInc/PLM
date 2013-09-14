@@ -5,6 +5,7 @@
   * Update "About world" dialog's title changed on Human lang switches
   * Change buggle.setColor to setBodyColor so that people used to logo
     don't use it  to change the brush color.
+  * Compare turtle worlds with an upsilon to avoid false negatives.
 
 20130912: Release 2.2.3: Let's start adding new bu^Wfeatures again.
 
