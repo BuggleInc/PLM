@@ -1,4 +1,4 @@
-20130913: Release 2.2.4b
+20130916: Release 2.2.4: SortingWorld also needs polishing.
 
   * Disable the "help me" button if the appengine is disabled
   * Document the existing colors in Buggle&Turtle worlds
