@@ -106,17 +106,17 @@ public class SortingWorld extends World {
 			StringBuffer sb = new StringBuffer();
 			
 			if (this.values.length != other.values.length)
-				sb.append("This is very weird: there is not the same amount of values! Expected: "+this.values.length+"; Found:"+other.values.length);
+				sb.append(Game.i18n.tr("This is very weird: There is not the same amount of values! Expected: {0}; Found: {1}\n",this.values.length,other.values.length));
 			
 			if ( this.readCount != other.readCount )
-				sb.append("Invalid read count : expected "+this.readCount+" found "+other.readCount+"\n");
+				sb.append(Game.i18n.tr("Invalid read count. Expected: {0}; Found: {1}\n",this.readCount,other.readCount));
 			
 			if ( this.writeCount != other.writeCount )
-				sb.append("Invalid write count : expected "+this.writeCount+" found "+other.writeCount+"\n");
+				sb.append(Game.i18n.tr("Invalid write count. Expected: {0}; Found: {1}\n",this.writeCount,other.writeCount));
 			
 			for (int i = 0 ; i < this.values.length ; i++) 
 				if ( this.values[i] != other.values[i] )
-					sb.append("Index "+i+": expected "+val2str(values[i],values.length)+" found "+val2str(other.values[i],other.values.length)+"\n");
+					sb.append(Game.i18n.tr("Value at index {0} differs. Expected {1}; Found {2}\n",val2str(values[i],values.length),val2str(other.values[i],other.values.length)));
 					
 			s = sb.toString();
 		}

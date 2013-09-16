@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-16 13:11+0200\n"
-"PO-Revision-Date: 2013-09-12 21:47+0200\n"
+"POT-Creation-Date: 2013-09-16 14:57+0200\n"
+"PO-Revision-Date: 2013-09-16 14:59+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -1936,3 +1936,25 @@ msgstr "setValeur"
 #: src/plm/universe/sort/SortingButtonPanel.java:108
 msgid "copy"
 msgstr "copie"
+
+#: src/plm/universe/sort/SortingWorld.java:109
+#, java-format
+msgid ""
+"This is very weird: There is not the same amount of values! Expected: {0}; "
+"Found: {1}\n"
+msgstr "C'est très bizarre. Il n'y a pas le même nombre de valeurs! J'en attendais {0}, mais j'en ai {1}\n"
+
+#: src/plm/universe/sort/SortingWorld.java:112
+#, java-format
+msgid "Invalid read count. Expected: {0}; Found: {1}\n"
+msgstr "Le nombre de lectures diffère. Attendu : {0}; Observé : {1}\n"
+
+#: src/plm/universe/sort/SortingWorld.java:115
+#, java-format
+msgid "Invalid write count. Expected: {0}; Found: {1}\n"
+msgstr "Le nombre d'écritures diffère. Attendu : {0}; Observé : {1}\n"
+
+#: src/plm/universe/sort/SortingWorld.java:119
+#, java-format
+msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
+msgstr "Les valeurs à l'index {0} diffère. Attendue : {0}; Observée : {1}\n"
