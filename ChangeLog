@@ -1,5 +1,7 @@
 20130916: Release 2.2.5b
 
+  * Align equals() and diffTo() of sortedWorld to avoid false negatives
+
 20130916: Release 2.2.4: SortingWorld also needs polishing.
 
   * Disable the "help me" button if the appengine is disabled

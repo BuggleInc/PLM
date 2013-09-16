@@ -76,18 +76,51 @@ public class SortingWorld extends World {
 			if ( this.values[i] != other.values[i] )
 				return false;
 		
-		if (operations.size() != other.operations.size())
-			return false;
-		for (int i = 0 ; i < this.operations.size() ; i++) 
-			if (! operations.get(i).equals( other.operations.get(i)) )
-				return false;
-		
 		if (! (this.readCount == other.readCount) )
 			return false;
 		if (! (this.writeCount == other.writeCount) )
 			return false;
 		
+		/* Do not compare the operation order as it's not part of the problem specification
+		if (operations.size() != other.operations.size())
+			return false;
+		for (int i = 0 ; i < this.operations.size() ; i++) 
+			if (! operations.get(i).equals( other.operations.get(i)) )
+				return false;
+		*/
 		return true;
+	}
+
+	/**
+	 * Make a textual description of the differences between the caller and world
+	 * @param world : the world with which you want to compare your world
+	 * @return A textual description of the differences between the caller and world
+	 */
+	@Override
+	public String diffTo(World world) {
+		String s ;
+		if (world == null || !(world instanceof SortingWorld)) {
+			s="This is not a world of sorting :(";
+		} else {
+			SortingWorld other = (SortingWorld) world;
+			StringBuffer sb = new StringBuffer();
+			
+			if (this.values.length != other.values.length)
+				sb.append("This is very weird: there is not the same amount of values! Expected: "+this.values.length+"; Found:"+other.values.length);
+			
+			if ( this.readCount != other.readCount )
+				sb.append("Invalid read count : expected "+this.readCount+" found "+other.readCount+"\n");
+			
+			if ( this.writeCount != other.writeCount )
+				sb.append("Invalid write count : expected "+this.writeCount+" found "+other.writeCount+"\n");
+			
+			for (int i = 0 ; i < this.values.length ; i++) 
+				if ( this.values[i] != other.values[i] )
+					sb.append("Index "+i+": expected "+val2str(values[i],values.length)+" found "+val2str(other.values[i],other.values.length)+"\n");
+					
+			s = sb.toString();
+		}
+		return s;
 	}
 
 	/**
@@ -123,35 +156,6 @@ public class SortingWorld extends World {
 		this.writeCount++;
 		this.values[to] = this.values[from];
 	}
-
-	/**
-	 * Make a textual description of the differences between the caller and world
-	 * @param world : the world with which you want to compare your world
-	 * @return A textual description of the differences between the caller and world
-	 */
-	@Override
-	public String diffTo(World world) {
-		String s ;
-		if (world == null || !(world instanceof SortingWorld)) {
-			s="This is not a world of sorting :(";
-		} else {
-			SortingWorld other = (SortingWorld) world;
-			StringBuffer sb = new StringBuffer();
-			if ( this.readCount != other.readCount )
-				sb.append("Invalid read count : expected "+this.readCount+" found "+other.readCount+"\n");
-			
-			if ( this.writeCount != other.writeCount )
-				sb.append("Invalid write count : expected "+this.writeCount+" found "+other.writeCount+"\n");
-			
-			for (int i = 0 ; i < this.values.length ; i++) 
-				if ( this.values[i] != other.values[i] )
-					sb.append("Index "+i+": expected "+this.values[i]+" found "+other.values[i]+"\n");
-					
-			s = sb.toString();
-		}
-		return s;
-	}
-
 
 	/** Returns the panel which let the user to interact dynamically with the world */
 	@Override
@@ -361,6 +365,25 @@ public class SortingWorld extends World {
 		int tmp = this.values[i];
 		this.values[i] = this.values[j];
 		this.values[j] = tmp;
+	}
+
+	/** Make a string representation of the value to be sorted
+	 * 
+	 *  It's a bad idea to display integer values because the students mix the indexes 
+	 *  and the values. It's better to use a string representation for that. 
+	 *  
+	 *  WARNING, this function is duplicated in SortingWorldView. Yes, I fell ashamed.
+	 */
+	protected String val2str(int value,int amountOfValues) {
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		if (amountOfValues<26) {
+			return letters.substring(value, value+1);
+		} 
+		if (amountOfValues < 26*26) {
+			return   letters.substring(value/26, (value/26)+1 )
+					+letters.substring(value%26, (value%26)+1 );
+		}
+		return ""+value;
 	}
 
 }

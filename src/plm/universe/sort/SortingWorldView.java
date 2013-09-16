@@ -96,8 +96,10 @@ public class SortingWorldView extends WorldView {
 	 * 
 	 *  It's a bad idea to display integer values because the students mix the indexes 
 	 *  and the values. It's better to use a string representation for that. 
+	 *  
+	 *  WARNING, this function is duplicated in SortingWorld. Yes, I fell ashamed.
 	 */
-	private String val2str(int value,int amountOfValues) {
+	protected String val2str(int value,int amountOfValues) {
 		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		if (amountOfValues<26) {
 			return letters.substring(value, value+1);
