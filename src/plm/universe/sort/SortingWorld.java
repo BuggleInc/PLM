@@ -85,6 +85,9 @@ public class SortingWorld extends World {
 			return false;
 		
 		/* Do not compare the operation order as it's not part of the problem specification
+		 * 
+		 * If you want to add this again, please make sure that swap(i,j) is equal to swap(j,i)
+		 
 		if (operations.size() != other.operations.size())
 			return false;
 		for (int i = 0 ; i < this.operations.size() ; i++) 
