@@ -85,6 +85,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
+	
+	StatusBar statusBar;
+	
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private JSplitPane mainPanel;
@@ -445,7 +448,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	private void initStatusBar(Game g) {
-		StatusBar statusBar = new StatusBar(g);
+		statusBar = new StatusBar(g);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
 	}
 

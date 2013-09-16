@@ -3,6 +3,8 @@
   * Align equals() and diffTo() of sortedWorld to avoid false negatives
   * Translate the error messages of SortedWorld
   * sort.Bubble3: there is no 'break' in scala
+  * Color the statusbar in red when a world is running so that people
+    notice that there is more than one world.
 
 20130916: Release 2.2.4: SortingWorld also needs polishing.
 
