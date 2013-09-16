@@ -5,6 +5,8 @@
   * sort.Bubble3: there is no 'break' in scala
   * Color the statusbar in red when a world is running so that people
     notice that there is more than one world.
+  * SortingWorld: give large worlds a reduced delay so that people
+    don't wait for the perf world too much even if they don't click
 
 20130916: Release 2.2.4: SortingWorld also needs polishing.
 
