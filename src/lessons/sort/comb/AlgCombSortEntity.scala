@@ -15,7 +15,7 @@ class ScalaAlgCombSortEntity extends SortingEntity {
 		var swapped=false;
 		do {
 			if (gap>1) 
-				gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int];
+				gap = (gap.toDouble / 1.3).toInt;
 			swapped = false;
 			for (i <- 0 to getValueCount()-gap-1)
 				if (!isSmaller(i,i+gap)) {

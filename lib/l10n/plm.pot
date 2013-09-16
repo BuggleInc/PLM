@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-13 08:17+0300\n"
+"POT-Creation-Date: 2013-09-16 11:01+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1743,7 +1743,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:77 src/lessons/welcome/variables/Variables.html:146 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:36 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:34 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:77 src/lessons/welcome/variables/Variables.html:146 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:36 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:38 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
 msgid "[/!]"
 msgstr ""
 
@@ -6234,7 +6234,7 @@ msgid ""
 "   i = O\n"
 "   while i+gap &lt; len do:\n"
 "     if i and i+gap must be swapped, do it\n"
-"     increase i by the gap\n"
+"     increase i by one\n"
 "while the gap is bigger than 1 or the last traversal swapped at least one "
 "pair\n"
 msgstr ""
@@ -6249,7 +6249,7 @@ msgstr ""
 msgid ""
 "One tricky part is that we want to divide gap, that is an integer, by 1.3, "
 "that is a double.  The type system of scala won't let us do this, because "
-"such discrepency usually denotes a programmer error.  As this is not an "
+"such discrepancy usually denotes a programmer error.  As this is not an "
 "error this time, we have to convert gap to Double for the time of the "
 "operation, and then convert the result back to Int to store it into "
 "gap. This should be written this way:"
@@ -6267,11 +6267,26 @@ msgid ""
 "This is rather verbose, but actually, this notation is not very complex. And "
 "remember that the type checker is your friend. It's picky and sometimes "
 "annoying (as on this one), but it often catches weird bugs that would have "
-"been a pain to debug if not catched by the type checker."
+"been a pain to debug if not catch by the type checker. And since the Scala's "
+"authors are pragmatic, the previous expression can be simplified:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/comb/AlgCombSort.html:35
+#, no-wrap
+msgid "gap = (gap.toDouble / 1.3).toInt"
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/sort/comb/AlgCombSort.html:36
+msgid ""
+"<code>toDouble</code> and <code>toInt</code> are just shortcuts for the "
+"corresponding expressions <code>asInstanceOf[Double]</code> and "
+"<code>asInstanceOf[Int]</code>. It's not very generic, but it's very handy."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/comb/AlgCombSort.html:40
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
