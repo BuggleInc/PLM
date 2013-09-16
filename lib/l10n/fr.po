@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-16 11:01+0300\n"
-"PO-Revision-Date: 2013-09-16 11:05+0200\n"
+"POT-Creation-Date: 2013-09-16 15:19+0300\n"
+"PO-Revision-Date: 2013-09-16 15:20+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -8039,26 +8039,23 @@ msgstr ""
 "est maintenant trié. Dans ce cas, il faut arrêter le processus de tri."
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:7
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:8
 msgid ""
-"For that, simply use the <code>break</code> keyword, which breaks the "
-"current loop.  Beware, if you have several embedded loops, this will apply "
-"to the internal one."
+"[!java|python]For that, simply use the <code>break</code> keyword, which "
+"breaks the current loop.  Beware, if you have several embedded loops, this "
+"will apply to the internal one.[/!] [!scala]For that, simply quit the "
+"current function by calling <code>return</code> with no associated value.[/!]"
 msgstr ""
-"Pour cela, utilisez simplement le mot-clé <code>break></code>, qui coupe\n"
-"l'exécution de la boucle englobante. Attention, si vous avez plusieurs "
-"boucles\n"
-"imbriquées, c'est celle situé tout au fond (au plus près du mot-clé break) "
-"qui\n"
-"est cassée."
+"[!java|python]Pour cela, utilisez simplement le mot-clé <code>break></code>, qui coupe l'exécution de la boucle englobante. Attention, si vous avez plusieurs boucles imbriquées, c'est celle situé tout au fond (au plus près du mot-clé break) qui est cassée.[/!]\n"
+"[!scala]Pour cela, quitez simplement la fonction courante en appellant <code>return</code> sans lui associer de valeur.[/!]"
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:10
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:13
 msgid "If you want, this tip shows the pseudo-code."
 msgstr "Si vous le désirez, cet indice montre le pseudo-code."
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:12
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:15
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -8072,7 +8069,7 @@ msgstr ""
 "       Si le parcours sur les j n'a rien inversé, casser la boucle\n"
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:19
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:22
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
@@ -8600,7 +8597,13 @@ msgid ""
 "annoying (as on this one), but it often catches weird bugs that would have "
 "been a pain to debug if not catch by the type checker. And since the Scala's "
 "authors are pragmatic, the previous expression can be simplified:"
-msgstr "C'est un peu bavard, mais finalement, cette écriture n'est pas très complexe. Et n'oubliez pas que le système de types est votre ami. Il est un peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il trouve souvent des bugs bizarres qui auraient été très pénibles à débugger s'il ne les avait pas attrapé à la source. Et comme de plus les auteurs de Scala sont pragmatiques, cela peut aussi de manière simplifiée :"
+msgstr ""
+"C'est un peu bavard, mais finalement, cette écriture n'est pas très "
+"complexe. Et n'oubliez pas que le système de types est votre ami. Il est un "
+"peu tatillon et parfois un peu pénible (comme aujourd'hui), mais au fond, il "
+"trouve souvent des bugs bizarres qui auraient été très pénibles à débugger "
+"s'il ne les avait pas attrapé à la source. Et comme de plus les auteurs de "
+"Scala sont pragmatiques, cela peut aussi de manière simplifiée :"
 
 #. type: Content of: <pre>
 #: src/lessons/sort/comb/AlgCombSort.html:35
@@ -8614,7 +8617,11 @@ msgid ""
 "<code>toDouble</code> and <code>toInt</code> are just shortcuts for the "
 "corresponding expressions <code>asInstanceOf[Double]</code> and "
 "<code>asInstanceOf[Int]</code>. It's not very generic, but it's very handy."
-msgstr "<code>toDouble</code> et <code>toInt</code> sont simplement des raccourcis pour les expressions équivalentes <code>asInstanceOf[Double]</code> et <code>asInstanceOf[Int]</code>. Ce n'est pas très générique, mais c'est extrêmement pratique."
+msgstr ""
+"<code>toDouble</code> et <code>toInt</code> sont simplement des raccourcis "
+"pour les expressions équivalentes <code>asInstanceOf[Double]</code> et "
+"<code>asInstanceOf[Int]</code>. Ce n'est pas très générique, mais c'est "
+"extrêmement pratique."
 
 #. type: Content of: <p>
 #: src/lessons/sort/comb/AlgCombSort.html:40

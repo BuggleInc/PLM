@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-16 11:01+0300\n"
+"POT-Creation-Date: 2013-09-16 15:19+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5875,20 +5875,22 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:7
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:8
 msgid ""
-"For that, simply use the <code>break</code> keyword, which breaks the "
-"current loop.  Beware, if you have several embedded loops, this will apply "
-"to the internal one."
+"[!java|python]For that, simply use the <code>break</code> keyword, which "
+"breaks the current loop.  Beware, if you have several embedded loops, this "
+"will apply to the internal one.[/!] [!scala]For that, simply quit the "
+"current function by calling <code>return</code> with no associated "
+"value.[/!]"
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:10
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:13
 msgid "If you want, this tip shows the pseudo-code."
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:12
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:15
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5898,7 +5900,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:19
+#: src/lessons/sort/bubble/AlgBubbleSort3.html:22
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
