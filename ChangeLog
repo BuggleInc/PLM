@@ -8,6 +8,8 @@
   * Compare turtle worlds with an upsilon to avoid false negatives.
   * Fix an error in the pseudocode of CombSort
   * Fix a bunch of typos in the French translations.
+  * sorting world: represent values as letters so that they don't get
+    mixed with indexes. 
 
 20130912: Release 2.2.3: Let's start adding new bu^Wfeatures again.
 

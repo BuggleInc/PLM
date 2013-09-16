@@ -92,6 +92,23 @@ public class SortingWorldView extends WorldView {
 		this.addMouseListener(popupListener);
 	}
 
+	/** Make a string representation of the value to be sorted
+	 * 
+	 *  It's a bad idea to display integer values because the students mix the indexes 
+	 *  and the values. It's better to use a string representation for that. 
+	 */
+	private String val2str(int value,int amountOfValues) {
+		String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		if (amountOfValues<26) {
+			return letters.substring(value, value+1);
+		} 
+		if (amountOfValues < 26*26) {
+			return   letters.substring(value/26, (value/26)+1 )
+					+letters.substring(value%26, (value%26)+1 );
+		}
+		return ""+value;
+	}
+	
 	/**
 	 * Draw the Chrono view
 	 * @param g2 some 2D graphics
@@ -120,7 +137,7 @@ public class SortingWorldView extends WorldView {
 
 				//If the array is small enough, we print the values
 				if (drawStr) 
-					g2.drawString("" + we.getValues()[valueIdx], 0, y1);
+					g2.drawString(val2str(we.getValues()[valueIdx],we.getValueCount()), 0, y1);
 			}
 			return;
 		}
@@ -130,7 +147,7 @@ public class SortingWorldView extends WorldView {
 			y1 = (int) (valueIdx * stepY + stepY/2);
 			tone = getValueColor(we.getInitValues()[valueIdx],we.getValueCount());
 			g2.setColor(new Color(tone, tone, 128));
-			g2.drawString("" + we.getInitValues()[valueIdx], 0, y1);
+			g2.drawString(val2str(we.getValues()[valueIdx],we.getValueCount()), 0, y1);
 		}
 		
 		int[] valuesAfter = new int[we.getInitValues().length];
@@ -167,7 +184,7 @@ public class SortingWorldView extends WorldView {
 					
 					tone = getValueColor(valuesAfter[valIdx],we.getValueCount());
 					g2.setColor(new Color(tone, tone, 128));
-					g2.drawString("" + valuesAfter[valIdx], x2, y1);		
+					g2.drawString(val2str(we.getValues()[valIdx],we.getValueCount()), x2, y1);		
 				}
 			
 			/* Draw the lines depicting the current operation */
@@ -211,7 +228,7 @@ public class SortingWorldView extends WorldView {
 				
 					tone = getValueColor(valuesAfter[op.source],we.getValueCount());
 					g2.setColor(Color.red);
-					g2.drawString("" + valuesAfter[op.source]+"!", x2, y1);
+					g2.drawString(val2str(valuesAfter[op.source],we.getValueCount())+"!", x2, y1);
 				}
 
 				/* Don't draw a line for the modified value, actually */
@@ -223,7 +240,7 @@ public class SortingWorldView extends WorldView {
 				
 					tone = getValueColor(valuesAfter[pos],we.getValueCount());
 					g2.setColor(Color.MAGENTA);
-					g2.drawString("" + valuesAfter[pos]+"?", x2, y1);
+					g2.drawString(val2str(valuesAfter[pos],we.getValueCount())+"?", x2, y1);
 				}
 			} else {
 				System.out.println("This operation is not depicted because that's a "+op.toString()+"; please report this bug.");
@@ -256,7 +273,7 @@ public class SortingWorldView extends WorldView {
 			g2.setColor(Color.black);
 			g2.draw(rect);
 			if (scale > 20) 
-				g2.drawString(""+values[i], (int)scale*i+(int)scale/2, maxSize-2);
+				g2.drawString(val2str(values[i],world.getValueCount()) , (int)scale*i+(int)scale/2, maxSize-2);
 		}
 		g2.setColor(Color.black);
 		g2.drawString(world.getName()+" ("+world.getWriteCount()+" write, "+world.getReadCount()+" read)", 0, 15);
