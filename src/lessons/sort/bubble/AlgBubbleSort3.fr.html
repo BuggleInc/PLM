@@ -5,11 +5,12 @@ l'étape précédente : Si un parcours n'a rien inversé, c'est que le tableau
 est maintenant trié. Dans ce cas, il faut arrêter le processus de tri.</p>
 
 <p>
-  [!java|python]For that, simply use the <code>break</code> keyword, which
-breaks the current loop.  Beware, if you have several embedded loops, this
-will apply to the internal one.[/!] [!scala]For that, simply quit the
-current function by calling <code>return</code> with no associated
-value.[/!] 
+  [!java|python]Pour cela, utilisez simplement le mot-clé <code>break></code>,
+qui coupe l'exécution de la boucle englobante. Attention, si vous avez
+plusieurs boucles imbriquées, c'est celle situé tout au fond (au plus près
+du mot-clé break) qui est cassée.[/!]
+[!scala]Pour cela, quitez simplement la fonction courante en appellant
+<code>return</code> sans lui associer de valeur.[/!] 
 </p>
 
 <div class="tip" id="tip-3" alt="Si vous le désirez, cet indice montre le pseudo-code.">
