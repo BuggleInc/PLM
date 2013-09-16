@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-16 14:57+0200\n"
-"PO-Revision-Date: 2013-09-16 14:59+0200\n"
+"POT-Creation-Date: 2013-09-16 21:50+0200\n"
+"PO-Revision-Date: 2013-09-16 21:53+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -866,12 +866,12 @@ msgstr ""
 "d'apprendre à votre rythme.</font></p><br/>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:132
-#: src/plm/core/ui/MainFrame.java:165
+#: src/plm/core/ui/MainFrame.java:168
 msgid "PLM lesson files"
 msgstr "Fichiers de leçons pour la PLM"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:141
-#: src/plm/core/ui/MainFrame.java:174
+#: src/plm/core/ui/MainFrame.java:177
 msgid "Error"
 msgstr "Erreur"
 
@@ -1062,140 +1062,140 @@ msgstr "Endroit ou les erreurs et autres messages sont écrits"
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/plm/core/ui/MainFrame.java:154 src/plm/core/ui/MainFrame.java:672
+#: src/plm/core/ui/MainFrame.java:157 src/plm/core/ui/MainFrame.java:675
 msgid "File"
 msgstr "Fichier"
 
-#: src/plm/core/ui/MainFrame.java:156
+#: src/plm/core/ui/MainFrame.java:159
 msgid "File related functions"
 msgstr "Fonction relatives à la gestion de fichiers"
 
-#: src/plm/core/ui/MainFrame.java:159 src/plm/core/ui/MainFrame.java:673
+#: src/plm/core/ui/MainFrame.java:162 src/plm/core/ui/MainFrame.java:676
 msgid "Load lesson"
 msgstr "Charger Leçon"
 
-#: src/plm/core/ui/MainFrame.java:181 src/plm/core/ui/MainFrame.java:674
+#: src/plm/core/ui/MainFrame.java:184 src/plm/core/ui/MainFrame.java:677
 msgid "Switch lesson"
 msgstr "Sélectionner une leçon"
 
-#: src/plm/core/ui/MainFrame.java:193 src/plm/core/ui/MainFrame.java:441
-#: src/plm/core/ui/MainFrame.java:669 src/plm/core/ui/MainFrame.java:675
+#: src/plm/core/ui/MainFrame.java:196 src/plm/core/ui/MainFrame.java:444
+#: src/plm/core/ui/MainFrame.java:672 src/plm/core/ui/MainFrame.java:678
 msgid "Switch exercise"
 msgstr "Changer d'exercice"
 
-#: src/plm/core/ui/MainFrame.java:206 src/plm/core/ui/MainFrame.java:677
+#: src/plm/core/ui/MainFrame.java:209 src/plm/core/ui/MainFrame.java:680
 msgid "Teacher Console"
 msgstr "Console enseignant"
 
 #. Menu item to change the current Course
-#: src/plm/core/ui/MainFrame.java:225 src/plm/core/ui/MainFrame.java:678
+#: src/plm/core/ui/MainFrame.java:228 src/plm/core/ui/MainFrame.java:681
 msgid "Choose your course"
 msgstr "Sélectionner un cours"
 
-#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:679
+#: src/plm/core/ui/MainFrame.java:247 src/plm/core/ui/MainFrame.java:682
 msgid "Quit"
 msgstr "Quitter"
 
 #. === Edit menu ===
-#: src/plm/core/ui/MainFrame.java:252 src/plm/core/ui/MainFrame.java:681
+#: src/plm/core/ui/MainFrame.java:255 src/plm/core/ui/MainFrame.java:684
 msgid "Session"
 msgstr "Session"
 
-#: src/plm/core/ui/MainFrame.java:257 src/plm/core/ui/MainFrame.java:683
+#: src/plm/core/ui/MainFrame.java:260 src/plm/core/ui/MainFrame.java:686
 msgid "Revert Exercise"
 msgstr "Recommencer l'exercice"
 
-#: src/plm/core/ui/MainFrame.java:260 src/plm/core/ui/MainFrame.java:684
+#: src/plm/core/ui/MainFrame.java:263 src/plm/core/ui/MainFrame.java:687
 msgid "Export Session Cache"
 msgstr "Exporter le cache de session"
 
-#: src/plm/core/ui/MainFrame.java:263 src/plm/core/ui/MainFrame.java:685
+#: src/plm/core/ui/MainFrame.java:266 src/plm/core/ui/MainFrame.java:688
 msgid "Import Session Cache"
 msgstr "Importer le cache de session"
 
-#: src/plm/core/ui/MainFrame.java:268 src/plm/core/ui/MainFrame.java:686
+#: src/plm/core/ui/MainFrame.java:271 src/plm/core/ui/MainFrame.java:689
 msgid "Export Session Cache to Cloud"
 msgstr "Exporter la session dans le cloud"
 
-#: src/plm/core/ui/MainFrame.java:271 src/plm/core/ui/MainFrame.java:687
+#: src/plm/core/ui/MainFrame.java:274 src/plm/core/ui/MainFrame.java:690
 msgid "Import Session Cache from Cloud"
 msgstr "Importer la session depuis le cloud"
 
-#: src/plm/core/ui/MainFrame.java:277 src/plm/core/ui/MainFrame.java:689
+#: src/plm/core/ui/MainFrame.java:280 src/plm/core/ui/MainFrame.java:692
 msgid "Debug mode"
 msgstr "Mode débogage"
 
-#: src/plm/core/ui/MainFrame.java:288 src/plm/core/ui/MainFrame.java:690
+#: src/plm/core/ui/MainFrame.java:291 src/plm/core/ui/MainFrame.java:693
 msgid "Creative mode"
 msgstr "Mode créatif"
 
 #. === Language menu ===
-#: src/plm/core/ui/MainFrame.java:301 src/plm/core/ui/MainFrame.java:693
+#: src/plm/core/ui/MainFrame.java:304 src/plm/core/ui/MainFrame.java:696
 msgid "Language"
 msgstr "Langage"
 
 #. === Programming language changing ===
-#: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:694
+#: src/plm/core/ui/MainFrame.java:309 src/plm/core/ui/MainFrame.java:697
 msgid "Human"
 msgstr "Humain"
 
-#: src/plm/core/ui/MainFrame.java:320 src/plm/core/ui/MainFrame.java:695
+#: src/plm/core/ui/MainFrame.java:323 src/plm/core/ui/MainFrame.java:698
 msgid "Computer"
 msgstr "Ordinateur"
 
 #. === Help menu ===
-#: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:697
+#: src/plm/core/ui/MainFrame.java:327 src/plm/core/ui/MainFrame.java:700
 msgid "Help"
 msgstr "Aide"
 
-#: src/plm/core/ui/MainFrame.java:328 src/plm/core/ui/MainFrame.java:698
+#: src/plm/core/ui/MainFrame.java:331 src/plm/core/ui/MainFrame.java:701
 msgid "Provide feedback"
 msgstr "Rapport d'anomalie"
 
-#: src/plm/core/ui/MainFrame.java:338 src/plm/core/ui/MainFrame.java:699
+#: src/plm/core/ui/MainFrame.java:341 src/plm/core/ui/MainFrame.java:702
 msgid "About this lesson"
 msgstr "À propos de cette leçon"
 
-#: src/plm/core/ui/MainFrame.java:351 src/plm/core/ui/MainFrame.java:700
+#: src/plm/core/ui/MainFrame.java:354 src/plm/core/ui/MainFrame.java:703
 msgid "About this world"
 msgstr "À propos de ce monde"
 
-#: src/plm/core/ui/MainFrame.java:367 src/plm/core/ui/MainFrame.java:702
+#: src/plm/core/ui/MainFrame.java:370 src/plm/core/ui/MainFrame.java:705
 msgid "About PLM"
 msgstr "À propos de PLM"
 
 #. Buttons
-#: src/plm/core/ui/MainFrame.java:400 src/plm/core/ui/MainFrame.java:663
+#: src/plm/core/ui/MainFrame.java:403 src/plm/core/ui/MainFrame.java:666
 msgid "Run"
 msgstr "Exécuter"
 
-#: src/plm/core/ui/MainFrame.java:404 src/plm/core/ui/MainFrame.java:504
-#: src/plm/core/ui/MainFrame.java:664
+#: src/plm/core/ui/MainFrame.java:407 src/plm/core/ui/MainFrame.java:507
+#: src/plm/core/ui/MainFrame.java:667
 msgid "Step"
 msgstr "Un pas"
 
-#: src/plm/core/ui/MainFrame.java:409 src/plm/core/ui/MainFrame.java:665
+#: src/plm/core/ui/MainFrame.java:412 src/plm/core/ui/MainFrame.java:668
 msgid "Stop"
 msgstr "Stop"
 
-#: src/plm/core/ui/MainFrame.java:415 src/plm/core/ui/MainFrame.java:666
+#: src/plm/core/ui/MainFrame.java:418 src/plm/core/ui/MainFrame.java:669
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: src/plm/core/ui/MainFrame.java:421 src/plm/core/ui/MainFrame.java:667
+#: src/plm/core/ui/MainFrame.java:424 src/plm/core/ui/MainFrame.java:670
 msgid "Demo"
 msgstr "Démo"
 
-#: src/plm/core/ui/MainFrame.java:427 src/plm/core/ui/MainFrame.java:668
+#: src/plm/core/ui/MainFrame.java:430 src/plm/core/ui/MainFrame.java:671
 #: src/plm/core/ui/action/HelpMe.java:37
 msgid "Call for Help"
 msgstr "Appeler à l'aide"
 
-#: src/plm/core/ui/MainFrame.java:489
+#: src/plm/core/ui/MainFrame.java:492
 msgid "Next"
 msgstr "Suivant"
 
-#: src/plm/core/ui/MainFrame.java:682
+#: src/plm/core/ui/MainFrame.java:685
 msgid "Lesson related functions"
 msgstr "Fonctions relatives aux leçons"
 
@@ -1217,23 +1217,23 @@ msgstr "Composer votre code ici"
 msgid "<img> tag without src attribute in exercise {0}"
 msgstr "Tag <img> sans attribut src dans l''exercice {0}."
 
-#: src/plm/core/ui/StatusBar.java:113
+#: src/plm/core/ui/StatusBar.java:117
 msgid "Saving"
 msgstr "Sauvegarde"
 
-#: src/plm/core/ui/StatusBar.java:117
+#: src/plm/core/ui/StatusBar.java:122
 msgid "Compiling"
 msgstr "Compilation"
 
-#: src/plm/core/ui/StatusBar.java:131
+#: src/plm/core/ui/StatusBar.java:138
 msgid "Running "
 msgstr "Exécution de "
 
-#: src/plm/core/ui/StatusBar.java:135
+#: src/plm/core/ui/StatusBar.java:143
 msgid "Playing demo "
 msgstr "Exécution de la démo "
 
-#: src/plm/core/ui/StatusBar.java:139
+#: src/plm/core/ui/StatusBar.java:148
 msgid "Loading "
 msgstr "Chargement de "
 
@@ -1260,7 +1260,7 @@ msgstr ""
 msgid "Export success"
 msgstr "Export réussi"
 
-#: src/plm/core/ui/action/ExportCloudSession.java:131
+#: src/plm/core/ui/action/ExportCloudSession.java:132
 #, java-format
 msgid ""
 "<html>Export to cloud failed.<br/>{0}<br/>Caution! Your session is not saved "
@@ -1269,7 +1269,7 @@ msgstr ""
 "<html>L''export de votre session dans le cloud a échoué.<br/>{0}<br/"
 ">Attention! Votre session n''est pas encore sauvegardée.</html>"
 
-#: src/plm/core/ui/action/ExportCloudSession.java:132
+#: src/plm/core/ui/action/ExportCloudSession.java:133
 msgid "Export error"
 msgstr "Erreur d'export"
 
@@ -1277,28 +1277,36 @@ msgstr "Erreur d'export"
 msgid "Cancel call"
 msgstr "Annuler l'appel"
 
-#: src/plm/core/ui/action/ImportCloudSession.java:131
+#: src/plm/core/ui/action/ImportCloudSession.java:84
+msgid "Download failed - Please check the code you entered."
+msgstr "Erreur de téléchargement. Veuillez vérifier le code fourni."
+
+#: src/plm/core/ui/action/ImportCloudSession.java:133
 msgid "Please enter your personal code to retrieve your session"
 msgstr "Veuillez entrer votre code personnel pour sauvegarder la session"
 
-#: src/plm/core/ui/action/ImportCloudSession.java:132
+#: src/plm/core/ui/action/ImportCloudSession.java:134
 msgid "Session code"
 msgstr "Code de la session"
 
-#: src/plm/core/ui/action/ImportCloudSession.java:150
+#: src/plm/core/ui/action/ImportCloudSession.java:153
 msgid "Your session has been successfully imported."
 msgstr "Votre session a été importée avec succès."
 
-#: src/plm/core/ui/action/ImportCloudSession.java:151
+#: src/plm/core/ui/action/ImportCloudSession.java:154
 msgid "Importation suceeded"
 msgstr "Import réussi"
 
-#: src/plm/core/ui/action/ImportCloudSession.java:155
+#: src/plm/core/ui/action/ImportCloudSession.java:156
+msgid "Something unexpected went wrong during downloading"
+msgstr "Une erreur inattendue s'est produite pendant le téléchargement."
+
+#: src/plm/core/ui/action/ImportCloudSession.java:161
 #, java-format
 msgid "A {0} exception occured while importing your session: {1}"
 msgstr "Une exception {0} s''est produite lors de l''import de la session: {1}"
 
-#: src/plm/core/ui/action/ImportCloudSession.java:156
+#: src/plm/core/ui/action/ImportCloudSession.java:162
 msgid "Importation error"
 msgstr "Erreur d'import"
 
@@ -1937,24 +1945,38 @@ msgstr "setValeur"
 msgid "copy"
 msgstr "copie"
 
-#: src/plm/universe/sort/SortingWorld.java:109
+#: src/plm/universe/sort/SortingWorld.java:112
 #, java-format
 msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
-msgstr "C'est très bizarre. Il n'y a pas le même nombre de valeurs! J'en attendais {0}, mais j'en ai {1}\n"
+msgstr ""
+"C'est très bizarre. Il n'y a pas le même nombre de valeurs! J'en attendais "
+"{0}, mais j'en ai {1}\n"
 
-#: src/plm/universe/sort/SortingWorld.java:112
+#: src/plm/universe/sort/SortingWorld.java:115
 #, java-format
 msgid "Invalid read count. Expected: {0}; Found: {1}\n"
 msgstr "Le nombre de lectures diffère. Attendu : {0}; Observé : {1}\n"
 
-#: src/plm/universe/sort/SortingWorld.java:115
+#: src/plm/universe/sort/SortingWorld.java:118
 #, java-format
 msgid "Invalid write count. Expected: {0}; Found: {1}\n"
 msgstr "Le nombre d'écritures diffère. Attendu : {0}; Observé : {1}\n"
 
-#: src/plm/universe/sort/SortingWorld.java:119
+#: src/plm/universe/sort/SortingWorld.java:122
 #, java-format
 msgid "Value at index {0} differs. Expected {1}; Found {2}\n"
 msgstr "Les valeurs à l'index {0} diffère. Attendue : {0}; Observée : {1}\n"
+
+#: src/plm/universe/sort/SortingWorld.java:348
+#: src/plm/universe/sort/SortingWorld.java:349
+#, java-format
+msgid "Out of bounds in swap({0},{1}): {2}<0"
+msgstr "Dépassement des bornes à l'appel de  echange({0},{1}) : {2}<0"
+
+#: src/plm/universe/sort/SortingWorld.java:350
+#: src/plm/universe/sort/SortingWorld.java:351
+#, java-format
+msgid "Out of bounds in swap({0},{1}): {2}>value count"
+msgstr "Dépassement des bornes à l'appel de  echange({0},{1}) : {2}>nombre de valeurs"
