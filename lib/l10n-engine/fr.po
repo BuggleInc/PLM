@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-12 21:44+0200\n"
+"POT-Creation-Date: 2013-09-16 13:11+0200\n"
 "PO-Revision-Date: 2013-09-12 21:47+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
@@ -829,7 +829,8 @@ msgstr "À propos de PLM"
 msgid "Close"
 msgstr "Fermer"
 
-#: src/plm/core/ui/AboutWorldDialog.java:32
+#: src/plm/core/ui/AboutWorldDialog.java:31
+#: src/plm/core/ui/AboutWorldDialog.java:50
 #, java-format
 msgid "About world - {0}"
 msgstr "À propos du monde - {0}"
@@ -1061,7 +1062,7 @@ msgstr "Endroit ou les erreurs et autres messages sont écrits"
 #. === FILE menu ===
 #. for now: leave the calls to i18n.tr: that way one is sure to get all the localized strings...
 #. Menus
-#: src/plm/core/ui/MainFrame.java:154 src/plm/core/ui/MainFrame.java:670
+#: src/plm/core/ui/MainFrame.java:154 src/plm/core/ui/MainFrame.java:672
 msgid "File"
 msgstr "Fichier"
 
@@ -1069,132 +1070,132 @@ msgstr "Fichier"
 msgid "File related functions"
 msgstr "Fonction relatives à la gestion de fichiers"
 
-#: src/plm/core/ui/MainFrame.java:159 src/plm/core/ui/MainFrame.java:671
+#: src/plm/core/ui/MainFrame.java:159 src/plm/core/ui/MainFrame.java:673
 msgid "Load lesson"
 msgstr "Charger Leçon"
 
-#: src/plm/core/ui/MainFrame.java:181 src/plm/core/ui/MainFrame.java:672
+#: src/plm/core/ui/MainFrame.java:181 src/plm/core/ui/MainFrame.java:674
 msgid "Switch lesson"
 msgstr "Sélectionner une leçon"
 
-#: src/plm/core/ui/MainFrame.java:193 src/plm/core/ui/MainFrame.java:439
-#: src/plm/core/ui/MainFrame.java:667 src/plm/core/ui/MainFrame.java:673
+#: src/plm/core/ui/MainFrame.java:193 src/plm/core/ui/MainFrame.java:441
+#: src/plm/core/ui/MainFrame.java:669 src/plm/core/ui/MainFrame.java:675
 msgid "Switch exercise"
 msgstr "Changer d'exercice"
 
-#: src/plm/core/ui/MainFrame.java:206 src/plm/core/ui/MainFrame.java:675
+#: src/plm/core/ui/MainFrame.java:206 src/plm/core/ui/MainFrame.java:677
 msgid "Teacher Console"
 msgstr "Console enseignant"
 
 #. Menu item to change the current Course
-#: src/plm/core/ui/MainFrame.java:225 src/plm/core/ui/MainFrame.java:676
+#: src/plm/core/ui/MainFrame.java:225 src/plm/core/ui/MainFrame.java:678
 msgid "Choose your course"
 msgstr "Sélectionner un cours"
 
-#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:677
+#: src/plm/core/ui/MainFrame.java:244 src/plm/core/ui/MainFrame.java:679
 msgid "Quit"
 msgstr "Quitter"
 
 #. === Edit menu ===
-#: src/plm/core/ui/MainFrame.java:252 src/plm/core/ui/MainFrame.java:679
+#: src/plm/core/ui/MainFrame.java:252 src/plm/core/ui/MainFrame.java:681
 msgid "Session"
 msgstr "Session"
 
-#: src/plm/core/ui/MainFrame.java:257 src/plm/core/ui/MainFrame.java:681
+#: src/plm/core/ui/MainFrame.java:257 src/plm/core/ui/MainFrame.java:683
 msgid "Revert Exercise"
 msgstr "Recommencer l'exercice"
 
-#: src/plm/core/ui/MainFrame.java:260 src/plm/core/ui/MainFrame.java:682
+#: src/plm/core/ui/MainFrame.java:260 src/plm/core/ui/MainFrame.java:684
 msgid "Export Session Cache"
 msgstr "Exporter le cache de session"
 
-#: src/plm/core/ui/MainFrame.java:263 src/plm/core/ui/MainFrame.java:683
+#: src/plm/core/ui/MainFrame.java:263 src/plm/core/ui/MainFrame.java:685
 msgid "Import Session Cache"
 msgstr "Importer le cache de session"
 
-#: src/plm/core/ui/MainFrame.java:268 src/plm/core/ui/MainFrame.java:684
+#: src/plm/core/ui/MainFrame.java:268 src/plm/core/ui/MainFrame.java:686
 msgid "Export Session Cache to Cloud"
 msgstr "Exporter la session dans le cloud"
 
-#: src/plm/core/ui/MainFrame.java:271 src/plm/core/ui/MainFrame.java:685
+#: src/plm/core/ui/MainFrame.java:271 src/plm/core/ui/MainFrame.java:687
 msgid "Import Session Cache from Cloud"
 msgstr "Importer la session depuis le cloud"
 
-#: src/plm/core/ui/MainFrame.java:277 src/plm/core/ui/MainFrame.java:687
+#: src/plm/core/ui/MainFrame.java:277 src/plm/core/ui/MainFrame.java:689
 msgid "Debug mode"
 msgstr "Mode débogage"
 
-#: src/plm/core/ui/MainFrame.java:288 src/plm/core/ui/MainFrame.java:688
+#: src/plm/core/ui/MainFrame.java:288 src/plm/core/ui/MainFrame.java:690
 msgid "Creative mode"
 msgstr "Mode créatif"
 
 #. === Language menu ===
-#: src/plm/core/ui/MainFrame.java:301 src/plm/core/ui/MainFrame.java:691
+#: src/plm/core/ui/MainFrame.java:301 src/plm/core/ui/MainFrame.java:693
 msgid "Language"
 msgstr "Langage"
 
 #. === Programming language changing ===
-#: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:692
+#: src/plm/core/ui/MainFrame.java:306 src/plm/core/ui/MainFrame.java:694
 msgid "Human"
 msgstr "Humain"
 
-#: src/plm/core/ui/MainFrame.java:320 src/plm/core/ui/MainFrame.java:693
+#: src/plm/core/ui/MainFrame.java:320 src/plm/core/ui/MainFrame.java:695
 msgid "Computer"
 msgstr "Ordinateur"
 
 #. === Help menu ===
-#: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:695
+#: src/plm/core/ui/MainFrame.java:324 src/plm/core/ui/MainFrame.java:697
 msgid "Help"
 msgstr "Aide"
 
-#: src/plm/core/ui/MainFrame.java:328 src/plm/core/ui/MainFrame.java:696
+#: src/plm/core/ui/MainFrame.java:328 src/plm/core/ui/MainFrame.java:698
 msgid "Provide feedback"
 msgstr "Rapport d'anomalie"
 
-#: src/plm/core/ui/MainFrame.java:338 src/plm/core/ui/MainFrame.java:697
+#: src/plm/core/ui/MainFrame.java:338 src/plm/core/ui/MainFrame.java:699
 msgid "About this lesson"
 msgstr "À propos de cette leçon"
 
-#: src/plm/core/ui/MainFrame.java:351 src/plm/core/ui/MainFrame.java:698
+#: src/plm/core/ui/MainFrame.java:351 src/plm/core/ui/MainFrame.java:700
 msgid "About this world"
 msgstr "À propos de ce monde"
 
-#: src/plm/core/ui/MainFrame.java:367 src/plm/core/ui/MainFrame.java:700
+#: src/plm/core/ui/MainFrame.java:367 src/plm/core/ui/MainFrame.java:702
 msgid "About PLM"
 msgstr "À propos de PLM"
 
 #. Buttons
-#: src/plm/core/ui/MainFrame.java:400 src/plm/core/ui/MainFrame.java:661
+#: src/plm/core/ui/MainFrame.java:400 src/plm/core/ui/MainFrame.java:663
 msgid "Run"
 msgstr "Exécuter"
 
-#: src/plm/core/ui/MainFrame.java:404 src/plm/core/ui/MainFrame.java:502
-#: src/plm/core/ui/MainFrame.java:662
+#: src/plm/core/ui/MainFrame.java:404 src/plm/core/ui/MainFrame.java:504
+#: src/plm/core/ui/MainFrame.java:664
 msgid "Step"
 msgstr "Un pas"
 
-#: src/plm/core/ui/MainFrame.java:409 src/plm/core/ui/MainFrame.java:663
+#: src/plm/core/ui/MainFrame.java:409 src/plm/core/ui/MainFrame.java:665
 msgid "Stop"
 msgstr "Stop"
 
-#: src/plm/core/ui/MainFrame.java:415 src/plm/core/ui/MainFrame.java:664
+#: src/plm/core/ui/MainFrame.java:415 src/plm/core/ui/MainFrame.java:666
 msgid "Reset"
 msgstr "Réinitialiser"
 
-#: src/plm/core/ui/MainFrame.java:421 src/plm/core/ui/MainFrame.java:665
+#: src/plm/core/ui/MainFrame.java:421 src/plm/core/ui/MainFrame.java:667
 msgid "Demo"
 msgstr "Démo"
 
-#: src/plm/core/ui/MainFrame.java:427 src/plm/core/ui/MainFrame.java:666
+#: src/plm/core/ui/MainFrame.java:427 src/plm/core/ui/MainFrame.java:668
 #: src/plm/core/ui/action/HelpMe.java:37
 msgid "Call for Help"
 msgstr "Appeler à l'aide"
 
-#: src/plm/core/ui/MainFrame.java:487
+#: src/plm/core/ui/MainFrame.java:489
 msgid "Next"
 msgstr "Suivant"
 
-#: src/plm/core/ui/MainFrame.java:680
+#: src/plm/core/ui/MainFrame.java:682
 msgid "Lesson related functions"
 msgstr "Fonctions relatives aux leçons"
 
@@ -1764,17 +1765,17 @@ msgstr ""
 "Erreur de syntaxe. J''attendais la description d''une cellule ou d''un "
 "buggle mais j''ai eu : {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:542
+#: src/plm/universe/bugglequest/BuggleWorld.java:551
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr "  Le nom du monde est {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:546
+#: src/plm/universe/bugglequest/BuggleWorld.java:555
 #, java-format
 msgid "  In ({0},{1})"
 msgstr "  En ({0},{1})"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:549
+#: src/plm/universe/bugglequest/BuggleWorld.java:558
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr "  Il y a quelque chose qui cloche avec la buggle «{0}»:\n"
