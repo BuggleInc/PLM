@@ -345,10 +345,10 @@ public class SortingWorld extends World {
 	 * @param j the index of the second cell concerned
 	 */
 	public void swap(int i, int j) {
-		if (i<0) throw new RuntimeException("Out of bounds in swap("+i+","+j+"): "+i+"<0");
-		if (j<0) throw new RuntimeException("Out of bounds in swap("+i+","+j+"): "+j+"<0");
-		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+i+">= value count");
-		if (j>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+j+">= value count");
+		if (i<0) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,i));
+		if (j<0) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,j));
+		if (i>=getValueCount()) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,i));
+		if (j>=getValueCount()) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,j));
 
 		this.operations.add(new Swap(i, j));
 
