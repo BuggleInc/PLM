@@ -39,7 +39,7 @@ public class ImportCloudSession extends AbstractGameAction {
 		this.parent = parent;
 	}
 
-	private void downloadSessionPackage(String fileID, File destFile) throws IOException {
+	private void downloadSessionPackage(String fileID, File destFile) throws Exception {
 		HttpClient client = null;
 
 		try {
@@ -80,6 +80,8 @@ public class ImportCloudSession extends AbstractGameAction {
 							get.abort();
 					}
 				}
+			} else {
+				throw new Exception(i18n.tr("Download failed - Please check the code you entered."));
 			}
 		} finally {
 			if (client != null)
@@ -141,16 +143,20 @@ public class ImportCloudSession extends AbstractGameAction {
 			tmpFile = FileUtils.createTemporaryFilename();
 
 			downloadSessionPackage(fileID, tmpFile);
-			unzipSessionPackage(tmpFile, tmpDir);
+			if (! tmpFile.exists()) {
+				unzipSessionPackage(tmpFile, tmpDir);
 
-			ZipSessionKit kit = new ZipSessionKit(this.game);
-			kit.loadAll(tmpDir);
+				ZipSessionKit kit = new ZipSessionKit(this.game);
+				kit.loadAll(tmpDir);
 
-			JOptionPane.showMessageDialog(this.parent,
+				JOptionPane.showMessageDialog(this.parent,
 					i18n.tr("Your session has been successfully imported."),
 					i18n.tr("Importation suceeded"), JOptionPane.INFORMATION_MESSAGE);
+			} else {
+				throw new Exception(i18n.tr("Something unexpected went wrong during downloading"));
+			}
 
-		} catch (IOException ex) {
+		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this.parent,
 					i18n.tr("A {0} exception occured while importing your session: {1}"+ex.getClass().getName(),ex.getLocalizedMessage()), 
 					i18n.tr("Importation error"),

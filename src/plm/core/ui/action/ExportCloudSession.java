@@ -127,6 +127,7 @@ public class ExportCloudSession extends AbstractGameAction {
 					JOptionPane.INFORMATION_MESSAGE
 					);			
 		} catch (Exception ex) {
+			//TODO: ex.printStackTrace() should be log in debug mode
 			JOptionPane.showMessageDialog(this.parent,
 					Game.i18n.tr("<html>Export to cloud failed.<br/>{0}<br/>Caution! Your session is not saved yet.</html>",ex.getMessage()),
 				    Game.i18n.tr("Export error"),
