@@ -1,3 +1,6 @@
+20130917: Release 2.2.6b
+
+
 20130916: Release 2.2.5: SortingWorld needs *more* polishing.
 
   * Align equals() and diffTo() of sortedWorld to avoid false negatives
