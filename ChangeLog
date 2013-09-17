@@ -1,5 +1,7 @@
 20130917: Release 2.2.6b
 
+  * SortingView: display the value on the left of temporal view, not
+    the index
 
 20130916: Release 2.2.5: SortingWorld needs *more* polishing.
 
