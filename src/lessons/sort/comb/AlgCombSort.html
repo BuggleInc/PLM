@@ -23,7 +23,7 @@ do
 while the gap is bigger than 1 or the last traversal swapped at least one pair
 </pre>
 
-[!scala]<p>One tricky part is that we want to divide gap, that is an integer, by 1.3, that is a double.
+[!scala]<p>One tricky part is that we want to divide gap, that is an integer (of type Int), by 1.3, that is a Double.
 The type system of scala won't let us do this, because such discrepancy usually denotes a programmer error.
 As this is not an error this time, we have to convert gap to Double for the time of the operation, 
 and then convert the result back to Int to store it into gap. This should be written this way:</p>
