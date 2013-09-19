@@ -80,6 +80,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 	@Override
 	public void loadHTMLMission() {
 		StringBuffer res = new StringBuffer();
+		int exoCount = 0;
 		for (Lecture l : getLesson().exercises()) {
 			int iconSize=100;
 			Exercise exo = (Exercise) l;
@@ -129,6 +130,9 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 			res.append("<img src=\"");
 			res.append(path);
 			res.append("\"></a> ");
+			exoCount++;
+			if (exoCount % 5 == 0)
+				res.append("<br> ");
 		}
 		setMission(res.toString());
 	}

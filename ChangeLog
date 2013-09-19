@@ -2,6 +2,8 @@
 
   * SortingView: display the value on the left of temporal view, not
     the index
+  * TurtleArt: force a newline every 5 exercises as it does not work
+    well with Java7 otherwise.
   * As usual, fix a bunch of typos in the French translation
 
 20130916: Release 2.2.5: SortingWorld needs *more* polishing.
