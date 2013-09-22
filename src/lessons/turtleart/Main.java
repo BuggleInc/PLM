@@ -45,6 +45,7 @@ public class Main extends Lesson {
 		addExercise(new TurtleGraphicalExercise(this,"DiskFour",     300,300, 150,150));
 		addExercise(new TurtleGraphicalExercise(this,"DiskTwo",      300,300, 150,150));
 		addExercise(new TurtleGraphicalExercise(this,"Star",         300,300, 150,200));
+		addExercise(new TurtleGraphicalExercise(this,"Flower",       300,300, 90, 175));
 		
 		setCurrentExercise(currentExercise); // recompute the missions
 	}
