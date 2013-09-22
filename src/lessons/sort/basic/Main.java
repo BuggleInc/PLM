@@ -1,4 +1,4 @@
-package lessons.sort;
+package lessons.sort.basic;
 
 import lessons.sort.basic.bubble.AlgBubbleSort1;
 import lessons.sort.basic.bubble.AlgBubbleSort2;
