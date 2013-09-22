@@ -1,18 +1,18 @@
 package lessons.sort;
 
+import lessons.sort.basic.bubble.AlgBubbleSort1;
+import lessons.sort.basic.bubble.AlgBubbleSort2;
+import lessons.sort.basic.bubble.AlgBubbleSort3;
+import lessons.sort.basic.cocktail.AlgCocktailSort1;
+import lessons.sort.basic.cocktail.AlgCocktailSort2;
+import lessons.sort.basic.cocktail.AlgCocktailSort3;
+import lessons.sort.basic.comb.AlgCombSort;
+import lessons.sort.basic.comb.AlgCombSort11;
+import lessons.sort.basic.gnome.AlgGnomeSort;
+import lessons.sort.basic.insertion.AlgInsertionSort;
+import lessons.sort.basic.selection.AlgSelectionSort;
+import lessons.sort.basic.shell.AlgShellSort;
 import plm.core.model.lesson.Lesson;
-import lessons.sort.bubble.AlgBubbleSort1;
-import lessons.sort.bubble.AlgBubbleSort2;
-import lessons.sort.bubble.AlgBubbleSort3;
-import lessons.sort.cocktail.AlgCocktailSort1;
-import lessons.sort.cocktail.AlgCocktailSort2;
-import lessons.sort.cocktail.AlgCocktailSort3;
-import lessons.sort.comb.AlgCombSort;
-import lessons.sort.comb.AlgCombSort11;
-import lessons.sort.gnome.AlgGnomeSort;
-import lessons.sort.insertion.AlgInsertionSort;
-import lessons.sort.selection.AlgSelectionSort;
-import lessons.sort.shell.AlgShellSort;
 
 // see http://www.cs.ubc.ca/~harrison/Java/sorting-demo.html
 
