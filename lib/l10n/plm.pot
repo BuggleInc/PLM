@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-18 14:43+0300\n"
+"POT-Creation-Date: 2013-09-22 20:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -389,7 +389,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:47 src/lessons/sort/bubble/AlgBubbleSort1.html:18
+#: src/plm/universe/sort/SortingWorld.html:47 src/lessons/sort/basic/bubble/AlgBubbleSort1.html:18
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -1743,7 +1743,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:77 src/lessons/welcome/variables/Variables.html:146 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:36 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:38 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:77 src/lessons/welcome/variables/Variables.html:146 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:36 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/basic/comb/AlgCombSort.html:38 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
 msgid "[/!]"
 msgstr ""
 
@@ -5700,12 +5700,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/sort/Main.html:1 src/lessons/sort/short_desc.html:1
+#: src/lessons/sort/basic/Main.html:1 src/lessons/sort/basic/short_desc.html:1
 msgid "Sorting Algorithms"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/Main.html:3
+#: src/lessons/sort/basic/Main.html:3
 msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
 "some less common variant of them). The goal is two fold: you can first "
@@ -5716,7 +5716,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/Main.html:10
+#: src/lessons/sort/basic/Main.html:10
 msgid ""
 "More exercises are planned for the future, on recursive sorting algorithms "
 "(such as QuickSort and MergeSort) or using other microworlds to apply these "
@@ -5724,24 +5724,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/short_desc.html:3
+#: src/lessons/sort/basic/short_desc.html:3
 msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
 "some less common variant of them :)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/short_desc.html:6 src/lessons/recursion/short_desc.html:5 src/lessons/maze/short_desc.html:5
+#: src/lessons/sort/basic/short_desc.html:6 src/lessons/recursion/short_desc.html:5 src/lessons/maze/short_desc.html:5
 msgid "You are supposed to master the bases of programming to take this lesson."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:1
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:1
 msgid "BubbleSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:3
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:3
 msgid ""
 "Welcome to the sorting universe. It allows you to experiment with the "
 "existing sorting algorithms. The list of buildins that you can use in your "
@@ -5750,7 +5750,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -5759,7 +5759,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:12
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:12
 msgid ""
 "When your algorithm diverges from the expectation, understanding the "
 "difference between your code and the expected solution can reveal very "
@@ -5770,12 +5770,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:27
 msgid "First attempt at BubbleSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:29
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -5790,17 +5790,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:39 src/lessons/sort/bubble/AlgBubbleSort2.html:11
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:39 src/lessons/sort/basic/bubble/AlgBubbleSort2.html:11
 msgid "Show Tip (Pseudo-code)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
@@ -5810,12 +5810,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:1
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:1
 msgid "BubbleSort (take 2)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:3
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:3
 msgid ""
 "If you look carefully at the behavior of BubbleSort, a first easy "
 "optimization appears: after one traversal, the last element of the array "
@@ -5827,12 +5827,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:12
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:12
 msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:13
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:13
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5841,7 +5841,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:19
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:19
 msgid ""
 "When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
@@ -5854,7 +5854,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:28
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:28
 msgid ""
 "From the asymptotic complexity point of view, there is absolutely no "
 "difference: this variation is still in O(n^2) on average (our gain is only "
@@ -5862,12 +5862,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:1
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:1
 msgid "BubbleSort (take 3)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:3
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:3
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
@@ -5875,7 +5875,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:8
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:8
 msgid ""
 "[!java|python]For that, simply use the <code>break</code> keyword, which "
 "breaks the current loop.  Beware, if you have several embedded loops, this "
@@ -5885,12 +5885,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:13
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:13
 msgid "If you want, this tip shows the pseudo-code."
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:15
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:15
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5900,19 +5900,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:22
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:22
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:1
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:1
 msgid "CocktailSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:3
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:3
 msgid ""
 "To improve further the BubbleSort algorithm, we need to look closer its "
 "behavior. One can notice that big elements are moved very quickly in "
@@ -5922,7 +5922,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:9
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:9
 msgid ""
 "To help the turtles moving faster, the cocktail sort traverse alternatively "
 "the array from right to left and from left to right. Here is the "
@@ -5930,7 +5930,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:14
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:14
 #, no-wrap
 msgid ""
 "Do\n"
@@ -5942,7 +5942,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:22
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:22
 msgid ""
 "One can see that cocktail sort achieves exactly the same amount of swaps "
 "than the bubble sort, but improves slightly on read amount. It is however "
@@ -5950,12 +5950,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:1
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:1
 msgid "CocktailSort (take 2)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:3
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:3
 msgid ""
 "We will now apply to CocktailSort the same optimization than BubbleSort2 did "
 "to BubbleSort. We must remember the limits of the array part not being "
@@ -5964,7 +5964,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:8
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:8
 #, no-wrap
 msgid ""
 "beg=0; end=len-2\n"
@@ -5979,12 +5979,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail/AlgCocktailSort3.html:1
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:1
 msgid "CocktailSort (take 3)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort3.html:3
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:3
 msgid ""
 "Even if the asymptotic complexity of CocktailSort2 is the same than the one "
 "of BubbleSort, it seem to perform better in practice. It is even possible to "
@@ -5995,12 +5995,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:1
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:1
 msgid "InsertionSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:4
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:4
 msgid ""
 "This sorting algorithm is quite simple to understand and write, even if it "
 "is not as efficient as possible. Its asymptotic complexity is in O(n2), but "
@@ -6009,7 +6009,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:9
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:9
 msgid ""
 "The idea is to traverse all elements of the array, and to insert each of "
 "them into its proper position in the already sorted part of the array. When "
@@ -6019,17 +6019,17 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:17
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:17
 msgid "Once this is done, the situation is the following:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:21
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:21
 msgid "The pseudo-code of this algorithm is thus the following:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:22
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:22
 #, no-wrap
 msgid ""
 "For each i in [1,len-1]\n"
@@ -6043,14 +6043,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:32
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:32
 msgid ""
 "Naturally, you should use a loop to write the big permutation within the "
 "given loop. Writing it this way would be really ... counter-productive."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:35
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:35
 msgid ""
 "If you've always wondered what computer science researchers do nowadays, "
 "here is part of the answer: They improve fundamental algorithms so that "
@@ -6058,12 +6058,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:39
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:39
 msgid "Other variation of insertion sort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:41
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:41
 msgid ""
 "TreeSort builds a binary search tree to sort them. It leads to a O(n log(n))  "
 "on average, but O(n^2) in worst cases. We won't study this algorithm here "
@@ -6072,7 +6072,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:46
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:46
 msgid ""
 "There is other variations over the insertion sort, such as PatienceSort "
 "which builds piles of values and sort each pile afterward. This algorithm "
@@ -6083,19 +6083,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:53
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:53
 msgid ""
 "Wikipedia provides a detailled description of all these algorithms we cannot "
 "present here because of time constraints."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/shell/AlgShellSort.html:1
+#: src/lessons/sort/basic/shell/AlgShellSort.html:1
 msgid "ShellSort"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/shell/AlgShellSort.html:3
+#: src/lessons/sort/basic/shell/AlgShellSort.html:3
 msgid ""
 "This algorithm is named after its author, Donald Shell, who published it in "
 "1959. It can be seen as an application of the CombSort idea (let elements "
@@ -6110,14 +6110,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/shell/AlgShellSort.html:14
+#: src/lessons/sort/basic/shell/AlgShellSort.html:14
 msgid ""
 "Donald Shell propose <code>len/2</code> as initial value of the gap, and "
 "then to divide it by 2 at each step. The pseudo-code is thus the following:"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/sort/shell/AlgShellSort.html:17
+#: src/lessons/sort/basic/shell/AlgShellSort.html:17
 #, no-wrap
 msgid ""
 "gap=len/2\n"
@@ -6127,7 +6127,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/shell/AlgShellSort.html:22
+#: src/lessons/sort/basic/shell/AlgShellSort.html:22
 msgid ""
 "Just like in CombSort, the sequence of values taken by the gap is crucial "
 "for Shell sort performance. In some rare pathological cases, the sequence we "
@@ -6141,7 +6141,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/shell/AlgShellSort.html:32
+#: src/lessons/sort/basic/shell/AlgShellSort.html:32
 msgid ""
 "In our case, the array are ways too small to benefit of these "
 "optimizations. If you ever need to do so, take as initial gap the biggest "
@@ -6150,7 +6150,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/shell/AlgShellSort.html:37
+#: src/lessons/sort/basic/shell/AlgShellSort.html:37
 msgid ""
 "Interestingly enough, determining the best gap sequence for shell sort turns "
 "into a research issue of our century in computer science. For example, an "
@@ -6162,19 +6162,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/selection/AlgSelectionSort.html:1
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:1
 msgid "Selection Sort"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/selection/AlgSelectionSort.html:3
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:3
 msgid ""
 "In this exercise we will implement another classical algorithm: selection "
 "sort."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/selection/AlgSelectionSort.html:6
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:6
 msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
@@ -6184,7 +6184,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/selection/AlgSelectionSort.html:12
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:12
 msgid ""
 "More generally, for the cell N, it looks the cell M in [n;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
@@ -6192,12 +6192,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><h2>
-#: src/lessons/sort/selection/AlgSelectionSort.html:16
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:16
 msgid "Existing variations"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/selection/AlgSelectionSort.html:17
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:17
 msgid ""
 "Another classical algorithm which idea is based on the selection of good "
 "elements is HeapSort, but it uses a heap data structure which we did not see "
@@ -6206,12 +6206,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/comb/AlgCombSort.html:1
+#: src/lessons/sort/basic/comb/AlgCombSort.html:1
 msgid "CombSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:3
+#: src/lessons/sort/basic/comb/AlgCombSort.html:3
 msgid ""
 "We saw that CocktailSort improve a bit for turtles (i.e. small values near "
 "to the end of the array), but it is still possible to achieve "
@@ -6226,7 +6226,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/comb/AlgCombSort.html:15
+#: src/lessons/sort/basic/comb/AlgCombSort.html:15
 #, no-wrap
 msgid ""
 "gap = len;\n"
@@ -6242,12 +6242,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/comb/AlgCombSort.html:26 src/lessons/maze/island/IslandMaze.html:66 src/lessons/welcome/bat/bool1/Max1020.html:5
+#: src/lessons/sort/basic/comb/AlgCombSort.html:26 src/lessons/maze/island/IslandMaze.html:66 src/lessons/welcome/bat/bool1/Max1020.html:5
 msgid "[!scala]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:26
+#: src/lessons/sort/basic/comb/AlgCombSort.html:26
 msgid ""
 "One tricky part is that we want to divide gap, that is an integer (of type "
 "Int), by 1.3, that is a Double.  The type system of scala won't let us do "
@@ -6258,13 +6258,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/comb/AlgCombSort.html:30
+#: src/lessons/sort/basic/comb/AlgCombSort.html:30
 #, no-wrap
 msgid "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:31
+#: src/lessons/sort/basic/comb/AlgCombSort.html:31
 msgid ""
 "This is rather verbose, but actually, this notation is not very complex. And "
 "remember that the type checker is your friend. It's picky and sometimes "
@@ -6274,13 +6274,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/comb/AlgCombSort.html:35
+#: src/lessons/sort/basic/comb/AlgCombSort.html:35
 #, no-wrap
 msgid "gap = (gap.toDouble / 1.3).toInt"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:36
+#: src/lessons/sort/basic/comb/AlgCombSort.html:36
 msgid ""
 "<code>toDouble</code> and <code>toInt</code> are just shortcuts for the "
 "corresponding expressions <code>asInstanceOf[Double]</code> and "
@@ -6288,7 +6288,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:40
+#: src/lessons/sort/basic/comb/AlgCombSort.html:40
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
@@ -6296,12 +6296,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/comb/AlgCombSort11.html:1
+#: src/lessons/sort/basic/comb/AlgCombSort11.html:1
 msgid "CombSort11"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort11.html:3
+#: src/lessons/sort/basic/comb/AlgCombSort11.html:3
 msgid ""
 "The authors of this algorithm observed that the performance is increased if "
 "we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, 1)  "
@@ -6311,12 +6311,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/gnome/AlgGnomeSort.html:1
+#: src/lessons/sort/basic/gnome/AlgGnomeSort.html:1
 msgid "GnomeSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/gnome/AlgGnomeSort.html:3
+#: src/lessons/sort/basic/gnome/AlgGnomeSort.html:3
 msgid ""
 "The Gnome sort is similar to insertion sort, but the elements are moved in "
 "position by a serie of swaps just like in bubble sort. It is named after the "
@@ -6325,7 +6325,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/gnome/AlgGnomeSort.html:8
+#: src/lessons/sort/basic/gnome/AlgGnomeSort.html:8
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower "
