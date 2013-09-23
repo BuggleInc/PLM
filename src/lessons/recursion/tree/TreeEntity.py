@@ -1,15 +1,36 @@
+colors = [Color.cyan,      Color.blue,   Color.magenta, 
+          Color.orange,    Color.yellow, Color.green,
+          Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red]
+
+def current(i):
+    if (i>=len(colors)):
+        setColor(Color.red)
+    else:
+        setColor(colors[i])
+
+def subtree(steps, length, angle, shrink):
+  if (steps != 0):
+    setColor(Color.black)
+    forward(length)
+    right(angle)
+    subtree(steps-1, length*shrink, angle, shrink)
+    left(2*angle)
+    subtree(steps-1, length*shrink, angle, shrink)
+    right(angle)
+    backward(length)
+
 # BEGIN TEMPLATE
 def tree(steps, length, angle, shrink):
   # BEGIN SOLUTION
-  if (steps <= 0):
-    pass# do nothing 
-  else:
+  if (steps != 0):
+    current(steps)
     forward(length)
     right(angle)
     tree(steps-1, length*shrink, angle, shrink)
     left(2*angle)
     tree(steps-1, length*shrink, angle, shrink)
     right(angle)
+    current(steps)
     backward(length)
   # END SOLUTION
 # END TEMPLATE
