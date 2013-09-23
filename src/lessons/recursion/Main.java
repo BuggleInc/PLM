@@ -8,7 +8,6 @@ import lessons.recursion.sierpinski.Sierpinski;
 import lessons.recursion.spiral.Spiral;
 import lessons.recursion.spiral.SpiralUse;
 import lessons.recursion.square.FourSquare;
-import lessons.recursion.star.Star;
 import lessons.recursion.tree.Tree;
 import plm.core.model.lesson.Lesson;
 
@@ -16,7 +15,6 @@ public class Main extends Lesson {
 	@Override
 	protected void loadExercises() {
 		addExercise(new FourSquare(this));
-		addExercise(new Star(this));
 		addExercise(new Spiral(this));
 		addExercise(new SpiralUse(this));
 		addExercise(new Tree(this));
