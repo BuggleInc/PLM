@@ -11,6 +11,7 @@
     when the stop is pressed, for example
   * TurtleWorld: order the points in each segment so that the line
     (ab, cd) is detected as equal to (cd, ab)
+  * recursion.Circle: kill exercise. It is superseeded by turtleart.
   * As usual, fix a bunch of typos in the French translation
 
 20130916: Release 2.2.5: SortingWorld needs *more* polishing.
