@@ -2014,7 +2014,7 @@ msgstr "Ce n'est pas une ligne."
 #: src/plm/universe/turtles/TurtleWorld.java:235
 #, java-format
 msgid "  There is only {0} shapes where {1} shapes were expected\n"
-msgstr "  Il n'y a que {0} formes là où {1} formes étaient attendues\n"
+msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
 #: src/plm/universe/turtles/TurtleWorld.java:238
 #, java-format
