@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
+import plm.core.model.Game;
+
 
 public class Line implements Shape {
 	public double x1, y1,  x2, y2;
@@ -70,23 +72,22 @@ public class Line implements Shape {
 		if (o instanceof Line) {
 			Line other = (Line) o;
 			if (!doubleEqual(x1,other.x1))
-				return "x1 differs";
+				return Game.i18n.tr("x1 differs.");
 			if (!doubleEqual(x2,other.x2))
-				return "x2 differs";
+				return Game.i18n.tr("x2 differs.");
 			if (!doubleEqual(y1,other.y1))
-				return "y1 differs";
+				return Game.i18n.tr("y1 differs.");
 			if (!doubleEqual(y2,other.y2))
-				return "y2 differs";
+				return Game.i18n.tr("y2 differs.");
 			if (!color.equals(other.color))
-				return "The color differs";
-			return "I dont see the difference";
+				return Game.i18n.tr("The color differs.");
+			return Game.i18n.tr("I dont see the difference (please report this bug).");
 		} else 
-			return "That's not a line";
+			return Game.i18n.tr("That's not a line.");
 	}
 	
 	@Override
 	public String toString(){
-		return "Line (x"+x1+" y"+y1+" / x"+x2+" y"+y2+")";
-		//return String.format("Line (%.3f, %.3f, %.3f, %.3f, %s)", x1,y1,x2,y2,plm.core.utils.ColorMapper.color2name(color));
+		return String.format("Line (x%.3f y%.3f / x%.3f y%.3f / %s)", x1,y1,x2,y2,plm.core.utils.ColorMapper.color2name(color));
 	}
 }

@@ -232,11 +232,12 @@ public class TurtleWorld extends World {
 			Collections.sort(shapes, cmp);
 			Collections.sort(other.shapes, cmp);
 			if (shapes.size() != other.shapes.size())
-				sb.append("  There is only "+other.shapes.size()+" lines where "+shapes.size()+" were expected.\n");
+				sb.append(Game.i18n.tr("  There is only {0} shapes where {1} shapes were expected\n",other.shapes.size()+shapes.size()));
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
-					sb.append("  Got "+other.shapes.get(i)+" where "+shapes.get(i)+" were expected ("+
-							((Shape) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
+					sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n",
+							((Shape) other.shapes.get(i)).diffTo(shapes.get(i)),
+							other.shapes.get(i),shapes.get(i)));
 		} }
 		return sb.toString();
 	}
