@@ -1,4 +1,4 @@
-20130917: Release 2.2.6b
+20130924: Release 2.2.6b
 
   * SortingView: display the value on the left of temporal view, not
     the index
@@ -9,6 +9,8 @@
     there is no previous pot instead of moving forward.
   * TurtleWorld.equals&diffTo: synchronized on shapes to avoid issues
     when the stop is pressed, for example
+  * TurtleWorld: order the points in each segment so that the line
+    (ab, cd) is detected as equal to (cd, ab)
   * As usual, fix a bunch of typos in the French translation
 
 20130916: Release 2.2.5: SortingWorld needs *more* polishing.

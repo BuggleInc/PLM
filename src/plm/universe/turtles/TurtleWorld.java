@@ -228,8 +228,9 @@ public class TurtleWorld extends World {
 		StringBuffer sb = new StringBuffer();
 		TurtleWorld other = (TurtleWorld) world;
 		synchronized (shapes) { synchronized (other.shapes) {
-			Collections.sort(shapes, new ShapeComparator());
-			Collections.sort(other.shapes, new ShapeComparator());
+			ShapeComparator cmp = new ShapeComparator();
+			Collections.sort(shapes, cmp);
+			Collections.sort(other.shapes, cmp);
 			if (shapes.size() != other.shapes.size())
 				sb.append("  There is only "+other.shapes.size()+" lines where "+shapes.size()+" were expected.\n");
 			for (int i=0;i<other.shapes.size();i++)
@@ -248,7 +249,7 @@ class ShapeComparator implements Comparator<Shape> {
 	}
 
 	int cmp(double a, double b) {
-		if (Math.abs(a-b)<0.000001)
+		if (Math.abs(a-b)<0.001)
 			return 0;
 		if (a<b)
 			return 1;
@@ -266,37 +267,36 @@ class ShapeComparator implements Comparator<Shape> {
 			Line l1 = (Line) s1;
 			Line l2 = (Line) s2;
 			
-			int cmp = cmp(l1.x1, l2.x1);
-			if (cmp != 0)
-				return cmp;
+			int res = cmp(l1.x1, l2.x1);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(l1.y1, l2.y1);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(l1.y1, l2.y1);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(l1.x2, l2.x2);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(l1.x2, l2.x2);
+			if (res != 0)
+				return res;
 
-			cmp = cmp(l1.y2, l2.y2);
-			return cmp;
+			return cmp(l1.y2, l2.y2);
 		}
 		
 		if (s1 instanceof Circle) {
 			Circle c1 = (Circle) s1;
 			Circle c2 = (Circle) s2;
 		
-			int cmp = cmp(c1.x, c2.x);
-			if (cmp != 0)
-				return cmp;
+			int res = cmp(c1.x, c2.x);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(c1.y, c2.y);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(c1.y, c2.y);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(c1.radius, c2.radius);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(c1.radius, c2.radius);
+			if (res != 0)
+				return res;
 		}
 		return 0;
 	}

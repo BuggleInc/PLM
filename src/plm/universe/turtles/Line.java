@@ -10,11 +10,31 @@ public class Line implements Shape {
 	public Color color;
 	
 	public Line(double x1, double y1, double x2, double y2, Color color) {
-		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
-		this.y2 = y2;
 		this.color = color;
+		/* make sure that the first point of each segment is before the second point in comparison order */ 
+		if (doubleEqual(x1, x2)) { // Don't check if x1<x2 before checking their approximate equality
+			if (y1 < y2) { // already in right order
+				this.x1 = x1;
+				this.y1 = y1;
+				this.x2 = x2;
+				this.y2 = y2;				
+			} else { // invert both sides
+				this.x1 = x2;
+				this.y1 = y2;
+				this.x2 = x1;
+				this.y2 = y1;
+			}
+		} else if (x1<x2) {
+			this.x1 = x1;
+			this.y1 = y1;
+			this.x2 = x2;
+			this.y2 = y2;				
+		} else {
+			this.x1 = x2;
+			this.y1 = y2;
+			this.x2 = x1;
+			this.y2 = y1;			
+		}
 	}
 	
 	public void draw(Graphics2D g){
@@ -26,7 +46,7 @@ public class Line implements Shape {
 		return new Line(x1,y1,x2,y2,color);
 	}
 	private boolean doubleEqual(double a, double b) {
-		return (Math.abs(a-b)<0.000001);
+		return (Math.abs(a-b)<0.001);
 	}
 	
 	@Override
@@ -64,6 +84,7 @@ public class Line implements Shape {
 	
 	@Override
 	public String toString(){
-		return "Line ("+x1+","+y1+";"+x2+","+y2+";"+color+")";
+		return "Line (x"+x1+" y"+y1+" / x"+x2+" y"+y2+")";
+		//return String.format("Line (%.3f, %.3f, %.3f, %.3f, %s)", x1,y1,x2,y2,plm.core.utils.ColorMapper.color2name(color));
 	}
 }
