@@ -7,6 +7,8 @@
   * TurtleArt.Flower: new exercise (provided by a student :)
   * GnomeSort: fix a bug in the correction, where we stay at i=0 when
     there is no previous pot instead of moving forward.
+  * TurtleWorld.equals&diffTo: synchronized on shapes to avoid issues
+    when the stop is pressed, for example
   * As usual, fix a bunch of typos in the French translation
 
 20130916: Release 2.2.5: SortingWorld needs *more* polishing.

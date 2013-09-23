@@ -128,14 +128,15 @@ public class TurtleWorld extends World {
 			return false;
 		
 		TurtleWorld other = (TurtleWorld) obj;
-		if (shapes.size() != other.shapes.size())
-			return false;
-		Collections.sort(shapes, new ShapeComparator());
-		Collections.sort(other.shapes, new ShapeComparator());
-		for (int i=0;i<shapes.size();i++)
-			if (! shapes.get(i).equals(other.shapes.get(i)))
+		synchronized (shapes) { synchronized (other.shapes) {
+			if (shapes.size() != other.shapes.size())
 				return false;
-		
+			Collections.sort(shapes, new ShapeComparator());
+			Collections.sort(other.shapes, new ShapeComparator());
+			for (int i=0;i<shapes.size();i++)
+				if (! shapes.get(i).equals(other.shapes.get(i)))
+					return false;
+		}}		
 		return true;
 	}
 	
@@ -226,15 +227,16 @@ public class TurtleWorld extends World {
 	public String diffTo(World world) {
 		StringBuffer sb = new StringBuffer();
 		TurtleWorld other = (TurtleWorld) world;
-		Collections.sort(shapes, new ShapeComparator());
-		Collections.sort(other.shapes, new ShapeComparator());
-		if (shapes.size() != other.shapes.size())
-			sb.append("  There is only "+other.shapes.size()+" lines where "+shapes.size()+" were expected.\n");
-		for (int i=0;i<other.shapes.size();i++)
-			if (! other.shapes.get(i).equals(shapes.get(i)))
-				sb.append("  Got "+other.shapes.get(i)+" where "+shapes.get(i)+" were expected ("+
-						((Line) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
-		
+		synchronized (shapes) { synchronized (other.shapes) {
+			Collections.sort(shapes, new ShapeComparator());
+			Collections.sort(other.shapes, new ShapeComparator());
+			if (shapes.size() != other.shapes.size())
+				sb.append("  There is only "+other.shapes.size()+" lines where "+shapes.size()+" were expected.\n");
+			for (int i=0;i<other.shapes.size();i++)
+				if (! other.shapes.get(i).equals(shapes.get(i)))
+					sb.append("  Got "+other.shapes.get(i)+" where "+shapes.get(i)+" were expected ("+
+							((Line) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
+		} }
 		return sb.toString();
 	}
 }
