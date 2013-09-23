@@ -63,8 +63,8 @@ public class Line implements Shape {
 			return false;
 		if (!doubleEqual(y2,other.y2))
 			return false;
-				
-		return true;
+		
+		return color.equals(other.color);
 	}
 	public String diffTo(Shape o) {
 		if (o instanceof Line) {
@@ -77,6 +77,8 @@ public class Line implements Shape {
 				return "y1 differs";
 			if (!doubleEqual(y2,other.y2))
 				return "y2 differs";
+			if (!color.equals(other.color))
+				return "The color differs";
 			return "I dont see the difference";
 		} else 
 			return "That's not a line";
