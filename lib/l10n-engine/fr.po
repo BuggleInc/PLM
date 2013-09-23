@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-16 22:10+0200\n"
-"PO-Revision-Date: 2013-09-16 22:10+0200\n"
+"POT-Creation-Date: 2013-09-24 01:33+0200\n"
+"PO-Revision-Date: 2013-09-24 01:35+0200\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -1982,3 +1982,41 @@ msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
 "Dépassement des bornes à l''appel de la méthode echange({0},{1}) : {2}"
 ">nombre de valeurs"
+
+#: src/plm/universe/turtles/Line.java:75
+msgid "x1 differs."
+msgstr "x1 diffère."
+
+#: src/plm/universe/turtles/Line.java:77
+msgid "x2 differs."
+msgstr "x2 diffère."
+
+#: src/plm/universe/turtles/Line.java:79
+msgid "y1 differs."
+msgstr "y1 diffère."
+
+#: src/plm/universe/turtles/Line.java:81
+msgid "y2 differs."
+msgstr "y2 diffère."
+
+#: src/plm/universe/turtles/Line.java:83
+msgid "The color differs."
+msgstr "La couleur diffère."
+
+#: src/plm/universe/turtles/Line.java:84
+msgid "I dont see the difference (please report this bug)."
+msgstr "Je ne vois pas de différence (merci de rapporter cette anomalie)."
+
+#: src/plm/universe/turtles/Line.java:86
+msgid "That's not a line."
+msgstr "Ce n'est pas une ligne."
+
+#: src/plm/universe/turtles/TurtleWorld.java:235
+#, java-format
+msgid "  There is only {0} shapes where {1} shapes were expected\n"
+msgstr "  Il n'y a que {0} formes là où {1} formes étaient attendues\n"
+
+#: src/plm/universe/turtles/TurtleWorld.java:238
+#, java-format
+msgid "  {0} (got {1} instead of {2})\n"
+msgstr "  {0} (trouvé {1} au lieu de {2})\n"

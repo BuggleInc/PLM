@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-22 20:44+0300\n"
+"POT-Creation-Date: 2013-09-24 01:25+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6445,7 +6445,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><h2>
-#: src/lessons/recursion/square/FourSquare.html:47 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array1.html:229
+#: src/lessons/recursion/square/FourSquare.html:47 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array1.html:229
 msgid "Goal of this exercise"
 msgstr ""
 
@@ -6538,74 +6538,11 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/star/Star.html:1
-msgid "Turtles in the stars"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/star/Star.html:3
-msgid ""
-"This is the last hand-on turtles exercise before recursion. The goal is to "
-"draw three 5-branches stars. Like any regular stars with N branches, the "
-"angle at each external corners are 360/N degrees while the angles between "
-"branches are of 2*360/N degrees."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/star/Star.html:8
-msgid ""
-"The first star to draw is black (<code>Color.black</code>) and its branches "
-"are 100 steps long. The second is blue (<code>Color.blue</code>) and its "
-"branches are 80 steps long. It's shifted of 45 degrees from the first "
-"one. The last star is red (<code>Color.red</code>), its branches are 60 "
-"steps long and it's shifted of 45 degrees from the previous one."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/star/Star.html:14
-msgid "Observe the world's objective to visualize the picture to draw."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/recursion/circle/Circle.html:1
-msgid "Three little circles"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/circle/Circle.html:3
-msgid ""
-"As we saw (and as you can check in the documentation of this world under "
-"\"About this world\"), turtles can only draw straight lines. Despite of "
-"this, the goal of this world is to draw circles... This can be achived "
-"simply by realizing that a circle can be seen as a concatenation of very "
-"little segments."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/recursion/circle/Circle.html:9
-msgid ""
-"Differential calculus would even argue that a circle is the asymptotical "
-"limit of such construct when the size of each segment becomes infinitely "
-"small while their amount becomes infinitely large, but you can definitely "
-"solve this exercise without understanding differential calculus :)"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/circle/Circle.html:16
-msgid ""
-"Write a function drawing a circle, taking the size of each of the 360 "
-"segments as parameter. Then use it in your code to draw the whole picture.  "
-"The first circle is obtained with segments of size 0.5, the second with "
-"segments of size 1 and the last one with 1.5-long segments.  Once again, "
-"this is a warming exercise, no recursion is needed."
-msgstr ""
-
-#. type: Content of: <h2>
 #: src/lessons/recursion/tree/Tree.html:1
 msgid "Trees"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/recursion/tree/Tree.html:3
 msgid ""
 "We will now draw trees. For that, we will write a method using double "
@@ -6627,14 +6564,38 @@ msgid ""
 "To draw a tree of four levels, you have to draw a trunk of the given length, "
 "turn right of the given angle, draw a tree of level 3, turn left twice of "
 "the given angle, draw another tree of level 3, and come back to your initial "
-"location."
+"location. Don't forget to come back to the initial location!"
 msgstr ""
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><p><p>
 #: src/lessons/recursion/tree/Tree.html:12
 msgid ""
 "If a tree's trunk is of length 'len', the trunk of the next level tree will "
 "be of length 'len*shrink'."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:15
+msgid ""
+"As you can see, each recursion level is represented by a distinctive "
+"color. For that, you have to call the <code>current(step)</code>, passing "
+"the current recursion level as a parameter. This will pick the right color "
+"for you.  Don't erase your great colors when you move back to your initial "
+"location."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:19
+msgid ""
+"If you get your function wrong, this can easily become hairly to debug as "
+"your errors will appear at each level of the recursion, completely changing "
+"the drawing.  For debugging purpose, you can use the <code>subtree()</code> "
+"that will draw a correct subtree. This function is then very similar to the "
+"one you are trying to write. The only difference is that "
+"<code>subtree()</code> only draws in black. So, you can use it instead of a "
+"recursive call to debug your code, but you have to change for a proper "
+"recursive call to your own code (once it works)  to get the colors right, "
+"and pass the exercise."
 msgstr ""
 
 #. type: Content of: <h2>

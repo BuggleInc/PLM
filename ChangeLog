@@ -16,7 +16,7 @@
   * recursion.Star: kill exercise. It is superseeded by turtleart.
   * recursion.tree: rework to make it easier to understand
     - each level is given its own color
-    - we provide a subtree() that is correct with wrong color to ease
+    - we provide a subtree() that is correct (but the colors) to ease
       the debugging of user's code
   * As usual, fix a bunch of typos in the French translation
 
