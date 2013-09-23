@@ -235,7 +235,7 @@ public class TurtleWorld extends World {
 			for (int i=0;i<other.shapes.size();i++)
 				if (! other.shapes.get(i).equals(shapes.get(i)))
 					sb.append("  Got "+other.shapes.get(i)+" where "+shapes.get(i)+" were expected ("+
-							((Line) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
+							((Shape) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
 		} }
 		return sb.toString();
 	}
