@@ -1036,7 +1036,7 @@ msgstr "Annuler"
 #: src/plm/core/ui/FeedbackDialog.java:95
 msgid "Do you really want to cancel your feedback and lose any edit?"
 msgstr ""
-"Voullez vous vraiment annuler votre retour et perdre ce que vous avez écrit ?"
+"Voulez-vous vraiment annuler votre retour et perdre ce que vous avez écrit ?"
 
 #: src/plm/core/ui/FeedbackDialog.java:96
 msgid "are you sure?"
