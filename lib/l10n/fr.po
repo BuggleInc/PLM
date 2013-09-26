@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-25 21:15+0300\n"
-"PO-Revision-Date: 2013-09-25 21:21+0200\n"
+"POT-Creation-Date: 2013-09-26 18:14+0300\n"
+"PO-Revision-Date: 2013-09-26 18:15+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -8901,7 +8901,6 @@ msgstr "[!java]void [/!]polygonFractal ([!java]int [/!]niveaux[!scala]:Int[/!], 
 
 #. type: Content of: <p>
 #: src/lessons/recursion/polygonfractal/PolygonFractal.html:7
-#: src/lessons/recursion/sierpinski/Sierpinski.html:8
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:25
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:44
 msgid ""
@@ -9059,8 +9058,8 @@ msgstr "Triangle de Sierpinski"
 #: src/lessons/recursion/sierpinski/Sierpinski.html:3
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
-"several smaller triangles are embeeded. The prototype of the fuction to draw "
-"it is the following:"
+"several smaller triangles are embedded. The prototype of the function to "
+"draw it is the following:"
 msgstr ""
 "La fractale que nous allons dessiner maintenant est formée d'un triangle "
 "dans lequel sont imbriqués des triangles plus petits.  Le prototype de la "
@@ -9071,6 +9070,15 @@ msgstr ""
 #, no-wrap
 msgid "[!java]void [/!]sierpinski([!java]int [/!]level[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!])"
 msgstr "[!java]void [/!]sierpinski([!java]int [/!]niveau[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!])"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/sierpinski/Sierpinski.html:8
+msgid ""
+"Have a look at each world's objective view to understand how to write the "
+"function.  To draw one side of the triangle, draw a smaller recursive "
+"triangle (halve the length) and move forward by the requested length.  "
+"Globally, you have to draw 3 such sides and turn by 120 between each side."
+msgstr "Consultez les objectifs des différents mondes pour comprendre le code que vous devez écrire. Pour dessiner un coté du triangle, vous devez dessiner un triangle récursif plus petit (avec la moitié de la taille) et avancer de la longueur demandée. Au total, vous devez dessiner 3 cotés de la sorte en tournant de 120 entre chaque."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/spiral/Spiral.html:1
@@ -9149,14 +9157,14 @@ msgstr "Faire des spirales"
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/spiral/SpiralUse.html:3
 msgid ""
-"Can you reproduce the provided patterns of this exercise using the "
-"<code>spiral()</code> method?"
+"This exercise is not really an exercise in that sense that you just have to "
+"click on the Execute button to get the reward: All the needed code is "
+"already provided.  Can you reproduce the provided patterns of this exercise "
+"using the <code>spiral()</code> method?"
 msgstr ""
-"Saurez-vous faire les différents motifs de cet exercice en utilisant la "
-"méthode <code>spiral()</code>?"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:6
+#: src/lessons/recursion/spiral/SpiralUse.html:9
 msgid ""
 "You must provide a method called <code>doit(page)</code> taking the page "
 "number to draw as parameter. Its code is as following, with A0, B0, etc "
@@ -9170,7 +9178,7 @@ msgstr ""
 "valeurs convenables pour chaque page."
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/spiral/SpiralUse.html:12
+#: src/lessons/recursion/spiral/SpiralUse.html:15
 #, no-wrap
 msgid ""
 "[!java]void [/!]doit([!java]int [/!]page[!scala]:Int[/!])[!python]:[/!][!java|scala] {[/!]\n"
@@ -9214,7 +9222,7 @@ msgstr ""
 "}[/!]"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:33
+#: src/lessons/recursion/spiral/SpiralUse.html:36
 msgid ""
 "No need to copy over the method of <code>spiral()</code>, the turtle of this "
 "exercise already knows it."
@@ -14353,6 +14361,13 @@ msgid ""
 msgstr ""
 "Vous devez connaître la syntaxe de base du langage que vous allez choisir, "
 "mais aucune expérience n'est nécessaire pour entreprendre cette leçon."
+
+#~ msgid ""
+#~ "Can you reproduce the provided patterns of this exercise using the "
+#~ "<code>spiral()</code> method?"
+#~ msgstr ""
+#~ "Saurez-vous faire les différents motifs de cet exercice en utilisant la "
+#~ "méthode <code>spiral()</code>?"
 
 #~ msgid "Creating a new PLM world"
 #~ msgstr "Créer un nouveau monde PLM (\"World\")"

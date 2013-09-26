@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-25 21:15+0300\n"
+"POT-Creation-Date: 2013-09-26 18:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6488,7 +6488,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7 src/lessons/recursion/sierpinski/Sierpinski.html:8 src/lessons/recursion/dragoncurve/DragonCurve1.html:25 src/lessons/recursion/dragoncurve/DragonCurve2.html:44
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7 src/lessons/recursion/dragoncurve/DragonCurve1.html:25 src/lessons/recursion/dragoncurve/DragonCurve2.html:44
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
@@ -6607,8 +6607,8 @@ msgstr ""
 #: src/lessons/recursion/sierpinski/Sierpinski.html:3
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
-"several smaller triangles are embeeded. The prototype of the fuction to draw "
-"it is the following:"
+"several smaller triangles are embedded. The prototype of the function to "
+"draw it is the following:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -6617,6 +6617,15 @@ msgstr ""
 msgid ""
 "[!java]void [/!]sierpinski([!java]int [/!]level[!scala]:Int[/!], "
 "[!java]double [/!]length[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/sierpinski/Sierpinski.html:8
+msgid ""
+"Have a look at each world's objective view to understand how to write the "
+"function.  To draw one side of the triangle, draw a smaller recursive "
+"triangle (halve the length) and move forward by the requested length.  "
+"Globally, you have to draw 3 such sides and turn by 120 between each side."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6678,12 +6687,14 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/spiral/SpiralUse.html:3
 msgid ""
-"Can you reproduce the provided patterns of this exercise using the "
-"<code>spiral()</code> method?"
+"This exercise is not really an exercise in that sense that you just have to "
+"click on the Execute button to get the reward: All the needed code is "
+"already provided.  Can you reproduce the provided patterns of this exercise "
+"using the <code>spiral()</code> method?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:6
+#: src/lessons/recursion/spiral/SpiralUse.html:9
 msgid ""
 "You must provide a method called <code>doit(page)</code> taking the page "
 "number to draw as parameter. Its code is as following, with A0, B0, etc "
@@ -6693,7 +6704,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/recursion/spiral/SpiralUse.html:12
+#: src/lessons/recursion/spiral/SpiralUse.html:15
 #, no-wrap
 msgid ""
 "[!java]void [/!]doit([!java]int "
@@ -6730,7 +6741,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:33
+#: src/lessons/recursion/spiral/SpiralUse.html:36
 msgid ""
 "No need to copy over the method of <code>spiral()</code>, the turtle of this "
 "exercise already knows it."
