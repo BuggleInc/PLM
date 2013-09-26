@@ -11,7 +11,7 @@ public class TreeEntity extends Turtle {
 			Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red};
 
 	private void current(int v) {
-		if (v>=colors.length)
+		if (v>=colors.length || v < 0)
 			setColor(colors[colors.length -1]);
 		setColor(colors[v]);
 	}

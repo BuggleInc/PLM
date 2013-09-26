@@ -10,7 +10,7 @@ class ScalaTreeEntity extends Turtle {
 									Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red)
 									
 	def current(v:Int) {
-	  if (v>=colors.length)
+	  if (v>=colors.length || v < 0)
 	    setColor(colors(colors.length -1));
 	  setColor(colors(v))
 	}

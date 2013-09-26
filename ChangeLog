@@ -1,5 +1,7 @@
 20131001: Release 2.2.7beta
 
+  * recursion.tree: make the color changing robust to negative steps
+
 20130924: Release 2.2.6
 
   * SortingView: display the value on the left of temporal view, not
