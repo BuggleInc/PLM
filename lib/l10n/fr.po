@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-26 20:31+0300\n"
-"PO-Revision-Date: 2013-09-26 20:43+0200\n"
+"POT-Creation-Date: 2013-09-26 21:24+0300\n"
+"PO-Revision-Date: 2013-09-26 21:25+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -9168,7 +9168,13 @@ msgid ""
 "code you just wrote by changing the parameters of the call to the "
 "<code>spiral</code> function. You can move on to the next exercise if you "
 "are short on time, and come back later to play around."
-msgstr "Cet exercice est un peu particulier, car vous n'avez rien à faire pour le passer. Tout le code nécessaire pour le passer est fourni, et il suffit de cliquer sur le bouton «Exécuter». Il est là pour vous permettre d'explorer les possibilités du code que vous venez d'écrire en changeant les paramètres de l'appel à la fonction <code>spiral</code>. Vous pouvez passer à l'exercice suivant si le temps vous manque, puis revenir jouer ici plus tard."
+msgstr ""
+"Cet exercice est un peu particulier, car vous n'avez rien à faire pour le "
+"passer. Tout le code nécessaire pour le passer est fourni, et il suffit de "
+"cliquer sur le bouton «Exécuter». Il est là pour vous permettre d'explorer "
+"les possibilités du code que vous venez d'écrire en changeant les paramètres "
+"de l'appel à la fonction <code>spiral</code>. Vous pouvez passer à "
+"l'exercice suivant si le temps vous manque, puis revenir jouer ici plus tard."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/spiral/SpiralUse.html:9
@@ -9177,14 +9183,21 @@ msgid ""
 "code> function, provided that you come with the right parameters. You can "
 "switch to the creative mode (from the Session menu)  to disable the world "
 "comparison when you explore with these spirals."
-msgstr "Voici quelques figures que l'on peut produire avec votre fonction <code>spiral</code> en lui passant les bons paramètres. Passez en mode créatif (dans le menu session) pour désactiver la correction de votre code quand vous explorez ces spirales."
+msgstr ""
+"Voici quelques figures que l'on peut produire avec votre fonction "
+"<code>spiral</code> en lui passant les bons paramètres. Passez en mode "
+"créatif (dans le menu session) pour désactiver la correction de votre code "
+"quand vous explorez ces spirales."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/spiral/SpiralUse.html:18
 msgid ""
 "If you discover a cool figure, don't forget to send your parameters (menu "
 "Help/feedback) so that we can add it to the list!"
-msgstr "Si vous découvrez une figure sympa n'oubliez pas de nous envoyer vos paramètres (menu Aide/envoyer une anomalie) pour que nous puissions l'ajouter à la liste!"
+msgstr ""
+"Si vous découvrez une figure sympa n'oubliez pas de nous envoyer vos "
+"paramètres (menu Aide/envoyer une anomalie) pour que nous puissions "
+"l'ajouter à la liste!"
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:1
@@ -9403,16 +9416,14 @@ msgstr ""
 msgid "Tower of Hanoi"
 msgstr "Les tours de Hanoï"
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:3
 msgid ""
-"The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or "
+"The Tower of Hanoi or Towers of Hanoi, also called the Tower of Brahma or "
 "Towers of Brahma, is a mathematical game or puzzle. It consists of three "
-"rods, and a number of disks of different sizes which can slide onto any rod. "
+"pegs, and a number of disks of different sizes which can slide onto any peg. "
 "The puzzle starts with the disks in a neat stack in ascending order of size "
-"on one rod, the smallest at the top, thus forming a pyramid.  The objective "
-"of the puzzle is to move the entire stack to another rod, obeying the "
-"following rules:"
+"on one peg, the smallest at the top, thus forming a pyramid."
 msgstr ""
 "La tour de Hanoï, ou les tours de Hanoï, aussi appelé la Tour de Brahma ou "
 "les tours de Brahma, est un jeu ou puzzle mathématique. Il consiste en trois "
@@ -9422,6 +9433,15 @@ msgstr ""
 "une tour, formant donc une pyramide. L'objectif du puzzle est de déplacer la "
 "pile entière jusqu'à une autre tour, en respectant les règles suivantes :"
 
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/hanoi/HanoiBoard.html:9
+msgid ""
+"The objective of the puzzle is to move the entire stack to another peg, "
+"obeying the following rules:"
+msgstr ""
+"Le but de ce puzzle est de déplacer tous les disques de la pile vers un "
+"autre piquet en respectant les règles suivantes :"
+
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:11
 msgid "Only one disk may be moved at a time."
@@ -9430,9 +9450,9 @@ msgstr "Seul un disque peut être bougé à la fois."
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:13
 msgid ""
-"Each move consists of taking the upper disk from one of the rods and sliding "
-"it onto another rod, on top of the other disks that may already be present "
-"on that rod."
+"Each move consists of taking the upper disk from one of the pegs and sliding "
+"it onto another peg, on top of the other disks that may already be present "
+"on that peg."
 msgstr ""
 "Chaque mouvement consiste à prendre le disque supérieur de l'une des tours "
 "et à le déposer sur une autre tour, au sommet des autres disques qui peuvent "
@@ -9447,67 +9467,89 @@ msgstr "Aucun disque ne peut être placé au dessus d'un disque plus petit."
 #: src/lessons/recursion/hanoi/HanoiBoard.html:22
 msgid ""
 "Write the core of the method: <code>[!java]void [/!]solve([!java]int "
-"[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!], [!java]int "
-"[/!]height[!scala]:Int[/!])</code> This method will recursively solve the "
-"presented problem. First parameter named <code>src</code> is the index of "
-"the initial tower, second parameter <code>dst</code> is the index of the "
-"expected final tower, and the third parameter <code>height</code> is the "
-"height of the tower.  A key to solving this puzzle is to recognize that it "
-"can be solved by breaking the problem down into a collection of smaller "
-"problems and further breaking those problems down into even smaller problems "
-"until a solution is reached.  The following procedure demonstrates this "
-"approach:"
-msgstr ""
-"Écrivez le coeur de la méthode <code>[!java]void [/!]solve([!java]int "
-"[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!], [!java]int "
-"[/!]height[!scala]:Int[/!])</code>. Cette méthode résoudra de manière "
-"récursibe le problème. Le premier paramètre, nommé <code>src</code>, est "
-"l'index de la tour initiale, le second paramètre  <code>dst</code> est "
-"l'index de la tour final souhaitée, et le troisième paramètre <code>height</"
-"code> est la taille de la tour. La clé pour résoudre de puzzle est de "
-"reconnaitre qu'il peut être résolu en cassant le problème en un ensemble de "
-"problèmes de plus petites tailles et de continuer cette réduction de la "
-"taille du problème jusqu'à atteindre une solution. La procédure suivante "
-"démontre cette approche :"
+"[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!],[!java]int "
+"[/!]other[!scala]:Int[/!], [!java]int [/!]height[!scala]:Int[/!])</code>"
+msgstr "Write the core of the method: <code>[!java]void [/!]solve([!java]int [/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!],[!java]int [/!]autre[!scala]:Int[/!], [!java]int [/!]hauteur[!scala]:Int[/!])</code>"
 
-#. type: Content of: <ul><li>
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:25
+msgid ""
+"This method will recursively solve the presented problem. The first "
+"parameter named <code>src</code> is the index of the initial tower, the "
+"second parameter <code>dst</code> is the index of the expected final tower, "
+"the third parameter <code>other</code> is the index of the unused peg while "
+"the fourth parameter <code>height</code> is the height of the tower."
+msgstr ""
+"Cette méthode résout récursivement le problème. \n"
+"Le premier paramètre (nommé <code>src</code>) est l'index de la pile "
+"initiale.\n"
+"Le second paramètre (nommé <code>dst</code>) est l'index du piquet vers "
+"lequel la pile dont être déplacée.\n"
+"Le troisième paramètre (nommé <code>other</code>) est l'index du piquet "
+"inutilisé, tandis que le quatrième paramètre (nommé <code>hauteur</code>) "
+"est la taille de la pile à déplacer."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:31
+msgid ""
+"A key to solving this puzzle is to recognize that it can be solved by "
+"breaking the problem down into a collection of smaller problems and further "
+"breaking those problems down into even smaller problems until a solution is "
+"reached."
+msgstr ""
+"La clé pour résoudre de puzzle est de reconnaitre qu'il peut être résolu en "
+"cassant le problème en un ensemble de problèmes de plus petites tailles et "
+"de continuer cette réduction de la taille du problème jusqu'à atteindre une "
+"solution."
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:35
+msgid "I don't get it, please give me some extra indications"
+msgstr "Je suis perdu, je voudrais plus d'indications"
+
+#. type: Content of: <div>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:36
+msgid "Here is the pseudo-code of the solution:"
+msgstr "Voici le pseudo-code de la solution :"
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:38
 msgid "label the pegs A, B, C (these labels may move at different steps)"
 msgstr ""
 "Etiquetons les tours A, B, C ( ces étiquettes peuvent changer à différentes "
 "étapes )"
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:37
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:39
 msgid "let n be the total number of discs (the height of the initial tower)"
 msgstr "Soit n le nombre total de disques ( la hauteur de la tour initiale )"
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:38
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:40
 msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
 msgstr ""
 "Numérotez les disques de 1 ( le plus petit, le plus en haut ) à n ( le plus "
 "large, le plus en bas )"
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoi/HanoiBoard.html:41
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:43
 msgid "To move n discs from peg A to peg C:"
 msgstr "Pour déplacer n disques du poteau A au poteau C : "
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:43
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:45
 msgid "move n−1 discs from A to B. This leaves disc number n alone on peg A"
 msgstr ""
 "déplacer n-1 disques de A vers B. Cela laisse le disque numéro n seul sur le "
 "poteau A"
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:44
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:46
 msgid "move disc number n from A to C"
 msgstr "déplacer le disque numéro n de A vers C"
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:45
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:47
 msgid "move n−1 discs from B to C so they sit on disc number n"
 msgstr ""
 "deplacer n-1 disques de B vers C afin qu'ils reposent sur le disque numéro n"

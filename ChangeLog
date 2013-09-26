@@ -4,6 +4,8 @@
     so that students don't spend too much time seeking for the reward.
   * recursion.tree: make the color changing robust to negative steps
   * recursion.sierpinski: rewrite to simplify the code to be written
+  * recursion.hanoi: Simplify by explicitely passing the index of the
+    unused peg to the recursive function.
 
 20130924: Release 2.2.6
 
