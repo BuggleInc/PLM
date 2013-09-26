@@ -3,7 +3,7 @@ colors = [Color.cyan,      Color.blue,   Color.magenta,
           Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red]
 
 def current(i):
-    if (i>=len(colors) or v < 0):
+    if (i>=len(colors) or i < 0):
         setColor(Color.red)
     else:
         setColor(colors[i])
