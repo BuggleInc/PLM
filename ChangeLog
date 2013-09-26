@@ -6,6 +6,8 @@
   * recursion.sierpinski: rewrite to simplify the code to be written
   * recursion.hanoi: Simplify by explicitely passing the index of the
     unused peg to the recursive function.
+  * TurtleWorld: synchronize to avoid a concurent modification when a
+    shape is added while we are computing the toString() of the world
 
 20130924: Release 2.2.6
 

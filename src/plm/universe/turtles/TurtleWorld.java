@@ -148,9 +148,11 @@ public class TurtleWorld extends World {
 			", size="+width+"x"+height+
 			", parameters: " +parameters+
 			", shapes=[";
-		Iterator<Shape> it = shapes();
-		while (it.hasNext()) 
-			res += it.next().toString();
+		synchronized (shapes) {
+			Iterator<Shape> it = shapes();
+			while (it.hasNext()) 
+				res += it.next().toString();
+		}
 		res += "]";
 		return res;
 	}
