@@ -15,20 +15,8 @@ public class SpiralUseEntity extends Turtle {
 	}
 
 	/* BEGIN TEMPLATE */
-	void doit(int page) {
-		/* BEGIN SOLUTION */
-		switch (page) {
-		case 0:	spiral(100,90+1,1,2);  break;
-		case 1:	spiral(100,120+1,1,2); break;
-		case 2: spiral(5,360/5,100,0);  break;
-		case 3: spiral(5,2*360/5,150,0); break;
-		case 4: spiral(360,1,1,0);   break;	
-		}
-		/* END SOLUTION */
+	public void run() {
+		spiral(100,91,1,2);
 	}
 	/* END TEMPLATE */
-
-	public void run() {
-		doit((Integer)getParam(0));
-	}
 }

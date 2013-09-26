@@ -1,34 +1,19 @@
 <h2>Drawing spirals</h2>
 
-Can you reproduce the provided patterns of this exercise using the
-<code>spiral()</code> method?
+<p>This exercise is not really an exercise in that sense that you just have to click on the 
+Execute button to get the reward: All the needed code is already provided. Instead, you can 
+here explore the possibilities of the code you just wrote by changing the parameters of the call 
+to the <code>spiral</code> function. You can move on to the next exercise if you are short on time, 
+and come back later to play around.</p>
 
-<p>You must provide a method called <code>doit(page)</code> taking the page number 
-to draw as parameter. Its code is as following, with A0, B0, etc being integers. 
-The goal of this exercise is to find the good values for each page, which requires to
-correctly understand how the spiral method works.</p>
+<p>Here are some of the figures that you can produce with your <code>Spiral</code> function, provided 
+that you come with the right parameters. You can switch to the creative mode (from the Session menu) 
+to disable the world comparison when you explore with these spirals.</p>
 
-<pre>
-[!java]void [/!]doit([!java]int [/!]page[!scala]:Int[/!])[!python]:[/!][!java|scala] {[/!]
-  [!java]switch (page) {[/!][!scala]page match {[/!][!python]  # select on the value of page[/!]
-    [!java]case 0:[/!][!scala]case 0 =>[/!][!python]if page==0:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Drawing of the first page, dubbed "One"</span>
-      spiral(A0,B0,C0,D0);
-[!java]      break;[/!]
-    [!java]case 1:[/!][!scala]case 1 =>[/!][!python]if page==1:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Drawing of the second page, dubbed "Two"</span>
-      spiral(A1,B1,C1,D1);
-[!java]      break;[/!]
-    [!java]case 2:[/!][!scala]case 2 =>[/!][!python]if page==2:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Drawing of the page dubbed "Three"</span> 
-      spiral(A2,B2,C2,D2);
-[!java]      break;[/!]
-    [!java]case 3:[/!][!scala]case 3 =>[/!][!python]if page==3:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Drawing of the page dubbed "Four"</span> 
-      spiral(A3,B3,C3,D3);
-[!java]      break;[/!]
-    [!java]case 4:[/!][!scala]case 4 =>[/!][!python]if page==4:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Drawing of the page dubbed "Five"</span>
-      spiral(A4,B4,C4,D4);[!java|scala]
-[!java]      break;[/!]
-  }
-}[/!]</pre>
+<img src="example-1.png"/> <!-- spiral(100,120+1,1,2) -->
+<img src="example-2.png"/> <!-- spiral(5,360/5,100,0) -->
+<img src="example-3.png"/> <!-- spiral(5,2*360/5,150,0) -->
+<img src="example-4.png"/> <!-- spiral(360,1,1,0) -->
 
-
-<p>No need to copy over the method of <code>spiral()</code>, the turtle of this
-exercise already knows it.</p>
+<p>If you discover a cool figure, don't forget to send your parameters (menu Help/feedback) so 
+that we can add it to the list!</p> 
