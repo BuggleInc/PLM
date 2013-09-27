@@ -1,6 +1,5 @@
 def setX(i):
 	errorMsg("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead.")
-
 def setY(i):
 	errorMsg("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead.")
 def setPos(x,y):

@@ -1,10 +1,24 @@
 package lessons.recursion.tree;
 
-import plm.universe.turtles.Turtle;
+import plm.universe.turtles.Turtle
 import java.awt.Color
+import plm.core.model.Game
 
 class ScalaTreeEntity extends Turtle {
 
+	override def setX(i: Int)  {
+		if (isInited)
+			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setX(x) in this exercise. Walk to your goal instead."));
+	}
+	override def setY(i: Int)  { 
+		if (isInited)
+			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setY(y) in this exercise. Walk to your goal instead."));
+	}
+	override def setPos(x: Int, y:Int)  { 
+		if (isInited)
+			throw new RuntimeException(Game.i18n.tr("Sorry Dave, I cannot let you use setPos(x,y) in this exercise. Walk to your goal instead."));
+	}
+	
 	val colors:Array[Color] = Array(Color.cyan,      Color.blue,   Color.magenta, 
 									Color.orange,    Color.yellow, Color.green,
 									Color.lightGray, Color.gray,   Color.darkGray,   Color.black, Color.red)
