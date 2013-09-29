@@ -113,7 +113,7 @@ public class PancakeWorld extends World {
 	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof PancakeWorld))
-			return Game.i18n.tr("This is not a world of pancakes :-(");
+			return Game.i18n.tr("This is not a world of pancakes");
 
 		PancakeWorld other = (PancakeWorld) o;
 		if (pancakeStack.length != other.pancakeStack.length)
@@ -122,7 +122,7 @@ public class PancakeWorld extends World {
 		StringBuffer res = new StringBuffer();
 		for ( int i = 0;i< pancakeStack.length;i++) 
 			if ( !pancakeStack[i].equals(other.pancakeStack[i], burnedWorld)) 
-				res.append(" Pancake #"+(i+1)+" differs: "+pancakeStack[i].toString() +" vs "+other.pancakeStack[i].toString()+"\n");
+				res.append(Game.i18n.tr(" Pancake #{0} differs: {1} vs. {2}\n",(i+1),pancakeStack[i].toString(),other.pancakeStack[i].toString()));
 
 		return res.toString();
 	}
