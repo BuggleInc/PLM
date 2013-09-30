@@ -69,7 +69,7 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 
 		JPanel p = new JPanel();
 		p.add(jsp);
-		int result = JOptionPane.showConfirmDialog(null, p, "Choose your next exercise",
+		int result = JOptionPane.showConfirmDialog(MainFrame.getInstance(), p, Game.i18n.tr("Choose your next exercise"),
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {
 			DefaultMutableTreeNode node = (DefaultMutableTreeNode)tree.getLastSelectedPathComponent();
