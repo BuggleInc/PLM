@@ -12,6 +12,7 @@
     shape is added while we are computing the toString() of the world
   * sort.dutchflag: New universe/exercise on the Dutch Flag Sorting
   * sort.pancake: Correctly reset the move count on need
+  * sort.insertion: fix path to img after recent package reorg
 
 20130924: Release 2.2.6
 
