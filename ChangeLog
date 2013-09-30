@@ -1,3 +1,7 @@
+20131006: Release 2.2.8beta
+
+  * As usual, fix some typos in the French translation
+
 20130930: Release 2.2.7
 
   * recursion.spiralUse: rewrite to leverage the creative mode,

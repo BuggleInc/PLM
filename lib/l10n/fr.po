@@ -10877,7 +10877,7 @@ msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 3 int values, return true if 1 or more of them are teen."
 msgstr ""
-"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervalle [13;19]. "
 "Étant donné trois nombres entiers, retournez vrai ssi un ou plusieurs "
 "d'entre eux sont ados."
 
@@ -10907,7 +10907,7 @@ msgid ""
 "inclusive."
 msgstr ""
 "Étant donné deux nombres entiers, retournez vrai s'un d'entre eux est dans "
-"l'intervale [10;20]."
+"l'intervalle [10;20]."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/In3050.html:1
@@ -10921,7 +10921,7 @@ msgid ""
 "inclusive, or they are both in the range 40..50 inclusive."
 msgstr ""
 "Étant donné deux nombres entiers, retournez vrai s'ils sont tous les deux "
-"dans l'intervale [30;40], ou s'ils sont tous les deux dans l'intervale "
+"dans l'intervalle [30;40], ou s'ils sont tous les deux dans l'intervalle "
 "[40;50]."
 
 #. type: Content of: <h1>
@@ -10951,7 +10951,7 @@ msgid ""
 "We'll say that a number is \"teen\" if it is in the range 13..19 inclusive. "
 "Given 2 int values, return true if one or the other is teen, but not both."
 msgstr ""
-"On dira qu'un nombre est \"ado\" s'il appartient à l'intervale [13;19]. "
+"On dira qu'un nombre est \"ado\" s'il appartient à l'intervalle [13;19]. "
 "Étant donné deux nombres entiers, retournez vrai si l'un d'entre eux est "
 "ado, mais pas les deux."
 
@@ -11006,8 +11006,8 @@ msgid ""
 "10..20 inclusive, or return 0 if neither is in that range."
 msgstr ""
 "Étant donné deux nombres entiers, retournez la plus grande valeur dans "
-"l'intervale 10..20 inclus, ou retournez 0 si aucun des nombres n'est dans "
-"cet intervale."
+"l'intervalle 10..20 inclus, ou retournez 0 si aucun des nombres n'est dans "
+"cet intervalle."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool1/Max1020.html:5
@@ -11069,7 +11069,7 @@ msgid ""
 "hour is before 7 or after 20. Return true if we are in trouble."
 msgstr ""
 "Nous avons un perroquet très bruyant. Le paramètre \"hour\" indique l'heure "
-"courante (dans l'intervale [0;23]). Nous avons un problème si le perroquet "
+"courante (dans l'intervalle [0;23]). Nous avons un problème si le perroquet "
 "parle avant 7h ou après 20h. Retournez vrai si nous avons un problème."
 
 #. type: Content of: <h1>
@@ -11498,7 +11498,7 @@ msgid ""
 "return 19."
 msgstr ""
 "Étant donné deux nombres entiers (a et b), renvoyez leur somme. Cependant, "
-"les valeurs ados (dans l'intervale [13;19]) sont particulièrement "
+"les valeurs ados (dans l'intervalle [13;19]) sont particulièrement "
 "chanceuses. Donc, si l'un des nombres est ado, renvoyez simplement 19."
 
 #. type: Content of: <h1>
