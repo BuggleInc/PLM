@@ -9,9 +9,9 @@ debut=0; fin=lgr-2
 Faire
   Pour tout i dans [debut,fin], faire:
     si i et i+1 doivent être échangées, le faire
-  fin--
+  fin -= 1 (cela veut dire fin = fin -1)
   Pour tout i dans [fin, debut] en descendant, faire:
     si i et i+1 doivent être échangées, le faire
-  debut++
+  debut += 1 (ce qui veut dire debut = debut + 1)
 tant qu'au moins l'un des parcours a inversé un élément
 </pre>
