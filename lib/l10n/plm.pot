@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-30 12:10+0300\n"
+"POT-Creation-Date: 2013-09-30 17:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6723,10 +6723,10 @@ msgstr ""
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order n is the dragon curve of order n-1 between P and "
-"R, followed by the same curve of order n-1 between R and Q (reverse side), "
-"where PRQ is an isoscele triangle with angle R being a right angle, and R "
-"being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y)  "
-"and (z, t), the coordinate (u, v) of R are given by:"
+"R, followed by the same curve of order n-1 between Q and R, where PRQ is an "
+"isosceles triangle with angle R being a right angle, and R being at the "
+"right of the PQ vector. Thus, if P and Q coordinates are (x, y)  and (z, t), "
+"the coordinate (u, v) of R are given by:"
 msgstr ""
 
 #. type: Content of: <pre>
