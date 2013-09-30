@@ -1,5 +1,7 @@
 package lessons.recursion.koch;
 
+import java.awt.Color;
+
 import plm.universe.turtles.Turtle;
 
 public class KochEntity extends Turtle {
@@ -8,8 +10,10 @@ public class KochEntity extends Turtle {
 	void snowFlake (int levels, double length) {
 		snowSide(levels, length);
 		right(120);
+		setColor(Color.blue);
 		snowSide(levels, length);
 		right(120);
+		setColor(Color.orange);
 		snowSide(levels, length);
 		right(120);
 	}
