@@ -154,6 +154,7 @@ public class PancakeWorld extends World {
 
 		this.burnedWorld = other.burnedWorld;
 		this.lastMove = other.lastMove;
+		this.moveCount = other.moveCount;
 		super.reset(world);		
 	}
 

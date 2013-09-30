@@ -11,6 +11,7 @@
   * TurtleWorld: synchronize to avoid a concurent modification when a
     shape is added while we are computing the toString() of the world
   * sort.dutchflag: New universe/exercise on the Dutch Flag Sorting
+  * sort.pancake: Correctly reset the move count on need
 
 20130924: Release 2.2.6
 
