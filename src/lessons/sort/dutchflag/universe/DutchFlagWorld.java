@@ -29,7 +29,7 @@ public class DutchFlagWorld extends World {
 	/** Returns the icon of the universe */
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon(this,"../icon.png");
+		return ResourcesCache.getIcon(this,"world_dutchflag.png");
 	}
 	/** Returns the panel which let the user to interact dynamically with the world */
 	@Override
