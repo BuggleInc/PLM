@@ -5,6 +5,7 @@
   * recursion.DragonCurve1: slight mission text improvement
   * recursion.SquareKoch: new exercise (variation over the Koch idea)
   * recursion.Crab: new exercise (another L-system: the Lévy C curve)
+  * TurtleWorld: new builtins to hide()/show() the turtle.
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
