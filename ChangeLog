@@ -1,6 +1,7 @@
 20131006: Release 2.2.8beta
 
   * TurtleWorld: better error message when the amount of lines differs
+  * PancakeWorld: The larger pancake is getStackSize()-1
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
