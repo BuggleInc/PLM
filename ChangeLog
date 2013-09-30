@@ -3,6 +3,7 @@
   * TurtleWorld: better error message when the amount of lines differs
   * PancakeWorld: The larger pancake is getStackSize()-1
   * recursion.DragonCurve1: slight mission text improvement
+  * recursion.SquareKoch: new exercise (variation over the Koch idea)
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
