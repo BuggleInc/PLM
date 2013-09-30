@@ -11274,7 +11274,7 @@ msgid ""
 "\"outsideMode\" is true, in which case return true if the number is less or "
 "equal to 1, or greater or equal to 10."
 msgstr ""
-"Soit un nombre n, renvoyez vrai si n est dans l'intervalle [1,10]. Sauf si"
+"Soit un nombre n, renvoyez vrai si n est dans l'intervalle [1,10]. Sauf si "
 "\"outsideMode\" est vrai, auquel cas renvoyez vrai si le nombre est plus "
 "petit ou égal à 1 ou bien s'il est plus grand ou égal à 10"
 
