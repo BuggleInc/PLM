@@ -90,7 +90,7 @@ public class DutchFlagWorldView extends WorldView {
 			
 		}
 						
-		if (flag.getColor(0) == 1)
+		if (flag.getColor(stackSize-1) == DutchFlagEntity.WHITE)
 			g2.setColor(Color.black);
 		else
 			g2.setColor(Color.yellow);
