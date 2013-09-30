@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-26 21:24+0300\n"
+"POT-Creation-Date: 2013-09-30 12:05+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6503,38 +6503,26 @@ msgstr ""
 #: src/lessons/recursion/koch/Koch.html:3
 msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
-"geometrical pattern repeated at every scale."
+"geometric pattern repeated at every scale."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:6
 msgid ""
-"The general form is a triangle, with each side given by a serie of recursive "
-"calls. The general form is given by something like this:"
+"The general form is a triangle, with each side given by several recursive "
+"calls. Your work is only to write the code of the <code>snowSide</code> "
+"method so that it draws one side of the triangle. To make it easier, each "
+"sides are represented in a specific color. Just draw the red things (without "
+"changing your pen color), and the other colors will be drawn automatically."
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/koch/Koch.html:8
-#, no-wrap
-msgid ""
-"[!java]void [/!]snowFlake ([!java]int [/!]levels[!scala]:Int[/!], "
-"[!java]double [/!]length[!scala]:Double[/!])[!python]:[/!][!java|scala] "
-"{[/!]\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"[!java|scala]}[/!]"
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/recursion/koch/Koch.html:17
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:12
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
 "logic, and then reproduce it. You must write the <code>snowSide()</code> "
-"method, which is recursive."
+"method, which is recursive but <b>do not call snowFlake from snowSide</b>, "
+"or you will get very strange unexpected behaviors."
 msgstr ""
 
 #. type: Content of: <h2>

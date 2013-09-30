@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-26 21:24+0300\n"
-"PO-Revision-Date: 2013-09-26 21:25+0200\n"
+"POT-Creation-Date: 2013-09-30 12:05+0300\n"
+"PO-Revision-Date: 2013-09-30 12:05+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -8919,7 +8919,7 @@ msgstr "Flocons de neige"
 #: src/lessons/recursion/koch/Koch.html:3
 msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
-"geometrical pattern repeated at every scale."
+"geometric pattern repeated at every scale."
 msgstr ""
 "Nous allons maintenant dessiner des flocons de neige en utilisant la "
 "fractale de Koch.  Une fractale est un dessin géométrique dont le motif se "
@@ -8928,45 +8928,32 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:6
 msgid ""
-"The general form is a triangle, with each side given by a serie of recursive "
-"calls. The general form is given by something like this:"
+"The general form is a triangle, with each side given by several recursive "
+"calls. Your work is only to write the code of the <code>snowSide</code> "
+"method so that it draws one side of the triangle. To make it easier, each "
+"sides are represented in a specific color. Just draw the red things (without "
+"changing your pen color), and the other colors will be drawn automatically."
 msgstr ""
-"La forme générale est un triangle dont chaque coté est donné par une série "
-"d'appels récursifs.  La forme générale est obtenue en enchainant trois cotés "
-"de la façon suivante."
+"La forme générale est une sorte de triangle, dont chaque coté est généré par "
+"des appels récursifs.\n"
+"Vous ne devez dessiner qu'un coté de ce triangle dans la fonction "
+"<code>snowSide</code>. \n"
+"Pour simplifier les choses, chaque coté a une couleur particulière. "
+"Contentez vous de dessiner les choses en rouge (sans changer votre couleur), "
+"et les autres couleurs seront dessinées automatiquement."
 
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/koch/Koch.html:8
-#, no-wrap
-msgid ""
-"[!java]void [/!]snowFlake ([!java]int [/!]levels[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!])[!python]:[/!][!java|scala] {[/!]\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"[!java|scala]}[/!]"
-msgstr ""
-"[!java]void [/!]snowFlake ([!java]int [/!]niveaux[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!])[!python]:[/!][!java|scala] {[/!]\n"
-"   snowSide(niveaux, longueur);\n"
-"   right(120);\n"
-"   snowSide(niveaux, longueur);\n"
-"   right(120);\n"
-"   snowSide(niveaux, longueur);\n"
-"   right(120);\n"
-"[!java|scala]}[/!]"
-
-#. type: Content of: <p><p>
-#: src/lessons/recursion/koch/Koch.html:17
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:12
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
 "logic, and then reproduce it. You must write the <code>snowSide()</code> "
-"method, which is recursive."
+"method, which is recursive but <b>do not call snowFlake from snowSide</b>, "
+"or you will get very strange unexpected behaviors."
 msgstr ""
 "Observez le dessin dans chaque monde objectif pour comprendre la logique de "
 "ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui "
-"est récursive."
+"est récursive. Mais <b>n'appelez pas snowFlake depuis snowSide</b>, car "
+"sinon le résultat sera vraiment étrange et inattendu."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/tree/Tree.html:1
@@ -9469,7 +9456,10 @@ msgid ""
 "Write the core of the method: <code>[!java]void [/!]solve([!java]int "
 "[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!],[!java]int "
 "[/!]other[!scala]:Int[/!], [!java]int [/!]height[!scala]:Int[/!])</code>"
-msgstr "Write the core of the method: <code>[!java]void [/!]solve([!java]int [/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!],[!java]int [/!]autre[!scala]:Int[/!], [!java]int [/!]hauteur[!scala]:Int[/!])</code>"
+msgstr ""
+"Write the core of the method: <code>[!java]void [/!]solve([!java]int "
+"[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!],[!java]int "
+"[/!]autre[!scala]:Int[/!], [!java]int [/!]hauteur[!scala]:Int[/!])</code>"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:25
