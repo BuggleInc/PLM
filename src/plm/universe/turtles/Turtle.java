@@ -240,9 +240,11 @@ public class Turtle extends Entity {
 	
 	public void hide() {
 		this.visible = false;
+		stepUI();
 	}
 	public void show() {
 		this.visible = true;
+		stepUI();
 	}
 	public boolean isVisible() {
 		return this.visible;
