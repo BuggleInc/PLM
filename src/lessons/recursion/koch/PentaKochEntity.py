@@ -5,17 +5,15 @@ def pentaKoch(levels, length):
 		if levels == 0:
 			forward(length)
 		else:
-			squareSide(levels-1, length*.4)
-			left(90)
-			squareSide(levels-1, length*.4)
-			right(90)
-			squareSide(levels-1, length*.4)
-			right(90)
-			squareSide(levels-1, length*.4)
-			left(90)
-			squareSide(levels-1, length*.4)
+			pentaKoch(levels-1, length*.4)
+			left(108);
+			for i in range(4):
+				pentaKoch(levels-1, length*.4);
+				right(72);
+			left(180);
+			pentaKoch(levels-1, length*.4)
 		# END SOLUTION	
 
 # END TEMPLATE
 
-snowSquare(getParam(0), getParam(1))
+pentaKoch(getParam(0), getParam(1))
