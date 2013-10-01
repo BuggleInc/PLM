@@ -10,6 +10,12 @@ in a specific color. Just draw the red things (without changing your pen color),
 and the other colors will be drawn automatically. </p>
 
 <p>Observe the drawing in each world's objective to understand the pattern's
-logic, and then reproduce it. You must write the <code>snowSide()</code>
-method, which is recursive but <b>do not call snowFlake from snowSide</b>, 
-or you will get very strange unexpected behaviors.</p>
+logic, and then reproduce it. At level 0, the Koch curve is just a straight line. 
+At level 1, the curve is divided in three thirds, and the middle part is replaced by 
+the two sides of an equilateral triangle of the same length as the segment being removed.
+At level 2, the process is repeated, whith each segments split in three parts and the 
+middle part being replaced by the two sides of an equilateral triangle.</p>
+
+<p>You must write the <code>snowSide()</code> method, which is recursive but 
+<b>do not call snowFlake from snowSide</b>, or you will get very strange and unexpected 
+behaviors.</p>
