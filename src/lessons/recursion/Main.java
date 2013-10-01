@@ -3,6 +3,7 @@ package lessons.recursion;
 import lessons.recursion.dragoncurve.DragonCurve1;
 import lessons.recursion.dragoncurve.DragonCurve2;
 import lessons.recursion.koch.Crab;
+import lessons.recursion.koch.HexaKoch;
 import lessons.recursion.koch.Koch;
 import lessons.recursion.koch.PentaKoch;
 import lessons.recursion.koch.SquareKoch;
@@ -24,6 +25,7 @@ public class Main extends Lesson {
 		addExercise(new Koch(this));
 		addExercise(new SquareKoch(this));
 		addExercise(new PentaKoch(this));
+		addExercise(new HexaKoch(this));
 		addExercise(new Crab(this));
 		addExercise(new Sierpinski(this));
 		addExercise(new PolygonFractal(this));

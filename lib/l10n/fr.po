@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-09-30 17:35+0300\n"
+"POT-Creation-Date: 2013-10-01 10:59+0300\n"
 "PO-Revision-Date: 2013-09-30 17:36+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
@@ -638,50 +638,88 @@ msgstr "Dessine un cercle du rayon demandé et centré sur la tortue."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:36
+#, fuzzy, no-wrap
+#| msgid "[!java]void [/!]left()"
+msgid "[!java]void [/!]hide()"
+msgstr "[!java]void [/!]gauche()"
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:37
+msgid "Hides the turtle."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:39
+#, fuzzy, no-wrap
+#| msgid "[!java]void [/!]brushDown()"
+msgid "[!java]void [/!]show()"
+msgstr "[!java]void [/!]baisseBrosse()"
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:40
+msgid "Shows the turtle back."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:42
+#, fuzzy, no-wrap
+#| msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
+msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:43
+#, fuzzy
+#| msgid "Returns whether the pancake stack is correctly sorted."
+msgid "Returns whether the turtle is currently visible."
+msgstr "Renvoie si la pile de crêpes est correctement triée."
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:45
 #, no-wrap
 msgid "[!java]void [/!]clear()"
 msgstr "[!java]void [/!]efface()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:37
+#: src/plm/universe/turtles/TurtleWorld.html:46
 msgid "Removes any trail on the sheet."
 msgstr "Efface toutes les traces de la feuille."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:39
+#: src/plm/universe/turtles/TurtleWorld.html:48
 #, no-wrap
 msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
 msgstr "[!java]double [/!]getCap()[!scala]:Double[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:40
+#: src/plm/universe/turtles/TurtleWorld.html:49
 msgid "Returns the current heading of the turtle (in degrees)."
 msgstr "Retourne le cap actuel de la tortue (en degrés)."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:42
+#: src/plm/universe/turtles/TurtleWorld.html:51
 #, no-wrap
 msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
 msgstr "[!java]void [/!]setCap([!java]double [/!]angle[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:43
+#: src/plm/universe/turtles/TurtleWorld.html:52
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr "Change le cap de la tortue à l'angle indiqué (en degrés)."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:45
+#: src/plm/universe/turtles/TurtleWorld.html:54
 msgid "Functions about the pen"
 msgstr "Fonctions à propos du stylo"
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:47
+#: src/plm/universe/turtles/TurtleWorld.html:56
 #, no-wrap
 msgid "[!java]void [/!]penUp()"
 msgstr "[!java]void [/!]leveCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:48
+#: src/plm/universe/turtles/TurtleWorld.html:57
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
@@ -691,13 +729,13 @@ msgstr ""
 "déplacements suivants."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:51
+#: src/plm/universe/turtles/TurtleWorld.html:60
 #, no-wrap
 msgid "[!java]void [/!]penDown()"
 msgstr "[!java]void [/!]baisseCrayon()"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:52
+#: src/plm/universe/turtles/TurtleWorld.html:61
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
@@ -706,45 +744,45 @@ msgstr ""
 "déplacements."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:54
+#: src/plm/universe/turtles/TurtleWorld.html:63
 #, no-wrap
 msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estCrayonBaisse()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:55
+#: src/plm/universe/turtles/TurtleWorld.html:64
 msgid "Returns the current pen position as a boolean."
 msgstr "Retourne si le stylo est actuellement baissé ou non."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:57
+#: src/plm/universe/turtles/TurtleWorld.html:66
 #, no-wrap
 msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr "[!java]Color [/!]getCouleur()[!scala]:Color[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:58
+#: src/plm/universe/turtles/TurtleWorld.html:67
 msgid "Returns the current pen color."
 msgstr "Retourne la couleur actuelle du stylo."
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:60
+#: src/plm/universe/turtles/TurtleWorld.html:69
 #, no-wrap
 msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
 msgstr "[!java]void [/!]setCouleur([!java]Color [/!]couleur[!scala]:Color[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:61
+#: src/plm/universe/turtles/TurtleWorld.html:70
 msgid "Changes the pen color."
 msgstr "Modifier la couleur du stylo."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:63
+#: src/plm/universe/turtles/TurtleWorld.html:72
 msgid "Other functions"
 msgstr "Autres fonctions"
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:65
+#: src/plm/universe/turtles/TurtleWorld.html:74
 #: src/plm/universe/bugglequest/BuggleWorld.html:35
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
 #, no-wrap
@@ -752,50 +790,50 @@ msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:66
+#: src/plm/universe/turtles/TurtleWorld.html:75
 msgid ""
 "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
 "Renvoie si la tortue actuelle est sélectionnée dans l'interface graphique."
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:68
+#: src/plm/universe/turtles/TurtleWorld.html:77
 #: src/plm/universe/bugglequest/BuggleWorld.html:65
 msgid "Valid colors"
 msgstr "Couleurs valides"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:79
 #: src/plm/universe/bugglequest/BuggleWorld.html:67
 msgid "Name"
 msgstr "Nom"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:79
 #: src/plm/universe/bugglequest/BuggleWorld.html:67
 msgid "Color"
 msgstr "Couleur"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:71
+#: src/plm/universe/turtles/TurtleWorld.html:80
 #: src/plm/universe/bugglequest/BuggleWorld.html:68
 msgid "Color.black"
 msgstr "Color.black"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:71
-#: src/plm/universe/turtles/TurtleWorld.html:72
-#: src/plm/universe/turtles/TurtleWorld.html:73
-#: src/plm/universe/turtles/TurtleWorld.html:74
-#: src/plm/universe/turtles/TurtleWorld.html:75
-#: src/plm/universe/turtles/TurtleWorld.html:76
-#: src/plm/universe/turtles/TurtleWorld.html:77
-#: src/plm/universe/turtles/TurtleWorld.html:78
-#: src/plm/universe/turtles/TurtleWorld.html:79
 #: src/plm/universe/turtles/TurtleWorld.html:80
 #: src/plm/universe/turtles/TurtleWorld.html:81
 #: src/plm/universe/turtles/TurtleWorld.html:82
 #: src/plm/universe/turtles/TurtleWorld.html:83
+#: src/plm/universe/turtles/TurtleWorld.html:84
+#: src/plm/universe/turtles/TurtleWorld.html:85
+#: src/plm/universe/turtles/TurtleWorld.html:86
+#: src/plm/universe/turtles/TurtleWorld.html:87
+#: src/plm/universe/turtles/TurtleWorld.html:88
+#: src/plm/universe/turtles/TurtleWorld.html:89
+#: src/plm/universe/turtles/TurtleWorld.html:90
+#: src/plm/universe/turtles/TurtleWorld.html:91
+#: src/plm/universe/turtles/TurtleWorld.html:92
 #: src/plm/universe/bugglequest/BuggleWorld.html:56
 #: src/plm/universe/bugglequest/BuggleWorld.html:68
 #: src/plm/universe/bugglequest/BuggleWorld.html:69
@@ -818,73 +856,73 @@ msgid "&nbsp;"
 msgstr "&nbsp;"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:72
+#: src/plm/universe/turtles/TurtleWorld.html:81
 #: src/plm/universe/bugglequest/BuggleWorld.html:69
 msgid "Color.blue"
 msgstr "Color.blue"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:73
+#: src/plm/universe/turtles/TurtleWorld.html:82
 #: src/plm/universe/bugglequest/BuggleWorld.html:70
 msgid "Color.cyan"
 msgstr "Color.cyan"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:74
+#: src/plm/universe/turtles/TurtleWorld.html:83
 #: src/plm/universe/bugglequest/BuggleWorld.html:71
 msgid "Color.darkGray"
 msgstr "Color.darkGray"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:75
+#: src/plm/universe/turtles/TurtleWorld.html:84
 #: src/plm/universe/bugglequest/BuggleWorld.html:72
 msgid "Color.gray"
 msgstr "Color.gray"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:76
+#: src/plm/universe/turtles/TurtleWorld.html:85
 #: src/plm/universe/bugglequest/BuggleWorld.html:73
 msgid "Color.green"
 msgstr "Color.green"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:77
+#: src/plm/universe/turtles/TurtleWorld.html:86
 #: src/plm/universe/bugglequest/BuggleWorld.html:74
 msgid "Color.lightGray"
 msgstr "Color.lightGray"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:78
+#: src/plm/universe/turtles/TurtleWorld.html:87
 #: src/plm/universe/bugglequest/BuggleWorld.html:75
 msgid "Color.magenta"
 msgstr "Color.magenta"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:79
+#: src/plm/universe/turtles/TurtleWorld.html:88
 #: src/plm/universe/bugglequest/BuggleWorld.html:76
 msgid "Color.orange"
 msgstr "Color.orange"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:80
+#: src/plm/universe/turtles/TurtleWorld.html:89
 #: src/plm/universe/bugglequest/BuggleWorld.html:77
 msgid "Color.pink"
 msgstr "Color.pink"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:81
+#: src/plm/universe/turtles/TurtleWorld.html:90
 #: src/plm/universe/bugglequest/BuggleWorld.html:78
 msgid "Color.red"
 msgstr "Color.red"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:82
+#: src/plm/universe/turtles/TurtleWorld.html:91
 #: src/plm/universe/bugglequest/BuggleWorld.html:79
 msgid "Color.white"
 msgstr "Color.white"
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:83
+#: src/plm/universe/turtles/TurtleWorld.html:92
 #: src/plm/universe/bugglequest/BuggleWorld.html:80
 msgid "Color.yellow"
 msgstr "Color.yellow"
@@ -8946,14 +8984,97 @@ msgstr ""
 #: src/lessons/recursion/koch/Koch.html:12
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
-"logic, and then reproduce it. You must write the <code>snowSide()</code> "
-"method, which is recursive but <b>do not call snowFlake from snowSide</b>, "
-"or you will get very strange unexpected behaviors."
+"logic, and then reproduce it. At level 0, the Koch curve is just a straight "
+"line.  At level 1, the curve is divided in three thirds, and the middle part "
+"is replaced by the two sides of an equilateral triangle of the same length "
+"as the segment being removed.  At level 2, the process is repeated, whith "
+"each segments split in three parts and the middle part being replaced by the "
+"two sides of an equilateral triangle."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/koch/Koch.html:19
+msgid "Too much letters. Please picture it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:23
+#, fuzzy
+#| msgid ""
+#| "Observe the drawing in each world's objective to understand the pattern's "
+#| "logic, and then reproduce it. You must write the <code>snowSide()</code> "
+#| "method, which is recursive but <b>do not call snowFlake from snowSide</"
+#| "b>, or you will get very strange unexpected behaviors."
+msgid ""
+"You must write the <code>snowSide()</code> method, which is recursive but "
+"<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
+"unexpected behaviors."
 msgstr ""
 "Observez le dessin dans chaque monde objectif pour comprendre la logique de "
 "ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui "
 "est récursive. Mais <b>n'appelez pas snowFlake depuis snowSide</b>, car "
 "sinon le résultat sera vraiment étrange et inattendu."
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/koch/SquareKoch.html:1
+#, fuzzy
+#| msgid "Snow flake"
+msgid "Snow square"
+msgstr "Flocons de neige"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/SquareKoch.html:3
+msgid ""
+"This exercise is a variation over the snow flake that we saw previously.  "
+"The main difference is that we are growing little squares instead of "
+"triangles on the sides of the figure."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/SquareKoch.html:7
+msgid ""
+"As previously, your <code>squareSide</code> function should only draw one "
+"side of the figure, and the template will call it for all sides "
+"automatically (with one color per side)."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/koch/Crab.html:1
+msgid "Fractal Crab"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Crab.html:3
+msgid ""
+"Here comes another variation over the Koch fractal figure, called the Crab "
+"curve (or C curve).  This time, we grow square triangle on the side of the "
+"figure: the angle is 45 degrees, and the length is divided by [!java|"
+"scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!] at each step."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Crab.html:7
+msgid ""
+"Check the figures produced by the first steps of recursion to understand the "
+"pattern."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/recursion/koch/Crab.html:10
+#, fuzzy
+#| msgid "Bibliographical notes"
+msgid "Bibliographical note"
+msgstr "Notes bibliographiques"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Crab.html:11
+msgid ""
+"This curve, also called the Lévy C curve was invented in 1938 by the French "
+"mathematician Paul Lévy in 1938.  As usual, the wikipedia page is very "
+"instructive, and the page provide a very good additions: <a href=\"http://"
+"www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c."
+"shtml</a>."
+msgstr ""
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/tree/Tree.html:1
@@ -9217,7 +9338,12 @@ msgid ""
 "isosceles triangle with angle R being a right angle, and R being at the "
 "right of the PQ vector. Thus, if P and Q coordinates are (x, y)  and (z, t), "
 "the coordinate (u, v) of R are given by:"
-msgstr "la courbe du Dragon d'ordre n est la courbe du Dragon d'ordre n-1 entre P et R suivie de la même courbe d'ordre n-1 entre Q et R, où PRQ est le triangle isocèle rectangle en R, et R est à droite du vecteur PQ.  Donc, si P et Q sont les points de coordonnées (x, y) et (z,t), les coordonnées (u, v) de R sont les suivantes:"
+msgstr ""
+"la courbe du Dragon d'ordre n est la courbe du Dragon d'ordre n-1 entre P et "
+"R suivie de la même courbe d'ordre n-1 entre Q et R, où PRQ est le triangle "
+"isocèle rectangle en R, et R est à droite du vecteur PQ.  Donc, si P et Q "
+"sont les points de coordonnées (x, y) et (z,t), les coordonnées (u, v) de R "
+"sont les suivantes:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:13
@@ -11452,8 +11578,8 @@ msgid ""
 "otherwise."
 msgstr ""
 "Les écureuils dans Palo Alto passent la majorité de leurs journées à jouer. "
-"En particulier, ils jouent si la température est entre 60 et 90 (inclus). "
-"A moins que ce soit l'été, alors la limite supérieure est de 100 au lieu de "
+"En particulier, ils jouent si la température est entre 60 et 90 (inclus). A "
+"moins que ce soit l'été, alors la limite supérieure est de 100 au lieu de "
 "90. Soit une température entière et un booléen isSummer.\n"
 "Renvoyez vrai si les écureuils jouent et faux sinon."
 
@@ -12459,11 +12585,12 @@ msgstr ""
 "[!python]Le plus simple pour cela est de créer une liste vide puis d'y "
 "adjoindre (avec <code>append()</code> les différentes couleurs lues sur le "
 "sol de la première colonne (avec <code>getCouleurSol()</code>).[/!] \n"
-"[!java|scala]Pour cela, il faut déclarer et créer un tableau de variables de type <code>Color</"
-"code>. Attention, les différents mondes ne sont pas tous de la même taille "
-"et il faut utiliser <code>getMondeHauteur()</code> pour trouver la taille du "
-"monde courant. Une fois créé, remplissez le tableau en lisant les couleurs "
-"au sol de la première colonne (avec <code>getCouleurSol()</code>).[/!]"
+"[!java|scala]Pour cela, il faut déclarer et créer un tableau de variables de "
+"type <code>Color</code>. Attention, les différents mondes ne sont pas tous "
+"de la même taille et il faut utiliser <code>getMondeHauteur()</code> pour "
+"trouver la taille du monde courant. Une fois créé, remplissez le tableau en "
+"lisant les couleurs au sol de la première colonne (avec "
+"<code>getCouleurSol()</code>).[/!]"
 
 #. type: Content of: <p><p><p><p>
 #: src/lessons/welcome/array/basics/Array1.html:240

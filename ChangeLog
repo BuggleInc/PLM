@@ -4,6 +4,8 @@
   * PancakeWorld: The larger pancake is getStackSize()-1
   * recursion.DragonCurve1: slight mission text improvement
   * recursion.SquareKoch: new exercise (variation over the Koch idea)
+  * recursion.PentaKoch: new exercise (another variation of Koch curve)
+  * recursion.HexaKoch: new exercise (yet another Koch curve)
   * recursion.Crab: new exercise (another L-system: the Lévy C curve)
   * TurtleWorld: new builtins to hide()/show() the turtle.
   * As usual, fix some typos in the French translation
