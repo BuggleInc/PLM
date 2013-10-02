@@ -690,7 +690,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));
 		
 		miSessionDebug.setText(i18n.tr("Debug mode"));
-		miSessionDebug.setText(i18n.tr("Creative mode"));
+		miSessionCreative.setText(i18n.tr("Creative mode"));
 
 		
 		menuLanguage.setText(i18n.tr("Language"));
