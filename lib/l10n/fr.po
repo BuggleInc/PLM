@@ -12374,7 +12374,7 @@ msgid ""
 "forward and switching the light, using respectively"
 msgstr ""
 "Ce premier exercice est une simple mise en bouche. Vous devriez pouvoir le "
-"résourdre simplement en avancant et en allumant la lampe, grâce aux ordres "
+"résoudre simplement en avancant et en allumant la lampe, grâce aux ordres "
 "suivants: "
 
 #. type: Content of: <p>
