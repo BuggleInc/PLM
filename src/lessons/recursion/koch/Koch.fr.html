@@ -12,18 +12,20 @@ Pour simplifier les choses, chaque coté a une couleur
 particulière. Contentez vous de dessiner les choses en rouge (sans changer
 votre couleur), et les autres couleurs seront dessinées automatiquement. </p>
 
-<p>Observe the drawing in each world's objective to understand the pattern's
-logic, and then reproduce it. At level 0, the Koch curve is just a straight
-line.  At level 1, the curve is divided in three thirds, and the middle part
-is replaced by the two sides of an equilateral triangle of the same length
-as the segment being removed.  At level 2, the process is repeated, whith
-each segments split in three parts and the middle part being replaced by the
-two sides of an equilateral triangle.</p>
+<p>Observez l'objectif de chaque monde pour comprendre la logique du motif à
+dessiner, puis reproduisez-le.
+Au niveau 0, la courbe de Koch est une simple ligne droite.
+Au niveau 1, elle est divisée en trois tiers, et la partie du milieu est
+remplacée par deux cotés d'un triangle équilatéral de même longueur que le
+segment supprimé.
+Au niveau 2, le processus est répété avec le tiers central de chaque segment
+remplacé par un petit triangle équilatéral.</p>
 
-<div class="tip" id="tip-1" alt="Too much letters. Please picture it.">
+<p><div class="tip" id="tip-1" alt="TL;DR. Vous pouvez me dessiner tout ça ?">
+<p>Voici le résultat des premiers niveaux de recusion.</p>
 <img src="KochHint.png" />
-</div>
+</div></p>
 
-<p>You must write the <code>snowSide()</code> method, which is recursive but
-<b>do not call snowFlake from snowSide</b>, or you will get very strange and
-unexpected behaviors.</p>
+<p>Vous devez écrire la fonction snowSide, qui est récursive. Mais <b>n'appelez
+pas snowFlake depuis snowSide</b>, car sinon le résultat sera vraiment
+étrange et inattendu.</p>

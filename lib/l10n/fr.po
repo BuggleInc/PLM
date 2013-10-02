@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-10-01 10:59+0300\n"
-"PO-Revision-Date: 2013-09-30 17:36+0200\n"
+"POT-Creation-Date: 2013-10-01 15:54+0300\n"
+"PO-Revision-Date: 2013-10-01 21:45+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -449,8 +449,8 @@ msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/sort/SortingWorld.html:30
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
 msgid ""
 "Returns whether the current world is selected in the graphical interface."
 msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
@@ -638,41 +638,36 @@ msgstr "Dessine un cercle du rayon demandé et centré sur la tortue."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:36
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]left()"
+#, no-wrap
 msgid "[!java]void [/!]hide()"
-msgstr "[!java]void [/!]gauche()"
+msgstr "[!java]void [/!]cache()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:37
 msgid "Hides the turtle."
-msgstr ""
+msgstr "Cache la tortue."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:39
-#, fuzzy, no-wrap
-#| msgid "[!java]void [/!]brushDown()"
+#, no-wrap
 msgid "[!java]void [/!]show()"
-msgstr "[!java]void [/!]baisseBrosse()"
+msgstr "[!java]void [/!]montre()"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:40
 msgid "Shows the turtle back."
-msgstr ""
+msgstr "Montre la tortue."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:42
-#, fuzzy, no-wrap
-#| msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
+#, no-wrap
 msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estVisible()[!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:43
-#, fuzzy
-#| msgid "Returns whether the pancake stack is correctly sorted."
 msgid "Returns whether the turtle is currently visible."
-msgstr "Renvoie si la pile de crêpes est correctement triée."
+msgstr "Renvoie vrai si la tortue est actuellement visible."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:45
@@ -1359,6 +1354,58 @@ msgstr ""
 "Les \"SimpleBuggles\" (ie, celles utilisées dans les premiers exercices) "
 "affiche un message d'erreur sans que vous ayez à vous soucier de ce qu'est "
 "une exception."
+
+#. type: Content of: <h1>
+#: src/plm/universe/bat/BatWorld.html:1
+msgid "BatWorld"
+msgstr "BatWorld"
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:3
+msgid ""
+"This world is a simplistic testing environment largely inspired from the "
+"http://codingbat.com invented by Nick Parlente."
+msgstr ""
+"Ce monde contient un environnement simpliste de tests largement inspiré de "
+"http://codingbat.com inventé par Nick Parlente."
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:6
+msgid ""
+"The typical exercises are very short ones, aiming at improving the tactical "
+"programming abilities of the students. That is to say that you will be "
+"presented a quite long list of very little exercises about rather simple "
+"things. The idea is to train you on these issues until they become automatic "
+"to you."
+msgstr ""
+"Les exercices classiques sont très courts, et visent à améliorer les "
+"abilités de stratégie de programmation des étudiants. C'est pour vous "
+"prévenir que vous allez faire face à une très longue liste de très petits "
+"exercices à propos de choses très simples. L'idée est de vous entrainer sur "
+"ces problèmes jusqu'à ce que cela devienne automatique."
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:12
+msgid ""
+"In contrary to the other worlds, the BatWorld does not provide any fancy "
+"abstraction nor visualization. You have to fill a function, which gets "
+"called for a bunch of parameter sets, and that's it."
+msgstr ""
+"Contrairement aux autres mondes, le BatWorld ne fournit pas ni de belle "
+"abstractions ni de belles visualisaitons. Vous aurez à remplier une "
+"fonction, qui sera appelée avec un tas d'ensembles de différentes "
+"paramètres, et c'est tout."
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:16
+msgid ""
+"For more information, you should refer to the CodingBat.com documentation, "
+"which contains for example a very useful documentation on boolean operators: "
+"http://codingbat.com/doc/ifboolean.html"
+msgstr ""
+"Pour plus d'informations, vous devriez consulter la documentation de "
+"CodingBat.com qui contient par exemple une documentation très utile sur les "
+"opérateurs booléens : http://codingbat.com/doc/ifboolean.html"
 
 #. type: Content of: <h1>
 #: src/lessons/backtracking/Main.html:1
@@ -6992,13 +7039,15 @@ msgstr ""
 "exercice est inspiré, pour d'avantages de détails."
 
 #. type: Content of: <h3>
-#: src/lessons/turmites/Main.html:21 src/lessons/sort/pancake/Main.html:29
+#: src/lessons/turmites/Main.html:21 src/lessons/sort/dutchflag/Main.html:8
+#: src/lessons/sort/pancake/Main.html:29
 #: src/lessons/sort/baseball/Main.html:27 src/lessons/turtleart/Main.html:11
 msgid "What can I do to improve this PLM universe?"
 msgstr "Que puis-je faire pour améliorer cet univers de PLM?"
 
 #. type: Content of: <p>
-#: src/lessons/turmites/Main.html:23 src/lessons/sort/pancake/Main.html:31
+#: src/lessons/turmites/Main.html:23 src/lessons/sort/dutchflag/Main.html:10
+#: src/lessons/sort/pancake/Main.html:31
 #: src/lessons/sort/baseball/Main.html:29 src/lessons/turtleart/Main.html:13
 msgid ""
 "As usual, there are several things that could be done in the code of this "
@@ -8741,6 +8790,1503 @@ msgstr ""
 "terminé sa tâche."
 
 #. type: Content of: <h1>
+#: src/lessons/sort/dutchflag/Main.html:1
+#: src/lessons/sort/dutchflag/short_desc.html:1
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:1
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:1
+msgid "The Dutch Flag Problem"
+msgstr "Le problème du drapeau hollandais"
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/Main.html:3
+msgid ""
+"This problem was first proposed by E.W Dijkstra in 1976 (in the chapter 14 "
+"of his book \"A Discipline of Programming\").  It is a very classical "
+"variation of the sorting algorithms since then. It is sometimes useful in "
+"real life, but it became famous for its pedagogical properties: its "
+"complexity is not trivial, but not complex either.  It can easily be "
+"formally proven, but it's not absolutely trivial either."
+msgstr "Ce problème a été proposé pour la première fois par E.W.Dijkstra en 1976 (dans le chapitre 14 de son livre «A discipline of Programming»). C'est une variation très étudiée du tri par insertion depuis. Ce tri est parfois utile dans la vraie vie, mais il est surtout célèbre pour ses vertus pédagogiques : calculer sa complexité n'est ni trop simple ni trop dur, démontrer sa correction est très accessible sans être complètement trivial."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/dutchflag/Main.html:12
+msgid "A temporal view could be welcomed."
+msgstr "Une vue temporelle serait bienvenue."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/dutchflag/Main.html:13
+msgid ""
+"Other exercises, for example with 2 colors only or with more than 3 colors, "
+"could generalize the proposed approach."
+msgstr "D'autres exercices, par exemple avec seulement deux couleurs ou avec plus de 3 couleurs, pourraient généraliser l'approche."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/dutchflag/Main.html:14
+msgid "This problem could be solved recursively."
+msgstr "Ce problème peut être résolu récursivement."
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/short_desc.html:3
+msgid ""
+"This is a classical sorting problem, constituting a variation over the "
+"insertion sort."
+msgstr "C'est un problème classique, qui constitue une variation du tri par insertion."
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:3
+msgid ""
+"Your work is to sort all the colors of the Dutch flag, and the only provided "
+"primitive is to exchange two given lines.  In addition, you should not "
+"create any additional variables (but a few indices)."
+msgstr "Votre travail est de trier les couleurs du drapeau hollandais. La seule primitive à votre disposition permet d'échanger deux lignes données. De plus, vous ne devez pas créer de nouvelles variables (à l'exception de quelques indices)."
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:6
+msgid ""
+"If you think carefully, this can be done in linear time, where you sort a "
+"line at each iteration of the loop.  You may want to check again the <a href="
+"\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion sort</a>, "
+"of which the Dutch Flag sort is a variation. The main difference is that you "
+"have 3 insertion points, not only one..."
+msgstr "À la réflexion, on peut le faire en temps linéaire, en triant un élément à chaque étape de la boucle. Vous devriez peut-être réviser comment se passe le <a href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">tri par insertion</a>, car le tri du drapeau hollandais est une variation sur le thème. La principale différence est que vous n'avez pas un seul point d'insertion, mais 3..."
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:10
+msgid "I need an hint to start"
+msgstr "J'ai besoin d'un indice pour commencer."
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:11
+msgid "Do a traversal over your data, saving 3 indices:"
+msgstr "Traversez vos données, en maintenant trois indices :"
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:13
+msgid ""
+"<code>afterBlue</code> is initialized to 0. Make sure that every cell below "
+"<code>afterBlue</code> is filled with blue elements."
+msgstr "<code>apresBleu</code> est initialisé à 0. Assurez vous de n'avoir que des cellules bleues entre 0 et <code>apresBleu</code> à tout moment."
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:14
+msgid ""
+"<code>whiteRed</code> is initialized to size-1. Make sure that every cell "
+"after <code>whiteRed</code> is filled with red elements."
+msgstr "<code>blancRouge</code> est initialisé à taille-1. Assurez vous de n'avoir que des cellules rouges après <code>blancRouge</code>."
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:15
+msgid ""
+"<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
+"after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
+"with while elements."
+msgstr "<code>avantBlanc</code> est iniitialisé à taille-1. Assurez vous de n'avoir que des cellules blanches entre <code>avantBlanc</code> et <code>blancRouge</code>."
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:17
+msgid ""
+"Note that the unsorted cells are always between <code>afterBlue</code> and "
+"<code>beforeWhite</code>."
+msgstr "Remarques que les cellules non triées sont toujours entre <code>apresBleu</code> et <code>avantBlanc</code>."
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:19
+msgid ""
+"At each step of your traversal, check the color of the cell at "
+"<code>afterBlue</code> and do the required exchanges.  The loop ending "
+"condition is when <code>afterBlue</code> becomes larger than "
+"<code>beforeWhite</code>."
+msgstr "À chaque étape de votre traversée, regardez la couleur de la case pointée par <code>apresBleu</code> et effectuez les échanges qui s'imposent. La boucle s'arrête quand <code>apresBleu</code> devient plus grand que <code>avantBlanc</code>."
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:2
+msgid "The colors are represented by integers (either 0, 1 or 2)."
+msgstr "Les couleurs sont représentées par des entiers (soit 0, 1 ou 2)."
+
+#. type: Content of: <h2>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:4
+msgid "Provided functions"
+msgstr "Fonctions fournies"
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:6
+msgid "This world is very simple, with only 5 provided functions."
+msgstr "Cet univers est très simple, avec seulement cinq fonctions fournies."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:8
+#, no-wrap
+msgid "[!java]void [/!]swap([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
+msgstr "[!java]void [/!]echange([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
+msgid "Swap the lines number <code>x</code> and <code>y</code>."
+msgstr "Échange les lignes numéros <code>x</code> et <code>y</code>."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
+#, no-wrap
+msgid "[!java]int [/!]getSize() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTaille()  [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:12
+msgid "Returns the amount of lines on this flag."
+msgstr "Retourne le nombre de lignes sur ce drapeau."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:14
+#, no-wrap
+msgid "[!java]int [/!]getColor([!java]int [/!]line[!scala]:Int[/!])  [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getCouleur([!java]int [/!]line[!scala]:Int[/!])  [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:15
+msgid "Returns the color of the given line."
+msgstr "Retourne la couleur d'une ligne donnée."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:17
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:30
+#, no-wrap
+msgid "[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estTrie() [!scala]:Boolean[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:18
+msgid "Returns whether the flag is sorted."
+msgstr "Renvoie si le drapeau est correctement trié."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:20
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:21
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:37
+msgid "Returns whether the current world is selected in the interface."
+msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:1
+msgid "PancakeWorld"
+msgstr "Monde des crêpes"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:3
+msgid "This universe is very simple, with only five functions provided."
+msgstr "Cet univers est très simple, avec seulement cinq fonctions fournies."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:5
+#, no-wrap
+msgid "[!java]int [/!]getStackSize()  [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTaillePile()  [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
+msgid ""
+"Returns the size of the stack, that is the amount of pancakes it contains."
+msgstr ""
+"Renvoie la taille du tas de crêpes, c'est à dire le nombre de crêpes qui le "
+"compose."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:8
+#, no-wrap
+msgid "[!java]int [/!]getPancakeRadius([!java]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getRayonCrepe([!java]int [/!]rang[!scala]:Int[/!])  [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:9
+msgid ""
+"Returns the radius of the pancake passed as argument, with the rank of the "
+"top-most pancake being 0."
+msgstr ""
+"Renvoie le rayon de la crêpe passée en argument, sachant que le rang de la "
+"crêpe du haut est 0."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:11
+#, no-wrap
+msgid "[!java]boolean [/!]isPancakeUpsideDown([!java]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estCrepeRetournee([!java]int [/!]rang[!scala]:Int[/!])   [!scala]:Boolean[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:12
+msgid ""
+"Returns whether the pancake passed as argument upside-down, that is, if its "
+"burned side is on top. As usual, the top-most pancake is of rank 0."
+msgstr ""
+"Renvoie ssi la crêpe passée en paramètre (la crêpe du haut étant de rang 0) "
+"est à l'envers, c'est-à-dire si sa face brulée est en haut."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:14
+#, no-wrap
+msgid "[!java]void [/!]flip([!java]int [/!]amount[!scala]:Int[/!])"
+msgstr "[!java]void [/!]retourne([!java]int [/!]quantité[!scala]:Int[/!])"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
+msgid ""
+"Flips the <code>amount</code> first pancakes composing the stack, from the "
+"top of it."
+msgstr ""
+"Retourne les <code>quantité</code> premières crêpes de la pile, en partant "
+"du sommet de celle-ci."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:17
+#, no-wrap
+msgid "[!java]boolean [/!]isSorted()   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estTriee()   [!scala]:Boolean[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
+msgid "Returns whether the pancake stack is correctly sorted."
+msgstr "Renvoie si la pile de crêpes est correctement triée."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:20
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/Main.html:1
+#: src/lessons/sort/pancake/BasicPancake.html:1
+msgid "Pancake Sorting"
+msgstr "Trier des crêpes"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:3
+msgid ""
+"This activity is inspired by a problem first introduced in 1975 by Harry "
+"Dweighter in the American Mathematical Monthly. The question is not only to "
+"sort the pancakes, but to determine <code>f(n)</code> the <i>minimal</i> "
+"amount of flips mandated to sort any stack of size <code>n</code>."
+msgstr ""
+"Cette activité est inspirée d'un problème introduit pour la première fois en "
+"1975 par Harry Dweighter dans le journal de mathématique «American "
+"Mathematical Monthly». La question n'est pas tant de trier les crêpes que de "
+"déterminer <code>f(n)</code>, le nombre <i>minimal</i> de retournements "
+"nécessaires pour trier n'importe quelle pile de taille <code>n</code>. "
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:7
+msgid ""
+"This problem is now famous because Bill Gates authored (with C. "
+"Papadimitriou) his only scientific publication in 1979 on this topic, "
+"providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ (5n"
+"+5)/3</code>.  This was the only publication of Bill Gates before he "
+"invented Windows and became rich."
+msgstr ""
+"Ce problème est maintenant célèbre car Bill Gates a publié son seul article "
+"scientifique sur ce sujet (avec C. Papadimitriou). Ils ont proposé un "
+"algorithme plus rapide et démontré ainsi que <code>17n/16 ≤ f(n) ≤ (5n+5)</"
+"code>. Ce fut la seule publication de Bill Gates avant qu'il n'invente "
+"Windows et devienne riche. "
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:11
+msgid ""
+"Then, David X. Cohen, the inventor of the Futurama comics with many "
+"mathematical references, introduced the variant with burnt pancakes and "
+"studied its complexity with Manuel Blum in 1993."
+msgstr ""
+"Par la suite, David X. Cohen, l'inventeur du dessin animé Futurama aux "
+"nombreuses références mathématiques, introduit en 1993 la variante des "
+"crêpes brulées et étudie sa complexité avec Manuel Blum."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:14
+msgid ""
+"An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
+"determining the minimal amount of flips to sort the stack is a NP-complete "
+"problem. Naturally, the stack sorting problem is not NP-complete since it "
+"can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
+"the Gates algorithm.  That's determining the minimal amount of steps that is "
+"NP."
+msgstr ""
+"Un article de 2013 (par L. Bulteau, G. Fertin and I. Rusu) a prouvé que ce "
+"problème est NP-Complet, c'est à dire qu'il n'existe pas d'algorithme "
+"efficace pour déterminer le nombre minimal de retournements pour toute "
+"taille de pile. Naturellement, le problème du tri de la pile n'est pas NP-"
+"complet en lui-même puisqu'on peut le résoudre en 2n-3 étapes avec "
+"l'algorithme naïf et (5n+5)/3 étapes avec l'algorithme de Gates. C'est la "
+"détermination du nombre minimal de coups qui est NP."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:19
+msgid "Further information can be found on the wikipedia page, as usual."
+msgstr ""
+"Pour plus d'information, référez vous à la page anglophone de wikipedia "
+"(http://en.wikipedia.org/wiki/Pancake_sorting) ou à cette page, très bien "
+"faite: http://eljjdx.canalblog.com/archives/2013/02/03/26309722.html"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:22
+msgid ""
+"This activity is also integrated to CSIRL (my repository of <i>free</i> "
+"unplugged activities to introduce computer science, available at http://www."
+"loria.fr/~quinson/Mediation/SMN/), and it may be interesting to run the "
+"unplugged activities before implementing these algorithms in PLM."
+msgstr ""
+"Cette activité est également intégrée à SMN (mon dépot d'activités "
+"débranchées <i>libres</i> pour introduire la science informatique, "
+"disponible à l'adresse http://www.loria.fr/~quinson/Mediation/SMN/), et il "
+"peut être intéressant de faire les activités débranchées avant d'implémenter "
+"ces algorithmes dans PLM."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/Main.html:33
+msgid "A temporal view similar to the sorting universe could be helpful"
+msgstr ""
+"Une vue temporelle comme celle de l'univers des tris pourraît être pratique."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/Main.html:34
+msgid ""
+"Other exercises, for example on the Cohen's algorithm, or on the other ones."
+msgstr ""
+"D'autres exercices, par exemple sur l'algorithme de Cohen ou sur d'autres."
+
+#. type: Content of: <h3>
+#: src/lessons/sort/pancake/short_desc.html:1
+msgid "The pancake problem"
+msgstr "Le crépier psychorigide"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/short_desc.html:3
+msgid "Help the poor psychorigid pancakes' chef to sort its pancake stack!"
+msgstr "Aidez le pauvre crépier psychorigide à trier sa pile de crêpes !"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/short_desc.html:5
+msgid ""
+"This funny problem leads to algorithms that are somewhat more challenging to "
+"implement. You are supposed to master the bases of programming and some "
+"sorting algorithms to take this lesson."
+msgstr ""
+"Ce problème amusant débouche sur des algorithmes un peu plus compliqués à "
+"implémenter. Vous devez maîtriser les bases de la programmation ainsi que "
+"quelques algorithmes de tri avant de tenter cette leçon."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BasicPancake.html:3
+msgid ""
+"The pancake sorting problem this is a simple puzzle where you have a set of "
+"pancakes, each of differing size. The chef cooking the pancake is a bit "
+"psychorigid: he hates when the pancakes are not correctly sorted on the "
+"plate. He loves when they are correctly ordered, with the small ones over "
+"the larger ones. As every pancake maker, he masters the pancake flipping "
+"with his spatula. He can flip the pancake on top of the stack, or even "
+"several pancakes at once. The thing is that he has only one plate and the "
+"table is too dirty to place pancakes on it, even temporary. The only allowed "
+"operation is to flip some pancakes that are on top of the stack."
+msgstr ""
+"Le problème du tri des crêpes est un puzzle simple où vous avez une pile de\n"
+"crêpes, toutes de taille différente. Le crêpier étant légèrement "
+"psychorigide,\n"
+"il déteste quand ses crêpes ne sont pas bien ordonnées dans l'assiette. Il "
+"ne se\n"
+"sent bien que quand elles sont bien rangées, avec les petites au dessus des\n"
+"grandes. Comme tous les crêpiers, il est passé maître dans l'art du "
+"retournement\n"
+"de crêpes à la spatule. Il peut retourner une crêpe au sommet de la pile, "
+"ou\n"
+"même plusieurs à la fois. Le truc est qu'il n'a qu'une seule assiette et que "
+"la\n"
+"table est trop sale pour poser des crêpes dessus, même temporairement. La "
+"seule\n"
+"opération autorisée est alors de retourner un certain nombre de crêpes au "
+"sommet\n"
+"de la pile."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BasicPancake.html:12
+msgid ""
+"Your work is to help this poor guy sorting his stack by flipping the "
+"pancakes. Each pancake is defined by its radius and rank within the stack, "
+"where the bottom pancake is at rank 0, and the one above at rank 1."
+msgstr ""
+"Vous devez aider ce pauvre homme à trier sa pile en retournant des\n"
+"crêpes. Chaque crêpe est définie par son rayon et son rang dans la pile. La "
+"pile\n"
+"la plus basse est de rang 0, et celle placée au dessus d'elle est de rang 1."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BasicPancake.html:16
+msgid ""
+"Note that you can play physically with pieces of paper or wood at first to "
+"get the grasp on this problem. This is even one of the activities that I use "
+"in my CS-IRL (computer science in real life) project to introduce the "
+"concept of algorithm to absolute beginners that wonder about our science. "
+"More information at http://www.loria.fr/~quinson/Mediation/SMN/ (in French)."
+msgstr ""
+"Il est conseillé de commencer par jouer physiquement avec des bouts de "
+"papier ou\n"
+"de carton pour bien comprendre le problème. C'est même l'une des activités "
+"que\n"
+"j'utilise dans mon projet SMN (Sciences Manuelles du Numérique) pour "
+"introduire\n"
+"le concept d'algorithme aux débutants curieux de notre science. Pour plus\n"
+"d'information, allez visiter le site du projet: http://www.loria.fr/~quinson/"
+"Mediation/SMN/ "
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:22
+msgid "I don't get it. I need some help."
+msgstr "Je suis perdu, j'ai besoin d'aide."
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:23
+msgid ""
+"You should try to first move the largest pancake to the bottom, and then the "
+"largest but one pancake on top of it, and then the one just smaller on top, "
+"and so on."
+msgstr ""
+"Vous devez tout d'abord parvenir à placer la plus grande crêpe en bas de la "
+"pile et ensuite placer celle juste plus petite au dessus, puis celle plus "
+"petite et ainsi de suite."
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:27
+msgid "The first tip was not enough. I need another one."
+msgstr "Ce premier indice n'était pas suffisant, j'ai besoin de plus d'aide."
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:28
+msgid ""
+"So first, you need to move the largest pancake at the bottom of the stack."
+msgstr ""
+"Il vous faut donc amener la plus grande des crêpes tout en bas de la pile."
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:29
+msgid ""
+"Can you imagine a situation in which you can easily bring this damn large "
+"pancake to the bottom?"
+msgstr ""
+"Est ce que vous pouvez imaginer une situation où il est facile d'emener "
+"cette satanée grande crêpe tout en bas ?"
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:30
+msgid "How could you reach this situation from the current one?"
+msgstr ""
+"Et comment pourriez vous parvenir à cette situation à partir de la situation "
+"courante?"
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/BurnedPancake.html:1
+msgid "Burned Pancakes"
+msgstr "Crêpes brulées"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BurnedPancake.html:3
+msgid ""
+"Hard blow for the chef! The pancakes got burnt on one side! There is no way "
+"he can deliver a stack of pancakes with visibly burnt pancakes! You've got "
+"to help him ensuring that no pancake is upside-down while sorting his stack."
+msgstr ""
+"Coup dur pour le crèpier! Les crêpes ont brulé sur une face! Il est "
+"strictement impossible qu'il serve une pile de crêpes où l'on voit la face "
+"brulée! Vous devez absolument l'aider à s'assurer qu'aucune face visible ne "
+"soit brulée tandis qu'il trie sa pile."
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/GatesPancake.html:1
+msgid "Faster Pancake Sorting"
+msgstr "Tri rapide de crêpes"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:3
+msgid ""
+"Unlike others sorting problem, the expensive operation is not the comparison "
+"of values, but the flipping of pancakes. In this exercise, we will explore "
+"another algorithm that attempt to reduce the amount of stack flipping. The "
+"funny side is that this algorithm was first introduced by Bill Gates, before "
+"invented Windows."
+msgstr ""
+"Contrairement aux problèmes classiques de tri, l'opération coûteuse à "
+"économiser n'est pas la comparaison des valeurs, mais le retournement des "
+"crêpes. Dans cet exercice, nous allons explorer un autre algorithme "
+"permettant de réduire le nombre de retournements nécessaires pour trier la "
+"pile. Fait amusant, cet algorithme a été proposé pour la première fois par "
+"Bill Gates, avant qu'il n'invente Windows."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:8
+msgid ""
+"The basic idea is to grow sequences of sorted pancakes, not necessarily "
+"starting from the bottom.  We say that a sequence of ordered pancakes "
+"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
+"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
+"radius <code>t</code>) and search for the <code>t+1</code> or <code>t-1</"
+"code> pancakes (the considered neighbor is noted <code>t+o</code>). Eight "
+"cases may happen:"
+msgstr ""
+"L'idée de base est de faire grandir des séquences de crêpes triées, pas "
+"forcément en commençant du bas de la pile. On dira qu'un ensemble de crêpes "
+"dans l'ordre constitue un <b>block</b> tandis qu'une crêpe qui n'est pas "
+"dans un bloc est dite <b>libre</b>. L'algorithme considère la crêpe tout en "
+"haut de la pile, dont la taille est notée <code>t</code>, et cherche les "
+"deux crêpes de taille <code>t-1</code> et <code>t+1</code> (le voisin ainsi "
+"considéré est noté <code>t+o</code>). Huit cas sont possibles alors&nbsp;:"
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:15
+msgid ""
+"<b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are "
+"then merged in one flip."
+msgstr ""
+"<b>Cas a</b>: <code>t</code> et <code>t+o</code> sont tous les deux libres. "
+"Ils sont alors fusionnés en un retournement."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:19
+msgid ""
+"<b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of "
+"a block. They are merged in one flip."
+msgstr ""
+"<b>Cas b</b>: <code>t</code> est libre, et <code>t+o</code> est le premier "
+"élément d'un bloc. Ils sont fusionnés en un bloc."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:24
+msgid ""
+"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t"
+"+1</code> are the last elements of blocks.  Both blocs and <code>t</code> "
+"are merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
+"<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
+"two flips are mandated."
+msgstr ""
+"<b>Cas c</b>: <code>t</code> est libre, mais <code>t-1</code> et <code>t+1</"
+"code> sont tous les deux les derniers éléments de blocs. Ces deux blocs "
+"ainsi que <code>t</code> sont tous fusionnés en 4 retournements. Prenez "
+"garde, si <code>t-1</code> ou <code>t+1</code> n'existe pas (parce que "
+"<code>t</code> est 0 ou max), seulement deux de ces retournements sont "
+"nécessaires."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:32
+msgid ""
+"<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is free. "
+"They are merged in one flip."
+msgstr ""
+"<b>Cas d</b>: <code>t</code> est dans un bloc, mais <code>t+o</code> est "
+"libre. Ils sont fusionnés en un retournement."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:37
+msgid ""
+"<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
+"first element of a block. They are merged in one flip."
+msgstr ""
+"<b>Cas e</b>: <code>t</code> est dans un bloc, et <code>t+o</code> est le "
+"premier élément d'un bloc. Ils sont fusionnés en un retournement."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:41
+msgid ""
+"<b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last "
+"element of another block.  They are merged in 3 flips as follows."
+msgstr ""
+"<b>Cas f</b>: <code>t</code> est dans un bloc, et <code>t+o</code> est le "
+"dernier élément d'un autre bloc. Ils sont fusionnés en trois retournements "
+"comme suit."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:45
+msgid ""
+"<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
+"element of another block. Both blocks are merged in 2 flips:"
+msgstr ""
+"<b>Cas g</b>: <code>t</code> est dans un bloc de taille k+1 (le dernier "
+"élément est <code>t+ko</code>), <code>t+(k+1)o</code> est soit libre soit le "
+"dernier élément d'un autre bloc. Les deux blocs sont fusionnés en deux "
+"retournements:"
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:48
+msgid ""
+"<b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
+"block (the difference with case g is that <code>t+(k+1)o</code> is now the "
+"<i>first</i> element of its block). Both blocks are merged in 2 flips:"
+msgstr ""
+"<b>Cas h</b>: <code>t</code> est dans un bloc de taille k+1 (le dernier "
+"élément est <code>t+ko</code>), <code>t+(k+1)o</code> est le premier élément "
+"d'un autre bloc (la différence avec le cas g est que <code>t+(k+1)o</code> "
+"est maintenant le <i>premier</i> élément de son bloc). Les deux blocs sont "
+"fusionnés en deux retournements:"
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:54
+msgid ""
+"<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
+"block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
+"is fliped. The algorithm then stops."
+msgstr ""
+"<b>Cas i</b>: <code>t</code> est dans un bloc de taille <code>n</code>, qui "
+"contient donc toutes les crêpes. Si <code>t</code> n'est pas 1, toute la "
+"pile est retournée. Ensuite, l'algorithme s'arrête."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:57
+msgid ""
+"Each iteration increases the size of the blocks, so the algorithm eventually "
+"halts in all cases. A finer analysis would show that it takes at most "
+"<code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve "
+"algorithm, that requires 2n-3 steps."
+msgstr ""
+"Chaque itération augmente la taille des blocs, donc la terminaison de "
+"l'algorithme est certaine. Une analyse plus fine montre qu'il prend au plus "
+"<code>(5n+5)/3</code> étapes pour trier la pile. C'est mieux que "
+"l'algorithme naïf, qui nécessite <code>2n-3</code> étapes pour cela."
+
+#. type: Content of: <h2>
+#: src/lessons/sort/pancake/GatesPancake.html:60
+msgid "Your turn"
+msgstr "À vous de jouer"
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:61
+msgid ""
+"You now have almost enough information to implement this algorithm on your "
+"own. We just have to remove the last remaining ambiguities to ensure that "
+"you implement exactly the same algorithm that the correction. If several "
+"cases apply to your situation, then you should use the first given one. For "
+"example, if both cases a and b apply (e.g., with <code>t-1</code> on case "
+"<b>a</b> and <code>t+1</code> on case <b>b</b>), then you should apply the "
+"flips of case <b>a</b>. If a given case applies for both <code>t+1</code> "
+"and <code>t-1</code>, then you should apply it to <code>t+1</code>."
+msgstr ""
+"Vous avez maintenant quasi assez d'informations pour implémenter cet "
+"algorithme par vous-même. Il faut juste lever les dernières ambiguïtés pour "
+"que vous implémentiez exactement le même algorithme que la correction. Si "
+"plusieurs cas s'appliquent à la situation courante, appliquez le premier. "
+"Par exemple, si les cas a et b s'appliquent (avec <code>t-1</code> pour le "
+"cas a et <code>t+1</code> pour le cas b), vous devez appliquer les "
+"instructions du cas <b>a</b>. Si un cas donné s'applique à la fois pour "
+"<code>t+1</code> et <code>t-1</code>, appliquez le pour <code>t+1</code>."
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:67
+msgid ""
+"Note that it is somehow harder than the other exercises we did so far, so "
+"don't be surprised if you need more time to achieve this.  But do not give "
+"hope, you can do it!"
+msgstr ""
+"Cet exercice est plus difficile que ceux que nous avons fait jusque là, et "
+"il ne serait pas choquant que vous ayez besoin d'un peu plus de temps que "
+"les autres pour le résoudre. Mais n'abandonnez pas, vous pouvez le faire !"
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:70
+msgid "Well, I need some help to start."
+msgstr "Heu, j'ai besoin d'un peu d'aide pour commencer."
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:71
+msgid ""
+"First write some helper functions such as <code>isFirst()</code> or "
+"<code>isFree()</code>. This will simplify your main algorithm afterward, "
+"that can be written very similarly to the explication above with a bunch of "
+"if conditions. Factorizing code this way often helps making your code more "
+"readable."
+msgstr ""
+"Commencez par écrire des fonctions d'aide, comme <code>estLibre()</code> ou "
+"<code>estPremier()</code>. Cela simplifiera l'écriture de votre algorithme, "
+"qui peut être écrit sous une forme très similaire à l'énoncé si vous faites "
+"les bonnes fonctions d'aide. Factoriser ainsi votre code aide très souvent à "
+"améliorer la lisibilité du code."
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:78
+msgid "My code keeps failing and I don't know how to debug it."
+msgstr "Mon code ne fonctionne pas, et je ne sais pas comment le débugger"
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:79
+msgid ""
+"To debug one world after the other and avoid that the messages of all worlds "
+"get intermixed, you can write your debug function only if the method "
+"<code>isSelected()</code> returns true. It will be so only for the entity "
+"that is currently selected in the graphical interface, that is probably the "
+"world you are currently debugging. This will help breaking the difficulty in "
+"parts by debugging the situation on after the other."
+msgstr ""
+"Pour débugger un monde après l'autre, il est préférable d'éviter que les "
+"affichages de tous les mondes se mélangent. Le plus simple pour cela est "
+"d'utiliser la méthode <code>isSelected()</code> qui ne renvoi vrai que si le "
+"monde courant est celui sélectionné dans l'interface. Cela aidera à réduire "
+"la complexité en résolvant les problèmes les uns après les autres."
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:85
+msgid ""
+"In particular, it may help to print textually the state of the world each "
+"time you enter the main loop."
+msgstr ""
+"En particulier, afficher l'état du monde sous forme textuelle à chaque fois "
+"que vous rentrez dans la boucle principale peut aider. "
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/Main.html:1
+msgid "The Rainbow Baseball Game"
+msgstr "Le jeu du baseball multicolore"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:3
+msgid ""
+"This activity is inspired from the orange game, from the \"Computer Science "
+"Unplugged\" activities repository.  It was however heavily since then, first "
+"for the CSIRL (my repository of <i>free</i> unplugged activities to "
+"introduce computer science, available at http://www.loria.fr/~quinson/"
+"Mediation/SMN/) and now for PLM."
+msgstr ""
+"Cette activité est inspirée du jeu de l'orange dans le recueil d'activités "
+"«Computer Science Unplugged». Elle a cependant été profondément réarrangée "
+"depuis, d'abord pour SMN (mon recueil d'activités <i>libres</i> pour "
+"introduire la science informatique, disponible depuis http://www.loria.fr/"
+"~quinson/Mediation/SMN/), et maintenant pour PLM."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:7
+msgid ""
+"In the literature, the generalized form of this problem is known as the "
+"pebble motion problem (the bases can be connected by any kind of graph, and "
+"the affinity of pebbles with bases may be different). Another variant of "
+"this problem is the well known 15-puzzle, with one player per base, and a "
+"two dimensional square grid. Much more information about these problems can "
+"be found on wikipedia, as usual."
+msgstr ""
+"Dans la littérature scientifique, la forme généralisée de ce problème se "
+"nomme «le problème du déplacement des galets» (Pebble motion problem). Les "
+"bases peuvent être connectées par un graphe quelconque, et les affinités "
+"entre les galets et les bases peuvent être différentes. La plus connue des "
+"variantes de ce problème est le jeu du taquin, avec un seul joueur par base "
+"et une grille carrée à deux dimensions. On trouve énormément d'informations "
+"sur ces problèmes sur les pages wikipédia anglophones, comme d'habitude."
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/Main.html:12
+msgid ""
+"How do you know that the naive algorithm won't loop on that initial "
+"situation?"
+msgstr ""
+"Comment pouvez vous être sûr que l'algorithme naïf ne boucle pas sur cette "
+"situation initiale? "
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:14
+msgid ""
+"Well, we simply tested all possible situations to see when this algorithm "
+"loops and when it finds the correct solution. We found that it works for all "
+"situations where no player is at home (there is 84 such situations for 4 "
+"bases, once you take the symmetries into account). It obviously works for "
+"some situations that do not respect this criteria (such as all situations it "
+"encounters from one of those 84 boards to the final state), but that's "
+"another story. Having such a criteria allows us to generate pseudo-random "
+"initial situations for the first exercise for which the algorithm we propose "
+"is guarenteed to work."
+msgstr ""
+"Et bien, nous avons testé toutes les situations initiales possibles pour "
+"étudier les cas où l'algorithme boucle et ceux où l'algorithme termine "
+"correctement. Nous avons trouvé qu'il fonctionne pour toutes les situations "
+"où aucun joueur ne se trouve dans sa base (il y a 84 situations de ce genre "
+"pour 4 bases, si on élimine les symétries). Bien entendu, l'algorithme "
+"fonctionne correctement pour de nombreuses situations ne respectant pas ce "
+"critère (telles que toutes les situations rencontrées quand on commence de "
+"l'une de ces 84 situations), mais c'est une autre histoire. Avoir un tel "
+"critère nous permet de générer des situations initiales pour ce premier "
+"exercice de manière pseudo-aléatoire tout en étant sûrs que l'algorithme "
+"proposé se comportera correctement."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:21
+msgid ""
+"We also explored bigger instances of the problem, and unfortunately, we have "
+"no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
+"of the 1824 possible boards where no player is home (that's 1.31%).  With 6 "
+"bases, it fails on 1251 of the 58860 such boards (2.12%). With 7 bases, it "
+"fails for 84444 out of 2633940 (that's 3.2%). I am still looking for a "
+"criteria ensuring that the algorithm won't loop. If you discover one, please "
+"report it. Ideally, it would be simple to enforce manually so that we can "
+"use it during our unplugged activities."
+msgstr ""
+"Nous avons également exploré des instances plus grande de ce problème, et "
+"malheureusement, nous ne connaissons pas de critère sûr dans ce cas. Avec 5 "
+"bases, l'algorithme part en boucle infinie pour 24 des 1824 plateaux "
+"possibles où aucun joueur n'est à la maison (cela représente 1,31%). Avec 6 "
+"bases, il boucle pour 1251 des 58860 plateaux respectant ce critère (2,12%). "
+"Avec 7 bases, il boucle dans 84444 cas sur 2633940 (càd 3,2%). Nous "
+"cherchons encore un critère permettant de garantir que l'algorithme ne "
+"bouclera pas. Si vous en découvrez un, merci de nous l'indiquer. Ce serait "
+"encore mieux s'il était possible de vérifier le critère de tête afin que les "
+"animateurs puissent s'en servir pendant les activités débranchées."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/Main.html:31
+msgid ""
+"Other graphical representations could be proposed, such as a linear one (for "
+"the existing exercises) or other ones (such as a grid or a tree, if an "
+"exercise on this kind of graph proves interesting)."
+msgstr ""
+"D'autres représentations graphiques pourraient être proposées, comme une "
+"représentation linéaire (pour les exercices proposés) ou d'autres comme une "
+"grille ou un arbre, si un exercice sur ce type de graphe s'avère intéressant."
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/Main.html:33
+msgid ""
+"Other exercises on other algorithms on this variant, or on other variants "
+"such as the 15-puzzle."
+msgstr ""
+"D'autres exercices à propos d'autres algorithmes pour cette variante du "
+"problème, ou bien d'autres variantes comme le jeu du taquin."
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/short_desc.html:1
+msgid "Rainbow baseball"
+msgstr "Baseball multicolore"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/short_desc.html:3
+msgid ""
+"This is another funny variation on the sorting problem, adapting the main "
+"sorting algorithms on an unusual context."
+msgstr ""
+"Il s'agit d'un autre problème amusant autour des algorithmes de tri, "
+"adaptant les principaux algorithmes de tri à un contexte inhabituel."
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:1
+msgid "Rainbow Baseball"
+msgstr "Baseball multicolore"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:2
+msgid ""
+"The colors are represented by integers, between <code>0</code> and "
+"<code>amount of bases -1</code>.  The hole is represented by the special "
+"value <code>-1</code>.  The color of each base is its rank. So base <code>1</"
+"code> is of color <code>1</code>.  In the graphical interface, the base "
+"<code>0</code> is the dark blue one while the base <code>1</code> is the "
+"fuscia one."
+msgstr ""
+"Les couleurs sont représentées comme des entiers, entre <code>0</code> et "
+"<code>nombre de bases - 1</code>. Le trou est représenté par la valeur "
+"spéciale <code>-1</code>. La couleur de chaque base est son rang, ce qui "
+"fait que la base <code>1</code> est de couleur <code>1</code>. Dans "
+"l'interface graphique, la base <code>0</code> est la bleue foncée tandis que "
+"la base <code>1</code> est celle fuscia."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:8
+msgid ""
+"Once every players on the field are in their home base, the hole should be "
+"in the last base, that is of rank <code>getBasesAmount()-1</code>."
+msgstr ""
+"Une fois que tous les joueurs du terrain sont chez eux, le trou se trouve "
+"dans la dernière base, celle de rang <code>getNombreBases()-1</code>."
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:11
+msgid "Functions to retrieve the world's dimensions"
+msgstr "Fonctions pour découvrir les dimensions du monde"
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:13
+#, no-wrap
+msgid "[!java]int [/!]getBasesAmount() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getNombreBases() [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:14
+msgid "Returns the amount of bases on this field."
+msgstr "Retourne le nombre de bases dans le terrain."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:16
+#, no-wrap
+msgid "[!java]int [/!]getPositionsAmount() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getNombrePositions() [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
+msgid "Returns the amount of player's positions per base on this field."
+msgstr "Retourne le nombre de positions disponibles par base."
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:19
+msgid "Functions to retrieve the world's state"
+msgstr "Fonctions pour découvrir l'état du monde"
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:21
+#, no-wrap
+msgid "[!java]int [/!]getHoleBase() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTrouBase() [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
+msgid "Returns the base in which the hole is located."
+msgstr "Retourne l'index de la base où se trouve le trou."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
+#, no-wrap
+msgid "[!java]int [/!]getHolePosition() [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTrouPosition() [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:25
+msgid "Returns the hole position within its base"
+msgstr "Retourne la position du trou dans sa base."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
+#, no-wrap
+msgid "[!java]int [/!]getPlayerColor([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
+msgstr "[!java]int [/!]getCouleurJoueur([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
+msgid "Returns the color of the player at a given location."
+msgstr "Retourne la couleur d'un joueur donné à partir de sa position."
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
+msgid "Returns whether all players of the field are at home."
+msgstr "Retourne si tous les joueurs présents sur le terrain sont chez eux."
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:33
+#, no-wrap
+msgid "[!java]boolean [/!]isBaseSorted([!java]int [/!]base)  [!scala]:Boolean[/!]"
+msgstr "[!java]boolean [/!]estBaseTriee([!java]int [/!]base)  [!scala]:Boolean[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
+msgid "Returns whether all players of a given base are at home."
+msgstr "Retourne si tous les joueurs d'une base donnée sont chez eux."
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
+msgid "Functions to change the world"
+msgstr "Fonctions pour changer le monde"
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:40
+#, no-wrap
+msgid "[!java]void [/!]move([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])"
+msgstr "[!java]void [/!]deplace([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:41
+msgid ""
+"Moves a given player into the hole. This throws an IllegalArgumentException "
+"if the specified player is not near the hole (at most one base away)."
+msgstr ""
+"Déplace un joueur dans le trou. Une exception IllegalArgumentException est "
+"levée si le joueur indiqué n'est pas suffisamment près du trou. Il peut être "
+"au plus à une base du trou."
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/NaiveBaseball.html:1
+msgid "Naive Rainbow Baseball"
+msgstr "Baseball multicolore naïf"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:3
+msgid ""
+"Today, the buggles decided to play a baseball game, but they are rather out "
+"of luck, actually.  First, kinda forgot the rules, and ... well ... they "
+"cannot find the ball and bats again.  So they decided to \"adapt a bit\" the "
+"rules. As the are no ball, the buggles can only running around the field, "
+"what they do happily: for a while, all attending buggle run at full speed in "
+"all directions around the field."
+msgstr ""
+"Aujourd'hui, les buggles ont décidé de faire une partie de baseball, mais il "
+"faut avouer que ce n'est pas très bien engagé : elles ne se souviennent plus "
+"très bien des règles, et ... euh ... elles ont perdu les battes et les "
+"balles. Elles ont donc décidé «d'adapter un peu» les règles. Comme il n'y a "
+"plus de balle, la seule chose qu'elles peuvent faire est de courir sur le "
+"terrain. C'est d'ailleurs ce qu'elles ont fait pendant un moment : toutes "
+"les buggles présentes se sont mises à courir en tous sens sur le terrain."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:9
+msgid ""
+"But after a few collisions, they decide to invent new rules to organize a "
+"bit the game: They make one team per base and two players per team. One of "
+"the teams has only one player so that its base has an empty location. Then, "
+"the players are dispatched randomly around the bases, and the game for them "
+"is to reach their home base. The whole game stops when all players are "
+"home.  There is no winning team: either all players win, or they all lose. "
+"Actually, this game is very different from the original baseball. The only "
+"rule that remains is that you can only run around the field, from one base "
+"to the next one, without crossing middle of the field."
+msgstr ""
+"Mais après quelques collisions plus ou moins douloureuses, elles décident "
+"d'inventer de nouvelles règles pour organiser la partie. Elles décident de "
+"faire une équipe par base sur le terrain et deux joueurs par équipes. L'une "
+"des équipes n'a qu'un seul joueur pour que l'une des bases ait un "
+"emplacement vide. Ensuite, les joueurs se répartissent aléatoirement sur les "
+"bases, et le jeu est de faire en sorte que chaque joueur retourne sur sa "
+"base. La partie s'arrềte quand tous les joueurs sont chez eux. Il n'y a pas "
+"d'équipe gagnante : soit tous les joueurs remportent la partie, soit ils la "
+"perdent tous. Oui, c'est vrai, ce jeu est très différent du baseball "
+"habituel. La seule règle qui reste est qu'il faut courir autour du terrain, "
+"de base en base, sans jamais passer au centre du terrain."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:17
+msgid ""
+"Now, they are asking you to help them deciding who and when should move so "
+"that each player returns to its base. Only one buggle can move at each "
+"round, from its position to the empty spot.  The maximal distance that a "
+"buggle can cover in one round is of one base."
+msgstr ""
+"Maintenant, les buggles ont besoin de vous pour décider qui doit bouger à "
+"quel moment de façon à ce que chacune rejoigne sa base. Une seule buggle "
+"peut bouger à chaque tour, de sa position jusqu'à l'emplacement vide. De "
+"plus, la distance maximale qu'une buggle peut parcourir en un tour est de "
+"une seule base."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:21
+msgid ""
+"So, at each round, the empty spot is on one base (say <code>B</code>), and "
+"you should decide which buggle enters that empty spot. There is four "
+"candidates (two from base <code>B-1</code> and two from base <code>B+1</"
+"code>). Actually, there is a fifth candidate since the buggle that is on the "
+"same base than the empty spot can change its position, but that's not really "
+"helping."
+msgstr ""
+"Ainsi, à chaque tour, l'emplacement vide se trouve sur une base (disons "
+"<code>B</code>), et vous devez décider quelle buggle occupera cette place. "
+"Il y a quatre candidates : deux de la base <code>B-1<code>, et deux de la "
+"base <code>B+1</code>. En fait, il y a une cinquième candidate puisque la "
+"buggle qui se trouve sur la même base que le trou peut aller l'occuper, mais "
+"ça ne fait pas vraiment avancer le problème."
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/NaiveBaseball.html:26
+msgid "The Naïve algorithm"
+msgstr "Algorithme naïf"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:28
+msgid ""
+"In this exercise, we will first explore a very simple algorithm. To decide "
+"which of the four candidate buggles should enter the empty spot, we first "
+"restrict ourselves and decide that buggles can only turn clockwise. Then, "
+"from the two remaining candidates, we pick the one that has the largest "
+"distance to cover to reach its base (turning clockwise). Click on the demo "
+"button: this works rather well in practice."
+msgstr ""
+"Dans cet exercice, nous allons explorer un premier algorithme très simple. "
+"Pour décider laquelle des quatre candidates doit aller occuper l'emplacement "
+"vide, nous commençons par nous restreindre à tourner dans le sens des "
+"aiguilles d'une montre. Ensuite, parmi les deux candidates restantes, nous "
+"prenons celle qui a encore le plus de chemin à parcourir jusqu'à sa base "
+"(dans le sens des aiguilles d'une montre). Essayez la démonstration : cela "
+"marche plutôt bien en pratique."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:34
+msgid ""
+"It's hard to find a simpler algorithm for this problem: While it's not "
+"sorted, search for the base containing the candidate buggles: if the hole is "
+"in base <code>B</code>, it's the base <code>B+1</code>, modulo the amount of "
+"bases. Then, compute the distance that each buggle of that base still has to "
+"run to reach its base (0 if it's already home). Once you found the buggle "
+"that should enter the empty spot, just use the <code>move</code> method on "
+"it, and iterate."
+msgstr ""
+"Il est difficile d'imaginer un algorithme plus simple pour ce problème : "
+"tant que ce n'est pas trié, chercher la base contenant les candidates. Si le "
+"trou est sur la base <code>B</code>, il s'agit de la base <code>B+1</code> "
+"(modulo le nombre de bases). Ensuite, il faut calculer la distance que "
+"chacune des buggles de cette base doit encore parcourir (0 si elle est déjà "
+"chez elle). Une fois que vous avez sélectionné l'heureuse élue, utilisez la "
+"méthode <code>deplace</code> pour la faire bouger, avant de passer à "
+"l'itération suivante."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:40
+msgid ""
+"The main difficulty should be to get the few equations right: determining "
+"the base next to the hole should be easy, but determining the distance that "
+"a player has to cover may reveal a bit more challenging. Don't hesitate to "
+"draw pictures on a paper to cover all possible cases. It should not be that "
+"difficult either: there is not that many cases after all."
+msgstr ""
+"La principale difficulté est peut-être d'écrire les quelques équations "
+"nécessaires sans se tromper. Trouver quelle est la base après le trou "
+"devrait être assez facile, mais calculer la distance que chaque joueur doit "
+"encore parcourir peut s'avérer plus problématique. N'hésitez pas à faire des "
+"dessins pour vérifier que votre équation marche dans tous les cas, il n'y a "
+"pas tant de cas possibles que cela après tout."
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/SelectBaseball.html:1
+msgid "Selection Baseball"
+msgstr "Baseball par selection"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:3
+msgid ""
+"The previous algorithm is very pleasant: it's rather simple and rather fast "
+"to implement, but unfortunately, it is also rather wrong! In some cases, it "
+"never stops, which is obviously bad. If you don't believe it, just copy "
+"paste your previous code, and hit the run button. The first world of this "
+"exercise is one of these unfortunate situations that drives our previous "
+"algorithm crazy."
+msgstr ""
+"L'algorithme précédent est très plaisant : il est plutôt simple, assez "
+"rapide à implémenter, mais malheureusement, il est également carrément faux. "
+"Dans certains cas, il ne s'arrête jamais, ce qui n'est pas très bon. Si vous "
+"ne le croyez pas, copie/collez votre code et appuyez sur le bouton "
+"«Exécuter». Le premier monde de cet exercice est l'un de ces cas malheureux "
+"où notre algorithme devient fou."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:9
+msgid ""
+"So we have to find another algorithm, preferably one that works in all cases."
+msgstr ""
+"Il nous faut donc trouver un autre algorithme. De préférence un qui marche "
+"dans tous les cas."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:11
+msgid ""
+"For that, the best solution is to start from a well known algorithm instead "
+"of trying to invent a new one from scratch as we just did. When you think a "
+"bit about this problem, this can is very similar to a sorting problem: Just "
+"make sure that the players are sorted by their colors and you're set. And "
+"while we are at it, let's generalize the game to allow more that 4 bases."
+msgstr ""
+"Pour cela, la meilleure solution est d'adapter un algorithme connu au lieu "
+"de tenter de partir de zéro comme nous venons de faire. Quand on réfléchi un "
+"peu à ce problème, on reconnaît un certain air de famille avec le problème "
+"du tri : il suffit de <b>trier</b> les joueurs en fonction de leur couleur "
+"pour le résoudre. Et tant que nous y sommes, nous pouvons généraliser un peu "
+"le problème en utilisant plus de quatre bases."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:17
+msgid ""
+"Let's adapt the selection sort to our situation. The big lines of the "
+"algorithm is then \"for each base, select the players that should occupy "
+"this base and make sure that they come to their position\". This way, we "
+"will grow an sorted area where all players are already sorted (and never "
+"changed) while the unsorted area shrinks."
+msgstr ""
+"Adaptons le tri par sélection à notre situation. Les grandes lignes de cet "
+"algorithme sont les suivantes : «pour chaque base, trouver dans la zone pas "
+"encore triée les joueurs qui doivent occuper cette base, puis les y placer». "
+"De la sorte, on va faire grandir une zone triée qu'on ne modifie plus "
+"jamais, tout en faisant réduire la taille de la zone pas encore triée."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:23
+msgid ""
+"Selecting the player should be no problem; Do not hesitate to define some "
+"methods such as <code>findPlayer()</code> or <code>findPlayerBase()</code>. "
+"This will ensure that your code remains understandable."
+msgstr ""
+"Choisir les joueurs à déplacer ne devrait pas poser de problème. N'hésitez "
+"pas à définir quelques fonctions comme <code>trouveJoueur</code> ou "
+"<code>trouveBaseJoueur()</code>. Cela améliorera la lisibilité de votre "
+"code, ce qui est toujours une bonne chose."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:27
+msgid ""
+"The most problematic aspect is to move the selected players into position. "
+"For that, you have to move the hole to the position where the player is, and "
+"then move both the player and the hole to the base that is next to the "
+"player's goal (probably in a loop), and finally put the player in the right "
+"position of its target base."
+msgstr ""
+"L'aspect le plus problématique est de déplacer les joueurs sélectionnés "
+"jusqu'à leur position. Pour cela, il vous faut déplacer le trou jusqu'à la "
+"base où se trouve le joueur, puis bouger ensuite le trou et le joueur de "
+"base en base jusqu'à celle avant la cible (au moyen d'une boucle). Enfin, on "
+"peut mettre le joueur dans la bonne case de sa base de prédilection."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:32
+msgid ""
+"As often in programming, the devil is in the details: there is a bunch of "
+"corner cases that you should detect and deal with correctly, such as the "
+"cases where the player is already in the base (but not in the position that "
+"you would like), or when the hole is on the right of the player (probably "
+"when you sort the first base). But you will find and hunt these while "
+"debugging your code."
+msgstr ""
+"Comme souvent en programmation, le diable est dans les détails, et il y a un "
+"certain nombre de cas particuliers à détecter et à gérer correctement, comme "
+"quand le joueur est déjà dans sa base de prédilection (mais pas dans la "
+"bonne position), ou quand le trou se trouve en fait à droite du joueur "
+"(probablement quand vous triez la première base). Mais vous allez trouver et "
+"résoudre ces problèmes quand vous débugguerez votre code."
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/InsertBaseball.html:1
+msgid "Insertion Baseball"
+msgstr "Baseball par insertion"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:3
+msgid ""
+"The good point of adapting the selection sort to the baseball problem is "
+"that we know that it works (provided that our adaptation is correct). That's "
+"much better than the first naive algorithm, that was unable to converge to "
+"the solution in some situations. But actually, the selection sort is not "
+"perfect either as it requires a lot of swaps: we have to bring the hole to "
+"the selected player and then both the player and hole in position, and more. "
+"We can do better."
+msgstr ""
+"Le coté positif d'adapter le tri par sélection à notre problème est que nous "
+"savons que cela fonctionne (à condition que notre adaptation soit correcte). "
+"C'est bien mieux que notre premier algorithme naïf, qui était incapable de "
+"converger vers la solution dans certains cas. Cependant, le tri par "
+"sélection n'est pas parfait non plus, puisqu'il requiert beaucoup "
+"d'échanges : il faut amener le trou jusqu'au joueur sélectionné puis amener "
+"le joueur ET le trou vers la bonne base. On doit pouvoir faire mieux."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:9
+msgid ""
+"For example, each player can run quite a long way from its initial position "
+"to its target solution.  Instead, it may be more interesting to split the "
+"field in two parts: one on the left where all players are sorted relatively "
+"to each others, and one on the right where the players are still at their "
+"initial positions. Then, at each iteration, we take the player at the border "
+"between the sorted and unsorted areas (that is, the left-most player of the "
+"unsorted area) and move it to the left (within the sorted area) until it "
+"reaches its position (that is, until the position where it's bigger that its "
+"left neighbor). This would at least reduce the travel of players to the "
+"sorted area as we use the first one on the border."
+msgstr ""
+"Par exemple, chaque joueur peut avoir à parcourir un chemin relativement "
+"long pour arriver à sa position finale. Au lieu de cela, il serait peut-être "
+"intéressant de couper le terrain en deux parties : l'une à gauche où tous "
+"les joueurs sont triés relativement les uns aux autres, et une autre à "
+"droite où les joueurs n'ont pas encore bougé de leur position de départ. "
+"Ensuite, à chaque itération, on prend le joueur à la frontière entre les "
+"deux zones (c'est à dire, le joueur le plus à gauche de la zone non triée) "
+"et on le déplace vers la gauche jusqu'à sa position dans la zone triée "
+"(c'est à dire, jusqu'à ce qu'il soit plus grand que son voisin de gauche). "
+"Cela réduirait au moins la distance que les joueurs doivent parcourir pour "
+"rentrer dans la zone triée, puisqu'on prend systématiquement le joueur à la "
+"frontière."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:18
+msgid ""
+"Actually, that's exactly what an insertion sort would do: maintain a sorted "
+"area on the left, and put iteratively the player on the border to its "
+"position within the sorted area. This is good, as we know that our algorithm "
+"is not inherently flawed since we adapt a well known one."
+msgstr ""
+"En fait, c'est exactement ce qu'un tri par insertion ferait: maintenir une "
+"zone triée à gauche, et y insérer à chaque itération l'élément qui se trouve "
+"à la frontière en le décalant vers la gauche jusqu'à sa position dans la "
+"zone triée. C'est une bonne chose, car cela veut dire que notre algorithme "
+"n'est pas fondamentalement faux, puisqu'il s'agit d'une adaptation d'un "
+"algorithme connu. "
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:22
+msgid ""
+"The easiest to adapt the insertion sort to the baseball problem is to "
+"consider all positions as adjacent and forget about bases. For that, we "
+"define the methods <code>getColor(pos)</code>, <code>move(pos)</code> and "
+"<code>getHole()</code> that all use a unique integer to designate a given "
+"position. These functions simply convert between the way to specify a "
+"position and then call the usual functions to interact with the world. If "
+"you have an <code>index</code> and want to convert it into a <code>base,pos</"
+"code>, then <code>base=index/2</code> and <code>pos=index%2</code>. To "
+"compute the reverse, <code>index=base*2+pos</code> (this works because "
+"<code>getPositionsAmount()</code> always returns 2)."
+msgstr ""
+"Le plus simple pour adapter le tri par insertion au problème du baseball est "
+"de considérer toutes les positions comme adjacentes sans tenir compte des "
+"différentes bases. Pour cela, il faut définir les méthodes "
+"<code>couleurJoueur(pos)</code>, <code>deplace(pos)</code> et "
+"<code>trouveTrou()</code> qui utilisent un seul entier pour désigner une "
+"position donnée et appellent les fonctions de base de cet univers pour faire "
+"leur travail. Pour convertir une position encodée sur un seul entier "
+"<code>index</code> en une position encodée sur deux entiers <code>base,pos</"
+"code>, il faut appliquer les formules suivantes: <code>base=index/2</code> "
+"et <code>pos=index%2</code>. Pour faire le calcul inverse, il faut utiliser "
+"<code>index=base*2+pos</code> (qui fonctionne car il y a deux positions par "
+"base)."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:31
+msgid ""
+"For the algorithm itself, you should first move the hole to the position 1. "
+"The position 0 is considered to be the sorted area (of size 1 for now) while "
+"the area above 2 is the unsorted area.  Then comes an iteration to sort each "
+"element of the unsorted area. Since this iteration is a bit complex, you "
+"should think of its loop invariant, that is, the condition that is true "
+"before and after the loop and which explains that the loop fulfills its "
+"goal. Here, the loop invariant is twofold: First, the hole is between the "
+"sorted area and the unsorted area, and then, the every elements of the "
+"sorted area are ... well sorted relatively to their neighbors."
+msgstr ""
+"Pour l'algorithme lui-même, vous devriez tout d'abord bouger le trou en "
+"position 1. On considère alors que la zone triée se limite pour l'instant à "
+"la position 0 (elle est alors de taille 1) tandis que la zone non triée "
+"commence à partir de la position 2. Ensuite, on fait une itération par "
+"élément à trier. Comme le corps de cet itération est un peu plus compliqué "
+"que ce que nous avons écrit jusque là, vous devriez réfléchir à l'invariant "
+"de cette boucle, c'est à dire à la condition qui est vraie avant et après un "
+"passage dans la boucle, et qui fait que la boucle fait son travail. Ici, "
+"l'invariant a deux parties : tout d'abord, l'emplacement vide se trouve "
+"entre les parties triées et non triées, et ensuite, la zone triée est ... "
+"triée, c'est à dire que tous les éléments de cette zone sont bien triés par "
+"rapport à leurs voisins."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:39
+msgid ""
+"Then, the loop body to sort an element should first descend the hole and the "
+"elements within the sorted area until the element is larger than the element "
+"before in the sorted area (2 moves per position to travel), and then move "
+"the hole back to its position between the sorted and unsorted areas (1 move "
+"per position)."
+msgstr ""
+"Ensuite, le corps de la boucle devrait trier un élément en descendant cet "
+"élément et le trou dans la zone triée jusqu'au point où l'élément est à sa "
+"place dans la zone triée (cela demande deux déplacements par case à "
+"parcourir), avant de remonter le trou à sa place à la frontière (un "
+"déplacement par case à parcourir)."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:43
+msgid ""
+"Once you insert the last element within the sorted area, your whole set is "
+"sorted and you're done.  I preserve the surprise of the border cases that "
+"will require some little adjustments to your algorithm to make it work "
+"properly :)"
+msgstr ""
+"Une fois que vous avez inséré le dernier élément dans la zone triée, tout "
+"votre ensemble est trié et vous avez fini. Je vous laisse la surprise des "
+"cas limites nécessitant de petits ajustements à votre algorithme pour lui "
+"permettre de fonctionner dans tous les cas :)"
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/BubbleBaseball.html:1
+msgid "Bubble Baseball"
+msgstr "Baseball à bulle"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:3
+msgid ""
+"Crap, we adapted the insertion sort because our selection sort required too "
+"much moves to get the selected players to their position, but the insertion "
+"sort requires an inordinate amount of changes to get the border elements to "
+"their position within the sorted area without mixing the already sorted "
+"elements. At the end of the day, our selection variant was more efficient "
+"with at most <code>3*amountOfBase</code> moves to sort one element (1 to get "
+"the hole alongside with the player, and 2 to get the hole+player in "
+"position) while our insertion variant requires at most "
+"<code>3*amountOfPlayers</code> to sort one element (2 to descend the hole "
+"and player in position, 1 to get the hole back to its position). That's "
+"twice as bad as there is two players per base. It may be possible to improve "
+"the insertion sort by moving by more than one element when descending, but "
+"it seems uneasy (at least, while not mixing the already sorted elements) and "
+"it would probably only ensure that our insertion variant becomes as "
+"efficient as our selection variant, not dramatically better."
+msgstr ""
+"Zut, nous avions adapté le tri par insertion parce que notre tri par "
+"sélection nécessitait trop de déplacements pour mener les joueurs "
+"sélectionnés à leur position, mais le tri par insertion impose une quantité "
+"déraisonnable de déplacements pour déplacer les joueurs de la frontière "
+"jusqu'à leur place dans la section triée. Au final, notre variante par "
+"sélection était plus efficace, avec au pire <code>3*nombre de bases</code> "
+"déplacement par élément à trier (1 pour apporter le trou jusqu'au joueur à "
+"bouger, et 2 pour amener le joueur et le trou jusqu'à leur position "
+"finale).  De son coté, notre variante par insertion nécessite au pire "
+"<code>3*nombre de joueurs</code> déplacements pour trier un élément (2 pour "
+"descendre le joueur et le trou à leur place, et 1 pour remonter le trou). "
+"C'est deux fois pire puisqu'il y a deux joueurs par base. Il serait "
+"probablement possible d'améliorer un peu notre variante par insertion en "
+"descendant plus vite le trou et le joueur, mais cela semble assez difficile "
+"(il ne faut pas mélanger les éléments déjà triés pendant la descente), et "
+"cela ne permettrait que de rendre cette variante aussi efficace que celle "
+"par sélection, pas de faire vraiment mieux. "
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:15
+msgid ""
+"If we cannot make the sort faster, we can make it easier. If you think about "
+"it, it seems rather natural to adapt the bubble sort to this problem: the "
+"hole becomes the bubble that moves up and down, sorting a bit the array "
+"during each traversal. The big lines are simply: \"while it's not sorted, "
+"move the hole down to base 0 (moving the biggest player of each base at each "
+"step) and then back to the maximal base (moving the smallest player of each "
+"base)\". After a while, <code>isSorted()</code> will return true and your "
+"algorithm will stop."
+msgstr ""
+"Si nous ne pouvons pas rendre ce tri plus rapide, au moins nous pouvons le "
+"faire plus simplement. Quand on y pense, il semble assez naturel d'adapter "
+"le tri à bulle à ce problème : le trou devient la bulle qui monte et qui "
+"descend, en sortant peu à peu le tableau. Les grandes lignes de l'algorithme "
+"sont très simples : «tant que ce n'est pas trier, déplacer le trou vers le "
+"bas puis vers le haut. À chaque pas, c'est le plus petit des deux joueurs de "
+"la base qui descend, et le plus grand des deux qui monte (en fonction du "
+"sens de déplacement).». Après un moment, <code>estTrie()</code> devient "
+"vrai, et votre algorithme s'arrête."
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:21
+msgid ""
+"This is so easy that we introduce another variant of the problem, with more "
+"than two players per base.  But actually, that shouldn't block you very "
+"long, should it?"
+msgstr ""
+"C'est tellement simple que nous pouvons nous payer le luxe d'une autre "
+"variante du problème, avec plus de deux joueurs par base. Mais cela ne va "
+"pas vous ralentir longtemps, n'est ce pas?"
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:24
+msgid ""
+"Surprisingly, the bubble sort variant requires ways less moves than the "
+"other variants. This is astonishing because usually, the bubble sort "
+"performs much worse than the others sorts, but it comes from the very good "
+"match between its big lines and the baseball universe. It actually happens "
+"rather often that a pleasantly written algorithm performs very decently. But "
+"this is not an universal rule either, as demonstrated by the naive algorithm "
+"of the first exercise, that was nice, simple and wrong ;)"
+msgstr ""
+"De manière étonnante, la variante à bulle semble nécessiter beaucoup moins "
+"de déplacements que les autres variantes. C'est assez surprenant car "
+"habituellement, le tri à bulle est la pire des variantes possibles, mais "
+"cela s'explique sans peine par les analogies entre cet algorithme et le "
+"problème du baseball multicolore. Il est relativement courant qu'un "
+"algorithme écrit simplement et naturellement se comporte bien en pratique. "
+"Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
+"l'algorithme simple et faux du premier exercice !"
+
+#. type: Content of: <h1>
 #: src/lessons/recursion/Main.html:1
 msgid "Recursive algorithms"
 msgstr "Algorithmes récursifs"
@@ -8760,6 +10306,61 @@ msgstr ""
 "Si vous cherchez d'autres algorithmes récursifs, un exercice sur les tris "
 "récursifs (en particulier QuickSort et MergeSort) est prévu à l'avenir dans "
 "la leçon sur les tris."
+
+#. type: Content of: <h3>
+#: src/lessons/recursion/Main.html:8
+msgid "What can I do to improve this lesson?"
+msgstr "Que puis-je faire pour améliorer cette leçon ?"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/Main.html:10
+msgid ""
+"As usual, there are several things that could be done in this lesson to "
+"improve it further:"
+msgstr "Comme souvent, plusieurs points pourraient être améliorés dans cette leçon&nbsp;:"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:12
+msgid ""
+"The Sierpinski triangle can be drawn using a simpler L-system. See http://"
+"jpvallon.free.fr/recursivite.html"
+msgstr "Le triangle de Sierpinski peut être tracé de façon bien plus simple en utilisant un L-système. Voir http://jpvallon.free.fr/recursivite.html"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:13
+msgid ""
+"The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
+"sierpinski/sierpinskitriangle.shtml"
+msgstr "la courbe de Sierpinski est également intéressante: http://www.mathcurve.com/fractals/sierpinski/sierpinskitriangle.shtml"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:14
+msgid ""
+"The dragon curve could be explained as a L-system: http://ecademy.agnesscott."
+"edu/~lriddle/ifs/heighway/heighway.htm"
+msgstr "La courbe du dragon pourrait être expliquée comme un L-système. http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:15
+msgid ""
+"The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
+"~lriddle/ifs/heighway/twindragon.htm"
+msgstr "La courbe du dragon2 s'appelle la courbe des dragons jumeaux: http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:16
+msgid ""
+"The space filling curves could be added (Peano, Hildebert, etc).  See: "
+"http://teachout1.net/village/fill.html"
+msgstr "Les courbes remplissant l'espace (Peano, Hildebert, etc) pourraient être ajoutées. http://teachout1.net/village/fill.html"
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:18
+msgid ""
+"We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
+"helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives."
+"html"
+msgstr "Un exercice sur les polygones inscrits serait intéressant: http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/short_desc.html:1
@@ -8991,36 +10592,34 @@ msgid ""
 "each segments split in three parts and the middle part being replaced by the "
 "two sides of an equilateral triangle."
 msgstr ""
+"Observez l'objectif de chaque monde pour comprendre la logique du motif à dessiner, puis reproduisez-le.\n"
+"Au niveau 0, la courbe de Koch est une simple ligne droite.\n"
+"Au niveau 1, elle est divisée en trois tiers, et la partie du milieu est remplacée par deux cotés d'un triangle équilatéral de même longueur que le segment supprimé.\n"
+"Au niveau 2, le processus est répété avec le tiers central de chaque segment remplacé par un petit triangle équilatéral."
 
-#. type: Attribute 'alt' of: <div>
+#. type: Attribute 'alt' of: <p><div>
 #: src/lessons/recursion/koch/Koch.html:19
 msgid "Too much letters. Please picture it."
-msgstr ""
+msgstr "TL;DR. Vous pouvez me dessiner tout ça ?"
+
+#. type: Content of: <p><div><p>
+#: src/lessons/recursion/koch/Koch.html:20
+#: src/lessons/recursion/koch/SquareKoch.html:8
+msgid "Here are the results of the first levels of recursion."
+msgstr "Voici le résultat des premiers niveaux de recusion."
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Koch.html:23
-#, fuzzy
-#| msgid ""
-#| "Observe the drawing in each world's objective to understand the pattern's "
-#| "logic, and then reproduce it. You must write the <code>snowSide()</code> "
-#| "method, which is recursive but <b>do not call snowFlake from snowSide</"
-#| "b>, or you will get very strange unexpected behaviors."
+#: src/lessons/recursion/koch/Koch.html:24
 msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
 "unexpected behaviors."
-msgstr ""
-"Observez le dessin dans chaque monde objectif pour comprendre la logique de "
-"ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui "
-"est récursive. Mais <b>n'appelez pas snowFlake depuis snowSide</b>, car "
-"sinon le résultat sera vraiment étrange et inattendu."
+msgstr "Vous devez écrire la fonction snowSide, qui est récursive. Mais <b>n'appelez pas snowFlake depuis snowSide</b>, car sinon le résultat sera vraiment étrange et inattendu."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/koch/SquareKoch.html:1
-#, fuzzy
-#| msgid "Snow flake"
 msgid "Snow square"
-msgstr "Flocons de neige"
+msgstr "Carrés de neige"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/SquareKoch.html:3
@@ -9029,52 +10628,116 @@ msgid ""
 "The main difference is that we are growing little squares instead of "
 "triangles on the sides of the figure."
 msgstr ""
+"Cet exercice est une variation sur le flocon de neige vu précédemment. \n"
+"La principale différence est qu'il faut maintenant faire pousser des petits carrés au lieu des triangles sur les segments de cette figure."
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/SquareKoch.html:7
+msgid "I don't see it, sorry. Please picture it."
+msgstr "Je ne vois pas. Je peux voir un dessin ?"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/SquareKoch.html:7
+#: src/lessons/recursion/koch/SquareKoch.html:13
 msgid ""
 "As previously, your <code>squareSide</code> function should only draw one "
 "side of the figure, and the template will call it for all sides "
 "automatically (with one color per side)."
-msgstr ""
+msgstr "Comme précédement, votre fonction <code>squareSide</code> doit seulement dessiner un coté de la figure, et le code fourni l'appellera 4 fois pour dessiner tous les cotés (chacun avec sa couleur)."
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/koch/PentaKoch.html:1
+msgid "Snow pentagon"
+msgstr "Pentagone de neige"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/PentaKoch.html:3
+msgid ""
+"Here comes yet another variation of the Koch curve. This time, we grow "
+"little pentagons (ie, polygons with five sides each). I'm sure you get it "
+"now."
+msgstr "Voici une autre variation de la courbe de Koch. Cette fois, ce sont de petits pentagones (càd des polygones à 5 cotés) qui doivent pousser sur les faces de la figure. Je suis sûr que vous commencez à prendre le truc."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/PentaKoch.html:6
+msgid ""
+"Another difference with earlier is that the length is not divided by three "
+"at each step anymore, but multiplied by 0.4. The curve looks better this "
+"way :)"
+msgstr "Une autre différence avec les exercices précédents est que cette fois, vous ne devez pas diviser la taille du segment par 3 à chaque niveau de récursion, mais vous devez le multiplier par 0,4. La courbe est plus jolie ainsi :)"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/PentaKoch.html:9
+msgid ""
+"We draw only one side in this exercise so your code will be called only once "
+"this time."
+msgstr "Nous dessinons un seul coté dans cet exercice, donc votre code ne sera appellé qu'une seule fois."
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/koch/HexaKoch.html:1
+msgid "Snow hexagon"
+msgstr "Hexagone de neige"
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/HexaKoch.html:3
+msgid ""
+"This time, we will draw the curve that is known as the (6, 0.14)-Koch curve. "
+"This means that you have to grow 6-sided polygons on the segments, and that "
+"the length should be multiplied by 0.14 at each recursion level."
+msgstr "Cette fois, nous allons dessiner une courbe surnommée la courbe de Koch-(6; 0,14). Cela signifie que nous allons faire pousser des hexagones (des polygones à 6 faces) sur les segments, et que les longueurs doivent être multipliées par 0,14 à chaque étage de la récursion."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/HexaKoch.html:7
+msgid ""
+"For the record, the origical Koch curve is the (3, 1/3)-Koch curve, the Snow "
+"square would be (4,1/3)-Koch curve while the Snow pentagon is also called "
+"the (5, 0.4)-Koch curve. If you want, you can switch to the creative mode in "
+"the menu and explore freely other Koch curves. Just change the initial call "
+"to hexaKoch to what you want."
+msgstr "Pour info, la courbe de Koch originale est la (3; 1/3). Le carré de neige est la courbe (4; 1/3). Le pentagone de neige est la courbe (5; 0,4). Si vous le souhaitez, vous pouvez passer en mode créatif pour explorer d'autres courbes de Koch. Remplacez simplement l'appel à hexaKoch par ce que vous voulez."
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/HexaKoch.html:12
+msgid ""
+"For further reference, please see <a href=\"http://ecademy.agnesscott.edu/"
+"~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/"
+"kcurve/kcurve.htm</a>."
+msgstr "Pour plus d'informations, référez vous à <a href=\"http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/koch/Crab.html:1
 msgid "Fractal Crab"
-msgstr ""
+msgstr "La fractale du crabe"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/Crab.html:3
 msgid ""
-"Here comes another variation over the Koch fractal figure, called the Crab "
-"curve (or C curve).  This time, we grow square triangle on the side of the "
-"figure: the angle is 45 degrees, and the length is divided by [!java|"
+"The Crab curve is not exactly a Koch curve, but that's still a fractal and "
+"it's built rather similarly.  This time, we grow square triangle on the side "
+"of the figure: the angle is 45 degrees, and the length is divided by [!java|"
 "scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!] at each step."
-msgstr ""
+msgstr "La courbe du crabe n'est pas exactement une courbe de Koch, mais cette fractale est construite de façon très similaire. Cette fois, nous ne remplaçons pas le tiers central de chaque segment, mais le segment entier. À la place, il faut faire pousser des triangles isocèles et rectangles. L'angle initial est de 45°, et la longueur est divisée par [!java|scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!] à chaque étape."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/Crab.html:7
 msgid ""
 "Check the figures produced by the first steps of recursion to understand the "
 "pattern."
-msgstr ""
+msgstr "Vérifiez les figures produites par les premiers niveaux de récursivité pour comprendre le motif."
 
 #. type: Content of: <h3>
-#: src/lessons/recursion/koch/Crab.html:10
-#, fuzzy
-#| msgid "Bibliographical notes"
+#: src/lessons/recursion/koch/Crab.html:9
 msgid "Bibliographical note"
-msgstr "Notes bibliographiques"
+msgstr "Note bibliographique"
 
 #. type: Content of: <p>
-#: src/lessons/recursion/koch/Crab.html:11
+#: src/lessons/recursion/koch/Crab.html:10
 msgid ""
 "This curve, also called the Lévy C curve was invented in 1938 by the French "
 "mathematician Paul Lévy in 1938.  As usual, the wikipedia page is very "
 "instructive, and the page provide a very good additions: <a href=\"http://"
 "www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c."
 "shtml</a>."
-msgstr ""
+msgstr "Cette courbe, également appelée la courbe C de Lévy, a été inventée en 1938 par le mathématicien Français Paul Lévy. Comme souvent, la page wikipédia sur le sujet est très instructive. La page suivante apporte également des compléments intéressants : <a href=\"http://www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/tree/Tree.html:1
@@ -9498,8 +11161,8 @@ msgstr "Les tours de Hanoï"
 #: src/lessons/recursion/hanoi/Main.html:2
 msgid ""
 "Here comes the super classical exercise on recursion. It's not very "
-"developped here, I'm not sure of what I could add to this lesson. If you "
-"have any idea, please submit them."
+"developed here, I'm not sure of what I could add to this lesson. If you have "
+"any idea, please submit them."
 msgstr ""
 "Voici l'exercice ultra classique sur la récursivité. Il n'est pas très "
 "développé ici, mais je ne sais pas vraiment quoi rajouter pour prolonger le "
@@ -11653,58 +13316,6 @@ msgstr ""
 "la valeur suivante, en le mettant à 1 si sa valeur était 6."
 
 #. type: Content of: <h1>
-#: src/plm/universe/bat/BatWorld.html:1
-msgid "BatWorld"
-msgstr "BatWorld"
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:3
-msgid ""
-"This world is a simplistic testing environment largely inspired from the "
-"http://codingbat.com invented by Nick Parlente."
-msgstr ""
-"Ce monde contient un environnement simpliste de tests largement inspiré de "
-"http://codingbat.com inventé par Nick Parlente."
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:6
-msgid ""
-"The typical exercises are very short ones, aiming at improving the tactical "
-"programming abilities of the students. That is to say that you will be "
-"presented a quite long list of very little exercises about rather simple "
-"things. The idea is to train you on these issues until they become automatic "
-"to you."
-msgstr ""
-"Les exercices classiques sont très courts, et visent à améliorer les "
-"abilités de stratégie de programmation des étudiants. C'est pour vous "
-"prévenir que vous allez faire face à une très longue liste de très petits "
-"exercices à propos de choses très simples. L'idée est de vous entrainer sur "
-"ces problèmes jusqu'à ce que cela devienne automatique."
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:12
-msgid ""
-"In contrary to the other worlds, the BatWorld does not provide any fancy "
-"abstraction nor visualization. You have to fill a function, which gets "
-"called for a bunch of parameter sets, and that's it."
-msgstr ""
-"Contrairement aux autres mondes, le BatWorld ne fournit pas ni de belle "
-"abstractions ni de belles visualisaitons. Vous aurez à remplier une "
-"fonction, qui sera appelée avec un tas d'ensembles de différentes "
-"paramètres, et c'est tout."
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:16
-msgid ""
-"For more information, you should refer to the CodingBat.com documentation, "
-"which contains for example a very useful documentation on boolean operators: "
-"http://codingbat.com/doc/ifboolean.html"
-msgstr ""
-"Pour plus d'informations, vous devriez consulter la documentation de "
-"CodingBat.com qui contient par exemple une documentation très utile sur les "
-"opérateurs booléens : http://codingbat.com/doc/ifboolean.html"
-
-#. type: Content of: <h1>
 #: src/lessons/bat/string1/Main.html:1
 msgid "String fun"
 msgstr "String fun"
@@ -13041,1338 +14652,6 @@ msgid ""
 msgstr ""
 "De plus, le 271 compte même si le \"1\" diffère de 2 ou moins de la valeur "
 "correcte.<"
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:1
-msgid "PancakeWorld"
-msgstr "Monde des crêpes"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:3
-msgid "This universe is very simple, with only five functions provided."
-msgstr "Cet univers est très simple, avec seulement cinq fonctions fournies."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:5
-#, no-wrap
-msgid "[!java]int [/!]getStackSize()  [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getTaillePile()  [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
-msgid ""
-"Returns the size of the stack, that is the amount of pancakes it contains."
-msgstr ""
-"Renvoie la taille du tas de crêpes, c'est à dire le nombre de crêpes qui le "
-"compose."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:8
-#, no-wrap
-msgid "[!java]int [/!]getPancakeRadius([!java]int [/!]rank[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getRayonCrepe([!java]int [/!]rang[!scala]:Int[/!])  [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:9
-msgid ""
-"Returns the radius of the pancake passed as argument, with the rank of the "
-"top-most pancake being 0."
-msgstr ""
-"Renvoie le rayon de la crêpe passée en argument, sachant que le rang de la "
-"crêpe du haut est 0."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:11
-#, no-wrap
-msgid "[!java]boolean [/!]isPancakeUpsideDown([!java]int [/!]rank[!scala]:Int[/!])   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estCrepeRetournee([!java]int [/!]rang[!scala]:Int[/!])   [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:12
-msgid ""
-"Returns whether the pancake passed as argument upside-down, that is, if its "
-"burned side is on top. As usual, the top-most pancake is of rank 0."
-msgstr ""
-"Renvoie ssi la crêpe passée en paramètre (la crêpe du haut étant de rang 0) "
-"est à l'envers, c'est-à-dire si sa face brulée est en haut."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:14
-#, no-wrap
-msgid "[!java]void [/!]flip([!java]int [/!]amount[!scala]:Int[/!])"
-msgstr "[!java]void [/!]retourne([!java]int [/!]quantité[!scala]:Int[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
-msgid ""
-"Flips the <code>amount</code> first pancakes composing the stack, from the "
-"top of it."
-msgstr ""
-"Retourne les <code>quantité</code> premières crêpes de la pile, en partant "
-"du sommet de celle-ci."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:17
-#, no-wrap
-msgid "[!java]boolean [/!]isSorted()   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estTriee()   [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
-msgid "Returns whether the pancake stack is correctly sorted."
-msgstr "Renvoie si la pile de crêpes est correctement triée."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:20
-#, no-wrap
-msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/Main.html:1
-#: src/lessons/sort/pancake/BasicPancake.html:1
-msgid "Pancake Sorting"
-msgstr "Trier des crêpes"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:3
-msgid ""
-"This activity is inspired by a problem first introduced in 1975 by Harry "
-"Dweighter in the American Mathematical Monthly. The question is not only to "
-"sort the pancakes, but to determine <code>f(n)</code> the <i>minimal</i> "
-"amount of flips mandated to sort any stack of size <code>n</code>."
-msgstr ""
-"Cette activité est inspirée d'un problème introduit pour la première fois en "
-"1975 par Harry Dweighter dans le journal de mathématique «American "
-"Mathematical Monthly». La question n'est pas tant de trier les crêpes que de "
-"déterminer <code>f(n)</code>, le nombre <i>minimal</i> de retournements "
-"nécessaires pour trier n'importe quelle pile de taille <code>n</code>. "
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:7
-msgid ""
-"This problem is now famous because Bill Gates authored (with C. "
-"Papadimitriou) his only scientific publication in 1979 on this topic, "
-"providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ (5n"
-"+5)/3</code>.  This was the only publication of Bill Gates before he "
-"invented Windows and became rich."
-msgstr ""
-"Ce problème est maintenant célèbre car Bill Gates a publié son seul article "
-"scientifique sur ce sujet (avec C. Papadimitriou). Ils ont proposé un "
-"algorithme plus rapide et démontré ainsi que <code>17n/16 ≤ f(n) ≤ (5n+5)</"
-"code>. Ce fut la seule publication de Bill Gates avant qu'il n'invente "
-"Windows et devienne riche. "
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:11
-msgid ""
-"Then, David X. Cohen, the inventor of the Futurama comics with many "
-"mathematical references, introduced the variant with burnt pancakes and "
-"studied its complexity with Manuel Blum in 1993."
-msgstr ""
-"Par la suite, David X. Cohen, l'inventeur du dessin animé Futurama aux "
-"nombreuses références mathématiques, introduit en 1993 la variante des "
-"crêpes brulées et étudie sa complexité avec Manuel Blum."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:14
-msgid ""
-"An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
-"determining the minimal amount of flips to sort the stack is a NP-complete "
-"problem. Naturally, the stack sorting problem is not NP-complete since it "
-"can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
-"the Gates algorithm.  That's determining the minimal amount of steps that is "
-"NP."
-msgstr ""
-"Un article de 2013 (par L. Bulteau, G. Fertin and I. Rusu) a prouvé que ce "
-"problème est NP-Complet, c'est à dire qu'il n'existe pas d'algorithme "
-"efficace pour déterminer le nombre minimal de retournements pour toute "
-"taille de pile. Naturellement, le problème du tri de la pile n'est pas NP-"
-"complet en lui-même puisqu'on peut le résoudre en 2n-3 étapes avec "
-"l'algorithme naïf et (5n+5)/3 étapes avec l'algorithme de Gates. C'est la "
-"détermination du nombre minimal de coups qui est NP."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:19
-msgid "Further information can be found on the wikipedia page, as usual."
-msgstr ""
-"Pour plus d'information, référez vous à la page anglophone de wikipedia "
-"(http://en.wikipedia.org/wiki/Pancake_sorting) ou à cette page, très bien "
-"faite: http://eljjdx.canalblog.com/archives/2013/02/03/26309722.html"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:22
-msgid ""
-"This activity is also integrated to CSIRL (my repository of <i>free</i> "
-"unplugged activities to introduce computer science, available at http://www."
-"loria.fr/~quinson/Mediation/SMN/), and it may be interesting to run the "
-"unplugged activities before implementing these algorithms in PLM."
-msgstr ""
-"Cette activité est également intégrée à SMN (mon dépot d'activités "
-"débranchées <i>libres</i> pour introduire la science informatique, "
-"disponible à l'adresse http://www.loria.fr/~quinson/Mediation/SMN/), et il "
-"peut être intéressant de faire les activités débranchées avant d'implémenter "
-"ces algorithmes dans PLM."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:33
-msgid "A temporal view similar to the sorting universe could be helpful"
-msgstr ""
-"Une vue temporelle comme celle de l'univers des tris pourraît être pratique."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:34
-msgid ""
-"Other exercises, for example on the Cohen's algorithm, or on the other ones."
-msgstr ""
-"D'autres exercices, par exemple sur l'algorithme de Cohen ou sur d'autres."
-
-#. type: Content of: <h3>
-#: src/lessons/sort/pancake/short_desc.html:1
-msgid "The pancake problem"
-msgstr "Le crépier psychorigide"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/short_desc.html:3
-msgid "Help the poor psychorigid pancakes' chef to sort its pancake stack!"
-msgstr "Aidez le pauvre crépier psychorigide à trier sa pile de crêpes !"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/short_desc.html:5
-msgid ""
-"This funny problem leads to algorithms that are somewhat more challenging to "
-"implement. You are supposed to master the bases of programming and some "
-"sorting algorithms to take this lesson."
-msgstr ""
-"Ce problème amusant débouche sur des algorithmes un peu plus compliqués à "
-"implémenter. Vous devez maîtriser les bases de la programmation ainsi que "
-"quelques algorithmes de tri avant de tenter cette leçon."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BasicPancake.html:3
-msgid ""
-"The pancake sorting problem this is a simple puzzle where you have a set of "
-"pancakes, each of differing size. The chef cooking the pancake is a bit "
-"psychorigid: he hates when the pancakes are not correctly sorted on the "
-"plate. He loves when they are correctly ordered, with the small ones over "
-"the larger ones. As every pancake maker, he masters the pancake flipping "
-"with his spatula. He can flip the pancake on top of the stack, or even "
-"several pancakes at once. The thing is that he has only one plate and the "
-"table is too dirty to place pancakes on it, even temporary. The only allowed "
-"operation is to flip some pancakes that are on top of the stack."
-msgstr ""
-"Le problème du tri des crêpes est un puzzle simple où vous avez une pile de\n"
-"crêpes, toutes de taille différente. Le crêpier étant légèrement "
-"psychorigide,\n"
-"il déteste quand ses crêpes ne sont pas bien ordonnées dans l'assiette. Il "
-"ne se\n"
-"sent bien que quand elles sont bien rangées, avec les petites au dessus des\n"
-"grandes. Comme tous les crêpiers, il est passé maître dans l'art du "
-"retournement\n"
-"de crêpes à la spatule. Il peut retourner une crêpe au sommet de la pile, "
-"ou\n"
-"même plusieurs à la fois. Le truc est qu'il n'a qu'une seule assiette et que "
-"la\n"
-"table est trop sale pour poser des crêpes dessus, même temporairement. La "
-"seule\n"
-"opération autorisée est alors de retourner un certain nombre de crêpes au "
-"sommet\n"
-"de la pile."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BasicPancake.html:12
-msgid ""
-"Your work is to help this poor guy sorting his stack by flipping the "
-"pancakes. Each pancake is defined by its radius and rank within the stack, "
-"where the bottom pancake is at rank 0, and the one above at rank 1."
-msgstr ""
-"Vous devez aider ce pauvre homme à trier sa pile en retournant des\n"
-"crêpes. Chaque crêpe est définie par son rayon et son rang dans la pile. La "
-"pile\n"
-"la plus basse est de rang 0, et celle placée au dessus d'elle est de rang 1."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BasicPancake.html:16
-msgid ""
-"Note that you can play physically with pieces of paper or wood at first to "
-"get the grasp on this problem. This is even one of the activities that I use "
-"in my CS-IRL (computer science in real life) project to introduce the "
-"concept of algorithm to absolute beginners that wonder about our science. "
-"More information at http://www.loria.fr/~quinson/Mediation/SMN/ (in French)."
-msgstr ""
-"Il est conseillé de commencer par jouer physiquement avec des bouts de "
-"papier ou\n"
-"de carton pour bien comprendre le problème. C'est même l'une des activités "
-"que\n"
-"j'utilise dans mon projet SMN (Sciences Manuelles du Numérique) pour "
-"introduire\n"
-"le concept d'algorithme aux débutants curieux de notre science. Pour plus\n"
-"d'information, allez visiter le site du projet: http://www.loria.fr/~quinson/"
-"Mediation/SMN/ "
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:22
-msgid "I don't get it. I need some help."
-msgstr "Je suis perdu, j'ai besoin d'aide."
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:23
-msgid ""
-"You should try to first move the largest pancake to the bottom, and then the "
-"largest but one pancake on top of it, and then the one just smaller on top, "
-"and so on."
-msgstr ""
-"Vous devez tout d'abord parvenir à placer la plus grande crêpe en bas de la "
-"pile et ensuite placer celle juste plus petite au dessus, puis celle plus "
-"petite et ainsi de suite."
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:27
-msgid "The first tip was not enough. I need another one."
-msgstr "Ce premier indice n'était pas suffisant, j'ai besoin de plus d'aide."
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:28
-msgid ""
-"So first, you need to move the largest pancake at the bottom of the stack."
-msgstr ""
-"Il vous faut donc amener la plus grande des crêpes tout en bas de la pile."
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:29
-msgid ""
-"Can you imagine a situation in which you can easily bring this damn large "
-"pancake to the bottom?"
-msgstr ""
-"Est ce que vous pouvez imaginer une situation où il est facile d'emener "
-"cette satanée grande crêpe tout en bas ?"
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:30
-msgid "How could you reach this situation from the current one?"
-msgstr ""
-"Et comment pourriez vous parvenir à cette situation à partir de la situation "
-"courante?"
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/BurnedPancake.html:1
-msgid "Burned Pancakes"
-msgstr "Crêpes brulées"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BurnedPancake.html:3
-msgid ""
-"Hard blow for the chef! The pancakes got burnt on one side! There is no way "
-"he can deliver a stack of pancakes with visibly burnt pancakes! You've got "
-"to help him ensuring that no pancake is upside-down while sorting his stack."
-msgstr ""
-"Coup dur pour le crèpier! Les crêpes ont brulé sur une face! Il est "
-"strictement impossible qu'il serve une pile de crêpes où l'on voit la face "
-"brulée! Vous devez absolument l'aider à s'assurer qu'aucune face visible ne "
-"soit brulée tandis qu'il trie sa pile."
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/GatesPancake.html:1
-msgid "Faster Pancake Sorting"
-msgstr "Tri rapide de crêpes"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:3
-msgid ""
-"Unlike others sorting problem, the expensive operation is not the comparison "
-"of values, but the flipping of pancakes. In this exercise, we will explore "
-"another algorithm that attempt to reduce the amount of stack flipping. The "
-"funny side is that this algorithm was first introduced by Bill Gates, before "
-"invented Windows."
-msgstr ""
-"Contrairement aux problèmes classiques de tri, l'opération coûteuse à "
-"économiser n'est pas la comparaison des valeurs, mais le retournement des "
-"crêpes. Dans cet exercice, nous allons explorer un autre algorithme "
-"permettant de réduire le nombre de retournements nécessaires pour trier la "
-"pile. Fait amusant, cet algorithme a été proposé pour la première fois par "
-"Bill Gates, avant qu'il n'invente Windows."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:8
-msgid ""
-"The basic idea is to grow sequences of sorted pancakes, not necessarily "
-"starting from the bottom.  We say that a sequence of ordered pancakes "
-"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
-"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
-"radius <code>t</code>) and search for the <code>t+1</code> or <code>t-1</"
-"code> pancakes (the considered neighbor is noted <code>t+o</code>). Eight "
-"cases may happen:"
-msgstr ""
-"L'idée de base est de faire grandir des séquences de crêpes triées, pas "
-"forcément en commençant du bas de la pile. On dira qu'un ensemble de crêpes "
-"dans l'ordre constitue un <b>block</b> tandis qu'une crêpe qui n'est pas "
-"dans un bloc est dite <b>libre</b>. L'algorithme considère la crêpe tout en "
-"haut de la pile, dont la taille est notée <code>t</code>, et cherche les "
-"deux crêpes de taille <code>t-1</code> et <code>t+1</code> (le voisin ainsi "
-"considéré est noté <code>t+o</code>). Huit cas sont possibles alors&nbsp;:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:15
-msgid ""
-"<b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are "
-"then merged in one flip."
-msgstr ""
-"<b>Cas a</b>: <code>t</code> et <code>t+o</code> sont tous les deux libres. "
-"Ils sont alors fusionnés en un retournement."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:19
-msgid ""
-"<b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of "
-"a block. They are merged in one flip."
-msgstr ""
-"<b>Cas b</b>: <code>t</code> est libre, et <code>t+o</code> est le premier "
-"élément d'un bloc. Ils sont fusionnés en un bloc."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:24
-msgid ""
-"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and <code>t"
-"+1</code> are the last elements of blocks.  Both blocs and <code>t</code> "
-"are merged all together in 4 flips.  Beware, if either <code>t-1</code> or "
-"<code>t+1</code> does not exist (because <code>t</code> is 0 or max), only "
-"two flips are mandated."
-msgstr ""
-"<b>Cas c</b>: <code>t</code> est libre, mais <code>t-1</code> et <code>t+1</"
-"code> sont tous les deux les derniers éléments de blocs. Ces deux blocs "
-"ainsi que <code>t</code> sont tous fusionnés en 4 retournements. Prenez "
-"garde, si <code>t-1</code> ou <code>t+1</code> n'existe pas (parce que "
-"<code>t</code> est 0 ou max), seulement deux de ces retournements sont "
-"nécessaires."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:32
-msgid ""
-"<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is free. "
-"They are merged in one flip."
-msgstr ""
-"<b>Cas d</b>: <code>t</code> est dans un bloc, mais <code>t+o</code> est "
-"libre. Ils sont fusionnés en un retournement."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:37
-msgid ""
-"<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
-"first element of a block. They are merged in one flip."
-msgstr ""
-"<b>Cas e</b>: <code>t</code> est dans un bloc, et <code>t+o</code> est le "
-"premier élément d'un bloc. Ils sont fusionnés en un retournement."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:41
-msgid ""
-"<b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last "
-"element of another block.  They are merged in 3 flips as follows."
-msgstr ""
-"<b>Cas f</b>: <code>t</code> est dans un bloc, et <code>t+o</code> est le "
-"dernier élément d'un autre bloc. Ils sont fusionnés en trois retournements "
-"comme suit."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:45
-msgid ""
-"<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
-"is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
-"element of another block. Both blocks are merged in 2 flips:"
-msgstr ""
-"<b>Cas g</b>: <code>t</code> est dans un bloc de taille k+1 (le dernier "
-"élément est <code>t+ko</code>), <code>t+(k+1)o</code> est soit libre soit le "
-"dernier élément d'un autre bloc. Les deux blocs sont fusionnés en deux "
-"retournements:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:48
-msgid ""
-"<b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element "
-"is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
-"block (the difference with case g is that <code>t+(k+1)o</code> is now the "
-"<i>first</i> element of its block). Both blocks are merged in 2 flips:"
-msgstr ""
-"<b>Cas h</b>: <code>t</code> est dans un bloc de taille k+1 (le dernier "
-"élément est <code>t+ko</code>), <code>t+(k+1)o</code> est le premier élément "
-"d'un autre bloc (la différence avec le cas g est que <code>t+(k+1)o</code> "
-"est maintenant le <i>premier</i> élément de son bloc). Les deux blocs sont "
-"fusionnés en deux retournements:"
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:54
-msgid ""
-"<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
-"block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
-"is fliped. The algorithm then stops."
-msgstr ""
-"<b>Cas i</b>: <code>t</code> est dans un bloc de taille <code>n</code>, qui "
-"contient donc toutes les crêpes. Si <code>t</code> n'est pas 1, toute la "
-"pile est retournée. Ensuite, l'algorithme s'arrête."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:57
-msgid ""
-"Each iteration increases the size of the blocks, so the algorithm eventually "
-"halts in all cases. A finer analysis would show that it takes at most "
-"<code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve "
-"algorithm, that requires 2n-3 steps."
-msgstr ""
-"Chaque itération augmente la taille des blocs, donc la terminaison de "
-"l'algorithme est certaine. Une analyse plus fine montre qu'il prend au plus "
-"<code>(5n+5)/3</code> étapes pour trier la pile. C'est mieux que "
-"l'algorithme naïf, qui nécessite <code>2n-3</code> étapes pour cela."
-
-#. type: Content of: <h2>
-#: src/lessons/sort/pancake/GatesPancake.html:60
-msgid "Your turn"
-msgstr "À vous de jouer"
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:61
-msgid ""
-"You now have almost enough information to implement this algorithm on your "
-"own. We just have to remove the last remaining ambiguities to ensure that "
-"you implement exactly the same algorithm that the correction. If several "
-"cases apply to your situation, then you should use the first given one. For "
-"example, if both cases a and b apply (e.g., with <code>t-1</code> on case "
-"<b>a</b> and <code>t+1</code> on case <b>b</b>), then you should apply the "
-"flips of case <b>a</b>. If a given case applies for both <code>t+1</code> "
-"and <code>t-1</code>, then you should apply it to <code>t+1</code>."
-msgstr ""
-"Vous avez maintenant quasi assez d'informations pour implémenter cet "
-"algorithme par vous-même. Il faut juste lever les dernières ambiguïtés pour "
-"que vous implémentiez exactement le même algorithme que la correction. Si "
-"plusieurs cas s'appliquent à la situation courante, appliquez le premier. "
-"Par exemple, si les cas a et b s'appliquent (avec <code>t-1</code> pour le "
-"cas a et <code>t+1</code> pour le cas b), vous devez appliquer les "
-"instructions du cas <b>a</b>. Si un cas donné s'applique à la fois pour "
-"<code>t+1</code> et <code>t-1</code>, appliquez le pour <code>t+1</code>."
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:67
-msgid ""
-"Note that it is somehow harder than the other exercises we did so far, so "
-"don't be surprised if you need more time to achieve this.  But do not give "
-"hope, you can do it!"
-msgstr ""
-"Cet exercice est plus difficile que ceux que nous avons fait jusque là, et "
-"il ne serait pas choquant que vous ayez besoin d'un peu plus de temps que "
-"les autres pour le résoudre. Mais n'abandonnez pas, vous pouvez le faire !"
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:70
-msgid "Well, I need some help to start."
-msgstr "Heu, j'ai besoin d'un peu d'aide pour commencer."
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:71
-msgid ""
-"First write some helper functions such as <code>isFirst()</code> or "
-"<code>isFree()</code>. This will simplify your main algorithm afterward, "
-"that can be written very similarly to the explication above with a bunch of "
-"if conditions. Factorizing code this way often helps making your code more "
-"readable."
-msgstr ""
-"Commencez par écrire des fonctions d'aide, comme <code>estLibre()</code> ou "
-"<code>estPremier()</code>. Cela simplifiera l'écriture de votre algorithme, "
-"qui peut être écrit sous une forme très similaire à l'énoncé si vous faites "
-"les bonnes fonctions d'aide. Factoriser ainsi votre code aide très souvent à "
-"améliorer la lisibilité du code."
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:78
-msgid "My code keeps failing and I don't know how to debug it."
-msgstr "Mon code ne fonctionne pas, et je ne sais pas comment le débugger"
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:79
-msgid ""
-"To debug one world after the other and avoid that the messages of all worlds "
-"get intermixed, you can write your debug function only if the method "
-"<code>isSelected()</code> returns true. It will be so only for the entity "
-"that is currently selected in the graphical interface, that is probably the "
-"world you are currently debugging. This will help breaking the difficulty in "
-"parts by debugging the situation on after the other."
-msgstr ""
-"Pour débugger un monde après l'autre, il est préférable d'éviter que les "
-"affichages de tous les mondes se mélangent. Le plus simple pour cela est "
-"d'utiliser la méthode <code>isSelected()</code> qui ne renvoi vrai que si le "
-"monde courant est celui sélectionné dans l'interface. Cela aidera à réduire "
-"la complexité en résolvant les problèmes les uns après les autres."
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:85
-msgid ""
-"In particular, it may help to print textually the state of the world each "
-"time you enter the main loop."
-msgstr ""
-"En particulier, afficher l'état du monde sous forme textuelle à chaque fois "
-"que vous rentrez dans la boucle principale peut aider. "
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/Main.html:1
-msgid "The Rainbow Baseball Game"
-msgstr "Le jeu du baseball multicolore"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:3
-msgid ""
-"This activity is inspired from the orange game, from the \"Computer Science "
-"Unplugged\" activities repository.  It was however heavily since then, first "
-"for the CSIRL (my repository of <i>free</i> unplugged activities to "
-"introduce computer science, available at http://www.loria.fr/~quinson/"
-"Mediation/SMN/) and now for PLM."
-msgstr ""
-"Cette activité est inspirée du jeu de l'orange dans le recueil d'activités "
-"«Computer Science Unplugged». Elle a cependant été profondément réarrangée "
-"depuis, d'abord pour SMN (mon recueil d'activités <i>libres</i> pour "
-"introduire la science informatique, disponible depuis http://www.loria.fr/"
-"~quinson/Mediation/SMN/), et maintenant pour PLM."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:7
-msgid ""
-"In the literature, the generalized form of this problem is known as the "
-"pebble motion problem (the bases can be connected by any kind of graph, and "
-"the affinity of pebbles with bases may be different). Another variant of "
-"this problem is the well known 15-puzzle, with one player per base, and a "
-"two dimensional square grid. Much more information about these problems can "
-"be found on wikipedia, as usual."
-msgstr ""
-"Dans la littérature scientifique, la forme généralisée de ce problème se "
-"nomme «le problème du déplacement des galets» (Pebble motion problem). Les "
-"bases peuvent être connectées par un graphe quelconque, et les affinités "
-"entre les galets et les bases peuvent être différentes. La plus connue des "
-"variantes de ce problème est le jeu du taquin, avec un seul joueur par base "
-"et une grille carrée à deux dimensions. On trouve énormément d'informations "
-"sur ces problèmes sur les pages wikipédia anglophones, comme d'habitude."
-
-#. type: Content of: <h3>
-#: src/lessons/sort/baseball/Main.html:12
-msgid ""
-"How do you know that the naive algorithm won't loop on that initial "
-"situation?"
-msgstr ""
-"Comment pouvez vous être sûr que l'algorithme naïf ne boucle pas sur cette "
-"situation initiale? "
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:14
-msgid ""
-"Well, we simply tested all possible situations to see when this algorithm "
-"loops and when it finds the correct solution. We found that it works for all "
-"situations where no player is at home (there is 84 such situations for 4 "
-"bases, once you take the symmetries into account). It obviously works for "
-"some situations that do not respect this criteria (such as all situations it "
-"encounters from one of those 84 boards to the final state), but that's "
-"another story. Having such a criteria allows us to generate pseudo-random "
-"initial situations for the first exercise for which the algorithm we propose "
-"is guarenteed to work."
-msgstr ""
-"Et bien, nous avons testé toutes les situations initiales possibles pour "
-"étudier les cas où l'algorithme boucle et ceux où l'algorithme termine "
-"correctement. Nous avons trouvé qu'il fonctionne pour toutes les situations "
-"où aucun joueur ne se trouve dans sa base (il y a 84 situations de ce genre "
-"pour 4 bases, si on élimine les symétries). Bien entendu, l'algorithme "
-"fonctionne correctement pour de nombreuses situations ne respectant pas ce "
-"critère (telles que toutes les situations rencontrées quand on commence de "
-"l'une de ces 84 situations), mais c'est une autre histoire. Avoir un tel "
-"critère nous permet de générer des situations initiales pour ce premier "
-"exercice de manière pseudo-aléatoire tout en étant sûrs que l'algorithme "
-"proposé se comportera correctement."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:21
-msgid ""
-"We also explored bigger instances of the problem, and unfortunately, we have "
-"no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
-"of the 1824 possible boards where no player is home (that's 1.31%).  With 6 "
-"bases, it fails on 1251 of the 58860 such boards (2.12%). With 7 bases, it "
-"fails for 84444 out of 2633940 (that's 3.2%). I am still looking for a "
-"criteria ensuring that the algorithm won't loop. If you discover one, please "
-"report it. Ideally, it would be simple to enforce manually so that we can "
-"use it during our unplugged activities."
-msgstr ""
-"Nous avons également exploré des instances plus grande de ce problème, et "
-"malheureusement, nous ne connaissons pas de critère sûr dans ce cas. Avec 5 "
-"bases, l'algorithme part en boucle infinie pour 24 des 1824 plateaux "
-"possibles où aucun joueur n'est à la maison (cela représente 1,31%). Avec 6 "
-"bases, il boucle pour 1251 des 58860 plateaux respectant ce critère (2,12%). "
-"Avec 7 bases, il boucle dans 84444 cas sur 2633940 (càd 3,2%). Nous "
-"cherchons encore un critère permettant de garantir que l'algorithme ne "
-"bouclera pas. Si vous en découvrez un, merci de nous l'indiquer. Ce serait "
-"encore mieux s'il était possible de vérifier le critère de tête afin que les "
-"animateurs puissent s'en servir pendant les activités débranchées."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:31
-msgid ""
-"Other graphical representations could be proposed, such as a linear one (for "
-"the existing exercises) or other ones (such as a grid or a tree, if an "
-"exercise on this kind of graph proves interesting)."
-msgstr ""
-"D'autres représentations graphiques pourraient être proposées, comme une "
-"représentation linéaire (pour les exercices proposés) ou d'autres comme une "
-"grille ou un arbre, si un exercice sur ce type de graphe s'avère intéressant."
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:33
-msgid ""
-"Other exercises on other algorithms on this variant, or on other variants "
-"such as the 15-puzzle."
-msgstr ""
-"D'autres exercices à propos d'autres algorithmes pour cette variante du "
-"problème, ou bien d'autres variantes comme le jeu du taquin."
-
-#. type: Content of: <h3>
-#: src/lessons/sort/baseball/short_desc.html:1
-msgid "Rainbow baseball"
-msgstr "Baseball multicolore"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/short_desc.html:3
-msgid ""
-"This is another funny variation on the sorting problem, adapting the main "
-"sorting algorithms on an unusual context."
-msgstr ""
-"Il s'agit d'un autre problème amusant autour des algorithmes de tri, "
-"adaptant les principaux algorithmes de tri à un contexte inhabituel."
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:1
-msgid "Rainbow Baseball"
-msgstr "Baseball multicolore"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:2
-msgid ""
-"The colors are represented by integers, between <code>0</code> and "
-"<code>amount of bases -1</code>.  The hole is represented by the special "
-"value <code>-1</code>.  The color of each base is its rank. So base <code>1</"
-"code> is of color <code>1</code>.  In the graphical interface, the base "
-"<code>0</code> is the dark blue one while the base <code>1</code> is the "
-"fuscia one."
-msgstr ""
-"Les couleurs sont représentées comme des entiers, entre <code>0</code> et "
-"<code>nombre de bases - 1</code>. Le trou est représenté par la valeur "
-"spéciale <code>-1</code>. La couleur de chaque base est son rang, ce qui "
-"fait que la base <code>1</code> est de couleur <code>1</code>. Dans "
-"l'interface graphique, la base <code>0</code> est la bleue foncée tandis que "
-"la base <code>1</code> est celle fuscia."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:8
-msgid ""
-"Once every players on the field are in their home base, the hole should be "
-"in the last base, that is of rank <code>getBasesAmount()-1</code>."
-msgstr ""
-"Une fois que tous les joueurs du terrain sont chez eux, le trou se trouve "
-"dans la dernière base, celle de rang <code>getNombreBases()-1</code>."
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:11
-msgid "Functions to retrieve the world's dimensions"
-msgstr "Fonctions pour découvrir les dimensions du monde"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:13
-#, no-wrap
-msgid "[!java]int [/!]getBasesAmount() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getNombreBases() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:14
-msgid "Returns the amount of bases on this field."
-msgstr "Retourne le nombre de bases dans le terrain."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:16
-#, no-wrap
-msgid "[!java]int [/!]getPositionsAmount() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getNombrePositions() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
-msgid "Returns the amount of player's positions per base on this field."
-msgstr "Retourne le nombre de positions disponibles par base."
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:19
-msgid "Functions to retrieve the world's state"
-msgstr "Fonctions pour découvrir l'état du monde"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:21
-#, no-wrap
-msgid "[!java]int [/!]getHoleBase() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getTrouBase() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
-msgid "Returns the base in which the hole is located."
-msgstr "Retourne l'index de la base où se trouve le trou."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
-#, no-wrap
-msgid "[!java]int [/!]getHolePosition() [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getTrouPosition() [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:25
-msgid "Returns the hole position within its base"
-msgstr "Retourne la position du trou dans sa base."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
-#, no-wrap
-msgid "[!java]int [/!]getPlayerColor([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr "[!java]int [/!]getCouleurJoueur([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
-msgid "Returns the color of the player at a given location."
-msgstr "Retourne la couleur d'un joueur donné à partir de sa position."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:30
-#, no-wrap
-msgid "[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estTrie() [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
-msgid "Returns whether all players of the field are at home."
-msgstr "Retourne si tous les joueurs présents sur le terrain sont chez eux."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:33
-#, no-wrap
-msgid "[!java]boolean [/!]isBaseSorted([!java]int [/!]base)  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estBaseTriee([!java]int [/!]base)  [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
-msgid "Returns whether all players of a given base are at home."
-msgstr "Retourne si tous les joueurs d'une base donnée sont chez eux."
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
-#, no-wrap
-msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
-msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:37
-msgid "Returns whether the current world is selected in the interface."
-msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
-msgid "Functions to change the world"
-msgstr "Fonctions pour changer le monde"
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:40
-#, no-wrap
-msgid "[!java]void [/!]move([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])"
-msgstr "[!java]void [/!]deplace([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])"
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:41
-msgid ""
-"Moves a given player into the hole. This throws an IllegalArgumentException "
-"if the specified player is not near the hole (at most one base away)."
-msgstr ""
-"Déplace un joueur dans le trou. Une exception IllegalArgumentException est "
-"levée si le joueur indiqué n'est pas suffisamment près du trou. Il peut être "
-"au plus à une base du trou."
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/NaiveBaseball.html:1
-msgid "Naive Rainbow Baseball"
-msgstr "Baseball multicolore naïf"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:3
-msgid ""
-"Today, the buggles decided to play a baseball game, but they are rather out "
-"of luck, actually.  First, kinda forgot the rules, and ... well ... they "
-"cannot find the ball and bats again.  So they decided to \"adapt a bit\" the "
-"rules. As the are no ball, the buggles can only running around the field, "
-"what they do happily: for a while, all attending buggle run at full speed in "
-"all directions around the field."
-msgstr ""
-"Aujourd'hui, les buggles ont décidé de faire une partie de baseball, mais il "
-"faut avouer que ce n'est pas très bien engagé : elles ne se souviennent plus "
-"très bien des règles, et ... euh ... elles ont perdu les battes et les "
-"balles. Elles ont donc décidé «d'adapter un peu» les règles. Comme il n'y a "
-"plus de balle, la seule chose qu'elles peuvent faire est de courir sur le "
-"terrain. C'est d'ailleurs ce qu'elles ont fait pendant un moment : toutes "
-"les buggles présentes se sont mises à courir en tous sens sur le terrain."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:9
-msgid ""
-"But after a few collisions, they decide to invent new rules to organize a "
-"bit the game: They make one team per base and two players per team. One of "
-"the teams has only one player so that its base has an empty location. Then, "
-"the players are dispatched randomly around the bases, and the game for them "
-"is to reach their home base. The whole game stops when all players are "
-"home.  There is no winning team: either all players win, or they all lose. "
-"Actually, this game is very different from the original baseball. The only "
-"rule that remains is that you can only run around the field, from one base "
-"to the next one, without crossing middle of the field."
-msgstr ""
-"Mais après quelques collisions plus ou moins douloureuses, elles décident "
-"d'inventer de nouvelles règles pour organiser la partie. Elles décident de "
-"faire une équipe par base sur le terrain et deux joueurs par équipes. L'une "
-"des équipes n'a qu'un seul joueur pour que l'une des bases ait un "
-"emplacement vide. Ensuite, les joueurs se répartissent aléatoirement sur les "
-"bases, et le jeu est de faire en sorte que chaque joueur retourne sur sa "
-"base. La partie s'arrềte quand tous les joueurs sont chez eux. Il n'y a pas "
-"d'équipe gagnante : soit tous les joueurs remportent la partie, soit ils la "
-"perdent tous. Oui, c'est vrai, ce jeu est très différent du baseball "
-"habituel. La seule règle qui reste est qu'il faut courir autour du terrain, "
-"de base en base, sans jamais passer au centre du terrain."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:17
-msgid ""
-"Now, they are asking you to help them deciding who and when should move so "
-"that each player returns to its base. Only one buggle can move at each "
-"round, from its position to the empty spot.  The maximal distance that a "
-"buggle can cover in one round is of one base."
-msgstr ""
-"Maintenant, les buggles ont besoin de vous pour décider qui doit bouger à "
-"quel moment de façon à ce que chacune rejoigne sa base. Une seule buggle "
-"peut bouger à chaque tour, de sa position jusqu'à l'emplacement vide. De "
-"plus, la distance maximale qu'une buggle peut parcourir en un tour est de "
-"une seule base."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:21
-msgid ""
-"So, at each round, the empty spot is on one base (say <code>B</code>), and "
-"you should decide which buggle enters that empty spot. There is four "
-"candidates (two from base <code>B-1</code> and two from base <code>B+1</"
-"code>). Actually, there is a fifth candidate since the buggle that is on the "
-"same base than the empty spot can change its position, but that's not really "
-"helping."
-msgstr ""
-"Ainsi, à chaque tour, l'emplacement vide se trouve sur une base (disons "
-"<code>B</code>), et vous devez décider quelle buggle occupera cette place. "
-"Il y a quatre candidates : deux de la base <code>B-1<code>, et deux de la "
-"base <code>B+1</code>. En fait, il y a une cinquième candidate puisque la "
-"buggle qui se trouve sur la même base que le trou peut aller l'occuper, mais "
-"ça ne fait pas vraiment avancer le problème."
-
-#. type: Content of: <h3>
-#: src/lessons/sort/baseball/NaiveBaseball.html:26
-msgid "The Naïve algorithm"
-msgstr "Algorithme naïf"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:28
-msgid ""
-"In this exercise, we will first explore a very simple algorithm. To decide "
-"which of the four candidate buggles should enter the empty spot, we first "
-"restrict ourselves and decide that buggles can only turn clockwise. Then, "
-"from the two remaining candidates, we pick the one that has the largest "
-"distance to cover to reach its base (turning clockwise). Click on the demo "
-"button: this works rather well in practice."
-msgstr ""
-"Dans cet exercice, nous allons explorer un premier algorithme très simple. "
-"Pour décider laquelle des quatre candidates doit aller occuper l'emplacement "
-"vide, nous commençons par nous restreindre à tourner dans le sens des "
-"aiguilles d'une montre. Ensuite, parmi les deux candidates restantes, nous "
-"prenons celle qui a encore le plus de chemin à parcourir jusqu'à sa base "
-"(dans le sens des aiguilles d'une montre). Essayez la démonstration : cela "
-"marche plutôt bien en pratique."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:34
-msgid ""
-"It's hard to find a simpler algorithm for this problem: While it's not "
-"sorted, search for the base containing the candidate buggles: if the hole is "
-"in base <code>B</code>, it's the base <code>B+1</code>, modulo the amount of "
-"bases. Then, compute the distance that each buggle of that base still has to "
-"run to reach its base (0 if it's already home). Once you found the buggle "
-"that should enter the empty spot, just use the <code>move</code> method on "
-"it, and iterate."
-msgstr ""
-"Il est difficile d'imaginer un algorithme plus simple pour ce problème : "
-"tant que ce n'est pas trié, chercher la base contenant les candidates. Si le "
-"trou est sur la base <code>B</code>, il s'agit de la base <code>B+1</code> "
-"(modulo le nombre de bases). Ensuite, il faut calculer la distance que "
-"chacune des buggles de cette base doit encore parcourir (0 si elle est déjà "
-"chez elle). Une fois que vous avez sélectionné l'heureuse élue, utilisez la "
-"méthode <code>deplace</code> pour la faire bouger, avant de passer à "
-"l'itération suivante."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:40
-msgid ""
-"The main difficulty should be to get the few equations right: determining "
-"the base next to the hole should be easy, but determining the distance that "
-"a player has to cover may reveal a bit more challenging. Don't hesitate to "
-"draw pictures on a paper to cover all possible cases. It should not be that "
-"difficult either: there is not that many cases after all."
-msgstr ""
-"La principale difficulté est peut-être d'écrire les quelques équations "
-"nécessaires sans se tromper. Trouver quelle est la base après le trou "
-"devrait être assez facile, mais calculer la distance que chaque joueur doit "
-"encore parcourir peut s'avérer plus problématique. N'hésitez pas à faire des "
-"dessins pour vérifier que votre équation marche dans tous les cas, il n'y a "
-"pas tant de cas possibles que cela après tout."
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/SelectBaseball.html:1
-msgid "Selection Baseball"
-msgstr "Baseball par selection"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:3
-msgid ""
-"The previous algorithm is very pleasant: it's rather simple and rather fast "
-"to implement, but unfortunately, it is also rather wrong! In some cases, it "
-"never stops, which is obviously bad. If you don't believe it, just copy "
-"paste your previous code, and hit the run button. The first world of this "
-"exercise is one of these unfortunate situations that drives our previous "
-"algorithm crazy."
-msgstr ""
-"L'algorithme précédent est très plaisant : il est plutôt simple, assez "
-"rapide à implémenter, mais malheureusement, il est également carrément faux. "
-"Dans certains cas, il ne s'arrête jamais, ce qui n'est pas très bon. Si vous "
-"ne le croyez pas, copie/collez votre code et appuyez sur le bouton "
-"«Exécuter». Le premier monde de cet exercice est l'un de ces cas malheureux "
-"où notre algorithme devient fou."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:9
-msgid ""
-"So we have to find another algorithm, preferably one that works in all cases."
-msgstr ""
-"Il nous faut donc trouver un autre algorithme. De préférence un qui marche "
-"dans tous les cas."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:11
-msgid ""
-"For that, the best solution is to start from a well known algorithm instead "
-"of trying to invent a new one from scratch as we just did. When you think a "
-"bit about this problem, this can is very similar to a sorting problem: Just "
-"make sure that the players are sorted by their colors and you're set. And "
-"while we are at it, let's generalize the game to allow more that 4 bases."
-msgstr ""
-"Pour cela, la meilleure solution est d'adapter un algorithme connu au lieu "
-"de tenter de partir de zéro comme nous venons de faire. Quand on réfléchi un "
-"peu à ce problème, on reconnaît un certain air de famille avec le problème "
-"du tri : il suffit de <b>trier</b> les joueurs en fonction de leur couleur "
-"pour le résoudre. Et tant que nous y sommes, nous pouvons généraliser un peu "
-"le problème en utilisant plus de quatre bases."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:17
-msgid ""
-"Let's adapt the selection sort to our situation. The big lines of the "
-"algorithm is then \"for each base, select the players that should occupy "
-"this base and make sure that they come to their position\". This way, we "
-"will grow an sorted area where all players are already sorted (and never "
-"changed) while the unsorted area shrinks."
-msgstr ""
-"Adaptons le tri par sélection à notre situation. Les grandes lignes de cet "
-"algorithme sont les suivantes : «pour chaque base, trouver dans la zone pas "
-"encore triée les joueurs qui doivent occuper cette base, puis les y placer». "
-"De la sorte, on va faire grandir une zone triée qu'on ne modifie plus "
-"jamais, tout en faisant réduire la taille de la zone pas encore triée."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:23
-msgid ""
-"Selecting the player should be no problem; Do not hesitate to define some "
-"methods such as <code>findPlayer()</code> or <code>findPlayerBase()</code>. "
-"This will ensure that your code remains understandable."
-msgstr ""
-"Choisir les joueurs à déplacer ne devrait pas poser de problème. N'hésitez "
-"pas à définir quelques fonctions comme <code>trouveJoueur</code> ou "
-"<code>trouveBaseJoueur()</code>. Cela améliorera la lisibilité de votre "
-"code, ce qui est toujours une bonne chose."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:27
-msgid ""
-"The most problematic aspect is to move the selected players into position. "
-"For that, you have to move the hole to the position where the player is, and "
-"then move both the player and the hole to the base that is next to the "
-"player's goal (probably in a loop), and finally put the player in the right "
-"position of its target base."
-msgstr ""
-"L'aspect le plus problématique est de déplacer les joueurs sélectionnés "
-"jusqu'à leur position. Pour cela, il vous faut déplacer le trou jusqu'à la "
-"base où se trouve le joueur, puis bouger ensuite le trou et le joueur de "
-"base en base jusqu'à celle avant la cible (au moyen d'une boucle). Enfin, on "
-"peut mettre le joueur dans la bonne case de sa base de prédilection."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:32
-msgid ""
-"As often in programming, the devil is in the details: there is a bunch of "
-"corner cases that you should detect and deal with correctly, such as the "
-"cases where the player is already in the base (but not in the position that "
-"you would like), or when the hole is on the right of the player (probably "
-"when you sort the first base). But you will find and hunt these while "
-"debugging your code."
-msgstr ""
-"Comme souvent en programmation, le diable est dans les détails, et il y a un "
-"certain nombre de cas particuliers à détecter et à gérer correctement, comme "
-"quand le joueur est déjà dans sa base de prédilection (mais pas dans la "
-"bonne position), ou quand le trou se trouve en fait à droite du joueur "
-"(probablement quand vous triez la première base). Mais vous allez trouver et "
-"résoudre ces problèmes quand vous débugguerez votre code."
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/InsertBaseball.html:1
-msgid "Insertion Baseball"
-msgstr "Baseball par insertion"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:3
-msgid ""
-"The good point of adapting the selection sort to the baseball problem is "
-"that we know that it works (provided that our adaptation is correct). That's "
-"much better than the first naive algorithm, that was unable to converge to "
-"the solution in some situations. But actually, the selection sort is not "
-"perfect either as it requires a lot of swaps: we have to bring the hole to "
-"the selected player and then both the player and hole in position, and more. "
-"We can do better."
-msgstr ""
-"Le coté positif d'adapter le tri par sélection à notre problème est que nous "
-"savons que cela fonctionne (à condition que notre adaptation soit correcte). "
-"C'est bien mieux que notre premier algorithme naïf, qui était incapable de "
-"converger vers la solution dans certains cas. Cependant, le tri par "
-"sélection n'est pas parfait non plus, puisqu'il requiert beaucoup "
-"d'échanges : il faut amener le trou jusqu'au joueur sélectionné puis amener "
-"le joueur ET le trou vers la bonne base. On doit pouvoir faire mieux."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:9
-msgid ""
-"For example, each player can run quite a long way from its initial position "
-"to its target solution.  Instead, it may be more interesting to split the "
-"field in two parts: one on the left where all players are sorted relatively "
-"to each others, and one on the right where the players are still at their "
-"initial positions. Then, at each iteration, we take the player at the border "
-"between the sorted and unsorted areas (that is, the left-most player of the "
-"unsorted area) and move it to the left (within the sorted area) until it "
-"reaches its position (that is, until the position where it's bigger that its "
-"left neighbor). This would at least reduce the travel of players to the "
-"sorted area as we use the first one on the border."
-msgstr ""
-"Par exemple, chaque joueur peut avoir à parcourir un chemin relativement "
-"long pour arriver à sa position finale. Au lieu de cela, il serait peut-être "
-"intéressant de couper le terrain en deux parties : l'une à gauche où tous "
-"les joueurs sont triés relativement les uns aux autres, et une autre à "
-"droite où les joueurs n'ont pas encore bougé de leur position de départ. "
-"Ensuite, à chaque itération, on prend le joueur à la frontière entre les "
-"deux zones (c'est à dire, le joueur le plus à gauche de la zone non triée) "
-"et on le déplace vers la gauche jusqu'à sa position dans la zone triée "
-"(c'est à dire, jusqu'à ce qu'il soit plus grand que son voisin de gauche). "
-"Cela réduirait au moins la distance que les joueurs doivent parcourir pour "
-"rentrer dans la zone triée, puisqu'on prend systématiquement le joueur à la "
-"frontière."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:18
-msgid ""
-"Actually, that's exactly what an insertion sort would do: maintain a sorted "
-"area on the left, and put iteratively the player on the border to its "
-"position within the sorted area. This is good, as we know that our algorithm "
-"is not inherently flawed since we adapt a well known one."
-msgstr ""
-"En fait, c'est exactement ce qu'un tri par insertion ferait: maintenir une "
-"zone triée à gauche, et y insérer à chaque itération l'élément qui se trouve "
-"à la frontière en le décalant vers la gauche jusqu'à sa position dans la "
-"zone triée. C'est une bonne chose, car cela veut dire que notre algorithme "
-"n'est pas fondamentalement faux, puisqu'il s'agit d'une adaptation d'un "
-"algorithme connu. "
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:22
-msgid ""
-"The easiest to adapt the insertion sort to the baseball problem is to "
-"consider all positions as adjacent and forget about bases. For that, we "
-"define the methods <code>getColor(pos)</code>, <code>move(pos)</code> and "
-"<code>getHole()</code> that all use a unique integer to designate a given "
-"position. These functions simply convert between the way to specify a "
-"position and then call the usual functions to interact with the world. If "
-"you have an <code>index</code> and want to convert it into a <code>base,pos</"
-"code>, then <code>base=index/2</code> and <code>pos=index%2</code>. To "
-"compute the reverse, <code>index=base*2+pos</code> (this works because "
-"<code>getPositionsAmount()</code> always returns 2)."
-msgstr ""
-"Le plus simple pour adapter le tri par insertion au problème du baseball est "
-"de considérer toutes les positions comme adjacentes sans tenir compte des "
-"différentes bases. Pour cela, il faut définir les méthodes "
-"<code>couleurJoueur(pos)</code>, <code>deplace(pos)</code> et "
-"<code>trouveTrou()</code> qui utilisent un seul entier pour désigner une "
-"position donnée et appellent les fonctions de base de cet univers pour faire "
-"leur travail. Pour convertir une position encodée sur un seul entier "
-"<code>index</code> en une position encodée sur deux entiers <code>base,pos</"
-"code>, il faut appliquer les formules suivantes: <code>base=index/2</code> "
-"et <code>pos=index%2</code>. Pour faire le calcul inverse, il faut utiliser "
-"<code>index=base*2+pos</code> (qui fonctionne car il y a deux positions par "
-"base)."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:31
-msgid ""
-"For the algorithm itself, you should first move the hole to the position 1. "
-"The position 0 is considered to be the sorted area (of size 1 for now) while "
-"the area above 2 is the unsorted area.  Then comes an iteration to sort each "
-"element of the unsorted area. Since this iteration is a bit complex, you "
-"should think of its loop invariant, that is, the condition that is true "
-"before and after the loop and which explains that the loop fulfills its "
-"goal. Here, the loop invariant is twofold: First, the hole is between the "
-"sorted area and the unsorted area, and then, the every elements of the "
-"sorted area are ... well sorted relatively to their neighbors."
-msgstr ""
-"Pour l'algorithme lui-même, vous devriez tout d'abord bouger le trou en "
-"position 1. On considère alors que la zone triée se limite pour l'instant à "
-"la position 0 (elle est alors de taille 1) tandis que la zone non triée "
-"commence à partir de la position 2. Ensuite, on fait une itération par "
-"élément à trier. Comme le corps de cet itération est un peu plus compliqué "
-"que ce que nous avons écrit jusque là, vous devriez réfléchir à l'invariant "
-"de cette boucle, c'est à dire à la condition qui est vraie avant et après un "
-"passage dans la boucle, et qui fait que la boucle fait son travail. Ici, "
-"l'invariant a deux parties : tout d'abord, l'emplacement vide se trouve "
-"entre les parties triées et non triées, et ensuite, la zone triée est ... "
-"triée, c'est à dire que tous les éléments de cette zone sont bien triés par "
-"rapport à leurs voisins."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:39
-msgid ""
-"Then, the loop body to sort an element should first descend the hole and the "
-"elements within the sorted area until the element is larger than the element "
-"before in the sorted area (2 moves per position to travel), and then move "
-"the hole back to its position between the sorted and unsorted areas (1 move "
-"per position)."
-msgstr ""
-"Ensuite, le corps de la boucle devrait trier un élément en descendant cet "
-"élément et le trou dans la zone triée jusqu'au point où l'élément est à sa "
-"place dans la zone triée (cela demande deux déplacements par case à "
-"parcourir), avant de remonter le trou à sa place à la frontière (un "
-"déplacement par case à parcourir)."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:43
-msgid ""
-"Once you insert the last element within the sorted area, your whole set is "
-"sorted and you're done.  I preserve the surprise of the border cases that "
-"will require some little adjustments to your algorithm to make it work "
-"properly :)"
-msgstr ""
-"Une fois que vous avez inséré le dernier élément dans la zone triée, tout "
-"votre ensemble est trié et vous avez fini. Je vous laisse la surprise des "
-"cas limites nécessitant de petits ajustements à votre algorithme pour lui "
-"permettre de fonctionner dans tous les cas :)"
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/BubbleBaseball.html:1
-msgid "Bubble Baseball"
-msgstr "Baseball à bulle"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:3
-msgid ""
-"Crap, we adapted the insertion sort because our selection sort required too "
-"much moves to get the selected players to their position, but the insertion "
-"sort requires an inordinate amount of changes to get the border elements to "
-"their position within the sorted area without mixing the already sorted "
-"elements. At the end of the day, our selection variant was more efficient "
-"with at most <code>3*amountOfBase</code> moves to sort one element (1 to get "
-"the hole alongside with the player, and 2 to get the hole+player in "
-"position) while our insertion variant requires at most "
-"<code>3*amountOfPlayers</code> to sort one element (2 to descend the hole "
-"and player in position, 1 to get the hole back to its position). That's "
-"twice as bad as there is two players per base. It may be possible to improve "
-"the insertion sort by moving by more than one element when descending, but "
-"it seems uneasy (at least, while not mixing the already sorted elements) and "
-"it would probably only ensure that our insertion variant becomes as "
-"efficient as our selection variant, not dramatically better."
-msgstr ""
-"Zut, nous avions adapté le tri par insertion parce que notre tri par "
-"sélection nécessitait trop de déplacements pour mener les joueurs "
-"sélectionnés à leur position, mais le tri par insertion impose une quantité "
-"déraisonnable de déplacements pour déplacer les joueurs de la frontière "
-"jusqu'à leur place dans la section triée. Au final, notre variante par "
-"sélection était plus efficace, avec au pire <code>3*nombre de bases</code> "
-"déplacement par élément à trier (1 pour apporter le trou jusqu'au joueur à "
-"bouger, et 2 pour amener le joueur et le trou jusqu'à leur position "
-"finale).  De son coté, notre variante par insertion nécessite au pire "
-"<code>3*nombre de joueurs</code> déplacements pour trier un élément (2 pour "
-"descendre le joueur et le trou à leur place, et 1 pour remonter le trou). "
-"C'est deux fois pire puisqu'il y a deux joueurs par base. Il serait "
-"probablement possible d'améliorer un peu notre variante par insertion en "
-"descendant plus vite le trou et le joueur, mais cela semble assez difficile "
-"(il ne faut pas mélanger les éléments déjà triés pendant la descente), et "
-"cela ne permettrait que de rendre cette variante aussi efficace que celle "
-"par sélection, pas de faire vraiment mieux. "
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:15
-msgid ""
-"If we cannot make the sort faster, we can make it easier. If you think about "
-"it, it seems rather natural to adapt the bubble sort to this problem: the "
-"hole becomes the bubble that moves up and down, sorting a bit the array "
-"during each traversal. The big lines are simply: \"while it's not sorted, "
-"move the hole down to base 0 (moving the biggest player of each base at each "
-"step) and then back to the maximal base (moving the smallest player of each "
-"base)\". After a while, <code>isSorted()</code> will return true and your "
-"algorithm will stop."
-msgstr ""
-"Si nous ne pouvons pas rendre ce tri plus rapide, au moins nous pouvons le "
-"faire plus simplement. Quand on y pense, il semble assez naturel d'adapter "
-"le tri à bulle à ce problème : le trou devient la bulle qui monte et qui "
-"descend, en sortant peu à peu le tableau. Les grandes lignes de l'algorithme "
-"sont très simples : «tant que ce n'est pas trier, déplacer le trou vers le "
-"bas puis vers le haut. À chaque pas, c'est le plus petit des deux joueurs de "
-"la base qui descend, et le plus grand des deux qui monte (en fonction du "
-"sens de déplacement).». Après un moment, <code>estTrie()</code> devient "
-"vrai, et votre algorithme s'arrête."
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:21
-msgid ""
-"This is so easy that we introduce another variant of the problem, with more "
-"than two players per base.  But actually, that shouldn't block you very "
-"long, should it?"
-msgstr ""
-"C'est tellement simple que nous pouvons nous payer le luxe d'une autre "
-"variante du problème, avec plus de deux joueurs par base. Mais cela ne va "
-"pas vous ralentir longtemps, n'est ce pas?"
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:24
-msgid ""
-"Surprisingly, the bubble sort variant requires ways less moves than the "
-"other variants. This is astonishing because usually, the bubble sort "
-"performs much worse than the others sorts, but it comes from the very good "
-"match between its big lines and the baseball universe. It actually happens "
-"rather often that a pleasantly written algorithm performs very decently. But "
-"this is not an universal rule either, as demonstrated by the naive algorithm "
-"of the first exercise, that was nice, simple and wrong ;)"
-msgstr ""
-"De manière étonnante, la variante à bulle semble nécessiter beaucoup moins "
-"de déplacements que les autres variantes. C'est assez surprenant car "
-"habituellement, le tri à bulle est la pire des variantes possibles, mais "
-"cela s'explique sans peine par les analogies entre cet algorithme et le "
-"problème du baseball multicolore. Il est relativement courant qu'un "
-"algorithme écrit simplement et naturellement se comporte bien en pratique. "
-"Il ne s'agit cependant pas d'une règle absolue, comme prouvé par "
-"l'algorithme simple et faux du premier exercice !"
 
 #. type: Content of: <h3>
 #: src/lessons/turtleart/Main.html:1 src/lessons/turtleart/short_desc.html:1
