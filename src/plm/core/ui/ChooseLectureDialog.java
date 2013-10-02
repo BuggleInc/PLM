@@ -1,6 +1,7 @@
 package plm.core.ui;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -69,6 +70,7 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 
 		JPanel p = new JPanel();
 		p.add(jsp);
+		p.setPreferredSize(new Dimension(200,MainFrame.getInstance().getHeight()-120));
 		int result = JOptionPane.showConfirmDialog(MainFrame.getInstance(), p, Game.i18n.tr("Choose your next exercise"),
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {

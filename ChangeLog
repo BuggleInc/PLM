@@ -8,6 +8,7 @@
   * recursion.HexaKoch: new exercise (yet another Koch curve)
   * recursion.Crab: new exercise (another L-system: the Lévy C curve)
   * TurtleWorld: new builtins to hide()/show() the turtle.
+  * LectureChooser: fix preferred size to the MainFrame one (fix #118)
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
