@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-24 01:33+0200\n"
+"POT-Creation-Date: 2013-10-02 12:53+0200\n"
 "PO-Revision-Date: 2013-09-12 13:06+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/lessons/maze/island/IslandMazeEntity.java:10
@@ -23,6 +23,7 @@ msgstr ""
 #: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:12
 #: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:12
 #: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:12
+#: src/lessons/recursion/tree/TreeEntity.java:12
 #: src/lessons/welcome/array/basics/Array1Entity.java:11
 #: src/lessons/welcome/array/basics/Array2Entity.java:12
 msgid ""
@@ -36,6 +37,7 @@ msgstr ""
 #: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:17
 #: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:17
 #: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:17
+#: src/lessons/recursion/tree/TreeEntity.java:17
 #: src/lessons/welcome/array/basics/Array1Entity.java:16
 #: src/lessons/welcome/array/basics/Array2Entity.java:17
 msgid ""
@@ -49,6 +51,7 @@ msgstr ""
 #: src/lessons/maze/shortestpath/ShortestPathMazeEntity.java:22
 #: src/lessons/maze/wallfindfollow/WallFindFollowMazeEntity.java:22
 #: src/lessons/maze/wallfollower/WallFollowerMazeEntity.java:22
+#: src/lessons/recursion/tree/TreeEntity.java:22
 #: src/lessons/welcome/array/basics/Array1Entity.java:21
 #: src/lessons/welcome/array/basics/Array2Entity.java:22
 msgid ""
@@ -157,37 +160,75 @@ msgstr "Switch to time view"
 msgid "Switch to state view"
 msgstr "Switch to state view"
 
+#: src/lessons/sort/dutchflag/universe/DutchFlagEntity.java:25
+msgid "Flag sorter"
+msgstr ""
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:102
+msgid "This world is not a dutch flag"
+msgstr ""
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
+msgid "The two worlds are of differing size"
+msgstr ""
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:111
+#, java-format
+msgid " Ray #{0} differs: color {1} is not color {2}\n"
+msgstr ""
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:177
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:180
+#, java-format
+msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
+msgstr ""
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:197
+#, java-format
+msgid "Cannot get the color of line #{0} because it''s not between 0 and {1}"
+msgstr ""
+
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:232
+#, java-format
+msgid ""
+"It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
+"information:\n"
+"Initial situation: {0}"
+msgstr ""
+
 #: src/lessons/sort/pancake/universe/PancakeFlipButtonPanel.java:66
 #, java-format
 msgid "flip({0})"
 msgstr ""
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:116
-msgid "This is not a world of pancakes :-("
+msgid "This is not a world of pancakes"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:120
-msgid "The two worlds are of differing size"
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:125
+#, java-format
+msgid " Pancake #{0} differs: {1} vs. {2}\n"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:202
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:203
 #, java-format
 msgid "Asked to flip {0} pancakes, but you must flip at least one"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:204
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:205
 #, java-format
 msgid ""
 "Asked to flip {0} pancakes, but there is only {1} pancakes on this stack"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:238
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:239
 #, java-format
 msgid ""
 "Cannot get the radius of pancake #{0} because it''s not between 0 and {1}"
 msgstr ""
 
-#: src/lessons/sort/pancake/universe/PancakeWorld.java:257
+#: src/lessons/sort/pancake/universe/PancakeWorld.java:258
 #, java-format
 msgid ""
 "Cannot get the orientation of pancake #{0} because it''s not between 0 and "
@@ -505,8 +546,8 @@ msgstr ""
 
 #: src/plm/core/model/LessonRunner.java:97
 #: src/plm/core/model/LessonRunner.java:103
-#: src/plm/core/model/LessonRunner.java:112
-#: src/plm/core/model/LessonRunner.java:118
+#: src/plm/core/model/LessonRunner.java:113
+#: src/plm/core/model/LessonRunner.java:119
 msgid "Exercice passed \\o/"
 msgstr "Exercice passed \\o/"
 
@@ -526,7 +567,7 @@ msgid ""
 msgstr ""
 "Congratulations, you passed this test. Which exercise will you do now?\n"
 
-#: src/plm/core/model/LessonRunner.java:117
+#: src/plm/core/model/LessonRunner.java:118
 #, fuzzy
 msgid ""
 "Congratulations, you passed this exercise.\n"
@@ -700,15 +741,61 @@ msgstr ""
 msgid "Abording on user request"
 msgstr ""
 
-#: src/plm/core/ui/AboutLessonDialog.java:24
+#: src/plm/core/ui/AboutLessonDialog.java:19
 msgid "About lesson - "
 msgstr "About lesson - "
 
-#: src/plm/core/ui/AboutPLMDialog.java:34
-msgid "About PLM dialogTitle"
-msgstr "About PLM dialogTitle"
+#: src/plm/core/ui/AboutPLMDialog.java:36 src/plm/core/ui/MainFrame.java:370
+#: src/plm/core/ui/MainFrame.java:705
+msgid "About PLM"
+msgstr "About PLM"
 
-#: src/plm/core/ui/AboutPLMDialog.java:71
+#: src/plm/core/ui/AboutPLMDialog.java:53
+#, java-format
+msgid ""
+"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
+"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
+"span></h3><br/>&copy; 2008-2011 Contributors. All rights reserved.<br/><ul "
+"style=\"margin-left:20px;\"><li>Original idea: <i>L. Turbak (Wellesley "
+"College)</i></li><li>Design and code: <i>M. Quinson and G. Oster</i></"
+"li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
+"ul><br/>Your code is saved to {2}<br/></html>"
+msgstr ""
+
+#: src/plm/core/ui/AboutPLMDialog.java:74
+#, fuzzy
+msgid "About"
+msgstr "About PLM"
+
+#: src/plm/core/ui/AboutPLMDialog.java:97
+msgid "Changes"
+msgstr ""
+
+#: src/plm/core/ui/AboutPLMDialog.java:103
+msgid ""
+"<h2>PLM is proudly Free Software</h2><p>Copyright (c) 2008-2013.<br/> The "
+"PLM Team: Martin Quinson, Gérald Oster and others.<br/> (see the git logs "
+"for the exact authorship of each file).</p> <p>The PLM software was written "
+"internally by the team. This software is distributed under the GNU general "
+"public license version 3 (GPLv3).</p> <p>The pedagogical material "
+"distributed with the PLM is covered both by the GPLv3 license (mainly for "
+"the included code) and by the CC-BY-SA license (mainly for the other media "
+"files). But the exact boundary here between the source code and the media is "
+"left as an exercise to the reader, so this material is distributed under "
+"both licenses for sake of simplicity.</p><p>The GPLv3 license can be found "
+"in the archive under the name LICENSE-GPL-3. The CC-BY-SA license can be "
+"found online: http://creativecommons.org/licenses/by-sa/3.0/</p><p>The whole "
+"artwork is free content, licenced under CC-BY-SA, GPL, LGPL and/or CC0-"
+"public domain. Some parts were done by us, other parts were borowed from "
+"free collections. The specific license and origin of each files is listed in "
+"the COPYING file distributed with the archive.</p>"
+msgstr ""
+
+#: src/plm/core/ui/AboutPLMDialog.java:129
+msgid "Copying"
+msgstr ""
+
+#: src/plm/core/ui/AboutPLMDialog.java:135
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
 msgid "Close"
 msgstr "Close"
@@ -718,6 +805,11 @@ msgstr "Close"
 #, fuzzy, java-format
 msgid "About world - {0}"
 msgstr "About world - "
+
+#: src/plm/core/ui/ChooseLectureDialog.java:74
+#, fuzzy
+msgid "Choose your next exercise"
+msgstr "Choose your course"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:40
 #, fuzzy
@@ -1006,10 +1098,6 @@ msgstr "About this lesson"
 msgid "About this world"
 msgstr "About this world"
 
-#: src/plm/core/ui/MainFrame.java:370 src/plm/core/ui/MainFrame.java:705
-msgid "About PLM"
-msgstr "About PLM"
-
 #. Buttons
 #: src/plm/core/ui/MainFrame.java:403 src/plm/core/ui/MainFrame.java:666
 msgid "Run"
@@ -1083,6 +1171,14 @@ msgstr "Playing demo "
 #, fuzzy
 msgid "Loading "
 msgstr "Loading"
+
+#: src/plm/core/ui/TipsDialog.java:20
+msgid "Tips"
+msgstr ""
+
+#: src/plm/core/ui/TipsDialog.java:21
+msgid "(no tips to display)"
+msgstr ""
 
 #: src/plm/core/ui/action/ExportCloudSession.java:78
 #: src/plm/core/ui/action/ImportCloudSession.java:53
@@ -1805,12 +1901,15 @@ msgstr ""
 msgid "That's not a line."
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:235
+#: src/plm/universe/turtles/TurtleWorld.java:249
 #, java-format
-msgid "  There is only {0} shapes where {1} shapes were expected\n"
+msgid "  There is {0} shapes, but {1} shapes were expected\n"
 msgstr ""
 
-#: src/plm/universe/turtles/TurtleWorld.java:238
+#: src/plm/universe/turtles/TurtleWorld.java:252
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr ""
+
+#~ msgid "About PLM dialogTitle"
+#~ msgstr "About PLM dialogTitle"
