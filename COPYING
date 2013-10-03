@@ -1,20 +1,28 @@
-Most of the PLM software was written internally by the team. This
-software is distributed under the GNU general public license version
-3, which you can find in the archive under the name LICENSE-GPL-3.
+Copyright (c) 2008-2013. 
+The PLM Team: Martin Quinson, Gérald Oster and others.
+(see the git logs for the exact authorship of each file).
 
-For any copyright year range specified as YYYY-ZZZZ in this package
-note that the range specifies every single year in that closed
-interval.
 
-Some perticular files distributed with the project have other
-licenses. More specifically, these files are listed below, along with
-their license.
+The PLM software was written internally by the team. This software is
+distributed under the GNU general public license version 3 (GPLv3).
 
-=========================================================================
+The pedagogical material distributed with the PLM is covered both by
+the GPLv3 license (mainly for the included code) and by the CC-BY-SA
+license (mainly for the other media files). But the exact boundary
+here between the source code and the media is left as an exercise to
+the reader, so this material is distributed under both licenses for
+sake of simplicity.
 
-The pedagogical material distributed with PLM is also covered by the
-CC-BY-SA license, that you can find at:
+The GPLv3 license can be found in the archive under the name
+LICENSE-GPL-3. The CC-BY-SA license can be found online:
 http://creativecommons.org/licenses/by-sa/3.0/
+
+
+The whole artwork is free content, licenced under CC-BY-SA, GPL, LGPL
+and/or CC0-public domain. Some parts were done by us, other parts were
+borowed from free collections. The specific license and origin of each
+files is listed below.
+
 
 =========================================================================
 
@@ -37,12 +45,14 @@ The artwork we did ourselves is distributed under the CC-BY-SA license.
  img/btn-reset.png is a mashup of mine between btn-start.png (CC-BY-SA) and
  http://openiconlibrary.sourceforge.net/gallery2/?./Icons/actions/run-rebuild.png
  (LGPL-2.1). The result can be used under either licence.
+ 
+ Several exercises provide screenshot of PLM itself to help the
+ student. These images are naturally CC-BY-SA too.
 
 =========================================================================
 
 We borrowed the following icons, that are CC-BY-SA too:
 
-* The turtle was borowed from the kturtle project, from KDE edu.
 * The bunny and egg in BuggleQuest universe come from:
   plm/universe/bugglequest/ui/egg.png     http://openclipart.org/detail/93979/
   plm/universe/bugglequest/ui/rabbit.png  http://openclipart.org/detail/23052/
@@ -85,7 +95,7 @@ The following icons are LGPL:
 The following logos are GPLv2:
  img/busyicon/*: (gnome) http://openiconlibrary.sourceforge.net/gallery2/?./Icons/animations/process-working.png
 
- img/world_turtle.png : stollen to the kturtle project, that is GPLv2+
+ img/world_turtle.png : stolen to the kturtle project, that is GPLv2+
 
 =========================================================================
 
@@ -96,6 +106,7 @@ img/lang_java.png
 img/lang_javascript.png 
 img/lang_python.png
 img/lang_ruby.png
+img/lang_scala.png
 
 =========================================================================
 
