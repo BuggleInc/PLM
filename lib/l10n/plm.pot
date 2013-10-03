@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-10-01 15:54+0300\n"
+"POT-Creation-Date: 2013-10-03 20:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6513,23 +6513,30 @@ msgid ""
 "<code>beforeWhite</code>."
 msgstr ""
 
+#. type: Content of: <h2>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:3
+msgid "Provided values"
+msgstr ""
+
 #. type: Content of: <p>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:2
-msgid "The colors are represented by integers (either 0, 1 or 2)."
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:5
+msgid ""
+"The colors are represented through the following constants: BLUE, WHITE and "
+"RED.  You can use them directly in your code."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:4
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:8
 msgid "Provided functions"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:6
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:10
 msgid "This world is very simple, with only 5 provided functions."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:8
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:12
 #, no-wrap
 msgid ""
 "[!java]void [/!]swap([!java]int [/!]x[!scala]:Int[/!], [!java]int "
@@ -6537,23 +6544,23 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:13
 msgid "Swap the lines number <code>x</code> and <code>y</code>."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:15
 #, no-wrap
 msgid "[!java]int [/!]getSize() [!scala]:Int[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:12
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:16
 msgid "Returns the amount of lines on this flag."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:14
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:18
 #, no-wrap
 msgid ""
 "[!java]int [/!]getColor([!java]int [/!]line[!scala]:Int[/!])  "
@@ -6561,29 +6568,29 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:15
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:19
 msgid "Returns the color of the given line."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:17 src/lessons/sort/baseball/universe/BaseballWorld.html:30
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:21 src/lessons/sort/baseball/universe/BaseballWorld.html:30
 #, no-wrap
 msgid "[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:18
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
 msgid "Returns whether the flag is sorted."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:20 src/lessons/sort/baseball/universe/BaseballWorld.html:36
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:24 src/lessons/sort/baseball/universe/BaseballWorld.html:36
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:21 src/lessons/sort/baseball/universe/BaseballWorld.html:37
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25 src/lessons/sort/baseball/universe/BaseballWorld.html:37
 msgid "Returns whether the current world is selected in the interface."
 msgstr ""
 
@@ -10870,7 +10877,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/turtleart/short_desc.html:4
+#: src/lessons/turtleart/short_desc.html:5
 msgid ""
 "You should know the basic syntax of the programming language you will "
 "choose, but no exhaustive programming practice is required to take this "

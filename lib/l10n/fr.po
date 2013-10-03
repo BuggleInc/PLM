@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-10-01 15:54+0300\n"
-"PO-Revision-Date: 2013-10-01 21:45+0200\n"
+"POT-Creation-Date: 2013-10-03 20:42+0300\n"
+"PO-Revision-Date: 2013-10-03 20:48+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -8806,7 +8806,13 @@ msgid ""
 "real life, but it became famous for its pedagogical properties: its "
 "complexity is not trivial, but not complex either.  It can easily be "
 "formally proven, but it's not absolutely trivial either."
-msgstr "Ce problème a été proposé pour la première fois par E.W.Dijkstra en 1976 (dans le chapitre 14 de son livre «A discipline of Programming»). C'est une variation très étudiée du tri par insertion depuis. Ce tri est parfois utile dans la vraie vie, mais il est surtout célèbre pour ses vertus pédagogiques : calculer sa complexité n'est ni trop simple ni trop dur, démontrer sa correction est très accessible sans être complètement trivial."
+msgstr ""
+"Ce problème a été proposé pour la première fois par E.W.Dijkstra en 1976 "
+"(dans le chapitre 14 de son livre «A discipline of Programming»). C'est une "
+"variation très étudiée du tri par insertion depuis. Ce tri est parfois utile "
+"dans la vraie vie, mais il est surtout célèbre pour ses vertus "
+"pédagogiques : calculer sa complexité n'est ni trop simple ni trop dur, "
+"démontrer sa correction est très accessible sans être complètement trivial."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/dutchflag/Main.html:12
@@ -8818,7 +8824,9 @@ msgstr "Une vue temporelle serait bienvenue."
 msgid ""
 "Other exercises, for example with 2 colors only or with more than 3 colors, "
 "could generalize the proposed approach."
-msgstr "D'autres exercices, par exemple avec seulement deux couleurs ou avec plus de 3 couleurs, pourraient généraliser l'approche."
+msgstr ""
+"D'autres exercices, par exemple avec seulement deux couleurs ou avec plus de "
+"3 couleurs, pourraient généraliser l'approche."
 
 #. type: Content of: <ul><li>
 #: src/lessons/sort/dutchflag/Main.html:14
@@ -8830,7 +8838,9 @@ msgstr "Ce problème peut être résolu récursivement."
 msgid ""
 "This is a classical sorting problem, constituting a variation over the "
 "insertion sort."
-msgstr "C'est un problème classique, qui constitue une variation du tri par insertion."
+msgstr ""
+"C'est un problème classique, qui constitue une variation du tri par "
+"insertion."
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:3
@@ -8838,7 +8848,11 @@ msgid ""
 "Your work is to sort all the colors of the Dutch flag, and the only provided "
 "primitive is to exchange two given lines.  In addition, you should not "
 "create any additional variables (but a few indices)."
-msgstr "Votre travail est de trier les couleurs du drapeau hollandais. La seule primitive à votre disposition permet d'échanger deux lignes données. De plus, vous ne devez pas créer de nouvelles variables (à l'exception de quelques indices)."
+msgstr ""
+"Votre travail est de trier les couleurs du drapeau hollandais. La seule "
+"primitive à votre disposition permet d'échanger deux lignes données. De "
+"plus, vous ne devez pas créer de nouvelles variables (à l'exception de "
+"quelques indices)."
 
 #. type: Content of: <p>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:6
@@ -8848,7 +8862,13 @@ msgid ""
 "\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion sort</a>, "
 "of which the Dutch Flag sort is a variation. The main difference is that you "
 "have 3 insertion points, not only one..."
-msgstr "À la réflexion, on peut le faire en temps linéaire, en triant un élément à chaque étape de la boucle. Vous devriez peut-être réviser comment se passe le <a href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">tri par insertion</a>, car le tri du drapeau hollandais est une variation sur le thème. La principale différence est que vous n'avez pas un seul point d'insertion, mais 3..."
+msgstr ""
+"À la réflexion, on peut le faire en temps linéaire, en triant un élément à "
+"chaque étape de la boucle. Vous devriez peut-être réviser comment se passe "
+"le <a href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">tri par "
+"insertion</a>, car le tri du drapeau hollandais est une variation sur le "
+"thème. La principale différence est que vous n'avez pas un seul point "
+"d'insertion, mais 3..."
 
 #. type: Attribute 'alt' of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:10
@@ -8865,14 +8885,18 @@ msgstr "Traversez vos données, en maintenant trois indices :"
 msgid ""
 "<code>afterBlue</code> is initialized to 0. Make sure that every cell below "
 "<code>afterBlue</code> is filled with blue elements."
-msgstr "<code>apresBleu</code> est initialisé à 0. Assurez vous de n'avoir que des cellules bleues entre 0 et <code>apresBleu</code> à tout moment."
+msgstr ""
+"<code>apresBleu</code> est initialisé à 0. Assurez vous de n'avoir que des "
+"cellules bleues entre 0 et <code>apresBleu</code> à tout moment."
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:14
 msgid ""
 "<code>whiteRed</code> is initialized to size-1. Make sure that every cell "
 "after <code>whiteRed</code> is filled with red elements."
-msgstr "<code>blancRouge</code> est initialisé à taille-1. Assurez vous de n'avoir que des cellules rouges après <code>blancRouge</code>."
+msgstr ""
+"<code>blancRouge</code> est initialisé à taille-1. Assurez vous de n'avoir "
+"que des cellules rouges après <code>blancRouge</code>."
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:15
@@ -8880,14 +8904,19 @@ msgid ""
 "<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
 "after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
 "with while elements."
-msgstr "<code>avantBlanc</code> est iniitialisé à taille-1. Assurez vous de n'avoir que des cellules blanches entre <code>avantBlanc</code> et <code>blancRouge</code>."
+msgstr ""
+"<code>avantBlanc</code> est iniitialisé à taille-1. Assurez vous de n'avoir "
+"que des cellules blanches entre <code>avantBlanc</code> et <code>blancRouge</"
+"code>."
 
 #. type: Content of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:17
 msgid ""
 "Note that the unsorted cells are always between <code>afterBlue</code> and "
 "<code>beforeWhite</code>."
-msgstr "Remarques que les cellules non triées sont toujours entre <code>apresBleu</code> et <code>avantBlanc</code>."
+msgstr ""
+"Remarques que les cellules non triées sont toujours entre <code>apresBleu</"
+"code> et <code>avantBlanc</code>."
 
 #. type: Content of: <div>
 #: src/lessons/sort/dutchflag/DutchFlagAlgo.html:19
@@ -8896,77 +8925,88 @@ msgid ""
 "<code>afterBlue</code> and do the required exchanges.  The loop ending "
 "condition is when <code>afterBlue</code> becomes larger than "
 "<code>beforeWhite</code>."
-msgstr "À chaque étape de votre traversée, regardez la couleur de la case pointée par <code>apresBleu</code> et effectuez les échanges qui s'imposent. La boucle s'arrête quand <code>apresBleu</code> devient plus grand que <code>avantBlanc</code>."
-
-#. type: Content of: <p>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:2
-msgid "The colors are represented by integers (either 0, 1 or 2)."
-msgstr "Les couleurs sont représentées par des entiers (soit 0, 1 ou 2)."
+msgstr ""
+"À chaque étape de votre traversée, regardez la couleur de la case pointée "
+"par <code>apresBleu</code> et effectuez les échanges qui s'imposent. La "
+"boucle s'arrête quand <code>apresBleu</code> devient plus grand que "
+"<code>avantBlanc</code>."
 
 #. type: Content of: <h2>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:4
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:3
+msgid "Provided values"
+msgstr "Valeurs fournies"
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:5
+msgid ""
+"The colors are represented through the following constants: BLUE, WHITE and "
+"RED.  You can use them directly in your code."
+msgstr "Les couleurs sont représentées par les constantes suivantes : BLEU, BLANC et ROUGE. Vous pouvez les utiliser directement dans votre code."
+
+#. type: Content of: <h2>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:8
 msgid "Provided functions"
 msgstr "Fonctions fournies"
 
 #. type: Content of: <p>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:6
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:10
 msgid "This world is very simple, with only 5 provided functions."
 msgstr "Cet univers est très simple, avec seulement cinq fonctions fournies."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:8
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:12
 #, no-wrap
 msgid "[!java]void [/!]swap([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
 msgstr "[!java]void [/!]echange([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:9
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:13
 msgid "Swap the lines number <code>x</code> and <code>y</code>."
 msgstr "Échange les lignes numéros <code>x</code> et <code>y</code>."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:11
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:15
 #, no-wrap
 msgid "[!java]int [/!]getSize() [!scala]:Int[/!]"
 msgstr "[!java]int [/!]getTaille()  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:12
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:16
 msgid "Returns the amount of lines on this flag."
 msgstr "Retourne le nombre de lignes sur ce drapeau."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:14
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:18
 #, no-wrap
 msgid "[!java]int [/!]getColor([!java]int [/!]line[!scala]:Int[/!])  [!scala]:Int[/!]"
 msgstr "[!java]int [/!]getCouleur([!java]int [/!]line[!scala]:Int[/!])  [!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:15
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:19
 msgid "Returns the color of the given line."
 msgstr "Retourne la couleur d'une ligne donnée."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:17
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:21
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:30
 #, no-wrap
 msgid "[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estTrie() [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:18
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
 msgid "Returns whether the flag is sorted."
 msgstr "Renvoie si le drapeau est correctement trié."
 
 #. type: Content of: <pre>
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:20
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:24
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:36
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:21
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:37
 msgid "Returns whether the current world is selected in the interface."
 msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
@@ -10317,42 +10357,54 @@ msgstr "Que puis-je faire pour améliorer cette leçon ?"
 msgid ""
 "As usual, there are several things that could be done in this lesson to "
 "improve it further:"
-msgstr "Comme souvent, plusieurs points pourraient être améliorés dans cette leçon&nbsp;:"
+msgstr ""
+"Comme souvent, plusieurs points pourraient être améliorés dans cette "
+"leçon&nbsp;:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/Main.html:12
 msgid ""
 "The Sierpinski triangle can be drawn using a simpler L-system. See http://"
 "jpvallon.free.fr/recursivite.html"
-msgstr "Le triangle de Sierpinski peut être tracé de façon bien plus simple en utilisant un L-système. Voir http://jpvallon.free.fr/recursivite.html"
+msgstr ""
+"Le triangle de Sierpinski peut être tracé de façon bien plus simple en "
+"utilisant un L-système. Voir http://jpvallon.free.fr/recursivite.html"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/Main.html:13
 msgid ""
 "The arrowhead curve is also interesting: http://www.mathcurve.com/fractals/"
 "sierpinski/sierpinskitriangle.shtml"
-msgstr "la courbe de Sierpinski est également intéressante: http://www.mathcurve.com/fractals/sierpinski/sierpinskitriangle.shtml"
+msgstr ""
+"la courbe de Sierpinski est également intéressante: http://www.mathcurve.com/"
+"fractals/sierpinski/sierpinskitriangle.shtml"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/Main.html:14
 msgid ""
 "The dragon curve could be explained as a L-system: http://ecademy.agnesscott."
 "edu/~lriddle/ifs/heighway/heighway.htm"
-msgstr "La courbe du dragon pourrait être expliquée comme un L-système. http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+msgstr ""
+"La courbe du dragon pourrait être expliquée comme un L-système. http://"
+"ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/Main.html:15
 msgid ""
 "The dragon2 curve is called the twin dragon: http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/heighway/twindragon.htm"
-msgstr "La courbe du dragon2 s'appelle la courbe des dragons jumeaux: http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
+msgstr ""
+"La courbe du dragon2 s'appelle la courbe des dragons jumeaux: http://ecademy."
+"agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/Main.html:16
 msgid ""
 "The space filling curves could be added (Peano, Hildebert, etc).  See: "
 "http://teachout1.net/village/fill.html"
-msgstr "Les courbes remplissant l'espace (Peano, Hildebert, etc) pourraient être ajoutées. http://teachout1.net/village/fill.html"
+msgstr ""
+"Les courbes remplissant l'espace (Peano, Hildebert, etc) pourraient être "
+"ajoutées. http://teachout1.net/village/fill.html"
 
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/Main.html:18
@@ -10360,7 +10412,10 @@ msgid ""
 "We could do another exercise on embeeded polygons: http://www.inrialpes.fr/"
 "helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives."
 "html"
-msgstr "Un exercice sur les polygones inscrits serait intéressant: http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
+msgstr ""
+"Un exercice sur les polygones inscrits serait intéressant: http://www."
+"inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/"
+"actionsrecursives.html"
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/short_desc.html:1
@@ -10592,10 +10647,14 @@ msgid ""
 "each segments split in three parts and the middle part being replaced by the "
 "two sides of an equilateral triangle."
 msgstr ""
-"Observez l'objectif de chaque monde pour comprendre la logique du motif à dessiner, puis reproduisez-le.\n"
+"Observez l'objectif de chaque monde pour comprendre la logique du motif à "
+"dessiner, puis reproduisez-le.\n"
 "Au niveau 0, la courbe de Koch est une simple ligne droite.\n"
-"Au niveau 1, elle est divisée en trois tiers, et la partie du milieu est remplacée par deux cotés d'un triangle équilatéral de même longueur que le segment supprimé.\n"
-"Au niveau 2, le processus est répété avec le tiers central de chaque segment remplacé par un petit triangle équilatéral."
+"Au niveau 1, elle est divisée en trois tiers, et la partie du milieu est "
+"remplacée par deux cotés d'un triangle équilatéral de même longueur que le "
+"segment supprimé.\n"
+"Au niveau 2, le processus est répété avec le tiers central de chaque segment "
+"remplacé par un petit triangle équilatéral."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/recursion/koch/Koch.html:19
@@ -10614,7 +10673,10 @@ msgid ""
 "You must write the <code>snowSide()</code> method, which is recursive but "
 "<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
 "unexpected behaviors."
-msgstr "Vous devez écrire la fonction snowSide, qui est récursive. Mais <b>n'appelez pas snowFlake depuis snowSide</b>, car sinon le résultat sera vraiment étrange et inattendu."
+msgstr ""
+"Vous devez écrire la fonction snowSide, qui est récursive. Mais <b>n'appelez "
+"pas snowFlake depuis snowSide</b>, car sinon le résultat sera vraiment "
+"étrange et inattendu."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/koch/SquareKoch.html:1
@@ -10629,7 +10691,8 @@ msgid ""
 "triangles on the sides of the figure."
 msgstr ""
 "Cet exercice est une variation sur le flocon de neige vu précédemment. \n"
-"La principale différence est qu'il faut maintenant faire pousser des petits carrés au lieu des triangles sur les segments de cette figure."
+"La principale différence est qu'il faut maintenant faire pousser des petits "
+"carrés au lieu des triangles sur les segments de cette figure."
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/recursion/koch/SquareKoch.html:7
@@ -10642,7 +10705,10 @@ msgid ""
 "As previously, your <code>squareSide</code> function should only draw one "
 "side of the figure, and the template will call it for all sides "
 "automatically (with one color per side)."
-msgstr "Comme précédement, votre fonction <code>squareSide</code> doit seulement dessiner un coté de la figure, et le code fourni l'appellera 4 fois pour dessiner tous les cotés (chacun avec sa couleur)."
+msgstr ""
+"Comme précédement, votre fonction <code>squareSide</code> doit seulement "
+"dessiner un coté de la figure, et le code fourni l'appellera 4 fois pour "
+"dessiner tous les cotés (chacun avec sa couleur)."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/koch/PentaKoch.html:1
@@ -10655,7 +10721,10 @@ msgid ""
 "Here comes yet another variation of the Koch curve. This time, we grow "
 "little pentagons (ie, polygons with five sides each). I'm sure you get it "
 "now."
-msgstr "Voici une autre variation de la courbe de Koch. Cette fois, ce sont de petits pentagones (càd des polygones à 5 cotés) qui doivent pousser sur les faces de la figure. Je suis sûr que vous commencez à prendre le truc."
+msgstr ""
+"Voici une autre variation de la courbe de Koch. Cette fois, ce sont de "
+"petits pentagones (càd des polygones à 5 cotés) qui doivent pousser sur les "
+"faces de la figure. Je suis sûr que vous commencez à prendre le truc."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/PentaKoch.html:6
@@ -10663,14 +10732,20 @@ msgid ""
 "Another difference with earlier is that the length is not divided by three "
 "at each step anymore, but multiplied by 0.4. The curve looks better this "
 "way :)"
-msgstr "Une autre différence avec les exercices précédents est que cette fois, vous ne devez pas diviser la taille du segment par 3 à chaque niveau de récursion, mais vous devez le multiplier par 0,4. La courbe est plus jolie ainsi :)"
+msgstr ""
+"Une autre différence avec les exercices précédents est que cette fois, vous "
+"ne devez pas diviser la taille du segment par 3 à chaque niveau de "
+"récursion, mais vous devez le multiplier par 0,4. La courbe est plus jolie "
+"ainsi :)"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/PentaKoch.html:9
 msgid ""
 "We draw only one side in this exercise so your code will be called only once "
 "this time."
-msgstr "Nous dessinons un seul coté dans cet exercice, donc votre code ne sera appellé qu'une seule fois."
+msgstr ""
+"Nous dessinons un seul coté dans cet exercice, donc votre code ne sera "
+"appellé qu'une seule fois."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/koch/HexaKoch.html:1
@@ -10683,7 +10758,11 @@ msgid ""
 "This time, we will draw the curve that is known as the (6, 0.14)-Koch curve. "
 "This means that you have to grow 6-sided polygons on the segments, and that "
 "the length should be multiplied by 0.14 at each recursion level."
-msgstr "Cette fois, nous allons dessiner une courbe surnommée la courbe de Koch-(6; 0,14). Cela signifie que nous allons faire pousser des hexagones (des polygones à 6 faces) sur les segments, et que les longueurs doivent être multipliées par 0,14 à chaque étage de la récursion."
+msgstr ""
+"Cette fois, nous allons dessiner une courbe surnommée la courbe de Koch-(6; "
+"0,14). Cela signifie que nous allons faire pousser des hexagones (des "
+"polygones à 6 faces) sur les segments, et que les longueurs doivent être "
+"multipliées par 0,14 à chaque étage de la récursion."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/HexaKoch.html:7
@@ -10693,7 +10772,12 @@ msgid ""
 "the (5, 0.4)-Koch curve. If you want, you can switch to the creative mode in "
 "the menu and explore freely other Koch curves. Just change the initial call "
 "to hexaKoch to what you want."
-msgstr "Pour info, la courbe de Koch originale est la (3; 1/3). Le carré de neige est la courbe (4; 1/3). Le pentagone de neige est la courbe (5; 0,4). Si vous le souhaitez, vous pouvez passer en mode créatif pour explorer d'autres courbes de Koch. Remplacez simplement l'appel à hexaKoch par ce que vous voulez."
+msgstr ""
+"Pour info, la courbe de Koch originale est la (3; 1/3). Le carré de neige "
+"est la courbe (4; 1/3). Le pentagone de neige est la courbe (5; 0,4). Si "
+"vous le souhaitez, vous pouvez passer en mode créatif pour explorer d'autres "
+"courbes de Koch. Remplacez simplement l'appel à hexaKoch par ce que vous "
+"voulez."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/HexaKoch.html:12
@@ -10701,7 +10785,10 @@ msgid ""
 "For further reference, please see <a href=\"http://ecademy.agnesscott.edu/"
 "~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/"
 "kcurve/kcurve.htm</a>."
-msgstr "Pour plus d'informations, référez vous à <a href=\"http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm</a>."
+msgstr ""
+"Pour plus d'informations, référez vous à <a href=\"http://ecademy.agnesscott."
+"edu/~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/"
+"ifs/kcurve/kcurve.htm</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/koch/Crab.html:1
@@ -10715,14 +10802,22 @@ msgid ""
 "it's built rather similarly.  This time, we grow square triangle on the side "
 "of the figure: the angle is 45 degrees, and the length is divided by [!java|"
 "scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!] at each step."
-msgstr "La courbe du crabe n'est pas exactement une courbe de Koch, mais cette fractale est construite de façon très similaire. Cette fois, nous ne remplaçons pas le tiers central de chaque segment, mais le segment entier. À la place, il faut faire pousser des triangles isocèles et rectangles. L'angle initial est de 45°, et la longueur est divisée par [!java|scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!] à chaque étape."
+msgstr ""
+"La courbe du crabe n'est pas exactement une courbe de Koch, mais cette "
+"fractale est construite de façon très similaire. Cette fois, nous ne "
+"remplaçons pas le tiers central de chaque segment, mais le segment entier. À "
+"la place, il faut faire pousser des triangles isocèles et rectangles. "
+"L'angle initial est de 45°, et la longueur est divisée par [!java|scala]Math."
+"sqrt(2)[/!][!python]math.sqrt(2)[/!] à chaque étape."
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/Crab.html:7
 msgid ""
 "Check the figures produced by the first steps of recursion to understand the "
 "pattern."
-msgstr "Vérifiez les figures produites par les premiers niveaux de récursivité pour comprendre le motif."
+msgstr ""
+"Vérifiez les figures produites par les premiers niveaux de récursivité pour "
+"comprendre le motif."
 
 #. type: Content of: <h3>
 #: src/lessons/recursion/koch/Crab.html:9
@@ -10737,7 +10832,12 @@ msgid ""
 "instructive, and the page provide a very good additions: <a href=\"http://"
 "www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c."
 "shtml</a>."
-msgstr "Cette courbe, également appelée la courbe C de Lévy, a été inventée en 1938 par le mathématicien Français Paul Lévy. Comme souvent, la page wikipédia sur le sujet est très instructive. La page suivante apporte également des compléments intéressants : <a href=\"http://www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
+msgstr ""
+"Cette courbe, également appelée la courbe C de Lévy, a été inventée en 1938 "
+"par le mathématicien Français Paul Lévy. Comme souvent, la page wikipédia "
+"sur le sujet est très instructive. La page suivante apporte également des "
+"compléments intéressants : <a href=\"http://www.mathcurve.com/fractals/c/c."
+"shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/tree/Tree.html:1
@@ -14742,7 +14842,7 @@ msgstr ""
 "en jouant."
 
 #. type: Content of: <p>
-#: src/lessons/turtleart/short_desc.html:4
+#: src/lessons/turtleart/short_desc.html:5
 msgid ""
 "You should know the basic syntax of the programming language you will "
 "choose, but no exhaustive programming practice is required to take this "

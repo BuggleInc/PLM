@@ -10,6 +10,7 @@
   * TurtleWorld: new builtins to hide()/show() the turtle.
   * LectureChooser: fix preferred size to the MainFrame one (fix #118)
   * AboutDialog: display the license and ChangeLog too
+  * sort.dutchflag: mention about the existing colors in the doc
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
