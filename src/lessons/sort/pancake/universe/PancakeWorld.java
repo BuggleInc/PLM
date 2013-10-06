@@ -35,7 +35,7 @@ public class PancakeWorld extends World {
 	// http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon(this,"../img/world_pancake.png");
+		return ResourcesCache.getIcon(this,"world_pancake.png");
 	}
 	PancakeFlipButtonPanel panel = null;
 	/** Returns the panel which let the user to interact dynamically with the world */
