@@ -24,6 +24,7 @@ import java.io.IOException;
 
 import plm.core.model.Game;
 import plm.core.ui.WorldView;
+import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
 public class DutchFlagWorldView extends WorldView  {
@@ -37,9 +38,8 @@ public class DutchFlagWorldView extends WorldView  {
 		
 		new DragSource().createDefaultDragGestureRecognizer(this, DnDConstants.ACTION_COPY_OR_MOVE, new DutchDragGestureListener());
         DropTarget dropTarget=new DropTarget(this,new DutchDropTargetListener());
-        dropTarget.setActive(true);
-        this.setDropTarget(dropTarget);
-
+        dropTarget.setActive(true); // We accept drops
+        this.setDropTarget(dropTarget); 
 	}
 	private static final Color dutchRed = new Color(174,28,40);
 	private static final Color dutchBlue = new Color(33,70,139);
@@ -140,8 +140,9 @@ public class DutchFlagWorldView extends WorldView  {
 			
 			// That's unheaven: we get the rankFrom directly from a global, not from the transferable...
 			//Integer rankFrom = (Integer) dtde.getTransferable().getTransferData(TransferableLine.dutchLineFlavor);
+			dtde.dropComplete(true);
 			if (rankFrom != rankTo) {
-				System.out.println(Game.i18n.tr("swap({0},{1})",rankFrom,rankTo));
+				EntityControlPanel.echo(Game.i18n.tr("swap({0},{1})",rankFrom,rankTo));
 				flag.swap(rankFrom, rankTo);
 			}
 			
