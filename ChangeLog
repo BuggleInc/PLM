@@ -13,6 +13,7 @@
   * sort.dutchflag: mention about the existing colors in the doc
   * PancakeWorld: avoid ../ in the icon path: doesn't work in jarfiles
   * sort.dutchflag: allow to play with the mouse through drag and drop
+  * recursion.hanoi: builtin getRadius(slot): radius of top-most disk
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7

@@ -148,6 +148,9 @@ public class HanoiWorld extends World {
 	public int getSlotSize(int slot) {
 		return slots[slot].size();
 	}
+	public int getRadius(int slot) {
+		return slots[slot].isEmpty()?99:slots[slot].lastElement();
+	}
 	@Override
 	public void setupBindings(ProgrammingLanguage lang, ScriptEngine e) throws ScriptException {
 		if (lang.equals(Game.PYTHON)) {
@@ -155,11 +158,15 @@ public class HanoiWorld extends World {
 					"  entity.move(src,dst)\n"+
 					"def getSlotSize(slot):\n"+
 					"  return entity.getSlotSize(slot)\n"+
+					"def getRadius(slot):\n"+
+					"  return entity.getRadius(slot)\n"+
 					/* BINDINGS TRANSLATION: French */
 					"def deplace(src,dst):\n"+
 					"  entity.move(src,dst)\n"+
 					"def getTaillePiquet(slot):\n"+
-					"  return entity.getSlotSize(slot)\n");
+					"  return entity.getSlotSize(slot)\n"+
+			        "def getRayon(piquet):\n"+
+			        "  return entity.getRadius(piquet)\n");
 		} else {
 			throw new RuntimeException("No binding of HanoiWorld for "+lang);
 		}
