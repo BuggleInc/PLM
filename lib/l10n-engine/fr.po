@@ -1172,7 +1172,7 @@ msgstr "Fonction relatives à la gestion de fichiers"
 
 #: src/plm/core/ui/MainFrame.java:162 src/plm/core/ui/MainFrame.java:676
 msgid "Load lesson"
-msgstr "Charger Leçon"
+msgstr "Charger une leçon"
 
 #: src/plm/core/ui/MainFrame.java:184 src/plm/core/ui/MainFrame.java:677
 msgid "Switch lesson"
