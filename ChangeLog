@@ -14,6 +14,7 @@
   * sort.dutchflag: mention about the existing colors in the doc
   * sort.dutchflag: allow to play with the mouse through drag and drop
   * recursion.hanoi: builtin getRadius(slot): radius of top-most disk
+  * recursion.hanoi: allow to play with the mouse through drag and drop
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
