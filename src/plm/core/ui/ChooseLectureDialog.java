@@ -67,10 +67,12 @@ public class ChooseLectureDialog implements TreeSelectionListener {
 		tree.setSelectionPath(path);
 		
 		JScrollPane jsp = new JScrollPane(tree);
+		jsp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		jsp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
 		JPanel p = new JPanel();
 		p.add(jsp);
-		p.setPreferredSize(new Dimension(200,MainFrame.getInstance().getHeight()-120));
+		p.setMaximumSize(new Dimension(250,MainFrame.getInstance().getHeight()-120));
 		int result = JOptionPane.showConfirmDialog(MainFrame.getInstance(), p, Game.i18n.tr("Choose your next exercise"),
 				JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if (result == JOptionPane.OK_OPTION) {
