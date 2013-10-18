@@ -15,6 +15,7 @@
   * sort.dutchflag: allow to play with the mouse through drag and drop
   * recursion.hanoi: builtin getRadius(slot): radius of top-most disk
   * recursion.hanoi: allow to play with the mouse through drag and drop
+  * MainFrame: Implement a "Save a picture" feature, useful in turtleart
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
