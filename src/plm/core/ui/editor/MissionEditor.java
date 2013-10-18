@@ -324,7 +324,7 @@ public class MissionEditor extends JFrame {
 						int choice = JOptionPane.showConfirmDialog(MissionEditor.this, 
 								Game.i18n.tr("You chose a translated mission text for edition ({0}).\n"
 										+ "This is wrong. The translations should be handled with po4a in PLM.\n"
-										+ "Please refer to https://github.com/oster/JLM/wiki/Working-with-the-translations for more information.\n\n"
+										+ "Please refer to https://github.com/oster/PLM/wiki/Working-with-the-translations for more information.\n\n"
 										+ "Proceed anyway?",path), 
 										Game.i18n.tr("This is a translated mission text"),
 										JOptionPane.YES_NO_OPTION,

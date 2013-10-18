@@ -70,7 +70,7 @@ public class FeedbackDialog extends JDialog {
 				"automatically be added to your feedback. None of these automatic information <br/>" +
 				"are personal and you still have to identify yourself if you want to.</p>" +
 
-				"<p>Alternatively, you can use the <a href='http://github.com/oster/JLM/issues'>github interface</a> for feedback.</p></html>"));
+				"<p>Alternatively, you can use the <a href='http://github.com/oster/PLM/issues'>github interface</a> for feedback.</p></html>"));
 		explain.setBackground(new Color(235,235,235));
 		explain.setOpaque(true);
 		explain.setEditable(false);
