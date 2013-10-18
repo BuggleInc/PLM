@@ -8,7 +8,7 @@ pour le monde par défaut). Il y a quelques contraintes supplémentaires: il
 est interdit de déplacer plus d'un disque à la fois, ainsi que de placer un
 disque plus grand sur un disque plus petit.</p>
 
-<p>Seules trois fonctions sont fournies&nbsp;:</p>
+<p>Only 4 functions are provided:</p>
 
 <pre>[!java]void [/!]deplace([!java]int [/!]src, [!java]int [/!]dst)</pre>
 
@@ -21,6 +21,9 @@ IllegalArgumentException est levée.
 Retourne le nombre de disques placés sur un piquet donné. Cette fonction est
 surtout utile pour initialiser la récursion et déterminer le nombre d'appels
 récursifs à réaliser.
+
+<pre>[!java]int [/!]getRadius([!java]int [/!]slot)[!scala]:Int[/!]</pre>
+Returns the radius of the top-most disk of the specified slot.
 
 <pre>[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]</pre>
 Renvoi si le monde actuel est sélectionné dans l'interface graphique.

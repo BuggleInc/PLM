@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2013-10-03 20:42+0300\n"
+"POT-Creation-Date: 2013-10-18 20:50+0300\n"
 "PO-Revision-Date: 2013-10-03 20:48+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
@@ -450,7 +450,7 @@ msgstr "[!java]boolean [/!]estSelectionne() [!scala]:Boolean[/!]"
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/sort/SortingWorld.html:30
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 msgid ""
 "Returns whether the current world is selected in the graphical interface."
 msgstr "Renvoi si le monde actuel est sélectionné dans l'interface graphique."
@@ -779,7 +779,7 @@ msgstr "Autres fonctions"
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:74
 #: src/plm/universe/bugglequest/BuggleWorld.html:35
-#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr "[!java]boolean [/!]estChoisie()[!scala]:Boolean[/!]"
@@ -8941,7 +8941,9 @@ msgstr "Valeurs fournies"
 msgid ""
 "The colors are represented through the following constants: BLUE, WHITE and "
 "RED.  You can use them directly in your code."
-msgstr "Les couleurs sont représentées par les constantes suivantes : BLEU, BLANC et ROUGE. Vous pouvez les utiliser directement dans votre code."
+msgstr ""
+"Les couleurs sont représentées par les constantes suivantes : BLEU, BLANC et "
+"ROUGE. Vous pouvez les utiliser directement dans votre code."
 
 #. type: Content of: <h2>
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:8
@@ -11451,7 +11453,9 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:11
-msgid "Only 3 functions are provided:"
+#, fuzzy
+#| msgid "Only 3 functions are provided:"
+msgid "Only 4 functions are provided:"
 msgstr "Seules trois fonctions sont fournies&nbsp;:"
 
 #. type: Content of: <pre>
@@ -11488,6 +11492,18 @@ msgstr ""
 "Retourne le nombre de disques placés sur un piquet donné. Cette fonction est "
 "surtout utile pour initialiser la récursion et déterminer le nombre d'appels "
 "récursifs à réaliser."
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#, fuzzy, no-wrap
+#| msgid "[!java]int [/!]getSlotSize([!java]int [/!]slot)[!scala]:Int[/!]"
+msgid "[!java]int [/!]getRadius([!java]int [/!]slot)[!scala]:Int[/!]"
+msgstr "[!java]int [/!]getTaillePiquet([!java]int [/!]slot)[!scala]:Int[/!]"
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
+msgid "Returns the radius of the top-most disk of the specified slot."
+msgstr ""
 
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:1 src/lessons/maze/short_desc.html:1

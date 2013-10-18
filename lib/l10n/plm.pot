@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-10-03 20:42+0300\n"
+"POT-Creation-Date: 2013-10-18 20:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -359,7 +359,7 @@ msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/sort/SortingWorld.html:30 src/lessons/sort/pancake/universe/PancakeWorld.html:21 src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
+#: src/plm/universe/sort/SortingWorld.html:30 src/lessons/sort/pancake/universe/PancakeWorld.html:21 src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 msgid "Returns whether the current world is selected in the graphical interface."
 msgstr ""
 
@@ -647,7 +647,7 @@ msgid "Other functions"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#: src/plm/universe/turtles/TurtleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
@@ -8390,7 +8390,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:11
-msgid "Only 3 functions are provided:"
+msgid "Only 4 functions are provided:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -8419,6 +8419,17 @@ msgid ""
 "Returns the amount of disks placed on the specified slot. This is mainly "
 "used to initialize the recursion and set the amount of recursive call to "
 "execute."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#, no-wrap
+msgid "[!java]int [/!]getRadius([!java]int [/!]slot)[!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
+msgid "Returns the radius of the top-most disk of the specified slot."
 msgstr ""
 
 #. type: Content of: <h3>
