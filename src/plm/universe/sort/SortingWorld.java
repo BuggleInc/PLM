@@ -292,19 +292,19 @@ public class SortingWorld extends World {
 					"  return entity.isSmallerThan(i,j)\n"+
 					/* BINDINGS TRANSLATION: French */
 					"def getNombreValeurs():\n" +
-					"  return entity.getValueCount()\n" +
+					"  return getValueCount()\n" +
 					"def echange(i,j):\n" +
-					"  entity.swap(i,j)\n" +
+					"  swap(i,j)\n" +
 					"def copie(i,j):\n" +
-					"  entity.copy(i,j)\n" +
+					"  copy(i,j)\n" +
 					"def getValeur(i):\n" +
-					"  return entity.getValue(i)\n" +
+					"  return getValue(i)\n" +
 					"def setValeur(i,j):\n" +
-					"  entity.setValue(i,j)\n" +
+					"  setValue(i,j)\n" +
 					"def plusPetit(i,j):\n"+
-					"  return entity.isSmaller(i,j)\n"+
+					"  return isSmaller(i,j)\n"+
 					"def plusPetitQue(i,j):\n"+
-					"  return entity.isSmallerThan(i,j)\n"
+					"  return isSmallerThan(i,j)\n"
 
 			);
 		} else {

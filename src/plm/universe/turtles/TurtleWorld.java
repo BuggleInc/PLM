@@ -204,33 +204,33 @@ public class TurtleWorld extends World {
 					"  return entity.isVisible()\n"+
 					/* BINDINGS TRANSLATION: French */
 					"def recule(i):\n"+
-					"  entity.backward(i)\n"+
+					"  backward(i)\n"+
 					"def avance(i):\n"+
-					"  entity.forward(i)\n"+
+					"  forward(i)\n"+
 					"def leveCrayon():\n"+
-					"  entity.penUp()\n"+
+					"  penUp()\n"+
 					"def baisseCrayon():\n"+
-					"  entity.penDown()\n"+
+					"  penDown()\n"+
 					"def estCrayonBaisse():\n"+
-					"  return entity.isPenDown()\n"+
+					"  return isPenDown()\n"+
 					"def gauche(i):\n"+
-					"  entity.left(i)\n"+
+					"  left(i)\n"+
 					"def droite(i):\n"+
-					"  entity.right(i)\n"+
+					"  right(i)\n"+
 					"def setCouleur(c):\n"+
-					"  entity.setColor(c)\n" +
+					"  setColor(c)\n" +
 					"def allerVers(x,y):\n" +
-					"  entity.moveTo(x,y)\n"+
+					"  moveTo(x,y)\n"+
 					"def cercle(radius):\n"+
-					"  entity.circle(radius)\n"+
+					"  circle(radius)\n"+
 					"def efface():\n"+
-					"  entity.clear()\n"+
+					"  clear()\n"+
 					"def cache():\n"+
-					"  entity.hide()\n"+
+					"  hide()\n"+
 					"def montre():\n"+
-					"  entity.show()\n"+
+					"  show()\n"+
 					"def estVisible():\n"+
-					"  return entity.isVisible()\n"
+					"  return isVisible()\n"
 					);
 		} else {
 			throw new RuntimeException("No binding of TurtleWorld for "+lang);
