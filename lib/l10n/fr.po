@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2013-10-18 20:50+0300\n"
-"PO-Revision-Date: 2013-10-03 20:48+0200\n"
+"PO-Revision-Date: 2013-10-18 21:16+0200\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -11453,10 +11453,8 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:11
-#, fuzzy
-#| msgid "Only 3 functions are provided:"
 msgid "Only 4 functions are provided:"
-msgstr "Seules trois fonctions sont fournies&nbsp;:"
+msgstr "Seules quatre fonctions sont fournies&nbsp;:"
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:13
@@ -11495,15 +11493,14 @@ msgstr ""
 
 #. type: Content of: <pre>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
-#, fuzzy, no-wrap
-#| msgid "[!java]int [/!]getSlotSize([!java]int [/!]slot)[!scala]:Int[/!]"
+#, no-wrap
 msgid "[!java]int [/!]getRadius([!java]int [/!]slot)[!scala]:Int[/!]"
-msgstr "[!java]int [/!]getTaillePiquet([!java]int [/!]slot)[!scala]:Int[/!]"
+msgstr "[!java]int [/!]getRayon([!java]int [/!]slot)[!scala]:Int[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
 msgid "Returns the radius of the top-most disk of the specified slot."
-msgstr ""
+msgstr "Retourne le rayon du disque placé en haut du piquet spécifié."
 
 #. type: Content of: <h3>
 #: src/lessons/maze/Main.html:1 src/lessons/maze/short_desc.html:1
