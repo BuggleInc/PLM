@@ -16,6 +16,8 @@
   * recursion.hanoi: builtin getRadius(slot): radius of top-most disk
   * recursion.hanoi: allow to play with the mouse through drag and drop
   * MainFrame: Implement a "Save a picture" feature, useful in turtleart
+  * welcome.MethodsArgs.py: compare directions without relying on
+    their name to avoid l10n issues (fix #120)
   * As usual, fix some typos in the French translation
 
 20130930: Release 2.2.7
