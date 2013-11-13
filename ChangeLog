@@ -1,4 +1,4 @@
-20131015: Release 2.3beta
+20131113: Release 2.3
 
   * LectureChooser: fix preferred size to the MainFrame one (fix #118)
   * AboutDialog: display the license and ChangeLog too
