@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-18 20:50+0200\n"
-"PO-Revision-Date: 2013-09-24 01:35+0200\n"
+"POT-Creation-Date: 2013-11-13 15:44+0100\n"
+"PO-Revision-Date: 2013-11-13 15:51+0100\n"
 "Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
 "<fstengel@mac.com>\n"
 "Language-Team: not really\n"
@@ -183,11 +183,11 @@ msgstr "Accéder à la vue d'état"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagEntity.java:25
 msgid "Flag sorter"
-msgstr ""
+msgstr "Trieur de drapeau"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:102
 msgid "This world is not a dutch flag"
-msgstr ""
+msgstr "Ce monde n'est pas un drapeau Holandais"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:120
@@ -197,33 +197,28 @@ msgstr "Les deux mondes ne sont pas de la même taille"
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:111
 #, java-format
 msgid " Ray #{0} differs: color {1} is not color {2}\n"
-msgstr ""
+msgstr " La ligne #{0} est différente : la couleur {1} n''est pas la couleur {2}\n"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:177
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:180
-#, fuzzy, java-format
+#, java-format
 msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
-msgstr ""
-"Impossible d''obtenir la taille de la crêpe numéro {0} car ce n''est pas "
-"entre 0 et {1}"
+msgstr "Impossible d''échanger les lignes {0} et {1} car {2} n''est pas entre 0 et {3}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:197
-#, fuzzy, java-format
+#, java-format
 msgid "Cannot get the color of line #{0} because it''s not between 0 and {1}"
-msgstr ""
-"Impossible d''obtenir la taille de la crêpe numéro {0} car ce n''est pas "
-"entre 0 et {1}"
+msgstr "Impossible d''obtenir la couleur de la ligne numéro {0} car ce n''est pas entre 0 et {1}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:232
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "It''s still not sorted!! PLEASE REPORT THIS BUG, along with the following "
 "information:\n"
 "Initial situation: {0}"
 msgstr ""
-"Ce n''est toujours pas trié !! MERCI DE RAPPORTER CE PROBLÈME, avec les "
-"informations suivantes:\n"
-"Exercice: {0}; Nombre de bases:: {1}; Situation initiale: {2}"
+"Ce n''est toujours pas trié !! MERCI DE RAPPORTER CE PROBLÈME, avec les informations suivantes:\n"
+"Situation initiale: {0}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:145
 #: src/plm/universe/sort/SortingButtonPanel.java:70
@@ -237,14 +232,13 @@ msgid "flip({0})"
 msgstr "retourne({0})"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:116
-#, fuzzy
 msgid "This is not a world of pancakes"
-msgstr "Ce n'est pas un monde de crêpes :-("
+msgstr "Ce n'est pas un monde de crêpes"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:125
-#, fuzzy, java-format
+#, java-format
 msgid " Pancake #{0} differs: {1} vs. {2}\n"
-msgstr "Le joueur à la base {0}, position {1} diffère : {2} vs {3}\n"
+msgstr " La crèpe numéro {0} diffère : {1} vs {2}\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:203
 #, java-format
@@ -895,13 +889,12 @@ msgid ""
 msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:74
-#, fuzzy
 msgid "About"
-msgstr "À propos de PLM"
+msgstr "À propos"
 
 #: src/plm/core/ui/AboutPLMDialog.java:97
 msgid "Changes"
-msgstr ""
+msgstr "Changements"
 
 #: src/plm/core/ui/AboutPLMDialog.java:103
 msgid ""
@@ -925,7 +918,7 @@ msgstr ""
 
 #: src/plm/core/ui/AboutPLMDialog.java:129
 msgid "Copying"
-msgstr ""
+msgstr "Licence"
 
 #: src/plm/core/ui/AboutPLMDialog.java:135
 #: src/plm/core/ui/ExerciseFailedDialog.java:38
@@ -939,9 +932,8 @@ msgid "About world - {0}"
 msgstr "À propos du monde - {0}"
 
 #: src/plm/core/ui/ChooseLectureDialog.java:76
-#, fuzzy
 msgid "Choose your next exercise"
-msgstr "Sélectionner un cours"
+msgstr "Sélectionner votre prochain exercice"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:40
 msgid "Choose your lesson"
@@ -1181,27 +1173,26 @@ msgstr "Fonction relatives à la gestion de fichiers"
 
 #: src/plm/core/ui/MainFrame.java:166 src/plm/core/ui/MainFrame.java:723
 msgid "Save a picture"
-msgstr ""
+msgstr "Prendre une photo"
 
 #: src/plm/core/ui/MainFrame.java:172
-#, fuzzy
 msgid "PNG Image Files"
-msgstr "Fichiers de cartes pour la PLM"
+msgstr "Fichiers d'images PNG"
 
 #: src/plm/core/ui/MainFrame.java:180
 #, java-format
 msgid "Do you want to overwrite {0}?"
-msgstr ""
+msgstr "Voulez-vous écraser {0} ?"
 
 #: src/plm/core/ui/MainFrame.java:181
 #, java-format
 msgid "{0} exists"
-msgstr ""
+msgstr "{0} existe"
 
 #: src/plm/core/ui/MainFrame.java:200
 #, java-format
 msgid "Image saved into {0}."
-msgstr ""
+msgstr "L''image a été sauvegardée dans {0}."
 
 #: src/plm/core/ui/MainFrame.java:209 src/plm/core/ui/MainFrame.java:724
 msgid "Load lesson"
@@ -1368,11 +1359,11 @@ msgstr "Chargement de "
 
 #: src/plm/core/ui/TipsDialog.java:20
 msgid "Tips"
-msgstr ""
+msgstr "Astuces"
 
 #: src/plm/core/ui/TipsDialog.java:21
 msgid "(no tips to display)"
-msgstr ""
+msgstr "(aucune astuce disponible pour l'instant)"
 
 #: src/plm/core/ui/action/ExportCloudSession.java:78
 #: src/plm/core/ui/action/ImportCloudSession.java:53
@@ -1548,7 +1539,7 @@ msgid "HTML files"
 msgstr "Fichiers HTML"
 
 #: src/plm/core/ui/editor/MissionEditor.java:325
-#, fuzzy, java-format
+#, java-format
 msgid ""
 "You chose a translated mission text for edition ({0}).\n"
 "This is wrong. The translations should be handled with po4a in PLM.\n"
@@ -1910,17 +1901,17 @@ msgstr ""
 "Erreur de syntaxe. J''attendais la description d''une cellule ou d''un "
 "buggle mais j''ai eu : {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:551
+#: src/plm/universe/bugglequest/BuggleWorld.java:552
 #, java-format
 msgid "  The world''s name is {0}"
 msgstr "  Le nom du monde est {0}"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:555
+#: src/plm/universe/bugglequest/BuggleWorld.java:556
 #, java-format
 msgid "  In ({0},{1})"
 msgstr "  En ({0},{1})"
 
-#: src/plm/universe/bugglequest/BuggleWorld.java:558
+#: src/plm/universe/bugglequest/BuggleWorld.java:559
 #, java-format
 msgid "  Something is wrong about buggle ''{0}'':\n"
 msgstr "  Il y a quelque chose qui cloche avec la buggle «{0}»:\n"
@@ -2144,7 +2135,7 @@ msgid "That's not a line."
 msgstr "Ce n'est pas une ligne."
 
 #: src/plm/universe/turtles/TurtleWorld.java:249
-#, fuzzy, java-format
+#, java-format
 msgid "  There is {0} shapes, but {1} shapes were expected\n"
 msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 
@@ -2152,6 +2143,3 @@ msgstr "  Il n''y a que {0} formes là où {1} formes étaient attendues\n"
 #, java-format
 msgid "  {0} (got {1} instead of {2})\n"
 msgstr "  {0} (trouvé {1} au lieu de {2})\n"
-
-#~ msgid "About PLM dialogTitle"
-#~ msgstr "À propos de PLM"
