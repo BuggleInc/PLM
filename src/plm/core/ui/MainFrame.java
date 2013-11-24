@@ -700,7 +700,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("touche F1 press��e" );
+				System.out.println("Key F1 pressed" );
 			}
 		}
 				);
