@@ -143,7 +143,7 @@ public class ImportCloudSession extends AbstractGameAction {
 			tmpFile = FileUtils.createTemporaryFilename();
 
 			downloadSessionPackage(fileID, tmpFile);
-			if (! tmpFile.exists()) {
+			if (tmpDir.exists()) {
 				unzipSessionPackage(tmpFile, tmpDir);
 
 				ZipSessionKit kit = new ZipSessionKit(this.game);
