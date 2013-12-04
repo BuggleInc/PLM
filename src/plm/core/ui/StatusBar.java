@@ -1,5 +1,6 @@
 package plm.core.ui;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -44,6 +45,8 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
+	private Color defaultColor, highlightColor = new Color(255,120,120);
+	
 	public StatusBar(Game game) {
 		super();
 		this.game = game;
@@ -52,6 +55,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		game.addProgLangListener(this);
 		game.addGameListener(this);
 		initComponents();
+		defaultColor = getBackground();
 	}
 	
 	public void initComponents() {
@@ -112,10 +116,12 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		case SAVING:
 			statusMessageLabel.setText(i18n.tr("Saving"));
 			busyIconTimer.start();
+			setBackground(highlightColor);
 			break;
 		case COMPILATION_STARTED:
 			statusMessageLabel.setText(i18n.tr("Compiling"));
 			busyIconTimer.start();
+			setBackground(highlightColor);
 			break;
 		case LOADING_DONE:
 		case SAVING_DONE:
@@ -125,23 +131,28 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			game.statusRootSet("");
 			game.statusArgEmpty();
 			busyIconTimer.stop();
+			setBackground(defaultColor);
 			statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
 			break;
 		case EXECUTION_STARTED:
 			game.statusRootSet(i18n.tr("Running "));
 			busyIconTimer.start();
+			setBackground(highlightColor);
 			break;
 		case DEMO_STARTED:
 			game.statusRootSet(i18n.tr("Playing demo "));
 			busyIconTimer.start();
+			setBackground(highlightColor);
 			break;		
 		case LOADING:
 			game.statusRootSet(i18n.tr("Loading "));
 			busyIconTimer.start();
+			setBackground(highlightColor);
 			break;
 		default:
 			statusMessageLabel.setText("");
 			statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
+			setBackground(defaultColor);
 		}
 	}
 

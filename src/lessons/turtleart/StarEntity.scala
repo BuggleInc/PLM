@@ -7,6 +7,8 @@ class ScalaStarEntity extends Turtle {
 	/* BEGIN TEMPLATE */
 	override def run() {
 		/* BEGIN SOLUTION */
+		addSizeHint(165, 200, 165, 150)
+
 		for (i <- 1 to BRANCH_COUNT) 
 			branch(50);
 		

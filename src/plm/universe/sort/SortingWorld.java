@@ -36,7 +36,10 @@ public class SortingWorld extends World {
 	}
 	public SortingWorld(String name, int nbValues, boolean someoneHomeOk) {
 		super(name);
-		setDelay(50);
+		if (nbValues>100)
+			setDelay(1);
+		else
+			setDelay(50);
 		this.values = new int[nbValues];
 		for (int i=0 ; i< this.values.length ; i++) 
 			this.values[i] = i;
@@ -82,6 +85,9 @@ public class SortingWorld extends World {
 			return false;
 		
 		/* Do not compare the operation order as it's not part of the problem specification
+		 * 
+		 * If you want to add this again, please make sure that swap(i,j) is equal to swap(j,i)
+		 
 		if (operations.size() != other.operations.size())
 			return false;
 		for (int i = 0 ; i < this.operations.size() ; i++) 
@@ -286,19 +292,19 @@ public class SortingWorld extends World {
 					"  return entity.isSmallerThan(i,j)\n"+
 					/* BINDINGS TRANSLATION: French */
 					"def getNombreValeurs():\n" +
-					"  return entity.getValueCount()\n" +
+					"  return getValueCount()\n" +
 					"def echange(i,j):\n" +
-					"  entity.swap(i,j)\n" +
+					"  swap(i,j)\n" +
 					"def copie(i,j):\n" +
-					"  entity.copy(i,j)\n" +
+					"  copy(i,j)\n" +
 					"def getValeur(i):\n" +
-					"  return entity.getValue(i)\n" +
+					"  return getValue(i)\n" +
 					"def setValeur(i,j):\n" +
-					"  entity.setValue(i,j)\n" +
+					"  setValue(i,j)\n" +
 					"def plusPetit(i,j):\n"+
-					"  return entity.isSmaller(i,j)\n"+
+					"  return isSmaller(i,j)\n"+
 					"def plusPetitQue(i,j):\n"+
-					"  return entity.isSmallerThan(i,j)\n"
+					"  return isSmallerThan(i,j)\n"
 
 			);
 		} else {
@@ -342,10 +348,10 @@ public class SortingWorld extends World {
 	 * @param j the index of the second cell concerned
 	 */
 	public void swap(int i, int j) {
-		if (i<0) throw new RuntimeException("Out of bounds in swap("+i+","+j+"): "+i+"<0");
-		if (j<0) throw new RuntimeException("Out of bounds in swap("+i+","+j+"): "+j+"<0");
-		if (i>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+i+">= value count");
-		if (j>=getValueCount()) throw new RuntimeException("Out of bounds in swap("+i+","+j+"), "+j+">= value count");
+		if (i<0) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,i));
+		if (j<0) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}<0",i,j,j));
+		if (i>=getValueCount()) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,i));
+		if (j>=getValueCount()) throw new RuntimeException(Game.i18n.tr("Out of bounds in swap({0},{1}): {2}>value count",i,j,j));
 
 		this.operations.add(new Swap(i, j));
 

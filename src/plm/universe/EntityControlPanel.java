@@ -22,7 +22,7 @@ public abstract class EntityControlPanel extends JPanel implements HumanLangChan
 	}
 	
 	/** Do a textual output corresponding to the fact that a button was pressed. This is a direct help */
-	protected void echo(String name) {
+	public static void echo(String name) {
 		System.out.println(name+(Game.getProgrammingLanguage()==Game.JAVA?";":""));
 	}
 }

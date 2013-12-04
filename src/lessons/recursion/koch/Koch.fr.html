@@ -4,18 +4,28 @@ Nous allons maintenant dessiner des flocons de neige en utilisant la
 fractale de Koch.  Une fractale est un dessin géométrique dont le motif se
 reproduit à n'importe quelle échelle.
 
-<p>La forme générale est un triangle dont chaque coté est donné par une série
-d'appels récursifs.  La forme générale est obtenue en enchainant trois cotés
-de la façon suivante.
-<pre>[!java]void [/!]snowFlake ([!java]int [/!]niveaux[!scala]:Int[/!], [!java]double [/!]longueur[!scala]:Double[/!])[!python]:[/!][!java|scala] {[/!]
-   snowSide(niveaux, longueur);
-   right(120);
-   snowSide(niveaux, longueur);
-   right(120);
-   snowSide(niveaux, longueur);
-   right(120);
-[!java|scala]}[/!]</pre>
+<p>La forme générale est une sorte de triangle, dont chaque coté est généré par
+des appels récursifs.
+Vous ne devez dessiner qu'un coté de ce triangle dans la fonction
+<code>snowSide</code>.
+Pour simplifier les choses, chaque coté a une couleur
+particulière. Contentez vous de dessiner les choses en rouge (sans changer
+votre couleur), et les autres couleurs seront dessinées automatiquement. </p>
 
-<p>Observez le dessin dans chaque monde objectif pour comprendre la logique de
-ce motif afin de la reproduire.  Vous devez écrire la fonction snowSide, qui
-est récursive.
+<p>Observez l'objectif de chaque monde pour comprendre la logique du motif à
+dessiner, puis reproduisez-le.
+Au niveau 0, la courbe de Koch est une simple ligne droite.
+Au niveau 1, elle est divisée en trois tiers, et la partie du milieu est
+remplacée par deux cotés d'un triangle équilatéral de même longueur que le
+segment supprimé.
+Au niveau 2, le processus est répété avec le tiers central de chaque segment
+remplacé par un petit triangle équilatéral.</p>
+
+<p><div class="tip" id="tip-1" alt="TL;DR. Vous pouvez me dessiner tout ça ?">
+<p>Voici le résultat des premiers niveaux de recusion.</p>
+<img src="KochHint.png" />
+</div></p>
+
+<p>Vous devez écrire la fonction snowSide, qui est récursive. Mais <b>n'appelez
+pas snowFlake depuis snowSide</b>, car sinon le résultat sera vraiment
+étrange et inattendu.</p>

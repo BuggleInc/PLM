@@ -4,17 +4,39 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
+import plm.core.model.Game;
+
 
 public class Line implements Shape {
 	public double x1, y1,  x2, y2;
 	public Color color;
 	
 	public Line(double x1, double y1, double x2, double y2, Color color) {
-		this.x1 = x1;
-		this.y1 = y1;
-		this.x2 = x2;
-		this.y2 = y2;
 		this.color = color;
+		/* make sure that the first point of each segment is before the second point in comparison order */ 
+		if (doubleEqual(x1, x2)) { // Don't check if x1<x2 before checking their approximate equality
+			if (y1 < y2) { // already in right order
+				this.x1 = x1;
+				this.y1 = y1;
+				this.x2 = x2;
+				this.y2 = y2;				
+			} else { // invert both sides
+				this.x1 = x2;
+				this.y1 = y2;
+				this.x2 = x1;
+				this.y2 = y1;
+			}
+		} else if (x1<x2) {
+			this.x1 = x1;
+			this.y1 = y1;
+			this.x2 = x2;
+			this.y2 = y2;				
+		} else {
+			this.x1 = x2;
+			this.y1 = y2;
+			this.x2 = x1;
+			this.y2 = y1;			
+		}
 	}
 	
 	public void draw(Graphics2D g){
@@ -26,7 +48,7 @@ public class Line implements Shape {
 		return new Line(x1,y1,x2,y2,color);
 	}
 	private boolean doubleEqual(double a, double b) {
-		return (Math.abs(a-b)<0.000001);
+		return (Math.abs(a-b)<0.001);
 	}
 	
 	@Override
@@ -43,27 +65,29 @@ public class Line implements Shape {
 			return false;
 		if (!doubleEqual(y2,other.y2))
 			return false;
-				
-		return true;
+		
+		return color.equals(other.color);
 	}
 	public String diffTo(Shape o) {
 		if (o instanceof Line) {
 			Line other = (Line) o;
 			if (!doubleEqual(x1,other.x1))
-				return "x1 differs";
+				return Game.i18n.tr("x1 differs.");
 			if (!doubleEqual(x2,other.x2))
-				return "x2 differs";
+				return Game.i18n.tr("x2 differs.");
 			if (!doubleEqual(y1,other.y1))
-				return "y1 differs";
+				return Game.i18n.tr("y1 differs.");
 			if (!doubleEqual(y2,other.y2))
-				return "y2 differs";
-			return "I dont see the difference";
+				return Game.i18n.tr("y2 differs.");
+			if (!color.equals(other.color))
+				return Game.i18n.tr("The color differs.");
+			return Game.i18n.tr("I dont see the difference (please report this bug).");
 		} else 
-			return "That's not a line";
+			return Game.i18n.tr("That's not a line.");
 	}
 	
 	@Override
 	public String toString(){
-		return "Line ("+x1+","+y1+";"+x2+","+y2+";"+color+")";
+		return String.format("Line (x%.3f y%.3f / x%.3f y%.3f / %s)", x1,y1,x2,y2,plm.core.utils.ColorMapper.color2name(color));
 	}
 }

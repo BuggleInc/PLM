@@ -45,6 +45,7 @@ public class Main extends Lesson {
 		addExercise(new TurtleGraphicalExercise(this,"DiskFour",     300,300, 150,150));
 		addExercise(new TurtleGraphicalExercise(this,"DiskTwo",      300,300, 150,150));
 		addExercise(new TurtleGraphicalExercise(this,"Star",         300,300, 150,200));
+		addExercise(new TurtleGraphicalExercise(this,"Flower",       300,300, 90, 175));
 		
 		setCurrentExercise(currentExercise); // recompute the missions
 	}
@@ -80,6 +81,7 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 	@Override
 	public void loadHTMLMission() {
 		StringBuffer res = new StringBuffer();
+		int exoCount = 0;
 		for (Lecture l : getLesson().exercises()) {
 			int iconSize=100;
 			Exercise exo = (Exercise) l;
@@ -129,6 +131,9 @@ class TurtleGraphicalExercise extends ExerciseTemplated{
 			res.append("<img src=\"");
 			res.append(path);
 			res.append("\"></a> ");
+			exoCount++;
+			if (exoCount % 5 == 0)
+				res.append("<br> ");
 		}
 		setMission(res.toString());
 	}

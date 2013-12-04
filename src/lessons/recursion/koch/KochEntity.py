@@ -17,8 +17,10 @@ def snowSide(levels, length):
 def snowFlake (levels, length):
 	snowSide(levels, length)
 	right(120)
+	setColor(Color.blue)
 	snowSide(levels, length)
 	right(120)
+	setColor(Color.orange)
 	snowSide(levels, length)
 	right(120)
 # END TEMPLATE

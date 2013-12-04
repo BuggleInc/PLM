@@ -108,7 +108,8 @@ public class LessonRunner extends Thread {
 					if (exo.lastResult.passedTests > 1) {
 
 						selectedValue = (Lecture) JOptionPane.showInputDialog(null, 
-								i18n.tr("Congratulations, you passed this exercise.\n({0} tests passed)\nWhich exercise will you do now?"), 
+								i18n.tr("Congratulations, you passed this exercise.\n({0} tests passed)\nWhich exercise will you do now?",
+										exo.lastResult.passedTests), 
 								i18n.tr("Exercice passed \\o/"),
 								JOptionPane.PLAIN_MESSAGE, ResourcesCache.getIcon("img/trophy.png"),
 								nextExercises.toArray(), nextExercises.get(0));

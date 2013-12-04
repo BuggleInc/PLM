@@ -147,9 +147,9 @@ public class SortingWorldView extends WorldView {
 		// Draw the values at the very left of the figure (in any case)
 		for (int valueIdx = 0; valueIdx < we.getValueCount(); valueIdx++) { 
 			y1 = (int) (valueIdx * stepY + stepY/2);
-			tone = getValueColor(we.getInitValues()[valueIdx],we.getValueCount());
+			tone =  getValueColor(we.getInitValues()[valueIdx],we.getValueCount());
 			g2.setColor(new Color(tone, tone, 128));
-			g2.drawString(val2str(we.getValues()[valueIdx],we.getValueCount()), 0, y1);
+			g2.drawString(val2str(we.getInitValues()[valueIdx],we.getValueCount()), 0, y1);
 		}
 		
 		int[] valuesAfter = new int[we.getInitValues().length];

@@ -15,21 +15,8 @@ class ScalaSpiralUseEntity extends Turtle {
 	}
 
 	/* BEGIN TEMPLATE */
-	def doit(page:Int) {
-		/* BEGIN SOLUTION */
-		page match {
-		case 0 =>	spiral(100,90+1,1,2);
-		case 1 =>	spiral(100,120+1,1,2);
-		case 2 => spiral(5,360/5,100,0); 
-		case 3 => spiral(5,2*360/5,150,0);
-		case 4 => spiral(360,1,1,0);   	
-		case _ => 
-		}
-		/* END SOLUTION */
+	override def run() {
+		spiral(100,91,1,2);
 	}
 	/* END TEMPLATE */
-
-	override def run() {
-		doit(getParam(0).asInstanceOf[Int]);
-	}
 }

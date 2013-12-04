@@ -1,15 +1,20 @@
 package plm.core.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.Locale;
 
+import javax.imageio.ImageIO;
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.CellRendererPane;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
@@ -75,7 +80,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JButton exoChangeButton;
     
     private JMenu menuFile;
-    private JMenuItem miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
+    private JMenuItem miFileSavePicture,miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
     private JMenu menuSession;
     private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative;
 
@@ -85,6 +90,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
         
 	private LoggerPanel outputArea;
 	private MissionEditorTabs met;
+	
+	StatusBar statusBar;
+	
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",getLocale(), I18nFactory.FALLBACK);
 
 	private JSplitPane mainPanel;
@@ -155,6 +163,48 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		menuFile.setMnemonic(KeyEvent.VK_F);
 		menuFile.getAccessibleContext().setAccessibleDescription(i18n.tr("File related functions"));
 
+		miFileSavePicture = new JMenuItem(new AbstractGameAction(g, i18n.tr("Save a picture"), null, KeyEvent.VK_S) {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser fc = new JFileChooser();
+				fc.setFileFilter(new FileNameExtensionFilter(i18n.tr("PNG Image Files"), "png"));
+				fc.setDialogType(JFileChooser.OPEN_DIALOG);
+				fc.showOpenDialog(MainFrame.getInstance());
+				File selectedFile = fc.getSelectedFile();
+
+				if (selectedFile != null) {
+					if (selectedFile.exists()) {
+						int dialogResult = JOptionPane.showConfirmDialog (null, 
+								Game.i18n.tr("Do you want to overwrite {0}?",selectedFile.getName()),
+								Game.i18n.tr("{0} exists",selectedFile.getName()),JOptionPane.YES_NO_OPTION);
+						if (dialogResult != JOptionPane.YES_OPTION)
+							return;
+					}
+					int iconSize = 500;
+
+					WorldView wv = game.getSelectedWorld().getView();
+					wv.setSize(new Dimension(iconSize, iconSize));
+					wv.doLayout();
+					wv.setVisible(true);
+
+			        BufferedImage img = new BufferedImage(wv.getWidth(), wv.getHeight(), BufferedImage.TYPE_INT_RGB);
+
+			        CellRendererPane crp = new CellRendererPane();
+			        crp.add(wv);
+			        crp.paintComponent(img.createGraphics(), wv, crp, wv.getBounds());    
+			        
+					try {
+						ImageIO.write(img, "png", selectedFile);
+						JOptionPane.showMessageDialog(MainFrame.this, Game.i18n.tr("Image saved into {0}.",selectedFile.getName()));
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		menuFile.add(miFileSavePicture);
 		
 		miFileLoad = new JMenuItem(new AbstractGameAction(g, i18n.tr("Load lesson"), null, KeyEvent.VK_L) {
 			private static final long serialVersionUID = 1L;
@@ -445,7 +495,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 	}
 
 	private void initStatusBar(Game g) {
-		StatusBar statusBar = new StatusBar(g);
+		statusBar = new StatusBar(g);
 		getContentPane().add(statusBar, BorderLayout.SOUTH);
 	}
 
@@ -650,7 +700,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			private static final long serialVersionUID = 1L;
 
 			public void actionPerformed(ActionEvent ae) {
-				System.out.println("touche F1 press��e" );
+				System.out.println("Key F1 pressed" );
 			}
 		}
 				);
@@ -670,6 +720,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
         // Menus
 		menuFile.setText(i18n.tr("File"));
+		miFileSavePicture.setText(i18n.tr("Save a picture"));
 		miFileLoad.setText(i18n.tr("Load lesson"));
 		miFileSwitch.setText(i18n.tr("Switch lesson"));
 		miFileExercise.setText(i18n.tr("Switch exercise"));
@@ -687,7 +738,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionImportFromCloud.setText(i18n.tr("Import Session Cache from Cloud"));
 		
 		miSessionDebug.setText(i18n.tr("Debug mode"));
-		miSessionDebug.setText(i18n.tr("Creative mode"));
+		miSessionCreative.setText(i18n.tr("Creative mode"));
 
 		
 		menuLanguage.setText(i18n.tr("Language"));

@@ -5,16 +5,16 @@ import plm.universe.turtles.Turtle;
 class ScalaDragonCurve1Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	def dragon(ordre:Int, x:Double, y:Double, z:Double, t:Double) {
+	def dragon(order:Int, x:Double, y:Double, z:Double, t:Double) {
 		/* BEGIN SOLUTION */
-		if (ordre == 1) {
+		if (order == 1) {
 			setPos(x, y);
 			moveTo(z, t);
 		} else {
 			val u = (x + z + t - y) / 2;
 			val v = (y + t - z + x) / 2;
-			dragon(ordre - 1, x, y, u, v);
-			dragon(ordre - 1, z, t, u, v);
+			dragon(order - 1, x, y, u, v);
+			dragon(order - 1, z, t, u, v);
 		}
 		/* END SOLUTION */
 	}

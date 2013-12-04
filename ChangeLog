@@ -1,8 +1,74 @@
-20130916: Release 2.2.5b
+20131113: Release 2.3
+
+  * LectureChooser: fix preferred size to the MainFrame one (fix #118)
+  * AboutDialog: display the license and ChangeLog too
+  * TurtleWorld: better error message when the amount of lines differs
+  * TurtleWorld: new builtins to hide()/show() the turtle.
+  * PancakeWorld: The larger pancake is getStackSize()-1
+  * PancakeWorld: avoid ../ in the icon path: doesn't work in jarfiles
+  * recursion.DragonCurve1: slight mission text improvement
+  * recursion.SquareKoch: new exercise (variation over the Koch idea)
+  * recursion.PentaKoch: new exercise (another variation of Koch curve)
+  * recursion.HexaKoch: new exercise (yet another Koch curve)
+  * recursion.Crab: new exercise (another L-system: the Lévy C curve)
+  * sort.dutchflag: mention about the existing colors in the doc
+  * sort.dutchflag: allow to play with the mouse through drag and drop
+  * recursion.hanoi: builtin getRadius(slot): radius of top-most disk
+  * recursion.hanoi: allow to play with the mouse through drag and drop
+  * MainFrame: Implement a "Save a picture" feature, useful in turtleart
+  * welcome.MethodsArgs.py: compare directions without relying on
+    their name to avoid l10n issues (fix #122)
+  * As usual, fix some typos in the French translation
+
+20130930: Release 2.2.7
+
+  * recursion.spiralUse: rewrite to leverage the creative mode,
+    so that students don't spend too much time seeking for the reward.
+  * recursion.tree: make the color changing robust to negative steps
+  * recursion.tree: forbid teleporting 
+    This was used by some students to make the method idempotent.
+  * recursion.sierpinski: rewrite to simplify the code to be written
+  * recursion.hanoi: Simplify by explicitely passing the index of the
+    unused peg to the recursive function.
+  * TurtleWorld: synchronize to avoid a concurent modification when a
+    shape is added while we are computing the toString() of the world
+  * sort.dutchflag: New universe/exercise on the Dutch Flag Sorting
+  * sort.pancake: Correctly reset the move count on need
+  * sort.insertion: fix path to img after recent package reorg
+  * recursion.koch: give one color per side to ease the understanding
+  * sort.CocktailSort2: don't use ++ but += 1 in pseudocode
+
+20130924: Release 2.2.6
+
+  * SortingView: display the value on the left of temporal view, not
+    the index
+  * TurtleArt: force a newline every 5 exercises as it does not work
+    well with Java7 otherwise.
+  * TurtleArt.Flower: new exercise (provided by a student :)
+  * GnomeSort: fix a bug in the correction, where we stay at i=0 when
+    there is no previous pot instead of moving forward.
+  * TurtleWorld.equals&diffTo: synchronized on shapes to avoid issues
+    when the stop is pressed, for example
+  * TurtleWorld: order the points in each segment so that the line
+    (ab, cd) is detected as equal to (cd, ab)
+  * TurtleWorld.diffTo: i18n and improve error messages
+  * recursion.Circle: kill exercise. It is superseeded by turtleart.
+  * recursion.Star: kill exercise. It is superseeded by turtleart.
+  * recursion.tree: rework to make it easier to understand
+    - each level is given its own color
+    - we provide a subtree() that is correct (but the colors) to ease
+      the debugging of user's code
+  * As usual, fix a bunch of typos in the French translation
+
+20130916: Release 2.2.5: SortingWorld needs *more* polishing.
 
   * Align equals() and diffTo() of sortedWorld to avoid false negatives
-  * Translate the error messages of SortedWorld
+  * Internationalize and translate the error messages of SortedWorld
   * sort.Bubble3: there is no 'break' in scala
+  * Color the statusbar in red when a world is running so that people
+    notice that there is more than one world.
+  * SortingWorld: give large worlds a reduced delay so that people
+    don't wait for the perf world too much even if they don't click
 
 20130916: Release 2.2.4: SortingWorld also needs polishing.
 

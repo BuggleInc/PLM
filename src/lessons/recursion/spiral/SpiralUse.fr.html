@@ -1,34 +1,27 @@
 <h2>Faire des spirales</h2>
 
-Saurez-vous faire les différents motifs de cet exercice en utilisant la
-méthode <code>spiral()</code>?
+<p>Cet exercice est un peu particulier, car vous n'avez rien à faire pour le
+passer. Tout le code nécessaire pour le passer est fourni, et il suffit de
+cliquer sur le bouton «Exécuter». Il est là pour vous permettre d'explorer
+les possibilités du code que vous venez d'écrire en changeant les paramètres
+de l'appel à la fonction <code>spiral</code>. Vous pouvez passer à
+l'exercice suivant si le temps vous manque, puis revenir jouer ici plus
+tard.</p>
 
-<p>Vous devez écrire une méthode <code>doit(page)</code> qui prend en paramètre
-le numéro de la page à dessiner. Son code est de la forme suivante. A0, B0,
-etc sont des nombres entiers. L'objectif de l'exercice est de retrouver les
-valeurs convenables pour chaque page.</p>
+<p>Voici quelques figures que l'on peut produire avec votre fonction
+<code>spiral</code> en lui passant les bons paramètres. Passez en mode
+créatif (dans le menu session) pour désactiver la correction de votre code
+quand vous explorez ces spirales.</p>
 
-<pre>
-[!java]void [/!]doit([!java]int [/!]page[!scala]:Int[/!])[!python]:[/!][!java|scala] {[/!]
-  [!java]switch (page) {[/!][!scala]page match {[/!][!python]  # Choix en fonction de la valeur de page[/!]
-    [!java]case 0:[/!][!scala]case 0 =>[/!][!python]if page==0:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Dessin sur la première page, nommée "One"</span>
-      spiral(A0,B0,C0,D0);
-[!java]      break;[/!]
-    [!java]case 1:[/!][!scala]case 1 =>[/!][!python]if page==1:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Dessin sur la seconde page, nommée "Two"</span>
-      spiral(A1,B1,C1,D1);
-[!java]      break;[/!]
-    [!java]case 2:[/!][!scala]case 2 =>[/!][!python]if page==2:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Dessin sur la troisième page, nommée "Three"</span> 
-      spiral(A2,B2,C2,D2);
-[!java]      break;[/!]
-    [!java]case 3:[/!][!scala]case 3 =>[/!][!python]if page==3:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Dessin sur la quatrième page, nommée "Four"</span> 
-      spiral(A3,B3,C3,D3);
-[!java]      break;[/!]
-    [!java]case 4:[/!][!scala]case 4 =>[/!][!python]if page==4:[/!] <span class="Comment">[!java|scala]//[/!][!python]#[/!] Dessin sur la cinquième page, nommée "Five"</span>
-      spiral(A4,B4,C4,D4);[!java|scala]
-[!java]      break;[/!]
-  }
-}[/!]</pre>
+<img src="example-1.png"/> 
+<!-- spiral(100,120+1,1,2) -->
+<img src="example-2.png"/> 
+<!-- spiral(5,360/5,100,0) -->
+<img src="example-3.png"/> 
+<!-- spiral(5,2*360/5,150,0) -->
+<img src="example-4.png"/> 
 
-
-<p>Pas besoin de recopier le code de <code>spiral()</code>, la tortue de cet
-exercice connait déjà la méthode.</p>
+<!-- spiral(360,1,1,0) -->
+<p>Si vous découvrez une figure sympa n'oubliez pas de nous envoyer vos
+paramètres (menu Aide/envoyer une anomalie) pour que nous puissions
+l'ajouter à la liste!</p> 

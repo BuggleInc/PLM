@@ -481,63 +481,64 @@ public class BuggleWorld extends GridWorld {
 				
 				/* BINDINGS TRANSLATION: French */
 				"def avance(pas=1):\n"+
-				"	entity.forward(pas)\n"+
+				"	forward(pas)\n"+
 				"def recule(pas=1):\n"+
-				"	entity.backward(pas)\n"+
+				"	backward(pas)\n"+
 				"def gauche():\n"+
-				"	entity.left()\n"+
+				"	left()\n"+
 				"def retourne():\n"+
-				"	entity.back()\n"+
+				"	back()\n"+
 				"def droite():\n"+
-				"	entity.right()\n"+
+				"	right()\n"+
 				"\n"+
 				"def getMondeHauteur():\n"+
-				"	return entity.getWorldHeight()\n"+
+				"	return getWorldHeight()\n"+
 				"def getMondeLargeur():\n"+
-				"	return entity.getWorldWidth()\n"+
+				"	return getWorldWidth()\n"+
 				"def baisseBrosse():\n"+
-				"   entity.brushDown()\n"+
+				"   brushDown()\n"+
 				"def leveBrosse():\n"+
-				"   entity.brushUp()\n" +
+				"   brushUp()\n" +
 				"def estBrosseBaissee():\n"+
-				"   entity.isBrushDown()\n" +
+				"   isBrushDown()\n" +
 				"def estFaceMur():" +
-				"	return entity.isFacingWall()\n"+
+				"	return isFacingWall()\n"+
 				"def estDosMur():" +
-				"	return entity.isBackingWall()\n"+
+				"	return isBackingWall()\n"+
 				"def getCouleurSol():\n"+
-				"   return entity.getGroundColor()\n"+
-				
-				"def errorMsg(str):\n"+
-				"  entity.seenError(str)\n"+
+				"   return getGroundColor()\n"+
 				
 				"def estSurBiscuit():\n"+
-				"	return entity.isOverBaggle()\n"+
+				"	return isOverBaggle()\n"+
 				"def porteBiscuit():\n"+
-				"	return entity.isCarryingBaggle()\n"+
+				"	return isCarryingBaggle()\n"+
 				"def prendBiscuit():\n"+
-				"	return entity.pickupBaggle()\n"+
+				"	return pickupBaggle()\n"+
 				"def poseBiscuit():\n"+
-				"	return entity.dropBaggle()\n"+
+				"	return dropBaggle()\n"+
 				
 				"def estSurMessage():\n"+
-				"	return entity.isOverMessage()\n"+
+				"	return isOverMessage()\n"+
 				"def litMessage():\n"+
-				"	return entity.readMessage()\n"+
+				"	return readMessage()\n"+
 				"def effaceMessage():\n"+
-				"   entity.clearMessage()\n"+
+				"   clearMessage()\n"+
 				"def ecritMessage(msg):\n"+
-				"   entity.writeMessage(msg)\n"+
+				"   writeMessage(msg)\n"+
 				
 				"def getCouleurCorps():\n"+
-				"   return entity.getBodyColor()\n"+
+				"   return getBodyColor()\n"+
 				"def setCouleurCorps(c):\n"+
-				"   return setBodyColor(c)\n"+
+				"   setBodyColor(c)\n"+
 				
 				"def setCouleurBrosse(c):\n"+
-				"    entity.setBrushColor(c)\n"+
+				"    setBrushColor(c)\n"+
 				"def getCouleurBrosse():\n"+
-				"    return entity.getBrushColor()\n"
+				"    return getBrushColor()\n"+
+				
+				"def errorMsg(str):\n"+
+				"  entity.seenError(str)\n"
+				
 						);		
 		} else {
 			throw new RuntimeException("No binding of BuggleWorld for "+lang);

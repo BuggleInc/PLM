@@ -20,4 +20,4 @@ def move(nbPas, doforward):
             backward()
 # END SOLUTION
 
-move(getY(), entity.getDirection().toString() == "NORTH") 
+move(getY(), entity.getDirection() == Direction.NORTH) 

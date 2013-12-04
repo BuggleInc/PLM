@@ -27,7 +27,7 @@ public class SumDouble extends BatExercise {
 		
 		templateScala("sumDouble", new String[]{"Integer","Integer"}, 
 				"def sumDouble(a: Integer, b: Integer): Integer = {\n",
-				"  if (a==b) {\n"+
+				"  if (a==b) {\n"+
 				"    return (a+b)*2\n"+
 				"  }\n"+
 				"  return a+b\n"+

@@ -128,14 +128,15 @@ public class TurtleWorld extends World {
 			return false;
 		
 		TurtleWorld other = (TurtleWorld) obj;
-		if (shapes.size() != other.shapes.size())
-			return false;
-		Collections.sort(shapes, new ShapeComparator());
-		Collections.sort(other.shapes, new ShapeComparator());
-		for (int i=0;i<shapes.size();i++)
-			if (! shapes.get(i).equals(other.shapes.get(i)))
+		synchronized (shapes) { synchronized (other.shapes) {
+			if (shapes.size() != other.shapes.size())
 				return false;
-		
+			Collections.sort(shapes, new ShapeComparator());
+			Collections.sort(other.shapes, new ShapeComparator());
+			for (int i=0;i<shapes.size();i++)
+				if (! shapes.get(i).equals(other.shapes.get(i)))
+					return false;
+		}}		
 		return true;
 	}
 	
@@ -147,9 +148,11 @@ public class TurtleWorld extends World {
 			", size="+width+"x"+height+
 			", parameters: " +parameters+
 			", shapes=[";
-		Iterator<Shape> it = shapes();
-		while (it.hasNext()) 
-			res += it.next().toString();
+		synchronized (shapes) {
+			Iterator<Shape> it = shapes();
+			while (it.hasNext()) 
+				res += it.next().toString();
+		}
 		res += "]";
 		return res;
 	}
@@ -193,29 +196,41 @@ public class TurtleWorld extends World {
 					"  entity.circle(radius)\n"+
 					"def clear():\n"+
 					"  entity.clear()\n"+
+					"def hide():\n"+
+					"  entity.hide()\n"+
+					"def show():\n"+
+					"  entity.show()\n"+
+					"def isVisible():\n"+
+					"  return entity.isVisible()\n"+
 					/* BINDINGS TRANSLATION: French */
 					"def recule(i):\n"+
-					"  entity.backward(i)\n"+
+					"  backward(i)\n"+
 					"def avance(i):\n"+
-					"  entity.forward(i)\n"+
+					"  forward(i)\n"+
 					"def leveCrayon():\n"+
-					"  entity.penUp()\n"+
+					"  penUp()\n"+
 					"def baisseCrayon():\n"+
-					"  entity.penDown()\n"+
+					"  penDown()\n"+
 					"def estCrayonBaisse():\n"+
-					"  return entity.isPenDown()\n"+
+					"  return isPenDown()\n"+
 					"def gauche(i):\n"+
-					"  entity.left(i)\n"+
+					"  left(i)\n"+
 					"def droite(i):\n"+
-					"  entity.right(i)\n"+
+					"  right(i)\n"+
 					"def setCouleur(c):\n"+
-					"  entity.setColor(c)\n" +
+					"  setColor(c)\n" +
 					"def allerVers(x,y):\n" +
-					"  entity.moveTo(x,y)\n"+
+					"  moveTo(x,y)\n"+
 					"def cercle(radius):\n"+
-					"  entity.circle(radius)\n"+
+					"  circle(radius)\n"+
 					"def efface():\n"+
-					"  entity.clear()\n"
+					"  clear()\n"+
+					"def cache():\n"+
+					"  hide()\n"+
+					"def montre():\n"+
+					"  show()\n"+
+					"def estVisible():\n"+
+					"  return isVisible()\n"
 					);
 		} else {
 			throw new RuntimeException("No binding of TurtleWorld for "+lang);
@@ -226,15 +241,18 @@ public class TurtleWorld extends World {
 	public String diffTo(World world) {
 		StringBuffer sb = new StringBuffer();
 		TurtleWorld other = (TurtleWorld) world;
-		Collections.sort(shapes, new ShapeComparator());
-		Collections.sort(other.shapes, new ShapeComparator());
-		if (shapes.size() != other.shapes.size())
-			sb.append("  There is only "+other.shapes.size()+" lines where "+shapes.size()+" were expected.\n");
-		for (int i=0;i<other.shapes.size();i++)
-			if (! other.shapes.get(i).equals(shapes.get(i)))
-				sb.append("  Got "+other.shapes.get(i)+" where "+shapes.get(i)+" were expected ("+
-						((Line) other.shapes.get(i)).diffTo(shapes.get(i))+")\n");
-		
+		synchronized (shapes) { synchronized (other.shapes) {
+			ShapeComparator cmp = new ShapeComparator();
+			Collections.sort(shapes, cmp);
+			Collections.sort(other.shapes, cmp);
+			if (shapes.size() != other.shapes.size())
+				return Game.i18n.tr("  There is {0} shapes, but {1} shapes were expected\n",other.shapes.size(),shapes.size());
+			for (int i=0;i<other.shapes.size();i++)
+				if (! other.shapes.get(i).equals(shapes.get(i)))
+					sb.append(Game.i18n.tr("  {0} (got {1} instead of {2})\n",
+							((Shape) other.shapes.get(i)).diffTo(shapes.get(i)),
+							other.shapes.get(i),shapes.get(i)));
+		} }
 		return sb.toString();
 	}
 }
@@ -246,7 +264,7 @@ class ShapeComparator implements Comparator<Shape> {
 	}
 
 	int cmp(double a, double b) {
-		if (Math.abs(a-b)<0.000001)
+		if (Math.abs(a-b)<0.001)
 			return 0;
 		if (a<b)
 			return 1;
@@ -264,37 +282,36 @@ class ShapeComparator implements Comparator<Shape> {
 			Line l1 = (Line) s1;
 			Line l2 = (Line) s2;
 			
-			int cmp = cmp(l1.x1, l2.x1);
-			if (cmp != 0)
-				return cmp;
+			int res = cmp(l1.x1, l2.x1);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(l1.y1, l2.y1);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(l1.y1, l2.y1);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(l1.x2, l2.x2);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(l1.x2, l2.x2);
+			if (res != 0)
+				return res;
 
-			cmp = cmp(l1.y2, l2.y2);
-			return cmp;
+			return cmp(l1.y2, l2.y2);
 		}
 		
 		if (s1 instanceof Circle) {
 			Circle c1 = (Circle) s1;
 			Circle c2 = (Circle) s2;
 		
-			int cmp = cmp(c1.x, c2.x);
-			if (cmp != 0)
-				return cmp;
+			int res = cmp(c1.x, c2.x);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(c1.y, c2.y);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(c1.y, c2.y);
+			if (res != 0)
+				return res;
 			
-			cmp = cmp(c1.radius, c2.radius);
-			if (cmp != 0)
-				return cmp;
+			res = cmp(c1.radius, c2.radius);
+			if (res != 0)
+				return res;
 		}
 		return 0;
 	}

@@ -22,6 +22,8 @@ public class Turtle extends Entity {
 	private double heading = 0.;
 	private boolean penDown = true;
 	private int angularUnit = Turtle.DEGREE;
+	
+	private boolean visible = true;
 
 	/**
 	 * Constructor with no argument so that child classes can avoid declaring a
@@ -235,6 +237,18 @@ public class Turtle extends Entity {
 	public void penUp() {
 		this.penDown = false;
 	}
+	
+	public void hide() {
+		this.visible = false;
+		stepUI();
+	}
+	public void show() {
+		this.visible = true;
+		stepUI();
+	}
+	public boolean isVisible() {
+		return this.visible;
+	}
 	public void clear() {
 		getWorld().clear();
 	}
@@ -427,4 +441,7 @@ public class Turtle extends Entity {
 	public boolean estChoisi()       { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
 	public boolean estChoisie()      { return isSelected(); } // But we want to have the grammatically correct form also possible (turtles are feminine)
 	public void efface()             { clear(); } 
+	public void cache()              { hide(); }
+	public void montre()             { show(); }
+	public boolean estVisible()      { return isVisible(); }
 }

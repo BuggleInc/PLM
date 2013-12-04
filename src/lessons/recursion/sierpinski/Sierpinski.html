@@ -1,9 +1,10 @@
 <h2>Sierpinski's Triangle</h2>
 
 <p>The fractal we will now draw is formed of a big triangle inside which
-several smaller triangles are embeeded. The prototype of the fuction to draw
+several smaller triangles are embedded. The prototype of the function to draw
 it is the following:</p>
 <pre>[!java]void [/!]sierpinski([!java]int [/!]level[!scala]:Int[/!], [!java]double [/!]length[!scala]:Double[/!])</pre>
 
-<p>Have a look at each world's objective view to understand how to write the
-function.</p> 
+<p>Have a look at each world's objective view to understand how to write the function. 
+To draw one side of the triangle, draw a smaller recursive triangle (halve the length) and move forward by the requested length. 
+Globally, you have to draw 3 such sides and turn by 120 between each side.</p> 

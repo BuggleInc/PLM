@@ -7,6 +7,7 @@ public class StarEntity extends Turtle {
 	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
+		addSizeHint(165, 200, 165, 150);
 		for (int i = 0; i < BRANCH_COUNT; i++) 
 			branch(50);
 		

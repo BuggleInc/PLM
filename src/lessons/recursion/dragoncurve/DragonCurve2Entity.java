@@ -7,34 +7,34 @@ import plm.universe.turtles.Turtle;
 public class DragonCurve2Entity extends Turtle {
 
 	/* BEGIN TEMPLATE */
-	public void dragon(int ordre, double x, double y, double z, double t) {
+	public void dragon(int order, double x, double y, double z, double t) {
 		/* BEGIN HIDDEN */
 		double u, v;
 
-		if (ordre == 1) {
+		if (order == 1) {
 			setColor(Color.red);
 			moveTo(z, t);
 		} else {
 			u = (x + z + t - y) / 2;
 			v = (y + t - z + x) / 2;
-			dragon(ordre - 1, x, y, u, v);
-			dragonInverse(ordre - 1, u, v, z, t);
+			dragon(order - 1, x, y, u, v);
+			dragonInverse(order - 1, u, v, z, t);
 		}
 		/* END HIDDEN */
 	}
 
-	public void dragonInverse(int ordre, double x, double y, double z, double t) {
+	public void dragonInverse(int order, double x, double y, double z, double t) {
 		/* BEGIN HIDDEN */
 		double u, v;
 
-		if (ordre == 1) {
+		if (order == 1) {
 			setColor(Color.blue);
 			moveTo(z, t);
 		} else {
 			u = (x + z - t + y) / 2;
 			v = (y + t + z - x) / 2;
-			dragon(ordre - 1, x, y, u, v);
-			dragonInverse(ordre - 1, u, v, z, t);
+			dragon(order - 1, x, y, u, v);
+			dragonInverse(order - 1, u, v, z, t);
 		}
 		/* END HIDDEN */
 	}

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-16 15:19+0300\n"
+"POT-Creation-Date: 2013-11-13 15:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -359,7 +359,7 @@ msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/sort/SortingWorld.html:30 src/lessons/recursion/hanoi/universe/HanoiWorld.html:24 src/lessons/sort/pancake/universe/PancakeWorld.html:21
+#: src/plm/universe/sort/SortingWorld.html:30 src/lessons/sort/pancake/universe/PancakeWorld.html:21 src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 msgid "Returns whether the current world is selected in the graphical interface."
 msgstr ""
 
@@ -389,7 +389,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:47 src/lessons/sort/bubble/AlgBubbleSort1.html:18
+#: src/plm/universe/sort/SortingWorld.html:47 src/lessons/sort/basic/bubble/AlgBubbleSort1.html:18
 msgid ""
 "The history view is a bit hairly at the first glance, but actually rather "
 "simple: The time flows from left to right on this graph, and each row is a "
@@ -514,198 +514,231 @@ msgstr ""
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:36
 #, no-wrap
-msgid "[!java]void [/!]clear()"
+msgid "[!java]void [/!]hide()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:37
-msgid "Removes any trail on the sheet."
+msgid "Hides the turtle."
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:39
 #, no-wrap
-msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+msgid "[!java]void [/!]show()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:40
-msgid "Returns the current heading of the turtle (in degrees)."
+msgid "Shows the turtle back."
 msgstr ""
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:42
 #, no-wrap
-msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:43
+msgid "Returns whether the turtle is currently visible."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:45
+#, no-wrap
+msgid "[!java]void [/!]clear()"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:46
+msgid "Removes any trail on the sheet."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:48
+#, no-wrap
+msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:49
+msgid "Returns the current heading of the turtle (in degrees)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:51
+#, no-wrap
+msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:52
 msgid "Sets a new heading to the turtle (in degrees)."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:45
+#: src/plm/universe/turtles/TurtleWorld.html:54
 msgid "Functions about the pen"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:47
+#: src/plm/universe/turtles/TurtleWorld.html:56
 #, no-wrap
 msgid "[!java]void [/!]penUp()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:48
+#: src/plm/universe/turtles/TurtleWorld.html:57
 msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:51
+#: src/plm/universe/turtles/TurtleWorld.html:60
 #, no-wrap
 msgid "[!java]void [/!]penDown()"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:52
+#: src/plm/universe/turtles/TurtleWorld.html:61
 msgid ""
 "Moves the pen down. The turtle will leave a trace during its subsequent "
 "moves."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:54
+#: src/plm/universe/turtles/TurtleWorld.html:63
 #, no-wrap
 msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:55
+#: src/plm/universe/turtles/TurtleWorld.html:64
 msgid "Returns the current pen position as a boolean."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:57
+#: src/plm/universe/turtles/TurtleWorld.html:66
 #, no-wrap
 msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:58
+#: src/plm/universe/turtles/TurtleWorld.html:67
 msgid "Returns the current pen color."
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:60
+#: src/plm/universe/turtles/TurtleWorld.html:69
 #, no-wrap
 msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:61
+#: src/plm/universe/turtles/TurtleWorld.html:70
 msgid "Changes the pen color."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:63
+#: src/plm/universe/turtles/TurtleWorld.html:72
 msgid "Other functions"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:65 src/plm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#: src/plm/universe/turtles/TurtleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:35 src/lessons/recursion/hanoi/universe/HanoiWorld.html:26
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:66
+#: src/plm/universe/turtles/TurtleWorld.html:75
 msgid "Returns whether the current turtle is selected in the graphical interface."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:68 src/plm/universe/bugglequest/BuggleWorld.html:65
+#: src/plm/universe/turtles/TurtleWorld.html:77 src/plm/universe/bugglequest/BuggleWorld.html:65
 msgid "Valid colors"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:70 src/plm/universe/bugglequest/BuggleWorld.html:67
+#: src/plm/universe/turtles/TurtleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:67
 msgid "Name"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:70 src/plm/universe/bugglequest/BuggleWorld.html:67
+#: src/plm/universe/turtles/TurtleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:67
 msgid "Color"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:71 src/plm/universe/bugglequest/BuggleWorld.html:68
+#: src/plm/universe/turtles/TurtleWorld.html:80 src/plm/universe/bugglequest/BuggleWorld.html:68
 msgid "Color.black"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:71 src/plm/universe/turtles/TurtleWorld.html:72 src/plm/universe/turtles/TurtleWorld.html:73 src/plm/universe/turtles/TurtleWorld.html:74 src/plm/universe/turtles/TurtleWorld.html:75 src/plm/universe/turtles/TurtleWorld.html:76 src/plm/universe/turtles/TurtleWorld.html:77 src/plm/universe/turtles/TurtleWorld.html:78 src/plm/universe/turtles/TurtleWorld.html:79 src/plm/universe/turtles/TurtleWorld.html:80 src/plm/universe/turtles/TurtleWorld.html:81 src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/bugglequest/BuggleWorld.html:56 src/plm/universe/bugglequest/BuggleWorld.html:68 src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:80 src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91 src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254 src/lessons/welcome/Main.html:348 src/lessons/welcome/Main.html:428 src/lessons/welcome/Main.html:468
+#: src/plm/universe/turtles/TurtleWorld.html:80 src/plm/universe/turtles/TurtleWorld.html:81 src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/turtles/TurtleWorld.html:84 src/plm/universe/turtles/TurtleWorld.html:85 src/plm/universe/turtles/TurtleWorld.html:86 src/plm/universe/turtles/TurtleWorld.html:87 src/plm/universe/turtles/TurtleWorld.html:88 src/plm/universe/turtles/TurtleWorld.html:89 src/plm/universe/turtles/TurtleWorld.html:90 src/plm/universe/turtles/TurtleWorld.html:91 src/plm/universe/turtles/TurtleWorld.html:92 src/plm/universe/bugglequest/BuggleWorld.html:56 src/plm/universe/bugglequest/BuggleWorld.html:68 src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:80 src/lessons/welcome/Main.html:8 src/lessons/welcome/Main.html:91 src/lessons/welcome/Main.html:174 src/lessons/welcome/Main.html:254 src/lessons/welcome/Main.html:348 src/lessons/welcome/Main.html:428 src/lessons/welcome/Main.html:468
 msgid "&nbsp;"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:72 src/plm/universe/bugglequest/BuggleWorld.html:69
+#: src/plm/universe/turtles/TurtleWorld.html:81 src/plm/universe/bugglequest/BuggleWorld.html:69
 msgid "Color.blue"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:73 src/plm/universe/bugglequest/BuggleWorld.html:70
+#: src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/bugglequest/BuggleWorld.html:70
 msgid "Color.cyan"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:71
+#: src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/bugglequest/BuggleWorld.html:71
 msgid "Color.darkGray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:75 src/plm/universe/bugglequest/BuggleWorld.html:72
+#: src/plm/universe/turtles/TurtleWorld.html:84 src/plm/universe/bugglequest/BuggleWorld.html:72
 msgid "Color.gray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:76 src/plm/universe/bugglequest/BuggleWorld.html:73
+#: src/plm/universe/turtles/TurtleWorld.html:85 src/plm/universe/bugglequest/BuggleWorld.html:73
 msgid "Color.green"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:77 src/plm/universe/bugglequest/BuggleWorld.html:74
+#: src/plm/universe/turtles/TurtleWorld.html:86 src/plm/universe/bugglequest/BuggleWorld.html:74
 msgid "Color.lightGray"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:78 src/plm/universe/bugglequest/BuggleWorld.html:75
+#: src/plm/universe/turtles/TurtleWorld.html:87 src/plm/universe/bugglequest/BuggleWorld.html:75
 msgid "Color.magenta"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:76
+#: src/plm/universe/turtles/TurtleWorld.html:88 src/plm/universe/bugglequest/BuggleWorld.html:76
 msgid "Color.orange"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:80 src/plm/universe/bugglequest/BuggleWorld.html:77
+#: src/plm/universe/turtles/TurtleWorld.html:89 src/plm/universe/bugglequest/BuggleWorld.html:77
 msgid "Color.pink"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:81 src/plm/universe/bugglequest/BuggleWorld.html:78
+#: src/plm/universe/turtles/TurtleWorld.html:90 src/plm/universe/bugglequest/BuggleWorld.html:78
 msgid "Color.red"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/bugglequest/BuggleWorld.html:79
+#: src/plm/universe/turtles/TurtleWorld.html:91 src/plm/universe/bugglequest/BuggleWorld.html:79
 msgid "Color.white"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/bugglequest/BuggleWorld.html:80
+#: src/plm/universe/turtles/TurtleWorld.html:92 src/plm/universe/bugglequest/BuggleWorld.html:80
 msgid "Color.yellow"
 msgstr ""
 
@@ -1101,6 +1134,44 @@ msgstr ""
 msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/plm/universe/bat/BatWorld.html:1
+msgid "BatWorld"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:3
+msgid ""
+"This world is a simplistic testing environment largely inspired from the "
+"http://codingbat.com invented by Nick Parlente."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:6
+msgid ""
+"The typical exercises are very short ones, aiming at improving the tactical "
+"programming abilities of the students. That is to say that you will be "
+"presented a quite long list of very little exercises about rather simple "
+"things. The idea is to train you on these issues until they become automatic "
+"to you."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:12
+msgid ""
+"In contrary to the other worlds, the BatWorld does not provide any fancy "
+"abstraction nor visualization. You have to fill a function, which gets "
+"called for a bunch of parameter sets, and that's it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/bat/BatWorld.html:16
+msgid ""
+"For more information, you should refer to the CodingBat.com documentation, "
+"which contains for example a very useful documentation on boolean operators: "
+"http://codingbat.com/doc/ifboolean.html"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -1743,7 +1814,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: <p><p><p>
-#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:77 src/lessons/welcome/variables/Variables.html:146 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:36 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/comb/AlgCombSort.html:38 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
+#: src/lessons/welcome/instructions/Instructions.html:34 src/lessons/welcome/variables/Variables.html:77 src/lessons/welcome/variables/Variables.html:146 src/lessons/welcome/loopfor/LoopFor.html:69 src/lessons/welcome/loopdowhile/LoopDoWhile.html:53 src/lessons/welcome/loopdowhile/Poucet.html:36 src/lessons/welcome/methods/args/MethodsArgs.html:65 src/lessons/welcome/methods/picture/MethodsPicture.html:39 src/lessons/welcome/bdr/BDR.html:59 src/lessons/welcome/bdr/BDR.html:193 src/lessons/welcome/bdr/BDR2.html:129 src/lessons/turmites/langton/Langton.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:64 src/lessons/sort/basic/comb/AlgCombSort.html:38 src/lessons/recursion/square/FourSquare.html:45 src/lessons/welcome/bat/bool1/Max1020.html:5 src/lessons/welcome/array/basics/Array1.html:181 src/lessons/welcome/array/basics/Array1.html:207
 msgid "[/!]"
 msgstr ""
 
@@ -5107,12 +5178,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/turmites/Main.html:21 src/lessons/sort/pancake/Main.html:29 src/lessons/sort/baseball/Main.html:27 src/lessons/turtleart/Main.html:11
+#: src/lessons/turmites/Main.html:21 src/lessons/sort/dutchflag/Main.html:8 src/lessons/sort/pancake/Main.html:29 src/lessons/sort/baseball/Main.html:27 src/lessons/turtleart/Main.html:11
 msgid "What can I do to improve this PLM universe?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/turmites/Main.html:23 src/lessons/sort/pancake/Main.html:31 src/lessons/sort/baseball/Main.html:29 src/lessons/turtleart/Main.html:13
+#: src/lessons/turmites/Main.html:23 src/lessons/sort/dutchflag/Main.html:10 src/lessons/sort/pancake/Main.html:31 src/lessons/sort/baseball/Main.html:29 src/lessons/turtleart/Main.html:13
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
@@ -5700,12 +5771,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/sort/Main.html:1 src/lessons/sort/short_desc.html:1
+#: src/lessons/sort/basic/Main.html:1 src/lessons/sort/basic/short_desc.html:1
 msgid "Sorting Algorithms"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/Main.html:3
+#: src/lessons/sort/basic/Main.html:3
 msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
 "some less common variant of them). The goal is two fold: you can first "
@@ -5716,7 +5787,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/Main.html:10
+#: src/lessons/sort/basic/Main.html:10
 msgid ""
 "More exercises are planned for the future, on recursive sorting algorithms "
 "(such as QuickSort and MergeSort) or using other microworlds to apply these "
@@ -5724,24 +5795,24 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/short_desc.html:3
+#: src/lessons/sort/basic/short_desc.html:3
 msgid ""
 "This lesson allows to experiment with some classical sorting algorithms (and "
 "some less common variant of them :)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/short_desc.html:6 src/lessons/recursion/short_desc.html:5 src/lessons/maze/short_desc.html:5
+#: src/lessons/sort/basic/short_desc.html:6 src/lessons/recursion/short_desc.html:5 src/lessons/maze/short_desc.html:5
 msgid "You are supposed to master the bases of programming to take this lesson."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:1
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:1
 msgid "BubbleSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:3
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:3
 msgid ""
 "Welcome to the sorting universe. It allows you to experiment with the "
 "existing sorting algorithms. The list of buildins that you can use in your "
@@ -5750,7 +5821,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:7
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:7
 msgid ""
 "It is not enough to sort the array to pass the exercises. Your solution must "
 "strictly follow the expected behavior of each exercise. This is enforced by "
@@ -5759,7 +5830,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:12
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:12
 msgid ""
 "When your algorithm diverges from the expectation, understanding the "
 "difference between your code and the expected solution can reveal very "
@@ -5770,12 +5841,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:27
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:27
 msgid "First attempt at BubbleSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:29
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:29
 msgid ""
 "This first sorting algorithm is the most simple one: Bubble sort consists in "
 "progressively moving up the smaller elements of the array, as if they were "
@@ -5790,17 +5861,17 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:39 src/lessons/sort/bubble/AlgBubbleSort2.html:11
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:39 src/lessons/sort/basic/bubble/AlgBubbleSort2.html:11
 msgid "Show Tip (Pseudo-code)"
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:40
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:40
 msgid "The pseudo-code of the BubbleSort algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort1.html:41
+#: src/lessons/sort/basic/bubble/AlgBubbleSort1.html:41
 #, no-wrap
 msgid ""
 "do: \n"
@@ -5810,12 +5881,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:1
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:1
 msgid "BubbleSort (take 2)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:3
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:3
 msgid ""
 "If you look carefully at the behavior of BubbleSort, a first easy "
 "optimization appears: after one traversal, the last element of the array "
@@ -5827,12 +5898,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <div><p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:12
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:12
 msgid "The pseudo-code of the BubbleSort2 algorithm is the following:"
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:13
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:13
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5841,7 +5912,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:19
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:19
 msgid ""
 "When we run this algorithm, it is quite disappointing to see that it runs "
 "approximately at the same speed than the basic version of BubbleSort. This "
@@ -5854,7 +5925,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort2.html:28
+#: src/lessons/sort/basic/bubble/AlgBubbleSort2.html:28
 msgid ""
 "From the asymptotic complexity point of view, there is absolutely no "
 "difference: this variation is still in O(n^2) on average (our gain is only "
@@ -5862,12 +5933,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:1
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:1
 msgid "BubbleSort (take 3)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:3
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:3
 msgid ""
 "Let's now reintroduce the little optimization we removed at previous step: "
 "if a traversal does not swap any element, it means that the array is already "
@@ -5875,7 +5946,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:8
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:8
 msgid ""
 "[!java|python]For that, simply use the <code>break</code> keyword, which "
 "breaks the current loop.  Beware, if you have several embedded loops, this "
@@ -5885,12 +5956,12 @@ msgid ""
 msgstr ""
 
 #. type: Attribute 'alt' of: <div>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:13
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:13
 msgid "If you want, this tip shows the pseudo-code."
 msgstr ""
 
 #. type: Content of: <div><pre>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:15
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:15
 #, no-wrap
 msgid ""
 "For all i in [len-2,0] (traversing from biggest to smallest)\n"
@@ -5900,19 +5971,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/bubble/AlgBubbleSort3.html:22
+#: src/lessons/sort/basic/bubble/AlgBubbleSort3.html:22
 msgid ""
 "This optimization is even more disappointing: it only provide a gain of a "
 "few percents on the amount of reads over BubbleSort2."
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:1
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:1
 msgid "CocktailSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:3
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:3
 msgid ""
 "To improve further the BubbleSort algorithm, we need to look closer its "
 "behavior. One can notice that big elements are moved very quickly in "
@@ -5922,7 +5993,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:9
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:9
 msgid ""
 "To help the turtles moving faster, the cocktail sort traverse alternatively "
 "the array from right to left and from left to right. Here is the "
@@ -5930,7 +6001,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:14
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:14
 #, no-wrap
 msgid ""
 "Do\n"
@@ -5942,7 +6013,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort1.html:22
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort1.html:22
 msgid ""
 "One can see that cocktail sort achieves exactly the same amount of swaps "
 "than the bubble sort, but improves slightly on read amount. It is however "
@@ -5950,12 +6021,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:1
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:1
 msgid "CocktailSort (take 2)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:3
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:3
 msgid ""
 "We will now apply to CocktailSort the same optimization than BubbleSort2 did "
 "to BubbleSort. We must remember the limits of the array part not being "
@@ -5964,27 +6035,27 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/cocktail/AlgCocktailSort2.html:8
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort2.html:8
 #, no-wrap
 msgid ""
 "beg=0; end=len-2\n"
 "do\n"
 "  For all Pour i in [beg,end], do:\n"
 "      If cells i and i+1 must be swapped, do it    \n"
-"  end--\n"
+"  end -= 1 (this means end = end - 1)\n"
 "  For all Pour i in [beg,end] (downwards), do:\n"
 "      If cells i and i+1 must be swapped, do it    \n"
-"  beg++\n"
+"  beg += 1 (this means beg = beg + 1)\n"
 "while at least one of the traversal swapped an element\n"
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/cocktail/AlgCocktailSort3.html:1
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:1
 msgid "CocktailSort (take 3)"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/cocktail/AlgCocktailSort3.html:3
+#: src/lessons/sort/basic/cocktail/AlgCocktailSort3.html:3
 msgid ""
 "Even if the asymptotic complexity of CocktailSort2 is the same than the one "
 "of BubbleSort, it seem to perform better in practice. It is even possible to "
@@ -5995,12 +6066,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:1
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:1
 msgid "InsertionSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:4
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:4
 msgid ""
 "This sorting algorithm is quite simple to understand and write, even if it "
 "is not as efficient as possible. Its asymptotic complexity is in O(n2), but "
@@ -6009,7 +6080,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:9
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:9
 msgid ""
 "The idea is to traverse all elements of the array, and to insert each of "
 "them into its proper position in the already sorted part of the array. When "
@@ -6019,38 +6090,38 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:17
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:17
 msgid "Once this is done, the situation is the following:"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:21
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:21
 msgid "The pseudo-code of this algorithm is thus the following:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:22
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:22
 #, no-wrap
 msgid ""
-"For each i in [1,len]\n"
-"  store the value of i in a variable val\n"
-"  copy the cell i-1 into i if i-1 contains a value bigger than val\n"
-"  copy the cell i-2 into i-1 if i-2 contains a value bigger than val\n"
-"  copy the cell i-3 into i-2 if i-3 contains a value bigger than val\n"
-"  copy the cell i-4 into i-3 if i-4 contains a value bigger than val\n"
+"For each i in [1,len-1]\n"
+"  store the value of i in a variable v\n"
+"  copy the cell i-1 into i if i-1 contains a value bigger than v\n"
+"  copy the cell i-2 into i-1 if i-2 contains a value bigger than v\n"
+"  copy the cell i-3 into i-2 if i-3 contains a value bigger than v\n"
+"  copy the cell i-4 into i-3 if i-4 contains a value bigger than v\n"
 "  ...\n"
-"  copy val into the last cell copied above\n"
+"  copy v into the last cell copied above\n"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:32
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:32
 msgid ""
 "Naturally, you should use a loop to write the big permutation within the "
 "given loop. Writing it this way would be really ... counter-productive."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:35
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:35
 msgid ""
 "If you've always wondered what computer science researchers do nowadays, "
 "here is part of the answer: They improve fundamental algorithms so that "
@@ -6058,12 +6129,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:39
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:39
 msgid "Other variation of insertion sort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:41
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:41
 msgid ""
 "TreeSort builds a binary search tree to sort them. It leads to a O(n log(n))  "
 "on average, but O(n^2) in worst cases. We won't study this algorithm here "
@@ -6072,7 +6143,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:46
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:46
 msgid ""
 "There is other variations over the insertion sort, such as PatienceSort "
 "which builds piles of values and sort each pile afterward. This algorithm "
@@ -6083,19 +6154,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/insertion/AlgInsertionSort.html:53
+#: src/lessons/sort/basic/insertion/AlgInsertionSort.html:53
 msgid ""
 "Wikipedia provides a detailled description of all these algorithms we cannot "
 "present here because of time constraints."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/sort/shell/AlgShellSort.html:1
+#: src/lessons/sort/basic/shell/AlgShellSort.html:1
 msgid "ShellSort"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/shell/AlgShellSort.html:3
+#: src/lessons/sort/basic/shell/AlgShellSort.html:3
 msgid ""
 "This algorithm is named after its author, Donald Shell, who published it in "
 "1959. It can be seen as an application of the CombSort idea (let elements "
@@ -6110,14 +6181,14 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/shell/AlgShellSort.html:14
+#: src/lessons/sort/basic/shell/AlgShellSort.html:14
 msgid ""
 "Donald Shell propose <code>len/2</code> as initial value of the gap, and "
 "then to divide it by 2 at each step. The pseudo-code is thus the following:"
 msgstr ""
 
 #. type: Content of: <p><pre>
-#: src/lessons/sort/shell/AlgShellSort.html:17
+#: src/lessons/sort/basic/shell/AlgShellSort.html:17
 #, no-wrap
 msgid ""
 "gap=len/2\n"
@@ -6127,7 +6198,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/shell/AlgShellSort.html:22
+#: src/lessons/sort/basic/shell/AlgShellSort.html:22
 msgid ""
 "Just like in CombSort, the sequence of values taken by the gap is crucial "
 "for Shell sort performance. In some rare pathological cases, the sequence we "
@@ -6141,7 +6212,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/shell/AlgShellSort.html:32
+#: src/lessons/sort/basic/shell/AlgShellSort.html:32
 msgid ""
 "In our case, the array are ways too small to benefit of these "
 "optimizations. If you ever need to do so, take as initial gap the biggest "
@@ -6150,7 +6221,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/shell/AlgShellSort.html:37
+#: src/lessons/sort/basic/shell/AlgShellSort.html:37
 msgid ""
 "Interestingly enough, determining the best gap sequence for shell sort turns "
 "into a research issue of our century in computer science. For example, an "
@@ -6162,19 +6233,19 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/selection/AlgSelectionSort.html:1
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:1
 msgid "Selection Sort"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/selection/AlgSelectionSort.html:3
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:3
 msgid ""
 "In this exercise we will implement another classical algorithm: selection "
 "sort."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/selection/AlgSelectionSort.html:6
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:6
 msgid ""
 "The idea is simply to select for each cell of the array the smallest value "
 "from the part not already sorted. Thus for the first cell, it takes the "
@@ -6184,7 +6255,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/selection/AlgSelectionSort.html:12
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:12
 msgid ""
 "More generally, for the cell N, it looks the cell M in [n;len] containing "
 "the smallest possible value of the interval. Then, it swaps the content of "
@@ -6192,12 +6263,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><h2>
-#: src/lessons/sort/selection/AlgSelectionSort.html:16
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:16
 msgid "Existing variations"
 msgstr ""
 
 #. type: Content of: <p><p>
-#: src/lessons/sort/selection/AlgSelectionSort.html:17
+#: src/lessons/sort/basic/selection/AlgSelectionSort.html:17
 msgid ""
 "Another classical algorithm which idea is based on the selection of good "
 "elements is HeapSort, but it uses a heap data structure which we did not see "
@@ -6206,12 +6277,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/comb/AlgCombSort.html:1
+#: src/lessons/sort/basic/comb/AlgCombSort.html:1
 msgid "CombSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:3
+#: src/lessons/sort/basic/comb/AlgCombSort.html:3
 msgid ""
 "We saw that CocktailSort improve a bit for turtles (i.e. small values near "
 "to the end of the array), but it is still possible to achieve "
@@ -6226,7 +6297,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/comb/AlgCombSort.html:15
+#: src/lessons/sort/basic/comb/AlgCombSort.html:15
 #, no-wrap
 msgid ""
 "gap = len;\n"
@@ -6242,29 +6313,29 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/sort/comb/AlgCombSort.html:26 src/lessons/maze/island/IslandMaze.html:66 src/lessons/welcome/bat/bool1/Max1020.html:5
+#: src/lessons/sort/basic/comb/AlgCombSort.html:26 src/lessons/maze/island/IslandMaze.html:66 src/lessons/welcome/bat/bool1/Max1020.html:5
 msgid "[!scala]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:26
+#: src/lessons/sort/basic/comb/AlgCombSort.html:26
 msgid ""
-"One tricky part is that we want to divide gap, that is an integer, by 1.3, "
-"that is a double.  The type system of scala won't let us do this, because "
-"such discrepancy usually denotes a programmer error.  As this is not an "
-"error this time, we have to convert gap to Double for the time of the "
-"operation, and then convert the result back to Int to store it into "
+"One tricky part is that we want to divide gap, that is an integer (of type "
+"Int), by 1.3, that is a Double.  The type system of scala won't let us do "
+"this, because such discrepancy usually denotes a programmer error.  As this "
+"is not an error this time, we have to convert gap to Double for the time of "
+"the operation, and then convert the result back to Int to store it into "
 "gap. This should be written this way:"
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/comb/AlgCombSort.html:30
+#: src/lessons/sort/basic/comb/AlgCombSort.html:30
 #, no-wrap
 msgid "gap = (gap.asInstanceOf[Double] / 1.3).asInstanceOf[Int]"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:31
+#: src/lessons/sort/basic/comb/AlgCombSort.html:31
 msgid ""
 "This is rather verbose, but actually, this notation is not very complex. And "
 "remember that the type checker is your friend. It's picky and sometimes "
@@ -6274,13 +6345,13 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <pre>
-#: src/lessons/sort/comb/AlgCombSort.html:35
+#: src/lessons/sort/basic/comb/AlgCombSort.html:35
 #, no-wrap
 msgid "gap = (gap.toDouble / 1.3).toInt"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:36
+#: src/lessons/sort/basic/comb/AlgCombSort.html:36
 msgid ""
 "<code>toDouble</code> and <code>toInt</code> are just shortcuts for the "
 "corresponding expressions <code>asInstanceOf[Double]</code> and "
@@ -6288,7 +6359,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort.html:40
+#: src/lessons/sort/basic/comb/AlgCombSort.html:40
 msgid ""
 "This algorithm was invented by Wlodek Dobosiewicz in 1980, and later "
 "rediscovered and popularized by Stephen Lacey and Richard Box, who described "
@@ -6296,12 +6367,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/comb/AlgCombSort11.html:1
+#: src/lessons/sort/basic/comb/AlgCombSort11.html:1
 msgid "CombSort11"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/comb/AlgCombSort11.html:3
+#: src/lessons/sort/basic/comb/AlgCombSort11.html:3
 msgid ""
 "The authors of this algorithm observed that the performance is increased if "
 "we make sure that the last values of the gap are (11, 8, 6, 4, 3, 2, 1)  "
@@ -6311,12 +6382,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/lessons/sort/gnome/AlgGnomeSort.html:1
+#: src/lessons/sort/basic/gnome/AlgGnomeSort.html:1
 msgid "GnomeSort"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/gnome/AlgGnomeSort.html:3
+#: src/lessons/sort/basic/gnome/AlgGnomeSort.html:3
 msgid ""
 "The Gnome sort is similar to insertion sort, but the elements are moved in "
 "position by a serie of swaps just like in bubble sort. It is named after the "
@@ -6325,7 +6396,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/sort/gnome/AlgGnomeSort.html:8
+#: src/lessons/sort/basic/gnome/AlgGnomeSort.html:8
 msgid ""
 "Gnome Sort is based on the technique used by the standard Dutch Garden Gnome "
 "(Du.: tuinkabouter). Here is how a garden gnome sorts a line of flower "
@@ -6334,6 +6405,1132 @@ msgid ""
 "swaps them and steps one pot backwards. Boundary conditions: if there is no "
 "previous pot, he steps forwards; if there is no pot next to him, he is "
 "done.  <i>—Dick Grune</i>"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/dutchflag/Main.html:1 src/lessons/sort/dutchflag/short_desc.html:1 src/lessons/sort/dutchflag/DutchFlagAlgo.html:1 src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:1
+msgid "The Dutch Flag Problem"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/Main.html:3
+msgid ""
+"This problem was first proposed by E.W Dijkstra in 1976 (in the chapter 14 "
+"of his book \"A Discipline of Programming\").  It is a very classical "
+"variation of the sorting algorithms since then. It is sometimes useful in "
+"real life, but it became famous for its pedagogical properties: its "
+"complexity is not trivial, but not complex either.  It can easily be "
+"formally proven, but it's not absolutely trivial either."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/dutchflag/Main.html:12
+msgid "A temporal view could be welcomed."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/dutchflag/Main.html:13
+msgid ""
+"Other exercises, for example with 2 colors only or with more than 3 colors, "
+"could generalize the proposed approach."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/dutchflag/Main.html:14
+msgid "This problem could be solved recursively."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/short_desc.html:3
+msgid ""
+"This is a classical sorting problem, constituting a variation over the "
+"insertion sort."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:3
+msgid ""
+"Your work is to sort all the colors of the Dutch flag, and the only provided "
+"primitive is to exchange two given lines.  In addition, you should not "
+"create any additional variables (but a few indices)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:6
+msgid ""
+"If you think carefully, this can be done in linear time, where you sort a "
+"line at each iteration of the loop.  You may want to check again the <a "
+"href=\"plm://lessons.sort.basic/insertion.AlgInsertionSort\">insertion "
+"sort</a>, of which the Dutch Flag sort is a variation. The main difference "
+"is that you have 3 insertion points, not only one..."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:10
+msgid "I need an hint to start"
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:11
+msgid "Do a traversal over your data, saving 3 indices:"
+msgstr ""
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:13
+msgid ""
+"<code>afterBlue</code> is initialized to 0. Make sure that every cell below "
+"<code>afterBlue</code> is filled with blue elements."
+msgstr ""
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:14
+msgid ""
+"<code>whiteRed</code> is initialized to size-1. Make sure that every cell "
+"after <code>whiteRed</code> is filled with red elements."
+msgstr ""
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:15
+msgid ""
+"<code>beforeWhite</code> is initialized to size-1. Make sure that every cell "
+"after <code>beforeWhite</code> and before <code>whiteRed</code> is filled "
+"with while elements."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:17
+msgid ""
+"Note that the unsorted cells are always between <code>afterBlue</code> and "
+"<code>beforeWhite</code>."
+msgstr ""
+
+#. type: Content of: <div>
+#: src/lessons/sort/dutchflag/DutchFlagAlgo.html:19
+msgid ""
+"At each step of your traversal, check the color of the cell at "
+"<code>afterBlue</code> and do the required exchanges.  The loop ending "
+"condition is when <code>afterBlue</code> becomes larger than "
+"<code>beforeWhite</code>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:3
+msgid "Provided values"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:5
+msgid ""
+"The colors are represented through the following constants: BLUE, WHITE and "
+"RED.  You can use them directly in your code."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:8
+msgid "Provided functions"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:10
+msgid "This world is very simple, with only 5 provided functions."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:12
+#, no-wrap
+msgid ""
+"[!java]void [/!]swap([!java]int [/!]x[!scala]:Int[/!], [!java]int "
+"[/!]y[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:13
+msgid "Swap the lines number <code>x</code> and <code>y</code>."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:15
+#, no-wrap
+msgid "[!java]int [/!]getSize() [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:16
+msgid "Returns the amount of lines on this flag."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:18
+#, no-wrap
+msgid ""
+"[!java]int [/!]getColor([!java]int [/!]line[!scala]:Int[/!])  "
+"[!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:19
+msgid "Returns the color of the given line."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:21 src/lessons/sort/baseball/universe/BaseballWorld.html:30
+#, no-wrap
+msgid "[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:22
+msgid "Returns whether the flag is sorted."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:24 src/lessons/sort/baseball/universe/BaseballWorld.html:36
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:25 src/lessons/sort/baseball/universe/BaseballWorld.html:37
+msgid "Returns whether the current world is selected in the interface."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:1
+msgid "PancakeWorld"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:3
+msgid "This universe is very simple, with only five functions provided."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:5
+#, no-wrap
+msgid "[!java]int [/!]getStackSize()  [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
+msgid "Returns the size of the stack, that is the amount of pancakes it contains."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:8
+#, no-wrap
+msgid ""
+"[!java]int [/!]getPancakeRadius([!java]int [/!]rank[!scala]:Int[/!])  "
+"[!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:9
+msgid ""
+"Returns the radius of the pancake passed as argument, with the rank of the "
+"top-most pancake being 0."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:11
+#, no-wrap
+msgid ""
+"[!java]boolean [/!]isPancakeUpsideDown([!java]int [/!]rank[!scala]:Int[/!])   "
+"[!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:12
+msgid ""
+"Returns whether the pancake passed as argument upside-down, that is, if its "
+"burned side is on top. As usual, the top-most pancake is of rank 0."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:14
+#, no-wrap
+msgid "[!java]void [/!]flip([!java]int [/!]amount[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
+msgid ""
+"Flips the <code>amount</code> first pancakes composing the stack, from the "
+"top of it."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:17
+#, no-wrap
+msgid "[!java]boolean [/!]isSorted()   [!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
+msgid "Returns whether the pancake stack is correctly sorted."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/pancake/universe/PancakeWorld.html:20
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/Main.html:1 src/lessons/sort/pancake/BasicPancake.html:1
+msgid "Pancake Sorting"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:3
+msgid ""
+"This activity is inspired by a problem first introduced in 1975 by Harry "
+"Dweighter in the American Mathematical Monthly. The question is not only to "
+"sort the pancakes, but to determine <code>f(n)</code> the <i>minimal</i> "
+"amount of flips mandated to sort any stack of size <code>n</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:7
+msgid ""
+"This problem is now famous because Bill Gates authored (with "
+"C. Papadimitriou) his only scientific publication in 1979 on this topic, "
+"providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ "
+"(5n+5)/3</code>.  This was the only publication of Bill Gates before he "
+"invented Windows and became rich."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:11
+msgid ""
+"Then, David X. Cohen, the inventor of the Futurama comics with many "
+"mathematical references, introduced the variant with burnt pancakes and "
+"studied its complexity with Manuel Blum in 1993."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:14
+msgid ""
+"An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
+"determining the minimal amount of flips to sort the stack is a NP-complete "
+"problem. Naturally, the stack sorting problem is not NP-complete since it "
+"can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
+"the Gates algorithm.  That's determining the minimal amount of steps that is "
+"NP."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:19
+msgid "Further information can be found on the wikipedia page, as usual."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/Main.html:22
+msgid ""
+"This activity is also integrated to CSIRL (my repository of <i>free</i> "
+"unplugged activities to introduce computer science, available at "
+"http://www.loria.fr/~quinson/Mediation/SMN/), and it may be interesting to "
+"run the unplugged activities before implementing these algorithms in PLM."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/Main.html:33
+msgid "A temporal view similar to the sorting universe could be helpful"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/Main.html:34
+msgid "Other exercises, for example on the Cohen's algorithm, or on the other ones."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/sort/pancake/short_desc.html:1
+msgid "The pancake problem"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/short_desc.html:3
+msgid "Help the poor psychorigid pancakes' chef to sort its pancake stack!"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/short_desc.html:5
+msgid ""
+"This funny problem leads to algorithms that are somewhat more challenging to "
+"implement. You are supposed to master the bases of programming and some "
+"sorting algorithms to take this lesson."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BasicPancake.html:3
+msgid ""
+"The pancake sorting problem this is a simple puzzle where you have a set of "
+"pancakes, each of differing size. The chef cooking the pancake is a bit "
+"psychorigid: he hates when the pancakes are not correctly sorted on the "
+"plate. He loves when they are correctly ordered, with the small ones over "
+"the larger ones. As every pancake maker, he masters the pancake flipping "
+"with his spatula. He can flip the pancake on top of the stack, or even "
+"several pancakes at once. The thing is that he has only one plate and the "
+"table is too dirty to place pancakes on it, even temporary. The only allowed "
+"operation is to flip some pancakes that are on top of the stack."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BasicPancake.html:12
+msgid ""
+"Your work is to help this poor guy sorting his stack by flipping the "
+"pancakes. Each pancake is defined by its radius and rank within the stack, "
+"where the bottom pancake is at rank 0, and the one above at rank 1."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BasicPancake.html:16
+msgid ""
+"Note that you can play physically with pieces of paper or wood at first to "
+"get the grasp on this problem. This is even one of the activities that I use "
+"in my CS-IRL (computer science in real life) project to introduce the "
+"concept of algorithm to absolute beginners that wonder about our "
+"science. More information at http://www.loria.fr/~quinson/Mediation/SMN/ (in "
+"French)."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:22
+msgid "I don't get it. I need some help."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:23
+msgid ""
+"You should try to first move the largest pancake to the bottom, and then the "
+"largest but one pancake on top of it, and then the one just smaller on top, "
+"and so on."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:27
+msgid "The first tip was not enough. I need another one."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:28
+msgid "So first, you need to move the largest pancake at the bottom of the stack."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:29
+msgid ""
+"Can you imagine a situation in which you can easily bring this damn large "
+"pancake to the bottom?"
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/BasicPancake.html:30
+msgid "How could you reach this situation from the current one?"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/BurnedPancake.html:1
+msgid "Burned Pancakes"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/BurnedPancake.html:3
+msgid ""
+"Hard blow for the chef! The pancakes got burnt on one side! There is no way "
+"he can deliver a stack of pancakes with visibly burnt pancakes! You've got "
+"to help him ensuring that no pancake is upside-down while sorting his stack."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/pancake/GatesPancake.html:1
+msgid "Faster Pancake Sorting"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:3
+msgid ""
+"Unlike others sorting problem, the expensive operation is not the comparison "
+"of values, but the flipping of pancakes. In this exercise, we will explore "
+"another algorithm that attempt to reduce the amount of stack flipping. The "
+"funny side is that this algorithm was first introduced by Bill Gates, before "
+"invented Windows."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:8
+msgid ""
+"The basic idea is to grow sequences of sorted pancakes, not necessarily "
+"starting from the bottom.  We say that a sequence of ordered pancakes "
+"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
+"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
+"radius <code>t</code>) and search for the <code>t+1</code> or "
+"<code>t-1</code> pancakes (the considered neighbor is noted "
+"<code>t+o</code>). Eight cases may happen:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:15
+msgid ""
+"<b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are "
+"then merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:19
+msgid ""
+"<b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of "
+"a block. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:24
+msgid ""
+"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and "
+"<code>t+1</code> are the last elements of blocks.  Both blocs and "
+"<code>t</code> are merged all together in 4 flips.  Beware, if either "
+"<code>t-1</code> or <code>t+1</code> does not exist (because <code>t</code> "
+"is 0 or max), only two flips are mandated."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:32
+msgid ""
+"<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is "
+"free. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:37
+msgid ""
+"<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
+"first element of a block. They are merged in one flip."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:41
+msgid ""
+"<b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last "
+"element of another block.  They are merged in 3 flips as follows."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:45
+msgid ""
+"<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
+"element of another block. Both blocks are merged in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:48
+msgid ""
+"<b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element "
+"is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
+"block (the difference with case g is that <code>t+(k+1)o</code> is now the "
+"<i>first</i> element of its block). Both blocks are merged in 2 flips:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/pancake/GatesPancake.html:54
+msgid ""
+"<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
+"block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
+"is fliped. The algorithm then stops."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:57
+msgid ""
+"Each iteration increases the size of the blocks, so the algorithm eventually "
+"halts in all cases. A finer analysis would show that it takes at most "
+"<code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve "
+"algorithm, that requires 2n-3 steps."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/pancake/GatesPancake.html:60
+msgid "Your turn"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:61
+msgid ""
+"You now have almost enough information to implement this algorithm on your "
+"own. We just have to remove the last remaining ambiguities to ensure that "
+"you implement exactly the same algorithm that the correction. If several "
+"cases apply to your situation, then you should use the first given one. For "
+"example, if both cases a and b apply (e.g., with <code>t-1</code> on case "
+"<b>a</b> and <code>t+1</code> on case <b>b</b>), then you should apply the "
+"flips of case <b>a</b>. If a given case applies for both <code>t+1</code> "
+"and <code>t-1</code>, then you should apply it to <code>t+1</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/pancake/GatesPancake.html:67
+msgid ""
+"Note that it is somehow harder than the other exercises we did so far, so "
+"don't be surprised if you need more time to achieve this.  But do not give "
+"hope, you can do it!"
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:70
+msgid "Well, I need some help to start."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:71
+msgid ""
+"First write some helper functions such as <code>isFirst()</code> or "
+"<code>isFree()</code>. This will simplify your main algorithm afterward, "
+"that can be written very similarly to the explication above with a bunch of "
+"if conditions. Factorizing code this way often helps making your code more "
+"readable."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:78
+msgid "My code keeps failing and I don't know how to debug it."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:79
+msgid ""
+"To debug one world after the other and avoid that the messages of all worlds "
+"get intermixed, you can write your debug function only if the method "
+"<code>isSelected()</code> returns true. It will be so only for the entity "
+"that is currently selected in the graphical interface, that is probably the "
+"world you are currently debugging. This will help breaking the difficulty in "
+"parts by debugging the situation on after the other."
+msgstr ""
+
+#. type: Content of: <p><div>
+#: src/lessons/sort/pancake/GatesPancake.html:85
+msgid ""
+"In particular, it may help to print textually the state of the world each "
+"time you enter the main loop."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/Main.html:1
+msgid "The Rainbow Baseball Game"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:3
+msgid ""
+"This activity is inspired from the orange game, from the \"Computer Science "
+"Unplugged\" activities repository.  It was however heavily since then, first "
+"for the CSIRL (my repository of <i>free</i> unplugged activities to "
+"introduce computer science, available at "
+"http://www.loria.fr/~quinson/Mediation/SMN/) and now for PLM."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:7
+msgid ""
+"In the literature, the generalized form of this problem is known as the "
+"pebble motion problem (the bases can be connected by any kind of graph, and "
+"the affinity of pebbles with bases may be different). Another variant of "
+"this problem is the well known 15-puzzle, with one player per base, and a "
+"two dimensional square grid. Much more information about these problems can "
+"be found on wikipedia, as usual."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/Main.html:12
+msgid ""
+"How do you know that the naive algorithm won't loop on that initial "
+"situation?"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:14
+msgid ""
+"Well, we simply tested all possible situations to see when this algorithm "
+"loops and when it finds the correct solution. We found that it works for all "
+"situations where no player is at home (there is 84 such situations for 4 "
+"bases, once you take the symmetries into account). It obviously works for "
+"some situations that do not respect this criteria (such as all situations it "
+"encounters from one of those 84 boards to the final state), but that's "
+"another story. Having such a criteria allows us to generate pseudo-random "
+"initial situations for the first exercise for which the algorithm we propose "
+"is guarenteed to work."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/Main.html:21
+msgid ""
+"We also explored bigger instances of the problem, and unfortunately, we have "
+"no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
+"of the 1824 possible boards where no player is home (that's 1.31%).  With 6 "
+"bases, it fails on 1251 of the 58860 such boards (2.12%). With 7 bases, it "
+"fails for 84444 out of 2633940 (that's 3.2%). I am still looking for a "
+"criteria ensuring that the algorithm won't loop. If you discover one, please "
+"report it. Ideally, it would be simple to enforce manually so that we can "
+"use it during our unplugged activities."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/Main.html:31
+msgid ""
+"Other graphical representations could be proposed, such as a linear one (for "
+"the existing exercises) or other ones (such as a grid or a tree, if an "
+"exercise on this kind of graph proves interesting)."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/baseball/Main.html:33
+msgid ""
+"Other exercises on other algorithms on this variant, or on other variants "
+"such as the 15-puzzle."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/short_desc.html:1
+msgid "Rainbow baseball"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/short_desc.html:3
+msgid ""
+"This is another funny variation on the sorting problem, adapting the main "
+"sorting algorithms on an unusual context."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:1
+msgid "Rainbow Baseball"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:2
+msgid ""
+"The colors are represented by integers, between <code>0</code> and "
+"<code>amount of bases -1</code>.  The hole is represented by the special "
+"value <code>-1</code>.  The color of each base is its rank. So base "
+"<code>1</code> is of color <code>1</code>.  In the graphical interface, the "
+"base <code>0</code> is the dark blue one while the base <code>1</code> is "
+"the fuscia one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:8
+msgid ""
+"Once every players on the field are in their home base, the hole should be "
+"in the last base, that is of rank <code>getBasesAmount()-1</code>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:11
+msgid "Functions to retrieve the world's dimensions"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:13
+#, no-wrap
+msgid "[!java]int [/!]getBasesAmount() [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:14
+msgid "Returns the amount of bases on this field."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:16
+#, no-wrap
+msgid "[!java]int [/!]getPositionsAmount() [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
+msgid "Returns the amount of player's positions per base on this field."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:19
+msgid "Functions to retrieve the world's state"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:21
+#, no-wrap
+msgid "[!java]int [/!]getHoleBase() [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
+msgid "Returns the base in which the hole is located."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
+#, no-wrap
+msgid "[!java]int [/!]getHolePosition() [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:25
+msgid "Returns the hole position within its base"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
+#, no-wrap
+msgid ""
+"[!java]int [/!]getPlayerColor([!java]int [/!]base[!scala]:Int[/!], "
+"[!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
+msgid "Returns the color of the player at a given location."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
+msgid "Returns whether all players of the field are at home."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:33
+#, no-wrap
+msgid "[!java]boolean [/!]isBaseSorted([!java]int [/!]base)  [!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
+msgid "Returns whether all players of a given base are at home."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
+msgid "Functions to change the world"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:40
+#, no-wrap
+msgid ""
+"[!java]void [/!]move([!java]int [/!]base[!scala]:Int[/!], [!java]int "
+"[/!]position[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/sort/baseball/universe/BaseballWorld.html:41
+msgid ""
+"Moves a given player into the hole. This throws an IllegalArgumentException "
+"if the specified player is not near the hole (at most one base away)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/NaiveBaseball.html:1
+msgid "Naive Rainbow Baseball"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:3
+msgid ""
+"Today, the buggles decided to play a baseball game, but they are rather out "
+"of luck, actually.  First, kinda forgot the rules, and ... well ... they "
+"cannot find the ball and bats again.  So they decided to \"adapt a bit\" the "
+"rules. As the are no ball, the buggles can only running around the field, "
+"what they do happily: for a while, all attending buggle run at full speed in "
+"all directions around the field."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:9
+msgid ""
+"But after a few collisions, they decide to invent new rules to organize a "
+"bit the game: They make one team per base and two players per team. One of "
+"the teams has only one player so that its base has an empty location. Then, "
+"the players are dispatched randomly around the bases, and the game for them "
+"is to reach their home base. The whole game stops when all players are "
+"home.  There is no winning team: either all players win, or they all "
+"lose. Actually, this game is very different from the original baseball. The "
+"only rule that remains is that you can only run around the field, from one "
+"base to the next one, without crossing middle of the field."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:17
+msgid ""
+"Now, they are asking you to help them deciding who and when should move so "
+"that each player returns to its base. Only one buggle can move at each "
+"round, from its position to the empty spot.  The maximal distance that a "
+"buggle can cover in one round is of one base."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:21
+msgid ""
+"So, at each round, the empty spot is on one base (say <code>B</code>), and "
+"you should decide which buggle enters that empty spot. There is four "
+"candidates (two from base <code>B-1</code> and two from base "
+"<code>B+1</code>). Actually, there is a fifth candidate since the buggle "
+"that is on the same base than the empty spot can change its position, but "
+"that's not really helping."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/sort/baseball/NaiveBaseball.html:26
+msgid "The Naïve algorithm"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:28
+msgid ""
+"In this exercise, we will first explore a very simple algorithm. To decide "
+"which of the four candidate buggles should enter the empty spot, we first "
+"restrict ourselves and decide that buggles can only turn clockwise. Then, "
+"from the two remaining candidates, we pick the one that has the largest "
+"distance to cover to reach its base (turning clockwise). Click on the demo "
+"button: this works rather well in practice."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:34
+msgid ""
+"It's hard to find a simpler algorithm for this problem: While it's not "
+"sorted, search for the base containing the candidate buggles: if the hole is "
+"in base <code>B</code>, it's the base <code>B+1</code>, modulo the amount of "
+"bases. Then, compute the distance that each buggle of that base still has to "
+"run to reach its base (0 if it's already home). Once you found the buggle "
+"that should enter the empty spot, just use the <code>move</code> method on "
+"it, and iterate."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/NaiveBaseball.html:40
+msgid ""
+"The main difficulty should be to get the few equations right: determining "
+"the base next to the hole should be easy, but determining the distance that "
+"a player has to cover may reveal a bit more challenging. Don't hesitate to "
+"draw pictures on a paper to cover all possible cases. It should not be that "
+"difficult either: there is not that many cases after all."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/SelectBaseball.html:1
+msgid "Selection Baseball"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:3
+msgid ""
+"The previous algorithm is very pleasant: it's rather simple and rather fast "
+"to implement, but unfortunately, it is also rather wrong! In some cases, it "
+"never stops, which is obviously bad. If you don't believe it, just copy "
+"paste your previous code, and hit the run button. The first world of this "
+"exercise is one of these unfortunate situations that drives our previous "
+"algorithm crazy."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:9
+msgid ""
+"So we have to find another algorithm, preferably one that works in all "
+"cases."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:11
+msgid ""
+"For that, the best solution is to start from a well known algorithm instead "
+"of trying to invent a new one from scratch as we just did. When you think a "
+"bit about this problem, this can is very similar to a sorting problem: Just "
+"make sure that the players are sorted by their colors and you're set. And "
+"while we are at it, let's generalize the game to allow more that 4 bases."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:17
+msgid ""
+"Let's adapt the selection sort to our situation. The big lines of the "
+"algorithm is then \"for each base, select the players that should occupy "
+"this base and make sure that they come to their position\". This way, we "
+"will grow an sorted area where all players are already sorted (and never "
+"changed) while the unsorted area shrinks."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:23
+msgid ""
+"Selecting the player should be no problem; Do not hesitate to define some "
+"methods such as <code>findPlayer()</code> or "
+"<code>findPlayerBase()</code>. This will ensure that your code remains "
+"understandable."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:27
+msgid ""
+"The most problematic aspect is to move the selected players into "
+"position. For that, you have to move the hole to the position where the "
+"player is, and then move both the player and the hole to the base that is "
+"next to the player's goal (probably in a loop), and finally put the player "
+"in the right position of its target base."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/SelectBaseball.html:32
+msgid ""
+"As often in programming, the devil is in the details: there is a bunch of "
+"corner cases that you should detect and deal with correctly, such as the "
+"cases where the player is already in the base (but not in the position that "
+"you would like), or when the hole is on the right of the player (probably "
+"when you sort the first base). But you will find and hunt these while "
+"debugging your code."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/InsertBaseball.html:1
+msgid "Insertion Baseball"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:3
+msgid ""
+"The good point of adapting the selection sort to the baseball problem is "
+"that we know that it works (provided that our adaptation is correct). That's "
+"much better than the first naive algorithm, that was unable to converge to "
+"the solution in some situations. But actually, the selection sort is not "
+"perfect either as it requires a lot of swaps: we have to bring the hole to "
+"the selected player and then both the player and hole in position, and "
+"more. We can do better."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:9
+msgid ""
+"For example, each player can run quite a long way from its initial position "
+"to its target solution.  Instead, it may be more interesting to split the "
+"field in two parts: one on the left where all players are sorted relatively "
+"to each others, and one on the right where the players are still at their "
+"initial positions. Then, at each iteration, we take the player at the border "
+"between the sorted and unsorted areas (that is, the left-most player of the "
+"unsorted area) and move it to the left (within the sorted area) until it "
+"reaches its position (that is, until the position where it's bigger that its "
+"left neighbor). This would at least reduce the travel of players to the "
+"sorted area as we use the first one on the border."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:18
+msgid ""
+"Actually, that's exactly what an insertion sort would do: maintain a sorted "
+"area on the left, and put iteratively the player on the border to its "
+"position within the sorted area. This is good, as we know that our algorithm "
+"is not inherently flawed since we adapt a well known one."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:22
+msgid ""
+"The easiest to adapt the insertion sort to the baseball problem is to "
+"consider all positions as adjacent and forget about bases. For that, we "
+"define the methods <code>getColor(pos)</code>, <code>move(pos)</code> and "
+"<code>getHole()</code> that all use a unique integer to designate a given "
+"position. These functions simply convert between the way to specify a "
+"position and then call the usual functions to interact with the world. If "
+"you have an <code>index</code> and want to convert it into a "
+"<code>base,pos</code>, then <code>base=index/2</code> and "
+"<code>pos=index%2</code>. To compute the reverse, "
+"<code>index=base*2+pos</code> (this works because "
+"<code>getPositionsAmount()</code> always returns 2)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:31
+msgid ""
+"For the algorithm itself, you should first move the hole to the position "
+"1. The position 0 is considered to be the sorted area (of size 1 for now) "
+"while the area above 2 is the unsorted area.  Then comes an iteration to "
+"sort each element of the unsorted area. Since this iteration is a bit "
+"complex, you should think of its loop invariant, that is, the condition that "
+"is true before and after the loop and which explains that the loop fulfills "
+"its goal. Here, the loop invariant is twofold: First, the hole is between "
+"the sorted area and the unsorted area, and then, the every elements of the "
+"sorted area are ... well sorted relatively to their neighbors."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:39
+msgid ""
+"Then, the loop body to sort an element should first descend the hole and the "
+"elements within the sorted area until the element is larger than the element "
+"before in the sorted area (2 moves per position to travel), and then move "
+"the hole back to its position between the sorted and unsorted areas (1 move "
+"per position)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/InsertBaseball.html:43
+msgid ""
+"Once you insert the last element within the sorted area, your whole set is "
+"sorted and you're done.  I preserve the surprise of the border cases that "
+"will require some little adjustments to your algorithm to make it work "
+"properly :)"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/sort/baseball/BubbleBaseball.html:1
+msgid "Bubble Baseball"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:3
+msgid ""
+"Crap, we adapted the insertion sort because our selection sort required too "
+"much moves to get the selected players to their position, but the insertion "
+"sort requires an inordinate amount of changes to get the border elements to "
+"their position within the sorted area without mixing the already sorted "
+"elements. At the end of the day, our selection variant was more efficient "
+"with at most <code>3*amountOfBase</code> moves to sort one element (1 to get "
+"the hole alongside with the player, and 2 to get the hole+player in "
+"position) while our insertion variant requires at most "
+"<code>3*amountOfPlayers</code> to sort one element (2 to descend the hole "
+"and player in position, 1 to get the hole back to its position). That's "
+"twice as bad as there is two players per base. It may be possible to improve "
+"the insertion sort by moving by more than one element when descending, but "
+"it seems uneasy (at least, while not mixing the already sorted elements) and "
+"it would probably only ensure that our insertion variant becomes as "
+"efficient as our selection variant, not dramatically better."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:15
+msgid ""
+"If we cannot make the sort faster, we can make it easier. If you think about "
+"it, it seems rather natural to adapt the bubble sort to this problem: the "
+"hole becomes the bubble that moves up and down, sorting a bit the array "
+"during each traversal. The big lines are simply: \"while it's not sorted, "
+"move the hole down to base 0 (moving the biggest player of each base at each "
+"step) and then back to the maximal base (moving the smallest player of each "
+"base)\". After a while, <code>isSorted()</code> will return true and your "
+"algorithm will stop."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:21
+msgid ""
+"This is so easy that we introduce another variant of the problem, with more "
+"than two players per base.  But actually, that shouldn't block you very "
+"long, should it?"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/sort/baseball/BubbleBaseball.html:24
+msgid ""
+"Surprisingly, the bubble sort variant requires ways less moves than the "
+"other variants. This is astonishing because usually, the bubble sort "
+"performs much worse than the others sorts, but it comes from the very good "
+"match between its big lines and the baseball universe. It actually happens "
+"rather often that a pleasantly written algorithm performs very decently. But "
+"this is not an universal rule either, as demonstrated by the naive algorithm "
+"of the first exercise, that was nice, simple and wrong ;)"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -6352,6 +7549,60 @@ msgid ""
 "If you need more recursive algorithms, an exercise on recursive sorting "
 "algorithms (in particular QuickSort and MergeSort) is planned in the future "
 "within the sorting lesson."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/recursion/Main.html:8
+msgid "What can I do to improve this lesson?"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/Main.html:10
+msgid ""
+"As usual, there are several things that could be done in this lesson to "
+"improve it further:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:12
+msgid ""
+"The Sierpinski triangle can be drawn using a simpler L-system. See "
+"http://jpvallon.free.fr/recursivite.html"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:13
+msgid ""
+"The arrowhead curve is also interesting: "
+"http://www.mathcurve.com/fractals/sierpinski/sierpinskitriangle.shtml"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:14
+msgid ""
+"The dragon curve could be explained as a L-system: "
+"http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/heighway.htm"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:15
+msgid ""
+"The dragon2 curve is called the twin dragon: "
+"http://ecademy.agnesscott.edu/~lriddle/ifs/heighway/twindragon.htm"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:16
+msgid ""
+"The space filling curves could be added (Peano, Hildebert, etc).  See: "
+"http://teachout1.net/village/fill.html"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/recursion/Main.html:18
+msgid ""
+"We could do another exercise on embeeded polygons: "
+"http://www.inrialpes.fr/helix/people/genoud/ENSJAVA/tds/sujets/dessinsReccursifs/actionsrecursives.html"
 msgstr ""
 
 #. type: Content of: <h3>
@@ -6445,7 +7696,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p><p><p><h2>
-#: src/lessons/recursion/square/FourSquare.html:47 src/lessons/recursion/circle/Circle.html:14 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array1.html:229
+#: src/lessons/recursion/square/FourSquare.html:47 src/lessons/recursion/hanoi/HanoiBoard.html:20 src/lessons/welcome/array/basics/Array1.html:229
 msgid "Goal of this exercise"
 msgstr ""
 
@@ -6488,7 +7739,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7 src/lessons/recursion/sierpinski/Sierpinski.html:8 src/lessons/recursion/dragoncurve/DragonCurve1.html:25 src/lessons/recursion/dragoncurve/DragonCurve2.html:44
+#: src/lessons/recursion/polygonfractal/PolygonFractal.html:7 src/lessons/recursion/dragoncurve/DragonCurve1.html:25 src/lessons/recursion/dragoncurve/DragonCurve2.html:44
 msgid ""
 "Have a look at each world's objective view to understand how to write the "
 "function."
@@ -6503,101 +7754,166 @@ msgstr ""
 #: src/lessons/recursion/koch/Koch.html:3
 msgid ""
 "We will now draw snow flakes using the Koch fractal. A fractal is a "
-"geometrical pattern repeated at every scale."
+"geometric pattern repeated at every scale."
 msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/koch/Koch.html:6
 msgid ""
-"The general form is a triangle, with each side given by a serie of recursive "
-"calls. The general form is given by something like this:"
+"The general form is a triangle, with each side given by several recursive "
+"calls. Your work is only to write the code of the <code>snowSide</code> "
+"method so that it draws one side of the triangle. To make it easier, each "
+"sides are represented in a specific color. Just draw the red things (without "
+"changing your pen color), and the other colors will be drawn automatically."
 msgstr ""
 
-#. type: Content of: <p><pre>
-#: src/lessons/recursion/koch/Koch.html:8
-#, no-wrap
-msgid ""
-"[!java]void [/!]snowFlake ([!java]int [/!]levels[!scala]:Int[/!], "
-"[!java]double [/!]length[!scala]:Double[/!])[!python]:[/!][!java|scala] "
-"{[/!]\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"   snowSide(levels, length);\n"
-"   right(120);\n"
-"[!java|scala]}[/!]"
-msgstr ""
-
-#. type: Content of: <p><p>
-#: src/lessons/recursion/koch/Koch.html:17
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:12
 msgid ""
 "Observe the drawing in each world's objective to understand the pattern's "
-"logic, and then reproduce it. You must write the <code>snowSide()</code> "
-"method, which is recursive."
+"logic, and then reproduce it. At level 0, the Koch curve is just a straight "
+"line.  At level 1, the curve is divided in three thirds, and the middle part "
+"is replaced by the two sides of an equilateral triangle of the same length "
+"as the segment being removed.  At level 2, the process is repeated, whith "
+"each segments split in three parts and the middle part being replaced by the "
+"two sides of an equilateral triangle."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/Koch.html:19
+msgid "Too much letters. Please picture it."
+msgstr ""
+
+#. type: Content of: <p><div><p>
+#: src/lessons/recursion/koch/Koch.html:20 src/lessons/recursion/koch/SquareKoch.html:8
+msgid "Here are the results of the first levels of recursion."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Koch.html:24
+msgid ""
+"You must write the <code>snowSide()</code> method, which is recursive but "
+"<b>do not call snowFlake from snowSide</b>, or you will get very strange and "
+"unexpected behaviors."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/star/Star.html:1
-msgid "Turtles in the stars"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/star/Star.html:3
-msgid ""
-"This is the last hand-on turtles exercise before recursion. The goal is to "
-"draw three 5-branches stars. Like any regular stars with N branches, the "
-"angle at each external corners are 360/N degrees while the angles between "
-"branches are of 2*360/N degrees."
+#: src/lessons/recursion/koch/SquareKoch.html:1
+msgid "Snow square"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/star/Star.html:8
+#: src/lessons/recursion/koch/SquareKoch.html:3
 msgid ""
-"The first star to draw is black (<code>Color.black</code>) and its branches "
-"are 100 steps long. The second is blue (<code>Color.blue</code>) and its "
-"branches are 80 steps long. It's shifted of 45 degrees from the first "
-"one. The last star is red (<code>Color.red</code>), its branches are 60 "
-"steps long and it's shifted of 45 degrees from the previous one."
+"This exercise is a variation over the snow flake that we saw previously.  "
+"The main difference is that we are growing little squares instead of "
+"triangles on the sides of the figure."
+msgstr ""
+
+#. type: Attribute 'alt' of: <p><div>
+#: src/lessons/recursion/koch/SquareKoch.html:7
+msgid "I don't see it, sorry. Please picture it."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/star/Star.html:14
-msgid "Observe the world's objective to visualize the picture to draw."
+#: src/lessons/recursion/koch/SquareKoch.html:13
+msgid ""
+"As previously, your <code>squareSide</code> function should only draw one "
+"side of the figure, and the template will call it for all sides "
+"automatically (with one color per side)."
 msgstr ""
 
 #. type: Content of: <h2>
-#: src/lessons/recursion/circle/Circle.html:1
-msgid "Three little circles"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/circle/Circle.html:3
-msgid ""
-"As we saw (and as you can check in the documentation of this world under "
-"\"About this world\"), turtles can only draw straight lines. Despite of "
-"this, the goal of this world is to draw circles... This can be achived "
-"simply by realizing that a circle can be seen as a concatenation of very "
-"little segments."
+#: src/lessons/recursion/koch/PentaKoch.html:1
+msgid "Snow pentagon"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/circle/Circle.html:9
+#: src/lessons/recursion/koch/PentaKoch.html:3
 msgid ""
-"Differential calculus would even argue that a circle is the asymptotical "
-"limit of such construct when the size of each segment becomes infinitely "
-"small while their amount becomes infinitely large, but you can definitely "
-"solve this exercise without understanding differential calculus :)"
+"Here comes yet another variation of the Koch curve. This time, we grow "
+"little pentagons (ie, polygons with five sides each). I'm sure you get it "
+"now."
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/circle/Circle.html:16
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/PentaKoch.html:6
 msgid ""
-"Write a function drawing a circle, taking the size of each of the 360 "
-"segments as parameter. Then use it in your code to draw the whole picture.  "
-"The first circle is obtained with segments of size 0.5, the second with "
-"segments of size 1 and the last one with 1.5-long segments.  Once again, "
-"this is a warming exercise, no recursion is needed."
+"Another difference with earlier is that the length is not divided by three "
+"at each step anymore, but multiplied by 0.4. The curve looks better this way "
+":)"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/PentaKoch.html:9
+msgid ""
+"We draw only one side in this exercise so your code will be called only once "
+"this time."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/koch/HexaKoch.html:1
+msgid "Snow hexagon"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/HexaKoch.html:3
+msgid ""
+"This time, we will draw the curve that is known as the (6, 0.14)-Koch "
+"curve. This means that you have to grow 6-sided polygons on the segments, "
+"and that the length should be multiplied by 0.14 at each recursion level."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/HexaKoch.html:7
+msgid ""
+"For the record, the origical Koch curve is the (3, 1/3)-Koch curve, the Snow "
+"square would be (4,1/3)-Koch curve while the Snow pentagon is also called "
+"the (5, 0.4)-Koch curve. If you want, you can switch to the creative mode in "
+"the menu and explore freely other Koch curves. Just change the initial call "
+"to hexaKoch to what you want."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/HexaKoch.html:12
+msgid ""
+"For further reference, please see <a "
+"href=\"http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm\">http://ecademy.agnesscott.edu/~lriddle/ifs/kcurve/kcurve.htm</a>."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/recursion/koch/Crab.html:1
+msgid "Fractal Crab"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Crab.html:3
+msgid ""
+"The Crab curve is not exactly a Koch curve, but that's still a fractal and "
+"it's built rather similarly.  This time, we grow square triangle on the side "
+"of the figure: the angle is 45 degrees, and the length is divided by "
+"[!java|scala]Math.sqrt(2)[/!][!python]math.sqrt(2)[/!] at each step."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Crab.html:7
+msgid ""
+"Check the figures produced by the first steps of recursion to understand the "
+"pattern."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/recursion/koch/Crab.html:9
+msgid "Bibliographical note"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/koch/Crab.html:10
+msgid ""
+"This curve, also called the Lévy C curve was invented in 1938 by the French "
+"mathematician Paul Lévy in 1938.  As usual, the wikipedia page is very "
+"instructive, and the page provide a very good additions: <a "
+"href=\"http://www.mathcurve.com/fractals/c/c.shtml\">http://www.mathcurve.com/fractals/c/c.shtml</a>."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6605,7 +7921,7 @@ msgstr ""
 msgid "Trees"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/recursion/tree/Tree.html:3
 msgid ""
 "We will now draw trees. For that, we will write a method using double "
@@ -6627,14 +7943,38 @@ msgid ""
 "To draw a tree of four levels, you have to draw a trunk of the given length, "
 "turn right of the given angle, draw a tree of level 3, turn left twice of "
 "the given angle, draw another tree of level 3, and come back to your initial "
-"location."
+"location. Don't forget to come back to the initial location!"
 msgstr ""
 
-#. type: Content of: <p><p>
+#. type: Content of: <p><p><p>
 #: src/lessons/recursion/tree/Tree.html:12
 msgid ""
 "If a tree's trunk is of length 'len', the trunk of the next level tree will "
 "be of length 'len*shrink'."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:15
+msgid ""
+"As you can see, each recursion level is represented by a distinctive "
+"color. For that, you have to call the <code>current(step)</code>, passing "
+"the current recursion level as a parameter. This will pick the right color "
+"for you.  Don't erase your great colors when you move back to your initial "
+"location."
+msgstr ""
+
+#. type: Content of: <p><p><p><p><p>
+#: src/lessons/recursion/tree/Tree.html:19
+msgid ""
+"If you get your function wrong, this can easily become hairly to debug as "
+"your errors will appear at each level of the recursion, completely changing "
+"the drawing.  For debugging purpose, you can use the <code>subtree()</code> "
+"that will draw a correct subtree. This function is then very similar to the "
+"one you are trying to write. The only difference is that "
+"<code>subtree()</code> only draws in black. So, you can use it instead of a "
+"recursive call to debug your code, but you have to change for a proper "
+"recursive call to your own code (once it works)  to get the colors right, "
+"and pass the exercise."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6646,8 +7986,8 @@ msgstr ""
 #: src/lessons/recursion/sierpinski/Sierpinski.html:3
 msgid ""
 "The fractal we will now draw is formed of a big triangle inside which "
-"several smaller triangles are embeeded. The prototype of the fuction to draw "
-"it is the following:"
+"several smaller triangles are embedded. The prototype of the function to "
+"draw it is the following:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -6656,6 +7996,15 @@ msgstr ""
 msgid ""
 "[!java]void [/!]sierpinski([!java]int [/!]level[!scala]:Int[/!], "
 "[!java]double [/!]length[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/sierpinski/Sierpinski.html:8
+msgid ""
+"Have a look at each world's objective view to understand how to write the "
+"function.  To draw one side of the triangle, draw a smaller recursive "
+"triangle (halve the length) and move forward by the requested length.  "
+"Globally, you have to draw 3 such sides and turn by 120 between each side."
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6714,65 +8063,31 @@ msgstr ""
 msgid "Drawing spirals"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/recursion/spiral/SpiralUse.html:3
 msgid ""
-"Can you reproduce the provided patterns of this exercise using the "
-"<code>spiral()</code> method?"
+"This exercise is not really an exercise in that sense that you just have to "
+"click on the Execute button to get the reward: All the needed code is "
+"already provided. Instead, you can here explore the possibilities of the "
+"code you just wrote by changing the parameters of the call to the "
+"<code>spiral</code> function. You can move on to the next exercise if you "
+"are short on time, and come back later to play around."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:6
+#: src/lessons/recursion/spiral/SpiralUse.html:9
 msgid ""
-"You must provide a method called <code>doit(page)</code> taking the page "
-"number to draw as parameter. Its code is as following, with A0, B0, etc "
-"being integers.  The goal of this exercise is to find the good values for "
-"each page, which requires to correctly understand how the spiral method "
-"works."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/recursion/spiral/SpiralUse.html:12
-#, no-wrap
-msgid ""
-"[!java]void [/!]doit([!java]int "
-"[/!]page[!scala]:Int[/!])[!python]:[/!][!java|scala] {[/!]\n"
-"  [!java]switch (page) {[/!][!scala]page match {[/!][!python]  # select on "
-"the value of page[/!]\n"
-"    [!java]case 0:[/!][!scala]case 0 =>[/!][!python]if page==0:[/!] <span "
-"class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the first "
-"page, dubbed \"One\"</span>\n"
-"      spiral(A0,B0,C0,D0);\n"
-"[!java]      break;[/!]\n"
-"    [!java]case 1:[/!][!scala]case 1 =>[/!][!python]if page==1:[/!] <span "
-"class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the second "
-"page, dubbed \"Two\"</span>\n"
-"      spiral(A1,B1,C1,D1);\n"
-"[!java]      break;[/!]\n"
-"    [!java]case 2:[/!][!scala]case 2 =>[/!][!python]if page==2:[/!] <span "
-"class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the page "
-"dubbed \"Three\"</span> \n"
-"      spiral(A2,B2,C2,D2);\n"
-"[!java]      break;[/!]\n"
-"    [!java]case 3:[/!][!scala]case 3 =>[/!][!python]if page==3:[/!] <span "
-"class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the page "
-"dubbed \"Four\"</span> \n"
-"      spiral(A3,B3,C3,D3);\n"
-"[!java]      break;[/!]\n"
-"    [!java]case 4:[/!][!scala]case 4 =>[/!][!python]if page==4:[/!] <span "
-"class=\"Comment\">[!java|scala]//[/!][!python]#[/!] Drawing of the page "
-"dubbed \"Five\"</span>\n"
-"      spiral(A4,B4,C4,D4);[!java|scala]\n"
-"[!java]      break;[/!]\n"
-"  }\n"
-"}[/!]"
+"Here are some of the figures that you can produce with your "
+"<code>Spiral</code> function, provided that you come with the right "
+"parameters. You can switch to the creative mode (from the Session menu)  to "
+"disable the world comparison when you explore with these spirals."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/recursion/spiral/SpiralUse.html:33
+#: src/lessons/recursion/spiral/SpiralUse.html:18
 msgid ""
-"No need to copy over the method of <code>spiral()</code>, the turtle of this "
-"exercise already knows it."
+"If you discover a cool figure, don't forget to send your parameters (menu "
+"Help/feedback) so that we can add it to the list!"
 msgstr ""
 
 #. type: Content of: <h2>
@@ -6799,10 +8114,10 @@ msgstr ""
 #: src/lessons/recursion/dragoncurve/DragonCurve1.html:7
 msgid ""
 "the dragon curve of order n is the dragon curve of order n-1 between P and "
-"R, followed by the same curve of order n-1 between R and Q (reverse side), "
-"where PRQ is an isoscele triangle with angle R being a right angle, and R "
-"being at the right of the PQ vector. Thus, if P and Q coordinates are (x, y)  "
-"and (z, t), the coordinate (u, v) of R are given by:"
+"R, followed by the same curve of order n-1 between Q and R, where PRQ is an "
+"isosceles triangle with angle R being a right angle, and R being at the "
+"right of the PQ vector. Thus, if P and Q coordinates are (x, y)  and (z, t), "
+"the coordinate (u, v) of R are given by:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -6930,8 +8245,8 @@ msgstr ""
 #: src/lessons/recursion/hanoi/Main.html:2
 msgid ""
 "Here comes the super classical exercise on recursion. It's not very "
-"developped here, I'm not sure of what I could add to this lesson. If you "
-"have any idea, please submit them."
+"developed here, I'm not sure of what I could add to this lesson. If you have "
+"any idea, please submit them."
 msgstr ""
 
 #. type: Content of: <p>
@@ -6951,16 +8266,21 @@ msgstr ""
 msgid "Tower of Hanoi"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
+#. type: Content of: <p>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:3
 msgid ""
-"The Tower of Hanoi or Towers of Hanoi , also called the Tower of Brahma or "
+"The Tower of Hanoi or Towers of Hanoi, also called the Tower of Brahma or "
 "Towers of Brahma, is a mathematical game or puzzle. It consists of three "
-"rods, and a number of disks of different sizes which can slide onto any "
-"rod. The puzzle starts with the disks in a neat stack in ascending order of "
-"size on one rod, the smallest at the top, thus forming a pyramid.  The "
-"objective of the puzzle is to move the entire stack to another rod, obeying "
-"the following rules:"
+"pegs, and a number of disks of different sizes which can slide onto any "
+"peg. The puzzle starts with the disks in a neat stack in ascending order of "
+"size on one peg, the smallest at the top, thus forming a pyramid."
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/hanoi/HanoiBoard.html:9
+msgid ""
+"The objective of the puzzle is to move the entire stack to another peg, "
+"obeying the following rules:"
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -6971,9 +8291,9 @@ msgstr ""
 #. type: Content of: <ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:13
 msgid ""
-"Each move consists of taking the upper disk from one of the rods and sliding "
-"it onto another rod, on top of the other disks that may already be present "
-"on that rod."
+"Each move consists of taking the upper disk from one of the pegs and sliding "
+"it onto another peg, on top of the other disks that may already be present "
+"on that peg."
 msgstr ""
 
 #. type: Content of: <ul><li>
@@ -6985,50 +8305,71 @@ msgstr ""
 #: src/lessons/recursion/hanoi/HanoiBoard.html:22
 msgid ""
 "Write the core of the method: <code>[!java]void [/!]solve([!java]int "
-"[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!], [!java]int "
-"[/!]height[!scala]:Int[/!])</code> This method will recursively solve the "
-"presented problem. First parameter named <code>src</code> is the index of "
-"the initial tower, second parameter <code>dst</code> is the index of the "
-"expected final tower, and the third parameter <code>height</code> is the "
-"height of the tower.  A key to solving this puzzle is to recognize that it "
-"can be solved by breaking the problem down into a collection of smaller "
-"problems and further breaking those problems down into even smaller problems "
-"until a solution is reached.  The following procedure demonstrates this "
-"approach:"
+"[/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!],[!java]int "
+"[/!]other[!scala]:Int[/!], [!java]int [/!]height[!scala]:Int[/!])</code>"
 msgstr ""
 
-#. type: Content of: <ul><li>
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:25
+msgid ""
+"This method will recursively solve the presented problem. The first "
+"parameter named <code>src</code> is the index of the initial tower, the "
+"second parameter <code>dst</code> is the index of the expected final tower, "
+"the third parameter <code>other</code> is the index of the unused peg while "
+"the fourth parameter <code>height</code> is the height of the tower."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:31
+msgid ""
+"A key to solving this puzzle is to recognize that it can be solved by "
+"breaking the problem down into a collection of smaller problems and further "
+"breaking those problems down into even smaller problems until a solution is "
+"reached."
+msgstr ""
+
+#. type: Attribute 'alt' of: <div>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:35
+msgid "I don't get it, please give me some extra indications"
+msgstr ""
+
+#. type: Content of: <div>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:36
+msgid "Here is the pseudo-code of the solution:"
+msgstr ""
+
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:38
 msgid "label the pegs A, B, C (these labels may move at different steps)"
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:37
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:39
 msgid "let n be the total number of discs (the height of the initial tower)"
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:38
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:40
 msgid "number the discs from 1 (smallest, topmost) to n (largest, bottommost)"
 msgstr ""
 
-#. type: Content of: outside any tag (error?)
-#: src/lessons/recursion/hanoi/HanoiBoard.html:41
+#. type: Content of: <div>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:43
 msgid "To move n discs from peg A to peg C:"
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:43
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:45
 msgid "move n−1 discs from A to B. This leaves disc number n alone on peg A"
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:44
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:46
 msgid "move disc number n from A to C"
 msgstr ""
 
-#. type: Content of: <ul><li>
-#: src/lessons/recursion/hanoi/HanoiBoard.html:45
+#. type: Content of: <div><ul><li>
+#: src/lessons/recursion/hanoi/HanoiBoard.html:47
 msgid "move n−1 discs from B to C so they sit on disc number n"
 msgstr ""
 
@@ -7049,7 +8390,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:11
-msgid "Only 3 functions are provided:"
+msgid "Only 4 functions are provided:"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -7078,6 +8419,17 @@ msgid ""
 "Returns the amount of disks placed on the specified slot. This is mainly "
 "used to initialize the recursion and set the amount of recursive call to "
 "execute."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:23
+#, no-wrap
+msgid "[!java]int [/!]getRadius([!java]int [/!]slot)[!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/recursion/hanoi/universe/HanoiWorld.html:24
+msgid "Returns the radius of the top-most disk of the specified slot."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -8505,44 +9857,6 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
-#: src/plm/universe/bat/BatWorld.html:1
-msgid "BatWorld"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:3
-msgid ""
-"This world is a simplistic testing environment largely inspired from the "
-"http://codingbat.com invented by Nick Parlente."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:6
-msgid ""
-"The typical exercises are very short ones, aiming at improving the tactical "
-"programming abilities of the students. That is to say that you will be "
-"presented a quite long list of very little exercises about rather simple "
-"things. The idea is to train you on these issues until they become automatic "
-"to you."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:12
-msgid ""
-"In contrary to the other worlds, the BatWorld does not provide any fancy "
-"abstraction nor visualization. You have to fill a function, which gets "
-"called for a bunch of parameter sets, and that's it."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/bat/BatWorld.html:16
-msgid ""
-"For more information, you should refer to the CodingBat.com documentation, "
-"which contains for example a very useful documentation on boolean operators: "
-"http://codingbat.com/doc/ifboolean.html"
-msgstr ""
-
-#. type: Content of: <h1>
 #: src/lessons/bat/string1/Main.html:1
 msgid "String fun"
 msgstr ""
@@ -9508,962 +10822,6 @@ msgid ""
 "correct value."
 msgstr ""
 
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:1
-msgid "PancakeWorld"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:3
-msgid "This universe is very simple, with only five functions provided."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:5
-#, no-wrap
-msgid "[!java]int [/!]getStackSize()  [!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:6
-msgid "Returns the size of the stack, that is the amount of pancakes it contains."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:8
-#, no-wrap
-msgid ""
-"[!java]int [/!]getPancakeRadius([!java]int [/!]rank[!scala]:Int[/!])  "
-"[!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:9
-msgid ""
-"Returns the radius of the pancake passed as argument, with the rank of the "
-"top-most pancake being 0."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:11
-#, no-wrap
-msgid ""
-"[!java]boolean [/!]isPancakeUpsideDown([!java]int [/!]rank[!scala]:Int[/!])   "
-"[!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:12
-msgid ""
-"Returns whether the pancake passed as argument upside-down, that is, if its "
-"burned side is on top. As usual, the top-most pancake is of rank 0."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:14
-#, no-wrap
-msgid "[!java]void [/!]flip([!java]int [/!]amount[!scala]:Int[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:15
-msgid ""
-"Flips the <code>amount</code> first pancakes composing the stack, from the "
-"top of it."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:17
-#, no-wrap
-msgid "[!java]boolean [/!]isSorted()   [!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:18
-msgid "Returns whether the pancake stack is correctly sorted."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/pancake/universe/PancakeWorld.html:20
-#, no-wrap
-msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/Main.html:1 src/lessons/sort/pancake/BasicPancake.html:1
-msgid "Pancake Sorting"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:3
-msgid ""
-"This activity is inspired by a problem first introduced in 1975 by Harry "
-"Dweighter in the American Mathematical Monthly. The question is not only to "
-"sort the pancakes, but to determine <code>f(n)</code> the <i>minimal</i> "
-"amount of flips mandated to sort any stack of size <code>n</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:7
-msgid ""
-"This problem is now famous because Bill Gates authored (with "
-"C. Papadimitriou) his only scientific publication in 1979 on this topic, "
-"providing a faster algorithm and proving that <code>17n/16 ≤ f(n) ≤ "
-"(5n+5)/3</code>.  This was the only publication of Bill Gates before he "
-"invented Windows and became rich."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:11
-msgid ""
-"Then, David X. Cohen, the inventor of the Futurama comics with many "
-"mathematical references, introduced the variant with burnt pancakes and "
-"studied its complexity with Manuel Blum in 1993."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:14
-msgid ""
-"An article of 2012 (by L. Bulteau, G. Fertin and I. Rusu) proved that "
-"determining the minimal amount of flips to sort the stack is a NP-complete "
-"problem. Naturally, the stack sorting problem is not NP-complete since it "
-"can be solved in 2n-3 steps with the naive algorithm and (5n+5)/3 steps with "
-"the Gates algorithm.  That's determining the minimal amount of steps that is "
-"NP."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:19
-msgid "Further information can be found on the wikipedia page, as usual."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/Main.html:22
-msgid ""
-"This activity is also integrated to CSIRL (my repository of <i>free</i> "
-"unplugged activities to introduce computer science, available at "
-"http://www.loria.fr/~quinson/Mediation/SMN/), and it may be interesting to "
-"run the unplugged activities before implementing these algorithms in PLM."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:33
-msgid "A temporal view similar to the sorting universe could be helpful"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/Main.html:34
-msgid "Other exercises, for example on the Cohen's algorithm, or on the other ones."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/sort/pancake/short_desc.html:1
-msgid "The pancake problem"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/short_desc.html:3
-msgid "Help the poor psychorigid pancakes' chef to sort its pancake stack!"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/short_desc.html:5
-msgid ""
-"This funny problem leads to algorithms that are somewhat more challenging to "
-"implement. You are supposed to master the bases of programming and some "
-"sorting algorithms to take this lesson."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BasicPancake.html:3
-msgid ""
-"The pancake sorting problem this is a simple puzzle where you have a set of "
-"pancakes, each of differing size. The chef cooking the pancake is a bit "
-"psychorigid: he hates when the pancakes are not correctly sorted on the "
-"plate. He loves when they are correctly ordered, with the small ones over "
-"the larger ones. As every pancake maker, he masters the pancake flipping "
-"with his spatula. He can flip the pancake on top of the stack, or even "
-"several pancakes at once. The thing is that he has only one plate and the "
-"table is too dirty to place pancakes on it, even temporary. The only allowed "
-"operation is to flip some pancakes that are on top of the stack."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BasicPancake.html:12
-msgid ""
-"Your work is to help this poor guy sorting his stack by flipping the "
-"pancakes. Each pancake is defined by its radius and rank within the stack, "
-"where the bottom pancake is at rank 0, and the one above at rank 1."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BasicPancake.html:16
-msgid ""
-"Note that you can play physically with pieces of paper or wood at first to "
-"get the grasp on this problem. This is even one of the activities that I use "
-"in my CS-IRL (computer science in real life) project to introduce the "
-"concept of algorithm to absolute beginners that wonder about our "
-"science. More information at http://www.loria.fr/~quinson/Mediation/SMN/ (in "
-"French)."
-msgstr ""
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:22
-msgid "I don't get it. I need some help."
-msgstr ""
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:23
-msgid ""
-"You should try to first move the largest pancake to the bottom, and then the "
-"largest but one pancake on top of it, and then the one just smaller on top, "
-"and so on."
-msgstr ""
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:27
-msgid "The first tip was not enough. I need another one."
-msgstr ""
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:28
-msgid "So first, you need to move the largest pancake at the bottom of the stack."
-msgstr ""
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:29
-msgid ""
-"Can you imagine a situation in which you can easily bring this damn large "
-"pancake to the bottom?"
-msgstr ""
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/BasicPancake.html:30
-msgid "How could you reach this situation from the current one?"
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/BurnedPancake.html:1
-msgid "Burned Pancakes"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/BurnedPancake.html:3
-msgid ""
-"Hard blow for the chef! The pancakes got burnt on one side! There is no way "
-"he can deliver a stack of pancakes with visibly burnt pancakes! You've got "
-"to help him ensuring that no pancake is upside-down while sorting his stack."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/pancake/GatesPancake.html:1
-msgid "Faster Pancake Sorting"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:3
-msgid ""
-"Unlike others sorting problem, the expensive operation is not the comparison "
-"of values, but the flipping of pancakes. In this exercise, we will explore "
-"another algorithm that attempt to reduce the amount of stack flipping. The "
-"funny side is that this algorithm was first introduced by Bill Gates, before "
-"invented Windows."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:8
-msgid ""
-"The basic idea is to grow sequences of sorted pancakes, not necessarily "
-"starting from the bottom.  We say that a sequence of ordered pancakes "
-"constitute a <b>bloc</b> while a pancake that is not part of a bloc is said "
-"to be <b>free</b>. The algorithm then considers the topmost pancake (of "
-"radius <code>t</code>) and search for the <code>t+1</code> or "
-"<code>t-1</code> pancakes (the considered neighbor is noted "
-"<code>t+o</code>). Eight cases may happen:"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:15
-msgid ""
-"<b>Case a</b>: Both <code>t</code> and <code>t+o</code> are free. They are "
-"then merged in one flip."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:19
-msgid ""
-"<b>Case b</b>: <code>t</code> is free, and <code>t+o</code> is the first of "
-"a block. They are merged in one flip."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:24
-msgid ""
-"<b>Case c</b>: <code>t</code> is free but both <code>t-1</code> and "
-"<code>t+1</code> are the last elements of blocks.  Both blocs and "
-"<code>t</code> are merged all together in 4 flips.  Beware, if either "
-"<code>t-1</code> or <code>t+1</code> does not exist (because <code>t</code> "
-"is 0 or max), only two flips are mandated."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:32
-msgid ""
-"<b>Case d</b>: <code>t</code> is in a block but <code>t+o</code> is "
-"free. They are merged in one flip."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:37
-msgid ""
-"<b>Case e</b>: <code>t</code> is in a block and <code>t+o</code> is the "
-"first element of a block. They are merged in one flip."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:41
-msgid ""
-"<b>Case f</b>: <code>t</code> is in a block and <code>t+o</code> is the last "
-"element of another block.  They are merged in 3 flips as follows."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:45
-msgid ""
-"<b>Case g</b>: <code>t</code> is in a block of length k+1 (the last element "
-"is <code>t+ko</code>), <code>t+(k+1)o</code> is either free or the last "
-"element of another block. Both blocks are merged in 2 flips:"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:48
-msgid ""
-"<b>Case h</b>: <code>t</code> is in a block of length k+1 (the last element "
-"is <code>t+ko</code>), <code>t+(k+1)o</code> is the first element of another "
-"block (the difference with case g is that <code>t+(k+1)o</code> is now the "
-"<i>first</i> element of its block). Both blocks are merged in 2 flips:"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/pancake/GatesPancake.html:54
-msgid ""
-"<b>Case i</b>: <code>t</code> is in a block of length <code>n</code> (this "
-"block contains all pancakes).  If <code>t</code> is not 1, the whole stack "
-"is fliped. The algorithm then stops."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:57
-msgid ""
-"Each iteration increases the size of the blocks, so the algorithm eventually "
-"halts in all cases. A finer analysis would show that it takes at most "
-"<code>(5n+5)/3</code> steps to sort the stack. That's better than the naïve "
-"algorithm, that requires 2n-3 steps."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/sort/pancake/GatesPancake.html:60
-msgid "Your turn"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:61
-msgid ""
-"You now have almost enough information to implement this algorithm on your "
-"own. We just have to remove the last remaining ambiguities to ensure that "
-"you implement exactly the same algorithm that the correction. If several "
-"cases apply to your situation, then you should use the first given one. For "
-"example, if both cases a and b apply (e.g., with <code>t-1</code> on case "
-"<b>a</b> and <code>t+1</code> on case <b>b</b>), then you should apply the "
-"flips of case <b>a</b>. If a given case applies for both <code>t+1</code> "
-"and <code>t-1</code>, then you should apply it to <code>t+1</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/pancake/GatesPancake.html:67
-msgid ""
-"Note that it is somehow harder than the other exercises we did so far, so "
-"don't be surprised if you need more time to achieve this.  But do not give "
-"hope, you can do it!"
-msgstr ""
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:70
-msgid "Well, I need some help to start."
-msgstr ""
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:71
-msgid ""
-"First write some helper functions such as <code>isFirst()</code> or "
-"<code>isFree()</code>. This will simplify your main algorithm afterward, "
-"that can be written very similarly to the explication above with a bunch of "
-"if conditions. Factorizing code this way often helps making your code more "
-"readable."
-msgstr ""
-
-#. type: Attribute 'alt' of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:78
-msgid "My code keeps failing and I don't know how to debug it."
-msgstr ""
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:79
-msgid ""
-"To debug one world after the other and avoid that the messages of all worlds "
-"get intermixed, you can write your debug function only if the method "
-"<code>isSelected()</code> returns true. It will be so only for the entity "
-"that is currently selected in the graphical interface, that is probably the "
-"world you are currently debugging. This will help breaking the difficulty in "
-"parts by debugging the situation on after the other."
-msgstr ""
-
-#. type: Content of: <p><div>
-#: src/lessons/sort/pancake/GatesPancake.html:85
-msgid ""
-"In particular, it may help to print textually the state of the world each "
-"time you enter the main loop."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/Main.html:1
-msgid "The Rainbow Baseball Game"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:3
-msgid ""
-"This activity is inspired from the orange game, from the \"Computer Science "
-"Unplugged\" activities repository.  It was however heavily since then, first "
-"for the CSIRL (my repository of <i>free</i> unplugged activities to "
-"introduce computer science, available at "
-"http://www.loria.fr/~quinson/Mediation/SMN/) and now for PLM."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:7
-msgid ""
-"In the literature, the generalized form of this problem is known as the "
-"pebble motion problem (the bases can be connected by any kind of graph, and "
-"the affinity of pebbles with bases may be different). Another variant of "
-"this problem is the well known 15-puzzle, with one player per base, and a "
-"two dimensional square grid. Much more information about these problems can "
-"be found on wikipedia, as usual."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/sort/baseball/Main.html:12
-msgid ""
-"How do you know that the naive algorithm won't loop on that initial "
-"situation?"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:14
-msgid ""
-"Well, we simply tested all possible situations to see when this algorithm "
-"loops and when it finds the correct solution. We found that it works for all "
-"situations where no player is at home (there is 84 such situations for 4 "
-"bases, once you take the symmetries into account). It obviously works for "
-"some situations that do not respect this criteria (such as all situations it "
-"encounters from one of those 84 boards to the final state), but that's "
-"another story. Having such a criteria allows us to generate pseudo-random "
-"initial situations for the first exercise for which the algorithm we propose "
-"is guarenteed to work."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/Main.html:21
-msgid ""
-"We also explored bigger instances of the problem, and unfortunately, we have "
-"no such criteria for them.  With 5 bases, the algorithm wrongly loops for 24 "
-"of the 1824 possible boards where no player is home (that's 1.31%).  With 6 "
-"bases, it fails on 1251 of the 58860 such boards (2.12%). With 7 bases, it "
-"fails for 84444 out of 2633940 (that's 3.2%). I am still looking for a "
-"criteria ensuring that the algorithm won't loop. If you discover one, please "
-"report it. Ideally, it would be simple to enforce manually so that we can "
-"use it during our unplugged activities."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:31
-msgid ""
-"Other graphical representations could be proposed, such as a linear one (for "
-"the existing exercises) or other ones (such as a grid or a tree, if an "
-"exercise on this kind of graph proves interesting)."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/sort/baseball/Main.html:33
-msgid ""
-"Other exercises on other algorithms on this variant, or on other variants "
-"such as the 15-puzzle."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/sort/baseball/short_desc.html:1
-msgid "Rainbow baseball"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/short_desc.html:3
-msgid ""
-"This is another funny variation on the sorting problem, adapting the main "
-"sorting algorithms on an unusual context."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:1
-msgid "Rainbow Baseball"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:2
-msgid ""
-"The colors are represented by integers, between <code>0</code> and "
-"<code>amount of bases -1</code>.  The hole is represented by the special "
-"value <code>-1</code>.  The color of each base is its rank. So base "
-"<code>1</code> is of color <code>1</code>.  In the graphical interface, the "
-"base <code>0</code> is the dark blue one while the base <code>1</code> is "
-"the fuscia one."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:8
-msgid ""
-"Once every players on the field are in their home base, the hole should be "
-"in the last base, that is of rank <code>getBasesAmount()-1</code>."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:11
-msgid "Functions to retrieve the world's dimensions"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:13
-#, no-wrap
-msgid "[!java]int [/!]getBasesAmount() [!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:14
-msgid "Returns the amount of bases on this field."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:16
-#, no-wrap
-msgid "[!java]int [/!]getPositionsAmount() [!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:17
-msgid "Returns the amount of player's positions per base on this field."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:19
-msgid "Functions to retrieve the world's state"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:21
-#, no-wrap
-msgid "[!java]int [/!]getHoleBase() [!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:22
-msgid "Returns the base in which the hole is located."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:24
-#, no-wrap
-msgid "[!java]int [/!]getHolePosition() [!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:25
-msgid "Returns the hole position within its base"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:27
-#, no-wrap
-msgid ""
-"[!java]int [/!]getPlayerColor([!java]int [/!]base[!scala]:Int[/!], "
-"[!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:28
-msgid "Returns the color of the player at a given location."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:30
-#, no-wrap
-msgid "[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:31
-msgid "Returns whether all players of the field are at home."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:33
-#, no-wrap
-msgid "[!java]boolean [/!]isBaseSorted([!java]int [/!]base)  [!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:34
-msgid "Returns whether all players of a given base are at home."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:36
-#, no-wrap
-msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:37
-msgid "Returns whether the current world is selected in the interface."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:38
-msgid "Functions to change the world"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:40
-#, no-wrap
-msgid ""
-"[!java]void [/!]move([!java]int [/!]base[!scala]:Int[/!], [!java]int "
-"[/!]position[!scala]:Int[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/sort/baseball/universe/BaseballWorld.html:41
-msgid ""
-"Moves a given player into the hole. This throws an IllegalArgumentException "
-"if the specified player is not near the hole (at most one base away)."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/NaiveBaseball.html:1
-msgid "Naive Rainbow Baseball"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:3
-msgid ""
-"Today, the buggles decided to play a baseball game, but they are rather out "
-"of luck, actually.  First, kinda forgot the rules, and ... well ... they "
-"cannot find the ball and bats again.  So they decided to \"adapt a bit\" the "
-"rules. As the are no ball, the buggles can only running around the field, "
-"what they do happily: for a while, all attending buggle run at full speed in "
-"all directions around the field."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:9
-msgid ""
-"But after a few collisions, they decide to invent new rules to organize a "
-"bit the game: They make one team per base and two players per team. One of "
-"the teams has only one player so that its base has an empty location. Then, "
-"the players are dispatched randomly around the bases, and the game for them "
-"is to reach their home base. The whole game stops when all players are "
-"home.  There is no winning team: either all players win, or they all "
-"lose. Actually, this game is very different from the original baseball. The "
-"only rule that remains is that you can only run around the field, from one "
-"base to the next one, without crossing middle of the field."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:17
-msgid ""
-"Now, they are asking you to help them deciding who and when should move so "
-"that each player returns to its base. Only one buggle can move at each "
-"round, from its position to the empty spot.  The maximal distance that a "
-"buggle can cover in one round is of one base."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:21
-msgid ""
-"So, at each round, the empty spot is on one base (say <code>B</code>), and "
-"you should decide which buggle enters that empty spot. There is four "
-"candidates (two from base <code>B-1</code> and two from base "
-"<code>B+1</code>). Actually, there is a fifth candidate since the buggle "
-"that is on the same base than the empty spot can change its position, but "
-"that's not really helping."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/sort/baseball/NaiveBaseball.html:26
-msgid "The Naïve algorithm"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:28
-msgid ""
-"In this exercise, we will first explore a very simple algorithm. To decide "
-"which of the four candidate buggles should enter the empty spot, we first "
-"restrict ourselves and decide that buggles can only turn clockwise. Then, "
-"from the two remaining candidates, we pick the one that has the largest "
-"distance to cover to reach its base (turning clockwise). Click on the demo "
-"button: this works rather well in practice."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:34
-msgid ""
-"It's hard to find a simpler algorithm for this problem: While it's not "
-"sorted, search for the base containing the candidate buggles: if the hole is "
-"in base <code>B</code>, it's the base <code>B+1</code>, modulo the amount of "
-"bases. Then, compute the distance that each buggle of that base still has to "
-"run to reach its base (0 if it's already home). Once you found the buggle "
-"that should enter the empty spot, just use the <code>move</code> method on "
-"it, and iterate."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/NaiveBaseball.html:40
-msgid ""
-"The main difficulty should be to get the few equations right: determining "
-"the base next to the hole should be easy, but determining the distance that "
-"a player has to cover may reveal a bit more challenging. Don't hesitate to "
-"draw pictures on a paper to cover all possible cases. It should not be that "
-"difficult either: there is not that many cases after all."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/SelectBaseball.html:1
-msgid "Selection Baseball"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:3
-msgid ""
-"The previous algorithm is very pleasant: it's rather simple and rather fast "
-"to implement, but unfortunately, it is also rather wrong! In some cases, it "
-"never stops, which is obviously bad. If you don't believe it, just copy "
-"paste your previous code, and hit the run button. The first world of this "
-"exercise is one of these unfortunate situations that drives our previous "
-"algorithm crazy."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:9
-msgid ""
-"So we have to find another algorithm, preferably one that works in all "
-"cases."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:11
-msgid ""
-"For that, the best solution is to start from a well known algorithm instead "
-"of trying to invent a new one from scratch as we just did. When you think a "
-"bit about this problem, this can is very similar to a sorting problem: Just "
-"make sure that the players are sorted by their colors and you're set. And "
-"while we are at it, let's generalize the game to allow more that 4 bases."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:17
-msgid ""
-"Let's adapt the selection sort to our situation. The big lines of the "
-"algorithm is then \"for each base, select the players that should occupy "
-"this base and make sure that they come to their position\". This way, we "
-"will grow an sorted area where all players are already sorted (and never "
-"changed) while the unsorted area shrinks."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:23
-msgid ""
-"Selecting the player should be no problem; Do not hesitate to define some "
-"methods such as <code>findPlayer()</code> or "
-"<code>findPlayerBase()</code>. This will ensure that your code remains "
-"understandable."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:27
-msgid ""
-"The most problematic aspect is to move the selected players into "
-"position. For that, you have to move the hole to the position where the "
-"player is, and then move both the player and the hole to the base that is "
-"next to the player's goal (probably in a loop), and finally put the player "
-"in the right position of its target base."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/SelectBaseball.html:32
-msgid ""
-"As often in programming, the devil is in the details: there is a bunch of "
-"corner cases that you should detect and deal with correctly, such as the "
-"cases where the player is already in the base (but not in the position that "
-"you would like), or when the hole is on the right of the player (probably "
-"when you sort the first base). But you will find and hunt these while "
-"debugging your code."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/InsertBaseball.html:1
-msgid "Insertion Baseball"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:3
-msgid ""
-"The good point of adapting the selection sort to the baseball problem is "
-"that we know that it works (provided that our adaptation is correct). That's "
-"much better than the first naive algorithm, that was unable to converge to "
-"the solution in some situations. But actually, the selection sort is not "
-"perfect either as it requires a lot of swaps: we have to bring the hole to "
-"the selected player and then both the player and hole in position, and "
-"more. We can do better."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:9
-msgid ""
-"For example, each player can run quite a long way from its initial position "
-"to its target solution.  Instead, it may be more interesting to split the "
-"field in two parts: one on the left where all players are sorted relatively "
-"to each others, and one on the right where the players are still at their "
-"initial positions. Then, at each iteration, we take the player at the border "
-"between the sorted and unsorted areas (that is, the left-most player of the "
-"unsorted area) and move it to the left (within the sorted area) until it "
-"reaches its position (that is, until the position where it's bigger that its "
-"left neighbor). This would at least reduce the travel of players to the "
-"sorted area as we use the first one on the border."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:18
-msgid ""
-"Actually, that's exactly what an insertion sort would do: maintain a sorted "
-"area on the left, and put iteratively the player on the border to its "
-"position within the sorted area. This is good, as we know that our algorithm "
-"is not inherently flawed since we adapt a well known one."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:22
-msgid ""
-"The easiest to adapt the insertion sort to the baseball problem is to "
-"consider all positions as adjacent and forget about bases. For that, we "
-"define the methods <code>getColor(pos)</code>, <code>move(pos)</code> and "
-"<code>getHole()</code> that all use a unique integer to designate a given "
-"position. These functions simply convert between the way to specify a "
-"position and then call the usual functions to interact with the world. If "
-"you have an <code>index</code> and want to convert it into a "
-"<code>base,pos</code>, then <code>base=index/2</code> and "
-"<code>pos=index%2</code>. To compute the reverse, "
-"<code>index=base*2+pos</code> (this works because "
-"<code>getPositionsAmount()</code> always returns 2)."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:31
-msgid ""
-"For the algorithm itself, you should first move the hole to the position "
-"1. The position 0 is considered to be the sorted area (of size 1 for now) "
-"while the area above 2 is the unsorted area.  Then comes an iteration to "
-"sort each element of the unsorted area. Since this iteration is a bit "
-"complex, you should think of its loop invariant, that is, the condition that "
-"is true before and after the loop and which explains that the loop fulfills "
-"its goal. Here, the loop invariant is twofold: First, the hole is between "
-"the sorted area and the unsorted area, and then, the every elements of the "
-"sorted area are ... well sorted relatively to their neighbors."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:39
-msgid ""
-"Then, the loop body to sort an element should first descend the hole and the "
-"elements within the sorted area until the element is larger than the element "
-"before in the sorted area (2 moves per position to travel), and then move "
-"the hole back to its position between the sorted and unsorted areas (1 move "
-"per position)."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/InsertBaseball.html:43
-msgid ""
-"Once you insert the last element within the sorted area, your whole set is "
-"sorted and you're done.  I preserve the surprise of the border cases that "
-"will require some little adjustments to your algorithm to make it work "
-"properly :)"
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/sort/baseball/BubbleBaseball.html:1
-msgid "Bubble Baseball"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:3
-msgid ""
-"Crap, we adapted the insertion sort because our selection sort required too "
-"much moves to get the selected players to their position, but the insertion "
-"sort requires an inordinate amount of changes to get the border elements to "
-"their position within the sorted area without mixing the already sorted "
-"elements. At the end of the day, our selection variant was more efficient "
-"with at most <code>3*amountOfBase</code> moves to sort one element (1 to get "
-"the hole alongside with the player, and 2 to get the hole+player in "
-"position) while our insertion variant requires at most "
-"<code>3*amountOfPlayers</code> to sort one element (2 to descend the hole "
-"and player in position, 1 to get the hole back to its position). That's "
-"twice as bad as there is two players per base. It may be possible to improve "
-"the insertion sort by moving by more than one element when descending, but "
-"it seems uneasy (at least, while not mixing the already sorted elements) and "
-"it would probably only ensure that our insertion variant becomes as "
-"efficient as our selection variant, not dramatically better."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:15
-msgid ""
-"If we cannot make the sort faster, we can make it easier. If you think about "
-"it, it seems rather natural to adapt the bubble sort to this problem: the "
-"hole becomes the bubble that moves up and down, sorting a bit the array "
-"during each traversal. The big lines are simply: \"while it's not sorted, "
-"move the hole down to base 0 (moving the biggest player of each base at each "
-"step) and then back to the maximal base (moving the smallest player of each "
-"base)\". After a while, <code>isSorted()</code> will return true and your "
-"algorithm will stop."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:21
-msgid ""
-"This is so easy that we introduce another variant of the problem, with more "
-"than two players per base.  But actually, that shouldn't block you very "
-"long, should it?"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/sort/baseball/BubbleBaseball.html:24
-msgid ""
-"Surprisingly, the bubble sort variant requires ways less moves than the "
-"other variants. This is astonishing because usually, the bubble sort "
-"performs much worse than the others sorts, but it comes from the very good "
-"match between its big lines and the baseball universe. It actually happens "
-"rather often that a pleasantly written algorithm performs very decently. But "
-"this is not an universal rule either, as demonstrated by the naive algorithm "
-"of the first exercise, that was nice, simple and wrong ;)"
-msgstr ""
-
 #. type: Content of: <h3>
 #: src/lessons/turtleart/Main.html:1 src/lessons/turtleart/short_desc.html:1
 msgid "Turtle Art"
@@ -10530,7 +10888,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/turtleart/short_desc.html:4
+#: src/lessons/turtleart/short_desc.html:5
 msgid ""
 "You should know the basic syntax of the programming language you will "
 "choose, but no exhaustive programming practice is required to take this "

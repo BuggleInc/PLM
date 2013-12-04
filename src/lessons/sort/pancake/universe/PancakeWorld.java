@@ -35,7 +35,7 @@ public class PancakeWorld extends World {
 	// http://omgwtflols.deviantart.com/art/Pixel-Art-Pancakes-with-syrup-298700868
 	@Override
 	public ImageIcon getIcon() {
-		return ResourcesCache.getIcon(this,"../img/world_pancake.png");
+		return ResourcesCache.getIcon(this,"world_pancake.png");
 	}
 	PancakeFlipButtonPanel panel = null;
 	/** Returns the panel which let the user to interact dynamically with the world */
@@ -113,7 +113,7 @@ public class PancakeWorld extends World {
 	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof PancakeWorld))
-			return Game.i18n.tr("This is not a world of pancakes :-(");
+			return Game.i18n.tr("This is not a world of pancakes");
 
 		PancakeWorld other = (PancakeWorld) o;
 		if (pancakeStack.length != other.pancakeStack.length)
@@ -122,7 +122,7 @@ public class PancakeWorld extends World {
 		StringBuffer res = new StringBuffer();
 		for ( int i = 0;i< pancakeStack.length;i++) 
 			if ( !pancakeStack[i].equals(other.pancakeStack[i], burnedWorld)) 
-				res.append(" Pancake #"+(i+1)+" differs: "+pancakeStack[i].toString() +" vs "+other.pancakeStack[i].toString()+"\n");
+				res.append(Game.i18n.tr(" Pancake #{0} differs: {1} vs. {2}\n",(i+1),pancakeStack[i].toString(),other.pancakeStack[i].toString()));
 
 		return res.toString();
 	}
@@ -154,6 +154,7 @@ public class PancakeWorld extends World {
 
 		this.burnedWorld = other.burnedWorld;
 		this.lastMove = other.lastMove;
+		this.moveCount = other.moveCount;
 		super.reset(world);		
 	}
 
@@ -235,7 +236,7 @@ public class PancakeWorld extends World {
 	 */
 	public int getPancakeRadius(int rank) {
 		if ( rank < 0 || rank >= getStackSize())
-			throw new IllegalArgumentException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()));
+			throw new IllegalArgumentException(Game.i18n.tr("Cannot get the radius of pancake #{0} because it''s not between 0 and {1}",rank, getStackSize()-1));
 
 		return pancakeStack[rank].getRadius();
 	}

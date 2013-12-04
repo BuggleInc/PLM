@@ -21,7 +21,7 @@ public class SleepIn extends BatExercise {
 				"    return not weekday or vacation\n");
 		templateScala("sleepIn", new String[] {"Boolean","Boolean"},
 				"def sleepIn(weekday:Boolean, vacation:Boolean): Boolean = {\n",
-				"  return !weekday || vacation;\n"
+				"  return !weekday || vacation;\n"
 				+ "}\n");
 		setup(myWorld);
 	}
