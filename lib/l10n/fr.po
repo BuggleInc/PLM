@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2013-10-18 20:50+0300\n"
-"PO-Revision-Date: 2013-10-18 21:16+0200\n"
+"PO-Revision-Date: 2013-12-16 17:58+0100\n"
 "Last-Translator: Martin Quinson\n"
 "Language-Team: none\n"
 "Language: French\n"
@@ -13319,11 +13319,7 @@ msgid ""
 "that appears in both numbers, such as the 2 in 12 and 23. (Note: division, e."
 "g. n/10, gives the left digit while the % \"mod\" n%10 gives the right "
 "digit.)"
-msgstr ""
-"Soit deux entiers, chacun étant dans l'intervalle [10,99], renvoyez vrai si "
-"il y a un chiffre qui apparait dans les deux nombres, comme 2 dans 12 et 23. "
-"(Note: division, i.e.  n/10, renvoie le chiffre à gauche tant que le % \"mod"
-"\" n%10 renvoye le bon chiffre.)"
+msgstr "Soit deux entiers, chacun étant dans l'intervalle [10,99], renvoyez vrai si il y a un chiffre qui apparaît dans les deux nombres, comme 2 dans 12 et 23. (Note: division, i.e.  n/10, renvoie le chiffre à gauche tant que le % \"mod\" n%10 renvoie le bon chiffre.)"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/SortaSum.html:1
@@ -14733,10 +14729,7 @@ msgid ""
 "Given an array of integers, we'll say that a triple is a value appearing 3 "
 "times in a row in the array. Return true if the array does not contain any "
 "triples."
-msgstr ""
-"Soit un tableau d'entiers, on dira qu'un triplet est une valeur qui apparait "
-"3 fois à la suite dans le tableau. Renvoyez vrai si le tableau ne contient "
-"pas de triplet."
+msgstr "Soit un tableau d'entiers, on dira qu'un triplet est une valeur qui apparaît 3 fois à la suite dans le tableau. Renvoyez vrai si le tableau ne contient pas de triplet."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/array/has271/Has271.html:1
