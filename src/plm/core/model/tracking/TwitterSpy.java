@@ -24,6 +24,7 @@ public class TwitterSpy implements ProgressSpyListener {
 		  .setOAuthConsumerSecret(Game.getProperty("plm.oauth.consumerSecret"))
 		  .setOAuthAccessToken(Game.getProperty("plm.oauth.accessToken"))
 		  .setOAuthAccessTokenSecret(Game.getProperty("plm.oauth.tokenSecret"));
+		cb.setUseSSL(true);
 		TwitterFactory tf = new TwitterFactory(cb.build());
 	    twitter = tf.getInstance();
 	}
