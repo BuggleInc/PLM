@@ -2,21 +2,21 @@
 # Copyright (C) 2013 Martin Quinson
 # This file is distributed under the same license as the PLM itself
 # Martin Quinson <martin.quinson@loria.fr>, 2013
-#
+# Martin Quinson <Martin.Quinson@loria.fr>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-11-13 15:44+0100\n"
-"PO-Revision-Date: 2013-11-13 15:51+0100\n"
-"Last-Translator: Martin Quinson <martin.quinson@loria.fr> and Frank STENGEL "
-"<fstengel@mac.com>\n"
-"Language-Team: not really\n"
-"Language: French\n"
+"PO-Revision-Date: 2014-01-18 21:07+0200\n"
+"Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
+"Language-Team: Martin.quinson@loria.fr\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #: src/lessons/maze/island/IslandMazeEntity.java:10
 #: src/lessons/maze/pledge/PledgeMazeEntity.java:10
@@ -187,7 +187,7 @@ msgstr "Trieur de drapeau"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:102
 msgid "This world is not a dutch flag"
-msgstr "Ce monde n'est pas un drapeau Holandais"
+msgstr "Ce monde n'est pas un drapeau hollandais"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:106
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:120
@@ -203,12 +203,16 @@ msgstr " La ligne #{0} est différente : la couleur {1} n''est pas la couleur {2
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:180
 #, java-format
 msgid "Cannot swap {0} and {1} because {2} is not between 0 and {3}"
-msgstr "Impossible d''échanger les lignes {0} et {1} car {2} n''est pas entre 0 et {3}"
+msgstr ""
+"Impossible d''échanger les lignes {0} et {1} car {2} n''est pas entre 0 et "
+"{3}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:197
 #, java-format
 msgid "Cannot get the color of line #{0} because it''s not between 0 and {1}"
-msgstr "Impossible d''obtenir la couleur de la ligne numéro {0} car ce n''est pas entre 0 et {1}"
+msgstr ""
+"Impossible d''obtenir la couleur de la ligne numéro {0} car ce n''est pas "
+"entre 0 et {1}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:232
 #, java-format
@@ -217,7 +221,8 @@ msgid ""
 "information:\n"
 "Initial situation: {0}"
 msgstr ""
-"Ce n''est toujours pas trié !! MERCI DE RAPPORTER CE PROBLÈME, avec les informations suivantes:\n"
+"Ce n''est toujours pas trié !! MERCI DE RAPPORTER CE PROBLÈME, avec les "
+"informations suivantes:\n"
 "Situation initiale: {0}"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorldView.java:145
@@ -238,7 +243,7 @@ msgstr "Ce n'est pas un monde de crêpes"
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:125
 #, java-format
 msgid " Pancake #{0} differs: {1} vs. {2}\n"
-msgstr " La crèpe numéro {0} diffère : {1} vs {2}\n"
+msgstr " La crêpe numéro {0} diffère : {1} vs {2}\n"
 
 #: src/lessons/sort/pancake/universe/PancakeWorld.java:203
 #, java-format
@@ -431,8 +436,7 @@ msgstr ""
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
-msgstr ""
-"Erreur UnboundLocal : vous utilisez probablement une variable qui n'est pas "
+msgstr "Erreur UnboundLocal : vous utilisez probablement une variable qui n'est pas "
 "déclarée, ou quelque chose du genre.\n"
 
 #: src/plm/core/PythonExceptionDecipher.java:44
@@ -504,8 +508,7 @@ msgstr ""
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
-msgstr ""
-"Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. "
+msgstr "Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. "
 "Utilisation de Java à la place.\n"
 
 #: src/plm/core/model/Game.java:174
@@ -543,7 +546,7 @@ msgstr "Erreur {0} lors de l''obtention du numéro de version de Scala: {1}"
 msgid "Scala is too ancient. Found {0} while I need 2.10 or higher."
 msgstr ""
 "Scala est trop vieux. PLM nécessite la version 2.10 ou supérieure, mais la "
-"version trouvée est : {0}"
+"version trouvée est : {0}."
 
 #: src/plm/core/model/Game.java:253
 msgid ""
@@ -551,7 +554,7 @@ msgid ""
 "in the classpath?"
 msgstr ""
 "Impossible de démarrer un engin de script pour python. Est ce que jython.jar "
-"et ses dépendences sont dans le classpath?"
+"et ses dépendances sont dans le classpath ?"
 
 #: src/plm/core/model/Game.java:276
 #, java-format
@@ -616,8 +619,7 @@ msgid ""
 "language in PLM.\n"
 "\n"
 msgstr ""
-"Veuillez installer jython et ses dépendences pour utiliser la PLM en "
-"python.\n"
+"Veuillez installer jython et ses dépendances pour utiliser la PLM en python.\n"
 "\n"
 
 #: src/plm/core/model/Game.java:915
@@ -730,7 +732,7 @@ msgstr ""
 msgid ""
 "Parser error in file {0}. This is a parser bug (state={1}), please report."
 msgstr ""
-"Error d''analyse à la lecture du fichier {0}. C''est un bug de l''analyseur "
+"Erreur d''analyse à la lecture du fichier {0}. C''est un bug de l''analyseur "
 "(état={1}), merci de faire un rapport."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:192
@@ -769,15 +771,15 @@ msgstr "{0}: aucune entité trouvée. Vous devriez corriger vos réglages."
 #: src/plm/core/model/lesson/ExerciseTemplated.java:381
 #, java-format
 msgid "World {0} is broken ({1}). Recompute all answer worlds."
-msgstr "Le monde {0} est cassé ({1}). Recalcul de tous les mondes solutions."
+msgstr "Le monde {0} est cassé ({1}). Recalcule tous les mondes solutions."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:385
 #, java-format
 msgid ""
 "IO exception while reading world {0} ({1}). Recompute all answer worlds."
 msgstr ""
-"Exception d''entrée/sortie lors de la lecture du monde {0} ({1}). Recalcul "
-"de tous les mondes solutions."
+"Exception d''entrée/sortie lors de la lecture du monde {0} ({1}). Recalcule "
+"tous les mondes solutions."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:396
 #, java-format
@@ -785,13 +787,13 @@ msgid ""
 "Recompute the answer of {0} despite the cache file, as requested by the "
 "property {1}"
 msgstr ""
-"Recalcul de la solution de {0} malgré le fichier de cache, comme demandé par "
+"Recalcule la solution de {0} malgré le fichier de cache, comme demandé par "
 "la propriété {1}."
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:421
 #, java-format
 msgid "Error while writing answer world of {0}:"
-msgstr "Erreur lors de l''écriture du monde de correction de {0}&nbsp;:"
+msgstr "Erreur lors de l''écriture du monde de correction de {0} :"
 
 #: src/plm/core/model/lesson/ExerciseTemplated.java:425
 #, java-format
@@ -887,6 +889,14 @@ msgid ""
 "li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
 "ul><br/>Your code is saved to {2}<br/></html>"
 msgstr ""
+"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version "
+"{0}&nbsp;<span style=\"font-size:8px; "
+"color:#AAAAAA;margin:0px;padding:0px;\">({1})</span></h3><br/>&copy; "
+"2008-2011 Contributeurs. Tous droits réservés.<br/><ul style=\"margin-"
+"left:20px;\"><li>Idée originale : <i>L. Turbak (Wellesley "
+"College)</i></li><li>Design et programmation : <i>M. Quinson et G. "
+"Oster</i></li><li>Tests : <i>les étudiants de Telecom Nancy (depuis la promo "
+"2011)</i></li></ul><br/>Votre code est sauvegardé dans {2}<br/></html>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:74
 msgid "About"
@@ -960,10 +970,10 @@ msgstr ""
 "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
 "</tr></table>\n"
 "\n"
-"<p><font size=\"+1\">PLM est une plate-forme pédagogique destinée à "
-"simplifier l'apprentissage de la programmation au travers d'exercices "
-"interactifs. De nombreux exercices sont proposés, pour vous permettre "
-"d'apprendre à votre rythme.</font></p><br/>"
+"<p><font size=\"+1\">PLM est une plate-forme pédagogique destinée à simplifier "
+"l'apprentissage de la programmation au travers d'exercices interactifs. De "
+"nombreux exercices sont proposés, pour vous permettre d'apprendre à votre "
+"rythme.</font></p><br/>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:132
 #: src/plm/core/ui/MainFrame.java:215
@@ -997,7 +1007,7 @@ msgstr ""
 
 #: src/plm/core/ui/ChooseLessonDialog.java:213
 msgid "<p><b>Your score:</b> "
-msgstr "<p><b>Votre score&nbsp;:</b> "
+msgstr "<p><b>Votre score :</b> "
 
 #: src/plm/core/ui/ChooseLessonDialog.java:221
 #, java-format
@@ -1039,8 +1049,7 @@ msgid ""
 "Please read it carfully to understand the problem, and fix your code.</html>"
 msgstr ""
 "<html>Erreur de compilation.<br>\n"
-"Vous trouverez ci dessous le message d''erreur détaillé renvoyé par {0}."
-"<br>\n"
+"Vous trouverez ci dessous le message d''erreur détaillé renvoyé par {0}.<br>\n"
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
 
@@ -1121,14 +1130,14 @@ msgstr ""
 "suggestions.</p><p>Veuillez écrire ici vos suggestions (si possible en "
 "français ou anglais),<br/>avec tous les détails nécessaires, et cliquez "
 "ensuite sur «envoyer».</p><p><b>N'oubliez pas d'indiquer votre email si vous "
-"voulez que nous vous contactions<br/>en retour</b>, mais NE DONNEZ JAMAIS UN "
-"MOT DE PASSE DANS UN FORMULAIRE DE CE GENRE.<br/></p><p>Notez que certaines "
-"données techniques (telles que votre version de PLM ou de Java)<br/>seront "
-"jointes à votre envoi, mais nous ne récoltons aucune donnée personnelle<br/"
-">de cette façon, et il faut que vous vous identifiez vous même si vous le "
-"souhaitez.</p><p>Une autre façon de rapporter du feedback sur PLM est "
-"d'utiliser <a href='http://github.com/oster/JLM/issues'>l'interface github</"
-"a>.</p></html>"
+"voulez que nous vous contactions<br/>en retour</b>, mais NE DONNEZ JAMAIS "
+"UN MOT DE PASSE DANS UN FORMULAIRE DE CE GENRE.<br/></p><p>Notez que "
+"certaines données techniques (telles que votre version de PLM ou de "
+"Java)<br/>seront jointes à votre envoi, mais nous ne récoltons aucune donnée "
+"personnelle<br/>de cette façon, et il faut que vous vous identifiez vous "
+"même si vous le souhaitez.</p><p>Une autre façon de rapporter du feedback "
+"sur PLM est d'utiliser <a "
+"href='http://github.com/oster/JLM/issues'>l'interface github</a>.</p></html>"
 
 #: src/plm/core/ui/FeedbackDialog.java:90
 msgid "Cancel"
@@ -1394,8 +1403,9 @@ msgid ""
 "<html>Export to cloud failed.<br/>{0}<br/>Caution! Your session is not saved "
 "yet.</html>"
 msgstr ""
-"<html>L''export de votre session dans le cloud a échoué.<br/>{0}<br/"
-">Attention! Votre session n''est pas encore sauvegardée.</html>"
+"<html>L''export de votre session dans le cloud a "
+"échoué.<br/>{0}<br/>Attention! Votre session n''est pas encore "
+"sauvegardée.</html>"
 
 #: src/plm/core/ui/action/ExportCloudSession.java:133
 msgid "Export error"
@@ -1445,7 +1455,7 @@ msgstr ""
 
 #: src/plm/core/ui/action/PlayDemo.java:28
 msgid "Impossible to run the demo right now"
-msgstr "Impossible de lançer la démo pour l'instant"
+msgstr "Impossible de lancer la démo pour l'instant"
 
 #: src/plm/core/ui/action/QuitGame.java:28
 msgid "Quit the application"
@@ -1551,8 +1561,8 @@ msgstr ""
 "Vous avez choisi d''éditer un texte traduit de mission ({0}).\n"
 "Ce n''est pas ainsi qu''il faut procéder. Les traductions sont gérées avec "
 "l''utilitaire po4a dans PLM.\n"
-"Veuillez vous référer à la documentation https://github.com/oster/JLM/wiki/"
-"Working-with-the-translations pour plus d''informations.\n"
+"Veuillez vous référer à la documentation https://github.com/oster/JLM/wiki"
+"/Working-with-the-translations pour plus d''informations.\n"
 "\n"
 "Continuer malgré tout ?"
 
@@ -1671,7 +1681,7 @@ msgid ""
 "The execution of your program raised a {0} exception: {1}\n"
 " Please fix your code.\n"
 msgstr ""
-"L''exécution de votre programme a déclanché une exception {0} : {1}\n"
+"L''exécution de votre programme a déclenché une exception {0} : {1}\n"
 " Merci de corriger votre code.\n"
 
 #: src/plm/universe/Entity.java:191
@@ -1686,8 +1696,7 @@ msgstr ""
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against PLM."
-msgstr ""
-"Pas de script {0} pour l''entité {1}. Merci de rapporter ce bug de PLM."
+msgstr "Pas de script {0} pour l''entité {1}. Merci de rapporter ce bug de PLM."
 
 #: src/plm/universe/Entity.java:235
 msgid "Received a ScriptException that does not come from Python.\n"
@@ -1720,7 +1729,7 @@ msgid ""
 "You tried to access a cell with Y={0}, but the maximal Y in this world is "
 "{1}."
 msgstr ""
-"Vous avez accedé à une cellule telle que Y={0}, mais le Y maximal pour ce "
+"Vous avez accédé à une cellule telle que Y={0}, mais le Y maximal pour ce "
 "monde est {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:172
@@ -1729,7 +1738,7 @@ msgid ""
 "You tried to access a cell with X={0}, but the maximal X in this world is "
 "{1}."
 msgstr ""
-"Vous avez accedé à une cellule telle que X={0}, mais le X maximal pour ce "
+"Vous avez accédé à une cellule telle que X={0}, mais le X maximal pour ce "
 "monde est {1}."
 
 #: src/plm/universe/bugglequest/AbstractBuggle.java:191
@@ -1825,7 +1834,7 @@ msgid ""
 "first line: {1})"
 msgstr ""
 "{0}.map : ce fichier ne semble pas être un BuggleWorld sérialisé (première "
-"ligne malformée : {1})"
+"ligne mal formée : {1})"
 
 #: src/plm/universe/bugglequest/BuggleWorld.java:142
 #, java-format
@@ -2073,8 +2082,7 @@ msgstr "copie"
 msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
-msgstr ""
-"C''est très bizarre. Il n''y a pas le même nombre de valeurs! J''en "
+msgstr "C''est très bizarre. Il n''y a pas le même nombre de valeurs! J''en "
 "attendais {0}, mais j''en ai {1}.\n"
 
 #: src/plm/universe/sort/SortingWorld.java:118
@@ -2103,8 +2111,8 @@ msgstr "Dépassement des bornes à l''appel de  echange({0},{1}) : {2}<0"
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
-"Dépassement des bornes à l''appel de la méthode echange({0},{1}) : {2}"
-">nombre de valeurs"
+"Dépassement des bornes à l''appel de la méthode echange({0},{1}) : "
+"{2}>nombre de valeurs"
 
 #: src/plm/universe/turtles/Line.java:75
 msgid "x1 differs."
