@@ -2,19 +2,20 @@
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the PACKAGE package.
 # Automatically generated, 2009.
-#
+# Martin Quinson <Martin.Quinson@loria.fr>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2013-10-18 20:50+0300\n"
-"PO-Revision-Date: 2013-12-16 17:58+0100\n"
-"Last-Translator: Martin Quinson\n"
-"Language-Team: none\n"
-"Language: French\n"
+"PO-Revision-Date: 2014-01-24 11:15+0200\n"
+"Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
+"Language-Team: Martin.quinson@loria.fr\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. type: Content of: <h2>
 #: lib/doc/MainWindow.html:1
@@ -1668,7 +1669,7 @@ msgid ""
 msgstr ""
 "Vous venez de lancer PLM, l'exerciseur du programmeur (Programmer's Learning "
 "Machine). Il s'agit d'une plate-forme pédagogique destinée à simplifier "
-"l'apprentissage de la programmation offrant un grand nombre d'exercises pour "
+"l'apprentissage de la programmation offrant un grand nombre d'exercices pour "
 "vous permettre de progresser à votre rythme."
 
 #. type: Content of: <h1>
@@ -1682,8 +1683,7 @@ msgid ""
 "<a href=\"plm://lessons.welcome\">Welcome lesson</a> This lesson is intended "
 "to lead the first steps in programming of absolute beginners."
 msgstr ""
-"<a href=\"plm://lessons.welcome\">Premiers pas</a> Cette leçon est destinée "
-"à\n"
+"<a href=\"plm://lessons.welcome\">Premiers pas</a> Cette leçon est destinée à\n"
 "guider les premiers pas en programmation de débutants sans aucune "
 "connaissance préalable."
 
@@ -1701,8 +1701,7 @@ msgid ""
 "<a href=\"plm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
 "on strings."
 msgstr ""
-"<a href=\"plm://lessons.bat.string1\">Chaînes</a> Quelques exercices sur "
-"les\n"
+"<a href=\"plm://lessons.bat.string1\">Chaînes</a> Quelques exercices sur les\n"
 "chaînes de caractères."
 
 #. type: Content of: <ul><li>
@@ -1711,8 +1710,7 @@ msgid ""
 "<a href=\"plm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
 "to discover the classical sorting algorithms by practice."
 msgstr ""
-"<a href=\"plm://lessons.sort\">Algorithmes de tri</a> Cette leçon vous "
-"propose\n"
+"<a href=\"plm://lessons.sort\">Algorithmes de tri</a> Cette leçon vous propose\n"
 "de découvrir les algorithmes classiques de tri par la pratique."
 
 #. type: Content of: <ul><li>
@@ -1731,9 +1729,8 @@ msgid ""
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
 msgstr ""
-"<a href=\"plm://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous "
-"devez\n"
-"programmer graphiquement un petit robot pour lui faire éteindre des\n"
+"<a href=\"plm://lessons.lightbot\">LightBot</a> Dans ce petit jeu, vous devez "
+"programmer graphiquement un petit robot pour lui faire éteindre des "
 "lumières. C'est un petit casse-tête pour programmeurs."
 
 #. type: Content of: <ul><li>
@@ -1742,8 +1739,8 @@ msgid ""
 "<a href=\"plm://lessons.smn\">Digital Manual Science</a> Some activities "
 "developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
 msgstr ""
-"<a href=\"plm://lessons.smn\">Sciences Manuelles du Numérique</a> "
-"Différentes activitées développées pour les Sciences Manuelles du Numérique"
+"<a href=\"plm://lessons.smn\">Sciences Manuelles du Numérique</a> Différentes "
+"activités développées pour les Sciences Manuelles du Numérique"
 
 #. type: Content of: <h1>
 #: src/lessons/chooser/Main.html:1
@@ -1757,7 +1754,7 @@ msgid ""
 "others."
 msgstr ""
 "Ce n'est pas une vraie leçon, c'est ici que vous pouvez choisir une leçon "
-"parmis les autres."
+"parmi les autres."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/Main.html:1 src/lessons/welcome/short_desc.html:1
@@ -2060,7 +2057,7 @@ msgid ""
 "for beginners."
 msgstr ""
 "Cette première leçon va vous guider dans vos premiers pas en programmation. "
-"Elle est destinée aux débutants. "
+"Elle est destinée aux débutants."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/short_desc.html:5
@@ -2247,8 +2244,8 @@ msgid ""
 msgstr ""
 "Le programme le plus simple est formé d'une suite d'ordres simples donnés à "
 "la machine. C'est assez comparable à une recette de cuisine où l'on dit "
-"<i>cassez les oeufs puis ajoutez du sel puis mélangez le tout puis faites "
-"cuire</i>. Dans les programmes, de tels instructions  sont appellées "
+"<i>cassez les œufs puis ajoutez du sel puis mélangez le tout puis faites "
+"cuire</i>. Dans les programmes, de tels instructions  sont appelées "
 "fonctions ou méthodes, et vous devez les doter de parenthèses:"
 
 #. type: Content of: <pre>
@@ -2404,8 +2401,8 @@ msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
 msgstr ""
-"La buggle offre d'autres méthodes, présentées dans le menu \"Aide/À propos "
-"de ce monde\". Elles seront introduites au fur et à mesure des besoins."
+"La buggle offre d'autres méthodes, présentées dans le menu \"Aide/À propos de "
+"ce monde\". Elles seront introduites au fur et à mesure des besoins."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:64
@@ -2526,10 +2523,10 @@ msgid ""
 "symbols /* and */ even if they are placed on differing lines.[/!] [!python]a "
 "line beginning with ''' and the next line ending with '''.[/!]"
 msgstr ""
-"<b>Commentaires sur plusieurs lignes</b>. [!java|scala]Le compilateur[/!][!"
-"python]L'interpréteur[/!] ignore tout ce qui se trouve entre [!java|"
-"scala]les symboles /* et */, même s'ils sont sur des lignes différentes."
-"[/!]\n"
+"<b>Commentaires sur plusieurs lignes</b>. [!java|scala]Le "
+"compilateur[/!][!python]L'interpréteur[/!] ignore tout ce qui se trouve "
+"entre [!java|scala]les symboles /* et */, même s'ils sont sur des lignes "
+"différentes.[/!]\n"
 "[!python]une ligne commençant par ''' et la prochaine ligne terminant par "
 "'''.[/!]"
 
