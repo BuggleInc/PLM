@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 15:44+0100\n"
+"POT-Creation-Date: 2014-01-20 09:53+0100\n"
 "PO-Revision-Date: 2014-01-18 21:07+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
@@ -197,7 +197,8 @@ msgstr "Les deux mondes ne sont pas de la même taille"
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:111
 #, java-format
 msgid " Ray #{0} differs: color {1} is not color {2}\n"
-msgstr " La ligne #{0} est différente : la couleur {1} n''est pas la couleur {2}\n"
+msgstr ""
+" La ligne #{0} est différente : la couleur {1} n''est pas la couleur {2}\n"
 
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:177
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.java:180
@@ -436,7 +437,8 @@ msgstr ""
 msgid ""
 "UnboundLocalError raised: you are probably using a global variable that is "
 "not declared as such.\n"
-msgstr "Erreur UnboundLocal : vous utilisez probablement une variable qui n'est pas "
+msgstr ""
+"Erreur UnboundLocal : vous utilisez probablement une variable qui n'est pas "
 "déclarée, ou quelque chose du genre.\n"
 
 #: src/plm/core/PythonExceptionDecipher.java:44
@@ -508,7 +510,8 @@ msgstr ""
 msgid ""
 "The default programming language is Scala, but your scala installation is "
 "not usable. Switching to Java instead.\n"
-msgstr "Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. "
+msgstr ""
+"Vous utilisez Scala par défaut, mais votre installation de Scala est cassée. "
 "Utilisation de Java à la place.\n"
 
 #: src/plm/core/model/Game.java:174
@@ -619,7 +622,8 @@ msgid ""
 "language in PLM.\n"
 "\n"
 msgstr ""
-"Veuillez installer jython et ses dépendances pour utiliser la PLM en python.\n"
+"Veuillez installer jython et ses dépendances pour utiliser la PLM en "
+"python.\n"
 "\n"
 
 #: src/plm/core/model/Game.java:915
@@ -889,14 +893,13 @@ msgid ""
 "li><li>Tests: <i>Telecom Nancy students (all classes since ''11)</i></li></"
 "ul><br/>Your code is saved to {2}<br/></html>"
 msgstr ""
-"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version "
-"{0}&nbsp;<span style=\"font-size:8px; "
-"color:#AAAAAA;margin:0px;padding:0px;\">({1})</span></h3><br/>&copy; "
-"2008-2011 Contributeurs. Tous droits réservés.<br/><ul style=\"margin-"
-"left:20px;\"><li>Idée originale : <i>L. Turbak (Wellesley "
-"College)</i></li><li>Design et programmation : <i>M. Quinson et G. "
-"Oster</i></li><li>Tests : <i>les étudiants de Telecom Nancy (depuis la promo "
-"2011)</i></li></ul><br/>Votre code est sauvegardé dans {2}<br/></html>"
+"<html><h3 style=\"color:#666666;margin:0px;padding:0px;\">version {0}&nbsp;"
+"<span style=\"font-size:8px; color:#AAAAAA;margin:0px;padding:0px;\">({1})</"
+"span></h3><br/>&copy; 2008-2011 Contributeurs. Tous droits réservés.<br/><ul "
+"style=\"margin-left:20px;\"><li>Idée originale : <i>L. Turbak (Wellesley "
+"College)</i></li><li>Design et programmation : <i>M. Quinson et G. Oster</"
+"i></li><li>Tests : <i>les étudiants de Telecom Nancy (depuis la promo 2011)</"
+"i></li></ul><br/>Votre code est sauvegardé dans {2}<br/></html>"
 
 #: src/plm/core/ui/AboutPLMDialog.java:74
 msgid "About"
@@ -970,10 +973,10 @@ msgstr ""
 "<td valign=\"center\"><img src=\"img/world_buggle.png\" /></td>\n"
 "</tr></table>\n"
 "\n"
-"<p><font size=\"+1\">PLM est une plate-forme pédagogique destinée à simplifier "
-"l'apprentissage de la programmation au travers d'exercices interactifs. De "
-"nombreux exercices sont proposés, pour vous permettre d'apprendre à votre "
-"rythme.</font></p><br/>"
+"<p><font size=\"+1\">PLM est une plate-forme pédagogique destinée à "
+"simplifier l'apprentissage de la programmation au travers d'exercices "
+"interactifs. De nombreux exercices sont proposés, pour vous permettre "
+"d'apprendre à votre rythme.</font></p><br/>"
 
 #: src/plm/core/ui/ChooseLessonDialog.java:132
 #: src/plm/core/ui/MainFrame.java:215
@@ -1049,7 +1052,8 @@ msgid ""
 "Please read it carfully to understand the problem, and fix your code.</html>"
 msgstr ""
 "<html>Erreur de compilation.<br>\n"
-"Vous trouverez ci dessous le message d''erreur détaillé renvoyé par {0}.<br>\n"
+"Vous trouverez ci dessous le message d''erreur détaillé renvoyé par {0}."
+"<br>\n"
 "Il faut que vous le lisiez attentivement pour comprendre le problème,<br>\n"
 "et corriger votre code.</html>"
 
@@ -1130,14 +1134,14 @@ msgstr ""
 "suggestions.</p><p>Veuillez écrire ici vos suggestions (si possible en "
 "français ou anglais),<br/>avec tous les détails nécessaires, et cliquez "
 "ensuite sur «envoyer».</p><p><b>N'oubliez pas d'indiquer votre email si vous "
-"voulez que nous vous contactions<br/>en retour</b>, mais NE DONNEZ JAMAIS "
-"UN MOT DE PASSE DANS UN FORMULAIRE DE CE GENRE.<br/></p><p>Notez que "
-"certaines données techniques (telles que votre version de PLM ou de "
-"Java)<br/>seront jointes à votre envoi, mais nous ne récoltons aucune donnée "
-"personnelle<br/>de cette façon, et il faut que vous vous identifiez vous "
-"même si vous le souhaitez.</p><p>Une autre façon de rapporter du feedback "
-"sur PLM est d'utiliser <a "
-"href='http://github.com/oster/JLM/issues'>l'interface github</a>.</p></html>"
+"voulez que nous vous contactions<br/>en retour</b>, mais NE DONNEZ JAMAIS UN "
+"MOT DE PASSE DANS UN FORMULAIRE DE CE GENRE.<br/></p><p>Notez que certaines "
+"données techniques (telles que votre version de PLM ou de Java)<br/>seront "
+"jointes à votre envoi, mais nous ne récoltons aucune donnée personnelle<br/"
+">de cette façon, et il faut que vous vous identifiez vous même si vous le "
+"souhaitez.</p><p>Une autre façon de rapporter du feedback sur PLM est "
+"d'utiliser <a href='http://github.com/oster/JLM/issues'>l'interface github</"
+"a>.</p></html>"
 
 #: src/plm/core/ui/FeedbackDialog.java:90
 msgid "Cancel"
@@ -1403,9 +1407,8 @@ msgid ""
 "<html>Export to cloud failed.<br/>{0}<br/>Caution! Your session is not saved "
 "yet.</html>"
 msgstr ""
-"<html>L''export de votre session dans le cloud a "
-"échoué.<br/>{0}<br/>Attention! Votre session n''est pas encore "
-"sauvegardée.</html>"
+"<html>L''export de votre session dans le cloud a échoué.<br/>{0}<br/"
+">Attention! Votre session n''est pas encore sauvegardée.</html>"
 
 #: src/plm/core/ui/action/ExportCloudSession.java:133
 msgid "Export error"
@@ -1440,8 +1443,8 @@ msgid "Something unexpected went wrong during downloading"
 msgstr "Une erreur inattendue s'est produite pendant le téléchargement."
 
 #: src/plm/core/ui/action/ImportCloudSession.java:161
-#, java-format
-msgid "A {0} exception occured while importing your session: {1}"
+#, fuzzy, java-format
+msgid "A {0} exception occurred while importing your session: {1}"
 msgstr "Une exception {0} s''est produite lors de l''import de la session: {1}"
 
 #: src/plm/core/ui/action/ImportCloudSession.java:162
@@ -1561,8 +1564,8 @@ msgstr ""
 "Vous avez choisi d''éditer un texte traduit de mission ({0}).\n"
 "Ce n''est pas ainsi qu''il faut procéder. Les traductions sont gérées avec "
 "l''utilitaire po4a dans PLM.\n"
-"Veuillez vous référer à la documentation https://github.com/oster/JLM/wiki"
-"/Working-with-the-translations pour plus d''informations.\n"
+"Veuillez vous référer à la documentation https://github.com/oster/JLM/wiki/"
+"Working-with-the-translations pour plus d''informations.\n"
 "\n"
 "Continuer malgré tout ?"
 
@@ -1696,7 +1699,8 @@ msgstr ""
 #, java-format
 msgid ""
 "No {0} script source for entity {1}. Please report that bug against PLM."
-msgstr "Pas de script {0} pour l''entité {1}. Merci de rapporter ce bug de PLM."
+msgstr ""
+"Pas de script {0} pour l''entité {1}. Merci de rapporter ce bug de PLM."
 
 #: src/plm/universe/Entity.java:235
 msgid "Received a ScriptException that does not come from Python.\n"
@@ -2082,7 +2086,8 @@ msgstr "copie"
 msgid ""
 "This is very weird: There is not the same amount of values! Expected: {0}; "
 "Found: {1}\n"
-msgstr "C''est très bizarre. Il n''y a pas le même nombre de valeurs! J''en "
+msgstr ""
+"C''est très bizarre. Il n''y a pas le même nombre de valeurs! J''en "
 "attendais {0}, mais j''en ai {1}.\n"
 
 #: src/plm/universe/sort/SortingWorld.java:118
@@ -2111,8 +2116,8 @@ msgstr "Dépassement des bornes à l''appel de  echange({0},{1}) : {2}<0"
 #, java-format
 msgid "Out of bounds in swap({0},{1}): {2}>value count"
 msgstr ""
-"Dépassement des bornes à l''appel de la méthode echange({0},{1}) : "
-"{2}>nombre de valeurs"
+"Dépassement des bornes à l''appel de la méthode echange({0},{1}) : {2}"
+">nombre de valeurs"
 
 #: src/plm/universe/turtles/Line.java:75
 msgid "x1 differs."
