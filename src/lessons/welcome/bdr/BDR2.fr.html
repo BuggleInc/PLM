@@ -14,7 +14,7 @@ nouveaux éléments que nous allons maintenant étudier.</p>
 
 <p>Le plus difficile à lire du code précédent est certainement la cascade de
 conditionnelles. Quelque part dans votre programme, vous avez sans doute
-écrit quelque chose comme:
+écrit quelque chose comme:</p>
 
 <pre>if ([!java]getIndication() == 'R'[/!][!scala]litMessage() == "R"[/!]) {
   droite();
@@ -63,7 +63,7 @@ switch (<b>expression</b>) {
 <code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas
 suivant dans la liste quand elle a fini le code du cas où elle a sauté dans
 le switch. Il y a même quelques <b>très rares</b> cas où ce comportement est
-pratique.
+pratique.</p>
 
 <p>On peut réécrire le code BDR précédent bien plus clairement grâce à la
 construction <tt>switch</tt> de la façon suivante.</p>
@@ -99,7 +99,7 @@ correspond à la valeur de l'expression. Le symbole <code>_</code> agit comme
 un joker qui correspond à tout. Cela veut dire que la dernière ligne telle
 qu'elle est écrite correspond toujours à la valeur fournie, quelle qu'elle
 soit. Voici un petit exemple où une variable <code>nom</code> est mis en
-correspondance.
+correspondance.</p>
 <pre>nom match {
   case "Martin" => println("Salut Martin, comment vas-tu?")
   case "Gerald" => println("He Gerald! Ça va?")
