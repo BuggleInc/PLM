@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-01-26 17:07+0100\n"
-"PO-Revision-Date: 2014-01-27 23:41+0200\n"
+"PO-Revision-Date: 2014-01-28 08:54+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
 "Language: fr\n"
@@ -3273,7 +3273,7 @@ msgstr "[/!] [!python]"
 #: src/lessons/welcome/variables/Variables.html:38
 msgid ""
 "So you want that the variable contains 5 as initial value, you should type:"
-msgstr "Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire: "
+msgstr "Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire :"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/variables/Variables.html:39
@@ -3384,7 +3384,7 @@ msgstr ""
 "restriction permet au compilateur de détecter plus d'erreurs de logiques "
 "pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile "
 "d'écrire du python, mais le typage empêche certaines erreurs de se glisser "
-"dans vos programmes. "
+"dans vos programmes."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:62
@@ -4244,7 +4244,7 @@ msgstr ""
 "Vous pouvez passer à l'autre monde en cliquant sur le menu défilant au "
 "dessus de l'endroit où est dessiné le monde. C'est là où il est écrit \"Deep "
 "Forest\" pour l'instant (forêt profonde), et si vous passez à \"Deeper Forest\" "
-"(forêt encore plus profonde), vous verrez l'autre monde. "
+"(forêt encore plus profonde), vous verrez l'autre monde."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:10
@@ -6909,7 +6909,7 @@ msgid ""
 msgstr ""
 " tant que l'on n'est pas à la position finale\n"
 "   aller à la prochaine position\n"
-"   marquer le numéro de case au sol \n"
+"   marquer le numéro de case au sol\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:14
@@ -9246,7 +9246,7 @@ msgstr ""
 "1975 par Harry Dweighter dans le journal de mathématique «American "
 "Mathematical Monthly». La question n'est pas tant de trier les crêpes que de "
 "déterminer <code>f(n)</code>, le nombre <i>minimal</i> de retournements "
-"nécessaires pour trier n'importe quelle pile de taille <code>n</code>. "
+"nécessaires pour trier n'importe quelle pile de taille <code>n</code>."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:8
@@ -9261,7 +9261,7 @@ msgstr ""
 "scientifique sur ce sujet (avec C. Papadimitriou). Ils ont proposé un "
 "algorithme plus rapide et démontré ainsi que <code>17n/16 ≤ f(n) ≤ "
 "(5n+5)</code>. Ce fut la seule publication de Bill Gates avant qu'il "
-"n'invente Windows et devienne riche. "
+"n'invente Windows et devienne riche."
 
 #. type: Content of: <p>
 #: src/lessons/sort/pancake/Main.html:12
@@ -9405,7 +9405,7 @@ msgstr ""
 "activités que j'utilise dans mon projet SMN (Sciences Manuelles du "
 "Numérique) pour introduire le concept d'algorithme aux débutants curieux de "
 "notre science. Pour plus d'information, allez visiter le site du projet: "
-"http://www.loria.fr/~quinson/Mediation/SMN/ "
+"http://www.loria.fr/~quinson/Mediation/SMN/"
 
 #. type: Attribute 'alt' of: <p><div>
 #: src/lessons/sort/pancake/BasicPancake.html:23
@@ -9705,7 +9705,7 @@ msgid ""
 "time you enter the main loop."
 msgstr ""
 "En particulier, afficher l'état du monde sous forme textuelle à chaque fois "
-"que vous rentrez dans la boucle principale peut aider. "
+"que vous rentrez dans la boucle principale peut aider."
 
 #. type: Content of: <h1>
 #: src/lessons/sort/baseball/Main.html:2
@@ -9752,7 +9752,7 @@ msgid ""
 "situation?"
 msgstr ""
 "Comment pouvez vous être sûr que l'algorithme naïf ne boucle pas sur cette "
-"situation initiale? "
+"situation initiale ?"
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/Main.html:15
@@ -10281,7 +10281,7 @@ msgstr ""
 "à la frontière en le décalant vers la gauche jusqu'à sa position dans la "
 "zone triée. C'est une bonne chose, car cela veut dire que notre algorithme "
 "n'est pas fondamentalement faux, puisqu'il s'agit d'une adaptation d'un "
-"algorithme connu. "
+"algorithme connu."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/InsertBaseball.html:23
@@ -10395,16 +10395,16 @@ msgstr ""
 "jusqu'à leur place dans la section triée. Au final, notre variante par "
 "sélection était plus efficace, avec au pire <code>3*nombre de bases</code> "
 "déplacement par élément à trier (1 pour apporter le trou jusqu'au joueur à "
-"bouger, et 2 pour amener le joueur et le trou jusqu'à leur position "
-"finale).  De son coté, notre variante par insertion nécessite au pire "
-"<code>3*nombre de joueurs</code> déplacements pour trier un élément (2 pour "
-"descendre le joueur et le trou à leur place, et 1 pour remonter le trou). "
-"C'est deux fois pire puisqu'il y a deux joueurs par base. Il serait "
-"probablement possible d'améliorer un peu notre variante par insertion en "
-"descendant plus vite le trou et le joueur, mais cela semble assez difficile "
-"(il ne faut pas mélanger les éléments déjà triés pendant la descente), et "
-"cela ne permettrait que de rendre cette variante aussi efficace que celle "
-"par sélection, pas de faire vraiment mieux. "
+"bouger, et 2 pour amener le joueur et le trou jusqu'à leur position finale). "
+" De son coté, notre variante par insertion nécessite au pire <code>3*nombre "
+"de joueurs</code> déplacements pour trier un élément (2 pour descendre le "
+"joueur et le trou à leur place, et 1 pour remonter le trou). C'est deux fois "
+"pire puisqu'il y a deux joueurs par base. Il serait probablement possible "
+"d'améliorer un peu notre variante par insertion en descendant plus vite le "
+"trou et le joueur, mais cela semble assez difficile (il ne faut pas mélanger "
+"les éléments déjà triés pendant la descente), et cela ne permettrait que de "
+"rendre cette variante aussi efficace que celle par sélection, pas de faire "
+"vraiment mieux."
 
 #. type: Content of: <p>
 #: src/lessons/sort/baseball/BubbleBaseball.html:16
@@ -11059,7 +11059,7 @@ msgstr ""
 "que <code>subtree()</code> ne dessine qu'en noir. Vous pouvez donc "
 "l'utiliser à la place de vos appels récursifs pendant le debug, mais vous "
 "devez changer pour des appels récursifs à votre propre code (quand il "
-"marche) pour avoir les couleurs justes, et donc pour passer l'exercice. "
+"marche) pour avoir les couleurs justes, et donc pour passer l'exercice."
 
 #. type: Content of: <h2>
 #: src/lessons/recursion/sierpinski/Sierpinski.html:2
@@ -11552,7 +11552,7 @@ msgstr ""
 #. type: Content of: <div>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:44
 msgid "To move n discs from peg A to peg C:"
-msgstr "Pour déplacer n disques du poteau A au poteau C : "
+msgstr "Pour déplacer n disques du poteau A au poteau C :"
 
 #. type: Content of: <div><ul><li>
 #: src/lessons/recursion/hanoi/HanoiBoard.html:46
@@ -12632,7 +12632,7 @@ msgid ""
 msgstr ""
 "Ce premier exercice est une simple mise en bouche. Vous devriez pouvoir le "
 "résoudre simplement en avançant et en allumant la lampe, grâce aux ordres "
-"suivants: "
+"suivants :"
 
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board01TwoSteps.html:11
@@ -12655,7 +12655,7 @@ msgstr "Se retourner"
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board02Turn.html:4
 msgid "Now, you probably need to turn in addition (using"
-msgstr "Maintenant, vous avez probablement besoin de tourner (en utilisant "
+msgstr "Maintenant, vous avez probablement besoin de tourner (en utilisant"
 
 # type: Content of: <p>
 #. type: Content of: <p>
@@ -12673,7 +12673,7 @@ msgstr "Sauter"
 #. type: Content of: <p>
 #: src/lessons/lightbot/Board03Jump.html:4
 msgid "You can also jump using"
-msgstr "Vous pouvez également sauter en utilisant "
+msgstr "Vous pouvez également sauter en utilisant"
 
 # type: Content of: <p>
 #. type: Content of: <p>
@@ -13259,7 +13259,7 @@ msgstr ""
 "Quand les écureuils font la fête, ils aiment avoir des cigares. Une fête "
 "d'écureuils est réussie si le nombre de cigares est entre 40 et 60 (inclus). "
 "Sauf si c'est le week-end, auquel cas il n'y a pas de limite supérieure au "
-"nombre de cigares. Renvoyez vrai si la fête est réussie. "
+"nombre de cigares. Renvoyez vrai si la fête est réussie."
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/DateFashion.html:2
