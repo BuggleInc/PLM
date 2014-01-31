@@ -3,6 +3,8 @@ Copyright (c) 2005, Martian Software
 Authors: Pete Bevin, John Mutchek
 http://www.martiansoftware.com/markdownj
 
+Copyright (c) 2014, Martin Quinson. (adapted to allow on fly page translation)
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -34,7 +36,7 @@ software, even if advised of the possibility of such damage.
 
 */
 
-package org.markdownj;
+package plm.core.utils.markdownj;
 
 import java.util.Collection;
 import java.util.Map;
@@ -496,13 +498,6 @@ public class MarkdownProcessor {
                 public String replacement(Matcher m) {
                     String list = m.group(1);
                     String listStart = m.group(3);
-                    String listType = "";
-
-                    if (listStart.matches("[*+-]")) {
-                     listType = "ul";
-                    } else {
-                     listType = "ol";
-                    }
 
                     // Turn double returns into triple returns, so that we can make a
                     // paragraph for the last item in a list, if necessary:

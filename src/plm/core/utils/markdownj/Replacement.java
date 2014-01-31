@@ -1,6 +1,7 @@
 /*
 Copyright (c) 2005, Pete Bevin.
 <http://markdownj.petebevin.com>
+Copyright (c) 2014, Martin Quinson. (adapted to allow on fly page translation)
 
 All rights reserved.
 
@@ -33,7 +34,7 @@ software, even if advised of the possibility of such damage.
 
 */
 
-package org.markdownj;
+package plm.core.utils.markdownj;
 
 import java.util.regex.Matcher;
 

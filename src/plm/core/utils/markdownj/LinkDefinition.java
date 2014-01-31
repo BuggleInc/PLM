@@ -33,7 +33,7 @@ software, even if advised of the possibility of such damage.
 
 */
 
-package org.markdownj;
+package plm.core.utils.markdownj;
 
 public class LinkDefinition {
     private String url;

@@ -1,4 +1,4 @@
-package org.markdownj;
+package plm.core.utils.markdownj;
 
 public class HTMLToken {
     private boolean isTag;
