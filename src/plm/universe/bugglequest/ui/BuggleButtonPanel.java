@@ -32,8 +32,8 @@ public class BuggleButtonPanel extends EntityControlPanel {
 	private JButton rButton;
 	private JButton lButton;
 	private JToggleButton brushButton;
-	private JComboBox buggleColorComboBox;
-	private JComboBox brushColorComboBox;
+	private JComboBox<Color> buggleColorComboBox;
+	private JComboBox<Color> brushColorComboBox;
 	private JLabel lBuggleColor;
 	private JLabel lBrushColor;
 	
@@ -126,12 +126,12 @@ public class BuggleButtonPanel extends EntityControlPanel {
 				  Color.GRAY, Color.GREEN, Color.LIGHT_GRAY, Color.MAGENTA, 
 				  Color.ORANGE, Color.PINK, Color.RED, Color.WHITE, Color.YELLOW};
 		
-		brushColorComboBox=new JComboBox (colors);
+		brushColorComboBox=new JComboBox<Color>(colors);
 		brushColorComboBox.setRenderer(new BuggleColorCellRenderer());
 		brushColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBrushColor());
 		brushColorComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				JComboBox cb = (JComboBox) event.getSource();
+				JComboBox<?> cb = (JComboBox<?>) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
 				cb.setSelectedItem(c);
 				echo(i18n.tr("setBrushColor(Color.{0})",ColorMapper.color2name(c)));
@@ -139,12 +139,12 @@ public class BuggleButtonPanel extends EntityControlPanel {
 			}
 		});
 		
-		buggleColorComboBox=new JComboBox (colors);
+		buggleColorComboBox=new JComboBox<Color>(colors);
 		buggleColorComboBox.setRenderer(new BuggleColorCellRenderer());
 		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBodyColor());
 		buggleColorComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				JComboBox cb = (JComboBox) event.getSource();
+				JComboBox<?> cb = (JComboBox<?>) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
 				cb.setSelectedItem(c);
 				echo(i18n.tr("setColor(Color.{0})",ColorMapper.color2name(c)));

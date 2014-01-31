@@ -11,7 +11,7 @@ import plm.universe.Entity;
 import plm.universe.World;
 
 
-public class EntityComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
+public class EntityComboListAdapter extends AbstractListModel<Entity> implements ComboBoxModel<Entity>, GameListener {
 
 	private static final long serialVersionUID = -4602618861291726344L;
 	private Game game;
@@ -24,7 +24,7 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 	}
 
 	@Override
-	public Object getElementAt(int index) {
+	public Entity getElementAt(int index) {
 		return this.worlds[0].getEntity(index);
 	}
 
@@ -34,7 +34,7 @@ public class EntityComboListAdapter extends AbstractListModel implements ComboBo
 	}
 
 	@Override
-	public Object getSelectedItem() {
+	public Entity getSelectedItem() {
 		return this.game.getSelectedEntity();
 	}
 

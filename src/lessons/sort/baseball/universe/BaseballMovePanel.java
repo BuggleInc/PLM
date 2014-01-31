@@ -22,8 +22,8 @@ public class BaseballMovePanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton validateButton;	// a validate button
-	private JComboBox baseSelector;	
-	private JComboBox playerSelector;	
+	private JComboBox<Integer> baseSelector;	
+	private JComboBox<Integer> playerSelector;	
 	private BaseballWorld field;
 
 	public BaseballMovePanel() {
@@ -53,13 +53,13 @@ public class BaseballMovePanel extends EntityControlPanel {
 		Integer[] values = new Integer[field.getBasesAmount()];
 		for (int i = 0 ; i < field.getBasesAmount() ; i++)
 			values[i] = i;		
-		baseSelector = new JComboBox(values);
+		baseSelector = new JComboBox<Integer>(values);
 
 		/* Create the position selector */
 		values = new Integer[field.getPositionsAmount()];
 		for (int i = 0 ; i < field.getPositionsAmount() ; i++)
 			values[i] = i;
-		playerSelector = new JComboBox(values);
+		playerSelector = new JComboBox<Integer>(values);
 
 		/* Create the button */
 		validateButton = new JButton(i18n.tr("Go"));
