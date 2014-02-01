@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Locale;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -21,23 +22,28 @@ import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.GameListener;
 import plm.core.GameStateListener;
+import plm.core.HumanLangChangesListener;
 import plm.core.ProgLangChangesListener;
 import plm.core.StatusStateListener;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
+import plm.core.ui.action.SetLanguage;
 import plm.core.ui.action.SetProgLanguage;
 import plm.universe.World;
 
-public class StatusBar extends JPanel implements GameListener,GameStateListener,StatusStateListener, ProgLangChangesListener {
+public class StatusBar extends JPanel implements GameListener,GameStateListener,StatusStateListener,
+	ProgLangChangesListener, HumanLangChangesListener {
 
 	private static final long serialVersionUID = 8443305863958273495L;
 	private Game game;
 	private JLabel statusMessageLabel;
 	private JLabel statusAnimationLabel;
 	private JLabel progLangLabel;
-	private JPopupMenu popup = new JPopupMenu();
+	private JPopupMenu progLangPopup = new JPopupMenu();
+	private JLabel humLangLabel;
+	private JPopupMenu humLangPopup = new JPopupMenu();
 	
 	private int busyIconIndex = 0;
 
@@ -53,6 +59,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		this.game.addGameStateListener(this);
 		game.addStatusStateListener(this);
 		game.addProgLangListener(this);
+		game.addHumanLangListener(this);
 		game.addGameListener(this);
 		initComponents();
 		defaultColor = getBackground();
@@ -67,7 +74,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		statusAnimationLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
 		
-		setupLanguages(Game.getInstance().getCurrentLesson().getCurrentExercise());
+		setupProgLanguages(game.getCurrentLesson().getCurrentExercise());
 		progLangLabel = new JLabel();
 		progLangLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		progLangLabel.setIcon(Game.getProgrammingLanguage().getIcon());
@@ -81,7 +88,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			public void mouseExited(MouseEvent e) {}
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseClicked(MouseEvent e) {
-                popup.show(e.getComponent(),
+                progLangPopup.show(e.getComponent(),
                         e.getX(), e.getY());
 			}
 			void maybeShowPopup(MouseEvent e) {
@@ -90,12 +97,41 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			}
 		});
 
+		humLangLabel = new JLabel();
+		humLangLabel.setHorizontalAlignment(SwingConstants.LEFT);
+		humLangLabel.setText(game.getLocale().getLanguage());
+		humLangLabel.addMouseListener(new MouseListener() {			
+			public void mouseReleased(MouseEvent e) {
+				maybeShowPopup(e);
+			}
+			public void mousePressed(MouseEvent e) {
+				maybeShowPopup(e);
+			}
+			public void mouseExited(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseClicked(MouseEvent e) {
+                humLangPopup.show(e.getComponent(),
+                        e.getX(), e.getY());
+			}
+			void maybeShowPopup(MouseEvent e) {
+				if (e.isPopupTrigger())
+					mouseClicked(e);
+			}
+		});
+
+		for (String[] lang : Game.humanLangs) {
+			JMenuItem item = new JMenuItem(new SetLanguage(game, lang[0], new Locale(lang[1])));
+			humLangPopup.add(item);
+		}
+		
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		this.add(Box.createHorizontalStrut(10));
 		this.add(statusMessageLabel);
 		this.add(Box.createHorizontalGlue());
 		this.add(statusAnimationLabel);
 		this.add(Box.createHorizontalStrut(20));
+		this.add(humLangLabel);
+		this.add(Box.createHorizontalStrut(5));
 		this.add(progLangLabel);
 		this.add(Box.createHorizontalStrut(10));
 
@@ -163,15 +199,15 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		//RepaintManager.currentManager(statusMessageLabel).paintDirtyRegions();
 	}
 
-	public void setupLanguages(Lecture lecture) {
-		popup.removeAll();
+	public void setupProgLanguages(Lecture lecture) {
+		progLangPopup.removeAll();
 		Game g = Game.getInstance();
 		if (lecture instanceof Exercise) {
 			Exercise exo = (Exercise) lecture;
 			for (ProgrammingLanguage pl : exo.getProgLanguages()) {
 				JMenuItem item = new JMenuItem(pl.getIcon());
 			    item.addActionListener(new SetProgLanguage(g,pl));
-				popup.add(item);
+				progLangPopup.add(item);
 			}
 		}
 	}
@@ -181,11 +217,11 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	}
 	@Override
 	public void currentExerciseHasChanged(Lecture lecture) {
-		setupLanguages(lecture);
+		setupProgLanguages(lecture);
 	}
 	@Override
 	public void currentLessonHasChanged() {
-		setupLanguages(Game.getInstance().getCurrentLesson().getCurrentExercise());
+		setupProgLanguages(game.getCurrentLesson().getCurrentExercise());
 	}
 	@Override
 	public void selectedWorldHasChanged(World newWorld) { /* don't care */ }
@@ -193,4 +229,9 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 	public void selectedEntityHasChanged() { /* tell your mum */ }
 	@Override
 	public void selectedWorldWasUpdated() { /* go away */ }
+
+	@Override
+	public void currentHumanLanguageHasChanged(Locale newLang) {
+		humLangLabel.setText(newLang.getLanguage());
+	}
 }

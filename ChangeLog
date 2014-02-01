@@ -1,6 +1,7 @@
 20140125: Release 2.4 (beta)
 
   * Engine is now translated to italian! [Vinnie Costante]
+  * Add a little menu to switch human language (fix #110)
 
 20131113: Release 2.3
 
