@@ -5,11 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -19,12 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
+import org.eclipse.egit.github.core.Issue;
+import org.eclipse.egit.github.core.client.GitHubClient;
+import org.eclipse.egit.github.core.service.IssueService;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
@@ -102,57 +95,31 @@ public class FeedbackDialog extends JDialog {
 
 		final JButton sendBtn = new JButton(i18n.tr("Send feedback"));
 		sendBtn.addActionListener(new ActionListener() {
+			GitHubClient client = new GitHubClient();
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				DefaultHttpClient httpclient = new DefaultHttpClient();
+				client.setOAuth2Token(Game.getProperty("plm.github.oauth"));
+				Issue issue = new Issue();
+				issue.setTitle("PLM");
+				issue.setBody(Game.getInstance().getCurrentLesson().getId() + "\n"
+					+ Game.getInstance().getCurrentLesson().getCurrentExercise().getId() + "\n"
+					+ Game.getProgrammingLanguage().getLang() + "\n"
+					+ Game.getInstance().getLocale().getDisplayName() + "\n"
+					+ "java : " + System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")" + "\n"
+					+ "os : " + System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")" + "\n"
+					+ "plm : " + Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")" + "\n"
+					+ "text :\n" + feedback.getText()
+				);
+				IssueService issueService = new IssueService(client);
 				try {
-					HttpPost post = new HttpPost(new URI("http://www.loria.fr/~quinson/PLM-feedback/report.php"));
-
-					List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-					formparams.add(new BasicNameValuePair("lesson", Game.getInstance().getCurrentLesson().getId()));
-					formparams.add(new BasicNameValuePair("exercise", Game.getInstance().getCurrentLesson().getCurrentExercise().getId()));
-					formparams.add(new BasicNameValuePair("language", Game.getProgrammingLanguage().getLang()));
-					formparams.add(new BasicNameValuePair("locale", Game.getInstance().getLocale().getDisplayName()));
-					formparams.add(new BasicNameValuePair("java", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")"));
-
-					formparams.add(new BasicNameValuePair("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")"));
-					formparams.add(new BasicNameValuePair("plm", Game.getProperty("plm.major.version", "internal", false) + " ("
-						+ Game.getProperty("plm.minor.version", "internal", false) + ")"));
-
-					formparams.add(new BasicNameValuePair("text", feedback.getText()));
-
-					UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, "UTF-8");
-					post.setEntity(entity);
-
-					HttpResponse response = httpclient.execute(post);
-
-					BufferedReader reader = new BufferedReader(
-						new InputStreamReader(response.getEntity().getContent()));
-					StringBuffer ctn = new StringBuffer();
-					while (true) {
-						String s = reader.readLine();
-						if (s == null) {
-							break;
-						}
-						ctn.append(s);
-					}
-					if (response.getStatusLine().getStatusCode() == 200) {
-						JOptionPane.showMessageDialog(cancelBtn,
-													  ctn.toString(),
-													  i18n.tr("Thank you for your feedback"),
-													  JOptionPane.INFORMATION_MESSAGE);
-						dispose();
-					} else {
-						JOptionPane.showMessageDialog(cancelBtn,
-													  ctn.toString(),
-													  i18n.tr("Error while uploading your feedback"),
-													  JOptionPane.ERROR_MESSAGE);
-					}
-				} catch (Exception ex) {
+					issueService.createIssue(Game.getProperty("plm.github.user"), Game.getProperty("plm.github.repo"), issue);
+					JOptionPane.showMessageDialog(sendBtn, i18n.tr("Message send"), i18n.tr("Success"), JOptionPane.INFORMATION_MESSAGE);
+					dispose();
+				} catch (IOException ex) {
 					StringBuffer ctn = new StringBuffer(ex.getLocalizedMessage() + "\n");
 					for (StackTraceElement elm : ex.getStackTrace()) {
-						ctn.append(elm.toString());
+						ctn.append(elm.toString()).append("\n");
 					}
 					JOptionPane.showMessageDialog(cancelBtn,
 												  ctn.toString(),
@@ -160,7 +127,6 @@ public class FeedbackDialog extends JDialog {
 												  JOptionPane.ERROR_MESSAGE);
 					ex.printStackTrace();
 				}
-
 			}
 		});
 

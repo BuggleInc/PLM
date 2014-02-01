@@ -91,6 +91,9 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
             
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
+            
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 
         </jar>
 
@@ -120,6 +123,9 @@
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/json_simple-1.1.jar" />
             
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/plm-messages.jar" />
+            
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/gson-2.2.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/org.eclipse.egit.github.core-2.1.5.jar"/>
 
         </jar>
 
