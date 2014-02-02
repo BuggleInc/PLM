@@ -27,6 +27,7 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
 
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
@@ -43,6 +44,7 @@ import plm.core.model.lesson.Lesson;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.session.ZipSessionKit;
+import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
@@ -182,6 +184,14 @@ public class Game implements IWorldView {
 		}
 				
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
+		
+		try {
+			addProgressSpyListener(new GitSpy(SAVE_DIR));
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (GitAPIException e) {
+			e.printStackTrace();
+		}
 		
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
 			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
