@@ -2,6 +2,7 @@
 
   * Engine is now translated to italian! [Vinnie Costante]
   * Add a little menu to switch human language (fix #110)
+  * The feedback is now reported as github issues [Cédric Huguenin]
 
 20131113: Release 2.3
 
