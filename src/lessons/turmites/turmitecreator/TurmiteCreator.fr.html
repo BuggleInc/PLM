@@ -63,8 +63,8 @@ trouver la bibliothèque Ed Pegg Jr's utile. Si vous trouvez de nouveaux
 schémas intéressants, envoyez-les nous pas email afin que nous les puissions
 les ajouter à cette liste.  </p>
 
-<p>De plus, Wikipedia manque désespérement de quelques beaux et colorés
-turmites: seuls des noirs et blancs sont décrits. Vous pouvez considérer
+<p>De plus, Wikipedia manque désespérément de quelques beaux et colorés
+turmites : seuls des noirs et blancs sont décrits. Vous pouvez considérer
 l'idée de soumettre vos créations directement à l'encyclopédie libre.</p>
 
 <p>Voici quelques turmites bicolores, issues de
@@ -79,7 +79,7 @@ les convertir ne devrait pas poser beaucoup de problèmes.[/!]</p>
 {{{0, NOTURN, 1}, {0, LEFT  , 1}}, {{1, RIGHT , 0}, {0, NOTURN, 1}}} # 4: Spirale dans une boite
 {{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {0, RIGHT , 0}}} # 5: Spirale rayurée
 {{{0, RIGHT , 1}, {0, LEFT  , 0}}, {{1, LEFT  , 1}, {1, NOTURN, 0}}} # 6: Pyramide à étages
-{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: Ile entourée
+{{{0, RIGHT , 1}, {0, NOTURN, 1}}, {{1, RIGHT , 1}, {1, LEFT  , 0}}} # 7: Île entourée
 {{{0, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {0, RIGHT , 1}}} # 8: Set tissé
 {{{0, RIGHT , 1}, {1, RIGHT , 1}}, {{1, LEFT  , 1}, {1, LEFT  , 0}}} # 9: Sorte de flocon de neige
 {{{1, LEFT  , 0}, {0, NOTURN, 1}}, {{0, LEFT  , 0}, {0, LEFT  , 1}}} # 10: Constructeur de ville lent
@@ -102,7 +102,7 @@ les convertir ne devrait pas poser beaucoup de problèmes.[/!]</p>
 {{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, NOTURN, 1}}} # 27: (croissance)
 {{{1, RIGHT , 0}, {0, LEFT  , 1}}, {{1, LEFT  , 0}, {0, RIGHT , 1}}} # 28: (spirale carrée)
 {{{1, RIGHT , 0}, {1, RIGHT , 1}}, {{0, NOTURN, 0}, {0, NOTURN, 1}}} # 29: Croissance ébourifée
-{{{1, RIGHT , 1}, {0, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 30: La fourmi de Lanton en carrés
+{{{1, RIGHT , 1}, {0, LEFT  , 1}}, {{1, NOTURN, 0}, {0, NOTURN, 0}}} # 30: La fourmi de Langton en carrés
 {{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, LEFT  , 1}, {1, LEFT  , 0}}} # 31: Croissance avec des courbes et des blocs
 {{{1, RIGHT , 1}, {0, RIGHT , 0}}, {{0, NOTURN, 0}, {1, RIGHT , 1}}} # 32: Constructeur de spirales distrait
 {{{1, RIGHT , 1}, {0, RIGHT , 1}}, {{1, NOTURN, 0}, {1, NOTURN, 1}}} # 33: Tige de choux-fleur (autoroute à 45 degrés)
@@ -130,10 +130,10 @@ peuvent engendrer de grandes choses. Par exemple, "RRL" ne semble pas mener
 construire un dessin très simple de route au bout de moins de 100 pas !</p>  
 
 <p>Beaucoup de fourmis de Langton construisent des routes: RL, bien entendu,
-mais aussi RLRLRLLRLR ( environ 2500 pas ). Le comportement chaotique des
-fourmis avant la route peut être très court ( comme avec RLL qui a seulement
-besoin de 100 pas pour converger ) ou très long, comme avec LLLLLLRRLRRR qui
-semble chaotique jusqu'à plus de 500 000 pas avant de constuire la route ou
+mais aussi RLRLRLLRLR (environ 2500 pas). Le comportement chaotique des
+fourmis avant la route peut être très court (comme avec RLL qui a seulement
+besoin de 100 pas pour converger) ou très long, comme avec LLLLLLRRLRRR qui
+semble chaotique jusqu'à plus de 500 000 pas avant de construire la route ou
 encore RRLLLRRRLRRR qui nécessite 1 170 000 pour commencer à
 converger. Certaines sont étroites, d'autres très larges, comme avec
 RRLRLLRLRR (200 000 pas). Cette fourmi est aussi notable puisque c'est
@@ -152,7 +152,7 @@ rapidement son comportement stable (15 000 pas suffisent).</p>
 <p>Enfin, certaines fourmis construisent juste des schémas artistiques. Vous
 devriez regarder cette vidéo pour un bel aperçu :
 http://www.youtube.com/watch?v=1X-gtr4pEBU .
-Si vous voulez les implémenter dans votre code, vous devez les permutter de
+Si vous voulez les implémenter dans votre code, vous devez les permuter de
 un : Par exemple, celle décrite à 3:42 n'est pas RRLRLRLLRL, mais RLRLRLLRLR
 (le premier mouvement visible doit être vu comme le dernier).</p>
 
@@ -162,7 +162,7 @@ mais c'est peut-être car très peu de couleurs sont nécessaires pour
 expliciter des comportements complexes. Par exemple, il y a un classe
 spécifique de turmites appelée <i>busy beavers</i> qui sont des turmites qui
 écrivent énormément de choses avant de s'arrêter ( les <i>busy beavers</i>
-sont généralement des machines de Turing classiques, mais l'idée correpond
+sont généralement des machines de Turing classiques, mais l'idée correspond
 parfaitement aux turmites). Il y a une sorte de compétition internationale
 où les participants font tout leur possible pour trouver le turmite qui
 couvre la plus grande surface avant de s'arrêter.

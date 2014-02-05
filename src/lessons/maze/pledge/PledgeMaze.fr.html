@@ -28,19 +28,19 @@ direction d'origine. </p>
 "direction courante" permet à l'algorithme d'éviter les pièges tel que les
 formes en "G" majuscule. Si l'on rentre par la gauche dans le piège, on
 tourne de 360 degrés autour des murs. Un algorithme qui se contenterait
-naivement de se retrouver dans la même direction qu'à l'origine rentre dans
-un cycle infini puisque qu'il quite le mur le plus à droite en étant dirigé
+naïvement de se retrouver dans la même direction qu'à l'origine rentre dans
+un cycle infini puisque qu'il quitte le mur le plus à droite en étant dirigé
 vers la gauche, et entre à nouveau dans la section incurvée.</p>
 
 <p>L'algorithme de Pledge ne quitte pas le mur en bas à droite puisque la somme
 des virages ne vaut pas zéro à ce moment. Il continue de suivre le mur
-jusqu'à avoir complétement fait le tour, et le quitte en regardant à gauche
+jusqu'à avoir complètement fait le tour, et le quitte en regardant à gauche
 une fois parvenu sous l'obstacle.</p>
 
 
 <h3>Objectif de cet exercice</h3>
 
-<p><a name="Objectifs"> L'objectif de cet exercice est d'écrire une
+<p><a name="Objectifs"/> L'objectif de cet exercice est d'écrire une
 implémentation de l'algorithme de Pledge qui permettra à votre buggle de
 sortir du labyrinthe.</p>
 
