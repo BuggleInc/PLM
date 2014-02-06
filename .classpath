@@ -22,5 +22,7 @@
 	<classpathentry kind="lib" path="lib/scala/scala-compiler-2.10.2.jar"/>
 	<classpathentry kind="lib" path="lib/scala/scala-library-2.10.2.jar"/>
 	<classpathentry kind="lib" path="lib/scala/scala-reflect-2.10.2.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.2.4.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.egit.github.core-2.1.5.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
