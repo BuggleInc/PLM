@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-02-05 11:31+0100\n"
-"PO-Revision-Date: 2014-01-28 08:54+0200\n"
+"PO-Revision-Date: 2014-02-07 17:52+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
 "Language: fr\n"
@@ -2034,7 +2034,6 @@ msgstr "Que vais-je apprendre?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Main.html:502
-#, fuzzy
 #| msgid ""
 #| "You will learn the very basics of programming. At least, you will be "
 #| "presented the most important concepts, allowing you to read most simple "
@@ -2056,13 +2055,12 @@ msgid ""
 msgstr ""
 "Vous allez apprendre les bases de la programmation. Disons au moins que les "
 "principaux concepts vous auront été présentés, vous permettant de lire et "
-"comprendre la plupart des algorithmes.\n"
-"Vous ne pourrez toujours pas écrire ou même lire des programmes complets en "
-"[!thelang] car la notion d'objet ne fait pas partie des objectifs de cette "
-"leçon, mais vous maîtriserez ce qu'on appelle la «programmation tactique», "
-"ce qui veut dire que votre maîtrise de la syntaxe vous permettra de vous "
-"concentrer sur les problèmes à résoudre sans vous battre contre le "
-"compilateur à propos de la syntaxe."
+"comprendre la plupart des algorithmes. Vous ne pourrez toujours pas écrire "
+"ou même lire des programmes complets en [!thelang] car la notion d'objet ne "
+"fait pas partie des objectifs de cette leçon, mais vous maîtriserez ce qu'on "
+"appelle la «programmation tactique», ce qui veut dire que votre maîtrise de "
+"la syntaxe vous permettra de vous concentrer sur les problèmes à résoudre "
+"sans vous battre contre le compilateur à propos de la syntaxe."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/short_desc.html:3
@@ -2228,7 +2226,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:55
-#, fuzzy
 #| msgid ""
 #| "Once done, clic on run. You can proceed to next exercise once it works."
 msgid ""
@@ -2445,7 +2442,6 @@ msgstr "Objectif de cet exercice"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:65
-#, fuzzy
 #| msgid ""
 #| "<a name=\"Objectives\"> Our second program will be a bit more "
 #| "complicated, but not much. The goal for your buggle is simply to draw a "
@@ -2917,7 +2913,6 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/conditions/Conditions.html:109
-#, fuzzy
 #| msgid ""
 #| "<a name=\"Objectives\">If the buggle is facing a wall, you must move one "
 #| "step back. If not, you must move one step forward. To detect whether you "
@@ -3314,7 +3309,6 @@ msgstr "var x = 42"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:47
-#, fuzzy
 #| msgid ""
 #| "You still have to specify the if you use some generic values as an "
 #| "initialization, such as the very particular value <code>null</code>, "
@@ -6947,7 +6941,6 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:39
-#, fuzzy
 #| msgid ""
 #| "It is now time to write down the cell numbers. For that, you will need a "
 #| "counter initialiser to zero at the begining of your code, and incremented "
@@ -6978,7 +6971,6 @@ msgstr ""
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:4
-#, fuzzy
 #| msgid ""
 #| "You once again have to let the buggle traverse the world numbering the "
 #| "cells on its way, but the goal of this exercise is to write a line "
@@ -8437,7 +8429,6 @@ msgstr "D'autres variantes du tri par insertion"
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/insertion/AlgInsertionSort.html:42
-#, fuzzy
 #| msgid ""
 #| "TreeSort builds a binary search tree to sort them. It leads to a O(n "
 #| "log(n))  on average, but O(n^2) in worst cases. We won't study this "
@@ -11206,7 +11197,6 @@ msgstr "Courbe du Dragon (2)"
 
 #. type: Content of: <p>
 #: src/lessons/recursion/dragoncurve/DragonCurve2.html:4
-#, fuzzy
 #| msgid ""
 #| "Previous solution induce that the turtle teleports to other location, or "
 #| "at the very least, that it moves its pen up during the drawing. Indeed, "
