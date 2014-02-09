@@ -206,6 +206,7 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 			Exercise exo = (Exercise) lecture;
 			for (ProgrammingLanguage pl : exo.getProgLanguages()) {
 				JMenuItem item = new JMenuItem(pl.getIcon());
+				item.setToolTipText(pl.getLang());
 			    item.addActionListener(new SetProgLanguage(g,pl));
 				progLangPopup.add(item);
 			}
