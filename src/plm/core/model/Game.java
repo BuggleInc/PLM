@@ -6,7 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -52,12 +51,9 @@ import plm.core.model.tracking.TwitterSpy;
 import plm.core.ui.MainFrame;
 import plm.core.ui.ResourcesCache;
 import plm.core.utils.FileUtils;
-import plm.core.utils.scaposer.Parser;
-import plm.core.utils.scaposer.Po;
 import plm.universe.Entity;
 import plm.universe.IWorldView;
 import plm.universe.World;
-import scala.Option;
 
 /*
  *  core model which contains all known exercises.
@@ -197,25 +193,6 @@ public class Game implements IWorldView {
 			addProgressSpyListener(new ServerSpyAppEngine());
 
         currentCourse = new CourseAppEngine();
-
-        /* KILLME */
-		Option<Po> res=null;
-		try {
-			res = Parser.parsePo(FileUtils.readContentAsText("fr","po", false).toString());
-		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		Po po = null;
-		if (res != null && res.isDefined()) { 
-			po = res.get();
-			System.out.println(po.t("Invalid move"));
-		} else {
-			System.out.println("Error");
-		}
-
 	}
 	
 	boolean canScala = false;
