@@ -27,7 +27,6 @@ import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
 import javax.swing.JOptionPane;
 
-import org.eclipse.jgit.api.errors.GitAPIException;
 import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
@@ -187,9 +186,7 @@ public class Game implements IWorldView {
 		
 		try {
 			addProgressSpyListener(new GitSpy(SAVE_DIR));
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (GitAPIException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
