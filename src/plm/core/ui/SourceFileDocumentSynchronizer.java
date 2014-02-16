@@ -19,7 +19,6 @@ import plm.core.model.session.SourceFile;
  * used by a JEditorPane and the body field of a SourceFile instance.
  * 
  */
-
 public class SourceFileDocumentSynchronizer implements DocumentListener, ISourceFileListener {
 
 	private Document document;
@@ -48,8 +47,9 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 	}
 
 	private void copyDocumentContentToSourceFileBody() {
-		if (this.propagationInProgress)
-			return ;
+		if (this.propagationInProgress) {
+			return;
+		}
 
 		this.propagationInProgress = true;
 		try {
@@ -62,9 +62,10 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 	}
 
 	private void copySourceFileBodyToDocumentContent() {
-		if (this.propagationInProgress)
-			return ;
-		
+		if (this.propagationInProgress) {
+			return;
+		}
+
 		this.propagationInProgress = true;
 		try {
 			this.document.remove(0, this.document.getLength());
