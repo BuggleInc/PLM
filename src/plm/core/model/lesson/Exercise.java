@@ -147,9 +147,9 @@ public abstract class Exercise extends Lecture {
 					out.log(errs);
 			} catch (PLMCompilerException e) {
 				System.err.println(Game.i18n.tr("Compilation error:"));
-				if (out != null)
-					out.log(e.getDiagnostics());
 				lastResult = ExecutionProgress.newCompilationError(e.getDiagnostics());
+				if (out != null)
+					out.log(lastResult.compilationError); // display the same error as in the ExerciseFailedDialog
 
 				if (Game.getInstance().isDebugEnabled() && sourceFiles.get(Game.JAVA) != null)
 					for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
