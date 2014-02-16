@@ -61,7 +61,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 			this.propagationInProgress = false;
 			if (this.pendingPropag) {
 				this.pendingPropag = false;
-				copySourceFileBodyToDocumentContent();
+				copyDocumentContentToSourceFileBody();
 			}			
 		}
 	}
