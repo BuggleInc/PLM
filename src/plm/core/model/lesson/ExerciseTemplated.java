@@ -200,8 +200,8 @@ public abstract class ExerciseTemplated extends Exercise {
 			skelContent = skel.toString();
 			headContent = head.toString();
 		} else {
-			skelContent = skel.toString().replaceAll("\n", " ");
-			headContent = head.toString().replaceAll("\n", " ");
+			skelContent = skel.toString().replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
+			headContent = head.toString().replaceAll("\r\n", " ").replaceAll("\n", " "); // remove Windows and Linux EOF
 		}
 
 		String template = (headContent+"$body"+tail);
