@@ -1,10 +1,11 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Courbe du Dragon (2)</h2>
 
-<p>La solution précédente nécessite que la tortue se téléporte, autrement dit,
-qu'il est parfois nécessaire de lever le crayon pour tracer la courbe.  En
-effet, entre la destination du trait tracé par le premier appel récursif ne
-correspond pas à la source du trait qui doit être tracé par le second appel
-récursif.  C'est pourquoi il était nécessaire d'utiliser la méthode
+<p>Previous solution induce that the turtle teleports to other location, or at
+the very least, that it moves its pen up during the drawing. Indeed, the end
+of the drawing of the first recursive call does not match the beginning of
+the second recursive call. That is why we had to use the method
 <code>setPos()</code></p>	
 
 <p>Dans cette leçon, vous allez donc réaliser une méthode récursive qui permet

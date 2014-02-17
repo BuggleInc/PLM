@@ -158,7 +158,7 @@ public class ImportCloudSession extends AbstractGameAction {
 
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(this.parent,
-					i18n.tr("A {0} exception occured while importing your session: {1}",ex.getClass().getName(),ex.getLocalizedMessage()), 
+					i18n.tr("A {0} exception occurred while importing your session: {1}",ex.getClass().getName(),ex.getLocalizedMessage()),
 					i18n.tr("Importation error"),
 					JOptionPane.ERROR_MESSAGE);
 			// TODO: we should log the real exception message in order to be

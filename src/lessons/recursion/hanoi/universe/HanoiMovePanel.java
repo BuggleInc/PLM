@@ -21,8 +21,8 @@ import plm.universe.EntityControlPanel;
 public class HanoiMovePanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
-	private JComboBox sourceSelector;
-	private JComboBox destinationSelector;
+	private JComboBox<Integer> sourceSelector;
+	private JComboBox<Integer> destinationSelector;
 	private JButton validateButton;
 
 	/**
@@ -83,8 +83,8 @@ public class HanoiMovePanel extends EntityControlPanel {
 		for (int i = 0 ; i < 3 ; i++)
 			values[i] = i;
 		
-		this.sourceSelector = new JComboBox(values);
-		this.destinationSelector = new JComboBox(values);
+		this.sourceSelector = new JComboBox<Integer>(values);
+		this.destinationSelector = new JComboBox<Integer>(values);
 	}
 
 	/**

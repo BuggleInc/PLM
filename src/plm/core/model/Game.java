@@ -43,6 +43,7 @@ import plm.core.model.lesson.Lesson;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.session.ZipSessionKit;
+import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
 import plm.core.model.tracking.ProgressSpyListener;
@@ -84,7 +85,7 @@ public class Game implements IWorldView {
 	private Lesson currentLesson;
 	private Course currentCourse;
 
-	public static final String [][] humanLangs = { {"Francais","fr"}, {"English","en"}};
+	public static final String [][] humanLangs = { {"Francais","fr"}, {"English","en"}, {"Italiano","it"} };
 	
 	public static final ProgrammingLanguage JAVA =       new ProgrammingLanguage("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
 	public static final ProgrammingLanguage PYTHON =     new ProgrammingLanguage("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
@@ -182,6 +183,12 @@ public class Game implements IWorldView {
 		}
 				
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
+		
+		try {
+			addProgressSpyListener(new GitSpy(SAVE_DIR));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
 			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));

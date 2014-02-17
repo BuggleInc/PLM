@@ -1,3 +1,5 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Buggle Dance Revolution 2 (BDR2)</h2>
 
 [!java|scala]
@@ -12,7 +14,7 @@ nouveaux éléments que nous allons maintenant étudier.</p>
 
 <p>Le plus difficile à lire du code précédent est certainement la cascade de
 conditionnelles. Quelque part dans votre programme, vous avez sans doute
-écrit quelque chose comme:
+écrit quelque chose comme:</p>
 
 <pre>if ([!java]getIndication() == 'R'[/!][!scala]litMessage() == "R"[/!]) {
   droite();
@@ -61,7 +63,7 @@ switch (<b>expression</b>) {
 <code>break</code>. Si on l'oublie, la machine continue d'exécuter le cas
 suivant dans la liste quand elle a fini le code du cas où elle a sauté dans
 le switch. Il y a même quelques <b>très rares</b> cas où ce comportement est
-pratique.
+pratique.</p>
 
 <p>On peut réécrire le code BDR précédent bien plus clairement grâce à la
 construction <tt>switch</tt> de la façon suivante.</p>
@@ -86,7 +88,7 @@ construction <tt>switch</tt> de la façon suivante.</p>
 <pre><i>expression</i> <b>match</b> {
   <b>case</b> <i>valeur possible</i>  <b>=></b> instructions
   <b>case</b> <i>autre valeur</i>     <b>=></b> d'autres instructions
-  <b>case</b> <i>troisieme valeur</i> <b>=></b> encore d'autres instructions
+  <b>case</b> <i>troisième valeur</i> <b>=></b> encore d'autres instructions
   <b>case _                 =></b> instructions par défaut
 }
 </pre>
@@ -97,7 +99,7 @@ correspond à la valeur de l'expression. Le symbole <code>_</code> agit comme
 un joker qui correspond à tout. Cela veut dire que la dernière ligne telle
 qu'elle est écrite correspond toujours à la valeur fournie, quelle qu'elle
 soit. Voici un petit exemple où une variable <code>nom</code> est mis en
-correspondance.
+correspondance.</p>
 <pre>nom match {
   case "Martin" => println("Salut Martin, comment vas-tu?")
   case "Gerald" => println("He Gerald! Ça va?")
@@ -130,7 +132,7 @@ correspondait pas.</p>
 <p>Enfin, il est même possible de filtrer sur plusieurs variables à la fois!</p>
 <pre>(x,y) match {
  case (0,0) => println("C'est le point origine")
- case (_,0) => println("C'est un point de l'ordonée")
+ case (_,0) => println("C'est un point de l'ordonnée")
  case (0,_) => println("C'est un point de l'abscisse")
  case (_,_) => println("C'est un point quelconque")
 }</pre>
@@ -143,7 +145,7 @@ surpuissante ! Je l'adore !</p>
 <p>[!java|scala]Appliquez les améliorations que nous venons de voir pour
 adapter le code de votre buggle au nouveau pas de danse explicité
 ci-dessous.[/!]
-[!python]Nous allons maintenant apprendre un nouveau pas de dance à nos
+[!python]Nous allons maintenant apprendre un nouveau pas de danse à nos
 buggles. Il est un peu plus complexe, mais sinon, c'est toujours la même
 histoire.[/!]
 Remarquez qu'il est maintenant possible d'avancer jusqu'à 6 cases à la fois.</p>
@@ -169,7 +171,7 @@ Remarquez qu'il est maintenant possible d'avancer jusqu'à 6 cases à la fois.</
  <tr><td>[!java]'W'[/!][!scala|python]"W"[/!]</td><td>Reculer de quatre cases</td></tr>
  <tr><td>[!java]'V'[/!][!scala|python]"V"[/!]</td><td>Reculer de cinq cases</td></tr>
  <tr><td>[!java]'U'[/!][!scala|python]"U"[/!]</td><td>Reculer de six cases</td></tr>
- <tr><td><i>(n'importe quoi d'autre)</i></td><td>Arrêter de dancer.</td></tr>
+ <tr><td><i>(n'importe quoi d'autre)</i></td><td>Arrêter de danser.</td></tr>
 
 </table>
 

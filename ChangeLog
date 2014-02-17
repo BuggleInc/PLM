@@ -1,3 +1,9 @@
+20140125: Release 2.4 (beta)
+
+  * Engine is now translated to italian! [Vinnie Costante]
+  * Add a little menu to switch human language (fix #110)
+  * The feedback is now reported as github issues [Cédric Huguenin]
+
 20131113: Release 2.3
 
   * LectureChooser: fix preferred size to the MainFrame one (fix #118)

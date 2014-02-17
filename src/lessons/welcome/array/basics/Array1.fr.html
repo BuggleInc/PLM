@@ -1,3 +1,5 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>[!java|scala]Tableaux[/!][!python]Listes[/!] et tricot</h1>
 
 L'objectif de cet exercice est de reproduire le motif de la première colonne
@@ -14,7 +16,7 @@ n'avez pas le droit d'utiliser les méthodes permettant de téléporter la
 buggle à une case particulière (<code>setPos()</code> et autres), cette
 façon de faire va être très pénible à mettre en place. </p>
  
-<p>Le plus simple est de stocker l'enchainement de couleurs constituant le
+<p>Le plus simple est de stocker l’enchaînement de couleurs constituant le
 motif dans
 [!java|scala]un <b>tableau</b>[/!][!python]une <b>liste</b>[/!].
 Mais avant de pouvoir faire cela, nous devons en apprendre un peu plus sur
@@ -44,9 +46,9 @@ tableau de [!java]integer[/!][!scala]Int[/!], pas de
 [!java]Object[/!][!scala]Any[/!].[/!]
 [!python]Les listes peuvent contenir des données de différents types, en
 mélangeant par exemple quelques valeurs entières dans certaines cellules
-avec des entiers dans d'autres cellules.[/!]
+avec des entiers dans d'autres cellules.[/!]</p>
 
-<p><div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
+<div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
 
 <p>T est le nom [!python]de la liste[/!][!scala|java]du tableau[/!],
 [!java|python]T[0][/!][!scala]T(0)[/!] est le nom de la première case,
@@ -100,7 +102,7 @@ peut être utilisée pour calculer la taille de nombreux objets. Appliquée à
 une chaîne de caractères par exemple, elle retourne le nombre de caractères
 composant cette chaîne.[/!]
 [!scala]N'oubliez pas de commencer à <code>0</code> pour terminer à
-<code>T.length-1</code> au lieu de <code>1 to T.length</code>![/!]
+<code>T.length-1</code> au lieu de <code>1 to T.length</code>![/!]</p>
 
 <p>Si vous souhaitez simplement parcourir les valeurs de T sans avoir besoin de
 l'index de chaque valeur, vous pouvez écrire simplement :</p>
@@ -121,7 +123,7 @@ et d'autres collections de données. Mais cela devrait être le sujet
 d'exercices spécifiques (qui restent à écrire dans PLM).[/!]</p>
 
 
-<h3>Declarer [!python]une liste[/!][!java|scala]un tableau[/!]</h3>
+<h3>Déclarer [!python]une liste[/!][!java|scala]un tableau[/!]</h3>
 
 [!python]
 <p>Si vous connaissez à l'avance le contenu de votre liste, vous pouvez
@@ -155,7 +157,7 @@ Pour des raisons historiques, cela peut également être écrit sous la forme
 mais cette forme est moins lisible et devrait probablement être évitée.[/!]
 [!scala]La notation <code>[Int]</code> spécialise le type <code>Array</code>
 («tableau» en anglais), qui est générique. Cela spécifie que chaque case du
-tableau est un entier. Le type d'un tableau de booleens s'écrirait
+tableau est un entier. Le type d'un tableau de booléens s'écrirait
 simplement <code>Array[Boolean]</code>.[/!]
 </p>
 

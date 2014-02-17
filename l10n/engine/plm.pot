@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-13 15:44+0100\n"
+"POT-Creation-Date: 2014-01-24 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1251,7 +1251,7 @@ msgstr ""
 
 #: src/plm/core/ui/action/ImportCloudSession.java:161
 #, java-format
-msgid "A {0} exception occured while importing your session: {1}"
+msgid "A {0} exception occurred while importing your session: {1}"
 msgstr ""
 
 #: src/plm/core/ui/action/ImportCloudSession.java:162

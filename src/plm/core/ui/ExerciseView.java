@@ -28,8 +28,9 @@ import plm.core.GameListener;
 import plm.core.HumanLangChangesListener;
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
-import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Exercise.WorldKind;
+import plm.core.model.lesson.Lecture;
+import plm.universe.Entity;
 import plm.universe.EntityControlPanel;
 import plm.universe.World;
 
@@ -41,8 +42,8 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 	private WorldView worldView;
 	private WorldView objectivesView;
 
-	private JComboBox entityComboBox;
-	private JComboBox worldComboBox;
+	private JComboBox<Entity> entityComboBox;
+	private JComboBox<World> worldComboBox;
 	private EntityControlPanel buttonPanel;
 	private JTabbedPane tabPane;
 	private JPanel controlPane;
@@ -71,7 +72,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 				
 		upperPane.setLayout(new MigLayout("insets 0 0 0 0,wrap","[fill]"));
 
-		worldComboBox = new JComboBox(new WorldComboListAdapter(Game.getInstance()));
+		worldComboBox = new JComboBox<World>(new WorldComboListAdapter(Game.getInstance()));
 		worldComboBox.setRenderer(new WorldCellRenderer());
 		worldComboBox.setEditable(false);
 		upperPane.add(worldComboBox, "growx");
@@ -98,7 +99,7 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		
 		upperPane.add(tabPane, "grow 100 100,push");
 
-		entityComboBox = new JComboBox(new EntityComboListAdapter(Game.getInstance()));
+		entityComboBox = new JComboBox<Entity>(new EntityComboListAdapter(Game.getInstance()));
 		entityComboBox.setRenderer(new EntityCellRenderer());
 		entityComboBox.setEditable(false);
 		upperPane.add(entityComboBox, "alignx center");

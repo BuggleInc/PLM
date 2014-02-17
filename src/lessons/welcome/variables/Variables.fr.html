@@ -1,10 +1,12 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Stocker et manipuler des données</h2>
   <p>Les programmes que nous avons écrit jusque là passent à coté d'un point
 fondamental en informatique. En effet, la science informatique est celle de
 traiter des <b>données</b> grâce à des <b>instructions</b>. Dans le monde
 des buggles, les principales données sont cachées derrière la représentation
 graphique, mais ce n'est pas une raison pour ne jamais manipuler
-explicitement des données. 
+explicitement des données. </p>
 
   <h3>Les données en [!thelang]</h3>
 <p>Dans un programme, on peut utiliser différents <i>types</i> de données, tels
@@ -14,7 +16,7 @@ veut utiliser une donnée plusieurs fois, il faut la stocker dans une
 votre donnée (disons '5') dans la variable (disons «longueur»), et vous
 pouvez la retrouver plus tard quand vous en avez besoin. C'est exactement
 comme prendre une boîte avec une étiquette (disons «cadeau») et d'y ranger
-quelque chose dedans (disons, un flacon de Channel Numéro 5).  
+quelque chose dedans (disons, un flacon de Channel Numéro 5).  </p>
 
 <h3>Déclaration de Variables</h3>  
 
@@ -22,7 +24,7 @@ quelque chose dedans (disons, un flacon de Channel Numéro 5).
 [!thelang]. Il suffit d'écrire
 [!java]son type, une espace et le nom de la variable.[/!]
 [!scala]le mot-clé <code>var</code>, le nom de la variable, deux points (:),
-le type de la variable, un signe égal (=) et une valeur intiale.[/!]
+le type de la variable, un signe égal (=) et une valeur initiale.[/!]
 [!python]le nom de la variable, un signe égal (=) et sa valeur initiale.[/!]
 
 Le nom de la variable est un label pour la retrouver plus tard[!python].[/!]
@@ -43,7 +45,7 @@ variable en ajoutant le symbole égal (=) suivi d'une valeur après la
 déclaration.</p>
   <pre>int x=5;</pre>
 [/!] [!python]
-  <p>Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire:  </p>
+  <p>Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire : </p>
   <pre>x = 5</pre>
 [/!] [!scala]
   <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers avec 42
@@ -53,12 +55,11 @@ en valeur initiale, on écrira :</p>
 variable d'après la valeur initiale. On peut alors omettre le type de la
 variable:</p>
   <pre>var x = 42</pre>
-  <p>Il est nécessaire de spécifier le type de la variable lorsque l'on
-initialise ses variables avec des valeurs génériques, telles que la valeur
-très particulière <code>null</code>, dont le type se trouve être
-ambigu. Même quand le type est clair, vous pouvez le spécifier si vous le
-souhaitez. Ainsi, pour une variable contenant 5 en valeur initiale, on peut
-écrire: </p>
+  <p>You still have to specify the if you use some generic values as an
+initialization, such as the very particular value <code>null</code>, which
+type happens to be ambiguous. Even when the type is clear, you can still
+specify it if you prefer.  So you want that the variable contains 5 as
+initial value, you should type: </p>
   <pre>var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
 var y = 10       <span class="comment">// ou bien je peux l'omettre</span></pre>
 [/!] [!java|scala]
@@ -73,7 +74,7 @@ restriction. À première vue, cela semble plus simple, mais ce genre de
 restriction permet au compilateur de détecter plus d'erreurs de logiques
 pour vous, ce qui n'est pas dommage. En quelque sorte, il est plus facile
 d'écrire du python, mais le typage empêche certaines erreurs de se glisser
-dans vos programmes. </p>
+dans vos programmes.</p>
 <p>Voici quelque uns des types de données existants en [!thelang] :</p>
 <ul>
   <li><b>[!java]int[/!][!scala]Int[/!]</b>, pour les entiers;</li>

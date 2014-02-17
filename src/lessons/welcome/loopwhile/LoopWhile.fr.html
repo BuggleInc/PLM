@@ -1,9 +1,11 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Boucles tant que <tt>(while)</tt></h2>
 		
 <p>En plus des instructions conditionnelles, une autre construction pratique
 est de pouvoir répéter une action tant qu'une condition particulière n'est
 pas arrivée. On utilise pour cela une boucle <tt>while</tt>, dont la syntaxe
-est la suivante :
+est la suivante :</p>
  
 <pre>[!java|scala]while (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>action()</b>;
@@ -20,7 +22,7 @@ ignoré et on continue avec la suite. Mais si la condition est toujours
 vraie, on exécute une nouvelle fois le bloc avant de réévaluer une fois de
 plus la condition. Cela continue ainsi tant que la condition reste vraie.</p>
 
-<p>Evidement, si l'action en question ne modifie pas la valeur de la condition,
+<p>Évidement, si l'action en question ne modifie pas la valeur de la condition,
 la buggle va exécuter l'action à l'infini. C'est dans ce genre de cas que le
 bouton <b>stop</b> de l'interface devient utile. Pour tester cela, vous
 pouvez essayer de taper le code suivant dans l'éditeur :</p>
@@ -34,8 +36,10 @@ pouvez essayer de taper le code suivant dans l'éditeur :</p>
 <code>[!java|scala]true[/!][!python]True[/!]</code> est vrai (sans fin donc)
 jusqu'à ce que vous l'arrêtiez manuellement avec le bouton stop.</p>
 
-<h3>Objectif de cet exercice</h3>Il vous faut maintenant écrire le code nécessaire pour que vos buggles
+<h3>Objectif de cet exercice</h3>
+Il vous faut maintenant écrire le code nécessaire pour que vos buggles
 avancent jusqu'à rencontrer un mur. L'idée est donc de faire :
+
 <pre>tant que l'on est pas face à un mur, faire :
 &nbsp;&nbsp;avancer();</pre>
 

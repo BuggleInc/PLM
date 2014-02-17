@@ -10,7 +10,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.universe.World;
 
-public class WorldComboListAdapter extends AbstractListModel implements ComboBoxModel, GameListener {
+public class WorldComboListAdapter extends AbstractListModel<World> implements ComboBoxModel<World>, GameListener {
 
 	private static final long serialVersionUID = -4669130955472219209L;
 	private Game game;
@@ -27,7 +27,7 @@ public class WorldComboListAdapter extends AbstractListModel implements ComboBox
 	}
 
 	@Override
-	public Object getElementAt(int index) {
+	public World getElementAt(int index) {
 		return currentExercise == null?null: this.currentExercise.getWorld(index);
 	}
 

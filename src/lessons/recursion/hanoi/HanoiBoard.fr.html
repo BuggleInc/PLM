@@ -1,3 +1,5 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Les tours de Hanoï</h2>
 
 <p>La tour de Hanoï, ou les tours de Hanoï, aussi appelé la Tour de Brahma ou
@@ -22,7 +24,7 @@ déjà être présents sur cette tour.</li>
 
 <h3>Objectif de l'exercice</h3> 
 
-Write the core of the method: <code>[!java]void [/!]solve([!java]int
+Écrivez le corps de la méthode : <code>[!java]void [/!]solve([!java]int
 [/!]src[!scala]:Int[/!], [!java]int [/!]dst[!scala]:Int[/!],[!java]int
 [/!]autre[!scala]:Int[/!], [!java]int [/!]hauteur[!scala]:Int[/!])</code>
 
@@ -35,7 +37,7 @@ Le troisième paramètre (nommé <code>other</code>) est l'index du piquet
 inutilisé, tandis que le quatrième paramètre (nommé <code>hauteur</code>)
 est la taille de la pile à déplacer.</p>
 
-<p>La clé pour résoudre de puzzle est de reconnaitre qu'il peut être résolu en
+<p>La clé pour résoudre de puzzle est de reconnaître qu'il peut être résolu en
 cassant le problème en un ensemble de problèmes de plus petites tailles et
 de continuer cette réduction de la taille du problème jusqu'à atteindre une
 solution.</p>
@@ -43,18 +45,18 @@ solution.</p>
 <div class="tip" id="tip-1" alt="Je suis perdu, je voudrais plus d'indications">
 Voici le pseudo-code de la solution :
 <ul>
-  <li>Etiquetons les tours A, B, C ( ces étiquettes peuvent changer à différentes
-étapes )</li>
-  <li>Soit n le nombre total de disques ( la hauteur de la tour initiale )</li>
-  <li>Numérotez les disques de 1 ( le plus petit, le plus en haut ) à n ( le plus
-large, le plus en bas )</li>
+  <li>Étiquetons les tours A, B, C (ces étiquettes peuvent changer à différentes
+étapes)</li>
+  <li>Soit n le nombre total de disques (la hauteur de la tour initiale)</li>
+  <li>Numérotez les disques de 1 (le plus petit, le plus en haut) à n (le plus
+large, le plus en bas)</li>
 </ul>
 
-Pour déplacer n disques du poteau A au poteau C : 
+Pour déplacer n disques du poteau A au poteau C :
 <ul>
   <li>déplacer n-1 disques de A vers B. Cela laisse le disque numéro n seul sur le
 poteau A</li>
   <li>déplacer le disque numéro n de A vers C</li>
-  <li>deplacer n-1 disques de B vers C afin qu'ils reposent sur le disque numéro n</li>
+  <li>déplacer n-1 disques de B vers C afin qu'ils reposent sur le disque numéro n</li>
 </ul>
 </div>

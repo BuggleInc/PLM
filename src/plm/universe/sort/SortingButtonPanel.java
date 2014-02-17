@@ -22,9 +22,9 @@ public class SortingButtonPanel extends EntityControlPanel {
 
 	private static final long serialVersionUID = 1L;
 	private JButton validateButton;	// a validate button
-	private JComboBox operationsComboBox = new JComboBox();	// the available operations on the array ( setValue, copy and swap )
-	private JComboBox leftValueComboBox;	// the value for the first parameter of the selected operation
-	private JComboBox rightValueComboBox;	// the value for the second parameter of the selected operation
+	private JComboBox<String> operationsComboBox = new JComboBox<String>();	// the available operations on the array ( setValue, copy and swap )
+	private JComboBox<Integer> leftValueComboBox;	// the value for the first parameter of the selected operation
+	private JComboBox<Integer> rightValueComboBox;	// the value for the second parameter of the selected operation
 	
 	/**
      * Constructor of SortingButtonPanel
@@ -53,8 +53,8 @@ public class SortingButtonPanel extends EntityControlPanel {
 		for ( int i = 0 ; i < n ; i++) {
 			index[i] = i; 
 		}
-		this.leftValueComboBox = new JComboBox(index) ;
-		this.rightValueComboBox = new JComboBox(index) ;
+		this.leftValueComboBox = new JComboBox<Integer>(index) ;
+		this.rightValueComboBox = new JComboBox<Integer>(index) ;
 		
 		this.validateButton = new JButton(i18n.tr("go"));
 		this.validateButton.addActionListener(new ActionListener() {

@@ -1,3 +1,4 @@
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h1>[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting</h1>
 
 The goal of this exercise is to reproduce the pattern of the first row in
@@ -31,9 +32,10 @@ Object variable, but their objectified counter-part (Integer, Boolean, Double,
 Char, Boolean, etc) can.[/!] It is however a good practice to make the type of an array 
 as specific as possible, i.e., if you plan to store some integers in your array, make it an 
 array of integers, not of [!java]Object[/!][!scala]Any[/!].[/!]
-[!python]Lists can even mix values of differing types, such as integer values in some cells and colors in other cells.[/!]
+[!python]Lists can even mix values of differing types, such as integer
+values in some cells and colors in other cells.[/!]</p>
 
-<p><div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
+<div style="text-align:center"><img src="lessons/welcome/array/array.png"/></div>
 
 <p>T is the [!java|scala]array[/!][!python]list[/!]'s name, 
 [!java|python]T[0][/!][!scala]T(0)[/!] is the name of the first cell, 
@@ -76,7 +78,7 @@ allowing to build a classical for loop easily.
 [!python]Actually, the <code>len()</code> function is much more generic and can be used to retrieve the length of many objects. 
 Applied  to strings for example, it returns the amount of chars in this string.[/!] 
 [!scala]Don't forget to start at <code>0</code> and stop at <code>T.length-1</code> instead of <code>1 to T.length</code>
-however.[/!]
+however.[/!]</p>
 
 <p>If you just want to iterate over the values of T without keeping track of their index, you can simply write:</p>
 <pre>[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in T:[/!]
