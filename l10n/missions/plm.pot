@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-02-05 11:31+0100\n"
+"POT-Creation-Date: 2014-02-19 11:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1702,7 +1702,7 @@ msgstr ""
 #: src/lessons/welcome/environment/Environment.html:33
 msgid ""
 "If you prefer not to post your successes online, just change the relevant "
-"properties in your config file, that is [!configfile] in your case."
+"properties in your configuration file, that is [!configfile] in your case."
 msgstr ""
 
 #. type: Content of: <p>
@@ -2100,8 +2100,8 @@ msgid ""
 "come back on variables in a latter exercise, don't worry) or an arithmetic "
 "test, such as <code>x == 5</code>, which checks whether the current value of "
 "<code>x</code> is 5, or such as <b>!=</b> (checking inequality, that is, "
-"returning [!java|scala]true[/!][!python]True[/!] only if the left hand-side "
-"is different from the right hand-side), <b>&lt;</b> (smaller than), "
+"returning [!java|scala]true[/!][!python]True[/!] only if the left-hand side "
+"is different from the right-hand side), <b>&lt;</b> (smaller than), "
 "<b>&gt;</b> (larger than), <b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> "
 "(larger or equal to)."
 msgstr ""
@@ -2416,7 +2416,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/variables/Variables.html:32
 msgid ""
-"If you want, you can specify the initial value of the variable by adding a "
+"If you want, you can specify the initial value of the variable by adding an "
 "equal sign (=) followed by the value after the declaration."
 msgstr ""
 
@@ -2575,8 +2575,8 @@ msgid ""
 "because it contains the screen size or some other constant value), then you "
 "should make it a <b>value</b> instead of a variable. Simply change the "
 "<code>var</code> keyword with the <code>val</code> one. The compiler can "
-"then perform more verifications and catch when you inadvertently modify the "
-"value. More interestingly, the compiler can produce faster code in some "
+"then check your actions and catch your error when you inadvertently modify "
+"the value. More interestingly, the compiler can produce faster code in some "
 "cases."
 msgstr ""
 
@@ -2818,10 +2818,9 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopfor/LoopFor.html:20
 msgid ""
-"For example to repeat the the loop body <code>n</code> times, [!python] it "
-"is handy to use the instruction <code>range(n)</code> to generate the "
-"sequence n integer value from 0 to n-1.[/!] [!java|scala] one should "
-"write:[/!]"
+"For example to repeat the loop body <code>n</code> times, [!python] it is "
+"handy to use the instruction <code>range(n)</code> to generate the sequence "
+"n integer value from 0 to n-1.[/!] [!java|scala] one should write:[/!]"
 msgstr ""
 
 #. type: Content of: <pre>
@@ -3132,7 +3131,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/welcome/loopdowhile/Poucet.html:4
 msgid ""
-"Your buggle got lost in a strange maze, and you must help it finding the "
+"Your buggle got lost in a strange maze, and you must help it to find the "
 "exit that is represented in orange.  You cannot simply explain the path to "
 "the exit in something like <code>right();forward;forward();forward()</code> "
 "because you have to save two buggles at the same time, that are lost in "
