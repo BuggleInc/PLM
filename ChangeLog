@@ -1,7 +1,10 @@
 20140125: Release 2.4 (beta)
 
   * Engine is now translated to italian! [Vinnie Costante]
-  * Add a little menu to switch human language (fix #110)
+  * Add a little menu to switch human language (fix #110) 
+  * The error message now have the right number also on Windows. 
+    #42 was not fixed on this platform yet. [Cédric Huguenin]
+  * Various proofreadings on mission texts (FR&EN)
   * The feedback is now reported as github issues [Cédric Huguenin]
 
 20131113: Release 2.3
