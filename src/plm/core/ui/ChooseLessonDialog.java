@@ -9,6 +9,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -233,7 +235,11 @@ class LessonOverview extends JPanel {
 		
 		desc.setText(sb.toString());
 		desc.setCaretPosition(0);
-	}	
+	}
+	
+	public void goOnDoubleClick(){
+		btGo.doClick();
+	}
 }
 
 class LessonButton extends JButton {
@@ -250,6 +256,15 @@ class LessonButton extends JButton {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				overview.setPath(path);
+			}
+		});
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					overview.setPath(path);
+					overview.goOnDoubleClick();
+				}
 			}
 		});
 	}
