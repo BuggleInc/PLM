@@ -3,12 +3,11 @@ package plm.universe;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
 import java.util.concurrent.Semaphore;
-
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-
 import plm.core.PythonExceptionDecipher;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
@@ -24,7 +23,7 @@ import plm.universe.lightbot.LightBotEntity;
  * Instead, the solution is to use the static field Game.i18n, as it is done in AbstractBuggle::diffTo().
  */
 
-public abstract class Entity {
+public abstract class Entity extends Observable {
 	protected String name;
 	protected World world;
 
