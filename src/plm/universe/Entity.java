@@ -37,7 +37,7 @@ public abstract class Entity {
 	}
 	public Entity(String name, World w) {
 		this.name=name;
-		if (w != null) {
+		if (w != null) { /* FIXME: why isn't this symmetric with setWorld? */
 			this.world = w;
 			world.addEntity(this);
 		}

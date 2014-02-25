@@ -1,9 +1,6 @@
 package plm.universe.bugglequest;
 
-import java.awt.Color;
-
 import plm.core.model.Game;
-import plm.universe.Direction;
 import plm.universe.bugglequest.exception.AlreadyHaveBaggleException;
 import plm.universe.bugglequest.exception.BuggleInOuterSpaceException;
 import plm.universe.bugglequest.exception.BuggleWallException;
@@ -13,14 +10,6 @@ import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 
 public abstract class SimpleBuggle extends AbstractBuggle  {
-	public SimpleBuggle(BuggleWorld w, String name, int i, int j, Direction dir, Color c, Color bc) {
-		super(w,name,i,j,dir,c,bc);
-	}
-
-	public SimpleBuggle() {
-		super();
-	}
-
 	@Override
 	public void forward()  {
 		try { 
