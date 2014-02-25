@@ -7,6 +7,10 @@ import plm.universe.Direction;
 
 public final class Buggle extends AbstractBuggle {
 
+	public Buggle() {
+		super();
+	}
+	
 	public Buggle(AbstractBuggle b){
 		super();
 		setWorld(b.getWorld());

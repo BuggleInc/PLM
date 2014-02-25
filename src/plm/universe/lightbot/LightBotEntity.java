@@ -47,16 +47,6 @@ public class LightBotEntity extends Entity  {
 		this.setY(other.getY());
 		this.direction = other.direction;
 	}
-	@Override
-	public Entity copy() {
-		LightBotEntity lb = new LightBotEntity();
-		lb.setWorld(getWorld());
-		lb.setName(getName());
-		lb.setPos(getX(), getY());
-		lb.setDirection(direction);
-		return lb;
-	}
-
 
 	public void setDirection(Direction d) {
 		direction=d;

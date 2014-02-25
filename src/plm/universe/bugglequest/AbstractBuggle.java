@@ -82,10 +82,6 @@ public abstract class AbstractBuggle extends Entity {
 		this.y = other.y;
 		this.direction = other.direction;
 	}
-	@Override
-	public Entity copy() {
-		return new Buggle(this);
-	}
 
 	public boolean isBrushDown() {
 		return brushDown;

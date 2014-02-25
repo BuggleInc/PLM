@@ -100,9 +100,6 @@ public abstract class Entity {
 		setName(other.getName());
 		setWorld(other.getWorld());
 	}
-	/** Copy constructor */
-	public abstract Entity copy();
-
 
 	/* Stuff related to tracing mechanism.
 	 * 

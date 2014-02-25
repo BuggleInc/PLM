@@ -84,11 +84,6 @@ public class Turtle extends Entity {
 		this.penDown = other.penDown;
 	}
 
-	@Override
-	public Entity copy() {
-		return new Turtle(this);
-	}
-
 	public void forward(double dist) {
 		moveTo(x + dist * Math.cos(heading), y + dist * Math.sin(heading));
 	}

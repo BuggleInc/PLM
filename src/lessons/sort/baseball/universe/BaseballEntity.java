@@ -16,11 +16,6 @@ public class BaseballEntity extends Entity {
 		super(name,world);
 	}
 
-	@Override
-	public Entity copy() {
-		return new BaseballEntity(this.name);
-	}
-
 	/** Returns the amount of bases on your field */
 	public int getBasesAmount() {
 		return ((BaseballWorld) this.world).getBasesAmount();

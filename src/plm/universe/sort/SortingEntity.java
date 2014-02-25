@@ -19,11 +19,6 @@ public class SortingEntity extends Entity {
 		super(name,world);
 	}
 
-	/** A copy constructor needed by the PLM */
-	public Entity copy() {
-		return new SortingEntity(this.name);
-	}
-
 	public void copy(int from,int to) {
 		((SortingWorld) this.world).copy(from,to);
 		stepUI();

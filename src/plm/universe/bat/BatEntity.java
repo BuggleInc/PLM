@@ -26,18 +26,6 @@ public class BatEntity extends Entity {
 	}
 
 	@Override
-	public Entity copy() {
-		return new BatEntity(this);
-	}
-	
-	
-	@Override
-	public void copy(Entity o) {
-		super.copy(o);
-	}
-	
-
-	@Override
 	public boolean equals(Object o) {
 		if (!(o instanceof BatEntity)) {
 			return false;

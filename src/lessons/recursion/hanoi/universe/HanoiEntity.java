@@ -28,16 +28,6 @@ public class HanoiEntity extends Entity {
 		/* END HIDDEN */
 	}
 
-	/** Must *NOT* call HanoiEntity(name, world) because it's called in a traversal of the world so you don't want to modify it.
-	 * Instead, call HanoiEntity(name), leaving the world field empty; the PLM will fill it with the right value afterward 
-	 */
-	@Override
-	public Entity copy() {
-		/* BEGIN HIDDEN */
-		return new HanoiEntity(name);
-		/* END HIDDEN */
-	}
-
 	/** Must exist so that exercises can instantiate your entity (Entity is abstract) */
 	@Override
 	public void run() {

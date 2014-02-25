@@ -24,10 +24,6 @@ public class BacktrackingEntity extends Entity {
 	}
 
 	@Override
-	public Entity copy() {
-		return new BacktrackingEntity(name);
-	}
-	@Override
 	public void run() {
 		run((BacktrackingPartialSolution) world.getParameter(0));
 		System.out.println("Solution:"+((BacktrackingWorld) world).bestSolution);

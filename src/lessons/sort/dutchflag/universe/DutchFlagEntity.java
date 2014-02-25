@@ -25,12 +25,6 @@ public class DutchFlagEntity extends Entity {
 		super(Game.i18n.tr("Flag sorter"),world);
 	}
 	
-	/**  A copy constructor, needed by the PLM */
-	@Override
-	public Entity copy() {
-		return new DutchFlagEntity(this.name);
-	}
-
 	/** Swap two positions */
 	public void swap(int from, int to) {
 		((DutchFlagWorld) world).swap(from, to);
