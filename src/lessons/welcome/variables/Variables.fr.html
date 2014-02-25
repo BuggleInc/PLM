@@ -40,9 +40,8 @@ fait</code> n'est pas un identificateur de variable valide.
   <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
 écrira :</p> 
   <pre>int x;</pre>
-  <p>Si vous le souhaitez, vous pouvez donner une valeur initiale à votre
-variable en ajoutant le symbole égal (=) suivi d'une valeur après la
-déclaration.</p>
+  <p>If you want, you can specify the initial value of the variable by adding an
+equal sign (=) followed by the value after the declaration.</p>
   <pre>int x=5;</pre>
 [/!] [!python]
   <p>Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire : </p>
@@ -55,11 +54,12 @@ en valeur initiale, on écrira :</p>
 variable d'après la valeur initiale. On peut alors omettre le type de la
 variable:</p>
   <pre>var x = 42</pre>
-  <p>You still have to specify the if you use some generic values as an
-initialization, such as the very particular value <code>null</code>, which
-type happens to be ambiguous. Even when the type is clear, you can still
-specify it if you prefer.  So you want that the variable contains 5 as
-initial value, you should type: </p>
+  <p>Il est nécessaire de spécifier le type de la variable lorsque l'on
+initialise ses variables avec des valeurs génériques, telles que la valeur
+très particulière <code>null</code>, dont le type se trouve être
+ambigu. Même quand le type est clair, vous pouvez le spécifier si vous le
+souhaitez. Ainsi, pour une variable contenant 5 en valeur initiale, on peut
+écrire: </p>
   <pre>var x: Int =  5 <span class="comment">// je peux quand même donner le type si je veux</span>
 var y = 10       <span class="comment">// ou bien je peux l'omettre</span></pre>
 [/!] [!java|scala]
@@ -100,16 +100,13 @@ langages empêche certaines erreurs de se glisser dans les programmes.</p>
 [/!]
   
 
-<p class="scala">Si vous savez que votre «variable» ne va jamais changer de valeur (par
-exemple parce qu'il s'agit de la taille de l'écran ou une autre constante du
-genre), alors vous devriez en faire une <b>valeur</b> plutôt qu'une
-variable.
-Utilisez simplement le mot-clé <code>val</code> au lieu de
-<code>var</code>.
-Le compilateur pourra alors faire plus de vérifications pour aider les
-étourdis cherchant à modifier les constantes. Plus intéressant, le
-compilateur parvient également à produire du code plus rapide dans certains
-cas.</p>
+<p class="scala">If you know that the value of your "variable" will never change (eg because
+it contains the screen size or some other constant value), then you should
+make it a <b>value</b> instead of a variable. Simply change the
+<code>var</code> keyword with the <code>val</code> one. The compiler can
+then check your actions and catch your error when you inadvertently modify
+the value. More interestingly, the compiler can produce faster code in some
+cases.</p>
 
 <p>C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>
