@@ -69,7 +69,7 @@ public class ChooseLessonDialog extends JFrame {
 				{"lessons/welcome", "lessons/maze", "lessons/turmites", "lessons/turtleart"},
 				{"lessons/sort/basic", "lessons/sort/dutchflag", "lessons/sort/baseball", "lessons/sort/pancake"},
 				{"lessons/recursion", "lessons/recursion/hanoi" },
-				{"lessons/lightbot", "lessons/bat/string1" },
+				{"lessons/lightbot", "lessons/bat/string1", "lessons/lander" },
 		    }); 
 	
 
