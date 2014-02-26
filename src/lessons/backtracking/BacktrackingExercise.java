@@ -11,7 +11,6 @@ import plm.universe.World;
 public abstract class BacktrackingExercise extends ExerciseTemplated {
 	public BacktrackingExercise(Lesson lesson) {
 		super(lesson);
-		nameOfCorrectionEntity = getClass().getCanonicalName()+".java";
 	}
 	protected void setup(World[] ws,BacktrackingEntity solver) {
 		for (World w:ws) {
