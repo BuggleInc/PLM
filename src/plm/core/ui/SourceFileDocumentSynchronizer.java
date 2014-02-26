@@ -24,7 +24,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 	private Document document;
 	private SourceFile sourceFile;
 	private EditorKit editorKit;
-	private boolean propagationInProgress = false, pendingPropag = false;
+	private boolean propagationInProgress = false, pendingPropagDocToSource = false, pendingPropagSourceToDoc = false;
 
 	public SourceFileDocumentSynchronizer(EditorKit kit) {
 		this.editorKit = kit;
@@ -48,7 +48,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
 	private void copyDocumentContentToSourceFileBody() {
 		if (this.propagationInProgress) {
-			this.pendingPropag = true;
+			this.pendingPropagDocToSource = true;
 			return;
 		}
 
@@ -59,8 +59,8 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 			e1.printStackTrace();
 		} finally {
 			this.propagationInProgress = false;
-			if (this.pendingPropag) {
-				this.pendingPropag = false;
+			if (this.pendingPropagDocToSource) {
+				this.pendingPropagDocToSource = false;
 				copyDocumentContentToSourceFileBody();
 			}			
 		}
@@ -68,7 +68,7 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 
 	private void copySourceFileBodyToDocumentContent() {
 		if (this.propagationInProgress) {
-			this.pendingPropag = true;
+			this.pendingPropagSourceToDoc = true;
 			return;
 		}
 
@@ -87,8 +87,8 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 			e.printStackTrace();
 		} finally {
 			this.propagationInProgress = false;
-			if (this.pendingPropag) {
-				this.pendingPropag = false;
+			if (this.pendingPropagSourceToDoc) {
+				this.pendingPropagSourceToDoc = false;
 				copySourceFileBodyToDocumentContent();
 			}
 		}
