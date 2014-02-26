@@ -12,33 +12,26 @@ import plm.universe.World;
 
 
 public class LightBotEntity extends Entity  {
-	private int x;
-	private int y;
+	private int x = 0;
+	private int y = 0;
 
-	Direction direction;
+	Direction direction = Direction.NORTH;
 	
 	StackTraceElement[] tracedStack = new StackTraceElement[1];
 	
-	/**
-	 * Constructor with no argument so that child classes can avoid declaring a
-	 * constructor. But it should not be used as most methods assert on world
-	 * being not null. After using it, {@link plm.universe.Entity#setWorld(LightBotWorld)} must be used
-	 * ASAP.
-	 */
+	/** The PLM calls that constructor with no parameter, so it must exist  (but you probably don't want to use it yourself). */
 	public LightBotEntity() {
-		this(null, "John Doe", 0, 0, Direction.NORTH);
+		super();
 	}
 
-	public LightBotEntity(GridWorld w) {
-		this(w, "John Doe", 0, 0, Direction.NORTH);
-	}
-
+	/** That constructor is called by the exercises */
 	public LightBotEntity(World world, String name, int x, int y, Direction direction2) {
 		super(name,world);
 		this.setX(x);
 		this.setY(y);
 		this.direction = direction2;
 	}
+	
 	@Override
 	public void copy(Entity e) {
 		super.copy(e);
@@ -47,16 +40,6 @@ public class LightBotEntity extends Entity  {
 		this.setY(other.getY());
 		this.direction = other.direction;
 	}
-	@Override
-	public Entity copy() {
-		LightBotEntity lb = new LightBotEntity();
-		lb.setWorld(getWorld());
-		lb.setName(getName());
-		lb.setPos(getX(), getY());
-		lb.setDirection(direction);
-		return lb;
-	}
-
 
 	public void setDirection(Direction d) {
 		direction=d;

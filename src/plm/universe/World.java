@@ -61,10 +61,14 @@ public abstract class World {
 	 */
 	public void reset(World initialWorld) {
 		entities = new ArrayList<Entity>();
-		for (Entity b : initialWorld.entities) {
-			Entity br = b.copy();
-			br.setWorld(this);
-			entities.add(br);
+		for (Entity oldEntity : initialWorld.entities) {
+			try {
+				Entity newEntity = oldEntity.getClass().newInstance();
+				newEntity.copy(oldEntity);
+				addEntity(newEntity);
+			} catch (Exception e) {
+				throw new RuntimeException("Cannot copy entity of class "+ oldEntity.getClass().getName(), e);
+			}
 		}
 		this.isDelayed = initialWorld.isDelayed;
 		this.delay = initialWorld.delay;
@@ -109,6 +113,8 @@ public abstract class World {
 	}
 
 	public void addEntity(Entity b) {
+		if (b.getWorld() != this)
+			b.setWorld(this);
 		entities.add(b);
 		notifyEntityUpdateListeners();
 	}

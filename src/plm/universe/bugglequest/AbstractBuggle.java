@@ -18,14 +18,13 @@ public abstract class AbstractBuggle extends Entity {
 	int k_val = 0;
 	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
 	
-	Color bodyColor;
-	
-	Color brushColor;
+	Color bodyColor = Color.red;
+	Color brushColor = Color.red;
 
-	private int x;
-	private int y;
+	private int x = 0;
+	private int y = 0;
 
-	Direction direction;
+	Direction direction = Direction.NORTH;
 
 	boolean brushDown;
 
@@ -46,24 +45,12 @@ public abstract class AbstractBuggle extends Entity {
 		return seenError;
 	}	
 	
-	/**
-	 * Constructor with no argument so that child classes can avoid declaring a
-	 * constructor. But it should not be used as most methods assert on world
-	 * being not null. After using it, {@link Entity#setWorld(BuggleWorld)} must be used
-	 * ASAP.
-	 */
+	/** The PLM calls that constructor with no parameter, so it must exist (but you probably don't want to use it yourself). */
 	public AbstractBuggle() {
-		this(null, "John Doe", 0, 0, Direction.NORTH, Color.red, Color.red);
+		super();
 	}
 
-	public AbstractBuggle(BuggleWorld w) {
-		this(w, "John Doe", 0, 0, Direction.NORTH, Color.red, Color.red);
-	}
-
-	public AbstractBuggle(BuggleWorld world, String name, int x, int y, Direction direction, Color c) {
-		this(world, name, 0, 0, Direction.NORTH, c, c);
-	}
-
+	/** That constructor is called by the exercises */
 	public AbstractBuggle(World world, String name, int x, int y, Direction direction, Color color, Color brushColor) {
 		super(name,world);
 		this.bodyColor = color;
@@ -81,10 +68,6 @@ public abstract class AbstractBuggle extends Entity {
 		this.x = other.x;
 		this.y = other.y;
 		this.direction = other.direction;
-	}
-	@Override
-	public Entity copy() {
-		return new Buggle(this);
 	}
 
 	public boolean isBrushDown() {

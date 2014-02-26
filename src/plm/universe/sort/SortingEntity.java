@@ -1,27 +1,11 @@
 package plm.universe.sort;
 
 import plm.universe.Entity;
-import plm.universe.World;
 
 public class SortingEntity extends Entity {
 
 	public SortingEntity() {
-		super("Sorting Entity");
-	}
-
-	/** Part of the copy process; Must call super(name) */
-	public SortingEntity(String name) {
-		super(name);
-	}
-	
-	/** Instantiation Constructor (used by exercises to setup the world) */
-	public SortingEntity(String name, World world) {
-		super(name,world);
-	}
-
-	/** A copy constructor needed by the PLM */
-	public Entity copy() {
-		return new SortingEntity(this.name);
+		super();
 	}
 
 	public void copy(int from,int to) {

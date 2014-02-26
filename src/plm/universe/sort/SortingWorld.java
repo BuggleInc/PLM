@@ -58,6 +58,7 @@ public class SortingWorld extends World {
 			} while (!someoneHome);
 		}
 		this.initValues = this.values;
+		addEntity(new SortingEntity());
 	}
 
 	private void scramble() {

@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.bugglequest.BuggleWorld;
 
 public class Turtle extends Entity {
 
@@ -12,7 +11,7 @@ public class Turtle extends Entity {
 	public final static int RADIAN = 2;
 	public static final double EPSILON = .0000001;
 
-	private Color color;
+	private Color color = Color.black;
 
 	private double x = 0.;
 	private double y = 0.;
@@ -25,23 +24,10 @@ public class Turtle extends Entity {
 	
 	private boolean visible = true;
 
-	/**
-	 * Constructor with no argument so that child classes can avoid declaring a
-	 * constructor. But it should not be used as most methods assert on world
-	 * being not null. After using it, {@link Entity#setWorld(BuggleWorld)} must be
-	 * used ASAP.
-	 */
+	/** The PLM calls that constructor with no parameter, so it must exist (but you probably don't want to use it yourself). */
 	public Turtle() {
-		this(null, "John Doe", 0., 0., 0., Color.black);
-	}
-
-	public Turtle(World w) {
-		this(w, "John Doe", 0., 0., 0., Color.black);
-	}
-
-	public Turtle(World w, String name) {
-		this(w, name, 0., 0., 0., Color.red);
-	}
+		super();
+	}	
 
 	public Turtle(World w, String name, double x, double y) {
 		this(w, name, x, y, 0., Color.black);
@@ -82,11 +68,6 @@ public class Turtle extends Entity {
 		this.startY = other.startY;
 		this.heading = other.heading;
 		this.penDown = other.penDown;
-	}
-
-	@Override
-	public Entity copy() {
-		return new Turtle(this);
 	}
 
 	public void forward(double dist) {

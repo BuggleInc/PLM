@@ -5,6 +5,7 @@ import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lesson;
 import plm.core.model.lesson.NoSuchEntityException;
+import plm.universe.Entity;
 import plm.universe.World;
 
 public abstract class BacktrackingExercise extends ExerciseTemplated {
@@ -15,7 +16,16 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 	protected void setup(World[] ws,BacktrackingEntity solver) {
 		for (World w:ws) {
 			w.setName(((BacktrackingPartialSolution) w.getParameter(0)).getTitle());
-			w.addEntity(solver.copy());
+
+			/* Copy the solver into the new world */
+			try {
+				Entity newEntity = solver.getClass().newInstance();
+				newEntity.copy(solver);
+				w.addEntity(newEntity);
+			} catch (Exception e) {
+				throw new RuntimeException("Cannot copy entity of class "+ solver.getClass().getName(), e);
+			}
+
 		}
 		setupWorlds(ws);
 		try {

@@ -1,26 +1,8 @@
 package lessons.sort.baseball.universe;
 
 import plm.universe.Entity;
-import plm.universe.World;
 
 public class BaseballEntity extends Entity {
-	public BaseballEntity() {
-		super("Baseball Entity");
-	}
-
-	public BaseballEntity(String name) {
-		super(name);
-	}
-
-	public BaseballEntity(String name, World world) {
-		super(name,world);
-	}
-
-	@Override
-	public Entity copy() {
-		return new BaseballEntity(this.name);
-	}
-
 	/** Returns the amount of bases on your field */
 	public int getBasesAmount() {
 		return ((BaseballWorld) this.world).getBasesAmount();

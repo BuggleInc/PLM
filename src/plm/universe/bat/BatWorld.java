@@ -18,9 +18,7 @@ public class BatWorld extends World {
 	public BatWorld(String funName) {
 		super(funName);
 		
-		BatEntity e = new BatEntity();
-		addEntity(e);
-		e.setWorld(this);
+		addEntity(new BatEntity());
 	}
 	public BatWorld(BatWorld w2) {
 		super(w2);

@@ -25,15 +25,6 @@ public class PancakeEntity extends Entity {
 		super(name,world);
 	}
 	
-	/** 
-	 * A copy method needed by the PLM
-	 * @return a new PancakeEntity with the same name as the caller
-	 */
-	@Override
-	public Entity copy() {
-		return new PancakeEntity(this.name);
-	}
-
 	/**
 	 * Flip a certain amount of pancakes in the stack
 	 * @param numberOfPancakes : the number of pancakes, 
