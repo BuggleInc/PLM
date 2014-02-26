@@ -19,13 +19,12 @@ import plm.core.model.session.SourceFile;
  * used by a JEditorPane and the body field of a SourceFile instance.
  * 
  */
-
 public class SourceFileDocumentSynchronizer implements DocumentListener, ISourceFileListener {
 
 	private Document document;
 	private SourceFile sourceFile;
 	private EditorKit editorKit;
-	private boolean propagationInProgress = false;
+	private boolean propagationInProgress = false, pendingPropag = false;
 
 	public SourceFileDocumentSynchronizer(EditorKit kit) {
 		this.editorKit = kit;
@@ -48,8 +47,10 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 	}
 
 	private void copyDocumentContentToSourceFileBody() {
-		if (this.propagationInProgress)
-			return ;
+		if (this.propagationInProgress) {
+			this.pendingPropag = true;
+			return;
+		}
 
 		this.propagationInProgress = true;
 		try {
@@ -58,13 +59,19 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 			e1.printStackTrace();
 		} finally {
 			this.propagationInProgress = false;
+			if (this.pendingPropag) {
+				this.pendingPropag = false;
+				copyDocumentContentToSourceFileBody();
+			}			
 		}
 	}
 
 	private void copySourceFileBodyToDocumentContent() {
-		if (this.propagationInProgress)
-			return ;
-		
+		if (this.propagationInProgress) {
+			this.pendingPropag = true;
+			return;
+		}
+
 		this.propagationInProgress = true;
 		try {
 			this.document.remove(0, this.document.getLength());
@@ -80,6 +87,10 @@ public class SourceFileDocumentSynchronizer implements DocumentListener, ISource
 			e.printStackTrace();
 		} finally {
 			this.propagationInProgress = false;
+			if (this.pendingPropag) {
+				this.pendingPropag = false;
+				copySourceFileBodyToDocumentContent();
+			}
 		}
 	}
 
