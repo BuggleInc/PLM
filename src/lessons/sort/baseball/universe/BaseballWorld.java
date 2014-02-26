@@ -100,7 +100,7 @@ public class BaseballWorld extends World {
 			initialField[i] = field[i];
 		
 		// Add an entity
-		new BaseballEntity("Baseball Player",this);
+		addEntity(new BaseballEntity());
 		
 		// Cache the hole position 
 		for ( int base = 0 ; base < getBasesAmount(); base++)

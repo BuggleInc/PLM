@@ -65,8 +65,7 @@ public abstract class World {
 			try {
 				Entity newEntity = oldEntity.getClass().newInstance();
 				newEntity.copy(oldEntity);
-				newEntity.setWorld(this);
-				entities.add(newEntity);
+				addEntity(newEntity);
 			} catch (Exception e) {
 				throw new RuntimeException("Cannot copy entity of class "+ oldEntity.getClass().getName(), e);
 			}
@@ -114,6 +113,8 @@ public abstract class World {
 	}
 
 	public void addEntity(Entity b) {
+		if (b.getWorld() != this)
+			b.setWorld(this);
 		entities.add(b);
 		notifyEntityUpdateListeners();
 	}

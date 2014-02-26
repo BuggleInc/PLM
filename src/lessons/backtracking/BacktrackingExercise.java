@@ -21,7 +21,6 @@ public abstract class BacktrackingExercise extends ExerciseTemplated {
 			try {
 				Entity newEntity = solver.getClass().newInstance();
 				newEntity.copy(solver);
-				newEntity.setWorld(w);
 				w.addEntity(newEntity);
 			} catch (Exception e) {
 				throw new RuntimeException("Cannot copy entity of class "+ solver.getClass().getName(), e);

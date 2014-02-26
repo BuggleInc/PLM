@@ -1,28 +1,8 @@
 package lessons.backtracking;
 
 import plm.universe.Entity;
-import plm.universe.World;
 
 public class BacktrackingEntity extends Entity {
-	/** Instantiation Constructor (used by exercises to setup the world) 
-	 * Must call super(name, world). If you had fields to setup, you'd be free to have more parameters
-	 * @param name
-	 * @param world
-	 */
-	public BacktrackingEntity(String name,World world) {
-		super(name,world);
-	}
-
-	/** Part of the copy process 
-	 * Must call super(name)
-	 */
-	public BacktrackingEntity(String name) {
-		super(name);
-	}
-	public BacktrackingEntity() {
-		this("Backtracking Solver");
-	}
-
 	@Override
 	public void run() {
 		run((BacktrackingPartialSolution) world.getParameter(0));

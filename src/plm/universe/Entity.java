@@ -25,7 +25,7 @@ import plm.universe.lightbot.LightBotEntity;
  */
 
 public abstract class Entity {
-	protected String name;
+	protected String name = "(noname)";
 	protected World world;
 
 	private Semaphore oneStepSemaphore = new Semaphore(0);
@@ -37,10 +37,8 @@ public abstract class Entity {
 	}
 	public Entity(String name, World w) {
 		this.name=name;
-		if (w != null) { /* FIXME: why isn't this symmetric with setWorld? */
-			this.world = w;
-			world.addEntity(this);
-		}
+		if (w != null)
+			w.addEntity(this);
 	}
 
 	public String getName() {
@@ -55,7 +53,8 @@ public abstract class Entity {
 		return world;
 	}
 
-	public void setWorld(World world) {
+	/** Ideally, this should be used only from world.addEntity() */
+	protected void setWorld(World world) {
 		this.world = world;
 	}
 
@@ -98,7 +97,7 @@ public abstract class Entity {
 	/** Copy fields of the entity passed in argument */
 	public void copy(Entity other) {
 		setName(other.getName());
-		setWorld(other.getWorld());
+		setWorld(other.getWorld()); // FIXME: killme? I guess that we always reset the world after copy.
 	}
 
 	/* Stuff related to tracing mechanism.
