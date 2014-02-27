@@ -36,7 +36,6 @@ public abstract class Exercise extends Lecture {
 	public static enum WorldKind {INITIAL,CURRENT, ANSWER}
 	public static enum StudentOrCorrection {STUDENT, CORRECTION}
 
-	protected String nameOfCorrectionEntity = getClass().getCanonicalName()+"Entity"; /* name of the entity class computing the answer. Don't change! */
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
 	
@@ -62,6 +61,23 @@ public abstract class Exercise extends Lecture {
 		super(lesson,basename);
 	}
 	
+  /** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
+  protected static String prependScalaToLastComponent(String path) {
+    String[] components = path.split("\\.");
+    StringBuilder result = new StringBuilder();
+    int last = components.length - 1;
+    for (int i = 0; i < last; i++) {
+      result.append(components[i] + ".");
+    }
+    result.append("Scala" + components[last]);
+    return result.toString();
+  }
+
+  protected String nameOfCorrectionEntity(ProgrammingLanguage lang) {
+    String entityName = getClass().getCanonicalName() + "Entity";
+    return lang.equals(Game.SCALA) ? prependScalaToLastComponent(entityName) : entityName;
+  }
+
 	public void setupWorlds(World[] w) {
 		currentWorld = new Vector<World>(w.length);
 		initialWorld = new Vector<World>(w.length);
@@ -208,10 +224,9 @@ public abstract class Exercise extends Lecture {
 	}
 
 	public void mutateEntities(WorldKind kind, StudentOrCorrection whatToMutate) {
-		
-		String newClassName= (whatToMutate == StudentOrCorrection.STUDENT ? tabName : nameOfCorrectionEntity);
-		
 		ProgrammingLanguage lang = Game.getProgrammingLanguage();
+		String newClassName = (whatToMutate == StudentOrCorrection.STUDENT ? tabName : nameOfCorrectionEntity(lang));
+
 		Vector<World> worlds;
 		switch (kind) {
 		case INITIAL: worlds = initialWorld; break;
@@ -291,9 +306,9 @@ public abstract class Exercise extends Lecture {
 							for (Entity ent: aw.getEntities()) {
 								StringBuffer sb = null;
 								try {
-									sb = FileUtils.readContentAsText(nameOfCorrectionEntity, lang.getExt(), false);
+									sb = FileUtils.readContentAsText(nameOfCorrectionEntity(lang), lang.getExt(), false);
 								} catch (IOException ex) {
-									throw new RuntimeException(Game.i18n.tr("Cannot compute the answer from file {0}.{1} since I cannot read it (error was: {2}).",nameOfCorrectionEntity,lang.getExt(),ex.getLocalizedMessage()));			
+									throw new RuntimeException(Game.i18n.tr("Cannot compute the answer from file {0}.{1} since I cannot read it (error was: {2}).", nameOfCorrectionEntity(lang), lang.getExt(),ex.getLocalizedMessage()));
 								}
 
 
