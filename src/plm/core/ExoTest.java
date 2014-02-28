@@ -36,7 +36,7 @@ public class ExoTest {
 		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake",  
 		"lessons.recursion", "lessons.recursion.hanoi",
 		// "lessons.lightbot", // Well, testing this requires testing the swing directly I guess
-		"lessons.bat.string1",
+		"lessons.bat.string1", "lessons.lander",
 		};
 
 	@BeforeClass

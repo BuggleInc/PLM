@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-02-19 11:35+0100\n"
+"POT-Creation-Date: 2014-02-27 21:46+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10893,4 +10893,21 @@ msgid ""
 "You should know the basic syntax of the programming language you will "
 "choose, but no exhaustive programming practice is required to take this "
 "lesson."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
+msgid "Lunar Lander"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/Main.html:4 src/lessons/lander/short_desc.html:4
+msgid ""
+"In this lesson you pilot a lunar landing module in increasingly complex "
+"situations."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/short_desc.html:7
+msgid "This lesson assumes some basic programming and physics skills."
 msgstr ""
