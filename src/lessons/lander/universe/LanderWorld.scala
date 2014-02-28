@@ -38,11 +38,19 @@ case class Segment(p1: Point, p2: Point) {
   }
 }
 
+/**
+ * @param angle angle in radians
+ */
+case class Lander(position: Point, speed: Point, angle: Double, thrust: Int) {
+  require(thrust >= 0 && thrust < 5)
+}
+
 class LanderWorld(val parent: DelegatingLanderWorld) {
   // this needs to be a var because of reset, which is required
   var width: Int = 0
   var height: Int = 0
-  var ground: List[Point] = List()
+  var ground: List[Point] = null
+  var lander: Lander = null
 
   parent.addEntity(new LanderEntity())
 
@@ -56,6 +64,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     width = initialWorld.width
     height = initialWorld.height
     ground = initialWorld.ground
+    lander = initialWorld.lander
   }
 
   def getView() = new LanderWorldView(LanderWorld.this)

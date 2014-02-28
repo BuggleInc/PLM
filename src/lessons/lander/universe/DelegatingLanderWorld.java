@@ -13,12 +13,14 @@ public class DelegatingLanderWorld extends World {
 
   final LanderWorld realWorld;
 
-  public DelegatingLanderWorld(String name, int width, int height, List<Point> ground) {
+  public DelegatingLanderWorld(
+      String name, int width, int height, List<Point> ground, Lander lander) {
     super(name);
     realWorld = new LanderWorld(this);
     realWorld.width_$eq(width);
     realWorld.height_$eq(height);
     realWorld.ground_$eq(ground);
+    realWorld.lander_$eq(lander);
   }
 
   public DelegatingLanderWorld(DelegatingLanderWorld world) {
