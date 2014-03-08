@@ -38,7 +38,7 @@ public class GitSpy implements ProgressSpyListener {
 
 		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
 
-		System.out.println("Created a new repository at " + repository.getDirectory());
+		// System.out.println("Created a new repository at " + repository.getDirectory());
 
 		repository.close();
 
@@ -58,7 +58,6 @@ public class GitSpy implements ProgressSpyListener {
 
 		String exoCode = exo.getSourceFile(lastResult.language, 0).getBody(); // retrieve the code from the student
 		String exoError = lastResult.compilationError; // retrieve the compilation error
-		String exoTemplate = exo.getSourceFile(lastResult.language, 0).getTemplate(); // retrieve the template
 		String exoCorrection = exo.getSourceFile(lastResult.language, 0).getCorrection(); // retrieve the correction
 		String exoInstructions = Game.getInstance().getCurrentLesson().getAbout(); // retrieve the instructions
 
@@ -68,7 +67,6 @@ public class GitSpy implements ProgressSpyListener {
 
 		File exoFile = new File(repoDir, exo.getId() + ext + ".code");
 		File errorFile = new File(repoDir, exo.getId() + ext + ".error");
-		File templateFile = new File(repoDir, exo.getId() + ext + ".template");
 		File correctionFile = new File(repoDir, exo.getId() + ext + ".correction");
 		File instructionsFile = new File(repoDir, exo.getId() + ".instructions");
 
@@ -87,12 +85,6 @@ public class GitSpy implements ProgressSpyListener {
 			BufferedWriter bwError = new BufferedWriter(fwError);
 			bwError.write(exoError == null ? "" : exoError);
 			bwError.close();
-
-			// write the template of the exercise into the file
-			FileWriter fwTemplate = new FileWriter(templateFile.getAbsoluteFile());
-			BufferedWriter bwTemplate = new BufferedWriter(fwTemplate);
-			bwTemplate.write(exoTemplate == null ? "" : exoTemplate);
-			bwTemplate.close();
 
 			// write the correction of the exercise into the file
 			FileWriter fwCorrection = new FileWriter(correctionFile.getAbsoluteFile());
@@ -113,12 +105,12 @@ public class GitSpy implements ProgressSpyListener {
 			// run the add-call
 			git.add().addFilepattern(".").call();
 
-			System.out.println("Added files for " + exo.getId() + " to repository at " + repository.getDirectory());
+			// System.out.println("Added files for " + exo.getId() + " to repository at " + repository.getDirectory());
 
 			// and then commit the changes
 			git.commit().setMessage(writeCommitMessage(exo)).call();
 
-			System.out.println("Committed files for " + exo.getId() + " to repository at " + repository.getDirectory());
+			// System.out.println("Committed files for " + exo.getId() + " to repository at " + repository.getDirectory());
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		}
@@ -159,8 +151,7 @@ public class GitSpy implements ProgressSpyListener {
 		jsonObject.put("password", game.getCoursePassword());
 		jsonObject.put("exoname", exo.getName());
 		jsonObject.put("exolang", lastResult.language.toString());
-		// passedTests and totalTests are initialized at -1 and 0 in case of
-		// compilation error...
+		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
 		jsonObject.put("action", "execute");
