@@ -14,6 +14,13 @@ import java.awt.geom.GeneralPath
 import java.awt.geom.Path2D
 import Math.PI
 import java.awt.geom.QuadCurve2D
+import scala.util.Random
+import java.awt.Font
+import java.awt.event.MouseListener
+import java.awt.event.MouseMotionListener
+import java.awt.event.MouseMotionAdapter
+import java.awt.event.MouseEvent
+import java.awt.event.MouseAdapter
 
 object LanderWorldView {
   private val LANDER_SHAPE = List(
@@ -23,9 +30,35 @@ object LanderWorldView {
       List(Point(6, 0), Point(4, 0)),
       List(Point(-5, 0), Point(-4, 2.8), Point(-2, 3)),
       List(Point(5, 0), Point(4, 2.8), Point(2, 3)))
+
+  private val EXPLOSION_SHAPE = List(
+      Point(-4, 3), Point(-1, 2), Point(0, 4), Point(1, 2), Point(4, 2), Point(2, 0),
+      Point(3, -2), Point(0, -1), Point(-3, -3), Point(-2, 0), Point(-4, 3))
 }
 
 class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
+
+  import LanderWorld.State._
+
+  private var mouseIn : Boolean = false
+  private var mousePos : Point = Point(0, 0)
+
+  addMouseListener(new MouseAdapter() {
+    override def mouseEntered(e: MouseEvent) {
+      mouseIn = true
+    }
+    override def mouseExited(e: MouseEvent) {
+      mouseIn = false
+      repaint()
+    }
+  })
+
+  addMouseMotionListener(new MouseMotionAdapter() {
+    override def mouseMoved(event: MouseEvent) = {
+      mousePos = Point(event.getX, event.getY)
+      repaint()
+    }
+  })
 
   override def paintComponent(g: Graphics) = {
     super.paintComponent(g);
@@ -40,7 +73,13 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
       setupGlobalTransform()
       clearWorldBackground()
       drawGround()
-      drawLander()
+      drawStats()
+      world.state match {
+        case FLYING => drawLander(drawFlame = true)
+        case LANDED => drawLander(drawFlame = false)
+        case OUT => drawQuestionMarks()
+        case CRASHED => drawExplosion()
+      }
     }
 
     def setupRendering() {
@@ -71,38 +110,87 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
       g2.setColor(Color.white)
     }
 
-    def drawPath(path: List[Point]) {
+    def drawPath(path: List[Point], fill: Boolean) {
       if (!path.isEmpty) {
         val polyLine = new GeneralPath(Path2D.WIND_EVEN_ODD, path.length)
         polyLine.moveTo(path.head.x, path.head.y)
         for (point <- path.tail) {
           polyLine.lineTo(point.x, point.y)
         }
-        g2.draw(polyLine)
+        if (fill) {
+          g2.fill(polyLine)
+        } else {
+          g2.draw(polyLine)
+        }
       }
+    }
+
+    def drawText(text: String, x: Double, y: Double) {
+      val oldTransform = g2.getTransform()
+      g2.translate(x, y)
+      g2.scale(1, -1)
+      g2.drawString(text, 0, 0)
+      g2.setTransform(oldTransform)
     }
 
     def drawGround() = {
       resetPen()
-      drawPath(world.ground)
+      drawPath(world.ground, fill = false)
     }
 
-    def drawLander() = {
+    def randomScaleFactor() = 1 + Random.nextDouble() * 0.2
+
+    def drawLander(drawFlame: Boolean) = {
       val oldTransform = g2.getTransform()
       g2.translate(world.lander.position.x, world.lander.position.y)
       g2.scale(6, 6)  // the lander shape is small
       resetPen()
       g2.rotate(world.lander.angle - PI/2)
-      LanderWorldView.LANDER_SHAPE.foreach(drawPath)
+      LanderWorldView.LANDER_SHAPE.foreach(drawPath(_, fill = false))
       val thrust = world.lander.thrust
-      if (thrust > 0) {
-        val controlX = 0.4 + thrust * 0.1
-        val endY = -2 * thrust
-        val controlY = (3 - endY) / 2
-        g2.draw(new QuadCurve2D.Double(-0.1, 3, -controlX, controlY, 0, endY))
-        g2.draw(new QuadCurve2D.Double(0.1, 3, controlX, controlY, 0, endY))
+      if (drawFlame && thrust > 0) {
+        val controlX = (0.4 + thrust * 0.1) * randomScaleFactor()
+        val endY = (-2 * thrust) * randomScaleFactor()
+        val controlY = (endY + 3) / 2
+        g2.draw(new QuadCurve2D.Double(-0.25, 3, -controlX, controlY, 0, endY))
+        g2.draw(new QuadCurve2D.Double(0.25, 3, controlX, controlY, 0, endY))
       }
-      g2.transform(oldTransform)
+      g2.setTransform(oldTransform)
+    }
+
+    def drawExplosion() = {
+      val oldTransform = g2.getTransform()
+      g2.translate(world.lander.position.x, world.lander.position.y)
+      g2.scale(15, 15)  // the explosion shape is small
+      resetPen()
+      drawPath(LanderWorldView.EXPLOSION_SHAPE, fill = true)
+      g2.setTransform(oldTransform)
+    }
+
+    def drawQuestionMarks() = {
+      val x = world.lander.position.x
+      val y = world.lander.position.y
+      val textX = if (x >= world.width) world.width - 100 else if (x <= 0) 5 else x
+      val textY = if (y >= world.height) world.height - 40 else if (y <= 0) 5 else y - 30
+      g2.setColor(Color.WHITE)
+      g2.setFont(new Font(Font.MONOSPACED, Font.BOLD, 40))
+      drawText("???", textX, textY)
+    }
+
+    def drawStats() {
+      g2.setColor(Color.LIGHT_GRAY)
+      g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30))
+      drawText(f"x: ${world.lander.position.x}%.2f", 5, world.height - 30)
+      drawText(f"y: ${world.lander.position.y}%.2f", 5, world.height - 2 * 30)
+      drawText(f"speed x: ${world.lander.speed.y}%.2f", 5, world.height - 3 * 30)
+      drawText(f"speed y: ${world.lander.speed.y}%.2f", 5, world.height - 4 * 30)
+      drawText(f"angle: ${world.lander.angle}%.2f", 5, world.height - 5 * 30)
+      drawText(f"thrust: ${world.lander.thrust}%.2f", 5, world.height - 6 * 30)
+
+      if (mouseIn) {
+        drawText(f"x: ${mousePos.x}%.2f", world.width - 170, world.height - 30)
+        drawText(f"y: ${mousePos.y}%.2f", world.width - 170, world.height - 2 * 30)
+      }
     }
   }
 }
