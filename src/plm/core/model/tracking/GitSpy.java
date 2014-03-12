@@ -59,7 +59,7 @@ public class GitSpy implements ProgressSpyListener {
 		String exoCode = exo.getSourceFile(lastResult.language, 0).getBody(); // retrieve the code from the student
 		String exoError = lastResult.compilationError; // retrieve the compilation error
 		String exoCorrection = exo.getSourceFile(lastResult.language, 0).getCorrection(); // retrieve the correction
-		String exoInstructions = Game.getInstance().getCurrentLesson().getAbout(); // retrieve the instructions
+		String exoMission = exo.getMission(lastResult.language); // retrieve the mission
 
 		// create the different files
 		String repoDir = repository.getDirectory().getParent();
@@ -68,12 +68,9 @@ public class GitSpy implements ProgressSpyListener {
 		File exoFile = new File(repoDir, exo.getId() + ext + ".code");
 		File errorFile = new File(repoDir, exo.getId() + ext + ".error");
 		File correctionFile = new File(repoDir, exo.getId() + ext + ".correction");
-		File instructionsFile = new File(repoDir, exo.getId() + ".instructions");
+		File missionFile = new File(repoDir, exo.getId() + ext + ".mission");
 
 		try {
-			exoFile.createNewFile();
-			errorFile.createNewFile();
-
 			// write the code of the exercise into the file
 			FileWriter fwExo = new FileWriter(exoFile.getAbsoluteFile());
 			BufferedWriter bwExo = new BufferedWriter(fwExo);
@@ -93,10 +90,10 @@ public class GitSpy implements ProgressSpyListener {
 			bwCorrection.close();
 
 			// write the instructions of the exercise into the file
-			FileWriter fwInstructions = new FileWriter(instructionsFile.getAbsoluteFile());
-			BufferedWriter bwInstructions = new BufferedWriter(fwInstructions);
-			bwInstructions.write(exoInstructions == null ? "" : exoInstructions);
-			bwInstructions.close();
+			FileWriter fwMission = new FileWriter(missionFile.getAbsoluteFile());
+			BufferedWriter bwMission = new BufferedWriter(fwMission);
+			bwMission.write(exoMission == null ? "" : exoMission);
+			bwMission.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
