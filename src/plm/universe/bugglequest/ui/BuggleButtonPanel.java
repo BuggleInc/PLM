@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Locale;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,7 +26,7 @@ import plm.universe.EntityControlPanel;
 import plm.universe.bugglequest.AbstractBuggle;
 import plm.universe.bugglequest.exception.BuggleWallException;
 
-public class BuggleButtonPanel extends EntityControlPanel {
+public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 
 	private static final long serialVersionUID = 1L;
 	private JButton fButton;
@@ -36,6 +38,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 	private JComboBox<Color> brushColorComboBox;
 	private JLabel lBuggleColor;
 	private JLabel lBrushColor;
+	private AbstractBuggle buggle;
 	
 	public BuggleButtonPanel() {
 		setLayout(new FlowLayout());
@@ -47,6 +50,8 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		add(createColorsBoxes());
 
 		Game.getInstance().addHumanLangListener(this);
+		buggle = (AbstractBuggle)Game.getInstance().getSelectedEntity();
+		buggle.addObserver(this);
 	}
 
 	/**
@@ -55,6 +60,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 	private void initializeButtons() {
 		fButton = new JButton(i18n.tr("forward"));
 		fButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				try {
 					echo(i18n.tr("forward()"));
@@ -70,6 +76,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 
 		bButton = new JButton(i18n.tr("backward"));
 		bButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				try {
 					echo(i18n.tr("backward()"));
@@ -85,6 +92,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 
 		lButton = new JButton(i18n.tr("left"));
 		lButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				echo(i18n.tr("left()"));
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).left();
@@ -94,6 +102,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 
 		rButton = new JButton(i18n.tr("right"));
 		rButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				echo(i18n.tr("right()"));
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).right();
@@ -103,6 +112,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 
 		brushButton = new JToggleButton(i18n.tr("mark"));
 		brushButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				AbstractBuggle b = (AbstractBuggle)Game.getInstance().getSelectedEntity();
 				if (b.isBrushDown()) {
@@ -130,6 +140,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		brushColorComboBox.setRenderer(new BuggleColorCellRenderer());
 		brushColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBrushColor());
 		brushColorComboBox.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				JComboBox<?> cb = (JComboBox<?>) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
@@ -143,6 +154,7 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		buggleColorComboBox.setRenderer(new BuggleColorCellRenderer());
 		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBodyColor());
 		buggleColorComboBox.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent event) {
 				JComboBox<?> cb = (JComboBox<?>) event.getSource();
 				Color c = (Color) cb.getSelectedItem();
@@ -244,6 +256,22 @@ public class BuggleButtonPanel extends EntityControlPanel {
 		brushButton.setText(i18n.tr("mark"));
 		lBrushColor.setText(i18n.tr("Brush Color"));
 		lBuggleColor.setText(i18n.tr("Buggle Color"));
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		int source = (int) arg;
+        switch (source) {
+			case AbstractBuggle.BRUSH_COLOR:
+				brushColorComboBox.setSelectedItem(buggle.getBrushColor());
+				break;
+			case AbstractBuggle.BRUSH_STATE:
+				brushButton.setSelected(buggle.isBrushDown());
+				break;
+			case AbstractBuggle.BUGGLE_COLOR:
+				buggleColorComboBox.setSelectedItem(buggle.getBodyColor());
+				break;
+		}
 	}
 	
 }

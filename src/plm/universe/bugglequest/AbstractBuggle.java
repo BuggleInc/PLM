@@ -30,6 +30,8 @@ public abstract class AbstractBuggle extends Entity {
 
 	private boolean carryBaggle;
 
+	public static final int BRUSH_STATE = 0, BRUSH_COLOR = 1, BUGGLE_COLOR = 2;
+	
 	/* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
 	 * candidate for exercise completion.
 	 */
@@ -79,11 +81,15 @@ public abstract class AbstractBuggle extends Entity {
 		BuggleWorldCell cell = (BuggleWorldCell) ((BuggleWorld)world).getCell(x, y);
 		cell.setColor(brushColor);
 		world.notifyWorldUpdatesListeners();
+		setChanged();
+        notifyObservers(BRUSH_STATE);
 	}
 
 	public void brushUp() {
 		if (k_seq[k_val]==4) k_val++; else k_val = 0;
 		this.brushDown = false;
+		setChanged();
+        notifyObservers(BRUSH_STATE);
 	}
 
 	public Color getGroundColor() {
@@ -99,6 +105,8 @@ public abstract class AbstractBuggle extends Entity {
 			brushColor = c;
 		if (brushDown) // mark the ground
 			brushDown();
+		setChanged();
+        notifyObservers(BRUSH_COLOR);
 	}
 
 	public Color getBodyColor() {
@@ -109,6 +117,8 @@ public abstract class AbstractBuggle extends Entity {
 		if (c != null) {
 			this.bodyColor = c;
 			world.notifyWorldUpdatesListeners();
+			setChanged();
+			notifyObservers(BUGGLE_COLOR);
 		}
 	}
 
