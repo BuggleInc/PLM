@@ -11,6 +11,15 @@ import Math.PI
 import Math.cos
 import Math.sin
 
+object NumUtil {
+  def clamp(min: Double, max: Double, value: Double): Double = {
+    if (value < min) min else if (value > max) max else value
+  }
+  def clamp(min: Int, max: Int, value: Int): Int = {
+    if (value < min) min else if (value > max) max else value
+  }
+}
+
 case class Point(x: Double, y: Double) {
   def +(p: Point): Point = new Point(x + p.x, y + p.y)
   def -(p: Point): Point = new Point(x - p.x, y - p.y)
@@ -46,37 +55,32 @@ case class Ray(origin: Point, direction: Point) {
 class Lander(var position: Point, var speed: Point, private var _angle: Double,
     private var _thrust: Int) {
 
+  import NumUtil._
+
   clampAngle()
   clampThrust()
 
   def thrust = _thrust
-  def thrust_=(value: Int) = {
+  def thrust_=(value: Int) {
     _thrust = value
     clampThrust()
   }
 
   def angle = _angle
-  def angle_=(value: Double) = {
+  def angle_=(value: Double) {
     _angle = value
     clampAngle()
   }
 
   def gameAngle = (angle * 180 / PI) - 90
-  def gameAngle_=(value: Double) = {
+  def gameAngle_=(value: Double) {
     angle = (value + 90) * PI / 180
   }
 
   def copy = new Lander(position, speed, angle, thrust)
 
-  private def clampAngle() = {
-    if (_angle > 90) _angle = 90
-    if (_angle < -90) _angle = -90
-  }
-
-  private def clampThrust() = {
-    if (_thrust > 5) _thrust = 5
-    if (_thrust < 0) _thrust = 0
-  }
+  private def clampAngle() { _angle = clamp(-90, 90, _angle) }
+  private def clampThrust() = { _thrust = clamp(0, 5, _thrust) }
 }
 
 object LanderWorld {
@@ -91,12 +95,16 @@ object LanderWorld {
 class LanderWorld(val parent: DelegatingLanderWorld) {
 
   import LanderWorld.State._
+  import NumUtil._
 
   var width: Int = 0
   var height: Int = 0
   var ground: List[Point] = null
   var lander: Lander = null
   var state = FLYING
+
+  var desiredGameAngle: Option[Double] = None
+  var desiredThrust: Option[Int] = None
 
   parent.setDelay(10)
   parent.addEntity(new LanderEntity())
@@ -147,6 +155,12 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   def simulate(dt: Double) {
     if (state == FLYING) {
+      if (desiredGameAngle.isDefined) {
+        lander.gameAngle = clamp(lander.gameAngle - 5, lander.gameAngle + 5, desiredGameAngle.get)
+      }
+      if (desiredThrust.isDefined) {
+        lander.thrust = clamp(lander.thrust - 1, lander.thrust + 1, desiredThrust.get)
+      }
       val force = LanderWorld.angleToVector(lander.angle) * lander.thrust + LanderWorld.GRAVITY
       lander.position = lander.position + lander.speed * dt
       lander.speed = lander.speed + force * dt

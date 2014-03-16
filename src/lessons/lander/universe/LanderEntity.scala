@@ -31,11 +31,10 @@ class LanderEntity extends Entity {
   def getAngle(): Double = landerWorld.lander.gameAngle
   def getThrust(): Int = landerWorld.lander.thrust
 
-  def setDesiredAngle(desiredAngle: Double): Unit = {
-    landerWorld.lander.gameAngle = desiredAngle
+  def setDesiredAngle(desiredAngle: Double) {
+    landerWorld.desiredGameAngle = Some(desiredAngle)
   }
-
-  def setDesiredThrust(desiredThrust: Int): Unit = {
-    landerWorld.lander.thrust = desiredThrust
+  def setDesiredThrust(desiredThrust: Int) {
+    landerWorld.desiredThrust = Some(desiredThrust)
   }
 }
