@@ -24,30 +24,17 @@ case class Point(x: Double, y: Double) {
   def cross(p: Point) = x * p.y - y * p.x
 }
 
-case class Segment(p1: Point, p2: Point) {
-  def intersects(s: Segment): Boolean = {
-    val v1 = p2 - p1
-    val v2 = s.p2 - s.p1
-    val v1v2 = v1.cross(v2);
-    if (v1v2 == 0) {
-      false
-    } else {
-      val f1 = (s.p1 - p1).cross(v2) / v1v2
-      val f2 = (s.p1 - p1).cross(v1) / v1v2
-      f1 >= 0 && f1 <= 1 && f2 >= 0 && f2 <= 1
-    }
-  }
-}
+case class Segment(start: Point, end: Point)
 
 case class Ray(origin: Point, direction: Point) {
   def intersects(s: Segment): Boolean = {
-    val v = s.p2 - s.p1
+    val v = s.end - s.start
     val cross = direction.cross(v);
     if (cross == 0) {
       false
     } else {
-      val f1 = (s.p1 - origin).cross(v) / cross
-      val f2 = (s.p1 - origin).cross(direction) / cross
+      val f1 = (s.start - origin).cross(v) / cross
+      val f2 = (s.start - origin).cross(direction) / cross
       f1 >= 0 && f2 >= 0 && f2 <= 1
     }
   }
@@ -56,8 +43,40 @@ case class Ray(origin: Point, direction: Point) {
 /**
  * @param angle angle in radians
  */
-case class Lander(position: Point, speed: Point, angle: Double, thrust: Int) {
-  require(thrust >= 0 && thrust < 5)
+class Lander(var position: Point, var speed: Point, private var _angle: Double,
+    private var _thrust: Int) {
+
+  clampAngle()
+  clampThrust()
+
+  def thrust = _thrust
+  def thrust_=(value: Int) = {
+    _thrust = value
+    clampThrust()
+  }
+
+  def angle = _angle
+  def angle_=(value: Double) = {
+    _angle = value
+    clampAngle()
+  }
+
+  def gameAngle = (angle * 180 / PI) - 90
+  def gameAngle_=(value: Double) = {
+    angle = (value + 90) * PI / 180
+  }
+
+  def copy = new Lander(position, speed, angle, thrust)
+
+  private def clampAngle() = {
+    if (_angle > 90) _angle = 90
+    if (_angle < -90) _angle = -90
+  }
+
+  private def clampThrust() = {
+    if (_thrust > 5) _thrust = 5
+    if (_thrust < 0) _thrust = 0
+  }
 }
 
 object LanderWorld {
@@ -79,7 +98,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   var lander: Lander = null
   var state = FLYING
 
-  parent.setDelay(5)
+  parent.setDelay(10)
   parent.addEntity(new LanderEntity())
 
   // "inherited" methods
@@ -88,13 +107,21 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine): Unit = ()
 
+  /** Returns true if both worlds have same state. */
+  override def equals(obj: Any): Boolean = {
+    obj match {
+      case world: DelegatingLanderWorld => state == world.realWorld.state
+      case _ => false
+    }
+  }
+
   def diffTo(world: World): String = null
 
   def reset(initialWorld: LanderWorld): Unit = {
     width = initialWorld.width
     height = initialWorld.height
     ground = initialWorld.ground
-    lander = initialWorld.lander
+    lander = initialWorld.lander.copy
     state = initialWorld.state
   }
 
@@ -109,10 +136,10 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     else (ground, ground.tail).zipped map (Segment(_, _))
   }
 
-  private def flatSegments = groundSegments.filter((s) => s.p1.y == s.p2.y)
+  private def flatSegments = groundSegments.filter((s) => s.start.y == s.end.y)
 
   private def touchesSomeFlatSegment(p: Point) = flatSegments
-      .find((s) => p.x > s.p1.x && p.x < s.p2.x && p.y - s.p1.y < 1)
+      .find((s) => p.x > s.start.x && p.x < s.end.x && p.y - s.start.y < 1)
       .isDefined
 
   private def isUnderground(p: Point) =
@@ -121,11 +148,8 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   def simulate(dt: Double) {
     if (state == FLYING) {
       val force = LanderWorld.angleToVector(lander.angle) * lander.thrust + LanderWorld.GRAVITY
-      lander = Lander(
-          lander.position + lander.speed * dt,
-          lander.speed + force * dt,
-          lander.angle,
-          lander.thrust)
+      lander.position = lander.position + lander.speed * dt
+      lander.speed = lander.speed + force * dt
 
       lazy val underground = isUnderground(lander.position)
       lazy val goodConfig = lander.speed.length < 10 && (lander.angle - PI/2) < 1e-2

@@ -40,6 +40,11 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
+  public boolean equals(Object obj) {
+    return realWorld.equals(obj);
+  }
+
+  @Override
   public String diffTo(World world) {
     return realWorld.diffTo(world);
   }
