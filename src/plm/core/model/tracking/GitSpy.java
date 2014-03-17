@@ -11,12 +11,16 @@ import java.util.Calendar;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.json.simple.JSONObject;
 
 import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
+
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
 
 public class GitSpy implements ProgressSpyListener {
 
@@ -41,6 +45,11 @@ public class GitSpy implements ProgressSpyListener {
 		// System.out.println("Created a new repository at " + repository.getDirectory());
 
 		repository.close();
+
+		// setup the remote repository
+		final StoredConfig config = repository.getConfig();
+		config.setString("remote", "origin", "url", "git@bitbucket.org:PLM-Test/plm-test-repo.git");
+		config.save();
 
 		// get the repository
 		git = new Git(repository);
@@ -108,7 +117,13 @@ public class GitSpy implements ProgressSpyListener {
 			git.commit().setMessage(writeCommitMessage(exo)).call();
 
 			// System.out.println("Committed files for " + exo.getId() + " to repository at " + repository.getDirectory());
+
+			// push to the remote repository
+			GitPush gitPush = new GitPush(repository, git);
+			gitPush.toRemote();
 		} catch (GitAPIException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
