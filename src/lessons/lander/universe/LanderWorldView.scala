@@ -145,7 +145,7 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
       g2.translate(world.lander.position.x, world.lander.position.y)
       g2.scale(6, 6)  // the lander shape is small
       resetPen()
-      g2.rotate(world.lander.angle - PI/2)
+      g2.rotate(world.lander.angleRadian - PI/2)
       LanderWorldView.LANDER_SHAPE.foreach(drawPath(_, fill = false))
       val thrust = world.lander.thrust
       if (drawFlame && thrust > 0) {
@@ -184,7 +184,7 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
       drawText(f"y: ${world.lander.position.y}%.2f", 5, world.height - 2 * 30)
       drawText(f"speed x: ${world.lander.speed.y}%.2f", 5, world.height - 3 * 30)
       drawText(f"speed y: ${world.lander.speed.y}%.2f", 5, world.height - 4 * 30)
-      drawText(f"angle: ${world.lander.gameAngle}%.2f°", 5, world.height - 5 * 30)
+      drawText(f"angle: ${world.lander.angleRadian}%.2f°", 5, world.height - 5 * 30)
       drawText(f"thrust: ${world.lander.thrust}", 5, world.height - 6 * 30)
 
       if (mouseIn) {

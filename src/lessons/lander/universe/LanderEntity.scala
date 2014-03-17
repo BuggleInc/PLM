@@ -28,13 +28,13 @@ class LanderEntity extends Entity {
   def getY(): Double = landerWorld.lander.position.y
   def getSpeedX(): Double = landerWorld.lander.speed.x
   def getSpeedY(): Double = landerWorld.lander.speed.y
-  def getAngle(): Double = landerWorld.lander.gameAngle
+  def getAngle(): Double = landerWorld.lander.angle
   def getThrust(): Int = landerWorld.lander.thrust
 
   def setDesiredAngle(desiredAngle: Double) {
-    landerWorld.desiredGameAngle = Some(desiredAngle)
+    landerWorld.desiredAngle = desiredAngle
   }
   def setDesiredThrust(desiredThrust: Int) {
-    landerWorld.desiredThrust = Some(desiredThrust)
+    landerWorld.desiredThrust = desiredThrust
   }
 }
