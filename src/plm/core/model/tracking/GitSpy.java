@@ -48,7 +48,7 @@ public class GitSpy implements ProgressSpyListener {
 
 		// setup the remote repository
 		final StoredConfig config = repository.getConfig();
-		config.setString("remote", "origin", "url", "git@bitbucket.org:PLM-Test/plm-test-repo.git");
+		config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git"); //"git@bitbucket.org:PLM-Test/plm-test-repo.git");
 		config.save();
 
 		// get the repository
