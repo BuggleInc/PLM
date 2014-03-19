@@ -260,7 +260,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		int source = (int) arg;
+		int source = (Integer) arg;
         switch (source) {
 			case AbstractBuggle.BRUSH_COLOR:
 				brushColorComboBox.setSelectedItem(buggle.getBrushColor());
