@@ -186,7 +186,7 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
       drawText(f"y: ${world.lander.position.y}%.2f", 5, world.height - 2 * 30)
       drawText(f"speed x: ${world.lander.speed.y}%.2f", 5, world.height - 3 * 30)
       drawText(f"speed y: ${world.lander.speed.y}%.2f", 5, world.height - 4 * 30)
-      drawText(f"angle: ${world.lander.angleRadian}%.2f°", 5, world.height - 5 * 30)
+      drawText(f"angle: ${world.lander.angle}%.2f°", 5, world.height - 5 * 30)
       drawText(f"thrust: ${world.lander.thrust}", 5, world.height - 6 * 30)
 
       if (mouseIn) {
