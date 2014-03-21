@@ -16,7 +16,7 @@ class FullLander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
       Point(760, 371), Point(854, 200), Point(1468, 200), Point(1585, 440),
       Point(1682, 280), Point(1845, 668), Point(2000, 294))
 
-  val lander = new Lander(Point(500, 500), Point(5, 20), PI/2.1, 3)
+  val lander = new Lander(Point(500, 500), Point(5, 20), 0, 3)
   val world = new DelegatingLanderWorld("lander", width, height, ground, lander)
 
   setup(world)

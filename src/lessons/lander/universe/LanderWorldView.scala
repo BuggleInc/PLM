@@ -21,6 +21,7 @@ import java.awt.event.MouseMotionListener
 import java.awt.event.MouseMotionAdapter
 import java.awt.event.MouseEvent
 import java.awt.event.MouseAdapter
+import java.awt.geom.Point2D
 
 object LanderWorldView {
   private val LANDER_SHAPE = List(
@@ -68,12 +69,13 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
 
   private class Painter(g2: Graphics2D) {
     def paint() {
+      val initialTransform = g2.getTransform()
       setupRendering()
       clearWidgetBackground()
       setupGlobalTransform()
       clearWorldBackground()
       drawGround()
-      drawStats()
+      drawStats(initialTransform)
       world.state match {
         case FLYING => drawLander(drawFlame = true)
         case LANDED => drawLander(drawFlame = false)
@@ -177,19 +179,23 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
       drawText("???", textX, textY)
     }
 
-    def drawStats() {
+    def drawStats(initialTransform: AffineTransform) {
       g2.setColor(Color.LIGHT_GRAY)
       g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30))
       drawText(f"x: ${world.lander.position.x}%.2f", 5, world.height - 30)
       drawText(f"y: ${world.lander.position.y}%.2f", 5, world.height - 2 * 30)
       drawText(f"speed x: ${world.lander.speed.y}%.2f", 5, world.height - 3 * 30)
       drawText(f"speed y: ${world.lander.speed.y}%.2f", 5, world.height - 4 * 30)
-      drawText(f"angle: ${world.lander.angleRadian}%.2f°", 5, world.height - 5 * 30)
+      drawText(f"angle: ${world.lander.angle}%.2f°", 5, world.height - 5 * 30)
       drawText(f"thrust: ${world.lander.thrust}", 5, world.height - 6 * 30)
 
       if (mouseIn) {
-        drawText(f"x: ${mousePos.x}%.2f", world.width - 170, world.height - 30)
-        drawText(f"y: ${mousePos.y}%.2f", world.width - 170, world.height - 2 * 30)
+        val deltaTransform = new AffineTransform(g2.getTransform())
+        deltaTransform.invert()
+        deltaTransform.concatenate(initialTransform)
+        val coord = deltaTransform.transform(new Point2D.Double(mousePos.x, mousePos.y), null)
+        drawText(f"x: ${coord.getX.round}", world.width - 130, world.height - 30)
+        drawText(f"y: ${coord.getY.round}", world.width - 130, world.height - 2 * 30)
       }
     }
   }
