@@ -268,6 +268,16 @@ public abstract class World {
 		return result;
 	}
 
+	/** Checks whether the receiver world wins the exercise
+	 * 
+	 * https://www.youtube.com/watch?v=9QS0q3mGPGg
+	 * 
+	 * @param standard a correction world that should be used to compare the receiver state
+	 */
+	public boolean winning(World standard) {
+		return this.equals(standard);
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
