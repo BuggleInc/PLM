@@ -24,12 +24,12 @@ class LanderEntity extends Entity {
   def getGround(): java.lang.Iterable[Point] = landerWorld.ground
 
   // query lander state
-  def getX(): Double = landerWorld.lander.position.x
-  def getY(): Double = landerWorld.lander.position.y
-  def getSpeedX(): Double = landerWorld.lander.speed.x
-  def getSpeedY(): Double = landerWorld.lander.speed.y
-  def getAngle(): Double = landerWorld.lander.angle
-  def getThrust(): Int = landerWorld.lander.thrust
+  def getX(): Double = landerWorld.position.x
+  def getY(): Double = landerWorld.position.y
+  def getSpeedX(): Double = landerWorld.speed.x
+  def getSpeedY(): Double = landerWorld.speed.y
+  def getAngle(): Double = landerWorld.angle
+  def getThrust(): Int = landerWorld.thrust
 
   def setDesiredAngle(desiredAngle: Double) {
     landerWorld.desiredAngle = desiredAngle
