@@ -49,7 +49,7 @@ public class DelegatingLanderWorld extends World {
 
   @Override
   public int hashCode() {
-    return getName().hashCode();
+    return realWorld.hashCode();
   }
 
   @Override

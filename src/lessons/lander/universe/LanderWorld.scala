@@ -54,6 +54,8 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     }
   }
 
+  override def hashCode(): Int = parent.getName().hashCode + 31 * state.hashCode
+
   def diffTo(world: World): String = null
 
   def reset(initialWorld: LanderWorld): Unit = {
