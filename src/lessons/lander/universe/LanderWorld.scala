@@ -8,48 +8,6 @@ import plm.core.model.ProgrammingLanguage
 import plm.core.ui.ResourcesCache
 
 import Math.PI
-import Math.cos
-import Math.sin
-
-object NumUtil {
-  def clamp(min: Double, max: Double, value: Double): Double = {
-    if (value < min) min else if (value > max) max else value
-  }
-  def clamp(min: Int, max: Int, value: Int): Int = {
-    if (value < min) min else if (value > max) max else value
-  }
-
-  def angleToVector(angle: Double) = Point(cos(angle), sin(angle))
-}
-
-case class Point(x: Double, y: Double) {
-  def +(p: Point): Point = new Point(x + p.x, y + p.y)
-  def -(p: Point): Point = new Point(x - p.x, y - p.y)
-  def *(l: Double): Point = new Point(x * l, y * l)
-  def /(l: Double): Point = new Point(x / l, y / l)
-  def unary_- = this * -1
-
-  def length: Double = Math.sqrt(x * x + y * y)
-  def normed = this / length
-  def dot(p: Point) = x * p.x + y * p.y
-  def cross(p: Point) = x * p.y - y * p.x
-}
-
-case class Segment(start: Point, end: Point)
-
-case class Ray(origin: Point, direction: Point) {
-  def intersects(s: Segment): Boolean = {
-    val v = s.end - s.start
-    val cross = direction.cross(v);
-    if (cross == 0) {
-      false
-    } else {
-      val f1 = (s.start - origin).cross(v) / cross
-      val f2 = (s.start - origin).cross(direction) / cross
-      f1 >= 0 && f2 >= 0 && f2 <= 1
-    }
-  }
-}
 
 object LanderWorld {
   object State extends Enumeration {
@@ -86,13 +44,17 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
 
   def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine): Unit = ()
 
-  /** Returns true if both worlds have same state. */
+  /** Returns true if both worlds have same name and same state. */
   override def equals(obj: Any): Boolean = {
     obj match {
-      case world: DelegatingLanderWorld => state == world.realWorld.state
+      case world: DelegatingLanderWorld => {
+        (parent.getName() == world.getName()) && (state == world.realWorld.state)
+      }
       case _ => false
     }
   }
+
+  override def hashCode(): Int = parent.getName().hashCode + 31 * state.hashCode
 
   def diffTo(world: World): String = null
 
@@ -109,13 +71,13 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     desiredThrust = thrust
   }
 
-  def getView() = new LanderWorldView(LanderWorld.this)
+  def getView() = new LanderWorldView(parent)
 
   override def toString() = "scala lander world"
 
   // simulation
     
-  def angleRadian = (angle + 90) * PI / 180
+  def angleRadian = gameAngleToRadian(angle)
 
   private def groundSegments = {
     if (ground.isEmpty) List()
@@ -135,7 +97,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
     if (state == FLYING) {
       angle = clamp(-90.0 max (angle - 5), 90.0 min (angle + 5), desiredAngle)
       thrust = clamp(0 max (thrust - 1), 5 min (thrust + 1), desiredThrust)
-      val force = angleToVector(angleRadian) * thrust + LanderWorld.GRAVITY
+      val force = radianToVector(angleRadian) * thrust + LanderWorld.GRAVITY
       position = position + speed * dt
       speed = speed + force * dt
 

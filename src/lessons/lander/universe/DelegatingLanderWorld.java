@@ -48,6 +48,11 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
+  public int hashCode() {
+    return realWorld.hashCode();
+  }
+
+  @Override
   public String diffTo(World world) {
     return realWorld.diffTo(world);
   }

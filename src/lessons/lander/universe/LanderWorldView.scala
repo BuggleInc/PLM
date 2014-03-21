@@ -37,9 +37,11 @@ object LanderWorldView {
       Point(3, -2), Point(0, -1), Point(-3, -3), Point(-2, 0), Point(-4, 3))
 }
 
-class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
+class LanderWorldView(delagatingWorld: DelegatingLanderWorld) extends WorldView(delagatingWorld) {
 
   import LanderWorld.State._
+
+  private def realWorld = world.asInstanceOf[DelegatingLanderWorld].realWorld
 
   private var mouseIn : Boolean = false
   private var mousePos : Point = Point(0, 0)
@@ -76,7 +78,7 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
       clearWorldBackground()
       drawGround()
       drawStats(initialTransform)
-      world.state match {
+      realWorld.state match {
         case FLYING => drawLander(drawFlame = true)
         case LANDED => drawLander(drawFlame = false)
         case OUT => drawQuestionMarks()
@@ -94,14 +96,16 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
     }
 
     def setupGlobalTransform() = {
-      val scale = (getWidth.toDouble / world.width) min (getHeight.toDouble / world.height)
-      g2.translate((getWidth - world.width * scale) / 2,  (getHeight + world.height * scale) / 2)
+      val scale = (getWidth.toDouble / realWorld.width) min (getHeight.toDouble / realWorld.height)
+      val translateX = (getWidth - realWorld.width * scale) / 2
+      val translateY = (getHeight + realWorld.height * scale) / 2
+      g2.translate(translateX, translateY)
       g2.scale(scale, -scale)
     }
 
     def clearWorldBackground() = {
       g2.setColor(Color.black);
-      g2.fill(new Rectangle2D.Double(0, 0, world.width, world.height));
+      g2.fill(new Rectangle2D.Double(0, 0, realWorld.width, realWorld.height));
     }
 
     /** Sets the line width to 1px no matter the transform, and the color to white. */
@@ -137,19 +141,19 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
 
     def drawGround() = {
       resetPen()
-      drawPath(world.ground, fill = false)
+      drawPath(realWorld.ground, fill = false)
     }
 
     def randomScaleFactor() = 1 + Random.nextDouble() * 0.2
 
     def drawLander(drawFlame: Boolean) = {
       val oldTransform = g2.getTransform()
-      g2.translate(world.position.x, world.position.y)
+      g2.translate(realWorld.position.x, realWorld.position.y)
       g2.scale(6, 6)  // the lander shape is small
       resetPen()
-      g2.rotate(world.angleRadian - PI/2)
+      g2.rotate(realWorld.angleRadian - PI/2)
       LanderWorldView.LANDER_SHAPE.foreach(drawPath(_, fill = false))
-      val thrust = world.thrust
+      val thrust = realWorld.thrust
       if (drawFlame && thrust > 0) {
         val controlX = (0.4 + thrust * 0.1) * randomScaleFactor()
         val endY = (-2 * thrust) * randomScaleFactor()
@@ -162,7 +166,7 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
 
     def drawExplosion() = {
       val oldTransform = g2.getTransform()
-      g2.translate(world.position.x, world.position.y)
+      g2.translate(realWorld.position.x, realWorld.position.y)
       g2.scale(15, 15)  // the explosion shape is small
       resetPen()
       drawPath(LanderWorldView.EXPLOSION_SHAPE, fill = true)
@@ -170,10 +174,10 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
     }
 
     def drawQuestionMarks() = {
-      val x = world.position.x
-      val y = world.position.y
-      val textX = if (x >= world.width) world.width - 100 else if (x <= 0) 5 else x
-      val textY = if (y >= world.height) world.height - 40 else if (y <= 0) 5 else y - 30
+      val x = realWorld.position.x
+      val y = realWorld.position.y
+      val textX = if (x >= realWorld.width) realWorld.width - 100 else if (x <= 0) 5 else x
+      val textY = if (y >= realWorld.height) realWorld.height - 40 else if (y <= 0) 5 else y - 30
       g2.setColor(Color.WHITE)
       g2.setFont(new Font(Font.MONOSPACED, Font.BOLD, 40))
       drawText("???", textX, textY)
@@ -182,20 +186,20 @@ class LanderWorldView(world: LanderWorld) extends WorldView(world.parent) {
     def drawStats(initialTransform: AffineTransform) {
       g2.setColor(Color.LIGHT_GRAY)
       g2.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 30))
-      drawText(f"x: ${world.position.x}%.2f", 5, world.height - 30)
-      drawText(f"y: ${world.position.y}%.2f", 5, world.height - 2 * 30)
-      drawText(f"speed x: ${world.speed.y}%.2f", 5, world.height - 3 * 30)
-      drawText(f"speed y: ${world.speed.y}%.2f", 5, world.height - 4 * 30)
-      drawText(f"angle: ${world.angle}%.2f°", 5, world.height - 5 * 30)
-      drawText(f"thrust: ${world.thrust}", 5, world.height - 6 * 30)
+      drawText(f"x: ${realWorld.position.x}%.2f", 5, realWorld.height - 30)
+      drawText(f"y: ${realWorld.position.y}%.2f", 5, realWorld.height - 2 * 30)
+      drawText(f"speed x: ${realWorld.speed.y}%.2f", 5, realWorld.height - 3 * 30)
+      drawText(f"speed y: ${realWorld.speed.y}%.2f", 5, realWorld.height - 4 * 30)
+      drawText(f"angle: ${realWorld.angle}%.2f°", 5, realWorld.height - 5 * 30)
+      drawText(f"thrust: ${realWorld.thrust}", 5, realWorld.height - 6 * 30)
 
       if (mouseIn) {
         val deltaTransform = new AffineTransform(g2.getTransform())
         deltaTransform.invert()
         deltaTransform.concatenate(initialTransform)
         val coord = deltaTransform.transform(new Point2D.Double(mousePos.x, mousePos.y), null)
-        drawText(f"x: ${coord.getX.round}", world.width - 130, world.height - 30)
-        drawText(f"y: ${coord.getY.round}", world.width - 130, world.height - 2 * 30)
+        drawText(f"x: ${coord.getX.round}", realWorld.width - 130, realWorld.height - 30)
+        drawText(f"y: ${coord.getY.round}", realWorld.width - 130, realWorld.height - 2 * 30)
       }
     }
   }
