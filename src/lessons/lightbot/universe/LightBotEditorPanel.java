@@ -1,4 +1,4 @@
-package plm.universe.lightbot;
+package lessons.lightbot.universe;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

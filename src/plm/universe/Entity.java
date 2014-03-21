@@ -14,7 +14,6 @@ import plm.core.PythonExceptionDecipher;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
-import plm.universe.lightbot.LightBotEntity;
 
 /* Entities cannot have their own org.xnap.commons.i18n.I18n, use the static Game.i18n instead.
  * 

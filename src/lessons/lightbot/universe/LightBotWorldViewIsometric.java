@@ -1,4 +1,4 @@
-package plm.universe.lightbot;
+package lessons.lightbot.universe;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

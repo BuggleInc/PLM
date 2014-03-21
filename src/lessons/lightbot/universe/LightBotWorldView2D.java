@@ -3,7 +3,7 @@
  * I don't kill it so that we have a backup in case the 3D view breaks at some point.
  */
 
-package plm.universe.lightbot;
+package lessons.lightbot.universe;
 
 import java.awt.Color;
 import java.awt.Graphics;
