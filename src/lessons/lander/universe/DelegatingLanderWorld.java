@@ -43,13 +43,8 @@ public class DelegatingLanderWorld extends World {
   }
 
   @Override
-  public boolean equals(Object obj) {
-    return realWorld.equals(obj);
-  }
-
-  @Override
-  public int hashCode() {
-    return realWorld.hashCode();
+  public boolean winning(World target) {
+    return realWorld.winning(target);
   }
 
   @Override

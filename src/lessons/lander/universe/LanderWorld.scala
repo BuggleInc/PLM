@@ -45,16 +45,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   def setupBindings(lang: ProgrammingLanguage, engine: ScriptEngine): Unit = ()
 
   /** Returns true if both worlds have same name and same state. */
-  override def equals(obj: Any): Boolean = {
-    obj match {
-      case world: DelegatingLanderWorld => {
-        (parent.getName() == world.getName()) && (state == world.realWorld.state)
-      }
-      case _ => false
-    }
-  }
-
-  override def hashCode(): Int = parent.getName().hashCode + 31 * state.hashCode
+  def winning(target: World): Boolean = state == LANDED
 
   def diffTo(world: World): String = null
 
