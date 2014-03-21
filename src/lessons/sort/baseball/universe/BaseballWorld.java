@@ -140,6 +140,7 @@ public class BaseballWorld extends World {
 	 * Returns a textual description of the differences between the caller and world
 	 * @param o the world with which you want to compare your world
 	 */
+	@Override
 	public String diffTo(World o) {
 		if (o == null || !(o instanceof BaseballWorld))
 			return i18n.tr("This is not a baseball world :-(");
