@@ -30,6 +30,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	private boolean carryBaggle;
 
+	/* used to tell the observers what was changed */
 	public static final int BRUSH_STATE = 0, BRUSH_COLOR = 1, BUGGLE_COLOR = 2;
 	
 	/* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
@@ -226,7 +227,7 @@ public abstract class AbstractBuggle extends Entity {
 		try {
 			setPos(x,y);
 		} catch (BuggleInOuterSpaceException e) {
-			throw new RuntimeException("Broken lesson: you moved to outer space",e);
+			throw new RuntimeException("Broken lesson: you moved to outer space (at "+x+","+y+")",e);
 		}
 	}
 
@@ -268,7 +269,7 @@ public abstract class AbstractBuggle extends Entity {
 			return cell.hasLeftWall();
 
 		case Direction.SOUTH_VALUE: /* if looking down, look to the top of one cell lower */
-			cell = getCellFromLesson(getX(),                        (getY()+1) % getWorldHeight());
+			cell = getCellFromLesson(getX(), (getY()+1) % getWorldHeight());
 			return cell.hasTopWall();
 
 		case Direction.EAST_VALUE: /* if looking right, look to the left of one next cell */
