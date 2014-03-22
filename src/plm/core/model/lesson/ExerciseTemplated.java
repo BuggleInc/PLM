@@ -311,7 +311,7 @@ public abstract class ExerciseTemplated extends Exercise {
 	protected final void setup(World w) {
 		setup(new World[] {w});
 	}
-	protected void setup(World[] ws) {
+	protected <W extends World> void setup(W[] ws) {
 		boolean foundALanguage=false;
 		setupWorlds(ws);
 

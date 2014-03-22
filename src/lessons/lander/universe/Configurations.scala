@@ -31,17 +31,17 @@ object Configurations {
   
   // worlds
           
-  val SIMPLE_TERRAIN_SIMPLE_CONFIG : World = makeWorld(
+  val SIMPLE_TERRAIN_SIMPLE_CONFIG = makeWorld(
       name = "Simple Terrain, Simple Configuration",
       terrain = SIMPLE_TERRAIN,
       lander = Lander(Point(1200, 700), Point(0, 0), 0.0, 0))
       
-  val SIMPLE_TERRAIN_CHALLENGING_CONFIG : World = makeWorld(
+  val SIMPLE_TERRAIN_CHALLENGING_CONFIG = makeWorld(
       name = "Simple Terrain, Challlenging Configuration",
       terrain = SIMPLE_TERRAIN,
       lander = Lander(Point(500, 500), angleToSpeed(-20, 20), -20, 3))
       
-  val SIMPLE_TERRAIN_HARD_CONFIG : World = makeWorld(
+  val SIMPLE_TERRAIN_HARD_CONFIG = makeWorld(
       name = "Simple Terrain, Hard Configuration",
       terrain = SIMPLE_TERRAIN,
       lander = Lander(Point(1900, 900), angleToSpeed(90, 80), 90, 4))
