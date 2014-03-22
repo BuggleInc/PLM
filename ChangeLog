@@ -7,6 +7,7 @@
   * Various proofreadings on mission texts (FR&EN)
   * Rewamp the feedback reporting dialog box
   * The feedback is now reported as github issues [Cédric Huguenin]
+  * Unclutters the UI: changing the buggle color is useless
 
 20131113: Release 2.3
 

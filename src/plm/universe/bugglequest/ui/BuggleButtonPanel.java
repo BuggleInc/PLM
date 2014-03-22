@@ -34,7 +34,6 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 	private JButton rButton;
 	private JButton lButton;
 	private JToggleButton brushButton;
-	private JComboBox<Color> buggleColorComboBox;
 	private JComboBox<Color> brushColorComboBox;
 	private JLabel lBuggleColor;
 	private JLabel lBrushColor;
@@ -149,20 +148,6 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBrushColor(c);
 			}
 		});
-		
-		buggleColorComboBox=new JComboBox<Color>(colors);
-		buggleColorComboBox.setRenderer(new BuggleColorCellRenderer());
-		buggleColorComboBox.setSelectedItem(((AbstractBuggle)Game.getInstance().getSelectedEntity()).getBodyColor());
-		buggleColorComboBox.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				JComboBox<?> cb = (JComboBox<?>) event.getSource();
-				Color c = (Color) cb.getSelectedItem();
-				cb.setSelectedItem(c);
-				echo(i18n.tr("setColor(Color.{0})",ColorMapper.color2name(c)));
-				((AbstractBuggle)Game.getInstance().getSelectedEntity()).setBodyColor(c);
-			}
-		});
 	}
 
 	/**
@@ -220,10 +205,6 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 		colorsPanel.add(lBrushColor);
 		colorsPanel.add(brushColorComboBox);
 		
-		lBuggleColor = new JLabel("Buggle Color");
-		colorsPanel.add(lBuggleColor);
-		colorsPanel.add(buggleColorComboBox);
-		
 		return colorsPanel;
 	}
 	
@@ -234,7 +215,6 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 		lButton.setEnabled(enabled);
 		rButton.setEnabled(enabled);
 		brushButton.setEnabled(enabled);
-		buggleColorComboBox.setEnabled(enabled);
 		brushColorComboBox.setEnabled(enabled);
 	}
 	
@@ -267,9 +247,6 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 				break;
 			case AbstractBuggle.BRUSH_STATE:
 				brushButton.setSelected(buggle.isBrushDown());
-				break;
-			case AbstractBuggle.BUGGLE_COLOR:
-				buggleColorComboBox.setSelectedItem(buggle.getBodyColor());
 				break;
 		}
 	}
