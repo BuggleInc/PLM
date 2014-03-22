@@ -5,6 +5,7 @@
   * The error message now have the right number also on Windows. 
     #42 was not fixed on this platform yet. [Cédric Huguenin]
   * Various proofreadings on mission texts (FR&EN)
+  * Rewamp the feedback reporting dialog box
   * The feedback is now reported as github issues [Cédric Huguenin]
 
 20131113: Release 2.3
