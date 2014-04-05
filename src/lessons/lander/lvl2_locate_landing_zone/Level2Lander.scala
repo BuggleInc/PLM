@@ -1,4 +1,4 @@
-package lessons.lander.level3
+package lessons.lander.lvl2_locate_landing_zone
 
 import plm.core.model.lesson.ExerciseTemplated
 import plm.core.model.lesson.Lesson
@@ -11,9 +11,9 @@ import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
 
-class Level3Lander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+class Level2Lander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+  tabName = "Locate a Landing Zone"
   setup(Array(
-      SIMPLE_TERRAIN_CHALLENGING_CONFIG,
       CHALLENGING_TERRAIN_SIMPLE_CONFIG,
       SIMPLE_TERRAIN_TRIVIAL_CONFIG))
 }

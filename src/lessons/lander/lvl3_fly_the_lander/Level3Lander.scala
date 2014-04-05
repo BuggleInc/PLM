@@ -1,4 +1,4 @@
-package lessons.lander.level1
+package lessons.lander.lvl3_fly_the_lander
 
 import plm.core.model.lesson.ExerciseTemplated
 import plm.core.model.lesson.Lesson
@@ -11,6 +11,10 @@ import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
 
-class Level1Lander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
-  setup(SIMPLE_TERRAIN_TRIVIAL_CONFIG)
+class Level3Lander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+  tabName = "Fly the Lander!"
+  setup(Array(
+      SIMPLE_TERRAIN_CHALLENGING_CONFIG,
+      CHALLENGING_TERRAIN_SIMPLE_CONFIG,
+      SIMPLE_TERRAIN_TRIVIAL_CONFIG))
 }
