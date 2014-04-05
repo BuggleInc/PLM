@@ -32,7 +32,6 @@ public class JavaEditorPanel extends JScrollPane implements IEditorPanel,IEntity
 		 */
 		
 		codeEditor.setCaretPosition(0);
-		//((SyntaxDocument) codeEditor.getDocument()).setCurrentEditedLineNumber(0); TODO: find the new way of doing so in jsyntaxpane 0.9.5
 		
 		/* Create a synchronization element, and connect it to the editor */
 		sync = new SourceFileDocumentSynchronizer(codeEditor.getEditorKit());
