@@ -1,4 +1,4 @@
-package lessons.lander.level3;
+package lessons.lander.lvl3_fly_the_lander;
 
 import java.util.Iterator;
 

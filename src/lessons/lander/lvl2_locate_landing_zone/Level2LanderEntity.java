@@ -1,4 +1,4 @@
-package lessons.lander.level2;
+package lessons.lander.lvl2_locate_landing_zone;
 
 import java.util.Iterator;
 

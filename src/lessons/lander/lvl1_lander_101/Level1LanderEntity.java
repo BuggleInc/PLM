@@ -1,4 +1,4 @@
-package lessons.lander.level1;
+package lessons.lander.lvl1_lander_101;
 
 import lessons.lander.universe.LanderEntity;
 
