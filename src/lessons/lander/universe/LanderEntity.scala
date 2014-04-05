@@ -30,6 +30,7 @@ class LanderEntity extends Entity {
   def getSpeedY(): Double = landerWorld.speed.y
   def getAngle(): Double = landerWorld.angle
   def getThrust(): Int = landerWorld.thrust
+  def getFuel(): Int = landerWorld.fuel
 
   def setDesiredAngle(desiredAngle: Double) {
     landerWorld.desiredAngle = desiredAngle

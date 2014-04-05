@@ -14,7 +14,7 @@ public class DelegatingLanderWorld extends World {
   final LanderWorld realWorld;
 
   public DelegatingLanderWorld(String name, int width, int height,
-      List<Point> ground, Point position, Point speed, double angle, int thrust) {
+      List<Point> ground, Point position, Point speed, double angle, int thrust, int fuel) {
     super(name);
     realWorld = new LanderWorld(this);
     realWorld.width_$eq(width);
@@ -24,6 +24,7 @@ public class DelegatingLanderWorld extends World {
     realWorld.speed_$eq(speed);
     realWorld.angle_$eq(angle);
     realWorld.thrust_$eq(thrust);
+    realWorld.fuel_$eq(fuel);
   }
 
   public DelegatingLanderWorld(DelegatingLanderWorld world) {

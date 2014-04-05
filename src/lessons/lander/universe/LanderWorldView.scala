@@ -192,6 +192,7 @@ class LanderWorldView(delagatingWorld: DelegatingLanderWorld) extends WorldView(
       drawText(f"speed y: ${realWorld.speed.y}%.2f", 5, realWorld.height - 4 * 30)
       drawText(f"angle: ${realWorld.angle}%.2f°", 5, realWorld.height - 5 * 30)
       drawText(f"thrust: ${realWorld.thrust}", 5, realWorld.height - 6 * 30)
+      drawText(f"fuel: ${realWorld.fuel}", 5, realWorld.height - 7 * 30)
 
       if (mouseIn) {
         val deltaTransform = new AffineTransform(g2.getTransform())

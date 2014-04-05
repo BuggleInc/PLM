@@ -21,8 +21,8 @@ public class FullLanderEntity extends LanderEntity {
     while (ground.hasNext()) {
       Point point = ground.next();
       if (lastPoint.y() == point.y()) {
-        targetStart = lastPoint.x();
-        targetEnd = point.x();
+        targetStart = lastPoint.x() + 20;
+        targetEnd = point.x() - 20;
         return;
       }
       lastPoint = point;
@@ -34,7 +34,7 @@ public class FullLanderEntity extends LanderEntity {
   @Override
   /* END HIDDEN */
   public void step() {
-    /* BEGIN SOLUTION */
+    /* BEGIN HIDDEN */
     if (getX() < targetStart) {
       setDesiredAngle(-30);
     } else if (getX() > targetEnd) {
@@ -48,8 +48,8 @@ public class FullLanderEntity extends LanderEntity {
         setDesiredAngle(0);
       }
     }
-    setDesiredThrust(getSpeedY() < -5 ? 4 : 3);
-    /* END SOLUTION */
+    setDesiredThrust(getSpeedY() < -9 ? 4 : 3);
+    /* END HIDDEN */
   }
   /* END TEMPLATE */
 }

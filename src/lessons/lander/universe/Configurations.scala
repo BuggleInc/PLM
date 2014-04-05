@@ -8,11 +8,11 @@ object Configurations {
   // helper creation functions
   
   private case class Terrain(width: Int, height: Int, ground: List[Point])
-  private case class Lander(position: Point, speed: Point, angle: Double, thurst: Int)
    
-  private def makeWorld(name: String, terrain: Terrain, lander: Lander) =
-    new DelegatingLanderWorld(name, terrain.width, terrain.height, terrain.ground, lander.position,
-        lander.speed, lander.angle, lander.thurst)
+  private def makeWorld(name: String, terrain: Terrain, position: Point, speed: Point, 
+      angle: Double, thrust: Int, fuel: Int) =
+    new DelegatingLanderWorld(name, terrain.width, terrain.height, terrain.ground, position, speed, 
+        angle, thrust, fuel)
   
   // helper geometric functions
   
@@ -34,15 +34,27 @@ object Configurations {
   val SIMPLE_TERRAIN_SIMPLE_CONFIG = makeWorld(
       name = "Simple Terrain, Simple Configuration",
       terrain = SIMPLE_TERRAIN,
-      lander = Lander(Point(1200, 700), Point(0, 0), 0.0, 0))
+      position = Point(1200, 700),
+      speed = Point(0, 0),
+      angle = 0.0,
+      thrust = 0,
+      fuel = 3000)
       
   val SIMPLE_TERRAIN_CHALLENGING_CONFIG = makeWorld(
       name = "Simple Terrain, Challlenging Configuration",
       terrain = SIMPLE_TERRAIN,
-      lander = Lander(Point(500, 500), angleToSpeed(-20, 20), -20, 3))
+      position = Point(500, 500),
+      speed = angleToSpeed(-20, 20),
+      angle = -20,
+      thrust = 3,
+      fuel = 3000)
       
   val SIMPLE_TERRAIN_HARD_CONFIG = makeWorld(
       name = "Simple Terrain, Hard Configuration",
       terrain = SIMPLE_TERRAIN,
-      lander = Lander(Point(1900, 900), angleToSpeed(90, 80), 90, 4))
+      position = Point(1900, 900),
+      speed = angleToSpeed(90, 80),
+      angle = 90,
+      thrust = 4,
+      fuel = 3000)
 }
