@@ -1,40 +1,43 @@
-package lessons.lander.lvl3_fly_the_lander;
+package lessons.lander.lvl2_locate_landing_zone;
 
 import java.util.Iterator;
 
 import lessons.lander.universe.LanderEntity;
 import lessons.lander.universe.Point;
+import lessons.lander.universe.Segment;
 
-public class Level3LanderEntity extends LanderEntity {
+public class LocateLandingZoneEntity extends LanderEntity {
   /* BEGIN TEMPLATE */
-  /* BEGIN HIDDEN */
-  double targetStart;
-  double targetEnd;
-  /* END HIDDEN */
-  /* BEGIN HIDDEN */
-  @Override
-  /* END HIDDEN */
-  public void init() {
-    /* BEGIN HIDDEN */
+  public Segment getLandingZone() {
+    /* return new Segment(new Point(0,0), new Point(0,0)); */
+    /* BEGIN SOLUTION */
     Iterator<Point> ground = getGround().iterator();
     Point lastPoint = ground.next();
     while (ground.hasNext()) {
       Point point = ground.next();
       if (lastPoint.y() == point.y()) {
-        targetStart = lastPoint.x();
-        targetEnd = point.x();
-        return;
+        return new Segment(lastPoint, point);
       }
       lastPoint = point;
     }
-    /* END HIDDEN */
+    return null;
+    /* END SOLUTION */
   }
+  /* END TEMPLATE */
 
   /* BEGIN HIDDEN */
+  double targetStart = 0;
+  double targetEnd = 0;
+
   @Override
-  /* END HIDDEN */
+  public void init() {
+    Segment landingZone = getLandingZone();
+    targetStart = landingZone.start().x();
+    targetEnd = landingZone.end().x();
+  }
+
+  @Override
   public void step() {
-    /* BEGIN SOLUTION */
     if (getX() < targetStart) {
       setDesiredAngle(-30);
     } else if (getX() > targetEnd) {
@@ -49,7 +52,6 @@ public class Level3LanderEntity extends LanderEntity {
       }
     }
     setDesiredThrust(getSpeedY() < -9 ? 4 : 3);
-    /* END SOLUTION */
   }
-  /* END TEMPLATE */
+  /* END HIDDEN */
 }

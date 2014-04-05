@@ -1,14 +1,14 @@
 package lessons.lander
 
 import plm.core.model.lesson.Lesson
-import lessons.lander.lvl1_lander_101.Level1Lander
-import lessons.lander.lvl2_locate_landing_zone.Level2Lander
-import lessons.lander.lvl3_fly_the_lander.Level3Lander
+import lessons.lander.lvl1_lander_101.Lander101
+import lessons.lander.lvl2_locate_landing_zone.LocateLandingZone
+import lessons.lander.lvl3_fly_the_lander.FlyTheLander
 
 class Main extends Lesson {
   override def loadExercises = {
-    addExercise(new Level1Lander(this));
-    addExercise(new Level2Lander(this));
-    addExercise(new Level3Lander(this));
+    addExercise(new Lander101(this));
+    addExercise(new LocateLandingZone(this));
+    addExercise(new FlyTheLander(this));
   }
 }

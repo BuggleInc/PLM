@@ -11,8 +11,8 @@ import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
 
-class Level3Lander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
-  tabName = "Fly the Lander!"
+class FlyTheLander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+  tabName = "Lander"
   setup(Array(
       SIMPLE_TERRAIN_CHALLENGING_CONFIG,
       CHALLENGING_TERRAIN_SIMPLE_CONFIG,
