@@ -69,7 +69,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
   override def toString() = "scala lander world"
 
   // simulation
-    
+
   def angleRadian = gameAngleToRadian(angle)
 
   private def groundSegments = {
@@ -96,7 +96,7 @@ class LanderWorld(val parent: DelegatingLanderWorld) {
       fuel = (fuel - thrust) max 0
 
       lazy val underground = isUnderground(position)
-      lazy val goodConfig = speed.y.abs < 10 && speed.x.abs < 5 && (angleRadian - PI/2) < 1e-2
+      lazy val goodConfig = speed.y.abs <= 10 && speed.x.abs <= 5 && (angleRadian - PI/2) < 1e-2
       lazy val touchesFlat = touchesSomeFlatSegment(position)
       lazy val outOfWorldX = position.x < 0 || position.x > width
       lazy val outOfWorldY = position.y < 0 || position.y > height

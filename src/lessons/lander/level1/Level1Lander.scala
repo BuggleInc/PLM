@@ -1,4 +1,4 @@
-package lessons.lander.full
+package lessons.lander.level1
 
 import plm.core.model.lesson.ExerciseTemplated
 import plm.core.model.lesson.Lesson
@@ -11,10 +11,6 @@ import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
 
-class FullLander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
-  setup(Array(
-      // TODO(polux): enable when demo can solve it
-      // SIMPLE_TERRAIN_HARD_CONFIG,
-      SIMPLE_TERRAIN_CHALLENGING_CONFIG,
-      SIMPLE_TERRAIN_SIMPLE_CONFIG))
+class Level1Lander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+  setup(SIMPLE_TERRAIN_TRIVIAL_CONFIG)
 }
