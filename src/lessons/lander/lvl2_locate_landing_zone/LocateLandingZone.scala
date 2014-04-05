@@ -11,8 +11,8 @@ import scala.collection.JavaConversions._
 import lessons.lander.universe.LanderWorld
 import plm.universe.World
 
-class Level2Lander(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
-  tabName = "Locate a Landing Zone"
+class LocateLandingZone(lesson: Lesson) extends ExerciseTemplated(lesson, null) {
+  tabName = "Lander"
   setup(Array(
       CHALLENGING_TERRAIN_SIMPLE_CONFIG,
       SIMPLE_TERRAIN_TRIVIAL_CONFIG))

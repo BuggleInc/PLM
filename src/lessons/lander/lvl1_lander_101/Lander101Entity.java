@@ -2,7 +2,7 @@ package lessons.lander.lvl1_lander_101;
 
 import lessons.lander.universe.LanderEntity;
 
-public class Level1LanderEntity extends LanderEntity {
+public class Lander101Entity extends LanderEntity {
   @Override
   public void step() {
     /* BEGIN TEMPLATE */
