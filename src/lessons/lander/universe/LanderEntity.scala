@@ -5,7 +5,7 @@ import scala.collection.JavaConversions.asJavaIterable
 
 class LanderEntity extends Entity {
 
-  private def landerWorld = getWorld().asInstanceOf[DelegatingLanderWorld].realWorld 
+  private def landerWorld = getWorld().asInstanceOf[DelegatingLanderWorld].realWorld
 
   override def run() = {
     init()
@@ -16,11 +16,11 @@ class LanderEntity extends Entity {
     }
   }
 
-  // methods to be overriden by the player
+  // methods to be overridden by the player
   def init(): Unit = ()
   def step(): Unit = ()
 
-  // query terrain
+  // query terrain2
   def getGround(): java.lang.Iterable[Point] = landerWorld.ground
 
   // query lander state
@@ -30,6 +30,7 @@ class LanderEntity extends Entity {
   def getSpeedY(): Double = landerWorld.speed.y
   def getAngle(): Double = landerWorld.angle
   def getThrust(): Int = landerWorld.thrust
+  def getFuel(): Int = landerWorld.fuel
 
   def setDesiredAngle(desiredAngle: Double) {
     landerWorld.desiredAngle = desiredAngle

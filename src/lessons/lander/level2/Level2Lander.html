@@ -1,0 +1,29 @@
+<h2>Locate a Landing Zone</h2>
+
+<p>After 200 days of travelling space and eating cereals you finally reach
+Mars. Time to land at last!</p>
+
+<p>The lander is on autopilot and all you have to do is look around and tell it
+where to land. The lander must <b>land on a flat zone</b> it you want to remain
+in one piece. You indicate the lander where to land by modifying the
+<code>getLandingZone</code> function so that it returns a <code>Segment</code>
+representing the zone of your choice.
+
+<p>A segment is composed of two <code>Point</code>s, each of them composed of
+two <code>double</code>s. A segment is built via the <code>Segment(Point start,
+Point end)</code> constructor. A point is built via the <code>Point(double x,
+double y)</code> constructor. A point's coordinates are accessible via its
+<code>double x()</code> and <code>double y()</code> methods.</p>
+
+<p>In order to dertermine which zone to return, you'll need to call
+<code>Iterable<Point> getGround()</code>, which returns the vertices of the
+ground's profile from left to right.</p>
+
+<p>One more thing: your function should return a valid flat zone in any kind of
+situation, not just for this particular one. That's why it will be not only be
+tested against the <i>Challenging Terrain, Simple Configuration</i> world, but
+also against the <i>Simple Terrain, Simple Configuration</i> one from the
+previous exercise.</p>
+
+<p>Have a safe landing! Don't forget to put on your space suit on your way
+out.</p>

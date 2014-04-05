@@ -1,11 +1,11 @@
-package lessons.lander.full;
+package lessons.lander.level3;
 
 import java.util.Iterator;
 
 import lessons.lander.universe.LanderEntity;
 import lessons.lander.universe.Point;
 
-public class FullLanderEntity extends LanderEntity {
+public class Level3LanderEntity extends LanderEntity {
   /* BEGIN TEMPLATE */
   /* BEGIN HIDDEN */
   double targetStart;
@@ -41,14 +41,14 @@ public class FullLanderEntity extends LanderEntity {
       setDesiredAngle(30);
     } else {
       if (getSpeedX() > 5) {
-        setDesiredAngle(20);
+        setDesiredAngle(25);
       } else if (getSpeedX() < -5) {
-        setDesiredAngle(-20);
+        setDesiredAngle(-25);
       } else {
         setDesiredAngle(0);
       }
     }
-    setDesiredThrust(getSpeedY() < -5 ? 4 : 3);
+    setDesiredThrust(getSpeedY() < -9 ? 4 : 3);
     /* END SOLUTION */
   }
   /* END TEMPLATE */
