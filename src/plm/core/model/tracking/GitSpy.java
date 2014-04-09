@@ -19,9 +19,6 @@ import plm.core.model.Game;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.Session;
-
 public class GitSpy implements ProgressSpyListener {
 
 	private String username;
@@ -48,14 +45,11 @@ public class GitSpy implements ProgressSpyListener {
 
 		// setup the remote repository
 		final StoredConfig config = repository.getConfig();
-		config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git"); //"git@bitbucket.org:PLM-Test/plm-test-repo.git");
+		config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git"); // "git@bitbucket.org:PLM-Test/plm-test-repo.git");
 		config.save();
 
 		// get the repository
 		git = new Git(repository);
-
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Calendar cal = Calendar.getInstance();
 
 		// plm started commit message
 		git.commit().setMessage(writePLMStartedCommitMessage()).call();
@@ -63,6 +57,115 @@ public class GitSpy implements ProgressSpyListener {
 
 	@Override
 	public void executed(Exercise exo) {
+		createFiles(exo);
+
+		try {
+			// run the add-call
+			git.add().addFilepattern(".").call();
+
+			// and then commit the changes
+			git.commit().setMessage(writeCommitMessage(exo, "executed")).call();
+
+			// push to the remote repository
+			GitPush gitPush = new GitPush(repository, git);
+			gitPush.toRemote();
+		} catch (GitAPIException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		repository.close();
+	}
+
+	@Override
+	public void switched(Exercise exo) {
+//		if(exo.lastResult == null) {
+//			System.out.println("Do nothing.");
+//		} else {
+//		createFiles(exo);
+//
+//		try {
+//			// run the add-call
+//			git.add().addFilepattern(".").call();
+//
+//			// and then commit the changes
+//			git.commit().setMessage(writeCommitMessage(exo, "switched")).call();
+//
+//			// push to the remote repository
+//			GitPush gitPush = new GitPush(repository, git);
+//			gitPush.toRemote();
+//		} catch (GitAPIException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//
+//		repository.close();
+//		}
+	}
+
+	@Override
+	public void heartbeat() {
+	}
+
+	@Override
+	public String join() {
+		return "";
+	}
+
+	@Override
+	public void leave() {
+	}
+
+	/**
+	 * Helper methods
+	 */
+	@SuppressWarnings("unchecked")
+	private String writeCommitMessage(Exercise exo, String evt_type) {
+		JSONObject jsonObject = new JSONObject();
+
+		Game game = Game.getInstance();
+		ExecutionProgress lastResult = exo.lastResult;
+
+		jsonObject.put("evt_type", evt_type);
+		// Retrieve appropriate parameters regarding the current exercise
+		jsonObject.put("username", username);
+		jsonObject.put("course", game.getCourseID());
+		jsonObject.put("password", game.getCoursePassword());
+		jsonObject.put("exoname", exo.getName());
+		jsonObject.put("exolang", lastResult.language.toString());
+		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
+		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
+		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
+		jsonObject.put("action", "execute");
+
+		return jsonObject.toString();
+	}
+
+	/**
+	 * This method creates a String which contains debug informations. This String will be used as the commit message set when the PLM is started by the user.
+	 * 
+	 * @return the JSON String that will be used as the commit message
+	 */
+	@SuppressWarnings("unchecked")
+	private String writePLMStartedCommitMessage() {
+		JSONObject jsonObject = new JSONObject();
+		
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Calendar cal = Calendar.getInstance();
+
+		jsonObject.put("evt_type", "started");
+		// Retrieve the feedback informations
+		jsonObject.put("start_date", dateFormat.format(cal.getTime()));
+		jsonObject.put("java_version", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
+		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")");
+		jsonObject.put("plm_version", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
+
+		return jsonObject.toString();
+	}
+
+	private void createFiles(Exercise exo) {
 		ExecutionProgress lastResult = exo.lastResult;
 
 		String exoCode = exo.getSourceFile(lastResult.language, 0).getBody(); // retrieve the code from the student
@@ -106,82 +209,6 @@ public class GitSpy implements ProgressSpyListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		try {
-			// run the add-call
-			git.add().addFilepattern(".").call();
-
-			// System.out.println("Added files for " + exo.getId() + " to repository at " + repository.getDirectory());
-
-			// and then commit the changes
-			git.commit().setMessage(writeCommitMessage(exo)).call();
-
-			// System.out.println("Committed files for " + exo.getId() + " to repository at " + repository.getDirectory());
-
-			// push to the remote repository
-			GitPush gitPush = new GitPush(repository, git);
-			gitPush.toRemote();
-		} catch (GitAPIException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		repository.close();
 	}
 
-	@Override
-	public void switched(Exercise exo) {
-	}
-
-	@Override
-	public void heartbeat() {
-	}
-
-	@Override
-	public String join() {
-		return "";
-	}
-
-	@Override
-	public void leave() {
-	}
-
-	/**
-	 * Helper methods
-	 */
-	@SuppressWarnings("unchecked")
-	private String writeCommitMessage(Exercise exo) {
-		JSONObject jsonObject = new JSONObject();
-
-		Game game = Game.getInstance();
-		ExecutionProgress lastResult = exo.lastResult;
-
-		jsonObject.put("evt_type", "executed");
-		// Retrieve appropriate parameters regarding the current exercise
-		jsonObject.put("username", username);
-		jsonObject.put("course", game.getCourseID());
-		jsonObject.put("password", game.getCoursePassword());
-		jsonObject.put("exoname", exo.getName());
-		jsonObject.put("exolang", lastResult.language.toString());
-		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
-		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
-		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
-		jsonObject.put("action", "execute");
-
-		return jsonObject.toString();
-	}
-	
-	@SuppressWarnings("unchecked")
-	private String writePLMStartedCommitMessage() {
-		JSONObject jsonObject = new JSONObject();
-
-		jsonObject.put("evt_type", "started");
-		// Retrieve the feedback informations
-		jsonObject.put("java_version", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
-		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")");
-		jsonObject.put("plm_version", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
-
-		return jsonObject.toString();
-	}
 }
