@@ -58,7 +58,7 @@ public class GitSpy implements ProgressSpyListener {
 		Calendar cal = Calendar.getInstance();
 
 		// plm started commit message
-		git.commit().setMessage("PLM started at " + dateFormat.format(cal.getTime())).call();
+		git.commit().setMessage(writePLMStartedCommitMessage()).call();
 	}
 
 	@Override
@@ -157,6 +157,7 @@ public class GitSpy implements ProgressSpyListener {
 		Game game = Game.getInstance();
 		ExecutionProgress lastResult = exo.lastResult;
 
+		jsonObject.put("evt_type", "executed");
 		// Retrieve appropriate parameters regarding the current exercise
 		jsonObject.put("username", username);
 		jsonObject.put("course", game.getCourseID());
@@ -167,6 +168,19 @@ public class GitSpy implements ProgressSpyListener {
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
 		jsonObject.put("action", "execute");
+
+		return jsonObject.toString();
+	}
+	
+	@SuppressWarnings("unchecked")
+	private String writePLMStartedCommitMessage() {
+		JSONObject jsonObject = new JSONObject();
+
+		jsonObject.put("evt_type", "started");
+		// Retrieve the feedback informations
+		jsonObject.put("java_version", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
+		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")");
+		jsonObject.put("plm_version", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
 
 		return jsonObject.toString();
 	}
