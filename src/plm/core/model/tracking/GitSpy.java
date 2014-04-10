@@ -80,29 +80,32 @@ public class GitSpy implements ProgressSpyListener {
 
 	@Override
 	public void switched(Exercise exo) {
-//		if(exo.lastResult == null) {
-//			System.out.println("Do nothing.");
-//		} else {
-//		createFiles(exo);
-//
-//		try {
-//			// run the add-call
-//			git.add().addFilepattern(".").call();
-//
-//			// and then commit the changes
-//			git.commit().setMessage(writeCommitMessage(exo, "switched")).call();
-//
-//			// push to the remote repository
-//			GitPush gitPush = new GitPush(repository, git);
-//			gitPush.toRemote();
-//		} catch (GitAPIException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//
-//		repository.close();
-//		}
+		Game game = Game.getInstance();
+		Exercise lastExo = (Exercise) game.getLastExercise();
+		System.out.println(lastExo.getName());
+		lastExo.lastResult = ExecutionProgress.newCompilationError("");
+		if (lastExo.lastResult != null) {
+			System.out.println("Do something.");
+			createFiles(lastExo);
+
+			try {
+				// run the add-call
+				git.add().addFilepattern(".").call();
+
+				// and then commit the changes
+				git.commit().setMessage(writeCommitMessage(lastExo, "switched")).call();
+
+				// push to the remote repository
+				GitPush gitPush = new GitPush(repository, git);
+				gitPush.toRemote();
+			} catch (GitAPIException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			repository.close();
+		}
 	}
 
 	@Override
@@ -151,7 +154,7 @@ public class GitSpy implements ProgressSpyListener {
 	@SuppressWarnings("unchecked")
 	private String writePLMStartedCommitMessage() {
 		JSONObject jsonObject = new JSONObject();
-		
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		Calendar cal = Calendar.getInstance();
 

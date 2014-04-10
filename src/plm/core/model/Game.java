@@ -84,6 +84,7 @@ public class Game implements IWorldView {
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
 	private Course currentCourse;
+	private Lecture lastExercise;
 
 	public static final String [][] humanLangs = { {"Francais","fr"}, {"English","en"}, {"Italiano","it"} };
 	
@@ -438,10 +439,19 @@ public class Game implements IWorldView {
 		}
 	}
 
+	public Lecture getLastExercise() {
+		return this.lastExercise;
+	}
+
+	public void setLastExercise(Lecture exercise) {
+		this.lastExercise = exercise;
+	}
+
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
 		try {
-			saveSession(); // don't loose user changes 
+			saveSession(); // don't loose user changes
+			this.lastExercise = this.currentLesson.getCurrentExercise(); // save the last viewed exercise before switching
 
 			this.currentLesson.setCurrentExercise(lect);
 			fireCurrentExerciseChanged(lect);
