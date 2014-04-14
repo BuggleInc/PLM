@@ -8,8 +8,10 @@ integrated and graphical environment, providing a short feedback loop to
 students in order to improve the effectiveness of the autonomous learning
 process.
 
-
-For more information, [visit the PLM web site](http://www.loria.fr/~quinson/Teaching/PLM/).
+For more information, subscribe to our
+[announcement](https://sympa.inria.fr/sympa/subscribe/plm-announce)
+mailing list (low trafic), and 
+[visit the PLM web site](http://www.loria.fr/~quinson/Teaching/PLM/).
 
 ## License
 
