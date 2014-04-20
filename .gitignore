@@ -15,3 +15,6 @@ errors-msgid.txt
 errors-msgstr.txt
 # The next file contains the translated messages (generated on ant i18n-generate-jar)
 lib/plm-messages.jar
+nbproject/
+manifest.mf
+build/
