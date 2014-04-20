@@ -2,6 +2,7 @@ package plm.core.model.tracking;
 
 import java.io.IOException;
 import java.util.Iterator;
+import javax.swing.SwingWorker;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.PushCommand;
@@ -39,21 +40,27 @@ public class GitPush {
 	}
 
 	public void toRemote() throws GitAPIException {
-		// credentials
-		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
+		new SwingWorker<Void, Integer>() {
+			@Override
+			protected Void doInBackground() throws GitAPIException {
+				// credentials
+				CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
-		// push
-		PushCommand pc = git.push();
-		pc.setCredentialsProvider(cp)
-				.setForce(true)
-				.setPushAll();
-		try {
-			Iterator<PushResult> it = pc.call().iterator();
-			if (it.hasNext()) {
-				System.out.println(it.next().toString());
+				// push
+				PushCommand pc = git.push();
+				pc.setCredentialsProvider(cp)
+						.setForce(true)
+						.setPushAll();
+				try {
+					Iterator<PushResult> it = pc.call().iterator();
+					if (it.hasNext()) {
+						System.out.println(it.next().toString());
+					}
+				} catch (InvalidRemoteException e) {
+					e.printStackTrace();
+				}
+				return null;
 			}
-		} catch (InvalidRemoteException e) {
-			e.printStackTrace();
-		}
+		}.execute();
 	}
 }
