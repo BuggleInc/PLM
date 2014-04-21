@@ -8,6 +8,19 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.FileVisitResult;
+import java.nio.file.FileVisitor;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import java.util.zip.Deflater;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -29,10 +42,10 @@ public class GitSessionKit implements ISessionKit {
 	private Game game;
 	private Repository repository;
 
-	public GitSessionKit(Game game) {
+	public GitSessionKit(Game game, File path) {
 		this.game = game;
 		try {
-			repository = FileRepositoryBuilder.create(new File("D:\\Ced\\.plm\\repository", ".git"));
+			repository = FileRepositoryBuilder.create(new File(path.getAbsolutePath() + System.getProperty("file.separator") + "repository", ".git"));
 		} catch (IOException ex) {
 			repository = null;
 		}
@@ -82,81 +95,80 @@ public class GitSessionKit implements ISessionKit {
 //		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
+	/**
+	 * Load the user source code of the lessons' exercises.
+	 * Also get the per lesson summaries
+	 * @param path 
+	 */
 	@Override
-	public void loadAll(File path) {
+	public void loadAll(final File path) {
 		for (Lesson lesson : this.game.getLessons()) {
 			loadLesson(path, lesson);
 		}
-		String content = null;
-		File file = new File(path, "repository/overview.zip");
-		if (!file.exists()) {
-			return;
-		}
-		ZipFile zf = null;
-		BufferedReader br = null;
-		try {
-			zf = new ZipFile(file);
-			ZipEntry entry = zf.getEntry("passed");
-			if (entry == null) {
-				return;
-			}
 
-			InputStream is = zf.getInputStream(entry);
+		// check how many exercises are done by lesson
+		String pattern = "*.[0-9]*";
+		FileSystem fs = FileSystems.getDefault();
+		final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern);
 
-			br = new BufferedReader(new InputStreamReader(is));
-			String s;
-			StringBuffer b = new StringBuffer();
+		FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
+			@Override
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
+				Path name = file.getFileName();
+				if (matcher.matches(name)) {
+					String s = name + "";
+					String[] tab = s.split("\\.", 0);
+					String lessonNameTmp = "";
+					for (int i = 0; i < tab.length - 2; i++) {
+						lessonNameTmp += tab[i];
+					}
+					final String lessonName = lessonNameTmp;
+					String ext = tab[tab.length - 2];
+					int possible = Integer.parseInt(tab[tab.length - 1]);
+					if (possible > 0) {
+						for (final ProgrammingLanguage p : Game.getProgrammingLanguages()) {
+							if (p.getExt().equals(ext)) {
+								System.out.println(lessonName + "   " + p + "   " + possible);
+								Game.getInstance().studentWork.setPossibleExercises((String) lessonName, p, possible);
+								String pattern = lessonName + ".*." + p.getExt() + ".DONE";
+								FileSystem fs = FileSystems.getDefault();
+								final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern);
 
-			while ((s = br.readLine()) != null) {
-				b.append(s);
-			}
+								FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
+									private int passed = 0;
 
-			content = b.toString();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (zf != null) {
-					zf.close();
-				}
-				if (br != null) {
-					br.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		if (content == null) {
-			return;
-		}
-		Object value = null;
-		try {
-			value = JSONValue.parseWithException(content);
-		} catch (ParseException e) {
-			System.err.println("Parse error while reading the scores from disk:");
-			e.printStackTrace();
-		}
-		if (!(value instanceof JSONObject)) {
-			System.err.println("Retrieved passed-values is not a JSONObject: " + value);
-			return;
-		}
-		JSONObject allLessons = (JSONObject) value;
-		for (Object lessonName : allLessons.keySet()) {
-			JSONObject allLangs = (JSONObject) allLessons.get(lessonName);
-			for (Object langName : allLangs.keySet()) {
-				ProgrammingLanguage lang = null;
-				for (ProgrammingLanguage l : Game.getProgrammingLanguages()) {
-					if (l.getLang().equals(langName)) {
-						lang = l;
+									@Override
+									public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
+										Path name = file.getFileName();
+										if (matcher.matches(name)) {
+											String s = name + "";
+											System.err.println(s);
+											passed++;
+											Game.getInstance().studentWork.setPassedExercises(lessonName, p, passed);
+										}
+										return FileVisitResult.CONTINUE;
+									}
+									
+									public int getPassed() {
+										return passed;
+									}
+								};
+								try {
+									Files.walkFileTree(Paths.get(path.getPath()), matcherVisitor);
+								} catch (IOException ex) {
+
+								}
+							}
+						}
 					}
 				}
-
-				JSONObject oneLang = (JSONObject) allLangs.get(langName);
-				int possible = Integer.parseInt("" + oneLang.get("possible"));
-				int passed = Integer.parseInt("" + oneLang.get("passed"));
-				Game.getInstance().studentWork.setPossibleExercises((String) lessonName, lang, possible);
-				Game.getInstance().studentWork.setPassedExercises((String) lessonName, lang, passed);
+				return FileVisitResult.CONTINUE;
 			}
+		};
+		try {
+			Files.walkFileTree(Paths.get(path.getPath()), matcherVisitor);
+		} catch (IOException ex) {
+
 		}
 	}
 
@@ -165,6 +177,11 @@ public class GitSessionKit implements ISessionKit {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
 
+	/**
+	 * Load the lesson's exercises user source code
+	 * @param path
+	 * @param lesson 
+	 */
 	@Override
 	public void loadLesson(File path, Lesson lesson) {
 		for (Lecture lecture : lesson.exercises()) {
@@ -172,6 +189,10 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercice already done correctly
+					if (new File(repository.getDirectory().getParent() + "/"
+							+ exercise.getId() + "." + lang.getExt() + ".DONE").exists()) { // if the file exists, the tests were passed
+						Game.getInstance().studentWork.setPassed(exercise, lang, true);
+					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
 					String fileName = repository.getDirectory().getParent() + "/"

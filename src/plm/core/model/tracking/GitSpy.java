@@ -16,6 +16,7 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.json.simple.JSONObject;
 
 import plm.core.model.Game;
+import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
@@ -28,10 +29,12 @@ public class GitSpy implements ProgressSpyListener {
 
 	public GitSpy(File path) throws IOException, GitAPIException {
 		username = System.getenv("USER");
-		if (username == null)
+		if (username == null) {
 			username = System.getenv("USERNAME");
-		if (username == null)
+		}
+		if (username == null) {
 			username = "John Doe";
+		}
 
 		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + "repository";
 
@@ -40,7 +43,6 @@ public class GitSpy implements ProgressSpyListener {
 		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
 
 		// System.out.println("Created a new repository at " + repository.getDirectory());
-
 		repository.close();
 
 		// setup the remote repository
@@ -58,6 +60,7 @@ public class GitSpy implements ProgressSpyListener {
 	@Override
 	public void executed(Exercise exo) {
 		createFiles(exo);
+		checkSuccess(exo);
 
 		try {
 			// run the add-call
@@ -141,14 +144,16 @@ public class GitSpy implements ProgressSpyListener {
 		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
-		jsonObject.put("action", "execute");
+		jsonObject.put("action", "execute"); // TODO: check if necessary since there is evt_type
 
 		return jsonObject.toString();
 	}
 
 	/**
-	 * This method creates a String which contains debug informations. This String will be used as the commit message set when the PLM is started by the user.
-	 * 
+	 * This method creates a String which contains debug informations. This
+	 * String will be used as the commit message set when the PLM is started by
+	 * the user.
+	 *
 	 * @return the JSON String that will be used as the commit message
 	 */
 	@SuppressWarnings("unchecked")
@@ -214,4 +219,41 @@ public class GitSpy implements ProgressSpyListener {
 		}
 	}
 
+	/**
+	 * Create some files to know how many exercises there are by programming languages for this lesson.
+	 * Also add a file to know if the exercise has been correctly done
+	 * @param exo 
+	 */
+	private void checkSuccess(Exercise exo) {
+		ExecutionProgress lastResult = exo.lastResult;
+		String repoDir = repository.getDirectory().getParent();
+		String ext = "." + Game.getProgrammingLanguage().getExt(); // the language extension
+		if (lastResult.totalTests != 0 && lastResult.totalTests == lastResult.passedTests) { // exercise is correctly done
+			File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
+			try {
+				FileWriter fwExo = new FileWriter(doneFile.getAbsoluteFile());
+				BufferedWriter bwExo = new BufferedWriter(fwExo);
+				bwExo.write("");
+				bwExo.close();
+			} catch (IOException ex) {
+
+			}
+		}
+
+		for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
+			int possible = Game.getInstance().studentWork.getPossibleExercises(exo.getLesson().getId(), lang);
+			if(possible == 0) {
+				return;
+			}
+			File countFile = new File(repoDir, exo.getLesson().getId() + "." + lang.getExt() + "." + possible);
+			try {
+				FileWriter fwExo = new FileWriter(countFile.getAbsoluteFile());
+				BufferedWriter bwExo = new BufferedWriter(fwExo);
+				bwExo.write("");
+				bwExo.close();
+			} catch (IOException ex) {
+
+			}
+		}
+	}
 }
