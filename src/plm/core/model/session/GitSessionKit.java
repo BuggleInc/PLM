@@ -1,13 +1,13 @@
 package plm.core.model.session;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
@@ -18,18 +18,10 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Pattern;
-import java.util.zip.Deflater;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import java.util.zip.ZipOutputStream;
+
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
-import org.json.simple.parser.ParseException;
+
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.UserAbortException;
@@ -51,54 +43,27 @@ public class GitSessionKit implements ISessionKit {
 		}
 	}
 
+	/**
+	 * Load the user source code for all the opened lessons.
+	 * It doesn't need to save the lesson summaries : it's compute on start
+	 * @param path
+	 * @throws UserAbortException 
+	 */
 	@Override
 	public void storeAll(File path) throws UserAbortException {
-		/* Save the per lesson summaries */
-//		JSONObject allLessons = new JSONObject();
-//		for (String lessonName : this.game.studentWork.getLessonsNames()) {
-//			JSONObject allLangs = new JSONObject();
-//			for (ProgrammingLanguage lang : Game.getProgrammingLanguages()) {
-//				int possible = Game.getInstance().studentWork.getPossibleExercises(lessonName, lang);
-//				int passed = Game.getInstance().studentWork.getPassedExercises(lessonName, lang);
-//
-//				if (possible > 0) {
-//					JSONObject oneLang = new JSONObject();
-//					oneLang.put("possible", possible);
-//					oneLang.put("passed", passed);
-//					allLangs.put(lang.getLang(), oneLang);
-//				}
-//			}
-//			if (allLangs.size() > 0) {
-//				allLessons.put(lessonName, allLangs);
-//			}
-//		}
-//		ZipOutputStream zos = null;
-//		try {
-//			zos = new ZipOutputStream(new FileOutputStream(new File(path, "repository/overview.zip")));
-//			zos.setMethod(ZipOutputStream.DEFLATED);
-//			zos.setLevel(Deflater.BEST_COMPRESSION);
-//
-//			zos.putNextEntry(new ZipEntry("passed"));
-//			zos.write(allLessons.toJSONString().getBytes());
-//			zos.closeEntry();
-//		} catch (IOException ex) { // FileNotFoundException or IOException
-//			// It's ok to loose this data as it will be recomputed when the lessons are actually loaded
-//
-//		} finally {
-//			try {
-//				if (zos != null) {
-//					zos.close();
-//				}
-//			} catch (IOException ioe) {
-//			}
-//		}
-//		//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		/* First save the bodies */
+		for (Lesson lesson : this.game.getLessons()) {
+			storeLesson(new File(path.getAbsoluteFile() + "/repository/"), lesson);
+		}
+
+		/* No need to save the lesson summaries : it's compute on start	*/
 	}
 
 	/**
-	 * Load the user source code of the lessons' exercises.
-	 * Also get the per lesson summaries
-	 * @param path 
+	 * Load the user source code of the lessons' exercises. Also get the per
+	 * lesson summaries
+	 *
+	 * @param path
 	 */
 	@Override
 	public void loadAll(final File path) {
@@ -128,7 +93,7 @@ public class GitSessionKit implements ISessionKit {
 					if (possible > 0) {
 						for (final ProgrammingLanguage p : Game.getProgrammingLanguages()) {
 							if (p.getExt().equals(ext)) {
-								System.out.println(lessonName + "   " + p + "   " + possible);
+								//System.out.println(lessonName + "   " + p + "   " + possible);
 								Game.getInstance().studentWork.setPossibleExercises((String) lessonName, p, possible);
 								String pattern = lessonName + ".*." + p.getExt() + ".DONE";
 								FileSystem fs = FileSystems.getDefault();
@@ -141,14 +106,12 @@ public class GitSessionKit implements ISessionKit {
 									public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
 										Path name = file.getFileName();
 										if (matcher.matches(name)) {
-											String s = name + "";
-											System.err.println(s);
 											passed++;
 											Game.getInstance().studentWork.setPassedExercises(lessonName, p, passed);
 										}
 										return FileVisitResult.CONTINUE;
 									}
-									
+
 									public int getPassed() {
 										return passed;
 									}
@@ -172,15 +135,39 @@ public class GitSessionKit implements ISessionKit {
 		}
 	}
 
+	/**
+	 * Store the user source code for a specified lesson
+	 *
+	 * @param path where to save
+	 * @param lesson the lesson to save
+	 * @throws UserAbortException
+	 */
 	@Override
-	public void storeLesson(File path, Lesson l) throws UserAbortException {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	public void storeLesson(File path, Lesson lesson) throws UserAbortException {
+		for (Lecture lecture : lesson.exercises()) {
+			if (lecture instanceof Exercise) {
+				Exercise exercise = (Exercise) lecture;
+				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
+					SourceFile sf = exercise.getSourceFile(lang, 0);
+					File sourceFileDisk = new File(path, exercise.getLesson().getId() + "." + lang.getExt() + ".code");
+					try {
+						FileWriter fwExo = new FileWriter(sourceFileDisk.getAbsoluteFile());
+						BufferedWriter bwExo = new BufferedWriter(fwExo);
+						bwExo.write(sf.getBody());
+						bwExo.close();
+					} catch (IOException ex) {
+
+					}
+				}
+			}
+		}
 	}
 
 	/**
 	 * Load the lesson's exercises user source code
+	 *
 	 * @param path
-	 * @param lesson 
+	 * @param lesson
 	 */
 	@Override
 	public void loadLesson(File path, Lesson lesson) {
@@ -189,14 +176,15 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercice already done correctly
-					if (new File(repository.getDirectory().getParent() + "/"
+					if (new File(path.getAbsolutePath() + "/repository/"
 							+ exercise.getId() + "." + lang.getExt() + ".DONE").exists()) { // if the file exists, the tests were passed
 						Game.getInstance().studentWork.setPassed(exercise, lang, true);
 					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
-					String fileName = repository.getDirectory().getParent() + "/"
+					String fileName = path.getAbsolutePath() + "/repository/"
 							+ exercise.getId() + "." + lang.getExt() + ".code";
+					//System.out.println(fileName);
 					String line;
 					StringBuilder b = new StringBuilder();
 					try {
