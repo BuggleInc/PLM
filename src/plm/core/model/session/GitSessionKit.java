@@ -19,9 +19,6 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
-import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.UserAbortException;
@@ -32,22 +29,17 @@ import plm.core.model.lesson.Lesson;
 public class GitSessionKit implements ISessionKit {
 
 	private Game game;
-	private Repository repository;
 
 	public GitSessionKit(Game game, File path) {
 		this.game = game;
-		try {
-			repository = FileRepositoryBuilder.create(new File(path.getAbsolutePath() + System.getProperty("file.separator") + "repository", ".git"));
-		} catch (IOException ex) {
-			repository = null;
-		}
 	}
 
 	/**
-	 * Load the user source code for all the opened lessons.
-	 * It doesn't need to save the lesson summaries : it's compute on start
+	 * Load the user source code for all the opened lessons. It doesn't need to
+	 * save the lesson summaries : it's compute on start
+	 *
 	 * @param path
-	 * @throws UserAbortException 
+	 * @throws UserAbortException
 	 */
 	@Override
 	public void storeAll(File path) throws UserAbortException {
@@ -74,24 +66,24 @@ public class GitSessionKit implements ISessionKit {
 		// check how many exercises are done by lesson
 		String pattern = "*.[0-9]*";
 		FileSystem fs = FileSystems.getDefault();
-		final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern);
+		final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern); // to match file names ending with digits
 
 		FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
 			@Override
 			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
 				Path name = file.getFileName();
-				if (matcher.matches(name)) {
+				if (matcher.matches(name)) { // if the file exists, the tests were run at least once
 					String s = name + "";
 					String[] tab = s.split("\\.", 0);
 					String lessonNameTmp = "";
-					for (int i = 0; i < tab.length - 2; i++) {
+					for (int i = 0; i < tab.length - 2; i++) { // get the lesson id
 						lessonNameTmp += tab[i];
 					}
 					final String lessonName = lessonNameTmp;
-					String ext = tab[tab.length - 2];
-					int possible = Integer.parseInt(tab[tab.length - 1]);
+					String ext = tab[tab.length - 2]; // get the programming language
+					int possible = Integer.parseInt(tab[tab.length - 1]); // get the number of exercices
 					if (possible > 0) {
-						for (final ProgrammingLanguage p : Game.getProgrammingLanguages()) {
+						for (final ProgrammingLanguage p : Game.getProgrammingLanguages()) { // for each programming language, how many exercises are done
 							if (p.getExt().equals(ext)) {
 								//System.out.println(lessonName + "   " + p + "   " + possible);
 								Game.getInstance().studentWork.setPossibleExercises((String) lessonName, p, possible);
@@ -106,7 +98,7 @@ public class GitSessionKit implements ISessionKit {
 									public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
 										Path name = file.getFileName();
 										if (matcher.matches(name)) {
-											passed++;
+											passed++; // incr each time we found a correctly done exercise for the programming language p
 											Game.getInstance().studentWork.setPassedExercises(lessonName, p, passed);
 										}
 										return FileVisitResult.CONTINUE;
@@ -177,7 +169,7 @@ public class GitSessionKit implements ISessionKit {
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercice already done correctly
 					if (new File(path.getAbsolutePath() + "/repository/"
-							+ exercise.getId() + "." + lang.getExt() + ".DONE").exists()) { // if the file exists, the tests were passed
+							+ exercise.getId() + "." + lang.getExt() + ".DONE").exists()) { // if the file exists, the exercise was worrect
 						Game.getInstance().studentWork.setPassed(exercise, lang, true);
 					}
 					// load source code 
@@ -207,12 +199,33 @@ public class GitSessionKit implements ISessionKit {
 
 	@Override
 	public void cleanAll(File path) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		for (Lesson lesson : this.game.getLessons()) {
+			cleanLesson(path, lesson);
+		}
 	}
 
 	@Override
 	public void cleanLesson(File path, Lesson l) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+		String pattern = l.getId() + "*";
+		FileSystem fs = FileSystems.getDefault();
+		final PathMatcher matcher = fs.getPathMatcher("glob:" + pattern);
+		FileVisitor<Path> matcherVisitor = new SimpleFileVisitor<Path>() {
+
+			@Override
+			public FileVisitResult visitFile(Path file, BasicFileAttributes attribs) {
+				Path name = file.getFileName();
+				if (matcher.matches(name)) {
+					new File(name + "").delete(); // delete files related to the selected Lesson
+				}
+				return FileVisitResult.CONTINUE;
+			}
+		};
+		try {
+			Files.walkFileTree(Paths.get(path.getPath()), matcherVisitor);
+		} catch (IOException ex) {
+
+		}
 	}
 
 }
