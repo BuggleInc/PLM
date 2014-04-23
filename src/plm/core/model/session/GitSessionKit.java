@@ -141,7 +141,7 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					SourceFile sf = exercise.getSourceFile(lang, 0);
-					File sourceFileDisk = new File(path, exercise.getLesson().getId() + "." + lang.getExt() + ".code");
+					File sourceFileDisk = new File(path, exercise.getId() + "." + lang.getExt() + ".code");
 					try {
 						FileWriter fwExo = new FileWriter(sourceFileDisk.getAbsoluteFile());
 						BufferedWriter bwExo = new BufferedWriter(fwExo);
