@@ -40,6 +40,7 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
+import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
 import plm.core.model.session.ZipSessionKit;
@@ -129,7 +130,8 @@ public class Game implements IWorldView {
 	private LogWriter outputWriter;
 
 	public SessionDB studentWork = new SessionDB();
-	private ISessionKit sessionKit = new ZipSessionKit(this);
+	//private ISessionKit sessionKit = new ZipSessionKit(this);
+	private ISessionKit sessionKit = new GitSessionKit(this);
 
 	private static boolean ongoingInitialization = false;
 	private static String lessonChooser = "lessons.chooser";

@@ -30,7 +30,7 @@ public class GitSessionKit implements ISessionKit {
 
 	private Game game;
 
-	public GitSessionKit(Game game, File path) {
+	public GitSessionKit(Game game) {
 		this.game = game;
 	}
 
