@@ -1,4 +1,4 @@
-20140125: Release 2.4 (beta)
+20140125: Future Release 2.4 (beta)
 
   * Engine is now translated to italian! [Vinnie Costante]
   * Add a little menu to switch human language (fix #110) 
@@ -206,6 +206,7 @@
     methods (and decomposition)
   * New lib/jsyntaxpane.jar, from debian package fixing some upstream bugs
     - Contextual menu now works, as well as Ctrl-Z/Ctrl-Y, etc
+
 20130804:
   * RELEASE 2.0, the revolutionary night.
   * Remove the array world. It was not helping very much when compared
@@ -218,6 +219,7 @@
   * Editor: kill buggles that are in outer space after world resizing.
   * Disable JavaScript, it's really not ready for the big night.
   * Update our version of jsyntaxpane to get a fully working jar file.
+
 20130730:
   * Pythonize new exercises
   * Retranslate everything back to 100% in French
@@ -234,6 +236,7 @@
   * Split hanoi towers and the turmites out in their own lessons
   * Remove the meta lesson. It was not done, seemed difficult to
     finish, and complicated the code of the universes. (Fix: #2)
+
 20130720:
   * Integrate the pancake exercises into the sorting lesson
   * New pancake exercise about implementing Gates' algorithm
@@ -242,6 +245,7 @@
   * 3 more exercises about the for loop: Stairs, Course and CourseForest
   * 1 more exercise about the do/while loop: Poucet
   * Better integrate the slug hunting exercises; add new one (on parameters)
+
 20130710: 
   * Fix the temporal view of the sorting world (plus various cleanups)
   * Allow to provide feedback easily. One click to open the dialog
@@ -255,12 +259,14 @@
   * Progress spys (twitter/identica) get controled through properties
   * Default values of properties get saved to local file to ease their
     discover and tuning by users
+
 20130705:
   * RELEASE 1.99
   * Pythonize all lessons: maze, recursion, sort and bat/string
   * Fix: demo mode in python was without delay
   * print() in python was not playing well with graphical console
   * Update French translation of missions: back to 100%
+
 20130621:
   * Improve the BuggleWorld I/O and the BuggleWorldEditor:
     - better detection and error messages of invalid map files
@@ -270,6 +276,7 @@
   * Speedup the lesson loading with a cache of answer worlds:
     - If a relevant .map file exists, don't execute the answer entity
     - If not, save the .map file after execution for the next time
+
 20130616:
   * RELEASE 1.98
   * Squeeze a bit our sources so that we can package it for Debian
@@ -281,17 +288,22 @@
   * Integrate the bat exercise using integer arrays into the welcome
     lesson (fix #21)
   * Welcome lesson ported to python, both code and missions (fix: #89)
+
 20130531:
   * Try harder to find a path where we can save our data
+
 20130530:
   * Make sure that jarfiles compiled with Java 6 also work with Java 7
+
 20130529a:
   * Really kill jung in the source code too so that distributed jar
     files actually work -- sorry.
+
 20130529:
   * Reintroduce the student progression listeners. It was turned off
     for the debugging process, but that shouldnt be part of a released
     version.
+
 20130528:
   * New lesson navigator based on JTree (fix #71)
   * Some better looking icons, with known licenses
@@ -306,9 +318,11 @@
   * Basic i18n infrastructure allowing to translate the user interface (fix #76)
   * Kill the ability to have more than one view per world (fix #35)
   * Save the session before switching exo/lesson to not loose student's edits (fix #45)
+
 20130517:
   * Package baseball exercises in their own directories
   * Add a control panel for the Pancake Worlds ( raw & burned )
+
 20130516:
   * Add an icon depicting the programming language in the status bar
   * Various polishing of the exercises in Python
@@ -319,6 +333,7 @@
   * Add a control panel for the Sorting World
   * Start porting bat exercises to python
   * Port hanoiWorld to python
+
 20130515:
   * Huge python cleanup:
     - various cleanups, code factorization and bug fixes
@@ -341,6 +356,7 @@
   * Add an interactive way to change the buggle color and brush color
   * Baseball exercise of SMN can now be played with more than 2
     players per base
+
 20130416:
   * Kill several seamingly good ideas that complicated the code base:
     - aliased source files: student must keep them synchronized
@@ -362,25 +378,32 @@
     The distribution jar is now only half as big only (still 20M).
   * Request a confirmation from the user (through a dialog) before
     reverting the exercise, that was a mean trap...
+
 20130328:
   * Merge all code (and wiki) from last year's students
   * Accept a pull request from J-Bastian, with a new lesson (SMN) and a
     bunch of bug fixes.
   * Various little bug fixes.
+
 20120319:
   * Minor update on build process
+
 20120318:
   * Allow jlm://<lesson>/<exo> links in mission texts
+
 20120116:
   * Add an ant target to generate a source tgz (for Debian packaging)
+
 20120110:
   * Do not even try to compile the Java sources if we were asked to
     used another language, such as Python.
     (Fixes #48: Python source code not used if some java code provided)
+
 20111201:
   * Port some more welcome exercises to Python. 
     The translations should be updated to appear again.
   * Port all sorting exercises to Python
+
 20111013:
   * Fix a bug in python that were due to an extra space added in front
     of the body. Damn python indentation freaks.
@@ -398,6 +421,7 @@
   * Various typos and little errors hunted down by Pierre-Etienne and JC
   * Improve shortest path exercise by not removing distance marks, so
     that students can compare their computation with the correct one
+
 20111006e:
   * Allow to code in python, javascript or ruby
   * Definitely kill the linearity of lessons (combobox removed)
@@ -410,10 +434,12 @@
   * implement the world equality for logo
   * Allow to have lectures, ie non-interactive exercises
   * Improved turmite track, with a specific view displaying the step
+
 20110909:
   * New exercise track on turmites
   * Enforce that the buggles cannot move to outer space with
     setPos(), setX(), setY() nor peek outer space with getCell()
+
 20110907:
   * Add a new lesson navigator allowing to break the lesson linearity
   * Use identi.ca in addition to twitter to push the success of students
