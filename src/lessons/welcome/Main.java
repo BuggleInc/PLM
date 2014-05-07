@@ -41,6 +41,7 @@ import lessons.welcome.bat.bool2.BlueTicket;
 import lessons.welcome.bat.bool2.CaughtSpeeding;
 import lessons.welcome.bat.bool2.CigarParty;
 import lessons.welcome.bat.bool2.DateFashion;
+import lessons.welcome.bat.bool2.FizzBuzz;
 import lessons.welcome.bat.bool2.GreenTicket;
 import lessons.welcome.bat.bool2.In1To10;
 import lessons.welcome.bat.bool2.InOrder;
@@ -181,6 +182,7 @@ public class Main extends Lesson {
 		  addExercise(new RedTicket(this),bat);
 		  addExercise(new ShareDigit(this),bat);
 		  addExercise(new SortaSum(this),bat);
+		  addExercise(new FizzBuzz(this), bat);
 		  addExercise(new SquirrelPlay(this),bat);
 		  addExercise(new TeaParty(this),bat);
 		  addExercise(new TeenSum(this),bat);

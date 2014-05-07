@@ -1,4 +1,4 @@
-20140125: Future Release 2.4 (beta)
+20140515: Future Release 2.4 (beta)
 
   * Engine is now translated to italian! [Vinnie Costante]
   * Add a little menu to switch human language (fix #110) 
@@ -8,6 +8,7 @@
   * Rewamp the feedback reporting dialog box
   * The feedback is now reported as github issues [Cédric Huguenin]
   * Unclutters the UI: changing the buggle color is useless
+  * welcome.bat.bool2.fizzBuzz: new exercise (classical Fizz Buzz word game)
 
 20131113: Release 2.3
 
