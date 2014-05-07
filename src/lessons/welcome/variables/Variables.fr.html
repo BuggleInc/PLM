@@ -40,8 +40,9 @@ fait</code> n'est pas un identificateur de variable valide.
   <p>Ainsi, pour créer une variable nommée <b>x</b> contenant des entiers, on
 écrira :</p> 
   <pre>int x;</pre>
-  <p>If you want, you can specify the initial value of the variable by adding an
-equal sign (=) followed by the value after the declaration.</p>
+  <p>Si vous le souhaitez, vous pouvez donner une valeur initiale à votre
+variable en ajoutant le symbole égal (=) suivi d'une valeur après la
+déclaration.</p>
   <pre>int x=5;</pre>
 [/!] [!python]
   <p>Ainsi, pour une variable ayant la valeur initiale 5, il faut écrire : </p>
@@ -100,13 +101,16 @@ langages empêche certaines erreurs de se glisser dans les programmes.</p>
 [/!]
   
 
-<p class="scala">If you know that the value of your "variable" will never change (eg because
-it contains the screen size or some other constant value), then you should
-make it a <b>value</b> instead of a variable. Simply change the
-<code>var</code> keyword with the <code>val</code> one. The compiler can
-then check your actions and catch your error when you inadvertently modify
-the value. More interestingly, the compiler can produce faster code in some
-cases.</p>
+<p class="scala">Si vous savez que votre «variable» ne va jamais changer de valeur (par
+exemple parce qu'il s'agit de la taille de l'écran ou une autre constante du
+genre), alors vous devriez en faire une <b>valeur</b> plutôt qu'une
+variable.
+Utilisez simplement le mot-clé <code>val</code> au lieu de
+<code>var</code>.
+Le compilateur pourra alors faire plus de vérifications pour aider les
+étourdis cherchant à modifier les constantes. Plus intéressant, le
+compilateur parvient également à produire du code plus rapide dans certains
+cas.</p>
 
 <p>C'est la même histoire pour les chaînes, nombres à virgule flottante et les
 booléens.</p>

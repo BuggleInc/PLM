@@ -199,13 +199,14 @@ variable à vrai (<code>[!java|scala]true[/!][!python]True[/!]</code>). Cela
 arrête la boucle, et le programme. </p>
 
 [!java]
-<p>Une autre subtilité est que déterminer si des chaînes de caractères est un
-peu pénible en Java. Nous utiliserons donc la méthode <code>char
-getIndication()</code> à la place de <code>String litMessage()</code>. Cette
-méthode, qui n'est connue que des buggles des exercice BDR, renvoie le
-premier caractère du message au sol (ou ' ' --une espace-- s'il n'y a rien
-d'écrit au sol). Cela nous permet de travailler avec des caractères
-(<code>char</code>), qui sont moins pénibles que les chaînes.</p>
+<p>Une autre subtilité est qu'il est un peu pénible en Java de déterminer si
+deux chaînes de caractères sont identiques. Nous utiliserons donc la méthode
+<code>char getIndication()</code> à la place de <code>String
+litMessage()</code>. Cette méthode, qui n'est connue que des buggles des
+exercices BDR, renvoie le premier caractère du message au sol (ou ' ' --une
+espace-- s'il n'y a rien d'écrit au sol). Cela nous permet de travailler
+avec des caractères (<code>char</code>), qui sont moins pénibles que les
+chaînes.</p>
 [/!]
 
 <h3>Trucs et astuces</h3>
