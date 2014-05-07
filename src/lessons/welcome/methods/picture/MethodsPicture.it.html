@@ -1,0 +1,46 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Disegni Colorati</h2>
+
+In questo esercizio riprodurremo il disegno geometrico che puoi vedere nella
+scheda "Objective".
+
+<p>Il tuo scopo (quì come in ogni altro programma ben scritto) è di produrre
+codice più semplice possibile. Per far questo devi scomporre il lavoro in
+sottosezioni e scrivere un metodo specifico per ognuna di esse.</p>
+
+<p>Se osservi attentamente l'immagine da disegnare essa è costituita da due
+parti raffiguranti delle sorte di V di diversi colori. Una possibile
+scomposizione è quella di scrivere un metodo incaricato di disegnare una V
+dello specifico colore a partire dalla posizione corrente. Il suo prototipo
+potrebbe essere:</p>
+<pre>[!java]void [/!]creaV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># il parametro c è del tipo Color</span>[/!]</pre>
+
+<p>Naturalmente il tipo di dato <code>Color</code> descrive un colore
+particolare. Il tuo codice probabilmente dovrà invocare <code>creaV</code>
+con i seguenti argomenti (un differente colore per ogni chiamata):</p>
+<ul>
+<li>Color.YELLOW</li>
+<li>Color.RED</li>
+<li>Color.BLUE</li>
+<li>Color.GREEN</li>
+</ul>
+
+<p>In <code>creaV</code> dovrai usare il metodo predefinito dei buggle
+<code>setBrushColor()</code> per cambiare il colore dei loro pennello come
+anche <code>brushUp()</code> e <code>brushDown()</code> per cambiare la
+posizione del pennello.</p>
+ 
+<p>Potrebbe essere saggio scrivere <code>creaV()</code> in modo tale che alla
+fine predisponga il buggle già nella posizione adatta a disegnare la V
+seguente.</p>
+ 
+[!java|scala]
+<p>Adesso è il tuo torno. Sono sicuro che puoi immaginare gli altri metodi che
+ti serviranno per mantenere il tuo codice semplice e piacevole da
+leggere. Completa il metodo run con il prototipo che ti viene già
+fornito. Esso verrà chiamato automaticamente (una volta). [!java]La parola
+chiave public significa più o meno che chiunque può chiamare questo metodo,
+ciò è un bene perché permette all'infrastruttura PLM di invocarlo
+direttamente.[/!] </p>
+[/!]

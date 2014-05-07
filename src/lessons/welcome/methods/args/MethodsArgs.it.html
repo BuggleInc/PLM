@@ -1,0 +1,85 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Metodi con parametri</h2>
+
+<p>Non ti senti stanco di scrivere ancora ed ancora il codice per muoverti di
+un numero prefissato di passi? D'altro canto creare i metodi
+<tt>forward2()</tt>, <tt>forward3()</tt>, <tt>forward4()</tt>, come anche
+<tt>backward2()</tt>, <tt>backward3()</tt>, <tt>backward4()</tt> e via
+dicendo, non sarebbe realmente d'aiuto, per non dir meno.</p>
+
+<p>Fortunatamente è possibile passare <b>parametri</b> ai vostri metodi. Devi
+specificare il loro [!java|scala]tipo e [/!]nome dentro le parentesi tonde,
+dopo il nome del metodo. In seguito potrai usarli nel corpo nel metodo come
+se fossero variabili definite al suo interno ed aventi come valori iniziali
+quelli indicati dal chiamante.</p>
+
+<pre>[!java]double [/!]divisionePerDue([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]
+     return x / 2[!java];[/!]
+[!scala|java]}[/!]</pre>
+
+<p>Dalla parte del chiamante tu dovrai specificare il valore iniziale di queste
+"variabili" fra le parentesi dell'invocazione.</p>
+<pre>[!java]double [/!][!scala]val [/!]risultato = divisionePerDue(3.14)[!java];[/!]</pre>
+
+<p>Se vuoi inserire più di un parametro li devi separare da una virgola (,) sia
+nella dichiarazione che nell'invocazione.</p>
+
+<pre>[!java]double divisione(double x, double y) {[/!]
+[!scala]def divisione(x:Double, y:Double): Double = {[/!]
+[!python]def divisione(x, y):[/!]
+     return x / y[!java];[/!]
+[!java|scala]}[/!]</pre>
+<pre>[!java]double ris = divisione(3.14 , 1.5);[/!]
+[!scala]val ris = divisione(3.14 , 1.5)[/!]
+[!python]ris = divisione(3.14 , 1.5)[/!]</pre>
+
+[!java|scala]
+<p>In [!thelang] puoi dichiarare diversi metodi con lo stesso nome fintantoché
+essi non hanno la stessa <b>firma</b> rappresentata dallo stesso numero e
+tipo di parametri.</p>
+
+<pre>[!java]double maggiore(double x, double y)[/!][!scala]def maggiore(x:Double, y:Double): Double =[/!] {
+  if (x &gt; y) {
+    return x;
+  }
+  return y;
+}
+[!java]int maggiore(int x, int y)[/!][!scala]def maggiore(x:Int, y:Int): Int =[/!] {
+  if (x &gt; y) {
+    return x;
+  }
+  return y;
+}
+[!java]int maggiore(int x, int y; int z)[/!][!scala]def maggiore(x:Int, y:Int, z:Int): Int =[/!] {
+  if (x &gt; y &amp;&amp; x &gt; z) {
+    return x;
+  }
+  if (y &gt; z) {
+    return y;
+  }
+  return z;
+}</pre>
+
+<p>Osserva che abbiamo omesso il ramo <tt>else</tt> per ogni <tt>if</tt>. La
+cosa funziona comunque perché il <tt>return</tt> interrompe l'esecuzione del
+metodo. Se arriviamo alla riga finale di
+<code>[!java]maggiore(int,int)[/!][!scala]maggiore(Int,Int):Int[/!]</code>,
+noi sappiamo già che <code>x&lt;=y</code> perché in caso contrario il
+<tt>return</tt> della riga 2 avrebbe fermato l'esecuzione prima.</p>
+<!-- introduce default value for parameters in Python language -->
+[/!]
+
+
+
+<h3>Traguardo dell'esercizio</h3>
+<p>Questa volta dovrai scrivere il metodo <code> [!java]move(int
+numeroPassi,boolean avanti)[/!] [!scala]move(numeroPassi: Int,avanti:
+Boolean)[/!] [!python]move(numeroPassi,avanti)[/!] </code> che fa spostare
+del numero di passi indicato in <code>numeroPassi</code> in avanti se
+<code>avanti</code> è true oppure indietro se è false.</p>
+
+<p>Questa volta c'è solo un mondo ma sette buggles, tutti che condividono lo
+stesso codice. Questo codice non dovrebbe essere troppo problematico da
+scrivere.  (Ndt in questo esercizio non è possibile utilizzare parametri per
+le funzioni di base forward() e backward())</p>

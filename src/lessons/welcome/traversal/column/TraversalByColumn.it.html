@@ -1,0 +1,55 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Attraversare in colonna</h2>
+
+<p>L'obbiettivo di questa serie di esercizi è quello di far attraversare al
+buggle il suo mondo. Esso dovrà numerare le celle dove camminerà in modo
+tale che venga mostrato l'ordine di attraversamento.</p>
+
+<p>Il ciclo principale del tuo codice dovrà essere qualcosa come:</p>
+<pre>
+ mentre non siamo nella posizione finale
+   vai avanti alla prossima posizione
+   contrassegna la cella con il suo numero
+</pre>
+
+<p>Diversamente dagli esercizi svolti in precedenza, non userememo metodi
+simili a <code>forward()</code>, <code>backward()</code>, Invece calcoleremo
+le coordinate della posizione seguente del buggle usando il metodo
+<code>setPos(x, y)</code> per <i>teleportare</i> il buggle direttamente a
+quella posizione. Per esempio <code>setPos(3, 5)</code> teleporterà il
+buggle alla cella con le coordinate x=3 e y=5.</p>
+
+<p>Il tuo primo compito è quello di scrivere una funzione booleana che indica
+se il buggle ha raggiunto la posizione finale oppure no, e cioé se si trova
+all'angolo in basso a destra. Per fare questo puoi utilizzare
+<code>getWorldWidth()</code> e <code>getWorldHeight()</code> che ritornano
+rispettivamente la larghezza e l'altezza del mondo. Il controllo da fare
+sarà quello di confrontare l'attuale posizione del bug (cui puoi accedere
+con <code>getX()</code> e <code>getY()</code>) con la dimensione del mondo.<br/>
+Fai attenzione, la prima linea e la prima colonna sono numerate con 0 e non
+con 1.</p>  
+
+<p>A questo punto dovrai scrivere il codice per raggiungere la prossima
+posizione. In questo esercizio dovrai attraversare il mondo colonna per
+colonna. Quindi se siete alla fine di una colonna dovrete spostarvi
+all'inizio della successiva ed in seguito scendere nelle celle sottostanti.</p>
+
+<p>Dopodiché potrete eseguire il programma per controllare se il buggle ha
+attraversato il mondo nell'ordine corretto e se si ferma al momento
+opportuno. Usa li pulsante <b>stop</b> se il buggle non si ferma quando
+deve.</p>
+
+<p>It is now time to write down the cell numbers. For that, you will need a
+counter initialiser to zero at the beginning of your code, and incremented
+by one at each step (for example with <code>counter += 1;</code>).  Then,
+you have to use <code>writeMessage()</code> to write the value on the
+ground.
+</p>
+
+<p>Probabilmente sarà necessario scrivere il primo [!java|scala]o l'ultimo
+[/!]valore fuori dal ciclo principale [!java|scala] dipendentemente se
+preferite utilizzare un ciclo <code>while</code> o un
+<code>do/while</code>[/!].</p>
+
+<p>È il tuo turno...</p>

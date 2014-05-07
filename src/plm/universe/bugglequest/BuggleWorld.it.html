@@ -1,0 +1,97 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BuggleWorld</h1>
+This world was invented by Lyn Turbak, at Wellesley College. It is full of
+Buggles, little animals understanding simple orders, and offers numerous
+possibilities of interaction with the world: taking or dropping objects,
+paint the ground, hit walls, etc.
+
+<h2>Methods understood by buggles</h2>
+<table border=1>
+<tr><td colspan=2 align=center><b>Moving</b><br/> (See also the note on exceptions, below)</td></tr>
+  <tr><td><b>Turn left<br/>Turn right<br/>Turn back<br/>Moving forward<br/>Moving back</b></td>
+      <td>[!java]void [/!]left()<br/>
+          [!java]void [/!]right()<br/>
+          [!java]void [/!]back()<br/>
+          [!java]void [/!]forward() or [!java]void [/!]forward([!java]int
+[/!]steps[!scala]:Int[/!])<br/>
+          [!java]void [/!]backward() or [!java]void [/!]backward([!java]int
+[/!]steps[!scala]:Int[/!])<br/></td></tr>
+  <tr><td><b>Get X coordinate<br/>Get Y coordinate<br/>Set X coordinate<br/>Set Y coordinate<br/>Set position</b></td>
+      <td>[!java]int [/!]getX()[!scala]:Int[/!]<br/>
+          [!java]int [/!]getY()[!scala]:Int[/!]<br/>
+          [!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])<br/>
+          [!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])<br/>
+          [!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int
+[/!]y[!scala]:Int[/!])</td></tr>
+
+<tr><td colspan=2 align=center><b>Information on the buggle</b></td></tr>
+  <tr><td><b>Get the color of the body<br/>Set the color of the body</b></td>
+      <td>[!java]Color [/!]getBodyColor()[!scala]:Color[/!]<br/>
+          [!java]void [/!]setBodyColor([!java]Color [/!]c[!scala]:Color[/!])</td></tr>				
+  <tr><td><b>Look for a wall forward<br/>Look for a wall backward</b></td>
+      <td>[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]</td></tr>				
+  <tr><td><b>Get heading<br/>Set heading</b><br/>valid directions are:</td>
+      <td>[!java]Direction [/!]getDirection()[!scala]:Direction[/!]<br/>
+          [!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])<br/>
+          Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST</td></tr>
+  <tr><td>Check whether the buggle is currently <b>selected in the interface</b></td>
+      <td>[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]</td></tr>
+ 
+<tr><td colspan=2 align=center><b>About the brush</b></td></tr>
+  <tr><td><b>Brush down<br/>Brush up<br/>Get brush position</b></td>
+      <td>[!java]void [/!]brushUp()<br/>
+          [!java]void [/!]brushDown()<br/>
+          [!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]</td></tr>
+  <tr><td><b>Change the brush color<br/>Get the color of the brush</b></td>
+      <td>[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])<br/>
+          [!java]Color [/!]getBrushColor()[!scala]:Color[/!]</td></tr>
+
+<tr><td colspan=2 align=center><b>Interacting with the world</b></td></tr>
+  <tr><td><b>Get the color of the ground</b></td>
+      <td>[!java]Color [/!]getGroundColor()[!scala]:Color[/!]</td></tr>
+
+  <tr><td><b>Look for a baggle on the ground<br/>Look for a baggle in bag<br/>Pickup a baggle<br/>Drop a baggle</b><br/>
+      (see the note on exceptions)</td>
+      <td>[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]isCarryingBaggle()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]pickupBaggle()<br/>
+          [!java]void [/!]dropBaggle()<br/>
+          &nbsp;</td></tr>
+
+  <tr><td><b>Look for a message<br/>Add a message<br/>Read the message<br/>Erase the message</b></td>
+      <td>[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])<br/>
+          [!java]String [/!]readMessage()[!scala]:String[/!]<br/>
+          [!java]void [/!]clearMessage()</td></tr>
+</table>
+
+<h2>Valid colors</h2>
+<table border=1>
+<tr><td>Name</td><td>Color</td></tr>
+<tr><td>Color.black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
+<tr><td>Color.blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
+<tr><td>Color.cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
+<tr><td>Color.darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
+<tr><td>Color.gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
+<tr><td>Color.green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
+<tr><td>Color.lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
+<tr><td>Color.magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
+<tr><td>Color.orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
+<tr><td>Color.pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
+<tr><td>Color.red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
+<tr><td>Color.white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
+<tr><td>Color.yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
+</table>
+
+<h2>Note on exceptions</h2>
+Regular buggles throw a BuggleWallException exception if you ask them to
+traverse a wall.  They throw a NoBaggleUnderBuggleException exception if you
+ask them to pickup a baggle from an empty cell, or a
+AlreadyHaveBaggleException exception if they already carry a baggle.  Trying
+to drop a baggle on a cell already containing one throws an
+AlreadyHaveBaggleException exception.  Dropping a baggle when you have none
+throws a DontHaveBaggleException.
+<p>SimpleBuggles (ie, the one used in first exercises) display an error message
+on problem so that you don't need to know what an exception is.</p>

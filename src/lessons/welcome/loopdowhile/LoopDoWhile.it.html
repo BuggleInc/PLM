@@ -1,0 +1,64 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Ciclo do .. while</h2>
+
+<p>Alcune celle del mondo sono gialle, ma i tuoi buggle non possono rimanere in
+queste celle. Scrivi il codice necessario per muoversi avanti finché il
+terreno non diventerà bianco. Per far questo usa il metodo
+<code>isGroundWhite()</code>.</p>
+
+<p>L'inghippo sta nel fatto che molti buggle di questo mondo sono già sopra del
+terreno giallo ed a loro dispiace molto. Questo è il motivo per cui essi
+sono nel panico totale e si precipitano in avanti, anche i buggle che
+all'inizio non si trovano già su una casella gialla. In altre parole, anche
+se il pavimento è bianco nella prima cella dovete comunque muovervi nella
+casella successiva.</p>    
+
+<p>L'idea generale è qualcosa di simile a questo: </p>
+<pre>vai avanti fintanto che non sei su una cella bianca</pre>
+
+<p>La difficoltà maggiore è che vogliamo che il contenuto del ciclo sia
+eseguito almeno una volta, anche se ci troviamo già su una cella
+bianca. Potrebbe essere facile farlo semplicemente copiando il contenuto del
+ciclo ed incollandolo prima di esso ma questo non sarebbe una bella idea: la
+duplicazione del codice è <b>veramente</b> una cattiva abitudine e voi
+dovreste <b>sempre</b> evitarla.</p>
+
+<p>La duplicazione finisce facilmente per rendere la manutenzione del codice un
+incubo: leggere diventa difficile perché chi sta leggendo deve assicurarsi
+che non ci sia nessuna piccola differenza fra le diverse copie. Correggere
+il codice diventa difficile in quanto gli errori devono essere rimossi in
+tutte le versioni.  Qualsiasi modifica del codice diventa difficile. Per
+questo dovrestre <b>sempre</b> cercare di evitare la duplicazione del codice
+se possibile. E la buona notizia è che ciò è sempre possibile...</p>
+
+<h3>Eseguendo il contenuto del ciclo almeno una volta</h3>
+[!python]
+<p>Alcuni linguaggi hanno uno specifico costrutto per questo, ma non il
+Python. Nessun problema, possiamo farlo da soli! Un buon modo è creare una
+variabile dedicata ad indicare che stiamo eseguendo il ciclo per la prima
+volta oppure no, come di seguito:</p>
+<pre>primaVolta = True
+while primaVolta or (altre condizioni):
+  primaVolta = False
+  (corpo del ciclo)
+</pre>
+
+<p>Quando <code>primaVolta</code> è true il contenuto del ciclo viene eseguito
+anche se le altre condizioni sono false. Una volta che il contenuto del
+ciclo è stato eseguito una volta, la variabile assume il valore false e non
+avrà più nessuna influenza sulla decisione di eseguire il corpo del ciclo
+oppure no.</p>
+[/!] [!java|scala]
+<p>Nel ciclo <tt>while</tt> prima di tutto viene valutata la condizione e se è
+false il corpo del ciclo non viene mai eseguito. Alle volte (non troppo
+spesso) preferireste che il corpo del ciclo venga eseguito almeno una volta
+anche se la condizione per eseguirlo sia false. Per far questo in [!thelang]
+viene usata una variante del ciclo <tt>while</tt> avente la seguente
+sintassi.  [!java]Non dimenticate il punto e virgola (;) dopo la condizione,
+è obbligatorio.[/!]
+
+<pre>do {
+    <b>azione()</b>[!java];[/!]
+} while (<b>condizione</b>)[!java];[/!]</pre></p>
+[/!]

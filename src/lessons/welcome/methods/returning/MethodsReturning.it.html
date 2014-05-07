@@ -1,0 +1,82 @@
+
+<!-- Please don't translate this file but lib/l10n/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h2>Metodi che ritornano un risultato</h2>
+
+<p>Non c'è bisogno di molto più lavoro da svolgere per scrivere un metodo con
+risultato piuttosto che uno sensa risultato. [!java]Nella dichiarazione devi
+semplicemente anteporre al nome del metodo il tipo di dato che ci si aspetta
+dal suo risultato (al posto del <code>void</code> che scrivevamo
+precedentemente).[/!][!scala]Devi semplicemente aggiungere i duepunti (:)
+dopo la parentesi tonde, scrivere il tipo di dato del risultato di ritorno
+ed inserire il segno di uguaglianza (=). Questa sintassi è in realtà molto
+vicina alla definizione di una variabile con il suo tipo, solo che è una
+funzione.[/!] Dovrai scrivere l'istruzione <code>return</code> nel corpo del
+metodo nel punto in cui vorrai che termini l'elaborazione (il metodo non
+continuerà ad essere eseguito oltre), il risultato sarà il valore posto
+subito dopo la parola chiave <code>return</code>.</p>
+
+<pre>[!java]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
+    return 3.14159[!java];[/!]
+[!java|scala]}[/!]</pre>
+
+<p>Si può anche utlizzare la parola chiave <code>return</code> solamente per
+interrompere l'esecuzione del metodo, non ritornando alcun
+risultato. Ovviamente in questo caso non bisognerà specificare un valore di
+ritorno.</p>
+
+<p>È possibile avere più istruzioni <code>return</code> disposte in diversi
+rami di strutture condizionali. In effetti all'interno di un metodo è
+vietato avere rami del suo corpo privi di un'istruzione <code>return</code>
+oppure scrivere del codice subito dopo un <code>return</code>. Se il pc
+arriva alla fine del metodo senza aver trovato nessun <code>return</code>
+non saprà quale valore restituire al chiamante. Inoltre il
+<code>return</code> interrompe immediatamente l'esecuzione del metodo (che
+senso avrebbe guardare oltre di esso se già abbiamo il risultato del
+metodo?)  Quindi, se c'è del codice dopo un <code>return</code> deve essere
+sicuramente un errore ed il compilatore ce lo farà notare.</p>
+
+<pre>[!java|scala][!java]boolean [/!][!scala]def [/!]visualeLibera()[!scala]:Boolean =[/!] {
+    if (isFacingWall() == true) {
+        return false;
+        <span class="comment">/* quì nessun codice è permesso */</span>
+    } else {
+        return true;
+        <span class="comment">/* neanche quì */</span>
+    }
+    <span class="comment">/* lascia perdere anche quì */</span>
+}[/!][!python]def visualeLibera():
+    if isFacingWall() == True:
+        return False
+        <span class="comment"># quì nessun codice è permesso</span>
+    else
+        return True
+        <span class="comment"># neanche quì</span>
+<span class="comment"># lascia perdere anche quì</span>[/!]</pre>
+
+<h3>Traguardo dell'esercizio</h3>Dovete scrivere un metodo che il vostro buggle utilizzerà. Il suo nome dovrà
+essere <code>haveBaggle</code> (Ndt avereBaggle) e dovrà ritornare un valore
+booleano che indica se nella colonna di fronte al buggle c'è un baggle
+oppure no. Il buggle userà questo metodo per cercare la prima colonna
+contenente un baggle e si fermerà li.
+
+<p>Il modo più facile per scriverlo è usare una variabile booleana chiamata
+<code>baggleVisto</code> che indica se è stato visto un baggle. Il suo
+valore iniziale sarà 'false'.</p>
+
+<p>Poi dovrete muovervi di 6 passi in avanti (questo mondo contiene 7 celle e
+noi ci troviamo già su una di esse). Per ogni cella controlleremo se
+contiene un baggle, assegnando un true a <code>baggleVisto</code> in caso
+positivo (non dobbiamo fare null'altro se non continuare ad avanzare).,</p>
+
+<p>Alla fine dovremo tornare indietro di 6 passi e ritornare il valore della
+variabile <code>baggleVisto</code> al chiamante.</p>
+
+
+<p>Questo esercizio si distinge un po' perché ci sono tre mondi iniziali,
+ognuno con il suo specifico objective. Il tuo codice deve funzinoare per
+tutti loro. Nota che il menù scorrevole world selection (al di sotto dello
+speed slider) permette di cambiare il mondo osservato. </p>
+
+<p>Quando il tuo metodo <code>haveBaggle</code> funzionerà, procedi al prossimo
+esercizio.</p>
+
