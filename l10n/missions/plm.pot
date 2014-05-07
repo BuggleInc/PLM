@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-02-27 21:46+0100\n"
+"POT-Creation-Date: 2014-05-07 18:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5178,12 +5178,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/lessons/turmites/Main.html:22 src/lessons/sort/dutchflag/Main.html:9 src/lessons/sort/pancake/Main.html:30 src/lessons/sort/baseball/Main.html:28 src/lessons/turtleart/Main.html:12
+#: src/lessons/turmites/Main.html:22 src/lessons/sort/basic/Main.html:15 src/lessons/sort/dutchflag/Main.html:9 src/lessons/sort/pancake/Main.html:30 src/lessons/sort/baseball/Main.html:28 src/lessons/turtleart/Main.html:12
 msgid "What can I do to improve this PLM universe?"
 msgstr ""
 
 #. type: Content of: <p>
-#: src/lessons/turmites/Main.html:24 src/lessons/sort/dutchflag/Main.html:11 src/lessons/sort/pancake/Main.html:32 src/lessons/sort/baseball/Main.html:30 src/lessons/turtleart/Main.html:14
+#: src/lessons/turmites/Main.html:24 src/lessons/sort/basic/Main.html:17 src/lessons/sort/dutchflag/Main.html:11 src/lessons/sort/pancake/Main.html:32 src/lessons/sort/baseball/Main.html:30 src/lessons/turtleart/Main.html:14
 msgid ""
 "As usual, there are several things that could be done in the code of this "
 "universe to improve it:"
@@ -5792,6 +5792,13 @@ msgid ""
 "More exercises are planned for the future, on recursive sorting algorithms "
 "(such as QuickSort and MergeSort) or using other microworlds to apply these "
 "algorithms to other contexts."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/sort/basic/Main.html:19
+msgid ""
+"Other graphical representations could be proposed, such as the ones "
+"presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 msgstr ""
 
 #. type: Content of: <p>
@@ -8996,12 +9003,12 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h3>
-#: src/plm/universe/lightbot/LightBotWorld.html:2 src/lessons/lightbot/Main.html:2 src/lessons/lightbot/short_desc.html:2
+#: src/lessons/lightbot/universe/LightBotWorld.html:2 src/lessons/lightbot/Main.html:2 src/lessons/lightbot/short_desc.html:2
 msgid "LightBot"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/plm/universe/lightbot/LightBotWorld.html:4
+#: src/lessons/lightbot/universe/LightBotWorld.html:4
 msgid ""
 "This universe introduces a little programming puzzle which can somehow be "
 "used to introduce programmation to non-reading kids since it is programmed "
@@ -9010,32 +9017,32 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:8
+#: src/lessons/lightbot/universe/LightBotWorld.html:8
 msgid "<b>Order</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:8
+#: src/lessons/lightbot/universe/LightBotWorld.html:8
 msgid "<b>Meaning</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:9
+#: src/lessons/lightbot/universe/LightBotWorld.html:9
 msgid "<b>Move forward</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:9
+#: src/lessons/lightbot/universe/LightBotWorld.html:9
 msgid "Cannot be done if the destination cell is of another height than source cell"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:10
+#: src/lessons/lightbot/universe/LightBotWorld.html:10
 msgid "<b>Jump forward</b>"
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:10
+#: src/lessons/lightbot/universe/LightBotWorld.html:10
 msgid ""
 "Can only be done if the destination cell is one step higher than source "
 "cell, or if destination is lower than source. Cannot be used for plain "
@@ -9043,39 +9050,39 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:11
+#: src/lessons/lightbot/universe/LightBotWorld.html:11
 msgid "<b>Turn left</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:12
+#: src/lessons/lightbot/universe/LightBotWorld.html:12
 msgid "<b>Turn right</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:13
+#: src/lessons/lightbot/universe/LightBotWorld.html:13
 msgid "<b>Switch the light</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:13
+#: src/lessons/lightbot/universe/LightBotWorld.html:13
 msgid ""
 "Turn it on if it was off, and off if it was on. No effect if the cell does "
 "not contain any light."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:14
+#: src/lessons/lightbot/universe/LightBotWorld.html:14
 msgid "<b>Call function 1</b>."
 msgstr ""
 
 #. type: Content of: <table><tr><td>
-#: src/plm/universe/lightbot/LightBotWorld.html:15
+#: src/lessons/lightbot/universe/LightBotWorld.html:15
 msgid "<b>Call function 2</b>."
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/lightbot/LightBotWorld.html:18
+#: src/lessons/lightbot/universe/LightBotWorld.html:18
 msgid ""
 "Please note that this world is not completely suited to small kids since the "
 "main difficulty comes from the fact that your are highly limited in the "
@@ -9085,7 +9092,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <p>
-#: src/plm/universe/lightbot/LightBotWorld.html:20
+#: src/lessons/lightbot/universe/LightBotWorld.html:20
 msgid ""
 "This game is heavily inspirated from a flash game of the same name, which "
 "can for example be played on kongregate.com. It was written by Danny "
@@ -9627,6 +9634,30 @@ msgid ""
 "stylish, 8 or more, then the result is 2 (yes). With the exception that if "
 "either of you has style of 2 or less, then the result is 0 (no). Otherwise "
 "the result is 1 (maybe)."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/bat/bool2/FizzBuzz.html:2
+msgid "Fizz Buzz"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool2/FizzBuzz.html:3
+msgid ""
+"According to Wikipedia, Fizz buzz is a group word game for children to teach "
+"them about division.  Players take turns to count incrementally, replacing "
+"any number divisible by three with the word \"Fizz\", and any number "
+"divisible by five with the word \"Buzz\". Any number that is divisible by "
+"both three and five is replaced with the string \"Fizz Buzz\"."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/bat/bool2/FizzBuzz.html:8
+msgid ""
+"Unchanged numbers are simply returned as a string.  [!java|scala]The easiest "
+"for that is to use that [!thelang] idiomatic: <code>\"\"+a</code>[/!] "
+"[!python]The function <code>str(a)</code> changes an integer <code>a</code> "
+"into a string.[/!]"
 msgstr ""
 
 #. type: Content of: <h1>
@@ -10905,6 +10936,51 @@ msgstr ""
 msgid ""
 "In this lesson you pilot a lunar landing module in increasingly complex "
 "situations."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/Main.html:7
+msgid ""
+"At each step of the simulation, the player issues a command controlling how "
+"much the angle and thrust of the lander should change"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/lander/Main.html:10
+msgid "Ideas concerning the progression of exercises:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/lander/Main.html:12
+msgid ""
+"A lander in vertical position above flat ground, the player can only control "
+"thrust"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/lander/Main.html:14
+msgid ""
+"A lander in vertical position not above flat ground, the player control "
+"thrust and angle"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/lander/Main.html:16
+msgid ""
+"A lander with difficult angle and speed not above flat ground, the player "
+"control thrust and angle"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/lander/Main.html:18
+msgid ""
+"A lander with difficult angle and speed not above flat ground, with "
+"difficult ground, the player control thrust and angle"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/lander/Main.html:20
+msgid "Same with wind?"
 msgstr ""
 
 #. type: Content of: <p>
