@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-02-19 12:05+0200\n"
+"PO-Revision-Date: 2014-05-13 15:51+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
 "Language: fr\n"
@@ -7922,6 +7922,8 @@ msgid ""
 "Other graphical representations could be proposed, such as the ones "
 "presented at <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 msgstr ""
+"D'autres représentations graphiques pourraient être proposées, telles que celles\n"
+"présentées sur le site <a href=\"http://sorting.at/\">http://sorting.at/</a>."
 
 #. type: Content of: <p>
 #: src/lessons/sort/basic/short_desc.html:4
@@ -13151,7 +13153,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/FizzBuzz.html:2
 msgid "Fizz Buzz"
-msgstr ""
+msgstr "Fizz Buzz"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/FizzBuzz.html:3
@@ -13161,7 +13163,7 @@ msgid ""
 "any number divisible by three with the word \"Fizz\", and any number "
 "divisible by five with the word \"Buzz\". Any number that is divisible by "
 "both three and five is replaced with the string \"Fizz Buzz\"."
-msgstr ""
+msgstr "D'après Wikipedia, Fizz Buzz est un jeu collectif visant à entraîner les enfants à la division. Les joueurs comptent chacun à leur tour, en remplaçant tous les nombres divisibles par trois par le mot « Fizz ». Tous les nombres divisibles par cinq sont remplacés par le mot « Buzz ». Les nombres divisibles à la fois par trois et par cinq sont remplacés par la chaîne « Fizz Buzz »."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bat/bool2/FizzBuzz.html:8
@@ -13171,6 +13173,9 @@ msgid ""
 "python]The function <code>str(a)</code> changes an integer <code>a</code> "
 "into a string.[/!]"
 msgstr ""
+"Les nombres inchangés sont simplement renvoyés sous forme d'une chaîne de caractères.  \n"
+"[!java|scala]Le plus simple pour cela est d'utiliser l'idiomatisme suivant du [!thelang] : <code>\"\"+a</code>[/!] \n"
+"[!python]La fonction <code>str(a)</code> change l'entier <code>a</code> en une chaîne.[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool2/GreenTicket.html:2
@@ -14919,7 +14924,7 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/Main.html:10
 msgid "Ideas concerning the progression of exercises:"
-msgstr ""
+msgstr "Idées d'exercices à ajouter à la progression proposée :"
 
 #. type: Content of: <ul><li>
 #: src/lessons/lander/Main.html:12
