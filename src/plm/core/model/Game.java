@@ -43,7 +43,6 @@ import plm.core.model.lesson.Lesson;
 import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
-import plm.core.model.session.ZipSessionKit;
 import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
@@ -132,6 +131,8 @@ public class Game implements IWorldView {
 	public SessionDB studentWork = new SessionDB();
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit = new GitSessionKit(this);
+	
+	private Users usersList;
 
 	private static boolean ongoingInitialization = false;
 	private static String lessonChooser = "lessons.chooser";
@@ -184,7 +185,9 @@ public class Game implements IWorldView {
 					break;
 				}
 		}
-				
+		
+		usersList = new Users(SAVE_DIR);
+		
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
 		try {
