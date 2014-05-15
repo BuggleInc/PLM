@@ -187,6 +187,7 @@ public class Game implements IWorldView {
 		}
 		
 		usersList = new Users(SAVE_DIR);
+		usersList.getCurrentUser();
 		
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
@@ -1060,8 +1061,15 @@ public class Game implements IWorldView {
     public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
 
     public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
-    
-    
+
+	public Users getUsersList() {
+		return usersList;
+	}
+
+	public void setUsersList(Users usersList) {
+		this.usersList = usersList;
+	}
+
     /* Mechanism to find where to save our data */
 	
     private static String HOME_DIR = System.getProperty("user.home");

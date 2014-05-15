@@ -8,8 +8,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONValue;
+import org.json.simple.parser.ContainerFactory;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -50,8 +56,6 @@ public class Users {
 
 	@SuppressWarnings("unchecked")
 	public void addUser(User user) {
-		// if the plm.users file doesn't exist
-		// create it and fill it with a new user
 		FileWriter fwUser;
 		try {
 			fwUser = new FileWriter(userFile.getAbsoluteFile());
@@ -69,7 +73,39 @@ public class Users {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
+	public User getCurrentUser() {
+		String jsonText = users.toJSONString();
+		JSONParser parser = new JSONParser();
+		ContainerFactory containerFactory = new ContainerFactory() {
+			public List creatArrayContainer() {
+				return new LinkedList();
+			}
+
+			public Map createObjectContainer() {
+				return new LinkedHashMap();
+			}
+		};
+
+		try {
+			List json = (List) parser.parse(jsonText, containerFactory);
+			Iterator iter = json.iterator();
+			System.out.println("==iterate result==");
+
+			while (iter.hasNext()) {
+				LinkedHashMap entry = (LinkedHashMap) iter.next();
+				System.out.println(entry.get("userUUID"));
+			}
+
+			System.out.println("==toJSONString()==");
+			System.out.println(JSONValue.toJSONString(json));
+		} catch (ParseException pe) {
+			System.out.println(pe);
+		}
+
+		return null;
+	}
+
 	private void parseFile(String filePath) {
 		JSONParser parser = new JSONParser();
 
