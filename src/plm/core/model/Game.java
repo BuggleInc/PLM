@@ -132,7 +132,7 @@ public class Game implements IWorldView {
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit = new GitSessionKit(this);
 	
-	private Users usersList;
+	private Users users;
 
 	private static boolean ongoingInitialization = false;
 	private static String lessonChooser = "lessons.chooser";
@@ -186,8 +186,8 @@ public class Game implements IWorldView {
 				}
 		}
 		
-		usersList = new Users(SAVE_DIR);
-		usersList.getCurrentUser();
+		users = new Users(SAVE_DIR);
+		users.getCurrentUser();
 		
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
@@ -1056,19 +1056,19 @@ public class Game implements IWorldView {
         this.currentCourse = currentCourse;
     }
 
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
     public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
 
     public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
 
     public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
-
-	public Users getUsersList() {
-		return usersList;
-	}
-
-	public void setUsersList(Users usersList) {
-		this.usersList = usersList;
-	}
 
     /* Mechanism to find where to save our data */
 	

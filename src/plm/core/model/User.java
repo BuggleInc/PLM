@@ -15,8 +15,14 @@ public class User implements JSONStreamAware {
 
 	public User(String username) {
 		this.username = username;
-		this.lastUsed = true;
+		this.lastUsed = false;
 		this.userUUID = UUID.randomUUID();
+	}
+
+	public User(String username, boolean lastUsed, UUID userUUID) {
+		this.username = username;
+		this.lastUsed = lastUsed;
+		this.userUUID = userUUID;
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -31,6 +37,33 @@ public class User implements JSONStreamAware {
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", lastUsed=" + lastUsed + ", userUUID=" + userUUID + "]";
+	}
+
+	/**
+	 * Getters and Setters
+	 */
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public boolean isLastUsed() {
+		return lastUsed;
+	}
+
+	public void setLastUsed(boolean lastUsed) {
+		this.lastUsed = lastUsed;
+	}
+
+	public UUID getUserUUID() {
+		return userUUID;
+	}
+
+	public void setUserUUID(UUID userUUID) {
+		this.userUUID = userUUID;
 	}
 
 }
