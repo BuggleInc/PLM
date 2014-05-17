@@ -47,6 +47,8 @@ public class Users {
 		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + "plm.users";
 		userFile = new File(filePath);
 
+		// if the plm.users file doesn't exist yet, it means that no users have
+		// been created, so we create one first user.
 		if (!userFile.exists()) {
 			User user = new User(username);
 			addUser(user);
@@ -124,6 +126,7 @@ public class Users {
 		// plm.users file, as there is no other way to update it yet (there is
 		// no listener for when the plm exits)
 		usersList.get(0).setLastUsed(true);
+		updateUsersFile();
 
 		return usersList.get(0);
 	}
@@ -168,6 +171,35 @@ public class Users {
 			} catch (ParseException pe) {
 				System.out.println(pe);
 			}
+		}
+	}
+
+	/**
+	 * Write the ArrayList of User in the JSONArray users. Doing so means that
+	 * we update the plm.users file with the latest changes. This method should
+	 * always be called after using a Setter from User.
+	 */
+	@SuppressWarnings("unchecked")
+	public void updateUsersFile() {
+		FileWriter fwUser;
+		users = new JSONArray();
+
+		try {
+			fwUser = new FileWriter(userFile.getAbsoluteFile());
+			BufferedWriter bwUser = new BufferedWriter(fwUser);
+
+			for (User user : usersList) {
+				users.add(user);
+			}
+
+			StringWriter out = new StringWriter();
+			users.writeJSONString(out);
+			// System.out.println(out.toString());
+
+			bwUser.write(out.toString());
+			bwUser.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 
