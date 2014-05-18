@@ -9,6 +9,7 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.PushCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
+import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
@@ -53,10 +54,13 @@ public class GitPush {
 				// credentials
 				CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
+				// checkout master branch so that we start with a clean base
+				git.checkout().setName("master").call();
+				
 				// eventually create the users's branch
 				try {
 					git.branchCreate().setName(String.valueOf(currentUser.getUserUUID())).call();
-				} catch (org.eclipse.jgit.api.errors.RefAlreadyExistsException ex) {
+				} catch (RefAlreadyExistsException ex) {
 
 				}
 

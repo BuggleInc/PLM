@@ -24,6 +24,7 @@ public class GitSpy implements ProgressSpyListener {
 
 	private String username;
 	private String filePath;
+	private File path;
 	private Repository repository;
 	private Git git;
 
@@ -36,7 +37,15 @@ public class GitSpy implements ProgressSpyListener {
 			username = "John Doe";
 		}
 
-		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + "repository";
+		this.path = path;
+	}
+
+	private void initializeRepoDir() throws IOException, GitAPIException {
+		Game game = Game.getInstance();
+		String userUUID = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
+		String reponame = userUUID.substring(0, 8);
+
+		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
 
 		Git.init().setDirectory(new File(filePath)).call();
 
@@ -47,7 +56,7 @@ public class GitSpy implements ProgressSpyListener {
 
 		// setup the remote repository
 		final StoredConfig config = repository.getConfig();
-		config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git"); // "git@bitbucket.org:PLM-Test/plm-test-repo.git");
+		config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git");
 		config.save();
 
 		// get the repository
@@ -87,6 +96,18 @@ public class GitSpy implements ProgressSpyListener {
 		Exercise lastExo = (Exercise) game.getLastExercise();
 		System.out.println(lastExo.getName());
 		lastExo.lastResult = ExecutionProgress.newCompilationError("");
+
+		// if we have just started the PLM, exo and lastExo should be the same
+		if (exo.equals(lastExo)) {
+			try {
+				initializeRepoDir();
+			} catch (IOException | GitAPIException e) {
+				e.printStackTrace();
+			}
+
+			writePLMStartedCommitMessage();
+		}
+
 		if (lastExo.lastResult != null) {
 			System.out.println("Do something.");
 			createFiles(lastExo);
@@ -155,7 +176,7 @@ public class GitSpy implements ProgressSpyListener {
 	/**
 	 * This method creates a String which contains debug informations. This String will be used as the commit message
 	 * set when the PLM is started by the user.
-	 *
+	 * 
 	 * @return the JSON String that will be used as the commit message
 	 */
 	@SuppressWarnings("unchecked")
@@ -224,7 +245,7 @@ public class GitSpy implements ProgressSpyListener {
 	/**
 	 * Create some files to know how many exercises there are by programming languages for this lesson. Also add a file
 	 * to know if the exercise has been done correctly.
-	 *
+	 * 
 	 * @param exo
 	 */
 	private void checkSuccess(Exercise exo) {
