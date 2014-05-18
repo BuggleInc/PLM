@@ -44,28 +44,35 @@ public class GitPush {
 		this.git = git;
 	}
 
+	public void checkoutUserBranch() throws GitAPIException {
+		Game game = Game.getInstance();
+		User currentUser = game.getUsers().getCurrentUser();
+
+		// credentials
+		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
+
+		// checkout master branch so that we start with a clean base
+		git.checkout().setName("master").call();
+
+		// eventually create the users's branch
+		try {
+			git.branchCreate().setName(String.valueOf(currentUser.getUserUUID())).call();
+		} catch (RefAlreadyExistsException ex) {
+
+		}
+
+		// checkout the user's branch
+		git.checkout().setName(String.valueOf(currentUser.getUserUUID())).call();
+	}
+
 	public void toUserBranch() {
 		new SwingWorker<Void, Integer>() {
 			@Override
 			protected Void doInBackground() throws GitAPIException {
-				Game game = Game.getInstance();
-				User currentUser = game.getUsers().getCurrentUser();
+				checkoutUserBranch();
 
 				// credentials
 				CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
-
-				// checkout master branch so that we start with a clean base
-				git.checkout().setName("master").call();
-				
-				// eventually create the users's branch
-				try {
-					git.branchCreate().setName(String.valueOf(currentUser.getUserUUID())).call();
-				} catch (RefAlreadyExistsException ex) {
-
-				}
-
-				// checkout the user's branch
-				git.checkout().setName(String.valueOf(currentUser.getUserUUID())).call();
 
 				// push
 				PushCommand pc = git.push();

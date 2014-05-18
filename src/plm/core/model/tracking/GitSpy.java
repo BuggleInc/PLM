@@ -10,13 +10,17 @@ import java.util.Calendar;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
+import org.eclipse.jgit.transport.CredentialsProvider;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.json.simple.JSONObject;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
+import plm.core.model.User;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
@@ -113,6 +117,11 @@ public class GitSpy implements ProgressSpyListener {
 			createFiles(lastExo);
 
 			try {
+				GitPush gitPush = new GitPush(repository, git);
+
+				// checkout the branch of the current user
+				gitPush.checkoutUserBranch();
+
 				// run the add-call
 				git.add().addFilepattern(".").call();
 
@@ -120,9 +129,7 @@ public class GitSpy implements ProgressSpyListener {
 				git.commit().setMessage(writeCommitMessage(lastExo, exo, "switched")).call();
 
 				// push to the remote repository
-				GitPush gitPush = new GitPush(repository, git);
 				gitPush.toUserBranch();
-				// gitPush.toRemote();
 			} catch (GitAPIException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
