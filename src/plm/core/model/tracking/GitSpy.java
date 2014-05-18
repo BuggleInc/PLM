@@ -50,7 +50,9 @@ public class GitSpy implements ProgressSpyListener {
 
 		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
 
-		Git.cloneRepository().setURI(repoUrl).setDirectory(new File(filePath)).setBranchesToClone(Arrays.asList("master")).call();
+		if (!path.exists()) {
+			Git.cloneRepository().setURI(repoUrl).setDirectory(new File(filePath)).setBranchesToClone(Arrays.asList("master")).call();
+		}
 		// Git.init().setDirectory(new File(filePath)).call();
 
 		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
