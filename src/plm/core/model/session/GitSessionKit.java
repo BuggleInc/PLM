@@ -69,7 +69,7 @@ public class GitSessionKit implements ISessionKit {
 	@Override
 	public void loadAll(final File path) {
 		for (Lesson lesson : this.game.getLessons()) {
-			loadLesson(new File(filePath), lesson);
+			loadLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}
 
 		// check how many exercises are done by lesson
@@ -180,13 +180,14 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercice already done correctly
-					if (new File(path.getAbsolutePath() + System.getProperty("file.separator")
-							+ exercise.getId() + "." + lang.getExt() + ".DONE").exists()) { // if the file exists, the exercise was worrect
+					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
+							+ exercise.getId() + "." + lang.getExt() + ".DONE";
+					if (new File(doneFile).exists()) { // if the file exists, the exercise was worrect
 						Game.getInstance().studentWork.setPassed(exercise, lang, true);
 					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
-					String fileName = filePath + System.getProperty("file.separator")
+					String fileName = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
 							+ exercise.getId() + "." + lang.getExt() + ".code";
 					//System.out.println(fileName);
 					String line;
@@ -201,7 +202,7 @@ public class GitSessionKit implements ISessionKit {
 						}
 						srcFile.setBody(b.toString());
 					} catch (FileNotFoundException ex) {
-						System.out.println("Il n'y a rien en "+fileName);
+						System.out.println("Il n'y a rien en " + fileName);
 					} catch (IOException ex) {
 					}
 
