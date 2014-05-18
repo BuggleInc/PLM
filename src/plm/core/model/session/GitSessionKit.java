@@ -195,7 +195,7 @@ public class GitSessionKit implements ISessionKit {
 						}
 						srcFile.setBody(b.toString());
 					} catch (FileNotFoundException ex) {
-						System.out.println("Il n'y a rien en " + fileName);
+						// System.out.println("Il n'y a rien en " + fileName);
 					} catch (IOException ex) {
 					}
 

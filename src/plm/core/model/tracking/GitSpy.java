@@ -51,7 +51,6 @@ public class GitSpy implements ProgressSpyListener {
 		File repoFile = new File(filePath);
 
 		if (!repoFile.exists()) {
-			System.out.println("CLONE REPO");
 			Git.cloneRepository().setURI(repoUrl).setDirectory(repoFile).setBranchesToClone(Arrays.asList("master")).call();
 		}
 		// Git.init().setDirectory(new File(filePath)).call();
@@ -123,7 +122,6 @@ public class GitSpy implements ProgressSpyListener {
 		}
 
 		if (lastExo.lastResult != null) {
-			System.out.println("Do something.");
 			createFiles(lastExo);
 
 			try {

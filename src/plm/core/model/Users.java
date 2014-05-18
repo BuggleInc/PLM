@@ -48,11 +48,11 @@ public class Users {
 
 		parseFile(filePath);
 
-		System.err.println("The file has been parsed successfully!");
-		System.err.println(users.toJSONString());
+		// System.err.println("The file has been parsed successfully!");
+		// System.err.println(users.toJSONString());
 
 		loadUsersFromFile();
-		System.err.println("The users have been loaded successfully!");
+		// System.err.println("The users have been loaded successfully!");
 		for (User user : usersList) {
 			System.err.println("User found: " + user);
 		}
@@ -104,7 +104,7 @@ public class Users {
 			try {
 				List json = (List) parser.parse(jsonText, containerFactory);
 				Iterator iter = json.iterator();
-				System.out.println("==iterate result==");
+				// System.out.println("==iterate result==");
 
 				while (iter.hasNext()) {
 					LinkedHashMap entry = (LinkedHashMap) iter.next();
@@ -115,13 +115,14 @@ public class Users {
 					// System.out.println(usersList.get(0));
 				}
 
-				System.out.println("==toJSONString()==");
-				System.out.println(JSONValue.toJSONString(json));
+				// System.out.println("==toJSONString()==");
+				// System.out.println(JSONValue.toJSONString(json));
 			} catch (ParseException pe) {
 				System.out.println(pe);
 			}
 		} else {
-			// if the plm.users file doesn't exist yet, it means that no users have been created, so we create one first user.
+			// if the plm.users file doesn't exist yet, it means that no users have been created, so we create one first
+			// user.
 			User user = new User(username);
 			usersList.add(user);
 			updateUsersFile();
