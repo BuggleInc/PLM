@@ -51,7 +51,7 @@ public class GitPush {
 		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
 		// checkout master branch so that we start with a clean base
-		git.checkout().setName("master").call();
+		// git.checkout().setName("master").call();
 
 		// eventually create the users's branch
 		try {

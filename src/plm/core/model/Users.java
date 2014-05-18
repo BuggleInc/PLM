@@ -22,8 +22,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 /**
- * This class handles the insertion and deletion of users from the plm.users
- * file.
+ * This class handles the insertion and deletion of users from the plm.users file.
  * 
  */
 public class Users {
@@ -47,15 +46,6 @@ public class Users {
 		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + "plm.users";
 		userFile = new File(filePath);
 
-		// if the plm.users file doesn't exist yet, it means that no users have
-		// been created, so we create one first user.
-		if (!userFile.exists()) {
-			User user = new User(username);
-			addUser(user);
-			System.err.println("A new user has been created for you!");
-			System.err.println(user);
-		}
-
 		parseFile(filePath);
 
 		System.err.println("The file has been parsed successfully!");
@@ -68,51 +58,11 @@ public class Users {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
-	public void addUser(User user) {
-		FileWriter fwUser;
-		try {
-			fwUser = new FileWriter(userFile.getAbsoluteFile());
-			BufferedWriter bwUser = new BufferedWriter(fwUser);
-
-			users.add(user);
-			StringWriter out = new StringWriter();
-			users.writeJSONString(out);
-			// System.out.println(out.toString());
-
-			bwUser.write(out.toString());
-			bwUser.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public void removeUser(User user) {
-		FileWriter fwUser;
-		try {
-			fwUser = new FileWriter(userFile.getAbsoluteFile());
-			BufferedWriter bwUser = new BufferedWriter(fwUser);
-
-			users.remove(user);
-			StringWriter out = new StringWriter();
-			users.writeJSONString(out);
-			// System.out.println(out.toString());
-
-			bwUser.write(out.toString());
-			bwUser.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	/**
-	 * Get the last used user. If such a user doesn't exist, meaning that all
-	 * lastUsed fields are set to false, the method then sets the lastUsed
-	 * variable of the firstUser to true, meaning that he becomes the last used
-	 * user.
+	 * Get the last used user. If such a user doesn't exist, meaning that all lastUsed fields are set to false, the
+	 * method then sets the lastUsed variable of the firstUser to true, meaning that he becomes the last used user.
 	 * 
-	 * @return the last used user (which should logically also be the current
-	 *         user)
+	 * @return the last used user (which should logically also be the current user)
 	 */
 	public User getCurrentUser() {
 		for (User user : usersList) {
@@ -132,8 +82,7 @@ public class Users {
 	}
 
 	/**
-	 * This method turns each user found in plm.users and parsed into the
-	 * JSONArray user.
+	 * This method turns each user found in plm.users and parsed into the JSONArray user.
 	 */
 	@SuppressWarnings("rawtypes")
 	private void loadUsersFromFile() {
@@ -171,13 +120,19 @@ public class Users {
 			} catch (ParseException pe) {
 				System.out.println(pe);
 			}
+		} else {
+			// if the plm.users file doesn't exist yet, it means that no users have been created, so we create one first user.
+			User user = new User(username);
+			usersList.add(user);
+			updateUsersFile();
+			System.err.println("A new user has been created for you!");
+			System.err.println(user);
 		}
 	}
 
 	/**
-	 * Write the ArrayList of User in the JSONArray users. Doing so means that
-	 * we update the plm.users file with the latest changes. This method should
-	 * always be called after using a Setter from User.
+	 * Write the ArrayList of User in the JSONArray users. Doing so means that we update the plm.users file with the
+	 * latest changes. This method should always be called after using a Setter from User.
 	 */
 	@SuppressWarnings("unchecked")
 	public void updateUsersFile() {
