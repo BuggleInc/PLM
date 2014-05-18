@@ -71,7 +71,7 @@ public class GitSpy implements ProgressSpyListener {
 
 			// push to the remote repository
 			GitPush gitPush = new GitPush(repository, git);
-			gitPush.toRemote();
+			gitPush.toUserBranch();
 		} catch (GitAPIException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -220,7 +220,7 @@ public class GitSpy implements ProgressSpyListener {
 
 	/**
 	 * Create some files to know how many exercises there are by programming languages for this lesson. Also add a file
-	 * to know if the exercise has been correctly done
+	 * to know if the exercise has been done correctly.
 	 * 
 	 * @param exo
 	 */
