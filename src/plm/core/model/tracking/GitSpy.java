@@ -6,21 +6,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.eclipse.jgit.transport.CredentialsProvider;
-import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 import org.json.simple.JSONObject;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
-import plm.core.model.User;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
@@ -31,6 +28,8 @@ public class GitSpy implements ProgressSpyListener {
 	private File path;
 	private Repository repository;
 	private Git git;
+
+	private String repoUrl = "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git";
 
 	public GitSpy(File path) throws IOException, GitAPIException {
 		username = System.getenv("USER");
@@ -51,7 +50,8 @@ public class GitSpy implements ProgressSpyListener {
 
 		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
 
-		Git.init().setDirectory(new File(filePath)).call();
+		Git.cloneRepository().setURI(repoUrl).setDirectory(new File(filePath)).setBranchesToClone(Arrays.asList("master")).call();
+		// Git.init().setDirectory(new File(filePath)).call();
 
 		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
 
@@ -59,12 +59,17 @@ public class GitSpy implements ProgressSpyListener {
 		repository.close();
 
 		// setup the remote repository
-		final StoredConfig config = repository.getConfig();
-		config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git");
-		config.save();
+		// final StoredConfig config = repository.getConfig();
+		// config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git");
+		// config.save();
 
 		// get the repository
 		git = new Git(repository);
+
+		GitPush gitPush = new GitPush(repository, git);
+
+		// checkout the branch of the current user
+		gitPush.checkoutUserBranch();
 
 		// plm started commit message
 		git.commit().setMessage(writePLMStartedCommitMessage()).call();
@@ -76,6 +81,11 @@ public class GitSpy implements ProgressSpyListener {
 		checkSuccess(exo);
 
 		try {
+			GitPush gitPush = new GitPush(repository, git);
+
+			// checkout the branch of the current user
+			// gitPush.checkoutUserBranch();
+
 			// run the add-call
 			git.add().addFilepattern(".").call();
 
@@ -83,7 +93,6 @@ public class GitSpy implements ProgressSpyListener {
 			git.commit().setMessage(writeCommitMessage(exo, null, "executed")).call();
 
 			// push to the remote repository
-			GitPush gitPush = new GitPush(repository, git);
 			gitPush.toUserBranch();
 		} catch (GitAPIException e) {
 			e.printStackTrace();
@@ -108,8 +117,6 @@ public class GitSpy implements ProgressSpyListener {
 			} catch (IOException | GitAPIException e) {
 				e.printStackTrace();
 			}
-
-			writePLMStartedCommitMessage();
 		}
 
 		if (lastExo.lastResult != null) {
@@ -120,7 +127,7 @@ public class GitSpy implements ProgressSpyListener {
 				GitPush gitPush = new GitPush(repository, git);
 
 				// checkout the branch of the current user
-				gitPush.checkoutUserBranch();
+				// gitPush.checkoutUserBranch();
 
 				// run the add-call
 				git.add().addFilepattern(".").call();
@@ -250,7 +257,7 @@ public class GitSpy implements ProgressSpyListener {
 	}
 
 	/**
-	 * Create some files to know how many exercises there are by programming languages for this lesson. Also add a file
+	 * Create some files to know how many exercises there is by programming languages for this lesson. Also add a file
 	 * to know if the exercise has been done correctly.
 	 * 
 	 * @param exo

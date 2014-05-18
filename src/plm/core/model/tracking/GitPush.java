@@ -27,7 +27,6 @@ public class GitPush {
 
 	private String repoName = "PLM-Test";
 	private String repoPassword = "PLM-TestPW0";
-	private String repoUrl = "http://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git"; // "git@bitbucket.org:PLM-Test/plm-test-repo.git";
 
 	public GitPush(Repository repository, Git git) throws IOException, GitAPIException {
 		// UUID userId = UUID.randomUUID();
