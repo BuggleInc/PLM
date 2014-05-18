@@ -53,8 +53,15 @@ public class GitPush {
 				// credentials
 				CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
+				// eventually create the users's branch
+				try {
+					git.branchCreate().setName(String.valueOf(currentUser.getUserUUID())).call();
+				} catch (org.eclipse.jgit.api.errors.RefAlreadyExistsException ex) {
+
+				}
+
 				// checkout the user's branch
-				git.checkout().setCreateBranch(true).setName(String.valueOf(currentUser.getUserUUID())).call();
+				git.checkout().setName(String.valueOf(currentUser.getUserUUID())).call();
 
 				// push
 				PushCommand pc = git.push();

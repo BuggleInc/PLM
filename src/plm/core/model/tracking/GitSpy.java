@@ -83,6 +83,7 @@ public class GitSpy implements ProgressSpyListener {
 
 	@Override
 	public void switched(Exercise exo) {
+		// TODO: this method seems to still not use the next lesson in the commit message.
 		Game game = Game.getInstance();
 		Exercise lastExo = (Exercise) game.getLastExercise();
 		System.out.println(lastExo.getName());
