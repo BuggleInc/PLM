@@ -18,6 +18,7 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Collection;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
@@ -29,13 +30,20 @@ import plm.core.model.lesson.Lesson;
 public class GitSessionKit implements ISessionKit {
 
 	private Game game;
+	private String filePath, reponame;
+	private File path;
 
-	public GitSessionKit(Game game) {
+	public GitSessionKit(Game game, File path) {
+		this.path = path;
 		this.game = game;
+		String userUUID = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
+		reponame = userUUID.substring(0, 8);
+
+		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
 	}
 
 	/**
-	 * Load the user source code for all the opened lessons. It doesn't need to
+	 * Store the user source code for all the opened lessons. It doesn't need to
 	 * save the lesson summaries : it's compute on start
 	 *
 	 * @param path
@@ -44,8 +52,9 @@ public class GitSessionKit implements ISessionKit {
 	@Override
 	public void storeAll(File path) throws UserAbortException {
 		/* First save the bodies */
-		for (Lesson lesson : this.game.getLessons()) {
-			storeLesson(new File(path.getAbsoluteFile() + "/repository/"), lesson);
+		Collection<Lesson> lessons = this.game.getLessons();
+		for (Lesson lesson : lessons) {
+			storeLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}
 
 		/* No need to save the lesson summaries : it's compute on start	*/
@@ -60,7 +69,7 @@ public class GitSessionKit implements ISessionKit {
 	@Override
 	public void loadAll(final File path) {
 		for (Lesson lesson : this.game.getLessons()) {
-			loadLesson(path, lesson);
+			loadLesson(new File(filePath), lesson);
 		}
 
 		// check how many exercises are done by lesson
@@ -136,23 +145,26 @@ public class GitSessionKit implements ISessionKit {
 	 */
 	@Override
 	public void storeLesson(File path, Lesson lesson) throws UserAbortException {
-		for (Lecture lecture : lesson.exercises()) {
-			if (lecture instanceof Exercise) {
-				Exercise exercise = (Exercise) lecture;
-				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
-					SourceFile sf = exercise.getSourceFile(lang, 0);
-					File sourceFileDisk = new File(path, exercise.getId() + "." + lang.getExt() + ".code");
-					try {
-						FileWriter fwExo = new FileWriter(sourceFileDisk.getAbsoluteFile());
-						BufferedWriter bwExo = new BufferedWriter(fwExo);
-						bwExo.write(sf.getBody());
-						bwExo.close();
-					} catch (IOException ex) {
-
-					}
-				}
-			}
-		}
+//		for (Lecture lecture : lesson.exercises()) {
+//			if (lecture instanceof Exercise) {
+//				Exercise exercise = (Exercise) lecture;
+//				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
+//					SourceFile sf = exercise.getSourceFile(lang, 0);
+//					String str  =sf.getBody();
+//					if (str.length() != 0) {
+//						File sourceFileDisk = new File(path, exercise.getId() + "." + lang.getExt() + ".code");
+//						try {
+//							FileWriter fwExo = new FileWriter(sourceFileDisk.getAbsoluteFile());
+//							BufferedWriter bwExo = new BufferedWriter(fwExo);
+//							bwExo.write(sf.getBody());
+//							bwExo.close();
+//						} catch (IOException ex) {
+//
+//						}
+//					}
+//				}
+//			}
+//		}
 	}
 
 	/**
@@ -168,13 +180,13 @@ public class GitSessionKit implements ISessionKit {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
 					// check if exercice already done correctly
-					if (new File(path.getAbsolutePath() + "/repository/"
+					if (new File(path.getAbsolutePath() + System.getProperty("file.separator")
 							+ exercise.getId() + "." + lang.getExt() + ".DONE").exists()) { // if the file exists, the exercise was worrect
 						Game.getInstance().studentWork.setPassed(exercise, lang, true);
 					}
 					// load source code 
 					SourceFile srcFile = exercise.getSourceFile(lang, 0);
-					String fileName = path.getAbsolutePath() + "/repository/"
+					String fileName = filePath + System.getProperty("file.separator")
 							+ exercise.getId() + "." + lang.getExt() + ".code";
 					//System.out.println(fileName);
 					String line;
@@ -189,6 +201,7 @@ public class GitSessionKit implements ISessionKit {
 						}
 						srcFile.setBody(b.toString());
 					} catch (FileNotFoundException ex) {
+						System.out.println("Il n'y a rien en "+fileName);
 					} catch (IOException ex) {
 					}
 
@@ -200,7 +213,7 @@ public class GitSessionKit implements ISessionKit {
 	@Override
 	public void cleanAll(File path) {
 		for (Lesson lesson : this.game.getLessons()) {
-			cleanLesson(path, lesson);
+			cleanLesson(new File(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), lesson);
 		}
 	}
 

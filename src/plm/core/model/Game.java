@@ -130,7 +130,7 @@ public class Game implements IWorldView {
 
 	public SessionDB studentWork = new SessionDB();
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
-	private ISessionKit sessionKit = new GitSessionKit(this);
+	private ISessionKit sessionKit;
 	
 	private Users users;
 
@@ -188,6 +188,8 @@ public class Game implements IWorldView {
 		
 		users = new Users(SAVE_DIR);
 		users.getCurrentUser();
+		
+		sessionKit = new GitSessionKit(this, SAVE_DIR);
 		
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
