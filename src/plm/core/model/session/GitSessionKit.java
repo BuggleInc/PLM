@@ -1,13 +1,10 @@
 package plm.core.model.session;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
@@ -30,16 +27,12 @@ import plm.core.model.lesson.Lesson;
 public class GitSessionKit implements ISessionKit {
 
 	private Game game;
-	private String filePath, reponame;
-	private File path;
+	private String reponame;
 
-	public GitSessionKit(Game game, File path) {
-		this.path = path;
+	public GitSessionKit(Game game) {
 		this.game = game;
 		String userUUID = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
 		reponame = userUUID.substring(0, 8);
-
-		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
 	}
 
 	/**
@@ -90,7 +83,7 @@ public class GitSessionKit implements ISessionKit {
 					}
 					final String lessonName = lessonNameTmp;
 					String ext = tab[tab.length - 2]; // get the programming language
-					int possible = Integer.parseInt(tab[tab.length - 1]); // get the number of exercices
+					int possible = Integer.parseInt(tab[tab.length - 1]); // get the number of exercises
 					if (possible > 0) {
 						for (final ProgrammingLanguage p : Game.getProgrammingLanguages()) { // for each programming language, how many exercises are done
 							if (p.getExt().equals(ext)) {
@@ -179,10 +172,10 @@ public class GitSessionKit implements ISessionKit {
 			if (lecture instanceof Exercise) {
 				Exercise exercise = (Exercise) lecture;
 				for (ProgrammingLanguage lang : exercise.getProgLanguages()) {
-					// check if exercice already done correctly
+					// check if exercise already done correctly
 					String doneFile = path.getAbsolutePath() + System.getProperty("file.separator") + reponame + System.getProperty("file.separator")
 							+ exercise.getId() + "." + lang.getExt() + ".DONE";
-					if (new File(doneFile).exists()) { // if the file exists, the exercise was worrect
+					if (new File(doneFile).exists()) { // if the file exists, the exercise was correct
 						Game.getInstance().studentWork.setPassed(exercise, lang, true);
 					}
 					// load source code 

@@ -185,12 +185,12 @@ public class Game implements IWorldView {
 					break;
 				}
 		}
-		
+
 		users = new Users(SAVE_DIR);
 		users.getCurrentUser();
-		
-		sessionKit = new GitSessionKit(this, SAVE_DIR);
-		
+
+		sessionKit = new GitSessionKit(this);
+
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
 		try {

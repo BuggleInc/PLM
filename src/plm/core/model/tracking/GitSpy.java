@@ -12,7 +12,6 @@ import java.util.Calendar;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.json.simple.JSONObject;
 
@@ -49,9 +48,11 @@ public class GitSpy implements ProgressSpyListener {
 		String reponame = userUUID.substring(0, 8);
 
 		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
+		File repoFile = new File(filePath);
 
-		if (!path.exists()) {
-			Git.cloneRepository().setURI(repoUrl).setDirectory(new File(filePath)).setBranchesToClone(Arrays.asList("master")).call();
+		if (!repoFile.exists()) {
+			System.out.println("CLONE REPO");
+			Git.cloneRepository().setURI(repoUrl).setDirectory(repoFile).setBranchesToClone(Arrays.asList("master")).call();
 		}
 		// Git.init().setDirectory(new File(filePath)).call();
 
@@ -68,7 +69,7 @@ public class GitSpy implements ProgressSpyListener {
 		// get the repository
 		git = new Git(repository);
 
-		GitPush gitPush = new GitPush(repository, git);
+		GitPush gitPush = new GitPush(git);
 
 		// checkout the branch of the current user
 		gitPush.checkoutUserBranch();
@@ -83,7 +84,7 @@ public class GitSpy implements ProgressSpyListener {
 		checkSuccess(exo);
 
 		try {
-			GitPush gitPush = new GitPush(repository, git);
+			GitPush gitPush = new GitPush(git);
 
 			// checkout the branch of the current user
 			// gitPush.checkoutUserBranch();
@@ -126,7 +127,7 @@ public class GitSpy implements ProgressSpyListener {
 			createFiles(lastExo);
 
 			try {
-				GitPush gitPush = new GitPush(repository, git);
+				GitPush gitPush = new GitPush(git);
 
 				// checkout the branch of the current user
 				// gitPush.checkoutUserBranch();

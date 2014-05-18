@@ -10,7 +10,6 @@ import org.eclipse.jgit.api.PushCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.api.errors.RefAlreadyExistsException;
-import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
@@ -21,16 +20,12 @@ import plm.core.model.User;
 public class GitPush {
 
 	private String username;
-	private String filePath;
-	private Repository repository;
 	private Git git;
 
 	private String repoName = "PLM-Test";
 	private String repoPassword = "PLM-TestPW0";
 
-	public GitPush(Repository repository, Git git) throws IOException, GitAPIException {
-		// UUID userId = UUID.randomUUID();
-
+	public GitPush(Git git) throws IOException, GitAPIException {
 		username = System.getenv("USER");
 		if (username == null) {
 			username = System.getenv("USERNAME");
@@ -39,7 +34,6 @@ public class GitPush {
 			username = "John Doe";
 		}
 
-		this.repository = repository;
 		this.git = git;
 	}
 
@@ -47,20 +41,17 @@ public class GitPush {
 		Game game = Game.getInstance();
 		User currentUser = game.getUsers().getCurrentUser();
 
-		// credentials
-		CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
-
 		// checkout master branch so that we start with a clean base
 		git.checkout().setName("master").call();
 
-		// eventually create the users's branch
+		// eventually create the branch of the current user
 		try {
 			git.branchCreate().setName(String.valueOf(currentUser.getUserUUID())).call();
 		} catch (RefAlreadyExistsException ex) {
 
 		}
 
-		// checkout the user's branch
+		// checkout the branch of the current user
 		git.checkout().setName(String.valueOf(currentUser.getUserUUID())).call();
 	}
 
