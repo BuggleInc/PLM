@@ -67,7 +67,7 @@ public class GitSpy implements ProgressSpyListener {
 			git.add().addFilepattern(".").call();
 
 			// and then commit the changes
-			git.commit().setMessage(writeCommitMessage(exo, "executed")).call();
+			git.commit().setMessage(writeCommitMessage(exo, null, "executed")).call();
 
 			// push to the remote repository
 			GitPush gitPush = new GitPush(repository, git);
@@ -83,7 +83,6 @@ public class GitSpy implements ProgressSpyListener {
 
 	@Override
 	public void switched(Exercise exo) {
-		// TODO: this method seems to still not use the next lesson in the commit message.
 		Game game = Game.getInstance();
 		Exercise lastExo = (Exercise) game.getLastExercise();
 		System.out.println(lastExo.getName());
@@ -97,7 +96,7 @@ public class GitSpy implements ProgressSpyListener {
 				git.add().addFilepattern(".").call();
 
 				// and then commit the changes
-				git.commit().setMessage(writeCommitMessage(lastExo, "switched")).call();
+				git.commit().setMessage(writeCommitMessage(lastExo, exo, "switched")).call();
 
 				// push to the remote repository
 				GitPush gitPush = new GitPush(repository, git);
@@ -130,22 +129,25 @@ public class GitSpy implements ProgressSpyListener {
 	 * Helper methods
 	 */
 	@SuppressWarnings("unchecked")
-	private String writeCommitMessage(Exercise exo, String evt_type) {
+	private String writeCommitMessage(Exercise exoFrom, Exercise exoTo, String evt_type) {
 		JSONObject jsonObject = new JSONObject();
 
 		Game game = Game.getInstance();
-		ExecutionProgress lastResult = exo.lastResult;
+		ExecutionProgress lastResult = exoFrom.lastResult;
 
 		jsonObject.put("evt_type", evt_type);
 		// Retrieve appropriate parameters regarding the current exercise
 		jsonObject.put("username", username);
 		jsonObject.put("course", game.getCourseID());
 		jsonObject.put("password", game.getCoursePassword());
-		jsonObject.put("exoname", exo.getName());
+		jsonObject.put("exoname", exoFrom.getName());
 		jsonObject.put("exolang", lastResult.language.toString());
 		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
+		if (exoTo != null) {
+			jsonObject.put("exoswitchto", exoTo.getName());
+		}
 
 		return jsonObject.toString();
 	}
@@ -153,7 +155,7 @@ public class GitSpy implements ProgressSpyListener {
 	/**
 	 * This method creates a String which contains debug informations. This String will be used as the commit message
 	 * set when the PLM is started by the user.
-	 * 
+	 *
 	 * @return the JSON String that will be used as the commit message
 	 */
 	@SuppressWarnings("unchecked")
@@ -222,7 +224,7 @@ public class GitSpy implements ProgressSpyListener {
 	/**
 	 * Create some files to know how many exercises there are by programming languages for this lesson. Also add a file
 	 * to know if the exercise has been done correctly.
-	 * 
+	 *
 	 * @param exo
 	 */
 	private void checkSuccess(Exercise exo) {
