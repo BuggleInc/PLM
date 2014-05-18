@@ -42,8 +42,7 @@ public class GitSpy implements ProgressSpyListener {
 
 		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
 
-		// System.out.println("Created a new repository at " +
-		// repository.getDirectory());
+		// System.out.println("Created a new repository at " + repository.getDirectory());
 		repository.close();
 
 		// setup the remote repository
@@ -143,20 +142,16 @@ public class GitSpy implements ProgressSpyListener {
 		jsonObject.put("password", game.getCoursePassword());
 		jsonObject.put("exoname", exo.getName());
 		jsonObject.put("exolang", lastResult.language.toString());
-		// passedTests and totalTests are initialized at -1 and 0 in case of
-		// compilation error...
+		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...
 		jsonObject.put("passedtests", lastResult.passedTests != -1 ? lastResult.passedTests + "" : 0 + "");
 		jsonObject.put("totaltests", lastResult.totalTests != 0 ? lastResult.totalTests + "" : 1 + "");
-		jsonObject.put("action", "execute"); // TODO: check if necessary since
-												// there is evt_type
 
 		return jsonObject.toString();
 	}
 
 	/**
-	 * This method creates a String which contains debug informations. This
-	 * String will be used as the commit message set when the PLM is started by
-	 * the user.
+	 * This method creates a String which contains debug informations. This String will be used as the commit message
+	 * set when the PLM is started by the user.
 	 * 
 	 * @return the JSON String that will be used as the commit message
 	 */
@@ -170,13 +165,9 @@ public class GitSpy implements ProgressSpyListener {
 		jsonObject.put("evt_type", "started");
 		// Retrieve the feedback informations
 		jsonObject.put("start_date", dateFormat.format(cal.getTime()));
-		jsonObject.put("java_version",
-				System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version")
-						+ ")");
-		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch")
-				+ ")");
-		jsonObject.put("plm_version",
-				Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
+		jsonObject.put("java_version", System.getProperty("java.version") + " (VM: " + System.getProperty("java.vm.name") + "; version: " + System.getProperty("java.vm.version") + ")");
+		jsonObject.put("os", System.getProperty("os.name") + " (version: " + System.getProperty("os.version") + "; arch: " + System.getProperty("os.arch") + ")");
+		jsonObject.put("plm_version", Game.getProperty("plm.major.version", "internal", false) + " (" + Game.getProperty("plm.minor.version", "internal", false) + ")");
 
 		return jsonObject.toString();
 	}
@@ -184,25 +175,14 @@ public class GitSpy implements ProgressSpyListener {
 	private void createFiles(Exercise exo) {
 		ExecutionProgress lastResult = exo.lastResult;
 
-		String exoCode = exo.getSourceFile(lastResult.language, 0).getBody(); // retrieve
-																				// the
-																				// code
-																				// from
-																				// the
-																				// student
-		String exoError = lastResult.compilationError; // retrieve the
-														// compilation error
-		String exoCorrection = exo.getSourceFile(lastResult.language, 0).getCorrection(); // retrieve
-																							// the
-																							// correction
-		String exoMission = exo.getMission(lastResult.language); // retrieve the
-																	// mission
+		String exoCode = exo.getSourceFile(lastResult.language, 0).getBody(); // retrieve the code from the student
+		String exoError = lastResult.compilationError; // retrieve the compilation error
+		String exoCorrection = exo.getSourceFile(lastResult.language, 0).getCorrection(); // retrieve the correction
+		String exoMission = exo.getMission(lastResult.language); // retrieve the mission
 
 		// create the different files
 		String repoDir = repository.getDirectory().getParent();
-		String ext = "." + Game.getProgrammingLanguage().getExt(); // the
-																	// language
-																	// extension
+		String ext = "." + Game.getProgrammingLanguage().getExt();
 
 		File exoFile = new File(repoDir, exo.getId() + ext + ".code");
 		File errorFile = new File(repoDir, exo.getId() + ext + ".error");
@@ -239,22 +219,18 @@ public class GitSpy implements ProgressSpyListener {
 	}
 
 	/**
-	 * Create some files to know how many exercises there are by programming
-	 * languages for this lesson. Also add a file to know if the exercise has
-	 * been correctly done
+	 * Create some files to know how many exercises there are by programming languages for this lesson. Also add a file
+	 * to know if the exercise has been correctly done
 	 * 
 	 * @param exo
 	 */
 	private void checkSuccess(Exercise exo) {
 		ExecutionProgress lastResult = exo.lastResult;
 		String repoDir = repository.getDirectory().getParent();
-		String ext = "." + Game.getProgrammingLanguage().getExt(); // the
-																	// language
-																	// extension
-		if (lastResult.totalTests != 0 && lastResult.totalTests == lastResult.passedTests) { // exercise
-																								// is
-																								// correctly
-																								// done
+		String ext = "." + Game.getProgrammingLanguage().getExt();
+
+		// if exercise is done correctly
+		if (lastResult.totalTests != 0 && lastResult.totalTests == lastResult.passedTests) {
 			File doneFile = new File(repoDir, exo.getId() + ext + ".DONE");
 			try {
 				FileWriter fwExo = new FileWriter(doneFile.getAbsoluteFile());
@@ -282,4 +258,5 @@ public class GitSpy implements ProgressSpyListener {
 			}
 		}
 	}
+
 }
