@@ -59,8 +59,6 @@ public class GitPush {
 		new SwingWorker<Void, Integer>() {
 			@Override
 			protected Void doInBackground() throws GitAPIException {
-				checkoutUserBranch();
-
 				// credentials
 				CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
 
