@@ -61,6 +61,7 @@ import plm.core.ui.action.StartExecution;
 import plm.core.ui.action.StepExecution;
 import plm.core.ui.action.StopExecution;
 import plm.core.ui.action.SwitchExo;
+import plm.core.ui.action.SwitchUser;
 import plm.core.utils.FileUtils;
 import plm.universe.World;
 
@@ -82,7 +83,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenu menuFile;
     private JMenuItem miFileSavePicture,miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
     private JMenu menuSession;
-    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative;
+    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative, miSwitchUser;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -321,7 +322,6 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionImportFromCloud = new JMenuItem(new ImportCloudSession(g, i18n.tr("Import Session Cache from Cloud"),
 				null, this));
 		menuSession.add(miSessionImportFromCloud);
-
 		
 		
 		miSessionDebug = new JCheckBoxMenuItem(new AbstractGameAction(g, i18n.tr("Debug mode"), null, KeyEvent.VK_D) {
@@ -345,6 +345,10 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		});
 		menuSession.add(miSessionCreative);
+		
+		
+		miSwitchUser = new JMenuItem(new SwitchUser(g, i18n.tr("Switch user"),	null, this));
+		menuSession.add(miSwitchUser);
 
 
 		/* === Language menu === */
@@ -739,6 +743,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		
 		miSessionDebug.setText(i18n.tr("Debug mode"));
 		miSessionCreative.setText(i18n.tr("Creative mode"));
+		
+		miSwitchUser.setText(i18n.tr("Switch user"));
 
 		
 		menuLanguage.setText(i18n.tr("Language"));

@@ -209,4 +209,15 @@ public class Users {
 		}
 	}
 
+	/**
+	 * Getters and Setters
+	 */
+	public List<User> getUsersList() {
+		return usersList;
+	}
+
+	public void setUsersList(List<User> usersList) {
+		this.usersList = usersList;
+	}
+
 }
