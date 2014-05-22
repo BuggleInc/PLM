@@ -36,6 +36,10 @@ public class User implements JSONStreamAware {
 
 	@Override
 	public String toString() {
+		return username + " [" + String.valueOf(userUUID).substring(0, 8) + "]";
+	}
+
+	public String toStringExtended() {
 		return "User [username=" + username + ", lastUsed=" + lastUsed + ", userUUID=" + userUUID + "]";
 	}
 

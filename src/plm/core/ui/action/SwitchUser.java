@@ -24,16 +24,16 @@ public class SwitchUser extends AbstractGameAction {
 	public void actionPerformed(ActionEvent e) {
 		List<User> usersList = game.getUsers().getUsersList();
 		User[] possibilities = usersList.toArray(new User[usersList.size()]);
-		// TODO: translate the text
-		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, "Please choose the user you want to use:\n", "Switch user", JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[0]);
+		User chosenUser = (User) JOptionPane.showInputDialog(this.parent, Game.i18n.tr("<html>Please choose the user you want to use from the drop-down menu.<br/>Caution! The PLM will exit immediately after you click OK.<br/>Save the code of the current lesson!</html>"), Game.i18n.tr("Switch user"),
+				JOptionPane.OK_CANCEL_OPTION, null, possibilities, possibilities[0]);
 
 		if (chosenUser == null) {
 			return;
 		}
 
-		// TODO: exit the PLM after the change
 		if (!chosenUser.equals(game.getUsers().getCurrentUser())) {
 			game.getUsers().switchToUser(chosenUser);
+			game.quit();
 		}
 	}
 
