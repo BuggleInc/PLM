@@ -53,9 +53,9 @@ public class Users {
 
 		loadUsersFromFile();
 		// System.err.println("The users have been loaded successfully!");
-		for (User user : usersList) {
-			System.err.println("User found: " + user);
-		}
+		// for (User user : usersList) {
+		// System.err.println("User found: " + user);
+		// }
 	}
 
 	/**
@@ -79,6 +79,32 @@ public class Users {
 		updateUsersFile();
 
 		return usersList.get(0);
+	}
+
+	/**
+	 * Method used to switch between users.
+	 * 
+	 * @param newUser
+	 *            the user to which we want to switch
+	 * @return true if the user has been found and has been changed
+	 */
+	public boolean switchToUser(User newUser) {
+		boolean found = false;
+
+		for (User user : usersList) {
+			if (user.getUserUUID().equals(newUser.getUserUUID())) {
+				found = true;
+				getCurrentUser().setLastUsed(false);
+				user.setLastUsed(true);
+				System.err.println("Switched to user: " + newUser);
+			}
+		}
+
+		if (found) {
+			updateUsersFile();
+		}
+
+		return found;
 	}
 
 	/**
