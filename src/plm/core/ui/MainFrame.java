@@ -46,6 +46,7 @@ import plm.core.model.ProgrammingLanguage;
 import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.ui.action.AbstractGameAction;
+import plm.core.ui.action.AddUser;
 import plm.core.ui.action.ExportCloudSession;
 import plm.core.ui.action.ExportSession;
 import plm.core.ui.action.HelpMe;
@@ -53,6 +54,7 @@ import plm.core.ui.action.ImportCloudSession;
 import plm.core.ui.action.ImportSession;
 import plm.core.ui.action.PlayDemo;
 import plm.core.ui.action.QuitGame;
+import plm.core.ui.action.RemoveUser;
 import plm.core.ui.action.Reset;
 import plm.core.ui.action.RevertExercise;
 import plm.core.ui.action.SetLanguage;
@@ -83,7 +85,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenu menuFile;
     private JMenuItem miFileSavePicture,miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
     private JMenu menuSession;
-    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative, miSwitchUser;
+    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative, miAddUser, miSwitchUser, miRemoveUser;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -345,10 +347,16 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 			}
 		});
 		menuSession.add(miSessionCreative);
-		
-		
-		miSwitchUser = new JMenuItem(new SwitchUser(g, i18n.tr("Switch user"),	null, this));
+
+
+		miAddUser = new JMenuItem(new AddUser(g, i18n.tr("Add user"), null, this));
+		menuSession.add(miAddUser);
+
+		miSwitchUser = new JMenuItem(new SwitchUser(g, i18n.tr("Switch user"), null, this));
 		menuSession.add(miSwitchUser);
+
+		miRemoveUser = new JMenuItem(new RemoveUser(g, i18n.tr("Remove user"), null, this));
+		menuSession.add(miRemoveUser);
 
 
 		/* === Language menu === */
@@ -744,7 +752,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		miSessionDebug.setText(i18n.tr("Debug mode"));
 		miSessionCreative.setText(i18n.tr("Creative mode"));
 		
+		miAddUser.setText(i18n.tr("Add user"));
 		miSwitchUser.setText(i18n.tr("Switch user"));
+		miRemoveUser.setText(i18n.tr("Remove user"));
 
 		
 		menuLanguage.setText(i18n.tr("Language"));

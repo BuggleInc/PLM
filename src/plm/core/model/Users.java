@@ -82,6 +82,17 @@ public class Users {
 	}
 
 	/**
+	 * Add a new user.
+	 * 
+	 * @param username
+	 *            the name of the new user
+	 */
+	public void addUser(String username) {
+		usersList.add(new User(username));
+		updateUsersFile();
+	}
+
+	/**
 	 * Method used to switch between users.
 	 * 
 	 * @param newUser
@@ -105,6 +116,17 @@ public class Users {
 		}
 
 		return found;
+	}
+
+	/**
+	 * Delete an existing user.
+	 * 
+	 * @param user
+	 *            the user to remove
+	 */
+	public void removeUser(User user) {
+		usersList.remove(user);
+		updateUsersFile();
 	}
 
 	/**
