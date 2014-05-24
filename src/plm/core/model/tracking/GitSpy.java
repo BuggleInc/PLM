@@ -8,12 +8,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
-
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
+import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.json.simple.JSONObject;
-
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.Users;
@@ -46,14 +45,15 @@ public class GitSpy implements ProgressSpyListener {
 			git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoFile).setBranchesToClone(Arrays.asList("master")).call();
 		}
 
-		if (git == null) {
-			git = Git.open(repoFile);
-		}
+		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
 
 		// setup the remote repository
 		// final StoredConfig config = repository.getConfig();
 		// config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git");
 		// config.save();
+
+		// get the repository
+		git = new Git(repository);
 
 		GitPush gitPush = new GitPush(git);
 
@@ -98,12 +98,6 @@ public class GitSpy implements ProgressSpyListener {
 		Exercise lastExo = (Exercise) game.getLastExercise();
 		System.out.println(lastExo.getName());
 		lastExo.lastResult = ExecutionProgress.newCompilationError("");
-
-		// if we have just started the PLM, exo and lastExo should be the same
-		if (exo.equals(lastExo)) {
-			// initializeRepoDir(users);
-			return;
-		}
 
 		if (lastExo.lastResult != null) {
 			createFiles(lastExo);
@@ -158,7 +152,6 @@ public class GitSpy implements ProgressSpyListener {
 		jsonObject.put("evt_type", evt_type);
 		// Retrieve appropriate parameters regarding the current exercise
 		jsonObject.put("course", game.getCourseID());
-		jsonObject.put("password", game.getCoursePassword());
 		jsonObject.put("exoname", exoFrom.getName());
 		jsonObject.put("exolang", lastResult.language.toString());
 		// passedTests and totalTests are initialized at -1 and 0 in case of compilation error...

@@ -111,7 +111,7 @@ public class GitSessionKit implements ISessionKit {
 									}
 								};
 								try {
-									Files.walkFileTree(Paths.get(path.getPath()), matcherVisitor);
+									Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
 								} catch (IOException ex) {
 
 								}
@@ -123,7 +123,7 @@ public class GitSessionKit implements ISessionKit {
 			}
 		};
 		try {
-			Files.walkFileTree(Paths.get(path.getPath()), matcherVisitor);
+			Files.walkFileTree(Paths.get(path.getAbsolutePath() + System.getProperty("file.separator") + reponame), matcherVisitor);
 		} catch (IOException ex) {
 
 		}
