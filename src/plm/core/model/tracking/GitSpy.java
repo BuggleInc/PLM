@@ -12,17 +12,16 @@ import java.util.Calendar;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.json.simple.JSONObject;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
+import plm.core.model.Users;
 import plm.core.model.lesson.ExecutionProgress;
 import plm.core.model.lesson.Exercise;
 
 public class GitSpy implements ProgressSpyListener {
 
-	private String username;
 	private String filePath;
 	private File path;
 	private Repository repository;
@@ -30,48 +29,36 @@ public class GitSpy implements ProgressSpyListener {
 
 	private String repoUrl = "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git";
 
-	public GitSpy(File path) throws IOException, GitAPIException {
-		username = System.getenv("USER");
-		if (username == null) {
-			username = System.getenv("USERNAME");
-		}
-		if (username == null) {
-			username = "John Doe";
-		}
-
+	public GitSpy(File path, Users users) throws IOException, GitAPIException {
 		this.path = path;
+
+		initializeRepoDir(users);
 	}
 
-	private void initializeRepoDir() throws IOException, GitAPIException {
-		Game game = Game.getInstance();
-		String userUUID = String.valueOf(game.getUsers().getCurrentUser().getUserUUID());
+	private void initializeRepoDir(Users users) throws IOException, GitAPIException {
+		String userUUID = String.valueOf(users.getCurrentUser().getUserUUID());
 		String reponame = userUUID.substring(0, 8);
 
 		filePath = path.getAbsolutePath() + System.getProperty("file.separator") + reponame;
 		File repoFile = new File(filePath);
 
 		if (!repoFile.exists()) {
-			Git.cloneRepository().setURI(repoUrl).setDirectory(repoFile).setBranchesToClone(Arrays.asList("master")).call();
+			git = Git.cloneRepository().setURI(repoUrl).setDirectory(repoFile).setBranchesToClone(Arrays.asList("master")).call();
 		}
-		// Git.init().setDirectory(new File(filePath)).call();
 
-		repository = FileRepositoryBuilder.create(new File(filePath, ".git"));
-
-		// System.out.println("Created a new repository at " + repository.getDirectory());
-		repository.close();
+		if (git == null) {
+			git = Git.open(repoFile);
+		}
 
 		// setup the remote repository
 		// final StoredConfig config = repository.getConfig();
 		// config.setString("remote", "origin", "url", "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git");
 		// config.save();
 
-		// get the repository
-		git = new Git(repository);
-
 		GitPush gitPush = new GitPush(git);
 
 		// checkout the branch of the current user
-		gitPush.checkoutUserBranch();
+		gitPush.checkoutUserBranch(users);
 
 		// plm started commit message
 		git.commit().setMessage(writePLMStartedCommitMessage()).call();
@@ -114,11 +101,8 @@ public class GitSpy implements ProgressSpyListener {
 
 		// if we have just started the PLM, exo and lastExo should be the same
 		if (exo.equals(lastExo)) {
-			try {
-				initializeRepoDir();
-			} catch (IOException | GitAPIException e) {
-				e.printStackTrace();
-			}
+			// initializeRepoDir(users);
+			return;
 		}
 
 		if (lastExo.lastResult != null) {
@@ -173,7 +157,6 @@ public class GitSpy implements ProgressSpyListener {
 
 		jsonObject.put("evt_type", evt_type);
 		// Retrieve appropriate parameters regarding the current exercise
-		jsonObject.put("username", username);
 		jsonObject.put("course", game.getCourseID());
 		jsonObject.put("password", game.getCoursePassword());
 		jsonObject.put("exoname", exoFrom.getName());

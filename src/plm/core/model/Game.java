@@ -189,15 +189,15 @@ public class Game implements IWorldView {
 		users = new Users(SAVE_DIR);
 		users.getCurrentUser();
 
-		sessionKit = new GitSessionKit(this);
-
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
 		try {
-			addProgressSpyListener(new GitSpy(SAVE_DIR));
+			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		sessionKit = new GitSessionKit(this);
 		
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
 			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
