@@ -67,7 +67,7 @@ public class Users {
 	public User getCurrentUser() {
 		for (User user : usersList) {
 			if (user.isLastUsed()) {
-				System.err.println("Last user found: " + user);
+				// System.err.println("Last user found: " + user);
 				return user;
 			}
 		}
