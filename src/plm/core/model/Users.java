@@ -91,6 +91,14 @@ public class Users {
 		usersList.add(new User(username));
 		updateUsersFile();
 	}
+	
+	public void addUserWithUUID(String username, String uuid) throws IllegalArgumentException {
+		User user = new User(username, false, UUID.fromString(uuid));
+		if(!usersList.contains(user)) {
+			usersList.add(user);
+		}
+		updateUsersFile();
+	}
 
 	/**
 	 * Method used to switch between users.

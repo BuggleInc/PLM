@@ -47,6 +47,7 @@ import plm.core.model.lesson.Exercise;
 import plm.core.model.lesson.Lecture;
 import plm.core.ui.action.AbstractGameAction;
 import plm.core.ui.action.AddUser;
+import plm.core.ui.action.AddUserWithUUID;
 import plm.core.ui.action.ExportCloudSession;
 import plm.core.ui.action.ExportSession;
 import plm.core.ui.action.HelpMe;
@@ -86,7 +87,7 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
     private JMenu menuFile;
     private JMenuItem miFileSavePicture,miFileLoad,miFileSwitch,miFileExercise,miFileConsole=null,miFileCourse,miFileQuit;
     private JMenu menuSession;
-    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative, miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity;
+    private JMenuItem miSessionRevert, miSessionExport, miSessionImport, miSessionExportToCloud, miSessionImportFromCloud, miSessionDebug, miSessionCreative, miAddUser, miSwitchUser, miRemoveUser, miLinkIdentity, miAddExistingUser;
 
     private JMenu menuLanguage, menuLangHuman, menuLangProg;
     private JMenu menuHelp;
@@ -352,6 +353,9 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 
 		miAddUser = new JMenuItem(new AddUser(g, i18n.tr("Add user"), null, this));
 		menuSession.add(miAddUser);
+		
+		miAddExistingUser = new JMenuItem(new AddUserWithUUID(g, i18n.tr("Add user with an UUID identity"), null, this));
+		menuSession.add(miAddExistingUser);
 
 		miSwitchUser = new JMenuItem(new SwitchUser(g, i18n.tr("Switch user"), null, this));
 		menuSession.add(miSwitchUser);

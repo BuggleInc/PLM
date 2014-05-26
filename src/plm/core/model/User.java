@@ -3,6 +3,7 @@ package plm.core.model;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.LinkedHashMap;
+import java.util.Objects;
 import java.util.UUID;
 
 import org.json.simple.JSONStreamAware;
@@ -68,6 +69,28 @@ public class User implements JSONStreamAware {
 
 	public void setUserUUID(UUID userUUID) {
 		this.userUUID = userUUID;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 3;
+		hash = 29 * hash + Objects.hashCode(this.userUUID);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final User other = (User) obj;
+		if (!Objects.equals(this.userUUID, other.userUUID)) {
+			return false;
+		}
+		return true;
 	}
 
 }
