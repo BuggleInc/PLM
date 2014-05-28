@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.lib.PersonIdent;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.json.simple.JSONObject;
@@ -26,7 +27,7 @@ public class GitSpy implements ProgressSpyListener {
 	private Repository repository;
 	private Git git;
 
-	private String repoUrl = "https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git";
+	private String repoUrl = Game.getProperty("plm.git.server.url"); //"https://PLM-Test@bitbucket.org/PLM-Test/plm-test-repo.git";
 
 	public GitSpy(File path, Users users) throws IOException, GitAPIException {
 		this.path = path;
@@ -61,7 +62,7 @@ public class GitSpy implements ProgressSpyListener {
 		gitPush.checkoutUserBranch(users);
 
 		// plm started commit message
-		git.commit().setMessage(writePLMStartedCommitMessage()).call();
+		git.commit().setMessage(writePLMStartedCommitMessage()).setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).call();
 	}
 
 	@Override
@@ -79,7 +80,7 @@ public class GitSpy implements ProgressSpyListener {
 			git.add().addFilepattern(".").call();
 
 			// and then commit the changes
-			git.commit().setMessage(writeCommitMessage(exo, null, "executed")).call();
+			git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).setMessage(writeCommitMessage(exo, null, "executed")).call();
 
 			// push to the remote repository
 			gitPush.toUserBranch();
@@ -112,7 +113,7 @@ public class GitSpy implements ProgressSpyListener {
 				git.add().addFilepattern(".").call();
 
 				// and then commit the changes
-				git.commit().setMessage(writeCommitMessage(lastExo, exo, "switched")).call();
+				git.commit().setAuthor(new PersonIdent("John Doe", "john.doe@plm.net")).setCommitter(new PersonIdent("John Doe", "john.doe@plm.net")).setMessage(writeCommitMessage(lastExo, exo, "switched")).call();
 
 				// push to the remote repository
 				gitPush.toUserBranch();

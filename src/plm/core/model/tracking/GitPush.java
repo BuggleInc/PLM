@@ -14,6 +14,7 @@ import org.eclipse.jgit.api.errors.InvalidRemoteException;
 import org.eclipse.jgit.transport.CredentialsProvider;
 import org.eclipse.jgit.transport.PushResult;
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
+import plm.core.model.Game;
 import plm.core.model.User;
 import plm.core.model.Users;
 
@@ -21,8 +22,8 @@ public class GitPush {
 
 	private Git git;
 
-	private String repoName = "PLM-Test";
-	private String repoPassword = "PLM-TestPW0";
+	private String repoName = Game.getProperty("plm.git.server.username");
+	private String repoPassword = Game.getProperty("plm.git.server.password");
 
 	public GitPush(Git git) throws IOException, GitAPIException {
 		this.git = git;
@@ -46,7 +47,8 @@ public class GitPush {
 			// eventually create the branch of the current user
 			if (git.getRepository().getRef(userBranch) == null) {
 				//git.branchCreate().setName(userBranch).call();
-				try {
+				try { 
+					// consider there is a remote branch but not a local one
 					CreateBranchCommand create = git.branchCreate();
 					create.setUpstreamMode(SetupUpstreamMode.SET_UPSTREAM);
 					create.setName(userBranch);
@@ -54,22 +56,24 @@ public class GitPush {
 					create.setForce(true);
 					create.call();
 
-					System.out.println("Branch " + userBranch + " created");
+					//System.out.println("Branch " + userBranch + " created");
 					git.checkout().setName(userBranch).call();
-				} catch (GitAPIException ex) { // it's a new session : create the local branch as usual
+				} catch (GitAPIException ex) { 
+					// if consideration is wrong, it's a new session from scratch : create the local branch as usual
 					CreateBranchCommand create = git.branchCreate();
 					create.setName(userBranch);
 					create.call();
 					git.checkout().setName(userBranch).call();
 				}
-			} else { // branch already exists, we set it to track the remote one
+			} else {
+				// local branch already exists, we set it to track the remote one
 				CreateBranchCommand create = git.branchCreate();
 				create.setUpstreamMode(SetupUpstreamMode.SET_UPSTREAM);
 				create.setName(userBranch);
 				create.setStartPoint("origin/" + userBranch);
 				create.setForce(true);
 				create.call();
-				System.out.println("Branch " + userBranch + " track the remote");
+				//System.out.println("Branch " + userBranch + " track the remote");
 				git.checkout().setName(userBranch).call();
 				git.pull().call();
 			}
@@ -82,29 +86,6 @@ public class GitPush {
 	}
 
 	public void toUserBranch() {
-		new SwingWorker<Void, Integer>() {
-			@Override
-			protected Void doInBackground() throws GitAPIException {
-				// credentials
-				CredentialsProvider cp = new UsernamePasswordCredentialsProvider(repoName, repoPassword);
-
-				// push
-				PushCommand pc = git.push();
-				pc.setCredentialsProvider(cp).setForce(false).setPushAll();
-				try {
-					Iterator<PushResult> it = pc.call().iterator();
-					if (it.hasNext()) {
-						System.out.println(it.next().toString());
-					}
-				} catch (InvalidRemoteException e) {
-					e.printStackTrace();
-				}
-				return null;
-			}
-		}.execute();
-	}
-
-	public void toRemote() throws GitAPIException {
 		new SwingWorker<Void, Integer>() {
 			@Override
 			protected Void doInBackground() throws GitAPIException {
