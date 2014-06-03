@@ -40,9 +40,9 @@ import plm.core.model.lesson.Exercise.WorldKind;
 import plm.core.model.lesson.ExerciseTemplated;
 import plm.core.model.lesson.Lecture;
 import plm.core.model.lesson.Lesson;
+import plm.core.model.session.GitSessionKit;
 import plm.core.model.session.ISessionKit;
 import plm.core.model.session.SessionDB;
-import plm.core.model.session.ZipSessionKit;
 import plm.core.model.tracking.GitSpy;
 import plm.core.model.tracking.HeartBeatSpy;
 import plm.core.model.tracking.LocalFileSpy;
@@ -84,6 +84,7 @@ public class Game implements IWorldView {
 	private Map<String, Lesson> lessons = new HashMap<String, Lesson>();
 	private Lesson currentLesson;
 	private Course currentCourse;
+	private Lecture lastExercise;
 
 	public static final String [][] humanLangs = { {"Francais","fr"}, {"English","en"}, {"Italiano","it"} };
 	
@@ -128,7 +129,10 @@ public class Game implements IWorldView {
 	private LogWriter outputWriter;
 
 	public SessionDB studentWork = new SessionDB();
-	private ISessionKit sessionKit = new ZipSessionKit(this);
+	//private ISessionKit sessionKit = new ZipSessionKit(this);
+	private ISessionKit sessionKit;
+	
+	private Users users;
 
 	private static boolean ongoingInitialization = false;
 	private static String lessonChooser = "lessons.chooser";
@@ -181,14 +185,19 @@ public class Game implements IWorldView {
 					break;
 				}
 		}
-				
+
+		users = new Users(SAVE_DIR);
+		users.getCurrentUser();
+
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
 		
 		try {
-			addProgressSpyListener(new GitSpy(SAVE_DIR));
+			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		sessionKit = new GitSessionKit(this);
 		
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
 			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
@@ -438,10 +447,19 @@ public class Game implements IWorldView {
 		}
 	}
 
+	public Lecture getLastExercise() {
+		return this.lastExercise;
+	}
+
+	public void setLastExercise(Lecture exercise) {
+		this.lastExercise = exercise;
+	}
+
 	// only to avoid that exercise views register as listener of a lesson
 	public void setCurrentExercise(Lecture lect) {
 		try {
-			saveSession(); // don't loose user changes 
+			saveSession(); // don't loose user changes
+			this.lastExercise = this.currentLesson.getCurrentExercise(); // save the last viewed exercise before switching
 
 			this.currentLesson.setCurrentExercise(lect);
 			fireCurrentExerciseChanged(lect);
@@ -1040,13 +1058,20 @@ public class Game implements IWorldView {
         this.currentCourse = currentCourse;
     }
 
+	public Users getUsers() {
+		return users;
+	}
+
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+
     public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
 
     public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
 
     public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
-    
-    
+
     /* Mechanism to find where to save our data */
 	
     private static String HOME_DIR = System.getProperty("user.home");
