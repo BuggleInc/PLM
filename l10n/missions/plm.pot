@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-07 18:29+0200\n"
+"POT-Creation-Date: 2014-06-16 04:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,7 @@ msgstr ""
 #: lib/doc/MainWindow.html:31
 msgid ""
 "The <b>Demo</b> button shows you the execution of the expected "
-"solution. During its execution, you may want to swich the seen world to see "
+"solution. During its execution, you may want to switch the seen world to see "
 "the different expected solutions."
 msgstr ""
 
