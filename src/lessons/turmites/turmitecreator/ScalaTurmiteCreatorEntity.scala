@@ -116,9 +116,9 @@ class ScalaTurmiteCreatorEntity extends SimpleBuggle {
 				var newColor:Color = null
 						do {
 							newColor = new Color(
-									(Math.random()*255.).asInstanceOf[Int] ,
-									(Math.random()*255.).asInstanceOf[Int] ,
-									(Math.random()*255.).asInstanceOf[Int] );
+									(Math.random()*255.0).asInstanceOf[Int] ,
+									(Math.random()*255.0).asInstanceOf[Int] ,
+									(Math.random()*255.0).asInstanceOf[Int] );
 							for (j <- 0 to i-1) {
 								if (colors(j) == newColor) {
 									/* Damn we already picked that color; take another one please */

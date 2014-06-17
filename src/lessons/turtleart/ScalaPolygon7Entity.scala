@@ -11,7 +11,7 @@ class ScalaPolygon7Entity extends Turtle {
 		
 	    for (i <- 1 to 7) {
 	        forward(80);
-	        right(360./7.);
+	        right(360.0/7.0);
 	    }
 	    /* END SOLUTION */
 	}

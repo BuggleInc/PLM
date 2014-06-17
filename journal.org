@@ -1,0 +1,46 @@
+JOURNAL DE VALENTIN GIANNINI
+
+* <2014-06-16 lun.>  9h -> 12h ; 13h -> 16h30 (6h30)  
+** Ce que j'ai fait
+   Quand je suis arrivé, Paul m'a accueilli et m'as fait un tour rapide des bureau.
+   Ensuite, j'ai compiler la PLM puis regarder un peu au code.
+   J'ai donné des papier à Céline pour ce stage afin d'avoir une carte et tout ce qui va avec.
+   J'ai envoyé la fiche de renseignement au responsable de stage 1A de l'école (en retard d'ailleurs)
+   Pour finir j'ai été voir Chloé pour qu'elle me montre org-mode et ensuite j'ai rédigé ce journal.
+   
+** Les problèmes
+   J'ai demander de l'aide a Gérald pour pouvoir mettre le code de la PLM dans eclipse,ensuite il m'a expliquer comment ça fonctionnais et j'ai donc compris le problème qui ce pose pour integrer le C
+   
+** Ce que je vais faire demain
+   Continuer à explorer la PLM ainsi que CLE.
+   Je vais parler avec Martin à propos de 3 solutions possible pour réussir ce projet à savoir : 
+
+*** Solution 1
+    Convertir le code de l'utilisateur en java, mais il y aura surement des problemes s'il utilise des fonctions exotiques qui risquent de ne pas être traduit.
+*** Solution 2
+    Séparer le code de la PLM et celui des petits exercices et faire communiquer ceux ci avec des print (un peu comme doit le faire CodinGame)
+*** Solution 3
+    La même que la solution 2, mis a part que seulement le C fonctionnera comme ça. Mais avec possibiliter d'adapter le java/scala/python avec ce systeme plus tard.
+
+
+
+
+
+
+
+
+
+
+
+
+
+* <2014-06-17 mar.>
+** Ce que j'ai fait
+** Les problèmes
+** Ce que je vais faire demain
+
+
+* template
+** Ce que j'ai fait
+** Les problèmes
+** Ce que je vais faire demain
