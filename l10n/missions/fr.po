@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
-"POT-Creation-Date: 2014-06-17 14:59+0200\n"
-"PO-Revision-Date: 2014-06-16 04:41+0200\n"
+"POT-Creation-Date: 2014-06-17 15:05+0200\n"
+"PO-Revision-Date: 2014-06-17 15:03+0200\n"
 "Last-Translator: Martin Quinson <Martin.Quinson@loria.fr>\n"
 "Language-Team: Martin.quinson@loria.fr\n"
 "Language: fr\n"
@@ -14468,16 +14468,6 @@ msgstr ""
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:41
-#, fuzzy
-#| msgid ""
-#| "<b>Mission and editor tabs:</b> this is were you read this very text. "
-#| "This area contains several tabs to which you can access by clicking on "
-#| "their name on the top left. The first tab (which is always named "
-#| "<b>Mission</b>)  contains a presentation of the current exercise. To "
-#| "solve an exercise, you need to write your code in the other tabs. For "
-#| "example, you can now clic on the <b>Source Code</b> tab to see the actual "
-#| "source. It is empty because there is no code to write for this "
-#| "introduction exercise."
 msgid ""
 "<b>Mission and editor tabs:</b> this is were you read this very text. This "
 "area contains several tabs to which you can access by clicking on their name "
@@ -14493,8 +14483,8 @@ msgstr ""
 "est toujours intitulé <b>Mission</b>)  contient une présentation de "
 "l'exercice en cours.  Pour résoudre un exercice, vous devez écrire votre "
 "code dans les autres onglets.  Par exemple, vous pouvez maintenant cliquer "
-"sur l'onglet <b>Source Code</b> pour voir le code actuel.  Il est vide, car "
-"il n'y a rien à faire pour cet exercice de prise en main de l'environnement."
+"sur l'onglet <b>Source Code</b> pour voir le code actuel.  S'il est vide, "
+"c'est que vous n'avez pas encore écrit de code."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:49
@@ -14517,11 +14507,6 @@ msgstr ""
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:57
-#, fuzzy
-#| msgid ""
-#| "A scrolling menu allows to choose the world. Indeed, the program you "
-#| "write may be executed in several worlds to test it in differing "
-#| "conditions. This menu allows you to choose the world you want to see."
 msgid ""
 "A scrolling menu allows to choose the world. Indeed, the program you write "
 "may be executed in several worlds to test it in differing conditions. This "
@@ -14531,16 +14516,11 @@ msgstr ""
 "Un menu déroulant permettant de choisir un monde. En effet, le programme que "
 "vous devez écrire sera parfois exécuté dans plusieurs monde pour vous "
 "confronter à différentes situations. Ce menu déroulant vous permettra de "
-"choisir le monde que vous souhaitez voir."
+"choisir le monde que vous souhaitez voir. Notez que ce menu est masqué si "
+"l'exercice courant n'offre qu'un seul monde."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:62
-#, fuzzy
-#| msgid ""
-#| "A slider placed underneath allows to choose the animation speed of the "
-#| "world. More precisely, it allows to choose the delay (in milliseconds) "
-#| "that the buggles must wait after each action to allow you to see what "
-#| "they are doing."
 msgid ""
 "A slider placed right bellow allows to choose the animation speed of the "
 "world. More precisely, it allows to choose the delay (in milliseconds) that "
