@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-06-15 20:22-0300\n"
+"PO-Revision-Date: 2014-06-16 22:08-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -107,13 +107,18 @@ msgid ""
 "process shown by the demo, as long as your final solution matches the "
 "exercise expectations."
 msgstr ""
+"Note que às vezes existem várias maneiras de alcançar a solução\n"
+"esperada, e que aquela apresentada durante a demonstração não é mais\n"
+"ou menos certa que as outras. Você é completamente livre para não\n"
+"seguir estritamente o processo mostrado pela demonstração, desde que\n"
+"sua solução final atinja o que exercício pede."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:40
 msgid ""
 "The scrolling menu <b>Lessoon</b> allows you to choose the lesson you want "
 "to work on."
-msgstr ""
+msgstr "O menu rolante <b>Lição</b> serve para você escolher a lição na qual quer trabalhar."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:43
@@ -121,7 +126,7 @@ msgid ""
 "The scrolling menu <b>Exercise</b> allows you to switch to another exercise "
 "when you want. Some lessons require you to finish an exercise before "
 "starting the previous one."
-msgstr ""
+msgstr "O menu rolante <b>Exercício</b> serve para alternar para outro exercício se você quiser. Algumas lições exigem que você termine um exercício antes de iniciar outro."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:49
@@ -133,21 +138,21 @@ msgid ""
 "need to write your code in the other tabs. For example, you can now clic on "
 "the <b>Source Code</b> tab to see the actual source. It is empty because "
 "there is no code to write for this introduction exercise."
-msgstr ""
+msgstr "<b>Abas de missão e editor:</b> é onde você está lendo este texto. Esta área contém várias abas as quais você pode acessar clicando seu nome no canto superior esquerdo. A primeira aba (que sempre se chama <b>Missão</b>) contém uma apresentação do exercício atual. Para resolver um exercício, você precisa escrever seu código nas outras abas. Por exemplo, você pode agora clicar na aba <b>Código Fonte</b> para ver o código atual. Vai estar vazia por que não existe código para escrever neste exercício introdutório."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:57
 msgid ""
 "<b>The console:</b> Placed under the tabs, this is where any messages of the "
 "application will appear. This area is initially empty and white."
-msgstr ""
+msgstr "<b>O console:</b> localizado abaixo das abas, é onde aparece qualquer mensagem da aplicação. Esta área inicialmente é vazia e branca."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:60
 msgid ""
 "<b>World view</b> Placed on the right of the tabs, it is constituted of five "
 "elements:"
-msgstr ""
+msgstr "<b>Visão do mundo</b> localizada à direita das abas, é constituída de cinco elementos:"
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:65
