@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-06-16 22:08-0300\n"
+"PO-Revision-Date: 2014-06-18 22:04-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -161,6 +161,10 @@ msgid ""
 "may be executed in several worlds to test it in differing conditions. This "
 "menu allows you to choose the world you want to see."
 msgstr ""
+"Um menu rolante serve para escolher o mundo. Na verdade, o programa\n"
+"que você escreveu pode ser executado em vários mundos para testar ele\n"
+"em diferentes condições. Este menu é para você escolher o mundo que\n"
+"você quer ver."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:69
@@ -170,6 +174,10 @@ msgid ""
 "the buggles must wait after each action to allow you to see what they are "
 "doing."
 msgstr ""
+"Um \"slider\" colocado \"underneath\" serve para escolher a velocidade da\n"
+"animação do mundo. Mais precisamente, permite escolher o atraso (em\n"
+"milisegundos) que os \"buggles\" devem esperar depois de cada ação para\n"
+"permitir que você veja o que eles estão fazendo."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:74
@@ -179,6 +187,10 @@ msgid ""
 "several cells of the world, as well as several <i>buggles</i> awaiting for "
 "your orders."
 msgstr ""
+"Uma aba <b>Mundo</b> representa a visão de mundo atualmente\n"
+"selecionada (de menu rolante). Esta visão é então constituída de uma\n"
+"grade formando várias células do mundo, assim como vários\n"
+"\"<i>buggles</i>\" esperando suas ordens."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:79
