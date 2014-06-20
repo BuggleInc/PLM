@@ -87,29 +87,30 @@ public class Game implements IWorldView {
 	private Lecture lastExercise;
 
 	public static final String [][] humanLangs = { {"Francais","fr"}, {"English","en"}, {"Italiano","it"} };
-	
+
 	public static final ProgrammingLanguage JAVA =       new ProgrammingLanguage("Java","java",ResourcesCache.getIcon("img/lang_java.png"));
 	public static final ProgrammingLanguage PYTHON =     new ProgrammingLanguage("Python","py",ResourcesCache.getIcon("img/lang_python.png"));
 	public static final ProgrammingLanguage SCALA =      new ProgrammingLanguage("Scala","scala",ResourcesCache.getIcon("img/lang_scala.png"));
+	public static final ProgrammingLanguage C =      new ProgrammingLanguage("C","c",ResourcesCache.getIcon("img/lang_c.png"));
 	//public static final ProgrammingLanguage JAVASCRIPT = new ProgrammingLanguage("JavaScript","js",ResourcesCache.getIcon("img/lang_javascript.png"));
 	public static final ProgrammingLanguage RUBY =       new ProgrammingLanguage("Ruby","rb",ResourcesCache.getIcon("img/lang_ruby.png"));
 	public static final ProgrammingLanguage LIGHTBOT =   new ProgrammingLanguage("lightbot","ignored",ResourcesCache.getIcon("img/lightbot_light.png"));
 	public static final ProgrammingLanguage[] programmingLanguages = new ProgrammingLanguage[] {
-		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT // TODO: re-add JAVASCRIPT to this list once it works at least a bit
+		JAVA, PYTHON, SCALA, RUBY, LIGHTBOT, C // TODO: re-add JAVASCRIPT to this list once it works at least a bit
 	}; 
 	private ProgrammingLanguage programmingLanguage = JAVA;
 
 	/* TODO: document these values elsewhere */
 	public static final String PROP_OUTPUT_CAPTURE = "output.capture"; // Whether to redirect stdout and stderr to the graphical console. Defaults to true
 	public static final String PROP_ANSWER_CACHE = "answers.cache"; // Whether to use the cache of answers worlds on disk, defaults to true. 
-	                                                                // Turning to false will slow down the startup process, but avoid out of date files
-	
+	// Turning to false will slow down the startup process, but avoid out of date files
+
 	public static final String PROP_PROGRESS_TWITTER = "plm.progress.twitter";     //  
 	public static final String PROP_PROGRESS_APPENGINE = "plm.progress.appengine"; // Whether the progresses should be posted to the appengine (default: false)
 	public static final String PROP_APPENGINE_URL = "plm.appengine.url"; // Where to find the appengine. This is related to the teacher console, that should be rewritten at some point.
-	
+
 	public static final String SESSION_CLOUD_PROVIDER_URL = "plm.session.cloud.provider.url";
-	
+
 	public static final String PROP_PROGRAMING_LANGUAGE = "plm.programingLanguage";
 
 	public static final String PROP_FONT_SIZE = "plm.display.fontsize"; // the CSS property of the font size
@@ -122,7 +123,7 @@ public class Game implements IWorldView {
 	private List<Thread> demoRunners = new ArrayList<Thread>();
 	private static List<Thread> initRunners = new ArrayList<Thread>();
 
-    private HeartBeatSpy heartBeatSpy;
+	private HeartBeatSpy heartBeatSpy;
 
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
@@ -131,7 +132,7 @@ public class Game implements IWorldView {
 	public SessionDB studentWork = new SessionDB();
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
 	private ISessionKit sessionKit;
-	
+
 	private Users users;
 
 	private static boolean ongoingInitialization = false;
@@ -162,21 +163,29 @@ public class Game implements IWorldView {
 			System.err.println(i18n.tr("Jython is usable on your machine. Congratulations."));
 		else
 			System.err.println(i18n.tr("Please install jython to use the python programming language in PLM."));
-		
+		if (checkC())
+			System.err.println(i18n.tr("C is usable on your machine. Congratulations."));
+		else
+			System.err.println(i18n.tr("Please install jython to use the C programming language in PLM."));
+
 		String defaultProgrammingLanguage = Game.getProperty(PROP_PROGRAMING_LANGUAGE,"Java",true);
 		if (!defaultProgrammingLanguage.equalsIgnoreCase(Game.JAVA.getLang()) &&
-			!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
-			!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang())) 
-			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' but {0}.\n"+
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) &&
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && 
+				!defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang())) 
+			System.err.println(i18n.tr("Warning, the default programming language is neither ''Java'' nor ''python'' or ''Scala'' or ''C'' but {0}.\n"+
 					"   This language will be used to setup the worlds, possibly leading to severe issues for the exercises that don''t expect it.\n" +
 					"   It is safer to change the current language, and restart PLM before proceeding.\n"+
 					"   Alternatively, the property {1} can be changed in your configuration file ($HOME/.plm/plm.properties)",defaultProgrammingLanguage,PROP_PROGRAMING_LANGUAGE));
-		
+
 		if (defaultProgrammingLanguage.equalsIgnoreCase(Game.SCALA.getLang()) && !canScala) {
 			System.err.println(i18n.tr("The default programming language is Scala, but your scala installation is not usable. Switching to Java instead.\n"));
 			setProgramingLanguage(JAVA);
 		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.PYTHON.getLang()) && !canPython) {
 			System.err.println(i18n.tr("The default programming language is python, but your python installation is not usable. Switching to Java instead.\n"));
+			setProgramingLanguage(JAVA);
+		} else if (defaultProgrammingLanguage.equalsIgnoreCase(Game.C.getLang()) && !canC) {
+			System.err.println(i18n.tr("The default programming language is C, but your C installation is not usable. Switching to Java instead.\n"));
 			setProgramingLanguage(JAVA);
 		} else {
 			for (ProgrammingLanguage pl : Game.getProgrammingLanguages()) 
@@ -190,15 +199,15 @@ public class Game implements IWorldView {
 		users.getCurrentUser();
 
 		addProgressSpyListener(new LocalFileSpy(SAVE_DIR));
-		
+
 		try {
 			addProgressSpyListener(new GitSpy(SAVE_DIR, users));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		sessionKit = new GitSessionKit(this);
-		
+
 		if (getProperty(PROP_PROGRESS_TWITTER, "true",true).equalsIgnoreCase("true")) {
 			System.err.println(i18n.tr("Your progress will be posted to https://twitter.com/jlmlovers This can be turned off through the property {0}",Game.PROP_PROGRESS_TWITTER));
 			addProgressSpyListener(new TwitterSpy());
@@ -208,12 +217,12 @@ public class Game implements IWorldView {
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
 
-        currentCourse = new CourseAppEngine();
+		currentCourse = new CourseAppEngine();
 	}
-	
+
 	boolean canScala = false;
 	String scalaError = "";
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private boolean checkScala() {
 		String[] resources = new String[] {"/scala/tools/nsc/Interpreter", "/scala/ScalaObject", "/scala/reflect/io/AbstractFile"};
@@ -246,16 +255,16 @@ public class Game implements IWorldView {
 			return canScala;
 		}
 	}
-	
+
 	public boolean canPython = false;
 	String pythonError = "";
 	private boolean checkPython() {
 		String[] resources = new String[] {
 				"/org/python/jsr223/PyScriptEngineFactory", "/org/jruby/ext/posix/util/Platform","/org/antlr/runtime/CharStream",
 				"/org/objectweb/asm/Opcodes"
-				};
+		};
 		String[] hints     = new String[] {"jython.jar", "jruby.jar","antlr3-runtime.jar",
-				"asm3.jar"};
+		"asm3.jar"};
 		for (int i=0;i<resources.length;i++) {
 			pythonError = canResolve(resources[i],hints[i]);
 			if (!pythonError.isEmpty()) {
@@ -263,7 +272,7 @@ public class Game implements IWorldView {
 				return canPython;
 			}
 		}
-		
+
 		ScriptEngineManager manager = new ScriptEngineManager();       
 		if (manager.getEngineByName("python") == null) {
 			pythonError = i18n.tr("Cannot retrieve the python ScriptEngine. Are jython.jar and its dependencies in the classpath?");
@@ -273,37 +282,54 @@ public class Game implements IWorldView {
 		return true;
 	}
 
+
+	//TODO GIANNINI Verifier si on peut utiliser le C
+	public boolean canC = false;
+	String CError = "";
+	private boolean checkC(){
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("gcc --verion");
+			canC=true;
+		} catch (IOException e) {
+			e.printStackTrace();
+			canC=false;
+		}
+		return canC;
+	}
+
+
 	private String canResolve(String resource, String hint) {
 		try {
 			URL path = getClass().getResource(resource+".class");
 			if (path != null)
 				return ""; // Cool, found it.
-				
+
 			path = ClassLoader.getSystemResource(resource+".class");
 			if (path != null)
 				return ""; // Cool, found it.
-			
+
 			resource = resource.replaceAll("/", ".");
 			resource = resource.substring(1);
 			Class.forName(resource).newInstance();
 			return ""; // That's cool if I manage to create one such object
-			
+
 		} catch (ClassNotFoundException ce) {
 			return i18n.tr("Resource {0} not found in the classpath.\nIs {1} in your classpath?",resource,hint);
 		} catch (Exception e) {
 			return i18n.tr("{0} received while searching for resource {1}: {2}",e.getClass().getName(),resource,e.getLocalizedMessage());
 		}
 	}
-		
-	
+
+
 	/**
 	 * Load the chooser, stored in plm.core.ui.chooser
 	 */
 	public void loadChooser() {
 		Game.instance.switchLesson(lessonChooser,false);
 	}
-	
-	
+
+
 	/** Change the current lesson.
 	 * 
 	 * Also, initialize the newly used lesson on need. It must already be in the classpath 
@@ -311,23 +337,23 @@ public class Game implements IWorldView {
 	 *  
 	 * @param lessonName package name of the lesson to load 
 	 */
-	
+
 	public Lesson switchLesson(String lessonName, boolean failOnError) {
 		if (stepModeEnabled())
 			disableStepMode();
-		
+
 		this.setState(GameState.LOADING);
 		// Try caching the lesson to avoid the possibly long loading time during which we compute the solution of each exercise  
 		Lesson lesson = lessons.get(lessonName);
 		statusArgAdd(lessonName);
-		
+
 		if (lesson == null) { // we have to load it 
 			try {
 				// This is where we assume here that each lesson contains a Main object, instantiating the Lesson class.
 				// We manually build a call to the constructor of this object, and fire it
 				// This creates such an object, which is in charge of creating the whole lesson (including exercises) from its constructor
 				lesson = (Lesson) Class.forName(lessonName + ".Main").newInstance();
-				
+
 				lessons.put(lessonName, lesson); // cache the newly created object
 			} catch (InstantiationException e) {
 				e.printStackTrace();
@@ -351,7 +377,7 @@ public class Game implements IWorldView {
 			e.printStackTrace();
 		}
 		setCurrentLesson(lesson);
-		
+
 		this.setState(GameState.LOADING_DONE);
 
 		return lesson;
@@ -366,37 +392,37 @@ public class Game implements IWorldView {
 	 * @throws LessonLoadingException if the JAR file is inexistent or invalid (or if the system classloader does not accept URLs)
 	 */
 	public void loadLessonFromJAR(File jar) throws LessonLoadingException {
-		
+
 		if (!jar.exists())
 			throw new LessonLoadingException("File "+jar.getName()+" does not exist");
-		
-		
+
+
 		// Check if the JAR has already been added. If not, load it in the classloader.
 		if (!usedJARs.contains(jar.getAbsolutePath())) {	
 			URLClassLoader sysloader = (URLClassLoader)ClassLoader.getSystemClassLoader();
 			Class<URLClassLoader> sysclass = URLClassLoader.class;
-			
+
 			URL urlOfJar;
 			try {
 				urlOfJar = jar.toURI().toURL();
 			} catch (IOException e1) {
 				throw new LessonLoadingException("Error while reading the jarfile "+jar.getName(),e1);
 			}
-	        
-	        try {
-	        	// Hell yeah. That method is usually private, but I can change it that easily.
-	        	// Some people even call this bullshit "security"...
-	        	
-	            Method method = sysclass.getDeclaredMethod("addURL",new Class[]{URL.class});
-	            method.setAccessible(true);
-	            method.invoke(sysloader,new Object[]{ urlOfJar });
-	        } catch (Throwable t) {
-	        	throw new LessonLoadingException("Internal Error: The system classloader refused to load the URL of this lesson file. You may want to change the JVM classloader from the command line.",t);
-	        }
-	        
-	        usedJARs.add(jar.getAbsolutePath());
+
+			try {
+				// Hell yeah. That method is usually private, but I can change it that easily.
+				// Some people even call this bullshit "security"...
+
+				Method method = sysclass.getDeclaredMethod("addURL",new Class[]{URL.class});
+				method.setAccessible(true);
+				method.invoke(sysloader,new Object[]{ urlOfJar });
+			} catch (Throwable t) {
+				throw new LessonLoadingException("Internal Error: The system classloader refused to load the URL of this lesson file. You may want to change the JVM classloader from the command line.",t);
+			}
+
+			usedJARs.add(jar.getAbsolutePath());
 		}
-        
+
 		// Load the JAR manifest file to retrieve the lesson's package name in it
 		Manifest manifest;
 		try {
@@ -404,16 +430,16 @@ public class Game implements IWorldView {
 		} catch (Exception e) {
 			throw new LessonLoadingException("Invalid lesson file (Manifest not found): "+jar.getName(), e);
 		}
-		
+
 		String lessonPackage = manifest.getMainAttributes().getValue("LessonPackage");
 		if (lessonPackage == null)
 			throw new LessonLoadingException("Invalid lesson file (Attribute 'LessonPackage' not found in Manifest): "+jar.getName());
-		
+
 		// We are ready to launch this lesson
 		Game.getInstance().switchLesson("lessons." + lessonPackage,false);
-    }//end method
+	}//end method
 
-	
+
 
 	public static void addInitThread(Thread t) {
 		initRunners.add(t);
@@ -437,11 +463,11 @@ public class Game implements IWorldView {
 	public void setCurrentLesson(Lesson lesson) {
 		try {
 			saveSession(); // don't loose user changes 
-			
+
 			this.currentLesson = lesson;
 			fireCurrentLessonChanged();
 			setCurrentExercise(this.currentLesson.getCurrentExercise());
-			
+
 		} catch (UserAbortException e) { 
 			System.out.println(i18n.tr("Operation cancelled by the user"));
 		}
@@ -481,7 +507,7 @@ public class Game implements IWorldView {
 								+ "Please consider contributing to this project by adapting this exercise to this language.",
 								lect.getName(),getProgrammingLanguage(),fallback.getLang()));
 				setProgramingLanguage(fallback);
-				
+
 			}
 			MainFrame.getInstance().currentExerciseHasChanged(lect); // make sure that the right language is selected -- yeah that's a ugly way of doing it
 
@@ -556,7 +582,7 @@ public class Game implements IWorldView {
 
 		if (runner != null)
 			runner.stopAll();
-		
+
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise)
 			for (World w : ((Exercise) lecture).getWorlds(WorldKind.ANSWER))
@@ -627,13 +653,13 @@ public class Game implements IWorldView {
 		try {
 			// FIXME: this method is not called when pressing APPLE+Q on OSX
 
-            // report user leave on the server
-            for(ProgressSpyListener spyListener: progressSpyListeners){
-                spyListener.leave();
-            }
-            // stop the heartbeat report to PLMServer
-            if(heartBeatSpy != null)
-                heartBeatSpy.die();
+			// report user leave on the server
+			for(ProgressSpyListener spyListener: progressSpyListeners){
+				spyListener.leave();
+			}
+			// stop the heartbeat report to PLMServer
+			if(heartBeatSpy != null)
+				heartBeatSpy.die();
 
 			saveSession();
 			storeProperties();
@@ -681,7 +707,7 @@ public class Game implements IWorldView {
 		sessionKit = null;
 		System.out.println("Disabling the session kit on disk.");
 	}
-	
+
 	public static void loadProperties() {
 		InputStream is = null;
 		try {
@@ -778,20 +804,20 @@ public class Game implements IWorldView {
 		}
 	}
 
-    protected void fireCurrentExerciseChanged(Lecture lect) {
+	protected void fireCurrentExerciseChanged(Lecture lect) {
 		if (stepModeEnabled())
 			disableStepMode();
 
-        for (GameListener v : this.listeners) {
-            v.currentExerciseHasChanged(lect);
-        }
+		for (GameListener v : this.listeners) {
+			v.currentExerciseHasChanged(lect);
+		}
 
-        if(lect instanceof Exercise){
-            for(ProgressSpyListener p: this.progressSpyListeners){
-                p.switched((Exercise)lect);
-            }
-        }
-    }
+		if(lect instanceof Exercise){
+			for(ProgressSpyListener p: this.progressSpyListeners){
+				p.switched((Exercise)lect);
+			}
+		}
+	}
 
 	protected void fireSelectedWorldHasChanged(World w) {
 		for (GameListener v : this.listeners) {
@@ -890,7 +916,7 @@ public class Game implements IWorldView {
 				sb.append(", ");
 			sb.append(s);
 		}
-		
+
 		String msg = first ? "" : sb.toString(); // remove everything if no argument at all 
 		for (StatusStateListener l : this.statusStateListeners) 
 			l.stateChanged(msg);
@@ -940,9 +966,14 @@ public class Game implements IWorldView {
 						i18n.tr("Python is missing"), JOptionPane.ERROR_MESSAGE); 
 				return;
 			}
+			if (newLanguage.equals(Game.C) && !canC) {
+				JOptionPane.showMessageDialog(null, i18n.tr("Please install C and its dependencies to use the C programming language in PLM.\n\n")+CError,
+						i18n.tr("C is missing"), JOptionPane.ERROR_MESSAGE); 
+				return;
+			}
 			this.programmingLanguage = newLanguage;
 			fireProgLangChange(newLanguage);
-			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA)) // Only save it if it's stable enough
+			if (newLanguage.equals(Game.JAVA) || newLanguage.equals(Game.PYTHON) || newLanguage.equals(Game.SCALA) || newLanguage.equals(Game.C)) // Only save it if it's stable enough
 				setProperty(PROP_PROGRAMING_LANGUAGE, newLanguage.lang);
 			return;
 		}
@@ -988,7 +1019,7 @@ public class Game implements IWorldView {
 	public void removeHumanLangListener(HumanLangChangesListener l) {
 		this.humanLangListeners.remove(l);
 	}
-	
+
 	private boolean doDebug = false;
 	public void switchDebug() {
 		doDebug = !doDebug;
@@ -1001,18 +1032,18 @@ public class Game implements IWorldView {
 			System.out.println("Java version: "+System.getProperty("java.version")+" (VM: "+ System.getProperty("java.vm.name")+" "+ System.getProperty("java.vm.version")+")");
 			System.out.println("System: " +System.getProperty("os.name")+" (version: "+System.getProperty("os.version")+"; arch: "+ System.getProperty("os.arch")+")");
 			for (ScriptEngineFactory sef : new ScriptEngineManager().getEngineFactories()) {
-				  System.out.println(sef);
-				  System.out.append("  Engine: ")
-				      .append(sef.getEngineName())
-				      .append(" ")
-				      .println(sef.getEngineVersion());
-				  System.out.append("  Language: ")
-				      .append(sef.getLanguageName())
-				      .append(" ")
-				      .println(sef.getLanguageVersion());
-				  System.out.append("  Names: ")
-				      .println(sef.getNames());
-				}
+				System.out.println(sef);
+				System.out.append("  Engine: ")
+				.append(sef.getEngineName())
+				.append(" ")
+				.println(sef.getEngineVersion());
+				System.out.append("  Language: ")
+				.append(sef.getLanguageName())
+				.append(" ")
+				.println(sef.getLanguageVersion());
+				System.out.append("  Names: ")
+				.println(sef.getNames());
+			}
 		}
 	}
 	public boolean isDebugEnabled() {
@@ -1028,35 +1059,35 @@ public class Game implements IWorldView {
 	}
 
 	/*
-     * Getter and Setter for the course ID for the current session.
-     * This ID will be used by the ServerSpy, to associate this
-     * PLM student with a course started by a teacher on the server
-     */
-    public String getCourseID() {
-    	if (this.currentCourse == null)
-    		return "";
-    	else
-    		return currentCourse.getCourseId();
-    }
+	 * Getter and Setter for the course ID for the current session.
+	 * This ID will be used by the ServerSpy, to associate this
+	 * PLM student with a course started by a teacher on the server
+	 */
+	public String getCourseID() {
+		if (this.currentCourse == null)
+			return "";
+		else
+			return currentCourse.getCourseId();
+	}
 
-    public String getCoursePassword(){
-        if(this.currentCourse == null)
-            return "";
-        else
-            return currentCourse.getPassword();
-    }
+	public String getCoursePassword(){
+		if(this.currentCourse == null)
+			return "";
+		else
+			return currentCourse.getPassword();
+	}
 
-    public void setCourseID(String courseID) {
-    	this.currentCourse.setCourseId(courseID);
-    }
+	public void setCourseID(String courseID) {
+		this.currentCourse.setCourseId(courseID);
+	}
 
-    public Course getCurrentCourse() {
-        return currentCourse;
-    }
+	public Course getCurrentCourse() {
+		return currentCourse;
+	}
 
-    public void setCurrentCourse(Course currentCourse) {
-        this.currentCourse = currentCourse;
-    }
+	public void setCurrentCourse(Course currentCourse) {
+		this.currentCourse = currentCourse;
+	}
 
 	public Users getUsers() {
 		return users;
@@ -1066,16 +1097,16 @@ public class Game implements IWorldView {
 		this.users = users;
 	}
 
-    public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
+	public HeartBeatSpy getHeartBeatSpy(){ return this.heartBeatSpy; }
 
-    public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
+	public void setHeartBeatSpy(HeartBeatSpy heartBeatSpy){ this.heartBeatSpy = heartBeatSpy; }
 
-    public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
+	public ArrayList<ProgressSpyListener> getProgressSpyListeners(){ return this.progressSpyListeners; }
 
-    /* Mechanism to find where to save our data */
-	
-    private static String HOME_DIR = System.getProperty("user.home");
-	
+	/* Mechanism to find where to save our data */
+
+	private static String HOME_DIR = System.getProperty("user.home");
+
 	/* These names are tested one after the other, searching for one that exist or that we can create */
 	static String[] rootDirNames = new String[] { 
 		HOME_DIR + File.separator + ".plm", /* preferred, default directory name */

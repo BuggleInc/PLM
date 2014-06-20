@@ -30,6 +30,7 @@ import plm.core.model.session.SourceFileRevertable;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
+import plm.universe.bugglequest.AbstractBuggle;
 
 
 public abstract class Exercise extends Lecture {
@@ -38,9 +39,9 @@ public abstract class Exercise extends Lecture {
 
 	protected String tabName = getClass().getSimpleName();/* Name of the tab in editor -- must be a valid java identifier */
 
-	
+
 	protected Map<ProgrammingLanguage, List<SourceFile>> sourceFiles= new HashMap<ProgrammingLanguage, List<SourceFile>>();
-	
+
 	public Map<String, Class<Object>> compiledClasses = new TreeMap<String, Class<Object>>(); /* list of entity classes defined in the lesson */
 
 	/* to make sure that the subsequent version of the same class have different names, in order to bypass the cache of the class loader */
@@ -54,29 +55,29 @@ public abstract class Exercise extends Lecture {
 	protected Map<String, String> runtimePatterns = new TreeMap<String, String>();
 
 	public ExecutionProgress lastResult;
-	
+
 	public I18n i18n = I18nFactory.getI18n(getClass(),"org.plm.i18n.Messages",Game.getInstance().getLocale(), I18nFactory.FALLBACK);
 
 	public Exercise(Lesson lesson,String basename) {
 		super(lesson,basename);
 	}
-	
-  /** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
-  protected static String prependScalaToLastComponent(String path) {
-    String[] components = path.split("\\.");
-    StringBuilder result = new StringBuilder();
-    int last = components.length - 1;
-    for (int i = 0; i < last; i++) {
-      result.append(components[i] + ".");
-    }
-    result.append("Scala" + components[last]);
-    return result.toString();
-  }
 
-  protected String nameOfCorrectionEntity(ProgrammingLanguage lang) {
-    String entityName = getClass().getCanonicalName() + "Entity";
-    return lang.equals(Game.SCALA) ? prependScalaToLastComponent(entityName) : entityName;
-  }
+	/** Converts {@code "foo.bar.baz"} to {@code "foo.bar.Scalabaz"}. */
+	protected static String prependScalaToLastComponent(String path) {
+		String[] components = path.split("\\.");
+		StringBuilder result = new StringBuilder();
+		int last = components.length - 1;
+		for (int i = 0; i < last; i++) {
+			result.append(components[i] + ".");
+		}
+		result.append("Scala" + components[last]);
+		return result.toString();
+	}
+
+	protected String nameOfCorrectionEntity(ProgrammingLanguage lang) {
+		String entityName = getClass().getCanonicalName() + "Entity";
+		return lang.equals(Game.SCALA) ? prependScalaToLastComponent(entityName) : entityName;
+	}
 
 	public void setupWorlds(World[] w) {
 		currentWorld = new Vector<World>(w.length);
@@ -88,16 +89,16 @@ public abstract class Exercise extends Lecture {
 			answerWorld. add( w[i].copy() );
 		}
 	}
-	
+
 	public abstract void run(List<Thread> runnerVect);	
 	public abstract void runDemo(List<Thread> runnerVect);	
-	
+
 	public void check() {
 		for (int i=0; i<currentWorld.size(); i++) {
 			currentWorld.get(i).notifyWorldUpdatesListeners();
-			
-			lastResult.totalTests++;
 
+			lastResult.totalTests++;
+			
 			if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
 				lastResult.details += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
@@ -151,10 +152,10 @@ public abstract class Exercise extends Lecture {
 			if (sourceFiles.get(Game.JAVA) != null)
 				for (SourceFile sf: sourceFiles.get(Game.JAVA)) 
 					sources.put(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile)); 
-			
+
 			if (sources.isEmpty()) 
 				return;
-			
+
 			try {
 				DiagnosticCollector<JavaFileObject> errs = new DiagnosticCollector<JavaFileObject>();			
 				compiledClasses = compiler.compile(sources, errs);
@@ -182,7 +183,7 @@ public abstract class Exercise extends Lecture {
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
 				throw e;
 			}
-				
+
 			try {
 				CompilerScala.getInstance().reset();
 				for (SourceFile sf : sfs) 
@@ -191,12 +192,27 @@ public abstract class Exercise extends Lecture {
 				System.err.println(Game.i18n.tr("Compilation error:"));
 				System.err.println(e.getMessage());
 				lastResult = ExecutionProgress.newCompilationError(e.getMessage());
-				
+
 				throw e;
 			}
-		} 
+		}else if(Game.getProgrammingLanguage().equals(Game.C)){
+			List<SourceFile> sfs = sourceFiles.get(Game.C);
+			if (sfs == null || sfs.isEmpty()) {
+				String msg = getName()+": No source to compile";
+				System.err.println(msg);
+				PLMCompilerException e = new PLMCompilerException(msg, null, null);
+				lastResult = ExecutionProgress.newCompilationError(e.getMessage());				
+				throw e;
+			}
+
+			for (SourceFile sf : sfs){
+				//TODO GIANNINI recuperer le body et faire des trucs avec pour la compilation
+				System.out.println(sf.getBody());
+			}
+
+		}
 	}
-	
+
 	private String packageName(){
 		return packageNamePrefix + packageNameSuffix;
 	}
@@ -252,15 +268,20 @@ public abstract class Exercise extends Lecture {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			for (Entity old : current.getEntities()) {
 				/* This is never called with lightbot entities, no need to deal with it here */
-				if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA)) {
+				if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA)/* || lang.equals(Game.C)*/) {
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
-						if (lang.equals(Game.JAVA))
+						if (lang.equals(Game.JAVA)){
 							ent = (Entity) compiledClasses.get(className(newClassName)).newInstance();
-						else
+						}else if(lang.equals(Game.SCALA)){
 							ent = (Entity)CompilerScala.getInstance().findClass(className(newClassName)).newInstance();
-							
+						}else if(lang.equals(Game.C)){
+							//TODO GIANNINI Faire quelque chose ici pour l'entite
+							ent=null;
+						}else{
+							ent=null;
+						}
 					} catch (InstantiationException e) {
 						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
 					} catch (IllegalAccessException e) {
@@ -278,11 +299,11 @@ public abstract class Exercise extends Lecture {
 					ent.initDone();
 					/* Add new entity to the to be returned entities set */
 					newEntities.add(ent);
-				} else { 
+				} else {
 					/* In scripting, we don't need to actually mutate the entity, just set the script to be interpreted later.
 					 * Also, since the classloader don't cross our way, don't mess with package names to force reloads. In other words, don't use className() in here!! 
 					 */	
-					
+
 					if (whatToMutate == StudentOrCorrection.STUDENT) {
 						boolean foundScript = false;
 
@@ -318,11 +339,11 @@ public abstract class Exercise extends Lecture {
 					}
 				}
 			}
-			if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA)) 
+			if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA) /*|| lang.equals(Game.C)*/) 
 				current.setEntities(newEntities);
 		}
 	}
-			
+
 	public Vector<World> getWorlds(WorldKind kind) {
 		switch (kind) {
 		case INITIAL: return initialWorld;
@@ -331,18 +352,18 @@ public abstract class Exercise extends Lecture {
 		default: throw new RuntimeException("Unhandled kind of world: "+kind);
 		}
 	}
-	
+
 	public int getWorldCount() {
 		return this.initialWorld.size();
 	}
-	
+
 	/** Returns the current world number index 
 	 * @see #getAnswerOfWorld(int)
 	 */
 	public World getWorld(int index) {// FIXME: rename to getCurrentWorld or KILLME
 		return this.currentWorld.get(index);
 	}
-	
+
 	public int indexOfWorld(World w) {
 		int index = 0;
 		do {
@@ -350,14 +371,14 @@ public abstract class Exercise extends Lecture {
 				return index;
 			index++;
 		} while (index < this.currentWorld.size());
-		
+
 		throw new RuntimeException("World not found (please report this bug)");
 	}
-	
+
 	public World getAnswerOfWorld(int index) { // FIXME: rename or KILLME
 		return this.answerWorld.get(index);
 	}
-	
+
 	public String toString() {
 		return getName();
 	}

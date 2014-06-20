@@ -10,6 +10,12 @@ import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 
 
 public abstract class SimpleBuggle extends AbstractBuggle  {
+	
+	/*@Override
+	public void command(String command){
+		super.command(command);
+	}*/
+	
 	@Override
 	public void forward()  {
 		try { 
