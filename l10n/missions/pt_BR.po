@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-06-15 20:22-0300\n"
+"PO-Revision-Date: 2014-06-19 22:13-0300\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -29,9 +29,9 @@ msgid ""
 "little explanation of the components in case you fail to understand "
 "something. The main window is made of 5 main components:"
 msgstr ""
-"O ambiente de trabalho do PLM é auto-explicativo, principalmente com\n"
-"as dicas que aparecem quando o mouse passa sobre elementos. Aqui está\n"
-"uma breve explicação dos componentes caso você não entenda algo. A\n"
+"O ambiente de trabalho do PLM é auto-explicativo, principalmente com "
+"as dicas que aparecem quando o mouse passa sobre elementos. Aqui está "
+"uma breve explicação dos componentes caso você não entenda algo. A "
 "janela principal é composta de 5 componentes principais:"
 
 #. type: Content of: <ul><li>
@@ -41,8 +41,8 @@ msgid ""
 "advanced commands such as exiting the program, and some other that we will "
 "detail later."
 msgstr ""
-"<b>O menu:</b> Colocado na parte de cima da janela, ele dá a você\n"
-"acesso a alguns comandos avançados, como sair do programa, e alguns\n"
+"<b>O menu:</b> Colocado na parte de cima da janela, ele dá a você "
+"acesso a alguns comandos avançados, como sair do programa, e alguns "
 "outros que falaremos mais tarde."
 
 #. type: Content of: <ul><li>
@@ -51,7 +51,7 @@ msgid ""
 "<b>The tool bar:</b> Placed just below the menu, it gives you access to the "
 "four main commands:"
 msgstr ""
-"<b>A barra de ferramentas:</b> Colocada logo abaixo do menu, ela te dá\n"
+"<b>A barra de ferramentas:</b> Colocada logo abaixo do menu, ela te dá "
 "acesso aos quatro comandos principais:"
 
 #. type: Content of: <ul><li><ul><li>
@@ -63,10 +63,10 @@ msgid ""
 "exercise or not. If yes, you gain access to the next exercise using the "
 "<b>Exercise</b> menu. If not, you need to rework your code."
 msgstr ""
-"O botão <b>início</b>, que começa a compilação e a execução do código\n"
-"que você digitou no editor. No final da execução, ele verifica se você\n"
-"alcançou uma situação que constitui o objetivo do exercício ou não. Se\n"
-"sim, você ganha acesso ao próximo exercício usando o menu\n"
+"O botão <b>início</b>, que começa a compilação e a execução do código "
+"que você digitou no editor. No final da execução, ele verifica se você "
+"alcançou uma situação que constitui o objetivo do exercício ou não. Se "
+"sim, você ganha acesso ao próximo exercício usando o menu "
 "<b>Exercício</b>. Se não, você vai precisar refazer seu código."
 
 #. type: Content of: <ul><li><ul><li>
@@ -75,7 +75,7 @@ msgid ""
 "The <b>Stop</b> button allows you to interupt the execution of your code, "
 "what may reveal useful if you encounter an <i>infinite loop</i>."
 msgstr ""
-"O botão <b>Parar</b> sempre serve para interromper a execução de seu\n"
+"O botão <b>Parar</b> sempre serve para interromper a execução de seu "
 "código, o que pode ser útil se você entrar num <i>loop infinito</i>."
 
 #. type: Content of: <ul><li><ul><li>
@@ -84,7 +84,7 @@ msgid ""
 "The <b>Reset</b> button can be used to reset the world into its initial "
 "state."
 msgstr ""
-"O botão <b>Reset</b> pode ser usado para reconfigurar o mundo para o\n"
+"O botão <b>Reset</b> pode ser usado para reconfigurar o mundo para o "
 "estado inicial."
 
 #. type: Content of: <ul><li><ul><li>
@@ -94,8 +94,8 @@ msgid ""
 "During its execution, you may want to swich the seen world to see the "
 "different expected solutions."
 msgstr ""
-"O botão <b>Demo</b> mostra a execução da solução esperada. Durante sua\n"
-"execução, você pode alternar o mundo visto para ver as diferentes\n"
+"O botão <b>Demo</b> mostra a execução da solução esperada. Durante sua "
+"execução, você pode alternar o mundo visto para ver as diferentes "
 "soluções esperadas."
 
 #. type: Content of: <ul><li><ul><li>
@@ -107,13 +107,18 @@ msgid ""
 "process shown by the demo, as long as your final solution matches the "
 "exercise expectations."
 msgstr ""
+"Note que às vezes existem várias maneiras de alcançar a solução "
+"esperada, e que aquela apresentada durante a demonstração não é mais "
+"ou menos certa que as outras. Você é completamente livre para não "
+"seguir estritamente o processo mostrado pela demonstração, desde que "
+"sua solução final atinja o que exercício pede."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:40
 msgid ""
 "The scrolling menu <b>Lessoon</b> allows you to choose the lesson you want "
 "to work on."
-msgstr ""
+msgstr "O menu rolante <b>Lição</b> serve para você escolher a lição na qual quer trabalhar."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:43
@@ -121,7 +126,7 @@ msgid ""
 "The scrolling menu <b>Exercise</b> allows you to switch to another exercise "
 "when you want. Some lessons require you to finish an exercise before "
 "starting the previous one."
-msgstr ""
+msgstr "O menu rolante <b>Exercício</b> serve para alternar para outro exercício se você quiser. Algumas lições exigem que você termine um exercício antes de iniciar outro."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:49
@@ -133,21 +138,21 @@ msgid ""
 "need to write your code in the other tabs. For example, you can now clic on "
 "the <b>Source Code</b> tab to see the actual source. It is empty because "
 "there is no code to write for this introduction exercise."
-msgstr ""
+msgstr "<b>Abas de missão e editor:</b> é onde você está lendo este texto. Esta área contém várias abas as quais você pode acessar clicando seu nome no canto superior esquerdo. A primeira aba (que sempre se chama <b>Missão</b>) contém uma apresentação do exercício atual. Para resolver um exercício, você precisa escrever seu código nas outras abas. Por exemplo, você pode agora clicar na aba <b>Código Fonte</b> para ver o código atual. Vai estar vazia por que não existe código para escrever neste exercício introdutório."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:57
 msgid ""
 "<b>The console:</b> Placed under the tabs, this is where any messages of the "
 "application will appear. This area is initially empty and white."
-msgstr ""
+msgstr "<b>O console:</b> localizado abaixo das abas, é onde aparece qualquer mensagem da aplicação. Esta área inicialmente é vazia e branca."
 
 #. type: Content of: <ul><li>
 #: lib/doc/MainWindow.html:60
 msgid ""
 "<b>World view</b> Placed on the right of the tabs, it is constituted of five "
 "elements:"
-msgstr ""
+msgstr "<b>Visão do mundo</b> localizada à direita das abas, é constituída de cinco elementos:"
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:65
@@ -156,6 +161,10 @@ msgid ""
 "may be executed in several worlds to test it in differing conditions. This "
 "menu allows you to choose the world you want to see."
 msgstr ""
+"Um menu rolante serve para escolher o mundo. Na verdade, o programa "
+"que você escreveu pode ser executado em vários mundos para testar ele "
+"em diferentes condições. Este menu é para você escolher o mundo que "
+"você quer ver."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:69
@@ -165,6 +174,10 @@ msgid ""
 "the buggles must wait after each action to allow you to see what they are "
 "doing."
 msgstr ""
+"Um \"slider\" colocado \"underneath\" serve para escolher a velocidade da "
+"animação do mundo. Mais precisamente, permite escolher o atraso (em "
+"milisegundos) que os \"buggles\" devem esperar depois de cada ação para "
+"permitir que você veja o que eles estão fazendo."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:74
@@ -174,6 +187,10 @@ msgid ""
 "several cells of the world, as well as several <i>buggles</i> awaiting for "
 "your orders."
 msgstr ""
+"Uma aba <b>Mundo</b> representa a visão de mundo atualmente "
+"selecionada (de menu rolante). Esta visão é então constituída de uma "
+"grade formando várias células do mundo, assim como vários "
+"\"<i>buggles</i>\" esperando suas ordens."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:79
@@ -181,35 +198,44 @@ msgid ""
 "An <b>Objective</b> tab displaying the world as it must be by the end of the "
 "exercise."
 msgstr ""
+"Uma aba <b>Objetivo</b> mostrando o mundo como deveria ser no final do "
+"exercício."
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:83
+#, fuzzy
 msgid ""
 "<b>The interactive controls</b>. Placed under the world view, these buttons "
 "allows you to interactively control the buggles. This way, you can try to "
 "<i>manually</i> bring your buggle to the scenario objective before writting "
 "the needed code in the editor."
 msgstr ""
+"<b>Os controles interativos</b>. Localizados abaixo da Visão do mundo, "
+"estes botões servem para controlar interativamente os \"buggles\". Desta "
+"forma, você pode tentar trazer <i>manualmente</i> seu \"buggle\" para o "
+"objetivo do cenário antes de escrever o código necessário no editor."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:89
 msgid "A scrolling menu allows to select the buggle you want to control."
-msgstr ""
+msgstr "Um menu rolante serve para selecionar o \"buggle\" que você quer controlar."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:91
 msgid "The <b>Forward</b> button let your buggle do one step forward."
-msgstr ""
+msgstr "O botão <b>Avançar</b> faz seu \"buggle\" dar um passo à frente."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:93
 msgid "The <b>Backward</b> button let it do one step backward."
-msgstr ""
+msgstr "O botão <b>Voltar</b> faz ele dar um passo para trás."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:95
 msgid "The <b>Turn left</b> button ask your buggle to turn of 90° to its left."
 msgstr ""
+"O botão <b>Virar à esquerda</b> manda seu \"buggle\" virar 90° à "
+"esquerda."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:97
@@ -217,6 +243,8 @@ msgid ""
 "The <b>Turn right</b> button asks the buggle to turn to the right (isn't "
 "this amazing?)."
 msgstr ""
+"O botão <b>Virar à direita</b> manda seu o \"buggle\" virar à direita "
+"(surpreendente, né?)."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:100
@@ -224,11 +252,13 @@ msgid ""
 "The <b>Mark</b> button requests your buggle to leave a mark behind it when "
 "it goes."
 msgstr ""
+"O botão <b>Marcar</b> pede que o seu \"buggle\" deixe uma marca atrás "
+"dele depois que sair."
 
 #. type: Content of: <h1>
 #: src/plm/universe/sort/SortingWorld.html:2
 msgid "Sorting World"
-msgstr ""
+msgstr "Mundo da ordenação"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/sort/SortingWorld.html:3
@@ -239,6 +269,12 @@ msgid ""
 "mode of each exercise to observe the behavior of sorting algorithms. It "
 "helps understanding the differences between each of them."
 msgstr ""
+"Este mundo fornece ferramentas para experimentar com algoritmos de "
+"ordenação. Ele pode ser usado de duas formas diferentes: a primeira é "
+"naturalmente para escrever os algoritmos de ordenação necessários. Mas "
+"também é possível simplesmente usar o modo de demonstração de cada "
+"exercício para observar o comportamento de algoritmos de "
+"ordenação. Isto ajuda a entender as diferenças entre cada um deles."
 
 #. type: Content of: <h2>
 #: src/plm/universe/sort/SortingWorld.html:9
@@ -471,7 +507,7 @@ msgstr ""
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:16
 msgid "Moves forward or backward of the requested amount of steps."
-msgstr ""
+msgstr "Move para frente e para trás na quantidade de passos pedidos."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:18
@@ -848,7 +884,7 @@ msgstr ""
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "<b>Turn left"
-msgstr ""
+msgstr "<b>Virar à esquerda"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
@@ -988,12 +1024,12 @@ msgstr ""
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:28
 msgid "<b>Look for a wall forward"
-msgstr ""
+msgstr "<b>Procura por uma parede à frente"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:28
 msgid "Look for a wall backward</b>"
-msgstr ""
+msgstr "Procura por uma parede atrás</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:29
@@ -1810,6 +1846,7 @@ msgstr ""
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:15
+#, fuzzy
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
@@ -1819,7 +1856,7 @@ msgid ""
 "<i>Objective</i> one.  Depending on the lessons (and your settings in the "
 "Language menu), your code must be written in either Java, Python or Scala "
 "(depending on the exercise)."
-msgstr ""
+msgstr "Os \"buggles\" são pequenos animais que obedecem a qualquer ordem que você dá a eles. Em cada exercício, você tem que fornecer a eles as instruções corretas para que o mundo se torne o objetivo do exercício. For example in this exercise, you show instruct your buggle to move forward once. You can see that by checking the difference between the <i>World</i> view and the <i>Objective</i> one.  Depending on the lessons (and your settings in the Language menu), your code must be written in either Java, Python or Scala (depending on the exercise)."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:23
@@ -9157,7 +9194,7 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:11
 msgid "<b>Turn left</b>."
-msgstr ""
+msgstr "<b>Virar à esquerda</b>."
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/lightbot/universe/LightBotWorld.html:12
