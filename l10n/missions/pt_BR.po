@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-06-19 22:13-0300\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2014-06-20 10:45-0300\n"
+"Last-Translator: Fred Maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -279,45 +279,45 @@ msgstr ""
 #. type: Content of: <h2>
 #: src/plm/universe/sort/SortingWorld.html:9
 msgid "Methods available to sorting algorithms"
-msgstr ""
+msgstr "Métodos disponíveis para algoritmos de ordenação"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:11
 msgid "<b>Method</b>"
-msgstr ""
+msgstr "<b>Método</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:11
 msgid "<b>Action</b>"
-msgstr ""
+msgstr "<b>Ação</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:11
 msgid "<b>Cost</b>"
-msgstr ""
+msgstr "<b>Custo</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:12
 msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
-msgstr ""
+msgstr "[!java]int [/!]getQuantidadeValores() [!scala]:Int[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:13
 msgid "Returns the amount of values in the array"
-msgstr ""
+msgstr "Retorna a quantidade de valores na array"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:13
 #: src/plm/universe/sort/SortingWorld.html:31
 msgid "none"
-msgstr ""
+msgstr "nenhum"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:15
 msgid ""
 "[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int "
 "[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]menor([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:16
@@ -325,18 +325,20 @@ msgid ""
 "Returns true if the content of cell i is strictly smaller than the one of "
 "cell j"
 msgstr ""
+"Retorna verdadeiro se o conteúdo da célula i é estritamente menor que\n"
+"o da célula j"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:16
 msgid "two reads"
-msgstr ""
+msgstr "duas leituras"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:17
 msgid ""
 "[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], [!"
 "java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]valor[!scala]:Int[/!])[!scala] :Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:18
@@ -344,78 +346,81 @@ msgid ""
 "Returns true if the content of cell i is strictly smaller than the "
 "<code>value</code>"
 msgstr ""
+"Retorna verdadeiro se o conteúdo da célula i é estritamente menor que\n"
+"<code>valor</code>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:18
 #: src/plm/universe/sort/SortingWorld.html:26
 msgid "one read"
-msgstr ""
+msgstr "uma leitura"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:20
 msgid ""
 "[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!"
 "scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int [/!]j[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:21
 msgid "Swaps the content of cell i and the one of cell j"
-msgstr ""
+msgstr "Alterna (\"swap\") o conteúdo da célula i com o da célula j"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:21
 msgid "two reads, two writes"
-msgstr ""
+msgstr "duas leituras, duas escritas"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:22
 msgid ""
 "[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int [/!]to[!"
 "scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int [/!]to[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:23
 msgid "Copy the content of cell 'from' into the cell 'to'"
-msgstr ""
+msgstr "Copia o conteúdo da célula 'de' na célula 'para'"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:23
 msgid "one read, one write"
-msgstr ""
+msgstr "uma leitura, uma escrita"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:25
 msgid "[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]int [/!]getValor([!java]int [/!]idx[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:26
 msgid "Returns the value of cell idx"
-msgstr ""
+msgstr "Retorna o valor da célula idx"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:27
 msgid ""
 "[!java]void [/!]setValue([!java]int [/!]idx[!scala]:Int[/!], [!java]int "
 "[/!]value[!scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]setValor([!java]int [/!]idx[!scala]:Int[/!], [!java]int [/!]valor[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:28
+#, fuzzy
 msgid "Sets cell 'idx' to the <code>value</code>"
-msgstr ""
+msgstr "Coloca na célula 'idx' o <code>valor</code>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:28
 msgid "one write"
-msgstr ""
+msgstr "uma escrita"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/sort/SortingWorld.html:30
 msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]selecionado() [!scala]:Boolean[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/sort/SortingWorld.html:31
@@ -424,11 +429,13 @@ msgstr ""
 msgid ""
 "Returns whether the current world is selected in the graphical interface."
 msgstr ""
+"Retorna verdadeiro se o mundo atual está selecionado na interface\n"
+"gráfica."
 
 #. type: Content of: <h2>
 #: src/plm/universe/sort/SortingWorld.html:35
 msgid "History view"
-msgstr ""
+msgstr "Visão do histórico"
 
 #. type: Content of: <p>
 #: src/plm/universe/sort/SortingWorld.html:36
