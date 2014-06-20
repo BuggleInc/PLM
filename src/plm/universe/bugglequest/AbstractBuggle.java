@@ -25,7 +25,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	Color bodyColor = Color.red;
 	Color brushColor = Color.red;
-	
+
 
 	private int x = 0;
 	private int y = 0;
@@ -79,158 +79,7 @@ public abstract class AbstractBuggle extends Entity {
 		this.direction = other.direction;
 	}
 
-	@Override
-	public void command(String command, BufferedWriter out){
-		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		int nb,nb2;
-		String str;
-		try {
-			switch(num){
-			case 110:
-				left();
-				break;
-			case 111:
-				right();
-				break;
-			case 112:
-				back();
-				break;
-			case 113 : 
-				nb = Integer.parseInt((command.split(" ")[1]));
-				forward(nb);
-				break;
-			case 114:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				backward(nb);
-				break;
-			case 115:
-				out.write(this.x);
-				out.write("\n");
-				break;
-			case 116:
-				out.write(this.y);
-				out.write("\n");
-				break;
-			case 117:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				setX(nb);
-				break;
-			case 118:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				setY(nb);
-				break;
-			case 119:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				nb2 = Integer.parseInt((command.split(" ")[2]));
-				setPos(nb, nb2);
-				break;
-			case 120:
-				out.write(ColorMapper.color2name(getBodyColor()));
-				out.write("\n");
-				break;
-			case 121:
-				str = (command.split(" ")[1]);
-				setBodyColor(ColorMapper.name2color(str));
-				break;
-			case 122:
-				out.write((isFacingWall()?"1":"0"));
-				out.write("\n");
-				break;
-			case 123:
-				out.write((isBackingWall()?"1":"0"));
-				out.write("\n");
-				break;	
-			case 124:
-				out.write(getDirection()+"");
-				out.write("\n");
-				break;
-			case 125:
-				nb = Integer.parseInt((command.split(" ")[1]));
-				Direction d=null;
-				switch(nb){
-				case Direction.NORTH_VALUE:
-					d=Direction.NORTH;
-					break;
-				case Direction.EAST_VALUE:
-					d=Direction.EAST;
-					break;
-				case Direction.SOUTH_VALUE:
-					d=Direction.SOUTH;
-					break;
-				case Direction.WEST_VALUE:
-					d=Direction.WEST;
-					break;
-				}
-				setDirection(d);
-				break;
-			case 126:
-				out.write((isSelected()?"1":"0"));
-				out.write("\n");
-				break;
-			case 127:
-				brushUp();
-				break;
-			case 128:
-				brushDown();
-				break;
-			case 129:
-				out.write((isBrushDown()?"1":"0"));
-				out.write("\n");
-				break;
-			case 130:
-				str = (command.split(" ")[1]);
-				setBrushColor(ColorMapper.name2color(str));
-				break;
-			case 131:
-				out.write(ColorMapper.color2name(getCouleurBrosse()));
-				out.write("\n");
-				break;
-			case 132:
-				out.write(ColorMapper.color2name(getGroundColor()));
-				out.write("\n");
-				break;
-			case 133:
-				out.write((isOverBaggle()?"1":"0"));
-				out.write("\n");
-				break;
-			case 134:
-				out.write((isCarryingBaggle()?"1":"0"));
-				out.write("\n");
-				break;
-			case 135:
-				pickupBaggle();
-				break;
-			case 136:
-				dropBaggle();
-				break;
-			case 137:
-				out.write((isOverMessage()?"1":"0"));
-				out.write("\n");
-				break;
-			case 138:
-				String mess = (command.split(" ")[1]);
-				writeMessage(mess);
-				break;
-			case 139:
-				out.write(readMessage());
-				out.write("\n");
-				break;
-			case 140:
-				clearMessage();
-				break;
-			default:
-				System.out.println("COMMANDE INCONNUE : "+command);
-				break;
-			
-			}
-			out.flush();
-		} catch (IOException ioe) {
-			ioe.printStackTrace();
-		}catch (InvalidColorNameException ine) {
-			ine.printStackTrace();
-		}
-		
-	}
+
 
 	public boolean isBrushDown() {
 		return brushDown;
@@ -635,5 +484,159 @@ public abstract class AbstractBuggle extends Entity {
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
 	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
 	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+
+
+	@Override
+	public void command(String command, BufferedWriter out){
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		int nb,nb2;
+		String str;
+		try {
+			switch(num){
+			case 110:
+				left();
+				break;
+			case 111:
+				right();
+				break;
+			case 112:
+				back();
+				break;
+			case 113 : 
+				nb = Integer.parseInt((command.split(" ")[1]));
+				forward(nb);
+				break;
+			case 114:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				backward(nb);
+				break;
+			case 115:
+				out.write(getX());
+				out.write("\n");
+				break;
+			case 116:
+				out.write(getY());
+				out.write("\n");
+				break;
+			case 117:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setX(nb);
+				break;
+			case 118:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setY(nb);
+				break;
+			case 119:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				nb2 = Integer.parseInt((command.split(" ")[2]));
+				setPos(nb, nb2);
+				break;
+			case 120:
+				out.write(ColorMapper.color2name(getBodyColor()));
+				out.write("\n");
+				break;
+			case 121:
+				str = (command.split(" ")[1]);
+				setBodyColor(ColorMapper.name2color(str));
+				break;
+			case 122:
+				out.write((isFacingWall()?"1":"0"));
+				out.write("\n");
+				break;
+			case 123:
+				out.write((isBackingWall()?"1":"0"));
+				out.write("\n");
+				break;	
+			case 124:
+				out.write(getDirection()+"");
+				out.write("\n");
+				break;
+			case 125:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				Direction d=null;
+				switch(nb){
+				case Direction.NORTH_VALUE:
+					d=Direction.NORTH;
+					break;
+				case Direction.EAST_VALUE:
+					d=Direction.EAST;
+					break;
+				case Direction.SOUTH_VALUE:
+					d=Direction.SOUTH;
+					break;
+				case Direction.WEST_VALUE:
+					d=Direction.WEST;
+					break;
+				}
+				setDirection(d);
+				break;
+			case 126:
+				out.write((isSelected()?"1":"0"));
+				out.write("\n");
+				break;
+			case 127:
+				brushUp();
+				break;
+			case 128:
+				brushDown();
+				break;
+			case 129:
+				out.write((isBrushDown()?"1":"0"));
+				out.write("\n");
+				break;
+			case 130:
+				str = (command.split(" ")[1]);
+				setBrushColor(ColorMapper.name2color(str));
+				break;
+			case 131:
+				out.write(ColorMapper.color2name(getCouleurBrosse()));
+				out.write("\n");
+				break;
+			case 132:
+				out.write(ColorMapper.color2name(getGroundColor()));
+				out.write("\n");
+				break;
+			case 133:
+				out.write((isOverBaggle()?"1":"0"));
+				out.write("\n");
+				break;
+			case 134:
+				out.write((isCarryingBaggle()?"1":"0"));
+				out.write("\n");
+				break;
+			case 135:
+				pickupBaggle();
+				break;
+			case 136:
+				dropBaggle();
+				break;
+			case 137:
+				out.write((isOverMessage()?"1":"0"));
+				out.write("\n");
+				break;
+			case 138:
+				String mess = (command.split(" ")[1]);
+				writeMessage(mess);
+				break;
+			case 139:
+				out.write(readMessage());
+				out.write("\n");
+				break;
+			case 140:
+				clearMessage();
+				break;
+			default:
+				System.out.println("COMMANDE INCONNUE : "+command);
+				break;
+
+			}
+			out.flush();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}catch (InvalidColorNameException ine) {
+			ine.printStackTrace();
+		}
+
+	}
 
 }

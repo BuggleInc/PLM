@@ -1,5 +1,7 @@
 package lessons.sort.baseball.universe;
 
+import java.io.BufferedWriter;
+
 import plm.universe.Entity;
 
 public class BaseballEntity extends Entity {
@@ -67,4 +69,9 @@ public class BaseballEntity extends Entity {
 	public void deplace(int base, int position) { move(base, position); }
 	
 	public boolean estSelectionne() { return isSelected(); }
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
+		
+	}
 }

@@ -1,5 +1,7 @@
 package plm.universe.sort;
 
+import java.io.BufferedWriter;
+
 import plm.universe.Entity;
 
 public class SortingEntity extends Entity {
@@ -57,4 +59,10 @@ public class SortingEntity extends Entity {
 
 	
 	public boolean estSelectionne() {return isSelected();}
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
+		
+	}
 }

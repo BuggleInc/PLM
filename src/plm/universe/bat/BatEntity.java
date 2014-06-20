@@ -1,5 +1,7 @@
 package plm.universe.bat;
 
+import java.io.BufferedWriter;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -84,6 +86,12 @@ public class BatEntity extends Entity {
 		} else {
 			throw new RuntimeException("BatWorld was not ported to "+pl.getLang()+" yet.");
 		}
+		
+	}
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
 		
 	}
 

@@ -1,6 +1,7 @@
 package lessons.lightbot.universe;
 
 import java.awt.Point;
+import java.io.BufferedWriter;
 
 import plm.core.model.Game;
 import plm.core.model.lesson.Exercise;
@@ -199,5 +200,12 @@ public class LightBotEntity extends Entity  {
 	@Override
 	public StackTraceElement[] getCurrentStack() {
 		return tracedStack;
+	}
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
+		//n'est surement pas utilisé ici
+		
 	}
 }

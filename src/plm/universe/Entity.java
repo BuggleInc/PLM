@@ -152,11 +152,13 @@ public abstract class Entity extends Observable {
 	 */
 	protected abstract void run() throws Exception;
 
-
-	//TODO GIANNINI changer en abstract pour gerer plusieurs langage
-	protected void command(String command, BufferedWriter out){
-
-	}
+	/*
+	 * GIANNINI
+	 * Cette methode permet aux sous Entity de pouvoir communiquer avec des programmes externes
+	 * Pour l'instant c'est fait avec le C (ou en train d'etre fait)
+	 * 
+	 */
+	protected abstract void command(String command, BufferedWriter out);
 
 	/** Make the entity run, according to the used universe and programming language.
 	 * 
