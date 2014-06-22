@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-06-17 14:59+0200\n"
-"PO-Revision-Date: 2014-06-20 13:27-0300\n"
+"PO-Revision-Date: 2014-06-22 09:51-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
 msgid "BuggleWorld"
-msgstr ""
+msgstr "BuggleWorld"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/bugglequest/BuggleWorld.html:3
@@ -29,21 +29,25 @@ msgid ""
 "possibilities of interaction with the world: taking or dropping objects, "
 "paint the ground, hit walls, etc."
 msgstr ""
+"Este mundo foi inventado por Lyn Turbak, na Wellesley College. Ele é\n"
+"cheio de Buggles, pequenos animais que entendem ordens simples, e\n"
+"oferece numerosas possiblidades de interação com o mundo: pegar e\n"
+"soltas objetos, pintar o chão, bater em paredes, etc."
 
 #. type: Content of: <h2>
 #: src/plm/universe/bugglequest/BuggleWorld.html:8
 msgid "Methods understood by buggles"
-msgstr ""
+msgstr "Métodos que os buggles entendem"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:10
 msgid "<b>Moving</b>"
-msgstr ""
+msgstr "<b>Se movendo</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:10
 msgid "(See also the note on exceptions, below)"
-msgstr ""
+msgstr "(Veja também a nota sobre exceções, abaixo)"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
@@ -55,43 +59,43 @@ msgstr "<b>Virar à esquerda"
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn right"
-msgstr ""
+msgstr "Virar à direita"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Turn back"
-msgstr ""
+msgstr "Dar meia volta"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving forward"
-msgstr ""
+msgstr "Mover para a frente"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:11
 #: src/lessons/turmites/universe/TurmiteWorld.html:10
 msgid "Moving back</b>"
-msgstr ""
+msgstr "Mover para trás</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:12
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java]void [/!]left()"
-msgstr ""
+msgstr "[!java]void [/!]esquerda()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:13
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java]void [/!]right()"
-msgstr ""
+msgstr "[!java]void [/!]direita()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:14
 #: src/lessons/turmites/universe/TurmiteWorld.html:11
 msgid "[!java]void [/!]back()"
-msgstr ""
+msgstr "[!java]void [/!]paraTrás()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:15
@@ -99,7 +103,7 @@ msgstr ""
 msgid ""
 "[!java]void [/!]forward() or [!java]void [/!]forward([!java]int [/!]steps[!"
 "scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]paraFrente() ou [!java]void [/!]paraFrente([!java]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:16
@@ -112,79 +116,79 @@ msgstr ""
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "<b>Get X coordinate"
-msgstr ""
+msgstr "<b>Obter coordenada X"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "Get Y coordinate"
-msgstr ""
+msgstr "Obter coordenada Y"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "Set X coordinate"
-msgstr ""
+msgstr "Ajustar coordenada X"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "Set Y coordinate"
-msgstr ""
+msgstr "Ajustar coordenada Y"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
 msgid "Set position</b>"
-msgstr ""
+msgstr "Ajustar posição</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:18
 msgid "[!java]int [/!]getX()[!scala]:Int[/!]"
-msgstr ""
+msgstr "[!java]int [/!]getX()[!scala]:Int[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:19
 msgid "[!java]int [/!]getY()[!scala]:Int[/!]"
-msgstr ""
+msgstr "[!java]int [/!]getY()[!scala]:Int[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:20
 msgid "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:21
 msgid "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:22
 msgid ""
 "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!"
 "scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int [/!]y[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:24
 msgid "<b>Information on the buggle</b>"
-msgstr ""
+msgstr "<b>Informações sobre o buggle</b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:25
 msgid "<b>Get the color of the body"
-msgstr ""
+msgstr "<b>Obter a cor do corpo"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:25
 msgid "Set the color of the body</b>"
-msgstr ""
+msgstr "Ajustar a cor do corpo</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:26
 msgid "[!java]Color [/!]getBodyColor()[!scala]:Color[/!]"
-msgstr ""
+msgstr "[!java]Color [/!]getBodyColor()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:27
 msgid "[!java]void [/!]setBodyColor([!java]Color [/!]c[!scala]:Color[/!])"
-msgstr ""
+msgstr "[!java]void [/!]setBodyColor([!java]Color [/!]c[!scala]:Color[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:28
@@ -199,32 +203,34 @@ msgstr "Procura por uma parede atrás</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:29
 msgid "[!java]boolean [/!]isFacingWall()[!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]estáOlhandoParaParede()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:30
 msgid "[!java]boolean [/!]isBackingWall()[!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:31
+#, fuzzy
 msgid "<b>Get heading"
-msgstr ""
+msgstr "<b>Get heading"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:31
+#, fuzzy
 msgid "Set heading</b>"
-msgstr ""
+msgstr "Set heading</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:31
 msgid "valid directions are:"
-msgstr ""
+msgstr "direções válidas são:"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
-msgstr ""
+msgstr "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:33
@@ -235,12 +241,12 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:34
 msgid "Direction.NORTH, Direction.EAST, Direction.SOUTH and Direction.WEST"
-msgstr ""
+msgstr "Direção.NORTE, Direção.LESTE, Direção.SUL e Diração.OESTE"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:35
 msgid "Check whether the buggle is currently <b>selected in the interface</b>"
-msgstr ""
+msgstr "Verifica se o buggle está atualmente <b>selecionado na interface</b>"
 
 #. type: Content of: <pre>
 #: src/plm/universe/bugglequest/BuggleWorld.html:36
@@ -252,53 +258,54 @@ msgstr ""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:38
+#, fuzzy
 msgid "<b>About the brush</b>"
-msgstr ""
+msgstr "<b>Sobre o pincel</b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "<b>Brush down"
-msgstr ""
+msgstr "<b>Abaixar o pincel"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "Brush up"
-msgstr ""
+msgstr "Levantar o pincel"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "Get brush position</b>"
-msgstr ""
+msgstr "Pegar a posição do pincel"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:40
 msgid "[!java]void [/!]brushUp()"
-msgstr ""
+msgstr "[!java]void [/!]levantarPincel()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:41
 msgid "[!java]void [/!]brushDown()"
-msgstr ""
+msgstr "[!java]void [/!]abaixarPincel()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:42
 msgid "[!java]boolean [/!]isBrushDown()[!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:43
 msgid "<b>Change the brush color"
-msgstr ""
+msgstr "<b>Muda a cor do pincel"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:43
 msgid "Get the color of the brush</b>"
-msgstr ""
+msgstr "Obtém a cor do pincel</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])"
-msgstr ""
+msgstr "[!java]void [/!]ajustaCorDoPincel([!java]Cor [/!]c[!scala]:Cor[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:45
@@ -308,13 +315,13 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:47
 msgid "<b>Interacting with the world</b>"
-msgstr ""
+msgstr "<b>Interagindo com o mundo</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:48
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "<b>Get the color of the ground</b>"
-msgstr ""
+msgstr "<b>Obtém a cor do chão</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:49
@@ -325,27 +332,27 @@ msgstr ""
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:51
 msgid "<b>Look for a baggle on the ground"
-msgstr ""
+msgstr "<b>Procura por um \"baggle\" no chão"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:51
 msgid "Look for a baggle in bag"
-msgstr ""
+msgstr "Procura por um \"baggle\" na bolsa"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:51
 msgid "Pickup a baggle"
-msgstr ""
+msgstr "Pega um \"baggle\""
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:51
 msgid "Drop a baggle</b>"
-msgstr ""
+msgstr "Solta um \"baggle\"</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:52
 msgid "(see the note on exceptions)"
-msgstr ""
+msgstr "(veja a nota sobre exceções)"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:53
@@ -400,27 +407,27 @@ msgstr ""
 #: src/plm/universe/turtles/TurtleWorld.html:92
 #: src/plm/universe/turtles/TurtleWorld.html:93
 msgid "&nbsp;"
-msgstr ""
+msgstr "&nbsp;"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "<b>Look for a message"
-msgstr ""
+msgstr "<b>Procura por uma mensagem"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "Add a message"
-msgstr ""
+msgstr "Adiciona uma mensagem"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "Read the message"
-msgstr ""
+msgstr "Lê a mensagem"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "Erase the message</b>"
-msgstr ""
+msgstr "Apaga a mensagem</b>"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
@@ -446,102 +453,102 @@ msgstr ""
 #: src/plm/universe/bugglequest/BuggleWorld.html:66
 #: src/plm/universe/turtles/TurtleWorld.html:78
 msgid "Valid colors"
-msgstr ""
+msgstr "Cores válidas"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:68
 #: src/plm/universe/turtles/TurtleWorld.html:80
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:68
 #: src/plm/universe/turtles/TurtleWorld.html:80
 msgid "Color"
-msgstr ""
+msgstr "Cor"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:69
 #: src/plm/universe/turtles/TurtleWorld.html:81
 msgid "Color.black"
-msgstr ""
+msgstr "Color.black"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:70
 #: src/plm/universe/turtles/TurtleWorld.html:82
 msgid "Color.blue"
-msgstr ""
+msgstr "Color.blue"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:71
 #: src/plm/universe/turtles/TurtleWorld.html:83
 msgid "Color.cyan"
-msgstr ""
+msgstr "Color.cyan"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:72
 #: src/plm/universe/turtles/TurtleWorld.html:84
 msgid "Color.darkGray"
-msgstr ""
+msgstr "Color.darkGray"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:73
 #: src/plm/universe/turtles/TurtleWorld.html:85
 msgid "Color.gray"
-msgstr ""
+msgstr "Color.gray"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:74
 #: src/plm/universe/turtles/TurtleWorld.html:86
 msgid "Color.green"
-msgstr ""
+msgstr "Color.green"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:75
 #: src/plm/universe/turtles/TurtleWorld.html:87
 msgid "Color.lightGray"
-msgstr ""
+msgstr "Color.lightGray"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:76
 #: src/plm/universe/turtles/TurtleWorld.html:88
 msgid "Color.magenta"
-msgstr ""
+msgstr "Color.magenta"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:77
 #: src/plm/universe/turtles/TurtleWorld.html:89
 msgid "Color.orange"
-msgstr ""
+msgstr "Color.orange"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:78
 #: src/plm/universe/turtles/TurtleWorld.html:90
 msgid "Color.pink"
-msgstr ""
+msgstr "Color.pink"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:79
 #: src/plm/universe/turtles/TurtleWorld.html:91
 msgid "Color.red"
-msgstr ""
+msgstr "Color.red"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:80
 #: src/plm/universe/turtles/TurtleWorld.html:92
 msgid "Color.white"
-msgstr ""
+msgstr "Color.white"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:81
 #: src/plm/universe/turtles/TurtleWorld.html:93
 msgid "Color.yellow"
-msgstr ""
+msgstr "Color.yellow"
 
 #. type: Content of: <h2>
 #: src/plm/universe/bugglequest/BuggleWorld.html:84
 msgid "Note on exceptions"
-msgstr ""
+msgstr "Nota sobre exceções"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/bugglequest/BuggleWorld.html:85
@@ -554,6 +561,14 @@ msgid ""
 "AlreadyHaveBaggleException exception.  Dropping a baggle when you have none "
 "throws a DontHaveBaggleException."
 msgstr ""
+"Buggles normais lançam uma exceção BuggleWallException se você pede\n"
+"para eles atravessarem uma parede.  Eles lançam uma exceção\n"
+"NoBaggleUnderBuggleException se você pede para eles pegarem um\n"
+"\"baggle\" de uma célula vazia, ou uma exceção\n"
+"AlreadyHaveBaggleException se eles já carregam um \"baggle\".  Tentar\n"
+"soltar um \"baggle\" numa célula que já contém outro lança uma exceção\n"
+"AlreadyHaveBaggleException.  Soltar um \"baggle\" quando você não tem\n"
+"nenhum lança uma DontHaveBaggleException."
 
 #. type: Content of: <p>
 #: src/plm/universe/bugglequest/BuggleWorld.html:92
@@ -561,6 +576,9 @@ msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
 msgstr ""
+"SimpleBuggles (ie, aqueles usados nos primeiros exercícios) exibem uma\n"
+"mensagem de erro num problema de forma que você não precise saber o\n"
+"que é uma exceção."
 
 #. type: Content of: <h1>
 #: src/plm/universe/bat/BatWorld.html:2
