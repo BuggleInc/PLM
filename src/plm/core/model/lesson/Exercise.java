@@ -254,7 +254,7 @@ public abstract class Exercise extends Lecture {
 								String line = "";
 								try {
 									while((line = reader.readLine()) != null ) {
-										resCompilationErr.append(line);
+										resCompilationErr.append(line+"\n");
 									}
 								} finally {
 									reader.close();
