@@ -511,11 +511,11 @@ public abstract class AbstractBuggle extends Entity {
 				backward(nb);
 				break;
 			case 115:
-				out.write(getX());
+				out.write(Integer.toString(getX()));
 				out.write("\n");
 				break;
 			case 116:
-				out.write(getY());
+				out.write(Integer.toString(getY()));
 				out.write("\n");
 				break;
 			case 117:
@@ -589,7 +589,7 @@ public abstract class AbstractBuggle extends Entity {
 				setBrushColor(ColorMapper.name2color(str));
 				break;
 			case 131:
-				out.write(ColorMapper.color2name(getCouleurBrosse()));
+				out.write(ColorMapper.color2name(getBrushColor()));
 				out.write("\n");
 				break;
 			case 132:
