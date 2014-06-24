@@ -273,7 +273,6 @@ public abstract class Exercise extends Lecture {
 					
 					if(resCompilationErr.length()>0){
 						//TODO GIANNINI parse the error message and verify Warning
-						System.err.println(resCompilationErr);
 						PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
 						System.err.println(Game.i18n.tr("Compilation error:"));
 						System.err.println(e.getMessage());
@@ -281,7 +280,6 @@ public abstract class Exercise extends Lecture {
 
 						throw e;
 					}
-					System.out.println("Compilation SUCCESS : "+execPath);
 					
 
 				} catch (IOException ioe) {

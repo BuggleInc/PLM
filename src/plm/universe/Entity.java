@@ -236,7 +236,6 @@ public abstract class Entity extends Observable {
 								int truc;
 								String str = "";
 								while((truc=reader.read())!=-1){
-									System.out.print((char)truc);
 									if(truc!=10){
 										str+=(char)truc;
 									}else{
