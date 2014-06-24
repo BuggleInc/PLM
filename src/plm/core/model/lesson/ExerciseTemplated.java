@@ -196,7 +196,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		String initialContent = templateHead.toString() + templateTail.toString();
 		String skelContent;
 		String headContent;
-		if (lang == Game.PYTHON || lang == Game.SCALA) { 
+		if (lang == Game.PYTHON || lang == Game.SCALA || lang == Game.C) { 
 			skelContent = skel.toString();
 			headContent = head.toString();
 		} else {

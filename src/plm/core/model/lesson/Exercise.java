@@ -1,6 +1,11 @@
 package plm.core.model.lesson;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -186,8 +191,10 @@ public abstract class Exercise extends Lecture {
 
 			try {
 				CompilerScala.getInstance().reset();
-				for (SourceFile sf : sfs) 
+				for (SourceFile sf : sfs) {
+					System.out.println("name : "+tabName);
 					CompilerScala.getInstance().compile(className(sf.getName()), sf.getCompilableContent(runtimePatterns,whatToCompile), sf.getOffset());
+				}
 			} catch (PLMCompilerException e) {
 				System.err.println(Game.i18n.tr("Compilation error:"));
 				System.err.println(e.getMessage());
@@ -207,7 +214,86 @@ public abstract class Exercise extends Lecture {
 
 			for (SourceFile sf : sfs){
 				//TODO GIANNINI recuperer le body et faire des trucs avec pour la compilation
-				System.out.println(sf.getBody());
+
+				String code = sf.getCompilableContent(runtimePatterns,whatToCompile); 
+				//System.out.println(code);
+				
+				Runtime runtime = Runtime.getRuntime();
+
+				final StringBuffer resCompilationErr=new StringBuffer();
+				try {
+					
+					File saveDir = new File(Game.getSavingLocation()+"/bin");
+					if(!saveDir.exists()){
+						saveDir.mkdir();
+					}
+					
+					File exec = new File(saveDir.getAbsolutePath()+"/"+this.currentWorld.get(0).getName().replace(' ', '_'));
+					String execPath = exec.getAbsolutePath();
+					if(exec.exists()){
+						exec.delete();
+					}
+					
+					String cmd1 = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o langages/c/bin/RemoteBuggle.o";
+					String cmd2 = "gcc -c -x c -o langages/c/bin/buggle.o -I langages/c/include/ -Wall - ";
+					String cmd3 = "gcc langages/c/bin/buggle.o langages/c/bin/RemoteBuggle.o -o "+execPath;
+					
+					String[] arg1 = {"/bin/sh","-c",cmd1+" ; "+cmd2+" ; "+cmd3};
+					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
+					
+					
+					
+					final Process process = runtime.exec(arg1);
+					final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+					bwriter.write(code);
+					bwriter.close();
+					Thread reader = new Thread() {
+						public void run() {
+							try {
+								BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+								String line = "";
+								try {
+									while((line = reader.readLine()) != null ) {
+										resCompilationErr.append(line);
+									}
+								} finally {
+									reader.close();
+								}
+							} catch(IOException ioe) {
+								ioe.printStackTrace();
+							}
+						}
+					};
+					reader.run();
+
+					
+
+
+					process.waitFor();
+					
+					if(resCompilationErr.length()>0){
+						//TODO GIANNINI parse the error message and verify Warning
+						System.err.println(resCompilationErr);
+						PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
+						System.err.println(Game.i18n.tr("Compilation error:"));
+						System.err.println(e.getMessage());
+						lastResult = ExecutionProgress.newCompilationError(e.getMessage());
+
+						throw e;
+					}
+					System.out.println("Compilation SUCCESS : "+execPath);
+					
+
+				} catch (IOException ioe) {
+					// TODO Auto-generated catch block
+					ioe.printStackTrace();
+				} catch(InterruptedException e){
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+
+
 			}
 
 		}
