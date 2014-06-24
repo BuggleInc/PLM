@@ -103,7 +103,7 @@ public abstract class Exercise extends Lecture {
 			currentWorld.get(i).notifyWorldUpdatesListeners();
 
 			lastResult.totalTests++;
-			
+
 			if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
 				lastResult.details += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());

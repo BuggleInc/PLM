@@ -199,6 +199,8 @@ public abstract class Entity extends Observable {
 			//TODO GIANNINI faire le liens avec un binaire ici et mettre en place un protocole
 			Runtime runtime = Runtime.getRuntime();
 			final Entity entityThis = this;
+			final StringBuffer resCompilationErr = new StringBuffer();
+
 			try {
 				run(); //TODO GIANNINI C'est quoi ca ???
 
@@ -209,9 +211,9 @@ public abstract class Entity extends Observable {
 					saveDir.mkdir();
 				}
 
-				
-				File exec = new File(saveDir.getAbsolutePath()+"/"+name.replace(' ', '_'));
-				System.out.println("'"+name+"'");
+
+				File exec = new File(saveDir.getAbsolutePath()+"/"+this.world.getName().replace(' ', '_'));
+
 				String execPath = "";
 				if(exec.exists() && exec.isFile() && exec.canExecute()){
 					execPath=exec.getAbsolutePath();
@@ -221,8 +223,9 @@ public abstract class Entity extends Observable {
 					return;
 				}
 
-				final Process process = runtime.exec(execPath);
-
+				String[] arg1 = {"/bin/sh","-c",execPath};
+				final Process process = runtime.exec(arg1);
+				
 				final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 				Thread reader = new Thread() {
 					public void run() {
@@ -230,10 +233,18 @@ public abstract class Entity extends Observable {
 							BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 							String line = "";
 							try {
-								while((line = reader.readLine()) != null) {
-									System.out.println(line);
-									entityThis.command(line,bwriter);
+								int truc;
+								String str = "";
+								while((truc=reader.read())!=-1){
+									System.out.print((char)truc);
+									if(truc!=10){
+										str+=(char)truc;
+									}else{
+										entityThis.command(str, bwriter);
+										str="";
+									}
 								}
+								
 							} finally {
 								reader.close();
 							}
@@ -244,14 +255,14 @@ public abstract class Entity extends Observable {
 				};
 
 
-
 				Thread error = new Thread() {
 					public void run() {
 						try {
-							BufferedReader err = new BufferedReader(new InputStreamReader(process.getInputStream()));
+							BufferedReader err = new BufferedReader(new InputStreamReader(process.getErrorStream()));
 							String line = "";
 							try {
 								while((line = err.readLine()) != null) {
+									resCompilationErr.append(line);
 									System.out.println("error : "+line);
 								}
 							} finally {
@@ -263,13 +274,20 @@ public abstract class Entity extends Observable {
 					}
 				};
 
-
 				reader.run();
-				//error.run();
+				error.run();
 				reader.join();
-				//error.join();
+				error.join();
+				
 
 				bwriter.close();
+
+				
+				if(resCompilationErr.length()>0){
+					System.err.println(resCompilationErr.toString());
+					progress.setCompilationError(resCompilationErr.toString());
+				}
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
