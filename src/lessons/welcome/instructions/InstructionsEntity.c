@@ -1,4 +1,12 @@
-# BEGIN SOLUTION
+#include "RemoteBuggle.h"
 
 
-# END SOLUTION
+
+int main(){
+	#line 1 "InstructionsEntity.c"
+	/* BEGIN TEMPLATE */
+	/* BEGIN SOLUTION */
+	/* END SOLUTION */
+	/* END TEMPLATE */
+	return 0;
+}
