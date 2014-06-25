@@ -549,7 +549,7 @@ public abstract class AbstractBuggle extends Entity {
 				out.write("\n");
 				break;	
 			case 124:
-				out.write(getDirection()+"");
+				out.write(Integer.toString(getDirection().intValue()));
 				out.write("\n");
 				break;
 			case 125:
