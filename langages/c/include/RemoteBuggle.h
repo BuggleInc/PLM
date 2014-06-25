@@ -23,10 +23,10 @@ typedef enum{
 }Color;
 
 typedef enum{
-	NORTH_VALUE,
-	EAST_VALUE,
-	SOUTH_VALUE,
-	WEST_VALUE
+	NORTH,
+	EAST,
+	SOUTH,
+	WEST
 }Direction;
 
 void left();
