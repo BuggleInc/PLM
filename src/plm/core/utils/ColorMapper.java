@@ -53,11 +53,12 @@ public class ColorMapper {
 		return -1;
 	}
 	
-	public static Color int2color(int c){
+	public static Color int2color(int c) throws InvalidColorNameException{
 		if(c>=0 && c<colors.length){
 			return colors[c];
 		}else{
-			return null;
+			//TODO GIANNINI change message and translate this
+			throw new InvalidColorNameException("Color Error");
 		}
 	}
 }

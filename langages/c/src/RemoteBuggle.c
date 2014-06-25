@@ -2,14 +2,6 @@
 
 
 
-Color intToColor(int col){
-	return white;
-}
-
-int colorToInt(Color col){
-	return 0;
-}
-
 void flush(){
     int c = 0;
     FILE* f = fopen("/tmp/flush","a+");
@@ -77,12 +69,12 @@ Color getBodyColor(){
 	fflush(stdout);
 	scanf("%d",&num);
 	flush();
-	Color c = intToColor(num);
+	Color c = num;
 	return c;
 }
 
 void setBodyColor(Color color){
-	printf("121 %d setBodyColor\n", colorToInt(color));
+	printf("121 %d setBodyColor\n", color);
 }
 
 int isFacingWall(){
@@ -142,7 +134,7 @@ int isBrushDown(){
 	return down;
 }
 void setBrushColor(Color color){
-	printf("130 %d setBrushColor\n", colorToInt(color));
+	printf("130 %d setBrushColor\n", color);
 }
 
 Color getBrushColor(){
@@ -151,7 +143,7 @@ Color getBrushColor(){
 	fflush(stdout);
 	scanf("%d",&num);
 	flush();
-	Color c = intToColor(num);
+	Color c = num;
 	return c;
 }
 
@@ -161,8 +153,7 @@ Color getGroundColor(){
 	fflush(stdout);
 	scanf("%d",&num);
 	flush();
-	Color c = intToColor(num);
-	return c;
+	return num;
 }
 
 int isOverBaggle(){

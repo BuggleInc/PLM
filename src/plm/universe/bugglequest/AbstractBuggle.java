@@ -488,6 +488,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	@Override
 	public void command(String command, BufferedWriter out){
+		System.out.println(command);
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb,nb2;
 		String str;
@@ -532,12 +533,12 @@ public abstract class AbstractBuggle extends Entity {
 				setPos(nb, nb2);
 				break;
 			case 120:
-				out.write(ColorMapper.color2name(getBodyColor()));
+				out.write(Integer.toString(ColorMapper.color2int(getBodyColor())));
 				out.write("\n");
 				break;
 			case 121:
-				str = (command.split(" ")[1]);
-				setBodyColor(ColorMapper.name2color(str));
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setBodyColor(ColorMapper.int2color(nb));
 				break;
 			case 122:
 				out.write((isFacingWall()?"1":"0"));
@@ -585,15 +586,16 @@ public abstract class AbstractBuggle extends Entity {
 				out.write("\n");
 				break;
 			case 130:
-				str = (command.split(" ")[1]);
-				setBrushColor(ColorMapper.name2color(str));
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setBrushColor(ColorMapper.int2color(nb));
 				break;
 			case 131:
-				out.write(ColorMapper.color2name(getBrushColor()));
+				out.write(Integer.toString(ColorMapper.color2int(getBrushColor())));
 				out.write("\n");
+				System.out.println("a toi");
 				break;
 			case 132:
-				out.write(ColorMapper.color2name(getGroundColor()));
+				out.write(Integer.toString(ColorMapper.color2int(getGroundColor())));
 				out.write("\n");
 				break;
 			case 133:
