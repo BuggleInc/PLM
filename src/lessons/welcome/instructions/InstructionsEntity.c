@@ -3,7 +3,7 @@
 
 
 int main(){
-	#line 1 "InstructionsEntity.c"
+	#line 1 "Instructions"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	/* END SOLUTION */

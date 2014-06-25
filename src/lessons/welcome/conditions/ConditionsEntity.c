@@ -1,4 +1,8 @@
-# BEGIN SOLUTION
+#include "RemoteBuggle.h"
 
-
-# END SOLUTION
+int main(){
+	#line 1 "Conditions"
+	/* BEGIN SOLUTION */
+	/* END SOLUTION */
+	return 0;
+}

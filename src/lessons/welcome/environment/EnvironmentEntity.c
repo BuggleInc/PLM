@@ -1,10 +1,7 @@
-
 #include "RemoteBuggle.h"
 
-
-
 int main(){
-	#line 1 "EnvironmentEntity.c"
+	#line 1 "Environment"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	avance();

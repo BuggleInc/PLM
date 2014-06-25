@@ -1,3 +1,8 @@
-/* BEGIN SOLUTION */
+#include "RemoteBuggle.h"
 
-/* END SOLUTION */
+int main(){
+	#line 1 "LoopWhile"
+	/* BEGIN SOLUTION */
+	/* END SOLUTION */
+	return 0;
+}
