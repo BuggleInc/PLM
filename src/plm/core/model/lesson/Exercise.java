@@ -228,15 +228,21 @@ public abstract class Exercise extends Lecture {
 						saveDir.mkdir();
 					}
 					
-					File exec = new File(saveDir.getAbsolutePath()+"/"+this.currentWorld.get(0).getName().replace(' ', '_'));
+					File exec = new File(saveDir.getAbsolutePath()+"/prog");
 					String execPath = exec.getAbsolutePath();
+					
 					if(exec.exists()){
 						exec.delete();
 					}
 					
+					//compile the RemoteBuggle
 					String cmd1 = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o langages/c/bin/RemoteBuggle.o";
-					String cmd2 = "gcc -c -x c -o langages/c/bin/buggle.o -I langages/c/include/ -Wall - ";
-					String cmd3 = "gcc langages/c/bin/buggle.o langages/c/bin/RemoteBuggle.o -o "+execPath;
+					
+					//compile the current code
+					String cmd2 = "gcc -c -x c -o langages/c/bin/current.o -I langages/c/include/ -Wall - ";
+					
+					//linking
+					String cmd3 = "gcc langages/c/bin/current.o langages/c/bin/RemoteBuggle.o -o "+execPath;
 					
 					String[] arg1 = {"/bin/sh","-c",cmd1+" ; "+cmd2+" ; "+cmd3};
 					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};

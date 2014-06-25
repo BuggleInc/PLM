@@ -212,7 +212,7 @@ public abstract class Entity extends Observable {
 				}
 
 
-				File exec = new File(saveDir.getAbsolutePath()+"/"+this.world.getName().replace(' ', '_'));
+				File exec = new File(saveDir.getAbsolutePath()+"/prog");
 
 				String execPath = "";
 				if(exec.exists() && exec.isFile() && exec.canExecute()){
