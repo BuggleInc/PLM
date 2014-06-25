@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-06-17 14:59+0200\n"
-"PO-Revision-Date: 2014-06-22 09:51-0300\n"
+"PO-Revision-Date: 2014-06-24 20:49-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -583,14 +583,14 @@ msgstr ""
 #. type: Content of: <h1>
 #: src/plm/universe/bat/BatWorld.html:2
 msgid "BatWorld"
-msgstr ""
+msgstr "BatWorld"
 
 #. type: Content of: <p>
 #: src/plm/universe/bat/BatWorld.html:4
 msgid ""
 "This world is a simplistic testing environment largely inspired from the "
 "http://codingbat.com invented by Nick Parlente."
-msgstr ""
+msgstr "Este mundo é um ambiente de testes simplista largamente inspirado no http://codingbat.com criado por Nick Parlente."
 
 #. type: Content of: <p>
 #: src/plm/universe/bat/BatWorld.html:7
@@ -600,7 +600,7 @@ msgid ""
 "presented a quite long list of very little exercises about rather simple "
 "things. The idea is to train you on these issues until they become automatic "
 "to you."
-msgstr ""
+msgstr "Os exercícios são bem curtos, e têm como objetivo melhorar as habilidades de programação tática dos estudantes. Isto significa que você irá ser apresentado a uma longa lista de pequenos exercícios sobre coisas simples. A ideia é treinar estes aspectos simples até que eles fiquem automáticos para você."
 
 #. type: Content of: <p>
 #: src/plm/universe/bat/BatWorld.html:13
@@ -608,7 +608,7 @@ msgid ""
 "In contrary to the other worlds, the BatWorld does not provide any fancy "
 "abstraction nor visualization. You have to fill a function, which gets "
 "called for a bunch of parameter sets, and that's it."
-msgstr ""
+msgstr "Ao contrário dos outros mundos, o \"BatWorld\" não fornece qualquer abstração ou visualização legal. Você tem simplesmente que preencher uma função, que é chamada com um conjunto de parâmetros, e é isto."
 
 #. type: Content of: <p>
 #: src/plm/universe/bat/BatWorld.html:17
@@ -616,12 +616,12 @@ msgid ""
 "For more information, you should refer to the CodingBat.com documentation, "
 "which contains for example a very useful documentation on boolean operators: "
 "http://codingbat.com/doc/ifboolean.html"
-msgstr ""
+msgstr "Para mais informações, você deve consultar a documentação do CodingBat.com, que contém por exemplo uma documentação sobre operadores booleanos bem útil: http://codingbat.com/doc/ifboolean.html"
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/Main.html:2 src/lessons/welcome/short_desc.html:2
 msgid "First steps"
-msgstr ""
+msgstr "Primeiros passos"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/Main.html:4
