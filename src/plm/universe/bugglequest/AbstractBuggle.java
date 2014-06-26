@@ -505,11 +505,19 @@ public abstract class AbstractBuggle extends Entity {
 				break;
 			case 113 : 
 				nb = Integer.parseInt((command.split(" ")[1]));
-				forward(nb);
+				if(nb==1){
+					forward();
+				}else{
+					forward(nb);
+				}
 				break;
 			case 114:
 				nb = Integer.parseInt((command.split(" ")[1]));
-				backward(nb);
+				if(nb==1){
+					backward();
+				}else{
+					backward(nb);
+				}
 				break;
 			case 115:
 				out.write(Integer.toString(getX()));
@@ -626,6 +634,14 @@ public abstract class AbstractBuggle extends Entity {
 				break;
 			case 140:
 				clearMessage();
+				break;
+			case 141:
+				out.write(Integer.toString(getWorldHeight()));
+				out.write("\n");
+				break;
+			case 142:
+				out.write(Integer.toString(getWorldWidth()));
+				out.write("\n");
 				break;
 			default:
 				System.out.println("COMMANDE INCONNUE : "+command);
