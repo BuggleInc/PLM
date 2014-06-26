@@ -207,8 +207,10 @@ public class Game implements IWorldView {
 		}
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
-
-        currentCourse = new CourseAppEngine();
+		
+		if (! Game.getProperty(Game.PROP_APPENGINE_URL).equals("")) { // FIXME: there is no way real proper way to disable the CourseEngine !!!
+	        currentCourse = new CourseAppEngine();
+		}
 	}
 	
 	boolean canScala = false;
