@@ -9,6 +9,7 @@ import java.util.Vector;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import plm.core.PLMCompilerException;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
 import plm.core.model.session.SourceFile;
@@ -400,6 +401,15 @@ public abstract class ExerciseTemplated extends Exercise {
 				/* I/O didn't work. We have to load the files manually */
 				ExecutionProgress progress = new ExecutionProgress();
 				
+				//TODO GIANNINI test
+				if(Game.getProgrammingLanguage().equals(Game.C)){
+					try {
+						compileAll(Game.getInstance().getOutputWriter(), StudentOrCorrection.CORRECTION);
+					} catch (PLMCompilerException e) {
+						// TODO GIANNINI
+						e.printStackTrace();
+					}
+				}
 				mutateEntities(WorldKind.ANSWER, StudentOrCorrection.CORRECTION);
 
 				for (World aw : answerWorld) {
