@@ -29,6 +29,8 @@ typedef enum{
 	WEST
 }Direction;
 
+char* int2str(int nb);
+
 void left();
 void right();
 void back();
@@ -60,6 +62,8 @@ int isOverMessage();
 void writeMessage(char* str);
 char* readMessage();
 void clearMessage();
+int getWorldHeight();
+int getWorldWidth();
 
 
 #endif

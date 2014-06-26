@@ -1,6 +1,7 @@
 #include "RemoteBuggle.h"
 
 
+/* Utils */
 
 void flush(){
     int c = 0;
@@ -12,6 +13,15 @@ void flush(){
     fclose(f);
 }
 
+char* int2str(int nb){
+	char* str = malloc(sizeof(char)*16);
+	sprintf(str, "%d", nb);
+	return str;
+}
+
+
+
+/* Function for buggles */
 
 void left(){
 	printf("110 left\n");
@@ -207,3 +217,22 @@ char* readMessage(){
 void clearMessage(){
 	printf("140 clearMessage\n");
 }
+
+int getWorldHeight(){
+	int h=-1;
+	printf("141 getWorldHeight\n");
+	fflush(stdout);
+	scanf("%d",&h);
+	flush();
+	return h;
+}
+
+int getWorldWidth(){
+	int w=-1;
+	printf("142 getWorldWidth\n");
+	fflush(stdout);
+	scanf("%d",&w);
+	flush();
+	return w;
+}
+
