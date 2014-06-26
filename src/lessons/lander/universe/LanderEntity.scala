@@ -7,6 +7,10 @@ class LanderEntity extends Entity {
 
   private def landerWorld = getWorld().asInstanceOf[DelegatingLanderWorld].realWorld
 
+  override def command(command: String, out: java.io.BufferedWriter){
+    
+  }
+  
   override def run() = {
     init()
     while (landerWorld.state == LanderWorld.State.FLYING) {
