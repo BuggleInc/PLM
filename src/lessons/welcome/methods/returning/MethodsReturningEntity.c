@@ -21,12 +21,13 @@ int main(){
 int haveBaggle(){
 	/* BEGIN SOLUTION */
 	int res = 0;
-	for (int i=0; i<6; i++) {
+	int i;
+	for (i=0; i<6; i++) {
 		if (isOverBaggle())
 			res = 1;
 		forward(1);
 	}
-	for (int i=0; i<6; i++)
+	for (i=0; i<6; i++)
 		backward(1);
 	return res;
 	/* END SOLUTION */
