@@ -358,7 +358,7 @@ public abstract class Exercise extends Lecture {
 			ArrayList<Entity> newEntities = new ArrayList<Entity>();
 			for (Entity old : current.getEntities()) {
 				/* This is never called with lightbot entities, no need to deal with it here */
-				if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA)/* || lang.equals(Game.C)*/) {
+				if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA) || lang.equals(Game.C)) {
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
@@ -368,7 +368,8 @@ public abstract class Exercise extends Lecture {
 							ent = (Entity)CompilerScala.getInstance().findClass(className(newClassName)).newInstance();
 						}else if(lang.equals(Game.C)){
 							//TODO GIANNINI Faire quelque chose ici pour l'entite
-							ent=null;
+							
+							ent= (Entity)Class.forName(nameOfCorrectionEntity(lang)).newInstance();
 						}else{
 							ent=null;
 						}
@@ -383,6 +384,9 @@ public abstract class Exercise extends Lecture {
 						} catch (Exception e2) {
 							throw new RuntimeException("Cannot find an entity of name "+className(newClassName)+" or "+newClassName+". Broken lesson.", e2);
 						}
+					} catch (ClassNotFoundException e) {
+						//TODO GIANNINI
+						throw new RuntimeException("Cannot instanciate entity of type "+className(newClassName), e);
 					}
 					/* change fields of new entity to copy old one */
 					ent.copy(old);
@@ -429,7 +433,7 @@ public abstract class Exercise extends Lecture {
 					}
 				}
 			}
-			if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA) /*|| lang.equals(Game.C)*/) 
+			if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA) || lang.equals(Game.C)) 
 				current.setEntities(newEntities);
 		}
 	}
