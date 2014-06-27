@@ -245,3 +245,43 @@ int getWorldWidth(){
 	return w;
 }
 
+void setIndication(int x, int y, int i){
+	printf("143 %d %d %d setIndication\n", x,y,i);
+}
+
+int getIndication(int x, int y){
+	int ind=-1;
+	printf("144 %d %d getIndication\n",x,y);
+	fflush(stdout);
+	scanf("%d",&ind);
+	flush();
+	return ind;
+}
+
+int hasBaggle(int x, int y){
+	int has=1;
+	printf("145 %d %d hasBaggle\n",x,y);
+	fflush(stdout);
+	scanf("%d",&has);
+	flush();
+	return has;
+}
+
+int hasTopWall(int x, int y){
+	int has=1;
+	printf("146 %d %d hasTopWall\n",x,y);
+	fflush(stdout);
+	scanf("%d",&has);
+	flush();
+	return has;
+}
+
+int hasLeftWall(int x, int y){
+	int has=1;
+	printf("147 %d %d hasLeftWall\n",x,y);
+	fflush(stdout);
+	scanf("%d",&has);
+	flush();
+	return has;
+}
+

@@ -1,5 +1,7 @@
 package lessons.maze.shortestpath;
 
+import java.io.IOException;
+
 import plm.core.model.Game;
 import plm.universe.Direction;
 import plm.universe.bugglequest.BuggleWorld;
@@ -41,7 +43,60 @@ public class ShortestPathMazeEntity extends plm.universe.bugglequest.SimpleBuggl
 	boolean hasLeftWall(int x, int y) {
 		return ((BuggleWorld) world).getCell(x,y).hasLeftWall();
 	}
-
+	
+	@Override
+	public void command(String command, java.io.BufferedWriter out) {
+		System.out.println(command);
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		int nb,nb2,nb3;
+		try{
+		switch(num){
+		case 143:
+			nb = Integer.parseInt((command.split(" ")[1]));
+			nb2 = Integer.parseInt((command.split(" ")[2]));
+			nb3 = Integer.parseInt((command.split(" ")[3]));
+			setIndication(nb,nb2,nb3);
+			break;
+		case 144:
+			nb = Integer.parseInt((command.split(" ")[1]));
+			nb2 = Integer.parseInt((command.split(" ")[2]));
+			out.write(Integer.toString(getIndication(nb,nb2)));
+			out.write("\n");
+			out.flush();
+			break;
+		case 145:
+			nb = Integer.parseInt((command.split(" ")[1]));
+			nb2 = Integer.parseInt((command.split(" ")[2]));
+			out.write(hasBaggle(nb,nb2)?"1":"0");
+			out.write("\n");
+			out.flush();
+			break;
+		case 146:
+			nb = Integer.parseInt((command.split(" ")[1]));
+			nb2 = Integer.parseInt((command.split(" ")[2]));
+			out.write(hasTopWall(nb,nb2)?"1":"0");
+			out.write("\n");
+			out.flush();
+			break;
+		case 147:
+			nb = Integer.parseInt((command.split(" ")[1]));
+			nb2 = Integer.parseInt((command.split(" ")[2]));
+			out.write(hasLeftWall(nb,nb2)?"1":"0");
+			out.write("\n");
+			out.flush();
+			break;
+		default:
+			super.command(command, out);
+			break;
+			
+		}
+		}catch(IOException ioe){
+			//TODO
+			ioe.printStackTrace();
+		}
+		
+	}
+	
 	/* BEGIN TEMPLATE */
 	public void run() {
 		/* BEGIN SOLUTION */
