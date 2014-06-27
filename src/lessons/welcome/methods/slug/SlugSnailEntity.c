@@ -4,7 +4,7 @@ void hunt(Color c);
 int isFacingTrail(Color c);
 
 int main(){
-	hunt(6);
+	hunt(getParam());
 	return 0;
 }
 

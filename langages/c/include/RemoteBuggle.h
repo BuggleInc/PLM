@@ -31,6 +31,8 @@ typedef enum{
 
 char* int2str(int nb);
 
+int getParam();
+
 void left();
 void right();
 void back();

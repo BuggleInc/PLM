@@ -23,6 +23,15 @@ char* int2str(int nb){
 
 /* Function for buggles */
 
+int getParam(){
+	int p=-1;
+	printf("109 getParam\n");
+	fflush(stdout);
+	scanf("%d",&p);
+	flush();
+	return p;
+}
+
 void left(){
 	printf("110 left\n");
 }
