@@ -5,12 +5,12 @@ int endingPosition();
 void nextStep();
 
 int main(){
-	#line 1 "TraversalByLine"
+
 	run();
 	return 0;
 }
 
-
+#line 1 "TraversalByLine"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

@@ -14,7 +14,7 @@ int main(){
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */
-	Color colors[] = malloc(sizeof(Color)*getWorldHeight());
+	Color* colors = (Color*)malloc(sizeof(Color)*getWorldHeight());
 	int i;
 	/* read the colors */
 	for (i=0;i<getWorldHeight();i++) {
@@ -30,6 +30,7 @@ void run() {
 		forward(1);
 		makeLine(colors);
 	}
+	free(colors);
 }
 void makeLine(Color colors[]) {
 	int i;

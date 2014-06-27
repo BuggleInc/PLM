@@ -10,6 +10,21 @@ int exitReached() {
 int main(){
 	#line 1 "Poucet"
 	/* BEGIN SOLUTION */
+	while (!exitReached()) {
+		int seen = 0;
+
+		do {
+			forward(1);
+			if (isOverBaggle())
+				seen++;
+		} while (! crossing());
+
+		if (seen>2)
+			left();
+		else
+			right();
+	}
+	forward(1);
 	/* END SOLUTION */
 	return 0;
 }

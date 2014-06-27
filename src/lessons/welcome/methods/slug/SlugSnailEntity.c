@@ -4,7 +4,6 @@ void hunt(Color c);
 int isFacingTrail(Color c);
 
 int main(){
-	printf("100 BOUHHH\n");
 	hunt(6);
 	return 0;
 }
@@ -16,7 +15,7 @@ void hunt(Color c) {
 	while (! isOverBaggle()) {
 		if (isFacingTrail(c)) {
 			brushDown();
-			forward(A);
+			forward(1);
 			brushUp();
 		} else {
 			left();

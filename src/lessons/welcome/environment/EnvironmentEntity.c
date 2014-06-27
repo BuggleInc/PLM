@@ -4,7 +4,7 @@ int main(){
 	#line 1 "Environment"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
-	avance();
+	forward(1);
 	/* END SOLUTION */
 	/* END TEMPLATE */
 	return 0;

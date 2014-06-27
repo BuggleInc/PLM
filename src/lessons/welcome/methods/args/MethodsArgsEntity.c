@@ -3,7 +3,6 @@
 void move(int nbPas, int forward);
 
 int main(){
-	printf("100 %d direction\n",getDirection());
 	if(getDirection() == NORTH){
 		move(getY(),1);
 	}else{
