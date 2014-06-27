@@ -4,6 +4,7 @@ import static org.junit.Assert.fail;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.LinkedList;
 import java.util.Locale;
 import java.util.Set;
@@ -13,6 +14,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import org.junit.Ignore;
 
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
@@ -31,7 +33,8 @@ import plm.universe.bat.BatWorld;
 
 @RunWith(Parameterized.class)
 public class ExoTest {
-	static private String[] lessons = new String[] { 
+	
+	static private String[] lessonNamesToTest = new String[] { 
 		"lessons.welcome", "lessons.turmites", "lessons.maze", "lessons.turtleart",
 		"lessons.sort.basic", "lessons.sort.dutchflag", "lessons.sort.baseball", "lessons.sort.pancake",  
 		"lessons.recursion", "lessons.recursion.hanoi",
@@ -45,17 +48,20 @@ public class ExoTest {
 	
 	/* Generate the list of parameters we want to run our test on */
 	@Parameters
-	static public Collection<Object[]> data() {
-		LinkedList<Object[]> result = new LinkedList<Object[]>();
+	static public Collection<Object[]> exercises() {
+		List<Object[]> result = new LinkedList<Object[]>();
 		
 		FileUtils.setLocale(new Locale("en"));
 		Game g = Game.getInstance();
+		g.getProgressSpyListeners().clear(); // disable all progress spies (twitter, git, etc...)
+		g.removeSessionKit();
 
 		/* Compute the answers with the java entities */
 		Game.getInstance().setProgramingLanguage(Game.JAVA);
-		Set<Lecture> allExercises = new HashSet<Lecture>();  
-		for (String lessonName : lessons) { 
-			g.switchLesson(lessonName,true);
+		
+		Set<Lecture> alreadySeenExercises = new HashSet<Lecture>();  
+		for (String lessonName : lessonNamesToTest) { 
+			g.switchLesson(lessonName, true);
 			System.out.println("Lesson "+lessonName+" loaded ("+g.getCurrentLesson().getExerciseCount()+" exercises)");
 			if (g.getCurrentLesson().getExerciseCount() == 0) {
 				System.err.println("Cannot find any exercise in "+lessonName+". Something's wrong here");
@@ -63,47 +69,50 @@ public class ExoTest {
 			}
 			for (Lecture l : g.getCurrentLesson().exercises()) 
 				if (l instanceof Exercise) {
-					result.add(new Object[] {Game.getInstance().getCurrentLesson(), l});
-					if (allExercises.contains(l)) {
+					result.add(new Object[] { Game.getInstance().getCurrentLesson(), l });
+					if (alreadySeenExercises.contains(l)) {
 						System.err.println("Warning, I tried to add the exercise "+l.getName()+" twice. Something's wrong here");
 						System.exit(1);
 					}
-					allExercises.add(l);
+					alreadySeenExercises.add(l);
 				}
 		}
 		System.out.println("There is currently "+result.size()+" exercises in our database. Yes sir.");
-		g.switchDebug();
-		g.removeSessionKit();
+		System.out.println("");
 		
+		//g.switchDebug();		
 		g.setLocale(new Locale("en"));
+		
 		return result;
 	}
 
-	
 	private Exercise exo;
+
 	public ExoTest(Lesson l, Exercise e) {
 		this.exo = e;
-
 		Game.getInstance().setCurrentLesson(l);
 		Game.getInstance().setCurrentExercise(exo);
-		for (int worldRank=0; worldRank<exo.getWorldCount(); worldRank++) 
+	
+		// disable delay on world execution
+		for (int worldRank=0; worldRank < exo.getWorldCount(); worldRank++) {
 			exo.getWorlds(WorldKind.INITIAL).get(worldRank).setDelay(0);
+		}
 	}
 	
 	/** Resets current world, populate it with the correction entity, and rerun it */
-	private void testCorrectionEntity() {
-		ProgrammingLanguage lang = Game.getProgrammingLanguage();
+	private void testCorrectionEntity(ProgrammingLanguage lang) {
+		Game.getInstance().setProgramingLanguage(lang);
 		Game.getInstance().setCurrentExercise(exo);
 		Game.getInstance().setProgramingLanguage(lang); // This stupid Game.setCurrentExercise tries to be cleaver if the current progLang is not avail in the requested exercise
 		
-		System.out.flush();
-		System.err.println("XXXXXXX "+exo.getName()+" in "+lang.getLang()+" XXXXXXX");
+		//System.out.flush();
+		//System.err.println("Testing "+exo.getName()+" in "+lang.getLang()+" ");
 		exo.lastResult = new ExecutionProgress();
 		
 		try {
-			exo.compileAll(null,StudentOrCorrection.CORRECTION);
-			if (exo.lastResult.compilationError != null)
-				fail(exo.getId()+": compilation error: "+exo.lastResult.compilationError);
+			exo.compileAll(null, StudentOrCorrection.CORRECTION);
+			if (exo.lastResult.compilationError != null && ! exo.lastResult.compilationError.equals(""))
+				fail(exo.getId()+": compilation error: " + exo.lastResult.compilationError);
 
 			exo.reset();
 			// For compiled languages, we mutate to the compiled entity. 
@@ -135,34 +144,29 @@ public class ExoTest {
 		if (exo.lastResult.totalTests == 0 
 				|| exo.lastResult.totalTests != exo.lastResult.passedTests 
 				|| !exo.lastResult.details.equals("")) {
-			System.out.println(""+exo.getId()+" failed in "+Game.getProgrammingLanguage()+": "+exo.lastResult.details);
+			//System.out.println(""+exo.getId()+" failed in "+Game.getProgrammingLanguage()+": "+exo.lastResult.details);
 			fail(exo.getId()+": failed exercise ("+
 				exo.lastResult.passedTests+"/"+exo.lastResult.totalTests+" passed): '"+exo.lastResult.details+"'");
 		}
-		System.out.println(""+exo.getId()+" passed in "+Game.getProgrammingLanguage());
-
+		//System.out.println(""+exo.getId()+" passed in "+Game.getProgrammingLanguage());
 	}
 	
 	@Test(timeout=10000)
 	public void testJavaEntity() {
-		Game.getInstance().setProgramingLanguage(Game.JAVA);
-		testCorrectionEntity();
+		testCorrectionEntity(Game.JAVA);
 	}
+	
 	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
 	public void testScalaEntity() {
 		if (!exo.getProgLanguages().contains(Game.SCALA)) 
 			fail("Exercise "+exo.getId()+" does not support scala");
-		
-		Game.getInstance().setProgramingLanguage(Game.SCALA);
-		testCorrectionEntity();
+		testCorrectionEntity(Game.SCALA);
 	}
-	
+
 	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) 
-			fail("Exercise "+exo.getId()+" does not support python");
-	
-		Game.getInstance().setProgramingLanguage(Game.PYTHON);
-		testCorrectionEntity();
+			fail("Exercise "+exo.getId()+" does not support python");	
+		testCorrectionEntity(Game.PYTHON);
 	}
 }
