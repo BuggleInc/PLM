@@ -285,3 +285,40 @@ int hasLeftWall(int x, int y){
 	return has;
 }
 
+
+
+
+/* BINDINGS TRANSLATION: French */
+void gauche()   				{ left(); }
+void droite()   				{ right(); }
+void retourne() 				{ back(); }
+void avance(int steps)  		{ forward(steps); }
+void recule(int steps) 			{ backward(steps); }
+Color getCouleurCorps()        	{ return getBodyColor(); }
+void setCouleurCorps(Color c)  	{ setBodyColor(c); }
+int estFaceMur()           		{ return isFacingWall(); }
+int estDosMur()            		{ return isBackingWall(); }
+void leveBrosse()              	{ brushUp(); }
+void baisseBrosse()           	{ brushDown(); }
+int estBrosseBaissee()     		{ return isBrushDown(); }
+Color getCouleurBrosse()       	{ return getBrushColor(); }
+void setCouleurBrosse(Color c) 	{ setBrushColor(c); }
+Color getCouleurSol()          	{ return getGroundColor(); }
+int estSurBiscuit()        		{ return isOverBaggle(); }
+int porteBiscuit()         		{ return isCarryingBaggle(); }
+void prendBiscuit()  			{ pickupBaggle(); }
+void poseBiscuit()       		{ dropBaggle(); }
+int estSurMessage()        		{ return isOverMessage(); }
+char* litMessage()          	{ return readMessage(); }
+void ecritMessage(char* s)    	{ writeMessage(s); }
+void effaceMessage()           	{ clearMessage(); }
+int getMondeHauteur()          	{ return getWorldHeight(); }
+int getMondeLargeur()          	{ return getWorldWidth(); }
+// get/set X/Y/Pos are not translated as they happen to be the same in French
+int estChoisi()           		{ return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
+int estChoisie()          		{ return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
+
+int aBiscuit(int x, int y) 		{ return hasBaggle(x,y); }
+int aMurNord(int x, int y) 		{ return hasTopWall(x,y); }
+int aMurOuest(int x, int y)		{ return hasLeftWall(x, y); }
+
