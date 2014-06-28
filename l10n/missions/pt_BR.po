@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-06-17 14:59+0200\n"
-"PO-Revision-Date: 2014-06-28 15:03-0300\n"
+"PO-Revision-Date: 2014-06-28 19:15-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1120,7 +1120,7 @@ msgstr ""
 #: src/lessons/welcome/instructions/Instructions.html:14
 #, no-wrap
 msgid "nameOfTheMethod()"
-msgstr ""
+msgstr "nomeDoMétodo()"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:16
@@ -1129,7 +1129,7 @@ msgid ""
 "python|scala] or by new lines[/!].  The previous example would thus be "
 "written in the following way[!python|scala] (you can also add semi-columns "
 "at the end of the lines, but this is not mandatory)[/!]."
-msgstr ""
+msgstr "[!thelang] precisa das instruções separadas por ponto-e-vírgula (;)[!python|scala] ou por quebra de linhas[/!].  O exemplo anterior poderia ter sido escrito da seguinte forma[!python|scala] (você também pode adicionar ponto-e-vírgula no final das linhas, mas isto não é obrigatório)[/!]."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:22
@@ -1140,12 +1140,16 @@ msgid ""
 "coolMix()[!java];[/!]\n"
 "serve()[!java];[/!]\n"
 msgstr ""
+"derretaOsPedaçosDeChocolate()[!java];[/!]\n"
+"adicioneAçucar()[!java];[/!]\n"
+"mexa()[!java];[/!]\n"
+"sirva()[!java];[/!]\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:28
 #: src/lessons/welcome/variables/Variables.html:140
 msgid "[!python|scala]"
-msgstr ""
+msgstr "[!python|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:29
