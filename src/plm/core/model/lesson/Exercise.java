@@ -104,6 +104,8 @@ public abstract class Exercise extends Lecture {
 
 			lastResult.totalTests++;
 
+			lastResult.totalTests++;
+			
 			if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
 				lastResult.details += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
@@ -298,6 +300,7 @@ public abstract class Exercise extends Lecture {
 
 
 
+
 			}
 
 		}
@@ -359,6 +362,7 @@ public abstract class Exercise extends Lecture {
 			for (Entity old : current.getEntities()) {
 				/* This is never called with lightbot entities, no need to deal with it here */
 				if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA) || lang.equals(Game.C)) {
+
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
@@ -367,8 +371,7 @@ public abstract class Exercise extends Lecture {
 						}else if(lang.equals(Game.SCALA)){
 							ent = (Entity)CompilerScala.getInstance().findClass(className(newClassName)).newInstance();
 						}else if(lang.equals(Game.C)){
-							//TODO GIANNINI Faire quelque chose ici pour l'entite
-							
+							//TODO GIANNINI Faire quelque chose ici pour l'entite					
 							ent= (Entity)Class.forName(nameOfCorrectionEntity(lang)).newInstance();
 						}else{
 							ent=null;

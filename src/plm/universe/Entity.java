@@ -160,6 +160,7 @@ public abstract class Entity extends Observable {
 	 */
 	protected abstract void command(String command, BufferedWriter out);
 
+
 	/** Make the entity run, according to the used universe and programming language.
 	 * 
 	 * This task is not trivial given that it depends on the universe and the programming language:
@@ -294,8 +295,90 @@ public abstract class Entity extends Observable {
 				for (StackTraceElement elm : e.getStackTrace())
 					msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
 
+
 				System.err.println(msg);
 				progress.setCompilationError(msg);
+				e.printStackTrace();
+			}
+
+		} else if(progLang.equals(Game.C)){
+			//TODO GIANNINI faire le liens avec un binaire ici et mettre en place un protocole
+			Runtime runtime = Runtime.getRuntime();
+			final Entity entityThis = this;
+			try {
+				run(); //TODO GIANNINI C'est quoi ca ???
+
+
+				//TODO GIANNINI Verification du dossier avec les exos
+				File saveDir = new File(Game.getSavingLocation()+"/bin");
+				if(!saveDir.exists()){
+					saveDir.mkdir();
+				}
+
+				
+				File exec = new File(saveDir.getAbsolutePath()+"/"+name.replace(' ', '_'));
+				System.out.println("'"+name+"'");
+				String execPath = "";
+				if(exec.exists() && exec.isFile() && exec.canExecute()){
+					execPath=exec.getAbsolutePath();
+					System.out.println(execPath);
+				}else{
+					System.out.println("Le fichier n'existe pas, il n'a pas été compilé (TODO)");
+					return;
+				}
+
+				final Process process = runtime.exec(execPath);
+
+				final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+				Thread reader = new Thread() {
+					public void run() {
+						try {
+							BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+							String line = "";
+							try {
+								while((line = reader.readLine()) != null) {
+									System.out.println(line);
+									entityThis.command(line,bwriter);
+								}
+							} finally {
+								reader.close();
+							}
+						} catch(IOException ioe) {
+							ioe.printStackTrace();
+						}
+					}
+				};
+
+
+
+				Thread error = new Thread() {
+					public void run() {
+						try {
+							BufferedReader err = new BufferedReader(new InputStreamReader(process.getInputStream()));
+							String line = "";
+							try {
+								while((line = err.readLine()) != null) {
+									System.out.println("error : "+line);
+								}
+							} finally {
+								err.close();
+							}
+						} catch(IOException ioe) {
+							ioe.printStackTrace();
+						}
+					}
+				};
+
+
+				reader.run();
+				//error.run();
+				reader.join();
+				//error.join();
+
+				bwriter.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else{

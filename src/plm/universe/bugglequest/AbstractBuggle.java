@@ -25,6 +25,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	Color bodyColor = Color.red;
 	Color brushColor = Color.red;
+	
 
 
 	private int x = 0;
@@ -78,7 +79,6 @@ public abstract class AbstractBuggle extends Entity {
 		this.y = other.y;
 		this.direction = other.direction;
 	}
-
 
 
 	public boolean isBrushDown() {
