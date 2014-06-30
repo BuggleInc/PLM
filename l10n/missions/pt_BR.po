@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-06-17 14:59+0200\n"
-"PO-Revision-Date: 2014-06-24 20:49-0300\n"
+"PO-Revision-Date: 2014-06-29 23:24-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -29,9 +29,9 @@ msgid ""
 "possibilities of interaction with the world: taking or dropping objects, "
 "paint the ground, hit walls, etc."
 msgstr ""
-"Este mundo foi inventado por Lyn Turbak, na Wellesley College. Ele é\n"
-"cheio de Buggles, pequenos animais que entendem ordens simples, e\n"
-"oferece numerosas possiblidades de interação com o mundo: pegar e\n"
+"Este mundo foi inventado por Lyn Turbak, na Wellesley College. Ele é "
+"cheio de Buggles, pequenos animais que entendem ordens simples, e "
+"oferece numerosas possiblidades de interação com o mundo: pegar e "
 "soltas objetos, pintar o chão, bater em paredes, etc."
 
 #. type: Content of: <h2>
@@ -103,7 +103,7 @@ msgstr "[!java]void [/!]paraTrás()"
 msgid ""
 "[!java]void [/!]forward() or [!java]void [/!]forward([!java]int [/!]steps[!"
 "scala]:Int[/!])"
-msgstr "[!java]void [/!]paraFrente() ou [!java]void [/!]paraFrente([!java]int [/!]passos[!scala]:Int[/!])"
+msgstr "[!java]void [/!]avançar() ou [!java]void [/!]avançar([!java]int [/!]passos[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:16
@@ -111,7 +111,7 @@ msgstr "[!java]void [/!]paraFrente() ou [!java]void [/!]paraFrente([!java]int [/
 msgid ""
 "[!java]void [/!]backward() or [!java]void [/!]backward([!java]int [/!]steps[!"
 "scala]:Int[/!])"
-msgstr ""
+msgstr "[!java]void [/!]recuar() ou [!java]void [/!]recuar([!java]int [/!]steps[!scala]:Int[/!])"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:17
@@ -230,13 +230,13 @@ msgstr "direções válidas são:"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:32
 msgid "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
-msgstr "[!java]Direction [/!]getDirection()[!scala]:Direction[/!]"
+msgstr "[!java]Direção [/!]getDireção()[!scala]:Direção[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:33
 msgid ""
 "[!java]void [/!]setDirection([!java]Direction [/!]dir[!scala]:Direction[/!])"
-msgstr ""
+msgstr "[!java]void [/!]ajustaDireção([!java]Direção [/!]dir[!scala]:Direção[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:34
@@ -254,23 +254,22 @@ msgstr "Verifica se o buggle está atualmente <b>selecionado na interface</b>"
 #: src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]selecionado()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:38
-#, fuzzy
 msgid "<b>About the brush</b>"
 msgstr "<b>Sobre o pincel</b>"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "<b>Brush down"
-msgstr "<b>Abaixar o pincel"
+msgstr "<b>Abaixar pincel"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
 msgid "Brush up"
-msgstr "Levantar o pincel"
+msgstr "Levantar pincel"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:39
@@ -305,12 +304,12 @@ msgstr "Obtém a cor do pincel</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:44
 msgid "[!java]void [/!]setBrushColor([!java]Color [/!]c[!scala]:Color[/!])"
-msgstr "[!java]void [/!]ajustaCorDoPincel([!java]Cor [/!]c[!scala]:Cor[/!])"
+msgstr "[!java]void [/!]setCorDoPincel([!java]Cor [/!]c[!scala]:Cor[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:45
 msgid "[!java]Color [/!]getBrushColor()[!scala]:Color[/!]"
-msgstr ""
+msgstr "[!java]Color [/!]getCorDoPincel()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:47
@@ -327,7 +326,7 @@ msgstr "<b>Obtém a cor do chão</b>"
 #: src/plm/universe/bugglequest/BuggleWorld.html:49
 #: src/lessons/turmites/universe/TurmiteWorld.html:15
 msgid "[!java]Color [/!]getGroundColor()[!scala]:Color[/!]"
-msgstr ""
+msgstr "[!java]Color [/!]getCorDoChão()[!scala]:Color[/!]"
 
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:51
@@ -357,22 +356,22 @@ msgstr "(veja a nota sobre exceções)"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:53
 msgid "[!java]boolean [/!]isOverBaggle()[!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]sobreBaggle()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:54
 msgid "[!java]boolean [/!]isCarryingBaggle()[!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:55
 msgid "[!java]void [/!]pickupBaggle()"
-msgstr ""
+msgstr "[!java]void [/!]pegarBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:56
 msgid "[!java]void [/!]dropBaggle()"
-msgstr ""
+msgstr "[!java]void [/!]soltarBaggle()"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:57
@@ -432,22 +431,22 @@ msgstr "Apaga a mensagem</b>"
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:60
 msgid "[!java]boolean [/!]isOverMessage()[!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]boolean [/!]estáSobreMensagem()[!scala]:Boolean[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:61
 msgid "[!java]void [/!]writeMessage([!java]String [/!]msg[!scala]:String[/!])"
-msgstr ""
+msgstr "[!java]void [/!]escreverMensagem([!java]String [/!]msg[!scala]:String[/!])"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:62
 msgid "[!java]String [/!]readMessage()[!scala]:String[/!]"
-msgstr ""
+msgstr "[!java]String [/!]lerMensagem()[!scala]:String[/!]"
 
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:63
 msgid "[!java]void [/!]clearMessage()"
-msgstr ""
+msgstr "[!java]void [/!]limparMensagem()"
 
 #. type: Content of: <h2>
 #: src/plm/universe/bugglequest/BuggleWorld.html:66
@@ -561,13 +560,13 @@ msgid ""
 "AlreadyHaveBaggleException exception.  Dropping a baggle when you have none "
 "throws a DontHaveBaggleException."
 msgstr ""
-"Buggles normais lançam uma exceção BuggleWallException se você pede\n"
-"para eles atravessarem uma parede.  Eles lançam uma exceção\n"
-"NoBaggleUnderBuggleException se você pede para eles pegarem um\n"
-"\"baggle\" de uma célula vazia, ou uma exceção\n"
-"AlreadyHaveBaggleException se eles já carregam um \"baggle\".  Tentar\n"
-"soltar um \"baggle\" numa célula que já contém outro lança uma exceção\n"
-"AlreadyHaveBaggleException.  Soltar um \"baggle\" quando você não tem\n"
+"Buggles normais lançam uma exceção BuggleWallException se você pede "
+"para eles atravessarem uma parede.  Eles lançam uma exceção "
+"NoBaggleUnderBuggleException se você pede para eles pegarem um "
+"\"baggle\" de uma célula vazia, ou uma exceção "
+"AlreadyHaveBaggleException se eles já carregam um \"baggle\".  Tentar "
+"soltar um \"baggle\" numa célula que já contém outro lança uma exceção "
+"AlreadyHaveBaggleException.  Soltar um \"baggle\" quando você não tem "
 "nenhum lança uma DontHaveBaggleException."
 
 #. type: Content of: <p>
@@ -576,8 +575,8 @@ msgid ""
 "SimpleBuggles (ie, the one used in first exercises) display an error message "
 "on problem so that you don't need to know what an exception is."
 msgstr ""
-"SimpleBuggles (ie, aqueles usados nos primeiros exercícios) exibem uma\n"
-"mensagem de erro num problema de forma que você não precise saber o\n"
+"SimpleBuggles (ie, aqueles usados nos primeiros exercícios) exibem uma "
+"mensagem de erro num problema de forma que você não precise saber o "
 "que é uma exceção."
 
 #. type: Content of: <h1>
@@ -629,6 +628,9 @@ msgid ""
 "This first lesson will lead your first steps in programming. It is intended "
 "for beginners. List of seen notions per exercise:"
 msgstr ""
+"A primeira lição vai te guiar pelos primeiros passos em "
+"programação. Ela é feita para iniciantes. Lista de noções vistas por "
+"exercício:"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:10 src/lessons/welcome/Main.html:93
@@ -637,7 +639,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:470
 #: src/lessons/welcome/instructions/Instructions.html:2
 msgid "Instructions"
-msgstr ""
+msgstr "Instruções"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:11 src/lessons/welcome/Main.html:94
@@ -645,7 +647,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:351 src/lessons/welcome/Main.html:431
 #: src/lessons/welcome/Main.html:471
 msgid "Comments"
-msgstr ""
+msgstr "Comentários"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:12 src/lessons/welcome/Main.html:95
@@ -653,7 +655,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:352 src/lessons/welcome/Main.html:432
 #: src/lessons/welcome/Main.html:472
 msgid "Conditionals/ Expressions"
-msgstr ""
+msgstr "Condicionais/ Expressões"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:13 src/lessons/welcome/Main.html:79
@@ -662,7 +664,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:433 src/lessons/welcome/Main.html:473
 #: src/lessons/welcome/loopwhile/LoopWhile.html:2
 msgid "While loops"
-msgstr ""
+msgstr "Loops while (enquanto)"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:14 src/lessons/welcome/Main.html:97
@@ -670,7 +672,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:354 src/lessons/welcome/Main.html:434
 #: src/lessons/welcome/Main.html:474
 msgid "Variables"
-msgstr ""
+msgstr "Variáveis"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:15 src/lessons/welcome/Main.html:98
@@ -679,7 +681,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:435 src/lessons/welcome/Main.html:475
 #: src/lessons/welcome/loopfor/LoopFor.html:2
 msgid "For loops"
-msgstr ""
+msgstr "Loops for"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:16 src/lessons/welcome/Main.html:99
@@ -687,7 +689,7 @@ msgstr ""
 #: src/lessons/welcome/Main.html:356 src/lessons/welcome/Main.html:436
 #: src/lessons/welcome/Main.html:476
 msgid "Do/While loops"
-msgstr ""
+msgstr "loops Do/While (faça/enquanto)"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:17 src/lessons/welcome/Main.html:100
@@ -696,15 +698,16 @@ msgstr ""
 #: src/lessons/welcome/Main.html:437 src/lessons/welcome/Main.html:477
 #: src/lessons/welcome/methods/basics/Methods.html:2
 msgid "Methods"
-msgstr ""
+msgstr "Métodos"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:18 src/lessons/welcome/Main.html:101
 #: src/lessons/welcome/Main.html:184 src/lessons/welcome/Main.html:264
 #: src/lessons/welcome/Main.html:358 src/lessons/welcome/Main.html:438
 #: src/lessons/welcome/Main.html:478
+#, fuzzy
 msgid "Switch"
-msgstr ""
+msgstr "Switch"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:19 src/lessons/welcome/Main.html:102
@@ -712,181 +715,182 @@ msgstr ""
 #: src/lessons/welcome/Main.html:359 src/lessons/welcome/Main.html:439
 #: src/lessons/welcome/Main.html:479
 msgid "Arrays"
-msgstr ""
+msgstr "Arrays"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:23
 #: src/lessons/welcome/environment/Environment.html:2
 msgid "Welcome in the Buggles' World"
-msgstr ""
+msgstr "Bem-vindo ao mundo dos Buggles"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:37
 msgid "Java Instructions"
-msgstr ""
+msgstr "Instruções Java"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:51
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:2
 msgid "Writing more complex programs"
-msgstr ""
+msgstr "Escrevendo programas mais complexos"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:65
 #: src/lessons/welcome/conditions/Conditions.html:2
 msgid "Conditional instructions"
-msgstr ""
+msgstr "Instruções condicionais"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:106
 #: src/lessons/welcome/loopwhile/BaggleSeeker.html:2
 msgid "Baggle Seeking"
-msgstr ""
+msgstr "Procurando Baggles"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:120
 #: src/lessons/welcome/variables/Variables.html:2
 msgid "Storing and manipulating data"
-msgstr ""
+msgstr "Armazenando e manipulando dados"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:148
 #: src/lessons/welcome/loopdowhile/LoopDoWhile.html:2
 msgid "Do .. while loops"
-msgstr ""
+msgstr "Loops Do .. while (faça .. enquanto)"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:188
 #: src/lessons/welcome/methods/basics/MethodsDogHouse.html:2
 msgid "Building methodically"
-msgstr ""
+msgstr "Construindo metodicamente"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:202
 #: src/lessons/welcome/methods/returning/MethodsReturning.html:2
 msgid "Methods returning a result"
-msgstr ""
+msgstr "Métodos retornando um resultado"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:215
 #: src/lessons/welcome/methods/args/MethodsArgs.html:2
 msgid "Methods with parameters"
-msgstr ""
+msgstr "Métodos com perâmetros"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:229
 #: src/lessons/welcome/methods/picture/PictureMono.html:2
 msgid "Methodically drawing"
-msgstr ""
+msgstr "desenhando metodicamente"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:242
 #: src/lessons/welcome/methods/picture/PictureMono2.html:2
+#, fuzzy
 msgid "Methodically drawing (only bigger)"
-msgstr ""
+msgstr "Desenhando metodicamente (apenas grande)"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:268
 #: src/lessons/welcome/methods/picture/PictureMono3.html:2
 msgid "Drawing bigger and bigger"
-msgstr ""
+msgstr "Desenhando maior e maior"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:281
 msgid "Even more pattern to draw"
-msgstr ""
+msgstr "Mais padrões para desenhar"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:295
 msgid "Buggle Dance Revolution"
-msgstr ""
+msgstr "Buggle Dance Revolution"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:309
 msgid "Buggle Dance Revolution 2"
-msgstr ""
+msgstr "Buggle Dance Revolution 2"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:323
 #: src/lessons/welcome/methods/slug/SlugHunting.html:2
 msgid "Slug Hunting"
-msgstr ""
+msgstr "Caça à lesma"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:336
 #: src/lessons/welcome/methods/slug/SlugTracking.html:2
 msgid "Slug Tracking"
-msgstr ""
+msgstr "Rastreando a lesma"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:362
 #: src/lessons/welcome/traversal/Snake.html:2
 msgid "Snake World"
-msgstr ""
+msgstr "Mundo das cobras"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:376
 msgid "Knitting and Arrays"
-msgstr ""
+msgstr "tricô e Arrays"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:390
 msgid "Knitting, Arrays and modulos"
-msgstr ""
+msgstr "tricô, arrays e módulos"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:403
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:2
 msgid "Traversal by column"
-msgstr ""
+msgstr "Percorrer pelas colunas"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:416
 #: src/lessons/welcome/traversal/line/TraversalByLine.html:2
 msgid "Traversal by line"
-msgstr ""
+msgstr "Percorrer pelas linhas"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:442
 #: src/lessons/welcome/traversal/zigzag/TraversalZigZag.html:2
 msgid "Zig-zag traversal"
-msgstr ""
+msgstr "Percorrer em zig-zag"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:455
 #: src/lessons/welcome/traversal/diagonal/TraversalDiagonal.html:2
 msgid "Diagonal Traversal"
-msgstr ""
+msgstr "Percorrer na diagonal"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:483
 msgid "Meaning of the symbols"
-msgstr ""
+msgstr "Significado dos símbolos"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:486
 msgid "Introducing the concept"
-msgstr ""
+msgstr "Introduzindo o conceito"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:489
 msgid "Working on the concept"
-msgstr ""
+msgstr "Trabalhando o conceito"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:492
 msgid "Concept assumed mastered"
-msgstr ""
+msgstr "Conceito tido como dominado"
 
 #. type: Content of: <table><tr><td>
 #: src/lessons/welcome/Main.html:495
 msgid "Concept not mandated by the exercise"
-msgstr ""
+msgstr "Conceito não é obrigatório para o exercício"
 
 #. type: Content of: <h2>
 #: src/lessons/welcome/Main.html:501
 msgid "What will I learn?"
-msgstr ""
+msgstr "O que irei aprender?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/Main.html:502
@@ -900,6 +904,14 @@ msgid ""
 "problems of what you want to solve instead of struggling with syntactic "
 "difficulties."
 msgstr ""
+"Você irá aprender o básico de programação. pelo menos, você irá ser "
+"apresentado aos mais importantes conceitos, permitindo que você leia a "
+"maioria dos algoritmos simples. Você não será capaz de escrever ou ler "
+"programas completos por que você ainda não saberá nada sobre objetos, "
+"mas você irá dominar o que é chamado de \"programação tática\", ou seja, "
+"você vai dominar a sintaxe o suficiente para não ter qualquer problema "
+"com ela, permitindo que você foque nos problemas funcamentais que você "
+"quer resolver ao invés de se debater com dificuldades de sintaxe."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/short_desc.html:3
@@ -907,6 +919,8 @@ msgid ""
 "This first lesson will lead your first steps in programming. It is intended "
 "for beginners."
 msgstr ""
+"Esta primeira lição vai guiar você pelos primeiros passos em "
+"programação. Ela foi feita para iniciantes."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/short_desc.html:6
@@ -914,6 +928,8 @@ msgid ""
 "If you are not sure, go for this lesson that will teach you the bases of "
 "programming."
 msgstr ""
+"Se você não tem certeza, vá para esta lição que ela irá te ensinar as "
+"bases da programação."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:4
@@ -926,21 +942,30 @@ msgid ""
 "language, but you can change it from the Language menu if you want, or by "
 "clicking on the [!thelang/] icon at the right of the status bar below."
 msgstr ""
+"Você acaba de iniciar o Programmer's Learning Machine. Este é um "
+"sistema de gestão de aprendizagem para ensinar a arte de programação "
+"de computadores através de exercícios interativos. É formado por um "
+"conjunto de exercícios agrupados por lições, para que você possa "
+"aprender no seu tempo. Atualmente, o ambiente é configurado para ser "
+"programado na linguagem de programação [!thelang/], mas você pode "
+"mudar isto no menu de Idiomas se você quiser, ou clicando no ícone "
+"[!thelang/] na direita da barra de status."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:11
 msgid ""
 "In this first lesson, the buggles will lead your first steps in programming."
 msgstr ""
+"Nesta primeira lição, os buggles vão guiar seus primeiros passos na "
+"programação."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:13
 msgid "The <i>buggles</i>? What is this??"
-msgstr ""
+msgstr "Os <i>buggles</i>? O que é isso??"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:15
-#, fuzzy
 msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
@@ -951,19 +976,19 @@ msgid ""
 "Language menu), your code must be written in either Java, Python or Scala "
 "(depending on the exercise)."
 msgstr ""
-"Os \"buggles\" são pequenos animais que obedecem a qualquer ordem que você "
-"dá a eles. Em cada exercício, você tem que fornecer a eles as instruções "
-"corretas para que o mundo se torne o objetivo do exercício. For example in "
-"this exercise, you show instruct your buggle to move forward once. You can "
-"see that by checking the difference between the <i>World</i> view and the "
-"<i>Objective</i> one.  Depending on the lessons (and your settings in the "
-"Language menu), your code must be written in either Java, Python or Scala "
-"(depending on the exercise)."
+"Os \"buggles\" são pequenos animais que obedecem a qualquer ordem que "
+"você dá a eles. Em cada exercício, você tem que fornecer a eles as "
+"instruções corretas para que o mundo se torne o objetivo do "
+"exercício. Por exemplo, neste exercício você deve instruir seu buggle "
+"a avançar um passo. Você pode ver isto verificando a diferença entre a "
+"visão <i>Mundo</i> e a visão <i>Objetivo</i>. Dependendo das lições (e "
+"suas configurações no menu linguagem), seu código deve ser escrito em "
+"ou Java, ou Python ou Scala (dependendo do seu exercício)."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:23
 msgid "Working environment"
-msgstr ""
+msgstr "Ambiente de trabalho"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:25
@@ -976,6 +1001,13 @@ msgid ""
 "news is spread on twitter.  Keep posted about the progress of your friends "
 "by following @jlmlovers :)"
 msgstr ""
+"Antes de seguir adiante, se acostume com o ambiente de trabalho. Dê "
+"uma olhada nos vários elementos que compõe a janela principal, mova "
+"seu mouse sobre eles para ver as dicas, e experimente os elementos "
+"para ver o que eles fazem. A área branca abaixo é o console: é onde "
+"erros e mensagens aparecem. Observe que quando você resolve um "
+"exercício corretamente, as boas novas são divulgadas no twitter. Fique "
+"sabendo do progresso dos seus amigos seguindo @jlmlovers :)"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:33
@@ -983,6 +1015,9 @@ msgid ""
 "If you prefer not to post your successes online, just change the relevant "
 "properties in your configuration file, that is [!configfile] in your case."
 msgstr ""
+"Se você prefere não publicar seus sucessos online, simplesmente mude "
+"as propriedades relevantes no seu arquivo de configuração, que é "
+"[!configfile] no seu caso."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:36
@@ -995,11 +1030,19 @@ msgid ""
 "closer, the solution to solve your issue is written in the middle of those "
 "cryptic messages. You will see, with a bit of habit, we get used to it."
 msgstr ""
+"Se seu código contém erros (e código sempre contém em algum momento), "
+"o computador vai exibir mensagens de erro no console. Você obviamente "
+"terá que consertar os erros para passar nos exercícios. As mensagens "
+"que são mostradas podem soar assustadoras à primeira vista, mas não "
+"entre em pânico. O compilador é meio limitado nas suas capacidades de "
+"comunicação, mas ele não é malvado. Se você olhar de perto, a solução "
+"para o problema está escrita no meio daquelas mensagens ilegíveis. "
+"Você vai notar que com um pouco de hábito a gente se acostuma."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/environment/Environment.html:44
 msgid "What am I supposed to do?"
-msgstr ""
+msgstr "O que eu devo fazer?"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:46
@@ -1009,13 +1052,18 @@ msgid ""
 "following code (clicking on the interactive controls is not enough: You have "
 "to write the code after experimenting interactively)."
 msgstr ""
+"é chegada a hora de construir seu primeiro programa. Simplesmente peça "
+"a seu buggle para dar um passo para frente usando o painel de Código "
+"Fonte. Para isto, simplesmente escreva o seguinte código (clicar nos "
+"controles iterativos não é o suficiente: você tem que escrever  o "
+"código e depois experimentar interativamente)."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/environment/Environment.html:50
 #: src/lessons/welcome/instructions/Instructions.html:46
 #, no-wrap
 msgid "forward()[!java];[/!]"
-msgstr ""
+msgstr "avançar()[!java];[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:51
@@ -1024,12 +1072,17 @@ msgid ""
 "instruction is over (yes, computers are so dumb that they cannot <i>guess</"
 "i> obvious stuff like this)."
 msgstr ""
+"Não esqueça do <code>;</code> final que diz ao compilador que a "
+"instrução está encerrada (sim, o computador é tão bocó que ele não "
+"consegue <i>adivinhar</i> coisas óbvias como isto)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/environment/Environment.html:55
 msgid ""
 "Once done, click on run. You can proceed to next exercise once it works."
 msgstr ""
+"Uma vez feito, clique em rodar (run). Você pode seguir para o próximo "
+"exercício assim que este funcionar."
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:4
@@ -1039,6 +1092,10 @@ msgid ""
 "that blindly apply them. The main difficulty is to explain stuff to "
 "something as stupid as a computer..."
 msgstr ""
+"Parabéns! Você acaba de escrever seu primeiro programa! Você agora "
+"captou a ideia: programar é simplesmente dar instruções simples para o "
+"computador que as segue cegamente. A maior dificuldade é explicar tudo "
+"para algo tão idiota quanto um computador..."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:9
@@ -1049,12 +1106,18 @@ msgid ""
 "your programs, such built instructions are called functions or methods, and "
 "you should add parenthesis to invoke them:"
 msgstr ""
+"Programas são principalmente conjuntos de chamadas de métodos, que são "
+"nada mais que listas de ordens simples dadas à máquina. É muito "
+"semelhante a uma receita dizendo <i>Derreta os pedaços de chocolate, "
+"adicione açucar, mexa e sirva</i>. Em seus programas, tais instruções "
+"são chamadas funções ou métodos, e você deve acrescentar parêntesis "
+"para invocá-las:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:14
 #, no-wrap
 msgid "nameOfTheMethod()"
-msgstr ""
+msgstr "nomeDoMétodo()"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:16
@@ -1063,7 +1126,7 @@ msgid ""
 "python|scala] or by new lines[/!].  The previous example would thus be "
 "written in the following way[!python|scala] (you can also add semi-columns "
 "at the end of the lines, but this is not mandatory)[/!]."
-msgstr ""
+msgstr "[!thelang] precisa das instruções separadas por ponto-e-vírgula (;)[!python|scala] ou por quebra de linhas[/!].  O exemplo anterior poderia ter sido escrito da seguinte forma[!python|scala] (você também pode adicionar ponto-e-vírgula no final das linhas, mas isto não é obrigatório)[/!]."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:22
@@ -1074,12 +1137,16 @@ msgid ""
 "coolMix()[!java];[/!]\n"
 "serve()[!java];[/!]\n"
 msgstr ""
+"derretaOsPedaçosDeChocolate()[!java];[/!]\n"
+"adicioneAçucar()[!java];[/!]\n"
+"mexa()[!java];[/!]\n"
+"sirva()[!java];[/!]\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:28
 #: src/lessons/welcome/variables/Variables.html:140
 msgid "[!python|scala]"
-msgstr ""
+msgstr "[!python|scala]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:29
@@ -1088,12 +1155,15 @@ msgid ""
 "as a bad practice to group several instructions on the same line since it "
 "greatly hinders the readability."
 msgstr ""
+"Também pode ser escrito da seguinte forma, mas geralmente isto é "
+"considerado como uma prática ruim para agrupar várias instruções na "
+"mesma linha já que prejudica muito a legibilidade."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:33
 #, no-wrap
 msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
-msgstr ""
+msgstr "derretaOsPedaçosDeChocolate(); adicioneAçucar(); mexa(); sirva()\n"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:35
@@ -1114,7 +1184,7 @@ msgstr ""
 #: src/lessons/recursion/square/FourSquare.html:46
 #: src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
-msgstr ""
+msgstr "[/!]"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:37
@@ -1123,6 +1193,10 @@ msgid ""
 "[!scala]Scala[/!][!python]Python[/!], but it may be possible to define them "
 "by yourself (we'll see later how to define your how methods)."
 msgstr ""
+"Obviamente, estes métodos específicos não existem por padrão em "
+"[!java]Java[/!][!scala]Scala[/!][!python]Python[/!], mas é possível "
+"definí-los você mesmo (vamos ver mais tarde como definir seus próprios "
+"métodos)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:41
@@ -1131,14 +1205,14 @@ msgid ""
 "each button of the interactive control panel. To achieve the same effect "
 "than the <b>forward</b> button (making the buggle moving one step forward), "
 "you need to write the following in the editor:"
-msgstr ""
+msgstr "Por enquanto, vamos ficar apenas com as instruções do buggle. Existe um método para cada botão do painel de controle interativo. Para alcançar o mesmo efeito que o botão <b>avançar</b> (fazendo o buggle avançar um passo), você precisa escrever o seguinte no editor:"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:47
 msgid ""
 "Likewise, to achieve the same effect than the <b>backward</b>, <b>left</b> "
 "and <b>right</b> buttons, you need to use respectively:"
-msgstr ""
+msgstr "Da mesma forma, para obter o mesmo efeito que os botões <b>recuar</b>, <b>esquerda</b> e <b>direita</b>, você precisa respectivamente:"
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:50
@@ -1148,6 +1222,9 @@ msgid ""
 "left()[!java];[/!]\n"
 "right()[!java];[/!]\n"
 msgstr ""
+"recuar()[!java];[/!]\n"
+"esquerda()[!java];[/!]\n"
+"direita()[!java];[/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:55
@@ -1155,6 +1232,9 @@ msgid ""
 "The <b>mark</b> button is a bit particular, since it correspond to two "
 "methods: the first one moves the pen up while the second moves it down."
 msgstr ""
+"O botão <b>mark</b> é diferente, pois corresponde a dois métodos: o "
+"primeiro move a caneta para cima e o segundo move a caneta para "
+"baixo."
 
 #. type: Content of: <pre>
 #: src/lessons/welcome/instructions/Instructions.html:58
@@ -1163,6 +1243,8 @@ msgid ""
 "brushUp()[!java];[/!]\n"
 "brushDown()[!java];[/!]\n"
 msgstr ""
+"levantarPincel()[!java];[/!]\n"
+"abaixarPincel()[!java];[/!]\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:61
@@ -1170,6 +1252,8 @@ msgid ""
 "The buggle offers other methods, that are presented from the \"Help/about "
 "this world\" menu and will be introduced on need."
 msgstr ""
+"O buggle tem outros métodos, que estão no menu \"Ajuda/sobre este "
+"mundo\" e serão introduzidos quando forem necessários."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/instructions/Instructions.html:65
@@ -1190,7 +1274,7 @@ msgstr ""
 #: src/lessons/maze/shortestpath/ShortestPathMaze.html:23
 #: src/lessons/maze/wallfindfollow/WallFindFollowMaze.html:22
 msgid "Exercise goal"
-msgstr ""
+msgstr "Objetivo do exercício"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/Instructions.html:65
@@ -1199,6 +1283,10 @@ msgid ""
 "but not much. The goal for your buggle is simply to draw a house (a box), "
 "and hide inside. Check the objective world to see exactly what this means."
 msgstr ""
+"<a name=\"Objectives\"/> nosso segundo programa será um pouco mais "
+"complicado, mas não muito. O objetivo é que seu buggle simplesmente "
+"desenhe uma casa (um quadrado), e se esconda dentro. Verifique o mundo "
+"objetivo para ver exatamente o que isto significa."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:70
@@ -1208,13 +1296,18 @@ msgid ""
 "have to open the sub-menu to see it.  When you switch the exercise, most of "
 "the exercises are hidden because the tree is folded, as follows:"
 msgstr ""
+"Quando for para o próximo exercício, observe que existe um "
+"sub-exercício depois deste.  Por padrão, ele fica escondido no menu e "
+"você tem que abrir o sub-menu para vê-lo. Quando você troca de "
+"exercício, a maioria dos exercícios fica escondida por que a árvore "
+"está recolhida, como segue:"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/Instructions.html:75
 msgid ""
 "You have to click on the little symbol to the left of the buggle to unfold "
 "the tree, as follows:"
-msgstr ""
+msgstr "Você tem que clicar no pequeno símbolo a esquerda do buggle para expandir a árvore, como segue:"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:3
@@ -1223,6 +1316,9 @@ msgid ""
 "and draw a beautiful G on the board (check Objective panel for details on "
 "what is expected)."
 msgstr ""
+"Agora que nós sabemos como desenhar coisas no tabuleiro, vamos "
+"aproveitar esta habilidade e desenhar um belo G (Veja o painel de "
+"Objetivo para detalhes)."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:7
@@ -3677,6 +3773,11 @@ msgid ""
 "in another method). It may be wise to write the <code>makeV()</code> so that "
 "it places directly the buggle in position for the next V."
 msgstr ""
+"Neste método, você deve usar os métodos <code>levantarPincel()</code>\n"
+"e <code>abaixarPincel()</code> para marcar o chão (se quiser, faça um\n"
+"método só para isto). É uma decisão inteligente escrever\n"
+"<code>makeV()</code> para colocar o buggle diretamente em posição para\n"
+"o próximo V."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/PictureMono.html:21
@@ -3857,6 +3958,11 @@ msgid ""
 "<tt>backward3()</tt>, <tt>backward4()</tt>, and so on does not really help, "
 "to say the less."
 msgstr ""
+"Você não está cansado de escrever o mesmo código várias vezes para se\n"
+"mover uma certa quantidade de passos? Por outro lado, escrever\n"
+"<tt>avançar2()</tt>, <tt>avançar3()</tt>, <tt>avançar4()</tt>, assim\n"
+"como <tt>recuar2()</tt>, <tt>recuar3()</tt>, <tt>recuar4()</tt> e etc\n"
+"também não ajudam, para dizer o mínimo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/args/MethodsArgs.html:10
@@ -4121,6 +4227,10 @@ msgid ""
 "as well as <code>brushUp()</code> and <code>brushDown()</code> to change the "
 "brush position."
 msgstr ""
+"Em <code>makeV()</code>, você deve usar o método\n"
+"<code>setBrushColor()</code> (pré-definido no buggle) para mudar a cor\n"
+"do pincel do buggle, assim como <code>levantarPincel()</code> e\n"
+"<code>abaixarPincel()</code> para mudar a posição do pincel."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/picture/MethodsPicture.html:32
@@ -4212,6 +4322,11 @@ msgid ""
 "<code>brushDown()</code> to put your brush down and mark the ground, and "
 "<code>brushUp()</code> to move it up again."
 msgstr ""
+"Para garantir que você não misture o caminho de onde você veio com o\n"
+"para onde você vai, a forma mais fácil é apagar o caminho por onde\n"
+"você passa. Use o método <code>abaixarPincel()</code> para abaixar seu\n"
+"pincel e marcar o chão, e <code>levantarPincel()</code> para\n"
+"levantá-lo de novo."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/methods/slug/SlugHunting.html:16
@@ -4775,6 +4890,13 @@ msgid ""
 "want to test whether your code is a valid solution to the exercise: you are "
 "asked to let the buggle dance, not to vandalize the dance floor."
 msgstr ""
+"Se você não entendeu por que o buggle não fez os passos esperados,\n"
+"tente adicionar <code>abaixarPincel()</code> no seu método. Isto pede\n"
+"ao buggle para abaixar um pincel deixando um rastro por onde\n"
+"passar. Isto pode ajudar você a entender a trajetória dele, mas não\n"
+"esqueça de remover esta chamada quando você quiser testar se seu\n"
+"código é uma solução válida para o exercício: você pode fazer o buggle\n"
+"dançar, mas não pichar a pista de dança."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/bdr/BDR.html:205
@@ -5104,6 +5226,9 @@ msgid ""
 " while we did not reach the final position\n"
 "   move like a snake\n"
 msgstr ""
+" abaixe o pincel\n"
+" enquanto não chegar na posição final\n"
+"   se mova como uma cobra\n"
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/Snake.html:13
@@ -5212,6 +5337,13 @@ msgid ""
 "to this position. For example, <code>setPos(3, 5)</code> teleports the "
 "buggle to the cell where x=3 and y=5."
 msgstr ""
+"Ao contrário dos exercícios que vimos até agora, não vamos usar os\n"
+" métodos <code>avançar()</code>, <code>recuar()</code> e similares. Ao\n"
+" invés disto, vamos, vamos calcular as coordenadas da próxima posição\n"
+" de buggle e usar o método <code>setPos(x, y)</code> para\n"
+" <i>teletransportar</i> o buggle diretamente para esta posição. Por\n"
+" exemplo, <code>setPos(3, 5)</code> teletransporta o buggle para a\n"
+" célula onde x=3 e y=5."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/traversal/column/TraversalByColumn.html:21
@@ -5445,6 +5577,13 @@ msgid ""
 "you may want to write a <code>setGroundColor(color)</code> method to "
 "factorize things a bit."
 msgstr ""
+"mudar a cor do chão não é difícil, mas meio demorado: você tem que\n"
+"mudar a cor do pincel de seu buggle, baixar o pincel (para marcar a\n"
+"célula atual -- com <code>brushDown()</code>), e levantar o pincel de\n"
+"novo (com <code>levantarPincel()</code>) para evitar problemas quando\n"
+"o buggle se mexer. Você é, naturalmente, livre para organizar seu\n"
+"código da forma que quiser, mas você deve querer escrever um método\n"
+"<code>setCorDoChão(color)</code> para separar um pouco as coisas."
 
 #. type: Content of: <p>
 #: src/lessons/turmites/langton/Langton.html:41
@@ -6951,7 +7090,7 @@ msgstr ""
 #: src/lessons/sort/baseball/universe/BaseballWorld.html:37
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]booleano [/!]selecionado()  [!scala]:Booleano[/!]"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/sort/dutchflag/universe/DutchFlagWorld.html:26
@@ -7035,7 +7174,7 @@ msgstr ""
 #: src/lessons/sort/pancake/universe/PancakeWorld.html:21
 #, no-wrap
 msgid "[!java]boolean [/!]isSelected()   [!scala]:Boolean[/!]"
-msgstr ""
+msgstr "[!java]booleano [/!]selecionado()   [!scala]:Booleano[/!]"
 
 #. type: Content of: <h1>
 #: src/lessons/sort/pancake/Main.html:2
@@ -7367,6 +7506,13 @@ msgid ""
 "world you are currently debugging. This will help breaking the difficulty in "
 "parts by debugging the situation on after the other."
 msgstr ""
+"Para depurar um mundo depois do outro e evitar que as mensagens de\n"
+"todos os mundos fiquem misturadas, você pode escrever sua função de\n"
+"depuração apenas se o método <code>selecionado()</code> retorna\n"
+"verdadeiro. Isto acontecerá apenas para a entidade que estiver\n"
+"selecionada na interface gráfica, que é provavelmente o mundo que você\n"
+"está depurando. Isto vai ajudar dividindo a dificuldade em partes e\n"
+"depurando a situção uma após a outra."
 
 #. type: Content of: <p><div>
 #: src/lessons/sort/pancake/GatesPancake.html:86
@@ -7922,6 +8068,8 @@ msgid ""
 "[!java]void [/!]forward([!java]double [/!]steps[!scala]:Double[/!])\n"
 "[!java]void [/!]backward([!java]double [/!]steps[!scala]:Double[/!])"
 msgstr ""
+"[!java]void [/!]avançar([!java]double [/!]passos[!scala]:Double[/!])\n"
+"[!java]void [/!]recuar([!java]double [/!]passos[!scala]:Double[/!])"
 
 #. type: Content of: outside any tag (error?)
 #: src/plm/universe/turtles/TurtleWorld.html:16
@@ -8073,6 +8221,9 @@ msgid ""
 "Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
 "will not leave any trace during its subsequent moves."
 msgstr ""
+"Levanta a caneta (tartarugas têm canetas, não pinceis, como os\n"
+"buggles). A tartaruga não vai  deixar nenhum rastro durante seus\n"
+"passos seguintes."
 
 #. type: Content of: <pre>
 #: src/plm/universe/turtles/TurtleWorld.html:61
@@ -10873,7 +11024,6 @@ msgstr ""
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:57
-#, fuzzy
 msgid ""
 "A scrolling menu allows to choose the world. Indeed, the program you write "
 "may be executed in several worlds to test it in differing conditions. This "
@@ -10888,16 +11038,15 @@ msgstr ""
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:62
-#, fuzzy
 msgid ""
 "A slider placed right bellow allows to choose the animation speed of the "
 "world. More precisely, it allows to choose the delay (in milliseconds) that "
 "the buggles must wait after each action to allow you to see what they are "
 "doing."
 msgstr ""
-"Um \"slider\" colocado \"underneath\" serve para escolher a velocidade da\n"
+"Um \"slider\" colocado abaixo serve para escolher a velocidade da\n"
 "animação do mundo. Mais precisamente, permite escolher o atraso (em\n"
-"milisegundos) que os \"buggles\" devem esperar depois de cada ação para\n"
+"milisegundos) que os buggles devem esperar depois de cada ação para\n"
 "permitir que você veja o que eles estão fazendo."
 
 #. type: Content of: <ul><li><ul><li>
@@ -10923,17 +11072,16 @@ msgstr ""
 
 #. type: Content of: <ul><li><ul><li>
 #: lib/doc/MainWindow.html:76
-#, fuzzy
 msgid ""
 "<b>The interactive controls</b>. Placed under the world view, these buttons "
 "allows you to interactively control the buggles. This way, you can try to "
 "<i>manually</i> bring your buggle to the scenario objective before writting "
 "the needed code in the editor."
 msgstr ""
-"<b>Os controles interativos</b>. Localizados abaixo da Visão do mundo, estes "
-"botões servem para controlar interativamente os \"buggles\". Desta forma, "
-"você pode tentar trazer <i>manualmente</i> seu \"buggle\" para o objetivo do "
-"cenário antes de escrever o código necessário no editor."
+"<b>Os controles interativos</b>. Localizados abaixo da Visão do mundo,\n"
+"estes botões servem para controlar interativamente os buggles. Desta\n"
+"forma, você pode tentar trazer <i>manualmente</i> seu buggle para o\n"
+"objetivo do cenário antes de escrever o código necessário no editor."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:82
@@ -10949,7 +11097,7 @@ msgstr "O botão <b>Avançar</b> faz seu \"buggle\" dar um passo à frente."
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:86
 msgid "The <b>Backward</b> button let it do one step backward."
-msgstr "O botão <b>Voltar</b> faz ele dar um passo para trás."
+msgstr "O botão <b>Recuar</b> faz ele dar um passo para trás."
 
 #. type: Content of: <ul><li><ul><li><ul><li>
 #: lib/doc/MainWindow.html:88
