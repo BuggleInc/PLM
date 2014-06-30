@@ -10,13 +10,15 @@ int main(){
 	return 0;
 }
 
-/* BEGIN TEMPLATE */
-/* BEGIN SOLUTION */
 
 int angleSum;
 Direction chosenDirection = NORTH;
 
+#line 1 "PledgeMaze.c"
+/* BEGIN TEMPLATE */
+
 void run() {
+/* BEGIN SOLUTION */
 	int state = 0 ;
 	angleSum = 0;
 	setDirection(chosenDirection);
@@ -59,6 +61,7 @@ int isChosenDirectionFree() {
 	int isFree = !isFacingWall();
 	setDirection(memorizedD);
 	return isFree;
+
+	/* END SOLUTION */
 }
-/* END SOLUTION */
 /* END TEMPLATE */

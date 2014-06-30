@@ -13,6 +13,7 @@ int main(){
 	return 0;
 }
 
+#line 1 "ShortestPath.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */

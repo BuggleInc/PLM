@@ -10,13 +10,11 @@ int main(){
 	return 0;
 }
 
-
-/* BEGIN TEMPLATE */
-/* BEGIN SOLUTION */
-
 Direction chosenDirection = NORTH;
-
+#line 1 "IslandMaze.c"
+/* BEGIN TEMPLATE */
 void run() {
+/* BEGIN SOLUTION */
 	int state = 0 ;
 	setDirection(chosenDirection);
 	while ( !isOverBaggle() )
@@ -55,6 +53,7 @@ int isChosenDirectionFree() {
 	int isFree = !isFacingWall();
 	setDirection(memorizedD);
 	return isFree;
+	/* END SOLUTION */
 }
-/* END SOLUTION */
+
 /* END TEMPLATE */

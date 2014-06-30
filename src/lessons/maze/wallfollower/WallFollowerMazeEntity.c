@@ -11,19 +11,10 @@ int main(){
 
 #line 1 "WallFollowerMaze"
 /* BEGIN TEMPLATE */
-/* BEGIN SOLUTION */
-void stepHandOnWall() {
-	// PRE: we have a wall on the left
-	// POST: we still have the same wall on the left, are one step ahead
-
-	while (!isFacingWall()) {
-		forward(1);
-		left(); // change to right to get a right follower
-	}
-	right(); // change to left to get a right follower
-}
 
 void run() {
+
+	/* BEGIN SOLUTION */
 	// Make sure we have a wall to the left
 	left();
 	while (!isFacingWall())
@@ -34,5 +25,16 @@ void run() {
 		stepHandOnWall();
 	pickupBaggle();
 }
-/* END SOLUTION */
+void stepHandOnWall() {
+	// PRE: we have a wall on the left
+	// POST: we still have the same wall on the left, are one step ahead
+
+	while (!isFacingWall()) {
+		forward(1);
+		left(); // change to right to get a right follower
+	}
+	right(); // change to left to get a right follower
+	/* END SOLUTION */
+}
+
 /* END TEMPLATE */
