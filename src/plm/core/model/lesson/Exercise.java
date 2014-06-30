@@ -103,8 +103,6 @@ public abstract class Exercise extends Lecture {
 			currentWorld.get(i).notifyWorldUpdatesListeners();
 
 			lastResult.totalTests++;
-
-			lastResult.totalTests++;
 			
 			if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
@@ -240,7 +238,7 @@ public abstract class Exercise extends Lecture {
 					//compile the RemoteBuggle
 					String compileRemote="";
 					String link="";
-					if(code.contains("RemoteBuggle")){
+					if(code.contains("RemoteBuggle.h")){
 						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o langages/c/bin/RemoteBuggle.o";
 						link = "gcc langages/c/bin/current.o langages/c/bin/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
@@ -251,7 +249,6 @@ public abstract class Exercise extends Lecture {
 					//compile the current code
 					String compileCode = "gcc -c -x c -o langages/c/bin/current.o -I langages/c/include/ -Wall - ";
 					
-					System.out.println("===============\n"+compileRemote+" ; "+compileCode+" ; "+link+"\n===============\n");
 					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
 					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
 					
