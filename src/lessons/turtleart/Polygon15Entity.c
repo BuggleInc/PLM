@@ -8,14 +8,15 @@ int main(){
 }
 
 
-#line 1 "Square.c"
+#line 1 "Polygon15.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */
+	int sides=20;
 	int i;
-	for (i = 0; i < 4; i++) {
-		forward(200);
-		right(90);
+	for (i=0; i<sides;i++) {
+		forward(30);
+		right(360/sides);
 	}
 	/* END SOLUTION */
 }

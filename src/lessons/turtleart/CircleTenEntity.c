@@ -8,14 +8,13 @@ int main(){
 }
 
 
-#line 1 "Square.c"
+#line 1 "CircleTen.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */
 	int i;
-	for (i = 0; i < 4; i++) {
-		forward(200);
-		right(90);
+	for (i=10; i<=100;i+=10) {
+		circle(i);
 	}
 	/* END SOLUTION */
 }

@@ -436,6 +436,7 @@ public class Turtle extends Entity {
 		// TODO GIANNINI
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		double nb,nb2;
+		int nbInt;
 
 		
 		
@@ -520,12 +521,12 @@ public class Turtle extends Entity {
 				out.write("\n");
 				break;
 			case 130:
-				out.write(ColorMapper.color2name(getColor()));
+				out.write(ColorMapper.color2int(getColor()));
 				out.write("\n");
 				break;
 			case 131:
-				str = (command.split(" ")[1]);
-				setColor(ColorMapper.name2color(str));
+				nbInt = Integer.parseInt((command.split(" ")[1]));
+				setColor(ColorMapper.int2color(nbInt));
 				break;
 			case 132:
 				out.write((isSelected()?"1":"0"));

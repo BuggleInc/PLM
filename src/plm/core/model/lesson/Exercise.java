@@ -238,15 +238,21 @@ public abstract class Exercise extends Lecture {
 					}
 					
 					//compile the RemoteBuggle
-					String cmd1 = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o langages/c/bin/RemoteBuggle.o";
+					String compileRemote="";
+					String link="";
+					if(code.contains("RemoteBuggle")){
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o langages/c/bin/RemoteBuggle.o";
+						link = "gcc langages/c/bin/current.o langages/c/bin/RemoteBuggle.o -o "+execPath;
+					}else if(code.contains("RemoteTurtle")){
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o langages/c/bin/RemoteTurtle.o";
+						link = "gcc langages/c/bin/current.o langages/c/bin/RemoteTurtle.o -o "+execPath;
+					}
 					
 					//compile the current code
-					String cmd2 = "gcc -c -x c -o langages/c/bin/current.o -I langages/c/include/ -Wall - ";
+					String compileCode = "gcc -c -x c -o langages/c/bin/current.o -I langages/c/include/ -Wall - ";
 					
-					//linking
-					String cmd3 = "gcc langages/c/bin/current.o langages/c/bin/RemoteBuggle.o -o "+execPath;
-					
-					String[] arg1 = {"/bin/sh","-c",cmd1+" ; "+cmd2+" ; "+cmd3};
+					System.out.println("===============\n"+compileRemote+" ; "+compileCode+" ; "+link+"\n===============\n");
+					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
 					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
 					
 					

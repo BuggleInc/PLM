@@ -8,13 +8,13 @@ int main(){
 }
 
 
-#line 1 "Square.c"
+#line 1 "SmallSquare.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */
 	int i;
 	for (i = 0; i < 4; i++) {
-		forward(200);
+		forward(100);
 		right(90);
 	}
 	/* END SOLUTION */

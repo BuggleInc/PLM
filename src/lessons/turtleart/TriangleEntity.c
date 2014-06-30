@@ -8,14 +8,15 @@ int main(){
 }
 
 
-#line 1 "Square.c"
+#line 1 "Triangle.c"
 /* BEGIN TEMPLATE */
 void run() {
 	/* BEGIN SOLUTION */
 	int i;
-	for (i = 0; i < 4; i++) {
+	right(30);
+	for (i = 0; i < 3; i++) {
 		forward(200);
-		right(90);
+		right(120);
 	}
 	/* END SOLUTION */
 }
