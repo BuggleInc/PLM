@@ -25,7 +25,7 @@ char* int2str(int nb){
 
 int getParam(){
 	int p=-1;
-	printf("109 getParam\n");
+	printf("200 getParam\n");
 	fflush(stdout);
 	scanf("%d",&p);
 	flush();

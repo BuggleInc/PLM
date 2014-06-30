@@ -13,7 +13,7 @@ public class SlugSnailEntity extends plm.universe.bugglequest.SimpleBuggle {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb;
 		switch(num){
-			case 109 :
+			case 200 :
 			try {
 				out.write(Integer.toString(getColorIntParam()));
 				out.write("\n");
