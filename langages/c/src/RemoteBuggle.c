@@ -23,14 +23,6 @@ char* int2str(int nb){
 
 /* Function for buggles */
 
-int getParam(){
-	int p=-1;
-	printf("200 getParam\n");
-	fflush(stdout);
-	scanf("%d",&p);
-	flush();
-	return p;
-}
 
 void left(){
 	printf("110 left\n");
@@ -168,7 +160,7 @@ Color getBrushColor(){
 
 Color getGroundColor(){
 	int num=-1;
-	printf("132 getBrushColor\n");
+	printf("132 getGroundColor\n");
 	fflush(stdout);
 	scanf("%d",&num);
 	flush();
@@ -286,7 +278,37 @@ int hasLeftWall(int x, int y){
 }
 
 
+/* Others */
 
+int getParam(){
+	int p=-1;
+	printf("200 getParam\n");
+	fflush(stdout);
+	scanf("%d",&p);
+	flush();
+	return p;
+}
+
+void stepDone(){
+	printf("201 stepDone\n");
+	fflush(stdout);
+}
+
+int getParamLangtonColor1(char* tab){
+	char* line = (char*)malloc(sizeof(char)*256);
+	printf("202 getParamLangtonColor1\n");
+	fflush(stdout);
+	scanf("%s",line);
+	flush();
+
+	int length = strlen(line);
+	int i=0;
+	for(i=0;i<length;i++){
+		tab[i]=line[i];
+	}
+	free(line);
+	return length;
+}
 
 /* BINDINGS TRANSLATION: French */
 void gauche()   				{ left(); }

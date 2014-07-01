@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 
 typedef enum{
@@ -29,9 +30,13 @@ typedef enum{
 	WEST
 }Direction;
 
-char* int2str(int nb);
+/* utils */
 
+char* int2str(int nb);
 int getParam();
+int getParamLangtonColor1(char* tab);
+void stepDone();
+
 
 void left();
 void right();
