@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -127,6 +128,9 @@ public class Game implements IWorldView {
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
 	private LogWriter outputWriter;
+	private PrintStream outputOrig = System.out;
+	private PrintStream errorOrig = System.err;
+
 
 	public SessionDB studentWork = new SessionDB();
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
@@ -612,13 +616,18 @@ public class Game implements IWorldView {
 		return this.state;
 	}
 
-	public void setOutputWriter(LogWriter writer) {
-		this.outputWriter = writer;
-		if (getProperty(PROP_OUTPUT_CAPTURE, "true",true).equals("true")) {
+	public void setCaptureOutput(boolean isCaptured) {
+		if (isCaptured && getProperty(PROP_OUTPUT_CAPTURE, "true",true).equals("true")) {
 			Logger l = new Logger(outputWriter);
 			System.setOut(l);
 			System.setErr(l);
+		} else if (System.out.equals(this.outputOrig)) {
+			System.setOut(this.outputOrig);
+			System.setErr(this.errorOrig);
 		}
+	}
+	public void setOutputWriter(LogWriter writer) {
+		this.outputWriter = writer;
 	}
 
 	public LogWriter getOutputWriter() {
