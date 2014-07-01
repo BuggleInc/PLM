@@ -139,13 +139,12 @@ public class Game implements IWorldView {
 	private Users users;
 
 	private static boolean ongoingInitialization = false;
-	private static String lessonChooser = "lessons.chooser";
 	public  static I18n i18n;
 
 	public static Game getInstance() {
 		if (Game.instance == null) {
 			if (ongoingInitialization)
-				throw new RuntimeException("Loop in initialization process. This is a PLM bug.");
+				throw new RuntimeException("Loop in initialization process. This is a PLM bug: please report it.");
 			ongoingInitialization = true;
 			Game.instance = new Game();
 			ongoingInitialization = false;
@@ -300,16 +299,7 @@ public class Game implements IWorldView {
 			return i18n.tr("{0} received while searching for resource {1}: {2}",e.getClass().getName(),resource,e.getLocalizedMessage());
 		}
 	}
-		
-	
-	/**
-	 * Load the chooser, stored in plm.core.ui.chooser
-	 */
-	public void loadChooser() {
-		Game.instance.switchLesson(lessonChooser,false);
-	}
-	
-	
+			
 	/** Change the current lesson.
 	 * 
 	 * Also, initialize the newly used lesson on need. It must already be in the classpath 
@@ -347,8 +337,8 @@ public class Game implements IWorldView {
 				return getCurrentLesson();
 			}
 		}
-		// Prevent an error message telling us that the PLM couldn't load our code for the chooser -- kinda obvious
-		if ( !lessonName.equals(lessonChooser) && sessionKit != null)
+		// Prevent obvious error messages
+		if (sessionKit != null)
 			sessionKit.loadLesson(SAVE_DIR, lesson);
 		try {
 			waitInitThreads();
@@ -497,6 +487,8 @@ public class Game implements IWorldView {
 	}
 
 	public World getSelectedWorld() {
+		if (this.currentLesson == null)
+			return null;
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise) {
 			if (this.selectedWorld == null) {

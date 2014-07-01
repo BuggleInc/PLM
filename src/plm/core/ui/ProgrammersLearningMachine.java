@@ -18,8 +18,9 @@ public class ProgrammersLearningMachine {
 		
 		FileUtils.setLocale(new JFrame().getLocale());
 		
-		Game.getInstance().loadChooser();
+		Game.getInstance(); // make sure it's created
 		MainFrame.getInstance().setVisible(false);		
-		new ChooseLessonDialog();
+		ChooseLessonDialog cld = new ChooseLessonDialog();
+		cld.setVisible(true);
 	}
 }

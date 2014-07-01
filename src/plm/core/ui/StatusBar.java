@@ -74,7 +74,8 @@ public class StatusBar extends JPanel implements GameListener,GameStateListener,
 		statusAnimationLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		statusAnimationLabel.setIcon(ResourcesCache.getIcon("img/busyicon/idle.png"));
 		
-		setupProgLanguages(game.getCurrentLesson().getCurrentExercise());
+		if (game.getCurrentLesson() != null)
+			setupProgLanguages(game.getCurrentLesson().getCurrentExercise());
 		progLangLabel = new JLabel();
 		progLangLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		progLangLabel.setIcon(Game.getProgrammingLanguage().getIcon());
