@@ -77,7 +77,8 @@ public class GitPush {
 				git.checkout().setName(userBranch).call();
 				git.pull().call();
 			}
-
+		} catch (org.eclipse.jgit.api.errors.TransportException e) {
+			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable. That's fine."));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {
