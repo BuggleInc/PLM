@@ -488,7 +488,6 @@ public abstract class AbstractBuggle extends Entity {
 
 	@Override
 	public void command(String command, BufferedWriter out){
-		System.out.println(command);
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb,nb2;
 		String str;
