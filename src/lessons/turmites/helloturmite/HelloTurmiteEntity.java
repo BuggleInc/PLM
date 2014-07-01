@@ -1,6 +1,11 @@
 package lessons.turmites.helloturmite;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Arrays;
+
+import com.kenai.jffi.Array;
 
 import plm.universe.bugglequest.SimpleBuggle;
 
@@ -65,8 +70,45 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 			colors[i] = allColors[i];
 
 		for (int i=0;i<nbSteps;i++) {
-			((lessons.turmites.universe.TurmiteWorld)world).stepDone();
+			stepDone();
 			step(colors,rule);
 		}
+	}
+	
+	@Override
+	public void command(String command, BufferedWriter out) {
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+
+		try {
+			switch(num){
+			case 200 :
+				out.write(((Integer)getParam(0)).toString());
+				out.write("\n");
+				out.flush();
+				break;
+			case 201:
+				stepDone();
+				break;
+			case 202:
+				int[][][] tab = (int[][][])getParam(1);
+				String param="#"+Arrays.toString(tab)+"#";
+				System.out.println("================== : "+param);
+				out.write(param);
+				out.write("\n");
+				out.flush();
+				break;
+
+			default:
+				super.command(command, out);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
+	public void stepDone(){
+		((lessons.turmites.universe.TurmiteWorld)world).stepDone();
 	}
 }
