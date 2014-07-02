@@ -57,7 +57,8 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		this.game.addGameListener(this);
 		initComponents();
 		Game.getInstance().addHumanLangListener(this);
-		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
+		if (game.getCurrentLesson() != null)
+			currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
 	}
 
 	public void setEnabledControl(boolean enabled) {
@@ -129,9 +130,11 @@ public class ExerciseView extends JPanel implements GameListener, HumanLangChang
 		this.setLayout(new MigLayout("insets 0 0 0 0, fill"));
 		this.add(splitPane, "grow");
 		
-		Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
-		worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldCount() > 1);
-		entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorlds(WorldKind.CURRENT).get(0).getEntityCount() > 1); 
+		if (game.getCurrentLesson() != null) {
+			Lecture lect = this.game.getCurrentLesson().getCurrentExercise();
+			worldComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorldCount() > 1);
+			entityComboBox.setVisible(lect instanceof Exercise && ((Exercise) lect).getWorlds(WorldKind.CURRENT).get(0).getEntityCount() > 1); 
+		}
 	}
 
 	public void selectObjectivePane() {

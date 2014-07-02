@@ -148,7 +148,8 @@ public class MainFrame extends JFrame implements GameStateListener, GameListener
 		initMenuBar(g);
 		initToolBar(g);
 		initStatusBar(g);
-		currentExerciseHasChanged(g.getCurrentLesson().getCurrentExercise()); 
+		if (g.getCurrentLesson() != null)
+			currentExerciseHasChanged(g.getCurrentLesson().getCurrentExercise()); 
 
 		g.addGameStateListener(this);
 		g.addGameListener(this);
@@ -787,7 +788,8 @@ class ProgLangSubMenu extends JMenu implements ProgLangChangesListener, GameList
 		super(name);
 		Game.getInstance().addGameListener(this);
 		Game.getInstance().addProgLangListener(this);
-		currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
+		if (Game.getInstance().getCurrentLesson() != null)
+			currentExerciseHasChanged(Game.getInstance().getCurrentLesson().getCurrentExercise());
 	}
 
 	@Override

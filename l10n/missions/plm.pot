@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2014-05-07 18:29+0200\n"
+"POT-Creation-Date: 2014-07-01 19:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,732 +15,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#. type: Content of: <h2>
-#: lib/doc/MainWindow.html:1
-msgid "The PLM Main Window"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: lib/doc/MainWindow.html:3
-msgid ""
-"The PLM working environment should be self-explanatory, in particular with "
-"the tool tips appearing when your mouse is over the elements.  Here is a "
-"little explanation of the components in case you fail to understand "
-"something. The main window is made of 5 main components:"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: lib/doc/MainWindow.html:10
-msgid ""
-"<b>The menu:</b> Placed on top of the window, it gives you access to some "
-"advanced commands such as exiting the program, and some other that we will "
-"detail later."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: lib/doc/MainWindow.html:14
-msgid ""
-"<b>The tool bar:</b> Placed just below the menu, it gives you access to the "
-"four main commands:"
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:19
-msgid ""
-"The <b>Start</b> button, which begins the compilation and execution of the "
-"code you may have typed in the editor. At the end of the execution, it "
-"verifies whether you reach the situation constituting the objective of the "
-"exercise or not. If yes, you gain access to the next exercise using the "
-"<b>Exercise</b> menu. If not, you need to rework your code."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:25
-msgid ""
-"The <b>Stop</b> button allows you to interupt the execution of your code, "
-"what may reveal useful if you encounter an <i>infinite loop</i>."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:28
-msgid ""
-"The <b>Reset</b> button can be used to reset the world into its initial "
-"state."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:31
-msgid ""
-"The <b>Demo</b> button shows you the execution of the expected "
-"solution. During its execution, you may want to swich the seen world to see "
-"the different expected solutions."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:34
-msgid ""
-"Please note that there is often several ways of achieving the awaited "
-"solution, and that the one presented during the demo is not more or less "
-"correct than the others. You are completely free to not follow strictly the "
-"process shown by the demo, as long as your final solution matches the "
-"exercise expectations."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:40
-msgid ""
-"The scrolling menu <b>Lessoon</b> allows you to choose the lesson you want "
-"to work on."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:43
-msgid ""
-"The scrolling menu <b>Exercise</b> allows you to switch to another exercise "
-"when you want. Some lessons require you to finish an exercise before "
-"starting the previous one."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: lib/doc/MainWindow.html:49
-msgid ""
-"<b>Mission and editor tabs:</b> this is were you read this very text. This "
-"area contains several tabs to which you can access by clicking on their name "
-"on the top left. The first tab (which is always named <b>Mission</b>)  "
-"contains a presentation of the current exercise. To solve an exercise, you "
-"need to write your code in the other tabs. For example, you can now clic on "
-"the <b>Source Code</b> tab to see the actual source. It is empty because "
-"there is no code to write for this introduction exercise."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: lib/doc/MainWindow.html:57
-msgid ""
-"<b>The console:</b> Placed under the tabs, this is where any messages of the "
-"application will appear. This area is initially empty and white."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: lib/doc/MainWindow.html:60
-msgid ""
-"<b>World view</b> Placed on the right of the tabs, it is constituted of five "
-"elements:"
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:65
-msgid ""
-"A scrolling menu allows to choose the world. Indeed, the program you write "
-"may be executed in several worlds to test it in differing conditions. This "
-"menu allows you to choose the world you want to see."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:69
-msgid ""
-"A slider placed underneath allows to choose the animation speed of the "
-"world. More precisely, it allows to choose the delay (in milliseconds) that "
-"the buggles must wait after each action to allow you to see what they are "
-"doing."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:74
-msgid ""
-"A tab <b>World</b> represents the view of the world currently selected (from "
-"the scrolling menu). This view is thus constitued of a grid forming the "
-"several cells of the world, as well as several <i>buggles</i> awaiting for "
-"your orders."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:79
-msgid ""
-"An <b>Objective</b> tab displaying the world as it must be by the end of the "
-"exercise."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li>
-#: lib/doc/MainWindow.html:83
-msgid ""
-"<b>The interactive controls</b>. Placed under the world view, these buttons "
-"allows you to interactively control the buggles. This way, you can try to "
-"<i>manually</i> bring your buggle to the scenario objective before writting "
-"the needed code in the editor."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li><ul><li>
-#: lib/doc/MainWindow.html:89
-msgid "A scrolling menu allows to select the buggle you want to control."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li><ul><li>
-#: lib/doc/MainWindow.html:91
-msgid "The <b>Forward</b> button let your buggle do one step forward."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li><ul><li>
-#: lib/doc/MainWindow.html:93
-msgid "The <b>Backward</b> button let it do one step backward."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li><ul><li>
-#: lib/doc/MainWindow.html:95
-msgid "The <b>Turn left</b> button ask your buggle to turn of 90° to its left."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li><ul><li>
-#: lib/doc/MainWindow.html:97
-msgid ""
-"The <b>Turn right</b> button asks the buggle to turn to the right (isn't "
-"this amazing?)."
-msgstr ""
-
-#. type: Content of: <ul><li><ul><li><ul><li>
-#: lib/doc/MainWindow.html:100
-msgid ""
-"The <b>Mark</b> button requests your buggle to leave a mark behind it when "
-"it goes."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/plm/universe/sort/SortingWorld.html:2
-msgid "Sorting World"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/sort/SortingWorld.html:3
-msgid ""
-"This world provides tools to experiment with the sorting algorithms. It can "
-"be used in two different ways: the first one is naturally to write the "
-"required sorting algorithms. But it is also possible to simply use the demo "
-"mode of each exercise to observe the behavior of sorting algorithms. It "
-"helps understanding the differences between each of them."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/plm/universe/sort/SortingWorld.html:9
-msgid "Methods available to sorting algorithms"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:11
-msgid "<b>Method</b>"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:11
-msgid "<b>Action</b>"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:11
-msgid "<b>Cost</b>"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:12
-msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:13
-msgid "Returns the amount of values in the array"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:13 src/plm/universe/sort/SortingWorld.html:31
-msgid "none"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:15
-msgid ""
-"[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int "
-"[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:16
-msgid ""
-"Returns true if the content of cell i is strictly smaller than the one of "
-"cell j"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:16
-msgid "two reads"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:17
-msgid ""
-"[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], "
-"[!java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:18
-msgid ""
-"Returns true if the content of cell i is strictly smaller than the "
-"<code>value</code>"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:18 src/plm/universe/sort/SortingWorld.html:26
-msgid "one read"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:20
-msgid ""
-"[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int "
-"[/!]j[!scala]:Int[/!])"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:21
-msgid "Swaps the content of cell i and the one of cell j"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:21
-msgid "two reads, two writes"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:22
-msgid ""
-"[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int "
-"[/!]to[!scala]:Int[/!])"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:23
-msgid "Copy the content of cell 'from' into the cell 'to'"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:23
-msgid "one read, one write"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:25
-msgid "[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:26
-msgid "Returns the value of cell idx"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:27
-msgid ""
-"[!java]void [/!]setValue([!java]int [/!]idx[!scala]:Int[/!], [!java]int "
-"[/!]value[!scala]:Int[/!])"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:28
-msgid "Sets cell 'idx' to the <code>value</code>"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:28
-msgid "one write"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/sort/SortingWorld.html:30
-msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/sort/SortingWorld.html:31 src/lessons/sort/pancake/universe/PancakeWorld.html:22 src/lessons/recursion/hanoi/universe/HanoiWorld.html:28
-msgid "Returns whether the current world is selected in the graphical interface."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/plm/universe/sort/SortingWorld.html:35
-msgid "History view"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:36
-msgid ""
-"It is not enough to sort the array to pass the exercises. Your solution must "
-"strictly follow the expected behavior of each exercise. This is enforced by "
-"checking that your algorithm needs the same amount of read and write "
-"operations to sort the array. When they don't match, understanding the "
-"difference between your code and the expected solution can reveal very "
-"difficult."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:43
-msgid ""
-"To help in this process, it is possible to graphically explore the history "
-"of your sorting algorithm. Switch to the Objective view and use the "
-"contextual menu (right click) to switch from the the view of the current "
-"state to the view of its history."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:48 src/lessons/sort/basic/bubble/AlgBubbleSort1.html:19
-msgid ""
-"The history view is a bit hairly at the first glance, but actually rather "
-"simple: The time flows from left to right on this graph, and each row is a "
-"cell of your array. The curved lines that go navigate between rows represent "
-"a given data value. When two lines cross, this means that two values were "
-"swapped at this time stamp; A line fork represent a value copy; When a value "
-"is magenta and followed by an interrogation mark (?), it was read using "
-"getValue(); If the value is red and followed with an exclamation point (!), "
-"it was written using setValue()."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/sort/SortingWorld.html:57
-msgid ""
-"This view, inspired from Aldo Cortesi, reveals very helpful understand the "
-"inner behavior of sorting algorithms."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/plm/universe/turtles/TurtleWorld.html:2
-msgid "The universe of turtles"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/turtles/TurtleWorld.html:4
-msgid "This is an adaptation of LOGO for the Java Learning Machine."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/plm/universe/turtles/TurtleWorld.html:6
-msgid ""
-"It is directly inspired from the work of the mathematician Seymour Papert in "
-"the 60's. Inspired from the swiss psycholog Jean Piaget, he came up with a "
-"learning method called LOGO to teach programming to young childs. The world "
-"is full of turtles which leave a painting where they go and which respond to "
-"simple orders."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:12
-msgid "Functions to move the turtle"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:14
-#, no-wrap
-msgid ""
-"[!java]void [/!]forward([!java]double [/!]steps[!scala]:Double[/!])\n"
-"[!java]void [/!]backward([!java]double [/!]steps[!scala]:Double[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:16
-msgid "Moves forward or backward of the requested amount of steps."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:18
-#, no-wrap
-msgid ""
-"[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])\n"
-"[!java]void [/!]left([!java]double [/!]angle[!scala]:Double[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:20
-msgid "Turns left or right of the given angle (in degrees)."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:22
-#, no-wrap
-msgid ""
-"[!java]double [/!]getX()[!scala]:Double[/!]\n"
-"[!java]double [/!]getY()[!scala]:Double[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:24
-msgid "Returns the current position of the turtle."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:26
-#, no-wrap
-msgid ""
-"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
-"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
-"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double "
-"[/!]y[!scala]:Double[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:29
-msgid "Teleports the turtle to a new position (without leaving any trace)."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:31
-#, no-wrap
-msgid ""
-"[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double "
-"[/!]y[!scala]:Double[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:32
-msgid "Moves the turtle to a new position."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:34
-#, no-wrap
-msgid "[!java]void [/!]circle([!java]double [/!]radius[!scala]:Double[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:35
-msgid "Draw a circle of the specified radius centered on the turtle."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:37
-#, no-wrap
-msgid "[!java]void [/!]hide()"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:38
-msgid "Hides the turtle."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:40
-#, no-wrap
-msgid "[!java]void [/!]show()"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:41
-msgid "Shows the turtle back."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:43
-#, no-wrap
-msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:44
-msgid "Returns whether the turtle is currently visible."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:46
-#, no-wrap
-msgid "[!java]void [/!]clear()"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:47
-msgid "Removes any trail on the sheet."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:49
-#, no-wrap
-msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:50
-msgid "Returns the current heading of the turtle (in degrees)."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:52
-#, no-wrap
-msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:53
-msgid "Sets a new heading to the turtle (in degrees)."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:55
-msgid "Functions about the pen"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:57
-#, no-wrap
-msgid "[!java]void [/!]penUp()"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:58
-msgid ""
-"Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
-"will not leave any trace during its subsequent moves."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:61
-#, no-wrap
-msgid "[!java]void [/!]penDown()"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:62
-msgid ""
-"Moves the pen down. The turtle will leave a trace during its subsequent "
-"moves."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:64
-#, no-wrap
-msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:65
-msgid "Returns the current pen position as a boolean."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:67
-#, no-wrap
-msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:68
-msgid "Returns the current pen color."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:70
-#, no-wrap
-msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:71
-msgid "Changes the pen color."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:73
-msgid "Other functions"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/plm/universe/turtles/TurtleWorld.html:75 src/plm/universe/bugglequest/BuggleWorld.html:36 src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
-#, no-wrap
-msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/plm/universe/turtles/TurtleWorld.html:76
-msgid "Returns whether the current turtle is selected in the graphical interface."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/plm/universe/turtles/TurtleWorld.html:78 src/plm/universe/bugglequest/BuggleWorld.html:66
-msgid "Valid colors"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:80 src/plm/universe/bugglequest/BuggleWorld.html:68
-msgid "Name"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:80 src/plm/universe/bugglequest/BuggleWorld.html:68
-msgid "Color"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:81 src/plm/universe/bugglequest/BuggleWorld.html:69
-msgid "Color.black"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:81 src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/turtles/TurtleWorld.html:84 src/plm/universe/turtles/TurtleWorld.html:85 src/plm/universe/turtles/TurtleWorld.html:86 src/plm/universe/turtles/TurtleWorld.html:87 src/plm/universe/turtles/TurtleWorld.html:88 src/plm/universe/turtles/TurtleWorld.html:89 src/plm/universe/turtles/TurtleWorld.html:90 src/plm/universe/turtles/TurtleWorld.html:91 src/plm/universe/turtles/TurtleWorld.html:92 src/plm/universe/turtles/TurtleWorld.html:93 src/plm/universe/bugglequest/BuggleWorld.html:57 src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:80 src/plm/universe/bugglequest/BuggleWorld.html:81 src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92 src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255 src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429 src/lessons/welcome/Main.html:469
-msgid "&nbsp;"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/bugglequest/BuggleWorld.html:70
-msgid "Color.blue"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/bugglequest/BuggleWorld.html:71
-msgid "Color.cyan"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:84 src/plm/universe/bugglequest/BuggleWorld.html:72
-msgid "Color.darkGray"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:85 src/plm/universe/bugglequest/BuggleWorld.html:73
-msgid "Color.gray"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:86 src/plm/universe/bugglequest/BuggleWorld.html:74
-msgid "Color.green"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:87 src/plm/universe/bugglequest/BuggleWorld.html:75
-msgid "Color.lightGray"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:88 src/plm/universe/bugglequest/BuggleWorld.html:76
-msgid "Color.magenta"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:89 src/plm/universe/bugglequest/BuggleWorld.html:77
-msgid "Color.orange"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:90 src/plm/universe/bugglequest/BuggleWorld.html:78
-msgid "Color.pink"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:91 src/plm/universe/bugglequest/BuggleWorld.html:79
-msgid "Color.red"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:92 src/plm/universe/bugglequest/BuggleWorld.html:80
-msgid "Color.white"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/plm/universe/turtles/TurtleWorld.html:93 src/plm/universe/bugglequest/BuggleWorld.html:81
-msgid "Color.yellow"
-msgstr ""
 
 #. type: Content of: <h1>
 #: src/plm/universe/bugglequest/BuggleWorld.html:2
@@ -957,6 +231,12 @@ msgstr ""
 msgid "Check whether the buggle is currently <b>selected in the interface</b>"
 msgstr ""
 
+#. type: Content of: <pre>
+#: src/plm/universe/bugglequest/BuggleWorld.html:36 src/plm/universe/turtles/TurtleWorld.html:75 src/lessons/recursion/hanoi/universe/HanoiWorld.html:27
+#, no-wrap
+msgid "[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]"
+msgstr ""
+
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:38
 msgid "<b>About the brush</b>"
@@ -1072,6 +352,11 @@ msgstr ""
 msgid "[!java]void [/!]dropBaggle()"
 msgstr ""
 
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:57 src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/bugglequest/BuggleWorld.html:80 src/plm/universe/bugglequest/BuggleWorld.html:81 src/lessons/welcome/Main.html:9 src/lessons/welcome/Main.html:92 src/lessons/welcome/Main.html:175 src/lessons/welcome/Main.html:255 src/lessons/welcome/Main.html:349 src/lessons/welcome/Main.html:429 src/lessons/welcome/Main.html:469 src/plm/universe/turtles/TurtleWorld.html:81 src/plm/universe/turtles/TurtleWorld.html:82 src/plm/universe/turtles/TurtleWorld.html:83 src/plm/universe/turtles/TurtleWorld.html:84 src/plm/universe/turtles/TurtleWorld.html:85 src/plm/universe/turtles/TurtleWorld.html:86 src/plm/universe/turtles/TurtleWorld.html:87 src/plm/universe/turtles/TurtleWorld.html:88 src/plm/universe/turtles/TurtleWorld.html:89 src/plm/universe/turtles/TurtleWorld.html:90 src/plm/universe/turtles/TurtleWorld.html:91 src/plm/universe/turtles/TurtleWorld.html:92 src/plm/universe/turtles/TurtleWorld.html:93
+msgid "&nbsp;"
+msgstr ""
+
 #. type: Content of: <table><tr><td><b>
 #: src/plm/universe/bugglequest/BuggleWorld.html:59
 msgid "<b>Look for a message"
@@ -1110,6 +395,86 @@ msgstr ""
 #. type: Content of: <table><tr><td>
 #: src/plm/universe/bugglequest/BuggleWorld.html:63
 msgid "[!java]void [/!]clearMessage()"
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/bugglequest/BuggleWorld.html:66 src/plm/universe/turtles/TurtleWorld.html:78
+msgid "Valid colors"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:68 src/plm/universe/turtles/TurtleWorld.html:80
+msgid "Name"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:68 src/plm/universe/turtles/TurtleWorld.html:80
+msgid "Color"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:69 src/plm/universe/turtles/TurtleWorld.html:81
+msgid "Color.black"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:70 src/plm/universe/turtles/TurtleWorld.html:82
+msgid "Color.blue"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:71 src/plm/universe/turtles/TurtleWorld.html:83
+msgid "Color.cyan"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:72 src/plm/universe/turtles/TurtleWorld.html:84
+msgid "Color.darkGray"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:73 src/plm/universe/turtles/TurtleWorld.html:85
+msgid "Color.gray"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:74 src/plm/universe/turtles/TurtleWorld.html:86
+msgid "Color.green"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:75 src/plm/universe/turtles/TurtleWorld.html:87
+msgid "Color.lightGray"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:76 src/plm/universe/turtles/TurtleWorld.html:88
+msgid "Color.magenta"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:77 src/plm/universe/turtles/TurtleWorld.html:89
+msgid "Color.orange"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:78 src/plm/universe/turtles/TurtleWorld.html:90
+msgid "Color.pink"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:79 src/plm/universe/turtles/TurtleWorld.html:91
+msgid "Color.red"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:80 src/plm/universe/turtles/TurtleWorld.html:92
+msgid "Color.white"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/bugglequest/BuggleWorld.html:81 src/plm/universe/turtles/TurtleWorld.html:93
+msgid "Color.yellow"
 msgstr ""
 
 #. type: Content of: <h2>
@@ -1172,234 +537,6 @@ msgid ""
 "For more information, you should refer to the CodingBat.com documentation, "
 "which contains for example a very useful documentation on boolean operators: "
 "http://codingbat.com/doc/ifboolean.html"
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/backtracking/Main.html:2
-msgid "Backtracking lesson"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:4
-msgid ""
-"This <b>experimental</b> lesson aims at teaching students about "
-"backtracking. It is not ready for consumtion yet, not even the first "
-"exercises. It will feature several exercices on the topic allowing to "
-"progressively build the relevant notions and mental representation in the "
-"students mind."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:10
-msgid ""
-"For now, it contains a Backtracking exercise which lacks a graphical "
-"representation to be usable. It is based on an entity KnapsackSolver which "
-"works on a KnapsackPartialSolution. This latter is not a World, but a "
-"passive world component. It is used by the solver to store the currently "
-"best solution and the working solution. This design should be rather generic "
-"and other backtracking problems, such as the ones used in my TOP teaching "
-"(pyramid, recipients) should be implmentable following this design. That is "
-"why Backtracking classes derive from generic ones: BacktrackingEntity and "
-"BacktrackingPartialSolution.  There is also a BacktrackingWorld, that "
-"specific universes should need to not override, and BacktrackingExercise, "
-"dealing with this specificity where the world does not only contain solving "
-"entities, but also two partial solutions (best know and current)."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:24
-msgid ""
-"This exercise should be introduced by an interactive discovery activity such "
-"as the one used here: "
-"http://interstices.info/jcms/c_19213/le-probleme-du-sac-a-dos"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:28
-msgid ""
-"Although this exercise seems almost usable, there is a fundamental "
-"difficulty to solve in the visualization. It is envisionned that the call "
-"graph is used here, to help the students building their mental "
-"representation of recursion. The actual representation of the graph should "
-"be quite easy, thanks to the jung library. But I fail to see how to get the "
-"needed info so far. Adding sensors to the stepUI()  method is probably the "
-"best way to go, but I would need to inspect the complete call stack where "
-"Thread.currentThread().getStack() only give the static stack (method called, "
-"file location, etc). I think I need to inspect the parameters passed to each "
-"method call to rebuild the proper call tree."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:40
-msgid ""
-"The first thing that I tried to use was dtrace, but it seems non-portable "
-"and somehow linked to solaris so I didn't dig any further."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:44
-msgid ""
-"Then, I tried to use the debugging infrastructure (JPDA), but never managed "
-"to get it working. It seems to me that the original com.sun.jdi package is "
-"somehow deprecated since com.sun.jdi.BootStrap.virtualMachineManager() "
-"returns null while org.eclipse.jdi.Bootstrap.virtualMachineManager() does "
-"not. But when I'm using the eclipse version, it seem to take an endless "
-"amount of dependencies, which I'm not inclined to do. The root of my problem "
-"may be that I was using a jdi.jar comming from eclipse, but I didn' find any "
-"other. I just realised that the com.sun.jdi package is also implemented in "
-"/usr/lib/jvm/java-6-sun-1.6.0.26/lib/tools.jar on my disk. It seem to be "
-"functional, I should give it another spin."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:56
-msgid ""
-"Afterward, I tried to reuse the debugging infrastructure of DrJava. It looks "
-"like a good idea because they have several helper interfaces for debugging "
-"and compiling. Also, they have a good editor that we could reuse. Finally, "
-"they have a strong testing infrastructure with junit ensuring that their "
-"tool still work after modifications (that's something we are seriously "
-"missing in PLM). I'm really thinking that the two tools should converge to "
-"something stronger. The only argument for not doing so (beside the amount of "
-"work it'll take) is that each of us get the credit for each tool where "
-"things would be more fuzzy on a mixed tool. But I don't care, the mixed tool "
-"would be so much cooler that I'd like to find the time to ensure this "
-"convergence."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:68
-msgid ""
-"But the debugging feature of DrJava seems to suffer from an issue: "
-"http://sourceforge.net/tracker/index.php?func=detail&aid=3004294&group_id=44253&atid=438935 "
-"I was suspecting a permission error (something related to "
-"com.sun.jdi.JDIPermission), but even with a java.security.AllPermission as "
-"permission file, I still have the issue."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:74
-msgid ""
-"Another lead to get it working it to use lib ASM to modify the student code "
-"so that their recursive method gets traced. With the static backtrace and "
-"the tracing information, I guess I could rebuild the actual call tree. That "
-"seem to be possible: 2 sec of googling gave me something like "
-"http://rejeev.blogspot.com/2009/04/method-tracing.html"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/backtracking/Main.html:80
-msgid ""
-"So, here I am. The lesson would be very interesting to students, and quite "
-"easy to finish once I manage to get the information I need, but I didn't "
-"manage to do so so far, despite my efforts. If you have any hint (or "
-"patch!), please email martin.quinson#loria.fr."
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/backtracking/Main.html:85
-msgid ""
-"This gives me the following todo actions: * Check whether tools.jar gives a "
-"working com.sun.jdi package * Find the DrJava bug around debugging to help "
-"them, and so that I can steal parts of their code about it for PLM (it's "
-"BSD'ed while PLM is mainly GPL'ed for now -- I'll have to ask them for an "
-"exception). That would be better since their helper interface seem to be "
-"able to deal with several debuggers (eclipse, sun or openjdk). That's quite "
-"a large amount of work I'd like to avoid duplicating.  * Check wheter I can "
-"get tracing info from ASM. It may be more robust to JVM variants than the "
-"debugging approach. On the other hand, debugging is a neat feature for PLM "
-"as is.  * Work on the convergence of PLM and DrJava. Beside of the licencing "
-"issue, it will also complicate the ongoing integration of PLM within Debian, "
-"since DrJava is composed of [[5 separated "
-"modules|http://drjava.org/docs/developer/ch02s03.html]] that can only be "
-"integrated as separated source packages. As every java package, no source "
-"archive is distributed, and they must be retrieved directly from the "
-"svn. Finally, they are quite huge, with sloccount reporting"
-msgstr ""
-
-#. type: Content of: <table><tr><td>
-#: src/lessons/chooser/LessonChooser.html:4 src/lessons/chooser/LessonChooser.html:4
-msgid "&nbsp;&nbsp;"
-msgstr ""
-
-#. type: Content of: <table><tr><td><font>
-#: src/lessons/chooser/LessonChooser.html:4
-msgid "Welcome to the Programmer's Learning Machine"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/chooser/LessonChooser.html:8
-msgid ""
-"The PLM is a Learning Management System (LMS) aiming at teaching the art of "
-"computer programming through interactive exercises. It offers an extensive "
-"set of varied exercises, allowing you to practice at your own pace."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/chooser/LessonChooser.html:12
-msgid "Pick a classical lesson"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/chooser/LessonChooser.html:14
-msgid ""
-"<a href=\"plm://lessons.welcome\">Welcome lesson</a> This lesson is intended "
-"to lead the first steps in programming of absolute beginners."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/chooser/LessonChooser.html:17
-msgid ""
-"<a href=\"plm://lessons.maze\">Escape the maze</a> Will you escape the "
-"mazes?"
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/chooser/LessonChooser.html:19
-msgid ""
-"<a href=\"plm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
-"on strings."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/chooser/LessonChooser.html:21
-msgid ""
-"<a href=\"plm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
-"to discover the classical sorting algorithms by practice."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/chooser/LessonChooser.html:24
-msgid ""
-"<a href=\"plm://lessons.recursion\">Recursion lesson</a> Build some "
-"classical geometric figures through recursion."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/chooser/LessonChooser.html:27
-msgid ""
-"<a href=\"plm://lessons.lightbot\">LightBot</a> In this little game, you "
-"must program graphically a little robot to instruct it how to switch the "
-"lights off. It is a brain teaser for programmer."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/chooser/LessonChooser.html:31
-msgid ""
-"<a href=\"plm://lessons.smn\">Digital Manual Science</a> Some activities "
-"developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/chooser/Main.html:2
-msgid "Lesson chooser"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/chooser/Main.html:4
-msgid ""
-"This isn't a real lesson, it's here that you can select a lesson among "
-"others."
 msgstr ""
 
 #. type: Content of: <h3>
@@ -1674,7 +811,7 @@ msgid ""
 "The buggles are little animals obeying any order you may give them. In each "
 "exercise, you have to provide them with the right instructions so that the "
 "world turns into the objective of the exercise. For example in this "
-"exercise, you show instruct your buggle to move forward once. You can see "
+"exercise, you should instruct your buggle to move forward once. You can see "
 "that by checking the difference between the <i>World</i> view and the "
 "<i>Objective</i> one.  Depending on the lessons (and your settings in the "
 "Language menu), your code must be written in either Java, Python or Scala "
@@ -1814,7 +951,7 @@ msgid "meltTheChocolatePieces(); addSugar(); coolMix(); serve()\n"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:147 src/lessons/welcome/loopfor/LoopFor.html:70 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet.html:37 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:194 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/square/FourSquare.html:46 src/lessons/welcome/bat/bool1/Max1020.html:6 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209
+#: src/lessons/welcome/instructions/Instructions.html:35 src/lessons/welcome/variables/Variables.html:78 src/lessons/welcome/variables/Variables.html:147 src/lessons/welcome/loopfor/LoopFor.html:70 src/lessons/welcome/loopdowhile/LoopDoWhile.html:54 src/lessons/welcome/loopdowhile/Poucet.html:37 src/lessons/welcome/array/basics/Array1.html:183 src/lessons/welcome/array/basics/Array1.html:209 src/lessons/welcome/methods/args/MethodsArgs.html:66 src/lessons/welcome/methods/picture/MethodsPicture.html:40 src/lessons/welcome/bdr/BDR.html:60 src/lessons/welcome/bdr/BDR.html:194 src/lessons/welcome/bdr/BDR2.html:130 src/lessons/turmites/langton/Langton.html:32 src/lessons/turmites/helloturmite/HelloTurmite.html:65 src/lessons/sort/basic/comb/AlgCombSort.html:39 src/lessons/recursion/square/FourSquare.html:46 src/lessons/welcome/bat/bool1/Max1020.html:6
 msgid "[/!]"
 msgstr ""
 
@@ -2396,7 +1533,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:29 src/lessons/welcome/loopfor/LoopFor.html:47 src/lessons/welcome/bdr/BDR.html:188 src/lessons/turmites/langton/Langton.html:21 src/lessons/welcome/array/basics/Array1.html:202
+#: src/lessons/welcome/variables/Variables.html:29 src/lessons/welcome/loopfor/LoopFor.html:47 src/lessons/welcome/array/basics/Array1.html:202 src/lessons/welcome/bdr/BDR.html:188 src/lessons/turmites/langton/Langton.html:21
 msgid "[!java]"
 msgstr ""
 
@@ -2494,7 +1631,7 @@ msgid ""
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/variables/Variables.html:52 src/lessons/welcome/loopdowhile/LoopDoWhile.html:39 src/lessons/turmites/helloturmite/HelloTurmite.html:61 src/lessons/welcome/array/basics/Array1.html:116
+#: src/lessons/welcome/variables/Variables.html:52 src/lessons/welcome/loopdowhile/LoopDoWhile.html:39 src/lessons/welcome/array/basics/Array1.html:116 src/lessons/turmites/helloturmite/HelloTurmite.html:61
 msgid "[/!] [!java|scala]"
 msgstr ""
 
@@ -3070,7 +2207,7 @@ msgid "Executing the loop body at least once"
 msgstr ""
 
 #. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet.html:31 src/lessons/turmites/helloturmite/HelloTurmite.html:54 src/lessons/welcome/array/basics/Array1.html:100
+#: src/lessons/welcome/loopdowhile/LoopDoWhile.html:26 src/lessons/welcome/loopdowhile/Poucet.html:31 src/lessons/welcome/array/basics/Array1.html:100 src/lessons/turmites/helloturmite/HelloTurmite.html:54
 msgid "[!python]"
 msgstr ""
 
@@ -3219,6 +2356,837 @@ msgstr ""
 msgid ""
 "Oh, and when you reach the exit, don't forget to take an extra step to "
 "actually exit the maze!"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/basics/Array1.html:2
+msgid "[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/basics/Array1.html:4
+msgid ""
+"The goal of this exercise is to reproduce the pattern of the first row in "
+"the other rows with a shift of one cell (see the Objective tab for "
+"details). The biggest difference between this exercise and the others we had "
+"on patterns is that you have to read the pattern (on first row) before "
+"reproducing it. You cannot do otherwise because the same code will be "
+"executed on three different worlds, each of them having a specific pattern."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:12
+msgid ""
+"One solution is to read the next cell, and go copy it in position before "
+"coming back to read the second cell. But since it is forbidden to use the "
+"methods to teleport the buggle to a specific position (<code>setPos()</code> "
+"and similar), this approach will be a pain to implement."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:17
+msgid ""
+"The simplest is to store the sequence of colors that constitute the whole "
+"pattern in an [!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  But "
+"before we can do so, we should learn a bit what "
+"[!java|scala]arrays[/!][!python]lists[/!] are."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/lessons/welcome/array/basics/Array1.html:21
+msgid "[!java|scala]Arrays[/!][!python]List[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:23
+msgid ""
+"[!java|scala]An array[/!][!python]A list[/!] is an ordered sequence of "
+"variables that go together.  It is somehow similar to a shelve where each "
+"level can store a separate value. Each variable of the sequence is "
+"identified by its position, and can store a specific value. [!java|scala]All "
+"cells of the array must store values of the same type because arrays are "
+"homogeneous in [!thelang]. It is possible to trick this restriction by using "
+"the datatype <code>[!java]Object[/!][!scala]Any[/!]</code> that can contain "
+"[!java]almost[/!] any other datatype. [!java]Primitive types such as the "
+"ones we saw so far (int, boolean, double, char, etc) cannot be stored in an "
+"Object variable, but their objectified counter-part (Integer, Boolean, "
+"Double, Char, Boolean, etc) can.[/!] It is however a good practice to make "
+"the type of an array as specific as possible, i.e., if you plan to store "
+"some integers in your array, make it an array of integers, not of "
+"[!java]Object[/!][!scala]Any[/!].[/!] [!python]Lists can even mix values of "
+"differing types, such as integer values in some cells and colors in other "
+"cells.[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:40
+msgid ""
+"T is the [!java|scala]array[/!][!python]list[/!]'s name, "
+"[!java|python]T[0][/!][!scala]T(0)[/!] is the name of the first cell, "
+"[!java|python]T[1][/!][!scala]T(1)[/!] the name of the second cell, "
+"[!java|python]T[2][/!][!scala]T(2)[/!] the third one, etc. And yes, the "
+"first cell is numbered [!java|python]T[0][/!][!scala]T(0)[/!] while the last "
+"one of [!java|scala]an array[/!][!python]a list[/!] of size N is "
+"[!java|python]T[N-1][/!][!scala]T(N-1)[/!]. It may seem funny to count "
+"starting from 0 and not from 1 as usual, but some historical reasons make it "
+"unavoidable here."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/array/basics/Array1.html:48
+msgid "Basic usage"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:50
+msgid ""
+"We can use an integer variable <i>i</i> to access with "
+"[!java|python]T[i][/!][!scala]T(i)[/!] to the cells: when the value of "
+"<i>i</i> is 0, then [!java|python]T[i][/!][!scala]T(i)[/!] accesses "
+"[!java|python]T[0][/!][!scala]T(0)[/!]; when the value of <i>i</i> is 10, "
+"then [!java|python]T[i][/!][!scala]T(i)[/!] accesses "
+"[!java|python]T[10][/!][!scala]T(10)[/!].  <i>i</i> is said to be the "
+"<b>index</b> in T.  <code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> can "
+"be used just like any variable. We can set a new value:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:58
+#, no-wrap
+msgid "[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:60
+msgid "We can retrieve and use its value:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:61
+#, no-wrap
+msgid "x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:63
+msgid "We can test this value:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:64
+#, no-wrap
+msgid ""
+"if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) "
+"[!scala|java]{[/!][!python]:[/!]\n"
+"    [!java|scala]//[/!][!python]#[/!] instructions...\n"
+"[!java|scala]}[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:68
+msgid ""
+"It is very easy to traverse the whole "
+"[!scala|java]array[/!][!python]list[/!], for example to initialize each "
+"cells."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:71
+#, no-wrap
+msgid ""
+"[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in "
+"range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]\n"
+"   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]\n"
+"[!java|scala]}[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:75
+msgid ""
+"[!java|scala]The notation <code>T.length</code> retrieves the length of the "
+"array T,[/!] [!python]The function <code>len()</code> retrieves the length "
+"of the list T,[/!] allowing to build a classical for loop easily.  "
+"[!python]Actually, the <code>len()</code> function is much more generic and "
+"can be used to retrieve the length of many objects.  Applied to strings for "
+"example, it returns the amount of chars in this string.[/!] [!scala]Don't "
+"forget to start at <code>0</code> and stop at <code>T.length-1</code> "
+"instead of <code>1 to T.length</code> however.[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:83
+msgid ""
+"If you just want to iterate over the values of T without keeping track of "
+"their index, you can simply write:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:84
+#, no-wrap
+msgid ""
+"[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in "
+"T:[/!]\n"
+"  action()[!java];[/!]\n"
+"[!java|scala]}[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:87
+msgid ""
+"[!java]This construct is called an <i>extended loop</i> in Java. The "
+"variable <i>i</i> takes all values of the set located to the right of the "
+"colon (:), one after the other.[/!] [!python|scala]This is actually very "
+"similar to the previous construct.  Simply, "
+"<code>[!python]range(n)[/!][!scala]i to j[/!]</code> returns a set of "
+"integers over which the for construct iterates.  Actually, [!thelang] offers "
+"much more elegant ways to traverse [!python]lists[/!][!scala]arrays[/!] and "
+"other data collections, but this should be the topic of a specific set of "
+"exercises (that are still to be written in PLM).[/!]"
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/array/basics/Array1.html:98
+msgid "Declaring [!python]a list[/!][!java|scala]an array[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:101
+msgid ""
+"If you know beforehand the content of your list, you can affect these values "
+"all together.  Just put them between square braces and separated by commas "
+"as follows:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:104
+#, no-wrap
+msgid ""
+"L = [1, 3, 5, 7, 9] \n"
+"<span class=\"comment\"># L is now an array of 5 values, all of them being "
+"integers</span>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:106
+msgid ""
+"Otherwise, you probably want to create an empty list and then append each "
+"values separately to the list:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:108
+#, no-wrap
+msgid ""
+"L2 = [] \n"
+"<span class=\"comment\"># L2 is now an empty list</span>\n"
+"L2.append(1)\n"
+"L2.append(3)\n"
+"L2.append(5)\n"
+"L2.append(7)\n"
+"L2.append(9) \n"
+"<span class=\"comment\"># Its content is now the same as L previously</span>"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:119
+msgid ""
+"To declare a variable named <b>T</b> that can store arrays of integers, one "
+"should write:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:120
+#, no-wrap
+msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:122
+msgid ""
+"[!java]<code>int</code> means that the elements of the array are of type "
+"integer; <code>[]</code> means that we are speaking of an array and "
+"<code>T</code> is the name of the variable.  For historical reasons, this "
+"can also be written as <code>int T[]</code> (with the [] after the variable "
+"name), but this is less readable and should probably be avoided.[/!] "
+"[!scala]The <code>[Int]</code> notation specializes the Array type (that is "
+"generic), specifying that each cell of this array is an integer. An array of "
+"booleans would simply by written <code>Array[Boolean]</code>.[/!]"
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/array/basics/Array1.html:130
+msgid "Allocating an array"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:132
+msgid ""
+"Declaring a variable <code>T</code> that stores an array only reserve the "
+"<b>name</b> <code>T</code> for later use, but not the memory area to store "
+"the cells. The array is not initialized yet: it does not have any "
+"value. What would <code>[!java]T[4][/!][!scala]T(4)[/!]</code> mean if we "
+"didn't say that the array is 5 cells long?"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:137
+msgid "First and foremost, we have to give a value to <code>T</code>:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:138
+#, no-wrap
+msgid "[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:140
+msgid ""
+"<code>new</code> means that we want to create something, and "
+"<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> means that it is "
+"an array of 10 integer values.  In return, an array of 10 integer cells is "
+"created in memory, and the <code>T</code> variable <b>references</b> this "
+"array."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:145
+msgid ""
+"The size of an array is fixed and cannot be changed after the creation of "
+"the array. The size of a <code>T</code> array can be retrieve by consulting "
+"the variable <code>T.length</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:149
+msgid ""
+"While allocating, you can specify the size with a variable: "
+"<code>[!java]int[] T = new int[i];[/!][!scala]var T = new "
+"Array[Int](i);[/!]</code> In this case, the array's size will be set to the "
+"value of <code>i</code> <i>when <code>new</code> gets called</i>.  The size "
+"of the array still cannot be modified : even if the variable <code>i</code> "
+"changes afterward, the size remains to the value given when it was "
+"allocated.  [!java]Also, it is forbidden to write something like <code>int "
+"T[10];</code> when declaring the variable.  You are required to use the "
+"<code>new</code> instruction to allocate it, as in <code>int[] T = new "
+"int[10];</code> [/!]"
+msgstr ""
+
+#. type: Content of: <h4>
+#: src/lessons/welcome/array/basics/Array1.html:157
+msgid "Declaration and initialization"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:158
+msgid ""
+"If you know beforehand the content of your array, you can declare, allocate "
+"and initialize it in one shoot:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:159
+#, no-wrap
+msgid ""
+"[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = "
+"Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:161
+msgid ""
+"To know the size of the array to allocate, the compiler counts the provided "
+"values.  This code is equivalent to:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:163
+#, no-wrap
+msgid ""
+"[!java]int[] T = new int[10];\n"
+"T[0] = 1;\n"
+"T[1] = 2;\n"
+"...\n"
+"T[9] = 10;[/!][!scala]var T = new Array[Int](10);\n"
+"T(0) = 1\n"
+"T(1) = 2\n"
+"...\n"
+"T(9) = 10[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:173
+msgid "It is also equivalent to:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:174
+#, no-wrap
+msgid ""
+"[!java]int[] T = new int[10];\n"
+"for (int i=0; i&lt;T.length; i++) {\n"
+"  T[i] = i+1;\n"
+"}[/!][!scala]var T = new Array[Int](10);\n"
+"for (i &lt;- 0 to T.length-1) {\n"
+"  T(i) = i+1\n"
+"}[/!]"
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/array/basics/Array1.html:185
+msgid "[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:186
+msgid ""
+"It is perfectly OK to pass [!python]a list[/!][!java|scala]an array[/!] to a "
+"method as a parameter.  This method can then use this parameter as if it "
+"were defined locally:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:188
+#, no-wrap
+msgid ""
+"[!java]boolean has42First(int[] array) {\n"
+"    return array[0] == 42;\n"
+"}[/!][!python]def has42First(list):\n"
+"  return list[0] == 42[/!][!scala]def has42First(array:Array[Int]):Boolean = "
+"{\n"
+"  return array(0) == 42\n"
+"}[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:195
+msgid "On the caller side, that also very simple:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:196
+#, no-wrap
+msgid ""
+"[!java]int[] tab = new int[10];[/!][!scala]var tab = new Array[Int] "
+"(10)[/!][!python]tab = [1, 3, 5, 7, 9][/!]\n"
+"[!java|scala]<span class=\"comment\">// Values initialization "
+"omitted</span>\n"
+"[/!]if (has42First(tab))[!java|scala] {[/!][!python]:[/!]\n"
+"   <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] do "
+"something</span>\n"
+"[!java|scala]}[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:203
+msgid ""
+"If you want to allocate and initialize the array in one shoot, that's a bit "
+"more complicated as the compiler has to know the type of the parameter you "
+"are creating.  For that, use the following (ugly) construct:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:206
+#, no-wrap
+msgid ""
+"if (has42First(   new int[] {1, 3, 5, 7, 9}   ) {\n"
+"   <span class=\"comment\">// do something</span>\n"
+"}"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:211
+msgid ""
+"Methods can also return [!java|scala]arrays[/!][!python]lists[/!] as result "
+"without any complication.  Here is a method that returns [!java|scala]an "
+"array[/!][!python]a list[/!] of the requested size, filled with 42s."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array1.html:214
+#, no-wrap
+msgid ""
+"[!java]int[] fill42(int size) {\n"
+"    int[] res = new int[size];\n"
+"    for (int i=0; i&lt;size; i++) \n"
+"        res[i] = 42;\n"
+"    return res;\n"
+"}[/!][!scala]def fill42(size:Int):Array[Int] = {\n"
+"    var res = new Array[int] (size)\n"
+"    for (i &lt;- 0 to size -1) {\n"
+"        res(i) = 42;\n"
+"    }\n"
+"    return res;\n"
+"}[/!][!python]def fill42(size):\n"
+"    res = []\n"
+"    for i in range(size):\n"
+"        res.append(42)\n"
+"    return res[/!]"
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/welcome/array/basics/Array1.html:231 src/lessons/recursion/square/FourSquare.html:48 src/lessons/recursion/hanoi/HanoiBoard.html:21
+msgid "Goal of this exercise"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:233
+msgid "At least! After this long explanation, we can come back to the exercise."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:234
+msgid ""
+"Your mission is rather simple actually.  Your code should save the color "
+"pattern observed on the first row into [!java|scala]an array[/!][!python]a "
+"list[/!].  [!python]The easiest is to create an empty list, and then "
+"<code>append()</code> the colors one after the others as you read them (with "
+"<code>getGroundColor()</code>).[/!] [!java|scala]For that, you should "
+"declare and allocate an array of <code>Color</code>. Beware, there is "
+"several worlds, of differing size; use <code>getWorldHeight()</code> to "
+"retrieve the size of the current world.  Once the array allocated, fill it "
+"by reading the ground color in each locations (with "
+"<code>getGroundColor()</code>).[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array1.html:242
+msgid ""
+"Once you managed to read and save the pattern on the first row, you have to "
+"reapply the pattern on every rows, for example by executing "
+"<code>getWorldHeight()</code> times a method written specifically for this."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/basics/Array2.html:2
+msgid "[!java|scala]Arrays[/!][!python]Lists[/!], Knotting and Modulos"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array2.html:4
+msgid ""
+"This exercise is similar to the previous one: you have to reproduce the "
+"color pattern of the first cell into the other ones."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array2.html:7
+msgid ""
+"The first difference is that the world is bordered of walls: you thus have "
+"to slightly modify your trajectory to ensure that the buggle does not crash "
+"into a wall. The simpler for that is to handle the first cell out of the "
+"<code>for</code> loop and do only <code>getWorldHeight()-1</code> steps in "
+"the loop."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array2.html:13
+msgid ""
+"The other difference is that the offset to apply between columns is not "
+"fixed, but written on the first cell of each column. To get the info as an "
+"integer, we can use:"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/lessons/welcome/array/basics/Array2.html:17
+#, no-wrap
+msgid ""
+"[!java]int offset = Integer.parseInt(readMessage())[/!][!python]offset = "
+"int( readMessage() )[/!][!scala]val offset = readMessage().toInt[/!]"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array2.html:19
+msgid ""
+"<code>readMessage()</code> gets the message on the ground as a "
+"[!java|scala]String[/!][!python]string[/!], while "
+"<code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> "
+"transforms the string <code>str</code> into an integer by <i>reading</i> it."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array2.html:23
+msgid ""
+"Then, to pick the right color, the easier is to use the <code>%</code> "
+"(modulo) operator. For example, <code>(i + 5) % size</code> allows to "
+"retrieve the <code>i</code>th cell of an array of size <code>size</code> "
+"with an offset of <code>5</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/basics/Array2.html:28
+msgid "You're up."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:2
+msgid "Searching for a given value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:4
+msgid ""
+"The goal of this exercise is to search the cell of a given value, and return "
+"its position."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:6
+msgid ""
+"To that extend, you should fill the method <code>indexOf()</code>, which "
+"parameters are the array to explore, and the value to search. If the value "
+"<code>lookingFor</code> is not in the array <code>tab</code>, the method "
+"should return -1."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
+msgid ""
+"The idea of the algorithm is to sweep over the whole array, checking the "
+"value of each cell. If it's the searched value, you should return the index "
+"of the cell currently checked."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
+msgid ""
+"Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
+"their indices will be 0, 1 and 2. There would not be any cell numbered 3."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:17
+msgid ""
+"Remember also that the amount of cells in an array can be retrieved using "
+"the <code>length</code> attribute. So, if your array is called "
+"<code>tab</code>, its size can be retrieved as <code>tab.length</code>.  "
+"Note that there is no () after <code>length</code>. An attribute is a sort "
+"of variable embedded in another object (here, the array)."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:22
+msgid "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
+msgid ""
+"Remember also that the amount of cells in an array can be retrieved with the "
+"<code>len()</code> function. So, if your array is called <code>tab</code>, "
+"its size can be retrieved as <code>len(tab)</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:28
+msgid "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:2
+msgid "Index of the maximum value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:4
+msgid ""
+"In this exercise, you must compute the index of the tab cell containing the "
+"biggest value."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:6
+msgid ""
+"For that, fill the <code>indexOfMaximum()</code> method. Its parameter is "
+"the array to explore. Should the array contain the searched value several "
+"times, you should return the index of the first occurrence."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:10
+msgid ""
+"To solve this exercise, you should sweep over the whole array. For each "
+"value, if it's bigger than the biggest value you saw so far, you must save "
+"this new champion and its position.  You will thus need 2 extra variables; "
+"the initial value of the champion could be the value of the first cell."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:2
+msgid "Average value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:5
+msgid ""
+"The objective of this exercise is to compute the average value of the "
+"integer values stored in an array."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:7
+msgid ""
+"You have to fill the body of the method <code>average()</code> which takes "
+"as parameter the array of integers of which it computes and returns the "
+"average value. Please note that this method must return an integer."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:9
+msgid ""
+"To compute the average value of an integer, it is necessary to traverse the "
+"whole array and to compute the sum of all its values (so you will need a "
+"variable to store this temporary result), then you have to divide this sum "
+"by the size of the array."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:11
+msgid ""
+"In Java, you can get the size of an array <code>myarray</code> by consulting "
+"its <code>length</code> attribute (in other words, "
+"<code>myarray.length</code>). Notice that there is no parenthesis after "
+"<code>length</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/averagevalue/AverageValue.html:16
+msgid ""
+"In python, retrieving the size of an array <code>myarray</code> is as easy "
+"as calling <code>len(myarray)</code>."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/maxvalue/MaxValue.html:2
+msgid "Maximal value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/maxvalue/MaxValue.html:4
+msgid ""
+"In this exercise, you must compute the maximal value contained in an array.  "
+"For that, fill the <code>maximum()</code> method, which parameter is the "
+"array to explore."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/maxvalue/MaxValue.html:8
+msgid ""
+"To compute this value, sweep over the whole parameter. For each value, if "
+"it's bigger than the biggest value you saw so far, you must save this value "
+"somewhere to remember it afterward. You thus need an extra variable, which "
+"can be initialized to the value of the first array cell."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
+msgid "Occurrence of a value"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:4
+msgid ""
+"In this exercise, you must compute the amount of occurrences of a given "
+"value in an array (that is, the amount of time that this value appears in "
+"the array). For that, fill the <code>occurrences()</code> method, which "
+"returns the number of occurrence of <code>lookingFor</code> in "
+"<code>tab</code>."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:9
+msgid ""
+"To compute this value, simply sweep over the array counting for the amount "
+"of cells containing the searched value. You thus need an extra variable for "
+"that."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/array123/Array123.html:2
+msgid "Array123"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/array123/Array123.html:3
+msgid ""
+"Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
+"array somewhere."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/array123/Array123.html:5 src/lessons/welcome/array/array667/Array667.html:8 src/lessons/welcome/array/arraycount9/ArrayCount9.html:5 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5 src/lessons/welcome/array/notriples/NoTriples.html:8 src/lessons/welcome/array/has271/Has271.html:10 src/lessons/welcome/bat/bool1/Close10.html:8 src/lessons/welcome/bat/bool1/Diff21.html:6 src/lessons/welcome/bat/bool1/HasTeen.html:7 src/lessons/welcome/bat/bool1/IcyHot.html:6 src/lessons/welcome/bat/bool1/In1020.html:6 src/lessons/welcome/bat/bool1/In3050.html:6 src/lessons/welcome/bat/bool1/LastDigit.html:10 src/lessons/welcome/bat/bool1/LoneTeen.html:7 src/lessons/welcome/bat/bool1/Main.html:12 src/lessons/welcome/bat/bool1/Makes10.html:6 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8 src/lessons/welcome/bat/bool1/NearHundred.html:8 src/lessons/welcome/bat/bool1/ParotTrouble.html:9 src/lessons/welcome/bat/bool1/PosNeg.html:6 src/lessons/welcome/bat/bool1/SleepIn.html:8 src/lessons/welcome/bat/bool1/SumDouble.html:6 src/lessons/welcome/bat/bool2/AlarmClock.html:12 src/lessons/welcome/bat/bool2/AnswerCell.html:9 src/lessons/welcome/bat/bool2/BlueTicket.html:11 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12 src/lessons/welcome/bat/bool2/CigarParty.html:10 src/lessons/welcome/bat/bool2/DateFashion.html:13 src/lessons/welcome/bat/bool2/GreenTicket.html:10 src/lessons/welcome/bat/bool2/In1To10.html:9 src/lessons/welcome/bat/bool2/InOrderEqual.html:10 src/lessons/welcome/bat/bool2/InOrder.html:9 src/lessons/welcome/bat/bool2/LastDigit2.html:9 src/lessons/welcome/bat/bool2/LessBy10.html:6 src/lessons/welcome/bat/bool2/Main.html:5 src/lessons/welcome/bat/bool2/MaxMod5.html:10 src/lessons/welcome/bat/bool2/NearTen.html:9 src/lessons/welcome/bat/bool2/RedTicket.html:10 src/lessons/welcome/bat/bool2/ShareDigit.html:10 src/lessons/welcome/bat/bool2/SortaSum.html:8 src/lessons/welcome/bat/bool2/SquirrelPlay.html:11 src/lessons/welcome/bat/bool2/TeaParty.html:12 src/lessons/welcome/bat/bool2/TeenSum.html:9 src/lessons/welcome/bat/bool2/TwoAsOne.html:6 src/lessons/welcome/bat/bool2/WithoutDoubles.html:9 src/lessons/bat/string1/Main.html:9 src/lessons/bat/string1/AltPairs.html:5 src/lessons/bat/string1/FrontTimes.html:8 src/lessons/bat/string1/Last2.html:9 src/lessons/bat/string1/StringBits.html:5 src/lessons/bat/string1/StringMatch.html:9 src/lessons/bat/string1/StringSplosion.html:5 src/lessons/bat/string1/StringTimes.html:5 src/lessons/bat/string1/StringX.html:7 src/lessons/bat/string1/StringYak.html:8
+msgid ""
+"This exercise was converted to PLM from the excellent exercising site "
+"http://javabat.com/"
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/array667/Array667.html:2
+msgid "Array667"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/array667/Array667.html:3
+msgid ""
+"Given an array of integers, return the number of times that two 6's are next "
+"to each other in the array. Also count instances where the second \"6\" is "
+"actually a 7."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/arraycount9/ArrayCount9.html:2
+msgid "ArrayCount9"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/arraycount9/ArrayCount9.html:3
+msgid "Given an array of integers, return the number of 9's in the array."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:2
+msgid "ArrayFront9"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:3
+msgid ""
+"Given an array of integers, return true if one of the first 4 elements in "
+"the array is a 9. The array length may be less than 4."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/notriples/NoTriples.html:2
+msgid "NoTriples"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/lessons/welcome/array/notriples/NoTriples.html:3
+msgid ""
+"Given an array of integers, we'll say that a triple is a value appearing 3 "
+"times in a row in the array. Return true if the array does not contain any "
+"triples."
+msgstr ""
+
+#. type: Content of: <h1>
+#: src/lessons/welcome/array/has271/Has271.html:2
+msgid "Has271"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/has271/Has271.html:3
+msgid ""
+"Given an array of integers, return true if it contains a 2, 7, 1 pattern -- "
+"a value, followed by the value plus 5, followed by the initial value minus "
+"1.  So, 2,7,1 is such a pattern because 7 is 5+2 and 1 is 2-1. 3,8,2 is also "
+"such a pattern."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/welcome/array/has271/Has271.html:7
+msgid ""
+"Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
+"correct value."
 msgstr ""
 
 #. type: Content of: <p>
@@ -5770,6 +5738,210 @@ msgid ""
 "you will use."
 msgstr ""
 
+#. type: Content of: <h1>
+#: src/plm/universe/sort/SortingWorld.html:2
+msgid "Sorting World"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/sort/SortingWorld.html:3
+msgid ""
+"This world provides tools to experiment with the sorting algorithms. It can "
+"be used in two different ways: the first one is naturally to write the "
+"required sorting algorithms. But it is also possible to simply use the demo "
+"mode of each exercise to observe the behavior of sorting algorithms. It "
+"helps understanding the differences between each of them."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/sort/SortingWorld.html:9
+msgid "Methods available to sorting algorithms"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:11
+msgid "<b>Method</b>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:11
+msgid "<b>Action</b>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:11
+msgid "<b>Cost</b>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:12
+msgid "[!java]int [/!]getValueCount() [!scala]:Int[/!]"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:13
+msgid "Returns the amount of values in the array"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:13 src/plm/universe/sort/SortingWorld.html:31
+msgid "none"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:15
+msgid ""
+"[!java]boolean [/!]isSmaller([!java]int [/!]i[!scala]:Int[/!], [!java]int "
+"[/!]j[!scala]:Int[/!]) [!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:16
+msgid ""
+"Returns true if the content of cell i is strictly smaller than the one of "
+"cell j"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:16
+msgid "two reads"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:17
+msgid ""
+"[!java]boolean [/!]isSmallerThan([!java]int [/!]i[!scala]:Int[/!], "
+"[!java]int [/!]value[!scala]:Int[/!])[!scala] :Boolean[/!]"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:18
+msgid ""
+"Returns true if the content of cell i is strictly smaller than the "
+"<code>value</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:18 src/plm/universe/sort/SortingWorld.html:26
+msgid "one read"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:20
+msgid ""
+"[!java]void [/!]swap([!java]int [/!]i[!scala]:Int[/!], [!java]int "
+"[/!]j[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:21
+msgid "Swaps the content of cell i and the one of cell j"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:21
+msgid "two reads, two writes"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:22
+msgid ""
+"[!java]void [/!]copy([!java]int [/!]from[!scala]:Int[/!], [!java]int "
+"[/!]to[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:23
+msgid "Copy the content of cell 'from' into the cell 'to'"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:23
+msgid "one read, one write"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:25
+msgid "[!java]int [/!]getValue([!java]int [/!]idx[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:26
+msgid "Returns the value of cell idx"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:27
+msgid ""
+"[!java]void [/!]setValue([!java]int [/!]idx[!scala]:Int[/!], [!java]int "
+"[/!]value[!scala]:Int[/!])"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:28
+msgid "Sets cell 'idx' to the <code>value</code>"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:28
+msgid "one write"
+msgstr ""
+
+#. type: Content of: <table><tr><td>
+#: src/plm/universe/sort/SortingWorld.html:30
+msgid "[!java]boolean [/!]isSelected() [!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/sort/SortingWorld.html:31 src/lessons/sort/pancake/universe/PancakeWorld.html:22 src/lessons/recursion/hanoi/universe/HanoiWorld.html:28
+msgid "Returns whether the current world is selected in the graphical interface."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/sort/SortingWorld.html:35
+msgid "History view"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/sort/SortingWorld.html:36
+msgid ""
+"It is not enough to sort the array to pass the exercises. Your solution must "
+"strictly follow the expected behavior of each exercise. This is enforced by "
+"checking that your algorithm needs the same amount of read and write "
+"operations to sort the array. When they don't match, understanding the "
+"difference between your code and the expected solution can reveal very "
+"difficult."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/sort/SortingWorld.html:43
+msgid ""
+"To help in this process, it is possible to graphically explore the history "
+"of your sorting algorithm. Switch to the Objective view and use the "
+"contextual menu (right click) to switch from the the view of the current "
+"state to the view of its history."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/sort/SortingWorld.html:48 src/lessons/sort/basic/bubble/AlgBubbleSort1.html:19
+msgid ""
+"The history view is a bit hairly at the first glance, but actually rather "
+"simple: The time flows from left to right on this graph, and each row is a "
+"cell of your array. The curved lines that go navigate between rows represent "
+"a given data value. When two lines cross, this means that two values were "
+"swapped at this time stamp; A line fork represent a value copy; When a value "
+"is magenta and followed by an interrogation mark (?), it was read using "
+"getValue(); If the value is red and followed with an exclamation point (!), "
+"it was written using setValue()."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/sort/SortingWorld.html:57
+msgid ""
+"This view, inspired from Aldo Cortesi, reveals very helpful understand the "
+"inner behavior of sorting algorithms."
+msgstr ""
+
 #. type: Content of: <h3>
 #: src/lessons/sort/basic/Main.html:2 src/lessons/sort/basic/short_desc.html:2
 msgid "Sorting Algorithms"
@@ -7008,7 +7180,7 @@ msgid ""
 "<code>isSelected()</code> returns true. It will be so only for the entity "
 "that is currently selected in the graphical interface, that is probably the "
 "world you are currently debugging. This will help breaking the difficulty in "
-"parts by debugging the situation on after the other."
+"parts by debugging the situation one after the other."
 msgstr ""
 
 #. type: Content of: <p><div>
@@ -7541,6 +7713,322 @@ msgid ""
 msgstr ""
 
 #. type: Content of: <h1>
+#: src/plm/universe/turtles/TurtleWorld.html:2
+msgid "The universe of turtles"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/turtles/TurtleWorld.html:4
+msgid "This is an adaptation of LOGO for the Java Learning Machine."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/plm/universe/turtles/TurtleWorld.html:6
+msgid ""
+"It is directly inspired from the work of the mathematician Seymour Papert in "
+"the 60's. Inspired from the swiss psycholog Jean Piaget, he came up with a "
+"learning method called LOGO to teach programming to young childs. The world "
+"is full of turtles which leave a painting where they go and which respond to "
+"simple orders."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/turtles/TurtleWorld.html:12
+msgid "Functions to move the turtle"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:14
+#, no-wrap
+msgid ""
+"[!java]void [/!]forward([!java]double [/!]steps[!scala]:Double[/!])\n"
+"[!java]void [/!]backward([!java]double [/!]steps[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:16
+msgid "Moves forward or backward of the requested amount of steps."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:18
+#, no-wrap
+msgid ""
+"[!java]void [/!]right([!java]double [/!]angle[!scala]:Double[/!])\n"
+"[!java]void [/!]left([!java]double [/!]angle[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:20
+msgid "Turns left or right of the given angle (in degrees)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:22
+#, no-wrap
+msgid ""
+"[!java]double [/!]getX()[!scala]:Double[/!]\n"
+"[!java]double [/!]getY()[!scala]:Double[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:24
+msgid "Returns the current position of the turtle."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:26
+#, no-wrap
+msgid ""
+"[!java]void [/!]setX([!java]double [/!]x[!scala]:Double[/!])\n"
+"[!java]void [/!]setY([!java]double [/!]y[!scala]:Double[/!])\n"
+"[!java]void [/!]setPos([!java]double [/!]x[!scala]:Double[/!], [!java]double "
+"[/!]y[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:29
+msgid "Teleports the turtle to a new position (without leaving any trace)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:31
+#, no-wrap
+msgid ""
+"[!java]void [/!]moveTo([!java]double [/!]x[!scala]:Double[/!], [!java]double "
+"[/!]y[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:32
+msgid "Moves the turtle to a new position."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:34
+#, no-wrap
+msgid "[!java]void [/!]circle([!java]double [/!]radius[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:35
+msgid "Draw a circle of the specified radius centered on the turtle."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:37
+#, no-wrap
+msgid "[!java]void [/!]hide()"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:38
+msgid "Hides the turtle."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:40
+#, no-wrap
+msgid "[!java]void [/!]show()"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:41
+msgid "Shows the turtle back."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:43
+#, no-wrap
+msgid "[!java]boolean [/!]isVisible()[!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:44
+msgid "Returns whether the turtle is currently visible."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:46
+#, no-wrap
+msgid "[!java]void [/!]clear()"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:47
+msgid "Removes any trail on the sheet."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:49
+#, no-wrap
+msgid "[!java]double [/!]getHeading()[!scala]:Double[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:50
+msgid "Returns the current heading of the turtle (in degrees)."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:52
+#, no-wrap
+msgid "[!java]void [/!]setHeading([!java]double [/!]angle[!scala]:Double[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:53
+msgid "Sets a new heading to the turtle (in degrees)."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/turtles/TurtleWorld.html:55
+msgid "Functions about the pen"
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:57
+#, no-wrap
+msgid "[!java]void [/!]penUp()"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:58
+msgid ""
+"Moves the pen up (turtles have pens, not brushes as buggles). The turtle "
+"will not leave any trace during its subsequent moves."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:61
+#, no-wrap
+msgid "[!java]void [/!]penDown()"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:62
+msgid ""
+"Moves the pen down. The turtle will leave a trace during its subsequent "
+"moves."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:64
+#, no-wrap
+msgid "[!java]boolean [/!]isPenDown()[!scala]:Boolean[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:65
+msgid "Returns the current pen position as a boolean."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:67
+#, no-wrap
+msgid "[!java]Color [/!]getColor()[!scala]:Color[/!]"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:68
+msgid "Returns the current pen color."
+msgstr ""
+
+#. type: Content of: <pre>
+#: src/plm/universe/turtles/TurtleWorld.html:70
+#, no-wrap
+msgid "[!java]void [/!]setColor([!java]Color [/!]color[!scala]:Color[/!])"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:71
+msgid "Changes the pen color."
+msgstr ""
+
+#. type: Content of: <h2>
+#: src/plm/universe/turtles/TurtleWorld.html:73
+msgid "Other functions"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: src/plm/universe/turtles/TurtleWorld.html:76
+msgid "Returns whether the current turtle is selected in the graphical interface."
+msgstr ""
+
+#. type: Content of: <h3>
+#: src/lessons/turtleart/Main.html:2 src/lessons/turtleart/short_desc.html:2
+msgid "Turtle Art"
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/turtleart/Main.html:4
+msgid ""
+"Since its inception in the 60's, the LOGO turtle fascinates by its ability "
+"to draw nice figures on computer.  This lesson allows you to explore some of "
+"the classical figures, and draw your own."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/turtleart/Main.html:7
+msgid ""
+"The language's syntax is absolutely not presented, but if you know a bit of "
+"it or if someone tells you, you can take these exercises even if you are an "
+"absolute beginner in programming."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/turtleart/Main.html:10
+msgid ""
+"Please send us your best contributions so that they get added to this "
+"gallery to inspire the next ones."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/turtleart/Main.html:16
+msgid ""
+"When you don't want to follow the proposed exercises but draw your own "
+"stuff, the \"you failed\" message really gets annoying.  We should have a "
+"\"Creative mode\" in PLM, where the world is not checked against the "
+"answer.  Also, we should not clean the board automatically in this mode."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/turtleart/Main.html:19
+msgid ""
+"Other exercises should be added. A whole lot of exercises are available from "
+"http://neoparaiso.com/logo/#sect4."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/turtleart/Main.html:20
+msgid ""
+"Missing: the built-ins hide()/show(), that decide whether the turtle must be "
+"shown."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: src/lessons/turtleart/Main.html:21
+msgid ""
+"Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
+"moving or by moving to the end of the arc."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/turtleart/short_desc.html:3
+msgid ""
+"Draw beautiful figures with the Logo turtle, and learn programming while "
+"playing."
+msgstr ""
+
+#. type: Content of: <p>
+#: src/lessons/turtleart/short_desc.html:6
+msgid ""
+"You should know the basic syntax of the programming language you will "
+"choose, but no exhaustive programming practice is required to take this "
+"lesson."
+msgstr ""
+
+#. type: Content of: <h1>
 #: src/lessons/recursion/Main.html:2
 msgid "Recursive algorithms"
 msgstr ""
@@ -7700,11 +8188,6 @@ msgid ""
 "Math.ceiling(-5.12) // Value = -5 (rounded toward plus infinity)\n"
 "[!java](double) 17[/!][!scala]17.asInstanceOf[Double][/!] // Value = 17.0 "
 "(“casted to double”, converted to double)\n"
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/recursion/square/FourSquare.html:48 src/lessons/recursion/hanoi/HanoiBoard.html:21 src/lessons/welcome/array/basics/Array1.html:231
-msgid "Goal of this exercise"
 msgstr ""
 
 #. type: Content of: <p>
@@ -9312,13 +9795,6 @@ msgid ""
 "imported the math module.[/!]"
 msgstr ""
 
-#. type: Content of: <p>
-#: src/lessons/welcome/bat/bool1/Close10.html:8 src/lessons/welcome/bat/bool1/Diff21.html:6 src/lessons/welcome/bat/bool1/HasTeen.html:7 src/lessons/welcome/bat/bool1/IcyHot.html:6 src/lessons/welcome/bat/bool1/In1020.html:6 src/lessons/welcome/bat/bool1/In3050.html:6 src/lessons/welcome/bat/bool1/LastDigit.html:10 src/lessons/welcome/bat/bool1/LoneTeen.html:7 src/lessons/welcome/bat/bool1/Main.html:12 src/lessons/welcome/bat/bool1/Makes10.html:6 src/lessons/welcome/bat/bool1/Max1020.html:8 src/lessons/welcome/bat/bool1/MonkeyTrouble.html:8 src/lessons/welcome/bat/bool1/NearHundred.html:8 src/lessons/welcome/bat/bool1/ParotTrouble.html:9 src/lessons/welcome/bat/bool1/PosNeg.html:6 src/lessons/welcome/bat/bool1/SleepIn.html:8 src/lessons/welcome/bat/bool1/SumDouble.html:6 src/lessons/welcome/bat/bool2/AlarmClock.html:12 src/lessons/welcome/bat/bool2/AnswerCell.html:9 src/lessons/welcome/bat/bool2/BlueTicket.html:11 src/lessons/welcome/bat/bool2/CaughtSpeeding.html:12 src/lessons/welcome/bat/bool2/CigarParty.html:10 src/lessons/welcome/bat/bool2/DateFashion.html:13 src/lessons/welcome/bat/bool2/GreenTicket.html:10 src/lessons/welcome/bat/bool2/In1To10.html:9 src/lessons/welcome/bat/bool2/InOrderEqual.html:10 src/lessons/welcome/bat/bool2/InOrder.html:9 src/lessons/welcome/bat/bool2/LastDigit2.html:9 src/lessons/welcome/bat/bool2/LessBy10.html:6 src/lessons/welcome/bat/bool2/Main.html:5 src/lessons/welcome/bat/bool2/MaxMod5.html:10 src/lessons/welcome/bat/bool2/NearTen.html:9 src/lessons/welcome/bat/bool2/RedTicket.html:10 src/lessons/welcome/bat/bool2/ShareDigit.html:10 src/lessons/welcome/bat/bool2/SortaSum.html:8 src/lessons/welcome/bat/bool2/SquirrelPlay.html:11 src/lessons/welcome/bat/bool2/TeaParty.html:12 src/lessons/welcome/bat/bool2/TeenSum.html:9 src/lessons/welcome/bat/bool2/TwoAsOne.html:6 src/lessons/welcome/bat/bool2/WithoutDoubles.html:9 src/lessons/bat/string1/Main.html:9 src/lessons/bat/string1/AltPairs.html:5 src/lessons/bat/string1/FrontTimes.html:8 src/lessons/bat/string1/Last2.html:9 src/lessons/bat/string1/StringBits.html:5 src/lessons/bat/string1/StringMatch.html:9 src/lessons/bat/string1/StringSplosion.html:5 src/lessons/bat/string1/StringTimes.html:5 src/lessons/bat/string1/StringX.html:7 src/lessons/bat/string1/StringYak.html:8 src/lessons/welcome/array/array123/Array123.html:5 src/lessons/welcome/array/array667/Array667.html:8 src/lessons/welcome/array/arraycount9/ArrayCount9.html:5 src/lessons/welcome/array/arrayfront9/ArrayFront9.html:5 src/lessons/welcome/array/notriples/NoTriples.html:8 src/lessons/welcome/array/has271/Has271.html:10
-msgid ""
-"This exercise was converted to PLM from the excellent exercising site "
-"http://javabat.com/"
-msgstr ""
-
 #. type: Content of: <h1>
 #: src/lessons/welcome/bat/bool1/CountTeen.html:2
 msgid "Count Teen"
@@ -10034,898 +10510,6 @@ msgid ""
 "\"yak\" strings will not overlap."
 msgstr ""
 
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/basics/Array1.html:2
-msgid "[!java|scala]Arrays[/!][!python]Lists[/!] and Knotting"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/basics/Array1.html:4
-msgid ""
-"The goal of this exercise is to reproduce the pattern of the first row in "
-"the other rows with a shift of one cell (see the Objective tab for "
-"details). The biggest difference between this exercise and the others we had "
-"on patterns is that you have to read the pattern (on first row) before "
-"reproducing it. You cannot do otherwise because the same code will be "
-"executed on three different worlds, each of them having a specific pattern."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:12
-msgid ""
-"One solution is to read the next cell, and go copy it in position before "
-"coming back to read the second cell. But since it is forbidden to use the "
-"methods to teleport the buggle to a specific position (<code>setPos()</code> "
-"and similar), this approach will be a pain to implement."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:17
-msgid ""
-"The simplest is to store the sequence of colors that constitute the whole "
-"pattern in an [!java|scala]<b>array</b>[/!][!python]<b>list</b>[/!].  But "
-"before we can do so, we should learn a bit what "
-"[!java|scala]arrays[/!][!python]lists[/!] are."
-msgstr ""
-
-#. type: Content of: <h2>
-#: src/lessons/welcome/array/basics/Array1.html:21
-msgid "[!java|scala]Arrays[/!][!python]List[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:23
-msgid ""
-"[!java|scala]An array[/!][!python]A list[/!] is an ordered sequence of "
-"variables that go together.  It is somehow similar to a shelve where each "
-"level can store a separate value. Each variable of the sequence is "
-"identified by its position, and can store a specific value. [!java|scala]All "
-"cells of the array must store values of the same type because arrays are "
-"homogeneous in [!thelang]. It is possible to trick this restriction by using "
-"the datatype <code>[!java]Object[/!][!scala]Any[/!]</code> that can contain "
-"[!java]almost[/!] any other datatype. [!java]Primitive types such as the "
-"ones we saw so far (int, boolean, double, char, etc) cannot be stored in an "
-"Object variable, but their objectified counter-part (Integer, Boolean, "
-"Double, Char, Boolean, etc) can.[/!] It is however a good practice to make "
-"the type of an array as specific as possible, i.e., if you plan to store "
-"some integers in your array, make it an array of integers, not of "
-"[!java]Object[/!][!scala]Any[/!].[/!] [!python]Lists can even mix values of "
-"differing types, such as integer values in some cells and colors in other "
-"cells.[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:40
-msgid ""
-"T is the [!java|scala]array[/!][!python]list[/!]'s name, "
-"[!java|python]T[0][/!][!scala]T(0)[/!] is the name of the first cell, "
-"[!java|python]T[1][/!][!scala]T(1)[/!] the name of the second cell, "
-"[!java|python]T[2][/!][!scala]T(2)[/!] the third one, etc. And yes, the "
-"first cell is numbered [!java|python]T[0][/!][!scala]T(0)[/!] while the last "
-"one of [!java|scala]an array[/!][!python]a list[/!] of size N is "
-"[!java|python]T[N-1][/!][!scala]T(N-1)[/!]. It may seem funny to count "
-"starting from 0 and not from 1 as usual, but some historical reasons make it "
-"unavoidable here."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/array/basics/Array1.html:48
-msgid "Basic usage"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:50
-msgid ""
-"We can use an integer variable <i>i</i> to access with "
-"[!java|python]T[i][/!][!scala]T(i)[/!] to the cells: when the value of "
-"<i>i</i> is 0, then [!java|python]T[i][/!][!scala]T(i)[/!] accesses "
-"[!java|python]T[0][/!][!scala]T(0)[/!]; when the value of <i>i</i> is 10, "
-"then [!java|python]T[i][/!][!scala]T(i)[/!] accesses "
-"[!java|python]T[10][/!][!scala]T(10)[/!].  <i>i</i> is said to be the "
-"<b>index</b> in T.  <code>[!java|python]T[i][/!][!scala]T(i)[/!]</code> can "
-"be used just like any variable. We can set a new value:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:58
-#, no-wrap
-msgid "[!java|python]T[i][/!][!scala]T(i)[/!] = 78[!java];[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:60
-msgid "We can retrieve and use its value:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:61
-#, no-wrap
-msgid "x = [!java|python]T[i][/!][!scala]T(i)[/!][!java];[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:63
-msgid "We can test this value:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:64
-#, no-wrap
-msgid ""
-"if ([!java|python]T[i][/!][!scala]T(i)[/!] > 0) "
-"[!scala|java]{[/!][!python]:[/!]\n"
-"    [!java|scala]//[/!][!python]#[/!] instructions...\n"
-"[!java|scala]}[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:68
-msgid ""
-"It is very easy to traverse the whole "
-"[!scala|java]array[/!][!python]list[/!], for example to initialize each "
-"cells."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:71
-#, no-wrap
-msgid ""
-"[!java]for (int i = 0; i&lt;T.length; i++) {[/!][!python]for i in "
-"range(len(T)):[/!][!scala]for (i &lt;- 0 to T.length-1) {[/!]\n"
-"   [!java|python]T[i][/!][!scala]T(i)[/!] = 3[!java];[/!]\n"
-"[!java|scala]}[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:75
-msgid ""
-"[!java|scala]The notation <code>T.length</code> retrieves the length of the "
-"array T,[/!] [!python]The function <code>len()</code> retrieves the length "
-"of the list T,[/!] allowing to build a classical for loop easily.  "
-"[!python]Actually, the <code>len()</code> function is much more generic and "
-"can be used to retrieve the length of many objects.  Applied to strings for "
-"example, it returns the amount of chars in this string.[/!] [!scala]Don't "
-"forget to start at <code>0</code> and stop at <code>T.length-1</code> "
-"instead of <code>1 to T.length</code> however.[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:83
-msgid ""
-"If you just want to iterate over the values of T without keeping track of "
-"their index, you can simply write:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:84
-#, no-wrap
-msgid ""
-"[!java]for (int i: T) {[/!][!scala]for (i &lt;- T) {[/!][!python]for i in "
-"T:[/!]\n"
-"  action()[!java];[/!]\n"
-"[!java|scala]}[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:87
-msgid ""
-"[!java]This construct is called an <i>extended loop</i> in Java. The "
-"variable <i>i</i> takes all values of the set located to the right of the "
-"colon (:), one after the other.[/!] [!python|scala]This is actually very "
-"similar to the previous construct.  Simply, "
-"<code>[!python]range(n)[/!][!scala]i to j[/!]</code> returns a set of "
-"integers over which the for construct iterates.  Actually, [!thelang] offers "
-"much more elegant ways to traverse [!python]lists[/!][!scala]arrays[/!] and "
-"other data collections, but this should be the topic of a specific set of "
-"exercises (that are still to be written in PLM).[/!]"
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/array/basics/Array1.html:98
-msgid "Declaring [!python]a list[/!][!java|scala]an array[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:101
-msgid ""
-"If you know beforehand the content of your list, you can affect these values "
-"all together.  Just put them between square braces and separated by commas "
-"as follows:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:104
-#, no-wrap
-msgid ""
-"L = [1, 3, 5, 7, 9] \n"
-"<span class=\"comment\"># L is now an array of 5 values, all of them being "
-"integers</span>"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:106
-msgid ""
-"Otherwise, you probably want to create an empty list and then append each "
-"values separately to the list:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:108
-#, no-wrap
-msgid ""
-"L2 = [] \n"
-"<span class=\"comment\"># L2 is now an empty list</span>\n"
-"L2.append(1)\n"
-"L2.append(3)\n"
-"L2.append(5)\n"
-"L2.append(7)\n"
-"L2.append(9) \n"
-"<span class=\"comment\"># Its content is now the same as L previously</span>"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:119
-msgid ""
-"To declare a variable named <b>T</b> that can store arrays of integers, one "
-"should write:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:120
-#, no-wrap
-msgid "[!java]int[] T;[/!][!scala]var T:Array[Int][/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:122
-msgid ""
-"[!java]<code>int</code> means that the elements of the array are of type "
-"integer; <code>[]</code> means that we are speaking of an array and "
-"<code>T</code> is the name of the variable.  For historical reasons, this "
-"can also be written as <code>int T[]</code> (with the [] after the variable "
-"name), but this is less readable and should probably be avoided.[/!] "
-"[!scala]The <code>[Int]</code> notation specializes the Array type (that is "
-"generic), specifying that each cell of this array is an integer. An array of "
-"booleans would simply by written <code>Array[Boolean]</code>.[/!]"
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/array/basics/Array1.html:130
-msgid "Allocating an array"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:132
-msgid ""
-"Declaring a variable <code>T</code> that stores an array only reserve the "
-"<b>name</b> <code>T</code> for later use, but not the memory area to store "
-"the cells. The array is not initialized yet: it does not have any "
-"value. What would <code>[!java]T[4][/!][!scala]T(4)[/!]</code> mean if we "
-"didn't say that the array is 5 cells long?"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:137
-msgid "First and foremost, we have to give a value to <code>T</code>:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:138
-#, no-wrap
-msgid "[!java]T = new int[10];[/!][!scala]var T = new Array[Int](10)[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:140
-msgid ""
-"<code>new</code> means that we want to create something, and "
-"<code>[!java]int[10][/!][!scala]Array[Int](10)[/!]</code> means that it is "
-"an array of 10 integer values.  In return, an array of 10 integer cells is "
-"created in memory, and the <code>T</code> variable <b>references</b> this "
-"array."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:145
-msgid ""
-"The size of an array is fixed and cannot be changed after the creation of "
-"the array. The size of a <code>T</code> array can be retrieve by consulting "
-"the variable <code>T.length</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:149
-msgid ""
-"While allocating, you can specify the size with a variable: "
-"<code>[!java]int[] T = new int[i];[/!][!scala]var T = new "
-"Array[Int](i);[/!]</code> In this case, the array's size will be set to the "
-"value of <code>i</code> <i>when <code>new</code> gets called</i>.  The size "
-"of the array still cannot be modified : even if the variable <code>i</code> "
-"changes afterward, the size remains to the value given when it was "
-"allocated.  [!java]Also, it is forbidden to write something like <code>int "
-"T[10];</code> when declaring the variable.  You are required to use the "
-"<code>new</code> instruction to allocate it, as in <code>int[] T = new "
-"int[10];</code> [/!]"
-msgstr ""
-
-#. type: Content of: <h4>
-#: src/lessons/welcome/array/basics/Array1.html:157
-msgid "Declaration and initialization"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:158
-msgid ""
-"If you know beforehand the content of your array, you can declare, allocate "
-"and initialize it in one shoot:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:159
-#, no-wrap
-msgid ""
-"[!java]int[] T = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };[/!][!scala]var T = "
-"Array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:161
-msgid ""
-"To know the size of the array to allocate, the compiler counts the provided "
-"values.  This code is equivalent to:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:163
-#, no-wrap
-msgid ""
-"[!java]int[] T = new int[10];\n"
-"T[0] = 1;\n"
-"T[1] = 2;\n"
-"...\n"
-"T[9] = 10;[/!][!scala]var T = new Array[Int](10);\n"
-"T(0) = 1\n"
-"T(1) = 2\n"
-"...\n"
-"T(9) = 10[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:173
-msgid "It is also equivalent to:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:174
-#, no-wrap
-msgid ""
-"[!java]int[] T = new int[10];\n"
-"for (int i=0; i&lt;T.length; i++) {\n"
-"  T[i] = i+1;\n"
-"}[/!][!scala]var T = new Array[Int](10);\n"
-"for (i &lt;- 0 to T.length-1) {\n"
-"  T(i) = i+1\n"
-"}[/!]"
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/welcome/array/basics/Array1.html:185
-msgid "[!python]Lists[/!][!scala|java]Arrays[/!] and method parameters"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:186
-msgid ""
-"It is perfectly OK to pass [!python]a list[/!][!java|scala]an array[/!] to a "
-"method as a parameter.  This method can then use this parameter as if it "
-"were defined locally:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:188
-#, no-wrap
-msgid ""
-"[!java]boolean has42First(int[] array) {\n"
-"    return array[0] == 42;\n"
-"}[/!][!python]def has42First(list):\n"
-"  return list[0] == 42[/!][!scala]def has42First(array:Array[Int]):Boolean = "
-"{\n"
-"  return array(0) == 42\n"
-"}[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:195
-msgid "On the caller side, that also very simple:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:196
-#, no-wrap
-msgid ""
-"[!java]int[] tab = new int[10];[/!][!scala]var tab = new Array[Int] "
-"(10)[/!][!python]tab = [1, 3, 5, 7, 9][/!]\n"
-"[!java|scala]<span class=\"comment\">// Values initialization "
-"omitted</span>\n"
-"[/!]if (has42First(tab))[!java|scala] {[/!][!python]:[/!]\n"
-"   <span class=\"comment\">[!java|scala]//[/!][!python]#[/!] do "
-"something</span>\n"
-"[!java|scala]}[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:203
-msgid ""
-"If you want to allocate and initialize the array in one shoot, that's a bit "
-"more complicated as the compiler has to know the type of the parameter you "
-"are creating.  For that, use the following (ugly) construct:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:206
-#, no-wrap
-msgid ""
-"if (has42First(   new int[] {1, 3, 5, 7, 9}   ) {\n"
-"   <span class=\"comment\">// do something</span>\n"
-"}"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:211
-msgid ""
-"Methods can also return [!java|scala]arrays[/!][!python]lists[/!] as result "
-"without any complication.  Here is a method that returns [!java|scala]an "
-"array[/!][!python]a list[/!] of the requested size, filled with 42s."
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array1.html:214
-#, no-wrap
-msgid ""
-"[!java]int[] fill42(int size) {\n"
-"    int[] res = new int[size];\n"
-"    for (int i=0; i&lt;size; i++) \n"
-"        res[i] = 42;\n"
-"    return res;\n"
-"}[/!][!scala]def fill42(size:Int):Array[Int] = {\n"
-"    var res = new Array[int] (size)\n"
-"    for (i &lt;- 0 to size -1) {\n"
-"        res(i) = 42;\n"
-"    }\n"
-"    return res;\n"
-"}[/!][!python]def fill42(size):\n"
-"    res = []\n"
-"    for i in range(size):\n"
-"        res.append(42)\n"
-"    return res[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:233
-msgid "At least! After this long explanation, we can come back to the exercise."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:234
-msgid ""
-"Your mission is rather simple actually.  Your code should save the color "
-"pattern observed on the first row into [!java|scala]an array[/!][!python]a "
-"list[/!].  [!python]The easiest is to create an empty list, and then "
-"<code>append()</code> the colors one after the others as you read them (with "
-"<code>getGroundColor()</code>).[/!] [!java|scala]For that, you should "
-"declare and allocate an array of <code>Color</code>. Beware, there is "
-"several worlds, of differing size; use <code>getWorldHeight()</code> to "
-"retrieve the size of the current world.  Once the array allocated, fill it "
-"by reading the ground color in each locations (with "
-"<code>getGroundColor()</code>).[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array1.html:242
-msgid ""
-"Once you managed to read and save the pattern on the first row, you have to "
-"reapply the pattern on every rows, for example by executing "
-"<code>getWorldHeight()</code> times a method written specifically for this."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/basics/Array2.html:2
-msgid "[!java|scala]Arrays[/!][!python]Lists[/!], Knotting and Modulos"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array2.html:4
-msgid ""
-"This exercise is similar to the previous one: you have to reproduce the "
-"color pattern of the first cell into the other ones."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array2.html:7
-msgid ""
-"The first difference is that the world is bordered of walls: you thus have "
-"to slightly modify your trajectory to ensure that the buggle does not crash "
-"into a wall. The simpler for that is to handle the first cell out of the "
-"<code>for</code> loop and do only <code>getWorldHeight()-1</code> steps in "
-"the loop."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array2.html:13
-msgid ""
-"The other difference is that the offset to apply between columns is not "
-"fixed, but written on the first cell of each column. To get the info as an "
-"integer, we can use:"
-msgstr ""
-
-#. type: Content of: <pre>
-#: src/lessons/welcome/array/basics/Array2.html:17
-#, no-wrap
-msgid ""
-"[!java]int offset = Integer.parseInt(readMessage())[/!][!python]offset = "
-"int( readMessage() )[/!][!scala]val offset = readMessage().toInt[/!]"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array2.html:19
-msgid ""
-"<code>readMessage()</code> gets the message on the ground as a "
-"[!java|scala]String[/!][!python]string[/!], while "
-"<code>[!java]Integer.parseInt(str)[/!][!scala]str.toInt[/!][!python]int(str)[/!]</code> "
-"transforms the string <code>str</code> into an integer by <i>reading</i> it."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array2.html:23
-msgid ""
-"Then, to pick the right color, the easier is to use the <code>%</code> "
-"(modulo) operator. For example, <code>(i + 5) % size</code> allows to "
-"retrieve the <code>i</code>th cell of an array of size <code>size</code> "
-"with an offset of <code>5</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/basics/Array2.html:28
-msgid "You're up."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:2
-msgid "Searching for a given value"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:4
-msgid ""
-"The goal of this exercise is to search the cell of a given value, and return "
-"its position."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:6
-msgid ""
-"To that extend, you should fill the method <code>indexOf()</code>, which "
-"parameters are the array to explore, and the value to search. If the value "
-"<code>lookingFor</code> is not in the array <code>tab</code>, the method "
-"should return -1."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:10
-msgid ""
-"The idea of the algorithm is to sweep over the whole array, checking the "
-"value of each cell. If it's the searched value, you should return the index "
-"of the cell currently checked."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:14
-msgid ""
-"Remember that indices begin at 0 and not at 1. So, if there is 3 cells, "
-"their indices will be 0, 1 and 2. There would not be any cell numbered 3."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:17
-msgid ""
-"Remember also that the amount of cells in an array can be retrieved using "
-"the <code>length</code> attribute. So, if your array is called "
-"<code>tab</code>, its size can be retrieved as <code>tab.length</code>.  "
-"Note that there is no () after <code>length</code>. An attribute is a sort "
-"of variable embedded in another object (here, the array)."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:22
-msgid "So, the last value of an array is given by <code>tab[tab.length - 1]</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:24
-msgid ""
-"Remember also that the amount of cells in an array can be retrieved with the "
-"<code>len()</code> function. So, if your array is called <code>tab</code>, "
-"its size can be retrieved as <code>len(tab)</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/value/IndexOfValue.html:28
-msgid "So, the last value of an array is given by <code>tab[ len(tab) - 1]</code>."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:2
-msgid "Index of the maximum value"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:4
-msgid ""
-"In this exercise, you must compute the index of the tab cell containing the "
-"biggest value."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:6
-msgid ""
-"For that, fill the <code>indexOfMaximum()</code> method. Its parameter is "
-"the array to explore. Should the array contain the searched value several "
-"times, you should return the index of the first occurrence."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/indexof/maxvalue/IndexOfMaxValue.html:10
-msgid ""
-"To solve this exercise, you should sweep over the whole array. For each "
-"value, if it's bigger than the biggest value you saw so far, you must save "
-"this new champion and its position.  You will thus need 2 extra variables; "
-"the initial value of the champion could be the value of the first cell."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:2
-msgid "Average value"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:5
-msgid ""
-"The objective of this exercise is to compute the average value of the "
-"integer values stored in an array."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:7
-msgid ""
-"You have to fill the body of the method <code>average()</code> which takes "
-"as parameter the array of integers of which it computes and returns the "
-"average value. Please note that this method must return an integer."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:9
-msgid ""
-"To compute the average value of an integer, it is necessary to traverse the "
-"whole array and to compute the sum of all its values (so you will need a "
-"variable to store this temporary result), then you have to divide this sum "
-"by the size of the array."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:11
-msgid ""
-"In Java, you can get the size of an array <code>myarray</code> by consulting "
-"its <code>length</code> attribute (in other words, "
-"<code>myarray.length</code>). Notice that there is no parenthesis after "
-"<code>length</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/averagevalue/AverageValue.html:16
-msgid ""
-"In python, retrieving the size of an array <code>myarray</code> is as easy "
-"as calling <code>len(myarray)</code>."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:2
-msgid "Maximal value"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:4
-msgid ""
-"In this exercise, you must compute the maximal value contained in an array.  "
-"For that, fill the <code>maximum()</code> method, which parameter is the "
-"array to explore."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/maxvalue/MaxValue.html:8
-msgid ""
-"To compute this value, sweep over the whole parameter. For each value, if "
-"it's bigger than the biggest value you saw so far, you must save this value "
-"somewhere to remember it afterward. You thus need an extra variable, which "
-"can be initialized to the value of the first array cell."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:2
-msgid "Occurrence of a value"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:4
-msgid ""
-"In this exercise, you must compute the amount of occurrences of a given "
-"value in an array (that is, the amount of time that this value appears in "
-"the array). For that, fill the <code>occurrences()</code> method, which "
-"returns the number of occurrence of <code>lookingFor</code> in "
-"<code>tab</code>."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/occurenceofvalue/OccurrenceOfValue.html:9
-msgid ""
-"To compute this value, simply sweep over the array counting for the amount "
-"of cells containing the searched value. You thus need an extra variable for "
-"that."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/array123/Array123.html:2
-msgid "Array123"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/array123/Array123.html:3
-msgid ""
-"Given an array of integers, return true if .. 1, 2, 3, .. appears in the "
-"array somewhere."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/array667/Array667.html:2
-msgid "Array667"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/array667/Array667.html:3
-msgid ""
-"Given an array of integers, return the number of times that two 6's are next "
-"to each other in the array. Also count instances where the second \"6\" is "
-"actually a 7."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/arraycount9/ArrayCount9.html:2
-msgid "ArrayCount9"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/arraycount9/ArrayCount9.html:3
-msgid "Given an array of integers, return the number of 9's in the array."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:2
-msgid "ArrayFront9"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/arrayfront9/ArrayFront9.html:3
-msgid ""
-"Given an array of integers, return true if one of the first 4 elements in "
-"the array is a 9. The array length may be less than 4."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/notriples/NoTriples.html:2
-msgid "NoTriples"
-msgstr ""
-
-#. type: Content of: outside any tag (error?)
-#: src/lessons/welcome/array/notriples/NoTriples.html:3
-msgid ""
-"Given an array of integers, we'll say that a triple is a value appearing 3 "
-"times in a row in the array. Return true if the array does not contain any "
-"triples."
-msgstr ""
-
-#. type: Content of: <h1>
-#: src/lessons/welcome/array/has271/Has271.html:2
-msgid "Has271"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/has271/Has271.html:3
-msgid ""
-"Given an array of integers, return true if it contains a 2, 7, 1 pattern -- "
-"a value, followed by the value plus 5, followed by the initial value minus "
-"1.  So, 2,7,1 is such a pattern because 7 is 5+2 and 1 is 2-1. 3,8,2 is also "
-"such a pattern."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/welcome/array/has271/Has271.html:7
-msgid ""
-"Additionally the 271 counts even if the \"1\" differs by 2 or less from the "
-"correct value."
-msgstr ""
-
-#. type: Content of: <h3>
-#: src/lessons/turtleart/Main.html:2 src/lessons/turtleart/short_desc.html:2
-msgid "Turtle Art"
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/turtleart/Main.html:4
-msgid ""
-"Since its inception in the 60's, the LOGO turtle fascinates by its ability "
-"to draw nice figures on computer.  This lesson allows you to explore some of "
-"the classical figures, and draw your own."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/turtleart/Main.html:7
-msgid ""
-"The language's syntax is absolutely not presented, but if you know a bit of "
-"it or if someone tells you, you can take these exercises even if you are an "
-"absolute beginner in programming."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/turtleart/Main.html:10
-msgid ""
-"Please send us your best contributions so that they get added to this "
-"gallery to inspire the next ones."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:16
-msgid ""
-"When you don't want to follow the proposed exercises but draw your own "
-"stuff, the \"you failed\" message really gets annoying.  We should have a "
-"\"Creative mode\" in PLM, where the world is not checked against the "
-"answer.  Also, we should not clean the board automatically in this mode."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:19
-msgid ""
-"Other exercises should be added. A whole lot of exercises are available from "
-"http://neoparaiso.com/logo/#sect4."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:20
-msgid ""
-"Missing: the built-ins hide()/show(), that decide whether the turtle must be "
-"shown."
-msgstr ""
-
-#. type: Content of: <ul><li>
-#: src/lessons/turtleart/Main.html:21
-msgid ""
-"Missing: the built-ins arc() and arcTo(), that draw an arc, either w/o "
-"moving or by moving to the end of the arc."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/turtleart/short_desc.html:3
-msgid ""
-"Draw beautiful figures with the Logo turtle, and learn programming while "
-"playing."
-msgstr ""
-
-#. type: Content of: <p>
-#: src/lessons/turtleart/short_desc.html:6
-msgid ""
-"You should know the basic syntax of the programming language you will "
-"choose, but no exhaustive programming practice is required to take this "
-"lesson."
-msgstr ""
-
 #. type: Content of: <h3>
 #: src/lessons/lander/Main.html:2 src/lessons/lander/short_desc.html:2
 msgid "Lunar Lander"
@@ -10986,4 +10570,178 @@ msgstr ""
 #. type: Content of: <p>
 #: src/lessons/lander/short_desc.html:7
 msgid "This lesson assumes some basic programming and physics skills."
+msgstr ""
+
+#. type: Content of: <h2>
+#: lib/doc/MainWindow.html:1
+msgid "The PLM Main Window"
+msgstr ""
+
+#. type: Content of: outside any tag (error?)
+#: lib/doc/MainWindow.html:3
+msgid ""
+"The PLM working environment should be self-explanatory, in particular with "
+"the tool tips appearing when your mouse is over the elements.  Here is a "
+"little explanation of the components in case you fail to understand "
+"something. The main window is made of 5 main components:"
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:10
+msgid ""
+"<b>The menu:</b> Placed on top of the window, it gives you access to some "
+"advanced commands such as exiting the program, and some other that we will "
+"detail later."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:14
+msgid ""
+"<b>The tool bar:</b> Placed just below the menu, it gives you access to the "
+"four main commands:"
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:19
+msgid ""
+"The <b>Start</b> button, which begins the compilation and execution of the "
+"code you may have typed in the editor. At the end of the execution, it "
+"verifies whether you reach the situation constituting the objective of the "
+"exercise or not. If yes, you gain access to the next exercise using the "
+"<b>Exercise</b> menu. If not, you need to rework your code."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:25
+msgid ""
+"The <b>Stop</b> button allows you to interupt the execution of your code, "
+"what may reveal useful if you encounter an <i>infinite loop</i>."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:28
+msgid ""
+"The <b>Reset</b> button can be used to reset the world into its initial "
+"state."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:31
+msgid ""
+"The <b>Demo</b> button shows you the execution of the expected "
+"solution. During its execution, you may want to switch the seen world to see "
+"the different expected solutions."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:34
+msgid ""
+"Please note that there is often several ways of achieving the awaited "
+"solution, and that the one presented during the demo is not more or less "
+"correct than the others. You are completely free to not follow strictly the "
+"process shown by the demo, as long as your final solution matches the "
+"exercise expectations."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:41
+msgid ""
+"<b>Mission and editor tabs:</b> this is were you read this very text. This "
+"area contains several tabs to which you can access by clicking on their name "
+"on the top left. The first tab (which is always named <b>Mission</b>)  "
+"contains a presentation of the current exercise. To solve an exercise, you "
+"need to write your code in the other tabs. For example, you can now clic on "
+"the <b>Source Code</b> tab to see the actual source. If it is empty, that's "
+"because you did not write any code yet."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:49
+msgid ""
+"<b>The console:</b> Placed under the tabs, this is where any messages of the "
+"application will appear. This area is initially empty and white."
+msgstr ""
+
+#. type: Content of: <ul><li>
+#: lib/doc/MainWindow.html:52
+msgid ""
+"<b>World view</b> Placed on the right of the tabs, it is constituted of five "
+"elements:"
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:57
+msgid ""
+"A scrolling menu allows to choose the world. Indeed, the program you write "
+"may be executed in several worlds to test it in differing conditions. This "
+"menu allows you to choose the world you want to see. Note that this "
+"scrolling menu is hidden if there is only one world in your exercise."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:62
+msgid ""
+"A slider placed right bellow allows to choose the animation speed of the "
+"world. More precisely, it allows to choose the delay (in milliseconds) that "
+"the buggles must wait after each action to allow you to see what they are "
+"doing."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:67
+msgid ""
+"A tab <b>World</b> represents the view of the world currently selected (from "
+"the scrolling menu). This view is thus constitued of a grid forming the "
+"several cells of the world, as well as several <i>buggles</i> awaiting for "
+"your orders."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:72
+msgid ""
+"An <b>Objective</b> tab displaying the world as it must be by the end of the "
+"exercise."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li>
+#: lib/doc/MainWindow.html:76
+msgid ""
+"<b>The interactive controls</b>. Placed under the world view, these buttons "
+"allows you to interactively control the buggles. This way, you can try to "
+"<i>manually</i> bring your buggle to the scenario objective before writting "
+"the needed code in the editor."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:82
+msgid "A scrolling menu allows to select the buggle you want to control."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:84
+msgid "The <b>Forward</b> button let your buggle do one step forward."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:86
+msgid "The <b>Backward</b> button let it do one step backward."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:88
+msgid "The <b>Turn left</b> button ask your buggle to turn of 90° to its left."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:90
+msgid ""
+"The <b>Turn right</b> button asks the buggle to turn to the right (isn't "
+"this amazing?)."
+msgstr ""
+
+#. type: Content of: <ul><li><ul><li><ul><li>
+#: lib/doc/MainWindow.html:93
+msgid ""
+"The <b>Mark</b> button requests your buggle to leave a mark behind it when "
+"it goes."
 msgstr ""

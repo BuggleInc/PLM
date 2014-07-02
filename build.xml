@@ -61,7 +61,7 @@
     <target name="compile" description="compile all source files">
         <mkdir dir="${classes.dir}"/>
         <scalac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" />
-        <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" />
+        <javac classpathref="project.class.path" destdir="${classes.dir}" srcdir="${src.dir}" includeantruntime="false" fork="true"/>
     </target>    
     
     <target name="dist" depends="i18n-generate-jar, compile, updateversion" description="build a standalone application jar file">
@@ -118,7 +118,7 @@
             <fileset dir="${src.dir}" includes="**/*.py **/*.scala **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
             <fileset dir="${base.dir}" includes="ChangeLog" />
-	    <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/engine/* l10n/missions/*"/>
+            <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/engine/* l10n/missions/*"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-3.0.3.jar" />    
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/miglayout-3.7.4.jar" />
@@ -233,7 +233,16 @@
       <jar destfile="lib/plm-messages.jar" basedir="${site.dir}/po" includes="org/**"/>
       <delete dir="${site.dir}/po"/>
     </target>
-    
+
+    <target name="test-all-exos" depends="compile" description="tests compilation of provided solutions of all exos">
+	  <junit printsummary="withOutAndErr" fork="yes">		
+		<classpath refid="project.class.path"/>
+		<formatter type="plain"/>
+        <test name="plm.core.ExoTest"/>		
+	  </junit>
+    </target>
+
+
 <!--  This requires Java7 to work, but I'd prefer to support for Java6
       a bit longer if possible. Disable this for now, sorry Franck.
       

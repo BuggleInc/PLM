@@ -39,6 +39,7 @@ public class ChooseLessonDialog extends JFrame {
 
 	public ChooseLessonDialog() {
 		super();
+		Game.getInstance().setCaptureOutput(false);
 		setTitle(i18n.tr("Choose your lesson"));
 		FileUtils.setLocale(this.getLocale());
 		initComponents(Game.getInstance());
@@ -185,6 +186,7 @@ class LessonOverview extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Game.getInstance().switchLesson(path.replaceAll("/", "."),false);
 				MainFrame.getInstance().setVisible(true);
+				Game.getInstance().setCaptureOutput(true);
 				lc.dispose();
 			}
 		});

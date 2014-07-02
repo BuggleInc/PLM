@@ -98,8 +98,9 @@ public class MissionEditorTabs extends JTabbedPane implements GameListener, Prog
 		this.game.addGameListener(this);
 		this.game.addProgLangListener(this);
 		
-		/* add code tabs */
-		currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
+		/* add code tabs if the initialization is done already */
+		if (game.getCurrentLesson() != null)
+			currentExerciseHasChanged(game.getCurrentLesson().getCurrentExercise());
 		
 		/* removes keybindings from the JTextField
 		 * Used to permit CTRL-PageUp and CTR-PageDown to change tabs */

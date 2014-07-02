@@ -165,7 +165,7 @@ public class Users {
 				while (iter.hasNext()) {
 					LinkedHashMap entry = (LinkedHashMap) iter.next();
 					username = (String) entry.get("username");
-					lastUsed = (boolean) entry.get("lastUsed");
+					lastUsed = (Boolean) entry.get("lastUsed");
 					userUUID = UUID.fromString((String) entry.get("userUUID"));
 					usersList.add(new User(username, lastUsed, userUUID));
 					// System.out.println(usersList.get(0));

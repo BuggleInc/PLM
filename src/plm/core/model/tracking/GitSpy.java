@@ -97,7 +97,6 @@ public class GitSpy implements ProgressSpyListener {
 	public void switched(Exercise exo) {
 		Game game = Game.getInstance();
 		Exercise lastExo = (Exercise) game.getLastExercise();
-		System.out.println(lastExo.getName());
 		lastExo.lastResult = ExecutionProgress.newCompilationError("");
 
 		if (lastExo.lastResult != null) {

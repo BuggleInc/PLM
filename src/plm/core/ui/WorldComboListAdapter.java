@@ -20,7 +20,7 @@ public class WorldComboListAdapter extends AbstractListModel<World> implements C
 	public WorldComboListAdapter(Game game) {
 		this.game = game;
 		this.game.addGameListener(this);
-		if (game.getCurrentLesson().getCurrentExercise() instanceof Exercise) {
+		if (game.getCurrentLesson() != null && game.getCurrentLesson().getCurrentExercise() instanceof Exercise) {
 			this.currentExercise = (Exercise) this.game.getCurrentLesson().getCurrentExercise();
 			this.selectedWorld = this.game.getSelectedWorld();
 		}

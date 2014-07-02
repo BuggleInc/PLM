@@ -44,7 +44,7 @@ public class GitPush {
 			// checkout master branch so that we start with a clean base
 			git.checkout().setName("master").call();
 
-			// eventually create the branch of the current user
+			// create the branch of the current user if it's not already there
 			if (git.getRepository().getRef(userBranch) == null) {
 				//git.branchCreate().setName(userBranch).call();
 				try { 
@@ -77,7 +77,8 @@ public class GitPush {
 				git.checkout().setName(userBranch).call();
 				git.pull().call();
 			}
-
+		} catch (org.eclipse.jgit.api.errors.TransportException e) {
+			System.err.println(Game.i18n.tr("Don't save code remotely, as the network seems unreachable. That's fine."));
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NoSuchAlgorithmException e) {

@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -128,6 +129,9 @@ public class Game implements IWorldView {
 	private ArrayList<GameStateListener> gameStateListeners = new ArrayList<GameStateListener>();
 
 	private LogWriter outputWriter;
+	private PrintStream outputOrig = System.out;
+	private PrintStream errorOrig = System.err;
+
 
 	public SessionDB studentWork = new SessionDB();
 	//private ISessionKit sessionKit = new ZipSessionKit(this);
@@ -136,13 +140,12 @@ public class Game implements IWorldView {
 	private Users users;
 
 	private static boolean ongoingInitialization = false;
-	private static String lessonChooser = "lessons.chooser";
 	public  static I18n i18n;
 
 	public static Game getInstance() {
 		if (Game.instance == null) {
 			if (ongoingInitialization)
-				throw new RuntimeException("Loop in initialization process. This is a PLM bug.");
+				throw new RuntimeException("Loop in initialization process. This is a PLM bug: please report it.");
 			ongoingInitialization = true;
 			Game.instance = new Game();
 			ongoingInitialization = false;
@@ -213,6 +216,7 @@ public class Game implements IWorldView {
 			addProgressSpyListener(new TwitterSpy());
 		} else {
 			System.err.println(i18n.tr("Your progress will NOT be posted to twitter, as requested by the property {0}",Game.PROP_PROGRESS_TWITTER));			
+
 		}
 		if (getProperty(PROP_PROGRESS_APPENGINE, "false",true).equalsIgnoreCase("true"))
 			addProgressSpyListener(new ServerSpyAppEngine());
@@ -323,15 +327,6 @@ public class Game implements IWorldView {
 		}
 	}
 
-
-	/**
-	 * Load the chooser, stored in plm.core.ui.chooser
-	 */
-	public void loadChooser() {
-		Game.instance.switchLesson(lessonChooser,false);
-	}
-
-
 	/** Change the current lesson.
 	 * 
 	 * Also, initialize the newly used lesson on need. It must already be in the classpath 
@@ -369,8 +364,8 @@ public class Game implements IWorldView {
 				return getCurrentLesson();
 			}
 		}
-		// Prevent an error message telling us that the PLM couldn't load our code for the chooser -- kinda obvious
-		if ( !lessonName.equals(lessonChooser) && sessionKit != null)
+		// Prevent obvious error messages
+		if (sessionKit != null)
 			sessionKit.loadLesson(SAVE_DIR, lesson);
 		try {
 			waitInitThreads();
@@ -519,6 +514,8 @@ public class Game implements IWorldView {
 	}
 
 	public World getSelectedWorld() {
+		if (this.currentLesson == null)
+			return null;
 		Lecture lecture = this.currentLesson.getCurrentExercise();
 		if (lecture instanceof Exercise) {
 			if (this.selectedWorld == null) {
@@ -638,13 +635,18 @@ public class Game implements IWorldView {
 		return this.state;
 	}
 
-	public void setOutputWriter(LogWriter writer) {
-		this.outputWriter = writer;
-		if (getProperty(PROP_OUTPUT_CAPTURE, "true",true).equals("true")) {
+	public void setCaptureOutput(boolean isCaptured) {
+		if (isCaptured && getProperty(PROP_OUTPUT_CAPTURE, "true",true).equals("true")) {
 			Logger l = new Logger(outputWriter);
 			System.setOut(l);
 			System.setErr(l);
+		} else if (System.out.equals(this.outputOrig)) {
+			System.setOut(this.outputOrig);
+			System.setErr(this.errorOrig);
 		}
+	}
+	public void setOutputWriter(LogWriter writer) {
+		this.outputWriter = writer;
 	}
 
 	public LogWriter getOutputWriter() {
