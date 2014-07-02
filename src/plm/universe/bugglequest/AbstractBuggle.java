@@ -80,7 +80,6 @@ public abstract class AbstractBuggle extends Entity {
 		this.direction = other.direction;
 	}
 
-
 	public boolean isBrushDown() {
 		return brushDown;
 	}

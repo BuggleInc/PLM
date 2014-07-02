@@ -366,6 +366,7 @@ public abstract class Exercise extends Lecture {
 				/* This is never called with lightbot entities, no need to deal with it here */
 				if (lang.equals(Game.JAVA) || lang.equals(Game.SCALA) || lang.equals(Game.C)) {
 
+
 					/* Instantiate a new entity of the new type */
 					Entity ent;
 					try {
@@ -376,6 +377,7 @@ public abstract class Exercise extends Lecture {
 						}else if(lang.equals(Game.C)){
 							//TODO GIANNINI Faire quelque chose ici pour l'entite					
 							ent= (Entity)Class.forName(nameOfCorrectionEntity(lang)).newInstance();
+
 						}else{
 							ent=null;
 						}
