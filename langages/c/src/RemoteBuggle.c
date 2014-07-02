@@ -36,8 +36,16 @@ void back(){
 	printf("112 back\n");
 }
 
+void stepForward(){
+	forward(1);
+}
+
 void forward(int nb){
 	printf("113 %d forward\n", nb);
+}
+
+void stepBackward(){
+	backward(1);
 }
 
 void backward(int nb){
@@ -276,6 +284,8 @@ int hasLeftWall(int x, int y){
 	flush();
 	return has;
 }
+
+
 
 
 /* Others */
