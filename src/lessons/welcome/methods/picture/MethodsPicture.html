@@ -12,16 +12,16 @@ sub-steps, and write a specific method for each sub-step.</p>
 parts depicting a sort of V using a different color. A possible
 decomposition is to write a method in charge of drawing a V of the specified
 color from the current position. Its prototype can be:</p>
-<pre>[!java]void [/!]makeV([!java]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># parameter c is of type Color</span>[/!]</pre>
+<pre>[!java|c]void [/!]makeV([!java|c]Color [/!]c[!scala]: Color[/!])[!python]  <span class="comment"># parameter c is of type Color</span>[/!]</pre>
 
 <p>The <code>Color</code> data type naturally describes a particular
 color. Your code should probably call <code>makeV</code> with the following arguments 
 (a different color for each call):</p>
 <ul>
-<li>Color.YELLOW</li>
-<li>Color.RED</li>
-<li>Color.BLUE</li>
-<li>Color.GREEN</li>
+<li>[!java|scala|python]Color.[/!]YELLOW</li>
+<li>[!java|scala|python]Color.[/!]RED</li>
+<li>[!java|scala|python]Color.[/!]BLUE</li>
+<li>[!java|scala|python]Color.[/!]GREEN</li>
 </ul>
 
 <p>In <code>makeV()</code>, you should use the <code>setBrushColor()</code>

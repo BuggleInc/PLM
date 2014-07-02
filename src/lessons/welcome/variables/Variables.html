@@ -26,7 +26,7 @@ some stuff, like a bottle of perfume "Channel N°5".  </p>
   but <code>step amount</code> is not a valid name.
   </p>
 
-[!java]
+[!c|java]
   <p>So, to create a variable named <b>x</b> intended to contain integers, one should write:</p> 
   <pre>int x;</pre>
   <p>If you want, you can specify the initial value of the variable by adding an equal sign (=) followed by the value 
@@ -51,7 +51,7 @@ some stuff, like a bottle of perfume "Channel N°5".  </p>
 var y =  10      <span class="comment">// or I can omit the type if I prefer</span></pre>
 [/!]
   
-[!java|scala]
+[!java|scala|c]
 <p>As you can see, the variables are <b>typed</b> in [!thelang], which means that they are somehow specialized: 
   A given variable can only store data of a given type; Don't even think of storing numbers in a variable that is tailored for letters!  
   The [!thelang] language is said to be <b>statically typed</b>.</p>
@@ -61,10 +61,10 @@ var y =  10      <span class="comment">// or I can omit the type if I prefer</sp
   more logic errors for you, which is also good. In some sense, Python is easier to write but errors can sneak in more easily than in [!thelang].</p>
 <p>Here are some existing types in [!thelang]:</p>
 <ul>
-  <li><b>[!java]int[/!][!scala]Int[/!]</b>, for integers;</li>
-  <li><b>[!java]double[/!][!scala]Double[/!]</b>, for dot numbers;</li> 
-  <li><b>[!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that are values being either true or false;</li>
-  <li><b>String</b>, for char strings.</li>
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, for integers;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, for dot numbers;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that are values being either [!c]1[/!][!java|scala]true[/!] or [!c]0[/!][!java|scala]false[/!];</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, for char strings.</li>
 </ul>
 [/!]
 
@@ -72,7 +72,7 @@ var y =  10      <span class="comment">// or I can omit the type if I prefer</sp
 <p>As you can see, the variables are not <b>typed</b> in Python, which means that they are not specialized in any type of data.
   A given variable store any type of data of a given type: you can store a number in a variable and latter on store a number in the same variable.  
   The values themselves are still typed, but not the variable. Python is said to be <b>dynamically typed</b>.</p>
-<p>Other languages (such as Java or Scala) are much more picky and prevent you to mix data types in a given variable (they are said to be <b>statically typed</b>).
+<p>Other languages (such as Java, Scala or C) are much more picky and prevent you to mix data types in a given variable (they are said to be <b>statically typed</b>).
   This seems annoying at the first glance, but this kind of restriction allows the compiler to catch 
   more logic errors for you, which is also good. In some sense, Python is easier to write but errors can sneak in more easily.</p>
 [/!]
@@ -84,6 +84,11 @@ size or some other constant value), then you should make it a <b>value</b> inste
 when you inadvertently modify the value. More interestingly, the compiler can produce faster code in some cases.</p>
 
 <p>Variables work very similarly for strings, floating point numbers and boolean values.</p>
+
+<pre class="c">char* name = "Martin Quinson";
+double height=1.77; <span class="comment">// in meters</span>
+boolean married=1;<span class="comment">// the contrary would be written "0"</span></pre>
+
 
 <pre class="java">String name = "Martin Quinson";
 double height=1.77; <span class="comment">// in meters</span>
@@ -103,13 +108,13 @@ married=True <span class="comment"># the contrary would be written "False"</span
 <h3>Affectations</h3>
 
 <p>Once your variable is declared, you can <b>affect</b> a new value to it later in the program. That's really easy:</p> 
-<pre>x = 3[!java];[/!]</pre>
+<pre>x = 3[!java|c];[/!]</pre>
 
 <p>To the right of the equal symbol, you can put an arithmetic expression containing constants, variables and operations.</p>
 
-<pre>x = 3 + 2[!java];[/!]
-x = 3 * x[!java];[/!]
-greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings</span></pre> 
+<pre>x = 3 + 2[!java|c];[/!]
+x = 3 * x[!java|c];[/!]
+[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings[/!]</span></pre> 
 
 <h3>Exercise goal</h3>
 It is now time to do more challenging exercises, don't you think? 
@@ -133,7 +138,7 @@ use a variable for that, which can be named <code>stepAmount</code>.</p>
 
 <p>Create an integer variable before phase 1, initialize it to 0,
   and each time you move one step forward, increment its value by one
-  (<code>stepAmount = stepAmount + 1;</code>[!java] or <code>stepAmount++;</code>,
+  (<code>stepAmount = stepAmount + 1;</code>[!java|c] or <code>stepAmount++;</code>,
   both syntaxes being equivalent[/!]).
   Such variable which takes every values of a given range is often called a <b>stepper</b>.</p>
   
