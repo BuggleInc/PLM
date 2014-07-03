@@ -71,7 +71,7 @@ to say, if it's raining a very hot July 4th, we don't want the buggle to get
 outside with an umbrella, some water and a flag, but simply with an
 umbrella. The following code is thus WRONG.</p>
 
-<pre>[!java|scala|c]if (rainy())
+<pre>[!scala|c|java]if (rainy())
     takeUmbrella();
 if (hot())
     takeWater();
@@ -116,7 +116,7 @@ even introduce a specific construct for these <tt>else if</tt>, but not [!thelan
 explicitly these "else if" branches.[/!]
 </p>
 
-<pre>[!java|scala|c]if (rainy()) { 
+<pre>[!c|java|scala]if (rainy()) { 
     takeUmbrella();
 } else if (hotDay()) {
     takeWater();
@@ -140,10 +140,10 @@ the four following methods:</p>
     message on the ground.</li>
   <li><code>[!c]char*[/!][!java]String[/!] readMessage()[!scala]: String[/!]</code>: 
     returns the message written on the ground (or an empty string if nothing is written).</li>
-  <li><code>[!java]void[/!] writeMessage([!c]char* [/!][!java]String [/!]msg[!scala]: String[/!])</code>:
+  <li><code>[!java|c]void[/!] writeMessage([!c]char*[/!][!java]String [/!]msg[!scala]: String[/!])</code>:
     writes the specified message down on the ground. If there is already a message on the
     ground, the new content is added at the end of the existing message.</li>
-  <li><code>[!java]void [/!]clearMessage()</code>: clears what is written on the ground.</li>
+  <li><code>[!java|c]void [/!]clearMessage()</code>: clears what is written on the ground.</li>
 </ul>
 
 
@@ -187,7 +187,8 @@ Thus the loop, will stop and the program will terminate. </p>
 
 [!java|c]
 <p>Another subtlety is that detecting if strings are equals is a bit annoying in Java.
-So, we use the <code>char getIndication()</code> instead of <code>[!c]char* [/!][!java]String [/!]readMessage()</code>. 
+So, we use the <code>char getIndication[!c]Bdr[/!]()</code> instead of <code>[!java]String[/!][!c]char*[/!] readMessage()</code>. 
+
 This method, only known by the buggles of this exercise, returns the first char of the message written on the ground 
 (or ' ' -- the space char --  if nothing is written down). It enables to work with chars instead of strings, that is 
 much simpler in [!thelang].</p>

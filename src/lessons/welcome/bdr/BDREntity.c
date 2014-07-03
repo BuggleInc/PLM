@@ -1,20 +1,11 @@
 #include "RemoteBuggle.h"
 
 
-char getIndication() {
-	if (isOverMessage()) {
-		return readMessage()[0];
-	} else {
-		return ' ';
-	}
-}
-
-
 int main(){
 	#line 1 "BDR"
 	/* BEGIN SOLUTION */
 	while (1) {
-		char c = getIndication();
+		char c = getIndicationBdr();
 		if (c == 'R') {
 			right();
 			forward(1);

@@ -76,6 +76,7 @@ int getWorldWidth();
 
 void setIndication(int x, int y, int i);
 int getIndication(int x, int y);
+char getIndicationBdr();
 int hasBaggle(int x, int y);
 int hasTopWall(int x, int y);
 int hasLeftWall(int x, int y);

@@ -249,6 +249,7 @@ void setIndication(int x, int y, int i){
 	printf("143 %d %d %d setIndication\n", x,y,i);
 }
 
+
 int getIndication(int x, int y){
 	int ind=-1;
 	printf("144 %d %d getIndication\n",x,y);
@@ -283,6 +284,15 @@ int hasLeftWall(int x, int y){
 	scanf("%d",&has);
 	flush();
 	return has;
+}
+
+char getIndicationBdr(){
+	char c=' ';
+	printf("148 getIndicationBdr\n");
+	fflush(stdout);
+	scanf("%c",&c);
+	flush();
+	return c;
 }
 
 

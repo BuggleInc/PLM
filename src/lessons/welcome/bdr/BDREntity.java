@@ -1,6 +1,31 @@
 package lessons.welcome.bdr;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 public class BDREntity extends plm.universe.bugglequest.SimpleBuggle {
+	
+	@Override
+	public void command(String command, BufferedWriter out) {
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		int nb,nb2;
+		String str;
+		try {
+			switch(num){
+			case 148:
+				out.write(getIndication());
+				out.write("\n");
+				out.flush();
+				break;
+			default:
+				super.command(command, out);
+				break;
+			}
+		}catch (IOException ioe) {
+			ioe.printStackTrace();
+		}
+	}
+	
 	public char getIndication() { 
 		if (isOverMessage()) { 
 			return readMessage().charAt(0); 
