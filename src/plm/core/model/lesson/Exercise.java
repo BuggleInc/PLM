@@ -227,27 +227,27 @@ public abstract class Exercise extends Lecture {
 					if(!saveDir.exists()){
 						saveDir.mkdir();
 					}
+					String saveDirPath = saveDir.getAbsolutePath();
 					
-					File exec = new File(saveDir.getAbsolutePath()+"/prog");
-					String execPath = exec.getAbsolutePath();
-					
+					File exec = new File(saveDirPath+"/prog");
 					if(exec.exists()){
 						exec.delete();
 					}
+					String execPath = exec.getAbsolutePath();
 					
 					//compile the RemoteBuggle
 					String compileRemote="";
 					String link="";
 					if(code.contains("RemoteBuggle.h")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o langages/c/bin/RemoteBuggle.o";
-						link = "gcc langages/c/bin/current.o langages/c/bin/RemoteBuggle.o -o "+execPath;
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o langages/c/bin/RemoteTurtle.o";
-						link = "gcc langages/c/bin/current.o langages/c/bin/RemoteTurtle.o -o "+execPath;
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteTurtle.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteTurtle.o -o "+execPath;
 					}
 					
 					//compile the current code
-					String compileCode = "gcc -c -x c -o langages/c/bin/current.o -I langages/c/include/ -Wall - ";
+					String compileCode = "gcc -c -x c -o "+saveDirPath+"/current.o -I langages/c/include/ -Wall - ";
 					
 					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
 					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
