@@ -239,6 +239,7 @@ public abstract class Exercise extends Lecture {
 					String compileRemote="";
 					String link="";
 					if(code.contains("RemoteBuggle.h")){
+
 						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
@@ -248,6 +249,7 @@ public abstract class Exercise extends Lecture {
 					
 					//compile the current code
 					String compileCode = "gcc -c -x c -o "+saveDirPath+"/current.o -I langages/c/include/ -Wall - ";
+
 					
 					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
 					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
