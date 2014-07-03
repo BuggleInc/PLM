@@ -239,15 +239,15 @@ public abstract class Exercise extends Lecture {
 					String compileRemote="";
 					String link="";
 					if(code.contains("RemoteBuggle.h")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o langages/c/bin/RemoteBuggle.o";
-						link = "gcc langages/c/bin/current.o langages/c/bin/RemoteBuggle.o -o "+execPath;
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDir+"/RemoteBuggle.o";
+						link = "gcc "+saveDir+"/current.o "+saveDir+"/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o langages/c/bin/RemoteTurtle.o";
-						link = "gcc langages/c/bin/current.o langages/c/bin/RemoteTurtle.o -o "+execPath;
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDir+"/RemoteTurtle.o";
+						link = "gcc "+saveDir+"/current.o "+saveDir+"/RemoteTurtle.o -o "+execPath;
 					}
 					
 					//compile the current code
-					String compileCode = "gcc -c -x c -o langages/c/bin/current.o -I langages/c/include/ -Wall - ";
+					String compileCode = "gcc -c -x c -o "+saveDir+"/current.o -I langages/c/include/ -Wall - ";
 					
 					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
 					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
