@@ -330,6 +330,32 @@ int getParamLangtonColor1(char* tab){
 	return length;
 }
 
+int*** getParamHelloTurmite1(int* dim1, int* dim2, int* dim3){
+	char* line = (char*)malloc(sizeof(char)*256);
+	printf("203 getParamHelloTurmite1\n");
+	fflush(stdout);
+	scanf("%s",line);
+	flush();
+	int i,j,k;
+	*dim1=line[0]-48;
+	*dim2=line[2]-48;
+	*dim3=line[4]-48;
+	int curs=6;
+
+	int*** tab = (int***)malloc(sizeof(int**) * (*dim1));
+	for(i=0;i<*dim1;i++){
+		tab[i]=(int**)malloc(sizeof(int*)* (*dim2));
+		for(j=0;j<*dim2;j++){
+			tab[i][j]=(int*)malloc(sizeof(int)* (*dim1));
+			for(k=0;k<*dim3;k++){
+				tab[i][j][k]=line[curs]-48;
+				curs+=2;
+			}
+		}
+	}
+	return tab;
+}
+
 /* BINDINGS TRANSLATION: French */
 void gauche()   				{ left(); }
 void droite()   				{ right(); }
