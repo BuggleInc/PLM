@@ -1,0 +1,98 @@
+
+<!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
+<h1>BuggleWorld</h1>
+Este mundo foi inventado por Lyn Turbak, na Wellesley College. Ele é cheio
+de Buggles, pequenos animais que entendem ordens simples, e oferece
+numerosas possiblidades de interação com o mundo: pegar e soltas objetos,
+pintar o chão, bater em paredes, etc.
+
+<h2>Métodos que os buggles entendem</h2>
+<table border=1>
+<tr><td colspan=2 align=center><b>Se movendo</b><br/> (Veja também a nota sobre exceções, abaixo)</td></tr>
+  <tr><td><b>Virar à esquerda<br/>Virar à direita<br/>Dar meia volta<br/>Mover para a frente<br/>Mover para trás</b></td>
+      <td>[!java]void [/!]esquerda()<br/>
+          [!java]void [/!]direita()<br/>
+          [!java]void [/!]paraTrás()<br/>
+          [!java]void [/!]avançar() ou [!java]void [/!]avançar([!java]int
+[/!]passos[!scala]:Int[/!])<br/>
+          [!java]void [/!]recuar() ou [!java]void [/!]recuar([!java]int
+[/!]steps[!scala]:Int[/!])<br/></td></tr>
+  <tr><td><b>Obter coordenada X<br/>Obter coordenada Y<br/>Ajustar coordenada X<br/>Ajustar coordenada Y<br/>Ajustar posição</b></td>
+      <td>[!java]int [/!]getX()[!scala]:Int[/!]<br/>
+          [!java]int [/!]getY()[!scala]:Int[/!]<br/>
+          [!java]void [/!]setX([!java]int [/!]x[!scala]:Int[/!])<br/>
+          [!java]void [/!]setY([!java]int [/!]y[!scala]:Int[/!])<br/>
+          [!java]void [/!]setPos([!java]int [/!]x[!scala]:Int[/!], [!java]int
+[/!]y[!scala]:Int[/!])</td></tr>
+
+<tr><td colspan=2 align=center><b>Informações sobre o buggle</b></td></tr>
+  <tr><td><b>Obter a cor do corpo<br/>Ajustar a cor do corpo</b></td>
+      <td>[!java]Color [/!]getBodyColor()[!scala]:Color[/!]<br/>
+          [!java]void [/!]setBodyColor([!java]Color [/!]c[!scala]:Color[/!])</td></tr>				
+  <tr><td><b>Procura por uma parede à frente<br/>Procura por uma parede atrás</b></td>
+      <td>[!java]boolean [/!]estáOlhandoParaParede()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]estáDeCostasParaParede()[!scala]:Boolean[/!]</td></tr>				
+  <tr><td><b>Get heading<br/>Set heading</b><br/>direções válidas são:</td>
+      <td>[!java]Direção [/!]getDireção()[!scala]:Direção[/!]<br/>
+          [!java]void [/!]ajustaDireção([!java]Direção [/!]dir[!scala]:Direção[/!])<br/>
+          Direção.NORTE, Direção.LESTE, Direção.SUL e Diração.OESTE</td></tr>
+  <tr><td>Verifica se o buggle está atualmente <b>selecionado na interface</b></td>
+      <td>[!java]boolean [/!]selecionado()[!scala]:Boolean[/!]</td></tr>
+ 
+<tr><td colspan=2 align=center><b>Sobre o pincel</b></td></tr>
+  <tr><td><b>Abaixar pincel<br/>Levantar pincel<br/>Pegar a posição do pincel</td>
+      <td>[!java]void [/!]levantarPincel()<br/>
+          [!java]void [/!]abaixarPincel()<br/>
+          [!java]boolean [/!]pincelEstáAbaixado()[!scala]:Boolean[/!]</td></tr>
+  <tr><td><b>Muda a cor do pincel<br/>Obtém a cor do pincel</b></td>
+      <td>[!java]void [/!]setCorDoPincel([!java]Cor [/!]c[!scala]:Cor[/!])<br/>
+          [!java]Color [/!]getCorDoPincel()[!scala]:Color[/!]</td></tr>
+
+<tr><td colspan=2 align=center><b>Interagindo com o mundo</b></td></tr>
+  <tr><td><b>Obtém a cor do chão</b></td>
+      <td>[!java]Color [/!]getCorDoChão()[!scala]:Color[/!]</td></tr>
+
+  <tr><td><b>Procura por um "baggle" no chão<br/>Procura por um "baggle" na bolsa<br/>Pega um "baggle"<br/>Solta um "baggle"</b><br/>
+      (veja a nota sobre exceções)</td>
+      <td>[!java]boolean [/!]sobreBaggle()[!scala]:Boolean[/!]<br/>
+          [!java]boolean [/!]estáCarregandoBaggle()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]pegarBaggle()<br/>
+          [!java]void [/!]soltarBaggle()<br/>
+          &nbsp;</td></tr>
+
+  <tr><td><b>Procura por uma mensagem<br/>Adiciona uma mensagem<br/>Lê a mensagem<br/>Apaga a mensagem</b></td>
+      <td>[!java]boolean [/!]estáSobreMensagem()[!scala]:Boolean[/!]<br/>
+          [!java]void [/!]escreverMensagem([!java]String [/!]msg[!scala]:String[/!])<br/>
+          [!java]String [/!]lerMensagem()[!scala]:String[/!]<br/>
+          [!java]void [/!]limparMensagem()</td></tr>
+</table>
+
+<h2>Cores válidas</h2>
+<table border=1>
+<tr><td>Nome</td><td>Cor</td></tr>
+<tr><td>Color.black</td>    <td BGCOLOR="#000000">&nbsp;</td></tr>
+<tr><td>Color.blue</td>     <td BGCOLOR="#0000FF">&nbsp;</td></tr>
+<tr><td>Color.cyan</td>     <td BGCOLOR="#00FFFF">&nbsp;</td></tr>
+<tr><td>Color.darkGray</td> <td BGCOLOR="#404040">&nbsp;</td></tr>
+<tr><td>Color.gray</td>     <td BGCOLOR="#808080">&nbsp;</td></tr>
+<tr><td>Color.green</td>    <td BGCOLOR="#00FF00">&nbsp;</td></tr>
+<tr><td>Color.lightGray</td><td BGCOLOR="#C0C0C0">&nbsp;</td></tr>
+<tr><td>Color.magenta</td>  <td BGCOLOR="#FF00FF">&nbsp;</td></tr>
+<tr><td>Color.orange</td>   <td BGCOLOR="#FFC800">&nbsp;</td></tr>
+<tr><td>Color.pink</td>     <td BGCOLOR="#FFAFAF">&nbsp;</td></tr>
+<tr><td>Color.red</td>      <td BGCOLOR="#FF0000">&nbsp;</td></tr>
+<tr><td>Color.white</td>    <td BGCOLOR="#FFFFFF">&nbsp;</td></tr>
+<tr><td>Color.yellow</td>   <td BGCOLOR="#FFFF00">&nbsp;</td></tr>
+</table>
+
+<h2>Nota sobre exceções</h2>
+Buggles normais lançam uma exceção BuggleWallException se você pede para
+eles atravessarem uma parede.  Eles lançam uma exceção
+NoBaggleUnderBuggleException se você pede para eles pegarem um "baggle" de
+uma célula vazia, ou uma exceção AlreadyHaveBaggleException se eles já
+carregam um "baggle".  Tentar soltar um "baggle" numa célula que já contém
+outro lança uma exceção AlreadyHaveBaggleException.  Soltar um "baggle"
+quando você não tem nenhum lança uma DontHaveBaggleException.
+<p>SimpleBuggles (ie, aqueles usados nos primeiros exercícios) exibem uma
+mensagem de erro num problema de forma que você não precise saber o que é
+uma exceção.</p>
