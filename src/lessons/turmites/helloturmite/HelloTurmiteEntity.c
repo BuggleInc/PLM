@@ -17,13 +17,14 @@ Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta
 
 int state = 0;
 
-void step(Color colors[], int rule[][][] ) {
+void step(Color* colors, int colorsLength, int*** rule, int dim1, int dim2, int dim3 ) {
 	int currentColor=0;
 	/* Your code comes here */
 	/* BEGIN SOLUTION */
 	Color current = getGroundColor();
-	for (int i=0;i<colors.length;i++)
-		if (current.equals(colors[i]))
+	int i;
+	for (i=0;i<colorsLength;i++)
+		if (current==colors[i])
 			currentColor = i;
 
 	setBrushColor(colors[ rule[state][currentColor][NEXT_COLOR] ]);
@@ -32,12 +33,13 @@ void step(Color colors[], int rule[][][] ) {
 
 	switch (rule[state][currentColor][NEXT_MOVE]) {
 	case STOP:   /* nothing */;            break;
-	case NOTURN: /* no turn */; forward(); break;
-	case LEFT:   left();   	forward(); break;
-	case RIGHT:  right();   forward(); break;
-	case BACK:   back();    forward(); break;
+	case NOTURN: /* no turn */; forward(1); break;
+	case LEFT:   left();   	forward(1); break;
+	case RIGHT:  right();   forward(1); break;
+	case BACK:   back();    forward(1); break;
 	default:
-		System.out.println("Unknown turn command associated to i="+currentColor+": "+rule[state][currentColor][NEXT_MOVE]);
+		printf("100 Unknown command associated to i=%d: %c\n",currentColor,rule[state][currentColor][NEXT_MOVE]);
+		fflush(stdout);
 	}
 
 	state = rule[state][currentColor][NEXT_STATE];
@@ -47,18 +49,23 @@ void step(Color colors[], int rule[][][] ) {
 /* END TEMPLATE */
 
 void run() {
-	int nbSteps = (Integer)getParam(0);
-	Color colors[];
-	int rule[][][];
+	int nbSteps = (int)getParam(0);
+	Color* colors;
+	int dim1,dim2,dim3;
+	int*** rule = getParamHelloTurmite1(&dim1,&dim2,&dim3);
 
-	rule = ((int[][][])getParam(1));
-
-	colors = (Color*)malloc(sizeof(Color)*rule.length);  //new Color[rule.length];
-	for (int i=0; i<rule.length; i++)
+	colors = (Color*)malloc(sizeof(Color)*dim1);  //new Color[rule.length];
+	int i;
+	for (i=0; i<dim1; i++)
 		colors[i] = allColors[i];
 
-	for (int i=0;i<nbSteps;i++) {
-		((lessons.turmites.universe.TurmiteWorld)world).stepDone();
-		step(colors,rule);
+	for (i=0;i<nbSteps;i++) {
+		stepDone();
+		step(colors,dim1,rule,dim1, dim2, dim3);
 	}
+}
+
+int main(){
+	run();
+	return 0;
 }

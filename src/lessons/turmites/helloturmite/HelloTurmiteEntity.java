@@ -64,6 +64,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 		int[][][] rule; 
 
 		rule = ((int[][][])getParam(1));
+		System.out.println(Arrays.deepToString(rule));
 
 		colors = new Color[rule.length];
 		for (int i=0; i<rule.length; i++)
@@ -78,7 +79,7 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
-
+		System.out.println(command);
 		try {
 			switch(num){
 			case 200 :
@@ -89,11 +90,17 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 			case 201:
 				stepDone();
 				break;
-			case 202:
+			case 203:
 				int[][][] tab = (int[][][])getParam(1);
-				String param="#"+Arrays.toString(tab)+"#";
-				System.out.println("================== : "+param);
-				out.write(param);
+				String str = Integer.toString(tab.length)+":"+Integer.toString(tab[0].length)+":"+Integer.toString(tab[0][0].length);
+				for(int i=0;i<tab.length;i++){
+					for(int j=0;j<tab[i].length;j++){
+						for(int k=0;k<tab[i][j].length;k++){
+							str+=":"+Integer.toString(tab[i][j][k]);
+						}
+					}
+				}
+				out.write(str);
 				out.write("\n");
 				out.flush();
 				break;
