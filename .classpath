@@ -24,6 +24,8 @@
 	<classpathentry kind="lib" path="lib/org.eclipse.egit.github.core-2.1.5.jar"/>
 	<classpathentry kind="lib" path="lib/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>
 	<classpathentry kind="lib" path="lib/jsch-0.1.50.jar"/>
-	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_COMPILER_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/scala/scala-compiler-2.10.3.jar"/>
+	<classpathentry kind="lib" path="lib/scala/scala-library-2.10.3.jar"/>
+	<classpathentry kind="lib" path="lib/scala/scala-reflect-2.10.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
