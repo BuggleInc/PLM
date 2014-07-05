@@ -235,7 +235,7 @@ public class BuggleButtonPanel extends EntityControlPanel implements Observer {
 		rButton.setText(i18n.tr("right"));
 		brushButton.setText(i18n.tr("mark"));
 		lBrushColor.setText(i18n.tr("Brush Color"));
-		lBuggleColor.setText(i18n.tr("Buggle Color"));
+		//lBuggleColor.setText(i18n.tr("Buggle Color"));
 	}
 
 	@Override

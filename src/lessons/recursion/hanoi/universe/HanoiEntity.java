@@ -1,5 +1,7 @@
 package lessons.recursion.hanoi.universe;
 /* BEGIN TEMPLATE */
+import java.io.BufferedWriter;
+
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -55,5 +57,11 @@ public class HanoiEntity extends Entity {
 	/* BINDINGS TRANSLATION: French */
 	public void deplace(int src,int dst) { move(src, dst); }
 	public int  getTaillePiquet(int rank) { return getSlotSize(rank); }
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
+		
+	}
 }
 /* END TEMPLATE */

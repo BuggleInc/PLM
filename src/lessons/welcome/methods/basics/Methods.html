@@ -11,27 +11,27 @@ board, and if we want to bring all of them on the bottom line, you have to
 repeat this code several times, or include it in a loop. In any case, you should avoid
 to duplicate your code to keep it pleasant to read and easily understandable.
 It would be better if the buggle could obey an <code>goAndGet()</code> order 
-just like it understands a <code>forward()</code> one.</p>
+just like it understands a <code>[!c]stepForward()[/!][!scala|java|python]forward()[/!]</code> one.</p>
 
 <h3>Defining methods</h3>
 
 <p>The [!thelang] syntax to write a simple method called <code>goAndGet</code> is the
 following:</p>
-<pre>[!java]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]
-  actions()[!java];[/!]
-  to()[!java];[/!]
-  do()[!java];[/!]
-[!java|scala]}[/!]</pre>
+<pre>[!java|c]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]
+  actions()[!java|c];[/!]
+  to()[!java|c];[/!]
+  do()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
 
 <p>The method body 
-[!java|scala](between curly braces)[/!][!python](the indented block)[/!] will be
+[!java|scala|c](between curly braces)[/!][!python](the indented block)[/!] will be
 executed when we call the method later on (that is, when we write
 <code>goAndGet()</code> somewhere in our code). This method body  
 can contain as many instructions as you want, and any construction we saw so far 
 (for, while, if, etc). 
-[!java]The <code>void</code> keyword means that this method does not return any
+[!java|c]The <code>void</code> keyword means that this method does not return any
 result. For example, the <code>isOverBaggle()</code> method does return a result,
-which is a boolean indicating whether or not the buggle is located over a baggle. We
+which is a [!c]int[/!][!java]boolean[/!] indicating whether or not the buggle is located over a baggle. We
 will soon learn to define such methods too. For now, just write <code>void</code> at
 this location.[/!]
 </p>

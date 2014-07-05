@@ -1,5 +1,11 @@
 package plm.universe;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +16,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
+import lessons.lightbot.universe.LightBotEntity;
 import plm.core.PythonExceptionDecipher;
 import plm.core.model.Game;
 import plm.core.model.ProgrammingLanguage;
@@ -26,7 +33,7 @@ import plm.core.model.lesson.ExecutionProgress;
 
 public abstract class Entity extends Observable {
 	protected String name = "(noname)";
-	
+
 	protected World world;
 
 	private Semaphore oneStepSemaphore = new Semaphore(0);
@@ -130,7 +137,7 @@ public abstract class Entity extends Observable {
 	protected int getParamsAmount() {
 		return world.parameters.length;
 	}
-	
+
 	/** Returns whether this is the entity selected in the interface */
 	public boolean isSelected() {
 		return this == Game.getInstance().getSelectedEntity();
@@ -144,6 +151,15 @@ public abstract class Entity extends Observable {
 	 *    
 	 */
 	protected abstract void run() throws Exception;
+
+	/*
+	 * GIANNINI
+	 * Cette methode permet aux sous Entity de pouvoir communiquer avec des programmes externes
+	 * Pour l'instant c'est fait avec le C (ou en train d'etre fait)
+	 * 
+	 */
+	protected abstract void command(String command, BufferedWriter out);
+
 
 	/** Make the entity run, according to the used universe and programming language.
 	 * 
@@ -172,15 +188,115 @@ public abstract class Entity extends Observable {
 			} catch (Exception e) {
 				String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
 						" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
-				
+
 				for (StackTraceElement elm : e.getStackTrace())
 					msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
-				
+
 				System.err.println(msg);
 				progress.setCompilationError(msg);
 				e.printStackTrace();
 			}
-		} else {
+		} else if(progLang.equals(Game.C)){
+			//TODO GIANNINI faire le liens avec un binaire ici et mettre en place un protocole
+			Runtime runtime = Runtime.getRuntime();
+			final Entity entityThis = this;
+			final StringBuffer resCompilationErr = new StringBuffer();
+
+			try {
+				
+				//TODO GIANNINI Verification du dossier avec les exos
+				File saveDir = new File(Game.getSavingLocation()+"/bin");
+				if(!saveDir.exists()){
+					saveDir.mkdir();
+				}
+
+
+				File exec = new File(saveDir.getAbsolutePath()+"/prog");
+
+				String execPath = "";
+				if(exec.exists() && exec.isFile() && exec.canExecute()){
+					execPath=exec.getAbsolutePath();
+					System.out.println(execPath);
+				}else{
+					System.out.println("Le fichier n'existe pas, il n'a pas été compilé (TODO)");
+					return;
+				}
+
+				String[] arg1 = {"/bin/sh","-c",execPath};
+				final Process process = runtime.exec(arg1);
+				
+				final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
+				Thread reader = new Thread() {
+					public void run() {
+						try {
+							BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+							String line = "";
+							try {
+								int truc;
+								String str = "";
+								while((truc=reader.read())!=-1){
+									if(truc!=10){
+										str+=(char)truc;
+									}else{
+										entityThis.command(str, bwriter);
+										str="";
+									}
+								}
+								
+							} finally {
+								reader.close();
+							}
+						} catch(IOException ioe) {
+							ioe.printStackTrace();
+						}
+					}
+				};
+
+
+				Thread error = new Thread() {
+					public void run() {
+						try {
+							BufferedReader err = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+							String line = "";
+							try {
+								while((line = err.readLine()) != null) {
+									resCompilationErr.append(line);
+									System.out.println("error : "+line);
+								}
+							} finally {
+								err.close();
+							}
+						} catch(IOException ioe) {
+							ioe.printStackTrace();
+						}
+					}
+				};
+
+				reader.run();
+				error.run();
+				reader.join();
+				error.join();
+				
+
+				bwriter.close();
+
+				
+				if(resCompilationErr.length()>0){
+					System.err.println(resCompilationErr.toString());
+					progress.setCompilationError(resCompilationErr.toString());
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				String msg = Game.i18n.tr("The execution of your program raised a {0} exception: {1}\n" + 
+						" Please fix your code.\n",e.getClass().getName(),e.getLocalizedMessage());
+
+				for (StackTraceElement elm : e.getStackTrace())
+					msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
+
+			}
+		}else{
 			try {
 				ScriptEngineManager manager = new ScriptEngineManager();       
 				engine = manager.getEngineByName(progLang.getLang().toLowerCase());
@@ -189,8 +305,8 @@ public abstract class Entity extends Observable {
 
 				/* Inject the entity into the scripting world so that it can forward script commands to the world */
 				engine.put("entity", this);
-				
-				
+
+
 				/* Inject commands' wrappers that forward the calls to the entity */
 				this.getWorld().setupBindings(progLang,engine);
 
@@ -198,9 +314,9 @@ public abstract class Entity extends Observable {
 				if (progLang.equals(Game.PYTHON)) 
 					engine.eval(
 							"def getParam(i):\n"+
-							"  return entity.getParam(i)\n" +
-							"def isSelected():\n" +
-							"  return entity.isSelected()\n");		
+									"  return entity.getParam(i)\n" +
+									"def cted():\n" +
+							"  return entitisSeley.isSelected()\n");		
 
 				String script = getScript(progLang);
 
@@ -222,7 +338,7 @@ public abstract class Entity extends Observable {
 							script;
 				}
 				engine.eval(script);
-				
+
 			} catch (ScriptException e) {
 				if (Game.getInstance().isDebugEnabled()) 
 					System.err.println("Here is the script in "+progLang.getLang()+" >>>>"+script+"<<<<");
@@ -240,7 +356,7 @@ public abstract class Entity extends Observable {
 				System.err.println(msg);
 				for (StackTraceElement elm : e.getStackTrace()) 
 					msg += elm.toString()+"\n";
-				
+
 				progress.setCompilationError(msg);
 				e.printStackTrace();
 			}

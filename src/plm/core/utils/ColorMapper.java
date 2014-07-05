@@ -45,4 +45,20 @@ public class ColorMapper {
 				return choices[i];
 		return c.getRed()+"/"+c.getGreen()+"/"+c.getBlue();
 	}
+	
+	public static int color2int(Color c){
+		for (int i=0; i<choices.length; i++) 
+			if (colors[i].equals(c))
+				return i;
+		return -1;
+	}
+	
+	public static Color int2color(int c) throws InvalidColorNameException{
+		if(c>=0 && c<colors.length){
+			return colors[c];
+		}else{
+			//TODO GIANNINI change message and translate this
+			throw new InvalidColorNameException("Color Error");
+		}
+	}
 }

@@ -12,25 +12,25 @@
    (or someone else) want to read it afterward, although over-commenting 
    (describing obvious stuff) is a bad idea as the important idea get lost in the noise.</p>
    
-  <p>There is [!java]three[/!][!python|scala]two[/!] types of comments in [!thelang], instructing 
-  the [!java|scala]compiler[/!][!python]interpreter[/!] to not read the text you add for humans:</p>
+  <p>There is [!java]three[/!][!python|scala|c]two[/!] types of comments in [!thelang], instructing 
+  the [!java|scala|c]compiler[/!][!python]interpreter[/!] to not read the text you add for humans:</p>
    
   <ul>
-    <li><b>Comments on a single line</b>. When the [!java|scala]compiler[/!][!python]interpreter[/!]
-      encounters the symbol [!java|scala]//[/!][!python]#[/!], it ignores the end of the line.</li>      
-    <li><b>Comments on several lines</b>. The [!java|scala]compiler[/!][!python]interpreter[/!]
+    <li><b>Comments on a single line</b>. When the [!java|scala|c]compiler[/!][!python]interpreter[/!]
+      encounters the symbol [!java|scala|c]//[/!][!python]#[/!], it ignores the end of the line.</li>      
+    <li><b>Comments on several lines</b>. The [!java|scala|c]compiler[/!][!python]interpreter[/!]
       ignores anything placed between 
-      [!java|scala]the symbols /* and */ even if they are placed on differing lines.[/!]
+      [!java|scala|c]the symbols /* and */ even if they are placed on differing lines.[/!]
       [!python]a line beginning with ''' and the next line ending with '''.[/!]</li>
   </ul>
 
 <pre>
-methodCallReadByThe[!java|scala]Compiler[/!][!python]Interpreter[/!]()[!java];[/!] <span class="comment">[!java|scala]//[/!][!python]#[/!] all this is ignored</span>
-otherCall()[!java];[/!] [!java|scala]<span class="comment">/* This is</span>
+methodCallReadByThe[!java|scala|c]Compiler[/!][!python]Interpreter[/!]()[!java|c];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] all this is ignored</span>
+otherCall()[!java|c];[/!] [!java|scala|c]<span class="comment">/* This is</span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> also ignored */</span>[/!]
 [!python]<span class="comment">''' This is</span>
 <span class="comment">also ignored  '''</span>[/!]
-yetAnotherCall()[!java];[/!]
+yetAnotherCall()[!java|c];[/!]
 </pre>  
   <p class="Java">There is a third kind of comments in Java, between /** and */, which are read by a
 specific program called JavaDoc to generate automatically the documentation

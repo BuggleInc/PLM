@@ -1,5 +1,7 @@
 package lessons.sort.dutchflag.universe;
 
+import java.io.BufferedWriter;
+
 import plm.core.model.Game;
 import plm.universe.Entity;
 import plm.universe.World;
@@ -70,4 +72,10 @@ public class DutchFlagEntity extends Entity {
 	public final static int BLEU = BLUE;
 	public final static int BLANC = WHITE;
 	public final static int ROUGE = RED;
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
+		
+	}
 }

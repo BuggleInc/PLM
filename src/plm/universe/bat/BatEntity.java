@@ -1,5 +1,7 @@
 package plm.universe.bat;
 
+import java.io.BufferedWriter;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
@@ -45,7 +47,7 @@ public class BatEntity extends Entity {
 	@Override 
 	public void runIt(ExecutionProgress progress) {
 		ProgrammingLanguage pl = Game.getProgrammingLanguage();
-		if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA)) {
+		if (pl.equals(Game.JAVA) || pl.equals(Game.SCALA) || pl.equals(Game.C)) {
 			for (BatTest t:((BatWorld) world).getTests())
 				try {
 					run(t);
@@ -84,6 +86,12 @@ public class BatEntity extends Entity {
 		} else {
 			throw new RuntimeException("BatWorld was not ported to "+pl.getLang()+" yet.");
 		}
+		
+	}
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
 		
 	}
 

@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import plm.core.model.lesson.Exercise;
+import plm.core.model.lesson.Exercise.StudentOrCorrection;
 import plm.core.model.lesson.Lecture;
 
 /** 
@@ -37,6 +38,10 @@ public class DemoRunner extends Thread {
 			game.setState(Game.GameState.DEMO_STARTED);
 			
 			this.game.disableStepMode();
+			
+			if(Game.getProgrammingLanguage().equals(Game.C)){
+				exo.compileAll(this.game.getOutputWriter(), StudentOrCorrection.CORRECTION);
+			}
 			
 			exo.runDemo(runners);
 

@@ -2,8 +2,13 @@ package plm.universe.bugglequest;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 import plm.core.model.Game;
+import plm.core.utils.ColorMapper;
+import plm.core.utils.InvalidColorNameException;
 import plm.universe.Direction;
 import plm.universe.Entity;
 import plm.universe.GridWorld;
@@ -17,9 +22,11 @@ import plm.universe.bugglequest.exception.NoBaggleUnderBuggleException;
 public abstract class AbstractBuggle extends Entity {
 	int k_val = 0;
 	int[] k_seq = {0,0, 1,1, 2,3, 2,3, 4,5};
-	
+
 	Color bodyColor = Color.red;
 	Color brushColor = Color.red;
+	
+
 
 	private int x = 0;
 	private int y = 0;
@@ -32,7 +39,7 @@ public abstract class AbstractBuggle extends Entity {
 
 	/* used to tell the observers what was changed */
 	public static final int BRUSH_STATE = 0, BRUSH_COLOR = 1, BUGGLE_COLOR = 2;
-	
+
 	/* This is for the simple buggle to indicate that it did hit a wall, and is thus not a valid
 	 * candidate for exercise completion.
 	 */
@@ -47,7 +54,7 @@ public abstract class AbstractBuggle extends Entity {
 	public boolean haveSeenError() {
 		return seenError;
 	}	
-	
+
 	/** The PLM calls that constructor with no parameter, so it must exist (but you probably don't want to use it yourself). */
 	public AbstractBuggle() {
 		super();
@@ -83,14 +90,14 @@ public abstract class AbstractBuggle extends Entity {
 		cell.setColor(brushColor);
 		world.notifyWorldUpdatesListeners();
 		setChanged();
-        notifyObservers(BRUSH_STATE);
+		notifyObservers(BRUSH_STATE);
 	}
 
 	public void brushUp() {
 		if (k_seq[k_val]==4) k_val++; else k_val = 0;
 		this.brushDown = false;
 		setChanged();
-        notifyObservers(BRUSH_STATE);
+		notifyObservers(BRUSH_STATE);
 	}
 
 	public Color getGroundColor() {
@@ -107,7 +114,7 @@ public abstract class AbstractBuggle extends Entity {
 		if (brushDown) // mark the ground
 			brushDown();
 		setChanged();
-        notifyObservers(BRUSH_COLOR);
+		notifyObservers(BRUSH_COLOR);
 	}
 
 	public Color getBodyColor() {
@@ -147,11 +154,11 @@ public abstract class AbstractBuggle extends Entity {
 	public void back() {
 		setDirection(direction.opposite());
 	}
-	
+
 	public int getWorldHeight() {
 		return ((GridWorld) world).getHeight();
 	}
-	
+
 	public int getWorldWidth() {
 		return ((GridWorld) world).getWidth();
 	}
@@ -289,7 +296,7 @@ public abstract class AbstractBuggle extends Entity {
 	private void move(Point delta) throws BuggleWallException {
 		if (delta == null)
 			return;
-		
+
 		int newx = (x + delta.x) % getWorldWidth();
 		if (newx < 0)
 			newx += getWorldWidth();
@@ -373,7 +380,7 @@ public abstract class AbstractBuggle extends Entity {
 	@Override
 	public String toString() {
 		return "Buggle (" + this.getClass().getName() + "): x=" + x + " y=" + y + " Direction:" + direction + " Color:"
-		+ bodyColor;
+				+ bodyColor;
 	}
 
 	@Override
@@ -397,7 +404,7 @@ public abstract class AbstractBuggle extends Entity {
 			return false;
 		if (!(obj instanceof AbstractBuggle))
 			return false;
-		
+
 		final AbstractBuggle other = (AbstractBuggle) obj;
 		if (bodyColor == null) {
 			if (other.bodyColor != null)
@@ -443,7 +450,7 @@ public abstract class AbstractBuggle extends Entity {
 			sb.append(Game.i18n.tr("    It didn't encounter any issue, such as bumping into a wall.\n"));
 		return sb.toString();
 	}
-	
+
 	/* BINDINGS TRANSLATION: French */
 	public void gauche()   { left(); }
 	public void droite()   { right(); }
@@ -476,5 +483,176 @@ public abstract class AbstractBuggle extends Entity {
 	// get/set X/Y/Pos are not translated as they happen to be the same in French
 	public boolean estChoisi()           { return isSelected(); } // we have to document the version without e, since po4a allows for one variant only
 	public boolean estChoisie()          { return isSelected(); } // But we want to have the grammatically correct form also possible (Buggles are feminine in French)
-	
+
+
+	@Override
+	public void command(String command, BufferedWriter out){
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		int nb,nb2;
+		String str;
+		try {
+			switch(num){
+			case 110:
+				left();
+				break;
+			case 111:
+				right();
+				break;
+			case 112:
+				back();
+				break;
+			case 113 : 
+				nb = Integer.parseInt((command.split(" ")[1]));
+				if(nb==1){
+					forward();
+				}else{
+					forward(nb);
+				}
+				break;
+			case 114:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				if(nb==1){
+					backward();
+				}else{
+					backward(nb);
+				}
+				break;
+			case 115:
+				out.write(Integer.toString(getX()));
+				out.write("\n");
+				break;
+			case 116:
+				out.write(Integer.toString(getY()));
+				out.write("\n");
+				break;
+			case 117:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setX(nb);
+				break;
+			case 118:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setY(nb);
+				break;
+			case 119:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				nb2 = Integer.parseInt((command.split(" ")[2]));
+				setPos(nb, nb2);
+				break;
+			case 120:
+				out.write(Integer.toString(ColorMapper.color2int(getBodyColor())));
+				out.write("\n");
+				break;
+			case 121:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setBodyColor(ColorMapper.int2color(nb));
+				break;
+			case 122:
+				out.write((isFacingWall()?"1":"0"));
+				out.write("\n");
+				break;
+			case 123:
+				out.write((isBackingWall()?"1":"0"));
+				out.write("\n");
+				break;	
+			case 124:
+				out.write(Integer.toString(getDirection().intValue()));
+				out.write("\n");
+				break;
+			case 125:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				Direction d=null;
+				switch(nb){
+				case Direction.NORTH_VALUE:
+					d=Direction.NORTH;
+					break;
+				case Direction.EAST_VALUE:
+					d=Direction.EAST;
+					break;
+				case Direction.SOUTH_VALUE:
+					d=Direction.SOUTH;
+					break;
+				case Direction.WEST_VALUE:
+					d=Direction.WEST;
+					break;
+				}
+				setDirection(d);
+				break;
+			case 126:
+				out.write((isSelected()?"1":"0"));
+				out.write("\n");
+				break;
+			case 127:
+				brushUp();
+				break;
+			case 128:
+				brushDown();
+				break;
+			case 129:
+				out.write((isBrushDown()?"1":"0"));
+				out.write("\n");
+				break;
+			case 130:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				setBrushColor(ColorMapper.int2color(nb));
+				break;
+			case 131:
+				out.write(Integer.toString(ColorMapper.color2int(getBrushColor())));
+				out.write("\n");
+				System.out.println("a toi");
+				break;
+			case 132:
+				out.write(Integer.toString(ColorMapper.color2int(getGroundColor())));
+				out.write("\n");
+				break;
+			case 133:
+				out.write((isOverBaggle()?"1":"0"));
+				out.write("\n");
+				break;
+			case 134:
+				out.write((isCarryingBaggle()?"1":"0"));
+				out.write("\n");
+				break;
+			case 135:
+				pickupBaggle();
+				break;
+			case 136:
+				dropBaggle();
+				break;
+			case 137:
+				out.write((isOverMessage()?"1":"0"));
+				out.write("\n");
+				break;
+			case 138:
+				String mess = (command.split(" ")[1]);
+				writeMessage(mess);
+				break;
+			case 139:
+				out.write(readMessage());
+				out.write("\n");
+				break;
+			case 140:
+				clearMessage();
+				break;
+			case 141:
+				out.write(Integer.toString(getWorldHeight()));
+				out.write("\n");
+				break;
+			case 142:
+				out.write(Integer.toString(getWorldWidth()));
+				out.write("\n");
+				break;
+			default:
+				System.out.println("COMMANDE INCONNUE : "+command);
+				break;
+
+			}
+			out.flush();
+		} catch (IOException ioe) {
+			ioe.printStackTrace();
+		}catch (InvalidColorNameException ine) {
+			ine.printStackTrace();
+		}
+
+	}
+
 }

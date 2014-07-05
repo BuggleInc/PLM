@@ -19,10 +19,10 @@ as a computer...
     way[!python|scala] (you can also add semi-columns at the end of the lines, but this is not mandatory)[/!].</p>
     
 <pre>
-meltTheChocolatePieces()[!java];[/!]
-addSugar()[!java];[/!]
-coolMix()[!java];[/!]
-serve()[!java];[/!]
+meltTheChocolatePieces()[!java|c];[/!]
+addSugar()[!java|c];[/!]
+coolMix()[!java|c];[/!]
+serve()[!java|c];[/!]
 </pre>
     
 [!python|scala]
@@ -34,7 +34,7 @@ meltTheChocolatePieces(); addSugar(); coolMix(); serve()
 </pre>
 [/!]
 
-  <p>Of course, these specific methods do not exist by default in [!java]Java[/!][!scala]Scala[/!][!python]Python[/!], 
+  <p>Of course, these specific methods do not exist by default in [!java]Java[/!][!scala]Scala[/!][!python]Python[/!][!c]C[/!], 
   but it may be possible 
   to define them by yourself (we'll see later how to define your how methods).</p>
   
@@ -43,20 +43,20 @@ meltTheChocolatePieces(); addSugar(); coolMix(); serve()
   interactive control panel. To achieve the same effect than the <b>forward</b> button 
   (making the buggle moving one step forward), you need to write the following in the
   editor: </p>
-  <pre>forward()[!java];[/!]</pre>
-  <p>Likewise, to achieve the same effect than the <b>backward</b>, <b>left</b>
+  <pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
+  <p>Likewise, to achieve the same effect than the <b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b>
   and <b>right</b> buttons, you need to use respectively:</p>
 <pre>
-backward()[!java];[/!]
-left()[!java];[/!]
-right()[!java];[/!]
+backward()[!java|c];[/!]
+left()[!java|c];[/!]
+right()[!java|c];[/!]
 </pre>
 
 	 <p>The <b>mark</b> button is a bit particular, since it correspond to two
 methods: the first one moves the pen up while the second moves it down.</p>
 <pre>
-brushUp()[!java];[/!]
-brushDown()[!java];[/!]
+brushUp()[!java|c];[/!]
+brushDown()[!java|c];[/!]
 </pre>
   <p>The buggle offers other methods, that are presented from the "Help/about
    this world" menu and will be introduced on need.</p>

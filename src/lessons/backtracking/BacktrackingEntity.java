@@ -1,5 +1,7 @@
 package lessons.backtracking;
 
+import java.io.BufferedWriter;
+
 import plm.universe.Entity;
 
 public class BacktrackingEntity extends Entity {
@@ -21,5 +23,11 @@ public class BacktrackingEntity extends Entity {
 
 	protected BacktrackingPartialSolution getBestSolution() {
 		return ((BacktrackingWorld) world).getBestSolution();
+	}
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
+		
 	}
 }

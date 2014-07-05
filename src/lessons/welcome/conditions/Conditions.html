@@ -8,13 +8,13 @@ something like <i>if it's raining, take an umbrella</i>.
 
 <p>The [!thelang] syntax is the following:</p>
 
-<pre>[!java|scala]if (<b>condition</b>) {
+<pre>[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue();</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue();</b>
 }[/!][!python]if <b>condition</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTrue()</b>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNextIfTrue()</b>[/!]
-<b>whatToDoAnyway()[!java];[/!]</b></pre>
+<b>whatToDoAnyway()[!java|c];[/!]</b></pre>
 
 <p>If the condition is true, the code of the next block will be executed and then it will continue with the rest of the code.
 If the condition is false, the next block is ignored and the execution continues after it.
@@ -26,9 +26,9 @@ while the instruction <code>whatToDoAnyway()</code> will be executed whether or 
 </p>
 
 <p>In [!thelang], the blocks of code are
-[!java|scala]enclosed between curly brackets: a { sign opens the block, while a } sign closes it. 
-White spaces are not important[/!][!java].[/!][!scala], provided that your instructions are still separated with a semi-column or an end of line.[/!]
-[!java|scala]It is still very important to correctly indent your code to keep it readable.[/!]
+[!java|scala|c]enclosed between curly brackets: a { sign opens the block, while a } sign closes it. 
+White spaces are not important[/!][!java|c].[/!][!scala], provided that your instructions are still separated with a semi-column or an end of line.[/!]
+[!java|scala|c]It is still very important to correctly indent your code to keep it readable.[/!]
 [!python]marked by the indentation: every lines that are a bit shifted to the right with 
 white spaces belong to the block. Quite often, people use 4 spaces for indentation, 
 but it works if you use more or less spaces. Simply, any lines of the block must use the same amount of spaces.
@@ -55,38 +55,38 @@ errors.</p>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoNext()</b> <span class="comment"># this block is not hanging to a condition line</span>
 </pre>
 
-<p>The condition must be a <code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> expression. 
-The inner block of code will get executed if the expression is evaluated to  <code>[!java|scala]true[/!][!python]True[/!]</code> 
-and it will be ignored if it is <code>[!java|scala]false[/!][!python]False[/!]</code>.
-<code>[!java|scala]true[/!][!python]True[/!]</code> and <code>[!java|scala]false[/!][!python]False[/!]</code> are constant values 
-defined by [!thelang] directly, just as 0 or 1 in mathematics.</p>
+<p>The condition must be a <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> expression. 
+The inner block of code will get executed if the expression is evaluated to  <code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> 
+and it will be ignored if it is <code>[!c]0[/!][!java|scala]false[/!][!python]False[/!]</code>.
+[!python|scala|java]<code>[!java|scala]true[/!][!python]True[/!]</code> and <code>[!java|scala]false[/!][!python]False[/!]</code> are constant values 
+defined by [!thelang] directly, just as 0 or 1 in mathematics.[/!]</p>
 
-<p>The condition can be a <code>[!java]boolean[/!][!scala|python]Boolean[/!]</code> variable 
+<p>The condition can be a <code>[!c]int[/!][!java]boolean[/!][!scala|python]Boolean[/!]</code> variable 
 (we will come back on variables in a latter exercise, don't worry) or 
 an arithmetic test, such as <code>x == 5</code>, which checks whether the current value of 
-<code>x</code> is 5, or such as <b>!=</b> (checking inequality, that is, returning [!java|scala]true[/!][!python]True[/!] 
+<code>x</code> is 5, or such as <b>!=</b> (checking inequality, that is, returning [!c]1[/!][!java|scala]true[/!][!python]True[/!] 
 only if the left-hand side is different from the right-hand side), <b>&lt;</b> (smaller than), 
 <b>&gt;</b> (larger than), <b>&lt;=</b> (smaller or equal to), <b>&gt;=</b> (larger or equal to).</p>
 
 <p>Beware of the classical trap, which consists in testing the equality of a
-variable using = instead of ==. Hopefully, the [!java|scala]compiler[/!][!python]interpreter[/!] 
+variable using = instead of ==. Hopefully, the [!java|scala|c]compiler[/!][!python]interpreter[/!] 
 detects this problem most of the time, but it could get trapped is some cases (such as when you are 
-affecting a boolean variable). So you'd better to be careful...</p>
+affecting a [!c]int[/!][!java|python|scala]boolean[/!] variable). So you'd better to be careful...</p>
 
 <p>The condition can also be a call to some particular methods returning a
 boolean. For example, the <code>isFacingWall()</code> method of the buggle
-returns true if the buggle is facing a wall, and false in the other case.</p>
+returns [!c]1[/!][!java|python|scala]true[/!] if the buggle is facing a wall, and false in the other case.</p>
 
 <p>Finally, a condition can be composed of several sub-conditions connected by
 boolean operations:</p>
 <ul>
-  <li><code>cond1 [!java|scala]&&[/!][!python]and[/!] cond2</code> is true when <tt>cond1</tt> <b>and</b>
+  <li><code>cond1 [!java|scala|c]&&[/!][!python]and[/!] cond2</code> is true when <tt>cond1</tt> <b>and</b>
       <tt>cond2</tt> are both true (if <tt>cond1</tt> is false,
       <tt>cond2</tt> is not even evaluated as we already know that the conjunction of both propositions cannot be true).</li> 
-  <li><code>cond1 [!java|scala]||[/!][!python]or[/!] cond2</code> is true if <tt>cond1</tt> <b>or</b> 
+  <li><code>cond1 [!java|scala|c]||[/!][!python]or[/!] cond2</code> is true if <tt>cond1</tt> <b>or</b> 
       <tt>cond2</tt> is true (if <tt>cond1</tt> is true, <tt>cond2</tt> is not even evaluated
       as we already know that the disjunction of both propositions cannot be true).</li>
-  <li><code>[!java|scala]![/!][!python]not [/!]cond</code> is true if <tt>cond</tt> is false.</li>
+  <li><code>[!java|scala|c]![/!][!python]not [/!]cond</code> is true if <tt>cond</tt> is false.</li>
   <li>When the expression becomes complicated, it is better to add parenthesis to force the order of evaluation.
       Do not hesitate to add more parenthesis to remove any ambiguities that may appear in an expression.</li>
 </ul> 
@@ -94,7 +94,7 @@ boolean operations:</p>
 <p>Last, it is possible to specify what to do when the condition is false
 using the following syntax. In this case, the instruction <code>whatToDoIfItsFalse</code>
 will be executed only if the condition is false.</p>
- <pre>[!java|scala]if (<b>condition</b>) {
+ <pre>[!java|scala|c]if (<b>condition</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfTheConditionIsTrue();</b>
 } else {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>whatToDoIfItsFalse();</b>

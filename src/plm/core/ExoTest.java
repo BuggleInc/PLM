@@ -118,7 +118,7 @@ public class ExoTest {
 			// For compiled languages, we mutate to the compiled entity. 
 			// For script languages, we mutate to the correction entity.
 			StudentOrCorrection what = StudentOrCorrection.CORRECTION;
-			if (lang == Game.JAVA || lang == Game.SCALA)
+			if (lang == Game.JAVA || lang == Game.SCALA || lang == Game.C)
 				what = StudentOrCorrection.STUDENT;
 			exo.mutateEntities(WorldKind.CURRENT, what);
 			
@@ -162,7 +162,16 @@ public class ExoTest {
 			fail("Exercise "+exo.getId()+" does not support scala");
 		testCorrectionEntity(Game.SCALA);
 	}
-
+	
+	@Test(timeout=30000) // The compiler sometimes takes time to kick in 
+	public void testCEntity() {
+		if (!exo.getProgLanguages().contains(Game.C)) 
+			fail("Exercise "+exo.getId()+" does not support C");
+		
+		Game.getInstance().setProgramingLanguage(Game.C);
+		testCorrectionEntity(Game.C);
+	}
+	
 	@Test(timeout=30000) // the well known python's "performance"...
 	public void testPythonEntity() {
 		if (!exo.getProgLanguages().contains(Game.PYTHON)) 

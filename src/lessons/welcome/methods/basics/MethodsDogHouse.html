@@ -5,18 +5,18 @@ We now would like to learn the buggle to build a doghouse. The naive
 approach consists in directly writing the needed code as follows.  This
 works because the buggle of this exercise leaves a red path as it moves.
 
-<pre>forward()[!java];[/!]
-forward()[!java];[/!]
-left()[!java];[/!]
-forward()[!java];[/!]
-forward()[!java];[/!]
-left()[!java];[/!]
-forward()[!java];[/!]
-forward()[!java];[/!]
-left()[!java];[/!]
-forward()[!java];[/!]
-forward()[!java];[/!]
-left()[!java];[/!]</pre>
+<pre>[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+[!c]stepForward()[/!][!python|java|scala]forward()[/!][!java|c];[/!]
+left()[!java|c];[/!]</pre>
 
 <p>It becomes harder when we want to draw two doghouses: we have to rewrite the
 same code twice, which is not really handy. When the code becomes a bit long as this

@@ -1,5 +1,7 @@
 package lessons.sort.pancake.universe;
 
+import java.io.BufferedWriter;
+
 import plm.universe.Entity;
 import plm.universe.World;
 
@@ -81,4 +83,10 @@ public class PancakeEntity extends Entity {
 	public boolean estCrepeRetournee(int rank) { return isPancakeUpsideDown(rank); }
 	public boolean estTriee() { return isSorted(); }
 	public boolean estChoisi() { return isSelected(); }
+
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		// TODO GIANNINI
+		
+	}
 }
