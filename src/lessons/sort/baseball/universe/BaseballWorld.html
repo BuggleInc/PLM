@@ -11,32 +11,32 @@ that is of rank <code>getBasesAmount()-1</code>.</p>
 
 <h2>Functions to retrieve the world's dimensions</h2>
 
-<pre>[!java]int [/!]getBasesAmount() [!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getBasesAmount() [!scala]:Int[/!]</pre>
 Returns the amount of bases on this field.
 
-<pre>[!java]int [/!]getPositionsAmount() [!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getPositionsAmount() [!scala]:Int[/!]</pre>
 Returns the amount of player's positions per base on this field.
 
 <h2>Functions to retrieve the world's state</h2>
 
-<pre>[!java]int [/!]getHoleBase() [!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getHoleBase() [!scala]:Int[/!]</pre>
 Returns the base in which the hole is located.
 
-<pre>[!java]int [/!]getHolePosition() [!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getHolePosition() [!scala]:Int[/!]</pre>
 Returns the hole position within its base
 
-<pre>[!java]int [/!]getPlayerColor([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getPlayerColor([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])  [!scala]:Int[/!]</pre>
 Returns the color of the player at a given location.
 
-<pre>[!java]boolean [/!]isSorted()  [!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]isSorted()  [!scala]:Boolean[/!]</pre>
 Returns whether all players of the field are at home.
      
-<pre>[!java]boolean [/!]isBaseSorted([!java]int [/!]base)  [!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]isBaseSorted([!java|c]int [/!]base)  [!scala]:Boolean[/!]</pre>
 Returns whether all players of a given base are at home.
 
-<pre>[!java]boolean [/!]isSelected()  [!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]isSelected()  [!scala]:Boolean[/!]</pre>
 Returns whether the current world is selected in the interface.
 <h2>Functions to change the world</h2>
 
-<pre>[!java]void [/!]move([!java]int [/!]base[!scala]:Int[/!], [!java]int [/!]position[!scala]:Int[/!])</pre>
+<pre>[!java|c]void [/!]move([!java|c]int [/!]base[!scala]:Int[/!], [!java|c]int [/!]position[!scala]:Int[/!])</pre>
 Moves a given player into the hole. This throws an IllegalArgumentException if the specified player is not near the hole (at most one base away).
