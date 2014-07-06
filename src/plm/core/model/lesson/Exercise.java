@@ -239,12 +239,20 @@ public abstract class Exercise extends Lecture {
 					String compileRemote="";
 					String link="";
 					if(code.contains("RemoteBuggle.h")){
-
 						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
 						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteTurtle.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteTurtle.o -o "+execPath;
+					}else if(code.contains("RemoteSort")){
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteSort.c -I langages/c/include/ -o "+saveDirPath+"/RemoteSort.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteSort.o -o "+execPath;
+					}else if(code.contains("RemoteFlag")){
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteFlag.c -I langages/c/include/ -o "+saveDirPath+"/RemoteFlag.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteFlag.o -o "+execPath;
+					}else if(code.contains("RemoteBaseball")){
+						compileRemote = "gcc -Wall -c langages/c/src/RemoteBaseball.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBaseball.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBaseball.o -o "+execPath;
 					}
 					
 					//compile the current code
@@ -263,7 +271,7 @@ public abstract class Exercise extends Lecture {
 					Thread reader = new Thread() {
 						public void run() {
 							try {
-								BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+								BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 								String line = "";
 								try {
 									while((line = reader.readLine()) != null ) {
@@ -278,6 +286,25 @@ public abstract class Exercise extends Lecture {
 						}
 					};
 					reader.run();
+					
+					Thread error = new Thread() {
+						public void run() {
+							try {
+								BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+								String line = "";
+								try {
+									while((line = reader.readLine()) != null ) {
+										resCompilationErr.append(line+"\n");
+									}
+								} finally {
+									reader.close();
+								}
+							} catch(IOException ioe) {
+								ioe.printStackTrace();
+							}
+						}
+					};
+					error.run();
 
 					
 
@@ -286,6 +313,7 @@ public abstract class Exercise extends Lecture {
 					
 					if(resCompilationErr.length()>0){
 						//TODO GIANNINI parse the error message and verify Warning
+						System.out.println("=========="+sf.getName());
 						PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
 						System.err.println(Game.i18n.tr("Compilation error:"));
 						System.err.println(e.getMessage());
