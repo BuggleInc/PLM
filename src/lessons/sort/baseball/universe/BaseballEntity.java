@@ -1,6 +1,9 @@
 package lessons.sort.baseball.universe;
 
 import java.io.BufferedWriter;
+import java.io.IOException;
+
+import lessons.sort.dutchflag.universe.DutchFlagWorld;
 
 import plm.universe.Entity;
 
@@ -71,7 +74,61 @@ public class BaseballEntity extends Entity {
 	public boolean estSelectionne() { return isSelected(); }
 	@Override
 	protected void command(String command, BufferedWriter out) {
-		// TODO GIANNINI
-		
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		int nb,nb2;
+		String str;
+		try {
+			switch(num){
+			case 110:
+				out.write(Integer.toString(getBasesAmount()));
+				out.write("\n");
+				break;
+			case 111:
+				out.write(Integer.toString(getPositionsAmount()));
+				out.write("\n");
+				break;
+			case 112:
+				out.write(Integer.toString(getHoleBase()));
+				out.write("\n");
+				break;
+			case 113:
+				out.write(Integer.toString(getHolePosition()));
+				out.write("\n");
+				break;
+			case 114:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				nb2 = Integer.parseInt((command.split(" ")[2]));
+				out.write(Integer.toString(getPlayerColor(nb, nb2)));
+				out.write("\n");
+				break;
+			case 115:
+				out.write((isSorted()?"1":"0"));
+				out.write("\n");
+				break;
+			case 116:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				out.write((isBaseSorted(nb)?"1":"0"));
+				out.write("\n");
+				break;
+			case 117:
+				out.write((isSelected()?"1":"0"));
+				out.write("\n");
+			case 118:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				nb2 = Integer.parseInt((command.split(" ")[2]));
+				move(nb, nb2);
+				break;
+			case 119:
+				str = command.split(" ")[1];
+				((BaseballWorld) world).assertSorted(str);
+				break;
+			default:
+				System.out.println("COMMANDE INCONNUE : "+command);
+				break;
+			}
+			out.flush();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
 	}
 }

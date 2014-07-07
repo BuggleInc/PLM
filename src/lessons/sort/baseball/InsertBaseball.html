@@ -21,8 +21,8 @@ iteratively the player on the border to its position within the sorted area. Thi
 that our algorithm is not inherently flawed since we adapt a well known one.</p>     
 
 <p>The easiest to adapt the insertion sort to the baseball problem is to consider all positions as 
-adjacent and forget about bases. For that, we define the methods <code>getColor(pos)</code>, 
-<code>move(pos)</code> and <code>getHole()</code> that all use a unique integer to designate a given 
+adjacent and forget about bases. For that, we define the methods <code>getColor[!c]Insert[/!](pos)</code>, 
+<code>move[!c]Insert[/!](pos)</code> and <code>getHole[!c]Insert[/!]()</code> that all use a unique integer to designate a given 
 position. These functions simply convert between the way to specify a position and then call the 
 usual functions to interact with the world. If you have an <code>index</code> and want to convert it 
 into a <code>base,pos</code>, then <code>base=index/2</code> and <code>pos=index%2</code>. To compute 

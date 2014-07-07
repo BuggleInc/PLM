@@ -36,6 +36,7 @@ char* int2str(int nb);
 int getParam();
 int getParamLangtonColor1(char* tab);
 void stepDone();
+int*** getParamHelloTurmite1(int* dim1, int* dim2, int* dim3);
 
 
 void left();
@@ -80,6 +81,8 @@ char getIndicationBdr();
 int hasBaggle(int x, int y);
 int hasTopWall(int x, int y);
 int hasLeftWall(int x, int y);
+
+
 
 
 /* BINDINGS TRANSLATION: French */

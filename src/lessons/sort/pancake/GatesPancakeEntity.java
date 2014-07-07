@@ -1,5 +1,8 @@
 package lessons.sort.pancake;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 import lessons.sort.pancake.universe.PancakeEntity;
 import lessons.sort.pancake.universe.PancakeWorld;
 
@@ -18,6 +21,25 @@ import lessons.sort.pancake.universe.PancakeWorld;
 
 public class GatesPancakeEntity extends PancakeEntity {
 
+	@Override
+	protected void command(String command, BufferedWriter out) {
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		try {
+			switch(num){
+			case 116:
+				out.write(((PancakeWorld)world).wasRandom?"1":"0");
+				out.write("\n");
+				break;
+			default:
+				super.command(command, out);
+				break;
+			}
+			out.flush();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
+	}
+	
 	public void run() {
 		solve();
 	}

@@ -35,7 +35,6 @@ import plm.core.model.session.SourceFileRevertable;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.bugglequest.AbstractBuggle;
 
 
 public abstract class Exercise extends Lecture {
@@ -213,7 +212,6 @@ public abstract class Exercise extends Lecture {
 			}
 
 			for (SourceFile sf : sfs){
-				//TODO GIANNINI recuperer le body et faire des trucs avec pour la compilation
 
 				String code = sf.getCompilableContent(runtimePatterns,whatToCompile); 
 				//System.out.println(code);
@@ -238,17 +236,31 @@ public abstract class Exercise extends Lecture {
 					//compile the RemoteBuggle
 					String compileRemote="";
 					String link="";
-					if(code.contains("RemoteBuggle.h")){
-
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
+					if(code.contains("RemoteBuggle")){
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteTurtle.o";
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteTurtle.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteTurtle.o -o "+execPath;
+					}else if(code.contains("RemoteSort")){
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteSort.c -I langages/c/include/ -o "+saveDirPath+"/RemoteSort.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteSort.o -o "+execPath;
+					}else if(code.contains("RemoteFlag")){
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteFlag.c -I langages/c/include/ -o "+saveDirPath+"/RemoteFlag.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteFlag.o -o "+execPath;
+					}else if(code.contains("RemoteBaseball")){
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteBaseball.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBaseball.o";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBaseball.o -o "+execPath;
+					}else if(code.contains("RemotePancake")){
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemotePancake.c -I langages/c/include/ -o "+saveDirPath+"/RemotePancake.o ";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemotePancake.o -o "+execPath;
+					}else if(code.contains("RemoteHanoi")){
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteHanoi.c -I langages/c/include/ -o "+saveDirPath+"/RemoteHanoi.o ";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteHanoi.o -o "+execPath;
 					}
 					
 					//compile the current code
-					String compileCode = "gcc -c -x c -o "+saveDirPath+"/current.o -I langages/c/include/ -Wall - ";
+					String compileCode = "gcc -g -c -x c -o "+saveDirPath+"/current.o -I langages/c/include/ -Wall - ";
 
 					
 					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
@@ -261,6 +273,25 @@ public abstract class Exercise extends Lecture {
 					bwriter.write(code);
 					bwriter.close();
 					Thread reader = new Thread() {
+						public void run() {
+							try {
+								BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+								String line = "";
+								try {
+									while((line = reader.readLine()) != null ) {
+										resCompilationErr.append(line+"\n");
+									}
+								} finally {
+									reader.close();
+								}
+							} catch(IOException ioe) {
+								ioe.printStackTrace();
+							}
+						}
+					};
+					reader.run();
+					
+					Thread error = new Thread() {
 						public void run() {
 							try {
 								BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -277,8 +308,8 @@ public abstract class Exercise extends Lecture {
 							}
 						}
 					};
-					reader.run();
-
+					error.run();
+					
 					
 
 
@@ -286,6 +317,7 @@ public abstract class Exercise extends Lecture {
 					
 					if(resCompilationErr.length()>0){
 						//TODO GIANNINI parse the error message and verify Warning
+						System.out.println("=========="+sf.getName());
 						PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
 						System.err.println(Game.i18n.tr("Compilation error:"));
 						System.err.println(e.getMessage());
@@ -376,8 +408,7 @@ public abstract class Exercise extends Lecture {
 							ent = (Entity) compiledClasses.get(className(newClassName)).newInstance();
 						}else if(lang.equals(Game.SCALA)){
 							ent = (Entity)CompilerScala.getInstance().findClass(className(newClassName)).newInstance();
-						}else if(lang.equals(Game.C)){
-							//TODO GIANNINI Faire quelque chose ici pour l'entite					
+						}else if(lang.equals(Game.C)){					
 							ent= (Entity)Class.forName(nameOfCorrectionEntity(lang)).newInstance();
 
 						}else{

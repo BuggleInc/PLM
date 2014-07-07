@@ -1,6 +1,9 @@
 package lessons.recursion.hanoi.universe;
 /* BEGIN TEMPLATE */
 import java.io.BufferedWriter;
+import java.io.IOException;
+
+import lessons.sort.baseball.universe.BaseballWorld;
 
 import plm.universe.Entity;
 import plm.universe.World;
@@ -60,7 +63,33 @@ public class HanoiEntity extends Entity {
 
 	@Override
 	protected void command(String command, BufferedWriter out) {
-		// TODO GIANNINI
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		int nb,nb2;
+		String str;
+		try {
+			switch(num){
+			case 110:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				nb2 = Integer.parseInt((command.split(" ")[2]));
+				move(nb, nb2);
+				break;
+			case 111:
+				nb = Integer.parseInt((command.split(" ")[1]));
+				out.write(Integer.toString(getSlotSize(nb)));
+				out.write("\n");
+				break;
+			case 112:
+				out.write((isSelected()?"1":"0"));
+				out.write("\n");
+				break;
+			default:
+				System.out.println("COMMANDE INCONNUE : "+command);
+				break;
+			}
+			out.flush();
+		}catch(IOException ioe){
+			ioe.printStackTrace();
+		}
 		
 	}
 }

@@ -1,6 +1,7 @@
 package lessons.turmites.turmitecreator;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
 
 public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle {
 	Color[] allColors = {Color.white, Color.yellow, Color.red, Color.cyan, Color.green, Color.orange, 
@@ -131,7 +132,23 @@ public class TurmiteCreatorEntity extends plm.universe.bugglequest.SimpleBuggle 
 
 		for (int step=0;step<nbSteps;step++) {
 			step();
-			((lessons.turmites.universe.TurmiteWorld)world).stepDone();
+			stepDone();
 		}
+	}
+	
+	@Override
+	public void command(String command, BufferedWriter out) {
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		switch(num){
+		case 201:
+			stepDone();
+			break;
+		default:
+			super.command(command, out);
+		}
+	}
+	
+	public void stepDone(){
+		((lessons.turmites.universe.TurmiteWorld)world).stepDone();
 	}
 }
