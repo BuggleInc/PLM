@@ -20,7 +20,7 @@ int isSelected();
 void move(int base, int position);
 
 
-
+/* BINDINGS TRANSLATION: French */
 int getNombreBases();     						
 int getNombrePositions(); 						
 int getCouleurJoueur(int base, int position); 	

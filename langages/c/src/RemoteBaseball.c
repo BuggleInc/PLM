@@ -92,7 +92,7 @@ void assertSorted(char* str){
 	fflush(stdout);
 }
 
-
+/* BINDINGS TRANSLATION: French */
 int getNombreBases()     						{ return getBasesAmount(); }
 int getNombrePositions() 						{ return getPositionsAmount(); }
 int getCouleurJoueur(int base, int position) 	{ return getPlayerColor(base,position); }
