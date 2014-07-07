@@ -49,7 +49,7 @@ void copy(int i, int j){
 
 int getValue(int idx){
 	int val;
-	printf("115 getValue\n");
+	printf("115 %d getValue\n", idx);
 	fflush(stdout);
 	scanf("%d",&val);
 	flush();
