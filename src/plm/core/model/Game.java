@@ -295,7 +295,7 @@ public class Game implements IWorldView {
 	private boolean checkC(){
 		Runtime runtime = Runtime.getRuntime();
 		try {
-			runtime.exec("gcc --verion");
+			runtime.exec("gcc --version");
 			canC=true;
 		} catch (IOException e) {
 			e.printStackTrace();
