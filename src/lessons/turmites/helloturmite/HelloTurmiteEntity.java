@@ -1,6 +1,11 @@
 package lessons.turmites.helloturmite;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.util.Arrays;
+
+import com.kenai.jffi.Array;
 
 import plm.universe.bugglequest.SimpleBuggle;
 
@@ -59,14 +64,58 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 		int[][][] rule; 
 
 		rule = ((int[][][])getParam(1));
+		System.out.println(Arrays.deepToString(rule));
 
 		colors = new Color[rule.length];
 		for (int i=0; i<rule.length; i++)
 			colors[i] = allColors[i];
 
 		for (int i=0;i<nbSteps;i++) {
-			((lessons.turmites.universe.TurmiteWorld)world).stepDone();
+			stepDone();
 			step(colors,rule);
 		}
+	}
+	
+	@Override
+	public void command(String command, BufferedWriter out) {
+		int num = Integer.parseInt((String) command.subSequence(0, 3));
+		System.out.println(command);
+		try {
+			switch(num){
+			case 200 :
+				out.write(((Integer)getParam(0)).toString());
+				out.write("\n");
+				out.flush();
+				break;
+			case 201:
+				stepDone();
+				break;
+			case 203:
+				int[][][] tab = (int[][][])getParam(1);
+				String str = Integer.toString(tab.length)+":"+Integer.toString(tab[0].length)+":"+Integer.toString(tab[0][0].length);
+				for(int i=0;i<tab.length;i++){
+					for(int j=0;j<tab[i].length;j++){
+						for(int k=0;k<tab[i][j].length;k++){
+							str+=":"+Integer.toString(tab[i][j][k]);
+						}
+					}
+				}
+				out.write(str);
+				out.write("\n");
+				out.flush();
+				break;
+
+			default:
+				super.command(command, out);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
+	public void stepDone(){
+		((lessons.turmites.universe.TurmiteWorld)world).stepDone();
 	}
 }
