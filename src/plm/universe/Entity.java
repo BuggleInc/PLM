@@ -222,7 +222,7 @@ public abstract class Entity extends Observable {
 					return;
 				}
 
-				String[] arg1 = {"/bin/sh","-c",execPath};
+				String[] arg1 = {"/bin/sh","-c","valgrind "+execPath};
 				final Process process = runtime.exec(arg1);
 				
 				final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));

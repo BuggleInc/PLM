@@ -35,7 +35,6 @@ import plm.core.model.session.SourceFileRevertable;
 import plm.core.utils.FileUtils;
 import plm.universe.Entity;
 import plm.universe.World;
-import plm.universe.bugglequest.AbstractBuggle;
 
 
 public abstract class Exercise extends Lecture {
@@ -238,31 +237,31 @@ public abstract class Exercise extends Lecture {
 					//compile the RemoteBuggle
 					String compileRemote="";
 					String link="";
-					if(code.contains("RemoteBuggle.h")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
+					if(code.contains("RemoteBuggle")){
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteTurtle.o";
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteTurtle.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteTurtle.o -o "+execPath;
 					}else if(code.contains("RemoteSort")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteSort.c -I langages/c/include/ -o "+saveDirPath+"/RemoteSort.o";
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteSort.c -I langages/c/include/ -o "+saveDirPath+"/RemoteSort.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteSort.o -o "+execPath;
 					}else if(code.contains("RemoteFlag")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteFlag.c -I langages/c/include/ -o "+saveDirPath+"/RemoteFlag.o";
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteFlag.c -I langages/c/include/ -o "+saveDirPath+"/RemoteFlag.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteFlag.o -o "+execPath;
 					}else if(code.contains("RemoteBaseball")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteBaseball.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBaseball.o";
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteBaseball.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBaseball.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBaseball.o -o "+execPath;
 					}else if(code.contains("RemotePancake")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemotePancake.c -I langages/c/include/ -o "+saveDirPath+"/RemotePancake.o ";
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemotePancake.c -I langages/c/include/ -o "+saveDirPath+"/RemotePancake.o ";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemotePancake.o -o "+execPath;
 					}else if(code.contains("RemoteHanoi")){
-						compileRemote = "gcc -Wall -c langages/c/src/RemoteHanoi.c -I langages/c/include/ -o "+saveDirPath+"/RemoteHanoi.o ";
+						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteHanoi.c -I langages/c/include/ -o "+saveDirPath+"/RemoteHanoi.o ";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteHanoi.o -o "+execPath;
 					}
 					
 					//compile the current code
-					String compileCode = "gcc -c -x c -o "+saveDirPath+"/current.o -I langages/c/include/ -Wall - ";
+					String compileCode = "gcc -g -c -x c -o "+saveDirPath+"/current.o -I langages/c/include/ -Wall - ";
 
 					
 					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
