@@ -197,7 +197,6 @@ public abstract class Entity extends Observable {
 				e.printStackTrace();
 			}
 		} else if(progLang.equals(Game.C)){
-			//TODO GIANNINI faire le liens avec un binaire ici et mettre en place un protocole
 			Runtime runtime = Runtime.getRuntime();
 			final Entity entityThis = this;
 			final StringBuffer resCompilationErr = new StringBuffer();

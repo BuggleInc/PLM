@@ -212,7 +212,6 @@ public abstract class Exercise extends Lecture {
 			}
 
 			for (SourceFile sf : sfs){
-				//TODO GIANNINI recuperer le body et faire des trucs avec pour la compilation
 
 				String code = sf.getCompilableContent(runtimePatterns,whatToCompile); 
 				//System.out.println(code);
@@ -409,8 +408,7 @@ public abstract class Exercise extends Lecture {
 							ent = (Entity) compiledClasses.get(className(newClassName)).newInstance();
 						}else if(lang.equals(Game.SCALA)){
 							ent = (Entity)CompilerScala.getInstance().findClass(className(newClassName)).newInstance();
-						}else if(lang.equals(Game.C)){
-							//TODO GIANNINI Faire quelque chose ici pour l'entite					
+						}else if(lang.equals(Game.C)){					
 							ent= (Entity)Class.forName(nameOfCorrectionEntity(lang)).newInstance();
 
 						}else{
