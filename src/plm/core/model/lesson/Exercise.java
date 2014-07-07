@@ -253,6 +253,9 @@ public abstract class Exercise extends Lecture {
 					}else if(code.contains("RemoteBaseball")){
 						compileRemote = "gcc -Wall -c langages/c/src/RemoteBaseball.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBaseball.o";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBaseball.o -o "+execPath;
+					}else if(code.contains("RemotePancake")){
+						compileRemote = "gcc -Wall -c langages/c/src/RemotePancake.c -I langages/c/include/ -o "+saveDirPath+"/RemotePancake.o ";
+						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemotePancake.o -o "+execPath;
 					}
 					
 					//compile the current code
@@ -305,7 +308,7 @@ public abstract class Exercise extends Lecture {
 						}
 					};
 					error.run();
-
+					
 					
 
 
