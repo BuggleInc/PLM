@@ -66,7 +66,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			langColors.put("scala|python", "0080FF");
 		}
 		
-		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!]");
+		String res = in.replaceAll("\\[!thelang/?\\]", "[!java]Java[/!][!python]python[/!][!scala]Scala[/!][!c]C[/!]");
 		res = res.replaceAll("\\[!configfile/?\\]", Game.getSavingLocation()+File.separator+"plm.properties".replaceAll("\\\\", "\\\\"));
 		
 		/* Display everything when in debug mode, with shiny colors */
