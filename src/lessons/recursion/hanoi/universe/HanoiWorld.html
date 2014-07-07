@@ -11,18 +11,18 @@ one.</p>
 
 <p>Only 4 functions are provided:</p>
 
-<pre>[!java]void [/!]move([!java]int [/!]src, [!java]int [/!]dst)</pre>
+<pre>[!java|c]void [/!]move([!java|c]int [/!]src, [!java|c]int [/!]dst)</pre>
 
 Moves one disk from the stick <code>src</code> onto the stick
 <code>dst</code>. If you try to do an invalid move (like laying a disk
 over a smaller one), an IllegalArgumentException is thrown. 
 
-<pre>[!java]int [/!]getSlotSize([!java]int [/!]slot)[!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getSlotSize([!java|c]int [/!]slot)[!scala]:Int[/!]</pre>
 Returns the amount of disks placed on the specified slot. This is mainly 
 used to initialize the recursion and set the amount of recursive call to execute.
 
-<pre>[!java]int [/!]getRadius([!java]int [/!]slot)[!scala]:Int[/!]</pre>
+<pre>[!java|c]int [/!]getRadius([!java|c]int [/!]slot)[!scala]:Int[/!]</pre>
 Returns the radius of the top-most disk of the specified slot.
 
-<pre>[!java]boolean [/!]isSelected()[!scala]:Boolean[/!]</pre>
+<pre>[!java]boolean [/!][!c]int [/!]isSelected()[!scala]:Boolean[/!]</pre>
 Returns whether the current world is selected in the graphical interface.
