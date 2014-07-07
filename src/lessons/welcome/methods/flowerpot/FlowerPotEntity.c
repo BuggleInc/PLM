@@ -7,11 +7,12 @@ void halfLine(Color c);
 
 
 int main(){
-	#line 1 "FlowerPot"
 	growFlowers();
 	return 0;
 }
 
+
+#line 1 "FlowerPot"
 /* BEGIN SOLUTION */
 void makeFlower(Color c) {
 	setBrushColor(c);
