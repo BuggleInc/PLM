@@ -20,10 +20,10 @@ scriverebbe nel modo seguente[!python|scala] (si può anche aggiungere un
 punto e virgola alla fine della riga ma questo non è obbligatorio)[/!]</p>
     
 <pre>
-sciogliLaCioccolata()[!java];[/!]
-aggiungiZucchero()[!java];[/!]
-raffreddaLaMistura[!java];[/!]
-servire()[!java];[/!]
+sciogliLaCioccolata()[!java|c];[/!]
+aggiungiZucchero()[!java|c];[/!]
+raffreddaLaMistura[!java|c];[/!]
+servire()[!java|c];[/!]
 </pre>
     
 [!python|scala]
@@ -35,28 +35,29 @@ sciogliLaCioccolata(); aggiungiZucchero(); raffreddaLaMistura(); servire()
 </pre>
 [/!]
 
-  <p>Naturalmente questi non sono metodi già predefiniti in
-[!java]Java[/!][!scala]Scala[/!][!python]Python[/!] ma è possibile
-definirseli da se (vedremo in seguito come definire i propri metodi).</p>
+  <p>Of course, these specific methods do not exist by default in [!thelang], but
+it may be possible to define them by yourself (we'll see later how to define
+your how methods).</p>
   
   <p>Per ora ci occuperemo semplicemente di istruire il buggle. C'è un metodo per
 ogni pulsante dell'interactive control panel. Per ottenere lo stesso effetto
 del pulsante <b>forward</b> (facendo spostare il buggle di un passo in
 avanti) avete bisogno di scrivere ciò che segue nell'editor: </p>
-  <pre>forward()[!java];[/!]</pre>
-  <p>In modo simile, per ottenere lo stesso effetto dei pulsanti <b>backward</b>,
-<b>left</b> e <b>right</b> bisogna usare rispettivamente:</p>
+  <pre>[!java|scala|python]forward()[!java];[/!][/!][!c]stepForward();[/!]</pre>
+  <p>In modo simile, per ottenere lo stesso effetto dei pulsanti
+<b>[!java|scala|python]backward[/!][!c]stepBackward[/!]</b>, <b>left</b> e
+<b>right</b> bisogna usare rispettivamente:</p>
 <pre>
-backward()[!java];[/!]
-left()[!java];[/!]
-right()[!java];[/!]
+backward()[!java|c];[/!]
+left()[!java|c];[/!]
+right()[!java|c];[/!]
 </pre>
 
 	 <p>Il pulsante <b>mark</b> è un poco più particolare perché corrisponde a due
 metodi: il primo alza la penna ed il secondo la abbassa.</p>
 <pre>
-brushUp()[!java];[/!]
-brushDown()[!java];[/!]
+brushUp()[!java|c];[/!]
+brushDown()[!java|c];[/!]
 </pre>
   <p>Il buggle offre altri metodi che sono prospettati dal menu "Help/about this
 world" e che saranno intodotti all'occorrenza.</p>

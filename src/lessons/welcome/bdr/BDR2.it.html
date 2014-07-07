@@ -2,7 +2,7 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Buggle Dance Revolution 2 (BDR2)</h2>
 
-[!java|scala]
+[!java|scala|c]
 <p>Il BDR è bello ma è un po' caotico. Prima di tutto i buggles scorrazzano in
 tutte le direzioni e dopo il codice che si dovrà scrivere per farli muovere
 risulterà piuttosto difficile da leggere. Quì c'è un nuovo mondo BDR dove i
@@ -10,38 +10,37 @@ buggle danzeranno dolcemente in cerchio.  Approfitteremo di questa
 tranquillita per pulire un po' il vostro codice grazie al nuovo costrutto
 che introdurremo.</p>
 
-<h3>[!java]La condizione <code>switch</code>[/!][!scala]Il Pattern matching[/!]</h3>
+<h3>[!java|c]<code>switch</code> conditionals[/!][!scala]Pattern matching[/!]</h3>
 
 <p>La parte difficile del codice precedente era sicuramente la cascata di
 condizioni. Da qualche parte nel vostro codice sicuramente avrete avuto
 qualcosa di simile ad:</p>
 
-<pre>if ([!java]getIndication() == 'R'[/!][!scala]readMessage() == "R"[/!]) {
+<pre>if ([!java|c]getIndication() == 'R'[/!][!scala]readMessage() == "R"[/!]) {
   right();
-  forward();
-} else if ([!java]getIndication() == 'L'[/!][!scala]readMessage() == "L"[/!]) {
+  [!c]stepForward()[/!][!java|scala]forward()[/!];
+} else if ([!java|c]getIndication() == 'L'[/!][!scala]readMessage() == "L"[/!]) {
   left();
-  forward();
-} else if ([!java]getIndication() == 'I'[/!][!scala]readMessage() == "I"[/!]) {
+  [!c]stepForward()[/!][!java|scala]forward()[/!];
+} else if ([!java|c]getIndication() == 'I'[/!][!scala]readMessage() == "I"[/!]) {
   back();
-  forward();
-<span class="comment">/* altri else if */</span>
+  [!c]stepForward()[/!][!java|scala]forward()[/!];
+<span class="comment">/* other else if */</span>
 } else {
-  finished = true;
+  finished = [!c]1[/!][!java|scala]true[/!];
 }
 </pre>
 
-<p>Mentre si osserva questo codice esso potrebbe sembrare poco chiaro alla
-prima occhiata ma è semplicemente una scelta fra quattro alternative in base
-al valore di [!java]getIndication()[/!][!scala]readMessage()[/!].  Per
-migliorare la situazione potremo usare il [!java] costrutto
-<code>switch</code>, che nella sintassi java sarà:[/!] [!scala]pattern
-matching, che è un construtto veramente potente che generalizza ampiamente
-l'<code>if</code>. È indubbiamente uno dei maggiori vantaggi di Scara
-rispetto agli altri linguaggi come Java o Python. Questa non è una novità,
-altri linguaggi come Ocaml o Haskell offrono questa caratteristica da molto
-tempo. Ma essa è ancora molto bella![/!]</p>
-[/!] [!java]
+<p>When you review this code, it may not be clear at the first glance that it
+is simply a choice with 4 branches depending on the value of
+[!java|c]getIndication()[/!][!scala]readMessage()[/!].  To improve this, we
+will use a [!java|c]<code>switch</code> construct, which Java syntax is the
+following:[/!] [!scala] pattern matching, which is a very powerful construct
+that greatly generalizes the <code>if</code>. It is arguably one one the
+major advantages of Scala when compared to languages such as Java or
+python.  It is not new either, as other languages such as OCaml or Haskell
+offer this feature since long, but still.  It's really cool![/!]</p>
+[/!] [!java|c]
 <pre>
 switch (<b>espressione</b>) {
   case <b>primoValore</b>: 
@@ -69,15 +68,15 @@ utilizzando il costrutto <tt>switch</tt>.</p>
 <pre>switch (getIndication()) {
   case 'R':
     right(); 
-    forward(); 
+    [!c]stepForward()[/!][!java]forward()[/!]; 
     break;
   case 'L':
     left();
-    forward(); 
+    [!c]stepForward()[/!][!java]forward()[/!]; 
     break;
   case 'I':
     back();
-    forward();
+    [!c]stepForward()[/!][!java]forward()[/!];
     break;
   default: 
     return;
@@ -137,34 +136,33 @@ attualmente amo questa caratteristica!</p>
 [/!]
 
 <h3>Traguardo dell'esercizio</h3>
-<p>[!java|scala]Applica i miglioramenti che abbiamo appena visto per riscrivere
-il tuo codice dei buggle con i seguenti passi di danza. [/!]
-[!python]Impariamo dei nuovi passi di danza ai buggle. È leggermente più
-complesso ma più bello da vedere. All'infuori di questo è sempre la stessa
-storia. [/!] Nota che ora è possibile muoversi di 6 caselle in un solo passo
-di danza.</p>
+<p>[!java|scala|c]Apply the improvement we just saw to rewrite your buggle code
+with the following dance steps. [/!] [!python]Let's teach a new dance step
+to the buggles. It is slightly more complex but actually better
+looking. Beside of that, that's the same old story.[/!] Note that we can now
+move up to 6 cells in one dance step.</p>
 
 <table border="1">
  <tr><td>Messaggi</td>
      <td>Cosa fa</td></tr>
 
- <tr><td>[!java]'R'[/!][!scala|python]"R"[/!]</td><td>Gira a destra e muoviti un passo in avanti</td></tr>
- <tr><td>[!java]'L'[/!][!scala|python]"L"[/!]</td><td>Gira a sinistra e muoviti un passo in avanti</td></tr>
- <tr><td>[!java]'I'[/!][!scala|python]"I"[/!]</td><td>Girati indietro e muoviti un passo in avanti</td></tr>
+ <tr><td>[!java|c]'R'[/!][!scala|python]"R"[/!]</td><td>Gira a destra e muoviti un passo in avanti</td></tr>
+ <tr><td>[!java|c]'L'[/!][!scala|python]"L"[/!]</td><td>Gira a sinistra e muoviti un passo in avanti</td></tr>
+ <tr><td>[!java|c]'I'[/!][!scala|python]"I"[/!]</td><td>Girati indietro e muoviti un passo in avanti</td></tr>
 
- <tr><td>[!java]'A'[/!][!scala|python]"A"[/!]</td><td>Muoviti un passo avanti</td></tr>
- <tr><td>[!java]'B'[/!][!scala|python]"B"[/!]</td><td>Muoviti due passi in avanti</td></tr>
- <tr><td>[!java]'C'[/!][!scala|python]"C"[/!]</td><td>Muoviti tre passi in avanti</td></tr>
- <tr><td>[!java]'D'[/!][!scala|python]"D"[/!]</td><td>Muoviti quattro passi in avanti</td></tr>
- <tr><td>[!java]'E'[/!][!scala|python]"E"[/!]</td><td>Muoviti cinque passi in avanti</td></tr>
- <tr><td>[!java]'F'[/!][!scala|python]"F"[/!]</td><td>Muoviti sei passi in avanti</td></tr>
+ <tr><td>[!java|c]'A'[/!][!scala|python]"A"[/!]</td><td>Muoviti un passo avanti</td></tr>
+ <tr><td>[!java|c]'B'[/!][!scala|python]"B"[/!]</td><td>Muoviti due passi in avanti</td></tr>
+ <tr><td>[!java|c]'C'[/!][!scala|python]"C"[/!]</td><td>Muoviti tre passi in avanti</td></tr>
+ <tr><td>[!java|c]'D'[/!][!scala|python]"D"[/!]</td><td>Muoviti quattro passi in avanti</td></tr>
+ <tr><td>[!java|c]'E'[/!][!scala|python]"E"[/!]</td><td>Muoviti cinque passi in avanti</td></tr>
+ <tr><td>[!java|c]'F'[/!][!scala|python]"F"[/!]</td><td>Muoviti sei passi in avanti</td></tr>
 
- <tr><td>[!java]'Z'[/!][!scala|python]"Z"[/!]</td><td>Muoviti un passo indietro</td></tr>
- <tr><td>[!java]'Y'[/!][!scala|python]"Y"[/!]</td><td>Muoviti due passi indietro</td></tr>
- <tr><td>[!java]'X'[/!][!scala|python]"X"[/!]</td><td>Muoviti tre passi indietro</td></tr>
- <tr><td>[!java]'W'[/!][!scala|python]"W"[/!]</td><td>Muoviti quattro passi indietro</td></tr>
- <tr><td>[!java]'V'[/!][!scala|python]"V"[/!]</td><td>Muoviti cinque passi indietro</td></tr>
- <tr><td>[!java]'U'[/!][!scala|python]"U"[/!]</td><td>Muoviti sei passi indietro</td></tr>
+ <tr><td>[!java|c]'Z'[/!][!scala|python]"Z"[/!]</td><td>Muoviti un passo indietro</td></tr>
+ <tr><td>[!java|c]'Y'[/!][!scala|python]"Y"[/!]</td><td>Muoviti due passi indietro</td></tr>
+ <tr><td>[!java|c]'X'[/!][!scala|python]"X"[/!]</td><td>Muoviti tre passi indietro</td></tr>
+ <tr><td>[!java|c]'W'[/!][!scala|python]"W"[/!]</td><td>Muoviti quattro passi indietro</td></tr>
+ <tr><td>[!java|c]'V'[/!][!scala|python]"V"[/!]</td><td>Muoviti cinque passi indietro</td></tr>
+ <tr><td>[!java|c]'U'[/!][!scala|python]"U"[/!]</td><td>Muoviti sei passi indietro</td></tr>
  <tr><td><i>(qualsiasi altra cosa)</i></td><td>Fine delle danze</td></tr>
 
 </table>

@@ -12,41 +12,45 @@ uguale a <code>passiTotali</code>.</p>
 
 <p>In situazioni simili i cicli <code>for</code> diventano utili. La loro
 sintassi è la seguente:</p> 
-<pre>[!java]for (<b>inizializzazione</b>; <b>condizione</b>; <b>incremento</b>) {
+<pre>[!java|c]for (<b>inizializzazione</b>; <b>condizione</b>; <b>incremento</b>) {
     <b>azione</b>();
 }[/!][!python]for <b>variabile</b> in <b>sequenza di valori</b>:
     <b>azione</b>()[/!][!scala] for (<b>variabile</b> &lt;- <b>primoValore</b> to <b>ultimoValore</b>) { 
     <b>azione</b>();
 }[/!]</pre>
 
-<p>For example to repeat the loop body <code>n</code> times, [!python] it is
-handy to use the instruction <code>range(n)</code> to generate the sequence
-n integer value from 0 to n-1.[/!] [!java|scala] one should write:[/!]</p>
+<p>Per esempio per ripente il contenuto del ciclo <code>n</code> volte[!python]
+è utile usare l'istruzione <code>range(n)</code> per generare una sequenza
+di n valori interi da 0 fino ad n-1.[/!][!java|scala|c] dovreste
+scrivere:[/!]</p>
 <pre>[!java]for (int stepper=0; stepper&lt;n; stepper++) {
-    <b>azione</b>();
+    <b>action</b>();
+}[/!][!c]int stepper;
+for (stepper=0; stepper&lt;n; stepper++) {
+    <b>action</b>();
 }[/!][!python]for <b>stepper</b> in <b>range(n)</b>:
-    <b>azione</b>()[/!][!scala] for (<b>stepper</b> &lt;- <b>1</b> to <b>n</b>) { 
-    <b>azione</b>();
+    <b>action</b>()[/!][!scala] for (<b>stepper</b> &lt;- <b>1</b> to <b>n</b>) { 
+    <b>action</b>();
 }[/!]</pre>
 
 <p>Il codice precedente è perfettamente equivalente a quello che segue:</p>
-<pre>[!java]int stepper = 0;
+<pre>[!java|c]int stepper = 0;
 while (stepper &lt; n) {
-&nbsp;&nbsp;&nbsp;&nbsp;<b>azione</b>();
+&nbsp;&nbsp;&nbsp;&nbsp;<b>action</b>();
 &nbsp;&nbsp;&nbsp;&nbsp;<b>stepper++</b>;
 }[/!][!python]stepper=0
 while stepper &lt; n: 
-    azione()
+    action()
     stepper = stepper + 1[/!][!scala]
 var stepper = 1
 while (stepper &lt;= n) {
-    <b>azione</b>()
+    <b>action</b>()
     stepper = stepper + 1
 }[/!]</pre>
 
 <p>Il ciclo <code>for</code> è facile da leggere, non credete?</p>
 
-[!java]
+[!java|c]
 <p>È possibile costruire cicli <tt>for</tt> più avanzati dato che qualsiasi
 istruzione valida può essere usata come inizializzazione, condizione ed
 incremento. Il seguente esempio è un po' estremo e mostra come non serva il

@@ -26,19 +26,18 @@ a destra o a sinistra al prossimo incrocio".  Puoi determinare se ti trovi
 sulla cella di uscita (in arancione) con il metodo
 <code>exitReached()</code></p>
 
-<p>Per imboccare un corridoio devi semplicemente spostarti da un incrocio
-all'altro mentre conti i baggles che vedi sul tuo percorso. Il metodo
-<code>crossing()</code> ti dice se il buggle è nel bel mezzo di un
-incrocio. La complessita extra è che all'inizio di un corridoio, sei sì su
-un incrocio ma vorrai ancora spostarti in avanti. [!java|scala]In questo
-caso è più semplice utilizzare un ciclo <code>do / while</code> invece che
-un normale <code>while</code> per muoversi fino all'incrocio successivo.[/!]
-[!python]In questo caso usate una variabile extra che indica se siete già
-entrati nel corridoio, come mostrato quì sotto. Questo vi assicurerà di
-eseguire il contenuto del ciclo almeno una volta (quando
-<code>primaVolta</code> è true) prima di poter effettivamente utilizzare il
-valore restituito da <code>crossing()</code> per determinare se continuare o
-meno.[/!]</p>
+<p>To take one corridor, you simply have to run from one intersection to
+another while counting the baggles you see on your path. The method
+<code>crossing()</code> tells you whether your buggle currently stands on an
+intersection.  The extra complexity is that at the beginning of a corridor,
+you obviously stand on an intersection, but you still want to move on.
+[!java|scala|c]For that, the easiest is to use a <code>do / while</code>
+loop instead of a regular <code>while</code> loop to move until the next
+intersection.[/!] [!python]For that, use an extra variable indicating
+whether you already entered the corridor, as follows. This will ensure that
+you execute the loop body at least once (when <code>firstTime</code> is
+true) before we actually use the value returned by <code>crossing()</code>
+to determine to continue or not.[/!]</p>
 
 [!python]
 <pre>primaVolta = True

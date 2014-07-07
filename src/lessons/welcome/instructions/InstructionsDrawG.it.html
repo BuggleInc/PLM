@@ -15,28 +15,29 @@ iniziale</i>. Commentare il proprio codice è piuttosto obbligatorio se voi
 troppo (descrivendo cose ovvie) è una cattiva idea poiché il pensiero
 fondamentale potrebbe perdersi nel rumore causato.</p>
    
-  <p>Ci sono [!java]tre[/!][!python|scala]due[/!] tipi di commenti in [!thelang]
-che dicono [!java|scala]al compilatore[/!][!python]all'interprete[/!] di non
-leggere il testo che è stato inserito per gli esseri umani:</p>
+  <p>Ci sono [!java]tre[/!][!python|scala|c]due[/!] tipi di commenti in
+[!thelang] che dicono [!java|scala|c]al
+compilatore[/!][!python]all'interprete[/!] di non leggere il testo che è
+stato inserito per gli esseri umani:</p>
    
   <ul>
-    <li><b>Commenti su una singola riga</b> Quando [!java|scala]il
+    <li><b>Commenti su una singola riga</b> Quando [!java|scala|c]il
 compilatore[/!][!python]l'interprete[/!] incontra il simbolo
-[!java|scala]//[/!][!python]#[/!] ignora tutto ciò che gli segue fino alla
+[!java|scala|c]//[/!][!python]#[/!] ignora tutto ciò che gli segue fino alla
 fine della riga.</li>      
-    <li><b>Commenti su più righe</b> [!java|scala]Il
+    <li><b>Commenti su più righe</b> [!java|scala|c]Il
 compilatore[/!][!python]L'interprete[/!] ignora qualsiasi cosa posta fra
-[!java|scala]i simboli /* e */ anche se si trovano su righe diverse.[/!]
+[!java|scala|c]i simboli /* e */ anche se si trovano su righe diverse.[/!]
 [!python]una riga inizante con ''' e la seguente terminante con '''.[/!]</li>
   </ul>
 
 <pre>
-chiamataAlMetodoLettaDal[!java|scala]Compilatore[/!][!python]lInterprete[/!]()[!java];[/!] <span class="comment">[!java|scala]//[/!][!python]#[/!] tutto questo viene ignorato</span>
-altraChiamata()[!java];[/!] [!java|scala]<span class="comment">/* Questo anche</span>
+chiamataAlMetodoLettaDal[!java|scala|c]Compilatore[/!][!python]lInterprete[/!]()[!java];[/!] <span class="comment">[!java|scala|c]//[/!][!python]#[/!] tutto questo viene ignorato</span>
+altraChiamata()[!java|c];[/!] [!java|scala|c]<span class="comment">/* Questo anche</span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="comment"> viene ignorato */</span>[/!]
 [!python]<span class="comment">''' Questo anche</span>
 <span class="comment">viene ignorato  '''</span>[/!]
-ulterioreChiamata()[!java];[/!]
+ulterioreChiamata()[!java|c];[/!]
 </pre>  
   <p class="Java">In Java c'è un terzo tipo di commenti compresi fra /** ed */ che sono letti
 da uno specifico programma chiamato JavaDoc per generare automaticamente la

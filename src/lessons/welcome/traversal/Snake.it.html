@@ -23,9 +23,10 @@ condizioni saranno vere:</p>
   <li>C'è un muro a nord del buggle. Quindi se il buggle è rivolto ad est dovrai
 controllare se ci sono muri alla sua sinistra e se invece è rivolto a ovest
 dovrai controllare il lato destro.<br/>
-      Possiamo controllare l'orientamento del buggle usando
-<code>getDirection()</code> e sapremo se stiamo guardando ad est con
-<code>getDirection() == Direction.EAST</code> (WEST per ovest).<br/>
+      We can get the current heading of the buggle using the
+<code>getDirection()</code>, and we know whether it looks east using
+<code>getDirection() == [!scala|python|java]Direction.[/!]EAST</code> (WEST
+for west).<br/>
       Per effettuare il controllo non bisogna fare nulla di magico: devi girare il
 buggle e verificare se si trova dinnanzi ad un muro.</li>
 </ul>
@@ -38,12 +39,11 @@ girare di nuovo a destra).</p>
 <p>Suggerimento: il ciclo principale del tuo codice deve continuare ad
 eseguirsi finché la funzione usata come test ritorna false. Ci sono due modi
 per scrivere questo:</p>
-<pre>while (funzioneTestata() == [!java|scala]false) {[/!][!python]False):[/!]</pre>
-<p>[!python]O se preferite potreste scriverlo in quest'altro modo:[/!]
-[!java|scala]Oppure poiché il punto esclamativo (!) rappresenta la negazione
-booleana in [!thelang], il codice precedente si potrebbe anche scrivere in
-questo modo:[/!]</p>
-<pre>while ([!java|scala]![/!][!python]not [/!]funzioneTestata())[!java|scala] {[/!][!python]:[/!]</pre>
+<pre>while (testingFunction() == [!c]0) {[/!][!java|scala]false) {[/!][!python]False):[/!]</pre>
+<p>[!python]You may prefer to write it as:[/!] [!java|scala|c]Since the
+exclamation mark (!) denotes the boolean negation in [!thelang], you may
+write it as:[/!]</p>
+<pre>while ([!java|scala|c]![/!][!python]not [/!]testingFunction())[!java|scala|c] {[/!][!python]:[/!]</pre>
 
 <p>È il tuo turno...</p>
 

@@ -6,38 +6,35 @@
 È arrivato il momento di scrivere i nostri metodi. In qualche modo vedremo
 come estendere il vocabolario dei buggle insegnandogli nuovi trucchi. 
 </p>
-<p>Per esempio, noi abbiamo visto nel precedente esercizio come chiedere ad un
-buggle di andare a prendere un baggle che ha di fronte e riportarlo
-indietro. Ci sono diversi baggles sul terreno e se vogliamo portarli tutti
-sulla riga più in basso dobbiamo ripetere lo stesso codice più volte o
-includerlo in un loop.  In ogni caso dovreste evitare di duplicare codice
-per mantenerlo piacevole da leggere e facile da capire. Sarebbe meglio se il
-buggle potesse obbedire ad un ordine del tipo <code>goAndGet()</code>
-proprio come fa per <code>forward()</code>. (Ndt non posso tradurre
-goAndGet() in vaiEPrendi() perché nell'esercizio dovrete usare esattamente
-questo nome del metodo per farlo funzionare)</p>
+<p>For example, we saw in a previous exercise how to ask the buggle to go get
+the baggle in front of it, and bring it back. If there is several baggles on
+the board, and if we want to bring all of them on the bottom line, you have
+to repeat this code several times, or include it in a loop. In any case, you
+should avoid to duplicate your code to keep it pleasant to read and easily
+understandable.  It would be better if the buggle could obey an
+<code>goAndGet()</code> order just like it understands a
+<code>[!c]stepForward()[/!][!scala|java|python]forward()[/!]</code> one.</p>
 
 <h3>Definire i metodi</h3>
 
 <p>La sintassi di [!thelang] per scrivere un semplice metodo chiamato
 <code>goAndGet</code> è la seguente.</p>
-<pre>[!java]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]
-  azioni()[!java];[/!]
-  direzione()[!java];[/!]
-  fai()[!java];[/!]
-[!java|scala]}[/!]</pre>
+<pre>[!java|c]void goAndGet() {[/!][!python]def goAndGet():[/!][!scala]def goAndGet() {[/!]
+  actions()[!java|c];[/!]
+  to()[!java|c];[/!]
+  do()[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
 
-<p>Il corpo del metodo [!java|scala](fra parentesi graffe)[/!][!python](il
-blocco indentato)[/!] sarà eseguito quando noi chiameremo il metodo più
-tardi (ovvero quando noi scriveremo <code>goAndGet()</code> da qualche parte
-nel codice). Il corpo del metodo può contenere quante istruzioni vogliamo e
-qualsiasi costrutto di quelli che abbiamo già visto (for, while, if
-...). [!java]La parola chiave <code>void</code> significa che questo metodo
-non ritorna alcun risultato, Per esempio il metodo
-<code>isOverBaggle()</code> ritorna un risultato, un valore booleano
-indicante se un buggle si trova sopra un baggle oppure no. Impareremo presto
-a definire anche questo tipo di metodi. Per ora scrivete semplicemente
-<code>void</code> dove specificato.[/!]
+<p>The method body [!java|scala|c](between curly braces)[/!][!python](the
+indented block)[/!] will be executed when we call the method later on (that
+is, when we write <code>goAndGet()</code> somewhere in our code). This
+method body can contain as many instructions as you want, and any
+construction we saw so far (for, while, if, etc).  [!java|c]The
+<code>void</code> keyword means that this method does not return any
+result. For example, the <code>isOverBaggle()</code> method does return a
+result, which is a [!c]int[/!][!java]boolean[/!] indicating whether or not
+the buggle is located over a baggle. We will soon learn to define such
+methods too. For now, just write <code>void</code> at this location.[/!]
 </p>
 
 <h3>Documentare un metodo</h3>

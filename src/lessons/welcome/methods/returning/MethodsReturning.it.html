@@ -2,22 +2,20 @@
 <!-- Please don't translate this file but l10n/missions/plm.pot (see https://github.com/oster/PLM/wiki/Working-on-translations) -->
 <h2>Metodi che ritornano un risultato</h2>
 
-<p>Non c'è bisogno di molto più lavoro da svolgere per scrivere un metodo con
-risultato piuttosto che uno sensa risultato. [!java]Nella dichiarazione devi
-semplicemente anteporre al nome del metodo il tipo di dato che ci si aspetta
-dal suo risultato (al posto del <code>void</code> che scrivevamo
-precedentemente).[/!][!scala]Devi semplicemente aggiungere i duepunti (:)
-dopo la parentesi tonde, scrivere il tipo di dato del risultato di ritorno
-ed inserire il segno di uguaglianza (=). Questa sintassi è in realtà molto
-vicina alla definizione di una variabile con il suo tipo, solo che è una
-funzione.[/!] Dovrai scrivere l'istruzione <code>return</code> nel corpo del
-metodo nel punto in cui vorrai che termini l'elaborazione (il metodo non
-continuerà ad essere eseguito oltre), il risultato sarà il valore posto
-subito dopo la parola chiave <code>return</code>.</p>
+<p>Writing a method returning a result is not really more work than writing a
+method without any result.  [!java|c]You simply have to specify the data
+type of expected results before the method name (where we previously had
+<code>void</code>).[/!] [!scala]You simply have to add a column (:) after
+the parenthesis and write the type of data that your method will return, and
+add an equal sign (=). This syntax is actually rather close to defining a
+variable, with its type, that is actually a function.[/!] You can use the
+<code>return</code> instruction anywhere in your method body to specify that
+the computation is done (the method is not further executed), and that the
+result is the the value following the <code>return</code> keyword.</p>
 
-<pre>[!java]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
-    return 3.14159[!java];[/!]
-[!java|scala]}[/!]</pre>
+<pre>[!java|c]double pi() {[/!][!scala]def pi(): Double = {[/!][!python]def pi():[/!]
+    return 3.14159[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
 
 <p>Si può anche utlizzare la parola chiave <code>return</code> solamente per
 interrompere l'esecuzione del metodo, non ritornando alcun
@@ -35,23 +33,23 @@ senso avrebbe guardare oltre di esso se già abbiamo il risultato del
 metodo?)  Quindi, se c'è del codice dopo un <code>return</code> deve essere
 sicuramente un errore ed il compilatore ce lo farà notare.</p>
 
-<pre>[!java|scala][!java]boolean [/!][!scala]def [/!]visualeLibera()[!scala]:Boolean =[/!] {
-    if (isFacingWall() == true) {
-        return false;
-        <span class="comment">/* quì nessun codice è permesso */</span>
+<pre>[!java|scala|c][!java]boolean [/!][!c]int [/!][!scala]def [/!]isFrontFree()[!scala]:Boolean =[/!] {
+    if (isFacingWall() == [!java|scala]true[/!][!c]1[/!]) {
+        return [!java|scala]false[/!][!c]0[/!];
+        <span class="comment">/* no code allowed here */</span>
     } else {
-        return true;
-        <span class="comment">/* neanche quì */</span>
+        return [!java|scala]true[/!][!c]1[/!];
+        <span class="comment">/* here neither */</span>
     }
-    <span class="comment">/* lascia perdere anche quì */</span>
-}[/!][!python]def visualeLibera():
+    <span class="comment">/* even here, forget it */</span>
+}[/!][!python]def isFrontFree():
     if isFacingWall() == True:
         return False
-        <span class="comment"># quì nessun codice è permesso</span>
+        <span class="comment"># no code allowed here</span>
     else
         return True
-        <span class="comment"># neanche quì</span>
-<span class="comment"># lascia perdere anche quì</span>[/!]</pre>
+        <span class="comment"># here neither</span>
+<span class="comment"># even here, forget it</span>[/!]</pre>
 
 <h3>Traguardo dell'esercizio</h3>Dovete scrivere un metodo che il vostro buggle utilizzerà. Il suo nome dovrà
 essere <code>haveBaggle</code> (Ndt avereBaggle) e dovrà ritornare un valore

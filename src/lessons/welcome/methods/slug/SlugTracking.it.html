@@ -15,16 +15,17 @@ ad un muro esso dovrà ritornale false senza andarci a sbattere. Dovrete
 assicurarvi che questo metodo non avrà <b>effetti collaterali</b> e cioé che
 non cambi il buggle che lo sta chiamando o il mondo che lo circonda.</p>
 
-<p>Per questo fine potrai usare <code>getGroundColor()</code> che ritornerà il
-colore della cella corrente. Basterà andare sulla cella che vuoi testare ed
-eseguire questa funzione. [!java]Non puoi testare se questo colore è uguale
-a <code>Color.green</code> attraverso l'operatore <code>==</code> ma invece
-dovrai scrivere qualcosa di simile a
-<code>getGroundColor().equals(Color.green)</code>. Il motivo è che in Java
-green è un <i>oggetto</i> e <code>.equals()</code> è la via per testare
-l'uguaglianza fra oggetti in Java.[/!][!python|scala]Quindi non resta che
-verificare se il colore restituito è uguale al valore
-<code>Color.green</code> che rappresenta il colore verde.[/!]</p>   
+<p>Your tool to that end is the <code>getGroundColor()</code> that returns the
+color of the current cell. Just go to the cell you want to test and run that
+function.  [!java]You cannot test whether this color is equal to
+<code>Color.green</code> with an <code>==</code> sign but instead you have
+to write something like
+<code>getGroundColor().equals(Color.green)</code>. This is because green is
+an <i>object</i> in Java, and <code>.equals()</code> is the way to go to
+test equality between Java objects.[/!] [!python|scala|c]So you just have to
+test whether the returned color is equal to the value
+<code>[!scala|python]Color.green[/!][!c]GREEN[/!]</code>, that represents
+the green color.[/!]</p>   
 
 <h3>Traguardo dell'esercizio</h3>
 <p>Scrivi il metodo <code>isFacingTrail()</code> (che sarà chiamato

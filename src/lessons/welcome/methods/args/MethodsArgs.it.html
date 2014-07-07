@@ -14,25 +14,25 @@ dopo il nome del metodo. In seguito potrai usarli nel corpo nel metodo come
 se fossero variabili definite al suo interno ed aventi come valori iniziali
 quelli indicati dal chiamante.</p>
 
-<pre>[!java]double [/!]divisionePerDue([!java]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala]{[/!][!python]:[/!]
-     return x / 2[!java];[/!]
-[!scala|java]}[/!]</pre>
+<pre>[!java|c]double [/!]divideByTwo([!java|c]double [/!]x[!scala]: Double[/!])[!scala]: Double =[/!] [!java|scala|c]{[/!][!python]:[/!]
+     return x / 2[!java|c];[/!]
+[!scala|java|c]}[/!]</pre>
 
 <p>Dalla parte del chiamante tu dovrai specificare il valore iniziale di queste
 "variabili" fra le parentesi dell'invocazione.</p>
-<pre>[!java]double [/!][!scala]val [/!]risultato = divisionePerDue(3.14)[!java];[/!]</pre>
+<pre>[!java|c]double [/!][!scala]val [/!]result = divideByTwo(3.14)[!java|c];[/!]</pre>
 
 <p>Se vuoi inserire più di un parametro li devi separare da una virgola (,) sia
 nella dichiarazione che nell'invocazione.</p>
 
-<pre>[!java]double divisione(double x, double y) {[/!]
-[!scala]def divisione(x:Double, y:Double): Double = {[/!]
-[!python]def divisione(x, y):[/!]
-     return x / y[!java];[/!]
-[!java|scala]}[/!]</pre>
-<pre>[!java]double ris = divisione(3.14 , 1.5);[/!]
-[!scala]val ris = divisione(3.14 , 1.5)[/!]
-[!python]ris = divisione(3.14 , 1.5)[/!]</pre>
+<pre>[!java|c]double divide(double x, double y) {[/!]
+[!scala]def divide(x:Double, y:Double): Double = {[/!]
+[!python]def divide(x, y):[/!]
+     return x / y[!java|c];[/!]
+[!java|scala|c]}[/!]</pre>
+<pre>[!java|c]double res = divide(3.14 , 1.5);[/!]
+[!scala]val res = divide(3.14 , 1.5)[/!]
+[!python]res = divide(3.14 , 1.5)[/!]</pre>
 
 [!java|scala]
 <p>In [!thelang] puoi dichiarare diversi metodi con lo stesso nome fintantoché
@@ -73,11 +73,12 @@ noi sappiamo già che <code>x&lt;=y</code> perché in caso contrario il
 
 
 <h3>Traguardo dell'esercizio</h3>
-<p>Questa volta dovrai scrivere il metodo <code> [!java]move(int
-numeroPassi,boolean avanti)[/!] [!scala]move(numeroPassi: Int,avanti:
-Boolean)[/!] [!python]move(numeroPassi,avanti)[/!] </code> che fa spostare
-del numero di passi indicato in <code>numeroPassi</code> in avanti se
-<code>avanti</code> è true oppure indietro se è false.</p>
+<p>This time, you have to write a <code> [!java|c]move(int
+stepCount,[!java]boolean[/!][!c]int[/!] forward)[/!] [!scala]move(stepCount:
+Int,forward: Boolean)[/!] [!python]move(stepCount,forward)[/!] </code>
+method which moves forward by <code>stepCount</code> steps if
+<code>forward</code> is true, and moves back of that amount of steps if the
+boolean is false.</p>
 
 <p>Questa volta c'è solo un mondo ma sette buggles, tutti che condividono lo
 stesso codice. Questo codice non dovrebbe essere troppo problematico da

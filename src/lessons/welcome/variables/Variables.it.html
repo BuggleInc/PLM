@@ -32,12 +32,12 @@ variabili. Potete chiamare una variabile <code>passiTotali</code> se volete
 ma <code>passi totali</code> non è un nome valido.
   </p>
 
-[!java]
+[!c|java]
   <p>Quindi, per creare una variabile chiamata <b>x</b> destinata a contenere
 numeri interi, bisognerebbe scrivere:</p> 
   <pre>int x;</pre>
-  <p>If you want, you can specify the initial value of the variable by adding an
-equal sign (=) followed by the value after the declaration.</p>
+  <p>Se volete potete specificare il valore iniziale della variabile aggiungendo
+dopo la dichiarazione un segno uguale (=) seguito dal valore.</p>
   <pre>int x=5;</pre>
 [/!] [!python]
   <p>Quindi se volete che la variabile contenga 5 come valore iniziale dovreste
@@ -50,14 +50,14 @@ interi con 42 come valore iniziale, dovreste scrivere:</p>
   <p>In molti casi il computer è capace di intuire il tipo di variabile dal suo
 valore iniziale e voi potete evitare di specificarlo:</p>
   <pre>var x = 42</pre>
-  <p>You still have to specify the if you use some generic values as an
-initialization, such as the very particular value <code>null</code>, which
-type happens to be ambiguous. Even when the type is clear, you can still
-specify it if you prefer.  So you want that the variable contains 5 as
-initial value, you should type: </p>
+  <p>Bisogna sempre specificare se volete utilizzare un valore generico per
+l'inizializzazione, come il valore speciale <code>null</code> di tipologia
+ambigua. Anche quando il tipo è chiaro potete specificarlo se lo
+preferite. Quindi se volete che la variabile contenga 5 come valore iniziale
+dovreste scrivere: </p>
   <pre>var x: Int =  5 <span class="comment">// Posso specificare il tipo se voglio</span>
 var y =  10      <span class="comment">// oppure ometterlo a mia scelta</span></pre>
-[/!] [!java|scala]
+[/!] [!java|scala|c]
 <p>Come potete vedere, in [!thelang] le variabili sono <b>tipizzate</b>, che
 significa che sono in qualche modo specializzate: Una data variabile può
 immagazzinare esclusivamente dati di un solo tipo; Non pensateci minimamente
@@ -72,11 +72,12 @@ senso Python è più facile da scrivere ma gli errori possono occultarsi più
 facilmente che in [!thelang].</p>
 <p>Ci sono diversi tipi esistenti in [!thelang]:</p>
 <ul>
-  <li><b>[!java]int[/!][!scala]Int[/!]</b>, per i numeri interi;</li>
-  <li><b>[!java]double[/!][!scala]Double[/!]</b>, per i numeri con la virgola;</li> 
-  <li><b>[!java]boolean[/!][!scala]Boolean[/!]</b>, per i booleani che hanno
-valori true o false;</li>
-  <li><b>String</b>, per stringhe di caratteri.</li>
+  <li><b>[!java|c]int[/!][!scala]Int[/!]</b>, per i numeri interi;</li>
+  <li><b>[!java|c]double[/!][!scala]Double[/!]</b>, per i numeri con la virgola;</li> 
+  <li><b>[!c]int[/!][!java]boolean[/!][!scala]Boolean[/!]</b>, for booleans that
+are values being either [!c]1[/!][!java|scala]true[/!] or
+[!c]0[/!][!java|scala]false[/!];</li>
+  <li><b>[!c]char*[/!][!java|scala]String[/!]</b>, for char strings.</li>
 </ul>
 [/!] [!python]
 <p>Come potete vedere le variabili in Python non sono <b>tipizzate</b>, che
@@ -85,25 +86,31 @@ variabile può immagazzinare indistintamente qualsiasi tipo di dato: potete
 memorizzare un numero in una variabile ed in un secondo momento metterci una
 lettera.  Il valore è ancora tipizzato ma non la variabile. Python viene
 quindi definito <b>dinamicamente tipizzato</b>.</p>
-<p>Altri linguaggi (come Java o Scala) sono molto più esigenti e precludono la
-possibilità di mischiare i tipi di dato in una variabile (vengono chiamati
-<b>staticamente tipizzati</b>). Questo potrebbe sembrare noioso ad una prima
-occhiata ma codeste restrizioni permettono al compilatore di generarvi più
-errori logici, il che potrebbe anche essere un bene. In un certo senso è più
-facile scrivere in Python ma gli errori possono occultarsi più facilmente.</p>
+<p>Altri linguaggi (come Java, Scala o C) sono molto più esigenti e precludono
+la possibilità di mischiare i tipi di dato in una variabile (vengono
+chiamati <b>staticamente tipizzati</b>). Questo potrebbe sembrare noioso ad
+una prima occhiata ma codeste restrizioni permettono al compilatore di
+generarvi più errori logici, il che potrebbe anche essere un bene. In un
+certo senso è più facile scrivere in Python ma gli errori possono occultarsi
+più facilmente.</p>
 [/!]
   
 
-<p class="scala">If you know that the value of your "variable" will never change (eg because
-it contains the screen size or some other constant value), then you should
-make it a <b>value</b> instead of a variable. Simply change the
-<code>var</code> keyword with the <code>val</code> one. The compiler can
-then check your actions and catch your error when you inadvertently modify
-the value. More interestingly, the compiler can produce faster code in some
-cases.</p>
+<p class="scala">Se sapete che il valore della vostra "variabile" non cambierà mai (ad
+esempio perché contiene la dimensione dello schermo o altri valori costanti)
+allora potete utilizzare direttamente un <b>valore</b> piuttosto che una
+variabile.  Semplicemente cambiate la parolachiave <code>var</code> con
+<code>val</code>. Il compilatore potrà fare più verifiche ed avvertirvi
+quando modificherete il valore per sbaglio. Ancora più interessante è sapere
+che il complatorepotrebbe produrre codice più veloce in alcuni casi.</p>
 
 <p>Le variabili funzionano in modo molto simile per stringhe, numeri in virgola
 mobile e valori boleani.</p>
+
+<pre class="c">char* name = "Martin Quinson";
+double height=1.77; <span class="comment">// in meters</span>
+int married=1;<span class="comment">// 1 means "true"; "false" would be written 0</span></pre>
+
 
 <pre class="java">String nome = "Martin Quinson";
 double altezza=1.77; <span class="comment">// In metri</span>
@@ -124,14 +131,14 @@ sposato=True <span class="comment"># il contrario si scriverebbe "false"</span><
 
 <p>Dopo aver dichiarato una variabile è possibile <b>assegnare</b> un nuovo
 valore ad essa. Questo è veramente semplice:</p> 
-<pre>x = 3[!java];[/!]</pre>
+<pre>x = 3[!java|c];[/!]</pre>
 
 <p>A destra del simbolo di uguaglianza potete mettere un espressione aritmetica
 contenente costanti, variabili e operazioni.</p>
 
-<pre>x = 3 + 2[!java];[/!]
-x = 3 * x[!java];[/!]
-saluto = "Ciao "+nome[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + è (anche) l'operazione per concatenare (unire) le stringhe</span></pre> 
+<pre>x = 3 + 2[!java|c];[/!]
+x = 3 * x[!java|c];[/!]
+[!java|scala|python]greeting = "Hello "+name[!java];[/!] <span class="comment">[!python]#[/!][!scala|java]//[/!] + is (also) the operation to concatenate (ie, to join) strings[/!]</span></pre> 
 
 <h3>Traguardo dell'esercizio</h3>
 È arrivato il momento di fare esercizi più competitivi, non trovate?
@@ -154,7 +161,7 @@ una variabile chiamata <code>passiTotali</code>.</p>
 
 <p>Create una variabile di tipo intero prima della fase 1, inizializzatela a 0
 ed ogni volta che vi muovete di un passo in avanti incrementate il suo
-valore di uno (<code>passiTotali = passiTotali + 1;</code>[!java] oppure
+valore di uno (<code>passiTotali = passiTotali + 1;</code>[!java|c] oppure
 <code>passiTotali++;</code>, entrambe le sintassi sono equivalenti[/!]).
 Variabili di questo tipo che assumono ogni valore di un dato intervallo sono
 spesso chiamate <b>stepper</b> (Ndt "contapassi", un contatore a passo

@@ -6,7 +6,7 @@
 ripetere un azione fintantoché non si verifichi una condizione. Il ciclo
 while è usato per questo, con la seguente sintassi.</p>
  
-<pre>[!java|scala]while (<b>condizione</b>) {
+<pre>[!java|scala|c]while (<b>condizione</b>) {
 &nbsp;&nbsp;&nbsp;&nbsp;<b>azione()</b>;
 }[/!][!python]while <b>condizione</b>:
 &nbsp;&nbsp;&nbsp;&nbsp;<b>azione()</b>[/!]</pre>
@@ -26,13 +26,14 @@ testare questo puoi provare a scrivere il seguente codice nell'editor:</p>
 
 <pre>[!java|scala]while (true) {
 &nbsp;&nbsp;&nbsp;&nbsp;left();
+}[/!][!c]while (1) {
+&nbsp;&nbsp;&nbsp;&nbsp;left();
 }[/!][!python]while True:
 &nbsp;&nbsp;&nbsp;&nbsp;left()[/!]</pre>
 
-<p>Questo farà girare il buggle a sinistra fintantoché
-<code>[!java|scala]true[/!][!python]True[/!]</code> rimarrà true (è cioé
-indefinitamente) oppure finché non lo fermerete manualmente usando il
-pulsante stop.</p>
+<p>This will let the buggle turn left as long as
+<code>[!c]1[/!][!java|scala]true[/!][!python]True[/!]</code> remains true
+(ie, endlessly), or until you stop it manually using the stop button.</p>
 
 <h3>Traguardo dell'esercizio</h3>
 Ora dovete scrivere del codice in modo che i vostri buggles si sposteranno

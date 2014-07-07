@@ -49,14 +49,14 @@ anche se le altre condizioni sono false. Una volta che il contenuto del
 ciclo è stato eseguito una volta, la variabile assume il valore false e non
 avrà più nessuna influenza sulla decisione di eseguire il corpo del ciclo
 oppure no.</p>
-[/!] [!java|scala]
-<p>Nel ciclo <tt>while</tt> prima di tutto viene valutata la condizione e se è
-false il corpo del ciclo non viene mai eseguito. Alle volte (non troppo
-spesso) preferireste che il corpo del ciclo venga eseguito almeno una volta
-anche se la condizione per eseguirlo sia false. Per far questo in [!thelang]
-viene usata una variante del ciclo <tt>while</tt> avente la seguente
-sintassi.  [!java]Non dimenticate il punto e virgola (;) dopo la condizione,
-è obbligatorio.[/!]
+[/!] [!java|scala|c]
+<p>In a <tt>while</tt> loop, the condition is evaluated before anything else,
+and if it's false, the loop body is never evaluated. Sometimes (although not
+that often), you would prefer the loop body to get evaluated at least once,
+even if the condition is initially false. For that, a variation of the
+<tt>while</tt> loop gets used, using the following syntax in [!thelang].
+[!java|c]Do not forget the semi-column (;) after the condition, it is
+mandatory.[/!]
 
 <pre>do {
     <b>azione()</b>[!java];[/!]
