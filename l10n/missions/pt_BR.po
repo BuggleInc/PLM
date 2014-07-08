@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PLM mission texts\n"
 "POT-Creation-Date: 2014-05-07 18:29+0200\n"
-"PO-Revision-Date: 2014-07-06 20:49-0300\n"
+"PO-Revision-Date: 2014-07-07 23:50-0300\n"
 "Last-Translator: Fred maranhão <fred.maranhao@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -1628,14 +1628,14 @@ msgstr ""
 #: src/lessons/chooser/LessonChooser.html:17
 msgid ""
 "<a href=\"plm://lessons.maze\">Escape the maze</a> Will you escape the mazes?"
-msgstr ""
+msgstr "<a href=\"plm://lessons.maze\">Fugindo do labirinto</a> Você consegue fugir do labirinto?"
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:19
 msgid ""
 "<a href=\"plm://lessons.bat.string1\">String lesson</a> A bunch of exercises "
 "on strings."
-msgstr ""
+msgstr "<a href=\"plm://lessons.bat.string1\">Lição sobre strings</a> várias lições sobre  strings."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:21
@@ -1643,6 +1643,9 @@ msgid ""
 "<a href=\"plm://lessons.sort\">Sorting lesson</a> This short lesson proposes "
 "to discover the classical sorting algorithms by practice."
 msgstr ""
+"<a href=\"plm://lessons.sort\">Lição sobre ordenação</a> Esta pequena\n"
+"lição se propõe a descobrir os algoritmos clássicos de ordenação na\n"
+"prática."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:24
@@ -1650,26 +1653,30 @@ msgid ""
 "<a href=\"plm://lessons.recursion\">Recursion lesson</a> Build some "
 "classical geometric figures through recursion."
 msgstr ""
+"<a href=\"plm://lessons.recursion\">Lição sobre recursão</a> Constrói\n"
+"algumas figuras geométricas clássicas através de recursão."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:27
+#, fuzzy
 msgid ""
 "<a href=\"plm://lessons.lightbot\">LightBot</a> In this little game, you "
 "must program graphically a little robot to instruct it how to switch the "
 "lights off. It is a brain teaser for programmer."
-msgstr ""
+msgstr "<a href=\"plm://lessons.lightbot\">LightBot</a> neste pequeno jogo, você deve programar graficamente um pequeno robô dizendo para ele como desligar as luzes. É um \"brain teaser\" para programadores."
 
 #. type: Content of: <ul><li>
 #: src/lessons/chooser/LessonChooser.html:31
+#, fuzzy
 msgid ""
 "<a href=\"plm://lessons.smn\">Digital Manual Science</a> Some activities "
 "developed for the Sciences Manuelles du Numérique (Digital Manual Science)"
-msgstr ""
+msgstr "<a href=\"plm://lessons.smn\">Sciences Manuelles du Numérique</a> Algumas atividades desenvolvidas para o Sciences Manuelles du Numérique"
 
 #. type: Content of: <h1>
 #: src/lessons/chooser/Main.html:2
 msgid "Lesson chooser"
-msgstr ""
+msgstr "Selecionador de lições"
 
 #. type: Content of: outside any tag (error?)
 #: src/lessons/chooser/Main.html:4
@@ -1677,6 +1684,8 @@ msgid ""
 "This isn't a real lesson, it's here that you can select a lesson among "
 "others."
 msgstr ""
+"Esta não é uma lição real, está aqui para que você possa selecionar\n"
+"uma lição dentre outras."
 
 #. type: Content of: <h3>
 #: src/lessons/welcome/Main.html:2 src/lessons/welcome/short_desc.html:2
@@ -2399,6 +2408,15 @@ msgid ""
 "(describing obvious stuff) is a bad idea as the important idea get lost in "
 "the noise."
 msgstr ""
+"Quando você escreve um programa bem complexo, por vezes é útil\n"
+"<b>adicionar comentários</b> para simplificar uma posterior revisão do\n"
+"código. Aqui, por exemplo, é fácil se perder no processo de desenho, e\n"
+"você pode querer adicionar comentários como <i>barra vertical\n"
+"desenhada</i> ou <i>terminei de desenhar o G. hora de voltar para\n"
+"posição inicial</i>. Comentar seu código é quase obrigatório se você\n"
+"(ou mais alguém) quiser lê-lo depois, embora comentar demais\n"
+"(descrevendo coisas óbvias) é ruim pois as ideias importantes se\n"
+"perdem no meio do ruído."
 
 #. type: Content of: <p>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:15
@@ -2406,7 +2424,7 @@ msgid ""
 "There is [!java]three[/!][!python|scala]two[/!] types of comments in [!"
 "thelang], instructing the [!java|scala]compiler[/!][!python]interpreter[/!] "
 "to not read the text you add for humans:"
-msgstr ""
+msgstr "Existem [!java]três[/!][!python|scala]dois[/!] tipos de comentários em [!thelang], que instruem o [!java|scala]compilador[/!][!python]interpretador[/!] a não ler o texto que você adiciona para humanos:"
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:19
@@ -2414,7 +2432,7 @@ msgid ""
 "<b>Comments on a single line</b>. When the [!java|scala]compiler[/!][!"
 "python]interpreter[/!] encounters the symbol [!java|scala]//[/!][!"
 "python]#[/!], it ignores the end of the line."
-msgstr ""
+msgstr "<b>Comentários de uma única linha</b>. Quando o [!java|scala]compilador[/!][!python]interpretador[/!] encontra o símbolo [!java|scala]//[/!][!python]#[/!], ele ignora o resto da linha."
 
 #. type: Content of: <ul><li>
 #: src/lessons/welcome/instructions/InstructionsDrawG.html:21
