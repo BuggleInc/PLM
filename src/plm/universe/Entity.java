@@ -204,9 +204,27 @@ public abstract class Entity extends Observable {
 			try {
 
 				String tempdir = System.getProperty("java.io.tmpdir");
-				File saveDir = new File(tempdir+"/bin");
+				File saveDir = new File(tempdir+"/plmTmp/bin");
 				
-				File exec = new File(saveDir.getAbsolutePath()+"/prog");
+				
+				
+				String extension="";
+				String arg1[];
+				String os = System.getProperty("os.name").toLowerCase();
+				if (os.indexOf("win") >= 0) {
+					extension=".exe";
+					arg1 = new String[3];
+					arg1[0]="cmd.exe";
+					arg1[1]="/c";
+					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension;
+				} else {
+					arg1 = new String[3];
+					arg1[0]="/bin/sh";
+					arg1[1]="-c";
+					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension;
+				}
+				
+				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
 				if(!exec.exists()){
 					//TODO GIANNINI add error message if the binary isn't here
 					System.out.println("NO BINARY FOUND");
@@ -218,10 +236,9 @@ public abstract class Entity extends Observable {
 				}
 				
 				
-				
 				String execPath = exec.getAbsolutePath();
 
-				String[] arg1 = {"/bin/sh","-c",""+execPath};
+
 				final Process process = runtime.exec(arg1);
 				
 				final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));

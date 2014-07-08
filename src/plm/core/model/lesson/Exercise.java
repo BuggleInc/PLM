@@ -3,7 +3,9 @@ package plm.core.model.lesson;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -102,7 +104,7 @@ public abstract class Exercise extends Lecture {
 			currentWorld.get(i).notifyWorldUpdatesListeners();
 
 			lastResult.totalTests++;
-			
+
 			if (!currentWorld.get(i).winning(answerWorld.get(i))) {
 				String diff = answerWorld.get(i).diffTo(currentWorld.get(i));
 				lastResult.details += i18n.tr("The world ''{0}'' differs",currentWorld.get(i).getName());
@@ -214,63 +216,124 @@ public abstract class Exercise extends Lecture {
 			for (SourceFile sf : sfs){
 
 				String code = sf.getCompilableContent(runtimePatterns,whatToCompile); 
-				
+
 				Runtime runtime = Runtime.getRuntime();
 
 				final StringBuffer resCompilationErr=new StringBuffer();
 				try {
 					String tempdir = System.getProperty("java.io.tmpdir");
-					File saveDir = new File(tempdir+"/bin");
 					
-					if(!saveDir.exists()){
-						saveDir.mkdir();
+					File plmDirTmp = new File(tempdir+"/plmTmp");
+					if(!plmDirTmp.exists()){
+						plmDirTmp.mkdir();
 					}
-					String saveDirPath = saveDir.getAbsolutePath();
 					
-					File exec = new File(saveDirPath+"/prog");
+					File saveDirBin = new File(plmDirTmp.getAbsolutePath()+"/bin");
+					if(!saveDirBin.exists()){
+						saveDirBin.mkdir();
+					}
+					File saveDirSrc = new File(plmDirTmp.getAbsolutePath()+"/src");
+					if(!saveDirSrc.exists()){
+						saveDirSrc.mkdir();
+					}
+					File saveDirInclude = new File(plmDirTmp.getAbsolutePath()+"/include");
+					if(!saveDirInclude.exists()){
+						saveDirInclude.mkdir();
+					}
+					
+					
+					String saveDirPathBin = saveDirBin.getAbsolutePath();
+					String saveDirPathSrc = saveDirSrc.getAbsolutePath();
+					String saveDirPathInclude = saveDirInclude.getAbsolutePath();
+
+					File exec = new File(saveDirPathBin+"/prog");
 					if(exec.exists()){
 						exec.delete();
 					}
 					String execPath = exec.getAbsolutePath();
-					
+
 					//compile the RemoteBuggle
 					String compileRemote="";
 					String link="";
+					
+					
+					String remote="";
+					
 					if(code.contains("RemoteBuggle")){
-						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteBuggle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBuggle.o";
-						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBuggle.o -o "+execPath;
+						remote = "RemoteBuggle";
+						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBuggle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBuggle.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBuggle.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
-						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteTurtle.c -I langages/c/include/ -o "+saveDirPath+"/RemoteTurtle.o";
-						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteTurtle.o -o "+execPath;
+						remote = "RemoteTurtle";
+						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteTurtle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteTurtle.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteTurtle.o -o "+execPath;
 					}else if(code.contains("RemoteSort")){
-						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteSort.c -I langages/c/include/ -o "+saveDirPath+"/RemoteSort.o";
-						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteSort.o -o "+execPath;
+						remote = "RemoteSort";
+						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteSort.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteSort.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteSort.o -o "+execPath;
 					}else if(code.contains("RemoteFlag")){
-						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteFlag.c -I langages/c/include/ -o "+saveDirPath+"/RemoteFlag.o";
-						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteFlag.o -o "+execPath;
+						remote = "RemoteFlag";
+						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteFlag.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteFlag.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteFlag.o -o "+execPath;
 					}else if(code.contains("RemoteBaseball")){
-						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteBaseball.c -I langages/c/include/ -o "+saveDirPath+"/RemoteBaseball.o";
-						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteBaseball.o -o "+execPath;
+						remote = "RemoteBaseball";
+						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBaseball.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBaseball.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBaseball.o -o "+execPath;
 					}else if(code.contains("RemotePancake")){
-						compileRemote = "gcc -g -Wall -c langages/c/src/RemotePancake.c -I langages/c/include/ -o "+saveDirPath+"/RemotePancake.o ";
-						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemotePancake.o -o "+execPath;
+						remote = "RemotePancake";
+						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemotePancake.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemotePancake.o ";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemotePancake.o -o "+execPath;
 					}else if(code.contains("RemoteHanoi")){
-						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteHanoi.c -I langages/c/include/ -o "+saveDirPath+"/RemoteHanoi.o ";
-						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteHanoi.o -o "+execPath;
+						remote = "RemoteHanoi";
+						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteHanoi.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteHanoi.o ";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteHanoi.o -o "+execPath;
 					}else{
 						//TODO GIANNINI add error mesage if the remote isn't implemented
 						System.out.println("ERROR FILE SRC");
 					}
 					
+					//copy file from jar to tmp dir
+					BufferedReader cRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/"+remote+".c")));
+					FileWriter cRemoteOut = new FileWriter(saveDirPathSrc+"/"+remote+".c");
+					BufferedReader hRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/"+remote+".h")));
+					FileWriter hRemoteOut = new FileWriter(saveDirPathInclude+"/"+remote+".h");
+					
+					String line;
+					while((line=cRemote.readLine())!=null){
+						cRemoteOut.write(line+"\n");
+					}
+					line="";
+					while((line=hRemote.readLine())!=null){
+						hRemoteOut.write(line+"\n");
+					}
+					cRemote.close();
+					cRemoteOut.close();
+					hRemote.close();
+					hRemoteOut.close();
+					
 					//compile the current code
-					String compileCode = "gcc -g -c -x c -o "+saveDirPath+"/current.o -I langages/c/include/ -Wall - ";
+					String compileCode = "gcc -g -c -x c -o "+saveDirPathBin+"/current.o -I "+saveDirPathInclude+" -Wall - ";
 
-					
-					String[] arg1 = {"/bin/sh","-c",compileRemote+" ; "+compileCode+" ; "+link};
+
+					String[] arg1;
+					String os = System.getProperty("os.name").toLowerCase();
+					if (os.indexOf("win") >= 0) {
+						arg1 = new String[3];
+						arg1[0]="cmd.exe";
+						arg1[1]="/c";
+						arg1[2]=compileRemote+" & "+compileCode+" & "+link;
+					} else {
+						arg1 = new String[3];
+						arg1[0]="/bin/sh";
+						arg1[1]="-c";
+						arg1[2]=compileRemote+" ; "+compileCode+" ; "+link;
+					}
+
+
 					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
-					
-					
-					
+
+
+
 					final Process process = runtime.exec(arg1);
 					final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 					bwriter.write(code);
@@ -293,7 +356,7 @@ public abstract class Exercise extends Lecture {
 						}
 					};
 					reader.run();
-					
+
 					Thread error = new Thread() {
 						public void run() {
 							try {
@@ -312,12 +375,12 @@ public abstract class Exercise extends Lecture {
 						}
 					};
 					error.run();
-					
-					
+
+
 
 
 					process.waitFor();
-					
+
 					if(resCompilationErr.length()>0){
 						//TODO GIANNINI parse the error message and verify Warning
 						PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
@@ -327,7 +390,7 @@ public abstract class Exercise extends Lecture {
 
 						throw e;
 					}
-					
+
 
 				} catch (IOException ioe) {
 					// TODO Auto-generated catch block
