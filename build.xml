@@ -75,7 +75,7 @@
             <fileset dir="${classes.dir}" excludes="**/.gitignore **/*.java **/*.css **/*.html"/>
             <fileset dir="${src.dir}" includes="**/*.py **/*.c **/*.scala **/*.java **/*.html **/*.css **/*.png **/*.map" excludes="**/.gitignore"/>
             <fileset dir="${base.dir}" includes="img/*/*.png img/*.png" excludes="*"/>
-            <fileset dir="${base.dir}" includes="ChangeLog langages" />
+            <fileset dir="${base.dir}" includes="ChangeLog" />
             <fileset dir="${lib.dir}" excludes="**/*.jar *.pl l10n/missions/* l10n/engine/*"/>
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/twitter4j-core-3.0.3.jar" />    
             <zipfileset excludes="META-INF/*.SF" src="${lib.dir}/jsyntaxpane-0.9.6~r156.jar" />
