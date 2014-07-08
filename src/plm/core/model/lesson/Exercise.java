@@ -214,7 +214,6 @@ public abstract class Exercise extends Lecture {
 			for (SourceFile sf : sfs){
 
 				String code = sf.getCompilableContent(runtimePatterns,whatToCompile); 
-				//System.out.println(code);
 				
 				Runtime runtime = Runtime.getRuntime();
 
@@ -317,7 +316,6 @@ public abstract class Exercise extends Lecture {
 					
 					if(resCompilationErr.length()>0){
 						//TODO GIANNINI parse the error message and verify Warning
-						System.out.println("=========="+sf.getName());
 						PLMCompilerException e = new PLMCompilerException(resCompilationErr.toString(), null, null);
 						System.err.println(Game.i18n.tr("Compilation error:"));
 						System.err.println(e.getMessage());
