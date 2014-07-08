@@ -134,7 +134,7 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 			return false;
 		return true;
 	}
-	
+
 	public static class HTMLFactoryX extends HTMLEditorKit.HTMLFactory implements ViewFactory {
 		boolean visible=false;
 		@Override
@@ -147,12 +147,12 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 				if (iterElem != null)
 					theCSSClass = (String) iterElem.getAttributes().getAttribute(HTML.Attribute.CLASS);
 			}
-			*/
+			 */
 			if (!Game.getInstance().isDebugEnabled() // Display everything when in debug mode 
-				&& hideLang(theCSSClass)) {
+					&& hideLang(theCSSClass)) {
 				return new EmptyView(element);
 			}
-			
+
 			Object tagName = element.getAttributes().getAttribute(StyleConstants.NameAttribute);
 			if (tagName instanceof HTML.Tag) {
 				HTML.Tag tag = (HTML.Tag) tagName;
@@ -178,20 +178,20 @@ public class PlmHtmlEditorKit extends HTMLEditorKit {
 	}
 	public static String getCSS() {
 		String header = "  <style type=\"text/css\">\n"+
-		        "    body { font-family: tahoma, \"Times New Roman\", serif; font-size:"+Game.getProperty(Game.PROP_FONT_SIZE, "10px", true)+"; margin:10px; }\n"+
-		        "    code { background:#EEEEEE; }\n"+
-		        "    pre { background: #EEEEEE;\n"+
-		        "          margin: 5px;\n"+
-		        "          padding: 6px;\n"+
-		        "          border: 1px inset;\n"+
-		        "          width: 640px;\n"+
-		        "          overflow: auto;\n"+
-		        "          text-align: left;\n"+
-		        "          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
-		        "   .comment { background:#EEEEEE;\n"+
-		        "              font-family: \"Times New Roman\", serif;\n"+
-		        "              color:#00AA00;\n"+
-		        "              font-style: italic; }\n";
+				"    body { font-family: tahoma, \"Times New Roman\", serif; font-size:"+Game.getProperty(Game.PROP_FONT_SIZE, "10px", true)+"; margin:10px; }\n"+
+				"    code { background:#EEEEEE; }\n"+
+				"    pre { background: #EEEEEE;\n"+
+				"          margin: 5px;\n"+
+				"          padding: 6px;\n"+
+				"          border: 1px inset;\n"+
+				"          width: 640px;\n"+
+				"          overflow: auto;\n"+
+				"          text-align: left;\n"+
+				"          font-family: \"Courrier New\", \"Courrier\", monospace; }\n"+
+				"   .comment { background:#EEEEEE;\n"+
+				"              font-family: \"Times New Roman\", serif;\n"+
+				"              color:#00AA00;\n"+
+				"              font-style: italic; }\n";
 		String res;
 		if (Game.getInstance().isDebugEnabled()) {
 			/* In debugging mode, all languages are displayed, with differing colors */
@@ -251,13 +251,13 @@ class MyIconView extends View {
 				c = ResourcesCache.getIcon(baseExercise, filename);
 			if (c != null)
 				return;
-			
+
 			String resourceName = "/"+filename.replace('.','/');
 			resourceName = resourceName.replaceAll("/png$", ".png").replaceAll("/jpg$", ".jpg");
 			resourceName = resourceName.replaceAll("/jpeg$", ".jpeg").replaceAll("/gif$", ".gif");
 
 			InputStream s = getClass().getResourceAsStream(resourceName);
-			
+
 			try {
 				if (s == null) {
 					c = (Icon) UIManager.getLookAndFeelDefaults().get("html.missingImage");

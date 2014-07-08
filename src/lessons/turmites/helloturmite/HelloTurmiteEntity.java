@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-import com.kenai.jffi.Array;
-
 import plm.universe.bugglequest.SimpleBuggle;
 
 public class HelloTurmiteEntity extends SimpleBuggle {
@@ -64,7 +62,6 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 		int[][][] rule; 
 
 		rule = ((int[][][])getParam(1));
-		System.out.println(Arrays.deepToString(rule));
 
 		colors = new Color[rule.length];
 		for (int i=0; i<rule.length; i++)
@@ -79,7 +76,6 @@ public class HelloTurmiteEntity extends SimpleBuggle {
 	@Override
 	public void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		System.out.println(command);
 		try {
 			switch(num){
 			case 200 :
