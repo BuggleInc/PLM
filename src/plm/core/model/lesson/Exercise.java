@@ -219,8 +219,9 @@ public abstract class Exercise extends Lecture {
 
 				final StringBuffer resCompilationErr=new StringBuffer();
 				try {
+					String tempdir = System.getProperty("java.io.tmpdir");
+					File saveDir = new File(tempdir+"/bin");
 					
-					File saveDir = new File(Game.getSavingLocation()+"/bin");
 					if(!saveDir.exists()){
 						saveDir.mkdir();
 					}
@@ -256,6 +257,9 @@ public abstract class Exercise extends Lecture {
 					}else if(code.contains("RemoteHanoi")){
 						compileRemote = "gcc -g -Wall -c langages/c/src/RemoteHanoi.c -I langages/c/include/ -o "+saveDirPath+"/RemoteHanoi.o ";
 						link = "gcc "+saveDirPath+"/current.o "+saveDirPath+"/RemoteHanoi.o -o "+execPath;
+					}else{
+						//TODO GIANNINI add error mesage if the remote isn't implemented
+						System.out.println("ERROR FILE SRC");
 					}
 					
 					//compile the current code

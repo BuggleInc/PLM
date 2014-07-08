@@ -202,24 +202,24 @@ public abstract class Entity extends Observable {
 			final StringBuffer resCompilationErr = new StringBuffer();
 
 			try {
+
+				String tempdir = System.getProperty("java.io.tmpdir");
+				File saveDir = new File(tempdir+"/bin");
 				
-				//TODO GIANNINI Verification du dossier avec les exos
-				File saveDir = new File(Game.getSavingLocation()+"/bin");
-				if(!saveDir.exists()){
-					saveDir.mkdir();
-				}
-
-
 				File exec = new File(saveDir.getAbsolutePath()+"/prog");
-
-				String execPath = "";
-				if(exec.exists() && exec.isFile() && exec.canExecute()){
-					execPath=exec.getAbsolutePath();
-					System.out.println(execPath);
-				}else{
-					System.out.println("Le fichier n'existe pas, il n'a pas été compilé (TODO)");
+				if(!exec.exists()){
+					//TODO GIANNINI add error message if the binary isn't here
+					System.out.println("NO BINARY FOUND");
+					return;
+				}else if(!exec.canExecute() || !exec.isFile()){
+					//TODO GIANNINI add error message if the file is not a file or not executable
+					System.out.println("PROG IS NOT EXECUTABLE OR A FILE");
 					return;
 				}
+				
+				
+				
+				String execPath = exec.getAbsolutePath();
 
 				String[] arg1 = {"/bin/sh","-c",""+execPath};
 				final Process process = runtime.exec(arg1);
@@ -284,6 +284,7 @@ public abstract class Entity extends Observable {
 					System.err.println(resCompilationErr.toString());
 					progress.setCompilationError(resCompilationErr.toString());
 				}
+				
 				
 			} catch (IOException e) {
 				e.printStackTrace();
