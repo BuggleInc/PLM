@@ -234,10 +234,6 @@ public abstract class Entity extends Observable {
 					System.out.println("PROG IS NOT EXECUTABLE OR A FILE");
 					return;
 				}
-				
-				
-				String execPath = exec.getAbsolutePath();
-
 
 				final Process process = runtime.exec(arg1);
 				
@@ -246,7 +242,6 @@ public abstract class Entity extends Observable {
 					public void run() {
 						try {
 							BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-							String line = "";
 							try {
 								int truc;
 								String str = "";
@@ -311,7 +306,9 @@ public abstract class Entity extends Observable {
 
 				for (StackTraceElement elm : e.getStackTrace())
 					msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
-
+				System.err.println(msg);
+				progress.setCompilationError(msg);
+				e.printStackTrace();
 			}
 		}else{
 			try {
