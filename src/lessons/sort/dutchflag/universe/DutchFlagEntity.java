@@ -78,7 +78,6 @@ public class DutchFlagEntity extends Entity {
 	protected void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		int nb,nb2;
-		String str;
 		try {
 			switch(num){
 			case 110:

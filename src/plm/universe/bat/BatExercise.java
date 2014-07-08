@@ -26,7 +26,6 @@ public abstract class BatExercise extends ExerciseTemplatingEntity {
 		/* Install the corrections: the first time setResult is called, it set 'expected' instead */
 		for (BatTest t : ((BatWorld)ws[0]).tests)
 			run(t);
-		
 		super.setup(ws,entName,
 				"import plm.universe.bat.BatEntity; "+
 		        "import plm.universe.bat.BatWorld; "+

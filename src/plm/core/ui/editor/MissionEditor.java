@@ -42,25 +42,27 @@ public class MissionEditor extends JFrame {
 
 	private JEditorPane display = new JEditorPane("text/html", "");
 	private JEditorPane editor;
-	
+
+	//private JComboBox<ProgrammingLanguage> selectorLanguage;
+
 	private String lastPathSelected;
 	private boolean modified = false;
-	
+
 	private String TITLE_MODIFIED = i18n.tr("PLM - Mission Editor (modified)");
 	private String TITLE_NOT_MODIFIED = i18n.tr("PLM - Mission Editor");
-	
+
 	public MissionEditor() {
 		super();
 		setTitle(TITLE_NOT_MODIFIED);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-	    addWindowListener(new WindowAdapter() {
-	    	@Override
-	        public void windowOpened(WindowEvent e) {}
-	    	@Override
-	        public void windowClosing(WindowEvent e) {
-	        	confirmQuit();
-	        }
-	    });
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowOpened(WindowEvent e) {}
+			@Override
+			public void windowClosing(WindowEvent e) {
+				confirmQuit();
+			}
+		});
 		setSize(1200, 800);
 		Game.getInstance();
 		PlmSyntaxPane.initKits();
@@ -74,21 +76,21 @@ public class MissionEditor extends JFrame {
 
 		JMenu fileMenu = new JMenu("File");
 		JMenuItem mi;
-		
+
 		/*
 		mi = new JMenuItem(new NewMissionAction());
 		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
 		fileMenu.add(mi);
-		*/
-		
+		 */
+
 		mi = new JMenuItem(new OpenMissionAction());
 		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK));
 		fileMenu.add(mi);
-		
+
 		mi = new JMenuItem(new SaveMissionAction());
 		mi.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
 		fileMenu.add(mi);
-		
+
 		mi = new JMenuItem(new SaveAsMissionAction());
 		fileMenu.add(mi);
 
@@ -173,7 +175,7 @@ public class MissionEditor extends JFrame {
 			JOptionPane.showMessageDialog(null, e1.getLocalizedMessage(),i18n.tr("Error while reading {0}",lastPathSelected), JOptionPane.ERROR_MESSAGE);
 		}
 	}
-	
+
 	public void confirmQuit() {
 		if (modified) {
 			int choice = JOptionPane.showConfirmDialog(MissionEditor.this, 
@@ -207,7 +209,7 @@ public class MissionEditor extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			if (!modified)
 				return;
-			
+
 			if (lastPathSelected == null) {
 				SaveAsMissionAction act = new SaveAsMissionAction();
 				act.actionPerformed(e);
@@ -279,7 +281,7 @@ public class MissionEditor extends JFrame {
 					}
 				}
 			}
-			
+
 			setTitle(TITLE_NOT_MODIFIED);
 			modified = false;
 		}

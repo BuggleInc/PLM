@@ -90,8 +90,7 @@ public class PancakeEntity extends Entity {
 	@Override
 	protected void command(String command, BufferedWriter out) {
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
-		int nb,nb2;
-		String str;
+		int nb;
 		try {
 			switch(num){
 			case 110:
