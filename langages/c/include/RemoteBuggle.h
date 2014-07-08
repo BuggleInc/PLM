@@ -88,8 +88,10 @@ int hasLeftWall(int x, int y);
 /* BINDINGS TRANSLATION: French */
 void gauche();  		
 void droite();   		
-void retourne(); 		
-void avance(int steps);  
+void retourne();
+void avancePas(); 		
+void avance(int steps);
+void reculePas();  
 void recule(int steps); 	
 Color getCouleurCorps();       
 void setCouleurCorps(Color c); 
