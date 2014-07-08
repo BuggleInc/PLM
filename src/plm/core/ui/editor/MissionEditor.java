@@ -2,6 +2,9 @@ package plm.core.ui.editor;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -10,8 +13,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.AbstractAction;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JEditorPane;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -19,6 +25,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
@@ -31,6 +38,7 @@ import org.xnap.commons.i18n.I18n;
 import org.xnap.commons.i18n.I18nFactory;
 
 import plm.core.model.Game;
+import plm.core.model.ProgrammingLanguage;
 import plm.core.ui.PlmHtmlEditorKit;
 import plm.core.utils.FileUtils;
 import plm.core.utils.PlmSyntaxPane;
@@ -101,8 +109,102 @@ public class MissionEditor extends JFrame {
 		menuBar.add(fileMenu);
 		this.setJMenuBar(menuBar);
 
+
+
+		final JCheckBox selectorAll = new JCheckBox("All");
+		selectorAll.setSelected(true);
+		final JCheckBox selectorC = new JCheckBox("C");
+		final JCheckBox selectorJava = new JCheckBox("Java");
+		final JCheckBox selectorScala = new JCheckBox("Scala");
+		final JCheckBox selectorPython = new JCheckBox("Python");
+
+		final ItemListener il = new ItemListener() {
+			@Override
+			public void itemStateChanged(ItemEvent arg0) {
+				// TODO Auto-generated method stub
+				Object source = arg0.getItemSelectable();
+				String ctn="";
+				if (selectorAll.isSelected()) {
+					ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
+							PlmHtmlEditorKit.filterHTML(editor.getText(),true,false,null)+
+							"</body></html>";
+				}else{
+					ArrayList<ProgrammingLanguage> l = new ArrayList<>();
+					if(selectorC.isSelected()){
+						l.add(Game.C);
+					}
+					if(selectorJava.isSelected()){
+						l.add(Game.JAVA);
+					}
+					if(selectorScala.isSelected()){
+						l.add(Game.SCALA);
+					}
+					if(selectorPython.isSelected()){
+						l.add(Game.PYTHON);
+					}
+					ProgrammingLanguage array[] = new ProgrammingLanguage[l.size()];
+					for(int i=0;i<l.size();i++){
+						array[i]=l.get(i);
+					}
+					ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
+							PlmHtmlEditorKit.filterHTML(editor.getText(),false,true,array)+
+							"</body></html>";
+				}
+
+				if (!modified) {
+					setTitle(TITLE_MODIFIED);
+					modified = true;
+				}
+				display.setText(ctn);
+				javax.swing.text.Document doc = display.getDocument();
+				int pos = (int) ( (double)doc.getLength()*editor.getCaretPosition()/editor.getDocument().getLength());
+				if (pos>doc.getLength())
+					pos = doc.getLength()-1;
+				if (pos<0)
+					pos = 0;
+				display.setCaretPosition( pos );
+			}
+		};
+
+		selectorAll.addItemListener(il);
+		selectorC.addItemListener(il);
+		selectorJava.addItemListener(il);
+		selectorScala.addItemListener(il);
+		selectorPython.addItemListener(il);
+
+		/*
+		selectorLanguage = new JComboBox<ProgrammingLanguage>();
+
+		selectorLanguage.addItem(Game.C);
+		selectorLanguage.addItem(Game.JAVA);
+		selectorLanguage.addItem(Game.SCALA);
+		selectorLanguage.addItem(Game.PYTHON);
+
+		selectorLanguage.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (!modified) {
+					setTitle(TITLE_MODIFIED);
+					modified = true;
+				}
+				String ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
+						PlmHtmlEditorKit.filterHTML(editor.getText(),true,false,(ProgrammingLanguage)selectorLanguage.getSelectedItem())+
+						"</body></html>";
+				display.setText(ctn);
+				javax.swing.text.Document doc = display.getDocument();
+				int pos = (int) ( (double)doc.getLength()*editor.getCaretPosition()/editor.getDocument().getLength());
+				if (pos>doc.getLength())
+					pos = doc.getLength()-1;
+				if (pos<0)
+					pos = 0;
+				display.setCaretPosition( pos );
+			}
+		});
+		 */
+
 		editor = new JEditorPane();
-		
+
 		getContentPane().setLayout(new BorderLayout());
 		JToolBar toolBar = new JToolBar();
 		// TODO: add buttons
@@ -111,16 +213,30 @@ public class MissionEditor extends JFrame {
 		JSplitPane sp = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
 		sp.setOneTouchExpandable(false);
 		sp.setLeftComponent(new JScrollPane(editor));
-		sp.setRightComponent(new JScrollPane(display));
+
+		JPanel rightDisplay=new JPanel();
+		rightDisplay.setLayout(new BorderLayout());
+
+		JPanel box = new JPanel();
+		box.add(selectorAll);
+		box.add(selectorC);
+		box.add(selectorJava);
+		box.add(selectorScala);
+		box.add(selectorPython);
+
+		rightDisplay.add(box, BorderLayout.NORTH);
+		rightDisplay.add(new JScrollPane(display), BorderLayout.CENTER);
+
+		sp.setRightComponent(rightDisplay);
 		double weight = 0.5;
 		sp.setResizeWeight(weight);
 		sp.setDividerLocation((int) (((double)getWidth()) * weight));
 
 		getContentPane().add(sp, BorderLayout.CENTER);
-		
+
 		editor.setContentType("text/xhtml");
 		editor.setEditable(true);
-		
+
 		display.setEditorKit(new PlmHtmlEditorKit());
 		display.setEditable(false);
 		editor.getDocument().addDocumentListener(new DocumentListener() {
@@ -129,9 +245,7 @@ public class MissionEditor extends JFrame {
 					setTitle(TITLE_MODIFIED);
 					modified = true;
 				}
-				String ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+
-						PlmHtmlEditorKit.filterHTML(editor.getText(),true)+
-						"</body></html>";
+				String ctn = "<html><head>"+PlmHtmlEditorKit.getCSS()+"</head><body>"+PlmHtmlEditorKit.filterHTML(editor.getText(),true,false,null)+"</body></html>";
 				display.setText(ctn);
 				javax.swing.text.Document doc = display.getDocument();
 				int pos = (int) ( (double)doc.getLength()*editor.getCaretPosition()/editor.getDocument().getLength());
@@ -153,9 +267,12 @@ public class MissionEditor extends JFrame {
 			public void changedUpdate(DocumentEvent e) {
 				updateHTML();
 			}
-		});		
+		});	
+
+
+
 	}
-	
+
 	public void loadMission(String path) {
 		lastPathSelected = path;
 		try {
