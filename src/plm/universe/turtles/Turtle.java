@@ -433,14 +433,9 @@ public class Turtle extends Entity {
 
 	@Override
 	protected void command(String command, BufferedWriter out) {
-		// TODO GIANNINI
 		int num = Integer.parseInt((String) command.subSequence(0, 3));
 		double nb,nb2;
 		int nbInt;
-
-		
-		
-		String str;
 		try {
 			switch(num){
 			case 110:

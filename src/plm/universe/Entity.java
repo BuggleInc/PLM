@@ -202,26 +202,39 @@ public abstract class Entity extends Observable {
 			final StringBuffer resCompilationErr = new StringBuffer();
 
 			try {
+
+				String tempdir = System.getProperty("java.io.tmpdir");
+				File saveDir = new File(tempdir+"/plmTmp/bin");
 				
-				//TODO GIANNINI Verification du dossier avec les exos
-				File saveDir = new File(Game.getSavingLocation()+"/bin");
-				if(!saveDir.exists()){
-					saveDir.mkdir();
+				
+				
+				String extension="";
+				String arg1[];
+				String os = System.getProperty("os.name").toLowerCase();
+				if (os.indexOf("win") >= 0) {
+					extension=".exe";
+					arg1 = new String[3];
+					arg1[0]="cmd.exe";
+					arg1[1]="/c";
+					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension;
+				} else {
+					arg1 = new String[3];
+					arg1[0]="/bin/sh";
+					arg1[1]="-c";
+					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension;
 				}
-
-
-				File exec = new File(saveDir.getAbsolutePath()+"/prog");
-
-				String execPath = "";
-				if(exec.exists() && exec.isFile() && exec.canExecute()){
-					execPath=exec.getAbsolutePath();
-					System.out.println(execPath);
-				}else{
-					System.out.println("Le fichier n'existe pas, il n'a pas été compilé (TODO)");
+				
+				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
+				if(!exec.exists()){
+					//TODO GIANNINI add error message if the binary isn't here
+					System.out.println("NO BINARY FOUND");
+					return;
+				}else if(!exec.canExecute() || !exec.isFile()){
+					//TODO GIANNINI add error message if the file is not a file or not executable
+					System.out.println("PROG IS NOT EXECUTABLE OR A FILE");
 					return;
 				}
 
-				String[] arg1 = {"/bin/sh","-c",""+execPath};
 				final Process process = runtime.exec(arg1);
 				
 				final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
@@ -229,7 +242,6 @@ public abstract class Entity extends Observable {
 					public void run() {
 						try {
 							BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-							String line = "";
 							try {
 								int truc;
 								String str = "";
@@ -285,6 +297,7 @@ public abstract class Entity extends Observable {
 					progress.setCompilationError(resCompilationErr.toString());
 				}
 				
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (Exception e) {
@@ -293,7 +306,9 @@ public abstract class Entity extends Observable {
 
 				for (StackTraceElement elm : e.getStackTrace())
 					msg+= "   at "+elm.getClassName()+"."+elm.getMethodName()+" ("+elm.getFileName()+":"+elm.getLineNumber()+")"+"\n";
-
+				System.err.println(msg);
+				progress.setCompilationError(msg);
+				e.printStackTrace();
 			}
 		}else{
 			try {

@@ -360,7 +360,9 @@ int*** getParamHelloTurmite1(int* dim1, int* dim2, int* dim3){
 void gauche()   				{ left(); }
 void droite()   				{ right(); }
 void retourne() 				{ back(); }
+void avancePas()  				{ forward(1); }
 void avance(int steps)  		{ forward(steps); }
+void reculePas() 				{ backward(1); }
 void recule(int steps) 			{ backward(steps); }
 Color getCouleurCorps()        	{ return getBodyColor(); }
 void setCouleurCorps(Color c)  	{ setBodyColor(c); }

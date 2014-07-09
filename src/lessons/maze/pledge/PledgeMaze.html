@@ -56,15 +56,16 @@ direction is free in order to restore your state afterward.</p>
 <p>You may have to change the rest of your code also, but these
 changes should remain limited.</p>
 
-<p class="python">Don't forget that if you have a method modifying a
+[!python]<p>Don't forget that if you have a method modifying a
 global variable (such as angleSum), you should ensure that it declares
 this variable as global. Without it, the method creates a new variable
 of the same name, and the global never gets modified.</p>
-<div class="python"><pre>def myMethod():
+<pre>def myMethod():
   global angleSum
   ...
   angleSum = angleSum + 1
-</pre></div>
+</pre>
+[/!]
 
 <div class="tip" id="tip-1" alt="Show an additional tip">
 You should set your direction to your favorite

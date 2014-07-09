@@ -35,7 +35,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		newSourceFromFile(lang, name, filename, "");
 	}
 	public void newSourceFromFile(ProgrammingLanguage lang, String name, String filename,String patternString) throws NoSuchEntityException {
-
+		
 		String shownFilename =  filename.replaceAll("\\.", "/")+"."+lang.getExt();
 		StringBuffer sb = null;
 		try {
@@ -68,6 +68,7 @@ public abstract class ExerciseTemplated extends Exercise {
 		                                             */
 		StringBuffer skel = new StringBuffer(); /* within BEGIN/END SKEL */
 		StringBuffer correction = new StringBuffer(); /* the unchanged content, but the package and className modification */
+		boolean containsLinePreprocessor=false;
 
 		boolean seenTemplate=false; // whether B/E SOLUTION seems included within B/E TEMPLATE
 		for (String line : content.split("\n")) {
@@ -83,11 +84,22 @@ public abstract class ExerciseTemplated extends Exercise {
 				} else if (line.contains("package")) {
 					head.append("$package \n");	
 					correction.append("$package \n");
-				} else if (line.contains("BEGIN TEMPLATE")) {
+				} else if(line.contains("#line") && lang.equals(Game.C)){
+					containsLinePreprocessor=true;
+					head.append(line+"\n");
+				}else if (line.contains("BEGIN TEMPLATE")) {
+					if(!containsLinePreprocessor && lang.equals(Game.C)){
+						head.append("#line 1 \""+name+"\" \n");
+						containsLinePreprocessor=true;
+					}
 					correction.append(line+"\n");
 					seenTemplate = true;
 					state = 1;
 				} else if (line.contains("BEGIN SOLUTION")) {
+					if(!containsLinePreprocessor && lang.equals(Game.C)){
+						head.append("#line 1 \""+name+"\" \n");
+						containsLinePreprocessor=true;
+					}
 					correction.append(line+"\n");
 					state = 2; 
 				} else if (line.contains("BEGIN SKEL")) {
@@ -104,9 +116,9 @@ public abstract class ExerciseTemplated extends Exercise {
 				if (line.contains("BEGIN TEMPLATE")) {
 					System.out.println(i18n.tr("{0}: BEGIN TEMPLATE within the template. Please fix your entity.",shownFilename));
 					state = 4;
-				} else if (line.contains("public class "))
+				} else if (line.contains("public class ")){
 					templateHead.append(line.replaceAll("public class \\S*", "public class "+name)+"\n");
-				else if (line.contains("END TEMPLATE")) {
+				}else if (line.contains("END TEMPLATE")) {
 					state = 4;
 				} else if (line.contains("BEGIN SOLUTION")) {
 					state = 2; 
