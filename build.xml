@@ -68,7 +68,7 @@
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/plm-${plm.major.version}-${plm.minor.version}.jar" filesetmanifest="mergewithoutmain">
             <manifest>
-                <attribute name="Built-By" value="M. Quinson and G. Oster" />
+                <attribute name="Built-By" value="M. Quinson, G. Oster and others" />
                 <attribute name="Main-Class" value="plm.core.ui.ProgrammersLearningMachine" />
                 <attribute name="Class-Path" value="." />
             </manifest>
