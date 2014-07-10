@@ -7,9 +7,8 @@ void RLforward(int steps);
 void line(Color colors[],int colorsLength, int returnBack);
 void makeFlower(Color c);
 
-int main(){
+void run(){
 	growFlowers();
-	return 0;
 }
 
 

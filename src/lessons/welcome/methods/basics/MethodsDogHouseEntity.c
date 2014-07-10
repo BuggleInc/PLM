@@ -5,7 +5,7 @@ int studentCode = 1;
 void dogHouse();
 
 
-int main(){
+void run(){
 	studentCode = 1;
 	brushDown();
 	dogHouse();
@@ -35,7 +35,6 @@ int main(){
 
 	brushDown();
 	dogHouse();
-	return 0;
 }
 
 

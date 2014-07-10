@@ -26,7 +26,6 @@ void combSort11() {
 /* END TEMPLATE */
 
 
-int main(){
+void run(){
 	combSort11();
-	return 0;
 }

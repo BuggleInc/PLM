@@ -1,13 +1,5 @@
 #include "RemoteTurtle.h"
 
-void run();
-
-int main(){
-	run();
-	return 0;
-}
-
-
 #line 1 "Flower.c"
 /* BEGIN TEMPLATE */
 void run() {

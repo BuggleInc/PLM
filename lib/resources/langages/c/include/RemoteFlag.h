@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 
+#include "Remote.h"
+
 void flush();
 
 void swap(int x, int y);
@@ -17,10 +19,10 @@ int isSelected();
 void assertSorted();
 
 /* BINDINGS TRANSLATION: French */
-void echange(int i, int j) { swap(i,j); }
-int getCouleur(int rank)   { return getColor(rank); }
-int getTaille()            { return getSize(); }
-int estTrie()          { return isSorted(); }
-int estChoisi()        { return isSelected(); }
+void echange(int i, int j);
+int getCouleur(int rank);
+int getTaille();
+int estTrie();
+int estChoisi();
 
 #endif

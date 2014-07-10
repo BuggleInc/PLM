@@ -4,10 +4,6 @@ void run();
 int endingPosition();
 void nextStep();
 
-int main(){
-	run();
-	return 0;
-}
 
 
 #line 1 "TraversalZigZag"

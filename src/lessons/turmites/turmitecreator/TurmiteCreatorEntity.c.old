@@ -160,7 +160,3 @@ void step() {
 	state = rule[state][currentColor][NEXT_STATE];
 }
 
-int main(){
-	run();
-	return 0;
-}

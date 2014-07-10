@@ -4,7 +4,7 @@
 #line 1 "WhileMoria"
 /* BEGIN TEMPLATE */
 
-int main(){
+void run(){
 	/* BEGIN SOLUTION */
 	back();
 	while (!isFacingWall()) {
@@ -26,7 +26,6 @@ int main(){
 	left();
 	forward(1);
 	/* END SOLUTION */
-	return 0;
 }
 
 /* END TEMPLATE */

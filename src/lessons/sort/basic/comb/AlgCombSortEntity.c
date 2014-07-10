@@ -23,7 +23,6 @@ void combSort() {
 /* END TEMPLATE */
 
 
-int main(){
+void run(){
 	combSort();
-	return 0;
 }

@@ -1,13 +1,6 @@
 #include "RemoteBuggle.h"
 
-void run();
 int random3();
-
-int main(){
-	run();
-	return 0;
-}
-
 
 #line 1 "RandomMouseMaze.c"
 /* BEGIN TEMPLATE */

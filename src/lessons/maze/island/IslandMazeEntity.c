@@ -1,14 +1,7 @@
 #include "RemoteBuggle.h"
 
-
 void stepHandOnWall();
-void run();
 int isChosenDirectionFree();
-
-int main(){
-	run();
-	return 0;
-}
 
 Direction chosenDirection = NORTH;
 #line 1 "IslandMaze.c"

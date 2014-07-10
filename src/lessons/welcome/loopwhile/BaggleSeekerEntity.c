@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "BaggleSeeker"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
@@ -9,5 +9,4 @@ int main(){
 	}
 	/* END SOLUTION */
 	/* END TEMPLATE */
-	return 0;
 }

@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "RunFour"
 	/* BEGIN SOLUTION */
 	int cpt = 0;
@@ -10,5 +10,4 @@ int main(){
 			cpt++;
 	}
 	/* END SOLUTION */
-	return 0;
 }

@@ -5,7 +5,7 @@ int isOverOrange() {
 	return getGroundColor()==orange;
 }
 
-int main(){
+int run(){
 	#line 1 "RunHalf"
 	/* BEGIN SOLUTION */
 	int baggle = 0;
@@ -18,7 +18,6 @@ int main(){
 			orange++;
 	}
 	/* END SOLUTION */
-	return 0;
 }
 
 

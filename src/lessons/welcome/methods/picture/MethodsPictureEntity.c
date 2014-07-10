@@ -10,14 +10,13 @@ void makeLine(int count);
 #line 1 "MethodsPicture"
 /* BEGIN TEMPLATE */
 
-int main(){
+void run(){
 	/* BEGIN SOLUTION */
 	int i;
 	for (i=0; i<3;i++) {
 			makeLine(3);
 			nextLine();
 	}
-	return 0;
 }
 
 

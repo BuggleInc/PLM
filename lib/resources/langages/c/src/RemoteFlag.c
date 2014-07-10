@@ -1,5 +1,7 @@
 #include "RemoteFlag.h"
 
+#undef printf
+
 void flush(){
     int c = 0;
     FILE* f = fopen("/tmp/flush","a+");
@@ -62,4 +64,6 @@ void echange(int i, int j) { swap(i,j); }
 int getCouleur(int rank)   { return getColor(rank); }
 int getTaille()            { return getSize(); }
 int estTrie()          { return isSorted(); }
-int estChoisi()        { return isSelected(); }int
+int estChoisi()        { return isSelected(); }
+
+#define printf myPrintf

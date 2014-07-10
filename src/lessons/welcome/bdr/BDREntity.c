@@ -1,8 +1,9 @@
 #include "RemoteBuggle.h"
 
 
-int main(){
+void run(){
 	#line 1 "BDR"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	while (1) {
 		char c = getIndicationBdr();
@@ -31,5 +32,5 @@ int main(){
 			return 0;
 	}
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }

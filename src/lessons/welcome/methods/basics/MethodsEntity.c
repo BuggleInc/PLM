@@ -3,8 +3,7 @@
 
 void goAndGet();
 
-int main(){
-
+void run(){
 	int i=0;
 	for (i=0; i<7; i++) {
 		goAndGet();
@@ -12,8 +11,6 @@ int main(){
 		forward(1);
 		left();
 	}
-
-	return 0;
 }
 
 #line 1 "MethodsEntity"

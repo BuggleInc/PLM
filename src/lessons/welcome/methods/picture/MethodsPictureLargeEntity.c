@@ -10,14 +10,13 @@ void makeLine(int count);
 #line 1 "MethodsPictureLarge"
 /* BEGIN TEMPLATE */
 
-int main(){
+void run(){
 	/* BEGIN SOLUTION */
 	int i;
 	for (i=0; i<9; i++) {
 		makeLine(9);
 		nextLine();
 	}
-	return 0;
 }
 void mark() {
 	brushDown();

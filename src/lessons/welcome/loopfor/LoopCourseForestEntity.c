@@ -1,7 +1,8 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "LoopCourseForest"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int i,side,step;
 	for (i = 0; i<7;i++)
@@ -23,5 +24,5 @@ int main(){
 		left();
 	}
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }

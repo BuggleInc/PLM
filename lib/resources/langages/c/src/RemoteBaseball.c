@@ -1,5 +1,7 @@
 #include "RemoteBaseball.h"
 
+#undef printf
+
 void flush(){
     int c = 0;
     FILE* f = fopen("/tmp/flush","a+");
@@ -102,3 +104,6 @@ int getTrouBase()     							{ return getHoleBase(); }
 int getTrouPosition() 							{ return getHolePosition(); }
 void deplace(int base, int position) 			{ move(base, position); }
 int estSelectionne() 							{ return isSelected(); }
+
+
+#define printf myPrintf

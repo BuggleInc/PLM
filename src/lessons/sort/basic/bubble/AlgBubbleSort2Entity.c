@@ -15,7 +15,6 @@ void bubbleSort2()  {
 }
 /* END TEMPLATE */
 
-int main(){
+void run(){
 	bubbleSort2();
-	return 0;
 }

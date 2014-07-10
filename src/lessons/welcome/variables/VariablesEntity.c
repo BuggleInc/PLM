@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-int main(){
+int run(){
 	#line 1 "Variables"
 	/* BEGIN SOLUTION */
 	int cpt = 0;
@@ -15,5 +15,4 @@ int main(){
 	}
 	dropBaggle();
 	/* END SOLUTION */
-	return 0;
 }

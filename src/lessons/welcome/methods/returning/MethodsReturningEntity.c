@@ -2,7 +2,7 @@
 
 int haveBaggle();
 
-int main(){
+void run(){
 	int i;
 	for (i=0; i<7; i++) {
 		if (haveBaggle())
@@ -11,7 +11,6 @@ int main(){
 		forward(1);
 		left();
 	}
-	return 0;
 }
 
 

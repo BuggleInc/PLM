@@ -34,7 +34,6 @@ void solve() {
 }
 /* END TEMPLATE */
 
-int main(){
+void run(){
 	solve();
-	return 0;
 }

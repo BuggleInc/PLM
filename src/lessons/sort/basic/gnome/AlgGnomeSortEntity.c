@@ -21,7 +21,6 @@ void gnomeSort() {
 /* END TEMPLATE */
 
 
-int main(){
+void run(){
 	gnomeSort();
-	return 0;
 }

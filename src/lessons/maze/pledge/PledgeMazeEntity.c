@@ -2,14 +2,7 @@
 
 
 void stepHandOnWall();
-void run();
 int isChosenDirectionFree();
-
-int main(){
-	run();
-	return 0;
-}
-
 
 int angleSum;
 Direction chosenDirection = NORTH;

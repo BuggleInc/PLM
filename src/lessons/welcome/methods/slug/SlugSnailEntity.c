@@ -3,9 +3,8 @@
 void hunt(Color c);
 int isFacingTrail(Color c);
 
-int main(){
+void run(){
 	hunt(getParam());
-	return 0;
 }
 
 #line 1 "SlugSnail"

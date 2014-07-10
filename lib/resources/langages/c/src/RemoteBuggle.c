@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-
+#undef printf
 /* Utils */
 
 void flush(){
@@ -392,3 +392,4 @@ int aBiscuit(int x, int y) 		{ return hasBaggle(x,y); }
 int aMurNord(int x, int y) 		{ return hasTopWall(x,y); }
 int aMurOuest(int x, int y)		{ return hasLeftWall(x, y); }
 
+#define printf myPrintf

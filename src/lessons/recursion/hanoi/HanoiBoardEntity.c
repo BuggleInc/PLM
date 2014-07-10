@@ -20,7 +20,6 @@ void solveRec(int src, int dst, int other, int height) {
 }
 /* END TEMPLATE */
 
-int main(){
+void run(){
 	solve(getParam(0),getParam(1),getParam(2));
-	return 0;
 }

@@ -1,14 +1,7 @@
 #include "RemoteBuggle.h"
 
-void run();
 void mark(Color c);
 void makeLine(Color colors[], int colorsLength);
-
-int main(){
-	run();
-	return 0;
-}
-
 
 #line 1 "Array2"
 /* BEGIN TEMPLATE */

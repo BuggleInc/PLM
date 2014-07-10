@@ -3,9 +3,8 @@
 void hunt(Color c);
 int isFacingTrail(Color c);
 
-int main(){
+void run(){
 	hunt(green);
-	return 0;
 }
 
 void hunt(Color c) {

@@ -1,5 +1,7 @@
 #include "RemotePancake.h"
 
+#undef printf
+
 void flush(){
     int c = 0;
     FILE* f = fopen("/tmp/flush","a+");
@@ -76,3 +78,5 @@ int getTaillePile() 				{ return getStackSize(); }
 int estCrepeRetournee(int rank) 	{ return isPancakeUpsideDown(rank); }
 int estTriee() 						{ return isSorted(); }
 int estChoisi() 					{ return isSelected(); }
+
+#define printf myPrintf

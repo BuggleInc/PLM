@@ -2,13 +2,12 @@
 
 void move(int nbPas, int forward);
 
-int main(){
+void run(){
 	if(getDirection() == NORTH){
 		move(getY(),1);
 	}else{
 		move(getY(),0);
 	}
-	return 0;
 }
 
 

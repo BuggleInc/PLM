@@ -3,14 +3,13 @@
 void step();
 
 
-int main(){
+void run(){
 	int nbSteps = getParam();
 	int i;
 	for (i=0;i<nbSteps;i++) {
 		step();
 		stepDone();
 	}
-	return 0;
 }
 
 #line 1 "Langton.c"

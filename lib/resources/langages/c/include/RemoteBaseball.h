@@ -6,6 +6,8 @@
 #include <unistd.h>
 #include <string.h>
 
+#include "Remote.h"
+
 void flush();
 void assertSorted(char* str);
 
