@@ -334,7 +334,7 @@ public abstract class Exercise extends Lecture {
 					hRemoteOut.close();
 					
 					//compile the current code
-					String compileCode = "gcc -g -c "+saveDirPathSrc+"/current.c  -o "+saveDirPathBin+"/current.o -I "+saveDirPathInclude+" -Wall  ";
+					String compileCode = "gcc -g -Wall -c "+saveDirPathSrc+"/current.c  -o "+saveDirPathBin+"/current.o -I "+saveDirPathInclude+" ";
 
 
 					String[] arg1;
@@ -343,18 +343,13 @@ public abstract class Exercise extends Lecture {
 						arg1 = new String[3];
 						arg1[0]="cmd.exe";
 						arg1[1]="/c";
-						arg1[2]=compileRemote+" ; "+compileRemoteWorld+" ; "+compileCode+" ; "+link;
+						arg1[2]=compileRemote+" & "+compileRemoteWorld+" & "+compileCode+" & "+link;
 					} else {
 						arg1 = new String[3];
 						arg1[0]="/bin/sh";
 						arg1[1]="-c";
 						arg1[2]=compileRemote+" ; "+compileRemoteWorld+" ; "+compileCode+" ; "+link;
 					}
-
-
-					//String[] arg1 = {"/bin/sh","-c","gcc -x c -o "+execPath+" -Wall - "};
-
-
 
 					final Process process = runtime.exec(arg1);
 					final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
