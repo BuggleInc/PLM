@@ -210,7 +210,11 @@ public abstract class Entity extends Observable {
 
 				final File randomFile = new File(tempdir+"/tmp_"+((int)(Math.random()*1000))+".txt");
 				System.out.println("tmp file : "+randomFile.getAbsolutePath());
-				randomFile.createNewFile();
+				if(!randomFile.createNewFile()){
+					//TODO GIANNINI add error message
+					System.out.println("ERREUR CREATE TMPFILE");
+				}
+				
 				String extension="";
 				String arg1[];
 				String os = System.getProperty("os.name").toLowerCase();
@@ -308,6 +312,14 @@ public abstract class Entity extends Observable {
 										}
 									}
 								}
+								while((truc=br.read())!=-1){
+									if(truc!=10){
+										str+=(char)truc;
+									}else{
+										entityThis.command(str, bwriter);
+										str="";
+									}
+								}
 							} finally {
 								br.close();
 							}
@@ -325,11 +337,11 @@ public abstract class Entity extends Observable {
 				reader.join();
 				error.join();
 				continu.append("fin");
-				//print.join();
+				print.join();
 
 				bwriter.close();
 
-
+				
 				randomFile.delete();
 
 				if(resCompilationErr.length()>0){
