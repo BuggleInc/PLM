@@ -23,7 +23,6 @@ void bubbleSort3()  {
 }
 /* END TEMPLATE */
 
-int main(){
+void run(){
 	bubbleSort3();
-	return 0;
 }

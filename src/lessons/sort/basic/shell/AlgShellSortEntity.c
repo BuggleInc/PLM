@@ -34,7 +34,6 @@ void shellSort()  {
 
 
 
-int main(){
+void run(){
 	shellSort();
-	return 0;
 }

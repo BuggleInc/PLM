@@ -79,7 +79,3 @@ int findPlayerPos(int base, int color) {
 }
 /* END HIDDEN */
 
-int main(){
-	run();
-	return 0;
-}

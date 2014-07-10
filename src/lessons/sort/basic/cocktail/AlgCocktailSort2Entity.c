@@ -29,7 +29,6 @@ void cocktailSort2() {
 /* END TEMPLATE */
 
 
-int main(){
+void run(){
 	cocktailSort2();
-	return 0;
 }

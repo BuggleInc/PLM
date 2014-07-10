@@ -1,5 +1,7 @@
 #include "RemoteSort.h"
 
+#undef printf
+
 void flush(){
     int c = 0;
     FILE* f = fopen("/tmp/flush","a+");
@@ -79,3 +81,5 @@ int plusPetit(int i, int j) 		{ return isSmaller(i, j); }
 int plusPetitQue(int i, int value)	{ return isSmallerThan(i, value); }
 void echange(int i, int j) 			{ swap(i,j); }
 void copie(int from,int to) 		{ copy(from,to);}
+
+#define printf myPrintf

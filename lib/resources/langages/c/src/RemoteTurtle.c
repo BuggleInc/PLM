@@ -1,5 +1,7 @@
 #include "RemoteTurtle.h"
 
+#undef printf
+
 void flush(){
     int c = 0;
     FILE* f = fopen("/tmp/flush","a+");
@@ -169,3 +171,5 @@ void efface()             			{ clear(); }
 void cache()              			{ hide(); }
 void montre()             			{ show(); }
 int estVisible()      				{ return isVisible(); }
+
+#define printf myPrintf

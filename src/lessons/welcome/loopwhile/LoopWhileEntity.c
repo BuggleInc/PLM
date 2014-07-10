@@ -1,11 +1,12 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "LoopWhile"
+	/* GEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	while (!isFacingWall()){
 		forward(1);
 	}
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }

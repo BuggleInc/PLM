@@ -1,14 +1,7 @@
 #include "RemoteBuggle.h"
 
-void run();
 void nextStep();
 int endingPosition();
-
-
-int main(){
-	run();
-	return 0;
-}
 
 
 #line 1 "TraversalByColumn"

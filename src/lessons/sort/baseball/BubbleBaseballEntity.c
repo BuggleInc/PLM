@@ -32,7 +32,3 @@ void run() {
 }
 /* END TEMPLATE */
 
-int main(){
-	run();
-	return 0;
-}

@@ -1,13 +1,6 @@
 #include "RemoteTurtle.h"
 
-void run();
 void quadrant();
-
-int main(){
-	run();
-	return 0;
-}
-
 
 #line 1 "DiskFour.c"
 /* BEGIN TEMPLATE */

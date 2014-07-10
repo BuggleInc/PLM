@@ -8,8 +8,9 @@ char getIndication() {
 	}
 }
 
-int main(){
+void run(){
 	#line 1 "BDR2"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int continu=1;
 	char read;
@@ -39,5 +40,5 @@ int main(){
 
 	}
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }

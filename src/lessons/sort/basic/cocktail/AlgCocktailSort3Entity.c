@@ -33,7 +33,6 @@ void cocktailSort3() {
 /* END TEMPLATE */
 
 
-int main(){
+void run(){
 	cocktailSort3();
-	return 0;
 }

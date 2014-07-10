@@ -4,7 +4,7 @@ void step();
 
 Color allColors[] = {white, black, blue, cyan, green, orange, red, gray, magenta, darkGray, pink, lightGray};
 
-int main(){
+void run(){
 	int nbSteps = getParam();
 	char* rule=(char*)malloc(sizeof(char)*256);
 	int length = getParamLangtonColor1(rule);
@@ -18,7 +18,6 @@ int main(){
 		stepDone();
 		step(rule,colors,length);
 	}
-	return 0;
 }
 
 #line 1 "LangtonColors.c"

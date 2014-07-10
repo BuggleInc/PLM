@@ -1,18 +1,12 @@
 #include "RemoteTurtle.h"
 
-void run();
+
 void branch(int size);
 
-int main(){
-	run();
-	return 0;
-}
 
 
 #line 1 "Star.c"
 /* BEGIN TEMPLATE */
-
-
 void run() {
 	/* BEGIN SOLUTION */
 	#define BRANCH_COUNT 5

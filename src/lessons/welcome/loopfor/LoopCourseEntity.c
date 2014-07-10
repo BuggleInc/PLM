@@ -1,7 +1,8 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "LoopCourse"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	int i,j,k;
 	for(i=0;i<11;i++){
@@ -13,5 +14,5 @@ int main(){
 	    }
 	}
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }

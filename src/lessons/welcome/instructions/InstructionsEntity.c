@@ -2,7 +2,7 @@
 
 
 
-int main(){
+void run(){
 	#line 1 "Instructions"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
@@ -19,5 +19,4 @@ int main(){
 	left();
 	/* END SOLUTION */
 	/* END TEMPLATE */
-	return 0;
 }

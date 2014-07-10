@@ -1,15 +1,8 @@
 #include "RemoteTurtle.h"
 
-void run();
 void house(int len);
 void line();
 void nextLine();
-
-int main(){
-	run();
-	return 0;
-}
-
 
 #line 1 "HouseMany.c"
 /* BEGIN TEMPLATE */

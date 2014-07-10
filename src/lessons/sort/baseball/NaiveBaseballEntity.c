@@ -24,8 +24,3 @@ void run() {
 	/* END SOLUTION */
 }
 /* END TEMPLATE */
-
-int main(){
-	run();
-	return 0;
-}

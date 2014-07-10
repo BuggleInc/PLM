@@ -54,7 +54,3 @@ void out(char* msg) {
 }
 /* END HIDDEN */
 
-int main(){
-	run();
-	return 0;
-}

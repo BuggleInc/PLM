@@ -1,6 +1,6 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "LoopFor"
 	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
@@ -17,5 +17,4 @@ int main(){
 	dropBaggle();
 	/* END SOLUTION */
 	/* END TEMPLATE */
-	return 0;
 }

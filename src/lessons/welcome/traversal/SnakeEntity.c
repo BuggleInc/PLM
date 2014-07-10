@@ -1,13 +1,8 @@
 #include "RemoteBuggle.h"
 
-void run();
 int endingPosition();
 void snakeStep() ;
 
-int main(){
-	run();
-	return 0;
-}
 
 #line 1 "Snake"
 /* BEGIN TEMPLATE */

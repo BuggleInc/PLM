@@ -1,17 +1,10 @@
 #include "RemoteBuggle.h"
 
-
-void run();
 int hasRightWall(int x, int y);
 int hasBottomWall(int x, int y);
 int setValueIfLess(int x, int y, int val) ;
 void evaluatePaths();
 void followShortestPath();
-
-int main(){
-	run();
-	return 0;
-}
 
 #line 1 "ShortestPath.c"
 /* BEGIN TEMPLATE */

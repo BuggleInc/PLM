@@ -1,7 +1,8 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "Conditions"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	if (isFacingWall()){
 		backward(1);
@@ -9,5 +10,5 @@ int main(){
 		forward(1);
 	}
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }

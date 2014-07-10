@@ -21,7 +21,6 @@ void selectionSort() {
 }
 /* END TEMPLATE */
 
-int main(){
+void run(){
 	selectionSort();
-	return 0;
 }

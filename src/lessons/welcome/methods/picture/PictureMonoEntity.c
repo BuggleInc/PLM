@@ -5,13 +5,12 @@ void makeV();
 
 #line 1 "PictureMono"
 /* BEGIN TEMPLATE */
-int main(){
+void run(){
 	/* BEGIN SOLUTION */
 	makeV();
 	makeV();
 	makeV();
 	makeV();
-	return 0;
 }
 
 void mark() {

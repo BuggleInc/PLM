@@ -1,7 +1,8 @@
 #include "RemoteBuggle.h"
 
-int main(){
+void run(){
 	#line 1 "InstructionsDrawG"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	brushDown();
 	left();
@@ -32,5 +33,5 @@ int main(){
 	forward(1);
 	left();
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }

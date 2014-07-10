@@ -4,13 +4,14 @@ int isGroundWhite() {
 	return getGroundColor()==white;
 }
 
-int main(){
+void run(){
 	#line 1 "LoopDoWhile"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	do {
 		forward(1);
 	} while (!isGroundWhite());
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }
 

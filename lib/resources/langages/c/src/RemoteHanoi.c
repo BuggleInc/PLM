@@ -1,5 +1,7 @@
 #include "RemoteHanoi.h"
 
+#undef printf
+
 void flush(){
     int c = 0;
     FILE* f = fopen("/tmp/flush","a+");
@@ -46,3 +48,5 @@ int getParam(int nb){
 void deplace(int src,int dst) 	{ move(src, dst); }
 int  getTaillePiquet(int rank) 	{ return getSlotSize(rank); }
 int estChoisi() 				{ return isSelected(); }
+
+#define printf myPrintf

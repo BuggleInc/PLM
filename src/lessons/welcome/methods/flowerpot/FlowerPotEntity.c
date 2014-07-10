@@ -6,9 +6,8 @@ void line(Color c1, Color c2) ;
 void halfLine(Color c);
 
 
-int main(){
+void run(){
 	growFlowers();
-	return 0;
 }
 
 

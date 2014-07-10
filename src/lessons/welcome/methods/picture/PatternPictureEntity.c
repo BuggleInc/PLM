@@ -10,7 +10,7 @@ void mark() ;
 #line 1 "PatternPicture"
 /* BEGIN TEMPLATE */
 
-int main(){
+void run(){
 	/* BEGIN SOLUTION */
 	bigSquare();
 	forward(4);
@@ -25,7 +25,6 @@ int main(){
 	forward(4);
 	bigSquare();
 
-	return 0;
 }
 void mark() {
 	brushDown();

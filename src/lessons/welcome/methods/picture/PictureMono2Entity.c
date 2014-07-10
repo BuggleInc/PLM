@@ -10,14 +10,13 @@ void nextLine();
 #line 1 "PictureMono2"
 /* BEGIN TEMPLATE */
 
-int main(){
+void run(){
 	/* BEGIN SOLUTION */
 	int i;
 	for (i=0; i<3;i++) {
 		makeLine(3);
 		nextLine();
 	}
-	return 0;
 }
 void mark() {
 	brushDown();

@@ -21,7 +21,6 @@ void insertionSort() {
 
 
 
-int main(){
+void run(){
 	insertionSort();
-	return 0;
 }

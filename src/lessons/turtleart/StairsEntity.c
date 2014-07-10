@@ -1,12 +1,5 @@
 #include "RemoteTurtle.h"
 
-void run();
-
-int main(){
-	run();
-	return 0;
-}
-
 
 #line 1 "Stairs.c"
 /* BEGIN TEMPLATE */

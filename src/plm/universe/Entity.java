@@ -3,7 +3,9 @@ package plm.universe;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
@@ -203,10 +205,15 @@ public abstract class Entity extends Observable {
 
 			try {
 
-				String tempdir = System.getProperty("java.io.tmpdir");
-				File saveDir = new File(tempdir+"/plmTmp/bin");
-				
-				
+				String tempdir = System.getProperty("java.io.tmpdir")+"/plmTmp";
+				File saveDir = new File(tempdir+"/bin");
+
+				final File randomFile = new File(tempdir+"/tmp_"+((int)(Math.random()*1000))+".txt");
+				System.out.println("tmp file : "+randomFile.getAbsolutePath());
+				if(!randomFile.createNewFile()){
+					//TODO GIANNINI add error message
+					System.out.println("ERREUR CREATE TMPFILE");
+				}
 				
 				String extension="";
 				String arg1[];
@@ -216,14 +223,14 @@ public abstract class Entity extends Observable {
 					arg1 = new String[3];
 					arg1[0]="cmd.exe";
 					arg1[1]="/c";
-					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension;
+					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
 				} else {
 					arg1 = new String[3];
 					arg1[0]="/bin/sh";
 					arg1[1]="-c";
-					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension;
+					arg1[2]=saveDir.getAbsolutePath()+"/prog"+extension+" "+randomFile.getAbsolutePath();
 				}
-				
+
 				File exec = new File(saveDir.getAbsolutePath()+"/prog"+extension);
 				if(!exec.exists()){
 					//TODO GIANNINI add error message if the binary isn't here
@@ -236,7 +243,7 @@ public abstract class Entity extends Observable {
 				}
 
 				final Process process = runtime.exec(arg1);
-				
+
 				final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
 				Thread reader = new Thread() {
 					public void run() {
@@ -253,7 +260,7 @@ public abstract class Entity extends Observable {
 										str="";
 									}
 								}
-								
+
 							} finally {
 								reader.close();
 							}
@@ -283,21 +290,66 @@ public abstract class Entity extends Observable {
 					}
 				};
 
-				reader.run();
-				error.run();
+				final StringBuffer continu = new StringBuffer("");
+				Thread print = new Thread() {
+					public void run() {
+						try {
+							InputStream ips=new FileInputStream(randomFile.getAbsolutePath()); 
+							InputStreamReader ipsr=new InputStreamReader(ips);
+							BufferedReader br=new BufferedReader(ipsr);
+							String line = "";
+							try {
+								int truc;
+								String str = "";
+								while(continu.length()==0){
+									truc=br.read();
+									if(truc!=-1){
+										if(((char)truc)!='\n'){
+											str+=(char)truc;
+										}else{
+											System.out.println(str);
+											str="";
+										}
+									}
+								}
+								while((truc=br.read())!=-1){
+									if(truc!=10){
+										str+=(char)truc;
+									}else{
+										entityThis.command(str, bwriter);
+										str="";
+									}
+								}
+							} finally {
+								br.close();
+							}
+						} catch(IOException ioe) {
+							ioe.printStackTrace();
+						}
+					}
+				};
+
+
+				reader.start();
+				error.start();
+				print.start();
+				process.waitFor();
 				reader.join();
 				error.join();
-				
+				continu.append("fin");
+				print.join();
 
 				bwriter.close();
 
 				
+				randomFile.delete();
+
 				if(resCompilationErr.length()>0){
 					System.err.println(resCompilationErr.toString());
 					progress.setCompilationError(resCompilationErr.toString());
 				}
-				
-				
+
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (Exception e) {

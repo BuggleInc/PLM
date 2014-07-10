@@ -7,8 +7,9 @@ int exitReached() {
 	return getGroundColor()==orange;
 }
 
-int main(){
+void run(){
 	#line 1 "Poucet"
+	/* BEGIN TEMPLATE */
 	/* BEGIN SOLUTION */
 	while (!exitReached()) {
 		int seen = 0;
@@ -26,5 +27,5 @@ int main(){
 	}
 	forward(1);
 	/* END SOLUTION */
-	return 0;
+	/* END TEMPLATE */
 }
