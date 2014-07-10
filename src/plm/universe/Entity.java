@@ -205,12 +205,10 @@ public abstract class Entity extends Observable {
 
 			try {
 
-				String tempdir = System.getProperty("java.io.tmpdir");
-				File saveDir = new File(tempdir+"/plmTmp/bin");
+				String tempdir = System.getProperty("java.io.tmpdir")+"/plmTmp";
+				File saveDir = new File(tempdir+"/bin");
 
-
-
-				final File randomFile = new File("tmp_"+(Math.random()*1000)%1000+".txt");
+				final File randomFile = new File(tempdir+"/tmp_"+((int)(Math.random()*1000))+".txt");
 				System.out.println("tmp file : "+randomFile.getAbsolutePath());
 				randomFile.createNewFile();
 				String extension="";
@@ -310,7 +308,6 @@ public abstract class Entity extends Observable {
 										}
 									}
 								}
-								System.out.println("fin print");
 							} finally {
 								br.close();
 							}
