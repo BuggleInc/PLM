@@ -214,8 +214,7 @@ public abstract class Exercise extends Lecture {
 
 			for (SourceFile sf : sfs){
 
-				String code = sf.getCompilableContent(runtimePatterns,whatToCompile); 
-
+				String code = sf.getCompilableContent(runtimePatterns,whatToCompile);
 				Runtime runtime = Runtime.getRuntime();
 
 				final StringBuffer resCompilationErr=new StringBuffer();
@@ -252,52 +251,66 @@ public abstract class Exercise extends Lecture {
 					String execPath = exec.getAbsolutePath();
 
 					//compile the RemoteBuggle
-					String compileRemote="";
+					String compileRemoteWorld="";
 					String link="";
-					
-					
 					String remote="";
+					
+					String compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/Remote.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/Remote.o";
 					
 					if(code.contains("RemoteBuggle")){
 						remote = "RemoteBuggle";
-						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBuggle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBuggle.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBuggle.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBuggle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBuggle.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBuggle.o "+saveDirPathBin+"/Remote.o -o "+execPath;
 					}else if(code.contains("RemoteTurtle")){
 						remote = "RemoteTurtle";
-						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteTurtle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteTurtle.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteTurtle.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteTurtle.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteTurtle.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteTurtle.o "+saveDirPathBin+"/Remote.o -o "+execPath;
 					}else if(code.contains("RemoteSort")){
 						remote = "RemoteSort";
-						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteSort.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteSort.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteSort.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteSort.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteSort.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteSort.o "+saveDirPathBin+"/Remote.o -o "+execPath;
 					}else if(code.contains("RemoteFlag")){
 						remote = "RemoteFlag";
-						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteFlag.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteFlag.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteFlag.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteFlag.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteFlag.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteFlag.o "+saveDirPathBin+"/Remote.o -o "+execPath;
 					}else if(code.contains("RemoteBaseball")){
 						remote = "RemoteBaseball";
-						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBaseball.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBaseball.o";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBaseball.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteBaseball.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteBaseball.o";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteBaseball.o "+saveDirPathBin+"/Remote.o -o "+execPath;
 					}else if(code.contains("RemotePancake")){
 						remote = "RemotePancake";
-						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemotePancake.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemotePancake.o ";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemotePancake.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemotePancake.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemotePancake.o ";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemotePancake.o "+saveDirPathBin+"/Remote.o -o "+execPath;
 					}else if(code.contains("RemoteHanoi")){
 						remote = "RemoteHanoi";
-						compileRemote = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteHanoi.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteHanoi.o ";
-						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteHanoi.o -o "+execPath;
+						compileRemoteWorld = "gcc -g -Wall -c "+saveDirPathSrc+"/RemoteHanoi.c -I "+saveDirPathInclude+" -o "+saveDirPathBin+"/RemoteHanoi.o ";
+						link = "gcc "+saveDirPathBin+"/current.o "+saveDirPathBin+"/RemoteHanoi.o "+saveDirPathBin+"/Remote.o -o "+execPath;
 					}else{
 						//TODO GIANNINI add error mesage if the remote isn't implemented
 						System.out.println("ERROR FILE SRC");
 					}
 					
-					//copy file from jar to tmp dir
-					BufferedReader cRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/"+remote+".c")));
-					FileWriter cRemoteOut = new FileWriter(saveDirPathSrc+"/"+remote+".c");
-					BufferedReader hRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/"+remote+".h")));
-					FileWriter hRemoteOut = new FileWriter(saveDirPathInclude+"/"+remote+".h");
+					//copy file RemoteWorld from jar to tmp dir
+					BufferedReader cRemoteWorld = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/"+remote+".c")));
+					FileWriter cRemoteOutWorld = new FileWriter(saveDirPathSrc+"/"+remote+".c");
+					BufferedReader hRemoteWorld = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/"+remote+".h")));
+					FileWriter hRemoteOutWorld = new FileWriter(saveDirPathInclude+"/"+remote+".h");
 					
 					String line;
+					while((line=cRemoteWorld.readLine())!=null){
+						cRemoteOutWorld.write(line+"\n");
+					}
+					line="";
+					while((line=hRemoteWorld.readLine())!=null){
+						hRemoteOutWorld.write(line+"\n");
+					}
+					
+					//copy file Remote from jar to tmp dir
+					BufferedReader cRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/src/Remote.c")));
+					FileWriter cRemoteOut = new FileWriter(saveDirPathSrc+"/Remote.c");
+					BufferedReader hRemote = new BufferedReader(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("resources/langages/c/include/Remote.h")));
+					FileWriter hRemoteOut = new FileWriter(saveDirPathInclude+"/Remote.h");
+					
 					while((line=cRemote.readLine())!=null){
 						cRemoteOut.write(line+"\n");
 					}
@@ -305,13 +318,23 @@ public abstract class Exercise extends Lecture {
 					while((line=hRemote.readLine())!=null){
 						hRemoteOut.write(line+"\n");
 					}
-					cRemote.close();
+					
+					FileWriter cCurrent = new FileWriter(saveDirPathSrc+"/current.c");
+					cCurrent.write(code);
+					cCurrent.close();
+
+					
+					cRemoteWorld.close();
+					cRemoteOutWorld.close();
+					hRemoteWorld.close();
+					hRemoteOutWorld.close();
+					cRemoteWorld.close();
 					cRemoteOut.close();
 					hRemote.close();
 					hRemoteOut.close();
 					
 					//compile the current code
-					String compileCode = "gcc -g -c -x c -o "+saveDirPathBin+"/current.o -I "+saveDirPathInclude+" -Wall - ";
+					String compileCode = "gcc -g -c "+saveDirPathSrc+"/current.c  -o "+saveDirPathBin+"/current.o -I "+saveDirPathInclude+" -Wall  ";
 
 
 					String[] arg1;
@@ -320,12 +343,12 @@ public abstract class Exercise extends Lecture {
 						arg1 = new String[3];
 						arg1[0]="cmd.exe";
 						arg1[1]="/c";
-						arg1[2]=compileRemote+" & "+compileCode+" & "+link;
+						arg1[2]=compileRemote+" ; "+compileRemoteWorld+" ; "+compileCode+" ; "+link;
 					} else {
 						arg1 = new String[3];
 						arg1[0]="/bin/sh";
 						arg1[1]="-c";
-						arg1[2]=compileRemote+" ; "+compileCode+" ; "+link;
+						arg1[2]=compileRemote+" ; "+compileRemoteWorld+" ; "+compileCode+" ; "+link;
 					}
 
 
@@ -335,7 +358,7 @@ public abstract class Exercise extends Lecture {
 
 					final Process process = runtime.exec(arg1);
 					final BufferedWriter bwriter = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
-					bwriter.write(code);
+					bwriter.write(code.toCharArray());
 					bwriter.close();
 					Thread reader = new Thread() {
 						public void run() {
